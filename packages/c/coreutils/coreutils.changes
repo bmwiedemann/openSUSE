@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Mon Mar  9 07:17:46 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 8.32:
+  * Noteworthy changes in release 8.32 (2020-03-05) [stable]
+
+  ** Bug fixes
+
+  cp now copies /dev/fd/N correctly on platforms like Solaris where
+  it is a character-special file whose minor device number is N.
+  [bug introduced in fileutils-4.1.6]
+
+  dd conv=fdatasync no longer reports a "Bad file descriptor" error
+  when fdatasync is interrupted, and dd now retries interrupted calls
+  to close, fdatasync, fstat and fsync instead of incorrectly
+  reporting an "Interrupted system call" error.
+  [bugs introduced in coreutils-6.0]
+
+  df now correctly parses the /proc/self/mountinfo file for unusual entries
+  like ones with '\r' in a field value ("mount -t tmpfs tmpfs /foo$'\r'bar"),
+  when the source field is empty ('mount -t tmpfs "" /mnt'), and when the
+  filesystem type contains characters like a blank which need escaping.
+  [bugs introduced in coreutils-8.24 with the introduction of reading
+   the /proc/self/mountinfo file]
+
+  factor again outputs immediately when stdout is a tty but stdin is not.
+  [bug introduced in coreutils-8.24]
+
+  ln works again on old systems without O_DIRECTORY support (like Solaris 10),
+  and on systems where symlink ("x", ".") fails with errno == EINVAL
+  (like Solaris 10 and Solaris 11).
+  [bug introduced in coreutils-8.31]
+
+  rmdir --ignore-fail-on-non-empty now works correctly for directories
+  that fail to be removed due to permission issues.  Previously the exit status
+  was reversed, failing for non empty and succeeding for empty directories.
+  [bug introduced in coreutils-6.11]
+
+  'shuf -r -n 0 file' no longer mistakenly reads from standard input.
+  [bug introduced with the --repeat feature in coreutils-8.22]
+
+  split no longer reports a "output file suffixes exhausted" error
+  when the specified number of files is evenly divisible by 10, 16, 26,
+  for --numeric, --hex, or default alphabetic suffixes respectively.
+  [bug introduced in coreutils-8.24]
+
+  seq no longer prints an extra line under certain circumstances (such as
+  'seq -f "%g " 1000000 1000000').
+  [bug introduced in coreutils-6.10]
+
+  ** Changes in behavior
+
+  Several programs now check that numbers end properly.  For example,
+  'du -d 1x' now reports an error instead of silently ignoring the 'x'.
+  Affected programs and options include du -d, expr's numeric operands
+  on non-GMP builds, install -g and -o, ls's TABSIZE environment
+  variable, mknod b and c, ptx -g and -w, shuf -n, and sort --batch-size
+  and --parallel.
+
+  date now parses military time zones in accordance with common usage:
+    "A" to "M"  are equivalent to UTC+1 to UTC+12
+    "N" to "Y"  are equivalent to UTC-1 to UTC-12
+    "Z" is "zulu" time (UTC).
+  For example, 'date -d "09:00B" is now equivalent to 9am in UTC+2 time zone.
+  Previously, military time zones were parsed according to the obsolete
+  rfc822, with their value negated (e.g., "B" was equivalent to UTC-2).
+  [The old behavior was introduced in sh-utils 2.0.15 ca. 1999, predating
+  coreutils package.]
+
+  ls issues an error message on a removed directory, on GNU/Linux systems.
+  Previously no error and no entries were output, and so indistinguishable
+  from an empty directory, with default ls options.
+
+  uniq no longer uses strcoll() to determine string equivalence,
+  and so will operate more efficiently and consistently.
+
+  ** New Features
+
+  ls now supports the --time=birth option to display and sort by
+  file creation time, where available.
+
+  od --skip-bytes now can use lseek even if the input is not a regular
+  file, greatly improving performance in some cases.
+
+  stat(1) supports a new --cached= option, used on systems with statx(2)
+  to control cache coherency of file system attributes,
+  useful on network file systems.
+
+  ** Improvements
+
+  stat and ls now use the statx() system call where available, which can
+  operate more efficiently by only retrieving requested attributes.
+
+  stat and tail now know about the "binderfs", "dma-buf-fs", "erofs",
+  "ppc-cmm-fs", and "z3fold" file systems.
+  stat -f -c%T now reports the file system type, and tail -f uses inotify.
+
+  ** Build-related
+
+  gzip-compressed tarballs are distributed once again
+
+- Refresh patches:
+  * coreutils-disable_tests.patch
+  * coreutils-getaddrinfo.patch
+  * coreutils-i18n.patch
+  * coreutils-invalid-ids.patch
+  * coreutils-remove_hostname_documentation.patch
+  * coreutils-remove_kill_documentation.patch
+  * coreutils-skip-gnulib-test-tls.patch
+  * coreutils-tests-shorten-extreme-factor-tests.patch
+
+- coreutils-i18n.patch:
+  * uniq: remove collation handling as required by newer POSIX; see
+    - https://git.savannah.gnu.org/cgit/coreutils.git/commit/?id=8e81d44b5
+    - https://www.austingroupbugs.net/view.php?id=963
+
+- coreutils-ls-restore-8.31-behavior-on-removed-dirs.patch:
+  * Add patch for 'ls' to restore 8.31 behavior on removed directories.
+
+- coreutils.spec:
+  * Version: bump version.
+  * %check: re-enable regular 'make check' for non-multibuild package.
+  * reference the above new patch.
+
+- coreutils.keyring:
+  * Update from upstream (Savannah).
+
+-------------------------------------------------------------------
 Tue Jan 28 08:13:51 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - disable single and testsuite builds in rings/staging

@@ -33,7 +33,7 @@ Index: doc/coreutils.texi
  Delaying
  
  * sleep invocation::             Delay for a specified time
-@@ -18054,90 +18048,6 @@ the exit status of @var{command} otherwi
+@@ -18089,90 +18083,6 @@ the exit status of @var{command} otherwi
  @end display
  
  

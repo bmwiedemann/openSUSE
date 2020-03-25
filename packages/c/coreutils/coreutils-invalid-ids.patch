@@ -21,8 +21,8 @@ Index: src/chgrp.c
 +++ src/chgrp.c
 @@ -89,7 +89,7 @@ parse_group (const char *name)
          {
-           unsigned long int tmp;
-           if (! (xstrtoul (name, NULL, 10, &tmp, "") == LONGINT_OK
+           uintmax_t tmp;
+           if (! (xstrtoumax (name, NULL, 10, &tmp, "") == LONGINT_OK
 -                 && tmp <= GID_T_MAX))
 +                 && tmp <= GID_T_MAX && (gid_t) tmp != (gid_t) -1))
              die (EXIT_FAILURE, 0, _("invalid group: %s"),

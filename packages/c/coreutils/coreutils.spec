@@ -29,12 +29,12 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
-Name:           coreutils%{?name_suffix} 
+Name:           coreutils%{?name_suffix}
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            https://www.gnu.org/software/coreutils/
-Version:        8.31
+Version:        8.32
 Release:        0
 
 BuildRequires:  automake
@@ -138,6 +138,12 @@ Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
 Patch500:       coreutils-disable_tests.patch
 Patch501:       coreutils-test_without_valgrind.patch
 
+# Upstream commits (squashed) after the release of coreutils-8.32:
+#   [PATCH 1/2] ls: restore 8.31 behavior on removed directories
+#   [PATCH 2/2] ls: improve removed-directory test
+# Remove this patch with the next coreutils release.
+Patch800:       coreutils-ls-restore-8.31-behavior-on-removed-dirs.patch
+
 # ================================================
 %description
 These are the GNU core utilities.  This package is the union of
@@ -190,8 +196,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch500
 %patch501
 
-#???## We need to statically link to gmp, otherwise we have a build loop
-#???#sed -i s,'$(LIB_GMP)',%%{_libdir}/libgmp.a,g Makefile.in
+%patch800
 
 # ================================================
 %build
@@ -231,6 +236,9 @@ ln -v lib/parse-datetime.{c,y} .
     && install -d -m 755 %{buildroot}%{_docdir}/%{name} \
     && xz -c tests/test-suite.log \
          > %{buildroot}%{_docdir}/%{name}/test-suite.log.xz
+%else
+  # Run the shorter check otherwise.
+  make check
 %endif
 
 # ================================================

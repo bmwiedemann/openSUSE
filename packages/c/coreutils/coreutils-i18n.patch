@@ -13,7 +13,7 @@
  src/pr.c                    |  443 ++++++++++++++++++++++---
  src/sort.c                  |  772 +++++++++++++++++++++++++++++++++++++++++---
  src/unexpand.c              |  101 ++++-
- src/uniq.c                  |  265 ++++++++++++++-
+ src/uniq.c                  |  119 ++++++
  tests/expand/mb.sh          |  183 ++++++++++
  tests/i18n/sort.sh          |   29 +
  tests/local.mk              |    4 
@@ -27,7 +27,7 @@
  tests/misc/uniq.pl          |   55 +++
  tests/pr/pr-tests.pl        |   49 ++
  tests/unexpand/mb.sh        |  172 +++++++++
- 29 files changed, 3772 insertions(+), 216 deletions(-)
+ 29 files changed, 3632 insertions(+), 210 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -52,7 +52,7 @@ Index: configure.ac
 ===================================================================
 --- configure.ac.orig
 +++ configure.ac
-@@ -438,6 +438,8 @@ fi
+@@ -446,6 +446,8 @@ fi
  # I'm leaving it here for now.  This whole thing needs to be modernized...
  gl_WINSIZE_IN_PTEM
  
@@ -2091,7 +2091,7 @@ Index: src/join.c
          }
        putchar (eolchar);
      }
-@@ -1099,20 +1345,43 @@ main (int argc, char **argv)
+@@ -1098,20 +1344,43 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -2173,8 +2173,8 @@ Index: src/pr.c
  #include "system.h"
  #include "die.h"
  #include "error.h"
-@@ -324,6 +342,18 @@
- #include "xstrtol.h"
+@@ -325,6 +343,18 @@
+ #include "xstrtol-error.h"
  #include "xdectoint.h"
  
 +/* Some systems, like BeOS, have multibyte encodings but lack mbstate_t.  */
@@ -2192,7 +2192,7 @@ Index: src/pr.c
  /* The official name of this program (e.g., no 'g' prefix).  */
  #define PROGRAM_NAME "pr"
  
-@@ -416,7 +446,20 @@ struct COLUMN
+@@ -417,7 +447,20 @@ struct COLUMN
  
  typedef struct COLUMN COLUMN;
  
@@ -2214,7 +2214,7 @@ Index: src/pr.c
  static bool read_line (COLUMN *p);
  static bool print_page (void);
  static bool print_stored (COLUMN *p);
-@@ -428,6 +471,7 @@ static void add_line_number (COLUMN *p);
+@@ -429,6 +472,7 @@ static void add_line_number (COLUMN *p);
  static void getoptnum (const char *n_str, int min, int *num,
                         const char *errfmt);
  static void getoptarg (char *arg, char switch_char, char *character,
@@ -2222,7 +2222,7 @@ Index: src/pr.c
                         int *number);
  static void print_files (int number_of_files, char **av);
  static void init_parameters (int number_of_files);
-@@ -441,7 +485,6 @@ static void store_char (char c);
+@@ -442,7 +486,6 @@ static void store_char (char c);
  static void pad_down (unsigned int lines);
  static void read_rest_of_line (COLUMN *p);
  static void skip_read (COLUMN *p, int column_number);
@@ -2230,7 +2230,7 @@ Index: src/pr.c
  static void cleanup (void);
  static void print_sep_string (void);
  static void separator_string (const char *optarg_S);
-@@ -453,7 +496,7 @@ static COLUMN *column_vector;
+@@ -454,7 +497,7 @@ static COLUMN *column_vector;
     we store the leftmost columns contiguously in buff.
     To print a line from buff, get the index of the first character
     from line_vector[i], and print up to line_vector[i + 1]. */
@@ -2239,7 +2239,7 @@ Index: src/pr.c
  
  /* Index of the position in buff where the next character
     will be stored. */
-@@ -557,7 +600,7 @@ static int chars_per_column;
+@@ -558,7 +601,7 @@ static int chars_per_column;
  static bool untabify_input = false;
  
  /* (-e) The input tab character. */
@@ -2248,7 +2248,7 @@ Index: src/pr.c
  
  /* (-e) Tabstops are at chars_per_tab, 2*chars_per_tab, 3*chars_per_tab, ...
     where the leftmost column is 1. */
-@@ -567,7 +610,10 @@ static int chars_per_input_tab = 8;
+@@ -568,7 +611,10 @@ static int chars_per_input_tab = 8;
  static bool tabify_output = false;
  
  /* (-i) The output tab character. */
@@ -2260,7 +2260,7 @@ Index: src/pr.c
  
  /* (-i) The width of the output tab. */
  static int chars_per_output_tab = 8;
-@@ -637,7 +683,13 @@ static int line_number;
+@@ -638,7 +684,13 @@ static int line_number;
  static bool numbered_lines = false;
  
  /* (-n) Character which follows each line number. */
@@ -2275,7 +2275,7 @@ Index: src/pr.c
  
  /* (-n) line counting starts with 1st line of input file (not with 1st
     line of 1st page printed). */
-@@ -690,6 +742,7 @@ static bool use_col_separator = false;
+@@ -691,6 +743,7 @@ static bool use_col_separator = false;
     -a|COLUMN|-m is a 'space' and with the -J option a 'tab'. */
  static char const *col_sep_string = "";
  static int col_sep_length = 0;
@@ -2283,7 +2283,7 @@ Index: src/pr.c
  static char *column_separator = (char *) " ";
  static char *line_separator = (char *) "\t";
  
-@@ -851,6 +904,13 @@ separator_string (const char *optarg_S)
+@@ -852,6 +905,13 @@ separator_string (const char *optarg_S)
      integer_overflow ();
    col_sep_length = len;
    col_sep_string = optarg_S;
@@ -2297,7 +2297,7 @@ Index: src/pr.c
  }
  
  int
-@@ -875,6 +935,21 @@ main (int argc, char **argv)
+@@ -876,6 +936,21 @@ main (int argc, char **argv)
  
    atexit (close_stdout);
  
@@ -2319,7 +2319,7 @@ Index: src/pr.c
    n_files = 0;
    file_names = (argc > 1
                  ? xnmalloc (argc - 1, sizeof (char *))
-@@ -951,8 +1026,12 @@ main (int argc, char **argv)
+@@ -952,8 +1027,12 @@ main (int argc, char **argv)
            break;
          case 'e':
            if (optarg)
@@ -2334,7 +2334,7 @@ Index: src/pr.c
            /* Could check tab width > 0. */
            untabify_input = true;
            break;
-@@ -965,8 +1044,12 @@ main (int argc, char **argv)
+@@ -966,8 +1045,12 @@ main (int argc, char **argv)
            break;
          case 'i':
            if (optarg)
@@ -2349,7 +2349,7 @@ Index: src/pr.c
            /* Could check tab width > 0. */
            tabify_output = true;
            break;
-@@ -984,8 +1067,8 @@ main (int argc, char **argv)
+@@ -985,8 +1068,8 @@ main (int argc, char **argv)
          case 'n':
            numbered_lines = true;
            if (optarg)
@@ -2360,7 +2360,7 @@ Index: src/pr.c
            break;
          case 'N':
            skip_count = false;
-@@ -1010,6 +1093,7 @@ main (int argc, char **argv)
+@@ -1011,6 +1094,7 @@ main (int argc, char **argv)
            /* Reset an additional input of -s, -S dominates -s */
            col_sep_string = "";
            col_sep_length = 0;
@@ -2368,7 +2368,7 @@ Index: src/pr.c
            use_col_separator = true;
            if (optarg)
              separator_string (optarg);
-@@ -1165,10 +1249,45 @@ getoptnum (const char *n_str, int min, i
+@@ -1166,10 +1250,45 @@ getoptnum (const char *n_str, int min, i
     a number. */
  
  static void
@@ -2416,7 +2416,7 @@ Index: src/pr.c
    if (*arg)
      {
        long int tmp_long;
-@@ -1190,6 +1309,11 @@ static void
+@@ -1191,6 +1310,11 @@ static void
  init_parameters (int number_of_files)
  {
    int chars_used_by_number = 0;
@@ -2428,7 +2428,7 @@ Index: src/pr.c
  
    lines_per_body = lines_per_page - lines_per_header - lines_per_footer;
    if (lines_per_body <= 0)
-@@ -1227,7 +1351,7 @@ init_parameters (int number_of_files)
+@@ -1228,7 +1352,7 @@ init_parameters (int number_of_files)
            else
              col_sep_string = column_separator;
  
@@ -2437,7 +2437,7 @@ Index: src/pr.c
            use_col_separator = true;
          }
        /* It's rather pointless to define a TAB separator with column
-@@ -1257,11 +1381,11 @@ init_parameters (int number_of_files)
+@@ -1258,11 +1382,11 @@ init_parameters (int number_of_files)
               + TAB_WIDTH (chars_per_input_tab, chars_per_number);   */
  
        /* Estimate chars_per_text without any margin and keep it constant. */
@@ -2451,7 +2451,7 @@ Index: src/pr.c
  
        /* The number is part of the column width unless we are
           printing files in parallel. */
-@@ -1270,7 +1394,7 @@ init_parameters (int number_of_files)
+@@ -1271,7 +1395,7 @@ init_parameters (int number_of_files)
      }
  
    int sep_chars, useful_chars;
@@ -2460,7 +2460,7 @@ Index: src/pr.c
      sep_chars = INT_MAX;
    if (INT_SUBTRACT_WRAPV (chars_per_line - chars_used_by_number, sep_chars,
                            &useful_chars))
-@@ -1293,7 +1417,7 @@ init_parameters (int number_of_files)
+@@ -1294,7 +1418,7 @@ init_parameters (int number_of_files)
       We've to use 8 as the lower limit, if we use chars_per_default_tab = 8
       to expand a tab which is not an input_tab-char. */
    free (clump_buff);
@@ -2469,7 +2469,7 @@ Index: src/pr.c
  }
  
  /* Open the necessary files,
-@@ -1399,7 +1523,7 @@ init_funcs (void)
+@@ -1400,7 +1524,7 @@ init_funcs (void)
  
    /* Enlarge p->start_position of first column to use the same form of
       padding_not_printed with all columns. */
@@ -2478,7 +2478,7 @@ Index: src/pr.c
  
    /* This loop takes care of all but the rightmost column. */
  
-@@ -1433,7 +1557,7 @@ init_funcs (void)
+@@ -1434,7 +1558,7 @@ init_funcs (void)
          }
        else
          {
@@ -2487,7 +2487,7 @@ Index: src/pr.c
            h_next = h + chars_per_column;
          }
      }
-@@ -1724,9 +1848,9 @@ static void
+@@ -1725,9 +1849,9 @@ static void
  align_column (COLUMN *p)
  {
    padding_not_printed = p->start_position;
@@ -2499,7 +2499,7 @@ Index: src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2001,13 +2125,13 @@ store_char (char c)
+@@ -2002,13 +2126,13 @@ store_char (char c)
        /* May be too generous. */
        buff = X2REALLOC (buff, &buff_allocated);
      }
@@ -2515,7 +2515,7 @@ Index: src/pr.c
    char *s;
    int num_width;
  
-@@ -2024,22 +2148,24 @@ add_line_number (COLUMN *p)
+@@ -2025,22 +2149,24 @@ add_line_number (COLUMN *p)
        /* Tabification is assumed for multiple columns, also for n-separators,
           but 'default n-separator = TAB' hasn't been given priority over
           equal column_width also specified by POSIX. */
@@ -2544,7 +2544,7 @@ Index: src/pr.c
          output_position = POS_AFTER_TAB (chars_per_output_tab,
                            output_position);
      }
-@@ -2198,7 +2324,7 @@ print_white_space (void)
+@@ -2199,7 +2325,7 @@ print_white_space (void)
    while (goal - h_old > 1
           && (h_new = POS_AFTER_TAB (chars_per_output_tab, h_old)) <= goal)
      {
@@ -2553,7 +2553,7 @@ Index: src/pr.c
        h_old = h_new;
      }
    while (++h_old <= goal)
-@@ -2218,6 +2344,7 @@ print_sep_string (void)
+@@ -2219,6 +2345,7 @@ print_sep_string (void)
  {
    char const *s = col_sep_string;
    int l = col_sep_length;
@@ -2561,7 +2561,7 @@ Index: src/pr.c
  
    if (separators_not_printed <= 0)
      {
-@@ -2229,6 +2356,7 @@ print_sep_string (void)
+@@ -2230,6 +2357,7 @@ print_sep_string (void)
      {
        for (; separators_not_printed > 0; --separators_not_printed)
          {
@@ -2569,7 +2569,7 @@ Index: src/pr.c
            while (l-- > 0)
              {
                /* 3 types of sep_strings: spaces only, spaces and chars,
-@@ -2242,12 +2370,15 @@ print_sep_string (void)
+@@ -2243,12 +2371,15 @@ print_sep_string (void)
                  }
                else
                  {
@@ -2586,7 +2586,7 @@ Index: src/pr.c
            /* sep_string ends with some spaces */
            if (spaces_not_printed > 0)
              print_white_space ();
-@@ -2275,7 +2406,7 @@ print_clump (COLUMN *p, int n, char *clu
+@@ -2276,7 +2407,7 @@ print_clump (COLUMN *p, int n, char *clu
     required number of tabs and spaces. */
  
  static void
@@ -2595,7 +2595,7 @@ Index: src/pr.c
  {
    if (tabify_output)
      {
-@@ -2299,6 +2430,74 @@ print_char (char c)
+@@ -2300,6 +2431,74 @@ print_char (char c)
    putchar (c);
  }
  
@@ -2670,7 +2670,7 @@ Index: src/pr.c
  /* Skip to page PAGE before printing.
     PAGE may be larger than total number of pages. */
  
-@@ -2476,9 +2675,9 @@ read_line (COLUMN *p)
+@@ -2477,9 +2676,9 @@ read_line (COLUMN *p)
            align_empty_cols = false;
          }
  
@@ -2682,7 +2682,7 @@ Index: src/pr.c
            padding_not_printed = ANYWHERE;
          }
  
-@@ -2547,7 +2746,7 @@ print_stored (COLUMN *p)
+@@ -2548,7 +2747,7 @@ print_stored (COLUMN *p)
    COLUMN *q;
  
    int line = p->current_line++;
@@ -2691,7 +2691,7 @@ Index: src/pr.c
    /* FIXME
       UMR: Uninitialized memory read:
       * This is occurring while in:
-@@ -2559,7 +2758,7 @@ print_stored (COLUMN *p)
+@@ -2560,7 +2759,7 @@ print_stored (COLUMN *p)
       xmalloc        [xmalloc.c:94]
       init_store_cols [pr.c:1648]
       */
@@ -2700,7 +2700,7 @@ Index: src/pr.c
  
    pad_vertically = true;
  
-@@ -2579,9 +2778,9 @@ print_stored (COLUMN *p)
+@@ -2580,9 +2779,9 @@ print_stored (COLUMN *p)
          }
      }
  
@@ -2712,7 +2712,7 @@ Index: src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2594,8 +2793,8 @@ print_stored (COLUMN *p)
+@@ -2595,8 +2794,8 @@ print_stored (COLUMN *p)
    if (spaces_not_printed == 0)
      {
        output_position = p->start_position + end_vector[line];
@@ -2723,7 +2723,7 @@ Index: src/pr.c
      }
  
    return true;
-@@ -2614,7 +2813,7 @@ print_stored (COLUMN *p)
+@@ -2615,7 +2814,7 @@ print_stored (COLUMN *p)
     number of characters is 1.) */
  
  static int
@@ -2732,7 +2732,7 @@ Index: src/pr.c
  {
    unsigned char uc = c;
    char *s = clump_buff;
-@@ -2624,10 +2823,10 @@ char_to_clump (char c)
+@@ -2625,10 +2824,10 @@ char_to_clump (char c)
    int chars;
    int chars_per_c = 8;
  
@@ -2745,7 +2745,7 @@ Index: src/pr.c
      {
        width = TAB_WIDTH (chars_per_c, input_position);
  
-@@ -2708,6 +2907,164 @@ char_to_clump (char c)
+@@ -2709,6 +2908,164 @@ char_to_clump (char c)
    return chars;
  }
  
@@ -2929,7 +2929,7 @@ Index: src/sort.c
  #include "system.h"
  #include "argmatch.h"
  #include "die.h"
-@@ -161,14 +169,39 @@ static int decimal_point;
+@@ -157,14 +165,39 @@ static int decimal_point;
  /* Thousands separator; if -1, then there isn't one.  */
  static int thousands_sep;
  
@@ -2970,7 +2970,7 @@ Index: src/sort.c
  /* The kind of blanks for '-b' to skip in various options. */
  enum blanktype { bl_start, bl_end, bl_both };
  
-@@ -342,13 +375,11 @@ static bool reverse;
+@@ -338,13 +371,11 @@ static bool reverse;
     they were read if all keys compare equal.  */
  static bool stable;
  
@@ -2987,7 +2987,7 @@ Index: src/sort.c
  
  /* Flag to remove consecutive duplicate lines from the output.
     Only the last of a sequence of equal lines will be output. */
-@@ -806,6 +837,46 @@ reap_all (void)
+@@ -802,6 +833,46 @@ reap_all (void)
      reap (-1);
  }
  
@@ -3034,7 +3034,7 @@ Index: src/sort.c
  /* Clean up any remaining temporary files.  */
  
  static void
-@@ -1274,7 +1345,7 @@ zaptemp (char const *name)
+@@ -1270,7 +1341,7 @@ zaptemp (char const *name)
    free (node);
  }
  
@@ -3043,7 +3043,7 @@ Index: src/sort.c
  
  static int
  struct_month_cmp (void const *m1, void const *m2)
-@@ -1289,7 +1360,7 @@ struct_month_cmp (void const *m1, void c
+@@ -1285,7 +1356,7 @@ struct_month_cmp (void const *m1, void c
  /* Initialize the character class tables. */
  
  static void
@@ -3052,7 +3052,7 @@ Index: src/sort.c
  {
    size_t i;
  
-@@ -1301,7 +1372,7 @@ inittables (void)
+@@ -1297,7 +1368,7 @@ inittables (void)
        fold_toupper[i] = toupper (i);
      }
  
@@ -3061,7 +3061,7 @@ Index: src/sort.c
    /* If we're not in the "C" locale, read different names for months.  */
    if (hard_LC_TIME)
      {
-@@ -1383,6 +1454,84 @@ specify_nmerge (int oi, char c, char con
+@@ -1379,6 +1450,84 @@ specify_nmerge (int oi, char c, char con
      xstrtol_fatal (e, oi, c, long_options, s);
  }
  
@@ -3146,7 +3146,7 @@ Index: src/sort.c
  /* Specify the amount of main memory to use when sorting.  */
  static void
  specify_sort_size (int oi, char c, char const *s)
-@@ -1614,7 +1763,7 @@ buffer_linelim (struct buffer const *buf
+@@ -1610,7 +1759,7 @@ buffer_linelim (struct buffer const *buf
     by KEY in LINE. */
  
  static char *
@@ -3155,7 +3155,7 @@ Index: src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t sword = key->sword;
-@@ -1623,10 +1772,10 @@ begfield (struct line const *line, struc
+@@ -1619,10 +1768,10 @@ begfield (struct line const *line, struc
    /* The leading field separator itself is included in a field when -t
       is absent.  */
  
@@ -3168,7 +3168,7 @@ Index: src/sort.c
            ++ptr;
          if (ptr < lim)
            ++ptr;
-@@ -1652,11 +1801,70 @@ begfield (struct line const *line, struc
+@@ -1648,11 +1797,70 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3240,7 +3240,7 @@ Index: src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1671,10 +1879,10 @@ limfield (struct line const *line, struc
+@@ -1667,10 +1875,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -3253,7 +3253,7 @@ Index: src/sort.c
            ++ptr;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1720,10 +1928,10 @@ limfield (struct line const *line, struc
+@@ -1716,10 +1924,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -3266,7 +3266,7 @@ Index: src/sort.c
        if (newlim)
          lim = newlim;
      }
-@@ -1754,6 +1962,130 @@ limfield (struct line const *line, struc
+@@ -1750,6 +1958,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3397,7 +3397,7 @@ Index: src/sort.c
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1840,8 +2172,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
+@@ -1836,8 +2168,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -3422,7 +3422,7 @@ Index: src/sort.c
                        line->keybeg = line_start;
                      }
                  }
-@@ -1975,12 +2321,10 @@ find_unit_order (char const *number)
+@@ -1971,12 +2317,10 @@ find_unit_order (char const *number)
         <none/unknown> < K/k < M < G < T < P < E < Z < Y  */
  
  static int
@@ -3438,7 +3438,7 @@ Index: src/sort.c
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -1991,7 +2335,7 @@ human_numcompare (char const *a, char co
+@@ -1987,7 +2331,7 @@ human_numcompare (char const *a, char co
     hideously fast. */
  
  static int
@@ -3447,7 +3447,7 @@ Index: src/sort.c
  {
    while (blanks[to_uchar (*a)])
      a++;
-@@ -2001,6 +2345,25 @@ numcompare (char const *a, char const *b
+@@ -1997,6 +2341,25 @@ numcompare (char const *a, char const *b
    return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
@@ -3473,7 +3473,7 @@ Index: src/sort.c
  /* Work around a problem whereby the long double value returned by glibc's
     strtold ("NaN", ...) contains uninitialized bits: clear all bytes of
     A and B before calling strtold.  FIXME: remove this function if
-@@ -2051,7 +2414,7 @@ general_numcompare (char const *sa, char
+@@ -2047,7 +2410,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -3482,7 +3482,7 @@ Index: src/sort.c
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2327,15 +2690,14 @@ debug_key (struct line const *line, stru
+@@ -2323,15 +2686,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -3500,7 +3500,7 @@ Index: src/sort.c
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2469,7 +2831,7 @@ key_warnings (struct keyfield const *gke
+@@ -2465,7 +2827,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -3509,7 +3509,7 @@ Index: src/sort.c
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2527,11 +2889,87 @@ key_warnings (struct keyfield const *gke
+@@ -2523,11 +2885,87 @@ key_warnings (struct keyfield const *gke
      error (0, 0, _("option '-r' only applies to last-resort comparison"));
  }
  
@@ -3598,7 +3598,7 @@ Index: src/sort.c
  {
    struct keyfield *key = keylist;
  
-@@ -2616,7 +3054,7 @@ keycompare (struct line const *a, struct
+@@ -2612,7 +3050,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -3607,7 +3607,7 @@ Index: src/sort.c
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2732,6 +3170,211 @@ keycompare (struct line const *a, struct
+@@ -2728,6 +3166,211 @@ keycompare (struct line const *a, struct
    return key->reverse ? -diff : diff;
  }
  
@@ -3819,7 +3819,7 @@ Index: src/sort.c
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -2759,7 +3402,7 @@ compare (struct line const *a, struct li
+@@ -2755,7 +3398,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -3828,7 +3828,7 @@ Index: src/sort.c
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4149,6 +4792,7 @@ set_ordering (char const *s, struct keyf
+@@ -4145,6 +4788,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -3836,7 +3836,7 @@ Index: src/sort.c
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4228,7 +4872,7 @@ main (int argc, char **argv)
+@@ -4224,7 +4868,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -3845,7 +3845,7 @@ Index: src/sort.c
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4249,6 +4893,29 @@ main (int argc, char **argv)
+@@ -4245,6 +4889,29 @@ main (int argc, char **argv)
        thousands_sep = -1;
    }
  
@@ -3875,7 +3875,7 @@ Index: src/sort.c
    have_read_stdin = false;
    inittables ();
  
-@@ -4523,13 +5190,34 @@ main (int argc, char **argv)
+@@ -4519,13 +5186,34 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -3914,7 +3914,7 @@ Index: src/sort.c
                  else
                    {
                      /* Provoke with 'sort -txx'.  Complain about
-@@ -4540,9 +5228,11 @@ main (int argc, char **argv)
+@@ -4536,9 +5224,11 @@ main (int argc, char **argv)
                           quote (optarg));
                    }
                }
@@ -3928,7 +3928,7 @@ Index: src/sort.c
            }
            break;
  
-@@ -4771,12 +5461,10 @@ main (int argc, char **argv)
+@@ -4767,12 +5457,10 @@ main (int argc, char **argv)
        sort (files, nfiles, outfile, nthreads);
      }
  
@@ -4169,12 +4169,8 @@ Index: src/uniq.c
  #include "system.h"
  #include "argmatch.h"
  #include "linebuffer.h"
-@@ -32,9 +43,21 @@
- #include "stdio--.h"
- #include "xmemcoll.h"
- #include "xstrtol.h"
--#include "memcasecmp.h"
-+#include "xmemcoll.h"
+@@ -33,6 +44,18 @@
+ #include "memcasecmp.h"
  #include "quote.h"
  
 +/* MB_LEN_MAX is incorrectly defined to be 1 in at least one GCC
@@ -4192,7 +4188,7 @@ Index: src/uniq.c
  /* The official name of this program (e.g., no 'g' prefix).  */
  #define PROGRAM_NAME "uniq"
  
-@@ -144,6 +167,10 @@ enum
+@@ -139,6 +162,10 @@ enum
    GROUP_OPTION = CHAR_MAX + 1
  };
  
@@ -4203,7 +4199,7 @@ Index: src/uniq.c
  static struct option const longopts[] =
  {
    {"count", no_argument, NULL, 'c'},
-@@ -260,7 +287,7 @@ size_opt (char const *opt, char const *m
+@@ -253,7 +280,7 @@ size_opt (char const *opt, char const *m
     return a pointer to the beginning of the line's field to be compared. */
  
  static char * _GL_ATTRIBUTE_PURE
@@ -4212,7 +4208,7 @@ Index: src/uniq.c
  {
    size_t count;
    char const *lp = line->buffer;
-@@ -280,6 +307,83 @@ find_field (struct linebuffer const *lin
+@@ -273,6 +300,83 @@ find_field (struct linebuffer const *lin
    return line->buffer + i;
  }
  
@@ -4296,227 +4292,7 @@ Index: src/uniq.c
  /* Return false if two strings OLD and NEW match, true if not.
     OLD and NEW point not to the beginnings of the lines
     but rather to the beginnings of the fields to compare.
-@@ -288,6 +392,8 @@ find_field (struct linebuffer const *lin
- static bool
- different (char *old, char *new, size_t oldlen, size_t newlen)
- {
-+  char *copy_old, *copy_new;
-+
-   if (check_chars < oldlen)
-     oldlen = check_chars;
-   if (check_chars < newlen)
-@@ -295,14 +401,103 @@ different (char *old, char *new, size_t
- 
-   if (ignore_case)
-     {
--      /* FIXME: This should invoke strcoll somehow.  */
--      return oldlen != newlen || memcasecmp (old, new, oldlen);
-+      size_t i;
-+
-+      copy_old = xmalloc (oldlen + 1);
-+      copy_new = xmalloc (oldlen + 1);
-+
-+      for (i = 0; i < oldlen; i++)
-+        {
-+          copy_old[i] = toupper (old[i]);
-+          copy_new[i] = toupper (new[i]);
-+        }
-+      bool rc = xmemcoll (copy_old, oldlen, copy_new, newlen);
-+      free (copy_old);
-+      free (copy_new);
-+      return rc;
-     }
--  else if (hard_LC_COLLATE)
--    return xmemcoll (old, oldlen, new, newlen) != 0;
-   else
--    return oldlen != newlen || memcmp (old, new, oldlen);
-+    {
-+      copy_old = (char *)old;
-+      copy_new = (char *)new;
-+    }
-+
-+  return xmemcoll (copy_old, oldlen, copy_new, newlen);
-+
-+}
-+
-+#if HAVE_MBRTOWC
-+static int
-+different_multi (const char *old, const char *new, size_t oldlen, size_t newlen, mbstate_t oldstate, mbstate_t newstate)
-+{
-+  size_t i, j, chars;
-+  const char *str[2];
-+  char *copy[2];
-+  size_t len[2];
-+  mbstate_t state[2];
-+  size_t mblength;
-+  wchar_t wc, uwc;
-+  mbstate_t state_bak;
-+
-+  str[0] = old;
-+  str[1] = new;
-+  len[0] = oldlen;
-+  len[1] = newlen;
-+  state[0] = oldstate;
-+  state[1] = newstate;
-+
-+  for (i = 0; i < 2; i++)
-+    {
-+      copy[i] = xmalloc (len[i] + 1);
-+      memset (copy[i], '\0', len[i] + 1);
-+
-+      for (j = 0, chars = 0; j < len[i] && chars < check_chars; chars++)
-+        {
-+          state_bak = state[i];
-+          mblength = mbrtowc (&wc, str[i] + j, len[i] - j, &(state[i]));
-+
-+          switch (mblength)
-+            {
-+            case (size_t)-1:
-+            case (size_t)-2:
-+              state[i] = state_bak;
-+              /* Fall through */
-+            case 0:
-+              mblength = 1;
-+              break;
-+
-+            default:
-+              if (ignore_case)
-+                {
-+                  uwc = towupper (wc);
-+
-+                  if (uwc != wc)
-+                    {
-+                      mbstate_t state_wc;
-+                      size_t mblen;
-+
-+                      memset (&state_wc, '\0', sizeof(mbstate_t));
-+                      mblen = wcrtomb (copy[i] + j, uwc, &state_wc);
-+                      assert (mblen != (size_t)-1);
-+                    }
-+                  else
-+                    memcpy (copy[i] + j, str[i] + j, mblength);
-+                }
-+              else
-+                memcpy (copy[i] + j, str[i] + j, mblength);
-+            }
-+          j += mblength;
-+        }
-+      copy[i][j] = '\0';
-+      len[i] = j;
-+    }
-+  int rc = xmemcoll (copy[0], len[0], copy[1], len[1]);
-+  free (copy[0]);
-+  free (copy[1]);
-+  return rc;
-+
- }
-+#endif
- 
- /* Output the line in linebuffer LINE to standard output
-    provided that the switches say it should be output.
-@@ -367,19 +562,38 @@ check_file (const char *infile, const ch
-       char *prevfield IF_LINT ( = NULL);
-       size_t prevlen IF_LINT ( = 0);
-       bool first_group_printed = false;
-+#if HAVE_MBRTOWC
-+      mbstate_t prevstate;
-+
-+      memset (&prevstate, '\0', sizeof (mbstate_t));
-+#endif
- 
-       while (!feof (stdin))
-         {
-           char *thisfield;
-           size_t thislen;
-           bool new_group;
-+#if HAVE_MBRTOWC
-+          mbstate_t thisstate;
-+#endif
- 
-           if (readlinebuffer_delim (thisline, stdin, delimiter) == 0)
-             break;
- 
-           thisfield = find_field (thisline);
-           thislen = thisline->length - 1 - (thisfield - thisline->buffer);
-+#if HAVE_MBRTOWC
-+          if (MB_CUR_MAX > 1)
-+            {
-+              thisstate = thisline->state;
- 
-+              new_group = (prevline->length == 0
-+                           || different_multi (thisfield, prevfield,
-+                                               thislen, prevlen,
-+                                               thisstate, prevstate));
-+            }
-+          else
-+#endif
-           new_group = (prevline->length == 0
-                        || different (thisfield, prevfield, thislen, prevlen));
- 
-@@ -397,6 +611,10 @@ check_file (const char *infile, const ch
-               SWAP_LINES (prevline, thisline);
-               prevfield = thisfield;
-               prevlen = thislen;
-+#if HAVE_MBRTOWC
-+              if (MB_CUR_MAX > 1)
-+                prevstate = thisstate;
-+#endif
-               first_group_printed = true;
-             }
-         }
-@@ -409,17 +627,26 @@ check_file (const char *infile, const ch
-       size_t prevlen;
-       uintmax_t match_count = 0;
-       bool first_delimiter = true;
-+#if HAVE_MBRTOWC
-+      mbstate_t prevstate;
-+#endif
- 
-       if (readlinebuffer_delim (prevline, stdin, delimiter) == 0)
-         goto closefiles;
-       prevfield = find_field (prevline);
-       prevlen = prevline->length - 1 - (prevfield - prevline->buffer);
-+#if HAVE_MBRTOWC
-+      prevstate = prevline->state;
-+#endif
- 
-       while (!feof (stdin))
-         {
-           bool match;
-           char *thisfield;
-           size_t thislen;
-+#if HAVE_MBRTOWC
-+          mbstate_t thisstate = thisline->state;
-+#endif
-           if (readlinebuffer_delim (thisline, stdin, delimiter) == 0)
-             {
-               if (ferror (stdin))
-@@ -428,6 +655,14 @@ check_file (const char *infile, const ch
-             }
-           thisfield = find_field (thisline);
-           thislen = thisline->length - 1 - (thisfield - thisline->buffer);
-+#if HAVE_MBRTOWC
-+          if (MB_CUR_MAX > 1)
-+            {
-+              match = !different_multi (thisfield, prevfield,
-+                                thislen, prevlen, thisstate, prevstate);
-+            }
-+          else
-+#endif
-           match = !different (thisfield, prevfield, thislen, prevlen);
-           match_count += match;
- 
-@@ -460,6 +695,9 @@ check_file (const char *infile, const ch
-               SWAP_LINES (prevline, thisline);
-               prevfield = thisfield;
-               prevlen = thislen;
-+#if HAVE_MBRTOWC
-+              prevstate = thisstate;
-+#endif
-               if (!match)
-                 match_count = 0;
-             }
-@@ -506,6 +744,19 @@ main (int argc, char **argv)
+@@ -493,6 +597,19 @@ main (int argc, char **argv)
  
    atexit (close_stdout);
  
@@ -4762,7 +4538,7 @@ Index: tests/local.mk
 ===================================================================
 --- tests/local.mk.orig
 +++ tests/local.mk
-@@ -368,6 +368,8 @@ all_tests =					\
+@@ -369,6 +369,8 @@ all_tests =					\
    tests/misc/sort-discrim.sh			\
    tests/misc/sort-files0-from.pl		\
    tests/misc/sort-float.sh			\
@@ -4771,7 +4547,7 @@ Index: tests/local.mk
    tests/misc/sort-h-thousands-sep.sh		\
    tests/misc/sort-merge.pl			\
    tests/misc/sort-merge-fdlimit.sh		\
-@@ -564,6 +566,7 @@ all_tests =					\
+@@ -567,6 +569,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -4779,7 +4555,7 @@ Index: tests/local.mk
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -709,6 +712,7 @@ all_tests =					\
+@@ -714,6 +717,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\

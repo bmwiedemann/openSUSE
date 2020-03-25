@@ -6,7 +6,7 @@ Index: gnulib-tests/test-getaddrinfo.c
 ===================================================================
 --- gnulib-tests/test-getaddrinfo.c.orig
 +++ gnulib-tests/test-getaddrinfo.c
-@@ -91,11 +91,7 @@ simple (char const *host, char const *se
+@@ -93,11 +93,7 @@ simple (char const *host, char const *se
           the test merely because someone is down the country on their
           in-law's farm. */
        if (res == EAI_AGAIN)
