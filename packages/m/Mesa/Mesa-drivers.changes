@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 19 10:08:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to Mesa 20.0.2
+  * bugfix release: fixes all over the code base
+
+-------------------------------------------------------------------
 Mon Mar  9 15:15:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to Mesa 20.0.1

@@ -4045,4 +4045,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   longer needed at all (jira#PM-1623)</comment>
     <requestid>783007</requestid>
   </revision>
+  <revision rev="374" vrev="246">
+    <srcmd5>031e077f9753130bcf4d910ffe86204f</srcmd5>
+    <version>unknown</version>
+    <time>1585176130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.2
+  * bugfix release: fixes all over the code base</comment>
+    <requestid>786430</requestid>
+  </revision>
 </revisionlist>
