@@ -1,7 +1,7 @@
 #
 # spec file for package nbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define use_firewalld 0
 %endif
 Name:           nbd
-Version:        3.19
+Version:        3.20
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
@@ -73,7 +73,7 @@ configure the nbd devices on the client side.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
