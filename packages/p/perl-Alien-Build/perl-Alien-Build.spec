@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Build
-Version:        2.15
+Version:        2.17
 Release:        0
 %define cpan_name Alien-Build
 Summary:        Build external dependencies for use in CPAN

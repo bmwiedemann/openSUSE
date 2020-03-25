@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 21 03:07:31 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.17
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.17      2020-03-19 21:03:39 -0600
+    - Production release identical to 2.16_01
+  
+  2.16_01   2020-03-17 13:56:13 -0600
+    - Probe::Vcpkg adds include property (gh#184)
+    - Build::Autoconf will now copy .dll files from bin to dynamic
+      directory on MSWin32 (gh#183)
+
+-------------------------------------------------------------------
 Tue Mar 17 03:07:15 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.15
