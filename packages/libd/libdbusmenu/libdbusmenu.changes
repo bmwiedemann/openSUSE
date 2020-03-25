@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:54:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require the tyeplib packages from the -devel packages: typelibs
+  are shared libraries and consumers of the -devel package have a
+  right to assume the libraries are present.
+
+-------------------------------------------------------------------
 Wed Dec 11 08:32:58 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable testtools on %arm since Valgrind is broken on armv6/7 atm

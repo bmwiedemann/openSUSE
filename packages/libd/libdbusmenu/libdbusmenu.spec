@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,6 +124,7 @@ library.
 Summary:        Development files for libdbusmenu-glib
 Group:          Development/Libraries/C and C++
 Requires:       %{libname_glib} = %{version}
+Requires:       typelib-1_0-Dbusmenu-0_4 = %{version}
 Requires:       pkgconfig(dbus-glib-1)
 
 %description -n libdbusmenu-glib-devel
@@ -159,6 +160,7 @@ of the dbusmenu-gtk library.
 Summary:        Development files for %{libname_gtk}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname_gtk} = %{version}
+Requires:       typelib-1_0-DbusmenuGtk%{?gtksuffix}-0_4
 Requires:       pkgconfig(dbus-glib-1)
 Requires:       pkgconfig(dbusmenu-glib-0.4) = %{version}
 

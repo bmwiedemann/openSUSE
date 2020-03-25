@@ -80,4 +80,12 @@ Fix license </comment>
     <comment></comment>
     <requestid>755748</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3e6771e102fbf99ff5d5b87c259dd991</srcmd5>
+    <version>16.04.0</version>
+    <time>1585176162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787418</requestid>
+  </revision>
 </revisionlist>
