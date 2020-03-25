@@ -28,7 +28,7 @@
 %global efidir sles
 %endif
 Name:           fwupd
-Version:        1.3.6
+Version:        1.3.9
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,6 +42,7 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 
 BuildRequires:  dejavu-fonts
+BuildRequires:  fish
 BuildRequires:  gcab
 # for certtool
 BuildRequires:  gnutls
@@ -151,6 +152,13 @@ Group:          Development/Tools/Other
 %description -n dfu-tool
 A generic tool to upload firmware to USB Devices based on Device Firmware Upgrade (DFU).
 
+%package -n fwupdtpmevlog
+Summary:        Debugging utility for the TPM event log
+Group:          Development/Tools/Other
+
+%description -n fwupdtpmevlog
+A debugging utility for the TPM event log.
+
 %package devel
 Summary:        Allow session software to update device firmware
 Group:          Development/Languages/C and C++
@@ -256,7 +264,10 @@ fi
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
+%{_bindir}/fwupdagent
+%{_bindir}/fwupdate
 %{_bindir}/fwupdmgr
+%{_bindir}/fwupdtool
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcfwupd-offline-update
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
@@ -280,7 +291,10 @@ fi
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
+%{_mandir}/man1/fwupdagent.1%{?ext_man}
+%{_mandir}/man1/fwupdate.1%{?ext_man}
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
+%{_mandir}/man1/fwupdtool.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %config %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/pki
@@ -301,6 +315,7 @@ fi
 %{_datadir}/bash-completion/completions/fwupdmgr
 %{_datadir}/bash-completion/completions/fwupdtool
 %{_datadir}/bash-completion/completions/fwupdagent
+%{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
@@ -308,6 +323,10 @@ fi
 %files -n dfu-tool
 %{_bindir}/dfu-tool
 %{_mandir}/man1/dfu-tool.1%{?ext_man}
+
+%files -n fwupdtpmevlog
+%{_bindir}/fwupdtpmevlog
+%{_mandir}/man1/fwupdtpmevlog.1%{?ext_man}
 
 %files -n libfwupd2
 %{_libdir}/libfwupd.so.*

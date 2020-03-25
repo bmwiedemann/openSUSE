@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Wed Mar 11 09:14:46 UTC 2020 - hpj@urpla.net
+
+- Update to version 1.3.9:
+  * Release fwupd 1.3.9
+  * Always check for PLAIN when doing vercmp() operations
+  * improved fish shell completion
+  * vli: Set the MSP430 version format to pair
+  * added completion script for fish shell
+  * Always return AppStream markup for remote agreements
+  * Do not fail loading in /etc/machine-id is not available
+  * fu-engine: Fixup broken-ness from 0c0fada18fc9cb2a0efec351db67f0867bf045cd
+  * Use xb_builder_source_add_simple_adapter
+  * fu-tool: Correctly append the release to devices in `get-details`
+  * For the `get-details` command make sure to always show devices
+  * fu-engine: Copy the version and format from donor device in get-details
+  * fu-engine: Use unknown for version format by default on get-details
+  * Inihbit all power management actions using logind when updating
+  * fu-device-list: Check protocol before de-duping devices
+  * ata: Switch off the verbose logging by default
+  * Discard the reason upgrades aren't available (Fixes: #1678)
+  * Improve the description of `fwupdtpmevlog` for man page
+  * Move `fwupdtpmevlog` into `bindir`
+  * uefi: Move `fwupdate` into `bindir`
+  * Move `fwupdtool` and `fwupdagent` into `bindir`
+  * ci: use standalone script to generate build dependencies
+  * Move the daemons from /usr/lib/fwupd to /usr/libexec/fwupd
+  * Use the recently released flashrom v1.2
+  * uefi: Apply capsule update even with single valid capsule
+  * Fix a critical warning when installing some firmware
+  * ebitdo: Fix the endpoint address logged in the error message
+  * fu-util: fix a logic error in report uploading introduced in e076d48afb74d1447936d353f12781755f13b047
+  * uefi: Find the correct lds and crt name when specifying -Defi_ldsdir
+  * upower: Move battery threshold declaration into a configuration file
+  * upower: Decrease minimum battery requirement to 10%
+
+- Update to version 1.3.8:
+  * Release fwupd 1.3.8
+  * Do not use fu_common_vercmp() when the device verfmt is PLAIN
+  * altos: Output raw buffer data when using FWUPD_ALTOS_VERBOSE
+  * altos: Prefix an error to provide more context
+  * altos: Add a trivial _to_string() implementation
+  * synaptics-cxaudio: Make the verfmt match that of the existing Windows tools
+  * synaptics-mst: Allow MST to fall back if no PCI device is marked as parent
+  * Allow specifying a list of subsystems when setting a physical ID
+  * synaptics-mst: Fix trivial thinko caused by the wrong dock connected
+  * vli: Invert the logic to reboot the parent FuCliUsbhubDevice, not the child
+  * vli: Switch around the hub tier values
+  * uefi: Fix a build regression with Fedora 30
+  * logitech_hidpp: Ignore detach failures (Fixes: #1183)
+  * logitech_hidpp: When detaching to bootloader use non-blocking IO and wait for timeout
+  * vli: Show erase progress when doing a v2 recovery
+  * uefi: Do not remove the 'Linux Firmware Updater' boot entry before update
+  * uefi: Do not rewrite BootOrder in the EFI helper
+  * vli: Add support for the PS186 device
+  * Set up more parent devices for various Lenovo USB hubs
+  * cxaudio: Set the update protocol to prevent a daemon warning
+  * vli: Add support for Lenovo Modularized dock
+  * Add an extra instance ID to disambiguate USB hubs
+  * vli: Remove the unused tierX custom flags for each device
+  * Revert "Correctly delete UEFI variables"
+  * uefi: make debugging output more readable
+  * vli: Fix a potential buffer-overflow when parsing firmware
+  * tpm: Optimize the string parsing and fix the boolean logic
+  * synaptics-rmi: Add a missing error enum value
+  * synaptics-rmi: Correctly identify a checksum failure
+  * synaptics-rmi: Fix Coverity issue that is impossible to hit in reality
+  * solokeys: Parse old versions of the bootloader string
+  * Add a plugin to update PD controllers by Fresco Logic
+  * vli: Set the device progress correctly when erasing a PD device
+  * vli: Use the correct command to get the device firmware version
+  * vli: Correctly reset all VL100 devices
+  * vli: Set all standalone PD devices to not do SPI auto-detection
+  * vli: Mark standalone PD devices as updatable
+  * vli: Set the protocol for FuVliUsbhubPdDevice types
+  * Support the new gnuefi file locations
+  * Cleanup ancient fwupdate-* EFI variables too (Fixes: #1739)
+  * Detect kernel lockdown status
+  * vli: Add the DEV instance ID to all devices
+  * tpm-eventlog: Replay the TPM event log to get the PCRx values
+  * tpm-eventlog: Store the eventlog hashes in binary form
+
+- Update to version 1.3.7:
+  * Release fwupd 1.3.7
+  * Correctly delete UEFI variables
+  * ci: allow working with podman w/o aliases
+  * ci: fedora: force correct rpm package version
+  * src: fu-engine: check version was updated by checking version
+  * Correctly import PKCS-7 remote metadata
+  * Add 'refresh' to fwupdtool
+  * Add 'get-remotes' to fwupdtool
+  * Generate a win32 setup binary
+  * Fix display of UTF-8 characters on Windows
+  * Move MOTD population into the daemon
+  * fu-util: Discourage metadata refreshes more than once per day
+  * Disable the battery percentage checks if UPower is unavailable
+  * Allow getting the list of updates in JSON format from fwupdagent
+  * Revert "trivial: Attempt to fix Debian CI"
+  * fu-remote-list: emit a changed signal when modifying a remote
+  * synaptics-mst: Skip self tests for systems with amdgpu
+  * Allow applying all releases to get to a target version
+  * Split up fu_engine_install() into two halves
+  * logitech_hidpp: use the correct timeout for IO channel writes
+  * Allow quirking devices that always require a version check
+  * Shut down automatically when there is system memory pressure
+  * Show the device parent if there is an interesting child
+  * Allow the client to get the list of FwupdDevice children
+  * Set the FwupdDevice parents in fwupdtool
+  * Don't always get the vendor ID for udev devices using the parent
+  * Add a runtime warning when adding a device without an vendor-id or protocol set
+  * vli: Set more of the firmware max sizes automatically
+  * vli: Add a SpiAutoDetect quirk for some of the PD devices
+  * vli: Use a different protocol ID for i2c devices
+  * vli: Add support for standalone Single PD devices
+  * vli: Move generic SPI functionality into the FuVliDevice base class
+  * vli: Remove the PD emulation code
+  * vli: Use a more standard GUID for the child i²c and shared SPI devices
+  * vli: Allow setting the device kind from a quirk
+  * vli: Make more function names match the docs
+  * vli: Move the SPI command quirking from FuVliUsbhubDevice down to FuVliDevice
+  * vli: Rename FuVliUsbhubPdFirmware to FuVliPdFirmware
+  * vli: Allow the device to specify the PD firmware header offset
+  * vli: Add a FuVliDevice as a subclass to FuVliUsbhubDevice
+  * vli: Define the device GType in the quirk file
+  * vli: Move the CRC calculations out of usbhub scope
+  * vli: Have one 'DeviceKind' for all objects
+  * vli: Rename the `vli_usbhub` plugin to `vli`
+  * Capitalize GNOME
+
+- package has grown a few new binaries: fwupdagent, fwupdate, fwupdtool
+  and a tpm event debugging tool, that is packaged separately: 
+  fwupdtpmevlog
+
+-------------------------------------------------------------------
 Thu Jan 23 21:42:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop docbook-utils-minimal build dependency, manpages are generated
