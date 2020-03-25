@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 25 15:05:08 UTC 2020 - pgajdos@suse.com
+
+- version update to 20.3.0
+  - Python 3.7 support. (`#228 <https://github.com/twisted/treq/issues/228>`__)
+  - `treq.testing.RequestTraversalAgent` now passes its memory reactor to the `twisted.web.server.Site` it creates, preventing the ``Site`` from polluting the global reactor. (`#225 <https://github.com/twisted/treq/issues/225>`__)
+  - `treq.testing` no longer generates deprecation warnings about ``twisted.test.proto_helpers.MemoryReactor``. (`#253 <https://github.com/twisted/treq/issues/253>`__)
+  - The ``download_file.py`` example has been updated to do a streaming download with *unbuffered=True*. (`#233 <https://github.com/twisted/treq/issues/233>`__)
+  - The *agent* parameter to `treq.request()` has been documented. (`#235 <https://github.com/twisted/treq/issues/235>`__)
+  - The type of the *headers* element of a response tuple passed to `treq.testing.RequestSequence` is now correctly documented as `str`. (`#237 <https://github.com/twisted/treq/issues/237>`__)
+  - Drop support for Python 3.4. (`#240 <https://github.com/twisted/treq/issues/240>`__)
+  - `#247 <https://github.com/twisted/treq/issues/247>`__, `#248 <https://github.com/twisted/treq/issues/248>`__, `#249 <https://github.com/twisted/treq/issues/249>`__
+- deleted patches
+  - python37.patch (upstreamed)
+  - urlparsing.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Oct  4 17:40:59 UTC 2019 - Aleksa Sarai <asarai@suse.com>
 
 - Add service_identity BuildRequires so the integration tests don't fail on

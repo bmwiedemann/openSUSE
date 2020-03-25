@@ -1,7 +1,7 @@
 #
 # spec file for package python-treq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-treq
-Version:        18.6.0
+Version:        20.3.0
 Release:        0
 Summary:        HTTP library inspired by python-requests
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/twisted/treq
 Source:         https://files.pythonhosted.org/packages/source/t/treq/treq-%{version}.tar.gz
-Patch0:         python37.patch
-Patch1:         urlparsing.patch
 BuildRequires:  %{python_module Twisted >= 16.4.0}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module httpbin}
@@ -38,7 +36,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted >= 16.4.0
+Requires:       python-Twisted >= 18.7.0
 Requires:       python-attrs
 Requires:       python-incremental
 Requires:       python-requests >= 2.1.0
