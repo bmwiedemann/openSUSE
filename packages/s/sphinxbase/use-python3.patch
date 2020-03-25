@@ -1,0 +1,100 @@
+Index: sphinxbase-0.8/python/Makefile.am
+===================================================================
+--- sphinxbase-0.8.orig/python/Makefile.am
++++ sphinxbase-0.8/python/Makefile.am
+@@ -35,5 +35,5 @@ endif
+ 
+ if BUILD_CYTHON
+ $(srcdir)/sphinxbase.c: $(srcdir)/sphinxbase.pyx $(srcdir)/sphinxbase.pxd
+-	cython -o $@ $<
++	cython -3 -o $@ $<
+ endif
+Index: sphinxbase-0.8/python/Makefile.in
+===================================================================
+--- sphinxbase-0.8.orig/python/Makefile.in
++++ sphinxbase-0.8/python/Makefile.in
+@@ -503,7 +503,7 @@ uninstall-am: uninstall-local uninstall-
+ @BUILD_PYTHON_TRUE@	touch $@
+ 
+ @BUILD_CYTHON_TRUE@$(srcdir)/sphinxbase.c: $(srcdir)/sphinxbase.pyx $(srcdir)/sphinxbase.pxd
+-@BUILD_CYTHON_TRUE@	cython -o $@ $<
++@BUILD_CYTHON_TRUE@	cython -3 -o $@ $<
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+Index: sphinxbase-0.8/python/sphinxbase.pyx
+===================================================================
+--- sphinxbase-0.8.orig/python/sphinxbase.pyx
++++ sphinxbase-0.8/python/sphinxbase.pyx
+@@ -6,6 +6,7 @@
+ # notice is not removed.
+ #
+ # Author: David Huggins-Daines <dhuggins@cs.cmu.edu>
++import io
+ 
+ cdef class LogMath:
+     """
+@@ -534,19 +535,19 @@ cdef class HuffCode:
+         ckd_free(symbols)
+ 
+     def read(self, infile):
+-        if not isinstance(infile, file):
+-            infile = file(infile, "rb")
++        if not isinstance(infile, io.IOBase):
++            infile = open(infile, "rb")
+         huff_code_free(self.hc)
+         self.hc = huff_code_read(PyFile_AsFile(infile))
+ 
+     def write(self, outfile):
+-        if not isinstance(outfile, file):
+-            outfile = file(outfile, "wb")
++        if not isinstance(outfile, io.IOBase):
++            outfile = open(outfile, "wb")
+         huff_code_write(self.hc, PyFile_AsFile(outfile))
+ 
+     def dump(self, outfile):
+-        if not isinstance(outfile, file):
+-            outfile = file(outfile, "w")
++        if not isinstance(outfile, io.IOBase):
++            outfile = open(outfile, "w")
+         huff_code_dump(self.hc, PyFile_AsFile(outfile))
+ 
+     def encode(self, seq):
+@@ -648,8 +649,8 @@ cdef class HuffCode:
+         return (output, offset)
+ 
+     def attach(self, fh, char *mode):
+-        if not isinstance(fh, file):
+-            fh = file(fh, mode)
++        if not isinstance(fh, io.IOBase):
++            fh = open(fh, mode)
+         self.fh = fh
+         huff_code_attach(self.hc, PyFile_AsFile(fh), mode)
+ 
+Index: sphinxbase-0.8/python/setup.py.in
+===================================================================
+--- sphinxbase-0.8.orig/python/setup.py.in
++++ sphinxbase-0.8/python/setup.py.in
+@@ -28,7 +28,7 @@ class bogus_uninstall(distutils.command.
+             if os.path.isdir(f):
+                 dirs[f] = 1
+                 continue
+-            print "Trying to remove file", f
++            print("Trying to remove file %s" % f)
+             try:
+                 os.unlink(f)
+             except:
+@@ -37,11 +37,11 @@ class bogus_uninstall(distutils.command.
+         # This is really not guaranteed to work!!!
+         for d in dirs:
+             while d != self.prefix:
+-                print "Trying to remove dir", d
++                print("Trying to remove dir %s" % d)
+                 try:
+                     if d.endswith(".egg-info"):
+                         files=[os.path.join(d,f) for f in os.listdir(d)]
+-                        print "Trying to remove:", " ".join(files)
++                        print("Trying to remove: " + " ".join(files))
+                         for f in files: os.unlink(f)
+                     os.rmdir(d)
+                 except:
