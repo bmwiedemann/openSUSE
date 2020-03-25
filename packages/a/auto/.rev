@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>706978</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af6536d77d07532ead877b9cd3c3e5bf</srcmd5>
+    <version>1.5.4</version>
+    <time>1585176522</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream relese 1.5.4</comment>
+    <requestid>788312</requestid>
+  </revision>
 </revisionlist>

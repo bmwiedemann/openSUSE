@@ -1,7 +1,7 @@
 #
 # spec file for package auto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,25 @@
 #
 
 
+%global auto_ver 1.5.4
+%global common_ver 0.10
+%global service_ver 1.0-rc4
+%global parent_ver 6
 Name:           auto
-Version:        1.3
+Version:        %{auto_ver}
 Release:        0
 Summary:        A collection of source code generators for Java
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/google/auto
 Source0:        https://github.com/google/auto/archive/auto-value-%{version}.tar.gz
+Source1:        https://github.com/google/auto/archive/auto-common-%{common_ver}.tar.gz
+Source2:        https://github.com/google/auto/archive/auto-service-%{service_ver}.tar.gz
+Source3:        https://github.com/google/auto/archive/auto-parent-%{parent_ver}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.squareup:javapoet)
-BuildRequires:  mvn(javax.annotation:jsr250-api)
-BuildRequires:  mvn(javax.inject:javax.inject)
-BuildRequires:  mvn(org.ow2.asm:asm)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -40,16 +44,10 @@ that automate those types of tasks.
 %package common
 Summary:        Auto Common Utilities
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}-factory < %{version}-%{release}
 
 %description common
 Common utilities for creating annotation processors.
-
-%package factory
-Summary:        JSR-330-compatible factories
-Group:          Development/Libraries/Java
-
-%description factory
-A source code generator for JSR-330-compatible factories.
 
 %package service
 Summary:        Provider-configuration files for ServiceLoader
@@ -75,40 +73,44 @@ Group:          Documentation/HTML
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n auto-auto-value-%{version}
-find -name '*.class' -print -delete
-find -name '*.jar' -print -delete
+%setup -q -n auto-auto-value-%{version} -a1 -a2 -a3
+rm -rf pom.xml factory/ common/ service/
+mv auto-auto-parent-%{parent_ver}/pom.xml .
+mv auto-auto-common-%{common_ver}/common common
+mv auto-auto-service-%{service_ver}/service service
 
-%pom_xpath_inject "pom:project" "
-<modules>
-  <module>common</module>
-  <module>factory</module>
-  <module>service</module>
-  <module>value</module>
-</modules>"
+# remove unnecessary dependency on parent POM
+%pom_remove_parent
 
-%pom_xpath_set "pom:project/pom:version" %{version}
-for p in common factory service value ;do
-  %pom_xpath_set "pom:parent/pom:version" %{version} ${p}
-  %pom_xpath_set "pom:project/pom:version" %{version} ${p}
-  %pom_xpath_remove "pom:dependency[pom:scope = 'test']" ${p}
-done
+# Disable factory module due to missing dep:
+# com.google.googlejavaformat:google-java-format
+%pom_disable_module factory build-pom.xml
+
+# Fix deps in service module
+%pom_xpath_set "pom:parent/pom:version" 6 service
+%pom_change_dep com.google.auto:auto-common com.google.auto:auto-common:0.10 service
 
 %pom_remove_plugin org.apache.maven.plugins:maven-checkstyle-plugin
 %pom_remove_plugin :maven-shade-plugin value
 %pom_remove_plugin :maven-invoker-plugin value
-%pom_remove_plugin :maven-invoker-plugin factory
 
-%pom_xpath_set "pom:dependency[pom:artifactId = 'auto-common']/pom:version" %{version} factory service value
-%pom_xpath_set "pom:dependency[pom:artifactId = 'auto-service']/pom:version" %{version} factory value
-%pom_xpath_set "pom:dependency[pom:artifactId = 'auto-value']/pom:version" %{version} factory
+# Broader guava compatibility
+sed -i -e 's/23.5-jre/20.0/' pom.xml
+sed -i -e 's/toImmutableMap/toMap/' -e 's/static com.google.common.collect.ImmutableMap/static java.util.stream.Collectors/' \
+  -e '/elementValues/s/ImmutableMap/Map/' \
+  common/src/main/java/com/google/auto/common/SimpleAnnotationMirror.java
+sed -i -e 's/toImmutableSet/toSet/' -e 's/static com.google.common.collect.ImmutableSet/static java.util.stream.Collectors/' \
+  -e '/ImmutableSet</s/ImmutableSet/Set/' \
+  service/src/main/java/com/google/auto/service/processor/AutoServiceProcessor.java
 
-%pom_add_dep javax.annotation:jsr250-api value
+%{mvn_package} :build-only __noinstall
 
 %build
-
-# Unavailable test deps
-%{mvn_build} -sf -- -Dsource=6
+%{mvn_build} -sf -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+	-f build-pom.xml -Dsource=8 -Dfile.encoding=UTF-8
 
 %install
 %mvn_install
@@ -121,10 +123,6 @@ done
 
 %files common -f .mfiles-%{name}-common
 %doc common/README.md
-%license LICENSE.txt
-
-%files factory -f .mfiles-%{name}-factory
-%doc factory/README.md
 %license LICENSE.txt
 
 %files service -f .mfiles-%{name}-service
