@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 11 11:09:41 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update list of skipped tests for qemu linux-user build, test_setegid
+  (test.test_os.PosixUidGidTests) is confusing it
+
+-------------------------------------------------------------------
 Thu Mar  5 18:40:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.2:

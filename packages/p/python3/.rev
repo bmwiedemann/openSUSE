@@ -1134,4 +1134,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
   part of the lang since 3.7 release</comment>
     <requestid>781953</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>c32977d0dc13c41ab9480ef1af215ec3</srcmd5>
+    <version>3.8.2</version>
+    <time>1585176137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786717</requestid>
+  </revision>
 </revisionlist>
