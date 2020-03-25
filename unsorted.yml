@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -3231,7 +3231,7 @@ unsorted:
   - freeradius-server-mysql 
   - freeradius-server-perl 
   - freeradius-server-postgresql 
-  - freeradius-server-python 
+  - freeradius-server-python3 
   - freeradius-server-sqlite 
   - freeradius-server-utils 
   - freerdp-devel 
@@ -4578,6 +4578,7 @@ unsorted:
   - gmime-devel 
   - gmime2_6-devel 
   - gmime2_6-sharp 
+  - gmmlib-devel: [x86_64] 
   - gmock 
   - gmp-devel-32bit: [x86_64] 
   - gmp-ecm 
@@ -9139,6 +9140,7 @@ unsorted:
   - libfst-hfst0 
   - libfstrcmp0 
   - libfstrm0: [i586] 
+  - libftdi-devel 
   - libftdi0-binding-python 
   - libftdi0-devel 
   - libftdi1 
@@ -9783,7 +9785,6 @@ unsorted:
   - libiec61883-0-32bit: [x86_64] 
   - libiec61883-devel 
   - libiec61883-tools 
-  - libigdgmm-devel: [x86_64] 
   - libigdgmm11: [x86_64] 
   - libigfxcmrt-devel: [x86_64] 
   - libigfxcmrt7: [x86_64] 
@@ -10694,7 +10695,7 @@ unsorted:
   - libopenmpi4-gnu-hpc 
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
-  - libopenmpi_3_1_4-gnu-hpc 
+  - libopenmpi_3_1_6-gnu-hpc 
   - libopenmpi_4_0_2-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -10849,6 +10850,8 @@ unsorted:
   - libpagemaker-devel 
   - libpagemaker-devel-doc 
   - libpagemaker-tools 
+  - libpaho-mqtt-devel 
+  - libpaho-mqtt1 
   - libpainter0 
   - libpamtest-devel 
   - libpamtest-devel-doc 
@@ -15671,12 +15674,12 @@ unsorted:
   - openmpi_2_1_6-gnu-hpc-docs 
   - openmpi_2_1_6-gnu-hpc-macros-devel 
   - openmpi_2_1_6-gnu-hpc-testsuite 
-  - openmpi_3_1_4-gnu-hpc 
-  - openmpi_3_1_4-gnu-hpc-devel 
-  - openmpi_3_1_4-gnu-hpc-devel-static 
-  - openmpi_3_1_4-gnu-hpc-docs 
-  - openmpi_3_1_4-gnu-hpc-macros-devel 
-  - openmpi_3_1_4-gnu-hpc-testsuite 
+  - openmpi_3_1_6-gnu-hpc 
+  - openmpi_3_1_6-gnu-hpc-devel 
+  - openmpi_3_1_6-gnu-hpc-devel-static 
+  - openmpi_3_1_6-gnu-hpc-docs 
+  - openmpi_3_1_6-gnu-hpc-macros-devel 
+  - openmpi_3_1_6-gnu-hpc-testsuite 
   - openmpi_4_0_2-gnu-hpc 
   - openmpi_4_0_2-gnu-hpc-devel 
   - openmpi_4_0_2-gnu-hpc-devel-static 
@@ -18076,7 +18079,6 @@ unsorted:
   - python-chewing 
   - python-cinderclient-doc 
   - python-cliff-doc 
-  - python-congressclient 
   - python-congressclient-doc 
   - python-cotyledon-doc 
   - python-curses 
@@ -18178,7 +18180,6 @@ unsorted:
   - python-openstacksdk-doc 
   - python-optcomplete 
   - python-osc-lib-doc 
-  - python-oslo-middleware-doc 
   - python-oslo.cache-doc 
   - python-oslo.concurrency-doc 
   - python-oslo.config-doc 
@@ -18186,7 +18187,6 @@ unsorted:
   - python-oslo.db-doc 
   - python-oslo.i18n-doc 
   - python-oslo.log-doc 
-  - python-oslo.messaging-doc 
   - python-oslo.policy-doc 
   - python-oslo.privsep-doc 
   - python-oslo.reports-doc 
@@ -18543,7 +18543,6 @@ unsorted:
   - python2-autobahn 
   - python2-autodoc 
   - python2-autoflake 
-  - python2-automaton 
   - python2-autopep8 
   - python2-autoupgrade-ng 
   - python2-av 
@@ -18743,7 +18742,6 @@ unsorted:
   - python2-backports.unittest_mock 
   - python2-backports.weakref 
   - python2-backports_abc 
-  - python2-barbicanclient 
   - python2-baron 
   - python2-bcolz 
   - python2-bcrypt 
@@ -18848,7 +18846,6 @@ unsorted:
   - python2-cheroot 
   - python2-chest 
   - python2-cilium-microscope 
-  - python2-cinderclient 
   - python2-ciscoconfparse 
   - python2-cl 
   - python2-cleo 
@@ -18962,7 +18959,6 @@ unsorted:
   - python2-dennis 
   - python2-deprecation 
   - python2-derpconf 
-  - python2-designateclient 
   - python2-devpi-client 
   - python2-devpi-common 
   - python2-devpi-server 
@@ -19172,7 +19168,6 @@ unsorted:
   - python2-gitdb2 
   - python2-github3.py 
   - python2-gitlint 
-  - python2-glanceclient 
   - python2-glean 
   - python2-glfw 
   - python2-glob2 
@@ -19226,7 +19221,6 @@ unsorted:
   - python2-happybase 
   - python2-hawkauthlib 
   - python2-hdf5storage 
-  - python2-heatclient 
   - python2-helpdev 
   - python2-hetzner 
   - python2-hexdump 
@@ -19293,7 +19287,6 @@ unsorted:
   - python2-ipython_genutils 
   - python2-ipywidgets 
   - python2-ironic-inspector-client 
-  - python2-ironicclient 
   - python2-iso8601 
   - python2-isodate 
   - python2-isort 
@@ -19358,9 +19351,6 @@ unsorted:
   - python2-keyczar 
   - python2-keyring 
   - python2-keyrings.alt 
-  - python2-keystoneauth1 
-  - python2-keystoneclient 
-  - python2-keystonemiddleware 
   - python2-kid 
   - python2-kismet-rest 
   - python2-kismetdb 
@@ -19443,15 +19433,12 @@ unsorted:
   - python2-magic-wormhole 
   - python2-magic-wormhole-mailbox-server 
   - python2-magic-wormhole-transit-relay 
-  - python2-magnumclient 
   - python2-managesieve 
   - python2-mando 
-  - python2-manilaclient 
   - python2-manuel 
   - python2-manuel-doc 
   - python2-markdown-math 
   - python2-markdown2 
-  - python2-masakariclient 
   - python2-matplotlib: [i586] 
   - python2-matplotlib-gtk3 
   - python2-matplotlib-latex 
@@ -19473,7 +19460,6 @@ unsorted:
   - python2-minio 
   - python2-miniupnpc 
   - python2-misaka 
-  - python2-mistralclient 
   - python2-mistune 
   - python2-mock 
   - python2-mocket 
@@ -19483,7 +19469,6 @@ unsorted:
   - python2-mohawk 
   - python2-moksha-common 
   - python2-moksha-hub 
-  - python2-monascaclient 
   - python2-mongoengine 
   - python2-monotonic 
   - python2-more-itertools 
@@ -19531,7 +19516,6 @@ unsorted:
   - python2-netifaces 
   - python2-networkx 
   - python2-networkx-doc 
-  - python2-neutronclient 
   - python2-newt 
   - python2-nine 
   - python2-nltk 
@@ -19547,7 +19531,6 @@ unsorted:
   - python2-nose_warnings_filters 
   - python2-nosexcover 
   - python2-notify2 
-  - python2-novaclient 
   - python2-nss 
   - python2-ntlm-auth 
   - python2-ntplib 
@@ -19568,7 +19551,6 @@ unsorted:
   - python2-oauthlib 
   - python2-objgraph 
   - python2-oci-sdk 
-  - python2-octaviaclient 
   - python2-odfpy 
   - python2-odorik 
   - python2-olefile: [i586] 
@@ -19586,39 +19568,24 @@ unsorted:
   - python2-openqa_client 
   - python2-openqa_review 
   - python2-openstack.nose_plugin 
-  - python2-openstackclient 
   - python2-openstackdocstheme 
-  - python2-openstacksdk 
   - python2-ordered-namespace 
   - python2-ordered-set 
   - python2-orderedmultidict 
   - python2-os-api-ref 
   - python2-os-client-config 
   - python2-os-service-types 
-  - python2-osc-lib 
   - python2-osc-tiny 
   - python2-oscrypto 
-  - python2-oslo.cache 
-  - python2-oslo.concurrency 
   - python2-oslo.config 
   - python2-oslo.context 
   - python2-oslo.db 
-  - python2-oslo.i18n 
-  - python2-oslo.log 
-  - python2-oslo.messaging 
-  - python2-oslo.middleware 
   - python2-oslo.policy 
-  - python2-oslo.privsep 
   - python2-oslo.reports 
   - python2-oslo.rootwrap 
-  - python2-oslo.serialization 
-  - python2-oslo.service 
-  - python2-oslo.versionedobjects 
-  - python2-oslo.vmware 
   - python2-oslosphinx 
   - python2-oslotest 
   - python2-osmviz 
-  - python2-osprofiler 
   - python2-outcome 
   - python2-ovirt-engine-sdk 
   - python2-ovs 
@@ -19711,7 +19678,6 @@ unsorted:
   - python2-pomegranate 
   - python2-pomegranate-devel 
   - python2-pony 
-  - python2-pook 
   - python2-port-for 
   - python2-portalocker 
   - python2-portend 
@@ -19781,7 +19747,6 @@ unsorted:
   - python2-pybluez 
   - python2-pybtex 
   - python2-pybugz 
-  - python2-pycadf 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-pycallgraph 
@@ -19827,7 +19792,6 @@ unsorted:
   - python2-pygame 
   - python2-pygame-devel 
   - python2-pygerrit2 
-  - python2-pyghmi 
   - python2-pygit2 
   - python2-pyglet 
   - python2-pygments-ansi-color 
@@ -20145,7 +20109,6 @@ unsorted:
   - python2-ryu 
   - python2-s3transfer 
   - python2-sadisplay 
-  - python2-saharaclient 
   - python2-salt 
   - python2-samplerate 
   - python2-sane 
@@ -20179,7 +20142,6 @@ unsorted:
   - python2-semanage 
   - python2-semantic_version 
   - python2-semver 
-  - python2-senlinclient 
   - python2-serpent 
   - python2-serpy 
   - python2-serverfiles 
@@ -20219,6 +20181,7 @@ unsorted:
   - python2-smmap 
   - python2-smmap2 
   - python2-snakefood 
+  - python2-snimpy 
   - python2-snowballstemmer 
   - python2-snuggs 
   - python2-social-auth-app-django 
@@ -20290,7 +20253,6 @@ unsorted:
   - python2-sushy 
   - python2-svgwrite 
   - python2-swapper 
-  - python2-swiftclient 
   - python2-sybil 
   - python2-sympy 
   - python2-systemd 
@@ -21225,6 +21187,7 @@ unsorted:
   - python3-configshell-fb 
   - python3-confluent-kafka 
   - python3-confusable-homoglyphs 
+  - python3-congressclient 
   - python3-construct 
   - python3-contexter 
   - python3-contextlib2 
@@ -22057,7 +22020,6 @@ unsorted:
   - python3-mutt-ics 
   - python3-mygpoclient 
   - python3-mysql-connector-python 
-  - python3-nagios-http-json 
   - python3-nagiosplugin 
   - python3-napalm 
   - python3-napalm-ansible 
@@ -22150,7 +22112,6 @@ unsorted:
   - python3-oic 
   - python3-onionshare 
   - python3-onnx 
-  - python3-onnx-devel 
   - python3-onnxconverter-common 
   - python3-opcodes 
   - python3-openapi-core 
@@ -22194,7 +22155,9 @@ unsorted:
   - python3-oslo.i18n 
   - python3-oslo.log 
   - python3-oslo.messaging 
+  - python3-oslo.messaging-doc 
   - python3-oslo.middleware 
+  - python3-oslo.middleware-doc 
   - python3-oslo.policy 
   - python3-oslo.privsep 
   - python3-oslo.reports 
@@ -22884,6 +22847,7 @@ unsorted:
   - python3-smmap 
   - python3-smmap2 
   - python3-sniffio 
+  - python3-snimpy 
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
@@ -24016,6 +23980,7 @@ unsorted:
   - ruby2.6-rubygem-hpricot-testsuite 
   - ruby2.6-rubygem-html2haml-doc 
   - ruby2.6-rubygem-html2haml-testsuite 
+  - ruby2.6-rubygem-http-accept-doc-1.7 
   - ruby2.6-rubygem-http-cookie-doc 
   - ruby2.6-rubygem-http-cookie-testsuite 
   - ruby2.6-rubygem-http_accept_language-doc 
@@ -24313,6 +24278,7 @@ unsorted:
   - ruby2.6-rubygem-ruby-openid-testsuite 
   - ruby2.6-rubygem-ruby-progressbar-doc 
   - ruby2.6-rubygem-ruby-shadow-doc 
+  - ruby2.6-rubygem-ruby2_keywords-doc 
   - ruby2.6-rubygem-ruby_dep-doc 
   - ruby2.6-rubygem-ruby_dep-doc-1_3 
   - ruby2.6-rubygem-ruby_dig-doc 
@@ -32959,6 +32925,8 @@ unsorted:
   - tilix-lang 
   - time-api 
   - time-api-javadoc 
+  - timeshift 
+  - timeshift-lang 
   - timewarrior 
   - timidity 
   - tinc 
@@ -34646,6 +34614,7 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
+  - zypper-aptitude 
   - zypper-docker: [x86_64] 
   - zypper-migration-plugin 
   - zziplib-devel 
