@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 25 20:34:56 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.9.0
+  + Add API to manage plugins (ie: git hooks)
+  + Fix querying mdapi from within the srcfpo theme 
+  + Various fixes for the srcfpo theme
+  + Multiple fixes and improvements to the API endpoints to retrieve the tags
+    used in a project
+  + Add new API endpoints to manipulate tags in projects
+  + Add a new API endpoint to edit/update an existing issue/ticket
+  + Add a new page to see a file's history in git (linked from the file's view page
+    and the blame page)
+  + Only consider the 6 most recently active branch in the drop-down to create
+    new PR
+  + Fix the view_commit endpoint when the identifier provided is a git tag
+  + Add an endpoint to renew user API token
+  + Include a link to where the token can be renewed in the email about API
+    token nearing expiration
+  + Allow users to set their own expiration date on API token (up to 2 years)
+  + Fix the /groups API endpoint and order the output by group name
+  + Add a new API endpoint to retrieve a project's webhook token
+  + Expose related_prs on issue API
+  + Fix the regenerate-repo actions
+  + Provide some feedback to the user when changing monitoring worked
+  + Hide the SSH clone URL if the user is not in one of the group with ssh
+    access
+  + Order pull requests based on updated_on column when we want to order based
+    on last updated time
+  + Fix taking into account the blacklisted patterns
+  + Rework/fix the API documentation page
+  + Allow deploy keys to commit to the doc git repository of a project
+  + Increase a lot the logging when someone asks for access to a git repo
+
+-------------------------------------------------------------------
 Mon Dec  2 20:32:39 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.8.1
