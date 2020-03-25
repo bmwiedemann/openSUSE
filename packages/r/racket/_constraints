@@ -24,7 +24,6 @@
         <flag>mmx</flag>
         <flag>sse</flag>
         <flag>sse2</flag>
-        <flag>sse3</flag>
         <flag>ssse3</flag>
       </cpu>
     </hardware>

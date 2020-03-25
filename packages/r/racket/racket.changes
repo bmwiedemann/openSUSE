@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 13:53:40 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- adapt _constraints, sse3 never existed, but this is not anymore
+  ignored in OBS
+
+-------------------------------------------------------------------
 Tue Jul 16 07:38:56 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to 7.3:
