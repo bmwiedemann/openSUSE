@@ -18054,8 +18054,8 @@ unsorted:
   - python-acitoolkit-doc-samples 
   - python-aiohttp-doc 
   - python-altgraph-doc 
-  - python-aodhclient 
-  - python-aodhclient-doc 
+  - python-aodhclient: [x86_64] 
+  - python-aodhclient-doc: [x86_64] 
   - python-apfel 
   - python-atomicwrites-doc 
   - python-automaton-doc 
