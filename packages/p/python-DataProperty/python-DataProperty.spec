@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-DataProperty
-Version:        0.46.3
+Version:        0.46.4
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT
@@ -26,7 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/DataProperty
 Source:         https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-mbstrdecoder >= 0.8.3
+Requires:       python-setuptools >= 38.3.0
+Requires:       python-six >= 1.10.0
+Requires:       python-typepy >= 0.6.4
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mbstrdecoder >= 0.8.3}
 BuildRequires:  %{python_module pytest}
@@ -39,17 +45,11 @@ BuildRequires:  python-enum34
 BuildRequires:  python-futures
 BuildRequires:  python-ipaddress
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-mbstrdecoder >= 0.8.3
-Requires:       python-setuptools >= 38.3.0
-Requires:       python-six >= 1.10.0
-Requires:       python-typepy >= 0.6.4
 %ifpython2
 Requires:       python-enum34
 Requires:       python-futures
 Requires:       python-ipaddress
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
