@@ -739,4 +739,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>784328</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>64153528506a7e34b95c2bfd1140e5f3</srcmd5>
+    <version>14.463</version>
+    <time>1585176246</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>788226</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Mar 25 14:14:39 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#367
+- samba-libs needs libgnutls now
+- 14.463
+
+--------------------------------------------------------------------
 Thu Mar 12 12:43:47 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#364
