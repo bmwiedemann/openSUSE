@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar  6 16:38:37 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Release ldb 2.1.1
+  + Samba 4.11 and later give incorrect results for SCOPE_ONE
+    searches; (bso#14270).
+
+-------------------------------------------------------------------
 Wed Jan 22 17:28:23 UTC 2020 - David Mulder <david.mulder@suse.com>
 
 ldb: Release ldb 2.0.8

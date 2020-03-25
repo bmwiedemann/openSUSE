@@ -1,7 +1,7 @@
 #
 # spec file for package ldb
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,8 +56,8 @@ BuildRequires:  libtirpc-devel
 BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
-Url:            https://ldb.samba.org/
-Version:        2.0.8
+URL:            https://ldb.samba.org/
+Version:        2.1.1
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
