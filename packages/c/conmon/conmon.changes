@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:55:06 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.14
+  - drop usage of splice(2)
+  - avoid hanging on stdin
+  - stdio: sometimes quit main loop after io is done
+  - ignore sigpipe
+
+-------------------------------------------------------------------
 Tue Mar 17 10:10:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v2.0.12
