@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:12:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Nano 4.9:
+   * When justifying a selection, the new paragraph and the
+     succeeding one get the appropriate first-line indent
+   * Trying to justify an empty selection does not crash
+   * Redoing the insertion of an empty file does not crash
+   * DOS line endings in nanorc files are accepted
+   * Option --suspend / 'set suspend' has been renamed to
+     the more logical --suspendable / 'set suspendable'
+
+-------------------------------------------------------------------
 Mon Feb 10 14:12:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.8:
