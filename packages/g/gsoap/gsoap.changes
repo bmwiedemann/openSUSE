@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:17:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.99
+  * Improved performance of the soapcpp2 tool.
+  * Improved proxy connectivity on the client side with
+    `soap::proxy_host`, `soap::proxy_port`, and NTLM, to maintain
+    HTTP headers, e.g. `soap::http_content` and
+    `soap::http_extra_header`.
+  * Fixed a bug in HTTP cookie handling when the optional
+    `-DWITH_COOKIES` flag is used. Note that cookie support is
+    disabled by default or has no effect when deploying robust
+    services with the gSOAP Apache modules and ISAPI extensions
+    that handle cookies differently.
+
+-------------------------------------------------------------------
 Sun Feb 23 22:21:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.98
