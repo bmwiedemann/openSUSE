@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:40:16 UTC 2020 - Noel Power <nopower@suse.com>
+
+- ndrdump tests: Make the tests less fragile
+- python/samba/gp_parse: Fix test errors with python3.8
+
+-------------------------------------------------------------------
+Fri Mar 13 14:19:30 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Starting ctdb node that was powered off hard before results
+  in recovery loop; (bso#14295); (bsc#1162680).
+
+-------------------------------------------------------------------
+Fri Mar  6 15:38:01 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.12.0
+  + For details on all items see WHATSNEW.txt in samba-doc
+    package.
+  + Samba 4.12 raises this minimum version to Python
+    3.5.
+  + Samba now requires GnuTLS 3.4.7 to be installed.
+  + New Spotlight backend for Elasticsearch.
+  + Retiring DES encryption types in Kerberos. With this release,
+    support for DES encryption types has been removed from
+    Samba, and setting DES_ONLY flag for an account will cause
+    Kerberos authentication to fail for that account (see
+    RFC-6649).
+  + Samba-DC: DES keys no longer saved in DB.
+  + The netatalk VFS module has been removed.
+  + The BIND9_FLATFILE DNS backend is deprecated in this release
+    and will be removed in the future.
+  + CTDB changes
+    + The ctdb_mutex_fcntl_helper periodically re-checks the
+      lock file.
++ Bugs
+  + Retire DES encryption types in Kerberos; (bso#14202);
+    bsc#(1165574).
+  + dsdb: Correctly handle memory in objectclass_attrs;
+    (bso#14258).
+  + s3: DFS: Don't allow link deletion on a read-only share;
+    (bso#14269).
+  + pidl/wscript: configure should insist on Parse::Yapp::Driver;
+    (bso#14284).
+  + smbd fails to handle EINTR from open(2) properly;
+    (bso#14285).
+  + ldb: version 2.1.1; (bso#14270)).
+  + vfs: Set getting and setting of MS-DFS redirects on the
+    filesystem to go through two new VFS functions
+    SMB_VFS_CREATE_DFS_PATHAT() and
+    SMB_VFS_READ_DFS_PATHAT(); (bso#14282).
+  + bootstrap: Remove un-used dependency python3-crypto;
+    (bso#14255)
+  + Fix CID 1458418 and 1458420; (bso#14247).
+  + lib: Fix a shutdown crash with "clustering = yes";
+    (bso#14281).
+  + Winbind member (source3) fails local SAM auth with empty
+    domain name; (bso#14247).
+  + winbindd: Handle missing idmap in getgrgid(); (bso#14265).
+  + Don't use forward declaration for GnuTLS typedefs; (bso#14271).
+  + Add io_uring vfs module; (bso#14280).
+  + libcli:smb: Improve check for
+    gnutls_aead_cipher_(en|de)cryptv2; (bso#14250).
+  + s3: lib: nmblib. Clean up and harden nmb packet processing;
+    (bso#14239);
+  + lib:util: Log mkdir error on correct debug levels; (bso#14253).
+
+-------------------------------------------------------------------
 Sun Feb  2 20:42:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused pwdutils buildrequires

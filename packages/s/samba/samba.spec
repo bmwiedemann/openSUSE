@@ -50,10 +50,10 @@
 %endif
 %endif
 
-%define talloc_version 2.2.0
-%define tevent_version 0.10.0
-%define tdb_version    1.4.2
-%define ldb_version    2.0.7
+%define talloc_version 2.3.1
+%define tevent_version 0.10.2
+%define tdb_version    1.4.3
+%define ldb_version    2.1.1
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -71,6 +71,7 @@ BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  patch
+BuildRequires:  perl-Parse-Yapp
 %if 0%{?suse_version} > 1300
 BuildRequires:  libarchive-devel
 %endif
@@ -163,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.11.6+git.120.e474a78db08
+Version:        4.12.0+git.132.199dc21ab22
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -549,12 +550,14 @@ applications that want to make use of libndr-standard.
 
 
 
-%package -n libndr0
+%package -n libndr1
 Summary:        Network Data Representation library
 License:        GPL-3.0-or-later
 Group:          System/Libraries
+Provides:       libndr0
+Obsoletes:      libndr0
 
-%description -n libndr0
+%description -n libndr1
 Network Data Representation (NDR) is an implementation of the
 presentation layer in the OSI model.
 
@@ -564,7 +567,7 @@ presentation layer in the OSI model.
 Summary:        Development files for the Network Data Representation library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libndr0 = %{version}
+Requires:       libndr1 = %{version}
 Requires:       samba-core-devel = %{version}
 
 %description -n libndr-devel
@@ -1461,8 +1464,8 @@ fi
 %postun -n libndr-nbt0 -p /sbin/ldconfig
 %post   -n libndr-standard0 -p /sbin/ldconfig
 %postun -n libndr-standard0 -p /sbin/ldconfig
-%post   -n libndr0 -p /sbin/ldconfig
-%postun -n libndr0 -p /sbin/ldconfig
+%post   -n libndr1 -p /sbin/ldconfig
+%postun -n libndr1 -p /sbin/ldconfig
 %post -n %{libnetapi_name} -p /sbin/ldconfig
 %postun -n %{libnetapi_name} -p /sbin/ldconfig
 %post   -n libsamba-credentials0 -p /sbin/ldconfig
@@ -1783,6 +1786,7 @@ exit 0
 %_includedir/samba-4.0/charset.h
 %if %{with_dc}
 %_includedir/samba-4.0/dcerpc_server.h
+%_includedir/samba-4.0/dcesrv_core.h
 %endif
 %dir %_includedir/samba-4.0/core/
 %_includedir/samba-4.0/core/doserr.h
@@ -1918,6 +1922,7 @@ exit 0
 %{_libdir}/samba/libsocket-blocking-samba4.so
 %{_libdir}/samba/libsys-rw-samba4.so
 %{_libdir}/samba/libtalloc-report-samba4.so
+%{_libdir}/samba/libtalloc-report-printf-samba4.so
 %{_libdir}/samba/libtdb-wrap-samba4.so
 %{_libdir}/samba/libtime-basic-samba4.so
 %{_libdir}/samba/libtorture-samba4.so
@@ -1961,11 +1966,13 @@ exit 0
 %{_mandir}/man7/traffic_learner.7.*
 %{_mandir}/man7/traffic_replay.7.*
 %{_bindir}/vfstest
+%{_bindir}/mdfind
 %{_mandir}/man1/gentest.1.*
 %{_mandir}/man1/locktest.1.*
 %{_mandir}/man1/masktest.1.*
 %{_mandir}/man1/ndrdump.1.*
 %{_mandir}/man1/vfstest.1.*
+%{_mandir}/man1/mdfind.1.*
 
 %files winbind -f filelist-samba-winbind
 %defattr(-,root,root)
@@ -2177,6 +2184,7 @@ exit 0
 %_libdir/pkgconfig/dcerpc.pc
 %if %{with_dc}
 %_libdir/libdcerpc-server.so
+%_libdir/libdcerpc-server-core.so
 %_libdir/pkgconfig/dcerpc_server.pc
 %endif
 
@@ -2228,9 +2236,9 @@ exit 0
 %_libdir/libndr-standard.so
 %_libdir/pkgconfig/ndr_standard.pc
 
-%files -n libndr0
+%files -n libndr1
 %defattr(-,root,root)
-%_libdir/libndr.so.0*
+%_libdir/libndr.so.1*
 
 %files -n libndr-devel
 %defattr(-,root,root)
@@ -2422,6 +2430,8 @@ exit 0
 %{_libdir}/krb5/plugins/kdb/samba.so
 %{_libdir}/libdcerpc-server.so.0
 %{_libdir}/libdcerpc-server.so.0.0.1
+%{_libdir}/libdcerpc-server-core.so.0
+%{_libdir}/libdcerpc-server-core.so.0.0.1
 %{_libdir}/samba/bind9
 %{_libdir}/samba/bind9/dlz_bind9.so
 %{_libdir}/samba/bind9/dlz_bind9_10.so
@@ -2466,17 +2476,11 @@ exit 0
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8.txt
 %{_datadir}/samba/setup/display-specifiers/DisplaySpecifiers-Win2k8R2.txt
 %{_datadir}/samba/setup/dns_update_list
-%{_datadir}/samba/setup/fedora-ds-init.ldif
-%{_datadir}/samba/setup/fedorads-dna.ldif
 %{_datadir}/samba/setup/fedorads-index.ldif
 %{_datadir}/samba/setup/fedorads-linked-attributes.ldif
 %{_datadir}/samba/setup/fedorads-pam.ldif
-%{_datadir}/samba/setup/fedorads-partitions.ldif
-%{_datadir}/samba/setup/fedorads-refint-add.ldif
-%{_datadir}/samba/setup/fedorads-refint-delete.ldif
 %{_datadir}/samba/setup/fedorads-samba.ldif
 %{_datadir}/samba/setup/fedorads-sasl.ldif
-%{_datadir}/samba/setup/fedorads.inf
 %{_datadir}/samba/setup/idmap_init.ldif
 %{_datadir}/samba/setup/krb5.conf
 %{_datadir}/samba/setup/memberof.conf
@@ -2537,7 +2541,6 @@ exit 0
 %{_datadir}/samba/setup/secrets_sasl_ldap.ldif
 %{_datadir}/samba/setup/secrets_simple_ldap.ldif
 %{_datadir}/samba/setup/share.ldif
-%{_datadir}/samba/setup/slapd.conf
 %{_datadir}/samba/setup/spn_update_list
 %{_datadir}/samba/setup/ypServ30.ldif
 %{_mandir}/man8/samba.8.*
@@ -2562,7 +2565,6 @@ exit 0
 %{_libdir}/samba/ldb/lazy_commit.so
 %{_libdir}/samba/ldb/ldbsamba_extensions.so
 %{_libdir}/samba/ldb/linked_attributes.so
-%{_libdir}/samba/ldb/local_password.so
 %{_libdir}/samba/ldb/new_partition.so
 %{_libdir}/samba/ldb/objectclass.so
 %{_libdir}/samba/ldb/objectclass_attrs.so
@@ -2583,8 +2585,6 @@ exit 0
 %{_libdir}/samba/ldb/schema_load.so
 %{_libdir}/samba/ldb/secrets_tdb_sync.so
 %{_libdir}/samba/ldb/show_deleted.so
-%{_libdir}/samba/ldb/simple_dn.so
-%{_libdir}/samba/ldb/simple_ldap_map.so
 %{_libdir}/samba/ldb/subtree_delete.so
 %{_libdir}/samba/ldb/subtree_rename.so
 %{_libdir}/samba/ldb/tombstone_reanimate.so
