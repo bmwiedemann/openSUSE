@@ -113,4 +113,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * Various small bugfixes only</comment>
     <requestid>730379</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>00dc99e0c1d73d715f4ad9fd37efed24</srcmd5>
+    <version>1.7.11</version>
+    <time>1585176366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.11 bsc#1161898:</comment>
+    <requestid>788089</requestid>
+  </revision>
 </revisionlist>
