@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM qbittorrent-ppc64_flags.patch aloisio@gmx.com -- ppc64 doesn't like the "-march=native" flag
-Patch0:         qbittorrent-ppc64_flags.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

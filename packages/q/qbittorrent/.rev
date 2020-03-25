@@ -1026,4 +1026,12 @@
     <comment>- Remove an unnecessary since qBittorrent 3.3.0 GeoIP1 dependency.</comment>
     <requestid>783562</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>b08d603311e67977e76a6d51b41fd9b5</srcmd5>
+    <version>4.2.2</version>
+    <time>1585176312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787942</requestid>
+  </revision>
 </revisionlist>
