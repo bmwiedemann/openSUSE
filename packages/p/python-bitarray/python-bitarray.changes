@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Tue Mar 24 18:38:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite
+
+-------------------------------------------------------------------
+Sun Mar 22 16:28:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * simplify markdown of readme so PyPI renders better
+  * make tests for bitarray.util required (instead of warning when
+    they cannot be imported)
+- Update to version 1.2.0
+  * add bitarray.util module which provides useful utility functions
+  * deprecate `bitarray.bitdiff` in favor of `bitarray.util.count_xor`
+  * use markdown for documentation
+  * fix bug in .count() on 32bit systems in special cases when array size
+    is 2^29 bits or larger
+  * simplified tests by using bytes syntax
+  * update smallints and sieve example to use new utility module
+  * simplified mandel example to use numba
+  * use file context managers in tests
+- Update to version 1.1.0
+  * add frozenbitarray object
+  * add optional start and stop parameters to .count() method
+  * add official Python 3.8 support
+  * optimize setrange() C-function by using memset
+  * fix issue #74, bitarray is hashable on Python 2
+  * fix issue #68, `unittest.TestCase.assert_` deprecated
+  * improved test suite - tests should run in about 1 second
+  * update documentation to use positional-only syntax in docstrings
+  * update readme to pass Python 3 doctest
+  * add utils module to examples
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jul 19 00:00:00 UTC 2019 - Andres Ayala <killerrex@gmail.com>
+Version 1.0.1:
+- fix readme to pass ``twine check``
+
+-------------------------------------------------------------------
+Mon Jul 15 00:00:00 UTC 2019 - killerrex@gmail.com
+
+Version 1.0.0:
+- fix bitarrays beings created from unicode in Python 2
+- use ``PyBytes_*`` in C code, treating the Py3k function names as default,
+  which also removes all redefinitions of ``PyString_*``
+- handle negative arguments of .index() method consistently with how
+  they are treated for lists
+- add a few more comments to the C code
+- move imports outside tests: pickle, io, etc.
+- drop Python 2.5 support
+
+-------------------------------------------------------------------
+Mon May 20 00:00:00 UTC 2019 - killerrex@gmail.com
+
+Version 0.9.3:
+- refactor resize() - only shrink allocated memory if new size falls
+  lower than half the allocated size
+- improve error message when trying to initialize from float or complex
+
+-------------------------------------------------------------------
+Mon Apr 29 00:00:00 UTC 2019 - killerrex@gmail.com
+
+Version 0.9.2:
+- fix fail to compile on Windows with VS 2015, issue #72
+
+-------------------------------------------------------------------
+Sun Apr 28 00:00:00 UTC 2019 - killerrex@gmail.com
+
+Version 0.9.1:
+- fix types to actually be types, #29
+- check for ambiguous prefix codes when building binary tree for decoding
+- remove Python level methods: encode, decode, iterdecode (in favor of
+  having these implemented on the C-level along with check_codedict)
+- fix self tests for Python 2.5 and 2.6
+- move all Huffman code related example code into examples/huffman
+- add code to generate graphviz .dot file of Huffman tree to examples
+
+-------------------------------------------------------------------
+Mon Apr 22 00:00:00 UTC 2019 - killerrex@gmail.com
+
+Version 0.9:
+- more efficient decode and iterdecode by using C-level binary tree
+  instead of a python one, #54
+- added buffer protocol support for Python 3, #55
+- fixed invalid pointer exceptions in pypy, #47
+- made all examples Py3k compatible
+- add gene sequence example
+- add official Python 3.7 support
+- drop Python 2.4, 3.1 and 3.2 support
+
+-------------------------------------------------------------------
+Wed May  2 10:04:07 UTC 2018 - killerrex@gmail.com
+
+- Migrate to singlespec
+
+-------------------------------------------------------------------
+Thu Oct 24 10:59:15 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Thu May 16 17:58:51 UTC 2013 - jfunk@funktronics.ca
+
+- Rename test skip patch
+
+-------------------------------------------------------------------
+Sat May 11 00:41:15 UTC 2013 - jfunk@funktronics.ca
+
+- Initial release
+
