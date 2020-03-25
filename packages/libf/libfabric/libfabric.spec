@@ -1,7 +1,7 @@
 #
 # spec file for package libfabric
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.53734d7108ee
+%define git_ver .0.3e971a6527cb
 
 Name:           libfabric
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        GPL-2.0-only OR BSD-2-Clause

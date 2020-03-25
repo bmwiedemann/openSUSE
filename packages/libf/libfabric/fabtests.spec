@@ -1,7 +1,7 @@
 #
 # spec file for package fabtests
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define git_ver .0.53734d7108ee
+%define git_ver .0.3e971a6527cb
 
 Name:           fabtests
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            http://www.github.com/ofiwg/libfabric
+URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 BuildRequires:  autoconf
