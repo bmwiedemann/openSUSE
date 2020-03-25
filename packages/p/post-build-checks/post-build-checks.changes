@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:56:56 UTC 2020 - lnussel@suse.de
+
+- Update to version 84.87+git20200319.57fe0e2:
+  * Don't de-install the packages containing su and sh
+
+-------------------------------------------------------------------
 Thu Mar 05 09:57:18 UTC 2020 - lnussel@suse.de
 
 - Update to version 84.87+git20200305.61b5cdf:

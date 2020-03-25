@@ -795,4 +795,13 @@
   * Fix ghost logic</comment>
     <requestid>781792</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>0e13376922c340e5f0ea2542ca2d311d</srcmd5>
+    <version>84.87+git20200319.57fe0e2</version>
+    <time>1585176126</time>
+    <user>dimstar_suse</user>
+    <comment> Update to version 84.87+git20200319.57fe0e2:
+  * Don't de-install the packages containing su and sh</comment>
+    <requestid>786384</requestid>
+  </revision>
 </revisionlist>
