@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:08:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix not needed requires
+
+-------------------------------------------------------------------
+Thu Mar 12 11:02:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch python bindings to base on python3
+- Update version to 1.2.0+git20200220.3d8d13f:
+  * Many fixes all around
+  * support for py3
+
+-------------------------------------------------------------------
 Tue Jun 12 01:28:19 UTC 2018 - i@marguerite.su
 
 - update version 1.2.0+git20180427.26373b3

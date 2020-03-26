@@ -1,7 +1,7 @@
 #
 # spec file for package libimobiledevice
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname	6
 Name:           libimobiledevice
-Version:        1.2.0+git20180427.26373b3
+Version:        1.2.0+git20200220.3d8d13f
 Release:        0
 Summary:        Native protocols library for iOS devices
-License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
-Url:            http://www.libimobiledevice.org
-#Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
-Source:		%{name}-%{version}.tar.xz
+License:        LGPL-2.1-or-later
+URL:            https://www.libimobiledevice.org
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
-BuildRequires:  libplist++-devel >= 1.11
-BuildRequires:  libplist-devel >= 1.11
 BuildRequires:  libtool
-BuildRequires:  libusbmuxd-devel >= 1.0.9
-BuildRequires:  pkg-config
-BuildRequires:  python-cython
-BuildRequires:  python-devel
-BuildRequires:  python-plist
+BuildRequires:  pkgconfig
+BuildRequires:  python3-plist
 BuildRequires:  readline-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(libplist) >= 1.11
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libusbmuxd) >= 1.1.0
 
 %description
 libimobiledevice is a software library that talks the protocols to support
@@ -47,9 +41,7 @@ iOS devices. It does not depend on any existing libraries from Apple.
 
 %package -n %{name}%{soname}
 Summary:        Native protocols library for iOS devices
-License:        LGPL-2.1+
-Group:          System/Libraries
-Requires:       libusbmuxd4 >= 1.0.9
+License:        LGPL-2.1-or-later
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 Provides:       libiphone0 = %{version}
@@ -61,10 +53,9 @@ iOS devices. It does not depend on any existing libraries from Apple.
 
 %package devel
 Summary:        Development files for %{name}
-License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
+License:        LGPL-2.1-or-later
 Requires:       %{name}%{soname} = %{version}
-Requires:       libplist-devel
+Requires:       pkgconfig(libplist)
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -72,8 +63,7 @@ developing applications that use %{name}.
 
 %package -n imobiledevice-tools
 Summary:        Tools using %{name} for iOS devices
-License:        GPL-2.0+ and LGPL-2.1+
-Group:          Productivity/Multimedia/Other
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       %{name}%{soname} = %{version}
 Provides:       %{name}-tools = %{version}
 Obsoletes:      %{name}-tools < %{version}
@@ -82,51 +72,46 @@ Obsoletes:      %{name}-tools < %{version}
 libimobiledevice is a software library that talks the protocols to support
 iOS devices. It does not depend on any existing libraries from Apple.
 
-%package -n python-imobiledevice
+%package -n python3-imobiledevice
 Summary:        Python bindings for %{name}
-License:        LGPL-2.1+
-Group:          Development/Languages/Python
+License:        LGPL-2.1-or-later
 Requires:       %{name}%{soname} = %{version}
-Requires:       python-plist >= 1.11
+Requires:       python3-plist >= 1.11
 
-%description -n python-imobiledevice
+%description -n python3-imobiledevice
 Contains Python bindings for developing applications that use %{name}.
 
 %prep
 %setup -q
-autoreconf -fi
 sed -i -e '/Requires:/d' src/%{name}-1.0.pc.in
 sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
 
 %build
-%configure --disable-silent-rules \
-	--disable-static --disable-dev-tools
-make %{?_smp_mflags}
+autoreconf -fvi
+%configure \
+  --disable-silent-rules \
+  --disable-static \
+  --disable-dev-tools
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-rm -rf %{buildroot}/%{_libdir}/%{name}.*a*
 
 %post -n %{name}%{soname} -p /sbin/ldconfig
-
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname}
-%defattr(-,root,root)
-%doc COPYING.LESSER
-%{_libdir}/%{name}.so.%{soname}
-%{_libdir}/%{name}.so.%{soname}.0.0
+%license COPYING.LESSER
+%{_libdir}/%{name}.so.%{soname}*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}-1.0.pc
 
 %files -n imobiledevice-tools
-%defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.LESSER NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/idevice_id
 %{_bindir}/idevicecrashreport
 %{_bindir}/idevicepair
@@ -144,26 +129,25 @@ rm -rf %{buildroot}/%{_libdir}/%{name}.*a*
 %{_bindir}/idevicedate
 %{_bindir}/ideviceprovision
 %{_bindir}/idevicenotificationproxy
-%doc %{_mandir}/man1/idevice_id.1%{?ext_man}
-%doc %{_mandir}/man1/idevicecrashreport.1%{?ext_man}
-%doc %{_mandir}/man1/idevicepair.1%{?ext_man}
-%doc %{_mandir}/man1/ideviceinfo.1%{?ext_man}
-%doc %{_mandir}/man1/idevicesyslog.1%{?ext_man}
-%doc %{_mandir}/man1/idevicebackup.1%{?ext_man}
-%doc %{_mandir}/man1/idevicebackup2.1%{?ext_man}
-%doc %{_mandir}/man1/idevicedebug.1%{?ext_man}
-%doc %{_mandir}/man1/idevicedebugserverproxy.1%{?ext_man}
-%doc %{_mandir}/man1/idevicediagnostics.1%{?ext_man}
-%doc %{_mandir}/man1/ideviceimagemounter.1%{?ext_man}
-%doc %{_mandir}/man1/idevicename.1%{?ext_man}
-%doc %{_mandir}/man1/idevicescreenshot.1%{?ext_man}
-%doc %{_mandir}/man1/ideviceenterrecovery.1%{?ext_man}
-%doc %{_mandir}/man1/idevicedate.1%{?ext_man}
-%doc %{_mandir}/man1/ideviceprovision.1%{?ext_man}
-%doc %{_mandir}/man1/idevicenotificationproxy.1%{?ext_man}
+%{_mandir}/man1/idevice_id.1%{?ext_man}
+%{_mandir}/man1/idevicecrashreport.1%{?ext_man}
+%{_mandir}/man1/idevicepair.1%{?ext_man}
+%{_mandir}/man1/ideviceinfo.1%{?ext_man}
+%{_mandir}/man1/idevicesyslog.1%{?ext_man}
+%{_mandir}/man1/idevicebackup.1%{?ext_man}
+%{_mandir}/man1/idevicebackup2.1%{?ext_man}
+%{_mandir}/man1/idevicedebug.1%{?ext_man}
+%{_mandir}/man1/idevicedebugserverproxy.1%{?ext_man}
+%{_mandir}/man1/idevicediagnostics.1%{?ext_man}
+%{_mandir}/man1/ideviceimagemounter.1%{?ext_man}
+%{_mandir}/man1/idevicename.1%{?ext_man}
+%{_mandir}/man1/idevicescreenshot.1%{?ext_man}
+%{_mandir}/man1/ideviceenterrecovery.1%{?ext_man}
+%{_mandir}/man1/idevicedate.1%{?ext_man}
+%{_mandir}/man1/ideviceprovision.1%{?ext_man}
+%{_mandir}/man1/idevicenotificationproxy.1%{?ext_man}
 
-%files -n python-imobiledevice
-%defattr(-,root,root)
-%{python_sitearch}/imobiledevice.so
+%files -n python3-imobiledevice
+%{python3_sitearch}/imobiledevice.so
 
 %changelog
