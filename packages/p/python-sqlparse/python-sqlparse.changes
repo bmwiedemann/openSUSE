@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 02:45:39 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add stdout-encoding-set.patch to use sys.stdout.reconfigure() if
+  the stream is an instance of TextIOWrapper to support a pytest change.
+
+-------------------------------------------------------------------
 Mon Mar  9 16:22:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to v0.3.1:

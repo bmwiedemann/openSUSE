@@ -88,4 +88,13 @@
   * Improve parsing of identifiers (pr527 by liulk).</comment>
     <requestid>783018</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>74c5c48d6e270b5f56155d0b9dbaba6d</srcmd5>
+    <version>0.3.1</version>
+    <time>1585265325</time>
+    <user>dimstar_suse</user>
+    <comment>- Add stdout-encoding-set.patch to use sys.stdout.reconfigure() if
+  the stream is an instance of TextIOWrapper to support a pytest change.</comment>
+    <requestid>787620</requestid>
+  </revision>
 </revisionlist>
