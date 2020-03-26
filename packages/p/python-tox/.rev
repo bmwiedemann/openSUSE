@@ -362,4 +362,22 @@ please add to Staging:E, should fix the tox failure</comment>
   * Relax importlib requirement to allow either version 0 or 1 - by :user:`chyzzqo2` #1476</comment>
     <requestid>771779</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d2160ca119284c9d0d75752dfaceff43</srcmd5>
+    <version>3.14.5</version>
+    <time>1585265267</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable spinner tests as the monkeypatch changed behaviour in pytest
+
+- version update to 3.14.5
+  - Add ``--discover`` (fallback to ``TOX_DISCOVER`` environment variable via path separator) to inject python executables
+    to try as first step of a discovery - note the executable still needs to match the environment by :user:`gaborbernat`.
+    `#1526 &lt;https://github.com/tox-dev/tox/issues/1526&gt;`_
+  - Bump minimal six version needed to avoid using one incompatible with newer
+    virtualenv. - by :user:`ssbarnea`
+    `#1519 &lt;https://github.com/tox-dev/tox/issues/1519&gt;`_
+  - Avoid pypy test failure due to undefined printout var. - by :user:`ssbarnea`
+    `#1521 &lt;https://github.com/tox-dev/tox/issues/1521&gt;`_</comment>
+    <requestid>786809</requestid>
+  </revision>
 </revisionlist>

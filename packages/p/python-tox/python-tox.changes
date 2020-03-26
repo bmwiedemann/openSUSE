@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 20 10:30:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable spinner tests as the monkeypatch changed behaviour in pytest
+
+-------------------------------------------------------------------
+Wed Mar 11 10:28:56 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.14.5
+  - Add ``--discover`` (fallback to ``TOX_DISCOVER`` environment variable via path separator) to inject python executables
+    to try as first step of a discovery - note the executable still needs to match the environment by :user:`gaborbernat`.
+    `#1526 <https://github.com/tox-dev/tox/issues/1526>`_
+  - Bump minimal six version needed to avoid using one incompatible with newer
+    virtualenv. - by :user:`ssbarnea`
+    `#1519 <https://github.com/tox-dev/tox/issues/1519>`_
+  - Avoid pypy test failure due to undefined printout var. - by :user:`ssbarnea`
+    `#1521 <https://github.com/tox-dev/tox/issues/1521>`_
+
+-------------------------------------------------------------------
 Fri Feb  7 12:41:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.14.3 bsc#1163043:

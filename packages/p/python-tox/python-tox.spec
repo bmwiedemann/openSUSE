@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-tox
-Version:        3.14.3
+Version:        3.14.5
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tox-dev/tox
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
 BuildRequires:  %{python_module filelock}
@@ -39,11 +39,14 @@ BuildRequires:  %{python_module pytest-mock >= 1.10.0}
 BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
-BuildRequires:  %{python_module six >= 1.0.0}
+BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module virtualenv >= 16.0.0}
 BuildRequires:  %{python_module wheel >= 0.29.0}
 BuildRequires:  fdupes
+# we need python2 interpreter in tests for venv calls checks
+# even on python3 variant
+BuildRequires:  python-base
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-filelock
@@ -52,7 +55,7 @@ Requires:       python-packaging >= 17.1
 Requires:       python-pluggy >= 0.12.0
 Requires:       python-py >= 1.4.17
 Requires:       python-setuptools >= 30.0.0
-Requires:       python-six >= 1.0.0
+Requires:       python-six >= 1.14.0
 Requires:       python-toml >= 0.9.4
 Requires:       python-virtualenv >= 16.0.0
 Requires(post): update-alternatives
@@ -80,7 +83,6 @@ use for:
 
 %package -n %{name}-doc
 Summary:        Documentation for tox, a virtualenv-based test automation
-Group:          Development/Languages/Python
 Recommends:     %{python_module tox = %{version}}
 Provides:       %{python_module tox-doc = %{version}}
 
@@ -121,7 +123,10 @@ done
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=%{buildroot}%{_bindir}:$PATH
 # Ignores for gh#tox-dev/tox#1293
-%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep or test_create_KeyboardInterrupt or test_provision_from_pyvenv)'
+# test_dist_exists_version_change test_verbose_isolated_build: need python2* deps even on python3
+# test_spinner_stdout_not_unicode breaks with changes in monkeypatch in pytest
+rm tests/unit/util/test_spinner.py
+%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep or test_create_KeyboardInterrupt or test_provision_from_pyvenv or test_verbose_isolated_build or test_dist_exists_version_change)'
 
 %post
 %python_install_alternative tox tox-quickstart
