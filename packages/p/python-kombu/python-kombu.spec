@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,8 +44,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-amqp >= 2.5.2
 Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
-Recommends:     python-PyYAML >= 3.10
 Recommends:     python-Brotli >= 1.0.0
+Recommends:     python-PyYAML >= 3.10
 Obsoletes:      python-carrot
 BuildArch:      noarch
 %python_subpackages
@@ -81,6 +81,6 @@ sed -i -e 's:==:>=:g' requirements/*.txt requirements/extras/*.txt
 %license LICENSE
 %doc AUTHORS FAQ README.rst THANKS TODO
 %{python_sitelib}/kombu
-%{python_sitelib}/kombu-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/kombu-%{version}-py*.egg-info
 
 %changelog
