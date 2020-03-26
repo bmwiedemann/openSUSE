@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:13:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.14
+  * Revert "Allow opening of multiple file selections (bxo#2487)", 
+    because it introduced a regression (Not possible any more to DnD 
+    multiple files in icon/compact view) (bxo#16598)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Mon Mar 23 22:08:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.13
+  * Use tre-view toplevel path of the cursor, if available, in order to
+    prevent jumping (bxo#16024)
+  * Increase vertical gap between icon and its label slightly (bxo#16041)
+  * Fix crash when inserting USB device in tree-view mode. (bxo#15172)
+  * Fix jump to Home when ejecting a currently viewed device (bxo#16504)
+  * Allow context menu when editing location in pathbar (bxo#16483)
+  * Sort device entries in tree view (bxo#16471)
+  * Allow to open multiple files at once (bxo#2487)
+  * Fix incorrect pathbar autocomplete (bxo#16267)
+  * Avoid unreadable names in detailed view (bxo#16391)
+  * Prevent crash when renaming files (bxo#10805)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jan 31 07:33:50 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.8.12
