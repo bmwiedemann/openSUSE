@@ -1,7 +1,7 @@
 #
 # spec file for package mozjs60
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Luciano Santos <luc14n0@linuxmail.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -68,8 +68,8 @@ BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python-pip
+BuildRequires:  python
+BuildRequires:  python-xml
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
