@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-trustme
 Version:        0.6.0
 Release:        0
 Summary:        Fake CA provider for Python tests
 License:        MIT OR Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/trustme
 Source:         https://files.pythonhosted.org/packages/source/t/trustme/trustme-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
@@ -32,15 +32,17 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
-BuildRequires:  python-ipaddress
-%ifpython2
-Requires:       python-ipaddress
-%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-idna
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+BuildRequires:  python-ipaddress
+%endif
+%ifpython2
+Requires:       python-ipaddress
+%endif
 %python_subpackages
 
 %description
@@ -61,7 +63,7 @@ circle of the CA is limited to the test environment.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest 
+%pytest
 
 %files %{python_files}
 %license LICENSE
