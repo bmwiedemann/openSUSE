@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-botocore
-Version:        1.15.0
+Version:        1.15.27
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
 Patch0:         hide_py_pckgmgmt.patch
@@ -81,12 +80,12 @@ sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/inte
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} tests/unit
+%python_expand nosetests-%{$python_bin_suffix} -v tests/unit
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/botocore/
-%{python_sitelib}/botocore-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/botocore-%{version}-py*.egg-info
 
 %changelog

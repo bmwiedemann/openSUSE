@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:21:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.15.27
+  * api-change:``apigatewayv2``: Update apigatewayv2 client to latest version
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``route53``: Update route53 client to latest version
+- from version 1.15.26
+  * api-change:``servicecatalog``: Update servicecatalog client to latest version
+- from version 1.15.25
+  * api-change:``outposts``: Update outposts client to latest version
+  * api-change:``acm``: Update acm client to latest version
+- from version 1.15.24
+  * api-change:``rds``: Update rds client to latest version
+  * api-change:``mediaconnect``: Update mediaconnect client to latest version
+  * api-change:``personalize``: Update personalize client to latest version
+- from version 1.15.23
+  * api-change:``mediaconvert``: Update mediaconvert client to latest version
+- from version 1.15.22
+  * api-change:``s3control``: Update s3control client to latest version
+  * bugfix:Stubber: fixes `#1884 <https://github.com/boto/botocore/issues/1884>`__
+  * api-change:``cognito-idp``: Update cognito-idp client to latest version
+  * api-change:``ssm``: Update ssm client to latest version
+  * api-change:``ecs``: Update ecs client to latest version
+  * api-change:``elasticache``: Update elasticache client to latest version
+- from version 1.15.21
+  * api-change:``appconfig``: Update appconfig client to latest version
+- from version 1.15.20
+  * api-change:``lex-models``: Update lex-models client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``apigatewayv2``: Update apigatewayv2 client to latest version
+  * api-change:``iot``: Update iot client to latest version
+- from version 1.15.19
+  * api-change:``efs``: Update efs client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+- from version 1.15.18
+  * api-change:``serverlessrepo``: Update serverlessrepo client to latest version
+  * api-change:``iotevents``: Update iotevents client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * enhancement:timezones: Improved timezone parsing for Windows
+    with new fallback method (#1939)
+  * api-change:``marketplacecommerceanalytics``: Update
+    marketplacecommerceanalytics client to latest version
+- from version 1.15.17
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``medialive``: Update medialive client to latest version
+  * api-change:``dms``: Update dms client to latest version
+- from version 1.15.16
+  * api-change:``signer``: Update signer client to latest version
+  * api-change:``guardduty``: Update guardduty client to latest version
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``robomaker``: Update robomaker client to latest version
+- from version 1.15.15
+  * api-change:``eks``: Update eks client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``opsworkscm``: Update opsworkscm client to latest version
+  * api-change:``guardduty``: Update guardduty client to latest version
+- from version 1.15.14
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+- from version 1.15.13
+  * api-change:``ec2``: Update ec2 client to latest version
+- from version 1.15.12
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``comprehendmedical``: Update comprehendmedical client to latest version
+- from version 1.15.11
+  * api-change:``config``: Update config client to latest version
+- from version 1.15.10
+  * api-change:``config``: Update config client to latest version
+  * api-change:``glue``: Update glue client to latest version
+  * api-change:``sagemaker-a2i-runtime``: Update sagemaker-a2i-runtime client to latest version
+  * api-change:``appmesh``: Update appmesh client to latest version
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``workdocs``: Update workdocs client to latest version
+  * api-change:``quicksight``: Update quicksight client to latest version
+  * api-change:``accessanalyzer``: Update accessanalyzer client to latest version
+  * api-change:``codeguruprofiler``: Update codeguruprofiler client to latest version
+- from version 1.15.9
+  * api-change:``lightsail``: Update lightsail client to latest version
+  * api-change:``globalaccelerator``: Update globalaccelerator client to latest version
+- from version 1.15.8
+  * api-change:``transcribe``: Update transcribe client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``sagemaker``: Update sagemaker client to latest version
+  * api-change:``securityhub``: Update securityhub client to latest version
+- from version 1.15.7
+  * api-change:``stepfunctions``: Update stepfunctions client to latest version
+  * api-change:``kafka``: Update kafka client to latest version
+  * api-change:``secretsmanager``: Update secretsmanager client to latest version
+  * api-change:``outposts``: Update outposts client to latest version
+- from version 1.15.6
+  * api-change:``iotevents``: Update iotevents client to latest version
+  * api-change:``docdb``: Update docdb client to latest version
+  * api-change:``snowball``: Update snowball client to latest version
+  * api-change:``fsx``: Update fsx client to latest version
+  * api-change:``events``: Update events client to latest version
+- from version 1.15.5
+  * api-change:``imagebuilder``: Update imagebuilder client to latest version
+  * api-change:``wafv2``: Update wafv2 client to latest version
+  * api-change:``redshift``: Update redshift client to latest version
+- from version 1.15.4
+  * api-change:``savingsplans``: Update savingsplans client to latest version
+  * api-change:``appconfig``: Update appconfig client to latest version
+  * api-change:``pinpoint``: Update pinpoint client to latest version
+- from version 1.15.3
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+  * api-change:``servicecatalog``: Update servicecatalog client to latest version
+  * api-change:``lambda``: Update lambda client to latest version
+- from version 1.15.2
+  * api-change:``autoscaling``: Update autoscaling client to latest version
+  * api-change:``chime``: Update chime client to latest version
+  * api-change:``rds``: Update rds client to latest version
+- from version 1.15.1
+  * api-change:``cloud9``: Update cloud9 client to latest version
+  * api-change:``ec2``: Update ec2 client to latest version
+  * api-change:``dynamodb``: Update dynamodb client to latest version
+  * api-change:``rekognition``: Update rekognition client to latest version
+
+-------------------------------------------------------------------
+Thu Mar 12 07:15:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2 available
+
+-------------------------------------------------------------------
 Mon Feb 17 17:30:50 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.15.0
