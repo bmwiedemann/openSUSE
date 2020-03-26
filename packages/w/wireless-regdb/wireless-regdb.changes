@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 23 07:55:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20191029:
+  * regdb: fix compatibility with python2
+  * wireless-regdb: Update regulatory rules for Russia (RU)
+  * wireless-regdb: Harmonize ranges of CEPT countries (stand of July 2019)
+  * wireless-regdb: Fix ranges of EU countries as they are harmonized since 2014
+  * wireless-regdb: Extend 5470-5725 MHz range to 5730 MHz for Taiwan (TW)
+  * wireless-regdb: Fix overlapping ranges for Switzerland and Liechtenstein
+  * wireless-regdb: update regulatory database based on preceding changes
+- Switch to _service
+- Update project url
+
+-------------------------------------------------------------------
 Thu Jun 13 14:05:22 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2019.06.03 (boo#1138177):

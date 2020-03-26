@@ -334,4 +334,21 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * update source of information for ES</comment>
     <requestid>709753</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cafbfa6ee6e4f50a18411ff058114d0a</srcmd5>
+    <version>20191029</version>
+    <time>1585261799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191029:
+  * regdb: fix compatibility with python2
+  * wireless-regdb: Update regulatory rules for Russia (RU)
+  * wireless-regdb: Harmonize ranges of CEPT countries (stand of July 2019)
+  * wireless-regdb: Fix ranges of EU countries as they are harmonized since 2014
+  * wireless-regdb: Extend 5470-5725 MHz range to 5730 MHz for Taiwan (TW)
+  * wireless-regdb: Fix overlapping ranges for Switzerland and Liechtenstein
+  * wireless-regdb: update regulatory database based on preceding changes
+- Switch to _service
+- Update project url</comment>
+    <requestid>787360</requestid>
+  </revision>
 </revisionlist>

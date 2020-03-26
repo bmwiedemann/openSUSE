@@ -1,7 +1,7 @@
 #
 # spec file for package wireless-regdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           wireless-regdb
-Version:        2019.06.03
+Version:        20191029
 Release:        0
 Summary:        802.11 regulatory domain database
 License:        ISC
 Group:          Hardware/Wifi
-URL:            http://wireless.kernel.org/en/developers/Regulatory#The_regulatory_database
-Source:         https://www.kernel.org/pub/software/network/wireless-regdb/%{name}-%{version}.tar.xz
+URL:            https://wireless.wiki.kernel.org/en/developers/regulatory/wireless-regdb
+Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
