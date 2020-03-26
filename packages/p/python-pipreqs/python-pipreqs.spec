@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipreqs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pipreqs
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Pip requirements generator based on imports in project
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/bndr/pipreqs
 Source:         https://files.pythonhosted.org/packages/source/p/pipreqs/pipreqs-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module nose}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt
+Requires:       python-setuptools
 Requires:       python-yarg
 BuildArch:      noarch
 # SECTION test requirements
@@ -53,8 +54,8 @@ chmod a-x pipreqs/pipreqs.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Ignore four tests that require network access
-%python_exec -m nose -e 'test_(get_imports_info|ignored_directory|init_)'
+# Ignore tests that require network access
+%pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version)'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
