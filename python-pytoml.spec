@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytoml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.1.21
 Release:        0
 Summary:        TOML-0.4.0 parser/writer for Python
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/avakar/pytoml
 Source0:        https://files.pythonhosted.org/packages/source/p/pytoml/pytoml-%{version}.tar.gz
 # toml-test for tests from author's fork with specific commit
@@ -61,6 +60,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/pytoml/
-%{python_sitelib}/pytoml-%{version}-py%{py_ver}.egg-info/
+%{python_sitelib}/pytoml-%{version}-py*.egg-info/
 
 %changelog
