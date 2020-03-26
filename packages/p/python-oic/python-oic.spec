@@ -1,7 +1,7 @@
 #
 # spec file for package python-oic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname oic
 Name:           python-oic
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        A complete OpenID Connect implementation in Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/OpenIDC/pyoidc
-Source:         https://github.com/OpenIDC/pyoidc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/OpenIDC/pyoidc/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module defusedxml}
@@ -53,6 +53,7 @@ Requires:       python-future
 Requires:       python-pycryptodomex
 Requires:       python-pyjwkest >= 1.3.6
 Requires:       python-requests
+Requires:       python-setuptools
 Requires:       python-typing
 Requires:       python-typing_extensions
 Suggests:       python-ldap
