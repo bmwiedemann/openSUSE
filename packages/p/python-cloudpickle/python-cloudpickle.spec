@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-cloudpickle
 Version:        1.2.2
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
@@ -35,13 +35,18 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
 Requires:       python-numpy >= 1.8.2
 Requires:       python-scipy
 Requires:       python-tornado
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
+%ifpython2
+Requires:       python-futures
+%endif
 %python_subpackages
 
 %description
