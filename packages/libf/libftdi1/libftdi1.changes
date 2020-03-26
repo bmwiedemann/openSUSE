@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:53:42 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file - drop obsolete conditionals and use modern
+  macros
+- Run tests
+- Dont build static libraries
+
+-------------------------------------------------------------------
 Tue Jun 12 17:35:10 UTC 2018 - msuchanek@suse.com
 
 - Fix Leap 42.3 build - do not apply cmake 3.11 compat patch.

@@ -1,7 +1,7 @@
 #
 # spec file for package libftdi1
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,26 +24,21 @@ Release:        0
 Summary:        Library to program and control the FTDI USB controller
 License:        LGPL-2.1-or-later AND GPL-2.0-with-classpath-exception
 Group:          Hardware/Other
-URL:            http://www.intra2net.com/en/developer/libftdi
+URL:            https://www.intra2net.com/en/developer/libftdi
 Source:         http://www.intra2net.com/en/developer/libftdi/download/libftdi1-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM libftdi-cmake.patch -- CMake: move options to a dedicated file
 Patch1:         libftdi-cmake.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  libconfuse-devel
-BuildRequires:  libusb-1_0-devel
-BuildRequires:  pkgconfig
-BuildRequires:  swig
-%if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_headers-devel
-BuildRequires:  python3-devel
+BuildRequires:  libboost_test-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-%else
-BuildRequires:  boost-devel
-BuildRequires:  python-devel
-BuildRequires:  python-xml
-%endif
+BuildRequires:  swig
+BuildRequires:  pkgconfig(libconfuse)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(python3)
 
 %description
 Library to program and control the FTDI USB controller.
@@ -57,7 +52,6 @@ Group:          System/Libraries
 Library to program and control the FTDI USB controller.
 This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
-%if 0%{?suse_version} >= 1500
 %package -n python3-%{name}
 Summary:        Python 3 binding for libftdi1
 Group:          Development/Languages/Python
@@ -67,25 +61,12 @@ Library to program and control the FTDI USB controller.
 This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
 This package provides the python binding for libftdi.
-%else
-%package -n python2-%{name}
-Summary:        Python 2 binding for libftdi1
-Group:          Development/Languages/Python
-Provides:       binding-python = %{version}
-Obsoletes:      binding-python < %{version}
-
-%description -n python2-%{name}
-Library to program and control the FTDI USB controller.
-This library is used by many programs accessing FTDI USB-to-RS232 converters.
-
-This package provides the python binding for libftdi.
-%endif
 
 %package devel
 Summary:        Header files and static libraries for libftdi
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       libusb-1_0-devel
+Requires:       pkgconfig(libusb-1.0)
 
 %description devel
 Header files and static libraries for libftdi.
@@ -93,25 +74,27 @@ This library is used by many programs accessing FTDI USB-to-RS232 converters.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 01500
 %patch1 -p1
-%endif
 
 %build
 %cmake \
   -DDOCUMENTATION=ON \
   -DFTDI_EEPROM=ON \
-  -DPYTHON_BINDINGS=ON
-%make_jobs
+  -DPYTHON_BINDINGS=ON \
+  -DBUILD_TESTS=ON \
+  -DSTATICLIBS=OFF \
+  -Wno-dev
+%cmake_build
 
 %install
 %cmake_install
 rm -rf %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man3
-cd build
-cp -p doc/man/man3/[^_]*.3 %{buildroot}%{_mandir}/man3
-find %{buildroot} -type f -name "*.a" -delete -print
-find %{buildroot} -type f -name "*.la" -delete -print
+install -pm 0644 build/doc/man/man3/[^_]*.3 \
+  %{buildroot}%{_mandir}/man3
+
+%check
+make -C build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -121,17 +104,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS README
 %{_libdir}/libftdi*.so.*
 
-%if 0%{?suse_version} >= 1500
 %files -n python3-%{name}
 %doc python/examples/*.py
 %{python3_sitearch}/_ftdi1.so
 %{python3_sitearch}/ftdi1.py
-%else
-%files -n python2-%{name}
-%doc python/examples/*.py
-%{python_sitearch}/_ftdi1.so
-%{python_sitearch}/ftdi1.py
-%endif
 
 %files devel
 %doc ftdi_eeprom/example.conf
