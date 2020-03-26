@@ -17,21 +17,31 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-EasyProcess
-Version:        0.2.8
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-EasyProcess%{psuffix}
+Version:        0.2.10
 Release:        0
 Summary:        Python subprocess interface
 License:        BSD-2-Clause
 URL:            https://github.com/ponty/easyprocess
 Source:         https://github.com/ponty/EasyProcess/archive/%{version}.tar.gz
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  iputils
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module PyVirtualDisplay}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module six}
+%endif
 %python_subpackages
 
 %description
@@ -58,29 +68,27 @@ Limitations:
 
 %prep
 %setup -q -n EasyProcess-%{version}
-# https://github.com/ponty/EasyProcess/issues/18
-sed -i "s/from easyprocess import EasyProcess/from easyprocess import EasyProcess;import sys/" easyprocess/examples/*.py
-sed -i "s/'python /sys.executable + ' /" easyprocess/examples/*.py
-sed -i "s/'python'/sys.executable/" easyprocess/examples/*.py
-
-# requires pyvirtualdisplay which is mostly dead package
-rm -f tests/coverage/fast/test_deadlock.py
-2to3 -w easyprocess/examples/log.py
 
 %build
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v tests/coverage/
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v tests/
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
