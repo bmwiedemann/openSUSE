@@ -82,13 +82,14 @@ sed -i '/coverage/d;/hacking/d' test-requirements.txt
 %if %{with test}
 %check
 export OS_TEST_TIMEOUT=60
-%python_exec -m stestr run
+# test_requirement_parsing - syntax based on old virtualenv
+%python_exec -m stestr run --black-regex 'test_requirement_parsing'
 %endif
 
 %if !%{with test}
 %install
 %python_install
-%python_expand rm -rf  %{buildroot}%{$python_sitelib}/pbr/tests
+%python_expand rm -r  %{buildroot}%{$python_sitelib}/pbr/tests
 %python_clone -a %{buildroot}%{_bindir}/pbr
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
