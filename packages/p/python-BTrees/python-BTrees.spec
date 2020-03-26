@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-BTrees
-Version:        4.6.1
+Version:        4.7.1
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
