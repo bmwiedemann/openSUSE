@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:04:39 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.5.0
+  * add ``no-local-version`` local scheme and improve documentation for schemes
+  * fix #403: also sort out resource warnings when dealing with git file finding
+
+-------------------------------------------------------------------
+Fri Jan 31 10:24:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.4.3
+  * ensure the git file finder closes file descriptor after reading archive
+  * correctly transfer tag regex in the Configuration constructor
+  * correctly set up the default version scheme for pyproject usage.
+  * add support for projects built under setuptools declarative config
+  * ensure the git file finder closes filedescriptors even when errors happen
+  * clean out env vars from the git hook system to ensure correct function from within
+
+-------------------------------------------------------------------
 Fri Nov  1 08:54:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update the add-rpmfail-pytest-markers.patch to not have

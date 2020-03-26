@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools_scm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-setuptools_scm%{psuffix}
-Version:        3.3.3
+Version:        3.5.0
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
@@ -37,13 +37,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Suggests:       python-toml
 BuildArch:      noarch
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
+BuildRequires:  %{python_module toml}
 BuildRequires:  git-core
+BuildRequires:  mercurial
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     git-core
@@ -69,7 +73,8 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %if %{with test}
 %check
-%pytest -k 'not (test_mercurial or hg)'
+# both tests in test_integration.py encounter https://github.com/pypa/setuptools_scm/issues/386 (at least on Python 2)
+%pytest -k 'not test_integration'
 %endif
 
 %if !%{with test}
