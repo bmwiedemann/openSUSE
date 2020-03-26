@@ -1,7 +1,7 @@
 #
 # spec file for package python-soupsieve
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-soupsieve%{psuffix}
 Version:        1.9.5
 Release:        0
@@ -40,7 +41,9 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python-backports.functools_lru_cache
+%endif
 %endif
 %ifpython2
 Requires:       python-backports.functools_lru_cache
