@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:39:41 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.5.1
+  * Fix order of linker arguments (#211)
+  * Fix memory leaks in GetComponentImages (#213)
+
+-------------------------------------------------------------------
 Mon Jan 13 17:25:21 UTC 2020 - pgajdos@suse.com
 
 - disable test_LSTM_choices temporarily

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tesserocr
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
@@ -63,7 +63,7 @@ GIL while processing an image in tesseract.
 %check
 %python_exec setup.py develop --user
 # test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
-%python_exec -m pytest -v -k 'not test_LSTM_choices' tests
+%pytest -k 'not test_LSTM_choices'
 
 %files %{python_files}
 %license LICENSE
