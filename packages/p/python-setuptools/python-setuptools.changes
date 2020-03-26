@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 13:09:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Feb  4 14:29:34 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 44.0.0

@@ -26,6 +26,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-setuptools%{psuffix}
 Version:        44.0.0
 Release:        0
@@ -47,10 +48,6 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# The dependency download feature may require SSL, which is in python3-base and python(2)
-%ifpython2
-Requires:       python
-%endif
 Requires:       python-appdirs
 Requires:       python-base
 Requires:       python-ordered-set
@@ -60,6 +57,10 @@ Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+# The dependency download feature may require SSL, which is in python3-base and python(2)
+%ifpython2
+Requires:       python
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Paver}
 BuildRequires:  %{python_module devel}
@@ -70,7 +71,9 @@ BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= %{version}}
 BuildRequires:  %{python_module wheel}
+%if %{with python2}
 BuildRequires:  python-futures
+%endif
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
