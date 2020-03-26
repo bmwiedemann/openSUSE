@@ -55,4 +55,12 @@
     <comment>- Fix fdupes call</comment>
     <requestid>784571</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>636bfe0b5cca320e4b5c7ccafb8eced1</srcmd5>
+    <version>0.3.15</version>
+    <time>1585262101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788589</requestid>
+  </revision>
 </revisionlist>

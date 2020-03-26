@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 14:13:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.15
+  * This will be the last release supporting Python 2.x!
+
+-------------------------------------------------------------------
 Fri Mar 13 08:38:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call
