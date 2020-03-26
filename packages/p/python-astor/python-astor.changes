@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 15:11:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add remove_nose.patch
+  * test suite runs fine without nose, because it was written for unittest2
+    and, because nose won't work with Python 3.9/3.10, this patch removes
+    the requirement from setup.cfg and use unittest2 in the spec file
+    instead of nose
+
+-------------------------------------------------------------------
 Fri Jan 17 12:59:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.8.1

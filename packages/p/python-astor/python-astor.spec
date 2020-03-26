@@ -25,13 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/berkerpeksag/astor
 Source:         https://github.com/berkerpeksag/astor/archive/%{version}.tar.gz#/astor-%{version}.tar.gz
+# https://github.com/berkerpeksag/astor/pull/177
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
-BuildRequires:  python2-unittest2
+BuildRequires:  %{python_module unittest2}
 # /SECTION
 %python_subpackages
 
@@ -61,7 +62,7 @@ There are some other similar libraries, but astor focuses on the following areas
 
 %prep
 %setup -q -n astor-%{version}
-%autopatch -p1
+%patch0 -p1
 # ugly fix for the use of /usr/bin/env
 sed -i 's@env @@' astor/rtrip.py
 
@@ -75,7 +76,7 @@ sed -i 's@env @@' astor/rtrip.py
 %python_expand chmod 755 %{buildroot}%{$python_sitelib}/astor/rtrip.py
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+%python_exec -m unittest2 discover -v
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/*.rst
