@@ -1,7 +1,7 @@
 #
 # spec file for package mozjs52
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0%{?dist}
 Summary:        JavaScript interpreter and libraries
 License:        MPL-2.0
 Group:          Development/Libraries/Other
-Url:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/52
+URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/52
 Source0:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/source/firefox-%{version}esr.source.tar.xz
 Source1:        LICENSE.txt
 # This should be removed when bmo#1322212 and bmo#1264836 are resolved:
@@ -38,8 +38,8 @@ BuildRequires:  autoconf213
 BuildRequires:  gcc-c++
 BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
-BuildRequires:  python-pip
+BuildRequires:  python
+BuildRequires:  python-xml
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
