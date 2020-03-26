@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 14:50:27 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.4.0
+  - Ensure a consistent interface resolution order for all objects. See
+    `issue 49 <https://github.com/zopefoundation/zope.configuration/issues/49>`_.
+  - Drop support for Python 3.4.
+  - Add support for Python 3.8.
+- deleted sources
+  - pre_checkin.sh (not needed)
+
+-------------------------------------------------------------------
 Thu Apr  4 16:05:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.3.1
