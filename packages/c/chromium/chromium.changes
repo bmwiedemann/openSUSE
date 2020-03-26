@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:49:16 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to allow building with pipewire 0.3:
+  * build-with-pipewire-0.3.patch
+- Use pipewire in Leap 15.2
+
+-------------------------------------------------------------------
 Thu Mar 19 11:13:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 80.0.3987.149:

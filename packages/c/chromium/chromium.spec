@@ -29,10 +29,17 @@
 %bcond_without system_icu
 %bcond_without system_harfbuzz
 %bcond_without pipewire
+%bcond_without pipewire0_3
 %else
 %bcond_with system_icu
 %bcond_with system_harfbuzz
+%if 0%{?sle_version} >= 150200
+%bcond_without pipewire
+%bcond_without pipewire0_3
+%else
 %bcond_with pipewire
+%bcond_with pipewire0_3
+%endif
 %endif
 %if 0%{?suse_version} >= 1500
 %bcond_without system_libxml
@@ -103,6 +110,7 @@ Patch23:        webrtc-pulse.patch
 Patch100:       chromium-vaapi.patch
 Patch101:       old-libva.patch
 Patch102:       chromium-vaapi-fix.patch
+Patch103:       build-with-pipewire-0.3.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
@@ -220,7 +228,11 @@ Obsoletes:      chromium-ffmpegsumo
 # no 32bit supported and it takes ages to build
 ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
 %if %{with pipewire}
+%if %{with pipewire0_3}
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%else
 BuildRequires:  pkgconfig(libpipewire-0.2)
+%endif
 %endif
 %if %{with wayland}
 BuildRequires:  pkgconfig(gbm)
@@ -651,6 +663,9 @@ myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" enable_hevc_demuxing=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
+%if %{with pipewire0_3}
+myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
+%endif
 %endif
 # ozone stuff
 %if %{with wayland}
