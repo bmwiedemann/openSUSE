@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 19 13:12:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.9.7
+  * Align stack of functions using SSE2 intrinsics to avoid crashes, 
+    when compiled with gcc on 32-bit x86 platforms.
+  * Prevent key_to_english from creating invalid data when fed with
+    keys of length not multiple of 8.
+  * Fix blocking RSA signing/decryption when key has very small factor.
+  * fixed memory leak for operations that use memoryviews when cffi 
+    is not installed.
+  * RSA OAEP decryption was not verifying that all PS bytes are zero.
+  * Fixed wrong ASN.1 OID for HMAC-SHA512 in PBE2.
+
+-------------------------------------------------------------------
 Sun Nov 10 16:54:21 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.9.2 (10 November 2019):
