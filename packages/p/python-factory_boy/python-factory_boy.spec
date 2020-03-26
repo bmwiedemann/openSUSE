@@ -1,7 +1,7 @@
 #
 # spec file for package python-factory_boy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-factory_boy
 Version:        2.12.0
 Release:        0
 Summary:        A test fixtures replacement
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/rbarrois/factory_boy
+URL:            https://github.com/rbarrois/factory_boy
 Source:         https://github.com/FactoryBoy/factory_boy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Faker >= 0.7.0}
@@ -34,9 +34,11 @@ BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-ipaddress
 Requires:       python-Faker >= 0.7.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-ipaddress
+%endif
 %python_subpackages
 
 %description
