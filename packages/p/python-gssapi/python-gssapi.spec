@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-gssapi
 Version:        1.6.2
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://pythongssapi.github.io/python-gssapi/stable/
 Source:         https://files.pythonhosted.org/packages/source/g/gssapi/gssapi-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -35,8 +35,10 @@ BuildRequires:  krb5-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-six
-%ifpython2
+%if %{with python2}
 BuildRequires:  python2-enum34
+%endif
+%ifpython2
 Requires:       python2-enum34
 %endif
 %python_subpackages

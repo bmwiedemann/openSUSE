@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:36:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Wed Mar  4 11:32:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.6.2
