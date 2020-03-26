@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 10:51:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Build using tycho/maven so that it can be used as eclipse plugin
+
+-------------------------------------------------------------------
 Tue Sep 19 11:59:09 UTC 2017 - fstrba@suse.com
 
 - Fix build with jdk9: build with source and target level 1.6

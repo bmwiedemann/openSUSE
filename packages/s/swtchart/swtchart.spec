@@ -1,7 +1,7 @@
 #
 # spec file for package swtchart
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,16 +22,14 @@ Release:        0
 Summary:        Chart component based on SWT
 License:        EPL-1.0
 Group:          Development/Languages/Java
-Url:            http://www.swtchart.org/
-Source:         %{name}-%{version}.tar.gz
-Source1:        build.xml
-BuildRequires:  ant
+URL:            http://www.swtchart.org/
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  java-devel
-BuildRequires:  jpackage-utils
-BuildRequires:  sed
-BuildRequires:  unzip
+BuildRequires:  maven-local
+BuildRequires:  tycho
+#!BuildIgnore:  libjawt.so(SUNWprivate_1.1)
+#!BuildIgnore:  libjawt.so(SUNWprivate_1.1)(64bit)
 BuildArch:      noarch
 
 %description
@@ -46,23 +44,32 @@ Developer documentation of SWT Chart.
 
 %prep
 %setup -q
+# Create the poms
+xmvn -o org.eclipse.tycho:tycho-pomgenerator-plugin:generate-poms -DgroupId=org.swtchart
+%{mvn_package} "::pom::" __noinstall
+%{mvn_package} :org.swtchart.example* __noinstall
+
+%{mvn_file} :{*} @1 %{name}/@1
 
 %build
-sed "s#SWTJAR#$(build-classpath swt)#g" <%{SOURCE1} >build.xml
-%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=6
+%else
+	-Dsource=6
+%endif
 
 %install
-mkdir -p %{buildroot}%{_javadir}
-install org.swtchart.jar %{buildroot}%{_javadir}
+%mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
-mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -r api/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
+install -dm 0755 -p %{buildroot}%{_javadir}
+install -pm 0644 org.swtchart/target/org.swtchart*.jar %{buildroot}%{_javadir}/org.swtchart.jar
+%fdupes -s %{buildroot}%{_datadir}
 
-%files
-%{_javadir}/*
+%files -f .mfiles
+%{_javadir}
 
-%files javadoc
-%{_javadocdir}/%{name}-%{version}
+%files javadoc -f .mfiles-javadoc
 
 %changelog

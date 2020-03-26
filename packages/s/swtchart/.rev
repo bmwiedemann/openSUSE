@@ -23,4 +23,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527292</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5dead65b63e2ed368d89a7feb6341766</srcmd5>
+    <version>0.10.0</version>
+    <time>1585261945</time>
+    <user>dimstar_suse</user>
+    <comment>Build with tycho/maven so that it can be eclipse plugin</comment>
+    <requestid>788460</requestid>
+  </revision>
 </revisionlist>
