@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 %bcond_without python2
 Name:           pam_wrapper
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        A tool to test PAM applications and PAM modules
 License:        GPL-3.0-or-later
