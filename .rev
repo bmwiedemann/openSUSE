@@ -166,4 +166,12 @@
     <comment></comment>
     <requestid>770567</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>420825b4e8d2f9e9adf4887b67d18d2e</srcmd5>
+    <version>0.9.7</version>
+    <time>1585265214</time>
+    <user>dimstar_suse</user>
+    <comment>- add setuptools dependency (bsc#1161208)</comment>
+    <requestid>786233</requestid>
+  </revision>
 </revisionlist>
