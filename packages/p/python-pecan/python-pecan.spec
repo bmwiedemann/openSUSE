@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pecan
 Version:        1.3.3
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
 Patch0:         pecan-no-kajiki.patch
@@ -38,12 +38,10 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
+# we need sqlite module
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-singledispatch
-# Because of sqlite3 module
-BuildRequires:  python
-BuildRequires:  python3
 Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.2
 Requires:       python-WebTest >= 1.3.1
@@ -53,6 +51,9 @@ Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-singledispatch
+%endif
 %ifpython2
 Requires:       python-singledispatch
 %endif
