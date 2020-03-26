@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyperclip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,6 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE.txt
 %{python_sitelib}/pyperclip
-%{python_sitelib}/pyperclip-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/pyperclip-%{version}-py*.egg-info
 
 %changelog
