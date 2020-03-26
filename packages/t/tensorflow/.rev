@@ -137,4 +137,12 @@
     <comment></comment>
     <requestid>786730</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>ed6d7602cbbf0719f26fdebfc6c2d7a2</srcmd5>
+    <version>1.15.2</version>
+    <time>1585262031</time>
+    <user>dimstar_suse</user>
+    <comment>- removed hpc-mvapich2 build (bsc#1167735) (forwarded request 788444 from mslacken)</comment>
+    <requestid>788445</requestid>
+  </revision>
 </revisionlist>
