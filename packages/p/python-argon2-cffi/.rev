@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>765259</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7fbd970935219772923a8d30901acfc2</srcmd5>
+    <version>19.2.0</version>
+    <time>1585265088</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I py2 fix</comment>
+    <requestid>785548</requestid>
+  </revision>
 </revisionlist>

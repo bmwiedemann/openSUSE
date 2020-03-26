@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-argon2-cffi
 Version:        19.2.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hynek/argon2_cffi
 Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi/argon2-cffi-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
@@ -34,12 +34,14 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
 BuildRequires:  pkgconfig(libargon2)
 Requires:       python-cffi >= 1.0.0
 Requires:       python-six
 Provides:       python-argon2_cffi
 Obsoletes:      python-argon2_cffi
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %ifpython2
 Requires:       python-enum34
 %endif
