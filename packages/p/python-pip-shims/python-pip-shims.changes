@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:40:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.5.1
+  * Fixed resolution failures due to Resolver.resolve signature updates in pip@master
+  * Fixed AttributeError caused by failed RequirementSet.cleanup() calls after 
+    Resolver.resolve() which is no longer valid in pip>=20.1
+  * Added a build_wheel shim function which can build either a single InstallRequirement 
+    or an iterable of InstallRequirement instances.
+  * Added fully backward compatible library native shims to call pip functions
+
+-------------------------------------------------------------------
 Thu Oct 31 09:08:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests as they break with almost each pip release

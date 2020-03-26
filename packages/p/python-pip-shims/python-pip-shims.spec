@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-shims
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pip-shims
-Version:        0.3.3
+Version:        0.5.1
 Release:        0
 Summary:        Compatibility shims for pip versions 8 thru current
 License:        ISC
@@ -27,6 +28,9 @@ Source:         https://github.com/sarugaku/pip-shims/archive/%{version}.tar.gz#
 BuildRequires:  %{python_module setuptools >= 36.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
+BuildRequires:  python-backports.tempfile
+%endif
 Requires:       python-pip
 Requires:       python-setuptools
 Requires:       python-six
@@ -59,7 +63,7 @@ Compatibility shims for pip versions 8 thru current.
 #  but they do not factualy test if the tool behave
 #  so just skip them instead of having to patch them with
 #  each pip release
-#%%pytest -k 'not (test_resolution or test_wheelbuilder)'
+%pytest -k 'not (test_resolution or test_wheelbuilder or test_resolve or test_get_packagefinder)'
 
 %files %{python_files}
 %license LICENSE
