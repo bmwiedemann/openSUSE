@@ -1,7 +1,7 @@
 #
 # spec file for package python-raven
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-raven
 Version:        6.10.0
 Release:        0
 Summary:        A client for Sentry
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/raven-python
 Source:         https://files.pythonhosted.org/packages/source/r/raven/raven-%{version}.tar.gz
 # https://github.com/getsentry/raven-python/issues/1284
@@ -54,10 +54,12 @@ BuildRequires:  %{python_module tornado >= 4.1}
 BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-web.py
 Recommends:     python-Flask >= 0.8
 Recommends:     python-blinker >= 1.1
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-web.py
+%endif
 %python_subpackages
 
 %description

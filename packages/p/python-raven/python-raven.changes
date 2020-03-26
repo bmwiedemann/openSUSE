@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:19:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Mon Nov  4 14:32:37 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest4.patch allowing the test suite to pass with pytest 4
