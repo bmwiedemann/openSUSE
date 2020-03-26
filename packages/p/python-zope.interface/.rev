@@ -195,4 +195,12 @@
   * Add support for Python 3.8.</comment>
     <requestid>755107</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>254ac6376ec1a9b383af05c1d2db206a</srcmd5>
+    <version>5.0.1</version>
+    <time>1585265335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787837</requestid>
+  </revision>
 </revisionlist>

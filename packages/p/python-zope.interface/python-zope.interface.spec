@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.interface
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,19 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface
-Version:        4.7.1
+Version:        5.0.1
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/zope.interface
+URL:            https://pypi.python.org/pypi/zope.interface
 Source:         https://files.pythonhosted.org/packages/source/z/zope.interface/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.event}
+BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %ifpython2
@@ -63,6 +64,7 @@ the Design By Contract methodology support in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+sed -i '/coverage/d' setup.py
 %python_exec setup.py test
 
 %files %{python_files}
