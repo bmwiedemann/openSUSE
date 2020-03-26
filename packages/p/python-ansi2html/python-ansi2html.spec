@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansi2html
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ralphbean/ansi2html/
 Source:         https://github.com/ralphbean/ansi2html/archive/%{version}.tar.gz
+# https://github.com/ralphbean/ansi2html/pull/103
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -42,6 +43,7 @@ A module to convert text with ANSI color codes to HTML or to LaTeX.
 
 %prep
 %setup -q -n ansi2html-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -52,7 +54,7 @@ A module to convert text with ANSI color codes to HTML or to LaTeX.
 %python_clone -a %{buildroot}%{_bindir}/ansi2html
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{_bindir}/nosetests-%{$python_bin_suffix} tests/test_ansi2html.py
+%python_exec -m unittest discover -s tests/ -v
 
 %post
 %python_install_alternative ansi2html
