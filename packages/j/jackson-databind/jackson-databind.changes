@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:36:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.3
+  * #2482: JSONMappingException Location column number is one line
+    Behind the actual location
+  * #2599: NoClassDefFoundError at DeserializationContext. on
+    Android 4.1.2 and Jackson 2.10.0
+  * #2602: ByteBufferSerializer produces unexpected results with a
+    duplicated ByteBuffer and a position > 0
+  * #2605: Failure to deserialize polymorphic subtypes of base
+    type Enum
+  * #2610: EXTERNAL_PROPERTY doesn't work with
+    @JsonIgnoreProperties
+
+-------------------------------------------------------------------
 Tue Jan  7 10:41:52 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 2.10.2 [bsc#1160113, CVE-2019-20330]
@@ -12,7 +27,7 @@ Tue Jan  7 10:41:52 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     #2567: Incorrect target type for arrays when providing nulls and nulls are disabled
     #2573: Problem with `JsonInclude` config overrides for `java.util.Map`
     #2576: Fail to serialize `Enum` instance which includes a method override
-    	   as POJO (shape = Shape.OBJECT)
+           as POJO (shape = Shape.OBJECT)
     Fix an issue with `ObjectReader.with(JsonParser.Feature)` (and related) not working
 
 -------------------------------------------------------------------
@@ -67,11 +82,11 @@ Tue Nov 19 15:24:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     #2230: 'WRITE_BIGDECIMAL_AS_PLAIN' is ignored if '@JsonFormat' is used
     #2236: Type id not provided on 'Double.NaN', 'Infinity' with '@JsonTypeInfo'
     #2237: Add "required" methods in 'JsonNode': 'required(String | int)',
-    	   'requiredAt(JsonPointer)'
+           'requiredAt(JsonPointer)'
     #2241: Add 'PropertyNamingStrategy.LOWER_DOT_CASE' for dot-delimited names
     #2251: Getter that returns an abstract collection breaks a delegating '@JsonCreator'
     #2265: Inconsistent handling of Collections$UnmodifiableList vs
-    	   Collections$UnmodifiableRandomAccessListq
+           Collections$UnmodifiableRandomAccessListq
     #2273: Add basic Java 9+ module info
     #2280: JsonMerge not work with constructor args
     #2309: READ_ENUMS_USING_TO_STRING doesn't support null values
@@ -86,7 +101,7 @@ Tue Nov 19 15:24:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     #2378: '@JsonAlias' doesn't work with AutoValue
     #2390: 'Iterable' serialization breaks when adding '@JsonFilter' annotation
     #2392: 'BeanDeserializerModifier.modifyDeserializer()' not applied to custom bean
-    	   deserializers
+           deserializers
     #2393: 'TreeTraversingParser.getLongValue()' incorrectly checks 'canConvertToInt()'
     #2398: Replace recursion in 'TokenBuffer.copyCurrentStructure()' with iteration
     #2415: Builder-based POJO deserializer should pass builder instance, not type,
@@ -186,7 +201,7 @@ Tue Nov 19 15:24:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
            with 'null' coercion with '@JsonSetter'
     #2027: Concurrency error causes 'IllegalStateException' on 'BeanPropertyMap'
     #2032: CVE-2018-11307: Potential information exfiltration with default typing,
-    	   serialization gadget from MyBatis
+           serialization gadget from MyBatis
     #2034: Serialization problem with type specialization of nested generic types
     #2038: JDK Serializing and using Deserialized 'ObjectMapper' loses linkage
            back from 'JsonParser.getCodec()'
