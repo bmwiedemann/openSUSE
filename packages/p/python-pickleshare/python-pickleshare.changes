@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:54:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Dec  4 12:51:30 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
