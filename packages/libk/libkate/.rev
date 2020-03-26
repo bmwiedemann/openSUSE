@@ -180,4 +180,13 @@
   * disable-namespace-test.patch</comment>
     <requestid>706254</requestid>
   </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>6d862a75134ad08b3ed473e86c0c062c</srcmd5>
+    <version>0.4.1</version>
+    <time>1585264900</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build wihtout python2 again, if any py interpreter is found
+  it tries to build with it (here it is pulled by doxygen)</comment>
+    <requestid>784191</requestid>
+  </revision>
 </revisionlist>

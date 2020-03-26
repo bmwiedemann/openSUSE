@@ -1,7 +1,7 @@
 #
 # spec file for package libkate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 SUSE Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,12 @@
 #
 
 
-# python2_sitelib isn't defined in Leap:42.3
-%if 0%{?suse_version} <= 1315
-%define python2_sitelib %{python_sitelib}
-%endif
 %bcond_without python2
 Name:           libkate
 Version:        0.4.1
 Release:        0
 Summary:        A karaoke and text codec for embedding in Ogg
 License:        BSD-3-Clause
-Group:          Productivity/Multimedia/Other
 URL:            http://libkate.googlecode.com
 Source:         http://libkate.googlecode.com/files/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
@@ -55,7 +50,6 @@ color, etc, so scrolling or fading text can be defined.
 
 %package -n %{name}1
 Summary:        A karaoke and text codec for embedding in Ogg
-Group:          System/Libraries
 
 %description -n %{name}1
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
@@ -71,7 +65,6 @@ color, etc, so scrolling or fading text can be defined.
 
 %package -n liboggkate1
 Summary:        A karaoke and text codec for embedding in Ogg
-Group:          System/Libraries
 Conflicts:      libkate1 < 0.4.1
 
 %description -n liboggkate1
@@ -88,7 +81,6 @@ color, etc, so scrolling or fading text can be defined.
 
 %package devel
 Summary:        A karaoke and text codec for embedding in Ogg - Development Files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}1 = %{version}
 Requires:       glibc-devel
 Requires:       liboggkate1 = %{version}
@@ -110,7 +102,6 @@ This package contains files for developers.
 
 %package tools
 Summary:        A karaoke and text codec for embedding in Ogg
-Group:          Productivity/Multimedia/Other
 
 %description tools
 Kate is a codec for karaoke and text encapsulation for Ogg. Most of the
@@ -126,7 +117,6 @@ color, etc, so scrolling or fading text can be defined.
 
 %package -n python-katedj
 Summary:        Editor and remixer for Kate streams in Ogg
-Group:          Productivity/Multimedia/Other
 Requires:       %{name}-tools = %{version}
 Requires:       oggz-tools
 Requires:       python-wxWidgets
@@ -144,9 +134,12 @@ them, and rebuilding the Ogg stream after the Kate tracks are modified.
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> doc/kate.doxygen.in
+%if !%{with python2}
+sed -i -e 's:PYTHON=python:PYTHON=python3:g' misc/autotools/py-compile
+%endif
 %configure \
         --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -156,11 +149,14 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,ChangeLog,README,THA
 %if %{with python2}
 %fdupes %{buildroot}%{python_sitelib}/kdj
 %else
+# the py3 when found build system tries to compile and install it, and fails miserably
+rm -rf %{buildroot}%{_bindir}/KateDJ
+rm -rf %{buildroot}%{python3_sitelib}
 rm -rf %{buildroot}%{_mandir}/man1/KateDJ.1*
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{name}1 -p /sbin/ldconfig
 %postun -n %{name}1 -p /sbin/ldconfig
@@ -198,7 +194,7 @@ make %{?_smp_mflags} check
 %files -n python-katedj
 %{_bindir}/KateDJ
 %{_mandir}/man1/KateDJ.1%{?ext_man}
-%{python2_sitelib}/kdj/
+%{python_sitelib}/kdj/
 %endif
 
 %changelog

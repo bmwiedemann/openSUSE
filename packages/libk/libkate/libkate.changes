@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:29:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build wihtout python2 again, if any py interpreter is found
+  it tries to build with it (here it is pulled by doxygen)
+
+-------------------------------------------------------------------
 Wed May 29 06:22:45 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Remove a strange test that fails with LTO (boo#1136670):
