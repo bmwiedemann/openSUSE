@@ -1,7 +1,7 @@
 #
 # spec file for package python-imageio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,36 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-imageio
 Version:        2.5.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-URL:            http://imageio.github.io/
+URL:            https://imageio.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/i/imageio/imageio-%{version}.tar.gz
 Source1:        python-imageio-rpmlintrc
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Recommends:     python-Pillow
-Recommends:     libfreeimageplus3
-%ifpython3
-Requires:       python-imageio-ffmpeg
-%endif
-BuildArch:      noarch
-# There are many other optional dependencies, but they are skipped anyway
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python-enum34
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-imageio-ffmpeg
+Requires:       python-numpy
+Recommends:     libfreeimageplus3
+Recommends:     python-Pillow
+BuildArch:      noarch
+%ifpython3
+Requires:       python-imageio-ffmpeg
+%endif
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
+%ifpython2
+Requires:       python-enum34
+%endif
 %python_subpackages
 
 %description
@@ -69,15 +73,8 @@ export IMAGEIO_NO_INTERNET=1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd tests
 export IMAGEIO_NO_INTERNET=1
-PYTHONPATH=%{buildroot}%{python2_sitelib} python2 -m pytest -k 'not test_fei_file_fail and not test_ffmpeg'
-%if %{python3_version_nodots} == 37
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest -k 'not test_series_unclosed and not test_import_dependencies and not test_ffmpeg'
-%else
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest -k 'not test_import_dependencies and not test_ffmpeg'
-%endif
-popd
+%pytest -k "not test_fei_file_fail and not test_ffmpeg and not test_series_unclosed and not test_import_dependencies"
 
 %files %{python_files}
 %license LICENSE
