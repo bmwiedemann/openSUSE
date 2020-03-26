@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
+BuildRequires:  python3-setuptools
 BuildRequires:  sphinxbase-devel
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -62,6 +63,7 @@ real-time.
 Summary:        Development files for pocketsphinx, a speech recognizer library
 Group:          Development/Libraries/C and C++
 Requires:       libpocketsphinx%{sover} = %{version}
+Conflicts:      pocketsphinx5-devel
 
 %description devel
 CMU Sphinx toolkit has a number of packages for different tasks and
@@ -75,6 +77,9 @@ This is the development package for pocketsphinx.
 Summary:        Python3 bindings for pocketsphinx
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
+Requires:       python3-sphinxbase
+Conflicts:      python3-pocketsphinx5
+Conflicts:      python3-pocketsphinx-python <= 0.1.3
 
 %description -n python3-pocketsphinx
 Pocketsphinx is a version of the open-source CMU Sphinx II speech
@@ -104,6 +109,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for binary in pocketsphinx_batch pocketsphinx_continuous pocketsphinx_mdef_convert ; do
     mv %{buildroot}%{_bindir}/$binary %{buildroot}%{_bindir}/$binary-%{version}
     ln -s %{_sysconfdir}/alternatives/$binary %{buildroot}%{_bindir}/$binary
+    mv %{buildroot}%{_mandir}/man1/$binary.1 %{buildroot}%{_mandir}/man1/$binary-%{version}.1
+    ln -s %{_sysconfdir}/alternatives/$binary.1%{ext_man} %{buildroot}%{_mandir}/man1/$binary.1%{ext_man}
 done
 
 %check
@@ -112,7 +119,10 @@ done
 %post
 update-alternatives --install %{_bindir}/pocketsphinx_batch pocketsphinx_batch %{_bindir}/pocketsphinx_batch-%{version} 10 \
   --slave %{_bindir}/pocketsphinx_continuous pocketsphinx_continuous %{_bindir}/pocketsphinx_continuous-%{version} \
-  --slave %{_bindir}/pocketsphinx_mdef_convert pocketsphinx_mdef_convert %{_bindir}/pocketsphinx_mdef_convert-%{version}
+  --slave %{_bindir}/pocketsphinx_mdef_convert pocketsphinx_mdef_convert %{_bindir}/pocketsphinx_mdef_convert-%{version} \
+  --slave %{_mandir}/man1/pocketsphinx_batch.1%{ext_man} pocketsphinx_batch.1%{ext_man} %{_mandir}/man1/pocketsphinx_batch-%{version}.1%{ext_man} \
+  --slave %{_mandir}/man1/pocketsphinx_continuous.1%{ext_man} pocketsphinx_continuous.1%{ext_man} %{_mandir}/man1/pocketsphinx_continuous-%{version}.1%{ext_man} \
+  --slave %{_mandir}/man1/pocketsphinx_mdef_convert.1%{ext_man} pocketsphinx_mdef_convert.1%{ext_man} %{_mandir}/man1/pocketsphinx_mdef_convert-%{version}.1%{ext_man}
 
 %postun
 if [ ! -f %{_bindir}/pocketsphinx_batch ]; then
@@ -128,6 +138,9 @@ fi
 %ghost %{_sysconfdir}/alternatives/pocketsphinx_batch
 %ghost %{_sysconfdir}/alternatives/pocketsphinx_continuous
 %ghost %{_sysconfdir}/alternatives/pocketsphinx_mdef_convert
+%ghost %{_sysconfdir}/alternatives/pocketsphinx_batch.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/pocketsphinx_continuous.1%{ext_man}
+%ghost %{_sysconfdir}/alternatives/pocketsphinx_mdef_convert.1%{ext_man}
 %{_bindir}/pocketsphinx_batch*
 %{_bindir}/pocketsphinx_continuous*
 %{_bindir}/pocketsphinx_mdef_convert*
@@ -141,7 +154,7 @@ fi
 %{_libdir}/libpocketsphinx.so.%{sover}*
 
 %files devel
-%{_includedir}/%{name}/
+%{_includedir}/%{name}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/pocketsphinx.pc
 
