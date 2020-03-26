@@ -1,7 +1,7 @@
 #
 # spec file for package python-csvkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-csvkit
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/wireservice/csvkit
+URL:            https://github.com/wireservice/csvkit
 Source:         https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
 BuildRequires:  %{python_module SQLAlchemy >= 0.9.3}
 BuildRequires:  %{python_module Sphinx >= 1.0.7}
@@ -45,7 +45,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module coverage >= 3.5.1b1}
-BuildRequires:  %{python_module nose >= 1.1.2} 
 BuildRequires:  python-mock >= 1.3.0
 # /SECTION
 BuildArch:      noarch
@@ -71,8 +70,7 @@ find csvkit -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 
 %check
 export LANG=en_US.UTF-8
-# gh#wireservice/csvkit#1027
-%python_expand nosetests-%{$python_bin_suffix} -v -e 'test_(before_after_insert|linenumbers|no_header_row|unicode)'
+%python_exec -m unittest discover -s tests/ -v 
 
 %files %python_files
 %license COPYING

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:32:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to v1.0.5
+  * dropped py 3.4 support
+  * fix tests
+  * minor fixes
+
+- switch from nose to unittest
+
+-------------------------------------------------------------------
 Mon Dec  2 15:50:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 support due to dependencies dropping python2 support
