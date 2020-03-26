@@ -27,6 +27,7 @@ URL:            https://www.openhub.net/p/ohcount
 
 #Git-Clone:	git://github.com/blackducksw/ohcount
 Source:         https://github.com/blackducksoftware/ohcount/archive/%version.tar.gz
+Patch0:         test_null_pointer.patch
 Patch1:         cflags.diff
 BuildRequires:  bash
 BuildRequires:  file-devel
