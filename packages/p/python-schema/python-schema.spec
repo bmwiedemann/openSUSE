@@ -1,7 +1,7 @@
 #
 # spec file for package python-schema
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-schema
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Data validation library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/keleshev/schema
+URL:            https://github.com/keleshev/schema
 Source:         https://files.pythonhosted.org/packages/source/s/schema/schema-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,7 +54,7 @@ parsing, converted from JSON/YAML (or something else) to Python data-types.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test_schema.py
+%pytest test_schema.py
 
 %files %{python_files}
 %defattr(-,root,root,-)
