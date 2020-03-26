@@ -333,4 +333,17 @@
     <comment></comment>
     <requestid>751837</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3502bb279c064a13e6afc24c0a0ab44a</srcmd5>
+    <version>1.2.0+git20200220.3d8d13f</version>
+    <time>1585264988</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix not needed requires
+
+- Switch python bindings to base on python3
+- Update version to 1.2.0+git20200220.3d8d13f:
+  * Many fixes all around
+  * support for py3</comment>
+    <requestid>784788</requestid>
+  </revision>
 </revisionlist>
