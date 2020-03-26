@@ -279,4 +279,13 @@
  * Several doc updates.</comment>
     <requestid>774361</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>fc7f71a705936c285d075e68deb18512</srcmd5>
+    <version>4.8.0</version>
+    <time>1585264915</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build without python2:
+  * no-python-binary.patch</comment>
+    <requestid>784290</requestid>
+  </revision>
 </revisionlist>

@@ -22,9 +22,9 @@ Version:        4.8.0
 Release:        0
 Summary:        Pure Python Expect-like module
 License:        ISC
-Group:          Development/Libraries/Python
-URL:            http://pexpect.readthedocs.org/en/latest/
+URL:            https://pexpect.readthedocs.org/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
+Patch0:         no-python-binary.patch
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,6 +46,7 @@ controlling them; and responding to expected patterns in their output.
 
 %prep
 %setup -q -n pexpect-%{version}
+%patch0 -p1
 
 # Fix wrong-script-interpreter
 find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
