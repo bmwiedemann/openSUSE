@@ -1,7 +1,7 @@
 #
 # spec file for package python-cleo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cleo
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Python module for creating testable command-line interfaces
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cleo
 Source:         https://github.com/sdispater/cleo/archive/%{version}.tar.gz
-BuildRequires:  %{python_module clikit >= 0.2.4}
+BuildRequires:  %{python_module clikit >= 0.4.0}
 BuildRequires:  %{python_module pastel >= 0.1.0}
 BuildRequires:  %{python_module pylev >= 1.3}
 BuildRequires:  %{python_module pytest-mock}
@@ -33,9 +33,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dephell
-Requires:       python-clikit >= 0.2.4
+Requires:       python-clikit >= 0.4.0
 Requires:       python-pastel >= 0.1.0
 Requires:       python-pylev >= 1.3
 Requires:       python-typing
@@ -47,7 +48,7 @@ Cleo allows creating testable command-line interfaces.
 
 %prep
 %setup -q -n cleo-%{version}
-dephell deps convert --from pyproject.toml --to setup.py
+%dephell_gensetup
 
 %build
 %python_build
