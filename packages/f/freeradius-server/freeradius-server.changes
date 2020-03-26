@@ -1,8 +1,7 @@
 -------------------------------------------------------------------
 Tue Mar 24 15:31:22 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
-- update to 3.0.21
-
+- update to 3.0.21 (jsc#SLE-11896)
 
 Feature Improvements
 
@@ -66,13 +65,13 @@ Bug Fixes
 -------------------------------------------------------------------
 Tue Mar 17 13:42:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
-- update to 3.0.20
+- update to 3.0.20 (bsc#1146848)
 
 Feature Improvements
   * Added Force10 dictionary.
   * Update dictionary.hp with new attributes. #2690.
   * Update dictionary.aruba with new attributes. #2696.
-  * Fix side-channel leak in EAP-PWD (bsc#1166858, CVE-2019-20510)
+  * Fix side-channel leak in EAP-PWD (bsc#1144524, CVE-2019-13456)
   * Relax OpenSSL version checks, now that their API is both public, and stable.
   * Note that tls_min_version/tls_max_version also support "1.3"
     Since there is no standard yet for EAP with TLS 1.3, it will not work.

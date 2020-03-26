@@ -803,4 +803,12 @@ Feature Improvements
     the timestamps in SQL queries by using expansions.</comment>
     <requestid>787864</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>ed9e66b43efb9a38dbadba77403abb61</srcmd5>
+    <version>3.0.21</version>
+    <time>1585261855</time>
+    <user>dimstar_suse</user>
+    <comment>Bug number fixes only</comment>
+    <requestid>788266</requestid>
+  </revision>
 </revisionlist>
