@@ -194,4 +194,14 @@
  * Add tests for timezone</comment>
     <requestid>761501</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f0558cea860021fb760f8b83072fddb3</srcmd5>
+    <version>5.3.1</version>
+    <time>1585265224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1
+ * fixes boo#1165439 (cve-2020-1747) Prevents arbitrary code execution
+   during python/object/new constructor</comment>
+    <requestid>786325</requestid>
+  </revision>
 </revisionlist>

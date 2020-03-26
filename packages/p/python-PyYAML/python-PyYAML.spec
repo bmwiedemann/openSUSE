@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PyYAML
-Version:        5.3
+Version:        5.3.1
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 19 07:23:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 5.3.1
+ * fixes boo#1165439 (cve-2020-1747) Prevents arbitrary code execution
+   during python/object/new constructor
+
+-------------------------------------------------------------------
 Tue Jan  7 09:55:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 5.3
