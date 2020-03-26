@@ -1,10 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:58:05 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.9+1585227448.g3a7e36e:
+  + upstream 1.1.9 release (2020-03-26)
+    * config.yaml: enable setting of repo priority in version_os_repo_mapping (PR #163)
+    * provision.sh: add SUSE:CA repo on ses5 (PR #166)
+    * Implement feature: "sesdev ssh DEP_ID NODE_ID COMMAND" (PR #175)
+    * Implement feature: "sesdev supportconfig DEPLOYMENT_ID NODE_ID" (PR #176)
+    * Implement feature: --encrypted-osds (PR #192)
+    * provision.sh: do not fail ses5 deployment if ntp not installed (PR #173)
+    * ceph_salt_deployment.sh: adapt Drive Group string to new syntax (PR #178)
+    * qa/health-ok.sh: wait for OSD nodes to show up (PR #180)
+    * Vagrantfile,sesdev.spec: require vagrant > 2.2.2 (PR #167)
+    * Use "filesystems:ceph:octopus:upstream" for default cephadm/container build (PR #170)
+    * Set "osd crush chooseleaf type = 0" via bootstrap ceph.conf in very small clusters (PR #183)
+    * ceph_salt_deployment.sh: Fetch github PRs when installing from src (PR #190)
+
+-------------------------------------------------------------------
 Fri Mar 13 11:02:12 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.8+1584097308.ga30c06e:
   + upstream 1.1.8 release (2020-03-13)
     * seslib: remove host's virtual networks on destroy (PR #102)
-    * Jenkinsfile.integration for PR testing (PR #118, PR #154) 
+    * Jenkinsfile.integration for PR testing (PR #118, PR #154)
     * prometheus and alertmanager tunnels (PR #148)
     * tests: enable unit testing via tox (PR #151)
     * seslib: stop printing misleading device names (PR #150)
