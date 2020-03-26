@@ -487,4 +487,19 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>768438</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>885bcc08c77e14f0ed5e4a6ceca8824e</srcmd5>
+    <version>5.7.0</version>
+    <time>1585265004</time>
+    <user>dimstar_suse</user>
+    <comment>For staging:I to fix py3 only build
+
+- Update to 5.7.0:
+  * Various fixes to build with updated kernel/etc.
+- Remove merged patch pr_1665.patch and pr_1364.patch
+- Update patch skip-obs.patch
+- Remove skip-test-missing-warnings.patch as it can be fixed by
+  properly calling the tests</comment>
+    <requestid>784805</requestid>
+  </revision>
 </revisionlist>
