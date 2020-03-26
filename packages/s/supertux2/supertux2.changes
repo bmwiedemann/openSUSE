@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 25 21:46:03 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 0.6.1.1:
+  * unrelated bugfix release, no change in distribution build
+- Update to version 0.6.1:
+  * Rework of the first 3 Bonus Worlds
+  * Added 3 new bonus worlds to the core game
+  * Improvements to the story mode
+  * Addition of Ghost Forest to the Story Mode
+  * New Backgrounds and Music by BlasterMaster
+  * Tiles and Sprites Improvements by Alzter, weluvgoatz and RustyBox
+  * New enemy: The Ghoul
+  * Fixes and optimizations (Fixing buggy controls, game speed, etc.)
+  * Level Editor Improvements, Fixes and Optimisations
+  * Revamp of the Credits Menu
+  * Blocks (and other objects behaving like blocks, such as lanterns) no longer jitter when stacked on top of one another
+  * Trampolines as bonus block contents no longer hurt Tux
+  * An issue causing music not to get saved in the level editor was fixed
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Apr  3 11:50:28 UTC 2019 - mvetter@suse.com
 
 - Add BuildRequire libboost_system-devel to fix build

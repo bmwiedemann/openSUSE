@@ -1,7 +1,7 @@
 #
 # spec file for package supertux2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   supertux
 Name:           supertux2
-Version:        0.6.0
+Version:        0.6.1.1
 Release:        0
 Summary:        Jump'n run game
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-1.0-only
 Group:          Amusements/Games/Action/Arcade
-URL:            http://supertux.github.io/
+URL:            https://supertux.github.io/
 Source:         https://github.com/SuperTux/supertux/releases/download/v%{version}/SuperTux-v%{version}-Source.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -45,14 +45,10 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gcc-PIE
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 SuperTux is a classic 2D jump'n run sidescroller game in a similar
@@ -82,12 +78,6 @@ rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
 %suse_update_desktop_file %{name}
 %fdupes %{buildroot}
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %files
 %doc README.md NEWS.md
 %license LICENSE.txt
@@ -98,8 +88,5 @@ rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
 %{_datadir}/pixmaps/%{name}.*
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/metainfo/%{name}.appdata.xml
-%if %{?suse_version} < 1500
-%dir %{_datadir}/metainfo
-%endif
 
 %changelog

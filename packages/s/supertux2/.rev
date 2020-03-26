@@ -56,4 +56,13 @@
     <comment>Build SuperTux2 with libraqm support</comment>
     <requestid>694791</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>118291e7d8f0d7ce435f927eb93703cc</srcmd5>
+    <version>0.6.1.1</version>
+    <time>1585262040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1.1
+- Clean up spec file (forwarded request 788363 from simonpuchert)</comment>
+    <requestid>788452</requestid>
+  </revision>
 </revisionlist>
