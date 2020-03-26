@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-jsonschema
-# v3 incompatibility with OpenStack raised upstream at
-# https://github.com/Julian/jsonschema/issues/604
 Version:        3.2.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
 URL:            https://github.com/Julian/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
+Patch0:         webcolors.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module idna}
@@ -63,6 +62,7 @@ for Python (supporting 2.6+ including Python 3).
 
 %prep
 %setup -q -n jsonschema-%{version}
+%patch0 -p1
 
 %build
 %python_build

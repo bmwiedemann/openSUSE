@@ -192,4 +192,13 @@
     <comment></comment>
     <requestid>750236</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5bc21fd8b720c121d50881c1debe0f51</srcmd5>
+    <version>3.2.0</version>
+    <time>1585264865</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new webcolors:
+  * webcolors.patch</comment>
+    <requestid>784158</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:44:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new webcolors:
+  * webcolors.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 06:06:52 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.2.0:
