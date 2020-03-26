@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-websockify
 Version:        0.9.0
 Release:        0
 Summary:        WebSocket to TCP proxy/bridge
 License:        LGPL-3.0-only AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/novnc/websockify
 Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
@@ -34,13 +34,15 @@ BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %if 0%{?suse_version}
 Recommends:     python-jwcrypto
 Recommends:     python-redis
@@ -59,7 +61,6 @@ the target in both directions.
 
 %package -n python-websockify-common
 Summary:        Common data files for the Websockify TCP proxy/bridge
-Group:          Development/Languages/Python
 Provides:       %{python_module websockify-common = %{version}}
 
 %description -n python-websockify-common
