@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 17:07:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update dependencies versions and replace python-Flask-Security
+  with python-Flask-Security-Too (fixes boo#1166991)
+
+-------------------------------------------------------------------
 Mon Mar 16 10:34:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 4.19 (boo#1166681)
