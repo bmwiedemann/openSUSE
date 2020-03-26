@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:29:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.5:
+  Fixes and improvements:
+  * prosody / mod_posix: Support for command-line flags to
+    override ‘daemonize’ config option
+  Minor changes:
+  * mod_websocket: Clear mask bit when reflecting ping frames
+    (fixes #1484: Websocket masks pong answer)
+
+-------------------------------------------------------------------
 Mon Jan 20 08:15:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.4:

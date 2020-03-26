@@ -264,4 +264,18 @@
   * net.resolvers.basic: Fix resolution of IPv6 literals (in brackets) #1459</comment>
     <requestid>765696</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>524bda95577c2dacad72a808bf9bfd19</srcmd5>
+    <version>0.11.5</version>
+    <time>1585261999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.5:
+  Fixes and improvements:
+  * prosody / mod_posix: Support for command-line flags to
+    override ‘daemonize’ config option
+  Minor changes:
+  * mod_websocket: Clear mask bit when reflecting ping frames
+    (fixes #1484: Websocket masks pong answer)</comment>
+    <requestid>788427</requestid>
+  </revision>
 </revisionlist>
