@@ -1,7 +1,7 @@
 #
 # spec file for package python-gtk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,10 +106,10 @@ chmod +x %{buildroot}%{_libdir}/pygtk/2.0/{,*/}*.py
 %license COPYING
 %doc AUTHORS NEWS README MAPPING ChangeLog THREADS
 %exclude %{_docdir}/%{name}/html/
-%{python_sitearch}/gtk-2.0/gtk/
-%{python_sitearch}/gtk-2.0/atk.so
-%{python_sitearch}/gtk-2.0/gtkunixprint.so
-%{python_sitearch}/gtk-2.0/pango*.so
+%{python2_sitearch}/gtk-2.0/gtk/
+%{python2_sitearch}/gtk-2.0/atk.so
+%{python2_sitearch}/gtk-2.0/gtkunixprint.so
+%{python2_sitearch}/gtk-2.0/pango*.so
 
 %files devel
 %{_bindir}/pygtk-codegen-2.0

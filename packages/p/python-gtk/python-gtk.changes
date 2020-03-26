@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 13:27:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure we build with py2 only
+
+-------------------------------------------------------------------
 Wed Nov 27 14:21:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch:
