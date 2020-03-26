@@ -1,7 +1,7 @@
 #
 # spec file for package python-semantic_version
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semantic_version
-Version:        2.8.2
+Version:        2.8.4
 Release:        0
 Summary:        A library implementing the 'SemVer' scheme
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rbarrois/python-semanticversion
 Source:         https://files.pythonhosted.org/packages/source/s/semantic_version/semantic_version-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +47,7 @@ It follows strictly the 2.0.0 version of the SemVer scheme.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
