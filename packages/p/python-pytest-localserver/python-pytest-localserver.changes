@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:16:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %pytest call for testing
+
+-------------------------------------------------------------------
 Fri Feb 22 21:12:05 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_bindir.patch making test suite pass by removing

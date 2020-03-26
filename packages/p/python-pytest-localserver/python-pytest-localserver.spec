@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-localserver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,6 @@ Version:        0.5.0
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://bitbucket.org/pytest-dev/pytest-localserver
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest-localserver-%{version}.tar.gz
 Patch0:         remove_bindir.patch
@@ -60,7 +59,7 @@ no further!
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} -v -s
+%pytest -s
 
 %files %{python_files}
 %doc README
