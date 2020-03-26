@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:10:44 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.1.2
+  * Extension of validation tests with *XMLSchema11* validator
+  * Fixed several bugs
+
+-------------------------------------------------------------------
 Tue Mar 10 09:08:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.1.1

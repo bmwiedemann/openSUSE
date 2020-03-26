@@ -19,18 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/brunato/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
 BuildRequires:  %{python_module elementpath >= 1.4.0}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-elementpath >= 1.4.0
+Requires:       python-lxml
 BuildArch:      noarch
 %python_subpackages
 
