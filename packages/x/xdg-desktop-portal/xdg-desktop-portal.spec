@@ -24,7 +24,10 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-UPSTREAM xdg-dp-port-pipewire-3-api.patch -- Port to use new pipewire-3.0 api
+Patch0:         xdg-dp-port-pipewire-3-api.patch
 
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
@@ -35,7 +38,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.2
-BuildRequires:  pkgconfig(libpipewire-0.2) >= 0.2.6
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.2.90
 BuildRequires:  pkgconfig(libportal)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
@@ -68,6 +71,7 @@ This package contains convenience files for developers.
 
 %build
 export LANG=C.UTF-8
+autoreconf -fiv
 %configure \
 	--enable-geoclue \
 	--enable-pipewire \

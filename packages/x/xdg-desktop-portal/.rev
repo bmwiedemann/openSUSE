@@ -129,4 +129,12 @@
     <comment>- Set encoding before building to fix a build error in SLE. (forwarded request 769508 from alarrosa)</comment>
     <requestid>769942</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>204528645ab456d9a773a3d36f7f2bf0</srcmd5>
+    <version>1.6.0</version>
+    <time>1585261854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784414</requestid>
+  </revision>
 </revisionlist>

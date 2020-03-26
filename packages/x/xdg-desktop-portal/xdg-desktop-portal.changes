@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 21 13:17:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add xdg-dp-port-pipewire-3-api.patch: Port to use new
+  pipewire-3.0 api. Following this, replace
+  pkgconfig(libpipewire-2.0) with pkgconfig(libpipewire-3.0)
+  BuildRequires. Also add libtool BuildRequires and pass autoreconf
+  as the patch touches the buildsystem.
+
+-------------------------------------------------------------------
 Fri Jan 31 11:57:16 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Set encoding before building to fix a build error in SLE.
