@@ -115,6 +115,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
   gh#os-autoinst/os-autoinst-distri-opensuse#7278: '20190423'
   gh#os-autoinst/os-autoinst-distri-opensuse#8348: '20190902'
+  gh#os-autoinst/os-autoinst-distri-opensuse#9883: '20200324'
   kde#408594: '20191025'
   kde#412970: '20191018'
   poo#33283: '20190810'
@@ -448,9 +449,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200324'
-published: '20200322'
-publishing: '20200322'
+    <value>failed: ''
+published: '20200324'
+publishing: '20200324'
 testing: '20200324'
 </value>
   </attribute>
