@@ -1,7 +1,7 @@
 #
 # spec file for package python-fasteners
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without tests
+%bcond_without python2
 Name:           python-fasteners
 Version:        0.14.1
 Release:        0
 Summary:        A python package that provides useful locks
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/harlowja/fasteners
 Source:         https://files.pythonhosted.org/packages/source/f/fasteners/fasteners-%{version}.tar.gz
+BuildRequires:  %{python_module monotonic >= 0.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-monotonic >= 0.1
 Requires:       python-six
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  %{python_module monotonic >= 0.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testtools}
+%if %{with python2}
 BuildRequires:  python-futures
 %endif
 %python_subpackages
@@ -58,14 +57,8 @@ It includes the following.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-pushd fasteners/tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix} ./
-}
-popd
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE
