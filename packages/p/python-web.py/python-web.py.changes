@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:10:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the test requirements to pull in only what's really needed
+- The cheroot is hard requirement by upstream specification so require it
+
+-------------------------------------------------------------------
+Wed Mar 25 18:16:04 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- only recommend but not require python-cheroot
+
+-------------------------------------------------------------------
+Wed Mar 25 14:09:58 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.51
+  * Update setup.py to pack tests directory and publish to pypi.
+  * New session store MemoryStore, used to save a session in memory.
+  * Should be useful where there are limited fs writes to the disk, like
+    flash memories. #174
+  * Fixed: not support samesite=none. #592
+  * Fixed Python-3 compatibility issues: #574, #576.
+  * Support tuple and set in sqlquote().
+  * Drop support for SQL driver pgdb. It was dead, you cannot even find its
+    website or download link.
+  * Drop support for SQL driver psycopg. The latest version was released in
+    2006 (14 years ago), please use psycopg2 instead.
+  * Removed function web.safemarkdown. if it's used in your application, you
+    can install the Markdown module from pypi
+    (https://pypi.org/project/Markdown/), then replace web.safemarkdown() by
+    markdown.markdown().
+- deleted patches
+  - 0001-webpy-572-enable-python-3.8.patch (upstreamed)
+- test package
+
+-------------------------------------------------------------------
+Thu Mar 12 10:50:25 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- added back-port patch 0001-webpy-572-enable-python-3.8.patch
+  for compability with Python 3.8
+
+-------------------------------------------------------------------
 Fri Sep 27 19:16:21 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Updated to 0.40

@@ -1,7 +1,7 @@
 #
 # spec file for package python-web.py
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-web.py
-Version:        0.40
+Version:        0.51
 Release:        0
-Url:            http://webpy.org/
 Summary:        web.py: makes web apps
-License:        SUSE-Public-Domain and BSD-3-Clause
-Group:          Development/Languages/Python
-Source:         https://pypi.io/packages/source/w/web.py/web.py-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  python-devel
+License:        SUSE-Public-Domain AND BSD-3-Clause
+URL:            https://webpy.org/
+Source:         https://files.pythonhosted.org/packages/source/w/web.py/web.py-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+Requires:       python-cheroot
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module cheroot}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{pythons}
+# /SECTION
 %python_subpackages
 
 %description
@@ -45,8 +48,10 @@ Think about the ideal way to write a web app. Write the code to make it happen.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/*
 
 %changelog
