@@ -584,4 +584,14 @@
   * Mark strings as raw</comment>
     <requestid>780397</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>2db234a1efb30d44aef1c4cb6b2c64d4</srcmd5>
+    <version>5.4.4</version>
+    <time>1585265237</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip temporarily test_requirement_parsing as it requires
+  old virtualenv 16 package, the 20.x changed api and the tests
+  infrastructure would need rewrite</comment>
+    <requestid>786399</requestid>
+  </revision>
 </revisionlist>
