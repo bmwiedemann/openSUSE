@@ -1,7 +1,7 @@
 #
 # spec file for package python-cached-property
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        1.5.1
 Release:        0
 Summary:        A decorator for caching properties in classes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pydanny/cached-property
 Source:         https://files.pythonhosted.org/packages/source/c/cached-property/cached-property-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip test that rely on wrong freezegun behaviour
@@ -53,12 +52,7 @@ and 3.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-python2 -m nose -e 'test_(async|coroutine)_cached_property'
-%if %python_version_nodots < 35
-python3 -m nose -e 'test_(async|coroutine)_cached_property'
-%else
-python3 -m nose
-%endif
+%python_expand nosetests-%{$python_bin_suffix} -v -e 'test_(async|coroutine)_cached_property'
 
 %files %{python_files}
 %license LICENSE
