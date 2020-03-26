@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.schema%{psuffix}
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Zope interface extension for defining data schemas
 License:        ZPL-2.1
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.event
-Requires:       python-zope.interface >= 3.6.0
+Requires:       python-zope.interface >= 5.0.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.event}
