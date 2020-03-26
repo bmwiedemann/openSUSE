@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycares
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pycares
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/saghul/pycares
+URL:            http://github.com/saghul/pycares
 Source:         https://files.pythonhosted.org/packages/source/p/pycares/pycares-%{version}.tar.gz
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}

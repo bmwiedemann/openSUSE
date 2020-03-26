@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 19 12:52:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.1.1
+  * misc: add Python 3.8 classifier
+  * ci: run tests in Python 3.8 too
+  * test: remove no longer valid test
+  * test: remove empty test
+  * errno: return str from errno.strerror
+  * core: fix crash when processing .onion queries
+  * core: fix support for ARES_OPT_LOOKUPS option
+  * misc: simplify non-ascii txt test example
+  * core: fix long TXT record with non-ascii bytes
+
+-------------------------------------------------------------------
 Thu Mar 21 13:59:43 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.0.0
