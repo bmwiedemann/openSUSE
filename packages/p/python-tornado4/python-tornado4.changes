@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:02:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Mon Feb  3 19:17:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patches to work with python3.8 (kinda):

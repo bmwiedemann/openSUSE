@@ -63,18 +63,18 @@ BuildRequires:  %{python_module backports.ssl_match_hostname}
 BuildRequires:  %{python_module certifi}
 %endif
 %if %{with python2}
+BuildRequires:  python-backports_abc
 BuildRequires:  python-futures
 BuildRequires:  python-singledispatch
 %endif
-# SECTION test requirements
-BuildRequires:  python-backports_abc
-%if %{python3_version_nodots} < 35
+%if 0%{?suse_version} < 1500
 BuildRequires:  python3-backports_abc
 %endif
 # /SECTION
 %if %{python_version_nodots} < 35
 Requires:       python-backports_abc
 %endif
+
 %ifpython2
 Requires:       python-singledispatch
 %if 0%{?suse_version} || 0%{?fedora_version} || 0%{?rhel} >= 8
