@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:32:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Jan  3 14:16:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

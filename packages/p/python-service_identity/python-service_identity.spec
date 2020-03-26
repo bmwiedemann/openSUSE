@@ -74,6 +74,6 @@ relevant RFCs too.
 %license LICENSE
 %doc AUTHORS.rst README.rst
 %{python_sitelib}/%{oname}
-%{python_sitelib}/%{oname}-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/%{oname}-%{version}-py*.egg-info
 
 %changelog
