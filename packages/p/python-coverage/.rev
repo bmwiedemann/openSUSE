@@ -353,4 +353,12 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
   * Multiprocessing support in Python 3.8 was broken, but is now fixed</comment>
     <requestid>730674</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>18302af09f36b57982ad071bc74accdf</srcmd5>
+    <version>4.5.4</version>
+    <time>1585265288</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distros by buildrequiring a new-enough pytest</comment>
+    <requestid>787145</requestid>
+  </revision>
 </revisionlist>

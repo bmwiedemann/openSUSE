@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/coverage/covera
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module unittest-mixins}
 BuildRequires:  %{python_module xml}
@@ -74,7 +74,7 @@ ln -sf coverage-%{python3_version} %{buildroot}%{_bindir}/coverage3
 %check
 # GetZipBytesTest.test_get_encoded_zip_files - needs zip command
 # test_egg - needs generated egg file
-# test_doctest - weird doctest importing 
+# test_doctest - weird doctest importing
 # test_unicode - differs between py2/py3
 # test_version - checks for non-compiled variant, we ship only compiled one
 # test_multiprocessing_with_branching - whitespace issue in regexp
