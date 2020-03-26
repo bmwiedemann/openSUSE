@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 14 15:50:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.4.2:
+  * removing the usage of `__file__`, that was breaking PyOxidizer.
+  * fixes for the future Python 3.9.
+  * some fixes for the future Python 3.10.
+
+-------------------------------------------------------------------
 Fri Dec 20 19:11:44 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.4.1:

@@ -20,7 +20,7 @@
 #
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-decorator
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause
