@@ -1,7 +1,7 @@
 #
 # spec file for package python-tomlkit
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-tomlkit
-Version:        0.5.8
+Version:        0.5.11
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/tomlkit
 Source:         https://files.pythonhosted.org/packages/source/t/tomlkit/tomlkit-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
-BuildRequires:  python-functools32
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+BuildRequires:  python-functools32
+%endif
 %ifpython2
 Requires:       python-enum34
 Requires:       python-functools32

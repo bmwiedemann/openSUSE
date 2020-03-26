@@ -34,4 +34,19 @@
     <comment></comment>
     <requestid>751845</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b0357c5b06e2b7fade29cca87c6a219</srcmd5>
+    <version>0.5.11</version>
+    <time>1585264889</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2
+
+- version update to 0.5.11
+  * Fix containers and our of order tables dictionary behavior (#82))
+  * Fixed out of order tables not behaving properly (#79)
+  * Fixed the behavior for out of order tables (#68).
+  * Fixed parsing errors when single quotes are present in a table name (#71).
+  * Fixed parsing errors when parsing some table names (#76).</comment>
+    <requestid>784176</requestid>
+  </revision>
 </revisionlist>
