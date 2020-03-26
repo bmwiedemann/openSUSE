@@ -41,4 +41,12 @@
     <comment>- Disable tests that are tied to sphinx and got utterly exploded</comment>
     <requestid>713386</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>dd8333e7f7573e2bf232f87a7e52da93</srcmd5>
+    <version>1.4.0</version>
+    <time>1585265035</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784842</requestid>
+  </revision>
 </revisionlist>

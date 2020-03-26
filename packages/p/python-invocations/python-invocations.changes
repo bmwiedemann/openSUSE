@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:35:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Jul  4 12:02:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests that are tied to sphinx and got utterly exploded

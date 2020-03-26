@@ -1,7 +1,7 @@
 #
 # spec file for package python-invocations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-invocations
 Version:        1.4.0
 Release:        0
 Summary:        Reusable Invoke tasks
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pyinvoke/invocations
 Source:         https://github.com/pyinvoke/invocations/archive/%{version}.tar.gz
 Patch0:         invocations-no-bundled.patch
@@ -41,7 +41,6 @@ BuildRequires:  %{python_module tabulate >= 0.7.5}
 BuildRequires:  %{python_module tqdm >= 4.8.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
 Requires:       python-blessings >= 1.6
 Requires:       python-invoke >= 1.0
 Requires:       python-lexicon
@@ -51,6 +50,9 @@ Requires:       python-six
 Requires:       python-tabulate >= 0.7.5
 Requires:       python-tqdm >= 4.8.1
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %ifpython2
 Requires:       python-enum34
 %endif
