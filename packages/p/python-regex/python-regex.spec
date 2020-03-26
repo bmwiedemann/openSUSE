@@ -1,7 +1,7 @@
 #
 # spec file for package python-regex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-regex
-Version:        2019.08.19
+Version:        2020.2.20
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Python-2.0
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://bitbucket.org/mrabarnett/mrab-regex
 Source:         https://files.pythonhosted.org/packages/source/r/regex/regex-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,12 +56,11 @@ An alternate regex implementation. It differs from "re" in that
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B %{buildroot}%{$python_sitearch}/regex/test/test_regex.py
-}
+export PYTHONDONTWRITEBYTECODE=1
+%pytest_arch %{buildroot}%{$python_sitearch}/regex
 
 %files %{python_files}
-%doc README
+%doc README.rst
 %doc docs/*
 %{python_sitearch}/*
 
