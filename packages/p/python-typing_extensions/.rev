@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>746074</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ff1a181a528e70ef879f2d8f72076254</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1585264870</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2 available</comment>
+    <requestid>784168</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing_extensions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,33 @@
 
 %define modname typing_extensions
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-typing_extensions
 Version:        3.7.4.1
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/python/typing/
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-%if %{python3_version_nodots} < 35
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-typing >= 3.7.4
+%endif
+%if 0%{?suse_version} < 1500
 BuildRequires:  python3-typing >= 3.7.4
 %endif
-BuildRequires:  python2-typing >= 3.7.4
 %if 0%{?suse_version} > 1320
 BuildRequires:  python3-testsuite
 %endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 %if %{python3_version_nodots} < 35
-Requires:       python3-typing >= 3.7.4
+Requires:       python-typing >= 3.7.4
 %endif
 %ifpython2
-Requires:       python2-typing >= 3.7.4
+Requires:       python-typing >= 3.7.4
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
