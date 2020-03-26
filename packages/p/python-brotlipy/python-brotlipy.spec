@@ -1,7 +1,7 @@
 #
 # spec file for package python-brotlipy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-brotlipy
 Version:        0.7.0
 Release:        0
 Summary:        Python binding to the Brotli library
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/python-hyper/brotlipy
-Source0:        https://pypi.io/packages/source/b/brotlipy/brotlipy-%{version}.tar.gz
+URL:            https://github.com/python-hyper/brotlipy
+Source0:        https://files.pythonhosted.org/packages/source/b/brotlipy/brotlipy-%{version}.tar.gz
 # Copy of https://github.com/google/brotli/tree/46c1a881b41bb638c76247558aa04b1591af3aa7/tests/testdata
 Source1:        testdata.tgz
 Source2:        https://raw.githubusercontent.com/python-hyper/brotlipy/master/test/conftest.py
@@ -37,9 +37,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libbrotli-devel
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.0.0
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %ifpython2
 Requires:       python-enum34
 %endif
@@ -77,7 +79,7 @@ export USE_SHARED_BROTLI=1
 
 %check
 # the skipped tests are benchmarks which can be flaky in OBS
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest -k 'not (test_streaming_compression or test_streaming_compression_flush)'
+%pytest_arch -k 'not (test_streaming_compression or test_streaming_compression_flush)'
 
 %files %{python_files}
 %license LICENSE
