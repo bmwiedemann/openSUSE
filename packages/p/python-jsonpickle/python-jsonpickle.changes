@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:25:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Feb 28 18:31:13 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add PR292-Python38.patch to fix Python 3.8 incompatibilities

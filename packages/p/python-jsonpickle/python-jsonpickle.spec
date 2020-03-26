@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname jsonpickle
+%bcond_without python2
 Name:           python-jsonpickle
 Version:        1.3
 Release:        0
 Summary:        Python library for serializing any arbitrary object graph into JSON
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jsonpickle/jsonpickle
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/jsonpickle-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PR292-Python38.patch gh#jsonpickle/jsonpickle#281 mcepl@suse.com
@@ -36,23 +36,22 @@ Recommends:     python-simplejson
 Suggests:       python-demjson
 Suggests:       python-ujson
 Suggests:       python-yajl
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python
-BuildRequires:  python3
+BuildRequires:  %{pythons}
 # /SECTION
-# SECTION python 2 test requirements
+%if %{with python2}
 BuildRequires:  python-enum34
-# /SECTION
-# SECTION python 2 requirements
+%endif
+%ifpython2
 Suggests:       python-feedparser
 Suggests:       python-jsonlib
-BuildArch:      noarch
-# /SECTION
+%endif
 %python_subpackages
 
 %description
