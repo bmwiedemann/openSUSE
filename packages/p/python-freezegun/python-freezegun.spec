@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezegun
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-freezegun
-Version:        0.3.12
+Version:        0.3.15
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/spulec/freezegun
 Source:         https://files.pythonhosted.org/packages/source/f/freezegun/freezegun-%{version}.tar.gz
 # gh#spulec/freezegun#259
-Patch0:         remove_dependency_on_mock.patch
-# gh#spulec/freezegun#280 Removal of nose dependency
 Patch1:         denose.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil > 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{pythons}
-%ifpython2
-BuildRequires:  python-mock
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-python-dateutil > 2.0
 Requires:       python-six
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description

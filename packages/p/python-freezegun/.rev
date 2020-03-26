@@ -74,4 +74,19 @@
   setuptools anymore). Use %{pythons} macro now.</comment>
     <requestid>748891</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c42597640468eba589de09fc6e6f612d</srcmd5>
+    <version>0.3.15</version>
+    <time>1585264824</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2 available
+
+- update to 0.3.15:
+  * Fix locale timestamp bug. CC #328
+  * Fix calendar.timegm behavior
+  * Fix for Py3.8
+  * Reset time.time_ns on stop
+- drop remove_dependency_on_mock.patch</comment>
+    <requestid>783995</requestid>
+  </revision>
 </revisionlist>
