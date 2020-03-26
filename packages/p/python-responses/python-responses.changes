@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:22:52 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.10.12
+  - Fixed incorrect content-type in `add_callback()` when headers are provided as a list of tuples.
+  - Fixed invalid README formatted.
+  - Fixed string formatting in error message.
+  - Added Python 3.8 support
+  - Remove Python 3.4 from test suite matrix.
+  - The `response.request` object now has a `params` attribute that contains the query string parameters from the request that was captured.
+  - `add_passthru` now supports `re` pattern objects to match URLs.
+  - ConnectionErrors raised by responses now include more details on the request that was attempted and the mocks registered.
+  - Fixed regression with `add_callback()` and content-type header.
+  - Fixed implicit dependency on urllib3>1.23.0
+  - Fixed cookie parsing and enabled multiple cookies to be set by using a list of
+    tuple values.
+  - Added pypi badges to README.
+  - Fixed formatting issues in README.
+  - Quoted cookie values are returned correctly now.
+  - Improved compatibility for pytest 5
+  - Module level method names are no longer generated dynamically improving IDE navigation.
+
+-------------------------------------------------------------------
 Thu Oct 17 20:08:20 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - switch to pytest4 actually not pytest3 
