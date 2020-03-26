@@ -95,7 +95,7 @@ rm src/pip/_vendor/certifi/cacert.pem
 %if %{with test}
 %check
 export PYTHONPATH=build/lib
-%pytest -k 'not (network or test_config_file_venv_option or test_build_env_allow_only_one_install or test_build_env_requirements_check or test_build_env_overlay_prefix_has_priority or test_build_env_isolation)' tests/unit
+%pytest -k 'not network and not (test_build_env_allow_only_one_install or test_build_env_requirements_check or test_build_env_overlay_prefix_has_priority or test_build_env_isolation or test_should_cache_git_sha)' tests/unit
 %endif
 
 %pre

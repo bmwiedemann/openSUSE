@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:42:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip virtualenv tests that are pinned to old virtualenv 16
+
+-------------------------------------------------------------------
 Wed Feb  5 10:19:17 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 20.0.2

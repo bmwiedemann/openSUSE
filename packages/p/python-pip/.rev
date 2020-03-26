@@ -586,4 +586,12 @@
    --editable, -e</comment>
     <requestid>770248</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>3071a5f63c700dfab09ba17809c134a4</srcmd5>
+    <version>20.0.2</version>
+    <time>1585265235</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip virtualenv tests that are pinned to old virtualenv 16</comment>
+    <requestid>786378</requestid>
+  </revision>
 </revisionlist>
