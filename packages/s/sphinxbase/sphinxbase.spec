@@ -72,6 +72,7 @@ Requires:       %{name} = %{version}
 Requires:       alsa-devel
 Requires:       lapack-devel
 Requires:       libsndfile-devel
+Conflicts:      sphinxbase5-devel
 
 %description devel
 devel files for %{name}-%{version}
@@ -83,6 +84,8 @@ different tasks and applications.
 Summary:        Python3 bindings for sphinxbase
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
+Conflicts:      python3-sphinxbase5
+Conflicts:      python3-pocketsphinx-python <= 0.1.3
 
 %description -n python3-sphinxbase
 Python3 bindings for %{name}-%{version}
