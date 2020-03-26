@@ -68,4 +68,14 @@
 - Dropped python2 subpackage due to dropping backports dependency.</comment>
     <requestid>764902</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fa0c2775784f33e35dd5ed37a9a1f7d</srcmd5>
+    <version>4.79</version>
+    <time>1585265272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.79:
+  * cython compatibility fix
+  * removed explicit version checks of dependencies such as serpent</comment>
+    <requestid>786813</requestid>
+  </revision>
 </revisionlist>
