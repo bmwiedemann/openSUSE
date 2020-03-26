@@ -1,7 +1,7 @@
 #
 # spec file for package python-aspectlib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 # Test requires network connection
 %bcond_with     test
-%define         oldpython python
 Name:           python-aspectlib
 Version:        1.4.2
 Release:        0
-License:        BSD-2-Clause
 Summary:        Aspect-oriented programming
-Url:            https://github.com/ionelmc/python-aspectlib
-Group:          Development/Languages/Python
+License:        BSD-2-Clause
+URL:            https://github.com/ionelmc/python-aspectlib
 Source:         https://files.pythonhosted.org/packages/source/a/aspectlib/aspectlib-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-fields
+Recommends:     python-tornado
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
+%if %{with python2}
 BuildRequires:  python-mock
 BuildRequires:  python-trollius
 %endif
-BuildRequires:  fdupes
-Requires:       python-fields
-Recommends:     python-tornado
-%ifpython2
-Requires:       %{oldpython}-trollius
 %endif
-BuildArch:      noarch
-
+%ifpython2
+Requires:       python-trollius
+%endif
 %python_subpackages
 
 %description
@@ -67,12 +67,12 @@ framework.
 
 %if %{with test}
 %check
-%python_expand py.test-%{$python_bin_suffix} -vv --ignore=src
+%pytest --ignore=src
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc AUTHORS.rst CHANGELOG.rst LICENSE README.rst
+%license LICENSE
+%doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/*
 
 %changelog
