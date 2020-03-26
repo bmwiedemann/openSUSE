@@ -17,19 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-%define modname pendulum
-Name:           python-%{modname}
-Version:        2.0.5
+Name:           python-pendulum
+Version:        2.1.0
 Release:        0
 Summary:        Python datetimes made easy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pendulum.eustace.io
-Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+# https://github.com/sdispater/pendulum/issues/453
+Source:         https://github.com/sdispater/pendulum/archive/%{version}.tar.gz
+BuildRequires:  %{python_module dateutil >= 2.6}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz >= 2018.3}
+BuildRequires:  %{python_module pytzdata >= 2018.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
+BuildRequires:  python-typing
+BuildRequires:  python3-dephell
 Requires:       python-python-dateutil >= 2.6
 Requires:       python-pytz >= 2018.3
 Requires:       python-pytzdata >= 2018.3
@@ -40,7 +46,8 @@ Requires:       python-typing
 Python datetimes made easy
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n pendulum-%{version}
+%{dephell_gensetup}
 
 %build
 export CFLAGS="%{optflags}"
@@ -48,11 +55,14 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitelib}/*
 
 %changelog
