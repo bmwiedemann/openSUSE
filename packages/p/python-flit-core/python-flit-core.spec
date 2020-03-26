@@ -29,6 +29,7 @@ BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  fdupes
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dephell
 Requires:       python-pytoml
@@ -40,7 +41,7 @@ Flit is a simple way to put Python packages and modules on PyPI.
 
 %prep
 %setup -q -n flit_core-%{version}
-dephell deps convert --from pyproject.toml --to setup.py
+%dephell_gensetup
 
 %build
 %python_build
