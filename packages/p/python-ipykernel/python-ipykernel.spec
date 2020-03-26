@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_jupyter_client_6.patch -- https://github.com/ipython/ipykernel/pull/489
+Patch0:         fix_jupyter_client_6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -83,7 +85,7 @@ This package provides the IPython kernel for Jupyter.
 This package provides the jupyter components.
 
 %prep
-%setup -q -n ipykernel-%{version}
+%autosetup -p1 -n ipykernel-%{version}
 
 %build
 %python_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:31:10 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Add fix_jupyter_client_6.patch
+  Fixes issue with jupyter-client > 6
+  From: https://github.com/ipython/ipykernel/pull/489
+  See: https://github.com/jupyter/jupyter_client/issues/523
+
+-------------------------------------------------------------------
 Tue Jan 28 15:46:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 5.1.4
