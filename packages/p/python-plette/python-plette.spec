@@ -1,7 +1,7 @@
 #
 # spec file for package python-plette
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plette
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Structured Pipfile and Pipfile.lock models
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/plette
-Source:         https://github.com/sarugaku/plette/archive/0.2.2/plette-%{version}.tar.gz
+Source:         https://github.com/sarugaku/plette/archive/%{version}/plette-%{version}.tar.gz
 # See https://github.com/sarugaku/plette/issues/8
 Patch0:         ignore-hashlib-case.patch
 BuildRequires:  %{python_module setuptools >= 36.2.2}

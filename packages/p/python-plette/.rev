@@ -16,4 +16,12 @@
     <comment>- Skip test test_pipfile_load as it fails with new tomlkit</comment>
     <requestid>717924</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9e99378c49eefb108edbc3f82d28ea2</srcmd5>
+    <version>0.2.3</version>
+    <time>1585265177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785648</requestid>
+  </revision>
 </revisionlist>
