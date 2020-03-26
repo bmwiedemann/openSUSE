@@ -37,6 +37,10 @@ Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 Patch4:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-UPSTREAM mutter-fix-mesa20.patch sndirsch@suse.de -- EGL: Include EGL/eglmesaext.h
 Patch5:         mutter-fix-mesa20.patch
+# PATCH-FIX-UPSTREAM 0001-Update-to-PipeWire-0.3-API.patch alarrosa@suse.de -- Port mutter to build with pipewire 0.3.0
+Patch6:         0001-Update-to-PipeWire-0.3-API.patch
+# PATCH-FIX-UPSTREAM mutter-wayland-fix-keyboard-move-resize-window.patch bsc#1159976, glgo#GNOME/mutter!997 alynx.zhou@suse.com -- Fix window keyboard move/resize mode in wayland
+Patch7:         mutter-wayland-fix-keyboard-move-resize-window.patch
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
 Patch1000:      mutter-SLE-bell.patch
@@ -71,7 +75,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.83
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(libpipewire-0.2) >= 0.2.5
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 136
@@ -158,6 +162,8 @@ applications that want to make use of the mutter library.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter

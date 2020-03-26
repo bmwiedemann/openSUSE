@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 13 02:17:24 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-wayland-fix-keyboard-move-resize-window.patch:
+  move some common code out of X11 only code blocks to fix it
+  (bsc#1159976, glgo#GNOME/mutter!997).
+
+-------------------------------------------------------------------
+Mon Mar 02 10:50:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Build with pipewire 0.3.0:
+  * Add 0001-Update-to-PipeWire-0.3-API.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 12:39:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rework mutter-fix-mesa20.patch: base it on mutter upstream commit
