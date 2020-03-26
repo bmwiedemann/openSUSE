@@ -1,7 +1,7 @@
 #
 # spec file for package python-path
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,15 @@
 %define skip_python2 1
 %define modname path
 Name:           python-path%{psuffix}
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT
 URL:            https://github.com/jaraco/path
 Source:         https://files.pythonhosted.org/packages/source/p/path/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 0.5
