@@ -27,6 +27,8 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
+Patch1:         vdagentd-work-around-GLib-s-fork-issues.patch
+Patch2:         vdagentd-init-static-uinput-before-fork.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel
@@ -61,6 +63,8 @@ Features:
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure \

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:33:15 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix issue of spice-vdagentd not shutting down (bsc#1166895)
+  vdagentd-work-around-GLib-s-fork-issues.patch
+  (This patch fixes a related issue)
+  vdagentd-init-static-uinput-before-fork.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 21:19:18 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to 0.20.0
