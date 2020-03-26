@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:19:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure to run without python2
+
+-------------------------------------------------------------------
 Thu Dec  6 13:25:04 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Run the tests
