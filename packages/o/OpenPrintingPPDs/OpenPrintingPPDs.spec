@@ -1,7 +1,7 @@
 #
 # spec file for package OpenPrintingPPDs
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           OpenPrintingPPDs
 BuildRequires:  cups
@@ -21,25 +22,21 @@ BuildRequires:  cups
 # because python-cups installs special rpm macros that adds Provides tags
 # for the printer drivers supported by the package,
 # see https://bugzilla.novell.com/show_bug.cgi?id=735865
-# but python-cups is not available for SLE10, regarding the suse_version value for SLE10
-# see http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?suse_version} > 1010
-BuildRequires:  python-cups
-%endif
+BuildRequires:  python3-cups
 Summary:        PPD files from OpenPrinting.org
-License:        GPL-2.0+ and MIT
-Group:          Hardware/Printing
 # The package version is the PPD-O-MATIC version mentioned in the PPD files
 # which is currently "PPD-O-MATIC (4.0.0 or newer)"
 # and/or the required minimal foomatic-rip version by the PPD files
 # which is currently "Foomatic 4.0.0"
 # (macro name can be only alphanumeric and '_' i.e. "foomatic-rip_version" does not work)
+License:        GPL-2.0-or-later AND MIT
+Group:          Hardware/Printing
 %define foomatic_rip_version 4.0.0
 # plus an additional trailing version number by openSUSE
 # so that openSUSE package upgrades get a strictly increasing sequence of versions:
 Version:        4.0.0.2
 Release:        0
-Url:            http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/query
+URL:            http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/query
 BuildArch:      noarch
 # The main-package OpenPrintingPPDs alone is useless because it does not contain any PPD files.
 # The PPD files are provided via its sub-packages depending on which kind of driver software
@@ -83,10 +80,10 @@ which need no driver.
 
 %package ghostscript
 Summary:        PPD files from OpenPrinting.org which use Ghostscript built-in drivers
-Group:          Hardware/Printing
 # This version is no typo because the PPDs are created at OpenPrinting.org
 # by PPD-O-MATIC version X.Y.Z which is the version of this package
 # and usually those PPDs require at least the same version of the foomatic-rip filter:
+Group:          Hardware/Printing
 Requires:       foomatic-filters >= %{foomatic_rip_version}
 Requires:       ghostscript-library
 
@@ -99,10 +96,10 @@ which use the Ghostscript driver pswrite.
 
 %package hpijs
 Summary:        PPD files from OpenPrinting.org which use the hpijs driver
-Group:          Hardware/Printing
 # This version is no typo because the PPDs are created at OpenPrinting.org
 # by PPD-O-MATIC version X.Y.Z which is the version of this package
 # and usually those PPDs require at least the same version of the foomatic-rip filter:
+Group:          Hardware/Printing
 Requires:       foomatic-filters >= %{foomatic_rip_version}
 Requires:       ghostscript-library
 Requires:       hplip-hpijs
@@ -115,7 +112,6 @@ which use the Ghostscript IJS driver
 
 %package postscript
 Summary:        PPD files from OpenPrinting.org for PostScript printers
-Group:          Hardware/Printing
 # Regardless that PPD files for PostScript printers do not require a driver
 # many PPD files from OpenPrinting.org for PostScript printers still
 # require the foomatic-rip filter which does not call 'gs' or another real driver program
@@ -123,6 +119,7 @@ Group:          Hardware/Printing
 # This version is no typo because the PPDs are created at OpenPrinting.org
 # by PPD-O-MATIC version X.Y.Z which is the version of this package
 # and usually those PPDs require at least the same version of the foomatic-rip filter:
+Group:          Hardware/Printing
 Requires:       foomatic-filters >= %{foomatic_rip_version}
 
 %description postscript

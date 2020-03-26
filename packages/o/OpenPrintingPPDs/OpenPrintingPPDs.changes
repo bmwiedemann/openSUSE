@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:59:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to python3-cups to generate the metadata as python2
+  is being disabled
+
+-------------------------------------------------------------------
 Sat Apr 29 18:32:13 UTC 2017 - bwiedemann@suse.com
 
 - call gzip -n to make build more reproducible
