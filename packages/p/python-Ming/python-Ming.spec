@@ -1,7 +1,7 @@
 #
 # spec file for package python-Ming
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Ming
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Bringing order to Mongo since 2009
 License:        MIT
