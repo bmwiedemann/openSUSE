@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wcwidth
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jquast/wcwidth
 Source:         https://files.pythonhosted.org/packages/source/w/wcwidth/wcwidth-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,9 +60,7 @@ release files, which this project aims to track.
 }
 
 %check
-pushd wcwidth/tests
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} test*.py
-popd
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
