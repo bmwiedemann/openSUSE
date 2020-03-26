@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:23:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.0
+  - Drop support for Python 3.4.
+  - Add support for Python 3.8.
+  - Drop support for legacy transaction APIs including
+    ``Transaction.register()`` and old ZODB3-style datamanagers. See
+    `issue 89
+    <https://github.com/zopefoundation/transaction/issues/89>`_.
+  - ``TransactionManager.run`` now commits/aborts the transaction
+    "active" after the execution of *func* (and no longer the initial
+    transaction which might already have been committed/aborted by *func*)
+    (`#58 <https://github.com/zopefoundation/transaction/issues/58>`_).
+    It aborts the transaction now for all exceptions raised by *func* - even
+    if it is only an instance of `BaseException` but not of `Exception`,
+    such as e.g. a ``SystemExit`` or ``KeyboardInterupt`` exception.
+  - Support abort hooks (symmetrically to commit hooks)
+    (`#77 <https://github.com/zopefoundation/transaction/issues/77>`_).
+  - Make Transaction drop references to its hooks, manager,
+    synchronizers and data after a successful ``commit()`` and after
+    *any* ``abort()``. This helps avoid potential cyclic references. See
+    `issue 82 <https://github.com/zopefoundation/transaction/issues/82>`_.
+  - Allow synchronizers to access ``Transaction.data()`` when their
+    ``afterCompletion`` method is called while aborting a transaction.
+  - Make it safe to call ``Transaction.abort()`` more than once. The
+    second and subsequent calls are no-ops. Previously a
+    ``ValueError(Foreign transaction)`` would be raised.
+
+-------------------------------------------------------------------
 Mon Oct 14 14:47:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
