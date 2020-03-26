@@ -1,7 +1,7 @@
 #
 # spec file for package crda
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
-
-Url:            http://linuxwireless.org/en/developers/Regulatory/CRDA
+%define skip_python2 1
 
 Name:           crda
 Summary:        802.11 central regulatory domain agent
 License:        SUSE-Copyleft-Next-0.3.0
 Group:          Hardware/Wifi
+URL:            http://linuxwireless.org/en/developers/Regulatory/CRDA
 Version:        3.18
 Release:        0
 Source:         http://kernel.org/pub/software/network/crda/crda-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkg-config
-BuildRequires:  python
-BuildRequires:  python-m2crypto
+BuildRequires:  python3
+BuildRequires:  python3-pycrypto
 BuildRequires:  wireless-regdb
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(udev)
@@ -39,6 +39,7 @@ Requires:       wireless-regdb
 Supplements:    kernel >= 2.6.29
 # PATCH-FIX-OPENSUSE gcc6-fix-errors.patch -- Fix errors seen by GCC6.
 Patch0:         gcc6-fix-errors.patch
+Patch1:         crda-python3.patch
 
 %description
 The crda binary provides access to the wireless-regdb to the kernel
@@ -47,6 +48,7 @@ through udev.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 # make install calls 'ldconfig' and fails if it cannot run it...
 ln -s /bin/true ldconfig
 

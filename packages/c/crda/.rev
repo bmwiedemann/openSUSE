@@ -205,4 +205,14 @@ License is ISC, not BSD-3-Clause (forwarded request 134144 from babelworx)</comm
     <comment>1</comment>
     <requestid>501355</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>f9a4ac9089142681e76f555793d4af69</srcmd5>
+    <version>3.18</version>
+    <time>1585264922</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch crda-python3.patch to build using python3
+  it is actually only used for a small helper script splitting
+  pem files to individual keys</comment>
+    <requestid>784306</requestid>
+  </revision>
 </revisionlist>
