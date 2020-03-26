@@ -238,4 +238,20 @@ All packages broken by this update should be fixed now.</comment>
     <comment>Revert, breaks ton of stuff (forwarded request 777937 from scarabeus_iv)</comment>
     <requestid>777938</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0579aed0e4c8b0d752cd0a5be57e3cf3</srcmd5>
+    <version>1.0.2</version>
+    <time>1585265079</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip i586 failing tests with upstream ticket
+
+- Update to 1.0.2:
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.2.html
+- Add pyperclip and Jinja2 as test dependencies
+
+- Update to 1.0.1:
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.1.html
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.0.html</comment>
+    <requestid>785460</requestid>
+  </revision>
 </revisionlist>

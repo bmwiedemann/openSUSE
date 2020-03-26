@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 16 07:12:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip i586 failing tests with upstream ticket
+
+-------------------------------------------------------------------
+Fri Mar 13 00:13:11 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.0.2:
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.2.html
+- Add pyperclip and Jinja2 as test dependencies
+
+-------------------------------------------------------------------
+Mon Mar  9 15:19:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to 1.0.1:
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.1.html
+  * see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.0.0.html
+
+-------------------------------------------------------------------
 Tue Jan 14 12:28:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one test that fails on 32bit: test_encode_non_c_locale

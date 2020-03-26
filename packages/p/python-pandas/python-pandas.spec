@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas
-Version:        0.25.3
+Version:        1.0.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -33,6 +33,10 @@ BuildRequires:  %{python_module setuptools >= 24.2.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+# test requirements
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module openpyxl}
+BuildRequires:  %{python_module pyperclip}
 Requires:       python-Cython >= 0.28.2
 Requires:       python-numpy >= 1.13.3
 Requires:       python-python-dateutil >= 2.6.1
@@ -55,6 +59,7 @@ Recommends:     python-openpyxl >= 2.4.8
 Recommends:     python-pandas-gbq >= 0.8.0
 Recommends:     python-psycopg2
 Recommends:     python-pyarrow >= 0.9.0
+Recommends:     python-pyperclip
 Recommends:     python-pyreadstat
 Recommends:     python-qt5
 Recommends:     python-scipy >= 0.19.0
@@ -109,6 +114,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %check
 # skip test that tries to compile stuff in buildroot test_oo_optimizable
 # test_encode_non_c_locale - skip test as it overflows on 32bit
+# test_maybe_promote_int_with_int https://github.com/pandas-dev/pandas/issues/31856
 export PYTHONHASHSEED=$(python -c 'import random; print(random.randint(1, 4294967295))')
 export http_proxy=http://1.2.3.4 https_proxy=http://1.2.3.4;
 export LANG=en_US.UTF-8
@@ -116,7 +122,7 @@ export LC_ALL=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 mv pandas pandas_temp
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable and not test_encode_non_c_locale'
+xvfb-run py.test-%{$python_version} -n auto -v %{buildroot}%{$python_sitearch}/pandas/tests -k 'not test_oo_optimizable and not test_encode_non_c_locale and not test_maybe_promote_int_with_int'
 }
 mv pandas_temp pandas
 
