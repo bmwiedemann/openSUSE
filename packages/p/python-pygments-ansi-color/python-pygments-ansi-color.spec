@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygments-ansi-color
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygments-ansi-color
-Version:        0.0.3
+Version:        0.0.5
 Release:        0
 Summary:        ANSI color-code highlighting for Pygments
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/chriskuehl/pygments-ansi-color
+URL:            https://github.com/chriskuehl/pygments-ansi-color
 Source:         https://github.com/chriskuehl/pygments-ansi-color/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
