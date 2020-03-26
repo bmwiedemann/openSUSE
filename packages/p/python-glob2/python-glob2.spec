@@ -1,7 +1,7 @@
 #
 # spec file for package python-glob2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/glob2
 Source:         https://files.pythonhosted.org/packages/source/g/glob2/glob2-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +55,7 @@ module with the following additions:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py nosetests
+%pytest test.py
 
 %files %{python_files}
 %license LICENSE
