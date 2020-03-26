@@ -91,4 +91,18 @@
     class type.</comment>
     <requestid>783021</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1b6adcf4de6ffad23edaff96bb953497</srcmd5>
+    <version>1.12.1</version>
+    <time>1585265163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.1:
+  * Applying a function wrapper to a static method of a class using the
+  ``wrap_function_wrapper()`` function, or wrapper for the same, wasn't
+  being done correctly when the static method was the immediate child of
+  the target object. It was working when the name path had multiple name
+  components. A failure would subsequently occur when the static method
+  was called via an instance of the class, rather than the class.</comment>
+    <requestid>785594</requestid>
+  </revision>
 </revisionlist>
