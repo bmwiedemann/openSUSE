@@ -21,7 +21,7 @@
 # Tests don't work in rpmbuild sandbox
 %bcond_with     test
 Name:           python-pysmbc
-Version:        1.0.18
+Version:        1.0.19
 Release:        0
 Summary:        Python bindings for samba clients (libsmbclient)
 License:        GPL-2.0-or-later
