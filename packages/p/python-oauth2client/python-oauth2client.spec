@@ -23,7 +23,6 @@ Version:        4.1.3
 Release:        0
 Summary:        Pythob OAuth2 Client
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/google/oauth2client
 Source0:        https://files.pythonhosted.org/packages/source/o/oauth2client/oauth2client-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
@@ -62,7 +61,6 @@ This is a Python library for accessing resources protected by OAuth 2.0.
 
 %package django
 Summary:        Django extension
-Group:          Development/Libraries/Python
 Requires:       python-Django >= 1.8
 Requires:       python-jsonpickle
 Requires:       python-oauth2client = %{version}
@@ -75,7 +73,6 @@ the Django datastore.
 
 %package flask
 Summary:        Flask extension
-Group:          Development/Libraries/Python
 Requires:       python-Flask >= 0.9
 Requires:       python-oauth2client = %{version}
 
@@ -87,7 +84,6 @@ available.
 
 %package gce
 Summary:        GCE extension
-Group:          Development/Libraries/Python
 Requires:       python-oauth2client = %{version}
 
 %description gce
@@ -122,14 +118,14 @@ export DJANGO_SETTINGS_MODULE=tests.contrib.django_util.settings
 %license LICENSE
 %doc README.md
 %dir %{python_sitelib}/oauth2client
-%dir %{python_sitelib}/oauth2client-%{version}-py%{py_ver}.egg-info
+%dir %{python_sitelib}/oauth2client-%{version}-py*.egg-info
 %exclude %{python_sitelib}/oauth2client/contrib/django*
 %exclude %{python_sitelib}/oauth2client/contrib/flask*
 %exclude %{python_sitelib}/oauth2client/contrib/__pycache__/flask*
 %exclude %{python_sitelib}/oauth2client/contrib/gce*
 %exclude %{python_sitelib}/oauth2client/contrib/__pycache__/gce*
 %{python_sitelib}/oauth2client/*
-%{python_sitelib}/oauth2client-%{version}-py%{py_ver}.egg-info/*
+%{python_sitelib}/oauth2client-%{version}-py*.egg-info/*
 
 %files %{python_files flask}
 %{python_sitelib}/oauth2client/contrib/flask*
