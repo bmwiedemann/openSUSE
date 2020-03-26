@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:36:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.14.3
+  * Attempt to use a monotonic clock to measure span durations in Performance/APM.
+  * Avoid overwriting explicitly set user data in web framework integrations.
+  * Allow to pass keyword arguments to `capture_event` instead of configuring the scope.
+  * Feature development for session tracking.
+
+-------------------------------------------------------------------
 Wed Mar 18 14:30:44 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.14.2
