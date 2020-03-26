@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:58:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.1.9 bsc#1099674:
+  * Add builtin and comprehensions to catch tad more issues
+  * Do not add FIXME comments for already commented lines
+  * Add the article to the comment
+  * Exclude mysql_testserver calls from bracketing
+  * Do not curlify systemd_ordering macro
+  * Ignore dephell setup generator macro from bracketing
+  * Use github actions and drop travis and tox
+  * Use pre-commit framework for the project (it runs black, flake8,
+    flake8-docstrings and mypy on every commit)
+  * Update README
+  * Add %{dephell_gensetup} macro instead of the full call to
+    dephell com
+
+-------------------------------------------------------------------
 Thu Jan 30 12:00:42 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.1.8 bsc#1099674:
