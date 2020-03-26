@@ -1,7 +1,7 @@
 #
 # spec file for package python-testtools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testtools
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
 Source:         https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-Patch0:         testtools-py37.patch
 BuildRequires:  %{python_module extras >= 1.0.0}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +50,6 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %prep
 %setup -q -n testtools-%{version}
-%patch0 -p1
 
 %build
 %python_build

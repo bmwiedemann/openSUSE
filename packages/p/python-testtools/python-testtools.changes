@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:57:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Release 2.4.0
+  * Add myself to contributors list
+  * Add support for Python 3.7 and 3.8
+  * Cache pip directory
+  * Test CI on PyPy3
+  * Tell pip not to install for Python 3.4
+  * Drop support for EOL Python 3.4
+  * Extra space expected in PyPy output
+  * PyCharm IDE unittest detection compatibility fix
+  * Don't use eval()
+  * Fix the tests on Python 3.7
+  * Drop support for EOL Python 3.3
+  * Ignore IDE metadata
+  * Update classifiers
+  * Remove old Python 2.6 code
+  * Spelling fixes (#261)
+  * Python 3.6 invalid escape sequence deprecation fixes (#262)
+- remove testtools-py37.patch: merged upstream
+
+-------------------------------------------------------------------
 Mon Oct 14 16:47:02 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

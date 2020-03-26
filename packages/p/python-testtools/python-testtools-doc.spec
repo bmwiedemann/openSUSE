@@ -1,7 +1,7 @@
 #
 # spec file for package python-testtools-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-testtools-doc
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Documentation for python-testtools
 License:        MIT
 Group:          Documentation/HTML
 URL:            https://launchpad.net/testtools
 Source:         https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-Patch0:         testtools-py37.patch
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools = %{version}}
 BuildRequires:  fdupes
@@ -40,7 +39,6 @@ Documentation and help files for python-testtools.
 
 %prep
 %setup -q -n testtools-%{version}
-%patch0 -p1
 
 %build
 python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
