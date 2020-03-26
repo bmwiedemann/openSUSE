@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:48:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version .68
+  * fix error msg from python function
+  * Fix print functions and a python2 only import
+
+-------------------------------------------------------------------
 Mon Jan 13 16:31:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.67
