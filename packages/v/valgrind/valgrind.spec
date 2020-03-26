@@ -48,6 +48,7 @@ Patch5:         0001-Fix-makefile-consistency-check.patch
 Patch6:         0001-s390x-Add-models-z14-and-z14-ZR1.patch
 Patch7:         0001-s390x-Clean-up-s390-check-opcodes.pl.patch
 Patch8:         0001-s390x-Add-CPU-model-for-z15.patch
+Patch9:         parallel-lto.patch
 %if "%{flavor}" == ""
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
@@ -164,6 +165,7 @@ but it has been successfully used to optimize several KDE applications.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %if "%{flavor}" == ""

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:15:59 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add parallel-lto.patch in order to make LTO LTRANS phase
+  parallel. It will significantly improve build time.
+
+-------------------------------------------------------------------
 Thu Mar 12 08:56:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0001-Fix-makefile-consistency-check.patch

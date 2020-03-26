@@ -1147,4 +1147,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>786517</requestid>
   </revision>
+  <revision rev="124" vrev="9">
+    <srcmd5>7af3ae23077909c840c81ab9f7f91ce7</srcmd5>
+    <version>3.15.0</version>
+    <time>1585261828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788187</requestid>
+  </revision>
 </revisionlist>
