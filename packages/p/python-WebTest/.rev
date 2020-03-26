@@ -268,4 +268,15 @@
   * Fixed #196. Fix deprecation warnings for collections to use collections.abc for Iterable on Python 3.</comment>
     <requestid>680060</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d98f9501d4c515629ccc38922af938af</srcmd5>
+    <version>2.0.34</version>
+    <time>1585265048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.34:
+  - Fix the test ``length == 0`` in ``check_content_type``.
+  - Treat ``&lt;input type=&quot;search&quot;&gt;`` like ``&lt;input type=&quot;text&quot;&gt;``.
+  - Handle query parameters for the ``head`` method.</comment>
+    <requestid>785067</requestid>
+  </revision>
 </revisionlist>

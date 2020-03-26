@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 14 15:45:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.34:
+  - Fix the test ``length == 0`` in ``check_content_type``.
+  - Treat ``<input type="search">`` like ``<input type="text">``.
+  - Handle query parameters for the ``head`` method.
+
+-------------------------------------------------------------------
 Thu Feb 28 09:24:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.33:

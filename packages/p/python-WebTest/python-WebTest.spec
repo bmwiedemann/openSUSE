@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define oldpython python
 %bcond_without tests
 Name:           python-WebTest
-Version:        2.0.33
+Version:        2.0.34
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
