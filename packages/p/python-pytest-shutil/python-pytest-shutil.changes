@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:37:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Build without python2 present
+
+-------------------------------------------------------------------
 Sat Dec 28 18:31:07 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix python-path/python-path.py requires 
