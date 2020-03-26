@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Glymur
-Version:        0.8.19
+Version:        0.9.1
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/quintusdias/glymur
-Source:         https://files.pythonhosted.org/packages/source/G/Glymur/Glymur-%{version}.tar.gz
+Source:         https://github.com/quintusdias/glymur/archive/v%{version}.tar.gz#/Glymur-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  procps
@@ -45,9 +45,7 @@ BuildRequires:  %{python_module scikit-image}
 Python interface to the OpenJPEG library
 
 %prep
-%setup -q -n Glymur-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+%setup -q -n glymur-%{version}
 
 %build
 %python_build
@@ -57,7 +55,6 @@ rm -rf %{pypi_name}.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-touch tests/data/__init__.py
 %pytest
 
 %files %{python_files}
