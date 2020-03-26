@@ -19,7 +19,7 @@
 %bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-blessed
-Version:        1.17.0
+Version:        1.17.4
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT

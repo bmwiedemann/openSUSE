@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:07:26 UTC 2020 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.17.4
+  * optimize length()
+  * add pixel_height and pixel_width, for libsixel support
+  * Documentation overhaul, plenty of examples and animated
+    screenshots.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:36:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.17.0
