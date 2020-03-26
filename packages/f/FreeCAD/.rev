@@ -231,4 +231,14 @@
 </comment>
     <requestid>785389</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>641ded6e073230efd78f6f75aa0e4b4a</srcmd5>
+    <version>0.18.4</version>
+    <time>1585262112</time>
+    <user>dimstar_suse</user>
+    <comment>- More spec file cleanup, removed duplicate files
+- Use upstream provided desktop files, mimeinfo, etc
+</comment>
+    <requestid>788586</requestid>
+  </revision>
 </revisionlist>

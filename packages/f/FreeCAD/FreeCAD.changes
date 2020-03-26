@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 22:24:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- More spec file cleanup, removed duplicate files
+- Use upstream provided desktop files, mimeinfo, etc
+
+-------------------------------------------------------------------
 Sun Mar 15 18:13:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix runtime errors with Python 3.8:

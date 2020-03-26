@@ -36,9 +36,6 @@ URL:            https://www.freecadweb.org/
 %if %{build_tar_ball}
 Source0:        %{name}-%version.tar.xz
 %endif
-Source1:        FreeCAD.sh
-Source2:        FreeCADCmd.sh
-Source3:        FreeCAD_shared_mimeinfo
 # PATCH-FIX-UPSTREAM 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch -- Fix build with shiboken2/pyside2 >= 5.12.1
 Patch1:         0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
 # PATCH-FIX-OPENSUSE qt-5.14.patch
@@ -186,20 +183,16 @@ rm src/3rdparty/Pivy -fr
 rm src/3rdparty/Pivy-0.5 -fr
 
 %build
-mkdir build && cd build
-# cmake macro would set standard libdir
-# it needs an older specific zipios version  -DFREECAD_USE_EXTERNAL_ZIPIOS=TRUE
-
-printenv
-cmake \
-  -DCMAKE_INSTALL_PREFIX=%{_libdir}/%{name} \
+%cmake \
+  -DCMAKE_INSTALL_PREFIX=%{x_prefix} \
   -DCMAKE_INSTALL_DATADIR=%{_datadir}/%{name} \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
+  -DCMAKE_INSTALL_LIBDIR=%{x_prefix}/lib \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
+  -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
   -DOCC_INCLUDE_DIR=%{_includedir}/opencascade \
   -DRESOURCEDIR=%{_datadir}/%{name} \
-  -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CXX_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing" \
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
@@ -213,57 +206,30 @@ cmake \
   -DFREECAD_USE_EXTERNAL_SMESH=OFF \
   ..
 
-make VERBOSE=1 %{?_smp_mflags} all || make VERBOSE=1 all
-
-# # Build documentation last, somehow
-# # this triggers a rebuild
-# mkdir build_doc
-# pushd build_doc
-# cmake \
-#   -DCMAKE_INSTALL_PREFIX=%%{_prefix} \
-#   -DLIB_SUFFIX=%%{_lib} \
-#   -DCMAKE_INSTALL_DATADIR=%%{_datadir}/%%{name} \
-#   -DCMAKE_INSTALL_DOCDIR=%%{_docdir}/%%{name} \
-#   -DCMAKE_INSTALL_INCLUDEDIR=%%{_includedir}/%%{name} \
-#   -DCMAKE_BUILD_TYPE=Release \
-#   -DFREECAD_USE_EXTERNAL_ZIPIOS=TRUE \
-#   -DFREECAD_USE_EXTERNAL_PIVY=TRUE \
-#   ../
-#   # Needs an updated opencascade
-#   #-DOCE_DIR=/opt/OpenCASCADE/%%{_lib}
-#
-# nice make VERBOSE=1 DevDoc
-# popd
+%cmake_build
 
 %install
-pushd build
-nice %make_install VERBOSE=1 %{?_smp_mflags}
-popd
-
-# pushd build_doc
-# nice make VERBOSE=1 %%{?_smp_mflags} install DESTDIR=%%{buildroot}
-# popd
+%cmake_install
 
 # Fix "non-executable-script" rpmlint warning
 chmod 755 %{buildroot}%{x_prefix}/Mod/Robot/MovieTool.py \
           %{buildroot}%{x_prefix}/Mod/Test/testmakeWireString.py \
           %{buildroot}%{x_prefix}/Mod/Test/unittestgui.py
 
-# Move desktop icon in the correct location
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable
+# Move icons, mimeinfo, metainfo to the correct location
+mv %{buildroot}%{x_prefix}/share/* %{buildroot}%{_datadir}/
 for size in 64 48 32 16; do
-    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
     mv %{buildroot}%{_datadir}/%{name}/freecad-icon-${size}.png \
-       %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/freecad.png
+       %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/org.freecadweb.FreeCAD.png
 done
-mv %{buildroot}%{_datadir}/%{name}/freecad.svg %{buildroot}%{_datadir}/icons/hicolor/scalable
-mv %{buildroot}%{_datadir}/%{name}/freecad-doc.png %{buildroot}%{_datadir}/icons/hicolor/64x64/
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/mimetypes/
+# Install under the correct name according to FDO shared-mime-info-spec
+mv %{buildroot}%{_datadir}/%{name}/freecad-doc.png %{buildroot}%{_datadir}/icons/hicolor/64x64/mimetypes/application-x-extension-fcstd.png
 rm %{buildroot}%{_datadir}/%{name}/freecad.xpm
+rm %{buildroot}%{_datadir}/%{name}/freecad.svg
 
-%suse_update_desktop_file -c %{name} "%{name}" "3D CAD Modeler" %{name} "freecad" Education Engineering
-
-# Install mime type
-install -Dpm 0644 %{SOURCE3} %{buildroot}/usr/share/mime/packages/%{name}.xml
+%suse_update_desktop_file -r org.freecadweb.FreeCAD Education Engineering
 
 # Remove unneeded files
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -283,18 +249,11 @@ dos2unix %{buildroot}%{x_prefix}/Mod/Part/MakeBottle.py
 
 # Link binaries
 mkdir -p %{buildroot}/usr/bin
-%if 0%{?suse_version} >= 91330
-# disabled, hopefully not anymore needed
-cp %{S:1} %{buildroot}/usr/bin/FreeCAD
-chmod +x %{buildroot}/usr/bin/FreeCAD
-cp %{S:2} %{buildroot}/usr/bin/FreeCADCmd
-chmod +x %{buildroot}/usr/bin/FreeCADCmd
-%else
 ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCAD
 ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
-%endif
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}/%{_libdir}
+%fdupes %{buildroot}/%{_datadir}
 
 %post -p /sbin/ldconfig
 
@@ -307,8 +266,9 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 %doc %{_docdir}/%{name}/
 %{_libdir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/freecad*.{png,svg}
+%{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/*/*/*.{png,svg}
+%{_datadir}/metainfo/*.xml
+%{_datadir}/mime/packages/*.xml
 
 %changelog
