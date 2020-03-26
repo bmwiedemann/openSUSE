@@ -1,7 +1,7 @@
 #
 # spec file for package python-rst.linker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Version:        1.11
 Release:        0
 Summary:        Changelog link and timestamp adding Sphinx plugin
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/rst.linker
 Source:         https://files.pythonhosted.org/packages/source/r/%{_name}/%{_name}-%{version}.tar.gz
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.packaging >= 3.2}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module pytest >= 3.5}
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+Requires:       python-importlib-metadata
 Requires:       python-python-dateutil
 Requires:       python-six
 BuildArch:      noarch

@@ -35,4 +35,12 @@
   * Also supply &quot;parallel_read_safe=True&quot;</comment>
     <requestid>729786</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>769f67bb6d31c9e744256db103aa8da7</srcmd5>
+    <version>1.11</version>
+    <time>1585265192</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on Leap</comment>
+    <requestid>785896</requestid>
+  </revision>
 </revisionlist>
