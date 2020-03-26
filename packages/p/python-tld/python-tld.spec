@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tld
-Version:        0.11.10
+Version:        0.11.11
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
@@ -31,6 +31,7 @@ Patch0:         skip_internet_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-six >= 1.9
 BuildArch:      noarch
 # SECTION test requirements

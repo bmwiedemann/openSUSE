@@ -106,4 +106,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774244</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>22d070aede8354f0dfbd6b4ebbd2c26f</srcmd5>
+    <version>0.11.11</version>
+    <time>1585262072</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.11.11
+  * - Minor speed-ups, reduce memory usage.
+
+pypi works again now (at least for me)</comment>
+    <requestid>788522</requestid>
+  </revision>
 </revisionlist>
