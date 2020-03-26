@@ -111,4 +111,14 @@
 - Add devel dependency for the tests on python2 only</comment>
     <requestid>769889</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>375144749f3254a51e277bc2e5f77a56</srcmd5>
+    <version>2.3.5</version>
+    <time>1585264976</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the py2/py3 dependencies
+
+- Fix fdupes call</comment>
+    <requestid>784637</requestid>
+  </revision>
 </revisionlist>

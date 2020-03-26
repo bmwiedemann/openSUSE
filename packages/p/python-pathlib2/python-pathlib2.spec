@@ -26,7 +26,6 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%bcond_without python2
 Name:           python-pathlib2%{?psuffix}
 Version:        2.3.5
 Release:        0
@@ -44,10 +43,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module scandir}
 BuildRequires:  %{python_module six}
-BuildRequires:  python3-testsuite
-%if %{with python2}
-BuildRequires:  python-devel
-%endif
+BuildRequires:  %{python_module testsuite}
 %endif
 %ifpython2
 Requires:       python-scandir
@@ -74,7 +70,7 @@ used also on older Python versions.
 %install
 %if !%{with test}
 %python_install
-%python_expand fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}

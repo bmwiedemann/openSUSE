@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:58:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the py2/py3 dependencies
+
+-------------------------------------------------------------------
+Fri Mar 13 08:39:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
 Mon Feb  3 14:59:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add multibuild in order to break cycle betwen python3 and mesa
