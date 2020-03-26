@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:39:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with new zope.interface:
+  * tests.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 12:41:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.6.3
+  - Fix a crash in the test suite under a 32-bit CPython on certain
+    32-bit platforms. See `issue 137
+    <https://github.com/zopefoundation/persistent/issues/137>`_. Fix by
+    `Jerry James <https://github.com/jamesjer>`_.
+  - Fix an ``AssertionError`` clearing a non-empty ``PersistentMapping``
+    that has no connection. See `issue 139
+    <https://github.com/zopefoundation/persistent/issues/139>`_.
+
+-------------------------------------------------------------------
+Thu Mar 12 11:54:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.6.1
+  * Stop installing C header files on PyPy
+  * Fix slicing of PersistentList to always return instances of the same class.
+  * Fix copying of PersistentList and PersistentMapping using copy.copy 
+    to also copy the underlying data object.
+  * Update the handling of the PURE_PYTHON environment variable.
+  * Add preliminary support for Python 3.9a3+.
+  * Fix the Python implementation of the PickleCache to be able to 
+    store objects that cannot be weakly referenced. 
+  * Add support for Python 3.8.
+
+-------------------------------------------------------------------
 Mon May 20 15:50:31 UTC 2019 - pgajdos@suse.com
 
 - version update to 4.5.0

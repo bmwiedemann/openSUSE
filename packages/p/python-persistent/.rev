@@ -103,4 +103,33 @@
     <comment></comment>
     <requestid>704297</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ea986ce5ddc14ad88c044a898653fe96</srcmd5>
+    <version>4.6.3</version>
+    <time>1585265395</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new zope.interface:
+  * tests.patch
+
+- version update to 4.6.3
+  - Fix a crash in the test suite under a 32-bit CPython on certain
+    32-bit platforms. See `issue 137
+    &lt;https://github.com/zopefoundation/persistent/issues/137&gt;`_. Fix by
+    `Jerry James &lt;https://github.com/jamesjer&gt;`_.
+  - Fix an ``AssertionError`` clearing a non-empty ``PersistentMapping``
+    that has no connection. See `issue 139
+    &lt;https://github.com/zopefoundation/persistent/issues/139&gt;`_.
+
+- update to 4.6.1
+  * Stop installing C header files on PyPy
+  * Fix slicing of PersistentList to always return instances of the same class.
+  * Fix copying of PersistentList and PersistentMapping using copy.copy 
+    to also copy the underlying data object.
+  * Update the handling of the PURE_PYTHON environment variable.
+  * Add preliminary support for Python 3.9a3+.
+  * Fix the Python implementation of the PickleCache to be able to 
+    store objects that cannot be weakly referenced. 
+  * Add support for Python 3.8.</comment>
+    <requestid>788434</requestid>
+  </revision>
 </revisionlist>

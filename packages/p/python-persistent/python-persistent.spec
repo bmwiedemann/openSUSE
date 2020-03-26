@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,22 +19,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-persistent
-Version:        4.5.0
+Version:        4.6.3
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/persistent
 Source:         https://files.pythonhosted.org/packages/source/p/persistent/persistent-%{version}.tar.gz
+# https://github.com/zopefoundation/persistent/issues/144
+Patch0:         tests.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
-Requires:       python-cffi
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cffi
 Requires:       python-zope.interface
 %python_subpackages
 
@@ -45,7 +46,6 @@ such as the ZODB.
 
 %package        devel
 Summary:        Translucent persistent objects
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-devel
 
@@ -54,6 +54,7 @@ This package contains the files needed for binding the %{name} C module.
 
 %prep
 %setup -q -n persistent-%{version}
+%patch0 -p1
 rm -rf persistent.egg-info
 
 %build
