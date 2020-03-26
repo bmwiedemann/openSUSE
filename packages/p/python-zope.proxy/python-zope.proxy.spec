@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.proxy%{psuffix}
-Version:        4.3.3
+Version:        4.3.5
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1

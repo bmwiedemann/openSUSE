@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 24 14:33:07 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.3.5
+  - Stop installing C header files on PyPy (which is what zope.proxy before 4.3.4
+    used to do), fixes `issue 39
+    <https://github.com/zopefoundation/zope.proxy/issues/39>`_.
+
+-------------------------------------------------------------------
+Mon Mar 16 14:00:19 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.3.4
+  - Fix a compilation warning on Python 3.8. The slot ``tp_print``
+    changed to ``tp_vectorcall_offset`` in 3.8 and must not be set.
+    Prior to 3.8, it was reserved and ignored in all Python 3 versions.
+    See `issue 36
+    <https://github.com/zopefoundation/zope.proxy/issues/36>`_.
+  
+  - Remove deprecated use of setuptools features.  See `issue 38
+    <https://github.com/zopefoundation/zope.proxy/issues/38>`_.
+
+-------------------------------------------------------------------
 Tue Jan 21 11:05:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.3.3
