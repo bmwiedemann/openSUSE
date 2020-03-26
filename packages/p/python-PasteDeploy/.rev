@@ -122,4 +122,13 @@
     <comment>- Switch to github tarball to run tests</comment>
     <requestid>681894</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>07622c96dc6ad5419cbb3aba1dadcb8d</srcmd5>
+    <version>2.1.0</version>
+    <time>1585265043</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * pytest-runner removed, use tox to run tests</comment>
+    <requestid>785066</requestid>
+  </revision>
 </revisionlist>

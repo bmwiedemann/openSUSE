@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 14 15:42:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * pytest-runner removed, use tox to run tests
+
+-------------------------------------------------------------------
 Tue Mar  5 19:08:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github tarball to run tests

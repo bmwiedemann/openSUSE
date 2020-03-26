@@ -1,7 +1,7 @@
 #
 # spec file for package python-PasteDeploy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PasteDeploy
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Tool to load, configure, and compose WSGI applications and servers
 License:        MIT
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/pastedeploy
 Source:         https://github.com/Pylons/pastedeploy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +58,7 @@ provides commands to serve applications based on this configuration file.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
