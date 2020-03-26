@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar 17 21:45:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix version string to 0.16.0+git55.17b3611c
+
+-------------------------------------------------------------------
+Mon Mar 16 09:20:12 UTC 2020 - tchvatal@suse.com
+
+- Update to version v0.16.0+git55.17b3611c:
+  * Included statement as a possible return type for BaseDefinition.type
+
+-------------------------------------------------------------------
+Mon Mar 16 09:20:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests
+
+-------------------------------------------------------------------
+Sat Mar 14 10:22:47 UTC 2020 - tchvatal@suse.com
+
+- Update to version v0.16.0+git54.0888dd46:
+  * Fix partialmethod issues
+  * Make sure partialmethod tests are only executed for Python 3
+  * Refactor stdlib PartialObject
+  * Fix PartialMethodObject (WIP)
+  * Changed semantics of ClassVar attributes in classes, fixes #1502
+  * Avoid duplicate definitions for goto, fixes #1514
+  * Merge _remove_statements and infer_expr_stmt, fixes #1504
+  * Add partialmethod, fixes #1519
+  * Attempt at a test of completion of filepath after ~.
+  * Complete path after ~.
+
+-------------------------------------------------------------------
+Sat Mar 14 10:16:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove patches from git in preparation to switch to git service:
+  * delete.patch
+  * typing.patch
+
+-------------------------------------------------------------------
 Fri Mar  6 11:55:48 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add typing.patch - fix test_sys_getwindowsversion with new parso 

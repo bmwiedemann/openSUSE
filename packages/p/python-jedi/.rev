@@ -208,4 +208,12 @@
     <comment>- add typing.patch - fix test_sys_getwindowsversion with new parso</comment>
     <requestid>782093</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f4cc7bc9c503aafe156b4938e4c30e8</srcmd5>
+    <version>0.16.0+git55.17b3611c</version>
+    <time>1585265196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786032</requestid>
+  </revision>
 </revisionlist>
