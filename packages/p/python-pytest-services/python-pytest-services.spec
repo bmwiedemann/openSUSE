@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-services
 Version:        2.0.1
 Release:        0
@@ -33,7 +34,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zc.lockfile >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python-subprocess32
+%endif
 Requires:       python-psutil
 Requires:       python-pytest
 Requires:       python-requests
