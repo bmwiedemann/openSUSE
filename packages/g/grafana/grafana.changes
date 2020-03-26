@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Mar 20 20:02:56 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.7.1:
+  (see installed changelog for the full list of changes)
+  Bug Fixes
+  - Azure: Fixed dropdowns not showing current value. #22914, @torkelo
+  - BackendSrv: only add content-type on POST, PUT requests. #22910, @hugohaggmark
+  - Panels: Fixed size issue with panel internal size when exiting panel edit mode. #22912, @torkelo
+  - Reporting: fixes migrations compatibility with mysql (Enterprise)
+  - Reporting: Reduce default concurrency limit to 4 (Enterprise)
+
+-------------------------------------------------------------------
+Fri Mar 20 19:48:29 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.7.0:
+  (see installed changelog for the full list of changes)
+  Bug Fixes
+  - AngularPanels: Fixed inner height calculation for angular panels . #22796, @torkelo
+  - BackendSrv: makes sure provided headers are correctly recognized and set. #22778, @hugohaggmark
+  - Forms: Fix input suffix position (caret-down in Select) . #22780, @torkelo
+  - Graphite: Fixed issue with query editor and next select metric now showing after selecting metric node . #22856, @torkelo
+  - Rich History: UX adjustments and fixes. #22729, @ivanahuckova
+- update to 6.7.0-beta1:
+  Breaking changes
+  -  Slack: Removed Mention setting and instead introduce Mention Users, Mention Groups, and Mention Channel. The first two settings require user and group IDs, respectively. This change was necessary because the way of mentioning via the Slack API changed and mentions in Slack notifications no longer worked.
+  -  Alerting: Reverts the behavior of diff and percent_diff to not always be absolute. Something we introduced by mistake in 6.1.0. Alerting now support diff(), diff_abs(), percent_diff() and percent_diff_abs(). #21338
+
+  - Notice about changes in backendSrv for plugin authors
+    In our mission to migrate away from AngularJS to React we have removed all AngularJS dependencies in the core data retrieval service backendSrv.
+    Removing the AngularJS dependencies in backendSrv has the unfortunate side effect of AngularJS digest no longer being triggered for any request made with backendSrv. Because of this, external plugins using backendSrv directly may suffer from strange behaviour in the UI.
+    To remedy this issue, as a plugin author you need to trigger the digest after a direct call to backendSrv.
+  Bug Fixes
+    API: Fix redirect issues. #22285, @papagian
+    Alerting: Don't include image_url field with Slack message if empty. #22372, @aknuds1
+    Alerting: Fixed bad background color for default notifications in alert tab . #22660, @krvajal
+    Annotations: In table panel when setting transform to annotation, they will now show up right away without a manual refresh. #22323, @krvajal
+    Azure Monitor: Fix app insights source to allow for new __timeFrom and __timeTo. #21879, @ChadNedzlek
+    BackendSrv: Fixes POST body for form data. #21714, @hugohaggmark
+    CloudWatch: Credentials cache invalidation fix. #22473, @sunker
+    CloudWatch: Expand alias variables when query yields no result. #22695, @sunker
+    Dashboard: Fix bug with NaN in alerting. #22053, @a-melnyk
+    Explore: Fix display of multiline logs in log panel and explore. #22057, @thomasdraebing
+    Heatmap: Legend color range is incorrect when using custom min/max. #21748, @sv5d
+    Security: Fixed XSS issue in dashboard history diff . #22680, @torkelo
+    StatPanel: Fixes base color is being used for null values .
+    #22646, @torkelo
+
+-------------------------------------------------------------------
 Fri Mar 06 06:20:34 UTC 2020 - kastl@b1-systems.de
 
 - Update to version 6.6.2:
