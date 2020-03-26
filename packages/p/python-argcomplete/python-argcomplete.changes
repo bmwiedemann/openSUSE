@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 09:44:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix tests with latest fish version:
+  * 0001-Remove-expected-test-failure-for-new-versions-of-fish.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 10:42:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.11.1

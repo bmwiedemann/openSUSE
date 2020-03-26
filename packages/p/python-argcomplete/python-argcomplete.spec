@@ -28,6 +28,7 @@ URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
+Patch2:         0001-Remove-expected-test-failure-for-new-versions-of-fish.patch
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
@@ -56,6 +57,7 @@ resources over the network).
 %setup -q -n argcomplete-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %python_build
