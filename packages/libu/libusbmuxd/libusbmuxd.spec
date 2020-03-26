@@ -16,24 +16,21 @@
 #
 
 
-%define major 4
-
+%define major 6
 Name:           libusbmuxd
-Version:        1.0.10
+Version:        2.0.1
 Release:        0
 Summary:        A client library to multiplex connections from and to iOS devices
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-URL:            http://cgit.sukimashita.com/libusbmuxd.git
-Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
+URL:            https://github.com/libimobiledevice/libusbmuxd
+Source:         https://github.com/libimobiledevice/libusbmuxd/archive/%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM libusbmuxd-CVE-2016-5104.patch CVE-2016-5104 boo#982014 dimstar@opensuse.org - Make sure sockets only listen locally
-Patch0:         libusbmuxd-CVE-2016-5104.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libplist-devel >= 1.11
-BuildRequires:  libusb-1_0-devel >= 1.0.3
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
 
 %description
 'usbmuxd' stands for "USB multiplexing daemon". This daemon is in charge of
@@ -47,7 +44,6 @@ This package contains the usbmuxd communication interface library 'libusbmuxd'.
 
 %package -n %{name}%{major}
 Summary:        A client library to multiplex connections from and to iOS devices
-Group:          System/Libraries
 Recommends:     usbmuxd
 
 %description -n %{name}%{major}
@@ -62,7 +58,6 @@ This package contains the usbmuxd communication interface library 'libusbmuxd'.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{major} = %{version}
 
 %description devel
@@ -76,11 +71,12 @@ a virtual network device.
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n iproxy
-Summary:        An example tool to forward localhost ports to iOS devices
-Group:          Productivity/Networking/Other
+%package tools
+Summary:        An example tools to forward localhost ports to iOS devices
+Provides:       iproxy = %{version}
+Obsoletes:      iproxy < %{version}
 
-%description -n iproxy
+%description tools
 'usbmuxd' stands for "USB multiplexing daemon". This daemon is in charge of
 multiplexing connections over USB to an iPhone or iPod touch. To users, it means
 you can sync your music, contacts, photos, etc. over USB. To developers, it
@@ -96,36 +92,34 @@ notification and backup services running on the device).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-export CFLAGS="%optflags -fexceptions"
-%configure
-make %{?_smp_mflags} V=1
+autoreconf -fvi
+export CFLAGS="%{optflags} -fexceptions"
+%configure \
+  --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-
-rm %{buildroot}%{_libdir}/%{name}.*a
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{major} -p /sbin/ldconfig
-
 %postun -n %{name}%{major} -p /sbin/ldconfig
 
 %files -n %{name}%{major}
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README.md
 %{_libdir}/libusbmuxd.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/usbmuxd.h
 %{_includedir}/usbmuxd-proto.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
-%files -n iproxy
-%defattr(-,root,root)
+%files tools
 %{_bindir}/iproxy
+%{_bindir}/inetcat
 
 %changelog
