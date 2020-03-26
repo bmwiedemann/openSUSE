@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Mon Mar 23 13:56:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.1+48:
+  + Fix 32bit build.
+
+-------------------------------------------------------------------
+Wed Mar 18 16:33:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service, update to explicit head, file with
+  non-compliant license replaced.
+
+-------------------------------------------------------------------
+Tue Mar 17 10:58:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch license to MIT and actually package it.
+- Add doxygen, graphviz and xmltoman BuildRequires and pass docs
+  and man = true to meson, build documentation. Package docs in a
+  new docs sub-package.
+- Add check section and run meson_test macro, run tests during
+  build.
+- Add fdupes BuildRequires and pass fdupes macro, remove duplicate
+  files.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:11:08 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.1:
+  + This is a bugfix release that is API and ABI compatible
+    with previous 0.3.x releases.
+  + Don't load the rtkit module by default. It can cause a
+    sigkill, which is not desirable for mutter, for example.
+    Only enable this for the jack library for now.
+  + Don't use pthread cancel by default because it uses a
+    signal that might crash some apps. Only use it for
+    the jack library because jack clients really expect this.
+  + Build fixes for -Werror=suggest-attribute=format
+  + improve error messages, don't report harmless errors and
+    warnings. Try to send error messages to the proxy that
+    started the operation or is the owner of the object.
+  + pw-cat: midi improvement, add midi recording and dump
+    in verbose mode
+  + fix properties when loading spa-nodes from the config
+  + Fix and update some examples
+  + jack: check arguments and don't crash when invalid
+  + Fix buffer memory upload.
+  + jack: fix compatibility with zrythm. Fix timemaster
+    install, improve sample_rate callback. Fix reposition
+    handling.
+  + fix crash in port after buffer negotiation error.
+  + add support for control ports in pw_filter
+  + fix cleanup of the metadata module
+  + improve param enumeration.
+  + Clear stream buffers when the format is cleared.
+  + Add create-object command in the config file to create
+    object from a factory.
+  + Fix crash after the driver was not removed from unassigned
+    nodes. Also properly pause inactive nodes.
+  + Use "true" and "false" in properties when we are talking
+    about a boolean.
+  + pulseaudio: improve compatibility
+
+-------------------------------------------------------------------
+Fri Feb 21 15:13:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build correctly with glibc < 2.27 (like in SLE/Leap):
+  * fix-memfd_create-call.patch
+
+-------------------------------------------------------------------
+Fri Feb 21 12:32:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires for pkgconfig(sndfile) and pkgconfig(vulkan)
+  so the vulkan plugin is built.
+- Version the spa-plugins subpackage so different versions of
+  the plugins can be co-installed in the future.
+
+-------------------------------------------------------------------
+Thu Feb 20 18:54:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.0:
+  + The 0.3 release is a major milestone in the developement of
+    PipeWire. It features a complete redesign of the scheduling
+    mechanisms that make it possible to run a JACK compatibility
+    layer with comparable performance to JACK2.
+  + The API has been reworked and is declared stable now. All
+    developement files and runtime paths are versioned so that
+    future incompatible changes can be done without breaking
+    exising applications.
+  + PipeWire 0.3 also includes a (now mandatory) session manager
+    that populates and controls the PipeWire graph. This example
+    session manager is very simple and not configurable. It is
+    expected that future version will either switch to a more
+    flexible session manager (like WirePlumber) or improve the
+    configuration options of the example session manager.
+  + PipeWire 0.3 includes both PulseAudio, JACK and ALSA
+    compatibility libraries that are known to support a wide range
+    of applications. The ALSA library is pretty complete at this
+    point. The JACK and mostly the PulseAudio compatibility
+    libraries need more work. See the Wiki pages for the current
+    compatibility problems. We do not yet encourage people to
+    switch away from their existing audio solutions (PulseAudio
+    or JACK) but we would love to hear from people who try it
+    anyways. Future versions will mostly focus on improving
+    compatibility further to make PipeWire a drop-in replacement.
+    PipeWire comes with some GStreamer plugins to consume and
+    produce data for PipeWire. The consumer (pipewiresrc) is
+    working well in most cases. The sink (pipewiresink) is known
+    to be somewhat problematic for now.
+- Add pkgconfig(bluez) and pkgconfig(libpulse) BuildRequires: New
+  dependencies.
+- Bump libpipewire, apiver and spa_ver define following upstreams
+  changes. Also add a new sover define.
+- Package new subpackages: libjack-pw0_3_0,
+  libpulse-mainloop-glib-pw0_3_0, libpulse-pw0_3_0 and
+  libpulse-simple-pw0_3_0, as well as handle them in post(un).
+- Adjust options passed to meson following upstreams changes.
+
+-------------------------------------------------------------------
 Wed Nov  6 12:29:43 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 0.2.7:
