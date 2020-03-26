@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.10.2
+Version:        2.10.3
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0

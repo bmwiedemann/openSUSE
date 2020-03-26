@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:34:19 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.3
+- Changes:
+  * #592: DataFormatMatcher#getMatchedFormatName throws NPE when
+    no match exists
+  * #603: 'JsonParser.getCurrentLocation()` byte/char offset update
+    incorrectly for big payloads
+
+-------------------------------------------------------------------
 Tue Jan  7 10:32:16 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Changes for 2.10.2
