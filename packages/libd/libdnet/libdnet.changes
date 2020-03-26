@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:12:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop python2 bindings as they don't make sense to be built with
+  python2 removal
+
+-------------------------------------------------------------------
 Wed Aug  1 04:22:18 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to sort linked .o files

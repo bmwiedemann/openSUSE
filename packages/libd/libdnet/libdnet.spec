@@ -1,7 +1,7 @@
 #
 # spec file for package libdnet
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,7 @@ Version:        1.12
 Release:        0
 Summary:        Library for Portable Interface to Low-Level Networking Routines
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
-Url:            https://github.com/dugsong/libdnet
+URL:            https://github.com/dugsong/libdnet
 Source0:        https://github.com/dugsong/libdnet/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: properly name the dirs for new autoreconf to work
 Patch0:         libdnet-autoreconf.patch
@@ -34,7 +33,6 @@ Patch2:         libdnet-fortify.patch
 Patch3:         reproducible.patch
 BuildRequires:  libbsd-devel
 BuildRequires:  libtool
-BuildRequires:  python-devel
 
 %description
 libdnet provides a portable interface to several low-level
@@ -48,7 +46,6 @@ networking routines, including:
 
 %package -n libdnet1
 Summary:        Library for Portable Interface to Low-Level Networking Routines
-Group:          System/Libraries
 
 %description -n libdnet1
 libdnet provides a portable interface to several low-level
@@ -62,7 +59,6 @@ networking routines, including:
 
 %package devel
 Summary:        Development files for libdnet
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libdnet1 = %{version}
 
@@ -76,14 +72,6 @@ networking routines, including:
 - IP tunnelling (BSD/Linux tun, Universal TUN/TAP device)
 - raw IP packet and Ethernet frame transmission
 
-%package python
-Summary:        Python bindings for libdnet
-Group:          Development/Languages/Python
-Requires:       libdnet1 = %{version}
-
-%description python
-Dnet library Python 2 bindings.
-
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch0
@@ -94,19 +82,11 @@ Dnet library Python 2 bindings.
 %build
 ACLOCAL="aclocal -I config" autoreconf -fvi
 %configure --disable-static
-make %{?_smp_mflags}
-
-pushd python
-python setup.py build
-popd
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-
-pushd python
-python setup.py install --skip-build --root %{buildroot}
-popd
 
 %post -n libdnet1 -p /sbin/ldconfig
 %postun -n libdnet1 -p /sbin/ldconfig
@@ -114,11 +94,9 @@ popd
 %files -n libdnet1
 %{_libdir}/libdnet.so.1*
 
-%files python
-%{python_sitearch}/*
-
 %files devel
-%doc LICENSE README TODO THANKS
+%license LICENSE
+%doc README TODO THANKS
 %{_sbindir}/*
 %{_bindir}/dnet-config
 %{_includedir}/dnet.h
