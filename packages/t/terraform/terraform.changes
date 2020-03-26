@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 06:46:42 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Update to 0.12.24
+  BUG FIXES:
+   * command/login: Fix bug when using terraform login on Windows (#24397)
+   * registry: Fix panic when server is unreachable (#24411)
+
+-------------------------------------------------------------------
 Fri Mar  6 11:01:48 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 0.12.23
