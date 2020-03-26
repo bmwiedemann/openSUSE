@@ -133,4 +133,12 @@
  * Properly mark packaging has being fully typed by adding a py.typed file</comment>
     <requestid>773191</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c306bff11678050e3424287a757f2555</srcmd5>
+    <version>20.3</version>
+    <time>1585264805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783881</requestid>
+  </revision>
 </revisionlist>

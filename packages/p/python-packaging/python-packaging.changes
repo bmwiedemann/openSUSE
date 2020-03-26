@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 14:37:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 20.3
+  * Fix a bug that caused a 32-bit OS that runs on a 64-bit ARM CPU 
+    (e.g. ARM-v8, aarch64), to report the wrong bitness.
+- Drop already upstreamed patch issue_254.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 14:51:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add issue_254.patch to fix tests under non-x86_64 pplatforms 
