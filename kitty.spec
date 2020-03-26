@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.16.0
+Version:        0.17.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -44,6 +44,7 @@ BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel >= 3.5
+BuildRequires:  terminfo
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  zlib-devel
@@ -67,6 +68,7 @@ bracketed paste and so on, and which can be controlled by scripts.
 find . -type f -exec sed -i "s/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/" {} +
 
 %build
+#tic -x -o/tmp/tmpWhatever terminfo/kitty.terminfo
 python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 
 %install

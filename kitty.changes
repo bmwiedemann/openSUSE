@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:12:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  * Fix cursor_underline_thickness not working (#2465)
+  * Fix a regression in 0.17 that caused tab bar background to be
+    rendered after the last tab as well (#2464)
+  * Fix a regression in 0.17 that caused kitty @ set-colors to
+    require setting cursor_text_color (#2470)
+
+-------------------------------------------------------------------
+Tue Mar 24 08:22:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * A new The Splits Layout to arrange windows in arbitrary splits (#2308)
+  * Add support for specifying a background image, see background_image
+    (#163 and #2326; thanks to Fredrick Brennan.)
+  * A new background_tint option to darken the background under the
+    text area when using background images and/or transparent windows.
+  * Allow selection of single cells with the mouse. Also improve mouse
+    selection to follow semantics common to most programs (#945)
+  * New options cursor_beam_thickness and cursor_underline_thickness
+    to control the thickness of the beam and underline cursors (#2337 and #2342)
+  * When the application running in the terminal grabs the mouse, pass
+    middle clicks to the application unless terminal_select_modifiers
+    are pressed (#2368)
+  * A new copy_and_clear_or_interrupt function (#2403)
+  * X11: Fix arrow mouse cursor using right pointing instead of the
+    default left pointing arrow (#2341)
+  * Allow passing the currently active kitty window id in the launch command (#2391)
+  * unicode input kitten: Allow pressing ctrl+tab to change the input mode (#2343)
+  * Fix a bug that prevented using custom functions with the new marks feature (#2344)
+  * Make the set of URL prefixes that are recognized while hovering with the
+    mouse configurable (#2416)
+  * Fix border/margin/padding sizes not being recalculated on DPI change (#2346)
+  * diff kitten: Fix directory diffing with removed binary files failing (#2378)
+  * Fix rendering of combining characters with fonts that have glyphs for
+    precomposed characters but not decomposed versions (#2365)
+  * Fix incorrect rendering of selection when using rectangular select and
+    scrolling (#2351)
+  * Allow setting WM_CLASS and WM_NAME when creating new OS windows
+    with the launch command (launch --os-window-class)
+  * Fix a regression in the previous release that broke switching to
+    neighboring windows in the Grid layout when there are less
+    than four windows (#2377)
+  * Fix colors in scrollback pager off if the window has redefined
+    terminal colors using escape codes (#2381)
+  * Fix selection not updating properly while scrolling (#2442)
+  * Allow extending selections by dragging with right button pressed (#2445)
+  * Workaround for bug in less that causes colors to reset at wrapped lines (#2381)
+  * X11/Wayland: Allow drag and drop of text/plain in addition to text/uri-list (#2441)
+  * Dont strip & and - from the end of URLs (#2436)
+  * Fix @selection placeholder not working with launch command (#2417)
+  * Drop support for python 3.5
+  * Wayland: Fix a crash when drag and dropping into kitty (#2432)
+  * diff kitten: Fix images lingering as blank rectangles after the kitten quits (#2449)
+  * diff kitten: Fix images losing position when scrolling using mouse wheel/touchpad
+
+-------------------------------------------------------------------
 Tue Jan 28 03:50:08 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 0.16.0:

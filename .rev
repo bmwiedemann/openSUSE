@@ -160,4 +160,41 @@
     <comment></comment>
     <requestid>767919</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>720d00351ed52f1347b20469f8a6685c</srcmd5>
+    <version>0.17.1</version>
+    <time>1585261994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.1:
+  * Fix cursor_underline_thickness not working (#2465)
+  * Fix a regression in 0.17 that caused tab bar background to be
+    rendered after the last tab as well (#2464)
+  * Fix a regression in 0.17 that caused kitty @ set-colors to
+    require setting cursor_text_color (#2470)
+
+- Update to 0.17.0:
+  * A new The Splits Layout to arrange windows in arbitrary splits (#2308)
+  * Add support for specifying a background image, see background_image
+    (#163 and #2326; thanks to Fredrick Brennan.)
+  * A new background_tint option to darken the background under the
+    text area when using background images and/or transparent windows.
+  * Allow selection of single cells with the mouse. Also improve mouse
+    selection to follow semantics common to most programs (#945)
+  * New options cursor_beam_thickness and cursor_underline_thickness
+    to control the thickness of the beam and underline cursors (#2337 and #2342)
+  * When the application running in the terminal grabs the mouse, pass
+    middle clicks to the application unless terminal_select_modifiers
+    are pressed (#2368)
+  * A new copy_and_clear_or_interrupt function (#2403)
+  * X11: Fix arrow mouse cursor using right pointing instead of the
+    default left pointing arrow (#2341)
+  * Allow passing the currently active kitty window id in the launch command (#2391)
+  * unicode input kitten: Allow pressing ctrl+tab to change the input mode (#2343)
+  * Fix a bug that prevented using custom functions with the new marks feature (#2344)
+  * Make the set of URL prefixes that are recognized while hovering with the
+    mouse configurable (#2416)
+  * Fix border/margin/padding sizes not being recalculated on DPI change (#2346)
+  * diff kitten: Fix directory diffing with removed binary files failing (#2378)</comment>
+    <requestid>788422</requestid>
+  </revision>
 </revisionlist>
