@@ -63,4 +63,27 @@
     <comment></comment>
     <requestid>780475</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>110286515b5ec32dbf5101bef42d332c</srcmd5>
+    <version>3.1.3</version>
+    <time>1585265299</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.3 (bsc#1167379):
+  * Add relative link to code of conduct. (#442)
+  * Drop deprecated 'setup.py test' support. (#507)
+  * Fix typo: curren -&gt; current in tests/test_clean.py (#504)
+  * Test on PyPy 7
+  * Drop test support for end of life Python 3.4
+  * ``bleach.clean`` behavior parsing embedded MathML and SVG content
+    with RCDATA tags did not match browser behavior and could result in
+    a mutation XSS.
+    Calls to ``bleach.clean`` with ``strip=False`` and ``math`` or
+    ``svg`` tags and one or more of the RCDATA tags ``script``,
+    ``noscript``, ``style``, ``noframes``, ``iframe``, ``noembed``, or
+    ``xmp`` in the allowed tags whitelist were vulnerable to a mutation
+    XSS.
+    This security issue was confirmed in Bleach version v3.1.1. Earlier
+    versions are likely affected too.</comment>
+    <requestid>787398</requestid>
+  </revision>
 </revisionlist>

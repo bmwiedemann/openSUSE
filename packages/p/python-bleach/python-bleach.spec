@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bleach
-Version:        3.1.1
+Version:        3.1.3
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
@@ -56,7 +56,7 @@ Documentation is at http://bleach.readthedocs.org/ .
 
 %prep
 %setup -q -n bleach-%{version}
-%patch0 -p1
+%patch0
 rm -rf bleach/_vendor
 
 %build

@@ -1,5 +1,5 @@
---- bleach-3.1.0/bleach/html5lib_shim.py.orig	2019-03-03 16:10:33.148796311 +0700
-+++ bleach-3.1.0/bleach/html5lib_shim.py	2019-03-03 16:11:07.945088029 +0700
+--- bleach/html5lib_shim.py
++++ bleach/html5lib_shim.py
 @@ -11,23 +11,23 @@
  
  import six
@@ -35,3 +35,14 @@
  
  
  #: Map of entity name to expanded entity
+--- tests/test_clean.py
++++ tests/test_clean.py
+@@ -7,7 +7,7 @@
+ from bleach import clean
+ from bleach.html5lib_shim import Filter
+ from bleach.sanitizer import Cleaner
+-from bleach._vendor.html5lib.constants import rcdataElements
++from html5lib.constants import rcdataElements
+ 
+ def test_clean_idempotent():
+     """Make sure that applying the filter twice doesn't change anything."""
