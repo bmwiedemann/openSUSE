@@ -1,7 +1,7 @@
 #
 # spec file for package python-m2r
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 %global modname m2r
+%bcond_without python2
 Name:           python-m2r
 Version:        0.2.1
 Release:        0
 Summary:        Markdown to reStructuredText converter
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/miyakogi/%{modname}
+URL:            https://github.com/miyakogi/m2r
 Source:         https://files.pythonhosted.org/packages/source/m/m2r/%{modname}-%{version}.tar.gz
 Patch0:         open-encoding.patch
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module mistune}
-BuildRequires:  %{python_module setuptools}
-%if %{with test}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python2-mock
-%endif
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
@@ -47,6 +43,9 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
@@ -64,9 +63,7 @@ sed -i '/^#!.*/d' m2r.py
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/m2r
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}/
-rm -rf %{buildroot}%{$python_sitelib}/tests/
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %post
 %python_install_alternative m2r
@@ -75,9 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/tests/
 %python_uninstall_alternative m2r
 
 %check
-%if %{with test}
 %pytest
-%endif
 
 %files %{python_files}
 %license LICENSE
