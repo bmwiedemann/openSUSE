@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 10:59:36 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.2.11
+ * fix boo#1165022 (CVE-2020-9402) Potential SQL injection via tolerance
+   parameter in GIS functions and aggregates on Oracle
+
+-------------------------------------------------------------------
 Tue Feb  4 09:42:08 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.2.10
 - drop pyyaml53.patch
- * fix boo#1161919 (CVE-2020 7471) Potential SQL injection via ``StringAgg(delimiter)``
-
+ * fix boo#1161919 (CVE-2020-7471) Potential SQL injection via ``StringAgg(delimiter)``
 
 -------------------------------------------------------------------
 Wed Jan 15 15:08:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
