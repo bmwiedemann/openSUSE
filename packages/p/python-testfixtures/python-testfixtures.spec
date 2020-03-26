@@ -1,7 +1,7 @@
 #
 # spec file for package python-testfixtures
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,32 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-testfixtures
-Version:        6.10.0
+Version:        6.14.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  python2-mock
 # Test case dependencies
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module zope.component}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Suggests:       python-Django
 Suggests:       python-Twisted
 Suggests:       python-sybil
 Suggests:       python-zope.component
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 %python_subpackages
 
 %description
@@ -68,7 +70,7 @@ chmod a-x docs/*.txt
 
 %check
 export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
-%python_expand $python -m pytest testfixtures/tests
+%pytest testfixtures/tests
 
 %files %{python_files}
 %license LICENSE.txt

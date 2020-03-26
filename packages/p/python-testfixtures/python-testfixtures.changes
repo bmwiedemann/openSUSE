@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:05:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Wed Mar 11 12:16:59 UTC 2020 - pgajdos@suse.com
+
+- version update to 6.14.0
+  6.14.0 (24 Feb 2020)
+  --------------------
+  - Add support for non-deterministic logging order when using :meth:`twisted.LogCapture`.
+  6.13.1 (20 Feb 2020)
+  --------------------
+  - Fix for using :func:`compare` to compare two-element :func:`~unittest.mock.call`
+    objects.
+  6.13.0 (18 Feb 2020)
+  --------------------
+  - Allow any attributes that need to be ignored to be specified directly when calling
+    :func:`~testfixtures.comparison.compare_object`. This is handy when writing
+    comparers for :func:`compare`.
+  6.12.1 (16 Feb 2020)
+  --------------------
+  - Fix a bug that occured when using :func:`compare` to compare a string with a
+    slotted object that had the same :func:`repr` as the string.
+  6.12.0 (6 Feb 2020)
+  -------------------
+  - Add support for ``universal_newlines``, ``text``, ``encoding`` and ``errors`` to
+    :class:`popen.MockPopen`, but only for Python 3.
+  6.11.0 (29 Jan 2020)
+  --------------------
+  - :class:`decimal.Decimal` now has better representation when :func:`compare` displays a failed
+    comparison, particularly on Python 2.
+  - Add support to :func:`compare` for explicitly naming objects to be compared as ``x`` and ``y``.
+    This allows symmetry with the ``x_label`` and ``y_label`` parameters that are now documented.
+  - Restore ability for :class:`Comparison` to compare properties and methods, although these uses
+    are not recommended.
+  6.10.3 (22 Nov 2019)
+  --------------------
+  - Fix bug where new-style classes had their attributes checked with :func:`compare` even
+    when they were of different types.
+  6.10.2 (15 Nov 2019)
+  --------------------
+  - Fix bugs in :func:`compare` when comparing objects which have both ``__slots__``
+    and a ``__dict__``.
+  6.10.1 (1 Nov 2019)
+  -------------------
+  - Fix edge case where string interning made dictionary comparison output much less useful.
+
+-------------------------------------------------------------------
 Mon Jul 22 12:42:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.10.0:
