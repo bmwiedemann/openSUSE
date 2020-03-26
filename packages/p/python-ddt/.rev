@@ -65,4 +65,14 @@
   * use mock only when it is really needed</comment>
     <requestid>766250</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3a74758adbdcaa32292409cf0eaa1c99</srcmd5>
+    <version>1.3.0</version>
+    <time>1585265054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Added the ability to specify the YAML loader in the file_data decorator (#77)
+  * Dropped Python 3.4 support</comment>
+    <requestid>785070</requestid>
+  </revision>
 </revisionlist>
