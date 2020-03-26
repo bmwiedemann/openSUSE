@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:07:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.1. No changelog.
+- Rebase 0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
+- Drop 0002-Qt5-deprecations.patch. Merged upstream
+- Add 0001-Port-Qt5-deprecated-methods.patch
+
+-------------------------------------------------------------------
 Fri Oct 11 07:42:16 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - fix Qt5 deprecation warnings

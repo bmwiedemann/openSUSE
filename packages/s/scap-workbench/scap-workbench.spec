@@ -1,7 +1,7 @@
 #
 # spec file for package scap-workbench
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           scap-workbench
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A SCAP scanner and SCAP content editor
 License:        GPL-3.0-only
 Group:          Productivity/Security
-Url:            https://github.com/OpenSCAP/scap-workbench
-Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%version/scap-workbench-%version.tar.bz2
-Patch1:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
-Patch2:         0002-Qt5-deprecations.patch
+URL:            https://github.com/OpenSCAP/scap-workbench
+Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%{version}/scap-workbench-%{version}.tar.bz2
+Patch0:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Port-Qt5-deprecated-methods.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  openscap-devel
 # SLE 11 SP3: libopenscap needs libxslt without requiring it
@@ -59,10 +60,8 @@ This package provides HTML documentation for scap-workbench.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1 -p1
-%if 0%{?suse_version} > 1510
-%patch2 -p1
-%endif
 
 %build
 %if 0%{?cmake}
@@ -90,7 +89,7 @@ pushd build
 popd
 
 %if 0%{?suse_version}
-%suse_update_desktop_file -i -u %name Utility DesktopUtility
+%suse_update_desktop_file -i -u %{name} Utility DesktopUtility
 %endif
 
 %files
@@ -98,12 +97,12 @@ popd
 %doc README.md COPYING
 %{_bindir}/%{name}
 %dir %{_datadir}/appdata/
-%{_datadir}/appdata/%name.appdata.xml
-%dir %{_datadir}/%name
-%{_datadir}/%name/*.png
-%dir %{_datadir}/%name/translations
-%{_datadir}/%name/translations/README
-%{_datadir}/applications/%name.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/*.png
+%dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations/README
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}*
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
