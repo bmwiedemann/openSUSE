@@ -58,4 +58,14 @@
   * Fix gnome-shell 3.36 issues</comment>
     <requestid>786381</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a7ba7332059cfdf27d1b777aab3a170</srcmd5>
+    <version>20200324</version>
+    <time>1585261991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200324:
+  * Fix gnome-shell issues
+  * Add alt version back</comment>
+    <requestid>788426</requestid>
+  </revision>
 </revisionlist>
