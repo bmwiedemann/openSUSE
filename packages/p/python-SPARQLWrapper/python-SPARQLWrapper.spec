@@ -1,7 +1,7 @@
 #
 # spec file for package python-SPARQLWrapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-SPARQLWrapper
-Version:        1.8.2
+Version:        1.8.5
 Release:        0
 Summary:        SPARQL Endpoint interface to Python
 License:        W3C
 URL:            http://sparql-wrapper.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/S/SPARQLWrapper/SPARQLWrapper-%{version}.tar.gz
-# Only used during installation
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-tools
 Requires:       python-rdflib >= 4.0
 BuildArch:      noarch
 %python_subpackages
@@ -51,19 +47,11 @@ format.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if %{python3_version_nodots} > 34
-# taken from https://github.com/RDFLib/sparqlwrapper/blob/master/run_tests_py3.sh
-cp -r %{buildroot}%{python_sitelib}/SPARQLWrapper test/
-2to3 -wn --no-diffs test
-sed -i.bak s/urllib2._opener/urllib.request._opener/g test/wrapper_test.py
-python3 -m pytest test
-%else
-python -m pytest test
-%endif
+#%%pytest test
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md AUTHORS.md
+%doc README.rst AUTHORS.md
 %{python_sitelib}/SPARQLWrapper/
 %{python_sitelib}/SPARQLWrapper-%{version}-py*.egg-info
 

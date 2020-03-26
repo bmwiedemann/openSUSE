@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 11 17:00:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests as they need quite lot of magic to run just on py3
+
+-------------------------------------------------------------------
+Wed Mar 11 16:49:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.5:
+  - Improve/tests for development (#131)
+  - Changed. Be more strict on Accept Turtle header (#137)
+  - Migrated documentation from epydoc to sphinx and readthedocs
+  - Include ChangeLog.txt in the distribution
+  - Removed import of SPARQLWrapper in setup.py (fixed #113 and closed #115)
+  - Added support for querying RDF/XML in a CONSTRUCT query type
+  - Updated the procedure for determining the query type (#120)
+  - Do not send format parameter for the results ([format, output, results]) when the query is a SPARQL Update query
+  - Added test for new agrovoc SPARQL endpoint (using Fuseki2)
+  - Added test for 4store SPARQL endpoint (used by agroportal)
+  - Added/Updated tests
+  - Added examples
+  - Updated doc
+  - Fixed code generated for python3 using 2to3, adding a custom fixer (#109)
+
+-------------------------------------------------------------------
 Thu Nov  7 15:45:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
