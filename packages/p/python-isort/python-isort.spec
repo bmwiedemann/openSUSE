@@ -1,7 +1,7 @@
 #
 # spec file for package python-isort
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,17 +25,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-isort%{psuffix}
 Version:        4.3.21
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/timothycrosley/isort
 Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Recommends:     python-appdirs >= 1.4.0
@@ -44,6 +43,10 @@ Recommends:     python-pipreqs
 Recommends:     python-requirementslib
 Recommends:     python-toml
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-backports.functools_lru_cache
+BuildRequires:  python-futures
+%endif
 %if %{with test}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
 BuildRequires:  %{python_module mock}
@@ -53,7 +56,6 @@ BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requirementslib}
 BuildRequires:  %{python_module toml}
-BuildRequires:  python-backports.functools_lru_cache
 %endif
 %ifpython2
 Requires:       python-backports.functools_lru_cache

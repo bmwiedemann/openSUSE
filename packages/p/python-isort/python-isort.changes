@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:32:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Sep 12 17:51:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test test_pipfile_finder upstream is aware for 6 months
