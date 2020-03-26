@@ -19,14 +19,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.i18nmessageid
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
 URL:            https://www.python.org/pypi/zope.i18nmessageid
 Source:         https://files.pythonhosted.org/packages/source/z/zope.i18nmessageid/zope.i18nmessageid-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
@@ -62,6 +64,7 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/ht
 }
 
 %check
+sed -i '/coverage/d' setup.py
 %python_exec setup.py test
 
 %files %{python_files}
