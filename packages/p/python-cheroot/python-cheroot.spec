@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pypi_name cheroot
+%bcond_without python2
 Name:           python-%{pypi_name}
 Version:        8.3.0
 Release:        0
@@ -39,7 +40,6 @@ BuildRequires:  %{python_module setuptools_scm_git_archive >= 1.0}
 BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
@@ -49,6 +49,9 @@ Requires:       python-six >= 1.11.0
 # *smacks head against desk*
 Provides:       python-Cheroot = %{version}
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-backports.functools_lru_cache
+%endif
 %ifpython2
 Requires:       python-backports.functools_lru_cache
 %endif
