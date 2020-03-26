@@ -1,7 +1,7 @@
 #
 # spec file for package python-toml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.10.0
 Release:        0
 Summary:        Python module which parses and emits TOML
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/uiri/toml
 Source:         https://files.pythonhosted.org/packages/source/t/toml/toml-%{version}.tar.gz
 # Untagged test data https://github.com/uiri/toml/issues/232
@@ -68,7 +67,7 @@ cp %{SOURCE2} .
 
 %check
 export LANG=en_US.UTF-8
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 # See https://github.com/uiri/toml/issues/216 re change log

@@ -134,4 +134,12 @@
 </comment>
     <requestid>678517</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cddea1047f8c0ab8db2280591f763182</srcmd5>
+    <version>0.10.0</version>
+    <time>1585264856</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest macro directly</comment>
+    <requestid>784152</requestid>
+  </revision>
 </revisionlist>
