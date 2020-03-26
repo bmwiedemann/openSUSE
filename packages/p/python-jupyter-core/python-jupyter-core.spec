@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-jupyter-core%{psuffix}
@@ -32,7 +31,6 @@ Version:        4.6.3
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_core
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_core/jupyter_core-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- use_rpms_paths.patch -- change paths so they are easy to replace at build time
@@ -75,9 +73,8 @@ This package provides the python interface.
 
 %package     -n jupyter-jupyter-core
 Summary:        Base package on which Jupyter projects rely
-Group:          Development/Languages/Python
 Requires:       jupyter-notebook-filesystem
-Requires:       python3-jupyter_core = %{version}
+Requires:       python3-jupyter-core = %{version}
 Provides:       jupyter-jupyter_core = %{version}
 Obsoletes:      jupyter-jupyter_core < %{version}
 Provides:       jupyter-jupyter-core-doc = %{version}

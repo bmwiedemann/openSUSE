@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 07:20:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull sybmol named package but real named package
+
+-------------------------------------------------------------------
 Mon Feb 24 15:37:51 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.6.3
