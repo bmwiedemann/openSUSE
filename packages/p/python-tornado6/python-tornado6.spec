@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado6
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
