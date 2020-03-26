@@ -732,7 +732,7 @@
       <repopackage name="libndr-krb5pac0" arch="x86_64"/>
       <repopackage name="libndr-nbt0" arch="x86_64"/>
       <repopackage name="libndr-standard0" arch="x86_64"/>
-      <repopackage name="libndr0" arch="x86_64"/>
+      <repopackage name="libndr1" arch="x86_64"/>
       <repopackage name="libneon27" arch="x86_64"/>
       <repopackage name="libnetapi0" arch="x86_64"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
@@ -1225,6 +1225,7 @@
       <repopackage name="python3-jsonpatch" arch="x86_64"/>
       <repopackage name="python3-jsonpointer" arch="x86_64"/>
       <repopackage name="python3-jsonschema" arch="x86_64"/>
+      <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-MarkupSafe" arch="x86_64"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-oauthlib" arch="x86_64"/>
