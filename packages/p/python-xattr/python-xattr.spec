@@ -31,6 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.11
+Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %ifpython2
