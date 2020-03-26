@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,11 @@ feature.
 %setup -q -n pylint-pylint-%{version}
 
 %build
+export LC_ALL="en_US.UTF-8"
 %python_build
 
 %install
+export LC_ALL="en_US.UTF-8"
 %python_install
 for p in pylint epylint pyreverse symilar ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
@@ -91,6 +93,7 @@ done
 %check
 # test_by_module_statement_value - fails due to %%pytest macro way of execution
 export PYTHONDONTWRITEBYTECODE=1
+export LC_ALL="en_US.UTF-8"
 %pytest -k "not test_by_module_statement_value"
 
 %files %{python_files}
