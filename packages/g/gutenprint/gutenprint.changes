@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 11:07:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build with no python2 available by pulling in python3-cups
+
+-------------------------------------------------------------------
 Fri Mar 29 10:03:46 CET 2019 - jsmeix@suse.de
 
 - Version upgrade to 5.2.14pre15.1 which is the

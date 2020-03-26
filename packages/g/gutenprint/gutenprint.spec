@@ -55,11 +55,8 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libusb-1_0-devel
 %endif
 BuildRequires:  pango-devel
-%if 0%{?suse_version} != 1010
-# On SLE10 there is no python-cups. Simply omit it because that BuildRequires is only there to
 # add python-cups BuildRequires to have postscriptdriver() Provides for the drivers in gutenprint.
-BuildRequires:  python-cups
-%endif
+BuildRequires:  python3-cups
 Summary:        Printer drivers for CUPS from the Gutenprint project
 License:        GPL-2.0+
 Group:          Hardware/Printing

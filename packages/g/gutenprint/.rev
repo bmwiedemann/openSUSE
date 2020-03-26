@@ -262,4 +262,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705932</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4cebb24c5785380896dfad9b1a5590bb</srcmd5>
+    <version>5.2.14pre15.1</version>
+    <time>1585265172</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with no python2 available by pulling in python3-cups</comment>
+    <requestid>785597</requestid>
+  </revision>
 </revisionlist>
