@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:21:28 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Make /etc/GeoIP.conf readable only by root as it contains MaxMind
+  account information now
+- Add README.SUSE with description how to get the latest data
+  (jsc#SLE-11184, jsc#ECO-1405)
+
+-------------------------------------------------------------------
 Fri Mar 13 10:40:08 UTC 2020 - pgajdos@suse.com
 
 - introduce geoipupdate-legacy script [bsc#1156194]

@@ -29,6 +29,7 @@ Source1:        vendor.tar.gz
 Source2:        geoipupdate.timer
 Source3:        geoipupdate.service
 Source4:        geoipupdate-legacy
+Source5:        README.SUSE
 Patch0:         disable-pandoc.patch
 %if 0%{?suse_version} >= 1500
 # Build-time parameters
@@ -74,6 +75,7 @@ install -D -m0644 %{SOURCE3}              %{buildroot}%{_unitdir}/geoipupdate.se
 install -D -m0755 build/geoipupdate       %{buildroot}%{_bindir}/geoipupdate
 %endif
 install -D -m0755 %{SOURCE4}              %{buildroot}%{_bindir}/geoipupdate-legacy
+install -D -m0644 %{SOURCE5}              %{buildroot}%{_docdir}/geoipupdate/README.SUSE
 install -D -m0644 conf/GeoIP.conf.default %{buildroot}%{_sysconfdir}/GeoIP.conf
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/GeoIP
 sed -ri \
@@ -98,10 +100,10 @@ sed -ri \
 
 %files
 %license LICENSE-*
-%config(noreplace) %{_sysconfdir}/GeoIP.conf
+%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/GeoIP.conf
 %dir %{_localstatedir}/lib/GeoIP
 %if 0%{?suse_version} >= 1500
-%doc README.md build/geoipupdate.md build/GeoIP.conf.md
+%doc README.md README.SUSE build/geoipupdate.md build/GeoIP.conf.md
 %{_bindir}/geoipupdate
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.timer
