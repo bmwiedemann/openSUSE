@@ -1,7 +1,7 @@
 #
 # spec file for package python-webencodings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,6 @@ cp %{SOURCE1} ./
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/webencodings/
-%{python_sitelib}/webencodings-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/webencodings-%{version}-py*.egg-info
 
 %changelog
