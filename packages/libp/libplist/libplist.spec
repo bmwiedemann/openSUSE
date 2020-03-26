@@ -1,7 +1,7 @@
 #
 # spec file for package libplist
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,49 +12,46 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cname libplist3
+%define cppname libplist++3
 Name:           libplist
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
-License:        GPL-2.0 and LGPL-2.1+
-Group:          Development/Libraries/C and C++
-Url:            https://cgit.libimobiledevice.org/libplist.git
-Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
+License:        GPL-2.0-only AND LGPL-2.1-or-later
+URL:            https://github.com/libimobiledevice/libplist
+Source:         https://github.com/libimobiledevice/libplist/archive/%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ autoconf automake libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python-cython
-BuildRequires:  python-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  python3-Cython >= 0.17
+BuildRequires:  pkgconfig(python3)
 
 %description
 libplist is a library for handling Apple Binary and XML Property Lists.
 
-%package -n libplist3
+%package -n %{cname}
 Summary:        Library for handling Apple Binary and XML Property Lists
-Group:          System/Libraries
 Provides:       libplist = %{version}
 Obsoletes:      libplist < %{version}
 
-%description -n libplist3
+%description -n %{cname}
 libplist is a library for handling Apple Binary and XML Property Lists.
 
-%package -n libplist++3
+%package -n %{cppname}
 Summary:        Library for handling Apple Binary and XML Property Lists
-Group:          System/Libraries
 Provides:       libplist++ = %{version}
 Obsoletes:      libplist++ < %{version}
 
-%description -n libplist++3
+%description -n %{cppname}
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 %package -n plistutil
 Summary:        Library for handling Apple Binary and XML Property Lists
-Group:          Hardware/Other
 Requires:       libplist = %{version}
 Provides:       plutil = %{version}
 Obsoletes:      plutil < %{version}
@@ -67,7 +64,6 @@ from XML to binary.
 
 %package devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libplist = %{version}
 
 %description devel
@@ -77,77 +73,68 @@ This package contains the development files for C.
 
 %package -n libplist++-devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libplist++ = %{version}
-Requires:       libplist-devel
+Requires:       pkgconfig(libplist)
 
 %description -n libplist++-devel
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the development files for C++.
 
-%package -n python-plist
+%package -n python3-plist
 Summary:        Library for handling Apple Binary and XML Property Lists -- Python Bindings
-Group:          Development/Languages/Python
-Requires:       libplist3 = %{version}
-Requires:       python-cython >= 0.13
+Requires:       %{cname} = %{version}
+Requires:       python3-Cython >= 0.17
 
-%description -n python-plist
+%description -n python3-plist
 libplist is a library for handling Apple Binary and XML Property Lists.
 
 This package contains the python bindings.
 
 %prep
 %setup -q
+
 %build
+autoreconf -fvi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
 TZ=Europe/Vienna make check VERBOSE=1
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-rm -rf %{buildroot}%{python_sitearch}/*.la
 
 # needed by python-imobiledevice build
 mkdir -p %{buildroot}%{_includedir}/plist/cython
 install -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plist.pxd
 
-%if 0%{?_crossbuild}
-cp -a %{buildroot}%{?_sysroot}/* %{buildroot}/
-rm -fr %{buildroot}%{?_sysroot}
-%endif
+%post -n %{cname} -p /sbin/ldconfig
+%postun -n %{cname} -p /sbin/ldconfig
+%post -n %{cppname} -p /sbin/ldconfig
+%postun -n %{cppname} -p /sbin/ldconfig
 
-%post -n libplist3 -p /sbin/ldconfig
-%postun -n libplist3 -p /sbin/ldconfig
-%post -n libplist++3 -p /sbin/ldconfig
-%postun -n libplist++3 -p /sbin/ldconfig
-
-%files -n libplist3
-%defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.LESSER README NEWS
+%files -n %{cname}
+%license COPYING COPYING.LESSER
+%doc AUTHORS README.md NEWS
 %{_libdir}/libplist.so.*
 
-%files -n libplist++3
-%defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.LESSER README NEWS
+%files -n %{cppname}
+%license COPYING COPYING.LESSER
+%doc AUTHORS README.md NEWS
 %{_libdir}/libplist++.so.*
 
 %files -n plistutil
-%defattr(-,root,root)
 %{_bindir}/plistutil
 
 %files devel
-%defattr(-,root,root,-)
 %dir %{_includedir}/plist
 %{_includedir}/plist/plist.h
 %{_libdir}/libplist.so
 %{_libdir}/pkgconfig/libplist.pc
 
 %files -n libplist++-devel
-%defattr(-,root,root,-)
 %dir %{_includedir}/plist
 %{_includedir}/plist/plist++.h
 %{_includedir}/plist/Array.h
@@ -165,10 +152,9 @@ rm -fr %{buildroot}%{?_sysroot}
 %{_libdir}/libplist++.so
 %{_libdir}/pkgconfig/libplist++.pc
 
-%files -n python-plist
-%defattr(-,root,root,-)
+%files -n python3-plist
 %dir %{_includedir}/plist/cython
 %{_includedir}/plist/cython/plist.pxd
-%{python_sitearch}/plist.so
+%{python3_sitearch}/plist.so
 
 %changelog
