@@ -1,7 +1,7 @@
 #
 # spec file for package python-entrypoints
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
+%bcond_without python2
 Name:           python-entrypoints
 Version:        0.3
 Release:        0
 Summary:        Discover and load entry points from installed packages
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/takluyver/entrypoints
 Source:         https://files.pythonhosted.org/packages/source/e/entrypoints/entrypoints-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-BuildRequires:  %{python_module devel}
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  python-configparser
+%if %{with python2}
+BuildRequires:  python-configparser >= 3.5
 %endif
 %ifpython2
 Requires:       python-configparser >= 3.5
@@ -59,14 +58,8 @@ plugins, or multiple groups if it has different kinds of plugins.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-pushd tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python test_entrypoints.py
-}
-popd
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE

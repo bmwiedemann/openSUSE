@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>671318</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ae48571e20256688e153069d6b9f62be</srcmd5>
+    <version>0.3</version>
+    <time>1585265133</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2
+- Really execute tests</comment>
+    <requestid>785570</requestid>
+  </revision>
 </revisionlist>
