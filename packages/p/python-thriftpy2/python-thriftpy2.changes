@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 11:07:36 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.4.11
+  - Support Cython in HTTP and fix TCyBufferedTransport early flush issue, via `2-#129`_.
+  - Fix exception handling in TProcessor, via `2-#128`_.
+  - Rename socket_timeout to timeout for compatibility, via `2-#115`_.
+
+-------------------------------------------------------------------
 Tue Jan 14 10:02:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.10:

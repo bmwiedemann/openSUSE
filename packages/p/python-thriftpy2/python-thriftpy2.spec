@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thriftpy2
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
