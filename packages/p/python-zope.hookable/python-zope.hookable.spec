@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.hookable
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1

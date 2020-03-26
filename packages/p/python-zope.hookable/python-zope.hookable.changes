@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:13:58 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.0.1
+  - Stop using the setuptools ``Feature`` class, allowing this
+    project to be built from source with newer versions of setuptools
+    that remove that functionality.
+
+-------------------------------------------------------------------
 Tue Jan 21 11:19:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.0.0
