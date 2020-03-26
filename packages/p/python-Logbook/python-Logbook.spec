@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Logbook
 Version:        1.5.3
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/getlogbook/logbook
 Source:         https://files.pythonhosted.org/packages/source/L/Logbook/Logbook-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 BuildRequires:  util-linux
@@ -50,6 +49,9 @@ Recommends:     python-execnet >= 1.0.9
 Recommends:     python-gevent
 Recommends:     python-pyzmq
 Recommends:     python-redis
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
