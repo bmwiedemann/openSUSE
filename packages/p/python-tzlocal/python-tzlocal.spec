@@ -1,7 +1,7 @@
 #
 # spec file for package python-tzlocal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,6 @@ file. However, if the timezone name is readily available it will be used.
 %license LICENSE.txt
 %doc README.rst CHANGES.txt
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/%{modname}-%{version}-py*.egg-info
 
 %changelog
