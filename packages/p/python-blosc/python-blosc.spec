@@ -36,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 # /SECTION
@@ -67,14 +66,8 @@ export BLOSC_DIR=%{_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mkdir empty
-pushd empty
-%{python_expand export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -c "import blosc; blosc.print_versions()"
-nosetests-%{$python_bin_suffix} %{buildroot}%{$python_sitearch}/blosc
-}
-popd
+export PYTHONDONTWRITEBYTECODE=1
+%python_exec -m unittest discover -s blosc/ -v 
 
 %files %{python_files}
 %doc ANNOUNCE.rst README.rst RELEASE_NOTES.rst
