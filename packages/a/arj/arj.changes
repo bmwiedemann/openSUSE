@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 20:50:54 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add arj-3.10.22-fixstrcpy.patch to fix data corruption
+  and make package builds reproducible (boo#1100677)
+
+-------------------------------------------------------------------
 Thu Oct 17 13:33:58 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

@@ -33,6 +33,8 @@ Patch2:         arj-3.10.22-custom-printf.patch
 Patch3:         arj-3.10.22-quotes.patch
 # PATCH-FIX-OPENSUSE -- make build reproducible
 Patch4:         arj-3.10.22-reproducible.patch
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/arj/git/merge-requests/1/
+Patch5:         arj-3.10.22-fixstrcpy.patch
 BuildRequires:  autoconf
 
 %description
@@ -49,6 +51,7 @@ unaffiliated, ARJ Software Russia.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 for i in debian/patches/00*.patch; do
   patch -p1 < $i
