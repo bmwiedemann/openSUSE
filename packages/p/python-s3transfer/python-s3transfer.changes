@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:52:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Mar 10 09:45:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test failing on python 3.8, it is race condition that needs

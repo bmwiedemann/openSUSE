@@ -140,4 +140,12 @@
     will get borked with python 3.10</comment>
     <requestid>783247</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>06825f7f09ddb1f577cce50a1c4d2989</srcmd5>
+    <version>0.3.3</version>
+    <time>1585264971</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784636</requestid>
+  </revision>
 </revisionlist>

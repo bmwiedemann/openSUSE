@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-s3transfer
 Version:        0.3.3
 Release:        0
@@ -33,7 +34,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-futures >= 2.2.0
+%endif
 Requires:       python-botocore <= 2.0.0
 Requires:       python-botocore >= 1.12.36
 Requires:       python-requests
