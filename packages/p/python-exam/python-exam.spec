@@ -1,7 +1,7 @@
 #
 # spec file for package python-exam
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@ Release:        0
 Summary:        Helpers for better testing
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/fluxx/exam
+URL:            https://github.com/fluxx/exam
 Source:         https://files.pythonhosted.org/packages/source/e/exam/exam-%{version}.tar.gz
+# https://github.com/Fluxx/exam/pull/50
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 %endif
 BuildRequires:  fdupes
 %ifpython2
@@ -50,6 +51,7 @@ conventions and adhering to the unit testing interface.
 
 %prep
 %setup -q -n exam-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -60,7 +62,7 @@ conventions and adhering to the unit testing interface.
 
 %if %{with test}
 %check
-%python_exec setup.py nosetests
+%python_exec -m unittest discover -s tests/ -v
 %endif
 
 %files %{python_files}
