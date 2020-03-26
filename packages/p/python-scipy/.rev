@@ -993,4 +993,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment>- Fix pybind11 devel dependency to match real name</comment>
     <requestid>764663</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>a8b48572df234f469889eafabee484e9</srcmd5>
+    <version>1.4.1</version>
+    <time>1585265227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786340</requestid>
+  </revision>
 </revisionlist>

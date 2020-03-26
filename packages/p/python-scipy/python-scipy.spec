@@ -84,11 +84,6 @@ ExclusiveArch:  do_not_build
 %define p_bindir %hpc_bindir
 %endif
 
-%if 0%{?is_opensuse} == 0
-  %bcond_with suitesparse
-%else
-  %bcond_without suitesparse
-%endif
 %define         skip_python2 1
 Name:           %{package_name}
 Version:        1.4.1
@@ -108,9 +103,6 @@ BuildRequires:  %{python_module pybind11-devel >= 2.2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with suitesparse}
-BuildRequires:  suitesparse-devel-static
-%endif
 BuildRequires:  swig
 %if %{without hpc}
 BuildRequires:  gcc-c++
@@ -151,32 +143,15 @@ for numerical integration and optimization.
 %patch0 -p1
 find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
 
-cat > site.cfg << EOF
-[amd]
-library_dirs = %{_libdir}
-include_dirs = %{_includedir}/suitesparse:%{_includedir}/ufsparse
-amd_libs = amd
-
-[umfpack]
-library_dirs = %{_libdir}
-include_dirs = %{_includedir}/suitesparse:%{_includedir}/ufsparse
-umfpack_libs = umfpack
-EOF
-
 %build
 %{python_expand #
+export FFLAGS="-std=legacy"
 %if %{with hpc}
 py_ver=%{$python_version}
 %hpc_setup
 module load python${py_ver/.*/}-numpy
 export CFLAGS="$(pkg-config --cflags openblas) %{optflags} -fno-strict-aliasing" LIBS="$(pkg-config --libs openblas)"
 export OPENBLAS=$OPENBLAS_LIB
-cat > site.cfg <<EOF
-[openblas]
-libraries = openblas
-library_dirs = $OPENBLAS_LIB
-include_dirs = $OPENBLAS_INC
-EOF
 %else
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export BLAS=%{_libdir}

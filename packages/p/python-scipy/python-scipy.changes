@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:05:49 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -std=legacy in order to build with GCC10:
+  https://gcc.gnu.org/gcc-10/porting_to.html#argument-mismatch
+
+-------------------------------------------------------------------
+Mon Mar 16 13:51:18 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- 'umpfack' is a runtime dependency of scipy. No build time
+  dependency to suitesparse is required (jsc#SLE-11732).
+- Get rid of site.cfg entirely as it is used nowhwere in scipy.
+
+-------------------------------------------------------------------
 Wed Jan 15 12:56:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix pybind11 devel dependency to match real name
