@@ -1,7 +1,7 @@
 #
 # spec file for package python-remoto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-remoto
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Remote command executor using ssh and Python in the remote end
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/alfredodeza/remoto
+URL:            https://github.com/alfredodeza/remoto
 Source0:        https://files.pythonhosted.org/packages/source/r/remoto/remoto-%{version}.tar.gz
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module setuptools}
@@ -33,7 +32,6 @@ BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
 Requires:       python-setuptools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 # SECTION build requirements
 BuildRequires:  %{python_module mock >= 1.0b1}
@@ -63,7 +61,6 @@ export REMOTO_NO_VENDOR=no
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
