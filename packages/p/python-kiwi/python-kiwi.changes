@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Wed Mar 04 18:28:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.3 → 9.20.4
+
+-------------------------------------------------------------------
+Wed Mar 04 15:47:41 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fix a regression for container builds in OBS
+
+  This commit fixes a regression introduced in 12d84be2. We need to ensure
+  that `labels` item exist in oci image configuration dict before updating
+  it and creating it in case it doesn't exist.
+
+-------------------------------------------------------------------
+Tue Mar 03 16:38:27 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed suse doc push pipeline
+
+  build and push are not allowed to run in parallel
+
+-------------------------------------------------------------------
+Tue Mar 03 15:27:54 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- push suse doc only on merge to master
+
+-------------------------------------------------------------------
+Tue Mar 03 08:56:53 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.2 → 9.20.3
+
+-------------------------------------------------------------------
+Mon Mar 02 11:22:25 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Build and push SUSE documentation
+
+  On any pull request also build the suse documentation and
+  push changes to the OSInside/kiwi-suse-doc git repository.
+  The SUSE documentation team needs a repo with docbook sources
+  for the publishing procedure. In addition change the gitlab
+  pipeline to run in three stages: Test, Documentation and
+  Package. Let the style and unit tests run in parallel and
+  cleanup the dependency setup
+
+-------------------------------------------------------------------
+Fri Feb 28 15:34:39 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fix container labels setup in OBS
+
+  This commits fixes the containers label setup in OBS, ensuring that
+  adding the 'org.openbuildservice.disturl' label does not clear any
+  other label.
+
+  Fixes #1338
+
+-------------------------------------------------------------------
+Fri Feb 28 15:13:44 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.1 → 9.20.2
+
+-------------------------------------------------------------------
+Fri Feb 28 09:48:55 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed schema regexp validation
+
+  Regexp patterns used in the schema are translated into python
+  expressions by generateDS. It's required to use the XSD schema
+  to run generateDS, xsd however has some restrictions on pattern
+  use which leads to a warning message for the ones fixed here
+
+-------------------------------------------------------------------
+Wed Feb 26 16:38:01 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed completion_generator
+
+  Due to the change of the binary name for consistency in the
+  docopt docstrings the completion generator failed to produce
+  correct results. This commit fixes it
+
+-------------------------------------------------------------------
+Wed Feb 26 13:05:10 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Store Mock build logs and built RPMs as short-term artifacts
+
+  This makes it much easier to debug what is happening with mock when
+  failures occur.
+
+-------------------------------------------------------------------
+Tue Feb 25 15:17:57 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added sle15 ppc oem integration test
+
+  Related to Issue #1325
+
+-------------------------------------------------------------------
+Tue Feb 25 15:12:27 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added task plugin documentation
+
+  Documentation for developers how to write a custom kiwi
+  task plugin.
+
+-------------------------------------------------------------------
+Tue Feb 25 10:42:02 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update manual page documentation
+
+  Fixed manual pages to use kiwi-ng as the command name
+
+-------------------------------------------------------------------
+Tue Feb 25 10:36:29 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed docopt strings to use correct binary name
+
+  The kiwi binary from the entry_point configuration is
+  kiwi-ng. The docopt strings should use this name for
+  consistency. The alternative binary name kiwi is just
+  a symlink created on the rpm packaging level and is
+  not guaranteed to exist depending on how kiwi was
+  installed
+
+-------------------------------------------------------------------
+Mon Feb 24 23:16:27 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor plugin architecture
+
+  Set kiwi.tasks to be the plugin entry point and register
+  existing task plugins in setup.py. Change the code in
+  cli.py to auto register plugins using the iter_entry_points
+  method from the pkg_resources class. This allows for easier
+  writing of external kiwi plugins.
+
+-------------------------------------------------------------------
+Mon Feb 24 17:42:44 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed handling of fillup templates
+
+  Systems using a template tool to generate config files
+  might not be effective when they see the intermediate
+  config files we need from the host to let certain package
+  managers work correctly. Therefore the cleanup code in
+  kiwi takes care to restore from an optionally existing
+  template file if no other custom variant is present.
+  This Fixes bsc#1163978
+
+-------------------------------------------------------------------
+Fri Feb 21 10:20:21 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Enhance OEM ppc integration test for 4k/512b disks
+
+  Add profile section to build one image for storage disks with
+  4k physical blocksize and one image for disks using 512byte
+  blocksize. Related to Issue #1325
+
+-------------------------------------------------------------------
+Thu Feb 20 17:02:15 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Make squashfs compression configurable
+
+  This commit adds the `squashfscompression` attribute in type element. It
+  can take `gzip`, `zstd`, `xz`, `lzo`, `lz4` or `none`. The default is `xz`.
+
+  Fixes #1315
+
+-------------------------------------------------------------------
 Wed Feb 19 18:01:58 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.20.0 → 9.20.1
