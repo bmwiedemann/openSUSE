@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 Name:           python-pytest4%{psuffix}
 Version:        4.6.9
 Release:        0
@@ -59,8 +60,10 @@ BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest4 >= %{version}}
 BuildRequires:  %{python_module setuptools_scm}
+%if %{with python2}
 BuildRequires:  python-funcsigs
 BuildRequires:  python-mock
+%endif
 %endif
 %ifpython2
 Requires:       python-funcsigs
