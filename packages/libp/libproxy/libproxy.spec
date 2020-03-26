@@ -1,7 +1,7 @@
 #
 # spec file for package libproxy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,7 @@
 %else
 %define _sourcename %{_name}-%{version}
 %endif
-%{!?python_sitelib:  %global python_sitelib  %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%bcond_without python2
 %{!?_assemblies_dir: %global _assemblies_dir %(pkg-config cecil --variable=assemblies_dir)}
 Name:           libproxy%{?dash}%{?name_suffix}
 Version:        0.4.15
@@ -66,8 +65,11 @@ BuildRequires:  gconf2-devel
 # the library changed
 BuildRequires:  libproxy1 = %{version}
 BuildRequires:  perl
-BuildRequires:  python-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+%if %{with python2}
+BuildRequires:  python-devel
+%endif
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0)
@@ -218,9 +220,7 @@ about network configuration changes.
 Summary:        Python3 bindings for libproxy
 Group:          Development/Languages/Python
 Requires:       libproxy1 = %{version}
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description -n python3-libproxy
 libproxy is a library that provides automatic proxy configuration
@@ -232,9 +232,7 @@ This package contains the Python 3 bindings for libproxy.
 Summary:        Python bindings for libproxy
 Group:          Development/Languages/Python
 Requires:       libproxy1 = %{version}
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description -n python-libproxy
 libproxy is a library that provides automatic proxy configuration
@@ -281,9 +279,6 @@ mkdir build
 cd build
 export CXXFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
-%if 0%{?suse_version} < 1120 && 0%{?suse_version}
-export CXXFLAGS="%{optflags} -DXP_UNIX"
-%endif
 %if 0%{?windows}
 export CXXFLAGS="%{optflags} -fno-stack-protector -static-libgcc"
 %endif
@@ -318,13 +313,8 @@ cmake \
 %if %build_core_not_modules || ! 0%{?is_opensuse}
   -DWITH_KDE=OFF \
 %endif
-%if 0%{?suse_version} && 0%{?suse_version} < 1120
-  -DCMAKE_BUILD_TYPE=DebugFull \
-  -DCMAKE_INSTALL_CONFIG_NAME=DebugFull \
-%else
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_CONFIG_NAME=RelWithDebInfo \
-%endif
   -DWITH_WEBKIT3=ON \
   -DWITH_GNOME3=ON \
 ..
@@ -421,9 +411,11 @@ make test
 %{_libdir}/libproxy-%{version}/modules/pacrunner_mozjs.so
 %endif
 
+%if %{with python2}
 %files -n python-libproxy
 %defattr(-, root, root)
 %{python_sitelib}/*.py
+%endif
 
 %files -n python3-libproxy
 %defattr(-, root, root)

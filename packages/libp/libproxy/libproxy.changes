@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:10:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove few SLE11 conditions
+- Fix build without python2 available
+
+-------------------------------------------------------------------
 Wed Dec 12 16:08:37 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert package from multispec to multibuild.
