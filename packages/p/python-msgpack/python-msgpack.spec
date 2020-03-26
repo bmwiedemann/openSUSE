@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.6.2
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/msgpack/msgpack-python
 Source:         https://files.pythonhosted.org/packages/source/m/msgpack/msgpack-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -66,6 +65,6 @@ export CFLAGS="%{optflags}"
 %doc README.rst
 %license COPYING
 %{python_sitearch}/msgpack
-%{python_sitearch}/msgpack-%{version}-py%{py_ver}.egg-info
+%{python_sitearch}/msgpack-%{version}-py*.egg-info
 
 %changelog
