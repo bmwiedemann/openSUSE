@@ -1,33 +1,34 @@
-Index: stdeb-0.8.5/stdeb/command/bdist_deb.py
+Index: stdeb-0.9.0/stdeb/command/bdist_deb.py
 ===================================================================
---- stdeb-0.8.5.orig/stdeb/command/bdist_deb.py
-+++ stdeb-0.8.5/stdeb/command/bdist_deb.py
-@@ -43,7 +43,7 @@ class bdist_deb(Command):
+--- stdeb-0.9.0.orig/stdeb/command/bdist_deb.py
++++ stdeb-0.9.0/stdeb/command/bdist_deb.py
+@@ -48,7 +48,7 @@ class bdist_deb(Command):
              raise ValueError('could not find debian source directory')
  
          # define system command to execute (gen .deb binary pkg)
--        syscmd = ['dpkg-buildpackage','-rfakeroot','-uc','-b']
-+        syscmd = ['dpkg-buildpackage','-d','-rfakeroot','-uc','-b']
+-        syscmd = ['dpkg-buildpackage','-rfakeroot','-b']
++        syscmd = ['dpkg-buildpackage','-d','-rfakeroot','-b']
  
-         util.process_command(syscmd,cwd=target_dirs[0])
+         if not self.sign_results:
+             syscmd.append('-uc')
+Index: stdeb-0.9.0/stdeb/util.py
+===================================================================
+--- stdeb-0.9.0.orig/stdeb/util.py
++++ stdeb-0.9.0/stdeb/util.py
+@@ -1408,7 +1408,7 @@ def build_dsc(debinfo,
+     if sign_dsc:
+         args = ()
+     else:
+-        args = ('-uc','-us')
++        args = ('-d','-uc','-us')
  
-Index: stdeb-0.8.5/stdeb/util.py
+     dpkg_buildpackage('-S','-sa',*args,cwd=fullpath_repackaged_dirname)
+ 
+Index: stdeb-0.9.0/test.sh
 ===================================================================
---- stdeb-0.8.5.orig/stdeb/util.py
-+++ stdeb-0.8.5/stdeb/util.py
-@@ -530,6 +530,7 @@ def dpkg_source(b_or_x,arg1,cwd=None):
- def dpkg_genchanges(cwd=None):
-     args = ['/usr/bin/dpkg-buildpackage',
-             '-rfakeroot',
-+            '-d', # ignore unmet dependencies
-             '-uc', # unsigned changes
-             '-us', # unsigned source
-             '-S',  # source package
-Index: stdeb-0.8.5/test.sh
-===================================================================
---- stdeb-0.8.5.orig/test.sh
-+++ stdeb-0.8.5/test.sh
-@@ -72,7 +72,7 @@ fi
+--- stdeb-0.9.0.orig/test.sh
++++ stdeb-0.9.0/test.sh
+@@ -74,7 +74,7 @@ export DEB_BUILD_OPTIONS=nocheck # psyco
  ${PY2DSC} $SOURCE_TARBALL
  
  cd deb_dist/$DEBSOURCE
@@ -36,7 +37,7 @@ Index: stdeb-0.8.5/test.sh
  cd ../..
  for DEBFILE in deb_dist/*.deb; do
    echo "contents of $DEBFILE from $SOURCE_TARBALL in case 1:"
-@@ -96,7 +96,7 @@ cd $SOURCE_TARBALL_DIR
+@@ -98,7 +98,7 @@ cd $SOURCE_TARBALL_DIR
  $PYEXE -c "import sys; print('sys.version',sys.version)"
  $PYEXE setup.py --command-packages=stdeb.command sdist_dsc
  cd deb_dist/$DEBSOURCE

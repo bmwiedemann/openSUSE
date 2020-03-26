@@ -1,7 +1,7 @@
-Index: stdeb-0.8.5/test.sh
+Index: stdeb-0.9.0/test.sh
 ===================================================================
---- stdeb-0.8.5.orig/test.sh
-+++ stdeb-0.8.5/test.sh
+--- stdeb-0.9.0.orig/test.sh
++++ stdeb-0.9.0/test.sh
 @@ -9,7 +9,7 @@ rm -rf deb_dist
  # setup paths
  
@@ -19,13 +19,13 @@ Index: stdeb-0.8.5/test.sh
 +for i in `seq 1`; do
  if [ $i -eq "1" ]; then
 -SOURCE_PACKAGE=requests
--SOURCE_RELEASE=2.2.1
+-SOURCE_RELEASE=2.6.0
 +SOURCE_PACKAGE=tablib
 +SOURCE_RELEASE=0.13.0
  SOURCE_TARBALL_DIR=${SOURCE_PACKAGE}-${SOURCE_RELEASE}
  SOURCE_TARBALL=${SOURCE_TARBALL_DIR}.tar.gz
  DEBSOURCE=${SOURCE_TARBALL_DIR}
-@@ -65,7 +65,7 @@ fi
+@@ -67,7 +67,7 @@ export DEB_BUILD_OPTIONS=nocheck # psyco
  
  # get a file to work with
  # ==============================================================
@@ -34,7 +34,7 @@ Index: stdeb-0.8.5/test.sh
  
  # case 1: build from pre-existing source tarball with py2dsc
  # ==============================================================
-@@ -93,9 +93,8 @@ rm -rf deb_dist
+@@ -95,9 +95,8 @@ rm -rf deb_dist
  # ==============================================================
  tar xzf $SOURCE_TARBALL
  cd $SOURCE_TARBALL_DIR
@@ -46,7 +46,7 @@ Index: stdeb-0.8.5/test.sh
  cd deb_dist/$DEBSOURCE
  dpkg-buildpackage -rfakeroot -uc -us
  cd ../..
-@@ -137,8 +136,7 @@ fi
+@@ -139,8 +138,7 @@ fi
  rm -rf deb_dist
  
  
