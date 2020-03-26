@@ -70,8 +70,8 @@ This package contains files for developing applications using pybind11.
 %cmake_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # removing duplicated header files
-rm -rv %{buildroot}%{_includedir}/python2.*/pybind11/
-rm -rv %{buildroot}%{_includedir}/python3.*/pybind11
+rm -rfv %{buildroot}%{_includedir}/python2.*/pybind11/
+rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 
 %files %{python_files}
 %doc README.md

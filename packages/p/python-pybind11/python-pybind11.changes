@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 11 16:57:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Feb 13 05:32:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix mixup of expanded/unexpaned python versions in devel package,
