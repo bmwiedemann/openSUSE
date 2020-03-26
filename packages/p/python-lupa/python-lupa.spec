@@ -31,7 +31,9 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(lua)
+%ifnarch riscv64
 BuildRequires:  pkgconfig(luajit)
+%endif
 Recommends:     luajit
 Suggests:       lua
 %python_subpackages

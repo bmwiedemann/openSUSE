@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 21 18:05:45 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- No LuaJIT on riscv64
+
+-------------------------------------------------------------------
 Thu Mar  5 13:50:57 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.9
