@@ -1,7 +1,7 @@
-diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java
---- hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java	2016-01-05 20:52:26.000000000 +0100
-+++ hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java	2019-12-13 16:08:16.114729257 +0100
-@@ -79,8 +79,8 @@
+diff -urEbwB glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java
+--- glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java	2020-03-24 16:11:30.751539739 +0100
++++ glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/impl/ModulesRegistryImpl.java	2020-03-24 16:11:47.559629638 +0100
+@@ -55,8 +55,8 @@
          return new ModulesRegistryImpl(this);
      }
  
@@ -12,7 +12,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/Mod
          for (ModuleLifecycleListener l : getLifecycleListeners()) {
              l.moduleInstalled(m);
          }
-@@ -88,7 +88,7 @@
+@@ -64,7 +64,7 @@
      }
  
      protected List<ActiveDescriptor> parseInhabitants(
@@ -21,7 +21,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/Mod
              throws IOException {
          return ((ModuleImpl)module).parseInhabitants(name, postProcessors);
      }
-@@ -110,7 +110,7 @@
+@@ -86,7 +86,7 @@
          }
  
          ModuleId id = AbstractFactory.getInstance().createModuleId(moduleName, version);
@@ -30,7 +30,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/Mod
          if (module!=null) {
              ModuleImpl privateModule =
                      (ModuleImpl)newModule(module.getModuleDefinition());
-@@ -165,7 +165,7 @@
+@@ -141,7 +141,7 @@
          }
          ClassLoaderProxy cl = new ClassLoaderProxy(new URL[0], parent);
          for (ModuleDefinition def : defs) {
@@ -39,7 +39,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/Mod
              cl.addDelegate(module.getClassLoader());
          }
          
-@@ -196,7 +196,7 @@
+@@ -172,7 +172,7 @@
      }
      
  
@@ -48,10 +48,10 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/impl/Mod
          ClassLoader cl = clazz.getClassLoader();
          if(cl==null)    return null;
          if (cl instanceof ModuleClassLoader)
-diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java
---- hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java	2016-01-05 20:52:26.000000000 +0100
-+++ hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java	2019-12-13 16:01:48.632550619 +0100
-@@ -51,7 +51,7 @@
+diff -urEbwB glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java
+--- glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java	2020-03-24 16:11:30.751539739 +0100
++++ glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/ProxyModule.java	2020-03-24 16:11:47.559629638 +0100
+@@ -27,7 +27,7 @@
   *
   * @author Jerome Dochez
   */
@@ -60,7 +60,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/P
  
      final ClassLoader classLoader;
      final ModuleDefinition moduleDef;
-@@ -113,15 +113,15 @@
+@@ -89,15 +89,15 @@
          return classLoader;
      }
  
@@ -80,10 +80,10 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/P
          throw new UnsupportedOperationException("Inports cannot be added dynamically to static modules");
      }
  
-diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java
---- hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java	2016-01-05 20:52:26.000000000 +0100
-+++ hk2-2.4.0.new/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java	2019-12-13 16:04:45.729546354 +0100
-@@ -65,7 +65,7 @@
+diff -urEbwB glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java
+--- glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java	2020-03-24 16:11:30.751539739 +0100
++++ glassfish-hk2-2.5.0-RELEASE/hk2-core/src/main/java/com/sun/enterprise/module/single/SingleModulesRegistry.java	2020-03-24 16:11:47.559629638 +0100
+@@ -41,7 +41,7 @@
  public class SingleModulesRegistry  extends ModulesRegistryImpl {
  
      final ClassLoader singleClassLoader;
@@ -92,7 +92,7 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/S
  
      public SingleModulesRegistry(ClassLoader singleCL) {
          this(singleCL, null);
-@@ -90,34 +90,34 @@
+@@ -66,34 +66,34 @@
      }
  
      @Override
@@ -134,10 +134,10 @@ diff -urEbwB hk2-2.4.0/hk2-core/src/main/java/com/sun/enterprise/module/single/S
              throws IOException {
  
          ArrayList<PopulatorPostProcessor> allPostProcessors = new ArrayList<PopulatorPostProcessor>();
-diff -urEbwB hk2-2.4.0/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java hk2-2.4.0.new/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java
---- hk2-2.4.0/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java	2016-01-05 20:52:26.000000000 +0100
-+++ hk2-2.4.0.new/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java	2019-12-13 16:21:49.071327338 +0100
-@@ -792,7 +792,7 @@
+diff -urEbwB glassfish-hk2-2.5.0-RELEASE/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java glassfish-hk2-2.5.0-RELEASE/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java
+--- glassfish-hk2-2.5.0-RELEASE/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java	2020-03-24 16:11:30.791539954 +0100
++++ glassfish-hk2-2.5.0-RELEASE/hk2-testing/collections/src/main/java/org/glassfish/hk2/testing/collections/AbstractCollectionTest.java	2020-03-24 16:11:47.559629638 +0100
+@@ -769,7 +769,7 @@
    public void testCollectionToArrayWithArgumentWithNullThrows() {
      Collection collection = createEmptyCollection();
      

@@ -16,60 +16,66 @@
 #
 
 
-%global namedreltag %{nil}
-%global namedversion %{version}%{?namedreltag}
+%global extra_version 1.0.3
 %bcond_without jp_minimal
 Name:           glassfish-hk2
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
-Summary:        Hundred Kilobytes Kernel
-License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
-Group:          Development/Libraries/Java
-URL:            https://hk2.java.net/
-Source0:        https://github.com/javaee/hk2/archive/%{namedversion}.tar.gz
-# https://java.net/jira/browse/HK2-250
-# wget -O glassfish-LICENSE.txt https://svn.java.net/svn/glassfish~svn/tags/legal-1.1/src/main/resources/META-INF/LICENSE.txt
-# glassfish-hk2 package don't include the license file
-Source1:        glassfish-LICENSE.txt
+Summary:        Glassfish Hundred Kilobytes Kernel
+License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
+URL:            https://github.com/eclipse-ee4j/glassfish-hk2/
+Source0:        https://github.com/eclipse-ee4j/glassfish-hk2/archive/%{version}-RELEASE/%{name}-%{version}.tar.gz
+Source1:        https://github.com/eclipse-ee4j/glassfish-hk2-extra/archive/%{extra_version}-RELEASE/%{name}-extra-%{extra_version}.tar.gz
 Source2:        hk2-inhabitant-generator-osgi.bundle
 # unbundles tiger-types from hk2-utils osgi metadata and
 # fixes invalid whitespace in hk2-core osgi metadata
-Patch0:         glassfish-hk2-2.3.0-hk2-utils-osgi_bundle.patch
-Patch1:         hk2-jdk11.patch
-BuildRequires:  fdupes
+Patch0:         0001-OSGi-metadata-fixes.patch
+# fixed some test failures
+Patch1:         0002-Fixed-tests.patch
+# Module ambiguous in java 11
+Patch2:         hk2-jdk11.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(aopalliance:aopalliance)
+BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:maven-osgi)
-BuildRequires:  mvn(org.apache.maven:maven-archiver)
-BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.javassist:javassist)
-BuildRequires:  mvn(org.jvnet:tiger-types)
-BuildRequires:  mvn(org.mockito:mockito-core)
-BuildRequires:  mvn(org.osgi:org.osgi.compendium)
-BuildRequires:  mvn(org.osgi:org.osgi.core)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.ow2.asm:asm-all)
-BuildRequires:  mvn(org.testng:testng)
 BuildArch:      noarch
-#BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 %if %{without jp_minimal}
 BuildRequires:  mvn(args4j:args4j)
 BuildRequires:  mvn(com.google.inject:guice)
-BuildRequires:  mvn(com.sun.codemodel:codemodel)
+BuildRequires:  mvn(com.google.protobuf:protobuf-java)
+BuildRequires:  mvn(com.sun:tools)
 BuildRequires:  mvn(javax.el:javax.el-api)
+BuildRequires:  mvn(javax.json:javax.json-api)
+BuildRequires:  mvn(javax.validation:validation-api)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.apache.bcel:bcel)
 BuildRequires:  mvn(org.apache.felix:org.apache.felix.bundlerepository)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
+BuildRequires:  mvn(org.assertj:assertj-core)
+BuildRequires:  mvn(org.glassfish:javax.json)
 BuildRequires:  mvn(org.hibernate:hibernate-validator)
+BuildRequires:  mvn(org.mockito:mockito-core)
 BuildRequires:  mvn(org.springframework:spring-context)
+BuildRequires:  mvn(org.testng:testng)
+%endif
+%if %{with jp_minimal}
+Obsoletes:      glassfish-hk2-dependency-verifier < %{version}-%{release}
+Obsoletes:      glassfish-hk2-dependency-visualizer < %{version}-%{release}
+Obsoletes:      glassfish-hk2-guice-bridge < %{version}-%{release}
+Obsoletes:      glassfish-hk2-osgi < %{version}-%{release}
+Obsoletes:      glassfish-hk2-spring-bridge < %{version}-%{release}
 %endif
 
 %description
@@ -77,152 +83,74 @@ HK2 for Hundred Kilobytes Kernel is an abstraction to
 a module subsystem coupled with a simple yet powerful
 component model to build server side software.
 
-%package api
-Summary:        HK2 API module
-Group:          Development/Libraries/Java
-
-%description api
-Hundred Kilobytes Kernel API module.
-
-%package class-model
-Summary:        Class Model for Hk2
-Group:          Development/Libraries/Java
-
-%description class-model
-Hundred Kilobytes Kernel Class Model.
-
-%package configuration
-Summary:        HK2 configuration modules
-Group:          Development/Libraries/Java
-
-%description configuration
-Hundred Kilobytes Kernel configuration modules.
-
-%package core
-Summary:        HK2 core module
-Group:          Development/Libraries/Java
-
-%description core
-Hundred Kilobytes Kernel core module.
-
-%if %{without jp_minimal}
-%package dependency-verifier
-Summary:        HK2 Static Analyser for verifying module dependency
-Group:          Development/Libraries/Java
-
-%description dependency-verifier
-HK2 Static Analyser for verifying module dependency.
-
-%package dependency-visualizer
-Summary:        HK2 Tool to visualize the dependencies
-Group:          Development/Libraries/Java
-
-%description dependency-visualizer
-Tool to visualize the dependencies generated by
-HK2's dependency-verifier.
-%endif
-
-%package extras
-Summary:        HK2 extras module
-Group:          Development/Libraries/Java
-
-%description extras
-Default implementations for HK2 services.
-
-%if %{without jp_minimal}
-%package guice-bridge
-Summary:        HK2 Guice Bridge
-Group:          Development/Libraries/Java
-
-%description guice-bridge
-Hundred Kilobytes Kernel Guice Bridge.
-%endif
-
 %package hk2
 Summary:        HK2 module of HK2 itself
-Group:          Development/Libraries/Java
 
 %description hk2
 This is so that other modules can depend on HK2 as an HK2 module.
 
-%package inhabitant-generator
-Summary:        HK2 Inhabitant Generator - maven plugin
-Group:          Development/Libraries/Java
+%package api
+Summary:        HK2 API module
 
-%description inhabitant-generator
-Hundred Kilobytes Kernel Inhabitant Generator - maven plugin.
+%description api
+Hundred Kilobytes Kernel API module.
+
+%package core
+Summary:        HK2 core module
+
+%description core
+Hundred Kilobytes Kernel core module.
+
+%package configuration
+Summary:        HK2 configuration modules
+
+%description configuration
+Hundred Kilobytes Kernel configuration modules.
+
+%package extras
+Summary:        HK2 extras module
+
+%description extras
+Default implementations for HK2 services.
 
 %package jmx
 Summary:        HK2 JMX module
-Group:          Development/Libraries/Java
 
 %description jmx
 Hundred Kilobytes Kernel JMX module.
 
 %package locator
 Summary:        HK2 ServiceLocator Default Implementation
-Group:          Development/Libraries/Java
 
 %description locator
 Hundred Kilobytes Kernel ServiceLocator Default Implementation.
 
-%package locator-extras
-Summary:        HK2 Locator unit tests
-Group:          Development/Libraries/Java
-
-%description locator-extras
-Extra unit tests for the HK2 Locator implementation.
-
-%package locator-no-proxies
-Summary:        HK2 Locator No Proxy Unit tests
-Group:          Development/Libraries/Java
-
-%description locator-no-proxies
-Tests the basic HK2 locator with no proxiable scopes.
-
-%package locator-no-proxies2
-Summary:        HK2 Locator No Proxy Unit tests (2)
-Group:          Development/Libraries/Java
-
-%description locator-no-proxies2
-Tests the basic HK2 locator using AOP proxies.
-
-%package maven
-Summary:        HK2 Module system maven support
-Group:          Development/Libraries/Java
-
-%description maven
-HK2 Maven plugin for developing.
-
-%package maven-plugins
-Summary:        HK2 Maven Plugins
-Group:          Development/Libraries/Java
-
-%description maven-plugins
-This package provides:
-* consolidated bundle Maven plugin,
-* osgiversion-maven-plugin - Maven Plugin for
-computing OSGi versions from Maven versions.
-
 %package metadata-generator
 Summary:        HK2 Metadata Generator
-Group:          Development/Libraries/Java
 
 %description metadata-generator
 HK2 Metadata Generator Subsystem.
 
-%if %{without jp_minimal}
-%package osgi
-Summary:        HK2 OSGi Adapter
-Group:          Development/Libraries/Java
+%package runlevel
+Summary:        HK2 Run Level Service
 
-%description osgi
-HK2 Maven plugin for developing.
-%endif
+%description runlevel
+Hundred Kilobytes Kernel Run Level Service.
+
+%package utils
+Summary:        HK2 Implementation Utilities
+
+%description utils
+Hundred Kilobytes Kernel Implementation Utilities.
+
+%package class-model
+Summary:        Class Model for Hk2
+
+%description class-model
+Hundred Kilobytes Kernel Class Model.
 
 %package osgi-resource-locator
 Summary:        HK2 OSGi resource locator bundle
-Group:          Development/Libraries/Java
 Obsoletes:      osgi-resource-locator < %{version}-%{release}
 Provides:       osgi-resource-locator = %{version}-%{release}
 
@@ -231,99 +159,137 @@ Hundred Kilobytes Kernel - OSGi resource locator bundle. Used by
 various API providers that rely on META-INF/services mechanism to
 locate providers.
 
-%package runlevel
-Summary:        HK2 Run Level Service
-Group:          Development/Libraries/Java
-
-%description runlevel
-Hundred Kilobytes Kernel Run Level Service.
-
 %if %{without jp_minimal}
+%package dependency-verifier
+Summary:        HK2 Static Analyser for verifying module dependency
+
+%description dependency-verifier
+HK2 Static Analyser for verifying module dependency.
+
+%package dependency-visualizer
+Summary:        HK2 Tool to visualize the dependencies
+
+%description dependency-visualizer
+Tool to visualize the dependencies generated by HK2's dependency-verifier.
+
+%package guice-bridge
+Summary:        HK2 Guice Bridge
+
+%description guice-bridge
+Hundred Kilobytes Kernel Guice Bridge.
+
 %package spring-bridge
 Summary:        HK2 Spring Bridge
-Group:          Development/Libraries/Java
 
 %description spring-bridge
 Hundred Kilobytes Kernel Spring Bridge.
+
+%package osgi
+Summary:        HK2 OSGi Adapter
+
+%description osgi
+Hundred Kilobytes Kernel OSGi Adapter.
 %endif
-
-%package runlevel-extras
-Summary:        HK2 RunLevel unit tests
-Group:          Development/Libraries/Java
-
-%description runlevel-extras
-Extra unit tests for the HK2 RunLevelService implementation.
 
 %package testing
 Summary:        Utilities for testing with HK2
-Group:          Development/Libraries/Java
+Obsoletes:      %{name}-locator-extras < %{version}-%{release}
+Provides:       %{name}-locator-extras = %{version}-%{release}
+Obsoletes:      %{name}-locator-no-proxies < %{version}-%{release}
+Provides:       %{name}-locator-no-proxies = %{version}-%{release}
+Obsoletes:      %{name}-locator-no-proxies2 < %{version}-%{release}
+Provides:       %{name}-locator-no-proxies2 = %{version}-%{release}
+Obsoletes:      %{name}-runlevel-extras < %{version}-%{release}
+Provides:       %{name}-runlevel-extras = %{version}-%{release}
+Obsoletes:      %{name}-testng < %{version}-%{release}
+Provides:       %{name}-testng = %{version}-%{release}
 
 %description testing
-Hundred Kilobytes Kernel Utilities for testing.
+Hundred Kilobytes Kernel utilities for testing.
 
-%package testng
-Summary:        HK2 TestNG runner
-Group:          Development/Libraries/Java
+%package maven-plugins
+Summary:        HK2 Maven Plug-ins
+Obsoletes:      %{name}-maven < %{version}-%{release}
+Provides:       %{name}-maven < %{version}-%{release}
+Obsoletes:      %{name}-inhabitant-generator < %{version}-%{release}
+Provides:       %{name}-inhabitant-generator < %{version}-%{release}
 
-%description testng
-A utility for running HK2 under TestNG.
-
-%package utils
-Summary:        HK2 Implementation Utilities
-Group:          Development/Libraries/Java
-
-%description utils
-Hundred Kilobytes Kernel Implementation Utilities.
+%description maven-plugins
+This package provides various maven plug-ins:
+* consolidatedbundle-maven-plugin
+* osgiversion-maven-plugin
+* hk2-inhabitant-generator
 
 %package javadoc
 Summary:        Javadoc for %{name}
-Group:          Documentation/HTML
 
 %description javadoc
-This package contains javadoc for %{name}.
+This package contains API documentation for %{name}.
 
 %prep
-%setup -q -n hk2-%{namedversion}
+%setup -q -n glassfish-hk2-%{version}-RELEASE
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+
+# Disable tests that intermittently fail on ARM arches
+sed -i -e '/org\.junit\.Ignore/s/\/\///' \
+  hk2-locator/src/test/java/org/glassfish/hk2/tests/locator/multithreaded1/MultiThreaded1Test.java
+
+# Explode extra bundles and insert into the build
+tar xf %{SOURCE1} --strip-components=1 \
+  %{name}-extra-%{extra_version}-RELEASE/osgi-resource-locator \
+  %{name}-extra-%{extra_version}-RELEASE/dependency-{verifier,visualizer}
+%pom_xpath_set "pom:dependency[pom:groupId ='org.glassfish.hk2']/pom:version" %{version} dependency-verifier
+for mod in osgi-resource-locator dependency-verifier dependency-visualizer ; do
+  %pom_xpath_inject "pom:modules" "<module>$mod</module>"
+  %pom_remove_parent $mod
+  %pom_add_parent "org.glassfish.hk2:hk2-parent:%{version}" $mod
+done
+
 # Do not remove test resources
 find . -name '*.jar' ! -name "gendir.jar" -type f -print -delete
 find . -name '*.class' -print -delete
 
-%patch0
-%patch1 -p1
+# EE4j parent pom contains only release/nexus related stuff, we won't miss it
+%pom_remove_parent bom .
 
-# Use system libraries
-%pom_change_dep -r org.glassfish.hk2.external:asm-all-repackaged org.ow2.asm:asm-all:'${asm.version}'
+# Some Glassfish APIs that moved to the EE4j project are not yet updated in openSUSE
+# provide the new Jakarta maven coords, so continue to use the old javax coords for now
+%pom_change_dep -r jakarta.servlet:jakarta.servlet-api javax.servlet:javax.servlet-api
+%pom_change_dep -r jakarta.annotation:jakarta.annotation-api javax.annotation:javax.annotation-api
+%pom_change_dep -r jakarta.el:jakarta.el-api javax.el:javax.el-api
+%pom_change_dep -r jakarta.json:jakarta.json-api javax.json:javax.json-api
+%pom_change_dep -r org.glassfish:jakarta.json org.glassfish:javax.json
+%pom_change_dep -r org.glassfish.hk2.external:jakarta.inject javax.inject:javax.inject
+
+# Use system libraries, not bundled versions
+%pom_change_dep -r org.glassfish.hk2.external:asm-repackaged org.ow2.asm:asm-all:'${asm.version}'
 %pom_change_dep -r org.glassfish.hk2.external:aopalliance-repackaged aopalliance:aopalliance:'${aopalliance.version}'
-%pom_change_dep -r org.glassfish.hk2.external:javax.inject javax.inject::'${javax-inject.version}'
-%pom_change_dep -r org.glassfish.hk2.external:bean-validator org.hibernate:hibernate-validator:'${hibernate-validator.version}'
-%pom_change_dep -r org.glassfish.hk2.external:bean-validator-cdi org.hibernate:hibernate-validator-cdi:'${hibernate-validator.version}'
-%pom_change_dep -r org.glassfish.hk2:tiger-types-osgi org.jvnet:tiger-types:'${tiger-types.version}'
-# class-model hk2-inhabitant-generator hk2-testing/hk2-junitrunner
-find ./ -name "*.java" -exec sed -i "s/org.glassfish.hk2.external.org.objectweb.asm/org.objectweb.asm/g" {} +
-# hk2-api hk2-extras
-%pom_change_dep -r :osgi-resource-locator ::'${project.version}'
+find class-model maven-plugins/hk2-inhabitant-generator hk2-testing/hk2-junitrunner \
+   -name "*.java" -exec sed -i "s/org.glassfish.hk2.external.org.objectweb.asm/org.objectweb.asm/g" {} +
 
-# Fix deps on org.osgi stuff
-%pom_remove_dep org.apache.felix:org.osgi.core
-%pom_change_dep org.osgi:osgi_R4_core org.osgi:org.osgi.core . hk2-maven
-%pom_change_dep org.apache.felix:org.osgi.core org.osgi:org.osgi.core \
-  dependency-verifier osgi/adapter-tests/sdp-management-bundle
+# Fix version of deps from hk2 extra
+%pom_change_dep :osgi-resource-locator ::%{extra_version}
+
+# Enterprise APIs are a subset of those provided by the Compendium APIs
 %pom_remove_dep org.osgi:org.osgi.enterprise
-%pom_change_dep :org.osgi.enterprise org.osgi:org.osgi.compendium:4.2.0 class-model
-
-# Fix deps on injection APIs
-%pom_change_dep org.apache.geronimo.specs:geronimo-atinject_1.0_spec javax.inject:javax.inject . osgi/adapter-tests/osgi-adapter-test
+%pom_change_dep :org.osgi.enterprise org.osgi:osgi.cmpn:6.0.0 class-model
 
 # Remove plugins not necessary for RPM builds
-%pom_xpath_remove pom:build/pom:extensions
 %pom_remove_plugin :maven-download-plugin
-%pom_remove_plugin :maven-resources-plugin
-%pom_remove_plugin :maven-site-plugin . bom
+%pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-eclipse-plugin
-%pom_remove_plugin :maven-enforcer-plugin . bom
+%pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :findbugs-maven-plugin
 %pom_remove_plugin :jacoco-maven-plugin
 %pom_remove_dep :jacoco-maven-plugin
+%pom_remove_plugin :maven-jar-plugin osgi-resource-locator
+%pom_remove_plugin :maven-source-plugin osgi-resource-locator
+%pom_remove_plugin :maven-javadoc-plugin osgi-resource-locator
+%pom_remove_plugin :maven-release-plugin osgi-resource-locator
+%pom_remove_plugin :maven-gpg-plugin osgi-resource-locator
+%pom_xpath_remove "pom:plugin[pom:artifactId ='maven-jar-plugin']/pom:executions" hk2
 
 # Don't ship re-packaged external deps or examples
 %pom_disable_module external
@@ -332,14 +298,15 @@ find ./ -name "*.java" -exec sed -i "s/org.glassfish.hk2.external.org.objectweb.
 # Disable modules and tests that require org.ops4j.*
 # These are not available in Fedora
 %pom_disable_module osgi-adapter-test osgi/adapter-tests
-%pom_remove_dep :osgi-adapter-test bom
-%pom_remove_dep org.ops4j.base:
 %pom_remove_dep org.ops4j.pax.exam:
-%pom_remove_dep org.ops4j.pax.tipi:
 %pom_remove_dep org.ops4j.pax.url:
+%pom_remove_dep org.ops4j.pax.logging:
+
+# Disable test that would introduce circular deps
+%pom_disable_module jersey hk2-testing
 
 %if %{with jp_minimal}
-# Disable modules with extra deps when jp_minimal is on
+# Disable modules with extra deps when building with jp_minimal
 %pom_disable_module dependency-verifier
 %pom_disable_module dependency-visualizer
 %pom_disable_module osgi
@@ -348,46 +315,48 @@ find ./ -name "*.java" -exec sed -i "s/org.glassfish.hk2.external.org.objectweb.
 %pom_remove_dep :osgi-adapter bom
 %pom_remove_dep :guice-bridge bom
 %pom_remove_dep :spring-bridge bom
-%pom_disable_module hk2-xml-dom hk2-configuration/persistence
-%pom_remove_dep org.glassfish.hk2:config-types hk2 bom
-%pom_remove_dep org.glassfish.hk2:hk2-config hk2 bom
+%pom_disable_module hk2-xml hk2-configuration/persistence
+# Build minimal testing utilities when building with jp_minimal
+%pom_xpath_set "pom:modules" "<module>hk2-junitrunner</module>" hk2-testing
+# Avoid dep on hibernate when building with jp_minimal
+%pom_remove_dep javax.validation:validation-api hk2-utils
+%pom_remove_dep org.hibernate:hibernate-validator hk2-utils
+%pom_remove_dep javax.el:javax.el-api hk2-utils
+rm hk2-utils/src/main/java/org/glassfish/hk2/utilities/general/ValidatorUtilities.java \
+   hk2-utils/src/main/java/org/glassfish/hk2/utilities/general/internal/MessageInterpolatorImpl.java \
+   hk2-utils/src/test/java/org/glassfish/hk2/utilities/test/ValidatorTest.java
 %endif
 
-# Remove test dep on org.uncommons:reportng that is not available in Fedora
-%pom_remove_dep org.uncommons:reportng . hk2-testing/{hk2-mockito,hk2-runlevel-extras,hk2-testng}
-%pom_remove_plugin :maven-surefire-plugin hk2-testing/{hk2-mockito,hk2-runlevel-extras,hk2-testng}
+# FIXME remove a broken test
+rm hk2-runlevel/src/test/java/org/glassfish/hk2/runlevel/tests/listener/ListenerErrorTest.java
 
-# Remove pointless unused dependency
-%pom_remove_dep org.junit:com.springsource.org.junit
+# Remove pointless unused dependencies
+# Patch submitted upstream, see https://github.com/eclipse-ee4j/glassfish-hk2/pull/445
+%pom_remove_dep org.osgi:osgi_R4_core
+%pom_remove_dep :com.springsource.org.junit
 
-# Remove test that doesn't work on mockito 2.x
-rm hk2-testing/hk2-mockito/src/test/java/org/jvnet/testing/hk2mockito/CustomMockSettingsInjectionTest.java
+# Remove some optional deps
+%pom_remove_dep -r :jboss-logging
+%pom_remove_dep -r :classmate
 
-# disable tiger-types copy
-%pom_remove_plugin :maven-dependency-plugin hk2-utils
-%pom_remove_plugin :maven-dependency-plugin osgi/adapter-tests/sdp-management-bundle
-
+# Disable security policy that interferes with tests
 %pom_xpath_remove "pom:plugin[pom:artifactId ='maven-surefire-plugin']/pom:configuration" hk2-api
 %pom_xpath_remove "pom:plugin[pom:artifactId ='maven-surefire-plugin']/pom:configuration" hk2-locator
 
-%pom_change_dep -r :maven-project :maven-core
-%pom_add_dep org.apache.maven:maven-compat hk2-maven
-
+# Fix reference to JDK tools jar
 %pom_xpath_set "pom:dependency[pom:groupId ='com.sun']/pom:artifactId" tools hk2-testing/ant
 %pom_xpath_remove "pom:dependency[pom:groupId ='com.sun']/pom:scope" hk2-testing/ant
 %pom_xpath_remove "pom:dependency[pom:groupId ='com.sun']/pom:systemPath" hk2-testing/ant
 %pom_xpath_remove "pom:profiles/pom:profile[pom:id ='mac']" hk2-testing/ant
 
-%pom_change_dep -r ant:ant org.apache.ant:ant
-
+# Don't put classpath in jar manifest
 %pom_xpath_set "pom:addClasspath" false dependency-verifier
 
 mkdir -p hk2/target/classes
-%pom_remove_plugin :maven-jar-plugin hk2
 
 # Drop pre-existent OSGI manifest file
-rm -r hk2-inhabitant-generator/src/main/resources/META-INF/MANIFEST.MF
-%pom_add_plugin org.apache.felix:maven-bundle-plugin:2.3.7 hk2-inhabitant-generator '
+rm maven-plugins/hk2-inhabitant-generator/src/main/resources/META-INF/MANIFEST.MF
+%pom_add_plugin org.apache.felix:maven-bundle-plugin maven-plugins/hk2-inhabitant-generator '
 <configuration>
   <supportedProjectTypes>
    <supportedProjectType>maven-plugin</supportedProjectType>
@@ -404,14 +373,14 @@ rm -r hk2-inhabitant-generator/src/main/resources/META-INF/MANIFEST.MF
 </executions>'
 
 # Add configuration file for osgiversion plugin
-cp -p %{SOURCE2} hk2-inhabitant-generator/osgi.bundle
-%pom_add_plugin org.glassfish.hk2:osgiversion-maven-plugin:'${project.version}' hk2-inhabitant-generator
+cp -p %{SOURCE2} maven-plugins/hk2-inhabitant-generator/osgi.bundle
+%pom_add_plugin org.glassfish.hk2:osgiversion-maven-plugin:'${project.version}' maven-plugins/hk2-inhabitant-generator
 
 # Inject manifest file
-%pom_add_plugin org.apache.maven.plugins:maven-jar-plugin:2.4 hk2-inhabitant-generator "
+%pom_add_plugin org.apache.maven.plugins:maven-jar-plugin:2.4 maven-plugins/hk2-inhabitant-generator "
 <configuration>
-  <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
   <archive>
+    <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
     <manifestEntries>
       <service>foo</service>
     </manifestEntries>
@@ -419,254 +388,166 @@ cp -p %{SOURCE2} hk2-inhabitant-generator/osgi.bundle
 </configuration>"
 
 # fix build failure. 'useDefaultManifestFile' has been removed from the maven-jar-plugin >= 3.0.0
-%pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration/pom:useDefaultManifestFile"
-%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration" "
-  <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>"
-%pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:configuration"
-%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-bundle-plugin']" "
-<extensions>true</extensions>
-<executions>
-  <execution>
-    <id>bundle-manifest</id>
-    <phase>process-classes</phase>
-    <goals>
-      <goal>manifest</goal>
-    </goals>
-  </execution>
-</executions>"
-%pom_remove_plugin :maven-jar-plugin osgi-resource-locator
-%pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration/pom:useDefaultManifestFile" hk2-utils
-%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration" "
-  <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>" hk2-utils
-for m in class-model \
- guice-bridge \
- hk2 \
- hk2-api \
- hk2-configuration/hk2-integration \
- hk2-configuration/manager \
- hk2-configuration/persistence/hk2-xml/main \
- hk2-configuration/persistence/hk2-xml/test1 \
- hk2-configuration/persistence/hk2-xml-dom/config-types \
- hk2-configuration/persistence/hk2-xml-dom/hk2-config \
- hk2-configuration/persistence/hk2-xml-dom/hub-integration \
- hk2-configuration/persistence/property-file \
- hk2-core \
- hk2-extras \
- hk2-jmx \
- hk2-locator \
- hk2-runlevel \
- hk2-testing/collections \
- hk2-testing/hk2-junitrunner \
- hk2-testing/hk2-locator-extras \
- hk2-testing/hk2-locator-no-proxies \
- hk2-testing/hk2-locator-no-proxies2 \
- hk2-utils \
- osgi/adapter \
- osgi/adapter-tests/faux-sdp-bundle \
- osgi/adapter-tests/sdp-management-bundle \
- osgi-resource-locator \
- spring-bridge
-do
- %pom_xpath_inject "pom:project" "<packaging>bundle</packaging>" ${m}
- %pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-bundle-plugin']" "<extensions>true</extensions>" ${m}
-done
-for m in osgi/adapter-tests/contract-bundle \
- osgi/adapter-tests/no-hk2-bundle \
- osgi/adapter-tests/test-module-startup
-do
- %pom_xpath_set "pom:project/pom:packaging" bundle ${m}
- %pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-bundle-plugin']" "<extensions>true</extensions>" ${m}
+%pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration/pom:useDefaultManifestFile" . hk2-utils
+%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:configuration/pom:archive" \
+  "<manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>" hk2-utils
+
+# For every module that generates a OSGi manifest, add it to the jar
+# Remove this when upstream moves to maven-jar-plugin >= 3.0.0
+for mod in $(grep -l maven-bundle-plugin $(find */ -name pom.xml) ) ; do
+  if [ "$(dirname $mod)" = "hk-utils" ] ; then
+    continue
+  fi
+  %pom_add_plugin org.apache.maven.plugins:maven-jar-plugin $mod "
+<configuration>
+  <archive>
+    <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+  </archive>
+</configuration>"
 done
 
-# use bnd instructions contained in osgi.bundle files
-%pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:configuration" hk2-utils
-for m in $(find -name osgi.bundle -exec dirname {} \;)
-do
- # fix comments in bnd instruction files that are unacceptible for strict new bnd version
- sed -i -e 's/^[ /]\*/# /' $m/osgi.bundle
- # insert include instruction into maven-bundle-plugin configuration section
- if [ "$(basename $m)" = "hk2-inhabitant-generator" ] ; then
-  %pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-bundle-plugin']/pom:configuration" "<instructions><_include>osgi.bundle</_include></instructions>" ${m}
- else
-  %pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-bundle-plugin']" "<configuration><instructions><_include>osgi.bundle</_include></instructions></configuration>" ${m}
- fi
-done
-
-%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.6 consolidatedbundle-maven-plugin
-%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.6 consolidatedbundle-maven-plugin
-
-%pom_disable_module test1 hk2-configuration/persistence/hk2-xml
-
-cp -p %{SOURCE1} LICENSE.txt
-sed -i 's/\r//' LICENSE.txt
+# This causes the plugin not to try to build with source/target 1.5
+%pom_remove_plugin :maven-compiler-plugin maven-plugins/consolidatedbundle-maven-plugin
 
 # Don't package unit test jars
 %{mvn_package} ":::tests:" __noinstall
 
 # Create subpackages
-%{mvn_package} ":class-model" class-model
+%{mvn_package} ":hk2-bom" %{name}
+%{mvn_package} ":hk2-parent" %{name}
 %{mvn_package} ":hk2" hk2
 %{mvn_package} ":hk2-api" api
-%{mvn_package} ":hk2-bom" %{name}
 %{mvn_package} ":hk2-core" core
-%{mvn_package} ":hk2-parent" %{name}
-%{mvn_package} ":config-generator" configuration
-%{mvn_package} ":config-types" configuration
-%{mvn_package} ":hk2-config" configuration
-%{mvn_package} ":hk2-config-hub-integration" configuration
 %{mvn_package} ":hk2-configuration" configuration
-%{mvn_package} ":hk2-configuration-integration" configuration
 %{mvn_package} ":hk2-configuration-hub" configuration
+%{mvn_package} ":hk2-configuration-integration" configuration
 %{mvn_package} ":hk2-configuration-persistence" configuration
 %{mvn_package} ":hk2-property-file" configuration
 %{mvn_package} ":hk2-xml-parent" configuration
+%{mvn_package} ":hk2-xml-schema" configuration
+%{mvn_package} ":hk2-xml-integration-test" __noinstall
+%{mvn_package} ":hk2-xml-test" __noinstall
+%{mvn_package} ":hk2-json" configuration
+%{mvn_package} ":hk2-pbuf" configuration
 %{mvn_package} ":hk2-xml" configuration
-%{mvn_package} ":hk2-xml-test" configuration
-%{mvn_package} ":hk2-xml-dom" configuration
-%{mvn_package} ":hk2-dependency-verifier" dependency-verifier
-%{mvn_package} ":hk2-dependency-visualizer" dependency-visualizer
 %{mvn_package} ":hk2-extras" extras
-%{mvn_package} ":hk2-inhabitant-generator" inhabitant-generator
 %{mvn_package} ":hk2-jmx" jmx
 %{mvn_package} ":hk2-locator" locator
-%{mvn_package} ":hk2-locator-extras" locator-extras
-%{mvn_package} ":hk2-locator-no-proxies" locator-no-proxies
-%{mvn_package} ":hk2-locator-no-proxies2" locator-no-proxies2
-%{mvn_package} ":hk2-maven" maven
-%{mvn_package} ":consolidatedbundle-maven-plugin" maven-plugins
-%{mvn_package} ":osgiversion-maven-plugin" maven-plugins
-%{mvn_package} ":hk2-metadata-generator-parent" metadata-generator
 %{mvn_package} ":hk2-metadata-generator" metadata-generator
-%{mvn_package} ":hk2-metadata-generator-test1" metadata-generator
+%{mvn_package} ":hk2-metadata-generator-parent" metadata-generator
+%{mvn_package} ":hk2-metadata-generator-test1" __noinstall
 %{mvn_package} ":hk2-runlevel" runlevel
-%{mvn_package} ":hk2-runlevel-extras" runlevel-extras
 %{mvn_package} ":hk2-utils" utils
+%{mvn_package} ":class-model" class-model
+%{mvn_package} ":osgi-resource-locator" osgi-resource-locator
+%{mvn_package} ":hk2-dependency-verifier" dependency-verifier
+%{mvn_package} ":hk2-dependency-visualizer" dependency-visualizer
 %{mvn_package} ":guice-bridge" guice-bridge
 %{mvn_package} ":spring-bridge" spring-bridge
-%{mvn_package} ":hk2-testing" testing
-%{mvn_package} ":hk2-junitrunner" testing
-%{mvn_package} ":hk2-ant-test" testing
-%{mvn_package} ":hk2-collections-tests" testing
-%{mvn_package} ":hk2-mockito" testing
-%{mvn_package} ":interceptor-events" testing
-%{mvn_package} ":hk2-testng" testng
 %{mvn_package} ":osgi" osgi
 %{mvn_package} ":osgi-adapter" osgi
-%{mvn_package} ":osgi-adapter-tests-parent" osgi
-%{mvn_package} ":contract-bundle" osgi
-%{mvn_package} ":faux-sdp-bundle" osgi
-%{mvn_package} ":no-hk2-bundle" osgi
-%{mvn_package} ":sdp-management-bundle" osgi
-%{mvn_package} ":test-module-startup" osgi
-%{mvn_package} ":osgi-resource-locator" osgi-resource-locator
+%{mvn_package} ":osgi-adapter-tests-parent" __noinstall
+%{mvn_package} ":contract-bundle" __noinstall
+%{mvn_package} ":faux-sdp-bundle" __noinstall
+%{mvn_package} ":no-hk2-bundle" __noinstall
+%{mvn_package} ":osgi-adapter-test" __noinstall
+%{mvn_package} ":sdp-management-bundle" __noinstall
+%{mvn_package} ":test-module-startup" __noinstall
+
+# Testing modules
+%{mvn_package} ":hk2-testing" testing
+%{mvn_package} ":hk2-ant-test" testing
+%{mvn_package} ":hk2-collections-tests" testing
+%{mvn_package} ":hk2-junitrunner" testing
+%{mvn_package} ":hk2-locator-extras" testing
+%{mvn_package} ":hk2-locator-no-proxies" testing
+%{mvn_package} ":hk2-locator-no-proxies2" testing
+%{mvn_package} ":hk2-mockito" testing
+%{mvn_package} ":hk2-runlevel-extras" testing
+%{mvn_package} ":hk2-testng" testing
+%{mvn_package} ":interceptor-events" testing
+
+# Maven plug-ins
+%{mvn_package} ":maven-plugins" maven-plugins
+%{mvn_package} ":consolidatedbundle-maven-plugin" maven-plugins
+%{mvn_package} ":hk2-inhabitant-generator" maven-plugins
+%{mvn_package} ":osgiversion-maven-plugin" maven-plugins
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
+	-Dmaven.compiler.release=7 \
 %endif
+	-Dhk2.mvn.plugins.version=%{version}
 
 %install
 %mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles-%{name}
 %doc README.md
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
+
+%files hk2 -f .mfiles-hk2
+%license LICENSE.md NOTICE.md
 
 %files api -f .mfiles-api
-%license LICENSE.txt
-
-%files class-model -f .mfiles-class-model
-%license LICENSE.txt
-
-%files configuration -f .mfiles-configuration
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
 
 %files core -f .mfiles-core
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
+
+%files configuration -f .mfiles-configuration
+%license LICENSE.md NOTICE.md
+
+%files extras -f .mfiles-extras
+%license LICENSE.md NOTICE.md
+
+%files jmx -f .mfiles-jmx
+%license LICENSE.md NOTICE.md
+
+%files locator -f .mfiles-locator
+%license LICENSE.md NOTICE.md
+
+%files metadata-generator -f .mfiles-metadata-generator
+%license LICENSE.md NOTICE.md
+
+%files runlevel -f .mfiles-runlevel
+%license LICENSE.md NOTICE.md
+
+%files utils -f .mfiles-utils
+%license LICENSE.md NOTICE.md
+
+%files class-model -f .mfiles-class-model
+%license LICENSE.md NOTICE.md
+
+%files osgi-resource-locator -f .mfiles-osgi-resource-locator
+%license LICENSE.md NOTICE.md
 
 %if %{without jp_minimal}
 %files dependency-verifier -f .mfiles-dependency-verifier
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
 
 %files dependency-visualizer -f .mfiles-dependency-visualizer
 %doc dependency-visualizer/README
-%license LICENSE.txt
-%endif
+%license LICENSE.md NOTICE.md
 
-%files extras -f .mfiles-extras
-%license LICENSE.txt
-
-%if %{without jp_minimal}
 %files guice-bridge -f .mfiles-guice-bridge
-%license LICENSE.txt
-%endif
+%license LICENSE.md NOTICE.md
 
-%files hk2 -f .mfiles-hk2
-%license LICENSE.txt
-
-%files inhabitant-generator -f .mfiles-inhabitant-generator
-%license LICENSE.txt
-
-%files jmx -f .mfiles-jmx
-%license LICENSE.txt
-
-%files locator -f .mfiles-locator
-%license LICENSE.txt
-
-%files locator-extras -f .mfiles-locator-extras
-%doc hk2-testing/hk2-locator-extras/README.txt
-%license LICENSE.txt
-
-%files locator-no-proxies -f .mfiles-locator-no-proxies
-%doc hk2-testing/hk2-locator-no-proxies/README.txt
-%license LICENSE.txt
-
-%files locator-no-proxies2 -f .mfiles-locator-no-proxies2
-%doc hk2-testing/hk2-locator-no-proxies2/README.txt
-%license LICENSE.txt
-
-%files maven -f .mfiles-maven
-%license LICENSE.txt
-
-%files maven-plugins -f .mfiles-maven-plugins
-%license LICENSE.txt
-
-%files metadata-generator -f .mfiles-metadata-generator
-%license LICENSE.txt
-
-%if %{without jp_minimal}
-%files osgi -f .mfiles-osgi
-%license LICENSE.txt
-%endif
-
-%files osgi-resource-locator -f .mfiles-osgi-resource-locator
-%license LICENSE.txt
-
-%files runlevel -f .mfiles-runlevel
-%license LICENSE.txt
-
-%files runlevel-extras -f .mfiles-runlevel-extras
-%doc hk2-testing/hk2-runlevel-extras/README.txt
-%license LICENSE.txt
-
-%if %{without jp_minimal}
 %files spring-bridge -f .mfiles-spring-bridge
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
+
+%files osgi -f .mfiles-osgi
+%license LICENSE.md NOTICE.md
 %endif
 
 %files testing -f .mfiles-testing
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
 
-%files testng -f .mfiles-testng
-%doc hk2-testing/hk2-testng/README.md
-%license LICENSE.txt
-
-%files utils -f .mfiles-utils
-%license LICENSE.txt
+%files maven-plugins -f .mfiles-maven-plugins
+%license LICENSE.md NOTICE.md
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
 
 %changelog
