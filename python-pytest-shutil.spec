@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shutil
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-shutil
 Version:        1.7.0
 Release:        0
@@ -34,7 +35,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module termcolor}
 BuildRequires:  fdupes
+%if %{with python2}
 BuildRequires:  python-contextlib2
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
 Requires:       python-mock

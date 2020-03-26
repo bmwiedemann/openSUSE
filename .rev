@@ -32,4 +32,12 @@
     <comment>- fix python-path/python-path.py requires</comment>
     <requestid>759815</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>afe4d8cdb7729630ea9c7cde0cac0a4a</srcmd5>
+    <version>1.7.0</version>
+    <time>1585264940</time>
+    <user>dimstar_suse</user>
+    <comment>- Build without python2 present</comment>
+    <requestid>784624</requestid>
+  </revision>
 </revisionlist>
