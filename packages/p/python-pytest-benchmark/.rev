@@ -65,4 +65,12 @@
   * Fixed pytest_benchmark.utils.clonefunc to work on Python 3.8.</comment>
     <requestid>764007</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d3f009594f7d79cbfded3a9552a6ca78</srcmd5>
+    <version>3.2.3</version>
+    <time>1585264961</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix buidling without python2</comment>
+    <requestid>784630</requestid>
+  </revision>
 </revisionlist>

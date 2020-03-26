@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:42:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix buidling without python2
+
+-------------------------------------------------------------------
 Mon Jan 13 14:13:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.3:

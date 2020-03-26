@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-benchmark
 Version:        3.2.3
 Release:        0
@@ -36,10 +37,12 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
+%if %{with python2}
 BuildRequires:  python-mock
 BuildRequires:  python-pathlib2
-BuildRequires:  python-rpm-macros
 BuildRequires:  python-statistics
+%endif
+BuildRequires:  python-rpm-macros
 Requires:       python-py-cpuinfo
 Requires:       python-pytest >= 3.8
 Requires(post): update-alternatives
