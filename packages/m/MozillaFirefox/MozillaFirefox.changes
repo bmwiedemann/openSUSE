@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 07:30:39 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- mozilla-sandbox-fips.patch: allow /proc/sys/crypto/fips_enabled
+  to be read, as openssl 1.1.1 FIPS aborts if it cannot access it
+  (bsc#1167132)
+
+-------------------------------------------------------------------
 Sat Mar  7 08:51:06 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 74.0

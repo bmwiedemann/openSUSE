@@ -169,6 +169,7 @@ Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch5:         mozilla-bmo1463035.patch
+Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
@@ -302,6 +303,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1

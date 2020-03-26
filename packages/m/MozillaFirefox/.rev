@@ -4341,4 +4341,14 @@
   * CVE-2020-6814 (bmo#1592078,bmo#1604847,bmo#1608256,bmo#1612636,</comment>
     <requestid>784530</requestid>
   </revision>
+  <revision rev="308" vrev="2">
+    <srcmd5>6c286a440765bf6d4d9eb5b047e75dce</srcmd5>
+    <version>74.0</version>
+    <time>1585261831</time>
+    <user>dimstar_suse</user>
+    <comment>- mozilla-sandbox-fips.patch: allow /proc/sys/crypto/fips_enabled
+  to be read, as openssl 1.1.1 FIPS aborts if it cannot access it
+  (bsc#1167132)</comment>
+    <requestid>788189</requestid>
+  </revision>
 </revisionlist>
