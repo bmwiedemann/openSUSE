@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:16:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.5.1
+  * add daemon parameter to decorator
+  * travis: add Python 3.8 tests
+
+-------------------------------------------------------------------
 Wed Jan 15 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.4.1

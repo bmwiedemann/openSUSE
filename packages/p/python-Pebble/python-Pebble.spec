@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pebble
-Version:        4.4.1
+Version:        4.5.1
 Release:        0
 Summary:        Threading and multiprocessing eye-candy for Python
 License:        LGPL-3.0-only
