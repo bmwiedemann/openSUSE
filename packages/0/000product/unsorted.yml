@@ -855,7 +855,6 @@ unsorted:
   - authbind 
   - auto 
   - auto-common 
-  - auto-factory 
   - auto-javadoc 
   - auto-service 
   - auto-value 
@@ -3319,6 +3318,7 @@ unsorted:
   - fwnncom 
   - fwts 
   - fwupd-devel 
+  - fwupdtpmevlog 
   - fxload 
   - fzf 
   - fzf-bash-completion 
@@ -5028,8 +5028,11 @@ unsorted:
   - grub 
   - grub2-branding-upstream 
   - grub2-i386-efi: [i586] 
+  - grub2-i386-efi-debug: [i586] 
+  - grub2-i386-pc-debug 
   - grub2-i386-xen: [i586] 
   - grub2-theme-breeze 
+  - grub2-x86_64-efi-debug: [x86_64] 
   - grubby 
   - gscan2pdf 
   - gscan2pdf-lang 
@@ -6540,6 +6543,7 @@ unsorted:
   - kdnssd-lang 
   - kdoctools-devel 
   - kdoctools-devel-32bit: [x86_64] 
+  - kdsoap-devel 
   - kdstatemachineeditor-devel 
   - kdumpid 
   - kea 
@@ -9441,7 +9445,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_98 
+  - libgsoap-2_8_99 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -9917,7 +9921,7 @@ unsorted:
   - libkate1-32bit: [x86_64] 
   - libkcapi-devel 
   - libkcapi-tools 
-  - libkcapi0 
+  - libkcapi1 
   - libkcarchiver0 
   - libkcddb-devel 
   - libkcfreebusy0 
@@ -9936,6 +9940,8 @@ unsorted:
   - libkdecorations2private7-32bit: [x86_64] 
   - libkdegames-devel 
   - libkdepim-devel 
+  - libkdsoap-server1_9_0 
+  - libkdsoap1_9_0 
   - libkdstatemachineeditor_core1_2_7 
   - libkdstatemachineeditor_debuginterfaceclient1_2_7 
   - libkdstatemachineeditor_debuginterfacesource-static 
@@ -18054,8 +18060,6 @@ unsorted:
   - python-acitoolkit-doc-samples 
   - python-aiohttp-doc 
   - python-altgraph-doc 
-  - python-aodhclient: [x86_64] 
-  - python-aodhclient-doc: [x86_64] 
   - python-apfel 
   - python-atomicwrites-doc 
   - python-automaton-doc 
@@ -18085,6 +18089,7 @@ unsorted:
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
   - python-demo 
+  - python-dephell-rpm-macros 
   - python-designateclient-doc 
   - python-devel 
   - python-dfVFS 
@@ -18758,6 +18763,7 @@ unsorted:
   - python2-bindep 
   - python2-biopython 
   - python2-biplist 
+  - python2-bitarray 
   - python2-bitstring 
   - python2-bjoern 
   - python2-bleach 
@@ -19670,7 +19676,6 @@ unsorted:
   - python2-plyvel 
   - python2-pmw 
   - python2-pname 
-  - python2-pocketsphinx 
   - python2-pocketsphinx-python 
   - python2-podcastparser 
   - python2-podman 
@@ -20203,7 +20208,6 @@ unsorted:
   - python2-sphinx-testing 
   - python2-sphinx-version-warning 
   - python2-sphinx_rtd_theme 
-  - python2-sphinxbase 
   - python2-sphinxcontrib-apidoc 
   - python2-sphinxcontrib-asyncio 
   - python2-sphinxcontrib-autoprogram 
@@ -20332,6 +20336,7 @@ unsorted:
   - python2-twython 
   - python2-txWS 
   - python2-txZMQ 
+  - python2-txaio 
   - python2-txt2tags 
   - python2-txtorcon 
   - python2-typepy 
@@ -20546,6 +20551,7 @@ unsorted:
   - python3-Flask-SQLAlchemy 
   - python3-Flask-Script 
   - python3-Flask-Security 
+  - python3-Flask-Security-Too 
   - python3-Flask-Testing 
   - python3-Flask-WTF 
   - python3-Flask-doc 
@@ -21034,6 +21040,7 @@ unsorted:
   - python3-bindep 
   - python3-biopython 
   - python3-biplist 
+  - python3-bitarray 
   - python3-bitstring 
   - python3-bjoern 
   - python3-black 
@@ -22270,6 +22277,7 @@ unsorted:
   - python3-plyvel 
   - python3-pmw 
   - python3-pname 
+  - python3-pocketsphinx 
   - python3-pocketsphinx-python 
   - python3-podcastparser 
   - python3-podman 
@@ -22875,6 +22883,7 @@ unsorted:
   - python3-sphinx-removed-in 
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
+  - python3-sphinxbase 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
   - python3-sphinxcontrib-asyncio 
@@ -23511,6 +23520,7 @@ unsorted:
   - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
+  - release-compare 
   - release-notes-openSUSE 
   - remake 
   - remake-lang 
@@ -23609,6 +23619,7 @@ unsorted:
   - rofi-devel 
   - rollback-helper: [x86_64] 
   - rook: [x86_64] 
+  - rook-ceph-helm-charts: [x86_64] 
   - rook-integration: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 

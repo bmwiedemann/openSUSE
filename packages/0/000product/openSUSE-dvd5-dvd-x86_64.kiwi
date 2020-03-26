@@ -2438,8 +2438,8 @@
       <repopackage name="libndr-nbt0-32bit" arch="x86_64"/>
       <repopackage name="libndr-standard0"/>
       <repopackage name="libndr-standard0-32bit" arch="x86_64"/>
-      <repopackage name="libndr0"/>
-      <repopackage name="libndr0-32bit" arch="x86_64"/>
+      <repopackage name="libndr1"/>
+      <repopackage name="libndr1-32bit" arch="x86_64"/>
       <repopackage name="libneon27"/>
       <repopackage name="libnetapi0"/>
       <repopackage name="libnetapi0-32bit" arch="x86_64"/>
