@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 14:45:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.10.0
+  * Support for add_to_queue
+  * Add CHANGELOG and LICENSE to released package
+
+-------------------------------------------------------------------
 Tue Mar 17 13:57:10 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.9.0
