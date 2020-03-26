@@ -31,6 +31,11 @@ ExclusiveArch:  do_not_build
 %define have_slurm 1
 %define have_genders 1
 %endif
+%if 0%{?suse_version} >= 1550
+ %ifarch %ix86 %arm ppc
+   %define have_slurm 0
+ %endif
+%endif
 
 %if 0%{?have_slurm} && "x%{?slurm_version}" != "x"
 %define _slurm_version _%{slurm_version}
@@ -52,16 +57,13 @@ Recommends:     mrsh
 BuildRequires:  genders-devel > 1.0
 %endif
 URL:            http://pdsh.googlecode.com/
-Version:        2.33
+Version:        2.34
 Release:        0
 Summary:        Parallel remote shell program
 # git clone of https://code.google.com/p/pdsh/
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch1:         pdsh-rename-list-to-xlist.patch
-Patch2:         Change-typedef-List-to-typedef-xList.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Prereq: 
 # Set this to 1 to build with genders support and framework for
 # running Elan jobs.
@@ -130,15 +132,13 @@ Conflicts:      pdsh-dshgroup
 Plugin for pdsh to determine nodes to run on from netgroups.
 
 %prep
-%setup -q 
-%patch1 -p1
-%patch2 -p1
+%setup -q
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
 	--with-readline \
-	--with-machines=/etc/pdsh/machines \
+	--with-machines=%{_sysconfdir}/pdsh/machines \
 	--with-ssh \
 	--with-dshgroups \
 	--with-netgroup \
@@ -150,53 +150,47 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
         %{?have_slurm:--with-slurm} \
 	--without-rsh \
 	--disable-static
-make
+%make_build
 
 %install
 %make_install
-rm -f %buildroot/%_libdir/pdsh/*.la
+rm -f %buildroot/%{_libdir}/pdsh/*.la
 
 %files
-%defattr(-,root,root)
 %doc README DISCLAIMER.* README.* NEWS TODO
 %license COPYING
-%attr(755, root, root) /usr/bin/pdsh
-%attr(755, root, root) /usr/bin/pdcp 
-/usr/bin/dshbak
-/usr/bin/rpdcp
+%attr(755, root, root) %{_bindir}/pdsh
+%attr(755, root, root) %{_bindir}/pdcp 
+%{_bindir}//dshbak
+%{_bindir}//rpdcp
 %{_mandir}/man1/pdsh.1.gz
 %{_mandir}/man1/pdcp.1.gz
 %{_mandir}/man1/dshbak.1.gz
 %{_mandir}/man1/rpdcp.1.gz
-%_libdir/pdsh
-%{?have_genders:%exclude %_libdir/pdsh/genders.so}
-%{?have_slurm:%exclude %_libdir/pdsh/slurm.so}
-%exclude %_libdir/pdsh/machines.so
-%exclude %_libdir/pdsh/dshgroup.so
-%exclude %_libdir/pdsh/netgroup.so
+%{_libdir}/pdsh
+%{?have_genders:%exclude %{_libdir}/pdsh/genders.so}
+%{?have_slurm:%exclude %{_libdir}/pdsh/slurm.so}
+%exclude %{_libdir}/pdsh/machines.so
+%exclude %{_libdir}/pdsh/dshgroup.so
+%exclude %{_libdir}/pdsh/netgroup.so
 
 %if 0%{?have_slurm}
 %files slurm%{?_slurm_version}
-%defattr(-,root,root)
-%_libdir/pdsh/slurm.so
+%{_libdir}/pdsh/slurm.so
 %endif
 
 %if 0%{?have_genders}
 %files genders
-%defattr(-,root,root)
-%_libdir/pdsh/genders.so
+%{_libdir}/pdsh/genders.so
 %endif
 
 %files machines
-%defattr(-,root,root)
-%_libdir/pdsh/machines.so
+%{_libdir}/pdsh/machines.so
 
 %files dshgroup
-%defattr(-,root,root)
-%_libdir/pdsh/dshgroup.so
+%{_libdir}/pdsh/dshgroup.so
 
 %files netgroup
-%defattr(-,root,root)
-%_libdir/pdsh/netgroup.so
+%{_libdir}/pdsh/netgroup.so
 
 %changelog

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 26 11:18:28 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Do not build for SLURM on 32bit platforms on Factory: SLURM 20.02
+  doesn't support this.
+
+-------------------------------------------------------------------
+Thu Mar 26 09:22:03 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Spec cleanup 
+
+-------------------------------------------------------------------
+Wed Mar 25 19:40:21 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version pdsh-2.34 (2020-01-07)
+  * Fix for output corruption with no newlines (#114)
+  * pipecmd: fix result check error handling (Dylan Simon)
+  * slurm: workaround slurm export of internal List interfaces
+  * readline: add application name as argv[0] (#112)
+  * Fix errors from lgtm.com scan
+- Remove obsolete patches:
+  Change-typedef-List-to-typedef-xList.patch
+  pdsh-rename-list-to-xlist.patch
+  
+-------------------------------------------------------------------
 Tue Feb 18 08:47:20 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add Change-typedef-List-to-typedef-xList.patch:
