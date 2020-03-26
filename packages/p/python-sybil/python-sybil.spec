@@ -1,7 +1,7 @@
 #
 # spec file for package python-sybil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sybil
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/cjw296/sybil
+URL:            https://github.com/cjw296/sybil
 Source:         https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest >= 3.5.0}
