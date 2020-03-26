@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-h2
 Version:        3.2.0
 Release:        0
 Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
 BuildRequires:  %{python_module hpack >= 2.3}
@@ -30,11 +30,13 @@ BuildRequires:  %{python_module hyperframe >= 5.2.0}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34 >= 1.1.6
 BuildRequires:  python-rpm-macros
 Requires:       python-hpack >= 2.3
 Requires:       python-hyperframe >= 5.2.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34 >= 1.1.6
+%endif
 %ifpython2
 Requires:       python-enum34 >= 1.1.6
 %endif
@@ -65,6 +67,6 @@ your programming paradigm.
 %license LICENSE
 %doc HISTORY.rst README.rst
 %{python_sitelib}/h2
-%{python_sitelib}/h2-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/h2-%{version}-py*.egg-info
 
 %changelog
