@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 26 02:48:15 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1585161757.bb4097462:
+  * Fix triggering ObsSync using repository
+  * script/openqa-clone-job --help exits with 0
+  * Rewrite asset list generation for cache service
+  * script/client --help exits with 0
+  * Add JSON::Validator, YAML::PP, YAML::XS to client_requires
+  * Add openQA-client-test.spec
+  * Refactor saving details/screenshots
+  * Fix shellcheck complaint about sh/bash mismatch in t/dummy-isotovideo.sh
+  * Fix shellcheck complaint about SC1091 in script/openqa-bootstrap
+  * openQA.spec: Run style checks in %check to detect issues in other products
+  * Return JSON for all API routes
+  * Extend reason quit so its meaning is more clear
+  * Add pointer to log details for incomplete jobs with reason "died"
+  * t: Simplify 03-auth test
+  * Add explicit test for auth with slight OpenID coverage increase
+  * Remove untested and probably unused iChain authentification
+
+-------------------------------------------------------------------
 Mon Mar 23 18:48:18 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1584957320.c50fd7cfd:
