@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:37:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Jan  2 12:52:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update dependencies to match up what is in requirements.txt

@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-kubernetes
 Version:        10.0.1
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/kubernetes-incubator/client-python
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.12}
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module urllib3 >= 1.23}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
-BuildRequires:  python-ipaddress >= 1.0.17
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.12
 Requires:       python-certifi >= 14.05.14
@@ -53,6 +52,9 @@ Requires:       python-six >= 1.9.0
 Requires:       python-urllib3 >= 1.24.2
 Requires:       python-websocket-client >= 0.32.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-ipaddress >= 1.0.17
+%endif
 %ifpython2
 Requires:       python-ipaddress >= 1.0.17
 %endif
