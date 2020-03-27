@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:18:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.34.0:
+  * Fixed problem in compiler with bool property returned as
+    reference in conditions
+  * Fixed problem with catching exceptions in functions with
+    multiple try-catch blocks
+  * Fixed read from unallocated memory in compiler when
+    compiling default args
+  * Fixed problem with doing a value assign from array
+    holding handles
+  * Fixed crash in compiler when there are multiple matching
+    global functions for set accessors 
+  * Fixed crash that could happen when loading bytecode with
+    shared classes that doesn't match current declared shared classes
+  * Fixed assert failure when compiling a construct call with
+    an anonymous initialization list
+  * Fixed incorrect bytecode sequence when doing value assignment
+    from handles for script classes using default assignment operator
+  * Fixed problem with default arg not being able to access members
+    in expression
+  * Fixed crash when releasing engine with template specialization
+    containing child funcdefs
+  * Fixed asCALL_THISCALL_ASGLOBAL to function correctly with
+    multiple inheritance
+  * Compiler now identifies match for functions taking object as
+    inout ref when passing anonymous init list
+  * Compiler now interrupts compilation after identifying error
+    while compiling use of get property accessor
+  * Compiler no longer identifies global script functions
+    as property accessors when this is turned off with
+    asEP_PROPERTY_ACCESSOR_MODE
+  * Fixed config for FreeBSD on non-x86 64bit targets
+  * asEP_PROPERTY_ACCESSOR_MODE has a new mode (3) to require
+    property accessors to be flagged with 'property'
+  * Property accessors are validated upon declaration when
+    flagged with 'property'
+  * asEP_PROPERTY_ACCESSOR_MODE is now set to 3 by default 
+  * Handles can now be declared read-only
+  * Functions and methods intended to be used as virtual
+    property should now be declared with a 'property' decorator
+  * Added non-reserved keyword 'property' 
+  * Added asIScriptFunction::IsProperty 
+  * Removed an invalid assert() statement in ExecuteString
+  * Debugger commands 'n' and 'o' no longer prints 'No
+    script is running' when used as first command
+  * Debugger command 'p' prints 'Invalid expression. No
+    matching symbol' when the symbol doesn't exist in the current context
+  * Fixed missing check for failed memory allocation
+    in CScriptArray::Precache
+  * The string factory in the std::string add-on is
+    now thread safe
+  * Enabled Virtual Terminal Processing in asrun for colored
+    text on Windows console 
+
+-------------------------------------------------------------------
 Mon Feb 18 19:46:51 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
 
 - Update to new upstream release 2.33.0

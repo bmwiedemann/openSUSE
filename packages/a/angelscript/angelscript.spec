@@ -1,7 +1,7 @@
 #
 # spec file for package angelscript
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define sover 2_33_0
+%define sover 2_34_0
 Name:           angelscript
-Version:        2.33.0
+Version:        2.34.0
 Release:        0
 Summary:        Scripting library
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            http://www.angelcode.com/angelscript/
+URL:            https://www.angelcode.com/angelscript/
 Source:         http://www.angelcode.com/angelscript/sdk/files/%{name}_%{version}.zip
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -67,7 +67,7 @@ applications that want to make use of the AngelScript library.
 
 %build
 export CXXFLAGS="%{optflags}"
-make %{?_smp_mflags} shared
+%make_build shared
 
 %install
 make install_shared install_header install_docs PREFIX=%{_prefix} DESTDIR=%{buildroot} LIBDIR_DEST=%{_libdir} DOCDIR_BASEDIR=%{_defaultdocdir}/%{name}
