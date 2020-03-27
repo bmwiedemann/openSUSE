@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:56:31 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.5.14, most relevant changes:
+  * Added mungekey command for key generation via HKDF.
+  * Added negative caching of user lookups for processing supplementary groups.
+  * Added munged --origin and --stop cmdline opt.
+  * Added unmunge --numeric cmdline opt.
+  * Added several new configuration options.
+  * Added systemd EnvironmentFile to set sysconfig options.
+  * Added systemd RuntimeDirectory to replace tmpfiles.d conf.
+  * Changed logging of non-existent users to only log once for a given user.
+  * Changed default name of munged seedfile.
+  * Fixed pidfile corruption when starting new daemon while socket still in use.
+  * Fixed munged signal handlers to be async-signal-safe.
+  * Fixed "Logging stopped due to error" behavior for transient errors.
+  * Fixed misleading "Lockfile not found" error message.
+  * Fixed conversion-specifier / argument mismatch in error message.
+  * Removed autotools-generated files from version control.
+- Update patch:
+  * Make-SUSE-specific-adjustments.patch
+- Spec cleanup
+- Update package description to match upstream's
+- Add logrotate file and Requires in logrotate
+- Run bootstrap to create autotools files.
+
+-------------------------------------------------------------------
 Mon Feb  3 15:05:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

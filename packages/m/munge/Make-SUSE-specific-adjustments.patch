@@ -8,15 +8,11 @@ Signed-off-by: Egbert Eich <eich@suse.com>
 For sysvinit set runlvls where to start/stop munge.
 
 Signed-off-by: Egbert Eich <eich@suse.de>
----
- src/etc/Makefile.am   | 2 +-
- src/etc/munge.init.in | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/etc/munge.init.in b/src/etc/munge.init.in
+diff --git a/src/etc/munge.sysvinit.init.in b/src/etc/munge.sysvinit.init.in
 index 93d461b..3414ed5 100644
---- a/src/etc/munge.init.in
-+++ b/src/etc/munge.init.in
+--- a/src/etc/munge.sysvinit.init.in
++++ b/src/etc/munge.sysvinit.init.in
 @@ -14,8 +14,8 @@
  # Required-Stop:      $local_fs $remote_fs
  # Should-Start:       $named $syslog

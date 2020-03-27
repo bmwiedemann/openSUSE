@@ -34,26 +34,31 @@
 %endif
 
 Name:           munge
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Summary:        An authentication service for creating and validating credentials
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Security
-URL:            http://dun.github.io/munge/
+URL:            https://dun.github.io/munge/
 Source0:        https://github.com/dun/munge/archive/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        sysconfig.munge
 Source3:        README.SUSE
 Patch0:         Make-SUSE-specific-adjustments.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libbz2-devel
+BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+Requires:       logrotate
 %if 0%{?suse_version} <= 1140
 Requires(pre):  pwdutils
 %else
 Requires(pre):  shadow
 %endif
+Requires(post): coreutils
 %if 0%{?have_systemd}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
@@ -64,18 +69,17 @@ Requires(postun):   coreutils
 %if 0%{?suse_version} < 1310
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for creating
-and validating credentials.  It is designed to be highly scalable for use
-in an HPC cluster environment.  It allows a process to authenticate the
-UID and GID of another local or remote process within a group of hosts
-having common users and groups.  These hosts form a security realm that is
-defined by a shared cryptographic key.  Clients within this security realm
-can create and validate credentials without the use of root privileges,
+MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for
+creating and validating user credentials.  It is designed to be highly
+scalable for use in an HPC cluster environment.  It provides a portable
+API for encoding the user's identity into a tamper-proof credential
+that can be obtained by an untrusted client and forwarded by untrusted
+intermediaries within a security realm.  Clients within this realm can
+create and validate credentials without the use of root privileges,
 reserved ports, or platform-specific methods.
-
+  
 %package -n lib%{name}%{lversion}
 Summary:        Libraries for applications using MUNGE
 Group:          System/Libraries
@@ -101,14 +105,22 @@ authenication service.
 cp %{SOURCE3} .
 
 %build
+./bootstrap
 %configure
-make %{?_smp_mflags}
+%if 0%{!?make_build:1}
+%define make_build make %{?_smp_mflags}
+%endif
+%make_build
 
 %install
 %makeinstall
 rm -f %{buildroot}%{_libdir}/*.la
 rm -f %{buildroot}%{_libdir}/*.a
 rm -f %{buildroot}%{_sysconfdir}/sysconfig/munge
+
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cp src/etc/munge.tmpfiles.conf %{buildroot}%{_tmpfilesdir}/munge.conf
+mkdir -p %{buildroot}%{_datarootdir}/licenses
 
 # We don't want systemd file on SLE 11
 %if 0%{!?have_systemd:1}
@@ -206,8 +218,10 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %endif
 
 %files
-%defattr(-,root,root,0755)
 %doc AUTHORS
+%if 0%{?suse_version} < 1500
+%dir %{_datarootdir}/licenses
+%endif
 %license COPYING
 %doc DISCLAIMER*
 %doc HISTORY
@@ -216,7 +230,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %doc PLATFORMS
 %doc QUICKSTART
 %doc README
-%doc TODO
 %doc README.SUSE
 %doc doc/*
 %dir %attr(0700,%munge_u,%munge_g) %config %{_sysconfdir}/munge
@@ -225,6 +238,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/*[^3]/*
+%config(noreplace) %{_sysconfdir}/logrotate.d/munge
 %if 0%{?have_systemd}
 %{_unitdir}/munge.service
 %{_tmpfilesdir}/munge.conf
@@ -235,14 +249,12 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %endif
 
 %files devel
-%defattr(-,root,root,0755)
 %{_includedir}/*
 %{_mandir}/*3/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files -n lib%{name}%{lversion}
-%defattr(-,root,root,0755)
 %{_libdir}/*.so.*
 
 %changelog
