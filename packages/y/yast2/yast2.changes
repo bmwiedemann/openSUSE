@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:57:33 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Remove no longer needed multi status selector since it
+  does not work as expected (bsc#1167523).
+- 4.2.78
+
+-------------------------------------------------------------------
+Tue Mar 24 16:40:09 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed alignment in the multi selection CWM widget
+  (part of bsc#1167523)
+- 4.2.77
+
+-------------------------------------------------------------------
+Mon Mar 23 11:15:56 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Add Popup#SuppressFeedback to allow to hide feedback for certain
+  actions (needed for bsc#1165705)
+- 4.2.76
+
+-------------------------------------------------------------------
+Sat Mar 21 11:56:41 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Force a reset of the firewalld API instance before reading the
+  firewalld configuration (bsc#1166698)
+- 4.2.75
+
+-------------------------------------------------------------------
 Tue Mar 17 15:46:35 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed CWM::MultiStatusSelector help text icons displayed during
