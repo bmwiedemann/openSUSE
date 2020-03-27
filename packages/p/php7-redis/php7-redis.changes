@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 27 15:00:29 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 5.2.1
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.2.1
+  * Fix arginfo for Redis::zadd.
+  * Fix segfault on closing persistent stream.
+
+-------------------------------------------------------------------
 Wed Mar  4 12:55:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.2.0
