@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>689363</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de73587baa2352ab92bd6651f93c6e58</srcmd5>
+    <version>3.0.1</version>
+    <time>1585342608</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * wrap around smmap</comment>
+    <requestid>785622</requestid>
+  </revision>
 </revisionlist>

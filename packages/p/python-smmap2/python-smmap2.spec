@@ -1,7 +1,7 @@
 #
 # spec file for package python-smmap2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smmap2
-Version:        2.0.5
+Version:        3.0.1
 Release:        0
 Summary:        A pure python implementation of a sliding window memory map manager
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/Byron/smmap
+URL:            https://github.com/Byron/smmap
 Source:         https://files.pythonhosted.org/packages/source/s/smmap2/smmap2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module smmap}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module coverage >= 3.4}
-BuildRequires:  %{python_module nosexcover}
-BuildRequires:  %{python_module nose}
-# /SECTION
-Conflicts:      python-smmap
+Requires:       python-smmap = %version
 BuildArch:      noarch
 
 %python_subpackages
@@ -66,15 +62,13 @@ still provides the benefit of unloading unused mappings on demand.
 %build
 %python_build
 
+echo "Deprecated wrapper around smmap." > README.md
+
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%python_exec setup.py test
-
 %files %{python_files}
-%license LICENSE
 %doc README.md
 %{python_sitelib}/*
 
