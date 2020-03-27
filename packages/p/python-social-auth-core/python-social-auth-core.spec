@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-social-auth-core
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
@@ -30,12 +30,14 @@ Source:         https://files.pythonhosted.org/packages/source/s/social-auth-cor
 Source1:        https://raw.githubusercontent.com/python-social-auth/social-core/master/social_core/tests/backends/data/saml_config.json
 Patch0:         remove-unittest2.patch
 BuildRequires:  %{python_module PyJWT >= 1.4.0}
+BuildRequires:  %{python_module Unidecode >= 1.1.1}
 BuildRequires:  %{python_module coverage >= 3.6}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose >= 1.2.1}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.0.0}
 BuildRequires:  %{python_module python3-saml}
 BuildRequires:  %{python_module rednose >= 0.4.1}
@@ -51,6 +53,7 @@ BuildRequires:  python3 >= 3.4.0
 BuildRequires:  python3-defusedxml >= 0.5.0
 BuildRequires:  python3-python3-openid >= 3.0.10
 Requires:       python-PyJWT >= 1.4.0
+Requires:       python-Unidecode >= 1.1.1
 Requires:       python-cryptography >= 2.1.1
 Requires:       python-oauthlib >= 1.0.3
 Requires:       python-python-jose >= 3.0.0
@@ -91,7 +94,9 @@ cp %{SOURCE1} social_core/tests/backends/data/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/nosetests-%{$python_bin_suffix}
+# python3 only: assertRaisesRegexp -> assertRaisesRegex
+rm -r _build.python2
+python3 -m pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

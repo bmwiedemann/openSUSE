@@ -86,4 +86,12 @@
   * Many fixes to all existing Backends to match up upstream projects</comment>
     <requestid>707119</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fbd5cc4107aae30405e1221b517f06e0</srcmd5>
+    <version>3.3.0</version>
+    <time>1585342911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789079</requestid>
+  </revision>
 </revisionlist>
