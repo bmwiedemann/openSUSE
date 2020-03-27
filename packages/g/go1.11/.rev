@@ -1298,4 +1298,12 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
     <comment>- %arm requires binutils-gold to build with go1.4 (forwarded request 785502 from Guillaume_G)</comment>
     <requestid>785679</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>bb2d2144006e7052e10de559c13a0486</srcmd5>
+    <version>1.11.13</version>
+    <time>1585342589</time>
+    <user>dimstar_suse</user>
+    <comment>- %arm requires binutils-gold to build with go1.4 (bsc#1167874) (forwarded request 788949 from dirkmueller)</comment>
+    <requestid>789120</requestid>
+  </revision>
 </revisionlist>
