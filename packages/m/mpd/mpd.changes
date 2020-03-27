@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 15:53:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.21.21
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.21/NEWS
+  * configuration: fix bug in "metadata_to_use" setting
+  * playlist: asx, xspf: fix corrupt tags in the presence of XML entities
+  * archive: iso9660: skip empty file names to work around libcdio bug
+  * decoder: gme: ignore empty tags
+  * output: solaris: port to NetBSD
+  * raise default "max_connections" value to 100
+
+-------------------------------------------------------------------
 Thu Feb 27 06:59:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.21.20
