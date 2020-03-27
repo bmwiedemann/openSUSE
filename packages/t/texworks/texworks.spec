@@ -1,7 +1,7 @@
 #
 # spec file for package texworks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2007-09 by Jonathan Kew.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,25 +13,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           texworks
-Version:        0.6.3
+Version:        0.6.5
 Release:        0
 Summary:        TeXshop-like TeX Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
-Url:            http://www.tug.org/texworks/
-Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz
+URL:            https://www.tug.org/texworks/
+Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  hunspell-devel
 BuildRequires:  libpoppler-devel >= 0.24
 BuildRequires:  libpoppler-qt5-devel >= 0.24
 BuildRequires:  lua-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  texlive-tex-bin
 BuildRequires:  update-desktop-files
@@ -49,7 +51,6 @@ Requires:       dbus-1
 Requires:       hunspell
 Requires:       poppler-tools
 Requires:       texlive-latex
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The TeXworks project is a simple TeX front-end program (working
@@ -90,7 +91,6 @@ This package adds lua scripting abitilies to TeXworks.
        -DWITH_LUA=ON \
        -DWITH_PYTHON=ON \
        -DTeXworks_DIC_DIR=%{_datadir}/myspell \
-       -DDESIRED_QT_VERSION="5" \
        -DTeXworks_PLUGIN_DIR=%{_libdir}/%{name}
 
 %cmake_build
@@ -112,7 +112,7 @@ done
 %{_datadir}/metainfo/texworks.appdata.xml
 %{_bindir}/texworks
 %{_datadir}/applications/texworks.desktop
-%{_datadir}/pixmaps/*.png
+%{_datadir}/icons/hicolor/*/apps/*.png
 %{_mandir}/man1/texworks.1%{?ext_man}
 
 %files plugin-python

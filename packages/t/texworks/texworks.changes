@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:48:46 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.5:
+  * Fix text selection handling when moving the mouse.
+  * Fix auto-reloading of TeX documents that were changed outside
+    TeXworks.
+  * Updated translations.
+- Changes from version 0.6.4:
+  * Add shortcut (Ctrl+Shift+J) to invoke SyncTeX at the cursor
+    position.
+  * Make shortcuts for autocompletion configurable.
+  * Make "Auto-Follow Focus" configurable in the preferences.
+  * Make editor line spacing customizable.
+  * Make console output accessible by keyboard; among other thigs,
+    this makes the console work with screen readers.
+  * Migrate to a more powerful regular expressions engine (e.g.
+    for finding and replacing).
+  * Fix opening empty files.
+  * Fix the highlighting of TeX commands that include non-ASCII
+    characters.
+  * Fix the auto-closing of PDFs with the associated TeXs.
+  * Fix the PDF display on high-dpi screens like Retina displays.
+  * Properly handle "&" for recent files menu.
+  * Fix syntax highlighting in the "New from template" dialog.
+  * Sort interface locales alphabetically in the preferences.
+  * Don't show invalid PDF page sizes in the meta data dock.
+  * Properly show the PDF file size in the meta data dock even for
+    locked or invalid files.
+  * Fix the conversion of Lua tables in Lua scripts.
+  * Fix the installation of icons on *nix platforms.
+  * Update libraries for pre-built binaries.
+  * Modernize and restructure the code to improve quality,
+    stability, maintainability, and the possibilities for future
+    enhancements.
+  * Improve unit tests and add automated testing on Windows; this
+    ensures better code quality across all supported operating
+    systems.
+  * Discontinue Qt4 support.
+  * Updated translations.
+- Rename source tarball to %{name}-%{version}.tar.gz.
+- Adapt to changed location of icons:
+  * Add BuildRequires: hicolor-icon-theme.
+  * Update file list with new icon directory.
+- Minor cleanups with spec-cleaner.
+
+-------------------------------------------------------------------
 Tue Mar 19 15:12:11 UTC 2019 - Atri B <badshah400@gmail.com>
 
 - Update to version 0.6.3:
