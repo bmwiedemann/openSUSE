@@ -17,14 +17,12 @@
 
 
 #
-%define suite ibmtss
 %define libversion 1
 %define libversion_full 1.3.0
 %define libname libibmtss
 %define libpkgname %{libname}%{libversion}
 
 Name:           ibmtss
-Epoch:          1
 Version:        1.3.0
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
@@ -68,7 +66,7 @@ Includes IBM's TPM 2.0 TSS certificates and policy files.
 Summary:        IBM's TPM 2.0 TSS headers
 Group:          Development/Libraries/C and C++
 Requires:       %{libpkgname} = %{version}
-Requires:       %{suite} = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 Includes IBM's TPM 2.0 TSS C header files
@@ -80,7 +78,7 @@ Includes IBM's TPM 2.0 TSS C header files
 autoreconf -i
 %configure --enable-hwtpm --enable-debug --disable-static
 cd utils
-%{_libexecdir}/%{suite}/tpm_server & tpm_server="$!"
+%{_libexecdir}/%{name}/tpm_server & tpm_server="$!"
 CCFLAGS="%{optflags}" make LNAFLAGS="-Wl,-rpath,%{_libdir}" %{?_smp_mflags}
 testfailed=0
 TPM_INTERFACE_TYPE=socsim LD_LIBRARY_PATH=.libs ./reg.sh || testfailed=$?
@@ -92,8 +90,8 @@ install -m 644 -D -t %{buildroot}%{_prefix}/lib/udev/rules.d/ %{SOURCE1}
 cd utils
 %make_install
 
-mkdir -p %{buildroot}/%{_datadir}/%{suite}
-cp -a policies certificates %{buildroot}/%{_datadir}/%{suite}
+mkdir -p %{buildroot}/%{_datadir}/%{name}
+cp -a policies certificates %{buildroot}/%{_datadir}/%{name}
 
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -name .cvsignore | xargs rm -v
@@ -115,12 +113,12 @@ find %{buildroot} -name .cvsignore | xargs rm -v
 
 %files base
 %license LICENSE
-%{_datadir}/%{suite}
+%{_datadir}/%{name}
 %{_prefix}/lib/udev/rules.d/*
 
 %files devel
 %license LICENSE
-%{_includedir}/%{suite}
+%{_includedir}/%{name}
 %{_libdir}/%{libname}*.so
 
 %changelog
