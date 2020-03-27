@@ -4472,21 +4472,14 @@ unsorted:
   - glassfish-hk2-core 
   - glassfish-hk2-extras 
   - glassfish-hk2-hk2 
-  - glassfish-hk2-inhabitant-generator 
   - glassfish-hk2-javadoc 
   - glassfish-hk2-jmx 
   - glassfish-hk2-locator 
-  - glassfish-hk2-locator-extras 
-  - glassfish-hk2-locator-no-proxies 
-  - glassfish-hk2-locator-no-proxies2 
-  - glassfish-hk2-maven 
   - glassfish-hk2-maven-plugins 
   - glassfish-hk2-metadata-generator 
   - glassfish-hk2-osgi-resource-locator 
   - glassfish-hk2-runlevel 
-  - glassfish-hk2-runlevel-extras 
   - glassfish-hk2-testing 
-  - glassfish-hk2-testng 
   - glassfish-hk2-utils 
   - glassfish-jax-rs-api 
   - glassfish-jax-rs-api-javadoc 
@@ -5857,7 +5850,6 @@ unsorted:
   - ipmiutil-static 
   - iprange 
   - iproute2-bash-completion 
-  - iproxy 
   - ipset-devel 
   - iptables-backend-nft 
   - ipv6gen 
@@ -5986,14 +5978,6 @@ unsorted:
   - java-11-openjdk-javadoc 
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
-  - java-13-openjdk 
-  - java-13-openjdk-accessibility 
-  - java-13-openjdk-demo 
-  - java-13-openjdk-devel 
-  - java-13-openjdk-headless 
-  - java-13-openjdk-javadoc 
-  - java-13-openjdk-jmods 
-  - java-13-openjdk-src 
   - java-14-openjdk 
   - java-14-openjdk-accessibility 
   - java-14-openjdk-demo 
@@ -8776,7 +8760,6 @@ unsorted:
   - libdmx-devel-32bit: [x86_64] 
   - libdmx1-32bit: [x86_64] 
   - libdnet-devel 
-  - libdnet-python 
   - libdnet1 
   - libdnf-devel 
   - libdnf2 
@@ -9875,6 +9858,7 @@ unsorted:
   - libixml11-32bit: [x86_64] 
   - libjack-devel 
   - libjack-devel-32bit: [x86_64] 
+  - libjack-pw0_3_1 
   - libjack0-32bit: [x86_64] 
   - libjacknet0 
   - libjacknet0-32bit: [x86_64] 
@@ -11119,7 +11103,10 @@ unsorted:
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
+  - libpulse-mainloop-glib-pw0_3_1 
   - libpulse-mainloop-glib0-32bit: [x86_64] 
+  - libpulse-pw0_3_1 
+  - libpulse-simple-pw0_3_1 
   - libpulse0-32bit: [x86_64] 
   - libpurple-branding-upstream 
   - libpurple-devel 
@@ -12288,7 +12275,8 @@ unsorted:
   - libusbgx-tools 
   - libusbgx2 
   - libusbmuxd-devel 
-  - libusbmuxd4-32bit: [x86_64] 
+  - libusbmuxd-tools 
+  - libusbmuxd6-32bit: [x86_64] 
   - libusbprog0 
   - libuser 
   - libuser-devel 
@@ -14070,8 +14058,6 @@ unsorted:
   - mono-locale-extras 
   - mono-mvc 
   - mono-reactive 
-  - mono-uia 
-  - mono-uia-devel 
   - mono-wcf 
   - mono-web 
   - mono-winforms 
@@ -16296,11 +16282,11 @@ unsorted:
   - pdns-recursor 
   - pdnsd 
   - pdnsd-doc 
-  - pdsh: [x86_64] 
-  - pdsh-dshgroup: [x86_64] 
-  - pdsh-genders: [x86_64] 
-  - pdsh-machines: [x86_64] 
-  - pdsh-netgroup: [x86_64] 
+  - pdsh 
+  - pdsh-dshgroup 
+  - pdsh-genders 
+  - pdsh-machines 
+  - pdsh-netgroup 
   - pdsh-slurm: [x86_64] 
   - peazip 
   - peazip-kf5 
@@ -17487,6 +17473,7 @@ unsorted:
   - pipenightdreams 
   - piper 
   - pipewire-devel 
+  - pipewire-doc 
   - pithos 
   - pitivi 
   - pitivi-lang 
@@ -18123,7 +18110,6 @@ unsorted:
   - python-heatclient-doc 
   - python-ibus 
   - python-idle 
-  - python-imobiledevice 
   - python-ipaddress 
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
@@ -18206,7 +18192,6 @@ unsorted:
   - python-paramiko-doc 
   - python-peppercorn-doc 
   - python-pisock 
-  - python-plist 
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
@@ -21679,6 +21664,7 @@ unsorted:
   - python3-img2pdf 
   - python3-iminuit 
   - python3-immutables 
+  - python3-imobiledevice 
   - python3-importlab 
   - python3-imread 
   - python3-imreg 
@@ -21727,6 +21713,7 @@ unsorted:
   - python3-jaraco.base 
   - python3-jaraco.classes 
   - python3-jaraco.collections 
+  - python3-jaraco.envs 
   - python3-jaraco.functools 
   - python3-jaraco.itertools 
   - python3-jaraco.logging 
@@ -22269,6 +22256,7 @@ unsorted:
   - python3-plaster 
   - python3-plaster-pastedeploy 
   - python3-plette 
+  - python3-plist 
   - python3-plotly 
   - python3-plotly-jupyter 
   - python3-plplot 
@@ -24501,6 +24489,7 @@ unsorted:
   - sablot 
   - sablot-devel 
   - sac-javadoc 
+  - sacad 
   - saidar 
   - sakura 
   - sakura-lang 
@@ -24646,6 +24635,8 @@ unsorted:
   - scamper 
   - scanmem 
   - scantailor 
+  - scap-workbench 
+  - scap-workbench-doc 
   - scat 
   - sccs 
   - scdl 
@@ -25507,7 +25498,6 @@ unsorted:
   - tensorflow-devel: [x86_64] 
   - tensorflow-doc: [x86_64] 
   - tensorflow-gnu-hpc: [x86_64] 
-  - tensorflow-gnu-mvapich2-hpc: [x86_64] 
   - tensorflow-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow-lite: [x86_64] 
   - tensorflow-lite-devel: [x86_64] 
@@ -25530,8 +25520,6 @@ unsorted:
   - tensorflow2_2_1_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow_1_15_2-gnu-hpc: [x86_64] 
   - tensorflow_1_15_2-gnu-hpc-devel: [x86_64] 
-  - tensorflow_1_15_2-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow_1_15_2-gnu-mvapich2-hpc-devel: [x86_64] 
   - tensorflow_1_15_2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow_1_15_2-gnu-openmpi2-hpc-devel: [x86_64] 
   - tepl-4-lang 
@@ -33547,6 +33535,7 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
+  - usbmuxd 
   - usbprog 
   - usbprog-devel 
   - usbprog-gui 
