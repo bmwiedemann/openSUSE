@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 22 13:32:49 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.g56:
+  * Remove grep and diffutils from fillup_prereq, replace coreutils with file requires
+  * Avoid overwriting files that didn't actually change on disk
+
+-------------------------------------------------------------------
 Thu Jan 30 10:33:42 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.g52:
