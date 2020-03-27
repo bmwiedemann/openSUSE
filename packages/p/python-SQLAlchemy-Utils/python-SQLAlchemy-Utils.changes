@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:02:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.36.3
+  * Added hash method for PhoneNumberType (#428, pull request courtesy of hanc1208)
+  * Added repr for UUIDType (#424, pull request courtesy of ziima)
+
+-------------------------------------------------------------------
 Sun Dec 29 21:12:16 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.36.1:
