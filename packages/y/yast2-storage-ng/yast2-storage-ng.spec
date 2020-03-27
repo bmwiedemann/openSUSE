@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.2.100
+Version:        4.2.104
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -82,6 +82,7 @@ rake test:unit
 %yast_metainfo
 
 %post
+%{fillup_only -ans storage %{name}.common}
 %ifarch s390 s390x
 %{fillup_only -ans storage %{name}.s390}
 %else

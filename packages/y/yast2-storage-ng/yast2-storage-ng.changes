@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:14:08 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Reverted the changes done to support the calculation of udev
+  links from yast2-bootloader, since the changes in that module
+  were also reverted. See previous entries for versions 4.2.90
+  and 4.2.102.
+- Related to bsc#1167779, bsc#1166096 and bsc#1151075.
+- 4.2.104
+
+-------------------------------------------------------------------
+Thu Mar 26 15:18:33 CET 2020 - aschnell@suse.com
+
+- Reanimate saving USED_FS_LIST (bsc#1161533).
+- 4.2.103
+
+-------------------------------------------------------------------
+Wed Mar 25 07:23:03 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Extend and improve the API to get udev names for a block device
+  (needed for bsc#1166096).
+- 4.2.102
+
+-------------------------------------------------------------------
+Mon Mar 23 17:36:02 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Prevents to put /boot in a bcache (bsc#1165903).
+- 4.2.101
+
+-------------------------------------------------------------------
 Fri Mar 20 12:25:12 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: show an error when no suitable components are found
