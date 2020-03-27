@@ -1,7 +1,7 @@
 #
 # spec file for package python-odfpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname odfpy
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python API and tools to manipulate OpenDocument files
 License:        GPL-2.0-or-later AND Apache-2.0
