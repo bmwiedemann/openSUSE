@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_highlight_selected_word
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,19 +26,19 @@ Release:        0
 Summary:        Jupyter notebook extension to highlight every instance of the current word
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/jcb91/jupyter_highlight_selected_word
+URL:            https://github.com/jcb91/jupyter_highlight_selected_word
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_highlight_selected_word/jupyter_highlight_selected_word-%{version}.tar.gz
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-notebook
+BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module notebook}
 %endif
 Requires:       python-notebook
-Requires:       jupyter-jupyter_highlight_selected_word = %{version}
+Recommends:     jupyter-jupyter_highlight_selected_word = %{version}
 BuildArch:      noarch
 
 %python_subpackages
@@ -52,12 +52,11 @@ This package provides the python interface.
 
 %package     -n jupyter-jupyter_highlight_selected_word
 Summary:        Jupyter notebook extension to highlight every instance of the current word
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-jupyter_highlight_selected_word = %{version}
 Requires(post): jupyter-notebook
 Requires(preun): jupyter-notebook
-Requires(post): python3-jupyter_highlight_selected_word = %{version}
-Requires(preun): python3-jupyter_highlight_selected_word = %{version}
 
 %description -n jupyter-jupyter_highlight_selected_word
 Jupyter notebook extension that enables highlighting of all instances of the
