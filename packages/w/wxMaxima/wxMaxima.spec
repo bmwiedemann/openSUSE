@@ -18,7 +18,7 @@
 
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.03.0
+Version:        20.03.1
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
