@@ -17,7 +17,7 @@
 
 
 Name:           perl-IPC-System-Simple
-Version:        1.26
+Version:        1.30
 Release:        0
 %define cpan_name IPC-System-Simple
 Summary:        Run commands simply, with detailed diagnostics
