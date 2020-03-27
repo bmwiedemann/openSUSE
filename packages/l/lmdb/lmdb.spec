@@ -20,13 +20,15 @@ Name:           lmdb
 Summary:        Lightning Memory-Mapped Database Manager
 License:        OLDAP-2.8
 Group:          Productivity/Databases/Tools
-%define lname liblmdb-0_9_23
-Version:        0.9.23
+%define lname liblmdb-0_9_24
+Version:        0.9.24
 Release:        0
 Url:            https://symas.com/mdb/
 
 #Git-Clone:	git://git.openldap.org/openldap mdb.master
 Source:         https://github.com/LMDB/lmdb/archive/LMDB_%version.tar.gz
+# from https://src.fedoraproject.org/rpms/lmdb/tree/master
+Source1:        lmdb.pc.in
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM - debugging tools (https://github.com/kacfengine/lmdb)
@@ -102,6 +104,15 @@ make install DESTDIR="%buildroot" SOVERSION=%{version} \
     datarootdir=%{_datadir}
 ln -s %{_libdir}/liblmdb-%{version}.so %{buildroot}%{_libdir}/liblmdb.so
 
+# Install pkgconfig file
+sed -e 's:@PREFIX@:%{_prefix}:g' \
+    -e 's:@EXEC_PREFIX@:%{_exec_prefix}:g' \
+    -e 's:@LIBDIR@:%{_libdir}:g' \
+    -e 's:@INCLUDEDIR@:%{_includedir}:g' \
+    -e 's:@PACKAGE_VERSION@:%{version}:g' \
+    %{SOURCE1} >lmdb.pc
+install -Dpm 0644 -t %{buildroot}%{_libdir}/pkgconfig lmdb.pc
+
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
@@ -118,5 +129,6 @@ ln -s %{_libdir}/liblmdb-%{version}.so %{buildroot}%{_libdir}/liblmdb.so
 %files devel
 %_includedir/*
 %_libdir/liblmdb.so
+%_libdir/pkgconfig/lmdb.pc
 
 %changelog

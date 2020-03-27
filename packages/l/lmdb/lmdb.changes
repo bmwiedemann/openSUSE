@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 21 23:12:06 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- copy the pkg config support from the fedora package 
+
+-------------------------------------------------------------------
+Sat Mar 21 23:05:48 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- LMDB 0.9.24 Release (2019/07/24)
+  * ITS#8969 Tweak mdb_page_split
+  * ITS#8975 WIN32 fix writemap set_mapsize crash
+  * ITS#9007 Fix loose pages in WRITEMAP
+
+-------------------------------------------------------------------
 Mon Mar 25 21:10:07 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - LMDB 0.9.23 Release (2018/12/19)

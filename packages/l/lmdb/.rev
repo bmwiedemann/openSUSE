@@ -119,4 +119,17 @@
     <comment></comment>
     <requestid>688581</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2b375187aa57dbbcc43355c72db3ca2f</srcmd5>
+    <version>0.9.24</version>
+    <time>1585342543</time>
+    <user>dimstar_suse</user>
+    <comment>- copy the pkg config support from the fedora package 
+- LMDB 0.9.24 Release (2019/07/24)
+  * ITS#8969 Tweak mdb_page_split
+  * ITS#8975 WIN32 fix writemap set_mapsize crash
+  * ITS#9007 Fix loose pages in WRITEMAP
+</comment>
+    <requestid>788362</requestid>
+  </revision>
 </revisionlist>
