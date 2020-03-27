@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 25 18:09:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.2
+  * properly build on FreeBSD, even if ppp is not installed at
+    configure time
+  * build in the absence of resolvconf
+
+-------------------------------------------------------------------
+Tue Mar 24 20:21:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versin 1.13.0
+  * avoid unsupported versions of resolvconf
+  * add configure and command line option for resolvconf
+  * increase BUFSIZ
+  * reinitialize static variables with the --persistent option
+  * fix a memory leak in ipv4_add_nameservers_to_resolv_conf
+
+-------------------------------------------------------------------
 Thu Feb 27 15:14:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.0
