@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 21 12:02:05 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Force a reset of the firewalld API instance after modifying the
+  service state (bsc#1166698)
+- 4.2.4
+
+-------------------------------------------------------------------
 Wed Feb 26 20:23:04 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - AutoYaST: Added back the installation finish client for opening
