@@ -176,7 +176,19 @@ autoreconf -fiv
 export CXXFLAGS="%{optflags} -fPIE -fPIC"
 export CFLAGS="%{optflags} -fPIE -fPIC"
 export LDFLAGS="-pie"
+
+# Autodetecting if assembly optimizazions for secp256k1 can be used does not
+# work well on non-x86_64 architectures, like i.e. aarch64, which results in
+# build errors. At the same time, x86_64 is the only architecture for which
+# assembly is properly supported (ARM assembly optimizations are still
+# experimental). Let's just disable asm for all the other architectures until
+# that doesn't change.
 %configure \
+%ifarch x86_64
+  --with-asm=auto \
+%else
+  --with-asm=no \
+%endif
   --with-cli=yes \
   --with-daemon=yes \
   --with-gui=qt5 \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 26 20:57:22 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix build on aarch64.
+
+-------------------------------------------------------------------
 Wed Mar 11 13:25:45 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Do not run bitcoind in daemon mode. Running it not as a
