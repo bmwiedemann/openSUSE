@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 22 14:47:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to support monitoring non-bdb rpmdb variants
+  + Patch: libdnf-0.45.0-handle-all-rpmdb-variants.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 14:07:48 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.45.0

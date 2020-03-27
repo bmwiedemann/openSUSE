@@ -45,6 +45,8 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1000:      libdnf-0.39.1-with-static-libsolvext.patch
 # PATCH-FIX-OPENSUSE: Switch default reposdir to /etc/dnf/repos.d
 Patch1001:      libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+# PATCH-FIX-OPENSUSE: Handle monitoring non-bdb rpmdb variants
+Patch1002:      libdnf-0.45.0-handle-all-rpmdb-variants.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc

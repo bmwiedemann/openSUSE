@@ -262,4 +262,13 @@
   + Port to libmodulemd-2 API (rh#1693683)</comment>
     <requestid>779941</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>acde6901d42242df329cfb74a3543dbd</srcmd5>
+    <version>0.45.0</version>
+    <time>1585342492</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to support monitoring non-bdb rpmdb variants
+  + Patch: libdnf-0.45.0-handle-all-rpmdb-variants.patch</comment>
+    <requestid>787280</requestid>
+  </revision>
 </revisionlist>
