@@ -151,4 +151,18 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
     <comment></comment>
     <requestid>787794</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b4f2655fea7d68191fa76ced28bb8bfa</srcmd5>
+    <version>2.2.1</version>
+    <time>1585342930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  * news: add notes for 2.2.1
+  * providers/qemu: fix default to fwcfg
+  * doc/development: remember to bump Accept header during spec bumps
+- Remove 0001-Support-more-architectures.patch:
+  Patch added upstream
+</comment>
+    <requestid>789089</requestid>
+  </revision>
 </revisionlist>

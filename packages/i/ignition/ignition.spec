@@ -17,14 +17,13 @@
 
 
 Name:           ignition
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
-Patch1:         0001-Support-more-architectures.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Requires:       dracut
 Recommends:     /sbin/mkfs.btrfs
@@ -53,7 +52,6 @@ applies the configuration.
 
 %prep
 %setup -q
-%patch1 -p1
 %patch2 -p1
 
 %build

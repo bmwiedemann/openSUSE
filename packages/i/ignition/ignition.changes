@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 10:11:53 UTC 2020 - kukuk@suse.de
+
+- Update to version 2.2.1:
+  * news: add notes for 2.2.1
+  * providers/qemu: fix default to fwcfg
+  * doc/development: remember to bump Accept header during spec bumps
+- Remove 0001-Support-more-architectures.patch:
+  Patch added upstream
+
+-------------------------------------------------------------------
 Tue Mar 24 12:58:48 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Add 0001-Support-more-architectures.patch:
