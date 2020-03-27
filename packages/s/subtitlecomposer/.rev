@@ -50,4 +50,17 @@
 - Add 0001-Use-a-local-qthelper.cpp-copy.patch</comment>
     <requestid>783883</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d8597b9066ceb6cfe068c09498552686</srcmd5>
+    <version>0.7.0</version>
+    <time>1585342644</time>
+    <user>dimstar_suse</user>
+    <comment>- Move URL to the new upstream location at invent.kde.org
+- Remove the dependency on python-base (python2) by removing the
+  python examples (so we don't install any python scripts anymore).
+  The python scripts can't be used anyway since we build
+  kross-interpreters without python support.
+</comment>
+    <requestid>788726</requestid>
+  </revision>
 </revisionlist>

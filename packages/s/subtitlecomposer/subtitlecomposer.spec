@@ -22,7 +22,7 @@ Release:        0
 Summary:        A text-based subtitle editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            https://github.com/maxrd2/subtitlecomposer/
+URL:            https://invent.kde.org/kde/subtitlecomposer
 Source0:        https://github.com/maxrd2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 # No longer part of mpv >= 0.33
 Source1:        https://raw.githubusercontent.com/mpv-player/mpv/v0.32.0/libmpv/qthelper.hpp
@@ -81,11 +81,17 @@ cp %{SOURCE1} src/videoplayerplugins/mpv/
 # Fix permissions
 chmod 644 ChangeLog
 
+# We build kross-interpreters without python support anyway, so we can
+# remove the python examples to remove an useless dependency on python2
+rm src/scripting/examples/*.py
+
 # Fix shebang
-sed -i '1s|%{_bindir}/env python|%{_bindir}/python|' \
-       src/scripting/examples/*.py
 sed -i '1s|%{_bindir}/env ruby|%{_bindir}/ruby|' \
        src/scripting/examples/*.rb
+
+# Fix shebang in newly created files
+sed -i 's,#!/usr/bin/env ruby,#!%{_bindir}/ruby,' \
+       src/scripting/scriptsmanager.cpp
 
 %build
 %cmake_kf5 -d build
@@ -95,7 +101,6 @@ sed -i '1s|%{_bindir}/env ruby|%{_bindir}/ruby|' \
 %kf5_makeinstall -C build
 
 # Fix persissions
-chmod 755 %{buildroot}%{_kf5_appsdir}/%{name}/scripts/*.py
 chmod 755 %{buildroot}%{_kf5_appsdir}/%{name}/scripts/*.rb
 # Fix rpmlint error (devel-file-in-non-devel-package) and install header files as doc (since they are installed just for help)
 mkdir files_for_doc

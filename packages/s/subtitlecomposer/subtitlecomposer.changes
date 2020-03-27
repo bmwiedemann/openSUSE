@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 14 11:37:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move URL to the new upstream location at invent.kde.org
+- Remove the dependency on python-base (python2) by removing the
+  python examples (so we don't install any python scripts anymore).
+  The python scripts can't be used anyway since we build
+  kross-interpreters without python support.
+
+-------------------------------------------------------------------
 Wed Mar 11 10:30:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add a local qthelper.cpp copy. mpv >= 0.33 doesn't provide this
