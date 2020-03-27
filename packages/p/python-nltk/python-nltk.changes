@@ -11,7 +11,7 @@ Mon Oct 14 14:00:43 UTC 2019 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Sep 11 11:05:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 3.4.5:
+- Update to 3.4.5 (bsc#1146427, CVE-2019-14751):
   * Fixed security bug in downloader: Zip slip vulnerability - for the
     unlikely situation where a user configures their downloader to use
     a compromised server CVE-2019-14751

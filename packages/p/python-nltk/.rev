@@ -82,4 +82,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>784877</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>11736aa2808b1c61b3065207b62ade0e</srcmd5>
+    <version>3.4.5</version>
+    <time>1585342585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.5 (bsc#1146427, CVE-2019-14751):</comment>
+    <requestid>787913</requestid>
+  </revision>
 </revisionlist>
