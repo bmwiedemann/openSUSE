@@ -1,7 +1,7 @@
 #
 # spec file for package python-castellan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/castellan
 Source0:        https://files.pythonhosted.org/packages/source/c/castellan/castellan-1.3.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-barbicanclient >= 4.5.2
-BuildRequires:  python2-cryptography >= 2.1
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-oslo.config >= 6.4.0
-BuildRequires:  python2-oslo.log >= 3.36.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pifpaf
-BuildRequires:  python2-reno
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-barbicanclient >= 4.5.2
 BuildRequires:  python3-cryptography >= 2.1
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -49,22 +37,30 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-Babel >= 2.3.4
-Requires:       python-barbicanclient >= 4.5.2
-Requires:       python-cryptography >= 2.1
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-oslo.config >= 6.4.0
-Requires:       python-oslo.context >= 2.19.2
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.log >= 3.36.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Generic Key Manager interface for OpenStack.
+
+%package -n python3-castellan
+Summary:        Generic Key Manager interface for OpenStack
+Group:          Development/Languages/Python
+Requires:       python3-Babel >= 2.3.4
+Requires:       python3-barbicanclient >= 4.5.2
+Requires:       python3-cryptography >= 2.1
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-oslo.config >= 6.4.0
+Requires:       python3-oslo.context >= 2.19.2
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.log >= 3.36.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-stevedore >= 1.20.0
+
+%description -n python3-castellan
+Generic Key Manager interface for OpenStack.
+
+This package includes the Python 3.x module.
 
 %package -n python-castellan-doc
 Summary:        Documentation for castellan
@@ -81,22 +77,22 @@ This package contains the documentation
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-castellan
 %license LICENSE
-%{python_sitelib}/castellan
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/castellan
+%{python3_sitelib}/*.egg-info
 
 %files -n python-castellan-doc
 %license LICENSE
