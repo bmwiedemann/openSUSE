@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 24 18:10:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.18.27
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.27/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
+Mon Feb 17 20:08:19 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.18.0
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.0/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Install aws bash completetion script into system path
+  + Install aws zsh completion script into /etc/zsh_completion.d
+  + Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Fri Feb 14 13:33:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - make it possible to find the package under the name "awscli"

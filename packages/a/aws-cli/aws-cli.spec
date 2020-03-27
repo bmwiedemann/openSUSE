@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.17.9
+Version:        1.18.27
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.0.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.13.33
+Requires:       python3-botocore >= 1.15.27
 Requires:       python3-colorama <= 0.4.2
 Requires:       python3-colorama >= 0.2.5
 Requires:       python3-docutils >= 0.10
@@ -91,9 +91,9 @@ find %{buildroot}%{python_sitelib}/awscli/examples -type f -exec chmod 644 {} \;
 %endif
 # No DOS crap
 rm %{buildroot}/%{_bindir}/aws.cmd
-# bash completion
-install -d -m 755 %{buildroot}%{_sysconfdir}/bash_completion.d
-ln -s %{_bindir}/aws_bash_completer %{buildroot}%{_sysconfdir}/bash_completion.d/aws
+# Shell completion
+install -DTm644 %{buildroot}%{_bindir}/aws_bash_completer %{buildroot}%{_datadir}/bash-completion/completions/aws
+install -DTm644 %{buildroot}%{_bindir}/aws_zsh_completer.sh %{buildroot}%{_sysconfdir}/zsh_completion.d/_aws
 
 %files
 %doc CHANGELOG.rst README.rst
@@ -109,7 +109,11 @@ ln -s %{_bindir}/aws_bash_completer %{buildroot}%{_sysconfdir}/bash_completion.d
 %{python_sitelib}/awscli/*
 %{python_sitelib}/*egg-info/*
 %endif
-%{_bindir}/*
-%{_sysconfdir}/bash_completion.d/aws
+%{_bindir}/aws
+%{_bindir}/aws_completer
+%exclude %{_bindir}/aws_bash_completer
+%exclude %{_bindir}/aws_zsh_completer.sh
+%{_datadir}/bash-completion/completions/aws
+%{_sysconfdir}/zsh_completion.d
 
 %changelog

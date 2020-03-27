@@ -1,25 +1,39 @@
---- setup.py.orig	2020-01-24 20:08:21.000000000 +0100
-+++ setup.py	2020-01-30 13:34:42.183694744 +0100
-@@ -23,12 +23,12 @@
+--- setup.py.orig	2020-03-23 19:15:32.000000000 +0100
++++ setup.py	2020-03-24 19:10:14.975389538 +0100
+@@ -23,20 +23,20 @@
      raise RuntimeError("Unable to find version string.")
  
  
--install_requires = ['botocore==1.14.9',
--                    'docutils>=0.10,<0.16',
--                    'rsa>=3.1.2,<=3.5.0',
--                    's3transfer>=0.3.0,<0.4.0',
--                    'PyYAML>=3.10,<5.3',
--                    'colorama>=0.2.5,<0.4.2']
-+# install_requires = ['botocore==1.14.9',
-+#                     'docutils>=0.10,<0.16',
-+#                     'rsa>=3.1.2,<=3.5.0',
-+#                     's3transfer>=0.3.0,<0.4.0',
-+#                     'PyYAML>=3.10,<5.3',
-+#                     'colorama>=0.2.5,<0.4.2']
+-install_requires = [
+-    'botocore==1.15.27',
+-    'docutils>=0.10,<0.16',
+-    'rsa>=3.1.2,<=3.5.0',
+-    's3transfer>=0.3.0,<0.4.0',
+-]
++# install_requires = [
++#     'botocore==1.15.27',
++#     'docutils>=0.10,<0.16',
++#     'rsa>=3.1.2,<=3.5.0',
++#     's3transfer>=0.3.0,<0.4.0',
++# ]
+ 
+ 
+-if sys.version_info[:2] == (3, 4):
+-    install_requires.append('PyYAML>=3.10,<5.3')
+-    install_requires.append('colorama>=0.2.5,<0.4.2')
+-else:
+-    install_requires.append('PyYAML>=3.10,<5.4')
+-    install_requires.append('colorama>=0.2.5,<0.4.4')
++# if sys.version_info[:2] == (3, 4):
++#     install_requires.append('PyYAML>=3.10,<5.3')
++#     install_requires.append('colorama>=0.2.5,<0.4.2')
++# else:
++#     install_requires.append('PyYAML>=3.10,<5.4')
++#     install_requires.append('colorama>=0.2.5,<0.4.4')
  
  
  setup_options = dict(
-@@ -46,8 +46,8 @@
+@@ -54,8 +54,8 @@
                               'examples/*/*.txt', 'examples/*/*/*.txt',
                               'examples/*/*/*.rst', 'topics/*.rst',
                               'topics/*.json']},
