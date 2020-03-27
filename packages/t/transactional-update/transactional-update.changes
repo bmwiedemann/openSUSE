@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:21:24 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.4
+  - Mount efivarfs on EFI systems to make sure the bootloader will be installed
+    correctly [boo#1162320]
+  - Fix removal of existing overlay directories
+
+-------------------------------------------------------------------
 Fri Mar 13 12:10:02 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Add dependencies to btrfsprogs, zypper and snapper - most of the

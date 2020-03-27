@@ -478,4 +478,15 @@
 </comment>
     <requestid>784620</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4e740e407c309a7e64ad3ed6ad7e7b05</srcmd5>
+    <version>2.20.4</version>
+    <time>1585342549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.4
+  - Mount efivarfs on EFI systems to make sure the bootloader will be installed correctly [boo#1162320]
+  - Fix removal of existing overlay directories
+</comment>
+    <requestid>788446</requestid>
+  </revision>
 </revisionlist>
