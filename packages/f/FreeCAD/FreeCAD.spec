@@ -143,6 +143,8 @@ Requires:       libopencascade7 >= %(/bin/bash -c 'rpm -q --qf "%%{version}" lib
 
 Recommends:     ccx
 
+Provides:       freecad
+
 %description
 FreeCAD is a parametric 3D modeler made primarily to design real-life objects
 of any size. Parametric modeling allows modifying designs by

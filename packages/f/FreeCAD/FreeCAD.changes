@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:34:33 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Allow install with lowercase package name: zypper install freecad
+
+-------------------------------------------------------------------
 Mon Mar 16 22:24:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - More spec file cleanup, removed duplicate files
