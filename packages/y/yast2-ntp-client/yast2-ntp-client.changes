@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 14:19:10 CET 2020 - schubi@suse.de
+
+- Do not write ntp-servers if they have been shown only (more than
+  one ntp-server) (follow up of bsc#1164547).
+- 4.2.11
+
+-------------------------------------------------------------------
 Wed Mar 18 15:44:25 CET 2020 - schubi@suse.de
 
 - NTP-server-configuration/Time-setting-module in a running
