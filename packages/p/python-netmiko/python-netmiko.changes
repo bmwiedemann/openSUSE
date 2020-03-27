@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 23 19:35:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0:
+  New Platforms / Transports
+  * D-Link DGS/DES
+  * WatchGuard Firebox
+  * Sophos SG Firewalls
+  * Huawei Telnet Support
+  Bug Fixes/Enhancements
+  * Add cmd_verify argument to send_command
+  * Add global_cmd_verify argument to ConnectHandler
+
+-------------------------------------------------------------------
 Thu Jan 16 07:29:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Upate to version 3.0.0:
