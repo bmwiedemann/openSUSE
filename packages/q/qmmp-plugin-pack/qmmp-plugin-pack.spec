@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp-plugin-pack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Dmitry Misharov <quarckster@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,14 +21,14 @@
 %define qmmp_ver_max 1.3.99
 %define mver    1.3
 Name:           qmmp-plugin-pack
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
-URL:            http://qmmp.ylsoftware.com/plugins.php
-Source:         http://qmmp.ylsoftware.com/files/plugins/%{name}-%{version}.tar.bz2
+URL:            https://qmmp.ylsoftware.com/plugins.php
+Source:         https://qmmp.ylsoftware.com/files/plugins/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libqmmp-plugins <= %{qmmp_ver_max}
 BuildRequires:  libqmmp-plugins >= %{qmmp_ver_min}
 BuildRequires:  libqt5-qttools-devel >= 5.4
@@ -52,14 +52,13 @@ Requires:       qmmp <= %{qmmp_ver_max}
 Requires:       qmmp >= %{qmmp_ver_min}
 Obsoletes:      %{name}-history < %{version}
 Obsoletes:      %{name}-mpg123 < %{version}
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %ix86 x86_64
 
 %description
 This package contains extra plugins for Qmmp.
 
 %package ffap
 Summary:        Enhanced Monkey's Audio (APE) decoder for Qmmp
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description ffap
@@ -68,7 +67,6 @@ CUE support).
 
 %package ffvideo
 Summary:        Video Playback Qmmp plugin
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description ffvideo
@@ -76,7 +74,6 @@ Qmmp plugin to play videos.
 
 %package goom
 Summary:        Goom visualisation Qmmp plugin
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description goom
@@ -84,7 +81,6 @@ Qmmp plugin which provides goom visualisation.
 
 %package samplerate
 Summary:        Qmmp plugin which uses libsamplerate for decoding
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description samplerate
@@ -92,7 +88,6 @@ Qmmp plugin which uses libsamplerate resampling library.
 
 %package xmp
 Summary:        Qmmp plugin which uses the libxmp module library
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}-%{release}
 
 %description xmp
@@ -105,7 +100,7 @@ Qmmp plugin which uses libxmp to play module and tracker files.
 %cmake \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
   -DLIB_DIR=%{_lib}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
