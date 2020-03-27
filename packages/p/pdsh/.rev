@@ -298,4 +298,14 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
     <comment>Fix build (forwarded request 788523 from eeich)</comment>
     <requestid>788524</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>2dbd3ddff57fd9f233901784eb418b31</srcmd5>
+    <version>2.34</version>
+    <time>1585342871</time>
+    <user>dimstar_suse</user>
+    <comment>- Define %%make_build for all products that do have it defined.
+
+- Update to version pdsh-2.34 (2020-01-07) (bsc#1167704)</comment>
+    <requestid>789106</requestid>
+  </revision>
 </revisionlist>

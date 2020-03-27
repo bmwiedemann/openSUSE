@@ -150,6 +150,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
         %{?have_slurm:--with-slurm} \
 	--without-rsh \
 	--disable-static
+%if 0%{!?make_build:1}
+# accomodate < SLE-15
+ %define make_build make %{?_smp_mflags}
+%endif
 %make_build
 
 %install
