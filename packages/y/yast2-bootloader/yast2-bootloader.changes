@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:19:54 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Reverted the changes to delegate to yast2-storage-ng the
+  calculation of udev links. See previous entries for versions
+  4.2.16 and 4.2.19.
+- This fixes bsc#1167779 and is related to bsc#1166096 and
+  bsc#1151075.
+- 4.2.20
+
+-------------------------------------------------------------------
+Wed Mar 25 07:57:13 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed the calculation of the udev name used to reference devices
+  that are not formatted, like PReP partitions (bsc#1166096).
+- 4.2.19
+
+-------------------------------------------------------------------
+Tue Mar 24 08:10:33 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- support s390 secure boot (jsc#SLE-9425, jsc#SLE-9471, bsc#1166736)
+- 4.2.18
+
+-------------------------------------------------------------------
 Fri Feb 28 14:23:30 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - add support for S390 secure boot (jsc#SLE-9471, jsc#SLE-9425)
