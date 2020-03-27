@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:25:20 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Reverts changes made in 4.2.59 to improve the addons selection,
+  keeping it as it was (bsc#1167523).
+- 4.2.60
+
+-------------------------------------------------------------------
 Thu Mar 12 23:24:18 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Improve the product selection dialog (related to bsc#1157780).
