@@ -1,7 +1,7 @@
 #
 # spec file for package python-minidb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,19 @@
 %define         skip_python2 1
 %bcond_without  test
 Name:           python-minidb
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        SQLite3-based store for Python objects
 License:        ISC
 Group:          Development/Languages/Python
-Url:            http://thp.io/2010/minidb/
+URL:            http://thp.io/2010/minidb/
 Source:         https://files.pythonhosted.org/packages/source/m/minidb/minidb-%{version}.tar.gz
+# https://github.com/thp/minidb/pull/14
+Patch0:         0001-switch-to-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python3-testsuite
 %endif
 BuildRequires:  fdupes
@@ -43,6 +45,7 @@ Minidb 2 allows you to store Python objects in a SQLite 3 database.
 
 %prep
 %setup -q -n minidb-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -53,7 +56,7 @@ Minidb 2 allows you to store Python objects in a SQLite 3 database.
 
 %if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest test/test_minidb.py
 %endif
 
 %files %{python_files}

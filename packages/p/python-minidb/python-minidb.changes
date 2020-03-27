@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:01:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3
+- Add 0001-switch-to-pytest.patch
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
