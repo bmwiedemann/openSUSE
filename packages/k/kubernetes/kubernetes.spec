@@ -25,26 +25,23 @@
 %endif
 
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.18
+%define maxcriversion 1.19
 # baseversion - version of kubernetes for this package
-%define baseversion 1.17
+%define baseversion 1.18
 # prebaseversion - release of kubernetes for the previous supported kubelet version
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%define prebaseversion 1.16
+%define prebaseversion 1.17
 # preversion - version of kubernetes for the previous supported kubelet version
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%define preversion %{prebaseversion}.3
+%define preversion %{prebaseversion}.4
 
 Name:           kubernetes
-Version:        1.17.4
+Version:        1.18.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://kubernetes.io
 Source:         %{name}-%{version}.tar.xz
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##Source1:        %{name}-%{preversion}.tar.xz
+Source1:        %{name}-%{preversion}.tar.xz
 Source2:        genmanpages.sh
 Source3:        kubelet.sh
 #systemd services
@@ -68,8 +65,6 @@ Patch2:         kubeadm-opensuse-registry.patch
 Patch3:         opensuse-version-checks.patch
 # Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
 Patch4:         kubeadm-opensuse-flexvolume.patch
-# https://github.com/kubernetes/kubernetes/pull/85763 - Drop this patch in 1.18 as its already in
-Patch5:         kubeadm-improve-resilency-CreateOrMutateConfigMap.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -189,18 +184,17 @@ Conflicts:      kubernetes-master > %{version}-%{release}
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubelet daemon (current version)
 
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%package kubelet%{prebaseversion}
-##Summary:        Kubernetes kubelet daemon
-##Group:          System/Management
-##Requires:       cri-runtime
-##Requires:       kubernetes-kubelet-common
-##Provides:       kubernetes-kubelet = %{preversion}
-##%{?systemd_requires}
-##
-##%description kubelet%{prebaseversion}
-##Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
-##kubelet daemon (previous version for upgrades)
+%package kubelet%{prebaseversion}
+Summary:        Kubernetes kubelet daemon
+Group:          System/Management
+Requires:       cri-runtime
+Requires:       kubernetes-kubelet-common
+Provides:       kubernetes-kubelet = %{preversion}
+%{?systemd_requires}
+
+%description kubelet%{prebaseversion}
+Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
+kubelet daemon (previous version for upgrades)
 
 %endif
 
@@ -245,8 +239,7 @@ Conflicts:      kubernetes-kubelet > %{version}-%{release}
 # openSUSE style of upgrade handling
 # Kubeadm requires current kubelet version and previous
 Requires:       kubernetes-kubelet = %{version}-%release
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##Requires:       kubernetes-kubelet = %{preversion}
+Requires:       kubernetes-kubelet = %{preversion}
 %endif
 Conflicts:      cri-tools >= %{maxcriversion}
 # if master is installed with node, version and release must be the same
@@ -295,19 +288,14 @@ Requires:       kubernetes-common = %{version}-%{release}
 Kubernetes client tools like kubectl.
 
 %prep
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%if 0%{?is_opensuse}
-##%setup -q -T -D -b 1 -n %{name}-%{preversion}
-##%endif
+%if 0%{?is_opensuse}
+%setup -q -T -D -b 1 -n %{name}-%{preversion}
+%endif
 %setup -q
 %if 0%{?is_opensuse}
 %patch2 -p0
 %patch3 -p1
 %patch4 -p0
-%endif
-# from 1.18, kubeadm already has the patch
-%if "%{baseversion}" == "1.16" || "%{baseversion}" == "1.17"
-%patch5 -p1
 %endif
 %if !0%{?is_opensuse}
 %{goprep} github.com/kubernetes/kubernetes
@@ -347,14 +335,13 @@ bash genmanpages.sh
 popd
 
 # Make previous version of kubelet for migration aiding
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%if 0%{?is_opensuse}
-##echo "+++ BUILDING Previous kubelet version"
-##export KUBE_GIT_VERSION=v%{preversion}
-##pushd %{_builddir}/%{name}-%{preversion}
-##make %{?_smp_mflags} WHAT="cmd/kubelet"
-##popd
-##%endif
+%if 0%{?is_opensuse}
+echo "+++ BUILDING Previous kubelet version"
+export KUBE_GIT_VERSION=v%{preversion}
+pushd %{_builddir}/%{name}-%{preversion}
+make %{?_smp_mflags} WHAT="cmd/kubelet"
+popd
+%endif
 
 %install
 
@@ -382,10 +369,9 @@ mv %{buildroot}%{_bindir}/kubelet %{buildroot}%{_bindir}/kubelet%{baseversion}
 echo "+++ INSTALLING kubelet multi-version loader"
 install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
 
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##echo "+++ INSTALLING kubelet%{prebaseversion}"
-##mv %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
-##install -p -m 755 -t %{buildroot}%{_bindir} %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
+echo "+++ INSTALLING kubelet%{prebaseversion}"
+mv %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
+install -p -m 755 -t %{buildroot}%{_bindir} %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
 
 # create sysconfig.kubelet-kubernetes in fullupdir
 sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
@@ -590,10 +576,9 @@ fi
 %license LICENSE
 %{_bindir}/kubelet%{baseversion}
 
-## DISABLED - To be re-enabled for 1.18 expected in April 2020
-##%files kubelet%{prebaseversion}
-##%license LICENSE
-##%{_bindir}/kubelet%{baseversion}
+%files kubelet%{prebaseversion}
+%license LICENSE
+%{_bindir}/kubelet%{prebaseversion}
 
 %endif
 

@@ -507,4 +507,41 @@
     <comment></comment>
     <requestid>787559</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>cc51b1f22348392ccbb1c2ebb4b2d2d8</srcmd5>
+    <version>1.18.0</version>
+    <time>1585342547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0:
+  * bump k8s.io/utils package
+  * Simplify dual or single port logic
+  * fix kubectl port-forward for services with explicit local port
+  * Fix the VMSS name and resource group name when updating VMSS for LoadBalancer backendPools.
+  * bump k8s.io utils
+  * Do not reset managedFields in status update strategy
+  * Use discovery to test apply all status
+  * Updating vendored files
+  * Update vendored MountSensitive code for Windows
+  * add unit test for addTopology()
+  * make filteredZones order predictable
+  * Restore orphaning check in gc test
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.0-rc.1
+  * Fix isCurrentInstance for Windows by removing the dependency of hostname
+  * e2e wait until controller manager pod ready
+  * Add missing article in prominent release note
+  * add testing
+  * add ExternalTrafficPolicy support for External IPs in ipvs kubeproxy
+  * add ExternalTrafficPolicy support for External IPs in iptables kubeproxy
+  * add feature gate ExternalPolicyForExternalIP for the bug fix
+  * Set unschedulable Condition after setting nominated Node
+  * fix logging on e2e metrics grabber test
+  * Fix unbound variable error in gce/configure.sh
+  * CHANGELOG: Update directory for v1.15.11 release
+  * CHANGELOG: Update directory for v1.16.8 release
+  * CHANGELOG: Update directory for v1.17.4 release
+  * Bump Cluster-Autoscaler to 1.18.0
+  * Removing ConfigMap as suggestion for IngressClass parameters
+  * Remove kubectl column output test</comment>
+    <requestid>788443</requestid>
+  </revision>
 </revisionlist>
