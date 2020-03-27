@@ -119,4 +119,12 @@
   - Add Python 3 Train unit tests</comment>
     <requestid>774901</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>555e9d4aa229123627bb8b9c3e0b0f9b</srcmd5>
+    <version>1.9.0</version>
+    <time>1585342628</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>788118</requestid>
+  </revision>
 </revisionlist>
