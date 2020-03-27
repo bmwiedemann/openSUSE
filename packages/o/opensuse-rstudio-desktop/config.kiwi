@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- OBS-ExclusiveArch: x86_64 -->
+<!-- OBS-ExclusiveArch: x86_64 aarch64 -->
 <image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.5" name="opensuse-rstudio-desktop-image">
   <description type="system">
     <author>Marco Varlese</author>
@@ -37,6 +37,6 @@
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="image" patternType="onlyRequired">
-    <package name="rstudio" arch="x86_64"/>
+    <package name="rstudio"/>
   </packages>
 </image>
