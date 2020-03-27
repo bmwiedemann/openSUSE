@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{!?license: %global license %doc}
 Name:           python-shodan
-Version:        1.21.3
+Version:        1.22.0
 Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT
@@ -77,7 +77,7 @@ install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shod
 
 %files %{python_files}
 %doc AUTHORS README.rst
-%%license LICENSE
+%license LICENSE
 %python3_only %{_bindir}/shodan
 %{python_sitelib}/*
 %python3_only %{_mandir}/man1/shodan.1%{ext_man}
