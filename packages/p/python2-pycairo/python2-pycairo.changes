@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:24:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use py2 variable as this is not singlespec
+
+-------------------------------------------------------------------
 Wed Mar 25 08:25:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Install the fake egg-info folder to work with pip and friends

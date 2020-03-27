@@ -81,9 +81,9 @@ mv %{buildroot}%{_includedir}/pycairo/ %{buildroot}%{_includedir}/pycairo-py2/
 sed -i -e 's:include/pycairo:include/pycairo-py2:g' %{buildroot}%{_libdir}/pkgconfig/pycairo.pc
 
 # add the setuptools egg-info directory
-rm %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info
-mkdir -p %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info/
-cp pycairo.egg-info/* %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python_version}.egg-info/
+rm %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python2_version}.egg-info
+mkdir -p %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python2_version}.egg-info/
+cp pycairo.egg-info/* %{buildroot}%{python2_sitearch}/pycairo-%{version}-py%{python2_version}.egg-info/
 
 %files
 %doc NEWS docs
