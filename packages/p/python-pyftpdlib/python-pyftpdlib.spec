@@ -57,8 +57,8 @@ write very asynchronous FTP servers with Python.
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/pyftpdlib/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Note: Do not remove tests. Other packages import them
 
 %if %{with test}
 %check
