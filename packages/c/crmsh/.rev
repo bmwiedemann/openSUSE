@@ -2009,4 +2009,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>787953</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>4327940f99df6baceffc51b201de675a</srcmd5>
+    <version>4.2.0+git.1585276059.882beb65</version>
+    <time>1585342661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788734</requestid>
+  </revision>
 </revisionlist>
