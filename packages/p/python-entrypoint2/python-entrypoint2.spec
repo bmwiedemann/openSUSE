@@ -33,6 +33,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ponty/entrypoint2
 Source:         https://github.com/ponty/entrypoint2/archive/%{version}.tar.gz#/entrypoint2-%{version}.tar.gz
+# https://github.com/ponty/entrypoint2/pull/6
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,8 +44,8 @@ BuildRequires:  %{python_module EasyProcess}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module entrypoint2 = %{version}}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module path.py}
+BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
 
@@ -53,6 +55,7 @@ off entrypoint.
 
 %prep
 %setup -q -n entrypoint2-%{version}
+%patch0 -p1
 # argparse is py2.6 or older
 sed -i -e '/argparse/d' requirements.txt
 
@@ -69,7 +72,7 @@ sed -i -e '/argparse/d' requirements.txt
 
 %if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest tests/test.py
 %endif
 
 %if !%{with test}

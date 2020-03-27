@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:08:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use pytest instead of nose
+- Add remove_nose.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 16:33:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.2
