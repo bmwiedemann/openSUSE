@@ -244,6 +244,7 @@ cat > /etc/jeos-firstboot.conf <<-EOF
 	JEOS_TIMEZONE="UTC"
 	JEOS_PASSWORD_ALREADY_SET=1
 	JEOS_EULA_ALREADY_AGREED=1
+	JEOS_HIDE_SUSECONNECT=1
 EOF
 
 #======================================

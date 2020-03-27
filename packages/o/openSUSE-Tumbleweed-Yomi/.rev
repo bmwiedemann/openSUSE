@@ -120,4 +120,12 @@ different profiles.</comment>
     <comment>- Set JEOS_EULA_ALREADY_AGREED for the image</comment>
     <requestid>782974</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>80ec5efc82d46d3dc40d7b0ff0c46f8d</srcmd5>
+    <version>1.0.0</version>
+    <time>1585342894</time>
+    <user>dimstar_suse</user>
+    <comment>- Set JEOS_HIDE_SUSECONNECT for the image</comment>
+    <requestid>789061</requestid>
+  </revision>
 </revisionlist>
