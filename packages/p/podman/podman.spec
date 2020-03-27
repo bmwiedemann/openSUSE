@@ -64,7 +64,7 @@ Requires:       libcontainers-common
 Requires:       libcontainers-image
 Requires:       libcontainers-storage
 Requires:       runc >= 1.0.0~rc4
-Requires:       slirp4netns >= 0.3.0
+Requires:       slirp4netns >= 0.4.0
 Requires:       catatonit
 Requires:       fuse-overlayfs
 Recommends:     %{name}-cni-config = %{version}

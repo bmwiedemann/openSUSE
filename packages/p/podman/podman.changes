@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:40:44 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Use infra_image pause:3.2 
+
+-------------------------------------------------------------------
+Fri Mar 27 09:52:26 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Fix dependency on slirp4netns. We need at least 0.4.0 now
+  (bsc#1167850)
+
+-------------------------------------------------------------------
 Fri Mar 20 07:56:22 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update podman to v1.8.2:
