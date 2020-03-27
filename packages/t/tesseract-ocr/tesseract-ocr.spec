@@ -24,6 +24,8 @@ Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE -- boo#1159231
+Patch0:         tesseract-ocr-no-cpudetection.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -70,7 +72,7 @@ A commercial quality OCR engine originally developed at HP between 1985 and
 open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %prep
-%autosetup -n tesseract-%{version}
+%autosetup -n tesseract-%{version} -p1
 
 %build
 autoreconf -fiv

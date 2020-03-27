@@ -101,4 +101,12 @@
     <comment>- Require libarchive in the devel package</comment>
     <requestid>760613</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9988b2b709a7c51070fc6b0dbcc4183e</srcmd5>
+    <version>4.1.1</version>
+    <time>1585342650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788742</requestid>
+  </revision>
 </revisionlist>
