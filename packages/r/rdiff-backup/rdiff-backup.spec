@@ -1,9 +1,9 @@
 #
 # spec file for package rdiff-backup
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 B1 Systems GmbH, Vohburg, Germany
-
+#
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -13,19 +13,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
 Name:           rdiff-backup
-Version:        1.9.1~b0
-%define _beta   1.9.1b0
+Version:        2.0.0
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Backup
-Url:            https://rdiff-backup.net/
-Source0:        https://github.com/rdiff-backup/rdiff-backup/releases/download/v%{_beta}/rdiff-backup-%{_beta}.tar.gz
+URL:            https://rdiff-backup.net/
+Source0:        https://github.com/rdiff-backup/rdiff-backup/releases/download/v%{version}/rdiff-backup-%{version}.tar.gz
 #
 BuildRequires:  librsync-devel
 BuildRequires:  python3-devel
@@ -49,7 +51,7 @@ transmitted. Finally, rdiff-backup is easy to use and settings have
 sensical defaults.
 
 %prep
-%setup -q -n %{name}-%{_beta}
+%setup -q
 %autopatch -p1
 
 %build

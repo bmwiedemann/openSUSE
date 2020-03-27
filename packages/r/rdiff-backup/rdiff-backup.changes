@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 15 11:28:59 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 2.0.0:
+  * FIX: Add workaround to avoid error when backup directory is
+    under the source directory (github issue #296)
+  * FIX: bytestotime() should return None on decode failure
+    (Closes github issue #295)
+
+-------------------------------------------------------------------
+Sat Mar 14 10:37:17 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 1.9.2rc0, first rc for 2.0.0:
+  * FIX: UpdateError: Updated mirror temp file does not match
+    source, Closes github issue #237
+  * FIX: do not fail when starting with uid/gid equal to maximum,
+    avoid OverflowError on os.chown
+
+-------------------------------------------------------------------
 Sun Feb 23 10:36:23 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 1.9.1b0, third beta before 2.0.0:
