@@ -249,13 +249,13 @@ Requires:       clang%{_sonum}
 # Some binaries used to be in the clang package.
 Conflicts:      clang5
 Conflicts:      clang6
-Conflicts:      clang7
-Conflicts:      clang8
+OrderWithRequires: clang7
+OrderWithRequires: clang8
 # hmaptool used to be contained in the llvm package.
 Conflicts:      llvm5
 Conflicts:      llvm6
-Conflicts:      llvm7
-Conflicts:      llvm8
+OrderWithRequires: llvm7
+OrderWithRequires: llvm8
 Provides:       clang%{_sonum}-checker
 Conflicts:      scan-build < %{version}
 Conflicts:      scan-view < %{version}
@@ -1029,14 +1029,15 @@ chmod -x \
   %{buildroot}%{_datadir}/opt-viewer/style.css
 
 %if !%{with clang_scripts}
-rm %{buildroot}%{_bindir}/{{c++,ccc}-analyzer
+rm %{buildroot}%{_bindir}/{c++,ccc}-analyzer
 rm %{buildroot}%{_bindir}/clang-{doc,format-diff,tidy-diff}
 rm %{buildroot}%{_bindir}/git-clang-format
+rm %{buildroot}%{_bindir}/hmaptool
 rm %{buildroot}%{_bindir}/run-{clang-tidy,find-all-symbols}
 rm %{buildroot}%{_bindir}/scan-{build,view}
 rm %{buildroot}%{_datadir}/bash-completion/completions/clang
 rm -r %{buildroot}%{_datadir}/{clang,scan-build,scan-view}/
-rm %{buildroot}%{_mandir}/man1/scan-build.1%{ext_man}
+rm %{buildroot}%{_mandir}/man1/scan-build.1
 %endif
 
 # Remove documentation sources.

@@ -134,4 +134,16 @@
 - Require clang-tools for clangX-devel.</comment>
     <requestid>784085</requestid>
   </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>e6495c758b34d261c212ae8a5bf276e5</srcmd5>
+    <version>9.0.1</version>
+    <time>1585342497</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
+  relevant binaries have been removed from those packages. This
+  allows having clang-tools together with older versions of llvm.
+  For a smooth installation we add OrderWithRequires dependencies.
+- Fix typos in (still inactive) !%{with clang_scripts} part.</comment>
+    <requestid>787863</requestid>
+  </revision>
 </revisionlist>

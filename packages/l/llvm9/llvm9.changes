@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:42:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
+  relevant binaries have been removed from those packages. This
+  allows having clang-tools together with older versions of llvm.
+  For a smooth installation we add OrderWithRequires dependencies.
+- Fix typos in (still inactive) !%{with clang_scripts} part.
+
+-------------------------------------------------------------------
 Wed Mar 11 22:58:26 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Require clang-tools for clangX-devel.
