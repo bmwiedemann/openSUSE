@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 07:46:03 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.14.4
+  * Update unshare man page to fix script example
+  * Fix compilation errors on non linux platforms
+  * Preserve volume uid and gid through subsequent commands
+  * Fix potential CVE in tarfile w/ symlink
+  * Fix .dockerignore with globs and ! commands
+
+-------------------------------------------------------------------
 Wed Mar  4 13:43:36 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.14.2
