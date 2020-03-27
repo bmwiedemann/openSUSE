@@ -1,4 +1,31 @@
 --------------------------------------------------------------------
+Wed Mar 25 14:14:09 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#714
+- simplify combining disks with different block sizes into RAID
+  (bsc#1164295)
+- Revert "add tests for adjust_block_size()"
+- Revert "add adjust_block_size() method to Region class
+  (bsc#1164295)"
+- update doc
+- 4.2.71
+
+--------------------------------------------------------------------
+Wed Mar 25 13:25:56 UTC 2020 - ancor@suse.de
+
+- merge gh#openSUSE/libstorage-ng#713
+- Make BlkDevice::possible_mount_bys public (for bsc#1166096)
+- Increase minor so version
+- 4.2.70
+
+--------------------------------------------------------------------
+Wed Mar 25 09:46:08 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#712
+- update doc on RAID block size
+- 4.2.69
+
+--------------------------------------------------------------------
 Fri Mar 13 12:48:25 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/libstorage-ng#711
