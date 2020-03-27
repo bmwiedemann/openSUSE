@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 18 17:00:34 UTC 2020 - ohering@suse.de
+
+- bsc#1161480 - Fix xl shutdown for HVM without PV drivers
+  add libxl.libxl__domain_pvcontrol.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 07:57:53 MDT 2020 - carnold@suse.com
+
+- bsc#1165206 - Xen 4.12 DomU hang / freeze / stall / NMI watchdog
+  bug soft lockup CPU #0 stuck under high load / upstream with
+  workaround. See also bsc#1134506
+  01-xen-credit2-avoid-vcpus-to.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 07:41:34 MDT 2020 - carnold@suse.com
 
 - bsc#1158414 - GCC 10: xen build fails

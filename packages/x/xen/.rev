@@ -2419,4 +2419,12 @@
     <comment>Fixes for compiling with gcc10 and scheduler bug bsc#1165206</comment>
     <requestid>783535</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>43000d040f0aa8dc4c6755b337af42c8</srcmd5>
+    <version>4.13.0_11</version>
+    <time>1585342525</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1161480 and partial fix for bsc#1165206</comment>
+    <requestid>788324</requestid>
+  </revision>
 </revisionlist>

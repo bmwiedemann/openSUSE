@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_10
+Version:        4.13.0_11
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -200,6 +200,7 @@ Patch420:       suspend_evtchn_lock.patch
 Patch422:       stubdom-have-iovec.patch
 Patch423:       vif-route.patch
 Patch424:       gcc10-fixes.patch
+Patch425:       01-xen-credit2-avoid-vcpus-to.patch
 # Other bug fixes or features
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
@@ -216,6 +217,7 @@ Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
+Patch468:       libxl.libxl__domain_pvcontrol.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
@@ -443,6 +445,7 @@ Authors:
 %patch422 -p1
 %patch423 -p1
 %patch424 -p1
+%patch425 -p1
 # Other bug fixes or features
 %patch451 -p1
 %patch452 -p1
@@ -459,6 +462,7 @@ Authors:
 %patch465 -p1
 %patch466 -p1
 %patch467 -p1
+%patch468 -p1
 %patch469 -p1
 %patch470 -p1
 # python3 conversion patches
