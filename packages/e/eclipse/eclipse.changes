@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:27:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Filter out the *SUNWprivate_1.1* symbols from requires
+  * They were unconditionally sucking in java-1_8_0-openjdk-devel 
+
+-------------------------------------------------------------------
+Thu Mar 26 13:16:00 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * eclipse-arm32.patch
+    + Fix detection of libjawt.so on 32-bit arm
+  * eclipse-force-gtk2.patch
+    + On 32-bit architectures, force use of GTK2, since GTK3
+      platform does not work on those systems
+
+-------------------------------------------------------------------
 Mon Mar 16 14:07:32 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix sequence of building against bootstrap/non-bootstrap packages

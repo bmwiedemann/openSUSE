@@ -29,6 +29,7 @@
 %global eclipse_tag     I%{eclipse_date}-%{eclipse_time}
 %global _jetty_version  9.4.11
 %global _lucene_version 7.1.0
+%define __requires_exclude .*SUNWprivate_1\\.1.*
 %ifarch %{ix86}
     %global eclipse_arch x86
 %endif
@@ -112,6 +113,8 @@ Patch32:        eclipse-imagedescriptor.patch
 Patch33:        eclipse-ppc64.patch
 # Fix build with objectweb-asm 7
 Patch34:        eclipse-asm7.patch
+Patch35:        eclipse-arm32.patch
+Patch36:        eclipse-force-gtk2.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -508,6 +511,10 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
+%patch35 -p1
+%ifarch s390 %{arm} %{ix86} ppc
+%patch36 -p1
+%endif
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}
