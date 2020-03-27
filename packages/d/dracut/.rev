@@ -1655,4 +1655,19 @@ Add:  dracut_git_v034_to_head.patch</comment>
     * 90kernel-modules: remove nfit from static module list (forwarded request 784045 from dmolkentin)</comment>
     <requestid>784046</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>da21dcd005627ca00e1e526a5f5fa64f</srcmd5>
+    <version>049.1+suse.138.g9068a629</version>
+    <time>1585342494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 049.1+git138.9068a629:
+  * systemd: install systemd-tty-ask-password-agent systemd-ask-password
+  * Mark interface setup after dhcp (bsc#1167161)
+  * Store nameserver received from wicked dhcp lease (bsc#1167161)
+
+- Changed scheme to 049.1+suse.139.g8a7d3d9e to match systemd package
+  * Scheme pattern&gt; &lt;PARENT_TAG&gt;+suse.&lt;TAG_OFFSET&gt;.g&lt;SHA1&gt;
+  * No functional change</comment>
+    <requestid>787362</requestid>
+  </revision>
 </revisionlist>
