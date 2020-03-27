@@ -230,4 +230,14 @@
     <comment>Update ibus-libpinyin.spec: Remove dependence to pyxdg, because it has been removed since 1.6.92 (bnc#1158513). (forwarded request 754617 from qzhao)</comment>
     <requestid>755418</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1a7d7f7e5ad4c8e04ac50108b6fe0591</srcmd5>
+    <version>1.11.92</version>
+    <time>1585342874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.11.92
+  * Support compact display style
+  * Fix bugs</comment>
+    <requestid>789028</requestid>
+  </revision>
 </revisionlist>

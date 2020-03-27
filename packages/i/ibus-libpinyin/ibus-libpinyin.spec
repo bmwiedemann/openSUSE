@@ -1,8 +1,8 @@
 #
 # spec file for package ibus-libpinyin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           ibus-libpinyin
-Version:        1.11.1
+Version:        1.11.92
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
-Source0:        http://downloads.sourceforge.net/libpinyin/ibus-libpinyin/%{name}-%{version}.tar.gz
+Source0:        https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -63,8 +63,7 @@ NOCONFIGURE=1 ./autogen.sh
            --libexecdir=%{_libdir}/ibus \
            --libdir=%{_libdir} \
            --with-python=python3
-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -80,7 +79,7 @@ make %{?_smp_mflags}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README NEWS
 %{_libdir}/ibus/ibus-engine-libpinyin
 %{_libdir}/ibus/ibus-setup-libpinyin
 %{_datadir}/applications/ibus-setup-libbopomofo.desktop
