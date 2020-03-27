@@ -1261,4 +1261,12 @@
   shortcut through the -mini flavor. (forwarded request 766569 from dimstar)</comment>
     <requestid>766622</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>275bddb5b0547b6c3b697c85a03d99c8</srcmd5>
+    <version>21.69</version>
+    <time>1585342506</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>787876</requestid>
+  </revision>
 </revisionlist>

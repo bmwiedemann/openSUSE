@@ -1,3 +1,11 @@
+--------------------------------------------------------------------
+Tue Mar 24 16:50:34 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#85
+- fix xen detection (bsc#1167561)
+- add link to cpuid doc
+- 21.69
+
 -------------------------------------------------------------------
 Thu Jan 23 11:59:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
