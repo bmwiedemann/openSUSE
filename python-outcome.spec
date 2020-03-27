@@ -1,7 +1,7 @@
 #
 # spec file for package python-outcome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-outcome
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Function for capturing the outcome of Python function calls
 License:        MIT OR Apache-2.0
@@ -28,10 +28,10 @@ Source:         https://github.com/python-trio/outcome/archive/v%{version}.tar.g
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs
+Requires:       python-attrs >= 19.2.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  python3-async_generator
