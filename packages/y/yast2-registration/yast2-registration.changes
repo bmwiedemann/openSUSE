@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:07:36 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Reverts changes made in 4.2.36 to improve the addons selection,
+  keeping it as it was (bsc#1167523).
+- 4.2.39
+
+-------------------------------------------------------------------
+Mon Mar 23 14:34:05 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Hide registration feedback window when configuring network
+  (bsc#1165705)
+- 4.2.38
+
+-------------------------------------------------------------------
 Wed Mar 18 15:25:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Improves online search UX (bsc#1165913 and bsc#1166038):
