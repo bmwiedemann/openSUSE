@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:28:47 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 0.4.4 (bsc#1167850)
+  * libslirp: Update to v4.2.0:
+    * New API function slirp_add_unix: add a forward rule to a Unix
+      socket.
+    * New API function slirp_remove_guestfwd: remove a forward rule
+      previously added by slirp_add_exec, slirp_add_unix or
+      slirp_add_guestfwd
+    * New SlirpConfig.outbound_addr{,6} fields to bind output
+      socket to a specific address
+    * socket: do not fallback on host loopback if get_dns_addr()
+      failed or the address is in slirp network
+    * ncsi: fix checksum OOB memory access
+    * tcp_emu(): fix OOB accesses
+    * tftp: restrict relative path access
+    * state: fix loading of guestfwd state
+
+-------------------------------------------------------------------
 Wed Dec 18 08:10:07 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to 0.4.3
