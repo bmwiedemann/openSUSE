@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,17 +27,20 @@ BuildRequires:  SDL2_ttf
 BuildRequires:  xorg-x11-server
 %endif
 Name:           python-PySDL2
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Python SDL2 bindings
 License:        SUSE-Public-Domain
 URL:            https://github.com/marcusva/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  SDL2 >= 2.0.5
+BuildRequires:  SDL2_ttf >= 2.0.14
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       SDL2
-Requires:       SDL2_ttf
+Requires:       SDL2 >= 2.0.5
+Requires:       SDL2_ttf >= 2.0.14
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,7 +51,7 @@ restrictions, nor does it rely on C code, but uses ctypes instead.
 
 %prep
 %setup -q -n PySDL2-%{version}
-sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.rst
+sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.md
 
 %build
 %python_build
@@ -72,9 +75,13 @@ pushd sdl2/test
 popd
 %endif
 
+%check
+# we do not have audio devices nor joystick in build environment
+%pytest -k "not (test_SDL_GetNumAudioDevices or test_SDL_InitJoystick)"
+
 %files %{python_files}
 %license COPYING.txt
-%doc AUTHORS.txt README.rst
+%doc AUTHORS.txt README.md
 %{python_sitelib}/*
 
 %changelog
