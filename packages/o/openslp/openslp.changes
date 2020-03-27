@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 17:07:52 CET 2020 - mls@suse.de
+
+- Add missing openslp requires to the openslp-server package
+  [bnc#1165121]
+
+-------------------------------------------------------------------
 Thu Jul 25 11:11:16 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
