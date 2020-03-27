@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyChromecast
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-casttube >= 0.2.0
 Requires:       python-protobuf >= 3.0.0
 Requires:       python-requests >= 2.0
-Requires:       python-zeroconf >= 0.17.7
+Requires:       python-zeroconf >= 0.24.4
 BuildArch:      noarch
 %python_subpackages
 

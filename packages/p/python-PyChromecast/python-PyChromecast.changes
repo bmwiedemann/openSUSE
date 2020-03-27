@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:24:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.2.0
+  * Add support for Lovelace dashboards
+  * Set up publish when we create a release.
+  * Update zeroconf requirement
+
+-------------------------------------------------------------------
 Thu Feb 13 15:38:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 4.1.1
