@@ -1,7 +1,7 @@
 #
 # spec file for package python-qgrid
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,24 +20,22 @@
 %define         skip_python2 1
 %bcond_with     test
 Name:           python-qgrid
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Grid for sorting and filtering DataFrames in Jupyter notebooks
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/quantopian/qgrid
 Source:         https://files.pythonhosted.org/packages/source/q/qgrid/qgrid-%{version}.tar.gz
+BuildRequires:  %{python_module ipywidgets >= 7.0.0}
+BuildRequires:  %{python_module pandas >= 0.18.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-ipywidgets >= 7.0.0
-BuildRequires:  python-pandas >= 0.18.0
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-qgrid = %{version}
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-notebook
 Requires:       python-pandas >= 0.18.0
-Provides:       python-jupyter_qgrid = %{version}
-Obsoletes:      python-jupyter_qgrid <= %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
@@ -53,6 +51,7 @@ This package provides the python interface.
 
 %package     -n jupyter-qgrid
 Summary:        Grid for sorting and filtering DataFrames in Jupyter notebooks
+Group:          Development/Languages/Python
 Requires:       python3-notebook >= 4.0.0
 Requires:       python3-qgrid = %{version}
 Requires(post): jupyter-notebook >= 4.0.0
