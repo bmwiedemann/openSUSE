@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:26:34 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Updated to 20.02.1 with following changes"
+ * Improve job state reason for jobs hitting partition_job_depth.
+ * Speed up testing of singleton dependencies.
+ * Fix negative loop bound in cons_tres.
+ * srun - capture the MPI plugin return code from mpi_hook_client_fini() and
+   use as final return code for step failure.
+ * Fix segfault in cli_filter/lua.
+ * Fix --gpu-bind=map_gpu reusability if tasks > elements.
+ * Make sure config_flags on a gres are sent to the slurmctld on node
+   registration.
+ * Prolog/Epilog - Fix missing GPU information.
+ * Fix segfault when using config parser for expanded lines.
+ * Fix bit overlap test function.
+ * Don't accrue time if job begin time is in the future.
+ * Remove accrue time when updating a job start/eligible time to the future.
+ * Fix regression in 20.02.0 that broke --depend=expand.
+ * Reset begin time on job release if it's not in the future.
+ * Fix for recovering burst buffers when using high-availability.
+ * Fix invalid read due to freeing an incorrectly allocated env array.
+ * Update slurmctld -i message to warn about losing data.
+ * Fix scontrol cancel_reboot so it clears the DRAIN flag and node reason for a
+   pending ASAP reboot.
+
+-------------------------------------------------------------------
 Sun Mar  8 15:43:25 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Remove legacy_cray: with 20.02 the special treatment for
