@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:08:53 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.5
+  - Fixed an error when building distributions if the `git` executable was not found ([#2105](https://github.com/python-poetry/poetry/pull/2105)).
+  - Fixed various errors when reading Poetry's TOML files by upgrading [tomlkit](https://github.com/sdispater/tomlkit).
+  - Fixed the PyPI URL used when installing packages ([#2099](https://github.com/python-poetry/poetry/pull/2099)).
+  - Fixed errors when the author's name contains special characters ([#2006](https://github.com/python-poetry/poetry/pull/2006)).
+  - Fixed VCS excluded files detection when building wheels ([#1947](https://github.com/python-poetry/poetry/pull/1947)).
+  - Fixed packages detection when building sdists ([#1626](https://github.com/python-poetry/poetry/pull/1626)).
+  - Fixed the local `.venv` virtual environment not being displayed in `env list` ([#1762](https://github.com/python-poetry/poetry/pull/1762)).
+  - Fixed incompatibilities with the most recent versions of `virtualenv` ([#2096](https://github.com/python-poetry/poetry/pull/2096)).
+  - Fixed Poetry's own vendor dependencies being retrieved when updating dependencies ([#1981](https://github.com/python-poetry/poetry/pull/1981)).
+  - Fixed encoding of credentials in URLs ([#1911](https://github.com/python-poetry/poetry/pull/1911)).
+  - Fixed url constraints not being accepted in multi-constraints dependencies ([#2035](https://github.com/python-poetry/poetry/pull/2035)).
+  - Fixed an error where credentials specified via environment variables were not retrieved ([#2061](https://github.com/python-poetry/poetry/pull/2061)).
+  - Fixed an error where git dependencies referencing tags were not locked to the corresponding commit ([#1948](https://github.com/python-poetry/poetry/pull/1948)).
+  - Fixed an error when parsing packages `setup.py` files ([#2041](https://github.com/python-poetry/poetry/pull/2041)).
+  - Fixed an error when parsing some git URLs ([#2018](https://github.com/python-poetry/poetry/pull/2018)).
+
+-------------------------------------------------------------------
+Mon Mar 23 18:13:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add macro %dephell_genspec to generate setup.py
+
+-------------------------------------------------------------------
+Sun Feb 16 20:26:58 UTC 2020 - Tomas Heger <heger.tomas@gmail.com>
+
+- Update to v1.0.3
+  * Changes in 1.0.3
+    - Fixed an error which caused the configuration environment
+      variables
+    - Fixed an error where the `--help` option was not working
+    - Fixed an error where packages from private indices were not
+      decompressed properly
+    - Fixed an error where the version of some PEP-508-formatted
+      wheel dependencies was not properly retrieved
+    - Fixed internal regexps to avoid potential catastrophic
+      backtracking errors
+    - Fixed performance issues when custom indices were defined in
+      the `pyproject.toml` file
+    - Fixed the `get_requires_for_build_wheel
+  * Changes in 1.0.2
+    - Reverted a previous fix
+  * Changes in 1.0.1
+    - Fixed an error in `env use` where the wrong Python executable
+      was being used to check compatibility
+    - Fixed an error where VCS dependencies were not properly
+      categorized as development dependencies
+    - Fixed an error where some shells would no longer be usable
+      after using the `shell` command
+    - Fixed an error where explicitly included files where not
+      included in wheel distributions
+    - Fixed an error where some Git dependencies url were not
+      properly parsed
+    - Fixed an error in the `env` commands on Windows if the path
+      to the executable contained a space
+    - Fixed several errors and UX issues caused by `keyring` on
+      some systems
+    - Fixed errors when trying to detect installed packages
+    - Fixed an error when packaging projects where Python packages
+      were not properly detected
+    - Fixed an error where local file dependencies were exported as
+      editable when using the `export` command
+    - Fixed the way environment markers are propagated and
+      evaluated when resolving dependencies
+    - Fixed an error in the PEP-508 compliant representation of
+      directory and file dependencies
+    - Fixed an error where invalid virtual environments would be
+      silently used. They will not be recreated and a warning will
+      be displayed
+    - Fixed an error where dependencies were not properly detected
+      when reading the `setup.py` file in some cases
+- refresh simplify-toml.patch
+- update to version 1.0.1 also fixes bsc#1163765
+
+-------------------------------------------------------------------
 Wed Dec 18 23:31:45 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove dephell build workaround

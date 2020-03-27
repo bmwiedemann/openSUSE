@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define dephell_loglevel DEBUG
 Name:           python-poetry
-Version:        1.0.0
+Version:        1.0.5
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -30,15 +31,17 @@ Source:         https://github.com/sdispater/poetry/archive/%{version}.tar.gz#/p
 # https://github.com/dephell/dephell/issues/330
 Patch0:         simplify-toml.patch
 BuildRequires:  %{python_module CacheControl >= 0.12.4}
-BuildRequires:  %{python_module cachy >= 0.2}
-BuildRequires:  %{python_module cleo >= 0.6.7}
+BuildRequires:  %{python_module cachy >= 0.3.0}
+BuildRequires:  %{python_module cleo >= 0.7.6}
+BuildRequires:  %{python_module clikit >= 0.4.2}
 BuildRequires:  %{python_module dephell}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module html5lib >= 1.0}
 BuildRequires:  %{python_module httpretty}
-BuildRequires:  %{python_module jsonschema >= 2.6}
+BuildRequires:  %{python_module jsonschema >= 3.1}
 BuildRequires:  %{python_module keyring > 18.0}
 BuildRequires:  %{python_module lockfile}
+BuildRequires:  %{python_module pexpect >= 4.7.0}
 BuildRequires:  %{python_module pkginfo >= 1.4}
 BuildRequires:  %{python_module pyparsing >= 2.2}
 BuildRequires:  %{python_module pyrsistent >= 0.14.2}
@@ -48,24 +51,28 @@ BuildRequires:  %{python_module requests >= 2.18}
 BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module shellingham >= 1.1}
-BuildRequires:  %{python_module tomlkit >= 0.5.1}
+BuildRequires:  %{python_module tomlkit >= 0.5.11}
 BuildRequires:  fdupes
 BuildRequires:  git-core
+BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.4
-Requires:       python-cachy >= 0.2
-Requires:       python-cleo >= 0.6
+Requires:       python-cachy >= 0.3.0
+Requires:       python-cleo >= 0.7.6
+Requires:       python-clikit >= 0.4.2
 Requires:       python-html5lib >= 1.0
-Requires:       python-jsonschema >= 2.6
+Requires:       python-jsonschema >= 3.1
 Requires:       python-keyring > 18.0
 Requires:       python-lockfile
+Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.4
 Requires:       python-pyparsing >= 2.2
 Requires:       python-pyrsistent >= 0.14.2
 Requires:       python-requests >= 2.18
 Requires:       python-requests-toolbelt >= 0.8.0
+Requires:       python-setuptools
 Requires:       python-shellingham >= 1.1
-Requires:       python-tomlkit >= 0.5.1
+Requires:       python-tomlkit >= 0.5.11
 Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
@@ -77,7 +84,7 @@ Python dependency management and packaging made easy.
 %prep
 %setup -q -n poetry-%{version}
 %patch0
-dephell deps convert --traceback --level=DEBUG --from pyproject.toml --to setup.py
+%{dephell_gensetup}
 
 %build
 %python_build
@@ -92,7 +99,7 @@ python3 -m venv testenv
 source testenv/bin/activate
 # test_default_with_excluded_data fails, see the above ticket for
 # discussion on this.
-pytest -k 'not test_default_with_excluded_data'
+%pytest -k 'not test_default_with_excluded_data'
 
 %files %{python_files}
 %doc README.md
