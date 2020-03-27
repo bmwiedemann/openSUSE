@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Source3:        https://repo1.maven.org/maven2/org/%{name}/bcpg-jdk15on/%{versio
 Source4:        https://repo1.maven.org/maven2/org/%{name}/bcmail-jdk15on/%{version}/bcmail-jdk15on-%{version}.pom
 Source5:        https://repo1.maven.org/maven2/org/%{name}/bctls-jdk15on/%{version}/bctls-jdk15on-%{version}.pom
 Patch0:         bouncycastle-javadoc.patch
+Patch1:         bouncycastle-osgi.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
@@ -110,12 +111,15 @@ API documentation for the Bouncy Castle Cryptography APIs.
 %prep
 %setup -q -n bc-java-%{gittag}
 %patch0 -p1
+%patch1 -p1
 
 # Remove provided binaries
 find . -type f -name "*.class" -exec rm -f {} \;
 find . -type f -name "*.jar" -exec rm -f {} \;
 
 %build
+echo "package.version:\ %{version}" >> bc-build.properties
+echo "bundle.version:\ %{version}.0" >> bc-build.properties
 ant -f ant/jdk15+.xml \
   -Dbc.javac.source=6 -Dbc.javac.target=6 \
   -Djunit.jar.home=$(build-classpath junit) \

@@ -224,4 +224,12 @@ view</comment>
     <comment></comment>
     <requestid>746073</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>07afd91fef0fe6bb0454f1ef9718c7dc</srcmd5>
+    <version>1.64</version>
+    <time>1585342517</time>
+    <user>dimstar_suse</user>
+    <comment>Add OSGi manifests to the distributed jars</comment>
+    <requestid>788316</requestid>
+  </revision>
 </revisionlist>
