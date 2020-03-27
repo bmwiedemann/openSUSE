@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 27 15:06:19 UTC 2020 - iforster@suse.com
+
+- Update to version 0.0+git20200325.ea3bdc9:
+  * Add `basename` dependency to dracut module [boo#1167289]
+  * coreos-teardown-initramfs-network: enable the service statically
+  * coreos-teardown-initramfs-network: simplify networking takedown
+  * coreos-teardown-initramfs-network: take down routes too
+  * coreos-teardown-initramfs-network: take down teams as well
+  * coreos-teardown-initramfs-network: remove state files on switch
+  * coreos-teardown-initramfs-network: also propagate initramfs networking if desired
+  * coreos-teardown-initramfs-network: refactor into more functions
+  * add coreos-teardown-initramfs-network.service
+  * Declare external applications as optional [boo#1167289]
+  * Remove obsolete dependencies [boo#1167289]
+  * Hook up to CoreOS CI
+  * Add ignition-diskful-subsequent.target
+  * Makefile: Remove grub/ install bits
+  * grub: drop 02_ignition_firstboot
+- As the GRUB module was dropped upstream and is now generated as part of a
+  CoreOS specific module, we will do the same:
+  * Move previous 02_ignition_firstboot to MicroOS dracut module
+  * Merge 0002-Support-different-flagfile-location.patch and
+    01_suse_set_ignition into custom 02_ignition_firstboot
+- Updated README.SUSE to describe all current SUSE modifications
+
+-------------------------------------------------------------------
 Wed Mar  4 13:42:43 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Don't use new systemd RPM macros for compatibility with older

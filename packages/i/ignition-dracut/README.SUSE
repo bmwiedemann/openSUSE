@@ -1,18 +1,31 @@
 Changes for openSUSE / SLE:
 
 * ignition-mount-initrd-fstab.service / ignition-suse-generator:
-  Ignition has very limited file system support, e.g. it doesn't support
-  btrfs subvolumes (used in any default installation) or overlayfs mounts
-  (Used by MicroOS for mounting /etc). For this reason Ignition's "mount"
-  stage cannot be used for mounting the basic file systems for the "files"
-  stage.
-  To work around this limitation in addition to Ignition's own mount / umount
-  stage all files systems tagged for being mounted in the initrd
-  ("x-initrd.mount mount flag) will be mounted / umounted.
-* ignition-setup-user-suse.sh / ignition-userconfig-timeout.conf:
+  By default Ignition will only mount partitions or subvolumes explicitly
+  mentioned in the Ignition configuration. On SUSE, however, the system
+  is split over several subvolumes, and most users won't want to define
+  all the partitions again. A lot of core functionality however (e.g.
+  configuring a SSH certificate for the root user or adding a configuration
+  file) requires access to those subvolumes.
+  For better usability in addition to Ignition's own mount / umount stage all
+  files systems tagged for being mounted in the initrd ("x-initrd.mount mount
+  flag) will automatically be mounted / umounted.
+* ignition-setup-user-suse.sh / ignition-userconfig-timeout*.conf:
   The user configuration can be stored on a device with the label "ignition"
   (e.g. by attaching a USB flash drive with that name) instead of putting the
-  file onto the root partition
-* change-ignition-firstboot-path.conf / 01_suse_set_ignition:
-  For triggering an Ignition run manually it is possible to create the file
-  "/boot/writable/ignition.firstboot" (instead of "/boot/ignition.firstboot")
+  file onto the root partition.
+* 02_ignition_firstboot:
+  This file has been part of upstream ignition-dracut, but has since then been
+  moved to a static CoreOS specific configuration
+  (https://github.com/coreos/coreos-assembler/pull/616); it is now used in a
+  modified version adapted to SUSE's needs.
+  This script will automatically set the kernel parameters to trigger an
+  Ignition run if a flag file is set (e.g. on first boot). To trigger an
+  Ignition run manually just create the file
+  "/boot/writable/ignition.firstboot".
+* 0003-Disable-resetting-UUID.patch / change-ignition-firstboot-path.conf:
+  Remove / overwrite CoreOS specific script / path.
+* prevent-boot-cycle.conf:
+  If the "files" stage fails the system will be stuck in an infinite
+  bootcyle (https://github.com/coreos/ignition-dracut/issues/115); this is
+  a workaround to get the system into a defined state.
