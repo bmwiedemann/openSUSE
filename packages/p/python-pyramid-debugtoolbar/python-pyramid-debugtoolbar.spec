@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-debugtoolbar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# nothing provides python2-pyramid needed by python2-pyramid-mako
+%define skip_python2 1
 Name:           python-pyramid-debugtoolbar
-Version:        4.5
+Version:        4.6.1
 Release:        0
 Summary:        An interactive HTML debugger for Pyramid application development
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
@@ -29,11 +31,11 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hupper}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
 BuildRequires:  %{python_module pyramid >= 1.2}
 BuildRequires:  %{python_module pyramid-mako >= 0.3.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -57,7 +59,6 @@ Werkzeug debugger code by Armin Ronacher and team.
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
-Requires:       %{name} = %{version}
 
 %description -n %{name}-doc
 Documentation and examples for %{name}.
@@ -76,7 +77,7 @@ rm -r demo/.gitignore demo/debugtoolbar_demo.egg-info
 %python_expand find %{buildroot}%{$python_sitelib} -type f -exec chmod 0644 {} \;
 
 %check
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

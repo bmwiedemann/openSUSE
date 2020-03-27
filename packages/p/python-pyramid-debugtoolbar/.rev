@@ -15,4 +15,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>744578</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93946b0049371ca4efda31c023e3bcf7</srcmd5>
+    <version>4.6.1</version>
+    <time>1585342612</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 4.6.1
+  - Fix parser errors when injecting the toolbar into XHTML formatted pages.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/360
+  - Show the full URL in the tooltip on the requests panel.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/358
+  - Stop accessing ``request.unauthenticated_userid`` in preparation for
+    Pyramid 2.0 where it is deprecated.
+  - Catch a ``ValueError`` when JSON-serializing SQLA objects for display.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/357</comment>
+    <requestid>789085</requestid>
+  </revision>
 </revisionlist>
