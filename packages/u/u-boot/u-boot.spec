@@ -318,6 +318,7 @@ Obsoletes:      u-boot-rpi3 < %{version}
 Provides:       u-boot-rpi3 = %{version}
 Obsoletes:      u-boot-rpi4 < %{version}
 Provides:       u-boot-rpi4 = %{version}
+Supplements:    modalias(of:NfirmwareT*Craspberrypi?bcm2835-firmwareC*)
 %endif
 
 %description
