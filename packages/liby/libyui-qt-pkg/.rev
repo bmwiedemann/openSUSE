@@ -425,4 +425,12 @@
     <comment>submit new version 2.47.3</comment>
     <requestid>774812</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a5d0c192e89bb2a799c8cc17075fe579</srcmd5>
+    <version>2.47.5</version>
+    <time>1585342583</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.47.5</comment>
+    <requestid>788498</requestid>
+  </revision>
 </revisionlist>
