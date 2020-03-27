@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 26 19:35:13 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.3.7:
+  * Use gnudb.org as a default CDDB server.
+  * Fix several crashes in the file operations plugin.
+  * Fix MPRIS support.
+  * Fix text scroller issues in the skinned plugin.
+  * Fix a CMake warning.
+  * Update translations.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
 Wed Jan 15 20:04:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.3.6

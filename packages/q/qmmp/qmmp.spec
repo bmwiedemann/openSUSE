@@ -21,14 +21,12 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
-ExclusiveArch:  %ix86 x86_64
-URL:            http://qmmp.ylsoftware.com/
-Source:         http://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
+URL:            https://qmmp.ylsoftware.com/
+Source:         https://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM qmmp-fix_cdda_version.patch pascal.bleser@opensuse.org -- Fix header detection for cdparanoia cdda.h.
 Patch0:         %{name}-fix_cdda_version.patch
@@ -80,9 +78,7 @@ BuildRequires:  pkgconfig(wavpack)
 Requires:       %{name}(%{sover})(Input)
 Requires:       %{name}(%{sover})(Output)
 Requires:       %{name}(%{sover})(Ui)
-%if 0%{?suse_version} < 1500
-BuildRequires:  update-desktop-files
-%endif
+ExclusiveArch:  %ix86 x86_64
 %if %{with faad}
 BuildRequires:  libfaad-devel
 %endif
@@ -92,7 +88,6 @@ This program is an audio-player, written with help of Qt library.
 
 %package -n lib%{name}%{sover}
 Summary:        Qmmp library
-Group:          System/Libraries
 Recommends:     lib%{name}-plugins
 
 %description -n lib%{name}%{sover}
@@ -103,7 +98,6 @@ This package provides the Qmmp library.
 %package -n lib%{name}-plugins
 Summary:        Plugins for libqmmp
 # Suggests instead of Recommends since MPlayer is too big of a dependency.
-Group:          System/Libraries
 Suggests:       lib%{name}-plugin-mplayer
 Provides:       %{name}(%{sover})(Input)
 Provides:       %{name}(%{sover})(Output)
@@ -121,7 +115,6 @@ This package provides plugins for libqmmp.
 %if %{with restricted}
 %package -n lib%{name}-plugin-mplayer
 Summary:        MPlayer plugin for libqmmp
-Group:          System/Libraries
 Requires:       MPlayer
 
 %description -n lib%{name}-plugin-mplayer
@@ -132,7 +125,6 @@ This package provides MPlayer plugin for libqmmp.
 
 %package -n lib%{name}-devel
 Summary:        Development files for libqmmp
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description -n lib%{name}-devel
@@ -158,7 +150,7 @@ Development files for libqmmp.
   -DUSE_HAL=OFF                  \
   -DUSE_OSS=OFF                  \
   -DUSE_OSS4=OFF
-make %{?_smp_mflags} V=1
+%cmake_build
 
 %install
 %cmake_install
@@ -169,22 +161,6 @@ rm -rf %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
-%post -n lib%{name}-plugins
-%desktop_database_post
-
-%postun -n lib%{name}-plugins
-%desktop_database_postun
-%endif
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README
@@ -192,9 +168,6 @@ rm -rf %{buildroot}/%{_datadir}/icons/hicolor/56x56
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
-%if 0%{?suse_version} < 1500
-%dir %{_datadir}/metainfo
-%endif
 %{_datadir}/metainfo/%{name}.appdata.xml
 
 %files -n lib%{name}%{sover}
