@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 20:39:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend "%{rubygem sqlite3:1.4}": one more missing dependency
+  for boo#1153514.
+
+-------------------------------------------------------------------
 Wed Mar 25 18:23:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend more modules that rails would want to download for app

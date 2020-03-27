@@ -90,4 +90,5 @@
     Recommends: %{rubygem listen < 3.2}
     Recommends: %{rubygem spring}
     Recommends: %{rubygem spring-watcher-listen >= 2.0.0}
+    Recommends: %{rubygem sqlite3:1.4}
 :version_suffix: '-6.0'
