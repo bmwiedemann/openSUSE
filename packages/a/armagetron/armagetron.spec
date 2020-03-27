@@ -1,7 +1,7 @@
 #
 # spec file for package armagetron
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           armagetron
-Version:        0.2.8.3.4
+Version:        0.2.8.3.5
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Source:         https://sourceforge.net/projects/armagetronad/files/stable/%{ver
 Source1:        armagetron_add.tar.bz2
 # PATCH-FIX-OPENSUSE bmwiedemann -- fix build-compare
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM https://bugs.launchpad.net/armagetronad/+bug/1596771 -- fix nullpointer dereferenceing which leads into segfault
-Patch1:         fix-segv.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -53,7 +51,6 @@ same. Unlike glTron, this program does not require 3D hardware support.
 %prep
 %setup -q -a 1 -n armagetronad-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 autoreconf -fi
