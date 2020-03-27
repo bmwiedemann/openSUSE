@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes-pause
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           kubernetes-pause
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        A binary reaping children
 License:        Apache-2.0
 Group:          System/GUI/KDE
-Url:            https://github.com/kubernetes/kubernetes/tree/master/build/pause
-Source1:        https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.15/build/pause/pause.c
-Source2:        https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.15/LICENSE
+URL:            https://github.com/kubernetes/kubernetes/tree/master/build/pause
+Source1:        https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.18/build/pause/pause.c
+Source2:        https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.18/LICENSE
 Provides:       kubic-pause = %version-%release
 Obsoletes:      kubic-pause < %version-%release
 BuildRequires:  gcc
