@@ -17,7 +17,7 @@
 
 
 Name:           fluent-bit
-Version:        1.3.11
+Version:        1.4.1
 Release:        0
 Summary:        Fast Log Processor and Forwarder
 License:        Apache-2.0
@@ -74,7 +74,7 @@ install -m 644 conf/parsers_*.conf %{buildroot}%{_prefix}%{_sysconfdir}/fluent-b
 %{_prefix}%{_sysconfdir}/fluent-bit/fluent-bit.conf
 %{_prefix}%{_sysconfdir}/fluent-bit/parsers.conf
 %{_prefix}%{_sysconfdir}/fluent-bit/plugins.conf
-%{_prefix}%{_sysconfdir}/fluent-bit/parsers_ambassdor.conf
+%{_prefix}%{_sysconfdir}/fluent-bit/parsers_ambassador.conf
 %{_prefix}%{_sysconfdir}/fluent-bit/parsers_cinder.conf
 %{_prefix}%{_sysconfdir}/fluent-bit/parsers_extra.conf
 %{_prefix}%{_sysconfdir}/fluent-bit/parsers_java.conf

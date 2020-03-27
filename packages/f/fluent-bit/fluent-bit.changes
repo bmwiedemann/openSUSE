@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:13:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.1
+  - Allow dumping the internal state
+  - Plugins Logging API
+  - Support for Signv4
+  - Storage Layer and Buffering
+  - New KeepAlive Support for Network I/O
+  - Config Maps as Configuration Helper
+  - Several new filter
+
+-------------------------------------------------------------------
 Sat Mar 21 15:45:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.3.11
