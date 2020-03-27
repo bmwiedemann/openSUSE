@@ -60,4 +60,22 @@
     <comment>We need py2 variant of this still</comment>
     <requestid>788073</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01415c7685ed02ff0597b72aa94abfbf</srcmd5>
+    <version>20.3.1</version>
+    <time>1585342958</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pytest4.patch as it is included upstream
+- Switch off python2 builds.
+
+- version update to 20.3.1
+  - MISC: Remove python2 support
+  - NEW: support import-time framework selection
+
+- update to 20.1.1
+- drop pytest4.patch
+ * new: moved time_ns and perf_counter_ns helper functions here
+ * drop support for python 3.4 and older</comment>
+    <requestid>789103</requestid>
+  </revision>
 </revisionlist>
