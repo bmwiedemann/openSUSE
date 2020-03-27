@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:27:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.16.14
+  * Added JavaScript support to PDF form fields
+  * Added a new form field method, which resets the field value to its default.
+  * Added :meth:`Page.setMediaBox` for changing the physical PDF page size.
+  * Added method which returns a list of Form XObjects of the page.
+  * Added advanced graphics features to control the anti-aliasing values
+  * Added :meth:`Document.scrub` which removes potentially sensitive data from a PDF.
+  * Changed text marker annotations to accept parameters beyond just 
+    quadrilaterals such that now text lines between two given points can be marked.
+  * Added :meth:`Annot.setBlendMode` to set the annotation's blend mode.
+
+-------------------------------------------------------------------
 Tue Feb 25 12:22:02 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version update to 1.16.11
