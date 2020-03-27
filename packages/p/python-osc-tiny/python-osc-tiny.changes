@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:45:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.2.2
+ * Added the `issues` extension
+ * Give (read only) access to issues and issue trackers known to BuildService
+ * Set version to 0.2.2
+ * Dirty hacks for Python2 compatibility
+
+-------------------------------------------------------------------
 Thu Jan  9 12:46:29 UTC 2020 - Chen Huang <chhuang@suse.com>
 
 - Updated to version 0.2.1

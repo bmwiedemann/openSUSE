@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-osc-tiny
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://github.com/crazyscientist/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
@@ -41,11 +42,11 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
+Requires:       python-responses
 Requires:       python-six
 BuildArch:      noarch
 %ifpython2
 Requires:       python-mock
-Requires:       python-unittest2
 %endif
 %python_subpackages
 
@@ -66,7 +67,7 @@ For further details see:
 %python_build
 
 %check
-%python_exec -m unittest discover -v
+%pytest
 
 %install
 %python_install
