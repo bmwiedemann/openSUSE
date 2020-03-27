@@ -1,7 +1,7 @@
 #
 # spec file for package javassist
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ Group:          Development/Libraries/Java
 URL:            https://www.javassist.org/
 Source0:        https://github.com/jboss-javassist/javassist/archive/%{tar_version}.tar.gz
 Patch0:         javassist-java8-compat.patch
+Patch1:         javassist-osgi.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -78,6 +79,7 @@ Tutorial for javassist.
 %if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
 %patch0 -p1
 %endif
+%patch1 -p1
 for j in $(find . -name "*.jar"); do
         mv $j $j.no
 done
