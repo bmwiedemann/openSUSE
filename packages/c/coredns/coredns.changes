@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:51:22 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update to version 1.6.7:
+  * Required by Kubernetes 1.18
+  * make -f Makefile.doc (#3633)
+  * Update date on notes (#3632)
+  * Remove all shell presubmits (#3631)
+  * presubmit tests (#3630)
+  * presubmit: add whitespace test in go (#3629)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.17.1 to 0.17.2 (#3621)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.28.5 to 1.28.9 (#3625)
+  * build(deps): bump github.com/prometheus/common from 0.7.0 to 0.9.1 (#3622)
+
+-------------------------------------------------------------------
 Mon Dec 16 10:46:00 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Update to version 1.6.5:

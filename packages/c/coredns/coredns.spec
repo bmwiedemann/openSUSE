@@ -1,7 +1,7 @@
 #
 # spec file for package coredns
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.6.5
+Version:        1.6.7
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://coredns.io
 Provides:       dns_daemon
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
