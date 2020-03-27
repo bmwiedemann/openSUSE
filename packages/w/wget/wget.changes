@@ -9,7 +9,8 @@ Fri Apr  5 14:57:54 UTC 2019 - josef.moellers@suse.com
 
 - Upgrade to GNU wget 1.20.3:
   * Finally fixed the buffer overflow vulnerability
-  [CVE-2019-5953]
+  * obsoletes patch wget-buffer-overflow-CVE-2019-5953.patch
+  [bsc#1131493, CVE-2019-5953]
 
 -------------------------------------------------------------------
 Wed Apr 03 05:07:33 UTC 2019 - seanlew@opensuse.org
