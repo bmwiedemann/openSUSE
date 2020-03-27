@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:05:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable RPATH to fix the leap build.
+
+-------------------------------------------------------------------
 Wed Mar 11 09:00:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require freeglut-devel instead of pkgconfig(freeglut).

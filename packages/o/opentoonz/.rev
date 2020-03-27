@@ -48,4 +48,12 @@
   The pkgconfig name changed in Tumbleweed.</comment>
     <requestid>783712</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>82a25d925c4ee487bc3abc823f7674eb</srcmd5>
+    <version>1.4.0</version>
+    <time>1585342905</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable RPATH to fix the leap build.</comment>
+    <requestid>789066</requestid>
+  </revision>
 </revisionlist>

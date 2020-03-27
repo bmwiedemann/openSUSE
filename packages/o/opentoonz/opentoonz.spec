@@ -89,9 +89,10 @@ cd toonz
 %cmake \
   -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--no-as-needed" \
-  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-as-needed"
+  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-as-needed" \
+  -DCMAKE_SKIP_RPATH=TRUE
 
-%make_jobs
+%cmake_build
 
 %install
 cd toonz
