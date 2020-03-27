@@ -339,9 +339,11 @@ Requires:       %{package_name} = %{version}
 Provides:       %{package_name_provide}-devel
 %endif
 Conflicts:      %{package_name_conflict}-devel
+%if !%{is_lite}
 Requires:       libtensorflow%{libmaj}%{?hpc_package_name_tail} = %{version}
 Requires:       libtensorflow_cc%{libmaj}%{?hpc_package_name_tail} = %{version}
 Requires:       libtensorflow_framework%{libmaj}%{?hpc_package_name_tail} = %{version}
+%endif
 
 %description  -n %{package_name}-devel
 This open source software library for numerical computation is used for data
