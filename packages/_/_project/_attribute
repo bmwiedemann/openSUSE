@@ -317,6 +317,8 @@ products:
     - x86_64
   - kubic-flannel-image:
     - x86_64
+  - kubic-fluent-bit-image:
+    - x86_64
   - kubic-hello-kubic-image:
     - x86_64
   - kubic-kube-apiserver-image:
@@ -452,8 +454,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20200325'
-publishing: '20200325'
+published: '20200326'
+publishing: '20200326'
 testing: '20200326'
 </value>
   </attribute>
