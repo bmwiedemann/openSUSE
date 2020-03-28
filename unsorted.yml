@@ -4646,6 +4646,7 @@ unsorted:
   - gnome-pomodoro-lang 
   - gnome-recipes 
   - gnome-recipes-lang 
+  - gnome-remote-desktop 
   - gnome-robots 
   - gnome-robots-lang 
   - gnome-search-tool 
@@ -6927,7 +6928,6 @@ unsorted:
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-dashboard: [x86_64] 
   - kubernetes-dns 
-  - kubernetes-extra: [x86_64] 
   - kubernetes-master: [x86_64] 
   - kubernetes-node: [x86_64] 
   - kubernetes-node-image-pause 
@@ -7866,8 +7866,10 @@ unsorted:
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
+  - libacars-2-2 
   - libacars-devel 
   - libacars1 
+  - libacars2-devel 
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
@@ -7943,7 +7945,7 @@ unsorted:
   - libalut0 
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
-  - libangelscript2_33_0 
+  - libangelscript2_34_0 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -9128,8 +9130,6 @@ unsorted:
   - libfstrcmp0 
   - libfstrm0: [i586] 
   - libftdi-devel 
-  - libftdi0-binding-python 
-  - libftdi0-devel 
   - libftdi1 
   - libftdi1-2 
   - libftdi1-devel 
@@ -10102,7 +10102,7 @@ unsorted:
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
-  - liblmdb-0_9_23-32bit: [x86_64] 
+  - liblmdb-0_9_24-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
   - liblnk-devel 
@@ -12053,17 +12053,14 @@ unsorted:
   - libtensorflow1: [x86_64] 
   - libtensorflow2: [x86_64] 
   - libtensorflow2-gnu-hpc: [x86_64] 
-  - libtensorflow2-gnu-mvapich2-hpc: [x86_64] 
   - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - libtensorflow_cc1: [x86_64] 
   - libtensorflow_cc2: [x86_64] 
   - libtensorflow_cc2-gnu-hpc: [x86_64] 
-  - libtensorflow_cc2-gnu-mvapich2-hpc: [x86_64] 
   - libtensorflow_cc2-gnu-openmpi2-hpc: [x86_64] 
   - libtensorflow_framework1: [x86_64] 
   - libtensorflow_framework2: [x86_64] 
   - libtensorflow_framework2-gnu-hpc: [x86_64] 
-  - libtensorflow_framework2-gnu-mvapich2-hpc: [x86_64] 
   - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
   - libtepl-4-0 
   - libteredo5 
@@ -18798,7 +18795,6 @@ unsorted:
   - python2-case 
   - python2-cassandra-driver 
   - python2-cassowary 
-  - python2-castellan 
   - python2-casttube 
   - python2-catkin-pkg 
   - python2-cbor 
@@ -19133,7 +19129,6 @@ unsorted:
   - python2-fusepy 
   - python2-future 
   - python2-futures 
-  - python2-futurist 
   - python2-fuzzywuzzy 
   - python2-fysom 
   - python2-gTTS 
@@ -19277,7 +19272,6 @@ unsorted:
   - python2-ipython-iptest 
   - python2-ipython_genutils 
   - python2-ipywidgets 
-  - python2-ironic-inspector-client 
   - python2-iso8601 
   - python2-isodate 
   - python2-isort 
@@ -19832,7 +19826,6 @@ unsorted:
   - python2-pyquery 
   - python2-pyrad 
   - python2-pyramid-chameleon 
-  - python2-pyramid-debugtoolbar 
   - python2-pyramid-mako 
   - python2-pyreadstat 
   - python2-pyroma 
@@ -20321,7 +20314,6 @@ unsorted:
   - python2-twython 
   - python2-txWS 
   - python2-txZMQ 
-  - python2-txaio 
   - python2-txt2tags 
   - python2-txtorcon 
   - python2-typepy 
@@ -25505,16 +25497,12 @@ unsorted:
   - tensorflow2-devel: [x86_64] 
   - tensorflow2-doc: [x86_64] 
   - tensorflow2-gnu-hpc: [x86_64] 
-  - tensorflow2-gnu-mvapich2-hpc: [x86_64] 
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
   - tensorflow2_2_1_0-gnu-hpc: [x86_64] 
   - tensorflow2_2_1_0-gnu-hpc-devel: [x86_64] 
   - tensorflow2_2_1_0-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_1_0-gnu-mvapich2-hpc: [x86_64] 
-  - tensorflow2_2_1_0-gnu-mvapich2-hpc-devel: [x86_64] 
-  - tensorflow2_2_1_0-gnu-mvapich2-hpc-doc: [x86_64] 
   - tensorflow2_2_1_0-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2_2_1_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - tensorflow2_2_1_0-gnu-openmpi2-hpc-doc: [x86_64] 
