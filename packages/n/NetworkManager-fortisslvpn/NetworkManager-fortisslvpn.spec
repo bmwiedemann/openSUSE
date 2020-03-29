@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM NetworkManager-fortisslvpn-fix-incompat-openfortivpn.patch -- Fix incompatibility with openfortivpn >= 1.11.0
+Patch0:         NetworkManager-fortisslvpn-fix-incompat-openfortivpn.patch
 
 BuildRequires:  intltool >= 0.35
 BuildRequires:  ppp-devel
@@ -35,7 +37,7 @@ BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
-Requires:       openfortivpn
+Requires:       openfortivpn >= 1.11.0
 
 %description
 This package contains software for integrating Fortinet compatible

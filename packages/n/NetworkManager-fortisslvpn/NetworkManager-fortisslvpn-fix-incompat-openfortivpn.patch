@@ -1,0 +1,42 @@
+From 05907e1f3e244ed4dfd2ae503941e4e78e40c732 Mon Sep 17 00:00:00 2001
+From: Dimitri Papadopoulos
+ <3234522+DimitriPapadopoulos@users.noreply.github.com>
+Date: Sat, 21 Mar 2020 19:03:28 +0100
+Subject: [PATCH] Fix incompatibility with openfortivpn >= 1.11.0
+
+Before openfortipvn 1.11.0 the default configuration was equivalent to:
+	--set-dns=1 --pppd-use-peerdns=1
+Starting with openfortivpn 1.11.0 the default configuration is equivalent to:
+        --set-dns=1 --pppd-use-peerdns=0
+
+NetworkManager-fortisslvpn expects the configuration to be equivalent to:
+	--set-dns=0 --pppd-use-peerdns=1
+This expectation breaks with openfortivpn 1.11.0 because NetworkManager-fortisslvpn only passes this command line option:
+	--no-dns / --set-dns=0
+Starting with openfortivpn 1.11.0 it needs to be:
+	--no-dns / --set-dns=0 --pppd-use-peerdns=1
+
+This patch adds --pppd-use-peerdns=1 as is already the case in Fedora packages:
+https://src.fedoraproject.org/rpms/NetworkManager-fortisslvpn/c/6378487
+
+This is also explained here:
+adrienverge/openfortivpn#503
+---
+ src/nm-fortisslvpn-service.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/nm-fortisslvpn-service.c b/src/nm-fortisslvpn-service.c
+index c2105af..f73796d 100644
+--- a/src/nm-fortisslvpn-service.c
++++ b/src/nm-fortisslvpn-service.c
+@@ -229,6 +229,7 @@ run_openfortivpn (NMFortisslvpnPlugin *plugin, NMSettingVpn *s_vpn, GError **err
+ 
+ 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-routes"));
+ 	g_ptr_array_add (argv, (gpointer) g_strdup ("--no-dns"));
++	g_ptr_array_add (argv, (gpointer) g_strdup ("--pppd-use-peerdns=1"));
+ 
+ 	value = nm_setting_vpn_get_data_item (s_vpn, NM_FORTISSLVPN_KEY_GATEWAY);
+ 	g_ptr_array_add (argv, (gpointer) g_strdup (value));
+-- 
+2.24.1
+
