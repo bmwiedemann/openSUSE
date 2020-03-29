@@ -1311,4 +1311,20 @@
   * Fix a crash in About dialog (glgo#World/lollypop#2238).</comment>
     <requestid>786993</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>d04cebbd1362ce4bec35a0cfb5bf5621</srcmd5>
+    <version>1.2.32</version>
+    <time>1585484765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.32:
+  * Fix a crash in TunIn (glgo#World/lollypop#2269).
+  * Fix a crash in settings (glgo#World/lollypop#2276).
+  * Fix some UI nonsense.
+- Changes from version 1.2.31:
+  * Fix an issue with filtering.
+  * Fix an issue with random tracks (glgo#World/lollypop#2259).
+- Changes from version 1.2.30:
+  * Miscellaneous improvements and bug fixes.</comment>
+    <requestid>789160</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 27 23:01:43 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.32:
+  * Fix a crash in TunIn (glgo#World/lollypop#2269).
+  * Fix a crash in settings (glgo#World/lollypop#2276).
+  * Fix some UI nonsense.
+- Changes from version 1.2.31:
+  * Fix an issue with filtering.
+  * Fix an issue with random tracks (glgo#World/lollypop#2259).
+- Changes from version 1.2.30:
+  * Miscellaneous improvements and bug fixes.
+
+-------------------------------------------------------------------
 Fri Mar 20 20:41:41 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.29:
