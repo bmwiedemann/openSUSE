@@ -23,15 +23,15 @@
 %endif
 %define skip_python2 1
 Name:           spyder3
-Version:        4.0.1
+Version:        4.1.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder3-rpmlintrc
-Patch0:         0001-fix-hanging-test-when-not-in-git-repository.patch
-Patch1:         0001-only-test-for-git-when-in-git.patch
+Patch0:         spyder3-pr11704-fixpytestargs.patch
+Patch1:         spyder3-pr11899-fixdeprecation.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.0
@@ -136,6 +136,7 @@ BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-scipy
 BuildRequires:  python3-spyder-kernels >= 1.8.1
 BuildRequires:  python3-sympy
+BuildRequires:  python3-xarray
 BuildRequires:  xdpyinfo
 %endif
 
@@ -223,22 +224,23 @@ Documentation and help files for Spyder and its plugins.
 
 %prep
 %setup -q -n spyder-%{version}
+%patch0 -p1
+%patch1 -p1
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
 sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
 # Fix non-executable-script RPMLint warning
 sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
-%patch0 -p1
-%patch1 -p1
+sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh 
 # remove specific jedi dependency, as it triggers an annoying warning on startup
 sed -i "s|JEDI_REQVER = '=0.14.1'|JEDI_REQVER = None|" spyder/dependencies.py
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
+%python_install
 
 # remove windows stuff
 rm %{buildroot}%{_bindir}/spyder_win_post_install.py
@@ -247,7 +249,7 @@ rm %{buildroot}%{_bindir}/spyder_win_post_install.py
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 pushd %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-ln -s %{python3_sitelib}/spyder/images/spyder.svg %{name}.svg
+ln -s %{python_sitelib}/spyder/images/spyder.svg %{name}.svg
 popd
 pushd %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 ln -s %{_datadir}/icons/%{name}.png %{name}.png
@@ -255,21 +257,12 @@ popd
 
 # get the language files
 %find_lang spyder %{name}.lang
+# remove source language files
+find %{buildroot}%{python_sitelib}/spyder/locale -name '*.po' -delete
+find %{buildroot}%{python_sitelib}/spyder/locale -name '*.pot' -delete
 
 %suse_update_desktop_file -r %{name} Development Science IDE NumericalAnalysis
-%fdupes %{buildroot}%{python3_sitelib}
-
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-python3    -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/plugins/tests/
-python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/plugins/tests/
-python3    -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/utils/*/tests/
-python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/utils/*/tests/
-python3    -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/widgets/*/tests/
-python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/widgets/*/tests/
-python3    -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/widgets/tests/
-python3 -O -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/spyder/widgets/tests/
-
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python_sitelib}
 
 %if %{with test}
 %check
@@ -280,7 +273,7 @@ skiptests="test_github_backend or test_update"
 # times out on armv7l, and is skipped on upstream CI
 # with reason "It makes other tests to segfault in our CIs"
 skiptests="$skiptests or test_introspection"
-# segfaults on obs (?)
+# segfaults in xvfb
 skiptests="$skiptests or test_arrayeditor_edit_complex_array"
 # this test runs into timeouts and is skipped on some of the
 # upstream CIs for the same reason
@@ -288,9 +281,9 @@ skiptests="$skiptests or test_mpl_backend_change"
 # tests not suitable for CIs or OBS as evident from the last assert which fails here
 skiptests="$skiptests or test_connection_dialog_remembers_input_with_ssh_passphrase"
 skiptests="$skiptests or test_connection_dialog_remembers_input_with_password"
-# test relies on IPythonConsole behaving well on OBS (which does not..)
-skiptests="$skiptests or test_dbg_input"
-# same for the whole ipythonconsole plugin
+# tests fail on CIs
+skiptests="$skiptests or test_comment or test_tab_copies_find_to_replace"
+# tests rely on IPythonConsole behaving well on OBS (which does not..)
 ipythonplugin="spyder/plugins/ipythonconsole"
 ignoretestfiles="--ignore=$ipythonplugin/tests/test_ipythonconsole.py
                  --ignore=$ipythonplugin/comms/tests/test_comms.py"
@@ -302,14 +295,14 @@ ignoretestfiles="--ignore=$ipythonplugin/tests/test_ipythonconsole.py
 %license LICENSE.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{python3_sitelib}/spyder/
-%{python3_sitelib}/spyder-%{version}-py*.egg-info
-%exclude %{python3_sitelib}/spyder/locale/
-%exclude %{python3_sitelib}/spyder/plugins/breakpoints/
-%exclude %{python3_sitelib}/spyder/plugins/io_dcm/
-%exclude %{python3_sitelib}/spyder/plugins/io_hdf5/
-%exclude %{python3_sitelib}/spyder/plugins/profiler/
-%exclude %{python3_sitelib}/spyder/plugins/pylint/
+%{python_sitelib}/spyder/
+%{python_sitelib}/spyder-%{version}-py*.egg-info
+%exclude %{python_sitelib}/spyder/locale/
+%exclude %{python_sitelib}/spyder/plugins/breakpoints/
+%exclude %{python_sitelib}/spyder/plugins/io_dcm/
+%exclude %{python_sitelib}/spyder/plugins/io_hdf5/
+%exclude %{python_sitelib}/spyder/plugins/profiler/
+%exclude %{python_sitelib}/spyder/plugins/pylint/
 %dir %{_datadir}/icons/hicolor/128x128
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/128x128/apps
@@ -322,26 +315,28 @@ ignoretestfiles="--ignore=$ipythonplugin/tests/test_ipythonconsole.py
 
 %files breakpoints
 %license LICENSE.txt
-%{python3_sitelib}/spyder/plugins/breakpoints/
+%{python_sitelib}/spyder/plugins/breakpoints/
 
 %files dicom
 %license LICENSE.txt
-%{python3_sitelib}/spyder/plugins/io_dcm/
+%{python_sitelib}/spyder/plugins/io_dcm/
 
 %files hdf5
 %license LICENSE.txt
-%{python3_sitelib}/spyder/plugins/io_hdf5/
+%{python_sitelib}/spyder/plugins/io_hdf5/
 
 %files profiler
 %license LICENSE.txt
-%{python3_sitelib}/spyder/plugins/profiler/
+%{python_sitelib}/spyder/plugins/profiler/
 
 %files pylint
 %license LICENSE.txt
-%{python3_sitelib}/spyder/plugins/pylint/
+%{python_sitelib}/spyder/plugins/pylint/
 
 %files lang -f %{name}.lang
 %license LICENSE.txt
-%{python3_sitelib}/spyder/locale/
+%dir %{python_sitelib}/spyder/locale/
+%dir %{python_sitelib}/spyder/locale/*
+%dir %{python_sitelib}/spyder/locale/*/LC_MESSAGES
 
 %changelog

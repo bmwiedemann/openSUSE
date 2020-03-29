@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Mar 20 23:49:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 4.1.1
+  * Add file path completions to the Editor. This works by writing the
+    beginning of a file path, either absolute or relative, inside a
+    string and pressing `Tab` or `Ctrl+Space` to get completions for
+    it.
+  * Add a new command line option called `--report-segfault` to be
+   able to send segmentation fault reports to Github.
+  * Fix a critical error when starting kernels on Windows.
+- changelog from version 4.1.0
+  * Several improvements to the interface and user experience of the Plots pane.
+  * Show hidden files in Files and Project panes.
+  * Allow automatic introduction of docstrings in the Sphinx format.
+  * Implicitly create a project when Spyder is launched with a folder path as
+    argument in the command line
+  * Re-add the ability to run IPython magics inside of cells.
+  * Allow running PyQt applications multiple times.
+  * Make adjustable the maximum number of recent projects in the Projects
+  * Disable code folding and indent guides when files have more than 2000 lines
+    for performance reasons.
+  * Critical performance improvements to the Editor and Files.
+  * Several fixes to the autosave mechanism.
+  * Preserve creation time when saving files.
+  * Don't corrupt symlinks when saving files associated to them.
+  * Improve the code completion experience in the Editor.
+  * Start kernels in a thread to avoid freezing the entire interface.
+  * Correctly update the debugging panel in the Editor when debugging in
+    multiple consoles.
+  * Make the Code Analysis pane to read the nearest pylintrc file, according to
+    the hierarchy defined by Pylint.
+- See full list of issues and pull requests in the CHANGELOG.md on 
+  github#spyder-ide/spyder
+- remove patches merged upstream
+  0001-fix-hanging-test-when-not-in-git-repository.patch
+  0001-only-test-for-git-when-in-git.patch  
+- spyder3-pr11704-fixpytestargs.patch to call pytest directly
+  (upstream PR#11704, issue#11870)
+- spyder3-pr11899-fixdeprecation.patch to pass test_arrayeditor_with_inf_array
+  (upstream PR#11889, issue#11885)
+- remove the compileall calls for tests because they are not installed anymore
+- singlespec macros
+- remove source language files from lang package
+  
+-------------------------------------------------------------------
 Wed Mar 18 10:36:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - disable ipythonconsole plugin tests completely. OBS really does

@@ -1,0 +1,285 @@
+From 945f9a5b690ec9506d19284dcfadae64549b2473 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 20:30:02 +0100
+Subject: [PATCH 1/7] fix deprecation warning: plugins/editor
+
+---
+ spyder/plugins/editor/panels/scrollflag.py           |  4 ++--
+ .../plugins/editor/panels/tests/test_scrollflag.py   | 12 ++++++------
+ spyder/plugins/editor/widgets/recover.py             |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/spyder/plugins/editor/panels/scrollflag.py b/spyder/plugins/editor/panels/scrollflag.py
+index 6143f42404..6e064434fa 100644
+--- a/spyder/plugins/editor/panels/scrollflag.py
++++ b/spyder/plugins/editor/panels/scrollflag.py
+@@ -313,7 +313,7 @@ def mousePressEvent(self, event):
+         if self.slider and event.button() == Qt.LeftButton:
+             vsb = self.editor.verticalScrollBar()
+             value = self.position_to_value(event.pos().y())
+-            vsb.setValue(value-vsb.pageStep()/2)
++            vsb.setValue(int(value-vsb.pageStep()/2))
+ 
+     def keyReleaseEvent(self, event):
+         """Override Qt method."""
+@@ -376,7 +376,7 @@ def get_scale_factor(self):
+     def value_to_position(self, y, scale_factor, offset):
+         """Convert value to position in pixels"""
+         vsb = self.editor.verticalScrollBar()
+-        return (y - vsb.minimum()) * scale_factor + offset
++        return int((y - vsb.minimum()) * scale_factor + offset)
+ 
+     def position_to_value(self, y):
+         """Convert position in pixels to value"""
+diff --git a/spyder/plugins/editor/panels/tests/test_scrollflag.py b/spyder/plugins/editor/panels/tests/test_scrollflag.py
+index 38515b6e94..cc6a2e5319 100644
+--- a/spyder/plugins/editor/panels/tests/test_scrollflag.py
++++ b/spyder/plugins/editor/panels/tests/test_scrollflag.py
+@@ -167,8 +167,8 @@ def test_range_indicator_visible_on_hover_only(editor_bot, qtbot):
+     # that the slider range indicator remains hidden. The slider range
+     # indicator should remains hidden at all times when the vertical scrollbar
+     # of the editor is not visible.
+-    x = sfa.width()/2
+-    y = sfa.height()/2
++    x = int(sfa.width()/2)
++    y = int(sfa.height()/2)
+     qtbot.mouseMove(sfa, pos=QPoint(x, y), delay=-1)
+ 
+     assert sfa._range_indicator_is_visible is False
+@@ -181,16 +181,16 @@ def test_range_indicator_visible_on_hover_only(editor_bot, qtbot):
+     # that the slider range indicator is now shown. When the vertical scrollbar
+     # of the editor is visible, the slider range indicator should be visible
+     # only when the mouse cursor hover above the scrollflagarea.
+-    x = sfa.width()/2
+-    y = sfa.height()/2
++    x = int(sfa.width()/2)
++    y = int(sfa.height()/2)
+     qtbot.mouseMove(sfa, pos=QPoint(x, y), delay=-1)
+ 
+     assert sfa._range_indicator_is_visible is True
+ 
+     # Move the mouse cursor outside of the scrollflagarea and assert that the
+     # slider range indicator becomes hidden.
+-    x = editor.width()/2
+-    y = editor.height()/2
++    x = int(editor.width()/2)
++    y = int(editor.height()/2)
+     qtbot.mouseMove(editor, pos=QPoint(x, y), delay=-1)
+     qtbot.waitUntil(lambda: not sfa._range_indicator_is_visible)
+ 
+diff --git a/spyder/plugins/editor/widgets/recover.py b/spyder/plugins/editor/widgets/recover.py
+index bd532b125f..f0eb6f1295 100644
+--- a/spyder/plugins/editor/widgets/recover.py
++++ b/spyder/plugins/editor/widgets/recover.py
+@@ -227,8 +227,8 @@ def add_cancel_button(self):
+     def center(self):
+         """Center the dialog."""
+         screen = QApplication.desktop().screenGeometry(0)
+-        x = screen.center().x() - self.width() / 2
+-        y = screen.center().y() - self.height() / 2
++        x = int(screen.center().x() - self.width() / 2)
++        y = int(screen.center().y() - self.height() / 2)
+         self.move(x, y)
+ 
+     def restore(self, idx):
+
+From ec860f8df54332d30e99fbbcdc724aff6ea9d09d Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 20:30:29 +0100
+Subject: [PATCH 2/7] fix deprecation warning: plugins/findfiles
+
+---
+ spyder/plugins/findinfiles/widgets.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spyder/plugins/findinfiles/widgets.py b/spyder/plugins/findinfiles/widgets.py
+index dc8e913271..79a40d9d4a 100644
+--- a/spyder/plugins/findinfiles/widgets.py
++++ b/spyder/plugins/findinfiles/widgets.py
+@@ -658,7 +658,7 @@ def __init__(self, parent, search_text, search_text_regexp,
+         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+ 
+         fm = self.ok_button.fontMetrics()
+-        width = fm.width('Search') * 1.8
++        width = int(fm.width('Search') * 1.8)
+         self.ok_button.setMinimumWidth(width)
+         self.stop_button.setMinimumWidth(width)
+         self.refresh_buttons(start=False)
+
+From be0f6e7c88f8e4ed5d824972e1a435c1f6da7109 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 20:31:40 +0100
+Subject: [PATCH 3/7] fix deprecation warning: plugins/variableexplorer int
+
+---
+ spyder/plugins/variableexplorer/widgets/basedialog.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/spyder/plugins/variableexplorer/widgets/basedialog.py b/spyder/plugins/variableexplorer/widgets/basedialog.py
+index 4ab03d88c2..dae23e14b5 100644
+--- a/spyder/plugins/variableexplorer/widgets/basedialog.py
++++ b/spyder/plugins/variableexplorer/widgets/basedialog.py
+@@ -19,13 +19,13 @@ def set_dynamic_width_and_height(self, screen_geometry, width_ratio=0.5,
+         Update width and height using an updated screen geometry.
+         Use a ratio for the width and height of the dialog.
+         """
+-        screen_width = screen_geometry.width()
+-        screen_height = screen_geometry.height()
+-        self.resize(screen_width * width_ratio, screen_height * height_ratio)
++        screen_width = int(screen_geometry.width() * width_ratio)
++        screen_height = int(screen_geometry.height() * height_ratio)
++        self.resize(screen_width, screen_height)
+ 
+         # Make the dialog window appear in the center of the screen
+-        x = screen_geometry.center().x() - self.width() / 2
+-        y = screen_geometry.center().y() - self.height() / 2
++        x = int(screen_geometry.center().x() - self.width() / 2)
++        y = int(screen_geometry.center().y() - self.height() / 2)
+         self.move(x, y)
+ 
+     def show(self):
+
+From 81f121171b03a2f2f8f378d1422e85546427065a Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 20:33:50 +0100
+Subject: [PATCH 4/7] fix deprecation warning: widgets
+
+---
+ spyder/widgets/mixins.py   | 10 ++++++----
+ spyder/widgets/switcher.py |  8 +++++---
+ 2 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/spyder/widgets/mixins.py b/spyder/widgets/mixins.py
+index cc26445ee0..48cf53e22b 100644
+--- a/spyder/widgets/mixins.py
++++ b/spyder/widgets/mixins.py
+@@ -96,16 +96,18 @@ def _calculate_position(self, at_line=None, at_point=None):
+         if at_point is not None:
+             # Showing tooltip at point position
+             margin = (self.document().documentMargin() / 2) + 1
+-            cx, cy = at_point.x() - margin, at_point.y() - margin
++            cx = int(at_point.x() - margin)
++            cy = int(at_point.y() - margin)
+         elif at_line is not None:
+             # Showing tooltip at line
+             cx = 5
+             line = at_line - 1
+             cursor = QTextCursor(self.document().findBlockByNumber(line))
+-            cy = self.cursorRect(cursor).top()
++            cy = int(self.cursorRect(cursor).top())
+         else:
+             # Showing tooltip at cursor position
+             cx, cy = self.get_coordinates('cursor')
++            cx = int(cx)
+             cy = int(cy - font.pointSize() / 2)
+ 
+         # Calculate vertical delta
+@@ -1276,9 +1278,9 @@ def _enter_array(self, inline):
+ 
+         # TODO: adapt to font size
+         x = rect.left()
+-        x = x - 14
++        x = int(x - 14)
+         y = rect.top() + (rect.bottom() - rect.top())/2
+-        y = y - dlg.height()/2 - 3
++        y = int(y - dlg.height()/2 - 3)
+ 
+         pos = QPoint(x, y)
+         pos = self.calculate_real_position(pos)
+diff --git a/spyder/widgets/switcher.py b/spyder/widgets/switcher.py
+index 9ad697e528..8b18c6f9d5 100644
+--- a/spyder/widgets/switcher.py
++++ b/spyder/widgets/switcher.py
+@@ -111,7 +111,9 @@ def __init__(self, parent=None, styles=_STYLES):
+         self._height = self._get_height()
+ 
+         # Setup
+-        self.setSizeHint(QSize(0, self._height))
++        # self._height is a float from QSizeF but
++        # QSize() expects a QSize or (int, int) as parameters
++        self.setSizeHint(QSize(0, int(self._height)))
+ 
+     def _render_text(self):
+         """Render the html template for this item."""
+@@ -332,8 +334,8 @@ def _render_text(self, title=None, description=None, section=None):
+             section = ''
+ 
+         padding = self._PADDING
+-        width = self._width - self._icon_width
+-        height = self.get_height()
++        width = int(self._width - self._icon_width)
++        height = int(self.get_height())
+         self.setSizeHint(QSize(width, height))
+ 
+         shortcut = '&lt;' + self._shortcut + '&gt;' if self._shortcut else ''
+
+From 417f4044e3d3d1f491fd11ec2c15aba41b9e8914 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 20:34:26 +0100
+Subject: [PATCH 5/7] numpy check for inf,  "inf in data" failed with warning
+
+---
+ spyder/plugins/variableexplorer/widgets/arrayeditor.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/spyder/plugins/variableexplorer/widgets/arrayeditor.py b/spyder/plugins/variableexplorer/widgets/arrayeditor.py
+index 35786487f8..9109264a3d 100644
+--- a/spyder/plugins/variableexplorer/widgets/arrayeditor.py
++++ b/spyder/plugins/variableexplorer/widgets/arrayeditor.py
+@@ -169,7 +169,9 @@ def __init__(self, data, format="%.6g", xlabels=None, ylabels=None,
+ 
+         # Array with infinite values cannot display background colors and
+         # crashes. See: spyder-ide/spyder#8093
+-        self.has_inf = np.inf in data
++        self.has_inf = False
++        if data.dtype.kind in ['f', 'c']:
++            self.has_inf = np.any(np.isinf(data))
+ 
+         # Deactivate coloring for object arrays or arrays with inf values
+         if self._data.dtype.name == 'object' or self.has_inf:
+
+From 16a4ba3d0bfe772ed491164e48a086f7016644ce Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 19:24:12 +0100
+Subject: [PATCH 6/7] load_stylesheet_from_environment() is deprecated
+
+---
+ spyder/widgets/mixins.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spyder/widgets/mixins.py b/spyder/widgets/mixins.py
+index 48cf53e22b..97acaf710b 100644
+--- a/spyder/widgets/mixins.py
++++ b/spyder/widgets/mixins.py
+@@ -136,7 +136,7 @@ def _update_stylesheet(self, widget):
+         self._styled_widgets.add(id(widget))
+ 
+         if is_dark_interface():
+-            css = qdarkstyle.load_stylesheet_from_environment()
++            css = qdarkstyle.load_stylesheet(qt_api='')
+             widget.setStyleSheet(css)
+             palette = widget.palette()
+             background = palette.color(palette.Window).lighter(150).name()
+
+From 827dde3b6079f22eaaf93fcea7a354f4f64076f5 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 20 Mar 2020 23:16:43 +0100
+Subject: [PATCH 7/7] deprecation warning for float height in switcher
+
+---
+ spyder/widgets/switcher.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spyder/widgets/switcher.py b/spyder/widgets/switcher.py
+index 8b18c6f9d5..7ca64330ab 100644
+--- a/spyder/widgets/switcher.py
++++ b/spyder/widgets/switcher.py
+@@ -770,7 +770,7 @@ def set_height(self):
+             switcher_height = max(switcher_height, self._MIN_HEIGHT)
+         else:
+             switcher_height = self._MIN_HEIGHT
+-        self.setFixedHeight(switcher_height)
++        self.setFixedHeight(int(switcher_height))
+ 
+     def set_position(self, top):
+         """Set the position of the dialog."""
