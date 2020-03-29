@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 08:49:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only build
+
+-------------------------------------------------------------------
 Wed Oct  9 12:49:38 UTC 2019 - cloud-devel@suse.de
 
 - removed 0001-Add-support-for-Sphinx-2.0.patch

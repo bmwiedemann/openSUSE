@@ -132,4 +132,12 @@
   - OpenDev Migration Patch</comment>
     <requestid>736635</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5c3155cdcede79ee5e9ab7c2d353471e</srcmd5>
+    <version>1.6.2</version>
+    <time>1585484722</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>788133</requestid>
+  </revision>
 </revisionlist>
