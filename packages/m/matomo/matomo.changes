@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Mar 28 09:06:21 UTC 2020 - ecsos@opensuse.org
+
+- Update to 3.13.4
+  This release is rated moderate security release.
+  - Fix a a possible XSS issue.
+  * matomo-org/matomo
+    - #15625 ‘Remember me’ not working because cookie expire is in wrong format [by @sgiehl]
+    - #15598 Set samesite lax instead of None if site is not on https [by @tsteur]
+    - #15623 Mention require PHP 7.2 in admin notification [by @sgiehl]
+    - #15588 slow SQL query using MariaDB causing high CPU load [by @sgiehl]
+    - #15609 Limit max execution time of transitions feature [by @sgiehl]
+    - #15616 Review Archive invalidation code [by @diosmosis]
+    - #15646 Today archive is invalidated too often [by @diosmosis]
+    - #14694 Warning – ucwords() expects exactly 1 parameter, 2 given [by @katebutler, @sgiehl]
+    - #14764 Page Overlay stuck on “Loading…”
+    - #15589 [Geo] Unknown region metrics increased significantly after update to v3.13.1
+    - #15629 Using Opt-Out iFrame twice doesn’t work [by @sgiehl]
+    - #15637 Ecommerce Orders Conversion Rate Rounding Error [by @sgiehl]
+    - #15550 Notice: Trying to access array offset on value of type null in 
+      core/Session/SessionAuth.php on line 63 [by @diosmosis]
+    - #15651 Prevent connection timed out when requesting configs.php file on IIS in web.config
+    - #15672 There is no way to enable ‘secure’ for the 3rd party cookie [by @tsteur]
+    - #15580 Geolocation: automatically download latest paid DB-IP databases [by @sgiehl]
+    - #15614 Remove donation widget from dashboard [by @tsteur]
+    - #15665 Convert range date to date archive if needed [by @tsteur, @sgiehl]
+    - #15673 Always send a referrer-policy header [by @polarbirke, @diosmosis]
+    - #15684 Retry compiling less file if it fails [by @tsteur, @diosmosis]
+    - #15686 Prevent notice in PHP 7.4 Passing glue string after array is deprecated
+    - #15687 Make sure config cache is only used when there is a correct path
+    - #15707 Detect page view bucket [by @tsteur]
+  * matomo-org/device-detector
+    - #6174 Oppo devices not detected (new useragent list & model names)
+    - #6176 Detect devices for brands: Asus, Oppo, Huawei, Sony, Lenovo, LG, Wiko, Nuvo, Alcatel,
+      Irbis, Heair, Motorola, CoolPad, Sunvell, AllDocube, Assistant, DEXP, ZTE, CAT, Xiaomi,
+      Google, Yandex, Hisense, T-Mobile, Allview, ViewSonic, Yxtel, Ginzzu, HTC 
+    - #6178 Add Java port to README.md [by @mngsk, @sgiehl]
+    - #6181 Add ScalaJ HTTP library [by @wallin, @sgiehl]
+    - #6183 Detection of Google Stackdriver Monitoring [by @Pierre-Lannoy, @sgiehl]
+    - #6184 Detection for Google Cloud Scheduler [by @Pierre-Lannoy, @sgiehl]
+    - #6185 Car tablet CarPad
+    - #6186 Panasonic Lumix DMC-CM1
+    - #6189 feat(device) detect new brand NewsMy & CarPad 2, CarPad 3; [by @sanchezzzhak, @sgiehl]
+    - #6191 Detect devices for brands: Wiko, Oysters, Pixus, Cherry Mobile, Vivo, EvroMedia,
+      Allview, ZTE, Lenovo, Kiwi, Spectrum, Vesta, Ritmix, Casper, NUU, Ginzzu, Telefunken,
+      National, Kaiomy, Kanji [by @sanchezzzhak, @sgiehl]
+    - #6195 Added Node Fetch library [by @wallin, @sgiehl]
+    - #6198 Adds detection for Samsung devices [by @liviuconcioiu, @sgiehl]
+    - #6200 Adds detection for iHunt devices [by @liviuconcioiu, @sgiehl]
+    - #6201 Adds detection for Allview devices [by @liviuconcioiu, @sgiehl]
+    - #6202 Adds detection for Wiko devices [by @liviuconcioiu, @sgiehl]
+  * matomo-org/referrer-spam-blacklist
+    - #1181 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1182 Add greentechsy.com [by @ericguirbal, @spmedia]
+    - #1184 Add ingramreed.xyz [by @ericguirbal, @spmedia]
+    - #1185 Add janemill.xyz [by @ericguirbal, @spmedia]
+    - #1186 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1187 Add sabinablog.xyz [by @ericguirbal, @spmedia]
+    - #1188 Add martinahome.xyz [by @ericguirbal, @spmedia]
+  * matomo-org/tag-manager
+    - #229 Set samesite flag (used in “preview mode” in tag manager container)
+    - #232 Remove duplicate index in variables table [by @tsteur]
+  * matomo-org/matomo-php-tracker
+    - #60 Prevent double slashes [by @tsteur, @sgiehl]
+  * matomo-org/matomo-log-analytics
+    - #180 Improve regex for date and time in w3c formats [by @sgiehl]  
+
+-------------------------------------------------------------------
 Mon Feb 24 23:16:59 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update: 3.13.3
