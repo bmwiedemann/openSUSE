@@ -428,4 +428,12 @@
   - Add libpq-dev to bindep.txt</comment>
     <requestid>774912</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8e1d3fae9ca18cf96ac9fdf62ca40bd5</srcmd5>
+    <version>5.0.2</version>
+    <time>1585484730</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>788138</requestid>
+  </revision>
 </revisionlist>
