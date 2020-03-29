@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 26 19:37:49 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1585251444.36bb1cf8:
+  * Fix missing checkout from git on single commit
+  * Avoid misleading error message from qemu-img
+  * Revert "Check exit code when running qemu-img"
+  * Check exit code when running qemu-img
+
+-------------------------------------------------------------------
 Sat Mar 21 20:27:49 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1584822453.7eb772a7:
