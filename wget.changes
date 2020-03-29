@@ -56,7 +56,7 @@ Fri Nov 30 14:02:43 UTC 2018 - josef.moellers@suse.com
     files.
   * Building Wget from the git sources now requires autoconf 2.63
     or above. Building from the Tarballs works as it used to.
-  [wget-ignore-void-retvalue.patch]
+  [bsc#1167919, wget-ignore-void-retvalue.patch]
 
 -------------------------------------------------------------------
 Mon May  7 07:04:05 UTC 2018 - josef.moellers@suse.com
