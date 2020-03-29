@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:10:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.4.0
+  * Python 3 updates for use of StringIO and auth_tkt.py.
+  * Use six.BytesIO when reading wsgi.input.
+  * Allow binding IPv6 address when starting a server.
+
+-------------------------------------------------------------------
 Wed Jan 15 10:54:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.2.6
