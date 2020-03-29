@@ -190,4 +190,12 @@ http://forums.opensuse.org/showthread.php?t=490812 (forwarded request 201415 fro
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767348</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>919dde5c2c331a9ba323624291b522aa</srcmd5>
+    <version>2.4.3</version>
+    <time>1585484794</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove empty post and postun (forwarded request 784600 from polslinux)</comment>
+    <requestid>789265</requestid>
+  </revision>
 </revisionlist>
