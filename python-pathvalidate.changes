@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 28 12:35:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * Fix __str__ method
+  * Fix to avoid raise an exception when an absolute path
+    includes "."/".."
+  * Modify an error message
+  * Modify raising exception from NullNameError to ValidationError
+    of validate_pathtype
+
+-------------------------------------------------------------------
 Fri Mar 20 16:48:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
