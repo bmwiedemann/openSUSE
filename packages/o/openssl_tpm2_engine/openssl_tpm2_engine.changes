@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Thu Mar 26 04:31:36 UTC 2020 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.4.1
+  * fixes for older OpenSSL and gcc
+  * variable tpm_server location for testing
+
+-------------------------------------------------------------------
+Fri Mar 6 00:47:24 UTC 2020 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.4.0
+  * data seal/unseal handling
+  * PKCS12 wrapping support
+
+-------------------------------------------------------------------
+Fri Jan 10 16:52:22 UTC 2020 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.3.1
+  * bug fixes
+  * add handling for DER keys
+
+-------------------------------------------------------------------
+Sun Feb 24 17:10:22 UTC 2019 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.3.0
+  * add the ability to produce restricted (storage) keys with defined
+    symmetric seeds
+  * new load_tpm2_key command to load a key file at a NV index
+- Version 2.2.0
+  * Add support for non-PKCS1 padding
+  * Fixups for engines and cross builds
+
+-------------------------------------------------------------------
+Wed Nov 14 14:43:17 PST 2018 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.1.0:
+  * Add importable keys feature
+
+-------------------------------------------------------------------
+Mon Nov 12 21:04:09 PST 2018 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.0.1:
+  * Fix name algorithm selection
+  * Make policy correct for non sha256 name algorithms
+  * add security to TPM decryption operations
+
+-------------------------------------------------------------------
+Mon Nov  5 07:37:09 PST 2018 - James.Bottomley@HansenPartnership.com
+
+- Update to version 2.0.0:
+  * Licence changed from GPL to LGPL (fixes openssl compatibility)
+  * Key format changed for interoperability
+  * OIDs updated with input from the TCG (new format only)
+
+-------------------------------------------------------------------
+Sat Aug 10 08:05:00 PDT 2018 - James.Bottomley@HansenPartnership.com
+
+- Update to version 1.2.1:
+  * Policy file support (fixed)
+
