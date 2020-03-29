@@ -25,22 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.config
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-6.11.2.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PyYAML >= 3.12
-BuildRequires:  python2-debtcollector >= 1.2.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-mock
-BuildRequires:  python2-netaddr >= 0.7.18
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr
-BuildRequires:  python2-requests >= 2.18.0
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-rfc3986 >= 1.2.0
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-debtcollector >= 1.2.0
 BuildRequires:  python3-fixtures
@@ -57,28 +41,7 @@ BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-PyYAML >= 3.12
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-netaddr >= 0.7.18
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-requests >= 2.18.0
-Requires:       python-rfc3986 >= 1.2.0
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%ifpython2
-BuildRequires:  python2-enum34 >= 1.0.4
-Requires:       python-enum34 >= 1.0.4
-%endif
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 The Oslo project intends to produce a python library containing
@@ -89,10 +52,35 @@ useful.
 The oslo-config library is a command line and configuration file
 parsing library from the Oslo project.
 
+%package -n python3-oslo.config
+Summary:        OpenStack common configuration library
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-netaddr >= 0.7.18
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-requests >= 2.18.0
+Requires:       python3-rfc3986 >= 1.2.0
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+%if 0%{?suse_version}
+Obsoletes:      python2-oslo.config < 8.0.1
+%endif
+
+%description -n python3-oslo.config
+The Oslo project intends to produce a python library containing
+infrastructure code shared by OpenStack projects. The APIs provided
+by the project should be high quality, stable, consistent and generally
+useful.
+
+The oslo-config library is a command line and configuration file
+parsing library from the Oslo project.
+
+This package contains the Python 3.x module.
+
 %package -n python-oslo.config-doc
 Summary:        Documentation for OpenStack common configuration library
 Group:          Development/Languages/Python
-BuildRequires:  python2-Sphinx
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -105,7 +93,7 @@ Documentation for the oslo-config library.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 PBR_VERSION=6.11.2 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
@@ -113,27 +101,19 @@ PBR_VERSION=6.11.2 PYTHONPATH=. \
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/oslo-config-generator
-%python_clone -a %{buildroot}%{_bindir}/oslo-config-validator
-
-%post
-%{python_install_alternative oslo-config-generator oslo-config-validator}
-
-%postun
-%python_uninstall_alternative oslo-config-generator
+%{py3_install}
 
 %check
 # Requires oslo.log which we can't depend on for build cycle reasons
 rm -v oslo_config/tests/test_cfg.py
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.config
 %license LICENSE
-%python_alternative %{_bindir}/oslo-config-generator
-%python_alternative %{_bindir}/oslo-config-validator
-%{python_sitelib}/oslo_config
-%{python_sitelib}/*.egg-info
+%{_bindir}/oslo-config-generator
+%{_bindir}/oslo-config-validator
+%{python3_sitelib}/oslo_config
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.config-doc
 %doc doc/build/html README.rst
