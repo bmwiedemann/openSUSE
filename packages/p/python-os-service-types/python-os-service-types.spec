@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-service-types
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,21 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/os-service-types
 Source0:        https://files.pythonhosted.org/packages/source/o/os-service-types/os-service-types-%{version}.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testscenarios
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
-Requires:       python-pbr >= 2.0.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 The OpenStack Service Types Authority contains information about official
@@ -49,11 +41,26 @@ library exists to allow for easy consumption of the data, along with a built-in
 version of the data to use in case network access is for some reason not
 possible and local caching of the fetched data.
 
+%package -n python3-os-service-types
+Summary:        Python library for consuming OpenStack sevice-types-authority data
+Group:          Development/Languages/Python
+Requires:       python3-pbr >= 2.0.0
+
+%description -n python3-os-service-types
+The OpenStack Service Types Authority contains information about official
+OpenStack services and their historical service-type aliases.
+The data is in JSON and the latest data should always be used. This simple
+library exists to allow for easy consumption of the data, along with a built-in
+version of the data to use in case network access is for some reason not
+possible and local caching of the fetched data.
+
+This package contains the Python 3.x module.
+
 %package -n os-service-types-doc
 Summary:        Documentation for OpenStack os-service-types library
 Group:          Development/Languages/Python
-BuildRequires:  python-Sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n os-service-types-doc
 The OpenStack Service Types Authority contains information about official
@@ -74,25 +81,25 @@ This package contains the documentation.
 rm os_service_types/tests/test_remote.py
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
-PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
+PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
 export OS_TEST_PATH=os_service_types/tests
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-os-service-types
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/os_service_types
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/os_service_types
+%{python3_sitelib}/*.egg-info
 
 %files -n os-service-types-doc
 %license LICENSE
