@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           waybar
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
-Source:         %{url}/archive/%{version}.tar.gz
+Source:         %{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-layer-shell-devel

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:19:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to 0.9.1:
+  Added
+  * Clock: Add timezone support tada #560
+  * Clock: Current month calendar in tooltip tada#570
+  * Mpd: add paused format string #543
+  Changed:
+  * Network: hide on empty format c885be3
+  * Mediaplayer: Show title if artist isn't available #534
+  * Fixed: WindowId recieves 'u' #536
+  * Man: adding and clarification of configuration options #541
+  * Add info on "on-click-middle" option to custom module man page #529
+  * Network: add missing include #546
+  * Tray: Keep aspect ratio when scaling tray icons #548
+  * Fixed SIGSEGV on Monitor Disconnect/Connect #555 #578
+  * Pulseaudio: Use PA_PROP_DEVICE_FORM_FACTOR for device icon #550
+  * Pulseaudio: Adapt icon names to form factors #571 #577
+  * Clock: lower precision of zoned_time to avoid fractional seconds in output #579
+- new 'date' library added to the sources archive
+  * added to the subprojects dir with 'meson subprojects download'
+  * it is a dependency for the Clock
+  * https://github.com/Alexays/Waybar/issues/594
+- changing Sources to local archive as it packs additional `date` submodule
+  * OBS checks would fail if it points to the exernal sources
+
+-------------------------------------------------------------------
 Sat Dec 28 13:26:47 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Add dependency on systemd and new gtk-layer-shell-devel
