@@ -147,4 +147,12 @@
   - Dropping the py35 testing</comment>
     <requestid>774920</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>591555e06c4e5f8f3dbadd99c450a829</srcmd5>
+    <version>5.16.1</version>
+    <time>1585484735</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>789259</requestid>
+  </revision>
 </revisionlist>
