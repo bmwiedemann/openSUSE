@@ -1,7 +1,7 @@
 #
 # spec file for package dumpvdl2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           dumpvdl2
-Version:        1.7.1
+Version:        1.9.0
 Release:        0
 Summary:        A VDL Mode 2 message decoder and protocol analyzer
 License:        GPL-3.0-only
@@ -30,8 +30,10 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libacars) >= 1.3.0
+BuildRequires:  pkgconfig(libacars-2) >= 2.0.0
 BuildRequires:  pkgconfig(librtlsdr)
+BuildRequires:  pkgconfig(sqlite3)
+Recommends:     sqlite3
 
 %description
 A VDL Mode 2 message decoder and protocol analyzer.
