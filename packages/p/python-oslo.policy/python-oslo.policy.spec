@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.policy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,14 @@
 
 
 Name:           python-oslo.policy
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-2.3.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-2.3.3.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PyYAML >= 3.12
-BuildRequires:  python2-oslo.config >= 5.2.0
-BuildRequires:  python2-oslo.context >= 2.22.0
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr
-BuildRequires:  python2-requests >= 2.14.2
-BuildRequires:  python2-requests-mock
-BuildRequires:  python2-stestr
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.22.0
@@ -45,33 +35,36 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-requests >= 2.14.2
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
-Requires:       python-PyYAML >= 3.12
-Requires:       python-oslo.config >= 5.2.0
-Requires:       python-oslo.context >= 2.22.0
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-requests >= 2.14.2
-Requires:       python-six >= 1.10.0
-Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 The OpenStack Oslo Policy library.
 RBAC policy enforcement library for OpenStack.
 
+%package -n python3-oslo.policy
+Summary:        OpenStack Oslo Policy library
+Group:          Development/Languages/Python
+Requires:       python3-PyYAML >= 3.12
+Requires:       python3-oslo.config >= 5.2.0
+Requires:       python3-oslo.context >= 2.22.0
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-requests >= 2.14.2
+Requires:       python3-six >= 1.10.0
+Requires:       python3-stevedore >= 1.20.0
+%if 0%{?suse_version}
+Obsoletes:      python2-oslo.policy < 2.4.1
+%endif
+
+%description -n python3-oslo.policy
+The OpenStack Oslo Policy library.
+RBAC policy enforcement library for OpenStack.
+
+This package contains the Python 3.x module.
+
 %package -n python-oslo.policy-doc
 Summary:        Documentation for the Oslo Policy library
 Group:          Documentation/HTML
-BuildRequires:  python2-Sphinx
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-sphinxcontrib-apidoc
@@ -80,11 +73,11 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-2.3.2
+%autosetup -p1 -n oslo.policy-2.3.3
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -92,32 +85,21 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/oslopolicy-checker
-%python_clone -a %{buildroot}%{_bindir}/oslopolicy-list-redundant
-%python_clone -a %{buildroot}%{_bindir}/oslopolicy-policy-generator
-%python_clone -a %{buildroot}%{_bindir}/oslopolicy-sample-generator
-%python_clone -a %{buildroot}%{_bindir}/oslopolicy-policy-upgrade
-
-%post
-%{python_install_alternative oslopolicy-checker oslopolicy-list-redundant oslopolicy-policy-generator oslopolicy-sample-generator}
-
-%postun
-%python_uninstall_alternative oslopolicy-checker
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files  -n python3-oslo.policy
 %license LICENSE
 %doc README.rst
-%python_alternative %{_bindir}/oslopolicy-checker
-%python_alternative %{_bindir}/oslopolicy-list-redundant
-%python_alternative %{_bindir}/oslopolicy-policy-generator
-%python_alternative %{_bindir}/oslopolicy-sample-generator
-%python_alternative %{_bindir}/oslopolicy-policy-upgrade
-%{python_sitelib}/oslo_policy
-%{python_sitelib}/*.egg-info
+%{_bindir}/oslopolicy-checker
+%{_bindir}/oslopolicy-list-redundant
+%{_bindir}/oslopolicy-policy-generator
+%{_bindir}/oslopolicy-sample-generator
+%{_bindir}/oslopolicy-policy-upgrade
+%{python3_sitelib}/oslo_policy
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.policy-doc
 %license LICENSE

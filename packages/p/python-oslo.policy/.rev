@@ -240,4 +240,19 @@
   - Update master for stable/stein</comment>
     <requestid>774917</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adf0ef704c4ea85cec68614626bffc62</srcmd5>
+    <version>2.3.3</version>
+    <time>1585484739</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds
+
+- update to version 2.3.3
+  - Modernize policy checker
+  - Fix reference cycle caused by deprecated sample override
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Update .gitreview for stable/train
+  - Suppress deprecation warnings in oslopolicy-list-redundant</comment>
+    <requestid>789260</requestid>
+  </revision>
 </revisionlist>

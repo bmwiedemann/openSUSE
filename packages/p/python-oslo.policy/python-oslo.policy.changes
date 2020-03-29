@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 14 12:05:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only builds
+
+-------------------------------------------------------------------
+Tue Mar 10 18:21:35 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.3
+  - Modernize policy checker
+  - Fix reference cycle caused by deprecated sample override
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Update .gitreview for stable/train
+  - Suppress deprecation warnings in oslopolicy-list-redundant
+
+-------------------------------------------------------------------
 Wed Oct  9 12:27:45 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.3.2
