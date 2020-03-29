@@ -1,7 +1,7 @@
 #
 # spec file for package latte-dock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017  Smith AR <audoban@openmailbox.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define kf5_version 5.38.0
 Name:           latte-dock
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        Task manager
 License:        GPL-2.0-or-later

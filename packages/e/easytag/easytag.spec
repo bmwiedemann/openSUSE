@@ -1,7 +1,7 @@
 #
 # spec file for package easytag
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GTK+ tag editor for audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://projects.gnome.org/easytag/
+URL:            https://projects.gnome.org/easytag/
 Source0:        http://download.gnome.org/sources/easytag/2.4/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM easytag-revert-open-handle-ogg.patch bgo#776110 boo#1069789 bjorn.lie@gmail.com -- Revert commit causing corruption in oggfiles
 Patch0:         easytag-revert-open-handle-ogg.patch
@@ -58,7 +58,7 @@ Its simple and nice GTK+ interface makes tagging easier.
 Summary:        Nautilus extension for opening in EasyTAG
 Group:          Productivity/File utilities
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:nautilus)
+Supplements:    (%{name} and nautilus)
 
 %description -n nautilus-plugin-easytag
 Nautilus extension to add "Open with EasyTAG" to the Nautilus context menu, for
@@ -72,7 +72,7 @@ easier access to EasyTAG when opening directories and audio files.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -81,16 +81,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 # We take the HACKERS and AUTHORS file to the standard package doc
 rm -rf %{buildroot}%{_datadir}/doc
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
 
 %files
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 28 20:00:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to use gpgme instead of the obsolete gpgmepp:
+  * 0001-Support-both-vanilla-gpgme-and-KDE-Frameworks-gpgmep.patch
+- Spec cleanup.
+
+-------------------------------------------------------------------
 Tue Jul  2 08:49:49 UTC 2019 - wbauer@tmo.at
 
 - Add tests-Fix-build-with-Qt-5.13.patch to fix build with Qt 5.13

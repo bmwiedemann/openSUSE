@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:47:35 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.0:
+  * Array
+    + Support dtype and other keyword arguments in da.random
+      (:pr:`6030`) Matthew Rocklin
+    + Register support for cupy sparse hstack/vstack (:pr:`5735`)
+      Corey J. Nolet
+    + Force self.name to str in dask.array (:pr:`6002`) Chuanzhu Xu
+  * Bag
+    + Set rename_fused_keys to None by default in bag.optimize
+      (:pr:`6000`) Lucas Rademaker
+  * Core
+    + Copy dict in to_graphviz to prevent overwriting (:pr:`5996`)
+      JulianWgs
+    + Stricter pandas xfail (:pr:`6024`) Tom Augspurger
+    + Fix CI failures (:pr:`6013`) James Bourbeau
+    + Update toolz to 0.8.2 and use tlz (:pr:`5997`) Ryan Grout
+    + Move Windows CI builds to GitHub Actions (:pr:`5862`) James
+      Bourbeau
+  * DataFrame
+    + Improve path-related exceptions in read_hdf (:pr:`6032`) psimaj
+    + Fix dtype handling in dd.concat (:pr:`6006`) mlondschien
+    + Handle cudf's leftsemi and leftanti joins (:pr:`6025`) Richard J
+      Zamora
+    + Remove unused npartitions variable in dd.from_pandas
+      (:pr:`6019`) Daniel Saxton
+    + Added shuffle to DataFrame.random_split (:pr:`5980`) petiop
+  * Documentation
+    + Fix indentation in scheduler-overview docs (:pr:`6022`) Matthew
+      Rocklin
+    + Update task graphs in optimize docs (:pr:`5928`) Julia Signell
+    + Optionally get rid of intermediary boxes in visualize, and add
+      more labels (:pr:`5976`) Julia Signell
+
+-------------------------------------------------------------------
 Sun Mar  8 19:03:37 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.12.0:

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-xarray
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -34,8 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.15
 Requires:       python-pandas >= 0.25
-Suggests:       python-dask >= 2.2
 Recommends:     python-scipy >= 1.3
+Suggests:       python-dask >= 2.2
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch

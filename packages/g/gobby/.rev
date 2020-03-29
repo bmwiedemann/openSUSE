@@ -347,4 +347,24 @@ No indication of GPL-2.0 &quot;only&quot; code and certainly no indication of ag
     <comment>Removal of -lang recommends (forwarded request 768607 from dimstar)</comment>
     <requestid>768674</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1a64db44d05ce11288ea52abde6d4bb2</srcmd5>
+    <version>0.5.1+20180826.d16519e</version>
+    <time>1585484801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1+20180826.d16519e:
+  * Correct &quot;Remeber&quot; â†’ &quot;Remember&quot; arrow.
+  * Make yelp conditional on --enable-docs (default=yes).
+  * help/Makefile.am: fix tab/spaces inconsistency
+  * Update CI build environment to include yelp-tools.
+  * Use yelp-tools instead of gtk-doc-utils.
+  * Update ca.po
+  * Use https in README
+  * Add suggested desktop category
+  * Fix include directives to just include &amp;lt;gtksourceview/gtksource.h&amp;gt;.
+  * Add newly translatable units to POTFILES.in and drop non-existing ones.
+  * Set AC_CONFIG_AUX_DIR to the top-level source directory.
+  * Fix some compile warnings (forwarded request 786990 from mcepl)</comment>
+    <requestid>789266</requestid>
+  </revision>
 </revisionlist>

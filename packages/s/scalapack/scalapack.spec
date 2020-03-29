@@ -1,7 +1,7 @@
 #
 # spec file for package scalapack
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -260,7 +260,6 @@ ExclusiveArch:  do_not_build
 %define libname() lib%{pname}%{so_ver}%{expand:%%{hpc_package_name_tail %{**}}}
 %global libname_plain %{libname}
 %define libblacsname() libblacs%{so_ver}%{expand:%%{hpc_package_name_tail %{**}}}
-%global libblacs_plain %{libblacsname}
 %define installdir %{hpc_prefix}
 %define p_includedir %{hpc_includedir}
 %endif
@@ -427,8 +426,6 @@ algorithms makes it impractical to rewrite programs for every new
 parallel machine. The BLACS exist in order to make linear algebra
 applications both easier to program and more portable.
 
-%{?with_hpc:%{hpc_master_package -l -n %{libblacs_plain} -N blacs -s %so_ver}}
-
 %package -n     %{libblacsname %_vers}-devel
 Summary:        Development libraries for BLACS (%{mpi_flavor}%{?mpi_vers})
 Group:          Development/Libraries/Parallel
@@ -452,8 +449,6 @@ Requires:       %{libblacsname %_vers}-devel = %{version}
 %if "%{mpi_flavor}%{?mpi_ext}" == "openmpi1"
 Provides:       libblacs%{so_ver}-openmpi-devel
 %endif
-
-%{?with_hpc:%{hpc_master_package -n %{libblacs_plain}-devel -N blacs -s %so_ver -a devel}}
 
 %description -n %{libblacsname %_vers}-devel-static
 This package contains static libraries for BLACS, compiled against %{mpi_flavor}%{?mpi_vers}.

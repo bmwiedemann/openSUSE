@@ -1,7 +1,7 @@
 #
 # spec file for package gobby
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _versioned_name gobby-0.5
 Name:           gobby
-Version:        0.5.1+20170204.e5c2d14
+Version:        0.5.1+20180826.d16519e
 Release:        0
 Summary:        Collaborative editor (Infinote protocol)
-License:        ISC AND GPL-2.0+
+License:        ISC AND GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            http://gobby.0x539.de/
+URL:            http://gobby.0x539.de/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -70,14 +70,14 @@ NOCONFIGURE=1 ./autogen.sh
 %else
     --with-gtk3
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang gobby05 %{?no_lang_C}
 # For documentation. It's not versioned, but gobby 0.4 doesn't have such files,
 # so there's no conflict.
-%find_lang gobby %{?no_lang_C} gobby05.lang
+# %%find_lang gobby %%{?no_lang_C} gobby05.lang
 %suse_update_desktop_file -N "Gobby" -G "Collaborative Editor" %{_versioned_name} X-SuSE-Core-Internet
 %fdupes %{buildroot}
 
@@ -96,15 +96,14 @@ make %{?_smp_mflags}
 %endif
 
 %files
-%defattr (-, root, root)
-%doc AUTHORS COPYING
-%dir %{_datadir}/gnome/
-%dir %{_datadir}/gnome/help/
-%dir %{_datadir}/gnome/help/%{name}/
-%doc %{_datadir}/gnome/help/%{name}/C/
-%dir %{_datadir}/omf/
-%dir %{_datadir}/omf/%{name}/
-%doc %{_datadir}/omf/%{name}/%{name}-C.omf
+%license COPYING
+%doc AUTHORS
+%dir %{_datadir}/
+%dir %{_datadir}/help/
+%doc %{_datadir}/help/C/%{name}
+# %%dir %%{_datadir}/omf/
+# %%dir %%{_datadir}/omf/%%{name}/
+# %%doc %%{_datadir}/omf/%%{name}/%%{name}-C.omf
 %{_bindir}/%{_versioned_name}
 %{_datadir}/%{_versioned_name}
 %{_datadir}/applications/%{_versioned_name}.desktop
@@ -117,6 +116,5 @@ make %{?_smp_mflags}
 %exclude %{_datadir}/icons/HighContrast*/scalable/*
 
 %files lang -f gobby05.lang
-%defattr(-,root,root)
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:35:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Support for GNOME Shell 3.36
+  * Updated Catalan translation (thanks @antoniofsm)
+
+-------------------------------------------------------------------
 Thu Jan 30 11:10:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

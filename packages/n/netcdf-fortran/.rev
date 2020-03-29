@@ -108,4 +108,12 @@
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755678</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>3ecb6162998bce08cf1e99e9309c9260</srcmd5>
+    <version>4.5.2</version>
+    <time>1585484835</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable mvapich2 build (boo#1167948). (forwarded request 789284 from eeich)</comment>
+    <requestid>789302</requestid>
+  </revision>
 </revisionlist>

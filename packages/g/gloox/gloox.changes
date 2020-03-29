@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 15:02:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.0.23:
+  * fixed a memory leak in dns.cpp
+  * fixed session management/stream resumption
+  * ClientBase: fix honorThreadID
+  * TLSGnuTLS: disabled TLS 1.3 for now, as there are
+    connection issues with it
+  Check the ChangeLog file for other changes.
+- Drop gloox-fix_TLSGnuTLS_test.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Fri Aug 17 15:18:10 UTC 2018 - astieger@suse.com
 
 - update to 1.0.21:

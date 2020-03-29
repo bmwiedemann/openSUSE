@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 28 20:42:31 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Enable ncursesw (UTF-8 support) in the confgure.
+
+-------------------------------------------------------------------
 Thu Feb 14 23:26:43 UTC 2019 - bjorn.lie@gmail.com
 
 - Switch to svn checkout via service, version 2.6.0~svn2994.

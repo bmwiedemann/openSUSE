@@ -178,4 +178,13 @@
     <comment>  jsc#SLE-8604).</comment>
     <requestid>755673</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>e6dee9b32233c0a8d93a0441b6683edb</srcmd5>
+    <version>2.1.0</version>
+    <time>1585484843</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove blacs HPC master packages: the libblacs has been removed
+  (boo#1167949). (forwarded request 789285 from eeich)</comment>
+    <requestid>789303</requestid>
+  </revision>
 </revisionlist>

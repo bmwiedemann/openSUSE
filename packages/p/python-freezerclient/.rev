@@ -138,4 +138,12 @@
   - delete repeated self.endpoint</comment>
     <requestid>736651</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bf20236ba0b16678a626df923a2dcce4</srcmd5>
+    <version>2.2.0</version>
+    <time>1585484791</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to a python 3.x only build</comment>
+    <requestid>789258</requestid>
+  </revision>
 </revisionlist>

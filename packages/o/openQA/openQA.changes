@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 28 10:48:12 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1585334025.c496db1d6:
+  * Revert "Improve the operation of 'jobs post'"
+  * Rewrite asset list generation for cache service
+  * Revert "Rewrite asset list generation for cache service"
+  * Ensure final linebreak in job template editor
+  * Do not re-generate settings when cloning a job
+  * Handle the settings that start with `+` when creating a job
+  * Dependency cron 200326
+
+-------------------------------------------------------------------
 Thu Mar 26 02:48:15 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1585161757.bb4097462:

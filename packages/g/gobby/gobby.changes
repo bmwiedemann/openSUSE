@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:00:55 UTC 2020 - mcepl@suse.com
+
+- Update to version 0.5.1+20180826.d16519e:
+  * Correct "Remeber" → "Remember" arrow.
+  * Make yelp conditional on --enable-docs (default=yes).
+  * help/Makefile.am: fix tab/spaces inconsistency
+  * Update CI build environment to include yelp-tools.
+  * Use yelp-tools instead of gtk-doc-utils.
+  * Update ca.po
+  * Use https in README
+  * Add suggested desktop category
+  * Fix include directives to just include <gtksourceview/gtksource.h>.
+  * Add newly translatable units to POTFILES.in and drop non-existing ones.
+  * Set AC_CONFIG_AUX_DIR to the top-level source directory.
+  * Fix some compile warnings
+
+-------------------------------------------------------------------
 Thu Jan 30 11:12:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

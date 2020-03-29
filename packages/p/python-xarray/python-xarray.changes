@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:43:47 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.15.1:
+  * Breaking changes
+    + Raise an error when assigning to the .values or .data attribute
+      of dimension coordinates i.e. IndexVariable objects. This has
+      been broken since v0.12.0. Please use DataArray.assign_coords()
+      or Dataset.assign_coords() instead. (GH3470, PR3862) By Deepak
+      Cherian
+  * New Features
+    + Weighted array reductions are now supported via the new
+      DataArray.weighted() and Dataset.weighted() methods. See
+      Weighted array reductions. (GH422, PR2922). By Mathias Hauser
+    + The new jupyter notebook repr (Dataset._repr_html_ and
+      DataArray._repr_html_) (introduced in 0.14.1) is now on by
+      default. To disable, use
+      xarray.set_options(display_style="text"). By Julia Signell.
+    + Added support for pandas.DatetimeIndex-style rounding of
+      cftime.datetime objects directly via a CFTimeIndex or via the
+      DatetimeAccessor. By Spencer Clark
+    + Support new h5netcdf backend keyword phony_dims (available from
+      h5netcdf v0.8.0 for H5NetCDFStore. By Kai Mühlbauer.
+    + Add partial support for unit aware arrays with pint. (PR3706,
+      PR3611) By Justus Magin.
+    + Dataset.groupby() and DataArray.groupby() now raise a TypeError
+      on multiple string arguments. Receiving multiple string
+      arguments often means a user is attempting to pass multiple
+      dimensions as separate arguments and should instead pass a
+      single list of dimensions. (PR3802) By Maximilian Roos
+    + map_blocks() can now apply functions that add new unindexed
+      dimensions. By Deepak Cherian
+    + An ellipsis (...) is now supported in the dims argument of
+      Dataset.stack() and DataArray.stack(), meaning all unlisted
+      dimensions, similar to its meaning in
+      DataArray.transpose(). (PR3826) By Maximilian Roos
+    + Dataset.where() and DataArray.where() accept a lambda as a first
+      argument, which is then called on the input; replicating pandas’
+      behavior. By Maximilian Roos.
+    + skipna is available in Dataset.quantile(), DataArray.quantile(),
+      core.groupby.DatasetGroupBy.quantile(),
+      core.groupby.DataArrayGroupBy.quantile() (GH3843, PR3844) By
+      Aaron Spring.
+  * Bug fixes
+    + Fix Dataset.interp() when indexing array shares coordinates with
+      the indexed variable (GH3252). By David Huard.
+    + Fix recombination of groups in Dataset.groupby() and
+      DataArray.groupby() when performing an operation that changes
+      the size of the groups along the grouped dimension. By Eric
+      Jansen.
+    + Fix use of multi-index with categorical values (GH3674). By
+      Matthieu Ancellin.
+    + Fix alignment with join="override" when some dimensions are
+      unindexed. (GH3681). By Deepak Cherian.
+    + Fix Dataset.swap_dims() and DataArray.swap_dims() producing
+      index with name reflecting the previous dimension name instead
+      of the new one (GH3748, PR3752). By Joseph K Aicher.
+    + Use dask_array_type instead of dask_array.Array for type
+      checking. (GH3779, PR3787) By Justus Magin.
+    + concat() can now handle coordinate variables only present in one
+      of the objects to be concatenated when coords="different". By
+      Deepak Cherian.
+    + xarray now respects the over, under and bad colors if set on a
+      provided colormap. (GH3590, PR3601) By johnomotani.
+    + coarsen() now respects xr.set_options(keep_attrs=True) to
+      preserve attributes. Dataset.coarsen() accepts a keyword
+      argument keep_attrs to change this setting. (GH3376, PR3801) By
+      Andrew Thomas.
+    + Delete associated indexes when deleting coordinate
+      variables. (GH3746). By Deepak Cherian.
+    + Fix xarray.core.dataset.Dataset.to_zarr() when using append_dim
+      and group simultaneously. (GH3170). By Matthias Meyer.
+    + Fix html repr on Dataset with non-string keys (PR3807). By
+      Maximilian Roos.
+  * Documentation
+    + Fix documentation of DataArray removing the deprecated mention
+      that when omitted, dims are inferred from a
+      coords-dict. (PR3821) By Sander van Rijn.
+    + Improve the where() docstring. By Maximilian Roos
+    + Update the installation instructions: only explicitly list
+      recommended dependencies (GH3756). By Mathias Hauser.
+  * Internal Changes
+    + Remove the internal import_seaborn function which handled the
+      deprecation of the seaborn.apionly entry point (GH3747). By
+      Mathias Hauser.
+    + Don’t test pint integration in combination with datetime
+      objects. (GH3778, PR3788) By Justus Magin.
+    + Change test_open_mfdataset_list_attr to only run with dask
+      installed (GH3777, PR3780). By Bruno Pagani.
+    + Preserve the ability to index with method="nearest" with a
+      CFTimeIndex with pandas versions greater than 1.0.1 (GH3751). By
+      Spencer Clark.
+    + Greater flexibility and improved test coverage of subtracting
+      various types of objects from a CFTimeIndex. By Spencer Clark.
+    + Update Azure CI MacOS image, given pending removal. By
+      Maximilian Roos
+    + Remove xfails for scipy 1.0.1 for tests that append to netCDF
+      files (PR3805). By Mathias Hauser.
+    + Remove conversion to pandas.Panel, given its removal in pandas
+      in favor of xarray’s objects. By Maximilian Roos
+
+-------------------------------------------------------------------
 Sat Feb  1 15:02:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.15.0:

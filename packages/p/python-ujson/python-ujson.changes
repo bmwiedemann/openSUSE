@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:22:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.0.3:
+  * Changed
+    + Drop legacy distutils in setup.py (#397) @hugovk
+    + Update benchmarking (#395) @hugovk
+  * Fixed
+    + Decrease dict key reference (#394) @suola
+    + Remove double_precision and precise_float from help text (#389)
+      @JTJL
+
+-------------------------------------------------------------------
 Sun Mar 15 19:44:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 2.0.2

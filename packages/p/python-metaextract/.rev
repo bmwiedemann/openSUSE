@@ -139,4 +139,13 @@
     <comment></comment>
     <requestid>726395</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ff8dd52d3d74c57359c50dcb7de68ebb</srcmd5>
+    <version>1.0.7</version>
+    <time>1585484896</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * Use default json encoder 'str'</comment>
+    <requestid>789408</requestid>
+  </revision>
 </revisionlist>

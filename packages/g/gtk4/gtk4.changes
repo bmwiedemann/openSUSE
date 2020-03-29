@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Mar 22 20:01:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.98.1:
+  + GtkFileChooser:
+    - Remove filename/uri api
+    - Drop extra-widget
+    - Remove overwrite confirmation
+    - Remove show-hidden property
+    - Remove local-only property
+    - Remove GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER
+    - The portal file chooser supports selecting folders
+  + GtkSpinner: Rename active property to spinning
+  + GtkRevealer: Fix size allocation at small scales
+  + GtkPopover: Drop :relative-to, it is always the :parent now
+  + GtkWindow: Drop window-type, it is always a regular toplevel
+  + GtkWidget:
+    - Drop expand property
+    - Drop margin property
+    - Drop gtk_grab_add, gtk_device_grab_add
+  + GtkTextView:
+    - Support overlines in GtkTextTag
+    - Support visible spaces in GtkTextTag
+    - Support hyphenation control in GtkTextTag
+  + Split GtkEventControllerFocus from GtkEventControllerKey
+  + DND:
+    - Fix local DND to avoid serialization
+    - Add new content provider constructors
+    - Split GtkDropTargetAsync and GtkDropTarget
+    - Group DND events into event sequences
+    - Propagate DND events like motion events
+    - Introduce GtkDropControllerMotion
+    - Remove GtkSelectionData
+  + Performance:
+    - Clean up profiler marks
+    - Share GL programs between renderers
+  + GDK:
+    - Drop gdk_surface_new_temp
+    - Make GdkEvent an immutable boxed type, not an object
+    - Remove GdkAtom and property- and selection-related apis
+    - Introduce GdkPopup and GdkToplevel interfaces
+    - Implement them in backend-specific surface subtypes
+    - Rename gdk_surface_input_shape_combine_region to
+      gdk_surface_set_input_region
+    - Drop X11-only concepts such as sticky or keep-below
+  + Broadway: implement scaling
+  + Updated translations.
+- Drop gtk4-wayland-includes.patch: Fixed upstream.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Wed Feb 12 22:26:09 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.98.0:
+  + The DND refactoring has been completed.
+  + Child surfaces have been removed.
+  + Global positions and related apis such as gdk_surface_move are
+    no longer available.
+  + A constraint-based layout manager has been added.
+  + Many classes have been made explicitly non-subclassable, and
+    the widget hierarchy has been simplified, by making widgets
+    derive directly from GtkWidget instead of a container.
+  + Menu-related changes:
+    - GtkMenu, GtkMenuBar and related classes have been removed.
+    - Context menus are no longer created with ::populate-popup
+      signals, but use menu models and actions.
+    - Widget actions can be created in class_init, with
+      gtk_widget_class_install_action.
+    - GtkToolbar has been removed as well.
+  + Text-related changed:
+    - Text cursor blinking has been made smooth.
+    - GtkTextView is caching rendernodes for the visible text range
+      now, improving the scrolling performance of text.
+    - Add a simple undo stack for text edits has been added.
+  + GtkTreeView renders tree and grid lines with textures.
+  + GtkEmojiChooser has been made public.
+  + GtkGestureMultiPress has been renamed to GtkGestureClick.
+  + GtkWidget has api to handle style classes.
+  + X11-specific changes:
+    - XI2 is now mandatory.
+    - The xim input method has been removed.
+  + Wayland-specific changes: The loading of cursor themes has been
+    improved to load cursors on demand, and no longer relies on
+    libwayland-cursor.
+  + The GL renderer is now sharing icon and glyph caches for all
+    surfaces, and has better support for blurring and shadow
+    rendering.
+  + Performance-related changes:
+    - GTK provides profiling information for Sysprof when launched
+      with GTK_TRACE=1.
+    - Css computation has been optimized.
+    - Css lookups are using a Bloom filter.
+    - Icon loading IO has been moved to a thread.
+- Add sassc buildRequires: new dependency.
+- Add gtk4-wayland-includes.patch: Fix missing dependency exposed
+  by our special wayland packagers wish to not have the wayland
+  headers in the default locations.
+
+-------------------------------------------------------------------
 Tue Sep 10 08:41:08 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer provide/obsolete gtk3-schema: upstream changed the

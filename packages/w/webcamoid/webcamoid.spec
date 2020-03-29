@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ BuildRequires:  pkgconfig(libavutil) >= 56.6.100
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
 BuildRequires:  pkgconfig(libv4l2)
+Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquickcontrols2
 Provides:       plasmoid-webcamoid = %{version}
 Obsoletes:      plasmoid-webcamoid < %{version}
 

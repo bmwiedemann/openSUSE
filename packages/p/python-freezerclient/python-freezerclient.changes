@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 17:24:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Switch to a python 3.x only build
+
+-------------------------------------------------------------------
 Wed Oct  9 12:58:41 UTC 2019 - cloud-devel@suse.de
 
 - update to version 2.2.0

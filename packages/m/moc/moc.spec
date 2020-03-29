@@ -1,7 +1,7 @@
 #
 # spec file for package moc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Console audio player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            http://moc.daper.net/
+URL:            http://moc.daper.net/
 Source0:        trunk-%{version}.tar.xz
 
 Patch1:         moc.timestamp.patch
@@ -110,7 +110,7 @@ autoreconf -fi
 	--with-jack \
 	--with-magic \
 	--with-ncurses \
-	--without-ncursesw \
+	--with-ncursesw \
 	--with-samplerate \
 	--with-ffmpeg \
 	--with-flac \

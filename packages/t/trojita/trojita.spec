@@ -1,7 +1,7 @@
 #
 # spec file for package trojita
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,6 @@ Name:           trojita
 Version:        0.7
 Release:        0
 Summary:        Qt5 IMAP e-mail client
-License:        (GPL-2.0 or GPL-3.0) and BSD-3-Clause and LGPL-2.0 and (LGPL-2.1 or GPL-3.0) and LGPL-2.1+ and GPL-2.0
-Group:          Productivity/Networking/Email/Clients
 # Almost everything: dual-licensed under the GPLv2 or GPLv3
 # (with KDE e.V. provision for relicensing)
 # src/XtConnect: BSD
@@ -30,16 +28,21 @@ Group:          Productivity/Networking/Email/Clients
 # Nokia imports: LGPLv2.1 or GPLv3
 # src/Imap/Parser/3rdparty/rfccodecs.cpp: LGPLv2+
 # src/qwwsmtpclient/: GPLv2
-Url:            http://trojita.flaska.net/
+License:        (GPL-2.0-only OR GPL-3.0-only) AND BSD-3-Clause AND LGPL-2.0-only AND (LGPL-2.1-only OR GPL-3.0-only) AND LGPL-2.1-or-later AND GPL-2.0-only
+Group:          Productivity/Networking/Email/Clients
+URL:            http://trojita.flaska.net/
 Source:         http://sourceforge.net/projects/trojita/files/src/%{name}-%{version}.tar.xz
 Source1:        http://sourceforge.net/projects/trojita/files/src/%{name}-%{version}.tar.xz.asc
 # PATCH-FIX-OPENSUSE
-Patch:          Skip-QtWebKit-tests.patch
+Patch0:         Skip-QtWebKit-tests.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         tests-Fix-build-with-Qt-5.13.patch
-BuildRequires:  cmake >= 2.8.7
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Support-both-vanilla-gpgme-and-KDE-Frameworks-gpgmep.patch
+BuildRequires:  cmake >= 2.8.11
 BuildRequires:  git
-BuildRequires:  gpgmepp5-devel
+BuildRequires:  libgpgmepp-devel >= 1.8.0
+BuildRequires:  libqgpgme-devel
 BuildRequires:  libqt5-linguist-devel >= 5.2.0
 BuildRequires:  libqt5-sql-sqlite
 BuildRequires:  pkgconfig
@@ -47,18 +50,17 @@ BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  ragel
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-Xvfb
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Core) >= 5.2.0
+BuildRequires:  cmake(Qt5DBus) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui) >= 5.2.0
+BuildRequires:  cmake(Qt5Network) >= 5.2.0
+BuildRequires:  cmake(Qt5Sql) >= 5.2.0
+BuildRequires:  cmake(Qt5Svg) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5WebKitWidgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Trojita is a Qt IMAP e-mail client which:
@@ -77,16 +79,18 @@ Trojita is a Qt IMAP e-mail client which:
 export CXXFLAGS="%{optflags} -fPIC"
 export LDFLAGS="-pie"
 %cmake \
-	-DWITH_TESTS=ON \
-	-DWITH_QT5=ON \
-	-DWITH_ZLIB=ON \
-	-DWITH_RAGEL=OFF \
-	-DWITH_SHARED_PLUGINS=ON
-make %{?_smp_mflags}
+    -DWITH_TESTS=ON \
+    -DWITH_QT5=ON \
+    -DWITH_ZLIB=ON \
+    -DWITH_RAGEL=OFF \
+    -DWITH_SHARED_PLUGINS=ON \
+    -DWITH_GPGMEPP=ON \
+    -DWITH_KF5_GPGMEPP=OFF
+
+%cmake_build
 
 %install
-cd build
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%cmake_install
 %suse_update_desktop_file %{buildroot}/%{_datadir}/applications/trojita.desktop
 
 %check
@@ -94,27 +98,26 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}%{buildroot}%{_li
 export DISPLAY=%{X_display}
 Xvfb %{X_display} &
 trap "kill $! || true" EXIT
-cd build
-ctest --output-on-failure
+%ctest
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README
-%{_libdir}/libtrojita_plugins.so
-%dir %{_libdir}/trojita
-%{_libdir}/trojita/trojita_plugin_QtKeychainPasswordPlugin.so
-%{_bindir}/trojita
-%{_bindir}/be.contacts
-%{_datadir}/applications/trojita.desktop
+%license LICENSE
+%doc README
+%dir %{_datadir}/appdata
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
-%{_datadir}/icons/hicolor/32x32/apps/trojita.png
-%{_datadir}/icons/hicolor/scalable/apps/trojita.svg
 %dir %{_datadir}/trojita
 %dir %{_datadir}/trojita/locale
-%{_datadir}/trojita/locale/trojita_common_*.qm
-%dir %{_datadir}/appdata
+%dir %{_libdir}/trojita
+%{_bindir}/be.contacts
+%{_bindir}/trojita
 %{_datadir}/appdata/trojita.appdata.xml
+%{_datadir}/applications/trojita.desktop
+%{_datadir}/icons/hicolor/32x32/apps/trojita.png
+%{_datadir}/icons/hicolor/scalable/apps/trojita.svg
+%{_datadir}/trojita/locale/trojita_common_*.qm
+%{_libdir}/libtrojita_plugins.so
+%{_libdir}/trojita/trojita_plugin_QtKeychainPasswordPlugin.so
 
 %changelog

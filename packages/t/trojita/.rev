@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>713040</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e3da42d775977f8cdab3149375092ce5</srcmd5>
+    <version>0.7</version>
+    <time>1585484879</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to use gpgme instead of the obsolete gpgmepp:
+  * 0001-Support-both-vanilla-gpgme-and-KDE-Frameworks-gpgmep.patch
+- Spec cleanup.</comment>
+    <requestid>789378</requestid>
+  </revision>
 </revisionlist>

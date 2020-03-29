@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezerclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-freezerclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerclient/python-freezerclient-2.2.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-cliff >= 2.8.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-keystoneauth1 >= 3.4.0
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo.serialization >= 2.25.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-setuptools >= 21.0.0
-BuildRequires:  python2-stestr
-BuildRequires:  python2-testtools
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -49,26 +37,30 @@ BuildRequires:  python3-python-subunit
 BuildRequires:  python3-setuptools >= 21.0.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
-Requires:       python-cliff >= 2.8.0
-Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-oslo.serialization >= 2.25.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
 Client library for Freezer built on the Freezer API. It provides a Python API
 (the freezerclient module) and a command-line tool (freezer).
+
+%package -n python3-freezerclient
+Summary:        Python API and CLI for OpenStack Freezer
+Group:          Development/Languages/Python
+Requires:       python3-cliff >= 2.8.0
+Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-oslo.serialization >= 2.25.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-six
+%if 0%{?suse_version}
+Obsoletes:      python2-freezerclient < 3.0.0
+%endif
+
+%description -n python3-freezerclient
+Client library for Freezer built on the Freezer API. It provides a Python API
+(the freezerclient module) and a command-line tool (freezer).
+
+This package contains the Python 3.x module.
 
 %package -n python-freezerclient-doc
 Summary:        Documentation for OpenStack Freezer API client libary
@@ -86,31 +78,24 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # Build HTML docs and man page
 PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
-%python_clone -a %{buildroot}%{_bindir}/freezer
-
-%post
-%python_install_alternative freezer
-
-%postun
-%python_uninstall_alternative freezer
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-freezerclient
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/freezerclient
-%{python_sitelib}/*.egg-info
-%python_alternative %{_bindir}/freezer
+%{python3_sitelib}/freezerclient
+%{python3_sitelib}/*.egg-info
+%{_bindir}/freezer
 
 %files -n python-freezerclient-doc
 %doc doc/build/html

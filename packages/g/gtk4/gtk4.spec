@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,14 @@
 %define gtk_binary_version 4.0.0
 %define _name gtk
 Name:           gtk4
-Version:        3.96.0
+Version:        3.98.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-URL:            http://www.gtk.org/
-Source:         http://download.gnome.org/sources/gtk/3.96/%{_name}-%{version}.tar.xz
+URL:            https://www.gtk.org/
+
+Source:         https://download.gnome.org/sources/gtk/3.98/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
@@ -42,6 +43,7 @@ BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
+BuildRequires:  sassc
 BuildRequires:  translation-update-upstream
 BuildRequires:  vulkan-devel
 BuildRequires:  xsltproc
@@ -54,7 +56,7 @@ BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.53.7
+BuildRequires:  pkgconfig(glib-2.0) >= 2.59.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
@@ -62,14 +64,14 @@ BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(pango) >= 1.37.3
+BuildRequires:  pkgconfig(pango) >= 1.44.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(rest-0.7)
 BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.9
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -154,7 +156,7 @@ ranging from small one-off projects to complete application suites.
 Summary:        Upstream theme configuration for the GTK+ toolkit library v4
 Group:          System/Libraries
 Requires:       libgtk-4-0 = %{version}
-Supplements:    packageand(libgtk-4-0:branding-upstream)
+Supplements:    (libgtk-4-0 and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -199,23 +201,24 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 translation-update-upstream
 
 %build
 %meson \
-  -Dbuild-tests=false \
-  -Ddocumentation=true \
-  -Dbroadway-backend=true \
-  -Dcloudproviders=false \
-  -Dcolord=yes \
-  -Dprint-backends=all \
-  -Dvulkan=yes \
-  -Dwayland-backend=true \
-  -Dx11-backend=true \
-  -Dxinerama=yes \
-  -Dintrospection=true \
-  -Dman-pages=true
+	-Dbuild-tests=false \
+	-Ddocumentation=true \
+	-Dbroadway-backend=true \
+	-Dcloudproviders=false \
+	-Dcolord=yes \
+	-Dprint-backends=all \
+	-Dvulkan=yes \
+	-Dwayland-backend=true \
+	-Dx11-backend=true \
+	-Dxinerama=yes \
+	-Dintrospection=true \
+	-Dman-pages=true \
+	%{nil}
 %meson_build
 
 %install
@@ -276,7 +279,7 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_bindir}/gtk4-update-icon-cache
 %{_datadir}/applications/org.gtk.IconBrowser4.desktop
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
-%{_mandir}/man1/gtk4-icon-browser.1%{ext_man}
+%{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-launch.1%{?ext_man}
@@ -295,9 +298,9 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 
 %files devel
 %doc CONTRIBUTING.md
-%doc %{_datadir}/gtk-doc/html/gdk4/
-%doc %{_datadir}/gtk-doc/html/gsk4/
-%doc %{_datadir}/gtk-doc/html/gtk4/
+#doc #{_datadir}/gtk-doc/html/gdk4/
+#doc #{_datadir}/gtk-doc/html/gsk4/
+#doc #{_datadir}/gtk-doc/html/gtk4/
 %{_bindir}/gtk4-demo
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-widget-factory
@@ -325,6 +328,9 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_libdir}/pkgconfig/gtk4-x11.pc
 %{_libdir}/libgtk-4.so
 %{_sysconfdir}/rpm/macros.gtk4
+%dir %{_datadir}/gtk-4.0/valgrind
+%{_datadir}/gtk-4.0/valgrind/gtk.supp
+%{_datadir}/gtk-4.0/valgrind/gtk64.supp
 
 %files -n gettext-its-%{name}
 %dir %{_datadir}/gettext/

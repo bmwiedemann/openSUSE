@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %bcond_with     test
 Name:           python-holoviews
-Version:        1.12.7
+Version:        1.13.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module param < 2.0}
 BuildRequires:  %{python_module param >= 1.8.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -131,10 +132,6 @@ rm -f holoviews/tests/plotting/testplotutils.py
 rm -rf holoviews/tests/ipython
 # "conda install phantomjs"
 rm -rf holoviews/tests/plotting/bokeh
-# do not install tests
-sed -i -e '/holoviews.tests/d' setup.py
-sed -i -e 's/plotting.widgets",/plotting.widgets",],/' setup.py
-sed -i -e 's/classifiers\=\[/\}, classifiers\=\[/' setup.py
 
 %build
 %python_build

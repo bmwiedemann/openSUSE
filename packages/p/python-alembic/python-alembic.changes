@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:27:08 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.4.2:
+  * bug
+    + Fixed an issue that prevented the test suite from running with
+      the recently released py.test 5.4.0.  References: #668
+    + Fixed more false-positive failures produced by the new “compare
+      type” logic first added in #605, particularly impacting MySQL
+      string types regarding flags such as “charset” and “collation”.
+      References: #671
+    + Fixed issue in Oracle backend where a table RENAME with a
+      schema-qualified name would include the schema in the “to”
+      portion, which is rejected by Oracle.  References: #670
+  * usecase
+    + Adjusted autogen comparison to accommodate for backends that
+      support computed column reflection, dependent on SQLAlchemy
+      version 1.3.16 or higher. This emits a warning if the SQL
+      expression inside of a Computed value changes between the
+      metadata and the database, as these expressions can’t be changed
+      without dropping and recreating the column. References: #669
+
+-------------------------------------------------------------------
 Fri Mar  6 21:49:43 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.1:

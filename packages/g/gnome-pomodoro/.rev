@@ -154,4 +154,14 @@
     <comment>Removal of -lang recommends (forwarded request 768597 from dimstar)</comment>
     <requestid>768671</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>907fdd6d57ed73e3a0b195d92ceb5814</srcmd5>
+    <version>0.17.0</version>
+    <time>1585484807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Support for GNOME Shell 3.36
+  * Updated Catalan translation (thanks @antoniofsm) (forwarded request 787368 from jubalh)</comment>
+    <requestid>789267</requestid>
+  </revision>
 </revisionlist>

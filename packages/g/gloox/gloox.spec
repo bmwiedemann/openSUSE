@@ -1,7 +1,7 @@
 #
 # spec file for package gloox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname 17
 Name:           gloox
-Version:        1.0.21
+Version:        1.0.23
 Release:        0
 Summary:        High-level XMPP Library for C++
 License:        GPL-3.0-only
@@ -26,7 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://camaya.net/gloox
 Source:         http://camaya.net/download/gloox-%{version}.tar.bz2
 Source200:      baselibs.conf
-Patch0:         gloox-fix_TLSGnuTLS_test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -71,12 +70,11 @@ or component.
 
 %prep
 %setup -q -n gloox-%{version}
-%patch0 -p1
 
 %build
 export SUSE_ASNEEDED=0
 %configure --enable-shared --disable-static --enable-getaddrinfo
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -87,7 +85,7 @@ h=%{_datadir}/doc/licenses/md5/$(md5sum COPYING|cut -f1 -d" ")
 test -e "$h" && ln -s -f "$h" COPYING
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post   -n lib%{name}%{soname} -p /sbin/ldconfig
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig

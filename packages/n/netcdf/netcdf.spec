@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -544,7 +544,7 @@ rm -f %{buildroot}%{p_libdir}/*.la
 # install netcdf_par.h which is skipped when mpicc in not detected
 install -m644 include/netcdf_par.h %{buildroot}%{p_includedir}/netcdf_par.h
 
-%if %{without mpi}
+%if %{without mpi} && %{without hpc}
 # rpm macro for version checking
 mkdir -p %{buildroot}%{_sysconfdir}/rpm
 cat > %{buildroot}%{_sysconfdir}/rpm/macros.netcdf <<EOF
@@ -678,7 +678,7 @@ module load %{hdf5_module_file}
 %endif
 %{p_libdir}/libnetcdf.so.%{sonum}*
 
-%if %{without mpi}
+%if %{without mpi} && %{without hpc}
 %files devel-data
 %config %{_sysconfdir}/rpm/macros.netcdf
 %endif

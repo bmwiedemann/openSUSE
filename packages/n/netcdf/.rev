@@ -481,4 +481,13 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>766524</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6eb26a98c64235d72f32e4b5c55001cb</srcmd5>
+    <version>4.7.3</version>
+    <time>1585484829</time>
+    <user>dimstar_suse</user>
+    <comment>- Build macro package netcdf-devel-data only for non-HPC builds
+  (boo#1167947). (forwarded request 789283 from eeich)</comment>
+    <requestid>789301</requestid>
+  </revision>
 </revisionlist>

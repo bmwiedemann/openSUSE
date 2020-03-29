@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-codestyle
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-codestyle
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/henry0312/pytest-codestyle
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-codestyle/pytest-codestyle-%{version}.tar.gz
 Patch0:         fix-super.patch

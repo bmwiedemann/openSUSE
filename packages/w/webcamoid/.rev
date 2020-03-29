@@ -90,4 +90,12 @@
     <comment>update to 8.7.1</comment>
     <requestid>741901</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dbfe0d2ab43c96bd43ed036613b59741</srcmd5>
+    <version>8.7.1</version>
+    <time>1585484921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789456</requestid>
+  </revision>
 </revisionlist>

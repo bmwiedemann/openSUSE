@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:45:30 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove sed commands that modified setup.py (lines not in setup.py
+    anymore)
+  * require pyct for building
+
+- update to version 1.13.1:
+  * Enhancements:
+    + Add option to set Plotly plots to responsive (#4319)
+    + Unified datetime formatting in bokeh hover info (#4318)
+    + Allow using dim expressions as accessors (#4311)
+    + Add explicit .df and .xr namespaces to dim expressions to allow
+      using dataframe and xarray APIs (#4320)
+    + Allow defining clim which defines only upper or lower bound and
+      not both (#4314)
+  * Bug fixes:
+    + Fix regression in Overlay.relabel that occurred in 1.12.3
+      resulting in relabeling of contained elements by default (#4246)
+    + Fix bug when updating bokeh Arrow elements (#4313)
+  * Compatibility:
+    + Fix compatibility with Bokeh 2.0.1 (#4308)
+  * Documentation:
+    + Update API reference manual (#4316)
+
+- changes from version 1.13.0:
+  * Major features:
+    + Add link_selection to make custom linked brushing simple (#3951)
+    + link_selection builds on new support for much more powerful
+      data-transform pipelines: new Dataset.transform method (#237,
+      #3932), dim expressions in Dataset.select (#3920), arbitrary
+      method calls on dim expressions (#4080), and Dataset.pipeline
+      and Dataset.dataset properties to track provenance of data
+    + Add Annotators to allow easily drawing, editing, and annotating
+      visual elements (#1185)
+    + Completely replaced custom Javascript widgets with Panel-based
+      widgets allowing for customizable layout (#84, #805)
+    + Add HSpan, VSpan, Slope, Segments and Rectangles elements
+      (#3510, #3532, #4000)
+    + Add support for cuDF GPU dataframes, cuPy backed xarrays, and
+      GPU datashading (#3982)
+  * Other features
+    + Add spatialpandas support and redesigned geometry interfaces for
+      consistent roundtripping (#4120)
+    + Support GIF rendering with Bokeh and Plotly backends (#2956,
+      #4017)
+    + Support for Plotly Bars, Bounds, Box, Ellipse, HLine, Histogram,
+      RGB, VLine and VSpan plots
+    + Add UniformNdMapping.collapse to collapse nested datastructures
+      (#4250)
+    + Add CurveEdit and SelectionXY streams (#4119, #4167)
+    + Add apply_when helper to conditionally apply operations (#4289)
+    + Display Javascript callback errors in the notebook (#4119)
+    + Add support for linked streams in Plotly backend to enable rich
+      interactivity (#3880, #3912)
+  * Enhancements:
+    + Support for packed values dimensions, e.g. 3D RGB/HSV arrays
+      (#550, #3983)
+    + Allow selecting/slicing datetimes with strings (#886)
+    + Support for datashading Area, Spikes, Segments and Polygons
+      (#4120)
+    + HeatMap now supports mixed categorical/numeric axes (#2128)
+    + Use __signature__ to generate .opts tab completions (#4193)
+    + Allow passing element-specific keywords through datashade and
+      rasterize (#4077) (#3967)
+    + Add per_element flag to .apply accessor (#4119)
+    + Add selected plot option to control selected glyphs in bokeh
+      (#4281)
+    + Improve default Sankey node_padding heuristic (#4253)
+    + Add hooks plot option for Plotly backend (#4157)
+    + Support for split Violin plots in bokeh (#4112)
+  * Bug fixes:
+    + Fixed radial HeatMap sizing issues (#4162)
+    + Switched to Panel for rendering machinery fixing various export
+      issues (#3683)
+    + Handle updating of user supplied HoverTool in bokeh (#4266)
+    + Fix issues with single value datashaded plots (#3673)
+    + Fix legend layout issues (#3786)
+    + Fix linked axes issues with mixed date, categorical and numeric
+      axes in bokeh (#3845)
+    + Fixed handling of repeated dimensions in PandasInterface (#4139)
+    + Fixed various issues related to widgets (#3868, #2885, #1677,
+      #3212, #1059, #3027, #3777)
+  * Library compatibility:
+    + Better support for Pandas 1.0 (#4254)
+    + Compatibility with Bokeh 2.0 (#4226)
+  * Migration notes:
+    + Geometry .iloc now indexes by geometry instead of by
+      datapoint. Convert to dataframe or dictionary before using .iloc
+      to access individual datapoints (#4104)
+    + Padding around plot elements is now enabled by default, to
+      revert set hv.config.node_padding = 0 (#1090)
+    + Removed Bars group_index and stack_index options, which are now
+      controlled using the stacked option (#3985)
+    + .table is deprecated; use .collapse method instead and cast to
+      Table (#3985)
+    + HoloMap.split_overlays is deprecated and is now a private method
+      (#3985)
+    + Histogram.edges and Histogram.values properties are deprecated;
+      use dimension_values (#3985)
+    + Element.collapse_data is deprecated; use the container's
+      .collapse method instead (#3985)
+    + hv.output filename argument is deprecated; use hv.save instead
+      (#3985)
+
+-------------------------------------------------------------------
 Sun Nov 24 17:36:41 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.12.7:

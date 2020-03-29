@@ -1,7 +1,7 @@
 #
 # spec file for package freeciv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        2.6.0
+Version:        2.6.2
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source4:        freeciv-manual
 Source5:        freeciv-manual.desktop
 Source6:        freeciv-manual.png
 Patch0:         freeciv-appdata-desktop-references.patch
-Patch1:         fix-qt5-detection.patch
-BuildRequires:  SDL_mixer-devel
 BuildRequires:  audiofile-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -45,9 +43,12 @@ BuildRequires:  libggz2-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz-devel
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(sdl2)
 Requires:       freeciv_client-%{version}
 Recommends:     freeciv-lang
 
@@ -90,7 +91,6 @@ Freeciv executable using Gtk3 library
 %prep
 %setup -q
 %patch0 -p1
-%patch1
 
 %build
 export MOCCMD="moc-qt5"

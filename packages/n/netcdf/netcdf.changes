@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 28 07:03:45 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Build macro package netcdf-devel-data only for non-HPC builds
+  (boo#1167947).
+
+-------------------------------------------------------------------
 Wed Jan 22 09:49:02 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 4.7.3:
