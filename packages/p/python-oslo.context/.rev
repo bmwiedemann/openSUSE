@@ -194,4 +194,12 @@
   - Cap Bandit below 1.6.0 and update Sphinx requirement</comment>
     <requestid>774911</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3843423dc96f001f7de6c9b5a5b46e9b</srcmd5>
+    <version>2.23.0</version>
+    <time>1585484727</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>788137</requestid>
+  </revision>
 </revisionlist>
