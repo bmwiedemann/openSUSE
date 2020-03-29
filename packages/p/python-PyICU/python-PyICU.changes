@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:06:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.4.3
+  * added Char.getPropertyValueName() and Char.getPropertyValueEnum()
+  * fixed build errors with PythonReplaceable for ICU < 55
+
+-------------------------------------------------------------------
 Wed Jan 15 11:35:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.4.2
