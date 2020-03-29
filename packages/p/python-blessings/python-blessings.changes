@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:08:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove nose dep since we are not running the tests 
+
+-------------------------------------------------------------------
 Tue Jul 17 13:18:24 UTC 2018 - tchvatal@suse.com
 
 - Version update to 1.7:
