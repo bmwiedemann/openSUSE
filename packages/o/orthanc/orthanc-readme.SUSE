@@ -8,6 +8,8 @@ Configuration files for Orthanc are in
 /etc/orthanc
 Configuration files are in JSON format. Orthanc reads all files in the configuration folder to build up its internal setup.
 
+We ship a template Configuration.json. In case you are using SQLite, make sure you keep the location of /var/lib/orthanc/OrthancStorage
+
 Starting/stopping Orthanc
 Orthanc comes as systemd-service. so you can start it with:
 systemctl start orthanc
