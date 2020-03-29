@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.5
-%define patchversion 5.5.11
+%define patchversion 5.5.13
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.5.11
+Version:        5.5.13
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g794b2e9
+Release:        <RELEASE>.g0af205d
 %else
 Release:        0
 %endif
@@ -174,10 +174,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-794b2e91964b975f203c905143a62d6f5b0fd175
-Provides:       kernel-srchash-794b2e91964b975f203c905143a62d6f5b0fd175
+Provides:       kernel-%build_flavor-base-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
+Provides:       kernel-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
 # END COMMON DEPS
-Provides:       %name-srchash-794b2e91964b975f203c905143a62d6f5b0fd175
+Provides:       %name-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28

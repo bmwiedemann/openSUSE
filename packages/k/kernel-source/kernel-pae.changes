@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:14:39 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.13 (bnc#1012628).
+- commit 0af205d
+
+-------------------------------------------------------------------
+Wed Mar 25 14:33:28 CET 2020 - jslaby@suse.cz
+
+- driver core: Add dev_has_sync_state() (bnc#1167245).
+- commit 9fa62a7
+
+-------------------------------------------------------------------
+Wed Mar 25 14:17:33 CET 2020 - jslaby@suse.cz
+
+- driver core: Skip unnecessary work when device doesn't have
+  sync_state() (bnc#1167245).
+- commit 2d483bd
+
+-------------------------------------------------------------------
+Wed Mar 25 13:46:40 CET 2020 - jslaby@suse.cz
+
+- Linux 5.5.12 (bnc#1012628).
+- locks: fix a potential use-after-free problem when wakeup a
+  waiter (bnc#1012628).
+- locks: reinstate locks_delete_block optimization (bnc#1012628).
+- spi: spi-omap2-mcspi: Support probe deferral for DMA channels
+  (bnc#1012628).
+- drm/mediatek: Find the cursor plane instead of hard coding it
+  (bnc#1012628).
+- drm/mediatek: Ensure the cursor plane is on top of other
+  overlays (bnc#1012628).
+- phy: ti: gmii-sel: fix set of copy-paste errors (bnc#1012628).
+- phy: ti: gmii-sel: do not fail in case of gmii (bnc#1012628).
+- ARM: dts: dra7-l4: mark timer13-16 as pwm capable (bnc#1012628).
+- spi: qup: call spi_qup_pm_resume_runtime before suspending
+  (bnc#1012628).
+- powerpc: Include .BTF section (bnc#1012628).
+- cifs: fix potential mismatch of UNC paths (bnc#1012628).
+- cifs: add missing mount option to /proc/mounts (bnc#1012628).
+- ARM: dts: dra7: Add "dma-ranges" property to PCIe RC DT nodes
+  (bnc#1012628).
+- spi: pxa2xx: Add CS control clock quirk (bnc#1012628).
+- spi/zynqmp: remove entry that causes a cs glitch (bnc#1012628).
+- ARM: dts: bcm283x: Add missing properties to the PWR LED
+  (bnc#1012628).
+- drm/exynos: dsi: propagate error value and silence meaningless
+  warning (bnc#1012628).
+- drm/exynos: dsi: fix workaround for the legacy clock name
+  (bnc#1012628).
+- drm/exynos: hdmi: don't leak enable HDMI_EN regulator if probe
+  fails (bnc#1012628).
+- drivers/perf: fsl_imx8_ddr: Correct the CLEAR bit definition
+  (bnc#1012628).
+- drivers/perf: arm_pmu_acpi: Fix incorrect checking of gicc
+  pointer (bnc#1012628).
+- io-wq: fix IO_WQ_WORK_NO_CANCEL cancellation (bnc#1012628).
+- ARM: bcm2835_defconfig: Explicitly restore CONFIG_DEBUG_FS
+  (bnc#1012628).
+- altera-stapl: altera_get_note: prevent write beyond end of 'key'
+  (bnc#1012628).
+- dm bio record: save/restore bi_end_io and bi_integrity
+  (bnc#1012628).
+- dm integrity: use dm_bio_record and dm_bio_restore
+  (bnc#1012628).
+- riscv: avoid the PIC offset of static percpu data in module
+  beyond 2G limits (bnc#1012628).
+- ASoC: stm32: sai: manage rebind issue (bnc#1012628).
+- spi: spi_register_controller(): free bus id on error paths
+  (bnc#1012628).
+- riscv: Force flat memory model with no-mmu (bnc#1012628).
+- riscv: Fix range looking for kernel image memblock
+  (bnc#1012628).
+- drm/amdgpu: clean wptr on wb when gpu recovery (bnc#1012628).
+- drm/amd/display: Clear link settings on MST disable connector
+  (bnc#1012628).
+- drm/amd/display: fix dcc swath size calculations on dcn1
+  (bnc#1012628).
+- xenbus: req->body should be updated before req->state
+  (bnc#1012628).
+- xenbus: req->err should be updated before req->state
+  (bnc#1012628).
+- riscv: fix seccomp reject syscall code path (bnc#1012628).
+- parse-maintainers: Mark as executable (bnc#1012628).
+- io_uring: fix lockup with timeouts (bnc#1012628).
+- binderfs: use refcount for binder control devices too
+  (bnc#1012628).
+- USB: Disable LPM on WD19's Realtek Hub (bnc#1012628).
+- usb: quirks: add NO_LPM quirk for RTL8153 based ethernet
+  adapters (bnc#1012628).
+- USB: serial: option: add ME910G1 ECM composition 0x110b
+  (bnc#1012628).
+- usb: chipidea: udc: fix sleeping function called from invalid
+  context (bnc#1012628).
+- usb: host: xhci-plat: add a shutdown (bnc#1012628).
+- USB: serial: pl2303: add device-id for HP LD381 (bnc#1012628).
+- usb: xhci: apply XHCI_SUSPEND_DELAY to AMD XHCI controller
+  1022:145c (bnc#1012628).
+- usb: typec: ucsi: displayport: Fix NULL pointer dereference
+  (bnc#1012628).
+- usb: typec: ucsi: displayport: Fix a potential race during
+  registration (bnc#1012628).
+- USB: cdc-acm: fix close_delay and closing_wait units in
+  TIOCSSERIAL (bnc#1012628).
+- USB: cdc-acm: fix rounding error in TIOCSSERIAL (bnc#1012628).
+- ALSA: line6: Fix endless MIDI read loop (bnc#1012628).
+- ALSA: hda/realtek - Enable headset mic of Acer X2660G with
+  ALC662 (bnc#1012628).
+- ALSA: hda/realtek - Enable the headset of Acer N50-600 with
+  ALC662 (bnc#1012628).
+- ALSA: seq: virmidi: Fix running status after receiving sysex
+  (bnc#1012628).
+- ALSA: seq: oss: Fix running status after receiving sysex
+  (bnc#1012628).
+- ALSA: pcm: oss: Avoid plugin buffer overflow (bnc#1012628).
+- ALSA: pcm: oss: Remove WARNING from snd_pcm_plug_alloc() checks
+  (bnc#1012628).
+- tty: fix compat TIOCGSERIAL leaking uninitialized memory
+  (bnc#1012628).
+- tty: fix compat TIOCGSERIAL checking wrong function ptr
+  (bnc#1012628).
+- iio: chemical: sps30: fix missing triggered buffer dependency
+  (bnc#1012628).
+- iio: st_sensors: remap SMO8840 to LIS2DH12 (bnc#1012628).
+- iio: trigger: stm32-timer: disable master mode when stopping
+  (bnc#1012628).
+- iio: accel: adxl372: Set iio_chan BE (bnc#1012628).
+- iio: magnetometer: ak8974: Fix negative raw values in sysfs
+  (bnc#1012628).
+- iio: adc: stm32-dfsdm: fix sleep in atomic context
+  (bnc#1012628).
+- iio: adc: at91-sama5d2_adc: fix differential channels in
+  triggered mode (bnc#1012628).
+- iio: light: vcnl4000: update sampling periods for vcnl4200
+  (bnc#1012628).
+- iio: light: vcnl4000: update sampling periods for vcnl4040
+  (bnc#1012628).
+- mmc: rtsx_pci: Fix support for speed-modes that relies on tuning
+  (bnc#1012628).
+- mmc: sdhci-of-at91: fix cd-gpios for SAMA5D2 (bnc#1012628).
+- mmc: sdhci-cadence: set SDHCI_QUIRK2_PRESET_VALUE_BROKEN for
+  UniPhier (bnc#1012628).
+- mmc: sdhci-acpi: Switch signal voltage back to 3.3V on suspend
+  on external microSD on Lenovo Miix 320 (bnc#1012628).
+- mmc: sdhci-acpi: Disable write protect detection on Acer Aspire
+  Switch 10 (SW5-012) (bnc#1012628).
+- CIFS: fiemap: do not return EINVAL if get nothing (bnc#1012628).
+- kbuild: Disable -Wpointer-to-enum-cast (bnc#1012628).
+- staging: rtl8188eu: Add device id for MERCUSYS MW150US v2
+  (bnc#1012628).
+- staging: greybus: loopback_test: fix poll-mask build breakage
+  (bnc#1012628).
+- staging/speakup: fix get_word non-space look-ahead
+  (bnc#1012628).
+- intel_th: msu: Fix the unexpected state warning (bnc#1012628).
+- intel_th: Fix user-visible error codes (bnc#1012628).
+- intel_th: pci: Add Elkhart Lake CPU support (bnc#1012628).
+- modpost: move the namespace field in Module.symvers last
+  (bnc#1012628).
+- rtc: max8907: add missing select REGMAP_IRQ (bnc#1012628).
+- arm64: compat: Fix syscall number of compat_clock_getres
+  (bnc#1012628).
+- xhci: Do not open code __print_symbolic() in xhci trace events
+  (bnc#1012628).
+- btrfs: fix log context list corruption after rename whiteout
+  error (bnc#1012628).
+- drm/amd/amdgpu: Fix GPR read from debugfs (v2) (bnc#1012628).
+- drm/lease: fix WARNING in idr_destroy (bnc#1012628).
+- stm class: sys-t: Fix the use of time_after() (bnc#1012628).
+- memcg: fix NULL pointer dereference in
+  __mem_cgroup_usage_unregister_event (bnc#1012628).
+- mm, memcg: fix corruption on 64-bit divisor in memory.high
+  throttling (bnc#1012628).
+- mm, memcg: throttle allocators based on ancestral memory.high
+  (bnc#1012628).
+- mm/hotplug: fix hot remove failure in SPARSEMEM|!VMEMMAP case
+  (bnc#1012628).
+- mm: do not allow MADV_PAGEOUT for CoW pages (bnc#1012628).
+- epoll: fix possible lost wakeup on epoll_ctl() path
+  (bnc#1012628).
+- mm: slub: be more careful about the double cmpxchg of freelist
+  (bnc#1012628).
+- mm, slub: prevent kmalloc_node crashes and memory leaks
+  (bnc#1012628).
+- page-flags: fix a crash at SetPageError(THP_SWAP) (bnc#1012628).
+- x86/mm: split vmalloc_sync_all() (bnc#1012628).
+- io_uring: NULL-deref for IOSQE_{ASYNC,DRAIN} (bnc#1012628).
+- futex: Fix inode life-time issue (bnc#1012628).
+- futex: Unbreak futex hashing (bnc#1012628).
+- ALSA: hda/realtek: Fix pop noise on ALC225 (bnc#1012628).
+- thunderbolt: Fix error code in tb_port_is_width_supported()
+  (bnc#1012628).
+- arm64: smp: fix smp_send_stop() behaviour (bnc#1012628).
+- arm64: smp: fix crash_smp_send_stop() behaviour (bnc#1012628).
+- nvmet-tcp: set MSG_MORE only if we actually have more to send
+  (bnc#1012628).
+- modpost: Get proper section index by get_secindex() instead
+  of st_shndx (bnc#1012628).
+- btrfs: fix removal of raid[56|1c34} incompat flags after
+  removing block group (bnc#1012628).
+- Revert "drm/i915/tgl: Add extra hdc flush workaround"
+  (bnc#1012628).
+- drm/bridge: dw-hdmi: fix AVI frame colorimetry (bnc#1012628).
+- drm/i915/execlists: Track active elements during dequeue
+  (bnc#1012628).
+- drm/i915: Handle all MCR ranges (bnc#1012628).
+- staging: greybus: loopback_test: fix potential path truncation
+  (bnc#1012628).
+- staging: greybus: loopback_test: fix potential path truncations
+  (bnc#1012628).
+- kconfig: introduce m32-flag and m64-flag (bnc#1012628).
+- int128: fix __uint128_t compiler test in Kconfig (bnc#1012628).
+- Refresh patches.suse/supported-flag.
+- Update config files.
+- commit 19257da
+
+-------------------------------------------------------------------
 Sat Mar 21 12:10:56 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.11 (bnc#1012628).
