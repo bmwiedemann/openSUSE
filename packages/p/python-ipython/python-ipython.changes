@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:38:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update dep version of python-prompt_toolkit 
+
+-------------------------------------------------------------------
 Tue Mar  3 14:29:15 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Run tests using multibuild instead of running them in a separate

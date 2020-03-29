@@ -49,7 +49,7 @@ Requires:       python-decorator
 Requires:       python-jedi >= 0.10
 Requires:       python-pexpect
 Requires:       python-pickleshare
-Requires:       python-prompt_toolkit < 2.1
+Requires:       python-prompt_toolkit < 3.1
 Requires:       python-prompt_toolkit >= 2.0
 Requires:       python-simplegeneric > 0.8
 Requires:       python-traitlets >= 4.2
