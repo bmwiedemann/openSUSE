@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.reports
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.reports
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.reports/oslo.reports-1.30.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Jinja2 >= 2.10
-BuildRequires:  python2-eventlet
-BuildRequires:  python2-greenlet
-BuildRequires:  python2-oslo.config
-BuildRequires:  python2-oslo.i18n >= 3.15.3
-BuildRequires:  python2-oslo.serialization >= 2.18.0
-BuildRequires:  python2-oslo.utils >= 3.33.0
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-psutil >= 3.2.2
-BuildRequires:  python2-six >= 1.10.0
-BuildRequires:  python2-stestr
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-greenlet
@@ -49,16 +37,23 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-psutil >= 3.2.2
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
-Requires:       python-Jinja2 >= 2.10
-Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.serialization >= 2.18.0
-Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-psutil >= 3.2.2
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%{python_subpackages}
 
 %description
+The project oslo.reports hosts a general purpose error report generation
+framework, known as the "guru meditation report".
+
+%package -n python3-oslo.reports
+Summary:        OpenStack oslo.reports library
+Group:          Development/Languages/Python
+Requires:       python3-Jinja2 >= 2.10
+Requires:       python3-oslo.i18n >= 3.15.3
+Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-psutil >= 3.2.2
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-oslo.reports
 The project oslo.reports hosts a general purpose error report generation
 framework, known as the "guru meditation report".
 
@@ -79,7 +74,7 @@ This package contains the documentation.
 %py_req_cleanup
 
 %build
-%{python_build}
+%{py3_build}
 
 # generate html docs
 PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
@@ -87,16 +82,16 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%{python_install}
+%{py3_install}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
-%files %{python_files}
+%files -n python3-oslo.reports
 %license LICENSE
 %doc README.rst ChangeLog
-%{python_sitelib}/oslo_reports
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_reports
+%{python3_sitelib}/*.egg-info
 
 %files -n python-oslo.reports-doc
 %license LICENSE
