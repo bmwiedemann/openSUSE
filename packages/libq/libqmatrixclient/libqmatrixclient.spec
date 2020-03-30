@@ -1,7 +1,7 @@
 #
 # spec file for package libqmatrixclient
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define sname libQuotient
 
 Name:           libqmatrixclient
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
@@ -31,8 +31,6 @@ URL:            https://github.com/quotient-im/libQuotient/
 Source0:        https://github.com/quotient-im/libQuotient/archive/%{version}/%{name}-%{version}.tar.gz
 # Old SourceUrl for documentation.
 #Source0:        https://github.com/QMatrixClient/libqmatrixclient/archive/%%{version}/%%{name}-%%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Compatibility-with-Qt-5.14.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6
@@ -68,7 +66,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{sname}-%{version}
-%patch0 -p1
 
 %build
 %if 0%{?suse_version} < 1500

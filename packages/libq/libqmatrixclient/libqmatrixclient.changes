@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar 30 05:44:43 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.5.3
+  - (#301/#383) Room::aliases() and Room::setAliases() are fixed, 
+    using the new alias management introduced in MSC2432
+  - (#321) More careful linkification of Matrix ids
+  - (#326) Support for the server notices room tag (MSC1452)
+  - (#330) Support of resolving the homeserver using .well-known
+    (MSC433)
+  - (#341/#373/#376) Support of message editing and annotation
+    (MSC1849)
+  - (#344) Compatibility with user deactivation error codes
+    (MSC2181)
+  - (#345) Fix cache becoming inconsistent with actual room state
+    due to unread counts not properly tracked
+  - (#347) Fix for a corner case in internal user avatar management
+    that may lead to a crash in rare cases
+  - (#354) Provide a means to get the full list of rooms to client
+    applications (aimed at fixing quotient-im/Quaternion#637 in the
+    next Quaternion 0.0.9.4 rebuild)
+  - (#358) Only send access token where the spec it should be sent
+  - (#359) Fix room highlighting for names with a hashtag
+  - (#361) Initialise read marker if there's none on the room yet
+  - (#365) Remove prev_content from special keys preserved against
+    redaction (MSC1954) - thanks to nepugia for reporting
+  - (#387) Compatibility with Qt 5.14
+  - (#386/#388) SSO support
+  - (#390) Notify the client application about alias updates
+- The name of the library in this branch is still libQMatrixClient.
+  Version 0.6 will be named libQuotient, as announced previously.
+- Drop 0001-Compatibility-with-Qt-5.14.patch because no more
+  necessary.
+
+-------------------------------------------------------------------
 Wed Jan 29 09:01:29 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.5.2
