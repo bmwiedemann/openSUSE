@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanfriendly%{psuffix}
-Version:        6.1
+Version:        8.1
 Release:        0
 Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
@@ -43,6 +43,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module capturer >= 2.1}
 BuildRequires:  %{python_module coloredlogs >= 2}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 BuildRequires:  %{pythons}
