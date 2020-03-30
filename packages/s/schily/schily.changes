@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 28 11:03:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.03.27
+  * mkisofs: A new option -noatime has been introduced in order
+    to use the modification time of the files instead of the last
+    access time.
+  * mkisofs: New options -creation-date, -effective-date,
+    -expiration-date have been introduced in order to use the
+    supplied time stamp instead of the current time in the PVD.
+  * mkisofs: A new option -reproducible-date has been added. This
+    option sets -creation-date, -modification-date,
+    -effective-date and -noatime at the same time and helps to
+    make usage easier.
+  * Bourne Shell: The case statement now supports the alternate
+    end case symbol ";;&" that has been introduced by bash. If
+    ";;&" is used instead of ";;", the next pattern list is
+    evaluated and if there is a match, the related command list
+    is executed.
+
+-------------------------------------------------------------------
 Mon Mar 16 09:09:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.03.11

@@ -253,4 +253,13 @@
     <comment>- Update to release 2020.03.11</comment>
     <requestid>785530</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>6f541a351e411fe9d62f9b9c99306d15</srcmd5>
+    <version>unknown</version>
+    <time>1585601487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.03.27
+  * Support for reproducible .iso builds</comment>
+    <requestid>789350</requestid>
+  </revision>
 </revisionlist>
