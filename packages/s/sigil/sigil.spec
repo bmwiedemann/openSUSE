@@ -18,13 +18,13 @@
 
 %define sigil_doc_version 2019.09.03
 Name:           sigil
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://sigil-ebook.com/
-Source0:        https://github.com/Sigil-Ebook/Sigil/archive/%{version}.tar.gz
+Source0:        https://github.com/Sigil-Ebook/Sigil/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Sigil-Ebook/Sigil/raw/master/docs/Sigil_User_Guide_%{sigil_doc_version}.epub
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
@@ -53,6 +53,8 @@ BuildRequires:  python3-cssselect >= 1.0.3
 BuildRequires:  python3-cssutils >= 1.0.2
 # upstream use 3.7.2
 BuildRequires:  python3-devel >= 3.4
+# upstream use python3-dulwich 0.19.15
+BuildRequires:  python3-dulwich
 BuildRequires:  python3-html5lib >= 1.0.1
 # upstream use for python3-lxml 4.2.6
 BuildRequires:  python3-lxml
@@ -77,10 +79,12 @@ BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(libusb-1.0)
 Requires:       python3-Pillow
 Requires:       python3-chardet
 Requires:       python3-cssselect
 Requires:       python3-cssutils
+Requires:       python3-dulwich
 Requires:       python3-html5lib
 Requires:       python3-lxml
 Requires:       python3-regex
