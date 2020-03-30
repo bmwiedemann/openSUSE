@@ -3742,4 +3742,13 @@
   * Add usrfiles for protocols and rpc, too (forwarded request 778724 from kukuk)</comment>
     <requestid>778725</requestid>
   </revision>
+  <revision rev="465" vrev="1">
+    <srcmd5>1749f41f540cc0c49b5489492b9671bc</srcmd5>
+    <version>84.87+git20200312.411a96b</version>
+    <time>1585601446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200312.411a96b:
+  * get_kernel_version: support xz compressed kernel (boo#1162581).</comment>
+    <requestid>787795</requestid>
+  </revision>
 </revisionlist>
