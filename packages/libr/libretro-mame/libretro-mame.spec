@@ -17,7 +17,7 @@
 
 
 Name:           libretro-mame
-Version:        0~git20200205
+Version:        0~git20200329
 Release:        0
 Summary:        MAME libretro core for arcade emulation
 License:        GPL-2.0-only
