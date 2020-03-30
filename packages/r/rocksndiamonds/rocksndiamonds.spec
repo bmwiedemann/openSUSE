@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rocksndiamonds
-Version:        4.1.1.0
+Version:        4.1.4.1
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://www.artsoft.org/rocksndiamonds/
-Source0:        http://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.artsoft.org/rocksndiamonds/
+Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 # PATCH-FIX-UPSTREAM Permissions
 Patch0:         %{name}-3.3.1.2-src_libgame_setup.c-CVE-2011-4606.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(SDL_net)
+BuildRequires:  pkgconfig
 #BuildRequires:  libsmpeg-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data
-%if 0%{?suse_version} >= 1330
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  group(games)
 Requires(pre):  user(games)
-%else
-Requires(pre):	/usr/sbin/groupadd /usr/sbin/useradd
-%endif
 
 %description
 This is a nice little game with color graphics and sound for your Unix system
@@ -63,7 +62,7 @@ rm -f %{name}
 sed -i 's|-lsmpeg||' src/Makefile
 
 %build
-make %{?_smp_mflags} sdl \
+%make_build \
     OPTIONS="%{optflags}" \
     RO_GAME_DIR=%{_datadir}/%{name} \
     RW_GAME_DIR=%{_localstatedir}/games/%{name}
@@ -85,7 +84,7 @@ for i in 32 48 64 72 96 ; do
 done
 
 # install desktop file
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}
 
@@ -93,15 +92,13 @@ install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}
 
 %fdupes -s %{buildroot}%{_prefix}
 
-%if 0%{?suse_version} < 1330
 %pre
 getent group games >/dev/null || groupadd -r games
-getent passwd games >/dev/null || useradd -r -g games -d /var/games -s /sbin/nologin
-%endif
+getent passwd games >/dev/null || useradd -r -g games -d %{_localstatedir}/games -s /sbin/nologin
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING CREDITS ChangeLog
+%license COPYING
+%doc CREDITS ChangeLog
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
