@@ -166,7 +166,6 @@ This package provides the system account and group 'lp'.
 %package -n system-user-nobody
 Summary:        System user and group nobody
 Group:          System/Fhs
-Requires(pre):  /usr/sbin/usermod
 %{sysusers_requires}
 
 %description -n system-user-nobody
@@ -276,7 +275,7 @@ install -m 644 %{SOURCE20} %{buildroot}%{_sysusersdir}/system-user-tss.conf
 %pre -n system-user-lp -f lp.pre
 %pre -n system-user-nobody -f nobody.pre
 %post -n system-user-nobody
-/usr/sbin/usermod -s /bin/bash nobody
+test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 
 %pre -n system-user-upsd -f upsd.pre
 %pre -n system-user-uuidd -f uuidd.pre

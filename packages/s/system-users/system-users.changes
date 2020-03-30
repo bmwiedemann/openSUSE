@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 10:10:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use test -x instead of -f
+
+-------------------------------------------------------------------
+Fri Mar 20 19:00:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Call usermod only if installed
+
+-------------------------------------------------------------------
 Tue Feb 18 12:52:51 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Align /var/lib/tss permissions with trousers (boo#1162360).

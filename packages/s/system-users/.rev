@@ -132,4 +132,12 @@
     <comment>- Align /var/lib/tss permissions with trousers (boo#1162360). (forwarded request 775182 from michals)</comment>
     <requestid>775206</requestid>
   </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>1f7df20e5c57e77970fc14a8bc0a3c30</srcmd5>
+    <version>20170617</version>
+    <time>1585601457</time>
+    <user>dimstar_suse</user>
+    <comment>- Use test -x instead of -f (forwarded request 788124 from kukuk)</comment>
+    <requestid>788125</requestid>
+  </revision>
 </revisionlist>
