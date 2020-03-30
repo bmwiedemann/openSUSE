@@ -20,7 +20,7 @@
 
 
 Name:           hevea
-Version:        2.33
+Version:        2.34
 Release:        0
 Summary:        A fast LaTeX to HTML translator
 License:        QPL-1.0 AND LGPL-2.0-only

@@ -24,4 +24,13 @@
   * Modifications to cope with upcoming ocaml 4.10.0.</comment>
     <requestid>774439</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20146f890c225c8dde221a985b5e46e7</srcmd5>
+    <version>2.34</version>
+    <time>1585602166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.
+  * Add command \formatlinks for greater control over navigation links.</comment>
+    <requestid>789579</requestid>
+  </revision>
 </revisionlist>
