@@ -1,7 +1,7 @@
 #
 # spec file for package vms-empire
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vms-empire
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Simulation of a full-scale war between two emperors
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
-Url:            http://www.catb.org/~esr/vms-empire/
+URL:            http://www.catb.org/~esr/vms-empire/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
-%if 0%{?suse_version}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  update-desktop-files
 
 %description
 The ancestor of all 4x (expand/explore/exploit/exterminate) games.
@@ -43,20 +40,18 @@ same rules that you do. This game is the ancestor of all the multiplayer
 %setup -q
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 %make_install
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file %{name}
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS BUGS COPYING HACKING NEWS README
+%license COPYING
+%doc AUTHORS BUGS HACKING NEWS README
 %{_bindir}/%{name}
-%{_mandir}/man6/%{name}.6%{ext_man}
+%{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/appdata/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/
