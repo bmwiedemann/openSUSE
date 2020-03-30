@@ -437,4 +437,22 @@ Latest changes:
     <comment>- changed copyright to SUSE LLC in specfile</comment>
     <requestid>770518</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1716c2bb6942e89a6d9b32a85fa3de85</srcmd5>
+    <version>0.7.8</version>
+    <time>1585602264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.8
+  * README.md: fixed syntax in command
+  * Blacklist ipmi_msghandler, ipmi_devintf kernel modules (issue#50)
+    Make sure these kernel modules are not loaded. Otherwise it may
+    not be possible to turn off NVIDIA GPU.
+
+- Update to version 0.7.7
+  * Fix unset option (issue#48)
+    - only disable service with bbswitch version
+    - reset also to X.Org's glx module as with &quot;intel&quot; option
+  * make use of $service_test variable where possible</comment>
+    <requestid>789702</requestid>
+  </revision>
 </revisionlist>
