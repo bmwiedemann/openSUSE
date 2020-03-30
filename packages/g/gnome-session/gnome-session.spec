@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        gnome.desktop
 
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
+# PATCH-FIX-UPSTREAM gnome-session-remove-gsd-XSettings.patch bsc#1163262 glgo#GNOME/gnome-session#51 xwang@suse.com -- remove org.gnome.SettingsDaemon.XSettings from gnome.session
+Patch1:         gnome-session-remove-gsd-XSettings.patch
 # PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
 
@@ -105,6 +107,7 @@ functional GNOME desktop.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 %ifarch s390 s390x
 %patch2 -p1
 %endif

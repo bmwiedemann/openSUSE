@@ -1371,4 +1371,14 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment>Eliminate the -lang recommends (forwarded request 767148 from dimstar)</comment>
     <requestid>767413</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>6f949a7e2f662d6ffba8e17df876f197</srcmd5>
+    <version>3.34.2</version>
+    <time>1585601467</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-session-remove-gsd-XSettings.patch: Remove
+  org.gnome.SettingsDaemon.XSettings from file gnome.session
+  (bsc#1163262 glgo#GNOME/gnome-session#51) (forwarded request 785449 from xiaoguang_wang)</comment>
+    <requestid>789270</requestid>
+  </revision>
 </revisionlist>

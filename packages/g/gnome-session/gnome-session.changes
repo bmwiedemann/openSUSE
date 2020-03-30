@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 03:51:13 UTC 2020 - Xiaoguang Wang <xwang@suse.com>
+
+- Add gnome-session-remove-gsd-XSettings.patch: Remove
+  org.gnome.SettingsDaemon.XSettings from file gnome.session
+  (bsc#1163262 glgo#GNOME/gnome-session#51)
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
