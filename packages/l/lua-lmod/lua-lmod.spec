@@ -62,6 +62,9 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Sphinx-latex
 %else
 BuildRequires:  python-Sphinx
+%if 0%{?sle_version} == 0 || 0%{?sle_version} >= 120300
+BuildRequires:  python-Sphinx-latex
+%endif
 %endif
 Provides:       lua-lmod-man = %{version}-%{release}
 %if 0%{?build_pdf:1}
@@ -92,9 +95,6 @@ BuildRequires:  texlive-titlesec
 BuildRequires:  texlive-upquote
 BuildRequires:  texlive-varwidth
 BuildRequires:  texlive-wrapfig
-%if 0%{?sle_version} == 0 || 0%{?sle_version} >= 120300
-BuildRequires:  python-Sphinx-latex
-%endif
 %endif # %%build_pdf
 
 %description
