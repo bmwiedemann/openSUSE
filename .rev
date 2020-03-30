@@ -36,4 +36,12 @@
     <comment>- Strip /data/ subdirectory [boo#1106378]</comment>
     <requestid>632199</requestid>
   </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9fa9dbeab5ad541bc820350149a370a9</srcmd5>
+    <version>20090618</version>
+    <time>1585602321</time>
+    <user>dimstar_suse</user>
+    <comment>- Strip /data/ subdirectory [boo#1106378, boo#1165480]</comment>
+    <requestid>789742</requestid>
+  </revision>
 </revisionlist>
