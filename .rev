@@ -489,4 +489,15 @@
 </comment>
     <requestid>788446</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>185ab7e4398c02b37fed2e1b3f31f0ba</srcmd5>
+    <version>2.21</version>
+    <time>1585601504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21
+  - Use slave mounts for /proc, /sys &amp; /dev
+
+This should fix the current openQA failure: https://openqa.opensuse.org/tests/1218639#step/transactional_update/9</comment>
+    <requestid>789758</requestid>
+  </revision>
 </revisionlist>

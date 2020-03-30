@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:09:34 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.21
+  - Use slave mounts for /proc, /sys & /dev
+
+-------------------------------------------------------------------
 Thu Mar 26 08:21:24 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.20.4
