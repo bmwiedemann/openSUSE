@@ -102,4 +102,30 @@
   way from TW (subreg plugin no longer available)</comment>
     <requestid>743980</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>09d71860db94869211df10e8a1fd2ae4</srcmd5>
+    <version>3.3.19</version>
+    <time>1585602211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.19:
+  * Implement retry to handle rate limits in DNSMadeEasy (#442)
+  * Updated Link For Constellix API and Added Link for v2 of DNSSimple API
+  * Bug fixed: failure if &quot;Forward&quot; Record (#447)
+  * add RcodeZero (https://www.rcodezero.at) provider
+  * Move test_hostingde provider in the correct place
+  * Added example for lexicon usage as a python library
+  * Add support for Python 3.8
+  * minor fixes for RcodeZero provider: add &quot;Accept&quot; header to request and
+    fixed loglevel of debug message
+  * Change uri check after login for easyname
+  * Fix auto provider handling of parameters. (#473)
+  * Adds subaction as query parameter instead of using url argument
+  * Introduce Gransy provider. Gransy provider is former Subreg provider, but
+    because it works for multiple sites
+  * Changes to robst parser 'html5lib' for Hetzner
+  * Adds TTL to the digitalocean provider (#482)
+- Drop Python 2 support, due to softlayer no longer supporting it
+- Delete one broken unit test class</comment>
+    <requestid>789608</requestid>
+  </revision>
 </revisionlist>

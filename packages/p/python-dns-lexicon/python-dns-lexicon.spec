@@ -1,7 +1,7 @@
 #
 # spec file for package python-dns-lexicon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-dns-lexicon
-Version:        3.3.3
+Version:        3.3.19
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
@@ -31,6 +32,7 @@ BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module localzone}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 3.8.0}
@@ -41,6 +43,7 @@ BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module transip >= 0.3.0}
 BuildRequires:  %{python_module vcrpy >= 1.13.0}
 BuildRequires:  %{python_module xmltodict}
+BuildRequires:  %{python_module zeep}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNamecheap
@@ -72,11 +75,8 @@ Lexicon was designed to be used in automation, specifically letsencrypt.
 
 %prep
 %setup -q -n lexicon-%{version}
-# remove localzone test as this test requires an internet connection
-# will be fixed with next release
-rm lexicon/tests/providers/test_localzone.py
-# subreg zeep is all time broken so do not test that
-rm lexicon/tests/providers/test_subreg.py
+# Remove, since they are completely broken
+rm lexicon/tests/providers/test_auto.py
 
 # rpmlint
 find . -type f -name ".gitignore" -delete
