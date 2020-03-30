@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-cio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-cio
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - IO Channel management
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -45,6 +45,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 Requires:       s390-tools
 Requires:       yast2 >= 3.0.5
 Requires:       yast2-ruby-bindings >= 1.2.0
+
+Supplements:    yast2-s390
 
 ExclusiveArch:  s390 s390x
 
