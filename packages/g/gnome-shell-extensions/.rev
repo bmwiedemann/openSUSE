@@ -821,4 +821,14 @@
     <comment></comment>
     <requestid>781025</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>937fc9b3a56adfdd0a835a999c89431b</srcmd5>
+    <version>3.34.2</version>
+    <time>1585601469</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-shell-extensions-remove-gsd-XSettings.patch: Remove
+  org.gnome.SettingsDaemon.XSettings from file gnome-classic.session
+  (bsc#1163262 glgo#GNOME/gnome-session#51) (forwarded request 785455 from xiaoguang_wang)</comment>
+    <requestid>789271</requestid>
+  </revision>
 </revisionlist>

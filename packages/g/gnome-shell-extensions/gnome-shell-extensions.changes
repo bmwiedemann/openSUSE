@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 06:44:29 UTC 2020 - Xiaoguang Wang <xwang@suse.com>
+
+- Add gnome-shell-extensions-remove-gsd-XSettings.patch: Remove
+  org.gnome.SettingsDaemon.XSettings from file gnome-classic.session
+  (bsc#1163262 glgo#GNOME/gnome-session#51)
+
+-------------------------------------------------------------------
 Sun Mar  1 20:21:31 UTC 2020 - mgorse@suse.com
 
 - Update to version 3.34.2:
