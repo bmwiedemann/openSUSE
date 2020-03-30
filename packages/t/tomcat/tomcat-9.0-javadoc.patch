@@ -1,6 +1,8 @@
---- apache-tomcat-9.0.27-src/build.xml	2019-10-07 12:01:06.000000000 +0200
-+++ apache-tomcat-9.0.27-src/build.xml	2019-11-16 00:52:57.833495494 +0100
-@@ -1859,7 +1859,7 @@
+Index: apache-tomcat-9.0.33-src/build.xml
+===================================================================
+--- apache-tomcat-9.0.33-src.orig/build.xml
++++ apache-tomcat-9.0.33-src/build.xml
+@@ -1891,7 +1891,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -9,7 +11,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1881,7 +1881,7 @@
+@@ -1913,7 +1913,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -18,7 +20,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1902,7 +1902,7 @@
+@@ -1934,7 +1934,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -27,7 +29,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1923,7 +1923,7 @@
+@@ -1955,7 +1955,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -36,7 +38,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1944,7 +1944,7 @@
+@@ -1976,7 +1976,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -45,7 +47,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1962,9 +1962,10 @@
+@@ -1994,9 +1994,10 @@ Apache Tomcat ${version} native binaries
        docencoding="UTF-8"
        charset="UTF-8"
        additionalparam="-breakiterator -notimestamp"
@@ -57,7 +59,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1984,7 +1985,7 @@
+@@ -2016,7 +2017,7 @@ Apache Tomcat ${version} native binaries
        source="${compile.source}"
        maxmemory="512m"
        failonerror="true"
@@ -66,7 +68,7 @@
        <classpath>
          <path refid="compile.classpath"/>
          <path location="${ant.core.lib}"/>
-@@ -1995,8 +1996,6 @@
+@@ -2027,8 +2028,6 @@ Apache Tomcat ${version} native binaries
        <link href="../elapi"/>
        <link href="../websocketapi"/>
        <link href="../jaspicapi"/>

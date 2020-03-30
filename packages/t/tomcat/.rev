@@ -649,4 +649,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>780241</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0e62092606641b8c5e6f16ec5c105470</srcmd5>
+    <version>9.0.33</version>
+    <time>1585602340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789763</requestid>
+  </revision>
 </revisionlist>

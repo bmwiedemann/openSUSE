@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:13:09 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Update to Tomcat 9.0.33. See changelog at
+  http://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.33_(markt)
+- Notable fix: corrected a regression in the improvements to HTTP 
+  header parsing (bsc#1167438)
+- Rebased patches:
+  * tomcat-9.0-javadoc.patch
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch
+
+-------------------------------------------------------------------
 Fri Feb 28 10:15:08 UTC 2020 - Matei Albu <malbu@suse.com>
 
 - Change default value of AJP connector secretRequired to false
