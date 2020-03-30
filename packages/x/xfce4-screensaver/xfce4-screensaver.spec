@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-screensaver
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only

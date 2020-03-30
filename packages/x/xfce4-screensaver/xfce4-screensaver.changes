@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 22:24:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.1.10
+  * Send DBus lock responses for xfce4-session support (bxo#16522)
+  * Translation Update
+
+-------------------------------------------------------------------
 Mon Mar 23 00:40:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
-- Update to version 1.9.0
+- Update to version 0.1.9
   * Replace deprecated GTimeVal usage
   * Rebuild windows on monitor reconfiguration
   * Draw overlays during window reconstruction to protect screen
