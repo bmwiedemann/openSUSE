@@ -32,7 +32,11 @@
 %define openlibm_ver ce69bf1f32d3e2e9791da36c9e33ba38670d5576
 %define utf8proc_ver 5c632c57426f2e4246e3b64dd2fd088d3920f9e5
 %define llvm_ver     6.0.1
+%if "@BUILD_FLAVOR@%{nil}" == "compat"
+%define compat_mode  1
+%else
 %define compat_mode  0
+%endif
 %define src_name     julia-tarball
 %define libgit2_ver  %(rpm -qa | grep -E "^libgit2-[0-9]" | head -n1 | cut -d'-' -f2)
 Version:        1.3.1

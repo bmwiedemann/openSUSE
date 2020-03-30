@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 28 19:42:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- convert to singlespec
+
+-------------------------------------------------------------------
 Mon Mar  9 19:05:20 UTC 2020 - Ronan Chagas <ronisbr@gmail.com>
 
 - Remove constraints of CPU flag since it was blocking the builds.
