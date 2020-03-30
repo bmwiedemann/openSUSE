@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>655468</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f7c8dbc317118d8ae96d92167b82eb30</srcmd5>
+    <version>14</version>
+    <time>1585602126</time>
+    <user>dimstar_suse</user>
+    <comment>- Move 'efi'-executables to '/usr/share/efi' (FATE#326960, bsc#1166523)
+- Use &quot;suse_version&quot; instead of &quot;sle_version&quot; to avoid shim_lib64_share_compat being set in Tumbleweed forever.</comment>
+    <requestid>789646</requestid>
+  </revision>
 </revisionlist>

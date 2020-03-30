@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:05:58 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use "suse_version" instead of "sle_version" to avoid
+  shim_lib64_share_compat being set in Tumbleweed forever.
+
+-------------------------------------------------------------------
+Fri Mar 27 05:32:11 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Move 'efi'-executables to '/usr/share/efi'
+  (FATE#326960, bsc#1166523)
+
+-------------------------------------------------------------------
 Thu Dec  6 03:23:04 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to set the grub2-install target explicitly

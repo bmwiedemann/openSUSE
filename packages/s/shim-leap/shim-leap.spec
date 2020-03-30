@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Move 'efi'-executables to '/usr/share/efi' (FATE#326960, bsc#1166523)
+%define sysefibasedir  %{_datadir}/efi
+%define sysefidir      %{sysefibasedir}/%{_target_cpu}
+%if 0%{?suse_version} < 1600
+# provide compatibility sym-link for residual kiwi, etc.
+%define shim_lib64_share_compat 1
+%endif
 
 Name:           shim-leap
 Version:        14
@@ -49,13 +57,31 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 cp -a * %{buildroot}
 install -m 755 %{SOURCE1} %{buildroot}/%{_sbindir}
 
+# Move 'efi'-executables to '/usr/share/efi' (FATE#326960, bsc#1166523)
+install -d %{buildroot}/%{sysefidir}
+mv %{buildroot}/usr/lib64/efi/* %{buildroot}/%{sysefidir}
+%if %{defined shim_lib64_share_compat}
+ln -srf %{buildroot}/%{sysefidir}/*.efi %{buildroot}/usr/lib64/efi/
+%endif
+
 %post -n shim
 /sbin/update-bootloader --reinit || true
 
 %files -n shim
+%dir %{?sysefibasedir}
+%dir %{sysefidir}
+%{sysefidir}/shim.efi
+%{sysefidir}/shim-*.efi
+%{sysefidir}/shim-*.der
+%{sysefidir}/MokManager.efi
+%{sysefidir}/fallback.efi
+%if %{defined shim_lib64_share_compat}
+# provide compatibility sym-link for previous kiwi, etc.
+%dir /usr/lib64/efi
+/usr/lib64/efi/*.efi
+%endif
 /etc/uefi
 /usr/sbin/shim-install
-/usr/lib64/efi
 /usr/share/doc/packages/shim
 
 %changelog
