@@ -1,7 +1,7 @@
 #
 # spec file for package pgn-extract
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pgn-extract
-Version:        18.10
+Version:        19.04
 Release:        0
 Summary:        A CLI program for manipulating PGN files
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/
-# unversioned source URL ftp://ftp.cs.kent.ac.uk/pub/djb/pgn-extract/pgn-extract.tgz
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://www.cs.kent.ac.uk/~djb/%{name}/%{name}-19-04.tgz
 Source100:      %{name}.changes
 # PATCH-FIX-OPENSUSE pgn-extract-set_eco.pgn_path.patch
 Patch0:         pgn-extract-set_eco.pgn_path.patch

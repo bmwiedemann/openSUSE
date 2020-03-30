@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 29 16:15:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.04:
+  * Improved --repetition so that it does not give false
+    positives when castling rights or who is to move are
+    different.
+  * Retain next move number rather than resetting to 1
+    with --dropply and --dropbefore.
+  * Fixed a memory error in v18-10
+  * Added --xroster to suppress tags that are not required with -R.
+  * Missing SetUp tags no longer elicit an error message as this
+    contravention of the standard is so common.
+  * Negative value accepted with --dropply to indicates plies
+    to be retained at the end of the game.
+- Rebase patches:
+  * pgn-extract-set_eco.pgn_path.patch
+  * pgn-extract-no-buildtime.patch
+
+-------------------------------------------------------------------
 Thu Nov 15 13:55:11 UTC 2018 - aloisio@gmx.com
 
 - Update to version 18.10 (no changelog supplied)

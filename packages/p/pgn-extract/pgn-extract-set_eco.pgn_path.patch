@@ -1,8 +1,8 @@
-Index: pgn-extract/argsfile.c
-===================================================================
---- pgn-extract.orig/argsfile.c
-+++ pgn-extract/argsfile.c
-@@ -131,7 +131,7 @@ usage_and_exit(void)
+diff --git a/argsfile.c b/argsfile.c
+index aa502cf..be7b68f 100644
+--- a/argsfile.c
++++ b/argsfile.c
+@@ -132,7 +132,7 @@ usage_and_exit(void)
          "-D -- don't output duplicate games.",
          "-eECO_file -- perform ECO classification of games. The optional",
          "      ECO_file should contain a PGN format list of ECO lines",
@@ -11,11 +11,11 @@ Index: pgn-extract/argsfile.c
          "-E[123 etc.] -- split output into separate files according to ECO.",
          "      E1 : Produce files from ECO letter, A.pgn, B.pgn, ...",
          "      E2 : Produce files from ECO letter and first digit, A0.pgn, ...",
-Index: pgn-extract/help.html
-===================================================================
---- pgn-extract.orig/help.html
-+++ pgn-extract/help.html
-@@ -196,7 +196,7 @@ of this file before attempting to use pg
+diff --git a/help.html b/help.html
+index a94c339..d8ee27d 100644
+--- a/help.html
++++ b/help.html
+@@ -203,7 +203,7 @@ of this file before attempting to use pgn-extract in earnest.
        <li>-D - don't output duplicate extracted game scores.
        <li>-eECO_file - perform ECO classification of games. The optional
              ECO_file should contain a PGN format list of ECO lines
@@ -24,7 +24,7 @@ Index: pgn-extract/help.html
        <li>-E[123 etc.] - split output into separate files according to ECO.
          <ul>
              <li>E1 : Produce files from ECO letter, A.pgn, B.pgn, ...
-@@ -1362,7 +1362,7 @@ believe that this was put together by Ew
+@@ -1445,7 +1445,7 @@ believe that this was put together by Ewart Shaw, Franz Hemmer and
  others, to whom appropriate thanks is due.  The -e flag requests
  pgn-extract to add/replace ECO classifications in the games it outputs.
  This is done by firstly reading a file of ECO lines in PGN format
@@ -33,10 +33,10 @@ Index: pgn-extract/help.html
  resulting positions. As the games are then read they are looked up in
  the table to find a classification. The deepest match is found.
  A match is allowed within six half moves of the length of the ECO line.
-Index: pgn-extract/main.c
-===================================================================
---- pgn-extract.orig/main.c
-+++ pgn-extract/main.c
+diff --git a/main.c b/main.c
+index 6847a53..01aff5a 100644
+--- a/main.c
++++ b/main.c
 @@ -48,7 +48,7 @@
   * a file of ECO classificiations.
   */
