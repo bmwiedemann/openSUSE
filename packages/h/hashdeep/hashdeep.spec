@@ -1,7 +1,7 @@
 #
-# spec file for package md5deep
+# spec file for package hashdeep
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,20 +20,16 @@ Name:           hashdeep
 Version:        4.4
 Release:        0
 Summary:        Compute MD5, SHA-1, SHA-256, Tiger or Whirlpool message digests
-License:        SUSE-Public-Domain and GPL-2.0+
+License:        SUSE-Public-Domain AND GPL-2.0-or-later
 Group:          System/Base
-Url:            http://md5deep.sourceforge.net/
-Source0:        %{name}-release-%{version}.tar.gz
+URL:            http://md5deep.sourceforge.net/
+Source0:        https://github.com/jessek/hashdeep/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python
-BuildRequires:  python-devel
-Requires:       python
 Provides:       md5deep = %{version}
 Obsoletes:      md5deep < %{version}
-BuildRoot:      %{_tmppath}/%{name}-release-%{version}-build
 
 %description
 hashdeep is a program to compute, match, and audit hashsets.
@@ -46,38 +42,28 @@ hashes in a variety of formats.
 %setup -q -n %{name}-release-%{version}
 
 %build
-sh bootstrap.sh
-if test -x ./configure; then
-     %configure
-fi
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+autoreconf -fiv
+%configure
+%make_build
 
 %install
-
 %make_install
-
-# create symlinks for man pages
-%fdupes -s %{buildroot}/%{_mandir}
-# create hardlinks for the rest
 %fdupes %{buildroot}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
+%license COPYING
+%doc AUTHORS ChangeLog README NEWS
 %{_bindir}/hashdeep
 %{_bindir}/md5deep
 %{_bindir}/sha1deep
 %{_bindir}/sha256deep
 %{_bindir}/tigerdeep
 %{_bindir}/whirlpooldeep
-%{_mandir}/man1/hashdeep.1*
-%{_mandir}/man1/md5deep.1*
-%{_mandir}/man1/sha1deep.1*
-%{_mandir}/man1/sha256deep.1*
-%{_mandir}/man1/whirlpooldeep.1*
-%{_mandir}/man1/tigerdeep.1*
-%doc AUTHORS ChangeLog COPYING README NEWS
+%{_mandir}/man1/hashdeep.1%{?ext_man}
+%{_mandir}/man1/md5deep.1%{?ext_man}
+%{_mandir}/man1/sha1deep.1%{?ext_man}
+%{_mandir}/man1/sha256deep.1%{?ext_man}
+%{_mandir}/man1/whirlpooldeep.1%{?ext_man}
+%{_mandir}/man1/tigerdeep.1%{?ext_man}
 
 %changelog
