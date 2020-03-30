@@ -1,7 +1,7 @@
 #
 # spec file for package ski
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ski
-Version:        6.11
+Version:        6.13
 Release:        0
 Summary:        Skiing simulation with curses interface in python
 License:        BSD-3-Clause
 Group:          Amusements/Games/Action/Race
-Url:            http://catb.org/~esr/ski/
+URL:            http://catb.org/~esr/ski/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - ski-ski.desktop.patch -- Adjust to Desktop Menu Specification
 Patch0:         %{name}-%{name}.desktop.patch
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 Requires:       python3
 Requires:       python3-curses
 Requires:       python3-pygame
+BuildRequires:  update-desktop-files
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Imagine you are skiing down an infinite slope, facing such hazards as
@@ -51,22 +48,21 @@ fancy graphical user interfaces to have a good time.
 %patch0
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 %make_install
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file %{name}
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING NEWS README
+%license COPYING
+%doc NEWS README
+%dir %{_datadir}/appdata/
 %{_bindir}/%{name}
-%{_mandir}/man6/%{name}.6%{ext_man}
-%{_datadir}/appdata/
+%{_datadir}/appdata/ski.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_mandir}/man6/%{name}.6%{?ext_man}
 
 %changelog

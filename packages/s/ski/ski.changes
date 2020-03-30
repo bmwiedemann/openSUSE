@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:21:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.13:
+  * Rehosted at GitLab
+  * Prevent ski from aborting in the Homebrew test environment.
+
+-------------------------------------------------------------------
 Mon Feb 22 08:47:00 UTC 2016 - nemysis@openSUSE.org
 
 - Update to 6.11, announce message:
