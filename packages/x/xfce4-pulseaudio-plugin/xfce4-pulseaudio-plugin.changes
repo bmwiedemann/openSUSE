@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:57:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.4.3
+  * Build now requires exo-2 0.11 or newer
+  * Fixed various memory leaks and warnings
+  * Removed unused dbus-glib include (bxo#15343)
+  * Replaced g_type_class_add_private deprecations
+  * Updated copyright years
+  * Updated URLs from goodies.x.o to docs.x.o (bxo#16173)
+  * MPRIS: Added support for filename icons (bxo#14329)
+  * MPRIS: Added support for single-string variants on xesam:artist
+  * MPRIS: Added support for the DesktopEntry property (bxo#14412)
+  * MPRIS: Added support for the plasma-browser-integration plugin
+    (bxo#15487)
+  * MPRIS: Added title/artist conditioning from the track title
+  * Preferences: Fixed icon rendering known players
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:18:29 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
