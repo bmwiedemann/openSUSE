@@ -1,7 +1,7 @@
 #
 # spec file for package python-pocketsphinx-python
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pocketsphinx-python
 Version:        0.1.3
 Release:        0
-License:        BSD-2-Clause
 Summary:        Python interface to CMU Sphinxbase and Pocketsphinx libraries
-Url:            https://github.com/bambocher/pocketsphinx-python
+License:        BSD-2-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/bambocher/pocketsphinx-python
 Source:         https://files.pythonhosted.org/packages/source/p/pocketsphinx/pocketsphinx-%{version}.tar.bz2
 Patch0:         fix-encoding.diff
 # PATCH-FIX-UPSTREAM https://github.com/bambocher/pocketsphinx-python/pull/45
 Patch1:         reproducible.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  swig
-BuildRequires:  libpulse-devel
 BuildRequires:  fdupes
-
+BuildRequires:  libpulse-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  swig
+Provides:       pocketsphinx = %{version}
+Obsoletes:      pocketsphinx < %{version}
 %python_subpackages
 
 %description
 This package provides a python interface to CMU Sphinxbase and Pocketsphinx libraries created with SWIG and Setuptools.
 Pocketsphinx is a part of the CMU Sphinx Open Source Toolkit For Speech Recognition.
-
 
 %prep
 %setup -q -n pocketsphinx-%{version}
@@ -55,8 +56,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc LICENSE README.rst
+%license LICENSE
+%doc README.rst
 %{python_sitearch}/*
 
 %changelog
