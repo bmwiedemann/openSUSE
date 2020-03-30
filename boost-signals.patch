@@ -1,0 +1,115 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: use signals2 instead of signals boost library
+Bug-Debian: https://bugs.debian.org/950633
+
+--- a/src/control.hh
++++ b/src/control.hh
+@@ -21,7 +21,7 @@
+ 
+ #include <string>
+ #include <boost/shared_ptr.hpp>
+-#include <boost/signals.hpp>
++#include <boost/signals2/signal.hpp>
+ 
+ #include "board.hh"
+ #include "player.hh"
+@@ -148,11 +148,11 @@
+ 
+   // --- signals ---
+ 
+-  boost::signal<void (Player)>&     getSignal_gameOver()    { return m_signal_gameOver; }
+-  boost::signal<void (GameState)>&  getSignal_changeState() { return m_signal_changeState; }
+-  boost::signal<void ()>&           getSignal_changeBoard() { return m_signal_changeBoard; }
+-  boost::signal<void (player_ptr)>& getSignal_startMove()   { return m_signal_startMove; }
+-  boost::signal<void (player_ptr)>& getSignal_endMove()     { return m_signal_endMove; }
++  boost::signals2::signal<void (Player)>&     getSignal_gameOver()    { return m_signal_gameOver; }
++  boost::signals2::signal<void (GameState)>&  getSignal_changeState() { return m_signal_changeState; }
++  boost::signals2::signal<void ()>&           getSignal_changeBoard() { return m_signal_changeBoard; }
++  boost::signals2::signal<void (player_ptr)>& getSignal_startMove()   { return m_signal_startMove; }
++  boost::signals2::signal<void (player_ptr)>& getSignal_endMove()     { return m_signal_endMove; }
+ 
+ private:
+   rulespec_ptr  m_ruleSpec;
+@@ -180,12 +180,12 @@
+ 
+   // signals
+ 
+-  boost::signal<void (Player)>     m_signal_gameOver;
+-  boost::signal<void (GameState)>  m_signal_changeState;
+-  boost::signal<void ()>           m_signal_changeBoard;
++  boost::signals2::signal<void (Player)>     m_signal_gameOver;
++  boost::signals2::signal<void (GameState)>  m_signal_changeState;
++  boost::signals2::signal<void ()>           m_signal_changeBoard;
+ 
+-  boost::signal<void (player_ptr)> m_signal_startMove;
+-  boost::signal<void (player_ptr)> m_signal_endMove;
++  boost::signals2::signal<void (player_ptr)> m_signal_startMove;
++  boost::signals2::signal<void (player_ptr)> m_signal_endMove;
+ };
+ 
+ #endif
+--- a/src/movelog.hh
++++ b/src/movelog.hh
+@@ -19,7 +19,7 @@
+ #ifndef MOVELOG_HH
+ #define MOVELOG_HH
+ 
+-#include <boost/signals.hpp>
++#include <boost/signals2/signal.hpp>
+ 
+ 
+ /* A window showing a log of all moves in the current game.
+@@ -31,10 +31,10 @@
+ 
+   virtual void refresh() = 0;
+ 
+-  boost::signal<void ()>& getSignal_windowClosed() { return m_signal_windowClosed; }
++  boost::signals2::signal<void ()>& getSignal_windowClosed() { return m_signal_windowClosed; }
+ 
+ protected:
+-  boost::signal<void ()> m_signal_windowClosed;
++  boost::signals2::signal<void ()> m_signal_windowClosed;
+ };
+ 
+ #endif
+--- a/src/gtk_movelog.hh
++++ b/src/gtk_movelog.hh
+@@ -39,7 +39,7 @@
+   GtkListStore* liststore;
+ 
+   gulong destroyHandler;
+-  boost::signals::connection refreshConnection;
++  boost::signals2::connection refreshConnection;
+ 
+   void   cbDestroy();
+   friend gboolean cbMoveLog_gtk_destroy(GtkWidget *widget, gpointer data);
+--- a/src/mainapp.hh
++++ b/src/mainapp.hh
+@@ -130,7 +130,7 @@
+ 
+   // --- signals ---
+ 
+-  boost::signal<void (bool)>& getSignal_pauseChanged() { return m_signal_pauseChanged; }
++  boost::signals2::signal<void (bool)>& getSignal_pauseChanged() { return m_signal_pauseChanged; }
+ 
+ private:
+   MainApp();
+@@ -170,7 +170,7 @@
+   void startMove(player_ptr);
+   void endMove(player_ptr);
+ 
+-  boost::signal<void (bool)> m_signal_pauseChanged;
++  boost::signals2::signal<void (bool)> m_signal_pauseChanged;
+ };
+ 
+ #endif
+--- a/configure.ac
++++ b/configure.ac
+@@ -36,7 +36,6 @@
+ # libgnome-2.0 libgnomeui-2.0 
+ 
+ AX_BOOST_BASE
+-AX_BOOST_SIGNALS
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([libintl.h locale.h stdlib.h string.h sys/time.h])

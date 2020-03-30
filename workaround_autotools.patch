@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 18951eb..3366e43 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,7 @@ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_SRCDIR([src/morris.cc])
+ AC_CONFIG_HEADERS([config.h])
+ 
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign dist-bzip2])
++AM_INIT_AUTOMAKE([-Wall foreign dist-bzip2])
+ 
+ #AM_MAINTAINER_MODE
+ #AC_CONFIG_MACRO_DIR([m4])
