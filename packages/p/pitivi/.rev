@@ -284,4 +284,13 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767382</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>75204ba75654930501d4b5e7b394d69e</srcmd5>
+    <version>0.999</version>
+    <time>1585602271</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pitivi-Support-python-3.8.patch: Support building against
+  python 3.8. (forwarded request 789670 from dimstar)</comment>
+    <requestid>789705</requestid>
+  </revision>
 </revisionlist>

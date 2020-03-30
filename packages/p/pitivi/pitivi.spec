@@ -1,7 +1,7 @@
 #
 # spec file for package pitivi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,8 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.pitivi.org/
 Source0:        https://download.gnome.org/sources/pitivi/0.999/%{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM pitivi-Support-python-3.8.patch dimstar@opensuse.org -- Support python 3.8
+Patch0:         pitivi-Support-python-3.8.patch
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel >= 0.18.0
 BuildRequires:  gobject-introspection >= 1.31.1
@@ -65,7 +67,7 @@ adjustment.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i -e '1s!/usr/bin/env !/usr/bin/!' bin/pitivi.in
 
 # Remove bunlded gst-transcoder
