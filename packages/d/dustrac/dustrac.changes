@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:31:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.5. Check the CHANGELOG file for the complete list
+  of changes. Changes since 2.0.4:
+  * Improve off-track detection accuracy on curves
+  * Car dots in minimap are too small on very large tracks
+  * Add processing instructions to all existing tracks
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Apr 29 17:05:16 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 2.0.1:
