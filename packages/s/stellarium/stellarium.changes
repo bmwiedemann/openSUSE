@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:17:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 0.20.0
+  * Refactoring and updating the GUI
+  * Deep refactoring code, related to Solar system
+  * Many improvements in the code of plugins
+
+-------------------------------------------------------------------
 Tue Jan 28 15:47:14 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Build with hidden visibility, it generates better code and 
