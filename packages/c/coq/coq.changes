@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 29 21:42:13 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- The num library is required for OCaml 4.06 or later.
+- Add ocaml-410-build.patch: fix build with OCaml 4.10.
+
+-------------------------------------------------------------------
 Thu Feb  6 16:38:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.11.0.

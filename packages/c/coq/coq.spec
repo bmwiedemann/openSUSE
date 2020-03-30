@@ -1,7 +1,7 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Source:         https://github.com/coq/coq/archive/V%{version}.tar.gz#/%{name}-%
 Source1:        coq.desktop
 Source2:        coq.xml
 Source100:      %{name}-rpmlintrc
+# https://github.com/ppedrot/coq/commit/ae000c9efc256675ce1d56ba27ed7f99e0540ff3
+Patch1:         ocaml-410-build.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  memory-constraints
 # Required for standard coq:
@@ -43,6 +45,7 @@ BuildRequires:  ocaml-camlp5-devel >= 5.08
 BuildRequires:  update-desktop-files
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(lablgtk3)
+BuildRequires:  ocamlfind(num)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
@@ -76,6 +79,7 @@ This package contains development files for Coq.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 export CFLAGS='%{optflags}'
