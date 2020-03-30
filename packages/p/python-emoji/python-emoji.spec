@@ -1,7 +1,7 @@
 #
 # spec file for package python-emoji
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/carpedm20/emoji/
 Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# https://github.com/carpedm20/emoji/pull/118
+Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,6 +48,7 @@ Python is 👍
 
 %prep
 %setup -q -n emoji-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -55,7 +58,7 @@ Python is 👍
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/emoji*
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest tests/test_core.py tests/test_unicode_codes.py
 
 %files %{python_files}
 %doc CHANGES.md README.rst
