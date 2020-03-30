@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 25 21:26:36 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 3.3.2
+  * [X11] bugfixes:
+  * glfwFocusWindow could terminate on older WMs or without a WM
+  * Creating an undecorated window could fail with BadMatch (#1620)
+  * Querying a disconnected monitor could segfault (#1602)
+- Update to version 3.3.1
+  * General bugfixes:
+  * The CMake config-file package used an absolute path and was not
+    relocatable (#1470)
+  * Video modes with a duplicate screen area were discarded
+    (#1555,#1556)
+  * Compiling with -Wextra-semi caused warnings (#1440)
+  * Built-in mappings failed because some OEMs re-used VID/PID
+    (#1583)
+  * [X11] bugfixes:
+  * The CMake files did not check for the XInput headers (#1480)
+  * Key names were not updated when the keyboard layout changed
+    (#1462,#1528)
+  * Decorations could not be enabled after window creation (#1566)
+  * Content scale fallback value could be inconsistent (#1578)
+  * glfwMaximizeWindow had no effect on hidden windows
+  * Clearing GLFW_FLOATING on a hidden window caused invalid read
+  * Changing GLFW_FLOATING on a hidden window could silently fail
+  * Disabled cursor mode was interrupted by indicator windows
+  * Monitor physical dimensions could be reported as zero mm
+  * Window position events were not emitted during resizing (#1613)
+  * [Wayland] Bugfix: The GLFW_HAND_CURSOR shape used the wrong
+    image (#1432)
+- See also: https://www.glfw.org/changelog.html
+
+-------------------------------------------------------------------
 Tue Apr 16 20:32:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.3

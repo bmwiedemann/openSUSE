@@ -1,7 +1,7 @@
 #
 # spec file for package glfw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %bcond_with geany
 %endif
 Name:           glfw
-Version:        3.3
+Version:        3.3.2
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            http://www.glfw.org/
+URL:            https://www.glfw.org/
 Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  doxygen
@@ -40,9 +40,7 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
-%if 0%{?suse_version} > 1320
 BuildRequires:  vulkan-devel
-%endif
 %if %{with geany}
 BuildRequires:  geany
 %endif
