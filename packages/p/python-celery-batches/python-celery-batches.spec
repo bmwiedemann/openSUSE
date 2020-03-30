@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery-batches
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _pkgname celery-batches
 Name:           python-%{_pkgname}
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Django module to process multiple Celery task requests together
 License:        BSD-3-Clause
