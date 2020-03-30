@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 29 16:39:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.0.2:
+  * physfsrwops: Patched to compile for use with SDL 1.2
+  * 7zip: don't forget to destroy the PHYSFS_Io when closing the archive
+  * ignorecase: Don't crash if enumeration returned a NULL pointer.
+  * Fix up physfs.h for compilers that are sensitive about preprocessor
+    defines.
+  * PHYSFS_setWriteDir() shouldn't create an empty file if the dir
+    doesn't exist.
+  * PHYSFS_flush() no longer calls PHYSFS_Io::flush()
+- Spec cleanup.
+- Drop physfs-empty_dir_fix.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Tue Dec 11 15:12:57 UTC 2018 - buckyballreaction@gmail.com
 
 - Add physfs-empty_dir_fix.patch (hg a29fef4a20fd, fixes creation 
