@@ -1,7 +1,7 @@
 #
 # spec file for package dustrac
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dustrac
-Version:        2.0.1
+Version:        2.0.5
 Release:        0
 Summary:        Tile-based 2D Racing Game
-License:        GPL-3.0 and CC-BY-SA-3.0
+License:        GPL-3.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Race
-Url:            https://juzzlin.github.io/DustRacing2D/
+URL:            https://juzzlin.github.io/DustRacing2D/
 Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/dustrac-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.7
+BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gcc >= 4.6
@@ -38,10 +38,6 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(vorbisfile)
 Requires:       dejavu-fonts
-%if %{?suse_version} < 1330
-Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
-%endif
 
 %description
 Dust Racing is a tile-based 2D racing game written with Qt (in C++)
@@ -67,16 +63,6 @@ make %{?_smp_mflags}
 # Use system fonts
 rm %{buildroot}%{_datadir}/%{name}/fonts/DejaVuSans-Bold.ttf
 ln -s %{_datadir}/fonts/truetype/DejaVuSans-Bold.ttf %{buildroot}%{_datadir}/%{name}/fonts/DejaVuSans-Bold.ttf
-
-%if %{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %{_bindir}/dustrac-game
