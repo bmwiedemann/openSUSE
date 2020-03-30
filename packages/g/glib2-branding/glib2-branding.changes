@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 07:11:53 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Update .gschema.override.in: 
+  + Set sleep-inactive-ac-timeout, sleep-inactive-battery-timeout to
+    0 for Leap to be consistent with SLE and old versions (bsc#1158497).
+
+-------------------------------------------------------------------
 Tue Jan  7 08:53:34 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Update .gschema.override.in: 

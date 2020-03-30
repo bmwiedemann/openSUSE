@@ -82,4 +82,14 @@
     <comment></comment>
     <requestid>766123</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>3e3209d1f45a18b0cbde6196be54e4d3</srcmd5>
+    <version>15</version>
+    <time>1585601464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update .gschema.override.in: 
+  + Set sleep-inactive-ac-timeout, sleep-inactive-battery-timeout to
+    0 for Leap to be consistent with SLE and old versions (bsc#1158497). (forwarded request 784525 from qkzhu)</comment>
+    <requestid>789268</requestid>
+  </revision>
 </revisionlist>
