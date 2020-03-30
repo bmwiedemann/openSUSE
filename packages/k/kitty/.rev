@@ -197,4 +197,32 @@
   * diff kitten: Fix directory diffing with removed binary files failing (#2378)</comment>
     <requestid>788422</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81fcc44c1210a38caa442c0bd1df2a50</srcmd5>
+    <version>0.17.2</version>
+    <time>1585602134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.2:
+  * Add a launch --watcher option that allows defining callbacks
+    that are called for various events in the window's life-cycle
+    (#2440)
+  * Fix a regression in 0.17 that broke drawing of borders with
+    non-minimal borders (#2474)
+  * Hints kitten: Allow copying to primary selection as well
+    as clipboard (#2487)
+  * Add a new mappable action close_other_windows_in_tab to close
+    all but the active window (#2484)
+  * Hints kitten: Adjust the default regex used to detect line
+    numbers to handle line+column numbers (#2268)
+  * Fix blank space at the start of tab bar in the powerline
+    style when first tab is inactive (#2478)
+  * Fix regression causing incorrect rendering of separators in
+    tab bar when defining a tab bar background color (#2480)
+  * Fix a regression in 0.17 that broke the kitty @ launch remote
+    command and also broke the --tab-title option when
+    creating a new tab. (#2488)
+  * Linux: Fix selection of fonts with multiple width variants
+    not preferring the normal width faces (#2491)</comment>
+    <requestid>789483</requestid>
+  </revision>
 </revisionlist>

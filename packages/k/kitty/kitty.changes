@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar 29 11:26:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.2:
+  * Add a launch --watcher option that allows defining callbacks
+    that are called for various events in the window's life-cycle
+    (#2440)
+  * Fix a regression in 0.17 that broke drawing of borders with
+    non-minimal borders (#2474)
+  * Hints kitten: Allow copying to primary selection as well
+    as clipboard (#2487)
+  * Add a new mappable action close_other_windows_in_tab to close
+    all but the active window (#2484)
+  * Hints kitten: Adjust the default regex used to detect line
+    numbers to handle line+column numbers (#2268)
+  * Fix blank space at the start of tab bar in the powerline
+    style when first tab is inactive (#2478)
+  * Fix regression causing incorrect rendering of separators in
+    tab bar when defining a tab bar background color (#2480)
+  * Fix a regression in 0.17 that broke the kitty @ launch remote
+    command and also broke the --tab-title option when
+    creating a new tab. (#2488)
+  * Linux: Fix selection of fonts with multiple width variants
+    not preferring the normal width faces (#2491)
+
+-------------------------------------------------------------------
 Thu Mar 26 07:12:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.1:
