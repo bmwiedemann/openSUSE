@@ -41,6 +41,7 @@ Source10:       nfacctd.conf
 Source11:       pmacctd.conf
 Source12:       sfacctd.conf
 Source20:       pmacct.1
+Patch0:		pmacct-fix-overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libmysqlclient-devel
@@ -73,13 +74,14 @@ export data to tools like RRDtool, GNUPlot, Net-SNMP, MRTG, and Cacti.
 
 %prep
 %setup -q -n %{name}-1.7.4
+%patch0 -p1
 
 # fix permissions
 chmod -x sql/pmacct-*
 
 %build
 autoreconf -fiv
-export CFLAGS="%{optflags} -Wno-return-type -D_FORTIFY_SOURCE=0"
+export CFLAGS="%{optflags} -Wno-return-type"
 %configure \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --docdir="%{_docdir}/%{name}" \

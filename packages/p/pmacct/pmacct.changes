@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:47:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- pmacct-fix-overflow.patch: fixed bufferoverflow in sfacctd.
+- reenable _FORTIFY_SOURCE that showed that failure
+
+-------------------------------------------------------------------
 Sun Feb  9 10:02:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.4p1
