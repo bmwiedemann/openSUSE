@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 25 07:53:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix bug introduced by simplification of check for useradd -g
+- Refactor use of sed away
+
+-------------------------------------------------------------------
+Tue Mar 24 10:01:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use eval set -- $LINE instead of read for parsing
+
+-------------------------------------------------------------------
+Fri Mar 20 10:08:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Clean up sysusers2shadow and make it use only /bin/sh
+- Don't let busybox adduser create the home directory, it breaks
+  permissions of e.g. /sbin (home of daemon)
+- Use only /bin/sh in sysusers-generate-pre and the generated code
+
+-------------------------------------------------------------------
+Tue Mar 17 10:12:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop use of tail from the generated %pre scriptlets
+
+-------------------------------------------------------------------
 Sun Dec 29 19:16:13 UTC 2019 - kukuk@suse.de
 
 - Look for /bin/busybox, too
