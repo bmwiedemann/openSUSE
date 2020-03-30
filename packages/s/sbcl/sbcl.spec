@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -67,7 +67,17 @@ Source26:       http://downloads.sourceforge.net/sourceforge/sbcl/sbcl-1.5.8-ppc
 %define sbcl_arch ppc64
 %define sbcl_bootstrap_src 26
 %endif
-###BuildRequires:  clisp
+%ifarch ppc64
+%define sbcl_arch ppc64
+%define with_clisp 1
+%endif
+%ifarch riscv64
+%define sbcl_arch riscv
+%define with_clisp 1
+%endif
+%if 0%{?with_clisp}
+BuildRequires:  clisp
+%endif
 %else
 BuildRequires:  sbcl
 %endif
@@ -95,10 +105,8 @@ Patch1:         disable-localport-bsd-sockets-test.patch
 Patch2:         fix-tests.patch
 # PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
 Patch3:         strip-arm-CFLAGS.patch
-# PATCH-FIX-UPSTREAM  fix ppc and ppc64le LINKFLAGS
-Patch4:         ppc-ppc64le-fix-LINKFLAGS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    ppc64 s390x
+ExcludeArch:    s390x
 
 %description
 Steel Bank Common Lisp (SBCL) is a high performance Common Lisp
@@ -109,15 +117,16 @@ profiler, a code coverage tool, and many other extensions.
 
 %prep
 %if %{with bootstrap}
+%if !0%{?with_clisp}
 tar -xf %{S:%{sbcl_bootstrap_src}}
 ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
+%endif
 %endif
 %setup -q
 %patch0 -p1 -b install
 %patch1 -p1 -b sockets
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 cp %{S:1} .
 cp %{S:2} .
@@ -129,10 +138,13 @@ sed -i -e "s|\"%version\"|\"%version-%release-%_vendor\"|" version.lisp-expr
 CFLAGS="%optflags"
 %if %{with bootstrap}
 %{?sbcl_arch:export SBCL_ARCH=%{sbcl_arch}}
+%if 0%{?with_clisp}
+ %_buildshell make.sh --xc-host='env LC_ALL=C.utf8 clisp -q -norc' --prefix=%{_prefix} 
+%else
  %_buildshell ./make.sh \
   --prefix=%{_prefix} \
   --xc-host="$(readlink -f ../BOOTSTRAP/run-sbcl.sh)"
-###%_buildshell make.sh --xc-host='clisp -q -norc' --prefix=%{_prefix} 
+%endif
 %else
 %_buildshell make.sh --xc-host="sbcl --disable-debugger --no-sysinit --no-userinit"  --prefix=%{_prefix}
 %endif
