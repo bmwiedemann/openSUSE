@@ -79,4 +79,12 @@
   * Add timer to prune unnamed images</comment>
     <requestid>787810</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6b460aa4b77da0a95f89b47fafadfb86</srcmd5>
+    <version>0.0+git20200324.5f4ae65</version>
+    <time>1585602386</time>
+    <user>dimstar_suse</user>
+    <comment>- Package service file for squid conainer</comment>
+    <requestid>789792</requestid>
+  </revision>
 </revisionlist>

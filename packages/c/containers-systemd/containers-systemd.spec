@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server haproxy mariadb nginx
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-image-prune.timer
+%define containers bind dhcp-server haproxy mariadb nginx squid
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-image-prune.timer squid.service
 
 Name:           containers-systemd
 Version:        0.0+git20200324.5f4ae65
@@ -33,7 +33,8 @@ BuildArch:      noarch
 %description
 This package contains the configuration files and systemd units
 to run the openSUSE containers via podman managed by systemd.
-Currently supported are bind, dhcp-server, mariadb and nginx.
+Currently supported are bind, dhcp-server, mariadb, nginx and squid.
+Additional, there is a timer to cleanup dangling container images.
 
 %prep
 %setup -q
@@ -107,6 +108,10 @@ done
 %{_fillupdir}/sysconfig.container-nginx
 %{_sbindir}/rccontainer-nginx
 %ghost %dir /srv/nginx
+%{_unitdir}/container-squid.service
+%{_fillupdir}/sysconfig.container-squid
+%{_sbindir}/rccontainer-squid
+%ghost %dir /srv/squid
 %{_unitdir}/container-image-prune.service
 %{_unitdir}/container-image-prune.timer
 
