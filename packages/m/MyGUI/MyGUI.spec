@@ -1,7 +1,7 @@
 #
 # spec file for package MyGUI
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,27 +17,23 @@
 #
 
 
-%define capname	MYGUI
-%define _major	3.2
-%define _minor	2
-%define _sover	3
+%define capname MYGUI
+%define _sover  3_4_0
 Name:           MyGUI
-Version:        %{_major}.%{_minor}
+Version:        3.4.0
 Release:        0
 Summary:        A GUI library for Ogre Rendering Engine
 License:        MIT
 Group:          Development/Tools/GUI Builders
-Url:            http://mygui.info/
+URL:            http://mygui.info/
 Source:         https://github.com/MyGUI/mygui/archive/MyGUI%{version}.tar.gz
 Source1:        %{name}.png
 # PATCH-FIX-UPSTREAM MyGUI-lib_suffix.patch
 Patch0:         %{name}-lib_suffix.patch
 # PATCH-FIX-UPSTREAM MyGUI-gcc47-visibility.patch
 Patch1:         %{name}-gcc47-visibility.patch
-# PATCH-FIX-OPENSUSE MyGUI-freetype2-include.patch
-Patch2:         MyGUI-freetype2-include.patch
 # PATCH-FIX-UPSTREAM MyGUI-libCommon-fixup.patch -- https://github.com/MyGUI/mygui/issues/157
-Patch3:         MyGUI-libCommon-fixup.patch
+Patch2:         MyGUI-libCommon-fixup.patch
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix
@@ -48,13 +44,13 @@ BuildRequires:  graphviz
 BuildRequires:  libOIS-devel
 BuildRequires:  libOgreMain-devel
 BuildRequires:  libX11-devel
+# MyGUI wants to copy plugins.cfg installed by ogre-demos
+BuildRequires:  ogre-demos
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(uuid)
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 MyGUI is a library for creating Graphical User Interfaces (GUIs)
@@ -123,10 +119,7 @@ This subpackage contains the development documentation for MyGUI.
 
 %prep
 %setup -q -n mygui-%{name}%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p0
+%autopatch -p1
 
 dos2unix     *.txt COPYING.MIT
 chmod 644 *.txt COPYING.MIT
@@ -136,26 +129,28 @@ install -dm 755 build
 # this is probably an error in OGRE packaging... but let's just fix the build.
 export OGRE_LIBRARIES="`pkg-config --libs OGRE` -lboost_system"
 %cmake \
-	-DCMAKE_BUILD_TYPE=release \
-	-DOGRE_LIBRARIES="$OGRE_LIBRARIES" \
-	-DMYGUI_STATIC=FALSE \
-	-DMYGUI_USE_FREETYPE=TRUE \
-	-DMYGUI_BUILD_SAMPLES=TRUE \
-	-DMYGUI_BUILD_PLUGINS=TRUE \
-	-DMYGUI_BUILD_TOOLS=TRUE \
-	-DMYGUI_BUILD_WRAPPER=FALSE \
-	-DMYGUI_INSTALL_SAMPLES=TRUE \
-	-DMYGUI_INSTALL_TOOLS=TRUE \
-	-DMYGUI_INSTALL_DOCS=TRUE \
-	-DMYGUI_INSTALL_MEDIA=TRUE \
-	-DMYGUI_INSTALL_SAMPLES_SOURCE=TRUE \
-	-DMYGUI_FULL_RPATH=FALSE
+  -DCMAKE_BUILD_TYPE=release \
+  -DOGRE_LIBRARIES="$OGRE_LIBRARIES" \
+  -DMYGUI_STATIC=FALSE \
+  -DMYGUI_USE_FREETYPE=TRUE \
+  -DMYGUI_BUILD_SAMPLES=TRUE \
+  -DMYGUI_BUILD_PLUGINS=TRUE \
+  -DMYGUI_BUILD_TOOLS=TRUE \
+  -DMYGUI_BUILD_WRAPPER=FALSE \
+  -DMYGUI_INSTALL_SAMPLES=TRUE \
+  -DMYGUI_INSTALL_TOOLS=TRUE \
+  -DMYGUI_INSTALL_DOCS=TRUE \
+  -DMYGUI_INSTALL_MEDIA=TRUE \
+  -DMYGUI_INSTALL_SAMPLES_SOURCE=TRUE \
+  -DMYGUI_FULL_RPATH=FALSE \
+  -DCMAKE_SKIP_RPATH=TRUE \
+  -DOGRE_CONFIG_DIR=%{_datadir}/OGRE
 
-make %{?_smp_mflags} V=1
+%cmake_build
 
 pushd ../Docs
-	doxygen -s -g Doxyfile 2> /dev/null
-	doxygen Doxyfile
+  doxygen -s -g Doxyfile 2> /dev/null
+  doxygen Doxyfile
 popd
 
 %install
@@ -167,10 +162,10 @@ popd
 
 # rename demos to avoid duplicate names with other packages
 pushd %{buildroot}%{_bindir}
-	demos=`ls -1 Demo_*`
-	for i in $demos; do
-		mv $i %{name}-$i
-	done
+  demos=`ls -1 Demo_*`
+  for i in $demos; do
+    mv $i %{name}-$i
+  done
 popd
 
 # move those files to /usr/share/MYGUI
@@ -178,23 +173,23 @@ mv %{buildroot}%{_bindir}/plugins.cfg %{buildroot}%{_datadir}/%{capname}
 mv %{buildroot}%{_bindir}/resources.xml %{buildroot}%{_datadir}/%{capname}
 
 # adjust OGRE path
-sed -i -e 's|PluginFolder=/usr/local/lib/OGRE|%{_libdir}/OGRE|g' %{buildroot}%{_datadir}/%{capname}/plugins.cfg
+sed -i -e 's|PluginFolder=%{_prefix}/local/lib/OGRE|%{_libdir}/OGRE|g' %{buildroot}%{_datadir}/%{capname}/plugins.cfg
 
 # wrapper-script for binaries
 cat > %{name}.sh <<EOF
 #! /bin/bash
 if [ -z "\$1" ]; then
-	echo "missing parameter..."
-	echo ""
-	echo "usage:"
-	echo "\$0 LayoutEditor"
-	echo "\$0 ImageSetViewer"
-	echo "\$0 FontViewer"
-	echo ""
-	echo "or one of the installed demo applications:"
-	myDemos=\`ls -1 %{_bindir}/%{name}-Demo_*\`
-	echo \$myDemos | sed -e 's|%{_bindir}/||g'
-	exit 1
+  echo "missing parameter..."
+  echo ""
+  echo "usage:"
+  echo "\$0 LayoutEditor"
+  echo "\$0 ImageSetViewer"
+  echo "\$0 FontViewer"
+  echo ""
+  echo "or one of the installed demo applications:"
+  myDemos=\`ls -1 %{_bindir}/%{name}-Demo_*\`
+  echo \$myDemos | sed -e 's|%{_bindir}/||g'
+  exit 1
 fi
 
 # create local working directory
@@ -205,11 +200,11 @@ mkdir -p \$HOME/.%{name}
 ln -sf %{_datadir}/%{capname}/Media \$HOME/.%{name}
 
 if [ ! -f \$HOME/.%{name}/plugins.cfg ]; then
-	# config should be user writeable
-	cp %{_datadir}/%{capname}/plugins.cfg \$HOME/.%{name}
+  # config should be user writeable
+  cp %{_datadir}/%{capname}/plugins.cfg \$HOME/.%{name}
 fi
 if [ ! -f \$HOME/.%{name}/resources.xml ]; then
-	cp %{_datadir}/%{capname}/resources.xml \$HOME/.%{name}
+  cp %{_datadir}/%{capname}/resources.xml \$HOME/.%{name}
 fi
 
 # call binary from local working-directory
@@ -221,18 +216,18 @@ install -m 755 %{name}.sh \
 
 # use system fonts
 pushd %{buildroot}%{_datadir}/%{capname}/Media/MyGUI_Media
-	ln -sf %{_datadir}/fonts/truetype/DejaVuSans.ttf .
-	ln -sf %{_datadir}/fonts/truetype/DejaVuSans-ExtraLight.ttf .
+  ln -sf %{_datadir}/fonts/truetype/DejaVuSans.ttf .
+  ln -sf %{_datadir}/fonts/truetype/DejaVuSans-ExtraLight.ttf .
 popd
 
 # icon
 install -dm 755 %{buildroot}%{_datadir}/pixmaps
 install -m 644 %{SOURCE1} \
-	%{buildroot}%{_datadir}/pixmaps
+  %{buildroot}%{_datadir}/pixmaps
 
 # menu-entries
 for i in LayoutEditor ImageSetViewer FontViewer; do
-	cat > $i.desktop << EOF
+  cat > $i.desktop << EOF
 [Desktop Entry]
 Name=MyGUI $i
 GenericName=MyGUI $i
@@ -257,9 +252,11 @@ rm Docs/html/installdox || true
 %post -n libMyGUIEngine%{_sover} -p /sbin/ldconfig
 %postun -n libMyGUIEngine%{_sover} -p /sbin/ldconfig
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
-%defattr(-,root,root)
-%doc *.txt 
+%doc *.txt
 %license COPYING.MIT
 %{_bindir}/%{name}.sh
 %{_bindir}/FontEditor
@@ -296,7 +293,6 @@ rm Docs/html/installdox || true
 %{_datadir}/pixmaps/*.png
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/%{capname}
 %{_includedir}/%{capname}/*.h
 %{_libdir}/*.so
@@ -305,15 +301,12 @@ rm Docs/html/installdox || true
 %{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeTemplates/BaseLayoutTemplate.h
 
 %files devel-doc
-%defattr(-,root,root)
 %doc Docs/html/*
 
 %files -n libMyGUIEngine%{_sover}
-%defattr(-,root,root)
 %{_libdir}/libMyGUIEngine.so.*
 
 %files demo
-%defattr(-,root,root)
 %{_bindir}/%{name}-Demo_*
 %{_datadir}/%{capname}/Media/Demos/
 

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:55:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Run spec-cleaner
+- Update to 3.4:
+  * Added LanguageManager::getLanguages
+  * Fix lost key focus event not being triggered sometimes
+  * Fix inconsistency: _riseMouseButtonMove was using Layer
+    coordinates (most of the time).
+    _riseMouseButtonReleased/Pressed were using absolute coordinates.
+  * Other InputManager events fixes.
+  * Cleaner and much faster logic for adding and removing
+    render items (it was the performance bottleneck when
+    working with many items on screen).
+  * ScrollBar: Fixed wrong tracking area bug.
+  * Button: make Button with key focus (can be set only
+    manually through code) have highlighted state.
+  * ItemBox: add possibility to not update ItemBox content
+    when working with items (huge speed boost, when
+    adding/removing many in single frame)
+  * EditText: add support for alpha in text and text
+    shadow colours (multiplied with widget's alpha).
+  * ItemBox: add options to hide ItemBox scroll bars
+    (same as for ScrollView and EditBox).
+  * MultiListBox: slightly advanced and more flexible
+    custom compare function.
+  * EditBox: add Ctrl+Left/Right hotkey support (moves
+    cursor to next word).
+  * MultiListBox: add eventNotifyItem.
+  * OpenGL3Platform: Added new rendering platform.
+  * OpenGLESPlatform: Added new rendering platform.
+  * Emscripten support (works for Ogre and all OpenGL
+    platforms).
+  * OgrePlatform: Many minor build-related fixes and imrovements,
+    including newer Ogre support and better CMake scripts.
+  * OpenGL3: Fixed application window resizing
+    in editors and demos.
+  * All platforms: Fix possible stack overflow in
+    ***DataManager::getDataPath.
+  * All platforms: better VertexBuffer reallocation strategy
+    for all platforms (in ::lock call, not in ::setVertexCount).
+  * All platforms: Various minor fixes and code cleanup.
+  * ResourceManualFont: Added setTexture.
+  * ResourceTrueTypeFont: Optimize TrueTupeFont render speed
+    (half getGlyphInfo search time).
+  * ResourceTrueTypeFont: Remove no longer needed freetype
+    bytecode bug fix.
+  * LayoutEditor: Fixed "[DEFAULT]" value not being handles properly
+    (was colored white in ComboBox, was saved in layout).
+  * LayoutEditor: Other minor fixes and improvements.
+  * Added SDL2 support.
+  * Switched to C++11: various related code improvements and cleanups.
+- Rebase patches:
+  * MyGUI-lib_suffix.patch
+  * MyGUI-gcc47-visibility.patch
+  * MyGUI-libCommon-fixup.patch
+- Drop obsolete patch: MyGUI-freetype2-include.patch
+
+-------------------------------------------------------------------
 Fri Jan 25 09:40:32 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM errors

@@ -1,7 +1,8 @@
-diff -Naur MyGUI_3.2.2.orig/MyGUIEngine/include/MyGUI_Singleton.h MyGUI_3.2.2/MyGUIEngine/include/MyGUI_Singleton.h
---- MyGUI_3.2.2.orig/MyGUIEngine/include/MyGUI_Singleton.h
-+++ MyGUI_3.2.2/MyGUIEngine/include/MyGUI_Singleton.h
-@@ -52,8 +52,14 @@
+diff --git a/MyGUIEngine/include/MyGUI_Singleton.h b/MyGUIEngine/include/MyGUI_Singleton.h
+index 5067da9..e12287d 100644
+--- a/MyGUIEngine/include/MyGUI_Singleton.h
++++ b/MyGUIEngine/include/MyGUI_Singleton.h
+@@ -58,8 +58,14 @@ namespace MyGUI
  		}
  
  	private:
