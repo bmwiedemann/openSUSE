@@ -3,7 +3,7 @@ Wed Aug 29 20:25:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 20180625
   * No changelog was provided
-- Strip /data/ subdirectory [boo#1106378]
+- Strip /data/ subdirectory [boo#1106378, boo#1165480]
 
 -------------------------------------------------------------------
 Sat Mar 12 20:41:54 UTC 2016 - jengelh@inai.de

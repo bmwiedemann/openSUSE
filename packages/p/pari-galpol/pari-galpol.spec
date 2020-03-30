@@ -1,7 +1,7 @@
 #
 # spec file for package pari-galpol
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GALPOL polynomial database for the PARI CAS
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://pari.math.u-bordeaux.fr/
+URL:            http://pari.math.u-bordeaux.fr/
 
 Source:         http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz
 Source2:        http://pari.math.u-bordeaux.fr/pub/pari/packages/galpol.tgz.asc

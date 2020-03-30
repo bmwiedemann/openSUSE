@@ -61,4 +61,12 @@
 - Strip /data/ subdirectory [boo#1106378]</comment>
     <requestid>632201</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4b2af099100f6b44ce2cde115fbde298</srcmd5>
+    <version>20180625</version>
+    <time>1585602317</time>
+    <user>dimstar_suse</user>
+    <comment>- Strip /data/ subdirectory [boo#1106378, boo#1165480]</comment>
+    <requestid>789734</requestid>
+  </revision>
 </revisionlist>
