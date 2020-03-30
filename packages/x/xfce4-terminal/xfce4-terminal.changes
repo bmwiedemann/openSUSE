@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:55:15 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.9.2
+  * Allow to create window with 1 line height. One should also disable
+    the scrollbar (--hide-scrollbar) to get 1 row window. (bxo#16447)
+  * Fix 'Transparency setting ignored when using --color-bg' (bxo#16309)
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Dec 27 19:41:40 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 0.8.9.1
