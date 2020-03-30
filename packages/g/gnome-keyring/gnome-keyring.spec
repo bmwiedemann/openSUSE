@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keyring
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-Url:            https://wiki.gnome.org/Projects/GnomeKeyring
+URL:            https://wiki.gnome.org/Projects/GnomeKeyring
 Source0:        https://download.gnome.org/sources/gnome-keyring/3.34/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 

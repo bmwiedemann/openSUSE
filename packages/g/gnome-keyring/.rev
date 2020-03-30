@@ -1022,4 +1022,15 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767135 from dimstar)</comment>
     <requestid>767402</requestid>
   </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>557d32ad3000edf24f36fd74301bc9f4</srcmd5>
+    <version>3.34.0</version>
+    <time>1585601473</time>
+    <user>dimstar_suse</user>
+    <comment>- According to the warning in the spec file baselibs.conf should be
+  updated when the scriptlet for pam-config is changed. This was
+  not done when the change was made to open the keyring also with
+  sddm (see boo#1167321). (forwarded request 787927 from cornelisbb)</comment>
+    <requestid>789274</requestid>
+  </revision>
 </revisionlist>

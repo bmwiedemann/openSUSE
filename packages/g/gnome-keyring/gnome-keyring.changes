@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 20:17:50 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- According to the warning in the spec file baselibs.conf should be
+  updated when the scriptlet for pam-config is changed. This was
+  not done when the change was made to open the keyring also with
+  sddm (see boo#1167321).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:10:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
