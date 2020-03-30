@@ -435,4 +435,13 @@
     <comment>Eliminate the -lang recommends (forwarded request 767193 from dimstar)</comment>
     <requestid>767455</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>83b36e458ad7d88851ad1704fe6baf56</srcmd5>
+    <version>2.0.4</version>
+    <time>1585601471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4:
+  * Updated translations. (forwarded request 787027 from sbrabec)</comment>
+    <requestid>789272</requestid>
+  </revision>
 </revisionlist>
