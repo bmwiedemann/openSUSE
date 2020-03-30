@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 27 23:05:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.04.1. Changes since 1.02.0:
+  * Lots of Vulkan fixes
+  * Frame rates over 72 Hz don't break physics anymore
+  * Default maximum frame rate raised to 200 Hz.
+  * Fix crashes with some Intel drivers and anti aliasing
+  * Fix crash "out of dynamic vertex buffer space"
+    in some very large custom maps
+  * Fix gun position being different than in QuakeSpasm
+    when status bar alpha is 0
+  * Fixed alpha tested alias models
+  * Fixed too large dynamic buffer allocations
+  * Lightmaps are now dynamically allocated (from QuakeSpasm)
+  * Particles are now rendered as quads instead of triangles
+    by default (r_quadparticles) like in QuakeSpasm.
+  * Fix alpha tested geo not testing depth
+  * Fix issue where wrong push constants were being
+    set if render size is smaller than window
+  * Fixed certain UI elementes being rendered with alpha
+    blending instead of alpha testing like in QS
+  * Fix issue with Intel GPUs crashing when leaving full screen
+  * Updated to latest QuakeSpasm code
+  * Fix particle alpha being affected by fog
+
+-------------------------------------------------------------------
 Mon Jun 17 19:34:23 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.02.0
