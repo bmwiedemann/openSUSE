@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:57:57 UTC 2020 - wbauer@tmo.at
+
+- Update to 1.8.2:
+  * Allowing editing of blank lines and don't mark newly inserted
+    lines as a conflict (kde#411472)
+  * Remove broken attempt to optimize drawing on horizontal scroll
+  * Fix line numbers not shown. Use QString::number directly not 
+    through a format string. (kde#418813)
+  * Correctly support "Print Current Page"
+  * Don't attempt to free nullptr in SourceData::FileData::reset()
+  * Make Preference dialog panes scroll-able if too large to fit on
+    screen
+  * Fix dialog filter on windows
+  * Switch to QElapsedTime for timing avoids explicitly undefined
+    behavior inside qt if time is changed
+  * Fix sync mode
+  * Make matching in CvsIngnoreList always honor bCaseSensitive
+    setting
+  * Don't use temporary with QLatin1String constructor, strange
+    things will happen
+  * ignore oversized cvsignore files
+  * Fix '-L' parameter handling (kde#410962)
+  * Restore accidentally deleted --auto option
+  * Fixing missing menu items (kde#411602), also resolves a
+    potential crash in MergeResultWindow::slotUpdateAvailabilities
+    (kde#407745)
+  * Prevent intermittent crash during reload/refresh
+  * Show diff for empty/missing files (kde#410008)
+  * Don't give false error when comparing empty folders
+  * Close files when not in use - Fixes "Too many open files" bug
+    (kde#408991)
+  * Avoid crash when receiving mouse or key events during early
+    startup (kde#407829)
+  * Don't try to manually build url if parent is not set
+  * Fix crash when canceling by using only one event loop in
+    ProgressDialog
+  * Don't append to already complete url
+  * Fix manual url building in FileAccess::setFromUdsEntry -
+    scheme should not change now
+  * Fix craft install instructions for windows (kde#405918)
+  * Fix crash in OptionDialog::slotApply() (kde#411586)
+  * Fix crash in MergeResultWindow::slotUpdateAvailabilities
+    (kde#407745)
+  * Fixed redraw for horizontal scrolling (kde#407894, kde#399070)
+
+-------------------------------------------------------------------
 Sun May 19 10:48:23 UTC 2019 - wbauer@tmo.at
 
 - Update to 1.8.1:
