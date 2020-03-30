@@ -1,7 +1,7 @@
 #
 # spec file for package python-node-semver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-node-semver
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Port of node-semver
 License:        MIT
@@ -50,7 +50,7 @@ python version of node-semver (https://github.com/isaacs/node-semver)
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
