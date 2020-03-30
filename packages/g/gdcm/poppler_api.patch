@@ -1,0 +1,27 @@
+# Patch to fix new poppler API on gdcm 3.0.5
+# Axel Braun <DocB@opensuse.org>
+
+diff -U 3 -dHrN -- a/Applications/Cxx/gdcminfo.cxx b/Applications/Cxx/gdcminfo.cxx
+--- a/Applications/Cxx/gdcminfo.cxx	2020-02-18 14:11:04.000000000 +0100
++++ b/Applications/Cxx/gdcminfo.cxx	2020-03-29 15:00:39.398419657 +0200
+@@ -513,7 +513,7 @@
+ #ifdef LIBPOPPLER_GLOBALPARAMS_CSTOR_HAS_PARAM
+     globalParams = new GlobalParams(0);
+ #else
+-    globalParams = new GlobalParams();
++    globalParams.reset(new GlobalParams());
+ #endif
+     uMap = globalParams->getTextEncoding();
+ 
+diff -U 3 -dHrN -- a/Applications/Cxx/gdcmpdf.cxx b/Applications/Cxx/gdcmpdf.cxx
+--- a/Applications/Cxx/gdcmpdf.cxx	2020-02-18 14:11:04.000000000 +0100
++++ b/Applications/Cxx/gdcmpdf.cxx	2020-03-29 14:52:23.374400551 +0200
+@@ -339,7 +339,7 @@
+ #ifdef LIBPOPPLER_GLOBALPARAMS_CSTOR_HAS_PARAM
+   globalParams = new GlobalParams(0);
+ #else
+-  globalParams = new GlobalParams();
++  globalParams.reset(new GlobalParams());
+ #endif
+   uMap = globalParams->getTextEncoding();
+ 

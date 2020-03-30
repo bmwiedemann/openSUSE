@@ -1,7 +1,7 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,15 +20,16 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Grassroots DiCoM is a C++ library to parse DICOM medical files
 License:        BSD-3-Clause
-URL:            http://gdcm.sourceforge.net/wiki/index.php/Main_Page
-Source0:        http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.gz
 Group:          Productivity/Graphics/Other
+URL:            http://gdcm.sourceforge.net/wiki/index.php/Main_Page
+Source0:        http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
 Patch1:         gdcm-2.4.0-usecopyright.patch
 Patch2:         fix_charls_2.patch
+Patch3:         poppler_api.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -77,6 +78,7 @@ are using %{name} for DICOM processing.
 
 %package        applications
 Summary:        Includes command line programs for GDCM
+Group:          Productivity/Graphics/Other
 Requires:       %{name}-libgdcm%{soname}
 
 %description    applications
@@ -97,6 +99,7 @@ compile applications based on gdcm
 
 %package        examples
 Summary:        GDCM examples
+Group:          Productivity/Graphics/Other
 Requires:       %{name}-libgdcm%{soname}
 
 %description    examples
@@ -104,6 +107,7 @@ CSharp, C++, Java, PHP and Python example programs for GDCM
 
 %package -n     python3-gdcm
 Summary:        Python binding for GDCM
+Group:          Productivity/Graphics/Other
 %{?python_provide:%python_provide python3-gdcm}
 Requires:       %{name}-libgdcm%{soname}
 
