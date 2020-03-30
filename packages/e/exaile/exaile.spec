@@ -1,7 +1,7 @@
 #
 # spec file for package exaile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
 Name:           exaile
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        Gtk3 Amarok-like music player
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.exaile.org/
 Source:         https://github.com/exaile/exaile/releases/download/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE exaile-no-splash-default.patch sor.alexei@meowr.ru -- Do not show splash screen on startup by default.
@@ -94,7 +93,7 @@ fretplay.com, and submitting played tracks on your iPod to last.fm.
 %autosetup -p1
 
 %build
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install \

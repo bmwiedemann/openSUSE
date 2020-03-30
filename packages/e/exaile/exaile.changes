@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:30:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.0.2
+  * Fixed Unicode errors on the tracklist view
+  * Fixed icon display on Plasma/Wayland
+  * Translation updates: Asturian, Catalan, Chinese 
+    (Simplified), Croatian, Danish, Finnish, Hindi, Italian, 
+    Portuguese, Spanish, Swedish, Turkish.
+
+-------------------------------------------------------------------
 Sun Sep 29 18:13:11 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Added needed python2-bsddb3 requirement.
