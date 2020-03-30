@@ -75,4 +75,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>787441</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bce3ad7a7f67be84e2ca7f83333f4249</srcmd5>
+    <version>3.0.1</version>
+    <time>1585602296</time>
+    <user>dimstar_suse</user>
+    <comment>- Install doc/license
+- Sync the package with smmap2 to have the same fixes in</comment>
+    <requestid>789719</requestid>
+  </revision>
 </revisionlist>

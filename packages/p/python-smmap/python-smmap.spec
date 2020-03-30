@@ -17,28 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-smmap
 Version:        3.0.1
 Release:        0
 Summary:        A pure git implementation of a sliding window memory map manager
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/gitpython-developers/smmap
 Source:         https://files.pythonhosted.org/packages/source/s/smmap/smmap-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-%if %{with test}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nosexcover}
 BuildRequires:  %{python_module nose}
-%endif
-# /SECTION
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,6 +45,7 @@ The documentation can be found here: http://packages.python.org/smmap
 
 %prep
 %setup -q -n smmap-%{version}
+dos2unix README.md
 
 %build
 %python_build
@@ -61,13 +53,13 @@ The documentation can be found here: http://packages.python.org/smmap
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%if %{with test}
+
 %check
-%python_exec setup.py test
-%endif
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
 
 %files %{python_files}
-%defattr(-,root,root,-)
+%license LICENSE
+%doc README.md
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:58:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Install doc/license
+- Sync the package with smmap2 to have the same fixes in
+
+-------------------------------------------------------------------
 Mon Mar 16 12:09:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.0.1:
