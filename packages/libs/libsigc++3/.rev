@@ -125,4 +125,12 @@
     <comment></comment>
     <requestid>760968</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6ae64d07ee25eba5fa2d6551208064a</srcmd5>
+    <version>3.0.3</version>
+    <time>1585601477</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 788212 from iznogood)</comment>
+    <requestid>789275</requestid>
+  </revision>
 </revisionlist>
