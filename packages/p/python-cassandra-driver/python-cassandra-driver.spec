@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cassandra-driver
-Version:        3.20.2
+Version:        3.22.0
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
@@ -29,13 +29,15 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module scales}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six} >= 1.6
+BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module sure}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
@@ -43,7 +45,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python2-futures
 Requires:       python-Cython
 Requires:       python-blist
-Requires:       python-six >= 1.6
+Requires:       python-geomet >= 0.1
+Requires:       python-six >= 1.9
 Recommends:     python-Twisted
 Recommends:     python-eventlet
 Recommends:     python-gevent
