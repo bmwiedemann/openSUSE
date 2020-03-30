@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:34:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.15.3. Changes since 2.15.2:
+  * Fixed corrupt characters and fields in various in game messages.
+  * Improved translation support.
+  * Updated translations.
+  * Added some UI improvements.
+  * Fixed some crashing issues related to spies.
+  * Standardized on FPU code generation for better cross-platform
+    compatibility.
+  * Added more advanced config options.
+  * Improved manual.
+  * Added key binding support.
+  * Prevented chat keystrokes registering as a hotkey too.
+  * Fixed sometimes hiring wrong unit in the inn.
+  * Added scenario advanced config presets to restore default
+    scenario game play to original game design parameters.
+  * Ensure screen redraw when dropping spy identity.
+  * Improved alternate font set.
+  * Added scroll button for long tutor messages.
+  * Removed gong sound for unsent AI diplomatic messages.
+  * Re-enabled AI ability to request direct military aid;
+    expect allied AI to work together on defending now.
+  * Removed uninitialized parameter in Caravan CRC check.
+  * Removed improper variable-size cast, causing incorrect
+    action processing on 64-bit platforms.
+  * Correct replay initialization for weather sync.
+
+-------------------------------------------------------------------
 Tue Feb 19 20:32:22 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 2.15.1 

@@ -1,7 +1,7 @@
 #
 # spec file for package 7kaa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           7kaa
-Version:        2.15.1
+Version:        2.15.3
 Release:        0
 Summary:        Seven Kingdoms: Ancient Adversaries
 License:        GPL-2.0-only
