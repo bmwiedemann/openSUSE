@@ -1,7 +1,7 @@
 #
 # spec file for package ode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_maj  8
 %define lname   libode%{so_maj}
 Name:           ode
-Version:        0.16
+Version:        0.16.1
 Release:        0
 Summary:        Open Dynamics Engine Library
 License:        BSD-3-Clause OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://ode.org/
+URL:            https://ode.org/
 Source0:        https://bitbucket.org/odedevs/ode/downloads/%{name}-%{version}.tar.gz
 Source1:        ode-config.1
 Patch0:         ode-iso-cpp.patch
@@ -81,7 +81,7 @@ CXXFLAGS="$CFLAGS"
 export CFLAGS CXXFLAGS
 export X_LIBS="-lX11"
 %configure --enable-shared --disable-static --enable-double-precision
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -93,19 +93,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Fail.
 %else
 %check
-make V=1 %{?_smp_mflags} check
+%make_build check
 %endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%doc LICENSE.TXT
+%license LICENSE.TXT
 %{_libdir}/libode.so.%{so_maj}.*
 
 %files devel
 %{_bindir}/ode-config
-%{_mandir}/man1/ode-config.1%{ext_man}
+%{_mandir}/man1/ode-config.1%{?ext_man}
 %{_includedir}/ode
 %{_libdir}/libode.so
 %{_libdir}/libode.so.%{so_maj}
