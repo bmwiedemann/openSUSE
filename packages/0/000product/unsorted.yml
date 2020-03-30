@@ -8155,16 +8155,6 @@ unsorted:
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream1: [x86_64] 
-  - libblacs2-gnu-mpich-hpc 
-  - libblacs2-gnu-mpich-hpc-devel 
-  - libblacs2-gnu-mvapich2-hpc 
-  - libblacs2-gnu-mvapich2-hpc-devel 
-  - libblacs2-gnu-openmpi1-hpc 
-  - libblacs2-gnu-openmpi1-hpc-devel 
-  - libblacs2-gnu-openmpi2-hpc 
-  - libblacs2-gnu-openmpi2-hpc-devel 
-  - libblacs2-gnu-openmpi3-hpc 
-  - libblacs2-gnu-openmpi3-hpc-devel 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -8838,9 +8828,6 @@ unsorted:
   - libecal-2_0-1-32bit: [x86_64] 
   - libecholib1_3 
   - libecholib1_3-devel 
-  - libechonest-qt5-devel 
-  - libechonest5-2_3 
-  - libechonest5-2_3-32bit: [x86_64] 
   - libecm1 
   - libeconf-devel 
   - libecore1 
@@ -10468,10 +10455,12 @@ unsorted:
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
   - libnetcdf-fortran-gnu-mpich-hpc 
+  - libnetcdf-fortran-gnu-mvapich2-hpc 
   - libnetcdf-fortran-gnu-openmpi1-hpc 
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
   - libnetcdf-fortran_4_5_2-gnu-mpich-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc 
   - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc 
@@ -10660,10 +10649,8 @@ unsorted:
   - libopenblas-pthreads-gnu-hpc-devel 
   - libopenblas-pthreads_0_3_9-gnu-hpc 
   - libopenblas-pthreads_0_3_9-gnu-hpc-devel 
-  - libopenblas_0_3_8-gnu-hpc: [i586] 
-  - libopenblas_0_3_8-gnu-hpc-devel: [i586] 
-  - libopenblas_0_3_9-gnu-hpc: [x86_64] 
-  - libopenblas_0_3_9-gnu-hpc-devel: [x86_64] 
+  - libopenblas_0_3_9-gnu-hpc 
+  - libopenblas_0_3_9-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -12485,6 +12472,7 @@ unsorted:
   - libweston-desktop-8-0 
   - libwget-devel 
   - libwget0 
+  - libwhich 
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
@@ -14661,6 +14649,8 @@ unsorted:
   - netcdf-devel-static 
   - netcdf-fortran-gnu-mpich-hpc 
   - netcdf-fortran-gnu-mpich-hpc-devel 
+  - netcdf-fortran-gnu-mvapich2-hpc 
+  - netcdf-fortran-gnu-mvapich2-hpc-devel 
   - netcdf-fortran-gnu-openmpi1-hpc 
   - netcdf-fortran-gnu-openmpi1-hpc-devel 
   - netcdf-fortran-gnu-openmpi2-hpc 
@@ -14670,6 +14660,9 @@ unsorted:
   - netcdf-fortran_4_5_2-gnu-mpich-hpc 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel-static 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel-static 
   - netcdf-fortran_4_5_2-gnu-openmpi1-hpc 
   - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel-static 
@@ -14702,7 +14695,6 @@ unsorted:
   - netcdf-openmpi3-devel-static 
   - netcdf_4_7_3-gnu-hpc 
   - netcdf_4_7_3-gnu-hpc-devel 
-  - netcdf_4_7_3-gnu-hpc-devel-data 
   - netcdf_4_7_3-gnu-hpc-devel-static 
   - netcdf_4_7_3-gnu-mpich-hpc 
   - netcdf_4_7_3-gnu-mpich-hpc-devel 
@@ -15520,8 +15512,7 @@ unsorted:
   - openblas-devel 
   - openblas-devel-headers 
   - openblas-pthreads_0_3_9-gnu-hpc-devel-static 
-  - openblas_0_3_8-gnu-hpc-devel-static: [i586] 
-  - openblas_0_3_9-gnu-hpc-devel-static: [x86_64] 
+  - openblas_0_3_9-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -15727,6 +15718,7 @@ unsorted:
   - openssl-cbs-devel: [x86_64] 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
+  - openssl_tpm2_engine 
   - openssl_tpm_engine 
   - openstack-macros 
   - openstack-suse-macros 
@@ -15866,6 +15858,7 @@ unsorted:
   - otb-devel 
   - otb-qt 
   - oto 
+  - otpclient 
   - otrs 
   - otrs-doc 
   - otrs-itsm 
@@ -19117,7 +19110,6 @@ unsorted:
   - python2-formats 
   - python2-freetype-py 
   - python2-freezegun 
-  - python2-freezerclient 
   - python2-frozendict 
   - python2-fs 
   - python2-ftputil 
@@ -19557,17 +19549,9 @@ unsorted:
   - python2-ordered-namespace 
   - python2-ordered-set 
   - python2-orderedmultidict 
-  - python2-os-api-ref 
   - python2-os-client-config 
-  - python2-os-service-types 
   - python2-osc-tiny 
   - python2-oscrypto 
-  - python2-oslo.config 
-  - python2-oslo.context 
-  - python2-oslo.db 
-  - python2-oslo.policy 
-  - python2-oslo.reports 
-  - python2-oslo.rootwrap 
   - python2-oslosphinx 
   - python2-oslotest 
   - python2-osmviz 
