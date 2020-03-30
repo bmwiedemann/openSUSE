@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:59:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 5.1.0
+  * Minor API change :class:`CBORSimpleValue` is now a subclass of namedtuple and allows
+    all numeric comparisons. This brings functional parity between C and Python modules.
+  * Fixes for C-module on big-endian systems including floating point decoding, smallint encoding,
+    and boolean argument handling. Tested on s390x and MIPS32.
+  * Increase version requred of setuptools during install due to unicode errors.
+
+-------------------------------------------------------------------
 Mon Mar  9 08:31:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - On python3 this package is compiled, so mark it such

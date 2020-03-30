@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cbor2
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/agronholm/cbor2
 Source:         https://files.pythonhosted.org/packages/source/c/cbor2/cbor2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 36.2.7}
+BuildRequires:  %{python_module setuptools >= 40.7.0}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
