@@ -1,7 +1,7 @@
 #
 # spec file for package abiword
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           abiword
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        A Multiplatform Word Processor
 # FIXME next version: check if the telepathy support still requires old version of empathy (with libempathy-gtk)
@@ -25,7 +25,7 @@ Summary:        A Multiplatform Word Processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Word Processor
 URL:            http://www.abisource.com/
-Source0:        http://abisource.com/downloads/abiword/latest/source/%{name}-%{version}.tar.gz
+Source0:        http://abisource.com/downloads/abiword/%{version}/source/%{name}-%{version}.tar.gz
 Source1:        abiword.appdata.xml
 # PATCH-FIX-UPSTREAM abiword-librevenge.patch fstrba@suse.com -- Fix build against librevenge-based libraries (svn revs 34461, 34462, 34463, 34464 and 34468)
 Patch5:         abiword-librevenge.patch
@@ -33,8 +33,7 @@ Patch5:         abiword-librevenge.patch
 Patch6:         abiword-libwps-0.4.patch
 # PATCH-FIX-UPSTREAM boost_asio.patch adam.majer@suse.de -- Aadd support for boost::asio
 Patch7:         boost_asio.patch
-#PATCH-FIX-UPSTREAM abiword-fix-black-overlay.patch -- Remove the black that covers the full window and make all unreadable
-Patch8:         abiword-fix-black-overlay.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
@@ -47,8 +46,8 @@ BuildRequires:  libsoup-devel
 BuildRequires:  libtool
 BuildRequires:  libwmf-devel
 BuildRequires:  link-grammar-devel
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(enchant) >= 1.2.0
 BuildRequires:  pkgconfig(fribidi) >= 0.10.4
@@ -110,7 +109,6 @@ UNIX platform.
 %patch5
 %patch6
 %patch7
-%patch8
 
 %build
 # We modified plugin configuration and thus we need to regenerate the whole build system
@@ -155,7 +153,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 install -dm 0755 %{buildroot}%{_datadir}/appdata
 install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/appdata/abiword.appdata.xml
 %fdupes %{buildroot}
-
 
 %post -n libabiword-3_0 -p /sbin/ldconfig
 %postun -n libabiword-3_0 -p /sbin/ldconfig
