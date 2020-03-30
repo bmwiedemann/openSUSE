@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:02:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Require numpy 1.16.0, removing Python 2 support which provides
+  a lower version
+- Activate test suite
+
+-------------------------------------------------------------------
 Sat Mar 14 15:57:22 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

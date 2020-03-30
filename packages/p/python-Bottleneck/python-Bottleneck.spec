@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Bottleneck
 Version:        1.3.2
 Release:        0
@@ -25,15 +26,16 @@ License:        BSD-2-Clause AND BSD-3-Clause
 URL:            http://berkeleyanalytics.com/bottleneck/
 Source0:        https://files.pythonhosted.org/packages/source/B/Bottleneck/Bottleneck-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.9.1}
+BuildRequires:  %{python_module numpy-devel >= 1.16.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.9.1
+Requires:       python-numpy >= 1.16.0
 %python_subpackages
 
 %description
-Bottleneck is a collection of fast NumPy array functions written in C
+Bottleneck is a collection of fast NumPy array functions written in C.
 
 %prep
 %setup -q -n Bottleneck-%{version}
@@ -45,6 +47,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+export PYTHONDONTWRITEBYTECODE=1
+%pytest_arch %{buildroot}%{$python_sitearch}/bottleneck/tests/
 
 %files %{python_files}
 %license LICENSE
