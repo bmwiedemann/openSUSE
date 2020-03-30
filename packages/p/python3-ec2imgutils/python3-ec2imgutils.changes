@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 19 21:42:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 7.0.9 (bsc#1167148)
+  + Support uploading with helper instances that handle disk attachments
+    via NVMe protocol
+  + Improve output of help for clarity
+  + Improve progress message for ssh connection to make it easier to
+    discover issues
+  + Fix implementation for using root-swap method with a running instance
+
+-------------------------------------------------------------------
 Wed Feb  5 13:05:02 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 7.0.8 (bsc#1162712)
