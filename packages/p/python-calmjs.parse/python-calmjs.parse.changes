@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:24:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.2.4
+  * Correct usage of ``__doc__`` to support level 2 optimized mode.
+  * Corrected some minor string definition syntax, where raw string prefix
+    should be used but was not previously.
+  * Correctly include LICENSE file in sdist.
+  * Include the correct test data general form for some previously added
+    test cases to better accommodate already planned future features.
+
+-------------------------------------------------------------------
 Tue Jan 14 14:37:01 UTC 2020 - pgajdos@suse.com
 
 - fix build in SLE-15: set en_US.UTF-8 encoding

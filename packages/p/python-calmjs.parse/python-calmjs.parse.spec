@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-calmjs.parse
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Summary:        Various parsers for ECMA standards
 License:        MIT
