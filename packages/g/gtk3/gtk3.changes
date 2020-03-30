@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:59:58 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.24.16:
+  + Fix the build.
+- Changes from version 3.24.15:
+  + filechooser:
+    - Fix a crash.
+    - Support selecting directories with a new enough file chooser
+      portal.
+  + textview: Speed up tag handling.
+  + wayland:
+    - Fix problems with clipboard handling.
+    - Fix a crash in the Wayland input method.
+    - Support cursor scale of 400%.
+    - Fix a crash in glade.
+  + css: Support font-feature-settings
+  + Adwaita:
+    - Use tabular figures where appropriate.
+    - Color tweaks for dark mode.
+    - Improve rendering of rounded corners.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 17 20:54:23 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.24.14:

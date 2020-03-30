@@ -35,7 +35,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.14
+Version:        3.24.16
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -701,6 +701,9 @@ fi
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/gtk-3.0
 %{_datadir}/gtk-3.0/gtkbuilder.rng
+%dir %{_datadir}/gtk-3.0/valgrind
+%{_datadir}/gtk-3.0/valgrind/gtk.supp
+%{_datadir}/gtk-3.0/valgrind/gtk64.supp
 %{_datadir}/icons/hicolor/*/apps/gtk3-demo.png
 %{_datadir}/icons/hicolor/*/apps/gtk3-widget-factory.png
 %{_datadir}/icons/hicolor/*/apps/gtk3-demo-symbolic.symbolic.png
