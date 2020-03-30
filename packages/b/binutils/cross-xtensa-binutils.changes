@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:12:50 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update binutils-2.34-branch.diff.gz.
+
+-------------------------------------------------------------------
+Fri Feb 28 16:20:14 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Remove fix-try_load_plugin.patch as it is part
+  of the updated binutils-2.34-branch.diff.gz patch.
+
+-------------------------------------------------------------------
+Wed Feb 26 08:13:33 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add binutils-pr25593.diff to fix DT_NEEDED order with -flto
+  [bsc#1163744]
+
+-------------------------------------------------------------------
+Tue Feb 18 16:12:52 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update fix-try_load_plugin.patch to latest version.
+
+-------------------------------------------------------------------
+Tue Feb 18 12:48:26 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add fix-try_load_plugin.patch in order to fix fallback caused
+  by backport for PR25355.
+
+-------------------------------------------------------------------
+Sat Feb  1 17:46:57 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.34:
+  * The disassembler (objdump --disassemble) now has an option to
+    generate ascii art thats show the arcs between that start and end
+    points of control flow instructions.
+
+  * The binutils tools now have support for debuginfod.  Debuginfod is a 
+    HTTP service for distributing ELF/DWARF debugging information as
+    well as source code.  The tools can now connect to debuginfod
+    servers in order to download debug information about the files that
+    they are processing.
+
+  * The assembler and linker now support the generation of ELF format
+    files for the Z80 architecture.
+- Rename and get binutils-2.34-branch.diff.gz (boo#1160254).
+- Rebase add-ulp-section.diff, binutils-revert-plt32-in-branches.diff,
+  cross-avr-size.patch and binutils-skip-rpaths.patch.
+- Add new subpackages for libctf and libctf-nobfd.
+- Disable LTO due to boo#1163333.
+- Includes fixes for these CVEs:
+  bnc#1153768 aka CVE-2019-17451 aka PR25070
+  bnc#1153770 aka CVE-2019-17450 aka PR25078
+
+-------------------------------------------------------------------
 Tue Jan  7 12:42:34 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Disable LTO during testsuite run

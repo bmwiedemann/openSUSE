@@ -117,7 +117,7 @@ Index: bfd/elfxx-x86.c
 +              if (sec == NULL)
 +                info->callbacks->einfo (_("%F%P: failed to create ULP section\n"));
 +
-+              if (!bfd_set_section_alignment (dynobj, sec,  plt_alignment))
++              if (!bfd_set_section_alignment (sec,  plt_alignment))
 +                goto error_alignment;
 +
 +              htab->ulp = sec;

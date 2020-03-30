@@ -33,7 +33,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.33.1
+Version:        2.34
 Release:        0
 #
 # RUN_TESTS
@@ -81,7 +81,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.33-branch.diff.gz
+Patch1:         binutils-2.34-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -96,6 +96,7 @@ Patch34:        aarch64-common-pagesize.patch
 Patch36:        binutils-pr22868.diff
 Patch37:        binutils-revert-plt32-in-branches.diff
 Patch38:        binutils-fix-invalid-op-errata.diff
+Patch40:        binutils-pr25593.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -139,6 +140,23 @@ This package includes header files and static libraries necessary to
 build programs which use the GNU BFD library, which is part of
 binutils.
 
+%package -n libctf0
+Summary:        Compact C Type Format library (runtime, BFD dependency)
+License:        GFDL-1.3-only AND GPL-3.0-or-later
+Group:          Development/Tools/Building
+
+%description -n libctf0
+This package includes the libctf shared library.
+The Compact C Type Format (CTF) is a way of representing information about a binary program
+
+%package -n libctf-nobfd0
+Summary:        Compact C Type Format library (runtime, no BFD dependency)
+License:        GFDL-1.3-only AND GPL-3.0-or-later
+Group:          Development/Tools/Building
+
+%description -n libctf-nobfd0
+This package includes the libctf-nobfd shared library.
+The Compact C Type Format (CTF) is a way of representing information about a binary program
 
 %ifarch %arm
 %define HOST %{_target_cpu}-suse-linux-gnueabi
@@ -154,7 +172,7 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 # patch bringing the tarball to the newest upstream version
 %patch1 -p1
 %if !%{test_vanilla}
-%patch3
+%patch3 -p1
 %patch4
 %patch5
 %patch6
@@ -170,6 +188,7 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch37 -p1
 %endif
 %patch38
+%patch40 -p1
 %patch100
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -182,11 +201,9 @@ cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %endif
 
 %build
+%define _lto_cflags %{nil}
 sed -i -e '/BFD_VERSION_DATE/s/$/-%(echo %release | sed 's/\.[0-9]*$//')/' bfd/version.h
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error"
-%if 0%{suse_version} > 1110
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -ffat-lto-objects"
-%endif
 
 %if 0%{!?cross:1}
 # Building native binutils
@@ -346,9 +363,6 @@ cd build-dir
 %if 0%{?cross:1}
 make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS_FOR_TARGET="-O2 -g" || %{make_check_handling}
 %else
-%if "%{?_lto_cflags}" != ""
-RPM_OPT_FLAGS+=" -fno-lto"
-%endif
 make -k check CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" CXXFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" || %{make_check_handling}
 %endif
 
@@ -457,6 +471,9 @@ rm -f $RPM_BUILD_ROOT%{_prefix}/bin/*-c++filt
 "%_sbindir/update-alternatives" --install \
 	"%_bindir/ld" ld "%_bindir/ld.gold" 1
 
+%post -n libctf0 -p /sbin/ldconfig
+%post -n libctf-nobfd0 -p /sbin/ldconfig
+
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/as.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/bfd.info.gz
@@ -471,6 +488,9 @@ fi;
 if [ "$1" = 0 ]; then
 	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.gold";
 fi;
+
+%postun -n libctf0 -p /sbin/ldconfig
+%postun -n libctf-nobfd0 -p /sbin/ldconfig
 
 %postun
 /sbin/ldconfig
@@ -510,6 +530,14 @@ fi;
 %defattr(-,root,root)
 %{_prefix}/include/*.h
 %{_libdir}/lib*.*a
+%{_libdir}/libctf.so
+%{_libdir}/libctf-nobfd.so
+
+%files -n libctf0
+%{_libdir}/libctf.so.*
+
+%files -n libctf-nobfd0
+%{_libdir}/libctf-nobfd.so.*
 %endif
 
 %changelog

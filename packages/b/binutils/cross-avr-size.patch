@@ -370,17 +370,17 @@ index 479a464887..971156ccbe 100644
 +  }
 +
 +  if ((section = bfd_get_section_by_name (file, ".data")) != NULL)
-+    datasize = bfd_section_size (file, section);
++    datasize = bfd_section_size (section);
 +  if ((section = bfd_get_section_by_name (file, ".text")) != NULL)
-+    textsize = bfd_section_size (file, section);
++    textsize = bfd_section_size (section);
 +  if ((section = bfd_get_section_by_name (file, ".bss")) != NULL)
-+    bsssize = bfd_section_size (file, section);
++    bsssize = bfd_section_size (section);
 +  if ((section = bfd_get_section_by_name (file, ".bootloader")) != NULL)
-+    bootloadersize = bfd_section_size (file, section);
++    bootloadersize = bfd_section_size (section);
 +  if ((section = bfd_get_section_by_name (file, ".noinit")) != NULL)
-+    noinitsize = bfd_section_size (file, section);
++    noinitsize = bfd_section_size (section);
 +  if ((section = bfd_get_section_by_name (file, ".eeprom")) != NULL)
-+    eepromsize = bfd_section_size (file, section);
++    eepromsize = bfd_section_size (section);
 +  
 +  bfd_size_type text = textsize + datasize + bootloadersize;
 +  bfd_size_type data = datasize + bsssize + noinitsize;
