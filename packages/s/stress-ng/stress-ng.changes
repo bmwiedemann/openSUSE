@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:39:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.06
+  * stress-dev: remove TIOCGETC and TIOCSETC ioctl to fix FTBFS on
+    alpha
+    - this is the 2nd attempt to fix this issue, this time I'm
+      removing the use these specific ioctl commands.
+
+-------------------------------------------------------------------
+Sun Mar 29 19:13:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.05
+  * stress-dev: define a shim for struct tchar, fixes a FTBFS
+    on arch alpha
+
+-------------------------------------------------------------------
+Sun Mar 29 10:25:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.04
+  * stress-sockabuse: reduce scope of variable sfd
+  * stress-reboot: reduce scope of another ret variable
+  * stress-reboot: reduce scope of variable ret
+  * stress-skiplist: make function skip_list_free static
+  * stress-madvise: relax constness of buf pointer
+  * stress-reboot: don't pass args to clone, it is not required
+  * stress-reboot: remove shadowed variable ret
+  * stress-sysbaddr: add guard on bad_getdomainname and comment
+    out bad_acct
+  * stress-sysbadaddr: disable acct for the moment.
+  * stress-sysbadaddr: limit clone to just linux for the moment
+  * stress-sysbadaddr: pass incremented addresses to avoid restrict
+    warnings
+  * stress-sysinfo: cast void * to the appropriate arg types on system
+    calls
+  * stress-reboot: add and use SHIM_CAP_SYS_BOOT
+  * stress-reboot: move help so it's always built in
+  * Add a reboot stressor.  This does not actually reboot a system.
+  * stress-sigfd: exercise the fd info of the signalfd
+  * stress-fcntl: pass uids array to fcntl for F_GETOWNER_UIDS cmd
+  * stress-sysbadaddr: remove create, it can leave broken files in
+    directory
+  * stress-sysbadaddr: add in more system calls
+  * stress-procfs: remove ARM64 workaround as this is now fixed
+  * README: update stressor stats
+  * stress-xattr: don't fail to build if HAVE_LGETXATTR is not defined
+  * stress-xattr: don't fail to build if HAVE_LSETXATTR is not defined
+  * stress-xattr: don't fail to build if HAVE_LLISTXATTR is not defined
+  * core-shim: fix typo on LLISTXATTR detection
+  * Add shims to xattr system calls
+  * stress-pipeherd: fix typo in switch rate info
+  * stress-sockabuse: remove xattr from OS X builds
+  * stress-dev: add TCOOFF, TCOON, TCIOFF, TCION ioctls
+  * stress-dev: add TIOCGETC and TIOCSETC ioctls
+  * stress-rtc: exercise RTC_SET_TIME, RTC_IRQP_SET and RTC_VL_READ
+    ioctls
+  * stress-ustat: silently ignore bad ustat buf
+  * stress-sockabuse: don't memset timespec if we don't have
+    HAVE_FUTIMENS
+  * stress-sockabuse: silently ignore EADDRINUSE error when binding
+  * stress-sockabuse: use different port for each instance
+  * stress-sockabuse: use DEFAULT_SOCKABUSE_PORT as the default post
+  * stress-ng.h: update a couple of socket port definitions
+  * core-shim: cast shim'd ustat arg to void *
+  * stress-sockabuse: localize variable n to FIONREAD ioctl code block
+  * core-shim: fix missing ; on shim_enosys call
+  * Add a skiplist stressor
+  * Add socket file descriptor abusing stressor
+  * stress-madvise: exercise madvise on mappings in threads where
+    possible
+  * stress-cpu: remove tab
+  * syscalls.txt: remove stray ' char
+  * Add a shim for deprecated system call ustat
+  * stress-eventfd: exercise /proc/self/fdinfo on the eventfd
+    descriptors
+  * stress-chattr: fix build failure for non-Linux platforms
+  * Add chattr file attribute stressor
+  * stress-dentry: pressurize the dentry cache with negative dentries
+
+-------------------------------------------------------------------
 Mon Mar 16 20:08:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.11.3
