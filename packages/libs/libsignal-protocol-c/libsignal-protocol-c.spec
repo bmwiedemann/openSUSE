@@ -1,7 +1,7 @@
 #
 # spec file for package libsignal-protocol-c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define c_lib libsignal-protocol-c2
 Name:           libsignal-protocol-c
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Signal Protocol C Library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/signalapp/libsignal-protocol-c/
+URL:            https://github.com/signalapp/libsignal-protocol-c/
 Source:         https://github.com/signalapp/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix_bigendian.patch
 BuildRequires:  check-devel >= 0.9.10
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  gcc-c++
@@ -52,7 +51,6 @@ The libsignal-protocol-c library is a forward secrecy protocol library written i
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
@@ -77,7 +75,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %license LICENSE
 %doc README.md
 %{_libdir}/libsignal-protocol-c.so.2
-%{_libdir}/libsignal-protocol-c.so.2.3.2
+%{_libdir}/libsignal-protocol-c.so.2.3.3
 
 %files devel
 %dir %{_includedir}/signal

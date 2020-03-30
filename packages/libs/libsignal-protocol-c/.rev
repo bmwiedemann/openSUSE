@@ -45,4 +45,17 @@
     <comment></comment>
     <requestid>679766</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12e5e021aeba52830b8e1c4c208c5287</srcmd5>
+    <version>2.3.3</version>
+    <time>1585602303</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.3:
+  * Add limits.h include to provide INT_MAX
+  * Introduce srand_deterministic to match OpenBSD (#120)
+  * Test for endianness during CMake setup
+  * Fix leaks in session_cipher get functions 
+- Remove fix_bigendian.patch: upstreamed</comment>
+    <requestid>789724</requestid>
+  </revision>
 </revisionlist>
