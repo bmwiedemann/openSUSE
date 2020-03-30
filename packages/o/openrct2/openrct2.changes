@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:53:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.2.5. Many bugfixes since 0.2.3. Check
+  https://github.com/OpenRCT2/OpenRCT2/releases for the full list
+  New features:
+  * Use a random title sequence each time it is shown.
+  * Shortcut keys for the Tile Inspector.
+  * Transport rides can now be synchronised.
+  * Make Track Designs work in multiplayer.
+  * Added window for scenery scatter tool
+  * Console command to remove all floating objects.
+  * Speed is automatically reset to normal upon scenario completion.
+  * Remember current group in scenario list window.
+  * Increase image list capacity by about 100k units.
+  * Increase the number of ride music played
+    simultaneously from 2 to 32.
+- Drop fix-maybe-uninitialized.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Mon Jul 15 20:19:17 UTC 2019 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.2.3:

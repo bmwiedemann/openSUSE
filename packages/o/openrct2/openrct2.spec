@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@
   %define lib_suffix 64
 %endif
 %define title_version 0.1.2
-%define title_version_url %{title_version}b
+%define title_version_url %{title_version}c
+%define objects_version 1.0.13
 Name:           openrct2
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only
@@ -31,14 +32,13 @@ Group:          Amusements/Games/Strategy/Other
 URL:            https://openrct2.io/
 Source0:        https://github.com/OpenRCT2/OpenRCT2/archive/v%{version}/OpenRCT2-%{version}.tar.gz
 Source1:        https://github.com/OpenRCT2/title-sequences/archive/v%{title_version_url}/title-sequences-%{title_version_url}.tar.gz
-Source2:        https://github.com/OpenRCT2/objects/archive/v1.0.11/objects-1.0.11.tar.gz
-# PATCH-FIX-UPSTREAM fix-maybe-uninitialized.patch -- Fix a possible issue, which leads to gcc warning about not to be initialized
-Patch0:         fix-maybe-uninitialized.patch
+Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.tar.gz#/objects-%{objects_version}.tar.gz
+# https://github.com/OpenRCT2/OpenRCT2/issues/4401#issuecomment-511570036
 # PATCH-FIX-OPENSUSE no-werror.patch -- Do not use werror, as wno-clobbered does not work
-Patch1:         no-werror.patch
-BuildRequires:  cmake >= 3.8
+Patch0:         no-werror.patch
+BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 6
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -78,7 +78,6 @@ When using RCT1 sequences, the original RCT1 files have to be installed.
 %prep
 %setup -q -n OpenRCT2-%{version} -a 1 -a 2
 %patch0 -p1
-%patch1 -p1
 
 # Remove build time references so build-compare can do its work
 sed -i "s/__DATE__/\"openSUSE\"/" src/openrct2/Version.h
@@ -86,10 +85,10 @@ sed -i "s/__TIME__/\"Build Service\"/" src/openrct2/Version.h
 
 %build
 %cmake -DDOWNLOAD_TITLE_SEQUENCES=OFF -DDOWNLOAD_OBJECTS=OFF
-make %{?_smp_mflags} all
+%make_build all
 # libopenrct2 is not installed when openrct2 is called by make, so set the LD_LIBRARY_PATH
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(dirname $(find . -name libopenrct2.so))"
-make %{?_smp_mflags} g2
+%make_build g2
 # %%cmake changes directory into "build"
 cd ..
 
@@ -111,7 +110,7 @@ mkdir -p '%{buildroot}%{_datadir}/%{name}/title'
 cp -v title-sequences-%{title_version_url}/title/*.parkseq "%{buildroot}%{_datadir}/%{name}/title"
 
 mkdir -p '%{buildroot}%{_datadir}/%{name}/object'
-cp -vR objects-1.0.11/objects/* '%{buildroot}%{_datadir}/%{name}/object'
+cp -vR objects-%{objects_version}/objects/* '%{buildroot}%{_datadir}/%{name}/object'
 
 find '%{buildroot}%{_datadir}/%{name}' -type f -exec chmod 644 \{\} \;
 
