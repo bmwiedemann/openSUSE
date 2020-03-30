@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:29:53 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch xosview-1.21-lmstemp.patch to be able to determine
+  dynamically the coretemp intpu files below sys 
+
+-------------------------------------------------------------------
 Thu Jan  3 08:18:53 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.21

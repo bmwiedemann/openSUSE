@@ -1,0 +1,23 @@
+---
+ linux/MeterMaker.cc |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+--- linux/MeterMaker.cc
++++ linux/MeterMaker.cc	2020-03-23 09:48:53.634728539 +0000
+@@ -215,11 +215,14 @@ void MeterMaker::makeMeters(void){
+     const char *tempfile, *highfile, *lowfile, *name, *label;
+     snprintf( caption, 16, "ACT/HIGH/%s",
+               _xos->getResourceOrUseDefault("lmstempHighest", "100") );
+-    for (int i = 1 ; ; i++) {
++    for (int i = 1 ; i < 1000 ; i++) {
+       snprintf(s, 16, "lmstemp%d", i);
+-      tempfile = _xos->getResourceOrUseDefault(s, NULL);
++      tempfile = (char*)_xos->getResourceOrUseDefault(s, NULL);
+       if (!tempfile || !*tempfile)
+         break;
++      std::ifstream stats(tempfile);
++      if (!stats)
++        continue;
+       snprintf(s, 16, "lmshigh%d", i);
+       highfile = _xos->getResourceOrUseDefault(s, NULL);
+       snprintf(s, 16, "lmslow%d", i);

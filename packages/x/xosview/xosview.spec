@@ -1,7 +1,7 @@
 #
 # spec file for package xosview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ Release:        0
 Summary:        System Load Information
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            https://github.com/hills/%{name}
+URL:            https://github.com/hills/%{name}
 Source:         https://github.com/hills/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        rc.config.xosview
 Source2:        xosview.png
@@ -43,11 +43,14 @@ Source5:        xosview-rpmlintrc
 Patch0:         xosview-1.19.dif
 Patch10:        xosview-1.19-appdef.patch
 Patch11:        xosview-1.16-diskstat.patch
+# PATCH-FIX-SUSE: allow more than one maybe not exsting lmstemp resource entry
+Patch12:        xosview-1.21-lmstemp.patch
 # NOTE: We don't want this dependency and desktop-data-SuSE is in all
 # desktop selections.
 #Requires:    desktop-data-SuSE
 # /usr/bin/xrdb
 Requires:       xrdb
+Requires(post): sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -59,6 +62,7 @@ and, if desired, netpacket statistics in a graphical manner.
 %setup -q
 %patch10  -b .appdef
 %patch11  -b .diskstat
+%patch12  -b .lmst
 %patch0   -b .p0
 
 %build
@@ -97,6 +101,16 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
 mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 %{SOURCE3} %{buildroot}%{_datadir}/applications
 
+%post
+mon=1
+for lmstemp in /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp*_input
+do
+    test -e "${lmstemp}" || continue
+    test -e %{_appdefdir}/XOsview || break
+    sed -ri "s@\![[:space:]]+(\\*lmstemp${mon}:[[:space:]]+)temp${mon}@\1 ${lmstemp}@" %{_appdefdir}/XOsview
+    mon=$((1+$mon))
+done
+
 %files
 %defattr(-,root,root)
 %{_datadir}/pixmaps/xosview.png
@@ -108,7 +122,7 @@ install -m 644 %{SOURCE3} %{buildroot}%{_datadir}/applications
 %{_bindir}/xosview
 %{_bindir}/xosview.bin
 %dir %{_appdefdir}
-%config %{_appdefdir}/XOsview
+%config %verify(not md5 size mtime) %{_appdefdir}/XOsview
 %{_mandir}/man1/xosview.1%{ext_man}
 %dir %{_docdir}/xosview/
 %doc %{_docdir}/xosview/README
