@@ -1711,4 +1711,22 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>777062</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>144ea2d5e6c66509f470111520b098b2</srcmd5>
+    <version>2.62.6</version>
+    <time>1585601482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.62.6:
+  + This is expected to be the final release in the 2.62.x stable
+    series; maintenance effort will shift to the newer 2.64.x
+    stable series now.
+  + Fix SOCKS5 username/password authentication.
+  + Exception handling fixes on Windows.
+  + Bugs fixed: glgo#GNOME/GLib#1986, glgo#GNOME/GLib#1988,
+    glgo#GNOME/GLib#2049, glgo#GNOME/GLib!1378,
+    glgo#GNOME/GLib!1380, glgo#GNOME/GLib!1393,
+    glgo#GNOME/GLib!1394, glgo#GNOME/GLib!1411.
+  + Updated translations. (forwarded request 788984 from iznogood)</comment>
+    <requestid>789277</requestid>
+  </revision>
 </revisionlist>
