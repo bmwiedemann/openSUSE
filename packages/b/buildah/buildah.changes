@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:48:28 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.14.5
+  * Revert FIPS mode change
+
+-------------------------------------------------------------------
 Fri Mar 27 07:46:03 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.14.4
