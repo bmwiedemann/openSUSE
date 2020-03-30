@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-reipl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-reipl
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        YaST2 - IPL loader
 License:        GPL-2.0-only
@@ -38,6 +38,8 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2 >= 2.21.22
 # needed for chreipl and lsreipl commands
 Requires:       s390-tools
+
+Supplements:    yast2-s390
 
 ExclusiveArch:  s390 s390x
 

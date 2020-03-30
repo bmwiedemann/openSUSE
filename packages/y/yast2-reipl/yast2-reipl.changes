@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:20:27 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Install by default if yast2-s390 is installed (bsc#1158036)
+- 4.2.2
+
+-------------------------------------------------------------------
 Thu Aug 22 16:11:21 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to
