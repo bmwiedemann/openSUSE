@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:52:07 UTC 2020 - jsegitz@suse.de
+
+- Update to version 20200324:
+  * whitelist s390-tools setgid bit on log directory (bsc#1167163)
+  * whitelist WMP (bsc#1161335)
+  * regtest: improve readability of path variables by using literals
+  * regtest: adjust test suite to new path locations in /usr/share/permissions
+  * regtest: only catch explicit FileNotFoundError
+  * regtest: provide valid home directory in /root
+  * regtest: mount permissions src repository in /usr/src/permissions
+  * regtest: move initialialization of TestBase paths into the prepare() function
+  * chkstat: suppport new --config-root command line option
+  * fix spelling of icingacmd group
+
+-------------------------------------------------------------------
 Fri Feb 28 12:00:44 UTC 2020 - malte.kraus@suse.com
 
 - Update to version 20200228:

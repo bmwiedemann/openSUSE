@@ -1180,4 +1180,12 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * regtest: add further helper functions, allow access to main instance (forwarded request 780264 from mkraus)</comment>
     <requestid>780979</requestid>
   </revision>
+  <revision rev="133" vrev="13">
+    <srcmd5>12b06a0864057a67361b8e07ed96fbd6</srcmd5>
+    <version>unknown</version>
+    <time>1585601449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787823</requestid>
+  </revision>
 </revisionlist>
