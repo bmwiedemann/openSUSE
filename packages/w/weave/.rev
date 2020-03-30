@@ -56,4 +56,15 @@
   - disable-iptables-setup.patch</comment>
     <requestid>783369</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e53bcda5ac0ef74489ae5e0ea0de72e7</srcmd5>
+    <version>2.6.2</version>
+    <time>1585601460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.2
+  - Weave Net can not be used in fastdp mode and always falls back
+  - Restrict timeout value passed to pcap library
+- Refresh vendor.tar.xz</comment>
+    <requestid>788983</requestid>
+  </revision>
 </revisionlist>

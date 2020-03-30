@@ -17,7 +17,7 @@
 
 
 Name:           weave
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Pod Network Add-On
 License:        Apache-2.0

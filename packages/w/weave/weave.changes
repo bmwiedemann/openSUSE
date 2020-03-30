@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:57:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.2
+  - Weave Net can not be used in fastdp mode and always falls back
+  - Restrict timeout value passed to pcap library
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Tue Mar 10 11:17:28 CET 2020 - kukuk@suse.de
 
 - Fix typo in url
