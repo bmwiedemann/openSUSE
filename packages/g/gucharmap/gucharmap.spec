@@ -1,7 +1,7 @@
 #
 # spec file for package gucharmap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %define so_gucharmap 7
 %define pc_api 2.90
 Name:           gucharmap
-Version:        12.0.1
+Version:        13.0.0
 Release:        0
 Summary:        A Featureful Unicode Character Map
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Gucharmap
-Source0:        https://download.gnome.org/sources/gucharmap/12.0/%{name}-%{version}.tar.xz
-
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  appdata-tools
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -36,12 +35,14 @@ BuildRequires:  gobject-introspection-devel >= 0.9.0
 BuildRequires:  gtk-doc
 BuildRequires:  gtk3-devel >= 3.4.0
 BuildRequires:  intltool
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  unicode-ucd
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
@@ -84,19 +85,17 @@ to develop applications that require these.
 
 %prep
 %setup -q
-translation-update-upstream
+translation-update-upstream po %{name}
 
 %build
 export LIBS="-ldl"
-%configure --disable-static \
-    --enable-gtk-doc \
-    --with-gtk=3.0 \
-    --with-unicode-data=%{_datadir}/unicode/ucd \
-    --enable-introspection
-make %{?_smp_mflags}
+%meson \
+    -Ducd_path=%{_datadir}/unicode/ucd \
+    %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 # We need X-SuSE-Editor to avoid an error for the categories check. We don't
@@ -108,17 +107,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libgucharmap%{so_api}-%{so_gucharmap} -p /sbin/ldconfig
 
 %files
-%license COPYING
-%doc ChangeLog NEWS
-%{_bindir}/charmap
-%{_bindir}/gnome-character-map
+%license COPYING COPYING.GFDL COPYING.UNICODE
+%doc README.md 
 %{_bindir}/gucharmap
 %{_datadir}/applications/gucharmap.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.Charmap.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Charmap.gschema.xml
 %doc %{_datadir}/help/C/gucharmap/
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/gucharmap.appdata.xml
+%{_datadir}/metainfo/gucharmap.metainfo.xml
 
 %files -n libgucharmap%{so_api}-%{so_gucharmap}
 %{_libdir}/libgucharmap%{so_api}.so.%{so_gucharmap}*
@@ -133,6 +129,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgucharmap%{so_api}.so
 %{_libdir}/pkgconfig/gucharmap-%{pc_api}.pc
 %{_datadir}/gir-1.0/Gucharmap-%{pc_api}.gir
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/gucharmap-2.90.deps
+%{_datadir}/vala/vapi/gucharmap-2.90.vapi
 %doc %{_datadir}/gtk-doc/html/gucharmap-%{pc_api}/
 
 %changelog
