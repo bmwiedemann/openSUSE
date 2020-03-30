@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-typepy
-Version:        0.6.6
+Version:        1.0.0
 Release:        0
 Summary:        Python library for run time variable type checker 
 License:        MIT
@@ -34,8 +35,6 @@ BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module pytz >= 2018.9}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module termcolor}
-BuildRequires:  python-enum34
-BuildRequires:  python-ipaddress
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-mbstrdecoder >= 0.8.3
@@ -45,10 +44,6 @@ Suggests:       python-python-dateutil >= 2.8.0
 Suggests:       python-pytz >= 2018.9
 Suggests:       python-path.py
 Suggests:       python-termcolor
-%ifpython2
-Requires:       python-enum34
-Requires:       python-ipaddress
-%endif
 BuildArch:      noarch
 
 %python_subpackages
