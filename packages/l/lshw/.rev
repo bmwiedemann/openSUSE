@@ -149,4 +149,18 @@ factory)</comment>
 - Add lshw-nvme.patch to support nvme devices bsc#1161323</comment>
     <requestid>785615</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b99c61d42d18fb8a6b27a3050328c18a</srcmd5>
+    <version>B.02.19.2</version>
+    <time>1585602223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2:
+  * New release tagged, no significant changes from previous
+    version (git snapsho)
+- Drop no longer needed patches:
+  * lshw-display-latest-version.patch
+  * lshw-add-notime-option-to-manpage.patch
+  * lshw-nvme.patch</comment>
+    <requestid>789653</requestid>
+  </revision>
 </revisionlist>

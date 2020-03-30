@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:49:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.19.2:
+  * New release tagged, no significant changes from previous
+    version (git snapsho)
+- Drop no longer needed patches:
+  * lshw-display-latest-version.patch
+  * lshw-add-notime-option-to-manpage.patch
+  * lshw-nvme.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 12:14:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.18+git.20191228:

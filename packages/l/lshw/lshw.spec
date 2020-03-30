@@ -18,19 +18,15 @@
 
 
 Name:           lshw
-Version:        B.02.18+git.20191228
+Version:        B.02.19.2
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://www.ezix.org/project/wiki/HardwareLiSter
-Source:         lshw-%{version}.tar.xz
+Source:         https://www.ezix.org/software/files/lshw-%{version}.tar.gz
 Source1:        lshw.desktop.in
 Source2:        lshw.png
-# PATCH-FIX-UPSTREAM lshw-display-latest-version.patch lshw-help-man.patch lshw-modified-time.patch bsc##1130818
-Patch1:         lshw-display-latest-version.patch
-Patch4:         lshw-add-notime-option-to-manpage.patch
-Patch5:         lshw-nvme.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
@@ -78,10 +74,9 @@ included documentation or go to the lshw Web page,
 http://www.ezix.org/software/lshw.html
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%define _lto_cflags %{nil}
 %make_build \
   SBINDIR="%{_sbindir}" \
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \
