@@ -1,7 +1,7 @@
 #
 # spec file for package python-nox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nox
-Version:        2019.8.20
+Version:        2019.11.9
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-colorlog >= 2.6.1
 Requires:       python-py >= 1.4.0
+Requires:       python-setuptools
 Requires:       python-virtualenv >= 14.0.0
 Suggests:       python-Jinja2
 Suggests:       python-tox
