@@ -1,7 +1,7 @@
 #
 # spec file for package python-nagiosplugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-nagiosplugin
-Version:        1.2.4
+Version:        1.3.2
 Release:        0
 Summary:        Class library for writing Nagios (Icinga) plugins
 License:        ZPL-2.1
@@ -32,6 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -60,10 +63,8 @@ and default logic commonly found in Nagios checks, including:
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt

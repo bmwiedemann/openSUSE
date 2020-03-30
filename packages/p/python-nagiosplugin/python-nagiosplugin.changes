@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:47:51 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.3.2
+  - Include `doc` and `tests` directories in source distribution to support
+    Gentoo package building tests (#22)
+  - Update official python support to 2.7, 3.4+ in README
+  - Fixed a packaging bug
+  - New maintainer/contributor information and project home
+  - Updated tests and package metadata for recent Python 3 versions
+  - Newer tooling for tests/documentation
+
+-------------------------------------------------------------------
 Thu May  2 06:17:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias/spellos from description.
