@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:38:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 8.1
+  * Make it possible to opt out of the output capturing that
+    :func:`humanfriendly.testing.run_cli()` sets up by default.
+  * Improve feature parity between :class:`humanfriendly.testing.CaptureOutput`
+    and my :pypi:`capturer` package to the point where most of the
+    :pypi:`humanfriendly` test suite can now run without :pypi:`capturer`.
+  * Refactored the test suite to import all names separately instead of referring
+    to identifiers via their modules (my preferences have changed since this code
+    was written a long time ago).
+  * Adopt :func:`functools.wraps()` to make decorator functions more robust.
+  * Make the :class:`~humanfriendly.terminal.spinners.Spinner` class more
+    customizable. The interval at which spinners are updated and the characters
+    used to draw the animation of spinners can now be customized by callers.
+    This was triggered by `executor issue #2`_.
+  * Improve test skipping based on exception types.
+  * The "deprecated imports" feature provided by :mod:`humanfriendly.deprecation`
+    has been adopted to clean up the maze of (almost but not quite) cyclic import
+    dependencies between modules.
+  * HTML to ANSI functionality has been extracted to a new
+    :mod:`humanfriendly.terminal.html` module.
+  * Support for spinners has been extracted to a new
+    :mod:`humanfriendly.terminal.spinners` module.
+  * The use of positional arguments to initialize
+    :class:`~humanfriendly.terminal.spinners.Spinner` objects has been deprecated
+    using the new :func:`humanfriendly.deprecation.deprecated_args()` decorator
+    function.
+  * Added the :func:`humanfriendly.deprecation.deprecated_args()` decorator function
+    which makes it easy to switch from positional arguments to keyword arguments
+    without dropping backwards compatibility.
+  * Accept pluralized disk size units (`#26`_). I'm not claiming this is a full
+    solution to the problem, far from it. It does lessen the pain a bit (IMHO).
+  * Make sure the selected pager is available before trying to run it. While
+    testing :pypi:`humanfriendly` on Windows 10 I noticed that ``humanfriendly
+    *-help`` resulted in nothing but a traceback, because :man:`less` wasn't
+    available. That's not human friendly at all 😕 (even if it is Windows 😈).
+  * Merge pull request `#24`_: Fix bug in :func:`~humanfriendly.parse_length()` that rounded floats.
+  * Merge pull request `#32`_: Update hyperlinks in readme.
+  * Merge pull request `#33`_: Drop support for Python 2.6 and 3.0-3.4
+  * Merge pull request `#35`_: SVG badge in readme.
+  * Merge pull request `#36`_: Add support for nanoseconds and microseconds time units
+  * Fixed :func:`~humanfriendly.tables.format_rst_table()` omission from
+    ``humanfriendly.tables.__all__``.
+  * Start testing on Python 3.8 and 3.9-dev.
+  * Emit an ANSI reset code when :func:`humanfriendly.terminal.html.HTMLConverter.close()`
+  * Added the :func:`humanfriendly.terminal.html_to_ansi()` function which is a
+  * Added ``humanfriendly.testing.TestCase.assertRaises()`` enhancements.
+  * Define ``humanfriendly.text.__all__``.
+
+-------------------------------------------------------------------
 Sat Feb 15 08:48:24 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 6.1:
