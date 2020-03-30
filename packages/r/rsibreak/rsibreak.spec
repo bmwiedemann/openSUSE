@@ -1,7 +1,7 @@
 #
 # spec file for package rsibreak
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define base_ver 0.12
 Name:           rsibreak
-Version:        0.12.11
+Version:        0.12.12
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
@@ -41,8 +41,8 @@ BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5DBus) >= 5.10.0
+BuildRequires:  cmake(Qt5Test) >= 5.10.0
 Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 Obsoletes:      %{name}-doc < %{version}
