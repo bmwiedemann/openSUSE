@@ -89,7 +89,7 @@ settings for launching a particular game (e.g., Doom).
 
 %build
 pushd doomsday
-%cmake
+%cmake -DCMAKE_SKIP_RPATH:BOOL=ON
 make -O %{?_smp_mflags}
 
 %install

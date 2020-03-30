@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 29 11:52:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -DCMAKE_SKIP_RPATH
+
+-------------------------------------------------------------------
 Thu Mar  5 14:20:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add -lminizip to doomsday-libs.diff to cure a linker error.
