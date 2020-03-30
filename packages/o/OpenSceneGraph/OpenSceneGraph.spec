@@ -24,7 +24,7 @@
 %bcond_with gdal
 %endif
 Name:           OpenSceneGraph
-Version:        3.6.3
+Version:        3.6.5
 Release:        0
 Summary:        3D graphics toolkit
 # Actually they call it OpenSceneGraph Public License, Version 0.0, which is
@@ -37,8 +37,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://openscenegraph.org/projects/osg
 Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-# https://github.com/openscenegraph/OpenSceneGraph/issues/779
-Patch0:         fix_deprecated_FIND_PACKAGE_wxWidgets_usage.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  fltk-devel
@@ -182,7 +180,7 @@ This package contains some example applications built with OpenSceneGraph
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
+
 for file in *.md *.txt ChangeLog; do
 	sed -i "s/\r//g" "$file"
 done
@@ -190,15 +188,18 @@ chmod 644 *.md *.txt ChangeLog
 
 %build
 %cmake \
-	-DBUILD_OSG_EXAMPLES=ON \
-	-DBUILD_OSG_PLUGINS=ON \
-	-DBUILD_DOCUMENTATION=OFF \
-	-DBUILD_OSG_WRAPPER=ON \
-	-DBUILD_OSG_APPLICATIONS=ON \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DDYNAMIC_OPENSCENEGRAPH=ON \
-	-DDYNAMIC_OPENTHREADS=ON
-make %{?_smp_mflags}
+  -DBUILD_OSG_EXAMPLES=ON \
+  -DBUILD_OSG_PLUGINS=ON \
+  -DBUILD_DOCUMENTATION=OFF \
+  -DBUILD_OSG_APPLICATIONS=ON \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DDYNAMIC_OPENSCENEGRAPH=ON \
+  -DDYNAMIC_OPENTHREADS=ON \
+%if "%{_lib}" == "lib64"
+  -DLIB_POSTFIX=64
+%endif
+
+%cmake_build
 
 %install
 %cmake_install

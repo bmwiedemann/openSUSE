@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:07:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.6.5. Check the ChangeLog file for the list of changes.
+- Drop fix_deprecated_FIND_PACKAGE_wxWidgets_usage.patch. Merged
+  upstream.
+
+-------------------------------------------------------------------
 Mon Feb  3 14:52:44 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Replace wrong Requires: SDL-devel in devel package with
