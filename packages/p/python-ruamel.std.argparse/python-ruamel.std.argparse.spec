@@ -21,7 +21,7 @@ Version:        0.8.1
 Release:        0
 License:        MIT
 Summary:        Enhancements to argparse
-Url:            https://bitbucket.org/ruamel/std.argparse
+Url:            https://sourceforge.net/p/ruamel-std-argparse
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.argparse/ruamel.std.argparse-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
@@ -43,6 +43,8 @@ smart formatter, and a decorator based wrapper.
 
 %prep
 %setup -q -n ruamel.std.argparse-%{version}
+# https://sourceforge.net/p/ruamel-std-argparse/tickets/2/
+sed -i 's/_ast/ast/' setup.py
 
 %build
 %python_build
