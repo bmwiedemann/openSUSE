@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 00:18:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.2
+  * Add support for xfce4-screensaver (bxo#16522)
+  * Try xfce screensaver before cinnamon (bxo#16223)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan 12 13:44:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.1
