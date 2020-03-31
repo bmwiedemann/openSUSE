@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Mar 23 19:01:55 UTC 2020 - Federico Mena Quintero <federico@suse.com>
+
+- Update to version 1.41.1:
+
+  - Always check types of static items
+  - Always check lifetime bounds of `Copy` impls
+  - Fix miscompilation in callers of `Layout::repeat`
+
+- Update to version 1.41.0:
+
+  + Language
+    - You can now pass type parameters to foreign items when implementing
+      traits. E.g. You can now write `impl<T> From<Foo> for Vec<T> {}`.
+    - You can now arbitrarily nest receiver types in the `self` position. E.g. you can
+      now write `fn foo(self: Box<Box<Self>>) {}`. Previously only `Self`, `&Self`,
+      `&mut Self`, `Arc<Self>`, `Rc<Self>`, and `Box<Self>` were allowed.
+    - You can now use any valid identifier in a `format_args` macro.
+      Previously identifiers starting with an underscore were not allowed.
+    - Visibility modifiers (e.g. `pub`) are now syntactically allowed on trait items and
+      enum variants. These are still rejected semantically, but
+      can be seen and parsed by procedural macros and conditional compilation.
+    
+  + Compiler
+    - Rustc will now warn if you have unused loop `'label`s.
+    - Removed support for the `i686-unknown-dragonfly` target.
+    - Added tier 3 support\* for the `riscv64gc-unknown-linux-gnu` target.
+    - You can now pass an arguments file passing the `@path` syntax
+      to rustc. Note that the format differs somewhat from what is
+      found in other tooling; please see the documentation for
+      more information.
+    - You can now provide `--extern` flag without a path, indicating that it is
+      available from the search path or specified with an `-L` flag.
+    
+    Refer to Rust's [platform support page][forge-platform-support] for more
+    information on Rust's tiered platform support.
+    
+  + Libraries
+    - The `core::panic` module is now stable. It was already stable
+      through `std`.
+    - `NonZero*` numerics now implement `From<NonZero*>` if it's a smaller integer
+      width. E.g. `NonZeroU16` now implements `From<NonZeroU8>`.
+    - `MaybeUninit<T>` now implements `fmt::Debug`.
+    
+  + Stabilized APIs
+    - `Result::map_or`
+    - `Result::map_or_else`
+    - `std::rc::Weak::weak_count`
+    - `std::rc::Weak::strong_count`
+    - `std::sync::Weak::weak_count`
+    - `std::sync::Weak::strong_count`
+    
+  + Cargo
+    - Cargo will now document all the private items for binary crates
+      by default.
+    - `cargo-install` will now reinstall the package if it detects that it is out
+      of date.
+    - Cargo.lock now uses a more git friendly format that should help to reduce
+      merge conflicts.
+    - You can now override specific dependencies's build settings. E.g.
+      `[profile.dev.package.image] opt-level = 2` sets the `image` crate's
+      optimisation level to `2` for debug builds. You can also use
+      `[profile.<profile>.build-override]` to override build scripts and
+      their dependencies.
+
+  + Misc
+    - You can now specify `edition` in documentation code blocks to compile the block
+      for that edition. E.g. `edition2018` tells rustdoc that the code sample
+      should be compiled the 2018 edition of Rust.
+    - You can now provide custom themes to rustdoc with `--theme`, and check the
+      current theme with `--check-theme`.
+    - You can use `#[cfg(doc)]` to compile an item when building documentation.
+    
+  + Compatibility Notes
+    - As previously announced 1.41.0 will be the last tier 1 release for 32-bit
+      Apple targets. This means that the source code is still
+      available to build, but the targets are no longer being tested and release
+      binaries for those platforms will no longer be distributed by the Rust project.
+      Please refer to the linked blog post for more information.
+
+-------------------------------------------------------------------
 Fri Jan 17 11:04:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust constraints: Request 20GB HDD for all archs. Simplify the

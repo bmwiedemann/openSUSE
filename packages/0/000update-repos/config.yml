@@ -50,13 +50,13 @@
    url: http://downloadcontent.opensuse.org/update/leap/42.1/oss
 - 42.1:non-oss:update:
    url: http://downloadcontent.opensuse.org/update/leap/42.1/non-oss
-- 13.2:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.2/repo/oss/
-- 13.1:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.1/repo/oss/
-- 12.1:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.1/repo/oss/
-- 12.2:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.2/repo/oss/
-- 12.3:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.3/repo/oss/
+#- 13.2:
+#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.2/repo/oss/
+#- 13.1:
+#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.1/repo/oss/
+#- 12.1:
+#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.1/repo/oss/
+#- 12.2:
+#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.2/repo/oss/
+#- 12.3:
+#   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/12.3/repo/oss/

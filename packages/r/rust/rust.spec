@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LLC.
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.40.0
-%global version_previous 1.39.0
-%global version_bootstrap 1.39.0
+%global version_current 1.41.1
+%global version_previous 1.40.0
+%global version_bootstrap 1.40.0
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.9
+%global rustfmt_version 1.4.11
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -566,7 +566,6 @@ rm -rf %{buildroot}/home
 %dir %{rustlibdir}/%{rust_triple}
 %dir %{rustlibdir}/%{rust_triple}/lib
 %{rustlibdir}/%{rust_triple}/lib/*.so
-%{rustlibdir}/%{rust_triple}/codegen-backends/
 %exclude %{_docdir}/%{name}/html
 %exclude %{rustlibdir}/src
 

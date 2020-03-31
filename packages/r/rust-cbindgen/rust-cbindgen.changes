@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:12:18 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.13.1
+  * Support `#[cfg]` on individual enum variants
+- required for Firefox >= 75
+- remove more irrelevant build artefacts
+
+-------------------------------------------------------------------
 Sat Mar  7 09:05:08 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Update to version 0.13.0
