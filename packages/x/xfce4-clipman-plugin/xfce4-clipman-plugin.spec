@@ -20,13 +20,13 @@
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.4.4
+Version:        1.6.0
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-clipman-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.6/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff -- trivial fix until next release, seife
 Patch0:         xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff
 BuildRequires:  fdupes
@@ -97,6 +97,7 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 
 rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libclipman.la
+rm -f %{buildroot}%{_libdir}/debug/usr/bin/%{name}-%{version}-0.x86_64.debug
 
 %suse_update_desktop_file xfce4-clipman
 %suse_update_desktop_file %{name}-autostart
@@ -114,10 +115,12 @@ rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libclipman.la
 %dir %{_sysconfdir}/xdg/xfce4/panel
 %{_libdir}/xfce4/panel/plugins/libclipman.so
 %{_bindir}/xfce4-clipman
+%{_bindir}/xfce4-clipman-history
 %{_bindir}/xfce4-clipman-settings
 %{_bindir}/xfce4-popup-clipman
 %{_bindir}/xfce4-popup-clipman-actions
 %{_datadir}/applications/xfce4-clipman.desktop
+%{_datadir}/applications/xfce4-clipman-settings.desktop
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/xfce4-clipman.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/*

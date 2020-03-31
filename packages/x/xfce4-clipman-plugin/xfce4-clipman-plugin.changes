@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 29 22:37:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.6.0
+  * Add standalone dialog to search history: xfce4-clipman-history
+  * Don't delete the history on startup
+  * plugin: Indicate if clipman is disabled (bxo#11381)
+  * plugin: Bind middle-click to toggle "inhibit"
+  * plugin: Add "Clipman settings..." menuitem
+  * plugin: "Show full history..." menuitem
+  * plugin: Wire up max-menu-items setting
+  * settings: Make strings translatablei (bxo#16496)
+  * settings: Improve responsiveness of actions tab
+  * settings: Replace GtkStock icons and tweak actions dialog
+  * settings: Revamp UI and add max-menu-items setting
+  * settings: Further UI tweaks
+  * daemon: Show info dialog if already running
+  * Add warning if clipman is not running
+  * Show info/warning dialogs if clipman is (not) running
+  * Add clipman-settings desktop file
+  * Replace deprecated g_type_class_add_private
+  * Replace GtkStock items
+  * Improve clipman autostart file
+  * Update copyright
+  * Update gitignore
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Mar  2 12:11:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.4.4
