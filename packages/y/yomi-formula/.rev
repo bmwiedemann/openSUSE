@@ -126,4 +126,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>785693</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4390cf93feda7aa027694612bd32e40d</srcmd5>
+    <version>0.0.1+git.1585319502.392f59c</version>
+    <time>1585668721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1585319502.392f59c:
+  * users: better quote for certificate
+  * users: workaround bsc#1167909 for passwords</comment>
+    <requestid>789060</requestid>
+  </revision>
 </revisionlist>
