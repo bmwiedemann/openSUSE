@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 16:23:52 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Recommend nodejs for webpacker
+
+-------------------------------------------------------------------
 Thu Mar 26 20:39:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend "%{rubygem sqlite3:1.4}": one more missing dependency

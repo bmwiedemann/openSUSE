@@ -78,6 +78,7 @@
 :main:
   :preamble: |-
     Recommends: git
+    Recommends: nodejs
     Recommends: %{rubygem puma >= 4.1}
     Recommends: %{rubygem sass-rails >= 6.0.0}
     Recommends: %{rubygem webpacker >= 4.0}
