@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 28 10:08:26 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.24:
+  * Added AC_SYS_LARGEFILE for some ARM processors
+
+-------------------------------------------------------------------
 Wed Mar 18 10:04:49 UTC 2020 - pgajdos@suse.com
 
 - require glibc-locale-base instead o glibc-locale [bsc#1165837]

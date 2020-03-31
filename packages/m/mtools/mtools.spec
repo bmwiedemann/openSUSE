@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.23
+Version:        4.0.24
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
@@ -34,11 +34,10 @@ Patch5:         %{name}-prototypes.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-Requires(pre):  %{install_info_prereq}
-Requires:       glibc-locale-base
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
+Requires:       glibc-locale-base
+Requires(pre):  %{install_info_prereq}
 
 %description
 Mtools allows access to an MS-DOS file system on disk without
@@ -71,7 +70,7 @@ autoreconf -fi
 	--includedir=%{_prefix}/src/linux/include \
 	--disable-floppyd
 
-make -j1 all info pdf
+%make_build -j1 all info pdf
 
 %install
 install -d -m 755 %{buildroot}%{_sysconfdir}
@@ -85,18 +84,16 @@ cp -p mtools.conf %{buildroot}%{_sysconfdir}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/mtools.info.gz
 
 %files
-%defattr(-,root,root)
 %config %{_sysconfdir}/mtools.conf
 %doc Release.notes NEWS README*
 %license COPYING
-%doc %{_mandir}/man?*/*
+%{_mandir}/man?*/*
 %exclude %{_mandir}/man?*/f*
-%doc %{_infodir}/mtools.info*
+%{_infodir}/mtools.info%{?ext_info}
 %{_bindir}/*
 %exclude %{_bindir}/f*
 
 %files doc
-%defattr(-,root,root)
 %doc *.pdf
 
 %changelog
