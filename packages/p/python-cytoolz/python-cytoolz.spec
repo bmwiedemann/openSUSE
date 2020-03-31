@@ -1,7 +1,7 @@
 #
 # spec file for package python-cytoolz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@ Version:        0.10.1
 Release:        0
 Summary:        High performance python functional utilities in Cython
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/pytoolz/cytoolz
+URL:            https://github.com/pytoolz/cytoolz
 Source:         https://files.pythonhosted.org/packages/source/c/cytoolz/cytoolz-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  fdupes
@@ -48,15 +47,17 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitearch}/cytoolz/tests
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-  $python setup.py nosetests --with-coverage -vvv
-}
+mkdir testing
+pushd testing
+export PYTHONDONTWRITEBYTECODE=1
+%pytest_arch ../cytoolz/tests
+popd
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
 %{python_sitearch}/cytoolz/
