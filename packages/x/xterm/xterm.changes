@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:15:08 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Patch #353 - 2020/02/01
+
+  - amend change in patch #352 for button-events to fix a case where some followup events were not processed soon enough (report/patch by Jimmy Aguilar Mena).
+  - handle MappingNotify X event, to improve recovery when switching keyboard configurations using xkbcomp (prompted by discussion with Frank Mosch, Debian #661295). There is more work needed here, possibly in the X libraries.
+  - improve discussion of mouse-mode in ctlseqs.ms (suggested by Igor van den Hoven).
+  - further improve checks for Xft max-advance-width to take into account fonts which use two cells for ambiguous width characters. Also improve the time used for these checks (reports by Yuri Pankov, Frank Mosch).
+  - fix a few spelling errors reported by codespell (report by Jens Schleusener).
+  - modify run-tic.sh to prefer development version of ncurses since changes to terminfo file in patch #345 rely upon bug-fixes in ncurses (prompted by discussion with Will Senn).
+
+- Patch #352 - 2020/01/16
+
+  - adjust fontsize data to handle a minor inconsistency from recent Xft versions (Debian #880407, adapted from patch by Vincent Lefevre).
+  - add a table to the manual page description of forceBoxChars to alert the reader to the special characters aside from “line-drawing” which are drawn directly when this resource is set (Debian #931305).
+  - improve checkXft logic which attempts to detect fonts whose max-advance-width is inconsistent with the actual glyph widths. For some fonts, it is necessary to check additional characters (report/analysis by Jan Engelhardt).
+  - improve configure-checks for X headers and libraries on recent MacOS, which has moved those files under /usr/X11.
+  - improve portability of iconify/deiconify feature by taking into account some window managers which manipulate the EWMH _NET_WM_STATE property, adding/removing _NET_WM_STATE_HIDDEN rather than actually minimizing the window (prompted by discussion with Jörg Breitbart).
+  - improve workaround from patch #287 for the -iconic option when configured with toolbar by postponing the extra request for minimizing the window to the end of menu-initialization.
+  - modify xevents special-case for mouse-events to include button-events so that the meta key by itself can generate button-events (report/analysis by Mattias Engdegård).
+  - amend SGR-stack change from patch #348 to not associate bold attribute with background color (report by Nicholas Marriott).
+  - fix copy/paste error in manual page (patch by Larry Hynes).
+  - add definitions in xterm_io.h so that GNU/Hurd will use posix_openpty (patch by Samuel Thibault).
+  - build-fix in debug-tracing, for esctest.
+  - updated autoconf macros
+  - update config.guess
+
+- Patch #351 - 2019/11/17
+
+  - correct logic in property_to_string for deciding when to fallback from UTF-8 decoding to ISO-8859-1 decoding, broken in xterm #350 (FreeBSD #241961).
+  - add -report-icons to help-message.
+  - improved autoconf macros:
+    -   CF_ADD_LIBS: the change to filter out duplicates caused this to append rather than prepend. revise to fix that.
+    -   CF_GCC_VERSION and CF_GCC_WARNINGS: move checks to distinguish icc/clang from gcc from the macro which handles the --enable-warnings option, to make this work without-warnings for the inline-checks.
+  - update config.guess, config.sub
+  - correct status in XTGETXRES replies when the resource was not found.
+  - fix some gcc, cppcheck, clang and coverity warnings.
+  - guard call to RequestResize from the struct-notify event handler to prevent recursion in the Xft+buffered workaround in some cases when doing manual resizing rather than resizing via escape sequences (reports by Stefan Assman, Mike Thornburg).
+  - amend the workaround for Xft+buffered blanking by moving the switch to bitmap-fonts to account for differences in font metrics between bitmap- and TrueType-fonts (report by Stefan Assmann).
+  - improve the note on the xterm-rep terminfo entry (prompted by discussion with Sven Joachim).
+
+- Patch #350 - 2019/11/02
+
+  - modify html/svg dump to not ignore zero'd/blank cells.
+  - align terminfo file with ncurses, e.g., add xterm+osc104 block.
+  - improve discussion of modifyOtherKeys in manual page and in ctlseqs.ms.
+  - add vttests/modify-keys.pl script to illustrate the modifyOtherKeys resource (prompted by discussion with Bram Moolenaar).
+  - various improvements to ctlseqs.ms, as part of autogenerating links for the website.
+  - update manual page default for saveLines resource default value (Branden Robinson, Debian #913815).
+  - add command-line option -report-xres to show the values of the VT100 widget X resources when initialization is complete.
+  - add a control sequence which, like tcap-query, allows an application to inspect most X resource settings of the VT100 widget.
+  - adjust some optional features to enable them in the imake configuration as they would be by default via the configure script.
+  - add null-pointer checks to improve error recovery when bitmap fonts are missing or corrupt (report by Jonne Ransijn).
+  - correct the condition for deleting the EWMH window-title property, i.e., if UTF-8 titles are disabled, rather than if an update to the EWHM property found no change (report by Sven Joachim).
+  - build-fix for the case when configure --enable-trace is used without --enable-warnings (report by Sven Joachim).
+  - fix a few minor bugs found with Coverity.
+  - add a check in property_to_string to avoid translating UTF8_STRING or COMPOUND_TEXT into Latin-1 when UTF-8 encoding is active, e.g., when pushing onto the title-stack while switching to the alternate screen.
+  - build-fix for the --disable-doublechars configure option (report by Brian Lindholm).
+
+- Patch #349 - 2019/09/22
+
+  - add graphic context to support bold+italics (patch by Quinn Strahl).
+  - document window properties in the manual page.
+  - improve title-string feature:
+    -   if any of allowC1Printable, utf8Title or titleModes hint that an application might send a title-string encoded in UTF-8, check if that is the case, and if it is recodable into ISO-8859-1, use that for the ICCCM-style title.
+    -   check if the title given by a control sequence happens to be already encoded in UTF-8, to avoid double-encoding (FreeBSD #240393).
+    -   Make sameName resource work for the EWMH titles.
+    -   Modify menu-state of utf8Title to be consistent with the utf8 source, i.e., setting the EWMH properties automatically when UTF-8 is active.
+  - reorganize text-drawing to make it possible to investigate using Xft to implement VT100-style double-sized characters. While doing this, made a workaround for apparent Xft bug which loses its drawable state when switching from 132 to 80 columns.
+  - improve font-warning messages by showing which are derived rather than directly from resource settings (suggested by Tomas Korbar). Also filter repeated font-warning messages, to accommodate broken X configurations.
+  - fix an inconsistency between failure to load derived wide font versus failure to load derived wide-bold font (Redhat #1679790). That relies upon the “:unscaled” property which is broken in some distributions (however, recent Debian and the BSDs such as MacOS work).
+  - updated autoconf-252 to check X11R7 include/lib directories found on some older configurations.
+  - set a graphic-context for border when double-buffering is active; to prevent the border color from changing when switching to reverse-video.
+  - build-fix for --disable-ziconbeep, which conflicted with the new double-buffer configuration (report by Brian Lindholm).
+  - fix loop-limit for lookup of fullscreen resource broken in xterm #347 (report by Scott Bertilson).
+
+- Patch #348 - 2019/07/22
+
+  - update window-manager hints when exiting Tek4014 mode (Debian #932569, patch by Jonathan Irwin).
+  - fix a misformatted printf in report-sgr.pl.
+  - add configure check for termios types, to improve compiler-warnings.
+  - ensure that when resetting margins, to also reset DECLRMM. This affects DECCOLM, DECALN (although DEC STD 070 mentions only top/bottom margins), and DECSTR.
+  - corrected order of reset/move when setting DECCOLM, and make it more consistent by always resetting margins, rather than only when the mode is changed (report by James Holderness).
+  - compile-in double-buffer support by default, changing the configure option to set the default resource value for buffered to true or false.
+  - take in account the reverse-video state when computing the filler-color used when clearing the screen in double-buffering configuration.
+  - correct logic for filtering scrollbar-updates when buffered resource is compiled-in but not enabled (report by Paul Lampert).
+  - improve state saved/restored for cursor-save and SGR stack features.
+  - improve description of 1006 and 1005 mouse modes, to avoid implying that they use character-parameters (report by Bryan Christ).
+  - explain in ctlseqs.ms that some of the numeric keypad keys were xterm extensions rather than VT100/VT220 terminal features (prompted by discussion with Thomas Wolff).
+  - explain in ctlseqs.ms how the DEC windowing extension is supported by xterm.
+  - add 28 rectangular editing to the primary response (suggested by Thomas Wolff).
+  - fix a typo, improve wording in ctlseqs.ms (Thomas Wolff).
+  - fix internal column-parameter when SL or SR is used with left/right margins (patch by Thomas Wolff).
+  - fix off-by-one in VT52 graphics character mapping (patch by Thomas Wolff).
+  - use _X_UNUSED, etc., when available as a fallback for GCC_UNUSED, etc., to reduce compiler warnings when building with imake.
+  - update config.sub
+
+- Patch #347 - 2019/06/30
+
+  - fix a few minor bugs found with Coverity.
+  - improve double-buffering for scrollbars combined with scrolled text; add bufferedFPS resource to control the maximum rate of screen updates (report by Mike Thornburg).
+  - improve fixes for DECCRA handling of double-width characters (patch by Martin Hostettler).
+  - improve discussion of ECMA-48's typographical error for SD in ctlseqs.ms (prompted by report by Martin Hostettler).
+  - correct off-by-one in parameter limit-check for DECCRA (report by Martin Hostettler).
+  - modify saveCellData to handle case where double-width character is partially copied; that should be blanked (report/testcase by Thomas Wolff).
+  - add resource buffered to allow enabling/disabling double-buffered mode.
+  - two fixes for the double-buffer configuration, prompted by MacPorts' switch to double-buffering (patch by Mike Thornburg, MacPorts #58313):
+    -   ensure that the needSwap flag is set after drawing TrueType text
+    -   corrected the drawable-parameter used for the bar-cursor
+  - modify ScrnRefresh to ignore a case where the left/right halves of a double-width character have been set to different video attributes. The attribute to use is in the left-half (report/testcase by Thomas Wolff).
+  - correct a limit-check for DECCRA in case the target lies off-screen (report/testcase by Thomas Wolff).
+  - documentation errata (report by Thomas Wolff).
+  - reset flags including wraparound and reverse-wrap when switching to VT52 mode, while noting that DEC's standard documentation leaves that behavior undefined (report by Thomas Wolff).
+  - ensure that italic font is turned off on hard/soft resets (report by Martin Hostettler).
+  - improve responsiveness to X events while processing HTML or SVG dumps (report by Martin Hostettler).
+  - replace logic in wcwidth.c for detecting double-width characters with binary-search table generated using updated uniset (report by Robert Ross).
+  - add test-driver for wcwidth.c to simplify comparison with system's wcwidth.
+  - ensure that window-manager name comparisons work when active-icon is enabled, since CSI13t uses the window-manager name (report by Glenn Golden, Arch #62818).
+  - trim a stray “experimental” in one of the comments about the tcap-query feature, which has been a supported feature since 2008 (see patch #238).
+
+- Patch #346 - 2019/05/27
+
+  - update description of the “default” setting for the renderFont resource to match the behavior in patch #261 (Debian #862042).
+  - account for internalBorder in useBorderClipping (report by Robert Ross).
+  - update table of unknown-width characters in wcwidth.c based on Unicode 12.1.0 (prompted by discussion with Robert Ross).
+  - improve description of DECSCL versus S7C1T and S8C1T in ctlseqs.ms.
+  - improve consistency between CSI3t and CSI13t, accounting for differences between some window managers' handling of EMWH extents (report by Bram Moolenaar).
+  - fix a sign-extension when reporting offscreen window position (report by Bram Moolenaar).
+
+-------------------------------------------------------------------
 Tue Jul 23 07:55:37 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - split out vttest

@@ -1463,4 +1463,41 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
 - enable LTO (was only a problem for vttest)</comment>
     <requestid>717820</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>0a0a5a440bb820cb26af562968ac3587</srcmd5>
+    <version>353</version>
+    <time>1585668682</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch #353 - 2020/02/01
+  - amend change in patch #352 for button-events to fix a case where some followup events were not processed soon enough (report/patch by Jimmy Aguilar Mena).
+  - handle MappingNotify X event, to improve recovery when switching keyboard configurations using xkbcomp (prompted by discussion with Frank Mosch, Debian #661295). There is more work needed here, possibly in the X libraries.
+  - improve discussion of mouse-mode in ctlseqs.ms (suggested by Igor van den Hoven).
+  - further improve checks for Xft max-advance-width to take into account fonts which use two cells for ambiguous width characters. Also improve the time used for these checks (reports by Yuri Pankov, Frank Mosch).
+  - fix a few spelling errors reported by codespell (report by Jens Schleusener).
+  - modify run-tic.sh to prefer development version of ncurses since changes to terminfo file in patch #345 rely upon bug-fixes in ncurses (prompted by discussion with Will Senn).
+- Patch #352 - 2020/01/16
+  - adjust fontsize data to handle a minor inconsistency from recent Xft versions (Debian #880407, adapted from patch by Vincent Lefevre).
+  - add a table to the manual page description of forceBoxChars to alert the reader to the special characters aside from “line-drawing” which are drawn directly when this resource is set (Debian #931305).
+  - improve checkXft logic which attempts to detect fonts whose max-advance-width is inconsistent with the actual glyph widths. For some fonts, it is necessary to check additional characters (report/analysis by Jan Engelhardt).
+  - improve configure-checks for X headers and libraries on recent MacOS, which has moved those files under /usr/X11.
+  - improve portability of iconify/deiconify feature by taking into account some window managers which manipulate the EWMH _NET_WM_STATE property, adding/removing _NET_WM_STATE_HIDDEN rather than actually minimizing the window (prompted by discussion with Jörg Breitbart).
+  - improve workaround from patch #287 for the -iconic option when configured with toolbar by postponing the extra request for minimizing the window to the end of menu-initialization.
+  - modify xevents special-case for mouse-events to include button-events so that the meta key by itself can generate button-events (report/analysis by Mattias Engdegård).
+  - amend SGR-stack change from patch #348 to not associate bold attribute with background color (report by Nicholas Marriott).
+  - fix copy/paste error in manual page (patch by Larry Hynes).
+  - add definitions in xterm_io.h so that GNU/Hurd will use posix_openpty (patch by Samuel Thibault).
+  - build-fix in debug-tracing, for esctest.
+  - updated autoconf macros
+  - update config.guess
+- Patch #351 - 2019/11/17
+  - correct logic in property_to_string for deciding when to fallback from UTF-8 decoding to ISO-8859-1 decoding, broken in xterm #350 (FreeBSD #241961).
+  - add -report-icons to help-message.
+  - improved autoconf macros:
+    -   CF_ADD_LIBS: the change to filter out duplicates caused this to append rather than prepend. revise to fix that.
+    -   CF_GCC_VERSION and CF_GCC_WARNINGS: move checks to distinguish icc/clang from gcc from the macro which handles the --enable-warnings option, to make this work without-warnings for the inline-checks.
+  - update config.guess, config.sub
+  - correct status in XTGETXRES replies when the resource was not found.
+  - fix some gcc, cppcheck, clang and coverity warnings.</comment>
+    <requestid>788540</requestid>
+  </revision>
 </revisionlist>

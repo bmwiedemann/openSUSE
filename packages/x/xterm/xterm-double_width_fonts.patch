@@ -1,20 +1,16 @@
 # HG changeset patch
 # Parent  682df5267f4b25286ab78bfbbfd91fe664cbbd21
 
-diff --git a/fontutils.c b/fontutils.c
---- a/fontutils.c
-+++ b/fontutils.c
-@@ -755,77 +755,29 @@ is_double_width_font(XFontStruct *fs)
- {
-     return ((2 * fs->min_bounds.width) == fs->max_bounds.width);
- }
- #else
- #define is_double_width_font(fs) 0
+Index: xterm-353/fontutils.c
+===================================================================
+--- xterm-353.orig/fontutils.c
++++ xterm-353/fontutils.c
+@@ -857,67 +857,19 @@ is_double_width_font(XFontStruct *fs)
  #endif
  
  #if OPT_WIDE_CHARS && OPT_RENDERFONT && defined(HAVE_TYPE_FCCHAR32)
 -#define HALF_WIDTH_TEST_STRING "1234567890"
--
+ 
 -/* '1234567890' in Chinese characters in UTF-8 */
 -#define FULL_WIDTH_TEST_STRING "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89" \
 -                               "\xe5\x9b\x9b\xe4\xba\x94" \
@@ -29,7 +25,6 @@ diff --git a/fontutils.c b/fontutils.c
 -
 -#define HALF_WIDTH_CHAR1  0x0031	/* '1' */
 -#define HALF_WIDTH_CHAR2  0x0057	/* 'W' */
-+
  #define FULL_WIDTH_CHAR1  0x4E00	/* CJK Ideograph 'number one' */
  #define FULL_WIDTH_CHAR2  0xAC00	/* Korean script syllable 'Ka' */
  
@@ -84,8 +79,3 @@ diff --git a/fontutils.c b/fontutils.c
  }
  #else
  #define is_double_width_font_xft(dpy, xftfont) 0
- #endif
- 
- #define EmptyFont(fs) (fs != 0 \
- 		   && ((fs)->ascent + (fs)->descent == 0 \
- 		    || (fs)->max_bounds.width == 0))
