@@ -22,7 +22,7 @@
 %bcond_with meson
 %endif
 Name:           libwacom
-Version:        1.1
+Version:        1.3
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -32,7 +32,6 @@ Source:         https://github.com/linuxwacom/libwacom/releases/download/%{name}
 Source2:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source99:       baselibs.conf
-Patch0:         https://patch-diff.githubusercontent.com/raw/linuxwacom/libwacom/pull/174.patch
 %if %{with meson}
 BuildRequires:  meson >= 0.47.0
 %endif
@@ -40,6 +39,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  doxygen
 
 %description
 libwacom is a library to identify wacom tablets and their model-specific
@@ -86,7 +86,6 @@ built-in on-screen tablet", "what is the size of this model", etc.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %if %{with meson}
