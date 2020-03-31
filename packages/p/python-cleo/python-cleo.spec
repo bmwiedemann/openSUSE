@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cleo
-Version:        0.7.6
+Version:        0.8.0
 Release:        0
 Summary:        Python module for creating testable command-line interfaces
 License:        MIT
