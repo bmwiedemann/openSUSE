@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:58:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.3
+  * Systray: Better icons for Pause and Continue
+  * Frames: Without reset button
+  * Camera: If the camera is busy, this will be displayed,
+    or is not in combobox
+  * Language: added Spanish(Mexico), Slovak (Slovakia)
+  * Area: Adapted to Ubuntu GNOME
+  * Audio: Hint if no audio devices found
+  * Systray: If new version show ballon
+  * Camera: Windows and Linux have now the same code base
+
+-------------------------------------------------------------------
 Tue Feb 11 08:34:48 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.2
