@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# nothing provides python2-netmiko
+%define skip_python2 1
 Name:           python-napalm
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
@@ -31,10 +33,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-cffi >= 1.11.3
+Requires:       python-ciscoconfparse
 Requires:       python-future
-Requires:       python-junos-eznc >= 2.2.0
+Requires:       python-junos-eznc >= 2.2.1
 Requires:       python-netaddr
-Requires:       python-netmiko >= 2.3.0
+Requires:       python-netmiko >= 2.4.2
 Requires:       python-nxapi-plumbing >= 0.5.2
 Requires:       python-paramiko >= 2.4.2
 Requires:       python-pyIOSXR >= 0.53
@@ -47,12 +50,13 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cffi >= 1.11.3}
+BuildRequires:  %{python_module ciscoconfparse}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module junos-eznc >= 2.2.0}
+BuildRequires:  %{python_module junos-eznc >= 2.2.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module netmiko >= 2.3.0}
+BuildRequires:  %{python_module netmiko >= 2.4.2}
 BuildRequires:  %{python_module nxapi-plumbing >= 0.5.2}
 BuildRequires:  %{python_module paramiko >= 2.4.2}
 BuildRequires:  %{python_module pyIOSXR >= 0.53}

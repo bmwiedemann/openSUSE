@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:49:54 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.5.0
+  * This is the last release supporting Python 2. Going forward, we will only support Python 3.6+
+  * namespace fix for napalm cli (#950)
+  * [EOS] Fix broken get_bgp_neighbors when 6PE configured on eos (#945)
+  * [NXOS] If parent_table in nxos is None call exception (#939)
+  * [Junos] Remove extensive argument from junos_iface_table (#929)
+  * MTU support for get_interfaces (#940)
+  * [EOS] When asPathType is Internal (IBGP), as_path is empty and the remote-as is the local_as (#1064)
+  * [IOS] support n9k ipv6 ints for interfaces_ip getter (#969)
+  * [IOS] support catalyst vss for mac_address getter (#968)
+  * [IOS] Raise exception if BGP neighbor info requested and BGP not running (#970)
+  * [NXOS] Implement nxos_ssh get_environment (#973)
+  * Better handling of connection closing upon exceptions in enter (#994)
+  * [NXOS] address single and multiple v6 address on n9k (#997)
+  * [NXOS] Fix nxos and nxos_ssh hostname change handling (#999)
+  * added option to run show run all (#1029)
+  * [Junos] add optional arg for DB config selection (#1035)
+  * [Junos] Fixed "Wrong interface information for Junos virtual-switch w/ bridge domains using get_network_instances" (#1032)
+  * [EOS] Implemented lock_disable for EOS based on Junos. (#1042)
+  * [NXOS] Work around NXAPI double quoting (#1048)
+  * [NXOS] napalm.nxos.traceroute - VRF traces and handle AS in hops (#989)
+  * [IOS] Fix extra line in show ip int brief on IOS (#986)
+  * [NXOS] Expand nxos commit merge rollback error (#860)
+  * [IOS] add support for VRF for get_arp_table func (#937)
+  * [IOS] get_bgp_neighbors vrf and safi aware (#768)
+  * [IOS] Check if temperature sensor on Cisco device is not supported (#1055)
+  * [IOS] Fixes get_environment memory collection on ios-xe devices (#1053)
+  * [IOS] get_route_to implementation for IOS (#750)
+
+-------------------------------------------------------------------
 Mon Oct  7 18:55:30 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Use github source URL (the pypi tarball does not contain tests)
