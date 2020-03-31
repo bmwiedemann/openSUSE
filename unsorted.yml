@@ -3248,7 +3248,6 @@ unsorted:
   - freetype2-devel-32bit: [x86_64] 
   - freetype2-profile-tti35 
   - freexl-devel 
-  - frei0r-plugins 
   - frei0r-plugins-devel 
   - frei0r-plugins-opencv 
   - frescobaldi 
@@ -4899,10 +4898,6 @@ unsorted:
   - gperftools-devel-static 
   - gperiodic 
   - gperiodic-lang 
-  - gpgmepp5 
-  - gpgmepp5-32bit: [x86_64] 
-  - gpgmepp5-devel 
-  - gpgmepp5-devel-32bit: [x86_64] 
   - gphoto 
   - gphotofs 
   - gpick 
@@ -5093,9 +5088,7 @@ unsorted:
   - gstreamer-plugins-vaapi 
   - gstreamer-plugins-vaapi-doc 
   - gstreamer-rtsp-server-devel 
-  - gstreamer-transcoder 
   - gstreamer-transcoder-devel 
-  - gstreamer-validate 
   - gstreamer-validate-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
@@ -5933,6 +5926,9 @@ unsorted:
   - jaf-javadoc 
   - jafama 
   - jafama-javadoc 
+  - jag 
+  - jag-data 
+  - jag-editor 
   - jakarta-commons-discovery 
   - jakarta-commons-discovery-javadoc 
   - jakarta-commons-launcher 
@@ -7386,8 +7382,6 @@ unsorted:
   - libKF5Pty5-32bit: [x86_64] 
   - libKF5Purpose5-32bit: [x86_64] 
   - libKF5PurposeWidgets5-32bit: [x86_64] 
-  - libKF5QGpgme5 
-  - libKF5QGpgme5-32bit: [x86_64] 
   - libKF5QuickAddons5-32bit: [x86_64] 
   - libKF5Runner5-32bit: [x86_64] 
   - libKF5Screen7-32bit: [x86_64] 
@@ -7439,7 +7433,7 @@ unsorted:
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
-  - libMyGUIEngine3 
+  - libMyGUIEngine3_4_0 
   - libOIS-1_3_0 
   - libOIS-devel 
   - libOSMesa-devel 
@@ -8435,7 +8429,7 @@ unsorted:
   - libcfg6-32bit: [x86_64] 
   - libcfile-devel 
   - libcfile1 
-  - libcgns3_4 
+  - libcgns3_4_1 
   - libchafa0 
   - libchamplain-devel 
   - libchardet-devel 
@@ -9161,7 +9155,6 @@ unsorted:
   - libgarcon-doc 
   - libgasnet-1_32_0 
   - libgavl-devel 
-  - libgavl1 
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
   - libgbm1-32bit: [x86_64] 
@@ -9233,7 +9226,6 @@ unsorted:
   - libgepub-0_6-0 
   - libgepub-devel 
   - libgerbv1 
-  - libges-1_0-0 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
@@ -9445,9 +9437,7 @@ unsorted:
   - libgstsctp-1_0-0-32bit: [x86_64] 
   - libgstsdp-1_0-0-32bit: [x86_64] 
   - libgsttag-1_0-0-32bit: [x86_64] 
-  - libgsttranscoder-1_0-0 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
-  - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
@@ -10308,7 +10298,6 @@ unsorted:
   - libmng2-32bit: [x86_64] 
   - libmnl-devel 
   - libmnl0-32bit: [x86_64] 
-  - libmodglue1 
   - libmodman-devel 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
@@ -10579,7 +10568,7 @@ unsorted:
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
   - libo2scl0 
-  - liboaml_shared1 
+  - liboaml1 
   - liboath-devel 
   - liboath0: [i586] 
   - liboauth-devel 
@@ -13968,7 +13957,6 @@ unsorted:
   - modello-maven-plugin-javadoc 
   - modem-manager-gui 
   - modem-manager-gui-lang 
-  - modglue-devel 
   - modsecurity 
   - modsecurity-devel 
   - modulemd-validator 
@@ -14060,6 +14048,7 @@ unsorted:
   - moreutils-parallel 
   - morfologik-stemming 
   - morfologik-stemming-javadoc 
+  - morris 
   - mosquitto 
   - mosquitto-clients 
   - mosquitto-devel 
@@ -17465,8 +17454,6 @@ unsorted:
   - pipewire-devel 
   - pipewire-doc 
   - pithos 
-  - pitivi 
-  - pitivi-lang 
   - pix 
   - pix-devel 
   - pix-lang 
@@ -18081,7 +18068,6 @@ unsorted:
   - python-flup-doc 
   - python-freezerclient-doc 
   - python-funcsigs 
-  - python-functools32: [i586] 
   - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
   - python-gevent-doc 
@@ -18238,7 +18224,6 @@ unsorted:
   - python-swiftclient-doc 
   - python-tables-doc 
   - python-testtools-doc 
-  - python-tk: [i586] 
   - python-tooz-doc 
   - python-translationstring-doc 
   - python-trollius 
@@ -18264,14 +18249,12 @@ unsorted:
   - python2-Babel 
   - python2-Beaker 
   - python2-BitVector 
-  - python2-Bottleneck 
   - python2-Brotli 
   - python2-CDDB 
   - python2-CacheControl 
   - python2-Cerberus 
   - python2-Chameleon 
   - python2-CommonMark 
-  - python2-Cycler: [i586] 
   - python2-Cython 
   - python2-DataProperty 
   - python2-DataShape 
@@ -18351,7 +18334,6 @@ unsorted:
   - python2-PeachPy: [x86_64] 
   - python2-PeakUtils 
   - python2-Pebble 
-  - python2-Pillow: [i586] 
   - python2-Pillow-tk 
   - python2-PrettyTable 
   - python2-Protego 
@@ -18707,9 +18689,7 @@ unsorted:
   - python2-babelfish 
   - python2-backcall 
   - python2-backoff 
-  - python2-backports: [i586] 
   - python2-backports.csv 
-  - python2-backports.functools_lru_cache: [i586] 
   - python2-backports.functools_partialmethod 
   - python2-backports.html 
   - python2-backports.os 
@@ -18993,7 +18973,6 @@ unsorted:
   - python2-django-webpack-loader 
   - python2-django-webtest 
   - python2-djvulibre 
-  - python2-dns-lexicon 
   - python2-dnspython 
   - python2-docformatter 
   - python2-docker 
@@ -19332,7 +19311,6 @@ unsorted:
   - python2-kismet-rest 
   - python2-kismetdb 
   - python2-kitchen 
-  - python2-kiwisolver: [i586] 
   - python2-kmatch 
   - python2-kmod 
   - python2-knack 
@@ -19416,12 +19394,10 @@ unsorted:
   - python2-manuel-doc 
   - python2-markdown-math 
   - python2-markdown2 
-  - python2-matplotlib: [i586] 
   - python2-matplotlib-gtk3 
   - python2-matplotlib-latex 
   - python2-matplotlib-qt-shared 
   - python2-matplotlib-qt5 
-  - python2-matplotlib-tk: [i586] 
   - python2-matplotlib-web 
   - python2-matplotlib-wx 
   - python2-maxminddb 
@@ -19513,7 +19489,6 @@ unsorted:
   - python2-ntplib 
   - python2-num2words 
   - python2-numexpr 
-  - python2-numpy: [i586] 
   - python2-numpy-devel 
   - python2-numpy-gnu-hpc 
   - python2-numpy-gnu-hpc-devel 
@@ -19530,7 +19505,6 @@ unsorted:
   - python2-oci-sdk 
   - python2-odfpy 
   - python2-odorik 
-  - python2-olefile: [i586] 
   - python2-opcodes 
   - python2-openapi-spec-validator 
   - python2-opencensus 
@@ -19800,7 +19774,6 @@ unsorted:
   - python2-pyosf 
   - python2-pyotp 
   - python2-pyparallel 
-  - python2-pyparsing: [i586] 
   - python2-pyperclip 
   - python2-pypiserver 
   - python2-pypng 
@@ -19910,7 +19883,6 @@ unsorted:
   - python2-python-crfsuite 
   - python2-python-crontab 
   - python2-python-daemon 
-  - python2-python-dateutil: [i586] 
   - python2-python-dbusmock 
   - python2-python-docs-theme 
   - python2-python-dotenv 
@@ -19962,7 +19934,6 @@ unsorted:
   - python2-pytoml 
   - python2-pytools 
   - python2-pytricia 
-  - python2-pytz: [i586] 
   - python2-pytzdata 
   - python2-pyuca 
   - python2-pyudev 
@@ -20134,7 +20105,6 @@ unsorted:
   - python2-sip 
   - python2-sip-devel 
   - python2-siphashc 
-  - python2-six: [i586] 
   - python2-sleekxmpp 
   - python2-slimit 
   - python2-slip 
@@ -20210,7 +20180,6 @@ unsorted:
   - python2-strictyaml 
   - python2-subgrab 
   - python2-subliminal 
-  - python2-subprocess32: [i586] 
   - python2-subst 
   - python2-suds-jurko 
   - python2-suntime 
@@ -20300,7 +20269,6 @@ unsorted:
   - python2-txZMQ 
   - python2-txt2tags 
   - python2-txtorcon 
-  - python2-typepy 
   - python2-typing 
   - python2-typing_extensions 
   - python2-tzlocal 
@@ -20475,7 +20443,6 @@ unsorted:
   - python3-Cheetah3 
   - python3-CherryPy 
   - python3-CommonMark 
-  - python3-Cycler: [i586] 
   - python3-Cython 
   - python3-DataProperty 
   - python3-DataShape 
@@ -21530,6 +21497,7 @@ unsorted:
   - python3-girder-client 
   - python3-git-pw 
   - python3-git-url-parse 
+  - python3-gitdb 
   - python3-gitdb2 
   - python3-github3.py 
   - python3-gitlint 
@@ -21576,7 +21544,6 @@ unsorted:
   - python3-grpcio-gcp 
   - python3-gscholar 
   - python3-gspread 
-  - python3-gst 
   - python3-gsw 
   - python3-guessit 
   - python3-guzzle_sphinx_theme 
@@ -21778,7 +21745,6 @@ unsorted:
   - python3-kismetdb 
   - python3-kitchen 
   - python3-kiwi 
-  - python3-kiwisolver: [i586] 
   - python3-kmatch 
   - python3-kmod 
   - python3-knack 
@@ -21913,9 +21879,6 @@ unsorted:
   - python3-markdown2 
   - python3-marshmallow 
   - python3-masakariclient 
-  - python3-matplotlib: [i586] 
-  - python3-matplotlib-cairo 
-  - python3-matplotlib-gtk3 
   - python3-matplotlib-latex 
   - python3-matplotlib-qt-shared 
   - python3-matplotlib-qt5 
@@ -33226,14 +33189,12 @@ unsorted:
   - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-1_0 
   - typelib-1_0-GSSDP-1_0 
-  - typelib-1_0-GSound-1_0 
   - typelib-1_0-GTop-2_0 
   - typelib-1_0-GUPnP-1_0 
   - typelib-1_0-GUPnPAV-1_0 
@@ -33281,8 +33242,6 @@ unsorted:
   - typelib-1_0-GstRtsp-1_0 
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
-  - typelib-1_0-GstTranscoder-1_0 
-  - typelib-1_0-GstValidate-1_0 
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 

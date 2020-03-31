@@ -566,6 +566,7 @@
     <package name="freeipmi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="freerdp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="freetype2-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="frei0r-plugins" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fribidi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="frogr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="frogr-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -849,7 +850,9 @@
     <package name="gstreamer-plugins-libav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-ugly" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-ugly-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-transcoder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gstreamer-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-validate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gthumb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gthumb-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk-vnc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1900,6 +1903,8 @@
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libctf-nobfd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libctf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcue2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2046,6 +2051,7 @@
     <package name="libgarcon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libgavl1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgbm1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2074,6 +2080,7 @@
     <package name="libgee-0_8-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgegl-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgeocode-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libges-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfapi0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libgfbgraph-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2179,7 +2186,9 @@
     <package name="libgstsctp-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstsdp-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgsttag-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libgsttranscoder-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgsturidownloader-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgstvalidate-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgstvideo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgstwayland-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstwebrtc-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3815,6 +3824,8 @@
     <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pitivi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="pitivi-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pkcs11-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pkgconf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pkgconf-m4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3923,19 +3934,36 @@
     <package name="python-Sphinx-doc-man" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-falcon-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python-functools32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-gnome-dvb-daemon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-sip-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-typeshed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="python2-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-backports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-backports.functools_lru_cache" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-matplotlib-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-numpy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-olefile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python2-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-pytz" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-six" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-subprocess32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Beaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-Jinja2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-M2Crypto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python3-Mako" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4007,6 +4035,7 @@
     <package name="python3-gpg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python3-gst" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-gunicorn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-h2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-hiredis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4020,6 +4049,7 @@
     <package name="python3-ipaddr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python3-jedi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-keyring" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
+    <package name="python3-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-lazr.config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-lazr.delegates" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4030,6 +4060,9 @@
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-lxml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-mailman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python3-matplotlib-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python3-matplotlib-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-mypy_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4957,8 +4990,10 @@
     <package name="typelib-1_0-Flatpak-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Fwupd-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GData-0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-GES-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="typelib-1_0-GFBGraph-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GMenu-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-GSound-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="typelib-1_0-GWeather-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gck-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gcr-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4977,6 +5012,8 @@
     <package name="typelib-1_0-GstAudio-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GstPbutils-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GstTag-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-GstTranscoder-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="typelib-1_0-GstValidate-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="typelib-1_0-GstVideo-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gtk-3_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5713,31 +5750,12 @@
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="policycoreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python-functools32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-backports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-backports.functools_lru_cache" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-matplotlib-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-numpy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-olefile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-pytz" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-six" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-subprocess32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-ipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python3-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-libguestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->

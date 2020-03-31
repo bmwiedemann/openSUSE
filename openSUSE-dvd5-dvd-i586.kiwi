@@ -568,6 +568,7 @@
       <repopackage name="freeipmi"/>
       <repopackage name="freerdp"/>
       <repopackage name="freetype2-devel"/>
+      <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
       <repopackage name="frogr"/>
       <repopackage name="frogr-lang"/>
@@ -853,7 +854,9 @@
       <repopackage name="gstreamer-plugins-libav"/>
       <repopackage name="gstreamer-plugins-ugly"/>
       <repopackage name="gstreamer-plugins-ugly-lang"/>
+      <repopackage name="gstreamer-transcoder"/>
       <repopackage name="gstreamer-utils"/>
+      <repopackage name="gstreamer-validate"/>
       <repopackage name="gthumb"/>
       <repopackage name="gthumb-lang"/>
       <repopackage name="gtk-vnc-lang"/>
@@ -1617,6 +1620,8 @@
       <repopackage name="libcryptui-data"/>
       <repopackage name="libcryptui-lang"/>
       <repopackage name="libcryptui0"/>
+      <repopackage name="libctf-nobfd0"/>
+      <repopackage name="libctf0"/>
       <repopackage name="libcue2"/>
       <repopackage name="libcups2"/>
       <repopackage name="libcupsimage2"/>
@@ -1766,6 +1771,7 @@
       <repopackage name="libgarcon-branding-openSUSE"/>
       <repopackage name="libgarcon-data"/>
       <repopackage name="libgarcon-lang"/>
+      <repopackage name="libgavl1"/>
       <repopackage name="libgbm1"/>
       <repopackage name="libgc1"/>
       <repopackage name="libgcab-1_0-0"/>
@@ -1794,6 +1800,7 @@
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
       <repopackage name="libgeocode-glib0"/>
+      <repopackage name="libges-1_0-0"/>
       <repopackage name="libgexiv2-2"/>
       <repopackage name="libgfapi0"/>
       <repopackage name="libgfbgraph-0_2-0"/>
@@ -1901,7 +1908,9 @@
       <repopackage name="libgstsctp-1_0-0"/>
       <repopackage name="libgstsdp-1_0-0"/>
       <repopackage name="libgsttag-1_0-0"/>
+      <repopackage name="libgsttranscoder-1_0-0"/>
       <repopackage name="libgsturidownloader-1_0-0"/>
+      <repopackage name="libgstvalidate-1_0-0"/>
       <repopackage name="libgstvideo-1_0-0"/>
       <repopackage name="libgstwayland-1_0-0"/>
       <repopackage name="libgstwebrtc-1_0-0"/>
@@ -3868,6 +3877,8 @@
       <repopackage name="pipewire-spa-plugins-0_2"/>
       <repopackage name="pipewire-spa-tools"/>
       <repopackage name="pipewire-tools"/>
+      <repopackage name="pitivi"/>
+      <repopackage name="pitivi-lang"/>
       <repopackage name="pkcs11-helper"/>
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
@@ -3975,6 +3986,7 @@
       <repopackage name="python"/>
       <repopackage name="python-base"/>
       <repopackage name="python-falcon-doc"/>
+      <repopackage name="python-functools32"/>
       <repopackage name="python-gnome-dvb-daemon"/>
       <repopackage name="python-gobject2"/>
       <repopackage name="python-gtk"/>
@@ -3982,9 +3994,24 @@
       <repopackage name="python-rpm-macros"/>
       <repopackage name="python-sip-common"/>
       <repopackage name="python-Sphinx-doc-man"/>
+      <repopackage name="python-tk"/>
       <repopackage name="python-typeshed"/>
       <repopackage name="python-xml"/>
+      <repopackage name="python2-backports"/>
+      <repopackage name="python2-backports.functools_lru_cache"/>
+      <repopackage name="python2-Cycler"/>
+      <repopackage name="python2-kiwisolver"/>
+      <repopackage name="python2-matplotlib"/>
+      <repopackage name="python2-matplotlib-tk"/>
+      <repopackage name="python2-numpy"/>
+      <repopackage name="python2-olefile"/>
+      <repopackage name="python2-Pillow"/>
       <repopackage name="python2-pycairo"/>
+      <repopackage name="python2-pyparsing"/>
+      <repopackage name="python2-python-dateutil"/>
+      <repopackage name="python2-pytz"/>
+      <repopackage name="python2-six"/>
+      <repopackage name="python2-subprocess32"/>
       <repopackage name="python3"/>
       <repopackage name="python3-aiosmtpd"/>
       <repopackage name="python3-alabaster"/>
@@ -4017,6 +4044,7 @@
       <repopackage name="python3-cssselect"/>
       <repopackage name="python3-cupshelpers"/>
       <repopackage name="python3-curses"/>
+      <repopackage name="python3-Cycler"/>
       <repopackage name="python3-dbm"/>
       <repopackage name="python3-dbus-python"/>
       <repopackage name="python3-decorator"/>
@@ -4045,6 +4073,7 @@
       <repopackage name="python3-gpg"/>
       <repopackage name="python3-greenlet"/>
       <repopackage name="python3-gssapi"/>
+      <repopackage name="python3-gst"/>
       <repopackage name="python3-gunicorn"/>
       <repopackage name="python3-h2"/>
       <repopackage name="python3-hiredis"/>
@@ -4059,6 +4088,7 @@
       <repopackage name="python3-jedi"/>
       <repopackage name="python3-Jinja2"/>
       <repopackage name="python3-keyring"/>
+      <repopackage name="python3-kiwisolver"/>
       <repopackage name="python3-lazr.config"/>
       <repopackage name="python3-lazr.delegates"/>
       <repopackage name="python3-ldb"/>
@@ -4072,6 +4102,9 @@
       <repopackage name="python3-mailman"/>
       <repopackage name="python3-Mako"/>
       <repopackage name="python3-MarkupSafe"/>
+      <repopackage name="python3-matplotlib"/>
+      <repopackage name="python3-matplotlib-cairo"/>
+      <repopackage name="python3-matplotlib-gtk3"/>
       <repopackage name="python3-msgpack"/>
       <repopackage name="python3-mypy_extensions"/>
       <repopackage name="python3-mysqlclient"/>
@@ -5017,6 +5050,7 @@
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
       <repopackage name="typelib-1_0-GeocodeGlib-1_0"/>
+      <repopackage name="typelib-1_0-GES-1_0"/>
       <repopackage name="typelib-1_0-GFBGraph-0_2"/>
       <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
       <repopackage name="typelib-1_0-GMenu-3_0"/>
@@ -5025,11 +5059,14 @@
       <repopackage name="typelib-1_0-GnomeKeyring-1_0"/>
       <repopackage name="typelib-1_0-Goa-1_0"/>
       <repopackage name="typelib-1_0-Grl-0_3"/>
+      <repopackage name="typelib-1_0-GSound-1_0"/>
       <repopackage name="typelib-1_0-Gspell-1"/>
       <repopackage name="typelib-1_0-Gst-1_0"/>
       <repopackage name="typelib-1_0-GstAudio-1_0"/>
       <repopackage name="typelib-1_0-GstPbutils-1_0"/>
       <repopackage name="typelib-1_0-GstTag-1_0"/>
+      <repopackage name="typelib-1_0-GstTranscoder-1_0"/>
+      <repopackage name="typelib-1_0-GstValidate-1_0"/>
       <repopackage name="typelib-1_0-GstVideo-1_0"/>
       <repopackage name="typelib-1_0-Gtk-3_0"/>
       <repopackage name="typelib-1_0-GtkClutter-1_0"/>
