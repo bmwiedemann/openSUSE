@@ -57,6 +57,8 @@ Patch101:       0001-Fix-leaking-AvahiServiceResolver-in-the-error-paths.patch
 Patch102:       0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
+# PATCH-FIX-UPSTREAM -- Fix building with Qt 5.15 by adding a missing include
+Patch104:       fix-missing-includes-with-qt-5.15.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -404,6 +406,7 @@ OpenCV based video filters and a face detection example.
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
+%patch104 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
