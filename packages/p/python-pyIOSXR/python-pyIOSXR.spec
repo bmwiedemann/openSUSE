@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyIOSXR
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+#  nothing provides python2-netmiko
+%define skip_python2 1
 Name:           python-pyIOSXR
 Version:        0.53
 Release:        0
