@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-completion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-completion
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Fish, Bash, Zsh and PowerShell completion for Click
 License:        MIT
