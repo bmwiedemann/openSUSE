@@ -70,4 +70,14 @@
   the packages</comment>
     <requestid>762860</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3be026dbca6338b8cedc3d20ab1d8ddf</srcmd5>
+    <version>0.13.3</version>
+    <time>1585667785</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.13.3
+  * lot of changes, see
+    https://github.com/p1c2u/openapi-core/releases</comment>
+    <requestid>790004</requestid>
+  </revision>
 </revisionlist>

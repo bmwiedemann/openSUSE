@@ -24,7 +24,7 @@
 %bcond_without python2
 %endif
 Name:           python-openapi-core
-Version:        0.12.0
+Version:        0.13.3
 Release:        0
 Summary:        Adds client-side and server-side support for the oas3
 License:        BSD-3-Clause
@@ -36,7 +36,10 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module lazy-object-proxy}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module more-itertools >= 5.0.0}
+BuildRequires:  %{python_module openapi-schema-validator}
 BuildRequires:  %{python_module openapi-spec-validator}
+BuildRequires:  %{python_module parse >= 1.14.0}
 BuildRequires:  %{python_module pytest < 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -46,7 +49,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-isodate
 Requires:       python-lazy-object-proxy
+Requires:       python-more-itertools >= 5.0.0
+Requires:       python-openapi-schema-validator
 Requires:       python-openapi-spec-validator
+Requires:       python-parse >= 1.14.0
 Requires:       python-six
 Requires:       python-strict-rfc3339
 BuildArch:      noarch
@@ -80,6 +86,7 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i '/addopts/d' setup.cfg
 export LANG=en_US.UTF-8
 %pytest tests/unit
 
