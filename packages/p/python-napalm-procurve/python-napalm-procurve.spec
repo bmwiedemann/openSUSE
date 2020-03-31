@@ -1,6 +1,7 @@
 #
 # spec file for package python-napalm-procurve
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,27 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# python-napalm is python3 only
+%define skip_python2 1
 Name:           python-napalm-procurve
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
-License:        Apache-2.0
 Summary:        NAPALM - HP ProCurve network driver
-Url:            https://github.com/ixs/napalm-procurve
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/ixs/napalm-procurve
 Source:         https://github.com/ixs/napalm-procurve/archive/%{version}.tar.gz#/napalm-procurve-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module napalm >= 2.4.0}
 BuildRequires:  %{python_module netmiko}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pylama}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-napalm >= 2.4.0
