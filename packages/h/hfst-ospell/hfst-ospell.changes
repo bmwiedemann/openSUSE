@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:25:33 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Fix boo#1158318 by
+  gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch.
+
+-------------------------------------------------------------------
 Thu Jan 16 13:08:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.1 bsc#1164440:

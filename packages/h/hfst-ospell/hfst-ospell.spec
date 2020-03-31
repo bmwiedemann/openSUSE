@@ -27,6 +27,7 @@ Group:          Productivity/Text/Spell
 URL:            https://hfst.github.io/
 Source0:        https://github.com/hfst/%{name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -56,6 +57,7 @@ Development headers and libraries for hfst-ospell
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch0 -p1
 
 %build
 # disable libxml++ as upstream requires version 2.6
