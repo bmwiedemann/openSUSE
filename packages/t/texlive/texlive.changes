@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 27 01:39:45 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add source-poppler0.86.0.patch: fix build with poppler 0.86.0.
+
+-------------------------------------------------------------------
 Wed Mar 11 16:16:55 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Use CVE numbers 

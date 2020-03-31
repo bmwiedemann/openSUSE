@@ -283,6 +283,8 @@ Patch61:        source-poppler0.83.0.patch
 Patch62:        source-common.patch
 # PATCH-FIX-UPSTREAM source-poppler0.84.0.patch
 Patch63:        source-poppler0.84.0.patch
+# PATCH-FIX-UPSTREAM source-poppler0.86.0.patch
+Patch64:        source-poppler0.86.0.patch
 Prefix:         %{_bindir}
 Provides:       pdfjam = %{version}
 Obsoletes:      pdfjam < %{version}
@@ -3688,6 +3690,9 @@ popd
 %endif
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.84.0}}%{!?pkg_vcmp:0}
 %patch63 -p1 -b .poppler84
+%endif
+%if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.86.0}}%{!?pkg_vcmp:0}
+%patch64 -p1 -b .poppler86
 %endif
 pver=$(pkg-config --modversion poppler)
 %if %{?pkg_vcmp:%{pkg_vcmp libpoppler-devel >= 0.79.0}}%{!?pkg_vcmp:0}
