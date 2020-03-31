@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:         cmake-clang-cpp.patch
+Patch1:         0001-Fix-build-issues-using-llvm-10.0.0.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 3.9
 BuildRequires:  cmake >= 3.0

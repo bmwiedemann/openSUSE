@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:10:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-build-issues-using-llvm-10.0.0.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build
