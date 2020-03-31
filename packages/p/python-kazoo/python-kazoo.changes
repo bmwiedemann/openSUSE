@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:53:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- downgrade pure-sasl dependency to suggests, as it requires
+  kerberos which conflicts with pykerberos (needed by requests)
+  and the code handles this as optional dependency
+
+-------------------------------------------------------------------
 Mon Mar 16 13:00:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add dependency on pure-sasl, move python 2.x deps inside a conditional

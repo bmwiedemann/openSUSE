@@ -38,8 +38,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-eventlet >= 0.17.1
 Requires:       python-gevent >= 1.2
 %endif
-Requires:       python-pure-sasl
 Requires:       python-six
+Suggests:       python-pure-sasl
 BuildArch:      noarch
 %python_subpackages
 
