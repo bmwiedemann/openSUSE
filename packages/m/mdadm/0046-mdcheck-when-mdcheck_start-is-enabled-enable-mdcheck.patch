@@ -1,8 +1,11 @@
-From 751090e03c584ae2e4badd8823bd68d8d0c4c298 Mon Sep 17 00:00:00 2001
+From 6636788aaf4ec0cacaefb6e77592e4a68e70a957 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Fri, 18 Oct 2019 11:10:34 +1100
 Subject: [PATCH] mdcheck: when mdcheck_start is enabled, enable
  mdcheck_continue too.
+Git-commit: 6636788aaf4ec0cacaefb6e77592e4a68e70a957
+Patch-mainline: mdadm-4.1+
+References: bsc#1153258
 
 mdcheck_continue continues a regular array scan that was started by
 mdcheck_start.

@@ -3,6 +3,9 @@ From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Date: Wed, 17 Oct 2018 12:11:41 +0200
 Subject: [PATCH 5/5] imsm: update metadata correctly while raid10 double
  degradation
+Git-commit: d7a1fda2769ba272d89de6caeab35d52b73a9c3c
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-10078, jsc#SLE-9348
 
 Mdmon calls end_migration() when map state changes from normal to
 degraded. It is not valid because in raid 10 double degradation case
@@ -21,6 +24,8 @@ variable shouldn't be updated until rebuild is not finished.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  super-intel.c | 25 +++++++++++++++++++------
  1 file changed, 19 insertions(+), 6 deletions(-)

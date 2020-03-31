@@ -2,6 +2,9 @@ From cd72f9d114da206baa01fd56ff2d8ffcc08f3239 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Fri, 9 Nov 2018 17:12:33 +1100
 Subject: [PATCH 2/5] policy: support devices with multiple paths.
+Git-commit: cd72f9d114da206baa01fd56ff2d8ffcc08f3239
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-10078, jsc#SLE-9348
 
 As new releases of Linux some time change the name of
 a path, some distros keep "legacy" names as well.  This
@@ -15,6 +18,8 @@ which matches a disk.
 Reported-and-tested-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Signed-off-by: NeilBrown <neilb@suse.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Incremental.c |   5 +-
  mdadm.h       |   2 +-

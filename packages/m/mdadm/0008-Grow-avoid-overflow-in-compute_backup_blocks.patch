@@ -2,6 +2,9 @@ From 085df42259cba7863cd6ebe5cd0d8492ac5b869e Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Thu, 6 Dec 2018 10:35:41 +1100
 Subject: [PATCH] Grow: avoid overflow in compute_backup_blocks()
+Git-commit: 085df42259cba7863cd6ebe5cd0d8492ac5b869e
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-10078, jsc#SLE-9348
 
 With a chunk size of 16Meg and data drive count of 8,
 this calculate can easily overflow the 'int' type that
@@ -11,6 +14,8 @@ So force it to use "long" instead.
 Reported-and-tested-by: Ed Spiridonov <edo.rus@gmail.com>
 Signed-off-by: NeilBrown <neilb@suse.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Grow.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)

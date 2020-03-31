@@ -1,9 +1,10 @@
-From 02acb5718a68b16def418699c6afcc84223f52c7 Mon Sep 17 00:00:00 2001
+From e3615ecb5b6ad8eb408296878aad5628e0e27166 Mon Sep 17 00:00:00 2001
 From: Coly Li <colyli@suse.de>
-Date: Tue, 12 Feb 2019 12:43:40 +0800
+Date: Tue, 12 Feb 2019 12:53:18 +0800
 Subject: [PATCH] Detail.c: do not skip first character when calling xstrdup in
  Detail()
-Git-commit: Posted but not upstreamed yet
+Git-commit: e3615ecb5b6ad8eb408296878aad5628e0e27166
+Patch-mainline: mdadm-4.1+
 References: bsc#1123814
 
 'Commit b9c9bd9bacaa ("Detail: ensure --export names are acceptable as
@@ -25,6 +26,7 @@ Reported-by: Arvin Schnell <aschnell@suse.com>
 Fixes: b9c9bd9bacaa ("Detail: ensure --export names are acceptable as 4 shell variables")
 Signed-off-by: Coly Li <colyli@suse.de>
 Cc: NeilBrown <neilb@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
 ---
  Detail.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -43,5 +45,5 @@ index b3e857a..20ea03a 100644
  
  				path = map_dev(mdi->disk.major,
 -- 
-2.16.4
+2.25.0
 

@@ -2,6 +2,9 @@ From 6b6112842030309c297a521918d1a2e982426fa3 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Fri, 9 Nov 2018 17:12:33 +1100
 Subject: [PATCH 1/5] Document PART-POLICY lines
+Git-commit: 6b6112842030309c297a521918d1a2e982426fa3
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-10078, jsc#SLE-9348
 
 PART-POLICY has been accepted in mdadm.conf since the same
 time that POLICY was accepted, but it was never documented.
@@ -12,6 +15,8 @@ anyone had ever tried to use it.
 
 Signed-off-by: NeilBrown <neilb@suse.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  mdadm.conf.5 | 24 +++++++++++++++++++++++-
  policy.c     |  2 +-

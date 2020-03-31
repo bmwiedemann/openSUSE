@@ -2,6 +2,9 @@ From 7cd7e91ab3de5aa75dc963cb08b0618c1885cf0d Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Wed, 5 Dec 2018 16:35:00 +1100
 Subject: [PATCH 4/5] Monitor: add system timer to run --oneshot periodically
+Git-commit: 7cd7e91ab3de5aa75dc963cb08b0618c1885cf0d
+Patch-mainline: mdadm-4.1+
+References: bsc#1115407
 
 "mdadm --monitor --oneshot" can be used to get a warning
 if there are any degraded arrays.  It can be helpful to get

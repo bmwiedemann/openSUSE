@@ -2,6 +2,9 @@ From 4199d3c629c14866505923d19fa50017ee92d2e1 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Wed, 5 Dec 2018 16:35:00 +1100
 Subject: [PATCH 3/5] mdcheck: add systemd unit files to run mdcheck.
+Git-commit: 4199d3c629c14866505923d19fa50017ee92d2e1
+Patch-mainline: mdadm-4.1+
+References: bsc#1115407
 
 Having the mdcheck script is not use if is never run.
 This patch adds systemd unit files so that it can easily

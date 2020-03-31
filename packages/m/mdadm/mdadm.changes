@@ -1,4 +1,232 @@
 -------------------------------------------------------------------
+Fri Mar 27 03:52:47 UTC 2020 - Neil Brown <nfbrown@suse.com>
+
+- Don't list XX@.services even for sevice_del_preun
+  They cannot be stopped without an instance name,
+  so there is no value in listing them, and it causes
+  and error with "rpm -e mdadm --nodeps".
+  (bsc#1093163)
+
+-------------------------------------------------------------------
+Tue Mar  3 05:32:58 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Update for latest mdadm-4.1+ patches, this is required by
+  jsc#SLE-10078 and jsc#SLE-9348. Mostly the purpose is for
+  latest Intel IMSM raid support.
+  The following patches also include previous patches with
+  new re-ordered prefix numbers.
+
+- Makefile: install mdadm_env.sh to /usr/lib/mdadm (bsc#1111960)
+  0000-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+- Assemble: keep MD_DISK_FAILFAST and MD_DISK_WRITEMOSTLY flag
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0001-Assemble-keep-MD_DISK_FAILFAST-and-MD_DISK_WRITEMOST.patch
+- Document PART-POLICY lines (jsc#SLE-10078, jsc#SLE-9348)
+  0002-Document-PART-POLICY-lines.patch
+- policy: support devices with multiple paths.
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0003-policy-support-devices-with-multiple-paths.patch
+- mdcheck: add systemd unit files to run mdcheck. (bsc#1115407)
+  0004-mdcheck-add-systemd-unit-files-to-run-mdcheck.patch
+- Monitor: add system timer to run --oneshot periodically (bsc#1115407)
+  0005-Monitor-add-system-timer-to-run-oneshot-periodically.patch
+- imsm: update metadata correctly while raid10 double
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0006-imsm-update-metadata-correctly-while-raid10-double-d.patch
+- Assemble: mask FAILFAST and WRITEMOSTLY flags when finding
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0007-Assemble-mask-FAILFAST-and-WRITEMOSTLY-flags-when-fi.patch
+- Grow: avoid overflow in compute_backup_blocks()
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0008-Grow-avoid-overflow-in-compute_backup_blocks.patch
+- Grow: report correct new chunk size. (jsc#SLE-10078, jsc#SLE-9348)
+  0009-Grow-report-correct-new-chunk-size.patch
+- policy.c: prevent NULL pointer referencing (bsc#1106078)
+  0010-policy.c-prevent-NULL-pointer-referencing.patch
+- policy.c: Fix for compiler error (jsc#SLE-10078, jsc#SLE-9348)
+  0012-policy.c-Fix-for-compiler-error.patch
+- imsm: finish recovery when drive with rebuild fails (bsc#1126975)
+  0013-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
+- imsm: fix reshape for >2TB drives (jsc#SLE-10078, jsc#SLE-9348)
+  0014-imsm-fix-reshape-for-2TB-drives.patch
+- Fix spelling typos. (jsc#SLE-10078, jsc#SLE-9348)
+  0015-Fix-spelling-typos.patch
+- Detail.c: do not skip first character when calling xstrdup in
+  Detail() (bsc#1123814)
+  0016-Detail.c-do-not-skip-first-character-when-calling-xs.patch
+- Fix reshape for decreasing data offset (jsc#SLE-10078, jsc#SLE-9348)
+  0018-Fix-reshape-for-decreasing-data-offset.patch
+- mdadm/tests: add one test case for failfast of raid1
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0019-mdadm-tests-add-one-test-case-for-failfast-of-raid1.patch
+- mdmon: don't attempt to manage new arrays when terminating
+  (bsc#1127526)
+  0020-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
+- mdmon: wait for previous mdmon to exit during takeover
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0021-mdmon-wait-for-previous-mdmon-to-exit-during-takeove.patch
+- Assemble: Fix starting array with initial reshape checkpoint
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0022-Assemble-Fix-starting-array-with-initial-reshape-che.patch
+- add missing units to --examine (jsc#SLE-10078, jsc#SLE-9348)
+   0023-add-missing-units-to-examine.patch
+- imsm: fix spare activation for old matrix arrays
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0024-imsm-fix-spare-activation-for-old-matrix-arrays.patch
+- Create: Block rounding size to max (jsc#SLE-10078, jsc#SLE-9348)
+  0025-Create-Block-rounding-size-to-max.patch
+- udev: Add udev rules to create by-partuuid for md device
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0026-udev-Add-udev-rules-to-create-by-partuuid-for-md-dev.patch
+- mdmon: fix wrong array state when disk fails during mdmon
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0027-mdmon-fix-wrong-array-state-when-disk-fails-during-m.patch
+- Enable probe_roms to scan more than 6 roms. (bsc#1156040)
+  0028-Enable-probe_roms-to-scan-more-than-6-roms.patch
+- super-intel: Fix issue with abs() being irrelevant
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0029-super-intel-Fix-issue-with-abs-being-irrelevant.patch
+- mdadm.h: Introduced unaligned {get,put}_unaligned{16,32}()
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0030-mdadm.h-Introduced-unaligned-get-put-_unaligned-16-3.patch
+- super-intel: Use put_unaligned in split_ull
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0031-super-intel-Use-put_unaligned-in-split_ull.patch
+- mdadm: load default sysfs attributes after assemblation
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0032-mdadm-load-default-sysfs-attributes-after-assemblati.patch
+- mdadm.h: include sysmacros.h unconditionally
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0033-mdadm.h-include-sysmacros.h-unconditionally.patch
+- mdadm: add --no-devices to avoid component devices detail
+  (bsc#1139709)
+  0034-mdadm-add-no-devices-to-avoid-component-devices-deta.patch
+- udev: add --no-devices option for calling 'mdadm (bsc#1139709)
+  0035-udev-add-no-devices-option-for-calling-mdadm-detail.patch
+- imsm: close removed drive fd. (jsc#SLE-10078, jsc#SLE-9348)
+  0036-imsm-close-removed-drive-fd.patch
+- mdadm: check value returned by snprintf against errors
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0037-mdadm-check-value-returned-by-snprintf-against-error.patch
+- mdadm: Introduce new array state 'broken' for raid0/linear
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0038-mdadm-Introduce-new-array-state-broken-for-raid0-lin.patch
+- mdadm: force a uuid swap on big endian (jsc#SLE-10078, jsc#SLE-9348)
+  0039-mdadm-force-a-uuid-swap-on-big-endian.patch
+- mdadm/md.4: add the descriptions for bitmap sysfs nodes
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0040-mdadm-md.4-add-the-descriptions-for-bitmap-sysfs-nod.patch
+- Init devlist as an array (jsc#SLE-10078, jsc#SLE-9348)
+  0041-Init-devlist-as-an-array.patch
+- Don't need to check recovery after re-add when no I/O writes
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0042-Don-t-need-to-check-recovery-after-re-add-when-no-I-.patch
+- udev: allow for udev attribute reading bug.
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0043-udev-allow-for-udev-attribute-reading-bug.patch
+- imsm: save current_vol number (jsc#SLE-10078, jsc#SLE-9348)
+  0044-imsm-save-current_vol-number.patch
+- imsm: allow to specify second volume size
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0045-imsm-allow-to-specify-second-volume-size.patch
+- mdcheck: when mdcheck_start is enabled, enable (bsc#1153258)
+  0046-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+- mdcheck: use ${} to pass variable to mdcheck (bsc#1153258)
+  0050-mdcheck-use-to-pass-variable-to-mdcheck.patch
+- SUSE-mdadm_env.sh: handle MDADM_CHECK_DURATION (bsc#1153258)
+  0051-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+- super-intel: don't mark structs 'packed' unnecessarily
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0052-super-intel-don-t-mark-structs-packed-unnecessarily.patch
+- Manage: Remove the legacy code for md driver prior to 0.90.03
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0053-Manage-Remove-the-legacy-code-for-md-driver-prior-to.patch
+- Remove last traces of HOT_ADD_DISK (jsc#SLE-10078, jsc#SLE-9348)
+  0054-Remove-last-traces-of-HOT_ADD_DISK.patch
+- Fix up a few formatting issues (jsc#SLE-10078, jsc#SLE-9348)
+  0055-Fix-up-a-few-formatting-issues.patch
+- Remove unused code (jsc#SLE-10078, jsc#SLE-9348)
+  0056-Remove-unused-code.patch
+- imsm: return correct uuid for volume in detail
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0057-imsm-return-correct-uuid-for-volume-in-detail.patch
+- imsm: Change the way of printing nvme drives in
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0058-imsm-Change-the-way-of-printing-nvme-drives-in-detai.patch
+- Create: add support for RAID0 layouts. (bsc#1162479)
+  0059-Create-add-support-for-RAID0-layouts.patch
+- Assemble: add support for RAID0 layouts. (bsc#1162479)
+  0060-Assemble-add-support-for-RAID0-layouts.patch
+- Respect $(CROSS_COMPILE) when $(CC) is the default
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0061-Respect-CROSS_COMPILE-when-CC-is-the-default.patch
+- Change warning message (jsc#SLE-10078, jsc#SLE-9348)
+  0062-Change-warning-message.patch
+- mdcheck service can't start succesfully because of syntax
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0063-mdcheck-service-can-t-start-succesfully-because-of-s.patch
+- imsm: Update grow manual. (jsc#SLE-10078, jsc#SLE-9348)
+  0064-imsm-Update-grow-manual.patch
+- Add support for Tebibytes (jsc#SLE-10078, jsc#SLE-9348)
+  0065-Add-support-for-Tebibytes.patch
+- imsm: fill working_disks according to metadata.
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0066-imsm-fill-working_disks-according-to-metadata.patch
+- mdadm.8: add note information for raid0 growing operation
+  (bsc#1129900)
+  0067-mdadm.8-add-note-information-for-raid0-growing-opera.patch
+- Remove the legacy whitespace (jsc#SLE-10078, jsc#SLE-9348)
+  0068-Remove-the-legacy-whitespace.patch
+- imsm: pass subarray id to kill_subarray function
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0069-imsm-pass-subarray-id-to-kill_subarray-function.patch
+- imsm: Remove --dump/--restore implementation
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0070-imsm-Remove-dump-restore-implementation.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 05:31:39 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Rename the following patches, they will be listed with new
+  re-ordered prefix number in following commit,
+    0001-Document-PART-POLICY-lines.patch
+    0001-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+    0002-policy-support-devices-with-multiple-paths.patch
+    0003-mdcheck-add-systemd-unit-files-to-run-mdcheck.patch
+    0004-Monitor-add-system-timer-to-run-oneshot-periodically.patch
+    0005-imsm-update-metadata-correctly-while-raid10-double-d.patch
+    0006-Grow-avoid-overflow-in-compute_backup_blocks.patch
+    0007-Grow-report-correct-new-chunk-size.patch
+    0008-policy.c-prevent-NULL-pointer-referencing.patch
+    0009-Detail.c-do-not-skip-first-character-when-calling-xs.patch
+    0010-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
+    0011-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
+    0012-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+    0013-mdcheck-use-to-pass-variable-to-mdcheck.patch
+    0014-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+    0015-Create-add-support-for-RAID0-layouts.patch
+    0016-Assemble-add-support-for-RAID0-layouts.patch
+    1002-mdadm.8-add-note-information-for-raid0-growing-opera.patch 
+
+-------------------------------------------------------------------
+Tue Mar  3 05:31:21 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Enable probe_roms to scan more than 6 roms. (bsc#1156040)
+  0028-Enable-probe_roms-to-scan-more-than-6-roms.patch
+
+-------------------------------------------------------------------
+Tue Mar  3 05:28:56 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Add mdadm fixes from SLE15-SP1 package,
+- Create: add support for RAID0 layouts. (bsc#1162479)
+  0059-Create-add-support-for-RAID0-layouts.patch
+- Assemble: add support for RAID0 layouts. (bsc#1162479)
+  0060-Assemble-add-support-for-RAID0-layouts.patch
+- mdadm.8: add note information for raid0 growing operation
+  (bsc#1129900)
+  0067-mdadm.8-add-note-information-for-raid0-growing-opera.patch
+
+-------------------------------------------------------------------
 Fri Feb  7 11:31:21 UTC 2020 - Coly Li <colyli@suse.com>
 
 - Create: add support for RAID0 layouts. (bsc#1162479)

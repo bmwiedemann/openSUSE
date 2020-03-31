@@ -2,12 +2,17 @@ From 76d505dec6c9f92564553596fc8350324be82463 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Thu, 6 Dec 2018 10:36:28 +1100
 Subject: [PATCH] Grow: report correct new chunk size.
+Git-commit: 76d505dec6c9f92564553596fc8350324be82463
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-10078, jsc#SLE-9348
 
 When using "--grow --chunk=" to change chunk
 size, the old chunksize is reported instead of the new.
 
 Signed-off-by: NeilBrown <neilb@suse.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Grow.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

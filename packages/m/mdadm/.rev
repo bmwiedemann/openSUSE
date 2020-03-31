@@ -1197,4 +1197,41 @@ which haven't landed upstream yet
   1002-mdadm.8-add-note-information-for-raid0-growing-opera.patch (forwarded request 771555 from colyli)</comment>
     <requestid>773542</requestid>
   </revision>
+  <revision rev="121" vrev="6">
+    <srcmd5>67a67bdb2ca48d97d4dbb72699e1f035</srcmd5>
+    <version>4.1</version>
+    <time>1585668705</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't list XX@.services even for sevice_del_preun
+  They cannot be stopped without an instance name,
+  so there is no value in listing them, and it causes
+  and error with &quot;rpm -e mdadm --nodeps&quot;.
+  (bsc#1093163)
+
+- Update for latest mdadm-4.1+ patches, this is required by
+  jsc#SLE-10078 and jsc#SLE-9348. Mostly the purpose is for
+  latest Intel IMSM raid support.
+  The following patches also include previous patches with
+  new re-ordered prefix numbers.
+- Makefile: install mdadm_env.sh to /usr/lib/mdadm (bsc#1111960)
+  0000-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+- Assemble: keep MD_DISK_FAILFAST and MD_DISK_WRITEMOSTLY flag
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0001-Assemble-keep-MD_DISK_FAILFAST-and-MD_DISK_WRITEMOST.patch
+- Document PART-POLICY lines (jsc#SLE-10078, jsc#SLE-9348)
+  0002-Document-PART-POLICY-lines.patch
+- policy: support devices with multiple paths.
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0003-policy-support-devices-with-multiple-paths.patch
+- mdcheck: add systemd unit files to run mdcheck. (bsc#1115407)
+  0004-mdcheck-add-systemd-unit-files-to-run-mdcheck.patch
+- Monitor: add system timer to run --oneshot periodically (bsc#1115407)
+  0005-Monitor-add-system-timer-to-run-oneshot-periodically.patch
+- imsm: update metadata correctly while raid10 double
+  (jsc#SLE-10078, jsc#SLE-9348)
+  0006-imsm-update-metadata-correctly-while-raid10-double-d.patch
+- Assemble: mask FAILFAST and WRITEMOSTLY flags when finding
+  (jsc#SLE-10078, jsc#SLE-9348)</comment>
+    <requestid>788735</requestid>
+  </revision>
 </revisionlist>
