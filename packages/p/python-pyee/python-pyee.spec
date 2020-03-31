@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyee
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-pyee
-Version:        6.0.0
+Version:        7.0.1
 Release:        0
 Summary:        A port of node.js's EventEmitter to python
 License:        MIT
@@ -27,8 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jfhbrook/pyee
 Source:         https://files.pythonhosted.org/packages/source/p/pyee/pyee-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/jfhbrook/pyee/master/LICENSE
-# PATCH-FIX-UPSTREAM fix-build-requirements.patch
-Patch0:         fix-build-requirements.patch
+# test_async.py: import asyncio.exception.TimeoutError
+# https://github.com/jfhbrook/pyee/issues/68
+Patch0:         python-pyee-import-asyncio.exceptions.patch
 BuildRequires:  %{python_module PyHamcrest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vcversioner}
@@ -36,12 +36,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-%if %{with test}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  python3-pytest-asyncio
-%endif
+BuildRequires:  python3-pytest-trio
 # /SECTION
 %python_subpackages
 
@@ -62,15 +61,13 @@ cp %{SOURCE99} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test} && 0%{?suse_version} >= 1500
 %check
-# Only run tests for python3
+# Only run tests for python3 (see test requirements)
 %{python_expand #
 if [ "${python_flavor}" == "python3" ]; then
     python3 setup.py test
 fi
 }
-%endif
 
 %files %{python_files}
 %doc README.rst

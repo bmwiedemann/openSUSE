@@ -40,4 +40,20 @@ Add missing BuildRequires</comment>
     <comment></comment>
     <requestid>697804</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46bfb91c6aea27609cd503d8f2c24d5d</srcmd5>
+    <version>7.0.1</version>
+    <time>1585667656</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.1
+  - Some tweaks to the docs
+  - Added a ``TrioEventEmitter`` class for intended use with trio
+  - ``AsyncIOEventEmitter`` now correctly handles cancellations
+  - Add a new experimental ``pyee.uplift`` API for adding new functionality to
+    existing event emitters
+- deleted patches
+  - fix-build-requirements.patch (upstreamed)
+- Add patch python-pyee-import-asyncio.exceptions.patch</comment>
+    <requestid>789777</requestid>
+  </revision>
 </revisionlist>
