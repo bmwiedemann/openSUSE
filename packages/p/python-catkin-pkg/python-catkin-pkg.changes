@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:51:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.4.16
+  * add Python 3.7 and 3.8 to Travis matrix
+  * allow different CMake minimum version in metapackage
+
+-------------------------------------------------------------------
 Fri Jan 24 11:34:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.4.15

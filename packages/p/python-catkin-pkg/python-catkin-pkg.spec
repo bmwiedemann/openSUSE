@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-catkin-pkg
-Version:        0.4.15
+Version:        0.4.16
 Release:        0
 Summary:        Catkin package library
 License:        BSD-3-Clause
