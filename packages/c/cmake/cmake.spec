@@ -36,9 +36,9 @@
 %bcond_with full
 %endif
 
-%define shortversion 3.16
+%define shortversion 3.17
 Name:           cmake%{?psuffix}
-Version:        3.16.2
+Version:        3.17.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

@@ -34,6 +34,9 @@
 %if "%{?_lib}" == "lib64" \
         -DLIB_SUFFIX=64 \\\
 %endif \
+%if %suse_version <= 1500 \
+        -DCMAKE_SKIP_RPATH:BOOL=ON \\\
+%endif \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\
         -DBUILD_SHARED_LIBS:BOOL=ON \\\
         -DBUILD_STATIC_LIBS:BOOL=OFF \\\

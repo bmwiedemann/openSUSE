@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar 26 11:20:42 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix mistake in previous change.
+
+-------------------------------------------------------------------
+Mon Mar 23 09:46:17 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Many Leap packages don't build without -DCMAKE_SKIP_RPATH:BOOL=ON
+  so leave this change to the next major version of Leap / SLE
+
+-------------------------------------------------------------------
+Sun Mar 22 06:18:20 UTC 2020 - Christoph G <foss@grueninger.de>
+
+- update to 3.17.0
+  * cmake(1) gained a “Ninja Multi-Config” generator, which
+    can be used to build multiple configurations at once.
+  * cmake(1) gained a “–debug-find” command-line option to
+    enable additional human-readable output on where find
+    commands search.
+  * Target link properties are now transitive over
+    private dependencies on static libraries. See policy “CMP0099”.
+  * cmake(1) gained a “-E rm” command-line tool that can
+    be used to remove directories and files.
+  Full changelog see
+  https://blog.kitware.com/cmake-3-17-0-available-for-download/  
+
+-------------------------------------------------------------------
 Wed Feb 19 13:30:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change cmake to be a meta-package that requires
