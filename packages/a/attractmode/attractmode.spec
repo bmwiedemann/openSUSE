@@ -1,7 +1,7 @@
 #
 # spec file for package attractmode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           attractmode
-Version:        2.5.0
+Version:        2.6.1
 Release:        0
 Summary:        A graphical frontend for emulators
 License:        GPL-3.0-only
 Group:          System/Emulators/Other
-Url:            https://attractmode.org
+URL:            https://attractmode.org
 Source0:        https://github.com/mickelson/attract/archive/v%{version}/attract-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -38,16 +38,10 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(openal)
-%if 0%{?suse_version} <= 1315
-BuildRequires:  pkgconfig(sfml-audio)
-BuildRequires:  pkgconfig(sfml-graphics)
-BuildRequires:  pkgconfig(sfml-system)
-%else
-BuildRequires:  sfml2-devel
-%endif
 BuildRequires:  pkgconfig(xcb-xinerama)
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+BuildRequires:  sfml2-devel
 
 %description
 Attract-Mode is a graphical frontend for command line emulators such as MAME,
@@ -59,7 +53,7 @@ in arcade cabinets.
 %setup -q -n attract-%{version}
 
 %build
-make %{?_smp_mflags} EXTRA_CFLAGS="%{optflags}" prefix=%{_prefix}
+%make_build EXTRA_CFLAGS="%{optflags}" prefix=%{_prefix}
 
 %install
 %make_install prefix=%{_prefix}
@@ -79,20 +73,13 @@ install -Dm644 util/linux/attract-mode.desktop     %{buildroot}%{_datadir}/appli
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
 %doc Readme.md
-%if ( 0%{?suse_version} == 1315 && 0%{?sle_version} == 120100 ) || ! 0%{?is_opensuse}
-# Fix for Leap 42.1 and SLE (TODO: Remove when 42.1 is out of maintenance)
-%dir %{_datadir}/appdata
-%doc License.txt
-%else
 %license License.txt
-%endif
 %{_bindir}/attract
 %{_datadir}/attract
-%dir /usr/share/icons/hicolor
-%dir /usr/share/icons/hicolor/512x512
-%dir /usr/share/icons/hicolor/512x512/apps
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/512x512
+%dir %{_datadir}/icons/hicolor/512x512/apps
 %{_datadir}/icons/hicolor/512x512/apps/attract-mode.png
 %{_datadir}/applications/attract-mode.desktop
 %{_datadir}/appdata/attract-mode.appdata.xml

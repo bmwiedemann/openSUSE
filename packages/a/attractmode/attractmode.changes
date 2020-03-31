@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:45:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.1. Too many changes since the 2.5.0 release.
+  Check https://github.com/mickelson/attract/releases.
+- Spec cleanup.
+
+-------------------------------------------------------------------
 Sat Nov 10 21:29:51 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
 
 - appdata-desktop.patch removed, fixed upstream.
