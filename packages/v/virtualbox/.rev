@@ -1948,4 +1948,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>787618</requestid>
   </revision>
+  <revision rev="195" vrev="4">
+    <srcmd5>84049739d20e472c9b7c4d52b035cbc8</srcmd5>
+    <version>6.1.4</version>
+    <time>1585668733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789605</requestid>
+  </revision>
 </revisionlist>

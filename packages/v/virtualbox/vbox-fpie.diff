@@ -1,8 +1,16 @@
-Index: VirtualBox-5.1.4/Config.kmk
+Index: VirtualBox-6.1.4/Config.kmk
 ===================================================================
---- VirtualBox-5.1.4.orig/Config.kmk
-+++ VirtualBox-5.1.4/Config.kmk
-@@ -4852,6 +4852,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
+--- VirtualBox-6.1.4.orig/Config.kmk
++++ VirtualBox-6.1.4/Config.kmk
+@@ -2687,7 +2687,6 @@ else
+  VBOX_GCC_VERSION = $(shell ($(1) -dumpfullversion 2>/dev/null || $(1) -dumpversion) | \
+     $(SED_EXT) 's|\([0-9]\)\.\{0,1\}\([0-9]\{0,1\}\)\.\{0,1\}\([0-9]\{0,1\}\).*|$$(int-add $$(int-mul 10000, \1), $$(int-mul 100, $$(firstword \2 0)), $$(firstword \3 0))|' )
+ endif
+-
+ # YASM macros
+ ifndef DONT_USE_YASM
+  include $(KBUILD_PATH)/tools/YASM.kmk
+@@ -5533,6 +5532,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
  # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
  # TEMPLATE_VBOXR3HARDENEDEXE_LIBS += cap
@@ -12,7 +20,7 @@ Index: VirtualBox-5.1.4/Config.kmk
  endif
  ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS)
-@@ -4871,8 +4874,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
+@@ -5554,8 +5556,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_LIBS.amd64     = $(NOT_SUCH_VARIABLE)
  else ifn1of ($(KBUILD_TARGET), os2 solaris)
   # We want to keep the RPATH on Solaris to be able to find libgcc_1/libstdc++ within $(VBOX_WITH_RUNPATH)

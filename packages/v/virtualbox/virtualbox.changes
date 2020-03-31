@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:20:48 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build errors for gcc-10 (boo#1167897). File "fixes_for_gcc10.patch" is
+  added.
+- Convert /usr/bin/VirtualBox to use "~/.config/VirtualBox" instead "~/.vbox".
+  This change was requested in boo#1167660.
+
+-------------------------------------------------------------------
+Fri Mar 27 09:32:21 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix missing include with Qt 5.15:
+  * fix-missing-includes-with-qt-5.15.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 01:51:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - With version 6.1.4 of VB, the bidirectional clipboard part of VBoxClient

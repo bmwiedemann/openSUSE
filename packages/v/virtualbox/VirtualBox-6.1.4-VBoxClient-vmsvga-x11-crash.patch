@@ -63,3 +63,4 @@ Index: VirtualBox-6.1.4/src/VBox/Additions/x11/VBoxClient/clipboard.cpp
  
  #ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
              int rc2 = vboxClipboardFUSEStop();
+
