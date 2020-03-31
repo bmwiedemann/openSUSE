@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20200310
+Version:        20200331
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -160,7 +160,9 @@ Provides:       hxtools:/usr/bin/vfontas
 %description -n vfontas
 vfontas (originally "VGA font file assembler") can transform raster
 font files in various ways - scaling, moving, row-filling, convert
-between formats (bdf/clt/pbm/psf/raw) and vector export to sfd/ttf.
+between formats (bdf/clt/pbm/psf/raw DOS font) and vector export to
+sfd (and then TrueType/OpenType/WOFF/etc. via FontForge). The vector
+export is able to smoothen the jagged edges of bitmap fonts.
 
 %prep
 %setup -q
