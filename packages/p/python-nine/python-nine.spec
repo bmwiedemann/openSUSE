@@ -1,7 +1,7 @@
 #
 # spec file for package python-nine
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-nine
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python 2 / 3 compatibility, like six, but favouring Python 3
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/nine
 Source:         https://files.pythonhosted.org/packages/source/n/nine/nine-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,10 +46,8 @@ idioms work in python2.
 %install
 %python_install
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE.rst
