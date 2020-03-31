@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nvmetcli
-Version:        0.6
+Version:        0.7
 Release:        1%{?dist}
 Summary:        Command line interface for the kernel NVMe nvmet
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          System/Management
 Url:            http://git.infradead.org/users/hch/nvmetcli.git
 Source:         nvmetcli-v%{version}.tar.gz
 Patch1:         %{name}-update-python-to-python3.patch
-Patch2:         %{name}-make-dict-access-python-version-independant.patch
+Patch2:         0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-configshell-fb

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 27 07:48:31 UTC 2020 - hare@suse.de
+
+- Update to version v0.7:
+  * bump version to v0.7
+  * nvmetcli: ANA configuration support
+  * nvmetcli: simplify the enabled logic
+  * nvmetcli: pep8 fixes
+  * nvmetcli: support inline_data_size port parameter
+  * Revert "nvmetcli: expose nvmet port status and state"
+  * Support python3 dictionary access.
+  * nvmetcli: expose nvmet port status and state
+- Remove patch merged with upstream
+  * nvmetcli-make-dict-access-python-version-independant.patch
+- 'clear' command doesn't handle ANA groups correctly (bsc#1167644)
+  adding patch
+  - 0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
+
+-------------------------------------------------------------------
 Mon Apr 16 19:08:25 UTC 2018 - lduncan@suse.com
 
 - Stop using singlespec, since we only need a

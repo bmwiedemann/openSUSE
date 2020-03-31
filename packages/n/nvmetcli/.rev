@@ -100,4 +100,12 @@
     <comment>Fix Typo in changelog. (forwarded request 598056 from morbidrsa)</comment>
     <requestid>598058</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d103aedb79e9d918238c9e75a053787c</srcmd5>
+    <version>0.7</version>
+    <time>1585667754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790010</requestid>
+  </revision>
 </revisionlist>
