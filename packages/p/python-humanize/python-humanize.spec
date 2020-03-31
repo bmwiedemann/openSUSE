@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global modname humanize
 Name:           python-humanize
-Version:        0.5.1
+Version:        2.2.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/jmoiron/humanize
-Source:         https://github.com/jmoiron/humanize/archive/%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/h/humanize/humanize-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -55,7 +58,7 @@ readable size or throughput.
 
 %files %{python_files}
 %license LICENCE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 %{python_sitelib}/humanize/locale/*
 
