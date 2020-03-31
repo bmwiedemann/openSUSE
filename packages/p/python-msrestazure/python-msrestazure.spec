@@ -1,7 +1,7 @@
 #
 # spec file for package python-msrestazure
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msrestazure
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        AutoRest swagger generator - Azure-specific module
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://pypi.python.org/pypi/msrestazure
+URL:            https://pypi.python.org/pypi/msrestazure
 Source:         https://files.pythonhosted.org/packages/source/m/msrestazure/msrestazure-%{version}.tar.gz
 Source1:        LICENSE.md
 BuildRequires:  %{python_module setuptools}
