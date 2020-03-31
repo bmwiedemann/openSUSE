@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Wed Mar 25 14:54:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 0.8.2
+  * config: add Shift+Insert as selpaste() again
+  * Let the user specify CPPFLAGS
+  * Set the path of pkg-config in a variable instead of hardcoding it
+  * Makefile: fix dependencies on config.h
+  * output child WEXITSTATUS/WTERMSIG on abnormal termination
+  * fix memory leak in xloadcols()
+  * st: small typofix in comment
+  * small code-style fix
+  * Remove the ISO 14755 feature
+  * Revert "Simplify cursor color handling"
+  * Revert "Make cursor follow text color"
+  * Revert "Fix crash when cursor color is truecolor"
+  * Fix crash when cursor color is truecolor
+  * Make cursor follow text color
+  * Simplify cursor color handling
+  * Fix crash on resize
+  * config.mk: remove extra newline before EOF
+  * code-style for pledge(2)
+  * Pledge on OpenBSD
+  * error message style and use strerror in a few places
+  * st -v: remove years and copyright text
+  * set sel.alt in selstart instead of selextend
+- drop st-optflags.patch
+- do not install development files LEGACY and README
+- drop compat code with opensuse/sle <= 11
+- do not install the terminfo, these are provided by the terminfo package (from ncurses)
+
+-------------------------------------------------------------------
+Fri Dec 21 14:50:52 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.1:
+  + Fix regression by selecting clipboard text.
+  + Don't modify argv, use a counter.
+  + Selextend: clarify: !sel.mode == SEL_IDLE.
+  + Clipcopy: no need to check for free(NULL), set to NULL after
+    free.
+  + Whitespace fixes.
+  + Fix title initialization.
+  + Fix regression from 69e32a6 when setting title.
+  + LICENCE update year(s) and major contributors.
+  + Makefile: add all files to make dist.
+
+-------------------------------------------------------------------
+Sun Mar 18 21:15:56 UTC 2018 - avindra@opensuse.org
+
+- Update to version 0.8
+  * Change default keybindings
+  * Add support for iso14755
+  * Add support for enabling/disabling utf
+  * use math.h for ceilf
+  * xhints: no need to initialize sizeh
+  * Reduce visibility wherever possible
+  * Limit usage of extern to config.h globals
+  * Split mode bits between Term and TermWindow
+  * Have selected() check whether selection exists
+  * Rely on ttyresize to set tty size
+  * Remove x.c dependency on term
+  * Remove Time argument from xsetsel
+  * Make win variable internal to x.c
+  * Factor out equivalent code from ttyread/ttysend
+  * Pass new dimensions into ttyresize
+  * Call xsetenv() in main process instead of child
+  * Fix color with FAINT attribute
+  * Apply ATTR_REVERSE after ATTR_FAINT
+  * Handle XftFontOpenPattern failure.
+  * base64dec: skip non-printable characters like \r\n
+  * Add dim/smxx/rmxx to terminfo, remove duplicate kich1
+  * Add color change terminfo capabilities
+  * Simplify how we keep ATTRs under cursor
+  * keep some glyph modes for the cursor
+  * Support xterm Ms feature to set clipboard
+  * Split X-specific code into x.c
+  * Fixed 'missing glyph doesn't use fontconfig config substitutions' bug
+  * make the various combinations of arrow keys and shift/control/meta work
+  * tic -s -> tic -sx (Treat unknown capabilities as user-defined.)
+  * Add tmux capabilities to st.info
+  * Make strdump(), csidump(), print to stderr
+  * Do not use color when font attributes are supported
+  * Add missing device path to '-l' example
+  * Add parsing of DCS q sequences
+  * Delete ncv capability from terminfo
+  * st.info: do not prevent st from displaying attributes
+- cleanup with spec-cleaner
+- drop st-verbose_makefile.patch
+  * fixed upstream in fabd4602b3223666165c76c397644a081b9a97e5
+- rebase st-optflags.patch
+- use https urls
+- renumber patch
+
+-------------------------------------------------------------------
+Thu Feb  2 12:23:46 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.7
+- Refreshed st-optflags.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Jul 25 06:44:18 CET 2013 - pascal.bleser@opensuse.org
+
+- initial version (0.4.1)
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=st
+GenericName=st
+Comment=Simple X terminal
+Exec=st
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Application;System;TerminalEmulator;
