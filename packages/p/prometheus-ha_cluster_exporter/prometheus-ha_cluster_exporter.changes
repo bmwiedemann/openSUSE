@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:46:16 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0rc1
+
+  ## Added
+  - Resource metrics now have an `agent` label (#143)
+
+  ## Changed
+  - Go runtime debug metrics are now opt-in (#142)
+  - Overhauled Travis CI config to implement new OBS continuous delivery (#144)
+  - Updated some documentation and boilerplate (3de9c59)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:45:23 2020 UTC - shap-staff@suse.de
 
 - Release 1.0.0beta8
