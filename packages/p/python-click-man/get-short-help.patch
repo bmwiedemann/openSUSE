@@ -1,10 +1,10 @@
-Index: click-man-0.3.0/click_man/core.py
+Index: click-man-0.4.1/click_man/core.py
 ===================================================================
---- click-man-0.3.0.orig/click_man/core.py
-+++ click-man-0.3.0/click_man/core.py
-@@ -17,6 +17,14 @@ from .man import ManPage
+--- click-man-0.4.1.orig/click_man/core.py
++++ click-man-0.4.1/click_man/core.py
+@@ -16,6 +16,14 @@ import click
  
- CLICK_VERSION = tuple(int(x) for x in click.__version__.split('.'))
+ from .man import ManPage
  
 +
 +def get_short_help_str(command, limit=45):
@@ -17,7 +17,7 @@ Index: click-man-0.3.0/click_man/core.py
  def generate_man_page(ctx, version=None):
      """
      Generate documentation for the given command.
-@@ -30,14 +38,14 @@ def generate_man_page(ctx, version=None)
+@@ -29,14 +37,14 @@ def generate_man_page(ctx, version=None)
      # Create man page with the details from the given context
      man_page = ManPage(ctx.command_path)
      man_page.version = version
@@ -25,7 +25,7 @@ Index: click-man-0.3.0/click_man/core.py
 +    man_page.short_help = get_short_help_str(ctx.command)
      man_page.description = ctx.command.help
      man_page.synopsis = ' '.join(ctx.command.collect_usage_pieces(ctx))
-     man_page.options = [x.get_help_record(None) for x in ctx.command.params if isinstance(x, click.Option)]
+     man_page.options = [x.get_help_record(ctx) for x in ctx.command.params if isinstance(x, click.Option)]
      commands = getattr(ctx.command, 'commands', None)
      if commands:
          man_page.commands = [

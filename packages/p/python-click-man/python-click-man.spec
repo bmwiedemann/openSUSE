@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-man
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-man
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        Automate generation of man pages for python click applications
 License:        MIT
 URL:            https://github.com/click-contrib/click-man
-Source:         https://github.com/click-contrib/click-man/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/click-man/click-man-%{version}.tar.gz
 Patch1:         get-short-help.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
