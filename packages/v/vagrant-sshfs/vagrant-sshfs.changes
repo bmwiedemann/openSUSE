@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:49:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix vagrant-ssh-testsuite for aarch64 by using 
+  opensuse/Tumbleweed.$(uname -m) instead of fedora box which is
+  for x86_64 only
+
+-------------------------------------------------------------------
 Mon Mar 16 12:01:33 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.3.4

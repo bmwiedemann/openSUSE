@@ -59,7 +59,6 @@ Summary:        Testsuite for %{name}
 Group:          Development/Languages/Ruby
 Requires:       vagrant-libvirt
 Requires:       vagrant-sshfs = %{version}-%{release}
-BuildArch:      noarch
 
 %description    -n %{name}-testsuite
 This package contains the testsuite for the SSHFS provider for Vagrant. You most
@@ -84,6 +83,7 @@ mv %{vagrant_plugin_name}.gemspec %{mod_full_name}.gemspec
 %install
 %vagrant_plugin_install -n %{mod_full_name}.gem
 install -p -m 0755 %{SOURCE3} %{buildroot}/%{vagrant_plugin_instdir}/test/misc/
+sed -i "s#box  = '.*/.*'#box  = 'opensuse/Tumbleweed.$(uname -m)'#" %{buildroot}/%{vagrant_plugin_instdir}/test/misc/Vagrantfile
 
 %files
 %{vagrant_plugin_instdir}
