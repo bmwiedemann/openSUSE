@@ -60,4 +60,16 @@
     <comment></comment>
     <requestid>636598</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c30fd4389c269fb0a1851beac0535466</srcmd5>
+    <version>5.1.0</version>
+    <time>1585668711</time>
+    <user>dimstar_suse</user>
+    <comment>- Add musicbrainz-cmake-noglob.patch: do not use wildcards for
+  dependencies. Fixes build when using ninja.
+
+
+Fixes failure seen in Staging:O (forwarded request 788979 from dimstar)</comment>
+    <requestid>788985</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libmusicbrainz5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://musicbrainz.org/doc/libmusicbrainz
 Source0:        https://github.com/metabrainz/libmusicbrainz/releases/download/release-%{version}/%{_name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM musicbrainz-cmake-noglob.patch dimstar@opensuse.org -- do not use wildcards for dependencies
+Patch0:         musicbrainz-cmake-noglob.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  neon-devel
@@ -58,7 +60,7 @@ server is designed to enable audio CD, MP3 and Vorbis players to
 download metadata about the music they are playing.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64"
