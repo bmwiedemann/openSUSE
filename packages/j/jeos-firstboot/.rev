@@ -357,4 +357,16 @@
   * Add JEOS_EULA_ALREADY_AGREED option</comment>
     <requestid>782986</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>75c50027dc33345190fc0eedbe4c6bf7</srcmd5>
+    <version>0.0+git20200331.db3bc7c</version>
+    <time>1585668780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200331.db3bc7c:
+  * Don't set JEOS_HIDE_SUSECONNECT by default
+
+- Update to version 0.0+git20200326.f1f96e3:
+  * Add JEOS_HIDE_SUSECONNECT option</comment>
+    <requestid>790007</requestid>
+  </revision>
 </revisionlist>

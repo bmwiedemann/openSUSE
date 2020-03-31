@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:50:47 UTC 2020 - jeos-internal@suse.de
+
+- Update to version 0.0+git20200331.db3bc7c:
+  * Don't set JEOS_HIDE_SUSECONNECT by default
+
+-------------------------------------------------------------------
+Thu Mar 26 08:50:14 UTC 2020 - jeos-internal@suse.de
+
+- Update to version 0.0+git20200326.f1f96e3:
+  * Add JEOS_HIDE_SUSECONNECT option
+
+-------------------------------------------------------------------
 Mon Mar 09 14:06:56 UTC 2020 - jeos-internal@suse.de
 
 - Update to version 0.0+git20200309.b23a6ef:
