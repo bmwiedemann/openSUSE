@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:09:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * nanomsg-fix-rpath-issue.patch
+
+-------------------------------------------------------------------
+Sun Mar 29 11:19:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.5
+  * This release is a minor bug fix release, and includes some
+    improvements to the CMake logic that should make incorporating
+    nanomsg into larger projects easier.
+  * Removed patch:
+    - strict.diff (fixed by upstream) GH#990
+
+-------------------------------------------------------------------
 Fri Jun  8 13:06:39 UTC 2018 - mardnh@gmx.de
 
-- Update to versoin 1.1.4
+- Update to version 1.1.4
   * This release is primarily a bug-fix release for Windows
     platforms, but it also adds support for building on Android.
   * The main change in this release is a fix for the IPC transport

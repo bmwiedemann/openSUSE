@@ -1,7 +1,7 @@
 #
 # spec file for package nanomsg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 5
 Name:           nanomsg
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Socket library providing several common communication patterns
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            http://nanomsg.org/
 Source:         https://github.com/nanomsg/nanomsg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         strict.diff
+Patch0:         nanomsg-fix-rpath-issue.patch
 BuildRequires:  cmake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -52,7 +52,7 @@ Development and header files for nanomsg.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch0 -p1
 
 %build
 %cmake
@@ -74,7 +74,8 @@ make %{?_smp_mflags}
 %{_libdir}/libnanomsg.so
 %{_bindir}/nanocat
 %{_libdir}/pkgconfig/nanomsg.pc
-%dir %{_libdir}/cmake/nanomsg
-%{_libdir}/cmake/nanomsg/nanomsg-config*.cmake
+%dir %{_libdir}/cmake/nanomsg-%{version}
+%{_libdir}/cmake/nanomsg-%{version}/nanomsg-config*.cmake
+%{_libdir}/cmake/nanomsg-%{version}/nanomsg-target*.cmake
 
 %changelog
