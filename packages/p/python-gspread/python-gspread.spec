@@ -1,7 +1,7 @@
 #
 # spec file for package python-gspread
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/burnash/gspread
 Source:         https://github.com/burnash/gspread/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module betamax}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module requests >= 2.2.1}
 BuildRequires:  %{python_module xml}

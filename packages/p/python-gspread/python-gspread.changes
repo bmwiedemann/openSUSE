@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:34:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- remove nose dep since we are not running tests 
+
+-------------------------------------------------------------------
 Fri Mar 15 12:41:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1.0:
