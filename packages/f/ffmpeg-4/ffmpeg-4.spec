@@ -47,7 +47,7 @@
 %bcond_with    amrwb
 %bcond_without cuda_sdk
 %else
-%bcond_with cuda_sdk
+%bcond_with    cuda_sdk
 %endif
 %bcond_with    fdk_aac_dlopen
 %bcond_with    librtmp
@@ -55,13 +55,6 @@
 %bcond_with    x264
 %bcond_with    x265
 %bcond_with    xvid
-
-# Full build or just support package on older codestream
-%if 0%{?suse_version} > 1500
-%bcond_without full_build
-%else
-%bcond_with full_build
-%endif
 
 %if 0%{?suse_version} > 1500
 %bcond_without libaom
@@ -582,6 +575,9 @@ break compatibility without any notice.
 %ifarch %ix86 %arm
 %define _lto_cflags %nil
 %endif
+%if "%_lto_cflags" != ""
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
+%endif
 CFLAGS="%optflags" \
 %if %suse_version > 1500
 %ifarch %ix86
@@ -735,14 +731,10 @@ done
 %install
 b="%buildroot"
 %make_install install-man
-%if %{with full_build}
 rm -Rf "$b/%_datadir/ffmpeg/examples"
 for i in %extratools; do
 	cp -a "tools/$i" "$b/%_bindir/"
 done
-%else
-rm -Rf "$b/%_bindir" "$b/%_mandir/man1" "$b/%_datadir/ffmpeg"
-%endif
 
 # Install private headers required by libav-tools
 for i in libavformat/options_table.h libavformat/os_support.h \
@@ -773,13 +765,11 @@ done
 %post   -n libswscale5 -p /sbin/ldconfig
 %postun -n libswscale5 -p /sbin/ldconfig
 
-%if %{with full_build}
 %files
 %doc Changelog CREDITS README.md
 %_bindir/*
 %_mandir/man1/ff*.1*
 %_datadir/ffmpeg/
-%endif
 
 %files -n libavcodec58
 %license COPYING.GPLv2 LICENSE.md

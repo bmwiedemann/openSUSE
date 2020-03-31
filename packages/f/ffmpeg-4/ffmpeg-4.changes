@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:14:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Always build the binary ffmpeg-4 even on Leap releases boo#1167628:
+  * The conflicts in place should allow users to decide if they
+    want to use ffmpeg from ffmpeg package or ffmpeg-4 from this
+    package
+
+-------------------------------------------------------------------
+Mon Mar 16 13:30:41 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Add -ffat-lto-objects to _lto_cflags to fix configure checks
+
+-------------------------------------------------------------------
 Tue Mar  3 13:07:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable libmfx support for SLE 15 SP2 and Leap 15.2 via
