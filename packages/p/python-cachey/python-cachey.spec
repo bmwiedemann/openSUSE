@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachey
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cachey
-Version:        0.1.1
+Version:        0.2.1
 Release:        0
 Summary:        A Python cache mindful of computation/storage costs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/mrocklin/cachey/
 Source:         https://files.pythonhosted.org/packages/source/c/cachey/cachey-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_cache_clear.patch - fix unit test error
-Patch0:         fix_cache_clear.patch
 BuildRequires:  %{python_module HeapDict}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +53,6 @@ roughly linear amplification of repeated results.
 
 %prep
 %setup -q -n cachey-%{version}
-%patch0 -p1
 
 %build
 %python_build
