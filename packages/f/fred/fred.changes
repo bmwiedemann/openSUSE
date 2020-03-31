@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Mar 29 19:13:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.2.0:
+  * Ported to Qt5. Thanks to Wincent Balin for doing all the work and providing me
+    the patches.
+ -- Gillen Daniel <Gillen.Dan@pinguin.lu>  Mon, 16 Mar 2020 13:00:00 +0100
+
+-------------------------------------------------------------------
+Mon Jan  1 17:39:48 UTC 2018 - jengelh@inai.de
+
+- Clarify descriptions.
+
+-------------------------------------------------------------------
+Wed Dec 27 20:05:33 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package for version 0.1.1
