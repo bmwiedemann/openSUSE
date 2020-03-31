@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:46:58 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1585643641.b911e2f1:
+  * Fix: ui_resource: refresh <Tab> should complete resource first(bsc#1167220)
+
+-------------------------------------------------------------------
+Mon Mar 30 08:25:20 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1585556306.3424694f:
+  * Dev: behave: change for deprecated alias
+  * Dev: testcases: change for deprecated alias
+  * Low: ui_context: give warning if using alias command
+  * Fix: doc: Update man page about completion example of crm resource(bsc#1166644)
+
+-------------------------------------------------------------------
 Fri Mar 27 02:39:28 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1585276059.882beb65:
