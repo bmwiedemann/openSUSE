@@ -50,4 +50,14 @@
     <comment>- Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>745367</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9af7530a0546e1f71b2cdd2870271cf2</srcmd5>
+    <version>1.3.0</version>
+    <time>1585667703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0:
+  * Deprecated support for Python 3.4.
+  * Officially add support for Python 3.8.</comment>
+    <requestid>789927</requestid>
+  </revision>
 </revisionlist>
