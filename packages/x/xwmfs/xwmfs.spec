@@ -1,7 +1,7 @@
 #
 # spec file for package xwmfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,9 @@ BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 Requires:       fuse
-Version:        0.83
+Version:        0.84
 Release:        0
-Patch0:         cxx-one-definition.patch
-Url:            https://github.com/gerstner-hub/xwmfs
+URL:            https://github.com/gerstner-hub/xwmfs
 Summary:        A file system for accessing X server and window manager features
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
@@ -53,7 +52,6 @@ Some of its features are:
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
