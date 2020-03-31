@@ -22,7 +22,7 @@
 %define sname libQuotient
 
 Name:           libqmatrixclient
-Version:        0.5.3
+Version:        0.5.3.1
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

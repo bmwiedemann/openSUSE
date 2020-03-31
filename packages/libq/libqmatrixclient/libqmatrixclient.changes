@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:29:21 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.5.3.1
+  One more "sustaining" release that fixes a long-standing problem
+  with job objects lifetime lasting beyond their connection
+  lifetime, leading to crashes on connection removal (#397/#398).
+  This problem became very apparent with introduction of SSO in 
+  Quaternion, where connection objects are removed as soon as the 
+  login dialog is cancelled; this release is aimed solely at fixing
+  that.
+
+-------------------------------------------------------------------
 Mon Mar 30 05:44:43 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.5.3
