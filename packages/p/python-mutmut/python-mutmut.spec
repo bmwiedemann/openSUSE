@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutmut
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,22 +20,23 @@
 # tri.declarative is Python 3 only
 %define skip_python2 1
 Name:           python-mutmut
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
 URL:            https://github.com/boxed/mutmut
 Source:         https://github.com/boxed/mutmut/archive/%{version}.tar.gz
 Patch1:         pr_134.patch
-Patch2:         no-direct-python-call.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-glob2
+Requires:       python-hammett
 Requires:       python-junit-xml >= 1.8
 Requires:       python-parso
 Requires:       python-pony
+Requires:       python-setuptools
 Requires:       python-tri.declarative >= 3.0.0
 Recommends:     python-coverage
 Recommends:     python-pytest
@@ -45,6 +46,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module glob2}
+BuildRequires:  %{python_module hammett}
 BuildRequires:  %{python_module junit-xml >= 1.8}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module parso}
@@ -64,11 +66,9 @@ Python mutation testing.
 %prep
 %setup -q -n mutmut-%{version}
 %autopatch -p1
-
 sed -i 's/==/>=/' *requirements.txt
 # Remove maximum pins any anything that follows
 sed -Ei 's/,?<=?.*$//' test_requirements.txt
-
 sed -i '1{/^#!/d}' mutmut/__main__.py
 
 %build
@@ -79,7 +79,7 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
