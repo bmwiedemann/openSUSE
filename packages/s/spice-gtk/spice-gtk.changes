@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 13:39:11 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Remove unneeded Recommends for spice-gtk-lang from spec file
+
+-------------------------------------------------------------------
 Tue Mar 17 22:29:02 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.38:

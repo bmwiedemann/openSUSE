@@ -72,7 +72,6 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.96
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 Requires(pre):  permissions
-Recommends:     %{name}-lang
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 

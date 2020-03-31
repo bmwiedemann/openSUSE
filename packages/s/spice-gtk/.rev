@@ -467,4 +467,12 @@ a new setuid binary.
 </comment>
     <requestid>786276</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>7bfd9a25198ee9338e681385f174ee7a</srcmd5>
+    <version>0.38</version>
+    <time>1585668692</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>788587</requestid>
+  </revision>
 </revisionlist>
