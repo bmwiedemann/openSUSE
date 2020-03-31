@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 28 08:02:57 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.5 development release
+  - Builtin libraries use the new UCRTBase C runtime.
+  - Compatibility mode used when reporting Windows version.
+  - Better support for debug information in PE files.
+  - Support for linguistic case mappings.
+  - More attributes supported in WebServices.
+  - Various bug fixes.
+- update staging to 5.5 release
+
+-------------------------------------------------------------------
 Sat Mar 14 08:21:37 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.4 development release
