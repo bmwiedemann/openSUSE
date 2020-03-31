@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:11:48 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.5:
+  * liblzma:
+    - Fixed several C99/C11 conformance bugs. Now the code is clean
+      under gcc/clang -fsanitize=undefined. Some of these changes
+      might have a negative effect on performance with old GCC
+      versions or compilers other than GCC and Clang. The configure
+      option --enable-unsafe-type-punning can be used to (mostly)
+      restore the old behavior but it shouldn't normally be used.
+    - Improved API documentation of lzma_properties_decode().
+    - Added a very minor encoder speed optimization.
+  * xz:
+    - Fixed a crash in "xz -dcfv not_an_xz_file". All four options
+      were required to trigger it. The crash occurred in the
+      progress indicator code when xz was in passthru mode where
+      xz works like "cat".
+    - Fixed an integer overflow with 32-bit off_t. It could happen
+      when decompressing a file that has a long run of zero bytes
+      which xz would try to write as a sparse file. Since the build
+      system enables large file support by default, off_t is
+      normally 64-bit even on 32-bit systems.
+    - Fixes for --flush-timeout:
+        * Fix semi-busy-waiting.
+        * Avoid unneeded flushes when no new input has arrived
+          since the previous flush was completed.
+    - Added a special case for 32-bit xz: If --memlimit-compress is
+      used to specify a limit that exceeds 4020 MiB, the limit will
+      be set to 4020 MiB. The values "0" and "max" aren't affected
+      by this and neither is decompression. This hack can be
+      helpful when a 32-bit xz has access to 4 GiB address space
+      but the specified memlimit exceeds 4 GiB. This can happen
+      e.g. with some scripts.
+    - Capsicum sandbox is now enabled by default where available
+      (FreeBSD >= 10). The sandbox debug messages (xz -vv) were
+      removed since they seemed to be more annoying than useful.
+
+-------------------------------------------------------------------
 Thu Sep 19 07:49:19 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - Do not recommend lang package. The lang package already has a supplements.

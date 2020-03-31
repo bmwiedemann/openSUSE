@@ -1,7 +1,7 @@
 #
 # spec file for package xz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.2.4
+Version:        5.2.5
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
-Url:            http://tukaani.org/xz/
+URL:            http://tukaani.org/xz/
 Source0:        http://tukaani.org/xz/%{name}-%{version}.tar.gz
 Source1:        http://tukaani.org/xz/%{name}-%{version}.tar.gz.sig
 Source2:        baselibs.conf
@@ -124,6 +124,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %if 0%{?lang_package:1}
 %files lang -f %{name}.lang
 %defattr(-, root, root)
+%{_mandir}/de/man1/*.1%{ext_man}
 %endif
 
 %files
