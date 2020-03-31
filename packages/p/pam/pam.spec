@@ -82,6 +82,21 @@ PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
 
+%package extra
+Summary:        PAM module to authenticate against a separate database
+Group:          System/Libraries%description
+BuildRequires:  libdb-4_8-devel
+BuildRequires:  pam-devel
+
+%description extra
+PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.
+
+This package contains useful extra modules eg pam_userdb which is
+used to verify a username/password pair against values stored in
+a Berkeley DB database.
+
 %package doc
 Summary:        Documentation for Pluggable Authentication Modules
 Group:          Documentation/HTML
@@ -224,11 +239,11 @@ for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/comm
 done
 
 %files -f Linux-PAM.lang
+%exclude %{_defaultdocdir}/pam
 %dir %{_sysconfdir}/pam.d
 %dir %{_distconfdir}/pam.d
 %dir %{_sysconfdir}/security
 %dir %{_sysconfdir}/security/limits.d
-%dir %{_defaultdocdir}/pam
 %if %{defined config_noreplace}
 %config(noreplace) %{_sysconfdir}/pam.d/other
 %config(noreplace) %{_sysconfdir}/pam.d/common-*
@@ -255,7 +270,54 @@ done
 %{_mandir}/man5/environment.5%{?ext_man}
 %{_mandir}/man5/*.conf.5%{?ext_man}
 %{_mandir}/man5/pam.d.5%{?ext_man}
-%{_mandir}/man8/*
+%{_mandir}/man8/mkhomedir_helper.8.gz
+%{_mandir}/man8/pam.8.gz
+%{_mandir}/man8/PAM.8.gz
+%{_mandir}/man8/pam_access.8.gz
+%{_mandir}/man8/pam_cracklib.8.gz
+%{_mandir}/man8/pam_debug.8.gz
+%{_mandir}/man8/pam_deny.8.gz
+%{_mandir}/man8/pam_echo.8.gz
+%{_mandir}/man8/pam_env.8.gz
+%{_mandir}/man8/pam_exec.8.gz
+%{_mandir}/man8/pam_faildelay.8.gz
+%{_mandir}/man8/pam_filter.8.gz
+%{_mandir}/man8/pam_ftp.8.gz
+%{_mandir}/man8/pam_group.8.gz
+%{_mandir}/man8/pam_issue.8.gz
+%{_mandir}/man8/pam_keyinit.8.gz
+%{_mandir}/man8/pam_lastlog.8.gz
+%{_mandir}/man8/pam_limits.8.gz
+%{_mandir}/man8/pam_listfile.8.gz
+%{_mandir}/man8/pam_localuser.8.gz
+%{_mandir}/man8/pam_loginuid.8.gz
+%{_mandir}/man8/pam_mail.8.gz
+%{_mandir}/man8/pam_mkhomedir.8.gz
+%{_mandir}/man8/pam_motd.8.gz
+%{_mandir}/man8/pam_namespace.8.gz
+%{_mandir}/man8/pam_nologin.8.gz
+%{_mandir}/man8/pam_permit.8.gz
+%{_mandir}/man8/pam_pwhistory.8.gz
+%{_mandir}/man8/pam_rhosts.8.gz
+%{_mandir}/man8/pam_rootok.8.gz
+%{_mandir}/man8/pam_securetty.8.gz
+%{_mandir}/man8/pam_selinux.8.gz
+%{_mandir}/man8/pam_sepermit.8.gz
+%{_mandir}/man8/pam_shells.8.gz
+%{_mandir}/man8/pam_succeed_if.8.gz
+%{_mandir}/man8/pam_tally2.8.gz
+%{_mandir}/man8/pam_time.8.gz
+%{_mandir}/man8/pam_timestamp.8.gz
+%{_mandir}/man8/pam_timestamp_check.8.gz
+%{_mandir}/man8/pam_tty_audit.8.gz
+%{_mandir}/man8/pam_umask.8.gz
+%{_mandir}/man8/pam_unix.8.gz
+%{_mandir}/man8/pam_warn.8.gz
+%{_mandir}/man8/pam_wheel.8.gz
+%{_mandir}/man8/pam_xauth.8.gz
+%{_mandir}/man8/unix_chkpwd.8.gz
+%{_mandir}/man8/unix2_chkpwd.8.gz
+%{_mandir}/man8/unix_update.8.gz
 /%{_lib}/libpam.so.0
 /%{_lib}/libpam.so.%{libpam_so_version}
 /%{_lib}/libpamc.so.0
@@ -319,6 +381,11 @@ done
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix_chkpwd
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix2_chkpwd
 %attr(0700,root,root) /sbin/unix_update
+
+%files extra
+%defattr(-,root,root,755)
+%attr(755,root,root) /%{_lib}/security/pam_userdb.so
+%attr(644,root,root) %doc %{_mandir}/man8/pam_userdb.8.gz
 
 %files doc
 %defattr(644,root,root,755)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:09:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Listed all manual pages seperately as pam_userdb.8 has been moved
+  to pam-extra.
+  Also %exclude %{_defaultdocdir}/pam as the docs are in a separate
+  package.
+  [pam.spec]
+
+-------------------------------------------------------------------
+Mon Mar 16 13:26:27 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- pam_userdb moved to a new package pam-extra as pam-modules
+  is obsolete and not part of SLE.
+  [bsc#1166510, pam.spec]
+
+-------------------------------------------------------------------
 Thu Mar 12 16:01:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Removed pam_userdb from this package and moved to pam-modules.
