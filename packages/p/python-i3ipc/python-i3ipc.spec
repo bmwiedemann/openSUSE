@@ -1,7 +1,7 @@
 #
 # spec file for package python-i3ipc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%define skip_python2 1
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-i3ipc
 # Before upgrading, verify compatibility with bumblebee-status module title
 Version:        1.7.1
@@ -28,14 +30,13 @@ Source0:        https://github.com/altdesktop/i3ipc-python/archive/v%{version}.t
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+# for tests we need i3 at build time
+BuildRequires:  %{python_module python-xlib}
 BuildRequires:  i3
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
+Requires:       %{python_module python-xlib}
 BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
