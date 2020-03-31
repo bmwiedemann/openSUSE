@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg62-turbo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major   62
 %define minor   3
 %define micro   0
-%define srcver  2.0.3
+%define srcver  2.0.4
 %define libver  %{major}.%{minor}.%{micro}
 Name:           libjpeg62-turbo
 Version:        %{srcver}

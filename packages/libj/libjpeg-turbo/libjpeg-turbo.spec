@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg-turbo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 
-%define srcver   2.0.3
+%define srcver   2.0.4
 %define major    8
 %define minor    2
 %define micro    2
@@ -39,8 +39,6 @@ Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.t
 Source1:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
 Patch2:         ctest-depends.patch
-# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/388
-Patch3:         libjpeg-turbo-issue-388.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -106,7 +104,6 @@ files using the libjpeg library.
 %setup -q
 %patch1
 %patch2 -p1
-%patch3 -p1
 
 %build
 MYLDFLAGS="-Wl,-z,relro,-z,now"
@@ -138,10 +135,18 @@ make %{?_smp_mflags}
 exit 0
 %endif
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-%ctest
+%if 0%{?fedora_version}
+  ctest --output-on-failure --force-new-ctest-process
+%else
+  %ctest
+%endif
 
 %install
-%cmake_install
+%if 0%{?fedora_version}
+  make DESTDIR=%{buildroot} install/fast
+%else
+  %cmake_install
+%endif
 # Remove docs, we'll select docs manually
 rm -rf %{buildroot}%{_datadir}/doc/
 
