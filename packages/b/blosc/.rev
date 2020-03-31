@@ -163,4 +163,14 @@ I have fixed the issues from the previous submit requests.</comment>
   * BloscLZ codec updated to 2.0.0.</comment>
     <requestid>770623</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f477d1434fa6976cb13e0fb6b30722f</srcmd5>
+    <version>1.18.1</version>
+    <time>1585667824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.1:
+  * Fixed the copy of the leftovers of a chunk when its size is not
+    a multiple of the typesize.</comment>
+    <requestid>790061</requestid>
+  </revision>
 </revisionlist>
