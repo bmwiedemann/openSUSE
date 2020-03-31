@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-help-colors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-help-colors
-Version:        0.6
+Version:        0.8
 Release:        0
 Summary:        Colorization of help messages in Click
 License:        MIT
@@ -32,6 +32,7 @@ Requires:       python-click >= 7.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -47,6 +48,9 @@ Colorization of help messages in Click
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
