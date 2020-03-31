@@ -1,7 +1,7 @@
 #
 # spec file for package extreme-tuxracer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define oname   etr
 Name:           extreme-tuxracer
-Version:        0.7.5
+Version:        0.8.0
 Release:        0
 Summary:        Racing game featuring Tux the Linux Penguin
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Race
-Url:            http://sourceforge.net/projects/extremetuxracer/
-Source:         http://downloads.sourceforge.net/extremetuxracer/%{oname}-%{version}.tar.xz
+URL:            https://sourceforge.net/projects/extremetuxracer/
+Source:         https://downloads.sourceforge.net/extremetuxracer/%{oname}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
 BuildRequires:  sfml2-devel
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
@@ -36,10 +37,6 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)
 Requires:       %{name}-data = %{version}
-%if 0%{?suse_version} < 1330
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-%endif
 
 %description
 Extreme Tux Racer is a racing game featuring Tux
@@ -59,7 +56,7 @@ This package contains the data files for %{name}.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -67,14 +64,6 @@ make %{?_smp_mflags}
 
 # Already included by the doc macro
 rm -fr %{buildroot}%{_datadir}/doc
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %doc AUTHORS NEWS doc/code doc/courses_events doc/guide doc/score_algorithm

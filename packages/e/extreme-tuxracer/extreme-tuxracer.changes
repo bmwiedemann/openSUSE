@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:40:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update 0.8.0
+  * small improvements & bug fixes
+  * Extreme Tux Racer now compiles with clang++
+  * Minimum SFML version is now 2.4
+  * Autotools based build method can use opengl32 & glu32
+    instead of libGL & libGLU
+
+-------------------------------------------------------------------
 Sat Jul 14 19:51:06 UTC 2018 - jengelh@inai.de
 
 - Trim filler wording from descriptions.
