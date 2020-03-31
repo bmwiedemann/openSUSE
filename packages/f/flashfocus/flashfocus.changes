@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:46:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.3:
+  * Fixed: #46 Accidental bump of required version of i3ipc
+- Refresh flashfocus-2.0.3-no-i3ipc.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 09:50:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.2:

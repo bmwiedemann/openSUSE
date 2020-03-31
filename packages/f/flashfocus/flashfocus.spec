@@ -17,13 +17,13 @@
 
 
 Name:           flashfocus
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/fennerm/flashfocus
-Source:         https://github.com/fennerm/flashfocus/archive/%{version}.tar.gz
+Source:         https://github.com/fennerm/flashfocus/archive/v%{version}.tar.gz
 Patch0:         flashfocus-2.0.3-no-i3ipc.patch
 BuildRequires:  fdupes
 BuildRequires:  libffi-devel
