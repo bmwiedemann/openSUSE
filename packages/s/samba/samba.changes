@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:52:55 UTC 2020 - Noel Power <nopower@suse.com>
+
+- s3: libsmbclient.h: add missing time.h include to fix
+  ffmpeg build and make it compatible with -std=c99.
+
+-------------------------------------------------------------------
 Mon Mar 16 10:40:16 UTC 2020 - Noel Power <nopower@suse.com>
 
 - ndrdump tests: Make the tests less fragile
