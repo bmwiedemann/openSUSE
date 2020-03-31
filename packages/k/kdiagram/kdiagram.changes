@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:51:37 UTC 2020 - wbauer@tmo.at
+
+- Update to 2.6.2
+  * Reimplement Chart::paint() to fix printing issues
+    The previous implementation did not take the headers and
+    footers into account when resizing the diagram (kde#405075)
+  * Fix painting bar diagrams with horizontal bars
+  * Do not reference private headers in KChart convenience header
+- Add full Source URL
+- Use %lang_package macro
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Apr 19 17:26:52 UTC 2018 - wbauer@tmo.at
 
 - Update to 2.6.1 bugfix release
