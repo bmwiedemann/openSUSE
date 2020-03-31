@@ -766,4 +766,20 @@ remove obsolete _opt patterns</comment>
     <comment>Prevent MicroOS Desktops from being added to Kubic media</comment>
     <requestid>779084</requestid>
   </revision>
+  <revision rev="108" vrev="106">
+    <srcmd5>b99113d3c9686800ec645bd484bddc6f</srcmd5>
+    <version>unknown</version>
+    <time>1585667567</time>
+    <user>dimstar_suse</user>
+    <comment>Add weakremover provides. Not tested yet, but has to be submitted for testing.</comment>
+    <requestid>789726</requestid>
+  </revision>
+  <revision rev="109" vrev="107">
+    <srcmd5>526e7755c3ee8d778e525a30a0ccdcd6</srcmd5>
+    <version>unknown</version>
+    <time>1585668726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add s390x for MicroOS and containers patterns</comment>
+    <requestid>789127</requestid>
+  </revision>
 </revisionlist>
