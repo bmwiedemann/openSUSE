@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:56:38 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Update SPEC file to work around issue with installcheck
+  SUSE script. Update the SPEC file while there.
+
+-------------------------------------------------------------------
 Tue Mar  3 18:46:01 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Merged in latest upstream (2.1.1), which is mainly a bug-fix
