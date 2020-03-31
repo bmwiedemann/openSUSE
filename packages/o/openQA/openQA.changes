@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 00:29:20 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1585581139.1203c5b7b:
+  * Validate parameters passed to bug API routes
+  * Skip detecting asset key when asset value is null
+  * Dependency cron 200329
+
+-------------------------------------------------------------------
 Sat Mar 28 10:48:12 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1585334025.c496db1d6:
