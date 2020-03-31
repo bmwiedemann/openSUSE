@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>722151</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9e109f4cab85938d1f4b3434c908430</srcmd5>
+    <version>2.5.1</version>
+    <time>1585667712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  * Support for Python 3.8
+  * Add main element. Fixes #117
+  * Use tagname property from object, not class. Fixes #89</comment>
+    <requestid>789929</requestid>
+  </revision>
 </revisionlist>
