@@ -1,7 +1,7 @@
 #
 # spec file for package python-capturer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with     test
+%bcond_without     test
 Name:           python-capturer
-Version:        2.4
+Version:        3.0
 Release:        0
 Summary:        Python module for capturing stdout/stderr of the current process group
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://capturer.readthedocs.io
+URL:            https://capturer.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/capturer/capturer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module humanfriendly >= 2.1}
+BuildRequires:  %{python_module coverage >= 4.2}
+BuildRequires:  %{python_module humanfriendly >= 8.0}
+BuildRequires:  %{python_module pytest >= 3.0.4}
+BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 %endif
-Requires:       python-humanfriendly >= 2.1
+Requires:       python-humanfriendly >= 8.0
 BuildArch:      noarch
 
 %python_subpackages
@@ -59,7 +62,7 @@ but definitely won't work on Windows (due to the use of the platform dependent
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest capturer/tests.py
 %endif
 
 %files %{python_files}

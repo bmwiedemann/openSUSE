@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:31:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0
+  * Added support for Python 3.7 and 3.8.
+  * Dropped support for Python 2.6 and 3.4.
+  * Actively deprecate ``interpret_carriage_returns()``.
+  * Moved test helpers to :mod:`humanfriendly.testing`.
+  * Include documentation in source distributions.
+  * Use Python 3 for local development (``Makefile``).
+  * Restructured the online documentation.
+  * Updated PyPI domain in documentation.
+  * Added this changelog.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
