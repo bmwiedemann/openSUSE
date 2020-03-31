@@ -217,4 +217,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>783220</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ab74005930adf23af3ec677e0c2d8693</srcmd5>
+    <version>7.0.0</version>
+    <time>1585667816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790052</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,10 @@
 
 
 %define gridver 1.8
-%define sover   15
+%define sover   19
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        6.3.1
+Version:        7.0.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -32,6 +32,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
 Provides:       libproj = %{version}
 %if 0%{?suse_version} > 1500
@@ -72,7 +74,8 @@ unzip -o %{SOURCE1}
 %if 0%{?suse_version} > 1500
   --with-external-gtest \
 %endif
-  --disable-static
+  --disable-static \
+  --enable-lto
 %make_build
 
 %install
@@ -82,7 +85,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 # Tests dont work on i586 and noone cares
 %ifnarch %{ix86}
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -98,6 +101,7 @@ make %{?_smp_mflags} check
 %{_bindir}/invgeod
 %{_bindir}/invproj
 %{_bindir}/proj
+%{_bindir}/projsync
 %{_bindir}/projinfo
 %defattr(0644,root,root)
 %{_mandir}/man1/cs2cs.1%{?ext_man}
@@ -106,6 +110,7 @@ make %{?_smp_mflags} check
 %{_mandir}/man1/cct.1%{?ext_man}
 %{_mandir}/man1/gie.1%{?ext_man}
 %{_mandir}/man1/projinfo.1%{?ext_man}
+%{_mandir}/man1/projsync.1%{?ext_man}
 %{_datadir}/proj/
 
 %files -n %{libname}
@@ -117,7 +122,5 @@ make %{?_smp_mflags} check
 %{_includedir}/proj
 %{_libdir}/libproj.so
 %{_libdir}/pkgconfig/proj.pc
-%{_mandir}/man3/geodesic.3%{?ext_man}
-%{_mandir}/man3/pj_init.3%{?ext_man}
 
 %changelog

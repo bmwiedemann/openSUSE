@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:28:07 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 7.0.0:
+  * Added new file access API to proj.h #866
+  * Updated the name of the most recent version of the WKT2 standard from
+    WKT2_2018 to WKT2_2019 to reflect the proper name of the standard (#1585)
+  * Improvements in transformations from/to WGS 84 (Gxxxx) realizations and
+    vertical <--> geog transormations #1608
+  * Update to version 1.50 of the geodesic library (#1629)
+  * Promote proj_assign_context to proj.h from proj_experimental.h (#1630)
+  * Add rotation support to the HEALPix projection (#1638)
+  * Add c function proj_crs_create_bound_vertical_crs() (#1689)
+  * Use Win32 Unicode APIs and expect all strings to be UTF-8 (#1765)
+  * Improved name aliases lookup (#1827)
+  * CMake: Employ better use of CTest with the BUILD_TESTING option (#1870)
+  * Grid correction: fix handling grids spanning antimeridian (#1882)
+  * Remove legacy CMake target name "proj" #1883
+  * projinfo: add --searchpaths switch (#1892)
+  * Add +proj=set operation to set component(s) of a coordinate to a fixed
+    value (#1896)
+  * Add EPSG records for 'Geocentric translation by Grid Interpolation (IGN)'
+    (gr3df97a.txt) and map them to new +proj=xyzgridshift (#1897)
+  * Remove 'null' grid file as it is now a special hardcoded case in grid
+    code (#1898)
+  * Add projsync utility (#1903)
+  * Make PROJ the CMake project name #1910
+  * Use relative directory to locate PROJ resource files (#1921)
+
+-------------------------------------------------------------------
 Mon Mar  9 13:42:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 6.3.1:
