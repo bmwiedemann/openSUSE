@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 84.87+git20200319.57fe0e2
+%define version_unconverted 84.87+git20200323.45c6eba
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20200319.57fe0e2
+Version:        84.87+git20200323.45c6eba
 Release:        0
 PreReq:         aaa_base permissions sed
 Requires:       aaa_base-malloccheck

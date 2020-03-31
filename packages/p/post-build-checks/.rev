@@ -804,4 +804,13 @@
   * Don't de-install the packages containing su and sh</comment>
     <requestid>786384</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b6927dbc88d6ac6da8aafca25d048218</srcmd5>
+    <version>84.87+git20200323.45c6eba</version>
+    <time>1585668690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200323.45c6eba:
+  * Don't remove find, gzip and cpio (forwarded request 787533 from kukuk)</comment>
+    <requestid>788583</requestid>
+  </revision>
 </revisionlist>
