@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 31 10:53:58 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200311:
+  * Add a table for DVB-C in Dresden (Vodafone)
+  * Add scan table for DVB-T2 channels in Perm (Russia)
+  * isdb-t: update tables
+  * dvb-s: update all tables from LyngSat
+  * ke-Nairobi: fix delivery system for two DVB-T2 channels
+  * Makefile: fix dvbv3/dvbv5 output
+  * Improve Makefile to avoid "Argument list too long" error
+  * UPC Czech Republic: added mux 538 MHz with 256 QAM
+  * UPC Czech Republic: added more muxes and change QAM/256 on 626 MHz
+  * Update Astra-19.2E
+- Switch _service to obs_scm
+
+-------------------------------------------------------------------
 Wed Oct 17 07:29:08 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20180927:

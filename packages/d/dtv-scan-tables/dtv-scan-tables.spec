@@ -1,7 +1,7 @@
 #
 # spec file for package dtv-scan-tables
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dtv-scan-tables
-Version:        20180927
+Version:        20200311
 Release:        0
 Summary:        Scan files for digital TV applications v3
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          Hardware/TV
-URL:            http://linuxtv.org/
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://linuxtv.org/
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  dvb-utils
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -44,7 +44,7 @@ others. This package contains v5 of the files.
 %setup -q
 
 %build
-make %{?_smp_mflags} dvbv3 dvbv5
+%make_build dvbv3 dvbv5
 
 %install
 %make_install DVBV3DIR=dvb DATADIR=%{buildroot}/%{_datadir} install_v3
