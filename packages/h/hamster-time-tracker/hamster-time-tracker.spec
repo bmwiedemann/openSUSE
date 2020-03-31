@@ -15,32 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %global ext_version 0.10.0
 %global ext_gnome_version 3.34
 %global ext_uuid contact@projecthamster.org
 %bcond_without extension
 
 Name:           hamster-time-tracker
-Version:        2.2.2
+Version:        3.0.1+8
 Release:        0
 Summary:        A time tracker for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Other
 Url:            https://github.com/projecthamster/hamster
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-v%{version}.tar.xz
 # https://github.com/projecthamster/hamster-shell-extension/archive/0.10.0.tar.gz
 Source1:        hamster-shell-extension-%{ext_version}.tar.gz
 Source2:        https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js
-# PATCH-FEATURE-UPSTREAM https://github.com/projecthamster/hamster/pull/336
-Patch0:         appdata.patch
 # avoid rpm error: env-script-interpreter
-Patch1:         env-script-interpreter.patch
-Patch2:         0002-Overview-fix-gtk.show_uri-call.patch
-Patch3:         0003-Overview-add-help-menu-entry.patch
-Patch4:         0004-waf-install-help-files-into-usr-share-help.patch
-Patch5:         0005-wscript-install-bash-completion-to-usr-share-bash-co.patch
-Patch6:         0006-Overview-show-error-window-if-opening-help-fails.patch
+Patch1:         replace-env-python-invocation-by-direct-call.patch
+Patch2:		waf-skip-gsettings-schema-compilation.patch
 # Patches for GNOME extension
 Patch101:       0001-Don-t-try-to-access-controller.activities-before-it-.patch
 Patch102:       0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
@@ -73,9 +66,7 @@ BuildRequires:  python
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  glib2-devel
 # for help files
-BuildRequires:  xml2po
-# for gconf-related rpm macros
-BuildRequires:  gconf2-devel
+BuildRequires:  itstool
 # for the python3_sitelib macro
 BuildRequires:  python3-devel
 # For suse_update_desktop_file
@@ -92,7 +83,6 @@ Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-pyxdg
-%gconf_schemas_requires
 
 %if 0%{?suse_version} < 1330
 # see https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
@@ -118,14 +108,9 @@ is spent during the day on activities that are set up.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version} -a1
-%patch0 -p1
-%patch1 -p0
+%setup -q -n %{name}-v%{version} -a1
+%patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %if %{with extension}
 cd hamster-shell-extension-%{ext_version}
 %patch101 -p1
@@ -158,21 +143,17 @@ cp %{SOURCE2} build
 %endif
 
 %build
-./waf --prefix=%{_prefix} configure build
+./waf --prefix=%{_prefix} --libdir=%{_libdir} --libexecdir=%{_libexecdir} \
+      --skip-icon-cache-update configure build
 %if %{with extension}
 cd hamster-shell-extension-%{ext_version}
 make dist
 %endif
 
 %install
-./waf install --destdir=%{buildroot} --libdir=%{_libdir} --libexecdir=%{_libexecdir}
-# hack: waf installs in the python2 directory, but hamster should be in python3 now
-mkdir -p %{buildroot}%{python3_sitelib}
-mv %{buildroot}%{python_sitelib}/hamster %{buildroot}%{python3_sitelib}
-%find_gconf_schemas
-%find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file hamster-time-tracker X-SuSE-TimeUtility
-%suse_update_desktop_file hamster-time-tracker-overview X-SuSE-TimeUtility
+./waf install --destdir=%{buildroot}
+%find_lang hamster %{?no_lang_C}
+%suse_update_desktop_file org.gnome.Hamster.GUI TimeUtility
 
 %if %{with extension}
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{ext_uuid}
@@ -182,14 +163,7 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tgz \
 
 %fdupes %{buildroot}
 
-%pre -f %{name}.schemas_pre
-
-%preun -f %{name}.schemas_preun
-
-%posttrans -f %{name}.schemas_posttrans
-
 %if 0%{?suse_version} < 1330
-
 %post
 %desktop_database_post
 %icon_theme_cache_post
@@ -197,29 +171,26 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tgz \
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
-
 %endif
 
-%files -f %{name}.schemas_list
+%files
 %defattr(-, root, root)
 %license COPYING
 %doc AUTHORS NEWS README.md MAINTAINERS
 %{_bindir}/hamster
-%{_datadir}/applications/hamster-time-tracker.desktop
-%{_datadir}/applications/hamster-time-tracker-overview.desktop
-%{_datadir}/applications/hamster-windows-service.desktop
-%{_datadir}/dbus-1/services/org.gnome.hamster.service
-%{_datadir}/dbus-1/services/org.gnome.hamster.Windows.service
+%{_datadir}/applications/org.gnome.Hamster.GUI.desktop
+%{_datadir}/dbus-1/services/org.gnome.Hamster.service
+%{_datadir}/dbus-1/services/org.gnome.Hamster.WindowServer.service
+%{_datadir}/dbus-1/services/org.gnome.Hamster.GUI.service
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
-%{_datadir}/%{name}/
-%{_libexecdir}/%{name}/
+%{_datadir}/hamster/
+%{_libexecdir}/hamster/
 %{python3_sitelib}/hamster/
 %{_datadir}/bash-completion/completions/hamster.bash
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
-%dir %{_datadir}/help
-%{_datadir}/help/C
+%{_datadir}/metainfo/org.gnome.Hamster.GUI.metainfo.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.hamster.gschema.xml
+%{_datadir}/help/C/hamster
 
 %package -n gnome-shell-extension-hamster-time-tracker
 Version:        %{ext_version}_%{ext_gnome_version}
@@ -246,7 +217,7 @@ GNOME shell menu. Packaged for openSUSE Factory because the
 upstream version on extensions.gnome.org often leaks behind current
 GNOME shell development.
 
-%files lang -f %{name}.lang
+%files lang -f hamster.lang
 
 %if %{with extension}
 %files -n gnome-shell-extension-hamster-time-tracker

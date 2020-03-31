@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:41:04 UTC 2020 - mwilck@suse.com
+
+- Update to version v3.0.1+8:
+  * New source file hamster-time-tracker-v3.0.1+8.tar.xz
+    (3.0.1 + 2 bug fixes, upstream commit e6b90fcd)
+  * Fix off-by-one error in hamster export tsv (upstream 
+    #576, #580)
+  * Use itstool instead of xml2po (#584)
+- Fix broken version number of extension package in previous build
+- Remove upstreamed patches
+  * Drop patch: fix-from_start_end-handle-datetime-first.patch
+  * Drop patch: choke-on-invalid-types-in-from_start_end.patch
+  * Drop patch: Use-itstool-instead-of-xml2po.patch (i18n fixes)
+  * Drop patch: fixup-Use-itstool-instead-of-xml2po.patch
+
+-------------------------------------------------------------------
+Sun Mar 15 21:30:12 UTC 2020 - mwilck@suse.com
+
+- Update to version 3.0.1:
+  * remove binary waf footer
+  * mark org.gnome.Hamster.GUI as experimental
+  * restore edit method in WindowServer
+  * add edit action in cli
+  * appdata: Rename to org.gnome.Hamster
+  * explicitly set application ID and prgname on startup
+  * Fix completion in categories TreeView
+  * Fix search function (#551)
+  * metainfo file renamed to org.gnome.Hamster.GUI.metainfo.xml
+- Use --skip-icon-cache-update option during build
+- Dropped / renamed patches
+  * Drop patch: wscript-don-t-update-icon-cache.patch (obsolete)
+  * Drop patch: Fix-search-function-551.patch (merged upstream)
+  * Drop patch: hamster-explicitly-set-application-ID-and-prgname-on.patch
+    (merged upstream)
+  * Drop patch: Revert-remove-unused-edit-method.patch (rejected
+  upstream)
+  * Rename patch: env-script-interpreter.patch
+    -> replace-env-python-invocation-by-direct-call.patch
+  * Removed appdata.patch in OBS
+- Added upstram bug-fix PR #580 ("Fix handling of datetime arguments 
+  to from_start_end")
+  * Add patch: fix-from_start_end-handle-datetime-first.patch
+  * Add patch: choke-on-invalid-types-in-from_start_end.patch
+- Added merged upstream PR #584 ("Use itstool instead of xml2po")
+  * Add patch: Use-itstool-instead-of-xml2po.patch (i18n fixes)
+  * Add patch: fixup-Use-itstool-instead-of-xml2po.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 20:16:15 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix search function
+  (https://github.com/projecthamster/hamster/pull/551)
+  * Add Fix-search-function-551.patch
+- Fix icon not being displayed on Wayland 
+  (https://github.com/projecthamster/hamster/pull/541)
+  * Add hamster-explicitly-set-application-ID-and-prgname-on.patch
+
+-------------------------------------------------------------------
+Tue Feb 11 20:51:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix non-working "Add Earlier activity" button in shell extension
+  (https://github.com/projecthamster/hamster/pull/549)
+  * Add Revert-remove-unused-edit-method.patch
+
+-------------------------------------------------------------------
+Mon Feb 10 21:36:47 UTC 2020 - mwilck@suse.com
+
+- Update to version 3.0~beta:
+  * Numerous bug fixes (see NEWS)
+  * New 'version' or 'Version' command/methods available (PR 528).
+  * New *JSON dbus methods to pass facts verbatim (PR 514).
+  * Changed parser:
+    - Accept activity starting with hash '#' (issue ?)
+    - Accept comma in activity (issue ?)
+    - Breaking (sorry, really needed):
+      Description delimiter is a double comma ',,' instead of a single comma.
+    - Comma is forbidden in category (instead of silently swallowed)
+    - Same parser for terminal, gui and D-Bus interface.
+      Range is still searched at tail (terminal) or head position (gui, D-Bus).
+    - Fact.range start/end are always datetimes
+      any time given without date is attributed to a default hamster day.
+      The default hamster day is usually today.
+      In the gui, the default day is the day selected in the timeline.
+    - start/end can be entered as +mmm or -mmm (<sign><1-3 digits>),
+      relative to a reference. The reference is usually now.
+    - The fact duration can be given as mmm (<1-3 digits>, no sign),
+      instead of the end.
+    - hour/minutes separator can be colon, comma, dot, e.g. 9.30.
+      No separator is allowed, but only with 4 digits: hhmm.
+  * Improved consistency in date/time handling (PR 429) by
+      - switching to ISO date format (%Y-%m-%d) in lib/* 
+        to be consistent with hamster-cli usage
+      - rounding (i.e. truncating) all activity start/end timestamps
+        to the minute
+      ** note that this only affects new and/or edited activities in the database
+  * Added stop tracking button to header bar (PR 427)
+  * The help system is back (PR 393).
+  * Improved keyboard handling:
+    - Ctrl+Space to stop tracking.
+    - Left/Right arrows change date.
+    - Resume: start now a clone of the selected activity.
+      Ctrl-+: clone or fallback to new if none selected.
+              (same as pressing the + button)
+      Ctrl-R: only Resume (clone) an existing fact.
+      Ctrl-N: only new.
+    - Up, down, Home, End, Page-Up, Page-Down, Return
+      work straight from the overview (no need to click).
+    - More info on PR #387.
+- Removed obsolete patches (merged upstream)
+  * removed appdata.patch (shipping upstream metainfo now)
+  * removed 0002-Overview-fix-gtk.show_uri-call.patch
+  * removed 0003-Overview-add-help-menu-entry.patch
+  * removed 0004-waf-install-help-files-into-usr-share-help.patch
+  * removed 0005-wscript-install-bash-completion-to-usr-share-bash-co.patch
+  * removed 0006-Overview-show-error-window-if-opening-help-fails.patch
+- Added patches to skip waf installation steps that aren't needed for
+  openSUSE packaging because they're done at package install time
+  * added wscript-don-t-update-icon-cache.patch
+  * added waf-skip-gsettings-schema-compilation.patch
+- No more gconf support after move to gsettings
+
+-------------------------------------------------------------------
 Tue Oct 22 18:58:23 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
 - Added a Provides: for gnome-shell-extension-hamster for proper

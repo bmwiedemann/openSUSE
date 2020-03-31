@@ -1,0 +1,44 @@
+From c5ddb785a747105627bb23e31db64a76975d6341 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 11 Feb 2020 15:56:06 +0100
+Subject: [PATCH] replace env python invocation by direct call
+
+---
+ src/hamster-cli.py             | 2 +-
+ src/hamster-service.py         | 2 +-
+ src/hamster-windows-service.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/hamster-cli.py b/src/hamster-cli.py
+index 9c67867..bdb2d36 100644
+--- a/src/hamster-cli.py
++++ b/src/hamster-cli.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # - coding: utf-8 -
+ 
+ # Copyright (C) 2010 Matías Ribecky <matias at mribecky.com.ar>
+diff --git a/src/hamster-service.py b/src/hamster-service.py
+index 4b1e43a..2b87ee9 100644
+--- a/src/hamster-service.py
++++ b/src/hamster-service.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # nicked off gwibber
+ 
+ import dbus
+diff --git a/src/hamster-windows-service.py b/src/hamster-windows-service.py
+index 37bcad9..fa1279d 100644
+--- a/src/hamster-windows-service.py
++++ b/src/hamster-windows-service.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # nicked off hamster-service
+ 
+ import dbus
+-- 
+2.25.1
+
