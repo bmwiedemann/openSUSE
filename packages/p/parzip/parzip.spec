@@ -1,7 +1,7 @@
 #
 # spec file for package parzip
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           parzip
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Parallel pkzip implementation
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/jpakkane/parzip
+URL:            https://github.com/jpakkane/parzip
 Source0:        https://github.com/jpakkane/parzip/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -58,12 +58,15 @@ Does not support
 %install
 %meson_install
 
+%check
+%meson_test
+
 %files
 %doc README.md
 %license COPYING
 %{_bindir}/parunzip
 %{_bindir}/parzip
-%{_mandir}/man1/parunzip.1%{ext_man}
-%{_mandir}/man1/parzip.1%{ext_man}
+%{_mandir}/man1/parunzip.1%{?ext_man}
+%{_mandir}/man1/parzip.1%{?ext_man}
 
 %changelog
