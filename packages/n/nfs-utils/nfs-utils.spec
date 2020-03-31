@@ -46,6 +46,7 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
+Patch1:         0001-conffile-Don-t-give-warning-for-optional-config-file.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fedfs-utils-devel
@@ -144,6 +145,7 @@ This package contains additional NFS documentation.
 %prep
 %setup -q -a 1
 %patch0 -p1
+%patch1 -p1
 
 cp %{SOURCE6} .
 
@@ -202,7 +204,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 install -m 644 utils/mount/nfsmount.conf %{buildroot}%{_sysconfdir}/nfsmount.conf
 #
 # hack to avoid automatic python dependency
-chmod 644 %{buildroot}%{_sbindir}/{mountstats,nfsiostat}
+chmod 644 `grep -l -r '^#!/usr/bin/python' %{buildroot}%{_sbindir}`
 # Install sysusers.d template
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/

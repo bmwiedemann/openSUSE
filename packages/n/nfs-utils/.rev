@@ -1414,4 +1414,24 @@
 - Use ordering for systemd instead of hard requires (forwarded request 782892 from kukuk)</comment>
     <requestid>784479</requestid>
   </revision>
+  <revision rev="153" vrev="14">
+    <srcmd5>860e7c27f9e19573aeea45bd1e454cb2</srcmd5>
+    <version>unknown</version>
+    <time>1585668707</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve the hack to avoid python dependencies.
+  A new python script had been added since that hack was written.
+  (boo#1166067)
+
+- 0001-conffile-Don-t-give-warning-for-optional-config-file.patch
+  Support optional include files correctly
+  (boo#1164619)
+
+- Update nfs.conf
+  - change value: udp=n (disabled in 2.2.1.)
+  - update name: manage-gids
+  - new: verbosity=0, rpc-verbosity=0, use-gss-proxy=0, rdma-port=20049,
+	no-notify=0, force=0, lift-grace=y</comment>
+    <requestid>788739</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 27 05:29:36 UTC 2020 - Neil Brown <nfbrown@suse.com>
+
+- Improve the hack to avoid python dependencies.
+  A new python script had been added since that hack was written.
+  (boo#1166067)
+
+-------------------------------------------------------------------
+Fri Mar 27 05:06:12 UTC 2020 - Neil Brown <nfbrown@suse.com>
+
+- 0001-conffile-Don-t-give-warning-for-optional-config-file.patch
+  Support optional include files correctly
+  (boo#1164619)
+
+-------------------------------------------------------------------
+Tue Mar 24 10:13:53 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update nfs.conf
+  - change value: udp=n (disabled in 2.2.1.)
+  - update name: manage-gids
+  - new: verbosity=0, rpc-verbosity=0, use-gss-proxy=0, rdma-port=20049,
+	no-notify=0, force=0, lift-grace=y
+
+-------------------------------------------------------------------
 Mon Mar  9 10:04:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - statd-user.conf: create user via sysusers.d template
