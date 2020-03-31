@@ -1,0 +1,13 @@
+Index: vim-8.2.0348/src/globals.h
+===================================================================
+--- vim-8.2.0348.orig/src/globals.h
++++ vim-8.2.0348/src/globals.h
+@@ -1242,7 +1242,7 @@ extern char *Version;
+ #if defined(HAVE_DATE_TIME) && defined(VMS) && defined(VAXC)
+ extern char longVersion[];
+ #else
+-EXTERN char *longVersion;
++extern char *longVersion;
+ #endif
+ 
+ /*

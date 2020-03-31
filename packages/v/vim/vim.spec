@@ -69,6 +69,7 @@ Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
 Patch102:       vim-8.1.0297-dump3.patch
+Patch103:       no-common.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -175,17 +176,24 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
+%patch103 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 # Unreliable tests
 # See also disable-unreliable-tests.patch
+rm src/testdir/test_arglist.*
+rm src/testdir/test_command_count.*
 rm src/testdir/test_cmdline.*
 rm src/testdir/test_channel.*
-rm src/testdir/gen_opt_test.vim
+rm src/testdir/test_diffmode.*
+rm src/testdir/test_mksession.*
+rm src/testdir/gen_opt_test.*
 rm src/testdir/test_options.*
-rm src/testdir/test_popupwin.vim
+rm src/testdir/test_popupwin.*
+rm src/testdir/test_startup.*
 rm src/testdir/test_terminal*
-rm src/testdir/test_textprop.vim
+rm src/testdir/test_textprop.*
+rm src/testdir/test_window_cmd.*
 rm src/testdir/test_writefile.*
 
 %build

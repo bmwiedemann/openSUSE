@@ -1,7 +1,7 @@
-Index: vim-8.1.1467/runtime/syntax/sh.vim
+Index: vim-8.2.0348/runtime/syntax/sh.vim
 ===================================================================
---- vim-8.1.1467.orig/runtime/syntax/sh.vim
-+++ vim-8.1.1467/runtime/syntax/sh.vim
+--- vim-8.2.0348.orig/runtime/syntax/sh.vim
++++ vim-8.2.0348/runtime/syntax/sh.vim
 @@ -64,6 +64,13 @@ if !exists("b:is_kornshell") && !exists(
    endif
  endif

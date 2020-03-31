@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:23:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Disable more tests failing randomly on OBS:
+    * test_arglist
+    * test_command_count
+    * test_diffmode
+    * test_mksession
+    * test_startup
+    * test_window_cmd
+
+-------------------------------------------------------------------
+Fri Mar 27 08:24:14 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add no-common.patch to make longVersion extern in all cases,
+  fixes build with gcc10 bsc#1160418
+
+-------------------------------------------------------------------
 Sun Mar 15 20:19:21 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - apparmor.vim: fix typo in setfcap capability (taken from AppArmor 2.13.4)

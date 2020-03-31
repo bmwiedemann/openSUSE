@@ -4434,4 +4434,21 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>785458</requestid>
   </revision>
+  <revision rev="255" vrev="3">
+    <srcmd5>5e6fa348f42845f98ad999f5143c58d1</srcmd5>
+    <version>8.2.0348</version>
+    <time>1585668782</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable more tests failing randomly on OBS:
+    * test_arglist
+    * test_command_count
+    * test_diffmode
+    * test_mksession
+    * test_startup
+    * test_window_cmd
+
+- Add no-common.patch to make longVersion extern in all cases,
+  fixes build with gcc10 bsc#1160418</comment>
+    <requestid>790192</requestid>
+  </revision>
 </revisionlist>
