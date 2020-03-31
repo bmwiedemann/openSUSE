@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 28 18:32:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.44:
+  * New hacks, gibson, etruscanvenus and scooter
+  * BSOD supports Tivo and Nintendo
+  * New color options in romanboy, projectiveplane, hypertorus and
+    klein
+  * Performance tweaks for eruption, fireworkx, halftone, halo,
+    moire2, rd-bomb
+  * X11: Always use $HOME/.xscreensaver, not getpwuid's directory
+  * Various bug fixes
+
+-------------------------------------------------------------------
 Tue Mar  3 17:24:50 CET 2020 - sbrabec@suse.com
 
 - Update to version 5.43:

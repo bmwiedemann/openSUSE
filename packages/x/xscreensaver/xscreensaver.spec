@@ -17,7 +17,7 @@
 
 
 Name:           xscreensaver
-Version:        5.43
+Version:        5.44
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -54,6 +54,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  pam-devel
 BuildRequires:  perl-XML-Parser
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -81,9 +82,9 @@ BuildRequires:  pkgconfig(xxf86vm)
 Requires:       %{name}-data
 Requires:       /sbin/unix2_chkpwd
 Requires:       desktop-data
+Recommends:     %{name}-lang = %{version}
 #
 Suggests:       %{name}-data-extra
-Recommends:     %{name}-lang = %{version}
 #
 Provides:       xscreensaver-gnome = %{version}
 Provides:       xscrns = %{version}
@@ -144,6 +145,7 @@ longer idle period, or on demand.
 This packages contains additional graphics demos.
 
 %lang_package
+
 %prep
 %setup -q
 %patch5
@@ -197,7 +199,7 @@ export ac_cv_gcc_accepts_std=no
   --with-image-directory=%{_datadir}/wallpapers      \
   --enable-locking                                   \
   --with-login-manager
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 rm -f hacks/config/vidwhacker.xml
@@ -243,7 +245,6 @@ for hack in $(grep -v '#' %{SOURCE3}); do
 done
 
 %files
-%defattr(-,root,root)
 %doc README
 %{_bindir}/xscreensaver
 %{_bindir}/xscreensaver-command
@@ -267,13 +268,11 @@ done
 %files lang -f %{name}.lang
 
 %files data -f %{name}-data.lst
-%defattr(-,root,root)
 %dir %{_libdir}/xscreensaver/
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
 
 %files data-extra -f %{name}-data-extra.lst
-%defattr(-,root,root)
 %dir %{_libdir}/xscreensaver/
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
