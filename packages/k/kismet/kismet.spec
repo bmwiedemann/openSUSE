@@ -269,6 +269,10 @@ export MANGRP=`id -gn`
 install -D -m 0644 packaging/systemd/kismet.service %{buildroot}%{_unitdir}/%{name}.service
 install -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+# kistmet systemwide plugin dir
+install -d %{buildroot}%{_libdir}/kismet/
+# install kismet plugins
+install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alertsyslog.so
 %fdupes -s %{buildroot}%{_datadir}/kismet
 
 %pre
@@ -305,6 +309,8 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_datadir}/kismet/kismet_manuf.txt
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
+%dir %{_libdir}/kismet/
+%{_libdir}/kismet/alertsyslog.so
 
 %files logtools
 %{_bindir}/kismetdb_dump_devices

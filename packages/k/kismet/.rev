@@ -362,4 +362,12 @@ better packaging for distros, and various other quirks.
     + NXP KW41Z BTLE and Zigbee Sniffer capture helper</comment>
     <requestid>785043</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>24b7d8e7839b583950429d253e327e11</srcmd5>
+    <version>2020_03_R1</version>
+    <time>1585667797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790009</requestid>
+  </revision>
 </revisionlist>
