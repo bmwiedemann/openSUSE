@@ -1,0 +1,11 @@
+--- django-rest-invitations-0.1.1/test_settings.py.orig	2019-02-22 00:17:52.006110998 +0700
++++ django-rest-invitations-0.1.1/test_settings.py	2019-02-22 00:17:58.606172996 +0700
+@@ -40,7 +40,7 @@
+         "django.contrib.messages.context_processors.messages",
+     )
+ 
+-MIDDLEWARE_CLASSES = (
++MIDDLEWARE = (
+     'django.contrib.sessions.middleware.SessionMiddleware',
+     'django.middleware.common.CommonMiddleware',
+     'django.middleware.csrf.CsrfViewMiddleware',

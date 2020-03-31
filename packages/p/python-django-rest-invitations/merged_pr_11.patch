@@ -1,0 +1,53 @@
+From 04250865e8189f38942ca1c83fdc64ab0d5be18c Mon Sep 17 00:00:00 2001
+From: Victor <sexsportandrocknroll@gmail.com>
+Date: Sat, 8 Feb 2020 18:12:22 +0300
+Subject: [PATCH] DRF 3.10 compatibility
+
+---
+ rest_invitations/views.py | 12 +++++++-----
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/rest_invitations/views.py b/rest_invitations/views.py
+index ea9d128..f37744e 100644
+--- a/rest_invitations/views.py
++++ b/rest_invitations/views.py
+@@ -3,8 +3,7 @@
+ from invitations.app_settings import app_settings as invitations_settings
+ from invitations.signals import invite_accepted
+ from rest_framework import mixins, status, viewsets
+-from rest_framework.decorators import (api_view, detail_route, list_route,
+-                                       permission_classes)
++from rest_framework.decorators import (api_view, permission_classes, action)
+ from rest_framework.permissions import AllowAny, IsAuthenticated
+ from rest_framework.response import Response
+ 
+@@ -35,7 +34,8 @@ def _prepare_and_send(self, invitation, request):
+         invitation.save()
+         invitation.send_invitation(request)
+ 
+-    @detail_route(
++    @action(
++        detail=True,
+         methods=['post'], permission_classes=[IsAuthenticated],
+         url_path=SEND_URL
+     )
+@@ -45,7 +45,8 @@ def send(self, request, pk=None):
+         content = {'detail': 'Invite sent'}
+         return Response(content, status=status.HTTP_200_OK)
+ 
+-    @list_route(
++    @action(
++        detail=False,
+         methods=['post'], permission_classes=[IsAuthenticated],
+         url_path=CREATE_AND_SEND_URL
+     )
+@@ -58,7 +59,8 @@ def create_and_send(self, request):
+         content = {'detail': 'Invite sent'}
+         return Response(content, status=status.HTTP_200_OK)
+ 
+-    @list_route(
++    @action(
++        detail=False,
+         methods=['post'], permission_classes=[IsAuthenticated],
+         url_path=SEND_MULTIPLE_URL
+     )
