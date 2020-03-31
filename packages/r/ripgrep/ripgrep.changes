@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:24:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add ripgrep-11.0.2-reproducible-manpage.patch (boo#1100677)
+
+-------------------------------------------------------------------
 Mon Nov 11 15:52:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 11.0.2

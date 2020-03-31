@@ -25,6 +25,8 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/BurntSushi/ripgrep
 Source:         https://github.com/BurntSushi/ripgrep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM https://github.com/BurntSushi/ripgrep/issues/1441
+Patch0:         ripgrep-11.0.2-reproducible-manpage.patch
 BuildRequires:  asciidoc
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.31
@@ -66,6 +68,7 @@ The official fish completion script for ripgrep, generated during the build.
 %prep
 %setup -q
 %setup -q -D -T -a 1
+%patch0 -p1
 mkdir cargo-home
 cat >cargo-home/config <<EOF
 [source.crates-io]
