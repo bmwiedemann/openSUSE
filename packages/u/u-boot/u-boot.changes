@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 21:34:26 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Use proper quoting for the modalias Supplements (see also
+  https://github.com/openSUSE/libzypp/issues/216).
+
+-------------------------------------------------------------------
 Fri Mar 27 12:43:30 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Add a modalias Supplements to u-boot-rpiarm64, so the package
