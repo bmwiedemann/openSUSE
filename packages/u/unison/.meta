@@ -5,5 +5,5 @@ two replicas of a collection of files and directories to be stored on
 different hosts (or different disks on the same host), modified
 separately, then brought up to date by propagating the changes in each
 replica to the other.</description>
-  <devel project="network" package="unison"/>
+  <devel project="devel:languages:ocaml" package="unison"/>
 </package>
