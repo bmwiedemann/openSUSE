@@ -21,10 +21,17 @@
 %define _lto_cflags %{nil}
 %endif
 
+# We need at least gcc8 or higher to build
+%if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
+%bcond_without  fixed_gcc
+%else
+%bcond_with     fixed_gcc
+%endif
+
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        1.9.21
+Version:        2.0.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -42,7 +49,11 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
+%if %{with fixed_gcc}
+BuildRequires:  gcc9-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glibc-devel
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -137,6 +148,10 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 
 %build
 %limit_build -m 2048
+%if %{with fixed_gcc}
+export CC=/usr/bin/gcc-9
+export CXX=/usr/bin/g++-9
+%endif
 
 %cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
