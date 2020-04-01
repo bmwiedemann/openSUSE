@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        3.23
+Version:        4.0.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0

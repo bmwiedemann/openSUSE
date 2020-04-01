@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.0.0. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-0-lts-has-been-released/7231
+  boo#1168338
+
+  Breaking Changes:
+    * Removal of --container-only, replaced by --instance-only
+
+  + VM: Support for backup (import/export)
+  + PCI and USB devices in the resource API
+  + Support for multiple ipvlan NIC devices
+  + Support for host addresses on routed NIC
+  + Support for editing cluster roles
+  + Disk usage for custom volumes
+  + Disk usage for snapshots
+  + Support for passwordless PKI mode
+
+-------------------------------------------------------------------
 Sat Mar 21 04:55:09 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 3.23. The full upstream changelog is available from:
