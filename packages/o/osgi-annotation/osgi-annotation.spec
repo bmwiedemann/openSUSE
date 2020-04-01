@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-annotation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osgi-annotation
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        Annotations for use in compiling OSGi bundles
 License:        Apache-2.0
@@ -25,9 +25,10 @@ Group:          Development/Libraries/Java
 URL:            http://www.osgi.org/
 # Upstream project is behind an account registration system with no anonymous
 # read access, so we download the source from maven central instead
-Source0:        http://repo1.maven.org/maven2/org/osgi/osgi.annotation/%{version}/osgi.annotation-%{version}-sources.jar
-Source1:        http://repo1.maven.org/maven2/org/osgi/osgi.annotation/%{version}/osgi.annotation-%{version}.pom
-Source2:        %{name}-build.xml
+Source0:        https://repo1.maven.org/maven2/org/osgi/osgi.annotation/%{version}/osgi.annotation-%{version}-sources.jar
+Source1:        https://repo1.maven.org/maven2/org/osgi/osgi.annotation/%{version}/osgi.annotation-%{version}.pom
+Source2:        http://www.apache.org/licenses/LICENSE-2.0
+Source3:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -48,10 +49,10 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q -c
 
-mkdir -p src/main/resources && mv about.html src/main/resources
 mkdir -p src/main/java && mv org src/main/java
 cp -p %{SOURCE1} pom.xml
-cp -p %{SOURCE2} build.xml
+cp -p %{SOURCE2} LICENSE
+cp -p %{SOURCE3} build.xml
 
 # Ensure OSGi metadata is generated
 %pom_xpath_inject pom:project "

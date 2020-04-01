@@ -13,15 +13,14 @@
   
   <property name="project.artifactId" value="osgi.annotation"/>
   <property name="project.groupId" value="org.osgi"/>
-  <property name="project.version" value="6.0.0"/>
-  <property name="project.description" value="OSGi Annotation Release 6, Annotations for use in compiling bundles."/>
+  <property name="project.version" value="7.0.0"/>
+  <property name="project.description" value="OSGi Annotation Release 7, Annotations for use in compiling bundles."/>
   <property name="project.organization.name" value="OSGi Alliance"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.resourceDir" value="src/main/resources"/>
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
@@ -52,9 +51,6 @@
         <pathelement location="${build.srcDir}"/>
       </src>
     </javac>
-    <copy todir="${build.outputDir}">
-      <fileset dir="${build.resourceDir}"/>
-    </copy>
   </target>
 
   <!-- ====================================================================== -->
@@ -100,7 +96,7 @@
         <attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
         <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
         <attribute name="Bundle-Version" value="${project.version}"/>
-        <attribute name="Export-Package" value="org.osgi.annotation.versioning;version=&quot;1.0&quot;"/>
+        <attribute name="Export-Package" value="org.osgi.annotation.versioning;version=&quot;1.1&quot;,org.osgi.annotation.bundle;version=&quot;1.0&quot;"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>
