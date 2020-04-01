@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:27:06 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Migrate away from the old felix-osgi implementation to OSGi r7
+
+-------------------------------------------------------------------
 Wed Mar  4 10:33:18 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of apache opennlp 1.5.3

@@ -1,7 +1,7 @@
 #
 # spec file for package opennlp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ BuildRequires:  mvn(net.sf.jwordnet:jwnl)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.uima:uimaj-core)
 BuildRequires:  mvn(org.apache:apache:pom:)
-BuildRequires:  mvn(org.osgi:org.osgi.compendium)
-BuildRequires:  mvn(org.osgi:org.osgi.core)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildArch:      noarch
 
 %description
@@ -73,6 +73,10 @@ This package contains javadoc for %{name}.
 find . -name '*.jar' -print -delete
 find . -name '*.bat' -print -delete
 find . -name '*.class' -print -delete
+
+# use latest OSGi implementation
+%pom_change_dep -r :org.osgi.core org.osgi:osgi.core opennlp
+%pom_change_dep -r :org.osgi.compendium org.osgi:osgi.cmpn opennlp
 
 %pom_remove_plugin -r :apache-rat-plugin opennlp
 %pom_remove_plugin -r :maven-dependency-plugin opennlp
