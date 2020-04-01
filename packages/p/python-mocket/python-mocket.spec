@@ -1,7 +1,7 @@
 #
 # spec file for package python-mocket
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mocket
-Version:        3.7.3
+Version:        3.8.4
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
-Requires:       python-hexdump
 Requires:       python-python-magic
 Requires:       python-six
 Requires:       python-urllib3
@@ -44,7 +43,6 @@ BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
@@ -78,9 +76,7 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
