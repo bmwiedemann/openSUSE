@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osgi-core
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        OSGi Core API
 License:        Apache-2.0
@@ -25,7 +25,8 @@ Group:          Development/Libraries/Java
 URL:            https://www.osgi.org
 Source0:        https://repo1.maven.org/maven2/org/osgi/osgi.core/%{version}/osgi.core-%{version}-sources.jar
 Source1:        https://repo1.maven.org/maven2/org/osgi/osgi.core/%{version}/osgi.core-%{version}.pom
-Source2:        %{name}-build.xml
+Source2:        http://www.apache.org/licenses/LICENSE-2.0
+Source3:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -34,7 +35,7 @@ BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
-OSGi Core Release 6, Interfaces and Classes for use in compiling bundles.
+OSGi Core Release 7, Interfaces and Classes for use in compiling bundles.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -49,7 +50,8 @@ mkdir -p lib
 build-jar-repository -s lib osgi-annotation
 
 cp -p %{SOURCE1} pom.xml
-cp -p %{SOURCE2} build.xml
+cp -p %{SOURCE2} LICENSE
+cp -p %{SOURCE3} build.xml
 mkdir -p src/main/java
 mv org src/main/java/
 
@@ -94,7 +96,6 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 
 %files -f .mfiles
 %license LICENSE
-%doc about.html
 
 %files javadoc
 %license LICENSE
