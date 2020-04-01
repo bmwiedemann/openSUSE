@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop
-Version:        0.80.1
+Version:        0.81.0
 Release:        0
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
