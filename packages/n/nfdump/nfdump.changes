@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:33:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.20
+ - More cleanup on plain number printing
+ - Fix plain numbers bug #213
+ - Fix profiler filer bug
+
+-------------------------------------------------------------------
 Wed Feb 26 14:45:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.19

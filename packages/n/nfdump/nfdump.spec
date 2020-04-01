@@ -1,7 +1,7 @@
 #
-# spec file for package 
+# spec file for package nfdump
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define nfcapddatadir	%{_localstatedir}/lib/nfcapd
 %define sfcapddatadir	%{_localstatedir}/lib/sfcapd
 %define nfhomedir     %{_var}/lib/%{name}
 Name:           nfdump
-Version:        1.6.19
+Version:        1.6.20
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
