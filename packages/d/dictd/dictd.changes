@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:37:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.13.0:
+  - dictd:
+    * add support for IPv6 (the default is IPv4)
+        - Add global configuration option "address_family" and
+          command line options --address-family 
+        - Options "listen_to" and --listen-to accepts host name
+          in addition to IP address, "*" means "bind to all interfaces".
+  - dict:
+    * add support for IPv6.
+        - New command line options -4 and -6.
+        - dict + dict:// URL: add support for IPv6 address
+          surrounded by [ and ] symbols
+  - dictfmt:
+    * fix overlap of source and destination buffers in memcpy(3).
+      Use memmove(3) instead. This fixes failures on Linux/musl.
+    * DICTFMT_SORT environment variable may be used for
+      setting non-default sort(1)
+  - Fix build on recent Solaris/IllumOS (missing -lnsl at link
+    time)
+  - Remove support for --use-dictorg and socks5. Clean-ups for build
+    system.
+  - Remove support for non-utf8 dictionaries.
+  - tests:
+    * new test for dictd as a daemon
+    * always use @AWK@
+    * test/dictzip_test.in: avoid printing binary \0. This fixes test on
+      some systems
+
+-------------------------------------------------------------------
 Wed Feb 19 11:15:40 UTC 2020 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 1.12.1+git.1579902294.78aa097:

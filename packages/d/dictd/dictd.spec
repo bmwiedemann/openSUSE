@@ -17,13 +17,13 @@
 
 
 Name:           dictd
-Version:        1.12.1+git.1579902294.78aa097
+Version:        1.13.0
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        GPL-1.0-or-later AND Zlib AND MIT
 Group:          Productivity/Office/Dictionary
 URL:            https://github.com/cheusov/dictd
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/cheusov/dictd/archive/%{version}.tar.gz#/dictd-%{version}.tar.gz
 Source1:        colorit.conf
 Source2:        dictd.service
 Patch0:         dictd-1.12.1-unused-return.patch

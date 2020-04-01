@@ -1,7 +1,6 @@
-diff -purN dictd-1.12.1/dictd.c dictd-1.12.1_new/dictd.c
---- dictd-1.12.1/dictd.c	2011-01-09 17:53:27.000000000 +0100
-+++ dictd-1.12.1_new/dictd.c	2014-02-25 16:12:49.752301674 +0100
-@@ -329,6 +329,7 @@ static void xsigprocmask (int how, const
+--- a/dictd.c
++++ b/dictd.c
+@@ -332,6 +332,7 @@ static void xsigprocmask (int how, const
     }
  }
  
@@ -9,7 +8,7 @@ diff -purN dictd-1.12.1/dictd.c dictd-1.12.1_new/dictd.c
  static void block_signals (void)
  {
     sigset_t set;
-@@ -350,6 +351,7 @@ static void unblock_signals (void)
+@@ -353,6 +354,7 @@ static void unblock_signals (void)
  
     xsigprocmask (SIG_UNBLOCK, &set, NULL);
  }
@@ -17,7 +16,7 @@ diff -purN dictd-1.12.1/dictd.c dictd-1.12.1_new/dictd.c
  
  static void handler( int sig )
  {
-@@ -1264,21 +1266,22 @@ static void release_root_privileges( voi
+@@ -1266,21 +1268,22 @@ static void release_root_privileges( voi
   * -- Bob Hilliard
   */
  {
@@ -75,7 +74,7 @@ diff -purN dictd-1.12.1/dictd.c dictd-1.12.1_new/dictd.c
  
     const char *       default_strategy_arg = "???";
  
-@@ -1696,7 +1701,7 @@ int main (int argc, char **argv, char **
+@@ -1707,7 +1712,7 @@ int main (int argc, char **argv, char **
  
     if (detach){
        /* become a daemon */
