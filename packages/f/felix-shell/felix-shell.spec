@@ -1,7 +1,7 @@
 #
 # spec file for package felix-shell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@ Release:        0
 Summary:        Apache Felix Shell Service
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://felix.apache.org
+URL:            https://felix.apache.org
 Source0:        http://archive.apache.org/dist/felix/%{bundle}-%{version}-source-release.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:felix-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.osgi:org.osgi.compendium)
-BuildRequires:  mvn(org.osgi:org.osgi.core)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildArch:      noarch
 
 %description
@@ -48,6 +48,10 @@ This package contains API documentation for %{name}.
 
 %pom_remove_plugin org.codehaus.mojo:rat-maven-plugin
 
+# Use latest OSGi implementation
+%pom_change_dep :org.osgi.core org.osgi:osgi.core
+%pom_change_dep :org.osgi.compendium org.osgi:osgi.cmpn
+
 %pom_add_dep junit:junit::test
 
 %{mvn_file} :%{bundle} "felix/%{bundle}"
@@ -63,11 +67,10 @@ This package contains API documentation for %{name}.
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE
-%doc NOTICE DEPENDENCIES
+%license LICENSE NOTICE
+%doc DEPENDENCIES
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE
-%doc NOTICE
+%license LICENSE NOTICE
 
 %changelog
