@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr  1 09:10:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.5.1
+  - Includes bug fix from 2.21.0.
+  - Fix list of nullable nested fields ``List(Nested(Field, allow_none=True)``
+    (:issue:`1497`). Because this fix reverts an optimization introduced to
+    speed-up serialization and deserialization of lists of nested fields, a
+    negative impact on performance in this specific case is expected.
+  - Improve type coverage (:issue:`1479`). Thanks :user:`Reskov`.
+  - Fix typing for ``data`` param of ``Schema.load`` and ``ValidationError`` (:issue:`1492`).
+    Thanks :user:`mehdigmira` for reporting and thanks :user:`dfirst` for the PR.
+  - Remove unnecessary typecasts (:pr:`1500`). Thanks :user:`hukkinj1`.
+  - Remove useless ``_serialize`` override in ``UUID`` field (:pr:`1489`).
+  - ``fields.Nested`` may take a callable that returns a schema instance.
+    Use this to resolve order-of-declaration issues when schemas nest each other (:issue:`1146`).
+  - Passing the string ``"self"`` to ``fields.Nested`` is deprecated.
+    Use a callable instead.
+  - Fix typing for ``Number._format_num`` (:pr:`1466`). Thanks :user:`hukkinj1`.
+  - Make mypy stricter and remove dead code (:pr:`1467`). Thanks again, :user:`hukkinj1`.
+
+-------------------------------------------------------------------
 Wed Nov 13 15:40:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 3.2.2:
