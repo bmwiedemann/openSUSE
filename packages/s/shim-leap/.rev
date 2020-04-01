@@ -83,4 +83,12 @@
 - Use &quot;suse_version&quot; instead of &quot;sle_version&quot; to avoid shim_lib64_share_compat being set in Tumbleweed forever.</comment>
     <requestid>789646</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>8e4407f422e74168e368e5c1c400c18b</srcmd5>
+    <version>14</version>
+    <time>1585761388</time>
+    <user>dimstar_suse</user>
+    <comment>Use the full path of efibootmgr to avoid errors when invoking shim-install from packagekitd (bsc#1168104)</comment>
+    <requestid>790405</requestid>
+  </revision>
 </revisionlist>

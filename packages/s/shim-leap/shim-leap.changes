@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:38:56 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use the full path of efibootmgr to avoid errors when invoking
+  shim-install from packagekitd (bsc#1168104)
+
+-------------------------------------------------------------------
 Mon Mar 30 06:05:58 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use "suse_version" instead of "sle_version" to avoid
