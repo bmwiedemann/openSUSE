@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mbstrdecoder
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT
@@ -60,7 +60,7 @@ sed -i '/build =/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
