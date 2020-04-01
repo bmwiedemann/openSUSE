@@ -17,11 +17,12 @@
 
 
 Name:           openSUSE-MicroOS-release
-Version:        20200330
+Version:        20200331
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
 Group:          System/Fhs
+Source100:      weakremovers.inc
 BuildRequires:  skelcd-openSUSE
 Requires:       issue-generator
 # Make sure we are at SLES12 SP2 level
@@ -41,11 +42,136 @@ Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
 Provides:       system-installation() = openSUSE-MicroOS
 # this package should only be available for the "basearchs" of a product
 ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
+# bnc#826592
+Provides:       weakremover(kernel-default) < 3.11
+Provides:       weakremover(kernel-desktop) < 4.2
+Provides:       weakremover(kernel-ec2) < 3.11
+Provides:       weakremover(kernel-pae) < 3.11
+Provides:       weakremover(kernel-vanilla) < 3.11
+Provides:       weakremover(kernel-xen) < 3.11
+# migrated from MANUAL_OBSOLETES/packages
+Provides:       weakremover(boost-license1_56_0)
+Provides:       weakremover(boost-license1_59_0)
+Provides:       weakremover(gpg-pubkey-3d25d3d9-36e12d04)
+Provides:       weakremover(lib++dfb-1_7-6)
+Provides:       weakremover(libastro-qt5-1)
+Provides:       weakremover(libboost_atomic1_59_0)
+Provides:       weakremover(libboost_atomic1_60_0)
+Provides:       weakremover(libboost_atomic1_62_0)
+Provides:       weakremover(libboost_atomic1_63_0)
+Provides:       weakremover(libboost_chrono1_59_0)
+Provides:       weakremover(libboost_chrono1_60_0)
+Provides:       weakremover(libboost_chrono1_62_0)
+Provides:       weakremover(libboost_chrono1_63_0)
+Provides:       weakremover(libboost_container1_59_0)
+Provides:       weakremover(libboost_container1_60_0)
+Provides:       weakremover(libboost_container1_62_0)
+Provides:       weakremover(libboost_container1_63_0)
+Provides:       weakremover(libboost_context1_59_0)
+Provides:       weakremover(libboost_context1_60_0)
+Provides:       weakremover(libboost_context1_62_0)
+Provides:       weakremover(libboost_context1_63_0)
+Provides:       weakremover(libboost_coroutine1_59_0)
+Provides:       weakremover(libboost_coroutine1_60_0)
+Provides:       weakremover(libboost_coroutine1_62_0)
+Provides:       weakremover(libboost_coroutine1_63_0)
+Provides:       weakremover(libboost_date_time1_59_0)
+Provides:       weakremover(libboost_date_time1_60_0)
+Provides:       weakremover(libboost_date_time1_62_0)
+Provides:       weakremover(libboost_date_time1_63_0)
+Provides:       weakremover(libboost_filesystem1_59_0)
+Provides:       weakremover(libboost_filesystem1_60_0)
+Provides:       weakremover(libboost_filesystem1_62_0)
+Provides:       weakremover(libboost_filesystem1_63_0)
+Provides:       weakremover(libboost_graph1_59_0)
+Provides:       weakremover(libboost_graph1_60_0)
+Provides:       weakremover(libboost_graph1_62_0)
+Provides:       weakremover(libboost_graph1_63_0)
+Provides:       weakremover(libboost_iostreams1_59_0)
+Provides:       weakremover(libboost_locale1_59_0)
+Provides:       weakremover(libboost_log1_59_0)
+Provides:       weakremover(libboost_log1_60_0)
+Provides:       weakremover(libboost_log1_62_0)
+Provides:       weakremover(libboost_log1_63_0)
+Provides:       weakremover(libboost_math1_59_0)
+Provides:       weakremover(libboost_program_options1_59_0)
+Provides:       weakremover(libboost_python1_59_0)
+Provides:       weakremover(libboost_random1_59_0)
+Provides:       weakremover(libboost_regex1_59_0)
+Provides:       weakremover(libboost_regex1_60_0)
+Provides:       weakremover(libboost_regex1_62_0)
+Provides:       weakremover(libboost_regex1_63_0)
+Provides:       weakremover(libboost_serialization1_59_0)
+Provides:       weakremover(libboost_signals1_59_0)
+Provides:       weakremover(libboost_system1_56_0)
+Provides:       weakremover(libboost_system1_59_0)
+Provides:       weakremover(libboost_test1_59_0)
+Provides:       weakremover(libboost_thread1_56_0)
+Provides:       weakremover(libboost_thread1_59_0)
+Provides:       weakremover(libboost_timer1_59_0)
+Provides:       weakremover(libboost_wave1_59_0)
+Provides:       weakremover(libcamel-1_2-54)
+Provides:       weakremover(libdialog12)
+Provides:       weakremover(libdirectfb-1_7-6)
+Provides:       weakremover(libdns146)
+Provides:       weakremover(libdns160)
+Provides:       weakremover(libdns161)
+Provides:       weakremover(libgdict-1_0-9)
+Provides:       weakremover(libgit2-23)
+Provides:       weakremover(libgpaste4)
+Provides:       weakremover(libhdf5-11)
+Provides:       weakremover(libhdf5_hl11)
+Provides:       weakremover(libicu54_1)
+Provides:       weakremover(libicu54_1-ledata)
+Provides:       weakremover(libicu55_1)
+Provides:       weakremover(libicu55_1-ledata)
+Provides:       weakremover(libicu56_1)
+Provides:       weakremover(libicu56_1-ledata)
+Provides:       weakremover(libimobiledevice5)
+Provides:       weakremover(libisc142)
+Provides:       weakremover(libisc148)
+Provides:       weakremover(libisl13)
+Provides:       weakremover(libixion-0_10-0)
+Provides:       weakremover(liblmdb-0_9_16)
+Provides:       weakremover(libmicrohttpd11)
+Provides:       weakremover(libminiupnpc15)
+Provides:       weakremover(libnis1)
+Provides:       weakremover(libntfs-3g86)
+Provides:       weakremover(liborcus-0_10-0)
+Provides:       weakremover(libpoppler47)
+Provides:       weakremover(libpoppler48)
+Provides:       weakremover(libpoppler49)
+Provides:       weakremover(libpoppler50)
+Provides:       weakremover(libpoppler51)
+Provides:       weakremover(libpoppler52)
+Provides:       weakremover(libpoppler53)
+Provides:       weakremover(libpoppler54)
+Provides:       weakremover(libpoppler55)
+Provides:       weakremover(libpoppler56)
+Provides:       weakremover(libpoppler57)
+Provides:       weakremover(libpoppler58)
+Provides:       weakremover(libpoppler59)
+Provides:       weakremover(libpoppler61)
+Provides:       weakremover(libpoppler62)
+Provides:       weakremover(libpoppler63)
+Provides:       weakremover(libpoppler64)
+Provides:       weakremover(libpoppler65)
+Provides:       weakremover(libprocps4)
+Provides:       weakremover(libprocps5)
+Provides:       weakremover(libpsl0)
+Provides:       weakremover(libsgutils2-1_40-2)
+Provides:       weakremover(libsgutils2-1_41-2)
+Provides:       weakremover(libvpx2)
+Provides:       weakremover(libxtables11)
+Provides:       weakremover(libzip4)
+Provides:       weakremover(mt_st)
+Provides:       weakremover(openssl-debuginfo)
+%include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = openSUSE-MicroOS
-Provides:       product(openSUSE-MicroOS) = 20200330-0
+Provides:       product(openSUSE-MicroOS) = 20200331-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20200330
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Dmicroos%3A20200331
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(openSUSE-MicroOS)
@@ -61,7 +187,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200330-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200331-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -77,7 +203,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(kubic-dvd)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200330-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200331-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description kubic-dvd
@@ -93,7 +219,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200330-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200331-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -109,7 +235,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kubic)
-Provides:       product_flavor(openSUSE-MicroOS) = 20200330-0
+Provides:       product_flavor(openSUSE-MicroOS) = 20200331-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance-kubic
@@ -167,11 +293,11 @@ cat >$RPM_BUILD_ROOT/etc/products.d/openSUSE-MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE-MicroOS</name>
-  <version>20200330</version>
+  <version>20200331</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-microos:20200330</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse-microos:20200331</cpeid>
   <productline>openSUSE-MicroOS</productline>
   <register>
     <pool>
