@@ -354,8 +354,8 @@ index 7c99168..28ad59f 100644
        <plugin id="org.sat4j.core"/>
        <plugin id="org.sat4j.pb"/>
        <plugin id="org.tukaani.xz"/>
-+      <plugin id="org.kxml2"/>
-+      <plugin id="org.xmlpull"/>
++      <plugin id="osgi.cmpn"/>
++      <plugin id="javax.servlet-api"/>
 +      <plugin id="org.fedoraproject.p2"/>
     </plugins>
  

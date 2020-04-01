@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:53:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tycho-use-custom-resolver.patch
+    + fix build against the new felix-scr version
+
+-------------------------------------------------------------------
 Mon Mar 16 14:00:25 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the right bootstrap packages to avoid cycles
