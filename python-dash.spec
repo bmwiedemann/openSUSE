@@ -23,19 +23,34 @@ Version:        1.9.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/plotly/dash
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 0.12
+Requires:       python-Flask >= 1.0.2
 Requires:       python-Flask-Compress
+# dash/testing/dash_page.py
+Requires:       python-beautifulsoup4
+Requires:       python-dash-core-components >= 1.8.1
+Requires:       python-dash-html-components >= 1.0.2
+Requires:       python-dash-renderer >= 1.2.4
+Requires:       python-dash-table >= 4.6.1
+Requires:       python-future
+# needed for dash/testing/browser.py
+Requires:       python-percy
 Requires:       python-plotly
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Flask >= 0.12}
+BuildRequires:  %{python_module Flask >= 1.0.2}
 BuildRequires:  %{python_module Flask-Compress}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module dash-core-components >= 1.8.1}
+BuildRequires:  %{python_module dash-html-components >= 1.0.2}
+BuildRequires:  %{python_module dash-renderer >= 1.2.4}
+BuildRequires:  %{python_module dash-table >= 4.6.1}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module percy}
 BuildRequires:  %{python_module plotly}
 # /SECTION
 %python_subpackages
@@ -51,6 +66,8 @@ analytical python code.
 %prep
 %setup -q -n dash-%{version}
 sed -i -e '/^#!\//, 1d' dash/extract-meta.js
+# no hardcoded versions
+sed -i -e 's:==:>=:g' requires-*txt
 
 %build
 %python_build

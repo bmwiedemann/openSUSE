@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>785218</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c525329ccc16e1c2c231bd1da5d04c6a</srcmd5>
+    <version>1.9.1</version>
+    <time>1585760918</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix all the runtime dependencies</comment>
+    <requestid>790028</requestid>
+  </revision>
 </revisionlist>
