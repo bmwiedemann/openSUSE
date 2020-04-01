@@ -32,4 +32,12 @@
 </comment>
     <requestid>712778</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>743370f44a2605cb9f8a93482740a38b</srcmd5>
+    <version>3.5.0</version>
+    <time>1585761513</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against OSGi 7</comment>
+    <requestid>790521</requestid>
+  </revision>
 </revisionlist>

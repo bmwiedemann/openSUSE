@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:09:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Addes patch:
+  * 0001-Port-to-OSGI-7.0.0.patch
+    + Port to OSGI 7.0.0
+
+-------------------------------------------------------------------
 Wed Jun 26 15:29:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Add aliases for the aqute-bnd artifact

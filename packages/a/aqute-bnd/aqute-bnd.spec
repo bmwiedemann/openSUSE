@@ -1,7 +1,7 @@
 #
 # spec file for package aqute-bnd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        BND Tool
 # Part of jpm is under BSD, but jpm is not included in binary RPM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://bnd.bndtools.org/
+URL:            https://bnd.bndtools.org/
 Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
 Source1:        bnd-%{version}.REL-build_xml.tar.xz
 Source3:        https://repo1.maven.org/maven2/biz/aQute/bnd/aQute.libg/%{version}/aQute.libg-%{version}.pom
@@ -32,7 +32,8 @@ Source5:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/%{
 Source6:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.annotation/%{version}/biz.aQute.bnd.annotation-%{version}.pom
 Patch0:         0001-Disable-removed-commands.patch
 Patch1:         0002-Fix-ant-compatibility.patch
-Patch2:         aqute-bnd-3.5.0-java8compat.patch
+Patch2:         0001-Port-to-OSGI-7.0.0.patch
+Patch3:         aqute-bnd-3.5.0-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -91,6 +92,7 @@ build-jar-repository -s lib \
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # the commands pull in more dependencies than we want (felix-resolver, jetty)
 rm biz.aQute.bnd/src/aQute/bnd/main/{RemoteCommand,ResolveCommand}.java

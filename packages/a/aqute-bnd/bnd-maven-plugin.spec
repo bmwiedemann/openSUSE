@@ -1,7 +1,7 @@
 #
 # spec file for package bnd-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        BND Maven plugin
 # Part of jpm is under BSD, but jpm is not included in binary RPM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://bnd.bndtools.org/
+URL:            https://bnd.bndtools.org/
 Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
