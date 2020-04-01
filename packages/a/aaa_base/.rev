@@ -3751,4 +3751,11 @@
   * get_kernel_version: support xz compressed kernel (boo#1162581).</comment>
     <requestid>787795</requestid>
   </revision>
+  <revision rev="466" vrev="2">
+    <srcmd5>d8d6c236b7ea01d7316b0d91078d0cbb</srcmd5>
+    <version>84.87+git20200224.7105b32</version>
+    <time>1585761475</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1168341</comment>
+  </revision>
 </revisionlist>
