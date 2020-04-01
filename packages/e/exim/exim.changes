@@ -1,3 +1,5 @@
+Wed Apr  1 12:52:10 UTC 2020 - wullinger@rz.uni-kiel.de
+- don't create logfiles during install
 -------------------------------------------------------------------
 Mon Jan 13 08:48:53 CET 2020 - wullinger@rz.uni-kiel.de
 - add a spec-file workaround for bsc#1160726

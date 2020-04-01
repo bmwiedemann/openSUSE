@@ -73,7 +73,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.93.0.4
-Release:        1
+Release:        2
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -415,10 +415,6 @@ if ! test -s etc/exim/exim.conf; then
 		echo copying default config file to /etc/exim/exim.conf
 	fi
 fi
-# create logfiles if missing
-for i in var/log/exim/main.log var/log/exim/panic.log var/log/exim/reject.log; do
-	if ! test -e $i; then touch $i; chown mail:mail $i; chmod 640 $i ; fi
-done
 %if 0%{?suse_version} > 1220
 %{fillup_only}
 %service_add_post exim.service
