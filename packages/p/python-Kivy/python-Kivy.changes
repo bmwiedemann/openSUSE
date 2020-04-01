@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:34:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove nose dep as we are not running the tests 
+
+-------------------------------------------------------------------
 Mon Oct 14 11:45:09 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

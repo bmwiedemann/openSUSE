@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kivy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyenchant}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  Mesa-devel
