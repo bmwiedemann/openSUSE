@@ -3197,6 +3197,7 @@ unsorted:
   - frameworkintegration-devel 
   - frameworkintegration-devel-32bit: [x86_64] 
   - frameworkintegration-plugin-32bit: [x86_64] 
+  - fred 
   - free-ttf-fonts 
   - freealut-devel 
   - freecell-solver 
@@ -5063,6 +5064,7 @@ unsorted:
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
   - gstreamer-plugin-pipewire 
+  - gstreamer-plugin-pocketsphinx 
   - gstreamer-plugin-python 
   - gstreamer-plugins-bad-32bit: [x86_64] 
   - gstreamer-plugins-bad-chromaprint 
@@ -10981,6 +10983,7 @@ unsorted:
   - libpng16-tools 
   - libpnglite0 
   - libpocketsphinx1 
+  - libpocketsphinx3 
   - libpocl2 
   - libpodofo-devel 
   - libpolkit-qt5-1-1-32bit: [x86_64] 
@@ -11024,7 +11027,7 @@ unsorted:
   - libprimesieve-devel 
   - libprimesieve9 
   - libprofiler0 
-  - libproj15 
+  - libproj19 
   - libprometheus-cpp0 
   - libpromises-devel 
   - libpromises3 
@@ -11825,6 +11828,7 @@ unsorted:
   - libspf2-devel 
   - libspf2-tools 
   - libsphinxbase1 
+  - libsphinxbase3 
   - libsphinxclient-0_0_1 
   - libsphinxclient-devel 
   - libspice-server-devel 
@@ -15926,6 +15930,7 @@ unsorted:
   - palette-lang 
   - palm-db-tools 
   - pam-devel-32bit: [x86_64] 
+  - pam-extra 
   - pam-test 
   - pam_ccreds 
   - pam_ccreds-32bit: [x86_64] 
@@ -17622,6 +17627,8 @@ unsorted:
   - po4a-lang 
   - pocketsphinx 
   - pocketsphinx-devel 
+  - pocketsphinx5 
+  - pocketsphinx5-devel 
   - pocl 
   - pocl-devel 
   - poco-cpspc 
@@ -18329,7 +18336,6 @@ unsorted:
   - python2-Parsley 
   - python2-Paste 
   - python2-PasteDeploy 
-  - python2-PasteScript 
   - python2-Paver 
   - python2-PeachPy: [x86_64] 
   - python2-PeakUtils 
@@ -18753,7 +18759,6 @@ unsorted:
   - python2-cached-property 
   - python2-cachelib 
   - python2-cachetools 
-  - python2-cachey 
   - python2-cachy 
   - python2-cairocffi 
   - python2-cairocffi-pixbuf 
@@ -18795,7 +18800,6 @@ unsorted:
   - python2-certifi 
   - python2-certstream 
   - python2-cffi 
-  - python2-cfgv 
   - python2-cfn-lint 
   - python2-cfscrape 
   - python2-cftime 
@@ -19120,7 +19124,6 @@ unsorted:
   - python2-geventhttpclient 
   - python2-ggplot 
   - python2-girder-client 
-  - python2-git-pw 
   - python2-git-url-parse 
   - python2-gitdb2 
   - python2-github3.py 
@@ -19198,7 +19201,6 @@ unsorted:
   - python2-httpstatus35 
   - python2-humanfriendly 
   - python2-humanhash3 
-  - python2-humanize 
   - python2-humanreadable 
   - python2-hupper 
   - python2-husl 
@@ -19207,7 +19209,6 @@ unsorted:
   - python2-hyperlink 
   - python2-hypothesis 
   - python2-hypothesis-fspaths 
-  - python2-i3ipc 
   - python2-icalendar 
   - python2-identify 
   - python2-idna 
@@ -19453,9 +19454,7 @@ unsorted:
   - python2-mysql-connector-python 
   - python2-mysqlclient 
   - python2-nagiosplugin 
-  - python2-napalm 
   - python2-napalm-asa 
-  - python2-napalm-procurve 
   - python2-nbconvert 
   - python2-nbformat 
   - python2-nbxmpp 
@@ -19506,6 +19505,7 @@ unsorted:
   - python2-odfpy 
   - python2-odorik 
   - python2-opcodes 
+  - python2-openapi-schema-validator 
   - python2-openapi-spec-validator 
   - python2-opencensus 
   - python2-opencensus-context 
@@ -19665,7 +19665,6 @@ unsorted:
   - python2-py3status 
   - python2-pyDOE2 
   - python2-pyFFTW 
-  - python2-pyIOSXR 
   - python2-pyLibravatar 
   - python2-pyModis 
   - python2-pyOCD 
@@ -20528,7 +20527,6 @@ unsorted:
   - python3-Parsley 
   - python3-Paste 
   - python3-PasteDeploy 
-  - python3-PasteScript 
   - python3-Paver 
   - python3-PeachPy: [x86_64] 
   - python3-PeakUtils 
@@ -21284,6 +21282,7 @@ unsorted:
   - python3-django-registration 
   - python3-django-rest-framework-client 
   - python3-django-rest-framework-social-oauth2 
+  - python3-django-rest-invitations 
   - python3-django-rest-knox 
   - python3-django-reversion 
   - python3-django-seed 
@@ -21340,6 +21339,7 @@ unsorted:
   - python3-dukpy 
   - python3-dukpy-kovidgoyal 
   - python3-dynaconf 
+  - python3-easy-thumbnails 
   - python3-easydev 
   - python3-easygui 
   - python3-easypysmb 
@@ -21495,7 +21495,6 @@ unsorted:
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
-  - python3-git-pw 
   - python3-git-url-parse 
   - python3-gitdb 
   - python3-gitdb2 
@@ -21551,6 +21550,7 @@ unsorted:
   - python3-h11 
   - python3-h5netcdf 
   - python3-h5py 
+  - python3-hammett 
   - python3-hankel 
   - python3-hanzidentifier 
   - python3-happybase 
@@ -22047,6 +22047,7 @@ unsorted:
   - python3-onnxconverter-common 
   - python3-opcodes 
   - python3-openapi-core 
+  - python3-openapi-schema-validator 
   - python3-openapi-spec-validator 
   - python3-opencensus 
   - python3-opencensus-context 
@@ -22206,6 +22207,7 @@ unsorted:
   - python3-pname 
   - python3-pocketsphinx 
   - python3-pocketsphinx-python 
+  - python3-pocketsphinx5 
   - python3-podcastparser 
   - python3-podman 
   - python3-podman-compose 
@@ -22811,6 +22813,7 @@ unsorted:
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
   - python3-sphinxbase 
+  - python3-sphinxbase5 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
   - python3-sphinxcontrib-asyncio 
@@ -25012,6 +25015,8 @@ unsorted:
   - sphinx 
   - sphinxbase 
   - sphinxbase-devel 
+  - sphinxbase5 
+  - sphinxbase5-devel 
   - spi-tools 
   - spice-gtk 
   - spice-gtk-devel 
@@ -25099,6 +25104,7 @@ unsorted:
   - sssd-wbclient 
   - sssd-wbclient-devel 
   - sssd-winbind-idmap 
+  - st 
   - staging-build-key 
   - stalonetray 
   - stan 
