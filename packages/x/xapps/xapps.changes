@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 22 13:04:56 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Add gtkstatusicon-fix.patch, backport to fix crashing tray icon
+  (boo#1165082) 
+
+-------------------------------------------------------------------
 Sun Mar  1 05:20:54 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - Add xapps-python3.patch, fix issues to build without python2 

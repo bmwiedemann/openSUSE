@@ -1,7 +1,7 @@
 #
 # spec file for package xapps
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/
 Patch0:         xapps-void-return-no-return.patch
 # PATCH-FIX-UPSTREAM xapps-python3.patch -- python2 is gone
 Patch1:         xapps-python3.patch
+# PATCH-FIX-UPSTREAM gtkstatusicon-fix.patch maurizio.galli@gmail.com -- Backport fix for icon crashing when using gtkstatus icon
+Patch2:         gtkstatusicon-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
