@@ -1,7 +1,7 @@
 #
 # spec file for package netty3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,16 +36,16 @@ BuildRequires:  mvn(com.jcraft:jzlib)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(io.netty:netty-tcnative)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(log4j:log4j)
+BuildRequires:  mvn(log4j:log4j:1.2.16)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.felix:org.osgi.compendium)
-BuildRequires:  mvn(org.apache.felix:org.osgi.core)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:  mvn(org.jboss.logging:jboss-logging)
 BuildRequires:  mvn(org.jboss.marshalling:jboss-marshalling)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 Requires:       netty-tcnative
@@ -97,6 +97,10 @@ rm -rf jar doc license
 
 # Force use servlet 3.1 apis
 %pom_change_dep :servlet-api javax.servlet:javax.servlet-api:3.1.0
+
+# use latest OSGi implementation
+%pom_change_dep :org.osgi.core org.osgi:osgi.core
+%pom_change_dep :org.osgi.compendium org.osgi:osgi.cmpn
 
 # Uneeded tasks
 %pom_remove_plugin :maven-assembly-plugin
