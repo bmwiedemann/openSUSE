@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr  1 11:52:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 14.0
+  * Merged pull request `#80`_ that drops support for Python 3.4 which
+    has gone end-of-life and now represents less than 1% of PyPI downloads.
+  * Improved compatibility with the Python standard library by changing
+    the order of positional arguments received by the initializer of the
+    :class:`~coloredlogs.ColoredFormatter` class (as suggested in `#64`_
+    and `#75`_).
+  * Add support for the ``%(username)s`` field (requested in `#76`_) and properly
+    document supported custom fields.
+  * Consistently use ``console`` highlighting in documentation.
+  * Fix a broken link in the readme.
+  * Merge pull request `#79`_ which adds support for Python 3.8.
+  * Fix support for custom log record factories and add a test to avoid
+    regressions (`#47`_, `#59`_).
+  * Change ``make screenshots`` to be Python 3 compatible and document
+    additional requirements (`#65`_).
+
+-------------------------------------------------------------------
 Sat Feb 15 08:30:15 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 11.0:

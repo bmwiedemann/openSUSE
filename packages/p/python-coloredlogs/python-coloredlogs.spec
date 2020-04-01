@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coloredlogs
-Version:        11.0
+Version:        14.0
 Release:        0
 Summary:        Colored terminal output for Python's logging module
 License:        MIT
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/xolox/python-coloredlogs
 Source:         https://files.pythonhosted.org/packages/source/c/coloredlogs/coloredlogs-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE test_cli_conversion_test.patch mcepl@suse.com
-# With using alternatives, we don't have versionless command in time of %check
+# With using alternatives, we don't have versionless command in time of %%check
 Patch0:         test_cli_conversion_test.patch
 BuildRequires:  %{python_module capturer >= 2.4}
 BuildRequires:  %{python_module humanfriendly >= 6.1}
