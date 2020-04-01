@@ -1,7 +1,7 @@
 #
 # spec file for package ulfius
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_6
 Name:           ulfius
-Version:        2.6.5
+Version:        2.6.6
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
