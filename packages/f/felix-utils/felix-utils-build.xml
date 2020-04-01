@@ -10,8 +10,8 @@
 
   <property name="project.groupId" value="org.apache.felix"/>
   <property name="project.name" value="Apache Felix Utils"/>
-  <property name="project.version" value="1.10.4"/>
-  <property name="spec.version" value="1.10"/>
+  <property name="project.version" value="1.11.4"/>
+  <property name="spec.version" value="1.11"/>
   <property name="project.artifactId" value="org.apache.felix.utils"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -25,7 +25,7 @@
   <property name="test.reports" value="${build.dir}/test-reports"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
   
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <!-- ====================================================================== -->

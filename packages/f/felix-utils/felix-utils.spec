@@ -1,7 +1,7 @@
 #
 # spec file for package felix-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,20 @@
 %global bundle org.apache.felix.utils
 %bcond_with tests
 Name:           felix-utils
-Version:        1.10.4
+Version:        1.11.4
 Release:        0
 Summary:        Utility classes for OSGi
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://felix.apache.org
-Source0:        http://repo1.maven.org/maven2/org/apache/felix/%{bundle}/%{version}/%{bundle}-%{version}-source-release.tar.gz
+URL:            https://felix.apache.org
+Source0:        https://repo1.maven.org/maven2/org/apache/felix/%{bundle}/%{version}/%{bundle}-%{version}-source-release.tar.gz
 Source1:        %{name}-build.xml
+Patch0:         0000-Port-to-osgi-cmpn.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  felix-osgi-compendium
-BuildRequires:  felix-osgi-core
 BuildRequires:  javapackages-local
+BuildRequires:  osgi-compendium
+BuildRequires:  osgi-core
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -51,9 +52,10 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{bundle}-%{version}
+%patch0 -p1
 cp -p %{SOURCE1} build.xml
 mkdir -p lib
-build-jar-repository -s lib felix
+build-jar-repository -s lib osgi-core osgi-compendium
 %if %{with tests}
 build-jar-repository -s lib junit hamcrest/core mockito
 %endif
