@@ -78,4 +78,25 @@
     <comment></comment>
     <requestid>766362</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67e8a4248e4978da42ea76f38729c344</srcmd5>
+    <version>5.0.8</version>
+    <time>1585761462</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.0.8
+  * Fixes not subscriptable objects (#858) (03/09/20)
+  * Support to put/get/delete default encryption configuration apis on a bucket (#855) (02/24/20)
+  * Fix deprecation warnings due to invalid escape sequences. (#853) (02/10/20)
+  * Add support for Amazon S3 Transfer Acceleration for presigned urls (#827) (02/02/20)
+  * Add note on concurrent usage of Minio client (#849) (02/01/20)
+  * python 3.8 compatibility (#847) (01/27/20)
+  * cleanup whitespace and fix license header (#845) (01/22/20)
+  * fix: relax bucket_name validation for existing buckets (#840) (01/22/20)
+  * Implement credentials object (similar to minio-go) to enable AWS IAM (#817) (01/22/20)
+- added sources
+  https://github.com/minio/minio-py/issues/865
+  + config.json.sample
+  + credentials.sample</comment>
+    <requestid>790578</requestid>
+  </revision>
 </revisionlist>
