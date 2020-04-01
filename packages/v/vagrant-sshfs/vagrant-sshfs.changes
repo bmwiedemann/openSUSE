@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  1 20:38:10 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix test suite failures (boo#1168371)
+
+  The testsuite was implicitly assuming that /sbin/ is a symlink to /usr/sbin
+  (which is the case on Fedora, but not on opensuse). By switching to the
+  /var/run -> /run symlink, we fix this issue.
+
+  Also, the sed call in the spec file to change the Fedora box to
+  opensuse/Tumbleweed.$(uname -m) got removed and instead was moved into the
+  packaged Vagrantfile.
+
+  Added patches:
+  * 0001-Use-var-run-run-symlink-for-tests.patch
+  * 0002-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 06:49:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix vagrant-ssh-testsuite for aarch64 by using 

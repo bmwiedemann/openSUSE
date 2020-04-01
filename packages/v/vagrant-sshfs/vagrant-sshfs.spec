@@ -34,6 +34,10 @@ Source1:        %{URL}/releases/download/v%{version}/%{mod_full_name}.tar.gz.asc
 Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 # custom script to automate the test suite run
 Source3:        testsuite.sh
+# https://github.com/dustymabe/vagrant-sshfs/pull/109
+Patch0:         0001-Use-var-run-run-symlink-for-tests.patch
+# FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
+Patch1:         0002-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
@@ -66,7 +70,7 @@ likely do not want to install this package, unless you want to test
 vagrant-sshfs.
 
 %prep
-%autosetup -c
+%autosetup -c -p1
 
 # since we don't have the full git repo we can't use `git ls-files`
 sed -i 's/git ls-files -z/find . -type f -print0/' %{vagrant_plugin_name}.gemspec
@@ -83,7 +87,6 @@ mv %{vagrant_plugin_name}.gemspec %{mod_full_name}.gemspec
 %install
 %vagrant_plugin_install -n %{mod_full_name}.gem
 install -p -m 0755 %{SOURCE3} %{buildroot}/%{vagrant_plugin_instdir}/test/misc/
-sed -i "s#box  = '.*/.*'#box  = 'opensuse/Tumbleweed.$(uname -m)'#" %{buildroot}/%{vagrant_plugin_instdir}/test/misc/Vagrantfile
 
 %files
 %{vagrant_plugin_instdir}

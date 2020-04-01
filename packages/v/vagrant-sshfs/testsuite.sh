@@ -36,7 +36,7 @@ SLAVE_MACHINE_ID=$(vagrant ssh -- cat /etc/machine-id)
 
 # extracted from dotests.sh:
 SLAVE_FORWARD_MACHINE_ID=$(vagrant ssh -- cat /tmp/forward_slave_mount_etc/machine-id)
-SLAVE_FORWARD_SYMLINK_MACHINE_ID=$(vagrant ssh -- cat /usr/sbin/forward_slave_mount_sym_link_test/machine-id)
+SLAVE_FORWARD_SYMLINK_MACHINE_ID=$(vagrant ssh -- cat /run/forward_slave_mount_sym_link_test/machine-id)
 
 FORWARD_MACHINE_ID=$(vagrant ssh -- cat /tmp/forward_normal_mount_etc/machine-id)
 
