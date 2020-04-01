@@ -33,14 +33,15 @@ BuildRequires:  python3-setuptools
 BuildRequires:  trytond
 
 URL:            http://health.gnu.org
-##ource0:        http://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+###http://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.SUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
 Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
+Source7:        gnuhealth-rpmlintrc
 Patch0:         shebang.diff
 ##atch1:         xmlfix.diff
 ##atch2:         demo.diff
@@ -135,11 +136,19 @@ install -p -m 755 scripts/demo/install_demo_database.sh %{buildroot}%{_bindir}/i
 #delete empty demo directory
 rm -rf scripts/demo
 
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
-install -p -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
-install -p -m 644 %{SOURCE4} $RPM_BUILD_ROOT%{_unitdir}/%{name}-webdav@.service
+mkdir -p %{buildroot}%{_unitdir}
+install -p -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
+install -p -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}-webdav@.service
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/tryton
+mkdir -p %{buildroot}%{_sysconfdir}/tryton
+
+#remove double license file:
+rm backend/fhir/client/COPYING
+
+#Move FHIR serer to examples directory
+mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
+mv backend/fhir* %{buildroot}%{_docdir}/%{name}/examples/.
+rmdir backend
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -169,23 +178,25 @@ EOF
 
 %preun
 %service_del_preun gnuhealth.service
+%service_del_preun gnuhealth-webdav@.service
 
 %postun
 %service_del_postun gnuhealth.service
+%service_del_postun gnuhealth-webdav@.service
 
 %files -n %{name}-orthanc
 %{python3_sitelib}/%{name}_orthanc*
 %{python3_sitelib}/trytond/modules/health_orthanc*
 
 %files 
-%defattr(744,root,root)
 %{_bindir}/gnuhealth-control
 %{_bindir}/openSUSE-gnuhealth-setup
 %{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
-%defattr(-,root,root)
-%doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.SUSE scripts/* backend/* config/* doc/*
+%doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.SUSE scripts/* config/* doc/*
+%{_docdir}/%{name}/examples* 
+%dir %{_sysconfdir}/tryton
 %license COPYING
 %exclude %{python3_sitelib}/%{name}_orthanc*
 %exclude %{python3_sitelib}/trytond/modules/health_orthanc*

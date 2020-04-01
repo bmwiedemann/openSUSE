@@ -1,7 +1,7 @@
 #
 # spec file for package jag
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           jag
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Arcade and Puzzle 2D Game in which you have to break all the target pieces
+# jag.xlabsoft.com is down
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
-# jag.xlabsoft.com is down
 URL:            https://salsa.debian.org/games-team/jag
-Source0:        https://salsa.debian.org/games-team/jag/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source1:        %{name}-icons.tar
+Source0:        https://salsa.debian.org/games-team/jag/-/archive/upstream/%{version}/%{name}-upstream-%{version}.tar.bz2
 Source2:        %{name}.appdata.xml
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -78,11 +77,11 @@ have beaten the last level and won the game.
 This package contains the level editor for JAG.
 
 %prep
-%setup -q -a1
+%setup -q -n %{name}-upstream-%{version}
 
 # qmake...
 sed -i 's#target.path = %{_prefix}/games/#target.path = %{_bindir}#' game.pro
-sed -i 's#target.path = %{_prefix}/games/#target.path = %{_bindir}#' src/editor/editor.pro
+sed -i 's#target.path = %{_prefix}/games/#target.path = %{_bindir}#' src/editor/jag-editor.pro
 
 %build
 %qmake5
@@ -101,18 +100,16 @@ pushd src/editor
 %qmake5_install
 popd
 
-# install icons
-for i in 22 32 48 64 72 96 128 256 ; do
-  install -Dm 0644 icons/%{name}_${i}x${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
-  install -Dm 0644 icons/%{name}-editor_${i}x${i}.png %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}-editor.png
-done
-
-# install Desktop files
-install -Dm 0644 debian/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+# Install the desktop files
+install -Dm 0644 src/jag.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %suse_update_desktop_file -c %{name}-editor "JAG Level Editor" JAG jag-editor jag-editor "Game;LogicGame;"
 
-# install software gallery metadata
+# Install icons for applications menus
+install -Dm 0644 src/images/jag.png %{buildroot}%{_datadir}/pixmaps/jag.png
+install -Dm 0644 src/editor/jag-editor.png %{buildroot}%{_datadir}/pixmaps/jag-editor.png
+
+# Install software gallery metadata
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
@@ -122,7 +119,7 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/pixmaps/jag.png
 
 %files data
 %license LICENSE
@@ -135,6 +132,6 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_bindir}/jag-editor
 %{_datadir}/applications/jag-editor.desktop
 %{_datadir}/games/%{name}/editor/
-%{_datadir}/icons/hicolor/*/apps/%{name}-editor.png
+%{_datadir}/pixmaps/jag-editor.png
 
 %changelog

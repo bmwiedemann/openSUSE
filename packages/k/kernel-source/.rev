@@ -5050,4 +5050,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.5.13 &amp; 5.5.12 incl. mac80211_hwsim fix</comment>
     <requestid>788420</requestid>
   </revision>
+  <revision rev="536" vrev="1">
+    <srcmd5>63cd1524983598ff131f31b3bcc2f33f</srcmd5>
+    <version>5.6.0</version>
+    <time>1585760852</time>
+    <user>dimstar_suse</user>
+    <comment>5.6</comment>
+    <requestid>789720</requestid>
+  </revision>
 </revisionlist>

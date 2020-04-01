@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:26:54 UTC 2020 - wbauer@tmo.at
+
+- Update to 4.2.9:
+  * See https://krita.org/en/item/krita-4-2-9-released/
+  * Brush outline no longer flickers when you hover over the canvas
+  * Added "Airbrush" and "Airbrush Rate" to the Color Smudge brush,
+    and a new Ratio setting
+  * Added a "Split Layer into Selection Mask" feature
+  * Fix transparency checkers looked white on HDR display
+    (kde#406698)
+  * Several fixes to file dialogs for overwriting and jpg files
+    (kde#412651)
+  * Fix Grow Selection expanding in one direction (kde#414647)
+  * Fix crash using onion skins on non-animated layers (kde#414668)
+  * Increase the limit in Layer Offset to 100k (kde#414625)
+  * Fix crash opening .kra with incorrect clone source (related to
+    (kde#414699)
+  * Prevent crash on addition of color to deleted palette with
+    colorpicker (kde#413548)
+  * Make Add subbrush off on changing multibrush tool's type from
+    Copy Translate (kde#415651)
+  * Improve rendering of predefined default Rect dab
+  * Set the default location for restored files to
+    QStandardPaths::PicturesLocation (kde#415810)
+  * Don't crash if remoteArguments is called when there isn't a
+    mainwindow (kde#415794)
+  * Delay initialization of brush paintop widget state (kde#415033)
+  * Reenable breeze: with the latest release, the bug with
+    comboboxes has been fixed
+  * Show the hand cursor if there is no colorize mask yet
+    (kde#415935)
+  * Fix logic for enabling/disabling options in stroke selection
+    dialog (kde#415896)
+  * ORA export, write entire layers instead of cropping them
+  * Fix endless recursion when assigning a profile (kde#414818)
+  * Fix a crash when cancelling Transform Tool action (kde#414672)
+  * Fix an obviously wrong assert in the gradients (kde#414550)
+  * Fix 1px brush offset in line tool (kde#407405)
+  * Fix Layer Filter Combobox with Breeze theme (kde#406595)
+  * Fix comparison of double spin box
+  * Fix PaletteDocker not showing palettes (kde#414890)
+  * Fix undo of replacing vector selection (kde#412808)
+  * Separate krita log dialog from system information
+  * Resource bundle: turn assert into check (kde#399008)
+  * Fix the python Canvas.setRotation method (kde#416126)
+  * Store and restore the geometry of the svg editor window
+    (kde#416097)
+  * Fix number of asserts with continued transform (kde#415625)
+  * Fix Touch Docker save button not working on new files
+    (kde#407905)
+  * Fix blur Filter inconsistencies (kde#416241)
+  * Fix border artifacts in layer styles (kde#414582)
+  * Use Qt::Popup for color selectors popup widgets (kde#410959)
+  * Always show color popup below the cursor (kde#394139)
+  * Remove the strength compatibility with older paintop presets
+    (kde#416335)
+  * Fixed unneeded error message in Render Animation (kde#412599)
+  * Fix canvas offset calculation (kde#416352)
+  * Layers with alpha channel disabled correctly export as
+    "svg:src-atop" for ORA
+  * Add icon to Close button of "About Krita" dialog box
+  * Fix memory leak in preset history docker
+  * Warn that Krita needs to be restarted after enabling/disabling
+    plugins (kde#416575)
+  * Workaround Qt 5.14's colormanagement preventing png files from
+    being saved (kde#416515)
+  * Fixes with last used filter command (kde#416706)
+  * Fix Increase/Decrease Brush Size and Switch To Previous Preset
+    buttons
+  * Fix Warp and Cage transform in master (kde#416505)
+  * Fix crazy snapping when resizing shapes (kde#414336)
+  * Fix hiccups when doing canvas actions (kde#414576, kde#415773)
+  * Fix animation rendering problem on small images (< 100px in
+    size) (kde#415367)
+  * Fix display of vector shapes when transformed with transform
+    tool (kde#417016)
+  * Fix hangup when loading image with generator/file layers
+    (kde#415891)
+  * Fix slowdown associated with the quick hide function of
+    Shift+click on layer visibility icons
+  * Fix canvas border color issue
+  * Fix issue when saving preferences
+  * A number of fixes with L*A*B* and CMYK thanks to L.E Segovia's
+    Season of KDE work
+  * Set setRedirectPolicy as per discussion on KDE mailing lists
+  * Fix crash when loading asl with tdta OSType
+  * Make "Save Incremental Version" update recently used files
+  * Correct logic for determining whether there are multiple
+    backups requested (kde#417914)
+  * Fix incorrect common curve in very old presets (kde#417748)
+  * Fix layout issue in the history docker
+  * Fix strobbing of the brush outline because of subpixel
+    precision (kde#374551)
+  * Make local selection outline visible on layer converted to
+    selection mask
+  * Fix freeze on vector layers (kde#412746)
+  * Fix artifacts on filter masks applied to adjustment layers
+    (kde#417673)
+  * Fix ratio option on lower precision brushes
+  * Set image as modified after a legacy action (fix Channels
+    docker not updating in some cases) (kde#417992)
+
+-------------------------------------------------------------------
 Wed Nov 27 09:08:41 UTC 2019 - wbauer@tmo.at
 
 - Update to 4.2.8.2:

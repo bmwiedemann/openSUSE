@@ -1,7 +1,7 @@
 #
 # spec file for package 4pane
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,16 @@
 
 
 Name:           4pane
-Version:        5.0
+Version:        6.0
 Release:        0
 Summary:        A multi-pane detailed-list file manager
 License:        GPL-3.0-only
-Url:            http://www.4pane.co.uk/
+URL:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
 %if 0%{?is_opensuse}
 BuildRequires:  wxWidgets-devel >= 3
 %else
-# SLE_12 lacks wxWidgets_3.0-devel
-BuildRequires:  wxWidgets-devel < 3
+BuildRequires:  wxWidgets_3.0-devel
 %define _use_internal_dependency_generator 0
 %define __find_requires %wx_requires
 %endif
@@ -36,7 +35,6 @@ BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  xz-devel
-Recommends:     %{name}-lang
 
 %description
 4Pane is a multi-pane detailed-list file manager.
@@ -61,7 +59,6 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %find_lang 4Pane
 mkdir -vp %{buildroot}/%{_datadir}/applications
-mkdir -vp %{buildroot}/%{_datadir}/appdata
 cd %{buildroot}/%{_datadir}/applications
 ln -s ../4Pane/rc/4Pane.desktop 4Pane.desktop
 pushd %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
@@ -70,21 +67,19 @@ popd
 %fdupes -s %{buildroot}/%{_datadir}
 
 %files
-%defattr(-,root,root,-)
 %doc LICENCE
 %{_bindir}/%{name}
 %{_bindir}/4Pane
 %dir %{_datadir}/4Pane
 %dir %{_datadir}/4Pane/bitmaps
 %{_datadir}/4Pane/bitmaps/*
-%{_datadir}/appdata
-%{_datadir}/icons/hicolor/*
 %{_datadir}/4Pane/rc
 %{_datadir}/applications/4Pane.desktop
+%{_datadir}/icons/hicolor/*
+%{_datadir}/metainfo/4Pane.appdata.xml
 %dir %{_docdir}/4Pane
 %{_docdir}/4Pane/*
 
 %files lang -f 4Pane.lang
-%defattr(-,root,root,-)
 
 %changelog

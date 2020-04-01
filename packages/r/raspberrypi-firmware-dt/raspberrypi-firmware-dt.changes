@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 31 21:34:26 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Use proper quoting for the modalias Supplements (see also
+  https://github.com/openSUSE/libzypp/issues/216).
+
+-------------------------------------------------------------------
+Fri Mar 27 12:30:54 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add a modalias Supplements, so the package gets selected
+  automatically on a Raspberry Pi.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:35:55 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add upstream-cma.patch unifying CMA handling on all RPis (bsc#1167761)
+- Remove rpi4-cma-overlay.dts since not needed anymore (bsc#1167761)
+- Rename emmc2bus.patch to upstream-emmc2bus.patch to mark this is a reality upstream
+- Rename pcie-dma-ranges.patch to upstream-pcie-dma-ranges.patch to mark this is a reality upstream
+
+-------------------------------------------------------------------
 Fri Mar 20 13:58:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-firware-dma-ranges-overlay.dts which fixes touch input on the

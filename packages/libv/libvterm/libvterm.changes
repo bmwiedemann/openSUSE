@@ -1,5 +1,23 @@
 -------------------------------------------------------------------
-Sat Jan 11 21:25:32 CET 2020 - Matej Cepl <mcepl@suse.com>
+Mon Mar 30 20:04:17 CEST 2020 - Matej Cepl <mcepl@suse.com>
+
+- All my previous builds were just figments of my imagination,
+  and neovim upstream claims one has to use 0.1.3 only. So,
+  downgrading.
+
+-------------------------------------------------------------------
+Mon Mar 30 19:19:23 CEST 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.1.3+bzr767:
+  - Remove debugging print on DECRQSS
+  - Regenerate fullwidth.inc for latest Unicode
+  - A much more efficient find-wide-chars.pl
+  - Accept OSC ... ST without an intermediate semicolon after the
+    command number
+  - Fix printf argument types (gh#vim/vim#5456)
+
+-------------------------------------------------------------------
+Sat Jan 11 21:25:32 CET 2020 - Matej Cepl <mcepl@suse.com> 
 
 - Update to 0.1.3+bzr762:
   - Merge bugfixes up to v0.1.3

@@ -1,26 +1,29 @@
 #
-# Copyright 2019-2020 SUSE LLC
+# spec file for package prometheus-sap_host_exporter
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# Copyright (c) 2020 SUSE LLC
 #
-#    https://www.apache.org/licenses/LICENSE-2.0
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+
+
 Name:           prometheus-sap_host_exporter
 # Version will be processed via set_version source service
-Version:        0.1.0
+Version:        0.3.0+git.1585067146.33dcd8a
 Release:        0
-License:        Apache-2.0
 Summary:        Prometheus exporter for SAP systems (a.k.a. NetWeaver)
+License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://github.com/SUSE/sap_host_exporter
+URL:            https://github.com/SUSE/sap_host_exporter
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
@@ -58,23 +61,26 @@ go build -mod=vendor \
 install -D -m 0755 %{shortname} "%{buildroot}%{_bindir}/%{shortname}"
 
 # Install the systemd unit
-install -D -m 0644 %{shortname}.service %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 %{shortname}@.service %{buildroot}%{_unitdir}/%{name}@.service
+
+# Install the default config
+install -D -m 0600 doc/%{shortname}.yaml "%{buildroot}/etc/%{shortname}/default.yaml"
 
 # Install compat wrapper for legacy init systems
 install -Dd -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
-%service_add_pre %{name}.service
+%service_add_pre %{name}@.service
 
 %post
-%service_add_post %{name}.service
+%service_add_post %{name}@.service
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun %{name}@.service
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun %{name}@.service
 
 %files
 %defattr(-,root,root)
@@ -86,7 +92,9 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %doc LICENSE
 %endif
 %{_bindir}/%{shortname}
-%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}@.service
 %{_sbindir}/rc%{name}
+%dir /etc/%{shortname}/
+%config /etc/%{shortname}/default.yaml
 
 %changelog

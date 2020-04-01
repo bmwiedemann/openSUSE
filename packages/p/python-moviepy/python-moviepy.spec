@@ -1,7 +1,7 @@
 #
 # spec file for package python-moviepy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,34 @@
 
 
 %define modname moviepy
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-moviepy
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Video editing with Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Zulko/moviepy
+URL:            https://github.com/Zulko/moviepy
 Source:         https://files.pythonhosted.org/packages/source/m/moviepy/moviepy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-decorator >= 4.0.2
+Requires:       python-numpy
+Requires:       python-proglog
+Requires:       python-requests >= 2.8.1
+Requires:       python-tqdm >= 4.11.2
+Recommends:     ImageMagick
+Recommends:     ffmpeg
+Recommends:     python-Pillow
+Recommends:     python-matplotlib >= 2.0.0
+Recommends:     python-opencv >= 3.0
+Recommends:     python-pygame >= 1.9.3
+Recommends:     python-scikit-image >= 0.13.0
+Recommends:     python-scikit-learn
+Recommends:     python-scipy >= 0.19.0
+Recommends:     python-youtube_dl
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module coveralls >= 1.1}
@@ -45,16 +60,11 @@ BuildRequires:  %{python_module requests >= 2.8.1}
 BuildRequires:  %{python_module tqdm >= 4.11.2}
 BuildRequires:  ImageMagick
 BuildRequires:  ffmpeg
-BuildRequires:  python-ipaddress
 BuildRequires:  python-imageio >= 2.0
+BuildRequires:  python-ipaddress
 BuildRequires:  python3-imageio >= 2.5
 BuildRequires:  python3-imageio-ffmpeg >= 0.2.0
 # /SECTION
-Requires:       python-decorator >= 4.0.2
-Requires:       python-numpy
-Requires:       python-proglog
-Requires:       python-requests >= 2.8.1
-Requires:       python-tqdm >= 4.11.2
 %ifpython2
 Requires:       python-imageio >= 2.1.2
 %endif
@@ -62,18 +72,6 @@ Requires:       python-imageio >= 2.1.2
 Requires:       python-imageio >= 2.5
 Requires:       python-imageio-ffmpeg >= 0.2.0
 %endif
-Recommends:     ImageMagick
-Recommends:     ffmpeg
-Recommends:     python-Pillow
-Recommends:     python-matplotlib >= 2.0.0
-Recommends:     python-opencv >= 3.0
-Recommends:     python-pygame >= 1.9.3
-Recommends:     python-scikit-image >= 0.13.0
-Recommends:     python-scikit-learn
-Recommends:     python-scipy >= 0.19.0
-Recommends:     python-youtube_dl
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

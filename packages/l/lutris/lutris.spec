@@ -18,15 +18,12 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
 Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
-# boo#1161650: Remove xboxdrv and polkit
-Patch0:         lutris-0.5.4-boo1161650-remove-polkit.patch
-Patch1:         lutris-0.5.4-sort_new_with_model_fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -60,16 +57,13 @@ or emulated console games and browser games.
 
 %prep
 %setup -q -n %{name}
-# boo#1161650
-%patch0 -p1
-%patch1 -p1
-rm -rf share/polkit-1/
+sed -i "s|!/usr/bin/env python3|!/usr/bin/python3|" share/lutris/bin/lutris-wrapper
 
 %build
-CFLAGS="%{optflags}" python3 setup.py build
+%py3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%py3_install
 %suse_update_desktop_file -r -i %{appid} Network FileTransfer
 %fdupes %{buildroot}%{_prefix}
 
@@ -87,7 +81,6 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %doc README.rst CONTRIBUTING.md AUTHORS
 %license LICENSE
 %{_bindir}/%{name}
-%{_bindir}/lutris-wrapper
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

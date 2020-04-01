@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.5
-%define patchversion 5.5.13
+%define srcversion 5.6
+%define patchversion 5.6.0
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -65,9 +65,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.5.13
+Version:        5.6.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0af205d
+Release:        <RELEASE>.g4de1111
 %else
 Release:        0
 %endif
@@ -174,10 +174,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
-Provides:       kernel-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
+Provides:       kernel-%build_flavor-base-srchash-4de111142ddf0e3ba42e23d5c7fe663483c91f92
+Provides:       kernel-srchash-4de111142ddf0e3ba42e23d5c7fe663483c91f92
 # END COMMON DEPS
-Provides:       %name-srchash-0af205d004adc0d3db1e701e48b97bded677c9b3
+Provides:       %name-srchash-4de111142ddf0e3ba42e23d5c7fe663483c91f92
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh

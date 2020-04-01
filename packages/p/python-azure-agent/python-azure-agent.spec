@@ -27,6 +27,7 @@ Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
 Patch9:         paa_sudo_sle15_nopwd.patch
+Patch10:        paa_use_hostnamectl.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -122,6 +123,7 @@ Unit tests for python-azure-agent.
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 %patch9
 %endif
+%patch10
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315

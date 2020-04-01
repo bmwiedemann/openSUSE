@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 31 16:09:25 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- update for boo#1167126, 1167128 
+
+-------------------------------------------------------------------
+Tue Mar 17 13:32:03 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- clean up of spec file to get rid of warnings
+  added gnuhealth-rpmlintrc 
+
+-------------------------------------------------------------------
+Sat Mar 14 15:24:49 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- gnuhealth-control 3.6.3 - added chmod after getlang command
+
+-------------------------------------------------------------------
+Mon Mar  2 19:25:36 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- modified getlang to exclude 2 directories (otherwise initialization fails after language installation) 
+
+-------------------------------------------------------------------
 Fri Feb 28 11:24:46 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.6.3

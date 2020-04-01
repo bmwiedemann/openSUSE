@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-eventhub-checkpointstoreblob
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Azure EventHubs Checkpoint Store client library for Python using Storage Blobs
 License:        MIT
@@ -26,18 +26,25 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-eventhub-checkpointstoreblob/azure-eventhub-checkpointstoreblob-%{version}.zip
 Source1:        LICENSE.txt
+BuildRequires:  %{python_module azure-core >= 1.2.2}
 BuildRequires:  %{python_module azure-eventhub < 6.0.0}
 BuildRequires:  %{python_module azure-eventhub >= 5.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module cryptography >= 2.1.4}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module msrest >= 0.6.10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.2.2
 Requires:       python-azure-eventhub < 6.0.0
 Requires:       python-azure-eventhub >= 5.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-azure-storage-blob < 13.0.0
-Requires:       python-azure-storage-blob >= 12.0.0
+Requires:       python-cryptography >= 2.1.4
+Requires:       python-msrest >= 0.6.10
+
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -65,7 +72,7 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-eventhub-checkpointstoreblob-%{vers
 }
 
 %files %{python_files}
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/eventhub/extensions/checkpointstoreblob
 %{python_sitelib}/azure_eventhub_checkpointstoreblob-*.egg-info

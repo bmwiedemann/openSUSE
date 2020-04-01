@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 20:41:35 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add paa_use_hostnamectl.patch (bsc#1167601, bsc#1167602)
+  + Set the hostname using hostnamectl to ensure setting is
+    properly applied
+
+-------------------------------------------------------------------
 Mon Feb  3 15:53:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to

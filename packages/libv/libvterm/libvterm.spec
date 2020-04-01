@@ -17,17 +17,18 @@
 
 
 %define sover 0
-%define relno 762
+%{?!make_build:%define make_build %{__make} %{_make_output_sync} %{?_smp_mflags} %{_make_verbose}}
+%{?!_make_output_sync:%define _make_output_sync %(! %{__make} --version -O >/dev/null 2>&1 || echo -O)}
+%{?!_make_verbose:%define _make_verbose V=1 VERBOSE=1}
 
 Name:           libvterm
-Version:        0.1.3+bzr762
+Version:        0.1.3
 Release:        0
 Summary:        An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://launchpad.net/libvterm
-# https://bazaar.launchpad.net/~libvterm/libvterm/trunk/tarball/%%{relno}
-Source:         %{name}-0~bzr%{relno}.tar.gz
+Source:         https://launchpad.net/libvterm/trunk/v0.1/+download/libvterm-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
@@ -61,7 +62,7 @@ Group:          System/Console
 This package contains tools for libvterm.
 
 %prep
-%setup -q -n \~libvterm/libvterm/trunk
+%setup -q
 
 %build
 %make_build PREFIX=%{_prefix} \

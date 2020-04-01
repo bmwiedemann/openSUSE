@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 16:59:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Sun Jan 12 10:25:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0

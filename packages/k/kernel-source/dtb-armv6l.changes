@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:55:50 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/media-go7007-Fix-URB-type-for-interrupt-handling.patch.
+  Update upstream status.
+- commit 46fab61
+
+-------------------------------------------------------------------
+Mon Mar 30 07:46:22 CEST 2020 - mkubecek@suse.cz
+
+- mac80211: fix authentication with iwlwifi/mvm
+  (https://lkml.kernel.org/r/20200329.212136.273575061630425724.davem@davemloft.net).
+- commit 5032681
+
+-------------------------------------------------------------------
+Mon Mar 30 06:48:22 CEST 2020 - mkubecek@suse.cz
+
+- Revert "sign also s390x kernel images (bsc#1163524)"
+  This reverts commit b38b61155f0a2c3ebca06d4bb0c2e11a19a87f1f.
+  The pesign-obs-integration changes needed for s390x image signing are
+  still missing in Factory so that this change breaks s390x builds.
+- commit 9544af9
+
+-------------------------------------------------------------------
+Mon Mar 30 06:30:50 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.6 final
+- refresh configs
+- commit da616f7
+
+-------------------------------------------------------------------
 Thu Mar 26 07:14:39 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.13 (bnc#1012628).
@@ -215,6 +246,16 @@ Wed Mar 25 13:46:40 CET 2020 - jslaby@suse.cz
 - commit 19257da
 
 -------------------------------------------------------------------
+Mon Mar 23 06:35:03 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc7
+- refresh
+  patches.suse/supported-flag
+- refresh config files:
+  - CC_HAS_INT128=n on 32-bit architectures (was =y on i386)
+- commit 0801cd7
+
+-------------------------------------------------------------------
 Sat Mar 21 12:10:56 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.11 (bnc#1012628).
@@ -304,6 +345,16 @@ Sat Mar 21 12:10:56 CET 2020 - jslaby@suse.cz
 - ACPI: watchdog: Allow disabling WDAT at boot (bnc#1012628).
 - pinctrl: qcom: ssbi-gpio: Fix fwspec parsing bug (bnc#1012628).
 - commit 794b2e9
+
+-------------------------------------------------------------------
+Thu Mar 19 18:15:57 CET 2020 - yousaf.kaukab@suse.com
+
+- config: arm64: enable CONFIG_MTD_PHYSMAP_OF
+  Get rid of CONFIG_MTD_PHYSMAP_COMPAT and enable CONFIG_MTD_PHYSMAP_OF.
+  Compat maps of zero length (CONFIG_MTD_PHYSMAP_LEN=0x0) doesn't make
+  sense and driver initialization is bound to fail. So use device-tree
+  based initialization.
+- commit 2205109
 
 -------------------------------------------------------------------
 Wed Mar 18 09:53:55 CET 2020 - jslaby@suse.cz
@@ -560,8 +611,19 @@ Wed Mar 18 09:53:55 CET 2020 - jslaby@suse.cz
 - commit 3925fb5
 
 -------------------------------------------------------------------
+Mon Mar 16 06:38:08 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc6
+- refresh config files
+- commit 5c2f002
+
+-------------------------------------------------------------------
 Fri Mar 13 11:28:05 CET 2020 - nsaenzjulienne@suse.de
 
+- mmc: sdhci: iproc: Add custom set_power() callback for bcm2711
+  (bsc#1165954).
+- mmc: sdhci: Introduce sdhci_set_power_and_bus_voltage()
+  (bsc#1165954).
 - mmc: sdhci: iproc: Add custom set_power() callback for bcm2711
   (bsc#1165954).
 - mmc: sdhci: Introduce sdhci_set_power_and_bus_voltage()
@@ -569,11 +631,20 @@ Fri Mar 13 11:28:05 CET 2020 - nsaenzjulienne@suse.de
 - commit e9e359d
 
 -------------------------------------------------------------------
+Fri Mar 13 11:08:52 CET 2020 - nsaenzjulienne@suse.de
+
+- Delete patches.suse/linux-log2-h-add-roundup-rounddown_pow_two64-family-of-functions.patch.
+  The patch was initially introduced to support RPi4's PCIe controller.
+  The now available upstream driver isn't using this roundup
+  functionality.
+- commit ea370a5
+
+-------------------------------------------------------------------
 Thu Mar 12 14:33:05 CET 2020 - tiwai@suse.de
 
 - Update config files: disable CONFIG_OABI_COMPAT for 32bit Arm (bsc#1165462)
   It enables CONFIG_SECCOMP_FILTER.
-- commit 32fb233
+- commit e9e55d0
 
 -------------------------------------------------------------------
 Thu Mar 12 14:21:25 CET 2020 - tiwai@suse.de
@@ -915,6 +986,26 @@ Tue Mar 10 10:00:15 CET 2020 - dmueller@suse.com
 - commit 1e5a090
 
 -------------------------------------------------------------------
+Mon Mar  9 19:06:37 CET 2020 - jeyu@suse.de
+
+- rpm/kabi.pl: account for namespace field being moved last
+  Upstream is moving the namespace field in Module.symvers last in order to
+  preserve backwards compatibility with kmod tools (depmod, etc). Fix the kabi.pl
+  script to expect the namespace field last. Since split() ignores trailing empty
+  fields and delimeters, switch to using tr to count how many fields/tabs are in
+  a line. Also, in load_symvers(), pass LIMIT of -1 to split() so it does not
+  strip trailing empty fields, as namespace is an optional field.
+- commit a3bb253
+
+-------------------------------------------------------------------
+Mon Mar  9 06:38:13 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc5
+- new config options:
+  - BACKLIGHT_LED=m
+- commit ff29e08
+
+-------------------------------------------------------------------
 Fri Mar  6 08:52:20 CET 2020 - jslaby@suse.cz
 
 - netfilter: xt_hashlimit: unregister proc file before releasing
@@ -1208,6 +1299,15 @@ Wed Mar  4 21:18:52 CET 2020 - jeffm@suse.com
 - commit 666974e
 
 -------------------------------------------------------------------
+Mon Mar  2 05:17:37 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc4
+- eliminated 3 patches
+- new config options:
+  - KVM_WERROR=n (x86)
+- commit 8a04afc
+
+-------------------------------------------------------------------
 Sun Mar  1 20:28:06 CET 2020 - jslaby@suse.cz
 
 - Linux 5.5.7 (bnc#1012628).
@@ -1477,10 +1577,32 @@ Wed Feb 26 15:15:41 CET 2020 - msuchanek@suse.de
 - commit bda0360
 
 -------------------------------------------------------------------
+Wed Feb 26 14:05:58 CET 2020 - mhocko@suse.com
+
+- Created new preempt kernel flavor (jsc#SLE-11309)
+  Configs are cloned from the respective $arch/default configs. All
+  changed configs appart from CONFIG_PREEMPT->y are a result of
+  dependencies, namely many lock/unlock primitives are no longer
+  inlined in the preempt kernel. TREE_RCU has been also changed to
+  PREEMPT_RCU which is the default implementation for PREEMPT kernel.
+- commit f994874
+
+-------------------------------------------------------------------
 Tue Feb 25 11:49:29 CET 2020 - meissner@suse.de
 
 - sign also s390x kernel images (bsc#1163524)
 - commit b38b611
+
+-------------------------------------------------------------------
+Tue Feb 25 11:37:02 CET 2020 - jroedel@suse.de
+
+- KVM: nVMX: Check IO instruction VM-exit conditions
+  (CVE-2020-2732 bsc#1163971).
+- KVM: nVMX: Refactor IO bitmap checks into helper function
+  (CVE-2020-2732 bsc#1163971).
+- KVM: nVMX: Don't emulate instructions in guest mode
+  (CVE-2020-2732 bsc#1163971).
+- commit 9a155f2
 
 -------------------------------------------------------------------
 Tue Feb 25 11:27:18 CET 2020 - jroedel@suse.de
@@ -2165,6 +2287,13 @@ Mon Feb 24 09:07:26 CET 2020 - jslaby@suse.cz
 - commit 6e54038
 
 -------------------------------------------------------------------
+Mon Feb 24 06:40:35 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc3
+- eliminated 3 patches
+- commit 8f8ffe7
+
+-------------------------------------------------------------------
 Fri Feb 21 14:21:09 CET 2020 - mkubecek@suse.cz
 
 - config: fix config options added with 5.5-rc1
@@ -2208,6 +2337,45 @@ Fri Feb 21 14:21:09 CET 2020 - mkubecek@suse.cz
   - CRYPTO_DEV_AMLOGIC_GXL_DEBUG=n
   - CRYPTO_LIB_BLAKE2S=m
   - CRYPTO_LIB_CURVE25519=m
+- config: fix config options added with 5.5-rc1
+  Due to a mistake on my side, some config options introduced in 5.5-rc1 got
+  different values than the commit message claimed (and, more important, than
+  intended). Thanks to Jean Delvare for catching this.
+- restored config option values:
+  - BACKLIGHT_QCOM_WLED=m
+  - BYTCRC_PMIC_OPREGION=y
+  - CAIF_DRIVERS=y
+  - CHTCRC_PMIC_OPREGION=y
+  - CRYPTO_BLAKE2S=m
+  - CRYPTO_CURVE25519=m
+  - CRYPTO_DEV_AMLOGIC_GXL=m
+  - DP83869_PHY=m
+  - DRM_AMD_DC_HDCP=y
+  - NET_DSA_MSCC_FELIX=m
+  - NET_DSA_TAG_OCELOT=m
+  - NFC_PN532_UART=m
+  - PINCTRL_EQUILIBRIUM=m
+  - PINCTRL_TIGERLAKE=m
+  - PTP_1588_CLOCK_IDTCM=m
+  - SENSORS_BEL_PFE=m
+  - SENSORS_LTC2947_I2C=m
+  - SENSORS_LTC2947_SPI=m
+  - SENSORS_TMP513=m
+  - SF_PDMA=m
+  - SYSTEM76_ACPI=m
+  - TCG_TIS_SPI_CR50=y
+  - TYPEC_HD3SS3220=m
+  - VIDEO_HI556=m
+  - VIDEO_IMX290=m
+  - W1_SLAVE_DS2430=m
+  - WFX=m
+- new config options visible after the changes above:
+  - CAIF_TTY=m
+  - CAIF_SPI_SLAVE=m
+  - CAIF_SPI_SYNC=n
+  - CAIF_HSI=m
+  - CAIF_VIRTIO=m
+  - CRYPTO_DEV_AMLOGIC_GXL_DEBUG=n
 - commit bfcbf21
 
 -------------------------------------------------------------------
@@ -2372,13 +2540,36 @@ Wed Feb 19 08:03:41 CET 2020 - jslaby@suse.cz
 - commit 599e3c2
 
 -------------------------------------------------------------------
+Tue Feb 18 12:14:59 CET 2020 - msuchanek@suse.de
+
+- Delete patches.rpmify/powerpc-boot-Fix-missing-crc32poly.h-when-building-w.patch.
+- commit 3083c73
+
+-------------------------------------------------------------------
 Mon Feb 17 08:56:00 CET 2020 - jslaby@suse.cz
 
 - vt: selection, close sel_buffer race (bnc#1162928
   CVE-2020-8648).
 - vt: selection, handle pending signals in paste_selection
   (bnc#1162928 CVE-2020-8648).
+- vt: selection, close sel_buffer race (bnc#1162928
+  CVE-2020-8648).
+- vt: selection, handle pending signals in paste_selection
+  (bnc#1162928 CVE-2020-8648).
 - commit 813d10d
+
+-------------------------------------------------------------------
+Sun Feb 16 23:36:54 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc2
+- refresh configs (drop LIBXBC)
+- commit 327abc9
+
+-------------------------------------------------------------------
+Sun Feb 16 23:21:32 CET 2020 - mkubecek@suse.cz
+
+- ethtool: fix application of verbose no_mask bitset.
+- commit 7b26eb4
 
 -------------------------------------------------------------------
 Sat Feb 15 09:16:55 CET 2020 - jslaby@suse.cz
@@ -3226,6 +3417,24 @@ Wed Feb 12 07:13:36 CET 2020 - jslaby@suse.cz
 - commit ffbbfe8
 
 -------------------------------------------------------------------
+Tue Feb 11 17:04:11 CET 2020 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.6-rc1
+- commit b09045a
+
+-------------------------------------------------------------------
+Tue Feb 11 16:40:31 CET 2020 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.6-rc1
+- commit e68a306
+
+-------------------------------------------------------------------
+Tue Feb 11 15:53:56 CET 2020 - afaerber@suse.com
+
+- config: arm64: Update to 5.6-rc1
+- commit 0ae2ac2
+
+-------------------------------------------------------------------
 Tue Feb 11 15:14:37 CET 2020 - tiwai@suse.de
 
 - cgroup: init_tasks shouldn't be linked to the root cgroup
@@ -3243,7 +3452,7 @@ Mon Feb 10 16:01:19 CET 2020 - tiwai@suse.de
 
 - media: go7007: Fix URB type for interrupt handling
   (bsc#1162583).
-- commit ae333f8
+- commit 23d5616
 
 -------------------------------------------------------------------
 Mon Feb 10 15:57:32 CET 2020 - tiwai@suse.de
@@ -3251,6 +3460,128 @@ Mon Feb 10 15:57:32 CET 2020 - tiwai@suse.de
 - iwlwifi: mvm: Do not require PHY_SKU NVM section for 3168
   devices (bsc#1163213).
 - commit f4b8e5e
+
+-------------------------------------------------------------------
+Mon Feb 10 09:12:31 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.6-rc1
+- eliminated 95 patches (70 stable, 25 other)
+- disable ARM architectures (need config update)
+- refresh
+  - patches.rpmify/Add-ksym-provides-tool.patch
+  - patches.suse/acpi_thermal_passive_blacklist.patch
+- new config options :
+  - General setup
+    - TIME_NS=y
+    - BOOT_CONFIG=y
+  - Firmware Drivers
+    - EFI_DISABLE_PCI_DMA=n
+  - Networking core
+    - INET_ESPINTCP=y
+    - MPTCP=y
+    - MPTCP_IPV6=y
+    - MPTCP_HMAC_TEST=n
+    - NET_DSA_TAG_AR9331=m
+    - NET_SCH_FQ_PIE=m
+    - NET_SCH_ETS=m
+    - VSOCKETS_LOOPBACK=m
+    - ETHTOOL_NETLINK=y
+    - WIREGUARD=m
+    - WIREGUARD_DEBUG=n
+  - File systems
+    - ZONEFS_FS=m
+    - VBOXSF_FS=m
+    - NFS_DISABLE_UDP_SUPPORT=n
+    - NFSD_V4_2_INTER_SSC=y
+  - Security options
+    - SECURITY_SELINUX_SIDTAB_HASH_BITS=9
+    - SECURITY_SELINUX_SID2STR_CACHE_SIZE=256
+    - TEE=m
+    - AMDTEE=m
+  - Kernel hacking
+    - PTDUMP_DEBUGFS=n
+    - BOOTTIME_TRACING=y
+    - SYNTH_EVENT_GEN_TEST=n
+    - KPROBE_EVENT_GEN_TEST=n
+  - Networking drivers
+    - NET_DSA_AR9331=m
+    - NET_DSA_VITESSE_VSC73XX_SPI=m
+    - NET_DSA_VITESSE_VSC73XX_PLATFORM=m
+    - PHY_INTEL_EMMC=m
+  - Hardware Monitoring support
+    - SENSORS_ADM1177=m
+    - SENSORS_DRIVETEMP=m
+    - SENSORS_MAX31730=m
+    - SENSORS_MAX20730=m
+    - SENSORS_XDPE122=m
+  - Sound
+    - SND_CTL_VALIDATION=n
+    - SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES=n
+    - SND_SOC_INTEL_BDW_RT5650_MACH=m
+    - SND_SOC_INTEL_SOF_DA7219_MAX98373_MACH=m
+    - SND_SOC_RT1308_SDW=n
+    - SND_SOC_RT700_SDW=n
+    - SND_SOC_RT711_SDW=n
+    - SND_SOC_RT715_SDW=n
+    - SND_SOC_WSA881X=n
+    - SND_SOC_MT6660=n
+  - Graphics
+    - DRM_PANEL_BOE_HIMAX8279D=n
+    - DRM_PANEL_LEADTEK_LTK500HD1829=n
+    - DRM_PANEL_SONY_ACX424AKP=n
+    - DRM_PANEL_XINPENG_XPP055C272=n
+    - DRM_LVDS_CODEC=m
+    - DRM_ANALOGIX_ANX6345=n
+  - Industrial I/O support
+    - BMA400=n
+    - AD7091R5=n
+    - LTC2496=n
+    - DLHL60D=n
+    - PING=n
+  - USB
+    - USB4_NET=m
+    - USB4=m
+  - Misc drivers
+    - SERIAL_8250_16550A_VARIANTS=n
+    - PINCTRL_LYNXPOINT=m
+    - INTEL_IDXD=m
+    - PLX_DMA=m
+    - QCOM_CPR=m
+    - REGULATOR_MP8859=m
+    - MFD_ROHM_BD71828=n
+    - MEDIA_CEC_RC=y
+    - NVMEM_SPMI_SDAM=m
+    - DMABUF_HEAPS=n
+    - RESET_BRCMSTB_RESCAL=n
+    - INTEL_IOMMU_SCALABLE_MODE_DEFAULT_ON=n
+    - GPIO_SIFIVE=n
+  - x86
+    - INTEL_UNCORE_FREQ_CONTROL=m
+  - i386
+    - PCIE_INTEL_GW=n
+    - CPU_FREQ_THERMAL=y
+    - CPU_IDLE_THERMAL=y
+    - MICROCHIP_PIT64B=y
+    - RESET_INTEL_GW=n
+  - powerpc
+    - STRICT_KERNEL_RWX=y
+    - CPU_FREQ_THERMAL=y
+    - MICROCHIP_PIT64B=y
+    - RESET_INTEL_GW=n
+    - DEBUG_RODATA_TEST=n
+    - QUICC_ENGINE=y
+    - QE_GPIO=y
+    - FSL_PQ_MDIO=m
+    - FSL_XGMAC_MDIO=m
+    - GIANFAR=m
+    - SERIAL_QE=m
+    - PTP_1588_CLOCK_QORIQ=m
+    - USB_FHCI_HCD=m
+    - FHCI_DEBUG=n
+  - s390x
+    - ZLIB_DFLTCC=y
+    - KPROBE_EVENTS_ON_NOTRACE=n
+- commit 00fe0a9
 
 -------------------------------------------------------------------
 Fri Feb  7 09:49:28 CET 2020 - ykaukab@suse.de

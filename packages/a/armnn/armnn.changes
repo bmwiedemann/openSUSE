@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:23:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable RPATH to fix build on Leap15.2/SLE15SP2
+
+-------------------------------------------------------------------
 Tue Mar 24 14:01:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add '-Wno-error=deprecated-declarations' to fix build with latest

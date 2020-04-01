@@ -1,7 +1,7 @@
 #
 # spec file for package susepaste
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Script for using openSUSE paste
 License:        GPL-3.0-only
 Group:          Productivity/Other
-URL:            http://susepaste.org
+URL:            https://susepaste.org
 Source0:        susepaste-script-%{version}.tar.bz2
+Patch0:         0001-susepaste-Fix-parsing-of-returned-Location-header.patch
 Requires:       bash
 Requires:       curl
 BuildArch:      noarch
@@ -47,6 +48,7 @@ You can paste screenshot of the window or whole desktop.
 
 %prep
 %setup -q -n susepaste-script-%{version}
+%patch0 -p2
 mv gpl-3.0.txt COPYING
 
 %build
@@ -64,15 +66,15 @@ install -Dpm 0644 lang-mappings.sed \
   %{buildroot}%{_datadir}/susepaste/lang-mappings.sed
 
 %files
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/susepaste/lang-mappings.sed
 %dir %{_datadir}/susepaste
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files screenshot
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}-screenshot
-%{_mandir}/man1/%{name}-screenshot.1%{ext_man}
+%{_mandir}/man1/%{name}-screenshot.1%{?ext_man}
 
 %changelog

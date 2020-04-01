@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Mar 31 07:11:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix buildrequires
+- Install license
+- Run tests
+
+-------------------------------------------------------------------
+Mon Mar 30 02:50:26 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.2

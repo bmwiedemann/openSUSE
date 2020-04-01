@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:25:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop Supplements for extra and extra-pi4
+
+-------------------------------------------------------------------
+Tue Mar 31 21:34:26 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Use proper quoting for the modalias Supplements (see also
+  https://github.com/openSUSE/libzypp/issues/216).
+
+-------------------------------------------------------------------
+Fri Mar 27 12:30:54 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add a modalias Supplements, so the package gets selected
+  automatically on a Raspberry Pi.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:31:48 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Remove rpi4-cma overlay, not needed anymore (bsc#1167761)
+
+-------------------------------------------------------------------
 Fri Mar 20 14:52:11 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add rpi4-firmware-dma-ranges overaly which fixes touch input on the official

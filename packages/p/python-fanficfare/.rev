@@ -223,4 +223,22 @@
   - Optional EPUB 3.0 output</comment>
     <requestid>781034</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6669234d33530b894584d465a026e83e</srcmd5>
+    <version>3.17.0+git.1585684191.22d2ad45</version>
+    <time>1585761184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.17.0+git.1585684191.22d2ad45:
+  * fictionalley.org needs a slow_down_sleep_time or it starts rejecting conns.
+  * Bump Test Version 3.17.7
+  * Fix Description parsing with series/universe/contest links in adapter_storiesonlinenet.
+  * Revert PR#478
+  * Add support for fictionalley.ikeran.org
+  * Remove extra spaces from replace_metadata examples
+  * Accept https URLs for adapter_wwwutopiastoriescom, but don't use https--doesn't work with python.
+  * Bump Test Version 3.17.6
+  * Fix for adapter_ficbooknet when no ships/characters.
+  * Bump Test Version 3.17.5</comment>
+    <requestid>790351</requestid>
+  </revision>
 </revisionlist>

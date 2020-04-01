@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 12:07:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-eventhub
+  + python-azure-eventhub-checkpointstoreblob
+- Update version numbers for component packages in Requires
+  + python-azure-batch >= 9.0.0
+  + python-azure-datalake-store >= 0.0.48
+
+-------------------------------------------------------------------
 Mon Jan 27 20:27:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires

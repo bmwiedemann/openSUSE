@@ -29,8 +29,8 @@ Requires:       python-azure-appconfiguration < 2.0.0
 Requires:       python-azure-appconfiguration >= 1.0.0
 Requires:       python-azure-applicationinsights < 1.0.0
 Requires:       python-azure-applicationinsights >= 0.1.0
-Requires:       python-azure-batch < 9.0.0
-Requires:       python-azure-batch >= 8.0.0
+Requires:       python-azure-batch < 10.0.0
+Requires:       python-azure-batch >= 9.0.0
 Requires:       python-azure-cognitiveservices-anomalydetector < 1.0.0
 Requires:       python-azure-cognitiveservices-anomalydetector >= 0.2.0
 Requires:       python-azure-cognitiveservices-formrecognizer < 1.0.0
@@ -74,9 +74,13 @@ Requires:       python-azure-cognitiveservices-vision-face >= 0.4.0
 Requires:       python-azure-cosmos < 5.0.0
 Requires:       python-azure-cosmos >= 4.0.0
 Requires:       python-azure-datalake-store < 1.0.0
-Requires:       python-azure-datalake-store >= 0.0.30
+Requires:       python-azure-datalake-store >= 0.0.48
 Requires:       python-azure-eventgrid < 2.0.0
 Requires:       python-azure-eventgrid >= 1.2.0
+Requires:       python-azure-eventhub < 6.0.0
+Requires:       python-azure-eventhub >= 5.0.1
+Requires:       python-azure-eventhub-checkpointstoreblob < 2.0.0
+Requires:       python-azure-eventhub-checkpointstoreblob >= 1.1.0
 Requires:       python-azure-graphrbac < 1.0.0
 Requires:       python-azure-graphrbac >= 0.40.0
 Requires:       python-azure-keyvault < 5.0.0

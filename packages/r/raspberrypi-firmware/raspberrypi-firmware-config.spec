@@ -26,6 +26,7 @@ URL:            https://github.com/raspberrypi/firmware/
 Source:         config.txt
 BuildRequires:  raspberrypi-firmware
 Requires:       raspberrypi-firmware = %{version}
+Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
 Conflicts:      kernel < 4.12.14
 Conflicts:      raspberrypi-firmware-config
 Provides:       raspberrypi-firmware-branding-openSUSE = %{version}

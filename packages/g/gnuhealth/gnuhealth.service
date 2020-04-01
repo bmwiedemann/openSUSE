@@ -3,6 +3,16 @@ Description=GNU Health server
 After=syslog.target
 Requires=postgresql.service
 Conflicts=trytond.service
+PrivateTmp=true
+ProtectSystem=true
+ProtectHome=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+MountFlags=private
+NoNewPrivileges=true
+PrivateDevices=true
+MemoryDenyWriteExecute=true
 
 [Service]
 Type=simple

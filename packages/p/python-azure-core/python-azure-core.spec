@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-core
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
@@ -69,7 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/core
 %{python_sitelib}/azure_core-*.egg-info

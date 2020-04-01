@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Mar 23 18:35:55 2020 UTC - shap-staff@suse.de
+
+- Release 0.3.0
+
+  ## Added
+  - Alert metrics collector (#21) 
+  - `make obs-workdir` target can now handle custom Git branches and forks via environment variables (#25)
+
+  ## Changed
+  - Some metric now properly use the `Counter` type instead of `Gauge` and are more semantically correct. (#23)
+  - `sap-control-url` setting now has a default value and doesn't require users to explicitly input the URL scheme. (#26)
+  - `go_*` debug metrics are only shown when the log level is `debug` or higher. (#24) 
+  - Refactored configuration code (#26)
+
+  ## Fixed
+  - Enqueue Server metrics are now properly documented (#23)
+  - Documentation can be fully browsed from the README ToC (#28)
+
+-------------------------------------------------------------------
+Thu Mar 19 11:00:29 2020 UTC - shap-staff@suse.de
+
+- Release 0.2.3
+
+  # Fixed:
+  - Fix failure of enabling service in deployment (https://github.com/SUSE/sap_host_exporter/pull/20)
+
+-------------------------------------------------------------------
+Wed Mar 18 10:49:59 2020 UTC - shap-staff@suse.de
+
+- Release 0.2.1
+
+  # fixed: 
+
+  - fix rpm macro on obs/packaging(https://github.com/SUSE/sap_host_exporter/pull/18)
+
+-------------------------------------------------------------------
+Tue Mar 17 16:38:39 2020 UTC - shap-staff@suse.de
+
+- Release 0.2.0
+
+  ## Added
+  - Add the ability to run multiple systemd instances with dedicated config files. (#16)
+
+-------------------------------------------------------------------
 Wed Mar 11 15:49:53 2020 UTC - shap-staff@suse.de
 
 - Release 0.1.0

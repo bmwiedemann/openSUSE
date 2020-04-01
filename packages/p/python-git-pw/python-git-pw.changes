@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Mar 31 16:43:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.8.1: fixing the bug we filed.
+
+-------------------------------------------------------------------
+Tue Mar 31 14:54:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip over failing UpdateTestCase.test_update_with_invalid_state test
+  (gh#getpatchwork/git-pw#53)
+- Add Provides/Obsoletes to rename git-pw to python-git-pw package.
+- Replace %python_only construct with proper alternatives.
+
+-------------------------------------------------------------------
+Sun Mar 15 07:24:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * no changelog
+- Set out proper dependencies
+- Fix build without python2
+
+-------------------------------------------------------------------
+Wed Nov 27 08:11:06 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
+
+- Update to v1.7.0
+
+-------------------------------------------------------------------
+Sun Feb 10 10:11:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.5.1
+  + Fix help text for --format to refer to pw.format
+
+-------------------------------------------------------------------
+Wed Nov 28 10:10:51 UTC 2018 - jthumshirn@suse.com
+
+- Initial packaging for openSUSE

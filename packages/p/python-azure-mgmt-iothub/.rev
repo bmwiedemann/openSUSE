@@ -51,4 +51,12 @@
 - Update %description from README.rst (forwarded request 767746 from glaubitz)</comment>
     <requestid>767835</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80074e9219091d0f3a5c5a21031d3a7c</srcmd5>
+    <version>0.11.0</version>
+    <time>1585761263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790570</requestid>
+  </revision>
 </revisionlist>

@@ -43,6 +43,15 @@ diff -U 3 -dHrN -- a/health_calendar/setup.py b/health_calendar/setup.py
  # -*- coding: utf-8 -*-
  #    Copyright (C) 2011-2020 Luis Falcon <falcon@gnuhealth.org>
  #    Copyright (C) 2011 Cédric Krier
+diff -U 3 -dHrN -- a/health_caldav/tests/scenario_calendar.py b/health_caldav/tests/scenario_calendar.py
+--- a/health_caldav/tests/scenario_calendar.py	2019-10-04 22:33:03.000000000 +0200
++++ b/health_caldav/tests/scenario_calendar.py	2020-03-17 14:04:47.692913921 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Tryton.  The COPYRIGHT file at the top level of
+ # this repository contains the full copyright notices and license terms.
+ from argparse import ArgumentParser
 diff -U 3 -dHrN -- a/health_crypto/setup.py b/health_crypto/setup.py
 --- a/health_crypto/setup.py	2019-11-20 09:16:02.000000000 +0100
 +++ b/health_crypto/setup.py	2020-01-15 16:58:43.120008340 +0100

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:32:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.5:
+  * Initial support for Humble Bundle
+  * Add resolution switching support for Wayland (Mutter only)
+  * Add option to enable ACO shader compiler on Mesa >= 19.3
+  * DXVK is enabled by default
+  * Add initial support for VKD3D
+  * Migrate D9VK configs to use DXVK
+  * Remove d3d10 and d3d10_1 from dlls handled by DXVK
+  * Fix an API breakage occuring with a Gtk update
+  * Add a System info tab in Preferences
+  * Better handle authentication failure for GOG
+  * Fix case issue with key lookup in Steam VDF files
+  * Add Yuzu runner
+  * Add bsnes-hd beta and smsplus libretro cores
+  * Add sound device option for Mednafen
+  * Remove bundled winetricks
+  * Remove xboxdrv integration
+- Remove lutris-0.5.4-boo1161650-remove-polkit.patch: upstreamed
+- Remove lutris-0.5.4-sort_new_with_model_fix.patch: upstreamed
+
+-------------------------------------------------------------------
 Mon Mar  2 20:44:31 UTC 2020 - Jacob W <jacob@jacobwinski.com>
 
 - Add lutris-0.5.4-sort_new_with_model_fix.patch adding support for renamed gtk attribute, fixing lutris crashing on startup. 

@@ -386,6 +386,7 @@ sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
 %endif
 %endif
 %cmake \
+  -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
   -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread $CXX_ADDITIONAL_FLAGS -Wno-error=implicit-fallthrough -Wno-error=unused-parameter" \
   -DBOOST_LIBRARYDIR=%{_libdir} \

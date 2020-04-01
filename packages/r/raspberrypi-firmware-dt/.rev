@@ -169,4 +169,20 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>787456</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>db9aff904f24c436b4d827ec932f8471</srcmd5>
+    <version>2020.02.03</version>
+    <time>1585760879</time>
+    <user>dimstar_suse</user>
+    <comment>- Use proper quoting for the modalias Supplements (see also
+  https://github.com/openSUSE/libzypp/issues/216).
+- Add a modalias Supplements, so the package gets selected
+  automatically on a Raspberry Pi.
+- Add upstream-cma.patch unifying CMA handling on all RPis (bsc#1167761)
+- Remove rpi4-cma-overlay.dts since not needed anymore (bsc#1167761)
+- Rename emmc2bus.patch to upstream-emmc2bus.patch to mark this is a reality upstream
+- Rename pcie-dma-ranges.patch to upstream-pcie-dma-ranges.patch to mark this is a reality upstream
+</comment>
+    <requestid>790469</requestid>
+  </revision>
 </revisionlist>

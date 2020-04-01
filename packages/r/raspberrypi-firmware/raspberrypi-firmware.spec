@@ -30,6 +30,7 @@ Requires(post): util-linux
 Requires(preun): util-linux
 Recommends:     raspberrypi-firmware-config
 Recommends:     raspberrypi-firmware-dt
+Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
 BuildArch:      noarch
 
 %description

@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wbolster/happybase
 Source:         https://github.com/wbolster/happybase/archive/%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# https://github.com/python-happybase/happybase/pull/238
+Patch0:         use_pytest.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module thriftpy2}
 BuildRequires:  fdupes
@@ -51,6 +53,7 @@ This package contains the documentation.
 
 %prep
 %setup -q -n happybase-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -63,7 +66,7 @@ rm -r docs/build/html/.[a-z]*
 
 %check
 # the api tests need running thrift server
-%python_expand nosetests-%{$python_bin_suffix} -v tests/test_util.py
+%pytest tests/test_util.py
 
 %files %{python_files}
 %license LICENSE.rst

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-eventhub
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT
@@ -76,7 +76,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/eventhub
 %{python_sitelib}/azure_eventhub-*.egg-info
