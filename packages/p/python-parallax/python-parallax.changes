@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:54:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Release 1.0.6
+- Replace preexec_fn as start_new_session
+- No need to mask signals for subprocess call
+
+-------------------------------------------------------------------
 Thu Aug 22 07:50:06 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Release 1.0.5
