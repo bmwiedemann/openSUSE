@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-compendium
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           osgi-compendium
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        Interfaces and Classes for use in compiling OSGi bundles
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://www.osgi.org
-Source0:        https://osgi.org/download/r6/osgi.cmpn-%{version}.jar
+Source0:        https://osgi.org/download/r7/osgi.cmpn-%{version}.jar
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -86,6 +86,8 @@ mv META-INF/maven/org.osgi/osgi.cmpn/pom.xml .
 %pom_add_dep org.osgi:osgi.core::provided
 %pom_add_dep javax.servlet:javax.servlet-api::provided
 %pom_add_dep javax.persistence:persistence-api::provided
+
+rm -r src/main/java/org/osgi/service/jaxrs
 
 mkdir -p lib
 build-jar-repository -s lib geronimo-jpa-3.0-api glassfish-servlet-api osgi-annotation osgi-core
