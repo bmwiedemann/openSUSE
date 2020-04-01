@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  1 10:32:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.14
+  * Repository moved to GitHub
+  * #32: Update the LC_NAMES table
+  * #31: Add two new load commands introduced in macOS 10.15
+  * #27: Missing describe method for build_version_command
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

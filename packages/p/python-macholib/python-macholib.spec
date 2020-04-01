@@ -1,7 +1,7 @@
 #
 # spec file for package python-macholib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-macholib
-Version:        1.11
+Version:        1.14
 Release:        0
 Summary:        Mach-O header analysis and editing
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://bitbucket.org/ronaldoussoren/macholib
+URL:            https://github.com/ronaldoussoren/macholib/
 Source:         https://files.pythonhosted.org/packages/source/m/macholib/macholib-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module altgraph >= 0.13}
-# /SECTION
-Requires:       python-altgraph >= 0.13
+Requires:       python-altgraph >= 0.15
+Requires:       python-setuptools
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module altgraph >= 0.15}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -59,13 +60,13 @@ sed -i -e '/^#!\//, 1d' macholib/macho_standalone.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# tests are too much platform specific (?)
+rm macholib_tests/test_{command_line,dyld}.py
+%pytest
 
 %files %{python_files}
-%doc README.txt
+%doc README.rst doc/*.rst
 %license doc/license.rst
 %python3_only %{_bindir}/macho_find
 %python3_only %{_bindir}/macho_standalone
