@@ -1,7 +1,7 @@
 #
 # spec file for package clpeak
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           clpeak
-Version:        1.0+git.20191206
+Version:        1.1.0
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        SUSE-Public-Domain
 Group:          System/Benchmark
 URL:            https://github.com/krrishnarraj/clpeak
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/krrishnarraj/clpeak/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-cpp-headers

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:24:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to upstream release 1.1.0
+  * All the kernels are now de-unrolled
+  * Prior to this, all mad or fetch operations were manually
+    unrolled which created register pressure on low-end devices.
+    Now the operations are put in a for loop and left for the
+    compiler to unroll
+  * General improvements
+
+-------------------------------------------------------------------
 Fri Dec 13 13:11:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git.20191206:
