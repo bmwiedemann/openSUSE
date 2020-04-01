@@ -1,0 +1,50 @@
+From 5c822613993f2193590252f1eb75c67e7cdf1c87 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Wed, 6 Mar 2019 10:19:20 +0000
+Subject: [PATCH 1/2] Use import-package instead of embedding dependencies
+
+---
+ bnd.bnd | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/bnd.bnd b/bnd.bnd
+index 420c0e0..ae3fadb 100644
+--- a/bnd.bnd
++++ b/bnd.bnd
+@@ -1,3 +1,4 @@
++Bundle-SymbolicName: org.apache.felix.scr
+ Bundle-Category: osgi
+ Bundle-DocURL: http://felix.apache.org/site/apache-felix-service-component-runtime.html
+ Bundle-Activator: org.apache.felix.scr.impl.Activator
+@@ -14,10 +15,7 @@ Require-Capability: osgi.ee;\
+                    filter:="(|(&(osgi.ee=JavaSE)(version=1.7))(&(osgi.ee=JavaSE/compact1)(version=1.8)))"
+ 
+ Export-Package: org.apache.felix.scr.component;version=1.1.0;provide:=true, \
+- org.apache.felix.scr.info;version=1.0.0;provide:=true, \
+- org.osgi.service.component;version=1.4;provide:=true, \
+- org.osgi.service.component.runtime;version=1.4;provide:=true, \
+- org.osgi.service.component.runtime.dto;version=1.4;provide:=true
++ org.apache.felix.scr.info;version=1.0.0;provide:=true
+ 
+ Private-Package: org.apache.felix.scr.impl.*
+ 
+@@ -28,6 +26,16 @@ Private-Package: org.apache.felix.scr.impl.*
+ #    R4.0 version 1.2 is sufficient.
+ # optional import for Gogo annotations 
+ Import-Package: \
++ org.osgi.dto;version="[1.0,2)", \
++ org.osgi.framework;version="[1.8,2)", \
++ org.osgi.framework.dto;version="[1.8,2)", \
++ org.osgi.framework.startlevel;version="[1.0,2)", \
++ org.osgi.framework.wiring;version="[1.2,2)", \
++ org.osgi.service.component;version="[1.4,1.5)", \
++ org.osgi.service.component.runtime;version="[1.4,1.5)", \
++ org.osgi.service.component.runtime.dto;version="[1.4,1.5)", \
++ org.osgi.util.promise;version="[1.0,2)", \
++ org.osgi.util.tracker;version="[1.5,2)", \
+  org.osgi.service.cm;version="[1.6,2)";resolution:=optional, \
+  org.osgi.service.log;version="[1.3,2)";resolution:=optional, \
+  org.osgi.service.metatype;version="[1.2,2)";resolution:=optional, \
+-- 
+2.21.1
+
