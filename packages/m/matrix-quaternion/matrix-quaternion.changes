@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:02:32 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.0.9.4d
+  This is a "sustaining" "rebuild" of the "stable" (that is - users
+  know its bugs by now) Quaternion on top of libQMatrixClient 
+  0.5.3.1. Unlike previous rebuilds, this incorporates two major
+  changes in Quaternion itself, backported from the master branch:
+
+  - (#653) Single sign-on support, to help Mozilla homeserver users
+  - (#663) Interoperability with Pantalaimon, to help practically
+    any Matrix user who agrees to use Pantalaimon as an E2EE proxy.
+
+-------------------------------------------------------------------
+Wed Jan 29 08:58:00 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.0.9.4c
+  - A problem that led to appstream-util validate failure 
+    preventing correct construction of Flatpaks has been fixed.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Thu May 30 07:27:22 UTC 2019 - ecsos@opensuse.org
 
 - Add missing requires libqt5-qtquickcontrols and 

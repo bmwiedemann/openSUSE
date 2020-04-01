@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-quaternion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,16 @@
 
 
 Name:           matrix-quaternion
-Version:        0.0.9.4
+Version:        0.0.9.4d
 Release:        0
 Summary:        QT Matrix client
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://github.com/QMatrixClient/Quaternion
+URL:            https://github.com/QMatrixClient/Quaternion
 Source0:        https://github.com/QMatrixClient/Quaternion/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(QMatrixClient) >= 0.5.1
@@ -46,6 +41,11 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       %{name}-lang
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 # upstream use instead Qt5Core, Qt5Gui, Qt5Network, Qt5Quick, Qt5Widgets:
 # BuildRequires:  libqt5-qtdeclarative-devel libqt5-qtquickcontrols
 
@@ -81,8 +81,8 @@ export CXXFLAGS="%{optflags}"
 %endif
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/quaternion
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
