@@ -29,7 +29,7 @@ BuildRequires:  automake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-BuildRequires:  mono(Mono.Addins)
+BuildRequires:  mono-addins-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glib-sharp-2.0)
 BuildRequires:  pkgconfig(gtk-sharp-2.0)

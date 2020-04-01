@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 22:12:31 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Fix unresolvable Mono addins dependency 
+
+-------------------------------------------------------------------
 Thu Jun 11 13:15:26 UTC 2015 - dimstar@opensuse.org
 
 - Fix build with mono 4.0 (sed hacks borrowed from Fedora).
