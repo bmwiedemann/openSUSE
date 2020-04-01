@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,26 +31,26 @@ BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module jupyterlab-server >= 1.0.0}
 BuildRequires:  %{python_module notebook >= 4.3.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module tornado5}
+BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  nodejs >= 10
 BuildRequires:  npm >= 10
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab = %{version}
+Requires:       python-Jinja2 >= 2.10
+Requires:       python-base >= 3.5
 Requires:       python-jupyter-core
 Requires:       python-jupyterlab-server >= 1.0.0
 Requires:       python-notebook >= 4.3.1
-Requires:       python-base >= 3.5
-Requires:       python-Jinja2 >= 2.10
-Requires:       python-tornado5
+Requires:       python-tornado
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.10}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-check-links}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
@@ -66,6 +66,7 @@ etc.).
 
 %package     -n jupyter-jupyterlab
 Summary:        Environment for interactive and reproducible computing
+Group:          Development/Languages/Python
 Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyterlab-filesystem
 Requires:       jupyter-jupyterlab-server >= 1.0.0
