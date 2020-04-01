@@ -1,7 +1,7 @@
 #
 # spec file for package python-cpplint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cpplint
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        An automated checker to make sure a C++ file follows Google's C++ style guide
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/cpplint/cpplint
 Source:         https://files.pythonhosted.org/packages/source/c/cpplint/cpplint-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +42,9 @@ in hopes that it can be merged in the future.
 %prep
 %setup -q -n cpplint-%{version}
 sed -i -e '/^#!\//, 1d' cpplint.py
+sed -i 's/pytest-runner//' setup.py
+sed -i 's/pytest-cov//' test-requirements
+sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 
 %build
 %python_build
@@ -50,7 +54,7 @@ sed -i -e '/^#!\//, 1d' cpplint.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
