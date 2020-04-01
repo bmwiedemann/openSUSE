@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:54:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- 1.11.1
+  * add service_number for github actions
+  * Python 2.7 and 3.4 are now officially End-Of-Life'd. Consider 
+    them deprecated from the perspective of this package -- we'll 
+    remove them in an upcoming release (likely the first one which 
+    requires non-trivial work to continue supporting them!).
+  * support coverage>=5.0
+  * mark Python 3.8 as officially supported.
+
+-------------------------------------------------------------------
 Thu Dec  5 11:12:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build on older releases

@@ -65,4 +65,12 @@
     <comment>- Fix build on older releases</comment>
     <requestid>754339</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>511bc3e6e6edaec479aa8bcd86a8bf87</srcmd5>
+    <version>1.11.1</version>
+    <time>1585761640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790631</requestid>
+  </revision>
 </revisionlist>
