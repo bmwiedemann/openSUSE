@@ -1,7 +1,7 @@
 #
 # spec file for package cage
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://www.hjdskes.nl/projects/cage/
 Source:         https://github.com/Hjdskes/cage/archive/v%{version}.tar.gz
 Patch0:         cage-0.1.1-new-wlroots.patch
+Patch1:         cage-0.1.1-dont-terminate-display.patch
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
@@ -39,6 +40,7 @@ A Wayland Kiosk.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %meson

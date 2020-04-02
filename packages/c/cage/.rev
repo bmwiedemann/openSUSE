@@ -15,4 +15,13 @@
     <comment>- Add cage-0.1.1-new-wlroots.patch: make it work with newer wlroots</comment>
     <requestid>766649</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bdbe1a32596eed9f263ece7fa5dab86a</srcmd5>
+    <version>0.1.1</version>
+    <time>1585842290</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cage-0.1.1-dont-terminate-display.patch: dont terminate display
+  Some applications wont work correctly otherwise.</comment>
+    <requestid>790836</requestid>
+  </revision>
 </revisionlist>

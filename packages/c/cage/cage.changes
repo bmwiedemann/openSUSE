@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 10:03:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add cage-0.1.1-dont-terminate-display.patch: dont terminate display
+  Some applications wont work correctly otherwise.
+
+-------------------------------------------------------------------
 Thu Jan 23 15:22:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add cage-0.1.1-new-wlroots.patch: make it work with newer wlroots
