@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
-%define LEECHCRAFT_VERSION 0.6.70-13605-g8cd066ad6a
+%define LEECHCRAFT_VERSION 0.6.70-13641-g995b95b3d4
 
 Name:           leechcraft-doc
-Version:        0.6.70+git.13605.g8cd066ad6a
+Version:        0.6.70+git.13641.g995b95b3d4
 Release:        0
 Summary:        Modular Internet Client Documentation
 License:        BSL-1.0
 Group:          Development/Libraries/Other
 URL:            http://leechcraft.org
-Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
+Source0:        leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 
 BuildRequires:  doxygen >= 1.8.3.1
 BuildRequires:  fdupes

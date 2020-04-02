@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 17:33:47 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-13641-g995b95b3d4 snapshot:
+  * MaxMindDB instead of GeoIP;
+  * There will not be source-url till Saturday.
+
+-------------------------------------------------------------------
 Tue Mar 10 15:24:09 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Drop support for GeoIP in BitTorrent, GeoIP is obsolete (bsc#1156208)

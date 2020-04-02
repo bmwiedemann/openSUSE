@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-13605-g8cd066ad6a
+%define LEECHCRAFT_VERSION 0.6.70-13641-g995b95b3d4
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -43,14 +43,14 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.13605.g8cd066ad6a
+Version:        0.6.70+git.13641.g995b95b3d4
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            http://leechcraft.org
 
-Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
+Source0:        leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
@@ -125,6 +125,7 @@ BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libguess)
 BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libotr)
@@ -2428,6 +2429,7 @@ cmake ../src \
         -DENABLE_TEXTOGROOSE=True \
 %ifarch %ix86 x86_64 %arm ppc64le
         -DENABLE_TORRENT=True \
+                 -DENABLE_BITTORRENT_GEOIP=True \
 %else
         -DENABLE_TORRENT=False \
 %endif

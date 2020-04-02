@@ -511,4 +511,12 @@ Touchstreams plugin was enabled for Factory. (forwarded request 178518 from Dark
     <comment></comment>
     <requestid>783778</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>afbec6ac22d875ed0e7fb3b3d6cf24fb</srcmd5>
+    <version>0.6.70+git.13641.g995b95b3d4</version>
+    <time>1585842199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790703</requestid>
+  </revision>
 </revisionlist>
