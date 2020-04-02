@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 16:05:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add release to provides and obsoletes
+
+-------------------------------------------------------------------
+Mon Mar 23 17:07:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- spyder3 rename to spyder
+- rename built package to spyder-memory-profiler 
+
+-------------------------------------------------------------------
 Tue Mar 17 21:11:27 UTC 2020 - code@bnavigator.de
 
 - update to 0.2.0

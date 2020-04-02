@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-memory-profiler
 Source:         https://files.pythonhosted.org/packages/source/s/spyder_memory_profiler/spyder_memory_profiler-%{version}.tar.gz
+Requires:       python-memory_profiler
+Requires:       spyder >= 3
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,9 +37,7 @@ BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python-mock
-BuildRequires:  spyder3 >= 3
-BuildRequires:  spyder3-lang >= 3
+BuildRequires:  spyder >= 3
 # /SECTION
 %python_subpackages
 
@@ -48,14 +48,14 @@ IDE for researchers, engineers and data analysts.
 This is a plugin for the Spyder IDE that integrates the Python memory profiler.
 It allows seeing the memory usage for every line.
 
-%package     -n spyder3-memory-profiler
+%package     -n spyder-memory-profiler
 Summary:        Memory profiler plugin for the Spyder IDE
 Group:          Development/Languages/Python
-Requires:       python3-memory_profiler
-Requires:       spyder3 >= 3
 Provides:       python3-spyder-memory-profiler = %{version}
+Provides:       spyder3-memory-profiler = %{version}-%{release}
+Obsoletes:      spyder3-memory-profiler < %{version}-%{release}
 
-%description -n spyder3-memory-profiler
+%description -n spyder-memory-profiler
 Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
@@ -79,9 +79,10 @@ export QT_HASH_SEED=0
 export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
-%files -n spyder3-memory-profiler
+%files -n spyder-memory-profiler
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/spyder_memory_profiler
+%{python_sitelib}/spyder_memory_profiler-%{version}-*.egg-info
 
 %changelog
