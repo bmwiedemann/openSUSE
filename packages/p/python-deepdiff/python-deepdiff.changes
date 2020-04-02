@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  2 10:36:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.3.2
+  * Deprecation Warning Enhancement
+  * DeepDiff not excluding paths when ignore_order is True
+  * adding exclude_obj_callback
+
+-------------------------------------------------------------------
 Fri Mar  6 10:07:40 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.2.0

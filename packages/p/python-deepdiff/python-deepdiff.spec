@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-deepdiff
-Version:        4.2.0
+Version:        4.3.2
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
