@@ -1,0 +1,16 @@
+From: Plater <davejplater@gmail.com>
+Date: Sat 28 Mar 13:58:16 SAST 2020
+Subject: rpmalloc needs to build with -fPIC
+
+Add -fPIC to rpmalloc's CMakeLists.txt CFLAGS
+
+Index: lmms-1.2.1/src/3rdparty/rpmalloc/CMakeLists.txt
+===================================================================
+--- lmms-1.2.1.orig/src/3rdparty/rpmalloc/CMakeLists.txt	2019-10-21 02:27:12.000000000 +0200
++++ lmms-1.2.1/src/3rdparty/rpmalloc/CMakeLists.txt	2020-03-28 14:04:13.314446543 +0200
+@@ -1,4 +1,4 @@
+-set(CMAKE_C_FLAGS "-std=c11")
++set(CMAKE_C_FLAGS "-std=c11 -fPIC")
+ 
+ add_library(rpmalloc STATIC
+ 	rpmalloc/rpmalloc/rpmalloc.c

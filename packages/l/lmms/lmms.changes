@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Mar 29 09:34:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 1.2.1 and enable wine dependent vst plugins in
+  a seperate subpackage, see boo#1167345.
+- Added tarballs for two VST specific 3rd party tarballs:
+  rpmalloc b5bdc18051bb74a22f0bde4bcc90b01cf590b496.tar.gz
+  and qt5-x11embed 022b39a1d496d72eb3e5b5188e5559f66afca957.tar.gz
+- Added lmms-rpmalloc-fpic.patch
+- Removed incorporated patches:
+  0001-Better-French-translations-in-the-menu-item-file-471.patch
+  0001-Fix-invalid-MIDI-Program-Change-decoding-5154.patch
+  0001-show-BBEditor-on-clicking-the-TrackLabelButton-5060.patch
+  0001-Make-splash-screen-text-white-5149.patch
+  0001-Update-.mailmap-5037.patch
+- Upstream changes:
+  *Respect OS case sensitivity when check for existing files #4768
+  *Remove MIDI connections from factory .mmpz files (#5163)
+  *Make splash screen text white (#5149)
+  *Show Beat/Bassline Editor on clicking track labels of B/B tracks
+   (#5060)
+  *Fix building RemoteVstPlugin with Wine >= 4.14 (#5210)
+  *Fix stuck keys when dragging on the piano view (#5127)
+  *Fix crash on unmarking octave semitones (#5184)
+  *Fix invalid MIDI Program Change decoding (#5154)
+  *Rubberband fix for selecting a large area in the song editor
+   (#5003)
+  *VeSTige: show icon on 'Turn off all notes' button (#5237)
+  *RemoteVstPlugin: fix crashes when failed to open a file (#5235)
+  *Organic: fix glitch at the beginning of a note (#5252)
+  *Fix broken audio sample exporting on high sampling rate (#5226)
+  *Better French translations in the menu item file (#4711)
+  *Fix too long translations to fix the UI misalignment (#5185)
+
+-------------------------------------------------------------------
 Mon Sep  9 09:20:49 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Build vst plugins without wine to fix factory build.

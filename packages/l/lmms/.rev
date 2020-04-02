@@ -319,4 +319,13 @@ Build position independent executables.
     <comment>Fix changes typo</comment>
     <requestid>729914</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0b4eb3b745c9cb2a30bb360be4790a8a</srcmd5>
+    <version>1.2.1</version>
+    <time>1585842183</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.2.1 and enable wine dependent vst plugins in a seperate subpackage, see boo#1167345.
+Require: filesystem</comment>
+    <requestid>790875</requestid>
+  </revision>
 </revisionlist>

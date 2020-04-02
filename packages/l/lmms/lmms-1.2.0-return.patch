@@ -1,7 +1,8 @@
-diff -urN lmms-1.1.0.old/plugins/midi_import/portsmf/allegro.cpp lmms-1.1.0/plugins/midi_import/portsmf/allegro.cpp
---- lmms-1.2.0.old/plugins/MidiImport/portsmf/allegro.cpp	2019-06-18 00:00:39.000000000 +0100
-+++ lmms-1.1.0/plugins/MidiImport/portsmf/allegro.cpp	2019-06-18 11:44:25.376352912 +0100
-@@ -2302,6 +2302,7 @@
+Index: lmms-1.2.1/plugins/MidiImport/portsmf/allegro.cpp
+===================================================================
+--- lmms-1.2.1.orig/plugins/MidiImport/portsmf/allegro.cpp	2020-03-28 13:53:04.668157976 +0200
++++ lmms-1.2.1/plugins/MidiImport/portsmf/allegro.cpp	2020-03-28 13:55:02.828782278 +0200
+@@ -2300,6 +2300,7 @@ Alg_event_ptr &Alg_seq::operator[](int i
          tr++;
      }
  	assert(false); // out of bounds
