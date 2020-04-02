@@ -35,4 +35,26 @@
     <comment></comment>
     <requestid>636337</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1e0d3afb0bbb91652008500b524c1e6</srcmd5>
+    <version>0.4.0</version>
+    <time>1585842178</time>
+    <user>dimstar_suse</user>
+    <comment>- spyder3 is spyder again [1]
+- enable unit tests
+- no python2 package because spyder does not provide one either
+- Update to 0.4.0
+  + Issues Closed
+    * Colours make text hard to read when run in dark mode
+    * Docstrings in test functions confuse unittest's output parser
+    * KeyError: 'test not found'
+  + Pull Requests Merged
+    * PR: Use appropriate colours when Spyder is in dark mode
+    * PR: Allow for unittest tests to have docstrings
+    * PR: Use nodeid provided by pytest in itemcollected hook
+    * PR: Compatibility fixes for Spyder 4
+
+[1] https://build.opensuse.org/request/show/790068</comment>
+    <requestid>790074</requestid>
+  </revision>
 </revisionlist>

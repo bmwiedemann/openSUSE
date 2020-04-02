@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-unittest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,54 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-spyder-unittest
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Plugin to run tests from within the Spyder IDE
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/spyder-ide/spyder-unittest
-Source:         https://files.pythonhosted.org/packages/source/s/spyder-unittest/spyder_unittest-%{version}.tar.gz
+URL:            https://github.com/spyder-ide/spyder-unittest
+Source:         https://files.pythonhosted.org/packages/source/s/spyder_unittest/spyder_unittest-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-lxml
+Requires:       spyder >= 3
+Provides:       spyder3-unittest = %{version}-%{release}
+Obsoletes:      spyder3-unittest < %{version}-%{release}
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  spyder >= 3
+BuildRequires:  xdpyinfo
+# /SECTION
 %python_subpackages
 
 %description
-Spyder, the Scientific Python Development Environment, is an
-IDE for researchers, engineers and data analysts.
-
-This is a plugin for the Spyder IDE that integrates unit test
-frameworks. It allows running tests and viewing the results.
-
-%package -n spyder-unittest
-Summary:        Plugin to run tests from within the Spyder IDE
-Group:          Development/Languages/Python
-Requires:       python-lxml
-Requires:       spyder >= 3
-
-%description -n spyder-unittest
-Spyder, the Scientific Python Development Environment, is an
-IDE for researchers, engineers and data analysts.
-
-This is a plugin for the Spyder IDE that integrates unit test
-frameworks. It allows running tests and viewing the results.
-
-%package -n spyder3-unittest
-Summary:        Plugin to run tests from within the Spyder3 IDE
-Group:          Development/Languages/Python
-Requires:       python3-lxml
-Requires:       spyder3 >= 3
-
-%description -n spyder3-unittest
 Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
@@ -76,16 +64,12 @@ frameworks. It allows running tests and viewing the results.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files -n spyder-unittest
-%defattr(-,root,root,-)
-%doc CHANGELOG.md README.md
-%license LICENSE.txt
-%{python2_sitelib}/*
+%check
+%pytest
 
-%files -n spyder3-unittest
-%defattr(-,root,root,-)
+%files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 24 16:06:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add release to provides and obsoletes
+
+-------------------------------------------------------------------
+Mon Mar 23 14:00:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- spyder3 is spyder again 
+- enable unit tests
+- no python2 package because spyder does not provide one either
+
+-------------------------------------------------------------------
+Thu Jan 30 15:37:08 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.4.0
+  + Issues Closed
+    * Colours make text hard to read when run in dark mode
+    * Docstrings in test functions confuse unittest's output parser
+    * KeyError: 'test not found'
+  + Pull Requests Merged
+    * PR: Use appropriate colours when Spyder is in dark mode
+    * PR: Allow for unittest tests to have docstrings
+    * PR: Use nodeid provided by pytest in itemcollected hook
+    * PR: Compatibility fixes for Spyder 4
+
+-------------------------------------------------------------------
 Thu Aug 16 08:05:12 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of description. Trim filler words.
