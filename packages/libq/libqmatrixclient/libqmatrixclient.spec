@@ -18,11 +18,11 @@
 
 #
 %define soname libQMatrixClient
-%define soversion 0_5_1
+%define soversion 0_5_3
 %define sname libQuotient
 
 Name:           libqmatrixclient
-Version:        0.5.3.1
+Version:        0.5.3.2
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:19:53 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.5.3.2
+  This is the same as 0.5.3.1, except the API version 
+  (aka soversion) bumped to 0.5.3 to ensure correct upgrade via 
+  Quaternion dependencies.
+
+-------------------------------------------------------------------
 Tue Mar 31 11:29:21 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.5.3.1
