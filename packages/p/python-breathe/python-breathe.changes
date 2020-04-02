@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  2 08:06:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix FTBFS due to test failure
+
+  Add patch: 0001-Add-MockApp.emit.patch
+  This is cherry picked from https://github.com/michaeljones/breathe/pull/486
+  and fixes test failures with sphinx 2.4.4
+
+-------------------------------------------------------------------
 Sun Feb  2 16:00:02 UTC 2020 - aloisio@gmx.com
 
 - Update to version 4.14.1

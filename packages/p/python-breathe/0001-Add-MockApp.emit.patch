@@ -1,0 +1,26 @@
+From 1ac526b963e7e80f028b800cf2339cad5cd9daef Mon Sep 17 00:00:00 2001
+From: Jakob Lykke Andersen <Jakob@caput.dk>
+Date: Wed, 18 Mar 2020 11:23:25 +0100
+Subject: [PATCH] Add MockApp.emit
+
+---
+ tests/test_renderer.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/test_renderer.py b/tests/test_renderer.py
+index 0c8df08..95ea3f7 100644
+--- a/tests/test_renderer.py
++++ b/tests/test_renderer.py
+@@ -83,6 +83,9 @@ class MockApp(object):
+         if not docutils.is_node_registered(node):
+             docutils.register_node(node)
+ 
++    def emit(self, name, *args):
++        print('[MockApp] was supposed to emit event: %r%s' % (name, repr(args)[:100]))
++
+ 
+ class MockState:
+     def __init__(self):
+-- 
+2.26.0
+

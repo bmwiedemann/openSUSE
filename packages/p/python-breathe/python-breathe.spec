@@ -24,7 +24,9 @@ Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/michaeljones/breathe
-Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
+Source:         %{URL}/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
+# https://github.com/michaeljones/breathe/pull/486
+Patch0:         0001-Add-MockApp.emit.patch
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module mock}
@@ -47,7 +49,7 @@ Breathe is an extension to reStructuredText and Sphinx to be
 able to read and  render Doxygen xml output.
 
 %prep
-%setup -q -n breathe-%{version}
+%autosetup -p1 -n breathe-%{version}
 
 %build
 %python_build
@@ -57,7 +59,7 @@ able to read and  render Doxygen xml output.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v tests/
+%make_build dev-test
 
 %files %{python_files}
 %doc README.rst
