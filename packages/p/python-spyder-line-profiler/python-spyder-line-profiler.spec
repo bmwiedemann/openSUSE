@@ -25,10 +25,20 @@ Summary:        Line profiler plugin for the Spyder IDE
 License:        MIT
 URL:            https://github.com/spyder-ide/spyder-line-profiler
 Source:         https://files.pythonhosted.org/packages/source/s/spyder_line_profiler/spyder_line_profiler-%{version}.tar.gz
+Requires:       python-line_profiler
+Requires:       spyder >= 4
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module line_profiler}
+BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  spyder >= 4
+BuildRequires:  xdpyinfo
+# /SECTION
 %python_subpackages
 
 %description
@@ -38,12 +48,12 @@ IDE for researchers, engineers and data analysts.
 This is a plugin for the Spyder IDE that integrates the Python line profiler.
 It allows seeing the time spent for every line.
 
-%package -n spyder3-line-profiler
+%package -n spyder-line-profiler
 Summary:        Line profiler plugin for the Spyder IDE
-Requires:       python3-line_profiler
-Requires:       spyder3 >= 3
+Provides:       spyder3-line-profiler = %{version}-%{release}
+Obsoletes:      spyder3-line-profiler < %{version}-%{release}
 
-%description -n spyder3-line-profiler
+%description -n spyder-line-profiler
 Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
@@ -64,9 +74,14 @@ sed -i -e '/^#!\//, 1d' spyder_line_profiler/example/subdir/profiling_test_scrip
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files -n spyder3-line-profiler
+%check
+export PYTHONDONTWRITEBYTECODE=1
+%pytest
+
+%files -n spyder-line-profiler
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%{python3_sitelib}/*
+%{python_sitelib}/spyder_line_profiler-%{version}-py*.egg-info
+%{python_sitelib}/spyder_line_profiler
 
 %changelog
