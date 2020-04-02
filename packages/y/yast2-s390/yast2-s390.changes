@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:52:28 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not try to activate DASD and zFCP devices that are already
+  active (bsc#1163149). Related to jsc#SLE-7396.
+- 4.2.5
+
+-------------------------------------------------------------------
 Mon Mar 23 13:56:13 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Properly identify zFCP devices (bsc#1158443).
