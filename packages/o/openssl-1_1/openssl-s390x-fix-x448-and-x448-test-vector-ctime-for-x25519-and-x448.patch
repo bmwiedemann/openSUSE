@@ -6,7 +6,7 @@ Index: openssl-1.1.1d/crypto/ec/ecx_meth.c
  
  #ifdef S390X_EC_ASM
  # include "s390x_arch.h"
-+# include "internal/constant_time_locl.h"
++# include "internal/constant_time.h"
  
  static void s390x_x25519_mod_p(unsigned char u[32])
  {
@@ -61,10 +61,10 @@ Index: openssl-1.1.1d/crypto/ec/ecx_meth.c
  
      s390x_flip_endian64(param.x448.d_src, param.x448.d_src);
      param.x448.d_src[63] &= 252;
-Index: openssl-1.1.1d/include/internal/constant_time_locl.h
+Index: openssl-1.1.1d/include/internal/constant_timeh
 ===================================================================
---- openssl-1.1.1d.orig/include/internal/constant_time_locl.h
-+++ openssl-1.1.1d/include/internal/constant_time_locl.h
+--- openssl-1.1.1d.orig/include/internal/constant_time.h
++++ openssl-1.1.1d/include/internal/constant_time.h
 @@ -353,6 +353,34 @@ static ossl_inline void constant_time_co
  }
  

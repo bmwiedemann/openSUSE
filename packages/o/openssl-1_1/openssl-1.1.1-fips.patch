@@ -1,8 +1,8 @@
-Index: openssl-1.1.1d/apps/pkcs12.c
+Index: openssl-1.1.1e/apps/pkcs12.c
 ===================================================================
---- openssl-1.1.1d.orig/apps/pkcs12.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/apps/pkcs12.c	2020-01-23 13:45:11.224632978 +0100
-@@ -126,7 +126,7 @@ int pkcs12_main(int argc, char **argv)
+--- openssl-1.1.1e.orig/apps/pkcs12.c	2020-03-20 13:57:35.372428239 +0100
++++ openssl-1.1.1e/apps/pkcs12.c	2020-03-20 13:57:47.240490463 +0100
+@@ -127,7 +127,7 @@ int pkcs12_main(int argc, char **argv)
      int export_cert = 0, options = 0, chain = 0, twopass = 0, keytype = 0;
      int iter = PKCS12_DEFAULT_ITER, maciter = PKCS12_DEFAULT_ITER;
  # ifndef OPENSSL_NO_RC2
@@ -11,11 +11,11 @@ Index: openssl-1.1.1d/apps/pkcs12.c
  # else
      int cert_pbe = NID_pbe_WithSHA1And3_Key_TripleDES_CBC;
  # endif
-Index: openssl-1.1.1d/apps/speed.c
+Index: openssl-1.1.1e/apps/speed.c
 ===================================================================
---- openssl-1.1.1d.orig/apps/speed.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/apps/speed.c	2020-01-23 13:45:11.224632978 +0100
-@@ -1676,7 +1676,8 @@ int speed_main(int argc, char **argv)
+--- openssl-1.1.1e.orig/apps/speed.c	2020-03-20 13:57:35.372428239 +0100
++++ openssl-1.1.1e/apps/speed.c	2020-03-20 13:57:47.244490484 +0100
+@@ -1674,7 +1674,8 @@ int speed_main(int argc, char **argv)
              continue;
          if (strcmp(*argv, "rsa") == 0) {
              for (loop = 0; loop < OSSL_NELEM(rsa_doit); loop++)
@@ -25,7 +25,7 @@ Index: openssl-1.1.1d/apps/speed.c
              continue;
          }
          if (found(*argv, rsa_choices, &i)) {
-@@ -1686,7 +1687,9 @@ int speed_main(int argc, char **argv)
+@@ -1684,7 +1685,9 @@ int speed_main(int argc, char **argv)
  #endif
  #ifndef OPENSSL_NO_DSA
          if (strcmp(*argv, "dsa") == 0) {
@@ -36,7 +36,7 @@ Index: openssl-1.1.1d/apps/speed.c
                  dsa_doit[R_DSA_2048] = 1;
              continue;
          }
-@@ -1717,19 +1720,21 @@ int speed_main(int argc, char **argv)
+@@ -1715,19 +1718,21 @@ int speed_main(int argc, char **argv)
          }
          if (strcmp(*argv, "ecdh") == 0) {
              for (loop = 0; loop < OSSL_NELEM(ecdh_doit); loop++)
@@ -62,7 +62,7 @@ Index: openssl-1.1.1d/apps/speed.c
              eddsa_doit[i] = 2;
              continue;
          }
-@@ -1818,23 +1823,31 @@ int speed_main(int argc, char **argv)
+@@ -1816,23 +1821,31 @@ int speed_main(int argc, char **argv)
      /* No parameters; turn on everything. */
      if ((argc == 0) && !doit[D_EVP]) {
          for (i = 0; i < ALGOR_NUM; i++)
@@ -100,7 +100,7 @@ Index: openssl-1.1.1d/apps/speed.c
  #endif
      }
      for (i = 0; i < ALGOR_NUM; i++)
-@@ -1882,30 +1895,46 @@ int speed_main(int argc, char **argv)
+@@ -1880,30 +1893,46 @@ int speed_main(int argc, char **argv)
      AES_set_encrypt_key(key24, 192, &aes_ks2);
      AES_set_encrypt_key(key32, 256, &aes_ks3);
  #ifndef OPENSSL_NO_CAMELLIA
@@ -157,7 +157,7 @@ Index: openssl-1.1.1d/apps/speed.c
  #endif
  #ifndef SIGALRM
  # ifndef OPENSSL_NO_DES
-@@ -2203,6 +2232,7 @@ int speed_main(int argc, char **argv)
+@@ -2201,6 +2230,7 @@ int speed_main(int argc, char **argv)
  
          for (i = 0; i < loopargs_len; i++) {
              loopargs[i].hctx = HMAC_CTX_new();
@@ -165,11 +165,11 @@ Index: openssl-1.1.1d/apps/speed.c
              if (loopargs[i].hctx == NULL) {
                  BIO_printf(bio_err, "HMAC malloc failure, exiting...");
                  exit(1);
-Index: openssl-1.1.1d/Configure
+Index: openssl-1.1.1e/Configure
 ===================================================================
---- openssl-1.1.1d.orig/Configure	2020-01-23 13:45:11.084632146 +0100
-+++ openssl-1.1.1d/Configure	2020-01-23 13:45:11.224632978 +0100
-@@ -303,7 +303,7 @@ $config{sdirs} = [
+--- openssl-1.1.1e.orig/Configure	2020-03-20 13:57:35.372428239 +0100
++++ openssl-1.1.1e/Configure	2020-03-20 13:57:47.244490484 +0100
+@@ -315,7 +315,7 @@ $config{sdirs} = [
      "md2", "md4", "md5", "sha", "mdc2", "hmac", "ripemd", "whrlpool", "poly1305", "blake2", "siphash", "sm3",
      "des", "aes", "rc2", "rc4", "rc5", "idea", "aria", "bf", "cast", "camellia", "seed", "sm4", "chacha", "modes",
      "bn", "ec", "rsa", "dsa", "dh", "sm2", "dso", "engine",
@@ -178,10 +178,10 @@ Index: openssl-1.1.1d/Configure
      "evp", "asn1", "pem", "x509", "x509v3", "conf", "txt_db", "pkcs7", "pkcs12", "comp", "ocsp", "ui",
      "cms", "ts", "srp", "cmac", "ct", "async", "kdf", "store"
      ];
-Index: openssl-1.1.1d/crypto/cmac/cm_pmeth.c
+Index: openssl-1.1.1e/crypto/cmac/cm_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/cmac/cm_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/cmac/cm_pmeth.c	2020-01-23 13:45:11.224632978 +0100
+--- openssl-1.1.1e.orig/crypto/cmac/cm_pmeth.c	2020-03-20 13:57:35.372428239 +0100
++++ openssl-1.1.1e/crypto/cmac/cm_pmeth.c	2020-03-20 13:57:47.244490484 +0100
 @@ -129,7 +129,7 @@ static int pkey_cmac_ctrl_str(EVP_PKEY_C
  
  const EVP_PKEY_METHOD cmac_pkey_meth = {
@@ -191,10 +191,10 @@ Index: openssl-1.1.1d/crypto/cmac/cm_pmeth.c
      pkey_cmac_init,
      pkey_cmac_copy,
      pkey_cmac_cleanup,
-Index: openssl-1.1.1d/crypto/dh/dh_err.c
+Index: openssl-1.1.1e/crypto/dh/dh_err.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dh/dh_err.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dh/dh_err.c	2020-01-23 13:45:11.224632978 +0100
+--- openssl-1.1.1e.orig/crypto/dh/dh_err.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dh/dh_err.c	2020-03-20 13:57:47.244490484 +0100
 @@ -25,6 +25,9 @@ static const ERR_STRING_DATA DH_str_func
      {ERR_PACK(ERR_LIB_DH, DH_F_DH_CMS_SET_PEERKEY, 0), "dh_cms_set_peerkey"},
      {ERR_PACK(ERR_LIB_DH, DH_F_DH_CMS_SET_SHARED_INFO, 0),
@@ -220,14 +220,14 @@ Index: openssl-1.1.1d/crypto/dh/dh_err.c
      {ERR_PACK(ERR_LIB_DH, 0, DH_R_PARAMETER_ENCODING_ERROR),
      "parameter encoding error"},
      {ERR_PACK(ERR_LIB_DH, 0, DH_R_PEER_KEY_ERROR), "peer key error"},
-Index: openssl-1.1.1d/crypto/dh/dh_gen.c
+Index: openssl-1.1.1e/crypto/dh/dh_gen.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dh/dh_gen.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dh/dh_gen.c	2020-01-23 13:45:11.224632978 +0100
+--- openssl-1.1.1e.orig/crypto/dh/dh_gen.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dh/dh_gen.c	2020-03-20 13:57:47.244490484 +0100
 @@ -16,6 +16,9 @@
  #include "internal/cryptlib.h"
  #include <openssl/bn.h>
- #include "dh_locl.h"
+ #include "dh_local.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
 +#endif
@@ -267,14 +267,14 @@ Index: openssl-1.1.1d/crypto/dh/dh_gen.c
      ctx = BN_CTX_new();
      if (ctx == NULL)
          goto err;
-Index: openssl-1.1.1d/crypto/dh/dh_key.c
+Index: openssl-1.1.1e/crypto/dh/dh_key.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dh/dh_key.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dh/dh_key.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dh/dh_key.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dh/dh_key.c	2020-03-20 13:57:47.244490484 +0100
 @@ -11,6 +11,9 @@
  #include "internal/cryptlib.h"
- #include "dh_locl.h"
- #include "internal/bn_int.h"
+ #include "dh_local.h"
+ #include "crypto/bn.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
 +#endif
@@ -354,10 +354,10 @@ Index: openssl-1.1.1d/crypto/dh/dh_key.c
      dh->flags |= DH_FLAG_CACHE_MONT_P;
      return 1;
  }
-Index: openssl-1.1.1d/crypto/dh/dh_pmeth.c
+Index: openssl-1.1.1e/crypto/dh/dh_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dh/dh_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dh/dh_pmeth.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dh/dh_pmeth.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dh/dh_pmeth.c	2020-03-20 13:57:47.244490484 +0100
 @@ -480,7 +480,7 @@ static int pkey_dh_derive(EVP_PKEY_CTX *
  
  const EVP_PKEY_METHOD dh_pkey_meth = {
@@ -376,10 +376,10 @@ Index: openssl-1.1.1d/crypto/dh/dh_pmeth.c
      pkey_dh_init,
      pkey_dh_copy,
      pkey_dh_cleanup,
-Index: openssl-1.1.1d/crypto/dsa/dsa_err.c
+Index: openssl-1.1.1e/crypto/dsa/dsa_err.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dsa/dsa_err.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dsa/dsa_err.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dsa/dsa_err.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dsa/dsa_err.c	2020-03-20 13:57:47.244490484 +0100
 @@ -16,12 +16,15 @@
  static const ERR_STRING_DATA DSA_str_functs[] = {
      {ERR_PACK(ERR_LIB_DSA, DSA_F_DSAPARAMS_PRINT, 0), "DSAparams_print"},
@@ -411,14 +411,14 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_err.c
      {ERR_PACK(ERR_LIB_DSA, 0, DSA_R_PARAMETER_ENCODING_ERROR),
      "parameter encoding error"},
      {ERR_PACK(ERR_LIB_DSA, 0, DSA_R_Q_NOT_PRIME), "q not prime"},
-Index: openssl-1.1.1d/crypto/dsa/dsa_gen.c
+Index: openssl-1.1.1e/crypto/dsa/dsa_gen.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dsa/dsa_gen.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dsa/dsa_gen.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dsa/dsa_gen.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dsa/dsa_gen.c	2020-03-20 13:57:47.244490484 +0100
 @@ -22,12 +22,22 @@
  #include <openssl/rand.h>
  #include <openssl/sha.h>
- #include "dsa_locl.h"
+ #include "dsa_local.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
 +#endif
@@ -576,17 +576,17 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_gen.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/dsa/dsa_key.c
+Index: openssl-1.1.1e/crypto/dsa/dsa_key.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dsa/dsa_key.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dsa/dsa_key.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dsa/dsa_key.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dsa/dsa_key.c	2020-03-20 13:57:47.244490484 +0100
 @@ -13,10 +13,49 @@
  #include <openssl/bn.h>
- #include "dsa_locl.h"
+ #include "dsa_local.h"
  
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +
 +static int fips_check_dsa(DSA *dsa)
 +{
@@ -659,13 +659,13 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_key.c
      ok = 1;
  
   err:
-Index: openssl-1.1.1d/crypto/dsa/dsa_ossl.c
+Index: openssl-1.1.1e/crypto/dsa/dsa_ossl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dsa/dsa_ossl.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dsa/dsa_ossl.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/dsa/dsa_ossl.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dsa/dsa_ossl.c	2020-03-20 13:57:47.244490484 +0100
 @@ -14,6 +14,9 @@
  #include <openssl/sha.h>
- #include "dsa_locl.h"
+ #include "dsa_local.h"
  #include <openssl/asn1.h>
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
@@ -722,11 +722,11 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_ossl.c
      dsa->flags |= DSA_FLAG_CACHE_MONT_P;
      return 1;
  }
-Index: openssl-1.1.1d/crypto/dsa/dsa_pmeth.c
+Index: openssl-1.1.1e/crypto/dsa/dsa_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/dsa/dsa_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/dsa/dsa_pmeth.c	2020-01-23 13:45:11.228633003 +0100
-@@ -215,8 +215,8 @@ static int pkey_dsa_paramgen(EVP_PKEY_CT
+--- openssl-1.1.1e.orig/crypto/dsa/dsa_pmeth.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/dsa/dsa_pmeth.c	2020-03-20 13:57:47.244490484 +0100
+@@ -211,8 +211,8 @@ static int pkey_dsa_paramgen(EVP_PKEY_CT
          BN_GENCB_free(pcb);
          return 0;
      }
@@ -737,7 +737,7 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_pmeth.c
      BN_GENCB_free(pcb);
      if (ret)
          EVP_PKEY_assign_DSA(pkey, dsa);
-@@ -245,7 +245,7 @@ static int pkey_dsa_keygen(EVP_PKEY_CTX
+@@ -241,7 +241,7 @@ static int pkey_dsa_keygen(EVP_PKEY_CTX
  
  const EVP_PKEY_METHOD dsa_pkey_meth = {
      EVP_PKEY_DSA,
@@ -746,13 +746,13 @@ Index: openssl-1.1.1d/crypto/dsa/dsa_pmeth.c
      pkey_dsa_init,
      pkey_dsa_copy,
      pkey_dsa_cleanup,
-Index: openssl-1.1.1d/crypto/ec/ecdh_ossl.c
+Index: openssl-1.1.1e/crypto/ec/ecdh_ossl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecdh_ossl.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/ec/ecdh_ossl.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/ec/ecdh_ossl.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/ec/ecdh_ossl.c	2020-03-20 13:57:47.248490505 +0100
 @@ -19,9 +19,20 @@
  #include <openssl/ec.h>
- #include "ec_lcl.h"
+ #include "ec_local.h"
  
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
@@ -771,13 +771,13 @@ Index: openssl-1.1.1d/crypto/ec/ecdh_ossl.c
      if (ecdh->group->meth->ecdh_compute_key == NULL) {
          ECerr(EC_F_OSSL_ECDH_COMPUTE_KEY, EC_R_CURVE_DOES_NOT_SUPPORT_ECDH);
          return 0;
-Index: openssl-1.1.1d/crypto/ec/ecdsa_ossl.c
+Index: openssl-1.1.1e/crypto/ec/ecdsa_ossl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecdsa_ossl.c	2020-01-23 13:45:11.104632265 +0100
-+++ openssl-1.1.1d/crypto/ec/ecdsa_ossl.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/ec/ecdsa_ossl.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/ec/ecdsa_ossl.c	2020-03-20 13:57:47.248490505 +0100
 @@ -14,6 +14,11 @@
- #include "internal/bn_int.h"
- #include "ec_lcl.h"
+ #include "crypto/bn.h"
+ #include "ec_local.h"
  
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
@@ -815,10 +815,10 @@ Index: openssl-1.1.1d/crypto/ec/ecdsa_ossl.c
      /* check input values */
      if (eckey == NULL || (group = EC_KEY_get0_group(eckey)) == NULL ||
          (pub_key = EC_KEY_get0_public_key(eckey)) == NULL || sig == NULL) {
-Index: openssl-1.1.1d/crypto/ec/ec_key.c
+Index: openssl-1.1.1e/crypto/ec/ec_key.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec_key.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/ec/ec_key.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/ec/ec_key.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/ec/ec_key.c	2020-03-20 13:57:47.248490505 +0100
 @@ -178,14 +178,62 @@ ENGINE *EC_KEY_get0_engine(const EC_KEY
      return eckey->engine;
  }
@@ -826,7 +826,7 @@ Index: openssl-1.1.1d/crypto/ec/ec_key.c
 +#ifdef OPENSSL_FIPS
 +
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +
 +static int fips_check_ec(EC_KEY *key)
 +{
@@ -884,10 +884,10 @@ Index: openssl-1.1.1d/crypto/ec/ec_key.c
      ECerr(EC_F_EC_KEY_GENERATE_KEY, EC_R_OPERATION_NOT_SUPPORTED);
      return 0;
  }
-Index: openssl-1.1.1d/crypto/ec/ec_pmeth.c
+Index: openssl-1.1.1e/crypto/ec/ec_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/ec/ec_pmeth.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/ec/ec_pmeth.c	2020-03-20 13:57:35.376428260 +0100
++++ openssl-1.1.1e/crypto/ec/ec_pmeth.c	2020-03-20 13:57:47.248490505 +0100
 @@ -438,7 +438,7 @@ static int pkey_ec_keygen(EVP_PKEY_CTX *
  
  const EVP_PKEY_METHOD ec_pkey_meth = {
@@ -897,10 +897,10 @@ Index: openssl-1.1.1d/crypto/ec/ec_pmeth.c
      pkey_ec_init,
      pkey_ec_copy,
      pkey_ec_cleanup,
-Index: openssl-1.1.1d/crypto/evp/c_allc.c
+Index: openssl-1.1.1e/crypto/evp/c_allc.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/c_allc.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/c_allc.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/c_allc.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/c_allc.c	2020-03-20 13:57:47.248490505 +0100
 @@ -17,6 +17,9 @@
  void openssl_add_all_ciphers_int(void)
  {
@@ -982,10 +982,10 @@ Index: openssl-1.1.1d/crypto/evp/c_allc.c
 +    }
 +#endif
  }
-Index: openssl-1.1.1d/crypto/evp/c_alld.c
+Index: openssl-1.1.1e/crypto/evp/c_alld.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/c_alld.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/c_alld.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/c_alld.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/c_alld.c	2020-03-20 13:57:47.248490505 +0100
 @@ -16,6 +16,9 @@
  
  void openssl_add_all_digests_int(void)
@@ -1021,14 +1021,14 @@ Index: openssl-1.1.1d/crypto/evp/c_alld.c
 +    }
 +#endif
  }
-Index: openssl-1.1.1d/crypto/evp/digest.c
+Index: openssl-1.1.1e/crypto/evp/digest.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/digest.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/digest.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/digest.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/digest.c	2020-03-20 13:57:47.248490505 +0100
 @@ -14,6 +14,9 @@
  #include <openssl/engine.h>
- #include "internal/evp_int.h"
- #include "evp_locl.h"
+ #include "crypto/evp.h"
+ #include "evp_local.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
 +#endif
@@ -1085,10 +1085,10 @@ Index: openssl-1.1.1d/crypto/evp/digest.c
      OPENSSL_assert(ctx->digest->md_size <= EVP_MAX_MD_SIZE);
      ret = ctx->digest->final(ctx, md);
      if (size != NULL)
-Index: openssl-1.1.1d/crypto/evp/e_aes.c
+Index: openssl-1.1.1e/crypto/evp/e_aes.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/e_aes.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/e_aes.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/e_aes.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/e_aes.c	2020-03-20 13:57:47.248490505 +0100
 @@ -397,7 +397,7 @@ static int aesni_xts_init_key(EVP_CIPHER
           * This addresses Rogaway's vulnerability.
           * See comment in aes_xts_init_key() below.
@@ -1211,10 +1211,10 @@ Index: openssl-1.1.1d/crypto/evp/e_aes.c
                  | EVP_CIPH_CUSTOM_IV | EVP_CIPH_FLAG_CUSTOM_CIPHER \
                  | EVP_CIPH_ALWAYS_CALL_INIT | EVP_CIPH_FLAG_DEFAULT_ASN1)
  
-Index: openssl-1.1.1d/crypto/evp/e_des3.c
+Index: openssl-1.1.1e/crypto/evp/e_des3.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/e_des3.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/e_des3.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/e_des3.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/e_des3.c	2020-03-20 13:57:47.248490505 +0100
 @@ -211,16 +211,19 @@ BLOCK_CIPHER_defs(des_ede, DES_EDE_KEY,
  # define des_ede3_cbc_cipher des_ede_cbc_cipher
  # define des_ede3_ecb_cipher des_ede_ecb_cipher
@@ -1241,10 +1241,10 @@ Index: openssl-1.1.1d/crypto/evp/e_des3.c
  
  static int des_ede_init_key(EVP_CIPHER_CTX *ctx, const unsigned char *key,
                              const unsigned char *iv, int enc)
-Index: openssl-1.1.1d/crypto/evp/e_null.c
+Index: openssl-1.1.1e/crypto/evp/e_null.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/e_null.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/e_null.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/e_null.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/e_null.c	2020-03-20 13:57:47.248490505 +0100
 @@ -19,7 +19,8 @@ static int null_cipher(EVP_CIPHER_CTX *c
                         const unsigned char *in, size_t inl);
  static const EVP_CIPHER n_cipher = {
@@ -1255,14 +1255,14 @@ Index: openssl-1.1.1d/crypto/evp/e_null.c
      null_init_key,
      null_cipher,
      NULL,
-Index: openssl-1.1.1d/crypto/evp/evp_enc.c
+Index: openssl-1.1.1e/crypto/evp/evp_enc.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/evp_enc.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/evp_enc.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/evp_enc.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/evp_enc.c	2020-03-20 13:57:47.252490526 +0100
 @@ -17,10 +17,19 @@
  #include <openssl/engine.h>
- #include "internal/evp_int.h"
- #include "evp_locl.h"
+ #include "crypto/evp.h"
+ #include "evp_local.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
 +#endif
@@ -1334,10 +1334,10 @@ Index: openssl-1.1.1d/crypto/evp/evp_enc.c
  
      if (key || (ctx->cipher->flags & EVP_CIPH_ALWAYS_CALL_INIT)) {
          if (!ctx->cipher->init(ctx, key, iv, enc))
-Index: openssl-1.1.1d/crypto/evp/evp_err.c
+Index: openssl-1.1.1e/crypto/evp/evp_err.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/evp_err.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/evp_err.c	2020-01-23 13:45:34.920773806 +0100
+--- openssl-1.1.1e.orig/crypto/evp/evp_err.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/evp_err.c	2020-03-20 13:57:47.252490526 +0100
 @@ -23,6 +23,7 @@ static const ERR_STRING_DATA EVP_str_fun
      {ERR_PACK(ERR_LIB_EVP, EVP_F_AES_T4_XTS_INIT_KEY, 0),
       "aes_t4_xts_init_key"},
@@ -1354,7 +1354,7 @@ Index: openssl-1.1.1d/crypto/evp/evp_err.c
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_ERROR_LOADING_SECTION),
      "error loading section"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_ERROR_SETTING_FIPS_MODE),
-@@ -248,6 +250,7 @@ static const ERR_STRING_DATA EVP_str_rea
+@@ -249,6 +251,7 @@ static const ERR_STRING_DATA EVP_str_rea
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PRIVATE_KEY_ENCODE_ERROR),
      "private key encode error"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PUBLIC_KEY_NOT_RSA), "public key not rsa"},
@@ -1362,7 +1362,7 @@ Index: openssl-1.1.1d/crypto/evp/evp_err.c
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_UNKNOWN_CIPHER), "unknown cipher"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_UNKNOWN_DIGEST), "unknown digest"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_UNKNOWN_OPTION), "unknown option"},
-@@ -273,6 +276,8 @@ static const ERR_STRING_DATA EVP_str_rea
+@@ -274,6 +277,8 @@ static const ERR_STRING_DATA EVP_str_rea
      "wrap mode not allowed"},
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_WRONG_FINAL_BLOCK_LENGTH),
      "wrong final block length"},
@@ -1371,10 +1371,10 @@ Index: openssl-1.1.1d/crypto/evp/evp_err.c
      {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_XTS_DUPLICATED_KEYS),
      "xts duplicated keys"},
      {0, NULL}
-Index: openssl-1.1.1d/crypto/evp/evp_lib.c
+Index: openssl-1.1.1e/crypto/evp/evp_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/evp_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/evp_lib.c	2020-01-23 13:45:11.228633003 +0100
+--- openssl-1.1.1e.orig/crypto/evp/evp_lib.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/evp_lib.c	2020-03-20 13:57:47.252490526 +0100
 @@ -192,6 +192,9 @@ int EVP_CIPHER_impl_ctx_size(const EVP_C
  int EVP_Cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
                 const unsigned char *in, unsigned int inl)
@@ -1385,10 +1385,10 @@ Index: openssl-1.1.1d/crypto/evp/evp_lib.c
      return ctx->cipher->do_cipher(ctx, out, in, inl);
  }
  
-Index: openssl-1.1.1d/crypto/evp/m_sha1.c
+Index: openssl-1.1.1e/crypto/evp/m_sha1.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/m_sha1.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/m_sha1.c	2020-01-23 13:45:11.232633025 +0100
+--- openssl-1.1.1e.orig/crypto/evp/m_sha1.c	2020-03-20 13:57:35.380428280 +0100
++++ openssl-1.1.1e/crypto/evp/m_sha1.c	2020-03-20 13:57:47.252490526 +0100
 @@ -95,7 +95,7 @@ static const EVP_MD sha1_md = {
      NID_sha1,
      NID_sha1WithRSAEncryption,
@@ -1452,10 +1452,10 @@ Index: openssl-1.1.1d/crypto/evp/m_sha1.c
      init512,
      update512,
      final512,
-Index: openssl-1.1.1d/crypto/evp/m_sha3.c
+Index: openssl-1.1.1e/crypto/evp/m_sha3.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/m_sha3.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/m_sha3.c	2020-01-23 13:45:11.232633025 +0100
+--- openssl-1.1.1e.orig/crypto/evp/m_sha3.c	2020-03-20 13:57:35.384428301 +0100
++++ openssl-1.1.1e/crypto/evp/m_sha3.c	2020-03-20 13:57:47.252490526 +0100
 @@ -295,7 +295,7 @@ const EVP_MD *EVP_sha3_##bitlen(void)
          NID_sha3_##bitlen,                           \
          NID_RSA_SHA3_##bitlen,                       \
@@ -1510,10 +1510,10 @@ Index: openssl-1.1.1d/crypto/evp/m_sha3.c
          shake_init,                             \
          sha3_update,                            \
          sha3_final,                             \
-Index: openssl-1.1.1d/crypto/evp/pmeth_lib.c
+Index: openssl-1.1.1e/crypto/evp/pmeth_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/evp/pmeth_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/evp/pmeth_lib.c	2020-01-23 13:45:11.232633025 +0100
+--- openssl-1.1.1e.orig/crypto/evp/pmeth_lib.c	2020-03-20 13:57:35.384428301 +0100
++++ openssl-1.1.1e/crypto/evp/pmeth_lib.c	2020-03-20 13:57:47.252490526 +0100
 @@ -131,7 +131,15 @@ static EVP_PKEY_CTX *int_ctx_new(EVP_PKE
          pmeth = ENGINE_get_pkey_meth(e, id);
      else
@@ -1530,10 +1530,10 @@ Index: openssl-1.1.1d/crypto/evp/pmeth_lib.c
  
      if (pmeth == NULL) {
  #ifndef OPENSSL_NO_ENGINE
-Index: openssl-1.1.1d/crypto/fips/build.info
+Index: openssl-1.1.1e/crypto/fips/build.info
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/build.info	2020-01-23 13:45:44.292829507 +0100
++++ openssl-1.1.1e/crypto/fips/build.info	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,15 @@
 +LIBS=../../libcrypto
 +SOURCE[../../libcrypto]=\
@@ -1550,10 +1550,10 @@ Index: openssl-1.1.1d/crypto/fips/build.info
 +SOURCE[fips_standalone_hmac]=fips_standalone_hmac.c
 +INCLUDE[fips_standalone_hmac]=../../include
 +DEPEND[fips_standalone_hmac]=../../libcrypto
-Index: openssl-1.1.1d/crypto/fips/fips_aes_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_aes_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_aes_selftest.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_aes_selftest.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,372 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -1608,7 +1608,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_aes_selftest.c
 +#include <openssl/err.h>
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +#endif
 +
 +#ifdef OPENSSL_FIPS
@@ -1927,10 +1927,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_aes_selftest.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips.c
+Index: openssl-1.1.1e/crypto/fips/fips.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips.c	2020-01-23 13:45:56.040899328 +0100
++++ openssl-1.1.1e/crypto/fips/fips.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,526 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -2458,10 +2458,10 @@ Index: openssl-1.1.1d/crypto/fips/fips.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_cmac_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_cmac_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_cmac_selftest.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_cmac_selftest.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,156 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -2515,7 +2515,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_cmac_selftest.c
 +#include <string.h>
 +#include <openssl/err.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/cmac.h>
 +#include "fips_locl.h"
 +
@@ -2619,10 +2619,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_cmac_selftest.c
 +    return rv;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_des_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_des_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_des_selftest.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_des_selftest.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,133 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -2677,7 +2677,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_des_selftest.c
 +#include <openssl/err.h>
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +#endif
 +#include <openssl/opensslconf.h>
 +
@@ -2757,10 +2757,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_des_selftest.c
 +    return ret;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_dh_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_dh_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_dh_selftest.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_dh_selftest.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,180 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -2942,10 +2942,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_dh_selftest.c
 +    return ret;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_ctr.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_ctr.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_ctr.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_ctr.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,406 @@
 +/* fips/rand/fips_drbg_ctr.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -3353,10 +3353,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_ctr.c
 +
 +    return 1;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_hash.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_hash.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_hash.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_hash.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,354 @@
 +/* fips/rand/fips_drbg_hash.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -3417,7 +3417,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_hash.c
 +#include <string.h>
 +#include <openssl/crypto.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/fips_rand.h>
 +#include "fips_rand_lcl.h"
 +
@@ -3712,10 +3712,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_hash.c
 +
 +    return 1;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_hmac.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_hmac.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_hmac.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_hmac.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,262 @@
 +/* fips/rand/fips_drbg_hmac.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -3979,10 +3979,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_hmac.c
 +
 +    return 1;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_lib.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_lib.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_lib.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_lib.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,528 @@
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
 + * project.
@@ -4040,7 +4040,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_lib.c
 +#include <openssl/crypto.h>
 +#include <openssl/err.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/fips_rand.h>
 +#include "fips_locl.h"
 +#include "fips_rand_lcl.h"
@@ -4512,10 +4512,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_lib.c
 +{
 +    /* Just backwards compatibility API call with no effect. */
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_rand.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_rand.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_rand.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_rand.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,185 @@
 +/* fips/rand/fips_drbg_rand.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -4702,10 +4702,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_rand.c
 +{
 +    return &rand_drbg_meth;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_selftest.c	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_selftest.c	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,828 @@
 +/* fips/rand/fips_drbg_selftest.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -5535,10 +5535,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_selftest.c
 +    FIPS_drbg_free(dctx);
 +    return rv;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_drbg_selftest.h
+Index: openssl-1.1.1e/crypto/fips/fips_drbg_selftest.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_drbg_selftest.h	2020-01-23 13:45:11.232633025 +0100
++++ openssl-1.1.1e/crypto/fips/fips_drbg_selftest.h	2020-03-20 13:57:47.252490526 +0100
 @@ -0,0 +1,1791 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -7331,10 +7331,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_drbg_selftest.h
 +    0xef, 0x05, 0x9e, 0xb8, 0xc7, 0x52, 0xe4, 0x0e, 0x42, 0xaa, 0x7c, 0x79,
 +    0xc2, 0xd6, 0xfd, 0xa5
 +};
-Index: openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_dsa_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_dsa_selftest.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,195 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -7389,7 +7389,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c
 +#include <openssl/crypto.h>
 +#include <openssl/dsa.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/err.h>
 +#include <openssl/evp.h>
 +#include <openssl/bn.h>
@@ -7531,10 +7531,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_dsa_selftest.c
 +    return ret;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_ecdh_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_ecdh_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_ecdh_selftest.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_ecdh_selftest.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,242 @@
 +/* fips/ecdh/fips_ecdh_selftest.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -7778,10 +7778,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_ecdh_selftest.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_ecdsa_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_ecdsa_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_ecdsa_selftest.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_ecdsa_selftest.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,166 @@
 +/* fips/ecdsa/fips_ecdsa_selftest.c */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -7844,7 +7844,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_ecdsa_selftest.c
 +#include <openssl/ec.h>
 +#include <openssl/ecdsa.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/err.h>
 +#include <openssl/evp.h>
 +#include <openssl/bn.h>
@@ -7949,10 +7949,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_ecdsa_selftest.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_err.h
+Index: openssl-1.1.1e/crypto/fips/fips_err.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_err.h	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_err.h	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,197 @@
 +/* crypto/fips_err.h */
 +/* ====================================================================
@@ -8151,10 +8151,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_err.h
 +#endif
 +    return 1;
 +}
-Index: openssl-1.1.1d/crypto/fips/fips_ers.c
+Index: openssl-1.1.1e/crypto/fips/fips_ers.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_ers.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_ers.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,7 @@
 +#include <openssl/opensslconf.h>
 +
@@ -8163,10 +8163,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_ers.c
 +#else
 +static void *dummy = &dummy;
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_hmac_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_hmac_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_hmac_selftest.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_hmac_selftest.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,134 @@
 +/* ====================================================================
 + * Copyright (c) 2005 The OpenSSL Project.  All rights reserved.
@@ -8302,10 +8302,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_hmac_selftest.c
 +    return 1;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_locl.h
+Index: openssl-1.1.1e/crypto/fips/fips_locl.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_locl.h	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_locl.h	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,71 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -8378,10 +8378,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_locl.h
 +}
 +# endif
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_post.c
+Index: openssl-1.1.1e/crypto/fips/fips_post.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_post.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_post.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,224 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -8451,7 +8451,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_post.c
 +/* Power on self test (POST) support functions */
 +
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +# include "fips_locl.h"
 +
 +/* Run all selftests */
@@ -8607,10 +8607,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_post.c
 +    return 1;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_rand_lcl.h
+Index: openssl-1.1.1e/crypto/fips/fips_rand_lcl.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_rand_lcl.h	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_rand_lcl.h	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,203 @@
 +/* fips/rand/fips_rand_lcl.h */
 +/* Written by Dr Stephen N Henson (steve@openssl.org) for the OpenSSL
@@ -8815,10 +8815,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_rand_lcl.h
 +#define FIPS_digestupdate EVP_DigestUpdate
 +#define FIPS_digestfinal EVP_DigestFinal
 +#define M_EVP_MD_size EVP_MD_size
-Index: openssl-1.1.1d/crypto/fips/fips_rand_lib.c
+Index: openssl-1.1.1e/crypto/fips/fips_rand_lib.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_rand_lib.c	2020-01-23 13:45:11.332633621 +0100
++++ openssl-1.1.1e/crypto/fips/fips_rand_lib.c	2020-03-20 13:57:47.280490673 +0100
 @@ -0,0 +1,234 @@
 +/* ====================================================================
 + * Copyright (c) 2011 The OpenSSL Project.  All rights reserved.
@@ -8880,7 +8880,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_rand_lib.c
 +#include <openssl/rand.h>
 +#include <openssl/err.h>
 +#include <openssl/fips.h>
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
 +#include <openssl/fips_rand.h>
 +#include "e_os.h"
 +
@@ -9054,10 +9054,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_rand_lib.c
 +# endif
 +}
 +
-Index: openssl-1.1.1d/crypto/fips/fips_rsa_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_rsa_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_rsa_selftest.c	2020-01-23 13:45:11.336633643 +0100
++++ openssl-1.1.1e/crypto/fips/fips_rsa_selftest.c	2020-03-20 13:57:47.284490694 +0100
 @@ -0,0 +1,338 @@
 +/* ====================================================================
 + * Copyright (c) 2003-2007 The OpenSSL Project.  All rights reserved.
@@ -9112,7 +9112,7 @@ Index: openssl-1.1.1d/crypto/fips/fips_rsa_selftest.c
 +#include <openssl/err.h>
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +#endif
 +#include <openssl/rsa.h>
 +#include <openssl/evp.h>
@@ -9397,10 +9397,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_rsa_selftest.c
 +}
 +
 +#endif                          /* def OPENSSL_FIPS */
-Index: openssl-1.1.1d/crypto/fips/fips_sha_selftest.c
+Index: openssl-1.1.1e/crypto/fips/fips_sha_selftest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_sha_selftest.c	2020-01-23 13:45:11.336633643 +0100
++++ openssl-1.1.1e/crypto/fips/fips_sha_selftest.c	2020-03-20 13:57:47.284490694 +0100
 @@ -0,0 +1,223 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -9625,10 +9625,10 @@ Index: openssl-1.1.1d/crypto/fips/fips_sha_selftest.c
 +}
 +
 +#endif
-Index: openssl-1.1.1d/crypto/fips/fips_standalone_hmac.c
+Index: openssl-1.1.1e/crypto/fips/fips_standalone_hmac.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/fips/fips_standalone_hmac.c	2020-01-23 13:45:11.336633643 +0100
++++ openssl-1.1.1e/crypto/fips/fips_standalone_hmac.c	2020-03-20 13:57:47.284490694 +0100
 @@ -0,0 +1,127 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -9757,11 +9757,11 @@ Index: openssl-1.1.1d/crypto/fips/fips_standalone_hmac.c
 +#endif
 +    return 0;
 +}
-Index: openssl-1.1.1d/crypto/hmac/hmac.c
+Index: openssl-1.1.1e/crypto/hmac/hmac.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/hmac/hmac.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/hmac/hmac.c	2020-01-23 13:45:11.336633643 +0100
-@@ -43,6 +43,13 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const vo
+--- openssl-1.1.1e.orig/crypto/hmac/hmac.c	2020-03-20 13:57:47.284490694 +0100
++++ openssl-1.1.1e/crypto/hmac/hmac.c	2020-03-20 13:58:36.036746316 +0100
+@@ -44,6 +44,13 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const vo
          return 0;
  
      if (key != NULL) {
@@ -9773,12 +9773,12 @@ Index: openssl-1.1.1d/crypto/hmac/hmac.c
 +            goto err;
 +#endif
          reset = 1;
+ 
          j = EVP_MD_block_size(md);
-         if (!ossl_assert(j <= (int)sizeof(ctx->key)))
-Index: openssl-1.1.1d/crypto/hmac/hm_pmeth.c
+Index: openssl-1.1.1e/crypto/hmac/hm_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/hmac/hm_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/hmac/hm_pmeth.c	2020-01-23 13:45:11.336633643 +0100
+--- openssl-1.1.1e.orig/crypto/hmac/hm_pmeth.c	2020-03-20 13:57:35.388428323 +0100
++++ openssl-1.1.1e/crypto/hmac/hm_pmeth.c	2020-03-20 13:57:47.284490694 +0100
 @@ -180,7 +180,7 @@ static int pkey_hmac_ctrl_str(EVP_PKEY_C
  
  const EVP_PKEY_METHOD hmac_pkey_meth = {
@@ -9788,10 +9788,10 @@ Index: openssl-1.1.1d/crypto/hmac/hm_pmeth.c
      pkey_hmac_init,
      pkey_hmac_copy,
      pkey_hmac_cleanup,
-Index: openssl-1.1.1d/crypto/include/internal/fips_int.h
+Index: openssl-1.1.1e/include/crypto/fips_int.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/crypto/include/internal/fips_int.h	2020-01-23 13:45:56.040899328 +0100
++++ openssl-1.1.1e/include/crypto/fips_int.h	2020-03-20 13:57:47.284490694 +0100
 @@ -0,0 +1,98 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -9891,15 +9891,15 @@ Index: openssl-1.1.1d/crypto/include/internal/fips_int.h
 +void FIPS_get_timevec(unsigned char *buf, unsigned long *pctr);
 +
 +#endif
-Index: openssl-1.1.1d/crypto/o_fips.c
+Index: openssl-1.1.1e/crypto/o_fips.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/o_fips.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/o_fips.c	2020-01-23 13:45:11.336633643 +0100
+--- openssl-1.1.1e.orig/crypto/o_fips.c	2020-03-20 13:57:35.388428323 +0100
++++ openssl-1.1.1e/crypto/o_fips.c	2020-03-20 13:57:47.284490694 +0100
 @@ -8,17 +8,28 @@
   */
  
  #include "internal/cryptlib.h"
-+#include "internal/fips_int.h"
++#include "crypto/fips_int.h"
  
  int FIPS_mode(void)
  {
@@ -9924,10 +9924,10 @@ Index: openssl-1.1.1d/crypto/o_fips.c
      return 0;
 +#endif
  }
-Index: openssl-1.1.1d/crypto/o_init.c
+Index: openssl-1.1.1e/crypto/o_init.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/o_init.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/o_init.c	2020-01-23 13:45:26.488723693 +0100
+--- openssl-1.1.1e.orig/crypto/o_init.c	2020-03-20 13:57:35.388428323 +0100
++++ openssl-1.1.1e/crypto/o_init.c	2020-03-20 13:57:47.284490694 +0100
 @@ -7,8 +7,68 @@
   * https://www.openssl.org/source/license.html
   */
@@ -9945,7 +9945,7 @@ Index: openssl-1.1.1d/crypto/o_init.c
 +# include <stdlib.h>
 +# include <openssl/rand.h>
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +
 +# define FIPS_MODE_SWITCH_FILE "/proc/sys/crypto/fips_enabled"
 +
@@ -9997,22 +9997,11 @@ Index: openssl-1.1.1d/crypto/o_init.c
  
  /*
   * Perform any essential OpenSSL initialization operations. Currently does
-Index: openssl-1.1.1d/crypto/rand/rand_lib.c
+Index: openssl-1.1.1e/crypto/rand/rand_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rand/rand_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rand/rand_lib.c	2020-01-23 13:45:11.336633643 +0100
-@@ -16,6 +16,10 @@
- #include "internal/thread_once.h"
- #include "rand_lcl.h"
- #include "e_os.h"
-+#ifdef OPENSSL_FIPS
-+# include <openssl/fips.h>
-+# include <openssl/fips_rand.h>
-+#endif
- 
- #ifndef OPENSSL_NO_ENGINE
- /* non-NULL if default_RAND_meth is ENGINE-provided */
-@@ -959,3 +963,15 @@ int RAND_status(void)
+--- openssl-1.1.1e.orig/crypto/rand/rand_lib.c	2020-03-20 13:57:35.388428323 +0100
++++ openssl-1.1.1e/crypto/rand/rand_lib.c	2020-03-20 13:57:47.288490715 +0100
+@@ -961,3 +961,15 @@ int RAND_status(void)
          return meth->status();
      return 0;
  }
@@ -10028,10 +10017,10 @@ Index: openssl-1.1.1d/crypto/rand/rand_lib.c
 +    return 1;
 +}
 +#endif
-Index: openssl-1.1.1d/crypto/rsa/rsa_crpt.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_crpt.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_crpt.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_crpt.c	2020-01-23 13:45:11.336633643 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_crpt.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_crpt.c	2020-03-20 13:57:47.288490715 +0100
 @@ -27,24 +27,52 @@ int RSA_size(const RSA *r)
  int RSA_public_encrypt(int flen, const unsigned char *from, unsigned char *to,
                         RSA *rsa, int padding)
@@ -10085,10 +10074,10 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_crpt.c
      return rsa->meth->rsa_pub_dec(flen, from, to, rsa, padding);
  }
  
-Index: openssl-1.1.1d/crypto/rsa/rsa_err.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_err.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_err.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_err.c	2020-01-23 13:45:11.336633643 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_err.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_err.c	2020-03-20 13:57:47.288490715 +0100
 @@ -16,6 +16,8 @@
  static const ERR_STRING_DATA RSA_str_functs[] = {
      {ERR_PACK(ERR_LIB_RSA, RSA_F_CHECK_PADDING_MD, 0), "check_padding_md"},
@@ -10157,17 +10146,17 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_err.c
      {ERR_PACK(ERR_LIB_RSA, 0, RSA_R_UNSUPPORTED_SIGNATURE_TYPE),
      "unsupported signature type"},
      {ERR_PACK(ERR_LIB_RSA, 0, RSA_R_VALUE_MISSING), "value missing"},
-Index: openssl-1.1.1d/crypto/rsa/rsa_gen.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_gen.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_gen.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_gen.c	2020-01-23 13:45:11.336633643 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_gen.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_gen.c	2020-03-20 13:57:47.288490715 +0100
 @@ -18,6 +18,76 @@
  #include "internal/cryptlib.h"
  #include <openssl/bn.h>
- #include "rsa_locl.h"
+ #include "rsa_local.h"
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
-+# include "internal/fips_int.h"
++# include "crypto/fips_int.h"
 +
 +int fips_check_rsa(RSA *rsa)
 +{
@@ -10553,10 +10542,10 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_gen.c
  static int rsa_builtin_keygen(RSA *rsa, int bits, int primes, BIGNUM *e_value,
                                BN_GENCB *cb)
  {
-Index: openssl-1.1.1d/crypto/rsa/rsa_lib.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_lib.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_lib.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_lib.c	2020-03-20 13:57:47.288490715 +0100
 @@ -34,6 +34,12 @@ int RSA_set_method(RSA *rsa, const RSA_M
       * to deal with which ENGINE it comes from.
       */
@@ -10599,13 +10588,13 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_lib.c
      if (!CRYPTO_new_ex_data(CRYPTO_EX_INDEX_RSA, ret, &ret->ex_data)) {
          goto err;
      }
-Index: openssl-1.1.1d/crypto/rsa/rsa_ossl.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_ossl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_ossl.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_ossl.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_ossl.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_ossl.c	2020-03-20 13:57:47.288490715 +0100
 @@ -12,6 +12,10 @@
- #include "rsa_locl.h"
- #include "internal/constant_time_locl.h"
+ #include "rsa_local.h"
+ #include "internal/constant_time.h"
  
 +#ifdef OPENSSL_FIPS
 +# include <openssl/fips.h>
@@ -10719,10 +10708,10 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_ossl.c
      if (BN_num_bits(rsa->n) > OPENSSL_RSA_MAX_MODULUS_BITS) {
          RSAerr(RSA_F_RSA_OSSL_PUBLIC_DECRYPT, RSA_R_MODULUS_TOO_LARGE);
          return -1;
-Index: openssl-1.1.1d/crypto/rsa/rsa_pmeth.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_pmeth.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_pmeth.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_pmeth.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_pmeth.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_pmeth.c	2020-03-20 13:57:47.288490715 +0100
 @@ -756,7 +756,7 @@ static int pkey_rsa_keygen(EVP_PKEY_CTX
  
  const EVP_PKEY_METHOD rsa_pkey_meth = {
@@ -10741,10 +10730,10 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_pmeth.c
      pkey_rsa_init,
      pkey_rsa_copy,
      pkey_rsa_cleanup,
-Index: openssl-1.1.1d/crypto/rsa/rsa_sign.c
+Index: openssl-1.1.1e/crypto/rsa/rsa_sign.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rsa/rsa_sign.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rsa/rsa_sign.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/rsa/rsa_sign.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/rsa/rsa_sign.c	2020-03-20 13:57:47.288490715 +0100
 @@ -73,6 +73,13 @@ int RSA_sign(int type, const unsigned ch
      unsigned char *tmps = NULL;
      const unsigned char *encoded = NULL;
@@ -10771,10 +10760,10 @@ Index: openssl-1.1.1d/crypto/rsa/rsa_sign.c
      if (encrypt_len <= 0)
          goto err;
  
-Index: openssl-1.1.1d/crypto/sha/sha256.c
+Index: openssl-1.1.1e/crypto/sha/sha256.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/sha/sha256.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/sha/sha256.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/sha/sha256.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/sha/sha256.c	2020-03-20 13:57:47.288490715 +0100
 @@ -18,6 +18,9 @@
  
  int SHA224_Init(SHA256_CTX *c)
@@ -10795,10 +10784,10 @@ Index: openssl-1.1.1d/crypto/sha/sha256.c
      memset(c, 0, sizeof(*c));
      c->h[0] = 0x6a09e667UL;
      c->h[1] = 0xbb67ae85UL;
-Index: openssl-1.1.1d/crypto/sha/sha512.c
+Index: openssl-1.1.1e/crypto/sha/sha512.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/sha/sha512.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/sha/sha512.c	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/sha/sha512.c	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/sha/sha512.c	2020-03-20 13:57:47.288490715 +0100
 @@ -98,6 +98,9 @@ int sha512_256_init(SHA512_CTX *c)
  
  int SHA384_Init(SHA512_CTX *c)
@@ -10819,10 +10808,10 @@ Index: openssl-1.1.1d/crypto/sha/sha512.c
      c->h[0] = U64(0x6a09e667f3bcc908);
      c->h[1] = U64(0xbb67ae8584caa73b);
      c->h[2] = U64(0x3c6ef372fe94f82b);
-Index: openssl-1.1.1d/crypto/sha/sha_locl.h
+Index: openssl-1.1.1e/crypto/sha/sha_local.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/sha/sha_locl.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/sha/sha_locl.h	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/crypto/sha/sha_local.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/crypto/sha/sha_local.h	2020-03-20 13:57:47.288490715 +0100
 @@ -52,6 +52,9 @@ void sha1_block_data_order(SHA_CTX *c, c
  
  int HASH_INIT(SHA_CTX *c)
@@ -10833,10 +10822,10 @@ Index: openssl-1.1.1d/crypto/sha/sha_locl.h
      memset(c, 0, sizeof(*c));
      c->h0 = INIT_DATA_h0;
      c->h1 = INIT_DATA_h1;
-Index: openssl-1.1.1d/doc/man3/DSA_generate_parameters.pod
+Index: openssl-1.1.1e/doc/man3/DSA_generate_parameters.pod
 ===================================================================
---- openssl-1.1.1d.orig/doc/man3/DSA_generate_parameters.pod	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/doc/man3/DSA_generate_parameters.pod	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/doc/man3/DSA_generate_parameters.pod	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/doc/man3/DSA_generate_parameters.pod	2020-03-20 13:57:47.288490715 +0100
 @@ -30,8 +30,10 @@ B<bits> is the length of the prime p to
  For lengths under 2048 bits, the length of q is 160 bits; for lengths
  greater than or equal to 2048 bits, the length of q is set to 256 bits.
@@ -10850,10 +10839,10 @@ Index: openssl-1.1.1d/doc/man3/DSA_generate_parameters.pod
  
  DSA_generate_parameters_ex() places the iteration count in
  *B<counter_ret> and a counter used for finding a generator in
-Index: openssl-1.1.1d/include/openssl/crypto.h
+Index: openssl-1.1.1e/include/openssl/crypto.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/crypto.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/crypto.h	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/include/openssl/crypto.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/include/openssl/crypto.h	2020-03-20 13:57:47.288490715 +0100
 @@ -331,6 +331,11 @@ int OPENSSL_isservice(void);
  int FIPS_mode(void);
  int FIPS_mode_set(int r);
@@ -10866,10 +10855,10 @@ Index: openssl-1.1.1d/include/openssl/crypto.h
  void OPENSSL_init(void);
  # ifdef OPENSSL_SYS_UNIX
  void OPENSSL_fork_prepare(void);
-Index: openssl-1.1.1d/include/openssl/dherr.h
+Index: openssl-1.1.1e/include/openssl/dherr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/dherr.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/dherr.h	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/include/openssl/dherr.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/include/openssl/dherr.h	2020-03-20 13:57:47.288490715 +0100
 @@ -36,6 +36,9 @@ int ERR_load_DH_strings(void);
  #  define DH_F_DH_CMS_DECRYPT                              114
  #  define DH_F_DH_CMS_SET_PEERKEY                          115
@@ -10895,10 +10884,10 @@ Index: openssl-1.1.1d/include/openssl/dherr.h
  #  define DH_R_PARAMETER_ENCODING_ERROR                    105
  #  define DH_R_PEER_KEY_ERROR                              111
  #  define DH_R_SHARED_INFO_ERROR                           113
-Index: openssl-1.1.1d/include/openssl/dh.h
+Index: openssl-1.1.1e/include/openssl/dh.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/dh.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/dh.h	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/include/openssl/dh.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/include/openssl/dh.h	2020-03-20 13:57:47.288490715 +0100
 @@ -31,6 +31,7 @@ extern "C" {
  # endif
  
@@ -10907,10 +10896,10 @@ Index: openssl-1.1.1d/include/openssl/dh.h
  
  # define DH_FLAG_CACHE_MONT_P     0x01
  
-Index: openssl-1.1.1d/include/openssl/dsaerr.h
+Index: openssl-1.1.1e/include/openssl/dsaerr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/dsaerr.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/dsaerr.h	2020-01-23 13:45:11.340633668 +0100
+--- openssl-1.1.1e.orig/include/openssl/dsaerr.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/include/openssl/dsaerr.h	2020-03-20 13:57:47.288490715 +0100
 @@ -29,8 +29,11 @@ int ERR_load_DSA_strings(void);
   */
  #  define DSA_F_DSAPARAMS_PRINT                            100
@@ -10937,10 +10926,10 @@ Index: openssl-1.1.1d/include/openssl/dsaerr.h
  #  define DSA_R_PARAMETER_ENCODING_ERROR                   105
  #  define DSA_R_Q_NOT_PRIME                                113
  #  define DSA_R_SEED_LEN_SMALL                             110
-Index: openssl-1.1.1d/include/openssl/dsa.h
+Index: openssl-1.1.1e/include/openssl/dsa.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/dsa.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/dsa.h	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/include/openssl/dsa.h	2020-03-20 13:57:35.392428344 +0100
++++ openssl-1.1.1e/include/openssl/dsa.h	2020-03-20 13:57:47.292490736 +0100
 @@ -31,6 +31,7 @@ extern "C" {
  # endif
  
@@ -10949,10 +10938,10 @@ Index: openssl-1.1.1d/include/openssl/dsa.h
  
  # define DSA_FLAG_CACHE_MONT_P   0x01
  # if OPENSSL_API_COMPAT < 0x10100000L
-Index: openssl-1.1.1d/include/openssl/evperr.h
+Index: openssl-1.1.1e/include/openssl/evperr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/evperr.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/evperr.h	2020-01-23 13:45:34.920773806 +0100
+--- openssl-1.1.1e.orig/include/openssl/evperr.h	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/evperr.h	2020-03-20 13:57:47.292490736 +0100
 @@ -24,14 +24,15 @@ int ERR_load_EVP_strings(void);
   * EVP function codes.
   */
@@ -10980,7 +10969,7 @@ Index: openssl-1.1.1d/include/openssl/evperr.h
  # define EVP_R_DIFFERENT_KEY_TYPES                        101
  # define EVP_R_DIFFERENT_PARAMETERS                       153
  # define EVP_R_ERROR_LOADING_SECTION                      165
-@@ -184,6 +186,7 @@ int ERR_load_EVP_strings(void);
+@@ -185,6 +187,7 @@ int ERR_load_EVP_strings(void);
  # define EVP_R_PRIVATE_KEY_DECODE_ERROR                   145
  # define EVP_R_PRIVATE_KEY_ENCODE_ERROR                   146
  # define EVP_R_PUBLIC_KEY_NOT_RSA                         106
@@ -10988,7 +10977,7 @@ Index: openssl-1.1.1d/include/openssl/evperr.h
  # define EVP_R_UNKNOWN_CIPHER                             160
  # define EVP_R_UNKNOWN_DIGEST                             161
  # define EVP_R_UNKNOWN_OPTION                             169
-@@ -199,6 +202,7 @@ int ERR_load_EVP_strings(void);
+@@ -200,6 +203,7 @@ int ERR_load_EVP_strings(void);
  # define EVP_R_UNSUPPORTED_SALT_TYPE                      126
  # define EVP_R_WRAP_MODE_NOT_ALLOWED                      170
  # define EVP_R_WRONG_FINAL_BLOCK_LENGTH                   109
@@ -10997,10 +10986,10 @@ Index: openssl-1.1.1d/include/openssl/evperr.h
 +# define EVP_R_XTS_DUPLICATED_KEYS                        192
  
  #endif
-Index: openssl-1.1.1d/include/openssl/evp.h
+Index: openssl-1.1.1e/include/openssl/evp.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/evp.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/evp.h	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/include/openssl/evp.h	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/evp.h	2020-03-20 13:57:47.292490736 +0100
 @@ -1324,6 +1324,9 @@ void EVP_PKEY_asn1_set_security_bits(EVP
   */
  # define EVP_PKEY_FLAG_SIGCTX_CUSTOM     4
@@ -11011,10 +11000,10 @@ Index: openssl-1.1.1d/include/openssl/evp.h
  const EVP_PKEY_METHOD *EVP_PKEY_meth_find(int type);
  EVP_PKEY_METHOD *EVP_PKEY_meth_new(int id, int flags);
  void EVP_PKEY_meth_get0_info(int *ppkey_id, int *pflags,
-Index: openssl-1.1.1d/include/openssl/fips.h
+Index: openssl-1.1.1e/include/openssl/fips.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/include/openssl/fips.h	2020-01-23 13:45:21.316692954 +0100
++++ openssl-1.1.1e/include/openssl/fips.h	2020-03-20 13:57:47.292490736 +0100
 @@ -0,0 +1,187 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -11203,10 +11192,10 @@ Index: openssl-1.1.1d/include/openssl/fips.h
 +}
 +# endif
 +#endif
-Index: openssl-1.1.1d/include/openssl/fips_rand.h
+Index: openssl-1.1.1e/include/openssl/fips_rand.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1d/include/openssl/fips_rand.h	2020-01-23 13:45:11.344633691 +0100
++++ openssl-1.1.1e/include/openssl/fips_rand.h	2020-03-20 13:57:47.292490736 +0100
 @@ -0,0 +1,145 @@
 +/* ====================================================================
 + * Copyright (c) 2003 The OpenSSL Project.  All rights reserved.
@@ -11353,10 +11342,10 @@ Index: openssl-1.1.1d/include/openssl/fips_rand.h
 +#  endif
 +# endif
 +#endif
-Index: openssl-1.1.1d/include/openssl/opensslconf.h.in
+Index: openssl-1.1.1e/include/openssl/opensslconf.h.in
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/opensslconf.h.in	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/opensslconf.h.in	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/include/openssl/opensslconf.h.in	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/opensslconf.h.in	2020-03-20 13:57:47.292490736 +0100
 @@ -150,6 +150,11 @@ extern "C" {
  
  #define RC4_INT {- $config{rc4_int} -}
@@ -11369,11 +11358,11 @@ Index: openssl-1.1.1d/include/openssl/opensslconf.h.in
  #ifdef  __cplusplus
  }
  #endif
-Index: openssl-1.1.1d/include/openssl/randerr.h
+Index: openssl-1.1.1e/include/openssl/randerr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/randerr.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/randerr.h	2020-01-23 13:45:11.344633691 +0100
-@@ -37,6 +37,7 @@ int ERR_load_RAND_strings(void);
+--- openssl-1.1.1e.orig/include/openssl/randerr.h	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/randerr.h	2020-03-20 13:57:47.292490736 +0100
+@@ -38,6 +38,7 @@ int ERR_load_RAND_strings(void);
  # define RAND_F_RAND_DRBG_SET                             104
  # define RAND_F_RAND_DRBG_SET_DEFAULTS                    121
  # define RAND_F_RAND_DRBG_UNINSTANTIATE                   118
@@ -11381,10 +11370,10 @@ Index: openssl-1.1.1d/include/openssl/randerr.h
  # define RAND_F_RAND_LOAD_FILE                            111
  # define RAND_F_RAND_POOL_ACQUIRE_ENTROPY                 122
  # define RAND_F_RAND_POOL_ADD                             103
-Index: openssl-1.1.1d/include/openssl/rand.h
+Index: openssl-1.1.1e/include/openssl/rand.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/rand.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/rand.h	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/include/openssl/rand.h	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/rand.h	2020-03-20 13:57:47.292490736 +0100
 @@ -69,6 +69,11 @@ DEPRECATEDIN_1_1_0(void RAND_screen(void
  DEPRECATEDIN_1_1_0(int RAND_event(UINT, WPARAM, LPARAM))
  # endif
@@ -11397,10 +11386,10 @@ Index: openssl-1.1.1d/include/openssl/rand.h
  
  #ifdef  __cplusplus
  }
-Index: openssl-1.1.1d/include/openssl/rsaerr.h
+Index: openssl-1.1.1e/include/openssl/rsaerr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/rsaerr.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/include/openssl/rsaerr.h	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/include/openssl/rsaerr.h	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/include/openssl/rsaerr.h	2020-03-20 13:57:47.292490736 +0100
 @@ -25,6 +25,7 @@ int ERR_load_RSA_strings(void);
   */
  # define RSA_F_CHECK_PADDING_MD                           140
@@ -11456,10 +11445,10 @@ Index: openssl-1.1.1d/include/openssl/rsaerr.h
  # define RSA_R_UNSUPPORTED_SIGNATURE_TYPE                 155
  # define RSA_R_VALUE_MISSING                              147
  # define RSA_R_WRONG_SIGNATURE_LENGTH                     119
-Index: openssl-1.1.1d/ssl/s3_lib.c
+Index: openssl-1.1.1e/ssl/s3_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/ssl/s3_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/ssl/s3_lib.c	2020-01-23 13:45:11.344633691 +0100
+--- openssl-1.1.1e.orig/ssl/s3_lib.c	2020-03-17 15:31:17.000000000 +0100
++++ openssl-1.1.1e/ssl/s3_lib.c	2020-03-20 13:57:47.292490736 +0100
 @@ -43,7 +43,7 @@ static SSL_CIPHER tls13_ciphers[] = {
          SSL_AEAD,
          TLS1_3_VERSION, TLS1_3_VERSION,
@@ -11559,10 +11548,10 @@ Index: openssl-1.1.1d/ssl/s3_lib.c
       SSL_HANDSHAKE_MAC_SHA256 | TLS1_PRF_SHA256,
       256,
       256,
-Index: openssl-1.1.1d/ssl/ssl_ciph.c
+Index: openssl-1.1.1e/ssl/ssl_ciph.c
 ===================================================================
---- openssl-1.1.1d.orig/ssl/ssl_ciph.c	2020-01-23 13:45:10.832630649 +0100
-+++ openssl-1.1.1d/ssl/ssl_ciph.c	2020-01-23 13:45:11.348633716 +0100
+--- openssl-1.1.1e.orig/ssl/ssl_ciph.c	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/ssl/ssl_ciph.c	2020-03-20 13:57:47.292490736 +0100
 @@ -385,7 +385,7 @@ int ssl_load_ciphers(void)
          }
      }
@@ -11601,10 +11590,10 @@ Index: openssl-1.1.1d/ssl/ssl_ciph.c
              if (!sk_SSL_CIPHER_push(cipherstack, curr->cipher)) {
                  OPENSSL_free(co_list);
                  sk_SSL_CIPHER_free(cipherstack);
-Index: openssl-1.1.1d/ssl/ssl_init.c
+Index: openssl-1.1.1e/ssl/ssl_init.c
 ===================================================================
---- openssl-1.1.1d.orig/ssl/ssl_init.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/ssl/ssl_init.c	2020-01-23 13:45:11.348633716 +0100
+--- openssl-1.1.1e.orig/ssl/ssl_init.c	2020-03-20 13:57:35.396428365 +0100
++++ openssl-1.1.1e/ssl/ssl_init.c	2020-03-20 13:57:47.292490736 +0100
 @@ -27,6 +27,10 @@ DEFINE_RUN_ONCE_STATIC(ossl_init_ssl_bas
      fprintf(stderr, "OPENSSL_INIT: ossl_init_ssl_base: "
              "Adding SSL ciphers and digests\n");
@@ -11648,11 +11637,11 @@ Index: openssl-1.1.1d/ssl/ssl_init.c
  #ifndef OPENSSL_NO_COMP
  # ifdef OPENSSL_INIT_DEBUG
      fprintf(stderr, "OPENSSL_INIT: ossl_init_ssl_base: "
-Index: openssl-1.1.1d/ssl/ssl_lib.c
+Index: openssl-1.1.1e/ssl/ssl_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/ssl/ssl_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/ssl/ssl_lib.c	2020-01-23 13:45:11.348633716 +0100
-@@ -2916,6 +2916,11 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *m
+--- openssl-1.1.1e.orig/ssl/ssl_lib.c	2020-03-20 13:57:35.400428385 +0100
++++ openssl-1.1.1e/ssl/ssl_lib.c	2020-03-20 13:57:47.292490736 +0100
+@@ -2970,6 +2970,11 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *m
      if (!OPENSSL_init_ssl(OPENSSL_INIT_LOAD_SSL_STRINGS, NULL))
          return NULL;
  
@@ -11664,7 +11653,7 @@ Index: openssl-1.1.1d/ssl/ssl_lib.c
      if (SSL_get_ex_data_X509_STORE_CTX_idx() < 0) {
          SSLerr(SSL_F_SSL_CTX_NEW, SSL_R_X509_VERIFICATION_SETUP_PROBLEMS);
          goto err;
-@@ -2972,13 +2977,17 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *m
+@@ -3026,13 +3031,17 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *m
      if (ret->param == NULL)
          goto err;
  
@@ -11689,10 +11678,10 @@ Index: openssl-1.1.1d/ssl/ssl_lib.c
      }
  
      if ((ret->ca_names = sk_X509_NAME_new_null()) == NULL)
-Index: openssl-1.1.1d/ssl/ssl_locl.h
+Index: openssl-1.1.1e/ssl/ssl_local.h
 ===================================================================
---- openssl-1.1.1d.orig/ssl/ssl_locl.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/ssl/ssl_locl.h	2020-01-23 13:45:11.348633716 +0100
+--- openssl-1.1.1e.orig/ssl/ssl_local.h	2020-03-20 13:57:35.400428385 +0100
++++ openssl-1.1.1e/ssl/ssl_local.h	2020-03-20 13:57:47.296490756 +0100
 @@ -1516,6 +1516,7 @@ typedef struct tls_group_info_st {
  # define TLS_CURVE_PRIME         0x0
  # define TLS_CURVE_CHAR2         0x1
@@ -11701,11 +11690,11 @@ Index: openssl-1.1.1d/ssl/ssl_locl.h
  
  typedef struct cert_pkey_st CERT_PKEY;
  
-Index: openssl-1.1.1d/ssl/t1_lib.c
+Index: openssl-1.1.1e/ssl/t1_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/ssl/t1_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/ssl/t1_lib.c	2020-01-23 13:45:11.348633716 +0100
-@@ -158,11 +158,11 @@ static const TLS_GROUP_INFO nid_list[] =
+--- openssl-1.1.1e.orig/ssl/t1_lib.c	2020-03-20 13:57:35.400428385 +0100
++++ openssl-1.1.1e/ssl/t1_lib.c	2020-03-20 13:57:47.296490756 +0100
+@@ -159,11 +159,11 @@ static const TLS_GROUP_INFO nid_list[] =
      {NID_secp192k1, 80, TLS_CURVE_PRIME}, /* secp192k1 (18) */
      {NID_X9_62_prime192v1, 80, TLS_CURVE_PRIME}, /* secp192r1 (19) */
      {NID_secp224k1, 112, TLS_CURVE_PRIME}, /* secp224k1 (20) */
@@ -11721,7 +11710,7 @@ Index: openssl-1.1.1d/ssl/t1_lib.c
      {NID_brainpoolP256r1, 128, TLS_CURVE_PRIME}, /* brainpoolP256r1 (26) */
      {NID_brainpoolP384r1, 192, TLS_CURVE_PRIME}, /* brainpoolP384r1 (27) */
      {NID_brainpoolP512r1, 256, TLS_CURVE_PRIME}, /* brainpool512r1 (28) */
-@@ -257,6 +257,8 @@ int tls_curve_allowed(SSL *s, uint16_t c
+@@ -258,6 +258,8 @@ int tls_curve_allowed(SSL *s, uint16_t c
      if (cinfo->flags & TLS_CURVE_CHAR2)
          return 0;
  # endif
@@ -11730,10 +11719,10 @@ Index: openssl-1.1.1d/ssl/t1_lib.c
      ctmp[0] = curve >> 8;
      ctmp[1] = curve & 0xff;
      return ssl_security(s, op, cinfo->secbits, cinfo->nid, (void *)ctmp);
-Index: openssl-1.1.1d/test/dsatest.c
+Index: openssl-1.1.1e/test/dsatest.c
 ===================================================================
---- openssl-1.1.1d.orig/test/dsatest.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/test/dsatest.c	2020-01-23 13:45:11.348633716 +0100
+--- openssl-1.1.1e.orig/test/dsatest.c	2020-03-20 13:57:35.400428385 +0100
++++ openssl-1.1.1e/test/dsatest.c	2020-03-20 13:57:47.296490756 +0100
 @@ -24,41 +24,42 @@
  #ifndef OPENSSL_NO_DSA
  static int dsa_cb(int p, int n, BN_GENCB *arg);
@@ -11816,10 +11805,10 @@ Index: openssl-1.1.1d/test/dsatest.c
          goto end;
      if (!TEST_int_eq(h, 2))
          goto end;
-Index: openssl-1.1.1d/test/recipes/30-test_evp_data/evpciph.txt
+Index: openssl-1.1.1e/test/recipes/30-test_evp_data/evpciph.txt
 ===================================================================
---- openssl-1.1.1d.orig/test/recipes/30-test_evp_data/evpciph.txt	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/test/recipes/30-test_evp_data/evpciph.txt	2020-01-23 13:45:11.348633716 +0100
+--- openssl-1.1.1e.orig/test/recipes/30-test_evp_data/evpciph.txt	2020-03-20 13:57:35.400428385 +0100
++++ openssl-1.1.1e/test/recipes/30-test_evp_data/evpciph.txt	2020-03-20 13:57:47.296490756 +0100
 @@ -1206,6 +1206,7 @@ Key = 0000000000000000000000000000000000
  IV = 00000000000000000000000000000000
  Plaintext = 0000000000000000000000000000000000000000000000000000000000000000
@@ -11828,14 +11817,14 @@ Index: openssl-1.1.1d/test/recipes/30-test_evp_data/evpciph.txt
  
  Cipher = aes-128-xts
  Key = 1111111111111111111111111111111122222222222222222222222222222222
-Index: openssl-1.1.1d/util/libcrypto.num
+Index: openssl-1.1.1e/util/libcrypto.num
 ===================================================================
---- openssl-1.1.1d.orig/util/libcrypto.num	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/util/libcrypto.num	2020-01-23 13:45:34.920773806 +0100
-@@ -4582,3 +4582,38 @@ OPENSSL_INIT_set_config_file_flags
- EVP_PKEY_get0_engine                    4536	1_1_1c	EXIST::FUNCTION:ENGINE
- X509_get0_authority_serial              4537	1_1_1d	EXIST::FUNCTION:
- X509_get0_authority_issuer              4538	1_1_1d	EXIST::FUNCTION:
+--- openssl-1.1.1e.orig/util/libcrypto.num	2020-03-20 13:57:47.296490756 +0100
++++ openssl-1.1.1e/util/libcrypto.num	2020-03-20 13:59:39.153077243 +0100
+@@ -4587,3 +4587,38 @@ EVP_PKEY_meth_set_digestverify
+ EVP_PKEY_meth_get_digestverify          4541	1_1_1e	EXIST::FUNCTION:
+ EVP_PKEY_meth_get_digestsign            4542	1_1_1e	EXIST::FUNCTION:
+ RSA_get0_pss_params                     4543	1_1_1e	EXIST::FUNCTION:RSA
 +FIPS_drbg_reseed                        6348	1_1_0g	EXIST::FUNCTION:
 +FIPS_selftest_check                     6349	1_1_0g	EXIST::FUNCTION:
 +FIPS_rand_set_method                    6350	1_1_0g	EXIST::FUNCTION:

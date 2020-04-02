@@ -51,10 +51,10 @@ Index: openssl-1.1.1d/crypto/evp/kdf_lib.c
  };
  
  DECLARE_OBJ_BSEARCH_CMP_FN(const EVP_KDF_METHOD *, const EVP_KDF_METHOD *,
-Index: openssl-1.1.1d/crypto/include/internal/evp_int.h
+Index: openssl-1.1.1d/include/crypto/evp.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/include/internal/evp_int.h	2020-01-23 13:45:11.468634429 +0100
-+++ openssl-1.1.1d/crypto/include/internal/evp_int.h	2020-01-23 13:45:11.488634548 +0100
+--- openssl-1.1.1d.orig/include/crypto/evp.h	2020-01-23 13:45:11.468634429 +0100
++++ openssl-1.1.1d/include/crypto/evp.h	2020-01-23 13:45:11.488634548 +0100
 @@ -129,6 +129,7 @@ extern const EVP_KDF_METHOD pbkdf2_kdf_m
  extern const EVP_KDF_METHOD scrypt_kdf_meth;
  extern const EVP_KDF_METHOD tls1_prf_kdf_meth;
@@ -118,7 +118,7 @@ Index: openssl-1.1.1d/crypto/kdf/sshkdf.c
 +#include <openssl/evp.h>
 +#include <openssl/kdf.h>
 +#include "internal/cryptlib.h"
-+#include "internal/evp_int.h"
++#include "crypto/evp.h"
 +#include "kdf_local.h"
 +
 +/* See RFC 4253, Section 7.2 */

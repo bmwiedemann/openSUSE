@@ -16,7 +16,7 @@ Reviewed-by: Richard Levitte <levitte@openssl.org>
  crypto/dsa/dsa_pmeth.c            |   7 +-
  crypto/ec/build.info              |   2 +-
  crypto/ec/ec_curve.c              |  12 +-
- crypto/ec/ec_lcl.h                |   2 +-
+ crypto/ec/ec_local.h                |   2 +-
  crypto/ec/ec_pmeth.c              |   7 +-
  crypto/ec/ecx_meth.c              | 672 +++++++++++++++++++++++++++++-
  crypto/err/openssl.txt            |   6 +
@@ -122,10 +122,10 @@ Index: openssl-1.1.1d/crypto/ec/ec_curve.c
       EC_GFp_s390x_nistp256_method,
  #elif !defined(OPENSSL_NO_EC_NISTP_64_GCC_128)
       EC_GFp_nistp256_method,
-Index: openssl-1.1.1d/crypto/ec/ec_lcl.h
+Index: openssl-1.1.1d/crypto/ec/ec_local.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec_lcl.h
-+++ openssl-1.1.1d/crypto/ec/ec_lcl.h
+--- openssl-1.1.1d.orig/crypto/ec/ec_local.h
++++ openssl-1.1.1d/crypto/ec/ec_local.h
 @@ -595,7 +595,7 @@ int ec_group_simple_order_bits(const EC_
   */
  const EC_METHOD *EC_GFp_nistz256_method(void);
@@ -938,7 +938,7 @@ Index: openssl-1.1.1d/crypto/evp/pmeth_lib.c
 --- openssl-1.1.1d.orig/crypto/evp/pmeth_lib.c
 +++ openssl-1.1.1d/crypto/evp/pmeth_lib.c
 @@ -17,60 +17,67 @@
- #include "internal/evp_int.h"
+ #include "crypto/evp.h"
  #include "internal/numbers.h"
  
 +typedef const EVP_PKEY_METHOD *(*pmeth_fn)(void);
@@ -1068,10 +1068,10 @@ Index: openssl-1.1.1d/crypto/evp/pmeth_lib.c
      if (app_pkey_methods == NULL)
          return NULL;
      idx -= OSSL_NELEM(standard_methods);
-Index: openssl-1.1.1d/crypto/include/internal/evp_int.h
+Index: openssl-1.1.1d/include/crypto/evp.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/include/internal/evp_int.h
-+++ openssl-1.1.1d/crypto/include/internal/evp_int.h
+--- openssl-1.1.1d.orig/include/crypto/evp.h
++++ openssl-1.1.1d/include/crypto/evp.h
 @@ -93,24 +93,24 @@ DEFINE_STACK_OF_CONST(EVP_PKEY_METHOD)
  
  void evp_pkey_set_cb_translate(BN_GENCB *cb, EVP_PKEY_CTX *ctx);

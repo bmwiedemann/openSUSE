@@ -942,7 +942,7 @@ index 21ca86055e..390f9eefe7 100755
 -$code =~ s/\b(srlg\s+)(%r[0-9]+\s*,)\s*([0-9]+)/$1$2$2$3/gm;
 -
 -print $code;
--close STDOUT;
+-close STDOUT or die "error closing STDOUT: $!";
 +GLOBL	("poly1305_emit");
 +TYPE	("poly1305_emit","\@function");
 +ALIGN	(16);

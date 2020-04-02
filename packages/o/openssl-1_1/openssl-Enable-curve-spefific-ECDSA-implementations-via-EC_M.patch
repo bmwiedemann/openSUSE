@@ -13,7 +13,7 @@ Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
 (Merged from https://github.com/openssl/openssl/pull/9348)
 ---
  crypto/ec/ec2_smpl.c        |   3 +
- crypto/ec/ec_lcl.h          |  15 +++++
+ crypto/ec/ec_local.h          |  15 +++++
  crypto/ec/ecdsa_ossl.c      | 107 ++++++++++++++++++++++++------------
  crypto/ec/ecp_mont.c        |   3 +
  crypto/ec/ecp_nist.c        |   3 +
@@ -27,10 +27,10 @@ Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
  include/openssl/ecerr.h     |   1 +
  13 files changed, 119 insertions(+), 36 deletions(-)
 
-Index: openssl-1.1.1d/crypto/ec/ec2_smpl.c
+Index: openssl-1.1.1e/crypto/ec/ec2_smpl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec2_smpl.c
-+++ openssl-1.1.1d/crypto/ec/ec2_smpl.c
+--- openssl-1.1.1e.orig/crypto/ec/ec2_smpl.c	2020-03-20 13:03:13.823258089 +0100
++++ openssl-1.1.1e/crypto/ec/ec2_smpl.c	2020-03-20 13:03:17.247276054 +0100
 @@ -956,6 +956,9 @@ const EC_METHOD *EC_GF2m_simple_method(v
          0, /* keycopy */
          0, /* keyfinish */
@@ -41,10 +41,10 @@ Index: openssl-1.1.1d/crypto/ec/ec2_smpl.c
          0, /* field_inverse_mod_ord */
          0, /* blind_coordinates */
          ec_GF2m_simple_ladder_pre,
-Index: openssl-1.1.1d/crypto/ec/ec_lcl.h
+Index: openssl-1.1.1e/crypto/ec/ec_local.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec_lcl.h
-+++ openssl-1.1.1d/crypto/ec/ec_lcl.h
+--- openssl-1.1.1e.orig/crypto/ec/ec_local.h	2020-03-20 13:03:13.823258089 +0100
++++ openssl-1.1.1e/crypto/ec/ec_local.h	2020-03-20 13:03:17.251276075 +0100
 @@ -179,6 +179,14 @@ struct ec_method_st {
      /* custom ECDH operation */
      int (*ecdh_compute_key)(unsigned char **pout, size_t *poutlen,
@@ -74,13 +74,13 @@ Index: openssl-1.1.1d/crypto/ec/ec_lcl.h
  
  int ED25519_sign(uint8_t *out_sig, const uint8_t *message, size_t message_len,
                   const uint8_t public_key[32], const uint8_t private_key[32]);
-Index: openssl-1.1.1d/crypto/ec/ecdsa_ossl.c
+Index: openssl-1.1.1e/crypto/ec/ecdsa_ossl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecdsa_ossl.c
-+++ openssl-1.1.1d/crypto/ec/ecdsa_ossl.c
+--- openssl-1.1.1e.orig/crypto/ec/ecdsa_ossl.c	2020-03-20 13:03:13.823258089 +0100
++++ openssl-1.1.1e/crypto/ec/ecdsa_ossl.c	2020-03-20 13:03:54.463471314 +0100
 @@ -14,6 +14,41 @@
- #include "internal/bn_int.h"
- #include "ec_lcl.h"
+ #include "crypto/bn.h"
+ #include "ec_local.h"
  
 +int ossl_ecdsa_sign_setup(EC_KEY *eckey, BN_CTX *ctx_in, BIGNUM **kinvp,
 +                          BIGNUM **rp)
@@ -359,10 +359,10 @@ Index: openssl-1.1.1d/crypto/ec/ecdsa_ossl.c
          goto err;
      }
      /*  if the signature is correct u1 is equal to sig->r */
-Index: openssl-1.1.1d/crypto/ec/ecp_mont.c
+Index: openssl-1.1.1e/crypto/ec/ecp_mont.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_mont.c
-+++ openssl-1.1.1d/crypto/ec/ecp_mont.c
+--- openssl-1.1.1e.orig/crypto/ec/ecp_mont.c	2020-03-20 13:03:13.823258089 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_mont.c	2020-03-20 13:03:17.251276075 +0100
 @@ -63,6 +63,9 @@ const EC_METHOD *EC_GFp_mont_method(void
          0, /* keycopy */
          0, /* keyfinish */
@@ -373,10 +373,10 @@ Index: openssl-1.1.1d/crypto/ec/ecp_mont.c
          0, /* field_inverse_mod_ord */
          ec_GFp_simple_blind_coordinates,
          ec_GFp_simple_ladder_pre,
-Index: openssl-1.1.1d/crypto/ec/ecp_nist.c
+Index: openssl-1.1.1e/crypto/ec/ecp_nist.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_nist.c
-+++ openssl-1.1.1d/crypto/ec/ecp_nist.c
+--- openssl-1.1.1e.orig/crypto/ec/ecp_nist.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_nist.c	2020-03-20 13:03:17.251276075 +0100
 @@ -65,6 +65,9 @@ const EC_METHOD *EC_GFp_nist_method(void
          0, /* keycopy */
          0, /* keyfinish */
@@ -387,10 +387,10 @@ Index: openssl-1.1.1d/crypto/ec/ecp_nist.c
          0, /* field_inverse_mod_ord */
          ec_GFp_simple_blind_coordinates,
          ec_GFp_simple_ladder_pre,
-Index: openssl-1.1.1d/crypto/ec/ecp_nistp224.c
+Index: openssl-1.1.1e/crypto/ec/ecp_nistp224.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_nistp224.c
-+++ openssl-1.1.1d/crypto/ec/ecp_nistp224.c
+--- openssl-1.1.1e.orig/crypto/ec/ecp_nistp224.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_nistp224.c	2020-03-20 13:03:17.251276075 +0100
 @@ -291,6 +291,9 @@ const EC_METHOD *EC_GFp_nistp224_method(
          ec_key_simple_generate_public_key,
          0, /* keycopy */
@@ -401,11 +401,11 @@ Index: openssl-1.1.1d/crypto/ec/ecp_nistp224.c
          ecdh_simple_compute_key,
          0, /* field_inverse_mod_ord */
          0, /* blind_coordinates */
-Index: openssl-1.1.1d/crypto/ec/ecp_nistp256.c
+Index: openssl-1.1.1e/crypto/ec/ecp_nistp256.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_nistp256.c
-+++ openssl-1.1.1d/crypto/ec/ecp_nistp256.c
-@@ -1809,6 +1809,9 @@ const EC_METHOD *EC_GFp_nistp256_method(
+--- openssl-1.1.1e.orig/crypto/ec/ecp_nistp256.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_nistp256.c	2020-03-20 13:03:17.251276075 +0100
+@@ -1829,6 +1829,9 @@ const EC_METHOD *EC_GFp_nistp256_method(
          0, /* keycopy */
          0, /* keyfinish */
          ecdh_simple_compute_key,
@@ -415,11 +415,11 @@ Index: openssl-1.1.1d/crypto/ec/ecp_nistp256.c
          0, /* field_inverse_mod_ord */
          0, /* blind_coordinates */
          0, /* ladder_pre */
-Index: openssl-1.1.1d/crypto/ec/ecp_nistp521.c
+Index: openssl-1.1.1e/crypto/ec/ecp_nistp521.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_nistp521.c
-+++ openssl-1.1.1d/crypto/ec/ecp_nistp521.c
-@@ -1651,6 +1651,9 @@ const EC_METHOD *EC_GFp_nistp521_method(
+--- openssl-1.1.1e.orig/crypto/ec/ecp_nistp521.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_nistp521.c	2020-03-20 13:03:17.251276075 +0100
+@@ -1669,6 +1669,9 @@ const EC_METHOD *EC_GFp_nistp521_method(
          0, /* keycopy */
          0, /* keyfinish */
          ecdh_simple_compute_key,
@@ -429,11 +429,11 @@ Index: openssl-1.1.1d/crypto/ec/ecp_nistp521.c
          0, /* field_inverse_mod_ord */
          0, /* blind_coordinates */
          0, /* ladder_pre */
-Index: openssl-1.1.1d/crypto/ec/ecp_nistz256.c
+Index: openssl-1.1.1e/crypto/ec/ecp_nistz256.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_nistz256.c
-+++ openssl-1.1.1d/crypto/ec/ecp_nistz256.c
-@@ -1689,6 +1689,9 @@ const EC_METHOD *EC_GFp_nistz256_method(
+--- openssl-1.1.1e.orig/crypto/ec/ecp_nistz256.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_nistz256.c	2020-03-20 13:03:17.251276075 +0100
+@@ -1720,6 +1720,9 @@ const EC_METHOD *EC_GFp_nistz256_method(
          0, /* keycopy */
          0, /* keyfinish */
          ecdh_simple_compute_key,
@@ -443,10 +443,10 @@ Index: openssl-1.1.1d/crypto/ec/ecp_nistz256.c
          ecp_nistz256_inv_mod_ord,                   /* can be #define-d NULL */
          0,                                          /* blind_coordinates */
          0,                                          /* ladder_pre */
-Index: openssl-1.1.1d/crypto/ec/ecp_s390x_nistp.c
+Index: openssl-1.1.1e/crypto/ec/ecp_s390x_nistp.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_s390x_nistp.c
-+++ openssl-1.1.1d/crypto/ec/ecp_s390x_nistp.c
+--- openssl-1.1.1e.orig/crypto/ec/ecp_s390x_nistp.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_s390x_nistp.c	2020-03-20 13:03:17.251276075 +0100
 @@ -175,6 +175,9 @@ const EC_METHOD *EC_GFp_s390x_nistp##bit
          NULL, /* keycopy */                                             \
          NULL, /* keyfinish */                                           \
@@ -457,10 +457,10 @@ Index: openssl-1.1.1d/crypto/ec/ecp_s390x_nistp.c
          NULL, /* field_inverse_mod_ord */                               \
          ec_GFp_simple_blind_coordinates,                                \
          ec_GFp_simple_ladder_pre,                                       \
-Index: openssl-1.1.1d/crypto/ec/ecp_smpl.c
+Index: openssl-1.1.1e/crypto/ec/ecp_smpl.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ecp_smpl.c
-+++ openssl-1.1.1d/crypto/ec/ecp_smpl.c
+--- openssl-1.1.1e.orig/crypto/ec/ecp_smpl.c	2020-03-20 13:03:13.827258110 +0100
++++ openssl-1.1.1e/crypto/ec/ecp_smpl.c	2020-03-20 13:03:17.251276075 +0100
 @@ -64,6 +64,9 @@ const EC_METHOD *EC_GFp_simple_method(vo
          0, /* keycopy */
          0, /* keyfinish */
@@ -471,10 +471,10 @@ Index: openssl-1.1.1d/crypto/ec/ecp_smpl.c
          0, /* field_inverse_mod_ord */
          ec_GFp_simple_blind_coordinates,
          ec_GFp_simple_ladder_pre,
-Index: openssl-1.1.1d/crypto/err/openssl.txt
+Index: openssl-1.1.1e/crypto/err/openssl.txt
 ===================================================================
---- openssl-1.1.1d.orig/crypto/err/openssl.txt
-+++ openssl-1.1.1d/crypto/err/openssl.txt
+--- openssl-1.1.1e.orig/crypto/err/openssl.txt	2020-03-20 13:03:13.831258131 +0100
++++ openssl-1.1.1e/crypto/err/openssl.txt	2020-03-20 13:03:17.251276075 +0100
 @@ -496,6 +496,9 @@ EC_F_ECDSA_SIGN_EX:254:ECDSA_sign_ex
  EC_F_ECDSA_SIGN_SETUP:248:ECDSA_sign_setup
  EC_F_ECDSA_SIG_NEW:265:ECDSA_SIG_new
@@ -493,7 +493,7 @@ Index: openssl-1.1.1d/crypto/err/openssl.txt
  EC_F_OSSL_ECDSA_SIGN_SIG:249:ossl_ecdsa_sign_sig
  EC_F_OSSL_ECDSA_VERIFY_SIG:250:ossl_ecdsa_verify_sig
  EC_F_PKEY_ECD_CTRL:271:pkey_ecd_ctrl
-@@ -2130,6 +2134,7 @@ EC_R_BUFFER_TOO_SMALL:100:buffer too sma
+@@ -2133,6 +2137,7 @@ EC_R_BUFFER_TOO_SMALL:100:buffer too sma
  EC_R_CANNOT_INVERT:165:cannot invert
  EC_R_COORDINATES_OUT_OF_RANGE:146:coordinates out of range
  EC_R_CURVE_DOES_NOT_SUPPORT_ECDH:160:curve does not support ecdh
@@ -501,10 +501,10 @@ Index: openssl-1.1.1d/crypto/err/openssl.txt
  EC_R_CURVE_DOES_NOT_SUPPORT_SIGNING:159:curve does not support signing
  EC_R_D2I_ECPKPARAMETERS_FAILURE:117:d2i ecpkparameters failure
  EC_R_DECODE_ERROR:142:decode error
-Index: openssl-1.1.1d/include/openssl/ecerr.h
+Index: openssl-1.1.1e/include/openssl/ecerr.h
 ===================================================================
---- openssl-1.1.1d.orig/include/openssl/ecerr.h
-+++ openssl-1.1.1d/include/openssl/ecerr.h
+--- openssl-1.1.1e.orig/include/openssl/ecerr.h	2020-03-20 13:03:13.831258131 +0100
++++ openssl-1.1.1e/include/openssl/ecerr.h	2020-03-20 13:03:17.251276075 +0100
 @@ -41,6 +41,9 @@ int ERR_load_EC_strings(void);
  #  define EC_F_ECDSA_SIGN_EX                               254
  #  define EC_F_ECDSA_SIGN_SETUP                            248
@@ -515,7 +515,7 @@ Index: openssl-1.1.1d/include/openssl/ecerr.h
  #  define EC_F_ECDSA_VERIFY                                253
  #  define EC_F_ECD_ITEM_VERIFY                             270
  #  define EC_F_ECKEY_PARAM2TYPE                            223
-@@ -185,6 +186,7 @@ int ERR_load_EC_strings(void);
+@@ -185,6 +188,7 @@ int ERR_load_EC_strings(void);
  #  define EC_F_O2I_ECPUBLICKEY                             152
  #  define EC_F_OLD_EC_PRIV_DECODE                          222
  #  define EC_F_OSSL_ECDH_COMPUTE_KEY                       247
@@ -523,7 +523,7 @@ Index: openssl-1.1.1d/include/openssl/ecerr.h
  #  define EC_F_OSSL_ECDSA_SIGN_SIG                         249
  #  define EC_F_OSSL_ECDSA_VERIFY_SIG                       250
  #  define EC_F_PKEY_ECD_CTRL                               271
-@@ -212,6 +214,7 @@ int ERR_load_EC_strings(void);
+@@ -212,6 +216,7 @@ int ERR_load_EC_strings(void);
  #  define EC_R_CANNOT_INVERT                               165
  #  define EC_R_COORDINATES_OUT_OF_RANGE                    146
  #  define EC_R_CURVE_DOES_NOT_SUPPORT_ECDH                 160

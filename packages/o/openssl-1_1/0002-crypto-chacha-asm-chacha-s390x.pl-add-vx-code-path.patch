@@ -13,17 +13,10 @@ Reviewed-by: Richard Levitte <levitte@openssl.org>
  crypto/chacha/build.info          |   1 +
  2 files changed, 558 insertions(+), 259 deletions(-)
 
-Index: openssl-1.1.1c/crypto/chacha/asm/chacha-s390x.pl
+Index: openssl-1.1.1e/crypto/chacha/asm/chacha-s390x.pl
 ===================================================================
---- openssl-1.1.1c.orig/crypto/chacha/asm/chacha-s390x.pl	2019-06-06 12:15:57.271195550 +0200
-+++ openssl-1.1.1c/crypto/chacha/asm/chacha-s390x.pl	2019-06-06 12:16:43.787489780 +0200
-@@ -1,5 +1,5 @@
- #! /usr/bin/env perl
--# Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
-+# Copyright 2016-2019 The OpenSSL Project Authors. All Rights Reserved.
- #
- # Licensed under the OpenSSL license (the "License").  You may not use
- # this file except in compliance with the License.  You can obtain a copy
+--- openssl-1.1.1e.orig/crypto/chacha/asm/chacha-s390x.pl	2020-03-19 11:43:25.650616856 +0100
++++ openssl-1.1.1e/crypto/chacha/asm/chacha-s390x.pl	2020-03-19 11:43:40.614692484 +0100
 @@ -20,41 +20,46 @@
  #
  # 3 times faster than compiler-generated code.
@@ -859,7 +852,7 @@ Index: openssl-1.1.1c/crypto/chacha/asm/chacha-s390x.pl
 +SIZE	("_s390x_chacha_novx",".-_s390x_chacha_novx");
 +}
  }
--close STDOUT;
+-close STDOUT or die "error closing STDOUT: $!";
 +################
 +
 +ALIGN	(64);

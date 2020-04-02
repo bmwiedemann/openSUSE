@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1d
+Version:        1.1.1f
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -50,9 +50,6 @@ Patch10:        0003-crypto-poly1305-asm-poly1305-s390x.pl-add-vx-code-pa.patch
 Patch11:        0004-s390x-assembly-pack-fix-formal-interface-bug-in-chac.patch
 Patch12:        0005-s390x-assembly-pack-import-chacha-from-cryptogams-re.patch
 Patch13:        0006-s390x-assembly-pack-import-poly-from-cryptogams-repo.patch
-# OpenSSL Security Advisory [6 December 2019] bsc#1158809 CVE-2019-1551
-# PATCH-FIX-UPSTREAM Integer overflow in RSAZ modular exponentiation on x86_64
-Patch15:        openssl-1_1-CVE-2019-1551.patch
 # PATCH-FIX-UPSTREAM bsc#1152695 jsc#SLE-7861 Support for CPACF enhancements - part 1 (crypto)
 Patch16:        openssl-s390x-assembly-pack-add-OPENSSL_s390xcap-environment.patch
 Patch17:        openssl-s390x-assembly-pack-add-support-for-pcc-and-kma-inst.patch
@@ -85,6 +82,7 @@ Patch43:        openssl-keep_EVP_KDF_functions_version.patch
 Patch44:        openssl-fips_fix_selftests_return_value.patch
 Patch45:        openssl-fips-add-SHA3-selftest.patch
 Patch46:        openssl-fips_selftest_upstream_drbg.patch
+Patch47:        openssl-unknown_dgst.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-7403 Support for CPACF enhancements - part 2 (crypto)
 Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
 Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch

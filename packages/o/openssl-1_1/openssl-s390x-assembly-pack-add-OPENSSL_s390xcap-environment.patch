@@ -19,10 +19,10 @@ Reviewed-by: Richard Levitte <levitte@openssl.org>
  crypto/s390xcpuid.pl |  31 ++-
  3 files changed, 556 insertions(+), 13 deletions(-)
 
-Index: openssl-1.1.1d/crypto/s390x_arch.h
+Index: openssl-1.1.1e/crypto/s390x_arch.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/s390x_arch.h
-+++ openssl-1.1.1d/crypto/s390x_arch.h
+--- openssl-1.1.1e.orig/crypto/s390x_arch.h	2020-03-17 15:31:17.000000000 +0100
++++ openssl-1.1.1e/crypto/s390x_arch.h	2020-03-20 17:29:30.459520742 +0100
 @@ -49,6 +49,9 @@ struct OPENSSL_s390xcap_st {
  
  extern struct OPENSSL_s390xcap_st OPENSSL_s390xcap_P;
@@ -75,15 +75,15 @@ Index: openssl-1.1.1d/crypto/s390x_arch.h
  # define S390X_TRNG		114
  
  /* Register 0 Flags */
-Index: openssl-1.1.1d/crypto/s390xcap.c
+Index: openssl-1.1.1e/crypto/s390xcap.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/s390xcap.c
-+++ openssl-1.1.1d/crypto/s390xcap.c
+--- openssl-1.1.1e.orig/crypto/s390xcap.c	2020-03-17 15:31:17.000000000 +0100
++++ openssl-1.1.1e/crypto/s390xcap.c	2020-03-20 17:29:58.011664305 +0100
 @@ -13,15 +13,51 @@
  #include <setjmp.h>
  #include <signal.h>
  #include "internal/cryptlib.h"
-+#include "internal/ctype.h"
++#include "crypto/ctype.h"
  #include "s390x_arch.h"
  
 +#define LEN	128
@@ -636,10 +636,10 @@ Index: openssl-1.1.1d/crypto/s390xcap.c
 +    free(buff);
 +    return rc;
  }
-Index: openssl-1.1.1d/crypto/s390xcpuid.pl
+Index: openssl-1.1.1e/crypto/s390xcpuid.pl
 ===================================================================
---- openssl-1.1.1d.orig/crypto/s390xcpuid.pl
-+++ openssl-1.1.1d/crypto/s390xcpuid.pl
+--- openssl-1.1.1e.orig/crypto/s390xcpuid.pl	2020-03-17 15:31:17.000000000 +0100
++++ openssl-1.1.1e/crypto/s390xcpuid.pl	2020-03-20 17:29:30.459520742 +0100
 @@ -38,7 +38,26 @@ OPENSSL_s390x_facilities:
  	stg	%r0,S390X_STFLE+8(%r4)	# wipe capability vectors
  	stg	%r0,S390X_STFLE+16(%r4)

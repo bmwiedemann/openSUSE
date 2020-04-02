@@ -1,12 +1,12 @@
-Index: openssl-1.1.1d/crypto/fips/fips.c
+Index: openssl-1.1.1e/crypto/fips/fips.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/fips/fips.c	2020-01-23 13:45:11.232633025 +0100
-+++ openssl-1.1.1d/crypto/fips/fips.c	2020-01-23 13:45:48.216852822 +0100
+--- openssl-1.1.1e.orig/crypto/fips/fips.c	2020-03-20 14:08:12.235758574 +0100
++++ openssl-1.1.1e/crypto/fips/fips.c	2020-03-20 14:08:13.787766679 +0100
 @@ -68,6 +68,7 @@
  
  # include <openssl/fips.h>
  # include "internal/thread_once.h"
-+# include "internal/rand_int.h"
++# include "crypto/rand.h"
  
  # ifndef PATH_MAX
  #  define PATH_MAX 1024
@@ -52,10 +52,10 @@ Index: openssl-1.1.1d/crypto/fips/fips.c
          ret = 1;
          goto end;
      }
-Index: openssl-1.1.1d/crypto/include/internal/fips_int.h
+Index: openssl-1.1.1e/include/crypto/fips_int.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/include/internal/fips_int.h	2020-01-23 13:45:11.336633643 +0100
-+++ openssl-1.1.1d/crypto/include/internal/fips_int.h	2020-01-23 13:45:11.368633835 +0100
+--- openssl-1.1.1e.orig/include/crypto/fips_int.h	2020-03-20 14:08:12.239758595 +0100
++++ openssl-1.1.1e/include/crypto/fips_int.h	2020-03-20 14:08:13.787766679 +0100
 @@ -77,6 +77,8 @@ int FIPS_selftest_hmac(void);
  int FIPS_selftest_drbg(void);
  int FIPS_selftest_cmac(void);
@@ -65,10 +65,10 @@ Index: openssl-1.1.1d/crypto/include/internal/fips_int.h
  int fips_pkey_signature_test(EVP_PKEY *pkey,
                                   const unsigned char *tbs, int tbslen,
                                   const unsigned char *kat,
-Index: openssl-1.1.1d/crypto/include/internal/rand_int.h
+Index: openssl-1.1.1e/include/crypto/rand.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/include/internal/rand_int.h	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/include/internal/rand_int.h	2020-01-23 13:45:53.964886989 +0100
+--- openssl-1.1.1e.orig/include/crypto/rand.h	2020-03-20 14:08:12.239758595 +0100
++++ openssl-1.1.1e/include/crypto/rand.h	2020-03-20 14:08:13.791766699 +0100
 @@ -24,6 +24,7 @@
  typedef struct rand_pool_st RAND_POOL;
  
@@ -77,10 +77,10 @@ Index: openssl-1.1.1d/crypto/include/internal/rand_int.h
  void rand_drbg_cleanup_int(void);
  void drbg_delete_thread_state(void);
  
-Index: openssl-1.1.1d/crypto/rand/drbg_lib.c
+Index: openssl-1.1.1e/crypto/rand/drbg_lib.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rand/drbg_lib.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rand/drbg_lib.c	2020-01-23 13:45:53.964886989 +0100
+--- openssl-1.1.1e.orig/crypto/rand/drbg_lib.c	2020-03-20 14:08:12.239758595 +0100
++++ openssl-1.1.1e/crypto/rand/drbg_lib.c	2020-03-20 14:08:13.791766699 +0100
 @@ -1009,6 +1009,20 @@ size_t rand_drbg_seedlen(RAND_DRBG *drbg
      return min_entropy > min_entropylen ? min_entropy : min_entropylen;
  }
@@ -102,15 +102,15 @@ Index: openssl-1.1.1d/crypto/rand/drbg_lib.c
  /* Implements the default OpenSSL RAND_add() method */
  static int drbg_add(const void *buf, int num, double randomness)
  {
-Index: openssl-1.1.1d/crypto/rand/rand_unix.c
+Index: openssl-1.1.1e/crypto/rand/rand_unix.c
 ===================================================================
---- openssl-1.1.1d.orig/crypto/rand/rand_unix.c	2019-09-10 15:13:07.000000000 +0200
-+++ openssl-1.1.1d/crypto/rand/rand_unix.c	2020-01-23 13:45:11.368633835 +0100
+--- openssl-1.1.1e.orig/crypto/rand/rand_unix.c	2020-03-20 14:08:12.239758595 +0100
++++ openssl-1.1.1e/crypto/rand/rand_unix.c	2020-03-20 14:08:41.763912735 +0100
 @@ -17,10 +17,12 @@
  #include <openssl/crypto.h>
- #include "rand_lcl.h"
- #include "internal/rand_int.h"
-+#include "internal/fips_int.h"
+ #include "rand_local.h"
+ #include "crypto/rand.h"
++#include "crypto/fips_int.h"
  #include <stdio.h>
  #include "internal/dso.h"
  #ifdef __linux
@@ -119,7 +119,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
  # ifdef DEVRANDOM_WAIT
  #  include <sys/shm.h>
  #  include <sys/utsname.h>
-@@ -295,7 +297,7 @@ static ssize_t sysctl_random(char *buf,
+@@ -342,7 +344,7 @@ static ssize_t sysctl_random(char *buf,
   * syscall_random(): Try to get random data using a system call
   * returns the number of bytes returned in buf, or < 0 on error.
   */
@@ -128,7 +128,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
  {
      /*
       * Note: 'buflen' equals the size of the buffer which is used by the
-@@ -317,6 +319,7 @@ static ssize_t syscall_random(void *buf,
+@@ -364,6 +366,7 @@ static ssize_t syscall_random(void *buf,
       * - Linux since 3.17 with glibc 2.25
       * - FreeBSD since 12.0 (1200061)
       */
@@ -136,7 +136,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
  #  if defined(__GNUC__) && __GNUC__>=2 && defined(__ELF__) && !defined(__hpux)
      extern int getentropy(void *buffer, size_t length) __attribute__((weak));
  
-@@ -338,10 +341,10 @@ static ssize_t syscall_random(void *buf,
+@@ -385,10 +388,10 @@ static ssize_t syscall_random(void *buf,
      if (p_getentropy.p != NULL)
          return p_getentropy.f(buf, buflen) == 0 ? (ssize_t)buflen : -1;
  #  endif
@@ -150,7 +150,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
  #  elif (defined(__FreeBSD__) || defined(__NetBSD__)) && defined(KERN_ARND)
      return sysctl_random(buf, buflen);
  #  else
-@@ -576,6 +579,9 @@ size_t rand_pool_acquire_entropy(RAND_PO
+@@ -623,6 +626,9 @@ size_t rand_pool_acquire_entropy(RAND_PO
      size_t entropy_available;
  
  #   if defined(OPENSSL_RAND_SEED_GETRANDOM)
@@ -160,7 +160,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
      {
          size_t bytes_needed;
          unsigned char *buffer;
-@@ -586,7 +592,7 @@ size_t rand_pool_acquire_entropy(RAND_PO
+@@ -633,7 +639,7 @@ size_t rand_pool_acquire_entropy(RAND_PO
          bytes_needed = rand_pool_bytes_needed(pool, 1 /*entropy_factor*/);
          while (bytes_needed != 0 && attempts-- > 0) {
              buffer = rand_pool_add_begin(pool, bytes_needed);
@@ -169,7 +169,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
              if (bytes > 0) {
                  rand_pool_add_end(pool, bytes, 8 * bytes);
                  bytes_needed -= bytes;
-@@ -621,8 +627,10 @@ size_t rand_pool_acquire_entropy(RAND_PO
+@@ -668,8 +674,10 @@ size_t rand_pool_acquire_entropy(RAND_PO
              int attempts = 3;
              const int fd = get_random_device(i);
  
@@ -181,7 +181,7 @@ Index: openssl-1.1.1d/crypto/rand/rand_unix.c
  
              while (bytes_needed != 0 && attempts-- > 0) {
                  buffer = rand_pool_add_begin(pool, bytes_needed);
-@@ -685,7 +693,9 @@ size_t rand_pool_acquire_entropy(RAND_PO
+@@ -732,7 +740,9 @@ size_t rand_pool_acquire_entropy(RAND_PO
              return entropy_available;
      }
  #   endif

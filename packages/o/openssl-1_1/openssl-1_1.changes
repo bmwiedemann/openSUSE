@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:05:24 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1f
+  * Revert the unexpected EOF reporting via SSL_ERROR_SSL
+- refresh openssl-1.1.0-no-html.patch
+
+-------------------------------------------------------------------
+Fri Mar 20 11:58:08 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1e
+  * Properly detect EOF while reading in libssl. Previously if we hit an EOF
+    while reading in libssl then we would report an error back to the
+    application (SSL_ERROR_SYSCALL) but errno would be 0. We now add
+    an error to the stack (which means we instead return SSL_ERROR_SSL) and
+    therefore give a hint as to what went wrong.
+  * Check that ed25519 and ed448 are allowed by the security level. Previously
+    signature algorithms not using an MD were not being checked that they were
+    allowed by the security level.
+  * Fixed SSL_get_servername() behaviour. The behaviour of SSL_get_servername()
+    was not quite right. The behaviour was not consistent between resumption
+    and normal handshakes, and also not quite consistent with historical
+    behaviour. The behaviour in various scenarios has been clarified and
+    it has been updated to make it match historical behaviour as closely as
+    possible.
+  * Corrected the documentation of the return values from the EVP_DigestSign*
+    set of functions.  The documentation mentioned negative values for some
+    errors, but this was never the case, so the mention of negative values
+    was removed.
+  * Added a new method to gather entropy on VMS, based on SYS$GET_ENTROPY.
+    The presence of this system service is determined at run-time.
+  * Added newline escaping functionality to a filename when using openssl dgst.
+    This output format is to replicate the output format found in the '*sum'
+    checksum programs. This aims to preserve backward compatibility.
+  * Print all values for a PKCS#12 attribute with 'openssl pkcs12', not just
+    the first value.
+- Update bunch of patches as the internal crypto headers got reorganized
+- drop openssl-1_1-CVE-2019-1551.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Mar 20 10:22:27 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- openssl dgst: default to SHA256 only when called without a digest,
+  not when it couldn't be found (bsc#1166189)
+  * add openssl-unknown_dgst.patch
+
+-------------------------------------------------------------------
+Wed Mar  4 08:23:23 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Limit the DRBG selftests to not deplete entropy (bsc#1165274)
+  * update openssl-fips_selftest_upstream_drbg.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 13:28:14 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Run FIPS DRBG selftests against the crypto/rand DRBG implementation

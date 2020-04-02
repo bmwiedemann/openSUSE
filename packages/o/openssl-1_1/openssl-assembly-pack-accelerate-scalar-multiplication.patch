@@ -14,7 +14,7 @@ Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
 ---
  crypto/ec/build.info        |   3 +-
  crypto/ec/ec_curve.c        |  42 +++++---
- crypto/ec/ec_lcl.h          |   5 +
+ crypto/ec/ec_local.h          |   5 +
  crypto/ec/ecp_s390x_nistp.c | 197 ++++++++++++++++++++++++++++++++++++
  4 files changed, 234 insertions(+), 13 deletions(-)
  create mode 100644 crypto/ec/ecp_s390x_nistp.c
@@ -65,10 +65,10 @@ Index: openssl-1.1.1d/crypto/ec/ec_curve.c
  #elif !defined(OPENSSL_NO_EC_NISTP_64_GCC_128)
       EC_GFp_nistp256_method,
  #else
-Index: openssl-1.1.1d/crypto/ec/ec_lcl.h
+Index: openssl-1.1.1d/crypto/ec/ec_local.h
 ===================================================================
---- openssl-1.1.1d.orig/crypto/ec/ec_lcl.h
-+++ openssl-1.1.1d/crypto/ec/ec_lcl.h
+--- openssl-1.1.1d.orig/crypto/ec/ec_local.h
++++ openssl-1.1.1d/crypto/ec/ec_local.h
 @@ -587,6 +587,11 @@ int ec_group_simple_order_bits(const EC_
   */
  const EC_METHOD *EC_GFp_nistz256_method(void);
@@ -98,7 +98,7 @@ Index: openssl-1.1.1d/crypto/ec/ecp_s390x_nistp.c
 +#include <stdlib.h>
 +#include <string.h>
 +#include <openssl/err.h>
-+#include "ec_lcl.h"
++#include "ec_local.h"
 +#include "s390x_arch.h"
 +
 +/* Size of parameter blocks */
