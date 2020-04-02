@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:03:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable three more tests on git submodules:
+  * https://github.com/gitpython-developers/GitPython/issues/597
+  * test-skips.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 10:40:09 UTC 2020 - tchvatal@suse.com
+
+- Update to version 3.1.0.1582544583.8c9da73:
+  * Replace invalid bytes when decoding TagObject stream
+  * Use UTF-8 encoding when getting information about a symbolic reference
+  * Remove and replace references to nose with unittest in documentation
+  * Remove nose from test requirements
+  * Replace nose with unittest in tox configuration
+  * Replace nose with unittest in Travis CI script
+  * Added changelog for unreleased changes
+  * Restrict gitdb2 version to <4
+  * Remove test.lib.asserts and use unittest.mock.patch directly
+  * Replace assert_false with assertFalse
+  * Replace assert_true with assertTrue
+  * Replace raises with assertRaises
+  * Replace assert_raises with assertRaises
+  * Replace assert_not_equal with assertNotEqual
+  * Replace assert_equal with assertEqual
+  * Remove and replace assert_match with assertRegex
+  * Remove old, no longer used assert methods
+  * Remove references to old mock library in documentation
+  * Remove outdated checks for unittest.mock existence
+  * Fix Python version requirement in documentation
+  * Remove badges for no longer existing Waffle site from README
+  * Add support for Python 3.8
+  * Replace deprecated Logger.warn with Logger.warning
+  * Replace deprecated assertRaisesRegexp alias with assertRaisesRegex
+  * Replace deprecated assertNotEquals alias with assertNotEqual
+  * Replace deprecated assertEquals alias with assertEqual in TestGit
+  * Replace deprecated assertRegexpMatches alias with assertRegex
+  * Replace deprecated failUnlessRaises alias with assertRaises in tests
+  * Improve requirements.txt format
+  * Remove checks for pathlib existence in TestRepo for Python < 3.4
+  * Improve README Python requirement specificity
+  * Simplify Travis CI configuration
+  * Require latest gitdb version (with dropped python 2 support)
+  * Fix spelling in Dockerfile description LABEL
+  * Fix Repo.__repr__ when subclassed
+  * Apparently -s must be there, even if --sign-with is specified??
+  * Sign with a different key for now, it's USB-C and can be used
+  * disable signing - don't have a USB-A to -C adapter :(
+  * Remove now unused is_invoking_git variable in test
+  * Fix requirements.txt formatting
+  * Remove unnecessary check for PermissionError for Python < 3.3
+  * Improve setup.py python_requires
+  * Remove unnecessary check for logging.NullHandler for Python 2.6
+  * Remove check for Python 2.7
+- Rebase patch test-skips.patch and test_blocking_lock_file-extra-time.patch
+
+-------------------------------------------------------------------
 Sat Nov 16 16:40:59 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:

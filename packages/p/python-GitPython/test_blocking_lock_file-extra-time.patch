@@ -1,7 +1,9 @@
---- GitPython-2.1.11/git/test-orig/test_util.py	2019-03-13 15:54:50.306690465 +0700
-+++ GitPython-2.1.11/git/test/test_util.py	2019-03-13 18:22:09.867649085 +0700
-@@ -171,9 +171,7 @@
-         self.failUnlessRaises(IOError, wait_lock._obtain_lock)
+Index: GitPython-3.1.0.1582544583.8c9da73/git/test/test_util.py
+===================================================================
+--- GitPython-3.1.0.1582544583.8c9da73.orig/git/test/test_util.py
++++ GitPython-3.1.0.1582544583.8c9da73/git/test/test_util.py
+@@ -165,9 +165,7 @@ class TestUtils(TestBase):
+         self.assertRaises(IOError, wait_lock._obtain_lock)
          elapsed = time.time() - start
          extra_time = 0.02
 -        if is_win:

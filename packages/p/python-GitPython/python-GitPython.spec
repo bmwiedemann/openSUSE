@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.0.5
+Version:        3.1.0.1582544583.8c9da73
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/GitPython
-Source:         GitPython-%{version}.tar.gz
+Source:         GitPython-%{version}.tar.xz
 Patch0:         test-skips.patch
 Patch1:         test_blocking_lock_file-extra-time.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
-BuildRequires:  %{python_module gitdb2 >= 2.0.0}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module gitdb >= 4.0.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module smmap2 >= 2.0.0}
+BuildRequires:  %{python_module smmap >= 3.0.1}
 BuildRequires:  fdupes
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-mock
 Requires:       git-core
-Requires:       python-gitdb2 >= 2.0.0
+Requires:       python-gitdb >= 4.0.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -87,7 +85,6 @@ git config --global user.name "Your Name"
 %doc AUTHORS CHANGES README.md doc/source/*.rst
 %dir %{python_sitelib}/git
 %{python_sitelib}/git/*
-%dir %{python_sitelib}/GitPython-%{version}-py*.egg-info
-%{python_sitelib}/GitPython-%{version}-py*.egg-info
+%{python_sitelib}/GitPython*
 
 %changelog
