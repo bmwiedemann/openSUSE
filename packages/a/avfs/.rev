@@ -50,4 +50,24 @@
     <comment></comment>
     <requestid>739920</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17a7b6d4361ffccacab1aa31a578e55b</srcmd5>
+    <version>1.1.0</version>
+    <time>1585842317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * improved handling of single '#' to stop resolving archive
+    handlers when it makes no sense to add another chain
+  * support multiple gzip member in a single file (concatenated
+    gzip files)
+  * updated webdav module with work with latest libneon (which is
+    no longer bundled)
+  * CODA and PRELOAD support has been removed
+- Changes for version 1.0.6:
+  * added support for libzstd (zst files)
+  * fixed arbitrary command execution in rsh/ssh module
+  * zip workaround for zip archives with unix attributes but
+    regular files are not marked correctly</comment>
+    <requestid>790907</requestid>
+  </revision>
 </revisionlist>

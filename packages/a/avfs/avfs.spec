@@ -1,7 +1,7 @@
 #
 # spec file for package avfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           avfs
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(openssl)
 
@@ -69,19 +70,15 @@ or changing the kernel.
 
 %build
 %configure \
-  --disable-avfscoda \
-  --enable-library \
-  --enable-fuse \
   --disable-static \
+  --enable-fuse \
+  --enable-library \
   --enable-shared \
   --with-system-zlib \
   --with-system-bzlib \
-  --with-gnu-ld \
-  --enable-libxml \
-  --with-neon \
-  --with-ssl \
+  --with-lzma \
   --with-xz
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -118,7 +115,7 @@ rm -vf %{buildroot}/%{_libdir}/libavfs.la
 %dir %{_libdir}/avfs
 %dir %{_libdir}/avfs/extfs
 %{_libdir}/avfs/extfs/*
-%{_mandir}/man1/avfsd.1%{ext_man}
+%{_mandir}/man1/avfsd.1%{?ext_man}
 
 %files devel
 %{_bindir}/avfs-config
