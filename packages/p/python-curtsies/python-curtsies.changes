@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:10:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add remove-nose.patch 
+
+-------------------------------------------------------------------
+Thu Apr  2 08:17:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.3.1
+  * Add "dark" format function
+  * Add Input option to disable terminal start/stop. Thanks George Kettleborough!
+  * Fix Py3.6 compatibility. Thanks Po-Chuan Hsieh!
+  * Assorted fixes, thanks Jakub Wilk and Manuel Mendez!
+- Drop upstreamed python-curtsies-dont-require-typing-for-python3.5.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 10:39:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Enable verbosity of tests to see what is validated

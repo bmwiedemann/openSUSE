@@ -47,4 +47,19 @@
     <comment>- Enable verbosity of tests to see what is validated</comment>
     <requestid>686026</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb0d453deef9163a388835c943c89d86</srcmd5>
+    <version>0.3.1</version>
+    <time>1585842240</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-nose.patch 
+- Update to version 0.3.1
+  * Add &quot;dark&quot; format function
+  * Add Input option to disable terminal start/stop. Thanks George Kettleborough!
+  * Fix Py3.6 compatibility. Thanks Po-Chuan Hsieh!
+  * Assorted fixes, thanks Jakub Wilk and Manuel Mendez!
+- Drop upstreamed python-curtsies-dont-require-typing-for-python3.5.patch
+</comment>
+    <requestid>790870</requestid>
+  </revision>
 </revisionlist>
