@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:11:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.1.1
+  * Add missing Python 3.8 to setup, tox and Mergify
+  * build(setup): replace pbr by setuptools_scm
+  * Parameterizes overwriting `sys.excepthook` to allow it to be turned 
+    off in environments where a different excepthook is needed.
+  * fix(journal): handle extra keys correctly
+
+-------------------------------------------------------------------
 Fri Sep 13 10:08:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.6.0:

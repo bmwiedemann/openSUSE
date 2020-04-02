@@ -1,7 +1,7 @@
 #
 # spec file for package python-daiquiri
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-daiquiri
-Version:        1.6.0
+Version:        2.1.1
 Release:        0
 Summary:        Library to configure Python logging
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jd/daiquiri
 Source:         https://files.pythonhosted.org/packages/source/d/daiquiri/daiquiri-%{version}.tar.gz
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-json-logger}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -55,7 +56,7 @@ provides some custom formatters and handlers.
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog README.rst
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog

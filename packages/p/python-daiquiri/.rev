@@ -59,4 +59,12 @@
   * Fix getLogger when called twice and passing different extras</comment>
     <requestid>730663</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d92ffaa20723b886164a658444fa100</srcmd5>
+    <version>2.1.1</version>
+    <time>1585842293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790827</requestid>
+  </revision>
 </revisionlist>
