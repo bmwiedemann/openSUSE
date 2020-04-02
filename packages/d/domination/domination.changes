@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:21:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.1. Check the installed ChangeLog.txt file for the
+  complete list of changes.
+  * Improved hi-res support
+  * Updated translations
+  * Map editor fixes.
+- Spec cleanup.
+- Fix the package group.
+
+-------------------------------------------------------------------
 Tue Sep 22 18:26:20 UTC 2015 - nemysis@openSUSE.org
 
 - Update to 1.1.1.6, please look

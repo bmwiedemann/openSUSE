@@ -1,7 +1,7 @@
 #
 # spec file for package domination
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           domination
-Version:        1.1.1.6
+Version:        1.2.1
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
-License:        GPL-3.0
-Group:          Amusements/Games/Strategy
-Url:            http://domination.sourceforge.net/
+License:        GPL-3.0-only
+Group:          Amusements/Games/Strategy/Turn Based
+URL:            http://domination.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/Domination/%{version}/Domination_%{version}.zip
 Source1:        %{name}-FlashGUI.sh
 Source2:        %{name}-Increment1GUI.sh
@@ -30,16 +30,16 @@ Source3:        %{name}-SimpleGUI.sh
 Source4:        %{name}-SwingGUI.sh
 Source5:        %{name}.desktop
 Source6:        %{name}.png
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  dos2unix
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  unzip
 Requires:       %{name}-data
 Requires:       jre >= 1.6.0
 BuildArch:      noarch
+%if 0%{?suse_version}
+BuildRequires:  fdupes
+BuildRequires:  update-desktop-files
+%endif
 
 %description
 Domination is a board game that is a bit like the well known game Risk.
@@ -63,10 +63,10 @@ find -name "*.txt" -print0 -or -name "*.ini" -print0 -or -name "*.cmd" -print0 \
 
 %install
 # install wrappers
-install -Dm 0755 %{S:1} %{buildroot}%{_bindir}/%{name}-FlashGUI
-install -Dm 0755 %{S:2} %{buildroot}%{_bindir}/%{name}-Increment1GUI
-install -Dm 0755 %{S:3} %{buildroot}%{_bindir}/%{name}-SimpleGUI
-install -Dm 0755 %{S:4} %{buildroot}%{_bindir}/%{name}-SwingGUI
+install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}-FlashGUI
+install -Dm 0755 %{SOURCE2} %{buildroot}%{_bindir}/%{name}-Increment1GUI
+install -Dm 0755 %{SOURCE3} %{buildroot}%{_bindir}/%{name}-SimpleGUI
+install -Dm 0755 %{SOURCE4} %{buildroot}%{_bindir}/%{name}-SwingGUI
 
 # install directories
 mkdir -p %{buildroot}%{_datadir}/%{name}/{help,lib,maps,maps/preview,resources}
@@ -82,10 +82,10 @@ for f in *.jar *.htm *.txt *.ini ; do
 done
 
 # install icon
-install -Dm 0644 %{S:6} %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dm 0644 %{SOURCE6} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 # install Desktop file
-install -Dm 0644 %{S:5} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 %{SOURCE5} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
@@ -93,7 +93,6 @@ install -Dm 0644 %{S:5} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
 
 %files
-%defattr(-,root,root)
 %{_bindir}/%{name}-*GUI
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
