@@ -1,0 +1,2 @@
+addFilter("python-naming-policy-not-applied")
+addFilter("devel-file-in-non-devel-package .*/tests/data/.*")
