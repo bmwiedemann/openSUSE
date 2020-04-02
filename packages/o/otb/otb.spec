@@ -1,7 +1,7 @@
 #
 # spec file for package otb
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 %define tarname OTB
-%define fullversion 7.0.0
-%define filerelease 7.0
+%define fullversion 7.1.0
+%define filerelease 7.1
 %define libversion 7
 # OTBTemporalGapFilling https://gitlab.orfeo-toolbox.org/jinglada/temporalgapfilling/ - latest git rev. (cmake follows master head)
 %define tgfrev 0010532
-
 # Enable remote module by default
 %bcond_without enable_remote_module
-
 Name:           otb
 Version:        %{fullversion}
 Release:        0
@@ -49,38 +47,37 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gdal-devel
 BuildRequires:  geotiff-devel
+BuildRequires:  glew-devel
 BuildRequires:  insighttoolkit-devel
 BuildRequires:  libOpenThreads-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libglfw-devel
 BuildRequires:  libproj-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libsvm-devel
-BuildRequires:  xz
-%if %{with enable_remote_module}
-BuildRequires:  git
-# GSL is needed by OTBTemporalGapFilling module
-BuildRequires:  gsl-devel
-%endif
-BuildRequires:  glew-devel
-BuildRequires:  libglfw-devel
 BuildRequires:  libsvm2
 BuildRequires:  libtool
 BuildRequires:  muparser-devel
 BuildRequires:  muparserx-devel
-# Actually opencv 4 should be supported, but not 4.1
-%if 0%{?suse_version} >= 1550
-BuildRequires:  opencv3-devel
-%else
-BuildRequires:  opencv-devel < 4.1
-%endif
 BuildRequires:  ossim-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  qwt6-devel
 BuildRequires:  swig
 BuildRequires:  tinyxml-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  xz
+%if %{with enable_remote_module}
+BuildRequires:  git
+# GSL is needed by OTBTemporalGapFilling module
+BuildRequires:  gsl-devel
+%endif
+# Actually opencv 4 should be supported, but not 4.1
+%if 0%{?suse_version} >= 1550
+BuildRequires:  opencv3-devel
+%else
+BuildRequires:  opencv-devel < 4.1
+%endif
 
 %description
 ORFEO Toolbox (OTB) is a library of image processing algorithms. OTB
@@ -97,12 +94,12 @@ Requires:       boost-devel
 Requires:       cmake
 Requires:       gcc
 Requires:       gcc-c++
+Requires:       gdal-devel
 Requires:       glew-devel
 Requires:       insighttoolkit-devel
 Requires:       lib%{name}%{libversion} = %{version}
 Requires:       libOpenThreads-devel
 Requires:       libcurl-devel
-Requires:       gdal-devel
 Requires:       libgeotiff-devel
 Requires:       libglfw-devel
 Requires:       libqt5-linguist-devel
@@ -112,18 +109,18 @@ Requires:       libsvm2
 Requires:       libtool
 Requires:       muparser-devel
 Requires:       muparserx-devel
-# Actually opencv 4 should be supported, but not 4.1
-%if 0%{?suse_version} >= 1550
-Requires:       opencv3-devel
-%else
-Requires:       opencv-devel < 4.1
-%endif
 Requires:       ossim-devel
 Requires:       qwt6-devel
 Requires:       tinyxml-devel
 Provides:       lib%{name}-devel
 Obsoletes:      OrfeoToolbox-devel < %{version}
 Provides:       OrfeoToolbox-devel = %{version}
+# Actually opencv 4 should be supported, but not 4.1
+%if 0%{?suse_version} >= 1550
+Requires:       opencv3-devel
+%else
+Requires:       opencv-devel < 4.1
+%endif
 
 %description devel
 ORFEO Toolbox (OTB) is a library of image processing algorithms. OTB
@@ -310,6 +307,6 @@ rm -rf %{buildroot}%{_datadir}/%{name}/swig
 %dir %{_datadir}/otb/description
 %{_datadir}/otb/description/*.txt
 %exclude %{_datadir}/doc
-%doc CONTRIBUTING.md 
+%doc CONTRIBUTING.md
 
 %changelog

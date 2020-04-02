@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:53:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to OTB version 7.1.0
+  Full release notes at:
+  https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/blob/7.1.0/RELEASE_NOTES.txt
+  Main changes are:
+  * Features added:
+   * !681: ENH: allow HTTP GDAL datasets by Laurențiu Nicola
+   * !673: Smoothing application enhancement by Cédric Traizet
+   * !655: BUG: migrate to QOpenGLWidget by Victor Poughon
+   * !644: Fast nlmeans filter by Carole Amiot
+   * !642: Resolve ExtractROI: keep GCPs by Guillaume Pasero
+   * !628: Added 'double' application parameter type. by guillaume pernot
+   * !618: Integration of the multiImageFileWriter in the application engine by Cédric Traizet
+  * Bugs fixed:
+   * !701: Error when opening ENVI datasets by Cédric Traizet
+   * !699: Fix listview parameter in TrainImagesClassifier
+   * !679: COMP: Remove RemoteSensingRegion assignment operator by Laurențiu Nicola
+   * !678: BUG: Fix warnings and possible UB in `VariadicInputsImageFilter::SetInputsImpl` by Laurențiu Nicola
+   * !677: Fix debian build by Cédric Traizet
+   * !674: BUG: Fix nodata handling in StreamingStatisticsMapFromLabelImageFilter by Laurențiu Nicola
+   * !667: Short Integer overflow in tests by Cédric Traizet
+   * !662: Update netcdf version in Superbuild to 4.7.3 by Cédric Traizet
+   * !660: COMP: Fix Variadic Input Image Filters for g++8.2.0 by Luc Hermitte
+   * !658: Allow UserValue modification from within application's DoExecute by guillaume pernot
+   * !656: input centroid should not be mandatory in TrainVectorClassifier and TrainImagesClassifier by Cédric Traizet
+   * !655: BUG: migrate to QOpenGLWidget by Victor Poughon
+   * !654: Missing RAM parameter in StereoRectificationGridGenerator application by Julien Michel
+   * !653: Warning cleaning by Guillaume Pasero
+   * !649: Resolve \Mosaic do not work anymore with rgb mode\ by Rémi Cresson
+   * !647: Fixed lookup table stacking order by guillaume pernot
+   * !646: removed duplicate Scene.png by guillaume pernot
+   * !641: FIX PCA transformation matrix computation by Cédric Traizet
+   * !640: Fixed lost reference of \buffer\ in VectorPrediction update mode by guillaume pernot
+   * !637: BUG: better check for TIXML_USE_STL by Victor Poughon
+   * !636: Fix gcc8 compilation by guillaume pernot
+   * !634: COMP: Added gcc9 support for ITK by guillaume pernot
+   * !633: Added otb_opencv_api.h in packages by guillaume pernot
+   * !626: FIX: check that input image is not null by Rémi Cresson
+   * !624: Fix GEOS errors from self intersecting polygons in and fix OPENCV path in debian CI build by Cédric Traizet
+   * !617: TEST: Force ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=4 by guillaume pernot
+   * !616: TEST: rename ToulousePoints-examples.shp to toulousepoints_examples.shp by guillaume pernot
+   * !613: Additional tests for the ExtractROI application by Cédric Traizet
+   * !606: Check band index on each pixel by guillaume pernot
+  * Refactoring updates
+  * Documentation updates
+
+-------------------------------------------------------------------
 Tue Nov 19 15:17:32 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to OTB version 7.0.0
