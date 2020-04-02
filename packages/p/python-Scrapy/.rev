@@ -48,4 +48,25 @@
     <comment></comment>
     <requestid>765023</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc0469ff86bb5283c982749a722afe2d</srcmd5>
+    <version>2.0.1</version>
+    <time>1585842221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Python 2 support has been removed
+  * Partial coroutine syntax support and experimental asyncio support
+  * New Response.follow_all method
+  * FTP support for media pipelines
+  * New Response.certificate attribute
+  * IPv6 support through DNS_RESOLVER
+  * Response.follow_all now supports an empty URL iterable as input
+  * Removed top-level reactor imports to prevent errors about the wrong
+    Twisted reactor being installed when setting a different Twisted
+    reactor using TWISTED_REACTOR
+- Add zope-exception-test_crawler.patch, rewriting one testcase to pass
+  with our version of Zope.
+- Update BuildRequires based on test requirements.</comment>
+    <requestid>790737</requestid>
+  </revision>
 </revisionlist>

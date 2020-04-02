@@ -17,29 +17,35 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Scrapy
-Version:        1.8.0
+Version:        2.0.1
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
+Patch0:         zope-exception-test_crawler.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego >= 0.1.15}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module Twisted >= 17.9.0}
 BuildRequires:  %{python_module cryptography >= 2.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module jmespath}
 BuildRequires:  %{python_module lxml >= 3.5.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parsel >= 1.5.0}
 BuildRequires:  %{python_module pyOpenSSL >= 16.2.0}
+BuildRequires:  %{python_module pytest-twisted}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module queuelib >= 1.4.2}
 BuildRequires:  %{python_module service_identity >= 16.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module w3lib >= 1.17.2}
 BuildRequires:  fdupes
@@ -76,6 +82,7 @@ Provides documentation for %{name}.
 %prep
 %setup -q -n Scrapy-%{version}
 sed -i -e 's:= python:= python3:g' docs/Makefile
+%autopatch -p1
 
 %build
 %python_build
