@@ -80,7 +80,7 @@ Patch2:         %{name}_ipsec_service.patch
 Patch3:         %{name}_fipscheck.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
-
+Patch6:         0006-Resolve-multiple-definition-of-swanctl_dir.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -257,6 +257,7 @@ and the load testing plugin for IKEv2 daemon.
 %patch3 -p1
 %endif
 %patch5 -p1
+%patch6 -p1
 sed -e 's|@libexecdir@|%_libexecdir|g'    \
      < %{_sourcedir}/strongswan.init.in \
      > strongswan.init

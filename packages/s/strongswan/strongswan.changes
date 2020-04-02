@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 16:42:23 UTC 2020 - Madhu Mohan Nelemane <mmnelemane@suse.com>
+
+- Fix to resolve multiple definitions for swanctl_dir (bsc#1164493)
+  [+ 0006-Resolve-multiple-definition-of-swanctl_dir.patch ]
+
+-------------------------------------------------------------------
 Mon Feb 17 20:26:37 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 
 - move file %{_datadir}/dbus-1/system.d/nm-strongswan-service.conf 
