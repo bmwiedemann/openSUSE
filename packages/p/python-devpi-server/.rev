@@ -28,4 +28,12 @@
   the dedicated commands (e.g., devpi-export).</comment>
     <requestid>763394</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d06a88791c24df6cc34f5c901e77398b</srcmd5>
+    <version>5.4.1</version>
+    <time>1585842300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790871</requestid>
+  </revision>
 </revisionlist>

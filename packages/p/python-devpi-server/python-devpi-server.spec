@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-devpi-server
-Version:        5.3.1
+Version:        5.4.1
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
