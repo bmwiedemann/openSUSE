@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 02 10:44:30 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1585823626.1dd5ce1f:
+  * Low: corosync: Use with statement  to open file
+  * Dev: unittest: change test_add_node_ucast to make whole test reentrant
+
+-------------------------------------------------------------------
 Tue Mar 31 08:46:58 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1585643641.b911e2f1:
