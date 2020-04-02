@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  1 20:17:42 UTC 2020 - ecsos@opensuse.org
+
+- Update to 0.0.9.4e
+  - Another quick-fixup release, using libQMatrixClient 0.5.3.2, 
+    and fixing an occasional crash upon a successful SSO login 
+    (described in an issue with a fancy number #666)
+
+-------------------------------------------------------------------
+Wed Apr  1 18:28:50 UTC 2020 - ecsos@opensuse.org
+
+- Change to needed libqmatrixclient version 0.5.3
+
+-------------------------------------------------------------------
 Tue Mar 31 20:02:32 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.0.9.4d

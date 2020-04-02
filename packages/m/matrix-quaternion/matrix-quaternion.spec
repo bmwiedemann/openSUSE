@@ -17,7 +17,7 @@
 
 
 Name:           matrix-quaternion
-Version:        0.0.9.4d
+Version:        0.0.9.4e
 Release:        0
 Summary:        QT Matrix client
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(QMatrixClient) >= 0.5.1
+BuildRequires:  pkgconfig(QMatrixClient) >= 0.5.3
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
