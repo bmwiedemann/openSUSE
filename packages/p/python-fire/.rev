@@ -57,4 +57,25 @@
   if running under Python 3.8.</comment>
     <requestid>738722</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>41b0663f25f4f8a8ff526c9d933d6e3b</srcmd5>
+    <version>0.3.0</version>
+    <time>1585842218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Use Fire on third-party code without making any code changes:
+    python -m fire &lt;module&gt;
+  * Docstring parsing fix for all lines are blank f01aad3
+  * Improved parsing of numpy-style docstrings
+  * #187 Expose built-in functions from the standard library (e.g. sin, cos)
+  * #149 Support objects implementing __getattr__
+  * #205 Fix ctrl-C handling in help screens
+  * Support functools.wraps and lru_cache decorated functions
+  * Better support for objects with properties
+  * Objects with custom __str__ are now treated as Values. E.g. If such an
+    object appears in a dict, the dict will still print in line-by-line mode
+    rather than showing a help screen by default.
+  * Formatting on Windows works properly now</comment>
+    <requestid>790723</requestid>
+  </revision>
 </revisionlist>
