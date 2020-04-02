@@ -1,7 +1,7 @@
 #
 # spec file for package pulseview
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,27 @@
 
 
 Name:           pulseview
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Qt-based GUI for sigrok
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            http://sigrok.org
-Source0:        http://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
+URL:            https://sigrok.org
+Source0:        https://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.55.0
-%endif
-BuildRequires:  libsigrok-devel >= 0.5.1
+BuildRequires:  libsigrok-devel >= 0.5.2
 BuildRequires:  libsigrokdecode-devel >= 0.5.2
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The sigrok project aims at creating a portable, cross-platform,

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Apr  1 17:02:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.4.1
+  * PulseView session setups can now be saved/restored to and
+    from *.pvs files.
+  * Translation support was added to the GUI elements (and a first
+    translation, German, is available). Please check the wiki for
+    details on how you can contribute further translations.
+  * There's a new protocol decoder selection subwindow with
+    filtering capabilities, browing by decoder tags, auto-stacking
+    of decoders where required, and more.
+  * A new decoder "binary" output subwindow can show/save
+    "OUTPUT_BINARY" type decoder data in various (decoder-specific)
+    formats (WAV, PCAP, PNG, and many others). This also features
+    a simple "hex view" for the data.
+  * It is now possible to show/hide individual decoder annotation
+    rows, and individual annotation classes. This is very handy
+    when you're debugging a specific issue and only want to see
+    certain classes of decoder annotations, e.g. "show me only CRC
+    errors", "show me only parity errors and frame errors", or
+    "show me only I²C NACKs" etc. etc.
+  * Lots of UI and functionality improvements regarding cursors
+    and markers.
+  * Various new handy key shortcuts for zooming, moving around in
+    the data, placing cursors, etc.
+  * Various drawing and decoder/annotation performance improvements.
+- This requires libsigrok >= 0.5.2 (already released for some time)
+
+-------------------------------------------------------------------
 Tue Mar 19 23:22:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Explicitly BuildRequire: libboost_system-devel, required since Boost 1.69
