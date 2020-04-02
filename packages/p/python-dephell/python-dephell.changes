@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:18:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Upgrade to 0.8.2
+  * New commands: dephell project upload, dephell venv entrypoint,
+    dephell package verify, dephell project register
+  * dephell project bump now can bump version in Sphinx config
+  * One less dependency. Bye-bye, flatdict
+  * A lot of dephell jail list improvements
+  * --version and -h flags
+  * dephell jail and some similar commands don’t try to find project-level config
+- Reapplied never-pin-deps.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 12:41:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - dephell deps convert should always run UTF-8 locale.

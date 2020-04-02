@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-dephell%{psuffix}
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Dependency resolution for Python
 License:        MIT
@@ -66,7 +66,6 @@ Requires:       python-dephell_changelogs
 Requires:       python-docker
 Requires:       python-dockerpty
 Requires:       python-fissix
-Requires:       python-flatdict
 Requires:       python-html5lib
 Requires:       python-m2r
 Requires:       python-packaging
@@ -113,7 +112,6 @@ BuildRequires:  %{python_module dephell_changelogs}
 BuildRequires:  %{python_module dockerpty}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module fissix}
-BuildRequires:  %{python_module flatdict}
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module m2r}
