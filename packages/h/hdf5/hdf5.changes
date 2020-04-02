@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 07:49:26 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix library link flags on pkg-config file for HPC builds (boo#1134298).
+
+-------------------------------------------------------------------
 Mon Jan 20 00:47:04 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove bogus undefines of suffix and mpi_flavor. suffix is the

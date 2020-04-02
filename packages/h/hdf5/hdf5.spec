@@ -714,12 +714,12 @@ rm -rf %{buildroot}%{_prefix}/share/hdf5_examples
 %fdupes -s %{buildroot}/%{_datadir}
 
 %if %{with hpc}
-%{hpc_write_pkgconfig -n hdf5 -l libhdf5}
-%{hpc_write_pkgconfig -n hdf5_hl -l libhdf5_hl}
-%{hpc_write_pkgconfig -n hdf5_fortran -l libhdf5_fortran}
-%{hpc_write_pkgconfig -n hdf5_hl_fortran -l libhdfhl_fortran}
-%{hpc_write_pkgconfig -n hdf5_cpp -l libhdf5_cpp}
-%{hpc_write_pkgconfig -n hdf5_hl_cpp -l libhdf5_hl_cpp}
+%{hpc_write_pkgconfig -n hdf5 -l hdf5}
+%{hpc_write_pkgconfig -n hdf5_hl -l hdf5_hl}
+%{hpc_write_pkgconfig -n hdf5_fortran -l hdf5_fortran}
+%{hpc_write_pkgconfig -n hdf5_hl_fortran -l hdf5hl_fortran}
+%{hpc_write_pkgconfig -n hdf5_cpp -l hdf5_cpp}
+%{hpc_write_pkgconfig -n hdf5_hl_cpp -l hdf5_hl_cpp}
 
 %hpc_write_modules_files
 #%%Module1.0#####################################################################

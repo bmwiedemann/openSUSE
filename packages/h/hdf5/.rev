@@ -634,4 +634,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>765742</requestid>
   </revision>
+  <revision rev="65" vrev="8">
+    <srcmd5>8127674154fecdb77ef01128202a0e58</srcmd5>
+    <version>1.10.5</version>
+    <time>1585842250</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix library link flags on pkg-config file for HPC builds (boo#1134298). (forwarded request 790801 from eeich)</comment>
+    <requestid>790802</requestid>
+  </revision>
 </revisionlist>
