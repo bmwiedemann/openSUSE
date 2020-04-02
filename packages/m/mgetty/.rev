@@ -276,4 +276,12 @@
     <comment></comment>
     <requestid>779522</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f6f7280fae869a124f4cad9b8034635f</srcmd5>
+    <version>1.2.1</version>
+    <time>1585842173</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed permission handling of faxq-helper. (bsc#1168170)</comment>
+    <requestid>790110</requestid>
+  </revision>
 </revisionlist>
