@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docformatter
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Utility to re-format docstrings per PEP 257
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/myint/docformatter
+URL:            https://github.com/myint/docformatter
 Source:         https://files.pythonhosted.org/packages/source/d/docformatter/docformatter-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
