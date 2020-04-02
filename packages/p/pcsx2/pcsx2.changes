@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 02 12:25:51 UTC 2020 - i@guoyunhe.me
+
+- Update to version 1.5.0~git20200327:
+  * onepad: Update to latest controller database.
+  * gamedb: Remove gamefix patch for Petz - Horsez 2.
+  * Locales: Update Arabic Translations ar_SA Unneeded spaces and symbols changed and removed.
+  * Locales: Update Italian translations it_IT. (#3289)
+  * cheats_ws: Remove R&C NTSC Patch - resolves Vid Comic 1 Boss Hang.
+  * Locales: Update Hungarian Translations hu_HU
+  * gsdx: Bump gsdx version number to 1.2.0.
+  * pcsx2-tas: Adjust TAS code to be properly disabled with macro.
+  * cheats_ws: Update widescreen patches for 1.6 release.
+
+-------------------------------------------------------------------
 Fri Mar 06 22:13:49 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version 1.5.0~git20200229:

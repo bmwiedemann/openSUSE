@@ -71,4 +71,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>785942</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88ddc59f0e056ffb464820964a960ea4</srcmd5>
+    <version>1.5.0~git20200327</version>
+    <time>1585842315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0~git20200327:
+  * onepad: Update to latest controller database.
+  * gamedb: Remove gamefix patch for Petz - Horsez 2.
+  * Locales: Update Arabic Translations ar_SA Unneeded spaces and symbols changed and removed.
+  * Locales: Update Italian translations it_IT. (#3289)
+  * cheats_ws: Remove R&amp;C NTSC Patch - resolves Vid Comic 1 Boss Hang.
+  * Locales: Update Hungarian Translations hu_HU
+  * gsdx: Bump gsdx version number to 1.2.0.
+  * pcsx2-tas: Adjust TAS code to be properly disabled with macro.
+  * cheats_ws: Update widescreen patches for 1.6 release.
+</comment>
+    <requestid>790885</requestid>
+  </revision>
 </revisionlist>
