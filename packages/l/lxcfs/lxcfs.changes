@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXCFS 4.0.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-lts-has-been-released/7031
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-1-lts-has-been-released/7130
+  Related to the LXD 4.0.0 update (boo#1168338).
+  + cgroup2: Support for the new unified cgroup hierarchy
+  + /proc/cpuinfo and cpu output in /proc/stat based on cpu shares
+  + /proc/loadavg virtualization
+  + pidfd supported process tracking
+  * Improved command line options
+  * Compiler based hardening
+  * Minimal compiler based resource management
+
+-------------------------------------------------------------------
 Mon Feb  3 15:02:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
