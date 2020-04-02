@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-terminal
 Source:         https://files.pythonhosted.org/packages/source/s/spyder-terminal/spyder-terminal-%{version}.tar.gz
+Source:         %{name}-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,26 +34,42 @@ BuildRequires:  python-rpm-macros
 Requires:       python3-coloredlogs
 Requires:       python3-pexpect
 Requires:       python3-requests
+Requires:       python3-terminado
 Requires:       python3-tornado
-Requires:       spyder3 >= 3.2.0
-BuildArch:      noarch
+Requires:       spyder >= 4
+# SECTION test requirements
+BuildRequires:  %{python_module coloredlogs}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module terminado}
+BuildRequires:  %{python_module tornado}
+BuildRequires:  spyder >= 4
+BuildRequires:  xdpyinfo
+# /SECTION
 
 %python_subpackages
 
 %description
-Spyder is a scientific python development environment and an
-alternative to IDLE.
+Spyder, the Scientific Python Development Environment, is an
+IDE for researchers, engineers and data analysts.
 
 This package contains the plugin for displaying a virtual terminal
 (OS independent) inside the main Spyder window.
 
-%package -n spyder3-terminal
+%package     -n spyder-terminal
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 Group:          Development/Languages/Python
+Provides:       spyder3-terminal = %{version}-%{release}   
+Obsoletes:      spyder3-terminal < %{version}-%{release}
 
-%description -n spyder3-terminal
-Spyder is a scientific python development environment and an
-alternative to IDLE.
+%description -n spyder-terminal
+Spyder, the Scientific Python Development Environment, is an
+IDE for researchers, engineers and data analysts.
 
 This package contains the plugin for displaying a virtual terminal
 (OS independent) inside the main Spyder window.
@@ -60,13 +77,12 @@ This package contains the plugin for displaying a virtual terminal
 %prep
 %setup -q -n spyder-terminal-%{version}
 
+# fix python call in unit test gh#spyder-ide/spyder-terminal#179
+sed -i "s/python_exec = 'python /python_exec = 'python3 /" spyder_terminal/server/tests/test_server.py
+
 # fix rpmlint non-executable-script
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
-
-rm -r spyder_terminal/server/static/components/xterm.js/.vscode
-rm spyder_terminal/server/static/components/jquery/src/.eslintrc.json
-find . -name ".bower.json" -exec rm -f {} \;
 
 %build
 %python_build
@@ -75,10 +91,22 @@ find . -name ".bower.json" -exec rm -f {} \;
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files -n spyder3-terminal
+%check
+export PYTHONDONTWRITEBYTECODE=1
+# The unittests fail with a seccomp-bpf crash if the sandbox
+# is not disabled on i586
+%ifarch %ix86 
+export QTWEBENGINE_DISABLE_SANDBOX=1
+%endif
+# not in DEV mode gh#spyder-ide/spyder-terminal#180
+skiptests="test_output_redirection"
+%pytest -k "not $skiptests"
+
+%files -n spyder-terminal
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%{python3_sitelib}/*
+%{python3_sitelib}/spyder_terminal
+%{python3_sitelib}/spyder_terminal-%{version}-*.egg-info
 
 %changelog

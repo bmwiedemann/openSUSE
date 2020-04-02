@@ -34,4 +34,17 @@
     <comment></comment>
     <requestid>786500</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7fe6d2f40ab670c724c716c49c578f29</srcmd5>
+    <version>0.3.0</version>
+    <time>1585842176</time>
+    <user>dimstar_suse</user>
+    <comment>- rename package in wake of spyder3 to spyder rename [1]
+- bump requirement to spyder &gt;=4
+- run unittests
+- filter rpmlint warnings about the shipped nodejs components
+
+https://build.opensuse.org/request/show/790068</comment>
+    <requestid>790073</requestid>
+  </revision>
 </revisionlist>
