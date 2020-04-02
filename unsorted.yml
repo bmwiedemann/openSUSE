@@ -36,6 +36,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -1054,6 +1055,7 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
+  - bbswitch-kmp-default 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -2473,6 +2475,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -6838,6 +6841,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -12073,6 +12077,7 @@ unsorted:
   - libtiger-devel 
   - libtiger5 
   - libtiled1 
+  - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
   - libtimidity2-32bit: [x86_64] 
@@ -15486,11 +15491,14 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18358,6 +18366,7 @@ unsorted:
   - python2-PyInstaller 
   - python2-PyJWT 
   - python2-PyKMIP 
+  - python2-PyMeeus 
   - python2-PyMeta3 
   - python2-PyMsgBox 
   - python2-PyMySQL 
@@ -18903,6 +18912,7 @@ unsorted:
   - python2-d2to1 
   - python2-daemonize 
   - python2-daiquiri 
+  - python2-dash-renderer 
   - python2-datadiff 
   - python2-dateparser 
   - python2-datrie 
@@ -19124,6 +19134,7 @@ unsorted:
   - python2-geventhttpclient 
   - python2-ggplot 
   - python2-girder-client 
+  - python2-git-pw 
   - python2-git-url-parse 
   - python2-gitdb2 
   - python2-github3.py 
@@ -19411,7 +19422,6 @@ unsorted:
   - python2-metaextract 
   - python2-mhash 
   - python2-microversion_parse 
-  - python2-minio 
   - python2-miniupnpc 
   - python2-misaka 
   - python2-mistune 
@@ -19523,7 +19533,6 @@ unsorted:
   - python2-ordered-namespace 
   - python2-ordered-set 
   - python2-orderedmultidict 
-  - python2-os-client-config 
   - python2-osc-tiny 
   - python2-oscrypto 
   - python2-oslosphinx 
@@ -19580,6 +19589,7 @@ unsorted:
   - python2-pep517 
   - python2-pep8-naming 
   - python2-peppercorn 
+  - python2-percy 
   - python2-persistent 
   - python2-persistent-devel 
   - python2-petact 
@@ -20555,6 +20565,7 @@ unsorted:
   - python3-PyJWT: [i586] 
   - python3-PyKMIP 
   - python3-PyLaTeX 
+  - python3-PyMeeus 
   - python3-PyMeta3 
   - python3-PyMsgBox 
   - python3-PyMuPDF 
@@ -21168,6 +21179,10 @@ unsorted:
   - python3-daemonize 
   - python3-daiquiri 
   - python3-dash 
+  - python3-dash-core-components 
+  - python3-dash-html-components 
+  - python3-dash-renderer 
+  - python3-dash-table 
   - python3-dask 
   - python3-dask-all 
   - python3-dask-array 
@@ -21495,6 +21510,7 @@ unsorted:
   - python3-gexiv2 
   - python3-ggplot 
   - python3-girder-client 
+  - python3-git-pw 
   - python3-git-url-parse 
   - python3-gitdb 
   - python3-gitdb2 
@@ -21912,6 +21928,7 @@ unsorted:
   - python3-moban 
   - python3-mock 
   - python3-mocket 
+  - python3-mockito 
   - python3-mockldap 
   - python3-modernize 
   - python3-mohawk 
@@ -21919,6 +21936,7 @@ unsorted:
   - python3-moksha-hub 
   - python3-monascaclient 
   - python3-mongoengine 
+  - python3-monitoring-plugins-http_json 
   - python3-monotonic 
   - python3-more-itertools 
   - python3-morecvutils 
@@ -22164,6 +22182,7 @@ unsorted:
   - python3-pep517 
   - python3-pep8-naming 
   - python3-peppercorn 
+  - python3-percy 
   - python3-perfume-bench 
   - python3-persistent 
   - python3-persistent-devel 
@@ -23613,6 +23632,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -25287,6 +25307,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
@@ -32867,6 +32888,7 @@ unsorted:
   - timeshift 
   - timeshift-lang 
   - timewarrior 
+  - timezonemap-devel 
   - timidity 
   - tinc 
   - tini 
@@ -33303,6 +33325,7 @@ unsorted:
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
+  - typelib-1_0-TimezoneMap-1_0 
   - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-Uhm-0_0 
@@ -33875,6 +33898,7 @@ unsorted:
   - winrs 
   - wipe 
   - wireguard 
+  - wireguard-kmp-default 
   - wireguard-kmp-pae: [i586] 
   - wireguard-tools 
   - wireshark-devel 

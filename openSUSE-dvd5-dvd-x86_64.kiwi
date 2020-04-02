@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200331" schemaversion="4.1">
+<image name="OBS__openSUSE___20200401" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200331</productvar>
+      <productvar name="VERSION">20200401</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200331,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200401,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200331/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200401/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -220,7 +220,6 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
-      <repopackage name="bbswitch-kmp-default"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -339,7 +338,6 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -437,7 +435,6 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
@@ -1394,7 +1391,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3570,9 +3567,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
@@ -4513,7 +4507,6 @@
       <repopackage name="rtkit"/>
       <repopackage name="rtl-sdr"/>
       <repopackage name="rtl-sdr-udev"/>
-      <repopackage name="rtl8812au-kmp-default"/>
       <repopackage name="rtl_433"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
@@ -5128,7 +5121,6 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
-      <repopackage name="sysdig-kmp-default"/>
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
@@ -5425,7 +5417,6 @@
       <repopackage name="wiggle"/>
       <repopackage name="WindowMaker"/>
       <repopackage name="WindowMaker-themes"/>
-      <repopackage name="wireguard-kmp-default"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
       <repopackage name="wireshark"/>
