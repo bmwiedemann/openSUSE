@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Apr  1 19:03:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.10
+  AWOL CW id button
+    * Fixed "hidden" state of CW ID button
+  Macros
+   * Restore execution code for <TUNE
+   * Retain delayed execution code for <!TUNE
+   * Create new macro <@TUNE
+   * All three versions allow tune interval to be spec'd
+     in fractional seconds, i.e. 2.5, 5.1 10.0 15
+   * <TUNE:nn.nn> used alone returns to receive
+   * <TUNE:nn.nn> followed by text remains in transmit
+     to complete the transmission.
+   * Examples:
+     + <TUNE:10.0>
+     + <TUNE:5>
+       <TX>tune test <!TUNE:1.5> de w1hkj k
+       <RX>
+       <@TUNE:2.5>
+   * Remove text size restriction on CPS test report.
+  RigCat config
+    * restore missing control labels
+  CW 5 wpm
+    * 5 wpm farnsworth speed demands larger OUTBUFSIZE
+      - increase output buffer to 65536
+  audio alert
+    * fix seg fault
+      - test for existence of audio_alert instance
+  analysis mode
+    * changes to data file output
+  flrig auto off
+    * add ability to shutdown flrig/xcvr during fldigi shutdown
+  maclogger
+    * correct interpretation of UDP frequency string
+    * update transceiver frequency based on UDP frequency
+  mkappbundle
+    * modify 'version' to include patch level
+  nanoIO
+    * Correct TTY interface code
+  start/stop transitions
+    * add code to soften the start/stop transitions for all modems
+  CW DTR-RTS
+    * generate CW on selected DTR/RTS signal line
+    * CW DTR/RTS signals generated concurrent with AF counterparts
+      and within a separate thread.
+  Olivia 2 tones
+    * correct trailing edge cutoff of postamble tones
+  Xmlrpc Xcvr
+    * enable QSY when Xmlrpc client xcvr is connected
+  mp3
+    * simplify mp3 conversions
+      - test for file access using fopen
+      - use linear sample rate converter
+  contestia cr
+    * correct suppression of <CR> display
+  serial port
+    * insure that DTR and RTS are always disabled when closing port
+  Check Version
+    * correct version check logic
+
+-------------------------------------------------------------------
 Sat Jan 18 20:40:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.09
