@@ -28,6 +28,7 @@ Requires:       fio
 Requires:       gawk
 Requires:       gcc
 Requires:       make
+Recommends:     blktrace
 Recommends:     device-mapper
 Recommends:     e2fsprogs
 Recommends:     multipath-tools

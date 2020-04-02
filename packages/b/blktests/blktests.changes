@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 10:20:32 UTC 2020 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Add blktrace to recommended as some tests require it
+
+-------------------------------------------------------------------
 Wed Mar 25 13:20:26 UTC 2020 - pcervinka@suse.com
 
 - Update to version 20200307.cd11d00:
