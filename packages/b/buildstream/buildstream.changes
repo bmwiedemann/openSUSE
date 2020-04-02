@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  1 15:27:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2:
+  + Support for python 3.8.
+  + Fix a stacktrace with a hang we can experience when we CTRL-C a
+    job twice.
+  + Workaround some servers which do not honor the 'If-None-Match'
+    HTTP header and avoid downloading files redundantly in these
+    cases.
+  + Allow specifying absolute paths in overlap-whitelist.
+  + Support systems with fuse3 (avoid passing unsupported argument
+    to fusermount3).
+
+-------------------------------------------------------------------
 Tue Sep  3 11:56:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.1:

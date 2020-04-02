@@ -1,7 +1,7 @@
 #
 # spec file for package buildstream
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define real_name BuildStream
 
 Name:           buildstream
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later

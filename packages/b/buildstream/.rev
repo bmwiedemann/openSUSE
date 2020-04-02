@@ -122,4 +122,12 @@
     <comment>New stable release</comment>
     <requestid>727999</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e87ffb51363c350c2510d04d1055149</srcmd5>
+    <version>1.4.2</version>
+    <time>1585842210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790719</requestid>
+  </revision>
 </revisionlist>
