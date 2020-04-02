@@ -789,4 +789,24 @@
     <comment></comment>
     <requestid>769648</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>5825c5d1354257409f051cb1c1dc09ba</srcmd5>
+    <version>4.0.0</version>
+    <time>1585842216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXC 4.0.0. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxc-4-0-lts-has-been-released/7182
+  Related to the LXD 4.0.0 update (boo#1168338).
+  + cgroups: Full cgroup2 support
+  + cgroups: Freezer support in CGroup2
+  + cgroups: eBPF device controller support in CGroup2
+  + AppArmor: Deny access to /proc/acpi/**
+  + config: Add lxc.autodev.tmpfs.size configuration key
+  + config: Add lxc.selinux.context.keyring key
+  + config: Add lxc.keyring.session
+  + seccomp: Add s390 support
+  * network: Improved network device creation and removal
+  + network: Allow moving wireless devices</comment>
+    <requestid>790733</requestid>
+  </revision>
 </revisionlist>

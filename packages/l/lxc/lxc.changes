@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXC 4.0.0. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxc-4-0-lts-has-been-released/7182
+  Related to the LXD 4.0.0 update (boo#1168338).
+  + cgroups: Full cgroup2 support
+  + cgroups: Freezer support in CGroup2
+  + cgroups: eBPF device controller support in CGroup2
+  + AppArmor: Deny access to /proc/acpi/**
+  + config: Add lxc.autodev.tmpfs.size configuration key
+  + config: Add lxc.selinux.context.keyring key
+  + config: Add lxc.keyring.session
+  + seccomp: Add s390 support
+  * network: Improved network device creation and removal
+  + network: Allow moving wireless devices
+- Add backport of patch to fix build:
+  + 0001-autotools-don-t-install-run-coccinelle.sh.patch
+- Remove upstreamed patches:
+  - lxc-3.2.1-cgroups-init-cpuset-properly.patch
+  - 0001-tree-wide-initialize-all-auto-cleanup-variables.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 14:54:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
