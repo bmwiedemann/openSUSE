@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 02 08:29:12 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1585815597.24b98a95a:
+  * docs: Mention the importance of synchronized clocks for remote worker machines
+  * docs: Update "Run workers" to not only mention "virtual machines" as backend
+  * The job result is a string and not a number
+  * Turn warning about missing assets when restarting jobs into error
+  * Harmonize License copyright format
+  * Validate parameters passed to job group API routes
+  * t: Fix sporadic failure in 10-tests_overview.t
+  * worker: Test ignoring known images/files
+  * Improve API test for updating status
+  * Simplify API test for updating status
+  * Prevent uploading non-screenshot results twice
+  * Improve logging of result size accounting
+  * Properly consider configured repo in ObsRsync check of dirty status
+
+-------------------------------------------------------------------
 Tue Mar 31 00:29:20 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1585581139.1203c5b7b:
