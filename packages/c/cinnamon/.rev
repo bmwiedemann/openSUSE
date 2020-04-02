@@ -311,4 +311,19 @@
     <comment></comment>
     <requestid>785769</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9f0cd9ae27d4ec75c1b2e39ab15f7331</srcmd5>
+    <version>4.4.8</version>
+    <time>1585842287</time>
+    <user>dimstar_suse</user>
+    <comment>- fix an error in cinnamon-settings-4.4.8-tinycss2.patch,
+  now &quot;cinnamon-settings -&gt; themes&quot; can start (boo#1166981)
+- add cinnamon-4.4.8-python3-platform.linux_distribution.patch
+  * python3.7 deprecates &quot;platform.linux_distribution&quot;, use
+    &quot;distro.linux_distribution&quot; instead
+- add cinnamon-4.4.8-python3-is-with-literal.patch
+  * fix 'using &quot;is&quot; with a literal warning
+</comment>
+    <requestid>790821</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  2 05:05:02 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fix an error in cinnamon-settings-4.4.8-tinycss2.patch,
+  now "cinnamon-settings -> themes" can start (boo#1166981)
+- add cinnamon-4.4.8-python3-platform.linux_distribution.patch
+  * python3.7 deprecates "platform.linux_distribution", use
+    "distro.linux_distribution" instead
+
+-------------------------------------------------------------------
+Thu Apr  2 04:36:48 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add cinnamon-4.4.8-python3-is-with-literal.patch
+  * fix 'using "is" with a literal warning
+
+-------------------------------------------------------------------
 Mon Mar 16 15:31:14 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 4.4.8

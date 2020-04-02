@@ -54,7 +54,7 @@ index 5b2a66418c..555cad6841 100644
              self._contents = content_bytes.decode()
 -            self.stylesheet = self.parser.parse_stylesheet(self._contents)
 +            stylesheet = tinycss2.parse_stylesheet(self._contents)
-+            for rs in stylesheet[0]:
++            for rs in stylesheet:
 +                if isinstance(rs, tinycss2.ast.ParseError):
 +                    continue
 +                rules.append(rs)

@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,10 @@ Patch7:         %{name}-fallback-icewm.patch
 Patch8:         %{name}-fix-typelib-false-positive.patch
 # PATCH-FIX-UPSTREAM cinnamon-settings-4.4.8-tinycss2.patch marguerite@opensuse.org - port deprecated tinycss to tinycss2
 Patch9:         %{name}-settings-4.4.8-tinycss2.patch
+# PATCH-FIX-UPSTREAM cinnamon-4.4.8-python3-is-with-literal.patch
+Patch10:        %{name}-4.4.8-python3-is-with-literal.patch
+# PATCH-FIX-UPSTREAM cinnamon-4.4.8-python3-platform.linux_distribution.patch
+Patch11:        %{name}-4.4.8-python3-platform.linux_distribution.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -92,6 +96,7 @@ Requires:       pkgconfig
 Requires:       polkit-gnome
 Requires:       python3-Pillow
 Requires:       python3-cairo
+Requires:       python3-distro
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
@@ -189,6 +194,8 @@ This package contains the code documentation for various Cinnamon components.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \
