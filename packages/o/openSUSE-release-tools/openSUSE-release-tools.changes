@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:28:21 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200325.77a14833:
+  * Wipe all multibuild flavors for delete requests
+
+-------------------------------------------------------------------
+Tue Mar 24 08:33:11 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200324.20869549:
+  * Allow to disable the check of delete requests per config
+
+-------------------------------------------------------------------
+Fri Mar 20 16:06:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200320.2e3dc21c:
+  * Fix check_source for repository specific package names
+
+-------------------------------------------------------------------
+Thu Mar 19 16:17:27 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200319.cdc271c2:
+  * Support 'required' field for packages
+
+-------------------------------------------------------------------
+Thu Mar 19 06:34:04 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200319.37498292:
+  * Work around OBS issue 8994
+
+-------------------------------------------------------------------
+Wed Mar 18 13:04:40 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200318.74ecff5c:
+  * Use the new API from openqa to sync the right repositories
+
+-------------------------------------------------------------------
+Tue Mar 17 06:38:30 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200317.91ee0f41:
+  * Take the interesting repos from the output for now
+
+-------------------------------------------------------------------
+Mon Mar 16 14:53:54 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200316.683bee4a:
+  * Sync script for obs_rsync
+
+-------------------------------------------------------------------
+Mon Mar 16 10:24:03 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200316.08c8cd5d:
+  * No longer trigger obsrsync directly from rabbitmq messages
+
+-------------------------------------------------------------------
+Mon Mar 16 07:33:00 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200316.ed7d3ce2:
+  * Adopt fixture to changes in obs' xml output
+  * Split the work done in rabbit-openqa into smaller chunks
+
+-------------------------------------------------------------------
+Tue Mar 10 11:12:08 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200310.d98dd909:
+  * Switch metrics to use python3
+
+-------------------------------------------------------------------
+Tue Mar 10 09:50:19 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200310.e25d3bfb:
+  * Add error message in case upload fails
+
+-------------------------------------------------------------------
 Fri Mar 06 12:27:00 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200306.ef1064e7:

@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20200306.ef1064e7
+Version:        20200325.77a14833
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -166,11 +166,11 @@ Requires(pre):  shadow
 Suggests:       grafana
 %if 0%{?suse_version} > 1500
 Requires:       influxdb
-Requires:       python-influxdb
+Requires:       python3-influxdb
 Requires:       telegraf
 %else
 Suggests:       influxdb
-Suggests:       python-influxdb
+Suggests:       python3-influxdb
 Suggests:       telegraf
 %endif
 
