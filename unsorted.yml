@@ -7502,7 +7502,7 @@ unsorted:
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
-  - libQMatrixClient0_5_1 
+  - libQMatrixClient0_5_3 
   - libQgpsmm25 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
@@ -7749,6 +7749,7 @@ unsorted:
   - libVFlib3-5 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
+  - libWildMidi2 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
@@ -13004,6 +13005,7 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
+  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
@@ -14770,6 +14772,7 @@ unsorted:
   - nfsidmap-devel 
   - nfswatch 
   - nftables-devel 
+  - nftlb 
   - nghttp2 
   - nginx 
   - nginx-source 
@@ -18402,7 +18405,6 @@ unsorted:
   - python2-SPARQLWrapper 
   - python2-SQLAlchemy 
   - python2-SQLAlchemy-Utils 
-  - python2-Scrapy 
   - python2-SecretStorage 
   - python2-Send2Trash 
   - python2-Shapely 
@@ -18935,7 +18937,6 @@ unsorted:
   - python2-derpconf 
   - python2-devpi-client 
   - python2-devpi-common 
-  - python2-devpi-server 
   - python2-dfwinreg 
   - python2-dialite 
   - python2-dicttoxml 
@@ -22856,6 +22857,7 @@ unsorted:
   - python3-splinter 
   - python3-spotipy 
   - python3-spyder-kernels 
+  - python3-spyder-unittest 
   - python3-sqlalchemy-migrate 
   - python3-sqlitedict 
   - python3-sqlparse 
@@ -25057,20 +25059,22 @@ unsorted:
   - splinter-devel 
   - spotify-easyrpm 
   - spread-sheet-widget-devel 
+  - spyder 
+  - spyder-dicom 
+  - spyder-hdf5 
+  - spyder-lang 
+  - spyder-line-profiler 
+  - spyder-memory-profiler 
   - spyder-notebook 
-  - spyder-unittest 
+  - spyder-terminal 
   - spyder3 
   - spyder3-breakpoints 
   - spyder3-dicom 
   - spyder3-hdf5 
   - spyder3-lang 
-  - spyder3-line-profiler 
-  - spyder3-memory-profiler 
   - spyder3-notebook 
   - spyder3-profiler 
   - spyder3-pylint 
-  - spyder3-terminal 
-  - spyder3-unittest 
   - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
@@ -33880,6 +33884,8 @@ unsorted:
   - widelands-data 
   - widelands-debug 
   - wiiuse-devel 
+  - wildmidi 
+  - wildmidi-devel 
   - wimlib-devel 
   - wimtools 
   - wine 
