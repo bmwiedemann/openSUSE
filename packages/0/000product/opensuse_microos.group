@@ -21,8 +21,8 @@
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -38,7 +38,7 @@
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libbz2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="libbz2-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="libcom_err2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -61,7 +61,7 @@
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="liblz4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
@@ -87,8 +87,8 @@
     <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libz1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="libz1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
