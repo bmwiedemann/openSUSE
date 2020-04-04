@@ -29,7 +29,7 @@
 %else
 %define sysefibasedir  %{_datadir}/efi
 %define sysefidir      %{sysefibasedir}/%{_target_cpu}
-%if "%{grubplatform}" == "x86_64-efi" && 0%{?sle_version} < 160000
+%if "%{grubplatform}" == "x86_64-efi" && 0%{?suse_version} < 1600
 # provide compatibility sym-link for residual kiwi, etc.
 %define shim_lib64_share_compat 1
 %endif

@@ -14,6 +14,7 @@ sysconfdir="/etc"
 libdir="/usr/lib64"	# Beware, this is arch dependent!
 datadir="/usr/share"
 source_dir="${datadir}/efi/${arch}"
+efibootmgr="/usr/sbin/efibootmgr"
 grub_probe="/usr/sbin/grub2-probe"
 grub_mkrelpath="/usr/bin/grub2-mkrelpath"
 grub_install="/usr/sbin/grub2-install"
@@ -252,9 +253,9 @@ if test "$clean" = "yes"; then
     fi
     if test "$no_nvram" = no && test -n "$bootloader_id"; then
         # Delete old entries from the same distributor.
-        for bootnum in `efibootmgr | grep '^Boot[0-9]' | \
+        for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
             fgrep -i " $bootloader_id" | cut -b5-8`; do
-            efibootmgr -b "$bootnum" -B
+            $efibootmgr -b "$bootnum" -B
         done
 	fi
 	exit 0
@@ -335,9 +336,9 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
     modprobe -q efivars 2>/dev/null || true
 
     # Delete old entries from the same distributor.
-    for bootnum in `efibootmgr | grep '^Boot[0-9]' | \
+    for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
         fgrep -i " $bootloader_id" | cut -b5-8`; do
-        efibootmgr -b "$bootnum" -B
+        $efibootmgr -b "$bootnum" -B
     done
 
     efidir_drive="$("$grub_probe" --target=drive --device-map= "$efidir")"
@@ -359,12 +360,12 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
             efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
             efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
             efidir_d=${mddev#/dev/}
-            efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+            $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
               -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
         done
     else
         efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
-        efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+        $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
     	-L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
     fi
 fi
