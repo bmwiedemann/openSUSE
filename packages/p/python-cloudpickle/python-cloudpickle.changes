@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:59:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.3.0
+  * mostly bugfix release
+  * Add support for out-of-band pickling (Python 3.8 and later).
+
+-------------------------------------------------------------------
 Mon Mar 16 10:25:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
