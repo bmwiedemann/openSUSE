@@ -1,22 +1,19 @@
---- Makefile
-+++ Makefile	2020/02/18 10:58:49
-@@ -1,8 +1,8 @@
+--- Makefile.old	2020-03-30 15:08:59.872948876 +0200
++++ Makefile	2020-03-30 15:10:08.284903853 +0200
+@@ -1,6 +1,6 @@
  NAME    := k9s
  PACKAGE := github.com/derailed/$(NAME)
 -GIT     := $(shell git rev-parse --short HEAD)
 +#GIT     := $(shell git rev-parse --short HEAD)
- DATE    := $(shell date +%FT%T%Z)
--VERSION  ?= v0.14.0
-+VERSION  ?= v0.15.2
- IMG_NAME := derailed/k9s
- IMAGE    := ${IMG_NAME}:${VERSION}
- 
-@@ -17,8 +17,8 @@
+ SOURCE_DATE_EPOCH ?= $(shell date +%s)
+ DATE    := $(shell date -u -d @${SOURCE_DATE_EPOCH} +%FT%T%Z)
+ VERSION  ?= v0.17.6
+@@ -18,8 +18,8 @@
  	@go tool cover --html=cov.out
  
  build:     ## Builds the CLI
 -	@go build \
--	-ldflags "-w -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
+-	-ldflags "-w -s -X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
 +	@go build  -mod vendor -buildmode=pie \
 +	-ldflags "-X ${PACKAGE}/cmd.version=${VERSION} -X ${PACKAGE}/cmd.commit=${GIT} -X ${PACKAGE}/cmd.date=${DATE}" \
  	-a -tags netgo -o execs/${NAME} main.go
