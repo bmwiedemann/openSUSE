@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:17:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:39 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * Fix build with Qt 5.15
+  * Fix Defaults not being set properly in Breeze window decoration settings for 'Draw a circle around close button'
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3
