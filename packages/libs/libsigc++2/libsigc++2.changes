@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 25 19:45:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.3:
+  + Add Meson build, alongside the existing Autotools build.
+  + Improve MSVC builds on Windows.
+  + meson.build: Check if .git is a directory or file.
+  + docs/reference/meson.build: Check if perl is found.
+  + README: Describe building with Meson and Autotools.
+  + Tests: Make test_track_obj.cc compile with clang++.
+
+-------------------------------------------------------------------
 Sat Sep  7 17:58:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop conditional libsigc++-std-c11.patch: No longer needed for
