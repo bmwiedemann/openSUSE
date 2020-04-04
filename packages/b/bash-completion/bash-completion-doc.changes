@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 28 15:01:27 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix completion excluding directories (boo#1167952).
+  * bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 09:34:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to also complete qdbus-qt5:

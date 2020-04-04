@@ -54,6 +54,8 @@ Patch9:         rm-completion-smart-boo958462.patch
 Patch10:        backticks-bsc963140.patch
 # PATCH-FIX-SUSE boo#1090515
 Patch12:        bash-completion-2.7-unRAR-remove.patch
+# PATCH-FIX-SUSE boo#1167952
+Patch13:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
 %if %build_doc
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
@@ -108,6 +110,7 @@ package bash-completion.
 %patch9 -b .p9
 %patch10 -b .p10 -p1
 %patch12 -b .p12 -p0
+%patch13 -b .p13 -p1
 
 %build
 %configure
