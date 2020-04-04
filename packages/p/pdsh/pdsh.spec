@@ -21,9 +21,20 @@
 
 %if "%slurm_version" == ""
 ExclusiveArch:  do_not_build
-%endif
+%else
 %if "%slurm_version" == "base"
 %define slurm_version %{nil}
+%else
+%define slurm_mod_only 1
+%define _slurm_version _%{slurm_version}
+%endif
+%endif
+
+%if 0%{?suse_version} > 1315 || 0%{?sle_version} > 120200
+%define license_string GPL-2.0-or-later
+%else
+%define legacy 1
+%define license_string GPL-2.0+
 %endif
 
 %if 0%{!?sle_version:1} || 0%{?sle_version} >= 120300 || (0%{!?is_opensuse:1} && 0%{?sle_version} >= 120200)
@@ -37,11 +48,12 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if 0%{?have_slurm} && "x%{?slurm_version}" != "x"
-%define _slurm_version _%{slurm_version}
+%if !0%{?have_slurm} && 0%{?slurm_mod_only}
+ExclusiveArch:  do_not_build
 %endif
 
-Name:           pdsh
+%define pname pdsh
+Name:           %{pname}%{?_slurm_version:_slurm%{?_slurm_version}}
 BuildRequires:  dejagnu
 BuildRequires:  openssh
 BuildRequires:  readline-devel
@@ -61,35 +73,28 @@ Version:        2.34
 Release:        0
 Summary:        Parallel remote shell program
 # git clone of https://code.google.com/p/pdsh/
-License:        GPL-2.0-or-later
+License:        %{license_string}
 Group:          Productivity/Clustering/Computing
-Source:         https://github.com/chaos/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Prereq: 
-# Set this to 1 to build with genders support and framework for
-# running Elan jobs.
-%define chaos 0
+Source:         https://github.com/chaos/%{pname}/releases/download/%{pname}-%{version}/%{pname}-%{version}.tar.gz
 
 %description
 Pdsh is a multithreaded remote shell client which executes commands on
 multiple remote hosts in parallel.  Pdsh can use several different
 remote shell services, including Kerberos IV and ssh.
 
-%if 0%{?have_slurm}
-%package slurm%{?_slurm_version}
+%package -n     %{pname}-slurm%{?_slurm_version}
 Summary:        SLURM plugin for pdsh
 Group:          Productivity/Clustering/Computing
-Requires:       pdsh = %{version}
+%{?slurm_mod_only:BuildRequires:  %pname}
+Requires:       %pname = %{version}
 Enhances:       slurm%{?_slurm_version}
 %if 0%{?_slurm_version:1}
-Provides:       %{name}-slurm = %{version}
-Conflicts:      %{name}-slurm
+Provides:       %{pname}-slurm = %{version}
 %endif
 
-%description slurm%{?_slurm_version}
+%description -n %{pname}-slurm%{?_slurm_version}
 Plugin for pdsh to determine nodes to run on by SLURM jobs or partitions.
-%endif
 
-%if 0%{?have_genders}
 %package genders
 Summary:        Genders plugin for pdsh
 Group:          Productivity/Clustering/Computing
@@ -100,7 +105,6 @@ Conflicts:      pdsh-machines
 
 %description genders
 Plugin for pdsh to determine nodes to run on by genders attributes.
-%endif
 
 %package machines
 Summary:        Machines plugin for pdsh
@@ -132,11 +136,14 @@ Conflicts:      pdsh-dshgroup
 Plugin for pdsh to determine nodes to run on from netgroups.
 
 %prep
-%setup -q
+%setup -q -n %{pname}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
+%if 0%{?slurm_mod_only}
+        --without-exec \
+%else    
 	--with-readline \
 	--with-machines=%{_sysconfdir}/pdsh/machines \
 	--with-ssh \
@@ -144,9 +151,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	--with-netgroup \
         --with-rcmd-rank-list="ssh %{?have_munge:mrsh} krb4 qsh mqsh exec xcpu" \
         --with-pam \
-        --with-exec \
         %{?have_genders:--with-genders} \
         %{?have_munge:--with-mrsh} \
+%endif	
         %{?have_slurm:--with-slurm} \
 	--without-rsh \
 	--disable-static
@@ -157,16 +164,20 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %make_build
 
 %install
+%{?slurm_mod_only:cd src/modules}
 %make_install
 rm -f %buildroot/%{_libdir}/pdsh/*.la
+%{?legacy:mkdir -p %{buildroot}/%{_datarootdir}/licenses}
 
+%if !0%{?slurm_mod_only}
 %files
 %doc README DISCLAIMER.* README.* NEWS TODO
+%{?legacy:%dir %{_datarootdir}/licenses}
 %license COPYING
 %attr(755, root, root) %{_bindir}/pdsh
 %attr(755, root, root) %{_bindir}/pdcp 
-%{_bindir}//dshbak
-%{_bindir}//rpdcp
+%{_bindir}/dshbak
+%{_bindir}/rpdcp
 %{_mandir}/man1/pdsh.1.gz
 %{_mandir}/man1/pdcp.1.gz
 %{_mandir}/man1/dshbak.1.gz
@@ -177,11 +188,6 @@ rm -f %buildroot/%{_libdir}/pdsh/*.la
 %exclude %{_libdir}/pdsh/machines.so
 %exclude %{_libdir}/pdsh/dshgroup.so
 %exclude %{_libdir}/pdsh/netgroup.so
-
-%if 0%{?have_slurm}
-%files slurm%{?_slurm_version}
-%{_libdir}/pdsh/slurm.so
-%endif
 
 %if 0%{?have_genders}
 %files genders
@@ -196,5 +202,11 @@ rm -f %buildroot/%{_libdir}/pdsh/*.la
 
 %files netgroup
 %{_libdir}/pdsh/netgroup.so
+%endif # if slurm_mod_only
+
+%if 0%{?have_slurm}
+%files -n %{pname}-slurm%{?_slurm_version}
+%{_libdir}/pdsh/slurm.so
+%endif
 
 %changelog

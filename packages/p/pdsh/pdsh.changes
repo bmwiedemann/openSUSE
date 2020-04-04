@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 17:27:24 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add better legacy support.
+- Make sure to not ship duplicate files with builds for multiple
+  SLURM versions.
+
+-------------------------------------------------------------------
 Fri Mar 27 10:43:08 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Define %%make_build for all products that do have it defined.
