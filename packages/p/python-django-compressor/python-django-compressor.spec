@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define mod_name django_compressor
+%define skip_python2 1
 Name:           python-django-compressor
 Version:        2.4
 Release:        0
@@ -27,13 +28,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/django-compressor/django-compressor
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0.6}
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module calmjs}
 BuildRequires:  %{python_module csscompressor}
 BuildRequires:  %{python_module django-appconf >= 1.0}
 BuildRequires:  %{python_module django-sekizai >= 0.9.0}
+BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module rcssmin >= 1.0.6}
 BuildRequires:  %{python_module rjsmin >= 1.1.0}
@@ -41,7 +44,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module slimit}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Requires:       python-Jinja2
 Requires:       python-beautifulsoup4
 Requires:       python-csscompressor
@@ -73,7 +76,7 @@ template tag.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=compressor.test_settings compressor --pythonpath=`pwd`
+%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=compressor.test_settings compressor --pythonpath=`pwd` -v2
 
 %files %{python_files}
 %license LICENSE
