@@ -2773,4 +2773,12 @@
   + adjust syntax in a couple of files using the NCURSES_API symbol.</comment>
     <requestid>782927</requestid>
   </revision>
+  <revision rev="169" vrev="4">
+    <srcmd5>925955340dfd1ac7f5f78110730d3e66</srcmd5>
+    <version>6.2</version>
+    <time>1585994626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>789684</requestid>
+  </revision>
 </revisionlist>

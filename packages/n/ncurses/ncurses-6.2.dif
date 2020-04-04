@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5320,12 +5320,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5321,12 +5321,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5335,7 +5338,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5336,7 +5339,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5375,7 +5378,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5376,7 +5379,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5384,23 +5387,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5385,23 +5388,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5409,7 +5412,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5410,7 +5413,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5419,18 +5422,18 @@ CF_EOF
+@@ -5420,18 +5423,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5450,9 +5453,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5451,9 +5454,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5472,6 +5475,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5473,6 +5476,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -160,7 +160,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -14103,12 +14103,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14104,12 +14104,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -178,7 +178,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -14118,7 +14121,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14119,7 +14122,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -187,7 +187,7 @@
  CF_EOF
  fi
  
-@@ -14158,7 +14161,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14159,7 +14162,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,7 +196,7 @@
  CF_EOF
  fi
  
-@@ -14167,23 +14170,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14168,23 +14171,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -226,7 +226,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -14192,7 +14195,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14193,7 +14196,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -235,7 +235,7 @@
  							then
  								continue
  							fi
-@@ -14202,18 +14205,18 @@ CF_EOF
+@@ -14203,18 +14206,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -257,7 +257,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14233,9 +14236,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14234,9 +14237,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -270,7 +270,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -14255,6 +14258,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14256,6 +14259,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -278,7 +278,7 @@
  	;;
  esac
  done
-@@ -25433,6 +25437,7 @@ if test "$with_termlib" != no ; then
+@@ -25443,6 +25447,7 @@ if test "$with_termlib" != no ; then
  		TINFO_LDFLAGS="-L${LIB_DIR}"
  		SHLIB_LIST="$SHLIB_LIST -l${TINFO_LIB_SUFFIX}"
  	fi

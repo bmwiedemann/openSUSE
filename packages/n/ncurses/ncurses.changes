@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:19:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200321
+  + improve configure-checks to reduce warnings about unused variables.
+  + improve description of error-returns in waddch and waddnstr manual
+    pages (prompted by patch by Benno Schulenberg).
+  + add test/move_field.c to demonstrate move_field(), and a stub for
+    a corresponding demo of dup_field().
+
+-------------------------------------------------------------------
+Mon Mar 16 09:21:16 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200314
+  + add history note to curs_scanw.3x for <stdarg.h> and <varargs.h>
+  + add history note to curs_printw.3x for <stdarg.h> and <varargs.h>
+  + add portability note to ncurses.3x regarding <stdarg.h>
+
+-------------------------------------------------------------------
 Mon Mar  9 09:16:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200308
