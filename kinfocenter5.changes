@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * only add devices to the smb mount model that are network shares
+  * skip over supposed network shares that aren't
+  * Be more accurate in reporting the x86 CPU features solid detects
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3
