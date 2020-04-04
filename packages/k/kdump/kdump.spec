@@ -67,6 +67,7 @@ Patch28:        %{name}-powerpc-no-reload-on-CPU-removal.patch
 Patch29:        %{name}-prefer-by-path-and-device-mapper.patch
 Patch30:        %{name}-calibrate-Update-values.patch
 Patch31:        %{name}-activate-udev-rules-late-during-boot.patch
+Patch32:        %{name}-make-sure-that-the-udev-runtime-directory-exists.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -156,6 +157,7 @@ after a crash dump has occured.
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 
 %build
 export CFLAGS="%{optflags}"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:40:15 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-make-sure-that-the-udev-runtime-directory-exists.patch:
+  Make sure that the udev runtime directory exists (bsc#1164713).
+
+-------------------------------------------------------------------
 Mon Jan 27 16:35:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - kdump-activate-udev-rules-late-during-boot.patch: Activate
