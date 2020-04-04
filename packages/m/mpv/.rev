@@ -784,4 +784,14 @@
 - Remove smbclient BR, samba support is now provided via ffmpeg</comment>
     <requestid>782543</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ebfb6b27530970a95402ecb8938a48ff</srcmd5>
+    <version>0.32.0+git.20200402T120653.5824ac7d36</version>
+    <time>1585995690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20200402T120653.5824ac7d36:
+  * See https://github.com/mpv-player/mpv/compare/28ea1ed296..5824ac7d36
+    for the complete changelog.</comment>
+    <requestid>790924</requestid>
+  </revision>
 </revisionlist>

@@ -2,12 +2,12 @@ Index: mpv/common/av_log.c
 ===================================================================
 --- mpv.orig/common/av_log.c
 +++ mpv/common/av_log.c
-@@ -203,7 +203,7 @@ bool print_libav_versions(struct mp_log
+@@ -200,7 +200,7 @@ void check_library_versions(struct mp_lo
+         {
+             fprintf(stderr, "%s: %d.%d.%d -> %d.%d.%d\n",
+                     l->name, V(l->buildv), V(l->runv));
+-            abort();
++            //abort();
+         }
+     }
  
-     mp_msg(log, v, "FFmpeg version: %s\n", av_version_info());
- 
--    return !mismatch;
-+    return true;
- }
- 
- #undef V
