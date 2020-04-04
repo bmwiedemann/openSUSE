@@ -1,7 +1,7 @@
 #
 # spec file for package dump
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Backup
-Url:            http://dump.sourceforge.net
+URL:            http://dump.sourceforge.net
 Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        ermt.1.in
 # PATCH-FIX-SUSE dump-0.4b46-pathnames.patch svalx@svalx.net -- pathnames and
@@ -83,6 +83,7 @@ cp %{SOURCE1} rmt/
 
 %build
 autoreconf -fiv
+export CFLAGS="%{optflags} -fcommon"
 %configure \
   --disable-silent-rules \
   --enable-sqlite \

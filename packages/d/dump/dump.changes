@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 21:05:53 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- starting with GCC 10, the default of '-fcommon' option will
+  change to '-fno-common'. Because dump build fails with 
+  'fno-common', add '-fcommon' option to optflags as a temporary
+  workaround for this problem till it's properly fixed [bsc#1160263]  
+
+-------------------------------------------------------------------
 Thu Jun 15 12:33:17 UTC 2017 - tchvatal@suse.com
 
 - Add sqlite3 dependency and enable building with it
