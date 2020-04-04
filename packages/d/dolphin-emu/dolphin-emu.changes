@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Apr 03 05:44:55 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1585813619.4ff855921e:
+  * Android: Force an AppCompat theme in the analytics AlertDialog
+  * Translation resources sync with Transifex
+  * Translation resources sync with Transifex
+  * Android: Don't let onSettingChanged clobber ConfirmRunnable changes
+  * Cleanup warnings of -Wunused-lambda-capture
+  * use s_ prefix for local variables
+  * Fix build with Qt 5.15+
+  * Wiimote: Cleanup warnings of -Wmissing-variable-declarations
+  * NoGUI: missing override keyword GetWindowSystemInfo
+  * Cleanup warnings of -Wpessimizing-move
+  * Cleanup warnings of -Wunused-const-variable
+  * InputCommon: cleanup warnings of -Wclass-memaccess
+  * Cleanup warnings of -Wunused-variable
+  * DiscIO: cleanup warnings of -Wmaybe-uninitialized
+  * Android: Don't use SettingsAdapter's static state in file picker
+  * Android: Add Paths to UI
+  * Parse arguments before Qt
+  * Qt/CodeWidget: Typo in settings key.
+  * SettingsHandler: Always decode the whole settings.txt file
+  * Qt/GameListModel: Use native separators in File Path column
+  * Boot: Change pre-defined setting.txt CODE values
+  * Android: add lighter accent color for dark mode
+  * Qt/CodeViewWidget: Make columns resizable by the user and set sensible defaults.
+  * Translation resources sync with Transifex
+  * Android/JNI: Remove odd usage of the comma operator
+  * Fix Load Wii System Menu not updating after performing a disc update
+  * DolphinQt: Fix gyro mapping indicator's "jitter" drawing.
+  * Core/HotkeyManager: Fix group names in config
+  * Android: Set up Day/Night mode for system-compatible optional dark theme
+  * Back up Wii setting.txt and SYSCONF while emulating
+  * StringUtil: Add PathToFileName function
+  * Boot: Preserve MODEL value in setting.txt
+  * Boot: Preserve CODE value in setting.txt if it already matches the region
+  * Movie: Make checking for existing GC saves more reliable
+  * Update Readme.md
+  * BTReal: Improve error handling for device opening
+  * VideoCommon: Allow texture folders to be determined by a <gameid>.txt file
+  * Qt/CodeViewWidget: Indent branch arrows based on free space rather than reserving a full column for each.
+  * Use ZoomIn/ZoomOut QKeySequence in GameList
+  * Qt: Add Configuration shortcut
+  * Qt: Use builtin Find and Quit key sequences
+  * Build system: default to fmt shared library when available
+  * Fix settings.txt parsing in case of weird line endings
+  * Breakpoints: Fix crash after clearing all memory breakpoints
+  * Allow using shared minizip
+  * Qt/RenderWidget: Remove fill background functionality
+  * Core: Render a blank UI frame before booting
+  * Vulkan: Pass CAMetalLayer to MoltenVK instead of NSView
+  * VideoBackends: Make it possible for PrepareWindow to change the surface
+  * Common: Add a render_window field to WindowSystemInfo
+  * Android: Add Set as Default ISO to UI
+  * Qt/CodeViewWidget: Implement branch arrows.
+  * Android: Fix obscured Dolphin version
+  * Common/IniFile: Add Exists function for section name only
+  * .gitmodules: Make Externals/Qt clone shallow
+  * DolphinQt: Fix calibration cancel behavior.
+  * DolphinQt: Clean up calibration drawing a bit.
+  * InputCommon: Specify ini value default when saving calibration "center".
+  * InputCommon: Clamp calibration values within square shape.
+  * InputCommon: RoundStickGate's ideal sample count can be 1.
+  * HW/WiimoteEmu: Fill IR data with 0xFF on failed bus read.
+  * HW/WiimoteEmu: Camera logic cleanups.
+  * Qt/CodeViewWidget: Use named constants for column IDs.
+  * Core/NetPlayServer: Fix session not being added to index on direct connection type
+  * DolphinQt: Give hotkeys their own "background input" setting.
+  * Add Windows Implementation Libraries
+  * Android: More robust check for whether to sync channels
+  * Added Toggle Freelook Hotkey
+  * Always display the horizontal scroll bar when log word wrap is off
+  * Android: Use square stick calibration
+  * Android: Clear preferences linked to WiimoteNew.ini when overwriting
+- Use external fmt, enet, minizip, pugixml, xxhash libraries, respectively
+  add BR on pkgconfig(fmt), enet-devel, minizip-devel, pugixml-devel, xxhash-devel
+- BR on pkgconfig(libsystemd) instead of pkgconfig(systemd) so that we have
+  the systemd headers.
+
+-------------------------------------------------------------------
 Mon Mar 09 13:02:27 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1583642222.c507370ba2:

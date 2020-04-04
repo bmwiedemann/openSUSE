@@ -18,11 +18,11 @@
 
 # revision needs to be the full output of 'git rev-parse HEAD'
 # (netplay version check relies on it)
-%define _revision 25d5f0d9efd2af58b5389a358794ff10359e0164
-%define _revision_description 5.0-11688
+%define _revision 4ff855921e221f944d5ce22074e86096474d4ea6
+%define _revision_description 5.0-11827
 
 Name:           dolphin-emu
-Version:        5.0+git.1583642222.c507370ba2
+Version:        5.0+git.1585813619.4ff855921e
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  alsa-devel
 BuildRequires:  bluez-devel
 BuildRequires:  cmake
+BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.9
 BuildRequires:  libSM-devel
@@ -45,32 +46,33 @@ BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  lzo-devel
 BuildRequires:  mbedtls-devel
+BuildRequires:  minizip-devel
 BuildRequires:  ninja
 BuildRequires:  openal-soft-devel
 BuildRequires:  pkg-config
 BuildRequires:  portaudio-devel
-BuildRequires:  soundtouch-devel
-BuildRequires:  pkgconfig(systemd)
-%if 0%{?suse_version} > 1315
-BuildRequires:  sfml2-devel
-%endif
+BuildRequires:  pugixml-devel
 BuildRequires:  sed
+BuildRequires:  sfml2-devel
+BuildRequires:  soundtouch-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
+BuildRequires:  pkgconfig(fmt) >= 6.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(xi)
 ExclusiveArch:  x86_64 aarch64
 Provides:       dolphin-qt = %{version}
 Obsoletes:      dolphin-qt < %{version}
-Recommends:     %{name}-lang = %{version}
 
 %description
 Dolphin is an emulator for two Nintendo video game consoles, GameCube and the Wii.
