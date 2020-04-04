@@ -1,7 +1,7 @@
 #
 # spec file for package QtAV
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source0:        QtAV-%{version}.tar.xz
 Patch0:         0001-Fix-build-with-Qt-5.14.patch
 Patch1:         fix-linking.patch
 Patch2:         disable_cuda.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  ImageMagick
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
