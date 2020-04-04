@@ -1,7 +1,7 @@
 #
 # spec file for package rtl8812au
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           rtl8812au
-Version:        5.2.20.2+git20190904.30d47a0
+Version:        5.6.4.2+git20200318.49e98ff
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
 Group:          System/Kernel
-Url:            https://github.com/gordboy/rtl8812au
+URL:            https://github.com/gordboy/rtl8812au-5.6.4.2
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-preamble
 Source2:        LICENSE
@@ -61,7 +61,7 @@ https://github.com/maurossi/rtl8812au/ .
 
 %prep
 %setup -q
-%if 0%{?sle_version} >= 150100
+%if 0%{?sle_version} == 150100
 %patch0 -p1
 %endif
 

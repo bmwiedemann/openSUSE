@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  3 07:20:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.6.4.2+git20200318.49e98ff
+  * Upstream changed the github repository, so changed it to since
+    the previous one is now marked as obsolete
+  * Works with (at least) a 5.6rc5 kernel
+  * Added device USB IDs. Added regdb files.
+  * Removed LED control, which was added for driver version 5.2.20
+  * Users of NetworkManager need to add the following config option to
+    /etc/NetworkManager/NetworkManager.conf:
+    [device]
+    wifi.scan-rand-mac-address=no
+- Rebase patch fix-backported-ndo_select_queue.patch
+
+-------------------------------------------------------------------
 Thu Oct 31 09:49:41 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 5.2.20.2+git20190904.30d47a0
@@ -15,7 +30,7 @@ Mon May 27 00:32:15 UTC 2019 - Ryan Bach <romulasry@protonmail.com>
 - Update to 5.2.20.2+git1558384184.6faa3ea
   * Fixes to make it work with kernel 5.1
   * Fixes to make it work with kernel 5.2
-  
+
 - Use obs_scm instead of depricated tar_scm service file for maintainability in the future
 
 -------------------------------------------------------------------
