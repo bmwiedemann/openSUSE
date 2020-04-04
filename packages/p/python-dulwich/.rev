@@ -309,4 +309,13 @@
    * Expand &quot;~&quot; in global exclude path. (Jelmer Vernooĳ)</comment>
     <requestid>780380</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>388490e55ac6f9fbfd32bc1328fda6e1</srcmd5>
+    <version>0.19.15</version>
+    <time>1585995568</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not remove the tests from distdir as other pkgs can import
+  them</comment>
+    <requestid>790036</requestid>
+  </revision>
 </revisionlist>

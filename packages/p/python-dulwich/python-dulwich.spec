@@ -62,7 +62,8 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitearch}/dulwich/tests
+# Do not remove tests as they are reused by other packages
+#%%python_expand rm -r %{buildroot}%{$python_sitearch}/dulwich/tests
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/dulwich
 %python_clone -a %{buildroot}%{_bindir}/dul-receive-pack
