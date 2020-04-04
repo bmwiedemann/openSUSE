@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-websocket
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,9 @@
 
 
 %global base_name jetty
-%global addver  .v20191022
+%global addver  .v20200227
 Name:           %{base_name}-websocket
-Version:        9.4.22
+Version:        9.4.27
 Release:        0
 Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
@@ -117,6 +117,7 @@ find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;
 
 # Plugins irrelevant or harmful to building the package
+%pom_remove_plugin -r :maven-checkstyle-plugin
 %pom_remove_plugin -r :findbugs-maven-plugin
 %pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin -r :clirr-maven-plugin
@@ -144,9 +145,6 @@ find . -name "*.class" -exec rm {} \;
 %pom_change_dep -r org.mortbay.jasper:apache-jsp org.apache.tomcat:tomcat-jasper
 
 %pom_add_dep 'org.junit.jupiter:junit-jupiter-engine:${junit.version}' tests/test-sessions/test-sessions-common
-
-# Old version of jetty not available for tests, so use this version
-%pom_change_dep 'org.eclipse.jetty:jetty-util' 'org.eclipse.jetty:jetty-util:${project.version}' tests/test-webapps/test-servlet-spec/test-spec-webapp
 
 # provided by glassfish-jsp-api that has newer version
 %pom_change_dep -r javax.servlet.jsp:jsp-api javax.servlet.jsp:javax.servlet.jsp-api
@@ -216,7 +214,7 @@ rm -fr examples/embedded/src/main/java/org/eclipse/jetty/embedded/ManyConnectors
 
 # the default location is not allowed by SELinux
 sed -i '/<SystemProperty name="jetty.state"/d' \
-    jetty-home/src/main/resources%{_sysconfdir}/jetty-started.xml
+    jetty-home/src/main/resources/etc/jetty-started.xml
 
 # remote-resources only copies about.html
 %pom_remove_plugin :maven-remote-resources-plugin
@@ -271,7 +269,7 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-xml
 %pom_disable_module jetty-webapp
 
-%mvn_file :{*} %{base_name}/@1
+%{mvn_file} :{*} %{base_name}/@1
 
 %build
 
