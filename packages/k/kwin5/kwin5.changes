@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * [kcmkwin/kwindesktop] Fix inability to create more than one row on the "Virtual Desktops" settings page (kde#419141)
+  * [wayland] Recursively destroy WindowPixmap objects
+  * [scenes/opengl] Print a debug message when viewport limits aren't met
+
+-------------------------------------------------------------------
 Fri Mar 13 10:28:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace the Requires: xorg-x11-server-wayland dependency with a

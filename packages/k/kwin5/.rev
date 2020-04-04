@@ -989,4 +989,12 @@
   Recommends so we can install kwin5 in X11 only systems. (forwarded request 784609 from alarrosa)</comment>
     <requestid>784610</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>cc6f192c3c0a6ccb3160c8e17a9fc925</srcmd5>
+    <version>5.18.4.1</version>
+    <time>1585995055</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.4.1 - second try</comment>
+    <requestid>790430</requestid>
+  </revision>
 </revisionlist>
