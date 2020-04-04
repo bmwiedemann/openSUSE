@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 26 13:35:18 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- pesign-sign-s390x-kernel.patch: Sign also the non-PE (e.g. s390x)
+  kernels with just kernel-sign-file (bsc#1163524)
+
+-------------------------------------------------------------------
 Wed Feb 19 14:25:32 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - 0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
