@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  2 15:18:53 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 8.36
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.36  2020-03-31
+    - Added handler attribute to Test::Mojo.
+    - Added test method to Test::Mojo.
+    - Improved Test::Mojo to allow for extensions to be tested more easily.
+    - Improved request_id attribute in Mojo::Message::Request to be a little more
+      unique. (mst)
+
+-------------------------------------------------------------------
 Sun Mar 22 03:09:07 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.35
