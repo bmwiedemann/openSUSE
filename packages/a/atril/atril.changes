@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:26:19 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add atril-synctex-1.18.patch: Restore SyncTeX 1.18 support.
+- Add atril-glib-2.54.patch: Restore GLib 2.54 support.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.0):

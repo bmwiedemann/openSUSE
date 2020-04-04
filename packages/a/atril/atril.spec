@@ -27,6 +27,10 @@ Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE atril-synctex-1.18.patch -- Restore SyncTeX 1.18 support.
+Patch0:         %{name}-synctex-1.18.patch
+# PATCH-FEATURE-OPENSUSE atril-glib-2.54.patch -- Restore GLib 2.54 support.
+Patch1:         %{name}-glib-2.54.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
@@ -158,7 +162,7 @@ page document formats like PDF and Postscript.
 This package contains the Atril extension for the Caja file manager.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
