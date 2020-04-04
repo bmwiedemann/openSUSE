@@ -1670,4 +1670,12 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * No functional change</comment>
     <requestid>787362</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>56841a347d9a59fa4c4c55a85c34119e</srcmd5>
+    <version>050+suse.58.g0b998bee</version>
+    <time>1585995415</time>
+    <user>dimstar_suse</user>
+    <comment>Please pick with ystemd v245 submission</comment>
+    <requestid>789693</requestid>
+  </revision>
 </revisionlist>
