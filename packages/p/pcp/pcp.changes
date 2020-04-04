@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:43:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch (submitted to upstream) to fix missing includes with Qt 5.15:
+  * 0001-Add-missing-includes-in-Qt-5.15-beta2.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 14:41:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

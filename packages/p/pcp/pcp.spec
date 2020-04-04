@@ -1,7 +1,7 @@
 #
 # spec file for package pcp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ Version:        4.3.4
 Release:        0
 %global buildversion 1
 
-Url:            https://pcp.io
+URL:            https://pcp.io
 Source0:        pcp-%{version}.tar.bz2
 %if 0%{?suse_version}
 Source2:        pcp-rpmlintrc
@@ -93,6 +93,8 @@ Patch3:         0003-Remove-runlevel-4-from-init-scripts.patch
 Patch5:         0005-SUSE-fy-pmsnap-control-path.patch
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch6:         0006-pmsnap-control-var-www-srv-www.patch 
+# PATCH-FIX-UPSTREAM, Fix missing include with Qt 5.15 (alarrosa@suse.com)
+Patch7:         0001-Add-missing-includes-in-Qt-5.15-beta2.patch
 
 %if 0%{?fedora} || 0%{?rhel}
 %global disable_selinux 0
@@ -424,7 +426,7 @@ applications to easily retrieve and process any subset of that data.
 Summary:        Performance Co-Pilot run-time configuration
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 # http://fedoraproject.org/wiki/Packaging:Conflicts "Splitting Packages"
 Conflicts:      pcp-libs < 3.9
 
@@ -439,7 +441,7 @@ Performance Co-Pilot (PCP) run-time configuration
 Summary:        Performance Co-Pilot run-time libraries
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Conflicts:      %{lib_pkg_conflict}
 Requires:       pcp-conf >= %{version}-%{release}
 
@@ -451,7 +453,7 @@ Performance Co-Pilot (PCP) run-time libraries
 Summary:        Performance Co-Pilot run-time GUI library
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description -n libpcp_gui%{libpcp_gui_sover}
 Performance Co-Pilot (PCP) run-time graphical user interface library
@@ -460,7 +462,7 @@ Performance Co-Pilot (PCP) run-time graphical user interface library
 Summary:        Performance Co-Pilot run-time MMV library
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description -n libpcp_mmv%{libpcp_mmv_sover}
 Performance Co-Pilot (PCP) run-time Memory Mapped Values library
@@ -469,7 +471,7 @@ Performance Co-Pilot (PCP) run-time Memory Mapped Values library
 Summary:        Performance Co-Pilot run-time tracing library
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description -n libpcp_trace%{libpcp_trace_sover}
 Performance Co-Pilot (PCP) run-time tracing library
@@ -478,7 +480,7 @@ Performance Co-Pilot (PCP) run-time tracing library
 Summary:        Performance Co-Pilot run-time import library
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description -n libpcp_import%{libpcp_import_sover}
 Performance Co-Pilot (PCP) run-time import library
@@ -487,7 +489,7 @@ Performance Co-Pilot (PCP) run-time import library
 Summary:        Performance Co-Pilot run-time web library
 License:        %{license_lgplv21plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description -n libpcp_web%{libpcp_web_sover}
 Performance Co-Pilot (PCP) run-time web library
@@ -501,7 +503,7 @@ Performance Co-Pilot (PCP) run-time web library
 Summary:        Performance Co-Pilot (PCP) development headers
 License:        %{license_gplv2plus} AND %{license_lgplv21plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       %{lib_pkg} = %{version}-%{release}
 Conflicts:      %{lib_devel_pkg_conflict}
 %if (0%{?suse_version} > 0)
@@ -519,7 +521,7 @@ Performance Co-Pilot (PCP) headers for development.
 Summary:        Performance Co-Pilot (PCP) development tools and documentation
 License:        %{license_gplv2plus} AND %{license_lgplv21plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_devel_pkg} = %{version}-%{release}
 Requires:       %{lib_pkg} = %{version}-%{release}
@@ -536,7 +538,7 @@ Performance Co-Pilot (PCP) documentation and tools for development.
 Summary:        Performance Co-Pilot (PCP) test suite
 License:        %{license_gplv2plus} AND %{license_mit}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_devel_pkg} = %{version}-%{release}
 Requires:       %{lib_pkg} = %{version}-%{release}
@@ -555,7 +557,7 @@ Quality assurance test suite for Performance Co-Pilot (PCP).
 Summary:        Performance Co-Pilot (PCP) manager daemon
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -577,7 +579,7 @@ scripts.
 Summary:        Performance Co-Pilot (PCP) web API service
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -596,7 +598,7 @@ HTTP (PMWEBAPI) protocol.
 Summary:        Performance Co-Pilot (PCP) Perl bindings and documentation
 License:        %{license_gplv2plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if 0%{?suse_version}
 %perl_requires
 %endif
@@ -616,7 +618,7 @@ an application, etc.
 Summary:        Performance Co-Pilot (PCP) Perl bindings for PCP Memory Mapped Values
 License:        %{license_gplv2plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if 0%{?suse_version}
 %perl_requires
 %endif
@@ -637,7 +639,7 @@ and analysis with pmchart, pmie, pmlogger and other PCP tools.
 Summary:        Performance Co-Pilot Perl bindings for importing external archive data
 License:        %{license_gplv2plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if 0%{?suse_version}
 %perl_requires
 %endif
@@ -655,7 +657,7 @@ they can be replayed with standard PCP monitoring tools.
 Summary:        Performance Co-Pilot Perl bindings for processing pmlogsummary output
 License:        %{license_gplv2plus}
 Group:          %{lib_devel_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if 0%{?suse_version}
 %perl_requires
 %endif
@@ -676,7 +678,7 @@ exporting this data into third-party tools (e.g. spreadsheets).
 Summary:        Performance Co-Pilot archive tools for importing sar data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -694,7 +696,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Performance Co-Pilot archive tools for importing iostat data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -713,7 +715,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Performance Co-Pilot archive tools for importing spreadsheet data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -733,7 +735,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Performance Co-Pilot archive tools for importing MTRG data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -750,7 +752,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Performance Co-Pilot archive tools for importing ganglia data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -767,7 +769,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Performance Co-Pilot archive tools for importing collectl data
 License:        %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -783,7 +785,7 @@ into standard PCP archive logs for replay with any PCP monitoring tool.
 Summary:        Module for exporting from PCP into a Zabbix agent daemon
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} >= %{version}-%{release}
 %endif
@@ -800,7 +802,7 @@ Zabbix via the Zabbix agent - see zbxpcp(3) for further details.
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to ElasticSearch
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       %{lib_pkg} >= %{version}-%{release}
 %if !%{disable_python3}
 Requires:       python3-pcp = %{version}-%{release}
@@ -824,7 +826,7 @@ See https://www.elastic.co/community for further details.
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to Graphite
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -844,7 +846,7 @@ to graphite (http://graphite.readthedocs.org).
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to InfluxDB
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} >= %{version}-%{release}
 %endif
@@ -866,7 +868,7 @@ to InfluxDB (https://influxdata.com/time-series-platform/influxdb).
 # pcp-export-pcp2json
 #
 %package export-pcp2json
-Url:            https://pcp.io
+URL:            https://pcp.io
 Summary:        Performance Co-Pilot tools for exporting PCP metrics in JSON format
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
@@ -885,7 +887,7 @@ in JSON format.
 # pcp-export-pcp2spark
 #
 %package export-pcp2spark
-Url:            https://pcp.io
+URL:            https://pcp.io
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to Apache Spark
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
@@ -906,7 +908,7 @@ further details on Apache Spark.
 #
 %if !%{disable_xlsx}
 %package export-pcp2xlsx
-Url:            https://pcp.io
+URL:            https://pcp.io
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to Excel
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
@@ -929,7 +931,7 @@ in Excel spreadsheet format.
 # pcp-export-pcp2xml
 #
 %package export-pcp2xml
-Url:            https://pcp.io
+URL:            https://pcp.io
 Summary:        Performance Co-Pilot tools for exporting PCP metrics in XML format
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
@@ -951,7 +953,7 @@ in XML format.
 Summary:        Performance Co-Pilot tools for exporting PCP metrics to Zabbix
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp = %{version}-%{release}
 %else
@@ -971,7 +973,7 @@ to the Zabbix (https://www.zabbix.org/) monitoring software.
 Summary:        Performance Co-Pilot (PCP) metrics for hardware counters
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 Requires:       libpfm >= 4.4
@@ -993,7 +995,7 @@ collecting hardware counters statistics through libpfm.
 Summary:        Performance Co-Pilot (PCP) metrics for Infiniband HCAs and switches
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 Requires:       libibmad >= 1.3.7
@@ -1015,7 +1017,7 @@ but can also be configured to monitor remote GUIDs such as IB switches.
 Summary:        Performance Co-Pilot (PCP) metrics for ActiveMQ
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(LWP::UserAgent)
 
@@ -1031,7 +1033,7 @@ collecting metrics about the ActiveMQ message broker.
 Summary:        Performance Co-Pilot (PCP) metrics for BIND servers
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(File::Slurp)
 Requires:       perl(LWP::UserAgent)
@@ -1049,7 +1051,7 @@ collecting metrics from BIND (Berkeley Internet Name Domain).
 Summary:        Performance Co-Pilot (PCP) metrics for Redis
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 
 %description pmda-redis
@@ -1065,7 +1067,7 @@ collecting metrics from Redis servers (redis.io).
 Summary:        Performance Co-Pilot (PCP) metrics for NutCracker (TwemCache)
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(JSON)
 Requires:       perl(YAML::XS::LibYAML)
@@ -1083,7 +1085,7 @@ collecting metrics from NutCracker (TwemCache).
 Summary:        Performance Co-Pilot (PCP) metrics for Bonded network interfaces
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1099,7 +1101,7 @@ collecting metrics about bonded network interfaces.
 Summary:        Performance Co-Pilot (PCP) metrics for Database responsiveness
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1115,7 +1117,7 @@ collecting metrics about the Database response times and Availablility.
 Summary:        Performance Co-Pilot (PCP) metrics for 389 Directory Servers
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if 0%{?suse_version}
 Requires:       perl-ldap
 %else
@@ -1135,7 +1137,7 @@ collecting metrics about a 389 Directory Server.
 Summary:        Performance Co-Pilot (PCP) metrics for 389 Directory Server Loggers
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-Date-Manip
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 
@@ -1151,7 +1153,7 @@ collecting metrics from a 389 Directory Server log.
 Summary:        Performance Co-Pilot (PCP) metrics for GPFS Filesystem
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 
 %description pmda-gpfs
@@ -1166,7 +1168,7 @@ collecting metrics about the GPFS filesystem.
 Summary:        Performance Co-Pilot (PCP) metrics for a GPS Daemon
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1182,7 +1184,7 @@ collecting metrics about a GPS Daemon.
 Summary:        Performance Co-Pilot (PCP) metrics from the Docker daemon
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 
 %description pmda-docker
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
@@ -1196,7 +1198,7 @@ collecting metrics using the Docker daemon REST API.
 Summary:        Performance Co-Pilot (PCP) metrics for the Lustre Filesytem
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 
 %description pmda-lustre
@@ -1211,7 +1213,7 @@ collecting metrics about the Lustre Filesystem.
 Summary:        Performance Co-Pilot (PCP) metrics for the Lustre Filesytem Comms
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1230,7 +1232,7 @@ collecting metrics about the Lustre Filesystem Comms.
 Summary:        Performance Co-Pilot (PCP) metrics for Memcached
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1246,7 +1248,7 @@ collecting metrics about Memcached.
 Summary:        Performance Co-Pilot (PCP) metrics for MySQL
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(DBD::mysql)
 Requires:       perl(DBI)
@@ -1266,7 +1268,7 @@ collecting metrics about the MySQL database.
 Summary:        Performance Co-Pilot (PCP) metrics for Named
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1281,7 +1283,7 @@ collecting metrics about the Named nameserver.
 Summary:        Performance Co-Pilot (PCP) metrics for Netfilter framework
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1297,7 +1299,7 @@ collecting metrics about the Netfilter packet filtering framework.
 Summary:        Performance Co-Pilot (PCP) metrics for Usenet News
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1313,7 +1315,7 @@ collecting metrics about Usenet News.
 Summary:        Performance Co-Pilot (PCP) metrics for the Nginx Webserver
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(LWP::UserAgent)
 BuildRequires:  perl(LWP::UserAgent)
@@ -1330,7 +1332,7 @@ collecting metrics about the Nginx Webserver.
 Summary:        Performance Co-Pilot (PCP) metrics for the Oracle database
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Requires:       perl(DBI)
 BuildRequires:  perl(DBI)
@@ -1347,7 +1349,7 @@ collecting metrics about the Oracle database.
 Summary:        Performance Co-Pilot (PCP) metrics for PowerDNS
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1363,7 +1365,7 @@ collecting metrics about the PowerDNS.
 Summary:        Performance Co-Pilot (PCP) metrics for the Postfix (MTA)
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 %if 0%{?fedora} > 16 || 0%{?rhel} > 5
 Requires:       postfix-perl-scripts
@@ -1391,7 +1393,7 @@ collecting metrics about the Postfix (MTA).
 Summary:        Performance Co-Pilot (PCP) metrics for Rsyslog
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1407,7 +1409,7 @@ collecting metrics about Rsyslog.
 Summary:        Performance Co-Pilot (PCP) metrics for Samba
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1423,7 +1425,7 @@ collecting metrics about Samba.
 Summary:        Performance Co-Pilot (PCP) metrics for NFS Clients
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 
 %description pmda-slurm
@@ -1439,7 +1441,7 @@ collecting metrics from the SLURM Workload Manager.
 Summary:        Performance Co-Pilot (PCP) metrics for Simple Network Management Protocol
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 # There are no perl-Net-SNMP packages in rhel, disable unless non-rhel or epel5
 %if 0%{?rhel} == 0 || 0%{?rhel} < 6
@@ -1460,7 +1462,7 @@ collecting metrics about SNMP.
 Summary:        Performance Co-Pilot (PCP) metrics for VMware
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1476,7 +1478,7 @@ collecting metrics for VMware.
 Summary:        Performance Co-Pilot (PCP) metrics for Zimbra
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
 Supplements:    pcp
 
@@ -1492,7 +1494,7 @@ collecting metrics about Zimbra.
 Summary:        Performance Co-Pilot (PCP) metrics for the Device Mapper Cache and Thin Client
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1511,7 +1513,7 @@ collecting metrics about the Device Mapper Cache and Thin Client.
 Summary:        Performance Co-Pilot (PCP) metrics for the Gluster filesystem
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1529,7 +1531,7 @@ collecting metrics about the gluster filesystem.
 Summary:        Performance Co-Pilot (PCP) metrics for NFS Clients
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1548,7 +1550,7 @@ collecting metrics for NFS Clients.
 Summary:        Performance Co-Pilot (PCP) metrics for PostgreSQL
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 Requires:       python3-psycopg2
@@ -1571,7 +1573,7 @@ collecting metrics about the PostgreSQL database.
 Summary:        Performance Co-Pilot (PCP) metrics for compressed swap
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1589,7 +1591,7 @@ collecting metrics about compressed swap.
 Summary:        Performance Co-Pilot (PCP) metrics for the Unbound DNS Resolver
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1607,7 +1609,7 @@ collecting metrics about the Unbound DNS Resolver.
 Summary:        Performance Co-Pilot (PCP) metrics for Intel MIC cards
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1625,7 +1627,7 @@ collecting metrics about Intel MIC cards.
 Summary:        Performance Co-Pilot (PCP) metrics for HAProxy
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1644,7 +1646,7 @@ extracting performance metrics from HAProxy over the HAProxy stats socket.
 Summary:        Performance Co-Pilot (PCP) metrics for virtual machines
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       libvirt-python3
 Requires:       python3-lxml
@@ -1672,7 +1674,7 @@ and hypervisor machines.
 Summary:        Performance Co-Pilot (PCP) metrics for Elasticsearch
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1691,7 +1693,7 @@ collecting metrics about Elasticsearch.
 Summary:        Performance Co-Pilot (PCP) metrics for the LIO subsystem
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %if 0%{?suse_version}
@@ -1723,7 +1725,7 @@ target.
 Summary:        Performance Co-Pilot (PCP) metrics from Prometheus endpoints
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 Requires:       python3-requests
@@ -1746,7 +1748,7 @@ extracting statistics from programs instrumented as Prometheus endpoints.
 Summary:        Performance Co-Pilot (PCP) metrics for hardware sensors
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 %else
@@ -1770,7 +1772,7 @@ collecting metrics about the Linux hardware monitoring sensors.
 Summary:        Performance Co-Pilot (PCP) metrics for JSON data
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp
 Requires:       python3-six
@@ -1798,7 +1800,7 @@ collecting metrics output in JSON.
 Summary:        Performance Co-Pilot (PCP) metrics for the Apache webserver
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1816,7 +1818,7 @@ collecting metrics about the Apache webserver.
 Summary:        Performance Co-Pilot (PCP) metrics for the Bash shell
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1834,7 +1836,7 @@ collecting metrics about the Bash shell.
 Summary:        Performance Co-Pilot (PCP) metrics for the CIFS protocol
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1851,7 +1853,7 @@ collecting metrics about the Common Internet Filesytem.
 Summary:        Performance Co-Pilot (PCP) metrics for Cisco routers
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1869,7 +1871,7 @@ collecting metrics about Cisco routers.
 Summary:        Performance Co-Pilot (PCP) metrics for the GFS2 filesystem
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1886,7 +1888,7 @@ collecting metrics about the Global Filesystem v2.
 Summary:        Performance Co-Pilot (PCP) metrics from arbitrary log files
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1905,7 +1907,7 @@ supports both sampled and event-style metrics.
 Summary:        Performance Co-Pilot (PCP) metrics for the sendmail queue
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1923,7 +1925,7 @@ collecting metrics about email queues managed by sendmail.
 Summary:        Performance Co-Pilot (PCP) metrics for filesystem mounts
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1941,7 +1943,7 @@ collecting metrics about filesystem mounts.
 Summary:        Performance Co-Pilot (PCP) metrics for the Nvidia GPU
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1958,7 +1960,7 @@ collecting metrics about Nvidia GPUs.
 Summary:        Performance Co-Pilot (PCP) metrics for the room temperature
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1978,7 +1980,7 @@ collecting metrics about the room temperature.
 Summary:        Performance Co-Pilot (PCP) metrics for the RPM package manager
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -1997,7 +1999,7 @@ collecting metrics about the installed RPM packages.
 Summary:        Performance Co-Pilot (PCP) metrics for Sendmail
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2016,7 +2018,7 @@ collecting metrics about Sendmail traffic.
 Summary:        Performance Co-Pilot (PCP) metrics for shell command responses
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2035,7 +2037,7 @@ arbitrary shell commands.
 Summary:        Performance Co-Pilot (PCP) metrics for S.M.A.R.T values
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       %{lib_pkg} = %{version}-%{release}
 
 %description pmda-smart
@@ -2051,7 +2053,7 @@ smartmontools package.
 Summary:        Performance Co-Pilot (PCP) summary metrics from pmie
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2071,7 +2073,7 @@ collecting metrics about other installed pmdas.
 Summary:        Performance Co-Pilot (PCP) metrics from the Systemd journal
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2089,7 +2091,7 @@ collecting metrics from the Systemd journal.
 Summary:        Performance Co-Pilot (PCP) metrics for application tracing
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2107,7 +2109,7 @@ collecting metrics about trace performance data in applications.
 Summary:        Performance Co-Pilot (PCP) metrics from web server logs
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2124,7 +2126,7 @@ collecting metrics about web server logs.
 Summary:        Performance Co-Pilot (PCP) Zeroconf Package
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       pcp
 Requires:       pcp-doc
 Requires:       pcp-pmda-dm
@@ -2147,7 +2149,7 @@ those written by sysstat.
 Summary:        Performance Co-Pilot (PCP) Python bindings and documentation
 License:        %{license_gplv2plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 BuildRequires:  %{__python2}-devel
 Requires:       %{lib_pkg} = %{version}-%{release}
 %if 0%{?suse_version}
@@ -2177,7 +2179,7 @@ Metric Domain Agent (PMDA) collector tools written in Python.
 Summary:        Performance Co-Pilot (PCP) Python3 bindings and documentation
 License:        %{license_gplv2plus}
 Group:          %{lib_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 Requires:       %{lib_pkg} = %{version}-%{release}
 %if 0%{?suse_version}
 Requires:       libpcp_gui%{libpcp_gui_sover} = %{version}-%{release}
@@ -2201,7 +2203,7 @@ Metric Domain Agent (PMDA) collector tools written in Python3.
 Summary:        Performance Co-Pilot (PCP) System and Monitoring Tools
 License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !%{disable_python3}
 Requires:       python3-pcp = %{version}-%{release}
 %endif
@@ -2224,7 +2226,7 @@ in python.
 Summary:        Visualization tools for the Performance Co-Pilot toolkit
 License:        %{license_gplv2plus} AND %{license_lgplv2plus}
 Group:          %{pcp_gr}
-Url:            https://pcp.io
+URL:            https://pcp.io
 %if !0%{?suse_version}
 Requires:       %{lib_pkg} = %{version}-%{release}
 %endif
@@ -2246,7 +2248,7 @@ BuildArch:      noarch
 Summary:        Documentation and tutorial for the Performance Co-Pilot
 License:        %{license_gplv2plus} AND %{license_cc_by}
 Group:          Documentation/Other
-Url:            https://pcp.io
+URL:            https://pcp.io
 # http://fedoraproject.org/wiki/Packaging:Conflicts "Splitting Packages"
 # (all man pages migrated to pcp-doc during great package split of '15)
 Conflicts:      pcp-pmda-pmda < 3.10.5
@@ -2271,7 +2273,7 @@ PCP utilities and daemons, and the PCP graphical tools.
 Summary:        Selinux policy package
 License:        %{license_gplv2plus} AND %{license_cc_by}
 Group:          Applications/System
-Url:            https://pcp.io
+URL:            https://pcp.io
 BuildRequires:  selinux-policy-devel
 %if 0%{?rhel} == 5
 BuildRequires:  setools
@@ -2294,6 +2296,7 @@ updated policy package.
 %patch3 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 autoconf
 
