@@ -25,7 +25,7 @@
 %define ruby_version %{rb_default_ruby_suffix}
 
 Name:           rmt-server
-Version:        2.5.5
+Version:        2.5.6
 Release:        0
 Summary:        Repository mirroring tool and registration proxy for SCC
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  libffi-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       gpg2
 Requires:       mariadb
 Requires:       nginx
@@ -82,7 +82,7 @@ Provides:       rmt-server-configuration
 Conflicts:      rmt-server-configuration
 
 %description config
-Summary:        Default nginx configuration for RMT.
+Default nginx configuration for RMT.
 
 %package pubcloud
 Summary:        RMT pubcloud extensions
