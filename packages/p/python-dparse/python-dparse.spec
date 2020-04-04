@@ -1,7 +1,7 @@
 #
 # spec file for package python-dparse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+%define skip_python2 1
 Name:           python-dparse
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Python dependency file parser
 License:        MIT
@@ -31,14 +32,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-packaging
-Requires:       python-six
 Recommends:     python-pipenv
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module toml}
 %endif
 %python_subpackages
 
@@ -60,6 +60,7 @@ A parser for Python dependency files.
 %check
 # There is a bug in the pipenv support, related to writing a new toml file.
 # Both dparse and pipenv have a vendored copy of different toml libraries.
+# and even more, we do not have pipenv in our distribution
 %pytest --deselect 'tests/test_updater.py::test_update_pipfile'
 %endif
 

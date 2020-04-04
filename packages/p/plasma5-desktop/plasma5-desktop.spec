@@ -22,7 +22,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.18.3
+Version:        5.18.4.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -32,9 +32,9 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.18.4/plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.18.4/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -80,8 +80,10 @@ BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
-BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_bugfix}
-BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
+# Hack: The version in the .cmake config is missing the .1.
+# Replace with %{_plasma5_bugfix} again with 5.18.5
+BuildRequires:  cmake(LibKWorkspace) >= 5.18.4
+BuildRequires:  cmake(LibTaskManager) >= 5.18.4
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0

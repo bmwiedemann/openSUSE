@@ -17,22 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
-Group:          Development/Languages/Python
-URL:            http://github.com/maraujop/django-crispy-forms
+URL:            https://github.com/maraujop/django-crispy-forms
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
 

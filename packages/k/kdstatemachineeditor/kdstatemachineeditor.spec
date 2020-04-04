@@ -30,6 +30,8 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://kdab.github.io/KDStateMachineEditor/
 Source:         https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  doxygen
 BuildRequires:  graphviz-devel
@@ -117,6 +119,7 @@ or QML that can then be used in Qt or QtQuick projects.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -124,7 +127,8 @@ cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DECM_MKSPECS_INSTALL_DIR=%{_libdir}/qt5/mkspecs/modules \
         -DLIB_INSTALL_DIR="%{_lib}"
-make VERBOSE=1 %{?_smp_mflags}
+
+%cmake_build
 
 %install
 %make_install

@@ -39,6 +39,8 @@ Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/
 Patch1:         libmlt-0.8.2-vdpau.patch
 # PATCH-FIX-UPSTREAM libmlt-fixluma.patch aloisio@gmx.com -- add LD_LIBRARY_PATH so that luma can run
 Patch2:         libmlt-fixluma.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-Qt-5.15.0.patch
+Patch3:         0001-Fix-build-with-Qt-5.15.0.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} >= 1500
 BuildRequires:  gcc-c++
@@ -206,6 +208,7 @@ This package contains python bindings.
 %setup -q -n %{_name}-%{version}
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 # To complement libmlt-0.8.0-vdpau.patch.
 # When vdpau support is not compiled it will break the code. Doesn't matter because the code will not be used anyway.

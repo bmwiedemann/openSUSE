@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>707063</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cb7f50f6627432a6e46997a8bc1ba358</srcmd5>
+    <version>0.7.0</version>
+    <time>1585995958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Added support for custom loader classes</comment>
+    <requestid>791161</requestid>
+  </revision>
 </revisionlist>

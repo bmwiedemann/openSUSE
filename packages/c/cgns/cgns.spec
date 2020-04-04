@@ -16,14 +16,14 @@
 #
 
 
-%define libname libcgns3_4_1
+%define libname libcgns4_1
 Name:           cgns
-Version:        3.4.1
+Version:        4.1.1
 Release:        0
 Summary:        CFD General Notation System
 License:        Zlib
 Group:          Development/Libraries/Other
-URL:            http://cgns.org/
+URL:            https://cgns.github.io/index.html
 Source0:        https://github.com/CGNS/CGNS/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  cmake
@@ -76,7 +76,7 @@ export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
 %cmake \
-%ifarch x86_64 ppc64 ppc64le aarch64
+%if %{__isa_bits} == 64
       -DCGNS_ENABLE_64BIT:BOOL=ON \
 %endif
       -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
@@ -85,7 +85,8 @@ export CXXFLAGS="%{optflags}"
       -DCGNS_ENABLE_FORTRAN:BOOL=ON \
       -DHDF5_NEED_ZLIB:BOOL=ON \
 
-%cmake_build
+# Parallel build fails, see https://cgnsorg.atlassian.net/browse/CGNS-204
+%cmake_build -j1
 
 %install
 %cmake_install
@@ -102,7 +103,7 @@ mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 
 %files -n %{libname}
 %license license.txt
-%doc release_docs/Release.txt
+%doc release_docs/RELEASE.txt
 %{_libdir}/libcgns.so.*
 
 %files devel

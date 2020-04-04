@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oauth-toolkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-oauth-toolkit
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        OAuth2 Provider for Django
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-oauth-toolkit
 Source:         https://github.com/jazzband/django-oauth-toolkit/archive/%{version}.tar.gz#/django-oauth-toolkit-%{version}.tar.gz
-Patch0:         test-response-401.patch
-BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module Django >= 2.1}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module oauthlib >= 2.0.3}
+BuildRequires:  %{python_module oauthlib >= 3.0.1}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module requests >= 2.13.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.0
-Requires:       python-oauthlib >= 2.0.3
+Requires:       python-Django >= 2.1
+Requires:       python-oauthlib >= 3.0.1
 Requires:       python-requests >= 2.13.0
 Conflicts:      python-django-oauth
 BuildArch:      noarch
@@ -52,9 +51,6 @@ Django OAuth Toolkit can help you providing out of the box all the endpoints, da
 
 %prep
 %setup -q -n django-oauth-toolkit-%{version}
-%patch0 -p1
-# Fails even in upstream travis run, different return codes sent by Django
-rm -f tests/test_token_revocation.py
 
 %build
 %python_build

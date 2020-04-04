@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:52:38 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * Whitelisting: avoid duplicate checks / error messages for the same files
+  * Whitelisting: fix whitelisting checks when files are symbolic links
+  * Mention upstream repo in README
+
+-------------------------------------------------------------------
+Fri Mar 27 16:59:18 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Bug 1167431 - AUDIT-0: User/group orthanc for rpmlint 
+
+-------------------------------------------------------------------
 Thu Feb 20 14:05:50 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
 
 - config: enable MixedFileOwnerships lint

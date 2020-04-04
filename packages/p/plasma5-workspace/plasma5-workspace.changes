@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * [runners/recentdocuments] disable executables or .desktop files (kde#419310)
+  * [applets/digital-clock] Fix inappropriately high QtQuick version
+  * [applets/systemtray] Clear item from shown/hidden list when disabling entry (kde#419197)
+  * [applets/digital-clock] Fix date sizing in vertical panel (kde#417852)
+  * [VirtualDesktopInfo] Connect to rowsChanged singal (kde#408783)
+  * Fix systemtray configuration
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3

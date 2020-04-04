@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,15 @@
 
 
 Name:           Jamulus
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
 URL:            http://llcon.sourceforge.net/index.html
 Source0:        https://sourceforge.net/projects/llcon/files/Jamulus/%{version}/Jamulus-%{version}.tar.gz
-Source1:        %{name}.png
+Source1:        %{name}_icon.png
 BuildRequires:  ImageMagick
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jack-devel
@@ -38,8 +39,8 @@ BuildRequires:  pkgconfig(opus)
 Requires:       jack
 Provides:       llcon = %{version}
 Obsoletes:      llcon < %{version}
-Provides:       jamulus = %{version}-%{release}
-Obsoletes:      jamulus
+Provides:       jamulus = %{version}
+Obsoletes:      jamulus < %{version}
 
 %description
 The Jamulus software enables musicians to perform real-time jam sessions over
@@ -49,8 +50,6 @@ and sends the mix back to each client.
 
 %prep
 %setup -q -n %{name}%{version}
-sed -i -e '/^Exec/cExec=%{name}' -e '/^Icon/cIcon=%{name}' src/res/jamulus.desktop
-chmod -x README
 install %{SOURCE1} .
 
 %build
@@ -59,19 +58,21 @@ make %{?_smp_mflags}
 
 %install
 install -D -m0755 Jamulus %{buildroot}%{_bindir}/%{name}
-install -D -m0644 src/res/jamulus.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 for s in 16 22 32 48 64 72 96 128 192; do
    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
-   convert -strip -resize ${s}x${s} %{name}.png \
+   convert -strip -resize ${s}x${s} %{name}_icon.png \
     %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
 done
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-pushd %{buildroot}%{_datadir}/pixmaps
-ln -s ../icons/hicolor/48x48/apps/%{name}.png .
-popd
+install -Dm0644 %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png \
+                %{buildroot}%{_datadir}/pixmaps/%{name}.png
+
+%suse_update_desktop_file -c %{name} %{name} "Internet Jam Session Software" %{name} %{name} "AudioVideo;Audio;Mixer;Qt"
+%suse_update_desktop_file -C "Jam Session" %{name}
+
+%fdupes %{buildroot}%{_datadir}
 
 %files
-%doc README AUTHORS ChangeLog TODO
+%doc README.md ChangeLog
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop

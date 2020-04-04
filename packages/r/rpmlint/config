@@ -184,6 +184,7 @@ setOption('StandardGroups', (
     'ntp',
     'oinstall',
     'openvswitch',
+    'orthanc',
     'ovirtagent',
     'ceilometer',
     'cinder',
@@ -397,6 +398,7 @@ setOption('StandardUsers', (
     'octavia',
     'openvswitch',
     'oracle',
+    'orthanc'
     'otrs',
     'ovirtagent',
     'partimag',

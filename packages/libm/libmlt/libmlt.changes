@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 16:37:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.0.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 11:48:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.20.0

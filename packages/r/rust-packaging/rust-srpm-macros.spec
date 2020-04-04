@@ -1,7 +1,7 @@
 #
 # spec file for package rust-srpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2017, 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org>.
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.

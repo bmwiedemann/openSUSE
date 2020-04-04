@@ -91,4 +91,16 @@
   * Various small fixes</comment>
     <requestid>777580</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0fc2bd214504ac1293e669348bd3cf2</srcmd5>
+    <version>2.2.9</version>
+    <time>1585995986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.9:
+  * Fix: shell_plus, move notebook down the list of prefered shells
+  * Fix: sqldiff, fix KeyError when detecting missing (unique) indexes
+  * Improvement: encrypted fields, make it harder to use deprecated keyczar fields
+  * Locale: Removed empty localizations</comment>
+    <requestid>791167</requestid>
+  </revision>
 </revisionlist>

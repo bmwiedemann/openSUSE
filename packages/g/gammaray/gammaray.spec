@@ -1,7 +1,7 @@
 #
 # spec file for package gammaray
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%
 Patch0:         Fix_icons_installation.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-against-Qt-5.14.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.1
 BuildRequires:  doxygen
@@ -105,9 +107,7 @@ frameworks in Qt. Development files.
   -DQDOC_EXECUTABLE=%{_libqt5_bindir}/qdoc \
   -DQHELPGEN_EXECUTABLE=%{_libqt5_bindir}/qhelpgenerator
 
-# Still not available on all leap flavors
-# %%cmake_build
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

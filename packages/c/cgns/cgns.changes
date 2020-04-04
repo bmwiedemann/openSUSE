@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  3 18:05:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.1.1:
+  * (CGNS-196) Fixed the compilation of cgnstools, which still
+    made use the Removed APIs in 4.1.0
+- Update to version 4.1.0:
+  * Added CPEX42 Storing bounding box of a grid (CGNS-149).
+  * Added CPEX43 Family hierarchy as a tree (CGNS-180).
+- Update to version 4.1.0:
+  * Added CPEX 41 NGON modification proposal (CGNS-121).
+- The removal of CPEX 41 NGON in 3.4.1 broke gmsh and Paraview
+
+-------------------------------------------------------------------
 Sun Mar 29 00:20:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.1:

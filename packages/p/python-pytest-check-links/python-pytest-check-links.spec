@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-check-links
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 # Tests natually require internet
 %bcond_with test
 Name:           python-pytest-check-links
-Version:        0.3.0
+Version:        0.3.2
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/minrk/pytest-check-links
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_check_links/pytest_check_links-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 10:52:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1.1:
+  * Removed drepecated ``providing_args`` from ``Signal`` instances.
+
+-------------------------------------------------------------------
 Tue Jan  7 09:58:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.0:

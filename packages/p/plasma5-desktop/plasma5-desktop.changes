@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * Enable wrapping of error messages which use KMessageWidget
+  * KCM/touchpad: Disables the middleEmulation when not supported
+  * KCM/Mouse: fix the middleEmulation checkbox status
+  * [Colors KCM] Also save colors when active scheme was edited
+  * [Cursor Theme KCM] Use standardized pointer and help cursor for preview
+  * [Icons KCM] Floor delegate height
+  * Make panel edit mode tooltip not unexpectedly disappear under certain circumstances (kde#413736)
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3

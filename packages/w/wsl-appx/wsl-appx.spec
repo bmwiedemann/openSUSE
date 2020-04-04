@@ -1,7 +1,7 @@
 #
 # spec file for package wsl-appx
 #
-# Copyright (c) 2017 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 # needssslcertforbuild
+
+
 # needsappxsslcertforbuild
 
 %if 0%{?is_opensuse}
@@ -27,17 +28,17 @@
 Name:           wsl-appx
 Version:        1
 Release:        0
-License:        MIT
 Summary:        SUSE on Windows application
-Url:            https://gitlab.suse.de/cbosdonnat/wsl-app
+License:        MIT
 Group:          Productivity/Other
+URL:            https://gitlab.suse.de/cbosdonnat/wsl-app
 Source0:        AppxManifest.xml
 Source1:        openSUSE.tar.gz
 Source2:        sle.tar.gz
-BuildRequires:  mingw64-filesystem
 BuildRequires:  WSL-DistroLauncher
 BuildRequires:  WSL-DistroLauncher-debug
 BuildRequires:  fb-util-for-appx
+BuildRequires:  mingw64-filesystem
 %if 0%{?is_opensuse}
 BuildRequires:  openSUSE-release
 %else
@@ -88,7 +89,9 @@ case "$ARCH" in
 	x86_64) ARCH="x64" ;;
 	aarch64) ARCH="arm64" ;;
 esac
-PUBLISHER_DISPLAY_NAME="%{?is_opensuse:open}SUSE"
+# This has to be "SUSE" right now as per requirements from the
+# way the store is set up
+PUBLISHER_DISPLAY_NAME="SUSE"
 # an appx version needs to match this pattern:
 # '(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(\.(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])){3}'
 # found in the error log if you don't set the proper version.
@@ -107,7 +110,6 @@ fi
 for i in PRETTY_NAME APPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME APPXNAME; do
 	eval echo "\"$i='\$$i'\""
 done > .settings
-
 
 cd files
 sed -e "s/@PRETTY_NAME@/${PRETTY_NAME}/g;s/@APPID@/$APPID/g;s/@PUBLISHER@/$PUBLISHER/g;s/@PUBLISHER_DISPLAY_NAME@/$PUBLISHER_DISPLAY_NAME/g;s/@VERSION@/${VERSION}/g;s/@LAUNCHERNAME@/$LAUNCHERNAME/g;s/@ARCH@/$ARCH/g" \

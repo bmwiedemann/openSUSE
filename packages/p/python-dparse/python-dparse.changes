@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:12:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.5.0
+  * Dropped Python 2.7, 3.3, 3.4 support
+  * Removed six package
+  * Removed pinned dependencies of tests
+  * Dropped setup.py tests support in favor of tox
+
+-------------------------------------------------------------------
 Tue Apr 16 12:30:22 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Although pipenv is required by upstream, tests pass even

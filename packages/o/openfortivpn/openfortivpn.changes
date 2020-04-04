@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 05:42:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.3
+  * fix a coverity warning
+  * cross-compile: do not check resolvconf on the host system
+
+-------------------------------------------------------------------
 Wed Mar 25 18:09:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.13.2

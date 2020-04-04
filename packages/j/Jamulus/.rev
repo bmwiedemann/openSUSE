@@ -31,4 +31,24 @@
     <comment></comment>
     <requestid>739246</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75fcbe7320c5cb85615b7ecdc03f43dd</srcmd5>
+    <version>3.4.4</version>
+    <time>1585996014</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename source icon to Jamulus_icon.png to avoid troubles
+  with suse_update_desktop_file.sh
+- Create desktop file via script since upstream no longer
+  supplies it
+- Address rpmlint complaints
+- Update to version 3.4.4
+  * added support for controlling the audio mixer faders with a
+    MIDI controller (MacOS and Linux)
+  * added command line argument for disabling auto jack connection
+   (Ticket #49)
+  * audio recording for the server, coded by pljones
+  * SVG server history graph, coded by pljones
+</comment>
+    <requestid>791268</requestid>
+  </revision>
 </revisionlist>

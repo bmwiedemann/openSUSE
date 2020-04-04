@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>758714</requestid>
   </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>f048654babcb88437e11a2deecb4e3f2</srcmd5>
+    <version>0.8</version>
+    <time>1585995935</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with kernel 5.6
+  * 0001-Update-proc_create_call-for-5.6-kernel.patch
+</comment>
+    <requestid>791134</requestid>
+  </revision>
 </revisionlist>

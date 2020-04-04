@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:25:12 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build with kernel 5.6
+  * 0001-Update-proc_create_call-for-5.6-kernel.patch
+
+-------------------------------------------------------------------
 Thu Dec 19 14:45:14 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

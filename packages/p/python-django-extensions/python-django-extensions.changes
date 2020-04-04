@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 10:45:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.9:
+  * Fix: shell_plus, move notebook down the list of prefered shells
+  * Fix: sqldiff, fix KeyError when detecting missing (unique) indexes
+  * Improvement: encrypted fields, make it harder to use deprecated keyczar fields
+  * Locale: Removed empty localizations
+
+-------------------------------------------------------------------
 Thu Feb 20 07:59:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.8:

@@ -1,7 +1,7 @@
 #
 # spec file for package dcmtk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,7 @@ parts the DICOM standard.
 Summary:        Development files for dcmtk
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       tcpd-devel
 
 %description devel
 This package provides development libraries and headers needed to build
@@ -78,7 +79,8 @@ parts the DICOM standard.
  -DDCMTK_WITH_SNDFILE=ON \
  -DDCMTK_WITH_ZLIB=ON \
  -DDCMTK_WITH_CHARLS=ON
-%make_jobs
+
+%cmake_build
 
 %install
 %cmake_install

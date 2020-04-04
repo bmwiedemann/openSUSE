@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 26 09:39:09 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- PUBLISHER_DISPLAY_NAME has to be "SUSE" for the MS store to accept the
+  submission
+
+-------------------------------------------------------------------
+Fri Feb  7 11:45:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- set publisher to "SUSE LLC" for SUSE
+
+-------------------------------------------------------------------
 Wed Jan 15 15:02:19 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - add license to genterated .packages file

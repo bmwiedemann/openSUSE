@@ -2966,4 +2966,15 @@ will self heal once rpmlint-mini is rebuild
 - config: add 'mktex' to StandardUsers (boo#1159740)</comment>
     <requestid>780341</requestid>
   </revision>
+  <revision rev="332" vrev="21">
+    <srcmd5>d4358affebbec2dc1e298c7a52c2354d</srcmd5>
+    <version>1.11</version>
+    <time>1585994699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version master:
+  * Whitelisting: avoid duplicate checks / error messages for the same files
+  * Whitelisting: fix whitelisting checks when files are symbolic links
+  * Mention upstream repo in README (forwarded request 790149 from mgerstner)</comment>
+    <requestid>790150</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package testssl.sh
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _data_dir_name testssl-sh
 
@@ -24,12 +25,12 @@ Release:        0
 Summary:        Testing TLS/SSL Encryption Anywhere On Any Port
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            https://testssl.sh
+URL:            https://testssl.sh
 Source0:        https://github.com/drwetter/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         testssl.sh-2.9.95-set-install-dir.patch
-Requires:       openssl
 Requires:       bash >= 3.2
+Requires:       openssl
 BuildArch:      noarch
 
 %description
@@ -40,7 +41,12 @@ cryptographic flaws.
 %prep
 %setup -q
 %patch0 -p1
+%if 0%{?suse_version} > 1500
 sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' testssl.sh
+%else
+# in Leap 15.x, it's still /bin/bash
+sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' testssl.sh
+%endif
 
 %build
 

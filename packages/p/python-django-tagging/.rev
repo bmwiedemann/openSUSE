@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>639916</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1918c4307295fb2210cbe588a06df37</srcmd5>
+    <version>0.5.0</version>
+    <time>1585995961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Drop support for Python 2.
+  * Compatiblity fix for Django 2.2 and Django 3.0.</comment>
+    <requestid>791163</requestid>
+  </revision>
 </revisionlist>

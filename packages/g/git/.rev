@@ -2150,4 +2150,12 @@ git 2.12.3
     <comment></comment>
     <requestid>787556</requestid>
   </revision>
+  <revision rev="246" vrev="2">
+    <srcmd5>c4ad472ca130aa804fa7fa77ddfac636</srcmd5>
+    <version>2.26.0</version>
+    <time>1585995310</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>791228</requestid>
+  </revision>
 </revisionlist>

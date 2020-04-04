@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Mar 23 16:45:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- git 2.26.0:
+- git 2.26.0 (bsc#1167890, jsc#SLE-11608):
   * "git rebase" now uses a different backend that is based on the
     'merge' machinery by default. The 'rebase.backend' configuration
      variable reverts to old behaviour when set to  'apply'
@@ -633,7 +633,7 @@ Tue Jan 23 14:23:47 UTC 2018 - astieger@suse.com
 -------------------------------------------------------------------
 Fri Jan 19 02:00:31 UTC 2018 - avindra@opensuse.org
 
-- git 2.16.0:
+- git 2.16.0 (CVE-2017-15298, bsc#1063412):
   * See https://raw.github.com/git/git/master/Documentation/RelNotes/2.16.0.txt
 - partial cleanup with spec-cleaner
 - drop git-gui-tclIndex.patch

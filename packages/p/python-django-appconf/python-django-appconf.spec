@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-appconf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-appconf
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        A Helper Class for Handling Configuration Defaults of Packaged Apps
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django-compressor/django-appconf
-Source:         https://github.com/django-compressor/django-appconf/archive/%{version}.tar.gz
+Source:         https://github.com/django-compressor/django-appconf/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}

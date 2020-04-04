@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 09:15:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Sat Dec  7 09:53:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add 0001-Fix-build-against-Qt-5.14.patch

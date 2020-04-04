@@ -59,4 +59,15 @@
   * Various alignment and margin fixes for Bootstrap 4 template pack</comment>
     <requestid>761489</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a7625d186fa7a905a940f192f7694e98</srcmd5>
+    <version>1.9.0</version>
+    <time>1585995990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Removed support for Python 2.
+  * Removed support for Django versions prior to 2.2.
+  * CSS for Column layout object in Bootstrap 4 template pack changed to 'col-md'.</comment>
+    <requestid>791169</requestid>
+  </revision>
 </revisionlist>

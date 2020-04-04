@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Fri Apr 03 10:44:54 UTC 2020 - fcastelli@suse.com
+
+- Remove example programs from the final package. They are not needed and
+  would make the dex container bigger.
+- Removed fix-default-web-path.patch: the patch already merged upstream
+- Removed fix-unmarshal-web-config.patch: the patch already merged upstream
+- Update to version 2.23.0:
+  * Features:
+    - connector: Atlassian Crowd connector
+    - connector/ldap: add multiple user to group mapping
+    - Add support for password grant
+    - Add ability to set ID and Secret from environment variables for static clients
+  * Bugfixes:
+    - Provider icons use the connector name, not the ID
+    - storage/mysql: increase auth_request.state length to 4096
+- Changes from version 2.22.0:
+  * Features:
+     - google: Implement group whitelisting
+     - Read static password hash from environment variable
+     - OpenShift connector
+  * Bugfixes:
+    - Provider icons use the connector name, not the ID
+- Changes from version 2.21.0:
+  * Features:
+    - Implement refreshing with Google
+    - Fetch groups in a Google Connector
+    - Add option to enable groups for oidc connectors
+  * Bugfixes:
+    - Fix spelling errors in docs
+    - preferred_username claim added on refresh token
+- Changes from version 2.20.0:
+  * Features:
+     - connector/saml: Adding group filtering
+     - Run getUserInfo prior to claim enforcement
+     - server: templates: use relative URLs to refer to assets
+     - add preffered_username to idToken
+  * Bug fixes, misc changes:
+     - gitlab: add groups scope by default when filtering is requested
+     - Fix typo
+     - Fix typo
+     - storage/mysql: support pre-5.7.20 instances with tx_isolation only
+     - Fix URLs in curl cmd as stated in the overview doc
+     - Add note for redirect uri
+- Changes from version 2.19.0:
+  * Features:
+    - connector/LDAP: display login error
+    - HTTPS/gRPC: Use a more conservative set of CipherSuites
+  * Bug fixes, misc changes:
+    - Update ADOPTERS.md
+    - storage/kubernetes: Removing Kubernetes TPR support
+    - Dockerfile: build with Golang 1.12.9
+    - Kubernetes docs: Clarify the origin of openid-ca
+    - Code update: Replace x/net/context with stdlib context
+- Changes from version 2.18.0:
+  * Features:
+    - Storage: New MySQL storage backend
+    - gRPC: Add reflection to gRPC API
+    - Add option to always display connector selection even if there's only one
+    - Added "connector_id" to skip straight to a connector
+    - Allow arbitrary data to be passed to templates
+    - Gitlab: implement useLoginAsID as in GitHub connector
+    - Microsoft: option for group UUIDs instead of name and group whitelist
+    - gRPC: Add VerifyPassword to API
+  * Bug fixes, misc changes:
+    - Update ADOPTERS.md
+    - example-app: add connector_id
+    - Docs: fix MySQL sample query
+    - Code quality: fix some lint issues
+    - gRPC: fix logging in VerifyPassword
+    - Return config validation errors in one go
+    - Update all deps
+    - Return HTTP 400 for invalid state parameter
+    - Adjusting Makefile so that golint will compile
+    - Add tests for some callback handler error conditions
+    - Add examples for recent additions to oauth2 configuration options
+    - Bump deps for http2 issues
+    - Connectors: refactor filter code into a helper package
+- Changes from version 2.17.0:
+  * Features:
+    - Add UserInfo endpoint
+    - Linkedin: Update to use v2 APIs
+    - server: add metrics for CORS handlers
+    - OIDC: Add option to hit the optional userinfo endpoint
+    - OIDC: Make userID configurable
+    - OIDC: Make userName configurable
+    - GitLab: support for group whitelist
+  * Bug fixes, misc changes:
+    - Print appropriate error when listing connectors fails
+    - Bitbucket docs: update permission requirements
+    - Round out logging interface with functions for all levels
+    - Fix typo in SAMLConnector interface
+    - travis: replace golang 1.10 and 1.11 with 1.12
+    - OIDC: truely ignore "email_verified" claim if configured that way
+- Changes from version 2.16.0:
+  * Features:
+    - Add an option to the OpenID Connect connector to always set email_verified to true
+    - Docker image no longer runs dex as root
+  * Bug fixes, misc changes:
+    - Dex now logs client name instead of client_id
+    - Fixes for Go 1.11.4 modules
+    - Refactor logging to use an interface instead of logrus directly
+- Changes from version 2.15.0:
+  * Features:
+    - Added Active Directory and Kubelogin integration sample
+    - Added option to use GitHub login as id
+  * Bug fixes, misc changes:
+    - Dockerfile Go version bumped to v1.11.5
+    - Minimum TLS version bumped to TLSv1.2
+    - Added @JoelSpeed as maintainer
+    - Added tests for LDAP filtering
+    - Print Access token in example app
+    - Add periodic storage health checking
+- Changes from version 2.14.0:
+  * Features:
+    - There's a brand new Keystone connector!
+    - Github connector now returns a full group list when no org is specified, and you have
+    - opted-in to that behaviour
+    - Github connector allows for a 'both' option to use team name AND slug in TeamNameField
+    - Gitlab connector no longer requires to API scope
+    - Postgres storage backeng now works with UNIX sockets
+    - Postgres storage backend now exposes some tunables
+    - gRPC API: Add UpdateClient
+    - Make expiry of auth requests configurable
+    - LDAP connector - add emailSuffix config option
+  * Bug fixes, misc changes:
+    - Render error message provided by connector if user authentication failed
+    - Fix bogus conformance failure due to time zones
+    - Improved LDAP errors from upgrading go-ldap
+    - Removed incomplete, unmaintained storage adapters for CockroachDB and MySQL
+    - Removed unused startup scripts, adapted docs
+    - LDAP connector: Document that 'DN' must be in capitals
+    - Kubernetes docs: clarify steps around use/creation of TLS assets
+    - Bumped github.com/lib/pq
+    - Migrate to go modules
+    - Makefile: cleanups for newer versions of Go
+    - Dockerfile: update to Go 1.11.3
+    - Replace "GET", "POST" to http.MethodGet and http.MethodPost
+
+-------------------------------------------------------------------
 Thu Nov 15 16:04:57 UTC 2018 - Panagiotis Georgiadis <pgeorgiadis@suse.com>
 
 - Fix boo#1116116 [dex Version: was not built properly]

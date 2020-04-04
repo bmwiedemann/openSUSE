@@ -1,7 +1,7 @@
 #
 # spec file for package dex-oidc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
+# Project name when using go tooling.
+%define go_version 1.13
+
 Name:           dex-oidc
-Version:        2.13.0
+Version:        2.23.0
 Release:        0
 Summary:        OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/dexidp/dex
-Source:         https://github.com/dexidp/dex/archive/v%{version}.tar.gz
-Patch1:         fix-default-web-path.patch
-Patch2:         fix-unmarshal-web-config.patch
+Source:         dex-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.11.1
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.11
+BuildRequires:  golang(API) = %{go_version}
+
 Requires(post): %fillup_prereq
 Conflicts:      dex
 # caasp-dex was last used in openSUSE Leap15
@@ -50,14 +51,12 @@ dex handles the protocols for a given backend.
 
 %prep
 %setup -q -n dex-%{version}
-%patch1
-%patch2
 
 %build
+%define ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}"
+
 %{goprep} github.com/dexidp/dex
-%{gobuild} -ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}" cmd/dex
-%{gobuild} -ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}" cmd/example-app
-%{gobuild} -ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}" examples/grpc-client
+%{gobuild} -mod=vendor -ldflags %{ldflags} cmd/dex
 
 %install
 %{goinstall}
@@ -81,7 +80,5 @@ done
 %dir %{_datadir}/%{name}/web/themes/tectonic
 %{_datadir}/%{name}/web/*
 %{_bindir}/dex
-%{_bindir}/example-app
-%{_bindir}/grpc-client
 
 %changelog
