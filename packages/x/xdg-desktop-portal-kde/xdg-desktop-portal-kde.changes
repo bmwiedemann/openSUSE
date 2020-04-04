@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * FileChooser: make all opened files automatically writable
+  * Screensharing: code cleanup
+  * Avoid copying buffer twice (kde#419209)
+  * Implement Keyboard Keycode support as suggested in the spec
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3
