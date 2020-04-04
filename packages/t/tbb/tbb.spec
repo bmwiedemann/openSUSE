@@ -1,7 +1,7 @@
 #
 # spec file for package tbb
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %bcond_without python3
 
 Name:           tbb
-Version:        2020.0
+Version:        2020.2
 Release:        0
 Summary:        Threading Building Blocks (TBB)
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.threadingbuildingblocks.org/
-Source0:        https://github.com/intel/tbb/archive/v%{version}.tar.gz#/tbb-%{version}.tar.gz
+Source0:        https://github.com/oneapi-src/oneTBB/archive/v%{version}.tar.gz#/tbb-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE optflags.patch -- Use rpm optflags
 Patch1:         optflags.patch
 # PATCH-FIX-OPENSUSE reproducible.patch -- Do not compile build hostname+kernel into binary
@@ -115,7 +115,7 @@ details and threading mechanism for performance and scalability.
 This package contains the header files needed for development with tbb.
 
 %prep
-%setup -q
+%setup -q -n oneTBB-%{version}
 %autopatch -p1
 
 %build

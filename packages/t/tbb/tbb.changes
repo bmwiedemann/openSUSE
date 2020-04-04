@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 30 15:50:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2020.2
+  * Cross-allocator copying constructor and copy assignment operator
+    for concurrent_vector are deprecated.
+  * Added input_node to the flow graph API. It acts like a source_node 
+    except for being inactive by default; source_node is deprecated.
+  * Allocator template parameter for flow graph nodes is deprecated. Set
+    TBB_DEPRECATED_FLOW_NODE_ALLOCATOR to 1 to avoid compilation errors.
+  * Flow graph preview hetero-features are deprecated.
+  * Fixed the task affinity mechanism to prevent unlimited memory
+    consumption in case the number of threads is explicitly decreased.
+  * Fixed memory leak related NUMA support functionality in task_arena.
+
+-------------------------------------------------------------------
+Tue Jan 21 15:25:51 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2020.1
+  * Fixed the issue of task_arena constraints not propagated on
+    copy construction.
+  * Fixed TBBGet.cmake script broken by TBB package name changes
+    (https://github.com/intel/tbb/issues/209).
+
+-------------------------------------------------------------------
 Wed Dec 18 16:28:51 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2020.0 
