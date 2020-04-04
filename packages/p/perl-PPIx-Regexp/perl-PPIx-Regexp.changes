@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 29 03:11:09 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.071
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.071		2020-03-28	T. R. Wyant
+      Recognize wildcard Unicode names (Perl 5.31.10).
+  
+      Try to get correct line number in derived PPI. This is done by
+      injecting "
+" as needed. The initial #line directive becomes "#line
+      2", but is suppressed if I need to generate line 1.
+  
+      Improve normalization of content for ppi(). This involves the
+      un-bracketing of things like ${foo}.
+  
+      Deprecate new() argument postderef. At this stage it is only
+      documented as deprecated. In the first release after October 1 2020
+      it will warn on the first use. Eventually it will be retracted, and
+      postfix dereferences will always be recognized. This is the default
+      behavior now.
+  
+      Add dump argument/option 'short' which, if true, causes leading
+      'PPIx::Regexp::' to be removed from class names.
+
+-------------------------------------------------------------------
 Fri Feb 28 03:11:12 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.070
