@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:16:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:39 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * fix toplevels test
+  * fwupd: improve error message
+  * fwupd: improve cancellable usage
+  * flatpak: Don't insist on performing tasks after cancellation (kde#419062)
+  * odrs: Remove seemingly unused cache files
+  * flatpak: fix crash (kde#419107)
+  * cmake: Include messages about availability of Flatpak and Fwupd
+
+-------------------------------------------------------------------
 Tue Mar 10 14:55:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.3
