@@ -49,4 +49,13 @@
     <comment>- Add 0001-Fix-build-with-Qt-5.14.patch</comment>
     <requestid>754390</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2e26d22c27d1e34bc062347a99f27af9</srcmd5>
+    <version>1.13.0</version>
+    <time>1585995808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch</comment>
+    <requestid>790973</requestid>
+  </revision>
 </revisionlist>
