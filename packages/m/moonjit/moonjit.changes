@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:31:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add moonjit105-string_gsub.patch to fix gsub method, which breaks
+  other packages (namely neovim).
+
+-------------------------------------------------------------------
 Thu Mar 12 12:09:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - No need to namespace luajit with update-alternatives, we really

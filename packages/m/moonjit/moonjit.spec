@@ -26,6 +26,9 @@ License:        MIT
 URL:            https://github.com/moonjit/moonjit
 Source0:        https://github.com/moonjit/moonjit/archive/%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM moonjit105-string_gsub.patch gh#moonjit/moonjit#105 mcepl@suse.com
+# fix string_gsub
+Patch0:         moonjit105-string_gsub.patch
 BuildRequires:  pkgconfig
 Conflicts:      luajit
 Provides:       lua51-luajit
@@ -53,6 +56,7 @@ Devel files for luajit package
 
 %prep
 %setup -q -n moonjit-%{version}
+%autopatch -p1
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile
