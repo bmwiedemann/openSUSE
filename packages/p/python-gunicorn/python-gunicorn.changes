@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:59:42 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 19.10.0
+- last with py2 support
+ * unblock select loop during reload of a sync worker
+ * security fix: http desync attack
+ * handle `wsgi.input_terminated`
+ * added support for str and bytes in unix  socket addresses
+ * fixed `max_requests` setting
+ * headers values are now encoded as LATN1, not ASCII
+ * fixed `InotifyReloadeder`:  handle `module.__file__` is None
+ * fixed compatibility with tornado 6
+ * fixed root logging
+ * Prevent removalof unix sockets from `reuse_port`
+ * Clear tornado ioloop before os.fork
+ * Miscellaneous fixes and improvement for linting using Pylints
+
+-------------------------------------------------------------------
 Mon Jul 22 08:10:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work well with pytest5:

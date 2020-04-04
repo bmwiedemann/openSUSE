@@ -1,7 +1,7 @@
 #
 # spec file for package python-gunicorn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gunicorn
-Version:        19.9.0
+Version:        19.10.0
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
@@ -73,7 +73,7 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative gunicorn
