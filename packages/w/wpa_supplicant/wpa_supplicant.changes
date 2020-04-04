@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:03:38 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- With v2.9 fi.epitest.hostap.WPASupplicant.service is obsolete (bsc#1167331)
+
+-------------------------------------------------------------------
+Thu Mar 26 10:02:31 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Change wpa_supplicant.service to ensure wpa_supplicant gets started before
+  network. Fix WLAN config on boot with wicked. (boo#1166933)
+
+-------------------------------------------------------------------
 Mon Nov  4 10:57:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.9 release:
@@ -270,7 +281,7 @@ Mon Oct 16 13:32:07 UTC 2017 - meissner@suse.com
 Fri Apr 21 11:02:18 UTC 2017 - obs@botter.cc
 
 - fix wpa_supplicant-sigusr1-changes-debuglevel.patch to match
-  eloop_signal_handler type (needed to build eapol_test via config) 
+  eloop_signal_handler type (needed to build eapol_test via config)
 
 -------------------------------------------------------------------
 Fri Dec 23 11:12:05 UTC 2016 - dwaas@suse.com
@@ -461,7 +472,7 @@ Thu Feb 18 15:36:23 UTC 2016 - crrodriguez@opensuse.org
   and removed patches.
 - config: set CONFIG_NO_RANDOM_POOL=y, we have a reliable·
  random number generator by using /dev/urandom, no need to
- keep an internal random number pool which draws entropy from 
+ keep an internal random number pool which draws entropy from
  /dev/random.
 - config: prefer using epoll(7) instead of select(2)
   by setting CONFIG_ELOOP_EPOLL=y
@@ -576,7 +587,7 @@ Fri May  1 21:14:01 UTC 2015 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu Apr 23 19:49:28 UTC 2015 - crrodriguez@opensuse.org
 
-- 0001-P2P-Validate-SSID-element-length-before-copying-it-C.patch 
+- 0001-P2P-Validate-SSID-element-length-before-copying-it-C.patch
   Fix CVE-2015-1863, memcpy overflow.
 - wpa_supplicant-alloc_size.patch: annotate two wrappers
   with attribute alloc_size, which may help warning us of
@@ -818,7 +829,7 @@ Mon Jun 16 04:28:45 UTC 2014 - glin@suse.com
 -------------------------------------------------------------------
 Thu May  8 11:18:08 CEST 2014 - ro@suse.de
 
-- use _rundir macro 
+- use _rundir macro
 
 -------------------------------------------------------------------
 Mon Sep  9 09:18:17 UTC 2013 - fcrozat@suse.com
@@ -1399,7 +1410,7 @@ Tue Sep  7 23:08:14 CEST 2010 - vbotka@suse.de
           linguist and add German translation
         * fix DH padding with internal crypto code (mainly, for WPS)
         * do not trigger initial scan automatically anymore if there are no
-          enabled networks 
+          enabled networks
 
 -------------------------------------------------------------------
 Fri May 28 12:49:53 CEST 2010 - vbotka@suse.de
@@ -1589,7 +1600,7 @@ Mon Sep 29 13:40:18 CEST 2008 - hschaa@suse.de
 -------------------------------------------------------------------
 Wed Sep 24 00:59:56 CEST 2008 - ro@suse.de
 
-- drop buildreq for madwifi (dropped package) 
+- drop buildreq for madwifi (dropped package)
 
 -------------------------------------------------------------------
 Tue Sep  2 03:05:49 CEST 2008 - ro@suse.de
@@ -1774,7 +1785,7 @@ Thu Feb 16 10:04:31 CET 2006 - jg@suse.de
 -------------------------------------------------------------------
 Sun Feb  5 18:34:21 CET 2006 - ro@suse.de
 
-- removed km_wlan from BuildRequires 
+- removed km_wlan from BuildRequires
 
 -------------------------------------------------------------------
 Wed Jan 25 21:42:51 CET 2006 - mls@suse.de
@@ -1785,7 +1796,7 @@ Wed Jan 25 21:42:51 CET 2006 - mls@suse.de
 Tue Jan 17 19:32:07 CET 2006 - rml@suse.de
 
 - Add patch (from upstream) fixing bad drivers that NULL out
-  the SSID and send the wrong length. 
+  the SSID and send the wrong length.
 
 -------------------------------------------------------------------
 Tue Jan 10 12:27:27 CET 2006 - jg@suse.de
@@ -1952,7 +1963,7 @@ Mon Aug 29 15:26:27 CEST 2005 - jg@suse.de
   * added support for using external devices (e.g., a smartcard) for
     private key operations in EAP-TLS (CONFIG_SMARTCARD=y in .config);
   * added experimental support for EAP-PAX
-  * added monitor mode for wpa_cli 
+  * added monitor mode for wpa_cli
 
 -------------------------------------------------------------------
 Mon Jul 11 15:46:53 CEST 2005 - jg@suse.de
