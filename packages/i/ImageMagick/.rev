@@ -2589,4 +2589,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Stroked dash array render properly again.</comment>
     <requestid>788060</requestid>
   </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>1d40b4cdfc51c308f56ca6ff3d8e72d1</srcmd5>
+    <version>7.0.10.3</version>
+    <time>1585995474</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.3
+  * The -charcoal option should ignore the alpha channel.
+  * Fix numerical instability issue when drawing lines
+  * Improve mono font rendering (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&amp;t=37723).</comment>
+    <requestid>789793</requestid>
+  </revision>
 </revisionlist>
