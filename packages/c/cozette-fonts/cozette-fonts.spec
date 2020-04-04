@@ -17,16 +17,16 @@
 
 %define ttf_fontdir %{_datadir}/fonts/truetype
 %define fontname    Cozette
-%define fontversion    1.4.0
+%define fontversion    1.7.0
 Name:           cozette-fonts
-Version:        1.4.0+git.1581781581.7882aee
+Version:        1.7.0+git.1585209341.9923dd8
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
 Group:          System/X11/Fonts
 URL:            https://github.com/slavfox/Cozette
 Source0:        Cozette-%{version}.tar.xz
-Source1: %{url}/releases/download/v.%{fontversion}/CozetteVector.otf
+Source1:        %{url}/releases/download/v.%{fontversion}/CozetteVector.otf
 BuildRequires:  %{suseconfig_fonts_prereq}
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
