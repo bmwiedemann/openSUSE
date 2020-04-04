@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 23 18:08:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 0.2.2 
+  + Issues Closed
+    * Issue 213 - closing_ipynb_tab (PR 232)
+    * Issue 192 - AttributeError: 'str' object has no attribute 'get' (PR 232)
+  + Pull Requests Merged
+    * PR 234 - PR: Use correct type for CONF_DEFAULTS
+    * PR 232 - PR: Make .get_kernel_id() more robust (213, 192)
+- rename spyder3 to spyder
+- enable unit tests
+
+-------------------------------------------------------------------
+Thu Jan 30 15:35:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to Version 0.2.1
+  + Issues Closed
+    * Trying to save Jupyter notebook crashes notebook plugin, kernel shutdown
+  + Pull Requests Merged
+    * PR: Set default for recent_notebooks config value
+- Update to Version 0.2.0
+  + Pull Requests Merged
+    * PR: Compatibility changes for Spyder 4
+
+-------------------------------------------------------------------
 Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix jupyter dependencies.
