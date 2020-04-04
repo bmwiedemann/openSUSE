@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:56:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 3.1.6. Fixes include,
+  * ODBC-269: BEGIN NOT ATOMIC returning error
+
+  Fixes since version 3.1.1 includes,
+  * ODBC-196 - Optimize ODBC-120 issue for the case of array fetch
+  * ODBC-267 - Setup library has some redundant dependencies
+  * ODBC-87 - When testing a DSN (new or config datasource)
+    the database name is missing after the test
+  * ODBC-240 - SSLFP and SSLFPLIST parameters appear unused
+  * ODBC-241 - Add parameter that corresponds to
+    MYSQL_SERVER_PUBLIC_KEY option from MariaDB Connector/C
+  * ODBC-226 - Driver doesn't cause an error when it should
+  * ODBC-261 - Connector deploys direct execution, even for
+    server versions, that do not support it
+  * ODBC-262 - MSI and PKG packages do not contain ed25519 plugin
+  * ODBC-210 - Fix compilation warnings on OS X
+  * ODBC-250 - Operations with Dynamic Lists are not thread-safe,
+    and need to be guarded with mutexes
+  * ODBC-252 - Build failed when executed the commands present in
+    "BUILD.md" file
+  * ODBC-253 - MADB_StmtExecDirect() crashes if StatementText is "\0"
+  * ODBC-254 - FTBFS: Cmake libdir misconfiguration
+  * ODBC-256 - Driver craches on empty statement
+  * ODBC-257 - Double-check CPack for a copy-paste error
+  * ODBC-258 - RFE: make documentation and license dirs configurable
+  * ODBC-260 - Remove all references to internals of MYSQL structure
+  * ODBC-255 - When C/ODBC is upgraded on Windows, allow existing
+    data sources to be moved
+  * ODBC-211 - SQLDescribeCol return precision=0 for field type decimal(1,0)
+
+- install_correct_path.patch: removed, upstreamed
+- package_name.patch: removed, no longer necessary
+- DSN_names.patch: refreshed. Added new options
+  TlsPeerFp =
+  TlsPeerFpList =
+  ServerKey =
+
+-------------------------------------------------------------------
 Tue May 21 14:28:53 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 3.1.1
