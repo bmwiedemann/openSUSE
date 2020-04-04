@@ -104,7 +104,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 15.1.0.1521+gcdf35413a0
+Version: 15.2.0.108+g8cf4f02b08
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -120,7 +120,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-15.1.0-1521-gcdf35413a0.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-15.2.0-108-g8cf4f02b08.tar.bz2
 %if 0%{?suse_version}
 Source96: checkin.sh
 Source97: README-checkin.txt
@@ -396,6 +396,8 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?weak_deps}
 %endif
+%if 0%{?suse_version}
+%endif
 %if 0%{?weak_deps}
 %endif
 %if 0%{?suse_version}
@@ -544,10 +546,8 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{?suse_version}
 %endif
-%if 0%{?suse_version}
-%endif
 %prep
-%autosetup -p1 -n ceph-15.1.0-1521-gcdf35413a0
+%autosetup -p1 -n ceph-15.2.0-108-g8cf4f02b08
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -753,11 +753,12 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-mgr
 mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd
 mkdir -p %{buildroot}%{_localstatedir}/lib/ceph/bootstrap-rbd-mirror
 
+# prometheus alerts
+install -m 644 -D monitoring/prometheus/alerts/ceph_default_alerts.yml %{buildroot}/etc/prometheus/ceph/ceph_default_alerts.yml
+
 %if 0%{?suse_version}
 # create __pycache__ directories and their contents
 %py3_compile %{buildroot}%{python3_sitelib}
-# prometheus alerts
-install -m 644 -D monitoring/prometheus/alerts/ceph_default_alerts.yml %{buildroot}/etc/prometheus/SUSE/default_rules/ceph_default_alerts.yml
 # hardlink duplicate files under /usr to save space
 %fdupes %{buildroot}%{_prefix}
 %endif
@@ -1010,7 +1011,7 @@ rm -rf %{buildroot}%doc
 rm -rf %{buildroot}monitoring/grafana/dashboards/README
 rm -rf %{buildroot}%doc
 rm -rf %{buildroot}monitoring/grafana/README.md
-rm -rf %{buildroot}/etc/prometheus/SUSE/default_rules/ceph_default_alerts.yml
+rm -rf %{buildroot}%{_sysconfdir}/prometheus/ceph/ceph_default_alerts.yml
 
 dirs=`find %{buildroot} -type d -empty`
 while [[ -n $dirs ]]; do
