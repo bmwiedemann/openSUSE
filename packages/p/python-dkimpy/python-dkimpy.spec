@@ -1,7 +1,7 @@
 #
 # spec file for package python-dkimpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,26 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dkimpy
-Version:        0.9.3
+Version:        1.0.3
 Release:        0
 Summary:        DKIM (DomainKeys Identified Mail)
 License:        BSD-2-Clause
 URL:            https://launchpad.net/dkimpy
 Source:         https://files.pythonhosted.org/packages/source/d/dkimpy/dkimpy-%{version}.tar.gz
-Source99:       https://git.launchpad.net/dkimpy/plain/LICENSE
 Patch0:         no-optional.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNaCl
 Requires:       python-authres
-Requires:       python-dnspython
+Requires:       python-dnspython >= 1.16
 Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module authres}
-BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module dnspython >= 1.16}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -50,10 +49,7 @@ DKIM (DomainKeys Identified Mail)
 %setup -q -n dkimpy-%{version}
 %patch0 -p1
 
-cp %{SOURCE99} .
-
 %build
-cp %{SOURCE99} .
 %python_build
 
 %install
@@ -64,7 +60,7 @@ cp %{SOURCE99} .
 %pytest
 
 %files %{python_files}
-%doc ChangeLog README
+%doc ChangeLog README.md
 %license LICENSE
 %python3_only %{_bindir}/arcsign
 %python3_only %{_bindir}/arcverify
