@@ -313,4 +313,13 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>778639</requestid>
   </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>6d6f2514f014c3170327c1be66a5da39</srcmd5>
+    <version>10.1</version>
+    <time>1585995409</time>
+    <user>dimstar_suse</user>
+    <comment>- pesign-sign-s390x-kernel.patch: Sign also the non-PE (e.g. s390x)
+  kernels with just kernel-sign-file (bsc#1163524) (forwarded request 789612 from msmeissn)</comment>
+    <requestid>789640</requestid>
+  </revision>
 </revisionlist>
