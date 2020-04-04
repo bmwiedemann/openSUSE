@@ -42,4 +42,19 @@
 - improve description of devel package</comment>
     <requestid>709109</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>013b24f32ca11ca902643ca093acdbb0</srcmd5>
+    <version>1.6.1</version>
+    <time>1585995886</time>
+    <user>dimstar_suse</user>
+    <comment>- bugfix release 1.6.1
+  * wflinfo: Correctly install the bash completion file
+  * GLX/WGL: Handle ARB_create_context appropriatelly
+  * Wayland: Build fix for -fno-common, default with GCC10
+  * Surfaceless: Implement window_resize
+- added  tests to cover above issues 
+- addressing the -fno-common build issue, required us to bump the
+  wayland-client requirement to v1.10</comment>
+    <requestid>791026</requestid>
+  </revision>
 </revisionlist>

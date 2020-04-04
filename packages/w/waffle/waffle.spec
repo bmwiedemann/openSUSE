@@ -1,7 +1,7 @@
 #
 # spec file for package waffle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define _minorVersion 0
 %define libname lib%{name}-%{_majorVersion}-%{_minorVersion}
 Name:           waffle
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause
 Group:          Development/Libraries/X11
 URL:            http://people.freedesktop.org/~chadversary/waffle/index.html
-Source0:        http://www.waffle-gl.org/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
-Source1:        http://www.waffle-gl.org/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
+Source1:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -99,7 +99,7 @@ make check -C build
 %{_docdir}/waffle-%{_majorVersion}/README.md
 %dir %{_docdir}/waffle-%{_majorVersion}/release-notes
 %{_docdir}/waffle-%{_majorVersion}/release-notes/*.txt
-%{_docdir}/waffle-%{_majorVersion}/release-notes/waffle-1.6.0.md
+%{_docdir}/waffle-%{_majorVersion}/release-notes/waffle-1.6.*.md
 %{_bindir}/wflinfo
 /usr/share/bash-completion/completions/wflinfo
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:34:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- bugfix release 1.6.1
+  * wflinfo: Correctly install the bash completion file
+  * GLX/WGL: Handle ARB_create_context appropriatelly
+  * Wayland: Build fix for -fno-common, default with GCC10
+  * Surfaceless: Implement window_resize
+- added  tests to cover above issues 
+- addressing the -fno-common build issue, required us to bump the
+  wayland-client requirement to v1.10
+
+-------------------------------------------------------------------
 Tue Jun 11 09:45:08 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - version 1.6.0
