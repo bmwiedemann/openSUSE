@@ -912,4 +912,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.18.3</comment>
     <requestid>783659</requestid>
   </revision>
+  <revision rev="108" vrev="17">
+    <srcmd5>1249c6771dedb8f5eaf3f42382253486</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1585995391</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.4.1 - second try</comment>
+    <requestid>790452</requestid>
+  </revision>
 </revisionlist>
