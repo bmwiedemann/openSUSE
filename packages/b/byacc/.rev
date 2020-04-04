@@ -222,4 +222,14 @@ http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia
   * See attached CHANGES for complete list of changes</comment>
     <requestid>754688</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d14e3ffff5c3252b93b90ecc23ea19aa</srcmd5>
+    <version>20200330</version>
+    <time>1585995901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200330:
+  * See attached CHANGES for complete list of changes
+- Enable btyacc extension</comment>
+    <requestid>791114</requestid>
+  </revision>
 </revisionlist>

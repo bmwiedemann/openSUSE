@@ -1,7 +1,7 @@
 #
 # spec file for package byacc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           byacc
-Version:        20191125
+Version:        20200330
 Release:        0
 Summary:        LALR(1) parser generator
 License:        SUSE-Public-Domain
@@ -42,6 +42,7 @@ dependencies upon a particular compiler.
 # noreturn attribute and produce warnings when $RPM_OPT_FLAGS contains -Wall
 %configure \
   --with-warnings \
+  --enable-btyacc \
 	--program-prefix=b
 %make_build
 
@@ -49,10 +50,10 @@ dependencies upon a particular compiler.
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
-%doc ACKNOWLEDGEMENTS CHANGES NEW_FEATURES NO_WARRANTY NOTES README
+%doc ACKNOWLEDGEMENTS CHANGES NEW_FEATURES NO_WARRANTY NOTES README*
 %{_bindir}/byacc
 %{_mandir}/man1/byacc.1%{?ext_man}
 
