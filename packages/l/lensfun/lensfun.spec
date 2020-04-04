@@ -16,20 +16,31 @@
 #
 
 
-%define sonum   2
+%define sonum   1
 Name:           lensfun
-Version:        0.3.95.1584325617.48775126
+Version:        0.3.2
 Release:        0
 Summary:        A photographic lens database and a library for accessing it
-License:        LGPL-3.0-only
+License:        LGPL-3.0-only AND CC-BY-SA-3.0
 Group:          Development/Libraries/C and C++
 URL:            https://lensfun.github.io/
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# updated lens database, use "osc service dr" to update it.
+Source2:        data-master.tar.xz
+
+# PATCH-FIX-UPSTREAM respect DESTDIR in python call
+Patch0:         lensfun-respect-DESTDIR.patch
+# PATCH-FIX-UPSTREAM use local database when running tests
+Patch1:         lensfun-test-database.patch
+# PATCH-FIX-UPSTREAM 0060-Various-CMake-patches-from-the-mailing-list.patch
+Patch2:         0060-Various-CMake-patches-from-the-mailing-list.patch
+# PATCH-FIX-UPSTREAM lensfun_fix_memory_leak.patch
+Patch3:         lensfun_fix_memory_leak.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
-BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-docutils
@@ -122,20 +133,18 @@ Header and library definition files for developing applications
 that use the %{name} library/database.
 
 %prep
-%setup -q
+%setup -q -a 2
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 echo 'HTML_TIMESTAMP=NO' >> docs/doxyfile.in.cmake
 # fix python shebangs
 sed -i \
-    -e "s|^#!%{_bindir}/env python3$|#!%{_bindir}/python3|g" \
+    -e "s|^#!/usr/bin/env python3$|#!/usr/bin/python3|g" \
   apps/lensfun-add-adapter \
   apps/lensfun-update-data \
-  apps/lensfun-convert-lcp \
   apps/lensfun/__init__.py.in
-
-# fix shell shebang
-sed -i \
-    -e "s|^#!%{_bindir}/env sh$|#!%{_bindir}/sh|g" \
-  apps/g-lensfun-update-data
 
 %build
 %cmake \
@@ -146,7 +155,7 @@ sed -i \
     -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
     -DINSTALL_HELPER_SCRIPTS=ON \
     -DPYTHON_EXECUTABLE=%{_bindir}/python3
-%make_build lensfun doc
+make %{?_smp_mflags} lensfun doc
 
 %install
 %cmake_install
@@ -154,8 +163,10 @@ sed -i \
 rm -rf %{buildroot}%{_datadir}/lensfun/tests
 # Create udate folder for lensfun data
 mkdir -p %{buildroot}%{_localstatedir}/lib/lensfun-updates
-# Regererate pyc files to not contain buildroot
+# Regererate pyc files to not contain %{buildroot}
 %py3_compile %{buildroot}/%{python3_sitelib}/lensfun/
+
+%fdupes %{buildroot}
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -166,6 +177,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 
 %files doc
 %doc README.md
+%doc docs/*
 %doc %{_defaultdocdir}/%{name}
 
 %files data
@@ -187,7 +199,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %files tools
 %{_bindir}/g-lensfun-update-data
 %{_bindir}/lensfun-add-adapter
-%{_bindir}/lensfun-convert-lcp
 %{_bindir}/lensfun-update-data
 %{_mandir}/man?/g-lensfun-update-data*
 %{_mandir}/man?/lensfun-add-adapter*

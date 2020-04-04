@@ -362,4 +362,41 @@
     <comment></comment>
     <requestid>787553</requestid>
   </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>301e8d6f0d8308f0c421a2857e9d6e44</srcmd5>
+    <version>0.3.2</version>
+    <time>1585995645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the license tag. The data files are under CC-BY-SA-3.0.
+
+- update lensfun data to 48775126:
+  - Add Olympus OM-D E-M5 Mark III camera.
+  - Add Olympus E-M1 Mark III
+  - Build-Test failed - fix
+  - commit 3f1289b44afb1b6f2ee22a8e87c7d1fb074be0f1 doubled entry
+    for canon 15mm fisheye. Removed the one without data
+  - Add 24-105mm f/3.5-5.6, 15mm f/2.8 Fisheye #1088
+  - Improve Iphone XS profiles.
+  - Move X100F from mil-fujifilm.xml
+  - Move X100F to compact-fujifilm.xml
+  - Add Iphone XS profiles contributed in #982
+  - Merge pull request #1044 from EdgarLux/master
+  - Add DC-S1 and DC-S1R per #1099
+  - Add DMC-TZ96 per #1094
+  - Added Canon EOS KISS M camera (it's actually the same as the
+    Canon EOS M50, just a version of it released for the Japanese
+    market)
+  - data:lens: Improve TCA and vignetting for Sony FE 85mm f/1.4 GM
+  - data:lens: Improve TCA and vignetting for Sony FE 16-35mm f/2.8
+    GM
+  - Upload 7471de #1072. Distortion and TCA corrections for Pentax
+    HD PENTAX-DA 55-300mm f/4.5-6.3 ED PLM WR RE (×1,534).
+  - Upload  3ed26e #479. Dostortion and TCA, Minolta AF 24-105mm
+    f/3.5-4.5 (D).
+  - Upload d4bd55 #478. Distortion and TCA for Minolta AF 17-35mm
+    f/2.8-4 (D).
+  - Upload fba583 #477. Minolta lens 50mm F1.4, distortion and TCA.
+  - Upload 3a647c #1075. NIKKOR Z 24-70mm f2,8 S, distortion and</comment>
+    <requestid>790794</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Apr  2 07:30:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the license tag. The data files are under CC-BY-SA-3.0.
+
+-------------------------------------------------------------------
+Wed Apr  1 10:14:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update lensfun data to 48775126:
+  - Add Olympus OM-D E-M5 Mark III camera.
+  - Add Olympus E-M1 Mark III
+  - Build-Test failed - fix
+  - commit 3f1289b44afb1b6f2ee22a8e87c7d1fb074be0f1 doubled entry
+    for canon 15mm fisheye. Removed the one without data
+  - Add 24-105mm f/3.5-5.6, 15mm f/2.8 Fisheye #1088
+  - Improve Iphone XS profiles.
+  - Move X100F from mil-fujifilm.xml
+  - Move X100F to compact-fujifilm.xml
+  - Add Iphone XS profiles contributed in #982
+  - Merge pull request #1044 from EdgarLux/master
+  - Add DC-S1 and DC-S1R per #1099
+  - Add DMC-TZ96 per #1094
+  - Added Canon EOS KISS M camera (it's actually the same as the
+    Canon EOS M50, just a version of it released for the Japanese
+    market)
+  - data:lens: Improve TCA and vignetting for Sony FE 85mm f/1.4 GM
+  - data:lens: Improve TCA and vignetting for Sony FE 16-35mm f/2.8
+    GM
+  - Upload 7471de #1072. Distortion and TCA corrections for Pentax
+    HD PENTAX-DA 55-300mm f/4.5-6.3 ED PLM WR RE (×1,534).
+  - Upload  3ed26e #479. Dostortion and TCA, Minolta AF 24-105mm
+    f/3.5-4.5 (D).
+  - Upload d4bd55 #478. Distortion and TCA for Minolta AF 17-35mm
+    f/2.8-4 (D).
+  - Upload fba583 #477. Minolta lens 50mm F1.4, distortion and TCA.
+  - Upload 3a647c #1075. NIKKOR Z 24-70mm f2,8 S, distortion and
+    TCA.
+  - Upload 75f392 #476. Minolta AF 50mm f/2.8 Macro distortion and
+    TCA.
+  - The SM-N950U is the Galaxy Note 8
+  - Add an alias for another name of the Samsung Galaxy S8
+  - Upload 34eb2e #1047. Better correction for Leica 12-60mm µ4/3.
+  - Upload 6180fa #468. Add TCA corrections for Canon PowerShot
+    A640.
+  - Upload 52e6be #465. Distortion and vignetting for Canon FD 50mm
+    f/1.4 SCC.
+  - Upload 5f1aab #454. Distortion and TCA corrections for Sony FE
+    100-400 on full frame.
+  - Upload cb3f38. New camera Canon Powershot SX50 HS with fixed
+    lens. Distortion and TCA corrections for the lens. String
+    corrections for SX60 HS for better automatic recognition.
+  - Distortion & TCA data for the Panasonic Leica DG 10-25mm f/1.7
+  - Add Sony E mount for Meike 35mm f/1.7
+  - Added camera entry for Canon EOS EOS Rebel T6s
+
+-------------------------------------------------------------------
+Tue Mar 31 08:55:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Revert lensfun to 0.3.2. Git snapshots cause
+  build and runtime issues in different packages (boo#1168150)
+- Add patches back:
+  * lensfun-respect-DESTDIR.patch
+  * lensfun-test-database.patch
+  * 0060-Various-CMake-patches-from-the-mailing-list.patch
+  * lensfun_fix_memory_leak.patch
+
+-------------------------------------------------------------------
 Thu Mar 19 08:38:17 UTC 2020 - info@paolostivanin.com
 
 - Update to version v0.3.95.1584325617.48775126:
@@ -14,6 +80,17 @@ Thu Mar 19 08:38:17 UTC 2020 - info@paolostivanin.com
 Mon Jan 13 10:59:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the package URLs
+
+-------------------------------------------------------------------
+Thu Jan  2 15:04:34 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update lensdatabase to curent state (post 0.3.95)
+
+-------------------------------------------------------------------
+Wed Sep 11 09:45:39 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- adapt to github hosting
+- update lens database
 
 -------------------------------------------------------------------
 Thu Nov 30 14:21:55 UTC 2017 - dimstar@opensuse.org
