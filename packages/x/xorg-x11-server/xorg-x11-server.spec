@@ -42,7 +42,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.7+0
+Version:        1.20.8+0
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -248,8 +248,6 @@ Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 
 Patch1505:      U_xwayland-Allow-passing-a-fd.patch
 
-Patch1600:      u_fno-common.patch
-
 %description
 This package contains the X.Org Server.
 
@@ -397,7 +395,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1502 -p1
 %patch1503 -p1
 %patch1505 -p1
-%patch1600 -p1
 
 %build
 %define _lto_cflags %{nil}

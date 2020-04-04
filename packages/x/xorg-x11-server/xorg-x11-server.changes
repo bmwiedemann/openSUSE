@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:17:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.20.8+0: 
+  * Revert "dri2: Don't make reference to noClientException"
+  * dix: Check for NULL spriteInfo in GetPairedDevice
+  * os: Ignore dying client in ResetCurrentRequest
+  * modesetting: remove unnecessary error message, fix zaphod leases
+  * Fix building with `-fno-common`
+  * xwayland: clear pixmaps after creation in rootless mode
+  * glamor: Fix a compiler warning since the recent OOM fixes.
+  * Restrict 1x1 pixmap filling optimization to GXcopy
+  * Add xf86OSInputThreadInit to stub os-support as well
+  * Fix old-style definition warning for xf86OSInputThreadInit()
+  * xwayland/glamor-gbm: Handle DRM_FORMAT_MOD_INVALID gracefully
+  * configure: Define GLAMOR_HAS_EGL_QUERY_DRIVER when available
+  * modesetting: Disable atomic support by default
+  * modesetting: Explicitly #include "mi.h"
+  * xfree86/modes: Bail from xf86RotateRedisplay if pScreen->root is NULL
+  * xwayland: Split up xwl_screen_post_damage into two phases
+  * xwayland: Call glamor_block_handler from xwl_screen_post_damage
+  * xwayland: Add xwl_window_create_frame_callback helper
+  * xwayland: Use single frame callback for Present flips and normal updates
+  * xwayland: Use frame callbacks for Present vblank events
+  * xwayland: Delete all frame_callback_list nodes in xwl_unrealize_window
+  * glamor: Propagate FBO allocation failure for picture to texture upload
+  * glamor: Error out on out-of-memory when allocating PBO for FBO access
+  * glamor: Propagate glamor_prepare_access failures in copy helpers
+  * glamor: Fallback to system memory for RW PBO buffer allocation
+- supersedes u_fno-common.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 14:09:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - specfile: reenabled XFree86-VidModeExtension (boo#1164020)

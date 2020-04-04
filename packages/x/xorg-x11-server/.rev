@@ -3371,4 +3371,38 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment>- specfile: reenabled XFree86-VidModeExtension (boo#1164020)</comment>
     <requestid>779939</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>2e9ef43138f3903b6fcc51086da392b5</srcmd5>
+    <version>1.20.8+0</version>
+    <time>1585995435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.8+0: 
+  * Revert &quot;dri2: Don't make reference to noClientException&quot;
+  * dix: Check for NULL spriteInfo in GetPairedDevice
+  * os: Ignore dying client in ResetCurrentRequest
+  * modesetting: remove unnecessary error message, fix zaphod leases
+  * Fix building with `-fno-common`
+  * xwayland: clear pixmaps after creation in rootless mode
+  * glamor: Fix a compiler warning since the recent OOM fixes.
+  * Restrict 1x1 pixmap filling optimization to GXcopy
+  * Add xf86OSInputThreadInit to stub os-support as well
+  * Fix old-style definition warning for xf86OSInputThreadInit()
+  * xwayland/glamor-gbm: Handle DRM_FORMAT_MOD_INVALID gracefully
+  * configure: Define GLAMOR_HAS_EGL_QUERY_DRIVER when available
+  * modesetting: Disable atomic support by default
+  * modesetting: Explicitly #include &quot;mi.h&quot;
+  * xfree86/modes: Bail from xf86RotateRedisplay if pScreen-&gt;root is NULL
+  * xwayland: Split up xwl_screen_post_damage into two phases
+  * xwayland: Call glamor_block_handler from xwl_screen_post_damage
+  * xwayland: Add xwl_window_create_frame_callback helper
+  * xwayland: Use single frame callback for Present flips and normal updates
+  * xwayland: Use frame callbacks for Present vblank events
+  * xwayland: Delete all frame_callback_list nodes in xwl_unrealize_window
+  * glamor: Propagate FBO allocation failure for picture to texture upload
+  * glamor: Error out on out-of-memory when allocating PBO for FBO access
+  * glamor: Propagate glamor_prepare_access failures in copy helpers
+  * glamor: Fallback to system memory for RW PBO buffer allocation
+- supersedes u_fno-common.patch</comment>
+    <requestid>789725</requestid>
+  </revision>
 </revisionlist>
