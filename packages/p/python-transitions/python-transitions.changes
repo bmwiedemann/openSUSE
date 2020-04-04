@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:23:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.8.1
+  * Feature: Introduced experimental HierarchicalAsync(Graph)Machine
+  * Feature #405: Support for nested Enums in HierarchicalMachine
+  * Bugfix #400: Fix style initialization when initial state is an Enum
+  * Bugfix #403: AsyncMachine.dispatch now returns a boolean asexpected
+  * Bugfix #413: Improve diagram output for HierarchicalMachine
+  * Increased coverage
+  * Introduced xdist for parallel testing with pytest
+
+-------------------------------------------------------------------
 Wed Mar 25 14:51:54 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.8.0

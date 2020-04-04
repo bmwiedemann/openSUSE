@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transitions
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
@@ -52,6 +52,8 @@ implement FSMs (finite state machines) in python.
 
 %prep
 %setup -q -n transitions-%{version}
+find . -type f -exec chmod -x {} \;
+sed -i 's/\r$//' LICENSE Changelog.md README.md
 
 %build
 %python_build
