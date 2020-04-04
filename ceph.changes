@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:08:29 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.0-108-g8cf4f02b08:
+  + rebase on tip of upstream "octopus" branch, SHA1 9267cc03e1b1612109dd57cc6ce74c34ed1f1d00
+    * cephadm: Fix truncated output of "ceph mgr dump"
+
+-------------------------------------------------------------------
+Tue Mar 24 16:20:46 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.2.0-29-g274f7bc2e7:
+  + rebase on tip of upstream "octopus" branch, SHA1 a8062613c81ad08815edcdf06e668fcc77270a03
+    * upstream 15.2.0 (first Octopus stable) release
+      https://ceph.io/releases/v15-2-0-octopus-released/
+
+-------------------------------------------------------------------
+Mon Mar 23 11:20:40 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.1-220-g0f87374dc1:
+  + rebase on tip of upstream "octopus" branch, SHA1 243cbd6224921f7f5c2463705c75cb9eafd0db5c
+    * upstream 15.1.1 (Octopus release candidate) release
+      https://github.com/ceph/ceph/releases/tag/v15.1.1
+  + cephadm: read everything when calling "ceph mgr dump"
+
+-------------------------------------------------------------------
+Fri Mar 13 11:08:51 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-2160-g310e512e18:
+  + rebase on tip of upstream "octopus" branch, SHA1 465f3855623e30f3b4694f3090adbe27c8cd49c3
+
+-------------------------------------------------------------------
+Thu Mar  5 12:33:00 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 15.1.0-1766-g3d31471523: 
+  + rebase on tip of upstream master, SHA1 25b8ecc216b02e848f9719ced8c84670de656e78
+
+-------------------------------------------------------------------
 Mon Mar  2 14:19:37 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 15.1.0-1521-gcdf35413a0:
