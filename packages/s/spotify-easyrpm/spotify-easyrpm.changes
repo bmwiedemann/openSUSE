@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 02 23:03:35 UTC 2020 - david@macemail.co.uk
+
+- Fix no-gpg-checks error
+- Fix for condition of more then 1 Spotify RPM found in rpmbuild/RPMs
+
+-------------------------------------------------------------------
 Sat Nov 30 22:02:35 UTC 2019 - david@macemail.co.uk
 
 - Replace createrepo with createrepo_c

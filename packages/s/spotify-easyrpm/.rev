@@ -15,4 +15,12 @@
     <comment>replace requires createrepo with createrepo_c</comment>
     <requestid>752659</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e61af2b8948e3ec61fad4c954078c5e7</srcmd5>
+    <version>2.1.1</version>
+    <time>1585995919</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept v2.1.1 into Factory</comment>
+    <requestid>791025</requestid>
+  </revision>
 </revisionlist>
