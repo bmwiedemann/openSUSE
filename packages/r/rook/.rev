@@ -201,4 +201,20 @@
     <comment></comment>
     <requestid>786764</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b9e7466afb2c3262c734fcbc779bf548</srcmd5>
+    <version>1.2.7+git0.g1acfd182</version>
+    <time>1585995624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.2.7 (bsc#1168160):
+  * Apply the expected lower PG count for rgw metadata pools (#5091)
+  * Reject devices smaller than 5GiB for OSDs (#5089)
+  * Add extra check for filesystem to skip boot volumes for OSD configuration (#5022)
+  * Avoid duplication of mon pod anti-affinity (#4998)
+  * Update service monitor definition during upgrade (#5078)
+  * Resizer container fix due to misinterpretation of the cephcsi version (#5073-1)
+  * Set ResourceVersion for Prometheus rules (#4528)
+  * Upgrade doc clarification for RBAC related to the helm chart (#5054)</comment>
+    <requestid>790202</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:02:05 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Update to v1.2.7 (bsc#1168160):
+  * Apply the expected lower PG count for rgw metadata pools (#5091)
+  * Reject devices smaller than 5GiB for OSDs (#5089)
+  * Add extra check for filesystem to skip boot volumes for OSD configuration (#5022)
+  * Avoid duplication of mon pod anti-affinity (#4998)
+  * Update service monitor definition during upgrade (#5078)
+  * Resizer container fix due to misinterpretation of the cephcsi version (#5073-1)
+  * Set ResourceVersion for Prometheus rules (#4528)
+  * Upgrade doc clarification for RBAC related to the helm chart (#5054)
+
+-------------------------------------------------------------------
 Wed Mar 18 14:27:07 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Update to v1.2.6:
