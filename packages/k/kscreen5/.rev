@@ -731,4 +731,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.18.3</comment>
     <requestid>783633</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>5ae5bce68973eeb94ce8642c23fd3c99</srcmd5>
+    <version>5.18.4.1</version>
+    <time>1585994994</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.4.1 - second try</comment>
+    <requestid>790425</requestid>
+  </revision>
 </revisionlist>
