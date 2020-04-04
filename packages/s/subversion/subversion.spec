@@ -62,6 +62,7 @@ Patch39:        subversion-fix-parallel-build-support-for-perl-bindings.patch
 Patch40:        subversion-perl-underlinking.patch
 # PATCH-FIX-UPSTREAM subversion-1.12.0-swig-4.patch -- Support Swig 4
 Patch41:        subversion-1.12.0-swig-4.patch
+Patch42:        gcc10-do-not-optimize-get_externals_to_pin.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -242,6 +243,7 @@ parameters and keywords for the svn command and other tools.
 %if 0%{?suse_version} > 1500
 %patch41 -p1
 %endif
+%patch42 -p1
 
 %build
 # Re-boot strap, needed for patch37

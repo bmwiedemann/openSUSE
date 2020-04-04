@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:02:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Fix boo#1167467 by gcc10-do-not-optimize-get_externals_to_pin.patch.
+
+-------------------------------------------------------------------
 Wed Jan  8 09:59:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable dependency on ctypesgen which is borked with new pythons
