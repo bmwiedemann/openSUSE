@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Fri Mar  6 10:01:51 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Remove dependency on brotli, only the library is needed.
+-------------------------------------------------------------------
 Thu Feb 27 07:51:33 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.2 (boo#1165241)

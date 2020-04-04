@@ -67,7 +67,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  permissions
 Requires(pre):  shadow
-Requires:       brotli
 # keep until libbrotli-devel bug is fixed
 Requires:       libbrotlidec1
 Recommends:     wireshark-ui = %{version}
