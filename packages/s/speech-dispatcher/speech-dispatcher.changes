@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:01:36 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1160416.
+
+-------------------------------------------------------------------
 Thu Jan 23 17:28:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove texlive-texinfo build dependency. The tarball contains

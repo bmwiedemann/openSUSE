@@ -174,6 +174,7 @@ sed -i "s/#AddModule \"dummy\"/AddModule \"dummy\"/" -i config/speechd.conf
 sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.conf
 
 %build
+%global optflags %{optflags} -fcommon
 %configure --disable-static \
         --with-libao \
         --with-alsa \
@@ -182,7 +183,7 @@ sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.c
         --without-flite \
         --without-kali \
         --with-ibmtts=no
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
