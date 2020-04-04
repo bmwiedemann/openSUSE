@@ -1,0 +1,77 @@
+commit 2115054bb8a41bb7ddffce32e396d9ffced300b1
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sat Sep 7 06:19:50 2019 +0200
+
+    Sort list of .dat files
+    
+    Sort list of .dat files
+    in .png generation to make builds reproducible.
+    See https://reproducible-builds.org/ for why this matters.
+    
+    Note: scandir is only available on POSIX-compliant platforms (Linux,
+    BSD, MacOSX, cygwin) - so others would need some compat layer.
+    
+    Reviewers: mont29
+    
+    Differential Revision: https://developer.blender.org/D5858
+
+diff --git a/source/blender/datatoc/datatoc_icon.c b/source/blender/datatoc/datatoc_icon.c
+index 82c5470943f..98a2aabc01c 100644
+--- a/source/blender/datatoc/datatoc_icon.c
++++ b/source/blender/datatoc/datatoc_icon.c
+@@ -308,7 +308,8 @@ static bool icon_merge(const char *file_src,
+ static bool icondir_to_png(const char *path_src, const char *file_dst)
+ {
+   /* Takes a path full of 'dat' files and writes out */
+-  DIR *dir;
++  struct dirent **namelist;
++  int dirn;
+   const struct dirent *fname;
+   char filepath[1024];
+   char *filename;
+@@ -319,8 +320,8 @@ static bool icondir_to_png(const char *path_src, const char *file_dst)
+   unsigned int canvas_w = 0, canvas_h = 0;
+ 
+   errno = 0;
+-  dir = opendir(path_src);
+-  if (dir == NULL) {
++  dirn = scandir(path_src, &namelist, NULL, alphasort);
++  if (dirn == -1) {
+     printf(
+         "%s: failed to dir '%s', (%s)\n", __func__, path_src, errno ? strerror(errno) : "unknown");
+     return false;
+@@ -330,7 +331,8 @@ static bool icondir_to_png(const char *path_src, const char *file_dst)
+   path_str_len = path_ensure_slash(filepath);
+   filename = &filepath[path_str_len];
+ 
+-  while ((fname = readdir(dir)) != NULL) {
++  while (dirn--) {
++    fname = namelist[dirn];
+     if (path_test_extension(fname->d_name, ".dat")) {
+ 
+       strcpy(filename, fname->d_name);
+@@ -342,9 +344,10 @@ static bool icondir_to_png(const char *path_src, const char *file_dst)
+         fail++;
+       }
+     }
++    free(fname);
+   }
+ 
+-  closedir(dir);
++  free(namelist);
+ 
+   if (found == 0) {
+     printf("%s: dir '%s' has no icons\n", __func__, path_src);
+diff --git a/source/blender/datatoc/datatoc_icon.py b/source/blender/datatoc/datatoc_icon.py
+index 16092431195..83007fa7d4d 100755
+--- a/source/blender/datatoc/datatoc_icon.py
++++ b/source/blender/datatoc/datatoc_icon.py
+@@ -111,7 +111,7 @@ def icondir_to_png(path_src, file_dst):
+     import os
+     import array
+ 
+-    files = [os.path.join(path_src, f) for f in os.listdir(path_src) if f.endswith(".dat")]
++    files = [os.path.join(path_src, f) for f in sorted(os.listdir(path_src)) if f.endswith(".dat")]
+ 
+     # First check if we need to bother.
+     if os.path.exists(file_dst):

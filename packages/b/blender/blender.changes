@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 00:57:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort file lists
+  to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
 Fri Mar 13 16:54:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 2.82a:

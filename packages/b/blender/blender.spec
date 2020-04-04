@@ -63,6 +63,8 @@ Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source99:       series
 # only rely on patch availibility, if python_36 is requested
 Patch0:         make_python_3.6_compatible.patch
+# PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
+Patch1:         reproducible.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -228,6 +230,7 @@ popd
 %if %{with python_36}
 %patch0 -p1
 %endif
+%patch1 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
