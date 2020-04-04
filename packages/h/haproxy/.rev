@@ -792,4 +792,12 @@
     <comment></comment>
     <requestid>774671</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>418cf1183ad7285881919053abe3c540</srcmd5>
+    <version>2.1.4+git0.3cfc2f1d9</version>
+    <time>1585995654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.4+git0.3cfc2f1d9: (boo#1168023) CVE-2020-11100</comment>
+    <requestid>790908</requestid>
+  </revision>
 </revisionlist>
