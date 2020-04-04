@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:54:38 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- starting with GCC 10, the default of '-fcommon' option will
+  change to '-fno-common'. Because cpio build fails with
+  'fno-common', add '-fcommon' option to optflags as a temporary
+  workaround for this problem till it's properly fixed [bsc#1160870] 
+
+-------------------------------------------------------------------
 Mon Nov  4 15:53:41 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - add cpio-2.12-CVE-2019-14866.patch to fix a security issue where
