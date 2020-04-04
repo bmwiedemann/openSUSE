@@ -6,16 +6,16 @@ diff -uNr antlr4-4.7.2.org/runtime/Cpp/CMakeLists.txt antlr4-4.7.2/runtime/Cpp/C
  if(EXISTS LICENSE.txt)
  install(FILES LICENSE.txt
 -        DESTINATION "share/doc/libantlr4")
-+        DESTINATION "share/doc/packages/libantlr4-runtime4_7_2")
++        DESTINATION "share/doc/packages/libantlr4-runtime@LIBVER@")
  elseif(EXISTS ../../LICENSE.txt) 
  install(FILES ../../LICENSE.txt
 -    DESTINATION "share/doc/libantlr4")
-+    DESTINATION "share/doc/packages/libantlr4-runtime4_7_2")
++    DESTINATION "share/doc/packages/libantlr4-runtime@LIBVER@")
  endif()
  
  install(FILES README.md VERSION 
 -    DESTINATION "share/doc/libantlr4")
-+    DESTINATION "share/doc/packages/libantlr4-runtime4_7_2")
++    DESTINATION "share/doc/packages/libantlr4-runtime@LIBVER@")
  
  set(CPACK_PACKAGE_CONTACT "antlr-discussion@googlegroups.com")
  set(CPACK_PACKAGE_VERSION ${ANTLR_VERSION})

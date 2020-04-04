@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
-%define libver 4_7_2
+%define libver 4_8
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
-
 Name:           antlr4
-Version:        4.7.2
+Version:        4.8
 Release:        0
 Summary:        Java parser generator
 # C# runtime is MIT-licensed, but currently it is not used in this package
 License:        BSD-3-Clause
 URL:            https://www.antlr.org/
 Source0:        https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/antlr4-%{version}.tar.gz
-Patch0:         antlr4-install-path.patch
+Source100:      antlr4-install-path.patch.in
+Patch0:         unicodedata.patch
 BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  maven-local
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  mvn(com.ibm.icu:icu4j)
-BuildRequires:  mvn(com.webguys:string-template-maven-plugin)
 BuildRequires:  mvn(org.abego.treelayout:org.abego.treelayout.core)
 BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.antlr:antlr-runtime)
@@ -53,7 +52,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.glassfish:javax.json)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
-BuildRequires:  mvn(org.twdata.maven:mojo-executor)
 BuildRequires:  pkgconfig(uuid)
 #!BuildRequires: stringtemplate4 antlr3-tool
 
@@ -128,10 +126,14 @@ binary files.
 
 %prep
 %setup -q
-%patch0 -p1
+cat %{SOURCE100} | sed 's#@LIBVER@#%{libver}#g' | patch -p1 -u
 
 find -name \*.jar -delete
 perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.st
+
+# Temporary solution to a proble of code too big when generated with newer ICU4J versions
+%pom_remove_plugin :string-template-maven-plugin tool
+%patch0
 
 # Missing test deps: org.seleniumhq.selenium:selenium-java
 %pom_disable_module runtime-testsuite
@@ -153,7 +155,7 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 
 pushd runtime/Cpp
 %cmake -DWITH_DEMO=False
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -166,10 +168,9 @@ pushd runtime/Cpp
 %cmake_install
 popd
 # drop static library as unused
-rm %{buildroot}/%{_libdir}/lib%{name}-runtime.a
+rm -f %{buildroot}/%{_libdir}/lib%{name}-runtime.a
 
 %post -n %{runtime_cpp_libver} -p /sbin/ldconfig
-
 %postun -n %{runtime_cpp_libver} -p /sbin/ldconfig
 
 %files tool -f .mfiles-antlr4

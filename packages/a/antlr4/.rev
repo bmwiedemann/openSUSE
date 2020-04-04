@@ -22,4 +22,12 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>746117</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0570763cbce867433e0b73b0a05c9a49</srcmd5>
+    <version>4.8</version>
+    <time>1585995869</time>
+    <user>dimstar_suse</user>
+    <comment>4.7.2 -&gt; 4.8</comment>
+    <requestid>791022</requestid>
+  </revision>
 </revisionlist>
