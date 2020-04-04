@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:20:39 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix build with gcc10 fix-gcc10-build.patch (boo#1167862)
+- Use python3 rather then python2 
+
+-------------------------------------------------------------------
 Mon Mar 16 14:09:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.0

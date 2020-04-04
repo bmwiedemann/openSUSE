@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.gz
+Patch0:         fix-gcc10-build.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -32,7 +33,7 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3
 Requires:       bc
 Requires:       man
 Recommends:     terminfo
@@ -52,6 +53,7 @@ This package contains development files for the fish shell.
 
 %prep
 %setup -q
+%autopatch -p1
 
 # fix E: env-script-interpreter
 find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
