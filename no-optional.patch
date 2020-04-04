@@ -1,10 +1,10 @@
-Index: dkimpy-0.9.3/dkim/__init__.py
+Index: dkimpy-1.0.3/dkim/__init__.py
 ===================================================================
---- dkimpy-0.9.3.orig/dkim/__init__.py
-+++ dkimpy-0.9.3/dkim/__init__.py
-@@ -38,18 +38,9 @@ import logging
- import re
+--- dkimpy-1.0.3.orig/dkim/__init__.py
++++ dkimpy-1.0.3/dkim/__init__.py
+@@ -40,18 +40,9 @@ import sys
  import time
+ import binascii
  
 -# only needed for arc
 -try:
