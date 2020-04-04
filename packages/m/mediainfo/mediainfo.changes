@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  3 18:18:50 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 20.03
+  Added features:
+  * AC-4 full featured support (presentations, groups,
+    substreams)
+  * MPEG-H 3D Audio basic support
+  * MPEG-TS: audio preselection descriptor support
+  * Dolby Vision v2 detection
+  * MPEG-4: support of colr/nclx (color information) box
+  Bugs fixed:
+  * URL encoding option fixes, permitting to use URL encoded or
+    non URL encoded links
+  * AAC: fix SBR frequency when in ADIF
+  * DPX: ColorimetricSpecification and TransferCharacteristic
+    were inverted
+  * Several crash and memory leaks fixes
+
+- Dropped Group tag
+
+-------------------------------------------------------------------
 Wed Sep 11 13:08:25 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 19.09

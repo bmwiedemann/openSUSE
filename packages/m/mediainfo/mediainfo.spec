@@ -1,7 +1,7 @@
 #
 # spec file for package mediainfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2007-2011 The Packman Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           mediainfo
-Version:        19.09
+Version:        20.03
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://mediaarea.net
 Source0:        https://mediaarea.net/download/source/%{name}/%{version}/%{name}_%{version}.tar.xz
 BuildRequires:  fdupes
