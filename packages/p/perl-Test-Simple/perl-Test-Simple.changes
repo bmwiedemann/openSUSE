@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 31 03:11:38 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.302174
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302174  2020-03-30 13:55:54-07:00 America/Los_Angeles
+  
+      - Fallback if JSON::PP is not available during IPC errors
+
+-------------------------------------------------------------------
+Sat Mar 28 03:09:38 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.302173
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302173  2020-03-27 09:00:16-07:00 America/Los_Angeles
+  
+      - Add extra debugging for "Not all files from hub '...' have been collected!"
+
+-------------------------------------------------------------------
 Tue Mar 10 03:28:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.302172

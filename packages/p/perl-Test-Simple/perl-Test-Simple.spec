@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test-Simple
-Version:        1.302172
+Version:        1.302174
 Release:        0
 %define cpan_name Test-Simple
 Summary:        Basic utilities for writing tests
