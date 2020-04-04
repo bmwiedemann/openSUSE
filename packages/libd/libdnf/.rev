@@ -271,4 +271,12 @@
   + Patch: libdnf-0.45.0-handle-all-rpmdb-variants.patch</comment>
     <requestid>787280</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>39eed16ff1278b4e0c8219d10eb9ca8c</srcmd5>
+    <version>0.45.0</version>
+    <time>1585995457</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>789756</requestid>
+  </revision>
 </revisionlist>

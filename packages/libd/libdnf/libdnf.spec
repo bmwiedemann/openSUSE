@@ -62,7 +62,6 @@ BuildRequires:  rpm-devel >= 4.11.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcrypto)
