@@ -1,7 +1,7 @@
 #
 # spec file for package sbl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,8 +68,8 @@ this python module enables orca to use brld for braille output
 %patch7 -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE" \
-	LIB_CFLAGS="%{optflags} -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE -fPIC $(pkg-config speech-dispatcher --cflags)"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE" \
+	LIB_CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE -fPIC $(pkg-config speech-dispatcher --cflags)"
 
 %install
 %make_install LIBINSTPATH=%{_libdir}
