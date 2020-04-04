@@ -6,32 +6,34 @@ Subject: remove gconf-2.0 from wscript
  wscript | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/wscript b/wscript
-index 0254af3..32687d2 100644
---- a/wscript
-+++ b/wscript
-@@ -303,7 +303,6 @@ def configure(conf):
+--- a/src/gui/gui.h
++++ b/src/gui/gui.h
+@@ -4,13 +4,6 @@
+ void gui_init(int argc, char *argv[]);
+ void gui_main(void);
  
-     common_libs = string.join(
-     '''
--    "gconf-2.0"
-     "gmodule-2.0"
-     "glib-2.0"
-     "libgsf-1 >= 1.14"
-
-From: Teus Benschop <teusjannette@gmail.com>
-Date: Sat, 17 Nov 2018 16:38:45 +0100
-Subject: remove gconf-2.0 from source
-
----
- src/gnome2/gui.c | 66 --------------------------------------------------------
- src/gui/gui.h    |  7 ------
- 2 files changed, 73 deletions(-)
-
-diff --git a/src/gnome2/gui.c b/src/gnome2/gui.c
-index 5fc4ca3..23fb120 100644
---- a/src/gnome2/gui.c
-+++ b/src/gnome2/gui.c
+-#ifndef WIN32
+-#include <gconf/gconf-client.h>
+-void gconf_setup(void);
+-#endif
+-
+-#define GS_GCONF_MAX 6
+-
+ #ifdef DEBUG
+ 
+ gchar *XI_g_strdup_printf(const char *filename,
+--- a/cmake/XiphosDependencies.cmake
++++ b/cmake/XiphosDependencies.cmake
+@@ -86,7 +86,6 @@ pkg_check_modules(Gnome REQUIRED IMPORTE
+   "gobject-2.0"
+   "libsoup-2.4"
+   "pango"
+-  "gconf-2.0"
+   "libgsf-1>=1.14"
+   "libxml-2.0>=2.7.8"
+   )
+--- a/src/gtk/gui.c
++++ b/src/gtk/gui.c
 @@ -68,9 +68,6 @@ void gui_init(int argc, char *argv[])
  	if (!gtk_init_with_args(&argc, &argv, NULL, NULL, NULL, NULL)) {
  		exit(1);
@@ -112,21 +114,3 @@ index 5fc4ca3..23fb120 100644
  #ifdef DEBUG
  
  /* NOTE: these routines are here only and exactly because there is no other */
-diff --git a/src/gui/gui.h b/src/gui/gui.h
-index a6628e6..202e7ca 100644
---- a/src/gui/gui.h
-+++ b/src/gui/gui.h
-@@ -4,13 +4,6 @@
- void gui_init(int argc, char *argv[]);
- void gui_main(void);
- 
--#ifndef WIN32
--#include <gconf/gconf-client.h>
--void gconf_setup(void);
--#endif
--
--#define GS_GCONF_MAX 6
--
- #ifdef DEBUG
- 
- gchar *XI_g_strdup_printf(const char *filename,

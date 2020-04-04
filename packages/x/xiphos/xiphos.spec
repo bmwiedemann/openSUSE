@@ -1,7 +1,7 @@
 #
 # spec file for package xiphos
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xiphos
-Version:        4.1.0
+Version:        4.1.0+git.1580414635.9e573336
 Release:        0
 Summary:        GNOME-based Bible research tool
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Other
-Url:            http://xiphos.org/
-Source0:        https://github.com/crosswire/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            http://xiphos.org/
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.desktop
-Patch0:         xiphos-build-without-scrollkeeper.patch
-Patch1:         xiphos-remove-gconf-2.0.patch
-BuildRequires:  docbook-utils-minimal
+# PATCH-FIX-UPSTREAM xiphos-remove-gconf-2.0.patch gh#crosswire/xiphos#986 mcepl@suse.com
+# Remove gconf-2.0
+# patch originally from Debian https://salsa.debian.org/pkg-crosswire-team/xiphos/tree/master/debian/patches
+# no. 16 and 17.
+Patch0:         xiphos-remove-gconf-2.0.patch
+# PATCH-FIX-OPENSUSE find_biblesync.patch mcepl@suse.com
+# Allow working with ancient cmake 3.10 on SLE/Leap 15.
+Patch1:         find_biblesync.patch
+BuildRequires:  appstream-glib
+BuildRequires:  cmake
+# BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool
+BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  yelp-tools
+BuildRequires:  zip
 BuildRequires:  pkgconfig(biblesync) >= 1.1.2
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -47,12 +58,12 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sword) >= 1.7.3
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(yelp-xsl)
 Requires:       sword
+Recommends:     %{name}-lang
 Recommends:     sword-bible
 Recommends:     sword-commentary
 Provides:       sword-frontend
-Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} < 1550
 BuildRequires:  scrollkeeper
 BuildRequires:  pkgconfig(gconf-2.0)
@@ -71,20 +82,21 @@ by Crosswire Bible Society through the SWORD Project.
 %prep
 %setup -q
 %if 0%{?suse_version} >= 1550
-%autopatch -p1
+%patch0 -p1
+%else
+%patch1 -p1
 %endif
+
 
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
-./waf configure \
-	--prefix=%{_prefix} \
-	--enable-webkit2 \
-	--gtk=3
-./waf build
+export PYTHON="%{_bindir}/python3"
+%cmake -DGTKHTML=ON
+%cmake_build
 
 %install
-./waf install --destdir=%{buildroot}
+%cmake_install
 %if 0%{?suse_version} < 1550
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file -n %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -93,8 +105,7 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.deskto
 %endif
 # package docs with macro
 rm -frv %{buildroot}/%{_datadir}/doc/%{name}
-install -Dm644 xiphos.1 %{buildroot}%{_mandir}/man1/xiphos.1
-install -Dm644 xiphos-nav.1 %{buildroot}%{_mandir}/man1/xiphos-nav.1
+install -D -m644 -t %{buildroot}%{_mandir}/man1/ build/desktop/xiphos*.1
 %fdupes -s %{buildroot}/%{_datadir}
 %find_lang %{name}
 
@@ -107,8 +118,8 @@ install -Dm644 xiphos-nav.1 %{buildroot}%{_mandir}/man1/xiphos-nav.1
 %endif
 
 %files
-%defattr(-,root,root)
-%doc COPYING README.md RELEASE-NOTES Xiphos.ogg
+%license COPYING
+%doc README.md RELEASE-NOTES doc/Xiphos.ogg AUTHORS ChangeLog
 %dir %{_datadir}/%{name}
 %{_bindir}/xiphos*
 %{_datadir}/xiphos/*
@@ -117,11 +128,7 @@ install -Dm644 xiphos-nav.1 %{buildroot}%{_mandir}/man1/xiphos-nav.1
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/xiphos.appdata.xml
 %{_mandir}/man1/*
-%if 0%{?suse_version} < 1550
-%dir %{_datadir}/omf
-%endif
 
 %files lang -f %{name}.lang
-%defattr(-, root, root)
 
 %changelog

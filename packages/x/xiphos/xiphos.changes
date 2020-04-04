@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 16 11:16:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add find_biblesync.patch to make the package build on the
+  Leap/SLE 15 with cmake 3.10.
+
+-------------------------------------------------------------------
+Sun Mar 15 13:03:48 UTC 2020 - mcepl@suse.com
+
+- Update to version 4.1.0+git.1580414635.9e573336:
+  * ui/languages: Added Kikongo (kg), native to Angola, DR Congo, Congo
+  * avoid deprecated g_type_class_add_private (#962)
+  * fix #958 check for null result of render_this_text()
+  * Fix #954 - Build error under Arch Linux
+  * Month names: fix translation issue
+  * clean old travis ci build scripts
+  * fix travis ci build
+  * Tiny edits
+  * fix spec file
+- Reassemble xiphos-remove-gconf-2.0.patch
+  (gh#crosswire/xiphos#986) from Debian patches.
+- Remove xiphos-build-without-scrollkeeper.patch which is now
+  included upstream.
+
+-------------------------------------------------------------------
 Wed Sep 11 10:14:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add conditional variant of suse_update_desktop_file for Factory
