@@ -42,6 +42,7 @@ Patch5:         0005-krb5-1.6.3-ktutil-manpage.patch
 Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
+Patch9:         0009-Fix-null-dereference-qualifying-short-hostnames.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  keyutils
@@ -154,14 +155,7 @@ Include Files for Development
 %prep
 %setup -q -n %{srcRoot}
 %setup -q -a 3 -T -D -n %{srcRoot}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autopatch -p1
 
 %build
 # needs to be re-generated

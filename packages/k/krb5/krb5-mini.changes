@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:20:38 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix segfault in k5_primary_domain; (bsc#1167620);
+- Added patches:
+  * 0009-Fix-null-dereference-qualifying-short-hostnames.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 08:36:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove cruft to support distributions older than SLE 12
