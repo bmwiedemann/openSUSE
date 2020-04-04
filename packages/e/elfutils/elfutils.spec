@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.178
+Version:        0.179
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -139,7 +139,6 @@ chmod a+x tests/run*.sh
 # remove unneeded files
 rm -f %{buildroot}/%{_libdir}/*.la
 ls -lR %{buildroot}/%{_libdir}/libelf*
-rm %{buildroot}/%{_libdir}/pkgconfig/libdebuginfod.pc
 %find_lang %{name}
 
 %post -n libasm1 -p /sbin/ldconfig
