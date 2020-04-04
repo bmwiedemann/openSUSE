@@ -31,11 +31,9 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.14/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-GCC10.patch
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  libicu-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}
@@ -53,9 +51,6 @@ BuildRequires:  pkgconfig(libssl)
 %description
 The Qt Location API facilitates creating mapping solutions using
 the data available from some contemporary location services.
-
-%prep
-%setup -q -n qtlocation-everywhere-src-%{real_version}
 
 %package -n %{libname}
 Summary:        Qt 5 Positioning Library
@@ -128,23 +123,20 @@ Recommends:     %{name}-devel
 %description examples
 Examples for libqt5-qtlocation module.
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%post -n libQt5Location5 -p /sbin/ldconfig
-%postun -n libQt5Location5 -p /sbin/ldconfig
-%post -n libQt5PositioningQuick5 -p /sbin/ldconfig
-%postun -n libQt5PositioningQuick5 -p /sbin/ldconfig
+%prep
+%setup -q -n qtlocation-everywhere-src-%{real_version}
+%patch0 -p1
 
 %build
 %if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
-%if 0%{?suse_version} < 1330
-%qmake5 QMAKE_CC=gcc-7 QMAKE_CXX=g++-7 CONFIG+=c++14
-%else
+
+# boo#1158510
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+
 %qmake5
-%endif
 
 # do not eat all memory (logic from chromium specfile)
 jobs="%{?jobs:%{jobs}}"
@@ -170,6 +162,13 @@ find %{buildroot}/%{_libdir}/pkgconfig -type f -name '*.pc' -print -exec perl -p
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
 %fdupes %{buildroot}%{_libqt5_examplesdir}/
+
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
+%post -n libQt5Location5 -p /sbin/ldconfig
+%postun -n libQt5Location5 -p /sbin/ldconfig
+%post -n libQt5PositioningQuick5 -p /sbin/ldconfig
+%postun -n libQt5PositioningQuick5 -p /sbin/ldconfig
 
 %files -n %{libname}
 %defattr(-,root,root,755)
