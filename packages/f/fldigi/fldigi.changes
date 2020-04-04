@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 07:23:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.11
+  * Bug fix release only - no functional changes
+
+-------------------------------------------------------------------
 Wed Apr  1 19:03:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.10
@@ -11,7 +17,7 @@ Wed Apr  1 19:03:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
    * All three versions allow tune interval to be spec'd
      in fractional seconds, i.e. 2.5, 5.1 10.0 15
    * <TUNE:nn.nn> used alone returns to receive
-   * <TUNE:nn.nn> followed by text remains in transmit
+   * <TUNE:nn.nn> followed by tex1t remains in transmit
      to complete the transmission.
    * Examples:
      + <TUNE:10.0>
