@@ -74,6 +74,8 @@ Patch3:         0001-fix-build-after-y2038-changes-in-glibc.patch
 Patch4:         QTBUG-81574.patch
 # PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/291216
 Patch5:         QTBUG-82186.patch
+# PATCH-FIX-OPENSUSE
+Patch6:         some-more-includes-gcc10.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

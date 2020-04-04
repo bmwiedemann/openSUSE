@@ -562,4 +562,13 @@
   * QTBUG-81574.patch</comment>
     <requestid>781141</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>75e0ff0b2d3dd70ace81aa0fa72a3a36</srcmd5>
+    <version>5.14.1</version>
+    <time>1585995619</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 10 (boo#1158516):
+  * some-more-includes-gcc10.patch</comment>
+    <requestid>790193</requestid>
+  </revision>
 </revisionlist>
