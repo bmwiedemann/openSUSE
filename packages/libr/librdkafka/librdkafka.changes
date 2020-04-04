@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 22:10:10 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
+
+-  Add v1.3.0 which includes a number of properties and bugfixes over 1.1.0
+
+-------------------------------------------------------------------
 Thu Oct 31 10:33:44 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - lto breaks crc32 detection in configure script, so disable it
