@@ -118,7 +118,7 @@ Group:          Productivity/Networking/NFS
 URL:            https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
 Source:         %{name}-%{version}.tar.bz2
-Patch0:		fix-compilation-errors-on-xfs-ioctl-syscall-structs.patch
+Patch0:         fix-compilation-errors-on-xfs-ioctl-syscall-structs.patch
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -496,6 +496,7 @@ be used with NFS-Ganesha to support Gluster
 %patch0 -p1
 
 %build
+%global optflags %{optflags} -fcommon
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
