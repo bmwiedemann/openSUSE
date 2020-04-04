@@ -18,7 +18,7 @@
 
 %define libname libsispmctl0
 Name:           sispmctl
-Version:        4.5
+Version:        4.6
 Release:        0
 Summary:        SIS-PM Control for Linux
 License:        GPL-2.0-only
@@ -51,6 +51,7 @@ Development files for the GEMBIRD Silver Shield PM device.
 %autopatch -p1
 
 %build
+./autogen.sh
 %configure \
   --disable-static \
   --enable-webless

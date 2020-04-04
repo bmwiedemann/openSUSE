@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 12:56:30 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 4.6
+  * Add option to specify powerstrip by USB Bus:Device
+  * Improve stability of webserver
+
+-------------------------------------------------------------------
 Mon Mar 16 11:05:06 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 4.5
