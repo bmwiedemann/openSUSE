@@ -1,7 +1,7 @@
 #
 # spec file for package memcached
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,15 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+
+%if 0%{?suse_version} > 1500
+%bcond_without tls
+%else
+%bcond_with    tls
+%endif
+
 Name:           memcached
-Version:        1.5.17
+Version:        1.6.2
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -32,14 +39,18 @@ Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
-Patch0:         memcached-1.4.5.dif
-Patch1:         memcached-autofoo.patch
-Patch2:         memcached-use-endian_h.patch
+Patch:          https://patch-diff.githubusercontent.com/raw/memcached/memcached/pull/635.patch 
+Patch1:         https://patch-diff.githubusercontent.com/raw/memcached/memcached/pull/634.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  libevent-devel
 BuildRequires:  libtool
+%if %{with tls}
+BuildRequires:  openssl-devel >= 1.1.0
+BuildRequires:  perl-IO-Socket-SSL
+BuildRequires:  perl-Net-SSLeay
+%endif
 BuildRequires:  pkgconfig
 Requires(pre):  %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
@@ -79,20 +90,23 @@ This package contains development files
 
 %prep
 %setup -q
-%patch0
+%patch -p1
 %patch1 -p1
-%patch2
 
 %build
 autoreconf -fi
-%if 0%{?suse_version} <= 1140
-export LIBEVENT_CFLAGS="-I%{_includedir}"
-export LIBEVENT_LIBS="-levent"
-%endif
 %configure \
-	--enable-sasl \
-	--disable-coverage \
-	--bindir=%{_sbindir}
+%if %{with tls}
+  --enable-tls \
+%endif
+  --enable-sasl \
+  --enable-sasl-pwdb \
+  --enable-seccomp \
+  --disable-coverage \
+  %ifarch s390 s390x ppc ppc64
+  --disable-extstore \
+  %endif
+  --bindir=%{_sbindir}
 
 make %{?_smp_mflags}
 

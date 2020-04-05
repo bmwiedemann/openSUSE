@@ -345,4 +345,37 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>729451</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5a79f983f0e08c162168e8654104e76c</srcmd5>
+    <version>1.6.2</version>
+    <time>1586112797</time>
+    <user>dimstar_suse</user>
+    <comment>- disable extstore also on ppc(64) 
+- apply patch from https://github.com/memcached/memcached/pull/634
+  fix building with LTO and also building with -fno-common.
+  (634.patch)
+- apply patch from https://github.com/memcached/memcached/pull/635
+  to fix crashes we saw during the testsuite (635.patch)
+- disable extstore on s390 for now as there are known bugs on that
+  platform
+- limit tls support to 15 and above 
+- disable lto until the 2 settings structs are resolved 
+- update to version 1.6.2 (boo# 1167522) CVE-2020-10931
+  https://github.com/memcached/memcached/wiki/ReleaseNotes162
+  https://github.com/memcached/memcached/wiki/ReleaseNotes161
+  https://github.com/memcached/memcached/wiki/ReleaseNotes160
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1522
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1521
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1520
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1519
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1518
+- dropped all patches after reviewing with upstream:
+  memcached-1.4.5.dif
+  memcached-autofoo.patch
+  memcached-use-endian_h.patch
+- enable TLS support (new BR: openssl-devel perl-IO-Socket-SSL
+  perl-Net-SSLeay)
+</comment>
+    <requestid>791377</requestid>
+  </revision>
 </revisionlist>

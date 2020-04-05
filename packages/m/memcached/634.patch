@@ -1,0 +1,59 @@
+From aba4ffb5fce37ba6d2977c190592fd35ad7f3462 Mon Sep 17 00:00:00 2001
+From: Kanak Kshetri <kanakkshetri@fastmail.fm>
+Date: Wed, 1 Apr 2020 07:34:16 -0500
+Subject: [PATCH] testapp: Fix failure with -flto=auto
+
+---
+ Makefile.am |  2 +-
+ testapp.c   | 11 +++++------
+ 2 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0d30161e7..d62facfce 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,7 +4,7 @@ noinst_PROGRAMS = memcached-debug sizes testapp timedrun
+ 
+ BUILT_SOURCES=
+ 
+-testapp_SOURCES = testapp.c util.c util.h stats_prefix.c stats_prefix.h jenkins_hash.c murmur3_hash.c hash.c hash.h cache.c
++testapp_SOURCES = testapp.c util.c util.h stats_prefix.c stats_prefix.h jenkins_hash.c murmur3_hash.c hash.h cache.c
+ 
+ timedrun_SOURCES = timedrun.c
+ 
+diff --git a/testapp.c b/testapp.c
+index fffed794e..193adda86 100644
+--- a/testapp.c
++++ b/testapp.c
+@@ -21,6 +21,7 @@
+ #include "config.h"
+ #include "cache.h"
+ #include "hash.h"
++#include "jenkins_hash.h"
+ #include "stats_prefix.h"
+ #include "util.h"
+ #include "protocol_binary.h"
+@@ -42,10 +43,7 @@ struct conn {
+     ssize_t (*write)(struct conn *c, const void *buf, size_t count);
+ };
+ 
+-struct settings {
+-    char *hash_algorithm;
+-};
+-struct settings settings;
++hash_func hash;
+ 
+ static ssize_t tcp_read(struct conn *c, void *buf, size_t count);
+ static ssize_t tcp_write(struct conn *c, const void *buf, size_t count);
+@@ -2306,8 +2304,9 @@ int main(int argc, char **argv)
+         enable_ssl = true;
+     }
+ #endif
+-    /* Stats prefix test is sensitive to the choice of hash function */
+-    hash_init(JENKINS_HASH);
++    /* Initialized directly instead of using hash_init to avoid pulling in
++       the definition of settings struct from memcached.h */
++    hash = jenkins_hash;
+     stats_prefix_init(':');
+ 
+     for (num_cases = 0; testcases[num_cases].description; num_cases++) {
