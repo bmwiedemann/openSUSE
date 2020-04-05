@@ -588,4 +588,12 @@
     <comment>- Update to kernel headers 5.5 (forwarded request 767804 from Andreas_Schwab)</comment>
     <requestid>767805</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>be91d4cb8e7c52908b98633f21c27422</srcmd5>
+    <version>5.6</version>
+    <time>1586112538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.6 (forwarded request 790297 from Andreas_Schwab)</comment>
+    <requestid>790298</requestid>
+  </revision>
 </revisionlist>
