@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-fop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,15 +43,16 @@ Patch4:         java8-compatibility.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- boo#1110024
 Patch5:         reproducible-build-manifest.patch
 Patch6:         fop-2.1-QDox-2.0.patch
+Patch7:         fop-2.1-batik-xmlconstants.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  apache-pdfbox
 BuildRequires:  avalon-framework >= 4.3
 BuildRequires:  commons-io >= 2.4
 BuildRequires:  commons-logging
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  java-devel >= 1.8
 # Needed for maven conversions
 BuildRequires:  glassfish-servlet-api
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  libxslt
 BuildRequires:  qdox >= 2.0
@@ -92,7 +93,11 @@ rm src/java/org/apache/fop/util/bitmap/JAIMonochromeBitmapConverter.java
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+# Batik 1.11 moved XMLConstants from org.apache.batik.util to org.apache.batik.constants
 %patch6 -p1
+%if %{?pkg_vcmp:%pkg_vcmp xmlgraphics-batik >= 1.11}%{!?pkg_vcmp:0}
+%patch7 -p1
+%endif
 
 cp %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 # Replace keyword "VERSION" in XML files with the real one:
@@ -102,21 +107,21 @@ done
 sed -i "s=@version@=%{version}=" xmlgraphics-fop-pom-template.pom
 
 %build
-pushd lib
-ln -s $(build-classpath avalon-framework-api)
-ln -s $(build-classpath avalon-framework-impl)
-ln -s $(build-classpath commons-io)
-ln -s $(build-classpath commons-logging)
-ln -s $(build-classpath fontbox)
-ln -s $(build-classpath glassfish-servlet-api)
-ln -s $(build-classpath xml-commons-apis)
-ln -s $(build-classpath xml-commons-apis-ext)
-ln -s $(build-classpath batik-all)
-ln -s $(build-classpath xmlgraphics-commons)
-ln -s $(build-classpath qdox)
-popd
+build-jar-repository -s lib \
+        avalon-framework-api \
+        avalon-framework-impl \
+        commons-io \
+        commons-logging \
+        fontbox \
+        glassfish-servlet-api \
+        xml-commons-apis \
+        xml-commons-apis-ext \
+        batik-all \
+        xmlgraphics-commons \
+        qdox
+
 export CLASSPATH= LANG=en_US.UTF-8
-ant \
+%{ant} \
     -Djavac.source=1.8 -Djavac.target=1.8 \
 	package
 
@@ -169,7 +174,7 @@ for m in *.1.gz; do
 done
 popd
 
-%files
+%files -f .mfiles
 %license LICENSE
 %doc NOTICE README known-issues.xml
 %doc *.html
@@ -180,14 +185,7 @@ popd
 %{_bindir}/%{bname}-fontmetrics
 %attr(0755,root,root) %{_bindir}/%{name}-fontlist
 %{_bindir}/%{bname}-fontlist
-%{_javadir}/%{name}.jar
 %{_datadir}/%{name}
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 %{_mandir}/man1/*
 %config(noreplace) %{_sysconfdir}/fop.xconf
 
