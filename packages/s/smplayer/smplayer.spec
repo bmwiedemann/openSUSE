@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           smplayer
-Version:        19.10.2
+Version:        19.10.2+9287
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://smplayer.info/
-Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE smplayer-makeflags.patch
 Patch0:         %{name}-makeflags.patch
 # PATCH-FEATURE-OPENSUSE smplayer-defaults.patch sor.alexei@meowr.ru -- Use PulseAudio, system Qt5 theme, and "Papirus" icon theme by default.

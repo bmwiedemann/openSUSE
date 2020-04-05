@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://subversion.assembla.com/svn/smplayer/smplayer/trunk</param>
+    <param name="scm">svn</param>
+    <param name="versionformat">19.10.2+%r</param>
+    <param name="filename">smplayer</param>
+    <param name="exclude">zlib</param>
+
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
+

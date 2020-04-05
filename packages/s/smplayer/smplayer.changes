@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  5 11:02:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to svn revision 9278
+  No changelog provided, check:
+  https://app.assembla.com/spaces/smplayer/subversion/source/HEAD/smplayer/trunk
+  - fixes mpv 0.32+ incompatibility
+- add _service
+
+-------------------------------------------------------------------
 Sat Feb  8 15:55:47 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Require Xext to build at Leap 15.2.
