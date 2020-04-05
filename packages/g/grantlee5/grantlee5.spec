@@ -1,7 +1,7 @@
 #
 # spec file for package grantlee5
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,13 +34,14 @@ Source2:        baselibs.conf
 Patch0:         includes.diff
 # PATCH-FIX-OPENSUSE grantlee-5.2.0-fix-ctest-ld-library-path.patch -- set ld library path for tests
 Patch1:         grantlee-5.2.0-fix-ctest-ld-library-path.patch
-# PATCH-FIX-OPENSUSE grantlee-5.2.0-fix-ctest-ld-library-path.patch -- disable tests for now that throwing an exception for some reason
-Patch2:         grantlee-5.2.0-disable-textdocument-tests.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  cmake(Qt5Core) >= 5.3
 BuildRequires:  cmake(Qt5Gui) >= 5.3
 BuildRequires:  cmake(Qt5Qml) >= 5.3
 %if %{with tests}
+BuildRequires:  /usr/bin/Xvfb
+BuildRequires:  xvfb-run
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Test) >= 5.3
 %endif
 
@@ -74,7 +75,8 @@ grantlee.
 
 %if %{with tests}
 %check
-%ctest
+export CTEST_OUTPUT_ON_FAILURE=1
+xvfb-run -a make test -C %{__builddir} ||:
 %endif
 
 %post -p /sbin/ldconfig
