@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:11:16 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-Remove-duplicated-variable-declarations.patch:
+  Remove duplicated variable declarations (boo#1160399).
+
+-------------------------------------------------------------------
+Fri Apr  3 11:24:02 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-s390-Reset-kernel-command-line-on-syscal.patch: s390:
+  Reset kernel command line on syscall fallback (bsc#1167868).
+
+-------------------------------------------------------------------
 Fri Mar 13 14:11:55 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - kexec-tools-reset-getopt-before-falling-back-to-legacy.patch:

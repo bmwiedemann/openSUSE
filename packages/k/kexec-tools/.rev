@@ -967,4 +967,16 @@ installer uses kexec to boot into second stage..
 </comment>
     <requestid>784674</requestid>
   </revision>
+  <revision rev="135" vrev="5">
+    <srcmd5>9e1f810978b040a5a7e9c435c6437951</srcmd5>
+    <version>2.0.20</version>
+    <time>1586112775</time>
+    <user>dimstar_suse</user>
+    <comment>- kexec-tools-Remove-duplicated-variable-declarations.patch:
+  Remove duplicated variable declarations (boo#1160399).
+- kexec-tools-s390-Reset-kernel-command-line-on-syscal.patch: s390:
+  Reset kernel command line on syscall fallback (bsc#1167868).
+</comment>
+    <requestid>791187</requestid>
+  </revision>
 </revisionlist>

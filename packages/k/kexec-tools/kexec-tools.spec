@@ -38,6 +38,8 @@ Patch9:         %{name}-video-capability.patch
 Patch10:        %{name}-SYS_getrandom.patch
 Patch11:        %{name}-fix-kexec_file_load-error-handling.patch
 Patch12:        %{name}-reset-getopt-before-falling-back-to-legacy.patch
+Patch13:        %{name}-s390-Reset-kernel-command-line-on-syscal.patch
+Patch14:        %{name}-Remove-duplicated-variable-declarations.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -72,6 +74,8 @@ the loaded kernel after it panics.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
 
 %build
 autoreconf -fvi
