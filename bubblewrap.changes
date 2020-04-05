@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  1 10:03:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.4.1:
+ * retcode: fix return code with syncfd and no event_fd
+ * Ensure we're always clearing the cap bounding set
+ * tests: Update output patterns for libcap >= 2.29
+ * Don't rely on geteuid() to know when to switch back from setuid root
+ * Don't support --userns2 in setuid mode
+ * fixes CVE-2020-5291
+ * fixes bsc#1168291
+
+-------------------------------------------------------------------
 Fri Dec 20 22:59:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.0:
