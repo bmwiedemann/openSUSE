@@ -17,15 +17,17 @@
 
 
 Name:           compiz-plugins-experimental
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        OpenGL window and compositing manager experimental plugins
 License:        GPL-2.0-or-later AND GPL-2.0-only
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz-reloaded/compiz-plugins-experimental
 Source:         http://northfield.ws/projects/compiz/releases/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcop) >= 0.7.3
 BuildRequires:  pkgconfig(cairo) >= 1.0
@@ -42,7 +44,6 @@ BuildRequires:  pkgconfig(xscrnsaver)
 Requires:       compiz < 0.9
 Requires:       compiz-plugins-extra < 0.9
 Requires:       compiz-plugins-main < 0.9
-Recommends:     %{name}-lang
 # compiz-plugins-unsupported was last used in openSUSE Leap 42.1.
 Provides:       compiz-plugins-unsupported = %{version}
 Obsoletes:      compiz-plugins-unsupported < %{version}
@@ -73,7 +74,6 @@ Contains:
 
 %package devel
 Summary:        OpenGL window and compositing manager community plugins
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(bcop)
 Requires:       pkgconfig(compiz) < 0.9
@@ -98,6 +98,7 @@ other plugins.
 %setup -q
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
   --disable-static
 %make_build
@@ -106,10 +107,6 @@ other plugins.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
 
 %files
 %license COPYING
