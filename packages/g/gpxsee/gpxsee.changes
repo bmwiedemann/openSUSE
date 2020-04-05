@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  5 12:48:01 CEST 2020 - tumic@cbox.cz
+
+- Update to version 7.28
+  * Fixed broken graph color change when secondary graphs present.
+  * Fixed broken map enable condition (selecting such map crashes
+    GPXSee).
+
+-------------------------------------------------------------------
+Sat Mar 28 19:39:12 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.27
+  * Fixed builds with -Werror=format-security (Fedora, RHEL,
+    Mageia). No real issue.
+
+-------------------------------------------------------------------
+Sat Mar 28 18:38:45 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.26
+  * Enable simultaneous display of GPS and DEM data.
+  * Asynchronous WMS/WMTS map loading (fixes crash on OS X).
+  * Various minor bug fixes.
+
+-------------------------------------------------------------------
 Wed Mar  4 20:35:11 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.25
