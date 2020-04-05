@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_product
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014-2016 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           trytond_product
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "product" module for the Tryton ERP system
 License:        GPL-3.0-only
