@@ -86,4 +86,21 @@
     versions are likely affected too.</comment>
     <requestid>787398</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fcb7dfca20cabcae1464f3b1ff484b98</srcmd5>
+    <version>3.1.4</version>
+    <time>1586112707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4 (bsc#1168280, CVE-2020-6817):
+  * ``bleach.clean`` behavior parsing style attributes could result in a
+    regular expression denial of service (ReDoS).
+    Calls to ``bleach.clean`` with an allowed tag with an allowed
+    ``style`` attribute were vulnerable to ReDoS. For example,
+    ``bleach.clean(..., attributes={'a': ['style']})``.
+  * Style attributes with dashes, or single or double quoted values are
+    cleaned instead of passed through.
+
+- update to 3.1.3 (bsc#1167379, CVE-2020-6816):</comment>
+    <requestid>790549</requestid>
+  </revision>
 </revisionlist>

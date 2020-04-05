@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 11:18:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.4 (bsc#1168280, CVE-2020-6817):
+  * ``bleach.clean`` behavior parsing style attributes could result in a
+    regular expression denial of service (ReDoS).
+    Calls to ``bleach.clean`` with an allowed tag with an allowed
+    ``style`` attribute were vulnerable to ReDoS. For example,
+    ``bleach.clean(..., attributes={'a': ['style']})``.
+  * Style attributes with dashes, or single or double quoted values are
+    cleaned instead of passed through.
+
+-------------------------------------------------------------------
 Mon Mar 23 10:09:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 3.1.3 (bsc#1167379):
+- update to 3.1.3 (bsc#1167379, CVE-2020-6816):
   * Add relative link to code of conduct. (#442)
   * Drop deprecated 'setup.py test' support. (#507)
   * Fix typo: curren -> current in tests/test_clean.py (#504)
@@ -15,8 +27,6 @@ Mon Mar 23 10:09:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     ``noscript``, ``style``, ``noframes``, ``iframe``, ``noembed``, or
     ``xmp`` in the allowed tags whitelist were vulnerable to a mutation
     XSS.
-    This security issue was confirmed in Bleach version v3.1.1. Earlier
-    versions are likely affected too.
 
 -------------------------------------------------------------------
 Fri Feb 28 16:13:43 UTC 2020 - Alexandros Toptsoglou <atoptsoglou@suse.com>
