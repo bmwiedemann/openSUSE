@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 15:52:56 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- limit s390 secure boot to SCSI disks (bsc#1168165) 
+- 4.2.21
+
+-------------------------------------------------------------------
 Fri Mar 27 08:19:54 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Reverted the changes to delegate to yast2-storage-ng the
