@@ -70,4 +70,12 @@
     <comment>version bump (forwarded request 750818 from DocB)</comment>
     <requestid>752399</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>383e345dd3fbbd0765c6674aa931f275</srcmd5>
+    <version>5.0.4</version>
+    <time>1586112887</time>
+    <user>dimstar_suse</user>
+    <comment>bufix release</comment>
+    <requestid>791421</requestid>
+  </revision>
 </revisionlist>
