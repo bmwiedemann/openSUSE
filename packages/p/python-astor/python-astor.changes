@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 21:34:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove the shebang line from the rtrip.py otherwise the python3
+  package will require /usr/bin/python. 
+
+-------------------------------------------------------------------
 Wed Mar 25 15:11:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add remove_nose.patch

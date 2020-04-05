@@ -63,10 +63,11 @@ There are some other similar libraries, but astor focuses on the following areas
 %prep
 %setup -q -n astor-%{version}
 %patch0 -p1
-# ugly fix for the use of /usr/bin/env
-sed -i 's@env @@' astor/rtrip.py
 
 %build
+# ugly fix for the use of /usr/bin/env
+sed -i 's@#!.*@@' astor/rtrip.py
+chmod a-x astor/rtrip.py
 %python_build
 
 %install
