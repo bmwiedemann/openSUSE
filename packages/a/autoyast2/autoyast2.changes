@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:51:35 UTC 2020 - schubi@suse.de
+
+- Service for init scripts: Try to start "network-online.target" 
+  before starting the AY init scripts in order to get a working
+  network (bsc#1164105).
+- 4.2.34
+
+-------------------------------------------------------------------
+Wed Apr  1 10:51:35 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Restore some missing icons (related to bsc#1168123, boo#1109310
+  and boo#1168281).
+- 4.2.33
+
+-------------------------------------------------------------------
+Tue Mar 31 15:30:56 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Fix desktop files updating some icons and groups (related to
+  bsc#1168123).
+- 4.2.32
+
+-------------------------------------------------------------------
 Wed Mar 11 15:27:34 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Adapted to changes in yast2-storage-ng (related to bsc#1140040).
