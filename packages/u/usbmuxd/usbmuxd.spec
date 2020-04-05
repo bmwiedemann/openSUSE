@@ -1,7 +1,7 @@
 #
 # spec file for package usbmuxd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           usbmuxd
-Version:        1.1.0
+Version:        1.1.0+git.20200121
 Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
 URL:            https://cgit.sukimashita.com/usbmuxd.git
-Source:         http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -50,6 +52,7 @@ multiplexing several conversations onto a single pair of wires.
 %autosetup
 
 %build
+autoreconf -fiv
 %configure \
   --with-udevrulesdir=%{_udevrulesdir} \
   --with-systemdsystemunitdir=%{_unitdir}
@@ -70,18 +73,16 @@ exit 0
 %post
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post usbmuxd.service
-/sbin/ldconfig
 
 %postun
 %service_del_postun usbmuxd.service
-/sbin/ldconfig
 
 %files
 %license COPYING.GPLv2 COPYING.GPLv3
-%doc AUTHORS README
-%{_mandir}/man1/usbmuxd.1%{?ext_man}
+%doc AUTHORS README.md
 %{_sbindir}/usbmuxd
 %{_sbindir}/rc%{name}
+%{_mandir}/man8/usbmuxd.8%{?ext_man}
 %{_udevrulesdir}/39-usbmuxd.rules
 %{_unitdir}/usbmuxd.service
 

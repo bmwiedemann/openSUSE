@@ -241,4 +241,22 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
     <comment></comment>
     <requestid>729235</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>84c0c551ed19fead47f9b271534e82ed</srcmd5>
+    <version>1.1.0+git.20200121</version>
+    <time>1586112939</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+git.20200121:
+  * Fix udev rules
+  * device: Fix potential deadlock (#130)
+  * Support T2 chip in restore mode
+  * Fix compatibility with latest changes in libimobiledevice
+  * Define _BSD_SOURCE again for older platforms.
+  * preflight: Prevent possible UaF if usb device is removed while preflight is in progress
+  * device: Make sure to operate on the copy of the device list in device_get_list()
+  * Replace obsolete _BSD_SOURCE define with _DEFAULT_SOURCE
+  * preflight: Let insecure notification proxy terminate when pairing is done
+  * device: Plug memory leak in error condition when TH_SYN sending fails</comment>
+    <requestid>791480</requestid>
+  </revision>
 </revisionlist>
