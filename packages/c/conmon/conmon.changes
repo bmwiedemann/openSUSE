@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  3 14:33:46 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Enable support for journald logging (bsc#1162432)
+
+-------------------------------------------------------------------
+Fri Apr  3 07:22:43 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.15
+  - store status while waiting for pid
+
+-------------------------------------------------------------------
 Wed Mar 25 08:55:06 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v2.0.14

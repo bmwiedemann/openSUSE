@@ -17,7 +17,7 @@
 
 
 Name:           conmon
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  glib2-devel
+BuildRequires:  pkgconfig(libsystemd)
 
 %description
 Conmon is a monitoring program and communication tool between a
