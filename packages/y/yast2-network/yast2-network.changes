@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:33:49 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: Do not try to activate network devices that are already
+  active in S390 systems (bsc#1163149). Related to jsc#SLE-7396.
+- AutoYaST: Allow to use spaces or colons to separate channel IDs
+  in the "chanids" element.
+- 4.2.65
+
+-------------------------------------------------------------------
+Fri Mar 27 14:30:34 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Refresh the current system cached network configuration with the
+  one written avoiding inconsistencies during installation
+  (bsc#1162987)
+- 4.2.64
+
+-------------------------------------------------------------------
+Thu Mar 19 13:52:31 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: do not crash when defined dns section whitout hostname
+  (bsc#1166953)
+- AutoYaST: handle the dhcp_hostname option in the dns section
+  correctly
+- 4.2.63
+
+-------------------------------------------------------------------
+Wed Mar 18 09:42:36 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do a reload of configured interfaces when writing the
+  configuration during a ssh or vnc installation (bsc#1166287)
+- 4.2.62
+
+-------------------------------------------------------------------
+Tue Mar 10 14:29:36 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Store ip forwarding set during installation to target system
+  (bsc#1159295)
+- 4.2.61
+
+-------------------------------------------------------------------
 Mon Mar  2 21:01:33 UTC 2020 - Michal Filka <mfilka@suse.com>
 
 - bsc#1164506
