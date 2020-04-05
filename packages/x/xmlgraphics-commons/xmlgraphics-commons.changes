@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:42:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * xmlgraphics-commons-build_xml.patch
+    + improve a bit more the OSGi manifest to be able to use it
+      from eclipse
+
+-------------------------------------------------------------------
 Sat Jan 19 08:03:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
@@ -10,7 +18,7 @@ Sat Jan 19 08:03:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Tue Aug 28 13:44:48 UTC 2018 - tchvatal@suse.com
 
-- Do not run target  maven_artifacts as it just copies file from a->b
+- Do not run target maven_artifacts as it just copies file from a->b
   and fails with newer ant
 
 -------------------------------------------------------------------

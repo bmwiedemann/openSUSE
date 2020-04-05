@@ -196,4 +196,12 @@
     <comment>Sanitize spec + clean requires + add OSGi manifest entries</comment>
     <requestid>667392</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>463ff29aa250516e7cd828f0f5d82436</srcmd5>
+    <version>2.3</version>
+    <time>1586112777</time>
+    <user>dimstar_suse</user>
+    <comment>OSGi manifest fleshed up</comment>
+    <requestid>791197</requestid>
+  </revision>
 </revisionlist>
