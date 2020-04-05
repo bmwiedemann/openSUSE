@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,13 @@
 %define skip_python2 1
 
 Name:           setools
-Version:        4.2.2
+Version:        4.3.0
 Release:        0
-Url:            https://github.com/SELinuxProject/setools
+URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
-Source:         https://github.com/SELinuxProject/setools/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
-# allow build with Python 3.8
-Patch0:         python3.8-compat.patch
+Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/setools-%{version}.tar.bz2
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -101,8 +98,7 @@ This package includes the following graphical tools:
   apol          policy analysis tool
 
 %prep
-%setup -q -n %{name}-%{version}
-%autopatch -p1
+%setup -q -n %{name}
 
 %build
 %python_build
@@ -129,6 +125,12 @@ This package includes the following graphical tools:
 %{_mandir}/man1/sediff.1.gz
 %{_mandir}/man1/seinfo.1.gz
 %{_mandir}/man1/sesearch.1.gz
+%{_mandir}/ru/man1/apol.1.gz
+%{_mandir}/ru/man1/sediff.1.gz
+%{_mandir}/ru/man1/sedta.1.gz
+%{_mandir}/ru/man1/seinfo.1.gz
+%{_mandir}/ru/man1/seinfoflow.1.gz
+%{_mandir}/ru/man1/sesearch.1.gz
 
 %files gui
 %defattr(-,root,root,-)

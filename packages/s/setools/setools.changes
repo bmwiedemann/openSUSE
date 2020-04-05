@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:45:25 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to the upstream version 4.3.0:
+  * Revised sediff method for TE rules. This drastically reduced memory
+    and run time.
+  * Added infiniband context support to seinfo, sediff, and apol.
+  * Added apol configuration for location of Qt assistant.
+  * Fixed sediff issue where properties header would display when not 
+    requested.
+  * Fixed sediff issue with type_transition file name comparison.
+  * Fixed permission map socket sendto information flow direction.
+  * Added methods to TypeAttribute class to make it a complete Python 
+    collection.
+  * Genfscon now will look up classes rather than using fixed values 
+    which were dropped from libsepol
+- Dropped python3.8-compat.patch
+
+-------------------------------------------------------------------
 Thu Oct 31 12:02:30 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add python3.8-compat.patch to allow build with Python 3.8
