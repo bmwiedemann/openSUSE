@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-django
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
@@ -32,13 +32,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-pathlib2
-%endif
 BuildRequires:  sqlite3
 Requires:       python-Django
 Requires:       python-pytest
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-pathlib2
+%endif
 %ifpython2
 Requires:       python-pathlib2
 %endif
