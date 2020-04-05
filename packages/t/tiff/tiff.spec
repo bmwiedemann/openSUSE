@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -79,7 +80,7 @@ CFLAGS="$CFLAGS -O0"
 %if %{asan_build}
 find -name Makefile | xargs sed -i 's/\(^CFLAGS.*\)/\1 -fsanitize=address/'
 %endif
-make %{?_smp_mflags} LDFLAGS="-pie"
+%make_build LDFLAGS="-pie"
 
 %install
 mkdir -p %{buildroot}/{%{_mandir}/{man1,man3},usr/{bin,lib,include}}

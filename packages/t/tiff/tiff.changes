@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:48:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop webp support as it would introduce build cycle
+
+-------------------------------------------------------------------
+Mon Mar 30 15:25:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable zstd and webp support
+
+-------------------------------------------------------------------
 Wed Nov  6 12:00:35 UTC 2019 - pgajdos@suse.com
 
 - version update to 4.1.0

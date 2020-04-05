@@ -698,4 +698,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>745991</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>11462a95dc2e89c04f844971e4f40f4d</srcmd5>
+    <version>4.1.0</version>
+    <time>1586112649</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop webp support as it would introduce build cycle (forwarded request 790408 from pluskalm)</comment>
+    <requestid>790472</requestid>
+  </revision>
 </revisionlist>
