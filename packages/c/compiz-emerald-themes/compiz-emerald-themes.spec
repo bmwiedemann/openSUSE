@@ -16,14 +16,13 @@
 #
 
 
-%define _rev    59fb196746698e41ed0f16988600b216
+%define _rev    dbbeef582f467ff839b5bc62b36e6f05
 %define _name   emerald-themes
 Name:           compiz-emerald-themes
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Various themes for Emerald decorator
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/emerald-themes
 Source:         https://gitlab.com/compiz/emerald-themes/uploads/%{_rev}/%{_name}-%{version}.tar.xz
 BuildRequires:  autoconf
