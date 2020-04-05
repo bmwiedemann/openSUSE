@@ -1,7 +1,7 @@
 #
 # spec file for package kbuild
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch11:        kbuild-gcc7.patch
 Patch12:        use-alloca.patch
 Patch13:        glob-lstat.patch
 Patch14:        glob-interface.patch
+Patch15:        gcc10-fno-common-fix.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
@@ -74,6 +75,7 @@ The goals of the kBuild framework:
 %patch12
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 %build
 export CFLAGS="%{optflags}"
