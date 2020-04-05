@@ -28,4 +28,17 @@
   * Add deprecation warning for old config</comment>
     <requestid>744110</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf1f566dfd39cbfcf74990f757947487</srcmd5>
+    <version>2.0.2</version>
+    <time>1586113023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+  * Dropped support for Python 2.7
+  * Migrate from Travis CI to Github Actions
+  * Migrate from Coveralls to Codecov
+  * Update README
+  * Update PyPI description</comment>
+    <requestid>791501</requestid>
+  </revision>
 </revisionlist>

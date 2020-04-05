@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  5 08:39:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.2:
+  * Dropped support for Python 2.7
+  * Migrate from Travis CI to Github Actions
+  * Migrate from Coveralls to Codecov
+  * Update README
+  * Update PyPI description
+
+-------------------------------------------------------------------
 Wed Oct 30 11:51:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.2:
