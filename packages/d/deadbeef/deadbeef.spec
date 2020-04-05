@@ -19,7 +19,7 @@
 %bcond_with restricted
 
 Name:           deadbeef
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        GTK+ audio player
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
@@ -27,22 +27,20 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
 Source:         https://github.com/DeaDBeeF-Player/deadbeef/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
-# PATCH-FIX-OPENSUSE deadbeef-fix_ubuntu_unity_desktop.patch i@marguerite.su -- Fix Unity-oriented desktop-file warnings.
-Patch0:         %{name}-fix_ubuntu_unity_desktop.patch
 # PATCH-FIX-OPENSUSE deadbeef-compiler-warnings.patch olaf@aepfle.de -- Fix compiler warnings.
-Patch1:         %{name}-compiler-warnings.patch
+Patch0:         %{name}-compiler-warnings.patch
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
-Patch4:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
+Patch1:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FEATURE-OPENSUSE deadbeef_disable_psf.patch aloisio@gmx.com -- Do not look for plugins/psf.
-Patch5:         deadbeef_disable_psf.patch
-# PATCH-FIX-UPSTREAM deadbeef-fix-return-type.patch hillwood@opensuse.org Fix return type
-Patch6:         deadbeef-fix-return-type.patch
-# PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org Install documents by rpmbuild
-Patch7:         deadbeef-drop-documents-installation.patch
-# PATCH-FIX-UPSTREAM deadbeef-better-ogg-and-aac-converter-support.patch hillwood@opensuse.org More profiles for ogg and aac
+Patch2:         %{name}_disable_psf.patch
+# PATCH-FIX-UPSTREAM deadbeef-fix-return-type.patch hillwood@opensuse.org -- Fix return type.
+Patch3:         %{name}-fix-return-type.patch
+# PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
+Patch4:         %{name}-drop-documents-installation.patch
+# PATCH-FIX-UPSTREAM deadbeef-better-ogg-and-aac-converter-support.patch hillwood@opensuse.org -- More profiles for ogg and aac.
 # Bring the feature to openSUSE first.
 # https://github.com/DeaDBeeF-Player/deadbeef/pull/2338
-Patch8:         deadbeef-better-ogg-and-aac-converter-support.patch
+Patch5:         deadbeef-better-ogg-and-aac-converter-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -82,7 +80,6 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
 %if %{with restricted}
 BuildRequires:  libfaad-devel
 Requires:       %{name}-plugins-extra = %{version}-%{release}
@@ -123,14 +120,7 @@ Requires:       %{name} = %{version}
 This package provides headers for DeaDBeeF plugins development.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%autosetup -n %{name}-%{version} -p1
 
 cp %{SOURCE1} %{name}.appdata.xml
 

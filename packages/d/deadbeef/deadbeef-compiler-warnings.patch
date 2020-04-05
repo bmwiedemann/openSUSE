@@ -81,18 +81,17 @@
  	    *opos++ = *ipos++;
 --- a/plugins/gtkui/plcommon.c
 +++ b/plugins/gtkui/plcommon.c
-@@ -1538,15 +1538,27 @@ on_group_by_custom_activate            (
-     gtk_window_set_transient_for (GTK_WINDOW (dlg), GTK_WINDOW (mainwin));
-     GtkWidget *entry = lookup_widget (dlg, "format");
-     char format[1024];
+@@ -1525,14 +1525,26 @@
+ 
+ static void
+ _make_format (char *format, size_t size, DdbListviewGroupFormat *fmt) {
 -    format[0] = 0;
 +    char *p = format;
 +    size_t remaining = sizeof(format) - 1;
 +    size_t copy_len, sep_len = strlen(SUBGROUP_DELIMITER);
-     DdbListviewGroupFormat *fmt = listview->group_formats;
      while (fmt) {
 -        if (format[0] != 0) {
--            strncat(format, SUBGROUP_DELIMITER, sizeof(format));
+-            strncat(format, SUBGROUP_DELIMITER, size - strlen(format) - 1);
 +        copy_len = strlen(fmt->format);
 +        if (copy_len > remaining)
 +            break;
@@ -103,16 +102,16 @@
 +            remaining -= sep_len;
 +            p += sep_len;
          }
--        strncat(format, fmt->format, sizeof(format));
+-        strncat(format, fmt->format, size - strlen(format) - 1);
 +        memcpy(p, fmt->format, copy_len);
 +        remaining -= copy_len;
 +        p += copy_len;
          fmt = fmt->next;
      }
 +    *p = '\0';
-     gtk_entry_set_text (GTK_ENTRY (entry), format);
- //    gtk_window_set_title (GTK_WINDOW (dlg), "Group by");
-     gint response = gtk_dialog_run (GTK_DIALOG (dlg));
+ }
+ 
+ static void
 --- a/plugins/gtkui/search.c
 +++ b/plugins/gtkui/search.c
 @@ -299,7 +299,7 @@ submit_refresh (void) {
@@ -155,26 +154,7 @@
  on_pltbrowser_drag_end_event          (GtkWidget       *widget,
                                          GdkDragContext  *drag_context,
                                          gint             x,
---- a/plugins/sc68/libsc68/conf68.c
-+++ b/plugins/sc68/libsc68/conf68.c
-@@ -195,7 +195,7 @@ int config68_save(const char * confname)
-     const int sizeof_config_hd = sizeof(config_header)-1;
- 
-     strncpy(tmp, "sc68://config/", sizeof(tmp));
--    strncat(tmp, confname, sizeof(tmp));
-+    strncat(tmp, confname, sizeof(tmp)-strlen(tmp)-1);
-     os = uri68_vfs(tmp, 2, 0);
-     err = vfs68_open(os);
-     if (!err) {
-@@ -255,7 +255,7 @@ static int load_from_registry(const char
- 
-     for (k=0; k<2; ++k) {
-       strncpy(path, paths[k], sizeof(path));
--      strncat(path, opt->name, sizeof(path));
-+      strncat(path, opt->name, sizeof(path)-strlen(path)-1);
- 
-       TRACE68(config68_cat, "conf68: trying -- '%s'\n", path);
-       switch (opt->type) {
+
 --- a/plugins/tta/ttadec.c
 +++ b/plugins/tta/ttadec.c
 @@ -459,7 +459,7 @@ int get_samples (tta_info *info, byte *b
