@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  5 07:19:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip flaky test
+
+-------------------------------------------------------------------
+Wed Dec 11 12:00:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.23.0:
+  * fixes wheel packaging a bit
+
+-------------------------------------------------------------------
 Mon Oct 21 09:42:14 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.22.0, dropping merged patches
