@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Wed Apr 1 09:07:32 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#718
+- allow control over environment variables
+- query number of partition slots from parted
+- respect number of partition slots reported by parted for GPT
+  (bsc#1161783)
+- run travis with "--privileged" to avoid permissions error
+- 4.2.72
+
+--------------------------------------------------------------------
 Wed Mar 25 14:14:09 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/libstorage-ng#714
