@@ -16,17 +16,17 @@
 #
 
 Name:           ocaml-sha
-Version:        1.12
+Version:        1.13
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to the SHA cryptographic functions
 License:        ISC
 Group:          Development/Languages/OCaml
-URL:            https://github.com/djs55/ocaml-sha/
+URL:            https://opam.ocaml.org/packages/sha
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20200220
 BuildRequires:  ocamlfind(oUnit)
 
 %description
@@ -47,7 +47,6 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-test -f jbuild && dune upgrade --verbose
 dune_release_pkgs='sha'
 %ocaml_dune_setup
 %ocaml_dune_build
