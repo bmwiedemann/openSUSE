@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 04 14:41:41 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.33:
+  - Prevent loosing focus in search view
+    (glgo#World/lollypop#2278).
+  - Ignore skipped tracks in smart playlists
+    (glgo#World/lollypop#2277).
+  - Fix Vorbis encoding (glgo#World/lollypop#2285).
+  - Some playback list fixes (glgo#World/lollypop#2280). 
+  - Do not add Spotify tracks with no artist
+    (glgo#World/lollypop#2282).
+
+-------------------------------------------------------------------
 Fri Mar 27 23:01:43 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.32:
