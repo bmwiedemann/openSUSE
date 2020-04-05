@@ -1,7 +1,7 @@
 #
 # spec file for package kf5-filesystem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           kf5-filesystem
-Url:            http://www.kde.org
+URL:            http://www.kde.org
 Version:        20170414
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,6 +37,10 @@ BuildRequires:  python3-base
 %endif
 Source0:        macros.kf5
 Source1:        COPYING
+# https://github.com/openSUSE/rpm-config-SUSE/blob/54f9f71bacdfb944d88f722d71a4d35651f7cc8a/fileattrs/locale.attr
+# edited for /usr/share/locale/kf5/
+Source2:        localekf5.attr
+Source3:        https://raw.githubusercontent.com/openSUSE/rpm-config-SUSE/54f9f71bacdfb944d88f722d71a4d35651f7cc8a/scripts/locale.prov#/localekf5.prov
 
 %description
 This package provides macros which are utilized with extra-cmake-modules' KDEInstallDirs.
@@ -58,6 +62,7 @@ This package provides macros which are utilized with extra-cmake-modules' KDEIns
 %define _kf5_qmldir     %{_kf5_libdir}/qt5/qml
 %define _kf5_cmakedir   %{_kf5_libdir}/cmake
 %define _kf5_mkspecsdir %{_kf5_libdir}/qt5/mkspecs/modules
+%define _kf5_appstreamdir    %{_kf5_sharedir}/metainfo
 %define _kf5_dbusinterfacesdir %{_kf5_sharedir}/dbus-1/interfaces
 %define _kf5_dbuspolicydir   %{_kf5_sharedir}/dbus-1/system.d
 %define _kf5_configdir       %{_kf5_sysconfdir}/xdg
@@ -76,18 +81,19 @@ This package provides macros which are utilized with extra-cmake-modules' KDEIns
 %define _kf5_debugdir        %{_kf5_sharedir}/qlogging-categories5
 
 %prep
+%autosetup -T -c
+cp %{SOURCE1} .
 
 %build
-%if 0%{?suse_version} <= 1320 && 0%{?sle_version} <= 120100
-    sed -i 's|%%{_kf5_sharedir}/metainfo|%%{_kf5_sharedir}/appdata|g' $RPM_SOURCE_DIR/macros.kf5
-%define _kf5_appstreamdir    %{_kf5_sharedir}/appdata
-%else
-%define _kf5_appstreamdir    %{_kf5_sharedir}/metainfo
-%endif
 
 %install
 install -D -m644 %{SOURCE0} %{buildroot}%{_rpmconfigdir}/macros.d/macros.kf5
-install -D -m644 %{SOURCE1} %{buildroot}%{_docdir}/kf5-filesystem/COPYING
+%if 0%{?suse_version} >= 1550
+# On TW, foo-lang packages use automatic locale(foo:en) provides, but that
+# does not match locale/kf5
+install -D -m644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/fileattrs/localekf5.attr
+install -D -m755 %{SOURCE3} %{buildroot}%{_rpmconfigdir}/fileattrs/localekf5.prov
+%endif
 
 mkdir -p %{buildroot}%{_kf5_includedir}
 mkdir -p %{buildroot}%{_kf5_libexecdir}
@@ -146,9 +152,12 @@ popd
 
 %files
 %defattr(-,root,root)
+%license COPYING
 %{_rpmconfigdir}/macros.d/macros.kf5
-%dir %{_docdir}/kf5-filesystem
-%{_docdir}/kf5-filesystem/COPYING
+%if 0%{?suse_version} >= 1550
+%{_rpmconfigdir}/fileattrs/localekf5.attr
+%{_rpmconfigdir}/fileattrs/localekf5.prov
+%endif
 %dir %{_kf5_includedir}
 %dir %{_kf5_plugindir}
 %dir %{_kf5_libdir}/libexec
