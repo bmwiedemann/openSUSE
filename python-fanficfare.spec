@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        3.17.0+git.1585684191.22d2ad45
+Version:        3.18.1+git.1586013122.54f843ec
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only

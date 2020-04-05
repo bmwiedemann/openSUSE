@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 04 20:32:27 UTC 2020 - mcepl@suse.com
+
+- Update to version 3.18.0+git.1586013122.54f843ec:
+  * Bump Test Version 3.18.1
+  * New Site: scifistories.com (extends finestories.com).
+  * Bump Release Version 3.18.0
+  * Update translations
+  * Bump Test Version 3.17.9
+  * Change fanfiction.tenhawkpresents.com to fanfic.tenhawkpresents.ink
+  * Revert "Remove defunct site fanfiction.tenhawkpresents.com"
+  * Bump Test Version 3.17.8
+  * Changes to adapter_archiveofourownorg for AO3 changes re: view_adult=true
+
+-------------------------------------------------------------------
 Tue Mar 31 20:32:37 UTC 2020 - mcepl@suse.com
 
 - Update to version 3.17.0+git.1585684191.22d2ad45:
