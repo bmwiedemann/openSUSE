@@ -16,14 +16,13 @@
 #
 
 
-%define _rev    9d10945a7a32a110e652dba5a73cb6ad
+%define _rev    64c02befbf3a2fee2e1a7ab266938f9a
 %define _name   emerald
 Name:           compiz-emerald
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Themeable window decorator for Compiz
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/emerald
 Source:         https://gitlab.com/compiz/emerald/uploads/%{_rev}/%{_name}-%{version}.tar.xz
 BuildRequires:  autoconf
@@ -41,7 +40,6 @@ BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(xrender) >= 0.8.4
 Requires:       compiz < 0.9
-Recommends:     %{name}-lang
 Recommends:     %{name}-theme-manager >= %{version}
 Recommends:     %{name}-themes
 Provides:       compiz-decorator = 0.8
@@ -53,7 +51,6 @@ Emerald is a themeable window decorator for Compiz.
 
 %package theme-manager
 Summary:        Graphical theme manager for Emerald
-Group:          System/GUI/Other
 Requires:       %{name} >= %{version}
 
 %description theme-manager
@@ -63,7 +60,6 @@ This package contains a graphical theme manager.
 
 %package devel
 Summary:        Development files for compiz-emerald
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Requires:       gcc-c++
 Requires:       pkgconfig(gtk+-3.0)
