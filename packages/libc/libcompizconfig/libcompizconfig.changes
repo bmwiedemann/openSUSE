@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.18:
+  * Read SYSCONFDIR/compizconfig/presets.ini as default values if
+    exists.
+  * Avoid using glibc-specific strcasestr and asprintf.
+- Rebase libcompizconfig-config-dir.patch.
+- Improve libcompizconfig-configure-retval.patch: there is no need
+  in a return value at all.
+
+-------------------------------------------------------------------
 Thu Oct 31 17:42:21 CET 2019 - ro@suse.de
 
 - add patch libcompizconfig-configure-retval.patch

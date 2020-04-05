@@ -1,7 +1,7 @@
 #
 # spec file for package libcompizconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define _rev    f5a51bfcae611276064ba8b9048c294e
+%define _rev    ada252d7170ae626651a98fd03569e1f
 %define sover   0
 Name:           libcompizconfig
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        CompizConfig plugin required for CCSM
 License:        GPL-2.0-or-later
-Group:          System/Libraries
 URL:            https://gitlab.com/compiz/libcompizconfig
 Source:         https://gitlab.com/compiz/libcompizconfig/uploads/%{_rev}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE libcompizconfig-config-dir.patch boo#438081 rodrigo@novell.com
 Patch0:         %{name}-config-dir.patch
-Patch1:         libcompizconfig-configure-retval.patch
+# PATCH-FIX-UPSTREAM libcompizconfig-configure-retval.patch ro@suse.de
+Patch1:         %{name}-configure-retval.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -47,7 +47,6 @@ CompizConfig plugin required for compizconfig-settings-manager.
 
 %package devel
 Summary:        Development files for libcompizconfig
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(compiz) < 0.9
@@ -61,15 +60,13 @@ CompizConfig plugin required for compizconfig-settings-manager.
 This package contains development files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
   --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
