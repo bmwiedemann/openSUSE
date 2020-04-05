@@ -939,4 +939,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>783096</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>87d91d3aa2c03a35532910c8a048230d</srcmd5>
+    <version>0.7.4</version>
+    <time>1586112591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791192</requestid>
+  </revision>
 </revisionlist>

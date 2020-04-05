@@ -1,6 +1,6 @@
-diff -burNE firewalld-0.7.2_orig/config/firewalld.conf firewalld-0.7.2/config/firewalld.conf
---- firewalld-0.7.2_orig/config/firewalld.conf	2019-10-10 14:29:04.022394133 +0200
-+++ firewalld-0.7.2/config/firewalld.conf	2019-10-10 14:30:12.102256167 +0200
+diff -burNE firewalld-0.7.4_orig/config/firewalld.conf firewalld-0.7.4/config/firewalld.conf
+--- firewalld-0.7.4_orig/config/firewalld.conf	2020-04-03 09:45:04.363964087 +0200
++++ firewalld-0.7.4/config/firewalld.conf	2020-04-03 09:45:21.495215479 +0200
 @@ -53,9 +53,9 @@
  # FirewallBackend
  # Selects the firewall backend implementation.
@@ -14,9 +14,9 @@ diff -burNE firewalld-0.7.2_orig/config/firewalld.conf firewalld-0.7.2/config/fi
  
  # FlushAllOnReload
  # Flush all runtime rules on a reload. In previous releases some runtime
-diff -burNE firewalld-0.7.2_orig/doc/xml/firewalld.conf.xml firewalld-0.7.2/doc/xml/firewalld.conf.xml
---- firewalld-0.7.2_orig/doc/xml/firewalld.conf.xml	2019-10-10 14:29:04.026394125 +0200
-+++ firewalld-0.7.2/doc/xml/firewalld.conf.xml	2019-10-10 14:29:19.766362228 +0200
+diff -burNE firewalld-0.7.4_orig/doc/xml/firewalld.conf.xml firewalld-0.7.4/doc/xml/firewalld.conf.xml
+--- firewalld-0.7.4_orig/doc/xml/firewalld.conf.xml	2020-04-03 09:45:05.071933150 +0200
++++ firewalld-0.7.4/doc/xml/firewalld.conf.xml	2020-04-03 09:45:21.499215305 +0200
 @@ -149,8 +149,8 @@
              <listitem>
                  <para>
@@ -28,10 +28,10 @@ diff -burNE firewalld-0.7.2_orig/doc/xml/firewalld.conf.xml firewalld-0.7.2/doc/
                  firewalld primitives. The only exception is direct and
                  passthrough rules which always use the traditional iptables,
                  ip6tables, and ebtables backends.
-diff -burNE firewalld-0.7.2_orig/src/firewall/config/__init__.py.in firewalld-0.7.2/src/firewall/config/__init__.py.in
---- firewalld-0.7.2_orig/src/firewall/config/__init__.py.in	2019-10-10 14:29:04.030394117 +0200
-+++ firewalld-0.7.2/src/firewall/config/__init__.py.in	2019-10-10 14:31:06.522145883 +0200
-@@ -129,6 +129,6 @@
+diff -burNE firewalld-0.7.4_orig/src/firewall/config/__init__.py.in firewalld-0.7.4/src/firewall/config/__init__.py.in
+--- firewalld-0.7.4_orig/src/firewall/config/__init__.py.in	2020-04-03 09:45:05.367920215 +0200
++++ firewalld-0.7.4/src/firewall/config/__init__.py.in	2020-04-03 09:45:21.503215130 +0200
+@@ -128,7 +128,7 @@
  FALLBACK_INDIVIDUAL_CALLS = False
  FALLBACK_LOG_DENIED = "off"
  FALLBACK_AUTOMATIC_HELPERS = "system"
@@ -39,3 +39,4 @@ diff -burNE firewalld-0.7.2_orig/src/firewall/config/__init__.py.in firewalld-0.
 +FALLBACK_FIREWALL_BACKEND = "iptables"
  FALLBACK_FLUSH_ALL_ON_RELOAD = True
  FALLBACK_RFC3964_IPV4 = True
+ FALLBACK_ALLOW_ZONE_DRIFTING = False

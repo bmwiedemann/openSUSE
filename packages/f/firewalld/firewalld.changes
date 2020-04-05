@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr  3 07:39:02 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 0.7.4
+
+This is a bug fix only release.
+However, it does reintroduce the zone drifting bug as a feature. See #258 and #441. This behavior is disabled by default.
+
+  * improvement: build: add an option to disable building documentation
+  * Typo in firewall-config(1)
+  * Fix typo in TFTP service description
+  * doc: README: add note about language translations
+  * fix: rich: source/dest only matching with mark action
+  * feat: AllowZoneDrifting config option
+  * feat: nftables: support AllowZoneDrifting=yes
+  * feat: ipXtables: support AllowZoneDrifting=yes
+  * fix: firewall-offline-cmd: Don't print warning about AllowZoneDrifting
+  * fix: add logrotate policy
+  * fix: tests: regenerate testsuite if .../{cli,python}/*.at changes
+  * doc: direct: add CAVEATS section
+  * fix: checkIP6: strip leading/trailing square brackets
+  * fix: nftables: remove square brackets from IPv6 addresses
+  * fix: ipXtables: remove square brackets from IPv6 addresses
+  * fix: nftables: zone dispatch with multidimensional ipsets
+  * fix: ipset: destroy runtime sets on reload/stop
+  * fix: port: support querying sub ranges
+  * fix: source_port: support querying sub ranges
+  * doc: specify accepted characters for object names
+  * fix: doc: address copy/paste mistakes in short/description
+  * fix: configure: atlocal: quote variable values
+  * fix: nftables: allow set intervals with concatenations
+  * doc: clarify --set-target values "default" vs "reject"
+
+-------------------------------------------------------------------
 Sun Mar 08 17:20:42 UTC 2020 - hpj@urpla.net
 
 - Update to version 0.7.3:

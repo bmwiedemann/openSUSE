@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -228,6 +228,7 @@ fi
 %config(noreplace) %{_sysconfdir}/modprobe.d/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
+%config(noreplace) %{_sysconfdir}/logrotate.d/firewalld
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/icmptypes
 %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/services
