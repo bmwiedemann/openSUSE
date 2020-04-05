@@ -1,7 +1,7 @@
 #
 # spec file for package compiz-bcop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define _rev    f304a07726d865d3b7b3a6fec3be1ba7
+%define _rev    5b37c3edbf45fcac9412c34e00383715
 %define _name   bcop
 Name:           compiz-bcop
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Compiz option code generator
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/compiz-bcop
 Source:         https://gitlab.com/compiz/compiz-bcop/uploads/%{_rev}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
@@ -44,7 +43,7 @@ Compiz option code generator needed to build some plugins.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
