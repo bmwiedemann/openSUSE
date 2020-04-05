@@ -499,4 +499,28 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
   * The “cache miss” statistics counter will now be updated for read-only cache misses, making it consistent with the cache hit case.</comment>
     <requestid>770545</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fb73285507133430016b0fbc4dcf9be0</srcmd5>
+    <version>3.7.9</version>
+    <time>1586112575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.9:
+  * Fixed replacing of /dev/null when building as root with hard link mode enabled and using -o /dev/null.
+  * Removed incorrect assertion resulting in “ccache: error: Internal error in format” when using -fdebug-prefix-map=X= with X equal to $PWD.
+  * Improved CUDA/NVCC support: Recognize -dc and -x cu options.
+  * Improved name of temporary file used in NFS-safe unlink.
+- Changes for version 3.7.8:
+  * Use $PWD instead of the real CWD (current working directory) when checking for CWD in preprocessed output. This fixes a problem when $PWD includes a symlink part and the user has set hash_dir = false.
+  * Rewrote the Windows version of the lockfile routines. This should mitigate several problems with the old implementation.
+  * If localtime_r fails the epoch time is now logged instead of garbage.
+  * Improved error message when a boolean environment variable has an invalid value.
+  * Improved the regression fix in ccache 3.7.5 related to not passing compilation-only options to the preprocessor.
+  * ccache’s PCH test suite now skips running the tests if it detects broken PCH compiler support.
+  * Fixed unit test failure on Windows.
+  * Fixed “stringop-truncation” build warning on Windows.
+  * Improved “x_rename” implementation on Windows.
+  * Improved removal of temporary file when rewriting absolute paths to relative in the dependency file.
+  * Clarified “include_file_ctime sloppiness” in the Performance section in the manual.</comment>
+    <requestid>791119</requestid>
+  </revision>
 </revisionlist>
