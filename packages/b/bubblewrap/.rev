@@ -111,4 +111,20 @@
 </comment>
     <requestid>759115</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>682faa9a149e5a3f4dbc632428aad155</srcmd5>
+    <version>0.4.1</version>
+    <time>1586112699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+ * retcode: fix return code with syncfd and no event_fd
+ * Ensure we're always clearing the cap bounding set
+ * tests: Update output patterns for libcap &gt;= 2.29
+ * Don't rely on geteuid() to know when to switch back from setuid root
+ * Don't support --userns2 in setuid mode
+ * fixes CVE-2020-5291
+ * fixes bsc#1168291
+</comment>
+    <requestid>790515</requestid>
+  </revision>
 </revisionlist>
