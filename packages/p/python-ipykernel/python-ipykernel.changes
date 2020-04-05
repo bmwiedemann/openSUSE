@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:35:30 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * removed patch fix_jupyter_client_6.patch, included upstream
+
+- update to version 5.2.0:
+  * Produce better traceback when kernel is interrupted
+    (:ghpull:`491`)
+  * Add InProcessKernelClient.control_channel for compatibility with
+    jupyter-client v6.0.0 (:ghpull:`489`)
+  * Drop support for Python 3.4 (:ghpull:`483`)
+  * Work around issue related to Tornado with python3.8 on Windows
+    (:ghpull:`480`, :ghpull:`481`)
+  * Prevent entering event loop if it is None (:ghpull:`464`)
+  * Use shell.input_transformer_manager when available (:ghpull:`411`)
+
+-------------------------------------------------------------------
 Wed Mar 11 13:31:10 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Add fix_jupyter_client_6.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        5.1.4
+Version:        5.2.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_jupyter_client_6.patch -- https://github.com/ipython/ipykernel/pull/489
-Patch0:         fix_jupyter_client_6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -40,6 +38,12 @@ Requires:       python-tornado >= 4.2
 Requires:       python-traitlets >= 4.1.0
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
+Provides:       %{python_module ipykernel-doc = %{version}}
+Obsoletes:      %{python_module ipykernel-doc < %{version}}
+Provides:       %{python_module jupyter_ipykernel-doc = %{version}}
+Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
+Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
+Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
@@ -58,13 +62,6 @@ BuildRequires:  %{python_module traitlets >= 4.1.0}
 BuildRequires:  %{python_module typing}
 Requires:       python-typing
 %endif
-Provides:       %{python_module ipykernel-doc = %{version}}
-Obsoletes:      %{python_module ipykernel-doc < %{version}}
-Provides:       %{python_module jupyter_ipykernel-doc = %{version}}
-Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
-Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
-Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
-
 %python_subpackages
 
 %description
@@ -74,6 +71,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipykernel
 Summary:        IPython Kernel for Jupyter
+Group:          Development/Languages/Python
 Requires:       hicolor-icon-theme
 Requires:       jupyter-jupyter-client
 Requires:       python3-ipykernel = %{version}
@@ -100,7 +98,10 @@ This package provides the jupyter components.
 %files %{python_files}
 %doc README.md docs/changelog.rst
 %license COPYING.md
-%{python_sitelib}/*
+%{python_sitelib}/ipykernel
+%{python_sitelib}/ipykernel_launcher.py
+%{python_sitelib}/ipykernel-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %files -n jupyter-ipykernel
 %license COPYING.md
