@@ -3,6 +3,9 @@ Description=GNU Health server
 After=syslog.target
 Requires=postgresql.service
 Conflicts=trytond.service
+
+[Service]
+# some security settings
 PrivateTmp=true
 ProtectSystem=true
 ProtectHome=true
@@ -14,7 +17,6 @@ NoNewPrivileges=true
 PrivateDevices=true
 MemoryDenyWriteExecute=true
 
-[Service]
 Type=simple
 User=tryton
 Group=tryton
