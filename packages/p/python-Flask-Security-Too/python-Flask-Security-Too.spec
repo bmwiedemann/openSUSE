@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Security-Too
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,43 +12,60 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
-License:        MIT
 Summary:        Security for Flask apps
-Url:            https://github.com/jwag956/flask-security
+License:        MIT
+URL:            https://github.com/jwag956/flask-security
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-Too/Flask-Security-Too-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+Patch0:         no-mongodb.patch
 BuildRequires:  %{python_module Babel >= 1.3}
+BuildRequires:  %{python_module Flask >= 1.0.2}
+BuildRequires:  %{python_module Flask-BabelEx >= 0.9.3}
+BuildRequires:  %{python_module Flask-Login >= 0.4.1}
+BuildRequires:  %{python_module Flask-Mail >= 0.9.1}
+BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
+BuildRequires:  %{python_module Flask-SQLAlchemy >= 2.3}
+BuildRequires:  %{python_module Flask-WTF >= 0.14.0}
+BuildRequires:  %{python_module PyQRCode >= 1.2}
+BuildRequires:  %{python_module SQLAlchemy >= 1.2.6}
+BuildRequires:  %{python_module Werkzeug >= 0.15.5}
+BuildRequires:  %{python_module argon2_cffi >= 19.1.0}
+BuildRequires:  %{python_module bcrypt >= 3.1.5}
+BuildRequires:  %{python_module cachetools >= 3.1.0}
+BuildRequires:  %{python_module itsdangerous >= 1.1.0}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module passlib >= 1.7.1}
+BuildRequires:  %{python_module peewee >= 3.11.2}
+BuildRequires:  %{python_module phonenumbers >= 8.11.1}
+BuildRequires:  %{python_module pony >= 0.7.11}
 BuildRequires:  %{python_module pytest-runner >= 2.6.2}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0.2
 Requires:       python-Flask-BabelEx >= 0.9.3
 Requires:       python-Flask-Login >= 0.4.1
 Requires:       python-Flask-Mail >= 0.9.1
 Requires:       python-Flask-Principal >= 0.4.0
 Requires:       python-Flask-WTF >= 0.14.2
+Requires:       python-Werkzeug >= 0.15.5
 Requires:       python-itsdangerous >= 1.1.0
 Requires:       python-passlib >= 1.7.1
-Requires:       python-Werkzeug >= 0.15.5
-Requires:       python-speaklater
-Suggests:       python-Flask-SQLAlchemy >= 2.3
-Suggests:       python-bcrypt >= 3.1.5
-Suggests:       python-SQLAlchemy >= 1.2.6
 Conflicts:      python-Flask-Security < 3.2.0
 Obsoletes:      python-Flask-Security < 3.2.0
 Provides:       python-Flask-Security = %{version}
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -58,6 +75,8 @@ based on the 3.0.0 version of the original.
 
 %prep
 %setup -q -n Flask-Security-Too-%{version}
+%patch0 -p1
+rm pytest.ini
 
 %build
 %python_build
@@ -67,7 +86,7 @@ based on the 3.0.0 version of the original.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests were disabled, just like in python-Flask-Security
+%pytest
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
