@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-dicomweb
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 Dr. Axel Braun
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,16 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.0
+Version:        1.1
 Release:        0
-Url:            https://orthanc-server.com
+URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-dicom-web/OrthancDicomWeb-%{version}.tar.gz
 Source1:        cornerstone.css
 Source2:        cornerstone.min.js
@@ -57,7 +58,7 @@ BuildRequires:  uuid-devel
 
 Requires:       orthanc
 
-BuildRoot:      OrthancDicomWeb-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 WebViewer plugin for Orthanc
@@ -82,7 +83,7 @@ cd ..
        -DBoost_NO_BOOST_CMAKE=ON \
        -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 %install
@@ -104,7 +105,7 @@ ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancDicomWeb.so.%{versio
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancDicomWeb.so
 
 rm %{buildroot}%{_libdir}/share/orthanc/plugins/libOrthancDicomWeb.so
-      
+
 cp %{S:1} %{S:9} %{S:10} %{buildroot}%{_docdir}/orthanc/.
 
 %post -p /sbin/ldconfig

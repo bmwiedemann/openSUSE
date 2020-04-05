@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar  5 08:47:21 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.1
+
+* Support of "window", "viewport" and "quality" parameters in "Retrieve Rendered Transaction"
+* Support of "/studies/.../rendered" and "/studies/.../series/.../rendered"
+* QIDO-RS: Allow to query against a list of multiple values separated by commas
+* WADO-RS "Retrieve Metadata": Configuration options "StudiesMetadata"
+  and "SeriesMetadata", whose value can be "Full" (read all DICOM
+  instances from the storage area), "MainDicomTags" (only report the
+  main DICOM tags from the Orthanc database), or "Extrapolate" (main
+  DICOM tags + user-specified tags extrapolated from a few random instances)
+* QIDO-RS: Optimization for large studies/series
+* QIDO-RS: Fix returned attributes if Study/Series Instance UIDs are not filtered
+* Fix handling of the "Forwarded" HTTP header
+* Fix support for client certificate authentication
+* Accept multiple MIME types in Accept header for WADO-RS "Retrieve Metadata"
+  https://groups.google.com/d/msg/orthanc-users/P3B6J9abZpE/syn5dnW2AwAJ
+* Added explicit "Accept" header to avoid uncompressing DICOM files by Google cloud,
+  can be turned off by setting "HasWadoRsUniversalTransferSyntax" to "false" (for
+  instance if contacting a remote Orthanc plugin with DICOMweb version <= 1.0)
+  https://groups.google.com/d/msg/orthanc-users/w1Ekrsc6-U8/T2a_DoQ5CwAJ
+* Fix issue #162 ("DICOMweb metadata resource reads all instances")
+* Fix issue #164 ("JPEG YBR_422 generates a 500 in the DicomWeb plugin")
+* Upgrade to GDCM 3.0.4 in static builds
+
+-------------------------------------------------------------------
 Thu Aug  8 14:49:56 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.0 
