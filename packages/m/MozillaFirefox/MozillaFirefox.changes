@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  3 15:23:28 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 74.0.1
+  MFSA 2020-11 (boo#1168630)
+  * CVE-2020-6819 (bmo#1620818)
+    Use-after-free while running the nsDocShell destructor
+  * CVE-2020-6820 (bmo#1626728)
+    Use-after-free when handling a ReadableStream
+
+-------------------------------------------------------------------
 Wed Mar 25 07:30:39 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - mozilla-sandbox-fips.patch: allow /proc/sys/crypto/fips_enabled

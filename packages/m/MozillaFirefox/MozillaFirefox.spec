@@ -19,8 +19,8 @@
 
 # changed with every update
 %define major          74
-%define mainver        %major.0
-%define orig_version   74.0
+%define mainver        %major.0.1
+%define orig_version   74.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
