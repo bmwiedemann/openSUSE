@@ -1,5 +1,0 @@
-<package name="python-3to2" project="openSUSE:Factory">
-  <title></title>
-  <description>Tool to refactor Python 3.x syntax into 2.7 syntax</description>
-  <devel project="devel:languages:python" package="python-3to2"/>
-</package>
