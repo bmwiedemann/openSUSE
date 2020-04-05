@@ -22,7 +22,7 @@ Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.0-or-later
@@ -55,6 +55,8 @@ BuildRequires:  libtool
 %endif
 Requires(post): coreutils
 Requires(postun): coreutils
+
+%lang_package(cryptsetup)
 
 %description
 cryptsetup is used to conveniently set up dm-crypt based device-mapper
@@ -166,7 +168,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n libcryptsetup%{so_ver} -p /sbin/ldconfig
 %postun -n libcryptsetup%{so_ver} -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files
 %doc AUTHORS COPYING* FAQ README TODO docs/ChangeLog.old docs/*ReleaseNotes
 /sbin/cryptsetup%{?is_backports:2}
 %{_sbindir}/cryptsetup%{?is_backports:2}
@@ -181,6 +183,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_tmpfilesdir}/cryptsetup.conf
 %ghost %dir /run/cryptsetup
 %endif
+
+%files lang -f %{name}.lang
 
 %files -n libcryptsetup%{so_ver}
 %{_libdir}/libcryptsetup.so.%{so_ver}*
