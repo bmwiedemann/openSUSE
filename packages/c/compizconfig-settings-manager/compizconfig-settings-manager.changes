@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.18:
+  * Fix Error Widgets.py:957:show_popup:TypeError: __init__() got
+    multiple values for argument "parent".
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Drop support for old openSUSE versions.

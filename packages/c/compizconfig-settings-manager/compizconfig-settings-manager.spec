@@ -16,24 +16,23 @@
 #
 
 
-%define _rev    d6f32b38bf0433aff49ca59f0bb3f921
+%define _rev    1c1b988479082609fb5ca1103a7120ac
 %define _name   ccsm
 Name:           compizconfig-settings-manager
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Settings Manager for Compiz (CCSM)
 License:        GPL-2.0-or-later
-Group:          System/X11/Utilities
 URL:            https://gitlab.com/compiz/ccsm
 Source:         https://gitlab.com/compiz/ccsm/uploads/%{_rev}/%{_name}-%{version}.tar.xz
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 Requires:       python3-ccm = %{version}
-Recommends:     %{name}-lang
 Provides:       %{_name} = 0.8
 BuildArch:      noarch
 
@@ -44,7 +43,6 @@ Compiz Config and Settings tool (CCSM).
 
 %package -n compizconfig-settings-manager-common
 Summary:        Settings Manager for Compiz -- Common files
-Group:          System/X11/Utilities
 BuildArch:      noarch
 
 %description -n compizconfig-settings-manager-common
@@ -52,7 +50,6 @@ Common files for the Compiz Config and Settings tool (CCSM).
 
 %package -n python3-ccm
 Summary:        CompizConfig Manager Backend
-Group:          Development/Languages/Python
 Requires:       compiz < 0.9
 Requires:       compizconfig-settings-manager-common
 Requires:       python3-cairo
@@ -70,14 +67,10 @@ The backend to Compiz Config Manager.
 %setup -q -n %{_name}-%{version}
 
 %build
-python3 setup.py build \
-  --prefix=%{_prefix}
+%py3_build
 
 %install
-python3 setup.py install \
-  --root=%{buildroot} \
-  --prefix=%{_prefix}
-mv %{buildroot}%{_datadir}/{metainfo,appdata}/
+%py3_install
 %find_lang %{_name}
 
 %files
@@ -88,8 +81,7 @@ mv %{buildroot}%{_datadir}/{metainfo,appdata}/
 %{_datadir}/compiz/icons/
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{_name}.*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}.appdata.xml
+%{_datadir}/metainfo/%{_name}.appdata.xml
 
 %files lang -f %{_name}.lang
 
