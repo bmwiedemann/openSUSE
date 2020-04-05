@@ -17,13 +17,6 @@
 
 
 %{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
-# CaaSP uses a package named kubelet, openSUSE has a kubelet-common for multi-version support
-%if !0%{?is_opensuse}
-%define kubeletpkgname kubelet
-%else
-%define kubeletpkgname kubelet-common
-%endif
-
 # maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
 %define maxcriversion 1.19
 # baseversion - version of kubernetes for this package
@@ -45,17 +38,12 @@ Source1:        %{name}-%{preversion}.tar.xz
 Source2:        genmanpages.sh
 Source3:        kubelet.sh
 #systemd services
-Source10:       kube-apiserver.service
-Source11:       kube-controller-manager.service
-Source12:       kubelet.service
-Source13:       kube-proxy.service
-Source14:       kube-scheduler.service
+Source10:       kubelet.service
 #config files
 Source22:       sysconfig.kubelet-kubernetes
 Source23:       kubeadm.conf
-Source24:       50-kubeadm.conf
+Source24:       90-kubeadm.conf
 Source25:       10-kubeadm.conf
-Source26:       kubernetes.tmp.conf
 Source27:       kubelet.tmp.conf
 Source28:       kubernetes-rpmlintrc
 Source29:       kubernetes.obsinfo
@@ -77,11 +65,6 @@ BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
 ExcludeArch:    %{ix86} s390 ppc64
-# openSUSE uses a few golang-packaging macros as possible
-%if !0%{?is_opensuse}
-%{go_nostrip}
-%{go_provides}
-%endif
 
 %description
 Kubernetes is a system for automating deployment, scaling, and
@@ -90,44 +73,6 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
-%if !0%{?is_opensuse}
-# package layout for CaaSP
-
-%package common
-Summary:        Kubernetes common files
-Group:          System/Management
-
-%description common
-Kubernetes is a system for automating deployment, scaling, and
-management of containerized applications.
-
-This subpackage contains the Kubernetes common files.
-
-%endif
-
-%package master
-Summary:        Kubernetes services for master host
-Group:          System/Management
-%if !0%{?is_opensuse}
-Requires:       kubernetes-common = %{version}-%{release}
-%endif
-Requires(pre):  shadow
-# if the master is installed with node, version and release must be the same
-Conflicts:      kubernetes-node < %{version}-%{release}
-Conflicts:      kubernetes-node > %{version}-%{release}
-%{?systemd_requires}
-%if 0%{?suse_version}
-Recommends:     kubernetes-client = %{version}-%{release}
-%endif
-
-%description master
-Kubernetes is a system for automating deployment, scaling, and
-management of containerized applications.
-
-This subpackage contains the Kubernetes services for master hosts.
-
-
-%if 0%{?is_opensuse}
 # packages to build containerized control plane
 
 %package apiserver
@@ -164,7 +109,6 @@ Requires:       conntrack-tools
 Requires:       ebtables
 Requires:       ipset
 Requires:       iptables
-Conflicts:      kubernetes-node
 
 %description proxy
 This subpackage contains the kube-proxy binary for Kubic images
@@ -175,9 +119,6 @@ Group:          System/Management
 Requires:       cri-runtime
 Requires:       kubernetes-kubelet-common
 Provides:       kubernetes-kubelet = %{version}-%{release}
-# if master is installed with node, version and release must be the same
-Conflicts:      kubernetes-master < %{version}-%{release}
-Conflicts:      kubernetes-master > %{version}-%{release}
 %{?systemd_requires}
 
 %description kubelet%{baseversion}
@@ -196,24 +137,13 @@ Provides:       kubernetes-kubelet = %{preversion}
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubelet daemon (previous version for upgrades)
 
-%endif
-
-%package %{kubeletpkgname}
+%package kubelet-common
 Summary:        Kubernetes kubelet daemon
 Group:          System/Management
 Requires:       cri-runtime
-%if 0%{?is_opensuse}
 Requires:       kubernetes-kubelet
-%endif
-%if !0%{?is_opensuse}
-Requires:       kubernetes-common = %{version}-%{release}
-# if master is installed with node, version and release must be the same
-Conflicts:      kubernetes-master < %{version}-%{release}
-Conflicts:      kubernetes-master > %{version}-%{release}
-%{?systemd_requires}
-%endif
 
-%description %{kubeletpkgname}
+%description kubelet-common
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubelet daemon
 
@@ -228,78 +158,30 @@ Requires:       ethtool
 Requires:       kubernetes-kubeadm-criconfig
 Requires:       socat
 Requires(pre):  shadow
-%if !0%{?is_opensuse}
-# CaaSP style of upgrade handling
-# Kubeadm 1.15.2 requires kubernetes-kubelet from 1.14.0 to 1.15.2
-# kubeadm accepts the previous version. This is important for performing upgrades
-# because we can update kubeadm first, and then kubelet.
-Requires:       kubernetes-kubelet >= 1.14.0
-Conflicts:      kubernetes-kubelet > %{version}-%{release}
-%else
 # openSUSE style of upgrade handling
 # Kubeadm requires current kubelet version and previous
 Requires:       kubernetes-kubelet = %{version}-%release
 Requires:       kubernetes-kubelet = %{preversion}
-%endif
 Conflicts:      cri-tools >= %{maxcriversion}
-# if master is installed with node, version and release must be the same
-Conflicts:      kubernetes-master < %{version}-%{release}
-Conflicts:      kubernetes-master > %{version}-%{release}
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubeadm bootstrapping tool
 
-%package node
-Summary:        Kubernetes services for node host
-Group:          System/Management
-Requires:       conntrack-tools
-Requires:       cri-runtime
-Requires:       ethtool
-Requires:       iptables
-%if !0%{?is_opensuse}
-Requires:       kubernetes-common = %{version}-%{release}
-%endif
-Requires:       kubernetes-kubelet = %{version}-%{release}
-Requires:       socat
-Requires(pre):  shadow
-# if master is installed with node, version and release must be the same
-Conflicts:      kubernetes-master < %{version}-%{release}
-Conflicts:      kubernetes-master > %{version}-%{release}
-%{?systemd_requires}
-
-%description node
-Kubernetes is a system for automating deployment, scaling, and
-management of containerized applications.
-
-This subpackage contains the Kubernetes services for node hosts.
-
 %package client
 Summary:        Kubernetes client tools
 Group:          System/Management
-%if 0%{?is_opensuse}
-Recommends: bash-completion
-%else
-Requires:       bash-completion
-Requires:       kubernetes-common = %{version}-%{release}
-%endif
+Recommends:     bash-completion
 
 %description client
 Kubernetes client tools like kubectl.
 
 %prep
-%if 0%{?is_opensuse}
 %setup -q -T -D -b 1 -n %{name}-%{preversion}
-%endif
 %setup -q
-%if 0%{?is_opensuse}
 %patch2 -p0
 %patch3 -p1
 %patch4 -p0
-%endif
-%if !0%{?is_opensuse}
-%{goprep} github.com/kubernetes/kubernetes
-%endif
 
 %build
 # This is fixing bug bsc#1065972
@@ -313,12 +195,9 @@ export KUBE_GIT_VERSION=v%{version}
 %ifarch ppc64le
 export GOLDFLAGS='-linkmode=external'
 %endif
-%if 0%{?is_opensuse}
+
 #TEST
 make %{?_smp_mflags} WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
-%else
-make %{?_smp_mflags} WHAT="cmd/hyperkube cmd/kubeadm"
-%endif
 
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
@@ -335,13 +214,11 @@ bash genmanpages.sh
 popd
 
 # Make previous version of kubelet for migration aiding
-%if 0%{?is_opensuse}
 echo "+++ BUILDING Previous kubelet version"
 export KUBE_GIT_VERSION=v%{preversion}
 pushd %{_builddir}/%{name}-%{preversion}
 make %{?_smp_mflags} WHAT="cmd/kubelet"
 popd
-%endif
 
 %install
 
@@ -357,7 +234,6 @@ echo "+++ INSTALLING kubeadm"
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/kubeadm
 
 binaries=(kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet kubectl)
-%if 0%{?is_opensuse}
 for bin in "${binaries[@]}"; do
   echo "+++ INSTALLING ${bin}"
   install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
@@ -378,16 +254,6 @@ sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
 install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes
 
 
-%else
-echo "+++ INSTALLING hyperkube"
-install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/hyperkube
-
-for bin in "${binaries[@]}"; do
-  echo "+++ HARDLINKING ${bin} to hyperkube"
-  ln %{buildroot}%{_bindir}/hyperkube %{buildroot}%{_bindir}/${bin}
-done
-%endif
-
 # install the bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
 %{buildroot}%{_bindir}/kubectl completion bash > %{buildroot}%{_datadir}/bash-completion/completions/kubectl
@@ -403,15 +269,11 @@ find hack -name '.golint_*' -type f -delete
 
 # systemd service
 install -d -m 0755 %{buildroot}%{_unitdir}
-for src in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} ; do
-  install -m 0644 -t %{buildroot}%{_unitdir}/ "$src"
-done
+install -m 0644 -t %{buildroot}%{_unitdir}/ %{SOURCE10}
 
 # make symlinks to rc files
 install -d -m 0755 %{buildroot}%{_sbindir}
-for rc in kube-proxy kubelet kube-apiserver kube-controller-manager kube-scheduler ; do
-  ln -sf service "%{buildroot}%{_sbindir}/rc$rc"
-done
+ln -sf service "%{buildroot}%{_sbindir}/rckubelet"
 
 # install manpages
 install -d %{buildroot}%{_mandir}/man1
@@ -425,21 +287,12 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/manifests
 
 # place kubernetes.tmp.conf to /usr/lib/tmpfiles.d/kubernetes.conf
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
-install -D -m 0644 %{SOURCE26} %{buildroot}/%{_tmpfilesdir}/kubernetes.conf
 install -D -m 0644 %{SOURCE27} %{buildroot}/%{_tmpfilesdir}/kubelet.conf
 
 # install the place the kubelet defaults to put volumes
 install -d %{buildroot}%{_localstatedir}/lib/kubelet
 
-# install VolumePluginDir (bsc#1084766, bsc#1162093)
-# FIXME: CaaSP 4 defines the volume_plugin_dir in a directory that is not writeable 
-# on transactional-systems. This is ok but will be an issue when willing to support
-# CaaSP on transactional-systems.
-%if !0%{?is_opensuse}
-%define volume_plugin_dir %{_libexecdir}/kubernetes/kubelet-plugins/volume/exec
-%else
 %define volume_plugin_dir %{_localstatedir}/lib/kubelet/volume-plugin
-%endif
 install -d %{buildroot}/%{volume_plugin_dir}
 
 # Add kubeadm modprobe.d and sysctl.d drop-in configs
@@ -455,33 +308,11 @@ install -m 0644 -t %{buildroot}%{_unitdir}/kubelet.service.d/ %{SOURCE25}
 
 %fdupes -s %{buildroot}
 
-%pre master
-getent group kube >/dev/null || groupadd -r kube
-getent passwd kube >/dev/null || useradd -r -g kube -d / -s /sbin/nologin \
-        -c "Kubernetes user" kube
-%service_add_pre kube-apiserver.service kube-controller-manager.service kube-scheduler.service
-
-mkdir -p -m 755 %{_localstatedir}/lib/kubernetes
-chown -R kube %{_localstatedir}/lib/kubernetes
-chgrp -R kube %{_localstatedir}/lib/kubernetes
-
-%post master
-%service_add_post kube-apiserver.service kube-controller-manager.service kube-scheduler.service
-%tmpfiles_create %{_tmpfilesdir}/kubernetes.conf
-
-%preun master
-%service_del_preun kube-apiserver.service kube-controller-manager.service kube-scheduler.service
-
-%postun master
-%service_del_postun kube-apiserver.service kube-controller-manager.service kube-scheduler.service
-
-%pre %{kubeletpkgname}
+%pre kubelet-common
 %service_add_pre kubelet.service
 
-%post %{kubeletpkgname}
-%if 0%{?is_opensuse}
+%post kubelet-common
 %fillup_only -an kubelet
-%endif
 %service_add_post kubelet.service
 %if 0%{?suse_version} < 1500
 # create some subvolumes needed by CNI
@@ -493,49 +324,13 @@ fi
 %endif
 %tmpfiles_create %{_tmpfilesdir}/kubelet.conf
 
-%preun %{kubeletpkgname}
+%preun kubelet-common
 %service_del_preun kubelet.service
 
-%postun %{kubeletpkgname}
+%postun kubelet-common
 %service_del_postun kubelet.service
 
-%pre node
-%service_add_pre kube-proxy.service
-
-%post node
-%service_add_post kube-proxy.service
-
-%preun node
-%service_del_preun kube-proxy.service
-
-%postun node
-%service_del_postun kube-proxy.service
-
-%if !0%{?is_opensuse}
-%files common
-%{_bindir}/hyperkube
-%endif
-
-%files master
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kube-apiserver.1%{?ext_man}
-%{_mandir}/man1/kube-controller-manager.1%{?ext_man}
-%{_mandir}/man1/kube-scheduler.1%{?ext_man}
-%{_bindir}/kube-apiserver
-%{_bindir}/kube-controller-manager
-%{_bindir}/kube-scheduler
-%{_unitdir}/kube-apiserver.service
-%{_unitdir}/kube-controller-manager.service
-%{_unitdir}/kube-scheduler.service
-%{_sbindir}/rckube-apiserver
-%{_sbindir}/rckube-controller-manager
-%{_sbindir}/rckube-scheduler
-%attr(0750,root,root) %dir %ghost %{_rundir}/%{name}
-%dir %{_sysconfdir}/%{name}
-%{_tmpfilesdir}/kubernetes.conf
-
-%files %{kubeletpkgname}
+%files kubelet-common
 %doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
 %license LICENSE
 %{_mandir}/man1/kubelet.1%{?ext_man}
@@ -549,27 +344,33 @@ fi
 %{_tmpfilesdir}/kubelet.conf
 %attr(0750,root,root) %dir %ghost %{_rundir}/%{name}
 %dir %{volume_plugin_dir}
-%if 0%{?is_opensuse}
-# only openSUSE uses sysconfig.kubelet-kubernetes
 %{_fillupdir}/sysconfig.kubelet-kubernetes
 
 # openSUSE is using kubeadm with containerizied control plane, we
 # only need the binaries
 
 %files apiserver
+%doc README.md CONTRIBUTING.md
 %license LICENSE
+%{_mandir}/man1/kube-apiserver.1%{?ext_man}
 %{_bindir}/kube-apiserver
 
 %files controller-manager
+%doc README.md CONTRIBUTING.md
 %license LICENSE
+%{_mandir}/man1/kube-controller-manager.1%{?ext_man}
 %{_bindir}/kube-controller-manager
 
 %files scheduler
+%doc README.md CONTRIBUTING.md
 %license LICENSE
+%{_mandir}/man1/kube-scheduler.1%{?ext_man}
 %{_bindir}/kube-scheduler
 
 %files proxy
+%doc README.md CONTRIBUTING.md
 %license LICENSE
+%{_mandir}/man1/kube-proxy.1%{?ext_man}
 %{_bindir}/kube-proxy
 
 %files kubelet%{baseversion}
@@ -580,27 +381,15 @@ fi
 %license LICENSE
 %{_bindir}/kubelet%{prebaseversion}
 
-%endif
-
 %files kubeadm
 %doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
 %{_unitdir}/kubelet.service.d/10-kubeadm.conf
 %dir %{_libexecdir}/modules-load.d
 %{_libexecdir}/modules-load.d/kubeadm.conf
-%{_sysctldir}/50-kubeadm.conf
+%{_sysctldir}/90-kubeadm.conf
 %license LICENSE
 %{_bindir}/kubeadm
 %{_mandir}/man1/kubeadm*
-
-%files node
-%doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
-%license LICENSE
-%{_mandir}/man1/kube-proxy.1%{?ext_man}
-%{_bindir}/kube-proxy
-%{_unitdir}/kube-proxy.service
-%{_sbindir}/rckube-proxy
-%dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}/%{name}/manifests
 
 %files client
 %doc README.md CONTRIBUTING.md

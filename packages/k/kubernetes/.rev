@@ -544,4 +544,12 @@
   * Remove kubectl column output test</comment>
     <requestid>788443</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>1c170e854f2af3aa3101f3b5e2ea285e</srcmd5>
+    <version>1.18.0</version>
+    <time>1586112736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790640</requestid>
+  </revision>
 </revisionlist>
