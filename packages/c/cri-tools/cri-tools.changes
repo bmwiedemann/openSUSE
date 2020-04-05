@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:03:55 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.18.0:
+  * Main Changes
+    * Update Kubernetes to v1.18.0
+    * Switch to urfave/cli/v2
+  * CRI CLI (crictl)
+    * Use ContextDialer to fix build
+    * Add go-template option for inspect commands
+    * Fix invalid log_path in docs
+  * CRI validation testing (critest)
+    *  Make apparmor failure test more flexible
+    *  Start container before fetching metrics
+    *  Cleanup container create test to reduce duplication
+    *  Add container stats test
+
+-------------------------------------------------------------------
 Mon Dec 16 08:46:22 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.17.0:

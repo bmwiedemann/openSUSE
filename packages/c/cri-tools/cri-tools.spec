@@ -20,7 +20,7 @@
 %define name_source1    crictl.yaml
 
 Name:           cri-tools
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        CLI and validation tools for Kubelet Container Runtime Interface
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source1:        %{name_source1}
 Source2:        rpmlintrc
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.14
 # disable stripping of binaries
 %{go_nostrip}
 
@@ -59,14 +59,15 @@ fi
 
 go build $BUILDMODE_ARGS \
          -o bin/crictl \
+         -mod vendor \
          -ldflags '-X %{project}/pkg/version.Version=%{version}' \
          %{project}/cmd/crictl
 
 go test $BUILDMODE_ARGS \
         -o bin/critest \
+        -mod vendor \
         -ldflags '-X %{project}/pkg/version.Version=%{version}' \
         -c %{project}/cmd/critest
-
 
 # compile the manpages
 for md in docs/*.md
@@ -76,8 +77,9 @@ done
 rename '.md' '.1' docs/*
 
 # generate auto-completions
-./bin/crictl completion bash > crictl-completion-bash
-./bin/crictl completion zsh > crictl-completion-zsh
+bin/crictl completion bash > crictl-completion-bash
+bin/crictl completion zsh > crictl-completion-zsh
+bin/crictl completion fish > crictl.fish
 
 %install
 cd $HOME/go/src/%{project}
@@ -89,6 +91,7 @@ install -D -m 0644 docs/benchmark.1 %{buildroot}/%{_mandir}/man1/critest-benchma
 install -D -m 0644 docs/validation.1 %{buildroot}/%{_mandir}/man1/critest-validation.1
 install -D -m 0644 crictl-completion-bash %{buildroot}/%{_datadir}/bash-completion/completions/crictl
 install -D -m 0644 crictl-completion-zsh %{buildroot}/%{_datadir}/zsh/site-functions/_crictl
+install -D -m 0644 crictl.fish %{buildroot}/%{_datadir}/fish/completions/crictl.fish
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/%{name_source1}
 
 %files
@@ -97,6 +100,9 @@ install -D -m 0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/%{name_source1}
 %{_mandir}/man1/*
 %{_datadir}/bash-completion/completions/crictl
 %{_datadir}/zsh
+%{_datadir}/fish
+%{_datadir}/fish/completions
+%{_datadir}/fish/completions/crictl.fish
 %config(noreplace) %{_sysconfdir}/%{name_source1}
 %license LICENSE
 
