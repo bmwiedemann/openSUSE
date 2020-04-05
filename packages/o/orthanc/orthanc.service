@@ -2,6 +2,9 @@
 Description=Orthanc DICOM server
 Documentation=man:orthanc(1) http://www.orthanc-server.com/
 After=syslog.target network.target
+
+[Service]
+# some security settings
 PrivateTmp=true
 ProtectSystem=true
 ProtectHome=true
@@ -13,7 +16,6 @@ NoNewPrivileges=true
 PrivateDevices=true
 MemoryDenyWriteExecute=true
 
-[Service]
 Type=simple
 User=orthanc
 Group=orthanc

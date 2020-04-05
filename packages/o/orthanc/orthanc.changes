@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  5 07:33:34 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- sqlitewrapper.patch (boo#1167431) 
+
+-------------------------------------------------------------------
 Wed Mar 25 19:08:48 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - various security hardenings (boo#1167431)
