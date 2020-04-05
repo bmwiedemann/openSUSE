@@ -233,4 +233,17 @@
   + Increase a lot the logging when someone asks for access to a git repo</comment>
     <requestid>788347</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d63038ae73247272838878dcc96b5cb</srcmd5>
+    <version>5.9.1</version>
+    <time>1586112850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.1
+  + Add a missing div tag that broke the user's settings page
+  + Do not block when waiting for subprocess to finish
+  + Fix git blame when the identifier provided is a blob
+  + Fix view_commits when the identified provided is a blob
+  + When viewing file's history, use the default branch if needed</comment>
+    <requestid>791384</requestid>
+  </revision>
 </revisionlist>
