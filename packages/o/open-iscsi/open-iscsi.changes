@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:38:30 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Update with two upstream commits:
+  * Fix issue where "iscsi-iname -p" core dumps. (found upstream)
+  * Fix iscsi.service so it handles restarts better (bsc#1163499)
+  * Add Wants=remote-fs-pre.target for sequencing. (bsc#1158536)
+  updating:
+  * open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Thu Mar 26 16:56:38 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Update SPEC file to work around issue with installcheck
