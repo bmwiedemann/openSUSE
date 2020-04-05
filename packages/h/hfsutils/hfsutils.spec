@@ -1,7 +1,7 @@
 #
 # spec file for package hfsutils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           hfsutils
 Version:        3.2.6
 Release:        0
 Summary:        Tools Used for the Macintosh's Hierarchical File System
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://www.mars.org/home/rob/proj/hfs/
+URL:            http://www.mars.org/home/rob/proj/hfs/
 Source0:        ftp://ftp.mars.org/pub/hfs/hfsutils-%{version}.tar.gz
 Patch0:         hfsutils-%{version}.dif
 Patch1:         hfsutils-%{version}-ia64.dif
@@ -30,6 +30,7 @@ Patch2:         hfsutils-%{version}-seek.dif
 Patch3:         hfsutils-%{version}-conf.dif
 Patch4:         hfsutils-%{version}-errno.dif
 Patch5:         hfsutils-exclusive-open.patch
+Patch6:         bug1160268-no-common.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  tcl-devel
@@ -62,6 +63,7 @@ modes (MacBinary, BinHex, text, etc.) for hfsutils.
 %patch3
 %patch4
 %patch5 -p1
+%patch6 -p1
 
 %build
 autoreconf --force --install

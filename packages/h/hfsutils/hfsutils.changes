@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 10:09:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Define hfs_error_path in hcopy.c, hfssh.c and hfswish.c,
+  declare it "extern" in copyin.c and copyout.c,
+  do not declare it in libhfs/hfs.h.
+  [bsc#1160268, bug1160268-no-common.patch]
+
+-------------------------------------------------------------------
 Thu Dec  7 20:24:24 UTC 2017 - crrodriguez@opensuse.org
 
 - Override TKLIBS so xhfsutil does not end buildrequiring  
