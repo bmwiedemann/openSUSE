@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:41:52 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.4 → 9.20.5
+
+-------------------------------------------------------------------
+Thu Mar 26 12:23:32 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Add SECURE_BOOT parameter for grub2 in efi mode
+
+  This commit adds the SECURE_BOOT parameter on bootloader sysconfig
+  for grub2.
+
+  Fixes bsc#1167746
+
+-------------------------------------------------------------------
+Wed Mar 25 16:52:51 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added new oem-resize-once element
+
+  The new element controls the behavior of the repart/resize code
+  in the oem-repart dracut module. By default the repart/resize
+  happens on every reboot and therefore also allows for disk
+  geometry changes during the livetime of the machine. If the
+  element is set to false the repart/resize operation happens
+  only once and then never again. To check for this condition
+  a new profile environment variable kiwi_rootpartuuid which
+  holds the PARTUUID of the root partition has been added to
+  the disk builder.
+
+-------------------------------------------------------------------
+Tue Mar 24 12:12:35 CET 2020 - David Cassany <dcassany@suse.com>
+
+- No default boot partition for btrfs_root_is_snapshot
+
+  This commit ensures no boot partition is used when root is set to be
+  a btrfs snapshot unless this is explicitly required by the user.
+
+  Fixes #1351
+
+-------------------------------------------------------------------
+Sun Mar 22 18:46:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make disk allocation check more robust
+
+  The tools used to check the disk allocation condition
+  are sfdisk and sgdisk. The problem is that at least sfdisk
+  is different in behavior and functionality compared across
+  the distributions we support with kiwi. In addition
+  the verification for the msdos table cannot be used to
+  distinguish between intentionaly wanted free space on
+  disk and a disk that has not yet been resized. Thus
+  this commit changes two parts:
+
+  a) always report unallocated space available for the msdos
+  table to allow to run kiwi's resize code
+
+  b) make sure the table type is taken into consideration
+  It's important to run the verification based on the
+  table type (DOS, GPT) where we know the tools to work. In any
+  other case we report the disk to have unallocated space
+  and give the resize code a chance
+
+-------------------------------------------------------------------
+Sat Mar 21 13:03:48 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed openstack integration test
+
+  nothing provides python2-oslo and required py2 packages
+
+-------------------------------------------------------------------
+Fri Mar 20 16:35:53 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed bootloader install
+
+  Mount EFI partition in any case not only for the shim target
+
+-------------------------------------------------------------------
+Thu Mar 19 18:21:41 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed centos integration test
+
+  Currently centos images does not build because of
+  a broken XML description
+
+-------------------------------------------------------------------
+Thu Mar 19 18:08:24 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update centos integration test
+
+  There is no testing of centos disk images that uses the
+  old msdos partition table. All tests were done with GPT
+  table layout.
+
+-------------------------------------------------------------------
+Thu Mar 19 15:56:14 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Adding OEM integration tests for Ubuntu
+
+  This commit adds oem image type for Ubuntu integration tests
+
+-------------------------------------------------------------------
+Wed Mar 18 16:01:13 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Complete refactoring of fstab handling
+
+  With the new Fstab class from prior pull request there is an
+  opportunity to handle all fstab related actions to be done
+  by that class. This commit extends the Fstab class with an
+  add_entry method such that we can avoid the extra lists
+  holding raw fstab lines in e.g the disk builder. In the end
+  all fstab related data is stored in an instance of the Fstab
+  class. This also extends the KIWI api by an fstab management
+  class. Related to #1329 and #1349
+
+-------------------------------------------------------------------
+Wed Mar 18 14:12:54 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup fstab handling for containers
+
+  When building container images an extra create_fstab method
+  exists that created an empty fstab file. The reasons for this
+  are historical and also related to appx support from obs.
+  The obs based support for appx containers was based on the
+  creation of a kiwi docker image that got modified and turned
+  into an appx container. Now with native appx support by kiwi
+  this special fstab handling is no longer needed and should
+  be deleted. This Fixes #1329
+
+-------------------------------------------------------------------
+Tue Mar 17 11:18:01 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Validate and order final fstab file
+
+  On write of the final fstab file read, validate and order
+  the entries. This is related to Issue #1349
+
+-------------------------------------------------------------------
+Tue Mar 17 10:27:47 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added Fstab class
+
+  Handling of fstab should be done in its own namespace and class.
+  The current handling of fstab entries is spread at several places.
+  There should be only one code that writes the fstab entries and
+  that code should also care for the correct canonical order of
+  the mountpoints
+
+-------------------------------------------------------------------
+Tue Mar 17 06:58:23 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fix order in fstab
+
+  Any mount point directly under / should be just right after the root
+  mountpoint and before the custom mountpoints based on user's subvolume
+  configuration.
+
+  Fixes #1349 and bsc#1164310
+
+-------------------------------------------------------------------
+Sat Mar 14 20:45:16 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Skip nodev devices for size calculations
+
+  Added a static list of mountpoints used for devices that
+  are not associated with a physical device like /proc and
+  use that information in the exclude list for calculating
+  the image byte size. This Fixes #1363
+
+-------------------------------------------------------------------
+Fri Mar 13 16:26:41 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Add kpartx dependency on dracut-kiwi-oem-dump package
+
+  This commit adds a missing dependency on dracut-kiwi-oem-dump
+  package. In images where The `kpartx` tool is missing the
+  dracut-kiwi-oem-dump was not applied for the initrd.
+
+  Fixes #1364
+
+-------------------------------------------------------------------
+Sun Mar 08 17:29:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added new image type: wsl
+
+  Support for building appx container images for
+  Windows Subsystem Linux (WSL). This Fixes #1235
+
+-------------------------------------------------------------------
+Fri Mar 06 15:52:49 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed file name for config.bootoptions file
+
+  The dracut code in 90kiwi-dump/kiwi-dump-image.sh looks for a
+  file matching ${image_uri}.config.bootoptions but the install
+  code packs a file named pxeboot.${image_uri}.config.bootoptions
+  into the tarball. Thus without renaming the file it won't
+  be found. Also the documentation mentions the file to be
+  named ${image_uri}.config.bootoptions. This commit fixes the
+  install code to match the dracut boot code and the documentation
+
+-------------------------------------------------------------------
+Wed Mar 04 18:57:21 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed daps image path
+
+-------------------------------------------------------------------
 Wed Mar 04 18:28:35 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.20.3 → 9.20.4

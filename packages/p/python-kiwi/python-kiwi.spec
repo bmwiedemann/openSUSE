@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.20.4
+Version:        9.20.5
 Provides:       kiwi-schema = 7.1
 Release:        0
 Url:            https://github.com/SUSE/kiwi
@@ -284,6 +284,7 @@ BuildRequires:  dracut
 Requires:       dracut-kiwi-lib
 Requires:       kexec-tools
 Requires:       gawk
+Requires:       kpartx
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
 
