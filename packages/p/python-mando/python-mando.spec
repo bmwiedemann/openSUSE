@@ -1,7 +1,7 @@
 #
 # spec file for package python-mando
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-mando
-Version:        0.6.4
+Version:        0.7.0
 Release:        0
 Summary:        Python wrapper around argparse, a tool to create CLI apps
 License:        MIT
@@ -32,10 +31,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six
 Suggests:       python-rst2ansi
 BuildArch:      noarch
-%if %{with test}
+# SECTION teset requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -53,10 +52,8 @@ sed -i -e '/^#!\//, 1d' mando/tests/*.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE
