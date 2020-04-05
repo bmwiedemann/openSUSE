@@ -84,7 +84,6 @@ BuildRequires:  bison
 BuildRequires:  curl
 BuildRequires:  curl-devel
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  db-devel
 BuildRequires:  freetds-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++

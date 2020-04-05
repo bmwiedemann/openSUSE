@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:14:13 UTC 2020 - pgajdos@suse.com
+
+- remove Berkeley DB Database support [jsc#SLE-12210]
+
+-------------------------------------------------------------------
 Fri Mar 20 07:39:34 UTC 2020 - pgajdos@suse.com
 
 - build firebird extension in any case

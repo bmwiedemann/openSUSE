@@ -863,4 +863,12 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.4</comment>
     <requestid>786728</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>9663801addbc630695f762e7e1c963f1</srcmd5>
+    <version>7.4.4</version>
+    <time>1586112745</time>
+    <user>dimstar_suse</user>
+    <comment>- remove Berkeley DB Database support [jsc#SLE-12210]</comment>
+    <requestid>790861</requestid>
+  </revision>
 </revisionlist>
