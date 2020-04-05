@@ -161,4 +161,124 @@
     <comment>Extend bundle manifest to be usable for eclipse</comment>
     <requestid>785640</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>670dee8ad65ef887cad25d8aad54ec12</srcmd5>
+    <version>1.12</version>
+    <time>1586112769</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.12
+  * Java 7 or later is minimum runtime required
+  * BATIK-1203: ImageTagRegistry forgets to reinitialize cache
+  * BATIK-1251: Correct policy file in Squiggle
+  * BATIK-1253: build.sh referenced from build.xml
+  * BATIK-1257: Rasterizer - insufficient permissions when
+    transcoding to PDF
+  * BATIK-1272: Update Xerces to 2.12
+  * BATIK-1232: Zip release should use mvn jars
+  * BATIK-1233: Add policy file for batik-rasterizer
+  * BATIK-1234: Tools cannot be run using java -jar xxx.jar when
+    built with Maven
+  * BATIK-1240: Java 11 compile error
+  * BATIK-1249: Fix Java 11 module error
+- Remove the *.script files and generate the scripts using the
+  %%jpackage_script macro
+- Generate an ant build system from the maven poms and use it for
+  the first phase build
+- Removed patches:
+  * xmlgraphics-batik-manifests.patch
+    + The manifests are now generated in the first phase build
+  * xmlgraphics-batik-policy.patch
+    + We override the policy setting by granting all rights to
+      svgbrowser and to rasterizer
+  * xmlgraphics-batik-securitymanager.patch
+    + Integrated upstream
+- Modified patch:
+  * xmlgraphics-batik-manifests.patch
+    + Extend the bundle manifest so that it is useful for eclipse
+- Upgrade to version 1.10
+  * BATIK-906: Should never use Error to report runtime errors
+  * BATIK-1123: Missing import of ImportInfo class
+  * BATIK-1125: Rasterizer fails with base64 embedded png
+  * BATIK-1140: Show line numbers on exception
+  * BATIK-1142: Remove e.printStackTrace for BridgeException in
+    SVGAbstractTranscoder
+  * BATIK-1157: Wrong value for default JPEG quality in
+    documentation
+  * BATIK-1170: Incorrect ColorConvertOp alpha handling breaks
+    masking
+  * BATIK-1196: Run batik tests from junit
+  * BATIK-1197: Make jython and rhino optional
+  * BATIK-1198: TIFF transcoder looks for invalid class name for its
+    WriteAdapter
+  * BATIK-1200: ImagingOpException: Unable to transform src image
+  * BATIK-1204: Remove hashtable
+  * BATIK-1212: Show real error on URL failure
+  * BATIK-1216: Compile error on Java 10
+  * BATIK-1222: Only call DOMImplementation in deserialization
+- Split the css-jar into a separate package
+- Install maven pom files.
+- Added patches:
+  * 0001-Fix-imageio-codec-lookup.patch
+    + PNG transcoder looks for invalid class name for its
+      WriteAdapter
+  * xmlgraphics-batik-nolinksinjavadoc.patch
+    + Fix javadoc generation by not loading URL links.
+- Modified patch:
+  * xmlgraphics-batik-manifests.patch
+    + Add Bundle-SymbolicName and Bundle-Version manifest entries
+    + Add targets for jar files produced by maven build and not
+      produced by the ant one. Produce them when target jars is
+      called.
+- Do not depend on a particular xml-commons-apis provider.
+- Added patch:
+  * xmlgraphics-batik-securitymanager.patch
+    + Fix build with jdk11
+    + Replace use of SecurityManager::checkSystemClipboardAccess
+      by check for AWTPermission(&quot;accessClipboard&quot;)
+- Run fdupes on relevant directories
+- Version update to batik 1.9:
+  * No obvious upstream changelog
+- Refresh patch xmlgraphics-batik-manifests.patch
+- Refresh patch xmlgraphics-batik-policy.patch
+- Add BuildRequires: javapackages-local (for maven conversions) 
+- Needed as a dependency for FOP 2.1 (FATE#322405)
+- Update to batik-1.8:
+    batik-src-1.7.zip -&gt; batik-src-1.8.tar.gz
+- Update xmlgraphics-batik-manifests.patch
+- Refresh xmlgraphics-batik-policy.patch
+- spec-cleanify
+- Use javapackages-tools instead of java-devel
+- Specify targets to build on sle11.
+- Kill javadoc to remove unresolvables.
+- Move from jpackage-utils to javapackage-tools
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- merge with xmlgraphics-batik-1.7-5.jpp5.src.rpm
+- enable batik-all.jar to ensure swingx (-&gt; netbeans) build
+- updated patches to apply with fuzz=0
+- fix archive compression 
+- Fixed errors in build by correction build.xml.patch:
+  Replaced target=&quot;1.5&quot; with target=&quot;1.4&quot;
+- Cleaned up SPEC file a bit
+- Fixed BuildRequires 
+- Removed from samples/tests/spec/fonts/ directory due to license issues:
+  fontAltGlyph.svg, fontAltGlyph3.svg, fontChoice.svg, fontDecorations.svg,
+  fontGlyphChoice.svg, fontGlyphsBoth.svg, fontGlyphsChildSVG.svg,
+  fontGlyphsD.svg, fontKerning.svg, fontStyling.svg and
+  samples/tests/spec/scripting/textcontent/missing-glpyh.svg
+- Added additional source and created subpackage -javadoc
+- Reorganised installation directory: Installed all jar files under
+  %{_javadir} and created link from %{_datadir}/%{name}
+- Corrected *sh.in files
+- Removed samples/tests/spec/scripting/textcontent/missing-glpyh.svg
+  due to license issues
+- Updated to version 1.7
+  Removed samples/fonts directory 
+- Corrected sh files (missing #), improved SPEC file
+- Removed samples subdirectory
+- Added unzip to BuildRequires
+- Corrected *-sh files 
+- First inital version of 1.6
+</comment>
+    <requestid>791182</requestid>
+  </revision>
 </revisionlist>

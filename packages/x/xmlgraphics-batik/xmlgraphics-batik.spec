@@ -17,26 +17,19 @@
 #
 
 
+%global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
 Group:          Productivity/Graphics/Vector Editors
-URL:            http://xml.apache.org/batik/
-Source:         http://archive.apache.org/dist/xmlgraphics/batik/source/batik-src-%{version}.tar.gz
-Source1:        %{name}.squiggle.script
-Source2:        %{name}.svgpp.script
-Source3:        %{name}.ttf2svg.script
-Source4:        %{name}.rasterizer.script
-Source5:        %{name}.slideshow.script
-Source6:        %{name}-squiggle.desktop
-Source7:        %{name}.rasterizer.policy
+URL:            https://xml.apache.org/batik/
+Source0:        http://archive.apache.org/dist/xmlgraphics/batik/source/batik-src-%{version}.tar.gz
+Source1:        batik-build.tar.xz
+Source7:        %{name}.security.policy
 Patch0:         %{name}-nolinksinjavadoc.patch
-Patch1:         %{name}-manifests.patch
-Patch2:         %{name}-policy.patch
-Patch3:         %{name}-securitymanager.patch
-Patch4:         0001-Fix-imageio-codec-lookup.patch
+Patch1:         0001-Fix-imageio-codec-lookup.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -150,20 +143,16 @@ Provides:       batik-demo = %{version}-%{release}
 Demonstrations and samples for %{name}.
 
 %prep
-%setup -q -n batik-%{version}
+%setup -q -n batik-%{version} -a1
 
 find -name '*.class' -delete
 find -name '*.jar' -delete
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
-cp -p %{SOURCE1} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
-cp -p %{SOURCE1} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy
-rm -rf batik-script/src/main/java/org/apache/batik/script/jacl
+cp -p %{SOURCE7} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
+cp -p %{SOURCE7} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy
 
 # It's an uberjar, it shouldn't have requires
 %pom_xpath_inject pom:dependency '<optional>true</optional>' batik-all
@@ -195,42 +184,34 @@ build-jar-repository -s lib js xml-apis xml-commons-apis-ext xalan-j2 xmlgraphic
 %build
 export CLASSPATH=
 export OPT_JAR_LIST=:
-ant \
-    -Dant.build.javac.source=6 -Dant.build.javac.target=6 \
-	all-jar jars javadoc
+%{ant} \
+    -f build-batik.xml -Dtest.skip=true \
+	package
+%{ant} \
+    -Dant.build.javac.source=7 -Dant.build.javac.target=7 \
+    all-jar jars javadoc
 
 %install
 
 # jars
 mkdir -p %{buildroot}%{_javadir}/%{name}
 
-# This one is empty and useless...
-rm batik-%{version}/batik-%{version}.jar
-
 for dir in batik-%{version} batik-%{version}/lib batik-%{version}/extensions; do
   pushd ${dir}
     for jar in batik-*.jar; do
       basename=`basename ${jar} .jar`
-      name=`echo ${basename} | sed -e 's/batik-//'`
+      name=`echo ${basename} | sed -e 's/batik-//' | sed -e 's/-%{version}//' `
       cp -p ${jar} %{buildroot}%{_javadir}/%{name}/${name}.jar
     done
   popd
 done
 
 for pkg in squiggle squiggle-ext svgpp ttf2svg rasterizer rasterizer-ext slideshow; do
-  ln -s %{name}/${pkg}-%{version}.jar %{buildroot}%{_javadir}/batik-${pkg}-%{version}.jar
+  ln -s %{name}/${pkg}.jar %{buildroot}%{_javadir}/batik-${pkg}.jar
 done
 
-mv %{buildroot}%{_javadir}/%{name}/all-%{version}.jar %{buildroot}%{_javadir}/%{name}-all-%{version}.jar
-ln -s %{name}-all-%{version}.jar %{buildroot}%{_javadir}/batik-all-%{version}.jar
-
-for dir in %{buildroot}%{_javadir} %{buildroot}%{_javadir}/%{name}; do
-  pushd ${dir}
-    for jar in *-%{version}*.jar; do
-      ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`;
-    done
-  popd
-done
+mv %{buildroot}%{_javadir}/%{name}/all.jar %{buildroot}%{_javadir}/%{name}-all.jar
+ln -s %{name}-all.jar %{buildroot}%{_javadir}/batik-all.jar
 
 #pom
 mkdir -p %{buildroot}%{_mavenpomdir}/%{name}
@@ -239,45 +220,44 @@ cp -p pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
 %add_maven_depmap %{name}/parent.pom
 
 cp -p batik-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-all.pom
-%add_maven_depmap %{name}-all.pom %{name}-all-%{version}.jar
+%add_maven_depmap %{name}-all.pom %{name}-all.jar
 
 for i in anim awt-util bridge codec constants dom ext extension gvt i18n parser script svg-dom svgbrowser svggen svgrasterizer swing transcoder util gui-util xml;
 do
   cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-  %add_maven_depmap %{name}/${i}.pom %{name}/${i}-%{version}.jar
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 
 cp -p batik-css/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/css.pom
-%add_maven_depmap %{name}/css.pom %{name}/css-%{version}.jar -f css
+%add_maven_depmap %{name}/css.pom %{name}/css.jar -f css
 
 cp -p batik-svgpp/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/svgpp.pom
-%add_maven_depmap %{name}/svgpp.pom %{name}/svgpp-%{version}.jar -f svgpp
+%add_maven_depmap %{name}/svgpp.pom %{name}/svgpp.jar -f svgpp
 
 cp -p batik-ttf2svg/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/ttf2svg.pom
-%add_maven_depmap %{name}/ttf2svg.pom %{name}/ttf2svg-%{version}.jar -f ttf2svg
+%add_maven_depmap %{name}/ttf2svg.pom %{name}/ttf2svg.jar -f ttf2svg
 
 cp -p batik-slideshow/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/slideshow.pom
-%add_maven_depmap %{name}/slideshow.pom %{name}/slideshow-%{version}.jar -f slideshow
+%add_maven_depmap %{name}/slideshow.pom %{name}/slideshow.jar -f slideshow
 
 for i in squiggle squiggle-ext;
 do
   cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-  %add_maven_depmap %{name}/${i}.pom %{name}/${i}-%{version}.jar -f squiggle
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f squiggle
 done
 
 for i in rasterizer rasterizer-ext;
 do
   cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-  %add_maven_depmap %{name}/${i}.pom %{name}/${i}-%{version}.jar -f rasterizer
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f rasterizer
 done
 
 # scripts
-mkdir -p %{buildroot}%{_bindir}
-cp -p %{SOURCE1} %{buildroot}%{_bindir}/%{name}-squiggle
-cp -p %{SOURCE2} %{buildroot}%{_bindir}/%{name}-svgpp
-cp -p %{SOURCE3} %{buildroot}%{_bindir}/%{name}-ttf2svg
-cp -p %{SOURCE4} %{buildroot}%{_bindir}/%{name}-rasterizer
-cp -p %{SOURCE5} %{buildroot}%{_bindir}/%{name}-slideshow
+%jpackage_script org.apache.batik.apps.svgbrowser.Main '' '' %{classpath} %{name}-squiggle true
+%jpackage_script org.apache.batik.apps.svgpp.Main '' '' %{classpath} %{name}-svgpp true
+%jpackage_script org.apache.batik.apps.ttf2svg.Main '' '' %{classpath} %{name}-ttf2svg true
+%jpackage_script org.apache.batik.apps.rasterizer.Main '' '' %{classpath} %{name}-rasterizer true
+%jpackage_script org.apache.batik.apps.slideshow.Main '' '' %{classpath} %{name}-slideshow true
 
 # demo
 mkdir -p %{buildroot}%{_datadir}/%{name}
@@ -295,182 +275,38 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr batik-%{version}/docs/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %license LICENSE NOTICE
 %doc KEYS MAINTAIN README
-%dir %{_javadir}/%{name}
-%{_javadir}/%{name}-all-%{version}.jar
-%{_javadir}/%{name}-all.jar
-%{_javadir}/batik-all-%{version}.jar
 %{_javadir}/batik-all.jar
-%{_javadir}/%{name}/anim-%{version}.jar
-%{_javadir}/%{name}/anim.jar
-%{_javadir}/%{name}/awt-util-%{version}.jar
-%{_javadir}/%{name}/awt-util.jar
-%{_javadir}/%{name}/bridge-%{version}.jar
-%{_javadir}/%{name}/bridge.jar
-%{_javadir}/%{name}/codec-%{version}.jar
-%{_javadir}/%{name}/codec.jar
-%{_javadir}/%{name}/constants-%{version}.jar
-%{_javadir}/%{name}/constants.jar
-%{_javadir}/%{name}/dom-%{version}.jar
-%{_javadir}/%{name}/dom.jar
-%{_javadir}/%{name}/ext-%{version}.jar
-%{_javadir}/%{name}/ext.jar
-%{_javadir}/%{name}/extension-%{version}.jar
-%{_javadir}/%{name}/extension.jar
-%{_javadir}/%{name}/gui-util-%{version}.jar
-%{_javadir}/%{name}/gui-util.jar
-%{_javadir}/%{name}/gvt-%{version}.jar
-%{_javadir}/%{name}/gvt.jar
-%{_javadir}/%{name}/i18n-%{version}.jar
-%{_javadir}/%{name}/i18n.jar
-%{_javadir}/%{name}/parser-%{version}.jar
-%{_javadir}/%{name}/parser.jar
-%{_javadir}/%{name}/script-%{version}.jar
-%{_javadir}/%{name}/script.jar
-%{_javadir}/%{name}/svg-dom-%{version}.jar
-%{_javadir}/%{name}/svg-dom.jar
-%{_javadir}/%{name}/svgbrowser-%{version}.jar
-%{_javadir}/%{name}/svgbrowser.jar
-%{_javadir}/%{name}/svggen-%{version}.jar
-%{_javadir}/%{name}/svggen.jar
-%{_javadir}/%{name}/svgrasterizer-%{version}.jar
-%{_javadir}/%{name}/svgrasterizer.jar
-%{_javadir}/%{name}/swing-%{version}.jar
-%{_javadir}/%{name}/swing.jar
-%{_javadir}/%{name}/transcoder-%{version}.jar
-%{_javadir}/%{name}/transcoder.jar
-%{_javadir}/%{name}/util-%{version}.jar
-%{_javadir}/%{name}/util.jar
-%{_javadir}/%{name}/xml-%{version}.jar
-%{_javadir}/%{name}/xml.jar
-%dir %{_mavenpomdir}/%{name}
-%{_mavenpomdir}/%{name}-all.pom
-%{_mavenpomdir}/%{name}/anim.pom
-%{_mavenpomdir}/%{name}/awt-util.pom
-%{_mavenpomdir}/%{name}/bridge.pom
-%{_mavenpomdir}/%{name}/codec.pom
-%{_mavenpomdir}/%{name}/constants.pom
-%{_mavenpomdir}/%{name}/dom.pom
-%{_mavenpomdir}/%{name}/ext.pom
-%{_mavenpomdir}/%{name}/extension.pom
-%{_mavenpomdir}/%{name}/gui-util.pom
-%{_mavenpomdir}/%{name}/gvt.pom
-%{_mavenpomdir}/%{name}/i18n.pom
-%{_mavenpomdir}/%{name}/parent.pom
-%{_mavenpomdir}/%{name}/parser.pom
-%{_mavenpomdir}/%{name}/script.pom
-%{_mavenpomdir}/%{name}/svg-dom.pom
-%{_mavenpomdir}/%{name}/svgbrowser.pom
-%{_mavenpomdir}/%{name}/svggen.pom
-%{_mavenpomdir}/%{name}/svgrasterizer.pom
-%{_mavenpomdir}/%{name}/swing.pom
-%{_mavenpomdir}/%{name}/transcoder.pom
-%{_mavenpomdir}/%{name}/util.pom
-%{_mavenpomdir}/%{name}/xml.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml
-%endif
-%dir %{_sysconfdir}/%{name}
 
-%files css
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/css-%{version}.jar
-%{_javadir}/%{name}/css.jar
-%{_mavenpomdir}/%{name}/css.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-css
-%else
-%{_datadir}/maven-metadata/%{name}-css.xml
-%endif
+%files css -f .mfiles-css
 
-%files squiggle
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/squiggle-%{version}.jar
-%{_javadir}/%{name}/squiggle.jar
-%{_javadir}/%{name}/squiggle-ext-%{version}.jar
-%{_javadir}/%{name}/squiggle-ext.jar
-%{_javadir}/batik-squiggle-%{version}.jar
-%{_javadir}/batik-squiggle.jar
-%{_javadir}/batik-squiggle-ext-%{version}.jar
+%files squiggle -f .mfiles-squiggle
 %{_javadir}/batik-squiggle-ext.jar
-%{_mavenpomdir}/%{name}/squiggle.pom
-%{_mavenpomdir}/%{name}/squiggle-ext.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-squiggle
-%else
-%{_datadir}/maven-metadata/%{name}-squiggle.xml
-%endif
-%attr(0755,root,root) %{_bindir}/%{name}-squiggle
+%{_javadir}/batik-squiggle.jar
+%{_bindir}/%{name}-squiggle
 
-%files svgpp
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/svgpp-%{version}.jar
-%{_javadir}/%{name}/svgpp.jar
-%{_javadir}/batik-svgpp-%{version}.jar
+%files svgpp -f .mfiles-svgpp
 %{_javadir}/batik-svgpp.jar
-%{_mavenpomdir}/%{name}/svgpp.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-svgpp
-%else
-%{_datadir}/maven-metadata/%{name}-svgpp.xml
-%endif
-%attr(0755,root,root) %{_bindir}/%{name}-svgpp
+%{_bindir}/%{name}-svgpp
 
-%files ttf2svg
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/ttf2svg-%{version}.jar
-%{_javadir}/%{name}/ttf2svg.jar
-%{_javadir}/batik-ttf2svg-%{version}.jar
+%files ttf2svg -f .mfiles-ttf2svg
 %{_javadir}/batik-ttf2svg.jar
-%{_mavenpomdir}/%{name}/ttf2svg.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-ttf2svg
-%else
-%{_datadir}/maven-metadata/%{name}-ttf2svg.xml
-%endif
-%attr(0755,root,root) %{_bindir}/%{name}-ttf2svg
+%{_bindir}/%{name}-ttf2svg
 
-%files rasterizer
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/rasterizer-%{version}.jar
-%{_javadir}/%{name}/rasterizer.jar
-%{_javadir}/%{name}/rasterizer-ext-%{version}.jar
-%{_javadir}/%{name}/rasterizer-ext.jar
-%{_javadir}/batik-rasterizer-%{version}.jar
+%files rasterizer -f .mfiles-rasterizer
 %{_javadir}/batik-rasterizer.jar
-%{_javadir}/batik-rasterizer-ext-%{version}.jar
 %{_javadir}/batik-rasterizer-ext.jar
-%{_mavenpomdir}/%{name}/rasterizer.pom
-%{_mavenpomdir}/%{name}/rasterizer-ext.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-rasterizer
-%else
-%{_datadir}/maven-metadata/%{name}-rasterizer.xml
-%endif
-%attr(0755,root,root) %{_bindir}/%{name}-rasterizer
+%{_bindir}/%{name}-rasterizer
+%dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/rasterizer.policy
 
-%files slideshow
-%defattr(0644,root,root,0755)
-%{_javadir}/%{name}/slideshow-%{version}.jar
-%{_javadir}/%{name}/slideshow.jar
-%{_javadir}/batik-slideshow-%{version}.jar
+%files slideshow -f .mfiles-slideshow
 %{_javadir}/batik-slideshow.jar
-%{_mavenpomdir}/%{name}/slideshow.pom
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-slideshow
-%else
-%{_datadir}/maven-metadata/%{name}-slideshow.xml
-%endif
-%attr(0755,root,root) %{_bindir}/%{name}-slideshow
+%{_bindir}/%{name}-slideshow
 
 %files demo
-%defattr(0644,root,root,0755)
 %{_datadir}/%{name}
 %{_datadir}/batik
 %exclude %{_datadir}/%{name}/contrib/rasterizertask/build.sh
