@@ -87,4 +87,12 @@
     <comment>- Fix Python 3.7 compatibility issues.</comment>
     <requestid>692383</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9e88bc51aa70c3c72646d1fc107eb10</srcmd5>
+    <version>0.8.18</version>
+    <time>1586113003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.18.</comment>
+    <requestid>791519</requestid>
+  </revision>
 </revisionlist>

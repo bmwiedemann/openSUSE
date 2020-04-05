@@ -1,7 +1,7 @@
 #
 # spec file for package python-compizconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define _rev    fd7870f01f72f594bc6f284ae5719d38
+%define _rev    11bb53f9054e95f715e631a261968e2c
 %define _name   compizconfig-python
 Name:           python-compizconfig
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Python bindings for libraries for compizconfig-settings
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://gitlab.com/compiz/compizconfig-python
 Source:         https://gitlab.com/compiz/compizconfig-python/uploads/%{_rev}/%{_name}-%{version}.tar.xz
 BuildRequires:  %{python_module Cython}
@@ -52,8 +51,6 @@ Python bindings for libraries/plugins for compizconfig-settings.
 %prep
 %setup -q -n %{_name}-%{version}
 
-rm src/compizconfig.c
-
 %build
 NOCONFIGURE=1 ./autogen.sh
 %global _configure ../configure
@@ -63,7 +60,7 @@ export PYTHON="$python"
 %configure \
   --disable-static \
   --with-cython="cython-%{$python_version}"
-make %{?_smp_mflags} V=1
+%make_build
 popd
 }
 
