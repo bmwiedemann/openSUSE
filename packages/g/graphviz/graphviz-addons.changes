@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:07:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename python*-graphviz to python*-gv, there is also normal
+  pypi graphviz package and we clash otherwise and override
+  each other
+
+-------------------------------------------------------------------
+Fri Mar 27 20:28:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add also configure option to not build py2 if the python2
+  build is disabled
+
+-------------------------------------------------------------------
+Thu Mar 12 09:07:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add python2/python3 split subpkgs in order to allow building
+  without python2 available
+
+-------------------------------------------------------------------
+Thu Mar  5 12:03:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Auto-identify the correct ruby-version using pkg-config.
+
+-------------------------------------------------------------------
 Mon Jan 13 11:59:55 UTC 2020 - Christian Vögl <cvoegl@suse.de>
 
 - Update to new release 2.42.3

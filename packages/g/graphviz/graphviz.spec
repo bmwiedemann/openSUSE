@@ -1,7 +1,7 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
 Group:          Productivity/Graphics/Visualization/Graph
-Url:            http://www.graphviz.org/
+URL:            http://www.graphviz.org/
 Source:         https://www2.graphviz.org/Packages/stable/portable_source/graphviz-%{version}.tar.gz
 Source2:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
