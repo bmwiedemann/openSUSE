@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:52:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 4.9.1
+  * fix cursor getting misplaced when undoing line cuts
+  * fix filtering of the whole buffer to a new buffer
+
+-------------------------------------------------------------------
 Wed Mar 25 08:12:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Nano 4.9:
