@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 14:30:02 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Add "systemd" BUILDFLAGS to build with support for journald
+  logging (bsc#1162432)
+
+-------------------------------------------------------------------
 Fri Mar 27 12:40:44 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Use infra_image pause:3.2 

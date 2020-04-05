@@ -109,10 +109,10 @@ cd $HOME/go/src/%{project}
 
 %if 0%{?with_libostree}
 echo "Compiling with libostree support"
-export BUILDTAGS="seccomp apparmor varlink"
+export BUILDTAGS="seccomp apparmor varlink systemd"
 %else
 echo "Compiling without libostree support"
-export BUILDTAGS="seccomp apparmor varlink containers_image_ostree_stub"
+export BUILDTAGS="seccomp apparmor varlink containers_image_ostree_stub systemd"
 %endif
 
 # Build podman
