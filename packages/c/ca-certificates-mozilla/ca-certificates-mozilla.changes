@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 26 11:38:06 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- also run update-ca-certificates in %posttrans
+
+-------------------------------------------------------------------
 Tue Jan 14 07:07:51 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - update to 2.40 state of the Mozilla NSS Certificate store (bsc#1160160)

@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,9 @@ install -m 644 ca-certificates-mozila.trust.p11-kit "%{buildroot}/%{trustdir_sta
 update-ca-certificates || true
 
 %postun
+update-ca-certificates || true
+
+%posttrans
 update-ca-certificates || true
 
 %files
