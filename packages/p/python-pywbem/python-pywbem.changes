@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr  2 16:59:28 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to 0.16.0:
+  - Silenced the MOFCompiler class for verbose=False.
+  - Fixed that the MOFCompiler could be created with handle=None to
+    work against a local repository. It was documented that way,
+    but failed with AttributeError
+  - Fixed the error that the MOF compilation of a class could fail but
+    the error was not surfaced. This only happened when the MOF compiler
+    was invoked against a WBEM server, when the class already existed,
+    and when the ModifyClass operation that was attempted in
+    this case, failed.
+  - Fixed that the CIM-XML payload in log entries was spread over
+    multiple lines. The payload is now escaped as a single-line
+    Python string.
+  - Fixed handling of Unicode string in ca_certs parm of
+    WBEMConnection on py2
+
+- removed upstreamed patches:
+  - silenced_MOFCompiler.patch
+  - unittest2-just-say-no.patch
+  - replace-yamlordereddictloader-w-yamlloader.patch
+
+-------------------------------------------------------------------
 Mon Dec  9 12:00:51 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add replace-yamlordereddictloader-w-yamlloader.patch which can

@@ -19,22 +19,13 @@
 %define skip_python2 1
 %global         modname pywbem
 Name:           python-pywbem
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM unittest2-just-say-no.patch gh#pywbem/pywbem#2003 mcepl@suse.com
-# Don't use unittest2, ever
-Patch0:         unittest2-just-say-no.patch
-# PATCH-FIX-UPSTREAM silenced_MOFCompiler.patch gh#pywbem/pywbem#2004 mcepl@suse.com
-# fix some failing tests
-Patch1:         silenced_MOFCompiler.patch
-# PATCH-FIX-UPSTREAM replace-yamlordereddictloader-w-yamlloader.patch gh#pywbem/pywbem#2022 mcepl@suse.com
-# we can kick off deprecated yamlordereddictloader module from Factory again
-Patch2:         replace-yamlordereddictloader-w-yamlloader.patch
 BuildRequires:  %{python_module FormEncode}
 BuildRequires:  %{python_module M2Crypto}
 BuildRequires:  %{python_module PyYAML}

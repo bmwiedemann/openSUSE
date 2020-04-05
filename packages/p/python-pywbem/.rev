@@ -98,4 +98,30 @@
 - fix unit tests (unittest2-just-say-no.patch)</comment>
     <requestid>755472</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d92ec4ac22c60d4a9cfee685557351bc</srcmd5>
+    <version>0.16.0</version>
+    <time>1586112755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  - Silenced the MOFCompiler class for verbose=False.
+  - Fixed that the MOFCompiler could be created with handle=None to
+    work against a local repository. It was documented that way,
+    but failed with AttributeError
+  - Fixed the error that the MOF compilation of a class could fail but
+    the error was not surfaced. This only happened when the MOF compiler
+    was invoked against a WBEM server, when the class already existed,
+    and when the ModifyClass operation that was attempted in
+    this case, failed.
+  - Fixed that the CIM-XML payload in log entries was spread over
+    multiple lines. The payload is now escaped as a single-line
+    Python string.
+  - Fixed handling of Unicode string in ca_certs parm of
+    WBEMConnection on py2
+- removed upstreamed patches:
+  - silenced_MOFCompiler.patch
+  - unittest2-just-say-no.patch
+  - replace-yamlordereddictloader-w-yamlloader.patch</comment>
+    <requestid>791005</requestid>
+  </revision>
 </revisionlist>
