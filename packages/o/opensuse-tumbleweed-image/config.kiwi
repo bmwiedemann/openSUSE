@@ -38,7 +38,6 @@
     </type>
     <version>1.0.4</version>
     <packagemanager>zypper</packagemanager>
-    <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <preferences profiles="lxc">
@@ -51,17 +50,6 @@
   <repository>
     <source path="obsrepositories:/"/>
   </repository>
-  <packages type="image">
-    <package name="ca-certificates"/>
-    <package name="ca-certificates-mozilla"/>
-    <package name="coreutils"/>
-    <package name="openSUSE-build-key"/>
-    <package name="krb5"/>
-    <package name="netcfg"/>
-    <package name="glibc-locale-base"/>
-    <!-- Only used in config.sh and then removed again -->
-    <package name="live-add-yast-repos"/>
-  </packages>
   <packages type="image" profiles="lxc">
     <package name="systemd"/>
     <package name="wicked"/>
@@ -69,9 +57,20 @@
   <packages type="bootstrap">
     <package name="aaa_base"/>
     <package name="bash"/>
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="coreutils"/>
     <package name="cracklib-dict-small"/>
     <package name="filesystem"/>
+    <package name="glibc-locale-base"/>
+    <package name="live-add-yast-repos"/>
+    <package name="openSUSE-build-key"/>
     <package name="openSUSE-release-ftp"/>
+    <package name="netcfg"/>
     <package name="zypper"/>
+  </packages>
+  <packages type="uninstall">
+    <!-- Only used in config.sh -->
+    <package name="live-add-yast-repos"/>
   </packages>
 </image>

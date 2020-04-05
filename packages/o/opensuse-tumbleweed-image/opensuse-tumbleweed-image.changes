@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  2 12:16:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Install everything except for systemd/wicked in the bootstrap section
+- Remove unneeded settings
+- Drop explicit krb5 dep
+- Add a proper LICENSE file, drop the header from config.sh
+- Let kiwi uninstall live-add-yast-repos
+
+-------------------------------------------------------------------
 Tue Feb  4 11:08:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop call of suseSetupProduct in config.sh, it needs find which
