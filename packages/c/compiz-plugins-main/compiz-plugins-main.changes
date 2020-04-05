@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.18:
+  * mousepoll: Also consider mouse clicks for its tracking delays.
+  * Add an icon to the focuspoll plugin.
+  * Make shortcuts to work with XInput2 for ezoom, neg and
+    colorfilter.
+  * focuspoll: Set org.a11y.Status.IsEnabled to true at startup to
+    ensure applications like Firefox will be opened with
+    accessibility support enabled.
+  * titleinfo: Don't flag remote windows as root-owned.
+  * ezoom/focuspoll: Greatly improve the focus tracking feature.
+  * colorfilter: Add an option to enable filtering at startup.
+  * colorfilter: Add an option to enable/disable cumulative filter
+    mode.
+  * colorfilter: Add support for showing a notification on filter
+    change.
+  * neg: Add an option to negate the window decoration too.
+  * colorfilter: Add a negate filter, by inverting lightness in HSL
+    representation.
+  * Fix compilation with gcc-10.
+  * Update translations.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Drop support for old openSUSE versions.

@@ -16,13 +16,12 @@
 #
 
 
-%define _rev    04ce73e38045e608944b5ec668820f18
+%define _rev    9a0178324a73e286352b00c66f02cc07
 Name:           compiz-plugins-main
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        OpenGL window and compositing manager plugins
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/compiz-plugins-main
 Source:         https://gitlab.com/compiz/compiz-plugins-main/uploads/%{_rev}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
@@ -41,7 +40,6 @@ BuildRequires:  pkgconfig(compiz-scale) < 0.9
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(pangocairo)
 Requires:       compiz-plugins < 0.9
-Recommends:     %{name}-lang
 Conflicts:      compiz-extra < %{version}
 ExcludeArch:    s390 s390x
 
@@ -53,7 +51,6 @@ plugins.
 
 %package devel
 Summary:        OpenGL window and compositing manager plugins
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(bcop)
 Requires:       pkgconfig(cairo)
