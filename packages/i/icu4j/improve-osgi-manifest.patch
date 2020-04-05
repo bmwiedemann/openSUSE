@@ -1,20 +1,13 @@
---- manifest.stub.orig	2014-11-17 14:56:10.568212293 +0000
-+++ manifest.stub	2014-11-17 15:00:31.395686692 +0000
-@@ -9,10 +9,28 @@
- Bundle-ManifestVersion: 2
- Bundle-Name: ICU4J
- Bundle-Description: International Components for Unicode for Java
--Bundle-SymbolicName: com.ibm.icu
-+Bundle-SymbolicName: com.ibm.icu; singleton:=true
- Bundle-Version: @IMPLVERSION@
- Bundle-Vendor: Unicode, Inc.
+--- manifest.stub.orig	2018-11-27 10:26:04.174847598 +0000
++++ manifest.stub	2018-11-27 10:27:14.685508767 +0000
+@@ -15,5 +15,23 @@
  Bundle-Copyright: @COPYRIGHT@
  Bundle-RequiredExecutionEnvironment: @EXECENV@
  Main-Class: com.ibm.icu.util.VersionInfo
--Export-Package: com.ibm.icu.lang,com.ibm.icu.math,com.ibm.icu.text,com.ibm.icu.util
-\ No newline at end of file
+-Export-Package: com.ibm.icu.lang,com.ibm.icu.math,com.ibm.icu.number,com.ibm.icu.text,com.ibm.icu.util
 +Export-Package: com.ibm.icu.lang;base=true;full=true;version="@IMPLVERSION@",
 + com.ibm.icu.math;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.number;base=true;full=true;version="@IMPLVERSION@",
 + com.ibm.icu.text;base=true;full=true;version="@IMPLVERSION@",
 + com.ibm.icu.util;base=true;full=true;version="@IMPLVERSION@",
 + com.ibm.icu.impl;x-internal:=true,
@@ -30,8 +23,8 @@
 + com.ibm.icu.impl.data.icudt@DATAVERSION@b.zone;x-internal:=true,
 + com.ibm.icu.impl.duration;x-internal:=true,
 + com.ibm.icu.impl.locale;x-internal:=true
-+Eclipse-LazyStart: true
-+Eclipse-ExtensibleAPI: true
++Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: com.ibm.icu
 --- main/shared/build/common-targets.xml.orig	2014-11-17 14:59:05.335849961 +0000
 +++ main/shared/build/common-targets.xml	2014-11-17 14:59:36.868423736 +0000
 @@ -75,6 +75,7 @@
@@ -44,7 +37,7 @@
              </filterset>
 --- build.xml.orig	2014-11-17 21:45:53.308610711 +0000
 +++ build.xml	2014-11-17 21:46:29.969096734 +0000
-@@ -693,6 +693,7 @@
+@@ -683,6 +683,7 @@
              <filterset>
                  <filter token="SPECVERSION" value="${jar.spec.version}"/>
                  <filter token="IMPLVERSION" value="${jar.impl.version}"/>

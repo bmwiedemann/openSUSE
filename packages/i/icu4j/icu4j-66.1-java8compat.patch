@@ -1,6 +1,6 @@
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2018-11-29 11:58:08.843028188 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/Charset88591.java	2020-04-02 10:25:01.730590915 +0200
 @@ -9,6 +9,7 @@
  
  package com.ibm.icu.charset;
@@ -20,9 +20,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/Charset8859
                  return encodeMalformedOrUnmappable(source, ch, flush);
              } else
                  return null;
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2018-11-29 12:02:08.908262688 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetASCII.java	2020-04-02 10:25:01.730590915 +0200
 @@ -10,6 +10,7 @@
   */
  package com.ibm.icu.charset;
@@ -87,9 +87,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetASCI
                  return encodeMalformedOrUnmappable(source, ch, flush);
              } else
                  return null;
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2018-11-29 12:53:21.308190661 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU1.java	2020-04-02 10:25:01.730590915 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -134,9 +134,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetBOCU
                  --count;
              }
              sourceIndex=nextSourceIndex; /* wrong if offsets==NULL but does not matter */
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2018-11-29 13:03:46.783452275 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetCompoundText.java	2020-04-02 10:25:01.730590915 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -214,9 +214,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetComp
                      }
  
                      if (err.isError()) {
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2018-11-22 13:19:57.946962156 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2018-11-29 12:57:02.929351601 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetDecoderICU.java	2020-04-02 10:25:01.730590915 +0200
 @@ -11,6 +11,7 @@
  
  package com.ibm.icu.charset;
@@ -266,9 +266,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetDeco
                          flush=false;
                          if((sourceIndex+=preToULength)<0) {
                              sourceIndex=-1;
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2018-11-29 13:13:30.814469043 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetEncoderICU.java	2020-04-02 10:25:01.730590915 +0200
 @@ -11,6 +11,7 @@
  
  package com.ibm.icu.charset;
@@ -335,9 +335,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetEnco
              return CoderResult.malformedForLength(1);
          }
  
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2018-11-29 12:34:14.602235201 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.java	2020-04-02 10:25:01.730590915 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -364,9 +364,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetHZ.j
                                  mySourceChar = leadByte;
                              } else {
                                  /* report a pair of illegal bytes if the second byte is not a DBCS starter */
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2018-11-29 13:25:35.038077488 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2022.java	2020-04-02 10:25:01.730590915 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -510,9 +510,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetISO2
                                      if (UTF16.isTrailSurrogate(trail)) {
                                          source.get();
                                           sourceChar = UCharacter.getCodePoint((char)sourceChar, trail);
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2018-11-29 13:16:06.663274127 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBCS.java	2020-04-02 10:25:01.734590939 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -614,9 +614,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetLMBC
                          err[0] = CoderResult.UNDERFLOW;
                          return err[0];
                      } else {
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2018-11-22 13:19:57.946962156 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2018-11-29 12:30:39.493123785 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS.java	2020-04-02 10:25:01.734590939 +0200
 @@ -1458,7 +1458,7 @@
          // TODO: It is very inefficient to create Buffer objects for each array access.
          // We should create an inner class Extensions (or sibling class CharsetMBCSExtensions)
@@ -868,9 +868,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetMBCS
              x.c = fromU(x.c, source, target, null, x.sourceIndex, x.nextSourceIndex, flush, cr);
              x.sourceArrayIndex = source.position();
              x.nextSourceIndex += x.sourceArrayIndex - sourceBegin;
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2018-11-22 13:19:57.946962156 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2018-11-29 12:17:22.584999036 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU.java	2020-04-02 10:25:01.734590939 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -888,9 +888,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetSCSU
                          ++nextSourceIndex;
                          if(b <= 0x7f){
                              /*Write US graphic character or DEL*/
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2018-11-22 13:19:57.946962156 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2018-11-29 12:46:51.854150535 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF16.java	2020-04-02 10:25:01.734590939 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -908,9 +908,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF1
  
                  // 2 bytes, lead malformed
                  toUnicodeStatus = 0;
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2018-11-29 13:18:08.639896912 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7.java	2020-04-02 10:25:01.734590939 +0200
 @@ -8,6 +8,7 @@
   */
  package com.ibm.icu.charset;
@@ -964,9 +964,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF7
  
                              /* terminate the base64 sequence */
                              if (base64Counter!=0) {
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2018-11-22 13:19:57.938962113 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2018-11-29 12:44:59.221565806 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8.java	2020-04-02 10:25:01.734590939 +0200
 @@ -11,6 +11,7 @@
  
  package com.ibm.icu.charset;
@@ -997,9 +997,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/CharsetUTF8
                  return cr;
  
              } else {
-diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java
---- icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2018-11-22 13:19:57.942962135 +0100
-+++ icu4j-63.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2018-11-29 12:32:45.649775586 +0100
+diff -urEbwB icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java
+--- icu4j-66.1/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/charset/src/com/ibm/icu/charset/UConverterDataReader.java	2020-04-02 10:25:01.734590939 +0200
 @@ -10,6 +10,7 @@
  package com.ibm.icu.charset;
  
@@ -1008,7 +1008,7 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterD
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.IntBuffer;
-@@ -596,7 +597,7 @@
+@@ -595,7 +596,7 @@
              throw new InvalidFormatException();
          }
          int numBytesExtensionStructure = b.getInt(31 * 4);
@@ -1017,9 +1017,9 @@ diff -urEbwB icu4j-63.1/main/classes/charset/src/com/ibm/icu/charset/UConverterD
          ICUBinary.skipBytes(byteBuffer, numBytesExtensionStructure);
          return b;
      }
-diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java
---- icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2018-11-22 13:19:56.538954635 +0100
-+++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2018-11-29 12:52:25.063896025 +0100
+diff -urEbwB icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java
+--- icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java	2020-04-02 10:25:01.738590961 +0200
 @@ -15,6 +15,7 @@
  import java.io.FileNotFoundException;
  import java.io.IOException;
@@ -1028,7 +1028,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java ic
  import java.nio.ByteBuffer;
  import java.nio.ByteOrder;
  import java.nio.channels.FileChannel;
-@@ -93,8 +94,8 @@
+@@ -94,8 +95,8 @@
              int index = binarySearch(bytes, key);
              if (index >= 0) {
                  ByteBuffer data = bytes.duplicate();
@@ -1039,7 +1039,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java ic
                  return ICUBinary.sliceWithOrder(data);
              } else {
                  return null;
-@@ -608,7 +609,7 @@
+@@ -609,7 +610,7 @@
                              formatVersion[2] & 0xff, formatVersion[3] & 0xff));
          }
  
@@ -1048,7 +1048,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java ic
          return  // dataVersion
                  (bytes.get(20) << 24) |
                  ((bytes.get(21) & 0xff) << 16) |
-@@ -647,7 +648,7 @@
+@@ -648,7 +649,7 @@
  
      public static void skipBytes(ByteBuffer bytes, int skipLength) {
          if (skipLength > 0) {
@@ -1057,9 +1057,9 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUBinary.java ic
          }
      }
  
-diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java
---- icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2018-11-22 13:19:56.538954635 +0100
-+++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2018-11-29 13:10:56.773673336 +0100
+diff -urEbwB icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java
+--- icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundleReader.java	2020-04-02 10:25:01.738590961 +0200
 @@ -11,6 +11,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -1068,7 +1068,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.IntBuffer;
-@@ -293,7 +294,7 @@
+@@ -294,7 +295,7 @@
                  // unlike regular bundles' key strings for which indexes
                  // are based on the start of the bundle data.
                  keyBytes = new byte[(keysTop - keysBottom) << 2];
@@ -1077,7 +1077,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
              } else {
                  localKeyLimit = keysTop << 2;
                  keyBytes = new byte[localKeyLimit];
-@@ -306,9 +307,9 @@
+@@ -307,9 +308,9 @@
              int _16BitTop = getIndexesInt(URES_INDEX_16BIT_TOP);
              if(_16BitTop > keysTop) {
                  int num16BitUnits = (_16BitTop - keysTop) * 2;
@@ -1089,7 +1089,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
                  maxOffset |= num16BitUnits - 1;
              } else {
                  b16BitUnits = EMPTY_16_BIT_UNITS;
-@@ -326,7 +327,7 @@
+@@ -327,7 +328,7 @@
          }
  
          // Reset the position for future .asCharBuffer() etc.
@@ -1098,7 +1098,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
      }
  
      private int getIndexesInt(int i) {
-@@ -386,7 +387,7 @@
+@@ -387,7 +388,7 @@
              }
          } else {
              CharBuffer temp = bytes.asCharBuffer();
@@ -1107,7 +1107,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
              temp.get(chars);
          }
          return chars;
-@@ -402,7 +403,7 @@
+@@ -403,7 +404,7 @@
              }
          } else {
              IntBuffer temp = bytes.asIntBuffer();
@@ -1116,7 +1116,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
              temp.get(ints);
          }
          return ints;
-@@ -417,7 +418,7 @@
+@@ -418,7 +419,7 @@
                  }
              } else {
                  CharBuffer temp = b16BitUnits.duplicate();
@@ -1125,7 +1125,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
                  temp.get(result);
              }
              return result;
-@@ -664,7 +665,7 @@
+@@ -665,7 +666,7 @@
                      }
                  } else {
                      ByteBuffer temp = bytes.duplicate();
@@ -1134,7 +1134,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
                      temp.get(ba);
                  }
                  return ba;
-@@ -695,7 +696,7 @@
+@@ -696,7 +697,7 @@
                  }
                  offset += 4;
                  ByteBuffer result = bytes.duplicate();
@@ -1143,18 +1143,18 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/impl/ICUResourceBundle
                  result = ICUBinary.sliceWithOrder(result);
                  if(!result.isReadOnly()) {
                      result = result.asReadOnlyBuffer();
-diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java
---- icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java	2018-11-22 13:19:52.518933156 +0100
-+++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.java	2018-11-29 13:51:10.350010633 +0100
-@@ -10,6 +10,7 @@
- package com.ibm.icu.text;
+diff -urEbwB icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/RBBIDataWrapper.java icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/RBBIDataWrapper.java
+--- icu4j-66.1/main/classes/core/src/com/ibm/icu/impl/RBBIDataWrapper.java	2020-03-11 19:21:42.000000000 +0100
++++ icu4j-66.1.new/main/classes/core/src/com/ibm/icu/impl/RBBIDataWrapper.java	2020-04-02 10:25:01.738590961 +0200
+@@ -11,6 +11,7 @@
  
+ import java.io.DataOutputStream;
  import java.io.IOException;
 +import java.nio.Buffer;
  import java.nio.ByteBuffer;
- import java.nio.ByteOrder;
+ import java.util.Arrays;
  
-@@ -268,7 +269,7 @@
+@@ -325,7 +326,7 @@
          ICUBinary.skipBytes(bytes, This.fHeader.fTrie - pos);  // seek buffer from end of
          pos = This.fHeader.fTrie;               // previous section to the start of the trie
  
@@ -1163,7 +1163,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.j
                                                  //  and tell Java to keep the mark valid so long
                                                  //  as we don't go more than 100 bytes past the
                                                  //  past the end of the TRIE.
-@@ -277,7 +278,7 @@
+@@ -334,7 +335,7 @@
                                                  //  at an unknown position, preceding the
                                                  //  padding between TRIE and following section.
  
@@ -1172,9 +1172,9 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/RBBIDataWrapper.j
                                                  //   the start of the serialized TRIE.  Now our
                                                  //   "pos" variable and the buffer are in
                                                  //   agreement.
-diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
---- icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2018-11-22 13:19:52.514933136 +0100
-+++ icu4j-63.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2018-11-29 13:52:34.718447691 +0100
+diff -urEbwB icu4j-66.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java icu4j-66.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
+--- icu4j-66.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2020-03-11 19:21:43.000000000 +0100
++++ icu4j-66.1.new/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java	2020-04-02 10:25:01.738590961 +0200
 @@ -14,6 +14,7 @@
  import java.io.IOException;
  import java.io.LineNumberReader;
@@ -1183,7 +1183,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
  import java.nio.ByteBuffer;
  import java.text.ParseException;
  import java.util.ArrayList;
-@@ -1792,7 +1793,7 @@
+@@ -1872,7 +1873,7 @@
          // A ByteBuffer is what the ICU internal data loading functions provide.
          private SpoofData(ByteBuffer bytes) throws java.io.IOException {
              ICUBinary.readHeader(bytes, DATA_FORMAT, IS_ACCEPTABLE);
@@ -1192,7 +1192,7 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
              readData(bytes);
          }
  
-@@ -1845,15 +1846,15 @@
+@@ -1925,15 +1926,15 @@
              // of the data items. Now read each in turn, first seeking the
              // input stream to the position of the data item.
  
@@ -1211,9 +1211,9 @@ diff -urEbwB icu4j-63.1/main/classes/core/src/com/ibm/icu/text/SpoofChecker.java
              ICUBinary.skipBytes(bytes, CFUStringTableOffset);
              fCFUStrings = ICUBinary.getString(bytes, CFUStringTableSize, 0);
          }
-diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java
---- icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2018-11-22 13:19:35.306841227 +0100
-+++ icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2018-11-29 14:05:40.610525909 +0100
+diff -urEbwB icu4j-66.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java icu4j-66.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java
+--- icu4j-66.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2020-03-11 19:21:45.000000000 +0100
++++ icu4j-66.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestCharset.java	2020-04-02 10:25:01.742590983 +0200
 @@ -9,6 +9,7 @@
  
  package com.ibm.icu.dev.test.charset;
@@ -1222,7 +1222,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  import java.nio.BufferOverflowException;
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
-@@ -104,30 +105,30 @@
+@@ -105,30 +106,30 @@
              }
  
  
@@ -1262,7 +1262,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              smBufDecode(d2, "UTF16-LE", bs2, us);
              smBufEncode(e2, "UTF-16LE", us, newBS);
  
-@@ -175,12 +176,12 @@
+@@ -176,12 +177,12 @@
                  bs2.put((byte) (c >>> 16));
                  bs2.put((byte) (c >>> 24));
              }
@@ -1281,7 +1281,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if(us.length()==0){
                  continue;
              }
-@@ -194,12 +195,12 @@
+@@ -195,12 +196,12 @@
              newBS.put((byte)0xFF);
  
              newBS.put(bs1);
@@ -1296,7 +1296,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              newBS.put((byte)0xFF);
              newBS.put((byte)0xFE);
-@@ -207,7 +208,7 @@
+@@ -208,7 +209,7 @@
              newBS.put((byte)0x00);
  
              newBS.put(bs2);
@@ -1305,7 +1305,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              smBufDecode(d2, "UTF-32LE", bs2, us);
              smBufEncode(e2, "UTF-32LE", us, newBS);
  
-@@ -446,7 +447,7 @@
+@@ -447,7 +448,7 @@
          for (int index = 0; index < input.length; index++) {
              CharBuffer source = CharBuffer.wrap(input[index]);
              cr = encoder.encode(source, bs, true);
@@ -1314,7 +1314,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              encoder.reset();
  
              // if cr != results[x]
-@@ -461,7 +462,7 @@
+@@ -462,7 +463,7 @@
  
              source = CharBuffer.wrap(input[index].toCharArray());
              cr = encoder.encode(source, bs, true);
@@ -1323,7 +1323,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              encoder.reset();
  
              // if cr != results[x]
-@@ -560,8 +561,8 @@
+@@ -561,8 +562,8 @@
  
                  decoder.reset();
                  cr = decoder.decode(bs, us, true);
@@ -1334,7 +1334,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  if (!cr.isMalformed() || cr.length() != 1) {
                      errln("Incorrect result in " + converter + " decoder for 0x"
                              + Integer.toHexString(i) + " received " + cr);
-@@ -569,8 +570,8 @@
+@@ -570,8 +571,8 @@
                  }
                  encoder.reset();
                  cr = encoder.encode(us, bs, true);
@@ -1345,7 +1345,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  if (!cr.isMalformed() || cr.length() != 1) {
                      errln("Incorrect result in " + converter + " encoder for 0x"
                              + Integer.toHexString(i) + " received " + cr);
-@@ -582,8 +583,8 @@
+@@ -583,8 +584,8 @@
  
                  decoder.reset();
                  cr = decoder.decode(bs, us, true);
@@ -1356,7 +1356,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  if (!cr.isMalformed() || cr.length() != 1) {
                      errln("Incorrect result in " + converter + " decoder for 0x"
                              + Integer.toHexString(i) + " received " + cr);
-@@ -591,8 +592,8 @@
+@@ -592,8 +593,8 @@
                  }
                  encoder.reset();
                  cr = encoder.encode(us, bs, true);
@@ -1367,7 +1367,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  if (!cr.isMalformed() || cr.length() != 1) {
                      errln("Incorrect result in " + converter + " encoder for 0x"
                              + Integer.toHexString(i) + " received " + cr);
-@@ -666,9 +667,9 @@
+@@ -667,9 +668,9 @@
          int ccPositions[] = { 0, 0, 0, 2, 2 };
          for (int i = 0; i < testLoopSize; i++) {
              encoder.reset();
@@ -1380,7 +1380,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              result = encoder.encode(cb, bb, true);
  
              if (i < 3) {
-@@ -835,7 +836,7 @@
+@@ -836,7 +837,7 @@
              encoder.onUnmappableCharacter(CodingErrorAction.REPORT);
              encoder.onMalformedInput(CodingErrorAction.REPORT);
              for (int i=0; i<n; i++) {
@@ -1389,7 +1389,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  cr = encoder.encode(source, target, i == n - 1);
                  if (!(equals(cr, results[i])
                          || (results[i].isUnmappable() && cr.isUnderflow()) // mappability depends on the converter
-@@ -1239,7 +1240,7 @@
+@@ -1240,7 +1241,7 @@
              decoder.reset();
              CoderResult result=null;
              for (int i = 1; i <= byteStr.length; i++) {
@@ -1398,7 +1398,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  result = decoder.decode(b, chars, false);
                  if(result.isOverflow()){
                      errln("ToChars single threw an overflow exception");
-@@ -1267,9 +1268,9 @@
+@@ -1268,9 +1269,9 @@
          try {
              CharBuffer chars = CharBuffer.allocate(unistr.length());
              decoder.reset();
@@ -1410,7 +1410,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  CoderResult result = decoder.decode(byes, chars, false);
                  if (result.isError()) {
                      errln("Error while decoding: "+result.toString());
-@@ -1311,7 +1312,7 @@
+@@ -1312,7 +1313,7 @@
              if(result.isOverflow()){
                  errln("FromChars threw an overflow exception");
              }
@@ -1419,7 +1419,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if (!bytes.equals(expected)) {
                  errln("FromChars does not match");
                  printbytes(bytes);
-@@ -1331,7 +1332,7 @@
+@@ -1332,7 +1333,7 @@
              encoder.reset();
              CoderResult result= null;
              for (int i = 1; i <= unistr.length(); i++) {
@@ -1428,7 +1428,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                  result = encoder.encode(c, bytes, false);
                  if(result.isOverflow()){
                      errln("FromChars single threw an overflow exception");
-@@ -1345,7 +1346,7 @@
+@@ -1346,7 +1347,7 @@
                  rc = 3;
              }
  
@@ -1437,7 +1437,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if (!bytes.equals(expected)) {
                  errln("FromChars single does not match");
                  printbytes(bytes);
-@@ -1399,11 +1400,11 @@
+@@ -1400,11 +1401,11 @@
          int i;
          char[] chars = new char[buf.limit()];
          //save the current position
@@ -1452,7 +1452,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          for (i = 0; i < chars.length; i++) {
              err(hex(chars[i]) + " ");
          }
-@@ -1421,10 +1422,10 @@
+@@ -1422,10 +1423,10 @@
          byte[] bytes = new byte[buf.limit()];
          //save the current position
          int pos = buf.position();
@@ -1465,7 +1465,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          for (i = 0; i < bytes.length; i++) {
              System.out.print(hex(bytes[i]) + " ");
          }
-@@ -1461,10 +1462,10 @@
+@@ -1462,10 +1463,10 @@
          char[] chars = new char[buf.limit()];
          //save the current position
          int pos = buf.position();
@@ -1478,7 +1478,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          return equals(chars, compareTo);
      }
  
-@@ -1498,10 +1499,10 @@
+@@ -1499,10 +1500,10 @@
          byte[] chars = new byte[buf.limit()];
          //save the current position
          int pos = buf.position();
@@ -1491,7 +1491,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          return equals(chars, compareTo);
      }
      public boolean equals(ByteBuffer buf, ByteBuffer compareTo) {
-@@ -1733,7 +1734,7 @@
+@@ -1734,7 +1735,7 @@
              buffer.put(unibytes);
  
              //reset postion
@@ -1500,7 +1500,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              decoder.onMalformedInput(CodingErrorAction.REPLACE);
              CharBuffer out = decoder.decode(buffer);
-@@ -1800,8 +1801,8 @@
+@@ -1801,8 +1802,8 @@
              errln("FAIL: \\ud800 is OK for ICU4JNI utf-8 encoder");
          }
  
@@ -1511,7 +1511,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          CharsetEncoder encoderJDK = Charset.forName("utf-8").newEncoder();
          result = encoderJDK.encode(in, out, true);
-@@ -1852,9 +1853,9 @@
+@@ -1853,9 +1854,9 @@
          inBuf.put(in);
          CharsetEncoder encoder = cs.newEncoder();
          ByteBuffer outBuf = ByteBuffer.allocate(in.length*2+2);
@@ -1523,7 +1523,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          if(outBuf.get(0)!= (byte)0xFE && outBuf.get(1)!= (byte)0xFF){
              errln("The UTF16 encoder did not appended bom. Length returned: " + outBuf.remaining());
          }
-@@ -1862,7 +1863,7 @@
+@@ -1863,7 +1864,7 @@
              logln("0x"+hex(outBuf.get()));
          }
          CharsetDecoder decoder = cs.newDecoder();
@@ -1532,7 +1532,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          CharBuffer rt = CharBuffer.allocate(in.length);
          CoderResult cr = decoder.decode(outBuf, rt, true);
          if(cr.isError()){
-@@ -1870,8 +1871,8 @@
+@@ -1871,8 +1872,8 @@
          }
          equals(rt, in);
          {
@@ -1543,7 +1543,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              Charset utf16 = Charset.forName("UTF-16");
              CharsetDecoder dc = utf16.newDecoder();
              cr = dc.decode(outBuf, rt, true);
-@@ -1909,9 +1910,9 @@
+@@ -1910,9 +1911,9 @@
  
          {
              decoder.reset();
@@ -1556,7 +1556,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              CoderResult result = CoderResult.UNDERFLOW;
              result = decoder.decode(mySource, myTarget, true);
              if (flush) {
-@@ -1931,9 +1932,9 @@
+@@ -1932,9 +1933,9 @@
                  errln("Test complete buffers while decoding threw overflow exception");
                  return;
              }
@@ -1569,7 +1569,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if (result.isUnderflow() && !equals(myTarget, target, targetLimit)) {
                  errln(" Test complete buffers while decoding  " + encoding + " TO Unicode--failed");
              }
-@@ -1943,11 +1944,11 @@
+@@ -1944,11 +1945,11 @@
          }
          {
              decoder.reset();
@@ -1586,7 +1586,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              int inputLen = mySource.remaining();
  
-@@ -1978,18 +1979,18 @@
+@@ -1979,18 +1980,18 @@
          }
          {
              decoder.reset();
@@ -1611,7 +1611,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                      else
                          break;
                  } else /*if (result.isError())*/ {
-@@ -2038,17 +2039,17 @@
+@@ -2039,17 +2040,17 @@
              mySource = ByteBuffer.allocateDirect(source.capacity() * 2).asCharBuffer();
              myTarget = ByteBuffer.allocateDirect(target.capacity());
          }
@@ -1634,7 +1634,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              CoderResult result = null;
  
              result = encoder.encode(mySource, myTarget, true);
-@@ -2081,10 +2082,10 @@
+@@ -2082,10 +2083,10 @@
          {
              logln("Running tests on small input buffers for " + encoding);
              encoder.reset();
@@ -1649,7 +1649,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              int inputLen = mySource.limit();
              CoderResult result = null;
              for (int i = 1; i <= inputLen; i++) {
-@@ -2109,12 +2110,12 @@
+@@ -2110,12 +2111,12 @@
          {
              logln("Running tests on small output buffers for " + encoding);
              encoder.reset();
@@ -1668,7 +1668,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              logln("myTarget.limit: " + myTarget.limit() + " myTarget.capcity: " + myTarget.capacity());
  
-@@ -2134,7 +2135,7 @@
+@@ -2135,7 +2136,7 @@
                          errln("Test small output buffers while encoding " + result.toString());
                      }
  
@@ -1677,7 +1677,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                      result = encoder.flush(myTarget);
                      if (result.isError()) {
                          errln("Test small output buffers while encoding " + result.toString());
-@@ -2560,8 +2561,8 @@
+@@ -2561,8 +2562,8 @@
              in.put((byte)i);
              i++;
          }
@@ -1688,7 +1688,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          CharsetDecoder decoder = cs.newDecoder();
          decoder.onMalformedInput(CodingErrorAction.IGNORE);
          decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
-@@ -2593,9 +2594,9 @@
+@@ -2594,9 +2595,9 @@
          inBuf.put(in);
          CharsetEncoder encoder = cs.newEncoder();
          ByteBuffer outBuf = ByteBuffer.allocate(in.length*4+4);
@@ -1700,7 +1700,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          if(outBuf.get(0)!= (byte)0x00 && outBuf.get(1)!= (byte)0x00 &&
                  outBuf.get(2)!= (byte)0xFF && outBuf.get(3)!= (byte)0xFE){
              errln("The UTF32 encoder did not appended bom. Length returned: " + outBuf.remaining());
-@@ -2604,8 +2605,8 @@
+@@ -2605,8 +2606,8 @@
              logln("0x"+hex(outBuf.get()));
          }
          CharsetDecoder decoder = cs.newDecoder();
@@ -1711,7 +1711,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          CharBuffer rt = CharBuffer.allocate(in.length);
          CoderResult cr = decoder.decode(outBuf, rt, true);
          if(cr.isError()){
-@@ -2613,8 +2614,8 @@
+@@ -2614,8 +2615,8 @@
          }
          equals(rt, in);
          try{
@@ -1722,7 +1722,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              Charset utf16 = Charset.forName("UTF-32");
              CharsetDecoder dc = utf16.newDecoder();
              cr = dc.decode(outBuf, rt, true);
-@@ -2742,16 +2743,16 @@
+@@ -2743,16 +2744,16 @@
             byteBuffer.put((byte)j);
          }
  
@@ -1747,7 +1747,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          try {
              smBufDecode(decoder, "ASCII", byteBuffer, charBufferTest, true, false);
              errln("Overflow exception while decoding ASCII should have been thrown.");
-@@ -2803,10 +2804,10 @@
+@@ -2804,10 +2805,10 @@
          bs.put((byte)0x49); bs.put((byte)0x44); bs.put((byte)0x6b); bs.put((byte)0x51);
          bs.put((byte)0x4f); bs.put((byte)0x62); bs.put((byte)0x2e);
  
@@ -1762,7 +1762,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          smBufDecode(decoder, "UTF-7", bs, us);
          smBufEncode(encoder, "UTF-7", us, bs);
-@@ -2852,10 +2853,10 @@
+@@ -2853,10 +2854,10 @@
          ccbs.put((byte)0x0D); ccbs.put((byte)0x05);
          ccus.put((char)0x0000);
  
@@ -1777,7 +1777,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-1", ccbs, ccus, true, false);
-@@ -2864,17 +2865,17 @@
+@@ -2865,17 +2866,17 @@
          catch (Exception ex) {
          }
  
@@ -1801,7 +1801,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-2", ccbs, ccus, true, false);
-@@ -2883,17 +2884,17 @@
+@@ -2884,17 +2885,17 @@
          catch (Exception ex) {
          }
  
@@ -1825,7 +1825,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-3", ccbs, ccus, true, false);
-@@ -2902,17 +2903,17 @@
+@@ -2903,17 +2904,17 @@
          catch (Exception ex) {
          }
  
@@ -1849,7 +1849,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-4", ccbs, ccus, true, false);
-@@ -2921,17 +2922,17 @@
+@@ -2922,17 +2923,17 @@
          catch (Exception ex) {
          }
  
@@ -1873,7 +1873,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-5", ccbs, ccus, true, false);
-@@ -2940,17 +2941,17 @@
+@@ -2941,17 +2942,17 @@
          catch (Exception ex) {
          }
  
@@ -1897,7 +1897,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-6", ccbs, ccus, true, false);
-@@ -2959,16 +2960,16 @@
+@@ -2960,16 +2961,16 @@
          catch (Exception ex) {
          }
  
@@ -1920,7 +1920,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-7", ccbs, ccus, true, false);
-@@ -2977,16 +2978,16 @@
+@@ -2978,16 +2979,16 @@
          catch (Exception ex) {
          }
  
@@ -1943,7 +1943,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-7-CC-DE-8", ccbs, ccus, true, false);
-@@ -2997,16 +2998,16 @@
+@@ -2998,16 +2999,16 @@
          //end of charset decoder code coverage code
  
          //start of charset encoder code coverage code
@@ -1966,7 +1966,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-1", ccus, ccbs, true, false);
-@@ -3015,17 +3016,17 @@
+@@ -3016,17 +3017,17 @@
          catch (Exception ex) {
          }
  
@@ -1990,7 +1990,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-2", ccus, ccbs, true, false);
-@@ -3034,16 +3035,16 @@
+@@ -3035,16 +3036,16 @@
          catch (Exception ex) {
          }
  
@@ -2013,7 +2013,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-3", ccus, ccbs, true, false);
-@@ -3052,16 +3053,16 @@
+@@ -3053,16 +3054,16 @@
          catch (Exception ex) {
          }
  
@@ -2036,7 +2036,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-4", ccus, ccbs, true, false);
-@@ -3070,16 +3071,16 @@
+@@ -3071,16 +3072,16 @@
          catch (Exception ex) {
          }
  
@@ -2059,7 +2059,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-5", ccus, ccbs, true, false);
-@@ -3088,16 +3089,16 @@
+@@ -3089,16 +3090,16 @@
          catch (Exception ex) {
          }
  
@@ -2082,7 +2082,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-6", ccus, ccbs, true, false);
-@@ -3106,17 +3107,17 @@
+@@ -3107,17 +3108,17 @@
          catch (Exception ex) {
          }
  
@@ -2106,7 +2106,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-7", ccus, ccbs, true, false);
-@@ -3125,16 +3126,16 @@
+@@ -3126,16 +3127,16 @@
          catch (Exception ex) {
          }
  
@@ -2129,7 +2129,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-8", ccus, ccbs, true, false);
-@@ -3143,16 +3144,16 @@
+@@ -3144,16 +3145,16 @@
          catch (Exception ex) {
          }
  
@@ -2152,7 +2152,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-9", ccus, ccbs, true, false);
-@@ -3161,16 +3162,16 @@
+@@ -3162,16 +3163,16 @@
          catch (Exception ex) {
          }
  
@@ -2175,7 +2175,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF-7-CC-EN-10", ccus, ccbs, true, false);
-@@ -3179,35 +3180,35 @@
+@@ -3180,35 +3181,35 @@
          catch (Exception ex) {
          }
  
@@ -2223,7 +2223,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(ccus, ccbs, true);
          result = encoder.flush(ccbs);
-@@ -3369,12 +3370,12 @@
+@@ -3392,12 +3393,12 @@
          bsr.put((byte)0xBF); bsr.put((byte)0xE9); bsr.put((byte)0xC0); bsr.put((byte)0xE9); bsr.put((byte)0xC9); bsr.put((byte)0xE9);
          bsr.put((byte)0xD9); bsr.put((byte)0xE8); bsr.put((byte)0xCF); bsr.put((byte)0x00); bsr.put((byte)0xA0);
  
@@ -2242,7 +2242,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //round trip test
          try {
-@@ -3402,15 +3403,15 @@
+@@ -3425,15 +3426,15 @@
          us.put(u_pts);
          bs.put(b_pts);
  
@@ -2264,7 +2264,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              smBufEncode(encoder, "ISCII-update", us, bs, true, true);
          } catch (Exception ex) {
              errln("Error occurred while encoding/decoding ISCII with the new characters.");
-@@ -3424,10 +3425,10 @@
+@@ -3447,10 +3448,10 @@
          //test overflow buffer
          ccbs.put((byte)0x49);
  
@@ -2279,7 +2279,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "ISCII-CC-DE-1", ccbs, ccus, true, false);
-@@ -3436,17 +3437,17 @@
+@@ -3459,17 +3460,17 @@
          catch (Exception ex) {
          }
  
@@ -2303,7 +2303,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "ISCII-CC-DE-2", ccbs, ccus, true, false);
-@@ -3457,17 +3458,17 @@
+@@ -3480,17 +3481,17 @@
  
          //end of charset decoder code coverage code
  
@@ -2327,7 +2327,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-1", ccus, ccbs, true, false);
-@@ -3476,17 +3477,17 @@
+@@ -3499,17 +3500,17 @@
          catch (Exception ex) {
          }
  
@@ -2351,7 +2351,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-2", ccus, ccbs, true, false);
-@@ -3495,17 +3496,17 @@
+@@ -3518,17 +3519,17 @@
          catch (Exception ex) {
          }
  
@@ -2375,7 +2375,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-3", ccus, ccbs, true, false);
-@@ -3514,17 +3515,17 @@
+@@ -3537,17 +3538,17 @@
          catch (Exception ex) {
          }
  
@@ -2399,7 +2399,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-4", ccus, ccbs, true, false);
-@@ -3533,17 +3534,17 @@
+@@ -3556,17 +3557,17 @@
          catch (Exception ex) {
          }
  
@@ -2423,7 +2423,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-5", ccus, ccbs, true, false);
-@@ -3552,17 +3553,17 @@
+@@ -3575,17 +3576,17 @@
          catch (Exception ex) {
          }
  
@@ -2447,7 +2447,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "ISCII-CC-EN-6", ccus, ccbs, true, false);
-@@ -3571,17 +3572,17 @@
+@@ -3594,17 +3595,17 @@
          catch (Exception ex) {
          }
  
@@ -2471,7 +2471,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          cs = provider.charsetForName("ISCII,version=0");
          encoder = cs.newEncoder();
-@@ -3612,27 +3613,27 @@
+@@ -3635,27 +3636,27 @@
          bs.put((byte)0x41); bs.put((byte)0x2D); bs.put((byte)0x41);
  
  
@@ -2509,7 +2509,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-1", us, bs, true, false);
-@@ -3640,17 +3641,17 @@
+@@ -3663,17 +3664,17 @@
          } catch(Exception ex) {
          }
  
@@ -2533,7 +2533,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-2", us, bs, true, false);
-@@ -3658,17 +3659,17 @@
+@@ -3681,17 +3682,17 @@
          } catch(Exception ex) {
          }
  
@@ -2557,7 +2557,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-3", us, bs, true, false);
-@@ -3676,18 +3677,18 @@
+@@ -3699,18 +3700,18 @@
          } catch(Exception ex) {
          }
  
@@ -2582,7 +2582,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-4", us, bs, true, false);
-@@ -3695,18 +3696,18 @@
+@@ -3718,18 +3719,18 @@
          } catch(Exception ex) {
          }
  
@@ -2607,7 +2607,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-5", us, bs, true, false);
-@@ -3714,18 +3715,18 @@
+@@ -3737,18 +3738,18 @@
          } catch(Exception ex) {
          }
  
@@ -2632,7 +2632,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-6", us, bs, true, false);
-@@ -3733,18 +3734,18 @@
+@@ -3756,18 +3757,18 @@
          } catch(Exception ex) {
          }
  
@@ -2657,7 +2657,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-7", us, bs, true, true);
-@@ -3752,18 +3753,18 @@
+@@ -3775,18 +3776,18 @@
          } catch(Exception ex) {
          }
  
@@ -2682,7 +2682,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-8", us, bs, true, true);
-@@ -3778,10 +3779,10 @@
+@@ -3801,10 +3802,10 @@
          us.put((char)0x0061);
          bs.put((byte)0x61); bs.put((byte)0x00);
  
@@ -2697,7 +2697,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "IMAP-EN-9", us, bs, true, true);
-@@ -3798,10 +3799,10 @@
+@@ -3821,10 +3822,10 @@
          us.put((char)0x0000); us.put((char)0x0000);
          bs.put((byte)0x26); bs.put((byte)0x41); bs.put((byte)0x43); bs.put((byte)0x41);
  
@@ -2712,7 +2712,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "IMAP-DE-1", bs, us, true, false);
-@@ -3809,18 +3810,18 @@
+@@ -3832,18 +3833,18 @@
          } catch(Exception ex) {
          }
  
@@ -2737,7 +2737,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "IMAP-DE-2", bs, us, true, false);
-@@ -3828,8 +3829,8 @@
+@@ -3851,8 +3852,8 @@
          } catch(Exception ex) {
          }
  
@@ -2748,7 +2748,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //test malform case 7
          us.put((char)0x0000); us.put((char)0x0000); us.put((char)0x0000); us.put((char)0x0000);
-@@ -3837,10 +3838,10 @@
+@@ -3860,10 +3861,10 @@
          bs.put((byte)0x41); bs.put((byte)0x41); bs.put((byte)0x41); bs.put((byte)0x42);
          bs.put((byte)0x41);
  
@@ -2763,7 +2763,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "IMAP-DE-3", bs, us, true, false);
-@@ -3867,10 +3868,10 @@
+@@ -3890,10 +3891,10 @@
          us.put((char)0xD901);
          bs.put((byte)0x00);
  
@@ -2778,7 +2778,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF32LE-EN-1", us, bs, true, false);
-@@ -3878,17 +3879,17 @@
+@@ -3901,17 +3902,17 @@
          } catch (Exception ex) {
          }
  
@@ -2802,7 +2802,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
  
-@@ -3896,18 +3897,18 @@
+@@ -3919,18 +3920,18 @@
              errln("Error while encoding UTF32LE (2) should have occurred.");
          }
  
@@ -2827,7 +2827,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
  
-@@ -3915,17 +3916,17 @@
+@@ -3938,17 +3939,17 @@
              errln("Error while encoding UTF32LE (3) should have occurred.");
          }
  
@@ -2851,7 +2851,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF32LE-EN-4", us, bs, true, false);
-@@ -3933,17 +3934,17 @@
+@@ -3956,17 +3957,17 @@
          } catch (Exception ex) {
          }
  
@@ -2875,7 +2875,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF32LE-EN-5", us, bs, true, false);
-@@ -3951,17 +3952,17 @@
+@@ -3974,17 +3975,17 @@
          } catch (Exception ex) {
          }
  
@@ -2899,7 +2899,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufEncode(encoder, "UTF32LE-EN-6", us, bs, true, false);
-@@ -3996,10 +3997,10 @@
+@@ -4019,10 +4020,10 @@
          us.put(u_pts1);
          bs.put(b_pts1);
  
@@ -2914,7 +2914,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
  
-@@ -4009,10 +4010,10 @@
+@@ -4032,10 +4033,10 @@
          }
  
          // Test for malform surrogate from previous buffer
@@ -2929,7 +2929,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
  
-@@ -4023,17 +4024,17 @@
+@@ -4046,17 +4047,17 @@
          // Test for malform trail surrogate
          encoder.reset();
  
@@ -2955,7 +2955,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
  
-@@ -4074,10 +4075,10 @@
+@@ -4097,10 +4098,10 @@
          us.put(us_array);
          bs.put(bs_array1);
  
@@ -2970,7 +2970,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF32-DE-1", bs, us, true, false);
-@@ -4090,10 +4091,10 @@
+@@ -4113,10 +4114,10 @@
          bs = ByteBuffer.allocate(bs_array2.length);
          bs.put(bs_array2);
  
@@ -2985,7 +2985,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF32-DE-2", bs, us, true, false);
-@@ -4103,16 +4104,16 @@
+@@ -4126,16 +4127,16 @@
          }
  
          //Test malform exception
@@ -3008,7 +3008,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF32-DE-3", bs, us, true, false);
-@@ -4121,16 +4122,16 @@
+@@ -4144,16 +4145,16 @@
          }
  
          //Test BOM testing
@@ -3031,7 +3031,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF32-DE-4", bs, us, true, false);
-@@ -4148,10 +4149,10 @@
+@@ -4171,10 +4172,10 @@
          us.put((char)0xDC01);
          bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
  
@@ -3046,7 +3046,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
          // must try to output BOM first for UTF-32 (not UTF-32BE or UTF-32LE)
-@@ -4159,86 +4160,86 @@
+@@ -4182,86 +4183,86 @@
              errln("Buffer overflow error while encoding UTF32 charset (1) should have occurred.");
          }
  
@@ -3163,7 +3163,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = encoder.encode(us, bs, true);
          if (!result.isMalformed()) {
-@@ -4262,10 +4263,10 @@
+@@ -4285,10 +4286,10 @@
          bs.put((byte)0x41); bs.put((byte)0xFF); bs.put((byte)0x01); bs.put((byte)0x00);
          us.put((char)0x0000);
  
@@ -3178,7 +3178,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
-@@ -4273,8 +4274,8 @@
+@@ -4296,8 +4297,8 @@
          } catch (Exception ex) {
          }
          // test overflow buffer handling in CharsetDecoderICU
@@ -3189,7 +3189,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          decoder.reset();
          result = decoder.decode(bs, us, true);
          if (result.isOverflow()) {
-@@ -4286,16 +4287,16 @@
+@@ -4309,16 +4310,16 @@
              errln("Overflow buffer error while decoding UTF32LE should have occurred.");
          }
  
@@ -3212,7 +3212,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
-@@ -4303,17 +4304,17 @@
+@@ -4326,17 +4327,17 @@
          } catch (Exception ex) {
          }
  
@@ -3236,7 +3236,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              // must flush in order to exhibit malformed behavior
-@@ -4322,17 +4323,17 @@
+@@ -4345,17 +4346,17 @@
          } catch (Exception ex) {
          }
  
@@ -3260,7 +3260,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
-@@ -4340,17 +4341,17 @@
+@@ -4363,17 +4364,17 @@
          } catch (Exception ex) {
          }
  
@@ -3284,7 +3284,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32LE", bs, us, true, false);
-@@ -4359,8 +4360,8 @@
+@@ -4382,8 +4383,8 @@
          }
          //end of decode UTF32LE
  
@@ -3295,7 +3295,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //decode UTF32BE
          decoder = provider.charsetForName("UTF-32BE").newDecoder();
-@@ -4368,10 +4369,10 @@
+@@ -4391,10 +4392,10 @@
          bs.put((byte)0x00); bs.put((byte)0x01); bs.put((byte)0xFF); bs.put((byte)0x41);
          us.put((char)0x0000);
  
@@ -3310,7 +3310,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
-@@ -4379,16 +4380,16 @@
+@@ -4402,16 +4403,16 @@
          } catch (Exception ex) {
          }
  
@@ -3333,7 +3333,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
-@@ -4396,17 +4397,17 @@
+@@ -4419,17 +4420,17 @@
          } catch (Exception ex) {
          }
  
@@ -3357,7 +3357,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              // must flush to exhibit malformed behavior
-@@ -4415,17 +4416,17 @@
+@@ -4438,17 +4439,17 @@
          } catch (Exception ex) {
          }
  
@@ -3381,7 +3381,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              smBufDecode(decoder, "UTF-32BE", bs, us, true, false);
-@@ -4433,16 +4434,16 @@
+@@ -4456,16 +4457,16 @@
          } catch (Exception ex) {
          }
  
@@ -3404,7 +3404,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          try {
              // must flush to exhibit malformed behavior
-@@ -4477,10 +4478,10 @@
+@@ -4500,10 +4501,10 @@
          limit_us = us.position();
          limit_bs = bs.position();
  
@@ -3419,7 +3419,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          bs2 = bs.asReadOnlyBuffer();
          us2 = us.asReadOnlyBuffer();
  
-@@ -4489,18 +4490,18 @@
+@@ -4512,18 +4513,18 @@
              errln("Error while decoding UTF-8 (1) should not have occured.");
          }
  
@@ -3444,7 +3444,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //test overflow buffer while encoding
          //readonly buffer
-@@ -4509,10 +4510,10 @@
+@@ -4532,10 +4533,10 @@
          bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
          limit_us = us.position();
          us2 = us.asReadOnlyBuffer();
@@ -3459,7 +3459,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (2).");
-@@ -4520,10 +4521,10 @@
+@@ -4543,10 +4544,10 @@
  
          encoder.reset();
  
@@ -3474,7 +3474,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (3).");
-@@ -4531,10 +4532,10 @@
+@@ -4554,10 +4555,10 @@
  
          encoder.reset();
  
@@ -3489,7 +3489,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (4).");
-@@ -4542,10 +4543,10 @@
+@@ -4565,10 +4566,10 @@
  
          encoder.reset();
  
@@ -3504,7 +3504,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (5).");
-@@ -4554,10 +4555,10 @@
+@@ -4577,10 +4578,10 @@
          //not readonly buffer
          encoder.reset();
  
@@ -3519,7 +3519,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (6).");
-@@ -4565,10 +4566,10 @@
+@@ -4588,10 +4589,10 @@
  
          encoder.reset();
  
@@ -3534,7 +3534,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (7).");
-@@ -4576,10 +4577,10 @@
+@@ -4599,10 +4600,10 @@
  
          encoder.reset();
  
@@ -3549,7 +3549,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (8).");
-@@ -4587,17 +4588,17 @@
+@@ -4610,17 +4611,17 @@
  
          encoder.reset();
  
@@ -3573,7 +3573,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //test encoding 4 byte characters
          encoder.reset();
-@@ -4605,10 +4606,10 @@
+@@ -4628,10 +4629,10 @@
          bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00); bs.put((byte)0x00);
          limit_us = us.position();
          us2 = us.asReadOnlyBuffer();
@@ -3588,7 +3588,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (10).");
-@@ -4616,10 +4617,10 @@
+@@ -4639,10 +4640,10 @@
  
          encoder.reset();
  
@@ -3603,7 +3603,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (11).");
-@@ -4627,10 +4628,10 @@
+@@ -4650,10 +4651,10 @@
  
          encoder.reset();
  
@@ -3618,7 +3618,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(us2, bs, true);
          if (!result.isOverflow()) {
              errln("Overflow Error should have occured while encoding UTF-8 (12).");
-@@ -4638,17 +4639,17 @@
+@@ -4661,17 +4662,17 @@
  
          encoder.reset();
  
@@ -3642,7 +3642,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //decoding code coverage
          //test malform error
-@@ -4657,10 +4658,10 @@
+@@ -4680,10 +4681,10 @@
          us.put((char)0x0000);
          bs2 = bs.asReadOnlyBuffer();
  
@@ -3657,7 +3657,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs2, us, true);
          result = decoder.flush(us);
-@@ -4668,68 +4669,68 @@
+@@ -4691,68 +4692,68 @@
              errln("Malform error should have occurred while decoding UTF-8 (1).");
          }
  
@@ -3751,7 +3751,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs2, us, true);
          if (!result.isOverflow()) {
-@@ -4738,10 +4739,10 @@
+@@ -4761,10 +4762,10 @@
  
          //test overflow
          decoder.reset();
@@ -3766,7 +3766,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs2, us, true);
          if (!result.isOverflow()) {
-@@ -4750,25 +4751,25 @@
+@@ -4773,25 +4774,25 @@
  
          //test overflow
          decoder.reset();
@@ -3801,7 +3801,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs, us, true);
          if (!result.isOverflow()) {
-@@ -4792,10 +4793,10 @@
+@@ -4815,10 +4816,10 @@
          bs.put((byte)0xFF);
          us.put((char)0x0000);
  
@@ -3816,7 +3816,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs, us, true);
          result = decoder.flush(us);
-@@ -4803,28 +4804,28 @@
+@@ -4826,28 +4827,28 @@
              errln("Malform error while decoding UTF-16 should have occurred.");
          }
  
@@ -3857,7 +3857,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          //test overflow buffer
          decoder.reset();
-@@ -4832,10 +4833,10 @@
+@@ -4855,10 +4856,10 @@
  
          bs.put((byte)0xFF); bs.put((byte)0xFE); bs.put((byte)0x41);
  
@@ -3872,7 +3872,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          result = decoder.decode(bs, us, true);
          if (!result.isOverflow()) {
-@@ -5076,20 +5077,20 @@
+@@ -5099,20 +5100,20 @@
          ByteBuffer bb = ByteBuffer.wrap(bytearray);
          CharBuffer cb = CharBuffer.allocate(10);
  
@@ -3897,7 +3897,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = decoder.decode(bb, cb, true);
          if (result.isError()) {
              errln("Error occurred while decoding: " + charsetName + " with error: " + result);
-@@ -5104,18 +5105,18 @@
+@@ -5127,18 +5128,18 @@
          cb = CharBuffer.wrap(chararray);
          bb = ByteBuffer.allocate(10);
  
@@ -3920,7 +3920,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
          result = encoder.encode(cb, bb, true);
          if (!result.isError()) {
              errln("Error should have occurred while encoding: " + charsetName);
-@@ -5302,21 +5303,21 @@
+@@ -5325,21 +5326,21 @@
              CharBuffer ubuf = CharBuffer.wrap(ccSrc[i]);
              encode.reset();
              decode.reset();
@@ -3949,7 +3949,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
                      if (!equals(test, ubuf)) {
                          errln("Roundtrip failed for " + charset.name() + " in test for code coverage[" + i + "].");
                      }
-@@ -5478,7 +5479,7 @@
+@@ -5501,7 +5502,7 @@
              // Decoding
              CharBuffer decoderResult = decode.decode(decoderBuffer);
  
@@ -3958,7 +3958,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if(!decoderResult.equals(encoderBuffer)){
                  errln("Error occured while decoding "+ charset.name());
              }
-@@ -5488,7 +5489,7 @@
+@@ -5511,7 +5512,7 @@
              ByteBuffer roundTrip = encoderResult;
              CharBuffer roundTripResult = decode.decode(roundTrip);
  
@@ -3967,7 +3967,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
              if(!roundTripResult.equals(encoderBuffer)){
                  errln("Error occured while encoding "+ charset.name());
              }
-@@ -5612,10 +5613,10 @@
+@@ -5635,10 +5636,10 @@
          for (int n = 0; n < malformedLimits.length; n++) {
              malformedDecoderTest.reset();
  
@@ -3981,7 +3981,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              malformedResult = malformedDecoderTest.decode(malformedSrc,malformedTrgt, true);
              if (!malformedResult.isMalformed()) {
-@@ -5649,8 +5650,8 @@
+@@ -5672,8 +5673,8 @@
              }
              CharsetDecoder decoder = charset.newDecoder();
  
@@ -3992,7 +3992,7 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
              result = decoder.decode(src, trgt, true);
              if (result.isError()) {
-@@ -5750,14 +5751,14 @@
+@@ -5773,14 +5774,14 @@
          CharBuffer charBuffer = CharBuffer.allocate(firstLine.length() + secondLine.length());
          charBuffer.put(firstLine);
          charBuffer.put(secondLine);
@@ -4010,9 +4010,9 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
  
              try {
-diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
---- icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2018-11-22 13:19:35.306841227 +0100
-+++ icu4j-63.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2018-11-29 15:00:47.299287777 +0100
+diff -urEbwB icu4j-66.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java icu4j-66.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
+--- icu4j-66.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2020-03-11 19:21:45.000000000 +0100
++++ icu4j-66.1.new/main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java	2020-04-02 10:25:01.742590983 +0200
 @@ -9,6 +9,7 @@
  
  package com.ibm.icu.dev.test.charset;
@@ -4308,9 +4308,9 @@ diff -urEbwB icu4j-63.1/main/tests/charset/src/com/ibm/icu/dev/test/charset/Test
  
          // test to see if the conversion matches actual results
          if (output.limit() != expected.length()) {
-diff -urEbwB icu4j-63.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java icu4j-63.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java
---- icu4j-63.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2018-11-22 13:19:21.194765845 +0100
-+++ icu4j-63.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2018-11-29 11:56:14.962442494 +0100
+diff -urEbwB icu4j-66.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java icu4j-66.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java
+--- icu4j-66.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2020-03-11 19:21:49.000000000 +0100
++++ icu4j-66.1.new/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryTest.java	2020-04-02 10:25:01.742590983 +0200
 @@ -10,6 +10,7 @@
  package com.ibm.icu.dev.test.util;
  
@@ -4346,9 +4346,9 @@ diff -urEbwB icu4j-63.1/main/tests/core/src/com/ibm/icu/dev/test/util/ICUBinaryT
              ICUBinary.readHeader(bytes, formatid, authenticate);
              errln("Failed: Invalid version number should not pass authenticate object");
          } catch (IOException e) {
-diff -urEbwB icu4j-63.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java icu4j-63.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java
---- icu4j-63.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2018-11-22 13:20:03.174990079 +0100
-+++ icu4j-63.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2018-11-29 13:42:18.211256208 +0100
+diff -urEbwB icu4j-66.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java icu4j-66.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java
+--- icu4j-66.1/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2020-03-11 19:21:50.000000000 +0100
++++ icu4j-66.1.new/perf-tests/src/com/ibm/icu/dev/test/perf/ConverterPerformanceTest.java	2020-04-02 10:25:01.742590983 +0200
 @@ -13,6 +13,7 @@
  import java.io.FileInputStream;
  import java.io.InputStreamReader;

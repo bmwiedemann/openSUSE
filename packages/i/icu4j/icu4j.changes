@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  2 08:32:08 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 66.1
+- Changed patches:
+  * icu4j-jdk10plus.patch
+  * improve-osgi-manifest.patch
+  * icu4j-63.1-java8compat.patch -> icu4j-66.1-java8compat.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri Jan 24 10:56:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Remove build-dependency on java-javadoc, since it is not

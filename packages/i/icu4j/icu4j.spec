@@ -17,25 +17,23 @@
 #
 
 
-%global majorver 63
+%global majorver 66
 %global minorver 1
-%global oldmajorver 62
 Name:           icu4j
 Version:        %{majorver}.%{minorver}
 Release:        0
 Summary:        International Components for Unicode for Java
-License:        MIT AND EPL-1.0
+# ICU itself is now covered by Unicode license, but still has contributed
+# components covered by MIT and BSD licenses
+# Data from the Timezone Database is Public Domain
+License:        Unicode AND MIT AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            http://site.icu-project.org/
-#CAUTION
-#to create a tarball use following procedure
-#svn co http://source.icu-project.org/repos/icu/tags/release-%{majorver}-%{minorver}/icu4j icu4j-%{majorver}.%{minorver}
-#tar caf icu4j-%{majorver}.%{minorver}.tar.xz icu4j-%{majorver}.%{minorver}/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/unicode-org/icu/releases/download/release-%{majorver}-%{minorver}/%{name}-%{majorver}_%{minorver}.tgz
 Patch0:         icu4j-jdk10plus.patch
 # Add better OSGi metadata to core jar
 Patch1:         improve-osgi-manifest.patch
-Patch2:         icu4j-63.1-java8compat.patch
+Patch2:         icu4j-66.1-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel
@@ -78,10 +76,10 @@ Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
 
 %description javadoc
-Javadoc documentation for %{name}.
+API documentation for %{name}.
 
 %prep
-%setup -q
+%setup -q -c
 %patch0 -p1
 %patch1
 %patch2 -p1
@@ -107,10 +105,25 @@ echo "jar.spec.version=%{majorver}" >> build.properties
 echo "jar.impl.version=%{version}" >> build.properties
 echo "jar.impl.version.string=%{version}.0" >> build.properties
 
+# Missing dep on pl.pragmatists:JUnitParams for tests, so delete tests that
+# requires it for now
+sed -i -e '/pl.pragmatists/d' ivy.xml
+rm main/tests/core/src/com/ibm/icu/dev/test/format/DataDrivenFormatTest.java
+rm main/tests/core/src/com/ibm/icu/dev/test/calendar/DataDrivenCalendarTest.java
+rm main/tests/core/src/com/ibm/icu/dev/test/serializable/CompatibilityTest.java
+rm main/tests/core/src/com/ibm/icu/dev/test/serializable/CoverageTest.java
+rm main/tests/core/src/com/ibm/icu/dev/test/util/LocaleMatcherTest.java
+rm main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
+rm main/tests/translit/src/com/ibm/icu/dev/test/translit/TransliteratorDisorderedMarksTest.java
+
 %build
 ant \
-    -Dicu4j.javac.source=1.6 -Dicu4j.javac.target=1.6 \
+    -Dicu4j.javac.source=1.7 -Dicu4j.javac.target=1.7 \
     jar docs
+
+for jar in icu4j icu4j-charset icu4j-localespi ; do
+  sed -i -e 's/@POMVERSION@/%{version}/' maven/$jar/pom.xml
+done
 
 %install
 # jars

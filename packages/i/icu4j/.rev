@@ -118,4 +118,18 @@
     <comment>don't build-depend on java-javadoc</comment>
     <requestid>766808</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c97669428a9db56cbce69437242481d0</srcmd5>
+    <version>66.1</version>
+    <time>1586112772</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 66.1
+- Changed patches:
+  * icu4j-jdk10plus.patch
+  * improve-osgi-manifest.patch
+  * icu4j-63.1-java8compat.patch -&gt; icu4j-66.1-java8compat.patch
+    + rediff to changed context
+</comment>
+    <requestid>791183</requestid>
+  </revision>
 </revisionlist>
