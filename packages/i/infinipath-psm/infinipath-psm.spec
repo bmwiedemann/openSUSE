@@ -1,7 +1,7 @@
 #
 # spec file for package infinipath-psm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        QLogic PSM Libraries
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/System
-Url:            http://www.qlogic.com/
+URL:            http://www.qlogic.com/
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM infinipath-psm-cflags.patch pth@suse.de
@@ -37,6 +37,8 @@ Patch3:         infinipath-psm-executable_headers.patch
 Patch4:         reproducible.patch
 # PATCH-FIX-UPSTREAM Include <sys/sysmacros.h> for minor
 Patch5:         sysmacros.patch
+# PATCH-FIX-UPSTREAM FIx GCC10 support
+Patch6:         Add-missing-extern-keywords.patch
 BuildRequires:  libuuid-devel
 Conflicts:      infinipath-libs
 ExclusiveArch:  %ix86 x86_64
@@ -103,6 +105,7 @@ interfaces in parallel environments.
 %patch3
 %patch4 -p1
 %patch5 -p1
+%patch6
 
 %build
 %define _lto_cflags %{nil}

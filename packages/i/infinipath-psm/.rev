@@ -133,4 +133,12 @@
     <comment></comment>
     <requestid>697440</requestid>
   </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>b7c5e715169e66962a38328da956894a</srcmd5>
+    <version>3.3</version>
+    <time>1586112577</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Add-missing-extern-keywords.patch to fix compilation with GCC10 (bsc#1160270)</comment>
+    <requestid>791132</requestid>
+  </revision>
 </revisionlist>
