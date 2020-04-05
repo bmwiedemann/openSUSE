@@ -16,13 +16,12 @@
 #
 
 
-%define _rev    c7b6d3ccd61a65e81125ddb8627d55f6
+%define _rev    3ead682645ec219bf215e86a66f8180f
 Name:           simple-ccsm
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        Simple settings manager for Compiz
 License:        GPL-2.0-or-later
-Group:          System/X11/Utilities
 URL:            https://gitlab.com/compiz/simple-ccsm
 Source:         https://gitlab.com/compiz/simple-ccsm/uploads/%{_rev}/%{name}-%{version}.tar.xz
 BuildRequires:  compiz < 0.9
@@ -36,6 +35,7 @@ BuildRequires:  update-desktop-files
 Requires:       compiz < 0.9
 Requires:       compiz-plugins < 0.9
 Requires:       compiz-plugins-main < 0.9
+Requires:       python-rpm-macros
 Requires:       python3-cairo
 Requires:       python3-ccm < 0.9
 Requires:       python3-ccm >= 0.8.12
@@ -43,7 +43,6 @@ Requires:       python3-compizconfig < 0.9
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
-Recommends:     %{name}-lang
 Recommends:     compiz-plugins-extra < 0.9
 # simple-ccsm-kde was last used in openSUSE 11.3.
 Provides:       %{name}-kde = %{version}
@@ -60,16 +59,12 @@ Compiz settings manager focused on simplicity for an end-user.
 %setup -q
 
 %build
-python3 setup.py build \
-  --prefix=%{_prefix}    \
+%py3_build \
   --enableDesktopEffects
 
 %install
-python3 setup.py install \
-  --root=%{buildroot} \
-  --prefix=%{_prefix}
+%py3_install
 
-mv %{buildroot}%{_datadir}/{metainfo,appdata}/
 %fdupes %{buildroot}%{_datadir}/
 %suse_update_desktop_file -N "Desktop Effects" %{name}
 %find_lang simple-ccsm
@@ -82,8 +77,7 @@ mv %{buildroot}%{_datadir}/{metainfo,appdata}/
 %{python3_sitelib}/simple_ccsm-*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
 
