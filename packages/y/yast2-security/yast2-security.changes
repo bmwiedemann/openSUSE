@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 17:41:17 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Apply sysctl changes to the running system when the YaST sysctl
+  configuration file is modified (bsc#1167234)
+- 4.2.12
+
+-------------------------------------------------------------------
 Mon Feb  3 16:02:35 CET 2020 - schubi@suse.de
 
 - Using SysctlConfig class: Handle sysctl entries in different
