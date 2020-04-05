@@ -211,6 +211,7 @@
     <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="bcm20702a1-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm20702a1-firmware -->
     <package name="bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm43xx-firmware -->
@@ -266,7 +267,6 @@
     <package name="brltty-driver-speech-dispatcher" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-xwindow" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="brotli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="bsd-games" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bsdtar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="btrfsmaintenance" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2340,7 +2340,7 @@
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldapcpp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblensfun2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4229,6 +4229,7 @@
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200402" schemaversion="4.1">
+<image name="OBS__openSUSE___20200404" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200402</productvar>
+      <productvar name="VERSION">20200404</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200402,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200404,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200402/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200404/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -220,6 +220,7 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
+      <repopackage name="bbswitch-kmp-default"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -275,7 +276,6 @@
       <repopackage name="brltty-driver-speech-dispatcher"/>
       <repopackage name="brltty-driver-xwindow"/>
       <repopackage name="brltty-lang"/>
-      <repopackage name="brotli"/>
       <repopackage name="bsd-games"/>
       <repopackage name="bsdtar"/>
       <repopackage name="btrfsmaintenance"/>
@@ -2335,7 +2335,7 @@
       <repopackage name="libldb2"/>
       <repopackage name="libldb2-32bit" arch="x86_64"/>
       <repopackage name="libldm-1_0-0" arch="x86_64"/>
-      <repopackage name="liblensfun2"/>
+      <repopackage name="liblensfun1"/>
       <repopackage name="liblhasa0"/>
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
@@ -4507,6 +4507,7 @@
       <repopackage name="rtkit"/>
       <repopackage name="rtl-sdr"/>
       <repopackage name="rtl-sdr-udev"/>
+      <repopackage name="rtl8812au-kmp-default"/>
       <repopackage name="rtl_433"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
