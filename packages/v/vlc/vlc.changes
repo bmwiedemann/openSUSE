@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:58:04 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make package build reproducible:
+  * Add reproducible.patch to normalize created tarballs
+  * Create %ghost file with fixed size
+
+-------------------------------------------------------------------
 Fri Mar 27 09:23:26 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix missing include with Qt 5.15:
