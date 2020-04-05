@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  3 14:18:30 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: fixed a crash when some devices are modified both
+  before and after reprobing the hardware (bsc#1168325).
+- 4.1.106
+
+-------------------------------------------------------------------
+Wed Apr  1 12:27:01 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Never add the _netdev option to fstab for the root mount point
+  (bsc#1165937).
+- 4.2.105
+
+-------------------------------------------------------------------
 Fri Mar 27 13:14:08 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Reverted the changes done to support the calculation of udev
