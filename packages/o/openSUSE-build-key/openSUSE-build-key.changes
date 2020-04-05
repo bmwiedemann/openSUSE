@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  2 13:18:26 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- mark the opensuse-container-key and the suse-container-key
+  for openSUSE:Containers and SUSE:Containers space.
+  (same as the build keys for SLE15 and openSUSE respectively.)
+- Replace the old security@suse.de email comm key by the new, move
+  the old one to the oldkey. (bsc#1166334)
+
+-------------------------------------------------------------------
 Mon Mar 25 12:33:16 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix previous commit

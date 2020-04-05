@@ -208,4 +208,16 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment></comment>
     <requestid>689250</requestid>
   </revision>
+  <revision rev="26" vrev="35">
+    <srcmd5>08cc789d77cef8e8c3d3fa5b5cb8d69a</srcmd5>
+    <version>1.0</version>
+    <time>1586112551</time>
+    <user>dimstar_suse</user>
+    <comment>- mark the opensuse-container-key and the suse-container-key
+  for openSUSE:Containers and SUSE:Containers space.
+  (same as the build keys for SLE15 and openSUSE respectively.)
+- Replace the old security@suse.de email comm key by the new, move
+  the old one to the oldkey. (bsc#1166334) (forwarded request 790910 from msmeissn)</comment>
+    <requestid>790928</requestid>
+  </revision>
 </revisionlist>

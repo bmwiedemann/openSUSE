@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,9 @@ for i in %{S:0} %{S:1} %{S:2} \
 done
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 
+ln -s gpg-pubkey-3dbdc284-53674dd4.asc $RPM_BUILD_ROOT%{keydir}/opensuse-container-key.asc
+ln -s gpg-pubkey-39db7c82-5847eb1f.asc $RPM_BUILD_ROOT%{keydir}/suse-container-key.asc
+
 %files
 %defattr(644,root,root)
 %doc security_at_suse_de.asc security_at_suse_de_old.asc
@@ -97,6 +100,8 @@ install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 %{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5847eb1f.asc
+%{keydir}/opensuse-container-key.asc
+%{keydir}/suse-container-key.asc
 %ifarch riscv64
 %{keydir}/gpg-pubkey-697ba1e5-5c755904.asc
 %endif
