@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:21:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch
+  + In cases where the config contains 2 or more default gateway
+    specifications for an interface only write the first default route,
+    log warning message about skipped routes
+  + Avoid writing invalid route specification if neither the network
+    nor destination is specified in the route configuration
+
+-------------------------------------------------------------------
+Thu Mar 26 17:20:12 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch
+  + Still need to consider the "network" configuration uption
+    for the v1 config implementation. Fixes regression
+    introduced with update from Wed Feb 12 19:30:42
+
+-------------------------------------------------------------------
+Wed Mar 25 18:31:32 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1165296)
+  + Add the default gateway to the ifroute config file when specified
+    as part of the subnet configuration
+  + Fix typo to properly extrakt provided netmask data (bsc#1163178)
+
+-------------------------------------------------------------------
 Thu Feb 13 14:07:50 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-long-pass.patch (bsc#1162936, CVE-2020-8632)

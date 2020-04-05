@@ -8,7 +8,7 @@
  
  from cloudinit import helpers
  from cloudinit import log as logging
-@@ -172,7 +173,53 @@ class Distro(distros.Distro):
+@@ -172,7 +173,69 @@ class Distro(distros.Distro):
              util.write_file(out_fn, str(conf), 0o644)
  
      def _write_network_config(self, netconfig):
@@ -31,32 +31,48 @@
 +            if_name = config.get('name')
 +            subnets = config.get('subnets', [])
 +            config_routes = ''
++            has_default_route = False
 +            for subnet in subnets:
++                # Render the default gateway if it is present
++                gateway = subnet.get('gateway')
++                if gateway:
++                    config_routes += ' '.join(
++                        ['default', gateway, '-', '-\n']
++                    )
++                    has_default_route = True
++                # Render subnet routes
 +                routes = subnet.get('routes', [])
 +                for route in routes:
-+                    dest = route.get('destination')
-+                    if dest in default_nets:
++                    dest = route.get('destination') or route.get('network')
++                    if not dest or dest in default_nets:
 +                        dest = 'default'
 +                    if dest != 'default':
-+                        netmask = route.get('genmask')
++                        netmask = route.get('netmask')
 +                        if netmask:
 +                            prefix = mask_to_net_prefix(netmask)
 +                            dest += '/' + str(prefix)
 +                        if '/' not in dest:
 +                            LOG.warning(
-+                                'Route destination has no prefix "%s"', dest
++                                'Skipping route; has no prefix "%s"', dest
 +                            )
++                            continue
++                    if dest == 'default' and has_default_route:
++                        LOG.warning(
++                            '%s already has default route, skipping "%s"',
++                            if_name, ' '.join([dest, gateway, '-', '-'])
++                        )
++                        continue
++                    if dest == 'default' and not has_default_route:
++                        has_default_route = True
 +                    gateway = route.get('gateway')
++                    if not gateway:
++                        LOG.warning(
++                            'Missing gateway for "%s", skipping', dest
++                        )
++                        continue
 +                    config_routes += ' '.join(
 +                        [dest, gateway, '-', '-\n']
 +                    )
-+                if not config_routes:
-+                    dest = 'default'
-+                    gateway = subnet.get('gateway')
-+                    if gateway:
-+                        config_routes += ' '.join(
-+                            [dest, gateway, '-', '-\n']
-+                        )
 +            if config_routes:
 +                route_file = '/etc/sysconfig/network/ifroute-%s' % if_name
 +                util.write_file(route_file, config_routes)
