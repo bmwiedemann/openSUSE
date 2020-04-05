@@ -59,6 +59,8 @@ Patch102:       0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt 5.15 by adding a missing include
 Patch104:       fix-missing-includes-with-qt-5.15.patch
+# PATCH-FIX-UPSTREAM reproducible.patch -- make tar reproducible -- 87ea3c0dfb7367b434f688d657f931c074bb34f4
+Patch105:       reproducible.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -407,6 +409,7 @@ OpenCV based video filters and a face detection example.
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
@@ -533,6 +536,9 @@ for lang in ach an cgg co ff tet ks_IN; do
   rm -rf %{buildroot}%{_datadir}/locale/$lang
 done
 %find_lang vlc
+
+# ensure the ghost file has constant length for reproducibility
+dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 
 %post
 %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
