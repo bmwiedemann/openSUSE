@@ -453,4 +453,12 @@
   (boo#1141190). (forwarded request 715464 from marxin)</comment>
     <requestid>715477</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>616ef64cce961b0d4148de4655a8c13c</srcmd5>
+    <version>4.0.2</version>
+    <time>1586112540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cummulative patch mpfr-4.0.2-p6.patch fixing various bugs.</comment>
+    <requestid>790496</requestid>
+  </revision>
 </revisionlist>

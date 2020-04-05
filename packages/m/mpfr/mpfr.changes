@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:27:49 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add cummulative patch mpfr-4.0.2-p6.patch fixing various bugs.
+
+-------------------------------------------------------------------
 Mon Jul 15 11:26:24 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add floating-point-format-no-lto.patch in order to fix assembler scanning

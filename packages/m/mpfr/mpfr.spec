@@ -1,7 +1,7 @@
 #
 # spec file for package mpfr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 Summary:        The GNU multiple-precision floating-point library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.mpfr.org/
+URL:            http://www.mpfr.org/
 Source0:        http://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.bz2
 Source1:        http://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch0:         floating-point-format-no-lto.patch
+Patch1:         mpfr-4.0.2-p6.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 
@@ -69,6 +70,7 @@ based on the GMP multiple-precision library.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \
