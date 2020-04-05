@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:55:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.12:
+  * Added the ability to handle .po files containing different plural
+    equations for the same language (#30439).
+
+-------------------------------------------------------------------
 Wed Mar 18 10:59:36 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.2.11

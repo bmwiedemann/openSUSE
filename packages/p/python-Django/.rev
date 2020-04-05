@@ -697,4 +697,14 @@
  * fix boo#1161919 (CVE-2020-7471) Potential SQL injection via ``StringAgg(delimiter)``</comment>
     <requestid>786136</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3036f2be0525ff077c2dd12e6dd5c885</srcmd5>
+    <version>2.2.12</version>
+    <time>1586112758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.12:
+  * Added the ability to handle .po files containing different plural
+    equations for the same language (#30439).</comment>
+    <requestid>791106</requestid>
+  </revision>
 </revisionlist>
