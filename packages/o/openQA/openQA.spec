@@ -65,7 +65,7 @@
 %define devel_requires %build_requires %test_requires rsync chromedriver curl postgresql-devel %qemu tar xorg-x11-fonts sudo perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 
 Name:           openQA
-Version:        4.6.1585815597.24b98a95a
+Version:        4.6.1585918802.94bcc1cc4
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -421,6 +421,10 @@ fi
 %{_datadir}/openqa/script/openqa-scheduler
 %{_datadir}/openqa/script/openqa-websockets
 %{_datadir}/openqa/script/openqa-livehandler
+%{_datadir}/openqa/script/openqa-enqueue-asset-cleanup
+%{_datadir}/openqa/script/openqa-enqueue-audit-event-cleanup
+%{_datadir}/openqa/script/openqa-enqueue-bug-cleanup
+%{_datadir}/openqa/script/openqa-enqueue-result-cleanup
 %{_datadir}/openqa/script/upgradedb
 %{_datadir}/openqa/script/modify_needle
 # TODO: define final user

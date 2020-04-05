@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 04 16:29:35 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1585918802.94bcc1cc4:
+  * Add retry for worker-webui connection on 408+425
+  * Prevent more useless retries for worker-webui connect
+  * Extend retry in worker-webui connect to cover rebooting hosts
+  * t: Extend 24-worker-webui-connection.t to check different retry codes
+  * t: Extract method for send in 24-worker-webui-connection.t
+  * Cover broken needle code path in a unit test
+  * Provide enqueue convenience scripts rather than systemd
+  * Account freed disk space when deleting logs
+  * Unify single/multi audit event rendering
+
+-------------------------------------------------------------------
 Thu Apr 02 08:29:12 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1585815597.24b98a95a:
