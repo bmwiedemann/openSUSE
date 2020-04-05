@@ -241,4 +241,21 @@
   * Bump Test Version 3.17.5</comment>
     <requestid>790351</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>461e4fb070444ab95e6625f68d1f1614</srcmd5>
+    <version>3.18.1+git.1586013122.54f843ec</version>
+    <time>1586112904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.18.0+git.1586013122.54f843ec:
+  * Bump Test Version 3.18.1
+  * New Site: scifistories.com (extends finestories.com).
+  * Bump Release Version 3.18.0
+  * Update translations
+  * Bump Test Version 3.17.9
+  * Change fanfiction.tenhawkpresents.com to fanfic.tenhawkpresents.ink
+  * Revert &quot;Remove defunct site fanfiction.tenhawkpresents.com&quot;
+  * Bump Test Version 3.17.8
+  * Changes to adapter_archiveofourownorg for AO3 changes re: view_adult=true</comment>
+    <requestid>791430</requestid>
+  </revision>
 </revisionlist>
