@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.18:
+  * Add workspacenames plugin (migrated from -experimental).
+  * Add a contrast differentiation mode in ADDHelper.
+  * showmouse: add option to initiate automatically on startup.
+  * First attempt at writing a plugin showing speech synthesis:
+    highlightcontent.
+  * grid: Fix issues with cycling through window sizes caused by
+    extents.
+  * Fix grid bug that prevented certain windows (Chromium-based,
+    others) from updating properly.
+  * Fix up DEBUG calls to refer to correct variables.
+  * Fix make distcheck command.
+  * showmouse: Fix behaviour with particles activation setting.
+  * showmouse: Fix toggling crosshairs while active.
+  * showmouse: Rewrite crosshair drawing to be affected by neg and
+    colorfilter.
+  * wallpaper: Fix a calloc call.
+  * Add and improve the bell plugin imported from
+    https://github.com/CarterWeron/compiz-bell-plugin
+  * Update translations.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Drop support for old openSUSE versions.

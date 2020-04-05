@@ -16,13 +16,12 @@
 #
 
 
-%define _rev    d941a41bbfcf3e4475e01fd00da37c85
+%define _rev    b53eb95252331d53b42231778f55de44
 Name:           compiz-plugins-extra
-Version:        0.8.16
+Version:        0.8.18
 Release:        0
 Summary:        OpenGL window and compositing manager community extra plugins
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/compiz-plugins-extra
 Source:         https://gitlab.com/compiz/compiz-plugins-extra/uploads/%{_rev}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE dimstar@opensuse.org -- Define some sane standards for the extra plugins.
@@ -44,7 +43,6 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libnotify)
 Requires:       compiz < 0.9
 Requires:       compiz-plugins-main < 0.9
-Recommends:     %{name}-lang
 Provides:       compiz-fusion-plugins-extra = %{version}
 Obsoletes:      compiz-fusion-plugins-extra < %{version}
 ExcludeArch:    s390 s390x
@@ -61,7 +59,6 @@ mblur reflex showdesktop trailfocus.
 
 %package devel
 Summary:        OpenGL window and compositing manager community extra plugins
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(bcop) < 0.9
@@ -97,10 +94,6 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
 
 %files
 %license COPYING
