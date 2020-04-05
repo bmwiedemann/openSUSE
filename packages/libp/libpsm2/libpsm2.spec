@@ -1,7 +1,7 @@
 #
 # spec file for package libpsm2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@ Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/01org/opa-psm2/
+URL:            https://github.com/01org/opa-psm2/
 Source0:        %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        libpsm2.changelog
 Source2:        libpsm2-rpmlintrc
 Patch2:         libpsm2-use_RPM_OPT_FLAGS.patch
 Patch3:         libpsm2-use-exported-variable-for-version-and-release.patch
+Patch4:         Add-missing-extern-keywords.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
@@ -84,6 +85,7 @@ Support for MPIs linked with PSM versions < 2.
 %setup -q -n %{name}-%{version}%{git_ver}
 %patch2
 %patch3
+%patch4
 
 cp %{S:1} ChangeLog
 
