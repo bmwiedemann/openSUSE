@@ -16,14 +16,13 @@
 #
 
 
-%define _rev    96d2abf9f25c4900a3bdc191e2c6033d
+%define _rev    198c6cfb64ddfc07eecaf5b1aa183c55
 %define sover   0
 Name:           compiz
-Version:        0.8.16.1
+Version:        0.8.18
 Release:        0
 Summary:        OpenGL window and compositing manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          System/GUI/Other
 URL:            https://gitlab.com/compiz/compiz-core
 Source:         https://gitlab.com/compiz/compiz-core/uploads/%{_rev}/%{name}-%{version}.tar.xz
 Source1:        opensuse.png
@@ -35,8 +34,6 @@ Patch0:         %{name}-suse-defaults.patch
 Patch1:         %{name}-java-config-notify.diff
 # PATCH-FIX-UPSTREAM bsc#474862 dreveman@novell.com -- Allow moving focus to fs window.
 Patch2:         bug-474862-allow-moving-focus-to-fs-window.diff
-# PATCH-FIX-UPSTREAM compiz-gwd-marco-1.22.2.patch lukefromdc@hushmail.com -- Fix build against Marco 1.22.2+.
-Patch3:         %{name}-gwd-marco-1.22.2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -80,7 +77,6 @@ Requires:       %{name}-decorator < 0.9
 Requires:       %{name}-plugins < 0.9
 Requires:       lib%{name}config
 Requires:       pciutils
-Recommends:     %{name}-lang
 Suggests:       compicc < 0.9
 Provides:       windowmanager
 # KDE is no longer supported in Compiz.
@@ -98,7 +94,6 @@ is designed to run well on most graphics hardware.
 
 %package gnome
 Summary:        OpenGL window and compositing manager configuration utilities
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Recommends:     %{name}-plugins-main < 0.9
 Suggests:       ccsm < 0.9
@@ -113,7 +108,6 @@ the Compiz compositing manager.
 
 %package plugins
 Summary:        OpenGL window and compositing manager default plugins
-Group:          System/GUI/Other
 Recommends:     %{name} = %{version}
 Recommends:     %{name}-plugins-main < 0.9
 Suggests:       %{name}-plugins-experimental < 0.9
@@ -125,7 +119,6 @@ plugins.
 
 %package devel
 Summary:        Development files for Compiz
-Group:          Development/Languages/C and C++
 Requires:       %{name}-plugins = %{version}
 Requires:       libjpeg-devel
 Requires:       libxslt-tools
@@ -164,7 +157,6 @@ is designed to run well on most graphics hardware.
 
 %package branding-openSUSE
 Summary:        OpenGL window and compositing manager
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
@@ -180,7 +172,6 @@ is designed to run well on most graphics hardware.
 
 %package branding-SLED
 Summary:        OpenGL window and compositing manager
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
@@ -199,7 +190,6 @@ is designed to run well on most graphics hardware.
 
 %package branding-upstream
 Summary:        OpenGL window and compositing manager
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires(pre):  /bin/ln
 Requires(pre):  /bin/rm
@@ -215,7 +205,6 @@ is designed to run well on most graphics hardware.
 
 %package -n libdecoration%{sover}
 Summary:        Compiz window decoration library
-Group:          System/Libraries
 
 %description -n libdecoration%{sover}
 The window decoration library is responsible for drawing the

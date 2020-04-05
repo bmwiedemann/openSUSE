@@ -929,4 +929,12 @@ remove old unused gtk patch</comment>
     <comment>- Fix build.</comment>
     <requestid>778240</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>862b023c9db7ec678ead3b8a2b143190</srcmd5>
+    <version>0.8.18</version>
+    <time>1586112969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.18.</comment>
+    <requestid>791510</requestid>
+  </revision>
 </revisionlist>
