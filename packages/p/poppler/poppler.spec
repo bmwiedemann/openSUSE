@@ -24,11 +24,11 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        0.84.0
+Version:        0.86.1
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 94
+%define poppler_sover 97
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -71,6 +71,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(poppler-data)
 
 %description
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer
@@ -133,6 +134,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %package -n     libpoppler-devel
 Summary:        Development files for the Poppler PDF rendering library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_headers-devel >= 1.58
 Requires:       libpoppler%{poppler_sover} = %{version}
 Requires:       libpoppler-cpp%{poppler_cpp_sover} = %{version}
 Requires:       libstdc++-devel
@@ -178,9 +180,8 @@ export MOCQT52='%{_libqt5_bindir}/moc'
 %endif
 # make introspection scanner (g-ir-scanner) work with older build envs
 export LD_LIBRARY_PATH=$(pwd)/build
-# This causes the build to fail
-    #DENABLE_GTK_DOC=ON \
-%cmake\
+%cmake \
+	-DENABLE_GTK_DOC=ON \
 	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \
@@ -190,7 +191,7 @@ export LD_LIBRARY_PATH=$(pwd)/build
 	-DENABLE_GLIB=OFF \
 	-DENABLE_CPP=OFF \
 %endif
-    %{nil}
+	%{nil}
 %cmake_build
 
 %install
@@ -209,19 +210,15 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %endif
 
 %post -n libpoppler%{poppler_sover} -p /sbin/ldconfig
-
-%post -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
-
-%post -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
-
 %postun -n libpoppler%{poppler_sover} -p /sbin/ldconfig
 
+%post -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
 %postun -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
 
 %post -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
-
 %postun -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
 
+%post -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 %postun -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 
 %if "%{flavor}" == "qt5"
@@ -239,7 +236,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
-%doc AUTHORS ChangeLog NEWS README.md README-XPDF README.contributors
+%doc NEWS README.md README-XPDF
 %{_libdir}/libpoppler.so.%{poppler_sover}*
 
 %files -n libpoppler-glib%{poppler_glib_sover}
@@ -257,6 +254,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %{_libdir}/libpoppler-cpp.so.%{poppler_cpp_sover}*
 
 %files -n libpoppler-devel
+%doc AUTHORS ChangeLog README.contributors
 %{_includedir}/poppler
 %exclude %{_includedir}/poppler/glib
 %{_libdir}/libpoppler.so
@@ -271,10 +269,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %{_libdir}/libpoppler-glib.so
 %{_libdir}/pkgconfig/poppler-glib.pc
 %{_datadir}/gir-1.0/Poppler-%{poppler_api}.gir
-# Own these directories to not depend on gtk-doc while building:
-#dir %%{_datadir}/gtk-doc/html
-#dir %%{_datadir}/gtk-doc/html/poppler
-#doc %%{_datadir}/gtk-doc/html/poppler
+%doc %{_datadir}/gtk-doc/html/poppler
 
 %endif
 
