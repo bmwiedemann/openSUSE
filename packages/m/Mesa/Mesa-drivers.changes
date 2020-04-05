@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  3 15:25:42 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to Mesa 20.0.4
+  * emergency release, which reverts a serious SPIR-V regression
+    in the 20.0.3 release.
+- supersedes U_Revert-spirv-Implement-OpCopyObject-and-OpCopyLogica.patch
+
+-------------------------------------------------------------------
+Fri Apr  3 08:38:51 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Revert-spirv-Implement-OpCopyObject-and-OpCopyLogica.patch
+  * revert severe spirv regression; emergency release will be
+    available soon ...
+
+-------------------------------------------------------------------
+Thu Apr  2 09:27:46 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to Mesa 20.0.3
+  * bugfix release:  fixes all over the tree; mostly AMD (radv, 
+    aco), NIR and Intel (isl, anv) 
+
+-------------------------------------------------------------------
 Thu Mar 19 10:08:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to Mesa 20.0.2
