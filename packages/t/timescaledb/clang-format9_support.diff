@@ -1,0 +1,14 @@
+diff -rup a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-03-18 15:58:38.000000000 +0100
++++ b/CMakeLists.txt	2020-03-31 22:03:28.897261375 +0200
+@@ -258,8 +258,8 @@ if (CLANG_FORMAT)
+     message(FATAL_ERROR "Could not parse clang-format version ${CLANG_FORMAT_VERSION_OUTPUT}")
+   endif ()
+ 
+-  if((${CMAKE_MATCH_1} LESS "7") OR (${CMAKE_MATCH_1} GREATER "8"))
+-    message(WARNING "clang-format version 7 or 8 required")
++  if((${CMAKE_MATCH_1} LESS "7") OR (${CMAKE_MATCH_1} GREATER "9"))
++    message(WARNING "clang-format version 7 or 9 required")
+     set(CLANG_FORMAT False)
+   endif()
+ endif ()

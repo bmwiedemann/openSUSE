@@ -1,7 +1,7 @@
 #
 # spec file for package timescaledb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,20 @@
 %define         pgname  @BUILD_FLAVOR@%{nil}
 %define         sname   timescaledb
 %define         priority    %{pgname}
-Version:        1.2.0
+Version:        1.6.1
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
 Group:          Productivity/Databases/Tools
 URL:            https://www.timescale.com/
-Source:         https://github.com/timescale/%{sname}/releases/download/%{version}/%{sname}-%{version}.tar.gz
+Source:         https://github.com/timescale/%{sname}/archive/%{version}.tar.gz
+Patch0:         clang-format9_support.diff
 BuildRequires:  %{pgname}-server
 BuildRequires:  %{pgname}-server-devel
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.4
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(zlib)
 %requires_eq    %{pgname}-server
 %if "%{pgname}" == ""
 Name:           %{sname}
@@ -57,9 +56,10 @@ This build only Apache2 modules,
 TSL (timescale licenced modules are not build)
 
 %prep
-%setup -q -n %{sname}
+%setup -q -n %{sname}-%{version}
 # Remove static .so
 rm -fv %{sname}.so
+%autopatch -p1
 
 %build
 export PATH="$PATH:%{_prefix}/lib/%{pgname}/bin"
@@ -69,6 +69,7 @@ export PATH="$PATH:%{_prefix}/lib/%{pgname}/bin"
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed -Wl,--no-undefined -Wl,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--no-as-needed" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-as-needed -Wl,--no-undefined -Wl,-z,now" \
+    -DREGRESS_CHECKS=OFF \
   ..
 
 make USE_PGXS=1 %{?_smp_mflags}
