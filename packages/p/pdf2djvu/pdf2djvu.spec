@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(poppler) >= 0.35
 BuildRequires:  pkgconfig(uuid)
 Requires:       djvulibre
-Recommends:     %{name}-lang
 
 %description
 pdf2djvu creates DjVu files from PDF files. It's able to extract:
@@ -45,11 +44,11 @@ metadata (including XMP metadata).
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
