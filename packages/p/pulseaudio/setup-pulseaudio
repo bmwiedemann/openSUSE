@@ -217,6 +217,13 @@ enable_autospawn() {
     fi
 }
 
+enable_systemd() {
+    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket || return
+    echo "Enabling systemd user socket..."
+    systemctl --global unmask pulseaudio.socket
+    systemctl --global unmask pulseaudio.service
+}
+
 disable_alsa() {
     echo "Disabling PulseAudio for ALSA..."
     delete_variable ALSA_CONFIG_PATH
@@ -328,6 +335,15 @@ disable_autospawn() {
     killall pulseaudio > /dev/null 2>&1
 }
 
+disable_systemd() {
+    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket || return
+    echo "Disabling systemd user socket..."
+    systemctl --global mask pulseaudio.socket
+    systemctl --global mask pulseaudio.service
+    # kill leftover PA processes
+    killall pulseaudio > /dev/null 2>&1
+}
+
 enable_all() {
     enable_alsa
     enable_libao
@@ -345,6 +361,7 @@ enable_all() {
     enable_gstreamer
     enable_qemu
     enable_autospawn
+    enable_systemd
 }
 
 disable_all() {
@@ -364,6 +381,7 @@ disable_all() {
     disable_gstreamer
     disable_qemu
     disable_autospawn
+    disable_systemd
 }
 
 case $1 in

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 17:43:26 CEST 2020 - tiwai@suse.de
+
+- Control systemd user socket activation in setup-pulseaudio script
+  too (boo#1168393)
+
+-------------------------------------------------------------------
 Wed Feb 12 22:01:05 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes / enhancements about alsa modules:
