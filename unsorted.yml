@@ -4964,7 +4964,6 @@ unsorted:
   - graphviz-lua 
   - graphviz-perl 
   - graphviz-php 
-  - graphviz-python 
   - graphviz-ruby 
   - graphviz-smyrna 
   - graphviz-tcl 
@@ -6930,8 +6929,6 @@ unsorted:
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-dashboard: [x86_64] 
   - kubernetes-dns 
-  - kubernetes-master: [x86_64] 
-  - kubernetes-node: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -11001,7 +10998,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler94-32bit: [x86_64] 
+  - libpoppler97-32bit: [x86_64] 
   - libportal-devel 
   - libportal0 
   - libportaudio2-32bit: [x86_64] 
@@ -12846,7 +12843,6 @@ unsorted:
   - libzrtpcpp4 
   - libzsolve0 
   - libzstd-devel-static 
-  - libzstd1-32bit: [x86_64] 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit: [x86_64] 
   - libzvbi0-32bit: [x86_64] 
@@ -18137,7 +18133,6 @@ unsorted:
   - python-masakariclient-doc 
   - python-mathgl 
   - python-md2workflow-common 
-  - python-microversion_parse-doc 
   - python-mistralclient-doc 
   - python-mox3-doc 
   - python-mpi4py-common-devel 
@@ -18253,7 +18248,6 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-3to2 
   - python2-APScheduler 
   - python2-Arpeggio 
   - python2-Automat 
@@ -18293,7 +18287,6 @@ unsorted:
   - python2-Flask-Compress 
   - python2-Flask-Cors 
   - python2-Flask-Gravatar 
-  - python2-Flask-HTMLmin 
   - python2-Flask-HTTPAuth 
   - python2-Flask-Login 
   - python2-Flask-Mail 
@@ -19175,6 +19168,7 @@ unsorted:
   - python2-guessit 
   - python2-gunicorn 
   - python2-guzzle_sphinx_theme 
+  - python2-gv 
   - python2-h11 
   - python2-h2 
   - python2-h5py 
@@ -19412,7 +19406,6 @@ unsorted:
   - python2-memory_profiler 
   - python2-metaextract 
   - python2-mhash 
-  - python2-microversion_parse 
   - python2-miniupnpc 
   - python2-misaka 
   - python2-mistune 
@@ -20188,6 +20181,7 @@ unsorted:
   - python2-sybil 
   - python2-sympy 
   - python2-systemd 
+  - python2-tableprint 
   - python2-tabulate 
   - python2-tagpy 
   - python2-targetcli-fb 
@@ -20424,7 +20418,6 @@ unsorted:
   - python2-zxcvbn 
   - python2-zypp-plugin 
   - python3-32bit: [x86_64] 
-  - python3-3to2 
   - python3-APScheduler 
   - python3-AnyQt 
   - python3-Arpeggio 
@@ -21551,6 +21544,7 @@ unsorted:
   - python3-gsw 
   - python3-guessit 
   - python3-guzzle_sphinx_theme 
+  - python3-gv 
   - python3-gwcs 
   - python3-h11 
   - python3-h5netcdf 
@@ -21903,7 +21897,6 @@ unsorted:
   - python3-metaextract 
   - python3-metakernel 
   - python3-metamagic.json 
-  - python3-microversion_parse 
   - python3-mimesis 
   - python3-minidb 
   - python3-minio 
@@ -22888,6 +22881,7 @@ unsorted:
   - python3-sybil 
   - python3-sympy 
   - python3-systemd 
+  - python3-tableprint 
   - python3-tables 
   - python3-tablib 
   - python3-tabulate 
