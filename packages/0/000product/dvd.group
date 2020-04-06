@@ -344,6 +344,7 @@
     <package name="cron" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cronie" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="cryptsetup-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cscope" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="csmash" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ctags" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
@@ -2554,7 +2555,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler94" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler97" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpostproc55" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5719,6 +5720,7 @@
     <package name="libxcb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->

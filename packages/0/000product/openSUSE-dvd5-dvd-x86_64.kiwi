@@ -356,6 +356,7 @@
       <repopackage name="cron"/>
       <repopackage name="cronie"/>
       <repopackage name="cryptsetup"/>
+      <repopackage name="cryptsetup-lang"/>
       <repopackage name="cscope"/>
       <repopackage name="csmash"/>
       <repopackage name="ctags"/>
@@ -2581,7 +2582,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler94"/>
+      <repopackage name="libpoppler97"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportaudio2"/>
@@ -3242,6 +3243,7 @@
       <repopackage name="libzmq5"/>
       <repopackage name="libzstd-devel"/>
       <repopackage name="libzstd1"/>
+      <repopackage name="libzstd1-32bit" arch="x86_64"/>
       <repopackage name="libzvbi0"/>
       <repopackage name="libZXingCore1"/>
       <repopackage name="libzypp"/>
