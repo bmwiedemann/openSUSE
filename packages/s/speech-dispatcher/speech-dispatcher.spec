@@ -201,8 +201,8 @@ rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ivona.conf
 # Remove config files that we don't need a second time
 # but then user can not create its own configuration, because here is default, while in /etc is system-wide
 # %%{__rm} -r %%{buildroot}%%{_datadir}/speech-dispatcher/conf/
-# Remove %{_infodir}/dir file
-rm %{buildroot}%{_infodir}/dir
+# Remove %{_infodir}/dir file if it exists
+test -d %{buildroot}%{_infodir}/dir && rm %{buildroot}%{_infodir}/dir
 %find_lang %{name}
 
 # Deduplicate python bytecode
