@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch-joypad-autoconfig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retroarch-joypad-autoconfig
-Version:        0~git20200104
+Version:        0~git20200317
 Release:        0
 Summary:        RetroArch Joypad Autoconfig Files
 License:        MIT
@@ -26,8 +26,8 @@ URL:            https://github.com/libretro/retroarch-joypad-autoconfig
 
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  make
 BuildRequires:  fdupes
+BuildRequires:  make
 BuildArch:      noarch
 
 Requires:       retroarch
