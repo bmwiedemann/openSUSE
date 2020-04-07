@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  2 10:14:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.2
+  * Future-proof Python support by making cython a build time dependency and
+    removing cython generated c files from the repo (and sdist).
+  * Fix collections.abc.MutableMapping import
+  * CI and test updates
+  * Adjust library name to unbreak some linkers
+
+-------------------------------------------------------------------
 Thu Jul 25 08:40:51 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.8
