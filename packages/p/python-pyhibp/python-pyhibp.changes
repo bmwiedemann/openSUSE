@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  6 18:35:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  * Adds the capability to request that the Pwned Passwords API
+    return padding to the responses to calls made via
+    pwnedpasswords. Set the parameter add_padding to True on
+    suffix_search or is_password_breached. See the HIBP API for
+    additional information.
+
+-------------------------------------------------------------------
 Tue Aug 27 14:45:31 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.0.0
