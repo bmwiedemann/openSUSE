@@ -1,7 +1,7 @@
 #
 # spec file for package apache2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -65,12 +65,12 @@
 %define build_http2 0
 %endif
 Name:           apache2
-Version:        2.4.41
+Version:        2.4.43
 Release:        0
 Summary:        The Apache Web Server
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://httpd.apache.org/
+URL:            http://httpd.apache.org/
 Source0:        http://www.apache.org/dist/httpd/%{src_name}.tar.bz2
 Source1:        http://www.apache.org/dist/httpd/%{src_name}.tar.bz2.asc
 Source2:        apache2.keyring
@@ -140,14 +140,10 @@ Patch67:        httpd-2.2.0-apxs-a2enmod.dif
 Patch68:        httpd-2.x.x-logresolve.patch
 Patch69:        httpd-2.4.9-bnc690734.patch
 Patch70:        httpd-implicit-pointer-decl.patch
-# PATCH-FEATURE-UPSTREAM httpd-2.4.3-mod_systemd.patch crrodriguez@opensuse.org simple module provides systemd integration.
-Patch109:       httpd-2.4.3-mod_systemd.patch
 Patch111:       httpd-visibility.patch
 # PATCH-FEATURE-UPSTREAM kstreitova@suse.com -- backport of HttpContentLengthHeadZero and HttpExpectStrict
 Patch115:       httpd-2.4.x-fate317766-config-control-two-protocol-options.diff
 Patch116:       deprecated-scripts-arch.patch
-# https://svn.apache.org/viewvc?view=revision&revision=1874196
-Patch117:       apache2-load-private-keys-from-pkcs11.patch
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apr-util-devel
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
@@ -331,16 +327,11 @@ to administrators of web servers in general.
 %patch68 -p1
 %patch69
 %patch70 -p1
-# Systemd module enabling patch
-%if 0%{?suse_version} >= 1210
-%patch109 -p1
-%endif
 %patch111 -p1
 %patch115 -p1
 %if 0%{?suse_version} == 1110
 %patch116 -p1
 %endif
-%patch117 -p1
 cat %{_sourcedir}/SUSE-NOTICE >> NOTICE
 # install READMEs
 a=$(basename %{SOURCE22})
@@ -1358,7 +1349,6 @@ rm %{buildroot}/%{sysconfdir}/*.test
 %{_bindir}/logresolve2
 %{_sbindir}/rotatelogs
 %{_sbindir}/rotatelogs2
-
 
 %define install_httpd_link() \
 ( \

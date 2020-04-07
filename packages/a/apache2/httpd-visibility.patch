@@ -1,7 +1,7 @@
-Index: httpd-2.4.25/include/ap_config.h
+Index: httpd-2.4.43/include/ap_config.h
 ===================================================================
---- httpd-2.4.25.orig/include/ap_config.h	2012-08-15 01:59:24.000000000 +0200
-+++ httpd-2.4.25/include/ap_config.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/include/ap_config.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/include/ap_config.h	2020-04-03 13:38:05.477749175 +0200
 @@ -64,7 +64,7 @@
   * AP_DECLARE(rettype) ap_func(args)
   * @endcode
@@ -43,10 +43,10 @@ Index: httpd-2.4.25/include/ap_config.h
  #else
  /**
   * AP_MODULE_DECLARE_EXPORT is a no-op.  Unless contradicted by the
-Index: httpd-2.4.25/modules/cache/mod_cache.h
+Index: httpd-2.4.43/modules/cache/mod_cache.h
 ===================================================================
---- httpd-2.4.25.orig/modules/cache/mod_cache.h	2011-12-03 19:02:24.000000000 +0100
-+++ httpd-2.4.25/modules/cache/mod_cache.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/cache/mod_cache.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/cache/mod_cache.h	2020-04-03 13:38:05.545749508 +0200
 @@ -37,9 +37,9 @@
   * CACHE_DECLARE_DATA with appropriate export and import tags for the platform
   */
@@ -60,11 +60,11 @@ Index: httpd-2.4.25/modules/cache/mod_cache.h
  #elif defined(CACHE_DECLARE_STATIC)
  #define CACHE_DECLARE(type)            type __stdcall
  #define CACHE_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/proxy/mod_proxy.h
+Index: httpd-2.4.43/modules/proxy/mod_proxy.h
 ===================================================================
---- httpd-2.4.25.orig/modules/proxy/mod_proxy.h	2016-10-24 12:06:41.000000000 +0200
-+++ httpd-2.4.25/modules/proxy/mod_proxy.h	2017-01-02 10:33:40.411244315 +0100
-@@ -535,9 +535,9 @@ struct proxy_balancer_method {
+--- httpd-2.4.43.orig/modules/proxy/mod_proxy.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/proxy/mod_proxy.h	2020-04-03 13:38:05.545749508 +0200
+@@ -573,9 +573,9 @@ struct proxy_balancer_method {
   * PROXY_DECLARE_DATA with appropriate export and import tags for the platform
   */
  #if !defined(WIN32)
@@ -77,11 +77,11 @@ Index: httpd-2.4.25/modules/proxy/mod_proxy.h
  #elif defined(PROXY_DECLARE_STATIC)
  #define PROXY_DECLARE(type)            type __stdcall
  #define PROXY_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/lua/mod_lua.h
+Index: httpd-2.4.43/modules/lua/mod_lua.h
 ===================================================================
---- httpd-2.4.25.orig/modules/lua/mod_lua.h	2013-06-10 16:36:56.000000000 +0200
-+++ httpd-2.4.25/modules/lua/mod_lua.h	2017-01-02 10:33:40.411244315 +0100
-@@ -58,9 +58,9 @@
+--- httpd-2.4.43.orig/modules/lua/mod_lua.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/lua/mod_lua.h	2020-04-03 13:38:05.545749508 +0200
+@@ -62,9 +62,9 @@
   * AP_LUA_DECLARE_DATA with appropriate export and import tags for the platform
   */
  #if !defined(WIN32)
@@ -94,10 +94,10 @@ Index: httpd-2.4.25/modules/lua/mod_lua.h
  #elif defined(AP_LUA_DECLARE_STATIC)
  #define AP_LUA_DECLARE(type)            type __stdcall
  #define AP_LUA_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/core/mod_watchdog.h
+Index: httpd-2.4.43/modules/core/mod_watchdog.h
 ===================================================================
---- httpd-2.4.25.orig/modules/core/mod_watchdog.h	2014-09-05 16:19:29.000000000 +0200
-+++ httpd-2.4.25/modules/core/mod_watchdog.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/core/mod_watchdog.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/core/mod_watchdog.h	2020-04-03 13:38:05.545749508 +0200
 @@ -83,9 +83,9 @@ typedef struct ap_watchdog_t ap_watchdog
   */
  #if !defined(AP_WD_DECLARE)
@@ -111,10 +111,10 @@ Index: httpd-2.4.25/modules/core/mod_watchdog.h
  #elif defined(AP_WD_DECLARE_STATIC)
  #define AP_WD_DECLARE(type)            type __stdcall
  #define AP_WD_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/generators/mod_status.h
+Index: httpd-2.4.43/modules/generators/mod_status.h
 ===================================================================
---- httpd-2.4.25.orig/modules/generators/mod_status.h	2006-07-11 22:33:53.000000000 +0200
-+++ httpd-2.4.25/modules/generators/mod_status.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/generators/mod_status.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/generators/mod_status.h	2020-04-03 13:38:05.545749508 +0200
 @@ -34,9 +34,9 @@
  #define AP_STATUS_EXTENDED (0x4)  /* detailed report */
  
@@ -128,10 +128,10 @@ Index: httpd-2.4.25/modules/generators/mod_status.h
  #elif defined(STATUS_DECLARE_STATIC)
  #define STATUS_DECLARE(type)            type __stdcall
  #define STATUS_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/dav/main/mod_dav.h
+Index: httpd-2.4.43/modules/dav/main/mod_dav.h
 ===================================================================
---- httpd-2.4.25.orig/modules/dav/main/mod_dav.h	2016-10-26 15:44:36.000000000 +0200
-+++ httpd-2.4.25/modules/dav/main/mod_dav.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/dav/main/mod_dav.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/dav/main/mod_dav.h	2020-04-03 13:38:05.549749528 +0200
 @@ -82,9 +82,9 @@ extern "C" {
   * DAV_DECLARE_DATA with appropriate export and import tags for the platform
   */
@@ -145,10 +145,10 @@ Index: httpd-2.4.25/modules/dav/main/mod_dav.h
  #elif defined(DAV_DECLARE_STATIC)
  #define DAV_DECLARE(type)            type __stdcall
  #define DAV_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/session/mod_session.h
+Index: httpd-2.4.43/modules/session/mod_session.h
 ===================================================================
---- httpd-2.4.25.orig/modules/session/mod_session.h	2011-12-02 18:51:27.000000000 +0100
-+++ httpd-2.4.25/modules/session/mod_session.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/session/mod_session.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/session/mod_session.h	2020-04-03 13:38:05.549749528 +0200
 @@ -21,9 +21,9 @@
   * SESSION_DECLARE_DATA with appropriate export and import tags for the platform
   */
@@ -162,10 +162,10 @@ Index: httpd-2.4.25/modules/session/mod_session.h
  #elif defined(SESSION_DECLARE_STATIC)
  #define SESSION_DECLARE(type)        type __stdcall
  #define SESSION_DECLARE_NONSTD(type) type
-Index: httpd-2.4.25/modules/database/mod_dbd.h
+Index: httpd-2.4.43/modules/database/mod_dbd.h
 ===================================================================
---- httpd-2.4.25.orig/modules/database/mod_dbd.h	2011-09-23 15:38:09.000000000 +0200
-+++ httpd-2.4.25/modules/database/mod_dbd.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/database/mod_dbd.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/database/mod_dbd.h	2020-04-03 13:38:05.549749528 +0200
 @@ -35,9 +35,9 @@
   * DBD_DECLARE_DATA with appropriate export and import tags for the platform
   */
@@ -179,10 +179,10 @@ Index: httpd-2.4.25/modules/database/mod_dbd.h
  #elif defined(DBD_DECLARE_STATIC)
  #define DBD_DECLARE(type)            type __stdcall
  #define DBD_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/filters/mod_xml2enc.h
+Index: httpd-2.4.43/modules/filters/mod_xml2enc.h
 ===================================================================
---- httpd-2.4.25.orig/modules/filters/mod_xml2enc.h	2012-04-04 22:11:57.000000000 +0200
-+++ httpd-2.4.25/modules/filters/mod_xml2enc.h	2017-01-02 10:33:40.411244315 +0100
+--- httpd-2.4.43.orig/modules/filters/mod_xml2enc.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/filters/mod_xml2enc.h	2020-04-03 13:38:05.549749528 +0200
 @@ -25,9 +25,9 @@
  
  /* declarations to deal with WIN32 compile-flag-in-source-code crap */
@@ -196,10 +196,10 @@ Index: httpd-2.4.25/modules/filters/mod_xml2enc.h
  #elif defined(XML2ENC_DECLARE_STATIC)
  #define XML2ENC_DECLARE(type)            type __stdcall
  #define XML2ENC_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/filters/mod_ratelimit.h
+Index: httpd-2.4.43/modules/filters/mod_ratelimit.h
 ===================================================================
---- httpd-2.4.25.orig/modules/filters/mod_ratelimit.h	2012-04-04 22:11:57.000000000 +0200
-+++ httpd-2.4.25/modules/filters/mod_ratelimit.h	2017-01-02 10:33:40.415244421 +0100
+--- httpd-2.4.43.orig/modules/filters/mod_ratelimit.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/filters/mod_ratelimit.h	2020-04-03 13:38:05.549749528 +0200
 @@ -21,9 +21,9 @@
   * AP_RL_DECLARE_DATA with appropriate export and import tags for the platform
   */
@@ -213,10 +213,10 @@ Index: httpd-2.4.25/modules/filters/mod_ratelimit.h
  #elif defined(AP_RL_DECLARE_STATIC)
  #define AP_RL_DECLARE(type)            type __stdcall
  #define AP_RL_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/modules/aaa/mod_authz_dbd.h
+Index: httpd-2.4.43/modules/aaa/mod_authz_dbd.h
 ===================================================================
---- httpd-2.4.25.orig/modules/aaa/mod_authz_dbd.h	2011-09-23 15:38:09.000000000 +0200
-+++ httpd-2.4.25/modules/aaa/mod_authz_dbd.h	2017-01-02 10:33:40.415244421 +0100
+--- httpd-2.4.43.orig/modules/aaa/mod_authz_dbd.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/modules/aaa/mod_authz_dbd.h	2020-04-03 13:38:05.549749528 +0200
 @@ -22,9 +22,9 @@
   * AUTHZ_DBD_DECLARE_DATA with appropriate export and import tags
   */
@@ -230,10 +230,10 @@ Index: httpd-2.4.25/modules/aaa/mod_authz_dbd.h
  #elif defined(AUTHZ_DBD_DECLARE_STATIC)
  #define AUTHZ_DBD_DECLARE(type)            type __stdcall
  #define AUTHZ_DBD_DECLARE_NONSTD(type)     type
-Index: httpd-2.4.25/include/httpd.h
+Index: httpd-2.4.43/include/httpd.h
 ===================================================================
---- httpd-2.4.25.orig/include/httpd.h	2016-12-05 15:34:29.000000000 +0100
-+++ httpd-2.4.25/include/httpd.h	2017-01-02 10:33:40.415244421 +0100
+--- httpd-2.4.43.orig/include/httpd.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/include/httpd.h	2020-04-03 13:38:05.549749528 +0200
 @@ -345,7 +345,7 @@ extern "C" {
   * by modules. Its purpose is to allow us to add attributes that
   * particular platforms or compilers require to every exported function.
@@ -269,10 +269,10 @@ Index: httpd-2.4.25/include/httpd.h
  #endif
  
  /**
-Index: httpd-2.4.25/include/util_ldap.h
+Index: httpd-2.4.43/include/util_ldap.h
 ===================================================================
---- httpd-2.4.25.orig/include/util_ldap.h	2016-08-25 14:48:18.000000000 +0200
-+++ httpd-2.4.25/include/util_ldap.h	2017-01-02 10:33:40.415244421 +0100
+--- httpd-2.4.43.orig/include/util_ldap.h	2020-04-03 13:38:03.445739206 +0200
++++ httpd-2.4.43/include/util_ldap.h	2020-04-03 13:38:05.549749528 +0200
 @@ -66,9 +66,9 @@
   * and import tags for the platform
   */
@@ -286,3 +286,16 @@ Index: httpd-2.4.25/include/util_ldap.h
  #elif defined(LDAP_DECLARE_STATIC)
  #define LDAP_DECLARE(type)            type __stdcall
  #define LDAP_DECLARE_NONSTD(type)     type
+Index: httpd-2.4.43/include/mpm_common.h
+===================================================================
+--- httpd-2.4.43.orig/include/mpm_common.h	2018-08-14 22:56:54.000000000 +0200
++++ httpd-2.4.43/include/mpm_common.h	2020-04-03 13:40:10.698363488 +0200
+@@ -195,7 +195,7 @@ AP_DECLARE(void) ap_wait_or_timeout(apr_
+  * Nagle's algorithm that have severe performance penalties.
+  * @param s The socket to disable nagle for.
+  */
+-void ap_sock_disable_nagle(apr_socket_t *s);
++AP_DECLARE(void) ap_sock_disable_nagle(apr_socket_t *s);
+ #else
+ #define ap_sock_disable_nagle(s)        /* NOOP */
+ #endif

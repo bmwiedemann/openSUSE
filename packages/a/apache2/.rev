@@ -1668,4 +1668,41 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
 - fix build for older distributions</comment>
     <requestid>779357</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>b327509ddafddd9c834896d77f52450b</srcmd5>
+    <version>2.4.43</version>
+    <time>1586247921</time>
+    <user>dimstar_suse</user>
+    <comment>- declare ap_sock_disable_nagle to fix loading mod_proxy_http2
+  (thanks to mliska@suse.com)
+- modified patches
+  % httpd-visibility.patch (refreshed)
+
+- version update to 2.4.43
+  *) mod_ssl: Fix memory leak of OCSP stapling response. [Yann Ylavic]
+  *) mod_proxy_http: Fix the forwarding of requests with content body when a
+     balancer member is unavailable; the retry on the next member was issued
+     with an empty body (regression introduced in 2.4.41). PR63891.
+     [Yann Ylavic]
+  *) mod_http2: Fixes issue where mod_unique_id would generate non-unique request
+     identifier under load, see &lt;https://github.com/icing/mod_h2/issues/195&gt;.
+     [Michael Kaufmann, Stefan Eissing]
+  *) mod_proxy_hcheck: Allow healthcheck expressions to use %{Content-Type}.
+     PR64140. [Renier Velazco &lt;renier.velazco upr.edu&gt;]
+  *) mod_authz_groupfile: Drop AH01666 from loglevel &quot;error&quot; to &quot;info&quot;.
+     PR64172.
+  *) mod_usertrack: Add CookieSameSite, CookieHTTPOnly, and CookieSecure
+     to allow customization of the usertrack cookie. PR64077.
+     [Prashant Keshvani &lt;prashant2400 gmail.com&gt;, Eric Covener]
+  *) mod_proxy_ajp: Add &quot;secret&quot; parameter to proxy workers to implement legacy
+     AJP13 authentication.  PR 53098. [Dmitry A. Bakshaev &lt;dab1818 gmail com&gt;]
+  *) mpm_event: avoid possible KeepAliveTimeout off by -100 ms.
+     [Eric Covener, Yann Ylavic]
+  *) Add a config layout for OpenWRT. [Graham Leggett]
+  *) Add support for cross compiling to apxs. If apxs is being executed from
+     somewhere other than its target location, add that prefix to includes and
+     library directories. Without this, apxs would fail to find config_vars.mk
+     and exit. [Graham Leggett]</comment>
+    <requestid>791205</requestid>
+  </revision>
 </revisionlist>
