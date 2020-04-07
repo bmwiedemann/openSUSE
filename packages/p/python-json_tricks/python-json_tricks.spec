@@ -1,7 +1,7 @@
 #
 # spec file for package python-json_tricks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json_tricks
-Version:        3.13.2
+Version:        3.15.0
 Release:        0
 Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
@@ -61,6 +61,8 @@ As well as compression and disallowing duplicate keys.
 
 %prep
 %setup -q -n pyjson_tricks-%{version}
+# py3 only syntax in this file
+rm tests/test_utils.py
 
 %build
 %python_build
