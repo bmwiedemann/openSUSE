@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,31 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Test files not included
-%bcond_without  test
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
+Patch0:         use-python-exec.patch
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module bson}
 BuildRequires:  %{python_module cffi >= 0.6}
+BuildRequires:  %{python_module lz4 >= 0.19.1 }
 BuildRequires:  %{python_module numba >= 0.28}
 BuildRequires:  %{python_module numpy-devel >= 1.11}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-lzo}
+BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module thrift >= 0.11.0}
+BuildRequires:  %{python_module zstandard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.28
@@ -50,17 +55,6 @@ Recommends:     python-lz4 >= 0.19.1
 Recommends:     python-python-lzo
 Recommends:     python-python-snappy
 Recommends:     python-zstandard
-%if %{with test}
-BuildRequires:  %{python_module Brotli}
-BuildRequires:  %{python_module bson}
-BuildRequires:  %{python_module lz4 >= 0.19.1 }
-BuildRequires:  %{python_module python-lzo}
-BuildRequires:  %{python_module python-snappy}
-BuildRequires:  %{python_module thrift >= 0.11.0}
-BuildRequires:  %{python_module zstandard}
-BuildRequires:  python-funcsigs
-BuildRequires:  python-singledispatch
-%endif
 %python_subpackages
 
 %description
@@ -69,6 +63,7 @@ for integrating it into python-based Big Data workflows.
 
 %prep
 %setup -q -n fastparquet-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -79,7 +74,6 @@ export CFLAGS="%{optflags}"
 %python_expand rm -v %{buildroot}%{$python_sitearch}/fastparquet/speedups.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
 cp -r fastparquet/test .
 mv fastparquet temp
@@ -89,11 +83,11 @@ export PYTHONDONTWRITEBYTECODE=1
 rm -rf build _build*
 # Test test_time_millis fails in i586
 # test_datetime_roundtrip fails due to a warning being accidentally caught by the test
-pytest-%{$python_bin_suffix} test -k 'not test_time_millis and not test_datetime_roundtrip and not test_errors'
+# test_import_without_warning fails due to being already imported
+pytest-%{$python_bin_suffix} -v test -k 'not test_time_millis and not test_datetime_roundtrip and not test_errors and not test_import_without_warning'
 }
 mv temp fastparquet
 rm -rf test
-%endif
 
 %files %{python_files}
 %doc README.rst
