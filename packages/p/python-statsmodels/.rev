@@ -48,4 +48,17 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>750719</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>124743ba297e52f8f2785f29fa7b2f88</srcmd5>
+    <version>0.11.1</version>
+    <time>1586248252</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to not take ages on running tests and
+  blocking all depending packages
+
+- Update to 0.11.1:
+  * Bugfixes all around
+  * upstream declare dropped support for python2</comment>
+    <requestid>791743</requestid>
+  </revision>
 </revisionlist>

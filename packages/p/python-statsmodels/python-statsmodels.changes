@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:30:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to not take ages on running tests and
+  blocking all depending packages
+
+-------------------------------------------------------------------
+Mon Apr  6 07:14:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11.1:
+  * Bugfixes all around
+  * upstream declare dropped support for python2
+
+-------------------------------------------------------------------
 Sun Nov 24 17:37:28 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.10.2:
