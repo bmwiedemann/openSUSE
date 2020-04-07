@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr  6 13:49:46 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.2.0
+  * Simple weather that varies the clouds (paramat)
+  * More realistic boat physics (gang65)
+  * Creative Inventory search:
+    Item with exact match appears in first spot (sfan5)
+  * Creative Inventory: More visual tweaks (Andrey2470T)
+  * Improve player model animation (An0n3m0us)
+  * Increase water opacity (lhofhansl)
+  * Reset spawn position when bed is destroyed (Desour)
+  * Papyrus now appears in rainforest swamps as well (paramat)
+  * New/updated translations:
+    + French (DrHackberrry)
+    + Spanish (runsy)
+    + Italian (h4ml3t)
+    + Russian (Andrey2470T)
+    + Swedish (Aresiel)
+    + Malay (MuhdNurHidayat)
+    + Chinese (zaoqi, IFRFSX) 
+  * Bugfix: TNT mod crashed when entities disappeared
+    during explosion (sfan5)
+  * Bugfix: Papyrus in savanna did not appear in 5.1.0,
+    it has been added back (paramat)
+  * Bugfix: Screwdriver was able to rotate torches
+    into weird positions (An0n3m0us)
+  * Bugfix: Players could be knocked back when attached (sfan5) 
+
+-------------------------------------------------------------------
 Sat Jan 18 10:33:30 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to version 5.1.1
