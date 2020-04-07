@@ -17,7 +17,7 @@
 
 
 Name:           gjs
-Version:        1.58.5
+Version:        1.58.6
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
