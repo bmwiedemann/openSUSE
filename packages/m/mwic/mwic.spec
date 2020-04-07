@@ -1,7 +1,7 @@
 #
 # spec file for package mwic
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{!?license: %global license %doc}
 Name:           mwic
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        A spellchecker with grouping support
 License:        MIT
 Group:          Productivity/Office/Other
-Url:            http://jwilk.net/software/mwic
+URL:            http://jwilk.net/software/mwic
 Source:         https://github.com/jwilk/mwic/releases/download/%{version}/mwic-%{version}.tar.gz
 Source1:        https://github.com/jwilk/mwic/releases/download/%{version}/mwic-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
