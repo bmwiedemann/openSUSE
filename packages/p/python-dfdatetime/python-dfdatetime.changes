@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 20:27:31 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200121
+	* mandatory for python-dfVFS v0~20200211 support
+	* the changelog does not show what change makes this mandatory
+
+-------------------------------------------------------------------
 Fri Jan 17 10:12:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Convert to python3 only
