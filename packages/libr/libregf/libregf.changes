@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  6 02:03:27 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20191221
+        * Worked on REG_MULTI_SZ support
+        * Added key path to regfexport output
+        * Added key path option to export tool
+        * Worked on thread lock support and tests
+        * Changes for local usage of libregf
+- add python3 subpackage
+
+-------------------------------------------------------------------
 Wed Apr 17 22:32:20 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20190303

@@ -1,7 +1,7 @@
 #
 # spec file for package libregf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libregf
 %define lname	libregf1
-%define timestamp	20190303
+%define timestamp	20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libregf/wiki
+URL:            https://github.com/libyal/libregf/wiki
 Source:         https://github.com/libyal/libregf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_NT_Registry_File_REGF_format.pdf
 BuildRequires:  pkg-config
@@ -87,26 +87,41 @@ type (a non-text representation).
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python-%{name}
-Summary:        Python bindings for libregf, a library to access Windows REGF Registry files
+%package -n python2-%{name}
+Summary:        Python2 bindings for libregf, a library to access Windows REGF Registry files
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 Requires:       %lname = %version
-Requires:       python
-Provides:       pyregf = %version
+Requires:       python2
+Obsoletes:      python-%{name} <= 20190303
+BuildRequires:  pkgconfig(python2)
 
-%description -n python-%{name}
+%description -n python2-%{name}
 libregf is a library to access Windows Registry files of the REGF
 type (a non-text representation).
 
-This subpackage contains the Python bindings for libregf.
+This subpackage contains the Python2 bindings for libregf.
+
+%package -n python3-%{name}
+Summary:        Python3 bindings for libregf, a library to access Windows REGF Registry files
+License:        LGPL-3.0-or-later
+Group:          Development/Languages/Python
+Requires:       %lname = %version
+Requires:       python3
+BuildRequires:  pkgconfig(python3)
+
+%description -n python3-%{name}
+libregf is a library to access Windows Registry files of the REGF
+type (a non-text representation).
+
+This subpackage contains the Python3 bindings for libregf.
 
 %prep
 %setup -qn libregf-%timestamp
 cp "%{SOURCE2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -136,10 +151,16 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/pkgconfig/libregf.pc
 %{_mandir}/man3/libregf.3*
 
-%files -n python-%{name}
+%files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING
-%python_sitearch/pyregf.so
+%{python2_sitearch}/pyregf.so
+
+%files -n python3-%{name}
+%defattr(-,root,root)
+%doc AUTHORS README
+%license COPYING
+%{python3_sitearch}/pyregf.so
 
 %changelog
