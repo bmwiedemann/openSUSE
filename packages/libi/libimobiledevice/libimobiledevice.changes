@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr  5 07:32:28 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.0+git.20200330:
+  * Add idevicesetlocation tool
+  * debugserver: Fix argv encoding
+  * Update debug.c to consistently output to stderr
+  * idevicedebug: Rename name-colliding debug_info() to log_debug()
+  * debugserver: Fix whitespace error
+  * debugserver: Proxy SERVICE_E_TIMEOUT into DEBUGSERVER_E_TIMEOUT
+  * introduces optional `idevice_connection_disable_ssl` with ability not to send  SSL shutdown message. As in debugserver this message will be considered as GDB server communication and break things
+  * Increase timeout for service receive methods
+  * idevicesyslog: Make sure CTRL+C works when waiting for passcode entry
+  * configure.ac: Add checks to ensure libusbmuxd is up-to-date
+
+-------------------------------------------------------------------
 Sat Mar 14 07:08:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix not needed requires

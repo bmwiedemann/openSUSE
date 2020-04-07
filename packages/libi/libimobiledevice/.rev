@@ -346,4 +346,12 @@
   * support for py3</comment>
     <requestid>784788</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a991aff08af276cad77adf7354702465</srcmd5>
+    <version>1.2.0+git.20200330</version>
+    <time>1586247947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791497</requestid>
+  </revision>
 </revisionlist>
