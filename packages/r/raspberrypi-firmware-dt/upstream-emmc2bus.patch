@@ -1,4 +1,4 @@
-From ef4aaff92087fa708c47fa4df44caee77a7c3508 Mon Sep 17 00:00:00 2001
+From c5473f23939bd2aeafa3cee2f37eb28ee51bb068 Mon Sep 17 00:00:00 2001
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Date: Wed, 4 Mar 2020 18:47:55 +0100
 Subject: [PATCH] ARM: dts: bcm2711: Move emmc2 into its own bus
@@ -18,7 +18,7 @@ Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
  2 files changed, 21 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
-index e5978243aa9c..2814c0904e6b 100644
+index f399bc45038d..3649622a388b 100644
 --- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
 +++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
 @@ -19,6 +19,7 @@ memory@0 {
@@ -27,13 +27,13 @@ index e5978243aa9c..2814c0904e6b 100644
  	aliases {
 +		emmc2bus = &emmc2bus;
  		ethernet0 = &genet;
+ 		pcie0 = &pcie0;
  	};
- 
 diff --git a/arch/arm/boot/dts/bcm2711.dtsi b/arch/arm/boot/dts/bcm2711.dtsi
-index e2f6ffb00aa9..3dd55936819b 100644
+index d1e684d0acfd..086aa6d40341 100644
 --- a/arch/arm/boot/dts/bcm2711.dtsi
 +++ b/arch/arm/boot/dts/bcm2711.dtsi
-@@ -252,17 +252,32 @@ pwm1: pwm@7e20c800 {
+@@ -241,17 +241,32 @@ pwm1: pwm@7e20c800 {
  			status = "disabled";
  		};
  
@@ -72,5 +72,5 @@ index e2f6ffb00aa9..3dd55936819b 100644
  
  	arm-pmu {
 -- 
-2.25.1
+2.26.0
 

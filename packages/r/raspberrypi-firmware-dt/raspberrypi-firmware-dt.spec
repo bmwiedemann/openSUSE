@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2020.02.03
+Version:        2020.04.02
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -25,14 +25,9 @@ Group:          System/Boot
 URL:            https://github.com/raspberrypi/linux/
 Source:         raspberrypi-firmware-dt-%{version}.tar.xz
 Source1:        disable-vc4-overlay.dts
-Source2:        rpi4-thermal.dts
-Source3:        rpi4-gpio-names-overlay.dts
-Source4:        uboot-bcm2835-pl011-overlay.dts
-Source5:        rpi4-firmware-dma-ranges-overlay.dts
+Source2:        uboot-bcm2835-pl011-overlay.dts
 Source100:      get-from-git.sh
-Patch0:         upstream-pcie-dma-ranges.patch
-Patch1:         upstream-emmc2bus.patch
-Patch2:         upstream-cma.patch
+Patch0:         upstream-emmc2bus.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -47,8 +42,6 @@ for the Raspberry Pi boot process.
 %prep
 %setup
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 SRCDIR=`pwd`
@@ -63,7 +56,7 @@ for dts in arch/arm/boot/dts/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; d
 done
 
 export DTC_FLAGS="-R 0 -p 0 -@ -H epapr"
-for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5}; do
+for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2}; do
     target=$(basename ${dts%*.dts})
     target=${target%*-overlay}
     mkdir -p $PPDIR/overlays
