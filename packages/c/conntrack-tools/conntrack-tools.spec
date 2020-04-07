@@ -1,7 +1,7 @@
 #
 # spec file for package conntrack-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %endif
 
 Name:           conntrack-tools
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
-Url:            http://conntrack-tools.netfilter.org/
 Summary:        Userspace tools for interacting with the Connection Tracking System
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
+URL:            http://conntrack-tools.netfilter.org/
 
 #Git-Clone:	git://git.netfilter.org/conntrack-tools
 Source:         ftp://ftp.netfilter.org/pub/conntrack-tools/%name-%version.tar.bz2
@@ -39,12 +39,6 @@ Source7:        conntrackd.logrotate
 Source8:        conntrackd.sysconfig
 Source9:        conntrackd.conf
 
-Patch1:         conntrackd-use-strncpy-to-unix-path.patch
-Patch2:         conntrackd-Use-strdup-in-lexer.patch
-Patch3:         conntrackd-use-correct-max-unix-path-length.patch
-Patch4:         conntrackd-cthelper-Add-new-SLP-helper.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex >= 2.5.33
@@ -53,7 +47,7 @@ BuildRequires:  pkg-config >= 0.21
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.7
+BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.8
 BuildRequires:  pkgconfig(libnetfilter_cthelper) >= 1.0.0
 BuildRequires:  pkgconfig(libnetfilter_cttimeout) >= 1.0.0
 BuildRequires:  pkgconfig(libnetfilter_queue) >= 1.0.2
@@ -77,7 +71,6 @@ Provides:       conntrack-tools:/usr/sbin/conntrackd
 Requires:       conntrack-tools = %version-%release
 Requires(post): fillup
 Recommends:     logrotate
-%{?systemd_requires}
 
 %description -n conntrackd
 conntrackd is the user-space daemon for the Netfilter connection tracking
@@ -86,10 +79,6 @@ replica firewalls.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 find doc -type f -name "*.orig" -delete
 find doc -type f -exec chmod -x "{}" "+"
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:55:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.6
+  * conntrackd: fix UDP IPv6 destination address not being usable
+  * conntrack: Allow protocol number zero
+  * conntrackd: cthelper: Add new SLP helper
+- Drop conntrackd-Use-strdup-in-lexer.patch,
+  conntrackd-use-strncpy-to-unix-path.patch,
+  conntrackd-cthelper-Add-new-SLP-helper.patch,
+  conntrackd-use-correct-max-unix-path-length.patch (merged)
+- Drop require on systemd, since it can run in a namespace without.
+
+-------------------------------------------------------------------
 Tue Jul 23 06:43:55 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
 
 - conntrackd-cthelper-Add-new-SLP-helper.patch:
