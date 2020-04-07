@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-i3ipc
 # Before upgrading, verify compatibility with bumblebee-status module title
-Version:        1.7.1
+Version:        2.2.1
 Release:        0
 Summary:        Python library for i3 WM extensions
 License:        BSD-3-Clause
@@ -55,7 +55,7 @@ sed -i "s/'enum-compat'//" setup.py
 
 # Remove shebang which is not needed (that script cannot be executed
 # standalone).
-sed -i '/^#!\/usr\/bin\/env.*/d' i3ipc/i3ipc.py examples/*.py
+sed -i '/^#!\/usr\/bin\/env.*/d' examples/*.py examples/i3-focus/*.py
 
 %build
 %python_build
