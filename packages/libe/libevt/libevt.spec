@@ -1,7 +1,7 @@
 #
 # spec file for package libevt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libevt
 %define lname	libevt1
-%define timestamp	20181227
+%define timestamp	20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the Windows Event Log (EVT) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libevt/wiki
+URL:            https://github.com/libyal/libevt/wiki
 Source:         https://github.com/libyal/libevt/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_Event_Log_EVT.pdf
 BuildRequires:  pkg-config
@@ -96,15 +96,25 @@ libevt is a library to access the Windows Event Log (EVT) format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python-%name
+%package -n python2-%name
 Summary:        Python bindings for libevt, a Windows event file parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
+BuildRequires:  pkgconfig(python2)
 Requires:       %lname = %version
-Requires:       python
-Provides:       pyevt = %version
+Obsoletes:      python-%name < 20191221
 
-%description -n python-%name
+%description -n python2-%name
+Python bindings for libevt, which can read Windows event files.
+
+%package -n python3-%name
+Summary:        Python bindings for libevt, a Windows event file parser
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+BuildRequires:  pkgconfig(python3)
+Requires:       %lname = %version
+
+%description -n python3-%name
 Python bindings for libevt, which can read Windows event files.
 
 %prep
@@ -112,7 +122,7 @@ Python bindings for libevt, which can read Windows event files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -143,10 +153,16 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libevt.pc
 %_mandir/man3/libevt.3*
 
-%files -n python-%name
+%files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %license COPYING 
-%python_sitearch/pyevt.so
+%python2_sitearch/pyevt.so
+
+%files -n python3-%name
+%defattr(-,root,root)
+%doc AUTHORS ChangeLog README
+%license COPYING 
+%python3_sitearch/pyevt.so
 
 %changelog
