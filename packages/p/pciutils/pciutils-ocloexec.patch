@@ -1,7 +1,7 @@
-Index: pciutils-3.4.0/lib/dump.c
+Index: pciutils-3.6.4/lib/dump.c
 ===================================================================
---- pciutils-3.4.0.orig/lib/dump.c
-+++ pciutils-3.4.0/lib/dump.c
+--- pciutils-3.6.4.orig/lib/dump.c
++++ pciutils-3.6.4/lib/dump.c
 @@ -64,7 +64,7 @@ dump_init(struct pci_access *a)
  
    if (!name)
@@ -11,10 +11,10 @@ Index: pciutils-3.4.0/lib/dump.c
      a->error("dump: Cannot open %s: %s", name, strerror(errno));
    while (fgets(buf, sizeof(buf)-1, f))
      {
-Index: pciutils-3.4.0/lib/names-cache.c
+Index: pciutils-3.6.4/lib/names-cache.c
 ===================================================================
---- pciutils-3.4.0.orig/lib/names-cache.c
-+++ pciutils-3.4.0/lib/names-cache.c
+--- pciutils-3.6.4.orig/lib/names-cache.c
++++ pciutils-3.6.4/lib/names-cache.c
 @@ -63,7 +63,7 @@ pci_id_cache_load(struct pci_access *a,
        return 0;
      }
@@ -33,10 +33,10 @@ Index: pciutils-3.4.0/lib/names-cache.c
    if (!f)
      {
        a->warning("Cannot write to %s: %s", name, strerror(errno));
-Index: pciutils-3.4.0/lib/names-parse.c
+Index: pciutils-3.6.4/lib/names-parse.c
 ===================================================================
---- pciutils-3.4.0.orig/lib/names-parse.c
-+++ pciutils-3.4.0/lib/names-parse.c
+--- pciutils-3.6.4.orig/lib/names-parse.c
++++ pciutils-3.6.4/lib/names-parse.c
 @@ -52,7 +52,7 @@ static pci_file pci_open(struct pci_acce
  typedef FILE * pci_file;
  #define pci_gets(f, l, s)	fgets(l, s, f)
@@ -46,10 +46,10 @@ Index: pciutils-3.4.0/lib/names-parse.c
  #define pci_close(f)		fclose(f)
  #define PCI_ERROR(f, err)	if (!err && ferror(f))	err = "I/O error";
  #endif
-Index: pciutils-3.4.0/lib/proc.c
+Index: pciutils-3.6.4/lib/proc.c
 ===================================================================
---- pciutils-3.4.0.orig/lib/proc.c
-+++ pciutils-3.4.0/lib/proc.c
+--- pciutils-3.6.4.orig/lib/proc.c
++++ pciutils-3.6.4/lib/proc.c
 @@ -62,7 +62,7 @@ proc_scan(struct pci_access *a)
  
    if (snprintf(buf, sizeof(buf), "%s/devices", pci_get_param(a, "proc.path")) == sizeof(buf))
@@ -77,10 +77,10 @@ Index: pciutils-3.4.0/lib/proc.c
  	}
        if (a->fd < 0)
  	a->warning("Cannot open %s", buf);
-Index: pciutils-3.4.0/lib/sysfs.c
+Index: pciutils-3.6.4/lib/sysfs.c
 ===================================================================
---- pciutils-3.4.0.orig/lib/sysfs.c
-+++ pciutils-3.4.0/lib/sysfs.c
+--- pciutils-3.6.4.orig/lib/sysfs.c
++++ pciutils-3.6.4/lib/sysfs.c
 @@ -96,7 +96,7 @@ sysfs_get_string(struct pci_dev *d, char
    void (*warn)(char *msg, ...) = (mandatory ? a->error : a->warning);
  
@@ -90,7 +90,7 @@ Index: pciutils-3.4.0/lib/sysfs.c
    if (fd < 0)
      {
        if (mandatory || errno != ENOENT)
-@@ -139,7 +139,7 @@ sysfs_get_resources(struct pci_dev *d)
+@@ -157,7 +157,7 @@ sysfs_get_resources(struct pci_dev *d)
    int i;
  
    sysfs_obj_name(d, "resource", namebuf);
@@ -99,7 +99,7 @@ Index: pciutils-3.4.0/lib/sysfs.c
    if (!file)
      a->error("Cannot open %s: %s", namebuf, strerror(errno));
    for (i = 0; i < 7; i++)
-@@ -245,7 +245,7 @@ sysfs_fill_slots(struct pci_access *a)
+@@ -271,7 +271,7 @@ sysfs_fill_slots(struct pci_access *a)
        n = snprintf(namebuf, OBJNAMELEN, "%s/%s/%s", dirname, entry->d_name, "address");
        if (n < 0 || n >= OBJNAMELEN)
  	a->error("File name too long");
@@ -108,7 +108,7 @@ Index: pciutils-3.4.0/lib/sysfs.c
        /*
         * Old versions of Linux had a fakephp which didn't have an 'address'
         * file.  There's no useful information to be gleaned from these
-@@ -331,7 +331,7 @@ sysfs_setup(struct pci_dev *d, int inten
+@@ -367,7 +367,7 @@ sysfs_setup(struct pci_dev *d, int inten
        if (a->fd_vpd < 0)
  	{
  	  sysfs_obj_name(d, "vpd", namebuf);
@@ -117,7 +117,7 @@ Index: pciutils-3.4.0/lib/sysfs.c
  	  /* No warning on error; vpd may be absent or accessible only to root */
  	}
        return a->fd_vpd;
-@@ -341,7 +341,7 @@ sysfs_setup(struct pci_dev *d, int inten
+@@ -377,7 +377,7 @@ sysfs_setup(struct pci_dev *d, int inten
      {
        sysfs_obj_name(d, "config", namebuf);
        a->fd_rw = a->writeable || intent == SETUP_WRITE_CONFIG;

@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libpci3
 Name:           pciutils
-Version:        3.6.2
+Version:        3.6.4
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ URL:            https://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
 Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
 Source2:        baselibs.conf
-Patch0:         pciutils-3.2.0_update-dist.patch
 Patch1:         pciutils-3.1.9_pkgconfig.patch
 Patch2:         pciutils-ocloexec.patch
 Patch3:         pciutils-endianh.patch
@@ -64,14 +63,10 @@ This package contains the files that are necessary for software
 development using the PCI utilities.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=/%{_lib} SBINDIR=/sbin STRIP="" SHARED="yes"
+%make_build OPT="%{optflags}" PREFIX=%{_prefix} LIBDIR=/%{_lib} SBINDIR=/sbin STRIP="" SHARED="yes"
 
 %install
 make install PREFIX=%{buildroot}%{_prefix} SBINDIR=%{buildroot}/sbin \
@@ -91,11 +86,12 @@ ln -sf /%{_lib}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 %doc README
 /sbin/lspci
 /sbin/setpci
-/sbin/update-pciids
+%exclude /sbin/update-pciids
 %{_mandir}/man7/pcilib.7%{?ext_man}
 %{_mandir}/man8/lspci.8%{?ext_man}
 %{_mandir}/man8/setpci.8%{?ext_man}
-%{_mandir}/man8/update-pciids.8%{?ext_man}
+%exclude %{_mandir}/man8/update-pciids.8%{?ext_man}
+%{_mandir}/man5/pci.ids.5%{?ext_man}
 
 %files -n %{lname}
 /%{_lib}/libpci.so.*

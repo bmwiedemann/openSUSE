@@ -1,6 +1,8 @@
---- a/lib/sysdep.h	2014-11-18 14:27:01.054393822 +0100
-+++ b/lib/sysdep.h	2014-11-18 14:28:43.420561080 +0100
-@@ -18,93 +18,8 @@
+Index: pciutils-3.6.4/lib/sysdep.h
+===================================================================
+--- pciutils-3.6.4.orig/lib/sysdep.h
++++ pciutils-3.6.4/lib/sysdep.h
+@@ -20,93 +20,8 @@
  typedef u8 byte;
  typedef u16 word;
  
@@ -94,7 +96,7 @@
 -#endif
 -
 -#endif
-+#define cpu_to_le16 htole16                                                   
-+#define cpu_to_le32 htole32                                                   
-+#define le16_to_cpu le16toh                                                   
++#define cpu_to_le16 htole16
++#define cpu_to_le32 htole32
++#define le16_to_cpu le16toh
 +#define le32_to_cpu le32toh

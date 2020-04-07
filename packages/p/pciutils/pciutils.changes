@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr  2 07:38:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.6.4:
+  * A new back-end for the GNU Hurd was contributed by Joan Lledó.
+  * When printing VPD item identifiers, non-ASCII characters are escaped.
+- Changes for version 3.6.3
+  * `lspci -t' (tree mode) can be combined with `-s' to show a sub-tree.
+    We also fixed potential buffer overflows in the tree dumper.
+  * Cleaned messy code for dumping of I/O, memory, and ROM regions.
+    This helped fixing a bug, which caused some 64-bit regions to be
+    reported as virtual. All flags are now printed after the address
+    (previously, "[virtual]" and "[enhanced]" were before it for no good
+    reason).
+  * Added pci_find_cap_nr() to the library, which handles capabilities
+    which occur multiple times in a single device.
+  * Minor improvements in printing of PCIe capabilities.
+  * We now decode the Multicast and Secondary PCI Express extended
+    capabilities.
+  * The list of capability names available to setpci was updated.
+  * Minor bugs were fixed in FreeBSD and Solaris ports.
+  * We now prefer HTTPS URLs in all documentation
+  * The pci.ids file has a man page.
+  * As usually, updated pci.ids to the current snapshot of the database.
+- Drop no longer relevant pciutils-3.2.0_update-dist.patch
+- Do not ship update-pciids script - they are provided via hwdata
+  package and we dont want to override data by other packages
+
+-------------------------------------------------------------------
 Thu Feb 28 08:21:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Replace dependency on pciutil-ids with hwdata
