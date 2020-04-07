@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 Name:           python-txtorcon
-Version:        19.1.0
+Version:        20.0.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
@@ -66,7 +66,7 @@ sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 
 %check
 # looks more like integration tests
-%pytest -k 'not (test_real_addr or test_return_geoip_object)'
+%pytest -k 'not test_real_addr'
 
 %files %{python_files}
 %license LICENSE docs/*.rst
