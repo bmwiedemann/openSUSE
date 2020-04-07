@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 07 00:29:53 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1586201785.538ad8205:
+  * t: Provide info in 43-scheduling-and-worker-scalability.t also in non-verbose
+  * Fix regression in b72cccfca about undefined mod results
+  * t: Fix overly long runtime in api/02-iso.t
+  * Fix missing method import "find_bug_number"
+  * systemd: Fix path in openqa-enqueue-audit-event-cleanup.service after d509e69f4
+  * Dependency cron 200406
+  * Split off log functions into a new module
+  * Store the entire result provided by os-autoinst
+  * Improve Perl module search paths of some tests
+  * Increase timeout of jobs in scalability test for stable CI runs
+
+-------------------------------------------------------------------
 Sat Apr 04 16:29:35 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1585918802.94bcc1cc4:
