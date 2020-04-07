@@ -136,4 +136,17 @@
   * users: workaround bsc#1167909 for passwords</comment>
     <requestid>789060</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>37a6752a4db0f63d2cab0bdb102389f2</srcmd5>
+    <version>0.0.1+git.1585837779.87bbc9c</version>
+    <time>1586247835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1585837779.87bbc9c:
+  * salt-minion: transfer also the cached data
+
+- Update to version 0.0.1+git.1585760395.c0ab5b9:
+  * network: reformat file.append text
+  * network: add systemd link for the NIC (bsc#1168076)</comment>
+    <requestid>791002</requestid>
+  </revision>
 </revisionlist>

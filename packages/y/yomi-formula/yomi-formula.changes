@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 02 17:23:32 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1585837779.87bbc9c:
+  * salt-minion: transfer also the cached data
+
+-------------------------------------------------------------------
+Wed Apr 01 17:25:28 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1585760395.c0ab5b9:
+  * network: reformat file.append text
+  * network: add systemd link for the NIC (bsc#1168076)
+
+-------------------------------------------------------------------
 Fri Mar 27 14:32:24 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1585319502.392f59c:
