@@ -31,6 +31,8 @@ Patch0:         file-roller-3.4-change-archiver-priority.patch
 Patch1:         file-roller-pkg-match.patch
 # PATCH-FIX-OPENSUSE file-roller-ignore-unrar-if-wrapper.patch bsc#1072118 mgorse@suse.com -- if unrar is a wrapper script for unar, then ignore it, and use unar instead.
 Patch2:         file-roller-ignore-unrar-if-wrapper.patch
+# PATCH-FIX-UPSTREAM gcc-fno-common-fix.patch boo#1160390 -- Fix build with fno-common
+Patch3:         gcc-fno-common-fix.patch
 
 # Needed for directory ownership
 BuildRequires:  dbus-1
@@ -87,6 +89,7 @@ contained in the archive, and extract files from the archive.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 translation-update-upstream po %{name}
 
 %build

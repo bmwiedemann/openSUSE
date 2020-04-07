@@ -1092,4 +1092,12 @@
     <comment></comment>
     <requestid>775296</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>d114983b3ca34e011913bf0f945814b9</srcmd5>
+    <version>3.32.4</version>
+    <time>1586247932</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream patch</comment>
+    <requestid>791401</requestid>
+  </revision>
 </revisionlist>
