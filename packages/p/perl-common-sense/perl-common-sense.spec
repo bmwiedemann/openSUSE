@@ -1,7 +1,7 @@
 #
 # spec file for package perl-common-sense
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-common-sense
-Version:        3.74
+Version:        3.75
 Release:        0
-#Upstream: CHECK(GPL-1.0+ or Artistic-1.0)
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name common-sense
-Summary:        Save a Tree and a Kitten, Use Common::Sense!
-License:        GPL-1.0+ or Artistic-1.0
+Summary:        Save a tree AND a kitten, use common::sense!
+License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/common-sense/
-Source0:        http://www.cpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+Url:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL
 #BuildArch:     noarch
@@ -58,16 +58,16 @@ handling of uninitialised and malloc warnings:
 
 * _uninitialised_
 
-  'undef' is a well-defined feature of perl, and enabling warnings for
-  using it rarely catches any bugs, but considerably limits you in what you
-  can do, so uninitialised warnings are disabled.
+'undef' is a well-defined feature of perl, and enabling warnings for using
+it rarely catches any bugs, but considerably limits you in what you can do,
+so uninitialised warnings are disabled.
 
 * _malloc_
 
-  Freeing something twice on the C level is a serious bug, usually causing
-  memory corruption. It often leads to side effects much later in the
-  program and there are no advantages to not reporting this, so malloc
-  warnings are fatal by default.
+Freeing something twice on the C level is a serious bug, usually causing
+memory corruption. It often leads to side effects much later in the program
+and there are no advantages to not reporting this, so malloc warnings are
+fatal by default.
 
 Unfortunately, there is no fine-grained warning control in perl, so often
 whole groups of useful warnings had to be excluded because of a single
@@ -81,14 +81,14 @@ approach are.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -97,6 +97,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
