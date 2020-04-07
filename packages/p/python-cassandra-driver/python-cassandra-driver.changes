@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 07:10:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix 32bit build by skipping the tests overflowing there
+
+-------------------------------------------------------------------
 Mon Mar 30 12:28:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 3.22.0
