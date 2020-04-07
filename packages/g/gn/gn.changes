@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:11:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1726:
+  * no upstream changelog
+- Rebase patches:
+  * gn-always-python3.patch
+  * gn-flags.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 10:40:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1616:

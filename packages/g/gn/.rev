@@ -65,4 +65,16 @@
   * gn-always-python3.patch</comment>
     <requestid>742110</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>505eaef531703a11dd4fc98137f09244</srcmd5>
+    <version>0.1726</version>
+    <time>1586247825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1726:
+  * no upstream changelog
+- Rebase patches:
+  * gn-always-python3.patch
+  * gn-flags.patch</comment>
+    <requestid>790859</requestid>
+  </revision>
 </revisionlist>

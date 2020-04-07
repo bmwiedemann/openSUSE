@@ -1,7 +1,7 @@
 #
 # spec file for package gn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gn
-Version:        0.1616
+Version:        0.1726
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/
-Source:         https://dev.gentoo.org/~floppym/dist/%{name}-%{version}.tar.gz
+Source:         https://dev.gentoo.org/~floppym/dist/%{name}-%{version}.tar.xz
 Patch0:         gn-flags.patch
 Patch1:         gn-always-python3.patch
 BuildRequires:  gcc-c++
@@ -50,10 +50,15 @@ export CXX=g++-7
 %endif
 export CXXFLAGS="%{optflags}"
 # bootstrap
-python3 build/gen.py --no-last-commit-position
+python3 build/gen.py \
+  --no-strip \
+  --no-last-commit-position \
+  --no-static-libstdc++
+PV=%{version}
 cat >out/last_commit_position.h <<-EOF
 	#ifndef OUT_LAST_COMMIT_POSITION_H_
 	#define OUT_LAST_COMMIT_POSITION_H_
+	#define LAST_COMMIT_POSITION_NUM ${PV##0.}
 	#define LAST_COMMIT_POSITION "${PV}"
 	#endif  // OUT_LAST_COMMIT_POSITION_H_
 EOF
