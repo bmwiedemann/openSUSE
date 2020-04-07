@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 26 20:58:25 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.8.5
+  * Fix tic80 cheats documentation
+  * Renmae BIOS.dat to System.dat
+  * Add Nintendo Famicon cheats
+  * Add TurboGrax16 new Cheats
+  * Move summonthethunder's cheats to NES
+  * Create Nintendo - Nintendo Entertainment System.dat
+  * Add Nintendo Famicon
+  * Add N64 cheats
+  * Add Nintendo Game Boy cheats
+  * Add TurboGrafx-16 CD cheats
+  * Add SNES cheats
+  * Update MAME 0.218
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.4...v1.8.5
+
+-------------------------------------------------------------------
 Fri Jan 17 21:14:25 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.8.4

@@ -17,7 +17,7 @@
 
 
 Name:           libretro-database
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        RetroArch Database
 License:        MIT
@@ -33,7 +33,9 @@ BuildArch:      noarch
 Requires:       retroarch
 
 %description
-RetroArch incoporates a ROM scanning system to automatically produce playlists. Each ROM that is scanned by the playlist generator is checked against a database of ROMs that are known to be good copies.
+RetroArch incoporates a ROM scanning system to automatically produce playlists.
+Each ROM that is scanned by the playlist generator is checked against a database
+of ROMs that are known to be good copies.
 
 This package provides data to allow RetroArch identify ROMs and generate playlists.
 
