@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 30 18:13:06 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+hollywood (1.21) released; urgency=medium
+  * === added directory snap.hollywood/local, snap.hollywood/local/0001-
+    apg.patch, snap.hollywood/local/0002-byobu-shm.patch,
+    snap.hollywood/local/0003-hexdump.patch, snap.hollywood/local/0004-
+    man.patch, snap.hollywood/local/setup,
+    snap.hollywood/snapcraft.yaml:
+    - Use base: core18
+    - Move to strict confinement
+    - Patch apg to be snap-aware
+    - Patch 3 hollywood files to be snap-aware:
+    - /dev/shm path
+    - man related path
+    - paths for hexdump
+    - Add command-chain for minor workarounds:
+    - BYOBU_PREFIX uses realpath in .byoburc
+    - Link czze plugins to the confined home
+  * snap.hollywood/snapcraft.yaml:
+    - adjusted to build
+- update to version 1.20:
+  * lib/hollywood/mplayer, share/hollywood/soundwave.mp4:
+    - added sound wave video (no sound)
+    - start at a random point, between 0 and 99 seconds into the video
+    - speed it up 100x
+  * debian/control:
+    - depends, rather than recommends
+  * debian/changelog:
+    - fix email
+- update to version 1.19:
+  * bin/hollywood, debian/control, debian/copyright, lib/hollywood/apg,
+    share/hollywood/mi.mp4, share/man/man1/hollywood.1, TODO:
+    - Bug deb#944275: remove last remnants of old sound/video plugin
+
+-------------------------------------------------------------------
 Thu Oct 24 20:29:10 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove tmux-version-comp.patch not needed anymore
@@ -9,7 +44,7 @@ Thu Oct 24 20:29:10 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     share/wallstreet/newsboat.config, share/wallstreet/newsbeuter.urls
     => share/wallstreet/newsboat.urls:
     - Get wallstreet working again
-    - move from newsbeuter to newsboat, Closes: #914627
+    - move from newsbeuter to newsboat, Closes: deb#914627
     - move from google to yahoo
     - replace rsstail panel
   * bin/wallstreet, share/wallstreet/newsboat.config:

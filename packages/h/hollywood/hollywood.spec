@@ -1,7 +1,7 @@
 #
 # spec file for package hollywood
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 #
 
 Name:           hollywood
-Version:        1.18
+Version:        1.21
 Release:        0
 Summary:        Program to fill the console with Hollywood melodrama technobabble
 License:        Apache-2.0 AND CC0-1.0
 Group:          Amusements/Toys/Other
-Url:            https://launchpad.net/hollywood
+URL:            https://launchpad.net/hollywood
 Source:         https://launchpad.net/hollywood/trunk/%{version}/+download/hollywood_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
 Recommends:     byobu
 Recommends:     apg
