@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:44:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.7.4
+  * Fixed Python 2.7 tests
+  * Extended Norwegian support
+  * Implement a PARSERS setting 
+  * Add support for `PREFER_DATES_FROM` in relative/freshness parser 
+  * Add support for `PREFER_DAY_OF_MONTH` in base-formats parser 
+  * Added UTC -00:00 as a valid offset 
+  * Fix support for “one” 
+  * Fix tokenizer for non recognized characters 
+  * Prevent installing regex 2019.02.19 
+  * Added Hungarian language.
+  * Added setting, `STRICT_PARSING` to ignore incomplete dates.
+  * More simplifications for Russian and Ukrainian languages.
+
+-------------------------------------------------------------------
 Sat Sep 21 19:14:39 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
