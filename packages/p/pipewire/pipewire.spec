@@ -18,13 +18,13 @@
 
 
 %define libpipewire libpipewire-0_3-0
-%define sover 0_3_1
+%define sover 0_3_2
 %define apiver 0.3
 %define spa_ver 0.2
 %define spa_ver_str 0_2
 
 Name:           pipewire
-Version:        0.3.1+48
+Version:        0.3.2
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -35,6 +35,9 @@ Patch0:         fix-memfd_create-call.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9
+%endif
 BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -85,6 +88,7 @@ Some of its features include:
 
 %package -n %{libpipewire}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
+License:        MIT
 Group:          System/Libraries
 
 %description -n %{libpipewire}
@@ -102,6 +106,7 @@ This package provides the PipeWire shared library.
 
 %package -n libjack-pw%{sover}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
+License:        MIT
 Group:          Development/Libraries/C and C++
 
 %description -n libjack-pw%{sover}
@@ -120,6 +125,7 @@ This package provides the PipeWire shared library.
 
 %package -n libpulse-mainloop-glib-pw%{sover}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 
 %description -n libpulse-mainloop-glib-pw%{sover}
@@ -137,6 +143,7 @@ This package provides the PipeWire shared library.
 
 %package   -n libpulse-pw%{sover}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 
 %description -n libpulse-pw%{sover}
@@ -154,6 +161,7 @@ This package provides the PipeWire shared library.
 
 %package -n libpulse-simple-pw%{sover}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 
 %description -n libpulse-simple-pw%{sover}
@@ -171,6 +179,7 @@ This package provides the PipeWire shared library.
 
 %package -n gstreamer-plugin-pipewire
 Summary:        Gstreamer Plugin for PipeWire
+License:        MIT
 Group:          System/Libraries
 
 %description -n gstreamer-plugin-pipewire
@@ -180,6 +189,7 @@ This package provides the gstreamer plugin.
 
 %package tools
 Summary:        The PipeWire Tools
+License:        MIT
 Group:          Productivity/Multimedia/Other
 
 %description tools
@@ -189,6 +199,7 @@ This package provides pipewire-cli and pipewire-monitor tools.
 
 %package spa-tools
 Summary:        The PipeWire SPA Tools
+License:        MIT
 Group:          Productivity/Multimedia/Other
 
 %description spa-tools
@@ -198,6 +209,7 @@ This package provides spa-inspect and spa-monitor tools.
 
 %package modules
 Summary:        Modules For PipeWire, A Multimedia Framework
+License:        MIT
 Group:          Productivity/Multimedia/Other
 Requires:       pipewire
 
@@ -214,6 +226,7 @@ The framework is used to build a modular daemon that can be configured to:
 
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
+License:        MIT
 Group:          Productivity/Multimedia/Other
 Requires:       pipewire
 
@@ -238,6 +251,7 @@ This package provides plugins for extending PipeWire SPA's functionality.
 
 %package devel
 Summary:        Development Files For PipeWire, A Multimedia Framework
+License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}
 
@@ -248,6 +262,7 @@ This package provides all the necessary files for development with PipeWire
 
 %package doc
 Summary:        PipeWire media server documentation
+License:        MIT
 Group:          Development/Libraries/C and C++
 
 %description doc
@@ -260,6 +275,9 @@ This package contains documentation for the PipeWire media server.
 %endif
 
 %build
+%if %{pkg_vcmp gcc < 8}
+export CC=gcc-9
+%endif
 %meson \
 	-Ddocs=true \
 	-Dman=true \
@@ -315,12 +333,15 @@ This package contains documentation for the PipeWire media server.
 %{_libdir}/libjack-pw.so.*
 
 %files -n libpulse-mainloop-glib-pw%{sover}
+%license pipewire-pulseaudio/LICENSE
 %{_libdir}/libpulse-mainloop-glib-pw.so.*
 
 %files -n libpulse-pw%{sover}
+%license pipewire-pulseaudio/LICENSE
 %{_libdir}/libpulse-pw.so.*
 
 %files -n libpulse-simple-pw%{sover}
+%license pipewire-pulseaudio/LICENSE
 %{_libdir}/libpulse-simple-pw.so.*
 
 %files -n gstreamer-plugin-pipewire
