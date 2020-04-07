@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:29:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 9.5.0
+  * Add optional lockholder_account_id to FileLockMetadata struct
+  * Add optional invalid_argument to SearchError union
+  * Add get_thumbnail:2 route
+  * Add add_creator_as_owner to GroupCreateArg struct
+  * Add exporting to LegalHoldStatus union
+  * Add MembersInfo struct
+  * Add team_invite_details to ActionDetails union
+  * Add optional indicators to JoinTeamDetails struct
+  * Add optional shared_content_link to SharedLinkSettings* structs
+  * Add many functionalities to EventType and EventDetails unions
+  * Add InviteMethod union
+  * Add LockStatus union
+  * Add RewindPolicy union
+  * Add FileLockingValue union
+
+-------------------------------------------------------------------
 Fri Jul 26 10:55:24 UTC 2019 - pgajdos@suse.com
 
 - version update to 9.4.0
