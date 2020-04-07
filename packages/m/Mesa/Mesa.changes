@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  5 12:27:35 UTC 2020 - Torsten Duwe <duwe@suse.com>
+
+- U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
+  * Fix Weston launch on tumbleweed by backporting commit bfb9c08e
+
+-------------------------------------------------------------------
 Fri Apr  3 15:25:42 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to Mesa 20.0.4

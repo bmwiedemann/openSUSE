@@ -4073,4 +4073,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     aco), NIR and Intel (isl, anv)</comment>
     <requestid>791235</requestid>
   </revision>
+  <revision rev="376" vrev="248">
+    <srcmd5>1e3c248f993133a2081c83f916257776</srcmd5>
+    <version>unknown</version>
+    <time>1586247956</time>
+    <user>dimstar_suse</user>
+    <comment>- U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
+  * Fix Weston launch on tumbleweed by backporting commit bfb9c08e</comment>
+    <requestid>791558</requestid>
+  </revision>
 </revisionlist>
