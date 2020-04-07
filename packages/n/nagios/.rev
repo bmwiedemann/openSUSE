@@ -132,4 +132,19 @@
     <comment></comment>
     <requestid>769779</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>432d7ec85440d95258e849aa3310ba11</srcmd5>
+    <version>4.4.5</version>
+    <time>1586248313</time>
+    <user>dimstar_suse</user>
+    <comment>- fix boo#1156309, CVE-2019-3698 : Symbolic Link (Symlink) following vulnerability in the cronjob allows local attackers to cause cause DoS or potentially escalate privileges by winning a race.
+- enhance systemd service: check nagios config before reloading
+- enable build for SLE11 by excluding some special macros and directories via 'sles_version != 11' condition
+- add nagios-archive.service and nagios-archive.timer as replacement for the script in cron.weekly: no need for cron on systemd systems
+- run set_permissions and verifyscript for /etc/cron.weekly on those  distributions that need it
+- enhance rpmlint: ignore empty htpasswd file
+- enable php apache module and not php5 on newer distributions
+- try to harden the rcnagios script</comment>
+    <requestid>791853</requestid>
+  </revision>
 </revisionlist>

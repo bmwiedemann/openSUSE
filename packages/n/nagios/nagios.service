@@ -7,6 +7,7 @@ EnvironmentFile=/etc/sysconfig/nagios
 ExecStartPre=/usr/lib/nagios/nagios-exec-start-pre
 ExecStartPre=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
 ExecStart=/usr/sbin/nagios /etc/nagios/nagios.cfg
+ExecReload=/usr/sbin/nagios -v /etc/nagios/nagios.cfg
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

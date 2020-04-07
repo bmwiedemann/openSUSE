@@ -17,3 +17,5 @@ addFilter("suse-missing-rclink.*nagios");
 addFilter("tmpfile-not-in-filelist.*/var/run/nagios");
 # not using the macro should not be a problem if we call the service directly:
 addFilter("postin-without-tmpfile-creation.*/usr/lib/tmpfiles.d/nagios.conf");
+# see boo#961115 - CVE-2016-0726
+addFilter("zero-length.*/etc/nagios/htpasswd.users");

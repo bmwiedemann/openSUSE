@@ -16,6 +16,8 @@ NAGIOS_CFG_ERR_LOG='/var/log/nagios/config.err'
 
 # Read config and log errors in logfile
 config_check () {
+    test -f $NAGIOS_CFG_ERR_LOG && rm $NAGIOS_CFG_ERR_LOG
+    touch $NAGIOS_CFG_ERR_LOG || exit 1
     case "$1" in
         verbose)
             $NAGIOS_BIN -v "$NAGIOS_CFG" >"$NAGIOS_CFG_ERR_LOG" 2>&1

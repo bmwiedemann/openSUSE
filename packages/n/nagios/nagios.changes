@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  6 15:55:26 UTC 2020 - lars@linux-schulserver.de - 4.4.5
+
+- fix boo#1156309, CVE-2019-3698 : Symbolic Link (Symlink) following 
+  vulnerability in the cronjob allows local attackers to cause cause 
+  DoS or potentially escalate privileges by winning a race.
+- enhance systemd service: check nagios config before reloading
+- enable build for SLE11 by excluding some special macros and 
+  directories via 'sles_version != 11' condition
+- add nagios-archive.service and nagios-archive.timer as replacement 
+  for the script in cron.weekly: no need for cron on systemd systems
+- run set_permissions and verifyscript for /etc/cron.weekly on those
+  distributions that need it
+- enhance rpmlint: ignore empty htpasswd file
+- enable php apache module and not php5 on newer distributions
+- try to harden the rcnagios script
+
+-------------------------------------------------------------------
 Mon Feb  3 15:07:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

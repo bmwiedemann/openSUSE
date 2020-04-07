@@ -49,6 +49,8 @@ Source10:       %{name}-README.SuSE
 Source11:       %{name}-html-pages.tar.bz2
 Source12:       %{name}.service
 Source13:       %{name}.tmpfiles
+Source14:       %{name}-archive.timer
+Source15:       %{name}-archive.service
 Source20:       %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM unescape hex characters in CGI input - avoid addional '+'
 Patch3:         nagios-fix_encoding_trends.cgi.patch
@@ -87,6 +89,8 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Source100:      nagios_systemd
 %{?systemd_ordering}
+%else
+Recommends:     cron
 %endif
 Provides:       monitoring_daemon
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -97,10 +101,10 @@ Requires(pre):  grep
 Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} < 01200
 Requires(pre):  %insserv_prereq
+Requires:       cron
 %endif
 Requires(pre):  shadow
 Recommends:     %{name}-www
-Recommends:     cron
 # this package contains shared tools with icinga
 Recommends:     monitoring-tools
 Recommends:     icinga-monitoring-tools
@@ -355,7 +359,16 @@ touch %{buildroot}%{nslockfile}
 # sysconfig script
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 # install cronjob (gzip' the logfiles)
-install -D -m 0755 %{SOURCE4} %{buildroot}%{_sysconfdir}/cron.weekly/%{name}
+%if %{with systemd}
+sed -e 's|__NAGIOS_USER__|%{nagios_user}|g' \
+    -e 's|__NAGIOS_GROUP__|%{nagios_group}|g' %{SOURCE4} > %{buildroot}%{_sbindir}/nagios-archive
+install -Dm0644 %{SOURCE14} %{buildroot}/%{_unitdir}/nagios-archive.timer
+install -Dm0644 %{SOURCE15} %{buildroot}/%{_unitdir}/nagios-archive.service
+%else
+mkdir %{buildroot}%{_sysconfdir}/cron.weekly
+sed -e 's|__NAGIOS_USER__|%{nagios_user}|g' \
+    -e 's|__NAGIOS_GROUP__|%{nagios_group}|g' %{SOURCE4} > %{buildroot}%{_sysconfdir}/cron.weekly/%{name}
+%endif
 # install empty htpasswd file (boo#961115)
 touch %{buildroot}%{_sysconfdir}/%{name}/htpasswd.users
 # important ghost files
@@ -410,7 +423,7 @@ if [ ${1:-0} -gt 1 ]; then
   fi
 fi
 %if %{with systemd}
-%service_add_pre %{name}.service
+%service_add_pre %{name}.service %{name}-archive.service %{name}-archive.timer
 %endif
 
 %post
@@ -432,31 +445,39 @@ else
   fi
 fi
 %if %{with systemd}
-%service_add_post %{name}.service
+%service_add_post %{name}.service %{name}-archive.service %{name}-archive.timer
 systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %fillup_only
 %else
 %{fillup_and_insserv %{name}}
+%if 0%{?sles_version} != 11
+%set_permissions /etc/cron.weekly/
 %endif
-%set_permissions /var/spool/nagios
+%endif
+%if 0%{?sles_version} != 11
+%set_permissions /var/spool/nagios/
+%endif
 
 %preun
 %if %{with systemd}
-%service_del_preun %{name}.service
+%service_del_preun %{name}.service %{name}-archive.service %{name}-archive.timer
 %else
 %stop_on_removal %{name}
 %endif
 
 %postun
 %if %{with systemd}
-%service_del_postun %{name}.service
+%service_del_postun %{name}.service %{name}-archive.service %{name}-archive.timer
 %else
 %restart_on_update %{name}
 %{insserv_cleanup}
 %endif
 
 %verifyscript
-%verify_permissions -e /var/spool/nagios
+%if ! %{with systemd}
+%verify_permissions -e /etc/cron.weekly/
+%endif
+%verify_permissions -e /var/spool/nagios/
 
 %post www
 wwwusr=%{nagios_command_user}
@@ -478,20 +499,24 @@ else
 fi
 # Update ?
 if [ ${1:-0} -eq 1 ]; then
-	if [ -x %{_sbindir}/a2enmod ]; then
-		# enable authentification in apache config
-		%{_sbindir}/a2enmod authn_file >/dev/null
-        %{_sbindir}/a2enmod auth_basic >/dev/null
-        %{_sbindir}/a2enmod authz_user >/dev/null
-        %{_sbindir}/a2enmod version >/dev/null
-		# enable php5 in apache config
-		%{_sbindir}/a2enmod php5
-	fi
-%if %{with systemd}
-%{_bindir}/systemctl try-restart apache2
-%else
-%restart_on_update apache2
-%endif
+  if [ -x %{_sbindir}/a2enmod ]; then
+    # enable authentification in apache config
+      %{_sbindir}/a2enmod authn_file >/dev/null 
+      %{_sbindir}/a2enmod auth_basic >/dev/null
+      %{_sbindir}/a2enmod authz_user >/dev/null 
+      %{_sbindir}/a2enmod version >/dev/null 
+      # enable php in apache config
+      %if 0%{?sle_version} == 120000 
+        %{_sbindir}/a2enmod php5 >/dev/null || :
+      %else
+        %{_sbindir}/a2enmod php >/dev/null || :
+      %endif
+  fi
+  %if %{with systemd}
+  %{_bindir}/systemctl try-restart apache2
+  %else
+  %restart_on_update apache2
+  %endif
 fi
 
 %post www-dch
@@ -535,13 +560,18 @@ fi
 %attr(0755,root,root) %{nagios_libdir}/%{name}-exec-start-pre
 %{_unitdir}/%{name}.service
 %{_prefix}/lib/tmpfiles.d/%{name}.conf
+%attr(0755,root,root) %{_sbindir}/nagios-archive
+%{_unitdir}/nagios-archive.timer
+%{_unitdir}/nagios-archive.service
 %else
 %attr(0755,root,root) %{_sysconfdir}/init.d/%{name}
 %ghost %dir %{nslockfile_dir}
 %attr(0644,%{nagios_user},%{nagios_group}) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) %{nslockfile}
-%endif
+%if 0%{?sles_version} != 11
 %dir %{_sysconfdir}/cron.weekly
+%endif
 %attr(0755,root,root) %{_sysconfdir}/cron.weekly/*
+%endif
 %config(noreplace) %{nagios_sysconfdir}/*.cfg
 %config(noreplace) %{nagios_sysconfdir}/objects/*.cfg
 %ghost %config(missingok,noreplace) %{nagios_logdir}/config.err
