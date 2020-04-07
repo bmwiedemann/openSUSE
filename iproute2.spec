@@ -17,7 +17,7 @@
 
 
 Name:           iproute2
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -27,8 +27,9 @@ URL:            https://www.linuxfoundation.org/collaborate/workgroups/networkin
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone:	git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2
-Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.xz
-Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.sign
+#Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.xz
+#Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.tar.sign
+Source:         %name-%version.tar.xz
 Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
 Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
