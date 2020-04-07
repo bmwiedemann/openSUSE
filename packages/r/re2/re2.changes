@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 08:22:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Updat to version 2020-04-01:
+  * Update Unicode data to 13.0.0
+  * Include the pattern length in "DFA out of memory" errorrs
+
+-------------------------------------------------------------------
 Fri Mar 20 07:30:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2020-03-03:
