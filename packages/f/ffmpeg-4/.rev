@@ -272,4 +272,14 @@
     <comment></comment>
     <requestid>789667</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e079891d944ebd6adf787b301deedc23</srcmd5>
+    <version>4.2.2</version>
+    <time>1586247850</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Samba support for Factory (as this needs a fix in Samba itself)
+  Add --enable-libsmbclient to configure, add BR on pkgconfig(smbclient)
+- License is now GPLv3+ by default (--enable-version3)</comment>
+    <requestid>790242</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 00:41:22 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add Samba support for Factory (as this needs a fix in Samba itself)
+  Add --enable-libsmbclient to configure, add BR on pkgconfig(smbclient)
+- License is now GPLv3+ by default (--enable-version3)
+  
+-------------------------------------------------------------------
 Mon Mar 30 07:14:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Always build the binary ffmpeg-4 even on Leap releases boo#1167628:

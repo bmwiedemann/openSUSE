@@ -60,6 +60,7 @@
 %bcond_without libaom
 %bcond_without mysofa
 %bcond_without vidstab
+%bcond_without smbclient
 %bcond_without srt
 %bcond_without codec2
 %bcond_without lv2
@@ -70,6 +71,7 @@
 %bcond_with libaom
 %bcond_with mysofa
 %bcond_with vidstab
+%bcond_with smbclient
 %bcond_with srt
 %bcond_with codec2
 %bcond_with lv2
@@ -93,7 +95,7 @@ Name:           ffmpeg-4
 Version:        4.2.2
 Release:        0
 Summary:        Library for working with various multimedia formats
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://ffmpeg.org/
 
@@ -177,6 +179,9 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(rubberband)
 %endif
 BuildRequires:  pkgconfig(sdl2)
+%if %{with smbclient}
+BuildRequires:  pkgconfig(smbclient)
+%endif
 %if %{with soxr}
 BuildRequires:  pkgconfig(soxr)
 %endif
@@ -598,6 +603,10 @@ LDFLAGS="%_lto_cflags" \
 	--enable-shared \
 	--disable-static \
 	--enable-gpl \
+	--enable-version3 \
+%if %{with smbclient}
+	--enable-libsmbclient \
+%endif
 	--disable-openssl \
 	--enable-avresample \
 	--enable-gnutls \
@@ -687,11 +696,9 @@ LDFLAGS="%_lto_cflags" \
 %if %{with opencore}
 	--enable-libopencore-amrnb \
 	--enable-libopencore-amrwb \
-	--enable-version3 \
 %endif
 %if %{with amrwb}
 	--enable-libvo-amrwbenc \
-	--enable-version3 \
 %endif
 %if %{with x264}
 	--enable-libx264 \
