@@ -18,11 +18,7 @@
 
 %define modname llvmlite
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%ifarch ppc64 ppc64le
-%define         llvm_major 7
-%else
-%define         llvm_major 8
-%endif
+%define         llvm_major 9
 %if 0%{?suse_version} <= 1500
 %define         llvm_major 7
 %endif

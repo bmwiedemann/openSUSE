@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:11:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use properly llvm9 which is now TW default
+
+-------------------------------------------------------------------
 Sun Jan  5 02:54:55 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
