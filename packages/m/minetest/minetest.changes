@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Apr  6 13:54:06 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.2.0
+- See https://dev.minetest.net/Changelog#5.1.0_.E2.86.92_5.2.0
+- Client / Audiovisuals:
+  * Fix alpha blending in texture modifiers (Warr1024)
+  * Make natural night light as bright as MT 0.4.16 (paramat)
+  * Shader fixes (lhofhansl, SmallJoker)
+  * Clean up font caching, fix bitmap fonts (SmallJoker)
+  * Waves generated with Perlin-type noise #8994 (lhofhansl)
+  * Attachments: Fix glitches after detach (SmallJoker)
+  * Let node 'place' and 'dug' sounds be heard
+    by other players (sfan5)
+  * Fix weird looking liquid source (Wuzzy2)
+  * Basic model shading (dcbrwn)
+  * Improve arm inertia animations (kilbith)
+- GUI improvements:
+  * Add visual feedback for button states (Df458)
+  * Formspec: draw order and clipping for all elements (DS)
+  * Refactor internal button styling/rendering code (Df458')
+  * Formspec: Fix clicking on tooltip-obstructed elements (DS)
+  * Formspec: change cursor on fields and co. (DS)
+  * Various new formspec bug fixes (SmallJoker)
+  * Formspec: Add 9-slice background support
+    to button elements (Df458)
+  * Formspec: add hypertext[] element (pyrollo)
+  * Formspec: animated_image[] (Df458, kilbith)
+  * Make clipping of formspec elements more consistent (Df458)
+  * Remove outdated field_close_on_enter[] warnings
+    in element parameters (SmallJoker)
+  * Fix mouse events sent to wrong GUI elements
+    when dragging (sfan5)
+  * Restore intuitive click-through behaviour (DS)
+- Enhancements:
+  * Wear out tools on punch (sfan5)
+  * Tunnels: Completely disable generation
+    when 'cave width' >= 10.0 (paramat)
+  * Randomwalk cave liquids:
+    Remove deprecated 'lava depth' (paramat)
+  * Automatically enable the mod's dependencies
+    in the world config menu (HybridDog)
+  * Clean up craft replacements docs (pauloue)
+  * Falling nodes: add missing support for light sources,
+    most drawtypes, and paramtype2s (Wuzzy2)
+  * Remove legacy flat-file map code
+    and documentation (random-geek)
+  * Fix packet receiving in server and client (sfan5)
+  * Key settings: Cancel with escape,
+    clear with delete (SmallJoker)
+- Script API / Modding:
+  * CSM: Introduce get_modpath() (sfan5)
+  * CSM: Remove non-functional minetest.get_day_count() (sfan5)
+  * Add z-index management to HUD (pyrollo)
+  * Add table.key_value_swap and table.shuffle (HybridDog)
+  * Map download:
+    Escape ':' to '_' (NTFS/FAT* systems) (Montandalar)
+  * Settings: Add get_flags API for mapgen flags (SmallJoker)
+  * Improve minetest.sound_play with ephemeral sounds
+    and player exclusion (sfan5)
+  * Reworked validity checks for entities (sfan5)
+  * Documentation: Add advice on lifetime of ObjectRefs (sfan5)
+  * Allow texture modifiers in hotbar textures (Warr1024)
+  * Nodes with torchlike drawtype and custom visual_scale now are
+    rendered attached to surface instead of being centered (Wuzzy2)
+  * Add documentation of VoxelArea 'ystride', 'zstride' (paramat)
+  * Lua API: Document HP, breath and damage limits (SmallJoker)
+  * Various documentation improvements (Wuzzy2)
+  * CSM: Corrections to client_lua_api.txt (sfan5)
+  * Make minetest.item_place_node return position
+    of placed node (Bluebird)
+  * Call on_secondary_use when object is right-clicked (sfan5)
+  * CSM: Various fixes (sfan5)
+  * Many pathfinder bugfixes and improvements (Wuzzy2)
+    + Fix failure to find path
+      if start or end pos is over air (Wuzzy2)
+    + Fix very broken implementation of A* search (Wuzzy2)
+    + No longer jump through solid nodes (Wuzzy2)
+    + Return nil if start or end pos is solid (Wuzzy2) 
+  * New set_sky, set_sun, set_moon and set_stars (Jordach)
+  * Secure and document minetest.deserialize() (luk3yx)
+  * minetest.get_content_id: throw error
+    for unknown nodes (HybridDog)
+- Misc / Build:
+  * Don't install fonts on ENABLE_CLIENT=0 configurations (sfan5)
+  * Fix memleaks in formspecs (SmallJoker)
+  * Run luacheck in travis, add luacheck (rubenwardy)
+  * Various build issue fixes (Clang, Travis CI) (sfan5)
+
+-------------------------------------------------------------------
 Sat Jan 18 16:26:52 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - build with spatialindex-devel, this speeds up AreaStores, see
