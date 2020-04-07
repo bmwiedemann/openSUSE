@@ -28,7 +28,7 @@
 %bcond_with postgresql
 %endif
 Name:           minetest
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0
