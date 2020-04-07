@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  6 08:06:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.3
+  * Fix PyPy 3 tests on xs:base64Binary and xs:hexBinary
+  * Separated the tests of schema proxy API and other schemas based tests
+  * Multiple XSD type associations on a token
+  * Extend xs:untypedAtomic type usage
+  * Increase the tests coverage to 95%
+
+-------------------------------------------------------------------
 Thu Feb  6 10:53:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.1
