@@ -1,7 +1,7 @@
 #
 # spec file for package libfsntfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libfsntfs1
-%define timestamp 	20190104
+%define timestamp 	20200223
 Name:           libfsntfs
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfsntfs/wiki
+URL:            https://github.com/libyal/libfsntfs/wiki
 Source:         https://github.com/libyal/libfsntfs/releases/download/%{timestamp}/%{name}-experimental-%{timestamp}.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
