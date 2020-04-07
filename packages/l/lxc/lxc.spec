@@ -1,7 +1,7 @@
 #
 # spec file for package lxc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # On pre-15 SLE versions, _sharedstatedir was /usr/com -- which is just wrong.
-%if 0%{suse_version} < 1500
+%if 0%{?suse_version} < 1500
 %define _sharedstatedir /var/lib
 %endif
 
 # In later versions of openSUSE's permissions config, lxc-user-nic was
 # whitelisted with a setuid bit enabled -- but in order to allow building on
 # old distros we must not make it setuid on pre-15.1 distros. See bsc#988348.
-%if 0%{suse_version} < 1510
+%if 0%{suse_version} <= 1500 && 0%{?sle_version} < 150100
 %define old_permissions 1
 %endif
 %define setuid_mode 0%{!?old_permissions:4}750
@@ -36,7 +37,7 @@
 Name:           lxc
 Version:        4.0.0
 Release:        0
-Url:            http://linuxcontainers.org/
+URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
 License:        LGPL-2.1-or-later
 Group:          System/Management
@@ -48,23 +49,27 @@ Source90:       openSUSE-apparmor.conf
 Source91:       missing_setuid.txt.in
 # FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3345.
 Patch1:         0001-autotools-don-t-install-run-coccinelle.sh.patch
-BuildRequires:  gcc
+# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3347.
+Patch2:         0002-cgroups-fix-uninitialized-transient_len-warning.patch
+# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3349 .
+Patch3:         0003-cgroups-fix-build-warning-on-GCC-7.patch
 BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRequires:  libgnutls-devel
+BuildRequires:  gcc
 BuildRequires:  libapparmor-devel
-BuildRequires:  libselinux-devel
 BuildRequires:  libcap-devel
+BuildRequires:  libgnutls-devel
+BuildRequires:  libselinux-devel
+BuildRequires:  libtool
 BuildRequires:  pam-devel
+BuildRequires:  pkg-config
 %ifarch %ix86 x86_64
 BuildRequires:  libseccomp-devel
 %endif
-BuildRequires:  libxslt
-BuildRequires:  fdupes
+BuildRequires:  bash-completion
 BuildRequires:  docbook-utils
 BuildRequires:  docbook2x
-BuildRequires:  bash-completion
+BuildRequires:  fdupes
+BuildRequires:  libxslt
 BuildRequires:  pkgconfig(systemd)
 Requires:       libcap-progs
 Requires:       lxcfs
@@ -99,7 +104,7 @@ Requires(post): findutils
 # Older SLE versions didn't have -abstractions but instead had -profiles
 # (though Leap has -abstractions regardless of it being based on SLE). We only
 # need them to not have to own /etc/apparmor.d/abstractions.
-%if 0%{?is_opensuse} || %{?suse_version} >= 1500
+%if 0%{?is_opensuse} || 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 %else
 BuildRequires:  apparmor-profiles
@@ -119,6 +124,7 @@ This package provides the LXC container runtime library development files.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
+License:        LGPL-2.1-or-later
 Group:          System/Management
 Requires:       %{name} = %{version}
 Supplements:    packageand(%{name}:bash-completion)
@@ -130,6 +136,8 @@ Bash command line completion support for %{name}.
 %prep
 %setup
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 ./autogen.sh

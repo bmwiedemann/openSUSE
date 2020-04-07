@@ -809,4 +809,17 @@
   + network: Allow moving wireless devices</comment>
     <requestid>790733</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>e4d569cb47ab19b679b5526ee3e120d5</srcmd5>
+    <version>4.0.0</version>
+    <time>1586248316</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix mis-use of %suse_version when we actually want to check against
+  %sle_version when determining whether lxc-user-nic should be setuid.
+- Add backport of https://github.com/lxc/lxc/pull/3347 and
+  https://github.com/lxc/lxc/pull/3349 to fix builds on Leap.
+  + 0002-cgroups-fix-uninitialized-transient_len-warning.patch
+  + 0003-cgroups-fix-build-warning-on-GCC-7.patch</comment>
+    <requestid>791872</requestid>
+  </revision>
 </revisionlist>

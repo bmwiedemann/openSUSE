@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  7 01:19:17 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Fix mis-use of %suse_version when we actually want to check against
+  %sle_version when determining whether lxc-user-nic should be setuid.
+
+-------------------------------------------------------------------
+Thu Apr  2 08:24:44 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport of https://github.com/lxc/lxc/pull/3347 and
+  https://github.com/lxc/lxc/pull/3349 to fix builds on Leap.
+  + 0002-cgroups-fix-uninitialized-transient_len-warning.patch
+  + 0003-cgroups-fix-build-warning-on-GCC-7.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXC 4.0.0. The full upstream changelog is available from:
