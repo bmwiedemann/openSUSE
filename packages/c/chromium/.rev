@@ -2828,4 +2828,25 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Use pipewire in Leap 15.2</comment>
     <requestid>788109</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>7385aec4aaa2071854d5d273c115e2af</srcmd5>
+    <version>80.0.3987.162</version>
+    <time>1586247680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 80.0.3987.162 bsc#1168421:
+  * CVE-2020-6450: Use after free in WebAudio.
+  * CVE-2020-6451: Use after free in WebAudio.
+  * CVE-2020-6452: Heap buffer overflow in media.
+
+- Rebase build-with-pipewire-0.3.patch in order to fix
+  patch collision.
+
+- Add chromium-missing-cstdint-header.patch,
+  chromium-missing-cstring-header.patch,
+  chromium-missing-cstring-header2.patch and
+  chromium-missing-cstddef-header.patch in order to fix boo#1167465.
+
+- Use a symbolic icon for GNOME</comment>
+    <requestid>790832</requestid>
+  </revision>
 </revisionlist>

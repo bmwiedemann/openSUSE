@@ -27,8 +27,8 @@ Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/b
  #include <spa/support/type-map.h>
 +#endif
  
+ #include <cstring>
  #include <memory>
- #include <utility>
 @@ -51,6 +56,21 @@ const char kPipeWireLib[] = "libpipewire
  #endif
  

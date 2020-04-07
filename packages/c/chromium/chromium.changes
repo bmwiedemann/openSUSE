@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:21:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 80.0.3987.162 bsc#1168421:
+  * CVE-2020-6450: Use after free in WebAudio.
+  * CVE-2020-6451: Use after free in WebAudio.
+  * CVE-2020-6452: Heap buffer overflow in media.
+
+-------------------------------------------------------------------
+Sun Mar 29 08:29:41 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Rebase build-with-pipewire-0.3.patch in order to fix
+  patch collision.
+
+-------------------------------------------------------------------
+Sat Mar 28 18:41:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add chromium-missing-cstdint-header.patch,
+  chromium-missing-cstring-header.patch,
+  chromium-missing-cstring-header2.patch and
+  chromium-missing-cstddef-header.patch in order to fix boo#1167465.
+
+-------------------------------------------------------------------
+Fri Mar 27 11:48:36 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Use a symbolic icon for GNOME
+
+-------------------------------------------------------------------
 Mon Mar 23 16:49:16 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to allow building with pipewire 0.3:

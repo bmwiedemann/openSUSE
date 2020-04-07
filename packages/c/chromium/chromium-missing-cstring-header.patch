@@ -1,0 +1,34 @@
+diff -up chromium-80.0.3987.106/third_party/webrtc/audio/utility/channel_mixer.cc.missing-cstring chromium-80.0.3987.106/third_party/webrtc/audio/utility/channel_mixer.cc
+--- chromium-80.0.3987.106/third_party/webrtc/audio/utility/channel_mixer.cc.missing-cstring	2020-02-21 13:19:47.077683105 -0500
++++ chromium-80.0.3987.106/third_party/webrtc/audio/utility/channel_mixer.cc	2020-02-21 13:19:47.077683105 -0500
+@@ -8,6 +8,8 @@
+  *  be found in the AUTHORS file in the root of the source tree.
+  */
+ 
++#include <cstring>
++
+ #include "audio/utility/channel_mixer.h"
+ 
+ #include "audio/utility/channel_mixing_matrix.h"
+diff -up chromium-80.0.3987.106/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc.missing-cstring chromium-80.0.3987.106/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- chromium-80.0.3987.106/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc.missing-cstring	2020-02-21 13:19:48.171659179 -0500
++++ chromium-80.0.3987.106/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc	2020-02-21 13:19:48.174659113 -0500
+@@ -17,6 +17,7 @@
+ #include <spa/param/video/raw-utils.h>
+ #include <spa/support/type-map.h>
+ 
++#include <cstring>
+ #include <memory>
+ #include <utility>
+ 
+diff -up chromium-80.0.3987.106/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc.missing-cstring chromium-80.0.3987.106/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc
+--- chromium-80.0.3987.106/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc.missing-cstring	2020-02-21 13:30:09.609068057 -0500
++++ chromium-80.0.3987.106/third_party/webrtc/modules/video_coding/utility/ivf_file_reader.cc	2020-02-21 13:30:23.791757875 -0500
+@@ -10,6 +10,7 @@
+ 
+ #include "modules/video_coding/utility/ivf_file_reader.h"
+ 
++#include <cstring>
+ #include <string>
+ #include <vector>
+ 

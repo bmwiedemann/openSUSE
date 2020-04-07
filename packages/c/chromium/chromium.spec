@@ -64,7 +64,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        80.0.3987.149
+Version:        80.0.3987.162
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -76,6 +76,7 @@ Source100:      chromium-browser.sh
 Source101:      chromium-browser.desktop
 Source102:      chromium-browser.xml
 Source103:      chromium.default
+Source104:      chromium-symbolic.svg
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -102,6 +103,10 @@ Patch20:        chromium-80-unbundle-libxml.patch
 Patch21:        chromium-fix-char_traits.patch
 Patch22:        gpu-timeout.patch
 Patch23:        webrtc-pulse.patch
+Patch24:        chromium-missing-cstring-header.patch
+Patch25:        chromium-missing-cstring-header2.patch
+Patch26:        chromium-missing-cstddef-header.patch
+Patch27:        chromium-missing-cstdint-header.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -772,16 +777,12 @@ cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
 popd
 
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
-cp -a chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
-cp -a chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
-cp -a chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
-cp -a chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/24x24/apps
-cp -a chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
+install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser-symbolic.svg
 
 mkdir -p %{buildroot}%{_datadir}/applications/
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{SOURCE101}
