@@ -1,7 +1,7 @@
 #
 # spec file for package python-gcsfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-gcsfs
-Version:        0.3.0
+Version:        0.6.1
 Release:        0
-License:        BSD-3-Clause
 Summary:        Filesystem interface over GCS
-Url:            https://github.com/dask/gcsfs
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/dask/gcsfs
 Source:         https://files.pythonhosted.org/packages/source/g/gcsfs/gcsfs-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-decorator
+Requires:       python-fsspec >= 0.6.0
+Requires:       python-google-auth >= 1.2
+Requires:       python-google-auth-oauthlib
+Requires:       python-requests
+Recommends:     dask
+Recommends:     python-gcsfs-fuse = %{version}
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module fsspec >= 0.2.2}
+BuildRequires:  %{python_module fsspec >= 0.6.0}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
@@ -39,16 +49,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module vcrpy}
 BuildRequires:  libfuse2
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-decorator
-Requires:       python-fsspec >= 0.2.2
-Requires:       python-google-auth >= 1.2
-Requires:       python-google-auth-oauthlib
-Requires:       python-requests
-Recommends:     dask
-Recommends:     python-gcsfs-fuse = %{version}
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,6 +56,7 @@ File-system interface for Google Cloud Storage.
 
 %package        fuse
 Summary:        Filesystem interface over GCS - FUSE interface
+Group:          Development/Languages/Python
 Requires:       libfuse2
 Requires:       python-click
 Requires:       python-fusepy
@@ -76,9 +77,9 @@ This package provides the optional FUSE interface.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests require a network connection
-# %%check
-# %%python_expand pytest-%%{$python_bin_suffix} -vv -x  gcsfs
+%check
+# Tests test_map_simple, test_map_with_data and test_map_clear_empty require a network connection
+%pytest -k "not (test_map_simple or test_map_with_data or test_map_clear_empty)" gcsfs
 
 %files %{python_files}
 %doc README.rst

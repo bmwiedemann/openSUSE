@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr  6 13:52:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.6.1
+  * **API-breaking**: Changed requester-pays handling for ``GCSFileSystem``.
+    The ``user_project`` keyword has been removed, and has been replaced with
+    the ``requester_pays`` keyword. If you're working with a ``requester_pays`` bucket
+    you will need to explicity pass ``requester_pays=True``. This will include your
+    ``project`` ID in requests made to GCS.
+  * ``GCSFileSystem`` now validates that the ``project`` provided, if any, matches the
+    Google default project when using ``token='google_default'`` to authenticate (:pr:`219`).
+  * Fixed bug in ``GCSFileSystem.cat`` on objects in requester-pays buckets (:pr:`217`).
+  * Fixed bug in ``user_project`` fallback for default Google authentication (:pr:`213`)
+  * ``user_project`` now falls back to the ``project`` if provided (:pr:`208`)
+  * Added the ability to make requester-pays requests with the ``user_project`` parameter (:pr:`206`)
+  * Improved performance when serializing filesystem objects (:pr:`182`)
+  * Fixed authorization errors when using ``gcsfs`` within multithreaded code (:pr:`183`, :pr:`192`)
+  * Added contributing instructions (:pr:`185`)
+  * Improved performance for :meth:`gcsfs.GCSFileSystem.info` (:pr:`187`)
+  * Fixed bug in :meth:`gcsfs.GCSFileSystem.info` raising an error (:pr:`190`)
+
+-------------------------------------------------------------------
 Mon Jul 22 16:41:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.3.0
