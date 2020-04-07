@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-elasticsearch
-Version:        7.5.1
+Version:        7.6.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
@@ -29,9 +29,11 @@ Source:         https://github.com/elastic/elasticsearch-py/archive/%{version}.t
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-certifi
 Requires:       python-urllib3 >= 1.21.1
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nosexcover}
@@ -60,7 +62,7 @@ rm README.rst
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%python_expand nosetests-%{$python_bin_suffix}
 %endif
 
 %files %{python_files}
