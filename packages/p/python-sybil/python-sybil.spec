@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sybil
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
