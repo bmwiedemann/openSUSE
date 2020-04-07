@@ -1,7 +1,7 @@
 #
 # spec file for package nftables
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -37,7 +37,7 @@ BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.4
+BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 
 %description
