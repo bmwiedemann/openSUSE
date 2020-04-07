@@ -18,12 +18,12 @@
 
 %define soname	6
 Name:           libimobiledevice
-Version:        1.2.0+git20200220.3d8d13f
+Version:        1.2.0+git.20200330
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
 URL:            https://www.libimobiledevice.org
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -90,8 +90,7 @@ sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
 autoreconf -fvi
 %configure \
   --disable-silent-rules \
-  --disable-static \
-  --disable-dev-tools
+  --disable-static
 %make_build
 
 %install
@@ -127,6 +126,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/idevicescreenshot
 %{_bindir}/ideviceenterrecovery
 %{_bindir}/idevicedate
+%{_bindir}/idevicesetlocation
 %{_bindir}/ideviceprovision
 %{_bindir}/idevicenotificationproxy
 %{_mandir}/man1/idevice_id.1%{?ext_man}
@@ -143,6 +143,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/idevicename.1%{?ext_man}
 %{_mandir}/man1/idevicescreenshot.1%{?ext_man}
 %{_mandir}/man1/ideviceenterrecovery.1%{?ext_man}
+%{_mandir}/man1/idevicesetlocation.1%{?ext_man}
 %{_mandir}/man1/idevicedate.1%{?ext_man}
 %{_mandir}/man1/ideviceprovision.1%{?ext_man}
 %{_mandir}/man1/idevicenotificationproxy.1%{?ext_man}
