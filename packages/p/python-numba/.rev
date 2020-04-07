@@ -193,4 +193,13 @@ Python2 support was turned off by accident.  I don't go out of my way to support
   * skip-failing-tests.patch</comment>
     <requestid>777950</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9d9aa12ea70e881769ab17a42ab8b61a</srcmd5>
+    <version>0.48.0</version>
+    <time>1586248234</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuilt as the tests take ages to build and we
+  could speed things up in 2 loops</comment>
+    <requestid>791732</requestid>
+  </revision>
 </revisionlist>

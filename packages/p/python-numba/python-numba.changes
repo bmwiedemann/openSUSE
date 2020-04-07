@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  6 07:56:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuilt as the tests take ages to build and we
+  could speed things up in 2 loops
+
+-------------------------------------------------------------------
 Fri Feb 21 09:39:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.48.0:
