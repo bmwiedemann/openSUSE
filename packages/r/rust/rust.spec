@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.41.1
-%global version_previous 1.40.0
-%global version_bootstrap 1.40.0
+%global version_current 1.42.0
+%global version_previous 1.41.1
+%global version_bootstrap 1.41.1
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.11
@@ -416,7 +416,6 @@ find vendor -name .cargo-checksum.json \
   -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
 
 # Fix rpmlint error "This script uses 'env' as an interpreter"
-sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' src/libcore/unicode/unicode.py
 sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' src/libcore/unicode/printable.py
 chmod +x src/libcore/unicode/printable.py
 

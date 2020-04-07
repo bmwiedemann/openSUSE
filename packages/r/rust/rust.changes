@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:28:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.42.0:
+  + Language
+    - You can now use the slice pattern syntax with subslices.
+    - You can now use #[repr(transparent)] on univariant enums. Meaning
+      that you can create an enum that has the exact layout and ABI of
+      the type it contains.
+    - There are some syntax-only changes:
+      * default is syntactically allowed before items in trait
+        definitions.
+      * Items in impls (i.e. consts, types, and fns) may syntactically
+        leave out their bodies in favor of ;.
+      * Bounds on associated types in impls are now syntactically
+        allowed (e.g. type Foo: Ord;).
+      * ... (the C-variadic type) may occur syntactically directly
+        as the type of any function parameter.
+      These are still rejected semantically, so you will likely receive
+      an error but these changes can be seen and parsed by procedural
+      macros and conditional compilation.
+  + Compiler
+    - Added tier 2 support for armv7a-none-eabi.
+    - Added tier 2 support for riscv64gc-unknown-linux-gnu.
+    - Option::{expect,unwrap} and Result::{expect, expect_err, unwrap,
+      unwrap_err} now produce panic messages pointing to the location
+      where they were called, rather than core's internals.
+      Refer to Rust's platform support page for more information on
+      Rust's tiered platform support.
+  + Libraries
+    - iter::Empty<T> now implements Send and Sync for any T.
+    - Pin::{map_unchecked, map_unchecked_mut} no longer require the
+      return type to implement Sized.
+    - io::Cursor now derives PartialEq and Eq.
+    - Layout::new is now const.
+    - Added Standard Library support for riscv64gc-unknown-linux-gnu.
+  + Stabilized APIs
+    - CondVar::wait_while
+    - CondVar::wait_timeout_while
+    - DebugMap::key
+    - DebugMap::value
+    - ManuallyDrop::take
+    - matches!
+    - ptr::slice_from_raw_parts_mut
+    - ptr::slice_from_raw_parts
+  + Cargo
+    - You no longer need to include extern crate proc_macro; to be
+      able to use proc_macro; in the 2018 edition.
+  + Compatibility Notes
+    - Error::description has been deprecated, and its use will now
+      produce a warning. It's recommended to use Display/to_string
+      instead.
+
+-------------------------------------------------------------------
+Tue Mar 31 11:17:09 UTC 2020 - alarrosa@suse.com
+
+- Rebased patches:
+  + ignore-Wstring-conversion.patch (offset / fuzz)
+
+-------------------------------------------------------------------
 Mon Mar 23 19:01:55 UTC 2020 - Federico Mena Quintero <federico@suse.com>
 
 - Update to version 1.41.1:
