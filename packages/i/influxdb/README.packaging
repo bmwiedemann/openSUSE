@@ -7,16 +7,23 @@ All deps have to be vendored. The source tarball is obtained as the following:
 
 2. Obtain influxdb source codes
 
-# mkdir ~/go/src/github.com/influxdata
+# mkdir -p ~/go/src/github.com/influxdata
 # cd ~/go/src/github.com/influxdata
-# git clone --branch v1.7.8 https://github.com/influxdata/influxdb.git influxdb-1.7.8
+# git clone --branch v1.7.10 https://github.com/influxdata/influxdb.git influxdb-1.7.10
+# cd influxdb-1.7.10
 
 3. Obtain vendor dependencies
 
-# cd influxdb-1.7.8
-# dep ensure -vendor-only
+remove go.mod file
+see here for reference: https://github.com/influxdata/influxdb/issues/16920
+
+# rm go.mod
+# go mod init
+# go mod download
+# go mod verify
+# go mod vendor
 
 4. Create archive
 
 # cd ..
-# tar -Jcf influxdb-1.7.8.tar.xz --exclude-vcs influxdb-1.7.8
+# tar -Jcf influxdb-1.7.10.tar.xz --exclude-vcs influxdb-1.7.10

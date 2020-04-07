@@ -1,7 +1,7 @@
 #
 # spec file for package influxdb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.7.8
+Version:        1.7.10
 Release:        0
-Url:            https://github.com/influxdata/influxdb
+URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.xz
 Source1:        influxdb.service
 Source2:        influxdb.tmpfiles
@@ -38,7 +38,7 @@ Source5:        README.packaging
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.10.3
+BuildRequires:  go >= 1.12
 BuildRequires:  golang-packaging >= 15.0.8
 BuildRequires:  xmlto
 %if %{with systemd}
@@ -73,7 +73,7 @@ Go sources and other development files for InfluxDB
 # Disable phone-home to usage.influxdata.com
 sed -i 's/.*reporting-disabled = false/reporting-disabled = true/' etc/config.sample.toml
 %goprep github.com/influxdata/influxdb
-%gobuild -ldflags="-X main.version=%{version}" cmd/...
+%gobuild -mod=vendor -ldflags="-X main.version=%{version}" cmd/...
 
 make -C ./man build
 

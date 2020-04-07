@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar  7 14:26:06 UTC 2020 - Uwe Arnold <donvipre@gmail.com>
+
+- update to 1.7.10:
+
+  Bugfixes:
+  #15609: fix(storage): Renaming corrupt data files fails.
+  #15881: fix(tsm1): make digest safe for concurrent use.
+  #15863: fix(tsi1): index defect with negated equality filters.
+  #15970: Fix compaction logic on infrequent cache snapshots.
+  #16607: fix(storage): ensure all block data returned.
+  #16714: feat(storage): Offline series file compaction.
+  #16621: fix(storage): skip TSM files with block read errors.
+
+-------------------------------------------------------------------
+Fri Mar  6 17:29:26 UTC 2020 - Uwe Arnold <donvipre@gmail.com>
+
+- update to 1.7.9:
+  #15341: Update golang version to 1.12.10
+  #15397: chore(build): remove Godeps file.
+  #15524: Update flux version to v0.50.2
+
+  Bugfixes:
+  #14989: fix(storage): guard against compaction burst throughput limit.
+  #15182: fix(tsi1): replace TSI compaction wait group with counter.
+  #15254: chore(influxdb): Update InfluxQL dependency.
+  #15257: feat(httpd): Add option to authenticate debug/pprof and ping endpoints.
+  #15386: fix(http): honor insecure-skip-very even if custom tls config is specified.
+
+-------------------------------------------------------------------
 Sat Oct 19 06:54:38 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7.8:
