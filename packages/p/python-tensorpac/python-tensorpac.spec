@@ -1,7 +1,7 @@
 #
 # spec file for package python-tensorpac
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-tensorpac
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Tensor-based phase-Amplitude coupling package
 License:        BSD-3-Clause
@@ -35,9 +36,12 @@ Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module joblib}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.12}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module statsmodels}
 # /SECTION
 %python_subpackages
 
@@ -48,6 +52,9 @@ Tensorpac is an Python toolbox for computing Phase-Amplitude Coupling
 %prep
 %setup -q -n tensorpac-%{version}
 chmod a-x LICENSE README.rst
+# upstream tarball contains py3.7 cache files
+rm -rf */__pycache__
+rm -rf */*/__pycache__
 
 %build
 %python_build
@@ -55,13 +62,11 @@ chmod a-x LICENSE README.rst
 %install
 %python_install
 %python_expand chmod a-x %{buildroot}%{$python_sitelib}/*egg-info/*
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tensorpac/{tests,methods/tests}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests missing and no recent tags to download from github. See:
-# https://github.com/EtienneCmb/tensorpac/issues/4
-# https://github.com/EtienneCmb/tensorpac/pull/5
-# %%check
-# %%pytest
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
