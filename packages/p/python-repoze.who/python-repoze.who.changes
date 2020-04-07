@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  6 07:12:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip failing test as it the zope.interface now raises different
+  assert
+
+-------------------------------------------------------------------
 Tue Dec  4 12:53:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

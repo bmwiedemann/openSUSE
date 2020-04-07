@@ -31,4 +31,13 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>660011</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>603486d0a3f0964cdef2a8742d349291</srcmd5>
+    <version>2.3</version>
+    <time>1586248187</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test as it the zope.interface now raises different
+  assert</comment>
+    <requestid>791653</requestid>
+  </revision>
 </revisionlist>

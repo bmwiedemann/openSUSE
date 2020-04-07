@@ -1,7 +1,7 @@
 #
 # spec file for package python-repoze.who
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-repoze.who
 %global modname repoze.who
+Name:           python-repoze.who
 Version:        2.3
 Release:        0
-Url:            http://www.repoze.org
 Summary:        Identification and authentication framework for WSGI
 License:        SUSE-Repoze
-Group:          Development/Languages/Python
-Source:         https://pypi.io/packages/source/r/%{modname}/%{modname}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://www.repoze.org
+Source:         https://files.pythonhosted.org/packages/source/r/repoze.who/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module WebOb}
-BuildRequires:  %{python_module repoze.sphinx.autointerface}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -39,7 +36,6 @@ Requires:       python-Paste
 Requires:       python-WebOb
 Requires:       python-zope.interface
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -59,18 +55,18 @@ domain of the WSGI application.
 
 %build
 %python_build
-cd docs && make html && rm -r .build/html/.buildinfo
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-%python_exec setup.py test
+# test_brokenimpl zope.interface raises different assert
+%pytest -k 'not test_brokenimpl'
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc *.txt docs/.build/html
+%license LICENSE.txt
+%doc *.txt
 %{python_sitelib}/*
 
 %changelog
