@@ -391,7 +391,7 @@ Wed Nov 27 11:52:45 UTC 2019 - mrueckert@suse.de
 -------------------------------------------------------------------
 Mon Nov 25 20:11:36 UTC 2019 - mrueckert@suse.de
 
-- Update to version 2.0.10+git0.ac198b92:
+- Update to version 2.0.10+git0.ac198b92: (bsc#1157712) (bsc#1157714)
   * [RELEASE] Released version 2.0.10
   * SCRIPTS: git-show-backports: add "-s" to proposed cherry-pick commands
   * SCRIPTS: create-release: show the correct origin name in suggested commands

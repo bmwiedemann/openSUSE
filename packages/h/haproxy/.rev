@@ -800,4 +800,12 @@
     <comment>- Update to version 2.1.4+git0.3cfc2f1d9: (boo#1168023) CVE-2020-11100</comment>
     <requestid>790908</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>1beab14627172c8aad1ee4a34ac80edc</srcmd5>
+    <version>2.1.4+git0.3cfc2f1d9</version>
+    <time>1586247697</time>
+    <user>dimstar_suse</user>
+    <comment>Add bugnumbers that werent in the devel project but in leap/sles</comment>
+    <requestid>791753</requestid>
+  </revision>
 </revisionlist>
