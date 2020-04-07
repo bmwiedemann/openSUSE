@@ -17,7 +17,7 @@
 
 
 Name:           retroarch-assets
-Version:        0~git20191031
+Version:        0~git20200326
 Release:        0
 Summary:        RetroArch Assets
 License:        CC-BY-4.0
@@ -27,12 +27,12 @@ URL:            https://github.com/libretro/retroarch-assets
 Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  make
 BuildRequires:  google-droid-fonts
+BuildRequires:  make
 BuildArch:      noarch
 
-Requires:       retroarch
 Requires:       google-droid-fonts
+Requires:       retroarch
 
 %description
 Assets needed for RetroArch - e.g. menu drivers, etc. Also contains the official branding.

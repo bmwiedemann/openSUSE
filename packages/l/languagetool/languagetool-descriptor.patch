@@ -1,0 +1,12 @@
+--- languagetool-4.5/languagetool-standalone/pom.xml	2019-10-07 01:46:11.684200287 +0200
++++ languagetool-4.5/languagetool-standalone/pom.xml	2019-10-07 01:47:13.236541583 +0200
+@@ -70,7 +70,9 @@
+                 <artifactId>maven-assembly-plugin</artifactId>
+                 <version>${maven.assemby.plugin}</version>
+                 <configuration>
++                    <descriptors>
+                     <descriptor>src/main/assembly/zip.xml</descriptor>
++                    </descriptors>
+                     <finalName>LanguageTool-${project.version}</finalName>
+                     <appendAssemblyId>false</appendAssemblyId>
+                     <archive>

@@ -17,13 +17,13 @@
 
 
 Name:           retroarch
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Patch0:         retroarch-config.patch
 
 BuildRequires:  fdupes

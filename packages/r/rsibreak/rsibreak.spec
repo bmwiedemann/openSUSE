@@ -18,7 +18,7 @@
 
 %define base_ver 0.12
 Name:           rsibreak
-Version:        0.12.12
+Version:        0.12.13
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later

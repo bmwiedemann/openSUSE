@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:04:32 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.7.2:
+  * Fixing appdata.xml syntax issues to comply with spec.
+    Updating tooltips to use Granite tooltip generator. Improving
+    undo and redo tooltips.
+  * Updating files for 1.7.1 release.
+  * Merge branch 'devel'
+  * Fixing issue with rotating link colors on main branches.
+  * Merge branch 'archive_compile'
+  * Merge branch 'master'
+  * Fixing syntax error.
+  * Checkpointing fixes for newer versions of libarchive.
+  * Updating map properties screenshots.
+  * Updating tool version in meson.build.
+  * Merge branch 'org-mode'
+  * Updating files for upcoming 1.7.0 release.
+  * Updating README.md
+  * Checkpointing initial work on providing Org-Mode exporting.
+  * Merge branch 'portable'
+  * Clearing up debug output.
+  * Fixing ID mapping issue.
+  * Fixing issues with pminder import extraction.
+  * Checkpointing work on portable Minder exporter/importer.
+  * Checkpointing work on portable minder exporter/importer.
+  * Merge branch 'portable' of github.com:phase1geo/Minder into
+    portable
+  * Merge branch 'link_color'
+  * Fixing issues with link color rooting.
+  * Fixing issues with selections.
+  * Added ability to select children nodes using Control-click.
+  * Adding support for link color manipulation for a single node.
+  * Fixing syntax error from previous checkin.
+  * Fixing bug with updating tab tooltip and saving tab state
+    when filename is changed.
+  * Checkpointing work on parenting and re-parenting link colors.
+  * Adding ability to set all selected nodes to a specific color.
+    Adding ability to randomly set link colors of all selected nodes.
+  * Adding map inspector switch to enable/disable automatic
+    rotation of main branch link color selection.
+  * Merge branch 'outliner'
+  * Fixing import support of Outliner files.
+  * ...
+
+-------------------------------------------------------------------
 Mon Jan 13 21:37:08 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.6.0:

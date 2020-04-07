@@ -1,7 +1,7 @@
 #
 # spec file for package axel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{!?license: %global license %doc}
 Name:           axel
-Version:        2.17.6
+Version:        2.17.7
 Release:        0
 Summary:        Lightweight Download Accelerator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://github.com/axel-download-accelerator/axel
+URL:            https://github.com/axel-download-accelerator/axel
 Source:         https://github.com/axel-download-accelerator/axel/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig(openssl)
 

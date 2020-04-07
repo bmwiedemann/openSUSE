@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:26:52 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 5.133:
+  * debian/docs: Closes: #951455
+    - fix FTBFS on README
+byobu (5.132-0ubuntu1) focal; urgency=medium
+  * debian/control, debian/rules:
+    - pep8 binary is gone from Debian, disable for now
+
+-------------------------------------------------------------------
 Sun Feb 16 03:22:03 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 5.131

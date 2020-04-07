@@ -3,8 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/libretro/RetroArch.git</param>
     <param name="filename">retroarch</param>
-    <param name="revision">v1.8.4</param>
-    <param name="version">1.8.4</param>
+    <param name="revision">v1.8.5</param>
+    <param name="version">1.8.5</param>
     <param name="exclude">media/icons</param>
     <param name="exclude">ps2</param>
     <param name="exclude">uwp</param>
@@ -13,7 +13,7 @@
   </service>
   <service name="recompress" mode="localonly">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="localonly"/>
 </services>

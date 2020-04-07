@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  5 16:00:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-felix-scr-dependencies.patch
+    + The dependencies of felix-scr changed. So stop linking xpp3
+      and kxml and link osgi.cmpn as symlink plugins.
+
+-------------------------------------------------------------------
 Fri Mar 27 10:27:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Filter out the *SUNWprivate_1.1* symbols from requires

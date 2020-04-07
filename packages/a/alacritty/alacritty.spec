@@ -20,7 +20,7 @@
 %global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
 
 Name:           alacritty
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  freetype-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.36
+BuildRequires:  rust >= 1.37
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
@@ -96,7 +96,7 @@ install -D -m 0755 target/release/alacritty %{buildroot}%{_bindir}/alacritty
 rm -fr %{buildroot}%{_datadir}
 
 # install man page and completions
-install -Dm 0644 extra/linux/alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
+install -Dm 0644 extra/linux/Alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
 install -Dm 0644 extra/logo/alacritty-simple.svg %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
 install -Dm 0644 extra/linux/io.alacritty.Alacritty.appdata.xml \
                  %{buildroot}/%{_datadir}/appdata/io.alacritty.Alacritty.appdata.xml

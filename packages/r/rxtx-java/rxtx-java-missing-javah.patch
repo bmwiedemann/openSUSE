@@ -1,0 +1,44 @@
+--- rxtx-2.2pre2/configure.in	2020-03-20 09:54:50.687102488 +0100
++++ rxtx-2.2pre2/configure.in	2020-03-20 09:58:32.344380982 +0100
+@@ -99,7 +99,6 @@
+ AC_SUBST(JPATH)
+ AC_SUBST(JHOME)
+ AC_SUBST(RXTX_PATH)
+-AC_SUBST(JAVAH)
+ AC_SUBST(JAVAC)
+ AC_SUBST(JAR)
+ AC_SUBST(JAVADOC)
+@@ -472,8 +471,7 @@
+ 	case $JAVA_VENDOR in
+ 	Tran*)
+ 		find_java_native_include jni.h
+-		JAVAH="\$(JPATH)/bin/kaffeh -classpath \$(CLASSPATH) -d \$(DEST) -jni"
+-		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -d \$(TOP)/ -O -source 1.3 -target 1.3"
++		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -h \$(DEST) -d \$(TOP)/ -O -source 1.8 -target 1.8"
+ 		JAR="\$(JPATH)/bin/jar"
+ 		JAVADOC="\$(JPATH)/bin/javadoc -classpath \$(CLASSPATH)"
+ 		CFLAGS=$CFLAGS" -D_BSD_SOURCE"
+@@ -484,8 +482,7 @@
+ 		;;
+ 	*)
+ 		find_java_native_include jni_md.h
+-		JAVAH="\$(JPATH)/bin/javah -classpath \$(CLASSPATH) -d \$(DEST) -jni"
+-		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -d \$(TOP)/ -O -source 1.3 -target 1.3"
++		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -h \$(DEST) -d \$(TOP)/ -O -source 1.8 -target 1.8"
+ 		JAR="\$(JPATH)/bin/jar"
+ 		JAVADOC="\$(JPATH)/bin/javadoc"
+ 		CFLAGS=$CFLAGS" -D_BSD_SOURCE"
+--- rxtx-2.2pre2/Makefile.am	2020-03-20 09:54:50.691102510 +0100
++++ rxtx-2.2pre2/Makefile.am	2020-03-20 09:57:19.527960989 +0100
+@@ -111,11 +111,6 @@
+ $(CLASSES): $(javafiles) $(TOP)/Makefile
+ 	$(JAVAH_FIX)
+ 	$(JAVAC) $(javafiles)
+-	$(JAVAH) `(for i in $(javahfiles);do \
+-		if grep > /dev/null native.*\( $(SPATH)/gnu/io/$$i.java; then \
+-			echo $(CLASSDIR).$$i; \
+-		fi; \
+-	done)`
+ 	$(JAR) cf $(JARTARGET) $(CLASSTOP)/*
+ 
+ #  install librxtxSerial.so into the proper directory and copy $(JARTARGET) to its

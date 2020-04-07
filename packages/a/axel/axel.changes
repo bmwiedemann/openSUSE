@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.17.7:
+ - Buildsystem fixes
+ - Fixed release date for man-pages on BSD
+ - Explicitly close TCP sockets on SSL connections too
+ - Fixed HTTP basic auth header generation
+ - Changed the default progress report to "alternate output mode"
+ - Improved English in README.md
+
+-------------------------------------------------------------------
 Thu Oct 24 20:16:14 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.17.6:

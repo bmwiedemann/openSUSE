@@ -247,4 +247,22 @@
     <comment></comment>
     <requestid>719322</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ef33898c348459584b6bd1d8a9a631fd</srcmd5>
+    <version>4.4.2</version>
+    <time>1586248070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.2 
+  * meson.build: Disable GLib deprecation warnings 
+  * file-operations: fix copying from the trash 
+  * list view: Don't remove the dummy (Loading) entry except during post-loading updates. 
+  * nemo-tree-sidebar.c: Don't free the NemoFile after setting up the context menu for showing, it is owned by the tree model. 
+  * Remove tracker 
+  * nemo-icon-canvas-item.c: Don't hyphenate long filenames 
+  * eel-editable-label.c: Don't hyphenate long filenames 
+  * nemo-program-choosing.c: Remove unused variable that was causing a warning during the build. 
+  * Use meson for pango-1.44 check
+</comment>
+    <requestid>790940</requestid>
+  </revision>
 </revisionlist>

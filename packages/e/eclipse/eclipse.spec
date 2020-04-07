@@ -115,6 +115,7 @@ Patch33:        eclipse-ppc64.patch
 Patch34:        eclipse-asm7.patch
 Patch35:        eclipse-arm32.patch
 Patch36:        eclipse-force-gtk2.patch
+Patch37:        eclipse-felix-scr-dependencies.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -170,6 +171,7 @@ BuildRequires:  make
 BuildRequires:  maven-local
 BuildRequires:  mockito
 BuildRequires:  objectweb-asm >= 6.1.1
+BuildRequires:  osgi-compendium
 BuildRequires:  pkgconfig
 BuildRequires:  rhino
 BuildRequires:  rsync
@@ -189,6 +191,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-install-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  osgi(javax.servlet-api)
 BuildRequires:  osgi(org.apache.felix.gogo.command) >= 1.0.2
 BuildRequires:  osgi(org.apache.felix.gogo.runtime) >= 1.1.0
 BuildRequires:  osgi(org.apache.felix.gogo.shell) >= 1.1.0
@@ -338,6 +341,7 @@ Requires:       lucene-analysis >= %{_lucene_version}
 Requires:       lucene-analyzers-smartcn >= %{_lucene_version}
 Requires:       lucene-core >= %{_lucene_version}
 Requires:       lucene-queryparser >= %{_lucene_version}
+Requires:       osgi-compendium
 Requires:       sac
 Requires:       sat4j
 Requires:       xml-commons-apis
@@ -515,6 +519,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %ifarch s390 %{arm} %{ix86} ppc
 %patch36 -p1
 %endif
+%patch37 -p1
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}
@@ -780,7 +785,7 @@ mv eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/target/javaagent-shaded
   eclipse.jdt.debug/org.eclipse.jdt.launching/lib
 
 # Qualifier generated from last modification time of source tarball
-QUALIFIER=$(date -u -d"$(stat --format=%y %{SOURCE0})" +v%Y%m%d-%H%M)
+QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
 %{mvn_build} -j -f -- -DforceContextQualifier=$QUALIFIER \
 %if %{with bootstrap}
    -P !api-generation,!build-docs \
@@ -1182,13 +1187,12 @@ fi
 %{_eclipsedir}/plugins/org.eclipse.update.configurator_*
 %{_eclipsedir}/plugins/org.eclipse.urischeme_*
 %{_eclipsedir}/plugins/org.glassfish.web.javax.servlet.jsp_*
-%{_eclipsedir}/plugins/org.kxml2_*
 %{_eclipsedir}/plugins/org.sat4j.core_*
 %{_eclipsedir}/plugins/org.sat4j.pb_*
 %{_eclipsedir}/plugins/org.tukaani.xz_*
 %{_eclipsedir}/plugins/org.w3c.css.sac_*
 %{_eclipsedir}/plugins/org.w3c.dom.svg_*
-%{_eclipsedir}/plugins/org.xmlpull_*
+%{_eclipsedir}/plugins/osgi.cmpn_*
 %doc %{_eclipsedir}/readme
 %{_eclipsedir}/artifacts.xml
 %{_eclipsedir}/p2

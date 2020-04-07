@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:04:23 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 0.4.2
+  * Minimum Rust version has been bumped to 1.37.0
+  * Capitalized the Alacritty.desktop file
+- Added
+  * Live config reload for window.title
+  * Added Rust features x11 and wayland to pick backends, with both
+    enabled by default
+- Changed
+  * Pressing additional modifiers for mouse bindings will no longer
+    trigger them
+  * Renamed WINIT_HIDPI_FACTOR environment variable to
+    WINIT_X11_SCALE_FACTOR
+  * Print an error instead of crashing, when startup working
+    directory is invalid
+  * Line selection will now expand across wrapped lines
+  * The default value for draw_bold_text_with_bright_colors is now
+    false
+  * Mirror OSC query terminators instead of always using BEL
+  * Increased Beam, Underline, and Hollow Block cursors' line
+    widths
+  * Dynamic title is not disabled anymore when window.title is set
+    in config
+- Removed
+  * Config option auto_scroll, which is now always disabled
+  * Config option tabspaces, which is now fixed at 8
+- Fixed
+  * Semantic selection stopping at full-width glyphs
+  * Full-width glyphs cut off in last column
+  * Crash when starting on some X11 systems
+  * Font size resetting when Alacritty is moved between screens
+  * Limited payload length in clipboard escape (used for Tmux
+    copy/paste)
+  * Alacritty not ignoring keyboard events for changing WM focus on
+    X11
+  * CLI parameters discarded when config is reload
+  * Blurred icons in KDE task switcher (alacritty.ico is now
+    high-res)
+  * Block selection starting from first column after beginning
+    leaves the scrollback
+  * Incorrect selection status of the first cell when selection is
+    off screen
+  * Backwards bracket selection
+  * Stack overflow when printing shader creation error
+  * Underline position for bitmap fonts
+  * Selection rotating outside of scrolling region
+  * Throughput performance problems caused by excessive font metric
+    queries
+  * Unicode throughput performance on Linux/BSD
+  * Resize of bitmap fonts
+  * Crash when using bitmap font with embeddedbitmap set to false
+  * Inconsistent fontconfig fallback
+  * Handling of OpenType variable fonts
+  * Expansion of block-selection on partially selected full-width
+    glyphs
+  * Handling of URLs with single quotes
+  * Parser reset between DCS escapes
+  * Parser stopping at unknown DEC private modes/SGR character
+    attributes
+  * Block selection appending duplicate newlines when last column
+    is selected
+  * Bitmap fonts being a bit smaller than they should be in some
+    cases
+  * Config reload creating alternate screen history instead of
+    updating scrollback
+  * Crash on Wayland compositors supporting wl_seat version 7+
+  * Message bar not hiding after fixing wrong color value in config
+  * Tabstops cleared on resize
+  * Tabstops not breaking across lines
+  * Crash when parsing DCS escape with more than 16 parameters
+  * Ignoring of slow touchpad scrolling
+  * Selection invisible when starting above viewport and ending
+    below it
+  * Clipboard not working after TTY switch on Wayland
+  * Crash when pasting non UTF-8 string advertised as UTF-8 string
+    on Wayland
+  * Incorrect modifiers tracking on X11 and macOS, leading to
+    'sticky' modifiers
+  * Crash when starting on Windows with missing dark mode support
+  * Variables XCURSOR_THEME and XCURSOR_SIZE ignored on Wayland
+  * Low resolution mouse cursor and decorations on HiDPI Wayland
+    outputs
+  * Decorations visible when in fullscreen on Wayland
+  * Crash on startup with some locales on X11
+  * Shrinking terminal height in alt screen deleting primary screen
+    content
+
+-------------------------------------------------------------------
 Wed Jan 22 16:56:44 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 0.4.1

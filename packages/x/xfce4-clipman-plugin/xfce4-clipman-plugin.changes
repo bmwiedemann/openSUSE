@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  5 12:20:09 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.6.1
+  * Add translateable files to POTFILES (bxo#16608)
+  * Bump libxfce4ui ifdef to 4.15.1
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 29 22:37:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.6.0

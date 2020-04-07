@@ -39,4 +39,32 @@
     <comment></comment>
     <requestid>685832</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5708d47c3c4eed45458e33e1db8e6b82</srcmd5>
+    <version>0.7.1</version>
+    <time>1586248062</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary  _service file
+
+- Fix pidfile (/var/run -&gt; /run)
+
+- Bugfix release 0.7.1
+  * fixed build on gcc 10
+  * fixed configure script which failed to detect the version number correctly
+    in release 0.7, incorrectly trying to rely on git to do so.
+- remove support for pre-systemd openSUSE releases
+- remove patch spacenavd-add-blacklist-and-device-ids.patch
+- remove patch spacenavd-add-missing-usbid.patch
+- remove patch spacenavd-0.6+git3066072.patch
+- remove patch spacenavd-fix-pidfile.patch
+- Release 0.7
+  * implemented the ability to log to syslog.
+  * ignore joystick devices when searching for USB devices (linux).
+  * added code to attempt to wrestle devices from the X server.
+  * added the new 3Dconnexion vendor id to the device matching logic.
+  * made builds reproducible by linking in alphabetical order.
+  * added option led = auto, to turn the LED on only when a client connects (linux).
+  * implemented a blacklist of USB device ids that should be ignored.</comment>
+    <requestid>790486</requestid>
+  </revision>
 </revisionlist>

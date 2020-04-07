@@ -28,4 +28,13 @@
     MINIO_STORAGE_ASSUME_STATIC_BUCKET_EXISTS</comment>
     <requestid>762084</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b31c2d6e8b643e09d549f63e7a27266</srcmd5>
+    <version>0.3.7</version>
+    <time>1586248080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.7:
+  * no changelog</comment>
+    <requestid>791485</requestid>
+  </revision>
 </revisionlist>

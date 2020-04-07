@@ -1,0 +1,16 @@
+--- languagetool-4.7/languagetool-core/src/main/java/org/languagetool/rules/spelling/morfologik/suggestions_ordering/SuggestionsOrdererGSoC.java	2019-10-07 01:46:11.440198926 +0200
++++ languagetool-4.7/languagetool-core/src/main/java/org/languagetool/rules/spelling/morfologik/suggestions_ordering/SuggestionsOrdererGSoC.java	2019-10-07 08:44:44.264981124 +0200
+@@ -141,10 +141,10 @@
+ 
+     FVec featuresVector = FVec.Transformer.fromArray(data,false);
+ 
+-    double[] predictions = predictor.predict(featuresVector);
+-    double predictedScore = predictions.length == 0 ? 0 : predictions[0];
++    float[] predictions = predictor.predict(featuresVector);
++    float predictedScore = predictions.length == 0 ? 0 : predictions[0];
+ 
+-    return (float) predictedScore;
++    return predictedScore;
+   }
+ 
+   @Override

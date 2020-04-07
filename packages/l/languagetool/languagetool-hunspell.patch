@@ -1,0 +1,1028 @@
+--- languagetool-4.8/languagetool-core/pom.xml	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-core/pom.xml	2020-01-07 09:32:01.278033500 +0100
+@@ -106,6 +106,11 @@
+             <version>28.1-jre</version>
+         </dependency>
+         <dependency>
++            <groupId>net.java.dev.jna</groupId>
++            <artifactId>jna</artifactId>
++            <version>4.5.2</version>
++        </dependency>
++        <dependency>
+             <groupId>org.carrot2</groupId>
+             <artifactId>morfologik-fsa</artifactId>
+             <version>${morfologik.version}</version>
+@@ -218,13 +223,6 @@
+             <artifactId>slf4j-api</artifactId>
+             <version>1.7.25</version>
+         </dependency>
+-
+-        <dependency>
+-            <groupId>com.gitlab.dumonts</groupId>
+-            <artifactId>hunspell</artifactId>
+-            <version>1.1.0</version>
+-        </dependency>
+-        
+         <dependency>
+             <groupId>ch.qos.logback</groupId>
+             <artifactId>logback-classic</artifactId>
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/CompoundAwareHunspellRule.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/CompoundAwareHunspellRule.java	2020-01-07 09:32:01.278033500 +0100
+@@ -143,7 +143,7 @@
+     int partCount = 0;
+     List<String> candidates = new ArrayList<>();
+     for (String part : parts) {
+-      if (!hunspell.spell(part)) {
++      if (hunspellDict.misspelled(part)) {
+         // assume noun, so use uppercase:
+         boolean doUpperCase = partCount > 0 && !StringTools.startsWithUppercase(part);
+         List<String> suggestions = morfoSpeller.getSuggestions(doUpperCase ? StringTools.uppercaseFirstChar(part) : part);
+@@ -213,7 +213,7 @@
+       String[] words = tokenizeText(wordOrPhrase);
+       boolean wordIsOkay = true;
+       for (String word : words) {
+-        if (!hunspell.spell(word)) {
++        if (hunspellDict.misspelled(word)) {
+           wordIsOkay = false;
+           break;
+         }
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/Hunspell.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/Hunspell.java	2020-01-07 09:32:01.278033500 +0100
+@@ -1,132 +1,418 @@
+ package org.languagetool.rules.spelling.hunspell;
+ 
+-import dumonts.hunspell.bindings.HunspellLibrary;
+-import org.bridj.Pointer;
+-
+-import java.io.Closeable;
++import java.io.File;
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+-import java.nio.charset.Charset;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.nio.file.StandardCopyOption;
+-import java.util.*;
+-import java.util.stream.Collectors;
+-
+-public class Hunspell implements Closeable {
+-  private final Pointer<HunspellLibrary.Hunhandle> handle;
+-  private final Charset charset;
+-  
+-  private static final Map<LanguageAndPath, Hunspell> map = new HashMap<>();
+-  
+-  static class LanguageAndPath {
+-    private final Path dictionary;
+-    private final Path affix;
+-    LanguageAndPath(Path dictionary, Path affix) {
+-      this.dictionary = Objects.requireNonNull(dictionary);
+-      this.affix = Objects.requireNonNull(affix);
+-    }
+-    @Override
+-    public boolean equals(Object o) {
+-      if (this == o) return true;
+-      if (o == null || getClass() != o.getClass()) return false;
+-      LanguageAndPath that = (LanguageAndPath) o;
+-      return Objects.equals(dictionary, that.dictionary) &&
+-        Objects.equals(affix, that.affix);
+-    }
+-    @Override
+-    public int hashCode() {
+-      return Objects.hash(dictionary, affix);
+-    }
++import java.io.UnsupportedEncodingException;
++import java.nio.CharBuffer;
++import java.nio.charset.CharacterCodingException;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Scanner;
++
++import com.sun.jna.Native;
++import com.sun.jna.Pointer;
++import com.sun.jna.ptr.PointerByReference;
++
++/**
++ * The simple hunspell library frontend which takes care of creating
++ * and singleton'ing the library instance (no need to load it more than once
++ * per process).
++ *
++ * The Hunspell java bindings are licensed under the same terms as Hunspell itself (GPL/LGPL/MPL tri-license),
++ * see the file COPYING.txt in the root of the distribution for the exact terms.
++ *
++ * @author Flemming Frandsen (flfr at stibo dot com)
++ */
++
++public class Hunspell {
++
++    /**
++     * The Singleton instance of Hunspell
++     */
++    private static Hunspell hunspell = null;
++
++    /**
++     * The native library instance, created by JNA.
++     */
++    private HunspellLibrary hsl = null;
++
++    /**
++     * The library file that was loaded.
++     */
++    private String libFile;
++
++    /**
++     * The instance of the HunspellManager, looks for the native lib in the
++     * default directories
++     */
++    public static Hunspell getInstance() throws UnsatisfiedLinkError, UnsupportedOperationException { 
++        return getInstance(null);
++    }
++
++    /**
++     * The instance of the HunspellManager, looks for the native lib in
++     * the directory specified.
++     *
++     * @param libDir Optional absolute directory where the native lib can be found. 
++     */
++    public static synchronized Hunspell getInstance(String libDir) throws UnsatisfiedLinkError, UnsupportedOperationException {
++        if (hunspell != null) {
++            return hunspell;
+   }
+ 
+-  public Hunspell(Path dictionary, Path affix) {
+-    Pointer<Byte> aff = Pointer.pointerToCString(affix.toString());
+-    Pointer<Byte> dic = Pointer.pointerToCString(dictionary.toString());
+-    handle = HunspellLibrary.Hunspell_create(aff, dic);
+-    charset = Charset.forName(HunspellLibrary.Hunspell_get_dic_encoding(handle).getCString());
+-    if (this.handle == null) {
+-      throw new RuntimeException("Unable to create Hunspell instance");
+-    }
++        hunspell = new Hunspell(libDir);
++        return hunspell;
+   }
+   
+-  public synchronized static Hunspell getInstance(Path dictionary, Path affix) {
+-    LanguageAndPath key = new LanguageAndPath(dictionary, affix);
+-    Hunspell hunspell = map.get(key);
+-    if (hunspell != null) {
+-      return hunspell;
++    protected void tryLoad(String libFile) throws UnsupportedOperationException {
++        hsl = (HunspellLibrary)Native.loadLibrary(libFile, HunspellLibrary.class);
+     }
+-    Hunspell newHunspell = new Hunspell(dictionary, affix);
+-    map.put(key, newHunspell);
+-    return newHunspell;
++
++
++    /**
++     * Constructor for the library, loads the native lib.
++     *
++     * Loading is done in the first of the following three ways that works:
++     * 1) Unmodified load in the provided directory.
++     * 2) libFile stripped back to the base name (^lib(.*)\.so on unix)
++     * 3) The library is searched for in the classpath, extracted to disk and loaded.
++     *
++     * @param libDir Optional absolute directory where the native lib can be found. 
++     * @throws UnsupportedOperationException if the OS or architecture is simply not supported.
++     */
++    protected Hunspell(String libDir) throws UnsatisfiedLinkError, UnsupportedOperationException {
++
++        libFile = libDir != null ? libDir+"/"+libName() : libNameBare();
++        try {	   
++            hsl = (HunspellLibrary)Native.loadLibrary(libFile, HunspellLibrary.class);
++        } catch (UnsatisfiedLinkError urgh) {
++
++            // Oh dear, the library was not found in the file system, let's try the classpath
++            libFile = libName();
++            InputStream is = Hunspell.class.getResourceAsStream("/"+libFile);
++            if (is == null) {
++                throw new UnsatisfiedLinkError("Can't find "+libFile+
++                        " in the filesystem nor in the classpath\n"+
++                        urgh);
+   }
+ 
+-  public static Hunspell forDictionaryInResources(String language, String resourcePath) {
++            // Extract the library from the classpath into a temp file.
++            File lib;
++            FileOutputStream fos = null;
+     try {
+-      ClassLoader loader = Hunspell.class.getClassLoader();
+-      InputStream dictionaryStream = loader.getResourceAsStream(resourcePath + language + ".dic");
+-      InputStream affixStream = loader.getResourceAsStream(resourcePath + language + ".aff");
+-      if (dictionaryStream == null || affixStream == null) {
+-        throw new RuntimeException("Could not find dictionary for language \"" + language + "\" in classpath");
+-      }
+-      Path dictionary = Files.createTempFile(language, ".dic");
+-      Path affix = Files.createTempFile(language, ".aff");
+-      Files.copy(dictionaryStream, dictionary, StandardCopyOption.REPLACE_EXISTING);
+-      Files.copy(affixStream, affix, StandardCopyOption.REPLACE_EXISTING);
+-      return new Hunspell(dictionary, affix);
++                lib = File.createTempFile("jna", "."+libFile);
++                lib.deleteOnExit();
++                fos = new FileOutputStream(lib);
++                int count;
++                byte[] buf = new byte[1024];
++                while ((count = is.read(buf, 0, buf.length)) > 0) {
++                    fos.write(buf, 0, count);
++                }
++
+     } catch (IOException e) {
+-      throw new RuntimeException("Could not create temporary dictionaries for language \"" + language + "\"", e);
++                throw new Error("Failed to create temporary file for "+libFile, e);
++
++            } finally {
++                try { is.close(); } catch(IOException e) { }
++                if (fos != null) {
++                    try { fos.close(); } catch(IOException e) { }
++                }
++            }
++            //System.out.println("Loading temp lib: "+lib.getAbsolutePath());
++            hsl = (HunspellLibrary)Native.loadLibrary(lib.getAbsolutePath(), HunspellLibrary.class);
++        }
++    }
++
++    public String getLibFile() {
++        return libFile;
++    }
++
++    /**
++     * Calculate the filename of the native hunspell lib.
++     * The files have completely different names to allow them to live
++     * in the same directory and avoid confusion.
++     */
++    public static String libName() throws UnsupportedOperationException {
++        String os = System.getProperty("os.name").toLowerCase();
++        if (os.startsWith("windows")) {
++            return libNameBare()+".dll";
++
++        } else if (os.startsWith("mac os x")) {
++            //	    return libNameBare()+".dylib";
++            return libNameBare()+".jnilib";
++
++        } else {
++            return "lib"+libNameBare()+".so";
++        }  
++    }
++
++    public static String libNameBare() throws UnsupportedOperationException {
++        String os = System.getProperty("os.name").toLowerCase();
++        String arch = System.getProperty("os.arch").toLowerCase();
++
++        // Annoying that Java doesn't have consistent names for the arch types:
++        boolean x86  = arch.equals("x86")    || arch.equals("i386")  || arch.equals("i686");
++        boolean amd64= arch.equals("x86_64") || arch.equals("amd64") || arch.equals("ia64n");
++
++        if (os.startsWith("windows")) {
++            if (x86) {
++                return "hunspell-win-x86-32";
++            }
++            if (amd64) { 
++                return "hunspell-win-x86-64";
++            }
++
++        } else if (os.startsWith("mac os x")) {
++            if (x86) {
++                return "hunspell-darwin-x86-32";
++            }
++            if (amd64) {
++                return "hunspell-darwin-x86-64";
++            }
++            if (arch.equals("ppc")) {		    
++                return "hunspell-darwin-ppc-32";
++            }
++
++        } else if (os.startsWith("linux")) {
++            if (x86) {
++                return "hunspell-linux-x86-32";
++            }
++            if (amd64) {
++                return "hunspell-linux-x86-64";
++            }
++
++        } else if (os.startsWith("sunos")) {
++            //if (arch.equals("sparc")) { 
++            //	return "hunspell-sunos-sparc-64";
++            //}		
++            
++        } else if (os.startsWith("freebsd")) {
++            // Patch by Koen Vervloesem - FreeBSD is not supported yet, but: "... not a real solution, but
++            // having this fixed makes it easier for me to build new LanguageTool releases without always
++            // having to apply a local patch first."
++            if (x86) {
++                return "hunspell-freebsd-x86-32";
++            }
++            if (amd64) {
++                return "hunspell-freebsd-x86-64";
++            }
++
++        } else if (os.startsWith("aix")) {
++            // added by Martin Kallinger (https://github.com/languagetool-org/languagetool/pull/1090)
++            return "hunspell-ppc64"; 
+     }
++
++        throw new UnsupportedOperationException("Unknown OS/arch: "+os+"/"+arch);
+   }
+ 
+-  public static Hunspell forDictionaryInResources(String language) {
+-    return forDictionaryInResources(language, "");
++    /**
++     * This is the cache where we keep the already loaded dictionaries around
++     */
++    private HashMap<String, Dictionary> map = new HashMap<>();
++
++    
++    private static CharBuffer ensureCapacity(CharBuffer buffer, int capacity) {
++        if (buffer == null || buffer.capacity() < capacity) {
++            buffer = CharBuffer.allocate(capacity);
++        }
++        return buffer;
+   }
+ 
+-  public boolean spell(String word) {
+-    if (handle == null) {
+-      throw new RuntimeException("Attempt to use hunspell instance after closing");
++    /**
++     * Gets an instance of the dictionary. 
++     *
++     * @param baseFileName the base name of the dictionary, 
++     * passing /dict/da_DK means that the files /dict/da_DK.dic
++     * and /dict/da_DK.aff get loaded
++     */
++    public Dictionary getDictionary(String baseFileName)
++            throws IOException {
++
++        if (map.containsKey(baseFileName)) {
++            return map.get(baseFileName);
++
++        } else {
++            Dictionary d = new Dictionary(baseFileName);
++            map.put(baseFileName, d);
++            return d;
++        }
++    }   
++
++    /**
++     * Removes a dictionary from the internal cache
++     *
++     * @param baseFileName the base name of the dictionary, as passed to
++     * getDictionary()
++     */
++    public void destroyDictionary(String baseFileName) {
++        if (map.containsKey(baseFileName)) {
++            map.remove(baseFileName);
++        }
+     }
+-    @SuppressWarnings("unchecked")
+-    Pointer<Byte> str = (Pointer<Byte>) Pointer.pointerToString(word, Pointer.StringType.C, charset);
+-    int result = HunspellLibrary.Hunspell_spell(handle, str);
+-    return result != 0;
++
++    /**
++     * Class representing a single dictionary.
++     */
++    public class Dictionary {
++        /**
++         * The pointer to the hunspell object as returned by the hunspell
++         * constructor.
++         */
++        private Pointer hunspellDict = null;
++
++        /**
++         * The encoding used by this dictionary
++         */
++        private String encoding;
++
++        /*
++         * the tokenization characters
++         */
++        private final String wordChars;
++
++        /**
++         * Creates an instance of the dictionary.
++         * @param baseFileName the base name of the dictionary, 
++         */
++        Dictionary(String baseFileName) throws IOException {
++            File dic = new File(baseFileName + ".dic");
++            File aff = new File(baseFileName + ".aff");
++
++            if (!dic.canRead() || !aff.canRead()) {
++                throw new FileNotFoundException("The dictionary files "+
++                        baseFileName+
++                        "(.aff|.dic) could not be read");
+   }
+ 
+-  public void add(String word) {
+-    if (handle == null) {
+-      throw new RuntimeException("Attempt to use hunspell instance after closing");
++            hunspellDict = hsl.Hunspell_create(aff.toString(), dic.toString());
++            encoding = hsl.Hunspell_get_dic_encoding(hunspellDict);
++
++            //hunspell uses non-standard names of charsets 
++            if ("microsoft1251".equals(encoding)) {
++                encoding = "windows-1251";
++            } else if ("ISCII-DEVANAGARI".equals(encoding)) {
++                encoding = "ISCII91";
+     }
+-    @SuppressWarnings("unchecked")
+-    Pointer<Byte> str = (Pointer<Byte>) Pointer.pointerToString(word, Pointer.StringType.C, charset);
+-    HunspellLibrary.Hunspell_add(handle, str);
++
++            wordChars = getWordCharsFromFile(aff);
+   }
+ 
+-  public List<String> suggest(String word) {
+-    // Create pointer to native string
+-    @SuppressWarnings("unchecked")
+-    Pointer<Byte> str = (Pointer<Byte>) Pointer.pointerToString(word, Pointer.StringType.C, charset);
+-    // Create pointer to native string array
+-    Pointer<Pointer<Pointer<Byte>>> nativeSuggestionArray = Pointer.allocatePointerPointer(Byte.class);
+-    // Hunspell will allocate the array and fill it with suggestions
+-    int suggestionCount = HunspellLibrary.Hunspell_suggest(handle, nativeSuggestionArray, str);
+-    if (suggestionCount == 0) {
+-      // Return early and don't try to free the array
+-      return new ArrayList<>();
++        /**
++         * Deallocate the dictionary.
++         */
++        public void destroy() {
++            if (hsl != null && hunspellDict != null) {
++                hsl.Hunspell_destroy(hunspellDict);
++                hunspellDict = null;
++            }
+     }
+-    // Ask bridj for a `java.util.List` that wraps `nativeSuggestionArray`
+-    List<Pointer<Byte>> nativeSuggestionList = nativeSuggestionArray.get().validElements(suggestionCount).asList();
+-    // Convert C Strings to java strings
+-    List<String> suggestions = nativeSuggestionList.stream().map((p) -> p.getStringAtOffset(0, Pointer.StringType.C, charset)).collect(Collectors.toList());
+ 
+-    // We can free the underlying buffer now because Java's `String` owns it's own memory
+-    HunspellLibrary.Hunspell_free_list(handle, nativeSuggestionArray, suggestionCount);
+-    return suggestions;
++        /**
++         * Used to query what are word-characters
++         * @return A string composed of characters that are parts of words,
++         * even if they are not alphabetic.
++         */
++        public String getWordChars() {
++            return wordChars;
+   }
+ 
+-  public void close() {
+-    if (handle != null) {
+-      HunspellLibrary.Hunspell_destroy(handle);
++        /**
++         * Check if a word is spelled correctly
++         *
++         * @param word The word to check.
++         * @return true if the <code>word</code> is not correctly spelled
++         */
++        public boolean misspelled(String word) {
++            try {
++                final byte[] wordAsBytes = stringToBytes(word);
++                if (wordAsBytes.length == 0 && word.length() > 0) {
++                    return true;
++                }
++                return (hsl.Hunspell_spell(hunspellDict, wordAsBytes) == 0);
++            } catch (UnsupportedEncodingException e) {
++                return true;
+     }
+   }
++
++        /**
++         * Convert a Java string to a zero terminated byte array, in the
++         * encoding of the dictionary, as expected by the hunspell functions.
++         */
++        protected byte[] stringToBytes(String str) throws UnsupportedEncodingException {
++          byte[] strBytes = str.getBytes(encoding);
++          byte[] zeroTerminated = Arrays.copyOf(strBytes, strBytes.length + 1);
++          zeroTerminated[zeroTerminated.length - 1] = '\u0000';
++          return zeroTerminated;
++        }
++
++        /**
++         * Returns a list of suggestions 
++         *
++         * @param word The word to check and offer suggestions for
++         */
++        public List<String> suggest(String word) throws CharacterCodingException {
++            List<String> res = new ArrayList<>();
++            try {		
++                int suggestionsCount = 0;
++                PointerByReference suggestions = new PointerByReference();
++                final byte[] wordAsBytes = stringToBytes(word);
++                if (wordAsBytes.length == 0 && word.length() > 0) {
++                    return res;
++                }
++                suggestionsCount = hsl.Hunspell_suggest(
++                        hunspellDict, suggestions, stringToBytes(word));
++                if (suggestionsCount == 0) {
++                    return res;
++                }
++
++                // Get each of the suggestions out of the pointer array.
++                Pointer[] pointerArray = suggestions.getValue().
++                        getPointerArray(0, suggestionsCount);
++
++                for (int i=0; i<suggestionsCount; i++) {
++                    long len = pointerArray[i].indexOf(0, (byte)0); 
++                    if (len != -1) {
++                        if (len > Integer.MAX_VALUE) {
++                            throw new RuntimeException(
++                                    "String improperly terminated: " + len);
++                        }
++                        byte[] data = pointerArray[i].getByteArray(0, (int)len);
++
++                        res.add(new String(data, encoding));
++                    }
++                }
++
++            } catch (UnsupportedEncodingException ex) { } // Shouldn't happen...
++
++            return res;
++        }
++        
++        private String getWordCharsFromFile(final File affixFile) throws IOException {
++            String affixWordChars = "";
++          try (Scanner scanner = new Scanner(affixFile, encoding)) {
++            while (scanner.hasNextLine()) {
++              final String line = scanner.nextLine().trim();
++              if (line.startsWith("WORDCHARS ")) {
++                affixWordChars = line.substring("WORDCHARS ".length());
++              }
++            }
++          }
++            return affixWordChars;
++          }
++        
++        /**
++         * Adds a word to the runtime dictionary.
++         * @param word Word to be added.
++         */
++        public void addWord(final String word) throws UnsupportedEncodingException {
++            hsl.Hunspell_add(hunspellDict, stringToBytes(word));
++        }
++                
++    }
++
+ }
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/HunspellLibrary.java	1970-01-01 01:00:00.000000000 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/HunspellLibrary.java	2020-01-07 09:32:01.278033500 +0100
+@@ -0,0 +1,67 @@
++package org.languagetool.rules.spelling.hunspell;
++
++import com.sun.jna.Library;
++import com.sun.jna.Pointer;
++import com.sun.jna.ptr.PointerByReference;
++
++/**
++ * Functions from $hunspell/src/hunspell/hunspell.h
++ *
++ * The Hunspell java bindings are licensed under the same terms as Hunspell itself (GPL/LGPL/MPL tri-license),
++ * see the file COPYING.txt in the root of the distribution for the exact terms.
++ *
++ * @author Flemming Frandsen (flfr at stibo dot com)
++ */
++
++public interface HunspellLibrary extends Library {
++
++    /**
++     * Create the hunspell instance
++     * @param affpath The affix file
++     * @param dpath The dictionary file
++     * @return The hunspell object
++     */
++    public Pointer Hunspell_create(String affpath, String dpath);
++
++    /**
++     * Destroy him my robots...
++     * @param pHunspell The Hunspell object returned by Hunspell_create
++     */
++    public void Hunspell_destroy(Pointer pHunspell);
++
++    /**
++     * spell(word) - spellcheck word
++     * @param pHunspell The Hunspell object returned by Hunspell_create
++     * @param word The word to spellcheck.
++     * @return 0 = bad word, not 0 = good word
++     */
++    public int Hunspell_spell(Pointer pHunspell, byte[] word);
++
++    /**
++     * Get the dictionary encoding
++     * @param pHunspell : The Hunspell object returned by Hunspell_create
++     * @return The encoding name
++     */
++    public String Hunspell_get_dic_encoding(Pointer pHunspell);
++
++    /**
++     * Search suggestions
++     * @param pHunspell The Hunspell object returned by Hunspell_create
++     * @param slst  
++     * input: pointer to an array of strings pointer and the (bad) word
++     *   array of strings pointer (here *slst) may not be initialized
++     * output: number of suggestions in string array, and suggestions in
++     *   a newly allocated array of strings (*slts will be NULL when number
++     *   of suggestion equals 0.)
++     * @param word The word to offer suggestions for.
++     */
++    public int Hunspell_suggest(Pointer pHunspell, PointerByReference slst, byte[] word);
++    
++    /**
++     * Add a word to the run-time dictionary.
++     * @param pHunspell The Hunspell object returned by Hunspell_create
++     * @param word The word added to the runtime dictionary.
++     */
++    public int Hunspell_add(Pointer pHunspell, byte[] word);
++            
++}
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/HunspellRule.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/hunspell/HunspellRule.java	2020-01-07 09:32:01.278033500 +0100
+@@ -27,9 +27,12 @@
+ import java.net.URISyntaxException;
+ import java.net.URL;
+ import java.nio.charset.StandardCharsets;
+-import java.nio.file.Path;
+-import java.nio.file.Paths;
+-import java.util.*;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.Collections;
++import java.util.List;
++import java.util.Queue;
++import java.util.ResourceBundle;
+ import java.util.concurrent.ConcurrentLinkedQueue;
+ import java.util.regex.Pattern;
+ import java.util.stream.Collectors;
+@@ -70,7 +73,7 @@
+ 
+   protected final SuggestionsOrderer suggestionsOrderer;
+   protected boolean needsInit = true;
+-  protected Hunspell hunspell = null;
++  protected Hunspell.Dictionary hunspellDict = null;
+ 
+   private static final ConcurrentLinkedQueue<String> activeChecks = new ConcurrentLinkedQueue<>();
+   private static final String NON_ALPHABETIC = "[^\\p{L}]";
+@@ -141,7 +144,7 @@
+     if (needsInit) {
+       init();
+     }
+-    if (hunspell == null) {
++    if (hunspellDict == null) {
+       // some languages might not have a dictionary, be silent about it
+       return toRuleMatchArray(ruleMatches);
+     }
+@@ -297,7 +300,7 @@
+       }
+       return (
+               isAlphabetic && !"--".equals(word)
+-              && (hunspell != null && !hunspell.spell(word))
++              && (hunspellDict != null && hunspellDict.misspelled(word))
+               && !ignoreWord(word)
+              )
+              || isProhibited(cutOffDot(word));
+@@ -310,7 +313,7 @@
+     if (needsInit) {
+       init();
+     }
+-    return hunspell.suggest(word);
++    return hunspellDict.suggest(word);
+   }
+ 
+   protected List<String> sortSuggestionByQuality(String misspelling, List<String> suggestions) {
+@@ -368,33 +371,20 @@
+     String shortDicPath = getDictFilenameInResources(langCountry);
+     String wordChars = "";
+     // set dictionary only if there are dictionary files:
+-    Path affPath = null;
+     if (JLanguageTool.getDataBroker().resourceExists(shortDicPath)) {
+       String path = getDictionaryPath(langCountry, shortDicPath);
+       if ("".equals(path)) {
+-        hunspell = null;
++        hunspellDict = null;
+       } else {
+-        affPath = Paths.get(path + ".aff");
+-        hunspell = Hunspell.getInstance(Paths.get(path + ".dic"), affPath);
++        hunspellDict = Hunspell.getInstance().getDictionary(path);
+         addIgnoreWords();
+       }
+     } else if (new File(shortDicPath + ".dic").exists()) {
+       // for dynamic languages
+-      affPath = Paths.get(shortDicPath + ".aff");
+-      hunspell = Hunspell.getInstance(Paths.get(shortDicPath + ".dic"), affPath);
++      hunspellDict = Hunspell.getInstance().getDictionary(shortDicPath);
+     }
+-    if (affPath != null) {
+-      Scanner sc = new Scanner(affPath);
+-      while (sc.hasNextLine()) {
+-        String line = sc.nextLine();
+-        if (line.startsWith("WORDCHARS ")) {
+-          String wordCharsFromAff = line.substring("WORDCHARS ".length());
+-          //System.out.println("#" + wordCharsFromAff+ "#");
+-          wordChars = "(?![" + wordCharsFromAff.replace("-", "\\-") + "])";
+-          break;
+-        }
+-      }
+-      
++    if (hunspellDict != null && !hunspellDict.getWordChars().isEmpty()) {
++      wordChars = "(?![" + hunspellDict.getWordChars().replace("-", "\\-") + "])";
+     }
+     nonWordPattern = Pattern.compile(wordChars + NON_ALPHABETIC);
+     needsInit = false;
+@@ -406,13 +396,13 @@
+   }
+ 
+   private void addIgnoreWords() throws IOException {
+-    wordsToBeIgnored.add(SpellingCheckRule.LANGUAGETOOL);
+-    wordsToBeIgnored.add(SpellingCheckRule.LANGUAGETOOLER);
++    hunspellDict.addWord(SpellingCheckRule.LANGUAGETOOL);
++    hunspellDict.addWord(SpellingCheckRule.LANGUAGETOOLER);
+     URL ignoreUrl = JLanguageTool.getDataBroker().getFromResourceDirAsUrl(getIgnoreFileName());
+     List<String> ignoreLines = Resources.readLines(ignoreUrl, StandardCharsets.UTF_8);
+     for (String ignoreLine : ignoreLines) {
+       if (!ignoreLine.startsWith("#")) {
+-        wordsToBeIgnored.add(ignoreLine);
++        hunspellDict.addWord(ignoreLine);
+       }
+     }
+   }
+--- languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/SpellingCheckRule.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-core/src/main/java/org/languagetool/rules/spelling/SpellingCheckRule.java	2020-01-07 09:32:01.278033500 +0100
+@@ -81,6 +81,7 @@
+   private static final Comparator<String> STRING_LENGTH_COMPARATOR = Comparator.comparingInt(String::length);
+ 
+   private final UserConfig userConfig;
++  private final Set<String> wordsToBeIgnored = new HashSet<>();
+   private final Set<String> wordsToBeProhibited = new HashSet<>();
+   private final List<RuleWithLanguage> altRules;
+ 
+@@ -90,7 +91,6 @@
+   private List<DisambiguationPatternRule> antiPatterns = new ArrayList<>();
+   private boolean considerIgnoreWords = true;
+   private boolean convertsCase = false;
+-  protected final Set<String> wordsToBeIgnored = new HashSet<>();
+   protected int ignoreWordsWithLength = 0;
+ 
+   public SpellingCheckRule(ResourceBundle messages, Language language, UserConfig userConfig) {
+--- languagetool-4.8/languagetool-language-modules/de/src/main/java/org/languagetool/rules/de/GermanSpellerRule.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-language-modules/de/src/main/java/org/languagetool/rules/de/GermanSpellerRule.java	2020-01-07 09:32:01.282033523 +0100
+@@ -1132,107 +1132,107 @@
+       return Collections.singletonList("Std.");
+     } else if (word.matches(".*ibel[hk]eit$")) {
+       suggestion = word.replaceFirst("el[hk]eit$", "ilität");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("aquise")) {
+       suggestion = word.replaceFirst("aquise$", "akquise");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("standart")) {
+       suggestion = word.replaceFirst("standart$", "standard");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("standarts")) {
+       suggestion = word.replaceFirst("standarts$", "standards");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("tips")) {
+       suggestion = word.replaceFirst("tips$", "tipps");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("tip")) {
+       suggestion = word + "p";
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("entfehlung")) {
+       suggestion = word.replaceFirst("ent", "emp");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.endsWith("oullie")) {
+       suggestion = word.replaceFirst("oullie$", "ouille");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.startsWith("[dD]urschnitt")) {
+       suggestion = word.replaceFirst("^urschnitt", "urchschnitt");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.startsWith("Bundstift")) {
+       suggestion = word.replaceFirst("^Bundstift", "Buntstift");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("[aA]llmähll?i(g|ch)(e[mnrs]?)?")) {
+       suggestion = word.replaceFirst("llmähll?i(g|ch)", "llmählich");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches(".*[mM]a[jy]onn?[äe]se.*")) {
+       suggestion = word.replaceFirst("a[jy]onn?[äe]se", "ayonnaise");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches(".*[rR]es(a|er)[vw]i[he]?rung(en)?")) {
+       suggestion = word.replaceFirst("es(a|er)[vw]i[he]?rung", "eservierung");
+-      if (hunspell.spell(suggestion)) { // suggest e.g. 'Ticketreservierung', but not 'Blödsinnsquatschreservierung'
++      if (!hunspellDict.misspelled(suggestion)) { // suggest e.g. 'Ticketreservierung', but not 'Blödsinnsquatschreservierung'
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("[rR]eschaschier.+")) {
+       suggestion = word.replaceFirst("schaschier", "cherchier");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches(".*[lL]aborants$")) {
+       suggestion = word.replaceFirst("ts$", "ten");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("[pP]roff?ess?ion([äe])h?ll?(e[mnrs]?)?")) {
+       suggestion = word.replaceFirst("roff?ess?ion([äe])h?l{1,2}", "rofessionell");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("[vV]erstehendniss?(es?)?")) {
+       suggestion = word.replaceFirst("[vV]erstehendnis", "Verständnis");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("koregier.+")) {
+       suggestion = word.replaceAll("reg", "rrig");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches("diagno[sz]ier.*")) {
+       suggestion = word.replaceAll("gno[sz]ier", "gnostizier");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches(".*eiss.*")) {
+       suggestion = word.replaceAll("eiss", "eiß");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.matches(".*uess.*")) {
+       suggestion = word.replaceAll("uess", "üß");
+-      if (hunspell.spell(suggestion)) {
++      if (!hunspellDict.misspelled(suggestion)) {
+         return Collections.singletonList(suggestion);
+       }
+     } else if (word.equals("gin")) {
+@@ -1286,17 +1286,17 @@
+         return Collections.singletonList("Ladys");
+       } else if (word.endsWith("derbies")) {
+         suggestion = word.replaceFirst("derbies$", "derbys");
+-        if (hunspell.spell(suggestion)) {
++        if (!hunspellDict.misspelled(suggestion)) {
+           return Collections.singletonList(suggestion);
+         }
+       } else if (word.endsWith("stories")) {
+         suggestion = word.replaceFirst("stories$", "storys");
+-        if (hunspell.spell(suggestion)) {
++        if (!hunspellDict.misspelled(suggestion)) {
+           return Collections.singletonList(suggestion);
+         }
+       } else if (word.endsWith("parties")) {
+         suggestion = word.replaceFirst("parties$", "partys");
+-        if (hunspell.spell(suggestion)) {
++        if (!hunspellDict.misspelled(suggestion)) {
+           return Collections.singletonList(suggestion);
+         }
+       }
+@@ -1334,8 +1334,8 @@
+       return Collections.singletonList("Zynismus");
+     } else if (word.matches("Email[a-zäöü]{5,}")) {
+       String suffix = word.substring(5);
+-      if (!hunspell.spell(suffix)) {
+-        List<String> suffixSuggestions = hunspell.suggest(StringTools.uppercaseFirstChar(suffix));
++      if (hunspellDict.misspelled(suffix)) {
++        List<String> suffixSuggestions = hunspellDict.suggest(suffix);
+         suffix = suffixSuggestions.isEmpty() ? suffix : suffixSuggestions.get(0);
+       }
+       return Collections.singletonList("E-Mail-"+Character.toUpperCase(suffix.charAt(0))+suffix.substring(1));
+@@ -1352,7 +1352,7 @@
+     }
+     if (!StringTools.startsWithUppercase(word)) {
+       String ucWord = StringTools.uppercaseFirstChar(word);
+-      if (!suggestions.contains(ucWord) && hunspell.spell(ucWord) && !ucWord.endsWith(".")) {
++      if (!suggestions.contains(ucWord) && !hunspellDict.misspelled(ucWord) && !ucWord.endsWith(".")) {
+         // Hunspell doesn't always automatically offer the most obvious suggestion for compounds:
+         return Collections.singletonList(ucWord);
+       }
+@@ -1386,7 +1386,7 @@
+           stopAt = words.length-2;
+         }
+         for (int idx = startAt; idx < stopAt; idx++) {
+-          if (!hunspell.spell(words[idx])) {
++          if (hunspellDict.misspelled(words[idx])) {
+             List<String> list = sortSuggestionByQuality(words[idx], super.getSuggestions(words[idx]));
+             suggestionLists.add(list);
+           } else {
+@@ -1473,7 +1473,7 @@
+   private String getParticipleForBaseform(String baseform) throws IOException {
+     AnalyzedToken token = new AnalyzedToken(baseform, null, baseform);
+     String[] forms = synthesizer.synthesize(token, "VER:PA2:.*", true);
+-    if (forms.length > 0 && hunspell.spell(forms[0])) {
++    if (forms.length > 0 && !hunspellDict.misspelled(forms[0])) {
+       return forms[0];
+     }
+     return null;
+@@ -1498,12 +1498,12 @@
+     boolean isCompound = nextWord != null && (compoundTokenizer.tokenize(nextWord).size() > 1 || nextWord.indexOf('-') > 0);
+     if (isCompound) {
+       word = StringUtils.removeEnd(word, "-");
+-      boolean isMisspelled = !hunspell.spell(word);  // "Stil- und Grammatikprüfung" or "Stil-, Text- und Grammatikprüfung"
++      boolean isMisspelled = hunspellDict.misspelled(word);  // "Stil- und Grammatikprüfung" or "Stil-, Text- und Grammatikprüfung"
+       if (isMisspelled && (super.ignoreWord(word) || wordsToBeIgnoredInCompounds.contains(word))) {
+         isMisspelled = false;
+       } else if (isMisspelled && word.endsWith("s") && isNeedingFugenS(StringUtils.removeEnd(word, "s"))) {
+         // Vertuschungs- und Bespitzelungsmaßnahmen: remove trailing "s" before checking "Vertuschungs" so that the spell checker finds it
+-        isMisspelled = !hunspell.spell(StringUtils.removeEnd(word, "s"));
++        isMisspelled = hunspellDict.misspelled(StringUtils.removeEnd(word, "s"));
+       }
+       return !isMisspelled;
+     }
+@@ -1556,10 +1556,10 @@
+       boolean isCandidateForNonHyphenatedCompound = !StringUtils.isAllUpperCase(ignoredWord) && (StringUtils.isAllLowerCase(partialWord) || ignoredWord.endsWith("-"));
+       boolean needFugenS = isNeedingFugenS(ignoredWord);
+       if (isCandidateForNonHyphenatedCompound && !needFugenS && partialWord.length() > 2) {
+-        return hunspell.spell(partialWord) || hunspell.spell(StringUtils.capitalize(partialWord));
++        return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
+       } else if (isCandidateForNonHyphenatedCompound && needFugenS && partialWord.length() > 2) {
+         partialWord = partialWord.startsWith("s") ? partialWord.substring(1) : partialWord;
+-        return hunspell.spell(partialWord) || hunspell.spell(StringUtils.capitalize(partialWord));
++        return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
+       }
+       return false;
+     }
+@@ -1591,7 +1591,7 @@
+ 
+     if (hasIgnoredWord) {
+       for (String w : toSpellCheck) {
+-        if (!hunspell.spell(w)) {
++        if (hunspellDict.misspelled(w)) {
+           return false;
+         }
+       }
+--- languagetool-4.8/languagetool-wikipedia/src/main/java/org/languagetool/dev/RareWordsFinder.java	2019-12-27 11:17:28.000000000 +0100
++++ languagetool-4.8/languagetool-wikipedia/src/main/java/org/languagetool/dev/RareWordsFinder.java	2020-01-07 09:32:01.282033523 +0100
+@@ -25,7 +25,6 @@
+ import java.io.FileNotFoundException;
+ import java.io.IOException;
+ import java.nio.charset.CharacterCodingException;
+-import java.nio.file.Paths;
+ import java.util.List;
+ import java.util.Scanner;
+ 
+@@ -39,10 +38,11 @@
+ 
+   private static final String dictInClassPath = "/en/hunspell/en_US.dict";
+   
+-  private final Hunspell hunspell;
++  private final Hunspell.Dictionary hunspellDict;
+   
+   private RareWordsFinder(String hunspellBase) throws IOException {
+-    hunspell = new Hunspell(Paths.get(hunspellBase + ".dic"), Paths.get(hunspellBase + ".aff"));
++    Hunspell hunspell = Hunspell.getInstance();
++    hunspellDict = hunspell.getDictionary(hunspellBase);
+   }
+   
+   private void run(File input, int minimum) throws FileNotFoundException, CharacterCodingException {
+@@ -60,7 +60,7 @@
+             boolean isMisspelled = speller.isMisspelled(word);
+             if (!isMisspelled) {
+               //List<String> suggestions = speller.getSuggestions(word);  // seems to work only for words that are actually misspellings
+-              List<String> suggestions = hunspell.suggest(word);
++              List<String> suggestions = hunspellDict.suggest(word);
+               suggestions.remove(word);
+               if (suggestionsMightBeUseful(word, suggestions)) {
+                 System.out.println(word + "\t" + count + " -> " + String.join(", ", suggestions));

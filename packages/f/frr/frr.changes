@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 15 21:27:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.3
+  * Upstream does not provide a changelog this time
+- Remove patch:
+  * fix_tests.patch (not longer needed)
+
+-------------------------------------------------------------------
 Sat Jan 18 20:25:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.2.1:

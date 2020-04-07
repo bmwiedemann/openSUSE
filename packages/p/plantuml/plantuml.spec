@@ -1,7 +1,7 @@
 #
 # spec file for package plantuml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plantuml
-Version:        1.2019.13
+Version:        1.2020.6
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  java-devel >= 1.5
 BuildRequires:  jpackage-utils
 BuildRequires:  libxslt
 BuildRequires:  unzip
+Requires:       dejavu-fonts
 Requires:       java >= 1.8.0
 Requires:       jpackage-utils
 Conflicts:      java-1_5_0-gcj-compat

@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with     cumulus
 %bcond_with     datacenter
 
@@ -29,16 +30,15 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        7.2.1
+Version:        7.3
 Release:        0
 Summary:        FRRouting Routing daemon
-License:        GPL-2.0-or-later and LGPL-2.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
 Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
-Patch0:         fix_tests.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -134,15 +134,24 @@ Group:          System/Libraries
 This library contains various utility functions to FRRouting, such as
 data types, buffers and socket handling.
 
+%package -n libmlag_pb0
+Summary:        FRRouting utility library
+Group:          System/Libraries
+
+%description -n libmlag_pb0
+This library contains part of the mlag implementation of FRRouting.
+
 %package devel
 Summary:        Header and object files for frr development
 Group:          Development/Libraries/C and C++
 Requires:       libfrr0 = %{version}
+Requires:       libfrr_pb0 = %{version}
+Requires:       libfrrcares0 = %{version}
+Requires:       libfrrfpm_pb0 = %{version}
 Requires:       libfrrospfapiclient0 = %{version}
 Requires:       libfrrsnmp0 = %{version}
-Requires:       libfrr_pb0 = %{version}
-Requires:       libfrrfpm_pb0 = %{version}
 Requires:       libfrrzmq0 = %{version}
+Requires:       libmlag_pb0 = %{version}
 
 %description devel
 The frr-devel package contains the header and object files necessary for
@@ -150,7 +159,6 @@ developing OSPF-API and frr applications.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
@@ -292,6 +300,7 @@ fi
 
 %post   -n libfrrospfapiclient0 -p /sbin/ldconfig
 %postun -n libfrrospfapiclient0 -p /sbin/ldconfig
+
 %post   -n libfrrsnmp0 -p /sbin/ldconfig
 %postun -n libfrrsnmp0 -p /sbin/ldconfig
 
@@ -300,8 +309,12 @@ fi
 
 %post   -n libfrr0 -p /sbin/ldconfig
 %postun -n libfrr0 -p /sbin/ldconfig
+
 %post   -n libfrrcares0 -p /sbin/ldconfig
 %postun -n libfrrcares0 -p /sbin/ldconfig
+
+%post   -n libmlag_pb0 -p /sbin/ldconfig
+%postun -n libmlag_pb0 -p /sbin/ldconfig
 
 %files
 %license COPYING COPYING-LGPLv2.1
@@ -354,10 +367,12 @@ fi
 %{frr_daemondir}/zebra
 %dir %{_libdir}/frr
 %dir %{_libdir}/frr/modules
+%{_libdir}/frr/modules/zebra_cumulus_mlag.so
 %{_libdir}/frr/modules/zebra_fpm.so
 %{_libdir}/frr/modules/zebra_irdp.so
 %{_libdir}/frr/modules/bgpd_rpki.so
 %{_prefix}/lib/frr/vrrpd
+%{_prefix}/lib/frr/generate_support_bundle.py
 %{_libdir}/frr/modules/bgpd_bmp.so
 
 %files -n libfrr_pb0
@@ -380,8 +395,10 @@ fi
 %{_libdir}/libfrr.so.0*
 
 %files -n libfrrcares0
-%{_libdir}/libfrrcares.so.0
-%{_libdir}/libfrrcares.so.0.0.0
+%{_libdir}/libfrrcares.so.0*
+
+%files -n libmlag_pb0
+%{_libdir}/libmlag_pb.so.0*
 
 %files devel
 %dir %{_includedir}/%{name}

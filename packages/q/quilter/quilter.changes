@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:11:13 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * 2.1.3 - Minor css fixes
+  * 2.1.3 - Can move window in Focus Mode with right-click and
+    hold on Exit Focus Mode button
+  * 2.1.3 - Small fix
+  * 2.1.3 - Small css style fixes
+  * 2.1.3 - Remove Moon Mode
+    quilter.changes quilter.spec
+
+-------------------------------------------------------------------
 Wed Mar 11 16:49:13 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.1.2:

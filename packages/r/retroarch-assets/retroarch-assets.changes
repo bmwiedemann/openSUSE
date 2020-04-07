@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 26 21:15:02 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200326:
+  * (Ozone) Strip metadata from PNG files
+  * (menu_widgets) Ensure PNG files have white transparent pixels
+  * (XMB/Ozone Monochrome) Update 'export' scripts to ensure white transparent pixels + regenerate assets
+  * (GLUI) Strip PNG metadata
+  * GLUI icon fixes
+  * (Ozone) Ensure all assets have 'white' transparent pixels
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake, Quake 2 & Quake 3 icons
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake, Quake 2 & Quake 3 icons
+  * Added Quake, Quake 2 & 3 icons
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake, Quake 2 & Quake 3 icons
+  * Added Quake, Quake 2 & Quake 3 core icons
+  * Added Quake 2 & 3 icons, Updated Quake
+  * Added Quake trilogy banners
+  * Added Quake 2 & Quake 3 icons, refined Quake icon
+  * (Ozone) Add assets for 'Nord' and 'Gruvbox Dark' themes
+
+-------------------------------------------------------------------
 Fri Jan 03 21:21:53 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20191031:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr  4 22:33:32 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~2020102
+    * changes to vslvmmount
+- comment out "make check"    For now this is a false failure
+
+-------------------------------------------------------------------
+Sun Jun  2 19:37:42 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181227
+    * changes for libfdata update
+    * worked on mount tool
+
+-------------------------------------------------------------------
+Mon Jan 15 00:50:16 UTC 2018 - Greg.Freemyer@gmail.com
+
+- clean up the Obsoletes/Provides pair
+
+-------------------------------------------------------------------
 Wed Oct  4 21:30:28 UTC 2017 - Greg.Freemyer@gmail.com
 
 - rename python-libvslvm to python2-libvslvm as expected by singlespec

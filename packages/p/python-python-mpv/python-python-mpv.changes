@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  5 11:47:16 UTC 2020 - aloisio@gmx.com
+
+- Update to version v0.4.6
+  * Make tests run headless using xvfbwrapper
+  * Add some high-level API information to README
+  * README: Add info on GUI modes 
+  * README: add render context gtk example
+  * Initial libmpv/render.h mapping
+  * Add GTK/OpenGL example (#100)
+
+-------------------------------------------------------------------
 Thu Mar 19 05:09:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 0.4.5:

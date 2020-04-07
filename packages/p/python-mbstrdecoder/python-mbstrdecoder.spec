@@ -17,22 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-mbstrdecoder
-Version:        0.8.4
+Version:        1.0.0
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/mbstrdecoder
 Source:         https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-%{version}.tar.gz
+BuildRequires:  %{python_module Faker >= 1.0.2}
 BuildRequires:  %{python_module chardet >= 3.0.4}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Faker >= 1.0.2
 Requires:       python-chardet >= 3.0.4
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,14 +42,6 @@ Python library for multi-byte character string decoding.
 
 %prep
 %setup -q -n mbstrdecoder-%{version}
-# De-vendor six
-rm mbstrdecoder/_six.py
-sed -i 's/\._six/six/' mbstrdecoder/_mbstrdecoder.py
-
-find . -type f | xargs chmod -x
-
-echo > requirements/test_requirements.txt
-
 # Remove build alias
 sed -i '/build =/d' setup.cfg
 
