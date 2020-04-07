@@ -58,4 +58,12 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>766059</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>682ed627dcbd92fca0089d2ccff29eda</srcmd5>
+    <version>4.6.1</version>
+    <time>1586247669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790819</requestid>
+  </revision>
 </revisionlist>

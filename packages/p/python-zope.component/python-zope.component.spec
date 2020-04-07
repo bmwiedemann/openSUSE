@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.component%{psuffix}
-Version:        4.6
+Version:        4.6.1
 Release:        0
 
 Summary:        Zope Component Architecture
