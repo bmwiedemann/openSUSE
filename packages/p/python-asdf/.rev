@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>768773</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e2365be8e61532834805d04b35c6eea8</srcmd5>
+    <version>2.5.2</version>
+    <time>1586248248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.2:
+  * Add schemas that were previously missing from ASDF Standard 1.4.0,
+    and fix a variety of minor issues in AsdfType subclasses.
+  * Add general and versioning-specific developer documentation.</comment>
+    <requestid>791741</requestid>
+  </revision>
 </revisionlist>

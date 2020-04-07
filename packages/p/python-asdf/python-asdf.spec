@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-asdf
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-3-Clause AND BSD-2-Clause
 URL:            https://github.com/spacetelescope/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10

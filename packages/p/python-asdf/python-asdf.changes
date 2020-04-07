@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:46:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.2:
+  * Add schemas that were previously missing from ASDF Standard 1.4.0,
+    and fix a variety of minor issues in AsdfType subclasses.
+  * Add general and versioning-specific developer documentation.
+
+-------------------------------------------------------------------
 Thu Jan 30 14:36:45 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.5.1
