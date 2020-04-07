@@ -1,0 +1,16 @@
+Since libPolly uses std::call_once it needs to be linked against
+libpthread.  Due to our use of --as-needed we need to make sure it is
+linked after libPolly.
+
+Index: polly/lib/CMakeLists.txt
+===================================================================
+--- a/polly/lib/CMakeLists.txt
++++ b/polly/lib/CMakeLists.txt
+@@ -79,6 +79,7 @@ set_target_properties(PollyCore PROPERTI
+ # well.
+ target_link_libraries(Polly PRIVATE
+   ${ISL_TARGET}
++  ${LLVM_PTHREAD_LIB}
+ )
+ 
+ # Additional dependencies for Polly-ACC.

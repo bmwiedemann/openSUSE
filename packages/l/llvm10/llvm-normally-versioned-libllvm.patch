@@ -1,0 +1,61 @@
+Before llvm4, both major and minor version updates of llvm were regularly
+breaking API. Because of that, the libLLVM library was named in following
+format: libLLVM-${major}-${minor}.so
+
+  (https://bugs.llvm.org/show_bug.cgi?id=25059)
+  (https://reviews.llvm.org/D13841)
+
+The package containing this library was called libLLVM${major}_${minor} which
+follows our guidelines.
+
+Since llvm4, llvm decided to follow semantic versioning and only break API if
+the major version was increased. In addition they do not intend to ever have
+minor version other than 0.
+  (http://blog.llvm.org/2016/12/llvms-new-versioning-scheme.html)
+
+The package was renamed to libLLVM${major}, which no longer follows the naming
+guidelines, but since the package contained multiple libraries, it was not
+detected.
+
+Since bnc#1049703 the libLLVM${major} package contains only the
+libLLVM-${major}-${minor}.so library and no others. This triggers the
+shlib-policy-name-error check in our packaging system.
+
+Because the reasons for using the libLLVM-${major}-${minor}.so format are no
+longer valid, lets revert back to libLLVM.so.${major}.${minor}.${version}
+format. That way the package name matches our guidelines.
+
+Index: llvm-8.0.0rc3.src/tools/llvm-config/llvm-config.cpp
+===================================================================
+--- llvm-8.0.0rc3.src.orig/tools/llvm-config/llvm-config.cpp
++++ llvm-8.0.0rc3.src/tools/llvm-config/llvm-config.cpp
+@@ -380,7 +380,6 @@ int main(int argc, char **argv) {
+   } else {
+     // default to the unix values:
+     SharedExt = "so";
+-    SharedVersionedExt = LLVM_DYLIB_VERSION ".so";
+     StaticExt = "a";
+     StaticDir = SharedDir = ActiveLibDir;
+     StaticPrefix = SharedPrefix = "lib";
+@@ -393,7 +392,7 @@ int main(int argc, char **argv) {
+ 
+   bool DyLibExists = false;
+   const std::string DyLibName =
+-      (SharedPrefix + "LLVM-" + SharedVersionedExt).str();
++      (SharedPrefix + "LLVM." + SharedExt).str();
+ 
+   // If LLVM_LINK_DYLIB is ON, the single shared library will be returned
+   // for "--libs", etc, if they exist. This behaviour can be overridden with
+Index: llvm-8.0.0rc3.src/tools/llvm-shlib/CMakeLists.txt
+===================================================================
+--- llvm-8.0.0rc3.src.orig/tools/llvm-shlib/CMakeLists.txt
++++ llvm-8.0.0rc3.src/tools/llvm-shlib/CMakeLists.txt
+@@ -42,7 +42,7 @@ if(LLVM_BUILD_LLVM_DYLIB)
+   if (LLVM_LINK_LLVM_DYLIB)
+     set(INSTALL_WITH_TOOLCHAIN INSTALL_WITH_TOOLCHAIN)
+   endif()
+-  add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB SONAME ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
++  add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
+ 
+   list(REMOVE_DUPLICATES LIB_NAMES)
+   if(("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux") OR (MINGW) OR (HAIKU)
