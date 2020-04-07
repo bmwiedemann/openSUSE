@@ -32,8 +32,6 @@ Source99:       neovim-rpmlintrc
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
-# PATCH-FIX-OPENSUSE fix-buf_set_term_title.patch fixes a different API with libvterm
-Patch2:         fix-buf_set_term_title.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -92,9 +90,7 @@ parts of Vim, without compromise, and more.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
