@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  6 11:15:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.3
+  * Fix conversion of complex literals
+  * Fix Ellipsis support
+  * Fix conversion of arguments nodes in Python 3.8
+  * Use an immutable instead of a dict to store initial table
+
+-------------------------------------------------------------------
 Tue Sep 10 13:48:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.0:
