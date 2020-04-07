@@ -1,0 +1,129 @@
+From 14f7acde30ea99abed535ab9491e9881ce609fdf Mon Sep 17 00:00:00 2001
+From: Sergey Yurchik <srg91.snz@gmail.com>
+Date: Fri, 10 Jan 2020 12:19:54 +0300
+Subject: [PATCH] Fix load cached grain "osrelease_info"
+
+Before fix the module `loader._load_cached_grains` loaded `osrelease_info` grain as list.
+But everythere it expects `tuple`.
+Now we force `osrelease_info` type and it works as expected.
+
+Fixes #54908
+
+Sanitize grains loaded from roster_grains.json
+
+Ensure _format_cached_grains is called on state.pkg test
+---
+ salt/loader.py                   | 13 ++++++++++++-
+ salt/modules/state.py            |  3 ++-
+ tests/unit/modules/test_state.py |  4 +++-
+ tests/unit/test_loader.py        | 28 ++++++++++++++++++++++++++++
+ 4 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/salt/loader.py b/salt/loader.py
+index 26b44de511d77dd498a1db655a44144f6e9fbf0a..984d80758ba8bd733a211f42d89e2d4e4fb25341 100644
+--- a/salt/loader.py
++++ b/salt/loader.py
+@@ -689,6 +689,17 @@ def grain_funcs(opts, proxy=None):
+     return ret
+ 
+ 
++def _format_cached_grains(cached_grains):
++    """
++    Returns cached grains with fixed types, like tuples.
++    """
++    if cached_grains.get('osrelease_info'):
++        osrelease_info = cached_grains['osrelease_info']
++        if isinstance(osrelease_info, list):
++            cached_grains['osrelease_info'] = tuple(osrelease_info)
++    return cached_grains
++
++
+ def _load_cached_grains(opts, cfn):
+     '''
+     Returns the grains cached in cfn, or None if the cache is too old or is
+@@ -721,7 +732,7 @@ def _load_cached_grains(opts, cfn):
+             log.debug('Cached grains are empty, cache might be corrupted. Refreshing.')
+             return None
+ 
+-        return cached_grains
++        return _format_cached_grains(cached_grains)
+     except (IOError, OSError):
+         return None
+ 
+diff --git a/salt/modules/state.py b/salt/modules/state.py
+index a757e401d4f5c8fff33ad4b0f30f2882631fab80..197d69e1ff53e759ab268b9d562e6eb54f828e4c 100644
+--- a/salt/modules/state.py
++++ b/salt/modules/state.py
+@@ -42,6 +42,7 @@ import salt.defaults.exitcodes
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.runners.state import orchestrate as _orchestrate
+ from salt.utils.odict import OrderedDict
++from salt.loader import _format_cached_grains
+ 
+ # Import 3rd-party libs
+ from salt.ext import six
+@@ -2177,7 +2178,7 @@ def pkg(pkg_path,
+     roster_grains_json = os.path.join(root, 'roster_grains.json')
+     if os.path.isfile(roster_grains_json):
+         with salt.utils.files.fopen(roster_grains_json, 'r') as fp_:
+-            roster_grains = salt.utils.json.load(fp_)
++            roster_grains = _format_cached_grains(salt.utils.json.load(fp_))
+ 
+     if os.path.isfile(roster_grains_json):
+         popts['grains'] = roster_grains
+diff --git a/tests/unit/modules/test_state.py b/tests/unit/modules/test_state.py
+index 0d15458be0a9b187efc7b2963612ea4bb078918e..8fc90d33bf22bf37a9597ecd1c6ff7ad43a60b6d 100644
+--- a/tests/unit/modules/test_state.py
++++ b/tests/unit/modules/test_state.py
+@@ -1164,8 +1164,10 @@ class StateTestCase(TestCase, LoaderModuleMockMixin):
+ 
+                 MockTarFile.path = ""
+                 with patch('salt.utils.files.fopen', mock_open()), \
+-                        patch.object(salt.utils.json, 'loads', mock_json_loads_true):
++                        patch.object(salt.utils.json, 'loads', mock_json_loads_true), \
++                            patch.object(state, '_format_cached_grains', MagicMock()):
+                     self.assertEqual(state.pkg(tar_file, 0, "md5"), True)
++                    state._format_cached_grains.assert_called_once()
+ 
+                 MockTarFile.path = ""
+                 if six.PY2:
+diff --git a/tests/unit/test_loader.py b/tests/unit/test_loader.py
+index 38dcb181090c61935835f14dd780bad2aa02d9e8..4c2c1b44af2d2931505ddcbb4339e087be88b4fc 100644
+--- a/tests/unit/test_loader.py
++++ b/tests/unit/test_loader.py
+@@ -1334,3 +1334,31 @@ class LazyLoaderOptimizationOrderTest(TestCase):
+         basename = os.path.basename(filename)
+         expected = 'lazyloadertest.py' if six.PY3 else 'lazyloadertest.pyc'
+         assert basename == expected, basename
++
++
++class LoaderLoadCachedGrainsTest(TestCase):
++    '''
++    Test how the loader works with cached grains
++    '''
++
++    @classmethod
++    def setUpClass(cls):
++        cls.opts = salt.config.minion_config(None)
++        if not os.path.isdir(RUNTIME_VARS.TMP):
++            os.makedirs(RUNTIME_VARS.TMP)
++
++    def setUp(self):
++        self.cache_dir = tempfile.mkdtemp(dir=RUNTIME_VARS.TMP)
++        self.addCleanup(shutil.rmtree, self.cache_dir, ignore_errors=True)
++
++        self.opts['cachedir'] = self.cache_dir
++        self.opts['grains_cache'] = True
++        self.opts['grains'] = salt.loader.grains(self.opts)
++
++    def test_osrelease_info_has_correct_type(self):
++        '''
++        Make sure osrelease_info is tuple after caching
++        '''
++        grains = salt.loader.grains(self.opts)
++        osrelease_info = grains['osrelease_info']
++        assert isinstance(osrelease_info, tuple), osrelease_info
+-- 
+2.23.0
+
+

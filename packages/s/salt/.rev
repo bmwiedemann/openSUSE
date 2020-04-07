@@ -1324,4 +1324,27 @@ let build start it or we will get libvirt errors.
   * use-full-option-name-instead-of-undocumented-abbrevi.patch</comment>
     <requestid>786008</requestid>
   </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>8a73d48cc77fd53b33c03133fc948468</srcmd5>
+    <version>2019.2.3</version>
+    <time>1586247831</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable building and installation for Fedora
+- Disable python2 build on Tumbleweed
+  We are removing the python2 interpreter from openSUSE (SLE16).
+  As such disable salt building for python2 there.
+
+- Sanitize grains loaded from roster_grains.json cache during &quot;state.pkg&quot;
+- Added:
+  * fix-load-cached-grain-osrelease_info.patch
+
+- Build: Buildequire pkgconfig(systemd) instead of systemd
+
+- Backport saltutil state module to 2019.2 codebase (bsc#1167556)
+- Add new custom SUSE capability for saltutil state module
+- Added:
+  * backport-saltutil-state-module-to-2019.2-codebase.patch
+  * add-new-custom-suse-capability-for-saltutil-state-mo.patch</comment>
+    <requestid>790920</requestid>
+  </revision>
 </revisionlist>

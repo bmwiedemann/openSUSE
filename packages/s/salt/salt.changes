@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr  2 13:47:34 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Enable building and installation for Fedora
+- Disable python2 build on Tumbleweed
+  We are removing the python2 interpreter from openSUSE (SLE16).
+  As such disable salt building for python2 there.
+
+-------------------------------------------------------------------
+Thu Apr  2 10:54:53 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Sanitize grains loaded from roster_grains.json cache during "state.pkg"
+
+- Added:
+  * fix-load-cached-grain-osrelease_info.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 15:37:10 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Build: Buildequire pkgconfig(systemd) instead of systemd
+
+-------------------------------------------------------------------
+Thu Mar 26 13:18:50 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Backport saltutil state module to 2019.2 codebase (bsc#1167556)
+- Add new custom SUSE capability for saltutil state module
+
+- Added:
+  * backport-saltutil-state-module-to-2019.2-codebase.patch
+  * add-new-custom-suse-capability-for-saltutil-state-mo.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 10:35:25 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - virt._get_domain: don't raise an exception if there is no VM

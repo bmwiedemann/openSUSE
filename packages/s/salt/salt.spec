@@ -15,8 +15,12 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 %global debug_package %{nil}
-
-%if 0%{?suse_version} >= 1320
+%if 0%{?suse_version} > 1500
+%global build_py3   1
+%global build_py2   0
+%global default_py3 1
+%else
+%if 0%{?suse_version} >= 1500
 # SLE15
 %global build_py3   1
 %global build_py2   1
@@ -36,9 +40,10 @@
 %endif
 %endif
 %endif
+%endif
 %define pythonX %{?default_py3: python3}%{!?default_py3: python2}
 
-%if 0%{?suse_version} > 1210 || 0%{?rhel} >= 7 || 0%{?fedora}
+%if 0%{?suse_version} > 1210 || 0%{?rhel} >= 7 || 0%{?fedora} >=28
 %bcond_without systemd
 %else
 %bcond_with    systemd
@@ -310,6 +315,13 @@ Patch113:      loader-invalidate-the-import-cachefor-extra-modules.patch
 Patch114:      open-suse-2019.2.3-virt-defined-states-219.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56392
 Patch115:      virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/50197
+Patch116:      backport-saltutil-state-module-to-2019.2-codebase.patch
+# PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/b713d0b3031faadc17cd9cf09977ccc19e50bef7
+Patch117:      add-new-custom-suse-capability-for-saltutil-state-mo.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/55796
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56491
+Patch118:      fix-load-cached-grain-osrelease_info.patch
 
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -348,8 +360,8 @@ Requires:       iproute
 %endif
 
 %if %{with systemd}
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %else
 %if 0%{?suse_version}
 Requires(pre): %insserv_prereq
@@ -373,7 +385,7 @@ BuildRequires:  bash
 BuildRequires:  zsh
 %endif
 
-%if 0%{?rhel}
+%if 0%{?rhel} || 0%{?fedora}
 BuildRequires:  yum
 %endif
 
@@ -393,7 +405,7 @@ Requires:       %{name} = %{version}-%{release}
 BuildRequires:  python >= 2.7
 BuildRequires:  python-devel >= 2.7
 # requirements/base.txt
-%if 0%{?rhel}
+%if 0%{?rhel} || 0%{?fedora}
 BuildRequires:  python-jinja2
 BuildRequires:  python-yaml
 BuildRequires:  python-markupsafe
@@ -407,7 +419,7 @@ BuildRequires:  python-futures >= 2.0
 BuildRequires:  python-msgpack-python > 0.3
 BuildRequires:  python-psutil
 BuildRequires:  python-requests >= 1.0.0
-%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8
+%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8 || 0%{?fedora} >= 30
 # We can't cope with tornado 5.x and newer (boo#1101780); this is only relevant for SLE >= 15 and TW
 # where tornado exists in multiple versions
 BuildRequires: (python-tornado >= 4.2.1 with python-tornado < 5)
@@ -443,7 +455,7 @@ Requires:       python >= 2.7
 Requires:       python-certifi
 %endif
 # requirements/base.txt
-%if 0%{?rhel}
+%if 0%{?rhel} || 0%{?fedora}
 Requires:       python-jinja2
 Requires:       python-yaml
 Requires:       python-markupsafe
@@ -507,7 +519,7 @@ BuildRequires:  python3
 %endif
 BuildRequires:  python3-devel
 # requirements/base.txt
-%if 0%{?rhel}
+%if 0%{?rhel} || 0%{?fedora}
 BuildRequires:  python3-jinja2
 BuildRequires:  python3-markupsafe
 BuildRequires:  python3-msgpack > 0.3
@@ -528,7 +540,7 @@ BuildRequires:  python3-pycrypto >= 2.6.1
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-psutil
 BuildRequires:  python3-requests >= 1.0.0
-%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8
+%if 0%{?suse_version} >= 1500 || 0%{?rhel} >= 8 || 0%{?fedora} >= 30
 # We can't cope with tornado 5.x and newer (boo#1101780); this is only relevant for SLE >= 15 and TW,
 # where tornado exists in multiple versions
 BuildRequires: (python3-tornado >= 4.2.1 with python3-tornado < 5)
@@ -562,14 +574,15 @@ Requires:       python3
 Requires:       python3-certifi
 %endif
 # requirements/base.txt
-%if 0%{?rhel}
+%if 0%{?rhel} || 0%{?fedora}
 Requires:       python3-jinja2
 Requires:       yum
 Requires:       python3-markupsafe
 Requires:       python3-msgpack > 0.3
 Requires:       python3-m2crypto
 Requires:       python3-zmq >= 2.2.0
-%if 0%{?rhel} == 8
+
+%if 0%{?rhel} == 8 || 0%{?fedora} >= 30
 Requires:       dnf
 %endif
 %if 0%{?rhel} == 6
@@ -952,6 +965,9 @@ cp %{S:5} ./.travis.yml
 %patch113 -p1
 %patch114 -p1
 %patch115 -p1
+%patch116 -p1
+%patch117 -p1
+%patch118 -p1
 
 %build
 %if 0%{?build_py2}
