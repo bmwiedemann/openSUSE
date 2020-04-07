@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:03:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.21.1
+  - CTRL-R will remove duplicate commands
+  - Supports tmux popup window (require tmux 3.2 or above) 
+  - bug fixes
+
+-------------------------------------------------------------------
 Fri Mar 13 13:15:42 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.21.0: 
