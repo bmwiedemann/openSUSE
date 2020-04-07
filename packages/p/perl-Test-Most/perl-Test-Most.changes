@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  5 03:11:30 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Test-Most/Changes
+
+  0.37    2020-04-04
+          - Don't call parent DESTROY method if it does not exist (thanks,
+            Karen)
+  
+  0.36    2020-04-04
+          - Ensure Test::Builder's original DESTROY is called. Thanks to Karen
+            Etheridge. https://github.com/Ovid/test--most/pull/10
+
+-------------------------------------------------------------------
 Wed Jan 11 07:15:02 UTC 2017 - coolo@suse.com
 
 - updated to 0.35
