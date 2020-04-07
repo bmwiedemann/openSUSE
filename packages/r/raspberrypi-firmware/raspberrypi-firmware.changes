@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  6 10:38:07 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Get rid of rpi4-thermal overlay, not needed anymore
+- Get rid of rpi4-firmware-dma-ranges overlay, not needed anymore
+- Get rid of rpi4-gpio-names overlay, not needed anymore
+
+-------------------------------------------------------------------
 Wed Apr  1 07:25:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop Supplements for extra and extra-pi4
