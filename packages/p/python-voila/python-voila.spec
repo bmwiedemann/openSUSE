@@ -1,7 +1,7 @@
 #
 # spec file for package python-voila
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-voila
-Version:        0.1.20
+Version:        0.1.21
 Release:        0
-License:        BSD-3-Clause
 Summary:        Plugin for serving read-only live Jupyter notebooks
-Url:            https://github.com/QuantStack/voila
-Group:          Development/Languages/Python
+License:        BSD-3-Clause
+URL:            https://github.com/QuantStack/voila
 Source:         https://files.pythonhosted.org/packages/source/v/voila/voila-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments >= 2.4.1}
+BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module jupyter-server >= 0.1.0}
 BuildRequires:  %{python_module jupyterlab-pygments >= 0.1.0}
 BuildRequires:  %{python_module nbconvert >= 5.5}
+BuildRequires:  %{python_module pytest-tornasync}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
+Requires:       jupyter-voila = %{version}
 Requires:       python-Pygments >= 2.4.1
 Requires:       python-async_generator
 Requires:       python-jupyter-server >= 0.1.0
-Requires:       python-nbconvert >= 5.5
 Requires:       python-jupyterlab-pygments >= 0.1.0
+Requires:       python-nbconvert >= 5.5
 Requires:       python-notebook
-Requires:       jupyter-voila = %{version}
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -81,7 +83,6 @@ notebook is never sent to the front-end.
 
 This package provides the jupyter components.
 
-
 %prep
 %setup -q -n voila-%{version}
 
@@ -90,8 +91,12 @@ This package provides the jupyter components.
 
 %install
 %python_install
-%{jupyter_move_config}
+%jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# Does not ship tests
+#%%pytest
 
 %files %{python_files}
 %license LICENSE

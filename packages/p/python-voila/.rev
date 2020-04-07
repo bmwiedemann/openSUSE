@@ -56,4 +56,13 @@
 </comment>
     <requestid>765015</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>013b5eca679cfa976c9bb7d6e030c6e4</srcmd5>
+    <version>0.1.21</version>
+    <time>1586248200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.21:
+  * no changelog</comment>
+    <requestid>791686</requestid>
+  </revision>
 </revisionlist>
