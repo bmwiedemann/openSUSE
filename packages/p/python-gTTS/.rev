@@ -33,4 +33,12 @@
 - Rebase patch remove-pip-requirement.patch</comment>
     <requestid>730386</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f403fc390cb928a0d9eb0d905e202138</srcmd5>
+    <version>2.1.1</version>
+    <time>1586248244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791751</requestid>
+  </revision>
 </revisionlist>

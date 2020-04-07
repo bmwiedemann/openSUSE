@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:24:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.1.1
+  * Debug mode now uses a copy of locals() to prevent RuntimeError (`#213 <https://github.com/pndurette/gTTS/issues/213>`_)
+  * Added the ability to customize the Google Translate URL hostname.
+    This is useful when ``google.com`` might be blocked within a network but
+    a local or different Google host (e.g. ``google.cn``) is not
+  * Pre-generated TTS API request URLs can now be obtained instead of
+    writing an ``mp3`` file to disk (for example to be used in an
+    external program)
+  * New ``--tld`` option to match the new ``gtts`` customizable hostname
+  * Added Python 3.8 support
+
+-------------------------------------------------------------------
 Thu Sep 12 11:46:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.4:
