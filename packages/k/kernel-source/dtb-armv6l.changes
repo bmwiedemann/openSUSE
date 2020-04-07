@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Apr  2 08:31:03 CEST 2020 - jslaby@suse.cz
+
+- bpf: update jmp32 test cases to fix range bound deduction
+  (bnc#1012628).
+- serial: sprd: Fix a dereference warning (bnc#1012628).
+- vt: selection, introduce vc_is_sel (bnc#1012628).
+- vt: ioctl, switch VT_IS_IN_USE and VT_BUSY to inlines
+  (bnc#1012628).
+- vt: switch vt_dont_switch to bool (bnc#1012628).
+- vt: vt_ioctl: remove unnecessary console allocation checks
+  (bnc#1012628).
+- vt: vt_ioctl: fix VT_DISALLOCATE freeing in-use virtual console
+  (bnc#1012628).
+- vt: vt_ioctl: fix use-after-free in vt_in_use() (bnc#1012628).
+- platform/x86: pmc_atom: Add Lex 2I385SW to critclk_systems
+  DMI table (bnc#1012628).
+- Linux 5.6.2 (bnc#1012628).
+- commit 8dfb75b
+
+-------------------------------------------------------------------
+Wed Apr  1 17:20:11 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.6.1 (bnc#1012628).
+- media: v4l2-core: fix a use-after-free bug of sd->devnode
+  (bnc#1012628).
+- media: xirlink_cit: add missing descriptor sanity checks
+  (bnc#1012628).
+- media: stv06xx: add missing descriptor sanity checks
+  (bnc#1012628).
+- media: dib0700: fix rc endpoint lookup (bnc#1012628).
+- media: ov519: add missing endpoint sanity checks (bnc#1012628).
+- libfs: fix infoleak in simple_attr_read() (bnc#1012628).
+- ahci: Add Intel Comet Lake H RAID PCI ID (bnc#1012628).
+- staging: wfx: annotate nested gc_list vs tx queue locking
+  (bnc#1012628).
+- staging: wfx: fix init/remove vs IRQ race (bnc#1012628).
+- staging: wfx: add proper "compatible" string (bnc#1012628).
+- staging: wlan-ng: fix use-after-free Read in
+  hfa384x_usbin_callback (bnc#1012628).
+- staging: wlan-ng: fix ODEBUG bug in prism2sta_disconnect_usb
+  (bnc#1012628).
+- staging: rtl8188eu: Add ASUS USB-N10 Nano B1 to device table
+  (bnc#1012628).
+- staging: kpc2000: prevent underflow in cpld_reconfigure()
+  (bnc#1012628).
+- media: usbtv: fix control-message timeouts (bnc#1012628).
+- media: flexcop-usb: fix endpoint sanity check (bnc#1012628).
+- usb: musb: fix crash with highmen PIO and usbmon (bnc#1012628).
+- USB: serial: io_edgeport: fix slab-out-of-bounds read in
+  edge_interrupt_callback (bnc#1012628).
+- USB: cdc-acm: restore capability check order (bnc#1012628).
+- USB: serial: option: add Wistron Neweb D19Q1 (bnc#1012628).
+- USB: serial: option: add BroadMobi BM806U (bnc#1012628).
+- USB: serial: option: add support for ASKEY WWHC050
+  (bnc#1012628).
+- bpf: Undo incorrect __reg_bound_offset32 handling (bnc#1012628).
+- commit 1675c56
+
+-------------------------------------------------------------------
+Wed Apr  1 07:16:39 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/media-go7007-Fix-URB-type-for-interrupt-handling.patch.
+  Update upstream status.
+- commit 96043ad
+
+-------------------------------------------------------------------
+Wed Apr  1 07:15:58 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/mac80211-fix-authentication-with-iwlwifi-mvm.patch.
+  Update upstream status -- merged.
+- commit 26b6c02
+
+-------------------------------------------------------------------
 Mon Mar 30 09:55:50 CEST 2020 - jslaby@suse.cz
 
 - Refresh
