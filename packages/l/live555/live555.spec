@@ -1,8 +1,8 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define lmdmaj 66
+%define lmdmaj 78
 
 Name:           live555
-Version:        2019.06.28
+Version:        2020.03.06
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -31,6 +31,7 @@ Source:         http://www.live555.com/liveMedia/public/live.%{version}.tar.gz
 Patch0:         %{name}-fpic.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(openssl)
 
 %description
 This code forms a set of C++ libraries for multimedia streaming,

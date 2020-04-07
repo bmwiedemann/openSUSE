@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:55:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2020.03.06 (boo#1146283, CVE-2019-15232):
+  + Fixed a problem in "H264or5VideoStreamFramer.cpp" that was
+    allegedly causing problems compiling for Windows.
+- Changes from version 2020.02.25:
+  + Added full support for the "LIVE555 HLS Proxy"
+- Changes from version 2020.02.24:
+  + Commented out a line of code that was preventing
+    "RTSPClientConnection" objects from being closed when a RTSP
+    server handles a "TEARDOWN" command (on a RTP-over-TCP stream).
+- Changes from version 2020.02.23:
+  + Updated our (unicast) RTSP server implementation to handle
+    "PAUSE" commands by calling "stopGettingFrames()" on the input
+    source.
+  + Fixed a bug in "H264or5VideoStreamFramer" that was causing it
+    to not update its presentation times properly following a pause.
+  + Updated "openRTSP" to improve the handling of the "-R <port-num>"
+    option.
+- Changes from version 2020.02.11:
+  + Added support for receiving SRTP (encrypted) RTSP streams.
+- For changes between 2019.06.28 and 2020.02.10, please see the
+  http://www.live555.com/liveMedia/public/changelog.txt.
+- Rebase live555-fpic.patch.
+
+-------------------------------------------------------------------
 Mon Jul 15 12:00:42 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 2019.06.28, fixes boo#1127341 VUL-1:

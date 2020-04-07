@@ -133,4 +133,12 @@
     <comment>- Update to version 2019.06.28, fixes boo#1127341 VUL-1:CVE-2019-9215: live555: malformed headers lead to invalid memory access in the parseAuthorizationHeader function.</comment>
     <requestid>715479</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d2a10a07f3ed2e60a492ad71e2f1725d</srcmd5>
+    <version>2020.03.06</version>
+    <time>1586247814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790848</requestid>
+  </revision>
 </revisionlist>
