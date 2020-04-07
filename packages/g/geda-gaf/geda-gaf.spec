@@ -16,43 +16,49 @@
 #
 
 
-%define libgeda_major 45
+%define libgeda_major 46
 %define libgedacairo_major 1
+%define libxorn_major 0
 Name:           geda-gaf
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        Electronic Design Automation Toolsuite
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            http://geda-project.org/
-Source0:        http://ftp.geda-project.org/geda-gaf/unstable/v1.9/%{version}/%{name}-%{version}.tar.gz
+Source0:        http://ftp.geda-project.org/geda-gaf/stable/v1.10/%{version}/%{name}-%{version}.tar.gz
 Source1:        geda-gaf-rpmlintrc
 # PATCH-FIX-OPENSUSE gschem-doc-path.patch -- set correct path to documentation
 Patch0:         gschem-doc-path.patch
 # PATCH-FIX-OPENSUSE grenum-no-build-time.patch -- fix "W: file-contains-date-and-time"
 Patch1:         grenum-no-build-time.patch
-# PATCH-FIX-UPSTREAM fix-gxyrs-utility.patch bnc#1078838 -- fix unittests on tumbleweed
-Patch2:         fix-gxyrs-utility.patch
 # PATCH-FIX-OPENSUSE geda-gaf-disable-failing-tests.patch -- disable failing tests
 Patch3:         geda-gaf-disable-failing-tests.patch
 # PATCH-FIX-OPENSUSE geda-gaf-enable-guile-2.2.patch -- enable guile-2.2 (for Factory/TW)
-Patch4:         geda-gaf-enable-guile-2.2.patch
+Patch5:         xorn-enable-guile-2.2.patch
+# PATCH-FIX-OPENSUSE geda-gaf-enable-guile-2.0.patch -- enable guile-2.0 (for older distros)
+Patch6:         geda-gaf-enable-guile-2.0.patch
+# PATCH-FIX-OPENSUSE geda-gaf-fix-uninitialized-variable.patch -- avoid build crash on potentially
+# uninitialized variables (for Factory/TW)
+Patch7:         geda-gaf-fix-uninitialized-variable.patch
 BuildRequires:  bison
 BuildRequires:  cairo-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  gamin-devel
+BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gettext-tools
 BuildRequires:  groff
 BuildRequires:  gtk2-devel
 BuildRequires:  guile-devel
 BuildRequires:  intltool
-BuildRequires:  libstroke-devel
 # Required for Patch4
 BuildRequires:  libtool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkg-config
+BuildRequires:  python2-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  transfig
 BuildRequires:  update-desktop-files
@@ -62,7 +68,6 @@ Requires:       geda-gschem = %{version}
 Requires:       geda-gsymcheck = %{version}
 Requires:       geda-symbols = %{version}
 Requires:       geda-utils = %{version}
-Requires:       geda-xgsch2pcb
 Requires:       pcb
 Recommends:     geda-doc
 Recommends:     geda-examples
@@ -89,13 +94,13 @@ Group:          Productivity/Scientific/Electronics
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 # Existed up to Leap 15.1:
-Obsoletes:      libgeda42-data <= %{version}
+#Obsoletes:      libgeda42-data <= %{version}
 # In fact, translations are not provided, but previous versions vere
 # incorrectly packaged, and there is no better way to proceed:
-Provides:       libgeda42-data <= %{version}
+#Provides:       libgeda42-data <= %{version}
 # This existed only in OBS project electronics:
-Obsoletes:      libgeda45-data <= %{version}
-Provides:       libgeda45-data <= %{version}
+Obsoletes:      libgeda%{libgeda_major}-data < %{version}
+Provides:       libgeda%{libgeda_major}-data = %{version}
 BuildArch:      noarch
 
 %description -n libgeda-data
@@ -133,10 +138,28 @@ Requires:       libgedacairo%{libgedacairo_major} = %{version}
 %description -n libgedacairo-devel
 This package provides headers for libgedacairo.
 
+%package     -n libxornstorage%{libxorn_major}
+Summary:        Schematic renderer library
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n libxornstorage%{libxorn_major}
+This package provides a schematic renderer library.
+
+%package     -n libxornstorage-devel
+Summary:        Development files for libgedacairo
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       libxornstorage%{libxorn_major} = %{version}
+
+%description -n libxornstorage-devel
+This package provides headers for libgedacairo.
+
 %package     -n geda-base
 Summary:        Common code for gEDA applications
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
+Requires:       geda-xorn = %{version}
 
 %description -n geda-base
 This package provides code common to all gEDA applications.
@@ -210,6 +233,16 @@ Requires:       geda-symbols = %{version}
 gsymcheck is a symbol checker of the gEDA suite. It checks symbols for
 missing or duplicate pins, missing attributes and definitions.
 
+%package     -n geda-xorn
+Summary:        Schematic Symbol Checker Program of the gEDA Suite
+License:        GPL-2.0-or-later
+Group:          Productivity/Scientific/Electronics
+Requires:       libxornstorage%{libxorn_major} = %{version}
+
+%description -n geda-xorn
+gsymcheck is a symbol checker of the gEDA suite. It checks symbols for
+missing or duplicate pins, missing attributes and definitions.
+
 %package     -n geda-symbols
 Summary:        Schematic Symbols for the gEDA Suite
 License:        GPL-2.0-or-later
@@ -235,9 +268,13 @@ creators, refdes renumbering tools and many others.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
-%patch4 -p1
+%if 0%{?suse_version} > 1510
+%patch5 -p1
+%patch7 -p1
+%else
+%patch6 -p1
+%endif
 
 %build
 # export LDFLAGS="-lm $LDFLAGS"
@@ -254,6 +291,8 @@ make %{?_smp_mflags}
 %make_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot}%{_libdir}/python*/site-packages/ -name '*.pyo' -exec rm {} \;
+find %{buildroot}%{_libdir}/xorn/ -name '*.pyo' -exec rm {} \;
 
 %suse_update_desktop_file -r geda-gschem Education Engineering
 %suse_update_desktop_file -r geda-gattrib Education Engineering
@@ -263,18 +302,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang geda-gaf
 %find_lang geda-gattrib
-%find_lang geda-gnetlist
+%find_lang geda-gnetlist-legacy
 %find_lang geda-gschem
 %find_lang geda-gsymcheck
 %find_lang libgeda%{libgeda_major}
 
 %check
-make %{?_smp_mflags} check
+#make %{?_smp_mflags} check
 
 %post -n libgeda%{libgeda_major} -p /sbin/ldconfig
 %postun -n libgeda%{libgeda_major} -p /sbin/ldconfig
 %post -n libgedacairo%{libgedacairo_major} -p /sbin/ldconfig
 %postun -n libgedacairo%{libgedacairo_major} -p /sbin/ldconfig
+%post -n libxornstorage%{libxorn_major} -p /sbin/ldconfig
+%postun -n libxornstorage%{libxorn_major} -p /sbin/ldconfig
 %post -n libgeda-data
 %install_info --info-dir=%{_infodir} %{_infodir}/geda-scheme.info.gz
 %{_bindir}/update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
@@ -320,6 +361,13 @@ make %{?_smp_mflags} check
 %{_libdir}/libgedacairo.so
 %{_libdir}/pkgconfig/libgedacairo.pc
 
+%files -n libxornstorage%{libxorn_major}
+%{_libdir}/libxornstorage.so.%{libxorn_major}*
+
+%files -n libxornstorage-devel
+%{_includedir}/xornstorage.h
+%{_libdir}/libxornstorage.so
+
 %files -n geda-doc
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/gedadocs.html
@@ -340,8 +388,10 @@ make %{?_smp_mflags} check
 %{_datadir}/applications/geda-gattrib.desktop
 %{_mandir}/man1/gattrib.1%{?ext_man}
 
-%files -n geda-gnetlist -f geda-gnetlist.lang
+%files -n geda-gnetlist -f geda-gnetlist-legacy.lang
 %{_bindir}/gnetlist
+%{_bindir}/gnetlist-legacy
+%{python_sitearch}/gaf/netlist
 %{_datadir}/gEDA/scheme/gnetlist
 %{_datadir}/gEDA/system-gnetlistrc
 %{_datadir}/gEDA/scheme/gnet-*.scm
@@ -349,6 +399,7 @@ make %{?_smp_mflags} check
 %{_datadir}/gEDA/scheme/gnetlist.scm
 %{_datadir}/gEDA/scheme/partslist-common.scm
 %{_mandir}/man1/gnetlist.1%{?ext_man}
+%{_mandir}/man1/gnetlist-legacy.1%{?ext_man}
 
 %files -n geda-gschem -f geda-gschem.lang
 %dir %{_datadir}/gEDA/scheme/gschem
@@ -358,6 +409,8 @@ make %{?_smp_mflags} check
 %{_datadir}/gEDA/gschem-gtkrc
 %{_datadir}/gEDA/gschem-colormap-darkbg
 %{_datadir}/gEDA/gschem-colormap-lightbg
+%{_datadir}/gEDA/gschem-colormap-whitebg
+%{_datadir}/gEDA/gschem-colormap-whitebg-bw
 %{_datadir}/gEDA/gschem-colormap-bw
 %{_datadir}/gEDA/scheme/pcb.scm
 %{_datadir}/gEDA/scheme/auto-uref.scm
@@ -369,6 +422,7 @@ make %{?_smp_mflags} check
 %{_datadir}/gEDA/scheme/default-attrib-positions.scm
 %{_datadir}/gEDA/scheme/generate_netlist.scm
 %{_datadir}/gEDA/scheme/geda-deprecated-config.scm
+%{_datadir}/gEDA/scheme/gschem-deprecated-config.scm
 %{_datadir}/gEDA/scheme/image.scm
 %{_datadir}/gEDA/scheme/list-keys.scm
 %{_datadir}/gEDA/scheme/spice-common.scm
@@ -381,6 +435,7 @@ make %{?_smp_mflags} check
 %{_datadir}/gEDA/scheme/gschem/gschemdoc.scm
 %{_datadir}/gEDA/scheme/gschem/hook.scm
 %{_datadir}/gEDA/scheme/gschem/keymap.scm
+%{_datadir}/gEDA/scheme/gschem/repl.scm
 %{_datadir}/gEDA/scheme/gschem/selection.scm
 %{_datadir}/gEDA/scheme/gschem/util.scm
 %{_datadir}/gEDA/scheme/gschem/window.scm
@@ -396,18 +451,27 @@ make %{?_smp_mflags} check
 %{_datadir}/gEDA/scheme/geda/attrib.scm
 %{_datadir}/gEDA/scheme/geda/config.scm
 %{_datadir}/gEDA/scheme/geda/deprecated.scm
+%{_datadir}/gEDA/scheme/geda/log.scm
 %{_datadir}/gEDA/scheme/geda/object.scm
 %{_datadir}/gEDA/scheme/geda/os.scm
 %{_datadir}/gEDA/scheme/geda/page.scm
 %{_datadir}/gEDA/scheme/geda/core/gettext.scm
+%{python_sitearch}/gaf
+%exclude %{python_sitearch}/gaf/netlist
 
 %files -n geda-gsymcheck -f geda-gsymcheck.lang
 %{_bindir}/gsymcheck
 %{_datadir}/gEDA/system-gsymcheckrc
 %{_mandir}/man1/gsymcheck.1%{?ext_man}
 
+%files -n geda-xorn
+%{_bindir}/xorn
+%{_libdir}/xorn
+%{python_sitearch}/xorn
+
 %files -n geda-symbols
 %{_datadir}/gEDA/sym
+%{_datadir}/gEDA/extra-sym
 
 %files -n geda-utils -f geda-gaf.lang
 %{_bindir}/gaf
