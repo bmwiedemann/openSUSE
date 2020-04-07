@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-subtitles
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gnome-subtitles
-Version:        1.4.2
+Version:        1.6
 Release:        0
 Summary:        Subtitle editor for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://gnomesubtitles.org/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE gnome-subtitles-gtk-sharp-build-fix.patch mgorse@suse.com -- fix build against new gtk-sharp.
+Patch0:         gnome-subtitles-gtk-sharp-build-fix.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -37,6 +39,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
 BuildRequires:  pkgconfig(gtk-sharp-3.0) >= 2.99.3
 BuildRequires:  pkgconfig(mono) >= 4.0
 Requires:       gstreamer-plugins-base
+Requires:       hicolor-icon-theme
 Requires:       mono-core
 
 %description
@@ -68,8 +71,8 @@ find %{buildroot}%{_libdir} -type f -name "*.la" -delete
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
 %{_mandir}/man1/gnome-subtitles.1%{ext_man}
-%{_datadir}/pixmaps/gnome-subtitles.svg
 %{_datadir}/glib-2.0/schemas/org.gnome.GnomeSubtitles.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/gnome-subtitles.svg
 %{_datadir}/applications/org.gnome.GnomeSubtitles.desktop
 %{_datadir}/help/C/gnome-subtitles/
 %dir %{_datadir}/metainfo

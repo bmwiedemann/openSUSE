@@ -1,0 +1,19 @@
+diff -urp gnome-subtitles-1.6.orig/src/GnomeSubtitles/Execution/ExecutionContext.cs gnome-subtitles-1.6/src/GnomeSubtitles/Execution/ExecutionContext.cs
+--- gnome-subtitles-1.6.orig/src/GnomeSubtitles/Execution/ExecutionContext.cs	2019-06-08 04:05:41.000000000 -0500
++++ gnome-subtitles-1.6/src/GnomeSubtitles/Execution/ExecutionContext.cs	2020-04-05 12:09:28.544167997 -0500
+@@ -96,7 +96,7 @@ public class ExecutionContext {
+ 			methodToExecute();
+ 		};
+ 		
+-		app.Run(0, "");
++		app.Run("gnome-subtitles", new string[0]);
+ 	}
+ 	
+ 
+@@ -114,4 +114,4 @@ public class ExecutionContext {
+ 
+ }
+ 
+-}
+\ No newline at end of file
++}

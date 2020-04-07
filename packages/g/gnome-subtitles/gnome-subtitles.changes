@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Apr  5 17:20:34 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.6:
+  +  Fixed a crash when opening translation files.
+  +  Show all media files (video and audio) by default in the
+    Video File Open dialog.
+  +  UTF-8 files are now saved with a BOM (byte order mark) by
+    default (as happened until version 1.4.2). An option has been
+    added to allow saving files in this encoding without a BOM.
+  + Bug fixes:
+    -  Video File Open: show all media files by default (#136).
+    -  Crash when opening translation file (#138).
+    -  Allow to save UTF-8 files with or without a BOM (#140).
+  + Updated translations.
+  + Changes in version 1.5:
+  +  Fixed a crash that occurred when using Video > Loop Selection.
+  +  Subtitle Split was improved to split every line (previously,
+    it was divided into 2 halves) and only split subtitles
+    containing multiple lines.
+  +  Fixed a bug where subtitle lines with ampersand (&) and other
+    characters were not being displayed on video playback.
+  +  Stopped "source ID not found" messages from being written in
+    the console/logs.
+  +  Subtitles displayed on video playback are now properly cleared
+    after closing a subtitle file.
+  +  The video image is also now properly cleared after closing the
+    video.
+  +  Fixed a couple of bugs that prevented the application from
+    appearing fully translated.
+  +  Fixed a bug in the Preferences Dialog where values like Gap
+    Between Subtitles were not being saved when changed via the
+    keyboard.
+  +  The application now better integrates with some desktop
+    environments by setting its ApplicationID.
+  + Bug fixes:
+    -  Crash in Video > Loop Selection (#124).
+    -  Split improvements: split all lines (previously were split
+      into 2 halves) and only split subtitles with multiple lines
+      (#2).
+    -  Undo/Redo in commands with text and translations must
+      consider if the translation was reloaded (#126).
+    -  Preferences Dialog: values like Gap Between Subtitles are
+      not saved when set with the keyboard (#127).
+    -  Syslog full of "source ID not found" (#4).
+    -  Video not showing text with ampersand (#128).
+    -  Clear video subtitle on File Close (#129).
+    -  Video area not cleared after closing it (#130).
+    -  Don't show the video file chooser in the File > Translation
+      Open dialog (#131).
+    -  File Open/Save error dialogs have wrong action set as
+      default (#132).
+    -  Typo (occured) in translatable strings (#94).
+    -  UI in English, expected translated (#125).
+    -  Some strings are displayed untranslated (#91).
+    -  pt_PT translation: multiple letters in upper case when
+      preceded by an underscore (#133).
+    -  Set ApplicationID to use .desktop file (#134).
+    -  App icon is incorrect in alt+tab menu (#118).
+- Adjust source URI.
+- Add hicolor-icon-theme to requires.
+- Add gnome-subtitles-gtk-sharp-build-fix.patch: adjust for a
+  post-2.99.3 gtk-sharp API change (we currently ship a git
+  snapshot).
+
+-------------------------------------------------------------------
 Thu Jan 30 11:11:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
