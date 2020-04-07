@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  2 04:18:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.0:
+  * Backward Compatibility:
+    + Keep output as native string so we can compatible with python2 interface
+  * Bug Fixes:
+    + Fix detection of RHEL 6 ComputeNode [#255]
+    + Fix Oracle 4/5 lsb_release id and names [#250]
+    + Ignore /etc/plesk-release file while parsing distribution
+
+-------------------------------------------------------------------
 Sun Feb 10 13:29:22 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.4.0:

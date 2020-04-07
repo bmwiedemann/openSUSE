@@ -1,7 +1,7 @@
 #
 # spec file for package python-distro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?license: %global license %doc}
 %bcond_without test
 Name:           python-distro
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Linux Distribution - a Linux OS platform information API
 License:        Apache-2.0

@@ -91,4 +91,18 @@
 </comment>
     <requestid>679035</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36ecf62b96cba827ba9c27e593ece8b8</srcmd5>
+    <version>1.5.0</version>
+    <time>1586247642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * Backward Compatibility:
+    + Keep output as native string so we can compatible with python2 interface
+  * Bug Fixes:
+    + Fix detection of RHEL 6 ComputeNode [#255]
+    + Fix Oracle 4/5 lsb_release id and names [#250]
+    + Ignore /etc/plesk-release file while parsing distribution</comment>
+    <requestid>790740</requestid>
+  </revision>
 </revisionlist>
