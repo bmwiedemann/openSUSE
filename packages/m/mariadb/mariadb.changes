@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  4 18:13:48 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add -Wl,-Bsymbolic -Wl,-Bsymbolic-functions to linker flags so
+  that symbols are resolved locally if possible, this will avoid
+  https://bugs.kde.org/show_bug.cgi?id=391362
+
+-------------------------------------------------------------------
 Tue Mar 24 05:46:49 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch

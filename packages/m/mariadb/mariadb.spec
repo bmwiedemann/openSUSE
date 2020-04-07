@@ -469,9 +469,9 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DINSTALL_SQLBENCHDIR=share                                  \
        -DCMAKE_C_FLAGS="$CFLAGS"                                    \
        -DCMAKE_CXX_FLAGS="$CXXFLAGS"                                \
-       -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now" \
-       -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now" \
-       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now" \
+       -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+       -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
        -DCMAKE_SKIP_RPATH=OFF                                       \
        -DCMAKE_SKIP_INSTALL_RPATH=ON                                \
        -Wno-dev "$@" ..
