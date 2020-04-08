@@ -39,6 +39,8 @@ Fri Nov  8 15:24:15 UTC 2019 - Adam Majer <adam.majer@suse.de>
   * TLS: Fix expiration of self-signed generated certs to be 3 years
   * TLS: Fix on_unsupported_protocol tunnel action
   * Fix several rock cache_dir corruption issues
+  * fixes handling of invalid domain names in cachemgr.cgi
+    (CVE-2019-18860, bsc#1167373)
 
 - fix_configuration_error.patch: upstreamed
 - old_nettle_compat.patch: refreshed
