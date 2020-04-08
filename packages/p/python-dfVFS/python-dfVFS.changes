@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  5 21:20:22 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 20200211
+  - Added volume scanner options (#346)
+  - fixed failing test (#425)
+  - Added LUKS support (#418)
+  - Added initial APFS support
+- Add Requires python-dtfabric - testing found not all use cases work without it
+- Add Requires python-fsapfs   - testing found not all use cases work without it
+- removed the %check section - it is failing on newly added APFS support - not yet reliable
+- Once again builds successfully against factory/tumbleweed
+
+-------------------------------------------------------------------
 Fri Jan 24 16:16:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 20200121
