@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  4 10:30:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2
+  * Make it possible execute the CLI with python -m pingparsing
+  * Update requirements
+
+-------------------------------------------------------------------
 Mon Mar 16 09:55:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.0.1
