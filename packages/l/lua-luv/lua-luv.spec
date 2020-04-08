@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,29 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@
 %define mod_name luv
-%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
 %define upver 1.30.1-1
 %define libluv_sover 1
+%if 0%{?suse_version}
+%define flavor @BUILD_FLAVOR@
+%else
+%define flavor lua
+%endif
+%if 0%{?rhel}
+%define __cmake cmake3
+BuildRequires:  cmake3
+%else
+BuildRequires:  cmake
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+%define flavor lua
+%define lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
+%define lua_archdir %{_libdir}/lua/%{lua_version}
+%define lua_noarchdir %{_datadir}/lua/%{lua_version}
+%define lua_incdir %{_includedir}/lua%{lua_version}
+%endif
 %bcond_with public_lib
-
+%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
@@ -37,19 +53,29 @@ License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/luvit/luv
 Source:         https://github.com/luvit/%{mod_name}/archive/%{upver}.tar.gz#/%{mod_name}-%{upver}.tar.gz
-BuildRequires:  cmake
+# PATCH-FIX-UPSTREAM skip-failing-test.patch gh#luvit/luv#473 mcepl@suse.com
+# skip failing test thread - test thread create with options table
+Patch0:         skip-failing-test.patch
 BuildRequires:  libuv-devel
 BuildRequires:  lua-macros
+%if 0%{?suse_version} && "%{flavor}" == "lua"
+ExclusiveArch:  do_not_build
+%endif
 %if 0%{?suse_version}
-BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
 Requires:       %{flavor}
+%if "%{flavor}" == "lua51"
+BuildRequires:  %{flavor}-compat-5.3
+%endif
+# not SUSE
 %else
-BuildRequires:  lua-compat53
 BuildRequires:  lua-devel
 BuildRequires:  lua-filesystem
-%endif # suse_version
+%endif
+%if 0%{?rhel}
+BuildRequires:  lua-compat53
+%endif
 
 %description
 This library makes libuv available to lua scripts. It was made
@@ -91,7 +117,12 @@ project.
 %endif
 
 %prep
+echo "Name is %{name}, Flavor is %{flavor}"
 %setup -q -n %{mod_name}-%{upver}
+# gh#luvit/luv#473
+%if 0%{?sle_version}
+%patch0 -p1
+%endif
 
 # Remove bundled dependencies
 rm -rf deps
@@ -102,7 +133,7 @@ rm -fv tests/test-dns.lua
 %build
 %if %{with public_lib}
 # Build libluv.so shared library
-cmake -H. -Bbuild -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
+%{__cmake} -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
     -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
@@ -113,7 +144,7 @@ cmake -H. -Bbuild -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
 %endif
 
 # Build luv.so module
-cmake -H. -Bbuild -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
+%{__cmake} -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
     -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
