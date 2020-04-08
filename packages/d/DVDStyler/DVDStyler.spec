@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libwxsvg) >= 1.5.11
+BuildRequires:  pkgconfig(libwxsvg) >= 1.5.19
 BuildRequires:  pkgconfig(mjpegtools)
 Requires:       dvd+rw-tools
 Requires:       dvdauthor >= 0.7.1
