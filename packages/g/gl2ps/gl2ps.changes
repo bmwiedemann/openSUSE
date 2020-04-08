@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  7 17:20:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.2:
+  * Revert dynamic library naming change inadvertently introduced
+    in 1.4.1
+- Update to version 1.4.1:
+  * Added gl2psSorting to change the sorting algorithm on the fly
+  * Fix rotated text in PGF output
+  * Use pt instead of px in SVG viewport
+  * New GL2PS_NO_TEX_FONTSIZE option and gl2psSetTexScaling
+    function to control LATEX scaling
+- Cleanup spec file
+- Drop upstream no-copy-dt-needed-entries.patch
+
+-------------------------------------------------------------------
 Mon Jul 10 22:00:38 UTC 2017 - jengelh@inai.de
 
 - Remove a bit of filler wording, and compact the description a bit
