@@ -48,6 +48,7 @@ URL:            https://github.com/openSUSE/daps
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.rpmlintrc
 Source2:        %{name}-fetch-source-git
+Patch0:         daps-gnu-make-4.3.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildArch:      noarch
@@ -164,6 +165,7 @@ for upgrade instructions.
 #--------------------------------------------------------------------------
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 #%%patch1 -p1
 
 # Correct shebang line as suggested in
