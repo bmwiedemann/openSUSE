@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 02:27:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Don't use post and preun scriptlets to avoid dependency issues.
+- Fix broken extension enabling.
+
+-------------------------------------------------------------------
 Mon Mar 23 22:57:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove the post and preun dependency of the python module          

@@ -17,9 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Test files missing
 %define         skip_python2 1
-%bcond_with     test
 Name:           python-jupyter_highlight_selected_word
 Version:        0.2.0
 Release:        0
@@ -31,12 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/j/jupyter_highlig
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-notebook
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module notebook}
-%endif
 Requires:       python-notebook
 Recommends:     jupyter-jupyter_highlight_selected_word = %{version}
 BuildArch:      noarch
@@ -55,8 +48,6 @@ Summary:        Jupyter notebook extension to highlight every instance of the cu
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-jupyter_highlight_selected_word = %{version}
-Requires(post): jupyter-notebook
-Requires(preun): jupyter-notebook
 
 %description -n jupyter-jupyter_highlight_selected_word
 Jupyter notebook extension that enables highlighting of all instances of the
@@ -77,18 +68,16 @@ This package provides the jupyter components.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %{jupyter_nbextension_install jupyter_highlight_selected_word}
-%{fdupes %{buildroot}%{python3_sitelib} %{buildroot}%{_jupyter_nbextension_dir}}
 
-%post -n jupyter-jupyter_highlight_selected_word
-%{jupyter_nbextension_enable jupyter_highlight_selected_word}
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension install jupyter_highlight_selected_word --user --py
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension enable jupyter_highlight_selected_word --user --py
 
-%preun -n jupyter-jupyter_highlight_selected_word
-%{jupyter_nbextension_disable jupyter_highlight_selected_word}
+for f in ~/.jupyter/nbconfig/*.json ; do
+    tdir=$( basename -s .json ${f} )
+    install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/highlight_selected_word.json
+done
 
-%if %{with test}
-%check
-%python_expand nosetests-%{$python_bin_suffix}
-%endif
+%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
 
 %files %{python_files}
 %doc README.md
@@ -97,6 +86,8 @@ This package provides the jupyter components.
 %{python_sitelib}/jupyter_highlight_selected_word-%{version}-py*.egg-info
 
 %files -n jupyter-jupyter_highlight_selected_word
+%license LICENSE.txt
 %{_jupyter_nbextension_dir}/highlight_selected_word/
+%config %{_jupyter_nb_notebook_confdir}/highlight_selected_word.json
 
 %changelog
