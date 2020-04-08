@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:10:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.6:
+  * Fix Setup Wizard gets Stuck if Keys in GnuPG available
+  * Fix Cannot confirm publish GnuPG key on WKS server
+  * Fix Automatic Key Refresh doesn't work with keys.openpgp.org
+  * Fix per-recipients rule 'set enigmail rules for' field unable to edit
+  * Fix File names of attachments are not encrypted
+
+-------------------------------------------------------------------
 Fri Jan  3 11:46:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enigmail 2.1.5:
