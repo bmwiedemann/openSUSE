@@ -1,7 +1,7 @@
 #
 # spec file for package ha-cluster-bootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010-2011 Novell Inc. All Rights Reserved.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           ha-cluster-bootstrap
 Version:        0.5
 Release:        0
 Summary:        Pacemaker HA Cluster Bootstrap Tool
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Clustering/HA
-Url:            https://github.com/tserong/sleha-bootstrap
+URL:            https://github.com/tserong/sleha-bootstrap
 Source:         sleha-bootstrap-%{version}.tar.bz2
 
 BuildRequires:  crmsh >= 3

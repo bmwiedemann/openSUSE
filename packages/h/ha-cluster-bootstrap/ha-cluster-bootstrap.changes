@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:33:33 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- update init man page since qdevice option changed 
+
+-------------------------------------------------------------------
 Wed Aug 14 17:52:10 UTC 2019 - XLiang@suse.com
 
 - use help2man to generate init/join/remove man page (bsc#1138353)
