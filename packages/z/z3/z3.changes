@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:27:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.8.7+git.20200407:
+  * work on random_updates
+  * fill columns to fill in random update as in theory_arith_aux.h
+  * block selected configurations from HORN tactic
+  * set arith.solver=6 by default
+  * revert the default arith.solver=2
+  * simplify patch_blocker()
+  * redirect to the new solver
+  * fix the patch of real vars
+  * change lar_terms to use column indices
+  * change lar_terms to use column indices
+  * fix #3713: too much caching in dom-simplify for OR expressions
+  * fix #3739 - dependencies may be valid even if they are null
+  * [spacer] fix ugly bug in ground refutation generation (i.e., cex)
+  * Replace is_null with is_non_empty_string in spacer params
+  * [spacer] fixedpoint.get_answer() returns ground refutation for SAT
+  * reduce_invertible: fix mk_diagonal for BV 0 switch from -x to ~x
+  * minor code simplification in bv rewriter
+  * reduce_invertible: recognize (* x -1) as the same as (- x)
+  * roll back in maximize_term if the integrality is broken
+  * remove output from normalize bounds
+  * and plenty of other chanes
+- Use cmake_build macro
+
+-------------------------------------------------------------------
 Thu Jan 30 09:53:14 UTC 2020 - jslaby@suse.com
 
 - Update to version 4.8.7+git.20200129:
