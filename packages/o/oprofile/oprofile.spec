@@ -1,7 +1,7 @@
 #
 # spec file for package oprofile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        System-Wide Profiler for Linux Systems
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
-Url:            http://oprofile.sourceforge.net/
+URL:            http://oprofile.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/oprofile/oprofile-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
 Source3:        baselibs.conf
@@ -31,6 +31,8 @@ Source5:        README-BEFORE-ADDING-PATCHES
 Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
 Patch3:         %{name}-handle-empty-event-name-spec-gracefully-for-ppc.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         %{name}-handle-binutils-2_34.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -42,11 +44,11 @@ BuildRequires:  java-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  zlib-devel
-Requires(pre):  %{_sbindir}/groupadd %{_sbindir}/useradd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 %ifarch ppc ppc64 ppc64le
 BuildRequires:  libpfm-devel >= 4.3.0
 %endif
@@ -99,10 +101,7 @@ This package contains the library needed at runtime when profiling JITed code
 from supported virtual machines.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 mkdir -p java/include
 # copy files necessary to build Java agent libraries
@@ -122,7 +121,7 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec grep -E -e __DATE__ -e __TIME__ {} +
 find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} htmldir=%{_docdir}/oprofile install
@@ -143,7 +142,6 @@ getent passwd oprofile >/dev/null || \
 %postun -n libopagent1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/ocount
 %{_bindir}/ophelp
 %{_bindir}/opimport
@@ -164,14 +162,12 @@ getent passwd oprofile >/dev/null || \
 %license COPYING
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_docdir}/%{name}/op-jit-devel.html
 %dir %{_libdir}/oprofile
 %{_libdir}/oprofile/libopagent.so
 
 %files -n libopagent1
-%defattr(-,root,root)
 %dir %{_libdir}/oprofile
 %{_libdir}/oprofile/libopagent.so.1*
 

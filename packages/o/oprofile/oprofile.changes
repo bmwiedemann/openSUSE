@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:11:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * oprofile-handle-binutils-2_34.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jan 23 22:12:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use docbook-utils-minimal for manpage generation, avoids
