@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:27:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-lucene-8.patch
+    + port to lucene 8.x
+    + apply if building against lucene >= 8
+
+-------------------------------------------------------------------
 Sun Apr  5 16:00:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

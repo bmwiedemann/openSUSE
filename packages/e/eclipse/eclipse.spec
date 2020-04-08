@@ -116,6 +116,7 @@ Patch34:        eclipse-asm7.patch
 Patch35:        eclipse-arm32.patch
 Patch36:        eclipse-force-gtk2.patch
 Patch37:        eclipse-felix-scr-dependencies.patch
+Patch38:        eclipse-lucene-8.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -337,10 +338,6 @@ Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       icu4j >= 62.1
 Requires:       jsch >= 0.1.46
-Requires:       lucene-analysis >= %{_lucene_version}
-Requires:       lucene-analyzers-smartcn >= %{_lucene_version}
-Requires:       lucene-core >= %{_lucene_version}
-Requires:       lucene-queryparser >= %{_lucene_version}
 Requires:       osgi-compendium
 Requires:       sac
 Requires:       sat4j
@@ -358,6 +355,10 @@ Requires:       osgi(org.eclipse.jetty.server) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.servlet) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.util) >= %{_jetty_version}
 Requires:       osgi(org.tukaani.xz)
+%requires_ge    lucene-analysis
+%requires_ge    lucene-analyzers-smartcn
+%requires_ge    lucene-core
+%requires_ge    lucene-queryparser
 
 %if %{with bootstrap}
 Requires:       eclipse-equinox-osgi-bootstrap = %{version}-%{release}
@@ -520,6 +521,9 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch36 -p1
 %endif
 %patch37 -p1
+%if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
+%patch38 -p1
+%endif
 
 # Use ecj when bootstrapping
 %if %{with bootstrap}
