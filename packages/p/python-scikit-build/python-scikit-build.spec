@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-%{version}.tar.gz
 Patch0:         python38.patch
+Patch1:         scikit-build-pr450-findf2py.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools >= 28.0.0}
 BuildRequires:  fdupes
@@ -64,6 +65,7 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 %prep
 %setup -q -n scikit-build-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build

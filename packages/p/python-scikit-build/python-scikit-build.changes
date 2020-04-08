@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 12:04:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add scikit-build-pr450-findf2py.patch to find the flavor specific
+  f2py
+
+-------------------------------------------------------------------
 Tue Mar 10 10:33:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build with python3.8:
