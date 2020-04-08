@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 28 19:14:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20200326:
+  * aero registry removal
+  * Add Mineduc subregistry for public schools: aprendemas.cl
+  * Update public_suffix_list.dat - Existing Section
+  * gTLD autopull: 2020-03-15
+  * Add "urown.cloud" and "dnsupdate.info"
+  * Remove site.builder.nu
+  * Remove unnecessary trailing whitespace for name.fj
+  * Update .eu IDNs to add Greek and URL for Cyrillic
+  * Update fj entry
+
+-------------------------------------------------------------------
 Tue Feb  4 11:25:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200201:
