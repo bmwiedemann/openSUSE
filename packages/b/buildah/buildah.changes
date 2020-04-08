@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  6 06:39:00 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.14.6
+  * Make image history work correctly with new args handling
+  * Don't add args to the RUN environment from the Builder
+
+-------------------------------------------------------------------
 Mon Mar 30 06:48:28 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.14.5
