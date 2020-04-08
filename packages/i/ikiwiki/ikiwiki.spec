@@ -1,7 +1,7 @@
 #
 # spec file for package ikiwiki
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 # Basic requirements stated in Bundle::IkiWiki
 %define base_requires perl(CGI) perl(CGI::FormBuilder) perl(CGI::Session) perl(Data::Dumper) perl(Date::Parse) perl(HTML::Parser) perl(HTML::Scrubber) perl(HTML::Template) perl(JSON) perl(Mail::Sendmail) perl(Text::Markdown) perl(URI) perl(XML::Simple) perl(YAML::XS)
-
 # Basic plugin requirements stated in Bundle::IkiWiki::Extras
 %define plugins_requires perl(Authen::Passphrase) perl(Crypt::SSLeay) perl(File::MimeInfo) perl(Gravatar::URL) perl(HTML::Tree) perl(Locale::gettext) perl(Net::INET6Glue) perl(Net::OpenID::Consumer) perl(Sort::Naturally) perl(Term::ReadLine::Gnu) perl(Text::CSV) perl(XML::Writer)
-
 # Additional requirements added based on code and docs searching
 %define additional_requires perl(Cwd) perl(Digest::SHA) perl(Encode) perl(ExtUtils::MakeMaker) perl(File::Find) perl(File::chdir) perl(File::Path) perl(File::Spec) perl(Getopt::Long) perl(HTML::Entities) perl(HTML::TreeBuilder) perl(Image::Magick) perl(Locale::gettext) perl(Memoize) perl(Net::OpenID::VerifiedIdentity) perl(Storable) perl(URI::Escape) python-docutils
-
 # Requirements needed for tests
-%define tests_requires bzr cvs cvsps git-core mercurial perl(B) perl(Errno) perl(HTML::LinkExtor) perl(IPC::Run) perl(Test::More) perl(XML::Twig) subversion
-
+%define tests_requires cvs cvsps git-core mercurial perl(B) perl(Errno) perl(HTML::LinkExtor) perl(IPC::Run) perl(Test::More) perl(XML::Twig) subversion
 # Currently unresolvable - enable when it becomes available
 # - RPC::XML - base requires
 # - XML::Feed - needed for aggregate.pm, t/podcast.t
@@ -42,14 +38,13 @@
 # - Text::WikiFormat - wikitext.pm
 # - Text::WikiCreole - creole.pm
 # - Locale::Po4a::Chooser::new - po.t
-
 Name:           ikiwiki
 Version:        3.20190228
 Release:        0
 Summary:        A wiki compiler
 License:        GPL-2.0-or-later AND BSD-2-Clause
 Group:          Productivity/Networking/Web/Utilities
-URL:            http://ikiwiki.info/
+URL:            https://ikiwiki.info/
 Source:         http://ftp.debian.org/debian/pool/main/i/%{name}/%{name}_%{version}.orig.tar.xz
 BuildRequires:  %{additional_requires}
 BuildRequires:  %{base_requires}
@@ -97,10 +92,10 @@ EOF
 
 %build
 perl Makefile.PL PREFIX=%{_prefix} INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test || :
+%make_build test || :
 
 %install
 make pure_install DESTDIR=%{buildroot}
