@@ -166,6 +166,10 @@ Source53:       https://storage.googleapis.com/mirror.tensorflow.org/www.kurims.
 Source54:       https://github.com/llvm/llvm-project/archive/ecc999101aadc8dc7d4af9fd88be10fe42674aa0.tar.gz#/llvm.tar.gz
 # License56:
 Source56:       https://github.com/mborgerding/kissfft/archive/36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz#/kissfft.tar.gz
+# stable mkl version (bsc#1168839)
+# https://github.com/tensorflow/tensorflow/pull/36487
+# https://github.com/tensorflow/tensorflow/pull/36488
+Source57:       https://storage.googleapis.com/mirror.tensorflow.org/github.com/intel/mkl-dnn/archive/v0.21.2.tar.gz#/mkl-v0.21.2.tar.gz
 Source100:      https://github.com/google/googletest/archive/release-1.8.0.tar.gz
 
 Patch10:        removed-docker-tools.patch
@@ -174,10 +178,6 @@ Patch11:        libjpeg_turbo-name.patch
 Patch12:        right-json-location.patch
 Patch13:        remove-weakref.patch
 Patch14:        fix-lite.patch
-# https://github.com/tensorflow/tensorflow/pull/36488
-Patch15:        added-mkl_dnn-as-syslib.patch
-# https://github.com/tensorflow/tensorflow/pull/36487
-Patch16:        fixed-mkl-sgemm-call.patch
 Patch17:        json-feature-name.patch
 
 Requires:       python3
@@ -256,9 +256,6 @@ BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  memory-constraints
-%ifarch x86_64
-BuildRequires:  mkl-dnn-devel
-%endif
 BuildRequires:  nasm
 BuildRequires:  pcre-devel
 # Requiring 3.9.1 which is the actual one in Leap 15.2
@@ -440,6 +437,7 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE53}
 %makebazelcache %{SOURCE54}
 %makebazelcache %{SOURCE56}
+%makebazelcache %{SOURCE57}
 
 # unpack tensorflow
 
@@ -450,8 +448,6 @@ mkdir -p %{bazeldir}
 %patch12 -p 1
 %patch13 -p 1
 %patch14 -p 1
-%patch15 -p 1
-%patch16 -p 1
 %if 0%{?suse_version} > 1500 
 %patch17 -p 1
 %endif
@@ -538,7 +534,6 @@ export TF_SYSTEM_LIBS="\
     jsoncpp_git,\
     keras_applications_archive,\
     lmdb,\
-    mkl_dnn,\
 		nasm,\
     nsync,\
     opt_einsum_archive,\
@@ -589,8 +584,6 @@ ln -s $(which g++-7) g++
 %endif
 export PATH=%{_topdir}/bin/:${PATH}
 cd -
-#  --repository_cache=%{bz_cachdir} \
-#  'attr(visibility, "//visibility:public", //tensorflow:*)'
 ./configure
 
 %define bazelopts \\\
@@ -599,10 +592,10 @@ cd -
   --ignore_unsupported_sandboxing \\\
   --verbose_failures \\\
   --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \\\
-  --config=v2 \\\
-  --config=noaws \\\
   --define=build_with_mkl_dnn_only=true \\\
   --define=tensorflow_mkldnn_contraction_kernel=0 \\\
+  --config=v2 \\\
+  --config=noaws \\\
   --incompatible_no_support_tools_in_action_inputs=false \\\
   --override_repository="rules_cc=/usr/src/bazel-rules-cc" \\\
   --override_repository="bazel_skylib=/usr/src/bazel-skylib"\\\
