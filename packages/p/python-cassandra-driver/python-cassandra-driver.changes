@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:05:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.23.0:
+  * Transient Replication Support (PYTHON-1207)
+  * Support system.peers_v2 and port discovery for C* 4.0 (PYTHON-700)
+  * Asyncore logging exception on shutdown (PYTHON-1228)
+
+-------------------------------------------------------------------
 Tue Apr  7 07:10:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix 32bit build by skipping the tests overflowing there

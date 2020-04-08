@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cassandra-driver
-Version:        3.22.0
+Version:        3.23.0
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0

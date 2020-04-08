@@ -109,4 +109,15 @@
     <comment>- Fix 32bit build by skipping the tests overflowing there</comment>
     <requestid>791923</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8b69930c7e6d298e70b6ebabfd6aef84</srcmd5>
+    <version>3.23.0</version>
+    <time>1586368538</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.23.0:
+  * Transient Replication Support (PYTHON-1207)
+  * Support system.peers_v2 and port discovery for C* 4.0 (PYTHON-700)
+  * Asyncore logging exception on shutdown (PYTHON-1228)</comment>
+    <requestid>791950</requestid>
+  </revision>
 </revisionlist>
