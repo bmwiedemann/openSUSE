@@ -62,6 +62,8 @@ Patch13:        bash-4.2-nscdunmap.dif
 Patch14:        bash-4.3-sigrestart.patch
 # PATCH-FIX-UPSTREAM bnc#382214 -- disabled due bnc#806628 by -DBNC382214=0
 Patch16:        bash-4.0-setlocale.dif
+# PATCH-FIX-UPSTREAM
+Patch17:        bash50-fix-016-close-new-fifos.patch
 # PATCH-EXTEND-SUSE bnc#828877 -- xterm resizing does not pass to all sub clients
 Patch18:        bash-4.3-winch.dif
 Patch40:        bash-4.1-bash.bashrc.dif
@@ -102,7 +104,7 @@ specification (IEEE Working Group 1003.2).
 
 %package doc
 Summary:        Documentation how to Use the GNU Bourne-Again Shell
-Group:          Documentation/Man
+Group:          Documentation/HTML
 Provides:       bash:%{_infodir}/bash.info.gz
 Supplements:    packageand(bash:patterns-base-documentation)
 PreReq:         %install_info_prereq
@@ -227,6 +229,7 @@ done
 %patch13 -p0 -b .nscdunmap
 %patch14 -p0 -b .sigrestart
 %patch16 -p0 -b .setlocale
+%patch17 -p0 -b .fix016
 #%patch18 -p0 -b .winch
 %patch40 -p0 -b .bashrc
 %if %{with sjis}
@@ -531,6 +534,10 @@ ldd -u -r %{buildroot}/bin/bash || true
 %dir %{_datadir}/bash
 %dir %{_datadir}/bash/helpfiles
 %{_datadir}/bash/helpfiles/*
+%{_mandir}/man1/bash.1*
+%{_mandir}/man1/bashbuiltins.1*
+%{_mandir}/man1/bashbug.1*
+%{_mandir}/man1/rbash.1*
 
 %files lang -f bash.lang
 %defattr(-,root,root)
@@ -538,10 +545,6 @@ ldd -u -r %{buildroot}/bin/bash || true
 %files doc
 %defattr(-,root,root)
 %doc %{_infodir}/bash.info*
-%doc %{_mandir}/man1/bash.1*
-%doc %{_mandir}/man1/bashbuiltins.1*
-%doc %{_mandir}/man1/bashbug.1*
-%doc %{_mandir}/man1/rbash.1*
 %doc %{_docdir}/%{name}
 
 %files devel

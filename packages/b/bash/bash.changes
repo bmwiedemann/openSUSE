@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:28:08 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary patch bash50-fix-016-close-new-fifos.patch from upstream
+  to fix upstream patch bash50-016
+
+-------------------------------------------------------------------
+Mon Feb 24 09:21:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- move man pages back to main package. It's just 100k
+
+-------------------------------------------------------------------
 Thu Feb 13 10:56:07 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch bash50-012
