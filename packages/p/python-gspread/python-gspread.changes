@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  8 13:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.3.1
+  * Support old and new collections.abc.Sequence  (#745 by @timgates42)
+  * Added `Spreadsheet.values_batch_update()` (#731)
+  * Added more parameters to `Worksheet.append_row()` (#726)
+  * Fix usage of client.openall when a title is passed in (#572 by @aiguofer)
+  * Fixed sharing from Team Drives (#646 by @wooddar)
+  * Fixed KeyError in list comprehension in `Spreadsheet.remove_permissions()` (#643 by @wooddar)
+  * Added `Spreadsheet.values_batch_get()` (#705 by @aiguofer)
+  * Added `stacklevel=2` to deprecation warnings
+
+-------------------------------------------------------------------
 Tue Mar 31 11:34:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - remove nose dep since we are not running tests 
