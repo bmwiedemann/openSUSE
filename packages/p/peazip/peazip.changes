@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:31:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.2.0
+  CODE:
+  * Various fixes and improvements
+  FILE MANAGER:
+  * Extended options to manually update edited files in archive 
+    (consistently with update dialog) in context menu > more submenu
+  * it is now possible to update archive and discard temp edit 
+    files (as in auto update dialog Yes/Clear option), and to 
+    discard edits without update
+  EXTRACTION and ARCHIVING:
+  * Added option to automatically close PeaZip when task 
+    completes
+  * Added options to save and load custom compression settings
+  * Menu entries are available in main menu > Layout (in 
+    compression screen) and in compression presets context menus (in 
+    file browser and in compression screen)
+  * Compression settings are saved by default to "Compression 
+    settings" folder in same path of PeaZip configuration
+  * Password and keyfiles are not saved in custom compression 
+    settings, to manage passwords safely see instead main menu > 
+    Tools > Password manager
+  * Volatile, context dependant variables can be saved alongside 
+    non-volatile ones, but will be lost in subsequent uses unless 
+    the custom setting is reloaded (in Options > Advanced volatile 
+    variables can be shown in italic font)
+  * Presets for archive creation / conversion are now rewritten 
+    to use new compression setting mechanism, new presets supersedes 
+    both old presets and favourite formats menu entries
+  * Presets are saved in PeaZip\res\presets folder, in PeaZip's 
+    program path; apart for being saved separately they are standard 
+    compression setting files and can be used as such
+  * To customize an existing preset with a custom compression 
+    settings file, copy the desired custom compression settings file 
+    in presets folder, in place of one of the existing preset files
+  * Optionally, editing the compression setting file is possible 
+    to change its displayed file name, the name that will be shown 
+    by PeaZip in presets menu
+  * New presets: ZPAQ ultra, ZPAQ, ARC, Brotli, Zstandard
+  * Extended non-volatile options saved to configuration (and 
+    compression settings) 7z/p7zip advanced compression options for 
+    dictionary, word, passes and block size are now remembererd
+  * File spanning options are now remembered
+  * Improved support for ZPAQ format
+  * AES256 encryption, supported by design by the format, is now 
+    enabled
+  * Compression settings were optimized for better results
+  * From Advanced tab of extraction screen are now supported 
+    following options: Restore files to original absolute paths; 
+    Separate extraction of all revisions of the archive; Overwrite 
+    existing files; Test operation is now enabled
+  * ZPAQ is now available in presets at medium and ultra 
+    compression formats
+
+-------------------------------------------------------------------
 Mon Mar  9 08:36:24 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.1.1
