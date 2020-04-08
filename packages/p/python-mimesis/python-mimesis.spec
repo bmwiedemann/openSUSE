@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-mimesis
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        Fake data generator
 License:        MIT
@@ -60,8 +60,7 @@ rm %{buildroot}%{_prefix}/LICENSE
 sed -i '/--\(flake8\|isort\)/d' setup.cfg
 # some tests require a network connection
 # test_cpf_with_666_prefix - fails with new mocker behaviour
-# test_port - fails on py3.8+ as it raises different exception then one checked
-%pytest -k 'not (test_download_image or test_stock_image or test_cpf_with_666_prefix or test_port)'
+%pytest -k 'not (test_download_image or test_stock_image or test_cpf_with_666_prefix)'
 
 %files %{python_files}
 %doc README.rst
