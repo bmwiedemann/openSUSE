@@ -1849,4 +1849,21 @@ libapparmor:
     for the detailed upstream changelog</comment>
     <requestid>784421</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>a001c0692e8890147e1a1c755c773638</srcmd5>
+    <version>2.13.4</version>
+    <time>1586368454</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with make 4.3 by backporting some commits from upstream
+  master (boo#1167953):
+  - make-4.3-capabilities.diff
+  - make-4.3-capabilities-vim.diff
+  - make-4.3-network.diff
+  - make-4.3-fix-utils-network-test.diff
+
+Also fix a wrong patch filename in the previous .changes entry.
+The correct message about the refreshed patch is:
+- refresh usr-etc-abstractions-base-nameservice.diff (forwarded request 789397 from cboltz)</comment>
+    <requestid>789398</requestid>
+  </revision>
 </revisionlist>

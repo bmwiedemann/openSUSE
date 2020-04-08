@@ -68,6 +68,18 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 # update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
 Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 
+# fix build with make 4.3  - network rules (taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/307, not in 2.13.x, boo#1167953)
+Patch11:        make-4.3-network.diff
+
+# fix build with make 4.3 - fix utils network tests (taken from upstream 9144e39d2, not in 2.13.x, boo#1167953)
+Patch12:        make-4.3-fix-utils-network-test.diff
+
+# fix build with make 4.3 -  capability rules (taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/461, not in 2.13.x, boo#1167953)
+Patch13:        make-4.3-capabilities.diff
+
+# fix build with make 4.3 -  fix apparmor.vim capability rules (submitted upstream 2020-03-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/463, not in 2.13.x, boo#1167953)
+Patch14:        make-4.3-capabilities-vim.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -357,6 +369,10 @@ SubDomain.
 %patch4
 %patch5
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 
 %build
 %define _lto_cflags %{nil}
