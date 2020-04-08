@@ -1,7 +1,7 @@
 #
 # spec file for package python-gpxpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-gpxpy
-Version:        1.3.5
+Version:        1.4.0
 Release:        0
 Summary:        GPX file parser and GPS track manipulation library
 License:        Apache-2.0

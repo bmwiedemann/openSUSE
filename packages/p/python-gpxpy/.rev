@@ -7,4 +7,16 @@
     <comment> </comment>
     <requestid>741039</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6bd97f30e3da74274399680e6751366e</srcmd5>
+    <version>1.4.0</version>
+    <time>1586368588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.4.0:
+  * Removed support for python2.* and python3.5
+  * Added typehints and with mypy checks
+  * Course computation
+  * Refactored haversine_distance for speed and use math.radians</comment>
+    <requestid>792331</requestid>
+  </revision>
 </revisionlist>
