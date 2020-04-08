@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 07:19:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.4
+  * AqOfxConnect: Improved handling of ENV var AQOFX_LOG_COMM
+    This var can now also take the path of the log file to use.
+  * OFX: Added maintainable version of OFX1
+  * HBCI: Added first implementation of HKPSA
+- Check the ChangeLog file for the complete list of changes.
+
+-------------------------------------------------------------------
 Sat Mar 14 12:43:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.1.2

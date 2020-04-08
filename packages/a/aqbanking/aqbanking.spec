@@ -28,14 +28,15 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.1.2
+Version:        6.1.4
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
 Source:         %{name}-%{version}.tar.gz
-Source1:        aqbanking6-handbook-20190221.pdf
+Source1:        %{name}-%{version}.tar.gz.asc
+Source2:        aqbanking6-handbook-20190221.pdf
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -148,7 +149,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,ChangeLog,README}
 
 # Install the handbook
 mkdir -p %{buildroot}/%{_docdir}/%{name}
-install -m 644 %{SOURCE1} %{buildroot}%{_docdir}/%{name}/aqbanking-handbook.pdf
+install -m 644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/aqbanking-handbook.pdf
 %find_lang %{_name}
 
 %fdupes %{buildroot}
