@@ -1,7 +1,7 @@
 #
-# spec file for package lua_luasystem
+# spec file for package lua-luasystem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,9 +59,12 @@ make %{?_smp_mflags} \
         LUAPREFIX_linux?=%{_prefix} \
         CDIR_linux?=%{_lib}/lua/%{lua_version} \
         linux
+install -v -D -m0644 -p -t %{buildroot}%{lua_noarchdir}/system system/init.lua
 
 %files
 %dir %{lua_archdir}/system
 %{lua_archdir}/system/*
+%dir %{lua_noarchdir}/system
+%{lua_noarchdir}/system/*
 
 %changelog
