@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_with     test
 Name:           python-qgrid
 Version:        1.3.0
 Release:        0
@@ -28,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/quantopian/qgrid
 Source:         https://files.pythonhosted.org/packages/source/q/qgrid/qgrid-%{version}.tar.gz
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas >= 0.18.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,11 +37,6 @@ Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-notebook
 Requires:       python-pandas >= 0.18.0
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module pandas >= 0.18.0}
-BuildRequires:  %{python_module pytest}
-%endif
 %python_subpackages
 
 %description
@@ -52,14 +47,9 @@ This package provides the python interface.
 %package     -n jupyter-qgrid
 Summary:        Grid for sorting and filtering DataFrames in Jupyter notebooks
 Group:          Development/Languages/Python
-Requires:       python3-notebook >= 4.0.0
+Requires:       jupyter-notebook >= 4.0.0
+Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       python3-qgrid = %{version}
-Requires(post): jupyter-notebook >= 4.0.0
-Requires(post): jupyter-ipywidgets >= 7.0.0
-Requires(post): python3-pandas >= 0.18.0
-Requires(preun): jupyter-notebook >= 4.0.0
-Requires(preun): jupyter-ipywidgets >= 7.0.0
-Requires(preun): python3-pandas >= 0.18.0
 
 %description -n jupyter-qgrid
 An Interactive Grid for Sorting and Filtering DataFrames in Jupyter Notebook.
@@ -75,23 +65,20 @@ This package provides the jupyter notebook extension.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes %{buildroot}%{_jupyter_nbextension_dir}
 %{python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/qgrid/tests/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/qgrid/tests/
 }
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/qgrid/tests/
 
-%post -n jupyter-qgrid
-%{jupyter_nbextension_enable qgrid}
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension install qgrid --user --py
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension enable qgrid --user --py
 
-%preun -n jupyter-qgrid
-%{jupyter_nbextension_disable qgrid}
+for f in ~/.jupyter/nbconfig/*.json ; do
+    tdir=$( basename -s .json ${f} )
+    install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/qgrid.json
+done
 
-%if %{with test}
-%check
-export PYTHONDONTWRITEBYTECODE=1
-%pytest qgrid
-%endif
+%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
 
 %files %{python_files}
 %doc README.rst
@@ -102,5 +89,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %files -n jupyter-qgrid
 %license LICENSE
 %{_jupyter_nbextension_dir}/qgrid/
+%config %{_jupyter_nb_notebook_confdir}/qgrid.json
 
 %changelog
