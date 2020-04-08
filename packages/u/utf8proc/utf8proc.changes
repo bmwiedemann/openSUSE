@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 28 19:37:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- utf8proc 2.5.0:
+  * Unicode 13 support
+  * No longer report zero width for category Sk
+
+-------------------------------------------------------------------
 Wed May 15 16:34:16 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - utf8proc 2.4.0:

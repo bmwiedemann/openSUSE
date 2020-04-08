@@ -1,7 +1,7 @@
 #
 # spec file for package utf8proc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lib_ver 2
 Name:           utf8proc
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT
 Group:          System/Libraries
-URL:            http://julialang.org/utf8proc/
-Source:         https://github.com/JuliaLang/utf8proc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
+URL:            https://julialang.org/utf8proc/
+Source:         https://github.com/JuliaStrings/utf8proc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  pkgconfig
 
 %description
 utf8proc is a library for processing UTF-8 encoded Unicode strings.
@@ -71,7 +71,7 @@ that use utf8proc.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 make %{?_smp_mflags} \
