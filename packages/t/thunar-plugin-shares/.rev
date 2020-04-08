@@ -79,4 +79,12 @@
     <comment>update to version 0.3.0: (forwarded request 617410 from seife)</comment>
     <requestid>617420</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c979f1795e8f9812faa6786c90940f5a</srcmd5>
+    <version>0.3.1</version>
+    <time>1586368586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792332</requestid>
+  </revision>
 </revisionlist>

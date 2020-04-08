@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-plugin-shares
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@
 %define plugin_name thunar-shares-plugin
 
 Name:           thunar-plugin-shares
-Url:            http://goodies.xfce.org/projects/thunar-plugins/thunar-shares-plugin
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
+URL:            https://docs.xfce.org/xfce/thunar/custom-actions
 Source0:        http://archive.xfce.org/src/thunar-plugins/%{plugin_name}/0.3/%{plugin_name}-%{version}.tar.bz2
 Summary:        Thunar Plugin for Sharing Files Using Samba
 License:        GPL-2.0-or-later
@@ -36,7 +36,6 @@ Requires:       thunar >= %{thunar_version}
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}
 Obsoletes:      %{plugin_name} < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Thunar Shares Plugin allows for quickly sharing a directory using Samba
@@ -49,7 +48,7 @@ from within Thunar without requiring root access.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -65,7 +64,6 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 rm -rf "%{buildroot}"
 
 %files
-%defattr(-,root,root)
 %{_libdir}/thunarx-3/thunar-shares-plugin.so
 
 %files lang -f %{plugin_name}.lang
