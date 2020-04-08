@@ -324,8 +324,6 @@
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang10"/>
-      <repopackage name="clang10-doc"/>
       <repopackage name="clang9"/>
       <repopackage name="clang9-doc"/>
       <repopackage name="clazy"/>
@@ -1636,7 +1634,6 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang10"/>
       <repopackage name="libclang9"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -2345,7 +2342,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia78"/>
-      <repopackage name="libLLVM10"/>
       <repopackage name="libLLVM9"/>
       <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
@@ -2360,7 +2356,6 @@
       <repopackage name="liblsan0" arch="x86_64"/>
       <repopackage name="libltdl7"/>
       <repopackage name="libltdl7-32bit" arch="x86_64"/>
-      <repopackage name="libLTO10"/>
       <repopackage name="libLTO9"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
       <repopackage name="liblua5_1-5"/>
