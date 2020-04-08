@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:19:06 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Allow samba-libs on XFCE Live: indirect dependency for
+  opensuse-welcome.
+
+-------------------------------------------------------------------
 Mon Mar 16 15:15:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Remove more unnecessary firmware to not exceed size constraints

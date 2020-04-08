@@ -1,5 +1,4 @@
 install branding-openSUSE
-buildignore samba-libs
 install yast2-trans-stats
 install patterns-xfce-xfce
 installPattern xfce
