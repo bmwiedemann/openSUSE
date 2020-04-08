@@ -31,6 +31,7 @@ Source100:      languagetool-system-hunspell.patch.in
 Patch0:         languagetool-descriptor.patch
 Patch1:         languagetool-xgboost-predictor.patch
 Patch2:         languagetool-hunspell.patch
+Patch3:         languagetool-4.8-lucene-8.patch
 BuildRequires:  fdupes
 BuildRequires:  hunspell-devel
 BuildRequires:  maven-local
@@ -65,6 +66,8 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(tech.units:indriya)
 %requires_eq    %{hunspell_library}
+%requires_ge    lucene-backward-codecs
+%requires_ge    lucene-core
 BuildArch:      noarch
 
 %description
@@ -89,6 +92,9 @@ This package contains javadoc for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
+%patch3 -p1
+%endif
 
 cat %{SOURCE100} | sed "s#@LIBHUNSPELL@#$(basename $(readlink -e %{_libdir}/libhunspell.so))#g" | patch -p1
 

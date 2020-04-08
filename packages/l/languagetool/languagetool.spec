@@ -27,6 +27,7 @@ Source0:        https://github.com/languagetool-org/%{name}/archive/v%{version}.
 Patch0:         languagetool-descriptor.patch
 Patch1:         languagetool-xgboost-predictor.patch
 Patch2:         languagetool-hunspell.patch
+Patch3:         languagetool-4.8-lucene-8.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  xmvn-subst
@@ -103,8 +104,6 @@ Requires:       languagetool-core-tests
 Requires:       languagetool-libs = %{version}-%{release}
 Requires:       languagetool-tools
 Requires:       logback
-Requires:       lucene-backward-codecs
-Requires:       lucene-core
 Requires:       mariadb-java-client
 Requires:       minlog
 Requires:       morfologik-stemming
@@ -133,6 +132,8 @@ Requires:       unit-api
 Requires:       uom-lib-common
 Requires:       xgboost
 Requires:       xgboost-predictor
+%requires_ge    lucene-backward-codecs
+%requires_ge    lucene-core
 
 %description
 LanguageTool is a free and open-source grammar checker.
@@ -159,6 +160,9 @@ This package contains javadoc for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
+%patch3 -p1
+%endif
 
 # We built these ones in another spec file
 %pom_disable_module languagetool-core

@@ -28,6 +28,7 @@ Source0:        https://github.com/languagetool-org/%{base_name}/archive/v%{vers
 Patch0:         languagetool-descriptor.patch
 Patch1:         languagetool-xgboost-predictor.patch
 Patch2:         languagetool-hunspell.patch
+Patch3:         languagetool-4.8-lucene-8.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-cli:commons-cli)
@@ -52,6 +53,9 @@ This package contains javadoc for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
+%patch3 -p1
+%endif
 
 pushd %{name}
 %{mvn_file} :{*} %{base_name}/@1

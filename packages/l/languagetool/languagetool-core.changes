@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:42:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * languagetool-4.8-lucene-8.patch
+    + Port to lucene >= 8
+    + Apply only if building with lucene >= 8
+
+-------------------------------------------------------------------
 Mon Mar 30 06:26:00 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of languagetool 4.8
