@@ -1,7 +1,7 @@
 #
 # spec file for package help2man
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           help2man
-Version:        1.47.12
+Version:        1.47.13
 Release:        0
 Summary:        Script for generating man pages from --help output
 License:        GPL-3.0-or-later
@@ -48,7 +48,7 @@ still providing some useful information.
 %build
 %configure \
 	--enable-nls
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

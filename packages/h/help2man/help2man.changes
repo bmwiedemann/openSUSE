@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 28 10:14:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.13:
+  * build system fixes
+  * Update parsing of --version to allow multi-word programs when
+    constructing the placeholder NAME paragraph
+
+-------------------------------------------------------------------
 Sun Jan  5 10:44:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - help2man 1.47.12:
