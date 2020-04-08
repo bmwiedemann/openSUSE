@@ -1,7 +1,7 @@
 #
 # spec file for package libacars2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,8 +31,8 @@ Source:         https://github.com/szpajder/libacars/archive/v%{version}.tar.gz#
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libacars is a library for decoding various ACARS message payloads.
@@ -55,11 +55,12 @@ libacars is a library for decoding various ACARS message payloads.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libacars.
 
-%package -n acars-examples
+%package -n acars2-examples
 Summary:        Example applications for libacars
 Group:          Productivity/Hamradio/Other
+Conflicts:      acars-examples
 
-%description -n acars-examples
+%description -n acars2-examples
 Example applications for for libacars:
 
  * decode_arinc.c - decodes ARINC-622 messages supplied at the
@@ -97,7 +98,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %{_libdir}/libacars-2.so
 %{_libdir}/pkgconfig/libacars-2.pc
 
-%files -n acars-examples
+%files -n acars2-examples
 %{_bindir}/adsc_get_position
 %{_bindir}/cpdlc_get_position
 %{_bindir}/decode_acars_apps
