@@ -186,6 +186,7 @@ rm %{buildroot}/%{_lib}/libpamc.so
 ln -sf ../../%{_lib}/libpamc.so.%{libpamc_so_version} %{buildroot}%{_libdir}/libpamc.so
 rm %{buildroot}/%{_lib}/libpam_misc.so
 ln -sf ../../%{_lib}/libpam_misc.so.%{libpam_misc_so_version} %{buildroot}%{_libdir}/libpam_misc.so
+mkdir -p %{buildroot}%{_prefix}/lib/motd.d
 #
 # Remove crap
 #
@@ -244,6 +245,7 @@ done
 %dir %{_distconfdir}/pam.d
 %dir %{_sysconfdir}/security
 %dir %{_sysconfdir}/security/limits.d
+%dir %{_prefix}/lib/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_sysconfdir}/pam.d/other
 %config(noreplace) %{_sysconfdir}/pam.d/common-*

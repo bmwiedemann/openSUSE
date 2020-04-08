@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:51:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- own /usr/lib/motd.d/ so other packages can add files there
+
+-------------------------------------------------------------------
 Tue Mar 24 07:09:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Listed all manual pages seperately as pam_userdb.8 has been moved
