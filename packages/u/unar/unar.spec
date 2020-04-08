@@ -1,7 +1,7 @@
 #
 # spec file for package unar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           unar
-Version:        1.10.5
+Version:        1.10.7
 Release:        0
 Summary:        Multi-format unarchiver
 License:        LGPL-2.1-or-later
-Group:          Productivity/Archiving/Compression
-URL:            http://unarchiver.c3.cx/commandline
-Source0:        https://github.com/MacPaw/%{name}/archive/v%{version}.tar.gz
+URL:            https://unarchiver.c3.cx/commandline
+Source0:        https://github.com/MacPaw/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-objc
@@ -44,19 +43,13 @@ well as disc images in ISO, BIN, MDF, NRG, CDI. It supports filenames
 in foreign character sets.
 
 %prep
-%setup -q
-# fix builddate info
-# Remove build time references so build-compare can do its work
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE1} '+%%H:%%M')
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE1} '+%%b %%e %%Y')
-sed -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" -i XADMaster/lsar.m XADMaster/unar.m
-sed -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -i XADMaster/lsar.m XADMaster/unar.m
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
 export OBJCFLAGS="$(gnustep-config --objc-flags)"
-make %{?_smp_mflags} -C XADMaster -f Makefile.linux
+%make_build -C XADMaster -f Makefile.linux
 
 %install
 install -d %{buildroot}%{_bindir}
