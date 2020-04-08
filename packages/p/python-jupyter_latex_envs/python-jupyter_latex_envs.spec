@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_latex_envs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%bcond_with     test
 Name:           python-jupyter_latex_envs
 Version:        1.4.6
 Release:        0
@@ -31,20 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-notebook >= 4.0
-%if %{with test}
-BuildRequires:  %{python_module entrypoints >= 0.2.2}
-BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module nbconvert}
-BuildRequires:  %{python_module notebook >= 4.0}
-BuildRequires:  %{python_module traitlets >= 4.1}
-%endif
 Requires:       python-jupyter_core
 Requires:       python-ipython
 Requires:       python-nbconvert
 Requires:       python-notebook >= 4.0
 Requires:       python-traitlets >= 4.1
-Requires:       jupyter-jupyter_latex_envs = %{version}
+Recommends:     jupyter-jupyter_latex_envs = %{version}
 BuildArch:      noarch
 
 %python_subpackages
@@ -62,10 +53,6 @@ Requires:       jupyter-jupyter_core
 Requires:       jupyter-nbconvert
 Requires:       jupyter-notebook >= 4.0
 Requires:       python3-jupyter_latex_envs = %{version}
-Requires(post): jupyter-notebook
-Requires(preun): jupyter-notebook
-Requires(post): python3-jupyter_latex_envs = %{version}
-Requires(preun): python3-jupyter_latex_envs = %{version}
 
 %description -n jupyter-jupyter_latex_envs
 Jupyter notebook extension which supports (some) LaTeX environments
@@ -86,19 +73,18 @@ chmod a-x src/latex_envs/static/doc/IEEEtran.bst
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
 %{jupyter_nbextension_install latex_envs}
-%{fdupes %{buildroot}%{python3_sitelib} %{buildroot}%{_jupyter_nbextension_dir}}
 
-%post -n jupyter-jupyter_latex_envs
-%{jupyter_nbextension_enable latex_envs}
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension install latex_envs --user --py
+PYTHONPATH=%{buildroot}%{python3_sitelib} jupyter nbextension enable latex_envs --user --py
 
-%preun -n jupyter-jupyter_latex_envs
-%{jupyter_nbextension_disable latex_envs}
+for f in ~/.jupyter/nbconfig/*.json ; do
+    tdir=$( basename -s .json ${f} )
+    install -Dm 644 ${f} %{buildroot}%{_jupyter_nb_confdir}/${tdir}.d/latex_envs.json
+done
 
-%if %{with test}
-%check
-%python_exec setup.py test
-%endif
+%{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{_jupyter_confdir}}
 
 %files %{python_files}
 %doc README.rst
@@ -109,5 +95,6 @@ chmod a-x src/latex_envs/static/doc/IEEEtran.bst
 %files -n jupyter-jupyter_latex_envs
 %license LICENSE.txt
 %{_jupyter_nbextension_dir}/latex_envs/
+%config %{_jupyter_nb_notebook_confdir}/latex_envs.json
 
 %changelog

@@ -42,4 +42,13 @@
     <comment></comment>
     <requestid>748444</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>438fc3fb7bb42d5abb9d43de8b6022fa</srcmd5>
+    <version>1.4.6</version>
+    <time>1586368573</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use post and preun scriptlets to avoid dependency issues.
+</comment>
+    <requestid>792284</requestid>
+  </revision>
 </revisionlist>
