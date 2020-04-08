@@ -1,7 +1,7 @@
 #
 # spec file for package python-hankel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hankel
-Version:        0.3.9
+Version:        1.0.2
 Release:        0
 Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/steven-murray/hankel
-Source:         https://github.com/steven-murray/hankel/archive/v%{version}.tar.gz
+Source:         https://github.com/steven-murray/hankel/archive/%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

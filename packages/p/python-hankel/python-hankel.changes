@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  8 14:46:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.0.2
+  * Limit calculation for k=0 provided (resulted in nan before)
+  * Alternative hankel kernel now selectable: sqrt(x) * J(nu, x)
+  * Caching of series factors for faster calculations
+  * Various infrastructure upgrades (setuptools_scm, pre-commit, black)
+  * Saver calculation of xrange_approx
+  * Methods ``G`` and ``deltaG`` now named ``final_term_amplitude`` and ``slope_of_last_term``.
+  * Upstream apparently dropped Python 2.
+
+-------------------------------------------------------------------
 Thu Sep 12 10:01:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.9:
