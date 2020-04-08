@@ -1,0 +1,11 @@
+[Unit]
+Description=Barrier Server Daemon
+After=network.target
+Conflicts=synergys.service synergys.socket
+
+[Service]
+ExecStart=/usr/bin/barriers --no-daemon --config /etc/barrier.conf
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
