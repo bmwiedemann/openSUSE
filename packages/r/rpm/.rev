@@ -2166,4 +2166,12 @@ it, updates to Tumbleweed may end up with a broken rpm database.
 See bugzilla 1167537 for the gory details.</comment>
     <requestid>787932</requestid>
   </revision>
+  <revision rev="279" vrev="4">
+    <srcmd5>0cbf0a12532f9b0765d288b0d7cda1ed</srcmd5>
+    <version>4.15.1</version>
+    <time>1586368447</time>
+    <user>dimstar_suse</user>
+    <comment>- Initialize the libgcrypt library [bnc#1167343]</comment>
+    <requestid>791720</requestid>
+  </revision>
 </revisionlist>

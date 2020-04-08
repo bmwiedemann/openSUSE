@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:34:42 CEST 2020 - mls@suse.de
+
+- Initialize the libgcrypt library [bnc#1167343]
+  * new patch: initgcrypt.diff
+
+-------------------------------------------------------------------
 Tue Mar 24 22:16:22 CET 2020 - mls@suse.de
 
 - Follow one level of symlink indirection when converting the rpm
@@ -9,6 +15,20 @@ Tue Mar 24 22:16:22 CET 2020 - mls@suse.de
 Mon Mar 23 16:11:34 UTC 2020 - Sergio Lindo Mansilla <slindomansilla@suse.com>
 
 - Add macro for supported ARM 64bit processors
+
+-------------------------------------------------------------------
+Fri Mar 13 08:26:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Replace rpmsort with rewrite using Lua (boo#1164553)
+
+-------------------------------------------------------------------
+Wed Feb 26 09:08:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Split out perl and python dep generators from rpm-build to avoid
+  pulling in perl and python in all RPM builds
+- Port rpmconfigcheck to pure shell
+- Refactor %files list of main package to not require %excludes
+  as those might lead to missing files in the package
 
 -------------------------------------------------------------------
 Fri Jan 17 11:27:17 CET 2020 - mls@suse.de

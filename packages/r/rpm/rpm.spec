@@ -131,6 +131,7 @@ Patch119:       bdb_ro.diff
 Patch120:       disable_bdb.diff
 Patch121:       ndb_backport.diff
 Patch122:       db_conversion.diff
+Patch123:       initgcrypt.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -194,7 +195,6 @@ Requires:       grep
 Requires:       gzip
 Requires:       make
 Requires:       patch
-Requires:       perl-base
 Requires:       sed
 Requires:       systemd-rpm-macros
 Requires:       tar
@@ -204,14 +204,31 @@ Requires:       xz
 # drop candidates
 Requires:       cpio
 Requires:       file
-# for pythondistdeps generator
-Requires:       python3-base
+# Mandatory generators
+Requires:       (%{name}-build-perl if perl-base)
+Requires:       (%{name}-build-python if python3-base)
 # The point of the split
 Conflicts:      rpm < 4.15.0
 
 %description build
 If you want to build a rpm, you need this package. It provides rpmbuild
 and requires some packages that are usually required.
+
+%package build-python
+Summary:        RPM dependency generator for Python
+Group:          Development/Languages/Python
+Requires:       python3-base
+
+%description build-python
+Provides and requires generator for .py files and modules.
+    
+%package build-perl
+Summary:        RPM dependency generator for Perl
+Group:          Development/Languages/Perl
+Requires:       perl-base
+
+%description build-perl
+Provides and requires generator for .pl files and modules.
 
 %prep
 %setup -q -n rpm-%{version}
@@ -239,7 +256,7 @@ cp config.guess config.sub db/dist/
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103                            
 %patch -P 109                                           -P 117
-%patch -P 118 -P 119 -P 120 -P 121 -P 122
+%patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -412,24 +429,29 @@ fi
 %doc    RPM-HOWTO
 	/etc/rpm
 	/bin/rpm
-	/usr/bin/*
-	%exclude /usr/bin/rpmbuild
-	%exclude %{_libdir}/librpmbuild.so.*
-	%exclude /usr/lib/rpm/elfdeps
-	%exclude /usr/lib/rpm/rpmdeps
-	%exclude /usr/lib/rpm/debugedit
-	%exclude /usr/lib/rpm/sepdebugcrcfix
-	%exclude /usr/bin/rpmspec
-	%exclude /usr/lib/rpm/*.prov
-	%exclude /usr/lib/rpm/*.req
-	%exclude /usr/lib/rpm/brp-*
-	%exclude /usr/lib/rpm/check-*
-	%exclude /usr/lib/rpm/*find*
-	%exclude /usr/lib/rpm/fileattrs/pythondist.attr
-	%exclude /usr/lib/rpm/pythondistdeps.py
+	%{_bindir}/gendiff
+	%{_bindir}/rpm
+	%{_bindir}/rpm2cpio
+	%{_bindir}/rpmdb
+	%{_bindir}/rpmgraph
+	%{_bindir}/rpmkeys
+	%{_bindir}/rpmqpack
+	%{_bindir}/rpmquery
+	%{_bindir}/rpmsign
+	%{_bindir}/rpmverify
 	/usr/sbin/rpmconfigcheck
 	/usr/lib/systemd/system/rpmconfigcheck.service
-	/usr/lib/rpm
+	%dir /usr/lib/rpm
+	/usr/lib/rpm/macros
+	/usr/lib/rpm/macros.d/
+	/usr/lib/rpm/platform/
+	/usr/lib/rpm/rpm.supp
+	/usr/lib/rpm/rpmdb_*
+	/usr/lib/rpm/rpmpopt-*
+	/usr/lib/rpm/rpmrc
+	/usr/lib/rpm/rpmsort
+	/usr/lib/rpm/suse
+	/usr/lib/rpm/tgpg
 	%{_libdir}/rpm-plugins
 	%{_libdir}/librpm.so.*
 	%{_libdir}/librpmio.so.*
@@ -454,26 +476,47 @@ fi
 %files build
 %defattr(-,root,root)
 /usr/bin/rpmbuild
+/usr/lib/rpm/libtooldeps.sh
+/usr/lib/rpm/pkgconfigdeps.sh
+/usr/lib/rpm/pythondeps.sh
 /usr/lib/rpm/elfdeps
 /usr/lib/rpm/rpmdeps
 /usr/lib/rpm/debugedit
 /usr/lib/rpm/sepdebugcrcfix
 /usr/bin/rpmspec
-/usr/lib/rpm/*.prov
-/usr/lib/rpm/*.req
 /usr/lib/rpm/brp-*
 /usr/lib/rpm/check-*
 /usr/lib/rpm/*find*
+/usr/lib/rpm/fileattrs/
+%exclude /usr/lib/rpm/fileattrs/pythondist.attr
+%exclude /usr/lib/rpm/fileattrs/perl*.attr
+/usr/lib/rpm/*.prov
+%exclude /usr/lib/rpm/perl.prov
+/usr/lib/rpm/*.req
+%exclude /usr/lib/rpm/perl.req
+%ifarch aarch64 ppc64le riscv64
+/usr/lib/rpm/config.guess
+/usr/lib/rpm/config.sub
+%endif
+
+%files build-python
+%defattr(-,root,root)
 /usr/lib/rpm/fileattrs/pythondist.attr
 /usr/lib/rpm/pythondistdeps.py
 
+%files build-perl
+%defattr(-,root,root)
+/usr/lib/rpm/fileattrs/perl*.attr
+/usr/lib/rpm/perl.prov
+/usr/lib/rpm/perl.req
+
 %files devel
 %defattr(644,root,root,755)
-	/usr/include/rpm
-        %{_libdir}/librpm.so
-        %{_libdir}/librpmbuild.so
-        %{_libdir}/librpmio.so
-        %{_libdir}/librpmsign.so
-        %{_libdir}/pkgconfig/rpm.pc
+/usr/include/rpm
+%{_libdir}/librpm.so
+%{_libdir}/librpmbuild.so
+%{_libdir}/librpmio.so
+%{_libdir}/librpmsign.so
+%{_libdir}/pkgconfig/rpm.pc
 
 %changelog

@@ -13,7 +13,11 @@ if test -s $packages -a \( ! -e $configcheckfile -o -s $configcheckfile -o ! $pa
     echo "Searching for unresolved configuration files"
     if test ! -e $configcheckfile -o ! $packages -ot $configcheckfile ; then
 	test -e $configcheckfile && mv -f $configcheckfile $configcheckfile.old
-	rpm -qalc | sort | perl -lne '-e "$_.rpmnew" and print "$_.rpmnew"; -e "$_.rpmorig" and print "$_.rpmorig"; -e "$_.rpmsave" and print "$_.rpmsave"' > $configcheckfile
+	rpm -qalc | sort | while read line; do
+            for suffix in new orig save; do
+                [[ -e "${line}.rpm${suffix}" ]] && echo "${line}.rpm${suffix}"
+            done
+        done > $configcheckfile
     else
 	mv -f $configcheckfile $configcheckfile.old
 	while read l; do
