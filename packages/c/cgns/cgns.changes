@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 15:30:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix last change (typo in spec file, should be %_lib not %lib).
+
+-------------------------------------------------------------------
+Tue Apr  7 08:33:36 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Handle all architectures with %_lib != lib
+
+-------------------------------------------------------------------
 Fri Apr  3 18:05:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.1.1:

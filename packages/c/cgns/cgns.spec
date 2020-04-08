@@ -91,7 +91,7 @@ export CXXFLAGS="%{optflags}"
 %install
 %cmake_install
 
-%ifarch x86_64 ppc64 ppc64le aarch64
+%if "%_lib" != "lib"
 mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 %endif
 
