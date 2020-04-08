@@ -40,6 +40,8 @@ Patch4:         Fix-failure-to-build-against-poppler-0.83.0.patch
 Patch5:         Fix-failure-to-build-with-poppler-0.84.0.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         Fails-to-build-with-python-3.8.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-PDF-import-plugin-support-poppler-0.86.x.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  cmake
 BuildRequires:  cups-devel
@@ -117,11 +119,8 @@ This package provides the documentation for Scribus.
 %prep
 %setup -q
 # W: wrong-script-end-of-line-encoding
-dos2unix scribus/plugins/scriptplugin/scripts/Ligatursatz.py
-# necessary to be able to apply the patches
-dos2unix scribus/plugins/scriptplugin/cmdannotations.cpp
-dos2unix scribus/plugins/scriptplugin/cmddoc.cpp
-dos2unix scribus/plugins/scriptplugin/cmdstyle.cpp
+find . -type f -exec dos2unix {} \;
+
 %autopatch -p1
 
 %build

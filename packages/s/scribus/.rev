@@ -545,4 +545,19 @@
     <comment></comment>
     <requestid>765022</requestid>
   </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>d5ca7290e3a53f9eb6d84bfb64db23b1</srcmd5>
+    <version>1.5.5</version>
+    <time>1586368615</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  *0001-PDF-import-plugin-support-poppler-0.86.x.patch
+- Update:
+  * Fix-failure-to-build-against-poppler-0.83.0.patch
+  * Fix-failure-to-build-with-poppler-0.84.0.patch
+  * Use-same-mechanism-as-with-previous-poppler-versions.patch
+  * Work-around-poppler-0.82-signature-changes.patch
+  * port-scripter-to-Python-3.patch</comment>
+    <requestid>792435</requestid>
+  </revision>
 </revisionlist>

@@ -1,12 +1,71 @@
-From 3d1fe747ea7dd23cb099f5e93976f6de146cd250 Mon Sep 17 00:00:00 2001
+From 5d6944bb95ea60bbe6ba611b85e3bee3547139c4 Mon Sep 17 00:00:00 2001
 From: Jean Ghali <jghali@libertysurf.fr>
 Date: Sun, 27 Oct 2019 13:01:32 +0000
 Subject: [PATCH] #15030 : port scripter to Python 3
 
 git-svn-id: svn://scribus.net/trunk/Scribus@23278 11d20701-8431-0410-a711-e3c959e3b870
+---
+ CMakeLists.txt                                |   6 +-
+ doc/de/install2.html                          |  41 ++--
+ doc/de/scripter1.html                         |   3 +
+ doc/en/install2.html                          |  38 ++--
+ doc/en/scripter1.html                         |   4 +-
+ doc/fr/install2.html                          |  36 ++--
+ doc/it/scripter1.html                         |   6 +
+ scribus/main_win32.cpp                        |   4 +-
+ .../plugins/scriptplugin/cmdannotations.cpp   |  46 ++---
+ scribus/plugins/scriptplugin/cmdcell.cpp      |   8 +-
+ scribus/plugins/scriptplugin/cmdcolor.cpp     |   2 +-
+ scribus/plugins/scriptplugin/cmddialog.cpp    |  10 +-
+ scribus/plugins/scriptplugin/cmddoc.cpp       |  18 +-
+ scribus/plugins/scriptplugin/cmdgetprop.cpp   |  34 +--
+ .../plugins/scriptplugin/cmdgetsetprop.cpp    |  43 ++--
+ scribus/plugins/scriptplugin/cmdmani.cpp      |  27 +--
+ scribus/plugins/scriptplugin/cmdmisc.cpp      |  31 ++-
+ scribus/plugins/scriptplugin/cmdobj.cpp       |  41 ++--
+ scribus/plugins/scriptplugin/cmdpage.cpp      |   6 +-
+ scribus/plugins/scriptplugin/cmdsetprop.cpp   |  30 +--
+ scribus/plugins/scriptplugin/cmdstyle.cpp     |  12 +-
+ scribus/plugins/scriptplugin/cmdtable.cpp     |   8 +-
+ scribus/plugins/scriptplugin/cmdtext.cpp      |  36 ++--
+ scribus/plugins/scriptplugin/cmdutil.cpp      |   8 +
+ scribus/plugins/scriptplugin/cmdutil.h        |  10 +-
+ scribus/plugins/scriptplugin/cmdvar.h         |  11 +
+ .../plugins/scriptplugin/objimageexport.cpp   |  27 ++-
+ scribus/plugins/scriptplugin/objpdffile.cpp   | 174 ++++++++--------
+ scribus/plugins/scriptplugin/objprinter.cpp   |  53 ++---
+ .../plugins/scriptplugin/samples/3columnA4.py |   8 +-
+ .../scriptplugin/samples/3columnUSLTR.py      |   8 +-
+ .../plugins/scriptplugin/samples/Calender.py  |   2 +-
+ .../scriptplugin/samples/ExtractText.py       |   4 +-
+ .../plugins/scriptplugin/samples/Sample1.py   |   2 +-
+ .../scriptplugin/samples/boilerplate.py       |   6 +-
+ .../scriptplugin/samples/golden-mean.py       |   2 +-
+ .../plugins/scriptplugin/samples/legende.py   |   2 +-
+ .../samples/moins_10_pourcent_group.py        |   2 +-
+ .../samples/plus_10_pourcent_group.py         |   2 +-
+ .../scriptplugin/samples/pochette_cd.py       |   2 +-
+ scribus/plugins/scriptplugin/samples/quote.py |   2 +-
+ .../scriptplugin/samples/sample_db_usage.py   |   4 +-
+ .../scriptplugin/samples/trait_de_coupe.py    |   2 +-
+ .../plugins/scriptplugin/samples/wordcount.py |   2 +-
+ scribus/plugins/scriptplugin/scriptercore.cpp |  35 ++--
+ scribus/plugins/scriptplugin/scriptplugin.cpp | 194 ++++++++++--------
+ .../scripts/Align_image_in_frame.py           |  15 +-
+ .../scriptplugin/scripts/CalendarWizard.py    |  44 ++--
+ .../plugins/scriptplugin/scripts/Caption.py   |   4 +-
+ .../scriptplugin/scripts/ColorChart.py        |   8 +-
+ .../scriptplugin/scripts/DirectImageImport.py |   6 +-
+ .../scriptplugin/scripts/FontSample.py        |  76 +++----
+ .../plugins/scriptplugin/scripts/InfoBox.py   |   6 +-
+ .../scriptplugin/scripts/Ligatursatz.py       |  24 +--
+ .../plugins/scriptplugin/scripts/color2csv.py |   8 +-
+ .../plugins/scriptplugin/scripts/csv2color.py |  10 +-
+ .../scriptplugin/scripts/importcsv2table.py   |  10 +-
+ 57 files changed, 670 insertions(+), 593 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7385057e28..255aae06de 100644
+index 0cfa1d5..cd5c39f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -847,10 +847,10 @@ endif()
@@ -24,7 +83,7 @@ index 7385057e28..255aae06de 100644
  	set(COMPILE_PYTHON ON)
  endif()
 diff --git a/doc/de/install2.html b/doc/de/install2.html
-index e8ec3b8820..dd46fbd72a 100644
+index e8ec3b8..dd46fbd 100644
 --- a/doc/de/install2.html
 +++ b/doc/de/install2.html
 @@ -3,36 +3,39 @@
@@ -87,10 +146,10 @@ index e8ec3b8820..dd46fbd72a 100644
  <p>Scribus l&auml;uft in jeder Desktopumgebung und ben&ouml;tigt kein KDE, aber Drag&rsquo;n&rsquo;drop funktioniert nur in KDE.</p>
  <p>Falls das Farbmanagement nicht funktioniert, m&uuml;ssen Sie zus&auml;tzlich mindestens ein RGB- und ein CMYK-Profil installieren. Anderenfalls werden die Farbmanagement-Optionen ausgeblendet oder ausgegraut. Normalerweise installiert Scribus ein RGB- and ein CMYK-Profil, und zwar nur, um das Farbmanagement zu aktivieren, aber aufgrund ihrer Lizenzpolitik (v.a. Debian) befinden sich die Profile u.U. in einem separaten Paket. </p>
 diff --git a/doc/de/scripter1.html b/doc/de/scripter1.html
-index c3acdd06c0..78fba55d9a 100644
+index c3acdd0..78fba55 100644
 --- a/doc/de/scripter1.html
 +++ b/doc/de/scripter1.html
-@@ -14,6 +14,9 @@ <h3>Overview</h3>
+@@ -14,6 +14,9 @@
  
  <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
  
@@ -101,7 +160,7 @@ index c3acdd06c0..78fba55d9a 100644
  <h3>Using the Plug-in</h3>
  <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
 diff --git a/doc/en/install2.html b/doc/en/install2.html
-index a02c4a771f..7762b5d8a6 100644
+index a02c4a7..7762b5d 100644
 --- a/doc/en/install2.html
 +++ b/doc/en/install2.html
 @@ -10,32 +10,32 @@
@@ -157,10 +216,10 @@ index a02c4a771f..7762b5d8a6 100644
  <p>Scribus will run under almost any window manager and does not require KDE. However, drag and drop functionality will be lost without KDE.</p>
  <p>If color management does not work, you also need at least one RGB profile and one CMYK profile installed or the color preferences and options will not appear in the menus. Scribus installs one RGB and one CMYK profile simply to enable color management, but some distributions, notably Debian, provide ICC profiles in separate packages, due to their licensing policy. </p>
 diff --git a/doc/en/scripter1.html b/doc/en/scripter1.html
-index 922e0cf9f6..78fba55d9a 100644
+index 922e0cf..78fba55 100644
 --- a/doc/en/scripter1.html
 +++ b/doc/en/scripter1.html
-@@ -15,8 +15,8 @@ <h3>Overview</h3>
+@@ -15,8 +15,8 @@
  <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
  
  <h3>Scripter and Windows</h3>
@@ -172,7 +231,7 @@ index 922e0cf9f6..78fba55d9a 100644
  <h3>Using the Plug-in</h3>
  <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
 diff --git a/doc/fr/install2.html b/doc/fr/install2.html
-index 1ff30ec699..8e802dd172 100644
+index 1ff30ec..8e802dd 100644
 --- a/doc/fr/install2.html
 +++ b/doc/fr/install2.html
 @@ -7,19 +7,24 @@
@@ -210,7 +269,7 @@ index 1ff30ec699..8e802dd172 100644
  </ol>
  <p>Scribus s'ex&eacute;cutera sous la plupart des gestionnaires de fen&ecirc;tres et ne requiert pas KDE en soi. Cependant, les fonctionnalit&eacute;s de glisser-d&eacute;poser seront perdues sans KDE. Un des d&eacute;veloppeurs de Scribus roule sous Gnome. L'auteur de cette documentation s'est astreint &agrave; tester chaque version de Scribus sous Blackbox &eacute;galement.
  L'op&eacute;ration n'a r&eacute;v&eacute;l&eacute; aucune incompatibilit&eacute; ni probl&egrave;me, mise &agrave; part la perte de la fonctionnalit&eacute; glisser-d&eacute;poser.</p>
-@@ -32,13 +37,10 @@ <h2>&Eacute;l&eacute;ments requis</h2>
+@@ -32,13 +37,10 @@ CXXFLAGS=&#034;-march=athlon&#034;</code> serait b&eacute;n&eacute;fique. V&eacu
  pour des options d&eacute;taill&eacute;es</p>
  <h3>Optionnellement :</h3>
  <ul>
@@ -230,7 +289,7 @@ index 1ff30ec699..8e802dd172 100644
  </html> 
 \ No newline at end of file
 diff --git a/doc/it/scripter1.html b/doc/it/scripter1.html
-index d4a11d2801..78fba55d9a 100644
+index d4a11d2..78fba55 100644
 --- a/doc/it/scripter1.html
 +++ b/doc/it/scripter1.html
 @@ -3,6 +3,9 @@
@@ -243,7 +302,7 @@ index d4a11d2801..78fba55d9a 100644
  <body>
  <h2>Scripting Scribus with Python</h2>
  
-@@ -11,6 +14,9 @@ <h3>Overview</h3>
+@@ -11,6 +14,9 @@
  
  <p>Note that additions to the Scripter are being made frequently, which means that the available documentation may be incomplete.</p>
  
@@ -254,10 +313,10 @@ index d4a11d2801..78fba55d9a 100644
  <h3>Using the Plug-in</h3>
  <p>Scribus is being shipped with some &ldquo;hard-wired&rdquo; scripts, which are available via <i>Scripter&nbsp;&gt; Scribus Scripts</i>:</p>
 diff --git a/scribus/main_win32.cpp b/scribus/main_win32.cpp
-index 2ee6189d42..d5164685f5 100644
+index 1469db8..19d20f5 100644
 --- a/scribus/main_win32.cpp
 +++ b/scribus/main_win32.cpp
-@@ -153,11 +153,13 @@ void setPythonEnvironment(const QString& appPath)
+@@ -154,11 +154,13 @@ void setPythonEnvironment(const QString& appPath)
  	QString pythonHome = appPath + "/python";
  	if (!QDir(pythonHome).exists())
  		return; //assume a custom python
@@ -273,7 +332,7 @@ index 2ee6189d42..d5164685f5 100644
  	tmp += nativePath;
  	tmp += "\\python;";
 diff --git a/scribus/plugins/scriptplugin/cmdannotations.cpp b/scribus/plugins/scriptplugin/cmdannotations.cpp
-index a972205207..09029337ed 100644
+index ca5429d..299dc7d 100644
 --- a/scribus/plugins/scriptplugin/cmdannotations.cpp
 +++ b/scribus/plugins/scriptplugin/cmdannotations.cpp
 @@ -169,7 +169,7 @@ PyObject *scribus_getjsactionscript(PyObject * /*self*/, PyObject* args)
@@ -416,7 +475,7 @@ index a972205207..09029337ed 100644
  		PyObject *edit = Py_False;
  		int result = Annotation::Flag_Edit & a.Flag();
 diff --git a/scribus/plugins/scriptplugin/cmdcell.cpp b/scribus/plugins/scriptplugin/cmdcell.cpp
-index fa644b596e..c05c5f7296 100644
+index fa644b5..c05c5f7 100644
 --- a/scribus/plugins/scriptplugin/cmdcell.cpp
 +++ b/scribus/plugins/scriptplugin/cmdcell.cpp
 @@ -61,7 +61,7 @@ PyObject *scribus_getcellstyle(PyObject* /* self */, PyObject* args)
@@ -456,7 +515,7 @@ index fa644b596e..c05c5f7296 100644
  
  PyObject *scribus_setcellfillcolor(PyObject* /* self */, PyObject* args)
 diff --git a/scribus/plugins/scriptplugin/cmdcolor.cpp b/scribus/plugins/scriptplugin/cmdcolor.cpp
-index 8579d9c152..ddc261d8a0 100644
+index 8579d9c..ddc261d 100644
 --- a/scribus/plugins/scriptplugin/cmdcolor.cpp
 +++ b/scribus/plugins/scriptplugin/cmdcolor.cpp
 @@ -22,7 +22,7 @@ PyObject *scribus_colornames(PyObject* /* self */)
@@ -469,7 +528,7 @@ index 8579d9c152..ddc261d8a0 100644
  	}
  	return l;
 diff --git a/scribus/plugins/scriptplugin/cmddialog.cpp b/scribus/plugins/scriptplugin/cmddialog.cpp
-index fb0e558068..f5bfd11936 100644
+index fb0e558..f5bfd11 100644
 --- a/scribus/plugins/scriptplugin/cmddialog.cpp
 +++ b/scribus/plugins/scriptplugin/cmddialog.cpp
 @@ -21,7 +21,7 @@ PyObject *scribus_newdocdia(PyObject* /* self */)
@@ -518,7 +577,7 @@ index fb0e558068..f5bfd11936 100644
  	Py_RETURN_NONE;
  }
 diff --git a/scribus/plugins/scriptplugin/cmddoc.cpp b/scribus/plugins/scriptplugin/cmddoc.cpp
-index 2a0778a0dd..8e2eeedc8a 100644
+index e71692a..ae8a90e 100644
 --- a/scribus/plugins/scriptplugin/cmddoc.cpp
 +++ b/scribus/plugins/scriptplugin/cmddoc.cpp
 @@ -74,7 +74,7 @@ PyObject *scribus_newdocument(PyObject* /* self */, PyObject* args)
@@ -594,7 +653,7 @@ index 2a0778a0dd..8e2eeedc8a 100644
  
  PyObject* scribus_applymasterpage(PyObject* /* self */, PyObject* args)
 diff --git a/scribus/plugins/scriptplugin/cmdgetprop.cpp b/scribus/plugins/scriptplugin/cmdgetprop.cpp
-index b3149b4d1c..a2040f196d 100644
+index b3149b4..a2040f1 100644
 --- a/scribus/plugins/scriptplugin/cmdgetprop.cpp
 +++ b/scribus/plugins/scriptplugin/cmdgetprop.cpp
 @@ -44,7 +44,7 @@ PyObject *scribus_getobjecttype(PyObject* /* self */, PyObject* args)
@@ -749,7 +808,7 @@ index b3149b4d1c..a2040f196d 100644
  
  
 diff --git a/scribus/plugins/scriptplugin/cmdgetsetprop.cpp b/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
-index a0a9e1379b..8a4c4c7416 100644
+index 66ee27f..7a6ed1c 100644
 --- a/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
 +++ b/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
 @@ -15,16 +15,16 @@ for which a new license (GPL+exception) is in place.
@@ -807,7 +866,7 @@ index a0a9e1379b..8a4c4c7416 100644
  			return nullptr;
  
  	return resultList;
-@@ -283,9 +283,12 @@ PyObject* scribus_getproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -285,9 +285,12 @@ PyObject* scribus_getproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  		resultobj = PyBool_FromLong(prop.toBool());
  	// STRING TYPES
  	else if (prop.type() == QVariant::ByteArray)
@@ -822,7 +881,7 @@ index a0a9e1379b..8a4c4c7416 100644
  	// HIGHER ORDER TYPES
  	else if (prop.type() == QVariant::Point)
  	{
-@@ -372,8 +375,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -374,8 +377,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  			success = obj->setProperty(propertyName, 0);
  		else if (PyObject_IsTrue(objValue) == 1)
  			success = obj->setProperty(propertyName, 1);
@@ -833,7 +892,7 @@ index a0a9e1379b..8a4c4c7416 100644
  		else if (PyLong_Check(objValue))
  			success = obj->setProperty(propertyName, PyLong_AsLong(objValue) == 0);
  		else
-@@ -382,10 +385,10 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -384,10 +387,10 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  	else if (propertyType == "int")
  	{
  		matched = true;
@@ -847,7 +906,7 @@ index a0a9e1379b..8a4c4c7416 100644
  		else
  			matched = false;
  	}
-@@ -402,8 +405,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -404,8 +407,8 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  	else if (propertyType == "QString")
  	{
  		matched = true;
@@ -858,7 +917,7 @@ index a0a9e1379b..8a4c4c7416 100644
  		else if (PyUnicode_Check(objValue))
  		{
  			// Get a pointer to the internal buffer of the Py_Unicode object, which is UCS2 formatted
-@@ -417,11 +420,11 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -419,11 +422,11 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  	else if (propertyType == "QCString")
  	{
  		matched = true;
@@ -872,7 +931,7 @@ index a0a9e1379b..8a4c4c7416 100644
  			success = obj->setProperty(propertyName, utfString.toLatin1());
  		}
  		else if (PyUnicode_Check(objValue))
-@@ -454,7 +457,7 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
+@@ -456,7 +459,7 @@ PyObject* scribus_setproperty(PyObject* /*self*/, PyObject* args, PyObject* kw)
  		if (!objRepr)
  			return nullptr;
  		// Extract the repr() string
@@ -882,7 +941,7 @@ index a0a9e1379b..8a4c4c7416 100644
  
  		// And return an error
 diff --git a/scribus/plugins/scriptplugin/cmdmani.cpp b/scribus/plugins/scriptplugin/cmdmani.cpp
-index 03b7b3e0f2..31d378ffa5 100644
+index 03b7b3e..31d378f 100644
 --- a/scribus/plugins/scriptplugin/cmdmani.cpp
 +++ b/scribus/plugins/scriptplugin/cmdmani.cpp
 @@ -350,7 +350,7 @@ PyObject *scribus_sizeobjabs(PyObject* /* self */, PyObject* args)
@@ -971,7 +1030,7 @@ index 03b7b3e0f2..31d378ffa5 100644
  
  PyObject *scribus_islocked(PyObject* /* self */, PyObject* args)
 diff --git a/scribus/plugins/scriptplugin/cmdmisc.cpp b/scribus/plugins/scriptplugin/cmdmisc.cpp
-index 839a460b9b..eef8ef2afb 100644
+index 839a460..eef8ef2 100644
 --- a/scribus/plugins/scriptplugin/cmdmisc.cpp
 +++ b/scribus/plugins/scriptplugin/cmdmisc.cpp
 @@ -47,7 +47,7 @@ PyObject *scribus_fontnames(PyObject* /* self */)
@@ -1090,7 +1149,7 @@ index 839a460b9b..eef8ef2afb 100644
  
  /*! 04.01.2007 : Joachim Neu : Moves item selection to front. */
 diff --git a/scribus/plugins/scriptplugin/cmdobj.cpp b/scribus/plugins/scriptplugin/cmdobj.cpp
-index 3513507e47..61c14baa9a 100644
+index 7cf2145..b67a9c3 100644
 --- a/scribus/plugins/scriptplugin/cmdobj.cpp
 +++ b/scribus/plugins/scriptplugin/cmdobj.cpp
 @@ -31,19 +31,20 @@ PyObject *scribus_newrect(PyObject* /* self */, PyObject* args)
@@ -1237,7 +1296,7 @@ index 3513507e47..61c14baa9a 100644
  			// An exception will have already been set by PyList_Append apparently.
  			return nullptr;
 diff --git a/scribus/plugins/scriptplugin/cmdpage.cpp b/scribus/plugins/scriptplugin/cmdpage.cpp
-index ed4d0cefb6..b51c95e9f9 100644
+index ed4d0ce..b51c95e 100644
 --- a/scribus/plugins/scriptplugin/cmdpage.cpp
 +++ b/scribus/plugins/scriptplugin/cmdpage.cpp
 @@ -18,7 +18,7 @@ PyObject *scribus_actualpage(PyObject* /* self */)
@@ -1268,7 +1327,7 @@ index ed4d0cefb6..b51c95e9f9 100644
  
  PyObject *scribus_pagedimension(PyObject* /* self */)
 diff --git a/scribus/plugins/scriptplugin/cmdsetprop.cpp b/scribus/plugins/scriptplugin/cmdsetprop.cpp
-index a4b2762074..251edda249 100644
+index a4b2762..251edda 100644
 --- a/scribus/plugins/scriptplugin/cmdsetprop.cpp
 +++ b/scribus/plugins/scriptplugin/cmdsetprop.cpp
 @@ -447,77 +447,77 @@ PyObject *scribus_setobjectattributes(PyObject* /* self */, PyObject* args)
@@ -1365,10 +1424,10 @@ index a4b2762074..251edda249 100644
  		attributes.append(blank);
  	}
 diff --git a/scribus/plugins/scriptplugin/cmdstyle.cpp b/scribus/plugins/scriptplugin/cmdstyle.cpp
-index 11ad78a9b9..94e8f28519 100644
+index 2d70a80..523d0ab 100644
 --- a/scribus/plugins/scriptplugin/cmdstyle.cpp
 +++ b/scribus/plugins/scriptplugin/cmdstyle.cpp
-@@ -344,31 +344,31 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
+@@ -276,31 +276,31 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
  
  		val = PyDict_GetItemString(line, "Color");
  		if (val)
@@ -1405,7 +1464,7 @@ index 11ad78a9b9..94e8f28519 100644
  		else 
  			sl.Shade = currentDoc->itemToolPrefs().lineColorShade;
  
-@@ -380,7 +380,7 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
+@@ -312,7 +312,7 @@ PyObject *scribus_createcustomlinestyle(PyObject * /* self */, PyObject* args)
  
  		val = PyDict_GetItemString(line, "Shortcut");
  		if (val)
@@ -1415,7 +1474,7 @@ index 11ad78a9b9..94e8f28519 100644
  			ml.shortcut = "";
  
 diff --git a/scribus/plugins/scriptplugin/cmdtable.cpp b/scribus/plugins/scriptplugin/cmdtable.cpp
-index 6fb19fbcf4..4e7bd4e824 100644
+index 6fb19fb..4e7bd4e 100644
 --- a/scribus/plugins/scriptplugin/cmdtable.cpp
 +++ b/scribus/plugins/scriptplugin/cmdtable.cpp
 @@ -28,7 +28,7 @@ PyObject *scribus_gettablerows(PyObject* /* self */, PyObject* args)
@@ -1455,7 +1514,7 @@ index 6fb19fbcf4..4e7bd4e824 100644
  
  PyObject *scribus_settablefillcolor(PyObject* /* self */, PyObject* args)
 diff --git a/scribus/plugins/scriptplugin/cmdtext.cpp b/scribus/plugins/scriptplugin/cmdtext.cpp
-index 756a20e314..651265f51c 100644
+index 756a20e..651265f 100644
 --- a/scribus/plugins/scriptplugin/cmdtext.cpp
 +++ b/scribus/plugins/scriptplugin/cmdtext.cpp
 @@ -92,10 +92,10 @@ PyObject *scribus_getfont(PyObject* /* self */, PyObject* args)
@@ -1589,7 +1648,7 @@ index 756a20e314..651265f51c 100644
  
  /*
 diff --git a/scribus/plugins/scriptplugin/cmdutil.cpp b/scribus/plugins/scriptplugin/cmdutil.cpp
-index 26853e4478..a78521a56c 100644
+index 26853e4..a78521a 100644
 --- a/scribus/plugins/scriptplugin/cmdutil.cpp
 +++ b/scribus/plugins/scriptplugin/cmdutil.cpp
 @@ -241,3 +241,11 @@ TableBorder parseBorder(PyObject* borderLines, bool* ok)
@@ -1605,7 +1664,7 @@ index 26853e4478..a78521a56c 100644
 +}
 +
 diff --git a/scribus/plugins/scriptplugin/cmdutil.h b/scribus/plugins/scriptplugin/cmdutil.h
-index b06f7adf7e..33f785dc2c 100644
+index b06f7ad..33f785d 100644
 --- a/scribus/plugins/scriptplugin/cmdutil.h
 +++ b/scribus/plugins/scriptplugin/cmdutil.h
 @@ -29,6 +29,7 @@ double docUnitYToPageY(double pageUnitY);
@@ -1641,7 +1700,7 @@ index b06f7adf7e..33f785dc2c 100644
  
  #endif
 diff --git a/scribus/plugins/scriptplugin/cmdvar.h b/scribus/plugins/scriptplugin/cmdvar.h
-index aeee816839..fbdacc3b42 100644
+index aeee816..fbdacc3 100644
 --- a/scribus/plugins/scriptplugin/cmdvar.h
 +++ b/scribus/plugins/scriptplugin/cmdvar.h
 @@ -18,12 +18,21 @@ for which a new license (GPL+exception) is in place.
@@ -1676,7 +1735,7 @@ index aeee816839..fbdacc3b42 100644
  /*! Common scribus Exception */
  extern PyObject* ScribusException;
 diff --git a/scribus/plugins/scriptplugin/objimageexport.cpp b/scribus/plugins/scriptplugin/objimageexport.cpp
-index c30304bf9d..cfc3c3fa06 100644
+index c30304b..cfc3c3f 100644
 --- a/scribus/plugins/scriptplugin/objimageexport.cpp
 +++ b/scribus/plugins/scriptplugin/objimageexport.cpp
 @@ -34,7 +34,7 @@ static void ImageExport_dealloc(ImageExport* self)
@@ -1773,7 +1832,7 @@ index c30304bf9d..cfc3c3fa06 100644
  #ifdef COUNT_ALLOCS
  	/* these must be last and never explicitly initialized */
 diff --git a/scribus/plugins/scriptplugin/objpdffile.cpp b/scribus/plugins/scriptplugin/objpdffile.cpp
-index 2468158de7..2ae8c93452 100644
+index 2468158..2ae8c93 100644
 --- a/scribus/plugins/scriptplugin/objpdffile.cpp
 +++ b/scribus/plugins/scriptplugin/objpdffile.cpp
 @@ -135,7 +135,7 @@ static void PDFfile_dealloc(PDFfile *self)
@@ -2381,7 +2440,7 @@ index 2468158de7..2ae8c93452 100644
  #ifdef COUNT_ALLOCS
  	/* these must be last and never explicitly initialized */
 diff --git a/scribus/plugins/scriptplugin/objprinter.cpp b/scribus/plugins/scriptplugin/objprinter.cpp
-index 2be51b32d4..3219f77534 100644
+index 2be51b3..3219f77 100644
 --- a/scribus/plugins/scriptplugin/objprinter.cpp
 +++ b/scribus/plugins/scriptplugin/objprinter.cpp
 @@ -59,7 +59,7 @@ static void Printer_dealloc(Printer* self)
@@ -2582,10 +2641,10 @@ index 2be51b32d4..3219f77534 100644
  #ifdef COUNT_ALLOCS
  	/* these must be last and never explicitly initialized */
 diff --git a/scribus/plugins/scriptplugin/samples/3columnA4.py b/scribus/plugins/scriptplugin/samples/3columnA4.py
-index 2609c72d27..edf0a38a68 100644
+index 2609c72..edf0a38 100644
 --- a/scribus/plugins/scriptplugin/samples/3columnA4.py
 +++ b/scribus/plugins/scriptplugin/samples/3columnA4.py
-@@ -8,9 +8,9 @@
+@@ -8,9 +8,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -2598,7 +2657,7 @@ index 2609c72d27..edf0a38a68 100644
      sys.exit(1)
  
  def main(argv):
-@@ -26,7 +26,7 @@ def main(argv):
+@@ -26,7 +26,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2608,10 +2667,10 @@ index 2609c72d27..edf0a38a68 100644
  
  margins = (50, 50, 50, 50)
 diff --git a/scribus/plugins/scriptplugin/samples/3columnUSLTR.py b/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
-index 0148bac9ed..4e2257b76a 100644
+index 0148bac..4e2257b 100644
 --- a/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
 +++ b/scribus/plugins/scriptplugin/samples/3columnUSLTR.py
-@@ -8,9 +8,9 @@
+@@ -8,9 +8,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -2624,7 +2683,7 @@ index 0148bac9ed..4e2257b76a 100644
      sys.exit(1)
  
  def main(argv):
-@@ -24,7 +24,7 @@ def main(argv):
+@@ -24,7 +24,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2634,10 +2693,10 @@ index 0148bac9ed..4e2257b76a 100644
  
  margins = (50, 50, 50, 50)
 diff --git a/scribus/plugins/scriptplugin/samples/Calender.py b/scribus/plugins/scriptplugin/samples/Calender.py
-index 2d80546967..f09c7e291d 100644
+index 2d80546..f09c7e2 100644
 --- a/scribus/plugins/scriptplugin/samples/Calender.py
 +++ b/scribus/plugins/scriptplugin/samples/Calender.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2647,10 +2706,10 @@ index 2d80546967..f09c7e291d 100644
  
  import calendar
 diff --git a/scribus/plugins/scriptplugin/samples/ExtractText.py b/scribus/plugins/scriptplugin/samples/ExtractText.py
-index 6c0bfab85c..a17e28b1e2 100644
+index 6c0bfab..a17e28b 100644
 --- a/scribus/plugins/scriptplugin/samples/ExtractText.py
 +++ b/scribus/plugins/scriptplugin/samples/ExtractText.py
-@@ -73,8 +73,8 @@ def exportText(textfile):
+@@ -73,8 +73,8 @@ if scribus.haveDoc():
          if textfile == '':
              raise Exception
          exportText(textfile)
@@ -2662,10 +2721,10 @@ index 6c0bfab85c..a17e28b1e2 100644
  else:
      scribus.messageBox('Export Error', 'You need a Document open, and a frame selected.', \
 diff --git a/scribus/plugins/scriptplugin/samples/Sample1.py b/scribus/plugins/scriptplugin/samples/Sample1.py
-index 5205543c48..5ae8302007 100644
+index 5205543..5ae8302 100644
 --- a/scribus/plugins/scriptplugin/samples/Sample1.py
 +++ b/scribus/plugins/scriptplugin/samples/Sample1.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2675,10 +2734,10 @@ index 5205543c48..5ae8302007 100644
  
  margins = (10, 10, 10, 30)
 diff --git a/scribus/plugins/scriptplugin/samples/boilerplate.py b/scribus/plugins/scriptplugin/samples/boilerplate.py
-index 85e3b5bca9..c9b0c4be87 100644
+index 85e3b5b..c9b0c4b 100644
 --- a/scribus/plugins/scriptplugin/samples/boilerplate.py
 +++ b/scribus/plugins/scriptplugin/samples/boilerplate.py
-@@ -8,9 +8,9 @@
+@@ -8,9 +8,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -2692,10 +2751,10 @@ index 85e3b5bca9..c9b0c4be87 100644
  
  #########################
 diff --git a/scribus/plugins/scriptplugin/samples/golden-mean.py b/scribus/plugins/scriptplugin/samples/golden-mean.py
-index 4b7fc8bc82..2f15579732 100644
+index 4b7fc8b..2f15579 100644
 --- a/scribus/plugins/scriptplugin/samples/golden-mean.py
 +++ b/scribus/plugins/scriptplugin/samples/golden-mean.py
-@@ -44,7 +44,7 @@
+@@ -44,7 +44,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2705,10 +2764,10 @@ index 4b7fc8bc82..2f15579732 100644
  
  from math import sqrt
 diff --git a/scribus/plugins/scriptplugin/samples/legende.py b/scribus/plugins/scriptplugin/samples/legende.py
-index 933bc7b484..d8c13373c1 100644
+index 933bc7b..d8c1337 100644
 --- a/scribus/plugins/scriptplugin/samples/legende.py
 +++ b/scribus/plugins/scriptplugin/samples/legende.py
-@@ -9,7 +9,7 @@
+@@ -9,7 +9,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2718,10 +2777,10 @@ index 933bc7b484..d8c13373c1 100644
  
  import os
 diff --git a/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py b/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
-index c1ee6ef615..4306eb992c 100644
+index c1ee6ef..4306eb9 100644
 --- a/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
 +++ b/scribus/plugins/scriptplugin/samples/moins_10_pourcent_group.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2731,10 +2790,10 @@ index c1ee6ef615..4306eb992c 100644
  
  if haveDoc() and selectionCount():
 diff --git a/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py b/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
-index 36d174e5c7..018e0ba0dc 100644
+index 36d174e..018e0ba 100644
 --- a/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
 +++ b/scribus/plugins/scriptplugin/samples/plus_10_pourcent_group.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2744,10 +2803,10 @@ index 36d174e5c7..018e0ba0dc 100644
  
  if haveDoc() and selectionCount():
 diff --git a/scribus/plugins/scriptplugin/samples/pochette_cd.py b/scribus/plugins/scriptplugin/samples/pochette_cd.py
-index 0b8700cf3b..e098545066 100644
+index 0b8700c..e098545 100644
 --- a/scribus/plugins/scriptplugin/samples/pochette_cd.py
 +++ b/scribus/plugins/scriptplugin/samples/pochette_cd.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2757,10 +2816,10 @@ index 0b8700cf3b..e098545066 100644
  
  margins = (0, 0, 0, 0)
 diff --git a/scribus/plugins/scriptplugin/samples/quote.py b/scribus/plugins/scriptplugin/samples/quote.py
-index aee03371b3..ab69823d9d 100644
+index aee0337..ab69823 100644
 --- a/scribus/plugins/scriptplugin/samples/quote.py
 +++ b/scribus/plugins/scriptplugin/samples/quote.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2770,10 +2829,10 @@ index aee03371b3..ab69823d9d 100644
  
  import re
 diff --git a/scribus/plugins/scriptplugin/samples/sample_db_usage.py b/scribus/plugins/scriptplugin/samples/sample_db_usage.py
-index 3449015d84..1b3239bf0f 100644
+index 3449015..1b3239b 100644
 --- a/scribus/plugins/scriptplugin/samples/sample_db_usage.py
 +++ b/scribus/plugins/scriptplugin/samples/sample_db_usage.py
-@@ -47,13 +47,13 @@
+@@ -47,13 +47,13 @@ import sys
  try:
      import scribus
  except ImportError:
@@ -2790,10 +2849,10 @@ index 3449015d84..1b3239bf0f 100644
  
  
 diff --git a/scribus/plugins/scriptplugin/samples/trait_de_coupe.py b/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
-index 12ad7893d7..e8d5254000 100644
+index 12ad789..e8d5254 100644
 --- a/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
 +++ b/scribus/plugins/scriptplugin/samples/trait_de_coupe.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2803,10 +2862,10 @@ index 12ad7893d7..e8d5254000 100644
  
  def main():
 diff --git a/scribus/plugins/scriptplugin/samples/wordcount.py b/scribus/plugins/scriptplugin/samples/wordcount.py
-index de372d6110..e7ffa132fb 100644
+index de372d6..e7ffa13 100644
 --- a/scribus/plugins/scriptplugin/samples/wordcount.py
 +++ b/scribus/plugins/scriptplugin/samples/wordcount.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,7 @@ import sys
  try:
      from scribus import *
  except ImportError:
@@ -2816,7 +2875,7 @@ index de372d6110..e7ffa132fb 100644
  
  import re
 diff --git a/scribus/plugins/scriptplugin/scriptercore.cpp b/scribus/plugins/scriptplugin/scriptercore.cpp
-index b9a3cf97a2..41d5ea9790 100644
+index b94f614..f5ba63c 100644
 --- a/scribus/plugins/scriptplugin/scriptercore.cpp
 +++ b/scribus/plugins/scriptplugin/scriptercore.cpp
 @@ -17,6 +17,7 @@ for which a new license (GPL+exception) is in place.
@@ -2827,7 +2886,7 @@ index b9a3cf97a2..41d5ea9790 100644
  #include "runscriptdialog.h"
  #include "ui/helpbrowser.h"
  #include "ui/marksmanager.h"
-@@ -256,20 +257,20 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+@@ -259,20 +260,20 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
  		global_state = PyThreadState_Get();
  		state = Py_NewInterpreter();
  		// Init the scripter module in the sub-interpreter
@@ -2854,7 +2913,7 @@ index b9a3cf97a2..41d5ea9790 100644
  	}
  	PySys_SetArgv(arguments.size(), comm);
  
-@@ -291,7 +292,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+@@ -294,7 +295,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
  		// Build the Python code to run the script
  		//QString cm = QString("from __future__ import division\n"); removed due #5252 PV
  		QString cm = QString("import sys\n");
@@ -2863,7 +2922,7 @@ index b9a3cf97a2..41d5ea9790 100644
  		/* Implementation of the help() in pydoc.py reads some OS variables
  		 * for output settings. I use ugly hack to stop freezing calling help()
  		 * in script. pv. */
-@@ -299,7 +300,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+@@ -302,7 +303,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
  		cm        += QString("sys.path[0] = \"%1\"\n").arg(escapedAbsPath);
  		// Replace sys.stdin with a dummy StringIO that always returns
  		// "" for read
@@ -2872,7 +2931,7 @@ index b9a3cf97a2..41d5ea9790 100644
  		// tell the script if it's running in the main intepreter or a subinterpreter
  		cm        += QString("import scribus\n");
  		if (inMainInterpreter)
-@@ -307,7 +308,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+@@ -310,7 +311,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
  		else
  			cm+= QString("scribus.mainInterpreter = False\n");
  		cm        += QString("try:\n");
@@ -2881,7 +2940,7 @@ index b9a3cf97a2..41d5ea9790 100644
  		cm        += QString("except SystemExit:\n");
  		cm        += QString("    pass\n");
  		// Capture the text of any other exception that's raised by the interpreter
-@@ -341,7 +342,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
+@@ -344,7 +345,7 @@ void ScripterCore::slotRunScriptFile(const QString& fileName, QStringList argume
  			}
  			else if (ScCore->usingGUI())
  			{
@@ -2890,7 +2949,7 @@ index b9a3cf97a2..41d5ea9790 100644
  				// Display a dialog to the user with the exception
  				QClipboard *cp = QApplication::clipboard();
  				cp->setText(errorMsg);
-@@ -399,7 +400,7 @@ void ScripterCore::slotRunScript(const QString& Script)
+@@ -402,7 +403,7 @@ void ScripterCore::slotRunScript(const QString& Script)
  	cm = "# -*- coding: utf8 -*- \n";
  	if (PyThreadState_Get() != nullptr)
  	{
@@ -2899,7 +2958,7 @@ index b9a3cf97a2..41d5ea9790 100644
  		/* HACK: following loop handles all input line by line.
  		It *should* use I.C. because of docstrings etc. I.I. cannot
  		handle docstrings right.
-@@ -408,8 +409,8 @@ void ScripterCore::slotRunScript(const QString& Script)
+@@ -411,8 +412,8 @@ void ScripterCore::slotRunScript(const QString& Script)
  		works fine in plain Python. Not here. WTF? */
  		cm += (
  				"try:\n"
@@ -2910,7 +2969,7 @@ index b9a3cf97a2..41d5ea9790 100644
  				"    sys.stdout = scribus._bu\n"
  				"    sys.stderr = scribus._bu\n"
  				"    sys.argv = ['scribus']\n" // this is the PySys_SetArgv replacement
-@@ -420,9 +421,9 @@ void ScripterCore::slotRunScript(const QString& Script)
+@@ -423,9 +424,9 @@ void ScripterCore::slotRunScript(const QString& Script)
  				"    sys.stdout = sys.__stdout__\n"
  				"    sys.stderr = sys.__stderr__\n"
  				"except SystemExit:\n"
@@ -2922,7 +2981,7 @@ index b9a3cf97a2..41d5ea9790 100644
  			  );
  	}
  	// Set up sys.argv
-@@ -599,8 +600,8 @@ bool ScripterCore::setupMainInterpreter()
+@@ -602,8 +603,8 @@ bool ScripterCore::setupMainInterpreter()
  		"import sys\n"
  		"import code\n"
  		"sys.path.insert(0, \"%1\")\n"
@@ -2934,7 +2993,7 @@ index b9a3cf97a2..41d5ea9790 100644
  		).arg(ScPaths::instance().scriptDir());
  	if (m_importAllNames)
 diff --git a/scribus/plugins/scriptplugin/scriptplugin.cpp b/scribus/plugins/scriptplugin/scriptplugin.cpp
-index d8b8401272..87461a5b99 100644
+index 31a1c07..0f9bd1f 100644
 --- a/scribus/plugins/scriptplugin/scriptplugin.cpp
 +++ b/scribus/plugins/scriptplugin/scriptplugin.cpp
 @@ -166,20 +166,20 @@ bool ScriptPlugin::initPlugin()
@@ -2967,7 +3026,7 @@ index d8b8401272..87461a5b99 100644
  #ifdef HAVE_SCRIPTER2
  	scripter2_init();
  #endif
-@@ -228,7 +228,7 @@ void run()
+@@ -230,7 +230,7 @@ void run()
  /*static */PyObject *scribus_retval(PyObject* /*self*/, PyObject* args)
  {
  	char *Name = nullptr;
@@ -2976,7 +3035,7 @@ index d8b8401272..87461a5b99 100644
  		return nullptr;
  	// Because sysdefaultencoding is not utf-8, Python is returning utf-8 encoded
  	// 8-bit char* strings. Make sure Qt understands that the input is utf-8 not
-@@ -236,12 +236,12 @@ void run()
+@@ -238,12 +238,12 @@ void run()
  	/*RetString = QString::fromUtf8(Name);
  	RetVal = retV;*/
  	scripterCore->returnString = QString::fromUtf8(Name);
@@ -2991,7 +3050,7 @@ index d8b8401272..87461a5b99 100644
  }
  
  /*! \brief Translate a docstring. Small helper function for use with the
-@@ -307,8 +307,8 @@ PyMethodDef scribus_methods[] = {
+@@ -309,8 +309,8 @@ PyMethodDef scribus_methods[] = {
  	{const_cast<char*>("createRect"), scribus_newrect, METH_VARARGS, tr(scribus_newrect__doc__)},
  	{const_cast<char*>("createText"), scribus_newtext, METH_VARARGS, tr(scribus_newtext__doc__)},
  	{const_cast<char*>("createTable"), scribus_newtable, METH_VARARGS, tr(scribus_newtable__doc__)},
@@ -3002,7 +3061,7 @@ index d8b8401272..87461a5b99 100644
  	{const_cast<char*>("createCustomLineStyle"), scribus_createcustomlinestyle, METH_VARARGS, tr(scribus_createcustomlinestyle__doc__)},
  	{const_cast<char*>("currentPage"), (PyCFunction)scribus_actualpage, METH_NOARGS, tr(scribus_actualpage__doc__)},
  	{const_cast<char*>("defineColor"), scribus_newcolor, METH_VARARGS, tr(scribus_newcolor__doc__)},
-@@ -453,7 +453,7 @@ PyMethodDef scribus_methods[] = {
+@@ -455,7 +455,7 @@ PyMethodDef scribus_methods[] = {
  	{const_cast<char*>("redrawAll"), (PyCFunction)scribus_redraw, METH_NOARGS, tr(scribus_redraw__doc__)},
  	{const_cast<char*>("removeTableRows"), scribus_removetablerows, METH_VARARGS, tr(scribus_removetablerows__doc__)},
  	{const_cast<char*>("removeTableColumns"), scribus_removetablecolumns, METH_VARARGS, tr(scribus_removetablecolumns__doc__)},
@@ -3011,7 +3070,7 @@ index d8b8401272..87461a5b99 100644
  	{const_cast<char*>("replaceColor"), scribus_replcolor, METH_VARARGS, tr(scribus_replcolor__doc__)},
  	{const_cast<char*>("resizeTableColumn"), scribus_resizetablecolumn, METH_VARARGS, tr(scribus_resizetablecolumn__doc__)},
  	{const_cast<char*>("resizeTableRow"), scribus_resizetablerow, METH_VARARGS, tr(scribus_resizetablerow__doc__)},
-@@ -535,7 +535,7 @@ PyMethodDef scribus_methods[] = {
+@@ -537,7 +537,7 @@ PyMethodDef scribus_methods[] = {
  	{const_cast<char*>("dehyphenateText"), scribus_dehyphenatetext, METH_VARARGS, tr(scribus_dehyphenatetext__doc__)},
  	{const_cast<char*>("scrollDocument"), scribus_scrolldocument, METH_VARARGS, tr(scribus_scrolldocument__doc__) },
  	{const_cast<char*>("setScaleFrameToImage"), (PyCFunction)scribus_setscaleframetoimage, METH_VARARGS, tr(scribus_setscaleframetoimage__doc__)},
@@ -3020,7 +3079,7 @@ index d8b8401272..87461a5b99 100644
  	{const_cast<char*>("setStyle"), scribus_setstyle, METH_VARARGS, tr(scribus_setstyle__doc__)},
  	{const_cast<char*>("setCharacterStyle"), scribus_setcharstyle, METH_VARARGS, tr(scribus_setcharstyle__doc__) },
  	{const_cast<char*>("setTableStyle"), scribus_settablestyle, METH_VARARGS, tr(scribus_settablestyle__doc__)},
-@@ -558,19 +558,19 @@ PyMethodDef scribus_methods[] = {
+@@ -560,19 +560,19 @@ PyMethodDef scribus_methods[] = {
  	{const_cast<char*>("sizeObject"), scribus_sizeobjabs, METH_VARARGS, tr(scribus_sizeobjabs__doc__)},
  	{const_cast<char*>("statusMessage"), scribus_messagebartext, METH_VARARGS, tr(scribus_messagebartext__doc__)},
  	{const_cast<char*>("textFlowMode"), scribus_textflow, METH_VARARGS, tr(scribus_textflow__doc__)},
@@ -3047,7 +3106,7 @@ index d8b8401272..87461a5b99 100644
  	// by Christian Hausknecht
  	{const_cast<char*>("duplicateObject"), scribus_duplicateobject, METH_VARARGS, tr(scribus_duplicateobject__doc__)},
  	{const_cast<char*>("copyObject"), scribus_copyobject, METH_VARARGS, tr(scribus_copyobject__doc__)},
-@@ -591,6 +591,36 @@ PyMethodDef scribus_methods[] = {
+@@ -593,6 +593,36 @@ PyMethodDef scribus_methods[] = {
  	{nullptr, (PyCFunction)(nullptr), 0, nullptr} /* sentinel */
  };
  
@@ -3084,7 +3143,7 @@ index d8b8401272..87461a5b99 100644
  void initscribus_failed(const char* fileName, int lineNo)
  {
  	qDebug("Scripter setup failed (%s:%i)", fileName, lineNo);
-@@ -598,68 +628,78 @@ void initscribus_failed(const char* fileName, int lineNo)
+@@ -600,68 +630,78 @@ void initscribus_failed(const char* fileName, int lineNo)
  		PyErr_Print();
  }
  
@@ -3194,7 +3253,7 @@ index d8b8401272..87461a5b99 100644
  	PyDict_SetItemString(d, const_cast<char*>("PORTRAIT"), Py_BuildValue(const_cast<char*>("i"), portraitPage));
  	PyDict_SetItemString(d, const_cast<char*>("LANDSCAPE"), Py_BuildValue(const_cast<char*>("i"), landscapePage));
  	PyDict_SetItemString(d, const_cast<char*>("NOFACINGPAGES"), Py_BuildValue(const_cast<char*>("i"), 0));
-@@ -799,28 +839,28 @@ void initscribus(ScribusMainWindow *mainWin)
+@@ -795,28 +835,28 @@ void initscribus(ScribusMainWindow *mainWin)
  		if (!value)
  		{
  			initscribus_failed(__FILE__, __LINE__);
@@ -3229,7 +3288,7 @@ index d8b8401272..87461a5b99 100644
  	// Now build a version tuple like that provided by Python in sys.version_info
  	// The tuple is of the form (major, minor, patchlevel, extraversion, reserved)
  	QRegExp version_re("(\\d+)\\.(\\d+)\\.(\\d+)(.*)");
-@@ -848,28 +888,20 @@ void initscribus(ScribusMainWindow *mainWin)
+@@ -844,28 +884,20 @@ void initscribus(ScribusMainWindow *mainWin)
  	// the generated Python functions from inside the `scribus' module's context.
  	// This code makes it possible to extend the `scribus' module by running Python code
  	// from C in other ways too.
@@ -3263,7 +3322,7 @@ index d8b8401272..87461a5b99 100644
  	}
  	PyDict_SetItemString(d, const_cast<char*>("warnings"), warningsModule);
  	// Create the module-level docstring. This can be a proper unicode string, unlike
-@@ -907,21 +939,11 @@ function's documentation, though as with most Python code this list\n\
+@@ -903,21 +935,11 @@ function's documentation, though as with most Python code this list\n\
  is not exhaustive due to exceptions from called functions.\n\
  ");
  
@@ -3287,7 +3346,7 @@ index d8b8401272..87461a5b99 100644
  
  	// Wrap up pointers to the the QApp and main window and push them out
  	// to Python.
-@@ -946,6 +968,8 @@ is not exhaustive due to exceptions from called functions.\n\
+@@ -942,6 +964,8 @@ is not exhaustive due to exceptions from called functions.\n\
  	PyDict_SetItemString(d, const_cast<char*>("mainWindow"), wrappedMainWindow);
  	Py_DECREF(wrappedMainWindow);
  	wrappedMainWindow = nullptr;
@@ -3297,10 +3356,10 @@ index d8b8401272..87461a5b99 100644
  
  /*! HACK: this removes "warning: 'blah' defined but not used" compiler warnings
 diff --git a/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py b/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
-index 8d780fd833..1696d91d02 100644
+index 8d780fd..1696d91 100644
 --- a/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
 +++ b/scribus/plugins/scriptplugin/scripts/Align_image_in_frame.py
-@@ -22,10 +22,9 @@
+@@ -22,10 +22,9 @@ wiki.scribus.net/canvas/Align_an_Image_in_its_Frame
  import scribus
   
  try:
@@ -3313,7 +3372,7 @@ index 8d780fd833..1696d91d02 100644
      scribus.messageBox('Script failed',
                 'This script requires Python\'s Tkinter properly installed.',
                 scribus.ICON_CRITICAL)
-@@ -83,8 +82,8 @@ def __init__(self, master=None):
+@@ -83,8 +82,8 @@ class TkImageAlignmentWizard(Frame):
   
      def alignImage(self):
          if scribus.haveDoc():
@@ -3324,7 +3383,7 @@ index 8d780fd833..1696d91d02 100644
              nbrSelected = scribus.selectionCount()
              objList = []
              for i in range(nbrSelected):
-@@ -124,9 +123,9 @@ def alignImage(self):
+@@ -124,9 +123,9 @@ class TkImageAlignmentWizard(Frame):
                      scribus.deselectAll()
                  except:
                      nothing = "nothing"
@@ -3338,10 +3397,10 @@ index 8d780fd833..1696d91d02 100644
   
  def main():
 diff --git a/scribus/plugins/scriptplugin/scripts/CalendarWizard.py b/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
-index bf413e8276..4a13b75079 100644
+index bf413e8..4a13b75 100644
 --- a/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
 +++ b/scribus/plugins/scriptplugin/scripts/CalendarWizard.py
-@@ -54,16 +54,16 @@
+@@ -54,16 +54,16 @@ import datetime
  try:
      from scribus import *
  except ImportError:
@@ -3363,7 +3422,7 @@ index bf413e8276..4a13b75079 100644
      messageBox('Script failed',
                 'This script requires Python\'s Tkinter properly installed.',
                 ICON_CRITICAL)
-@@ -307,14 +307,14 @@ def __init__(self, year, months = [], firstDay = calendar.SUNDAY, drawSauce=True
+@@ -307,14 +307,14 @@ class ScEventCalendar(ScCalendar):
          ScCalendar.__init__(self, year, months, firstDay, drawSauce, sepMonths, lang)
  
      def printMonth(self, cal, month, week):
@@ -3386,7 +3445,7 @@ index bf413e8276..4a13b75079 100644
  
      def createMonthCalendar(self, month, cal):
          """ Draw one week calendar per page """
-@@ -325,12 +325,12 @@ def createMonthCalendar(self, month, cal):
+@@ -325,12 +325,12 @@ class ScEventCalendar(ScCalendar):
              # * If it starts on the first weekday
              # * If the month before it isn't included
              if (week != cal[0]) or (week[0].day == 1) or ((month-1) not in self.months):
@@ -3404,7 +3463,7 @@ index bf413e8276..4a13b75079 100644
  
  class ScHorizontalEventCalendar(ScEventCalendar):
      """ One day = one row calendar. I suggest LANDSCAPE orientation.\
-@@ -445,11 +445,11 @@ def createMonthCalendar(self, month, cal):
+@@ -445,11 +445,11 @@ class ScClassicCalendar(ScVerticalCalendar):
                  cel = createText(self.marginl + colCnt * self.colSize,
                                   self.calHeight + rowCnt * self.rowSize,
                                   self.colSize, self.rowSize)
@@ -3419,7 +3478,7 @@ index bf413e8276..4a13b75079 100644
              rowCnt += 1
  
  class ScVerticalEventCalendar(ScVerticalCalendar, ScEventCalendar):
-@@ -507,7 +507,7 @@ def __init__(self, master=None):
+@@ -507,7 +507,7 @@ class TkCalendar(Frame):
          self.langScrollbar.config(command=self.langListbox.yview)
  
          keys = localization.keys()
@@ -3429,10 +3488,10 @@ index bf413e8276..4a13b75079 100644
              self.langListbox.insert(END, i)
          self.langButton = Button(self, text='Change language', command=self.languageChange)
 diff --git a/scribus/plugins/scriptplugin/scripts/Caption.py b/scribus/plugins/scriptplugin/scripts/Caption.py
-index 2f1934ead6..96577280c4 100644
+index 2f1934e..9657728 100644
 --- a/scribus/plugins/scriptplugin/scripts/Caption.py
 +++ b/scribus/plugins/scriptplugin/scripts/Caption.py
-@@ -47,8 +47,8 @@
+@@ -47,8 +47,8 @@ of 24 points. Right and Left caption frames sized to 150 points width and
  try:
      import scribus
  except ImportError:
@@ -3444,10 +3503,10 @@ index 2f1934ead6..96577280c4 100644
  
  numselect = scribus.selectionCount()
 diff --git a/scribus/plugins/scriptplugin/scripts/ColorChart.py b/scribus/plugins/scriptplugin/scripts/ColorChart.py
-index adb1ff2604..b1df6f22a6 100644
+index adb1ff2..b1df6f2 100644
 --- a/scribus/plugins/scriptplugin/scripts/ColorChart.py
 +++ b/scribus/plugins/scriptplugin/scripts/ColorChart.py
-@@ -47,9 +47,9 @@
+@@ -47,9 +47,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -3470,10 +3529,10 @@ index adb1ff2604..b1df6f22a6 100644
  
      #get the pageTitle form user and store it in PageTitle
 diff --git a/scribus/plugins/scriptplugin/scripts/DirectImageImport.py b/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
-index f0f26b5c1a..6290fb2e5d 100644
+index f0f26b5..6290fb2 100644
 --- a/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
 +++ b/scribus/plugins/scriptplugin/scripts/DirectImageImport.py
-@@ -54,7 +54,7 @@
+@@ -54,7 +54,7 @@ try:
      from scribus import *
      
  except ImportError:
@@ -3494,10 +3553,10 @@ index f0f26b5c1a..6290fb2e5d 100644
      ImageFrame = createImage(pageX/2 - Breite/2, pageY/2 - Hoehe/2, Breite, Hoehe)
      loadImage(ImageFileName, ImageFrame)
 diff --git a/scribus/plugins/scriptplugin/scripts/FontSample.py b/scribus/plugins/scriptplugin/scripts/FontSample.py
-index 7816467cf6..74a9201fc2 100644
+index 7816467..74a9201 100644
 --- a/scribus/plugins/scriptplugin/scripts/FontSample.py
 +++ b/scribus/plugins/scriptplugin/scripts/FontSample.py
-@@ -112,7 +112,7 @@
+@@ -112,7 +112,7 @@ dictionaries to make it easier for users to customise.
  
  import sys
  import os
@@ -3506,7 +3565,7 @@ index 7816467cf6..74a9201fc2 100644
  
  
  showPreviewPanel = 1 # change to 0 to permanently hide the preview
-@@ -122,60 +122,60 @@
+@@ -122,60 +122,60 @@ CONFIG_PATH = os.path.join(os.path.expanduser('~'), '.scribus/fontsampler')
  
  try:
      import scribus
@@ -3645,7 +3704,7 @@ index 7816467cf6..74a9201fc2 100644
  
  
  def set_odd_even(pageNum):
-@@ -1227,10 +1227,10 @@ def statusbarUpdate(self):
+@@ -1227,10 +1227,10 @@ class Application(Frame):
          """
          available = self.listbox1.size()
          selected = self.listbox2.size()
@@ -3658,7 +3717,7 @@ index 7816467cf6..74a9201fc2 100644
          value = value - pages                   # Remove whole number part
          if value > 0:                           # Test remainder
              pages = pages + 1                   # Had remainder so add a page
-@@ -1241,7 +1241,7 @@ def statusbarUpdate(self):
+@@ -1241,7 +1241,7 @@ class Application(Frame):
          self.statusPaperSize['text'] = 'Paper size: %s   ' % userPrefs['paperSize']
  
      def __listSelectionToRight(self):
@@ -3667,7 +3726,7 @@ index 7816467cf6..74a9201fc2 100644
          self.listbox1.selection_clear(0,END)
          toMoveRight.reverse()   # reverse list so we delete from bottom of listbox first
          tempList = []
-@@ -1255,13 +1255,13 @@ def __listSelectionToRight(self):
+@@ -1255,13 +1255,13 @@ class Application(Frame):
          self.statusbarUpdate()
  
      def __listSelectionToLeft(self):
@@ -3683,7 +3742,7 @@ index 7816467cf6..74a9201fc2 100644
          self.listbox1.delete(0, END)                        # Remove all contents
          fontList.sort()                                     # Use sort method of list
          for j in fontList:
-@@ -1508,7 +1508,7 @@ def __aboutDlgShow(self):
+@@ -1508,7 +1508,7 @@ class Application(Frame):
  
  
  def setup_tk():
@@ -3702,10 +3761,10 @@ index 7816467cf6..74a9201fc2 100644
      # now show the main window and wait for user to do something...
      app.mainloop()
 diff --git a/scribus/plugins/scriptplugin/scripts/InfoBox.py b/scribus/plugins/scriptplugin/scripts/InfoBox.py
-index b342ea9186..16f5f51cdf 100644
+index b342ea9..16f5f51 100644
 --- a/scribus/plugins/scriptplugin/scripts/InfoBox.py
 +++ b/scribus/plugins/scriptplugin/scripts/InfoBox.py
-@@ -60,8 +60,8 @@
+@@ -60,8 +60,8 @@ but this can be changed.
  try:
      import scribus
  except ImportError:
@@ -3726,10 +3785,10 @@ index b342ea9186..16f5f51cdf 100644
      while (new_height <= 0):
          new_height = scribus.valueDialog('Height','Your frame height is '+ str(o_height) +
 diff --git a/scribus/plugins/scriptplugin/scripts/Ligatursatz.py b/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
-index c2803d4338..981ce350e7 100644
+index 36f8998..4828550 100644
 --- a/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
 +++ b/scribus/plugins/scriptplugin/scripts/Ligatursatz.py
-@@ -137,7 +137,7 @@ def __init__(self, patterns):
+@@ -137,7 +137,7 @@ class Hyphenator:
          Postcondition: Constructs a hyphenator object for the
          given patterns.
          """
@@ -3738,7 +3797,7 @@ index c2803d4338..981ce350e7 100644
              raise TypeError("The “patterns” parameter must be of type "
                              "“unicode”, but it isn’t.")
          self.tree = {}
-@@ -170,7 +170,7 @@ def hyphenate_word(self, word):
+@@ -170,7 +170,7 @@ class Hyphenator:
              the word might get wrong hyphenation because the
              upper-case-letters are not recognized).
          """
@@ -3747,7 +3806,7 @@ index c2803d4338..981ce350e7 100644
              raise TypeError("The word must have the data type “unicode”, "
                              "but it doesn’t.")
          else:
-@@ -289,7 +289,7 @@ def simple_case_fold_for_lookup(self, my_unicode_string):
+@@ -289,7 +289,7 @@ class GermanLigatureSupport:
          WARNING This function must be kept
          in synch with isWordCharacter().
          """
@@ -3756,7 +3815,7 @@ index c2803d4338..981ce350e7 100644
              raise TypeError("The “my_unicode_string” parameter must be of "
                              "type “unicode”, but it isn’t.")
          return my_unicode_string.lower().replace("ſ", "s")
-@@ -22283,7 +22283,7 @@ def get_instructions(self, my_word):
+@@ -22283,7 +22283,7 @@ class InstructionProvider(GermanLigatureSupport):
          šâäéóöü
          :rtype: list
          """
@@ -3774,7 +3833,7 @@ index c2803d4338..981ce350e7 100644
          raise TypeError(
              "“my_string” must be of type “unicode”, but it isn’t.")
      return re.search(u"[^\u0000-\uD7FF\uE000-\uFFFF]", my_string) is None
-@@ -22460,7 +22460,7 @@ def read_text(self, first, count):
+@@ -22460,7 +22460,7 @@ class StoryInterface:
                  raise IndexError("“first” is out of range.")
              return u""
          scribus.selectText(first, count, self.__identifier)
@@ -3783,7 +3842,7 @@ index c2803d4338..981ce350e7 100644
  
      def delete_text(self, first, count):
          """Precondition: The object with the unique identifier “textFrame”
-@@ -22514,7 +22514,7 @@ def insert_text(self, text, first):
+@@ -22514,7 +22514,7 @@ class StoryInterface:
          “story”, that means the common text content that is shared between
          this text frame and all linked text frames. Note that this function
          will (likely) change the current text selection of the story."""
@@ -3792,7 +3851,7 @@ index c2803d4338..981ce350e7 100644
              raise TypeError("“first” must be “integer” and “text” must "
                              "be “unicode”, but they aren’t.")
          if first < 0:
-@@ -22528,7 +22528,7 @@ def insert_text(self, text, first):
+@@ -22528,7 +22528,7 @@ class StoryInterface:
                                 "the constructor does currently not refer to "
                                 "a text frame in the current document.")
          scribus.insertText(
@@ -3825,10 +3884,10 @@ index c2803d4338..981ce350e7 100644
          button1,
          button2,
 diff --git a/scribus/plugins/scriptplugin/scripts/color2csv.py b/scribus/plugins/scriptplugin/scripts/color2csv.py
-index 9157fee08e..29abf34eb4 100644
+index 9157fee..29abf34 100644
 --- a/scribus/plugins/scriptplugin/scripts/color2csv.py
 +++ b/scribus/plugins/scriptplugin/scripts/color2csv.py
-@@ -45,9 +45,9 @@
+@@ -45,9 +45,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -3851,10 +3910,10 @@ index 9157fee08e..29abf34eb4 100644
              csvwriter.writerow(line)
              i=i+1
 diff --git a/scribus/plugins/scriptplugin/scripts/csv2color.py b/scribus/plugins/scriptplugin/scripts/csv2color.py
-index b888be3c3a..1e042e06ea 100644
+index b888be3..1e042e0 100644
 --- a/scribus/plugins/scriptplugin/scripts/csv2color.py
 +++ b/scribus/plugins/scriptplugin/scripts/csv2color.py
-@@ -51,9 +51,9 @@
+@@ -51,9 +51,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -3886,10 +3945,10 @@ index b888be3c3a..1e042e06ea 100644
              
              scribus.defineColorCMYK(name, c, m, y, k)
 diff --git a/scribus/plugins/scriptplugin/scripts/importcsv2table.py b/scribus/plugins/scriptplugin/scripts/importcsv2table.py
-index 05c71004f2..8efd2b6895 100644
+index 05c7100..8efd2b6 100644
 --- a/scribus/plugins/scriptplugin/scripts/importcsv2table.py
 +++ b/scribus/plugins/scriptplugin/scripts/importcsv2table.py
-@@ -72,9 +72,9 @@
+@@ -72,9 +72,9 @@ try:
      # Do so _after_ the 'import scribus' and only import the names you need, such
      # as commonly used constants.
      import scribus
@@ -3920,3 +3979,6 @@ index 05c71004f2..8efd2b6895 100644
              scribus.messageBox("csv2table", "Could not open file %s"%e)
      else:
          sys.exit
+-- 
+2.26.0
+

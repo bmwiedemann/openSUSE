@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:51:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  *0001-PDF-import-plugin-support-poppler-0.86.x.patch
+- Update:
+  * Fix-failure-to-build-against-poppler-0.83.0.patch
+  * Fix-failure-to-build-with-poppler-0.84.0.patch
+  * Use-same-mechanism-as-with-previous-poppler-versions.patch
+  * Work-around-poppler-0.82-signature-changes.patch
+  * port-scripter-to-Python-3.patch
+
+-------------------------------------------------------------------
 Thu Jan 16 11:28:56 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add port-scripter-to-Python-3.patch and build with python3
