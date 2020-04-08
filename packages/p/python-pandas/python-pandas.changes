@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:42:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to 1.0.3:
+  * Fixed regressions
+    + Fixed regression in resample.agg when the underlying data is
+      non-writeable (GH31710)
+    + Fixed regression in DataFrame exponentiation with reindexing
+      (GH32685)
+
+-------------------------------------------------------------------
 Mon Mar 16 07:12:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip i586 failing tests with upstream ticket

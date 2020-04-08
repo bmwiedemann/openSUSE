@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -27,16 +27,16 @@ Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.28.2}
+# test requirements
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module openpyxl}
+BuildRequires:  %{python_module pyperclip}
 BuildRequires:  %{python_module setuptools >= 24.2.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-# test requirements
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module openpyxl}
-BuildRequires:  %{python_module pyperclip}
 Requires:       python-Cython >= 0.28.2
 Requires:       python-numpy >= 1.13.3
 Requires:       python-python-dateutil >= 2.6.1
