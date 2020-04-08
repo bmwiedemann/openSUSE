@@ -1,7 +1,7 @@
 #
 # spec file for package lifelines
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        The Lifelines Genealogy Program
 License:        MIT
 Group:          Productivity/Scientific/Other
-Url:            https://github.com/lifelines/lifelines
+URL:            https://github.com/lifelines/lifelines
 Source0:        https://github.com/%{name}/%{name}/archive/%{commit}.tar.gz#/%{name}-%{commit}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-SUSE mainly to get paths correct if installed as system package
@@ -87,6 +87,10 @@ LIBS="$(pkg-config ncursesw --libs)"
 CC=gcc
 export CC CFLAGS CPPFLAGS LIBS
 autoreconf -fi
+%ifarch aarch64 %arm
+# gcc on aarch64 does not know about -m64 ...
+sed -ri 's/[[:space:]]*-m(64|32)//' configure
+%endif
 %configure  --disable-rpath			\
 	    --with-gnu-ld			\
 	    --with-docs				\
