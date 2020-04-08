@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Apr  7 19:55:49 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add update-alternatives for the bash and zsh completion files.
+
+-------------------------------------------------------------------
+Sat Nov  2 18:01:04 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort of busted 2.0.0.
