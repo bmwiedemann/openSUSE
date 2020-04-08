@@ -1,7 +1,7 @@
 #
 # spec file for package make
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           make
-Version:        4.2.1
+Version:        4.3
 Release:        0
 Summary:        GNU make
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://www.gnu.org/software/make/make.html
-Source:         http://ftp.gnu.org/gnu/make/make-%{version}.tar.bz2
-Source1:        http://ftp.gnu.org/gnu/make/make-%{version}.tar.bz2.sig
-# keyring downloaded from http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make
+URL:            http://www.gnu.org/software/make/make.html
+Source:         http://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
+Source1:        http://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
+# keyring downloaded from https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make&download=1
 Source2:        %{name}.keyring
 Patch1:         make-testcases_timeout.diff
-# PATCH-FEATURE-OPENSUSE sort glob https://savannah.gnu.org/bugs/index.php?52076
-Patch2:         make-sorted-glob.patch
-Patch3:         glob-lstat.patch
-Patch4:         glob-interface.patch
 Patch5:         test-driver.patch
-Patch6:         pselect-non-blocking.patch
 Patch64:        make-library-search-path.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Recommends:     %{name}-lang
 Provides:       gmake
 
 %description
@@ -51,11 +45,7 @@ The GNU make command with extensive documentation.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %patch5 -p1
-%patch6 -p1
 if [ %{_lib} = lib64 ]; then
 %patch64 -p1
 fi

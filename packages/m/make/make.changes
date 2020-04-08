@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Feb 22 19:55:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
+Mon Jan 20 10:34:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to make 4.3
+  * WARNING: Backward-incompatibility!
+    Number signs (#) appearing inside a macro reference or function
+    invocation no longer introduce comments and should not be escaped with
+    backslashes
+  * WARNING: Backward-incompatibility!
+    Previously appending using '+=' to an empty variable would result in a
+    value starting with a space
+  * NOTE: Deprecated behavior.
+    Contrary to the documentation, suffix rules with prerequisites are being
+    treated BOTH as simple targets AND as pattern rules
+  * New feature: Grouped explicit targets
+  * New feature: .EXTRA_PREREQS variable
+  * Makefiles can now specify the '-j' option in their MAKEFLAGS variable
+    and this will cause make to enable that parallelism mode
+  * Error messages printed when invoking non-existent commands have been
+    cleaned up and made consistent.
+  * A new option --no-silent has been added, that cancels the effect of
+    the -s/--silent/--quiet flag
+  * A new option -E has been added as a short alias for --eval
+  * All wildcard expansion within GNU make, including $(wildcard ...),
+    will sort the results
+  * Performance improvements provided by Paolo Bonzini
+    <pbonzini@redhat.com>
+- make-sorted-glob.patch, glob-lstat.patch, glob-interface.patch,
+  pselect-non-blocking.patch: Removed, upstreamed
+
+-------------------------------------------------------------------
 Fri Jul 27 07:42:02 UTC 2018 - jengelh@inai.de
 
 - Avoid bashisms in spec
