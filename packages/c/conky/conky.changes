@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  3 09:24:53 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- Fix negative ram reporting #877 #878 #909 fix-negative-memory.patch
+
+-------------------------------------------------------------------
 Tue Feb 25 00:52:12 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - IRC support was not correctly disabled on SLE
@@ -15,9 +20,9 @@ Mon Dec  9 22:10:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 Tue Aug 20 07:10:49 UTC 2019 - mvetter@suse.com
 
 - Update to 1.11.5:
-  * Fix graph leak and the uninitialized values (#858) 
-  * Fix `link_qual_max` getting updated with bad value 
-  * Fix heap use-after-free with setlocale 
+  * Fix graph leak and the uninitialized values (#858)
+  * Fix `link_qual_max` getting updated with bad value
+  * Fix heap use-after-free with setlocale
   * Refactorings and cleanups
   * For details see:
     https://github.com/brndnmtthws/conky/compare/v1.11.4...v1.11.5
@@ -26,14 +31,14 @@ Tue Aug 20 07:10:49 UTC 2019 - mvetter@suse.com
 -------------------------------------------------------------------
 Fri Jun 28 09:31:44 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Add conky-memory-leak-fix.patch Fixes a memory leak in Conky 
+- Add conky-memory-leak-fix.patch Fixes a memory leak in Conky
 
 -------------------------------------------------------------------
 Mon Jun 24 06:07:34 UTC 2019 - mvetter@suse.com
 
 - Update to 1.11.4:
-  * Added option to disable redraw on desktop change 
-  * Synchronize access to kstat 
+  * Added option to disable redraw on desktop change
+  * Synchronize access to kstat
   * Fix various issues
   * For details see:
     https://github.com/brndnmtthws/conky/compare/v1.11.3...v1.11.4
@@ -90,7 +95,7 @@ Tue Dec 12 09:29:41 UTC 2017 - pgajdos@suse.com
 - make more clear when xmms2 support is compiled in
 - use pkgconfig()-style buildrequires for X libraries, package
   is build for suse_version >= 1315, so they are defined
-- fix 0%{is_opensuse} to 0%{?is_opensuse} on one placeand remove 
+- fix 0%{is_opensuse} to 0%{?is_opensuse} on one placeand remove
   is_opensuse definition, which is in my opinion useless afterwards
 
 -------------------------------------------------------------------
@@ -215,7 +220,7 @@ Sat Oct  3 07:51:50 UTC 2015 - i@marguerite.su
 -------------------------------------------------------------------
 Sat Aug 29 15:33:16 UTC 2015 - i@marguerite.su
 
-- update version 1.10.0  
+- update version 1.10.0
   * Partial rewrite in C++ (from C)
   * New Lua-based config system
   * New CMake-based build system
@@ -249,7 +254,7 @@ Sat Aug 29 15:33:16 UTC 2015 - i@marguerite.su
 -------------------------------------------------------------------
 Tue May 26 08:01:26 UTC 2015 - dgutu@suse.com
 
-- Removed conky-libiw_with_libm.patch because it's not used anywhere 
+- Removed conky-libiw_with_libm.patch because it's not used anywhere
 
 -------------------------------------------------------------------
 Fri Jan 16 17:31:43 UTC 2015 - aloisio@gmx.com
@@ -280,7 +285,7 @@ Thu Jun 21 09:23:47 UTC 2012 - toganm@opensuse.org
 - Update to 1.9.0 for changes please see
   http://conky.sourceforge.net/changelog.html
   * reworked conky-libiw_with_libm.patch as conky-1.9.0-libiw_with_libm.patch
-  * removed conky-fix-curl-FTBFS.patch as fixed by upstream  
+  * removed conky-fix-curl-FTBFS.patch as fixed by upstream
 
 -------------------------------------------------------------------
 Wed Feb 29 08:55:12 UTC 2012 - cfarrell@suse.com
@@ -501,5 +506,3 @@ Mon Jan  2 00:00:00 UTC 2006 - guru@unixtech.be
 Tue Nov  1 00:00:00 UTC 2005 - guru@unixtech.be
 
 - new package
-
-

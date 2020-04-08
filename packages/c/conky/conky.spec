@@ -1,5 +1,5 @@
 #
-# spec file for package tempspec
+# spec file for package conky
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -37,6 +37,7 @@ Source2:        conky.conf.SUSE
 Source3:        README.SUSE
 Patch1:         conky-1.10.1-avoid-git.patch
 Patch2:         conky.timestamp.patch
+Patch3:         fix-negative-memory.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x
