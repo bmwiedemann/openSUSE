@@ -1,7 +1,7 @@
 #
 # spec file for package wine-nine-standalone
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wine-nine-standalone
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Wine Gallium Nine Standalone version
 License:        LGPL-2.1-or-later
@@ -29,6 +29,7 @@ BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libd3d-devel
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 BuildRequires:  meson
 BuildRequires:  wine
