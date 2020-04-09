@@ -210,9 +210,6 @@ mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %pre -n nfs-client -f statd.pre
-/usr/bin/getent passwd statd >/dev/null || \
-	/usr/sbin/useradd -r -c 'NFS statd daemon' \
-	-s /sbin/nologin -d %{_localstatedir}/lib/nfs -g nogroup statd
 %service_add_pre auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %post -n nfs-client

@@ -1434,4 +1434,12 @@
 	no-notify=0, force=0, lift-grace=y</comment>
     <requestid>788739</requestid>
   </revision>
+  <revision rev="154" vrev="15">
+    <srcmd5>7a63b58b91b24b3772420986b233f355</srcmd5>
+    <version>unknown</version>
+    <time>1586466840</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete useradd call (forwarded request 791188 from kukuk)</comment>
+    <requestid>791592</requestid>
+  </revision>
 </revisionlist>
