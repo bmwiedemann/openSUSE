@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:35:30 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Create separate plugins package. Since libpmix2 obtains its
+  functionality from these plugins, add a dependency.
+- Plugins depend on libmca_common_dstore - add an explicit
+  dependency to the package as there are other providers - like
+  openmpi3 (bsc#1167983).
+
+-------------------------------------------------------------------
 Wed Mar 25 08:26:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 3.1.5 (bsc#1167655)

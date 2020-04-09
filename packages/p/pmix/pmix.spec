@@ -55,9 +55,20 @@ This RPM contains all the tools necessary to compile and link against PMIx.
 %package -n libpmix2
 Summary:        PMI-X lib version 1
 Group:          System/Libraries
+Requires:       pmix-plugins
 
 %description  -n libpmix2
 This package contains the shared library used by the PMI-X standard
+
+%package plugins
+Summary:        PMI-X plugins version 1
+Group:          System/Libraries
+Requires:       libmca_common_dstore1
+# explicit requires for package libmca_common_dstore1
+# as other providers for libmca_common_dstore.so.1 exist
+
+%description  plugins
+This package contains plugins used by libpmix2.
 
 %package -n libmca_common_dstore1
 Summary:        Communication library used by PMI-X
@@ -70,6 +81,7 @@ This package contains the communication library used by the PMI
 Summary:        Process Management Interface for MPI
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-headers = %{version}
+Requires:       libmca_common_dstore1 = %{version}
 Requires:       libpmix2 = %{version}
 
 %description devel
@@ -126,7 +138,6 @@ rm -v %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/pmix/*.la
 %doc README.md NEWS AUTHORS
 %license LICENSE
 %dir %{_libdir}/pmix
-%{_libdir}/pmix/mca_*.so
 %{_datadir}/pmix
 %{_bindir}/pevent
 %{_bindir}/plookup
@@ -138,6 +149,9 @@ rm -v %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/pmix/*.la
 
 %files -n libpmix2
 %{_libdir}/libpmix.so.*
+
+%files plugins
+%{_libdir}/pmix/mca_*.so
 
 %files -n libmca_common_dstore1
 %{_libdir}/libmca_common_dstore.so.*
