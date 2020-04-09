@@ -1,7 +1,7 @@
 #
-# spec file for package cobbler
+# RPM spec file for all Cobbler packages
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,293 +11,474 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+# Supported/tested build targets:
+# - Fedora: 30, 31, Rawhide
+# - CentOS + EPEL: 7, 8
+# - SLE: 15sp1
+# - OpenSuSE: Leap 15.1, Tumbleweed
+# - Debian: 10
+# - Ubuntu: 18.04
+#
+# If it doesn't build on the Open Build Service (OBS) it's a bug.
 #
 
+# Force bash instead of Debian dash
+%global _buildshell /bin/bash
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define www_path /srv/
+# Work around quirk in OBS about handling defines...
+%if 0%{?el7}
+%{!?python3_pkgversion: %global python3_pkgversion 36}
+%else
+%{!?python3_pkgversion: %global python3_pkgversion 3}
+%endif
+
+%if 0%{?suse_version}
+%define apache_pkg apache2
+%define apache_dir /srv/www
+%define apache_etc /etc/apache2
 %define apache_user wwwrun
 %define apache_group www
-%define apachedir apache2
-%define _binaries_in_noarch_packages_terminate_build 0
-%global debug_package %{nil}
+%define apache_log /var/log/apache2
+%define apache_webconfigdir /etc/apache2/vhosts.d
+%define apache_mod_wsgi apache2-mod_wsgi-python%{python3_pkgversion}
+%define tftpboot_dir /srv/tftpboot
+%define tftpsrv_pkg tftp
+%define createrepo_pkg createrepo_c
+%define grub2_x64_efi_pkg grub2-x86_64-efi
+%define grub2_ia32_efi_pkg grub2-i386-efi
+%define system_release_pkg distribution-release
+%undefine python_enable_dependency_generator
+%undefine python_disable_dependency_generator
+%endif
+
+%if 0%{?debian} || 0%{?ubuntu}
+%define apache_pkg apache2
+%define apache_dir /var/www
+%define apache_etc /etc/apache2
+%define apache_user www-data
+%define apache_group www-data
+%define apache_log /var/log/apache2
+%define apache_webconfigdir /etc/apache2/conf-available
+%define apache_mod_wsgi libapache2-mod-wsgi-py%{python3_pkgversion}
+%define tftpboot_dir /var/lib/tftpboot
+%define tftpsrv_pkg tftpd-hpa
+%define createrepo_pkg createrepo
+%define grub2_x64_efi_pkg grub-efi-amd64
+%define grub2_ia32_efi_pkg grub-efi-ia32
+%define system_release_pkg base-files
+%endif
+
+%if 0%{?fedora} || 0%{?rhel}
+%define apache_pkg httpd
+%define apache_dir /var/www
+%define apache_etc /etc/httpd
+%define apache_user apache
+%define apache_group apache
+%define apache_log /var/log/httpd
+%define apache_webconfigdir /etc/httpd/conf.d
+%define apache_mod_wsgi python%{python3_pkgversion}-mod_wsgi
+%define tftpboot_dir /var/lib/tftpboot
+%define tftpsrv_pkg tftp-server
+%define createrepo_pkg createrepo_c
+%define grub2_x64_efi_pkg grub2-efi-x64
+%define grub2_ia32_efi_pkg grub2-efi-ia32
+%define system_release_pkg system-release
+%endif
+
+# Python module package names that differ between SUSE and everybody else... :(
+%if 0%{?suse_version}
+%define py3_module_cheetah python%{python3_pkgversion}-Cheetah3
+%define py3_module_django python%{python3_pkgversion}-Django
+%define py3_module_dns python%{python3_pkgversion}-dnspython
+%define py3_module_pyyaml python%{python3_pkgversion}-PyYAML
+%define py3_module_sphinx python%{python3_pkgversion}-Sphinx
+%else
+%define py3_module_cheetah python%{python3_pkgversion}-cheetah
+%define py3_module_django python%{python3_pkgversion}-django
+%define py3_module_dns python%{python3_pkgversion}-dns
+%define py3_module_pyyaml python%{python3_pkgversion}-yaml
+%define py3_module_sphinx python%{python3_pkgversion}-sphinx
+%endif
+
+# Deal with python3-coverage package quirk
+%if 0%{?rhel} == 8
+# In RHEL 8, python3-coverage doesn't exist, but it's accessible by common virtual provides
+%define py3_module_coverage python3dist(coverage)
+%else
+%define py3_module_coverage python%{python3_pkgversion}-coverage
+%endif
+
+# If they aren't provided by a system installed macro, define them
+%{!?__python3: %global __python3 /usr/bin/python3}
+
+# To ensure correct byte compilation
+%global __python %{__python3}
+
+%if %{_vendor} == "debbuild"
+%global devsuffix dev
+%else
+%global devsuffix devel
+%endif
+
+%global __requires_exclude_from ^%{python3_sitelib}/modules/serializer_mongodb.py*$
+
 Name:           cobbler
-Version:        3.0.1+git20191120.24c4ae8e
-Release:        0
+Version:        3.1.1+git20200316.25209de3
+Release:        0%{?dist}
 Summary:        Boot server configurator
-License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Boot/Servers
 URL:            https://cobbler.github.io/
-Source0:        cobbler-%{version}.tar.xz
-# Manually generated AUTHORS file because the git repo is not included in the
-# sources.
-Source1:        AUTHORS
-Source2:        logrotate_cobbler
-Source3:        fence_ipmitool.template
-Patch1:         fix_hardcoded_libpath_for_websession.patch
-Patch2:         exclude_get-loaders_command.patch
-Patch3:         cobbler_management_mac.diff
 
-BuildRequires:  python3-Cheetah3
-BuildRequires:  apache-rpm-macros
-BuildRequires:  apache2 >= 2.4
-BuildRequires:  distribution-release
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3
-BuildRequires:  python3-base
-BuildRequires:  python3-distro
-BuildRequires:  python3-coverage
-BuildRequires:  python3-future
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-Sphinx
-BuildRequires:  pkgconfig(systemd)
-# Workaround so that /srv/tftpboot file exists during
-# build, but is not owned by cobbler
-BuildRequires:  tftp
+%if %{_vendor} == "debbuild"
+Packager:       Cobbler Developers <cobbler@lists.fedorahosted.org>
+Group:          admin
+%endif
+%if 0%{?suse_version}
+Group:          Productivity/Networking/Boot/Servers
+%else
+Group:          Development/System
+%endif
 
-Requires:       python3-Cheetah3
-Requires:       acl
-Requires:       apache2 >= 2.4
-Requires:       apache2-mod_wsgi-python3
-Requires:       fence-agents
-Requires:       ipmitool
-Requires:       logrotate
-Requires:       mkisofs
-Requires:       mod_wsgi
-Requires:       python >= 3.0
-Requires:       python3-PyYAML
-Requires:       python3-base
-Requires:       python3-distro
-Requires:       python3-dnspython
-Requires:       python3-future
-Requires:       python3-ldap
-Requires:       python3-netaddr
-Requires:       python3-requests
-Requires:       python3-simplejson
-Requires:       rsync
-Requires:       tftp(server)
-Requires(post): apache2 >= 2.4
-Requires(post): grub2
-#Requires(post): grub2-x86_64-efi
-#Requires(post): grub2-powerpc-ieee1275
-Recommends:     grub2-x86_64-efi
-Recommends:     grub2-i386-pc
-Recommends:     grub2-arm64-efi
-Recommends:     grub2-powerpc-ieee1275
+License:        GPL-2.0-or-later
+#Source0:        https://github.com/cobbler/cobbler/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
+
 BuildArch:      noarch
-#Requires(post): grub2-arm64-efi
-AutoReq:        no
-%{?systemd_requires}
-%ifarch %{ix86} x86_64 aarch64
-Requires:       shim
-Requires:       syslinux
+
+BuildRequires:  git-core
+BuildRequires:  %{system_release_pkg}
+BuildRequires:  python%{python3_pkgversion}-%{devsuffix}
+%if 0%{?suse_version}
+BuildRequires:  python-rpm-macros
 %endif
-%ifarch s390x
-Requires:       syslinux-x86_64
+%if %{_vendor} == "debbuild"
+BuildRequires:  python3-deb-macros
+BuildRequires:  apache2-deb-macros
+
 %endif
-%python_subpackages
+BuildRequires:  %{py3_module_coverage}
+BuildRequires:  python%{python3_pkgversion}-distro
+BuildRequires:  python%{python3_pkgversion}-future
+BuildRequires:  python%{python3_pkgversion}-setuptools
+BuildRequires:  python%{python3_pkgversion}-netaddr
+BuildRequires:  %{py3_module_cheetah}
+BuildRequires:  %{py3_module_sphinx}
+%if 0%{?suse_version}
+# Make post-build-checks happy by including these in the buildroot
+BuildRequires:  bash-completion
+BuildRequires:  %{apache_pkg}
+BuildRequires:  %{tftpsrv_pkg}
+%endif
+
+%if 0%{?rhel}
+# We need these to build this properly, and OBS doesn't pull them in by default for EPEL
+BuildRequires:  epel-rpm-macros
+%endif
+%if 0%{?rhel} && 0%{?rhel} < 9
+BuildRequires:  systemd
+%endif
+%if 0%{?fedora} >= 30 || 0%{?rhel} >= 9 || 0%{?suse_version}
+BuildRequires:  systemd-rpm-macros
+%endif
+%if %{_vendor} == "debbuild"
+BuildRequires:  systemd-deb-macros
+Requires:       systemd-sysv
+Requires(post): python3-minimal
+Requires(preun): python3-minimal
+%endif
+Requires(post): systemd
+Requires(preun): systemd
+Requires(postun): systemd
+
+
+Requires:       %{apache_pkg}
+Requires:       %{tftpsrv_pkg}
+Requires:       %{createrepo_pkg}
+Requires:       rsync
+Requires:       xorriso
+%{?python_enable_dependency_generator}
+%if ! (%{defined python_enable_dependency_generator} || %{defined python_disable_dependency_generator})
+Requires:       %{py3_module_cheetah}
+Requires:       %{py3_module_dns}
+Requires:       python%{python3_pkgversion}-future
+Requires:       python%{python3_pkgversion}-ldap3
+Requires:       %{apache_mod_wsgi}
+Requires:       python%{python3_pkgversion}-netaddr
+Requires:       %{py3_module_pyyaml}
+Requires:       python%{python3_pkgversion}-requests
+Requires:       python%{python3_pkgversion}-simplejson
+Requires:       python%{python3_pkgversion}-tornado
+%endif
+
+
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       dnf-plugins-core
+%endif
+%if ! (0%{?rhel} && 0%{?rhel} < 8)
+# Not everyone wants bash-completion...?
+Recommends:     bash-completion
+# syslinux is only available on x86
+Recommends:     syslinux
+# grub2 efi stuff is only available on x86
+Recommends:     %{grub2_x64_efi_pkg}
+Recommends:     %{grub2_ia32_efi_pkg}
+Recommends:     logrotate
+%endif
+# https://github.com/cobbler/cobbler/issues/1685
+%if %{_vendor} == "debbuild"
+Requires:       init-system-helpers
+%else
+Requires:       /sbin/service
+%endif
+# No point in having this split out...
+Obsoletes:      cobbler-nsupdate < 3.0.99
+Provides:       cobbler-nsupdate = %{version}-%{release}
 
 %description
-
-Cobbler is a network install server.  Cobbler supports PXE,
+Cobbler is a network install server.  Cobbler supports PXE, ISO
 virtualized installs, and re-installing existing Linux machines.
-There is also a web interface 'cobbler-web'.  Cobbler's
+The last two modes use a helper tool, 'koan', that integrates with
+cobbler.  There is also a web interface 'cobbler-web'.  Cobbler's
 advanced features include importing distributions from DVDs and rsync
-mirrors, kickstart templating, autoyast, integrated yum mirroring, and built-in
+mirrors, kickstart templating, integrated yum mirroring, and built-in
 DHCP/DNS Management.  Cobbler has a XMLRPC API for integration with
 other applications.
 
+
 %package web
 Summary:        Web interface for Cobbler
-Group:          Productivity/Networking/Boot/Servers
-Requires:       cobbler
-Requires:       python3-django
+Requires:       cobbler = %{version}-%{release}
+%if ! (%{defined python_enable_dependency_generator} || %{defined python_disable_dependency_generator})
+Requires:       %{py3_module_django}
+Requires:       %{apache_mod_wsgi}
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       mod_ssl
+%endif
 Requires(post): openssl
 
 %description web
-
 Web interface for Cobbler that allows visiting
 http://server/cobbler_web to configure the install server.
 
+
 %prep
-%autosetup -p1
-
-%build
-%python_build
-cp %{SOURCE1} AUTHORS
-
-%python_exec setup.py build_sphinx -b man
-
-%install
-%python_install
-
-ln -sf service %{buildroot}%{_sbindir}/rccobblerd
-rm -rf %{buildroot}%{_initddir}
-mkdir -p %{buildroot}%{_unitdir}
-mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd.service %{buildroot}%{_unitdir}
-
-mkdir -p %{buildroot}/srv/tftpboot/images
-rm -f %{buildroot}%{_sysconfdir}/cobbler/cobblerd
-
-# create logrote config
-mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/cobbler
-
-# workaround to provide a ipmilanplus fence
-ln -s fence_ipmilan %{buildroot}/%{_sbindir}/fence_ipmitool
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/cobbler/power/fence_ipmitool.template
+%setup
 
 %if 0%{?suse_version}
-cp -r tests/ $RPM_BUILD_ROOT/usr/share/cobbler/
+# Set tftpboot location correctly for SUSE distributions
+sed -e "s|/var/lib/tftpboot|%{tftpboot_dir}|g" -i cobbler/settings.py config/cobbler/settings
 %endif
 
-%fdupes -s %{buildroot}%{_prefix}
+%build
+%py3_build
+
+%install
+# bypass install errors ( don't chown in install step)
+%py3_install ||:
+
+# cobbler
+rm %{buildroot}%{_sysconfdir}/cobbler/cobbler.conf
+
+mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
+mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd_rotate %{buildroot}%{_sysconfdir}/logrotate.d/cobblerd
+
+# Create data directories in tftpboot_dir
+mkdir -p %{buildroot}%{tftpboot_dir}/{boot,etc,grub,images{,2},ppc,pxelinux.cfg,s390x}
+
+# systemd
+mkdir -p %{buildroot}%{_unitdir}
+mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd.service %{buildroot}%{_unitdir}
+%if 0%{?suse_version}
+ln -sf service %{buildroot}%{_sbindir}/rccobblerd
+%endif
+
+# cobbler-web
+rm %{buildroot}%{_sysconfdir}/cobbler/cobbler_web.conf
+
 
 %pre
-%service_add_pre cobblerd.service
+%if %{_vendor} == "debbuild"
+if [ "$1" = "upgrade" ]; then
+%else
+if [ $1 -ge 2 ]; then
+%endif
+    # package upgrade: backup configuration
+    DATE=$(date "+%Y%m%d-%H%M%S")
+    if [ ! -d "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}" ]; then
+        mkdir -p "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}"
+    fi
+    for i in "config" "snippets" "templates" "triggers" "scripts"; do
+        if [ -d "%{_sharedstatedir}/cobbler/${i}" ]; then
+            cp -r "%{_sharedstatedir}/cobbler/${i}" "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}"
+        fi
+    done
+    if [ -d %{_sysconfdir}/cobbler ]; then
+        cp -r %{_sysconfdir}/cobbler "%{_sharedstatedir}/cobbler/backup/upgrade-${DATE}"
+    fi
+fi
 
+%if %{_vendor} == "debbuild"
 %post
-if [ ! -e /etc/genders ]; then
-    touch /etc/genders
-fi
-if [ $1 -eq 1 ] ; then
-    # Initial installation
-        sysconf_addword %{_sysconfdir}/sysconfig/apache2 APACHE_MODULES proxy
-        sysconf_addword %{_sysconfdir}/sysconfig/apache2 APACHE_MODULES proxy_http
-        sysconf_addword %{_sysconfdir}/sysconfig/apache2 APACHE_MODULES proxy_connect
-        sysconf_addword %{_sysconfdir}/sysconfig/apache2 APACHE_MODULES wsgi
-
-elif [ "$1" -ge "2" ]; then
-    # backup config
-    if [ -e %{_localstatedir}/lib/cobbler/distros ]; then
-        cp %{_localstatedir}/lib/cobbler/distros*  %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-        cp %{_localstatedir}/lib/cobbler/profiles* %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-        cp %{_localstatedir}/lib/cobbler/systems*  %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-        cp %{_localstatedir}/lib/cobbler/repos*    %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-        cp %{_localstatedir}/lib/cobbler/networks* %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-    fi
-    if [ -e %{_localstatedir}/lib/cobbler/config ]; then
-        cp -a %{_localstatedir}/lib/cobbler/config    %{_localstatedir}/lib/cobbler/backup 2>/dev/null
-    fi
-    # upgrade older installs
-    # move power and pxe-templates from %%{_sysconfdir}/cobbler, backup new templates to *.rpmnew
-    for n in power pxe; do
-      rm -f %{_sysconfdir}/cobbler/$n*.rpmnew
-      find %{_sysconfdir}/cobbler -maxdepth 1 -name "$n*" -type f | while read f; do
-        newf=%{_sysconfdir}/cobbler/$n/`basename $f`
-        [ -e $newf ] &&  mv $newf $newf.rpmnew
-        mv $f $newf
-      done
-    done
-    # upgrade older installs
-    # copy kickstarts from %%{_sysconfdir}/cobbler to %%{_prefix}/lib/cobbler/kickstarts
-    rm -f %{_sysconfdir}/cobbler/*.ks.rpmnew
-    find %{_sysconfdir}/cobbler -maxdepth 1 -name "*.ks" -type f | while read f; do
-      newf=%{_localstatedir}/lib/cobbler/kickstarts/`basename $f`
-      [ -e $newf ] &&  mv $newf $newf.rpmnew
-      cp $f $newf
-    done
-    # remove mod_python from apache
-    sysconf_addword -r %{_sysconfdir}/sysconfig/apache2 APACHE_MODULES python >/dev/null 2>&1
-    /bin/systemctl try-restart cobblerd.service >/dev/null 2>&1 || :
-fi
-
-# Create bootloders into /var/lib/cobbler/loaders
-%{_datadir}/%{name}/bin/mkgrub.sh >/dev/null 2>&1
-
-%service_add_post cobblerd.service
+%{py3_bytecompile_post %{name}}
+%{systemd_post cobblerd.service}
+%{apache2_module_post proxy_http}
 
 %preun
-%service_del_preun cobblerd.service
+%{py3_bytecompile_preun %{name}}
+%{systemd_preun cobblerd.service}
 
 %postun
-%service_del_postun cobblerd.service
+%{systemd_postun_with_restart cobblerd.service}
+
+%else
+%post
+%if 0%{?suse_version}
+# Create bootloders into /var/lib/cobbler/loaders
+# Other distros might also want to do that
+%{_datadir}/%{name}/bin/mkgrub.sh >/dev/null 2>&1
+%endif
+%systemd_post cobblerd.service
+
+%preun
+%systemd_preun cobblerd.service
+
+%postun
+%if 0%{?suse_version}
+# This is mkgrub.sh cleanup (exeucted above in post):
+# remove linked and installed grub loader executables again
 if [ -e %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup ];then
    for file in $(cat %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup);do
        rm -f %{_localstatedir}/lib/cobbler/loaders/$file
    done
    rm -rf %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup
 fi
+%endif
+%systemd_postun_with_restart cobblerd.service
+%endif
 
-%posttrans
-%{apache_restart_if_needed}
-
-%post  web
+%post web
+%if %{_vendor} == "debbuild"
+# Work around broken attr support
+# Cf. https://github.com/debbuild/debbuild/issues/160
+chown %{apache_user}:%{apache_group} %{_datadir}/cobbler/web
+mkdir -p %{_sharedstatedir}/cobbler/webui_sessions
+chown %{apache_user}:root %{_sharedstatedir}/cobbler/webui_sessions
+chmod 700 %{_sharedstatedir}/cobbler/webui_sessions
+chown %{apache_user}:%{apache_group} %{apache_dir}/cobbler_webui_content/
+%endif
 # Change the SECRET_KEY option in the Django settings.py file
 # required for security reasons, should be unique on all systems
-RAND_SECRET=$(openssl rand -base64 40 | sed 's/\//\\\//g')
-sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{python_sitelib}/cobbler/web/settings.py
+# Choose from letters and numbers only, so no special chars like ampersand (&).
+RAND_SECRET=$(head /dev/urandom | tr -dc 'A-Za-z0-9!' | head -c 50 ; echo '')
+sed -i -e "s/SECRET_KEY = ''/SECRET_KEY = \'$RAND_SECRET\'/" %{_datadir}/cobbler/web/settings.py
+
 
 %files
-%doc AUTHORS README.md
 %license COPYING
-/%{www_path}/www/cobbler
+%doc AUTHORS.in README.md
+%doc docs/developer-guide.rst docs/quickstart-guide.rst docs/installation-guide.rst
+%dir %{_sysconfdir}/cobbler
+%config(noreplace) %{_sysconfdir}/cobbler/auth.conf
+%dir %{_sysconfdir}/cobbler/boot_loader_conf
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi5.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi51.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi55.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi60.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi65.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi67.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_esxi5.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_esxi6.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_freebsd.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_linux.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_local.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_windows.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grublocal.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grubprofile.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grubsystem.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxedefault.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxelocal.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxelocal_ia64.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile_arm.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile_esxi.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_arm.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_esxi.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_ia64.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_ppc.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/yaboot_ppc.template
+%config(noreplace) %{_sysconfdir}/cobbler/cheetah_macros
+%config(noreplace) %{_sysconfdir}/cobbler/dhcp.template
+%config(noreplace) %{_sysconfdir}/cobbler/dnsmasq.template
+%config(noreplace) %{_sysconfdir}/cobbler/genders.template
+%config(noreplace) %{_sysconfdir}/cobbler/import_rsync_whitelist
+%dir %{_sysconfdir}/cobbler/iso
+%config(noreplace) %{_sysconfdir}/cobbler/iso/buildiso.template
+%config(noreplace) %{_sysconfdir}/cobbler/logging_config.conf
+%config(noreplace) %{_sysconfdir}/cobbler/modules.conf
+%config(noreplace) %{_sysconfdir}/cobbler/mongodb.conf
+%config(noreplace) %{_sysconfdir}/cobbler/named.template
+%config(noreplace) %{_sysconfdir}/cobbler/ndjbdns.template
+%dir %{_sysconfdir}/cobbler/reporting
+%config(noreplace) %{_sysconfdir}/cobbler/reporting/build_report_email.template
+%config(noreplace) %{_sysconfdir}/cobbler/rsync.exclude
+%config(noreplace) %{_sysconfdir}/cobbler/rsync.template
+%config(noreplace) %{_sysconfdir}/cobbler/secondary.template
+%config(noreplace) %{_sysconfdir}/cobbler/settings
+%dir %{_sysconfdir}/cobbler/settings.d
+%config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
+%config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
+%config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
+%config(noreplace) %{_sysconfdir}/cobbler/users.conf
+%config(noreplace) %{_sysconfdir}/cobbler/users.digest
+%config(noreplace) %{_sysconfdir}/cobbler/version
+%config(noreplace) %{_sysconfdir}/cobbler/zone.template
+%dir %{_sysconfdir}/cobbler/zone_templates
+%config(noreplace) %{_sysconfdir}/cobbler/zone_templates/foo.example.com
+%config(noreplace) %{_sysconfdir}/logrotate.d/cobblerd
+%config(noreplace) %{apache_webconfigdir}/cobbler.conf
 %{_bindir}/cobbler
 %{_bindir}/cobbler-ext-nodes
 %{_bindir}/cobblerd
-%{_datadir}/%{name}/bin/mkgrub.sh
-%{_datadir}/%{name}/bin/settings-migration-v1-to-v2.sh
-%{_datadir}/cobbler/web
-%attr(750, root, root) %{_localstatedir}/log/cobbler
-%{_mandir}/man1/cobbler.1%{?ext_man}
-%{_mandir}/man5/cobbler.conf.5%{?ext_man}
-%{_mandir}/man8/cobblerd.8%{?ext_man}
-%{_sbindir}/tftpd.py*
-%{_sbindir}/rccobblerd
+%{_sbindir}/tftpd.py
 %{_sbindir}/fence_ipmitool
+%dir %{_datadir}/cobbler
+%{_datadir}/cobbler/bin
+%{_mandir}/man1/cobbler.1*
+%{_mandir}/man5/cobbler.conf.5*
+%{_mandir}/man8/cobblerd.8*
+%{_datadir}/bash-completion/completions/cobbler
+%{python3_sitelib}/cobbler/
+%{python3_sitelib}/cobbler-*
 %{_unitdir}/cobblerd.service
-
-%{python_sitelib}/cobbler
-%{python_sitelib}/cobbler*.egg-info
-
-%config(noreplace) %{_sysconfdir}/cobbler
-%config(noreplace) %{_localstatedir}/lib/cobbler
-%config(noreplace) %{_sysconfdir}/%{apachedir}/vhosts.d/cobbler.conf
-# ToDo: This is used by systemd service file:
-# ExecStartPost=/usr/bin/touch /usr/share/cobbler/web/cobbler.wsgi
-# Get this into cobbler-web somehow
-%config %{_sysconfdir}/logrotate.d/cobbler
-
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/bin
-
-# These are part of the test package
-%exclude %dir %{_datadir}/%{name}/tests
-%exclude %{_datadir}/%{name}/tests/*
-
-%dir /srv/tftpboot/images
+%if 0%{?suse_version}
+%{_sbindir}/rccobblerd
+%endif
+%{tftpboot_dir}/*
+%{apache_dir}/cobbler
+%{_sharedstatedir}/cobbler
+%exclude %{_sharedstatedir}/cobbler/webui_sessions
+%{_localstatedir}/log/cobbler
 
 %files web
 %license COPYING
-%doc AUTHORS
-%config(noreplace) %{_sysconfdir}/%{apachedir}/vhosts.d/cobbler_web.conf
-%defattr(-,%{apache_user},%{apache_group},-)
-/%{www_path}/www/cobbler_webui_content/
+%doc AUTHORS.in README.md
+%config(noreplace) %{apache_webconfigdir}/cobbler_web.conf
+%if %{_vendor} == "debbuild"
+# Work around broken attr support
+# Cf. https://github.com/debbuild/debbuild/issues/160
+%{_datadir}/cobbler/web
+%dir %{_sharedstatedir}/cobbler/webui_sessions
+%{apache_dir}/cobbler_webui_content/
+%else
+%attr(-,%{apache_user},%{apache_group}) %{_datadir}/cobbler/web
+%dir %attr(700,%{apache_user},root) %{_sharedstatedir}/cobbler/webui_sessions
+%attr(-,%{apache_user},%{apache_group}) %{apache_dir}/cobbler_webui_content/
+%endif
 
-
-%if 0%{?suse_version}
-%package -n cobbler-tests
-
-Summary:        Unit tests for Cobbler
-Group:          Productivity/Networking/Boot/Servers
-Requires:       cobbler
-Requires:       python3-pytest
-Requires:       python3-pyflakes
-Requires:       python3-pycodestyle
-
-%description -n cobbler-tests
-
-Unit test files from the Cobbler project
-
-%files -n cobbler-tests
-%doc %{_datadir}/%{name}/tests/README.md
-%dir %{_datadir}/%{name}/tests
-%{_datadir}/%{name}/tests/*
-%endif #suse_version
 
 %changelog
+* Thu Dec 19 2019 Neal Gompa <ngompa13@gmail.com>
+- Initial rewrite of packaging

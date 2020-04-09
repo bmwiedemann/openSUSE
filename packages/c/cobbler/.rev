@@ -1069,4 +1069,41 @@ A exclude_get-loaders_command.patch
     <comment></comment>
     <requestid>751077</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ccd68d559164d6db2991b10deeeb39d0</srcmd5>
+    <version>3.1.1+git20200316.25209de3</version>
+    <time>1586466886</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed not needed files in obs. This is now all mainline:
+D logrotate_cobbler
+D fix_hardcoded_libpath_for_websession.patch
+D fence_ipmitool.template
+D cobbler_management_mac.diff
+D AUTHORS
+- Added source files:
+A cobbler.obsinfo
+A cobbler-rpmlintrc
+D exclude_get-loaders_command.patch
+Spec file is mostly adopted to mainline spec file.
+Still it is not directly extracted from mainline tarball.
+First the remaining diff has to be submitted mainline.
+- Change group to Productivity/Networking/Boot/Servers
+- Disable any python_*_dependency_generator macros
+  According to Tomas Chvatal they are much too experimental yet
+  in OBS to be used. They have to be undefined, because of a half
+  baken implementation in SLE 15 SP2 build env (defined but not
+  properly implemented). At some point of time the introduced
+  undefine python_*_dependency_generator
+  will be conditionally removed via suse_version.
+
+- Updated to version 3.1.1.
+  * Introduce new packaging from upstream
+  * Changelog see below
+- New:
+  * We are now having a cross-distro specfile which can be build in the OBS
+    (#2220) - before rewritten it was improved by #2144 &amp; #2174
+  * Grub Submenu for net-booting machines (#2217)
+  * Building the Cent-OS RPMs in Docker (#2190 #2189)</comment>
+    <requestid>792600</requestid>
+  </revision>
 </revisionlist>

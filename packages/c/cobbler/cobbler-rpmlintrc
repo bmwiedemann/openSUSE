@@ -1,0 +1,6 @@
+addFilter('files-duplicate')
+addFilter('incoherent-logrotate-file')
+addFilter('non-executable-script')
+addFilter('systemd-service-without-service_add_post')
+addFilter('systemd-service-without-service_add_pre')
+

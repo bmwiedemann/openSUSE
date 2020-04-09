@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Feb 24 11:40:36 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Removed not needed files in obs. This is now all mainline:
+D logrotate_cobbler
+D fix_hardcoded_libpath_for_websession.patch
+D fence_ipmitool.template
+D cobbler_management_mac.diff
+D AUTHORS
+- Added source files:
+A cobbler.obsinfo
+A cobbler-rpmlintrc
+D exclude_get-loaders_command.patch
+
+Spec file is mostly adopted to mainline spec file.
+Still it is not directly extracted from mainline tarball.
+First the remaining diff has to be submitted mainline.
+
+- Change group to Productivity/Networking/Boot/Servers
+
+- Disable any python_*_dependency_generator macros
+  According to Tomas Chvatal they are much too experimental yet
+  in OBS to be used. They have to be undefined, because of a half
+  baken implementation in SLE 15 SP2 build env (defined but not
+  properly implemented). At some point of time the introduced
+  undefine python_*_dependency_generator
+  will be conditionally removed via suse_version.
+
+-------------------------------------------------------------------
+Mon Jan 13 09:35:02 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Updated to version 3.1.1.
+  * Introduce new packaging from upstream
+  * Changelog see below
+
+- New:
+  * We are now having a cross-distro specfile which can be build in the OBS
+    (#2220) - before rewritten it was improved by #2144 & #2174
+  * Grub Submenu for net-booting machines (#2217)
+  * Building the Cent-OS RPMs in Docker (#2190 #2189)
+  * Reintroduced manpage build in setup.py (#2185)
+  * mgmt_parameters are now passed to the dhcp template (#2182)
+  * Using the standard Pyhton3 logger instead of a custom one (#2160 #2139 #2151)
+  * Script for converting the settings file from 3.0.0 to 3.0.1 (#2154)
+  * Docs now inside the repo instead of cobbler.github.io and improved with sphinx (#2117)
+
+- Changes:
+  * The default tftpboot directory is now /var/lib/tftpboot instead of previously /srv/tftpboot (#2220)
+  * Distro signatures were adjusted where necessary (#2219 #2134)
+  * Removed requirements.txt and placed the requirements in setup.py (#2204)
+  * Display only entries in grub which are from the same arch (#2191 #2216)
+  * Change the name of the cobbler manpage form cobbler-cli to cobbler back and move it to section 8 (#2188 #2186)
+
+- Bugfixes:
+  * Incremented Version to 3.1.1 from 3.0.1
+  * S390 Support was cleaned up (#2207 #2178)
+  * PowerPC Support was cleaned up (#2178)
+  * Added a missing import while importing a distro with cobbler import (#2201)
+  * Fixed a case where a stacktrace would be produced so pass none instead (#2203)
+  * Rename of suse_kopts_textmode_overwrite to kops_overwrite to utils (#2143 #2200)
+  * Fix rsync subprocess call (#2199 #2179)
+  * Fixed an error where the template rendering did not work (#2176)
+  * Fixed some cobbler import errors (#2172)
+  * Wrong shebang in various scripts (#2148)
+  * Fix some imports which fixes errors introduced by the remodularization (#2150 #2153)
+
+- Other:
+  * Issue Templates for Github (#2187)
+
+-------------------------------------------------------------------
 Tue Nov 26 15:44:24 UTC 2019 - trenn@suse.de
 
 - Update to latest git HEAD code base
