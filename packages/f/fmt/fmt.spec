@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define sover   6
 Name:           fmt
-Version:        6.1.2
+Version:        6.2.0
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf

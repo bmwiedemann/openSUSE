@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Apr  6 14:21:08 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.2.0
+  * Improved error reporting when trying to format an object of
+    a non-formattable type:
+  * Reduced library size by ~10%.
+  * Always print decimal point if # is specified (#1476, #1498):
+  * Implemented the 'L' specifier for locale-specific numeric
+    formatting to improve compatibility with std::format. The 'n'
+    specifier is now deprecated and will be removed in the next
+    major release.
+  * Moved OS-specific APIs such as windows_error from
+    fmt/format.h to fmt/os.h. You can define
+    FMT_DEPRECATED_INCLUDE_OS to automatically include fmt/os.h from
+    fmt/format.h for compatibility but this will be disabled in the
+    next major release.
+  * Added precision overflow detection in floating-point
+    formatting.
+  * Implemented detection of invalid use of fmt::arg.
+  * Used type_identity to block unnecessary template argument
+    deduction.
+  * Improved UTF-8 handling (#1109):
+  * Added experimental dynamic argument storage (#1170, #1584):
+  * Made fmt::join accept initializer_list (#1591).
+  * Fixed handling of empty tuples (#1588).
+  * Fixed handling of output iterators in format_to_n (#1506).
+  * Fixed formatting of std::chrono::duration types to wide
+    output (#1533).
+  * Added const begin and end overload to buffers (#1553).
+  * Added the ability to disable floating-point formatting via
+    FMT_USE_FLOAT, FMT_USE_DOUBLE and FMT_USE_LONG_DOUBLE macros for
+    extremely memory-constrained embedded system (#1590).
+  * Made FMT_STRING work with constexpr string_view (#1589).
+  * Implemented a minor optimization in the format string parser
+    (#1560).
+  * Improved attribute detection (#1469, #1475, #1576).
+  * Improved documentation (#1481, #1523).
+  * Fixed symbol visibility on Linux when compiling with
+    -fvisibility=hidden (#1535).
+  * Implemented various build configuration fixes and
+    improvements (#1264, #1460, #1534, #1536, #1545, #1546, #1566,
+    #1582, #1597, #1598).
+  * Fixed various warnings and compilation issues
+      
+- Dropped Group tag
+
+-------------------------------------------------------------------
 Wed Dec 11 16:57:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.2
