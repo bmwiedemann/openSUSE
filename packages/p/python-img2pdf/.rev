@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>689088</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c98ab1062f6cfa467236f2546ae4b778</srcmd5>
+    <version>0.3.4</version>
+    <time>1586467025</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.3.4
+  - test.sh: replace imagemagick with custom python script to produce bit-by-bit
+    identical results on all architectures
+  - add --crop-border, --bleed-border, --trim-border and --art-border options
+  - first draft of a rudimentary tkinter gui (run with --gui)
+- python3 only per upstream declaration
+- Drop patch python-img2pdf-test-python2.patch</comment>
+    <requestid>792693</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-img2pdf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,27 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
+%define skip_python2 1
 Name:           python-img2pdf
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            https://gitlab.mister-muffin.de/josch/img2pdf
+URL:            https://gitlab.mister-muffin.de/josch/img2pdf
 Source:         https://files.pythonhosted.org/packages/source/i/img2pdf/img2pdf-%{version}.tar.gz
-# allow to run testsuite with python 2 (https://gitlab.mister-muffin.de/josch/img2pdf/issues/60)
-Patch0:         python-img2pdf-test-python2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pdfrw}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  python-enum34
 # /SECTION
 Requires:       python-Pillow
 Requires:       python-pdfrw
 Requires:       python-setuptools
-%ifpython2
-Requires:       python-enum34
-%endif
 Suggests:       python-pdfrw
 BuildArch:      noarch
 
@@ -58,9 +54,6 @@ of file size.
 
 %prep
 %setup -q -n img2pdf-%{version}
-%ifpython2
-%patch0 -p1
-%endif
 sed -i -e '/^#!\//, 1d' src/*.py
 
 %build
@@ -78,6 +71,7 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %license LICENSE
 %doc CHANGES.rst README.md
 %python3_only %{_bindir}/img2pdf
+%python3_only %{_bindir}/img2pdf-gui
 %{python_sitelib}/*
 
 %changelog
