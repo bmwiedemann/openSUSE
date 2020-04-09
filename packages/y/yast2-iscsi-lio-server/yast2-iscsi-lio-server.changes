@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 15:41:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix check of discovery authentication status, enabling or
+  disabling it correctly according to user selection (bsc#1166707)
+- 4.2.4
+
+-------------------------------------------------------------------
 Wed Mar 11 15:45:38 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix usability issues in global tab (bsc#1127505)
