@@ -1,7 +1,7 @@
 #
 # spec file for package otrs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@
 
 Name:           otrs
 
-%define otrs_ver 6.0.24
-%define itsm_ver 6.0.24
+%define otrs_ver 6.0.27
+%define itsm_ver 6.0.27
 %define itsm_min 6
 %define otrs_root /srv/%{name}
 %define otrsdoc_dir_files AUTHORS* CHANGES* COPYING* CREDITS README* UPGRADING.SUSE doc
@@ -71,8 +71,8 @@ BuildRequires:  fdupes
 BuildRequires:  pwdutils
 #
 %if 0%{?suse_version} >= 1210
-BuildRequires:  systemd
-%{?systemd_requires}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %define has_systemd 1
 %endif
 #

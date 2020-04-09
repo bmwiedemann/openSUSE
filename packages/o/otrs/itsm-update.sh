@@ -22,7 +22,7 @@ elif [[ ${MAJOR} -ge 6 ]]; then
     PMINOR=$((${MAJOR} - 1))
     PMINOR_PKG=${PMINOR}
     PREJECT="*$((PMINOR - 1)).0.9?.opm,*$((MAJOR - 1)).0.?.opm,*$((MAJOR - 1)).0.1?.opm,*$((MAJOR - 1)).0.2?.opm"
-    REJECT="*${PMINOR}.0.9?.opm,*${MAJOR}.0.9?.opm"
+    REJECT="*${PMINOR}.0.9?.opm,*${MAJOR}.0.9?.opm,*${MAJOR}.0.?.opm"
 fi
 
 if [[ ! -d itsm-${VERSION} ]]; then
