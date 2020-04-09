@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Mar 30 15:20:56 UTC 2020 - pgajdos@suse.com
+
+- test package
+- added sources
+  + test_requests_gssapi.py
+
+-------------------------------------------------------------------
+Mon Mar  9 11:18:19 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.2.0
