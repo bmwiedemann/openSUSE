@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:48:20 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- ndctl/namespace: Skip zero namespaces when processing all namespaces
+  (bsc#1167861, bsc#1165509, ltc#182068).
+  + ndctl-namespace-skip-zero-namespaces-when-processing.patch
+- Refresh patch to upstream version:
+   ndctl-test-Relax-dax_pmem_compat-requirement.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 13:43:42 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - ndctl/test: Relax dax_pmem_compat requirement (bsc#1159523)

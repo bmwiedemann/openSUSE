@@ -36,6 +36,7 @@ Patch5:         %{name}-namespace-Handle-create-namespace-in-label-less-mode.pat
 Patch6:         %{name}-dimm-Fix-init-labels-success-reporting.patch
 Patch7:         %{name}-namespace-Fix-enable-namespace-error-for-seed-.patch
 Patch8:         %{name}-test-Relax-dax_pmem_compat-requirement.patch
+Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
