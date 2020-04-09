@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/mitsuhiko/flask/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
-Patch0:         python38-exception-test.patch
 BuildRequires:  %{python_module Jinja2 >= 2.4}
 BuildRequires:  %{python_module Werkzeug >= 0.15}
 BuildRequires:  %{python_module click >= 5.1}
@@ -64,7 +63,6 @@ reference for python-Flask.
 
 %prep
 %setup -q -n Flask-%{version}
-%autopatch -p1
 
 %build
 %python_build
