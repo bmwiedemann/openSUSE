@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr  9 08:51:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.10.1
+  * Project structure refactoring (MaxHaertwig, dr-p)
+  * Added support for Python3.8 (dr-p)
+  * Dropped support for pypy and Python3.4, welcome back pypy3 (dr-p)
+  * Fully reviewed Travis CI integration (dr-p)
+  * Added 3-digit country ISO codes (MaxHaertwig)
+  * Support for Paraguay (dr-p, sfeliu)
+  * Support for Israel (giladmaya, dr-p)
+  * Support for Egypt (gaberm)
+  * Support for Serbia (kosugor)
+  * Support for Singapore (mborsetti)
+  * README.rst fixes / sync
+  * Brazil-Parana support (dr-p, jbroudou)
+  * Japan fixes (dr-p, thophan92, saurabh3896)
+  * Canada, Spain, US fixes (jbroudou)
+  * Belarus fix (mpolyakovsky)
+
+-------------------------------------------------------------------
 Fri Jan 17 11:51:51 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.9.12:
