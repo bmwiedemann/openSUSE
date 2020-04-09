@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  8 16:24:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.19
+  * Adjust the range of volume button based on the value of the
+    volume-max property.
+  * Retain window maximization state across sessions.
+  * Retain loop state across sessions.
+  * Implement playlist search.
+  * Update the list of shortcuts in Keyboard Shortcuts dialog.
+  * Correctly handle quotes and escape sequences in extra mpv
+    options.
+  * Display time at cursor position when hovering the seek bar.
+  * Deprecate --mpv-options. Options starting with --mpv- can be
+    used to set mpv options instead. For example, passing
+    --mpv-vf=vflip to Celluloid is equivalent to passing
+    --vf=vflip to mpv.
+  * Add support for configuring dead zone, an area in which
+    mouse movement will not cause controls to be shown.
+  * Make window sizing work correctly with HiDPI displays.
+  * Add Finnish translation by Kimmo Kujansuu.
+  * Add Slovenian translation by @bertronika.
+
+-------------------------------------------------------------------
 Tue Nov  5 12:36:29 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.18

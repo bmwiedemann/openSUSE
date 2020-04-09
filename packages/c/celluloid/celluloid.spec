@@ -1,7 +1,7 @@
 #
 # spec file for package celluloid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   io.github.celluloid_player.Celluloid
 Name:           celluloid
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        Simple GTK+ frontend for MPV
 License:        GPL-3.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
-BuildRequires:  pkgconfig(mpv) >= 0.27
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
+BuildRequires:  pkgconfig(mpv) >= 1.101
 Recommends:     %{name}-lang
 Recommends:     youtube-dl
 Obsoletes:      gnome-mpv < %{version}
