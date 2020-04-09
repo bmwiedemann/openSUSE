@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:12:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.9
+  * Fix an error parsing XHTML where the xlink namespace is defined on 
+    the root node but not on a node where the default namespace is redefined
+
+-------------------------------------------------------------------
 Wed Sep 11 15:01:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.8:
