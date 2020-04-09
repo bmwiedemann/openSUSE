@@ -1,19 +1,20 @@
 ---
- README.linux        |    2 
- README.security     |   35 +++
- Xdefaults           |  461 ++++++++++++++++++++++++++--------------------------
- Xrmcommandline.h    |  114 ++++++------
- bitmeter.cc         |    4 
- fieldmeter.cc       |    4 
- linux/MeterMaker.cc |    2 
- linux/diskmeter.cc  |    2 
- llist.cc            |   16 +
- xosview.1           |    2 
- xosview.cc          |    5 
- 11 files changed, 347 insertions(+), 300 deletions(-)
+ README.linux         |    2 
+ README.security      |   35 +++
+ Xdefaults            |  461 +++++++++++++++++++++++++--------------------------
+ Xrmcommandline.h     |  114 ++++++------
+ bitmeter.cc          |    4 
+ fieldmeter.cc        |    4 
+ linux/MeterMaker.cc  |    2 
+ linux/diskmeter.cc   |    2 
+ linux/serialmeter.cc |    4 
+ llist.cc             |   16 +
+ xosview.1            |    2 
+ xosview.cc           |    5 
+ 12 files changed, 349 insertions(+), 302 deletions(-)
 
 --- README.linux
-+++ README.linux	2016-12-05 10:35:24.639222793 +0000
++++ README.linux	2020-04-02 06:19:40.181330816 +0000
 @@ -26,7 +26,7 @@ To install xosview:
       to /usr/bin/X11/xosview and will be suid root.  If you do not want to
       run xosview suid root (this will just disable the serial meters) you
@@ -24,7 +25,7 @@
    To run xosview :
  
 --- README.security
-+++ README.security	2016-12-05 10:35:24.639222793 +0000
++++ README.security	2020-04-02 06:19:40.181330816 +0000
 @@ -0,0 +1,35 @@
 +
 +Xosview, serial meters, and suid bit
@@ -62,7 +63,7 @@
 +                            Your SuSE Team
 +
 --- Xdefaults
-+++ Xdefaults	2016-12-05 11:04:38.923089107 +0000
++++ Xdefaults	2020-04-02 06:19:40.181330816 +0000
 @@ -2,129 +2,130 @@
  
  ! General Resources
@@ -585,7 +586,7 @@
 +! *bsdsensorHigh1:          100
  
 --- Xrmcommandline.h
-+++ Xrmcommandline.h	2016-12-05 11:07:22.631706991 +0000
++++ Xrmcommandline.h	2020-04-02 06:19:40.181330816 +0000
 @@ -10,96 +10,96 @@ static XrmOptionDescRec options[] = {
  //    it is self-consistent, and self-explanatory.
  
@@ -741,7 +742,7 @@
  //  This auto-detects changes in the number of options.
  static const int NUM_OPTIONS = sizeof(options) / sizeof(options[0]);
 --- bitmeter.cc
-+++ bitmeter.cc	2016-12-05 11:09:31.993036142 +0000
++++ bitmeter.cc	2020-04-02 06:19:40.181330816 +0000
 @@ -88,9 +88,9 @@ void BitMeter::draw( void ){
  
      int offset;
@@ -755,7 +756,7 @@
      parent_->drawString( x_ - offset + 1, y_ + height_, title_ );
      parent_->setForeground( onColor_ );
 --- fieldmeter.cc
-+++ fieldmeter.cc	2016-12-05 11:09:48.584693553 +0000
++++ fieldmeter.cc	2020-04-02 06:19:40.181330816 +0000
 @@ -122,9 +122,9 @@ void FieldMeter::draw( void ){
  
      int offset;
@@ -769,7 +770,7 @@
      parent_->drawString( x_ - offset + 1, y_ + height_, title_ );
    }
 --- linux/MeterMaker.cc
-+++ linux/MeterMaker.cc	2016-12-05 11:12:32.437309930 +0000
++++ linux/MeterMaker.cc	2020-04-02 06:19:40.181330816 +0000
 @@ -137,6 +137,7 @@ void MeterMaker::makeMeters(void){
        }
  #endif
@@ -787,7 +788,7 @@
    // check for irqrate meter
    if (_xos->isResourceTrue("irqrate"))
 --- linux/diskmeter.cc
-+++ linux/diskmeter.cc	2016-12-05 10:35:24.643222711 +0000
++++ linux/diskmeter.cc	2020-04-02 06:19:40.181330816 +0000
 @@ -165,7 +165,7 @@ void DiskMeter::getvmdiskinfo(void)
      // read second value
      stats >> two;
@@ -797,8 +798,23 @@
  }
  
  void DiskMeter::getdiskinfo( void )
+--- linux/serialmeter.cc
++++ linux/serialmeter.cc	2020-04-02 06:18:43.246446896 +0000
+@@ -30,10 +30,10 @@ typedef unsigned long long u64;
+ #endif
+ 
+ #if defined(GNULIBC) || defined(__GLIBC__)
+-#if !defined(__powerpc__) && !defined(__hppa__) && !defined(__mips__) && !defined(__sparc__) && !defined(__sh__) && !defined(__s390__) && !defined(__s390x__) && !defined(__m68k__) && !defined(__aarch64__)
++#if !defined(__powerpc__) && !defined(__hppa__) && !defined(__mips__) && !defined(__sparc__) && !defined(__sh__) && !defined(__s390__) && !defined(__s390x__) && !defined(__m68k__) && !defined(__aarch64__) && !defined(__arm__)
+ #include <sys/io.h>
+ #endif
+-#if !defined(__alpha__) && !defined(__sparc__) && !defined(__powerpc__) && !defined(__ia64__) && !defined(__hppa__) && !defined(__arm__) && !defined(__mips__) && !defined(__sh__) && !defined(__s390__) && !defined (__s390x__) && !defined(__m68k__) && !defined(__aarch64__)
++#if !defined(__alpha__) && !defined(__sparc__) && !defined(__powerpc__) && !defined(__ia64__) && !defined(__hppa__) && !defined(__arm__) && !defined(__mips__) && !defined(__sh__) && !defined(__s390__) && !defined (__s390x__) && !defined(__m68k__) && !defined(__aarch64__) && !defined(__arm__)
+ #include <sys/perm.h>
+ #define HAVE_IOPERM
+ #endif
 --- llist.cc
-+++ llist.cc	2016-12-05 10:35:24.643222711 +0000
++++ llist.cc	2020-04-02 06:19:40.181330816 +0000
 @@ -232,24 +232,32 @@ void *LList::findc( int which ){
  }
  
@@ -837,7 +853,7 @@
    for ( ; i > 0 ; i-- ) {
      if ( ( buf = new char[size] ) == NULL ) return ( 0 );
 --- xosview.1
-+++ xosview.1	2016-12-05 10:35:24.643222711 +0000
++++ xosview.1	2020-04-02 06:19:40.185330737 +0000
 @@ -336,7 +336,7 @@ and \'purple\'):
  The following is a list of X resources supported by \fIxosview\fP.  Each has
  a default value assigned to it.  These values can be found in the file
@@ -848,7 +864,7 @@
  
  It should be noted that it is OK to have a resource defined for a port of
 --- xosview.cc
-+++ xosview.cc	2016-12-05 11:11:28.234635818 +0000
++++ xosview.cc	2020-04-02 06:19:40.185330737 +0000
 @@ -11,6 +11,7 @@
        defined(XOSVIEW_OPENBSD) || defined(XOSVIEW_DFBSD) )
  # include "kernel.h"

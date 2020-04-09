@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 06:20:41 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Let it build even on amrv7l 
+
+-------------------------------------------------------------------
 Mon Mar 23 11:29:53 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xosview-1.21-lmstemp.patch to be able to determine

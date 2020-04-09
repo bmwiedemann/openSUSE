@@ -4,7 +4,7 @@
 
 --- linux/MeterMaker.cc
 +++ linux/MeterMaker.cc	2020-03-23 09:48:53.634728539 +0000
-@@ -215,11 +215,14 @@ void MeterMaker::makeMeters(void){
+@@ -213,11 +213,14 @@ void MeterMaker::makeMeters(void){
      const char *tempfile, *highfile, *lowfile, *name, *label;
      snprintf( caption, 16, "ACT/HIGH/%s",
                _xos->getResourceOrUseDefault("lmstempHighest", "100") );
