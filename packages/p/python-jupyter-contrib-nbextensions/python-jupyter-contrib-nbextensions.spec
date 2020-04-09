@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-contrib-nbextensions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,16 +32,16 @@ BuildRequires:  %{python_module notebook >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jupyter_nbextensions_configurator >= 0.2.8
-Requires:       python-jupyter_contrib_core >= 0.3.3
-Requires:       python-jupyter-core
-Requires:       python-jupyter_highlight_selected_word >= 0.2
-Requires:       python-jupyter_latex_envs >= 1.3.8
-Requires:       python-nbconvert >= 4.2
-Requires:       python-notebook >= 4.0
 Requires:       python-PyYAML
 Requires:       python-ipython_genutils
+Requires:       python-jupyter-core
+Requires:       python-jupyter_contrib_core >= 0.3.3
+Requires:       python-jupyter_highlight_selected_word >= 0.2
+Requires:       python-jupyter_latex_envs >= 1.3.8
+Requires:       python-jupyter_nbextensions_configurator >= 0.2.8
 Requires:       python-lxml >= 3.8.0
+Requires:       python-nbconvert >= 4.2
+Requires:       python-notebook >= 4.0
 Requires:       python-tornado
 Requires:       python-traitlets >= 4.1
 Recommends:     python-nbformat
@@ -51,15 +51,17 @@ Obsoletes:      python-jupyter_contrib_nbextensions < %{version}
 Requires:       jupyter-jupyter-contrib-nbextensions = %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
-BuildRequires:  %{python_module jupyter-core}
-BuildRequires:  %{python_module jupyter_highlight_selected_word >= 0.2}
-BuildRequires:  %{python_module jupyter_latex_envs >= 1.3.8}
-BuildRequires:  %{python_module jupyter_nbextensions_configurator >= 0.2.8}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
+BuildRequires:  %{python_module jupyter_highlight_selected_word >= 0.2}
+BuildRequires:  %{python_module jupyter_latex_envs >= 1.3.8}
+BuildRequires:  %{python_module jupyter_nbextensions_configurator >= 0.2.8}
 BuildRequires:  %{python_module lxml >= 3.8.0}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets >= 4.1}
 %endif
@@ -81,11 +83,11 @@ This package provides the python interface.
 %package     -n jupyter-jupyter-contrib-nbextensions
 Summary:        Libraries and Languages for Jupyter
 Group:          Development/Languages/Python
+Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyter_contrib_core >= 0.3.3
 Requires:       jupyter-jupyter_highlight_selected_word >= 0.2
 Requires:       jupyter-jupyter_latex_envs >= 1.3.8
 Requires:       jupyter-jupyter_nbextensions_configurator >= 0.2.8
-Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook >= 4.0
 Requires:       python3-jupyter-contrib-nbextensions = %{version}
 
@@ -124,7 +126,7 @@ rm -r %{buildroot}%{_jupyter_nbextension_dir}/latex_envs/
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%pytest
 %endif
 
 %files %{python_files}
