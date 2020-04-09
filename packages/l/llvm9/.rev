@@ -146,4 +146,14 @@
 - Fix typos in (still inactive) !%{with clang_scripts} part.</comment>
     <requestid>787863</requestid>
   </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>f7dbe38e614f6209a90ce8428748045c</srcmd5>
+    <version>9.0.1</version>
+    <time>1586466880</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm10 now (boo#1168935).
+- Remove version requirement from clang-tools dependency.</comment>
+    <requestid>792576</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 21:58:53 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm10 now (boo#1168935).
+- Remove version requirement from clang-tools dependency.
+
+-------------------------------------------------------------------
 Mon Mar 23 22:42:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
