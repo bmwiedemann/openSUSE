@@ -4219,6 +4219,8 @@
     <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="rpm-build" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
+    <package name="rpm-build-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
+    <package name="rpm-build-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-base-devel_kernel -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="rpm-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rsibreak" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
