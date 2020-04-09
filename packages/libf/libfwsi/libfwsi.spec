@@ -1,7 +1,7 @@
 #
 # spec file for package libfwsi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %define lname	libfwsi1
-%define timestamp 20181227
+%define timestamp 20191221
 Name:           libfwsi
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to access the Windows Shell Item format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfwsi/wiki
+URL:            https://github.com/libyal/libfwsi/wiki
 Source:         https://github.com/libyal/libfwsi/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
 Source2:        Windows_Shell_Item_format.pdf
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libcdata) >= 20140105
 BuildRequires:  pkgconfig(libcerror) >= 20140105
 BuildRequires:  pkgconfig(libclocale)
@@ -68,23 +67,34 @@ Library to access the Windows Shell Item format for the libyal family of librari
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwsi.
 
-%package -n python-%name
+%package -n python2-%{name}
+Summary:        Python2 bindings for libfwsi
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+Requires:       %{lname} = %{version}
+BuildRequires:  pkgconfig(python2)
+Obsoletes:      pyfwsi <= 20191221
+Obsoletes:      python-%{name} <= 20191221
+
+%description -n python2-%name
+Python2 bindings for libfwsi, a library to access Windows Shell Items.
+
+%package -n python3-%{name}
 Summary:        Python bindings for libfwsi
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %{lname} = %{version}
-Requires:       python
-Provides:       pyfwsi = %{version}
+BuildRequires:  pkgconfig(python3)
 
-%description -n python-%name
-Python bindings for libfwsi, a library to access Windows Shell Items.
+%description -n python3-%name
+Python3 bindings for libfwsi, a library to access Windows Shell Items.
 
 %prep
 %setup -q -n libfwsi-%{timestamp}
 cp "%{S:2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3 
 make %{?_smp_mflags}
 
 %install
@@ -112,10 +122,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libfwsi.pc
 %{_mandir}/man3/libfwsi.3*
 
-%files -n python-%name
+%files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
 %license COPYING
-%python_sitearch/pyfwsi.so
+%python2_sitearch/pyfwsi.so
+
+%files -n python3-%name
+%defattr(-,root,root)
+%doc AUTHORS ChangeLog
+%license COPYING
+%python3_sitearch/pyfwsi.so
 
 %changelog

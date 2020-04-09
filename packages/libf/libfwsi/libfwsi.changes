@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:21:03 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191221
+        * minor release
+        * Worked on Python wheel support
+- rename python-libfwsi to python2-libfwsi
+- add python3 bindings submodule
+
+-------------------------------------------------------------------
 Mon Apr 15 22:16:20 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181227
