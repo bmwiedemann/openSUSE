@@ -597,4 +597,13 @@
     <comment></comment>
     <requestid>782793</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f1625611cff1f5e06503ea05789b092a</srcmd5>
+    <version>2.3.1</version>
+    <time>1586466868</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert to 2.3.1 due to severely increased memory usage when building
+  kernel documentation. bsc#1166965</comment>
+    <requestid>791929</requestid>
+  </revision>
 </revisionlist>
