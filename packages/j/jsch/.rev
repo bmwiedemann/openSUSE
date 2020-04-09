@@ -169,4 +169,12 @@
     <comment>Make actually work with maven</comment>
     <requestid>732197</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>256715f5ee212cb3972ca440a8b4b7c4</srcmd5>
+    <version>0.1.55</version>
+    <time>1586466873</time>
+    <user>dimstar_suse</user>
+    <comment>0.1.54 -&gt; 0.1.55</comment>
+    <requestid>792006</requestid>
+  </revision>
 </revisionlist>
