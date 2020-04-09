@@ -53,6 +53,8 @@ Patch2:         kubeadm-opensuse-registry.patch
 Patch3:         opensuse-version-checks.patch
 # Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
 Patch4:         kubeadm-opensuse-flexvolume.patch
+# Fix https://github.com/kubernetes/kubernetes/issues/89672
+Patch5:         fix-spn-prefix-added.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -182,6 +184,7 @@ Kubernetes client tools like kubectl.
 %patch2 -p0
 %patch3 -p1
 %patch4 -p0
+%patch5 -p1
 
 %build
 # This is fixing bug bsc#1065972

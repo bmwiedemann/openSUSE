@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 10:23:14 UTC 2020 - Robert Munteanu <rombert@apache.org>
+
+- Add fix-spn-prefix-added.patch, fixing upstream issue #89672 
+
+-------------------------------------------------------------------
 Wed Apr  1 12:39:48 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Rename /usr/lib/sysctl.d/50-kubeadm.conf to 90-kubeadm.conf [boo#1163328] 
