@@ -1,7 +1,7 @@
 #
 # spec file for package steamtricks
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,11 @@ Name:           steamtricks
 Version:        0.3.0
 Release:        0
 Summary:        Workarounds for problems with Steam on Linux
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Other
-Url:            https://steamtricks.github.io/steamtricks/
+URL:            https://steamtricks.github.io/steamtricks/
 Source:         %{name}-%{version}.tar.xz
-BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
-Recommends:     steamtricks-data
 # see https://github.com/steamtricks/steamtricks/issues/27
 Requires:       coreutils
 Requires:       findutils
@@ -37,6 +35,9 @@ Requires:       sed
 # steamtricksd.service file utilizes `script`
 Requires:       util-linux
 Requires:       which
+Recommends:     ca-certificates-steamtricks
+Recommends:     steamtricks-data
+BuildArch:      noarch
 %{?systemd_requires}
 
 %description
@@ -59,14 +60,14 @@ fixes.
 %make_install VERSION="%{version}"
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING AUTHORS
+%license COPYING
+%doc AUTHORS
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 # <= leap 42.1 does not provide _userunitdir
 %if 0%{!?_userunitdir:1}
-  %define _userunitdir /usr/lib/systemd/user
-  %dir /usr/lib/systemd/user
+  %define _userunitdir %{_prefix}/lib/systemd/user
+  %dir %{_prefix}/lib/systemd/user
 %endif
 %{_userunitdir}/%{name}d.service
 
