@@ -35,6 +35,7 @@ Patch0:         0001-Remove-OpenSSL-parts-depending-on-tcnative.patch
 Patch1:         0002-Remove-NPN.patch
 Patch2:         0003-Remove-conscrypt-ALPN.patch
 Patch3:         0004-Remove-jetty-ALPN.patch
+Patch4:         netty-CVE-2020-11612.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.jcraft:jzlib)
@@ -98,6 +99,7 @@ Summary:        API documentation for %{name}
 %if %{with jp_minimal}
 %patch3 -p1
 %endif
+%patch4 -p1
 
 # Missing Mavenized rxtx
 %pom_disable_module "transport-rxtx"
