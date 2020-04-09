@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  8 22:20:23 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.11.1, with upstream support for OCaml 4.10.
+  * Allow more inductive types in Unset Positivity Checking mode.
+  * Fixed bugs in dealing with precedence of notations in custom
+    entries.
+  * In primitive floats, print a warning when parsing a decimal
+    value that is not exactly a binary64 floating-point number.
+    For instance, parsing 0.1 will print a warning whereas parsing
+    0.5 won't.
+  * Fixed an issue in CoqIDE about compiling file paths containing
+    spaces.
+  * Fixed an issue where Extraction Implicit on the constructor of
+    a record was leading to an anomaly.
+- Remove now obsolete ocaml-410-build.patch.
+
+-------------------------------------------------------------------
 Sun Mar 29 21:42:13 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - The num library is required for OCaml 4.06 or later.

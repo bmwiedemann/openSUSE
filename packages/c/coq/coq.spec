@@ -18,7 +18,7 @@
 
 
 Name:           coq
-Version:        8.11.0
+Version:        8.11.1
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -28,8 +28,6 @@ Source:         https://github.com/coq/coq/archive/V%{version}.tar.gz#/%{name}-%
 Source1:        coq.desktop
 Source2:        coq.xml
 Source100:      %{name}-rpmlintrc
-# https://github.com/ppedrot/coq/commit/ae000c9efc256675ce1d56ba27ed7f99e0540ff3
-Patch1:         ocaml-410-build.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  memory-constraints
 # Required for standard coq:
@@ -79,7 +77,6 @@ This package contains development files for Coq.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 export CFLAGS='%{optflags}'
@@ -172,7 +169,6 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 %{_bindir}/coqtop.opt
 %{_bindir}/coqwc
 %{_bindir}/coqworkmgr
-%{_bindir}/doc_grammar
 %{_bindir}/votour
 
 %dir %{_libdir}/coq
