@@ -392,4 +392,40 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>777750</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>516c49d66af10b52988c9b3ab06e9e1a</srcmd5>
+    <version>0.6.9</version>
+    <time>1586466932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.9
+ * BugFixes:
+ + Fixed playlist metadata updating interfering with manual tag editing.
+ + Fixed order of tabs in all windows.
+ + Fixed playlist right click using wrong songs for determining menu options when playlist was filtered.
+ + Fixed possible crashes on playlist right click.
+ + Fixed possible null pointer crash in OSD pretty.
+ + Fixed track and title in playlist not being movable.
+ + Fixed Subsonic support to handle numeric Json values like track and disc both as strings and integers.
+ + Fixed Subsonic compatibility with LMS (Lightweight Music Server).
+ + Disabled &quot;open Audio CD&quot; from menu on Windows where CD support is currently not supported.
+ + Fixed files containing &quot;MAC&quot; being detected as Monkey's Audio.
+ * Enhancements:
+ + Improved support for High DPI displays.
+ + Added CMake check for backtrace() to fix compilation with musl libc.
+ + Made album cover in context adjust to width.
+ + Made settings, cover manager, organise dialog and transcode music dialog center on the same display where the mainwindow is located.
+ + Removing empty directories when organizing music.
+ + Made file selection work in &quot;Show file in browser&quot; for Dolphin and Nautilus.
+ + Implemented disk caching of album thumbnails in collection tree.
+ + Use a shorter playlist name when songs are added from file view.
+ + Disabled optical drives in copy to device menu.
+ + Added better error handling for CDDA loading.
+ + Added Polish, Hungarian and Korean translations.
+ * Removed features:
+ + Chartlyrics support (Unstable API).
+ + Tidal support (No agreement).
+ + QObuz support (No agreement).
+</comment>
+    <requestid>792581</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -87,14 +87,14 @@ Features:
   - Advanced audio output and device options
   - Edit tags on music files
   - Fetch tags from MusicBrainz
-  - Album cover art from Last.fm, Musicbrainz, Discogs, Deezer and Tidal
+  - Album cover art from Last.fm, Musicbrainz, Discogs and Deezer
   - Song lyrics from AudD, lyrics.ovh and lololyrics.com
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
   - Transfer music to iPod, iPhone, MTP or mass-storage USB player
-  - Streaming support for Tidal, Qobuz and Subsonic
   - Scrobbler with support for Last.fm, Libre.fm and ListenBrainz
+  - Subsonic streaming support
 
 %prep
 %setup -q
