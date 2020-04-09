@@ -500,4 +500,14 @@
 This should fix the current openQA failure: https://openqa.opensuse.org/tests/1218639#step/transactional_update/9</comment>
     <requestid>789758</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4ba12f7e1e60de59355f4d90f2beb8aa</srcmd5>
+    <version>2.21.1</version>
+    <time>1586466844</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.21.1
+  - Rework error messages on failing umount [boo#1168389]
+</comment>
+    <requestid>791674</requestid>
+  </revision>
 </revisionlist>
