@@ -17,15 +17,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%global         modname pywbem
 Name:           python-pywbem
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
-Source0:        https://github.com/pywbem/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
 BuildRequires:  %{python_module FormEncode}
 BuildRequires:  %{python_module M2Crypto}
 BuildRequires:  %{python_module PyYAML}
@@ -67,7 +66,7 @@ PyWBEM is a Python module for making CIM operation calls using the WBEM
 protocol to query and update managed objects.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n pywbem-%{version}
 %autopatch -p1
 
 %build

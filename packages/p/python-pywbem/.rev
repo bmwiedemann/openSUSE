@@ -124,4 +124,24 @@
   - replace-yamlordereddictloader-w-yamlloader.patch</comment>
     <requestid>791005</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>56ff0d3d5a51541770dcf1469f04b0a2</srcmd5>
+    <version>0.17.0</version>
+    <time>1586466850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  - Dev: Fixed installation of Jupyter Notebook on Python 3.4 by defining
+    the appropriate minimum versions of the ipython package,
+    per Python version. (See issue #2135)
+  - Changed the HTTPS support of pywbem.WBEMListener from using
+    the deprecated ssl.wrap_socket() function to using the
+    ssl.SSLContext class that was introduced in Python 2.7.9.
+    This causes more secure SSL settings to be used.
+    (See issue #2002)
+  - Renamed all sub-modules within the pywbem namespace so they are
+    now private (i.e. with a leading underscore).
+    This has been done for consistency with the upcoming 1.0.0
+    version of pywbem (See issue #1925)</comment>
+    <requestid>791759</requestid>
+  </revision>
 </revisionlist>
