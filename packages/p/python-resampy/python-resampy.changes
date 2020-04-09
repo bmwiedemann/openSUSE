@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 01:01:09 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Temporarily add skip_python2 to allow other packages to build.
+
+-------------------------------------------------------------------
 Sat Aug 31 22:23:49 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - specfile:
