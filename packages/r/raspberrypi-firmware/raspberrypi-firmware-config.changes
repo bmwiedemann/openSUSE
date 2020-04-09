@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 15:40:48 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add cma-default option to vc4-kms-v3d overlay to mimic the previous default
+  behaviour, which used the kernel's default size. For now we still set the CMA
+  trough the kernel command line, that will change in the future. (bsc#1167761)
+
+-------------------------------------------------------------------
 Mon Apr  6 10:38:07 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Get rid of rpi4-thermal overlay, not needed anymore
