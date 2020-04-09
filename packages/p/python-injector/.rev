@@ -33,4 +33,17 @@
 - Depend on full python interpreter for sqlite module</comment>
     <requestid>755754</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4b9b6615d6ad25cf68c0776d1dba184</srcmd5>
+    <version>0.18.3</version>
+    <time>1586466923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3:
+  * Fixed Python 3.5.3 compatibility
+  * Added remaining type hints to the codebase so that the client code can
+    have better static typing safety
+  * Fixed UnsatisfiedRequirement string representation (this time for real)
+  * Added forward return type reference support to provider methods</comment>
+    <requestid>792593</requestid>
+  </revision>
 </revisionlist>
