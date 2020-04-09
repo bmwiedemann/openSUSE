@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 9
+%define _sonum 10
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -25,7 +25,7 @@
 %endif
 %endif
 Name:           llvm
-Version:        9.0.1
+Version:        10.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -36,7 +36,6 @@ Source0:        README.packaging
 Source101:      baselibs.conf
 # Avoid multiple providers error
 BuildRequires:  clang%{_sonum} = %{version}
-BuildRequires:  clang%{_sonum}-checker = %{version}
 BuildRequires:  clang%{_sonum}-devel = %{version}
 BuildRequires:  llvm%{_sonum} = %{version}
 BuildRequires:  llvm%{_sonum}-LTO-devel = %{version}
