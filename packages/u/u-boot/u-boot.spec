@@ -132,7 +132,7 @@
 %if  "%target" == "dragonboard410c" || "%target" == "dragonboard820c"
 %define is_armv8 1
 %endif
-%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
+%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "odroid-n2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
 %define is_armv8 1
 %endif
 %if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpgeneric" || "%target" == "xilinxzynqmpzcu102rev10"
@@ -313,12 +313,12 @@ Obsoletes:      Sinovoip_BPI_M2_Plus
 Provides:       Sinovoip_BPI_M2_Plus
 %endif
 %if "%{name}" == "u-boot-rpiarm64"
+Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
 # Provides one u-boot image for both RPi3 and RPi4
 Obsoletes:      u-boot-rpi3 < %{version}
 Provides:       u-boot-rpi3 = %{version}
 Obsoletes:      u-boot-rpi4 < %{version}
 Provides:       u-boot-rpi4 = %{version}
-Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
 %endif
 
 %description
