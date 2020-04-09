@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  8 13:52:17 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.8 implemented AgsLv2TurtleScanner quick scan.
+- updated API Reference Manual.
+- minor improvements.
+
+-------------------------------------------------------------------
+Tue Mar 31 12:58:55 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.4 reverted dependency to GLib version 2.56.0
+- implemented additional getter/setter functions of properties.
+- refactored some objects to use properties for setter functions.
+- disabled GMainLoop integration of AgsTaskLauncher in
+  AgsAudioApplicationContext.
+
+-------------------------------------------------------------------
 Fri Mar 13 17:09:44 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.2.0 disabled GMainLoop integration of
