@@ -23,7 +23,7 @@ Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
-URL:            https://cgit.sukimashita.com/usbmuxd.git
+URL:            https://github.com/libimobiledevice/usbmuxd
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  autoconf
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(libplist) >= 1.11
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-Requires:       libusbmuxd4 >= 1.0.10
 Requires(pre):  group(nogroup)
 Requires(pre):  shadow
 %{?systemd_requires}

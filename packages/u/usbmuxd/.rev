@@ -259,4 +259,13 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
   * device: Plug memory leak in error condition when TH_SYN sending fails</comment>
     <requestid>791480</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>97d1afe88846e1703c997576bbb5eec5</srcmd5>
+    <version>1.1.0+git.20200121</version>
+    <time>1586466931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Do not manually require libusmuxd (boo#1169012)</comment>
+    <requestid>792594</requestid>
+  </revision>
 </revisionlist>
