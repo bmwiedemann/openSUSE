@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 12:16:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- let the updated scikit-build do the f2py detection 
+
+-------------------------------------------------------------------
+Tue Apr  7 11:10:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update the f2py detection. The numpy package removed /usr/bin/f2py3
+
+-------------------------------------------------------------------
 Wed Dec  4 11:15:25 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - mirror blas/lapack/openblas requirements from numpy-devel depending

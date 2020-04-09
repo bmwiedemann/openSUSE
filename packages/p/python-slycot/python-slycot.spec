@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,7 @@ sed -i 's/LAPACK REQUIRED/LAPACK REQUIRED MODULE/' CMakeLists.txt
 
 %build
 export CFLAGS="%{optflags}"
-%{python_expand # make sure the correct f2py flavor is executed
-%{$python_build} --generator "Unix Makefiles" -- -DF2PY_EXECUTABLE=/usr/bin/f2py%{$python_bin_suffix}
-}
+%python_build --generator "Unix Makefiles"
 
 %install
 %python_expand %{$python_install} --install-lib %{$python_sitearch} --generator "Unix Makefiles"
