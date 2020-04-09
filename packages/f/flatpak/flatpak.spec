@@ -32,7 +32,7 @@
 
 %define libname libflatpak0
 Name:           flatpak
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -42,7 +42,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        system-user-flatpak.conf
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
-BuildRequires:  bubblewrap >= 0.4.0
+BuildRequires:  bubblewrap >= 0.4.1
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
@@ -73,7 +73,7 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xau)
 Requires:       %{libname} = %{version}
-Requires:       bubblewrap >= 0.4.0
+Requires:       bubblewrap >= 0.4.1
 Requires:       ostree >= 2018.9
 Requires:       xdg-dbus-proxy >= 0.1.0
 Requires:       xdg-desktop-portal >= 0.10
