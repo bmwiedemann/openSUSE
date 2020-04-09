@@ -1,7 +1,7 @@
 #
 # spec file for package fstrm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define c_lib   libfstrm0
 Name:           fstrm
-Version:        0.3.2
+Version:        0.6.0
 Release:        0
 Summary:        Frame Streams implementation in C
-License:        Apache-2.0
+License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/farsightsec/fstrm
+URL:            https://github.com/farsightsec/fstrm
 Source:         https://dl.farsightsecurity.com/dist/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  libevent-devel >= 2
 BuildRequires:  pkgconfig
@@ -81,11 +81,17 @@ rm %{buildroot}%{_libdir}/libfstrm.la
 %postun -n %{c_lib} -p /sbin/ldconfig
 
 %files
-%doc ChangeLog README* COPYRIGHT LICENSE
+%doc ChangeLog README*
+%license COPYRIGHT LICENSE
 %{_bindir}/fstrm_capture
 %{_bindir}/fstrm_dump
+%{_bindir}/fstrm_replay
+%{_mandir}/man1/fstrm_capture.1*
+%{_mandir}/man1/fstrm_dump.1*
+%{_mandir}/man1/fstrm_replay.1*
 
 %files -n %{c_lib}
+%license COPYRIGHT LICENSE
 %{_libdir}/libfstrm.so.*
 
 %files devel

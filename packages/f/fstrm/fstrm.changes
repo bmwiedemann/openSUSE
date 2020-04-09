@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Apr  5 21:11:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.6.0 
+  It adds a new feature for fstrm_capture. It can perform output
+  file rotation when a SIGUSR1 signal is received by fstrm_capture.
+  (See the --gmtime or --localtime options.) This allows
+  fstrm_capture's output file to be rotated by logrotate or a
+  similar external utility. (Output rotation is suppressed if
+  fstrm_capture is writing to stdout.)
+- Changes from 0.5.0
+  - Change license to modern MIT license for compatibility with
+    GPLv2 software. Contact software@farsightsecurity.com for
+    alternate licensing.
+  - src/fstrm_replay.c: For OpenBSD and Posix portability include
+    netinet/in.h and sys/socket.h to get struct sockaddr_in and the
+    AF_* defines respectively.
+  - Fix various compiler warnings.
+- Changes from 0.4.0
+  The C implementation of the Frame Streams data transport
+  protocol, fstrm version 0.4.0, was released. It adds TCP support,
+  a new tool, new documentation, and several improvements.
+  - Added manual pages for fstrm_capture and fstrm_dump.
+  - Added new tool, fstrm_replay, for replaying saved Frame Streams
+    data to a socket connection.
+  - Adds TCP support. Add tcp_writer to the core library which
+    implements a bi-directional Frame Streams writer as a TCP
+    socket client. Introduces new developer API:
+    fstrm_tcp_writer_init, fstrm_tcp_writer_options_init,
+    fstrm_tcp_writer_options_destroy,
+    fstrm_tcp_writer_options_set_socket_address, and
+    fstrm_tcp_writer_options_set_socket_port.
+  - fstrm_capture: new options for reading from TCP socket.
+  - fstrm_capture: add "-c" / "--connections" option to limit the
+    number of concurrent connections it will accept.
+  - fstrm_capture: add "-b / --buffer-size" option to set the read
+    buffer size (effectively the maximum frame size) to a value
+    other than the default 256 KiB.
+  - fstrm_capture: skip oversize messages to fix stalled
+    connections caused by messages larger than the read highwater
+    mark of the input buffer. Discarded messages are logged for the
+    purposes of tuning the input buffer size.
+  - fstrm_capture: complete sending of FINISH frame before closing
+    connection.
+  - Various test additions and improvements.
+
+-------------------------------------------------------------------
 Tue Jan  2 15:59:59 UTC 2018 - jengelh@inai.de
 
 - Compact description. Fix RPM groups.
