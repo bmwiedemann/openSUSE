@@ -1,7 +1,7 @@
 #
 # spec file for package liblnk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 Name:           liblnk
 %define lname	liblnk1
-%define timestamp 	20181227
+%define timestamp 	20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/liblnk/wiki
+URL:            https://github.com/libyal/liblnk/wiki
 Source:         https://github.com/libyal/liblnk/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_Shortcut_File_LNK_format.pdf
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio) >= 20130721
 BuildRequires:  pkgconfig(libcdata) >= 20130904
 BuildRequires:  pkgconfig(libcerror) >= 20140105
@@ -76,23 +75,34 @@ liblnk is a library to access Windows Shortcut File (LNK) files.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python-%name
+%package -n python2-%name
 Summary:        Python bindings for liblnk, a Windows Shortcut Link parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %lname = %version
-Requires:       python
-Provides:       pylnk = %version
+BuildRequires:  pkgconfig(python2)
+Obsoletes:      pylnk <= 20191221
+Obsoletes:      python-%name <= 20191221
 
-%description -n python-%name
-Python binding for liblnk, which can read Windows Shortcut Link files.
+%description -n python2-%name
+Python2 binding for liblnk, which can read Windows Shortcut Link files.
+
+%package -n python3-%name
+Summary:        Python bindings for liblnk, a Windows Shortcut Link parser
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+Requires:       %lname = %version
+BuildRequires:  pkgconfig(python3)
+
+%description -n python3-%name
+Python3 binding for liblnk, which can read Windows Shortcut Link files.
 
 %prep
 %setup -qn liblnk-%timestamp
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -122,10 +132,16 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/liblnk.pc
 %_mandir/man3/liblnk.3*
 
-%files -n python-%name
+%files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING 
-%python_sitearch/pylnk.so
+%python2_sitearch/pylnk.so
+
+%files -n python3-%name
+%defattr(-,root,root)
+%doc AUTHORS README
+%license COPYING 
+%python3_sitearch/pylnk.so
 
 %changelog

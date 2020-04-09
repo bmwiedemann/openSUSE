@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 20:16:59 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191221
+        * Worked on Python wheel support
+        * Correction for reading location information device name #38
+        * Changes for show_window and hot_key API functions
+- rename python-liblnk to python2-liblnk
+- add python3-liblnk submodule
+
+-------------------------------------------------------------------
 Thu Mar 28 23:36:52 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181227
