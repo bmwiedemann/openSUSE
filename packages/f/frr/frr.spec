@@ -57,6 +57,7 @@ BuildRequires:  protobuf-c
 BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcares)
@@ -66,6 +67,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libyang) >= 1.0.101
 BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(rtrlib) >= 0.5.0
+BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
@@ -74,6 +76,7 @@ Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
 Obsoletes:      zebra < %{version}
+Requires:       libyang-extentions
 
 %description
 FRR is free software which manages TCP/IP based routing protocols.
@@ -96,6 +99,13 @@ Group:          System/Libraries
 
 %description -n libfrr_pb0
 This library contains protobuf memory management for FRRouting..
+
+%package -n libfrrgrpc_pb0
+Summary:        FRRouting grpc protobuf library
+Group:          System/Libraries
+
+%description -n libfrrgrpc_pb0
+This library contains grpc protobuf definitions for FRRouting.
 
 %package -n libfrrospfapiclient0
 Summary:        API for FRRouting's OSPFv2 implementation
@@ -148,6 +158,7 @@ Requires:       libfrr0 = %{version}
 Requires:       libfrr_pb0 = %{version}
 Requires:       libfrrcares0 = %{version}
 Requires:       libfrrfpm_pb0 = %{version}
+Requires:       libfrrgrpc_pb0 = %{version}
 Requires:       libfrrospfapiclient0 = %{version}
 Requires:       libfrrsnmp0 = %{version}
 Requires:       libfrrzmq0 = %{version}
@@ -166,6 +177,7 @@ export CFLAGS="-ffat-lto-objects"
 
 autoreconf -fiv
 %configure \
+    --disable-silent-rules \
     --enable-exampledir=%{_docdir}/%{name}/examples \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --localstatedir=%{frr_statedir} \
@@ -216,12 +228,18 @@ autoreconf -fiv
     --enable-vtysh \
     --enable-watchfrr \
     --enable-zebra \
+    --enable-realms \
+    --enable-shell-access \
+    --with-crypto=openssl \
+    --enable-config-rollbacks \
+    --enable-grpc \
     --enable-systemd
 
 make %{?_smp_mflags} MAKEINFO="makeinfo --no-split"
 
 %install
 make DESTDIR=%{buildroot} INSTALL="install -p" CP="cp -p" install
+perl -p -i -e 's|#!/usr/bin/python|#!/usr/bin/python3|g' %{buildroot}/usr/lib/frr/{frr-reload.py,generate_support_bundle.py}
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -286,15 +304,10 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %service_del_postun %{name}.service
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/frr.info%{ext_info}
 
-# delete the user and groups created if it's an uninstall
-if [ "$1" = "0" ]; then
-  userdel -r frr
-  groupdel frr
-  groupdel frrvty
-fi
-
 %post   -n libfrr_pb0 -p /sbin/ldconfig
 %postun -n libfrr_pb0 -p /sbin/ldconfig
+%post   -n libfrrgrpc_pb0 -p /sbin/ldconfig
+%postun -n libfrrgrpc_pb0 -p /sbin/ldconfig
 %post   -n libfrrfpm_pb0 -p /sbin/ldconfig
 %postun -n libfrrfpm_pb0 -p /sbin/ldconfig
 
@@ -371,6 +384,7 @@ fi
 %{_libdir}/frr/modules/zebra_fpm.so
 %{_libdir}/frr/modules/zebra_irdp.so
 %{_libdir}/frr/modules/bgpd_rpki.so
+%{_libdir}/frr/modules/grpc.so
 %{_prefix}/lib/frr/vrrpd
 %{_prefix}/lib/frr/generate_support_bundle.py
 %{_libdir}/frr/modules/bgpd_bmp.so
@@ -380,6 +394,9 @@ fi
 
 %files -n libfrrfpm_pb0
 %{_libdir}/libfrrfpm_pb.so.0*
+
+%files -n libfrrgrpc_pb0
+%{_libdir}/libfrrgrpc_pb.so.0*
 
 %files -n libfrrospfapiclient0
 %{_libdir}/libfrrospfapiclient.so.0*

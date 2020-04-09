@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  7 21:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable verbose make rules 
+- enable grpc support. new subpackage libfrrgrpc_pb0, new BR:
+  pkgconfig(grpc)
+- enable config rollbacks. new BR: pkgconfig(sqlite3)
+- enable realms support
+- enable shell access
+- make sure we use system openssl
+- fix shebang line of the frr-reload.py and
+  generate_support_bundle.py script so we dont pull python2
+- do not delete users and groups.
+- add Requires for libyang-extentions
+
+-------------------------------------------------------------------
 Sat Feb 15 21:27:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.3
