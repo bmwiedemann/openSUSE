@@ -89,4 +89,14 @@
 </comment>
     <requestid>790885</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cbb768f062d18667e8ae8cfa09f7c629</srcmd5>
+    <version>1.5.0~git20200408</version>
+    <time>1586467105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0~git20200408:
+  * onepad: Update to latest controller database.
+</comment>
+    <requestid>792785</requestid>
+  </revision>
 </revisionlist>
