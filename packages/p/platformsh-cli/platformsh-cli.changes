@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr 08 19:12:05 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.53.1:
+  * Release v3.53.1
+  * Allow #admins and #viewers as recipients in the health.email integration (#914)
+  * Check for Gnome session before using credential helper on Linux
+  * Tidying minor inspection issues (unused imports etc)
+  * Fix bug in integration:delete command: "Call to a member function getGitUrl() on null"
+  * Fix obvious off-by-one error in README, and move command list down
+  * Release v3.53.0
+  * Clear up README: recommend the auth:api-token-login command, and remove password login suggestions
+  * Clear up interaction with the session ID
+  * Ensure logout when saving the new token
+  * Add application.writable_user_dir config
+  * Add API token login command
+  * Add integration:activity commands (#881)
+  * Supply SSH options to mount:upload and mount:download commands (#912)
+  * xdebug: change "key" to "idekey" (#911)
+  * Ignore keychain not found errors during erase()
+  * Prefer .zshrc rather than .zprofile for installation (#909)
+  * Add application.slug as a required configuration value, and use it as the credentials identifier
+  * Use Docker credential helpers to store secrets
+  * Show the command output for failed processes to help debugging
+
+-------------------------------------------------------------------
 Wed Feb 26 18:11:40 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.52.3:
