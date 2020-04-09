@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr  6 14:31:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require bubblewrap 0.4.1
+
+-------------------------------------------------------------------
+Mon Apr  6 09:32:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.3:
+  + The main change in this version is a fix for a regression in
+    the progress calculation for applications using extra-data.
+    Additionally the bundled version of bubblewrap is updated to
+    0.4.1 which fixes a security issue in some cases. See
+    GHSA-j2qp-rvxj-43vj for details.
+  + Don't break if users primary gid is not in the nsswitch
+    database
+  + Fix crash in flatpak repair if no remotes are configured
+  + Some updates to the oci authenticator
+  + Retry downloads of extra data
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 16 17:22:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete _servicedata file.
@@ -7,17 +28,20 @@ Sun Feb 16 17:22:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 Thu Feb 13 15:57:51 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.6.2:
-  + Due to a combination of some behaviour in flatpak and recent versions of
-    ostree we at some point lost the use of deltas for the initial install
-    case, instead always falling back to a full ostree operation which is
-    a lot less efficient for pulls with many small files like a runtime. This
-    caused some very slow installs from e.g. flathub, so it's recommended to
-    update to this version to get better install performance.
-  + We now correctly handle TMPDIR env var overrides when bwrap is setuid
-  + Disallow running "flatpak run" under sudo (as it doesn't work and causes issues)
+  + Due to a combination of some behaviour in flatpak and recent
+    versions of ostree we at some point lost the use of deltas for
+    the initial install case, instead always falling back to a full
+    ostree operation which is a lot less efficient for pulls with
+    many small files like a runtime. This caused some very slow
+    installs from e.g. flathub, so it's recommended to update to
+    this version to get better install performance.
+  + We now correctly handle TMPDIR env var overrides when bwrap is
+    setuid
+  + Disallow running "flatpak run" under sudo (as it doesn't work
+    and causes issues)
   + Fix build with older versions of glib
   + Minor documentation updates
-  + Updated translations
+  + Updated translations.
 
 -------------------------------------------------------------------
 Thu Jan 30 16:56:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
