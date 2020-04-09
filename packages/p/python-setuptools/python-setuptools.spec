@@ -31,11 +31,9 @@ Name:           python-setuptools%{psuffix}
 Version:        44.0.0
 Release:        0
 Summary:        Enhancements to distutils for building and distributing Python packages
-License:        Python-2.0 OR ZPL-2.0
+License:        MIT
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.zip
-Source1:        psfl.txt
-Source2:        zpl.txt
 Source3:        testdata.tar.gz
 Patch0:         sort-for-reproducibility.patch
 Patch1:         importlib.patch
@@ -148,6 +146,7 @@ export LANG=en_US.UTF-8
 %python_uninstall_alternative easy_install
 
 %files %{python_files}
+%license LICENSE
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/easy_install
 %{python_sitelib}/setuptools
