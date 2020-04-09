@@ -16,9 +16,9 @@
 #
 
 
-%define so_version 26
+%define so_version 28
 Name:           qpdf
-Version:        9.1.1
+Version:        10.0.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 QPDF is a program that does structural, content-preserving
@@ -78,7 +78,8 @@ package.
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure --disable-static \
-           --enable-crypto-gnutls \
+           --enable-crypto-openssl \
+           --disable-implicit-crypto \
            --docdir='${datarootdir}'/doc/packages/%{name} \
            --enable-show-failed-test-output
 make %{?_smp_mflags}

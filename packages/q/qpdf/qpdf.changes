@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  6 18:18:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 10.0.0 
+  * Several internal optimizations
+  * OpenSSL support as alternative crypto provider
+  * Bug fixes
+  * See http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.release-notes
+    for the complete changelog.
+- Add BR on pkgconfig(openssl) to add support for OpenSSL crypto
+  provider and enable with --enable-crypto-openssl.
+- Drop BR on pkgconfig(gnutls) now that we have OpenSSL support.
+- Pass --disable-implicit-crypto to configure to make sure weak
+  crypto code is disabled.
+
+-------------------------------------------------------------------
 Mon Jan 27 07:52:03 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 9.1.1
