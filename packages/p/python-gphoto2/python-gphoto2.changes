@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  9 10:22:57 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.2.2
+  * Added Camera.autodetect alternative to gp_camera_autodetect.
+  * Added some deprecation warnings. Use 'python -Wd' to see them
+    when running  software under development.
+  * Added gphoto2_version.py example program.
+
+-------------------------------------------------------------------
 Sat Mar 14 08:30:36 UTC 2020 - aloisio@gmx.com
 
 - Update to version 2.2.1
