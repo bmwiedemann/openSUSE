@@ -1,7 +1,7 @@
 #
 # spec file for package python-httplib2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Tests require network connection
 %bcond_with tests
 Name:           python-httplib2
-Version:        0.14.0
+Version:        0.17.1
 Release:        0
 Summary:        A Python HTTP client library
 License:        MIT AND Apache-2.0 AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)

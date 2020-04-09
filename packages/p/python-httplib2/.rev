@@ -354,4 +354,12 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
   * Python3: PROXY_TYPE_SOCKS5 with str user/pass raised TypeError</comment>
     <requestid>736453</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4d8329f2b2def13332496ab404f16117</srcmd5>
+    <version>0.17.1</version>
+    <time>1586466859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791798</requestid>
+  </revision>
 </revisionlist>
