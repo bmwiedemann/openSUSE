@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 09 06:12:41 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.1586380832.9a2d8a9623:
+  * Vulkan: Switch from vkCreateMacOSSurfaceMVK() to vkCreateMetalSurfaceEXT()
+  * Externals: Update MoltenVK to SDK version 1.2.131.2
+  * DolphinQt: Fix the panic alert deadlock (a.k.a. "Question" issue)
+
+-------------------------------------------------------------------
 Fri Apr 03 05:44:55 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1585813619.4ff855921e:
