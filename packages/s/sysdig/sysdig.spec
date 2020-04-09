@@ -17,15 +17,16 @@
 
 
 Name:           sysdig
-Version:        0.26.5
+Version:        0.26.6
 Release:        0
 Summary:        System-level exploration
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://www.sysdig.org/
 Source0:        https://github.com/draios/%{name}/archive/%{version}/sysdig-%{version}.tar.gz
-BuildRequires:  %{kernel_module_package_buildreqs}
 Patch0:         sysdig-32bit.patch
+Patch1:         sysdig-kernel5_6.patch
+BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -55,6 +56,7 @@ cherry on top.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
 
 %build
 export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels

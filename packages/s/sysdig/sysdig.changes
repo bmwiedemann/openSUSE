@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 06:11:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.26.6:
+  * Rewrite the probe builder (#1576)
+  * Build fixes for 5.4+ kernels (#1595)
+  * All the fixes incorporated in 0.26.5 (that didn't get artifacts released for tooling reasons)
+  * Support for s390x and ppc64le architectures
+- Fix building with kernel 5.6:
+  * sysdig-kernel5_6.patch
+
+-------------------------------------------------------------------
 Mon Feb 24 06:20:53 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - sysdig-32bit.patch: make build on 32bit

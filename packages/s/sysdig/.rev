@@ -370,4 +370,18 @@
     <comment></comment>
     <requestid>778694</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c74c20417b76d5e2aa35e387e69d852c</srcmd5>
+    <version>0.26.6</version>
+    <time>1586466994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26.6:
+  * Rewrite the probe builder (#1576)
+  * Build fixes for 5.4+ kernels (#1595)
+  * All the fixes incorporated in 0.26.5 (that didn't get artifacts released for tooling reasons)
+  * Support for s390x and ppc64le architectures
+- Fix building with kernel 5.6:
+  * sysdig-kernel5_6.patch</comment>
+    <requestid>792638</requestid>
+  </revision>
 </revisionlist>
