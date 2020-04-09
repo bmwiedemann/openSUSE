@@ -1,7 +1,7 @@
 #
 # spec file for package fcoe-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcoe-utils
-Url:            http://www.open-fcoe.org
+URL:            http://www.open-fcoe.org
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpciaccess-devel
@@ -45,6 +45,7 @@ Patch6:         0006-fipvlan-fixup-return-value-on-error.patch
 Patch8:         0008-Use-correct-socket-for-fcoemon.socket.patch
 Patch9:         0009-disable-Werror-building.patch
 Patch12:        0012-fcoemon-Retry-fcm_link_getlink-on-EBUSY.patch
+Patch15:        %{name}-stop-using-ifconfig.patch
 
 # Patches from Fedora
 Patch101:       fcoe-utils-1.0.29-make.patch
@@ -64,6 +65,7 @@ connections.
 %patch8 -p1
 %patch9 -p1
 %patch12 -p1
+%patch15 -p1
 %patch101 -p1
 
 %build
