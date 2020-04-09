@@ -274,6 +274,7 @@ unsorted:
   - abseil-cpp-source: [x86_64] 
   - abxtest 
   - acars-examples 
+  - acars2-examples 
   - acarsdec 
   - accerciser-plugin-IPython 
   - accounts-qml-module-doc 
@@ -1020,6 +1021,7 @@ unsorted:
   - barbie_seahorse_adventures 
   - barcode 
   - barcode-devel 
+  - barrier 
   - base64coder 
   - base64coder-javadoc 
   - bash-completion-devel 
@@ -13107,17 +13109,27 @@ unsorted:
   - lua-rrdtool 
   - lua51 
   - lua51-BitOp 
+  - lua51-alt-getopt 
+  - lua51-argparse 
   - lua51-bit32 
+  - lua51-busted 
+  - lua51-cliargs 
   - lua51-compat-5.3 
+  - lua51-copas 
+  - lua51-coxpcall 
   - lua51-devel 
+  - lua51-dkjson 
   - lua51-doc 
   - lua51-ldbus 
   - lua51-ldoc 
   - lua51-lgi 
   - lua51-lgi-doc 
+  - lua51-loadkit 
   - lua51-lpeg 
   - lua51-lpeg-doc 
   - lua51-lua-dbus 
+  - lua51-lua-ev 
+  - lua51-lua-ev-devel 
   - lua51-lua-mpris 
   - lua51-luadbi 
   - lua51-luaevent 
@@ -13129,25 +13141,41 @@ unsorted:
   - lua51-luasocket 
   - lua51-luasocket-devel 
   - lua51-luasql 
+  - lua51-luassert 
   - lua51-luasystem 
   - lua51-luaterm 
   - lua51-luv 
   - lua51-luv-devel 
   - lua51-markdown 
+  - lua51-mediator_lua 
   - lua51-messagepack 
+  - lua51-moonscript 
   - lua51-mpack 
+  - lua51-penlight 
+  - lua51-penlight-doc 
   - lua51-say 
   - lua51-zlib 
+  - lua53-alt-getopt 
+  - lua53-argparse 
+  - lua53-busted: [x86_64] 
+  - lua53-cliargs 
   - lua53-compat-5.3 
+  - lua53-copas 
+  - lua53-coxpcall 
   - lua53-devel 
+  - lua53-dkjson 
   - lua53-doc 
+  - lua53-editorconfig-core-lua 
   - lua53-ldbus 
   - lua53-ldoc 
   - lua53-lgi 
   - lua53-lgi-doc 
+  - lua53-loadkit 
   - lua53-lpeg 
   - lua53-lpeg-doc 
   - lua53-lua-dbus 
+  - lua53-lua-ev: [x86_64] 
+  - lua53-lua-ev-devel: [x86_64] 
   - lua53-lua-mpris 
   - lua53-luadbi 
   - lua53-luaevent 
@@ -13158,13 +13186,18 @@ unsorted:
   - lua53-luasec 
   - lua53-luasocket-devel 
   - lua53-luasql 
+  - lua53-luassert 
   - lua53-luasystem 
   - lua53-luaterm 
   - lua53-luv 
   - lua53-luv-devel 
   - lua53-markdown 
+  - lua53-mediator_lua 
   - lua53-messagepack 
+  - lua53-moonscript 
   - lua53-mpack 
+  - lua53-penlight 
+  - lua53-penlight-doc 
   - lua53-say 
   - lua53-zlib 
   - luabind-devel 
@@ -18083,7 +18116,6 @@ unsorted:
   - python-dephell-rpm-macros 
   - python-designateclient-doc 
   - python-devel 
-  - python-dfVFS 
   - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
@@ -19168,7 +19200,6 @@ unsorted:
   - python2-gprof2dot 
   - python2-gps3 
   - python2-gpsd 
-  - python2-gpxpy 
   - python2-grab 
   - python2-graphviz 
   - python2-greenlet 
@@ -19187,7 +19218,7 @@ unsorted:
   - python2-h11 
   - python2-h2 
   - python2-h5py 
-  - python2-hankel 
+  - python2-hankel: [i586] 
   - python2-hanzidentifier 
   - python2-happybase 
   - python2-hawkauthlib 
@@ -21231,6 +21262,7 @@ unsorted:
   - python3-devpi-client 
   - python3-devpi-common 
   - python3-devpi-server 
+  - python3-dfVFS 
   - python3-dfdatetime 
   - python3-dfwinreg 
   - python3-dialite 

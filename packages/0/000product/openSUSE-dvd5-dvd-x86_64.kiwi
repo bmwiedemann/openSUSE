@@ -4498,6 +4498,8 @@
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-build"/>
+      <repopackage name="rpm-build-perl"/>
+      <repopackage name="rpm-build-python"/>
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rpm-devel"/>
       <repopackage name="rsibreak"/>
