@@ -1067,4 +1067,41 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Fixed tests for glibc-2.31. (forwarded request 770679 from AndreasSchwab)</comment>
     <requestid>770680</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>fd1195fdca8886c65b0a4cf914af5ea0</srcmd5>
+    <version>5.6</version>
+    <time>1586466871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.6
+  * Changes in behaviour
+    * Messages about unknown tracees are now subject to the strace's quietness
+      setting (-q/--quiet).
+    * If -A option is provided without -o, or -S option without -c/-C, a warning
+      about its uselessness is printed now.
+    * The usage of --seccomp-bpf without -f has no effect now.
+  * Improvements
+    * Every short option now has a long option alias, which also has enabled
+      the following improvements:
+      * Ability to use human-readable settings for -I/--interruptible,
+	-D/--daemonize options.
+      * Ability to silence specific messages using -e quiet/--quiet qualifier
+	(an alias for the -q option), including those that couldn't be silenced
+	previously (path resolution messages and &quot;superseded by execve&quot;).
+      * Ability to specify selected fd decoding features using
+	-e decode-fds/--decode-fds qualifier (an alias for the -y option).
+      * Ability to set precision for the absolute timestamp, relative timestamp,
+	and syscall time output (using --absolute-timestamps,
+	--relative-timestamps, and --syscall-times options, respectively).
+    * Implemented ability to select the set of displayed columns in the call
+      summary output (-U/--summary-columns option).
+    * Implemented ability to sort on any summary column.
+    * Implemented ability to show information about minimum and maximum call
+      duration in the call summary output (addresses Debian bug #240945).
+    * Implemented printing of PIDs associated with pidfds in -yy mode.
+    * Implemented PTRACE_GETREGS API support on hppa, sh, sh64, and xtensa.
+    * Improved performance of libdw-based stack traces printing by implementing
+      a symbol-to-address cache.
+    * Implemented decoding of openat2 and pidfd_getfd syscalls. (forwarded request 791997 from Andreas_Schwab)</comment>
+    <requestid>791998</requestid>
+  </revision>
 </revisionlist>
