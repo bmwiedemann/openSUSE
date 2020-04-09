@@ -265,4 +265,12 @@
   - Reduce Hypothesis iterations to speed up testing, allowing PRs to pass</comment>
     <requestid>785585</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4f9926599bba8c7a0fa39eecb3012437</srcmd5>
+    <version>4.0.5</version>
+    <time>1586467084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792729</requestid>
+  </revision>
 </revisionlist>
