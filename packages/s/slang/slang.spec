@@ -1,7 +1,7 @@
 #
 # spec file for package slang
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slang
-Version:        2.3.1a
+Version:        2.3.2
 Release:        0
 Summary:        Programming Library and Embeddable Extension Language
 License:        GPL-2.0-or-later
@@ -31,14 +31,12 @@ Patch0:         slang.patch
 Patch1:         slang-autoconf.patch
 Patch2:         slang-fsuid.patch
 # PATCH-FIX-UPSTREAM
-Patch5:         git-6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1.patch
 Patch6:         overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1210
 BuildRequires:  oniguruma-devel >= 5.9.0
 %endif
@@ -93,11 +91,10 @@ develop applications that require it.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch5 -p0
 %patch6 -p1
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+# %%global _lto_cflags %%{_lto_cflags} -ffat-lto-objects
 mv autoconf/configure.ac .
 mv autoconf/aclocal.m4 autoconf/acinclude.m4
 #autoheader -I autoconf
@@ -112,10 +109,11 @@ export ELF_CFLAGS="$CFLAGS"
 #    --with-onig
 # parallel make still broken in 2.2.2
 make --jobs 1
-make  static --jobs 1
+# make  static --jobs 1
 
 %install
-make DESTDIR=%{buildroot} install install-static 
+make DESTDIR=%{buildroot} install
+# install-static 
 
 rm -rf %{buildroot}%{_datadir}/doc/
 
@@ -133,7 +131,6 @@ make check
 %postun -n libslang2 -p /sbin/ldconfig
 
 %files slsh
-%defattr(-,root,root)
 %doc COPYING slsh/README
 %doc slsh/doc/html/
 %config(noreplace) %{_sysconfdir}/slsh.rc
@@ -143,16 +140,15 @@ make check
 %{_mandir}/man1/slsh.1*
 
 %files -n libslang2
-%defattr(-,root,root)
 %{_libdir}/libslang.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc changes.txt COPYING NEWS README UPGRADE.txt demo/ examples/
+%doc changes.txt NEWS README UPGRADE.txt demo/ examples/
 %doc doc/grammar.txt doc/text/
+%license COPYING
 %{_includedir}/*
 %{_libdir}/pkgconfig/slang.pc
-%{_libdir}/libslang.a
+# %%{_libdir}/libslang.a
 %{_libdir}/libslang.so
 
 %changelog

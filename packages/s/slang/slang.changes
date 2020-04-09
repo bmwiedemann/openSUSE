@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  6 12:17:00 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- slang 2.3.2:
+ * It is now possible to use reserved words as struct
+   field names without quoting them.  For example, it is now possible
+   to write
+              s = struct { public = value };
+   Previously, this required the field name to be quoted:
+              s = struct { "public" = value };
+
+- drop static library and its LTO workaround
+- git-6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1.patch: upstreamed 
+- slang-fsuid.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Aug  2 08:24:02 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

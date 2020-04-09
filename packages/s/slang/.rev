@@ -266,4 +266,21 @@
     <comment></comment>
     <requestid>720516</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d3ff09109f841d4a720f56aec1aad500</srcmd5>
+    <version>2.3.2</version>
+    <time>1586466857</time>
+    <user>dimstar_suse</user>
+    <comment>- slang 2.3.2:
+ * It is now possible to use reserved words as struct
+   field names without quoting them.  For example, it is now possible
+   to write
+              s = struct { public = value };
+   Previously, this required the field name to be quoted:
+              s = struct { &quot;public&quot; = value };
+- drop static library and its LTO workaround
+- git-6dd5ade9a97b52ace4ac033779a6d3c1c51db4d1.patch: upstreamed 
+- slang-fsuid.patch: refreshed</comment>
+    <requestid>791795</requestid>
+  </revision>
 </revisionlist>

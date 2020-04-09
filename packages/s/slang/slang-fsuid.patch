@@ -1,8 +1,8 @@
-Index: slang-2.2.4/autoconf/configure.ac
+Index: slang-2.3.2/autoconf/configure.ac
 ===================================================================
---- slang-2.2.4.orig/autoconf/configure.ac
-+++ slang-2.2.4/autoconf/configure.ac
-@@ -154,9 +154,18 @@ sys/socket.h \
+--- slang-2.3.2.orig/autoconf/configure.ac
++++ slang-2.3.2/autoconf/configure.ac
+@@ -177,9 +177,18 @@ sys/socket.h \
  netinet/in.h \
  arpa/inet.h \
  sys/un.h \
@@ -21,11 +21,11 @@ Index: slang-2.2.4/autoconf/configure.ac
  AC_TYPE_MODE_T
  AC_TYPE_PID_T
  AC_TYPE_UID_T
-Index: slang-2.2.4/src/config.hin
+Index: slang-2.3.2/src/config.hin
 ===================================================================
---- slang-2.2.4.orig/src/config.hin
-+++ slang-2.2.4/src/config.hin
-@@ -188,6 +188,8 @@
+--- slang-2.3.2.orig/src/config.hin
++++ slang-2.3.2/src/config.hin
+@@ -201,6 +201,8 @@
  #undef HAVE_SYS_UN_H
  #undef socklen_t
  
@@ -34,10 +34,10 @@ Index: slang-2.2.4/src/config.hin
  #undef HAVE_CONFSTR
  #undef HAVE_SYSCONF
  #undef HAVE_PATHCONF
-Index: slang-2.2.4/src/slinclud.h
+Index: slang-2.3.2/src/slinclud.h
 ===================================================================
---- slang-2.2.4.orig/src/slinclud.h
-+++ slang-2.2.4/src/slinclud.h
+--- slang-2.3.2.orig/src/slinclud.h
++++ slang-2.3.2/src/slinclud.h
 @@ -30,4 +30,8 @@
  # include <memory.h>
  #endif
@@ -47,10 +47,10 @@ Index: slang-2.2.4/src/slinclud.h
 +#endif
 +
  #endif				       /* _SLANG_INCLUDE_H_ */
-Index: slang-2.2.4/src/sltermin.c
+Index: slang-2.3.2/src/sltermin.c
 ===================================================================
---- slang-2.2.4.orig/src/sltermin.c
-+++ slang-2.2.4/src/sltermin.c
+--- slang-2.3.2.orig/src/sltermin.c
++++ slang-2.3.2/src/sltermin.c
 @@ -23,6 +23,9 @@ Foundation, Inc., 59 Temple Place - Suit
  USA.
  */
@@ -61,7 +61,7 @@ Index: slang-2.2.4/src/sltermin.c
  #include "slinclud.h"
  
  #include "slang.h"
-@@ -119,7 +122,32 @@ static FILE *open_terminfo (char *file,
+@@ -142,7 +145,32 @@ static FILE *open_terminfo (char *file,
      * I will also look into the use of setreuid, seteuid and setregid, setegid.
      * FIXME: Priority=medium
      */
@@ -93,4 +93,4 @@ Index: slang-2.2.4/src/sltermin.c
 +
     if (fp == NULL) return NULL;
  
-    if ((12 == fread ((char *) buf, 1, 12, fp) && (MAGIC == make_integer (buf))))
+    if (12 != fread ((char *)buf, 1, 12, fp))
