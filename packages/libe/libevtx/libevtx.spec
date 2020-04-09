@@ -1,7 +1,7 @@
 #
 # spec file for package libevtx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libevtx
 %define lname	libevtx1
-%define timestamp	20181227
+%define timestamp	20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libevtx/wiki
+URL:            https://github.com/libyal/libevtx/wiki
 Source:         https://github.com/libyal/libevtx/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_XML_Event_Log_EVTX.pdf
 BuildRequires:  pkg-config
@@ -92,15 +92,26 @@ libevtx is a library to access the Windows XML Event log format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python-%name
+%package -n python2-%name
+Summary:        Python2 bindings for libevtx
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+Requires:       %lname = %version
+BuildRequires:  pkgconfig(python2)
+Obsoletes:      pyevtx <= 20191221
+Obsoletes:      python-%name <= 20191221
+
+%description -n python2-%name
+Python bindings for libevtx, which can read Windows XML Event files.
+
+%package -n python3-%name
 Summary:        Python bindings for libevtx
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %lname = %version
-Requires:       python
-Provides:       pyevtx = %version
+BuildRequires:  pkgconfig(python3)
 
-%description -n python-%name
+%description -n python3-%name
 Python bindings for libevtx, which can read Windows XML Event files.
 
 %prep
@@ -108,7 +119,7 @@ Python bindings for libevtx, which can read Windows XML Event files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -138,10 +149,16 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libevtx.pc
 %_mandir/man3/libevtx.3*
 
-%files -n python-%name
+%files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING 
-%python_sitearch/pyevtx.so
+%python2_sitearch/pyevtx.so
+
+%files -n python3-%name
+%defattr(-,root,root)
+%doc AUTHORS README
+%license COPYING 
+%python3_sitearch/pyevtx.so
 
 %changelog
