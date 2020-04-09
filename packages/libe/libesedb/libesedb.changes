@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 15:32:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191220
+        * code clean-up
+        * increased format support
+- rename python-libesedb to python2-libesedb
+- add python3 binding subpackage
+- Use libcerror and libcstring from factory instead of internal versions
+
+-------------------------------------------------------------------
 Thu Mar 28 16:29:35 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181229

@@ -1,7 +1,7 @@
 #
 # spec file for package libesedb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libesedb1
-%define timestamp 20181229
+%define timestamp 20191220
 Name:           libesedb
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libesedb/wiki
+URL:            https://github.com/libyal/libesedb/wiki
 Source:         https://github.com/libyal/libesedb/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
 Source2:        Exchange.pdf
 Source3:        Extensible_Storage_Engine_ESE_Database_File_EDB_format.pdf
@@ -36,12 +36,14 @@ BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio) >= 20130721
 BuildRequires:  pkgconfig(libcdata) >= 20140105
 BuildRequires:  pkgconfig(libcerror) >= 20140105
+BuildRequires:  pkgconfig(libcerror) >= 20181117
 BuildRequires:  pkgconfig(libcfile) >= 20130609
 BuildRequires:  pkgconfig(libclocale) >= 20130609
 BuildRequires:  pkgconfig(libcnotify) >= 20120425
 BuildRequires:  pkgconfig(libcpath) >= 20130609
 BuildRequires:  pkgconfig(libcsplit) >= 20130609
 BuildRequires:  pkgconfig(libcstring) >= 20120425
+BuildRequires:  pkgconfig(libcstring) >= 20150101
 BuildRequires:  pkgconfig(libcsystem) >= 20120425
 BuildRequires:  pkgconfig(libcthreads) >= 20130723
 BuildRequires:  pkgconfig(libfcache) >= 20120405
@@ -52,11 +54,7 @@ BuildRequires:  pkgconfig(libfmapi)
 BuildRequires:  pkgconfig(libfvalue)
 BuildRequires:  pkgconfig(libfwnt)
 BuildRequires:  pkgconfig(libmapidb)
-BuildRequires:  pkgconfig(libuna) >= 20120425
-
-#Use internal package.  OBS version causes build failure.  Tested Feb 7, 2016
-#BuildRequires:  pkgconfig(libcerror) >= 20140105
-#BuildRequires:  pkgconfig(libcstring) >= 20120425
+BuildRequires:  pkgconfig(libuna) >= 20190102
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -93,19 +91,36 @@ applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libesedb.
 
-%package -n python-%{name}
+%package -n python2-%{name}
 Summary:        Python bindings for libesedb, a EDB file format parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %{lname} = %{version}
 Requires:       python
-Provides:       pyesedb
+BuildRequires:  pkgconfig(python2)
+Obsoletes:      pyesedb <= 20191220
+Obsoletes:      python-%{name} <= 20191220
 
-%description -n python-%{name}
+%description -n python2-%{name}
 libesedb is a library to access EDB files.  ESEDB is used in many different
 applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
 
-Python bindings for libesedb, which can read EDB files.  ESEDB is used in many
+Python2 bindings for libesedb, which can read EDB files.  ESEDB is used in many
+different applications like Windows Search, Windows Mail, Exchange, Active
+Directory, etc.
+
+%package -n python3-%{name}
+Summary:        Python bindings for libesedb, a EDB file format parser
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+Requires:       %{lname} = %{version}
+BuildRequires:  pkgconfig(python3)
+
+%description -n python3-%{name}
+libesedb is a library to access EDB files.  ESEDB is used in many different
+applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+
+Python3 bindings for libesedb, which can read EDB files.  ESEDB is used in many
 different applications like Windows Search, Windows Mail, Exchange, Active
 Directory, etc.
 
@@ -118,7 +133,7 @@ cp "%{SOURCE5}" .
 cp "%{SOURCE6}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -157,10 +172,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libesedb.pc
 %{_mandir}/man3/libesedb.3*
 
-%files -n python-%{name}
+%files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
 %license COPYING 
-%{python_sitearch}/pyesedb.so
+%{python2_sitearch}/pyesedb.so
+
+%files -n python3-%{name}
+%defattr(-,root,root)
+%doc AUTHORS README ChangeLog
+%license COPYING 
+%{python3_sitearch}/pyesedb.so
 
 %changelog
