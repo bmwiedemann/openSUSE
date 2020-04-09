@@ -18,13 +18,13 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.2
+%define devrelease 5.3
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -249,7 +249,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc AUTHORS NEWS README TODO
 %dir %{_datadir}/%{_name}/
-%{_datadir}/%{_name}/ca-bundle.crt
 %{_datadir}/%{_name}/dialogs/
 %dir %{_libdir}/%{_name}
 %dir %{_libdir}/%{_name}/plugins
