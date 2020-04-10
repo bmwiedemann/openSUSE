@@ -1676,14 +1676,18 @@ unsorted:
   - clamz 
   - clang 
   - clang-devel 
+  - clang10-devel 
+  - clang10-devel-32bit: [x86_64] 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
   - clang8 
   - clang8-devel 
   - clang8-devel-32bit: [x86_64] 
+  - clang9 
   - clang9-devel 
   - clang9-devel-32bit: [x86_64] 
+  - clang9-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -1760,7 +1764,6 @@ unsorted:
   - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
-  - cobbler-tests 
   - cobbler-web 
   - coccigrep 
   - coccinelle 
@@ -2970,8 +2973,6 @@ unsorted:
   - felix-gogo-runtime-javadoc 
   - felix-gogo-shell 
   - felix-gogo-shell-javadoc 
-  - felix-osgi-compendium 
-  - felix-osgi-compendium-javadoc 
   - felix-osgi-core 
   - felix-osgi-core-javadoc 
   - felix-osgi-foundation 
@@ -7429,15 +7430,19 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_2_3 
+  - libLLVM10-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM8 
   - libLLVM8-32bit: [x86_64] 
+  - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
+  - libLTO10-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO8 
   - libLTO8-32bit: [x86_64] 
+  - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_01-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
@@ -8488,10 +8493,12 @@ unsorted:
   - libcjs0 
   - libck0 
   - libclFFT2: [x86_64] 
+  - libclang10-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang8 
   - libclang8-32bit: [x86_64] 
+  - libclang9 
   - libclang9-32bit: [x86_64] 
   - libclastfm-devel 
   - libclaw-devel 
@@ -9113,6 +9120,7 @@ unsorted:
   - libfrr_pb0 
   - libfrrcares0 
   - libfrrfpm_pb0 
+  - libfrrgrpc_pb0: [x86_64] 
   - libfrrospfapiclient0 
   - libfrrsnmp0 
   - libfrrzmq0 
@@ -10090,6 +10098,7 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
+  - liblldb10: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb8: [x86_64] 
   - liblldb9: [x86_64] 
@@ -10632,6 +10641,7 @@ unsorted:
   - libolecf-devel 
   - libolecf-tools 
   - libolecf1 
+  - libomp10-devel 
   - libomp7-devel 
   - libomp8-devel 
   - libomp9-devel 
@@ -11612,6 +11622,7 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
+  - libruby2_7-2_7 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -12965,17 +12976,20 @@ unsorted:
   - lksctp-tools-devel 
   - llcbench 
   - lld 
+  - lld10 
   - lld7 
   - lld8 
   - lld9 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
+  - lldb10: [x86_64] 
+  - lldb10-devel: [x86_64] # devel package of dvd:libLLVM10 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
   - lldb8-devel: [x86_64] 
   - lldb9: [x86_64] 
-  - lldb9-devel: [x86_64] # devel package of dvd:libLLVM9 
+  - lldb9-devel: [x86_64] 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -12984,6 +12998,17 @@ unsorted:
   - llvm-devel 
   - llvm-gold 
   - llvm-vim-plugins 
+  - llvm10 
+  - llvm10-LTO-devel 
+  - llvm10-LTO-devel-32bit: [x86_64] 
+  - llvm10-devel 
+  - llvm10-devel-32bit: [x86_64] 
+  - llvm10-doc 
+  - llvm10-gold 
+  - llvm10-opt-viewer 
+  - llvm10-polly 
+  - llvm10-polly-devel 
+  - llvm10-vim-plugins 
   - llvm7 
   - llvm7-LTO-devel 
   - llvm7-LTO-devel-32bit: [x86_64] 
@@ -17671,6 +17696,7 @@ unsorted:
   - pmix-devel 
   - pmix-headers 
   - pmix-mca-params 
+  - pmix-plugins 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -18159,12 +18185,8 @@ unsorted:
   - python-lammps 
   - python-libaddrxlat 
   - python-libcomps-doc 
-  - python-libesedb 
-  - python-libevtx 
   - python-libexe 
-  - python-libfwsi 
   - python-libkdumpfile 
-  - python-liblnk 
   - python-libmsiecf 
   - python-libolecf 
   - python-libpff 
@@ -19258,7 +19280,6 @@ unsorted:
   - python2-ijson 
   - python2-imageio 
   - python2-imagesize 
-  - python2-img2pdf 
   - python2-iminuit 
   - python2-importlib-metadata 
   - python2-importlib_resources 
@@ -19379,13 +19400,17 @@ unsorted:
   - python2-libarchive 
   - python2-libarchive-c 
   - python2-libbde 
+  - python2-libesedb 
   - python2-libevt 
+  - python2-libevtx 
   - python2-libfsntfs 
   - python2-libfvde 
   - python2-libfwnt 
+  - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
   - python2-liblarch 
   - python2-liblarch-gtk 
+  - python2-liblnk 
   - python2-libluksde 
   - python2-libnacl 
   - python2-libpamtest 
@@ -20034,6 +20059,7 @@ unsorted:
   - python2-requests-file 
   - python2-requests-ftp 
   - python2-requests-futures 
+  - python2-requests-gssapi 
   - python2-requests-hawk 
   - python2-requests-kerberos 
   - python2-requests-mock 
@@ -20045,7 +20071,6 @@ unsorted:
   - python2-requirements-detector 
   - python2-requirements-parser 
   - python2-requirementslib 
-  - python2-resampy 
   - python2-resolvelib 
   - python2-responses 
   - python2-restructuredtext_lint 
@@ -21043,6 +21068,7 @@ unsorted:
   - python3-bson 
   - python3-bugzilla 
   - python3-bugzillatools 
+  - python3-bytecode 
   - python3-cPyparsing 
   - python3-caca 
   - python3-cached-property 
@@ -21181,6 +21207,7 @@ unsorted:
   - python3-coveralls-check 
   - python3-cppclean 
   - python3-cpplint 
+  - python3-cppy 
   - python3-cracklib 
   - python3-cram 
   - python3-crayons 
@@ -21834,7 +21861,9 @@ unsorted:
   - python3-libcec 
   - python3-libcomps 
   - python3-libdnf 
+  - python3-libesedb 
   - python3-libevt 
+  - python3-libevtx 
   - python3-libewf 
   - python3-libfdt 
   - python3-libfsapfs 
@@ -21842,9 +21871,11 @@ unsorted:
   - python3-libftdi1 
   - python3-libfvde 
   - python3-libfwnt 
+  - python3-libfwsi 
   - python3-libixion 
   - python3-liblarch 
   - python3-liblarch-gtk 
+  - python3-liblnk 
   - python3-libluksde 
   - python3-libmodulemd 
   - python3-libmount 
@@ -21885,6 +21916,7 @@ unsorted:
   - python3-lineup-widget 
   - python3-lit 
   - python3-lldb: [x86_64] 
+  - python3-lldb10: [x86_64] 
   - python3-lldb7: [x86_64] 
   - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
@@ -22698,6 +22730,7 @@ unsorted:
   - python3-requests-file 
   - python3-requests-ftp 
   - python3-requests-futures 
+  - python3-requests-gssapi 
   - python3-requests-hawk 
   - python3-requests-html 
   - python3-requests-kerberos 
@@ -24427,6 +24460,11 @@ unsorted:
   - ruby2.6-rubygem-yard-testsuite 
   - ruby2.6-rubygem-yast-rake-doc 
   - ruby2.6-rubygem-zeitwerk-doc 
+  - ruby2.7 
+  - ruby2.7-devel 
+  - ruby2.7-devel-extra 
+  - ruby2.7-doc 
+  - ruby2.7-doc-ri 
   - rubygem-builder-3_0 
   - rubygem-builder-3_0-doc 
   - rubygem-builder-3_0-testsuite 
@@ -25336,7 +25374,6 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 
@@ -33524,7 +33561,6 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
-  - usbmuxd 
   - usbprog 
   - usbprog-devel 
   - usbprog-gui 

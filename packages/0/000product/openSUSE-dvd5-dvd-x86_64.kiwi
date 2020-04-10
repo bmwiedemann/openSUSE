@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200408" schemaversion="4.1">
+<image name="OBS__openSUSE___20200409" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200408</productvar>
+      <productvar name="VERSION">20200409</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200408,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200409,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200409/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -324,8 +324,8 @@
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang9"/>
-      <repopackage name="clang9-doc"/>
+      <repopackage name="clang10"/>
+      <repopackage name="clang10-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1634,7 +1634,7 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang9"/>
+      <repopackage name="libclang10"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
@@ -2342,7 +2342,7 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia78"/>
-      <repopackage name="libLLVM9"/>
+      <repopackage name="libLLVM10"/>
       <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2356,7 +2356,7 @@
       <repopackage name="liblsan0" arch="x86_64"/>
       <repopackage name="libltdl7"/>
       <repopackage name="libltdl7-32bit" arch="x86_64"/>
-      <repopackage name="libLTO9"/>
+      <repopackage name="libLTO10"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
       <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
@@ -2643,7 +2643,7 @@
       <repopackage name="libqgpgme7"/>
       <repopackage name="libqmi-glib5"/>
       <repopackage name="libqmi-tools"/>
-      <repopackage name="libqpdf26"/>
+      <repopackage name="libqpdf28"/>
       <repopackage name="libqqwing2"/>
       <repopackage name="libqrcodegencpp1"/>
       <repopackage name="libqrencode4"/>
@@ -5126,6 +5126,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default"/>
       <repopackage name="sysfsutils"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
@@ -5368,6 +5369,7 @@
       <repopackage name="urlview"/>
       <repopackage name="usb_modeswitch"/>
       <repopackage name="usb_modeswitch-data"/>
+      <repopackage name="usbmuxd"/>
       <repopackage name="usbutils"/>
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-lang"/>

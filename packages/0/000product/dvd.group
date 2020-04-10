@@ -313,8 +313,8 @@
     <package name="ckermit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang9-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="clang10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="clang10-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1611,8 +1611,8 @@
     <package name="libKUserFeedbackCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKasten4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libLLVM9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libLTO9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libLLVM10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libLTO10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libMagick++-7_Q16HDRI4" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libMagickCore-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1868,7 +1868,7 @@
     <package name="libcholmod3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libchromaprint1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libclamav9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="libclang9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="libclang10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libclastfm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libclucene-contribs-lib1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libclucene-core1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2615,7 +2615,7 @@
     <package name="libqgpgme7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libqpdf26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libqpdf28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqqwing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqrcodegencpp1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4839,6 +4839,7 @@
     <package name="syntax-highlighting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sysfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -5079,6 +5080,7 @@
     <package name="urlview" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="usb_modeswitch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="usbmuxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usbutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="util-linux-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
