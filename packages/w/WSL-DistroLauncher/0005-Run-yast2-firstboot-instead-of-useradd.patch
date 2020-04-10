@@ -119,13 +119,6 @@ index ad9fac5..7be5606 100644
          if (FAILED(hr)) {
              if (hr == HRESULT_FROM_WIN32(ERROR_ALREADY_EXISTS)) {
                  Helpers::PrintMessage(MSG_INSTALL_ALREADY_EXISTS);
-@@ -163,4 +154,4 @@ int wmain(int argc, wchar_t const *argv[])
-     }
- 
-     return SUCCEEDED(hr) ? exitCode : 1;
--}
-\ No newline at end of file
-+}
 diff --git a/DistroLauncher/messages.mc b/DistroLauncher/messages.mc
 index 6594f3e..fd6b7a7 100644
 --- a/DistroLauncher/messages.mc

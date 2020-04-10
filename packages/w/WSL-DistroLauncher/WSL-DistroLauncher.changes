@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:31:04 UTC 2020 - Scott Reeves <sreeves@suse.com>
+
+- Update git snapshot - Better error handling on WSL2 startup
+
+-------------------------------------------------------------------
 Tue Oct 15 14:17:44 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - squash patches

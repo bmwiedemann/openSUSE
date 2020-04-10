@@ -1,7 +1,7 @@
 #
-# spec file for package wsl-launcher
+# spec file for package WSL-DistroLauncher
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           WSL-DistroLauncher
 # no official release yet
-Version:        0.0.1+git20181120.d7b1f10
+Version:        0.0.1+git20200306.f858909
 Release:        0
-License:        MIT
 Summary:        Windows Subsystem for Linux distro launcher
-Url:            https://github.com/openSUSE/WSL-DistroLauncher
+License:        MIT
+URL:            https://github.com/openSUSE/WSL-DistroLauncher
 
 Source:         WSL-DistroLauncher-%{version}.tar.xz
 Source1:        icon.ico
@@ -32,11 +33,11 @@ Patch2:         0003-SUSE-adjustments.patch
 Patch3:         0004-refactor-QueryUid-to-be-reusable.patch
 Patch4:         0005-Run-yast2-firstboot-instead-of-useradd.patch
 
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  mingw64-cross-binutils
 BuildRequires:  mingw64-cross-gcc-c++
 BuildRequires:  mingw64-filesystem
-BuildRequires:  automake
-BuildRequires:  autoconf
 
 # XXX: that's a bit nasty. Launcher should probably be made run
 # time configurable when packing the appx
@@ -85,4 +86,3 @@ make %{?_smp_mflags}
 %{_mingw64_bindir}/DistroLauncher.exe
 
 %changelog
-
