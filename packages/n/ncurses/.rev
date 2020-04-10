@@ -2781,4 +2781,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>789684</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>e2dc920b4a33dc1ea0c857ea47eddd06</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1586555542</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %() to extract patch date for adding it to version 
+  * add script get_version_number.sh which is used within the
+    spec file to determine the actual patch version date
+
+- Add ncurses patch 20200404
+  + modify -fvisibility check to work with g++
+  &gt; fixes for building with Visual Studio C++ and msys2 (patches by
+    &quot;Maarten Anonymous&quot;):
+  + add configure option and check for gcc -fvisibility=hidden feature
+  + define NCURSES_NOMACROS in lib_gen.c to work around Visual Studio
+    C++ preprocessor limitations.
+  + modify some of the configure-macros, as well as mk-1st.awk to work
+    with Visual Studio C++ default filenaming.
+
+- Add ncurses patch 20200328
+  + correct length of buffer copied in dup_field().
+  + remove &quot;$(srcdir)/&quot; from path of library.gpr, needed for out-of-tree
+    builds of Ada95 (patch by Adam Van Ymeren).</comment>
+    <requestid>791735</requestid>
+  </revision>
 </revisionlist>

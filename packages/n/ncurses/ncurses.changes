@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr  6 10:31:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Use %() to extract patch date for adding it to version 
+  * add script get_version_number.sh which is used within the
+    spec file to determine the actual patch version date
+
+-------------------------------------------------------------------
+Mon Apr  6 06:50:14 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200404
+  + modify -fvisibility check to work with g++
+  > fixes for building with Visual Studio C++ and msys2 (patches by
+    "Maarten Anonymous"):
+  + add configure option and check for gcc -fvisibility=hidden feature
+  + define NCURSES_NOMACROS in lib_gen.c to work around Visual Studio
+    C++ preprocessor limitations.
+  + modify some of the configure-macros, as well as mk-1st.awk to work
+    with Visual Studio C++ default filenaming.
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200328
+  + correct length of buffer copied in dup_field().
+  + remove "$(srcdir)/" from path of library.gpr, needed for out-of-tree
+    builds of Ada95 (patch by Adam Van Ymeren).
+
+-------------------------------------------------------------------
 Mon Mar 23 08:19:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200321

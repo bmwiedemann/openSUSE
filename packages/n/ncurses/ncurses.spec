@@ -31,6 +31,9 @@
 %global soname_tinfo tinfow
 %endif
 
+%define patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
+%define basevers 6.2
+
 Name:           ncurses
 #!BuildIgnore: terminfo
 %if %{with hasheddb}
@@ -56,7 +59,7 @@ Obsoletes:      ncurses-64bit
 # but also build the ABI version 5 as this is part of the source
 # tar ball including the latest upstream fixes for ABI 5.
 #
-Version:        6.2
+Version:        6.2.%{patchlvl}
 Release:        0
 Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu
@@ -292,7 +295,7 @@ timings needed to ensure that screen updates do not fall behind the
 incoming data stream.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{basevers}
 tar -xjf %{S:1}
 set +x
 for patch in patches/ncurses*.patch
@@ -591,9 +594,9 @@ mv tack-* tack
 %if %{with onlytinfo}
     # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
     gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.6,-soname,libtinfow.so.6,-stats,-lc \
-	 -Wl,--version-script,ncurses/resulting.map -o %{root}%{_libdir}/libtinfow.so.%{version}
-    cp -p %{root}%{_libdir}/libtinfo.so.%{version}  libtinfo.so.%{version}.back
-    cp -p %{root}%{_libdir}/libtinfow.so.%{version} libtinfow.so.%{version}.back
+	 -Wl,--version-script,ncurses/resulting.map -o %{root}%{_libdir}/libtinfow.so.%{basevers}
+    cp -p %{root}%{_libdir}/libtinfo.so.%{basevers}  libtinfo.so.%{basevers}.back
+    cp -p %{root}%{_libdir}/libtinfow.so.%{basevers} libtinfow.so.%{basevers}.back
 %endif
     ln -sf %{_incdir}/ncurses/{curses,ncurses,term,termcap}.h %{root}%{_incdir}
     mkdir pc
@@ -739,8 +742,8 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir} includesubdir=/ncurses libdir=%{_libdir}
 %if %{with onlytinfo}
     # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
-    cp -p libtinfo.so.%{version}.back  %{root}%{_libdir}/libtinfo.so.%{version}
-    cp -p libtinfow.so.%{version}.back %{root}%{_libdir}/libtinfow.so.%{version}
+    cp -p libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
+    cp -p libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
 %endif
     pushd man
 	sh ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
@@ -1060,7 +1063,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
 %if %{with onlytinfo}
-nm -D %{buildroot}/%{_lib}/libtinfo.so.%{version} | grep -q _nc_read_entry2
+nm -D %{buildroot}/%{_lib}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
 %endif
 %if 0%{?suse_version} > 1500
 pushd test
