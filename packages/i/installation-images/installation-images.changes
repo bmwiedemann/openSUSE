@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Tue Apr 7 09:00:33 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#369
+- add missing vbox drivers (bsc#1168742)
+- 14.465
+
+--------------------------------------------------------------------
+Mon Apr 6 11:33:26 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#360
+- Update module list for 5.5:
+- 14.464
+
+--------------------------------------------------------------------
+Mon Apr 6 11:32:35 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#368
+- put S390 I/O device pre-config into a separate script (bsc#1168036)
+
+--------------------------------------------------------------------
 Wed Mar 25 14:14:39 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#367
