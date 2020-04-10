@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:14:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.51.0
+  * Adding RetryPolicy to pubsub.proto
+  * API definition for (not-yet-launched) GCS gRPC.
+  * And many many more (the commit log is just too long to read)
+
+-------------------------------------------------------------------
 Mon Aug 12 14:07:33 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.6.0
