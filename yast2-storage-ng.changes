@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 06 09:14:25 CEST 2020 - aschnell@suse.com
+
+- allow to disable LUKS activation (bsc#1162545)
+- 4.2.107
+
+-------------------------------------------------------------------
 Fri Apr  3 14:18:30 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Partitioner: fixed a crash when some devices are modified both
   before and after reprobing the hardware (bsc#1168325).
-- 4.1.106
+- 4.2.106
 
 -------------------------------------------------------------------
 Wed Apr  1 12:27:01 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
