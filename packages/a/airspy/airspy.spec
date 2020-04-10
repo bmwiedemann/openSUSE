@@ -1,7 +1,7 @@
 #
 # spec file for package airspy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,11 +25,12 @@ Version:        1.0.9
 Release:        0
 Summary:        Support programs for Airspy
 License:        GPL-2.0-or-later
-Url:            http://www.airspy.com
+URL:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
 Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
@@ -65,9 +66,10 @@ Library headers for airspy driver.
 sed -i "s/plugdev/airspy/g" airspy-tools/52-airspy.rules
 
 %build
+%define __builder ninja
 %cmake \
   -DINSTALL_UDEV_RULES=ON
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
