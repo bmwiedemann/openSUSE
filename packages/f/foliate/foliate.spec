@@ -18,7 +18,7 @@
 
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        A simple and modern GTK eBook reader
 License:        GPL-3.0-only
@@ -46,14 +46,19 @@ A simple and modern GTK eBook viewer, built with GJS and Epub.js.
 
 %install
 %meson_install
+
 find {README.md,COPYING} -type f -perm /111 -exec chmod 644 {} \;
 find %{buildroot}/%{_datadir}/. -type f -executable -exec chmod -x "{}" \;
-for file in %{buildroot}%{_datadir}/%{name}/assets/KindleUnpack/*; do
+rm %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/.eslintrc.json
+
+for file in %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/*; do
    chmod a-x $file
 done
-pushd %{buildroot}%{_datadir}/%{name}/assets/KindleUnpack/
-sed -i -e '/^#!\//, 1d' *.py
+
+pushd %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/
+sed -i -e '/^#!/, 1d' *.py
 popd
+
 %find_lang %{oname} --with-gnome
 
 %files
@@ -61,7 +66,7 @@ popd
 %doc README.md
 %{_bindir}/%{oname}
 %{_datadir}/applications/
-%{_datadir}/%{name}
+%{_datadir}/com.github.johnfactotum.Foliate
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/metainfo/
 %{_datadir}/icons/hicolor/
