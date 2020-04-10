@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dynaconf
-Version:        2.1.1
+Version:        2.2.3
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/rochacbruno/dynaconf
 Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz
+Patch0:         box-4.0.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-click
 Requires:       python-configobj
+Requires:       python-hvac
 Requires:       python-python-box
 Requires:       python-python-dotenv
+Requires:       python-redis
 Requires:       python-setuptools
 Requires:       python-toml
 BuildArch:      noarch
@@ -42,10 +44,12 @@ BuildRequires:  %{python_module Flask >= 0.12}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module configobj}
+BuildRequires:  %{python_module hvac}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-box}
 BuildRequires:  %{python_module python-dotenv}
+BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module toml}
 # /SECTION
 %python_subpackages
@@ -55,6 +59,11 @@ The dynamic configurator for your Python Project
 
 %prep
 %setup -q -n dynaconf-%{version}
+%patch0 -p1
+
+# require running docker with the server
+rm tests/test_redis.py
+rm tests/test_vault.py
 
 %build
 %python_build
@@ -64,7 +73,7 @@ The dynamic configurator for your Python Project
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest tests/
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

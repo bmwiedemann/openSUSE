@@ -48,4 +48,36 @@
   * Improve validators to use from_env method (#225) [Bruno Rocha]</comment>
     <requestid>733405</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>263d94f4adb3e1e6a5e673b43ba2c75a</srcmd5>
+    <version>2.2.3</version>
+    <time>1586555582</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from git upstream to work with latest box releases:
+  * box-4.0.patch
+
+- Update to 2.2.3:
+  * Fix #236 added .local. files loading and module impersonation docs (#239)
+  * Replace key.upper with `upperfy` function that keeps `__` attributes (#240)
+  * Fix #241 new merge standards (#243)
+  * Add support for PRELOAD_ setting. (#244)
+  * Fixing how filename.local.* files are loaded (#238)
+  * fix crash on empty settings (#242)
+  * Fix #251 recursive call was using mutable memoized data (#254)
+  * Fix #266 created new variable FORCE_ENV to override ENV_FOR_DYNACONF
+  * Fix coverage for validators
+  * Add support for detecting duplicate validators being added (and ignore them) (#256)
+  * fix: env_loader.write: quote_mode for non-string values
+  * : added line break
+  * fix str comparison
+  * changing quote logic
+  * fix open error @py3.5
+  * Fix #258 custom message for validators
+  * Close #178. Included integration tests redis/vault
+  * Fix #273 add Flask load extensions method.
+  * Fix #145 allow lazy format using os.environ and settings values.
+  * Overriding strategy test
+  * Fix #203 document the usage with pytest (with examples)</comment>
+    <requestid>792348</requestid>
+  </revision>
 </revisionlist>

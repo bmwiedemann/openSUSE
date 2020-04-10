@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:06:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch from git upstream to work with latest box releases:
+  * box-4.0.patch
+
+-------------------------------------------------------------------
+Wed Apr  8 07:21:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.3:
+  * Fix #236 added .local. files loading and module impersonation docs (#239)
+  * Replace key.upper with `upperfy` function that keeps `__` attributes (#240)
+  * Fix #241 new merge standards (#243)
+  * Add support for PRELOAD_ setting. (#244)
+  * Fixing how filename.local.* files are loaded (#238)
+  * fix crash on empty settings (#242)
+  * Fix #251 recursive call was using mutable memoized data (#254)
+  * Fix #266 created new variable FORCE_ENV to override ENV_FOR_DYNACONF
+  * Fix coverage for validators
+  * Add support for detecting duplicate validators being added (and ignore them) (#256)
+  * fix: env_loader.write: quote_mode for non-string values
+  * : added line break
+  * fix str comparison
+  * changing quote logic
+  * fix open error @py3.5
+  * Fix #258 custom message for validators
+  * Close #178. Included integration tests redis/vault
+  * Fix #273 add Flask load extensions method.
+  * Fix #145 allow lazy format using os.environ and settings values.
+  * Overriding strategy test
+  * Fix #203 document the usage with pytest (with examples)
+
+-------------------------------------------------------------------
 Thu Sep 26 11:14:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1.1:
