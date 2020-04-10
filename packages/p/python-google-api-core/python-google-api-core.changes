@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 07:20:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.16.0
+  * feat(storage): support optionsRequestedPolicyVersion
+  * feat(api_core): support version 3 policy bindings
+  * Make the last retry happen at deadline.
+  * Add a repr method for ClientOptions.
+  * Provide a raw_page field for page_iterator.Page.
+
+-------------------------------------------------------------------
 Mon Aug 12 14:15:35 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.14.2
