@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/haiwen/libsearpc.git</param>
+    <param name="changesrevision">d1fd7518a20b25766ff98d6fde6e40c63626ca0d</param>
+  </service>
+</servicedata>

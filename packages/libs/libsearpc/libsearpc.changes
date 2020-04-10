@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 06:23:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use _service and _servicedata since upstream has the bad habit
+  of issuing a new release by overwriting the old one
+
+-------------------------------------------------------------------
 Tue Mar 10 13:44:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - change package name to libsearpc and improve spec file 

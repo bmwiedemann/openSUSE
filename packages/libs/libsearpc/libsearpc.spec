@@ -15,15 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover   1
 
 Name:           libsearpc
-Version:        3.2+20191101
-Release:        2
+Version:        3.2.0.20200320
+Release:        0
 Summary:        Simple C language RPC framework based on GObject system
 License:        Apache-2.0
+Group:          System/Libraries
 URL:            https://github.com/haiwen/libsearpc/
-Source0:        v3.2-latest.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Patch0:         01-fix-includes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -60,6 +62,7 @@ The serialization/deserialization uses JSON format via json-glib library. A seri
 
 %package        devel
 Summary:        Development files for %{name}
+Group:          System/Libraries
 Requires:       %{name}%{sover} = %{version}
 
 %description    devel
@@ -68,13 +71,14 @@ developing applications that use %{name}.
 
 %package        -n python3-pysearpc
 Summary:        Python files for %{name}
+Group:          System/Libraries
 Requires:       %{name}%{sover} = %{version}
 
 %description    -n python3-pysearpc
 The python-pysearpc package contains python files to make use of %{name}.
 
 %prep
-%setup -q -n libsearpc-3.2-latest
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 
 %build
