@@ -282,7 +282,7 @@ Tue Oct 22 12:13:59 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 -------------------------------------------------------------------
 Thu Sep 26 12:15:50 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
-- Update to cloud-init 19.2 (bsc#1099358)
+- Update to cloud-init 19.2 (bsc#1099358, bsc#1145622)
   + Remove, included upstream
     - cloud-init-detect-nova.diff
     - cloud-init-add-static-routes.diff
@@ -361,7 +361,7 @@ Mon Aug 19 15:24:26 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 -------------------------------------------------------------------
 Fri Aug 16 19:54:28 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
-- Update cloud-init-write-routes.patch (bsc#1144881)
+- Update cloud-init-write-routes.patch (boo#1144881, bsc#1148645)
   + If no routes are set for a subnet but the subnet has a gateway
     specified, set the gateway as the default route for the interface
 
