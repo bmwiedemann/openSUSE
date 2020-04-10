@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           seafile-client
-Version:        7.0.6
-Release:        1
+Version:        7.0.7
+Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
 URL:            https://github.com/haiwen/seafile-client/
