@@ -3527,4 +3527,31 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>787956</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>154605a1c25233a2ca783ac8e552d901</srcmd5>
+    <version>6.2.0</version>
+    <time>1586555561</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: Add support for max event channels with maxEventChannel
+  attribute on the xenbus controller
+  8e669b38-conf-add-event-channels.patch,
+  a93f55c5-libxl-add-event-channels.patch,
+  967f4eeb-xenconfig-event-channels.patch
+  bsc#1168767
+
+- libxl: fix crash when initializing driver
+  88011ed2-libxl-driver-crash-fix.patch
+
+- Update to libvirt 6.2.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - CVE-2020-10701
+    bsc#1168680
+  - Dropped patches:
+    a30078cb-qemu-create-mp-target.patch,
+    aeb909bf-qemu-multipath-fix.patch
+  - Added patch:
+    disable-multipath-pr-tests.patch</comment>
+    <requestid>792818</requestid>
+  </revision>
 </revisionlist>

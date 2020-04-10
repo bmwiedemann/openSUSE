@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -338,8 +338,10 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         a30078cb-qemu-create-mp-target.patch
-Patch1:         aeb909bf-qemu-multipath-fix.patch
+Patch0:         88011ed2-libxl-driver-crash-fix.patch
+Patch1:         8e669b38-conf-add-event-channels.patch
+Patch2:         a93f55c5-libxl-add-event-channels.patch
+Patch3:         967f4eeb-xenconfig-event-channels.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -368,6 +370,7 @@ Patch212:       lxc-wait-after-eth-del.patch
 Patch213:       suse-libxl-disable-autoballoon.patch
 Patch214:       suse-xen-ovmf-loaders.patch
 Patch215:       suse-bump-xen-version.patch
+Patch216:       disable-multipath-pr-tests.patch
 # SLES-Only patches
 %if ! 0%{?is_opensuse}
 Patch400:       virt-create-rootfs.patch
@@ -876,6 +879,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -901,6 +906,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch213 -p1
 %patch214 -p1
 %patch215 -p1
+%patch216 -p1
 %if ! 0%{?is_opensuse}
 %patch400 -p1
 %endif
@@ -1226,9 +1232,6 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %check
 cd tests
 SKIP_TESTS=""
-# These tests don't current work in a mock build root
-# virnetsockettest: needs unsupported linux-user syscalls
-SKIP_TESTS="$SKIP_TESTS virnetsockettest"
 # virportallocatortest fails on aarch64 due to unsupported IPV6_V6ONLY flag
 %ifarch aarch64
 SKIP_TESTS="$SKIP_TESTS virportallocatortest"
