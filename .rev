@@ -337,4 +337,12 @@
     <comment>security update 1.8.5</comment>
     <requestid>742532</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db999f4b92b1faf40f1e033cfd748461</srcmd5>
+    <version>1.8.6~pre1a</version>
+    <time>1586555618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792910</requestid>
+  </revision>
 </revisionlist>

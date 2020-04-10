@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 10 06:36:58 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to HEAD of git branch openafs-stable-1_8_x.
+  * 1.8.6pre2 is not out yet.
+  * disable source URLs, none are present
+  * remove patch forward-to-1.8.6.pre1.patch
+- fix build of i586 with fix_timeval_i586.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 06:08:09 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to pre-release 1.8.6pre1: forward-to-1.8.6.pre1.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 13:48:04 UTC 2019 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to security-release 1.8.5, adresses:

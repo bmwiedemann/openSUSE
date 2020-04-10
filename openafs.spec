@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,23 +57,29 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.5
+%define upstream_version 1.8.6~pre1a
 
 Name:           openafs
 
-Version:        1.8.5
+Version:        1.8.6~pre1a
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
 Group:          System/Filesystems
-Url:            http://www.openafs.org/
+URL:            http://www.openafs.org/
 
-Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
-Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
-Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
-Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
-Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
-Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+#Source0:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2
+#Source1:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2
+#Source2:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.md5
+#Source3:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.md5
+#Source4:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-src.tar.bz2.sha256
+#Source5:        http://www.openafs.org/dl/openafs/%{upstream_version}/openafs-%{upstream_version}-doc.tar.bz2.sha256
+Source0:        openafs-%{version}-src.tar.bz2
+Source1:        openafs-%{version}-doc.tar.bz2
+Source2:        openafs-%{version}-src.tar.bz2.md5
+Source3:        openafs-%{version}-doc.tar.bz2.md5 
+Source4:        openafs-%{version}-src.tar.bz2.sha256
+Source5:        openafs-%{version}-doc.tar.bz2.sha256
 Source10:       README.SUSE.openafs
 Source15:       logrotate.openafs-server
 Source16:       ld.conf.openafs
@@ -98,6 +104,8 @@ Patch3:         dir_layout.patch
 Patch4:         openafs-1.8.x.ncurses6.patch
 # PATCH-SUSE-SPECIFIC make KMP work again 
 Patch5:         add_arch_to_linux_kernel_make.patch
+# PATCH-FIX-i586-BUILD
+Patch99:        fix_timeval_i586.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #
@@ -309,6 +317,7 @@ done
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch99 -p1
 
 ./regen.sh
 
