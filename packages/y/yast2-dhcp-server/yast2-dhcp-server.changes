@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  4 17:06:50 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bsc#1167474
+  - removed token ring support
+- 4.2.3 
+
+-------------------------------------------------------------------
 Mon Feb 17 17:18:49 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed user-visible messages (bsc#1084015)
