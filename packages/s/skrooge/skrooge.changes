@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:54:05 UTC 2020 - wbauer@tmo.at
+
+- Update to 2.22.1
+  * Correction: Date 31/12 => 02/12 (kde#417163)
+  * Correction: no sounds from Skrooge flatpak app (kde#418686)
+  * Correction: kdeapps "nightly" flatpak isn't using latest KDE/Qt
+    runtime version 5.14 (kde#419006)
+  * Correction: Set the "Date of import" and "Import balance" when
+    importing from OFX
+  * Correction: Merge of number of operation
+  * Correction: Fix Get Hot New Stuff legacy Endpoints
+  * Correction: Files not able to be checked out on Windows
+  * Correction: Bad display in dashboard when all accounts of a
+    type are closed
+  * Correction: With last version of KDE, KMessageWidget are
+    sometimes empty
+  * Correction: Add missing "Full screen" menu
+  * Correction: Fix "coinmarketcap" source (need an API key)
+  * Correction: Remove warning due to QML dashboard
+  * Feature: Add new source "cryptocompare" (need an API key)
+
+-------------------------------------------------------------------
 Mon Dec  2 15:03:28 UTC 2019 - wbauer@tmo.at
 
 - Update to 2.21.1

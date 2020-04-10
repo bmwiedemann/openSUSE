@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.21.1
+Version:        2.22.1
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only

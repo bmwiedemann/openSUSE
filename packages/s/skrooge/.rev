@@ -25,4 +25,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment></comment>
     <requestid>753118</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd5e1c046853f05ca5e61c35af7cbbcc</srcmd5>
+    <version>2.22.1</version>
+    <time>1586555637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792956</requestid>
+  </revision>
 </revisionlist>
