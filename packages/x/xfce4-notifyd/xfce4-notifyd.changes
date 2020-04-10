@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  8 17:54:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.6.0
+  * Simplify drawing the notification bubble
+  * Switch to new fallback style class "keycap"
+  * Ensure normal font size with Adwaita and keycap class
+  * Fix logging simultaneous notifications (bxo#15167)
+  * Disable rounded corners w/o compositing (bxo#16586)
+  * panel-plugin: Fix configure dialog
+  * panel-plugin: Use new XfceTitledDialog api
+  * panel-plugin: Toggle 'Do not disturb' with middle mouse click
+    (bxo#16132)
+  * Allow compilation with panel 4.15
+  * panel-plugin: Remove deprecated calls
+  * Replace GtkStock buttons
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Apr 23 10:38:45 UTC 2019 - Vinzenz Vietzke <vinz@vinzv.de>
 
 - This is a bugfix release:

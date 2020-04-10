@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-notifyd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.4.4
+Version:        0.6.0
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
 Group:          System/Daemons
-Url:            https://docs.xfce.org/apps/notifyd/start
-Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.4/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/apps/notifyd/start
+Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.6/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  exo-tools
@@ -43,7 +43,6 @@ Requires:       xfce4-notifyd-branding = %{version}
 Recommends:     %{name}-lang = %{version}
 Provides:       notification-daemon-xfce = %{version}
 Obsoletes:      notification-daemon-xfce < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Xfce4-notifyd is a simple, visually-appealing notification daemon for Xfce that
@@ -71,7 +70,7 @@ This package provides the upstream look and feel for the Xfce Notification Daemo
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
     --enable-maintainer-mode
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -95,7 +94,6 @@ rm -rf %{buildroot}
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README TODO
 %license COPYING
 %{_bindir}/xfce4-notifyd-config
@@ -118,7 +116,6 @@ rm -rf %{buildroot}
 %files lang -f %{name}.lang
 
 %files branding-upstream
-%defattr(-,root,root)
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
