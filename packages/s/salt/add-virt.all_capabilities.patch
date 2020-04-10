@@ -1,4 +1,4 @@
-From fdc0a1f4adc40d9e5b5f7164f750e4580b9cd3f4 Mon Sep 17 00:00:00 2001
+From 82ddc9d93f6c0d6bc1e8dc6ebd30d6809d9f4d8f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Thu, 18 Oct 2018 13:32:59 +0200
 Subject: [PATCH] Add virt.all_capabilities
@@ -15,10 +15,10 @@ virt.all_capabilities call.
  2 files changed, 134 insertions(+), 29 deletions(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 8d63b6ff4c..195da49296 100644
+index a2412bb745..3889238ecd 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
-@@ -4097,37 +4097,10 @@ def _parse_caps_loader(node):
+@@ -4254,37 +4254,10 @@ def _parse_caps_loader(node):
      return result
  
  
@@ -58,7 +58,7 @@ index 8d63b6ff4c..195da49296 100644
      result = {
          'emulator': caps.find('path').text if caps.find('path') is not None else None,
          'domain': caps.find('domain').text if caps.find('domain') is not None else None,
-@@ -4167,6 +4140,82 @@ def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **k
+@@ -4324,6 +4297,82 @@ def domain_capabilities(emulator=None, arch=None, machine=None, domain=None, **k
      return result
  
  
@@ -142,10 +142,10 @@ index 8d63b6ff4c..195da49296 100644
      '''
      Return the optimal 'custom' CPU baseline config for VM's on this minion
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 6546a0467c..36fcf0d4c0 100644
+index 32f4302e5f..94372c6d72 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
-@@ -2204,6 +2204,62 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2216,6 +2216,62 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
  
          self.assertEqual(expected, caps)
  

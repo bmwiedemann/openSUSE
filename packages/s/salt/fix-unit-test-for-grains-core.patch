@@ -1,4 +1,4 @@
-From 91a864f7613927e47b9271bf0f947cf96a3bbfbf Mon Sep 17 00:00:00 2001
+From 6bb7b6c4a530abb7e831449545a35ee5ede49dcb Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 11 Oct 2018 16:20:40 +0200
 Subject: [PATCH] Fix unit test for grains core
@@ -8,7 +8,7 @@ Subject: [PATCH] Fix unit test for grains core
  1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 8c45ee194a..c85225e959 100644
+index b31f5dcddd..c40595eb3f 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
 @@ -68,11 +68,10 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):

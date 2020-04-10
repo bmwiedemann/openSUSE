@@ -1,4 +1,4 @@
-From 78b466b0d45de8b7edace542dd3815ca852def40 Mon Sep 17 00:00:00 2001
+From 49780d409630fe18293a077e767aabfd183ff823 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Tue, 3 Dec 2019 11:22:42 +0100
 Subject: [PATCH] Fix batch_async obsolete test
@@ -28,6 +28,6 @@ index 12dfe543bc..f1d36a81fb 100644
      @tornado.testing.gen_test
      def test_batch_next(self):
 -- 
-2.23.0
+2.16.4
 
 

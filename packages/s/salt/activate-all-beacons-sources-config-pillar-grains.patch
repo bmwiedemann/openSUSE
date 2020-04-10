@@ -1,4 +1,4 @@
-From 45b3ee6c8255c2daa6ed291a430a6325155ef29c Mon Sep 17 00:00:00 2001
+From 6df4cef549665aad5b9e2af50eb06124a2bb0997 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 17 Oct 2017 16:52:33 +0200
 Subject: [PATCH] Activate all beacons sources: config/pillar/grains
@@ -8,10 +8,10 @@ Subject: [PATCH] Activate all beacons sources: config/pillar/grains
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/minion.py b/salt/minion.py
-index 6912d9587f..c5f637eaa6 100644
+index 6a77d90185..457f485b0a 100644
 --- a/salt/minion.py
 +++ b/salt/minion.py
-@@ -484,7 +484,7 @@ class MinionBase(object):
+@@ -483,7 +483,7 @@ class MinionBase(object):
          the pillar or grains changed
          '''
          if 'config.merge' in functions:

@@ -1,4 +1,4 @@
-From ddc5439536e8d7a0b2fca1fcb9db0b18ed961d54 Mon Sep 17 00:00:00 2001
+From 0a6b5e92a4a74dee94eb33a939600f8c2e429c01 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 12 Oct 2018 16:20:40 +0200
 Subject: [PATCH] Add multi-file support and globbing to the filetree

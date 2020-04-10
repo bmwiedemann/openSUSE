@@ -1,4 +1,4 @@
-From db65ebf356238c151af7798ed34684847ed4a5c0 Mon Sep 17 00:00:00 2001
+From c2989e749f04aa8477130df649e550f5349a9a1f Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Wed, 31 Jul 2019 15:29:03 +0200
 Subject: [PATCH] Fix aptpkg systemd call (bsc#1143301)
@@ -9,10 +9,10 @@ Subject: [PATCH] Fix aptpkg systemd call (bsc#1143301)
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index e537f5b007..b7c1a342ef 100644
+index 13484c96bc..a5b039fc79 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -165,7 +165,7 @@ def _call_apt(args, scope=True, **kwargs):
+@@ -168,7 +168,7 @@ def _call_apt(args, scope=True, **kwargs):
      '''
      cmd = []
      if scope and salt.utils.systemd.has_scope(__context__) and __salt__['config.get']('systemd.scope', True):
@@ -22,10 +22,10 @@ index e537f5b007..b7c1a342ef 100644
  
      params = {'output_loglevel': 'trace',
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index 580b840197..06f3a9f6aa 100644
+index 10e960f090..88eed062c4 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -544,7 +544,7 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -645,7 +645,7 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(aptpkg.__salt__, {'cmd.run_all': MagicMock(), 'config.get': MagicMock(return_value=True)}):
              aptpkg._call_apt(['apt-get', 'purge', 'vim'])  # pylint: disable=W0106
              aptpkg.__salt__['cmd.run_all'].assert_called_once_with(

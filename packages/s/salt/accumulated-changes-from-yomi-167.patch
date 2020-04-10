@@ -1,4 +1,4 @@
-From bfaac404ffa334157f4408b312b12a59b059df69 Mon Sep 17 00:00:00 2001
+From 63f28a891449889fa3d7139470266162b10e88f2 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 22 Oct 2019 11:02:33 +0200
 Subject: [PATCH] Accumulated changes from Yomi (#167)
@@ -17,17 +17,17 @@ This patch ignore this kind of issue during the grains creation.
 
 (cherry picked from commit b865491b74679140f7a71c5ba50d482db47b600f)
 ---
- salt/grains/core.py                  |  4 ++++
- salt/modules/zypperpkg.py            | 30 ++++++++++++++++--------
- tests/unit/grains/test_core.py       | 45 ++++++++++++++++++++++++++++++++++++
- tests/unit/modules/test_zypperpkg.py | 26 +++++++++++++++++++++
- 4 files changed, 96 insertions(+), 9 deletions(-)
+ salt/grains/core.py                  |  4 +++
+ salt/modules/zypperpkg.py            | 30 +++++++++++-----
+ tests/unit/grains/test_core.py       | 68 ++++++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_zypperpkg.py | 26 ++++++++++++++
+ 4 files changed, 119 insertions(+), 9 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index e1d08b76cf..6b1f2d2223 100644
+index 77ae99590f..68c43482d3 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -987,6 +987,10 @@ def _virtual(osdata):
+@@ -997,6 +997,10 @@ def _virtual(osdata):
                          grains['virtual'] = 'gce'
                      elif 'BHYVE' in output:
                          grains['virtual'] = 'bhyve'
@@ -39,10 +39,10 @@ index e1d08b76cf..6b1f2d2223 100644
                  pass
      elif osdata['kernel'] == 'FreeBSD':
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index da1953b2a5..a87041aa70 100644
+index f7158e0810..5f3b6d6855 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -861,23 +861,35 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
+@@ -863,23 +863,35 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
              _ret[pkgname] = sorted(ret[pkgname], key=lambda d: d['version'])
  
          for include in includes:
@@ -88,13 +88,14 @@ index da1953b2a5..a87041aa70 100644
                          'install_date_time_t': None,
                      }]
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 09e197a2e4..7153a078f4 100644
+index 60914204b0..c4731f667a 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1317,6 +1317,51 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-                 'uuid': ''
-             })
+@@ -1543,3 +1543,71 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
  
+         self.assertIn('osfullname', os_grains)
+         self.assertEqual(os_grains.get('osfullname'), 'FreeBSD')
++
 +    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
 +    def test_kernelparams_return(self):
 +        expectations = [
@@ -140,14 +141,33 @@ index 09e197a2e4..7153a078f4 100644
 +                'uuid': ''
 +            })
 +
-     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-     @skipIf(six.PY2, 'UnicodeDecodeError is throw in Python 3')
-     @patch('os.path.exists')
++    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
++    @skipIf(six.PY2, 'UnicodeDecodeError is throw in Python 3')
++    @patch('os.path.exists')
++    @patch('salt.utils.platform.is_proxy')
++    def test__hw_data_linux_unicode_error(self, is_proxy, exists):
++        def _fopen(*args):
++            class _File(object):
++                def __enter__(self):
++                    return self
++
++                def __exit__(self, *args):
++                    pass
++
++                def read(self):
++                    raise UnicodeDecodeError('enconding', b'', 1, 2, 'reason')
++
++            return _File()
++
++        is_proxy.return_value = False
++        exists.return_value = True
++        with patch('salt.utils.files.fopen', _fopen):
++            self.assertEqual(core._hw_data({'kernel': 'Linux'}), {})
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 695d982ca6..7617113401 100644
+index 6102043384..76937cc358 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -943,6 +943,32 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -944,6 +944,32 @@ Repository 'DUMMY' not found by its alias, number, or URI.
                  with self.assertRaisesRegex(CommandExecutionError, '^Advisory id "SUSE-PATCH-XXX" not found$'):
                      zypper.install(advisory_ids=['SUSE-PATCH-XXX'])
  

@@ -1,4 +1,4 @@
-From b06d2882f4e89011b1f5eeb442620b4543694140 Mon Sep 17 00:00:00 2001
+From c4742f553fe60aee82577622def1eeca0e2abf93 Mon Sep 17 00:00:00 2001
 From: Michael Calmer <mc@suse.de>
 Date: Sun, 1 Mar 2020 16:22:54 +0100
 Subject: [PATCH] use full option name instead of undocumented
@@ -10,10 +10,10 @@ Subject: [PATCH] use full option name instead of undocumented
  2 files changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 8c1e05c21c..19d1fd96c7 100644
+index 0c15214e5e..e3f802a911 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -2494,7 +2494,7 @@ def list_products(all=False, refresh=False, root=None):
+@@ -2498,7 +2498,7 @@ def list_products(all=False, refresh=False, root=None):
          OEM_PATH = os.path.join(root, os.path.relpath(OEM_PATH, os.path.sep))
      cmd = list()
      if not all:
@@ -23,10 +23,10 @@ index 8c1e05c21c..19d1fd96c7 100644
      if not all:
          cmd.append('-i')
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 7617113401..ae85152d30 100644
+index 76937cc358..2a8e753b9d 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -241,7 +241,18 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -238,7 +238,18 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                      'stdout': get_test_data(filename)
              }
  
@@ -46,7 +46,7 @@ index 7617113401..ae85152d30 100644
                  products = zypper.list_products()
                  self.assertEqual(len(products), 7)
                  self.assertIn(test_data['vendor'], [product['vendor'] for product in products])
-@@ -250,6 +261,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -247,6 +258,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                          self.assertCountEqual(test_data[kwd], [prod.get(kwd) for prod in products])
                      else:
                          self.assertEqual(test_data[kwd], sorted([prod.get(kwd) for prod in products]))

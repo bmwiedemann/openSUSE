@@ -1,4 +1,4 @@
-From 23d21edaf5565d99bb6316087863ecbf6a699034 Mon Sep 17 00:00:00 2001
+From bec0a06a069404c5043b1c59e3fe7cce2df177d3 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Wed, 30 Oct 2019 10:19:12 +0100
 Subject: [PATCH] Remove unnecessary yield causing BadYieldError

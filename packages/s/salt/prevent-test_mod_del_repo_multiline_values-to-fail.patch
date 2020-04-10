@@ -1,4 +1,4 @@
-From 13eaa8b2bb57eb1774b43e2437c5e1fd0de9cb93 Mon Sep 17 00:00:00 2001
+From c820b9e652474b4866fe099a709b52fe3b715ce9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 27 Nov 2019 15:41:57 +0000
@@ -9,18 +9,10 @@ Subject: [PATCH] Prevent test_mod_del_repo_multiline_values to fail
  1 file changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
-index 7204428eca..9a2cbc7bfc 100644
+index 61748f9477..6f3767bfbd 100644
 --- a/tests/integration/modules/test_pkg.py
 +++ b/tests/integration/modules/test_pkg.py
-@@ -145,6 +145,7 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
-         try:
-             if os_grain in ['CentOS', 'RedHat', 'SUSE']:
-                 my_baseurl = 'http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/'
-+                expected_get_repo_baseurl_zypp = 'http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/'
-                 expected_get_repo_baseurl = 'http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/'
-                 major_release = int(
-                     self.run_function(
-@@ -169,17 +170,24 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -167,17 +167,24 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
                      enabled=enabled,
                      failovermethod=failovermethod,
                  )
@@ -51,7 +43,15 @@ index 7204428eca..9a2cbc7bfc 100644
          finally:
              if repo is not None:
                  self.run_function('pkg.del_repo', [repo])
+@@ -191,6 +198,7 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+         try:
+             if os_grain in ['CentOS', 'RedHat', 'SUSE']:
+                 my_baseurl = 'http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/'
++                expected_get_repo_baseurl_zypp = 'http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/'
+                 expected_get_repo_baseurl = 'http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/'
+                 major_release = int(
+                     self.run_function(
 -- 
-2.23.0
+2.16.4
 
 

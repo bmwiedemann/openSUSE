@@ -1,4 +1,4 @@
-From f5d743b6a2a0dd2066e33d0a0ea13bfccc9ae9b0 Mon Sep 17 00:00:00 2001
+From be2f4d3da3612ca02f215f987e4055d2bd177a7b Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 17 Oct 2018 14:10:47 +0200
 Subject: [PATCH] Support-config non-root permission issues fixes
@@ -88,10 +88,10 @@ index 478d07e13b..a4343297b6 100644
              else:
                  self.out.warning('File {} already exists.'.format(self.config['support_archive']))
 diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
-index aa13310d5a..901bbbea55 100644
+index 83dfe717f6..5f98c73291 100644
 --- a/salt/utils/parsers.py
 +++ b/salt/utils/parsers.py
-@@ -1961,7 +1961,7 @@ class SaltSupportOptionParser(six.with_metaclass(OptionParserMeta, OptionParser,
+@@ -1972,7 +1972,7 @@ class SaltSupportOptionParser(six.with_metaclass(OptionParserMeta, OptionParser,
          '''
          _opts, _args = optparse.OptionParser.parse_args(self)
          configs = self.find_existing_configs(_opts.support_unit)

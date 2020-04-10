@@ -1,4 +1,4 @@
-From 682964fe1cb3fc859eb72da524beaeb2a85ff610 Mon Sep 17 00:00:00 2001
+From 2cb7515f83e2c358b84724e4eb581daa78012fdf Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 28 Sep 2018 15:22:33 +0200
 Subject: [PATCH] Fix IPv6 scope (bsc#1108557)
@@ -73,10 +73,10 @@ Reverse skipping tests: if no ipaddress
  1 file changed, 74 insertions(+)
 
 diff --git a/salt/_compat.py b/salt/_compat.py
-index ed6f4a38ea..61842b4bf3 100644
+index e999605d2c..965bb90da3 100644
 --- a/salt/_compat.py
 +++ b/salt/_compat.py
-@@ -229,7 +229,81 @@ class IPv6InterfaceScoped(ipaddress.IPv6Interface, IPv6AddressScoped):
+@@ -230,7 +230,81 @@ class IPv6InterfaceScoped(ipaddress.IPv6Interface, IPv6AddressScoped):
          self.hostmask = self.network.hostmask
  
  

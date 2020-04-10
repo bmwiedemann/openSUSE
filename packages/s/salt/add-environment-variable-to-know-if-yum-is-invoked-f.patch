@@ -1,4 +1,4 @@
-From 960c7f29239a23c3d46c31692d2e881735f4d2a7 Mon Sep 17 00:00:00 2001
+From 874b1229babf5244debac141cd260f695ccc1e9d Mon Sep 17 00:00:00 2001
 From: Marcelo Chiaradia <mchiaradia@suse.com>
 Date: Thu, 7 Jun 2018 10:29:41 +0200
 Subject: [PATCH] Add environment variable to know if yum is invoked from
@@ -9,10 +9,10 @@ Subject: [PATCH] Add environment variable to know if yum is invoked from
  1 file changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index c250b94f0e..a56a2e8366 100644
+index f7e4ac9753..c89d321a1b 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -887,7 +887,8 @@ def list_repo_pkgs(*args, **kwargs):
+@@ -913,7 +913,8 @@ def list_repo_pkgs(*args, **kwargs):
      yum_version = None if _yum() != 'yum' else _LooseVersion(
                  __salt__['cmd.run'](
                      ['yum', '--version'],
@@ -22,7 +22,7 @@ index c250b94f0e..a56a2e8366 100644
                  ).splitlines()[0].strip()
              )
      # Really old version of yum; does not even have --showduplicates option
-@@ -2298,7 +2299,8 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
+@@ -2324,7 +2325,8 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
      _check_versionlock()
  
      out = __salt__['cmd.run']([_yum(), 'versionlock', 'list'],
@@ -32,7 +32,7 @@ index c250b94f0e..a56a2e8366 100644
      ret = []
      for line in salt.utils.itertools.split(out, '\n'):
          match = _get_hold(line, pattern=pattern, full=full)
-@@ -2364,7 +2366,8 @@ def group_list():
+@@ -2390,7 +2392,8 @@ def group_list():
      out = __salt__['cmd.run_stdout'](
          [_yum(), 'grouplist', 'hidden'],
          output_loglevel='trace',
@@ -42,7 +42,7 @@ index c250b94f0e..a56a2e8366 100644
      )
      key = None
      for line in salt.utils.itertools.split(out, '\n'):
-@@ -2431,7 +2434,8 @@ def group_info(name, expand=False):
+@@ -2457,7 +2460,8 @@ def group_info(name, expand=False):
      out = __salt__['cmd.run_stdout'](
          cmd,
          output_loglevel='trace',
@@ -52,7 +52,7 @@ index c250b94f0e..a56a2e8366 100644
      )
  
      g_info = {}
-@@ -3100,7 +3104,8 @@ def download(*packages):
+@@ -3134,7 +3138,8 @@ def download(*packages):
      __salt__['cmd.run'](
          cmd,
          output_loglevel='trace',
@@ -62,7 +62,7 @@ index c250b94f0e..a56a2e8366 100644
      )
      ret = {}
      for dld_result in os.listdir(CACHE_DIR):
-@@ -3175,7 +3180,8 @@ def _get_patches(installed_only=False):
+@@ -3209,7 +3214,8 @@ def _get_patches(installed_only=False):
      cmd = [_yum(), '--quiet', 'updateinfo', 'list', 'all']
      ret = __salt__['cmd.run_stdout'](
          cmd,

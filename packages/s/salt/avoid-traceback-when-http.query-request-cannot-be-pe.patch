@@ -1,4 +1,4 @@
-From 58504344b62fd577c0ef9c8d55378ea668a57912 Mon Sep 17 00:00:00 2001
+From e45658e074fbf8c038816dc56b86c3daf33d6ebc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 29 Jul 2019 11:17:53 +0100
@@ -11,11 +11,11 @@ Improve error logging when http.query cannot be performed
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/salt/utils/http.py b/salt/utils/http.py
-index c75ca73a85..ced01e110f 100644
+index dee0563679..c2fdffb266 100644
 --- a/salt/utils/http.py
 +++ b/salt/utils/http.py
-@@ -567,11 +567,13 @@ def query(url,
-         except tornado.httpclient.HTTPError as exc:
+@@ -580,11 +580,13 @@ def query(url,
+         except salt.ext.tornado.httpclient.HTTPError as exc:
              ret['status'] = exc.code
              ret['error'] = six.text_type(exc)
 +            log.error("Cannot perform 'http.query': {0} - {1}".format(url_full, ret['error']))

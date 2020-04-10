@@ -1,4 +1,4 @@
-From 3ae0b949dacc7ac597dc94a5141d2f4c23d6efc5 Mon Sep 17 00:00:00 2001
+From 5c25babafd4e4bbe55626713851ea5d6345c43d1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 9 Oct 2019 13:03:33 +0100
@@ -9,7 +9,7 @@ Subject: [PATCH] Add missing 'fun' for returns from wfunc executions
  1 file changed, 4 insertions(+)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 1453430e73..0df918d634 100644
+index 4881540837..1373274739 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -682,6 +682,8 @@ class SSH(object):

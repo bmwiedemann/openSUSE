@@ -1,0 +1,34 @@
+From 39b88fd0a3f882e0b33973665bbbacdd60c26a9b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 25 Mar 2020 13:09:52 +0000
+Subject: [PATCH] Make setup.py script to not require setuptools > 9.1
+
+---
+ setup.py | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 06374647df5e82a21fc39b08d41c596f0483ff0c..67a915c64ce5d774e8f89ff3502e85b6bc04b82f 100755
+--- a/setup.py
++++ b/setup.py
+@@ -700,15 +700,6 @@ class Install(install):
+         install.finalize_options(self)
+ 
+     def run(self):
+-        from distutils.version import StrictVersion
+-        if StrictVersion(setuptools.__version__) < StrictVersion('9.1'):
+-            sys.stderr.write(
+-                '\n\nInstalling Salt requires setuptools >= 9.1\n'
+-                'Available setuptools version is {}\n\n'.format(setuptools.__version__)
+-            )
+-            sys.stderr.flush()
+-            sys.exit(1)
+-
+         # Let's set the running_salt_install attribute so we can add
+         # _version.py in the build command
+         self.distribution.running_salt_install = True
+-- 
+2.23.0
+
+

@@ -1,4 +1,4 @@
-From 11d5623a4b9b8ac40f29adb79f203ab8bbfdd8fc Mon Sep 17 00:00:00 2001
+From 9a5f007a5baa4ba1d28b0e6708bac8b134e4891c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Mihai=20Dinc=C4=83?= <dincamihai@users.noreply.github.com>
 Date: Tue, 26 Nov 2019 18:26:31 +0100
 Subject: [PATCH] Fixing StreamClosed issue
@@ -28,6 +28,6 @@ index 754c257b36..c4545e3ebc 100644
          self.ioloop = None
          gc.collect()
 -- 
-2.23.0
+2.16.4
 
 

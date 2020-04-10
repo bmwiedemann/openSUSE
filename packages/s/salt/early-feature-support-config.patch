@@ -1,4 +1,4 @@
-From 0e4ac6001d552e649f8ab9d6c04b18bd531e4240 Mon Sep 17 00:00:00 2001
+From 33a85b16a4740f3dd803fd0e47e26819afeecdd7 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 10 Jul 2018 12:06:33 +0200
 Subject: [PATCH] early feature: support-config
@@ -291,24 +291,24 @@ Remove development stub. Ughh...
 
 Removed blacklist of pkg_resources
 ---
- salt/cli/support/__init__.py              |  65 ++++
- salt/cli/support/collector.py             | 495 ++++++++++++++++++++++++++++++
- salt/cli/support/console.py               | 165 ++++++++++
- salt/cli/support/intfunc.py               |  42 +++
+ salt/cli/support/__init__.py              |  65 +++
+ salt/cli/support/collector.py             | 495 ++++++++++++++++++++++
+ salt/cli/support/console.py               | 165 ++++++++
+ salt/cli/support/intfunc.py               |  42 ++
  salt/cli/support/localrunner.py           |  34 ++
- salt/cli/support/profiles/default.yml     |  71 +++++
+ salt/cli/support/profiles/default.yml     |  71 ++++
  salt/cli/support/profiles/jobs-active.yml |   3 +
  salt/cli/support/profiles/jobs-last.yml   |   3 +
  salt/cli/support/profiles/jobs-trace.yml  |   7 +
  salt/cli/support/profiles/network.yml     |  27 ++
  salt/cli/support/profiles/postgres.yml    |  11 +
  salt/cli/support/profiles/salt.yml        |   9 +
- salt/cli/support/profiles/users.yml       |  22 ++
+ salt/cli/support/profiles/users.yml       |  22 +
  salt/scripts.py                           |  14 +
- salt/utils/parsers.py                     |  65 ++++
+ salt/utils/parsers.py                     |  65 +++
  scripts/salt-support                      |  11 +
  setup.py                                  |   2 +
- tests/unit/cli/test_support.py            | 477 ++++++++++++++++++++++++++++
+ tests/unit/cli/test_support.py            | 477 +++++++++++++++++++++
  18 files changed, 1523 insertions(+)
  create mode 100644 salt/cli/support/__init__.py
  create mode 100644 salt/cli/support/collector.py
@@ -328,7 +328,7 @@ Removed blacklist of pkg_resources
 
 diff --git a/salt/cli/support/__init__.py b/salt/cli/support/__init__.py
 new file mode 100644
-index 0000000000..6a98a2d656
+index 0000000000000000000000000000000000000000..6a98a2d65656c0ad89d921b6842067a7399eab2c
 --- /dev/null
 +++ b/salt/cli/support/__init__.py
 @@ -0,0 +1,65 @@
@@ -399,7 +399,7 @@ index 0000000000..6a98a2d656
 +    return sorted(profiles)
 diff --git a/salt/cli/support/collector.py b/salt/cli/support/collector.py
 new file mode 100644
-index 0000000000..478d07e13b
+index 0000000000000000000000000000000000000000..478d07e13bf264b5d0caacd487cc45441ff259fb
 --- /dev/null
 +++ b/salt/cli/support/collector.py
 @@ -0,0 +1,495 @@
@@ -900,7 +900,7 @@ index 0000000000..478d07e13b
 +        sys.exit(exit_code)
 diff --git a/salt/cli/support/console.py b/salt/cli/support/console.py
 new file mode 100644
-index 0000000000..fb6992d657
+index 0000000000000000000000000000000000000000..fb6992d657e21a6b933e81135d812f7bd3720a9e
 --- /dev/null
 +++ b/salt/cli/support/console.py
 @@ -0,0 +1,165 @@
@@ -1071,7 +1071,7 @@ index 0000000000..fb6992d657
 +    return wrapper.wrap(txt)
 diff --git a/salt/cli/support/intfunc.py b/salt/cli/support/intfunc.py
 new file mode 100644
-index 0000000000..2727cd6394
+index 0000000000000000000000000000000000000000..2727cd6394c364e35c99403b75e7fd23856187c6
 --- /dev/null
 +++ b/salt/cli/support/intfunc.py
 @@ -0,0 +1,42 @@
@@ -1119,7 +1119,7 @@ index 0000000000..2727cd6394
 +                filetree(collector, fname)
 diff --git a/salt/cli/support/localrunner.py b/salt/cli/support/localrunner.py
 new file mode 100644
-index 0000000000..26deb883bc
+index 0000000000000000000000000000000000000000..26deb883bccc98079201d26deba01008cca72921
 --- /dev/null
 +++ b/salt/cli/support/localrunner.py
 @@ -0,0 +1,34 @@
@@ -1159,7 +1159,7 @@ index 0000000000..26deb883bc
 +        return self.low(fun, low, print_event=False, full_return=False)
 diff --git a/salt/cli/support/profiles/default.yml b/salt/cli/support/profiles/default.yml
 new file mode 100644
-index 0000000000..01d9a26193
+index 0000000000000000000000000000000000000000..01d9a261933333a6246e932556cdd88f3adf1f82
 --- /dev/null
 +++ b/salt/cli/support/profiles/default.yml
 @@ -0,0 +1,71 @@
@@ -1236,7 +1236,7 @@ index 0000000000..01d9a26193
 +
 diff --git a/salt/cli/support/profiles/jobs-active.yml b/salt/cli/support/profiles/jobs-active.yml
 new file mode 100644
-index 0000000000..508c54ece7
+index 0000000000000000000000000000000000000000..508c54ece79087c98ba2dd4bd0ee265b09520296
 --- /dev/null
 +++ b/salt/cli/support/profiles/jobs-active.yml
 @@ -0,0 +1,3 @@
@@ -1245,7 +1245,7 @@ index 0000000000..508c54ece7
 +      info: List of all actively running jobs
 diff --git a/salt/cli/support/profiles/jobs-last.yml b/salt/cli/support/profiles/jobs-last.yml
 new file mode 100644
-index 0000000000..e3b719f552
+index 0000000000000000000000000000000000000000..e3b719f552d2288d15dc5af4d6c320e0386ed7d0
 --- /dev/null
 +++ b/salt/cli/support/profiles/jobs-last.yml
 @@ -0,0 +1,3 @@
@@ -1254,7 +1254,7 @@ index 0000000000..e3b719f552
 +      info: List all detectable jobs and associated functions
 diff --git a/salt/cli/support/profiles/jobs-trace.yml b/salt/cli/support/profiles/jobs-trace.yml
 new file mode 100644
-index 0000000000..00b28e0502
+index 0000000000000000000000000000000000000000..00b28e0502e2e6dbd9fe3e990750cbc1f9a94a30
 --- /dev/null
 +++ b/salt/cli/support/profiles/jobs-trace.yml
 @@ -0,0 +1,7 @@
@@ -1267,7 +1267,7 @@ index 0000000000..00b28e0502
 +  {% endfor %}
 diff --git a/salt/cli/support/profiles/network.yml b/salt/cli/support/profiles/network.yml
 new file mode 100644
-index 0000000000..268f02e61f
+index 0000000000000000000000000000000000000000..268f02e61fbe9b5f0870569a9343da6e778a7017
 --- /dev/null
 +++ b/salt/cli/support/profiles/network.yml
 @@ -0,0 +1,27 @@
@@ -1300,7 +1300,7 @@ index 0000000000..268f02e61f
 +      info: ARP table
 diff --git a/salt/cli/support/profiles/postgres.yml b/salt/cli/support/profiles/postgres.yml
 new file mode 100644
-index 0000000000..2238752c7a
+index 0000000000000000000000000000000000000000..2238752c7a90a09bddc9cd3cbf27acbbf2a85c1c
 --- /dev/null
 +++ b/salt/cli/support/profiles/postgres.yml
 @@ -0,0 +1,11 @@
@@ -1317,7 +1317,7 @@ index 0000000000..2238752c7a
 +        - /etc/postgresql
 diff --git a/salt/cli/support/profiles/salt.yml b/salt/cli/support/profiles/salt.yml
 new file mode 100644
-index 0000000000..4b18d98870
+index 0000000000000000000000000000000000000000..4b18d9887002f9a9efdd6f54870db4b74384a19e
 --- /dev/null
 +++ b/salt/cli/support/profiles/salt.yml
 @@ -0,0 +1,9 @@
@@ -1332,7 +1332,7 @@ index 0000000000..4b18d98870
 +        - {{salt('config.get', 'log_file')}}
 diff --git a/salt/cli/support/profiles/users.yml b/salt/cli/support/profiles/users.yml
 new file mode 100644
-index 0000000000..391acdb606
+index 0000000000000000000000000000000000000000..391acdb606d2ebb35ac7cff10844fffd84d96915
 --- /dev/null
 +++ b/salt/cli/support/profiles/users.yml
 @@ -0,0 +1,22 @@
@@ -1359,13 +1359,13 @@ index 0000000000..391acdb606
 +      info: List of all available groups
 +      output: table
 diff --git a/salt/scripts.py b/salt/scripts.py
-index 71120366e0..c789df4e39 100644
+index 5e623a578e8363b51e10af247b325069741064d5..401ec2055303dd3b342110ddbab155e30d5b4e31 100644
 --- a/salt/scripts.py
 +++ b/salt/scripts.py
-@@ -539,3 +539,17 @@ def salt_extend(extension, name, description, salt_dir, merge):
-                           description=description,
-                           salt_dir=salt_dir,
-                           merge=merge)
+@@ -579,3 +579,17 @@ def salt_unity():
+         sys.argv.pop(1)
+         s_fun = getattr(sys.modules[__name__], 'salt_{0}'.format(cmd))
+     s_fun()
 +
 +
 +def salt_support():
@@ -1381,10 +1381,10 @@ index 71120366e0..c789df4e39 100644
 +    _install_signal_handlers(client)
 +    client.run()
 diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
-index 1e652a845e..aa13310d5a 100644
+index fb9b0987a65ce1607de63f6f83ce96f6987800aa..83dfe717f6a66305ad1c2505da5d3aa380495171 100644
 --- a/salt/utils/parsers.py
 +++ b/salt/utils/parsers.py
-@@ -20,6 +20,7 @@ import getpass
+@@ -21,6 +21,7 @@ import getpass
  import logging
  import optparse
  import traceback
@@ -1392,15 +1392,15 @@ index 1e652a845e..aa13310d5a 100644
  from functools import partial
  
  
-@@ -34,6 +35,7 @@ import salt.utils.data
+@@ -34,6 +35,7 @@ import salt.utils.args
+ import salt.utils.data
  import salt.utils.files
  import salt.utils.jid
- import salt.utils.kinds as kinds
 +import salt.utils.network
  import salt.utils.platform
  import salt.utils.process
  import salt.utils.stringutils
-@@ -1902,6 +1904,69 @@ class SyndicOptionParser(six.with_metaclass(OptionParserMeta,
+@@ -1913,6 +1915,69 @@ class SyndicOptionParser(six.with_metaclass(OptionParserMeta,
              self.get_config_file_path('minion'))
  
  
@@ -1472,7 +1472,7 @@ index 1e652a845e..aa13310d5a 100644
                                               ConfigDirMixIn,
 diff --git a/scripts/salt-support b/scripts/salt-support
 new file mode 100755
-index 0000000000..48ce141c67
+index 0000000000000000000000000000000000000000..48ce141c673aa390174f88f0e18b857c561ab6f5
 --- /dev/null
 +++ b/scripts/salt-support
 @@ -0,0 +1,11 @@
@@ -1488,10 +1488,10 @@ index 0000000000..48ce141c67
 +if __name__ == '__main__':
 +    salt_support()
 diff --git a/setup.py b/setup.py
-index 3e930df8db..25e06a42f6 100755
+index 788664e14e1e93ffe51e9ace4409b48e9b4afeaf..06374647df5e82a21fc39b08d41c596f0483ff0c 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1051,6 +1051,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1058,6 +1058,7 @@ class SaltDistribution(distutils.dist.Distribution):
                          'scripts/salt-master',
                          'scripts/salt-minion',
                          'scripts/salt-proxy',
@@ -1499,7 +1499,7 @@ index 3e930df8db..25e06a42f6 100755
                          'scripts/salt-ssh',
                          'scripts/salt-syndic',
                          'scripts/salt-unity',
-@@ -1086,6 +1087,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1093,6 +1094,7 @@ class SaltDistribution(distutils.dist.Distribution):
                          'salt-key = salt.scripts:salt_key',
                          'salt-master = salt.scripts:salt_master',
                          'salt-minion = salt.scripts:salt_minion',
@@ -1509,7 +1509,7 @@ index 3e930df8db..25e06a42f6 100755
                          'salt-unity = salt.scripts:salt_unity',
 diff --git a/tests/unit/cli/test_support.py b/tests/unit/cli/test_support.py
 new file mode 100644
-index 0000000000..85ea957d79
+index 0000000000000000000000000000000000000000..85ea957d7921257d9ebfff3c136438524008c7cd
 --- /dev/null
 +++ b/tests/unit/cli/test_support.py
 @@ -0,0 +1,477 @@
@@ -1991,6 +1991,6 @@ index 0000000000..85ea957d79
 +        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['info'] == 'Details on JID 0000'
 +        assert jobs_trace['jobs-details'][0]['run:jobs.list_job']['args'] == [0]
 -- 
-2.16.4
+2.23.0
 
 

@@ -1,4 +1,4 @@
-From 1cdaeb8613132c020364b7078448834be7bbb705 Mon Sep 17 00:00:00 2001
+From f2b465f41575a8a28d4762f9647ea30df6a64637 Mon Sep 17 00:00:00 2001
 From: Matei Albu <malbu@suse.de>
 Date: Fri, 15 Feb 2019 14:34:13 +0100
 Subject: [PATCH] Strip trailing "/" from repo.uri when comparing repos
@@ -10,10 +10,10 @@ Subject: [PATCH] Strip trailing "/" from repo.uri when comparing repos
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index b7c1a342ef..d49a48310e 100644
+index a5b039fc79..bafad40efe 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2354,7 +2354,7 @@ def mod_repo(repo, saltenv='base', **kwargs):
+@@ -2365,7 +2365,7 @@ def mod_repo(repo, saltenv='base', **kwargs):
          # and the resulting source line.  The idea here is to ensure
          # we are not returning bogus data because the source line
          # has already been modified on a previous run.

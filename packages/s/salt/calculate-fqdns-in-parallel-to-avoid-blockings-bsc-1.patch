@@ -1,4 +1,4 @@
-From e27ccce1429fa604137df35d8dabbc8016c2b5c9 Mon Sep 17 00:00:00 2001
+From 07f5a1d984b5a86c24620503f5e373ea0f11484a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 12 Apr 2019 16:47:03 +0100
@@ -11,7 +11,7 @@ Fix pylint issue
  1 file changed, 26 insertions(+), 5 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 7d75d48bb5..ac66a437fd 100644
+index 309e4c9c4a..4600f055dd 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -20,12 +20,15 @@ import platform
@@ -30,7 +30,7 @@ index 7d75d48bb5..ac66a437fd 100644
  # pylint: disable=import-error
  try:
      import dateutil.tz
-@@ -2255,13 +2258,10 @@ def fqdns():
+@@ -2275,13 +2278,10 @@ def fqdns():
      grains = {}
      fqdns = set()
  
@@ -44,9 +44,9 @@ index 7d75d48bb5..ac66a437fd 100644
 -            fqdns.update([socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)])
 +            return [socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)]
          except socket.herror as err:
-             if err.errno == 0:
+             if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
-@@ -2271,6 +2271,27 @@ def fqdns():
+@@ -2291,6 +2291,27 @@ def fqdns():
          except (socket.error, socket.gaierror, socket.timeout) as err:
              log.error(err_message, ip, err)
  

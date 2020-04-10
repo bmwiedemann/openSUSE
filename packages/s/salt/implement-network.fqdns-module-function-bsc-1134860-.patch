@@ -1,4 +1,4 @@
-From a94e1316565a30e166a5a846404fd2c2bd85e2ca Mon Sep 17 00:00:00 2001
+From a11587a1209cd198f421fafdb43510b6d651f4b2 Mon Sep 17 00:00:00 2001
 From: EricS <54029547+ESiebigteroth@users.noreply.github.com>
 Date: Tue, 3 Sep 2019 11:22:53 +0200
 Subject: [PATCH] Implement network.fqdns module function (bsc#1134860)
@@ -15,11 +15,11 @@ Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
  salt/grains/core.py            | 66 +++++-------------------------------------
  salt/modules/network.py        | 60 ++++++++++++++++++++++++++++++++++++++
  salt/utils/network.py          | 12 ++++++++
- tests/unit/grains/test_core.py | 64 +++++++++++++++++++++++++++++++---------
- 4 files changed, 131 insertions(+), 71 deletions(-)
+ tests/unit/grains/test_core.py | 63 +++++++++++++++++++++++++++++++---------
+ 4 files changed, 130 insertions(+), 71 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 30eba0ce99..e1d08b76cf 100644
+index 0f3ccd9b92..77ae99590f 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -26,8 +26,9 @@ from errno import EACCES, EPERM
@@ -49,7 +49,7 @@ index 30eba0ce99..e1d08b76cf 100644
  
  # Possible value for h_errno defined in netdb.h
  HOST_NOT_FOUND = 1
-@@ -1538,17 +1539,6 @@ def _linux_bin_exists(binary):
+@@ -1553,17 +1554,6 @@ def _linux_bin_exists(binary):
          return False
  
  
@@ -67,7 +67,7 @@ index 30eba0ce99..e1d08b76cf 100644
  def _parse_lsb_release():
      ret = {}
      try:
-@@ -2255,52 +2245,12 @@ def fqdns():
+@@ -2271,52 +2261,12 @@ def fqdns():
      '''
      Return all known FQDNs for the system by enumerating all interfaces and
      then trying to reverse resolve them (excluding 'lo' interface).
@@ -126,7 +126,7 @@ index 30eba0ce99..e1d08b76cf 100644
  
  def ip_fqdn():
 diff --git a/salt/modules/network.py b/salt/modules/network.py
-index 8b4dfcead4..2f1b1c09e0 100644
+index 38e2bc326e..880f4f8d5f 100644
 --- a/salt/modules/network.py
 +++ b/salt/modules/network.py
 @@ -11,6 +11,10 @@ import logging
@@ -202,11 +202,11 @@ index 8b4dfcead4..2f1b1c09e0 100644
 +    return {"fqdns": sorted(list(fqdns))}
 \ No newline at end of file
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index a3fd6e848e..3c8178eeb4 100644
+index 74536cc143..4cc8a05c4a 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -55,6 +55,18 @@ except (ImportError, OSError, AttributeError, TypeError):
- # pylint: disable=C0103
+@@ -50,6 +50,18 @@ except (ImportError, OSError, AttributeError, TypeError):
+     pass
  
  
 +_INTERFACES = {}
@@ -225,18 +225,18 @@ index a3fd6e848e..3c8178eeb4 100644
      '''
      Sanitize host string.
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index af9d27dd0e..09e197a2e4 100644
+index ac03b57226..60914204b0 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -34,6 +34,7 @@ import salt.utils.network
- import salt.utils.platform
- import salt.utils.path
+@@ -35,6 +35,7 @@ import salt.utils.path
+ import salt.modules.cmdmod
+ import salt.modules.smbios
  import salt.grains.core as core
 +import salt.modules.network
  
  # Import 3rd-party libs
  from salt.ext import six
-@@ -976,6 +977,40 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1029,6 +1030,40 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
          with patch.object(salt.utils.dns, 'parse_resolv', MagicMock(return_value=resolv_mock)):
              assert core.dns() == ret
  
@@ -275,9 +275,9 @@ index af9d27dd0e..09e197a2e4 100644
 +
 +
      @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-     @patch.object(salt.utils, 'is_windows', MagicMock(return_value=False))
      @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4', '5.6.7.8']))
-@@ -992,11 +1027,12 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+     @patch('salt.utils.network.ip_addrs6',
+@@ -1044,11 +1079,12 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
                                 ('foo.bar.baz', [], ['fe80::a8b2:93ff:fe00:0']),
                                 ('bluesniff.foo.bar', [], ['fe80::a8b2:93ff:dead:beef'])]
          ret = {'fqdns': ['bluesniff.foo.bar', 'foo.bar.baz', 'rinzler.evil-corp.com']}
@@ -294,8 +294,8 @@ index af9d27dd0e..09e197a2e4 100644
 +                assert set(fqdns['fqdns']) == set(ret['fqdns'])
  
      @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
-     @patch.object(salt.utils.platform, 'is_windows', MagicMock(return_value=False))
-@@ -1012,14 +1048,16 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+     @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4']))
+@@ -1094,14 +1130,15 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
                                 ('rinzler.evil-corp.com', ["false-hostname", "badaliass"], ['5.6.7.8']),
                                 ('foo.bar.baz', [], ['fe80::a8b2:93ff:fe00:0']),
                                 ('bluesniff.foo.bar', ["alias.bluesniff.foo.bar"], ['fe80::a8b2:93ff:dead:beef'])]
@@ -316,10 +316,9 @@ index af9d27dd0e..09e197a2e4 100644
 +
 +                for alias in ["throwmeaway", "false-hostname", "badaliass"]:
 +                    assert alias not in fqdns["fqdns"]
-+
+ 
      def test_core_virtual(self):
          '''
-         test virtual grain with cmd virt-what
 -- 
 2.16.4
 

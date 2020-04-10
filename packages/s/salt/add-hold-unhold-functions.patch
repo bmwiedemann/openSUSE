@@ -1,4 +1,4 @@
-From 1a98027d94dc7491182a16eef2e6134c2d8423b6 Mon Sep 17 00:00:00 2001
+From 666f62917bbc48cbee2ed0aa319a61afd1b1fcb2 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 6 Dec 2018 16:26:23 +0100
 Subject: [PATCH] Add hold/unhold functions
@@ -11,7 +11,7 @@ Add warnings
  1 file changed, 87 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 001b852fc4..0c26e2214c 100644
+index 50279ccbd1..08a9c2ed4d 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
 @@ -41,6 +41,7 @@ import salt.utils.pkg
@@ -22,7 +22,7 @@ index 001b852fc4..0c26e2214c 100644
  from salt.utils.versions import LooseVersion
  import salt.utils.environment
  from salt.exceptions import CommandExecutionError, MinionError, SaltInvocationError
-@@ -1742,7 +1743,7 @@ def clean_locks():
+@@ -1771,7 +1772,7 @@ def clean_locks():
      return out
  
  
@@ -31,7 +31,7 @@ index 001b852fc4..0c26e2214c 100644
      '''
      Remove specified package lock.
  
-@@ -1754,7 +1755,47 @@ def remove_lock(packages, **kwargs):  # pylint: disable=unused-argument
+@@ -1783,7 +1784,47 @@ def remove_lock(packages, **kwargs):  # pylint: disable=unused-argument
          salt '*' pkg.remove_lock <package1>,<package2>,<package3>
          salt '*' pkg.remove_lock pkgs='["foo", "bar"]'
      '''
@@ -79,7 +79,7 @@ index 001b852fc4..0c26e2214c 100644
      locks = list_locks()
      try:
          packages = list(__salt__['pkg_resource.parse_targets'](packages)[0].keys())
-@@ -1775,6 +1816,50 @@ def remove_lock(packages, **kwargs):  # pylint: disable=unused-argument
+@@ -1804,6 +1845,50 @@ def remove_lock(packages, **kwargs):  # pylint: disable=unused-argument
      return {'removed': len(removed), 'not_found': missing}
  
  
@@ -130,7 +130,7 @@ index 001b852fc4..0c26e2214c 100644
  def add_lock(packages, **kwargs):  # pylint: disable=unused-argument
      '''
      Add a package lock. Specify packages to lock by exact name.
-@@ -1787,6 +1872,7 @@ def add_lock(packages, **kwargs):  # pylint: disable=unused-argument
+@@ -1816,6 +1901,7 @@ def add_lock(packages, **kwargs):  # pylint: disable=unused-argument
          salt '*' pkg.add_lock <package1>,<package2>,<package3>
          salt '*' pkg.add_lock pkgs='["foo", "bar"]'
      '''

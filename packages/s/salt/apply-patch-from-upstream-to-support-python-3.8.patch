@@ -1,4 +1,4 @@
-From 41a0d937511356dc75f4f041a08c1458b4e0ccf4 Mon Sep 17 00:00:00 2001
+From b8226467e665650a0587b8fd64242faefb805e13 Mon Sep 17 00:00:00 2001
 From: Steve Kowalik <steven@wedontsleep.org>
 Date: Mon, 17 Feb 2020 15:34:00 +1100
 Subject: [PATCH] Apply patch from upstream to support Python 3.8
@@ -35,10 +35,10 @@ index e3e678af3b..0f6a9bc012 100644
  # requirements/opt.txt (not all)
  Recommends:     python-MySQL-python
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 658128dac0..a372200892 100644
+index 0ebe1181dd..f484d94e7e 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -3276,7 +3276,9 @@ def apply_cloud_providers_config(overrides, defaults=None):
+@@ -3196,7 +3196,9 @@ def apply_cloud_providers_config(overrides, defaults=None):
          # Merge provided extends
          keep_looping = False
          for alias, entries in six.iteritems(providers.copy()):
@@ -50,7 +50,7 @@ index 658128dac0..a372200892 100644
                  if 'extends' not in details:
                      # Extends resolved or non existing, continue!
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 67e263d37b..0017c0f472 100644
+index f410985198..358b66fdb0 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -40,20 +40,20 @@ except ImportError:
@@ -81,7 +81,7 @@ index 67e263d37b..0017c0f472 100644
  except ImportError:
      from distro import linux_distribution
  
-@@ -1961,7 +1961,7 @@ def os_data():
+@@ -1976,7 +1976,7 @@ def os_data():
          )
          (osname, osrelease, oscodename) = \
              [x.strip('"').strip("'") for x in
@@ -91,7 +91,7 @@ index 67e263d37b..0017c0f472 100644
          # be more accurate than what python gets from /etc/DISTRO-release.
          # It's worth noting that Ubuntu has patched their Python distribution
 diff --git a/salt/renderers/stateconf.py b/salt/renderers/stateconf.py
-index 8cd0235c99..2ce888d5f3 100644
+index cfce9e6926..5c8a8322ed 100644
 --- a/salt/renderers/stateconf.py
 +++ b/salt/renderers/stateconf.py
 @@ -224,10 +224,10 @@ def render(input, saltenv='base', sls='', argline='', **kws):
@@ -110,7 +110,7 @@ index 8cd0235c99..2ce888d5f3 100644
              tmplctx = {}
  
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 719f97a724..3079657a9b 100644
+index 94372c6d72..d762dcc479 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
 @@ -1256,7 +1256,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):

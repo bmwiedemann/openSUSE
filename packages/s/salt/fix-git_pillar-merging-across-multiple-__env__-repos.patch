@@ -1,4 +1,4 @@
-From 31b9186f48ac37e2b814b8db61ec1d5a5868659f Mon Sep 17 00:00:00 2001
+From 900d63bc5e85496e16373025457561b405f2329f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 6 Nov 2018 16:38:54 +0000
@@ -15,10 +15,10 @@ Remove unicode references
  1 file changed, 45 insertions(+)
 
 diff --git a/tests/integration/pillar/test_git_pillar.py b/tests/integration/pillar/test_git_pillar.py
-index 9ade88840b..ab3b1a89cf 100644
+index 2e549f3948..d417a7ebc3 100644
 --- a/tests/integration/pillar/test_git_pillar.py
 +++ b/tests/integration/pillar/test_git_pillar.py
-@@ -1388,6 +1388,51 @@ class TestPygit2SSH(GitPillarSSHTestBase):
+@@ -1382,6 +1382,51 @@ class TestPygit2SSH(GitPillarSSHTestBase):
                          'nested_dict': {'master': True}}}
          )
  

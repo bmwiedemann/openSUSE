@@ -1,4 +1,4 @@
-From 3c39b7ae5e4a0cd11a77241abde9407a8e1b3f07 Mon Sep 17 00:00:00 2001
+From 7e9adda8dfd53050756d0ac0cf64570b76ce7365 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 13 Mar 2019 16:14:07 +0000
@@ -7,38 +7,25 @@ Subject: [PATCH] Do not report patches as installed when not all the
 
 Co-authored-by: Mihai Dinca <mdinca@suse.de>
 ---
- salt/modules/yumpkg.py | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ salt/modules/yumpkg.py | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 4f26a41670..5ec3835574 100644
+index b1257d0de0..3ddf989511 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -3212,12 +3212,18 @@ def _get_patches(installed_only=False):
+@@ -3220,7 +3220,11 @@ def _get_patches(installed_only=False):
      for line in salt.utils.itertools.split(ret, os.linesep):
          inst, advisory_id, sev, pkg = re.match(r'([i|\s]) ([^\s]+) +([^\s]+) +([^\s]+)',
                                                 line).groups()
--        if inst != 'i' and installed_only:
--            continue
--        patches[advisory_id] = {
--            'installed': True if inst == 'i' else False,
--            'summary': pkg
--        }
++<<<<<<< HEAD
+         if advisory_id not in patches:
++=======
 +        if not advisory_id in patches:
-+            patches[advisory_id] = {
-+                'installed': True if inst == 'i' else False,
-+                'summary': [pkg]
-+            }
-+        else:
-+            patches[advisory_id]['summary'].append(pkg)
-+            if inst != 'i':
-+                patches[advisory_id]['installed'] = False
-+
-+    if installed_only:
-+        patches = {k: v for k, v in patches.items() if v['installed']}
-     return patches
- 
- 
++>>>>>>> Do not report patches as installed when not all the related packages are installed (bsc#1128061)
+             patches[advisory_id] = {
+                 'installed': True if inst == 'i' else False,
+                 'summary': [pkg]
 -- 
 2.16.4
 

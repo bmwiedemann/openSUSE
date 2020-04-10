@@ -1,4 +1,4 @@
-From 9e543a835c870eaea424735fb8e52a82480dce90 Mon Sep 17 00:00:00 2001
+From 93f69a227b7f8c3d4625c0699ab3923d4a0b3127 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 16 Nov 2018 10:54:12 +0100
 Subject: [PATCH] Make aptpkg.list_repos compatible on enabled/disabled
@@ -9,10 +9,10 @@ Subject: [PATCH] Make aptpkg.list_repos compatible on enabled/disabled
  1 file changed, 1 insertion(+)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index ead7c6391e..6b3a921a82 100644
+index b5503f0b10..8f4d95a195 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -1595,6 +1595,7 @@ def list_repos():
+@@ -1641,6 +1641,7 @@ def list_repos():
          repo['file'] = source.file
          repo['comps'] = getattr(source, 'comps', [])
          repo['disabled'] = source.disabled

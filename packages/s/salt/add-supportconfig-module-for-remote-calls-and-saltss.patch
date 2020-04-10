@@ -1,4 +1,4 @@
-From 4bf9567fd28470085ee501e5e17c75a932b5dde5 Mon Sep 17 00:00:00 2001
+From f4388ef82b5053e9996272b182c29a2da21a6258 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 19 Oct 2018 15:44:47 +0200
 Subject: [PATCH] Add supportconfig module for remote calls and SaltSSH
@@ -267,10 +267,10 @@ index a4343297b6..cbae189aea 100644
  
                              archive_path = self.collector.archive_path
 diff --git a/salt/loader.py b/salt/loader.py
-index 0cff0c72bb..d494c452ed 100644
+index 428fb338c9..860162b791 100644
 --- a/salt/loader.py
 +++ b/salt/loader.py
-@@ -1687,8 +1687,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -1727,8 +1727,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
          ))
  
          for attr in getattr(mod, '__load__', dir(mod)):
@@ -671,10 +671,10 @@ index 0000000000..750b2655d6
 +
 +    return __virtualname__
 diff --git a/salt/state.py b/salt/state.py
-index dfa9c6de58..c3119b6a33 100644
+index 1db1c35c52..bc5277554e 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -1358,8 +1358,9 @@ class State(object):
+@@ -1406,8 +1406,9 @@ class State(object):
                  names = []
                  if state.startswith('__'):
                      continue
@@ -686,7 +686,7 @@ index dfa9c6de58..c3119b6a33 100644
                  if orchestration_jid is not None:
                      chunk['__orchestration_jid__'] = orchestration_jid
                  if '__sls__' in body:
-@@ -1929,8 +1930,12 @@ class State(object):
+@@ -1977,8 +1978,12 @@ class State(object):
                          ret = self.call_parallel(cdata, low)
                      else:
                          self.format_slots(cdata)
@@ -701,7 +701,7 @@ index dfa9c6de58..c3119b6a33 100644
                  self.states.inject_globals = {}
              if 'check_cmd' in low and '{0[state]}.mod_run_check_cmd'.format(low) not in self.states:
                  ret.update(self._run_check_cmd(low))
-@@ -2762,10 +2767,31 @@ class State(object):
+@@ -2882,10 +2887,31 @@ class State(object):
          running.update(errors)
          return running
  
@@ -946,7 +946,7 @@ index 0000000000..f245f7f137
 +    '''
 +    return __virtualname__
 diff --git a/salt/utils/args.py b/salt/utils/args.py
-index 57dbf5861a..1f4d5d2e0f 100644
+index 8cc0f35196..666a502498 100644
 --- a/salt/utils/args.py
 +++ b/salt/utils/args.py
 @@ -20,9 +20,7 @@ import salt.utils.data
@@ -970,10 +970,10 @@ index 57dbf5861a..1f4d5d2e0f 100644
      aspec = get_function_argspec(fun, is_class_method=is_class_method)
  
 diff --git a/salt/utils/decorators/__init__.py b/salt/utils/decorators/__init__.py
-index a6da91447a..7529013a8e 100644
+index 45d69072c7..b2abb15425 100644
 --- a/salt/utils/decorators/__init__.py
 +++ b/salt/utils/decorators/__init__.py
-@@ -671,3 +671,27 @@ def ensure_unicode_args(function):
+@@ -690,3 +690,27 @@ def ensure_unicode_args(function):
          else:
              return function(*args, **kwargs)
      return wrapped

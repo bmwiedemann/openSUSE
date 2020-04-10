@@ -1,4 +1,4 @@
-From ee69f252a71b950377987d7fad3515082e09abff Mon Sep 17 00:00:00 2001
+From 235cca81be2f64ed3feb48ed42bfa3f9196bff39 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 28 Jun 2019 15:17:56 +0100
@@ -13,11 +13,11 @@ Add unit test for ansible caller
  salt/modules/ansiblegate.py            | 14 +++++++++---
  tests/support/mock.py                  | 31 +++++++++++++++++++++++++
  tests/unit/modules/test_ansiblegate.py | 41 ++++++++++++++++++++++++++++++++++
- tests/unit/modules/test_cmdmod.py      | 34 +---------------------------
- 4 files changed, 84 insertions(+), 36 deletions(-)
+ tests/unit/modules/test_cmdmod.py      | 35 ++---------------------------
+ 4 files changed, 85 insertions(+), 36 deletions(-)
 
 diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
-index 771db6d6aa..88e8147573 100644
+index 6b903c2b94..8e28fcafa3 100644
 --- a/salt/modules/ansiblegate.py
 +++ b/salt/modules/ansiblegate.py
 @@ -147,6 +147,10 @@ class AnsibleModuleCaller(object):
@@ -57,10 +57,10 @@ index 771db6d6aa..88e8147573 100644
          for arg in args:
              info = doc.get(arg)
 diff --git a/tests/support/mock.py b/tests/support/mock.py
-index 38b68bd5c4..4b44c112ee 100644
+index 805a60377c..67ecb4838a 100644
 --- a/tests/support/mock.py
 +++ b/tests/support/mock.py
-@@ -510,6 +510,37 @@ class MockOpen(object):
+@@ -461,6 +461,37 @@ class MockOpen(object):
                      ret.extend(fh_.writelines_calls)
          return ret
  
@@ -99,26 +99,24 @@ index 38b68bd5c4..4b44c112ee 100644
  # reimplement mock_open to support multiple filehandles
  mock_open = MockOpen
 diff --git a/tests/unit/modules/test_ansiblegate.py b/tests/unit/modules/test_ansiblegate.py
-index 1fbb083eb7..70b47f8bc2 100644
+index 5613a0e79b..b7b43efda4 100644
 --- a/tests/unit/modules/test_ansiblegate.py
 +++ b/tests/unit/modules/test_ansiblegate.py
-@@ -29,6 +29,7 @@ from tests.support.unit import TestCase, skipIf
+@@ -29,11 +29,13 @@ from tests.support.unit import TestCase, skipIf
  from tests.support.mock import (
      patch,
      MagicMock,
 +    MockTimedProc,
-     NO_MOCK,
-     NO_MOCK_REASON
  )
-@@ -36,6 +37,7 @@ from tests.support.mock import (
+ 
  import salt.modules.ansiblegate as ansible
  import salt.utils.platform
  from salt.exceptions import LoaderError
 +from salt.ext import six
  
  
- @skipIf(NO_MOCK, NO_MOCK_REASON)
-@@ -137,3 +139,42 @@ description:
+ @skipIf(NO_PYTEST, False)
+@@ -134,3 +136,42 @@ description:
          '''
          with patch('salt.modules.ansiblegate.ansible', None):
              assert ansible.__virtual__() == 'ansible'
@@ -162,18 +160,18 @@ index 1fbb083eb7..70b47f8bc2 100644
 +                    proc.assert_any_call(['python', 'foofile'], stdin=ANSIBLE_MODULE_ARGS, stdout=-1, timeout=1200)
 +                assert ret == {"completed": True, "timeout": 1200}
 diff --git a/tests/unit/modules/test_cmdmod.py b/tests/unit/modules/test_cmdmod.py
-index 8da672dd22..a20afaca0f 100644
+index 8170a56b4e..f8fba59294 100644
 --- a/tests/unit/modules/test_cmdmod.py
 +++ b/tests/unit/modules/test_cmdmod.py
-@@ -24,6 +24,7 @@ from tests.support.paths import FILES
+@@ -26,6 +26,7 @@ from tests.support.helpers import TstSuiteLoggingHandler
  from tests.support.mock import (
      mock_open,
      Mock,
 +    MockTimedProc,
      MagicMock,
-     NO_MOCK,
-     NO_MOCK_REASON,
-@@ -36,39 +37,6 @@ MOCK_SHELL_FILE = '# List of acceptable shells\n' \
+     patch
+ )
+@@ -36,39 +37,7 @@ MOCK_SHELL_FILE = '# List of acceptable shells\n' \
                    '/bin/bash\n'
  
  
@@ -210,9 +208,10 @@ index 8da672dd22..a20afaca0f 100644
 -        return self._stderr
 -
 -
- @skipIf(NO_MOCK, NO_MOCK_REASON)
++@skipIf(NO_MOCK, NO_MOCK_REASON)
  class CMDMODTestCase(TestCase, LoaderModuleMockMixin):
      '''
+     Unit tests for the salt.modules.cmdmod module
 -- 
 2.16.4
 

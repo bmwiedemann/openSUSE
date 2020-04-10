@@ -1,4 +1,4 @@
-From 10df6dcff22785962dc372064c899b942f3c1ff9 Mon Sep 17 00:00:00 2001
+From c375d1e25e8b5c77b6a8f89855f17df6e49db9f2 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Fri, 14 Jun 2019 15:13:12 +0200
 Subject: [PATCH] Move server_id deprecation warning to reduce log
@@ -10,10 +10,10 @@ Subject: [PATCH] Move server_id deprecation warning to reduce log
  2 files changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index ab37a4dd44..30eba0ce99 100644
+index b58c29dbc3..0f3ccd9b92 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2867,10 +2867,6 @@ def get_server_id():
+@@ -2890,10 +2890,6 @@ def get_server_id():
          if bool(use_crc):
              id_hash = getattr(zlib, use_crc, zlib.adler32)(__opts__.get('id', '').encode()) & 0xffffffff
          else:
@@ -25,18 +25,18 @@ index ab37a4dd44..30eba0ce99 100644
          server_id = {'server_id': id_hash}
  
 diff --git a/salt/minion.py b/salt/minion.py
-index c5f637eaa6..2c0a18604e 100644
+index 457f485b0a..4730f68b87 100644
 --- a/salt/minion.py
 +++ b/salt/minion.py
-@@ -102,6 +102,7 @@ from salt.utils.odict import OrderedDict
+@@ -97,6 +97,7 @@ from salt.utils.odict import OrderedDict
  from salt.utils.process import (default_signals,
-                                 SignalHandlingMultiprocessingProcess,
+                                 SignalHandlingProcess,
                                  ProcessManager)
 +from salt.utils.versions import warn_until
  from salt.exceptions import (
      CommandExecutionError,
      CommandNotFoundError,
-@@ -993,6 +994,14 @@ class MinionManager(MinionBase):
+@@ -1002,6 +1003,14 @@ class MinionManager(MinionBase):
          if (self.opts['master_type'] in ('failover', 'distributed')) or not isinstance(self.opts['master'], list):
              masters = [masters]
  

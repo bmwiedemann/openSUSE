@@ -1,9 +1,9 @@
-From cd0e4240e11dfe8a656de1c8d8f1c7f5c6655311 Mon Sep 17 00:00:00 2001
+From c5edf396ffd66b6ac1479aa01367aae3eff7683d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Fri, 28 Feb 2020 15:11:53 +0000
-Subject: [PATCH] Batch Async: Catch exceptions and safety unregister
- and close instances
+Subject: [PATCH] Batch Async: Catch exceptions and safety unregister and
+ close instances
 
 ---
  salt/cli/batch_async.py | 156 +++++++++++++++++++++++-----------------

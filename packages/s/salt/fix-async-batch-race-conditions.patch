@@ -1,4 +1,4 @@
-From 2c1311f544950fe417fb8609aa3a30da32656637 Mon Sep 17 00:00:00 2001
+From dc001cb47fd88a8e8a1bd82a1457325822d1220b Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 11 Apr 2019 15:57:59 +0200
 Subject: [PATCH] Fix async batch race conditions

@@ -1,4 +1,4 @@
-From 1da400568977ffc45d4071189658855ee73b4013 Mon Sep 17 00:00:00 2001
+From 8f9478ffba672767e77b9b263f279e0379ab1ed1 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 30 Aug 2019 14:20:06 +0200
 Subject: [PATCH] Restore default behaviour of pkg list return
@@ -13,10 +13,10 @@ Co-authored-by: Mihai Dinca <mdinca@suse.de>
  1 file changed, 23 insertions(+), 9 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index f71d6aac9e..da1953b2a5 100644
+index 8179cd8c1d..f7158e0810 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1302,8 +1302,10 @@ def refresh_db(root=None):
+@@ -1304,8 +1304,10 @@ def refresh_db(root=None):
      return ret
  
  
@@ -28,7 +28,7 @@ index f71d6aac9e..da1953b2a5 100644
      return sorted({pkg.split(':', 1)[0] for pkg in pkgs
                     if len(pkg.split(':', 1)) == 2})
  
-@@ -1319,6 +1321,7 @@ def install(name=None,
+@@ -1321,6 +1323,7 @@ def install(name=None,
              ignore_repo_failure=False,
              no_recommends=False,
              root=None,
@@ -36,7 +36,7 @@ index f71d6aac9e..da1953b2a5 100644
              **kwargs):
      '''
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
-@@ -1433,6 +1436,9 @@ def install(name=None,
+@@ -1435,6 +1438,9 @@ def install(name=None,
  
          .. versionadded:: 2018.3.0
  
@@ -46,7 +46,7 @@ index f71d6aac9e..da1953b2a5 100644
  
      Returns a dict containing the new package names and versions::
  
-@@ -1498,7 +1504,8 @@ def install(name=None,
+@@ -1500,7 +1506,8 @@ def install(name=None,
  
      diff_attr = kwargs.get("diff_attr")
  
@@ -56,7 +56,7 @@ index f71d6aac9e..da1953b2a5 100644
      old = list_pkgs(attr=diff_attr, root=root, includes=includes) if not downloadonly else list_downloaded(root)
  
      downgrades = []
-@@ -1688,7 +1695,7 @@ def upgrade(refresh=True,
+@@ -1692,7 +1699,7 @@ def upgrade(refresh=True,
      return ret
  
  
@@ -65,7 +65,7 @@ index f71d6aac9e..da1953b2a5 100644
      '''
      Remove and purge do identical things but with different Zypper commands,
      this function performs the common logic.
-@@ -1698,7 +1705,7 @@ def _uninstall(name=None, pkgs=None, root=None):
+@@ -1702,7 +1709,7 @@ def _uninstall(name=None, pkgs=None, root=None):
      except MinionError as exc:
          raise CommandExecutionError(exc)
  
@@ -74,7 +74,7 @@ index f71d6aac9e..da1953b2a5 100644
      old = list_pkgs(root=root, includes=includes)
      targets = []
      for target in pkg_params:
-@@ -1757,7 +1764,7 @@ def normalize_name(name):
+@@ -1761,7 +1768,7 @@ def normalize_name(name):
      return name
  
  
@@ -83,7 +83,7 @@ index f71d6aac9e..da1953b2a5 100644
      '''
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
          On minions running systemd>=205, `systemd-run(1)`_ is now used to
-@@ -1788,8 +1795,11 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
+@@ -1792,8 +1799,11 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
      root
          Operate on a different root directory.
  
@@ -96,7 +96,7 @@ index f71d6aac9e..da1953b2a5 100644
  
      Returns a dict containing the changes.
  
-@@ -1801,10 +1811,10 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
+@@ -1805,10 +1815,10 @@ def remove(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused
          salt '*' pkg.remove <package1>,<package2>,<package3>
          salt '*' pkg.remove pkgs='["foo", "bar"]'
      '''
@@ -109,7 +109,7 @@ index f71d6aac9e..da1953b2a5 100644
      '''
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
          On minions running systemd>=205, `systemd-run(1)`_ is now used to
-@@ -1836,6 +1846,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -1840,6 +1850,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
      root
          Operate on a different root directory.
  
@@ -120,7 +120,7 @@ index f71d6aac9e..da1953b2a5 100644
      .. versionadded:: 0.16.0
  
  
-@@ -1849,7 +1863,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -1853,7 +1867,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
          salt '*' pkg.purge <package1>,<package2>,<package3>
          salt '*' pkg.purge pkgs='["foo", "bar"]'
      '''

@@ -1,8 +1,7 @@
-From 885940513b7a5c800fcc33dd47f2e92e864ec230 Mon Sep 17 00:00:00 2001
+From bd20cd2655a1141fe9ea892e974e40988c3fb83c Mon Sep 17 00:00:00 2001
 From: Silvio Moioli <smoioli@suse.de>
 Date: Mon, 2 Mar 2020 11:23:59 +0100
-Subject: [PATCH] batch_async: avoid using fnmatch to match event
- (#217)
+Subject: [PATCH] batch_async: avoid using fnmatch to match event (#217)
 
 ---
  salt/cli/batch_async.py | 2 +-

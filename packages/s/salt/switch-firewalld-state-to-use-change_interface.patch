@@ -1,4 +1,4 @@
-From d21552ca35f9f90acc12e907251ed5ded3c2a5f7 Mon Sep 17 00:00:00 2001
+From c48d54fe6243614aba481c887208e473f58a5057 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 20 May 2019 11:59:39 +0100
@@ -19,10 +19,10 @@ and updates `firewalld.present` state to use this call.
  2 files changed, 25 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/firewalld.py b/salt/modules/firewalld.py
-index 7eeb865fa7..232fe052a2 100644
+index a6d90d38b8..c8b646024b 100644
 --- a/salt/modules/firewalld.py
 +++ b/salt/modules/firewalld.py
-@@ -951,6 +951,29 @@ def remove_interface(zone, interface, permanent=True):
+@@ -932,6 +932,29 @@ def remove_interface(zone, interface, permanent=True):
      return __firewall_cmd(cmd)
  
  
@@ -53,10 +53,10 @@ index 7eeb865fa7..232fe052a2 100644
      '''
      List sources bound to a zone
 diff --git a/salt/states/firewalld.py b/salt/states/firewalld.py
-index 4623798658..fc5b233f98 100644
+index 25cbad170a..e4338beaf2 100644
 --- a/salt/states/firewalld.py
 +++ b/salt/states/firewalld.py
-@@ -647,8 +647,8 @@ def _present(name,
+@@ -633,8 +633,8 @@ def _present(name,
          for interface in new_interfaces:
              if not __opts__['test']:
                  try:

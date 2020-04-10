@@ -1,4 +1,4 @@
-From 03bf4718a82fe73e54c907bfcf9a315eee07feee Mon Sep 17 00:00:00 2001
+From 29316e1e73972d7c30a7b125a27198fefc6b2fd7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 30 Sep 2019 12:06:08 +0100
@@ -11,10 +11,10 @@ Subject: [PATCH] Prevent systemd-run description issue when running
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index d49a48310e..a11bb51c16 100644
+index bafad40efe..2835d32263 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -165,7 +165,7 @@ def _call_apt(args, scope=True, **kwargs):
+@@ -168,7 +168,7 @@ def _call_apt(args, scope=True, **kwargs):
      '''
      cmd = []
      if scope and salt.utils.systemd.has_scope(__context__) and __salt__['config.get']('systemd.scope', True):
@@ -24,10 +24,10 @@ index d49a48310e..a11bb51c16 100644
  
      params = {'output_loglevel': 'trace',
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index 06f3a9f6aa..85360da181 100644
+index 88eed062c4..2224aba9a1 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -544,7 +544,7 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -645,7 +645,7 @@ class AptUtilsTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(aptpkg.__salt__, {'cmd.run_all': MagicMock(), 'config.get': MagicMock(return_value=True)}):
              aptpkg._call_apt(['apt-get', 'purge', 'vim'])  # pylint: disable=W0106
              aptpkg.__salt__['cmd.run_all'].assert_called_once_with(

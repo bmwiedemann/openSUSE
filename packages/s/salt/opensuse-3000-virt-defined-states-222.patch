@@ -1,7 +1,7 @@
-From 66e635ecf9643053c0fdb54718f63782ed998f2f Mon Sep 17 00:00:00 2001
+From e5d42c6313ba051f22f83cbde3da9410fd7fc3b9 Mon Sep 17 00:00:00 2001
 From: Cedric Bosdonnat <cbosdonnat@suse.com>
-Date: Fri, 13 Mar 2020 16:38:46 +0100
-Subject: [PATCH] Open suse 2019.2.3 virt defined states (#219)
+Date: Fri, 13 Mar 2020 16:38:08 +0100
+Subject: [PATCH] openSUSE-3000 virt-defined-states (#222)
 
 * Create virt.pool_defined state out of virt.pool_running
 
@@ -45,13 +45,13 @@ parameters. This was not handled in _gen_xml(). Also add some more tests
 cases matching this for virt.update.
 ---
  salt/modules/virt.py            |   16 +-
- salt/states/virt.py             |  675 +++++++++++++++-----
+ salt/states/virt.py             |  673 +++++++++++++++-----
  tests/unit/modules/test_virt.py |   26 +
  tests/unit/states/test_virt.py  | 1346 ++++++++++++++++++++++++++++++++-------
- 4 files changed, 1666 insertions(+), 397 deletions(-)
+ 4 files changed, 1665 insertions(+), 396 deletions(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index 339760ead4..b44d1a65bf 100644
+index 3889238ecd..f0820e8825 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
 @@ -1783,6 +1783,7 @@ def update(name,
@@ -64,7 +64,7 @@ index 339760ead4..b44d1a65bf 100644
      Update the definition of an existing domain.
 @@ -1835,6 +1836,10 @@ def update(name,
  
-         .. versionadded:: neon
+         .. versionadded:: 3000
  
 +    :param test: run in dry-run mode if set to True
 +
@@ -109,7 +109,7 @@ index 339760ead4..b44d1a65bf 100644
                  if device_type in ['cpu', 'mem']:
                      status[device_type] = not bool(ret)
 diff --git a/salt/states/virt.py b/salt/states/virt.py
-index d1c9191a29..8932496b76 100644
+index 55a9ad2616..819776d707 100644
 --- a/salt/states/virt.py
 +++ b/salt/states/virt.py
 @@ -14,6 +14,7 @@ for the generation and signing of certificates for systems running libvirt:
@@ -320,7 +320,7 @@ index d1c9191a29..8932496b76 100644
      :param connection: libvirt connection URI, overriding defaults
  
          .. versionadded:: 2019.2.0
-@@ -407,93 +590,74 @@ def running(name,
+@@ -424,93 +607,74 @@ def running(name,
                      address: 192.168.0.125
  
      '''
@@ -385,7 +385,7 @@ index d1c9191a29..8932496b76 100644
 +        changed = ret['changes'][name].get('definition', False)
          try:
              domain_state = __salt__['virt.vm_state'](name)
--            if domain_state.get(name, None) != 'running':
+             if domain_state.get(name) != 'running':
 -                action_msg = 'started'
 -                if update:
 -                    status = __salt__['virt.update'](name,
@@ -462,7 +462,6 @@ index d1c9191a29..8932496b76 100644
 -        # Something bad happened when starting / updating the VM, report it
 -        ret['comment'] = six.text_type(err)
 -        ret['result'] = False
-+            if domain_state.get(name) != 'running':
 +                if not __opts__['test']:
 +                    __salt__['virt.start'](name, connection=connection, username=username, password=password)
 +                comment = 'Domain {} started'.format(name)
@@ -480,7 +479,7 @@ index d1c9191a29..8932496b76 100644
  
      return ret
  
-@@ -653,6 +817,106 @@ def reverted(name, snapshot=None, cleanup=False):  # pylint: disable=redefined-o
+@@ -670,6 +834,106 @@ def reverted(name, snapshot=None, cleanup=False):  # pylint: disable=redefined-o
      return ret
  
  
@@ -587,7 +586,7 @@ index d1c9191a29..8932496b76 100644
  def network_running(name,
                      bridge,
                      forward,
-@@ -698,13 +962,13 @@ def network_running(name,
+@@ -715,13 +979,13 @@ def network_running(name,
  
      .. code-block:: yaml
  
@@ -604,7 +603,7 @@ index d1c9191a29..8932496b76 100644
              - bridge: main
              - forward: bridge
              - vport: openvswitch
-@@ -714,7 +978,7 @@ def network_running(name,
+@@ -731,7 +995,7 @@ def network_running(name,
      .. code-block:: yaml
  
          network_name:
@@ -613,7 +612,7 @@ index d1c9191a29..8932496b76 100644
              - bridge: natted
              - forward: nat
              - ipv4_config:
-@@ -727,44 +991,46 @@ def network_running(name,
+@@ -744,44 +1008,46 @@ def network_running(name,
              - autostart: True
  
      '''
@@ -693,7 +692,7 @@ index d1c9191a29..8932496b76 100644
                   ptype=None,
                   target=None,
                   permissions=None,
-@@ -775,9 +1041,9 @@ def pool_running(name,
+@@ -792,9 +1058,9 @@ def pool_running(name,
                   username=None,
                   password=None):
      '''
@@ -705,7 +704,7 @@ index d1c9191a29..8932496b76 100644
  
      :param ptype: libvirt pool type
      :param target: full path to the target device or folder. (Default: ``None``)
-@@ -799,12 +1065,7 @@ def pool_running(name,
+@@ -816,12 +1082,7 @@ def pool_running(name,
      .. code-block:: yaml
  
          pool_name:
@@ -719,7 +718,7 @@ index d1c9191a29..8932496b76 100644
              - ptype: netfs
              - target: /mnt/cifs
              - permissions:
-@@ -867,29 +1128,19 @@ def pool_running(name,
+@@ -884,29 +1145,19 @@ def pool_running(name,
                                                   username=username,
                                                   password=password)
  
@@ -758,7 +757,7 @@ index d1c9191a29..8932496b76 100644
          else:
              needs_autostart = autostart
              if not __opts__['test']:
-@@ -915,17 +1166,12 @@ def pool_running(name,
+@@ -932,17 +1183,12 @@ def pool_running(name,
                                              connection=connection,
                                              username=username,
                                              password=password)
@@ -780,7 +779,7 @@ index d1c9191a29..8932496b76 100644
  
          if needs_autostart:
              if not __opts__['test']:
-@@ -941,6 +1187,117 @@ def pool_running(name,
+@@ -958,6 +1204,117 @@ def pool_running(name,
      return ret
  
  
@@ -899,7 +898,7 @@ index d1c9191a29..8932496b76 100644
                   purge=False,
                   connection=None,
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 3079657a9b..2d3417ce91 100644
+index d762dcc479..8690154662 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
 @@ -1272,6 +1272,32 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
@@ -936,10 +935,10 @@ index 3079657a9b..2d3417ce91 100644
          setvcpus_mock = MagicMock(return_value=0)
          domain_mock.setVcpusFlags = setvcpus_mock
 diff --git a/tests/unit/states/test_virt.py b/tests/unit/states/test_virt.py
-index 334c33b7d0..38a732b50c 100644
+index c50c04b8ab..6727704494 100644
 --- a/tests/unit/states/test_virt.py
 +++ b/tests/unit/states/test_virt.py
-@@ -220,6 +220,243 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -217,6 +217,243 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                                                         organization='SaltStack',
                                                         expiration_days=700), ret)
  
@@ -1183,7 +1182,7 @@ index 334c33b7d0..38a732b50c 100644
      def test_running(self):
          '''
          running state test cases.
-@@ -228,163 +465,369 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -225,163 +462,369 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                 'changes': {},
                 'result': True,
                 'comment': 'myvm is running'}
@@ -1701,7 +1700,7 @@ index 334c33b7d0..38a732b50c 100644
  
      def test_stopped(self):
          '''
-@@ -602,92 +1045,506 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -599,92 +1042,506 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
              ret.update({'changes': {}, 'result': False, 'comment': 'No changes had happened'})
              self.assertDictEqual(virt.rebooted('myvm'), ret)
  
@@ -2284,7 +2283,7 @@ index 334c33b7d0..38a732b50c 100644
  
      def test_pool_running(self):
          '''
-@@ -697,14 +1554,14 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -694,14 +1551,14 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
          mocks = {mock: MagicMock(return_value=True) for mock in ['define', 'autostart', 'build', 'start', 'stop']}
          with patch.dict(virt.__opts__, {'test': False}):
              with patch.dict(virt.__salt__, {  # pylint: disable=no-member
@@ -2302,7 +2301,7 @@ index 334c33b7d0..38a732b50c 100644
                  self.assertDictEqual(virt.pool_running('mypool',
                                                         ptype='logical',
                                                         target='/dev/base',
-@@ -757,7 +1614,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -754,7 +1611,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          'virt.pool_info': MagicMock(return_value={'mypool': {'state': 'running', 'autostart': True}}),
                          'virt.pool_update': MagicMock(return_value=False),
                      }):
@@ -2311,7 +2310,7 @@ index 334c33b7d0..38a732b50c 100644
                  self.assertDictEqual(virt.pool_running('mypool',
                                                         ptype='logical',
                                                         target='/dev/base',
-@@ -800,8 +1657,8 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -797,8 +1654,8 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          'virt.pool_build': mocks['build'],
                          'virt.pool_start': mocks['start']
                      }):
@@ -2322,7 +2321,7 @@ index 334c33b7d0..38a732b50c 100644
                              'result': True})
                  self.assertDictEqual(virt.pool_running('mypool',
                                                         ptype='logical',
-@@ -845,8 +1702,8 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -842,8 +1699,8 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          'virt.pool_start': mocks['start'],
                          'virt.pool_stop': mocks['stop']
                      }):
@@ -2333,7 +2332,7 @@ index 334c33b7d0..38a732b50c 100644
                              'result': True})
                  self.assertDictEqual(virt.pool_running('mypool',
                                                         ptype='logical',
-@@ -885,7 +1742,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -882,7 +1739,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                          'virt.pool_info': MagicMock(return_value={'mypool': {'state': 'running', 'autostart': True}}),
                          'virt.pool_update': MagicMock(return_value=False),
                      }):
@@ -2342,7 +2341,7 @@ index 334c33b7d0..38a732b50c 100644
                              'result': True})
                  self.assertDictEqual(virt.pool_running('mypool',
                                                         ptype='logical',
-@@ -908,6 +1765,29 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -905,6 +1762,29 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
                                                         target='/dev/base',
                                                         source={'devices': [{'path': '/dev/sda'}]}), ret)
  

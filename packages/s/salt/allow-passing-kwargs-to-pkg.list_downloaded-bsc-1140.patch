@@ -1,4 +1,4 @@
-From eadcab9b1b03041360d27421e5e8204f2a463e61 Mon Sep 17 00:00:00 2001
+From 206a2f7c4c1104f2f35dfa2c0b775bef4adc5b91 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 3 Jul 2019 09:34:50 +0100
@@ -12,10 +12,10 @@ Add unit test for pkg.list_downloaded with kwargs
  2 files changed, 28 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 9d0407e674..6bc7211f59 100644
+index 582caffb59..3760b525e7 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -2553,7 +2553,7 @@ def download(*packages, **kwargs):
+@@ -2557,7 +2557,7 @@ def download(*packages, **kwargs):
      )
  
  
@@ -25,10 +25,10 @@ index 9d0407e674..6bc7211f59 100644
      .. versionadded:: 2017.7.0
  
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index d2ae06a98e..0a3053680f 100644
+index 3a6466f061..12c22bfcb2 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -766,6 +766,33 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -767,6 +767,33 @@ Repository 'DUMMY' not found by its alias, number, or URI.
              self.assertEqual(len(list_patches), 3)
              self.assertDictEqual(list_patches, PATCHES_RET)
  

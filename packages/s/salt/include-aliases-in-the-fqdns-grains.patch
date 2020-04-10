@@ -1,4 +1,4 @@
-From 83fa749ca09eb8eb5eb29aaa30f8565106ee3c65 Mon Sep 17 00:00:00 2001
+From 512b189808ea0d7b333587689d7e7eb52d16b189 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 29 Jan 2019 11:11:38 +0100
 Subject: [PATCH] Include aliases in the fqdns grains
@@ -18,14 +18,14 @@ Leverage cached interfaces, if any.
  salt/grains/core.py              | 14 ++++++--------
  salt/utils/network.py            | 12 ++++++++++++
  tests/unit/grains/test_core.py   | 28 +++++++++++++++++++++++++---
- tests/unit/utils/test_network.py | 19 +++++++++++++++++++
- 4 files changed, 62 insertions(+), 11 deletions(-)
+ tests/unit/utils/test_network.py | 24 ++++++++++++++++++++++++
+ 4 files changed, 67 insertions(+), 11 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index f59eeb5780..7d75d48bb5 100644
+index 7b7e328520..309e4c9c4a 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2255,14 +2255,13 @@ def fqdns():
+@@ -2275,14 +2275,13 @@ def fqdns():
      grains = {}
      fqdns = set()
  
@@ -43,9 +43,9 @@ index f59eeb5780..7d75d48bb5 100644
 +            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
 +            fqdns.update([socket.getfqdn(name)] + [als for als in aliaslist if salt.utils.network.is_fqdn(als)])
          except socket.herror as err:
-             if err.errno == 0:
+             if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
-@@ -2272,8 +2271,7 @@ def fqdns():
+@@ -2292,8 +2291,7 @@ def fqdns():
          except (socket.error, socket.gaierror, socket.timeout) as err:
              log.error(err_message, ip, err)
  
@@ -56,10 +56,10 @@ index f59eeb5780..7d75d48bb5 100644
  
  def ip_fqdn():
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index d6fc6a98c6..a183c9776a 100644
+index 906d1cb3bc..2ae2e213b7 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -2007,3 +2007,15 @@ def parse_host_port(host_port):
+@@ -1958,3 +1958,15 @@ def parse_host_port(host_port):
              raise ValueError('bad hostname: "{}"'.format(host))
  
      return host, port
@@ -76,10 +76,10 @@ index d6fc6a98c6..a183c9776a 100644
 +    compliant = re.compile(r"(?!-)[A-Z\d\-\_]{1,63}(?<!-)$", re.IGNORECASE)
 +    return "." in hostname and len(hostname) < 0xff and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index c85225e959..e43be4939c 100644
+index c40595eb3f..ac03b57226 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -994,10 +994,32 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+@@ -1046,9 +1046,9 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
          ret = {'fqdns': ['bluesniff.foo.bar', 'foo.bar.baz', 'rinzler.evil-corp.com']}
          with patch.object(socket, 'gethostbyaddr', side_effect=reverse_resolv_mock):
              fqdns = core.fqdns()
@@ -90,7 +90,12 @@ index c85225e959..e43be4939c 100644
 +            assert len(fqdns['fqdns']) == len(ret['fqdns'])
 +            assert set(fqdns['fqdns']) == set(ret['fqdns'])
  
-+    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+     @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
+     @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4']))
+@@ -1081,6 +1081,28 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+                 mock_log.debug.assert_not_called()
+                 mock_log.error.assert_called_once()
+ 
 +    @patch.object(salt.utils.platform, 'is_windows', MagicMock(return_value=False))
 +    @patch('salt.utils.network.ip_addrs', MagicMock(return_value=['1.2.3.4', '5.6.7.8']))
 +    @patch('salt.utils.network.ip_addrs6',
@@ -112,17 +117,23 @@ index c85225e959..e43be4939c 100644
 +
 +            for alias in ["throwmeaway", "false-hostname", "badaliass"]:
 +                assert alias not in fqdns["fqdns"]
++
      def test_core_virtual(self):
          '''
          test virtual grain with cmd virt-what
 diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
-index af5cbbab2b..f4c849d124 100644
+index 7dcca0166e..74479b0cae 100644
 --- a/tests/unit/utils/test_network.py
 +++ b/tests/unit/utils/test_network.py
-@@ -680,3 +680,22 @@ class NetworkTestCase(TestCase):
-         with patch('subprocess.check_output', return_value=NETLINK_SS):
-             remotes = network._netlink_tool_remote_on('4505', 'remote')
-             self.assertEqual(remotes, set(['127.0.0.1', '::ffff:1.2.3.4']))
+@@ -701,3 +701,27 @@ class NetworkTestCase(TestCase):
+             # An exception is raised if unicode is passed to socket.getfqdn
+             minion_id = network.generate_minion_id()
+         assert minion_id != '', minion_id
++
++    def test_netlink_tool_remote_on(self):
++        with patch('subprocess.check_output', return_value=NETLINK_SS):
++            remotes = network._netlink_tool_remote_on('4505', 'remote')
++            self.assertEqual(remotes, set(['127.0.0.1', '::ffff:1.2.3.4']))
 +
 +    def test_is_fqdn(self):
 +        """

@@ -1,4 +1,4 @@
-From f81e6022b51b10406e52401fc75d7ef1ae93c55d Mon Sep 17 00:00:00 2001
+From bfdd7f946d56d799e89b33f7e3b72426732b0195 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 9 Jan 2019 16:08:19 +0100
 Subject: [PATCH] Fix issue #2068 test
@@ -13,7 +13,7 @@ Minor update: more correct is-dict check.
  1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/salt/state.py b/salt/state.py
-index c3119b6a33..6af1b89037 100644
+index bc5277554e..2fa5f64ca5 100644
 --- a/salt/state.py
 +++ b/salt/state.py
 @@ -25,6 +25,7 @@ import traceback
@@ -24,7 +24,7 @@ index c3119b6a33..6af1b89037 100644
  
  # Import salt libs
  import salt.loader
-@@ -2776,16 +2777,18 @@ class State(object):
+@@ -2896,16 +2897,18 @@ class State(object):
          '''
          for chunk in high:
              state = high[chunk]

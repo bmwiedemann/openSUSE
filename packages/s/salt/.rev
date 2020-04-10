@@ -1347,4 +1347,41 @@ let build start it or we will get libvirt errors.
   * add-new-custom-suse-capability-for-saltutil-state-mo.patch</comment>
     <requestid>790920</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>209d1fc6c033c3317da20f2a58f14b0d</srcmd5>
+    <version>3000</version>
+    <time>1586555550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt version 3000 
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.html
+- Do not make file.recurse state to fail when msgpack 0.5.4 (bsc#1167437)
+- Fixes status attribute issue in aptpkg test
+- Make setup.py script not to require setuptools greater than 9.1
+  loop: fix variable names for until_no_eval
+- Drop conflictive module.run state patch (bsc#1167437)
+- Update patches after rebase with upstream v3000 tag (bsc#1167437)
+- Fix some requirements issues depending on Python3 versions
+- Removes obsolete patch
+- Fix for low rpm_lowpkg unit test
+- Add python-singledispatch as dependency for python2-salt
+- Fix for temp folder definition in loader unit test
+- Make &quot;salt.ext.tornado.gen&quot; to use &quot;salt.ext.backports_abc&quot; on Python 2
+- Fix regression in service states with reload argument
+- Fix integration test failure for test_mod_del_repo_multiline_values
+- Fix for unless requisite when pip is not installed
+- Fix errors from unit tests due NO_MOCK and NO_MOCK_REASON deprecation
+- Fix tornado imports and missing _utils after rebasing patches
+- Removes unresolved merge conflict in yumpkg module
+- Added:
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * opensuse-3000-virt-defined-states-222.patch
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+  * loop-fix-variable-names-for-until_no_eval.patch</comment>
+    <requestid>791976</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-From 9496d01c4ff7f20bfbff4902ae5c33c147a0343e Mon Sep 17 00:00:00 2001
+From ef376e2d9a8360367a9a214d8f50d56889f3a664 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cbosdonnat@suse.com>
 Date: Tue, 17 Mar 2020 11:01:48 +0100
 Subject: [PATCH] virt._get_domain: don't raise an exception if there
@@ -12,7 +12,7 @@ looking for some VMs, but not when listing all VMs.
  2 files changed, 42 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/virt.py b/salt/modules/virt.py
-index b44d1a65bf97a363c2fe7a871e090cb9ca957e03..46a349ef98aa78483291dcafb38b4541bf0ac247 100644
+index f0820e882524e1ebaae335e0a72940d6ff85c1b2..c8e046a47ae76b50651871fe1d149590d5d1e930 100644
 --- a/salt/modules/virt.py
 +++ b/salt/modules/virt.py
 @@ -268,7 +268,7 @@ def _get_domain(conn, *vms, **kwargs):
@@ -25,10 +25,10 @@ index b44d1a65bf97a363c2fe7a871e090cb9ca957e03..46a349ef98aa78483291dcafb38b4541
  
      if vms:
 diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
-index 2d3417ce91506a1819dbe03045a89887c9d19721..2696ed9d1bb892ee539b385e32393f8f98d23a30 100644
+index 8690154662f41c8d9699fba62fcda6d83208a7d7..3e9bd5ef49dfddc019f9b4da1b505d81018e7eed 100644
 --- a/tests/unit/modules/test_virt.py
 +++ b/tests/unit/modules/test_virt.py
-@@ -3634,3 +3634,44 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+@@ -3639,3 +3639,44 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
                  }
              },
              [backend for backend in backends if backend['name'] == 'netfs'][0]['options'])

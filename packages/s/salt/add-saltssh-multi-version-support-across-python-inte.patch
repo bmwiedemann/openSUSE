@@ -1,4 +1,4 @@
-From ee67c569786f5381fa0fb34c64f6796ecef5b21f Mon Sep 17 00:00:00 2001
+From 369567107fa18187f8cbc5040728037d0774287b Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Mon, 12 Mar 2018 12:01:39 +0100
 Subject: [PATCH] Add SaltSSH multi-version support across Python
@@ -466,7 +466,7 @@ index cd7549a178..95b3931a32 100644
  if __name__ == '__main__':
      sys.exit(main(sys.argv))
 diff --git a/salt/utils/thin.py b/salt/utils/thin.py
-index 3c8ffec8af..b6fa90abae 100644
+index 8496db9569..0ff31cef39 100644
 --- a/salt/utils/thin.py
 +++ b/salt/utils/thin.py
 @@ -9,6 +9,7 @@ from __future__ import absolute_import, print_function, unicode_literals

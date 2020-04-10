@@ -1,4 +1,4 @@
-From 4a922d62a899cacf15a80882b2d1aff7ab66097c Mon Sep 17 00:00:00 2001
+From 9d1e598bf8c7aff612a58405ad864ba701f022c3 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 11 Jun 2019 17:21:05 +0200
 Subject: [PATCH] xfs: do not fails if type is not present
@@ -13,12 +13,12 @@ output.
 (cherry picked from commit 88df6963470007aa4fe2adb09f000311f48226a8)
 ---
  salt/modules/xfs.py            |  2 +-
- tests/unit/modules/test_xfs.py | 50 ++++++++++++++++++++++++++++++++++
+ tests/unit/modules/test_xfs.py | 50 ++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 51 insertions(+), 1 deletion(-)
  create mode 100644 tests/unit/modules/test_xfs.py
 
 diff --git a/salt/modules/xfs.py b/salt/modules/xfs.py
-index 6546603ed6..e133ec83e1 100644
+index ce7bd187fe..0116d7600e 100644
 --- a/salt/modules/xfs.py
 +++ b/salt/modules/xfs.py
 @@ -329,7 +329,7 @@ def _blkid_output(out):
@@ -87,6 +87,6 @@ index 0000000000..4b423d69d1
 +            }
 +        })
 -- 
-2.23.0
+2.16.4
 
 

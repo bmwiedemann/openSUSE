@@ -1,4 +1,4 @@
-From d6432f9ebaba32f75a476a6d4a2989d54d149731 Mon Sep 17 00:00:00 2001
+From 77d53d9567b7aec045a8fffd29afcb76a8405caf Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Mon, 16 Sep 2019 11:27:30 +0200
 Subject: [PATCH] Fix memory leak produced by batch async find_jobs
@@ -153,10 +153,10 @@ index 8c8f481e34..8a67331102 100644
          self.scheduled = False
 +        yield
 diff --git a/salt/client/__init__.py b/salt/client/__init__.py
-index aff354a021..0bb6d2b111 100644
+index 3bbc7f9de7..a48d79ef8d 100644
 --- a/salt/client/__init__.py
 +++ b/salt/client/__init__.py
-@@ -1624,6 +1624,7 @@ class LocalClient(object):
+@@ -1622,6 +1622,7 @@ class LocalClient(object):
                            'key': self.key,
                            'tgt_type': tgt_type,
                            'ret': ret,
@@ -165,7 +165,7 @@ index aff354a021..0bb6d2b111 100644
  
          # if kwargs are passed, pack them.
 diff --git a/salt/master.py b/salt/master.py
-index ee968410f7..224725a1ba 100644
+index 5e2277ba76..3abf7ae60b 100644
 --- a/salt/master.py
 +++ b/salt/master.py
 @@ -2044,7 +2044,6 @@ class ClearFuncs(object):

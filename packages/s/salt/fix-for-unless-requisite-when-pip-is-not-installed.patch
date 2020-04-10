@@ -1,0 +1,50 @@
+From f8b490c26be8e7f76947cc07f606f95c133805a7 Mon Sep 17 00:00:00 2001
+From: "Daniel A. Wozniak" <dwozniak@saltstack.com>
+Date: Thu, 20 Feb 2020 21:07:07 +0000
+Subject: [PATCH] Fix for unless requisite when pip is not installed
+
+Only remove pip relasted modules
+---
+ salt/states/pip_state.py | 17 ++---------------
+ 1 file changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/salt/states/pip_state.py b/salt/states/pip_state.py
+index 0f762752d02bf5ced17928a4c7fd2a3f027b66d5..11e466389fc46574923e2a71d8ca06f2c411f369 100644
+--- a/salt/states/pip_state.py
++++ b/salt/states/pip_state.py
+@@ -51,7 +51,7 @@ def purge_pip():
+         return
+     pip_related_entries = [
+         (k, v) for (k, v) in sys.modules.items()
+-        or getattr(v, '__module__', '').startswith('pip.')
++        if getattr(v, '__module__', '').startswith('pip.')
+         or (isinstance(v, types.ModuleType) and v.__name__.startswith('pip.'))
+     ]
+     for name, entry in pip_related_entries:
+@@ -96,21 +96,8 @@ try:
+     HAS_PIP = True
+ except ImportError:
+     HAS_PIP = False
+-    # Remove references to the loaded pip module above so reloading works
+-    import sys
+-    pip_related_entries = [
+-        (k, v) for (k, v) in sys.modules.items()
+-        or getattr(v, '__module__', '').startswith('pip.')
+-        or (isinstance(v, types.ModuleType) and v.__name__.startswith('pip.'))
+-    ]
+-    for name, entry in pip_related_entries:
+-        sys.modules.pop(name)
+-        del entry
++    purge_pip()
+ 
+-    del pip
+-    sys_modules_pip = sys.modules.pop('pip', None)
+-    if sys_modules_pip is not None:
+-        del sys_modules_pip
+ 
+ if HAS_PIP is True:
+     if not hasattr(purge_pip, '__pip_ver__'):
+-- 
+2.23.0
+
+

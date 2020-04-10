@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:38:57 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to Salt version 3000 
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.html
+
+- Do not make file.recurse state to fail when msgpack 0.5.4 (bsc#1167437)
+- Fixes status attribute issue in aptpkg test
+- Make setup.py script not to require setuptools greater than 9.1
+  loop: fix variable names for until_no_eval
+- Drop conflictive module.run state patch (bsc#1167437)
+- Update patches after rebase with upstream v3000 tag (bsc#1167437)
+- Fix some requirements issues depending on Python3 versions
+- Removes obsolete patch
+- Fix for low rpm_lowpkg unit test
+- Add python-singledispatch as dependency for python2-salt
+- Fix for temp folder definition in loader unit test
+- Make "salt.ext.tornado.gen" to use "salt.ext.backports_abc" on Python 2
+- Fix regression in service states with reload argument
+- Fix integration test failure for test_mod_del_repo_multiline_values
+- Fix for unless requisite when pip is not installed
+- Fix errors from unit tests due NO_MOCK and NO_MOCK_REASON deprecation
+- Fix tornado imports and missing _utils after rebasing patches
+- Removes unresolved merge conflict in yumpkg module
+
+- Added:
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * opensuse-3000-virt-defined-states-222.patch
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+  * loop-fix-variable-names-for-until_no_eval.patch
+  * removes-unresolved-merge-conflict-in-yumpkg-module.patch
+  * add-missing-_utils-at-loader-grains_func.patch
+  * changed-imports-to-vendored-tornado.patch
+  * sanitize-grains-loaded-from-roster_grains.json.patch
+  * fix-for-temp-folder-definition-in-loader-unit-test.patch
+  * remove-deprecated-usage-of-no_mock-and-no_mock_reaso.patch
+  * reintroducing-reverted-changes.patch
+  * adds-explicit-type-cast-for-port.patch
+  * fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
+  * re-adding-function-to-test-for-root.patch
+
+- Modified:
+  * move-server_id-deprecation-warning-to-reduce-log-spa.patch
+  * let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
+  * strip-trailing-from-repo.uri-when-comparing-repos-in.patch
+  * prevent-test_mod_del_repo_multiline_values-to-fail.patch
+  * prevent-ansiblegate-unit-tests-to-fail-on-ubuntu.patch
+  * remove-arch-from-name-when-pkg.list_pkgs-is-called-w.patch
+  * async-batch-implementation.patch
+  * add-hold-unhold-functions.patch
+  * add-all_versions-parameter-to-include-all-installed-.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * fix-for-log-checking-in-x509-test.patch
+  * fix-zypper.list_pkgs-to-be-aligned-with-pkg-state.patch
+  * add-multi-file-support-and-globbing-to-the-filetree-.patch
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+  * fix-bsc-1065792.patch
+  * use-threadpool-from-multiprocessing.pool-to-avoid-le.patch
+  * return-the-expected-powerpc-os-arch-bsc-1117995.patch
+  * fixes-cve-2018-15750-cve-2018-15751.patch
+  * add-cpe_name-for-osversion-grain-parsing-u-49946.patch
+  * fix-failing-unit-tests-for-batch-async.patch
+  * decide-if-the-source-should-be-actually-skipped.patch
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch
+  * integration-of-msi-authentication-with-azurearm-clou.patch
+  * temporary-fix-extend-the-whitelist-of-allowed-comman.patch
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * fix-unit-test-for-grains-core.patch
+  * add-supportconfig-module-for-remote-calls-and-saltss.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * debian-info_installed-compatibility-50453.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * implement-network.fqdns-module-function-bsc-1134860-.patch
+  * fix-async-batch-multiple-done-events.patch
+  * support-config-non-root-permission-issues-fixes-u-50.patch
+  * fix-zypper-pkg.list_pkgs-expectation-and-dpkg-mockin.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * avoid-traceback-when-http.query-request-cannot-be-pe.patch
+  * fix-aptpkg-systemd-call-bsc-1143301.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * do-not-break-repo-files-with-multiple-line-values-on.patch
+  * fix-batch_async-obsolete-test.patch
+  * provide-the-missing-features-required-for-yomi-yet-o.patch
+  * fall-back-to-pymysql.patch
+  * xfs-do-not-fails-if-type-is-not-present.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+  * virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * loosen-azure-sdk-dependencies-in-azurearm-cloud-driv.patch
+  * support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+  * fixing-streamclosed-issue.patch
+  * do-not-crash-when-there-are-ipv6-established-connect.patch
+  * calculate-fqdns-in-parallel-to-avoid-blockings-bsc-1.patch
+  * fix-async-batch-race-conditions.patch
+  * fix-issue-2068-test.patch
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * fix-for-suse-expanded-support-detection.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * do-not-make-ansiblegate-to-crash-on-python3-minions.patch
+  * make-aptpkg.list_repos-compatible-on-enabled-disable.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * accumulated-changes-from-yomi-167.patch
+  * get-os_arch-also-without-rpm-package-installed.patch
+  * fix-git_pillar-merging-across-multiple-__env__-repos.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * add-saltssh-multi-version-support-across-python-inte.patch
+  * early-feature-support-config.patch
+  * add-virt.all_capabilities.patch
+  * accumulated-changes-required-for-yomi-165.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch
+  * fix-ipv6-scope-bsc-1108557.patch
+  * prevent-systemd-run-description-issue-when-running-a.patch
+  * make-profiles-a-package.patch
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * batch.py-avoid-exception-when-minion-does-not-respon.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+  * x509-fixes-111.patch
+  * do-not-report-patches-as-installed-when-not-all-the-.patch
+
+- Removed:
+  * remove-virt.pool_delete-fast-parameter-178.patch
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+  * align-virt-full-info-fixes-with-upstream-192.patch
+  * take-checksums-arg-into-account-for-postgres.datadir.patch
+  * virt-1.volume_infos-fix-for-single-vm.patch
+  * virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
+  * preserve-already-defined-destructive_tests-and-expen.patch
+  * list_downloaded-for-apt-module.patch
+  * fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch
+  * virt.volume_infos-fix-for-single-vm.patch
+  * restrict-the-start_event_grains-only-to-the-start-ev.patch
+  * fix-virt.full_info-176.patch
+  * preserving-signature-in-module.run-state-u-50049.patch
+  * checking-for-jid-before-returning-data.patch
+  * virt.volume_infos-silence-libvirt-error-message-175.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch
+  * add-virt.network_get_xml-function.patch
+  * virt.network_define-allow-adding-ip-configuration.patch
+  * add-ppc64le-as-a-valid-rpm-package-architecture.patch
+  * bugfix-any-unicode-string-of-length-16-will-raise-ty.patch
+  * fix-for-older-mock-module.patch
+  * fix-virt.get_hypervisor-188.patch
+  * 2019.2.0-pr-54196-backport-173.patch
+  * enable-passing-grains-to-start-event-based-on-start_.patch
+  * fix-load-cached-grain-osrelease_info.patch
+  * open-suse-2019.2.3-virt-defined-states-219.patch
+  * backport-saltutil-state-module-to-2019.2-codebase.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 13:47:34 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Enable building and installation for Fedora

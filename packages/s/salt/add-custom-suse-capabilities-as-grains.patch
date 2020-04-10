@@ -1,4 +1,4 @@
-From a96d99e4bf7a43c99037aee6b6e030cdc46ab542 Mon Sep 17 00:00:00 2001
+From e57dd3c2ae655422f0f6939825154ce5827d43c4 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 21 Jun 2018 11:57:57 +0100
@@ -9,7 +9,7 @@ Subject: [PATCH] Add custom SUSE capabilities as Grains
  1 file changed, 7 insertions(+)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index fff70e9f5b..4fb58674bf 100644
+index 9ce644b766..1082b05dba 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
 @@ -75,3 +75,10 @@ def config():

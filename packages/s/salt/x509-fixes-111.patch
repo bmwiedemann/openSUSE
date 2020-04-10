@@ -1,4 +1,4 @@
-From 5e2b8d7ad2c98b0ab95e96a7f2df40715af11f3d Mon Sep 17 00:00:00 2001
+From ebd4bada22dca8f384078e977202c0052a80f1fc Mon Sep 17 00:00:00 2001
 From: Florian Bergmann <bergmannf@users.noreply.github.com>
 Date: Fri, 14 Sep 2018 10:30:39 +0200
 Subject: [PATCH] X509 fixes (#111)
@@ -34,12 +34,12 @@ PEP8: line too long
 * Fix unit tests
 ---
  salt/modules/publish.py |   8 +--
- salt/modules/x509.py    | 132 +++++++++++++++++++-----------------------------
- salt/states/x509.py     |  22 +++++---
- 3 files changed, 69 insertions(+), 93 deletions(-)
+ salt/modules/x509.py    | 129 +++++++++++++++++++-----------------------------
+ salt/states/x509.py     |  19 ++++---
+ 3 files changed, 66 insertions(+), 90 deletions(-)
 
 diff --git a/salt/modules/publish.py b/salt/modules/publish.py
-index 62e3e98f2f..fda848d1ec 100644
+index 1550aa39a8..f12f1cc947 100644
 --- a/salt/modules/publish.py
 +++ b/salt/modules/publish.py
 @@ -82,10 +82,8 @@ def _publish(
@@ -55,9 +55,9 @@ index 62e3e98f2f..fda848d1ec 100644
  
              if not matching_master_uris:
                  raise SaltInvocationError('Could not find match for {0} in \
-@@ -178,6 +176,8 @@ def _publish(
-     finally:
-         channel.close()
+@@ -175,6 +173,8 @@ def _publish(
+             else:
+                 return ret
  
 +    return {}
 +
@@ -65,7 +65,7 @@ index 62e3e98f2f..fda848d1ec 100644
  def publish(tgt,
              fun,
 diff --git a/salt/modules/x509.py b/salt/modules/x509.py
-index 92e39a6b88..52c8024b2f 100644
+index 1cdd912bfb..72ab3bb03e 100644
 --- a/salt/modules/x509.py
 +++ b/salt/modules/x509.py
 @@ -39,14 +39,13 @@ from salt.state import STATE_INTERNAL_KEYWORDS as _STATE_INTERNAL_KEYWORDS
@@ -274,17 +274,7 @@ index 92e39a6b88..52c8024b2f 100644
          raise salt.exceptions.SaltInvocationError(
              'Either path or text must be specified.')
      if path and text:
-@@ -1388,8 +1378,7 @@ def create_certificate(
-         # Including listen_in and preqreuired because they are not included
-         # in STATE_INTERNAL_KEYWORDS
-         # for salt 2014.7.2
--        for ignore in list(_STATE_INTERNAL_KEYWORDS) + \
--                ['listen_in', 'preqrequired', '__prerequired__']:
-+        for ignore in list(_STATE_INTERNAL_KEYWORDS) + ['listen_in', 'preqrequired', '__prerequired__']:
-             kwargs.pop(ignore, None)
-         # TODO: Make timeout configurable in Neon
-         certs = __salt__['publish.publish'](
-@@ -1504,8 +1493,7 @@ def create_certificate(
+@@ -1504,8 +1494,7 @@ def create_certificate(
              continue
  
          # Use explicitly set values first, fall back to CSR values.
@@ -294,7 +284,7 @@ index 92e39a6b88..52c8024b2f 100644
  
          critical = False
          if extval.startswith('critical '):
-@@ -1627,8 +1615,8 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1627,8 +1616,8 @@ def create_csr(path=None, text=False, **kwargs):
  
      if 'private_key' not in kwargs and 'public_key' in kwargs:
          kwargs['private_key'] = kwargs['public_key']
@@ -305,7 +295,7 @@ index 92e39a6b88..52c8024b2f 100644
  
      if 'private_key' not in kwargs:
          raise salt.exceptions.SaltInvocationError('private_key is required')
-@@ -1640,11 +1628,9 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1640,11 +1629,9 @@ def create_csr(path=None, text=False, **kwargs):
          kwargs['private_key_passphrase'] = None
      if 'public_key_passphrase' not in kwargs:
          kwargs['public_key_passphrase'] = None
@@ -319,7 +309,7 @@ index 92e39a6b88..52c8024b2f 100644
          kwargs['public_key_passphrase'] = kwargs['private_key_passphrase']
  
      csr.set_pubkey(get_public_key(kwargs['public_key'],
-@@ -1688,18 +1674,10 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1688,18 +1675,10 @@ def create_csr(path=None, text=False, **kwargs):
          extstack.push(ext)
  
      csr.add_extensions(extstack)
@@ -339,7 +329,7 @@ index 92e39a6b88..52c8024b2f 100644
  
  
  def verify_private_key(private_key, public_key, passphrase=None):
-@@ -1724,8 +1702,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
+@@ -1724,8 +1703,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
          salt '*' x509.verify_private_key private_key=/etc/pki/myca.key \\
                  public_key=/etc/pki/myca.crt
      '''
@@ -349,7 +339,7 @@ index 92e39a6b88..52c8024b2f 100644
  
  
  def verify_signature(certificate, signing_pub_key=None,
-@@ -1779,9 +1756,8 @@ def verify_crl(crl, cert):
+@@ -1779,9 +1757,8 @@ def verify_crl(crl, cert):
          salt '*' x509.verify_crl crl=/etc/pki/myca.crl cert=/etc/pki/myca.crt
      '''
      if not salt.utils.path.which('openssl'):
@@ -361,7 +351,7 @@ index 92e39a6b88..52c8024b2f 100644
      crltext = _text_or_file(crl)
      crltext = get_pem_entry(crltext, pem_type='X509 CRL')
      crltempfile = tempfile.NamedTemporaryFile()
-@@ -1802,10 +1778,7 @@ def verify_crl(crl, cert):
+@@ -1802,10 +1779,7 @@ def verify_crl(crl, cert):
      crltempfile.close()
      certtempfile.close()
  
@@ -373,7 +363,7 @@ index 92e39a6b88..52c8024b2f 100644
  
  
  def expired(certificate):
-@@ -1842,8 +1815,9 @@ def expired(certificate):
+@@ -1842,8 +1816,9 @@ def expired(certificate):
                  ret['expired'] = True
              else:
                  ret['expired'] = False
@@ -385,7 +375,7 @@ index 92e39a6b88..52c8024b2f 100644
  
      return ret
  
-@@ -1866,6 +1840,7 @@ def will_expire(certificate, days):
+@@ -1866,6 +1841,7 @@ def will_expire(certificate, days):
  
          salt '*' x509.will_expire "/etc/pki/mycert.crt" days=30
      '''
@@ -393,7 +383,7 @@ index 92e39a6b88..52c8024b2f 100644
      ret = {}
  
      if os.path.isfile(certificate):
-@@ -1875,18 +1850,13 @@ def will_expire(certificate, days):
+@@ -1875,18 +1851,13 @@ def will_expire(certificate, days):
  
              cert = _get_certificate_obj(certificate)
  
@@ -418,7 +408,7 @@ index 92e39a6b88..52c8024b2f 100644
  
      return ret
 diff --git a/salt/states/x509.py b/salt/states/x509.py
-index d44f85db17..c83d0d6047 100644
+index 3774f7d5eb..e4cc288dc9 100644
 --- a/salt/states/x509.py
 +++ b/salt/states/x509.py
 @@ -163,6 +163,7 @@ import copy
@@ -447,17 +437,7 @@ index d44f85db17..c83d0d6047 100644
  
  
  def _revoked_to_list(revs):
-@@ -267,7 +268,8 @@ def private_key_managed(name,
- 
-     new:
-         Always create a new key. Defaults to False.
--        Combining new with :mod:`prereq <salt.states.requsities.preqreq>`, or when used as part of a `managed_private_key` can allow key rotation whenever a new certificiate is generated.
-+        Combining new with :mod:`prereq <salt.states.requsities.preqreq>`, or when used as part of a
-+        `managed_private_key` can allow key rotation whenever a new certificiate is generated.
- 
-     overwrite:
-         Overwrite an existing private key if the provided passphrase cannot decrypt it.
-@@ -459,8 +461,10 @@ def certificate_managed(name,
+@@ -459,8 +460,10 @@ def certificate_managed(name,
                  private_key_args['name'], pem_type='RSA PRIVATE KEY')
          else:
              new_private_key = True
@@ -470,7 +450,7 @@ index d44f85db17..c83d0d6047 100644
  
          kwargs['public_key'] = private_key
  
-@@ -671,8 +675,10 @@ def crl_managed(name,
+@@ -671,8 +674,10 @@ def crl_managed(name,
      else:
          current = '{0} does not exist.'.format(name)
  
@@ -483,7 +463,7 @@ index d44f85db17..c83d0d6047 100644
  
      new = __salt__['x509.read_crl'](crl=new_crl)
      new_comp = new.copy()
-@@ -714,6 +720,6 @@ def pem_managed(name,
+@@ -714,6 +719,6 @@ def pem_managed(name,
          Any arguments supported by :py:func:`file.managed <salt.states.file.managed>` are supported.
      '''
      file_args, kwargs = _get_file_args(name, **kwargs)

@@ -1,4 +1,4 @@
-From 32691d82e32dbc70adec03bee214b971c82a73cd Mon Sep 17 00:00:00 2001
+From 73afbe5fe00c47427a032f8d94c113e1375e32ea Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Mon, 8 Jul 2019 14:46:10 +0100
@@ -9,10 +9,10 @@ Subject: [PATCH] Prevent ansiblegate unit tests to fail on Ubuntu
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/tests/unit/modules/test_ansiblegate.py b/tests/unit/modules/test_ansiblegate.py
-index 70b47f8bc2..2a24d6f147 100644
+index b7b43efda4..05dff4a4fa 100644
 --- a/tests/unit/modules/test_ansiblegate.py
 +++ b/tests/unit/modules/test_ansiblegate.py
-@@ -172,9 +172,11 @@ description:
+@@ -169,9 +169,11 @@ description:
              with patch('salt.utils.timed_subprocess.TimedProc', proc):
                  ret = _ansible_module_caller.call("one.two.three", "arg_1", kwarg1="foobar")
                  if six.PY3:

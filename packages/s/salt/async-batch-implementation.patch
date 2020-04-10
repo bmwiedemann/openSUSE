@@ -1,4 +1,4 @@
-From 6dea5186842285588ee02b66701cc91a4a2c4fa9 Mon Sep 17 00:00:00 2001
+From 9b47e4497ca16ec3671dd9da838895820ea9b0af Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Fri, 16 Nov 2018 17:05:29 +0100
 Subject: [PATCH] Async batch implementation
@@ -26,20 +26,20 @@ Pass only metadata not all **kwargs
 Add separate batch presence_ping timeout
 ---
  salt/auth/__init__.py              |   4 +-
- salt/cli/batch.py                  |  91 ++++++--
- salt/cli/batch_async.py            | 227 +++++++++++++++++++
- salt/client/__init__.py            |  44 +---
- salt/master.py                     |  25 ++
+ salt/cli/batch.py                  |  91 ++++++++--
+ salt/cli/batch_async.py            | 227 ++++++++++++++++++++++++
+ salt/client/__init__.py            |  41 +----
+ salt/master.py                     |  25 +++
  salt/netapi/__init__.py            |   3 +-
- salt/transport/ipc.py              |   9 +-
+ salt/transport/ipc.py              |  13 +-
  salt/utils/event.py                |   8 +-
- tests/unit/cli/test_batch_async.py | 351 +++++++++++++++++++++++++++++
- 9 files changed, 703 insertions(+), 59 deletions(-)
+ tests/unit/cli/test_batch_async.py | 351 +++++++++++++++++++++++++++++++++++++
+ 9 files changed, 703 insertions(+), 60 deletions(-)
  create mode 100644 salt/cli/batch_async.py
  create mode 100644 tests/unit/cli/test_batch_async.py
 
 diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
-index d43c57338c..e44c94fb37 100644
+index ecbd1c808c..ba9dbad509 100644
 --- a/salt/auth/__init__.py
 +++ b/salt/auth/__init__.py
 @@ -52,7 +52,9 @@ AUTH_INTERNAL_KEYWORDS = frozenset([
@@ -396,10 +396,10 @@ index 0000000000..3160d46d8b
 +            self.event.io_loop.call_later(self.opts['timeout'], self.find_job, set(next_batch))
 +            self.active = self.active.union(next_batch)
 diff --git a/salt/client/__init__.py b/salt/client/__init__.py
-index 6a62e53fdc..8b37422cbf 100644
+index 08fbe191d4..3bbc7f9de7 100644
 --- a/salt/client/__init__.py
 +++ b/salt/client/__init__.py
-@@ -531,45 +531,14 @@ class LocalClient(object):
+@@ -529,45 +529,14 @@ class LocalClient(object):
              {'dave': {...}}
              {'stewart': {...}}
          '''
@@ -450,21 +450,11 @@ index 6a62e53fdc..8b37422cbf 100644
          batch = salt.cli.batch.Batch(opts, eauth=eauth, quiet=True)
          for ret in batch.run():
              yield ret
-@@ -1732,7 +1701,8 @@ class LocalClient(object):
-             if listen and not self.event.connect_pub(timeout=timeout):
-                 raise SaltReqTimeoutError()
-             payload = channel.send(payload_kwargs, timeout=timeout)
--        except SaltReqTimeoutError:
-+        except SaltReqTimeoutError as err:
-+            log.error(err)
-             raise SaltReqTimeoutError(
-                 'Salt request timed out. The master is not responding. You '
-                 'may need to run your command with `--async` in order to '
 diff --git a/salt/master.py b/salt/master.py
-index 606be7319c..ee968410f7 100644
+index fb2e0c35bf..5e2277ba76 100644
 --- a/salt/master.py
 +++ b/salt/master.py
-@@ -32,6 +32,7 @@ import tornado.gen  # pylint: disable=F0401
+@@ -31,6 +31,7 @@ import salt.ext.tornado.gen  # pylint: disable=F0401
  
  # Import salt libs
  import salt.crypt
@@ -511,10 +501,10 @@ index 606be7319c..ee968410f7 100644
          if jid is None:
              return {'enc': 'clear',
 diff --git a/salt/netapi/__init__.py b/salt/netapi/__init__.py
-index 95f6384889..43b6e943a7 100644
+index 88d550f27f..31a24bb420 100644
 --- a/salt/netapi/__init__.py
 +++ b/salt/netapi/__init__.py
-@@ -88,7 +88,8 @@ class NetapiClient(object):
+@@ -93,7 +93,8 @@ class NetapiClient(object):
          :return: job ID
          '''
          local = salt.client.get_local_client(mopts=self.opts)
@@ -525,45 +515,48 @@ index 95f6384889..43b6e943a7 100644
      def local(self, *args, **kwargs):
          '''
 diff --git a/salt/transport/ipc.py b/salt/transport/ipc.py
-index dbcba18e5c..d0e1639b6e 100644
+index 89fb31fb4f..d2b295a633 100644
 --- a/salt/transport/ipc.py
 +++ b/salt/transport/ipc.py
-@@ -615,6 +615,7 @@ class IPCMessageSubscriber(IPCClient):
+@@ -618,6 +618,7 @@ class IPCMessageSubscriber(IPCClient):
          self._read_stream_future = None
          self._saved_data = []
          self._read_in_progress = Lock()
 +        self.callbacks = set()
  
-     @tornado.gen.coroutine
+     @salt.ext.tornado.gen.coroutine
      def _read(self, timeout, callback=None):
-@@ -689,8 +690,12 @@ class IPCMessageSubscriber(IPCClient):
+@@ -692,8 +693,12 @@ class IPCMessageSubscriber(IPCClient):
              return self._saved_data.pop(0)
          return self.io_loop.run_sync(lambda: self._read(timeout))
  
+-    @salt.ext.tornado.gen.coroutine
+-    def read_async(self, callback):
 +    def __run_callbacks(self, raw):
 +        for callback in self.callbacks:
 +            self.io_loop.spawn_callback(callback, raw)
 +
-     @tornado.gen.coroutine
--    def read_async(self, callback):
++    @tornado.gen.coroutine
 +    def read_async(self):
          '''
          Asynchronously read messages and invoke a callback when they are ready.
  
-@@ -705,7 +710,7 @@ class IPCMessageSubscriber(IPCClient):
-             except Exception as exc:
+@@ -707,8 +712,8 @@ class IPCMessageSubscriber(IPCClient):
+                 yield salt.ext.tornado.gen.sleep(1)
+             except Exception as exc:  # pylint: disable=broad-except
                  log.error('Exception occurred while Subscriber connecting: %s', exc)
-                 yield tornado.gen.sleep(1)
+-                yield salt.ext.tornado.gen.sleep(1)
 -        yield self._read(None, callback)
++                yield tornado.gen.sleep(1)
 +        yield self._read(None, self.__run_callbacks)
  
      def close(self):
          '''
 diff --git a/salt/utils/event.py b/salt/utils/event.py
-index 0b877980aa..ad9c85b576 100644
+index 0a3074a6f7..19e5db070d 100644
 --- a/salt/utils/event.py
 +++ b/salt/utils/event.py
-@@ -858,6 +858,10 @@ class SaltEvent(object):
+@@ -857,6 +857,10 @@ class SaltEvent(object):
                      # Minion fired a bad retcode, fire an event
                      self._fire_ret_load_specific_fun(load)
  
@@ -574,7 +567,7 @@ index 0b877980aa..ad9c85b576 100644
      def set_event_handler(self, event_handler):
          '''
          Invoke the event_handler callback each time an event arrives.
-@@ -866,8 +870,10 @@ class SaltEvent(object):
+@@ -865,8 +869,10 @@ class SaltEvent(object):
  
          if not self.cpub:
              self.connect_pub()
@@ -584,8 +577,8 @@ index 0b877980aa..ad9c85b576 100644
 -        return self.subscriber.read_async(event_handler)
 +        return self.subscriber.read_async()
  
+     # pylint: disable=W1701
      def __del__(self):
-         # skip exceptions in destroy-- since destroy() doesn't cover interpreter
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
 new file mode 100644
 index 0000000000..f65b6a06c3
@@ -944,6 +937,6 @@ index 0000000000..f65b6a06c3
 +            (self.batch.find_job, {'foo'})
 +        )
 -- 
-2.23.0
+2.16.4
 
 

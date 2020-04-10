@@ -1,0 +1,131 @@
+From 1a3e69af7c69a4893642dd1e9a9c4d3eb99cf874 Mon Sep 17 00:00:00 2001
+From: Erik Johnson <erik.johnson@level3.com>
+Date: Mon, 17 Feb 2020 18:43:06 -0600
+Subject: [PATCH] Fix regression in service states with reload argument
+
+Add functional test
+
+Fix failing test
+
+Add __opts__ and __grains__ just in case
+
+Skip on OSX for now
+---
+ salt/states/service.py            |  2 +-
+ tests/unit/states/test_service.py | 79 +++++++++++++++++++++++++++++--
+ 2 files changed, 75 insertions(+), 6 deletions(-)
+
+diff --git a/salt/states/service.py b/salt/states/service.py
+index 987e37cd421713313c41db4459b85019c041d549..89afa0dfa625e9ee3d9ecd7566232452d79ca99c 100644
+--- a/salt/states/service.py
++++ b/salt/states/service.py
+@@ -488,7 +488,7 @@ def running(name,
+         time.sleep(init_delay)
+ 
+     # only force a change state if we have explicitly detected them
+-    after_toggle_status = __salt__['service.status'](name, sig, **kwargs)
++    after_toggle_status = __salt__['service.status'](name, sig, **status_kwargs)
+     if 'service.enabled' in __salt__:
+         after_toggle_enable_status = __salt__['service.enabled'](name)
+     else:
+diff --git a/tests/unit/states/test_service.py b/tests/unit/states/test_service.py
+index 30c716025495f537efddf69bf6df8c68bc938e2e..3eead4c3576eefdd8d96eec4cc113edf194ebbc6 100644
+--- a/tests/unit/states/test_service.py
++++ b/tests/unit/states/test_service.py
+@@ -7,14 +7,15 @@
+ from __future__ import absolute_import, print_function, unicode_literals
+ 
+ # Import Salt Testing Libs
++from tests.support.helpers import destructiveTest
+ from tests.support.mixins import LoaderModuleMockMixin
+-from tests.support.unit import TestCase
+-from tests.support.mock import (
+-    MagicMock,
+-    patch,
+-)
++from tests.support.unit import TestCase, skipIf
++from tests.support.mock import MagicMock, patch
+ 
+ # Import Salt Libs
++import salt.utils.platform
++import salt.config
++import salt.loader
+ import salt.states.service as service
+ 
+ 
+@@ -251,3 +252,71 @@ class ServiceTestCase(TestCase, LoaderModuleMockMixin):
+                                          ret[3])
+ 
+             self.assertDictEqual(service.mod_watch("salt", "stack"), ret[1])
++
++
++@destructiveTest
++@skipIf(salt.utils.platform.is_darwin(), "service.running is currently failing on OSX")
++class ServiceTestCaseFunctional(TestCase, LoaderModuleMockMixin):
++    '''
++        Validate the service state
++    '''
++    def setup_loader_modules(self):
++        self.opts = salt.config.DEFAULT_MINION_OPTS.copy()
++        self.opts['grains'] = salt.loader.grains(self.opts)
++        self.utils = salt.loader.utils(self.opts)
++        self.modules = salt.loader.minion_mods(self.opts, utils=self.utils)
++
++        self.service_name = 'cron'
++        cmd_name = 'crontab'
++        os_family = self.opts['grains']['os_family']
++        os_release = self.opts['grains']['osrelease']
++        if os_family == 'RedHat':
++            self.service_name = 'crond'
++        elif os_family == 'Arch':
++            self.service_name = 'sshd'
++            cmd_name = 'systemctl'
++        elif os_family == 'MacOS':
++            self.service_name = 'org.ntp.ntpd'
++            if int(os_release.split('.')[1]) >= 13:
++                self.service_name = 'com.openssh.sshd'
++        elif os_family == 'Windows':
++            self.service_name = 'Spooler'
++
++        if os_family != 'Windows' and salt.utils.path.which(cmd_name) is None:
++            self.skipTest('{0} is not installed'.format(cmd_name))
++
++        return {
++            service: {
++                '__grains__': self.opts['grains'],
++                '__opts__': self.opts,
++                '__salt__': self.modules,
++                '__utils__': self.utils,
++            },
++        }
++
++    def setUp(self):
++        self.pre_srv_enabled = True if self.service_name in self.modules['service.get_enabled']() else False
++        self.post_srv_disable = False
++        if not self.pre_srv_enabled:
++            self.modules['service.enable'](self.service_name)
++            self.post_srv_disable = True
++
++    def tearDown(self):
++        if self.post_srv_disable:
++            self.modules['service.disable'](self.service_name)
++
++    def test_running_with_reload(self):
++        with patch.dict(service.__opts__, {'test': False}):
++            service.dead(self.service_name, enable=False)
++            result = service.running(name=self.service_name, enable=True, reload=False)
++
++        expected = {
++            'changes': {
++                self.service_name: True
++            },
++            'comment': 'Service {0} has been enabled, and is '
++                       'running'.format(self.service_name),
++            'name': self.service_name,
++            'result': True
++        }
++        self.assertDictEqual(result, expected)
+-- 
+2.23.0
+
+

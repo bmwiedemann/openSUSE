@@ -1,4 +1,4 @@
-From f7ae2b3ebe7d78ca60ada7fd2bb30f3cdbd75427 Mon Sep 17 00:00:00 2001
+From 068eecfba4b2a14b334ff17a295d4005d17491f3 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Tue, 20 Nov 2018 16:06:31 +0100
 Subject: [PATCH] Debian info_installed compatibility (#50453)
@@ -51,15 +51,15 @@ Fix wrong Git merge: missing function signature
 ---
  salt/modules/aptpkg.py                 |  20 ++++-
  salt/modules/dpkg_lowpkg.py            |  93 +++++++++++++++++---
- tests/unit/modules/test_aptpkg.py      | 151 +++++++++++++++++++++------------
- tests/unit/modules/test_dpkg_lowpkg.py |  69 +++++++++++++++
- 4 files changed, 267 insertions(+), 66 deletions(-)
+ tests/unit/modules/test_aptpkg.py      | 153 +++++++++++++++++++++------------
+ tests/unit/modules/test_dpkg_lowpkg.py | 127 ++++++++++++++-------------
+ 4 files changed, 263 insertions(+), 130 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 6b3a921a82..64620647c2 100644
+index 8f4d95a195..4ec9158476 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2776,6 +2776,15 @@ def info_installed(*names, **kwargs):
+@@ -2825,6 +2825,15 @@ def info_installed(*names, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -75,7 +75,7 @@ index 6b3a921a82..64620647c2 100644
      CLI example:
  
      .. code-block:: bash
-@@ -2786,11 +2795,15 @@ def info_installed(*names, **kwargs):
+@@ -2835,11 +2844,15 @@ def info_installed(*names, **kwargs):
      '''
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
      failhard = kwargs.pop('failhard', True)
@@ -90,9 +90,9 @@ index 6b3a921a82..64620647c2 100644
 -    for pkg_name, pkg_nfo in __salt__['lowpkg.info'](*names, failhard=failhard).items():
 +    for pkg_name, pkg_nfo in __salt__['lowpkg.info'](*names, failhard=failhard, attr=attr).items():
          t_nfo = dict()
-         # Translate dpkg-specific keys to a common structure
-         for key, value in pkg_nfo.items():
-@@ -2807,7 +2820,10 @@ def info_installed(*names, **kwargs):
+         if pkg_nfo.get('status', 'ii')[1] != 'i':
+             continue    # return only packages that are really installed
+@@ -2860,7 +2873,10 @@ def info_installed(*names, **kwargs):
              else:
                  t_nfo[key] = value
  
@@ -105,7 +105,7 @@ index 6b3a921a82..64620647c2 100644
      return ret
  
 diff --git a/salt/modules/dpkg_lowpkg.py b/salt/modules/dpkg_lowpkg.py
-index 03be5f821a..26ca5dcf5a 100644
+index 4ac8efd2f2..b78e844830 100644
 --- a/salt/modules/dpkg_lowpkg.py
 +++ b/salt/modules/dpkg_lowpkg.py
 @@ -252,6 +252,38 @@ def file_dict(*packages):
@@ -156,7 +156,7 @@ index 03be5f821a..26ca5dcf5a 100644
            "maintainer:${Maintainer}\\n" \
            "summary:${Summary}\\n" \
            "source:${source:Package}\\n" \
-@@ -307,9 +339,14 @@ def _get_pkg_info(*packages, **kwargs):
+@@ -308,9 +340,14 @@ def _get_pkg_info(*packages, **kwargs):
              key, value = pkg_info_line.split(":", 1)
              if value:
                  pkg_data[key] = value
@@ -174,7 +174,7 @@ index 03be5f821a..26ca5dcf5a 100644
          pkg_data['description'] = pkg_descr.split(":", 1)[-1]
          ret.append(pkg_data)
  
-@@ -335,19 +372,32 @@ def _get_pkg_license(pkg):
+@@ -336,19 +373,32 @@ def _get_pkg_license(pkg):
      return ", ".join(sorted(licenses))
  
  
@@ -213,7 +213,7 @@ index 03be5f821a..26ca5dcf5a 100644
  
  
  def _get_pkg_ds_avail():
-@@ -397,6 +447,15 @@ def info(*packages, **kwargs):
+@@ -398,6 +448,15 @@ def info(*packages, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -229,7 +229,7 @@ index 03be5f821a..26ca5dcf5a 100644
      CLI example:
  
      .. code-block:: bash
-@@ -411,6 +470,10 @@ def info(*packages, **kwargs):
+@@ -412,6 +471,10 @@ def info(*packages, **kwargs):
  
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
      failhard = kwargs.pop('failhard', True)
@@ -240,7 +240,7 @@ index 03be5f821a..26ca5dcf5a 100644
      if kwargs:
          salt.utils.args.invalid_kwargs(kwargs)
  
-@@ -430,6 +493,14 @@ def info(*packages, **kwargs):
+@@ -431,6 +494,14 @@ def info(*packages, **kwargs):
          lic = _get_pkg_license(pkg['package'])
          if lic:
              pkg['license'] = lic
@@ -257,10 +257,10 @@ index 03be5f821a..26ca5dcf5a 100644
  
      return ret
 diff --git a/tests/unit/modules/test_aptpkg.py b/tests/unit/modules/test_aptpkg.py
-index 1e963ee5db..580b840197 100644
+index e1b6602df5..10e960f090 100644
 --- a/tests/unit/modules/test_aptpkg.py
 +++ b/tests/unit/modules/test_aptpkg.py
-@@ -20,6 +20,8 @@ from tests.support.mock import Mock, MagicMock, patch, NO_MOCK, NO_MOCK_REASON
+@@ -20,6 +20,8 @@ from tests.support.mock import Mock, MagicMock, patch
  from salt.ext import six
  from salt.exceptions import CommandExecutionError, SaltInvocationError
  import salt.modules.aptpkg as aptpkg
@@ -269,7 +269,7 @@ index 1e963ee5db..580b840197 100644
  
  try:
      import pytest
-@@ -148,51 +150,39 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -166,51 +168,39 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
      def setup_loader_modules(self):
          return {aptpkg: {}}
  
@@ -334,7 +334,7 @@ index 1e963ee5db..580b840197 100644
  
      def test_get_repo_keys(self):
          '''
-@@ -205,35 +195,31 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -223,35 +213,31 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock}):
              self.assertEqual(aptpkg.get_repo_keys(), REPO_KEYS)
  
@@ -381,13 +381,15 @@ index 1e963ee5db..580b840197 100644
      def test_info_installed(self):
          '''
          Test - Return the information of the named package(s) installed on the system.
-@@ -249,19 +235,72 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -267,21 +253,72 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
              if installed['wget'].get(names[name], False):
                  installed['wget'][name] = installed['wget'].pop(names[name])
  
 -        mock = MagicMock(return_value=LOWPKG_INFO)
 -        with patch.dict(aptpkg.__salt__, {'lowpkg.info': mock}):
+-            del installed['wget']['status']
 -            self.assertEqual(aptpkg.info_installed('wget'), installed)
+-            self.assertEqual(len(aptpkg.info_installed()), 1)
 +        assert aptpkg.info_installed('wget') == installed
 +
 +    @patch('salt.modules.aptpkg.__salt__', {'lowpkg.info': MagicMock(return_value=LOWPKG_INFO)})
@@ -461,7 +463,7 @@ index 1e963ee5db..580b840197 100644
      def test_refresh_db(self):
          '''
          Test - Updates the APT database to latest packages based upon repositories.
-@@ -281,6 +320,10 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -301,6 +338,10 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
              with patch.dict(aptpkg.__salt__, {'cmd.run_all': mock, 'config.get': MagicMock(return_value=False)}):
                  self.assertEqual(aptpkg.refresh_db(), refresh_db)
  
@@ -472,7 +474,7 @@ index 1e963ee5db..580b840197 100644
      def test_refresh_db_failed(self):
          '''
          Test - Update the APT database using unreachable repositories.
-@@ -312,22 +355,24 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -332,22 +373,24 @@ class AptPkgTestCase(TestCase, LoaderModuleMockMixin):
                  assert aptpkg.autoremove(list_only=True) == []
                  assert aptpkg.autoremove(list_only=True, purge=True) == []
  
@@ -504,10 +506,10 @@ index 1e963ee5db..580b840197 100644
          '''
          Test - Upgrades all packages.
 diff --git a/tests/unit/modules/test_dpkg_lowpkg.py b/tests/unit/modules/test_dpkg_lowpkg.py
-index bdcb7eec89..d16ce3cc1a 100644
+index 6c07a75417..a0b3346f9d 100644
 --- a/tests/unit/modules/test_dpkg_lowpkg.py
 +++ b/tests/unit/modules/test_dpkg_lowpkg.py
-@@ -25,6 +25,30 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
+@@ -23,6 +23,30 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
      '''
      Test cases for salt.modules.dpkg
      '''
@@ -538,19 +540,80 @@ index bdcb7eec89..d16ce3cc1a 100644
      def setup_loader_modules(self):
          return {dpkg: {}}
  
-@@ -102,3 +126,48 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-                                        'stdout': 'Salt'})
+@@ -101,68 +125,47 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
          with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}):
              self.assertEqual(dpkg.file_dict('httpd'), 'Error:  error')
-+
+ 
 +    @patch('salt.modules.dpkg._get_pkg_ds_avail', MagicMock(return_value=dselect_pkg))
 +    @patch('salt.modules.dpkg._get_pkg_info', MagicMock(return_value=pkgs_info))
 +    @patch('salt.modules.dpkg._get_pkg_license', MagicMock(return_value='BSD v3'))
-+    def test_info(self):
-+        '''
+     def test_info(self):
+         '''
+-        Test package info
 +        Test info
 +        :return:
-+        '''
+         '''
+-        mock = MagicMock(return_value={'retcode': 0,
+-                                       'stderr': '',
+-                                       'stdout':
+-                                           os.linesep.join([
+-                                               'package:bash',
+-                                               'revision:',
+-                                               'architecture:amd64',
+-                                               'maintainer:Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>',
+-                                               'summary:',
+-                                               'source:bash',
+-                                               'version:4.4.18-2ubuntu1',
+-                                               'section:shells',
+-                                               'installed_size:1588',
+-                                               'size:',
+-                                               'MD5:',
+-                                               'SHA1:',
+-                                               'SHA256:',
+-                                               'origin:',
+-                                               'homepage:http://tiswww.case.edu/php/chet/bash/bashtop.html',
+-                                               'status:ii ',
+-                                               '======',
+-                                               'description:GNU Bourne Again SHell',
+-                                               ' Bash is an sh-compatible command language interpreter that executes',
+-                                               ' commands read from the standard input or from a file.  Bash also',
+-                                               ' incorporates useful features from the Korn and C shells (ksh and csh).',
+-                                               ' .',
+-                                               ' Bash is ultimately intended to be a conformant implementation of the',
+-                                               ' IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).',
+-                                               ' .',
+-                                               ' The Programmable Completion Code, by Ian Macdonald, is now found in',
+-                                               ' the bash-completion package.',
+-                                               '------'
+-                                               ])})
+-
+-        with patch.dict(dpkg.__salt__, {'cmd.run_all': mock}), \
+-             patch.dict(dpkg.__grains__, {'os': 'Ubuntu', 'osrelease_info': (18, 4)}), \
+-             patch('salt.utils.path.which', MagicMock(return_value=False)), \
+-             patch('os.path.exists', MagicMock(return_value=False)),\
+-             patch('os.path.getmtime', MagicMock(return_value=1560199259.0)):
+-            self.assertDictEqual(dpkg.info('bash'),
+-                                 {'bash': {'architecture': 'amd64',
+-                                           'description': os.linesep.join([
+-                                               'GNU Bourne Again SHell',
+-                                               ' Bash is an sh-compatible command language interpreter that executes',
+-                                               ' commands read from the standard input or from a file.  Bash also',
+-                                               ' incorporates useful features from the Korn and C shells (ksh and csh).',
+-                                               ' .',
+-                                               ' Bash is ultimately intended to be a conformant implementation of the',
+-                                               ' IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).',
+-                                               ' .',
+-                                               ' The Programmable Completion Code, by Ian Macdonald, is now found in',
+-                                               ' the bash-completion package.' + os.linesep
+-                                           ]),
+-                                           'homepage': 'http://tiswww.case.edu/php/chet/bash/bashtop.html',
+-                                           'maintainer': 'Ubuntu Developers '
+-                                                         '<ubuntu-devel-discuss@lists.ubuntu.com>',
+-                                           'package': 'bash',
+-                                           'section': 'shells',
+-                                           'source': 'bash',
+-                                           'status': 'ii',
+-                                           'version': '4.4.18-2ubuntu1'}})
 +        ret = dpkg.info('emacs')
 +
 +        assert isinstance(ret, dict)

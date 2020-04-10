@@ -1,4 +1,4 @@
-From a4735644b2e6527e36796722516540f153ccabb9 Mon Sep 17 00:00:00 2001
+From 1f50b796dd551c25a8fc87fe825d1508f340858e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 30 Apr 2019 10:51:42 +0100
@@ -10,7 +10,7 @@ Subject: [PATCH] Use ThreadPool from multiprocessing.pool to avoid
  1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index ac66a437fd..38b82b7f7c 100644
+index 4600f055dd..f1e3ebe9d2 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -27,7 +27,7 @@ import datetime
@@ -22,7 +22,7 @@ index ac66a437fd..38b82b7f7c 100644
  
  # pylint: disable=import-error
  try:
-@@ -2280,10 +2280,14 @@ def fqdns():
+@@ -2300,10 +2300,14 @@ def fqdns():
      # Create a ThreadPool to process the underlying calls to 'socket.gethostbyaddr' in parallel.
      # This avoid blocking the execution when the "fqdn" is not defined for certains IP addresses, which was causing
      # that "socket.timeout" was reached multiple times secuencially, blocking execution for several seconds.

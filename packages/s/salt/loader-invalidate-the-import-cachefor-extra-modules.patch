@@ -1,4 +1,4 @@
-From 3d92c4e096dca27b95e485b70594186151e40092 Mon Sep 17 00:00:00 2001
+From 444e00c6601b878444923f573fdb5f000342be9a Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Thu, 12 Mar 2020 16:39:42 +0100
 Subject: [PATCH] loader: invalidate the import cachefor extra modules
@@ -14,10 +14,10 @@ extra_module_dirs
  1 file changed, 12 insertions(+)
 
 diff --git a/salt/loader.py b/salt/loader.py
-index 52cb4cfcb5..26b44de511 100644
+index 742b2f8e22..5bd4773645 100644
 --- a/salt/loader.py
 +++ b/salt/loader.py
-@@ -1506,9 +1506,11 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -1544,9 +1544,11 @@ class LazyLoader(salt.utils.lazy.LazyDict):
                  self._clean_module_dirs.append(directory)
  
      def __clean_sys_path(self):
@@ -29,7 +29,7 @@ index 52cb4cfcb5..26b44de511 100644
          self._clean_module_dirs = []
  
          # Be sure that sys.path_importer_cache do not contains any
-@@ -1516,6 +1518,16 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -1554,6 +1556,16 @@ class LazyLoader(salt.utils.lazy.LazyDict):
          if USE_IMPORTLIB:
              importlib.invalidate_caches()
  
