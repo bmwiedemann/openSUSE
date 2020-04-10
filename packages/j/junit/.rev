@@ -184,4 +184,12 @@
     <comment>Add OSGi manifest + package manual + correct license tag to correspond to reality</comment>
     <requestid>671538</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2f687a700c8f53e4157d7731f4e513a9</srcmd5>
+    <version>4.13</version>
+    <time>1586555555</time>
+    <user>dimstar_suse</user>
+    <comment>4.12 -&gt; 4.13</comment>
+    <requestid>791983</requestid>
+  </revision>
 </revisionlist>

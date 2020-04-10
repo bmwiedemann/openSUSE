@@ -1,7 +1,7 @@
 #
 # spec file for package junit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           junit
-Version:        4.12
+Version:        4.13
 Release:        0
 Summary:        Java regression test package
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://www.junit.org/
+URL:            https://www.junit.org/
 Source0:        https://github.com/junit-team/junit/archive/r%{version}.tar.gz
 Source1:        build.xml
-Patch0:         junit-jdk10.patch
-Patch1:         junit-jdk11.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hamcrest-core >= 1.3
+BuildRequires:  hamcrest >= 1.3
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  javapackages-local
 Requires:       mvn(org.hamcrest:hamcrest-core)
@@ -66,15 +64,13 @@ Documentation for %{name}.
 %prep
 %setup -q -n %{name}4-r%{version}
 cp %{SOURCE1} .
-%patch0 -p1
-%patch1 -p1
 
 find . -type f -name "*.jar" -or -name "*.class" | xargs -t rm -rf
 
-ln -s $(build-classpath hamcrest/core) lib/hamcrest-core-1.3.jar
+ln -s $(build-classpath hamcrest/all) lib/hamcrest-core-1.3.jar
 
 %build
-export CLASSPATH=$(build-classpath hamcrest/core)
+export CLASSPATH=$(build-classpath hamcrest/all)
 ant jars javadoc -Dversion-status=
 
 %install
