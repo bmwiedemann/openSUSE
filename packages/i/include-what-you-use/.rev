@@ -92,4 +92,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750467</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>83a0414d1b3c6fd9e71e33280537a133</srcmd5>
+    <version>0.13</version>
+    <time>1586555649</time>
+    <user>dimstar_suse</user>
+    <comment>- Use c++_compiler instead of clang to avoid dependence oddities.</comment>
+    <requestid>792943</requestid>
+  </revision>
 </revisionlist>

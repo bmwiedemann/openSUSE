@@ -1,7 +1,7 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 Patch3:         remove-x86-specific-code.patch
 Patch4:         link-llvm9.patch
-BuildRequires:  clang9
+BuildRequires:  c++_compiler
 BuildRequires:  clang9-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
@@ -69,34 +69,12 @@ refactoring tool.
 %patch4 -p1
 
 %build
-# Make _lto_cflags compatible with Clang, deactivate LTO where it doesn't work.
-%ifnarch %{arm}
-%define _lto_cflags "-flto=thin"
-%else
-%define _lto_cflags %{nil}
-%endif
-
 # Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
 rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
 # This also obsoletes iwyu.gcc.imp.
 rm iwyu.gcc.imp
 
-# Since Clang is built using Clang, use it here too.
-%cmake \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_AR=%{_bindir}/llvm-ar \
-    -DCMAKE_RANLIB=%{_bindir}/llvm-ranlib \
-    -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
-    ..
-
-# ThinLTO uses multiple threads from the linker process for optimizations, which
-# causes an extremely high lock contention on allocations due to MALLOC_CHECK_,
-# so we deactivate it for compilation. The tests will have it activated again.
-MALLOC_CHECK_BACK=$MALLOC_CHECK_
-unset MALLOC_CHECK_
-%make_jobs
-MALLOC_CHECK_=$MALLOC_CHECK_BACK
+%cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} ..
 
 %install
 %cmake_install
