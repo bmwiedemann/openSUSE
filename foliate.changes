@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  9 05:21:32 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.1.1:
+  * Fixed wrong version number.
+
+-------------------------------------------------------------------
+Wed Apr 08 15:09:46 UTC 2020 - idonmez@suse.com
+
+- Update to version 2.1.0:
+  * New and improved icon
+  * Option to disable turn page on tap
+  * A menu on the welcome screen for opening recent files
+  * Restored shortcuts for showing ToC, annotations, and bookmarks
+  * Fixed application not translated.
+
+-------------------------------------------------------------------
 Sun Apr 05 16:08:11 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 2.0.0:
