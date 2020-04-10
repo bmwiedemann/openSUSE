@@ -455,4 +455,22 @@ Latest changes:
   * make use of $service_test variable where possible</comment>
     <requestid>789702</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7a8e24943be3fdca7af47e1050a22d54</srcmd5>
+    <version>0.7.10</version>
+    <time>1586555597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.10
+  * README.md: Improved documentation about the requirements for
+    NVIDIA's PRIME render offload support; it needs Xserver of
+    Leap 15.2 or later
+
+- Update to version 0.7.9
+  * Improved documentation
+    + fixed OS requirements (Leap 15.1 instead of Tumbleweed)
+    + fixed requirements for DynamicPowerManagement to power off
+      NVIDIA GPU (Turing GPU or later is needed!)
+  * Fix: use full path in invoking prime-select</comment>
+    <requestid>792950</requestid>
+  </revision>
 </revisionlist>

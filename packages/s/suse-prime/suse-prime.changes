@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 12:17:13 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.10
+  * README.md: Improved documentation about the requirements for
+    NVIDIA's PRIME render offload support; it needs Xserver of
+    Leap 15.2 or later
+
+-------------------------------------------------------------------
+Thu Apr  9 19:08:44 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.7.9
+  * Improved documentation
+    + fixed OS requirements (Leap 15.1 instead of Tumbleweed)
+    + fixed requirements for DynamicPowerManagement to power off
+      NVIDIA GPU (Turing GPU or later is needed!)
+  * Fix: use full path in invoking prime-select
+
+-------------------------------------------------------------------
 Mon Mar 30 10:08:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.8
