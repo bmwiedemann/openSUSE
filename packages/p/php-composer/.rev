@@ -270,4 +270,30 @@
     <comment></comment>
     <requestid>784929</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6f5ca5b55b2ab13e208483d1a8b896a0</srcmd5>
+    <version>1.10.4</version>
+    <time>1586555607</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.4
+  * Fixed 1.10.2 regression in path symlinking with absolute path
+    repos
+- Version 1.10.3
+  * Fixed invalid --2 flag warning in self-update when no channel is
+    requested
+- Version 1.10.2
+  * Added --1 flag to self-update command which can be added to
+    automated self-update runs to make sure it won't automatically
+    jump to 2.0 once that is released
+  * Fixed path repository symlinks being made relative when the repo
+    url is defined as absolute paths
+  * Fixed potential issues when using &quot;composer ...&quot; in scripts and
+    composer/composer was also required in the project
+  * Fixed 1.10.0 regression when downloading GitHub archives from
+    non-API URLs
+  * Fixed handling of malformed info in fund command
+  * Fixed Symfony5 compatibility issues in a few commands
+</comment>
+    <requestid>792814</requestid>
+  </revision>
 </revisionlist>
