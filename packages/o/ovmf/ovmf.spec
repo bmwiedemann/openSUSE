@@ -49,6 +49,7 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
+Patch6:         %{name}-bsc1163927-fix-ping-and-ip6dxe.patch
 Patch100:       openssl-fix-syntax-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
@@ -172,6 +173,7 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

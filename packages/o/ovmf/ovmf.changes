@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  6 03:37:22 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1163927-fix-ping-and-ip6dxe.patch to fix crash and
+  hang in ShellPkg and Ip6Dxe (bsc#1163927, CVE-2019-14559)
+
+-------------------------------------------------------------------
 Fri Mar  6 03:11:48 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to edk2-stable202002
