@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr  9 20:38:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.4
+  * Explain what exclusive_caps does instead of referring to a
+    closed ticket
+  * Use "Chrome" rather than "Chromium"
+  * Mention exclusive_caps mode option
+  * Add linebreaks to fix markdown
+  * Set the default number of buffers to 2 
+  * instruction on obtaining yuv files
+  * infinite loop over yuv frames
+  * Drop cast to (time_t) 
+  * print "SUCCESS" message on installation success 
+  * use v4l2_buffer ptr instead of timeval 
+
+- Dropped v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue Feb 25 09:28:10 UTC 2020 - aloisio@gmx.com
 
 - Added v4l2loopback-dont_use_timeval.patch and
