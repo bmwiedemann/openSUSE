@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           seafile
-Version:        7.0.6
-Release:        2
+Version:        7.0.7
+Release:        0
 Summary:        Cloud storage client
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seafile/
