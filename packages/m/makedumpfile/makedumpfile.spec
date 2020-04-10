@@ -43,7 +43,8 @@ Source99:       %{name}-rpmlintrc
 Patch1:         %{name}-override-libtinfo.patch
 Patch2:         %{name}-ppc64-VA-range-SUSE.patch
 Patch3:         %{name}-PN_XNUM.patch
-Patch4:         %{name}-arm64-VA-range-SUSE.patch
+Patch4:         %{name}-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
+Patch5:         %{name}-Fix-cd_header-offset-overflow-with-large-pfn.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
@@ -73,7 +74,7 @@ via gdb or crash utility.
 %autopatch -p1
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fcommon"
 %if %{have_snappy}
 export USESNAPPY=on
 %endif

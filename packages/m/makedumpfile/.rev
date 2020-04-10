@@ -1010,4 +1010,18 @@ See README.static for an explanation why static linking is preferred for some li
     <comment></comment>
     <requestid>785651</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>6be5ae599d0ca03ac4b9932960488245</srcmd5>
+    <version>1.6.7</version>
+    <time>1586555547</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -fcommon in order to fix boo#1160282.
+- Refresh patch with upstream version
+  - makedumpfile-arm64-VA-range-SUSE.patch
+  + makedumpfile-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
+- makedumpfile-Fix-cd_header-offset-overflow-with-large-pfn.patch: Fix integer
+  overflow with large memory configuration (bsc#1168234).
+</comment>
+    <requestid>791930</requestid>
+  </revision>
 </revisionlist>

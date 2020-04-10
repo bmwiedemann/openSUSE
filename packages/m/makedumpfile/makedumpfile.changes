@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  3 05:51:49 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1160282.
+
+-------------------------------------------------------------------
+Wed Apr  1 06:11:18 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Refresh patch with upstream version
+  - makedumpfile-arm64-VA-range-SUSE.patch
+  + makedumpfile-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
+- makedumpfile-Fix-cd_header-offset-overflow-with-large-pfn.patch: Fix integer
+  overflow with large memory configuration (bsc#1168234).
+
+-------------------------------------------------------------------
 Wed Mar  4 13:45:23 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - makedumpfile-arm64-VA-range-SUSE.patch: Fix error processing core files on
