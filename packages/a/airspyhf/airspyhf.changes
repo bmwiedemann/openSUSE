@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 18:11:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.8
+  * add airspyhf_* tools
+- Update patch
+  * libairspyhf/src/CMakeLists.txt
+
+-------------------------------------------------------------------
 Thu Oct 17 12:58:51 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

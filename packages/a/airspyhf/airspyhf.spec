@@ -1,7 +1,7 @@
 #
 # spec file for package airspyhf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,11 +21,11 @@
 %define airspyhf_group    airspyhf
 %define libname lib%{name}%{sover}
 Name:           airspyhf
-Version:        1.1.5
+Version:        1.6.8
 Release:        0
 Summary:        Support programs for Airspy HF+ SDR
 License:        BSD-3-Clause
-Url:            http://www.airspy.com/airspy-hf-plus
+URL:            http://www.airspy.com/airspy-hf-plus
 #Git-Clone:     https://github.com/airspy/airspyhf.git
 Source:         https://github.com/airspy/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         airspyhf-fix-libm-linking.patch
@@ -92,6 +92,13 @@ getent group %{airspyhf_group} >/dev/null || groupadd -r %{airspyhf_group}
 
 %postun udev
 %udev_rules_update
+
+%files
+%{_bindir}/airspyhf_calibrate
+%{_bindir}/airspyhf_gpio
+%{_bindir}/airspyhf_info
+%{_bindir}/airspyhf_lib_version
+%{_bindir}/airspyhf_rx
 
 %files -n %{libname}
 %doc README.md LICENSE
