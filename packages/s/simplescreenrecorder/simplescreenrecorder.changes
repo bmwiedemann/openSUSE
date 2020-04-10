@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 10 04:39:15 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 0.4.0 (since 0.3.11):
+  * Use av_muxer_iterate/av_codec_iterate instead of av_oformat_next/av_c.
+  * Added support for Serbian language.
+  * Mouse grabbing when SSR loses focus while selecting a rectangle/w.
+  * Try to disable high-DPI scaling since it breaks too many things in SSR.
+  * Rename EventData for consistency.*
+  * Use the X11 Xinerama extension to get screen resolutions in X11Input.*
+  * High-DPI drawing for VideoPreviewer.
+  * High DPI support for PageInput.
+  * Follow mouse mode in X11input.
+  * Add 'follow fullscreen' recording mode to X11Input.
+  * Update translations.
+  * Actually in X11Input dead space calculation.
+  * Add missing tooltips.
+  * Improve appearance for non-integer scale factors.
+  * Automatically use the right version of lrelease.
+  * Add option to skip the welcome page.
+  * Add xinerama build dep.
+  * Increase maximum image size to 20000x20000.
+  * Add screenshot to readme.
+  * Update copyright year.
+  * Improve command-line option parsing, add option to change settings file.
+  * Add option to start recording immediately after launch.
+  * Add recording schedule.
+  * Add option to start schedule automatically.
+  * Add command-line control over stdin.
+  * Reentrancy problem in stdin handler.
+  * Change default hotkey t.
+- Fixed W: empty-%post & W: empty-%postun.
+
+-------------------------------------------------------------------
 Sun Jun 10 11:21:46 UTC 2018 - dap.darkness@gmail.com
 
 - Update to 0.3.11 (since 0.3.8):

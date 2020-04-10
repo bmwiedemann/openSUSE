@@ -1,7 +1,7 @@
 #
 # spec file for package simplescreenrecorder
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           simplescreenrecorder
-Version:        0.3.11
+Version:        0.4.0
 Release:        0
 Summary:        A feature-rich screen recorder that supports X11 and OpenGL
 License:        GPL-3.0-or-later
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xinerama)
 %ifarch %{ix86} x86_64
 # openGL apps:
 Recommends:     libssr-glinject
@@ -129,14 +130,6 @@ make V=1 %{?_smp_mflags}
 %cmake_install
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor
 %suse_update_desktop_file %{name}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %defattr(-,root,root)
