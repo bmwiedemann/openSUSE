@@ -1,7 +1,7 @@
 #
 # spec file for package dicts
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,14 +23,14 @@ Version:        1.5
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Ispell Dictionary Files
-License:        BSD-3-Clause and GPL-2.0+ and SUSE-Public-Domain
-Group:          Productivity/Text/Spell
 #
 # Note: The hash table files depend on the architectures!
 #       Not only on the little or big endianness of the
 #       architecture but also on the natural pointer size.
 #
 ##BuildArchitectures: noarch
+License:        BSD-3-Clause AND GPL-2.0-or-later AND SUSE-Public-Domain
+Group:          Productivity/Text/Spell
 Source:         prepare-dicts.tar.bz2
 Source1:        hk2-deutsch.tar.bz2
 Source2:        dutch96.tar.bz2
@@ -53,6 +53,7 @@ Source19:       finnish.tar.bz2
 Source20:       estonian.tar.bz2
 Source21:       dicts-rpmlintrc
 Patch:          prepare-dicts.dif
+%global debug_package %{nil}
 
 %description
 This package contains sources for 14 ispell dictionaries:
@@ -120,7 +121,7 @@ the package dicts.
 
 %package     -n ispell-danish
 Summary:        Danish ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       idanish
 Provides:       ispell_dictionary
@@ -135,7 +136,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-spanish
 Summary:        Spanish ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispanish
 Provides:       ispell_dictionary
@@ -150,7 +151,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-french
 Summary:        French ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ifrench
 Provides:       ispell_dictionary
@@ -166,7 +167,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-italian
 Summary:        Italian ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       iitalian
 Provides:       ispell_dictionary
@@ -196,7 +197,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-swedish
 Summary:        Swedish ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       iswedish
@@ -211,7 +212,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-norsk
 Summary:        Norwegian ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       inorsk
 Provides:       ispell_dictionary
@@ -226,7 +227,7 @@ sources for this dictionary are included in the package dicts.
 
 %package     -n ispell-portuguese
 Summary:        Portuguese ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       iportug
 Provides:       ispell_dictionary
@@ -271,7 +272,7 @@ the package dicts.
 
 %package     -n ispell-polish
 Summary:        Polish ispell dictionary
-License:        GPL-2.0 and LGPL-2.1 and MPL-1.1 and CC-BY-SA-1.0
+License:        GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
 Group:          Productivity/Text/Spell
 Provides:       ipolish
 Provides:       ispell_dictionary
@@ -286,7 +287,7 @@ the package dicts.
 
 %package     -n ispell-greek
 Summary:        Greek ispell dictionary
-License:        BSD-3-Clause and GPL-2.0+
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       igreek
 Provides:       ispell_dictionary
@@ -316,7 +317,7 @@ the package dicts.
 
 %package     -n ispell-esperanto
 Summary:        Esperanto ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       iesperan
 Provides:       ispell_dictionary
@@ -330,7 +331,7 @@ the package dicts.
 
 %package     -n ispell-slovene
 Summary:        Slovenian ispell dictionary
-License:        BSD-3-Clause and GPL-2.0+
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       islovene
 Provides:       ispell_dictionary
@@ -345,7 +346,7 @@ the package dicts.
 
 %package     -n ispell-brazilian
 Summary:        Brazilian ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       locale(ispell:pt_BR)
@@ -358,7 +359,7 @@ the package dicts.
 
 %package     -n ispell-finnish
 Summary:        Finnish ispell dictionary
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       locale(ispell:fi)
@@ -371,7 +372,7 @@ the package dicts.
 
 %package     -n ispell-estonian
 Summary:        Estonian ispell dictionary
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 Provides:       ispell_dictionary
 Provides:       locale(ispell:et)
@@ -397,7 +398,7 @@ the package dicts.
   patch -s -p0
   make -f Makefile.Linux extract
   rm Makefile.Linux
-%patch
+%patch -p0 -b .pdicts
 
 # unify the permissions of all files, to make fdupes working again (bnc#784670)
 find . -type f -exec chmod 0644 {} +

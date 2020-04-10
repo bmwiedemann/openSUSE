@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:06:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Declare string functions
+- No debug package at all 
+
+-------------------------------------------------------------------
 Mon May 22 13:45:33 UTC 2017 - werner@suse.de
 
 - s/decrementieren/dekrementieren/ for german dictionary (boo#1039305)

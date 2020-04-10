@@ -203,4 +203,12 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
     <comment>- s/decrementieren/dekrementieren/ for german dictionary (boo#1039305)</comment>
     <requestid>497319</requestid>
   </revision>
+  <revision rev="29" vrev="421">
+    <srcmd5>fc4bb5a240f24a8064f0d3615e945557</srcmd5>
+    <version>1.5</version>
+    <time>1586555568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>792005</requestid>
+  </revision>
 </revisionlist>
