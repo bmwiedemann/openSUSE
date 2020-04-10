@@ -213,4 +213,14 @@ release expected in about a week.
   * Includes fix for binutils version parsing [gcc#93965]</comment>
     <requestid>783281</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9c3844b2bc780052d31fe6ac7b57b069</srcmd5>
+    <version>9.3.1+git1296</version>
+    <time>1586555528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to releases/gcc-9 head (6db837a5288ee3ca5ec504fbd5a76581).
+  * Includes GCC 9.3 release
+  * Includes fix for [bsc#1167898, gcc#93597]</comment>
+    <requestid>791670</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  6 06:16:10 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to releases/gcc-9 head (6db837a5288ee3ca5ec504fbd5a76581).
+  * Includes GCC 9.3 release
+  * Includes fix for [bsc#1167898, gcc#93597]
+
+-------------------------------------------------------------------
 Fri Mar  6 08:58:58 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to releases/gcc-9 head (c5edde44f5b17b4891f17a63517f355b).
