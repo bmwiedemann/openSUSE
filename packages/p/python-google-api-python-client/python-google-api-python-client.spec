@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-api-python-client
-Version:        1.7.11
+Version:        1.8.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
+BuildRequires:  %{python_module google-api-core >= 1.13.0}
 BuildRequires:  %{python_module google-auth >= 1.4.1}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.0.3}
 BuildRequires:  %{python_module httplib2 >= 0.9.2}
@@ -36,6 +37,7 @@ BuildRequires:  %{python_module unittest2}
 BuildRequires:  %{python_module uritemplate  >= 3.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-google-api-core >= 1.13.0
 Requires:       python-google-auth >= 1.4.1
 Requires:       python-google-auth-httplib2 >= 0.0.3
 Requires:       python-httplib2 >= 0.9.2
@@ -62,7 +64,9 @@ Google APIs Client Library for Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# DiscoveryFromDocument::test_api_endpoint_override_from_client_options and 
+# DiscoveryFromDocument::test_api_endpoint_override_from_client_options_dict fail with "server unavailable"
+%pytest -k "not (test_api_endpoint_override_from_client_options and Document)"
 
 %files %{python_files}
 %doc CHANGELOG

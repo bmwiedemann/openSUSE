@@ -121,4 +121,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment>- Update to 1.7.11 bsc#1161898:</comment>
     <requestid>788089</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ff3e822c82463ba1b8eee1d24ea9e40</srcmd5>
+    <version>1.8.0</version>
+    <time>1586555585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792353</requestid>
+  </revision>
 </revisionlist>
