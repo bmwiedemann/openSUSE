@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 07:46:02 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix build on SLE-12
+  + Add python to BuildRequires for suse_version < 1500
+  + Add python-scandir to BuildRequires for suse_version < 1500
+
+-------------------------------------------------------------------
 Fri Mar 13 12:52:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

@@ -34,6 +34,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} < 1500
+BuildRequires:  %{python_module scandir}
+BuildRequires:  python
+%endif
 %if %{with python2}
 BuildRequires:  python2-futures >= 2.2.0
 %endif
