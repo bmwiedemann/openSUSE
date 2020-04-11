@@ -369,6 +369,7 @@ unsorted:
   - airspy 
   - airspy-devel 
   - airspy-udev 
+  - airspyhf 
   - airspyhf-devel 
   - airspyhf-udev 
   - aisleriot 
@@ -6845,7 +6846,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9120,7 +9120,7 @@ unsorted:
   - libfrr_pb0 
   - libfrrcares0 
   - libfrrfpm_pb0 
-  - libfrrgrpc_pb0: [x86_64] 
+  - libfrrgrpc_pb0 
   - libfrrospfapiclient0 
   - libfrrsnmp0 
   - libfrrzmq0 
@@ -14048,6 +14048,10 @@ unsorted:
   - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
+  - molequeue 
+  - molequeue-devel 
+  - molequeue-doc 
+  - molequeue-libs0 
   - molsketch 
   - molsketch-devel 
   - molsketch-doc 
@@ -14169,6 +14173,7 @@ unsorted:
   - mp 
   - mp-gtk3 
   - mp3_check 
+  - mp3gain 
   - mpDris2 
   - mpDris2-lang 
   - mpc-devel 
@@ -15563,14 +15568,11 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -19267,6 +19269,7 @@ unsorted:
   - python2-humanhash3 
   - python2-hupper 
   - python2-husl 
+  - python2-hvac 
   - python2-hyper 
   - python2-hyperframe 
   - python2-hyperlink 
@@ -19804,6 +19807,7 @@ unsorted:
   - python2-pygments-pytest 
   - python2-pygments-style-railscasts 
   - python2-pygraphviz 
+  - python2-pyhcl 
   - python2-pyinotify 
   - python2-pyjavaproperties 
   - python2-pyjokes 
@@ -21660,6 +21664,7 @@ unsorted:
   - python3-humanreadable 
   - python3-hupper 
   - python3-husl 
+  - python3-hvac 
   - python3-hvplot 
   - python3-hyper 
   - python3-hypothesis 
@@ -22426,6 +22431,7 @@ unsorted:
   - python3-pygments-pytest 
   - python3-pygments-style-railscasts 
   - python3-pygraphviz: [i586] 
+  - python3-pyhcl 
   - python3-pyhibp 
   - python3-pyinotify 
   - python3-pyjavaproperties 
@@ -23035,8 +23041,8 @@ unsorted:
   - python3-torch: [x86_64] 
   - python3-torch-devel: [x86_64] 
   - python3-tornado 
+  - python3-tornado4 
   - python3-tornado5 
-  - python3-tornado6 
   - python3-toro 
   - python3-tortilla 
   - python3-towncrier 
