@@ -1,6 +1,7 @@
 #
 # spec file for package redfishtool
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           redfishtool
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A CLI tool for accessing the Redfish API
 License:        BSD-3-Clause

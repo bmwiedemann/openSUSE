@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 17:16:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.2
+  * Made fix to collection listing to show members when optional
+    properties are not present
+
+-------------------------------------------------------------------
 Fri Jan 31 20:43:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.1.1
