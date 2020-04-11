@@ -18,7 +18,7 @@
 
 %define _name org.gnome.Weather
 Name:           gnome-weather
-Version:        3.34.1
+Version:        3.34.2
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
