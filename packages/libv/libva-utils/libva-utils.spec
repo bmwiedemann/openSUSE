@@ -17,7 +17,7 @@
 
 
 Name:           libva-utils
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
 License:        MIT AND EPL-1.0
@@ -66,6 +66,7 @@ A driver implementation is necessary to properly operate.
 %license COPYING
 %doc NEWS
 %{_bindir}/avcenc
+%{_bindir}/avcstreamoutdemo
 %{_bindir}/h264encode
 %{_bindir}/jpegenc
 %{_bindir}/loadjpeg
@@ -77,5 +78,13 @@ A driver implementation is necessary to properly operate.
 %{_bindir}/vavpp
 %{_bindir}/vp8enc
 %{_bindir}/vp9enc
+%{_bindir}/hevcencode
+%{_bindir}/sfcsample
+%{_bindir}/vppblending
+%{_bindir}/vppchromasitting
+%{_bindir}/vppdenoise
+%{_bindir}/vppscaling_csc
+%{_bindir}/vppscaling_n_out_usrptr
+%{_bindir}/vppsharpness
 
 %changelog
