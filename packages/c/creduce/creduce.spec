@@ -1,7 +1,7 @@
 #
 # spec file for package creduce
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,11 @@ Group:          Development/Tools/Other
 URL:            https://github.com/csmith-project/creduce
 Source:         %{name}-%{version}.tar.xz
 Patch0:         llvm9-libs-fix.patch
+Patch1:         install-location.patch
+Patch2:         binary-search-location.patch
 BuildRequires:  astyle
 BuildRequires:  clang9-devel
+BuildRequires:  cmake
 BuildRequires:  delta
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -39,7 +42,6 @@ BuildRequires:  perl-File-Which
 BuildRequires:  perl-Getopt-Tabular
 BuildRequires:  perl-Regexp-Common
 BuildRequires:  perl-Term-ReadKey
-BuildRequires:  zlib-devel
 Requires:       astyle
 Requires:       clang9-devel
 Requires:       delta
@@ -63,17 +65,18 @@ bugs in compilers and other tools that process C/C++ code.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
-%configure --libexec=%{_bindir}
+%cmake
 %make_build
 
 %install
+cd build
 %make_install
 
-rm %{buildroot}%{_bindir}/topformflat
-rm %{buildroot}%{_bindir}/unifdef
+rm %{buildroot}/usr/libexec/topformflat
+rm %{buildroot}/usr/libexec/unifdef
 
 %files
 %license COPYING

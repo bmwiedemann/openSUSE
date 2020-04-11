@@ -16,3 +16,34 @@ index 5bd6e56..b915946 100644
  	$(LLVMLIBS) \
  	$(CLANG_LDFLAGS) \
  	$(LLVMLDFLAGS)
+diff --git a/clang_delta/CMakeLists.txt b/clang_delta/CMakeLists.txt
+index a94ec0d..dcbc1d0 100644
+--- a/clang_delta/CMakeLists.txt
++++ b/clang_delta/CMakeLists.txt
+@@ -86,24 +86,8 @@ llvm_map_components_to_libnames(LLVM_LIBS
+ )
+ 
+ set(CLANG_LIBS
+-  clangStaticAnalyzerFrontend
+-  clangStaticAnalyzerCheckers
+-  clangStaticAnalyzerCore
+-  clangFrontendTool
+-  clangFrontend
+-  clangDriver
+-  clangSerialization
+-  clangCodeGen
+-  clangParse
+-  clangSema
+-  clangAnalysis
+-  clangRewriteFrontend
+-  clangRewrite
+-  clangAST
+-  clangBasic
+-  clangEdit
+-  clangLex
+-  clangARCMigrate
++  clang-cpp
++  LLVM
+ )
+ 
+ add_executable(clang_delta
