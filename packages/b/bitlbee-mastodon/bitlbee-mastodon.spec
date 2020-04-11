@@ -1,7 +1,7 @@
 #
 # spec file for package bitlbee-mastodon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           bitlbee-mastodon
-Version:        1.4.0
+Version:        1.4.4
 Release:        0
 Summary:        A Mastodon plugin for Bitlbee
 License:        GPL-2.0-only
 Group:          Productivity/Networking/IRC
 URL:            https://github.com/kensanata/bitlbee-mastodon
 Source:         https://github.com/kensanata/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-                # https://github.com/kensanata/bitlbee-mastodon/releases/download/v1.4.0/bitlbee-mastodon-1.4.0.tar.gz
-                # https://github.com/kensanata/bitlbee-mastodon/archive/v1.4.0.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -46,9 +44,9 @@ now use any IRC client you want to connect to Mastodon.
 %setup -q
 
 %build
-./autogen.sh
+sh ./autogen.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
