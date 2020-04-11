@@ -63,10 +63,9 @@ BuildRequires:  eclipse-emf-core
 BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
-BuildRequires:  jgit-bootstrap
+BuildRequires:  jgit
 BuildRequires:  tycho
 #!BuildIgnore:  eclipse-platform
-#!BuildIgnore:  jgit
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: log4j
 %if %{with providers}
@@ -75,8 +74,6 @@ BuildRequires:  irclib
 %endif
 %else
 BuildRequires:  tycho-bootstrap
-#!BuildIgnore:  jgit
-#!BuildIgnore:  jgit-bootstrap
 #!BuildIgnore:  tycho
 %endif
 
@@ -244,7 +241,7 @@ done
 
 %build
 # Qualifier generated from last modification time of source tarball
-QUALIFIER=$(date -u -d"$(stat --format=%y %{SOURCE0})" +v%Y%m%d-%H%M)
+QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
 %{mvn_build} -j -f -- -DforceContextQualifier=$QUALIFIER
 
 %install
