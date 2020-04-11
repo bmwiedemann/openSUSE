@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 10:22:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rework ECW5 SDK handling
+- Fix build with ECW SDK 5.5 with upstream backports:
+  * gdal-ecwjp2-sdk-5.5.patch
+  * gdal-ecwjp2-sdk-5.5_dep1.patch
+
+-------------------------------------------------------------------
 Sat Feb  1 08:52:49 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to version 3.0.4 bugfix release

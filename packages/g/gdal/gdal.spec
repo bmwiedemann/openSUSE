@@ -36,6 +36,9 @@ Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ver
 Patch0:         gdal-perl.patch
 # Fix occasional parallel build failure
 Patch1:         GDALmake.opt.in.patch
+# PATCH-FIX-UPSTREAM - https://github.com/OSGeo/gdal/commit/e5cb5406ea9090b2f17cffeeb7ba5fb49e7158f2 + dep commit
+Patch2:         gdal-ecwjp2-sdk-5.5_dep1.patch
+Patch3:         gdal-ecwjp2-sdk-5.5.patch
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -156,7 +159,10 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 
 %prep
 %setup -q -n %{sourcename}-%{version}
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p2
+%patch3 -p2
 
 # Set the right (build) libproj.so version, use the upper found version.
 PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
@@ -173,20 +179,14 @@ done
 find . -type f -name "style_ogr_brush.png" -exec chmod 0644 {} \;
 find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 
-#Fix wrong /usr/bin/env phyton
+# Fix wrong /usr/bin/env phyton
 #Create the move to python3
 find . -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} \;
 %if %{with ecw5_support}
 # gdal configure script looks for a given layout, so reproduce what is expected.
-%if 0%{?suse_version} >= 1500
-%define ecw_abi_conf newabi
-%else
-%define ecw_abi_conf ""
-%endif
-mkdir -p ../ECW/Desktop_Read-Only/lib/%{ecw_abi_conf}/x64/release/
-mkdir -p ../ECW/Desktop_Read-Only/include
-cp %{_libdir}/libNCSEcw* ../ECW/Desktop_Read-Only/lib/%{ecw_abi_conf}/x64/release/
-cp -r %{_includedir}/{ECW*,NCS*} ../ECW/Desktop_Read-Only/include/
+mkdir -p ../ECW/Desktop_Read-Only/lib/x64/
+ln -s %{_libdir} ../ECW/Desktop_Read-Only/lib/x64/release
+ln -s %{_includedir} ../ECW/Desktop_Read-Only/include
 %endif
 
 %build
