@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 22:23:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- prepare turning off python support when we drop python2 in TW 
+  we can add a conditional around the bcond for python-gtk
+
+-------------------------------------------------------------------
 Mon Feb 24 20:08:25 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 3.17.5

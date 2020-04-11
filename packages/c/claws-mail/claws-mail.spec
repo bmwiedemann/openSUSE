@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_without python_gtk
 
 %define gtk3_ready 0
 %if !%{gtk3_ready}
@@ -38,7 +39,7 @@ Summary:        A configurable email client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
-Source:         http://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
+Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
 Patch0:         libcanberra-gtk3.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
@@ -58,7 +59,9 @@ BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel >= 2.40.5
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
+%if %{with python_gtk}
 BuildRequires:  python-gtk-devel
+%endif
 BuildRequires:  startup-notification-devel
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-jadetex
@@ -186,7 +189,9 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --enable-notification-plugin \
         --enable-pdf_viewer-plugin \
         --enable-perl-plugin \
+        %if %{with python_gtk}
         --enable-python-plugin \
+        %endif
         --enable-pgpcore-plugin \
         --enable-pgpmime-plugin \
         --enable-pgpinline-plugin \

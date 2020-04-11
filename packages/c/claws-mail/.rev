@@ -775,4 +775,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>778901</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>a09a17fbf08a7fdf13846c4fd1a89a68</srcmd5>
+    <version>3.17.5</version>
+    <time>1586641612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793004</requestid>
+  </revision>
 </revisionlist>
