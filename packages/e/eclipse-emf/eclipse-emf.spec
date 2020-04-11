@@ -55,16 +55,13 @@ BuildRequires:  eclipse-ecf-core-bootstrap
 BuildRequires:  eclipse-emf-core-bootstrap
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
-BuildRequires:  jgit-bootstrap
+BuildRequires:  jgit
 BuildRequires:  tycho
 #!BuildIgnore:  eclipse-platform
-#!BuildIgnore:  jgit
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: log4j
 %else
 BuildRequires:  tycho-bootstrap
-#!BuildIgnore:  jgit
-#!BuildIgnore:  jgit-bootstrap
 #!BuildIgnore:  tycho
 %endif
 
@@ -206,7 +203,7 @@ popd
 
 %build
 # Qualifier generated from last modification time of source tarball
-QUALIFIER=$(date -u -d"$(stat --format=%y %{SOURCE0})" +v%Y%m%d-%H%M)
+QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
 %{mvn_build} -j -f -- -f org.eclipse.emf/pom.xml -DforceContextQualifier=$QUALIFIER -Dmaven.test.failure.ignore=true
 
 %install
