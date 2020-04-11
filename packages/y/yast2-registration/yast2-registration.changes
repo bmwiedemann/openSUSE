@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 12:18:33 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Crash fix: Added missing require (bsc#1167945)
+- 4.2.40
+
+-------------------------------------------------------------------
 Thu Mar 26 12:07:36 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Reverts changes made in 4.2.36 to improve the addons selection,
