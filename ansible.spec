@@ -135,6 +135,9 @@ Requires:       %{python}-paramiko
 Requires:       %{python}-passlib
 Requires:       %{python}-pycrypto >= 2.6
 Requires:       %{python}-setuptools > 0.6
+%if ! %{with python3}
+Requires:       %{python}-xml
+%endif
 Recommends:     %{python}-boto3
 Recommends:     %{python}-botocore
 Recommends:     %{python}-dnspython
@@ -367,6 +370,9 @@ for location in $DATADIR_LOCATIONS ; do
 done
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
+# fix for https://github.com/ansible/ansible/pull/24381 
+# resp. https://bugzilla.opensuse.org/show_bug.cgi?id=1137479
+mkdir -p %{buildroot}%{python3_sitelib}/ansible/galaxy/data/default/role/{files,templates}
 
 cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
 cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
