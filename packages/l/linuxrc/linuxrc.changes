@@ -1,4 +1,39 @@
 --------------------------------------------------------------------
+Thu Apr 9 15:20:00 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#221
+- Use long-named options for better readability
+- 7.0.14
+
+--------------------------------------------------------------------
+Thu Apr 9 15:17:31 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#218
+- Update doc for hostname in different SLE versions
+
+--------------------------------------------------------------------
+Mon Apr 6 14:48:37 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#220
+- make I/O device pre-configuration optional (bsc#1168036,
+  jsc#SLE-7396)
+- add check for pre-config data
+- change displayed texts to 'auto-configuration'
+- 7.0.13
+
+--------------------------------------------------------------------
+Thu Apr 2 08:37:54 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#219
+- parse 'try' keyword in ifcfg option (jsc#SLE-8965, jsc#SLE-9791)
+- move ifcfg option with 'try' to config.ifcfg.manual
+- fix iterating through device list
+- remove unused is_configured var
+- remove trailing space
+- fix travis setup
+- 7.0.12
+
+--------------------------------------------------------------------
 Fri Mar 6 12:13:38 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#216
