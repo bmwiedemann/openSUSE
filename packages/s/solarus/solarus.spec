@@ -17,17 +17,15 @@
 
 
 Name:           solarus
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Game engine for action RPGs
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/RPG
 URL:            https://www.solarus-games.org/
 Source0:        %{name}-%{version}.tar.bz2
-# PATCH-FEATURE-UPSTREAM -- https://gitlab.com/solarus-games/solarus/merge_requests/1311
-Patch0:         solarus-1.6.2-install-gui-translations.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-pkg-config-to-get-more-search-paths.patch
+# PATCH-FIX-UPSTREAM solarus-1.6.3-desktop-version.patch -- fix version field
+Patch0:         solarus-1.6.3-desktop-version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -39,6 +37,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
@@ -56,10 +55,10 @@ games based on the Solarus engine.
 
 %package gui
 Summary:        Graphical user interface to launch Solarus games
-Group:          Amusements/Games/RPG
 # Package "gui" was split from main package on 1.6.1
 # Make sure upgrade of main package from version < 1.6.1
 # installs "gui" as well with a specific Provides
+Group:          Amusements/Games/RPG
 Provides:       %{name}:%{_bindir}/solarus-launcher
 
 %description gui
@@ -108,8 +107,8 @@ Development files for Solarus, including header files.
 %check
 # Tweak path to find libsolarus.so and libsolarus-testing.so
 export LD_LIBRARY_PATH="$PWD/build:$PWD/build/tests"
-# Tests 1200 and 1210 require a graphical display, 1269 is unstable
-%ctest --exclude-regex "lua/bugs/(1200_.*|1210_.*|1269_.*)"
+# Tests 1200 and 1210 require a graphical display
+%ctest --exclude-regex "lua/bugs/(1200_.*|1210_.*)"
 %endif
 
 %post   -n libsolarus1 -p /sbin/ldconfig
@@ -126,12 +125,14 @@ export LD_LIBRARY_PATH="$PWD/build:$PWD/build/tests"
 %files gui
 %license license.txt license_gpl.txt
 %dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%dir %{_datadir}/icons/hicolor/20x20
+%dir %{_datadir}/icons/hicolor/20x20/apps
 %{_bindir}/solarus-launcher
-# man page should be renamed to solarus-launcher
-%{_mandir}/man6/solarus.6%{?ext_man}
+%{_datadir}/appdata/solarus-launcher.appdata.xml
+%{_datadir}/applications/solarus-launcher.desktop
+%{_datadir}/icons/hicolor/*/apps/solarus-launcher*
+%{_datadir}/pixmaps/solarus-launcher.png
+%{_mandir}/man6/solarus-launcher.6%{?ext_man}
 
 %files gui-lang -f %{name}.lang
 %dir %{_datadir}/%{name}-gui

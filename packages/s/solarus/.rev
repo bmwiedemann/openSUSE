@@ -57,4 +57,41 @@
     <comment></comment>
     <requestid>787919</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e8fc97eeab26ef86144192c89acd1de</srcmd5>
+    <version>1.6.3</version>
+    <time>1586641687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.3:
+  * Engine changes:
+    + Fix macOS port not working since 1.6.1 due to OpenGL.
+    + Fix shaders compilation in some OpenGL ES 3.0 platforms
+      (gl#solarus-games/solarus#1437).
+    + Fix UTF-8 quest path encoding handling
+      (gl#solarus-games/solarus#1429).
+    + Fix UTF-8 file names in Lua Open File API for Windows
+      (gl#solarus-games/solarus#1413).
+    + Fix memory usage when visiting very large maps
+      (gl#solarus-games/solarus#1395).
+    + Fix crash when removing the shadow of a carried object
+      (gl#solarus-games/solarus#1423).
+    + Fix crash when stopping the movement of a thrown object
+      (gl#solarus-games/solarus#1452).
+    + Fix carried object shadow still displayed after removing it
+      (gl#solarus-games/solarus#1436).
+    + Fix animating hero sprites dynamically created
+      (gl#solarus-games/solarus#1348).
+    + Fix hero speed when going from deep water to shallow water
+      (gl#solarus-games/solarus#1186).
+    + Fix trail sprite not taking the hero's direction
+      (gl#solarus-games/solarus#1464).
+    + Fix ground sprite still displayed while jumping
+      (gl#solarus-games/solarus#1458).
+    + Fix custom states wrongly affected by ground speeds
+      (gl#solarus-games/solarus#1416).
+    + Fix custom states not activating side teletransporters
+      (gl#solarus-games/solarus#1448).
+    + Fix streams continuing to act when the layer has changed.</comment>
+    <requestid>793223</requestid>
+  </revision>
 </revisionlist>

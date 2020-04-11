@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Apr 11 15:40:26 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.3:
+  * Engine changes:
+    + Fix macOS port not working since 1.6.1 due to OpenGL.
+    + Fix shaders compilation in some OpenGL ES 3.0 platforms
+      (gl#solarus-games/solarus#1437).
+    + Fix UTF-8 quest path encoding handling
+      (gl#solarus-games/solarus#1429).
+    + Fix UTF-8 file names in Lua Open File API for Windows
+      (gl#solarus-games/solarus#1413).
+    + Fix memory usage when visiting very large maps
+      (gl#solarus-games/solarus#1395).
+    + Fix crash when removing the shadow of a carried object
+      (gl#solarus-games/solarus#1423).
+    + Fix crash when stopping the movement of a thrown object
+      (gl#solarus-games/solarus#1452).
+    + Fix carried object shadow still displayed after removing it
+      (gl#solarus-games/solarus#1436).
+    + Fix animating hero sprites dynamically created
+      (gl#solarus-games/solarus#1348).
+    + Fix hero speed when going from deep water to shallow water
+      (gl#solarus-games/solarus#1186).
+    + Fix trail sprite not taking the hero's direction
+      (gl#solarus-games/solarus#1464).
+    + Fix ground sprite still displayed while jumping
+      (gl#solarus-games/solarus#1458).
+    + Fix custom states wrongly affected by ground speeds
+      (gl#solarus-games/solarus#1416).
+    + Fix custom states not activating side teletransporters
+      (gl#solarus-games/solarus#1448).
+    + Fix streams continuing to act when the layer has changed.
+    + Fix enemy:on_dying() not called when setting enemies life to
+      zero (gl#solarus-games/solarus#1440).
+    + Fix talking to NPCs while swimming
+      (gl#solarus-games/solarus#1043).
+    + Fix creating dynamic sprite with tileset anims
+      (gl#solarus-games/solarus#1461).
+  * GUI changes:
+    + Fix UTF-8 quest path encoding handling
+      (gl#solarus-games/solarus#1429).
+    + Add drag and drop functionality to add new quests
+      (gl#solarus-games/solarus#1420).
+- Remove merged patches:
+  * solarus-1.6.2-install-gui-translations.patch.
+  * 0001-Use-pkg-config-to-get-more-search-paths.patch.
+- Add solarus-1.6.3-desktop-version.patch: Fix desktop file
+  validation warning.
+- Add system's glm as build dependency: It's not bundled anymore.
+- Enable test 1269: It's back to stable.
+- Handle some file name changes.
+
+-------------------------------------------------------------------
 Tue Mar 24 18:38:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to find moonjit:
