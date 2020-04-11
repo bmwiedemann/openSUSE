@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:43:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.5.6:
+  * better calculation of OCC bounding boxes using STL
+  * API tutorials
+  * small bug fixes
+- Update to 4.5.5:
+  * tooltips in GUI to help discovery of scripting options
+  * fixed MED IO of high-order elements
+  * fixed OCC attribute search by bounding box
+  * fix parsing of mac-encoded scripts
+  * new RecombineMesh command
+  * added support for extrusion of mixed-dimension entities with OCC
+  * small bug fixes
+- Update to 4.5.4:
+  * periodic mesh optimization now ensures that the master mesh is
+    not modified
+  * code cleanup
+  * small bug fixes
+- Update to 4.5.3:
+  * improved positioning of corresponding nodes on periodic entities
+  * improved LaTeX output
+  * improved curve splitting in reparametrization
+  * new binary PLY reader
+  * small compilation fixes.
+- Drop upstreamed patches:
+  * 0001-Fix-ODR-violations-move-private-classes-into-anonymo.patch
+  * 0002-Fix-two-definition-mismatches-in-contrib-mmg3d.patch
+  * 0001-Add-two-missing-header-includes-in-GModelIO_OCC.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 20:17:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Move Python and Julia bindings for the public gmsh API to

@@ -20,7 +20,7 @@
 %bcond_with static_lib
 %bcond_with pdf_doc
 Name:           gmsh
-Version:        4.5.2
+Version:        4.5.6
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -30,12 +30,6 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch6:         gmsh-3.0.5-add-shebang-to-onelab.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/739
-Patch7:         0001-Fix-ODR-violations-move-private-classes-into-anonymo.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/740
-Patch8:         0002-Fix-two-definition-mismatches-in-contrib-mmg3d.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.onelab.info/gmsh/gmsh/issues/741
-Patch9:         0001-Add-two-missing-header-includes-in-GModelIO_OCC.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -45,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  fltk-devel >= 1.1.7
 BuildRequires:  gcc-c++
-BuildRequires:  gl2ps-devel
+BuildRequires:  gl2ps-devel >= 1.4.1
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  hdf5-devel
@@ -67,7 +61,9 @@ and post-processor.
 
 %package -n libgmsh%{libver}
 Summary:        A three-dimensional finite element mesh generator
+# Added API in 1.4.1
 Group:          System/Libraries
+Requires:       libgl2ps1 >= 1.4.1
 
 %description -n libgmsh%{libver}
 Gmsh is a 3D finite element grid generator with a build-in CAD engine
@@ -153,9 +149,6 @@ This package contains the public gmsh API for Python.
 %patch0 -p1
 %patch1 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 %build
 %cmake \
