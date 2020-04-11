@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:29:41 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1586463829.b1aa1fe9b:
+  * Add explicit API test for obsoleting job
+  * bootstrap: Create symlink for sle tests to work
+
+-------------------------------------------------------------------
 Thu Apr 09 08:29:44 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1586355542.a1ef862a8:
