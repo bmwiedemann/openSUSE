@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 12:58:33 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.10 improved AgsMachineEditor to create plugin
+  dialog only as needed. Causes faster launch of the dialog.
+
+-------------------------------------------------------------------
 Wed Apr  8 13:52:17 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.2.8 implemented AgsLv2TurtleScanner quick scan.
