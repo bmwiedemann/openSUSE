@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        4.2.60
+Version:        4.2.61
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -128,6 +128,5 @@ This package contains the libraries and modules for software management.
 %dir %{yast_docdir}
 %license COPYING
 %doc %{yast_docdir}/README.md
-%doc %{yast_docdir}/CONTRIBUTING.md
 
 %changelog

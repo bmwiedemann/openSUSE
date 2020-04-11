@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 14:44:49 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Allow updating the roles via self_update repository (bsc#1168702)
+- 4.2.61
+
+-------------------------------------------------------------------
 Thu Mar 26 12:25:20 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Reverts changes made in 4.2.59 to improve the addons selection,
