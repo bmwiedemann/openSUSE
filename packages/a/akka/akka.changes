@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:03:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Don't build against eclipse-osgi, but again osgi-core and
+  osgi-compendium packages in order to prevent a fat dependency
+  for a feature that is well served by lighter packages
+
+-------------------------------------------------------------------
 Wed Mar  4 09:43:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of akka 2.3.16

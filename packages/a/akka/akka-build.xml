@@ -98,7 +98,8 @@
     <pathelement location="${osgi.build.dir}"/>
     <pathelement location="${actor.build.dir}"/>
     <fileset dir="${basedir}/target" includes="${name}-actor.jar"/>
-    <fileset dir="/usr/share/java"   includes="eclipse/osgi.jar"/>
+    <fileset dir="/usr/share/java"   includes="osgi-compendium/osgi.cmpn.jar"/>
+    <fileset dir="/usr/share/java"   includes="osgi-core/osgi.core.jar"/>
     <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
   </path>
 
@@ -153,7 +154,8 @@
     <fileset dir="${basedir}/target" includes="${name}-transactor.jar"/>
     <fileset dir="/usr/share/java"   includes="scala/scala-library.jar"/>
     <fileset dir="/usr/share/java"   includes="typesafe-config.jar"/>
-    <fileset dir="/usr/share/java"   includes="eclipse/osgi.jar"/>
+    <fileset dir="/usr/share/java"   includes="osgi-compendium/osgi.cmpn.jar"/>
+    <fileset dir="/usr/share/java"   includes="osgi-core/osgi.core.jar"/>
     <fileset dir="/usr/share/java"   includes="netty.jar"/>
     <fileset dir="/usr/share/java"   includes="protobuf.jar"/>
     <fileset dir="/usr/share/java"   includes="uncommons-maths.jar"/>

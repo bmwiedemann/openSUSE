@@ -27,7 +27,7 @@ License:        Apache-2.0
 URL:            http://akka.io/
 Source0:        %{name}-%{version}.tar.xz
 # Default use sbt
-Source1:        https://raw.github.com/willb/rpm-packaging/85bb1497a483faef89749cd4704b04a23bf32e5d/akka-packaging/akka-build.xml
+Source1:        akka-build.xml
 # Build only these sub-modules, cause: unavailable build deps
 # TODO  akka-camel akka-contrib akka-durable-mailboxes akka-persistence akka-samples akka-zeromq
 Source2:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_%{scala_short_version}/%{namedversion}/akka-actor_%{scala_short_version}-%{namedversion}.pom
@@ -48,7 +48,8 @@ BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 # typesafe-config
 BuildRequires:  mvn(com.typesafe:config)
 BuildRequires:  mvn(io.netty:netty:3)
-BuildRequires:  mvn(org.eclipse.osgi:org.eclipse.osgi)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
+BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.scala-lang:scala-compiler)
 BuildRequires:  mvn(org.scala-lang:scala-library)
 BuildRequires:  mvn(org.scala-stm:scala-stm_2.10)
@@ -56,13 +57,12 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.uncommons.maths:uncommons-maths)
 # requires for akka-remote
 BuildRequires:  protobuf-devel
-#!BuildRequires: eclipse-equinox-osgi
-Requires:       eclipse-equinox-osgi
 Requires:       java-headless
 Requires:       mvn(com.google.protobuf:protobuf-java)
 Requires:       mvn(com.typesafe:config)
 Requires:       mvn(io.netty:netty:3)
-Requires:       mvn(org.eclipse.osgi:org.eclipse.osgi)
+Requires:       mvn(org.osgi:osgi.cmpn)
+Requires:       mvn(org.osgi:osgi.core)
 Requires:       mvn(org.scala-lang:scala-library)
 Requires:       mvn(org.scala-stm:scala-stm_2.10)
 Requires:       mvn(org.slf4j:slf4j-api)
@@ -93,17 +93,17 @@ sed -i -e "s|netty[.]jar|$(basename %{_javadir}/netty3-*.jar)|" build.xml
 cp -p %{SOURCE8} remote-pom.xml
 %pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:artifactId='netty']/pom:version" 3 remote-pom.xml
 
-# use osgi 5.x apis
+# use osgi 7.x apis
 cp -p %{SOURCE7} osgi-pom.xml
-%pom_remove_dep org.osgi: osgi-pom.xml
-%pom_add_dep org.eclipse.osgi:org.eclipse.osgi osgi-pom.xml
+%pom_change_dep :org.osgi.core :osgi.core osgi-pom.xml
+%pom_change_dep :org.osgi.compendium :osgi.cmpn osgi-pom.xml
 
 # spurious-executable-perm
 chmod 644 LICENSE
 
 %build
 
-ant dist doc
+%{ant} dist doc
 
 %install
 
