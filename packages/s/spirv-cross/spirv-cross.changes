@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020-04-03
+  * MSL: Reintroduce workarounds for arrays not being value
+    types.
+  * Expose query if a resource was used as a comparison/depth
+    resource.
+
+-------------------------------------------------------------------
 Sat Jan 18 19:51:33 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to 2020-01-16 (no changelog)

@@ -16,14 +16,14 @@
 #
 
 
-%define _ver 2020-01-16
-%define _libver 0.23.0
+%define _ver 2020-04-03
+%define _libver 0.30.0
 %define _sover 0
 %define _libname libspirv-cross-c-shared
 %define _libpkg %{_libname}%{_sover}
 %define __builder ninja
 Name:           spirv-cross
-Version:        20200116
+Version:        20200403
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0
@@ -40,16 +40,13 @@ SPIRV-Cross is a tool and library designed for parsing and
 converting SPIR-V to other shader languages.
 
 Features:
-  * Converts SPIR-V to readable, usable and efficient GLSL, MSL
-    or HLSL
-  * Converts SPIR-V to a JSON reflection format
+  * Conversion of SPIR-V to GLSL, MSL or HLSL
+  * Conversion of SPIR-V to a JSON reflection format
   * Reflection API to simplify the creation of Vulkan pipeline
     layouts
   * Reflection API to modify and tweak OpDecorations
-  * Supports "all" of vertex, fragment, tessellation, geometry
+  * Support for "all" of vertex, fragment, tessellation, geometry
     and compute shaders.
-  * SPIRV-Cross tries emitting readable and clean output from
-    the SPIR-V.
 
 %package -n %{_libpkg}
 Version:        %{_libver}
