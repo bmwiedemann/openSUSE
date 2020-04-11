@@ -45,6 +45,8 @@ Source2:        https://www.paraview.org/files/v%{major_ver}/ParaViewGettingStar
 Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewGuide-%{version}.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch1:         paraview-desktop-entry-fix.patch
+# PATCH-FIX-UPSTREAM fix-3d48a287-support-new-api-cgio_read_data_type.patch -- Add support for new API cgio_read_***data***_type
+Patch2:         fix-3d48a287-support-new-api-cgio_read_data_type.patch
 # PATCH-FIX-UPSTREAM paraview-do-not-install-missing-vtk-doxygen-dir.patch foss@grueninger.de -- Remove install of nonexistent doxygen/html dir
 Patch3:         paraview-do-not-install-missing-vtk-doxygen-dir.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking
