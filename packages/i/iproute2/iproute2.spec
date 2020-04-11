@@ -82,6 +82,18 @@ Requires:       bash-completion
 %description bash-completion
 bash command line completion support for iproute.
 
+%package arpd
+Summary:        Userspace ARP daemon
+License:        GPL-2.0-only
+Group:          Productivity/Networking/Routing
+Provides:       iproute2:/usr/sbin/arpd
+
+%description arpd
+The arpd daemon collects gratuitous ARP information, saving it on
+local disk and feeding it to the kernel on demand to avoid redundant
+broadcasting due to limited standard size (512..1024 entries,
+depending on type) of the kernel ARP cache.
+
 %prep
 %autosetup -p1
 find . -name *.orig -delete
@@ -130,12 +142,14 @@ cp -an README* examples/bpf "$b/%_docdir/%name/"
 %_bindir/routel
 %_bindir/ss
 %_sbindir/*
+%exclude %_sbindir/arpd
 #UsrMerge
 /sbin/*
 /bin/ip
 #EndUsrMerge
 %_mandir/man7/*
 %_mandir/man8/*
+%exclude %_mandir/man8/arpd.8*
 %dir %_sysconfdir/iproute2
 %config(noreplace) %_sysconfdir/iproute2/*
 %_libdir/tc/
@@ -154,5 +168,9 @@ cp -an README* examples/bpf "$b/%_docdir/%name/"
 
 %files bash-completion
 %_datadir/bash-completion/
+
+%files arpd
+%_sbindir/arpd
+%_mandir/man8/arpd.8*
 
 %changelog
