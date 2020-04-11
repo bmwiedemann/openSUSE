@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
@@ -64,7 +64,7 @@ make %{?_smp_mflags}
 %config %{_sysconfdir}/srain/builtin.cfg
 %{_bindir}/srain
 %{_datadir}/applications/im.srain.%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/im.srain.%{name}.png
+%{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.png
 %{_datadir}/metainfo/im.srain.%{name}.appdata.xml
 %{_datadir}/srain/themes/*.css
 

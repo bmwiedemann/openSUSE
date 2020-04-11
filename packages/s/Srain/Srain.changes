@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 11 14:51:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.2
+  Features:
+  * Add MAN documentation (deaf723)
+  * Add more predefined IRC networks: DALnet, EFnet, IRCnet,
+    Undernet and QuakeNet (#228)
+  Changes:
+  * Build: Allow setting CC variable via environment (#224)
+  * Add channel related messages to corresponding buffer as
+    possible (#149)
+  * Improve widget focus control (#229)
+  * Drop unused icons (6239fe5)
+  * Provide clearer error message when connecting (#233)
+  Bug fixes:
+  * Truncate long message before sendisg (#227)
+  * Deal with invalid UTF-8 string (50e7757)
+  * Fix incorrect user number of channel user list (#230)
+  * Fix incorrect icon install path (9f07380)
+
+- Refreshed Srain-implicit_declarations.patch
+
+-------------------------------------------------------------------
 Sat Mar 14 08:22:06 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.0.1
