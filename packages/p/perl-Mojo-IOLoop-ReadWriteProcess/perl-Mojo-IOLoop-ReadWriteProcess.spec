@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-IOLoop-ReadWriteProcess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.24
+Version:        0.25
 Release:        0
 %define cpan_name Mojo-IOLoop-ReadWriteProcess
 Summary:        Execute external programs or internal code blocks as separate process
@@ -43,16 +43,13 @@ Mojo::IOLoop::ReadWriteProcess is yet another process manager.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
-# https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/4
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=939460
-rm t/10_cgroupv?.t
 ./Build test
 
 %install

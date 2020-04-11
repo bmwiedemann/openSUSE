@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  9 03:08:35 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.25 2020-04-08T14:48:01Z
+     - In "stop" sleep only after sending the first signal to speedup termination by okurz
+     - Various fixups in test suite
+
+-------------------------------------------------------------------
 Fri Oct 18 08:59:00 UTC 2019 -  <timueller+perl@suse.de>
 
 - Change the `find` call for modifying permissions to leave also shell scripts
