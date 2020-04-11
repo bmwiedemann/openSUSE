@@ -160,6 +160,7 @@ BuildRequires:  hamcrest
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  icu4j >= 62.1
+BuildRequires:  jgit
 BuildRequires:  jsch >= 0.1.46
 BuildRequires:  jsoup
 BuildRequires:  junit >= 4.12
@@ -232,21 +233,17 @@ BuildRequires:  eclipse-emf-core > 2.14.99
 BuildRequires:  eclipse-emf-runtime
 BuildRequires:  eclipse-pde-bootstrap
 BuildRequires:  eclipse-platform-bootstrap
-BuildRequires:  jgit
 BuildRequires:  tycho
 #!BuildIgnore:  eclipse-ecf-core-bootstrap
 #!BuildIgnore:  eclipse-emf-core-bootstrap
 #!BuildIgnore:  eclipse-platform
-#!BuildIgnore:  jgit-bootstrap
 #!BuildIgnore:  tycho-bootstrap
 %else
 BuildRequires:  eclipse-ecf-core-bootstrap
 BuildRequires:  eclipse-emf-core-bootstrap
-BuildRequires:  jgit-bootstrap
 BuildRequires:  tycho-bootstrap
 #!BuildIgnore:  eclipse-ecf-core
 #!BuildIgnore:  eclipse-emf-core
-#!BuildIgnore:  jgit
 #!BuildIgnore:  tycho
 %endif
 
