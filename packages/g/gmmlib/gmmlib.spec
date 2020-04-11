@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global somajor 11
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        19.4.1
+Version:        20.1.1
 Release:        0
 Summary:        Intel(R) Graphics Memory Management Library Package
 License:        MIT
@@ -37,6 +38,7 @@ OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
 
 %package -n %{libname}
 Summary:        Intel(R) Graphics Memory Management Library development package
+Group:          Development/Libraries/C and C++
 
 %description -n %{libname}
 The Intel(R) Graphics Memory Management Library provides device specific
@@ -47,6 +49,7 @@ This package contains shared library.
 
 %package    devel
 Summary:        Intel(R) Graphics Memory Management Library development package
+Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       libigdgmm-devel = %{version}
 Obsoletes:      libigdgmm-devel < %{version}
