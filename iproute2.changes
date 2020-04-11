@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 05:59:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move arpd into own subpackage to avoid libdb dependency
+  [jira#PM-1185]
+
+-------------------------------------------------------------------
 Wed Apr  1 18:44:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.6
