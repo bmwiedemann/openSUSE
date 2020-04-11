@@ -17,7 +17,7 @@
 
 
 Name:           php-composer
-Version:        1.10.4
+Version:        1.10.5
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT

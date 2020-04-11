@@ -296,4 +296,15 @@
 </comment>
     <requestid>792814</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4741bcedf7f5ac38058e4e06ed124032</srcmd5>
+    <version>1.10.5</version>
+    <time>1586641637</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.5
+  * Fixed self-update on PHP &lt;5.6, seriously please upgrade
+  * Fixed 1.10.2 regression with PATH resolution in scripts
+</comment>
+    <requestid>793061</requestid>
+  </revision>
 </revisionlist>

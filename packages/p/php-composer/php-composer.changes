@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:03:44 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.10.5
+  * Fixed self-update on PHP <5.6, seriously please upgrade
+  * Fixed 1.10.2 regression with PATH resolution in scripts
+
+-------------------------------------------------------------------
 Thu Apr  9 21:58:39 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.10.4
