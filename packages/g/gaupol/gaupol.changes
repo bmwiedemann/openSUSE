@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 10 20:51:57 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.8:
+  * Add action set start from video position
+    (gh#otsaloma/gaupol#148).
+  * Add and fix English spell-check special cases.
+  * Add and fix OCR spell-check special cases.
+  * Add Interlingue translation (OIS).
+  * Add Portuguese translation (Hugo Carvalho).
+  * Update translations.
+
+-------------------------------------------------------------------
 Sun Aug  4 18:21:55 UTC 2019 - antoine.belvire@opensuse.org
 
 - Update to version 1.7:

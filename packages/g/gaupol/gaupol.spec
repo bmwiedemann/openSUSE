@@ -1,7 +1,7 @@
 #
 # spec file for package gaupol
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define long_name io.otsaloma.gaupol
 %bcond_without test
 Name:           gaupol
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        GTK Subtitle editor
 License:        GPL-3.0-or-later
