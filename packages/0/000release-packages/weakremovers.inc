@@ -69,8 +69,10 @@ Provides: weakremover(ruby2.5-rubygem-net-ssh-5.0)
 Provides: weakremover(ruby2.5-rubygem-net-ssh-doc-5.0)
 %endif
 # 15.1:update
+Provides: weakremover(libgnutls30-hmac)
 Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.1-x86_64)
 %ifarch x86_64
+Provides: weakremover(libgnutls30-hmac-32bit)
 Provides: weakremover(pam-extra-32bit)
 Provides: weakremover(python3-numpy_1_17_3-gnu-hpc)
 Provides: weakremover(python3-numpy_1_17_3-gnu-hpc-devel)
