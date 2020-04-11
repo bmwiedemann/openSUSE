@@ -16,23 +16,18 @@
 #
 
 
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-
 Name:           archivemail
 Version:        0.9.0
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-URL:            http://archivemail.sf.net/
-Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 Summary:        Tool for Archiving and Compressing Old Email in Mailboxes
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
+URL:            http://archivemail.sf.net/
+Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ed
 BuildRequires:  python-base
-%{py_requires}
-%if %{?suse_version: %{suse_version} > 1110} %{!?suse_version:1}
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%endif
 
 %description
 archivemail is a tool for archiving and compressing old email in mailboxes. It
@@ -48,20 +43,17 @@ w
 EOF
 
 %build
-python setup.py build
+%python2_build
 
 %install
-# python => 2.5 expects this to exist (it will exist if the package
-# installs something there, but we don't)
-mkdir -p $RPM_BUILD_ROOT/%{python_sitelib}
-python setup.py install --prefix=%{_prefix} --root %{buildroot}
+%python2_install
 # we don't need the egg file which python => 2.5 installs
-rm -f $RPM_BUILD_ROOT/%{python_sitelib}/*
+rm -f %{buildroot}/%{python_sitelib}/*
 
 %files
-%defattr(-,root,root)
-%{_bindir}/archivemail
-%doc %{_mandir}/man1/archivemail.1*
+%license COPYING
 %doc CHANGELOG examples/* FAQ README TODO
+%{_bindir}/archivemail
+%{_mandir}/man1/archivemail.1%{?ext_man}
 
 %changelog
