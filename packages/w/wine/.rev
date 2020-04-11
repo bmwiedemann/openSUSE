@@ -3488,4 +3488,18 @@
 - update staging to 5.5 release</comment>
     <requestid>789965</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>06bf51831722555ee6e62f9406d15cf6</srcmd5>
+    <version>5.6</version>
+    <time>1586641644</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.6 development release
+  - Still more Media Foundation work.
+  - Improvements to Active Directory LDAP support.
+  - A few more modules converted to PE.
+  - Improvements to gdb proxy mode.
+  - Various bug fixes.
+- update staging to 5.6 release</comment>
+    <requestid>793070</requestid>
+  </revision>
 </revisionlist>

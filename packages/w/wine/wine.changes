@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:45:21 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.6 development release
+  - Still more Media Foundation work.
+  - Improvements to Active Directory LDAP support.
+  - A few more modules converted to PE.
+  - Improvements to gdb proxy mode.
+  - Various bug fixes.
+- update staging to 5.6 release
+
+-------------------------------------------------------------------
 Sat Mar 28 08:02:57 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.5 development release
