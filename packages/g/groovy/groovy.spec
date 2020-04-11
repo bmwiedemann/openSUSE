@@ -1,7 +1,7 @@
 #
 # spec file for package groovy
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@ Release:        0
 Summary:        Dynamic language for the Java Platform
 License:        Apache-2.0 AND BSD-3-Clause AND EPL-1.0 AND SUSE-Public-Domain AND CC-BY-2.5
 Group:          Development/Libraries/Java
-URL:            http://groovy-lang.org
+URL:            https://groovy-lang.org
 Source0:        https://dl.bintray.com/groovy/maven/apache-groovy-src-%{version}.zip
 Source1:        groovy-script.sh
 Source3:        groovy.desktop
 Source4:        cpl-v10.txt
 Source5:        epl-v10.txt
-Source6:        http://central.maven.org/maven2/org/codehaus/groovy/groovy-all/%{version}/groovy-all-%{version}.pom
+Source6:        https://repo1.maven.org/maven2/org/codehaus/groovy/groovy-all/%{version}/groovy-all-%{version}.pom
 Patch0:         0001-Port-to-Servlet-API-3.1.patch
 Patch1:         0002-Gradle-local-mode.patch
 Patch2:         0003-Bintray.patch
@@ -93,7 +93,7 @@ Requires:       %{name}-testng = %{version}-%{release}
 Requires:       %{name}-xml = %{version}-%{release}
 # optional in pom.xml, but present in upstream binary tarball
 Requires:       xpp3-minimal
-#!BuildRequires: eclipse-platform gradle-bootstrap groovy-bootstrap gpars
+#!BuildRequires: gradle-bootstrap groovy-bootstrap gpars
 BuildArch:      noarch
 
 %description
@@ -106,8 +106,8 @@ you can use Java.
 %package lib
 Summary:        Groovy JAR artifact
 Group:          Development/Libraries/Java
-Obsoletes:      %{name}-bootstrap
 Requires:       gpars
+Obsoletes:      %{name}-bootstrap
 
 %description lib
 This package contains Groovy JAR artifact.
