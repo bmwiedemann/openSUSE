@@ -1,7 +1,7 @@
 #
 # spec file for package tycho-extras
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Additional plugins for Tycho
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://eclipse.org/tycho/
+URL:            https://eclipse.org/tycho/
 Source0:        http://git.eclipse.org/c/tycho/org.eclipse.tycho.extras.git/snapshot/org.eclipse.tycho.extras-tycho-extras-%{version}.tar.xz
 Patch0:         %{name}-fix-build.patch
 Patch1:         %{name}-use-custom-resolver.patch
@@ -31,7 +31,7 @@ Patch2:         tycho-maven-archiver-3.0.1.patch
 #https://git.eclipse.org/r/#/c/75453/
 Patch3:         fix-xmvn-pomless-builddep.patch
 BuildRequires:  fdupes
-BuildRequires:  jgit-bootstrap
+BuildRequires:  jgit
 BuildRequires:  maven-local
 BuildRequires:  tycho-bootstrap
 BuildRequires:  xz
@@ -46,7 +46,8 @@ BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-model-builder)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
-#!BuildIgnore:  tycho jgit
+Requires:       jgit
+#!BuildIgnore:  tycho
 BuildArch:      noarch
 
 %description
