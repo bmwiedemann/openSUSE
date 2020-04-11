@@ -1,7 +1,7 @@
 #
 # spec file for package pyzy
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,43 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pyzy
-Version:        1.0git20120805
+Version:        1.1
 Release:        0
 Summary:        The Chinese PinYin and Bopomofo conversion library
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/I18n/Chinese
-Url:            http://code.google.com/p/pyzy
-Source0:        %{name}-%{version}.tar.gz
-Source1:        pyzy-database-1.0.0.tar.bz2
-Source2:        pinyin-database-1.2.99.tar.bz2
-# PATCH-FIX-UPSTREAM autofix.diff jengelh@inai.de -- resolve build errors with old automake
-Patch1:         autofix.diff
-# PATCH-FIX-UPSTREAM pyzy-opencc-1_0_2-build.patch hillwood@opensuse.org  -- Use opencc 1.0.2
-Patch2:         pyzy-opencc-1_0_2-build.patch
-# PATCH-FIX-UPSTREAM signed-char.patch schwab@suse.de -- Fix -Wnarrowing warning
-Patch3:         signed-char.patch
+URL:            https://github.com/openSUSE/pyzy
+Source0:        https://github.com/openSUSE/pyzy/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyzy/pyzy-database-1.0.0.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel >= 2.24.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.24.0
 BuildRequires:  gnome-common
 BuildRequires:  googletest-devel
 BuildRequires:  libtool
-BuildRequires:  libuuid-devel
-BuildRequires:  opencc
-BuildRequires:  opencc-devel
+BuildRequires:  pkgconfig(uuid) 
+BuildRequires:  pkgconfig(opencc)
 BuildRequires:  pkgconfig
-BuildRequires:  python
-BuildRequires:  sqlite
-BuildRequires:  sqlite-devel
+BuildRequires:  python3
+BuildRequires:  sqlite3
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  wget
 Requires:       opencc
-
-# Requires(post): sqlite
 
 %description
 The Chinese Pinyin and Bopomofo conversion library.
@@ -92,24 +82,18 @@ The phrase database for pyzy from android project.
 
 %prep
 %setup -q
-%patch -P 1 -p1
-%patch2 -p1
-%patch3 -p1
 cp %{SOURCE1} data/db/open-phrase
-cp %{SOURCE2} data/db/open-phrase
 
 %build
-./autogen.sh
+export PYTHON=python3
+autoreconf -fi
 %configure --disable-static \
            --enable-db-open-phrase \
            --enable-opencc
-# make -C po update-gmo
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-# make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %post -n lib%{name}-1_0-0 -p /sbin/ldconfig
@@ -118,7 +102,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %files -n lib%{name}-1_0-0
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %{_libdir}/lib*.so.*
 %{_datadir}/%{name}/phrases.txt
 %{_datadir}/%{name}/db/create_index.sql

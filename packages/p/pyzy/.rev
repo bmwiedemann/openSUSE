@@ -54,4 +54,15 @@
     <comment></comment>
     <requestid>665272</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52264e72522a2cfc947181e6d836aac8</srcmd5>
+    <version>1.1</version>
+    <time>1586641665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.1
+  * Support opencc 1.0.2, drop pyzy-opencc-1_0_2-build.patch
+  * Migrate to python3
+  * Fix bugs, drop signed-char.patch and autofix.diff (forwarded request 793095 from hillwood)</comment>
+    <requestid>793101</requestid>
+  </revision>
 </revisionlist>
