@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Apr  6 12:40:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v1.21.0 (go.d.plugin v0.18.0):
+Improvements:
+  * Extended TLS support for 1.3.
+  * Switched to the React dashboard code as the default dashboard.
+
+  * Collectors:
+    - Added a new Pulsar collector.
+    - Added a new VerneMQ collector.
+    - Added high precision timer support for plugins such as
+      idlejitter.
+    - Added an alarm to the dns_query collector that detects DNS
+      query failure.
+    - Added the ability to get the pod name from cgroup with
+      kubectl in bare-metal deployments.
+    - Added the ability to connect to non-admin user IDs for a Ceph
+      storage cluster.
+    - Added connections (backend) usage to Postgres monitoring.
+
+  * Exporting:
+    - Added a MongoDB connector to the exporting engine.
+    - Added a Prometheus Remote Write connector to the exporting
+      engine.
+    - Added an AWS Kinesis connector to the exporting engine.
+
+Bug fixes:
+  * Removed notifications from the dashboard and fixed the
+    /default.html route.
+  * Fixed help-tooltips styling, private registry node deletion,
+    and the right-hand sidebar "jumping" on document clicks.
+  * Fixed errors reported by Coverity.
+  * Fixed broken pipe ignoring in apps.plugin.
+  * Fixed the bytespersec chart context in the Python Apache
+    collector.
+  * Fixed charts.d.plugin to exit properly during Netdata
+    service restart
+  * Fixed minimist dependency vulnerability.
+  * Fixed how SimpleService truncates Python module names.
+  * Added proper prefix to Python module names during loading.
+  * Fixed the flushing error threshold with the database engine.
+  * Fixed memory leak for host labels streaming from slaves to
+    master.
+  * Fixed streaming scaling.
+  * Fixed missing characters in kernel version field by encoding
+    slave fields.
+  * Fixed Ceph collector to get osd_perf_infos in versions 14.2
+    and higher.
+  * Removed extraneous commas from chart information in dashboard.
+  * Removed tmem collection from xenstat_plugin to allow Netdata
+    on Xen 4.13 to compile successfully.
+  * Restricted messages to Google Analytics.
+  * Fixed Python 3 dict access in OpenLDAP collector module.
+
+-------------------------------------------------------------------
 Wed Feb 26 15:37:44 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to v1.20.0 (go.d.plugin v0.15.0)
