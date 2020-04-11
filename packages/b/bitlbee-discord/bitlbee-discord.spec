@@ -17,7 +17,7 @@
 
 
 Name:           bitlbee-discord
-Version:        0.4.2+9.g69e16be
+Version:        0.4.3+0.g9466079
 Release:        0
 Summary:        Bitlbee plugin for Discord
 License:        GPL-2.0-only
