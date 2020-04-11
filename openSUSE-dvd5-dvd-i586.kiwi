@@ -1364,6 +1364,7 @@
       <repopackage name="kqtquickcharts"/>
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3375,6 +3376,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
@@ -4190,7 +4194,7 @@
       <repopackage name="python3-talloc"/>
       <repopackage name="python3-tdb"/>
       <repopackage name="python3-tevent"/>
-      <repopackage name="python3-tornado4"/>
+      <repopackage name="python3-tornado6"/>
       <repopackage name="python3-Twisted"/>
       <repopackage name="python3-typed-ast"/>
       <repopackage name="python3-typing_extensions"/>
