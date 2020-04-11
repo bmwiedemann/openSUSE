@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:21:12 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.6.3:
+  * Add Ocean Set tilesets to the initial quest
+    (gl#solarus-games/solarus-quest-editor#478).
+  * Map editor: fix contours generated tileset specific
+    (gl#solarus-games/solarus-quest-editor#485).
+  * Map editor: fix a crash when undoing changing the layer of
+    entities (gl#solarus-games/solarus-quest-editor#471).
+  * Tileset editor: save the update maps option when renaming
+    patterns (gl#solarus-games/solarus-quest-editor#483).
+  * Tileset editor: fix moving patterns to an overlapping position
+    (gl#solarus-games/solarus-quest-editor#477).
+  * Tileset editor: fix crash when a tileset file changes while
+    dragging (gl#solarus-games/solarus-quest-editor#476).
+  * Fix possible crash when closing the window.
+  * Fix tiles getting unwanted enabled_at_start field in map data
+    files.
+- Remove merged 0001-Use-pkg-config-to-get-more-search-paths.patch.
+- Set minimal CMake version to 3.1 as indicated in CMakeLists.txt.
+
+-------------------------------------------------------------------
 Tue Mar 24 19:42:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to find moonjit:

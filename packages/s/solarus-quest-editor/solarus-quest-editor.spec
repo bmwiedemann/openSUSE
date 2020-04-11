@@ -17,16 +17,14 @@
 
 
 Name:           solarus-quest-editor
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        GUI to edit quests for the Solarus engine
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Graphics/Other
 URL:            https://www.solarus-games.org/
 Source:         https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-pkg-config-to-get-more-search-paths.patch
-BuildRequires:  cmake >= 2.8.11
+BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
@@ -63,7 +61,6 @@ This package contains assets for the Solarus Quest Editor.
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch0 -p1
 
 %build
 %cmake
