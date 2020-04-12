@@ -5853,6 +5853,7 @@ unsorted:
   - ipmiutil-devel 
   - ipmiutil-static 
   - iprange 
+  - iproute2-arpd 
   - iproute2-bash-completion 
   - ipset-devel 
   - iptables-backend-nft 
@@ -6183,7 +6184,6 @@ unsorted:
   - jfreechart 
   - jfreechart-javadoc 
   - jgit 
-  - jgit-bootstrap 
   - jgit-javadoc 
   - jgmenu 
   - jgoodies-forms 
@@ -19138,6 +19138,7 @@ unsorted:
   - python2-flake8-future-import 
   - python2-flake8-import-order 
   - python2-flake8-imports 
+  - python2-flake8-isort 
   - python2-flake8-pep3101 
   - python2-flake8-polyfill 
   - python2-flake8-quotes 
@@ -21506,6 +21507,7 @@ unsorted:
   - python3-flake8-future-import 
   - python3-flake8-import-order 
   - python3-flake8-imports 
+  - python3-flake8-isort 
   - python3-flake8-pep3101 
   - python3-flake8-polyfill 
   - python3-flake8-pyi 
