@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 11 15:26:46 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix source validator and mark license file as license text
+
+-------------------------------------------------------------------
 Sun Apr  5 22:56:23 UTC 2020 - Jason Craig <os-dev@jacraig.com>
 
 - Add 0001-fix-security-bugs.patch to fix CVE-2019-18359 and other
-  crashes.
+  crashes. boo#1154971
 
 -------------------------------------------------------------------
 Wed May 30 17:57:49 UTC 2018 - aloisio@gmx.com

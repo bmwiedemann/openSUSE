@@ -1,7 +1,7 @@
 #
 # spec file for package mp3gain
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,11 @@ Release:        0
 Summary:        MP3 Volume Normalizer based on Replay Gain
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Url:            http://mp3gain.sourceforge.net/
-Source:         https://prdownloads.sourceforge.net/mp3gain/mp3gain-%{realversion}-src.zip
+URL:            http://mp3gain.sourceforge.net/
+Source:         https://downloads.sourceforge.net/project/mp3gain/mp3gain/%{version}/mp3gain-%{realversion}-src.zip
 Source1:        %{name}.1.gz
 # PATCH-FIX-UPSTREAM 0001-fix-security-bugs.patch boo#1154971
-Patch:		0001-fix-security-bugs.patch
+Patch0:         0001-fix-security-bugs.patch
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libmpg123)
@@ -43,19 +43,19 @@ adjusts the mp3 file directly, without decoding and re-encoding.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch -p2
+%patch0 -p2
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -m 0755 mp3gain %{buildroot}%{_bindir}/mp3gain
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1.gz
 
 %files
-%doc lgpl.txt
+%license lgpl.txt
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
