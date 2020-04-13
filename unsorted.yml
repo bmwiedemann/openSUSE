@@ -1917,6 +1917,9 @@ unsorted:
   - corosync-qdevice 
   - corosync-qnetd 
   - corosync-testagents 
+  - coturn 
+  - coturn-devel 
+  - coturn-utils 
   - courier-authlib 
   - courier-authlib-devel 
   - courier-authlib-ldap 
@@ -6313,7 +6316,6 @@ unsorted:
   - jupyter-bqplot 
   - jupyter-calysto 
   - jupyter-doc 
-  - jupyter-hide_code 
   - jupyter-imatlab 
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
@@ -7738,8 +7740,8 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSM-devel-32bit: [x86_64] 
   - libSM6-32bit: [x86_64] 
-  - libSPIRV-Tools-suse16 
-  - libSPIRV-Tools-suse16-32bit: [x86_64] 
+  - libSPIRV-Tools-suse17 
+  - libSPIRV-Tools-suse17-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -9301,7 +9303,7 @@ unsorted:
   - libgloox17 
   - libgloox17-32bit: [x86_64] 
   - libglpk40 
-  - libglslang-suse9 
+  - libglslang-suse10 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -9431,7 +9433,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_99 
+  - libgsoap-2_8_101 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -19719,6 +19721,7 @@ unsorted:
   - python2-psycopg2 
   - python2-ptpython 
   - python2-ptyprocess 
+  - python2-publicsuffix2 
   - python2-publicsuffixlist 
   - python2-pudb 
   - python2-pulsectl 
@@ -22346,6 +22349,7 @@ unsorted:
   - python3-ptpython 
   - python3-ptpython-ptipython 
   - python3-ptr 
+  - python3-publicsuffix2 
   - python3-publicsuffixlist 
   - python3-pudb 
   - python3-pulsectl 
@@ -34037,6 +34041,8 @@ unsorted:
   - wxhexeditor-lang 
   - wxlua 
   - wxlua-devel 
+  - wxmp3gain 
+  - wxmp3gain-lang 
   - wxsqlite3-devel 
   - wxstedit 
   - wxstedit-devel 
@@ -34147,6 +34153,7 @@ unsorted:
   - xf86-input-libinput-devel 
   - xf86-input-mouse-devel 
   - xf86-input-synaptics-devel 
+  - xf86-input-void 
   - xf86-input-wacom-devel 
   - xf86-video-amdgpu 
   - xf86-video-fbturbo 
