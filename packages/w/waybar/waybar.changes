@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:33:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  Added:
+  * Battery: full-at config, define the max percentage of
+    the battery #649
+  Changed:
+  * Support libc++ >=9.0.0 #583
+  * Sway: add missing unordered_map include #584
+  * Network: fix label text not updated properly when formats
+    contain Unicode characters #589
+  * Pulseaudio: Fix alt #592
+  * Pulseaudio: track default source/sink changes #599
+  * Tray: Use the same StatusNotifierWatcher for all trays #598
+  * Pulseaudio: track only the default sink and source #603
+  * Systemd service: fix start up ordering #612
+  * Fix: set exclusive zone early for gtk-layer-shell #613
+  * Readme: ubuntu dependencies #615
+  * Temperature: Added support for absolute device paths #624
+  * Switch default Makefile rule from run to build #625
+  * Memory: provide better free memory approximation on old kernel #629
+  * Pulseaudio: fallback to default muted format 9acf558
+  * Custom: restore SIGCHLD settings to SIG_DFL #636
+  * Custom: check WIFEXITED ec451b5
+  * Pulseaudio: Start wait for server #651
+  * Sway/Workspaces: default value unstripped, add value format option 27fbea2
+
+-------------------------------------------------------------------
 Wed Mar 25 17:19:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Update to 0.9.1:
