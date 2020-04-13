@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-dune
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
