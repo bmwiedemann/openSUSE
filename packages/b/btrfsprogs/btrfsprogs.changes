@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  6 12:28:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.6:
+  * inspect logical-resolve: support LOGICAL_INO_V2 as new option '-o',
+    helps advanced dedupe tools
+  * inspect: user larger buffer (64K) for results
+  * subvol delete: support deletion by id (requires kernel 5.7+)
+  * dump-tree: new option --hide-names, replace any names
+    (file, directory, subvolume, xattr) in the output with stubs
+  * various fixes
+
+-------------------------------------------------------------------
 Mon Feb 17 00:00:00 CET 2020 - dsterba@suse.cz
 
 - Update to 5.4.1
