@@ -1,7 +1,7 @@
 #
 # spec file for package nnn
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nnn
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
-Url:            https://github.com/jarun/nnn#nnn
+URL:            https://github.com/jarun/nnn#nnn
 Source0:        https://github.com/jarun/nnn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
