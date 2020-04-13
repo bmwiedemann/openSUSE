@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 13:11:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.11:
+  * fix warnings due to 'Recache Event Detected for Device'
+  * Fix database, network and polling errors
+
+-------------------------------------------------------------------
 Sat Feb 15 18:43:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.9:
