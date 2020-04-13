@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 09 14:05:23 UTC 2020 - matthias.gerstner@suse.com
+
+- Update of security-whitelistings tarball:
+  * cron-whitelist: follow-up whitelisting for nextcloud (bsc#1168964)
+  * clarify audit sections
+
+-------------------------------------------------------------------
 Fri Mar 20 21:29:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix typo in codec setting (bsc#1165110)

@@ -798,4 +798,13 @@ undo bootstrap workaround</comment>
     <comment>- fix typo in codec setting (bsc#1165110)</comment>
     <requestid>786997</requestid>
   </revision>
+  <revision rev="100" vrev="17">
+    <srcmd5>582fded89eaa8061651ca1c310d873a9</srcmd5>
+    <version>1.10</version>
+    <time>1586774948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update of security-whitelistings tarball:
+  * cron-whitelist: follow-up whitelisting for nextcloud (bsc#1168964) (forwarded request 792759 from mgerstner)</comment>
+    <requestid>792760</requestid>
+  </revision>
 </revisionlist>
