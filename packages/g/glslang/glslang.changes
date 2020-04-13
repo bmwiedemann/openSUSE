@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:42:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 8.13.3727+git4 (9c3204a1)
+  * Add constant expression with mod.
+  * Add Tess machine dependent built-in variables initialization
+    for GLES 3.2.
+  * Added original glslang_c_interface implementation.
+  * SPV_AMD_shader_image_load_store_lod is now validated by
+    spirv-tools.
+  * GL_EXT_debug_printf implementation.
+  * SPV headers: Bump up to the latest header.
+  * Add support for GLSL_EXT_ray_tracing.
+
+-------------------------------------------------------------------
 Mon Feb  3 10:09:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix build when _lto_cflags is not defined (as in SLE/Leap)

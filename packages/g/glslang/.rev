@@ -170,4 +170,12 @@
     <comment></comment>
     <requestid>769517</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8bd8c6eb196a49143097b8aa451ffdbb</srcmd5>
+    <version>8.13.3727+git4</version>
+    <time>1586775134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 8.13.3727+git4 (9c3204a1)</comment>
+    <requestid>792438</requestid>
+  </revision>
 </revisionlist>
