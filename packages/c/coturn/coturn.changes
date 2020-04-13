@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Apr 12 05:47:04 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Use pkgconfig(systemd) for packaging
+
+-------------------------------------------------------------------
+Sat Apr 11 20:17:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Shorten description by stripping the long list of all RFCs.
+- Drop %defattr; use %autosetup.
+
+-------------------------------------------------------------------
+Thu Apr  9 10:57:37 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Initial release of coturn 4.5.1.1
