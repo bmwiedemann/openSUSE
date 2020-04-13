@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  5 22:02:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Remove service files.
+
+-------------------------------------------------------------------
+Sat Apr  4 15:24:23 UTC 2020 - mgorse@suse.com
+
+- Update to version 0.7.9:
+  + Added man page for notify-send.
+  + Dropped autotools.
+- Require docbook5-xsl-stylesheets. Needed for manpage generation.
+
+-------------------------------------------------------------------
 Fri Apr 05 19:26:17 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 0.7.8:

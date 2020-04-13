@@ -290,4 +290,12 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment>Scripted push of project GNOME:Next (forwarded request 695654 from dimstar)</comment>
     <requestid>695701</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c871ef10c234155a31fae160214d49d0</srcmd5>
+    <version>0.7.9</version>
+    <time>1586775001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792298</requestid>
+  </revision>
 </revisionlist>

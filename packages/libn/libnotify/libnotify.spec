@@ -1,7 +1,7 @@
 #
 # spec file for package libnotify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           libnotify
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            http://galago-project.org/
-#Source0:       https://download.gnome.org/sources/libnotify/0.7/%%{name}-%%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/libnotify/0.7/%{name}-%{version}.tar.xz
 Source98:       libnotify-rpmlintrc
 Source99:       baselibs.conf
 
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -99,7 +99,7 @@ D-BUS notifications library.
 %files -n libnotify4
 %license COPYING
 # README is empty
-%doc AUTHORS ChangeLog NEWS
+%doc AUTHORS NEWS
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Notify-0_7
@@ -107,6 +107,7 @@ D-BUS notifications library.
 
 %files tools
 %{_bindir}/notify-send
+%{_mandir}/man1/notify-send.1%{ext_man}
 
 %files devel
 %{_libdir}/*.so
