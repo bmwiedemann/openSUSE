@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:34:31 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1586769845.5cf0290e:
+  * Low: ui_corosync: print cluster nodes while getting quorum and qnetd status
+
+-------------------------------------------------------------------
+Thu Apr 09 10:29:47 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1586427566.1acaafaf:
+  * Low: bootstrap: exit with proper error messages when ssh return failed
+
+-------------------------------------------------------------------
+Tue Apr 07 15:13:52 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1586271789.976af135:
+  * Dev: unittest: test interface_choice function
+  * Low: ui_cluster: use argparse choices to validate -i and -t option
+
+-------------------------------------------------------------------
 Thu Apr 02 10:44:30 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1585823626.1dd5ce1f:

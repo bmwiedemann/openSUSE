@@ -2033,4 +2033,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>790853</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>00058dc95b9830edbcfee5ba81ee4a1e</srcmd5>
+    <version>4.2.0+git.1586769845.5cf0290e</version>
+    <time>1586775218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793561</requestid>
+  </revision>
 </revisionlist>
