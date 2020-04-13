@@ -26,6 +26,9 @@ URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM xdg-dp-port-pipewire-3-api.patch -- Port to use new pipewire-3.0 api
 Patch0:         xdg-dp-port-pipewire-3-api.patch
+Patch1:         0001-Fix-use-after-free-in-xdg_get_app_info_from_pid.patch
+Patch2:         0002-add-AssumedAppArmorLabel-key-to-D-Bus-service-files.patch
+Patch3:         0003-Fix-criticals-if-no-default-handler-for-desired-type.patch
 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

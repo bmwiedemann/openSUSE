@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  6 11:49:59 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a use-after-free case:
+  * 0001-Fix-use-after-free-in-xdg_get_app_info_from_pid.patch
+
+- Add patch from upstream to add AssumedAppArmorLabel key to D-Bus
+  service files to allow sandboxed processes to activate the portal
+  services if the sandbox makes use of AppArmor D-Bus mediation
+  rules that depend on the service's security label:
+  * 0002-add-AssumedAppArmorLabel-key-to-D-Bus-service-files.patch
+
+- Add patch from upstream to fix a null pointer usage when no
+  default handler is set for desired type:
+  * 0003-Fix-criticals-if-no-default-handler-for-desired-type.patch
+
+-------------------------------------------------------------------
 Fri Feb 21 13:17:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xdg-dp-port-pipewire-3-api.patch: Port to use new
