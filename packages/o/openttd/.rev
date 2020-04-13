@@ -472,4 +472,12 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 </comment>
     <requestid>745834</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f899dfac8e1e41a106dd4534da4d7721</srcmd5>
+    <version>1.10.0</version>
+    <time>1586775240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793434</requestid>
+  </revision>
 </revisionlist>

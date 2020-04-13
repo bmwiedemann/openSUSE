@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Apr 12 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- Update to 1.10.0
+  - Change: Open company window when clicking on a company goal (#8033)
+  - Change: [SDL2] Support pasting from clipboard on Linux (#8004)
+  - Fix: Station with multiple docks had the wrong tile area (#8014)
+  - Fix #7958: Custom catenary missing on road bridges (#7991)
+
+  1.10.0-RC1 (2020-02-09)
+  - Feature: Allow server to supply a reason to kicked/banned clients (#7859)
+  - Feature: [NewGRF] Station variable 6A, querying GRFID of nearby station tiles (#7956)
+  - Feature: Improved logic of sharing industry production between 3 or more stations (#7922)
+  - Feature: Highlight the item under mouse cursor in file browser (#7900)
+  - Feature: [GS] Methods to change town rating of companies (#7898)
+  - Feature: [NewGRF] Callback profiling command (#7868)
+  - Feature: Add a setting to show the name of the NewGRF of a vehicle in the build window (#7852)
+  - Feature: Ability to filter industry directory window by cargo (#7843)
+  - Feature: Minimap screenshot type (#7817)
+  - Feature: [GS] Methods to control engine availability of a specific company (#7791)
+  - Feature: Configurable game ending year (#7747)
+  - Feature: Separate window for taking screenshots (#7550)
+  - Change: Move autorenew setting to basic category (#7984)
+  - Change: Improved algorithm for transfer feeder payments (#7935)
+
+  1.10.0-beta2 (2019-12-25)
+  - Feature: Ctrl+Click on a vehicle in the vehicle group window selects and scrolls to the vehicle's group (#7800)
+  - Feature: Ctrl+Click on the vehicle details button in the vehicle view window opens the vehicle group window focused on the vehicle (#7800)
+  - Feature: Add a button to the vehicle advisory news window to open the vehicle's group window (#7800)
+  - Feature: Ctrl+Click on a vehicle in the vehicle list window opens the vehicle group window focused on the vehicle's group (#7800)
+
+  1.10.0-beta1 (2019-10-29)
+  - Feature: Configurable minimum age for companies before allowing share trading (#7780)
+  - Feature: Filter on town list window (#7621)
+  - Feature: Ability to show Newspaper and Ticker messages in parallel (#7612)
+  - Feature: Show coverage area for stations and towns (#7446)
+  - Feature: Collapsible vehicle groups (#7417)
+  - Feature: More flexible docks - can now have multiple per station, ships can use any part of dock (#7380)
+  - Feature: [NewGRF] Railtype flags to allow/disallow 90 degree curves (#7352)
+  - Feature/Change: Non-rectangular catchment area for sparse stations (#7235)
+  - Feature: Improved performance for road vehicle pathfinding (#7261)
+  - Feature: Option to show local authority boundary of towns (#7025)
+  - Feature: Experimental method of town cargo generation that scales linearly with population (#6965)
+  - Feature: [NewGRF] RoadTypes (NRT) (#6811)
+  - Add: [Win32] Select MIDI device by port name (#7666)
+  - Add: 'getsysdate' console command (#7658)
+  - Add: Currencies NTD, CNY, HKD (#7596)
+  - Add: Icons to vehicle construction drop down lists (#7358, #7485)
+  - Add: Security warning to players that company passwords are not truly secure (#7351)
+  - Add: [Script] Various API functions for managing vehicle groups (#7225, #7336, #7716)
+  - Add: SDL2 video driver (#7086)
+  - Change: Inactive industries do not make sound effects (#7752)
+  - Change: Scale oil refinery edge distance limit by map size (#7514)
+  - Change: Do not display a news message about old vehicles when a replacement for it is activated (#7401)
+  - Change: When filtering purchase list by cargo type, buy button now performs a refit if required (#7301)
+  - Change: Don't apply forbid 90 deg turn settings to ships, and make penalties for turns configurable (#7289, #7372)
+  - Change: Make the chance of an aeroplane crashing at an airport with a short runway independent of plane crash setting (#7302)
+  - Change: Keep town growth rate in sync with house count (#6777)
+
+-------------------------------------------------------------------
 Sat Nov  2 19:38:04 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
 
 - Update to 1.9.3
