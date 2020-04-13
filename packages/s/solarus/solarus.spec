@@ -17,15 +17,13 @@
 
 
 Name:           solarus
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Game engine for action RPGs
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/RPG
 URL:            https://www.solarus-games.org/
 Source0:        %{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM solarus-1.6.3-desktop-version.patch -- fix version field
-Patch0:         solarus-1.6.3-desktop-version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

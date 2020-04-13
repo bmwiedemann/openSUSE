@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 15:27:07 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.4:
+  * Fix desktop file validation warning.
+- Remove solarus-1.6.3-desktop-version.patch: Merged upstream.
+
+-------------------------------------------------------------------
 Sat Apr 11 15:40:26 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.6.3:

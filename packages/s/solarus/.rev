@@ -94,4 +94,14 @@
     + Fix streams continuing to act when the layer has changed.</comment>
     <requestid>793223</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f342c9f03eec32d863f62c34c1627f4e</srcmd5>
+    <version>1.6.4</version>
+    <time>1586775230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4:
+  * Fix desktop file validation warning.
+- Remove solarus-1.6.3-desktop-version.patch: Merged upstream.</comment>
+    <requestid>793418</requestid>
+  </revision>
 </revisionlist>
