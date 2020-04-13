@@ -1,7 +1,7 @@
 #
 # spec file for package cdrdao
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,22 @@
 
 
 Name:           cdrdao
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Tool to write CD-Rs in Disk-At-Once Mode
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://cdrdao.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-
 # PATCH-FIX-OPENSUSE cdrdao-build.patch
 Patch0:         cdrdao-build.patch
-# PATCH-FIX-OPENSUSE cdrdao-1.2.2-scan.patch bnc#144861 nadvornik@suse.cz -- Do not scan old ATAPI interface
-Patch1:         cdrdao-1.2.2-scan.patch
 # PATCH-FIX-OPENSUSE cdrdao-fixes.patch bnc#424635 nadvornik@suse.cz -- Fix cdrdao segfault
 Patch2:         cdrdao-fixes.patch
 # PATCH-FIX-OPENSUSE cdrdao-1.2.3-stat.patch asterios.dramis@gmail.com -- Missing includes causes failure build (patch taken from Fedora)
 Patch3:         cdrdao-1.2.3-stat.patch
-# PATCH-FIX-UPSTREAM cdrdao-gcc6-fixes.patch dimstar@opensuse.org -- Fix errors seen by GCC6.
-Patch4:         cdrdao-gcc6-fixes.patch
 # PATCH-FIX-OPENSUSE cdrdao-drop-gconf-dep.patch -- Drop dependency on gconf2
 Patch5:         cdrdao-drop-gconf-dep.patch
-
-# For autoreconf
-BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  lame
 BuildRequires:  libao-devel
 BuildRequires:  libsigc++2-devel
 BuildRequires:  libvorbis-devel
@@ -60,7 +51,6 @@ into tracks where 2 second gaps would be irritating.
 %autosetup -p1
 
 %build
-autoreconf -fvi
 %configure \
 	--without-scglib
 %make_build
