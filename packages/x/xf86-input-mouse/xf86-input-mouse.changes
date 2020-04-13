@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 16:52:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Downgrade Supplements: xorg-x11-server to Enhances, to avoid the
+  package being pulled in by default. Contemporary mice are
+  handled by xf86-input-evdev or xf86-input-libinput.
+
+-------------------------------------------------------------------
 Tue Jun 19 09:48:29 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.9.3

@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xorg-server) >= 1.5.99.901
 BuildRequires:  pkgconfig(xproto)
 Requires:       udev
-Supplements:    xorg-x11-server
+Enhances:       xorg-x11-server
 # This was part of the xorg-x11-driver-input package up to version 7.6
 Conflicts:      xorg-x11-driver-input <= 7.6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

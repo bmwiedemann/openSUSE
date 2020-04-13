@@ -114,4 +114,12 @@ Added a development package (forwarded request 129381 from klausi123)</comment>
 - supersedes U_adapt-to-removal-of-xf86GetOS.patch</comment>
     <requestid>617692</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>99ee6535d935c312cd57268ff3fec1ac</srcmd5>
+    <version>1.9.3</version>
+    <time>1586774951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792798</requestid>
+  </revision>
 </revisionlist>
