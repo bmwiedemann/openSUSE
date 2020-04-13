@@ -75,6 +75,7 @@ developing with HepMC.
 %build
 %cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=OFF \
        -DCONFIG_INSTALL_DIR:PATH=%{_libdir}/HepMC/ \
+       -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
        -DHEPMC3_BUILD_EXAMPLES:BOOL=OFF
 
 %cmake_build

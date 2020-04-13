@@ -38,4 +38,13 @@
     <comment></comment>
     <requestid>762561</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70701bc621d8eca0901e26a05bc8908a</srcmd5>
+    <version>3.1.2</version>
+    <time>1586775250</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable setting rpaths on installed libs (fixes build failure on 15.2).
+</comment>
+    <requestid>793440</requestid>
+  </revision>
 </revisionlist>
