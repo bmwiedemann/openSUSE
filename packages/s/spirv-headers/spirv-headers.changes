@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:17:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.5.1.c+git24 (f8bf11a)
+  * Add grammars, C header, and header generator for vendor and
+    KHR extended instruction sets.
+  * Update headers for SPV_KHR_ray_tracing.
+  * Added ray flags, primitive culling flags, queries.
+  * Add shadercalls scope.
+
+-------------------------------------------------------------------
 Sat Oct 26 11:51:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.1.corrected
