@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  7 18:52:02 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp2-01-cpumf-add-new-deflate-counters-for-z15.patch
+  (bsc#1167853)
+  lscpumf: New z15 CPU-MF counters not available, so add the
+  definition for the new deflate counters.
+- Updated read_values (bsc#1167815, jsc#SLE-10675)
+  * Differentiate between IBM Z and IBM LinuxONE machines
+  * Query and print the status of secure boot for the LPAR.
+
+-------------------------------------------------------------------
 Thu Mar 19 19:22:19 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Added the following patches for bsc#1166850

@@ -187,6 +187,7 @@ Patch97:        s390-tools-sles15sp2-01-zipl-Add-missing-options-to-help-output.
 Patch98:        s390-tools-sles15sp2-02-zipl-allow-stand-alone-secure-option-on-command-l.patch
 Patch99:        s390-tools-sles15sp2-03-zipl-correct-secure-boot-config-handling.patch
 Patch100:       s390-tools-sles15sp2-04-zipl-fix-zipl.conf-man-page-example-for-secure-boot.patch
+Patch101:       s390-tools-sles15sp2-01-cpumf-add-new-deflate-counters-for-z15.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch

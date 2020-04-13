@@ -1,6 +1,6 @@
 /********************************************************************************/
 /*										*/
-/*	Copyright (C) 2014-2015, 2019 SUSE LLC					*/
+/*	Copyright (C) 2014-2015, 2019-2020 SUSE LLC				*/
 /*										*/
 /*	All rights reserved.
 
@@ -15,6 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #define _GNU_SOURCE
+#include <sys/utsname.h>
 #include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -36,9 +37,9 @@ enum datatypes {
 #define	WITHOUT_KEY	0
 #define	WITH_KEY	1
 
-static char *versionstring	= "Version 1.0 2015-10-12 13:31";
+static char *versionstring	= "Version 1.0.2 2020-03-30 23:30";
 
-static char *version	   	= "1.0.0";
+static char *version	   	= "1.0.2";
 
 void	*configuration_handle	= NULL;
 int	layers			= -1;
@@ -47,33 +48,39 @@ int	layers			= -1;
  *	List of machine types
  */
 struct machinetype {
+	enum qc_model_families model_families;
 	char	*typenumber;
 	char	*fullname;
 	} machinetypes[] =  {
-	{ "2064", "2064 = z900    IBM eServer zSeries 900" },
-	{ "2066", "2066 = z800    IBM eServer zSeries 800" },
-	{ "2084", "2084 = z990    IBM eServer zSeries 990" },
-	{ "2086", "2086 = z890    IBM eServer zSeries 890" },
-	{ "2094", "2094 = z9-EC   IBM System z9 Enterprise Class" },
-	{ "2096", "2096 = z9-BC   IBM System z9 Business Class" },
-	{ "2097", "2097 = z10-EC  IBM System z10 Enterprise Class" },
-	{ "2098", "2098 = z10-BC  IBM System z10 Business Class" },
-	{ "2817", "2817 = z196    IBM zEnterprise 196" },
-	{ "2818", "2818 = z114    IBM zEnterprise 114" },
-	{ "2827", "2827 = z12-EC  IBM zEnterprise EC12" },
-	{ "2828", "2828 = z12-BC  IBM zEnterprise BC12" },
-	{ "2964", "2964 = z13     IBM z13" },
-	{ "2965", "2965 = z13s    IBM z13s (single frame)" },
-	{ "3906", "3906 = z14     IBM z14" },
-	{ "3907", "3907 = z14 ZR1 IBM z14 ZR1" },
-	{ "8561", "8561 = z15     IBM z15" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2064", "2064 = z900    IBM eServer zSeries 900" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2066", "2066 = z800    IBM eServer zSeries 800" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2084", "2084 = z990    IBM eServer zSeries 990" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2086", "2086 = z890    IBM eServer zSeries 890" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2094", "2094 = z9-EC   IBM System z9 Enterprise Class" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2096", "2096 = z9-BC   IBM System z9 Business Class" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2097", "2097 = z10-EC  IBM System z10 Enterprise Class" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2098", "2098 = z10-BC  IBM System z10 Business Class" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2817", "2817 = z196    IBM zEnterprise 196" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2818", "2818 = z114    IBM zEnterprise 114" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2827", "2827 = z12-EC  IBM zEnterprise EC12" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2828", "2828 = z12-BC  IBM zEnterprise BC12" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2964", "2964 = z13     IBM z13" },
+	{ QC_TYPE_FAMILY_LINUXONE, "2964", "2964 = IBM LinuxONE Emperor" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "2965", "2965 = z13s    IBM z13s (single frame)" },
+	{ QC_TYPE_FAMILY_LINUXONE, "2965", "2965 = IBM LinuxONE Rockhopper" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "3906", "3906 = z14     IBM z14" },
+	{ QC_TYPE_FAMILY_LINUXONE, "3906", "3906 = IBM LinuxONE Emperor II" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "3907", "3907 = z14 ZR1 IBM z14 ZR1" },
+	{ QC_TYPE_FAMILY_LINUXONE, "3907", "3907 = IBM LinuxONE Rockhopper II" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "8561", "8561 = z15     IBM z15" },
+	{ QC_TYPE_FAMILY_LINUXONE, "8561", "8561 = IBM LinuxONE III" },
 	};
 
 int	debug = 0;
 
 /******************************************************************************/
 /*									      */
-/*									      */
+/*	Print the program version					      */
 /*									      */
 /******************************************************************************/
 void	print_version()
@@ -126,7 +133,7 @@ float		result_float = 0.0;
 		   }
 	} /* endif */
 	else {
-	printf("Fehler: erg = %d, result_string = %s \n", erg, (result_string == NULL? "NULL": result_string));
+	printf("Error: erg = %d, result_string = %s \n", erg, (result_string == NULL? "NULL": result_string));
 	/* TODO qc_get_attribute_string returned error */
 	}
 } /* print_attribute  */
@@ -172,12 +179,24 @@ void print_cputype()
 int	i, search;
 int	erg;
 const char	*cpu_type = NULL;
+int	family_type = -1;
 
+/*
+ *	First find out whether we run on an IBM Z, or a LinuxONE system
+ */
+	erg = qc_get_attribute_int(configuration_handle, qc_type_family, 0, &family_type);
+	if (erg <= 0 || family_type == -1) {
+		printf("Error reading family type\n");
+		return;
+	} /* endif */
+/*
+ *	Now get the machine ID
+ */
 	erg = qc_get_attribute_string(configuration_handle, qc_type, 0, &cpu_type);
 	if (erg == 1 && cpu_type != NULL) {
 		for (i = 0, search = 1; (i < sizeof(machinetypes) / sizeof(struct machinetype)) && search ; i++)
 		   {
-		   if (strcmp(cpu_type, machinetypes[i].typenumber) == 0) {
+		   if ((family_type ==  machinetypes[i].model_families) && (strcmp(cpu_type, machinetypes[i].typenumber) == 0)) {
 		   	printf("%s\n", machinetypes[i].fullname);
 			search = 0;
 		   } /* endif */
@@ -218,13 +237,13 @@ void print_scc()
 print_version();
 print_attribute("Type", 0, qc_type, string, WITH_KEY);
 print_attribute("Sequence Code", 0, qc_sequence_code, string, WITH_KEY);
-print_attribute("CPUs Total", 0, qc_num_cpu_total, integer, WITH_KEY);
-print_attribute("CPUs IFL", 0, qc_num_cpu_total, integer, WITH_KEY);
+print_attribute("CPUs Total", 0, qc_num_ifl_total, integer, WITH_KEY);
+print_attribute("CPUs IFL", 0, qc_num_ifl_total, integer, WITH_KEY);
 print_attribute("LPAR Number", 1, qc_partition_number, integer, WITH_KEY);
 print_attribute("LPAR Name", 1, qc_layer_name, string, WITH_KEY);
 print_attribute("LPAR Characteristics", 1, qc_partition_char, string, WITH_KEY);
-print_attribute("LPAR CPUs Total", 1, qc_num_cpu_total, integer, WITH_KEY);
-print_attribute("LPAR CPUs IFL", 1, qc_num_cpu_total, integer, WITH_KEY);
+print_attribute("LPAR CPUs Total", 1, qc_num_ifl_total, integer, WITH_KEY);
+print_attribute("LPAR CPUs IFL", 1, qc_num_ifl_total, integer, WITH_KEY);
 if (layers  > 2) {
 /*
  *	This means, that eather zKVM or z/Vm is running
@@ -236,6 +255,81 @@ if (layers  > 2) {
 } /* endif */
 return;
 } /* print_scc */
+
+/******************************************************************************/
+/*									      */
+/*	print out whether secure boot is enabled			      */
+/*									      */
+/******************************************************************************/
+void print_secure_mode()
+{
+int	erg;
+int	release_major;
+int	release_sub;
+int	release_minor;
+const char	*cpu_type = NULL;
+/*
+ *	First we have to check whether we have the appropriate kernel Level (>= 5.3)
+ */
+
+struct utsname uts;
+
+	erg = uname(&uts);
+	if (erg != 0) {
+		perror ("Error executing uname(): ");
+		return;
+	} /* endif */
+#if	0
+	printf("sysname:  %s\n", uts.sysname);
+	printf("nodename: %s\n", uts.nodename);
+	printf("release:  %s\n", uts.release);
+#endif
+	/*
+	 *	A release number looks like:  m.s.mi
+	 *	where m, s, mi are numbers with one ore more digits
+	 *	Minimum kernel version is 5.3
+	 */
+	erg = sscanf(uts.release,"%d.%d.%d-%*s", &release_major, &release_sub, &release_minor);
+	if ( release_major < 5 ) {
+		goto return_does_not_exist;
+	}
+	if ( release_sub < 3 ) {
+		goto return_does_not_exist;
+	}
+#if	0
+	printf("Translated successfully: %d\n", erg);
+	printf("release_major: %d\n", release_major);
+	printf("release_sub: %d\n", release_sub);
+	printf("release_minor: %d\n", release_minor);
+	printf("version:  %s\n", uts.version);
+	printf("machine:  %s\n", uts.machine);
+	printf("Print_secure called\n");
+#endif
+	/*
+	 *	Only the following machines support secure boot: z14, z14 ZR1, z15
+	 *	3906, 3907, 8561
+	 */
+	erg = qc_get_attribute_string(configuration_handle, qc_type, 0, &cpu_type);
+	if (erg == 1 && cpu_type != NULL) {
+		if (strcmp(cpu_type, "3906") != 0) {
+			if (strcmp(cpu_type, "3907") != 0) {
+				if (strcmp(cpu_type, "8561") != 0) {
+					goto return_does_not_exist;
+				} /* endif */
+			} /* endif */
+		} /* endif */
+	} /* endif */
+	print_attribute("Secure mode on", 1, qc_has_secure, integer, WITH_KEY);
+	print_attribute("Secure mode used", 1, qc_secure, integer, WITH_KEY);
+return;
+
+return_does_not_exist:
+/*
+ *	Software or hardware does not support secure boot.
+ */
+	puts("Secure mode on: 0\nSecure mode used: 0");
+return;
+} /* print_secure_mode */
 
 /******************************************************************************/
 /*									      */
@@ -267,7 +361,7 @@ return;
 void print_user_attribute(char *key, char *attribute_param, int layer)
 {
 return;
-} /* print_uuid */
+} /* print_user_attribute */
 
 
 /******************************************************************************/
@@ -285,6 +379,7 @@ puts("help:\n\
 -h		this help\n\
 -L <keyword>	List the requested list (Attribute, Recognised)\n\
 -s 		create Info for SCC\n\
+-S		report whether secure boot is switched on\n\
 -u		create uuid\n\
 -V		print version string\n\
 ");
@@ -312,6 +407,7 @@ int	opt;
 int	read_sysinfo_opt;
 int	print_attr;
 int	print_cpu;
+int	print_secure;
 int	print_help;
 int	list_attr;
 int	create_scc;
@@ -325,6 +421,7 @@ void	*configuration_handle_tmp = NULL;
 	read_sysinfo_opt =
 	print_attr	=
 	print_cpu	=
+	print_secure	=
 	print_help	=
 	list_attr	=
 	create_scc	=
@@ -336,7 +433,7 @@ void	*configuration_handle_tmp = NULL;
 		print_cpu++;
 	} /* endif */
 	else {
-		while ((opt = getopt(argc, argv, "a:cd:hL:suV")) != -1) {
+		while ((opt = getopt(argc, argv, "a:cd:hL:sSuV")) != -1) {
 		   switch (opt)
 		      {
 		      case 'a':
@@ -367,6 +464,10 @@ void	*configuration_handle_tmp = NULL;
 				read_sysinfo_opt++;
 				create_scc++;
 			break;
+		      case 'S': /* print out whether secure boot is enabled  */
+				read_sysinfo_opt++;
+				print_secure++;
+			break;
 		      case 'u': /* create UUID  */
 				read_sysinfo_opt++;
 				create_uuid++;
@@ -391,8 +492,8 @@ void	*configuration_handle_tmp = NULL;
 			return -erg;
 		} /* endif */
 	   } /* endif */
-	   if ((print_attr + print_cpu + list_attr + create_scc + create_uuid) > 1) {
-	   	fputs("Only one of the options a, c, L, s or u can be specified.",stderr);
+	   if ((print_attr + print_cpu + print_secure + list_attr + create_scc + create_uuid) > 1) {
+	   	fputs("Only one of the options a, c, L, s, S or u can be specified.\n",stderr);
 		return 1;
 	   } /* endif */
 	   /* still not im[plemented thatfore set to zero */
@@ -403,6 +504,10 @@ void	*configuration_handle_tmp = NULL;
 	   } /* endif */
 	   if (print_cpu != 0) {
 		print_cputype();
+		goto main_exit;
+	   } /* endif */
+	   if (print_secure != 0) {
+		print_secure_mode();
 		goto main_exit;
 	   } /* endif */
 	   if (list_attr != 0) {
