@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 21:47:30 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add xboxdrv-add-new-device.patch: Add new wireless receiver
+  device (0x045e:0x02a9).
+- Update Homepage and download URL's.
+- Run spec-cleaner.
+- Fix python2 env-script-interpreter reference in xboxdrvctl.
+
+-------------------------------------------------------------------
 Fri Nov 24 13:31:07 UTC 2017 - mpluskal@suse.com
 
 - Fix building with python3 version of scons:

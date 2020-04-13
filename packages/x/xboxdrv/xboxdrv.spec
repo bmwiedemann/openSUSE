@@ -1,7 +1,7 @@
 #
 # spec file for package xboxdrv
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           xboxdrv
 Version:        0.8.8
 Release:        0
 Summary:        Xbox/Xbox360 USB Gamepad Driver for Userspace
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Hardware/Joystick
-Url:            http://pingus.seul.org/~grumbel/xboxdrv/
-Source:         http://pingus.seul.org/~grumbel/xboxdrv/%{name}-linux-%{version}.tar.bz2
+URL:            https://xboxdrv.gitlab.io/
+Source:         https://xboxdrv.gitlab.io/%{name}-linux-%{version}.tar.bz2
 Source1:        50-xpad.conf
 Source2:        %{name}.conf
 Source3:        %{name}.service
@@ -31,6 +31,8 @@ Source3:        %{name}.service
 Patch0:         %{name}-fix-delay.patch
 # PATCH-FIX-UPSTREAM xboxdrv-scons3.patch -- Fix build with python, from https://github.com/xboxdrv/xboxdrv/pull/240
 Patch1:         xboxdrv-scons3.patch
+#PATCH-FIX-OPENSUSE xboxdrv-add-new-device.patch malcolmlewis@opensuse.org -- Add new wireless controller device (0x02a9, "Microsoft X-Box pad v? (?)).
+Patch2:         xboxdrv-add-new-device.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
@@ -58,6 +60,9 @@ shouldn't be to hard to add if somebody is interested.
 %setup -q -n %{name}-linux-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+# Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
+find . -name "xboxdrvctl" -exec sed -i 's|#!%{_bindir}/env python2|#!%{_bindir}/python3|' {} ";"
 cp -f %{SOURCE1} 50-xpad.conf
 cp -f %{SOURCE2} %{name}.conf
 cp -f %{SOURCE3} %{name}.service
@@ -96,7 +101,8 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %service_del_postun %{name}.service
 
 %files
-%doc AUTHORS COPYING NEWS PROTOCOL README.md TODO
+%license COPYING
+%doc AUTHORS NEWS PROTOCOL README.md TODO
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %dir %{_sysconfdir}/modprobe.d/
 %config %{_sysconfdir}/modprobe.d/50-xpad.conf
