@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:21:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.2
+  * Support extended instructions in the vscode language server.
+  * Make spvOpcodeString part of the public API.
+  * Add support for KHR_ray_{query,tracing} extensions.
+  * Add validation support for SPV_AMD_shader_image_load_store_lod.
+
+-------------------------------------------------------------------
 Thu Feb 20 10:10:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.1
