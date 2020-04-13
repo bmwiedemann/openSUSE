@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:53:57 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to release 1.2.135
+  * Updated `CMakeLists.txt` and `common_codegen.py` to allow access to beta
+    types and commands when including `vulkan.h`. Generated new loader
+    header files.
+
+-------------------------------------------------------------------
 Tue Feb 18 16:05:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to release 1.2.133
