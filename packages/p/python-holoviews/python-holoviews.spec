@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %bcond_with     test
 Name:           python-holoviews
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
