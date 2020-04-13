@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:33:34 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Save service changes after writing the target config and not
+  before preventing the lost of target changes (bsc#1166707)
+- 4.2.5
+
+-------------------------------------------------------------------
 Wed Apr  8 15:41:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix check of discovery authentication status, enabling or
