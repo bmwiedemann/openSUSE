@@ -18,7 +18,7 @@
 
 %define _version 4
 Name:           nano
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
@@ -49,7 +49,7 @@ the Pico text editor while also offering a few enhancements.
 %configure \
   --disable-rpath \
   --enable-utf8
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 20:00:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 4.9.2:
+  * fix crash after undoing an <Enter> at the end of leading
+    whitespace
+
+-------------------------------------------------------------------
 Wed Apr  1 07:52:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 4.9.1
