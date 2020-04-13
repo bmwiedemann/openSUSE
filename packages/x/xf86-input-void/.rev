@@ -62,4 +62,12 @@
   fate #315643-315645, 319159-319161, 319618 (bsc#1041352)</comment>
     <requestid>499020</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>843b8b74d3342e7250ea4763853ae5e5</srcmd5>
+    <version>1.4.1</version>
+    <time>1586774950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792797</requestid>
+  </revision>
 </revisionlist>

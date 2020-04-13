@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 16:45:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove Supplements: xorg-x11-server, which pulls in the package.
+  It is not required anymore for a current X Server. 
+
+-------------------------------------------------------------------
 Mon May 29 14:28:01 UTC 2017 - sndirsch@suse.com
 
 - includes everything needed for missing sle issue entries:
