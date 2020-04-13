@@ -2700,4 +2700,14 @@ Petr</comment>
     <comment></comment>
     <requestid>789679</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>6bcefc4ba27aa9e43786ef2e25e5d541</srcmd5>
+    <version>6.4.3.2</version>
+    <time>1586775106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.3.2:
+  * 6.4.2 RC2 release
+- Drop merged patch adapt-o3tl-span-to-removal-of-std-span-cbegin-et-al.patch</comment>
+    <requestid>792421</requestid>
+  </revision>
 </revisionlist>

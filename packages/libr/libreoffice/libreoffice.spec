@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        6.4.2.2
+Version:        6.4.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -101,7 +101,6 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         fix_old_boost_spirit_namespace.patch
 Patch7:         poppler-0.86.patch
 Patch8:         replace-boost-bimap-in-sdext-pdfimport.patch
-Patch9:         adapt-o3tl-span-to-removal-of-std-span-cbegin-et-al.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -960,7 +959,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 %patch990 -p1
 %patch991 -p1
 

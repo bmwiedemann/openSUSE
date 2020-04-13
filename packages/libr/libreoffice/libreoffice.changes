@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:13:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.4.3.2:
+  * 6.4.2 RC2 release
+- Drop merged patch adapt-o3tl-span-to-removal-of-std-span-cbegin-et-al.patch
+
+-------------------------------------------------------------------
 Mon Mar 30 08:41:19 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add replace-boost-bimap-in-sdext-pdfimport.patch and
