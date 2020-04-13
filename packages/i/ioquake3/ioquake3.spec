@@ -1,7 +1,7 @@
 #
 # spec file for package ioquake3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,19 @@
 %endif
 
 Name:           ioquake3
+# don't forget to change the version in the win32 spec file as well!
+Version:        1.36+git.20200211
+Release:        0
+Summary:        Quake III
+License:        GPL-2.0-or-later
+Group:          Amusements/Games/3D/Shoot
+URL:            https://ioquake3.org
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  curl-devel
-BuildRequires:  pkgconfig(sdl2)
-%if 0%{?suse_version} <= 1220
-BuildRequires:  libopenal1
-%endif
 BuildRequires:  nasm
 BuildRequires:  openal-soft-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sdl2)
 %if 0%{?mandriva_version}
 BuildRequires:  mesagl-devel
 BuildRequires:  mesaglu-devel
@@ -47,16 +53,6 @@ BuildRequires:  openal
 BuildRequires:  loki_setup
 BuildRequires:  xdg-utils
 %endif
-Url:            http://ioquake3.org
-# don't forget to change the version in the win32 spec file as well!
-Version:        1.36+git.20180802
-Release:        0
-Summary:        Quake III
-License:        GPL-2.0-or-later
-Group:          Amusements/Games/3D/Shoot
-Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-q3rcc-Allow-to-override-build-date.patch
-Patch0:         0001-q3rcc-Allow-to-override-build-date.patch
 %if %{with installer}
 Recommends:     openal
 %endif
@@ -65,7 +61,6 @@ Recommends:     openal
 Summary:        Quake III
 Group:          Development/Tools/Building
 %if %{with installer}
-
 %package setup
 Summary:        Quake III loki-setup based installer
 Group:          Amusements/Games/3D/Shoot
@@ -76,37 +71,24 @@ Quake III first person shooter. This package only includes the binary
 files, you still need the data files from the original Quake III CD or
 the Demo.
 
-Authors:
---------
-    Id Software, Inc.
-
 %description devel
 Quake III development tools for creating mods: q3lcc, q3rcc, q3cpp,
 q3asm
-
-Authors:
---------
-    Id Software, Inc.
 
 %if %{with installer}
 %description setup
 Quake III first person shooter. This package includes the binary files
 repackaged as loki-setup installer
-
-Authors:
---------
-    Id Software, Inc.
-
 %endif
+
 %prep
 %setup -q
-%patch0 -p1
 rm -rf code/SDL12 code/libs code/AL
 
 %build
 cat > dobuild <<'EOF'
 #!/bin/sh
-make %{?_smp_mflags} \
+%make_build \
 	VERSION=%{version} \
 	RELEASE=%{release} \
 	OPTIMIZE="%{optflags} -O3 -ffast-math -fno-strict-aliasing" \
@@ -165,7 +147,7 @@ install -m 755 misc/setup/ioquake3.sh $q3dir/
 #ln -s %{_prefix}/lib/quake3/ioq3demo.sh %{buildroot}%{_bindir}/ioq3demo
 #ln -s %{_prefix}/lib/quake3/ioquake3.sh %{buildroot}%{_bindir}/ioquake3
 for i in ioq3demo ioquake3; do
-	echo -e "#!/bin/sh\nexec /usr/lib/ioquake3/$i.sh \"\$@\"" > %{buildroot}%{_bindir}/$i
+	echo -e "#!/bin/sh\nexec %{_prefix}/lib/ioquake3/$i.sh \"\$@\"" > %{buildroot}%{_bindir}/$i
 	chmod 755 %{buildroot}%{_bindir}/$i
 done
 #
@@ -181,13 +163,13 @@ install -m 755 misc/setup/*.run %{buildroot}/%{_prefix}/games
 %endif
 
 %post
-echo 'copy pak[0-8].pk3 to /usr/lib/ioquake3/baseq3/'
+echo 'copy pak[0-8].pk3 to %{_prefix}/lib/ioquake3/baseq3/'
 
 %if !%{with installeronly}
 %files
 %license COPYING.txt
 %doc README* id-readme.txt
-%doc voip-readme.txt
+%doc voip-readme.txt opengl2-readme.md
 %{_bindir}/ioq*
 %{_prefix}/lib/ioquake3
 %{_datadir}/applications/*

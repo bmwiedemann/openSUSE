@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:35:24 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.36+git.20200211 (list is not complete)
+  - Fix loading favorites as initial source in server browser
+  - Improve finding obelisk entitynum for bot AI
+  - Fix SDL audio playback with surround sound
+  - Fix predicting entity origin on rotating mover
+  - Allow binds to use hex values for all key codes
+  - Disable pulseaudio capture regardless of SDL version
+  - Fix SDL audio playback with 16-bit stereo sound
+  - OpenGL2: r_cubemapping 2 for box cubemap parallax
+  - Add r_parallaxMapShadows
+  - Restore OpenGL 1.1 support (GL_CLAMP)
+  - q3rcc: Allow to override build date 
+  - Fix lightning gun handling for corpses and single player
+    podiums
+- Spec file cleaning
+- Drop 0001-q3rcc-Allow-to-override-build-date.patch because it
+  is included upstream (commit a96f32e)
+
+-------------------------------------------------------------------
 Thu Aug  8 09:50:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch in order to make builds reproducable:
