@@ -1,9 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 11 13:03:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.11:
+  * security fixes and hardening (boo#1169215)
+    + Add SameSite support for cookies
+    + Cookie should be properly verified against password
+    + CSRF at Admin Email
+    + Improper Access Control on disabling a user
+    + Update to jQuery 3.4.1 to resolve XSS issues with jQuery 3.3.1
+  * a number of bug fixes
+  * feature additions
+    + Allow system uptime to be a variable for use with graphs
+    + Add Refresh Interval to Data Collectors display
+    + Add Location based filtering
+    + Allow for Purging of Data Source Statistics from the GUI
+    + Restore ability to duplicate a data profile
+    + Enhance table navigation bars to support systems with larger number of items
+    + Increase length of Graph Item 'value' field to support pango-markup better
+    + Allow Basic Auth Accounts to be mapped by CSV file
+    + Make form elements under checkbox_groups flow using flex grid style
+    + Set the domain attribute to secure cookies for the 'remember me' option
+    + Enhance the "Graph Debug Mode" to display RRDtool Command lengths and excess warnings
+
+-------------------------------------------------------------------
 Sun Mar 15 16:44:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - cacti 1.2.10:
   * CVE-2020-8813: when guest users have access to realtime graphs,
-    remote code could be executed
+    remote code could be executed (boo#1164675)
   * When using User Domains, global template user is used instead of
     the configured domain template user
   * Unix timestamps after Sep 13 2020 are rejected as graph start/end
