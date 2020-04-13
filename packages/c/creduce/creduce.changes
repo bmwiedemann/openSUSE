@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 10:44:12 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Revert to LLVM 9 due to:
+  https://github.com/csmith-project/creduce/issues/210
+
+-------------------------------------------------------------------
+Sun Apr 12 07:08:57 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add port-to-llvm10.patch and std-cpp14.patch to use LLVM10.
+
+-------------------------------------------------------------------
 Sat Apr 11 07:53:31 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add binary-search-location.patch in order to fix binary

@@ -27,6 +27,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         llvm9-libs-fix.patch
 Patch1:         install-location.patch
 Patch2:         binary-search-location.patch
+Patch3:         port-to-llvm10.patch
+Patch4:         std-cpp14.patch
 BuildRequires:  astyle
 BuildRequires:  clang9-devel
 BuildRequires:  cmake
