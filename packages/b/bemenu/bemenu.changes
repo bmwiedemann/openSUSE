@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:48:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * This bug fix release fixes a build problem with missing
+    wayland headers on some systems. #106
+- Remove bemenu-pkgconfig.patch: contained in upstream
+
+-------------------------------------------------------------------
+Sun Apr 12 21:03:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  This release includes various bug fixes and some minor new features.
+  Following behavior has changed by default:
+  * The vertical UI now resembles vanilla dmenu more with the left
+    padding added.
+  * Scrollbar thickness has changed to 1 character thick instead 1
+    pixel, to make it more visible on hidpi displays.
+  * X11 should now contain windows class and name
+  * Wayland shows bemenu only on single monitor now, to have the
+    old behavior back you can use the -m all option. Note that there
+    seems to be input bugs in Wayland backend currently, and I would
+    appreciate if some Wayland developer could help figure those
+    out! #98 #102
+  * bemenu-run under curses won't fork anymore by default, to make
+    bemenu-run under curses fork, use the --fork option, this option
+    is no-op for any other backend.
+  Notable new features:
+  * BEMENU_OPTS env variable can be now used as a alternative way of specifying command line options for bemenu.
+- Remove because upstreamed:
+  * bemenu-0.3.0-boo1165235-ncurses.patch
+  * bemenu-0.3.0-curses.patch
+- Remove bemenu-0.3.0-wayland.patch: switch to makefile
+- Add bemenu-pkgconfig.patch: https://github.com/Cloudef/bemenu/issues/106
+
+-------------------------------------------------------------------
 Fri Feb 28 12:44:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add bemenu-0.3.0-wayland.patch: enable wayland renderer

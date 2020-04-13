@@ -18,26 +18,22 @@
 
 %define bcond_with curses
 Name:           bemenu
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        Dynamic menu library and client program inspired by dmenu
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Cloudef/bemenu
 Source0:        https://github.com/Cloudef/bemenu/archive/%{version}.tar.gz
-# https://github.com/Cloudef/bemenu/pull/77
-Patch0:         bemenu-0.3.0-curses.patch
-# https://github.com/Cloudef/bemenu/issues/26
-Patch1:         bemenu-0.3.0-boo1165235-ncurses.patch
-Patch2:         bemenu-0.3.0-wayland.patch
 BuildRequires:  Mesa-devel
-BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
@@ -72,9 +68,6 @@ Files required for development for Bemenu.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %if %{with curses}
 # fix colliding name with our ncurses library specifics
@@ -82,12 +75,11 @@ sed -i 's@stdscr@std_scr@g' lib/renderers/curses/curses.c
 %endif
 
 %build
-%cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-
-make %{?_smp_mflags} VERBOSE=1
+pkg-config --cflags wayland-client
+%make_build PREFIX=%{_prefix} libdir=/lib64 clients x11 wayland curses
 
 %install
-%cmake_install
+%make_install PREFIX=%{_prefix} libdir=/lib64
 
 %post -n libbemenu0 -p /sbin/ldconfig
 %postun -n libbemenu0 -p /sbin/ldconfig
@@ -97,11 +89,13 @@ make %{?_smp_mflags} VERBOSE=1
 
 %files devel
 %{_libdir}/libbemenu.so
+%{_libdir}/pkgconfig/bemenu.pc
 %{_includedir}/bemenu.h
 
 %files
 %{_bindir}/%{name}*
-%{_libdir}/%{name}
+%dir %{_libdir}/bemenu/
+%{_libdir}/bemenu/bemenu-renderer-*.so
 %{_mandir}/man1/bemenu-run.1%{?ext_man}
 %{_mandir}/man1/bemenu.1%{?ext_man}
 
