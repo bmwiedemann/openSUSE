@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:58:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add missing kdeclarative-components runtime dependency (boo#1169153)
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:

@@ -65,6 +65,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
+Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports
 Requires:       libqt5-qtquickcontrols2
