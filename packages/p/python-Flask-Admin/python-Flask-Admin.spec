@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Admin
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
