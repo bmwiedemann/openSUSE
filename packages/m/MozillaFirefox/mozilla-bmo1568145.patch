@@ -11,7 +11,7 @@ diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbu
 --- a/python/mozbuild/mozbuild/action/langpack_manifest.py
 +++ b/python/mozbuild/mozbuild/action/langpack_manifest.py
 @@ -11,16 +11,17 @@
- from __future__ import absolute_import, print_function
+ from __future__ import absolute_import, print_function, unicode_literals
  
  import argparse
  import sys

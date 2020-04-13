@@ -4359,4 +4359,39 @@
     <comment></comment>
     <requestid>791372</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>0e30296a39091d9010603652ce993ca9</srcmd5>
+    <version>75.0</version>
+    <time>1586774961</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 75.0
+  * https://www.mozilla.org/en-US/firefox/75.0/releasenotes
+  MFSA 2020-12 (bsc#1168874)
+  * CVE-2020-6821 (bmo#1625404)
+    Uninitialized memory could be read when using the WebGL
+    copyTexSubImage method
+  * CVE-2020-6822 (bmo#1544181)
+    Out of bounds write in GMPDecodeData when processing large images
+  * CVE-2020-6823 (bmo#1614919)
+    Malicious Extension could obtain auth codes from OAuth login flows
+  * CVE-2020-6824 (bmo#1621853)
+    Generated passwords may be identical on the same site between
+    separate private browsing sessions
+  * CVE-2020-6825 (bmo#1572541,bmo#1620193,bmo#1620203)
+    Memory safety bugs fixed in Firefox 75 and Firefox ESR 68.7
+  * CVE-2020-6826 (bmo#1613009,bmo#1613195,bmo#1616734,bmo#1617488,
+    bmo#1619229,bmo#1620719,bmo#1624897)
+    Memory safety bugs fixed in Firefox 75
+- removed obsolete patch
+  mozilla-bmo1609538.patch
+- requires
+  * rust &gt;= 1.41
+  * rust-cbindgen &gt;= 0.13.1
+  * mozilla-nss &gt;= 3.51
+  * nodejs10 &gt;= 10.19
+- fix build issue in libvpx for i586 via mozilla-bmo1622013.patch
+
+- increase _constraints memory for ppc64le</comment>
+    <requestid>792914</requestid>
+  </revision>
 </revisionlist>

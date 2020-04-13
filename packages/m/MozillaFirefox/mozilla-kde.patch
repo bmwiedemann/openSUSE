@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  d942febc5733911d795d1cec027fb4f3c0a6e53b
+# Parent  fbac8545cf6f461803505c2d1f57531798dee96a
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,7 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -84,16 +84,17 @@
+@@ -83,16 +83,17 @@
  #include "nsXPCOM.h"
  #include "nsXULAppAPI.h"
  #include "nsZipArchive.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4539,25 +4540,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4535,25 +4536,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4603,17 +4616,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4599,17 +4612,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -800,7 +800,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  using mozilla::dom::RemoteHandlerApp;
  
  namespace {
-@@ -288,17 +288,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -294,17 +294,17 @@ mozilla::ipc::IPCResult HandlerServicePa
  mozilla::ipc::IPCResult HandlerServiceParent::RecvExistsForProtocolOS(
      const nsCString& aProtocolScheme, bool* aHandlerExists) {
    if (aProtocolScheme.Length() > MAX_SCHEME_LENGTH) {
@@ -819,7 +819,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  
  /*
   * Check if a handler exists for the provided protocol. Check the datastore
-@@ -317,17 +317,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -323,17 +323,17 @@ mozilla::ipc::IPCResult HandlerServicePa
    nsCOMPtr<nsIExternalProtocolService> protoSvc =
        do_GetService(NS_EXTERNALPROTOCOLSERVICE_CONTRACTID, &rv);
    if (NS_WARN_IF(NS_FAILED(rv))) {
@@ -1295,7 +1295,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -128,16 +128,17 @@ include('/ipc/chromium/chromium-config.m
+@@ -129,16 +129,17 @@ include('/ipc/chromium/chromium-config.m
  
  FINAL_LIBRARY = 'xul'
  
@@ -1404,15 +1404,15 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 +    return NS_OK;
 +  }
 +
-   nsCString title;
-   title.Adopt(ToNewUTF8String(mTitle));
+   NS_ConvertUTF16toUTF8 title(mTitle);
  
    GtkWindow* parent_widget =
        GTK_WINDOW(mParentWidget->GetNativeData(NS_NATIVE_SHELLWIDGET));
  
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
-@@ -572,16 +599,240 @@ void nsFilePicker::Done(void* file_choos
+   const gchar* accept_button;
+@@ -571,16 +598,240 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1852,7 +1852,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -1904,62 +1905,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -1907,62 +1908,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {

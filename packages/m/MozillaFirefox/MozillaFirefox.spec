@@ -18,9 +18,9 @@
 
 
 # changed with every update
-%define major          74
-%define mainver        %major.0.1
-%define orig_version   74.0.1
+%define major          75
+%define mainver        %major.0
+%define orig_version   75.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -75,7 +75,7 @@ BuildRequires:  gcc7-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.39
+BuildRequires:  cargo >= 1.41
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
@@ -84,14 +84,14 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.25
-BuildRequires:  mozilla-nss-devel >= 3.50
+BuildRequires:  mozilla-nss-devel >= 3.51
 BuildRequires:  nasm >= 2.13
-BuildRequires:  nodejs8 >= 8.11
+BuildRequires:  nodejs10 >= 10.19.0
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
 BuildRequires:  python3 >= 3.5
-BuildRequires:  rust >= 1.39
-BuildRequires:  rust-cbindgen >= 0.13.0
+BuildRequires:  rust >= 1.41
+BuildRequires:  rust-cbindgen >= 0.13.1
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -186,7 +186,7 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-bmo1609538.patch
+Patch23:        mozilla-bmo1622013.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
