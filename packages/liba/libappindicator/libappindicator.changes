@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  9 22:02:52 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Do not apply xappstatusicon.patch: pulls half of Mate into Ring1. 
+
+-------------------------------------------------------------------
+Mon Mar 23 13:32:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on py2 less system
+
+-------------------------------------------------------------------
+Wed Feb 12 15:18:19 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added xappstatusicon.patch. It adds support for XAppStatus Icon by
+  Linux Mint. 
+
+-------------------------------------------------------------------
 Sun Feb  2 11:49:09 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Use the vanilla nunit for compatibility with newer Mono

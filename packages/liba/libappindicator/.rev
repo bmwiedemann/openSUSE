@@ -112,4 +112,16 @@
     <comment>let us go wuth rev 24 first...getting the mono update ready. looking at mate stuff after that</comment>
     <requestid>782246</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>b5c0cb9a82995cff864f77c8ba9744ed</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1586774955</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not apply xappstatusicon.patch: pulls half of Mate into Ring1. 
+- Fix build on py2 less system
+- Added xappstatusicon.patch. It adds support for XAppStatus Icon by
+  Linux Mint. 
+</comment>
+    <requestid>792815</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libappindicator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %global sname libappindicator
 %if "%{flavor}" == ""
-ExclusiveArch: do-not-build
+ExclusiveArch:  do-not-build
 %endif
-
 
 %if "%{flavor}" == "gtk2"
 %bcond_without mono
@@ -52,6 +52,8 @@ Patch2:         libappindicator-no-Werror.patch
 Patch3:         only_require_python_for_gtk2.patch
 # PATCH-FIX-OPENSUSE make_gtk_doc_optional.patch -- Do not require macros from gtk-doc
 Patch4:         make_gtk_doc_optional.patch
+# PATCH-FIX-UPSTREAM xappstatusicon.patch maurizio.galli@gmail.com -- Original patch by Linux Mint. Include support for XAppStatusIcon by Linux Mint
+Patch5:         xappstatusicon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -59,6 +61,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+#BuildRequires:  pkgconfig(xapp) >= 1.5.0
 %if "%{flavor}" == "gtk2"
 BuildRequires:  pkgconfig(dbusmenu-gtk-0.4)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -167,10 +170,12 @@ This package contains the development files for the appindicator-sharp library.
 
 %prep
 %setup -q -c
+cp ./src/app-indicator.c ./src/app-indicator-gtk2.c
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+#patch5 -p1
 
 %build
 # Create dummy file, to avoid dependency on gtk-doc
@@ -190,7 +195,7 @@ make -j1 V=1
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}%{python_sitearch}
+%fdupes %{buildroot}%{python2_sitearch}
 
 %post -n libappindicator%{sover} -p /sbin/ldconfig
 
@@ -204,9 +209,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n python2-appindicator
 %license COPYING COPYING.LGPL.2.1
 %doc README
-%dir %{python_sitearch}/appindicator/
-%{python_sitearch}/appindicator/__init__.py*
-%{python_sitearch}/appindicator/_appindicator.so
+%dir %{python2_sitearch}/appindicator/
+%{python2_sitearch}/appindicator/__init__.py*
+%{python2_sitearch}/appindicator/_appindicator.so
 %dir %{_datadir}/pygtk/
 %dir %{_datadir}/pygtk/2.0/
 %dir %{_datadir}/pygtk/2.0/defs/
