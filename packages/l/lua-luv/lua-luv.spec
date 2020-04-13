@@ -33,10 +33,6 @@ BuildRequires:  cmake
 %endif
 %if 0%{?fedora} || 0%{?rhel}
 %define flavor lua
-%define lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
-%define lua_archdir %{_libdir}/lua/%{lua_version}
-%define lua_noarchdir %{_datadir}/lua/%{lua_version}
-%define lua_incdir %{_includedir}/lua%{lua_version}
 %endif
 %bcond_with public_lib
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
@@ -119,10 +115,7 @@ project.
 %prep
 echo "Name is %{name}, Flavor is %{flavor}"
 %setup -q -n %{mod_name}-%{upver}
-# gh#luvit/luv#473
-%if 0%{?sle_version}
-%patch0 -p1
-%endif
+%autopatch -p1
 
 # Remove bundled dependencies
 rm -rf deps
@@ -156,11 +149,13 @@ rm -fv tests/test-dns.lua
 find build -name \*.so\*
 
 %install
-install -v -D -m 0755 -p -t %{buildroot}%{lua_archdir} build/luv.so
+install -v -D -m 0755 -p build/luv.so %{buildroot}%{lua_archdir}/luv.so
 %if %{with public_lib}
-install -v -m 0755 -p -t %{buildroot}%{lua_archdir} build/libluv*
+mkdir -p %{buildroot}%{lua_archdir}/
+install -v -m 0755 -p build/libluv* %{buildroot}%{lua_archdir}/
 %endif
-install -v -D -m 0644 -p -t %{buildroot}%{lua_incdir}/%{mod_name} src/*.h
+mkdir -p %{buildroot}%{lua_incdir}/%{mod_name}
+install -v -m 0644 -p src/*.h %{buildroot}%{lua_incdir}/%{mod_name}/
 
 # For %%doc
 cp -rv lib/ examples/

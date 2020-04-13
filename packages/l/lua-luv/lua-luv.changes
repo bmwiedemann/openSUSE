@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:30:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to define macros, when lua-macros is finally
+  fixed.
+
+-------------------------------------------------------------------
+Sat Apr 11 07:01:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Better version of the patch, based upon the upstream advice.
+
+-------------------------------------------------------------------
 Wed Apr  8 12:10:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add skip-failing-test.patch to failing test on Leap 15
