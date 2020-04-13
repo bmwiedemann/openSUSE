@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:00:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.3
+  * Fix IPv6Obj().packed and IPv6Obj().exploded
+  * add IPv4Obj().packed and IPv4Obj().exploded
+- Update to version 1.5.2
+  * Add __add__() and __sub__() to IPv4Obj() and IPv6Obj();
+  * remove use of IPv6Obj().broadcast in IPv6Obj().__contains__()
+
+-------------------------------------------------------------------
 Wed Feb 26 19:39:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.1
