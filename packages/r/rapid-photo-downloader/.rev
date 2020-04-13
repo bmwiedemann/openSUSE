@@ -540,4 +540,25 @@
   underlying problem in libdbusmenu (forwarded request 787503 from darix)</comment>
     <requestid>787504</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a5b9a23f74983c4c87f5157886e6899</srcmd5>
+    <version>0.9.22</version>
+    <time>1586775184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.22 
+  - Fixed bugs where camera insertion and removal was not being
+    detected in some circumstances. In KDE, it was camera removal.
+    In Gnome-like systems where auto mounting of cameras is
+    disabled or not functional, it was insertion.
+  - More robustly handle a camera being unexpectedly removed during
+    scanning, thumbnailing, and copying files.
+  - Fixed bug #1871649: Window corruption when application scaling
+    enabled on certain desktop environments. The application now
+    uses Qt and Gdk to query whether any monitor has scaling
+    enabled. If no scaling is enabled on any monitor, then Rapid
+    Photo Downloader will not enable automatic scaling.
+  - New package dependency:
+    Python 3 gobject introspection for Gdk 3.0</comment>
+    <requestid>793237</requestid>
+  </revision>
 </revisionlist>

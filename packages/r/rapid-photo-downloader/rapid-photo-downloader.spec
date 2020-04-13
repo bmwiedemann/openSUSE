@@ -19,7 +19,7 @@
 
 
 Name:           rapid-photo-downloader
-Version:        0.9.20
+Version:        0.9.22
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -55,6 +55,8 @@ BuildRequires:  python3-easygui
 Requires:       python3-easygui
 BuildRequires:  python3-gobject2
 Requires:       python3-gobject2
+BuildRequires:  python3-gobject-Gdk
+Requires:       python3-gobject-Gdk
 BuildRequires:  python3-gphoto2 >= 1.4.0
 Requires:       python3-gphoto2 >= 1.4.0
 BuildRequires:  python3-psutil >= 3.4.2
