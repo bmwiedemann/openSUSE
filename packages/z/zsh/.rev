@@ -891,4 +891,13 @@
     <comment></comment>
     <requestid>783235</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>6c17a999a0fe28cde35d17547712a34d</srcmd5>
+    <version>5.8</version>
+    <time>1586775100</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop sourcing /etc/bash.bashrc which causes problems with ls, add
+  a call to manually source /etc/zsh.zshrc.local if available.</comment>
+    <requestid>792416</requestid>
+  </revision>
 </revisionlist>

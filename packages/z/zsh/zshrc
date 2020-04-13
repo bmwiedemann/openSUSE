@@ -1,7 +1,3 @@
-# read bash.bashrc first for some features we dont want
-# to re-implement here
-source /etc/bash.bashrc
-
 # Custom completion support via /etc/zsh_completion.d
 fpath=( $fpath /etc/zsh_completion.d )
 
@@ -250,3 +246,6 @@ if [[ "$ZSHEDIT" == "emacs" ]] then
     bindkey    "^^[[A"	up-history
     bindkey    "^^[[B"	down-history
 fi
+
+# Read custom system-wide config if exists
+test -s /etc/zsh.zshrc.local && . /etc/zsh.zshrc.local

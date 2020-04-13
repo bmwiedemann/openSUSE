@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:04:06 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Stop sourcing /etc/bash.bashrc which causes problems with ls, add
+  a call to manually source /etc/zsh.zshrc.local if available.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:38:10 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Remove stack-protector option addition, it's already in $optflags.
