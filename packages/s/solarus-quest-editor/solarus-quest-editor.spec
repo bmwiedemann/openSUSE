@@ -17,7 +17,7 @@
 
 
 Name:           solarus-quest-editor
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        GUI to edit quests for the Solarus engine
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0

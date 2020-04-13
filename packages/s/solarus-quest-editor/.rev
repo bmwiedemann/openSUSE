@@ -99,4 +99,14 @@
 - Set minimal CMake version to 3.1 as indicated in CMakeLists.txt.</comment>
     <requestid>793224</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>21a56edc932c18ad32973bd6beb5852d</srcmd5>
+    <version>1.6.4</version>
+    <time>1586775244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4:
+ * Fix spin boxes breaking the UI on Windows
+   (gl#solarus-games/solarus-quest-editor#486).</comment>
+    <requestid>793423</requestid>
+  </revision>
 </revisionlist>

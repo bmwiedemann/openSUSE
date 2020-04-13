@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 15:36:36 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.6.4:
+ * Fix spin boxes breaking the UI on Windows
+   (gl#solarus-games/solarus-quest-editor#486).
+
+-------------------------------------------------------------------
 Sat Apr 11 16:21:12 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.6.3:
