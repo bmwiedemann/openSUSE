@@ -2849,4 +2849,41 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Use a symbolic icon for GNOME</comment>
     <requestid>790832</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>1b4910b130e85a20629a188e13564edd</srcmd5>
+    <version>81.0.4044.92</version>
+    <time>1586775009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 81.0.4044.92 bsc#1168911:
+  * CVE-2020-6454: Use after free in extensions
+  * CVE-2020-6423: Use after free in audio
+  * CVE-2020-6455: Out of bounds read in WebSQL
+  * CVE-2020-6430: Type Confusion in V8
+  * CVE-2020-6456: Insufficient validation of untrusted input in clipboard
+  * CVE-2020-6431: Insufficient policy enforcement in full screen
+  * CVE-2020-6432: Insufficient policy enforcement in navigations
+  * CVE-2020-6433: Insufficient policy enforcement in extensions
+  * CVE-2020-6434: Use after free in devtools
+  * CVE-2020-6435: Insufficient policy enforcement in extensions
+  * CVE-2020-6436: Use after free in window management
+  * CVE-2020-6437: Inappropriate implementation in WebView
+  * CVE-2020-6438: Insufficient policy enforcement in extensions
+  * CVE-2020-6439: Insufficient policy enforcement in navigations
+  * CVE-2020-6440: Inappropriate implementation in extensions
+  * CVE-2020-6441: Insufficient policy enforcement in omnibox
+  * CVE-2020-6442: Inappropriate implementation in cache
+  * CVE-2020-6443: Insufficient data validation in developer tools
+  * CVE-2020-6444: Uninitialized Use in WebRTC
+  * CVE-2020-6445: Insufficient policy enforcement in trusted types
+  * CVE-2020-6446: Insufficient policy enforcement in trusted types
+  * CVE-2020-6447: Inappropriate implementation in developer tools
+  * CVE-2020-6448: Use after free in V8
+- Add new patches:
+  * chromium-81-gcc-constexpr.patch
+  * chromium-81-gcc-noexcept.patch
+  * fix-vaapi-with-glx.patch
+- Remove no longer needed patches:
+  * chromium-80-gcc-abstract.patch</comment>
+    <requestid>792388</requestid>
+  </revision>
 </revisionlist>

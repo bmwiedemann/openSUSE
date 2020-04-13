@@ -29,17 +29,10 @@
 %bcond_without system_icu
 %bcond_without system_harfbuzz
 %bcond_without pipewire
-%bcond_without pipewire0_3
 %else
 %bcond_with system_icu
 %bcond_with system_harfbuzz
-%if 0%{?sle_version} >= 150200
-%bcond_without pipewire
-%bcond_without pipewire0_3
-%else
 %bcond_with pipewire
-%bcond_with pipewire0_3
-%endif
 %endif
 %if 0%{?suse_version} >= 1500
 %bcond_without system_libxml
@@ -64,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        80.0.3987.162
+Version:        81.0.4044.92
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -87,26 +80,18 @@ Patch3:         fix_building_widevinecdm_with_chromium.patch
 Patch4:         chromium-dma-buf.patch
 Patch5:         chromium-buildname.patch
 Patch6:         chromium-drm.patch
-Patch8:         chromium-system-icu.patch
 Patch9:         chromium-system-libusb.patch
 Patch10:        gcc-enable-lto.patch
-Patch11:        chromium-unbundle-zlib.patch
-Patch12:        chromium-old-glibc-noexcept.patch
-Patch13:        chromium-79-gcc-alignas.patch
-Patch14:        chromium-80-gcc-abstract.patch
-Patch15:        chromium-80-gcc-blink.patch
-Patch16:        chromium-80-gcc-incomplete-type.patch
-Patch17:        chromium-80-gcc-permissive.patch
-Patch18:        chromium-80-gcc-quiche.patch
-Patch19:        chromium-80-include.patch
-Patch20:        chromium-80-unbundle-libxml.patch
-Patch21:        chromium-fix-char_traits.patch
-Patch22:        gpu-timeout.patch
-Patch23:        webrtc-pulse.patch
-Patch24:        chromium-missing-cstring-header.patch
-Patch25:        chromium-missing-cstring-header2.patch
-Patch26:        chromium-missing-cstddef-header.patch
-Patch27:        chromium-missing-cstdint-header.patch
+Patch11:        chromium-old-glibc-noexcept.patch
+Patch12:        chromium-79-gcc-alignas.patch
+Patch13:        chromium-80-gcc-blink.patch
+Patch14:        chromium-80-gcc-quiche.patch
+Patch15:        chromium-fix-char_traits.patch
+Patch16:        gpu-timeout.patch
+Patch17:        chromium-81-gcc-constexpr.patch
+Patch18:        chromium-81-gcc-noexcept.patch
+Patch19:        build-with-pipewire-0.3.patch
+Patch20:        fix-vaapi-with-glx.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -115,7 +100,6 @@ Patch27:        chromium-missing-cstdint-header.patch
 Patch100:       chromium-vaapi.patch
 Patch101:       old-libva.patch
 Patch102:       chromium-vaapi-fix.patch
-Patch103:       build-with-pipewire-0.3.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
@@ -160,6 +144,7 @@ BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -200,6 +185,7 @@ BuildRequires:  pkgconfig(theora) >= 1.1
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb-dri3)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
@@ -233,14 +219,9 @@ Obsoletes:      chromium-ffmpegsumo
 # no 32bit supported and it takes ages to build
 ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
 %if %{with pipewire}
-%if %{with pipewire0_3}
 BuildRequires:  pkgconfig(libpipewire-0.3)
-%else
-BuildRequires:  pkgconfig(libpipewire-0.2)
-%endif
 %endif
 %if %{with wayland}
-BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-scanner)
@@ -297,11 +278,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
 
-# unpatch the system zlib on old systems
-%if %{with sle_bundles}
-%patch11 -p1 -R
-%endif
-
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -335,6 +311,7 @@ keeplibs=(
     third_party/angle/src/third_party/compiler
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/trace_event
+    third_party/angle/src/third_party/volk
     third_party/angle/third_party/glslang
     third_party/angle/third_party/spirv-headers
     third_party/angle/third_party/spirv-tools
@@ -379,6 +356,8 @@ keeplibs=(
     third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/devtools-frontend
+    third_party/devtools-frontend/src/front_end/third_party/fabricjs
+    third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
     third_party/emoji-segmenter
@@ -449,7 +428,6 @@ keeplibs=(
     third_party/qcms
     third_party/rnnoise
     third_party/s2cellid
-    third_party/sfntly
     third_party/simplejson
     third_party/skia
     third_party/skia/third_party/skcms
@@ -470,8 +448,6 @@ keeplibs=(
     third_party/unrar
     third_party/usrsctp
     third_party/vulkan
-    third_party/wayland
-    third_party/wayland-protocols
     third_party/web-animations-js
     third_party/webdriver
     third_party/webrtc
@@ -494,6 +470,13 @@ keeplibs=(
     v8/third_party/inspector_protocol
     v8/third_party/v8/builtins
 )
+%if %{with wayland}
+keeplibs+=(
+    third_party/mingbm
+    third_party/wayland
+    third_party/wayland-protocols
+)
+%endif
 %if %{with sle_bundles}
 keeplibs+=(
     third_party/libwebp
@@ -658,6 +641,7 @@ myconf_gn+=" use_sysroot=false"
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
+myconf_gn+=" use_system_minigbm=true"
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
@@ -668,13 +652,11 @@ myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" enable_hevc_demuxing=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
-%if %{with pipewire0_3}
 myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
-%endif
 %endif
 # ozone stuff
 %if %{with wayland}
-myconf_gn+=" use_ozone=true use_xkbcommon=true use_system_minigbm=true use_v4lplugin=true use_v4l2_codec=true use_linux_v4l2_only=true"
+myconf_gn+=" use_ozone=true use_xkbcommon=true use_v4lplugin=true use_v4l2_codec=true use_linux_v4l2_only=true"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
@@ -777,11 +759,11 @@ cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
 popd
 
-install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png    
+install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png    
+install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png    
+install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png    
+install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png    
 install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser-symbolic.svg
 
 mkdir -p %{buildroot}%{_datadir}/applications/

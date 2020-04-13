@@ -1,7 +1,7 @@
-Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
+Index: chromium-81.0.4040.5/media/gpu/vaapi/vaapi_wrapper.cc
 ===================================================================
---- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_wrapper.cc
-+++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
+--- chromium-81.0.4040.5.orig/media/gpu/vaapi/vaapi_wrapper.cc
++++ chromium-81.0.4040.5/media/gpu/vaapi/vaapi_wrapper.cc
 @@ -65,6 +65,10 @@
  #include "ui/ozone/public/surface_factory_ozone.h"
  #endif
@@ -13,7 +13,7 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
  using media_gpu_vaapi::kModuleVa;
  using media_gpu_vaapi::kModuleVa_drm;
  #if defined(USE_X11)
-@@ -367,10 +371,6 @@ bool VADisplayState::Initialize() {
+@@ -369,10 +373,6 @@ bool VADisplayState::Initialize() {
  }
  
  bool VADisplayState::InitializeOnce() {
@@ -24,7 +24,7 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
    switch (gl::GetGLImplementation()) {
      case gl::kGLImplementationEGLGLES2:
        va_display_ = vaGetDisplayDRM(drm_fd_.get());
-@@ -1502,7 +1502,7 @@ VaapiWrapper::ExportVASurfaceAsNativePix
+@@ -1508,7 +1508,7 @@ VaapiWrapper::ExportVASurfaceAsNativePix
      LOG(ERROR) << "Cannot export an invalid surface";
      return nullptr;
    }
@@ -33,7 +33,7 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
    VADRMPRIMESurfaceDescriptor descriptor;
    {
      base::AutoLock auto_lock(*va_lock_);
-@@ -1595,6 +1595,10 @@ VaapiWrapper::ExportVASurfaceAsNativePix
+@@ -1601,6 +1601,10 @@ VaapiWrapper::ExportVASurfaceAsNativePix
    exported_pixmap->pixmap = base::MakeRefCounted<gfx::NativePixmapDmaBuf>(
        scoped_va_surface.size(), buffer_format, std::move(handle));
    return exported_pixmap;
@@ -44,10 +44,10 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_wrapper.cc
  }
  
  bool VaapiWrapper::SyncSurface(VASurfaceID va_surface_id) {
-Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+Index: chromium-81.0.4040.5/media/gpu/vaapi/vaapi_jpeg_decoder.cc
 ===================================================================
---- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_jpeg_decoder.cc
-+++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_jpeg_decoder.cc
+--- chromium-81.0.4040.5.orig/media/gpu/vaapi/vaapi_jpeg_decoder.cc
++++ chromium-81.0.4040.5/media/gpu/vaapi/vaapi_jpeg_decoder.cc
 @@ -20,6 +20,10 @@
  #include "media/parsers/jpeg_parser.h"
  #include "ui/gfx/geometry/size.h"
@@ -59,10 +59,10 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_jpeg_decoder.cc
  namespace media {
  
  namespace {
-Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
+Index: chromium-81.0.4040.5/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
 ===================================================================
---- chromium-79.0.3945.36.orig/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
-+++ chromium-79.0.3945.36/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
+--- chromium-81.0.4040.5.orig/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
++++ chromium-81.0.4040.5/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
 @@ -44,6 +44,10 @@
  #include "ui/gfx/geometry/size.h"
  #include "ui/gfx/gpu_memory_buffer.h"
@@ -74,11 +74,11 @@ Index: chromium-79.0.3945.36/media/gpu/vaapi/vaapi_mjpeg_decode_accelerator.cc
  namespace media {
  
  namespace {
-Index: chromium-79.0.3945.36/media/gpu/chromeos/fourcc.cc
+Index: chromium-81.0.4040.5/media/gpu/chromeos/fourcc.cc
 ===================================================================
---- chromium-79.0.3945.36.orig/media/gpu/chromeos/fourcc.cc
-+++ chromium-79.0.3945.36/media/gpu/chromeos/fourcc.cc
-@@ -15,6 +15,13 @@
+--- chromium-81.0.4040.5.orig/media/gpu/chromeos/fourcc.cc
++++ chromium-81.0.4040.5/media/gpu/chromeos/fourcc.cc
+@@ -16,6 +16,13 @@
  #include <va/va.h>
  #endif  // BUILDFLAG(USE_VAAPI)
  
@@ -91,4 +91,4 @@ Index: chromium-79.0.3945.36/media/gpu/chromeos/fourcc.cc
 +
  namespace media {
  
- Fourcc::Fourcc() : value_(Fourcc::INVALID) {}
+ Fourcc::Fourcc(Fourcc::Value fourcc) : value_(fourcc) {}

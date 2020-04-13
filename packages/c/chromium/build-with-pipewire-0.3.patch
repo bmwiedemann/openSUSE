@@ -1,8 +1,8 @@
-Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/BUILD.gn
+Index: chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/BUILD.gn
 ===================================================================
---- chromium-80.0.3987.132.orig/third_party/webrtc/modules/desktop_capture/BUILD.gn
-+++ chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/BUILD.gn
-@@ -190,7 +190,7 @@ if (is_linux) {
+--- chromium-81.0.4044.83.orig/third_party/webrtc/modules/desktop_capture/BUILD.gn
++++ chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/BUILD.gn
+@@ -196,7 +196,7 @@ if (is_linux) {
  
      if (rtc_link_pipewire) {
        pkg_config("pipewire") {
@@ -11,10 +11,10 @@ Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/BUILD.g
        }
      } else {
        # When libpipewire is not directly linked, use stubs to allow for dlopening of
-Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+Index: chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
 ===================================================================
---- chromium-80.0.3987.132.orig/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
-+++ chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- chromium-81.0.4044.83.orig/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
++++ chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
 @@ -14,8 +14,13 @@
  #include <glib-object.h>
  #include <spa/param/format-utils.h>
@@ -27,8 +27,8 @@ Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/b
  #include <spa/support/type-map.h>
 +#endif
  
- #include <cstring>
  #include <memory>
+ #include <utility>
 @@ -51,6 +56,21 @@ const char kPipeWireLib[] = "libpipewire
  #endif
  
@@ -379,10 +379,10 @@ Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/b
      uint8_t* tempFrame = static_cast<uint8_t*>(malloc(maxSize));
      std::memcpy(tempFrame, src, maxSize);
      ConvertRGBxToBGRx(tempFrame, maxSize);
-Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+Index: chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
 ===================================================================
---- chromium-80.0.3987.132.orig/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
-+++ chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+--- chromium-81.0.4044.83.orig/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
++++ chromium-81.0.4044.83/third_party/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
 @@ -22,6 +22,7 @@
  
  namespace webrtc {
@@ -466,10 +466,10 @@ Index: chromium-80.0.3987.132/third_party/webrtc/modules/desktop_capture/linux/b
    static void OnStreamProcess(void* data);
    static void OnNewBuffer(void* data, uint32_t id);
  
-Index: chromium-80.0.3987.132/third_party/webrtc/webrtc.gni
+Index: chromium-81.0.4044.83/third_party/webrtc/webrtc.gni
 ===================================================================
---- chromium-80.0.3987.132.orig/third_party/webrtc/webrtc.gni
-+++ chromium-80.0.3987.132/third_party/webrtc/webrtc.gni
+--- chromium-81.0.4044.83.orig/third_party/webrtc/webrtc.gni
++++ chromium-81.0.4044.83/third_party/webrtc/webrtc.gni
 @@ -114,6 +114,9 @@ declare_args() {
    # supported Ubuntu and Debian distributions.
    rtc_use_pipewire = is_desktop_linux && use_sysroot

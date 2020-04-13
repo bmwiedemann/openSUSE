@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:41:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 81.0.4044.92 bsc#1168911:
+  * CVE-2020-6454: Use after free in extensions
+  * CVE-2020-6423: Use after free in audio
+  * CVE-2020-6455: Out of bounds read in WebSQL
+  * CVE-2020-6430: Type Confusion in V8
+  * CVE-2020-6456: Insufficient validation of untrusted input in clipboard
+  * CVE-2020-6431: Insufficient policy enforcement in full screen
+  * CVE-2020-6432: Insufficient policy enforcement in navigations
+  * CVE-2020-6433: Insufficient policy enforcement in extensions
+  * CVE-2020-6434: Use after free in devtools
+  * CVE-2020-6435: Insufficient policy enforcement in extensions
+  * CVE-2020-6436: Use after free in window management
+  * CVE-2020-6437: Inappropriate implementation in WebView
+  * CVE-2020-6438: Insufficient policy enforcement in extensions
+  * CVE-2020-6439: Insufficient policy enforcement in navigations
+  * CVE-2020-6440: Inappropriate implementation in extensions
+  * CVE-2020-6441: Insufficient policy enforcement in omnibox
+  * CVE-2020-6442: Inappropriate implementation in cache
+  * CVE-2020-6443: Insufficient data validation in developer tools
+  * CVE-2020-6444: Uninitialized Use in WebRTC
+  * CVE-2020-6445: Insufficient policy enforcement in trusted types
+  * CVE-2020-6446: Insufficient policy enforcement in trusted types
+  * CVE-2020-6447: Inappropriate implementation in developer tools
+  * CVE-2020-6448: Use after free in V8
+- Add new patches:
+  * chromium-81-gcc-constexpr.patch
+  * chromium-81-gcc-noexcept.patch
+  * fix-vaapi-with-glx.patch
+- Remove no longer needed patches:
+  * chromium-80-gcc-abstract.patch
+  * chromium-80-gcc-incomplete-type.patch
+  * chromium-80-gcc-permissive.patch
+  * chromium-80-include.patch
+  * chromium-80-unbundle-libxml.patch
+  * chromium-missing-cstddef-header.patch
+  * chromium-missing-cstdint-header.patch
+  * chromium-missing-cstring-header.patch
+  * chromium-missing-cstring-header2.patch
+  * chromium-system-icu.patch
+  * chromium-unbundle-zlib.patch
+  * webrtc-pulse.patch
+- Rebase patches:
+  * build-with-pipewire-0.3.patch
+  * chromium-vaapi-fix.patch
+  * chromium-vaapi.patch
+  * gpu-timeout.patch
+  * old-libva.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 09:21:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 80.0.3987.162 bsc#1168421:
