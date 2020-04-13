@@ -26,4 +26,19 @@ It is a dependency of opam.</comment>
     <comment>Fix build with ocaml-dune 1.7.1. Use OCaml-LGPL-linking-exception in License.</comment>
     <requestid>677426</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9376ddebd87c65512d35181081b431e6</srcmd5>
+    <version>1.9.0</version>
+    <time>1586775269</time>
+    <user>dimstar_suse</user>
+    <comment>- use dune macros from ocaml-rpm-macros
+
+- Update to upstream release 1.9.0
+  * Fix regression in `Re.exec_partial`
+  * Mov gen related functions to `Re.Gen` and deprecate the old names
+  * Introduce `Re.View` that exposes the internal representation
+  * Fix index-out-of-bounds exception in Re.Perl.re
+  * Add seq based iterators</comment>
+    <requestid>793520</requestid>
+  </revision>
 </revisionlist>

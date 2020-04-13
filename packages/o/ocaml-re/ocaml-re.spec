@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ocaml-re
-Version:        1.7.3
+Version:        1.9.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ocaml/ocaml-re
-Source:         https://github.com/ocaml/ocaml-re/archive/%{version}/%{name}-%{version}.tar.gz
+Url:            https://opam.ocaml.org/packages/re
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 4.03
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocamlfind(oUnit)
+BuildRequires:  ocamlfind(seq)
+BuildRequires:  ocamlfind(str)
 
 %description
 Pure OCaml regular expressions, with support for Perl and POSIX-style strings.
@@ -44,59 +44,23 @@ Requires:       %{name} = %{version}-%{release}
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
-
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-dune build @install -p re
+dune_release_pkgs='re'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}/ocaml
+%ocaml_dune_install
+%ocaml_create_file_list
 
-# do not use jbuilder install, which depends on opam-installer,
-# which is built from the opam package that depends on re.
-cp -rL _build/install/default/lib/* %{buildroot}%{_libdir}/ocaml
+%check
+%ocaml_dune_test
 
-%files
-%defattr(-,root,root)
-%doc README.md CHANGES.md
-%license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.cmxs
-%{_libdir}/ocaml/*/*/*.cmxs
-%endif
+%files -f %{name}.files
 
-%files devel
-%defattr(-,root,root,-)
-%doc README.md CHANGES.md
-%license LICENSE.md
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/*/
-%dir %{_libdir}/ocaml/*/*/
-%if 0%{?ocaml_native_compiler}
-%{_libdir}/ocaml/*/*.a
-%{_libdir}/ocaml/*/*/*.a
-%{_libdir}/ocaml/*/*.cmx
-%{_libdir}/ocaml/*/*/*.cmx
-%{_libdir}/ocaml/*/*.cmxa
-%{_libdir}/ocaml/*/*/*.cmxa
-%endif
-%{_libdir}/ocaml/*/opam
-%{_libdir}/ocaml/*/dune-package
-%{_libdir}/ocaml/*/*.cma
-%{_libdir}/ocaml/*/*/*.cma
-%{_libdir}/ocaml/*/*.cmi
-%{_libdir}/ocaml/*/*/*.cmi
-%{_libdir}/ocaml/*/*.cmt
-%{_libdir}/ocaml/*/*/*.cmt
-%{_libdir}/ocaml/*/*.cmti
-%{_libdir}/ocaml/*/*.ml
-%{_libdir}/ocaml/*/*/*.ml
-%{_libdir}/ocaml/*/*.mli
-%{_libdir}/ocaml/*/META
+%files devel -f %{name}.files.devel
 
 %changelog
