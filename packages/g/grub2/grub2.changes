@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:17:33 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix GCC 10 build fail (bsc#1158189)
+  * 0001-mdraid1x_linux-Fix-gcc10-error-Werror-array-bounds.patch
+  * 0002-zfs-Fix-gcc10-error-Werror-zero-length-bounds.patch
+
+-------------------------------------------------------------------
 Fri Mar 20 10:36:54 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Backport to support searching for specific config files for netboot

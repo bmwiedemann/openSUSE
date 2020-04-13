@@ -291,6 +291,9 @@ Patch511:       grub2-gfxmenu-support-scrolling-menu-entry-s-text.patch
 Patch601:       risc-v-fix-computation-of-pc-relative-relocation-offset.patch
 Patch602:       risc-v-add-clzdi2-symbol.patch
 Patch603:       grub-install-define-default-platform-for-risc-v.patch
+# Fix gcc-10 build fail
+Patch610:       0001-mdraid1x_linux-Fix-gcc10-error-Werror-array-bounds.patch
+Patch611:       0002-zfs-Fix-gcc10-error-Werror-zero-length-bounds.patch
 # bsc#1166409 - Grub netbooting does not search for grub.cfg files with mac
 # address or ip address in filename
 Patch700:       0001-normal-Move-common-datetime-functions-out-of-the-nor.patch
@@ -594,6 +597,8 @@ swap partition while in resuming
 %patch601 -p1
 %patch602 -p1
 %patch603 -p1
+%patch610 -p1
+%patch611 -p1
 %patch700 -p1
 %patch701 -p1
 %patch702 -p1
