@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  4 20:48:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- new version 4.1.2
+- New features
+  Add a new entry to the status bar to show the current 
+  state of Python language server. This will allow users to 
+  know if completions, linting and folding are working as 
+  expected or have issues. Clicking on this entry will also 
+  show a menu from which is possible to restart the server 
+  manually.
+- Important fixes
+  * Completely disable warning informing to restart Spyder 
+    when a screeresolution is detected on macOS.
+  * Show an error message when it's not possible to create a 
+    special console for Sympy, Cython or Pylab.
+  * Restore code folding for all files with less than 2000 lines.
+  * Fix showing help for dot object (e.g. `np.sin`) in the 
+    IPython console.
+  * Fix showing kernel initialization error messages on Windows.
+- for a full list of issues closed and PRs merge see CHANGELOG.md
+- remove patch merged upstream
+  spyder-pr11899-fixdeprecation.patch
+
+-------------------------------------------------------------------
 Wed Mar 25 11:03:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update pyls and spyder kernels dependency

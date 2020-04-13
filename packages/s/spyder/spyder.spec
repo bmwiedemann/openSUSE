@@ -23,39 +23,39 @@
 %endif
 %define skip_python2 1
 Name:           spyder
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
+Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
 Patch0:         spyder-pr11704-fixpytestargs.patch
-Patch1:         spyder-pr11899-fixdeprecation.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.0
-BuildRequires:  python3-QDarkStyle >= 2.7
+BuildRequires:  python3-QDarkStyle >= 2.8
 BuildRequires:  python3-QtAwesome >= 0.5.7
 BuildRequires:  python3-QtPy >= 1.5.0
 BuildRequires:  python3-Sphinx >= 0.6.0
-BuildRequires:  python3-atomicwrites
+BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-jedi >= 0.9.0
-BuildRequires:  python3-nbconvert
-BuildRequires:  python3-numpydoc
-BuildRequires:  python3-pexpect
-BuildRequires:  python3-pickleshare
-BuildRequires:  python3-psutil
+BuildRequires:  python3-nbconvert >= 4.0
+BuildRequires:  python3-numpydoc >= 0.6.0
+BuildRequires:  python3-pexpect >= 4.4.0
+BuildRequires:  python3-pickleshare >= 0.4
+BuildRequires:  python3-psutil >= 5.3
 BuildRequires:  python3-pycodestyle
 BuildRequires:  python3-pyflakes
 BuildRequires:  python3-pygments >= 2.0
-BuildRequires:  python3-pylint
+BuildRequires:  python3-pylint >= 0.25
 BuildRequires:  python3-python-language-server >= 0.31.9
 BuildRequires:  python3-pyxdg >= 0.26
-BuildRequires:  python3-pyzmq
+BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qt5 >= 5.5
 BuildRequires:  python3-qtconsole >= 4.6.0
 BuildRequires:  python3-rope >= 0.10.5
@@ -64,35 +64,36 @@ BuildRequires:  python3-watchdog
 BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
 Requires:       python3-Pygments >= 2.0
-Requires:       python3-QDarkStyle >= 2.7
+Requires:       python3-QDarkStyle >= 2.8
 Requires:       python3-QtAwesome >= 0.5.7
 Requires:       python3-QtPy >= 1.5.0
 Requires:       python3-Sphinx >= 0.6.0
-Requires:       python3-atomicwrites
+Requires:       python3-atomicwrites >= 1.2.0
 Requires:       python3-chardet >= 2.0.0
-Requires:       python3-cloudpickle
-Requires:       python3-diff-match-patch
+Requires:       python3-cloudpickle >= 0.5.0
+Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-intervaltree
-Requires:       python3-jedi >= 0.9.0
+Requires:       python3-jedi >= 0.15.2
 Requires:       python3-keyring
-Requires:       python3-nbconvert
-Requires:       python3-numpydoc
+Requires:       python3-nbconvert >= 4.0
+Requires:       python3-numpydoc >= 0.6.0
 Requires:       python3-opengl
-Requires:       python3-pexpect
+Requires:       python3-parso >= 0.5.2
+Requires:       python3-pexpect >= 0.4.4
 Requires:       python3-pickleshare
-Requires:       python3-psutil
+Requires:       python3-psutil >= 5.3
 Requires:       python3-pycodestyle
 Requires:       python3-pyflakes
 Requires:       python3-pygments >= 2.0
-Requires:       python3-pylint
+Requires:       python3-pylint >= 0.25
 Requires:       python3-python-language-server >= 0.31.9
 Requires:       python3-pyxdg >= 0.26
-Requires:       python3-pyzmq
+Requires:       python3-pyzmq >= 17
 Requires:       python3-qt5 >= 5.2
 Requires:       python3-qtconsole >= 4.6.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
-Requires:       python3-spyder-kernels >= 1.8.1
+Requires:       python3-spyder-kernels >= 1.9
 Requires:       python3-watchdog
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
@@ -102,10 +103,10 @@ Recommends:     %{name}-notebook
 Recommends:     %{name}-terminal
 Recommends:     %{name}-unittest
 Recommends:     python3-Pillow
-Recommends:     python3-matplotlib >= 1.0
-Recommends:     python3-numpy
+Recommends:     python3-matplotlib >= 2.0.0
+Recommends:     python3-numpy >= 1.7
 Recommends:     python3-pandas >= 0.13.1
-Recommends:     python3-scipy
+Recommends:     python3-scipy >= 0.17.0
 Recommends:     python3-sympy >= 0.7.3
 Provides:       python3-spyder = %{version}
 Provides:       python3-spyderlib = %{version}
@@ -121,18 +122,20 @@ Obsoletes:      spyder3-pylint < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  git-core
-BuildRequires:  python3-Cython
+BuildRequires:  python3-Cython >= 0.21
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-diff-match-patch
 BuildRequires:  python3-flaky
 BuildRequires:  python3-keyring
-BuildRequires:  python3-matplotlib
+BuildRequires:  python3-matplotlib >= 2.0.0
 BuildRequires:  python3-matplotlib-qt5
 BuildRequires:  python3-matplotlib-tk
 BuildRequires:  python3-opengl
-BuildRequires:  python3-pandas
+BuildRequires:  python3-pandas >= 0.13.1
+BuildRequires:  python3-pyaml
 BuildRequires:  python3-pytest < 5
 BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-faulthandler < 2.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-pytest-ordering
@@ -141,7 +144,7 @@ BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-scipy
 BuildRequires:  python3-spyder-kernels >= 1.9
-BuildRequires:  python3-sympy
+BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-xarray
 BuildRequires:  xdpyinfo
 %endif
@@ -160,6 +163,7 @@ full plugin support.
 
 %package dicom
 Summary:        DICOM I/O plugin for the Spyder IDE
+Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python3-pydicom
 Provides:       spyder3-dicom = %{version}
@@ -174,6 +178,7 @@ DICOM files.
 
 %package hdf5
 Summary:        HDF5 I/O plugin for the Spyder IDE
+Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python3-h5py
 Provides:       spyder3-hdf5 = %{version}
@@ -188,6 +193,7 @@ HDF5 files.
 
 %package doc
 Summary:        Documentation for the Spyder IDE
+Group:          Development/Languages/Python
 Recommends:     %{name} = %{version}
 Provides:       spyder3-doc = %{version}
 Obsoletes:      spyder3-doc < %{version}
@@ -200,20 +206,20 @@ Documentation and help files for Spyder and its plugins.
 
 # expansion of lang_package because the macro does not handle the rename
 %package lang
-Summary: Translations for package %{name}
-Group: System/Localization
-Requires: %{name} = %{version}
-Provides: %{name}-lang-all = %{version}
-Provides:  spyder3-lang = %{version}
-Obsoletes: spyder3-lang < %{version}
-BuildArch: noarch
+Summary:        Translations for package %{name}
+Group:          System/Localization
+Requires:       %{name} = %{version}
+Provides:       %{name}-lang-all = %{version}
+Provides:       spyder3-lang = %{version}
+Obsoletes:      spyder3-lang < %{version}
+BuildArch:      noarch
+
 %description lang
 Provides translations for the "%{name}" package.
 
 %prep
 %setup -q -n spyder-%{version}
 %patch0 -p1
-%patch1 -p1
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
 sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
@@ -223,6 +229,7 @@ sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
 sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh 
 # remove pinned dependencies where OpenSUSE already has newer versions
 # that triggers an annoying warning on startup
+# gh#spyder-ide/spyder#11975
 sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
 sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
