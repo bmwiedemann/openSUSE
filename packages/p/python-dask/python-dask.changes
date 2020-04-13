@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:45:43 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.14.0:
+  * Array
+    + Added np.iscomplexobj implementation (:pr:`6045`) Tom Augspurger
+  * Core
+    + Update test_rearrange_disk_cleanup_with_exception to pass
+      without cloudpickle installed (:pr:`6052`) James Bourbeau
+    + Fixed flaky test-rearrange (:pr:`5977`) Tom Augspurger
+  * DataFrame
+    + Use _meta_nonempty for dtype casting in stack_partitions
+      (:pr:`6061`) mlondschien
+    + Fix bugs in _metadata creation and filtering in parquet
+      ArrowEngine (:pr:`6023`) Richard (Rick) Zamora
+  * Documentation
+    + DOC: Add name caveats (:pr:`6040`) Tom Augspurger
+
+-------------------------------------------------------------------
 Sat Mar 28 16:47:35 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.13.0:
