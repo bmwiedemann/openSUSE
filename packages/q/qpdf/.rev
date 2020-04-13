@@ -593,4 +593,13 @@
   crypto code is disabled.</comment>
     <requestid>791839</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>27bbde3af487b66b9b0b32253b75a49b</srcmd5>
+    <version>10.0.1</version>
+    <time>1586774957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.0.1
+  * Fixes a regression in QPDFObjectHandle::getStreamData</comment>
+    <requestid>792831</requestid>
+  </revision>
 </revisionlist>
