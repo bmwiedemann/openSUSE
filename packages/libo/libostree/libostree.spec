@@ -17,7 +17,7 @@
 
 
 Name:           libostree
-Version:        2019.6
+Version:        2020.3
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later

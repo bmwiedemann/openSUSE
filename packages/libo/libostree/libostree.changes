@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Apr 06 09:39:45 UTC 2020 - alarrosa@suse.com
+
+- Update to version 2020.3:
+  * A quick followup to 2020.2, which introduced support for
+    read-only sysroot ended up breaking some of the Fedora CoreOS
+    tests in coreos-assembler which in turn holds back ostree
+    going into FCOS
+  * Now that gap has been closed and more of those tests are being
+    run on the new CI.
+
+- Update to version 2020.2:
+  * lib: Fix Since versions for 2020.1
+  * Post-release version bump
+  * "Brown paper bag" release that actually sets the
+    is_release_build=yes flag and also fixes the Since: on a few
+    new functions.
+
+- Update to version 2020.1:
+  * There is now support for making the /sysroot mount point
+    read-only to start. This protects against a lot of accidental
+    damage, and also generalizes and improves the previous special
+    case handling of having /boot read-only. One known issue is
+    that ostree pull is broken with this enabled, and this will be
+    fixed.
+  * Error-handling around GPG verification has had an overhaul.
+    Specifically, libostree now has more specific error codes to
+    distinguish between different verification failures. This
+    should allow apps to have more fine-grained control over how
+    to respond to errors. Do note that the error messages
+    themselves have changed, and we strongly suggest that anyone
+    relying on a specific error message string to migrate to using
+    the API directly.
+  * The original "archive" (split up objects) format didn't make it
+    easy for a client system to know how much data it would be
+    downloading. Later, static deltas were added which addressed
+    this problem, but there are situations in which object fetches
+    still occur. Later then support for optional sizes metadata in
+    commit objects was added but was never really
+    stabilized/publicized. There were also some bugs in it. That is
+    now completed - the sizes data is now stable. and new API was
+    added to read it.
+  * This release adds initial fs-verity support; it doesn't do too
+    much today. Bigger picture it's important to understand that
+    the vision of OSTree is to enable Linux systems that feel like
+    they're "image based" (transactional, versioned updates, no
+    dependency resolution client side), but also to enable things
+    like doing commits on the client side. Today rpm-ostree
+    supports replacing the kernel client side as a first class
+    operation. This is crucially important to make it feel truly
+    like a Linux system that you own.
+  * A small tweak was made to have OSTree create repo structure
+    directories and files (such as objects/ or .lock) with group
+    write permissions. This is useful for managing OSTree remote
+    servers from multiple UIDs. For systems with the default umask
+    of 0022, this should have no effect.
+  * We've extensively reworked CI for the upstream repo. In
+    addition to Travis, testing is now done on top of Fedora
+    CoreOS. Not all tests have been carried over, but expect to see
+    more coming. This rework will also allow us to have more
+    comprehensive tests previously not possible.
+  * Several fixes were made to the test suite to handle the cases
+    of systemd vs no-systemd, and systemd is now advertised in the
+    list of features in ostree --version if present.
+
+-------------------------------------------------------------------
 Tue Jan 14 11:51:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 2019.6:
@@ -20,22 +85,22 @@ Tue Jan 14 11:51:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
     is pending.
 
 - Update to version 2019.4:
-  * This is mostly a bugfix release. Notably, the 2019.3 release caused
-    some issues related to the gpg-agent code spewing messages on the
-    terminal. Additionally, Fedora 31 users have hit upon issues with
-    ostree-finalize-staged.service running too late to be able to write
-    back its logs to the journal. This then confused rpm-ostree after
-    reboot, because it looks at the previous boot's journal for this
-    message.
+  * This is mostly a bugfix release. Notably, the 2019.3 release
+    caused some issues related to the gpg-agent code spewing
+    messages on the terminal. Additionally, Fedora 31 users have
+    hit upon issues with ostree-finalize-staged.service running too
+    late to be able to write back its logs to the journal. This
+    then confused rpm-ostree after reboot, because it looks at the
+    previous boot's journal for this message.
   * The biggest feature-ish change is support for a partial commit
-    "reason" so that after ostree fsck --delete was used, subsequent
-    ostree fsck will continue to report an error. This should be used
-    by higher level tools that want to do "fsck and repair". It's
-    likely at some point that "fsck and repair" logic will move down
-    into the libostree core as well.
-  * There are ongoing efforts to port Fedora CoreOS to s390x: one fix
-    landed here to add the deployment prefix to BLS entries since it's
-    what the zipl bootloader expected.
+    "reason" so that after ostree fsck --delete was used,
+    subsequent ostree fsck will continue to report an error. This
+    should be used by higher level tools that want to do "fsck and
+    repair". It's likely at some point that "fsck and repair"
+    logic will move down into the libostree core as well.
+  * There are ongoing efforts to port Fedora CoreOS to s390x: one
+    fix landed here to add the deployment prefix to BLS entries
+    since it's what the zipl bootloader expected.
 
 - Update to version 2019.3:
   * A lot of changes since the last release. On the feature side,
@@ -50,42 +115,45 @@ Tue Jan 14 11:51:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
     an alternative signature system.
 
 - Update to version 2019.2:
-  + It's been some time since the last release, so this is a slightly
-    larger one! There's lots of new features, and a few bug fixes.
+  + It's been some time since the last release, so this is a
+    slightly larger one! There's lots of new features, and a few
+    bug fixes.
   + New features:
-    * A new sysroot.bootloader key was added to be more explicit about
-      which bootloader OSTree should use. Notably a none value is
-      supported, in which OSTree is solely responsible for writing the
-      BLS entries. This can then be used by bootloaders like GRUB2,
-      which now supports BLS natively.
-    * ostree config now supports the unset command to unset a key from
-      the OSTree repo config
+    * A new sysroot.bootloader key was added to be more explicit
+      about which bootloader OSTree should use. Notably a none
+      value is supported, in which OSTree is solely responsible
+      for writing the BLS entries. This can then be used by
+      bootloaders like GRUB2, which now supports BLS natively.
+    * ostree config now supports the unset command to unset a key
+      from the OSTree repo config
     * ostree remote add now supports the --force flag to replace a
       remote of the same name if it exists
-    * ostree-prepare-root now logs a structured journal message after
-      finding the deployment to which to pivot. This can be used by
-      higher-level apps like RPM-OSTree to build a history of the
-      deployments the machine was booted into.
+    * ostree-prepare-root now logs a structured journal message
+      after finding the deployment to which to pivot. This can be
+      used by higher-level apps like RPM-OSTree to build a history
+      of the deployments the machine was booted into.
     * The staging API now supports a lockfile which prevents
-      finalization at shutdown. This is intended to be used in systems
-      that need more fine-tuned control between staging a deployment,
-      and setting it as the default deployment on reboot.
-    * ostree static-delta show now prints the From and To commits for
-      which the delta was generated
+      finalization at shutdown. This is intended to be used in
+      systems that need more fine-tuned control between staging a
+      deployment, and setting it as the default deployment on
+      reboot.
+    * ostree static-delta show now prints the From and To commits
+      for which the delta was generated
   + Bug fixes:
-    * Make looking up collection-refs similar to how regular refs are
-      looked up, i.e. first in the transaction, then in the current
-      repo, and then in the parent repo
-    * Don't include the OSTree commit version number twice in the boot
-      menu title. This affected at least Fedora-based systems composed
-      with RPM-OSTree's mutate-os-release.
-    * Activate ostree-finalize-staged earlier; this should hopefully
-      make deployment finalization more reliable by running it later in
-      the shutdown sequence, when less services are running
+    * Make looking up collection-refs similar to how regular refs
+      are looked up, i.e. first in the transaction, then in the
+      current repo, and then in the parent repo
+    * Don't include the OSTree commit version number twice in the
+      boot menu title. This affected at least Fedora-based systems
+      composed with RPM-OSTree's mutate-os-release.
+    * Activate ostree-finalize-staged earlier; this should
+      hopefully make deployment finalization more reliable by
+      running it later in the shutdown sequence, when less services
+      are running
     * Run grub2-mkconfig on the filesystem tree of the pending
-      deployment, rather than the previously deployed tree. This was a
-      corner case where the deployment failed if a previous deployment
-      did not exist, on systems where grub.cfg is used.
+      deployment, rather than the previously deployed tree. This
+      was a corner case where the deployment failed if a previous
+      deployment did not exist, on systems where grub.cfg is used.
 
 -------------------------------------------------------------------
 Wed Apr 24 09:40:12 UTC 2019 - Martin Liška <mliska@suse.cz>
