@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  9 22:15:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.101
+  * Fix read beyond end-of-buffer in soap_accept
+  * Other unspecified improvements
+- Drop gs99-overrun.diff
+
+-------------------------------------------------------------------
+Wed Apr  8 09:23:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.100
+  * Improved proxy connectivity on the client side to handle bearer
+    authentication.
+  * Improved soapcpp2 handling of the `#module` directive.
+  * Fixed an MTOM flag clearing issue hampering MTOM usability.
+- Add gs99-overrun.diff
+
+-------------------------------------------------------------------
 Wed Mar 18 12:17:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.99
