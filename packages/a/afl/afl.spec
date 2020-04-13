@@ -17,14 +17,14 @@
 
 
 Name:           afl
-Version:        2.62c
+Version:        2.63c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
 URL:            http://lcamtuf.coredump.cx/afl/
 Source:         https://github.com/vanhauser-thc/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
-Patch1:         afl-1.58b-fix-paths.patch
+Patch1:         afl-2.63c-fix-paths.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -68,8 +68,8 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
-%{_libexecdir}/%{name}/argvfuzz*.so
-%{_libexecdir}/%{name}/socketfuzz*.so
+#{_libexecdir}/%{name}/argvfuzz*.so
+#{_libexecdir}/%{name}/socketfuzz*.so
 %{_libexecdir}/%{name}/libradamsa.so
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
