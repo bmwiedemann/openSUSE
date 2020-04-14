@@ -31,7 +31,7 @@
 %endif
 
 Name:           tigervnc
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Provides:       tightvnc = 1.3.9
 Obsoletes:      tightvnc < 1.3.9
@@ -55,6 +55,8 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xtst)
 # Because of keytool to build java client
+BuildRequires:  libXdamage-devel
+BuildRequires:  libXrandr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  mozilla-nss
@@ -108,10 +110,9 @@ Requires(postun): update-alternatives
 URL:            http://tigervnc.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        An implementation of VNC
-#Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Servers/XF86_4
-Source1:        tigervnc-%{version}.tar.gz
+Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source4:        10-libvnc.conf
 Source5:        vnc-server.susefirewall
 Source6:        vnc-httpd.susefirewall
@@ -142,19 +143,6 @@ Patch10:        n_correct_path_in_desktop_file.patch
 Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
 Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
 Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
-Patch21:        0001-Make-ZlibInStream-more-robust-against-failures.patch
-Patch22:        0002-Encapsulate-PixelBuffer-internal-details.patch
-Patch23:        0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
-Patch24:        0004-Add-write-protection-to-OffsetPixelBuffer.patch
-Patch25:        0005-Handle-empty-Tight-gradient-rects.patch
-Patch26:        0006-Add-unit-test-for-PixelFormat-sanity-checks.patch
-Patch27:        0007-Fix-depth-sanity-test-in-PixelFormat.patch
-Patch28:        0008-Add-sanity-checks-for-PixelFormat-shift-values.patch
-Patch29:        0009-Remove-unused-FixedMemOutStream.patch
-Patch30:        0010-Use-size_t-for-lengths-in-stream-objects.patch
-Patch31:        0011-Be-defensive-about-overflows-in-stream-objects.patch
-Patch32:        0012-Add-unit-tests-for-PixelFormat.is888-detection.patch
-Patch33:        0013-Handle-pixel-formats-with-odd-shift-values.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -260,8 +248,6 @@ It maps common x11vnc arguments to x0vncserver arguments.
 
 %prep
 %setup -T -b1 -q -n tigervnc-%{version}
-cp -r /usr/src/xserver/* unix/xserver/
-
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
@@ -275,20 +261,8 @@ cp -r /usr/src/xserver/* unix/xserver/
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
 
+cp -r /usr/src/xserver/* unix/xserver/
 pushd unix/xserver
 patch -p1 < ../xserver120.patch
 popd

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 13 18:20:43 UTC 2020 - Lorenzo Paulatto <paulatz@gmail.com>
+
+- TigerVNC 1.10.1:
+  Added libXdamage-devel and libXrandr-devel to the BuildRequisites,
+  to build x0vncserver with DAMAGE, RANDR and XTEXT support
+
+-------------------------------------------------------------------
+Fri Apr 10 10:33:53 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- TigerVNC 1.10.1:
+  Previously patched security fixes now in upstream release:
+  CVE-2019-15691, bsc#1159856
+  CVE-2019-15692, bsc#1160250
+  CVE-2019-15693, bsc#1159858
+  CVE-2019-15694, bsc#1160251
+  CVE-2019-15695, bsc#1159860 
+  dropping the following patches:
+  * 0001-Make-ZlibInStream-more-robust-against-failures.patch
+  * 0002-Encapsulate-PixelBuffer-internal-details.patch
+  * 0003-Restrict-PixelBuffer-dimensions-to-safe-values.patch
+  * 0004-Add-write-protection-to-OffsetPixelBuffer.patch
+  * 0005-Handle-empty-Tight-gradient-rects.patch
+  * 0006-Add-unit-test-for-PixelFormat-sanity-checks.patch
+  * 0007-Fix-depth-sanity-test-in-PixelFormat.patch
+  * 0008-Add-sanity-checks-for-PixelFormat-shift-values.patch
+  * 0009-Remove-unused-FixedMemOutStream.patch
+  * 0010-Use-size_t-for-lengths-in-stream-objects.patch
+  * 0011-Be-defensive-about-overflows-in-stream-objects.patch
+  * 0012-Add-unit-tests-for-PixelFormat.is888-detection.patch
+  * 0013-Handle-pixel-formats-with-odd-shift-values.patch
+
+-------------------------------------------------------------------
 Sun Feb 23 10:18:23 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - raise java dependency to 1.8.0 in order to compile the java part
