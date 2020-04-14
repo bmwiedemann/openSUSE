@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,13 @@ Name:           wget2
 Version:        1.99.2
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
-License:        GPL-3.0+ and LGPL-3.0+
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.gnu.org/software/wget/
 
 Source:         https://ftp.gnu.org/gnu/wget/%name-%version.tar.gz
+Patch1:         test-dl.patch
+Patch2:         test-buffer-printf.patch
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gettext-devel >= 0.18.1
@@ -32,15 +34,15 @@ BuildRequires:  libidn2-devel >= 0.14
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libunistring-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libnghttp2)
-BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpsl)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Wget enables you to retrieve WWW documents or FTP files from a
@@ -53,7 +55,7 @@ system and user CPU cycles than Wget1.x.
 
 %package -n libwget0
 Summary:        A library to download and mirror FTP/HTTP sites
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libwget0
@@ -65,7 +67,7 @@ Wget2.
 
 %package -n libwget-devel
 Summary:        Development files for libwget
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 
 %description -n libwget-devel
