@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 13 10:39:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add pyls-pr778-multiplerefs.patch from gh#palantir/python-language-server#778 
+
+-------------------------------------------------------------------
+Thu Apr  9 22:52:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to newer jedi but deal with gh#palantir/python-language-server#744
+  pyls-pr775-jedi016.patch from gh#palantir/python-language-server#775
+  pyls-pr775-addon.patch on top of it (PR submitted)
+- reactivate the unit tests 
+
+-------------------------------------------------------------------
 Mon Mar 23 10:49:05 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.31.9

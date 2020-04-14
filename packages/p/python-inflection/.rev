@@ -16,4 +16,12 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659440</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d87e376974eb8f3e5455b95d21cf7366</srcmd5>
+    <version>0.4.0</version>
+    <time>1586869880</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793755</requestid>
+  </revision>
 </revisionlist>

@@ -18,19 +18,17 @@
 
 %define skip_python2 1
 Name:           python-breathe
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/michaeljones/breathe
-Source:         %{URL}/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
-# https://github.com/michaeljones/breathe/pull/486
-Patch0:         0001-Add-MockApp.emit.patch
+Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
@@ -59,7 +57,7 @@ able to read and  render Doxygen xml output.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%make_build dev-test
+%pytest 
 
 %files %{python_files}
 %doc README.rst

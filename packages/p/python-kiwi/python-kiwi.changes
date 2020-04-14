@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 03 16:11:57 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.5 → 9.20.6
+
+-------------------------------------------------------------------
+Thu Apr 02 17:13:26 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed plugin documentation
+
+  While setting up the kiwi boxed plugin I realized some small
+  mistakes in the plugin documentation
+
+-------------------------------------------------------------------
+Thu Apr 02 12:58:38 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow overlay directories for profiles
+
+  In addition to the existing root/ overlay directory which
+  applies always there can now also be profile specific overlay
+  directories. If an overlay directory should be applied for
+  a specific profile this can now be done by placing this data
+  in a directory that is named the same as the profile name.
+
+-------------------------------------------------------------------
+Wed Apr 01 14:31:58 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Make build of filesystem image optional for pxe
+
+  Allow to build a kernel/initrd pair without a root
+  filesystem image. Related to Issue #1388
+
+-------------------------------------------------------------------
 Fri Mar 27 10:41:52 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.20.4 → 9.20.5

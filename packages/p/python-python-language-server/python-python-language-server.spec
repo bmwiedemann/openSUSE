@@ -23,12 +23,14 @@ Version:        0.31.9
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use_newer_ujson.patch mcepl@suse.com
 # Use system python3-ujson without regards which version it is
 Patch0:         use_newer_ujson.patch
+Patch1:         pyls-pr775-jedi016.patch
+Patch2:         pyls-pr775-addon.patch
+Patch3:         pyls-pr778-multiplerefs.patch
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8}
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module yapf}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jedi >= 0.14.1
+Requires:       python-jedi >= 0.16
 Requires:       python-pluggy
 Requires:       python-python-jsonrpc-server >= 0.3.2
 Requires:       python-setuptools
@@ -61,7 +63,7 @@ Recommends:     python-pylint
 Recommends:     python-rope >= 0.10.5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module jedi >= 0.14.1}
+BuildRequires:  %{python_module jedi >= 0.16}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
@@ -105,18 +107,25 @@ will be enabled:
 
 %check
 # Tests are switched off ATM, because of gh#palantir/python-language-server#744
-# # Remove pytest addopts
-# rm setup.cfg
-# # One test failure on Leap 15.1 due to different pylint version
-# %%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
-# %%define skip_tests -k not 'test_syntax_error_pylint_py3'
-# %%endif
-# %%pytest %{?skip_tests}
+# Remove pytest addopts
+rm setup.cfg
+# unclean tear down
+skip_tests="test_missing_message"
+# Test failure on Leap 15.1 due to different pylint version
+%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
+  skip_tests+=" or test_syntax_error_pylint_py"
+%endif
+# unknown encoding utd-8 on python2
+%ifpython2
+  skip_tests+=" or test_references_builtin"
+%endif
+%pytest  -k "not ( $skip_tests )"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python3_only %{_bindir}/pyls
-%{python_sitelib}/*
+%{python_sitelib}/python_language_server-%{version}-py*.egg-info
+%{python_sitelib}/pyls/
 
 %changelog

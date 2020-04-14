@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfscrape
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cfscrape
-Version:        2.0.8
+Version:        2.1.1
 Release:        0
 Summary:        Python module to bypass Cloudflare's anti-bot page
 License:        MIT
@@ -66,9 +66,10 @@ is much more common.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%python_exec setup.py develop --user
-%python_exec -m pytest -v tests
+# test suite requires internet access
+# %%check
+# %%python_exec setup.py develop --user
+# %%python_exec -m pytest -v tests
 
 %files %{python_files}
 %license LICENSE

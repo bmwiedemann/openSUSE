@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:59:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.14.2:
+  * Fixes to use Sphinx 2.4.4
+  * Switch to pytest from nose.
+- Remove 0001-Add-MockApp.emit.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 08:06:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Fix FTBFS due to test failure
