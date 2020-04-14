@@ -85,4 +85,14 @@
     reporting receiving Cloudflare captchas</comment>
     <requestid>722490</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>962d548a069bcbb976bea801d91aac7b</srcmd5>
+    <version>2.1.1</version>
+    <time>1586869797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1
+  * Updated to handle latest Cloudflare IUAM challenge
+</comment>
+    <requestid>792980</requestid>
+  </revision>
 </revisionlist>
