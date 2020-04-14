@@ -23,7 +23,7 @@
 
 Name:           libva-gl
 %define _name   libva
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Video Acceleration (VA) API
 License:        MIT
