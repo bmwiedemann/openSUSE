@@ -17,35 +17,35 @@
 
 
 Name:           lucene
-Version:        7.1.0
+Version:        8.5.0
 Release:        0
 Summary:        Text search engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://lucene.apache.org/
-Source0:        http://archive.apache.org/dist/lucene/java/%{version}/%{name}-%{version}-src.tgz
-Source1:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/%{version}/lucene-queryparser-%{version}.pom
-Source2:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-join/%{version}/lucene-join-%{version}.pom
-Source3:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/%{version}/lucene-queries-%{version}.pom
-Source4:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-classification/%{version}/lucene-classification-%{version}.pom
-Source5:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-facet/%{version}/lucene-facet-%{version}.pom
-Source6:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/%{version}/lucene-codecs-%{version}.pom
-Source7:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-backward-codecs/%{version}/lucene-backward-codecs-%{version}.pom
-Source8:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-grouping/%{version}/lucene-grouping-%{version}.pom
-Source9:        http://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/%{version}/lucene-highlighter-%{version}.pom
-Source10:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/%{version}/lucene-memory-%{version}.pom
-Source11:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-misc/%{version}/lucene-misc-%{version}.pom
-Source12:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-sandbox/%{version}/lucene-sandbox-%{version}.pom
-Source13:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-spatial3d/%{version}/lucene-spatial3d-%{version}.pom
-Source14:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-spatial/%{version}/lucene-spatial-%{version}.pom
-Source15:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/%{version}/lucene-analyzers-common-%{version}.pom
-Source16:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-smartcn/%{version}/lucene-analyzers-smartcn-%{version}.pom
-Source17:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-stempel/%{version}/lucene-analyzers-stempel-%{version}.pom
-Source18:       http://repo1.maven.org/maven2/org/apache/lucene/lucene-core/%{version}/lucene-core-%{version}.pom
+URL:            https://lucene.apache.org/
+Source0:        https://archive.apache.org/dist/lucene/java/%{version}/%{name}-%{version}-src.tgz
+Source1:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/%{version}/lucene-queryparser-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-join/%{version}/lucene-join-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/%{version}/lucene-queries-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-classification/%{version}/lucene-classification-%{version}.pom
+Source6:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-codecs/%{version}/lucene-codecs-%{version}.pom
+Source7:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-backward-codecs/%{version}/lucene-backward-codecs-%{version}.pom
+Source8:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-grouping/%{version}/lucene-grouping-%{version}.pom
+Source9:        https://repo1.maven.org/maven2/org/apache/lucene/lucene-highlighter/%{version}/lucene-highlighter-%{version}.pom
+Source10:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-memory/%{version}/lucene-memory-%{version}.pom
+Source11:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-misc/%{version}/lucene-misc-%{version}.pom
+Source12:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-sandbox/%{version}/lucene-sandbox-%{version}.pom
+Source13:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-spatial3d/%{version}/lucene-spatial3d-%{version}.pom
+Source14:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-monitor/%{version}/lucene-monitor-%{version}.pom
+Source15:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/%{version}/lucene-analyzers-common-%{version}.pom
+Source16:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-smartcn/%{version}/lucene-analyzers-smartcn-%{version}.pom
+Source17:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-stempel/%{version}/lucene-analyzers-stempel-%{version}.pom
+Source18:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-core/%{version}/lucene-core-%{version}.pom
 Patch0:         0001-Disable-ivy-settings.patch
 Patch1:         0002-Dependency-generation.patch
 Patch2:         lucene-java8compat.patch
 Patch3:         lucene-osgi-manifests.patch
+Patch4:         lucene-missing-dependencies.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit >= 1.6
 BuildRequires:  antlr-java
@@ -76,6 +76,8 @@ Summary:        Text search engine
 Group:          Development/Libraries/Java
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
+Obsoletes:      %{name}-facet < %{version}-%{release}
+Obsoletes:      %{name}-spatial < %{version}-%{release}
 BuildArch:      noarch
 
 %description core
@@ -129,6 +131,7 @@ This package provides the "queries" module for lucene.
 %package classification
 Summary:        Classification module for lucene
 Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-grouping)
 Requires:       mvn(org.apache.lucene:lucene-queries)
@@ -139,19 +142,6 @@ Apache Lucene is a full-text search engine written entirely in Java.
 This package provides the "classification" module for Lucene.
 
 %files classification -f .mfiles-classification
-
-%package facet
-Summary:        Facet module for lucene
-Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-queries)
-BuildArch:      noarch
-
-%description facet
-Apache Lucene is a full-text search engine written entirely in Java.
-This package provides the "facet" module for Lucene.
-
-%files facet -f .mfiles-facet
 
 %package codecs
 Summary:        Codecs module for lucene
@@ -193,11 +183,9 @@ This package provides the "grouping" module for Lucene.
 %package highlighter
 Summary:        Highlighter module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
 Requires:       mvn(org.apache.lucene:lucene-core)
 Requires:       mvn(org.apache.lucene:lucene-join)
 Requires:       mvn(org.apache.lucene:lucene-memory)
-Requires:       mvn(org.apache.lucene:lucene-queries)
 BuildArch:      noarch
 
 %description highlighter
@@ -253,17 +241,20 @@ This package provides the "spatial3d" module for Lucene.
 
 %files spatial3d -f .mfiles-spatial3d
 
-%package spatial
+%package monitor
 Summary:        Spatial module for lucene
 Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
 Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-memory)
+Requires:       mvn(org.apache.lucene:lucene-queryparser)
 BuildArch:      noarch
 
-%description spatial
+%description monitor
 Apache Lucene is a full-text search engine written entirely in Java.
-This package provides the "spatial" module for Lucene.
+This package provides the "monitor" module for Lucene.
 
-%files spatial -f .mfiles-spatial
+%files monitor -f .mfiles-monitor
 
 %package analyzers-common
 Summary:        Analyzers-common module for lucene
@@ -306,6 +297,18 @@ This package provides the "analyzers-stempel" module for Lucene.
 %files analyzers-stempel -f .mfiles-analyzers-stempel
 
 %if 0
+%package facet
+Summary:        Facet module for lucene
+Group:          Development/Libraries/Java
+Requires:       mvn(org.apache.lucene:lucene-core)
+Requires:       mvn(org.apache.lucene:lucene-queries)
+BuildArch:      noarch
+
+%description facet
+Apache Lucene is a full-text search engine written entirely in Java.
+This package provides the "facet" module for Lucene.
+
+%files facet -f .mfiles-facet
 
 %package analyzers-icu
 Summary:        Lucene ICU Analysis Components
@@ -416,7 +419,7 @@ Requires:       mvn(org.apache.lucene:lucene-queries)
 Requires:       mvn(org.apache.lucene:lucene-queryparser)
 BuildArch:      noarch
 
-%description 
+%description
 Demo for Apache Lucene Java.
 
 %files demo -f .mfiles-demo
@@ -506,11 +509,12 @@ Apache Lucene Java Test Framework.
 %patch1 -p2
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export CLASSPATH=$(build-classpath commons-digester jtidy junit regexp)
 export OPT_JAR_LIST=:
-%ant \
+%{ant} \
   -Djavacc.home=%{_bindir}/javacc \
   -Djavacc.jar=%{_javadir}/javacc.jar \
   -Djavacc.jar.dir=%{_javadir} \
@@ -518,12 +522,13 @@ export OPT_JAR_LIST=:
   -Dversion=%{version} \
   -Divy.mode=local -Divy.available=true
 
-# DOESN'T BUILD BECAUSE OF MISSING DEPS: replicator expressions spatial-extras analyzers-kuromoji analyzers-morfologik analyzers-phonetic
-export modules="queryparser join queries classification facet codecs backward-codecs grouping highlighter memory misc sandbox spatial3d spatial"
+# DOESN'T BUILD BECAUSE OF MISSING DEPS: replicator expressions facet spatial-extras analyzers-kuromoji analyzers-morfologik analyzers-phonetic
+export modules="queryparser join queries classification codecs backward-codecs grouping highlighter memory misc sandbox spatial3d monitor"
 
 for mod in $modules
 do
-  %ant -f module-build.xml \
+  echo "BUILDING MODULE ${mod}"
+  %{ant} -f module-build.xml \
     -Djavacc.home=%{_bindir}/javacc \
     -Djavacc.jar=%{_javadir}/javacc.jar \
     -Djavacc.jar.dir=%{_javadir} \
@@ -535,7 +540,7 @@ done
 
 export modanalyzers="common smartcn stempel"
 pushd analysis
-%ant \
+%{ant} \
   -Djavacc.home=%{_bindir}/javacc \
   -Djavacc.jar=%{_javadir}/javacc.jar \
   -Djavacc.jar.dir=%{_javadir} \
@@ -551,7 +556,7 @@ install -d -m 0755 %{buildroot}%{_jnidir}/%{name}
 # maven pom dir
 install -d -m 0755 %{buildroot}%{_mavenpomdir}/%{name}
 
-export noarch_modules="core queryparser join queries classification facet codecs backward-codecs grouping highlighter memory sandbox spatial3d spatial"
+export noarch_modules="core queryparser join queries classification codecs backward-codecs grouping highlighter memory sandbox spatial3d monitor"
 for mod in $noarch_modules
 do
   install -p -m 0644 build/${mod}/%{name}-$mod-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-$mod.jar

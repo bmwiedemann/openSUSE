@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Feb 13 19:25:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove gnu-unifont-bitmap-font runtime dependency, it is not
+  used anywhere.
+- Replace autosetup -S git by setup + autopatch, remove git
+  build dependency.
+- Remove unused kernel-headers and module-init-tools build deps.
+- Make plymouth-scripts noarch (installed in /usr/lib), adjust
+  its runtime dependencies.
+
+-------------------------------------------------------------------
+Sun Jan  5 04:01:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix spinfinity Requires, throbgress is no longer available,
+  but the two-step plugin has gained the required capabilities.
+
+-------------------------------------------------------------------
+Tue Dec 24 08:49:24 UTC 2019 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version plymouth-0.9.5+git20191224+d7c737d:
+  * drm: Keep hw-rotation on devices with upside down LCD panels
+  * themes: spinner/bgrt: Modify password dialog to match gnome
+    3.34 changes
+  * two-step: Change keyboard-indicator positioning to fixed
+    offset below dialog
+  * two-step: Fix wrong horizontal position of bgrt logo on
+    left-side-up LCD panels
+  * drm: Mark buffer as clean in ply_renderer_head_new()
+  * throbgress: Remove the throbgress plugin
+  * boot-splash: fix memory leak in error path.
+- Add plymouth-disable-fedora-logo.patch:
+  Disable the logo file which links to fedora custom position, 
+  and openSUSE don't have it.
+- Drop plymouth-dracut-path.patch:
+  Nolonger needed for the latest update.
+- Drop  plymouth-correct-runtime-dir.patch:
+  Nolonger needed for the latest update.
+- Porting old patches to fit the latest update.
+  0001-Add-label-ft-plugin.patch
+  0002-Install-label-ft-plugin-into-initrd-if-available.patch 
+- Upstream dropped theme throbgress, So we nolonger build it.
+
+-------------------------------------------------------------------
 Wed Oct 30 19:21:08 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Avoid inconsistencies in library package names causing unresolvable
@@ -9,8 +52,7 @@ Wed Sep 11 07:54:48 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - Add patch plymouth-avoid-umount-hanging-shutdown.patch:
   To avoid grantpt() call nsslookup, it will hanging system unmount
-  /var during shutdown period(bsc#1105688, bsc#1129386, 
-  bsc#1134660). 
+  /var during shutdown period(bsc#1105688,bsc#1129386,bsc#1134660). 
 
 -------------------------------------------------------------------
 Thu Aug 15 03:56:10 UTC 2019 - Cliff Zhao <qzhao@suse.com>

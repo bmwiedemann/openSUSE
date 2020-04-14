@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 17 07:57:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.8.24
+  * Implement the file edit and view history
+  * sftpfs: support keyborad interactive authentication
+  * add yabasic (Yet Another BASIC) syntax highlighting
+  * File highlighting updates
+  * New skins
+  * Lots of other fixes
+
+- Remove sftp_interactive_password.patch
+- Remove mc-no-common.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 10:11:03 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - mc-no-common.patch: fix compilation on Tumbleweed (bsc#1160401)

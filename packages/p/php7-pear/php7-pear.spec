@@ -22,7 +22,7 @@
 %define pear_module_version(m) %(sed -n 's/.*=>.*%{1}-\\(.*\\)\\.tar.*/\\1/p' %{SOURCE0})
 
 Name:           php7-pear
-Version:        1.10.17
+Version:        1.10.18
 Release:        0
 Summary:        PHP Extension and Application Repository
 License:        BSD-2-Clause
@@ -32,8 +32,6 @@ Source0:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pe
 Source1:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pear-nozlib.sig#/install-pear-nozlib.phar.sig
 Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM https://bugs.php.net/78890
-Patch0:         pear-cacheid-array-check.patch
 BuildRequires:  php7
 Requires:       php7
 Recommends:     php7-openssl
@@ -97,17 +95,6 @@ php -d date.timezone=UTC -d memory_limit=64M -d short_open_tag=0 -d safe_mode=0 
 	--man      %{_mandir} \
 	--metadata %{metadir} \
 	--www      %{peardir}/htdocs
-
-php -r '$filemap = unserialize(file_get_contents("%{buildroot}%{metadir}/.filemap"));
-	ksort($filemap);
-	foreach($filemap as &$value) {
-		ksort($value);
-	}
-	file_put_contents("%{buildroot}%{metadir}/.filemap", serialize($filemap));'
-
-pushd %{buildroot}%{peardir}
-patch -p1 < %{PATCH0}
-popd
 
 %pre
 if [ -d %{peardir}/.registry -a ! -d %{metadir}/.registry ]; then

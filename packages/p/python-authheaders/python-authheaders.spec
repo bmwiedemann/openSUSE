@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-authheaders
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A library wrapping email authentication header verification and generation
 License:        MIT
@@ -31,13 +31,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-authres >= 1.0.1
 Requires:       python-dkimpy >= 0.7.1
 Requires:       python-dnspython
-Requires:       python-publicsuffix
+Requires:       python-publicsuffix2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module authres >= 1.2.0}
 BuildRequires:  %{python_module dkimpy >= 0.7.1}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module publicsuffix}
+BuildRequires:  %{python_module publicsuffix2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

@@ -40,4 +40,12 @@
 - Remove unnecessary dependencies from rpm spec</comment>
     <requestid>697416</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ebf6137886980ac3c7d96b2ad226bd0</srcmd5>
+    <version>1.4.7</version>
+    <time>1586869887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793781</requestid>
+  </revision>
 </revisionlist>

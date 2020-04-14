@@ -248,19 +248,15 @@ else
     echo "%{name} Upgrade complete"
 fi
 
+if [ $1 -eq 1 ]; then
 %if 0%{?suse_version}
 %if 0%{?suse_version} >= 1500
-# make sure php7 is not in APACHE_MODULES, so that we don't create dups.
-perl -pani -e 's@^(APACHE_MODULES=".*)\bphp7\b@$1@' /etc/sysconfig/apache2
-# add php7 to APACHE_MODULES
-perl -pani -e 's@^(APACHE_MODULES=")@${1}php7 @' /etc/sysconfig/apache2
+a2enmod php7
 %else
-# make sure php5 is not in APACHE_MODULES, so that we don't create dups.
-perl -pani -e 's@^(APACHE_MODULES=".*)\bphp5\b@$1@' /etc/sysconfig/apache2
-# add php5 to APACHE_MODULES
-perl -pani -e 's@^(APACHE_MODULES=")@${1}php5 @' /etc/sysconfig/apache2
+a2enmod php5
 %endif
 %endif
+fi
 
 if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
   echo "%{name} post-install: Restarting Apache"
@@ -312,6 +308,8 @@ rm -f %{statedir}/occ_maintenance_mode_during_nextcloud_install
 %config(noreplace) %{apache_serverroot}/%{name}/.user.ini
 %defattr(664,wwwrun,www,775)
 %{apache_serverroot}/%{name}/apps
+%{apache_serverroot}/%{name}/core/js/mimetypelist.js
+%dir %{apache_serverroot}/%{name}/core/img/filetypes
 %defattr(660,wwwrun,www,770)
 %{apache_serverroot}/%{name}/config
 %{apache_serverroot}/%{name}/data

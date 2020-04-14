@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 13:20:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.3
+  * display: Allow resizing of minimal dialog (bxo#15450)
+  * display: Use proper fallback configuration on "apply" and
+    "toggle off" (bxo#16476)
+  * keyboard: Fix crash when editing shortcut (bxo#15958)
+  * keyboard: Fix log flood (bxo#16521)
+  * settings-manager: Make sure content determines size
+  * xfsettingsd: Handle failure to get Xkl engine for display
+    (bxo#16017)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jan 12 13:37:16 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.2

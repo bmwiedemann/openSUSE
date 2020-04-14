@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,54 +20,47 @@
 # it is not used in the production environment.
 %bcond_with x11_renderer
 
-%global soversion 5
-%define plymouthdaemon_execdir %{_sbindir}
-%define plymouthclient_execdir %{_bindir}
-%define plymouth_libdir %{_libdir}
-%define plymouth_initrd_file /boot/initrd-plymouth.img
+%global git_version git20191224+d7c737d
+%global so_version 5
 
 Name:           plymouth
-Version:        0.9.5+git20190908+3abfab2
+Version:        0.9.5+%{git_version}
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.freedesktop.org/wiki/Software/Plymouth
-
+URL:            https://www.freedesktop.org/wiki/Software/Plymouth
 Source0:        %{name}-%{version}.tar.xz
 Source1:        boot-duration
-# PATCH-FIX-OPENSUSE plymouth-dracut-path.patch tittiatcoke@gmail.com -- Prefix is /usr/sbin and /usr/bin
-Patch0:         plymouth-dracut-path.patch
 # PATCH-FIX-OPENSUSE plymouth-some-greenish-openSUSE-colors.patch bnc#886148 fcrozat@suse.com -- To use suse colors in tribar.
-Patch1:         plymouth-some-greenish-openSUSE-colors.patch
-# PATCH-FIX-OPENSUSE plymouth-correct-runtime-dir.patch tittiatcoke@gmail.com -- Make sure the runtime directory is /run and not /var/run
-Patch2:         plymouth-correct-runtime-dir.patch
+Patch0:         plymouth-some-greenish-openSUSE-colors.patch
 # PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de  -- Fix man page installation
-Patch3:         plymouth-manpages.patch
+Patch1:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
-Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
+Patch2:         plymouth-only_use_fb_for_cirrus_bochs.patch
 # PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
-Patch5:         plymouth-avoid-umount-hanging-shutdown.patch
-
+Patch3:         plymouth-avoid-umount-hanging-shutdown.patch
+# PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
+Patch4:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1001:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
 # PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1002:      0003-fix_null_deref.patch
-
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
-BuildRequires:  git
-BuildRequires:  kernel-headers
+BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  module-init-tools
 BuildRequires:  pkgconfig
+%if 0%{suse_version} >= 1550
+# regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
+BuildRequires:  rpm-config-SUSE >= 0.g11
+%else
 BuildRequires:  suse-module-tools
-# needed for systemd-tty-ask-password-agent
-BuildRequires:  intltool
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo)
@@ -80,15 +73,12 @@ BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
-
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
-Requires:       gnu-unifont-bitmap-fonts
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
 Requires(postun): coreutils
-Recommends:     plymouth-plugin-label-ft
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5
@@ -101,36 +91,37 @@ place of the text messages that normally get shown.  Text
 messages are instead redirected to a log file for viewing
 after boot.
 
-%package -n libply-boot-client%{soversion}
+%package -n libply-boot-client%{so_version}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-boot-client%{soversion}
+%description -n libply-boot-client%{so_version}
+
 This package contains the libply-boot-client library used by Plymouth.
 
-%package -n libply-splash-core%{soversion}
+%package -n libply-splash-core%{so_version}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
 
-%description -n libply-splash-core%{soversion}
+%description -n libply-splash-core%{so_version}
 This package contains the libply-splash-core library
 used by graphical Plymouth splashes.
 
-%package -n libply-splash-graphics%{soversion}
+%package -n libply-splash-graphics%{so_version}
 Summary:        Plymouth graphics libraries
 Group:          Development/Libraries/C and C++
 BuildRequires:  libpng-devel
 
-%description -n libply-splash-graphics%{soversion}
+%description -n libply-splash-graphics%{so_version}
 This package contains the libply-splash-graphics library
 used by graphical Plymouth splashes.
 
-%package -n libply%{soversion}
+%package -n libply%{so_version}
 Summary:        Plymouth core library
 Group:          Development/Libraries/C and C++
-Requires:       libply-boot-client%{soversion} = %{version}
+Requires:       libply-boot-client%{so_version} = %{version}
 
-%description -n libply%{soversion}
+%description -n libply%{so_version}
 This package contains the libply library used by Plymouth.
 
 %package devel
@@ -140,10 +131,10 @@ Requires:       %{name} = %{version}
 %if %{with x11_renderer}
 Requires:       %{name}-x11-renderer = %{version}
 %endif
-Requires:       libply-boot-client%{soversion} = %{version}
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-boot-client%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 Requires:       pkgconfig
 
 %description devel
@@ -171,12 +162,12 @@ behavior on environments with a valid DISPLAY.
 %package scripts
 Summary:        Plymouth related scripts
 Group:          System/Base
-Requires:       coreutils
-Requires:       cpio
+Requires:       awk
 Requires:       dracut
-Requires:       findutils
-Requires:       gzip
+Requires:       grep
+Requires:       sed
 Requires(pre):  %{name} = %{version}
+BuildArch:      noarch
 
 %description scripts
 This package contains scripts that help integrate Plymouth with
@@ -185,7 +176,7 @@ the system.
 %package plugin-label
 Summary:        Plymouth label plugin
 Group:          System/Base
-Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-label
 This package contains the label control plugin for
@@ -196,46 +187,32 @@ graphical boot splashes using pango and cairo.
 Summary:        Plymouth FreeType label plugin
 Group:          System/Base
 Requires:       fontconfig
-Requires:       libply-splash-graphics%{soversion} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-label-ft
 This package contains the label control plugin for
 Plymouth. It provides the ability to render text on
-graphical boot splashes using FreeTyoe
+graphical boot splashes using FreeType
 
 %package plugin-fade-throbber
 Summary:        Plymouth "Fade-Throbber" plugin
 Group:          System/Base
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-fade-throbber
 This package contains the "Fade-In" boot splash plugin for
 Plymouth. It features a centered image that fades in and out
 while other images pulsate around during system boot up.
 
-%package plugin-throbgress
-Summary:        Plymouth "Throbgress" plugin
-Group:          System/Base
-Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
-
-%description plugin-throbgress
-This package contains the "throbgress" boot splash plugin for
-Plymouth. It features a centered logo and animated spinner that
-spins repeatedly while a progress bar advances at the bottom of
-the screen.
-
 %package plugin-space-flares
 Summary:        Plymouth "space-flares" plugin
 Group:          System/Base
 Requires:       %{name}-plugin-label = %{version}
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-space-flares
 This package contains the "space-flares" boot splash plugin for
@@ -244,9 +221,9 @@ Plymouth. It features a corner image with animated flares.
 %package plugin-two-step
 Summary:        Plymouth "two-step" plugin
 Group:          System/Base
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 Requires:       plymouth-plugin-label = %{version}
 
 %description plugin-two-step
@@ -258,9 +235,9 @@ short, fast one-shot animation.
 %package plugin-script
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-script
 This package contains the "script" boot splash plugin for
@@ -271,9 +248,9 @@ boot splash themes.
 %package plugin-tribar
 Summary:        Plymouth "script" plugin
 Group:          System/Base
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-Requires:       libply%{soversion} = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 
 %description plugin-tribar
 This package contains the "tribar" boot splash plugin for
@@ -297,7 +274,7 @@ while stars twinkle around the logo during system boot up.
 %package theme-spinfinity
 Summary:        Plymouth "Spinfinity" theme
 Group:          System/Base
-Requires:       %{name}-plugin-throbgress = %{version}
+Requires:       %{name}-plugin-two-step = %{version}
 Requires(post): %{name}-scripts
 Requires(pre):  %{name}
 BuildArch:      noarch
@@ -354,7 +331,6 @@ plugin.
 
 %package theme-bgrt
 Summary:        Plymouth "bgrt" theme
-# Uses images from spinner theme
 Group:          System/Base
 Requires:       %{name}-plugin-two-step = %{version}
 Requires:       %{name}-theme-spinner = %{version}
@@ -366,10 +342,10 @@ This package contains the "bgrt" boot splash theme for
 Plymouth. 
 
 %prep
-%autosetup -S git
-autoreconf -ivf -Wno-portabilty
-# replace builddate with patch0date
-sed -i "s/__DATE__/\"$(stat -c %%y %{_sourcedir}/%{name}.changes)\"/" src/main.c
+%setup -q
+%autopatch -p1
+autoreconf -ivf
+
 # Change the default theme
 %if 0%{?is_opensuse}
 sed -i -e 's/spinner/bgrt/g' src/plymouthd.defaults
@@ -383,13 +359,7 @@ sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
            --enable-tracing                                      \
            --disable-silent-rules                                \
            --disable-static                                      \
-           --disable-gdm-transition                              \
            --disable-upstart-monitoring                          \
-           --disable-tests                                       \
-           --disable-libkms                                      \
-%if %{without x11_renderer}
-           --disable-gtk                                         \
-%endif
            --with-release-file=%{_sysconfdir}/os-release         \
            --with-boot-tty=/dev/tty7                             \
            --with-shutdown-tty=/dev/tty1                         \
@@ -397,7 +367,10 @@ sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
            --without-rhgb-compat-link                            \
-           --without-system-root-install                         
+           --without-system-root-install                         \
+%if %{without x11_renderer}
+           --disable-gtk
+%endif
 
 make %{?_smp_mflags}
 
@@ -443,27 +416,14 @@ fi
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post -n libply-boot-client%{soversion} -p /sbin/ldconfig
-%postun -n libply-boot-client%{soversion} -p /sbin/ldconfig
-%post -n libply-splash-core%{soversion} -p /sbin/ldconfig
-%postun -n libply-splash-core%{soversion} -p /sbin/ldconfig
-%post -n libply-splash-graphics%{soversion} -p /sbin/ldconfig
-%postun -n libply-splash-graphics%{soversion} -p /sbin/ldconfig
-%post -n libply%{soversion} -p /sbin/ldconfig
-%postun -n libply%{soversion} -p /sbin/ldconfig
-%post theme-spinfinity
-if [ $1 -eq 1 ]; then
-  set -x
-  export LIB=%{_libdir}
-  OTHEME="$(%{_sbindir}/plymouth-set-default-theme)"
-  if [ "$OTHEME" = "text" ]; then
-     if [ ! -e /.buildenv ]; then
-       %{_sbindir}/plymouth-set-default-theme -R spinfinity
-     else
-       %{_sbindir}/plymouth-set-default-theme spinfinity
-     fi
-  fi
-fi
+%post -n libply-boot-client%{so_version} -p /sbin/ldconfig
+%postun -n libply-boot-client%{so_version} -p /sbin/ldconfig
+%post -n libply-splash-core%{so_version} -p /sbin/ldconfig
+%postun -n libply-splash-core%{so_version} -p /sbin/ldconfig
+%post -n libply-splash-graphics%{so_version} -p /sbin/ldconfig
+%postun -n libply-splash-graphics%{so_version} -p /sbin/ldconfig
+%post -n libply%{so_version} -p /sbin/ldconfig
+%postun -n libply%{so_version} -p /sbin/ldconfig
 
 %postun theme-spinfinity
 if [ $1 -eq 0 ]; then
@@ -473,40 +433,12 @@ if [ $1 -eq 0 ]; then
     fi
 fi
 
-%post theme-fade-in
-if [ $1 -eq 1 ]; then
-  set -x
-  export LIB=%{_libdir}
-  OTHEME="$(%{_sbindir}/plymouth-set-default-theme)"
-  if [ "$OTHEME" = "text" ]; then
-     if [ ! -e /.buildenv ]; then
-       %{_sbindir}/plymouth-set-default-theme -R fade-in
-     else
-       %{_sbindir}/plymouth-set-default-theme fade-in
-     fi
-  fi
-fi
-
 %postun theme-fade-in
 if [ $1 -eq 0 ]; then
     export LIB=%{_libdir}
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "fade-in" ]; then
         %{_sbindir}/plymouth-set-default-theme -R --reset
     fi
-fi
-
-%post theme-solar
-if [ $1 -eq 1 ]; then
-  set -x
-  export LIB=%{_libdir}
-  OTHEME="$(%{_sbindir}/plymouth-set-default-theme)"
-  if [ "$OTHEME" = "text" ]; then
-     if [ ! -e /.buildenv ]; then
-       %{_sbindir}/plymouth-set-default-theme -R solar
-     else
-       %{_sbindir}/plymouth-set-default-theme solar
-     fi
-  fi
 fi
 
 %postun theme-solar
@@ -529,8 +461,9 @@ fi
 %dir %{_libdir}/plymouth/renderers
 %dir %{_sysconfdir}/plymouth
 %config(noreplace) %{_sysconfdir}/plymouth/plymouthd.conf
-%{plymouthdaemon_execdir}/plymouthd
-%{plymouthclient_execdir}/plymouth
+%config(noreplace) %{_sysconfdir}/logrotate.d/bootlog
+%{_sbindir}/plymouthd
+%{_bindir}/plymouth
 /bin/plymouth
 %{_libdir}/plymouth/details.so
 %{_libdir}/plymouth/text.so
@@ -554,8 +487,8 @@ fi
 %{_libexecdir}/plymouth/plymouth-generate-initrd
 
 %files devel
-%{plymouth_libdir}/libply.so
-%{plymouth_libdir}/libply-splash-core.so
+%{_libdir}/libply.so
+%{_libdir}/libply-splash-core.so
 %{_libdir}/libply-boot-client.so
 %{_libdir}/libply-splash-graphics.so
 %{_libdir}/pkgconfig/ply-splash-core.pc
@@ -563,17 +496,17 @@ fi
 %{_libdir}/pkgconfig/ply-boot-client.pc
 %{_includedir}/plymouth-1
 
-%files -n libply-boot-client%{soversion}
-%{_libdir}/libply-boot-client.so.%{soversion}*
+%files -n libply-boot-client%{so_version}
+%{_libdir}/libply-boot-client.so.%{so_version}*
 
-%files -n libply-splash-core%{soversion}
-%{plymouth_libdir}/libply-splash-core.so.%{soversion}*
+%files -n libply-splash-core%{so_version}
+%{_libdir}/libply-splash-core.so.%{so_version}*
 
-%files -n libply-splash-graphics%{soversion}
-%{_libdir}/libply-splash-graphics.so.%{soversion}*
+%files -n libply-splash-graphics%{so_version}
+%{_libdir}/libply-splash-graphics.so.%{so_version}*
 
-%files -n libply%{soversion}
-%{plymouth_libdir}/libply.so.%{soversion}*
+%files -n libply%{so_version}
+%{_libdir}/libply.so.%{so_version}*
 
 %files scripts
 %dir %{_libexecdir}/plymouth
@@ -594,41 +527,8 @@ fi
 %files plugin-fade-throbber
 %{_libdir}/plymouth/fade-throbber.so
 
-%files theme-fade-in
-%dir %{_datadir}/plymouth/themes/fade-in
-%{_datadir}/plymouth/themes/fade-in/bullet.png
-%{_datadir}/plymouth/themes/fade-in/entry.png
-%{_datadir}/plymouth/themes/fade-in/lock.png
-%{_datadir}/plymouth/themes/fade-in/star.png
-%{_datadir}/plymouth/themes/fade-in/fade-in.plymouth
-
-%files plugin-throbgress
-%{_libdir}/plymouth/throbgress.so
-
-%files theme-spinfinity
-%dir %{_datadir}/plymouth/themes/spinfinity
-%{_datadir}/plymouth/themes/spinfinity/box.png
-%{_datadir}/plymouth/themes/spinfinity/bullet.png
-%{_datadir}/plymouth/themes/spinfinity/entry.png
-%{_datadir}/plymouth/themes/spinfinity/lock.png
-%{_datadir}/plymouth/themes/spinfinity/throbber-[0-3][0-9].png
-%{_datadir}/plymouth/themes/spinfinity/spinfinity.plymouth
-
 %files plugin-space-flares
 %{_libdir}/plymouth/space-flares.so
-
-%files theme-spinner
-%dir %{_datadir}/plymouth/themes/spinner
-%{_datadir}/plymouth/themes/spinner/*.*
-
-%files theme-solar
-%dir %{_datadir}/plymouth/themes/solar
-%{_datadir}/plymouth/themes/solar/*.png
-%{_datadir}/plymouth/themes/solar/solar.plymouth
-
-%files theme-tribar
-%dir %{_datadir}/plymouth/themes/tribar
-%{_datadir}/plymouth/themes/tribar/*.*
 
 %files plugin-two-step
 %{_libdir}/plymouth/two-step.so
@@ -639,14 +539,32 @@ fi
 %files plugin-script
 %{_libdir}/plymouth/script.so
 
+%files theme-fade-in
+%dir %{_datadir}/plymouth/themes/fade-in
+%{_datadir}/plymouth/themes/fade-in/*
+
+%files theme-spinfinity
+%dir %{_datadir}/plymouth/themes/spinfinity
+%{_datadir}/plymouth/themes/spinfinity/*
+
+%files theme-spinner
+%dir %{_datadir}/plymouth/themes/spinner
+%{_datadir}/plymouth/themes/spinner/*
+
+%files theme-solar
+%dir %{_datadir}/plymouth/themes/solar
+%{_datadir}/plymouth/themes/solar/*
+
+%files theme-tribar
+%dir %{_datadir}/plymouth/themes/tribar
+%{_datadir}/plymouth/themes/tribar/*
+
 %files theme-script
 %dir %{_datadir}/plymouth/themes/script/
-%{_datadir}/plymouth/themes/script/*.png
-%{_datadir}/plymouth/themes/script/script.script
-%{_datadir}/plymouth/themes/script/script.plymouth
+%{_datadir}/plymouth/themes/script/*
 
 %files theme-bgrt
 %dir %{_datadir}/plymouth/themes/bgrt
-%{_datadir}/plymouth/themes/bgrt/*.*
+%{_datadir}/plymouth/themes/bgrt/*
 
 %changelog

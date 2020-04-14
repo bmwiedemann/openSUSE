@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  2 17:09:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.3
+  * FEATURE: Add logging for SOCKS5 proxy errors (Chocobo1)
+  * FEATURE: Add UPnP lease duration advanced option (NotTsunami)
+  * BUGFIX: Allow to translate error messages (Chocobo1)
+  * BUGFIX: Don't round scaling factor (Nick Korotysh)
+  * BUGFIX: Save log file in UTF-8 encoding (Chocobo1)
+  * BUGFIX: Avoid log file excessive flushing (Chocobo1)
+  * BUGFIX: Fix regression when fastresume contains network path
+    (Tester798)
+  * BUGFIX: Prevent multiple instances for the same app config
+    (glassez)
+  * BUGFIX: Fix unexpected torrent resume after app restart with
+    libtorrent 1.1.x (glassez)
+  * WEBUI: Add alt and title tags for WebUI footer (LameLemon)
+
+-------------------------------------------------------------------
 Tue Mar 24 19:09:35 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2.2

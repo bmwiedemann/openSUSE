@@ -2397,4 +2397,24 @@ Bug fixes:
 </comment>
     <requestid>792974</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7a520aaab0268635cc5c25f900b68343</srcmd5>
+    <version>1.21.1</version>
+    <time>1586869864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.21.1:
+Release v1.21.1 is a hotfix release to improve the performance of
+the new React dashboard, which was merged and enabled by default in
+v1.21.0.
+The React dashboard shipped in v1.21.0 did not properly freeze
+charts that were outside of the browser's viewport. If a user who
+loaded many charts by scrolling through the dashboard, charts
+outside of their browser's viewport continued updating. This excess
+of chart updates caused all charts to update more slowly than every
+second.
+v1.21.1 includes improvements to the way the Netdata dashboard
+freezes, maintains state, and restores charts as users scroll.
+</comment>
+    <requestid>793692</requestid>
+  </revision>
 </revisionlist>

@@ -408,4 +408,13 @@
    expression, regardless of the environment’s undefined class. Omitting</comment>
     <requestid>778074</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>9ee978c3d0332b926e4c1f608f819abf</srcmd5>
+    <version>2.11.1</version>
+    <time>1586869698</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable testing on other archs again
+- Do not pull in py2 package on vim syntax</comment>
+    <requestid>792931</requestid>
+  </revision>
 </revisionlist>

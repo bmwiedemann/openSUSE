@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 13 21:32:46 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.21.1:
+Release v1.21.1 is a hotfix release to improve the performance of
+the new React dashboard, which was merged and enabled by default in
+v1.21.0.
+
+The React dashboard shipped in v1.21.0 did not properly freeze
+charts that were outside of the browser's viewport. If a user who
+loaded many charts by scrolling through the dashboard, charts
+outside of their browser's viewport continued updating. This excess
+of chart updates caused all charts to update more slowly than every
+second.
+
+v1.21.1 includes improvements to the way the Netdata dashboard
+freezes, maintains state, and restores charts as users scroll.
+
+-------------------------------------------------------------------
 Mon Apr  6 12:40:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.21.0 (go.d.plugin v0.18.0):

@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-taskmanager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://goodies.xfce.org/projects/applications/xfce4-taskmanager
-Source:         http://archive.xfce.org/src/apps/xfce4-taskmanager/1.2/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/apps/xfce4-taskmanager
+Source:         https://archive.xfce.org/src/apps/xfce4-taskmanager/1.2/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(xmu) >= 1.1.2
 # uses exo-open
 Requires:       exo-tools
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xfce4-taskmanager is a simple taskmanager for the Xfce desktop environment. It
@@ -48,7 +47,7 @@ CPU and memory usage are displayed as a graph.
 %build
 %configure \
 	--enable-gtk3
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -57,14 +56,7 @@ make %{?_smp_mflags} V=1
 
 %find_lang %{name} %{?no_lang_C}
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS
 %license COPYING
 %{_bindir}/xfce4-taskmanager

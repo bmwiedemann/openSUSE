@@ -20,7 +20,7 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -28,7 +28,8 @@ Source0:        https://github.com/frescobaldi/frescobaldi/archive/v%{version}/%
 # New package, was before part of frescobaldi
 # Url: https://pypi.python.org/pypi/python-ly
 # Keep in this package, because frescobaldi is the only one using it.
-Source1:        https://files.pythonhosted.org/packages/01/ca/e86c73614a690d778ec9831adee0a728a495f4fb717fab263b5e4887b086/python-ly-0.9.5.tar.gz
+Source1:        https://files.pythonhosted.org/packages/6f/2a/879b2e46a5e7968eb974831ae67c208ab437e067f92e3031abcab729674f/python-ly-0.9.6.tar.gz
+BuildRequires:  appstream-glib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
@@ -56,16 +57,18 @@ tools to manipulate the rhythm, acticulations, lyrics hyphenation, etc.
 
 %build
 rm -rf %{name}_app/icons/Tango
+rm setup.cfg
 python3 setup.py build
 make -C i18n
+make -C linux
 
 %install
-%suse_update_desktop_file %{name} Multimedia AudioVideoEditing
 # first install python-ly
-cd python-ly-0.9.5
+cd python-ly-0.9.6
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 cd ..
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%suse_update_desktop_file org.frescobaldi.Frescobaldi AudioVideo Music
 
 %files
 %defattr (-,root,root)
@@ -74,8 +77,9 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %doc %{_mandir}/man1/frescobaldi*
 %{_bindir}/frescobaldi
 %{_bindir}/ly*
-%{_datadir}/applications/frescobaldi.desktop
-%{_datadir}/icons/hicolor/scalable/apps/frescobaldi.svg
+%{_datadir}/applications/org.frescobaldi.Frescobaldi.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
+%{_datadir}/metainfo/org.frescobaldi.Frescobaldi.metainfo.xml
 %{python3_sitelib}/*
 
 %changelog

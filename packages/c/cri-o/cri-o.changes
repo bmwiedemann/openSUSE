@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:58:30 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update to version 1.17.3:
+  * Bump version to 1.17.3
+  * Update c/image to v5.3.1
+  * sandbox: Make sure the label annotation is proper JSON
+  * container_server: Wrap a few more errors in LoadSandbox
+  * restore tests: verify some namespace lifecycle cases work
+  * fail on failed pinns
+  * pinns: pin to /var/run/*ns instead of /var/run/crio/ns/*
+  * Add the -d flag when installing runc for circle ci
+  * Add the mounts that are required by systemd
+  * bump to 1.17.2
+
+-------------------------------------------------------------------
 Fri Mar 27 12:25:19 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Use new pause:3.2 image 

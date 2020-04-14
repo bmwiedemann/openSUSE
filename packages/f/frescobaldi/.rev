@@ -144,4 +144,12 @@
   but frescobaldi works without it</comment>
     <requestid>760985</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ce2f7ae2c67d33b656a29748c7d5f928</srcmd5>
+    <version>3.1.2</version>
+    <time>1586869926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793796</requestid>
+  </revision>
 </revisionlist>

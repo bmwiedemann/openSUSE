@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>776241</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>631d1ca977f5e6e14868e88b05097418</srcmd5>
+    <version>1.2.135</version>
+    <time>1586869755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.135</comment>
+    <requestid>792401</requestid>
+  </revision>
 </revisionlist>

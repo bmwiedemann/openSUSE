@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           balsa
-Version:        2.5.8
+Version:        2.6.0
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
@@ -37,13 +37,15 @@ BuildRequires:  python3-html2text
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gmime-2.6)
+BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libical) >= 2.0.0
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)

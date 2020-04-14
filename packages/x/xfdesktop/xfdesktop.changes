@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:53:48 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Add xfce-backdrop.patch for bxo#16314 - Possible memory leak
+  in xfdesktop when connecting and disconnecting DP monitor.
+
+-------------------------------------------------------------------
 Mon Jan 13 06:58:07 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 4.14.2

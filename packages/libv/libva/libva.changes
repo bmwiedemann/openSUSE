@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 10 15:14:22 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.7.0
+  * trace: av1 decode buffers trace
+  * trace: Add HEVC REXT and SCC trace for decoding.
+  * Add av1 decode interfaces
+  * Fix crashes on system without supported hardware by PR #369.
+  * Add 2 FourCC for 10bit RGB(without Alpha) format: X2R10G10B10
+    and X2B10G10R10.
+  * Fix android build issue #365 and remove some trailing
+    whitespace
+  * Adjust call sequence to ensure authenticate operation is
+    executed to fix #355
+
+-------------------------------------------------------------------
 Fri Mar  6 12:08:04 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - cleanup in specfile: get rid of is_opensuse macro, which is no

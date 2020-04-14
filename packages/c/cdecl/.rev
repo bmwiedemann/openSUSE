@@ -114,4 +114,12 @@
     <comment>- Update to release 6.9</comment>
     <requestid>781892</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dd6a320a6f4e7b0d6484e866a9e7074c</srcmd5>
+    <version>6.10</version>
+    <time>1586869854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.10</comment>
+    <requestid>793679</requestid>
+  </revision>
 </revisionlist>

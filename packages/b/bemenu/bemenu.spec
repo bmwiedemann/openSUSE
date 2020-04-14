@@ -79,7 +79,7 @@ pkg-config --cflags wayland-client
 %make_build PREFIX=%{_prefix} libdir=/lib64 clients x11 wayland curses
 
 %install
-%make_install PREFIX=%{_prefix} libdir=/lib64
+%make_install PREFIX=%{_prefix} libdir=/%{_lib}
 
 %post -n libbemenu0 -p /sbin/ldconfig
 %postun -n libbemenu0 -p /sbin/ldconfig

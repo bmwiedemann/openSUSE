@@ -11,5 +11,5 @@ Current feature list:
 
 Please note you will need to install KDE Connect on Android for this app to work:
 https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp</description>
-  <devel project="KDE:Extra" package="kdeconnect-kde"/>
+  <devel project="KDE:Applications" package="kdeconnect-kde"/>
 </package>

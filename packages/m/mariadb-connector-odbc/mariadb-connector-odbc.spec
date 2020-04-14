@@ -17,7 +17,7 @@
 
 
 Name:           mariadb-connector-odbc
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        MariaDB ODBC Connector
 License:        LGPL-2.1-or-later
@@ -36,8 +36,8 @@ Patch8:         nosoname.patch
 BuildRequires:  cmake > 3.5.0
 BuildRequires:  gcc-c++
 # This is actually MariaDB -devel package(s)
-BuildRequires:  libmariadb-devel
-BuildRequires:  libmariadbprivate
+BuildRequires:  libmariadb-devel >= 3.1.7
+BuildRequires:  libmariadbprivate >= 3.1.7
 BuildRequires:  openssl-devel
 BuildRequires:  unixODBC-devel
 Obsoletes:      MyODBC-unixODBC <= 5.1.9

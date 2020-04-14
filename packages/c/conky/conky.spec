@@ -125,7 +125,6 @@ configuration files in vim.
 %package -n nano-plugin-conky
 Summary:        Conky Configuration File Support for nano
 Group:          Productivity/Text/Editors
-Requires:       nano
 Provides:       conky-nano = %{version}
 Obsoletes:      conky-nano < %{version}
 

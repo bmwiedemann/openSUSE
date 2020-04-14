@@ -1,7 +1,7 @@
-diff -Nura plymouth-0.9.4+git20190304.ed9f201/scripts/plymouth-populate-initrd.in plymouth-0.9.4+git20190304.ed9f201_new/scripts/plymouth-populate-initrd.in
---- plymouth-0.9.4+git20190304.ed9f201/scripts/plymouth-populate-initrd.in	2019-03-12 20:11:18.845236943 +0800
-+++ plymouth-0.9.4+git20190304.ed9f201_new/scripts/plymouth-populate-initrd.in	2019-03-12 20:25:34.933746928 +0800
-@@ -433,6 +433,15 @@
+diff -Nura plymouth-0.9.5+git20191101+d18086e/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20191101+d18086e_new/scripts/plymouth-populate-initrd.in
+--- plymouth-0.9.5+git20191101+d18086e/scripts/plymouth-populate-initrd.in	2019-11-06 10:19:50.000000000 +0800
++++ plymouth-0.9.5+git20191101+d18086e_new/scripts/plymouth-populate-initrd.in	2019-12-14 18:28:06.448000000 +0800
+@@ -461,6 +461,15 @@
       inst_recur "${PLYMOUTH_IMAGE_DIR}"
  fi
  
@@ -14,6 +14,6 @@ diff -Nura plymouth-0.9.4+git20190304.ed9f201/scripts/plymouth-populate-initrd.i
 +     ln -s "$font" $INITRDDIR/usr/share/fonts/Plymouth.ttf
 +fi
 +
- if [ -L ${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then
-     cp -a ${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth $INITRDDIR${PLYMOUTH_DATADIR}/plymouth/themes
+ if [ -L ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then
+     cp -a ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth $INITRDDIR${PLYMOUTH_DATADIR}/plymouth/themes
  fi

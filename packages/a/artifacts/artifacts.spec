@@ -1,7 +1,7 @@
 #
 # spec file for package artifacts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define timestamp 20190320
+%define timestamp 20200118
 Name:           artifacts
 Version:        %{timestamp}
 Release:        0
@@ -28,6 +28,9 @@ Source0:        https://github.com/ForensicArtifacts/artifacts/releases/download
 Source1:        https://github.com/ForensicArtifacts/artifacts/releases/download/%{timestamp}/artifacts-%{timestamp}.tar.gz.asc
 # Key 0xD9625E5D7AD0177E by Joachim Metz https://github.com/joachimmetz
 Source2:        %{name}.keyring
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 BuildArch:      noarch
 
 %description
@@ -46,7 +49,6 @@ from the GRR team.
 %package validator
 Summary:        Digital Forensics Artifact Repository Validator
 Group:          Productivity/Security
-BuildRequires:  python-setuptools
 Requires:       artifacts
 
 %description validator
@@ -59,10 +61,11 @@ themselves and not use these Python modules.
 %setup -q -n artifacts-%{timestamp}
 
 %build
-python setup.py build
+%python3_build
 
 %install
-python setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
 # these are installed to the wrong dir by %{name}
 rm %{buildroot}/usr/share/doc/%{name}/ACKNOWLEDGEMENTS
 rm %{buildroot}/usr/share/doc/%{name}/AUTHORS
@@ -76,8 +79,7 @@ rm %{buildroot}/usr/share/doc/%{name}/README
 
 %files validator
 %license LICENSE
-%{python_sitelib}/artifacts-%{timestamp}-py2.7.egg-info
-%{python_sitelib}/artifacts
+%{python3_sitelib}/artifacts*
 %{_bindir}/validator.py
 %{_bindir}/stats.py
 

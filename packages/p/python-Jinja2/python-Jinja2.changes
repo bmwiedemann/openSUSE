@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:59:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable testing on other archs again
+- Do not pull in py2 package on vim syntax
+
+-------------------------------------------------------------------
 Fri Feb 21 18:56:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - disable tests on 32bit archs

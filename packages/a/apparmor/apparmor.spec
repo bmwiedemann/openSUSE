@@ -80,6 +80,9 @@ Patch13:        make-4.3-capabilities.diff
 # fix build with make 4.3 -  fix apparmor.vim capability rules (submitted upstream 2020-03-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/463, not in 2.13.x, boo#1167953)
 Patch14:        make-4.3-capabilities-vim.diff
 
+#Bug 1168306 - apparmor prevents the resolver from reading /etc/mdns.allow, and therefore forbids using any custom domain name
+Patch15:        abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -373,6 +376,7 @@ SubDomain.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 %build
 %define _lto_cflags %{nil}

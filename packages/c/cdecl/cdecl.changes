@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 13 17:38:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.10
+  * The "long long" type was incorrectly allowed in C89; it
+    was not added until C99.
+  * Added pthread.h, threads.h, and C++ thread types.
+
+-------------------------------------------------------------------
 Wed Feb 26 19:16:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.9

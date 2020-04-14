@@ -1866,4 +1866,12 @@ The correct message about the refreshed patch is:
 - refresh usr-etc-abstractions-base-nameservice.diff (forwarded request 789397 from cboltz)</comment>
     <requestid>789398</requestid>
   </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>24ed0b05080a13abeef12c30ef0916a6</srcmd5>
+    <version>2.13.4</version>
+    <time>1586869736</time>
+    <user>dimstar_suse</user>
+    <comment>bsc1168306 - Add /etc/mdns.allow (forwarded request 792967 from goldwynr)</comment>
+    <requestid>792970</requestid>
+  </revision>
 </revisionlist>

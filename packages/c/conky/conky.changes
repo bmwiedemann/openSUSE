@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:17:05 UTC 2020 - Simon Lees <sflees@suse.com>
+
+- Don't require nano with the nano completions, conky shouldn't 
+  pull in nano just for completions.
+
+-------------------------------------------------------------------
 Fri Apr  3 09:24:53 UTC 2020 - Simon Lees <simonf.lees@suse.com>
 
 - Fix negative ram reporting #877 #878 #909 fix-negative-memory.patch

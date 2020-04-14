@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Apr 12 20:45:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * single window floating (every client has an attribute 'floating' which can
+    be set at run time and via the rule consequence 'floating=on')
+  * monitor detection via xrandr
+  * detection of external panels
+  * new command: apply_rules
+  * new command: export (convenience wrapper around setenv)
+  * new client attribute: keys_inactive (negation of keymask)
+  * new command: drag (initiates moving/resizing a window by mouse)
+  * if tags have been configured through EWMH before herbstluftwm starts (from
+    a previous running window manager), then herbstluftwm re-uses these tags
+    (start with --no-tag-import to disable this)
+  * The build system is now cmake. See the INSTALL file if you need to
+    compile herbstluftwm yourself.
+  * the 'remove' command now tries to preserve the focus and the client
+    arrangement. Intuitively speaking, 'remove' is undoing a frame split.
+  * Many boolean style settings were formerly of type int. Now, these are
+    boolean settings.
+  * The 'toggle' command only works for boolean settings. For the former
+    behavior for int-typed settings, use 'cycle_value'.
+  * Writing '%%' in the 'sprintf' format string now gives a literate '%', just
+    as printf. Formerly it stayed '%%'.
+  * The 'keybind' command now accepts all valid key symbols, even if they are
+    not present on the current keyboard layout at the time of setup.
+  * the rules are also applied to those clients that change their WM_CLASS
+    after being shown already.
+  * 'detect_monitors' has an additional '--list-all' parameter
+  * do not change the focus (for focus_follows_mouse=1) when an unmanaged
+    dialog (e.g. a rofi menu or a notification) closes.
+  * list_rules now prints regex-based rule conditions with '~' instead of '='
+  * new attributes on every monitor for pad_up pad_down pad_left pad_right
+  * new flag --exit-on-xerror (to be used in automated testing only)
+  * Formerly, double dots in object paths were allowed (similar to double
+    slashes in file paths in unix). Right now, they are only allowed at the end
+    (which is necessary for the tab-completion of attr):
+    - +monitors+ is valid
+    - +monitors.+ is valid
+    - +monitors..+ is valid
+    - +monitors.by-name.+ is valid
+    - +monitors..by-name.+ is *invalid*
+- Remove examples-remove-executable-bits.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed May 29 07:19:37 UTC 2019 - mvetter@suse.com
 
 - Update to 0.7.2:

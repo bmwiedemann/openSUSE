@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 20:17:07 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 1.10.18
+- Remove pear-cacheid-array-check.patch (upstreamed)
+- Contents of .filemap are now sorted internally
+
+-------------------------------------------------------------------
 Fri Feb 28 08:33:14 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Sort contents of .filemap to make build reproducible

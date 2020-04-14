@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-rtsp-server
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,16 @@ Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://gstreamer.freedesktop.org/
-Source0:        https://gstreamer.freedesktop.org/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org
+Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
+
+# PATCH-FIX-UPSTREAM gst-rtsp-fix-token-leak.patch
+Patch0:         gst-rtsp-fix-token-leak.patch
+# PATCH-FIX-UPSTREAM gst-rtsp-Fix-NULL-pointer.patch
+Patch1:         gst-rtsp-Fix-NULL-pointer.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         gst-rtsp-replace-G_TYPE_INSTANCE_GET_PRIVATE.patch
 
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig

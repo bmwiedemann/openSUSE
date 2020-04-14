@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:30:21 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Add appstream-glib-devel to BuildRequires to make it build on
+  Leap 15.1 and 15.2
+- Update the %suse_update_desktop_file line to follow the categories
+  more of the package itself more closely.
+
+-------------------------------------------------------------------
+Mon Apr 13 13:54:32 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update frescobaldi to 3.1.2:
+  * Bug fixes:
+    - fixed #1255, AttributeError: 'NoneType' object has no 
+      attribute 'cursor'
+    - fixed "Two Pages (first page right)" for both modes, other
+      should be "left"
+    - fixed pinch gesture zoom in music view on Mac
+    - fixed #30, Printing score under Mac OS X
+    - fixed #860, OSX: Frescobaldi overrides critical cursor
+      navigation keyboard shortcuts; new shortcuts:
+      - next document: ctrl+tab
+      - previous document: ctrl+shift+tab
+      - start of line: cmd+left
+      - end of line: cmd+right
+    - fixed #1087, File names in document tabs are not shown
+      correctly on Mac
+    - fixed #1272, Global menu with no windows on Mac is not
+      working
+    - fixed #1232, Error using convert-ly in Frescobaldi 3.1 Mac
+      app
+  * Improvements:
+    - add DE hyphen patterns and copyright info (#1275)
+  * Translations:
+    - Userguide now has its own PO files in i18n/userguide, and the
+      Frescobaldi application itself has the PO files in
+      i18n/frescobaldi, see README-translations.
+    - updated nl translation by Wilbert Berendsen
+    - updated Italian translation by Davide Liessi
+- Update python-ly to 0.9.6:
+  * Various improvements to the experimental MusicXML output
+    - Fixed #32 Correctly export measures without the help of 
+      explicit barchecks
+    - Fixed #102 MusicXML: \mark is not exported
+    - Fixed #107 MusicXML: scale_rest bug
+    - Fixed #110 MusicXML: stem direction is not supported
+    - Fixed #114 Empty measures created with no attributes
+    - Many improvements by Felippe Roza, Peter Bjuhr, Urs Liska, 
+      Endre Oma and others, thanks!
+  - Fixed Frescobaldi#1213 eps-file -> epsfile
+  - improved indentation of Scheme code, thanks to Paul Morris 
+    (#132)
+
+-------------------------------------------------------------------
 Sun Jan  5 15:37:25 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.1.1:

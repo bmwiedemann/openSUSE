@@ -18,8 +18,9 @@
 
 %ifarch %{ix86} armv7l
 %bcond_with test
+%else
+%bcond_without test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Jinja2
@@ -37,7 +38,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 0.8
 Requires:       python-MarkupSafe >= 0.23
-BuildArch:      noarch
+# Do not declare buildarch as the tests are arch specific
+#BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-jinja2 = %{version}
 Obsoletes:      %{oldpython}-jinja2 < %{version}
@@ -51,7 +53,6 @@ sandboxed environment.
 
 %package -n python-Jinja2-vim
 Summary:        Jinja2 syntax files for Vim
-Requires:       %{name} = %{version}
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     vim
 %endif
@@ -72,8 +73,8 @@ dos2unix LICENSE.rst # Fix wrong EOL encoding
 install -Dm644 ext/Vim/jinja.vim %{buildroot}%{_datadir}/vim/site/syntax/jinja.vim # Install VIM syntax file
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
+%if %{with test}
 %pytest
 %endif
 

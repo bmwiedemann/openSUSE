@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:37:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.135
+  * New extensions: VK_QCOM_render_pass_transform,
+    VK_KHR_deferred_host_operations, VK_KHR_pipeline_library,
+    VK_KHR_ray_tracing, VK_EXT_pipeline_creation_cache_control,
+    VK_NV_device_diagnostics_config,
+    VK_NV_device_generated_commands.
+
+-------------------------------------------------------------------
 Tue Feb 18 16:05:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to release 1.2.133:

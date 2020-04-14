@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:20:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 8.5.0
+- Modified patches:
+  * 0001-Disable-ivy-settings.patch
+  * 0002-Dependency-generation.patch
+  * lucene-java8compat.patch
+  * lucene-osgi-manifests.patch
+    + rediff to changed context
+- Added patch:
+  * lucene-missing-dependencies.patch
+    + patch out dependencies that are not needed for modules
+      that we distribute
+    + patch out dependencies on jars that we don't build
+    + add target for the new monitor jars
+
+-------------------------------------------------------------------
 Mon Mar 23 11:35:30 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

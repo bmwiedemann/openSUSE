@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  8 22:42:26 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- updated to 0~20191221
+        * changes for libcdata
+- rename python-msiecf to python2-msiecf
+- add python3-msiecf submodule
+
+-------------------------------------------------------------------
 Wed Mar 27 23:46:33 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - updated to 0~20181227

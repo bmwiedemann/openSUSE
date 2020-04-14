@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-gabble
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           telepathy-gabble
-Version:        0.18.3
+Version:        0.18.4
 Release:        0
 Summary:        XMPP connection manager for Telepathy
 License:        LGPL-2.1-or-later
-Group:          Productivity/Networking/Instant Messenger
-URL:            http://telepathy.freedesktop.org/wiki/
+URL:            https://telepathy.freedesktop.org/wiki/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-gabble/%{name}-%{version}.tar.gz
-BuildRequires:  libgnutls-devel
-BuildRequires:  libnice-devel >= 0.0.11
-BuildRequires:  libsoup-devel
-BuildRequires:  libxslt-devel
+Patch0:         telepathy-gabble-0.18.4-python3.patch
+Patch1:         0001-xmpp-console-Explicitly-state-python-in-the-shebang.patch
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
-BuildRequires:  sqlite3-devel
-BuildRequires:  telepathy-glib-devel >= 0.19.7
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libexslt)
+BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(nice) >= 0.0.11
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(telepathy-glib) >= 0.19.7
 Recommends:     ca-certificates
 # doc subpackage removed during 12.2 development
 Provides:       %{name}-doc = %{version}
@@ -47,27 +49,30 @@ messaging clients with Jabber/XMPP servers, including Google Talk.
 
 %package xmpp-console
 Summary:        XMPP connection manager for Telepathy -- XMPP Console
-Group:          Productivity/Networking/Instant Messenger
 Requires:       %{name} = %{version}
-Requires:       python-gobject
+Requires:       python3-gobject
 
 %description xmpp-console
 This utility is a XMPP console user interface, for telepathy-gabble.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
         --disable-static \
         --docdir=%{_docdir}/%{name} \
         --with-ca-certificates=%{_sysconfdir}/ssl/ca-bundle.pem
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 cp AUTHORS ChangeLog %{buildroot}%{_docdir}/%{name}
+
+%check
+# the test code is py2 only :(
+#%%make_build check
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

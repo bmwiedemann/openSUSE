@@ -56,4 +56,12 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
     <comment></comment>
     <requestid>710286</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47d930469cf0648586e53b5b3eee66a5</srcmd5>
+    <version>0.8.0</version>
+    <time>1586869903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793813</requestid>
+  </revision>
 </revisionlist>

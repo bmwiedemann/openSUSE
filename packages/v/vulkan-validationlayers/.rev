@@ -119,4 +119,12 @@
     <comment>- Update to 1.2.133</comment>
     <requestid>777629</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>117432a6a86a59720d5be69a31043ddf</srcmd5>
+    <version>1.2.135</version>
+    <time>1586869761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.135</comment>
+    <requestid>792446</requestid>
+  </revision>
 </revisionlist>

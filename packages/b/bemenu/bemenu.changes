@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use %{_lib} macro
+
+-------------------------------------------------------------------
 Mon Apr 13 09:48:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.1:

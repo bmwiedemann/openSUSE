@@ -1,7 +1,7 @@
 #
 # spec file for package winetricks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           winetricks
-Version:        20191224
+Version:        20200412
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
-Url:            https://github.com/Winetricks/winetricks
+URL:            https://github.com/Winetricks/winetricks
 Source0:        https://github.com/Winetricks/%{name}/archive/%{version}.tar.gz##/%{name}-%{version}.tar.gz
 BuildRequires:  update-desktop-files
 Requires:       wine

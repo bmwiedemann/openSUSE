@@ -1,7 +1,7 @@
 #
 # spec file for package courier-authlib
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 9.1
 BuildRequires:  pkgconfig(systemd)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  procps

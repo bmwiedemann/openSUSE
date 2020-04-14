@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:20:14 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- Make core/js/mimetypelist.js writable
+  * Fixes "occ maintenance:mimetype:update-js" command
+  * Allows apps to register new mimetypes
+- Make core/img/filetypes/ writable
+  * Allows apps to register new file icons
+- Use standard a2enmod command to manipulate Apache module list
+
+-------------------------------------------------------------------
+Sun Mar 29 20:54:25 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- Enable Apache PHP module on first install only, not on updates
+- Make crontab and timer consistent: 5 minutes between jobs
+
+-------------------------------------------------------------------
 Tue Mar 24 19:20:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 18.0.3

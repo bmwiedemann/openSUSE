@@ -1,7 +1,7 @@
 #
 # spec file for package herbstluftwm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           herbstluftwm
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
 Group:          System/GUI/Other
-Url:            https://herbstluftwm.org
+URL:            https://herbstluftwm.org
 Source0:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz
 Source1:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.desktop
-# PATCH-FIX-SUSE Remove executable bits from the documentation
-Patch0:         examples-remove-executable-bits.patch
 BuildRequires:  asciidoc
+BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  glib2-devel
+BuildRequires:  libXrandr-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-utils
 BuildRequires:  pkgconfig
@@ -46,7 +46,7 @@ Summary:        Bash completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -56,7 +56,7 @@ Bash completion for herbstclient
 Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -66,7 +66,7 @@ Fish completion for herbstclient
 Summary:        Zsh completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -85,19 +85,17 @@ an idea of what is possible.
 
 %prep
 %setup -q
-%patch0 -p1
 # fix errors about improper shebangs due to /usr/bin/env
 find . -type f -exec sed -i "s/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/" {} +
 
 %build
 export CPPFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
-make VERBOSE= COLOR=0 %{?_smp_mflags}
+%cmake
+%make_build
 
 %install
-%make_install \
-	INSTALL="install -p" \
-	PREFIX="%{_prefix}"
+%cmake_install
 
 install -D -m0644  %{SOURCE2} %{buildroot}%{_datadir}/xsessions/%{name}.desktop
 
@@ -106,7 +104,8 @@ install -D -m0644  %{SOURCE2} %{buildroot}%{_datadir}/xsessions/%{name}.desktop
 rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 
 %files
-%doc BUGS LICENSE NEWS
+%license LICENSE
+%doc BUGS NEWS
 %dir %{_datadir}/doc/%{name}/
 %{_datadir}/doc/%{name}/herbstclient.html
 %{_datadir}/doc/%{name}/%{name}-tutorial.html
@@ -115,12 +114,12 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 %{_sysconfdir}/xdg/%{name}/autostart
 %{_sysconfdir}/xdg/%{name}/panel.sh
 %{_sysconfdir}/xdg/%{name}/restartpanels.sh
+%{_sysconfdir}/xdg/%{name}/dmenu_run_hlwm
 %{_bindir}/herbstclient
 %{_bindir}/%{name}
-%{_bindir}/dmenu_run_hlwm
-%{_mandir}/man1/herbstclient.1%{ext_man}
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man7/%{name}-tutorial.7%{ext_man}
+%{_mandir}/man1/herbstclient.1%{?ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man7/%{name}-tutorial.7%{?ext_man}
 %{_datadir}/xsessions/%{name}.desktop
 
 %files examples
@@ -146,10 +145,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 %{_datadir}/doc/%{name}/examples/wselect.sh
 
 %files zsh-completion
-%dir %{_datadir}/zsh/functions
-%dir %{_datadir}/zsh/functions/Completion
-%dir %{_datadir}/zsh/functions/Completion/X
-%{_datadir}/zsh/functions/Completion/X/_herbstclient
+%{_datadir}/zsh/site-functions/_herbstclient
 
 %files bash-completion
 %config %{_sysconfdir}/bash_completion.d/herbstclient-completion

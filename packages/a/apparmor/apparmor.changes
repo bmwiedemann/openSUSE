@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 18:56:09 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Add abstractions-add-etc-mdns.allow-to-etc-apparmor.d-abstractions-mdns.patch
+  (bsc#1168306)
+
+-------------------------------------------------------------------
 Sat Mar 28 21:46:48 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - fix build with make 4.3 by backporting some commits from upstream

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:22:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to version 0.18.4:
+  + Fixes:
+    - Update wocky
+      . Use SoupSession instead of SoupSessionAsync to fix function
+        deprecation errors.
+      . Replaced deprecated usage of gnutls_certificate_credentials
+        with gnutls_certificate_credentials_t.
+      . Updated CRL of the ssl-related unit tests to fix errors
+        when running the tests with the openssl backend, due to the
+        CRL being expired.
+      . Renamed a unit test to avoid duplicate test names, which is
+        an error in recent GLib versions.
+      . Removed WockyHttpProxy in favour of GIO http proxy, fixing
+        a failing unit test.
+      . Bumped GLib dependency to 2.44 for using the GIO http
+        proxy.
+      . Fixed a race condition in the wocky-connector-test.
+    - Replaced deprecated _BSD_SOURCE with _DEFAULT_SOURCE to fix
+      compilation with recent glibc.
+    - Make XEP-0030 disco#info query advertise the disco#info
+      feature.
+- Replace libgnutls-devel, libnice-devel, libsoup-devel,
+  libxslt-devel, sqlite3-devel and telepathy-glib-devel with
+  pkgconfig(gnutls), pkgconfig(libexslt), pkgconfig(libsoup-2.4),
+  pkgconfig(libxslt), pkgconfig(nice), pkgconfig(sqlite3) and
+  pkgconfig(telepathy-glib) BuildRequires: Pkgconfigify
+  BuildRequires.
+- Drop python-xml BuildRequires and python-gobject Requires, port
+  to python3 and add pkgconfig(python3) BuildRequires and
+  python3-gobject Requires.
+- Add patches to fix build with python3:
+  + telepathy-gabble-0.18.4-python3.patch
+  + 0001-xmpp-console-Explicitly-state-python-in-the-shebang.patch
+- Add disabled check phase, test code not yet ported to python3.
+- Modernize spec, use modern macros.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:40:05 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

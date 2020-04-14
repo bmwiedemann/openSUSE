@@ -1,7 +1,7 @@
 #
 # spec file for package xfwm4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with git
 Name:           xfwm4
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        Default Window Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -26,9 +27,9 @@ URL:            https://docs.xfce.org/xfce/xfwm4/start
 Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.14/%{name}-%{version}.tar.bz2
 Source1:        xfwm4.xml
 BuildRequires:  fdupes
-BuildRequires:  intltool
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
@@ -40,13 +41,13 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0)
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(xpresent)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xpresent)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 Recommends:     %{name}-lang = %{version}
@@ -134,7 +135,6 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %dir %{_libdir}/xfce4/xfwm4
 
 %files lang -f %{name}.lang
-
 
 %files branding-upstream
 %dir %{_sysconfdir}/xdg/xfce4

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:44:01 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 20200412
+  - shellcheck fixes to script
+  - aria2c fixes
+  - speechsdk fixes
+  - bugfixes
+
+-------------------------------------------------------------------
 Wed Dec 25 10:47:40 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 20191224

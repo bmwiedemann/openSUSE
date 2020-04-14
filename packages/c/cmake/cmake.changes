@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 10:00:03 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.17.1:
+  * The :cpack_gen:`CPack NSIS Generator` now requires NSIS 3.0 or later
+
+-------------------------------------------------------------------
 Thu Mar 26 11:20:42 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Fix mistake in previous change.

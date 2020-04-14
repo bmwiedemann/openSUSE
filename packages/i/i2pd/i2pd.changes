@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 13 04:00:18 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.31.0:
+  * NTCP2 through HTTP proxy
+  * Publish LeaseSet2 for I2CP destinations
+  * Show status page on main activity for android
+  * Handle ECIESFlag in DatabaseLookup at floodfill
+  * C++17 features for eligible compilers
+  * Droped Websockets and Lua support
+  * Send DeliveryStatusMsg for LeaseSet for
+    ECIES-X25519-AEAD-Ratchet
+  * Keep sending new session reply until established for
+  * Updated SSU log messages
+  * Reopen SSU socket on exception
+  * Security hardening headers in web console
+  * Various web console changes
+  * Various QT changes
+  * NTCP2 socket descriptors leak
+  * Race condition with router's identity in transport sessions
+  * Not terminated streams remain forever
+
+-------------------------------------------------------------------
 Tue Mar 10 17:50:16 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.30.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:59:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.0
+  * Added support for new Glslang profile enum, EProfileCount.
+  * Add documentation for Vulkan 1.2 and SPIR-V 1.5.
+  * Added support for generating WebGPU SPIR-V to libshaderc.
+
+-------------------------------------------------------------------
 Mon Feb 17 12:45:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2019.1

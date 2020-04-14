@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 12 08:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.0:
+  * Switch from the deprecated publicsuffix package to publicsuffix2
+
+-------------------------------------------------------------------
 Thu Jan 23 14:58:46 UTC 2020 - pgajdos@suse.com
 
 - do not require python-cffi for 15, it will be required by

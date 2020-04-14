@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>696103</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe6d467030588c847cfc93405b0115f5</srcmd5>
+    <version>20200118</version>
+    <time>1586869769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v20200118
+	* 10 months worth of artifact additions
+- Switch to build and distribution under python3 as py2 is obsolete
+</comment>
+    <requestid>792578</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 13 08:26:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3.1
+  * New release with bug fixes and almost 2 years of work.
+
+- Switch build to meson
+
+- Drop Group tag
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Sep  7 07:05:45 UTC 2016 - simonf.lees@suse.com
 
 - Rage 0.2.1: Fix regressions in last release (no changelog upstream)

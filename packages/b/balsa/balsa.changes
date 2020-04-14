@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr 12 14:46:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.0:
+  + This release switches to gmime3 library for MIME processing.
+- Replace pkgconfig(gmime-2.6) with pkgconfig(gmime-3.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Sun Apr 12 14:23:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.10:
+  + Set message threading correctly on new mailboxes.
+  + Display S/MIME and TLS certificate chains.
+  + Improve handling of multipart/related message parts.
+  + Display text/calendar parts using ical library.
+  + Multiple bug fixes and code cleanups; remove obsolete command
+    line options.
+- Changes from version 2.5.9:
+  + Fix HTML message layout issues.
+- Add pkgconfig(libical) and pkgconfig(libsecret-1) BuildRequires:
+  New dependencies.
+
+-------------------------------------------------------------------
 Wed Oct 16 05:14:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.5.8:
@@ -123,7 +146,7 @@ Mon Jun  1 09:34:05 UTC 2015 - dimstar@opensuse.org
   + balsa.appdata.xml: new appdata file.
   + Fix S/MIME sending and Outlook2007 reception (bgo#720423).
 - Drop balsa-support-webkit2gtk-4.0.patch: fixed upstream.
-- Drop libtool BuilfRequires and call to autoreconf, as we no
+- Drop libtool BuildRequires and call to autoreconf, as we no
   longer carry any patches.
 
 -------------------------------------------------------------------

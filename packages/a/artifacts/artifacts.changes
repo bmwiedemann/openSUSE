@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  8 23:28:23 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v20200118
+	* 10 months worth of artifact additions
+
+-------------------------------------------------------------------
+Tue Jan  7 12:16:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to build and distribution under python3 as py2 is obsolete
+
+-------------------------------------------------------------------
 Wed Mar 27 22:56:33 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v20190320

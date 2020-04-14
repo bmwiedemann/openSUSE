@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.133
+Version:        1.2.135
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -28,12 +28,12 @@ Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/
 Source9:        %name-rpmlintrc
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  glslang-devel >= 8.13.3559+git20
+BuildRequires:  glslang-devel >= 8.13.3727
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2020.1~git24
-BuildRequires:  pkgconfig(vulkan) >= 1.1.112
+BuildRequires:  spirv-tools-devel >= 2020.2
+BuildRequires:  pkgconfig(vulkan) >= 1.2.130
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1

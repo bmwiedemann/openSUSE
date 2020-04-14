@@ -74,7 +74,7 @@ Sun Jan 20 08:48:24 UTC 2019 - obs@botter.cc - 4.4.3
 * Fixed --with-cgibindir and --with-webdir to actually set values given
   (#585) (lawsontyler)
 * Fixed soft recovery states for services (#575) (Jake Omann)
-* Fixed XSS vulnerability in Alert Summary report (CVE-2018-18245)
+* Fixed XSS vulnerability in Alert Summary report (CVE-2018-18245, boo#1119832)
   (Jake Omann)
 * Fixed services in soft states sometimes not switching into hard states
   (#576) (Jake Omann)
@@ -121,7 +121,7 @@ Mon Oct 15 07:55:03 UTC 2018 - lars@linux-schulserver.de - 4.4.2
 * Fixed flapping comments duplication on nagios reload (#554) 
   (Christian Jung)
 * Fix for CVE-2018-13441, CVE-2018-13458, CVE-2018-13457 null 
-  pointer dereference (Trevor McDonald)
+  pointer dereference (Trevor McDonald) (boo#1101293, boo#1101289, boo#1101290)
 * Fixed syntax error in file: default-init.in (#558) (Christian Zettel)
 * Reset current notification number and state flags when the host recovers, 
   reset all service variables when they recover fixes (#557) (Scott Wilkerson)

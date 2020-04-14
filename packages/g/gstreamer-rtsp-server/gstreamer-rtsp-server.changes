@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:40:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix boo#1168026, CVE-2020-6095 and TALOS-2020-1018:
+  + Add gst-rtsp-Fix-NULL-pointer.patch: rtsp-auth: Fix NULL
+    pointer dereference when handling an invalid basic
+    Authorization header.
+- Add upstream bug fix patches:
+  + Add gst-rtsp-fix-token-leak.patch: rtsp-auth: Fix default token
+    leak.
+  + Add gst-rtsp-replace-G_TYPE_INSTANCE_GET_PRIVATE.patch:
+    rtsp-latency-bin: replace G_TYPE_INSTANCE_GET_PRIVATE as it's
+    been deprecated.
+
+
+-------------------------------------------------------------------
 Wed Dec  4 13:21:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.2:

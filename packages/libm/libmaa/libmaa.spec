@@ -1,7 +1,7 @@
 #
 # spec file for package libmaa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,17 @@
 
 
 %define soname 4
-
 Name:           libmaa
-Version:        1.4.4
+Version:        1.4.7
 Release:        0
 Summary:        Library providing many low-level data structures
 License:        MIT
-Group:          Development/Libraries/C and C++
-Url:            http://www.dict.org
+URL:            http://www.dict.org
 Source0:        https://downloads.sourceforge.net/dict/%{name}-%{version}.tar.gz
 BuildRequires:  mk-configure
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(zlib)
 
-%description 
+%description
 The libmaa library provides many low-level data structures which can
 be used for writing compilers, hash tables, sets, lists,
 debugging support, and memory management. libmaa was originally
@@ -63,7 +60,7 @@ BuildArch:      noarch
 This RPM contains the documentation files for libmaa.
 
 %prep
-%setup -q
+%autosetup
 
 %define env \
         unset MAKEFLAGS \
@@ -71,6 +68,9 @@ This RPM contains the documentation files for libmaa.
         export NOSUBDIR=doc
 
 %build
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+mkc_compiler_settings
+%endif
 %{env}
 %{mkcmake}
 
@@ -79,7 +79,6 @@ This RPM contains the documentation files for libmaa.
 %{mkcmake} install DESTDIR=%{?buildroot}
 
 %post -n %{name}%{soname} -p /sbin/ldconfig
-
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname}

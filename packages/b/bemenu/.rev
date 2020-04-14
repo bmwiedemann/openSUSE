@@ -97,4 +97,12 @@
 - Add bemenu-pkgconfig.patch: https://github.com/Cloudef/bemenu/issues/106</comment>
     <requestid>793564</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6a7152275cf89d9c676d4fb7181a68a1</srcmd5>
+    <version>0.4.1</version>
+    <time>1586869902</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_lib} macro</comment>
+    <requestid>793812</requestid>
+  </revision>
 </revisionlist>

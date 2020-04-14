@@ -1,7 +1,7 @@
 #
 # spec file for package libmsiecf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 Name:           libmsiecf
 %define lname	libmsiecf1
-%define timestamp	20181227
+%define timestamp	20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to parse MS Internet Explorer Cache Files
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libmsiecf/wiki
+URL:            https://github.com/libyal/libmsiecf/wiki
 Source:         https://github.com/libyal/libmsiecf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        MSIE_Cache_File_index.dat_format.pdf
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio) >= 20120426
 BuildRequires:  pkgconfig(libcdata) >= 20190112
 BuildRequires:  pkgconfig(libcfile) >= 20120526
@@ -78,15 +77,26 @@ libmsiecf is a library to parse MS Internet Explorer Cache Files.
 This subpackage contains libraries and header files for developing
 applications that want to make use of %name.
 
-%package -n python-%name
+%package -n python2-%{name}
 Summary:        Python bindings for libmsiecf
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       %lname = %version
-Requires:       python
-Provides:       pymsiecf = %version
+BuildRequires:  pkgconfig(python2)
+Obsoletes:      pymsiecf <= 20191221
+Obsoletes:      python-%{name} <= 20191221
 
-%description -n python-%name
+%description -n python2-%name
+Python bindings for libmsiecf, which can read MS IE cache files.
+
+%package -n python3-%{name}
+Summary:        Python bindings for libmsiecf
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/Python
+Requires:       %lname = %version
+BuildRequires:  pkgconfig(python3)
+
+%description -n python3-%name
 Python bindings for libmsiecf, which can read MS IE cache files.
 
 %prep
@@ -94,7 +104,7 @@ Python bindings for libmsiecf, which can read MS IE cache files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -124,10 +134,16 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libmsiecf.pc
 %_mandir/man3/libmsiecf.3*
 
-%files -n python-%name
+%files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING 
-%python_sitearch/pymsiecf.so
+%python2_sitearch/pymsiecf.so
+
+%files -n python3-%name
+%defattr(-,root,root)
+%doc AUTHORS README
+%license COPYING 
+%python3_sitearch/pymsiecf.so
 
 %changelog

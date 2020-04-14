@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:34:23 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix build failures with LLVM 10
+
+  Added:
+  * 0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
+
+  Rebased:
+  * 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+
+-------------------------------------------------------------------
+Mon Jan 20 09:27:29 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Enable building on Leap 15.2
+
+-------------------------------------------------------------------
 Tue Nov  5 20:24:48 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - Switch from custom patch to upstream fix:
