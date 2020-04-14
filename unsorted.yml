@@ -1563,6 +1563,7 @@ unsorted:
   - cerbere 
   - cereal-devel 
   - certbot-systemd-timer 
+  - certmonger 
   - certstrap: [i586] 
   - cf-cli 
   - cf-cli-test 
@@ -2113,7 +2114,6 @@ unsorted:
   - cross-spu-binutils 
   - cross-x86_64-binutils: [i586] 
   - cross-xtensa-binutils 
-  - crossc-devel 
   - crossguid-devel 
   - crosstool-ng 
   - crow-translate 
@@ -4725,6 +4725,7 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
+  - gnu-unifont-bitmap-fonts 
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
@@ -8604,8 +8605,6 @@ unsorted:
   - libcroco 
   - libcroco-0_6-3-32bit: [x86_64] 
   - libcroco-devel 
-  - libcrossc1 
-  - libcrossc1-32bit: [x86_64] 
   - libcrossguid0 
   - libcryptmount-devel 
   - libcrypto45-32bit: [x86_64] 
@@ -13237,16 +13236,15 @@ unsorted:
   - lucene-classification 
   - lucene-codecs 
   - lucene-core 
-  - lucene-facet 
   - lucene-grouping 
   - lucene-highlighter 
   - lucene-join 
   - lucene-memory 
   - lucene-misc 
+  - lucene-monitor 
   - lucene-queries 
   - lucene-queryparser 
   - lucene-sandbox 
-  - lucene-spatial 
   - lucene-spatial3d 
   - luckybackup 
   - lugaru 
@@ -17679,9 +17677,9 @@ unsorted:
   - pluma-lang 
   - plymouth-devel 
   - plymouth-plugin-fade-throbber 
+  - plymouth-plugin-label-ft 
   - plymouth-plugin-script 
   - plymouth-plugin-space-flares 
-  - plymouth-plugin-throbgress 
   - plymouth-plugin-tribar 
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
@@ -18191,8 +18189,6 @@ unsorted:
   - python-libcomps-doc 
   - python-libexe 
   - python-libkdumpfile 
-  - python-libmsiecf 
-  - python-libolecf 
   - python-libpff 
   - python-libproxy 
   - python-libteam 
@@ -19038,6 +19034,7 @@ unsorted:
   - python2-django-pyscss 
   - python2-django-rest-framework-client 
   - python2-django-rest-framework-social-oauth2 
+  - python2-django-rosetta 
   - python2-django-seed 
   - python2-django-sekizai 
   - python2-django-storages 
@@ -19058,6 +19055,7 @@ unsorted:
   - python2-dogpile.cache 
   - python2-dogslow 
   - python2-dominate 
+  - python2-dotmap 
   - python2-dpkt 
   - python2-dragonmapper 
   - python2-drms 
@@ -19160,6 +19158,7 @@ unsorted:
   - python2-flup 
   - python2-forbiddenfruit 
   - python2-formats 
+  - python2-freeipa 
   - python2-freetype-py 
   - python2-freezegun 
   - python2-frozendict 
@@ -19293,7 +19292,6 @@ unsorted:
   - python2-incremental 
   - python2-infinity 
   - python2-inflect 
-  - python2-inflection 
   - python2-inifile 
   - python2-iniparse 
   - python2-inspect2 
@@ -19418,7 +19416,9 @@ unsorted:
   - python2-liblarch-gtk 
   - python2-liblnk 
   - python2-libluksde 
+  - python2-libmsiecf 
   - python2-libnacl 
+  - python2-libolecf 
   - python2-libpamtest 
   - python2-libpfm 
   - python2-libqcow 
@@ -19624,6 +19624,7 @@ unsorted:
   - python2-parse_type 
   - python2-parsedatetime 
   - python2-parsel 
+  - python2-parsimonious 
   - python2-parso 
   - python2-partd 
   - python2-parted 
@@ -19927,7 +19928,6 @@ unsorted:
   - python2-pytest-server-fixtures 
   - python2-pytest-services 
   - python2-pytest-shutil 
-  - python2-pytest-socket 
   - python2-pytest-spec 
   - python2-pytest-sphinx 
   - python2-pytest-subtesthack 
@@ -20372,6 +20372,7 @@ unsorted:
   - python2-varlink 
   - python2-vcrpy 
   - python2-vcs 
+  - python2-vcver 
   - python2-vcversioner 
   - python2-vega_datasets 
   - python2-verboselogs 
@@ -21366,6 +21367,7 @@ unsorted:
   - python3-django-rest-invitations 
   - python3-django-rest-knox 
   - python3-django-reversion 
+  - python3-django-rosetta 
   - python3-django-seed 
   - python3-django-sekizai 
   - python3-django-settings-toml 
@@ -21407,6 +21409,7 @@ unsorted:
   - python3-dogpile.cache 
   - python3-dogslow 
   - python3-dominate 
+  - python3-dotmap 
   - python3-dparse 
   - python3-dpcontracts 
   - python3-dpkt 
@@ -21534,6 +21537,7 @@ unsorted:
   - python3-flup 
   - python3-forbiddenfruit 
   - python3-formats 
+  - python3-freeipa 
   - python3-freetype-py 
   - python3-freezegun 
   - python3-freezerclient 
@@ -21889,7 +21893,9 @@ unsorted:
   - python3-libluksde 
   - python3-libmodulemd 
   - python3-libmount 
+  - python3-libmsiecf 
   - python3-libnacl 
+  - python3-libolecf 
   - python3-liborcus 
   - python3-libpamtest 
   - python3-libpfm 
@@ -22228,6 +22234,7 @@ unsorted:
   - python3-parse_type 
   - python3-parsedatetime 
   - python3-parsel 
+  - python3-parsimonious 
   - python3-partd 
   - python3-parted 
   - python3-parver 
@@ -22349,7 +22356,7 @@ unsorted:
   - python3-ptpython 
   - python3-ptpython-ptipython 
   - python3-ptr 
-  - python3-publicsuffix2 
+  - python3-publicsuffix 
   - python3-publicsuffixlist 
   - python3-pudb 
   - python3-pulsectl 
@@ -23123,6 +23130,7 @@ unsorted:
   - python3-vapoursynth 
   - python3-varlink 
   - python3-vcrpy 
+  - python3-vcver 
   - python3-vcversioner 
   - python3-vdirsyncer 
   - python3-vega 

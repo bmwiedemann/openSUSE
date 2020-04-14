@@ -787,7 +787,6 @@
     <package name="gnome-weather" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-weather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnomekbd-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnu-unifont-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3863,7 +3862,6 @@
     <package name="plymouth-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-label" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="plymouth-plugin-label-ft" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-two-step" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-theme-bgrt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4083,7 +4081,7 @@
     <package name="python3-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python3-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="python3-publicsuffix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-publicsuffix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5368,6 +5366,7 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
