@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:42:08 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add crash-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
+  Fix "kmem -[sS]" for caches created during SLUB bootstrap (bsc#1164815 ltc#182973).
+
+-------------------------------------------------------------------
+Wed Apr  1 06:28:37 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add crash-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
+  Fix integer overflow with large memory configuration (bsc#1168233 ltc#184660).
+
+-------------------------------------------------------------------
 Tue Feb  4 15:50:22 UTC 2020 - David Mair <dmair@suse.com>
 
 - Upgraded the source to version 7.2.8. The previous version was

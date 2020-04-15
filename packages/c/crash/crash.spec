@@ -89,6 +89,8 @@ Patch15:        %{name}_enable_snappy_support.patch
 Patch16:        eppic-support-arm64.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
 Patch24:        %{name}-s390-autodetect-kaslr.patch
+Patch25:        %{name}-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
+Patch26:        %{name}-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -285,6 +287,8 @@ Authors:
 %patch13 -p1
 %patch21 -p1
 %patch24 -p1
+%patch25 -p1
+%patch26 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
