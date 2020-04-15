@@ -1,7 +1,7 @@
 #
 # spec file for package intel-hybrid-driver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,13 +22,12 @@ Version:        1.0.2
 Release:        0
 Summary:        VA driver for Intel G45 & HD Graphics family
 License:        MIT
-Group:          System/Libraries
-URL:            https://github.com/01org/intel-hybrid-driver
+URL:            https://github.com/intel/intel-hybrid-driver
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         U_Update-the-dependency-to-libva-2.0.patch
 Patch1:         n_libva-2.0-ABI-header-fix.patch
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
@@ -49,7 +48,7 @@ and Intel HD Graphics for Intel Core processor family.
 %autosetup -p1
 
 %build
-autoreconf -fiv
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-drm \
 	--enable-x11 \
