@@ -17,14 +17,13 @@
 
 
 Name:           charliecloud
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
 Group:          Productivity/Clustering/Computing
 URL:            https://hpc.github.io/charliecloud/
 Source0:        https://github.com/hpc/charliecloud/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-Replace-hardcoded-libexec.patch
 BuildRequires:  python2-base
 # Docker and buildah are not needed to run charliecloud but can be 
 # used to build images
@@ -74,7 +73,6 @@ This package provides example files for Charliecloud.
 
 %prep
 %setup -q
-%patch0 -p 1
 
 %build
 %configure --disable-test
@@ -99,14 +97,14 @@ rm -rf examples/Makefile*
 sed -E -i "s|^#!/usr/bin/env python3|#!/usr/bin/python3|" examples/chtest/*
 
 ## Remove test related files
-rm -rf %{buildroot}%{_bindir}/ch-test %{buildroot}%{_libexecdir}/charliecloud/contributors.bash
+rm -rf %{buildroot}%{_bindir}/ch-test %{buildroot}%{_libdir}/charliecloud/contributors.bash
 
 %files
 %license LICENSE
 %doc README.rst
 %{_bindir}/*
-%dir %{_libexecdir}/charliecloud/
-%{_libexecdir}/charliecloud/*
+%dir %{_libdir}/charliecloud/
+%{_libdir}/charliecloud/*
 
 %if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
 %{_mandir}/man1/*
