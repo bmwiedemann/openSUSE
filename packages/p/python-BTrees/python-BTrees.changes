@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:19:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not bother with documentation
+- Update to 4.7.2:
+  * Fix more cases of C and Python inconsistency.
+
+-------------------------------------------------------------------
 Wed Mar 25 16:00:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.7.1

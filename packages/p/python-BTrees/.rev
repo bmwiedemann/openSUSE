@@ -95,4 +95,14 @@
     <comment></comment>
     <requestid>788269</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>17ded175975652afe9ca356c3b61e94a</srcmd5>
+    <version>4.7.2</version>
+    <time>1586973204</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not bother with documentation
+- Update to 4.7.2:
+  * Fix more cases of C and Python inconsistency.</comment>
+    <requestid>793790</requestid>
+  </revision>
 </revisionlist>

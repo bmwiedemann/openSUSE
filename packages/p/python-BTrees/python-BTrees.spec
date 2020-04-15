@@ -19,19 +19,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-BTrees
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
-URL:            http://www.zope.org/Products/ZODB
+URL:            https://github.com/zopefoundation/BTrees
 Source:         https://files.pythonhosted.org/packages/source/B/BTrees/BTrees-%{version}.tar.gz
-# Documentation requirements:
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module persistent-devel >= 4.1.0}
-BuildRequires:  %{python_module repoze.sphinx.autointerface}
 BuildRequires:  %{python_module setuptools}
-# Testing requirements:
 BuildRequires:  %{python_module transaction}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
@@ -39,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-persistent >= 4.1.0
 Requires:       python-zope.interface
+Obsoletes:      %{name}-doc
 %python_subpackages
 
 %description
@@ -58,21 +55,12 @@ Requires:       %{name} = %{version}
 %description    devel
 This package contains the files needed for binding the %{name} C module.
 
-%package        doc
-Summary:        Documentation for the python-BTrees module
-Requires:       %{name} = %{version}
-
-%description    doc
-This package contains documentation files for %{name}.
-
 %prep
 %setup -q -n BTrees-%{version}
 rm -rf BTrees.egg-info
 
 %build
 %python_build
-%{_python_use_flavor python3}
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
@@ -91,8 +79,5 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %files %{python_files devel}
 %{python_sitearch}/BTrees/*.h
-
-%files %{python_files doc}
-%doc build/sphinx/html/
 
 %changelog
