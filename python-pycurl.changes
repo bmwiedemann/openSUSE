@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:05:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in py2 package on doc subpkg
+
+-------------------------------------------------------------------
 Tue Mar  3 12:01:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 7.43.0.5
