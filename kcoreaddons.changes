@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * kdirwatch: fix a recently introduced crash (kde#419428)
+  * QAtomicInteger::loadRelaxed/storeRelaxed() are available since Qt 5.14
+  * Fix Warnings
+  * KCoreAddons: Convert license statements to SPDX expressions
+  * KPluginMetaData: handle invalid mimetype in supportsMimeType
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
