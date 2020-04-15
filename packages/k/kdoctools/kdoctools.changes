@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Use bold italic at 100% for sect4 titles, and bold 100% for sect5 titles (kde#419256)
+  * Update the list of the Italian entities
+  * Use the same style for informaltable as for table (kde#418696)
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
