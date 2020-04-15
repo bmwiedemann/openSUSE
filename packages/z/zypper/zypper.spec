@@ -39,18 +39,13 @@ Requires:       augeas >= 1.10.0
 %endif
 
 # required for documentation
-%if 0%{?suse_version} >= 1330
 BuildRequires:  rubygem(asciidoctor)
-%else
-BuildRequires:  asciidoc
-BuildRequires:  libxslt-tools
-%endif
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.35
+Version:        1.14.36
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
