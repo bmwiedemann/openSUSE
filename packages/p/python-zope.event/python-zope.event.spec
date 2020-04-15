@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        4.4
 Release:        0
 Summary:        Very basic event publishing system
 License:        ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            http://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/z/zope.event/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -47,8 +46,6 @@ can be found in zope.component.
 
 %package -n %{name}-doc
 Summary:        Very basic event publishing system
-Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
 
 %description -n %{name}-doc
 This package contains documentation files for %{name}.

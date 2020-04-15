@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:08:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in py2 package on doc subpkg
+
+-------------------------------------------------------------------
 Fri Apr  5 06:50:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.4

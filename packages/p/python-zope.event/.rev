@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>691708</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>aef0dd7883f3b74d0fa04f9092714cc4</srcmd5>
+    <version>4.4</version>
+    <time>1586973878</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in py2 package on doc subpkg</comment>
+    <requestid>792440</requestid>
+  </revision>
 </revisionlist>
