@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 03:27:43 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- quit using libfdatetime and libfvalue from factory
+	* using the factory version causes python-plaso self-test to fail
+
+-------------------------------------------------------------------
 Wed Apr  8 22:06:27 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20191221

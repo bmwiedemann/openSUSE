@@ -38,11 +38,13 @@ BuildRequires:  pkgconfig(libcpath)
 BuildRequires:  pkgconfig(libcsplit)
 BuildRequires:  pkgconfig(libcstring) >= 20150101
 BuildRequires:  pkgconfig(libcthreads) >= 20130723
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20140103
+BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfole) >= 20120426
-BuildRequires:  pkgconfig(libfvalue) > 20151226
 BuildRequires:  pkgconfig(libuna)
+
+# using the below from factory causes python-plaso self-tests to fail
+#BuildRequires:  pkgconfig(libfdatetime) > 20180910
+#BuildRequires:  pkgconfig(libfvalue) > 20180817
 
 # released, but not yet packaged.  This is the only user in OBS.
 #BuildRequires:  pkgconfig(libwfps) > 20150104
