@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 15 09:16:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.28:
+  * IMPORTANT: drop support for EOL Python 2.6-3.4
+  * clock module: add "locale" config parameter to change time representation
+  * mpd_status module: use currentsong command if possible
+  * networkmanager module: allow using the currently active AP in formats
+  * volume_status module: change amixer flag ordering fix
+
+-------------------------------------------------------------------
 Tue Mar 10 09:12:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.27:
