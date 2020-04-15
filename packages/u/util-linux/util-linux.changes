@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr  6 23:07:48 CEST 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.35.1:
+  * agetty: add --show-issue, support for /run/issue and
+  * fdisk: Correct handling of hybrid MBR, cleanup wipe warning,
+    use 'r' to return from MBR to GPT.
+  * lsblk: FSVER column,
+    drop e3bb9bfb76c17b1d05814436ced62c05c4011f48.patch.
+  * lscpu: Add HiSilicon aarch64 tsv110 cpupart, add a new columns
+    to --cache.
+  * mount: add --target-prefix.
+  * mountpoint: add --nofollow option.
+  * script: add --echo, --log-in, --logging-format, --log-out and
+    --log-timing.
+  * scriptlive: new command.
+  * scriptreplay: add --log-* options, --cr-mode, --stream,
+    --summary, -T --log-timing.
+  * sfdisk: add progress bars.
+  * unshare: add --keep-caps and --map-current-user options.
+  * Many other fixes and improvements, see:
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.35/v2.35-ReleaseNotes
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.35/v2.35.1-ReleaseNotes
+- Refresh libeconf.patch.
+
+-------------------------------------------------------------------
+Mon Apr  6 14:47:56 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch:
+  Avoid triggering autofs in lookup_umount_fs_by_statfs
+  (boo#1168389)
+
+-------------------------------------------------------------------
 Tue Oct  8 14:48:15 CEST 2019 - kukuk@suse.de
 
 - libeconf.patch: fix a long int error on 32bit

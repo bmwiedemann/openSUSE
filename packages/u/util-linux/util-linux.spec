@@ -1,7 +1,7 @@
 #
 # spec file for package util-linux
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,10 +122,10 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.34
+Version:        2.35.1
 Release:        0
-Url:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-%{version}.tar.xz
+URL:            https://www.kernel.org/pub/linux/utils/util-linux/
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-%{version}.tar.xz
 Source1:        util-linux-rpmlintrc
 Source2:        util-linux-login_defs-check.sh
 Source4:        raw.service
@@ -136,7 +136,7 @@ Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -147,7 +147,7 @@ Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch3:         libeconf.patch
-Patch813:       e3bb9bfb76c17b1d05814436ced62c05c4011f48.patch
+Patch4:         libmount-Avoid-triggering-autofs-in-lookup_umount_fs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 %if %build_util_linux
@@ -413,7 +413,7 @@ cp -a %{S:2} .
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch813 -p1
+%patch4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -605,6 +605,8 @@ export TS_OPT_script_known_fail="yes"
 # may segfault on qemu-user-space
 export TS_OPT_misc_setarch_known_fail="yes"
 %endif
+# This does not work with a chroot build: / is not a mountpoint
+export TS_OPT_misc_mountpoint_known_fail="yes"
 #
 # hacks
 export PATH="$PATH:/sbin:/usr/sbin"
@@ -996,6 +998,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/renice
 %{_bindir}/rev
 %{_bindir}/script
+%{_bindir}/scriptlive
 %{_bindir}/scriptreplay
 %{_bindir}/setarch
 %{_bindir}/setpriv
@@ -1096,6 +1099,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man1/setpriv.1.gz
 %{_mandir}/man1/setsid.1.gz
 %{_mandir}/man1/script.1.gz
+%{_mandir}/man1/scriptlive.1.gz
 %{_mandir}/man1/scriptreplay.1.gz
 %{_mandir}/man1/setterm.1.gz
 %{_mandir}/man1/taskset.1.gz
