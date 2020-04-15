@@ -1,7 +1,7 @@
 #
 # spec file for package python-inflect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,24 @@
 #
 
 
+%define skip_python2 1
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-inflect
-Version:        2.1.0
+Version:        4.1.0
 Release:        0
 Summary:        Methods for working on numbers and nouns
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/inflect
 Source0:        https://files.pythonhosted.org/packages/source/i/inflect/inflect-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-toml
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,6 +43,7 @@ Correctly generate plurals, singular nouns, ordinals, indefinite articles; conve
 %prep
 %setup -q -n inflect-%{version}
 rm -rf inflect.egg-info
+sed -i 's/addopts=--doctest-modules --flake8 --black --cov/addopts=--doctest-modules/g' pytest.ini
 
 %build
 %python_build
@@ -47,11 +53,11 @@ rm -rf inflect.egg-info
 %python_exec %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest tests/
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.txt README.rst
+%doc CHANGES.rst README.rst
 %{python_sitelib}/*
 
 %changelog
