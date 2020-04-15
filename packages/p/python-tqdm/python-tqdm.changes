@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:44:50 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 4.45.0:
+  * propagate and close() on exceptions (#926 <- #548)
+  * fix nested clear()
+  * rework nested close() (#930 <- #924 <- #918, #677)
+  * update all documentation & demos
+  * add and update tests
+  * dev framework: add pre-commit helper
+  * fix _utils ImportError => DeprecationWarning
+
+-------------------------------------------------------------------
 Sat Feb 22 18:37:35 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.43.0:

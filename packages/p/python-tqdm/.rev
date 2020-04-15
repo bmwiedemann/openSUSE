@@ -272,4 +272,19 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
     <comment></comment>
     <requestid>778508</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>374f42afd48aa927185c6a926c6d81a1</srcmd5>
+    <version>4.45.0</version>
+    <time>1586973849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.45.0:
+  * propagate and close() on exceptions (#926 &lt;- #548)
+  * fix nested clear()
+  * rework nested close() (#930 &lt;- #924 &lt;- #918, #677)
+  * update all documentation &amp; demos
+  * add and update tests
+  * dev framework: add pre-commit helper
+  * fix _utils ImportError =&gt; DeprecationWarning</comment>
+    <requestid>792334</requestid>
+  </revision>
 </revisionlist>
