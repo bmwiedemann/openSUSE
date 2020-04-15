@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:26:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- update to version 7.0
+  * Added new bindings to support vSphere 7.0. For details, refer
+    "What’s New in vSphere API 7.0?" section in the API reference
+    guide: https://code.vmware.com/apis/968/vsphere
+  * New features of vSphere 7.0 based on REST APIs are available
+    via the vSphere Automation SDK for Python:
+    https://github.com/vmware/vsphere-automation-sdk-python
+
+-------------------------------------------------------------------
 Sun Sep 15 13:47:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Add runtime recommends for pyOpenSSL and lxml, needed for SSO support

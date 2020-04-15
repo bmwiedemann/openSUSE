@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-pyvmomi
-Version:        6.7.3
+Version:        7.0
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
@@ -35,16 +34,16 @@ BuildRequires:  %{python_module six >= 1.7.3}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module testtools >= 0.9.34}
+BuildRequires:  %{python_module tox}
+BuildRequires:  %{python_module vcrpy}
+# /SECTION
 Requires:       python-requests >= 2.3.0
 Requires:       python-six >= 1.7.3
 Recommends:     python-pyOpenSSL
 Recommends:     python-lxml
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module testtools >= 0.9.34}
-BuildRequires:  %{python_module tox}
-BuildRequires:  %{python_module vcrpy}
-%endif
 %python_subpackages
 
 %description
@@ -66,10 +65,8 @@ sed -i 's/vcrpy<2/vcrpy/' test-requirements.txt
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %python_exec setup.py test
-%endif
 
 %files %{python_files}
 %license LICENSE.txt
