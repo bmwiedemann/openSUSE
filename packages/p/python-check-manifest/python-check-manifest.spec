@@ -1,7 +1,7 @@
 #
 # spec file for package python-check-manifest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
-BuildRequires:  bzr
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  mercurial
@@ -61,7 +61,7 @@ chmod -x check_manifest.py
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
