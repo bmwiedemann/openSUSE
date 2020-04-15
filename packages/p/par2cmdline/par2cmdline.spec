@@ -1,7 +1,7 @@
 #
 # spec file for package par2cmdline
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           par2cmdline
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A PAR 2.0 compatible file creation, verification, and repair tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Backup
-Url:            https://github.com/Parchive/par2cmdline
+URL:            https://github.com/Parchive/par2cmdline
 Source:         https://github.com/Parchive/par2cmdline/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-
 # The following 2 provides/obsoletes lines have been added becase at one point
 # the 'par' package was updated to use the 'par2cmdline' sources. Any package
 # that depends on 'par' version 0.8.0 should actually depend on 'par2cmdline'
@@ -51,7 +50,7 @@ chmod -x ChangeLog configure.ac INSTALL Makefile.am NEWS stamp-h.in
 %make_install
 
 %check
-make check
+%make_build check
 
 %files
 %doc AUTHORS ChangeLog README
@@ -60,7 +59,6 @@ make check
 %{_bindir}/par2create
 %{_bindir}/par2repair
 %{_bindir}/par2verify
-%{_mandir}/man1/par2.1%{ext_man}
+%{_mandir}/man1/par2.1%{?ext_man}
 
 %changelog
-
