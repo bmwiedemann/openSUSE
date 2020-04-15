@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:50:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't require python3 at all, it's only used for tests but there's
+  no %check section.
+
+-------------------------------------------------------------------
 Tue Mar 31 09:20:39 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Fix build with gcc10 fix-gcc10-build.patch (boo#1167862)

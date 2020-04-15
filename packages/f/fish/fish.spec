@@ -33,7 +33,6 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
-BuildRequires:  python3
 Requires:       bc
 Requires:       man
 Recommends:     terminfo
