@@ -1,12 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 13 14:53:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.2.1:
+  + Fixed a bug that prevented andOTP backup encrypted using a long
+    password to be correctly imported.
+
+-------------------------------------------------------------------
+Fri Apr 10 07:30:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+* Update to version 2.2.0:
+  + Add support for FreeOTPPlus.
+  + Fix first startup dialog wording.
+
+-------------------------------------------------------------------
 Tue Mar 17 08:55:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- run spec cleaner 
+- run spec cleaner.
 
 -------------------------------------------------------------------
 Mon Feb 24 10:38:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-* Update to v2.1.0
+* Update to v2.1.0:
     - add restore/create db on first run
     - save sort order on exit
         - allow user to reset the value back to the default
@@ -14,7 +28,7 @@ Mon Feb 24 10:38:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Thu Dec 19 14:10:46 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
-* Update to v2.0.1 
+* Update to v2.0.1:
     - show dialog if memlock value is too low
     - fix memory leak on parse-uri
     - set max pwd length to 255
