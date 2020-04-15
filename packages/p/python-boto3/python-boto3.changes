@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:37:26 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.12.38 (bsc#1166924, bsc#1168943)
+  * api-change:``apigateway``: [``botocore``] Update apigateway client to latest version
+  * api-change:``codeguru-reviewer``: [``botocore``] Update codeguru-reviewer client to latest version
+  * api-change:``mediaconnect``: [``botocore``] Update mediaconnect client to latest version
+- from version 1.12.37
+  * api-change:``transcribe``: [``botocore``] Update transcribe client to latest version
+  * api-change:``chime``: [``botocore``] Update chime client to latest version
+  * api-change:``iam``: [``botocore``] Update iam client to latest version
+  * api-change:``elasticbeanstalk``: [``botocore``] Update elasticbeanstalk client to latest version
+- from version 1.12.36
+  * api-change:``personalize-runtime``: [``botocore``] Update personalize-runtime client to latest version
+  * api-change:``robomaker``: [``botocore``] Update robomaker client to latest version
+
+-------------------------------------------------------------------
 Fri Apr  3 13:01:42 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update 1.12.35
