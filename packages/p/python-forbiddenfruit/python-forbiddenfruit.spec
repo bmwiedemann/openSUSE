@@ -1,7 +1,7 @@
 #
 # spec file for package python-forbiddenfruit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,14 @@ Release:        0
 Summary:        Python module to patch python built-in objects
 License:        GPL-3.0-only OR MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/clarete/forbiddenfruit
+URL:            https://github.com/clarete/forbiddenfruit
 Source0:        https://github.com/clarete/forbiddenfruit/archive/%{version}.tar.gz
 # https://github.com/clarete/forbiddenfruit/issues/30
 Source1:        COPYING.GPL
+# https://github.com/clarete/forbiddenfruit/pull/47
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +43,7 @@ python.
 %prep
 %setup -q -n forbiddenfruit-%{version}
 cp %{SOURCE1} .
+%patch0 -p1
 
 %build
 %python_build
@@ -51,7 +54,7 @@ cp %{SOURCE1} .
 
 %check
 %python_expand ln -s %{buildroot}%{$python_sitearch}/ffruit* tests/unit
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license COPYING.GPL COPYING.mit
