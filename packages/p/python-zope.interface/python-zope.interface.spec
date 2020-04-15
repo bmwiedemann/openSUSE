@@ -20,21 +20,20 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zope.interface
 Source:         https://files.pythonhosted.org/packages/source/z/zope.interface/%{modname}-%{version}.tar.gz
+# needed for tests that try to compile things
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 %ifpython2
 Provides:       %{oldpython}-zopeinterface = %{version}
 Obsoletes:      %{oldpython}-zopeinterface < %{version}

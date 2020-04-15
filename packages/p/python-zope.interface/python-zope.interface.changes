@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:12:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 5.1.0:
+  * Make @implementer(*iface) and classImplements(cls, *iface) ignore redundant interfaces. If the class already implements an interface through inheritance, it is no longer redeclared specifically for cls. This solves many instances of inconsistent resolution orders, while still allowing the interface to be declared for readability and maintenance purposes. See issue 199.
+  * Remove all bare except: statements. Previously, when accessing special attributes such as __provides__, __providedBy__, __class__ and __conform__, this package wrapped such access in a bare except: statement, meaning that many errors could pass silently; typically this would result in a fallback path being taken and sometimes (like with providedBy()) the result would be non-sensical. This is especially true when those attributes are implemented with descriptors. Now, only AttributeError is caught. This makes errors more obvious.
+  * In addition, ZODB errors like POSKeyError could now be propagated where previously they would ignored by this package.
+  * Require that the second argument (bases) to InterfaceClass is a tuple. This only matters when directly using InterfaceClass to create new interfaces dynamically. Previously, an individual interface was allowed, but did not work correctly. Now it is consistent with type and requires a tuple.
+  * Let interfaces define custom __adapt__ methods. This implements the other side of the PEP 246 adaptation protocol: objects being adapted could already implement __conform__ if they know about the interface, and now interfaces can implement __adapt__ if they know about particular objects. There is no performance penalty for interfaces that do not supply custom __adapt__ methods.
+  * Make the internal singleton object returned by APIs like implementedBy and directlyProvidedBy for objects that implement or provide no interfaces more immutable. Previously an internal cache could be mutated. See issue 204.
+
+-------------------------------------------------------------------
 Tue Mar 24 14:39:03 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.0.1
