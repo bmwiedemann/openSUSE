@@ -17,17 +17,15 @@
 
 
 %define extra_version -0.11
-
 Name:           perftest
+Version:        4.4
+Release:        0
 Summary:        IB Performance tests
 License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Version:        4.4
-Release:        0
+URL:            https://github.com/linux-rdma/perftest
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
 Patch4:         perftest-armv6.patch
-URL:            https://github.com/linux-rdma/perftest
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For transition to rdma-core make sure the new packages are selected
 # Once the transition is made the version check can be removed
 BuildRequires:  autoconf
@@ -40,7 +38,6 @@ BuildRequires:  libtool
 %description
 gen2 uverbs microbenchmarks
 
-
 %prep
 %setup -q -n %{name}-%{version}%{extra_version}
 %patch4 -p1
@@ -48,14 +45,13 @@ gen2 uverbs microbenchmarks
 %build
 ./autogen.sh
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 chmod -x runme
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %files
-%defattr(-, root, root)
 %doc README runme
 %license COPYING
 %{_bindir}/ib_atomic_lat
