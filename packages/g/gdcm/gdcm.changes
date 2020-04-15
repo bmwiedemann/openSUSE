@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 18:59:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update poppler_api.patch to make UnicodeMap* const.
+- Compile with -fpermissive so that this works on Leap 15.2 too
+
+-------------------------------------------------------------------
 Sun Mar 29 14:24:37 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - poppler_api.patch added to fix API changes in poppler 

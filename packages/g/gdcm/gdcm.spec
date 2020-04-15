@@ -135,6 +135,7 @@ rm -rf Utilities/wxWidgets
 %build
 
 %cmake	.. \
+    -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive" \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DGDCM_INSTALL_PACKAGE_DIR=%{_libdir}/cmake/%{name} \
 	-DGDCM_INSTALL_INCLUDE_DIR=%{_includedir}/%{name} \
