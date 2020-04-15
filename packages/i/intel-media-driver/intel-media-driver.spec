@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        19.2.1
+Version:        20.1.1
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        MIT AND BSD-3-Clause
@@ -27,16 +27,16 @@ Group:          System/Libraries
 URL:            https://github.com/intel/media-driver
 Source:         https://github.com/intel/media-driver/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
-Patch0:         Werror-implicit-function-not-valid-for-C++.patch
 Patch1:         Werror-initialize-in-right-order.patch
-Patch2:         U_Encode-Add-some-missing-device-IDs-for-CML-and-ICL.patch
+Patch2:         u_20.1.1-build-fixes.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(igdgmm)
-BuildRequires:  pkgconfig(libva) >= 1.4.1
+BuildRequires:  pkgconfig(igdgmm) >= 2.1.1
+BuildRequires:  pkgconfig(libva) >= 1.7.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64
+
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001602sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001606sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d0000160Asv*sd*bc*sc*i*)
@@ -206,9 +206,8 @@ libigfxcmrt%{so_ver}.
 mv media-driver-* media-driver
 chmod -x media-driver/*.md
 pushd media-driver
-%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+%patch2 -p2
 popd
 
 %define __sourcedir media-driver
@@ -216,7 +215,7 @@ popd
 %build
 srcroot=`pwd`
 %cmake -DBUILD_SHARED_LIBS:BOOL=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
