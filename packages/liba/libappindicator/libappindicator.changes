@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:01:22 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1164492.
+
+-------------------------------------------------------------------
 Thu Apr  9 22:02:52 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Do not apply xappstatusicon.patch: pulls half of Mate into Ring1. 

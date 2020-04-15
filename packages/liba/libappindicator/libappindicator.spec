@@ -178,6 +178,7 @@ cp ./src/app-indicator.c ./src/app-indicator-gtk2.c
 #patch5 -p1
 
 %build
+%global optflags %{optflags} -fcommon
 # Create dummy file, to avoid dependency on gtk-doc
 echo "EXTRA_DIST = " >> gtk-doc.make
 autoreconf -vfi
