@@ -1743,4 +1743,39 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774804</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>bcf8a00dde5aed90e5b779a2eff721d2</srcmd5>
+    <version>5.06</version>
+    <time>1586973187</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.06
+  New and rewritten pages
+  -----------------------
+  * openat2.2
+  * pidfd_getfd.2
+  * select.2
+  * select_tut.2
+  * sysvipc.7
+  * time_namespaces.7
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+    arch_prctl.2
+        Add ARCH_SET_CPUID subcommand
+    clock_getres.2
+        Document CLOCK_TAI
+        Add CLOCK_REALTIME_ALARM and CLOCK_BOOTTIME_ALARM
+    prctl.2
+        Document PR_SETIO_FLUSHER/GET_IO_FLUSHER
+    setns.2
+        Document CLONE_NEWTIME
+    statx.2
+        Document STATX_ATTR_VERITY
+    unshare.2
+        Document CLONE_NEWTIME
+    socket.7
+        Add description of SO_SELECT_ERR_QUEUE
+        Document SO_TIMESTAMPNS
+  etc., see Changes</comment>
+    <requestid>793754</requestid>
+  </revision>
 </revisionlist>

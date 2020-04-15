@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:52:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.06
+  New and rewritten pages
+  -----------------------
+  * openat2.2
+  * pidfd_getfd.2
+  * select.2
+  * select_tut.2
+  * sysvipc.7
+  * time_namespaces.7
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+    arch_prctl.2
+        Add ARCH_SET_CPUID subcommand
+    clock_getres.2
+        Document CLOCK_TAI
+        Add CLOCK_REALTIME_ALARM and CLOCK_BOOTTIME_ALARM
+    prctl.2
+        Document PR_SETIO_FLUSHER/GET_IO_FLUSHER
+    setns.2
+        Document CLONE_NEWTIME
+    statx.2
+        Document STATX_ATTR_VERITY
+    unshare.2
+        Document CLONE_NEWTIME
+    socket.7
+        Add description of SO_SELECT_ERR_QUEUE
+        Document SO_TIMESTAMPNS
+  etc., see Changes
+
+-------------------------------------------------------------------
 Mon Feb 10 08:44:31 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.05
