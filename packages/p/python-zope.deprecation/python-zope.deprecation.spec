@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deprecation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,6 @@ previously mentioned Python objects.
 
 %package     -n %{name}-doc
 Summary:        Zope 3 Deprecation Infrastructure
-Requires:       %{name} = %{version}
 Provides:       %{python_module zope.deprecation-doc = %{version}}
 
 %description -n %{name}-doc
