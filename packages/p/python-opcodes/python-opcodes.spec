@@ -1,7 +1,7 @@
 #
 # spec file for package python-opcodes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@ Release:        0
 Summary:        Database of Processor Instructions/Opcodes
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/Maratyszcza/Opcodes
+URL:            https://github.com/Maratyszcza/Opcodes
 Source:         https://files.pythonhosted.org/packages/source/o/opcodes/opcodes-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module nose}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -56,7 +56,7 @@ This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/nosetests-%{$python_bin_suffix} 
+%pytest
 
 %files %{python_files}
 %doc readme.rst
