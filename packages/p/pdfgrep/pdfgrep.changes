@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:48:06 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.2:
+  * Bugfix: Fix crash when compiled with hardened compiler flags
+    (specifically -D_GLIBCXX_ASSERTIONS)
+- Changes for version 2.1.1:
+  * Bugfix: Fix build with libunac support enabled
+- Changes for version 2.1.0:
+  * New option `--page-range` to limit search to a set of pages
+  * New option `--file/-f` to read patterns from a file
+  * New option `--regexp/-e` to specify multiple patterns
+    (combined with OR).
+  * New options `--files-with-matches/-l` and
+    `--files-without-match/-L` to only list filenames of files
+    that contain or don't contain matches.
+  * Major manpage restructuring. It's now divided into subsections
+    like the GNU grep's manpage.
+  * Bugfix: Actually stop searching after first match with `-q`
+
+-------------------------------------------------------------------
 Tue Jun 27 14:23:12 UTC 2017 - mpluskal@suse.com
 
 - Update dependencies

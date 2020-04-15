@@ -1,7 +1,7 @@
 #
 # spec file for package pdfgrep
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pdfgrep
-Version:        2.0.1
+Version:        2.1.2
 Release:        0
 Summary:        Search in pdf files for strings matching a regular expression
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://pdfgrep.sourceforge.net/
+URL:            http://pdfgrep.sourceforge.net/
 Source:         https://pdfgrep.org/download/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libpoppler-devel
-BuildRequires:  pcre-devel
+BuildRequires:  libgcrypt-devel >= 1.0.0
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(poppler-cpp)
 
 %description
 Pdfgrep is a tool to search text in PDF files. It works similar to `grep'.
@@ -44,22 +45,18 @@ Features:
 %setup -q
 
 %build
-%configure CXXFLAGS="%{optflags}" --with-bash-completion
-make %{?_smp_mflags}
+%configure \
+  --with-bash-completion
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS NEWS.md README.md
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license COPYING
-%else
-%doc COPYING
-%endif
+%doc AUTHORS NEWS.md README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
 
