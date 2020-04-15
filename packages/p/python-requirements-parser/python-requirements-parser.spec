@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        Pip requirement file parser
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/davidfischer/requirements-parser
+URL:            https://github.com/davidfischer/requirements-parser
 Source:         https://github.com/davidfischer/requirements-parser/archive/v%{version}.tar.gz#/requirements-parser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch alarrosa@suse.com -- https://github.com/davidfischer/requirements-parser/pull/47
+Patch0:         0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -40,6 +42,7 @@ A Pip requirement file parser.
 
 %prep
 %setup -q -n requirements-parser-%{version}
+%patch0 -p1
 
 %build
 %python_build
