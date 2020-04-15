@@ -438,6 +438,20 @@ normalize_file()
     /usr/share/gtk-doc/html/*/*.devhelp2)
       # various kde and gtk packages
       strip_numbered_anchors
+      for f in old/$file new/$file; do
+        sed -i -e '
+          /^<head>/{
+            : next
+            n
+            /^<\/head>/{
+            b end_head
+            }
+            s/^<meta name="generator" content="[^"]\+">/<meta name="generator" content="GTK-Doc V1.29 (XML mode)">/
+            b next
+          }
+          : end_head
+          ' $f
+      done
     ;;
     /usr/share/doc/packages/*/*.html|\
     /usr/share/doc/packages/*/*/*.html|\
