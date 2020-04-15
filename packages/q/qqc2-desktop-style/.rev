@@ -256,4 +256,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.68</comment>
     <requestid>785365</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f201c87d7455c2c1d779eff95849ca1c</srcmd5>
+    <version>5.69.0</version>
+    <time>1586973805</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.69.0 (forwarded request 791660 from cgiboudeaux)</comment>
+    <requestid>793198</requestid>
+  </revision>
 </revisionlist>
