@@ -3117,4 +3117,12 @@
     <comment>Softwarestack update</comment>
     <requestid>786951</requestid>
   </revision>
+  <revision rev="426" vrev="1">
+    <srcmd5>c6f110192dcc5db85968c3a26a54e201</srcmd5>
+    <version>17.23.4</version>
+    <time>1586973172</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>793626</requestid>
+  </revision>
 </revisionlist>
