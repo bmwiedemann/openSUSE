@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
+
+- run OCaml rpm dependency generator only if both path and magic matches (rpm#1173)
+
+-------------------------------------------------------------------
 Sat Mar 21 12:34:56 UTC 2020 - ohering@suse.de
 
 - Disable parallel build for OCaml 4.08, 4.09 and 4.10

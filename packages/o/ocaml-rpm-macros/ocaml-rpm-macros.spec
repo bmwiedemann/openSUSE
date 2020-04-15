@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-rpm-macros
-Version:        20200321
+Version:        20200412
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -70,6 +70,7 @@ tee %{buildroot}%{_rpmconfigdir}/fileattrs/z${tag}.attr <<_EOF_
 %__${tag}_requires %%{_rpmconfigdir}/${tag}.sh --requires
 %__${tag}_magic    ^(ELF|Objective caml|OCaml) .*$
 %__${tag}_path     .(cma|cmi|cmo|cmx|cmxa|cmxs)$
+%__${tag}_flags    magic_and_path
 _EOF_
 #
 tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE0}
