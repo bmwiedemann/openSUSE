@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistune
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lepture/mistune
 Source0:        https://files.pythonhosted.org/packages/source/m/mistune/mistune-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +46,7 @@ A markdown parser in pure Python, inspired by marked.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %license LICENSE
