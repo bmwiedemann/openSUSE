@@ -2,22 +2,24 @@ Index: WindowMaker/Defaults/WindowMaker.in
 ===================================================================
 --- WindowMaker/Defaults/WindowMaker.in.orig
 +++ WindowMaker/Defaults/WindowMaker.in
-@@ -1,5 +1,6 @@
- {
-   SmoothWorkspaceBack = NO;
-+  CirculateRaise = YES;
-   PopupSwitchMenu = NO;
-   MenuStyle = normal;
-   DisableMiniwindows = NO;
-@@ -34,7 +35,7 @@
-   IconSize = 64;
-   FocusMode = manual;
-   DisableWSMouseActions = NO;
--  MouseLeftButtonAction = SelectWindows;
-+  MouseLeftButtonAction = OpenApplicationsMenu;
-   MouseMiddleButtonAction = OpenWindowListMenu;
-   MouseRightButtonAction = OpenApplicationsMenu;
-   MouseWheelAction = None;
+@@ -14,7 +14,7 @@
+ 	IconPosition = blh;
+ 	IconificationStyle = Zoom;
+ 	DisableWSMouseActions = NO;
+-	MouseLeftButtonAction = SelectWindows;
++	MouseLeftButtonAction = OpenApplicationsMenu;
+ 	MouseMiddleButtonAction = OpenWindowListMenu;
+ 	MouseRightButtonAction = OpenApplicationsMenu;
+ 	MouseBackwardButtonAction = None;
+@@ -42,7 +42,7 @@
+ 	ColormapMode = auto;
+ 	AutoFocus = YES;
+ 	RaiseDelay = 0;
+-	CirculateRaise = NO;
++	CirculateRaise = YES;
+ 	Superfluous = YES;
+ 	AdvanceToNewWorkspace = NO;
+ 	CycleWorkspaces = NO;
 Index: dockit
 ===================================================================
 --- /dev/null
@@ -274,7 +276,7 @@ Index: util/wmaker.inst.in
 ===================================================================
 --- util/wmaker.inst.in.orig
 +++ util/wmaker.inst.in
-@@ -280,41 +280,41 @@ echo "    $GSDIR/Library/WindowMaker/$in
+@@ -276,41 +276,41 @@ echo "    $GSDIR/Library/WindowMaker/$in
  }
  
  wmaker_found=0
