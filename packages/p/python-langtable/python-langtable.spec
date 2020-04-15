@@ -1,7 +1,7 @@
 #
 # spec file for package python-langtable
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define skip_python2 1
 Name:           python-langtable
-Version:        0.0.48
+Version:        0.0.51
 Release:        0
 Summary:        Database to guess defaults for locale settings
 # the translations in languages.xml and territories.xml are (mostly)
 # imported from CLDR and are thus under the Unicode license, the
 # short name for this license is "MIT", see:
 # https://fedoraproject.org/wiki/Licensing:MIT?rd=Licensing/MIT#Modern_Style_without_sublicense_.28Unicode.29
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Localization
 URL:            https://github.com/mike-fabian/langtable
 Source0:        https://github.com/mike-fabian/langtable/releases/download/%{version}/langtable-%{version}.tar.gz

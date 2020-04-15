@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:32:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.0.51
+  * Parse stuff in glibc locale names after @ which is not a script as a variant
+  * Add ckb_IQ.UTF-8 locale
+  * Make parse_locale() return something reasonable for
+    C, POSIX, en_US_POSIX, and C.UTF-8
+  * Fix exception in language_name() when called with languageId=''
+  * Add new public function parse_locale()
+  * Let info() print a bit more stuff
+
+-------------------------------------------------------------------
 Thu Nov  7 10:33:47 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - initial package version 0.0.48 for openSUSE
