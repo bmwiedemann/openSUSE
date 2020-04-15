@@ -1,7 +1,7 @@
 #
 # spec file for package python-ioflo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-ioflo
-Version:        1.7.6
+Version:        2.0.0
 Release:        0
 Summary:        Python framework for programming autonomous systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ioflo/ioflo
 Source0:        https://files.pythonhosted.org/packages/source/i/ioflo/ioflo-%{version}.tar.gz
-Patch0:         python-ioflo-renew-certs.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git >= 1.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -46,26 +44,29 @@ programming autonomous/autonomic systems easier.
 
 %prep
 %setup -q -n ioflo-%{version}
-%patch0 -p1
-# invalid syntax
-rm -r ioflo/aio/http/test
-rm -r ioflo/aid/test
 
 %build
 %python_build
 
 %install
 %python_install
-rm -f %{buildroot}%{_bindir}/ioflo{2,3}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/ioflo
 
 %check
 %pytest
+
+%post
+%python_install_alternative ioflo
+
+%postun
+%python_uninstall_alternative ioflo
 
 %files %{python_files}
 %license LICENSE* LEGAL
 %doc README* ChangeLog.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/ioflo
+%python_alternative %{_bindir}/ioflo
+%{_bindir}/ioflo3
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 14 14:20:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * Python 3.7.4 or later from now on latest version of python
+  * Fixed TLS certs in tests
+- Drop unneeded python-ioflo-renew-certs.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 14:36:09 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add python-ioflo-renew-certs.patch to fix tests
