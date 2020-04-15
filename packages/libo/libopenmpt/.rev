@@ -403,4 +403,20 @@
   * MOD: Fix initial instrument change with no note playing.</comment>
     <requestid>768831</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9101da18894b3ec4dee06086c90f33d3</srcmd5>
+    <version>0.4.12</version>
+    <time>1586973185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.12:
+  * IT: Vibrato was too fast in Old Effects mode since
+    libopenmpt 0.3.
+  * XM: Treat 8bitbubsy’s FT2 clone exactly like Fasttracker 2 with
+    respect to compatibility and playback flags. For example,
+    FT2 Pan Law was not applied.
+  * DMF: Some files had a wrong tempo since
+    libopenmpt 0.2.5705-beta15.
+</comment>
+    <requestid>793695</requestid>
+  </revision>
 </revisionlist>

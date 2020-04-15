@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 13 21:59:44 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.4.12:
+  * IT: Vibrato was too fast in Old Effects mode since
+    libopenmpt 0.3.
+  * XM: Treat 8bitbubsy’s FT2 clone exactly like Fasttracker 2 with
+    respect to compatibility and playback flags. For example,
+    FT2 Pan Law was not applied.
+  * DMF: Some files had a wrong tempo since
+    libopenmpt 0.2.5705-beta15.
+
+-------------------------------------------------------------------
 Thu Jan 30 16:04:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.11:
