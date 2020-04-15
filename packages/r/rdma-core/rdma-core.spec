@@ -25,9 +25,9 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.84caf035ae61
+%define         git_ver .0.ba66d565a860
 Name:           rdma-core
-Version:        27.0
+Version:        27.1
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        GPL-2.0-only OR BSD-2-Clause

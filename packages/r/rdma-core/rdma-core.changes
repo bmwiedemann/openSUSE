@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:52:18 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v27.1
+  - Many bugfixes (memory leaks, use after free, etc.)
+
+-------------------------------------------------------------------
 Sat Feb 22 09:55:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Eliminate the curl-mini trickery for Tumbleweed: curl-mini is
