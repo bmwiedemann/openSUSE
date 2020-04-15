@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:16:37 UTC 2020 - munix9@googlemail.com
+
+- Updated to Xdebug 2.9.4
+  * Fixed issue #1763: Crash while setting opcode overrides in ZTS mode.
+  * Fixed issue #1766: Using the DBGp detach command disables remote debugging for the whole process.
+
+- Updated to Xdebug 2.9.3
+  * Fixed issue #1753: Resolved breakpoints use information from wrong files
+  * Fixed issue #1758: Xdebug changes error_get_last results inside a try catch
+  * Fixed issue #1759: User registered opcode handlers should call ones already set by other extensions
+
+- Updated to Xdebug 2.9.2
+  * Fixed issue #1735: DBGp eval warning promoted to Exception can cause out-of-sync responses
+  * Fixed issue #1736: Segmentation fault when other extensions run PHP in RINIT
+  * Fixed issue #1739: Tracing footer not written
+
+- Updated to Xdebug 2.9.1
+  * Fixed issue #1721: Header may not contain NUL bytes in Unknown on line 0
+  * Fixed issue #1727: Debugger stops more often than expected due to resolving breakpoints
+  * Fixed issue #1728: INIT_STATIC_METHOD_CALL is not overloaded
+  * Fixed issue #1731: var_dump with DateTime does not output properties (Ryan Mauger)
+  * Fixed issue #1733: SEND_VAR_NO_REF_EX opcode, used for require(), is not overloaded
+  * Fixed issue #1734: Segfault with DBGp "source" with a out-of-range start line number
+
+-------------------------------------------------------------------
 Tue Dec 24 16:46:09 UTC 2019 - munix9@googlemail.com
 
 - fix enabling extension in xdebug.ini
