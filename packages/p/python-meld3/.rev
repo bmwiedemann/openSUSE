@@ -43,4 +43,12 @@
     needed for Python 3.7 compatibility.</comment>
     <requestid>730118</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b941b9ecbe17b6ea601b5cde36aecfd</srcmd5>
+    <version>2.0.1</version>
+    <time>1586973440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794209</requestid>
+  </revision>
 </revisionlist>
