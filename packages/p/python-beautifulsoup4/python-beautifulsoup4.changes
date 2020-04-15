@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 12 08:31:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix the tests to pass with new soupsieve too:
+  * soupsieve2-tests.patch
+  * The assert name changed
+
+-------------------------------------------------------------------
+Sun Apr 12 07:50:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.9.0:
+  * fixes to work with new soupsieve
+
+-------------------------------------------------------------------
 Wed Jan  1 08:52:41 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to 4.8.2

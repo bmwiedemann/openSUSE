@@ -319,4 +319,17 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
     <comment></comment>
     <requestid>760364</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>03a77c57673aa9dae57abe21914baefb</srcmd5>
+    <version>4.9.0</version>
+    <time>1586973160</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the tests to pass with new soupsieve too:
+  * soupsieve2-tests.patch
+  * The assert name changed
+
+- Update to 4.9.0:
+  * fixes to work with new soupsieve</comment>
+    <requestid>793355</requestid>
+  </revision>
 </revisionlist>
