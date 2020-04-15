@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Apr 14 16:14:15 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.9
+  * fix HTML5 client XSS
+  * fix focus issues
+  * fix server hangs and unpainted windows due to invalid
+    dimensions
+  * fix window icons and cursors visual corruption or crashes
+  * fix unbearably slow screen updates when vrefresh value is
+    invalid
+  * fix client OpenGL crashes with remote starts (run probe
+    first)
+  * fix keypad regression (AltGr changes, again)
+  * fix MS Windows shadow servers
+  * fix race condition collecting latency data for session info
+  * fix missing pycuda dependency for nvenc on MS Windows
+  * fix missing signatures on MS Windows EXE and MSI builds
+  * fix scoring of NVENC codec (should be used ahead of sofware
+    encoders)
+  * fix start menu updates getting lost
+  * fix OpenGL diagnostic messages getting cut off
+  * fix change of encoding from the system tray
+  * fix quality and speed changes from the system tray
+  * fix clipboard and popup menu problems with Eclipse
+  * fix name of shadow server process on MS Windows, used in log
+    file names
+  * fix audio query subprocess with MS shadow servers
+  * fix unlikely race condition in speaker forwarding shutdown
+    sequence
+  * fix desktop-fullscreen=yes automatic scaling
+  * fix missing bug report data due to uninitialized X11 bindings
+  * fix bug report error if we cannot grab a screenshot (ie:
+    Wayland)
+  * fix error saving binary data with python3 builds of the bug
+    report tool
+  * fix errors querying the display under Wayland
+  * hide scary stacktraces when shutting down ssh proxy commands
+  * if we have an ssh password we can use, try that first
+  * blacklist VirtualBox's SVGA3D OpenGL driver (fixes black
+    windows)
+  * don't use webp with image dimensions beyond its limits
+  * use regular X11 system tray with i3
+  * hide confusing named-pipe prefix in empty output on MS
+    Windows
+  * HTML5 fixes: invalid IMG tag, reserved keyword, language
+    detection, draw debugging, etc
+  * don't try to read /proc if not on Posix
+  * use a more specific python3 interpreter version
+  * update application content-type mappings
+  * remove out of date information from man page
+
+-------------------------------------------------------------------
 Tue Mar 31 21:08:47 UTC 2020 - aloisio@gmx.com
 
 - Update to version 3.0.8
