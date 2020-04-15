@@ -39,6 +39,9 @@ Patch0:         wsgi_fixVersionCheck.patch
 BuildRequires:  apache-rex
 %apache_rex_deps
 BuildRequires:  python-devel
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
+BuildRequires:  python-setuptools
+%endif
 Conflicts:      apache2-mod_wsgi-python3
 Provides:       %{modname} = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,9 +74,15 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %endif
     --with-python="python"
 make %{?_smp_mflags}
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
+%py2_build
+%endif
 
 %install
 make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
+%py2_install
+%endif
 
 %check
 %apache_rex_check -m ./src/server/.libs mod_wsgi-basic
@@ -99,5 +108,10 @@ fi
 %doc LICENSE README.rst docs/release-notes
 %dir %{apache_libexecdir}
 %{apache_libexecdir}/%{modname}.so
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
+%{python2_sitearch}/mod_wsgi-*.egg-info
+%{python2_sitearch}/mod_wsgi
+%{_bindir}/mod_wsgi-express
+%endif
 
 %changelog
