@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lazr.config
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Create configuration schemas, and process and validate configurations
 License:        LGPL-3.0-only

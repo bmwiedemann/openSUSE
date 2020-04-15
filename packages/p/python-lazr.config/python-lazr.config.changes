@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:11:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.2.2
+  * Officially add support for Python 3.7 and 3.8.
+
+-------------------------------------------------------------------
 Mon Dec  2 11:59:35 UTC 2019 - pgajdos@suse.com
 
 - fix license string
