@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NotifyConfig5
-%define _tar_path 5.68
+%define _tar_path 5.69
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotifyconfig
-Version:        5.68.0
+Version:        5.69.0
 Release:        0
 Summary:        Configuration dialog for desktop notifications
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
@@ -57,11 +58,11 @@ BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5DBus) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5TextToSpeech) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  pkgconfig(libcanberra)
 
 %description
 KNotifyConfig provides a configuration dialog for desktop notifications which
