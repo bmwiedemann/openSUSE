@@ -1,7 +1,7 @@
 #
 # spec file for package WindowMaker
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           WindowMaker
 Summary:        A Colorful and Flexible Window Manager
-License:        GPL-2.0+ and LGPL-2.1+ and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          System/GUI/Other
-Version:        0.95.8
+Version:        0.95.9
 Release:        0
-# 81eefca4ef70414d73048300058e5007f402dd7f
-# f846b7cdd39749b5291d4559185a229b752b4fed
-#Version:        0.95.3.99.2
-Url:            http://windowmaker.org/
+URL:            http://windowmaker.org/
 Source:         http://windowmaker.org/pub/source/release/%{name}-%{version}.tar.gz
 Source1:        %{name}-extra-0.1.tar.bz2
 Source2:        theme.tar.bz2
@@ -39,7 +36,7 @@ Patch3:         fix_wmgenmenu_paths.patch
 #
 Patch101:       wm-giflib.patch
 # PATCH-FEATURE-OPENSUSE
-Patch102:       WindowMaker-0.95.8-reproducible.patch
+Patch102:       WindowMaker-reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
@@ -84,7 +81,7 @@ window managers.
 
 %package devel
 Summary:        Development files for WindowMaker
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 
@@ -100,7 +97,7 @@ cp %{name}/{menu.*,plmenu.*} menu_orig
 %patch2
 %patch3
 %patch101
-%patch102 -p1
+%patch102
 cp %{S:4} .
 cp %{S:6} .
 %if 0%{?suse_version} < 1140
@@ -109,7 +106,7 @@ rename no nb po/no.*
 # ---------------------------------------------------------------------------
 
 %build
-./autogen.sh
+bash -x ./autogen.sh
 export LINGUAS="be bg bs ca cs da de el es et fi fr gl hr hu hy it ja ko ms nl no pl pt ro ru sk sv tr zh_CN zh_TW"
 export CFLAGS="$RPM_OPT_FLAGS $(freetype-config --cflags)"
 %configure \
@@ -180,7 +177,6 @@ cd ..
 /usr/bin/*
 %{_libdir}/*.so.*
 %{_mandir}/man1/*
-%{_mandir}/man8/*
 /usr/share/WINGs
 /usr/share/%{name}
 /usr/share/xsessions/*

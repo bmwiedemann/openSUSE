@@ -3574,10 +3574,10 @@ Index: WindowMaker/plmenu.ko.in
 +  ("종    료", EXIT)
   )
  )
-Index: WindowMaker/plmenu.pl
+Index: WindowMaker/plmenu.pl.in
 ===================================================================
---- WindowMaker/plmenu.pl.orig
-+++ WindowMaker/plmenu.pl
+--- WindowMaker/plmenu.pl.in.orig
++++ WindowMaker/plmenu.pl.in
 @@ -1,125 +1,12 @@
  ("WindowMaker",
  	("Informacja",
@@ -3889,10 +3889,10 @@ Index: WindowMaker/plmenu.sk.in
    ("Koniec", EXIT)
   )
  )
-Index: WindowMaker/plmenu.zh_CN
+Index: WindowMaker/plmenu.zh_CN.in
 ===================================================================
---- WindowMaker/plmenu.zh_CN.orig
-+++ WindowMaker/plmenu.zh_CN
+--- WindowMaker/plmenu.zh_CN.in.orig
++++ WindowMaker/plmenu.zh_CN.in
 @@ -1,63 +1,11 @@
  ("应用程序",
   ("信息",
@@ -4061,7 +4061,7 @@ Index: WindowMaker/menu.nl.in
 ===================================================================
 --- WindowMaker/menu.nl.in.orig
 +++ WindowMaker/menu.nl.in
-@@ -111,65 +111,9 @@
+@@ -116,65 +116,9 @@
  	"Info" MENU
  		"Infopaneel" INFO_PANEL
  		"Juridische info" LEGAL_PANEL
@@ -4127,22 +4127,15 @@ Index: WindowMaker/menu.nl.in
  
  	"Commando's" MENU
  		"Andere verbergen" HIDE_OTHERS
-@@ -210,13 +154,12 @@
- 		"Iconenset opslaan" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Iconensetnaam,Voer bestandsnaam in:)"
- 		"Voorkeurenhulpmiddel" EXEC #wprefs#
- 	"Uiterlijk" END
--
+@@ -186,6 +130,8 @@
+ 
+ 	"Uiterlijk" OPEN_MENU "appearance.menu.nl"
+ 
 +	"WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
 +	"SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
  	"Sessie" MENU
  		"Sessie opslaan" SAVE_SESSION
  		"Sessie wissen" CLEAR_SESSION
- 		"Window Maker herstarten" RESTART
--		"BlackBox starten" RESTART blackbox
--		"IceWM starten" RESTART icewm
- 		"Afsluiten"  EXIT
- 	"Sessie" END
- "Programma's" END
 Index: WindowMaker/menu.zh_TW.in
 ===================================================================
 --- WindowMaker/menu.zh_TW.in.orig
