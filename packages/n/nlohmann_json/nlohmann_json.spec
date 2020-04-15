@@ -1,7 +1,7 @@
 #
 # spec file for package nlohmann_json
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nlohmann_json
-Version:        3.7.0
+Version:        3.7.3
 Release:        0
 Summary:        C++ header-only JSON library
 License:        MIT
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://nlohmann.github.io/json/
 #Git-Clone:     https://github.com/nlohmann/json.git
 Source:         https://github.com/nlohmann/json/archive/v%{version}.tar.gz#/json-%{version}.tar.gz
+Patch0:         gcc10-fix.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1500
@@ -47,6 +48,7 @@ JSON for Modern C++, a C++11 header-only JSON library.
 
 %prep
 %setup -q -n json-%{version}
+%autopatch -p1
 
 %build
 %if 0%{?suse_version} < 1500
