@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:48:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.8.0
+  * Better library combo and ABI detection: gnustep-make will now
+    attempt to detect the optimal library combo and ABI
+    supported by the installed compiler and Objective-C runtime
+    library. Explicit selection of the runtime ABI is now
+    possible using the '--with-runtime-abi' configure option.
+  * Full support for the gnustep-2.0 Objective-C ABI.
+  * Support for creating a Git tag and creating a tarball from a
+    git tag using the 'git-tag' and 'git-dist' targets.
+  * Support for creating a Mercurial tag and creating a tarball
+    from a hg tag using the 'hg-tag' and 'hg-dist' targets.
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Sep  8 21:09:13 UTC 2019 - Fred kiefer <fredkiefer@gmx.de>
 
 - Disable LTO as this isn't working for Objective-C projects.
