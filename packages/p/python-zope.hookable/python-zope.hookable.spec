@@ -50,7 +50,6 @@ that imported it, will see the change.
 
 %package     -n %{name}-doc
 Summary:        Zope hookable
-Requires:       %{name} = %{version}
 Provides:       %{python_module zope.hookable-doc = %{version}}
 
 %description -n %{name}-doc

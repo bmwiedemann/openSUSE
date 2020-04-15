@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:14:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in py2 package in doc subpkg
+
+-------------------------------------------------------------------
 Mon Mar 16 14:13:58 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.0.1
