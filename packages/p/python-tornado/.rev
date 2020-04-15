@@ -495,4 +495,12 @@ This is tornado4 until things settle down.</comment>
   distinction between different versions of 2 and 3 variant</comment>
     <requestid>734615</requestid>
   </revision>
+  <revision rev="56" vrev="13">
+    <srcmd5>034841697533e089077bdc2891c4ab8c</srcmd5>
+    <version>unknown</version>
+    <time>1586973897</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conditional so we can dynamically turn off python2</comment>
+    <requestid>792451</requestid>
+  </revision>
 </revisionlist>

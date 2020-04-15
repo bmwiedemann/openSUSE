@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:17:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add conditional so we can dynamically turn off python2
+
+-------------------------------------------------------------------
 Tue Oct  1 13:36:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Require tornado5 for py2 and tornado6 for py3 as they
