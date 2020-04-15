@@ -161,6 +161,11 @@ configure_target='--disable-native-compiler'
 %endif
 export EXTRA_CFLAGS='-Werror=implicit-function-declaration -Werror=return-type'
 bash -x autogen
+%ifarch %arm
+: OCaml issue #9431
+triple_fault=`/bin/sh build-aux/config.guess`
+configure_target="${configure_target} --host=${triple_fault} --build=${triple_fault}"
+%endif
 ./configure --help
 %configure \
 	${configure_target} \

@@ -695,4 +695,15 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
 - update to version 4.10.0, with _service file (bsc#1149330)</comment>
     <requestid>787223</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>1c44e23f794b975af2dd9193b80de840</srcmd5>
+    <version>4.10.0</version>
+    <time>1586973169</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix floating point expectation on arm32 hardfloat targets
+  by overriding rpm host triple with config.guess output (ocaml#9431)
+
+- Fix typo in ocaml-configure-Allow-user-defined-C-compiler-flags.patch</comment>
+    <requestid>793518</requestid>
+  </revision>
 </revisionlist>

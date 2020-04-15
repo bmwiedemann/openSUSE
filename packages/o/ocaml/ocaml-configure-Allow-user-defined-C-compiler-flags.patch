@@ -12,7 +12,7 @@ Subject: configure: Allow user defined C compiler flags.
    [default_safe_string=false],
    [default_safe_string=true])
  
-++# Allow user defined C Compiler flags
++# Allow user defined C Compiler flags
 +common_cflags="$common_cflags $EXTRA_CFLAGS"
 +
  oc_cflags="$common_cflags $internal_cflags"

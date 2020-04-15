@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
+
+- Fix floating point expectation on arm32 hardfloat targets
+  by overriding rpm host triple with config.guess output (ocaml#9431)
+
+-------------------------------------------------------------------
+Wed Apr  8 16:16:16 UTC 2020 - ohering@suse.de
+
+- Fix typo in ocaml-configure-Allow-user-defined-C-compiler-flags.patch
+
+-------------------------------------------------------------------
 Sat Mar 21 12:34:56 UTC 2020 - ohering@suse.de
 
 - Disable parallel build to get reproducible cma archives (issue#9307)
