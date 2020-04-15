@@ -35,8 +35,8 @@ Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
@@ -56,7 +56,7 @@ sed -i 's/\r$//' README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.rst
