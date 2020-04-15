@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Apr 11 17:07:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.15:
+  + Add Kindle 8 eBook format.
+  + Fix some HTML files being detected as XML.
+- Changes from version 1.14:
+  + Add mime-type for QCOW images.
+  + Fix matching SVG files in some circumstances (again).
+- Changes from version 1.13.1:
+  + Fix matching SVG files in some circumstances.
+- Changes from version 1.13:
+  + Add code of conduct document.
+  + Use itstool and gettext to generate translations.
+  + Add content-tree type for OSTree USB repositories.
+  + Add match for MPEG-4 v1 videos.
+  + Adjust a lot of user readable mime-type descriptions.
+  + Fix WOFF/WOFF2 mime-types.
+  + Prefer text/html to XHTML for *.html files.
+  + Better magic for text/html files.
+  + Fix SVG magic for files embedded in HTML.
+  + Add *.sgd as a glob for Mega Drive ROMs.
+  + Specification: Mention that sub-class-of can be aliases.
+  + Tools: Enable Large File Support in update-mime-database.
+  + Test suite:
+    - Make test suite failures fatal.
+    - Add test for duplicate mime-types.
+    - Fix WarpScript test.
+    - Generate the specification in the CI, to avoid it becoming
+      syntactically invalid.
+- Stop using source service, it leads to a undetected build cycle.
+- Following this: Drop libtool BuildRequires and stop passing
+  autogen.sh to bootstrap, we are now using upstream release
+  tarballs.
+- Add itstool BuildRequires: New dependency.
+- Disable t-u-u, currently breaks the build.
+- Stop passing --disable-default-make-check to configure, no longer
+  needed, nor recognized.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:19:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

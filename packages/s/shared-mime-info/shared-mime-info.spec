@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
+%define commitid b27eb88e4155d8fccb8bb3cd12025d5b
+
 Name:           shared-mime-info
-Version:        1.12
+Version:        1.15
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info/
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
+Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
 Source1:        macros.shared-mime-info
+
 BuildRequires:  glib2-devel
 BuildRequires:  intltool
-BuildRequires:  libtool
+BuildRequires:  itstool
 BuildRequires:  libxml2-devel
 # needed for xmllint
 BuildRequires:  libxml2-tools
-BuildRequires:  translation-update-upstream
+#BuildRequires:  translation-update-upstream
 # libgio-2_0-0 Requires: shared-mime-info, but this can't exist yet. We explicitly ignore this dependency here.
 #!BuildIgnore:  shared-mime-info
 # needed by update-mime-database
@@ -50,12 +53,11 @@ This package contains:
 
 %prep
 %autosetup -p1
-translation-update-upstream
+# Broken as of 1.15
+#translation-update-upstream
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
-	--disable-default-make-check \
 	%{nil}
 %make_build
 
@@ -66,7 +68,7 @@ NOCONFIGURE=1 ./autogen.sh
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.shared-mime-info
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %filetriggerin -- %{_datadir}/mime
 export PKGSYSTEM_ENABLE_FSYNC=0
