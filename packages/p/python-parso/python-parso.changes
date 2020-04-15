@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:03:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to 0.7.0
+  * Fix a lot of annoying bugs in the diff parser. The fuzzer did not find
+    issues anymore even after running it for more than 24 hours (500k tests).
+  * Small grammar change: suites can now contain newlines even after a newline.
+    This should really not matter if you don't use error recovery. It allows for
+    nicer error recovery.
+- remove py_38.patch (merged upstream)
+ 
+
+-------------------------------------------------------------------
 Thu Mar  5 12:25:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.6.2
