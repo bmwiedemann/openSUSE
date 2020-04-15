@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 12 03:07:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.21
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.21      2020-04-11 08:27:21 -0600
+    - Fix the handling of version regular expression for the Prefer::SortVersions
+      plugin to handle regular expressions with multiple capture groups (gh#189)
+  
+  2.20      2020-04-10 06:21:54 -0600
+    - xs_ok does a better workaround for faux fork on cygwin (gh#153, gh#187, gh#188)
+  
+  2.19      2020-04-09 02:56:14 -0600
+    - Production release identical to 2.18_01
+  
+  2.18_01   2020-04-03 10:06:45 -0600
+    - Add Build::Copy plugin (gh#186)
+
+-------------------------------------------------------------------
 Sat Mar 21 03:07:31 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.17
