@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:22:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.0 (no changelog)
+
+-------------------------------------------------------------------
+Sun Mar 15 11:29:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.0
+  * Bug fixes
+  * Docs update
+  * Improve tests
+  * Sync with latest kernels
+
+-------------------------------------------------------------------
 Mon Dec  7 20:48:13 UTC 2015 - jengelh@inai.de
 
 - Update RPM groups and trivialize filelist
