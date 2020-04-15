@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr  8 17:52:05 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.56:
+  * Added support for Sequence Alignment Maps (SAM files).
+  * Added empty-file mode to --no-trailing-nl
+    (gl#saalen/highlight#147).
+  * Fixed issue with --syntax-by-name waiting for stdin
+    (gl#saalen/highlight#151).
+  * Fixed issue with --syntax reading matching files in the
+    current working directory (gl#saalen/highlight#151).
+  * Fixed string parsing in lisp.lang (gl#saalen/highlight#150).
+  * Fixed output of UTF-8 text in xterm256 or truecolor output
+    (gl#saalen/highlight#152).
+  * Fixed regex in js.lang.
+  * Fixed calculation of testcase markers with UTF-8 input.
+  * Allowed number literals with underscores in Java, Scala, D,
+    Julia, C#, Perl and Ada definitions.
+  * Added Nord theme.
+
+-------------------------------------------------------------------
 Wed Jan 29 19:37:53 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.55:

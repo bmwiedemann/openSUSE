@@ -516,4 +516,27 @@
   * GUI: Removed deprecated QTime API call.</comment>
     <requestid>768443</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a0d6a891f45f45d2bfa81c8ee6f9659c</srcmd5>
+    <version>3.56</version>
+    <time>1586973919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.56:
+  * Added support for Sequence Alignment Maps (SAM files).
+  * Added empty-file mode to --no-trailing-nl
+    (gl#saalen/highlight#147).
+  * Fixed issue with --syntax-by-name waiting for stdin
+    (gl#saalen/highlight#151).
+  * Fixed issue with --syntax reading matching files in the
+    current working directory (gl#saalen/highlight#151).
+  * Fixed string parsing in lisp.lang (gl#saalen/highlight#150).
+  * Fixed output of UTF-8 text in xterm256 or truecolor output
+    (gl#saalen/highlight#152).
+  * Fixed regex in js.lang.
+  * Fixed calculation of testcase markers with UTF-8 input.
+  * Allowed number literals with underscores in Java, Scala, D,
+    Julia, C#, Perl and Ada definitions.
+  * Added Nord theme.</comment>
+    <requestid>792533</requestid>
+  </revision>
 </revisionlist>
