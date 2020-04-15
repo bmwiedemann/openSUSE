@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * QAtomicInteger::loadRelaxed/storeRelaxed() are available since Qt 5.14
+  * [KConfigGui] Check font weight when clearing styleName property
+  * KConfig: Convert to SPDX license statements
+  * Autotest file showing wrong File path
+  * KconfigXT: Add a value attribute to Enum field choices
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
