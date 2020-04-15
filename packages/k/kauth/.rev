@@ -650,4 +650,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.68</comment>
     <requestid>785299</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>3f46788d6e342a2301be8f2dfdb36e61</srcmd5>
+    <version>5.69.0</version>
+    <time>1586973647</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.69.0 (forwarded request 791660 from cgiboudeaux)</comment>
+    <requestid>793130</requestid>
+  </revision>
 </revisionlist>
