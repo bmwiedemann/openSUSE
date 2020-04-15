@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr  9 17:27:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.7.0
+  * Updates to MailExtensions API
+  * Various improvements to account setup when connecting to an
+    Exchange server
+  * Thread collapsed when opening news message in a new window
+  * Fix Addons not automatically updated to compatible version after
+    upgrade from Thunderbird 60
+  * Updating addons did not prompt when requesting new permissions
+  * Extra recipients panel not keyboard-accessible
+  * Accessibility: Status bar was not detected by screenreaders
+  * Calendar: Invitations with embedded null bytes did not always decode correctly
+  * Calendar: Cancelled events didn't show with a line-through
+  * Various security fixes
+  MFSA 2020-14
+  In general, these flaws cannot be exploited through email in 
+  Thunderbird because scripting is disabled when reading mail, but
+  are potentially risks in browser or browser-like contexts.
+  * CVE-2020-6819 (bmo#1620818, bsc#1168630)
+    Use-after-free while running the nsDocShell destructor
+  * CVE-2020-6820 (bmo#1626728, bsc#1168630)
+    Use-after-free when handling a ReadableStream
+  * CVE-2020-6821 (bmo#1625404, bsc#1168874)
+    Uninitialized memory could be read when using the WebGL
+    copyTexSubImage method
+  * CVE-2020-6822 (bmo#1544181, bsc#1168874)
+    Out of bounds write in GMPDecodeData when processing large images
+  * CVE-2020-6825 (bmo#1572541,bmo#1620193,bmo#1620203,bsc#1168874)
+    Memory safety bugs fixed in Thunderbird 68.7.0
+
+-------------------------------------------------------------------
 Sat Mar 14 13:16:23 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.6.0
