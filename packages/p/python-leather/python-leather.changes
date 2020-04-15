@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:14:12 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use pytest instead of nose 
+
+-------------------------------------------------------------------
 Wed Feb 27 08:50:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github tarball for tests and license file

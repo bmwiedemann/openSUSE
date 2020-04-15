@@ -25,4 +25,12 @@ https://build.opensuse.org/request/show/605895</comment>
     <comment>- Switch to github tarball for tests and license file</comment>
     <requestid>679759</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6c8bbe8e9f8f72081914dde3922adce1</srcmd5>
+    <version>0.3.3</version>
+    <time>1586973326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794046</requestid>
+  </revision>
 </revisionlist>

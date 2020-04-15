@@ -1,7 +1,7 @@
 #
 # spec file for package python-leather
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/leather
 Source:         https://github.com/wireservice/leather/archive/%{version}.tar.gz
 BuildRequires:  %{python_module lxml >= 3.6.0}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  fdupes
@@ -53,7 +53,7 @@ rm test.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %doc README.rst
