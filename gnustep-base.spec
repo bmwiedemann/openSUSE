@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define lname   libgnustep-base1_27
+%define         gnustep_sh       GNUstep.sh
+%define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
+%define         profile_dir      %{_sysconfdir}/profile.d
+%define         gs_userstart     GNUstep-start.sh
+%define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
+%define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-%define lname	libgnustep-base1_26
+Version:        1.27.0
+Release:        0
 Summary:        GNUstep Base library package
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/Other
-Version:        1.26.0
-Release:        0
-Url:            http://www.gnustep.org/
+URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-Requires:       gnustep-make
-
+BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel
 BuildRequires:  gnustep-make
@@ -42,7 +45,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-
+Requires:       gnustep-make
 #Handle different package names on fedora and suse
 %if 0%{?suse_version}
 BuildRequires:  avahi-compat-mDNSResponder-devel
@@ -55,15 +58,6 @@ BuildRequires:  gnutls-devel
 BuildRequires:  texi2html
 BuildRequires:  texinfo-tex
 %endif
-
-BuildRequires:  fdupes
-
-%define         gnustep_sh       GNUstep.sh
-%define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
-%define         profile_dir      %{_sysconfdir}/profile.d
-%define         gs_userstart     GNUstep-start.sh
-%define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
-%define         gs_library       %{_libdir}/GNUstep
 
 %description
 The GNUstep Base Library is a library of general-purpose,
@@ -97,7 +91,7 @@ This package contains include files for developing applications
 using the GNUstep Base Library.
 
 %prep
-%setup -q
+%autosetup
 find . -type f -name "*.swp" -delete
 
 %build
@@ -185,8 +179,8 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc ANNOUNCE ChangeLog COPYING COPYING.LIB NEWS README
+%license COPYING COPYING.LIB
+%doc ANNOUNCE ChangeLog NEWS README
 %{_bindir}/HTMLLinker
 %{_bindir}/autogsdoc
 %{_bindir}/cvtenc
@@ -206,27 +200,25 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %{_bindir}/xmlparse
 %{gs_library}
 %{gs_makefiles}
-%{_mandir}/man1/HTMLLinker.1%{ext_man}
-%{_mandir}/man1/autogsdoc.1%{ext_man}
-%{_mandir}/man1/cvtenc.1%{ext_man}
-%{_mandir}/man1/defaults.1%{ext_man}
-%{_mandir}/man1/gdnc.1%{ext_man}
-%{_mandir}/man1/gspath.1%{ext_man}
-%{_mandir}/man1/make_strings.1%{ext_man}
-%{_mandir}/man1/pldes.1%{ext_man}
-%{_mandir}/man1/sfparse.1%{ext_man}
-%{_mandir}/man1/xmlparse.1%{ext_man}
-%{_mandir}/man8/gdomap.8%{ext_man}
+%{_mandir}/man1/HTMLLinker.1%{?ext_man}
+%{_mandir}/man1/autogsdoc.1%{?ext_man}
+%{_mandir}/man1/cvtenc.1%{?ext_man}
+%{_mandir}/man1/defaults.1%{?ext_man}
+%{_mandir}/man1/gdnc.1%{?ext_man}
+%{_mandir}/man1/gspath.1%{?ext_man}
+%{_mandir}/man1/make_strings.1%{?ext_man}
+%{_mandir}/man1/pldes.1%{?ext_man}
+%{_mandir}/man1/sfparse.1%{?ext_man}
+%{_mandir}/man1/xmlparse.1%{?ext_man}
+%{_mandir}/man8/gdomap.8%{?ext_man}
 %if 0%{?suse_version}
 %config(noreplace) %{profile_dir}/%{gs_userstart}
 %endif
 
 %files -n %{lname}
-%defattr(-,root,root)
 %{_libdir}/libgnustep-base.so.*
 
 %files devel
-%defattr (-, root, root)
 %{_includedir}/*
 %{_libdir}/libgnustep-base.so
 
