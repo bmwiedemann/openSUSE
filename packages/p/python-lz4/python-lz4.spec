@@ -1,7 +1,7 @@
 #
 # spec file for package python-lz4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-lz4
-Version:        2.1.10
+Version:        3.0.2
 Release:        0
 Summary:        LZ4 Bindings for Python
 License:        BSD-3-Clause
@@ -34,12 +35,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  liblz4-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-future
 Requires:       python-psutil
-%ifpython2
-Requires:       python2-future
-%endif
 %python_subpackages
 
 %description
@@ -51,6 +49,8 @@ This package provides python bindings for the lz4 compression library.
 sed -i -e '/-O3/d' setup.py
 
 %build
+# not neccessary, but ensure we use system lib
+rm -r lz4libs
 export CFLAGS="%{optflags}"
 %python_build
 
@@ -59,8 +59,11 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# tests get stuck
-#%%pytest_arch
+# unit tests should be quick:
+# test_block_decompress_mem_usage, test_1, test_2
+# or require less memory:
+# test_huge*, test_invalid_config*
+%pytest_arch -k 'not (test_1 or test_2 or test_block_decompress_mem_usage or test_huge or test_invalid_config)'
 
 %files %{python_files}
 %license LICENSE
