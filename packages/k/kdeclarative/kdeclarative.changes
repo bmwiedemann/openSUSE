@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Introduce api for passive notifications
+  * [KCM Controls GridDelegate] Use `ShadowedRectangle`
+  * [kcmcontrols] Respect header/footer visibility
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
