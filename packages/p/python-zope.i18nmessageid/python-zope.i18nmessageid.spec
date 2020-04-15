@@ -42,7 +42,6 @@ In Zope3, i18nmessageid are special objects that has a structural i18nmessageid.
 
 %package     -n %{name}-doc
 Summary:        Zope Location
-Requires:       %{name} = %{version}
 Provides:       %{python_module zope.i18nmessageid-doc = %{version}}
 
 %description -n %{name}-doc
