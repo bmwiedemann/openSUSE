@@ -1,7 +1,7 @@
 #
 # spec file for package msmtp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 BuildRequires:  gnutls-devel
 BuildRequires:  libidn2-devel

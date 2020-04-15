@@ -377,4 +377,13 @@ I hope it's ok this time. (forwarded request 138894 from benoit_monin)</comment>
     <comment></comment>
     <requestid>763052</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0b4e851ed62c219894cb2113ecce3c36</srcmd5>
+    <version>1.8.8</version>
+    <time>1586973338</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.8
+- update expired msmtp.keyring (forwarded request 793412 from benoit_monin)</comment>
+    <requestid>793960</requestid>
+  </revision>
 </revisionlist>

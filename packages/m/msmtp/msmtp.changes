@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Apr 12 14:08:58 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.8:
+  * Added a new socket command and --socket option to connect via
+    local sockets.
+  * Added a new tls_host_override command and --tls-host-override
+    option to override the host name used for TLS verification.
+  * Added a new set_from_header command and --set-from-header
+    option with three settings:
+    + on: always set a From header, possibly replacing an existing
+      one
+    + off: never set a From header
+    + auto: add a From header if there is none (this is the
+      default).
+    This replaces the add_missing_from_header option (which remains
+     supported).
+  * Added a new set_date_header command and --set-date-header
+    option with two settings:
+    + off: never set a Date header
+    + auto: add a Date header if there is none (this is the
+      default).
+    This replaces the add_missing_date_header option (which remains
+    supported).
+  * Fixed the handling of empty From headers with
+    --read-recipients/-t.
+  * Fixed the source_ip command for proxies.
+- update expired msmtp.keyring
+
+-------------------------------------------------------------------
 Tue Dec 24 09:43:32 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.7:
