@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * [KCharSelect] Do not simplify single characters in search (kde#418461)
+  * Fix warning about incompatible enum types
+  * [KFontChooser] General code cleanup
+  * Copy KFontDialog from KDELibs4Support to KWidgetAddons, now KFontChooserDialog
+  * autotests: make ktooltipwidgettest more robust
+  * Port away from deprecated QSet methods
+  * It we readd items we need to clear it first. OTherwise we will see
+  * Update kcharselect-data to Unicode 13.0
+
+-------------------------------------------------------------------
 Sun Mar  8 09:18:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
