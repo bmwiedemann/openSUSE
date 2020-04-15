@@ -1,7 +1,7 @@
 #
 # spec file for package python-lesscpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lesscpy
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Lesscss compiler
 License:        MIT
 URL:            https://github.com/lesscpy/lesscpy
 Source:         https://files.pythonhosted.org/packages/source/l/lesscpy/lesscpy-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
+Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -66,7 +67,7 @@ rm test/test_{bootstrap3,less,issues}.py
 %python_uninstall_alternative lesscpy
 
 %check
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %license LICENSE
