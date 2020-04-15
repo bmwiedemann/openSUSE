@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:20:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 19.1.0
+  * Basic implementation of ``ldaptor.protocols.pureldap.LDAPSearchResultReference``.
+  * Explicit ``ldaptor.protocols.ldap.ldaperrors`` classes declaration was made
+    to allow syntax highlighting for this module.
+  * Example of using LDAP server with the database. Employees are store in the database table and retrieved
+    on server initialization.
+  * ``ldaptor.protocols.pureldap.LDAPPasswordModifyRequest`` string representation now contains
+    ``userIdentity``, ``oldPasswd`` and ``newPasswd`` attributes. Password attributes are represented as asterisks.
+  * ``ldaptor.protocols.pureldap.LDAPBindRequest`` string representation is now using asterisks to represent
+    ``auth`` attribute.
+  * ``NotImplementedError`` for ``ldaptor.protocols.pureldap.LDAPSearchResultReference`` was fixed.
+  * StartTLS regression bug was fixed: ``ldaptor.protocols.pureldap.LDAPStartTLSRequest.oid`` and
+    ``ldaptor.protocols.pureldap.LDAPStartTLSResponse.oid`` must be of bytes type.
+  * replace direct dependency on pyOpenSSL with Twisted[tls]
+
+-------------------------------------------------------------------
 Wed Sep 11 12:39:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by matrix-synapse-ldap3

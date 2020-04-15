@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldaptor
-Version:        19.0.0
+Version:        19.1.0
 Release:        0
 Summary:        A Pure-Python Twisted library for LDAP
 License:        MIT
