@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 15:15:32 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Recommend icewm if graphical installation (bsc#1165646)
+- 4.2.14
+
+-------------------------------------------------------------------
 Tue Mar 17 17:17:22 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Enable by default registration on SLE (bsc#1162846)
