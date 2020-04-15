@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:21:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Require info and mkeinfo at build time 
+
+-------------------------------------------------------------------
 Thu Nov  8 15:56:38 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xemacs-21.5.34-boo1115177.patch to avoid possible

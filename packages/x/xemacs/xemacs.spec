@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,12 @@ BuildRequires:  fdupes
 BuildRequires:  fwnndev
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
+BuildRequires:  info
 BuildRequires:  krb5
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  texinfo
@@ -61,7 +63,7 @@ Group:          Productivity/Editors/Emacs
 %define xbindir    /usr/bin
 %define xincludes  /usr/include
 %define xlibraries /usr/%{_lib}
-Url:            http://www.xemacs.org
+URL:            http://www.xemacs.org
 # Howto get the Mercurial tree of XEmacs:
 # See: http://xemacs.digimirror.nl/Develop/hgaccess.html
 # hg clone http://hg.debian.org/hg/xemacs/xemacs-beta
