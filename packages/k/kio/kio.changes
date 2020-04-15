@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Too many changes since 5.68.0, only listing bugfixes:
+  * FileWidgets: Ignore Return events from KDirOperator (kde#412737)
+  * [KNewFileMenu] Add extension to proposed filename (kde#61669)
+  * [DesktopExecParser] Open {ssh,telnet,rlogin}:// urls with ktelnetservice (kde#418258)
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
