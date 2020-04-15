@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 17:01:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove utilities with unsatisfied runtime
+  dependencies [boo#1168783]
+
+-------------------------------------------------------------------
 Wed Mar 18 07:28:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.4

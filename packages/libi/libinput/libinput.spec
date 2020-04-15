@@ -116,9 +116,11 @@ to develop applications that require libinput.
 %install
 %meson_install
 %fdupes %buildroot/%_prefix
-perl -i -pe 's{#!/usr/bin/env python}{#!/usr/bin/python}g' \
-	"%buildroot/usr/lib/libinput/libinput-measure-fuzz" \
-	"%buildroot/usr/lib/libinput/libinput-replay"
+# no python3-libevdev available
+for i in libinput-measure-fuzz libinput-measure-touch-size libinput-measure-touchpad-pressure libinput-measure-touchpad-tap libinput-replay; do
+	rm -fv "%buildroot/usr/lib/libinput/$i"
+	rm -fv "%buildroot/%_mandir/man1/$i".1*
+done
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
