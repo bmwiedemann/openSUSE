@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Apr  8 14:44:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.6.1
+  * lot of changes, see
+    https://github.com/gssapi/mod_auth_gssapi/releases
+- added patches
+  python3 and other testsuite fixes
+  + apache2-mod_auth_gssapi-test.patch
+
+-------------------------------------------------------------------
+Sun Feb  9 20:12:17 UTC 2020 - pgajdos@suse.com
+
+- removing %apache_test_* macros, do not test module just by
+  loading the module
+
+-------------------------------------------------------------------
+Tue Feb 28 15:29:32 UTC 2017 - k0da@opensuse.org
+
+- Initial mod_gssapi-1.5 version  
