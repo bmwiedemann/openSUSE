@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Base
-Url:            http://www.garloff.de/kurt/linux/ddrescue/
+URL:            http://www.garloff.de/kurt/linux/ddrescue/
 Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -145,7 +145,7 @@ mkdir %{buildroot}/bin
 ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 
 %check
-make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}" check
+make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fcommon" check
 
 %files
 %defattr(-,root,root,-)

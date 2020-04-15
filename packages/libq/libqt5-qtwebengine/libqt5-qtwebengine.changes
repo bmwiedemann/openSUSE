@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 08:21:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix1163766.patch to fix opensuse-welcome on i686 (boo#1163766)
+
+-------------------------------------------------------------------
 Mon Mar 30 13:49:40 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with GCC 10 (boo#1158516):

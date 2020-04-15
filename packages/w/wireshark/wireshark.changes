@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 08:42:06 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.3 (boo#1169063)
+  * CVE-2020-11647: The BACapp dissector could crash
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.3.html
+
+-------------------------------------------------------------------
 Fri Mar  6 10:01:51 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - Remove dependency on brotli, only the library is needed.

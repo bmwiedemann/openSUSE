@@ -1,7 +1,7 @@
 #
 # spec file for package dash
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause
 Group:          System/Shells
-Url:            http://gondor.apana.org.au/~herbert/dash/
+URL:            http://gondor.apana.org.au/~herbert/dash/
 Source:         http://gondor.apana.org.au/~herbert/dash/files/dash-%{version}.tar.gz
 BuildRequires:  libedit-devel
 
@@ -35,11 +35,12 @@ possible without sacrificing speed where possible.
 %setup -q
 
 %build
+%global optflags %{optflags} -fcommon
 %configure \
 	--enable-fnmatch \
 	--enable-glob \
 	--with-libedit
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

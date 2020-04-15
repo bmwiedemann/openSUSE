@@ -630,4 +630,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>736721</requestid>
   </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>988e5c1a449c462c970345a398a8b26e</srcmd5>
+    <version>6.9</version>
+    <time>1586973964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792699</requestid>
+  </revision>
 </revisionlist>

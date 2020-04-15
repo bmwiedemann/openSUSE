@@ -4451,4 +4451,41 @@ always built-in because vim has direct perl dependencies anyway.
   fixes build with gcc10 bsc#1160418</comment>
     <requestid>790192</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>14f6d0e7942d4ba24da912c4c136b854</srcmd5>
+    <version>8.2.0530</version>
+    <time>1586973954</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.0530, fixes the following problems
+  * Vim9: not all code tested.
+  * Vim9: constant expression not well tested.
+  * Vim9: expression tests don't use recognized constants.
+  * Terminal in popup test is still a bit flaky.
+  * Vim9: while loop not tested.
+  * Python 3.9 does not define _Py_DEC_REFTOTAL. (Zdenek Dohnal)
+  * Vim9: str_val is confusing, it's a number
+  * Cannot delete a text property matching both id and type. (Axel Forsman)
+  * Insufficient testing for indent.c.
+  * popup_atcursor() may hang. (Yasuhiro Matsumoto)
+  * Yaml files are only recognized by the file extension.
+  * Internal error when using &quot;0&quot; for a callback.
+  * Some Normal mode commands not tested.
+  * Printf test failing on Haiku.
+  * Tag kind can't be a multi-byte character. (Marcin Szamotulski)
+  * Hardcopy command not tested enough.
+  * Can use :pedit in a popup window.
+  * Vim9: import that redefines local variable does not fail.
+  * Various Normal mode commands not fully tested.
+  * The typebuf_was_filled flag is sometimes not reset, which may cause a hang.
+  * Crash with combination of terminal popup and autocmd.
+  * Prop_find() may not find text property at start of the line.
+  * Type of term_sendkeys() is unknown.
+  * Using wrong printf directive for jump location.
+  * Coverity warning for not using return value.
+  * Nasty callback test fails on some systems.
+  * No CI test for a big-endian system.
+  * prop_find() does not find all props.
+  * Gcc warns for ambiguous else.</comment>
+    <requestid>792680</requestid>
+  </revision>
 </revisionlist>

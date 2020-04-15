@@ -1,7 +1,7 @@
 #
 # spec file for package squashfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Read-Only File System with Efficient Compression
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://squashfs.sourceforge.net/
+URL:            http://squashfs.sourceforge.net/
 Source0:        http://sourceforge.net/projects/squashfs/files/squashfs/%{name}%{version}/%{name}%{version}.tar.gz
 Patch0:         squashfs-64k.patch
 Patch1:         squashfs-thread-limit
@@ -46,7 +46,7 @@ squashfs images.
 
 %build
 %define _lto_cflags %{nil}
-sed -i -e "s|-O2|%{optflags}|" squashfs-tools/Makefile
+sed -i -e "s|-O2|%{optflags} -fcommon|" squashfs-tools/Makefile
 make %{?_smp_mflags} -C squashfs-tools XZ_SUPPORT=1 LZO_SUPPORT=1 \
 %if %{?suse_version} > 1315
    LZ4_SUPPORT=1

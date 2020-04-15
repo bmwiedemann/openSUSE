@@ -1,7 +1,7 @@
 #
 # spec file for package python-imageio-ffmpeg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-imageio-ffmpeg
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
-License:        BSD-2-Clause
 Summary:        FFMPEG wrapper for Python
-Url:            https://github.com/imageio/imageio-ffmpeg
+License:        BSD-2-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/imageio/imageio-ffmpeg
 Source:         https://files.pythonhosted.org/packages/source/i/imageio-ffmpeg/imageio-ffmpeg-%{version}.tar.gz
 BuildRequires:  %{python_module pip > 19}
 BuildRequires:  %{python_module setuptools}
@@ -32,7 +33,6 @@ BuildRequires:  ffmpeg-4
 BuildRequires:  python-rpm-macros
 Requires:       ffmpeg-4
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

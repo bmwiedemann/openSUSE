@@ -1,7 +1,7 @@
 #
 # spec file for package python-bottle
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.12.18
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://bottlepy.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bottle/bottle-%{version}.tar.gz
 Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
@@ -30,6 +29,8 @@ Source2:        https://raw.githubusercontent.com/bottlepy/bottle/release-0.12/L
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -41,8 +42,6 @@ no dependencies other than the Python Standard Library.
 
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
-Requires:       %{name} = %{version}
 Provides:       %{python_module bottle-doc = %{version}}
 
 %description -n %{name}-doc
@@ -66,13 +65,18 @@ chmod -x bottle.egg-info/*
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/bottle.py
+%python_clone -a %{buildroot}%{_bindir}/bottle.py
+
+%post
+%python_install_alternative bottle.py
+
+%postun
+%python_uninstall_alternative bottle.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{_bindir}/bottle.py-%{python_bin_suffix}
-%python3_only %{_bindir}/bottle.py
+%python_alternative %{_bindir}/bottle.py
 %{python_sitelib}/bottle.py*
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/bottle-%{version}-py%{python_version}.egg-info

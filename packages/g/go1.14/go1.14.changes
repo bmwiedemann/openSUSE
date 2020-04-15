@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr  9 03:49:17 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.2 (released 2020-04-08) includes fixes to cgo, the go command,
+  the runtime, os/exec, and testing packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#38156 doc: BuildNameToCertificate deprecated in go 1.14 not mentioned in the release notes
+  * go#38118 runtime/pprof: lostProfileEvent stack breaks gentraceback guarantee
+  * go#38083 cmd/go/internal/test: data race in (*runCache).builderRunTest
+  * go#38072 runtime: timer self-deadlock due to preemption point
+  * go#38051 runtime: loops forever on sched_yield sometimes(timer related)
+  * go#38005 runtime: "pipe failed with -89" at program startup(mipsle only), timer related netpoll init.
+  * go#37970 runtime/pprof: panic: runtime error: index out of range [-1]
+  * go#37968 runtime: fatal error: found bad pointer in Go heap (incorrect use of unsafe or cgo?)
+  * go#37959 testing: data race between parallel panicking and normal subtest
+  * go#37931 cmd/go: explain automatic vendoring in 'go help modules'
+  * go#37928 runtime: GC pacing exhibits strange behavior with a low GOGC
+  * go#37800 cmd/go: 'Access is denied' when renaming module cache directory
+  * go#37699 PowerRegisterSuspendResumeNotification error on Azure App Services with go 1.13.7
+  * go#37622 cmd/cgo: fails to generate certain types with Go 1.14
+  * go#37480 runtime: "fatal error: unexpected signal" 0xC0000005 on Windows for a small program with a large allocation
+  * go#37471 os/exec: environForSysProcAttr is never called as sysattr.Env is never nil
+
+-------------------------------------------------------------------
 Fri Mar 20 04:31:14 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.1 (released 2020-03-19) includes fixes to the go command,

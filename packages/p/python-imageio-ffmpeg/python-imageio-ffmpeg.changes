@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 14:12:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.1
+  * The default value for ffmpeg_timeout is now zero, e.g. just wait for ffmpeg.
+  * Added bits_per_pixel parameter to read_frames.
+  * Official support for Python 3.8.
+  * Improved handling of interrupts during reading/writing/closing-down.
+  * Allow the ffmpeg_timeout arg in write_frames() to be None.
+  * Don't prevent sigint propagation for ffmpeg call in count_frames_and_secs().
+
+-------------------------------------------------------------------
 Wed Apr 17 15:01:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version

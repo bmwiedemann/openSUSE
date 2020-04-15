@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:29:51 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon to %optflags in order to fix boo#1160260.
+
+-------------------------------------------------------------------
 Thu Oct 25 06:07:40 UTC 2018 - sean@suspend.net
 
 - update to version 0.5.10

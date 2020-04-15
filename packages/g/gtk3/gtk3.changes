@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:27:09 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.24.18:
+  + Wayland: Fix more sizing regressions in Epiphany and
+    LibreOffice menus, and popups in general.
+  + Build: Make resource build reproducible.
+  + Updated translations.
+- Disable autogeneration of .changes in service, we are currently
+  using released tags so it is not needed.
+
+-------------------------------------------------------------------
+Sat Apr 04 11:15:42 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.24.17:
+  + GtkFileChooser: Fix some keynav issues.
+  + GtkMenuButton: disable focus-on-click.
+  + Derive the HighContrast and HighContrastInverse themes from
+    Adwaita.
+  + Wayland:
+    - Fix firefox sizing problems.
+    - Prevent Alt lingering after Alt-Tab.
+    - Load compose sequences from ~/.Compose.
+    - Fix a crash in the Wayland input method.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 28 16:59:58 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.24.16:

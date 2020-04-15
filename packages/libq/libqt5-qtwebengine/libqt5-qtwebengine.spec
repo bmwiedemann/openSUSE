@@ -76,6 +76,7 @@ Patch4:         QTBUG-81574.patch
 Patch5:         QTBUG-82186.patch
 # PATCH-FIX-OPENSUSE
 Patch6:         some-more-includes-gcc10.patch
+Patch7:         fix1163766.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

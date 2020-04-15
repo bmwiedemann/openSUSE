@@ -73,13 +73,14 @@ with Data Center Bridging (DCB) for Intel(R) Network Connections
 %patch0 -p1
 
 %build
+%global optflags %{optflags} -fcommon
 autoreconf -vi
 %configure \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 mkdir -p %{buildroot}/var/lib/lldpad

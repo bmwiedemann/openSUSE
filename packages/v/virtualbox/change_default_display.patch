@@ -1,0 +1,20 @@
+Index: VirtualBox-6.1.4/src/VBox/Main/src-all/Global.cpp
+===================================================================
+--- VirtualBox-6.1.4.orig/src/VBox/Main/src-all/Global.cpp
++++ VirtualBox-6.1.4/src/VBox/Main/src-all/Global.cpp
+@@ -284,13 +284,13 @@ const Global::OSType Global::sOSTypes[]
+ 
+     { "Linux",   "Linux",             "OpenSUSE",           "openSUSE (32-bit)",
+       VBOXOSTYPE_OpenSUSE,        VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET | VBOXOSHINT_X2APIC,
+-      1024,  16,  8 * _1G64, GraphicsControllerType_VMSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
++      1024,  16,  8 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97, AudioCodecType_AD1980  },
+ 
+     { "Linux",   "Linux",             "OpenSUSE_64",        "openSUSE (64-bit)",
+       VBOXOSTYPE_OpenSUSE_x64,    VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC
+                                 | VBOXOSHINT_USBTABLET | VBOXOSHINT_X2APIC,
+-      1024,  16,  8 * _1G64, GraphicsControllerType_VMSVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
++      1024,  16,  8 * _1G64, GraphicsControllerType_VBoxVGA, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97, AudioCodecType_AD1980  },
+ 
+     { "Linux",   "Linux",             "Turbolinux",         "Turbolinux (32-bit)",

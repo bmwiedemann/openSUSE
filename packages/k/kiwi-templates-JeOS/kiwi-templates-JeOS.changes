@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:59:02 UTC 2020 - Guilherme Moro <gmoro@suse.com>
+
+- Add qemu-guest-agent (bsc#1162932)
+
+-------------------------------------------------------------------
 Tue Mar 24 11:00:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Make the choice of systemd-logger for openSUSE explicit (bsc#1160657)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:17:38 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Run tests with -fcommon in order to fix boo#1160261.
+
+-------------------------------------------------------------------
 Thu Sep 20 13:16:41 UTC 2018 - schwab@suse.de
 
 - Avoid running dependency generation which can produce spurious errors

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:52:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
+Wed Apr  8 12:04:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop require on doc package to pull python2 package
+
+-------------------------------------------------------------------
 Sun Dec  8 16:56:51 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.18:

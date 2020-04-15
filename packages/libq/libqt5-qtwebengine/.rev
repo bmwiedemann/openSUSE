@@ -571,4 +571,12 @@
   * some-more-includes-gcc10.patch</comment>
     <requestid>790193</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>dc68bbe8a4bbdc70c65cca74fd2bb72e</srcmd5>
+    <version>5.14.1</version>
+    <time>1586973937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix1163766.patch to fix opensuse-welcome on i686 (boo#1163766)</comment>
+    <requestid>792653</requestid>
+  </revision>
 </revisionlist>

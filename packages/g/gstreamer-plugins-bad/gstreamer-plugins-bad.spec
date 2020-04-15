@@ -143,7 +143,6 @@ BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
 %if 0%{?is_opensuse}
 BuildRequires:  libbs2b-devel
 BuildRequires:  pkgconfig(fluidsynth)
-BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(tiger) >= 0.3.2
@@ -153,6 +152,7 @@ BuildRequires:  pkgconfig(zvbi-0.2)
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
 %endif
 %endif
+BuildRequires:  pkgconfig(libchromaprint)
 %ifarch x86_64
 BuildRequires:  pkgconfig(libmfx)
 BuildRequires:  pkgconfig(libva-drm)
@@ -378,8 +378,8 @@ Requires:       typelib-1_0-GstWebRTC-1_0 = %{version}
 %if 0%{?suse_version} >= 1500
 Requires:       libgstwayland-1_0-0 = %{version}
 %endif
-%if 0%{?is_opensuse}
 Requires:       gstreamer-plugins-bad-chromaprint
+%if 0%{?is_opensuse}
 Requires:       gstreamer-plugins-bad-fluidsynth
 %endif
 
@@ -465,6 +465,7 @@ processing capabilities can be added simply by installing new plug-ins.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
+%global optflags %{optflags} -fcommon
 export PYTHON=%{_bindir}/python3
 %if %{use_meson}
 %{meson} \
@@ -729,12 +730,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstteletext.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstzbar.so
 
-%files chromaprint
-%{_libdir}/gstreamer-%{gst_branch}/libgstchromaprint.so
-
 %files fluidsynth
 %{_libdir}/gstreamer-%{gst_branch}/libgstfluidsynthmidi.so
 %endif
+
+%files chromaprint
+%{_libdir}/gstreamer-%{gst_branch}/libgstchromaprint.so
 
 %files -n libgstadaptivedemux-1_0-0
 %{_libdir}/libgstadaptivedemux-%{gst_branch}.so.0*

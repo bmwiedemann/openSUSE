@@ -701,4 +701,12 @@
   Add net-snmp-5.8-add-lustre-fs-support.patch</comment>
     <requestid>713858</requestid>
   </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>239f0da5855267d98071fdde3b4edab7</srcmd5>
+    <version>5.8</version>
+    <time>1586973977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792719</requestid>
+  </revision>
 </revisionlist>

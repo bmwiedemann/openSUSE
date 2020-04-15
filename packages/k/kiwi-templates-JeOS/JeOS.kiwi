@@ -244,6 +244,9 @@
         <package name="xen-libs" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
+    <packages type="image" profiles="kvm-and-xen,OpenStack-Cloud">
+        <package name="qemu-guest-agent" arch="x86_64"/>
+    </packages>
     <packages type="image" profiles="VMware">
         <package name="open-vm-tools" arch="x86_64"/>
         <package name="kernel-default-base"/>

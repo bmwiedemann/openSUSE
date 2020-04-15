@@ -156,4 +156,14 @@
     <comment></comment>
     <requestid>755141</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a5ee95d888135fa8d35da412e514ad06</srcmd5>
+    <version>0.12.18</version>
+    <time>1586974042</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+
+- Drop require on doc package to pull python2 package</comment>
+    <requestid>793871</requestid>
+  </revision>
 </revisionlist>

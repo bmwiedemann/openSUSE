@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:26:46 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use -fcommon in order to fix boo#1160407.
+
+-------------------------------------------------------------------
 Fri Jan 24 11:12:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd directly:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:36:15 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
+
+- rst2man has been moved to python3-docutils in SLE12+, update
+  BuildRequires check to reflect that
+
+-------------------------------------------------------------------
 Wed Oct  2 20:06:53 UTC 2019 - palcantara@suse.de
 
 - Fix invalid free in mount.cifs; (bsc#1152930).

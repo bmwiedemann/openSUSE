@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:58:21 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.0530, fixes the following problems
+  * Vim9: not all code tested.
+  * Vim9: constant expression not well tested.
+  * Vim9: expression tests don't use recognized constants.
+  * Terminal in popup test is still a bit flaky.
+  * Vim9: while loop not tested.
+  * Python 3.9 does not define _Py_DEC_REFTOTAL. (Zdenek Dohnal)
+  * Vim9: str_val is confusing, it's a number
+  * Cannot delete a text property matching both id and type. (Axel Forsman)
+  * Insufficient testing for indent.c.
+  * popup_atcursor() may hang. (Yasuhiro Matsumoto)
+  * Yaml files are only recognized by the file extension.
+  * Internal error when using "0" for a callback.
+  * Some Normal mode commands not tested.
+  * Printf test failing on Haiku.
+  * Tag kind can't be a multi-byte character. (Marcin Szamotulski)
+  * Hardcopy command not tested enough.
+  * Can use :pedit in a popup window.
+  * Vim9: import that redefines local variable does not fail.
+  * Various Normal mode commands not fully tested.
+  * The typebuf_was_filled flag is sometimes not reset, which may cause a hang.
+  * Crash with combination of terminal popup and autocmd.
+  * Prop_find() may not find text property at start of the line.
+  * Type of term_sendkeys() is unknown.
+  * Using wrong printf directive for jump location.
+  * Coverity warning for not using return value.
+  * Nasty callback test fails on some systems.
+  * No CI test for a big-endian system.
+  * prop_find() does not find all props.
+  * Gcc warns for ambiguous else.
+  * Tiny popup when creating a terminal popup without minwidth.
+  * Using freed memory with :lvimgrep and autocommand. (extracted from POC
+  by Dominique Pelle)
+  * Some tests fail when run under valgrind.
+  * Wrong feature check causes test not to be run.
+  * Menu functionality insufficiently tested.
+  * Part from unfinished patch got included.
+  * Error for possible NULL argument to qsort().
+  * Printmbcharset option not tested.
+  * Delayed redraw when shifting text from Insert mode.
+  * Terminal postponed scrollback test is flaky.
+  * CI test coverage dropped.
+  * Coverity warns for using array index out of range.
+  * Coverity warns for not using return value.
+  * Coverity complains about using NULL pointer.
+  * Build fails with FEAT_EVAL but without FEAT_MENU.
+  * Cmdexpand.c insufficiently tested.
+  * Delayed screen update when using undo from Insert mode.
+  * Profile test fails when two functions take same time.
+  * Various memory leaks.
+  * Not all tests using a terminal are in the list of flaky tests.
+  * Not enough test coverage for evalvars.c.
+  * Setting local instead of global flag.
+  * When 'buftype' is "nofile" there is no overwrite check.
+  * Writefile() error does not give a hint.
+  * FileReadCmd event not well tested.
+  * No early check if :find and :sfind have an argument.
+  * Delete() commented out for testing.
+  * Search test leaves file behind.
+  * Channel test fails too often on slow Mac.
+  * Buffer menu does not handle special buffers properly.
+  * Channel connect_waittime() test is flaky.
+  * Bsdl filetype is not detected.
+  * Code in eval.c not sufficiently covered by tests.
+  * Various memory leaks in Vim9 script code.
+  * Vim9: cannot interrupt a loop with CTRL-C.
+  * Interrupting with CTRL-C does not always work.
+  * Crash when passing popup window to win_splitmove(). (john Devin)
+  * In some environments a few tests are expected to fail.
+  * Checking for wrong return value. (Tom)
+  * Code for modeless selection not sufficiently tested.
+  * Some errors were not tested for.
+  * It is not possible to check for a typo in a feature name.
+  * Buffer name may leak.
+  * No warning when test checks for option that never exists.
+  * Window creation failure not properly tested.
+  * Some compilers don't support using \e for Esc. (Yegappan Lakshmanan)
+  * A few tests fail in a huge terminal.
+  * INT signal not properly tested.
+  * Channel contents might be freed twice.
+  * No warnings for incorrect printf arguments.
+  * :disassemble has minor flaws.
+  * Channel contents might be used after being freed.
+  * Clipboard code is spread out.
+  * Swap file test fails on some systems.
+  * Listener with undo of deleting all lines not tested.
+  * Terminal scroll tests fails on some systems.
+  * Various functions not properly tested.
+  * Vim9: crash if return type is invalid. (Yegappan Lakshmanan)
+  * Not enough testing for restricted mode and function calls.
+  * Win32: double-width character displayed incorrectly.
+  * channel_parse_messages() fails when called recursively.
+  * Trailing space in job_start() command causes empty argument.
+  * Some tests fail when the system is slow.
+  * Cannot set the highlight group for a specific terminal.
+  * Test_confirm_cmd is flaky.
+  * Test_quotestar() often fails when run under valgrind.
+  * Missing feature check in test function.
+  * Cannot check if a function name is correct.
+  * Build failure because of wrong feature name.
+  * Confirm test fails on amd64 system. (Alimar Riesebieter)
+  * Previewwindow test fails on some systems. (James McCoy)
+  * Build error without float and channel feature. (John Marriott)
+  * Typos and other small problems.
+  * Vim9: dead code and wrong return type.
+  * Not parsing messages recursively breaks the govim plugin.
+  * Vim9: some errors are not tested
+  * GUI: pixel dust with some fonts and characters.
+  * Vim9: no error for missing ] after list.
+  * Test_confirm_cmd_cancel() can fail on a slow system.
+  * Missing change to compile_list().
+  * Terminal highlight name is set twice, leaking memory.
+  * Variables declared in an outer scope.
+  * Cannot use :write when using a plugin with BufWriteCmd.
+  * Channel out_cb test still fails sometimes on Mac.
+  * Terminal nasty callback test fails sometimes.
+  * Vim9: error messages not tested.
+  * New buffers are not added to the Buffers menu.
+  * Unloading shared libraries on exit has no purpose.
+  * Vim9: some code is not tested.
+  * Travis is still using trusty.
+  * Channel and sandbox code not sufficiently tested.
+  * Vim9: "let x = x + 1" does not give an error.
+  * Vim9: some error messages not tested.
+  * Vim9 script test fails.
+  * Vim9: some code and error messages not tested.
+  * Vim9: compiling not sufficiently tested.
+  * Vim9: Compiling can break when using a lambda inside :def.
+  * Vim9: memory leaks.
+  * Win32: VTP doesn't respect 'restorescreen'.
+  * Cannot recognize a <script> mapping using maparg().
+  * Vim9: some error messages not tested.
+  * Vim9: some error messages not tested.
+  * Vim9: asan error.
+  * Vim9: some code not tested.
+  * Vim9: disassemble test fails.
+  * Too verbose output from the asan build in Travis.
+  * Coverity complains about uninitialized field.
+  * Calling a lambda is slower than evaluating a string.
+  * Using the same loop in many places.
+  * Vim9: script test fails when channel feature is missing.
+  * Vim9: some code is not tested.
+  * Vim9: some code is not tested.
+  * Vim9: leaking scope memory when compilation fails.
+  * term_getty() not sufficiently tested.
+  * Coverity complains about ignoring return value.
+  * Getbufvar() may get the wrong dictionary. (David le Blanc)
+  * Vim9: func and partial types not done yet
+  * various code is not properly tested.
+  * Coverity complains about using uninitialized variable.
+  * Cscope code not fully tested.
+  * Vim9: no optional arguments in func type.
+  * Reading past allocated memory when using varargs.
+  * Several global functions are used in only one file.
+  * Some compilers cannot add to "void *".
+  * Client-server code is spread out.
+  * Vim9: cannot separate "func" and "func(): void".
+  * A terminal falls back to setting $TERM to "xterm".
+  * Vim9: return type not properly checked.
+  * Tests are not listed in sorted order.
+  * Crash when reading a blob fails.
+  * Several errors are not tested for.
+  * Vim9: function types insufficiently tested.
+  * Vim9: function arguments insufficiently tested.
+  * Vim9: function argument with default not checked.
+  * Test crashes on s390. (James McCoy)
+
+-------------------------------------------------------------------
 Tue Mar 31 14:23:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Disable more tests failing randomly on OBS:

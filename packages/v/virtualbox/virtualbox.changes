@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  9 21:49:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Change default display type for openSUSE virtual machines. The default type
+  has been VMSVGA; however, this display type fails to utilize driver vboxvideo.
+  thus the display size is fixed. This problem is under investigation, but
+  until a fix is found, the default is changed to VBoxVGA with file
+  "add change_default_display.patch".
+- Makefile in the kernel-host-source package has a typo bug fixed (boo#1168910)
+  and a large number of warnings are fixed.
+
+-------------------------------------------------------------------
+Sun Apr  5 18:05:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply fixes for kernel 5.6 unconditionally
+- adjust fixes_for_5.6.patch in such a way, it can be applied unconditionally
+  (in order to support builds for newer kernel with older distributions)
+
+-------------------------------------------------------------------
 Sun Mar 29 19:20:48 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build errors for gcc-10 (boo#1167897). File "fixes_for_gcc10.patch" is

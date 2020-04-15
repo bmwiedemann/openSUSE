@@ -90,4 +90,12 @@
 - Add lsof for zypper ps (bsc#1167553)</comment>
     <requestid>787750</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>491dcced60cc4029771220032e27d527</srcmd5>
+    <version>84.87</version>
+    <time>1586973998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792772</requestid>
+  </revision>
 </revisionlist>

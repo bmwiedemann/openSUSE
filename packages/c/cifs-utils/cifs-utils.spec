@@ -1,7 +1,7 @@
 #
 # spec file for package cifs-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Utilities for doing and managing mounts of the Linux CIFS filesystem
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
-Url:            http://www.samba.org/linux-cifs/cifs-utils/
+URL:            http://www.samba.org/linux-cifs/cifs-utils/
 # origin   git://git.samba.org/cifs-utils.git
 # for-next https://github.com/piastry/cifs-utils.git
 Source:         https://ftp.samba.org/pub/linux-cifs/%{name}/%{name}-%{version}.tar.bz2
@@ -48,7 +48,7 @@ Patch11:        0012-mount.cifs-Fix-invalid-free.patch
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
 # some products do not have a py2/py3 versions
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150000
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 120000
 BuildRequires:  python3-docutils
 %else
 BuildRequires:  python-docutils

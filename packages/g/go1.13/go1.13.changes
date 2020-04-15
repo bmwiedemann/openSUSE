@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  9 03:49:17 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.10 (released 2020/04/08) includes fixes to the go command,
+  the runtime, os/exec, and time packages.
+  Refs boo#1149259.
+  * go#38236 time: NewTicker will not emit ticks at a frequency greater than 1/sec on qemu user mode ppc64le
+  * go#38082 cmd/go/internal/test: data race in (*runCache).builderRunTest
+  * go#37901 cmd/compile/internal/syntax: TestStdLib verbosely broken on Windows
+  * go#37895 os: TestRemoveAllWithMoreErrorThanReqSize is failing on Plan 9 and Windows
+  * go#37892 net/http: TestCancelRequestWithChannelBeforeDo_Cancel failure on Windows long test
+  * go#37802 cmd/go: 'Access is denied' when renaming module cache directory
+  * go#37483 runtime: "fatal error: unexpected signal" 0xC0000005 on Windows for a small program with a large allocation
+  * go#37433 os/exec: environForSysProcAttr is never called as sysattr.Env is never nil
+  * go#37230 PowerRegisterSuspendResumeNotification error on Azure App Services with go 1.13.7
+
+-------------------------------------------------------------------
 Fri Mar 20 04:30:47 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.13.9 (released 2020/03/19) includes fixes to the go command,

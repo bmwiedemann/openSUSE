@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:56:24 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1160404.
+
+-------------------------------------------------------------------
 Thu Jul  4 08:06:47 UTC 2019 - abergmann@suse.com
 
 - Add Lustre filesystem support (bsc#1140341).

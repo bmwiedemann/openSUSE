@@ -19,27 +19,18 @@ Index: VirtualBox-6.1.4/Config.kmk
 +       $(SED_EXT) 's|\([0-9]\)\.\{0,1\}\([0-9]\{0,1\}\)\.\{0,1\}\([0-9]\{0,1\}\).*|$$(int-add $$(int-mul 10000, \1), $$(int-mul 100, $$(firstword \2 0)), $$(firstword \3 0))|' )
 + endif
  endif
+ 
  # YASM macros
- ifndef DONT_USE_YASM
-Index: VirtualBox-6.1.4/include/iprt/formats/mach-o.h
+Index: VirtualBox-6.1.4/src/VBox/Debugger/DBGCDumpImage.cpp
 ===================================================================
---- VirtualBox-6.1.4.orig/include/iprt/formats/mach-o.h
-+++ VirtualBox-6.1.4/include/iprt/formats/mach-o.h
-@@ -38,7 +38,7 @@
- /* cputype */
- #define CPU_ARCH_MASK               INT32_C(0xff000000)
- #define CPU_ARCH_ABI64              INT32_C(0x01000000)
--#define CPU_TYPE_ANY                INT32_C(-1)
-+#define CPU_TYPE_ANY                INT32_C(999)
- #define CPU_TYPE_VAX                INT32_C(1)
- #define CPU_TYPE_MC680x0            INT32_C(6)
- #define CPU_TYPE_X86                INT32_C(7)
-@@ -53,7 +53,7 @@
- #define CPU_TYPE_POWERPC64          (CPU_TYPE_POWERPC | CPU_ARCH_ABI64)
- 
- /* cpusubtype */
--#define CPU_SUBTYPE_MULTIPLE        INT32_C(-1)
-+#define CPU_SUBTYPE_MULTIPLE        -1
- #define CPU_SUBTYPE_LITTLE_ENDIAN   INT32_C(0)
- #define CPU_SUBTYPE_BIG_ENDIAN      INT32_C(1)
- 
+--- VirtualBox-6.1.4.orig/src/VBox/Debugger/DBGCDumpImage.cpp
++++ VirtualBox-6.1.4/src/VBox/Debugger/DBGCDumpImage.cpp
+@@ -468,7 +468,7 @@ static const char *dbgcMachoCpuType(uint
+ {
+     switch (uType)
+     {
+-        case CPU_TYPE_ANY:          return "CPU_TYPE_ANY";
++        default:		    return "CPU_TYPE_ANY";
+         case CPU_TYPE_VAX:          return "VAX";
+         case CPU_TYPE_MC680x0:      return "MC680x0";
+         case CPU_TYPE_X86:          return "X86";

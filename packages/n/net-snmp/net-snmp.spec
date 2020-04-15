@@ -1,7 +1,7 @@
 #
 # spec file for package net-snmp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,7 +35,7 @@ Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
 Group:          Productivity/Networking/Other
-Url:            http://sourceforge.net/projects/net-snmp
+URL:            http://sourceforge.net/projects/net-snmp
 Source:         http://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz
 Source1:        snmpd.service
 Source2:        snmpd.conf
@@ -222,7 +222,7 @@ autoreconf -fvi
 	--with-sys-contact="root@localhost" \
 	--with-sys-location="unknown" \
 	--with-mib-modules="$MIBS" \
-	--with-cflags="%{optflags}" \
+	--with-cflags="%{optflags} -fcommon" \
         --with-ldflags="-Wl,-z,relro -Wl,-z,now" \
 	--with-persistent-directory="%{_localstatedir}/lib/net-snmp" \
 	--with-agentx-socket="%{netsnmp_agentx_socket_dir_fhs}/master" \

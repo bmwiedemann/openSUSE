@@ -158,6 +158,8 @@ Patch136:       VirtualBox-6.1.4-VBoxClient-vmsvga-x11-crash.patch
 Patch137:       fix-missing-includes-with-qt-5.15.patch
 # Fix builds with GCC10
 Patch138:       fixes_for_gcc10.patch
+# Change default display type
+Patch139:       change_default_display.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  LibVNCServer-devel
@@ -460,12 +462,11 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %endif
 %patch133 -p1
 %patch134 -p1
-%if 0%{?suse_version} > 1500
 %patch135 -p1
-%endif
 %patch136 -p1
 %patch137 -p1
 %patch138 -p1
+%patch139 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 
