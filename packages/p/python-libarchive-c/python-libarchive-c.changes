@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 15 12:28:28 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.9
+  * Changes to the library:
+      optimized the ArchiveEntry class (#94)
+      added support for the zstd format (#90)
+      fixed the top-level __all__ list (7b97d8b)
+      updated the code to support Python 3.8 (#88)
+      improved the add_file_from_memory method (#85 and #86)
+      lowered the level of log messages from warning to info (#83)
+  * Tests:
+      dropped testing with Python 3.4, added 3.7 and 3.8 (#88)
+      fixed unicode handling in entry tests (#84)
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive-c
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-libarchive-c
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Python interface to libarchive
 License:        CC0-1.0
@@ -31,11 +30,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libarchive-devel
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  libarchive-devel
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -52,10 +51,9 @@ dynamically load and access the C library.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+export LANG="en_US.UTF-8"
+%pytest
 
 %files %{python_files}
 %doc README.rst
