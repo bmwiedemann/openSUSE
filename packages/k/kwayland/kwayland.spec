@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.68
+%define _tar_path 5.69
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kwayland
-Version:        5.68.0
+Version:        5.69.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
 BuildRequires:  cmake(Qt5Gui) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5WaylandClient) >= 5.12.0
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-protocols)
