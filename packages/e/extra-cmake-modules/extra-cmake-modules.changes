@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * ECMPoQmToolsTest: have separate moc files for tr_thread_test 1 & 2
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
