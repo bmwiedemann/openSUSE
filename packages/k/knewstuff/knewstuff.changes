@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Show filename too
+  * Fix layout in DownloadItemsSheet (kde#419535)
+  * [QtQuick dialog] Port to UrlBUtton and hide when there's no URL
+  * Switch to using Kirigami's ShadowedRectangle
+  * Fix update scenarios with no explicit downloadlink selected (kde#417510)
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
