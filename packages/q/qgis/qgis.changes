@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:33:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.12.1 (bugfix)
+- Use gdal 3 for all openSUSE versions since Leap 15.1 also have
+  gdal 3 now
+
+-------------------------------------------------------------------
 Thu Mar 12 13:47:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use gdal 3 where possible because of bugs with gdal 2
