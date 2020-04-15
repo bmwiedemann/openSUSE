@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:50:43 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.5.2
+  * Remove webui build by default from the spec
+  * Fix download-logs usage
+  * Add command line filters configuration file
+  * Add benchmark script
+  * Add only\_model option to the MQTT service
+  * Remove SCL macros from the spec file
+  * Fix exclude-lines regexp joblib dump
+  * Report result to zuul using an artifact instead of the log\_url
+  * Improve tokenizer for OpenStack logs
+  * Add exclude lists to the MQTT service
+  * Add mqtt based worker
+  * Fix IPv6 tokenization when the last field contains letter
+  * Add mqtt client service structure
+  * Refactor worker process in the main logreduce module
+  * Try to detect binary file
+  * Ignore bzip2 extension
+  * Ignore pcap file
+  * Add exclude-lines argument
+  * Move the log link to the additional info in the html output
+  * Fix concurrent logreduce-tests job
+  * Ignore atop.bin file and tarball
+  * Make server installation optional
+  * Fix scikit-learn 0.21.3 support
+  * Ignore files from supportconfig plugins
+  * Ignore files from /proc/net
+  * Ignore files with .raw extension
+  * Correctly show the gaps between hunks of context
+  * Show the gaps between hunks of context like grep does
+  * Add some short options for convenience
+  * Show default values in help text
+  * Reduce deprecation warnings by declaring raw strings
+  * Add server configuration instructions
+- deleted patches
+  - scikit.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Sep 12 17:38:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add aptch to fix build with new scikit:

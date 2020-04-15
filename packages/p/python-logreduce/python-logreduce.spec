@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-logreduce
-Version:        0.4.0
+Version:        0.5.2
 Release:        0
 Summary:        Log file anomaly extractor
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://logreduce.softwarefactory-project.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logreduce/logreduce-%{version}.tar.gz
-Patch0:         scikit.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -80,8 +79,6 @@ failed logs:
 
 %prep
 %setup -q -n logreduce-%{version}
-%patch0 -p1
-
 sed -i -e 's,flake8.*,,' test-requirements.txt
 
 %build
@@ -92,7 +89,7 @@ sed -i -e 's,flake8.*,,' test-requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
@@ -101,6 +98,7 @@ sed -i -e 's,flake8.*,,' test-requirements.txt
 %python3_only %{_bindir}/logreduce-client
 %python3_only %{_bindir}/logreduce-server
 %python3_only %{_bindir}/logreduce-worker
+%python3_only %{_bindir}/logreduce-mqtt
 %{python_sitelib}/*
 
 %changelog
