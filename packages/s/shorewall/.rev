@@ -2019,4 +2019,48 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
     <comment></comment>
     <requestid>785459</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>3bc79fc3fc7616c2689c06fd4a96a597</srcmd5>
+    <version>5.2.4</version>
+    <time>1586973295</time>
+    <user>dimstar_suse</user>
+    <comment>- Add perl-base as buildrequirement to force choice of SHA-DIGEST
+  new problem in TW
+- To fix boo#1166114 never restart shorewall-init.service
+  macro service_del_postun is replaced by simplier systemd_postun
+- Remove conflict between main and lite package.
+  A managing station need main to build configuration and can use
+  -lite to execute it. Users are in charge of choosing which
+  service has to be started and used. ❤ Freedom
+- Remove shorewall require from shorewall-init (was a forgoten
+  action)
+- Update to version 5.2.4
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/releasenotes.txt
+  + Previously, when a Shorewall6 firewall was placed into the
+    'stopped' state, ICMP6 packets required by RFC 4890 were not
+    automatically accepted by the generated ruleset.
+    Beginning with this release, those packets are automatically
+    accepted.
+  + Previously, the output of 'shorewall[6] help' displayed the
+    superseded 'load' command. That text has been deleted.
+  + The QOSExample.html file in the documentation and on the web site
+    previously showed tcrules content for the /etc/shorewall/mangle
+    file (recall that 'mangle' superseded 'tcrules'). That page has
+    been corrected.
+  + The 'Starting and Stopping' and 'Configuration file basics'
+    documents have been updated to align them with the current product
+    behavior.
+  +  The 'ipsets' document has been updated to clarify the use of
+    ipsets in the stoppedrules file.
+- Packaging
+  + shorewall-init package has a removed %service_del_postun
+    macro to close bug boo#1166114 Restarting this service can
+    lock down admin out of the system.
+  + shorewall(6) and shorewall(6)-lite conflict has they shouldn't
+    be installed together on the same system.
+  + conf_update flag is set to 1 to activate update reminder
+  + Adjust and cleanup requires
+- Add version to requires in -lite version</comment>
+    <requestid>793944</requestid>
+  </revision>
 </revisionlist>

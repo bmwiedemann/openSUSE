@@ -12,7 +12,8 @@ can be done via a GUI.
 This is not the case for Shorewall.
 
 Enabling Firewall in /etc/sysconfig/network/config or in individual
-ifcfg-xxx files is not enough. /etc/sysconfig/shorewall-init should be  
+ifcfg-xxx files is not enough. 
+If using shorewall-init /etc/sysconfig/shorewall-init should be  
 configured.
 
 As the shorewall web page states

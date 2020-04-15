@@ -18,15 +18,15 @@
 
 %define have_systemd 1
 %define dmaj 5.2
-%define dmin 5.2.3
+%define dmin 5.2.4
 # Warn users for upgrading configuration but only on major or minor version changes
-%define conf_need_update 0
+%define conf_need_update 1
 #2017+ New fillup location
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.3.7
+Version:        5.2.4
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only
@@ -48,10 +48,12 @@ Patch2:         shorewall-fillup-install.patch
 # PATCH-FIX-OPENSUSE Shorewall-lite (6) use of fillup template
 Patch3:         shorewall-lite-fillup-install.patch
 BuildRequires:  bash >= 4
+BuildRequires:  perl-base
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{_sbindir}/service
 Requires:       %{name}-core = %{version}-%{release}
+Requires:       bc
 Requires:       iproute2
 Requires:       iptables
 Requires:       logrotate
@@ -96,6 +98,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 Requires:       %{_sbindir}/service
 Requires:       %{name}-core = %{version}-%{release}
+Requires:       bc
+Requires:       iproute2
+Requires:       iptables
 Requires:       logrotate
 Requires:       perl-base
 PreReq:         %fillup_prereq
@@ -113,6 +118,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 Requires:       %{_sbindir}/service
 Requires:       %{name}-core = %{version}-%{release}
+Requires:       bc
+Requires:       iproute2
+Requires:       iptables
 Requires:       logrotate
 PreReq:         %fillup_prereq
 Provides:       shoreline_firewall = %{version}-%{release}
@@ -127,12 +135,12 @@ Shorewall6 Lite is a companion product to Shorewall6 that allows network
 administrators to centralize the configuration of Shorewall6-based firewalls.
 
 %package  init
-Summary:        Adds functionality to Shoreline Firewall (Shorewall)
+Summary:        Adds functionality during boot to Shoreline Firewall (Shorewall)
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 Requires:       %{_sbindir}/service
-Requires:       %{name} >= 5.0
 Requires:       logrotate
+Requires:       shoreline_firewall = %{version}-%{release}
 PreReq:         %fillup_prereq
 %{?systemd_requires}
 
@@ -219,12 +227,8 @@ for i in $targets; do
         sbindir=%{_sbindir} \
         %if 0%{?have_systemd}
             servicedir=%{_unitdir} \
+            initdir= \
         %endif
-# ensure correct service files are installed
-       %if 0%{?systemd_version} >= 214
-           servicefile=${i}.service.214 \
-       %endif
-
        sharedir=%{_datadir}
 
     if [ $i != shorewall-init ];then
@@ -352,15 +356,18 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %pre init
 %service_add_pre shorewall-init.service
 
-%post  init
+%post init
 %{fillup_only}
 %service_add_post shorewall-init.service
 
-%postun  init
-%service_del_postun shorewall-init.service
-
-%preun  init
+%preun init
 %service_del_preun shorewall-init.service
+
+%postun init
+# boo#1166114 Never try to restart shorewall-init
+# You can lock down the system so never use
+#%%service_del_postun shorewall-init.service macro
+%systemd_postun
 
 %files
 %defattr(-,root,root,-)
