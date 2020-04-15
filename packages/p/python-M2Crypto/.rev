@@ -324,4 +324,12 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
     <comment></comment>
     <requestid>782871</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>d4cfacba5d66f90b4fd9ed5e0c9284e8</srcmd5>
+    <version>0.35.2</version>
+    <time>1586973900</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in py2 pkg on doc subpkg</comment>
+    <requestid>792455</requestid>
+  </revision>
 </revisionlist>

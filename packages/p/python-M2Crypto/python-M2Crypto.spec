@@ -62,7 +62,6 @@ messenger for Zope.
 %package -n %{name}-doc
 Summary:        Documentation for the Crypto and SSL toolkit for Python
 Group:          Development/Libraries/Python
-Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description -n %{name}-doc
