@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 04:36:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.6:
+  * Add some wine core processes to be excluded from monitor (Fixes Battle.net
+    and Origin installation issues)
+  * Convert play time from string to float in the database. Do not downgrade
+    back to older versions or you'll experience issues.
+  * Fix for the wine sandbox on non English systems
+  * Allow Citra and MAME to be launched as standalone programs
+  * Avoid a crash if ldconfig -p returns corrupt data
+  * Allow custom messages to be displayed at the end of install scripts
+  * Add option to provide alternate config file for PCSX2 games
+  * Fix issue with usernames containing accented characters
+  * Fix "Restrict to display" option on Wayland/Mutter
+  * Fix blurry icons on KDE
+  * Remove broken translation files (until internationalization is done properly)
+  * Switch source of DXVK builds to Lutris' own (allows Lutris to delay broken
+    DXVK releases and ship custom ones)
+
+-------------------------------------------------------------------
 Mon Mar 30 11:32:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.5:

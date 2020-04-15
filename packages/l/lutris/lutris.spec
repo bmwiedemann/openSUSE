@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -85,6 +85,7 @@ sed -i "s|!/usr/bin/env python3|!/usr/bin/python3|" share/lutris/bin/lutris-wrap
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/icons/hicolor/??x??/apps/%{name}.png
+%{_datadir}/icons/hicolor/???x???/apps/%{name}.png
 %{python3_sitelib}/%{name}-*.egg-info
 %{python3_sitelib}/%{name}/
 %dir %{_datadir}/metainfo/
