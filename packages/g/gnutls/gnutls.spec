@@ -28,7 +28,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.6.12
+Version:        3.6.13
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -39,6 +39,7 @@ Source1:        ftp://ftp.gnutls.org/gcrypt/gnutls/v3.6/%{name}-%{version}.tar.x
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch1:         gnutls-3.5.11-skip-trust-store-tests.patch
+Patch2:         gnutls-fips_correct_nettle_soversion.patch
 Patch4:         gnutls-3.6.6-set_guile_site_dir.patch
 BuildRequires:  autogen
 BuildRequires:  automake
@@ -86,13 +87,24 @@ of the IETF's TLS working group.
 
 %package -n libgnutls%{gnutls_sover}
 Summary:        The GNU Transport Layer Security Library
+# install libopenssl and libopenssl-hmac close together (bsc#1090765)
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
+Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
 
 %description -n libgnutls%{gnutls_sover}
 The GnuTLS library provides a secure layer over a reliable transport
 layer. Currently the GnuTLS library implements the proposed standards
 of the IETF's TLS working group.
+
+%package -n libgnutls%{gnutls_sover}-hmac
+Summary:        Checksums of the GNU Transport Layer Security Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Requires:       libgnutls%{gnutls_sover} = %{version}-%{release}
+
+%description -n libgnutls%{gnutls_sover}-hmac
+FIPS SHA256 checksums of the libgnutls library.
 
 %package -n libgnutls-dane%{gnutls_dane_sover}
 Summary:        DANE support for the GNU Transport Layer Security Library
@@ -157,9 +169,7 @@ Requires:       guile
 GnuTLS Wrappers for GNU Guile, a dialect of Scheme.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 export LDFLAGS="-pie"
@@ -268,6 +278,8 @@ make %{?_smp_mflags} check || {
 
 %files -n libgnutls%{gnutls_sover}
 %{_libdir}/libgnutls.so.%{gnutls_sover}*
+
+%files -n libgnutls%{gnutls_sover}-hmac
 %{_libdir}/.libgnutls.so.%{gnutls_sover}*.hmac
 
 %if %{with dane}

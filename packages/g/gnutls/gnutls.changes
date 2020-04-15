@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:32:01 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Use correct nettle .so version when looking for a FIPS checksum
+  (bsc#1166635)
+  * add gnutls-fips_correct_nettle_soversion.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 08:48:39 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 3.6.13
+  * libgnutls: Fix a DTLS-protocol regression (caused by TLS1.3
+support)
+    The DTLS client would not contribute any randomness to the DTLS negotiation,
+    breaking the security guarantees of the DTLS protocol (#960)
+    [GNUTLS-SA-2020-03-31, CVSS: high] (bsc#1168345)
+  * libgnutls: Added new APIs to access KDF algorithms (#813).
+  * libgnutls: Added new callback gnutls_keylog_func that enables a custom
+    logging functionality.
+  * libgnutls: Added support for non-null terminated usernames in PSK
+    negotiation (#586).
+  * gnutls-cli-debug: Improved support for old servers that only support
+    SSL 3.0.
+
+-------------------------------------------------------------------
+Mon Mar 30 12:43:33 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Split off FIPS checksums into a separate libgnutls30-hmac
+  subpackage (bsc#1152692)
+
+-------------------------------------------------------------------
 Tue Feb  4 09:49:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - gnutls 3.6.12
