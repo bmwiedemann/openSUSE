@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -201,7 +201,7 @@ export CFLAGS="%{optflags} -fPIE -pie"
 %cmake -DWITH_APPINDICATOR=OFF
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install

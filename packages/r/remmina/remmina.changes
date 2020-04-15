@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr  9 05:44:21 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.2
+  * Bug-fixing release related to SSH bugs
+
+  * Adds ClientBuild settings to RDP plugin to specify client version build number
+  * Spelling: Smaller bullet points, RDP plugin
+  * Allow formatting for SSH session filename
+  * web-browser plugin fixes
+  * Make duplicate session sensitive only if a profile exists
+  * Issue template reworked
+  * Fix null pointer dereference in remmina_main_quickconnect
+  * SFTP with tunnel fixes
+  * Cppcheck and PVS Studio Fixes
+  * VNCI fixes
+  * Typo fix in remmina_ssh.c
+  * Allow enter key in domain textbox of authentication dialog to submit
+  * rcw event sources cleanup
+
+-------------------------------------------------------------------
 Tue Feb 25 18:06:28 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.1
