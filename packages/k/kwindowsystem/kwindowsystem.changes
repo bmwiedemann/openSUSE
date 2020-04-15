@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Fix EWMH non-compliance for NET::{OnScreenDisplay,CriticalNotification}
+  * KWindowSystem: deprecate KStartupInfoData::launchedBy, unused
+  * Expose application menu via KWindowInfo
+  * KWindowSystem: Convert license headers to SPDX expressions
+
+-------------------------------------------------------------------
 Sun Mar  8 09:18:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
