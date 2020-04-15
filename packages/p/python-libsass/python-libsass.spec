@@ -1,7 +1,7 @@
 #
 # spec file for package python-libsass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define _name   libsass
+%define _name   libsass-python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libsass
-Version:        0.19.2
+Version:        0.19.4
 Release:        0
 Summary:        Python binding for libsass
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sass/libsass-python
-Source:         https://files.pythonhosted.org/packages/source/l/libsass/libsass-%{version}.tar.gz
+Source:         https://github.com/sass/libsass-python/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -38,6 +38,10 @@ Requires:       python-setuptools
 Requires:       python-six
 # Both are providing sassc binary with different parameters
 Conflicts:      sassc
+# SECTION test requirements
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -55,6 +59,9 @@ export SYSTEM_SASS=true
 export SYSTEM_SASS=true
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch sasstests.py
 
 %files %{python_files}
 %python3_only %{_bindir}/pysassc
