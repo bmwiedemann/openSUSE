@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:41:31 UTC 2020 - munix9@googlemail.com
+
+- Update to version 2020.04.12:
+  + Updated "config.linux-with-shared-libraries"
+    (and "liveMedia/Makefile.tail") to ensure that "libssl" and
+    "libcrypto" are linked when "libliveMedia" is built.
+    (Thanks to Felix Kaechele for reporting this.)
+- Changes from version 2020.04.06:
+  + Removed support for the classes "RTSPServerSupportingHTTPStreaming"
+    and "TCPStreamSink".
+    These were being used (in the "LIVE555 Media Server") for
+    streaming using "HTTP Live Streaming" (HLS).  This was always
+    a hack; it is better to use a dedicated HTTP server to serve
+    HLS segments, rather than trying to implement a HTTP server
+    (serving 'virtual HLS segments) within our own (primarily RTSP)
+    server.
+
+    If you are looking for HLS support, note that we provide a
+    source-code demo application "testH264VideoToHLSSegments" that
+    converts a (static) H.264 Elementary Stream file to HLS
+    segments, and the "LIVE555 HLS Proxy", which proxies a live
+    RTSP/RTP stream to HLS segments.
+
+-------------------------------------------------------------------
 Thu Apr  2 09:55:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2020.03.06 (boo#1146283, CVE-2019-15232):
