@@ -265,4 +265,12 @@ The main modification of the package is:
     <comment></comment>
     <requestid>627000</requestid>
   </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>2303ed50713730f1acf4cd7f25d3367a</srcmd5>
+    <version>5.01</version>
+    <time>1586973206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793800</requestid>
+  </revision>
 </revisionlist>
