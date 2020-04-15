@@ -1,7 +1,7 @@
 #
 # spec file for package python-hvplot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,6 @@ BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module nbsmoke >= 0.2.0}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook >= 5.4}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module param >= 1.6.1}
