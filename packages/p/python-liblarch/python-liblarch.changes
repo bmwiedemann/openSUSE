@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:41:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove nose dep as tests are not executed 
+
+-------------------------------------------------------------------
 Tue Aug  7 09:16:21 UTC 2018 - tchvatal@suse.com
 
 - Reflect deps properly on what is needed
