@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ feature is a template language, which is heavily inspired by Kid.
 %package -n %{name}-doc
 Summary:        A toolkit for generation of output for the web - Documentation
 Group:          Development/Libraries/Python
-Requires:       %{name} = %{version}
 Provides:       %{python_module Genshi-doc = %{version}}
 BuildArch:      noarch
 
