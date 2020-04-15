@@ -1,7 +1,7 @@
 #
 # spec file for package python-msoffcrypto-tool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msoffcrypto-tool
-Version:        4.10.1
+Version:        4.10.2
 Release:        0
 Summary:        Library for decrypting MS Office files
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.3
 Requires:       python-olefile >= 0.45
+Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
