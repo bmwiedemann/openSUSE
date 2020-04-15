@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:23:54 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added cairo support for scaling
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Sun Apr 12 06:06:44 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Removed patch freerdp-Fix-realloc-return-handling.patch
+- Added pkgconfig(libusb-1.0) for building
+- Added new package for freerdp-proxy
+- Cleaned up spec file
+
+- Updated to release 2.0.0
+
+  * Fixed CVEs:
+    - CVE-2020-11521
+    - CVE-2020-11522
+    - CVE-2020-11523
+    - CVE-2020-11524
+    - CVE-2020-11525
+    - CVE-2020-11526
+
+  * Fixed security related issues:
+    - gh#FreeRDP/FreeRDP#6005
+    - gh#FreeRDP/FreeRDP#6006
+    - gh#FreeRDP/FreeRDP#6007
+    - gh#FreeRDP/FreeRDP#6008
+    - gh#FreeRDP/FreeRDP#6009
+    - gh#FreeRDP/FreeRDP#6010
+    - gh#FreeRDP/FreeRDP#6011
+    - gh#FreeRDP/FreeRDP#6012
+    - gh#FreeRDP/FreeRDP#6013
+
+  * sha256 is now used instead of sha1 to fingerprint certificates. This will
+    invalidate all hosts in FreeRDP known_hosts2 file and causes a prompt if a
+    new connection is established after the update
+
+  * First version of the RDP proxy was added (gh#FreeRDP/FreeRDP#5372)
+    thanks to @kubistika
+  * Smartcard received some refactoring. Missing functions were added and input
+    validation was improved (gh#FreeRDP/FreeRDP#5884)
+  * A new option /cert that unifies all certificate related options (gh#FreeRDP/FreeRDP#5880)  
+    The old options (cert-ignore, cert-deny, cert-name, cert-tofu) are still
+    available but marked as deprecated
+  * Support for Remote Assistance Protocol Version 2 [MS-RA]
+  * The DirectFB client was removed because it was unmaintained
+  * Unified initialization of OrderSupport
+  * Fix for licensing against Windows Server 2003
+  * Font smoothing is now enabled per default
+  * Smart scaling for Wayland using libcairo was added (gh#FreeRDP/FreeRDP#5215)
+  * Unified update->BeginPaint and update->EndPaint
+  * An image scaling API for software drawing was added
+  * Rail was updated to the latest spec version 28.0
+  * Support for H.264 in the shadow server is now detected at runtime
+  * Add mask=<value> option for /gfx and /gfx-h264  (gh#FreeRDP/FreeRDP#5771)
+  * A new option /timeout was added to adjust the TCP ACK timeout (gh#FreeRDP/FreeRDP#5987)
+
+-------------------------------------------------------------------
 Fri Mar 20 07:09:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 and %arm to fix build

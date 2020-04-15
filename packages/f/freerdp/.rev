@@ -371,4 +371,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>786780</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f4c73476ef6d64969bda9297be22a09c</srcmd5>
+    <version>2.0.0</version>
+    <time>1586973231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793863</requestid>
+  </revision>
 </revisionlist>

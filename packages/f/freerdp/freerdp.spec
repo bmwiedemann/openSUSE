@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifarch aarch64 %arm
-%define _lto_cflags %{nil}
-%endif
 
+# X264 and OPENH264 are disabled because openSUSE does not provide the codecs
+# enable -DWITH_GSSAPI=ON again after #gh/FreeRDP/FreeRDP/4348 has been fixed
+#
+#global _with_ffmpeg 1
+#global _with_x264 1
+#global _with_openh264 1
+#
 %define major_version 2
 %define uwac_version 0
 %define uwac_package %{uwac_version}-%{uwac_version}
-%define version_file 2.0.0-rc4
+%ifarch aarch64 %{arm}
+%define _lto_cflags %{nil}
+%endif
 Name:           freerdp
-Version:        2.0.0~rc4
+Version:        2.0.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
-Url:            http://www.freerdp.com/
-Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version_file}.tar.gz#/FreeRDP-%{version_file}.tar.gz
-# PATCH-FIX-UPSTREAM freerdp-Fix-realloc-return-handling.patch boo#1153163 boo#1153164 gh#FreeRDP/FreeRDP#5645 - fezhang@suse.com -- Fix realloc return handling that results in memory leaks
-Patch1:         freerdp-Fix-realloc-return-handling.patch
+URL:            https://www.freerdp.com/
+Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -46,6 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(icu-i18n)
@@ -53,6 +58,7 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
@@ -92,6 +98,15 @@ Group:          Productivity/Networking/Other
 This package contains a server-side implementation which can export a desktop
 via the Remote Desktop Protocol (RDP) following the Microsoft Open
 Specifications.
+
+%package proxy
+Summary:        Remote Desktop Security and Monitorig Proxy Server
+Group:          Productivity/Networking/Other
+
+%description proxy
+This package contains a proxy that allows to select specific features and
+channels allowed for all connections passing through.
+It allows monitoring of the running sessions.
 
 %package -n lib%{name}%{major_version}
 Summary:        Remote Desktop Viewer client library
@@ -155,9 +170,7 @@ This package contains header files for developing applications that
 use the uwac library.
 
 %prep
-%setup -q -n FreeRDP-%{version_file}
-
-%patch1 -p1
+%setup -q -n FreeRDP-%{version}
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
@@ -166,14 +179,13 @@ fi
 export LDFLAGS="-pie"
 export CFLAGS="%{optflags} -fPIE -pie"
 
-# X264 and OPENH264 are disabled because openSUSE does not provide the codecs
-# enable -DWITH_GSSAPI=ON again after #gh/FreeRDP/FreeRDP/4348 has been fixed
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DWITH_ALSA=ON \
 	-DWITH_PCSC=ON \
+	-DWITH_CAIRO=ON \
 	-DWITH_CUPS=ON \
 	-DWITH_PULSE=ON \
 %ifarch %{ix86} x86_64
@@ -186,16 +198,20 @@ export CFLAGS="%{optflags} -fPIE -pie"
 	-DCHANNEL_GEOMETRY=ON \
 	-DWITH_CHANNELS=ON \
 	-DWITH_DIRECTFB=OFF \
-	-DWITH_FFMPEG=OFF \
+	-DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
 	-DWITH_GSM=ON \
+	-DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
+	-DWITH_GSTREAMER_0_10=OFF \
 	-DWITH_GSTREAMER_1_0=ON \
 	-DWITH_ICU=ON \
 	-DWITH_IPP=OFF \
 	-DWITH_JPEG=ON \
 	-DWITH_KRB5=ON \
 	-DWITH_LIBRARY_VERSIONING=ON \
+	-DWITH_OPENH264=%{?_with_openh264:ON}%{?!_with_openh264:OFF} \
 	-DWITH_OPENSSL=ON \
 	-DWITH_X11=ON \
+	-DWITH_X264=%{?_with_x264:ON}%{?!_with_x264:OFF} \
 	-DWITH_XCURSOR=ON \
 	-DWITH_XEXT=ON \
 	-DWITH_XKBFILE=ON \
@@ -205,7 +221,7 @@ export CFLAGS="%{optflags} -fPIE -pie"
 	-DWITH_XV=ON \
 	-DWITH_ZLIB=ON
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 cd build
@@ -221,23 +237,26 @@ cd build
 
 %files
 %{_bindir}/x%{name}
-%{_mandir}/man1/x%{name}.1%{ext_man}
-%{_mandir}/man7/wlog.7%{ext_man}
+%{_mandir}/man1/x%{name}.1%{?ext_man}
+%{_mandir}/man7/wlog.7%{?ext_man}
 
 %files wayland
 %{_bindir}/wl%{name}
-%{_mandir}/man1/wl%{name}.1%{ext_man}
+%{_mandir}/man1/wl%{name}.1%{?ext_man}
 
 %files server
 %{_bindir}/%{name}-shadow-cli
 %{_bindir}/winpr-hash
 %{_bindir}/winpr-makecert
-%{_mandir}/man1/%{name}-shadow-cli.1%{ext_man}
-%{_mandir}/man1/winpr-hash.1%{ext_man}
-%{_mandir}/man1/winpr-makecert.1%{ext_man}
+%{_mandir}/man1/%{name}-shadow-cli.1%{?ext_man}
+%{_mandir}/man1/winpr-hash.1%{?ext_man}
+%{_mandir}/man1/winpr-makecert.1%{?ext_man}
+
+%files proxy
+%{_bindir}/%{name}-proxy
 
 %files -n lib%{name}%{major_version}
-%doc LICENSE
+%license LICENSE
 %{_libdir}/lib%{name}%{major_version}.so.*
 %{_libdir}/lib%{name}-client%{major_version}.so.*
 %{_libdir}/lib%{name}-shadow%{major_version}.so.*
@@ -257,7 +276,7 @@ cd build
 %{_libdir}/pkgconfig/%{name}-shadow%{major_version}.pc
 
 %files -n libwinpr%{major_version}
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libwinpr%{major_version}.so.*
 %{_libdir}/libwinpr-tools%{major_version}.so.*
 
@@ -270,7 +289,7 @@ cd build
 %{_libdir}/pkgconfig/winpr-tools%{major_version}.pc
 
 %files -n libuwac%{uwac_package}
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libuwac%{uwac_version}.so.*
 
 %files -n uwac%{uwac_package}-devel
