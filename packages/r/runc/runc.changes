@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:16:21 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Renamed patch:
+  0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+  to
+  bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 08:57:34 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Added fix for bsc#1149954
+  * 0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
+    (cherry pick of https://github.com/opencontainers/runc/pull/1807)
+
+-------------------------------------------------------------------
 Thu Jan 23 17:18:05 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Upgrade to runc v1.0.0~rc10. Upstream changelog is available from

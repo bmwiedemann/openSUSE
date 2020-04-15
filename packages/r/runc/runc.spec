@@ -51,6 +51,8 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
+# FIX-UPSTREAM: cherry pick of https://github.com/opencontainers/runc/pull/1807
+Patch0:         bsc1149954-0001-sd-notify-do-not-hang-when-NOTIFY_SOCKET-is-used-wit.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  golang(API) >= %{go_version}
@@ -84,6 +86,7 @@ Test package for runc. It contains the source code and the tests.
 
 %prep
 %setup -q -n %{name}-%{_version}
+%patch0 -p1 
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
