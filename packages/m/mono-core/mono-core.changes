@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 19 07:44:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add aprofutil.exe.mdb and remove aprofutil.pdb, mdoc.exe and 
+  monolinker.* from file list for aarch64 and ppc64/ppc64le
+
+-------------------------------------------------------------------
 Tue Feb  4 09:36:01 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to the most current mono release, 6.8.0.96.

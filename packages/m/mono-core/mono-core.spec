@@ -1268,7 +1268,11 @@ Mono development tools.
 %defattr(-, root, root)
 %{_bindir}/aprofutil
 %{_prefix}/lib/mono/4.5/aprofutil.exe
+%ifnarch aarch64 ppc64 ppc64le
 %{_prefix}/lib/mono/4.5/aprofutil.pdb
+%else
+%{_prefix}/lib/mono/4.5/aprofutil.exe.mdb
+%endif
 %{_mandir}/man1/aprofutil.1%ext_man
 %{_bindir}/caspol
 %{_bindir}/ccrewrite
@@ -1402,7 +1406,9 @@ Mono development tools.
 %{_prefix}/lib/mono/4.5/mono-cil-strip.exe*
 %{_prefix}/lib/mono/4.5/mono-shlib-cop.exe*
 %{_prefix}/lib/mono/4.5/mono-xmltool.exe*
+%ifnarch aarch64 ppc64 ppc64le
 %{_prefix}/lib/mono/4.5/monolinker.*
+%endif
 %{_prefix}/lib/mono/4.5/monop.exe*
 %{_prefix}/lib/mono/4.5/pdb2mdb.exe*
 %{_prefix}/lib/mono/4.5/permview.exe*
@@ -1553,7 +1559,9 @@ Monodoc-core contains documentation tools for C#.
 %{_mandir}/man1/monodocer.1%ext_man
 %{_mandir}/man1/monodocs2html.1%ext_man
 %{_mandir}/man5/mdoc.5%ext_man
+%ifnarch aarch64 ppc64 ppc64le
 %{_prefix}/lib/mono/4.5/mdoc.exe*
+%endif
 %{_prefix}/lib/mono/4.5/mod.exe*
 %{_prefix}/lib/mono/gac/monodoc
 %{_prefix}/lib/mono/monodoc
