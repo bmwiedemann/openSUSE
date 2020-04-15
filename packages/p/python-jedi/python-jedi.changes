@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 10:01:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- tell Leap 15.1 and SLE 15 SP1 pytest to ignore test/__init__.py
+  so that a test file with purposely placed syntax errors does not
+  trip the entire discovery
+
+-------------------------------------------------------------------
+Thu Apr  9 18:59:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- reenable (most) unittests
+- remove unbundle.patch -- according to upstream, typeshed is meant
+  to be bundled.
+
+-------------------------------------------------------------------
 Tue Mar 17 21:45:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - fix version string to 0.16.0+git55.17b3611c
