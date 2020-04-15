@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * KParts partviewer test app: add action list to switch parts
+  * KParts: add unittest for PartLoader, required shuffling things around
+  * KParts: add PartLoader as replacement to KMimeTypeTrader for parts
+
+-------------------------------------------------------------------
 Sun Mar  8 09:17:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
