@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           libvdpau
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        VDPAU wrapper and trace libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.freedesktop.org/wiki/Software/VDPAU/
 Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://people.freedesktop.org/~aplattner/vdpau/vdpauinfo-1.0.tar.gz
+Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/vdpauinfo-1.3/vdpauinfo-1.3.tar.bz2
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -92,6 +94,7 @@ Its usage is documented in the README.
 rm %{buildroot}%{_libdir}/vdpau/libvdpau_trace.so
 
 pushd ../vdpauinfo-*
+autoreconf -fi
 %configure \
 VDPAU_CFLAGS=-I%{buildroot}%{_includedir} \
 VDPAU_LIBS="-L%{buildroot}/%{_libdir} -lvdpau -lX11"

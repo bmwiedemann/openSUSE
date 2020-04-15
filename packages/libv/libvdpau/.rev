@@ -335,4 +335,20 @@
     decoding of the VP9 video format.</comment>
     <requestid>727027</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>76b99ca0dfc4d01ed5b84b42964ba1c7</srcmd5>
+    <version>1.4</version>
+    <time>1586973155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libvdpau to version 1.4
+  * adds 10,12-Bit decode support to VDPAU API
+  * Adds HEVC Main 10/12 and HEVC Main 444 10/12 decode support in
+    VDPAU API by Adding new profiles present in Range Extension
+    profiles.Also Adds new VdpChromaTypes for 16bit. 
+- Updated vdpauinfo to version 1.3
+  * Add names for the new 4:4:4 surface formats
+  * Add support for VP9 in vdpauinfo
+  * Depend on vdpau &gt;= 1.3 for VP9 support</comment>
+    <requestid>793247</requestid>
+  </revision>
 </revisionlist>
