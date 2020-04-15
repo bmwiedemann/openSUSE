@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:45:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * [Fstab] Ensure uniqueness for all filesystem types
+  * Samba: Ensure to differenciate mounts sharing the same source (kde#418906)
+  * Solid: Convert license headers to SPDX expressions
+  * hardware tool: define syntax via syntax arg
+
+-------------------------------------------------------------------
 Sun Mar  8 09:18:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.68.0
