@@ -1,7 +1,7 @@
 #
 # spec file for package python-imread
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-imread
-Version:        0.7.1
+Version:        0.7.4
 Release:        0
 Summary:        Image reading library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://luispedro.org/software/imread
+URL:            http://luispedro.org/software/imread
 Source:         https://files.pythonhosted.org/packages/source/i/imread/imread-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -32,6 +32,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  giflib-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
@@ -39,8 +40,7 @@ BuildRequires:  pkgconfig(libwebp)
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
 # /SECTION
-BuildRequires:  python-numpy
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python-numpy
 %python_subpackages
 
 %description
@@ -70,7 +70,6 @@ export CFLAGS="%{optflags}"
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc ChangeLog README.rst
 %license COPYING.MIT
 %{python_sitearch}/*
