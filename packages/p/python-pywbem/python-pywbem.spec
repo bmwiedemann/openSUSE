@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pywbem
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
@@ -38,9 +38,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools} >= 38.4.1
+BuildRequires:  %{python_module six} >= 0.12.0
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module yamlloader}
 BuildRequires:  fdupes
