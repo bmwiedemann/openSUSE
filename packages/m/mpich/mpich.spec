@@ -1,7 +1,7 @@
 #
 # spec file for package mpich
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -157,6 +157,8 @@ Source3:        macros.hpc-mpich
 Source100:      _multibuild
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch0:         0001-Drop-real128.patch
+Patch1:         ch3-fix-improper-error-handling-from-MPL_get_sockaddr.patch
+Patch2:         pmi-fix-a-wrong-condition-checking-return-of-MPL_get_sockaddr.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
@@ -285,6 +287,8 @@ echo without HPC
 # Only apply this patch on Armv7
 %ifarch armv7hl
 %patch0 -p1
+%patch1
+%patch2
 %endif
 
 %build

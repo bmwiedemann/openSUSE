@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:22:58 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add ch3-fix-improper-error-handling-from-MPL_get_sockaddr.patch and
+ pmi-fix-a-wrong-condition-checking-return-of-MPL_get_sockaddr.patch to fix crash when 
+ using getsockaddr (bsc#1168092)
+
+-------------------------------------------------------------------
 Thu Nov 28 13:21:55 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 3.3.2 (jsc#SLE-8574)
