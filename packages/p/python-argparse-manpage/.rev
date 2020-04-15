@@ -52,4 +52,12 @@ tools.</comment>
   from pkg_resources import load_entry_point. (forwarded request 769102 from dimstar)</comment>
     <requestid>769151</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7b7de833d7f4e22d48f8961e2e3b97a0</srcmd5>
+    <version>1.3</version>
+    <time>1586973286</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>793949</requestid>
+  </revision>
 </revisionlist>

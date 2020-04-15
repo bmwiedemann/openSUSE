@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 14:52:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Fri Jan 31 17:44:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require python-setuotools: /usr/bin/argparse-manpage does

@@ -32,6 +32,8 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -51,16 +53,24 @@ support for (deprecated) optparse objects, too.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/argparse-manpage
+%python_clone -a %{buildroot}%{_mandir}/man1/argparse-manpage.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%{python_install_alternative argparse-manpage argparse-manpage.1}
+
+%postun
+%python_uninstall_alternative argparse-manpage
+
 %files %{python_files}
 %doc README*
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/argparse-manpage
-%python3_only %{_mandir}/man1/argparse-manpage.1%{?ext_man}
+%python_alternative %{_bindir}/argparse-manpage
+%python_alternative %{_mandir}/man1/argparse-manpage.1%{?ext_man}
 
 %changelog
