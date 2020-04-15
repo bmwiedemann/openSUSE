@@ -87,4 +87,21 @@
     <comment></comment>
     <requestid>764203</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dcb9e5abf8e0d8e69be74f711fc02b5c</srcmd5>
+    <version>2.6.6</version>
+    <time>1586973911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 2.6.6 (boo#1167244 boo#1168938)
+  - CVE-2020-10663: Unsafe Object Creation Vulnerability in JSON
+    (Additional fix)
+  - CVE-2020-10933: Heap exposure vulnerability in the socket
+    library
+  https://github.com/ruby/ruby/compare/v2_6_5...v2_6_6
+- drop CVE-2020-8130.patch and rake-12.3.2.gem again: fix included
+
+- Fix CVE-2020-8130 (boo# 1164804) for the intree copy of rake:
+  - add CVE-2020-8130.patch and rake-12.3.2.gem</comment>
+    <requestid>792507</requestid>
+  </revision>
 </revisionlist>

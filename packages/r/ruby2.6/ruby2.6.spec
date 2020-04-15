@@ -1,7 +1,7 @@
 #
 # spec file for package ruby2.6
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Name:           ruby2.6
 ####
 
 %define patch_level p0
-Version:        2.6.5
+Version:        2.6.6
 Release:        0
 %define pkg_version %{version}
 # make the exported API version explicit
@@ -73,7 +73,7 @@ Release:        0
 %bcond_with    separate_stdlib
 
 #
-Url:            https://www.ruby-lang.org/
+URL:            https://www.ruby-lang.org/
 Source:         https://cache.ruby-lang.org/pub/ruby/2.6/ruby-%{pkg_version}.tar.xz
 #
 Source3:        %{name}.macros
