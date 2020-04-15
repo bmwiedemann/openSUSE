@@ -19,8 +19,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname translation-finder
+%define skip_python2 1
 Name:           python-translation-finder
-Version:        1.8
+Version:        2.0
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later
@@ -28,27 +29,19 @@ URL:            https://github.com/WeblateOrg/translation-finder
 # test_data/linked has to be symlink, hance using github tar ball
 Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz
 BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module clint}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module twine}
 BuildRequires:  fdupes
-BuildRequires:  python-pathlib2
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
 Requires:       python-ruamel.yaml
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython2
-Requires:       python-pathlib2
-%endif
 %python_subpackages
 
 %description
@@ -56,6 +49,7 @@ A translation file finder for Weblate, translation tool with tight version contr
 
 %prep
 %setup -q -n %{modname}-%{version}
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %python_build

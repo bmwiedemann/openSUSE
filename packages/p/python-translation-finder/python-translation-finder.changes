@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 09:43:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0:
+  * Dropped support for Python 2.
+  * Improved i18next detection.
+  * Improved detection of monolingual templates.
+
+-------------------------------------------------------------------
 Wed Mar 11 10:14:30 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.8
