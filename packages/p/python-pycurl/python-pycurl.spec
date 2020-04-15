@@ -63,7 +63,6 @@ This module provides bindings for the cURL library.
 
 %package -n %{name}-doc
 Summary:        Documentation for python-curl
-Requires:       %{name} = %{version}
 Provides:       %{python_module pycurl-doc = %{version}}
 BuildArch:      noarch
 
