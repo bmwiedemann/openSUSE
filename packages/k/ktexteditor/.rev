@@ -616,4 +616,23 @@
     <comment>KDE Frameworks 5.68</comment>
     <requestid>785350</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>a1e212ad87689933765418105f4433f8</srcmd5>
+    <version>5.69.0</version>
+    <time>1586973828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Make it compile against q5.15 (QString:: is deprecated)
+  * Add missing include
+  * fix folding crash for folding of single line folds (kde#417890)
+  * fix unit test
+  * [VIM Mode] Add g&lt;up&gt; g&lt;down&gt; commands (kde#418486)
+  * Add MarkInterfaceV2, to s/QPixmap/QIcon/g for symbols of marks
+  * Draw inlineNotes after drawing word wrap marker</comment>
+    <requestid>793205</requestid>
+  </revision>
 </revisionlist>
