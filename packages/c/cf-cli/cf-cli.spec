@@ -35,7 +35,7 @@
 
 %define         short_name cf-cli
 Name:           %{short_name}%{?name_ext}
-Version:        6.50.0
+Version:        6.51.0
 Release:        0
 Summary:        Cloud Foundry command line client
 License:        Apache-2.0

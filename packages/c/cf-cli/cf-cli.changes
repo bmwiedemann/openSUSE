@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 23:24:07 UTC 2020 - thardeck@suse.com
+
+- update to version 6.51.0
+  ### Bug Fixes
+  - Increased resiliency to log cache streaming log loss on foundations with multiple log cache doppler nodes [story](https://www.pivotaltracker.com/story/show/171759407)
+  - cf logs --recent lost logs if there are more than 4 MB of logs [story](https://www.pivotaltracker.com/story/show/171676674)
+  - cf logs now properly retries getting logs on connection failure to the logging API [story](https://www.pivotaltracker.com/story/show/171530294)
+  - Requests to Log Cache were not logged in the same format as other HTTP requests in the cf CLI [story](https://www.pivotaltracker.com/story/show/171528424)
+
+-------------------------------------------------------------------
 Wed Mar  4 13:11:21 UTC 2020 - thardeck@suse.com
 
 - update to version 6.50.0
