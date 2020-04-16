@@ -1,7 +1,7 @@
 #
 # spec file for package python-resolvelib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resolvelib
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Module to resolve abstract dependencies into concrete ones
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/resolvelib
 Source:         https://github.com/sarugaku/resolvelib/archive/%{version}.tar.gz#/resolvelib-%{version}.tar.gz
+BuildRequires:  %{python_module commentjson}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
