@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:50:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.1.1
+  * Fix incorrect typing annotation for `decode_signing_key_base64`.
+  * Reinstate `decode_verify_key_base64` function which was erroneously removed in 1.1.0. 
+- Add no-importlib-on-py38.patch to fix build on Python 3.8
+
+-------------------------------------------------------------------
 Thu Feb 06 11:29:56 UTC 2020 - okurz@suse.com
 
 - Update to version 1.1.0:

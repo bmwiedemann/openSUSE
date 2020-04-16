@@ -18,18 +18,37 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname signedjson
+%bcond_without python2
 Name:           python-%{modname}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Python module to sign JSON with Ed25519 signatures
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/%{name}
-Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  %{python_module setuptools}
+Source0:        https://files.pythonhosted.org/packages/source/s/signedjson/%{modname}-%{version}.tar.gz
+Patch0:         no-importlib-on-py38.patch
+BuildRequires:  %{python_module PyNaCl >= 0.3.0}
+BuildRequires:  %{python_module canonicaljson >= 1.0.0}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module typing_extensions >= 3.5}
+BuildRequires:  %{python_module unpaddedbase64 >= 1.0.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyNaCl >= 0.3.0
+Requires:       python-canonicaljson >= 1.0.0
+Requires:       python-importlib-metadata
+Requires:       python-typing_extensions >= 3.5
+Requires:       python-unpaddedbase64 >= 1.0.1
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-typing >= 3.5
+%endif
+%ifpython2
+Requires:       python-typing >= 3.5
+%endif
 %python_subpackages
 
 %description
@@ -42,15 +61,18 @@ Features:
 * Unprotected data can be added to the object under the "unsigned" key.
 
 %prep
-%setup -q
+%setup -q -n %{modname}-%{version}
+%patch0 -p1
 
 %build
-
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{modname}
+
+%check
+%python_expand nosetests-%{$python_bin_suffix}
 
 %files %{python_files}
 %license LICENSE
