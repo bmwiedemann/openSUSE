@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 13:44:28 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.72.1:
+  + Update translations & documentation
+- CVE-2020-10870: Fixed a denial-of-service via predictable temporary directories (bsc#1167519).
+  zim-CVE-2020-10870-tempdir.patch
+
+-------------------------------------------------------------------
 Thu Sep 19 20:01:33 UTC 2019 - Luke Jones <luke@ljones.dev>
 
 - Update to version 0.72:

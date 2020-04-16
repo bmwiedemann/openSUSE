@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,14 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.72.0
+Version:        0.72.1
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
-Url:            http://zim-wiki.org
-Source:         http://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
+URL:            https://zim-wiki.org
+Source:         https://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
+Patch0:         zim-CVE-2020-10870-tempdir.patch
 BuildRequires:  fdupes
 # For directory ownership
 BuildRequires:  %{python_module gobject >= 3.2}
@@ -62,6 +63,7 @@ version control.
 %lang_package
 %prep
 %setup -q
+%patch00000 -p1
 
 %build
 python3 setup.py build
