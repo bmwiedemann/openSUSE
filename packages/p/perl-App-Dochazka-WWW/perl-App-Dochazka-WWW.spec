@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-WWW
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Dochazka Attendance & Time Tracking system web client
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/App-Dochazka-WWW/
+URL:            http://search.cpan.org/dist/App-Dochazka-WWW/
 Source0:        App-Dochazka-WWW-0.155.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -42,10 +42,10 @@ Requires:       perl(App::MFILE::WWW) >= 0.164
 Requires:       perl(File::ShareDir) >= 1.00
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires(pre): /usr/sbin/groupadd
 Requires(pre): /usr/sbin/useradd
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %pre
 getent group dochazka-www >/dev/null || groupadd -r dochazka-www

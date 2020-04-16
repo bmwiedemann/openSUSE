@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:52:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use BuildRequires: pkgconfig(systemd) instead of systemd: allow
+  OBS to shortcut through -mini flavors.
+- Use %systemd_ordering instead of %systemd_requires: systemd is
+  not strictly needed, but if it's installed as part of the same
+  transaction, we want systemd to be installed first.
+
+-------------------------------------------------------------------
 Wed Feb 12 10:43:05 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - updated to 0.155
@@ -7,7 +16,7 @@ Wed Feb 12 10:43:05 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 -------------------------------------------------------------------
 Tue Feb 12 10:30:20 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
-- cpanspec.yml: ship /var/log/dochazka-www instead of /var/log/dochazka 
+- cpanspec.yml: ship /var/log/dochazka-www instead of /var/log/dochazka
 
 -------------------------------------------------------------------
 Fri Oct 20 20:45:06 UTC 2017 - ncutler@suse.com
