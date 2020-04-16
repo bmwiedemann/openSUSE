@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:43:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.0.2
+  * Add github actions
+  * Remove basestring reference, no py2 support
+  * Update badges to represent reality
+  * Change required key to 2CF*, which seems to be the only good one
+
+-------------------------------------------------------------------
 Mon Mar 30 10:58:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Install doc/license

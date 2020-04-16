@@ -84,4 +84,12 @@
 - Sync the package with smmap2 to have the same fixes in</comment>
     <requestid>789719</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b9230dffdabb6ba5c6083686a6b7455</srcmd5>
+    <version>3.0.2</version>
+    <time>1587070923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794253</requestid>
+  </revision>
 </revisionlist>
