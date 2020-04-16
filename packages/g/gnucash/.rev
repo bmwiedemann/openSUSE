@@ -750,4 +750,13 @@
     <comment></comment>
     <requestid>766121</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>81370c1a9d3641780a831350d5751a8b</srcmd5>
+    <version>3.9</version>
+    <time>1587071177</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 3.9:
+  * this release brings lots of fixes (forwarded request 792382 from polslinux)</comment>
+    <requestid>794350</requestid>
+  </revision>
 </revisionlist>

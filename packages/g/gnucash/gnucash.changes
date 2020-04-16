@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:48:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Upgrade to 3.9:
+  * this release brings lots of fixes
+
+-------------------------------------------------------------------
 Sat Jan 18 10:48:24 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Don't build with Guile 3.0 as it's not supported yet. 

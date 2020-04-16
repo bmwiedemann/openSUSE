@@ -19,7 +19,7 @@
 %define __builder ninja
 
 Name:           gnucash
-Version:        3.8b
+Version:        3.9
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -117,12 +117,11 @@ a personal finance manager.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-3.8
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-export CFLAGS="-Wno-error"
-export CXXFLAGS="-Wno-error"
 %define _lto_cflags %{nil}
+%define __builder ninja
 %cmake \
     -DCMAKE_SKIP_RPATH=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -131,7 +130,7 @@ export CXXFLAGS="-Wno-error"
     -DGTEST_ROOT=%{_includedir}/gtest \
     -DWITH_PYTHON=ON \
     -DCOMPILE_GSCHEMAS=OFF
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
