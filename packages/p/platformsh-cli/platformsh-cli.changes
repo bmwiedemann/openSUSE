@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 16 03:13:06 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.54.0:
+  * Release v3.54.0
+  * Fix deleting httpaccess settings using a merge patch (#917)
+  * Update src/Command/Integration/IntegrationCommandBase.php
+  * Remove the unused --environment option for integration:activity commands
+  * Tweak help for browser login (#916)
+  * Automatically prompt for login when token refresh fails (#918)
+  * Remove default From address for health.email notifications
+
+-------------------------------------------------------------------
 Wed Apr 08 19:12:05 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.53.1:
