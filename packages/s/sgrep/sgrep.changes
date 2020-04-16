@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:55:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.94a:
+  * Killed nasty hash_function() bug
+    + Killed nasty postings entry bug when posting was > 0xfffffff
+  * Bumped hash table size up
+  * Newer automake & autoconf files
+- Changes for version 1.93a:
+  * Fixed a bug which caused sgrep to dump core when using SGML
+    scanner at least on Solaris platform (negative index to memory
+    mapped file)
+  * Fixed a bug which caused sgrep to  ignore '-n' command line
+    option always.
+- Drop no longer needed sgrep-no-build-date.patch
+- Use alternative source url as official one is broken
+
+-------------------------------------------------------------------
 Sat Feb 25 08:41:20 UTC 2012 - coolo@suse.com
 
 - sync spec file name with package name

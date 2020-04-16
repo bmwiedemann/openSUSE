@@ -108,4 +108,24 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6cfb59966450ad18691f05501862f538</srcmd5>
+    <version>1.94a</version>
+    <time>1587070986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.94a:
+  * Killed nasty hash_function() bug
+    + Killed nasty postings entry bug when posting was &gt; 0xfffffff
+  * Bumped hash table size up
+  * Newer automake &amp; autoconf files
+- Changes for version 1.93a:
+  * Fixed a bug which caused sgrep to dump core when using SGML
+    scanner at least on Solaris platform (negative index to memory
+    mapped file)
+  * Fixed a bug which caused sgrep to  ignore '-n' command line
+    option always.
+- Drop no longer needed sgrep-no-build-date.patch
+- Use alternative source url as official one is broken</comment>
+    <requestid>794464</requestid>
+  </revision>
 </revisionlist>

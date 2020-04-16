@@ -1,6 +1,8 @@
---- sgrep-1.92a/sample.sgreprc.~1~	1998-12-12 04:59:59.000000000 +0100
-+++ sgrep-1.92a/sample.sgreprc	2003-10-24 11:50:48.000000000 +0200
-@@ -33,7 +33,7 @@
+Index: sgrep-1.94a/sample.sgreprc
+===================================================================
+--- sgrep-1.94a.orig/sample.sgreprc
++++ sgrep-1.94a/sample.sgreprc
+@@ -33,7 +33,7 @@ define(UPPER,("A"or"B"or"C"or"D"or"E"or"
  # Lines
  define(LEND,( "\n" or end ))
  define(LSTART,( "\n" or start))
@@ -9,5 +11,3 @@
  # Empty lines
  define(ELINE,( LINE in concat(BLANK)))
  
-
-Diff finished at Fri Oct 24 11:50:54
