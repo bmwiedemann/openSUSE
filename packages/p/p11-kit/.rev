@@ -334,4 +334,12 @@
     <comment>- Also build documentation (boo#1013125)</comment>
     <requestid>758967</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>53271bc00d5cb38bdc9671927c7ddcec</srcmd5>
+    <version>0.23.20</version>
+    <time>1587070688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794045</requestid>
+  </revision>
 </revisionlist>

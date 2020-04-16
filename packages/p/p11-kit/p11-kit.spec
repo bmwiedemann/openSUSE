@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,21 @@
 %define pkidir_static    %{_datadir}/pki
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
-
 Name:           p11-kit
-Version:        0.23.12
+Version:        0.23.20
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://p11-glue.freedesktop.org/p11-kit.html
-Source0:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+URL:            https://p11-glue.freedesktop.org/p11-kit.html
+Source0:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/p11-kit-%{version}.tar.xz
+Source1:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/p11-kit-%{version}.tar.xz.sig
 Source98:       p11-kit.keyring
 Source99:       baselibs.conf
 BuildRequires:  gtk-doc
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libffi) >= 3.0.0
 BuildRequires:  pkgconfig(libtasn1) >= 2.3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 p11-kit provides a way to load and enumerate PKCS#11 modules, as well
@@ -96,13 +94,13 @@ Command line tools that enable to export PKCS#11 modules through a
 Unix domain socket.  Note that this feature is still experimental.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --with-trust-paths=%{trustdir_cfg}:%{trustdir_static} \
   --enable-doc
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
