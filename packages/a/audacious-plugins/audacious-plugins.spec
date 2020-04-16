@@ -21,14 +21,12 @@
 %define aud_ver_max 4.0.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        4.0
+Version:        4.0.2
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM audacious-plugins-qtglspectrum-qt-opengles-workaround.patch ariadne@dereferenced.org -- Workaround Qt including OpenGLES headers in qtglspectrum (commit a51aa5fc).
-Patch0:         %{name}-qtglspectrum-qt-opengles-workaround.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.5
 BuildRequires:  libmp3lame-devel
@@ -78,7 +76,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       libaudcore%{?_isa} <= %{aud_ver_max}
 Requires:       libaudcore%{?_isa} >= %{aud_ver_min}
 Recommends:     %{name}-extra
-Recommends:     %{name}-lang
 %if %{with faad}
 BuildRequires:  libfaad-devel
 %endif
@@ -97,7 +94,7 @@ Requires:       %{name} = %{version}
 Extra plugins for the Audacious audio player.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %meson \

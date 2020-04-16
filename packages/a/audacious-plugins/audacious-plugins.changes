@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:23:03 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.2:
+  * No changelog available.
+- Remove
+  audacious-plugins-qtglspectrum-qt-opengles-workaround.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Mon Apr  6 12:01:59 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.1:
+  * Seeking in audio files when using the SoX resampler plugin will
+    no longer crash the player.
+
+-------------------------------------------------------------------
 Sun Mar 22 19:26:07 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0:
