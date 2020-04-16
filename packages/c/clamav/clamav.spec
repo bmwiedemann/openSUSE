@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with clammspack
-
 %define clamav_check --enable-check
+%bcond_with clammspack
 Name:           clamav
 Version:        0.102.2
 Release:        0
@@ -47,9 +46,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libjson-c-devel
-%if %{without clammspack}
-BuildRequires:  libmspack-devel
-%endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
@@ -57,7 +53,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
-BuildRequires:  python-devel
 BuildRequires:  sed
 BuildRequires:  sendmail-devel
 BuildRequires:  systemd-rpm-macros
@@ -73,6 +68,9 @@ Obsoletes:      clamav-db < 0.88.3
 Provides:       clamav-nodb = %version
 Obsoletes:      clamav-nodb <= 0.98.4
 %systemd_requires
+%if %{without clammspack}
+BuildRequires:  libmspack-devel
+%endif
 
 %description
 ClamAV is an antivirus engine designed for detecting trojans,
@@ -142,7 +140,7 @@ CFLAGS="$CFLAGS -DFP_64BIT"
 %configure \
 	--disable-clamav \
 	--disable-static \
-	--with-dbdir=/var/lib/clamav \
+	--with-dbdir=%{_localstatedir}/lib/clamav \
 	--with-user=vscan \
 	--with-group=vscan \
 	--enable-milter \
@@ -159,10 +157,10 @@ make V=1 %?_smp_mflags
 
 %install
 %make_install
-install -d -m755 %buildroot/var/lib/clamav
+install -d -m755 %buildroot%{_localstatedir}/lib/clamav
 install -d -m755 %buildroot/%_tmpfilesdir
 install -m644 %SOURCE6 %buildroot%_tmpfilesdir/clamav.conf
-mkdir -p %buildroot/var/spool/amavis
+mkdir -p %buildroot%{_localstatedir}/spool/amavis
 mkdir -p -m 0755 %buildroot/run/clamav
 find %buildroot -type f -name "*.la" -delete -print
 
@@ -219,8 +217,8 @@ VALGRIND_GENSUP=1 make check
 %_bindir/*
 %_sbindir/*
 %defattr(-,vscan,vscan)
-%dir %attr(750,vscan,vscan) /var/spool/amavis
-%dir /var/lib/clamav
+%dir %attr(750,vscan,vscan) %{_localstatedir}/spool/amavis
+%dir %{_localstatedir}/lib/clamav
 %ghost %attr(755,vscan,vscan) /run/clamav
 
 %files -n libclamav9
@@ -244,7 +242,7 @@ VALGRIND_GENSUP=1 make check
 getent group vscan >/dev/null || %_sbindir/groupadd -r vscan
 getent passwd vscan >/dev/null || \
 	%_sbindir/useradd -r -o -g vscan -u 65 -s /bin/false \
-	-c "Vscan account" -d /var/spool/amavis vscan
+	-c "Vscan account" -d %{_localstatedir}/spool/amavis vscan
 %_sbindir/usermod vscan -g vscan
 %service_add_pre clamd.service freshclam.service clamav-milter.service
 

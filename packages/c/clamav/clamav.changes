@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  1 10:01:36 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop python build dependency as it is not needed
+
+-------------------------------------------------------------------
 Wed Feb  5 18:31:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.102.2
