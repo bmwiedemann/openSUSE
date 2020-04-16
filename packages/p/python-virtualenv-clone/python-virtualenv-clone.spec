@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenv-clone
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-virtualenv-clone
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Script to clone virtualenvs
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/edwardgeorge/virtualenv-clone
+URL:            https://github.com/edwardgeorge/virtualenv-clone
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv-clone/virtualenv-clone-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-virtualenv
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-Recommends:     python-virtualenv
 BuildArch:      noarch
 %python_subpackages
 
@@ -84,7 +83,8 @@ It performs the following:
 %python_clone -a %{buildroot}%{_bindir}/virtualenv-clone
 
 %check
-%python_exec setup.py test
+# The tests are not shipped and there are no tags in git repo :/
+#%%pytest
 
 %post
 %python_install_alternative virtualenv-clone
