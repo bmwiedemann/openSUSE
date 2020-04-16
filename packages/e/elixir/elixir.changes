@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:09:49 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
+
+- Elixir 1.10.2
+  * Bug fixes
+    Elixir
+    [Macro] Fix a bug where Macro.to_string/1 would emit invalid code for sigils
+    [Task] Do not crash async_stream monitor if it receives spurious DOWN messages
+    Logger
+    [Logger] Fix a bug where the Logger formatter would fail when handling unknown metadata values
+    Mix
+    [mix compile] Do not write files to disk if --warnings-as-errors was given and warnings were emitted
+
+- Elixir 1.10.1
+  * Bug fixes
+    Elixir
+    [Code] Do not emit invalid code when formatting nil, false, and true keys in maps
+    [Kernel] Ensure with clauses properly unpack "implicit guards" (such as matching on the struct name)
+    [Kernel] Do not warn if commas are used by themselves in ~w/~W sigils
+    [Kernel] Do not validate the :line option in quote (the validation has been moved to v1.11 to give users more time to update their code)
+    [Module] Ensure the code verifier handles the :erlang.size/1 guard properly
+
+    Logger
+    [Logger] Properly handle the report_cb/2 option from Erlang
+    [Logger] Fix truncation for multi-byte characters
+    [Logger] Do not rebroadcast messages from remote nodes as this is now taken care by Erlang's logger
+
+    ExUnit
+    [ExUnit] Ensure assert_receive produces valid exception messages in case of errors
+
+    Mix
+    [mix release] Make sure the install command (Window specific) works on paths with spaces in the name
+    [mix release] Allow using remote and rpc commands with Application.compile_env/3
+
+- Elixir 1.10.0
+  * Elixir 1.10.0 is a new main release.
+    Full release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.10.0
+
+-------------------------------------------------------------------
 Sun Dec 15 17:58:38 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Refresh elixir-1.9.4.tar.gz jsc#SLE-10913

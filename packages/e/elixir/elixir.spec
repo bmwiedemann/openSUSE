@@ -17,7 +17,7 @@
 
 
 Name:           elixir
-Version:        1.9.4
+Version:        1.10.2
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -28,9 +28,9 @@ Source2:        macros.elixir
 BuildRequires:  gcc
 BuildRequires:  make
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
-Requires:       erlang >= 20
+Requires:       erlang >= 21
 Requires:       git >= 1.7
-BuildRequires:  erlang >= 20
+BuildRequires:  erlang >= 21
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
 BuildRequires:  git >= 1.7
