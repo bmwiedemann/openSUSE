@@ -22,7 +22,7 @@
 %define qt_soname 2
 %define tag_soname 3
 Name:           audacious
-Version:        4.0
+Version:        4.0.2
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       %{name}-plugins%{?_isa} <= %{aud_plugin_ver_max}
 Requires:       %{name}-plugins%{?_isa} >= %{aud_plugin_ver_min}
-Recommends:     %{name}-lang
 Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
 
 %description

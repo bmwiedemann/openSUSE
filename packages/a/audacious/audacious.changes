@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:23:03 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.2:
+  * Fix a regression where the Enter key did not work in the
+    playlist.
+  * Fix the seek bar changing width as the time counter increments.
+  * Fix the title bar getting stuck showing "Buffering".
+  * Add a workaround to ensure that the toolbar is not hidden on
+    startup.
+  * Fix the Composer field not being saved when updating ID3v2
+    tags.
+
+-------------------------------------------------------------------
+Mon Apr  6 12:01:59 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.1:
+  * Audacious now works as expected when run under KDE Plasma 5.18
+    default settings.
+  * Audacious when running under QtUI will no longer block logout
+    on KDE Plasma 5.18.
+  * Skinned windows are placed correctly when running under GTK.
+
+-------------------------------------------------------------------
 Sun Mar 22 19:26:07 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0:
