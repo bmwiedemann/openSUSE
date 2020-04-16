@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-sql
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://agate-sql.readthedocs.org/
+URL:            http://agate-sql.readthedocs.org/
 Source:         https://github.com/wireservice/agate-sql/archive/%{version}.tar.gz
 # we do not have crate dialect
 Patch0:         python-agate-sql-no-crate.patch
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module SQLAlchemy >= 1.0.8}
 BuildRequires:  %{python_module agate >= 1.5.0}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-SQLAlchemy >= 1.0.8
 Requires:       python-agate >= 1.5.0
@@ -58,7 +58,7 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %defattr(-,root,root,-)
