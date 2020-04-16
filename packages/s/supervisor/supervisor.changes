@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Apr 16 09:41:19 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.1.0
+  4.1.0 (2019-10-19)
+  ------------------
+  - Fixed a bug on Python 3 only where logging to syslog did not work and
+    would log the exception ``TypeError: a bytes-like object is required, not 'str'``
+    to the main ``supervisord`` log file.  Patch by Vinay Sajip and Josh Staley.
+  - Fixed a Python 3.8 compatibility issue caused by the removal of
+    ``cgi.escape()``.  Patch by Mattia Procopio.
+  - The ``meld3`` package is no longer a dependency.  A version of ``meld3``
+    is now included within the ``supervisor`` package itself.
+  4.0.4 (2019-07-15)
+  ------------------
+  - Fixed a bug where ``supervisorctl tail <name> stdout`` would actually tail
+    ``stderr``.  Note that ``tail <name>`` without the explicit ``stdout``
+    correctly tailed ``stdout``.  The bug existed since 3.0a3 (released in
+    2007).  Patch by Arseny Hofman.
+  - Improved the warning message added in 4.0.3 so it is now emitted for
+    both ``tail`` and ``tail -f``.  Patch by Vinay Sajip.
+  - CVE-2019-12105.  Documentation addition only, no code changes.  This CVE
+    states that ``inet_http_server`` does not use authentication by default
+    (`details <https://github.com/Supervisor/supervisor/issues/1245>`_).  Note that
+    ``inet_http_server`` is not enabled by default, and is also not enabled
+    in the example configuration output by ``echo_supervisord_conf``.  The
+    behavior of the ``inet_http_server`` options have been correctly documented,
+    and have not changed, since the feature was introduced in 2006.  A new
+    `warning message <https://github.com/Supervisor/supervisor/commit/4e334d9cf2a1daff685893e35e72398437df3dcb>`_
+    was added to the documentation.
+  4.0.3 (2019-05-22)
+  ------------------
+  - Fixed an issue on Python 2 where running ``supervisorctl tail -f <name>``
+    would fail with the message
+    ``Cannot connect, error: <type 'exceptions.UnicodeEncodeError'>`` where it
+    may have worked on Supervisor 3.x.  The issue was introduced in Supervisor
+    4.0.0 due to new bytes/strings conversions necessary to add Python 3 support.
+    For ``supervisorctl`` to correctly display logs with Unicode characters, the
+    terminal encoding specified by the environment must support it.  If not, the
+    ``UnicodeEncodeError`` may still occur on either Python 2 or 3.  A new
+    warning message is now printed if a problematic terminal encoding is
+    detected.  Patch by Vinay Sajip.
+  4.0.2 (2019-04-17)
+  ------------------
+  - Fixed a bug where inline comments in the config file were not parsed
+    correctly such that the comments were included as part of the values.
+    This only occurred on Python 2, and only where the environment had an
+    extra ``configparser`` module installed.  The bug was introduced in
+    Supervisor 4.0.0 because of Python 2/3 compatibility code that expected
+    a Python 2 environment to only have a ``ConfigParser`` module.
+  4.0.1 (2019-04-10)
+  ------------------
+  - Fixed an issue on Python 3 where an ``OSError: [Errno 29] Illegal seek``
+    would occur if ``logfile`` in the ``[supervisord]`` section was set to
+    a special file like ``/dev/stdout`` that was not seekable, even if
+    ``logfile_maxbytes = 0`` was set to disable rotation.  The issue only
+    affected the main log and not child logs.  Patch by Martin Falatic.
+  4.0.0 (2019-04-05)
+  ------------------
+  - Support for Python 3 has been added.  On Python 3, Supervisor requires
+    Python 3.4 or later.  Many thanks to Vinay Sajip, Scott Maxwell, Palm Kevin,
+    Tres Seaver, Marc Abramowitz, Son Nguyen, Shane Hathaway, Evan Andrews,
+    and Ethan Hann who all made major contributions to the Python 3 porting
+    effort.  Thanks also to all contributors who submitted issue reports and
+    patches towards this effort.
+  - Support for Python 2.4, 2.5, and 2.6 has been dropped.  On Python 2,
+    Supervisor now requires Python 2.7.
+  - The ``supervisor`` package is no longer a namespace package.
+  - The behavior of the config file expansion ``%(here)s`` has changed.  In
+    previous versions, a bug caused ``%(here)s`` to always expand to the
+    directory of the root config file.  Now, when ``%(here)s`` is used inside
+    a file included via ``[include]``, it will expand to the directory of
+    that file.  Thanks to Alex Eftimie and Zoltan Toth-Czifra for the patches.
+  - The default value for the config file setting ``exitcodes=``, the expected
+    exit codes of a program, has changed.  In previous versions, it was ``0,2``.
+    This caused issues with Golang programs where ``panic()`` causes the exit
+    code to be ``2``.  The default value for ``exitcodes`` is now ``0``.
+  - An undocumented feature where multiple ``supervisorctl`` commands could be
+    combined on a single line separated by semicolons has been removed.
+  - ``supervisorctl`` will now set its exit code to a non-zero value when an
+    error condition occurs.  Previous versions did not set the exit code for
+    most error conditions so it was almost always 0.  Patch by Luke Weber.
+  - Added new ``stdout_syslog`` and ``stderr_syslog`` options to the config
+ 
+-------------------------------------------------------------------
 Sun Dec 22 14:53:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add python2-setuptools to the runtime-requirements
