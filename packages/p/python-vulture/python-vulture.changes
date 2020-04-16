@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:49:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Ignore unused import statements in __init__.py (RJ722, #192).
+  * Report first decorator's line number for unused decorated objects on Python 3.8+ (RJ722, #200).
+  * Check code with black and pyupgrade.
+
+-------------------------------------------------------------------
 Thu Feb  6 17:35:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.3

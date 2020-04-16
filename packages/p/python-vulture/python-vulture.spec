@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vulture
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Python module for finding dead code
 License:        MIT
@@ -33,7 +33,6 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest > 3.2.3}
-BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 
@@ -69,7 +68,8 @@ sed -i -e '/^#! \//, 1d' vulture/core.py
 %python_clone -a %{buildroot}%{_bindir}/vulture
 
 %check
-%python_exec setup.py test
+rm setup.cfg
+%pytest
 
 %post
 %python_install_alternative vulture
@@ -78,7 +78,7 @@ sed -i -e '/^#! \//, 1d' vulture/core.py
 %python_uninstall_alternative vulture
 
 %files %{python_files}
-%doc NEWS.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/vulture
 %{python_sitelib}/*

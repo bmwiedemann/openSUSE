@@ -53,4 +53,15 @@
     <comment></comment>
     <requestid>770681</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3d0d17e5406a16ed91fe4f274e115ff</srcmd5>
+    <version>1.4</version>
+    <time>1587071007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Ignore unused import statements in __init__.py (RJ722, #192).
+  * Report first decorator's line number for unused decorated objects on Python 3.8+ (RJ722, #200).
+  * Check code with black and pyupgrade.</comment>
+    <requestid>794478</requestid>
+  </revision>
 </revisionlist>
