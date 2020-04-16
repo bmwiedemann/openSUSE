@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:29:28 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1586954096.7160d88d9:
+  * t: Add test description strings for all 'click_element_ok' calls
+  * docs: Add description of folder structure
+  * Separate all "scripts" to be packaged from development "tools"
+  * t: Allow to set custom test output message on wait_for_ajax calls
+  * t: Reduce sleep time in "schedule_one_job" to save testing time
+  * t: Extract method "find_status_text" for full stack utils
+  * Replace all uses of mock with redefine
+  * doc: Mention script/tidy script
+  * doc: Mention test-unit-and-integration target
+  * doc: Fix variable name
+  * openqa-clone-custom-git-refspec: Allow '/' in branch name
+  * Refresh details page only when the job state changes
+  * Use same setup function for scheduled tests as for other "pre-done" states
+  * Show settings by default also for assigned jobs
+  * Extract duplicated code from generating job settings
+  * Simplify Schema::Results::Jobs (map)
+  * Simplify Schema::Results::Jobs overview preparation
+  * Simplify Schema::Results::Jobs with early returns
+  * Extract Schema::Results::Jobs logging method
+  * Simplify Schema::Results::Jobs "add/remove_result_dir_prefix"
+  * Simplify Schema::Results::Jobs "delete" method
+  * t: Add simple test for job name/label/scenario
+  * script: Ensure no left over .tdy files on aborted/failed tidy
+  * Cut reason after 300 characters
+  * Validate result when setting a job to done
+  * asset cleanup: Consider all jobs which are not done or cancelled as pending
+  * Do not re-generate settings when cloning a job
+  * Handle the settings that start with `+` when creating a job
+
+-------------------------------------------------------------------
 Tue Apr 14 00:29:33 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1586679856.9abbce836:
