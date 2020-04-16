@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:39:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.22.1:
+  * Fix quoted-strings rule with only-when-needed on corner cases
+  * Add check-keys option to the truthy rule
+  * Fix quoted-strings rule not working on sequences items
+  * Sunset Python 2
+  * Fix new-lines rule on Python 3 with DOS line endings
+  * Fix quoted-strings rule not working for string values matching scalars
+  * Add required: only-when-needed option to the quoted-strings rule
+
+-------------------------------------------------------------------
 Tue Feb  4 16:00:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.20.0

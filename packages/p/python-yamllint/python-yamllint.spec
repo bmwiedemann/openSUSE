@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamllint
-Version:        1.20.0
+Version:        1.22.1
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-pathspec >= 0.5.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -53,14 +55,22 @@ indentation, etc.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/yamllint
 
 %check
-%python_exec -m unittest discover
+export LANG="en_US.UTF8"
+%python_exec -m unittest discover -v
+
+%post
+%python_install_alternative yamllint
+
+%postun
+%python_uninstall_alternative yamllint
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/yamllint
+%python_alternative %{_bindir}/yamllint
 %{python_sitelib}/*
 
 %changelog
