@@ -1,7 +1,7 @@
 #
 # spec file for package python-rollbar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-rollbar
-Version:        0.14.7
+Version:        0.15.0
 Release:        0
 Summary:        Python notifier for reporting exceptions, errors, and log messages to Rollbar
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/rollbar/pyrollbar
+URL:            https://github.com/rollbar/pyrollbar
 Source:         https://github.com/rollbar/pyrollbar/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 0.12.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-enum34
+BuildRequires:  python2-mock
+%endif
 Requires:       python-requests >= 0.12.1
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
