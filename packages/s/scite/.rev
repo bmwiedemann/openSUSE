@@ -270,4 +270,14 @@
  * big upstream changelog -&gt; https://www.scintilla.org/ScintillaHistory.html</comment>
     <requestid>770250</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d59162b14a0a2b878561e4974555a0a1</srcmd5>
+    <version>4.3.2</version>
+    <time>1587071012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.2:
+  * Add default argument for StyleContext::GetRelative.
+  * Automatically scroll while dragging text.</comment>
+    <requestid>794458</requestid>
+  </revision>
 </revisionlist>
