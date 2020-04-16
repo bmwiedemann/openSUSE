@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:52:15 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Ruby 2.7 support (cherry-picked from upstream)
+  0001-Fix-code-generated-for-Ruby-global-variables.patch
+  0002-Add-support-for-Ruby-2.7.patch
+  0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
+  0004-Improve-description-of-cast-macros-for-Ruby.patch
+
+-------------------------------------------------------------------
 Mon Sep  9 08:17:39 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 4.0.1

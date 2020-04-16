@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,15 @@ Group:          Development/Languages/C and C++
 URL:            http://www.swig.org/
 Source:         https://github.com/%{name}/%{name}/archive/rel-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-Patch2:         swig308-isfinite.diff
+
+# ruby 2.7 support (cherry-picked from 4.0.2~pre)
+Patch1:         0001-Fix-code-generated-for-Ruby-global-variables.patch
+Patch2:         0002-Add-support-for-Ruby-2.7.patch
+Patch3:         0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
+Patch4:         0004-Improve-description-of-cast-macros-for-Ruby.patch
+
+Patch308:       swig308-isfinite.diff
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
