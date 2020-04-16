@@ -1,7 +1,7 @@
 #
 # spec file for package python-json5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json5
-Version:        0.8.5
+Version:        0.9.4
 Release:        0
-License:        Apache-2.0
 Summary:        A Python implementation of the JSON5 data format
-Url:            https://github.com/dpranke/pyjson5
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/dpranke/pyjson5
 Source:         https://github.com/dpranke/pyjson5/archive/v%{version}.tar.gz#/pyjson5-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -42,7 +44,6 @@ slightly more usable as a configuration language:
   * Objects and arrays may end with trailing commas.
   * Strings can be single-quoted, and multi-line string literals are allowed.
 
-
 %prep
 %setup -q -n pyjson5-%{version}
 
@@ -55,7 +56,7 @@ slightly more usable as a configuration language:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md
