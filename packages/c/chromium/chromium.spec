@@ -649,7 +649,6 @@ myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
-myconf_gn+=" enable_hevc_demuxing=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
@@ -738,7 +737,7 @@ pushd out/Release
 mkdir -p %{buildroot}%{_sysconfdir}/default
 install -m 644 %{SOURCE103} %{buildroot}%{_sysconfdir}/default/chromium
 
-cp -a *.bin *.pak locales xdg-mime %{buildroot}%{_libdir}/chromium/
+cp -a *.bin *.pak locales %{buildroot}%{_libdir}/chromium/
 %if !%{with system_icu}
 cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
 %endif
@@ -751,9 +750,6 @@ cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
 # chromedriver
 cp -a chromedriver %{buildroot}%{_libdir}/chromium/
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
-
-# Patch xdg-settings to use the chromium version of xdg-mime as that the system one is not KDE4 compatible
-sed "s|xdg-mime|%{_libdir}/chromium/xdg-mime|g" xdg-settings > %{buildroot}%{_libdir}/chromium/xdg-settings
 
 cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
@@ -783,10 +779,6 @@ popd
 # Install the master_preferences file
 mkdir -p %{buildroot}%{_sysconfdir}/chromium
 install -m 0644 %{SOURCE30} %{buildroot}%{_sysconfdir}/chromium
-
-# Set the right attributes
-chmod 755 %{buildroot}%{_libdir}/chromium/xdg-settings
-chmod 755 %{buildroot}%{_libdir}/chromium/xdg-mime
 
 # install manpages
 mkdir -p %{buildroot}%{_mandir}/man1/

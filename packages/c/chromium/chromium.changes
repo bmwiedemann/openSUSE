@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:38:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try to use system version of xdg-utils
+
+-------------------------------------------------------------------
 Wed Apr  8 08:41:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 81.0.4044.92 bsc#1168911:
