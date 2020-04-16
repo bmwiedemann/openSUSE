@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr  9 12:44:00 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.11.0
+  * 0.11.0 - 05/04/2020
+    add support for Python 3.8 (not Python 3.8 only syntax) PR #391
+    enforce conversion of float to int at the Qt boudary PR #391
+    replace byteplay by bytecode PR #391
+    add get method to DynamicScope PR #394
+    properly set the attributes of imported module PR #398
+    qt: fix alerts on tabbed DockItem PR #396
+    qt: avoid going higher than the dock area when looking for a DockTabWidget among the parents of a QDockContainer PR #386
+    properly report SyntaxError in f strings PR #378
+    add support for using attributes (. access) when specifying attr types PR #359
+    limit support to Python 3 PR #349
+    use cppy for the Python/C interface PR #349
+    qt: add missing brackets to widget.focusPolicy within qt_widget.py/QtWidget.tab_focus_request() PR #403
+    qt: fix return value of QtWidget.tab_focus_request() PR #404
+  * 0.10.4 - 18/09/2019
+    fix a bug in the parser preventing the use of raise from under Python 3 PR #364
+    add a ButtonGroup widget and a group attribute on all buttons to allow to group buttons belonging to different containers. PR #346
+    fix an issue in ImageView when the image is None PR #361
+    add a sync_time attribute to Field to control the refresh rate when using the 'auto_sync' trigger mode. PR #353
+    multiple improvement of the documentation PR #341 #345 #350
+    add a new example about layout PR #343
+    fix issue where fields with a validator would lose their original stylesheet when the error state of the validator is cleared. PR #365
+    fix Looper's loop_index becoming invalid when items are reordered #357 via PR #358
+
+-------------------------------------------------------------------
 Wed Feb  5 13:57:41 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.10.4
