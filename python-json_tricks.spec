@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json_tricks
-Version:        3.15.0
+Version:        3.15.2
 Release:        0
 Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
@@ -61,8 +61,6 @@ As well as compression and disallowing duplicate keys.
 
 %prep
 %setup -q -n pyjson_tricks-%{version}
-# py3 only syntax in this file
-rm tests/test_utils.py
 
 %build
 %python_build
