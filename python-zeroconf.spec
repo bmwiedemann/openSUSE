@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-zeroconf
-Version:        0.24.5
+Version:        0.25.1
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
 Source:         https://github.com/jstasiak/python-zeroconf/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         python-zeroconf-disable-some-tests.patch
 BuildRequires:  %{python_module ifaddr}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +44,6 @@ does not force you to use a particular event loop or python-twisted.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %python_build
@@ -56,8 +54,7 @@ does not force you to use a particular event loop or python-twisted.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests that do not run in an OBS chroot are disabled via python-zeroconf-disable-some-tests.patch
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %python_exec -m unittest discover -v
+%pytest zeroconf/test.py -k 'not (test_integration_with_listener_ipv6 or test_launch)'
 
 %files %{python_files}
 %doc README.rst
