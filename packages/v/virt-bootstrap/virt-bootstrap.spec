@@ -1,7 +1,7 @@
 #
 # spec file for package virt-bootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,20 @@ Release:        0
 Summary:        System container rootfs creation tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Other
-Url:            https://github.com/virt-manager/virt-bootstrap
+URL:            https://github.com/virt-manager/virt-bootstrap
 Source:         http://virt-manager.org/download/sources/virt-bootstrap/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module libguestfs}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       python-libguestfs
 Requires:       python-passlib
 Requires:       skopeo
 Requires:       virt-sandbox
 BuildArch:      noarch
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 powerpc64le
-
 %python_subpackages
 
 %description
@@ -52,14 +51,22 @@ libvirt containers.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/virt-bootstrap
+%python_clone -a %{buildroot}%{_mandir}/man1/virt-bootstrap.1
 %fdupes %{buildroot}%{_prefix}
 
-%files %python_files
-%defattr(-,root,root)
-%doc README.md LICENSE ChangeLog AUTHORS
-%python3_only %{_bindir}/virt-bootstrap
+%post
+%python_install_alternative virt-bootstrap virt-bootstrap.1
+
+%postun
+%python_uninstall_alternative virt-bootstrap virt-bootstrap.1
+
+%files %{python_files}
+%license LICENSE
+%doc README.md ChangeLog AUTHORS
+%python_alternative %{_bindir}/virt-bootstrap
 %{python_sitelib}/virtBootstrap
 %{python_sitelib}/virt_bootstrap-*.egg-info
-%python3_only %{_mandir}/man1/virt-bootstrap*
+%python_alternative %{_mandir}/man1/virt-bootstrap.1%{ext_man}
 
 %changelog

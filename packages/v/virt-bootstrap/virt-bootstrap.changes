@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:43:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Fri Jul 12 10:06:46 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Add powerpc64le to ExclusiveArch (bsc#1127769)
