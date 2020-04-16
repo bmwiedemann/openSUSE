@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           geary
-Version:        3.34.2
+Version:        3.36.1
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        LGPL-2.1-or-later AND CC-BY-3.0 AND BSD-2-Clause
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
-Source0:        https://download.gnome.org/sources/geary/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/geary/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gcr-3) >= 3.10.1
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
 BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gmime-2.6) >= 2.6.17
+BuildRequires:  pkgconfig(gmime-3.0) >= 3.2.4
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gspell-1)
@@ -47,16 +47,16 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.0) >= 2.10.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libcanberra) >= 0.28
-BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
-BuildRequires:  pkgconfig(sqlite3) >= 3.7.4
+BuildRequires:  pkgconfig(sqlite3) >= 3.24
 BuildRequires:  pkgconfig(vapigen) >= 0.22.1
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.10.0
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.10.0
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.26.0
 
 %description
 Geary is a email reader for GNOME.
@@ -87,7 +87,9 @@ may be read without having to navigate between messages.
 %{_datadir}/help/C/%{name}
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
+%{_libdir}/libgeary-client.so
 %dir %{_libdir}/%{name}
+%{_libdir}/%{name}/plugins/
 %dir %{_libdir}/%{name}/web-extensions
 %{_libdir}/%{name}/web-extensions/libgeary-web-process.so
 %dir %{_datadir}/metainfo
