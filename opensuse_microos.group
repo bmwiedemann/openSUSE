@@ -22,7 +22,6 @@
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -88,7 +87,6 @@
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -322,6 +320,7 @@
     <package name="hwdata" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="hwinfo" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="hyper-v" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="ipset" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1047,6 +1046,7 @@
     <package name="libyui11" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libzip5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
