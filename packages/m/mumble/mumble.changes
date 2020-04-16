@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 23:13:58 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- use the "profile profilename /path/to/binary" syntax to make
+  "ps aufxZ" more readable
+
+-------------------------------------------------------------------
 Wed Nov  6 16:15:46 UTC 2019 - opensuse@trummer.xyz
 
 - set permissions of config file to 640 because it can contain passwords

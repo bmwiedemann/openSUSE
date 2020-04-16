@@ -1,7 +1,7 @@
 # Last Modified: Thu Mar 24 13:33:08 2011
 #include <tunables/global>
 
-/usr/sbin/murmurd {
+profile murmurd /usr/sbin/murmurd {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/openssl>
