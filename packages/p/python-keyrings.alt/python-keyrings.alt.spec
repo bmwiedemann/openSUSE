@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyrings.alt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define keyring_ver 18.0.0
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-keyrings.alt
-Version:        3.1.1
+Version:        3.4.0
 Release:        0
 Summary:        Alternate keyring implementations
 License:        MIT
@@ -57,7 +57,7 @@ keyring package.
 
 %prep
 %setup -q -n keyrings.alt-%{version}
-sed -i 's/--flake8//' pytest.ini
+sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %build
 %python_build
@@ -67,16 +67,7 @@ sed -i 's/--flake8//' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# setup.py test works except it checks test dependencies which includes
-# lots of non-test related dependencies.
-
-# Three tests fail with AttributeError: 'x' object has no attribute 'get_credential'
-# - CryptedFileKeyringTestCase
-# - EncryptedFileKeyringTestCase
-# - UncryptedFileKeyringTestCase
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python2 --ignore=_build.python3 -k 'not test_credential'
-}
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
