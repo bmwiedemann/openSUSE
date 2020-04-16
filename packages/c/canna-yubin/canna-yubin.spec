@@ -1,7 +1,7 @@
 #
 # spec file for package canna-yubin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 Name:           canna-yubin
 BuildRequires:  canna
-Version:        0.4.0.20190228.0
+Version:        0.4.0.20200331.0
 Release:        0
-Url:            https://osdn.net/projects/canna-yubin/
-Source0:        https://jaist.dl.osdn.jp/%{name}/70759/%{name}-%{version}.tar.xz
-Source1:        https://jaist.dl.osdn.jp/%{name}/70759/%{name}-%{version}.tar.xz.asc
-Source2:        https://jaist.dl.osdn.jp/%{name}/70760/%{name}.keyring
+URL:            https://osdn.net/projects/canna-yubin/
+Source0:        https://osdn.dl.osdn.net/%{name}/72772/%{name}-%{version}.tar.xz
+Source1:        https://osdn.dl.osdn.net/%{name}/72772/%{name}-%{version}.tar.xz.asc
+Source2:        https://osdn.dl.osdn.net/%{name}/72773/%{name}.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Postal Code Extension Dictionary for Canna
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
@@ -31,11 +31,7 @@ Group:          System/I18n/Japanese
 BuildArch:      noarch
 Requires(pre):  shadow
 
-# Summary(ja): 郵便番号データのCanna用の辞書
-# _description -l ja
-# 郵便番号データのCanna用の辞書
-# 
-# 著者：
+# AUTHORS:
 # ------
 #     Japanese Ministry of Posts and Telecommunications
 #     Yoshito Komatsu
