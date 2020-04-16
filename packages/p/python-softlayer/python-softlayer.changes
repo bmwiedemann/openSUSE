@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:19:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.8.7
+  * #1222 Get load balancer (LBaaS) by name
+  * #1221 Added version checker
+  * #1227 Updated unit test suite for TravisCI to run properly
+  * #1225 Add note about using multiple colon symbols not working when setting tags.
+  * #1228 Support ordering [Dependent Duplicate Volumes](https://cloud.ibm.com/docs/BlockStorage?topic=BlockStorage-dependentduplicate)
+  * #1233 Refactored File/Block managers to reduce duplicated code.
+  * #1231 Added Refresh functions for Dependent Duplicate Volumes
+  * #801 Added support for JSON styled parameters and object filters
+  * #1234 Added ability to change which datacenters an image template was stored in
+
+-------------------------------------------------------------------
 Tue Mar 17 14:29:19 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.8.5
