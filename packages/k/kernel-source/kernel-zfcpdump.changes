@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Mon Apr 13 20:13:10 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.6.4 (bnc#1012628).
+- driver core: Reevaluate dev->links.need_for_probe as suppliers
+  are added (bnc#1012628).
+- io-uring: drop completion when removing file (bnc#1012628).
+- fbcon: fix null-ptr-deref in fbcon_switch (bnc#1012628).
+- blk-mq: Keep set->nr_hw_queues and set->map[].nr_queues in sync
+  (bnc#1012628).
+- RDMA/cm: Update num_paths in cma_resolve_iboe_route error flow
+  (bnc#1012628).
+- Bluetooth: RFCOMM: fix ODEBUG bug in rfcomm_dev_ioctl
+  (bnc#1012628).
+- RDMA/siw: Fix passive connection establishment (bnc#1012628).
+- RDMA/cma: Teach lockdep about the order of rtnl and lock
+  (bnc#1012628).
+- RDMA/ucma: Put a lock around every call to the rdma_cm layer
+  (bnc#1012628).
+- ubi: fastmap: Free unused fastmap anchor peb during detach
+  (bnc#1012628).
+- IB/mlx5: Replace tunnel mpls capability bits for tunnel_offloads
+  (bnc#1012628).
+- IB/hfi1: Fix memory leaks in sysfs registration and
+  unregistration (bnc#1012628).
+- IB/hfi1: Call kobject_put() when kobject_init_and_add() fails
+  (bnc#1012628).
+- ASoC: jz4740-i2s: Fix divider written at incorrect offset in
+  register (bnc#1012628).
+- ASoC: tas2562: Fixed incorrect amp_level setting (bnc#1012628).
+- platform/x86: intel_int0002_vgpio: Use
+  acpi_register_wakeup_handler() (bnc#1012628).
+- ACPI: PM: Add acpi_[un]register_wakeup_handler() (bnc#1012628).
+- hwrng: imx-rngc - fix an error path (bnc#1012628).
+- tools/accounting/getdelays.c: fix netlink attribute length
+  (bnc#1012628).
+- slub: improve bit diffusion for freelist ptr obfuscation
+  (bnc#1012628).
+- usb: dwc3: gadget: Wrap around when skip TRBs (bnc#1012628).
+- random: always use batched entropy for get_random_u{32,64}
+  (bnc#1012628).
+- s390: prevent leaking kernel address in BEAR (bnc#1012628).
+- net: phy: at803x: fix clock sink configuration on ATH8030 and
+  ATH8035 (bnc#1012628).
+- cxgb4: free MQPRIO resources in shutdown path (bnc#1012628).
+- r8169: change back SG and TSO to be disabled by default
+  (bnc#1012628).
+- mlxsw: spectrum_flower: Do not stop at FLOW_ACTION_VLAN_MANGLE
+  (bnc#1012628).
+- tun: Don't put_page() for all negative return values from XDP
+  program (bnc#1012628).
+- slcan: Don't transmit uninitialized stack data in padding
+  (bnc#1012628).
+- net: stmmac: dwmac1000: fix out-of-bounds mac address reg
+  setting (bnc#1012628).
+- net_sched: fix a missing refcnt in tcindex_init() (bnc#1012628).
+- net_sched: add a temporary refcnt for struct tcindex_data
+  (bnc#1012628).
+- net: phy: micrel: kszphy_resume(): add delay after
+  genphy_resume() before accessing PHY registers (bnc#1012628).
+- net: dsa: mt7530: fix null pointer dereferencing in port5 setup
+  (bnc#1012628).
+- net: dsa: bcm_sf2: Ensure correct sub-node is parsed
+  (bnc#1012628).
+- net: dsa: bcm_sf2: Do not register slave MDIO bus with OF
+  (bnc#1012628).
+- ipv6: don't auto-add link-local address to lag ports
+  (bnc#1012628).
+- cxgb4: fix MPS index overwrite when setting MAC address
+  (bnc#1012628).
+- commit e42da4f
+
+-------------------------------------------------------------------
+Sun Apr 12 10:56:48 CEST 2020 - mkubecek@suse.cz
+
+- constrants: fix malformed XML
+  Closing tag of an element is "</foo>", not "<foo/>".
+  Fixes: 8b37de2eb835 ("rpm/constraints.in: Increase memory for kernel-docs")
+- commit 4a8ca28
+
+-------------------------------------------------------------------
+Thu Apr  9 15:45:36 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/efi-x86-Don-t-remap-text-rodata-gap-read-only-for-mi.patch.
+  Update upstream status.
+- commit 5b340fd
+
+-------------------------------------------------------------------
+Thu Apr  9 15:41:53 CEST 2020 - jslaby@suse.cz
+
+- efi/x86: Fix the deletion of variables in mixed mode
+  (bnc#1167933).
+- commit 61c9284
+
+-------------------------------------------------------------------
+Thu Apr  9 15:02:07 CEST 2020 - jslaby@suse.cz
+
+- efi/x86: Don't remap text<->rodata gap read-only for mixed mode
+  (bnc#1168645).
+- commit fd9c360
+
+-------------------------------------------------------------------
+Thu Apr  9 13:05:51 CEST 2020 - mgorman@suse.de
+
+- Update config files to disable CONFIG_TRACE_IRQFLAGS (bsc#1169078).
+- commit d379575
+
+-------------------------------------------------------------------
+Thu Apr  9 11:24:12 CEST 2020 - msuchanek@suse.de
+
+- rpm/constraints.in: Increase memory for kernel-docs
+  References: https://build.opensuse.org/request/show/792664
+- commit 8b37de2
+
+-------------------------------------------------------------------
+Thu Apr  9 02:44:51 CEST 2020 - neilb@suse.de
+
+- cachefiles: fix corruption of 'ret' (boo#1168841).
+- commit 0a79cdc
+
+-------------------------------------------------------------------
+Wed Apr  8 18:13:23 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.6.3 (bnc#1012628).
+- ipv4: fix a RCU-list lock in fib_triestat_seq_show
+  (bnc#1012628).
+- net: dsa: ksz: Select KSZ protocol tag (bnc#1012628).
+- net, ip_tunnel: fix interface lookup with no key (bnc#1012628).
+- sctp: fix possibly using a bad saddr with a given dst
+  (bnc#1012628).
+- sctp: fix refcount bug in sctp_wfree (bnc#1012628).
+- net: macb: Fix handling of fixed-link node (bnc#1012628).
+- net: fix fraglist segmentation reference count leak
+  (bnc#1012628).
+- udp: initialize is_flist with 0 in udp_gro_receive
+  (bnc#1012628).
+- padata: fix uninitialized return value in padata_replace()
+  (bnc#1012628).
+- brcmfmac: abort and release host after error (bnc#1012628).
+- XArray: Fix xa_find_next for large multi-index entries
+  (bnc#1012628).
+- drm/bridge: analogix-anx6345: Avoid duplicate -supply suffix
+  (bnc#1012628).
+- misc: rtsx: set correct pcr_ops for rts522A (bnc#1012628).
+- misc: pci_endpoint_test: Fix to support > 10 pci-endpoint-test
+  devices (bnc#1012628).
+- misc: pci_endpoint_test: Avoid using module parameter to
+  determine irqtype (bnc#1012628).
+- PCI: sysfs: Revert "rescan" file renames (bnc#1012628).
+- coresight: do not use the BIT() macro in the UAPI header
+  (bnc#1012628).
+- mei: me: add cedar fork device ids (bnc#1012628).
+- nvmem: release the write-protect pin (bnc#1012628).
+- nvmem: check for NULL reg_read and reg_write before
+  dereferencing (bnc#1012628).
+- nvmem: sprd: Fix the block lock operation (bnc#1012628).
+- extcon: axp288: Add wakeup support (bnc#1012628).
+- power: supply: axp288_charger: Add special handling for HP
+  Pavilion x2 10 (bnc#1012628).
+- Revert "ALSA: uapi: Drop asound.h inclusion from asoc.h"
+  (bnc#1012628).
+- Revert "dm: always call blk_queue_split() in dm_process_bio()"
+  (bnc#1012628).
+- ALSA: hda/ca0132 - Add Recon3Di quirk to handle integrated
+  sound on EVGA X99 Classified motherboard (bnc#1012628).
+- soc: mediatek: knows_txdone needs to be set in Mediatek CMDQ
+  helper (bnc#1012628).
+- perf python: Fix clang detection to strip out options passed
+  in $CC (bnc#1012628).
+- mm: mempolicy: require at least one nodeid for MPOL_PREFERRED
+  (bnc#1012628).
+- commit 97c6e99
+
+-------------------------------------------------------------------
+Tue Apr  7 20:14:11 CEST 2020 - msuchanek@suse.de
+
+- s390x: zfcpdump: disable CONFIG_RELOCATABLE (bsc#1168847).
+- commit c824449
+
+-------------------------------------------------------------------
+Tue Apr  7 18:00:32 CEST 2020 - mgorman@suse.de
+
+- Update config files to disable CONFIG_UCLAMP_TASK (bsc#1168888).
+- commit 025835f
+
+-------------------------------------------------------------------
+Mon Apr  6 10:40:31 CEST 2020 - jslaby@suse.cz
+
+- net/bpfilter: remove superfluous testing message (bnc#1168664).
+- commit 7d8cfa8
+
+-------------------------------------------------------------------
+Fri Apr  3 13:15:02 CEST 2020 - msuchanek@suse.de
+
+- Delete patches.rpmify/powerpc-Blacklist-GCC-5.4-6.1-and-6.2.patch.
+- commit daf9f5a
+
+-------------------------------------------------------------------
+Fri Apr  3 11:11:32 CEST 2020 - yousaf.kaukab@suse.com
+
+- config: arm64: enable cpufreq driver for Jetson Nano and Jetson TX1
+- commit 3187813
+
+-------------------------------------------------------------------
+Thu Apr  2 17:06:34 CEST 2020 - tiwai@suse.de
+
+- drm/i915/display: Fix mode private_flags comparison at
+  atomic_check (bsc#1168383).
+- commit a83dd8f
+
+-------------------------------------------------------------------
 Thu Apr  2 08:31:03 CEST 2020 - jslaby@suse.cz
 
 - bpf: update jmp32 test cases to fix range bound deduction

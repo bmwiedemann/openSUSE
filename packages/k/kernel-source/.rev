@@ -5066,4 +5066,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.6.2 &amp; 5.6.1</comment>
     <requestid>790792</requestid>
   </revision>
+  <revision rev="538" vrev="1">
+    <srcmd5>b5441aa383d165d248c80096ae22fefa</srcmd5>
+    <version>5.6.4</version>
+    <time>1587070792</time>
+    <user>dimstar_suse</user>
+    <comment>5.6.4 &amp; 5.6.3 &amp; other fixes</comment>
+    <requestid>793684</requestid>
+  </revision>
 </revisionlist>
