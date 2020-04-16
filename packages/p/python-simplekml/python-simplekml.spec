@@ -19,14 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-simplekml
-Version:        1.3.3
+Version:        1.3.5
 Release:        0
 Summary:        A Simple KML creator
-#HG-Clone:      https://bitbucket.org/KyleLancaster/simplekml
 License:        LGPL-3.0-or-later
 URL:            http://readthedocs.org/projects/simplekml/
 Source:         https://files.pythonhosted.org/packages/source/s/simplekml/simplekml-%{version}.tar.gz
-Source1:        https://bitbucket.org/KyleLancaster/simplekml/raw/76ac20169865b793aa0ed574f12651e96562570d/LICENSE.txt
+Source1:        https://raw.githubusercontent.com/eisoldt/simplekml/master/LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +41,7 @@ is easy to run with and create usable KML.
 
 %prep
 %setup -q -n simplekml-%{version}
-sed -i 's/\r$//' README.txt
+sed -i 's/\r$//' README.md
 cp %{SOURCE1} .
 
 %build
@@ -57,7 +56,7 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %{python_sitelib}/simplekml
 %{python_sitelib}/simplekml-%{version}-py%{python_version}.egg-info
 
