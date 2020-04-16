@@ -1,7 +1,7 @@
 #
 # spec file for package siege
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           siege
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        HTTP Regression Testing/Benchmarking Utility
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://www.joedog.org/siege-home/
+URL:            https://www.joedog.org/siege-home/
 Source:         http://download.joedog.org/siege/siege-%{version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  pkgconfig
@@ -53,7 +53,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/siegerc
 %config(noreplace) %{_sysconfdir}/%{name}/urls.txt
