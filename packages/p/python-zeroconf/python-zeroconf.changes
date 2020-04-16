@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:47:59 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.25.1
+  * Eliminated 5s hangup when calling Zeroconf.close(), thanks to Erik Montnemery
+  * Reverted uniqueness assertions when browsing, they caused a regression
+  Backwards incompatible:
+  * Rationalized handling of TXT records. 
+- deleted patches
+  - python-zeroconf-disable-some-tests.patch (not needed, replaced by -k 'not ...')
+
+-------------------------------------------------------------------
 Mon Mar  9 10:57:37 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.24.5
