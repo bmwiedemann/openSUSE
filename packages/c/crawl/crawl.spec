@@ -33,6 +33,8 @@ Source:         https://crawl.develz.org/release/%{major_ver}/stone_soup-%{versi
 Patch0:         desktop.patch
 Patch1:         icon.patch
 Patch2:         appdata.patch
+# PATCH-FIX-UPSTREAM CVE-2020-11722, boo#1169381, disable LUA loadstring
+Patch3:         CVE-2020-11722.patch
 BuildRequires:  dejavu-fonts
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -60,7 +62,7 @@ Requires(pre):  pwdutils
 %endif
 
 %description
-%about
+%{about}
 
 This is the Stone Soup version of Dungeon Crawl.
 
@@ -72,7 +74,7 @@ Group:          Amusements/Games/RPG
 Requires:       %{name} = %{version}
 
 %description sdl
-%about
+%{about}
 
 This is the (SDL-based) tiled Stone Soup version of Dungeon Crawl.
 
@@ -85,7 +87,7 @@ Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description data
-%about
+%{about}
 
 These are the data files for Dungeon Crawl Stone Soup.
 
@@ -94,6 +96,7 @@ These are the data files for Dungeon Crawl Stone Soup.
 %patch0 -p2
 %patch1 -p2
 %patch2 -p2
+%patch3 -p1
 
 %build
 cd source
@@ -104,11 +107,11 @@ tmpflags="%{optflags}"
 # note that --disable-altivec not supported by gcc 4.8
 tmpflags="$tmpflags -U__ALTIVEC__"
 %endif
-make %{?_smp_mflags} clean
-make %{?_smp_mflags} prefix=%{_prefix} bin_prefix=bin DATADIR="%{_datadir}/%{name}/" BINDIR=%{_bindir} EXTRA_FLAGS="${tmpflags}"
+%make_build clean
+%make_build prefix=%{_prefix} bin_prefix=bin DATADIR="%{_datadir}/%{name}/" BINDIR=%{_bindir} EXTRA_FLAGS="${tmpflags}"
 mv crawl crawl.tty # avoid name clashes temporarily
-make %{?_smp_mflags} clean
-make %{?_smp_mflags} prefix=%{_prefix} bin_prefix=bin DATADIR="%{_datadir}/%{name}/" BINDIR=%{_bindir} EXTRA_FLAGS="${tmpflags}" TILES="1"
+%make_build clean
+%make_build prefix=%{_prefix} bin_prefix=bin DATADIR="%{_datadir}/%{name}/" BINDIR=%{_bindir} EXTRA_FLAGS="${tmpflags}" TILES="1"
 mv crawl crawl-sdl
 mv crawl.tty crawl
 

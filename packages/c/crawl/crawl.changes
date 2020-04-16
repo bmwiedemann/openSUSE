@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:22:21 UTC 2020 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added CVE-2020-11722.patch to fix CVE-2020-11722, boo#1169381
+  * Fixes a remote code evaluation issue with lua loadstring
+
+-------------------------------------------------------------------
 Wed Mar 18 12:54:41 UTC 2020 - Jon Brightwell <jon@moozaad.co.uk>
 
 - Update to version 0.24.0
