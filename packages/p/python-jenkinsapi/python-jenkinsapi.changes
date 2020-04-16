@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 16 12:13:33 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.3.11
+  0.3.11
+  ------
+  * jobs.py: don't yield jobs twice (#740)
+  * Add debug log message in JenkinsBase.process\_job\_folder to follow execution progress (#738)
+  * don't faile when node\_descriprion is missing (#737)
+  * Fix safe exit test (#736)
+  * don't stale feature requests or "help wanted"
+  * change label for stale issues
+  * Fixed idle state not being refreshed (#575)
+  * Simple plugins (#735)
+  0.3.10
+  ------
+  * Add method for streaming build logs (#722)
+  * add instructions for Stale bot
+  * Fixed problems with changeSets (#717)
+  * Create Node by providing predetermined configuration (#730)
+  * Fix plugin versions (#734)
+  * Updates Requester to use a Session, maintaining cookies (#727)
+  * Feature/multibranch pipeline job (#715)
+  * Fix failures caused by plugins (#718)
+  * Fix for build.get\_artifacts() (#712)
+  * Add safe exit (#700)
+  * simplify crumb usage (#704)
+  * generate new api token for logged in user (#706)
+  * ignore dot files (#705)
+
+-------------------------------------------------------------------
 Fri May 17 20:23:07 UTC 2019 - Hardik Italia <hitalia@suse.com>
 
 - update to 3.0.9:

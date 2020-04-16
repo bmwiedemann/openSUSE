@@ -1,7 +1,7 @@
 #
 # spec file for package python-jenkinsapi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jenkinsapi
-Version:        0.3.9
+Version:        0.3.11
 Release:        0
 Summary:        A Python API for accessing resources on a Jenkins continuous integration server
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/salimfadhley/jenkinsapi
-Source:         https://pypi.io/packages/source/j/jenkinsapi/jenkinsapi-%{version}.tar.gz
+URL:            https://github.com/salimfadhley/jenkinsapi
+Source:         https://files.pythonhosted.org/packages/source/j/jenkinsapi/jenkinsapi-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
@@ -33,7 +33,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz >= 2014.4
 Requires:       python-requests >= 2.3.0
+Requires:       python-six >= 1.10.0
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module astroid >= 1.4.8}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-kerberos}
+# /SECTION
 %python_subpackages
 
 %description
@@ -78,8 +86,14 @@ and has
 %postun
 %python_uninstall_alternative jenkins_invoke
 
+%check
+# E       fixture '_view_poll' not found
+rm jenkinsapi_tests/unittests/test_view.py
+# E           ConnectionError: HTTPSConnectionPool(host='updates.jenkins.io...
+rm jenkinsapi_tests/unittests/test_plugins.py
+%pytest jenkinsapi_tests/unittests jenkinsapi_tests/test_utils
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license license.txt
 %python_alternative %{_bindir}/jenkins_invoke
