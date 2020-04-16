@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>720878</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15542ae77671ca49c8a92281627c2691</srcmd5>
+    <version>3.0.0</version>
+    <time>1587071093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * no upstream changelog</comment>
+    <requestid>794557</requestid>
+  </revision>
 </revisionlist>

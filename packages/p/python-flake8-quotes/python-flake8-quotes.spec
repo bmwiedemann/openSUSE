@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-quotes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
 Name:           python-flake8-quotes
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Flake8 lint for quotes
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/zheller/flake8-quotes/
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-quotes/flake8-quotes-%{version}.tar.gz
+BuildRequires:  %{python_module flake8 >= 3.3.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8 >= 3.3.0
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module flake8 >= 3.3.0}
-BuildRequires:  %{python_module pytest}
-%endif
 %python_subpackages
 
 %description
@@ -50,11 +47,9 @@ Flake8 Extension to lint for quotes.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 # Tests require access to stdin
 %pytest -s -k "not test_stdin" test
-%endif
 
 %files %{python_files}
 %doc README.rst
