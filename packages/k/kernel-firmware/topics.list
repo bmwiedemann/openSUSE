@@ -158,13 +158,15 @@ hfi1:		intel
 knav_qmss_queue: ti
 mwlwifi:	marvell
 mtk-vpu:	media
+mtk_scp:	mediatek
 btmtk:		mediatek	btmtk btmtkuart btmtksdio
 rk3399-dptx:	platform
 mt76x0:		mediatek	mt76x0u mt76x0e
 mt76x2e:	mediatek	mt76x2e mt76x2u
 mt76x2u:	mediatek
 mt7615e:	mediatek
-mt7622:		mediatek
+mt7622:		mediatek	mt7615e
+mt7663:		mediatek	mt7615e
 nfp:		nfp
 wil6210:	atheros
 venus:		media

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:11:55 CEST 2020 - tiwai@suse.de
+
+- Update aliases per 5.6 and 5.7 kernels
+
+-------------------------------------------------------------------
+Tue Apr 14 12:37:36 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200413 (git commit 64dba0fedb22):
+  * linux-firmware: add firmware for MT7663 Wifi/BT combo device
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * qcom: Add SDM845 Adreno ZAP shader firmware
+  * qca: Enable transparent WBS for WCN3991
+  * QCA: Add Bluetooth firmware for QCA6390
+  * mediatek: Add mt8183 SCP firmware
+
+-------------------------------------------------------------------
 Thu Mar 19 07:57:04 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200316 (git commit 8eb0b281511d):
