@@ -1,8 +1,0 @@
-<package name="felix-osgi-foundation" project="openSUSE:Factory">
-  <title>Felix OSGi Foundation EE Bundle</title>
-  <description>OSGi Foundation Execution Environment (EE) Classes.
-
-</description>
-  <devel project="Java:packages" package="felix-osgi-foundation"/>
-  <url>http://felix.apache.org</url>
-</package>
