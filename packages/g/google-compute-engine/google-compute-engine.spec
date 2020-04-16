@@ -1,7 +1,7 @@
 #
 # spec file for package google-compute-engine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        GCE Instance Initialization
 License:        Apache-2.0
 Group:          System/Daemons
-Url:            https://github.com/GoogleCloudPlatform/compute-image-packages
+URL:            https://github.com/GoogleCloudPlatform/compute-image-packages
 Source0:        compute-image-packages-%{version}.tar.gz
 Source7:        google-compute-engine-rpmlintrc
 Source8:        baselibs.conf
@@ -145,7 +145,7 @@ cp google-compute-engine/src/lib/systemd/system/*.service %{buildroot}%{_unitdir
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
 # Sysconfig
 mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
-cp google-compute-engine/src/etc/sysctl.d/11-gce-network-security.conf %{buildroot}%{_sysconfdir}/sysctl.d
+cp google-compute-engine/src/etc/sysctl.d/11-gce-network-security.conf %{buildroot}%{_sysconfdir}/sysctl.d/52-gce-network-security.conf
 # udev
 mkdir -p %{buildroot}/usr/lib/udev/rules.d
 cp google-compute-engine/src/lib/udev/rules.d/* %{buildroot}/usr/lib/udev/rules.d
