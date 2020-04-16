@@ -154,7 +154,7 @@
       <repopackage name="hwdata" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
       <repopackage name="hyper-v" arch="x86_64"/>
-      <repopackage name="info"/>
+      <repopackage name="info" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
@@ -410,7 +410,7 @@
       <repopackage name="libyaml-0-2" arch="x86_64"/>
       <repopackage name="libz1"/>
       <repopackage name="libzck1" arch="x86_64"/>
-      <repopackage name="libzio1"/>
+      <repopackage name="libzio1" arch="x86_64"/>
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzypp" arch="x86_64"/>

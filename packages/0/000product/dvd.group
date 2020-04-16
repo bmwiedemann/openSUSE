@@ -2125,8 +2125,9 @@
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnustep-base1_26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgnustep-base1_27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libgnutls30-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgoa-backend-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2346,7 +2347,7 @@
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libliveMedia78" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libliveMedia79" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3226,7 +3227,6 @@
     <package name="mutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mutter-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mutter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="mypy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="myspell-cs_CZ" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="myspell-da_DK" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="myspell-de" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3940,7 +3940,6 @@
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-sip-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-typeshed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python2-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4062,7 +4061,6 @@
     <package name="python3-matplotlib-cairo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-matplotlib-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python3-mypy_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -4142,8 +4140,6 @@
     <package name="python3-tdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python3-typed-ast" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="python3-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-urwid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-zope.component" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

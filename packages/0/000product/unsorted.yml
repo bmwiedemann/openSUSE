@@ -597,6 +597,7 @@ unsorted:
   - apache2-event 
   - apache2-icons-oxygen 
   - apache2-mod_apparmor 
+  - apache2-mod_auth_gssapi 
   - apache2-mod_auth_openidc 
   - apache2-mod_authn_otp 
   - apache2-mod_encoding 
@@ -3246,6 +3247,7 @@ unsorted:
   - freeradius-server-sqlite 
   - freeradius-server-utils 
   - freerdp-devel 
+  - freerdp-proxy 
   - freerdp-server 
   - freerdp-wayland 
   - freesrp-devel 
@@ -10358,6 +10360,7 @@ unsorted:
   - libmozjs-38 
   - libmozjs-38-32bit: [x86_64] 
   - libmozjs-52 
+  - libmozjs-68 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -14165,6 +14168,8 @@ unsorted:
   - mozjs52-devel 
   - mozjs60 
   - mozjs60-devel 
+  - mozjs68 
+  - mozjs68-devel 
   - mozldap-devel: [x86_64] 
   - mozldap-libs: [x86_64] 
   - mozldap-tools: [x86_64] 
@@ -14467,6 +14472,7 @@ unsorted:
   - mypaint-brushes1 
   - mypaint-brushes1-devel 
   - mypaint-lang 
+  - mypy 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -18305,6 +18311,7 @@ unsorted:
   - python-tooz-doc 
   - python-translationstring-doc 
   - python-trollius 
+  - python-typeshed 
   - python-vips 
   - python-volatility 
   - python-weakrefmethod 
@@ -18322,7 +18329,6 @@ unsorted:
   - python2-Automat 
   - python2-BTrees 
   - python2-BTrees-devel 
-  - python2-BTrees-doc 
   - python2-Babel 
   - python2-Beaker 
   - python2-BitVector 
@@ -19291,7 +19297,6 @@ unsorted:
   - python2-imread 
   - python2-incremental 
   - python2-infinity 
-  - python2-inflect 
   - python2-inifile 
   - python2-iniparse 
   - python2-inspect2 
@@ -19301,7 +19306,6 @@ unsorted:
   - python2-invocations 
   - python2-invoke 
   - python2-iocapture 
-  - python2-ioflo 
   - python2-ipaddr 
   - python2-iptables 
   - python2-ipy 
@@ -19456,7 +19460,6 @@ unsorted:
   - python2-lws 
   - python2-lxml 
   - python2-lxml-devel 
-  - python2-lz4 
   - python2-lzmaffi 
   - python2-m2r 
   - python2-macholib 
@@ -19736,7 +19739,6 @@ unsorted:
   - python2-py-radix 
   - python2-py-ubjson 
   - python2-py2pack 
-  - python2-py3status 
   - python2-pyDOE2 
   - python2-pyFFTW 
   - python2-pyLibravatar 
@@ -20323,7 +20325,6 @@ unsorted:
   - python2-transaction 
   - python2-transip 
   - python2-transitions 
-  - python2-translation-finder 
   - python2-translationstring 
   - python2-treq 
   - python2-tri.struct 
@@ -20502,7 +20503,6 @@ unsorted:
   - python3-Arpeggio 
   - python3-BTrees 
   - python3-BTrees-devel 
-  - python3-BTrees-doc 
   - python3-Babel-doc 
   - python3-BitVector 
   - python3-Bottleneck 
@@ -22050,6 +22050,7 @@ unsorted:
   - python3-mutmut 
   - python3-mutt-ics 
   - python3-mygpoclient 
+  - python3-mypy_extensions 
   - python3-mysql-connector-python 
   - python3-nagiosplugin 
   - python3-napalm 
@@ -23096,7 +23097,9 @@ unsorted:
   - python3-txaio 
   - python3-txt2tags 
   - python3-txtorcon 
+  - python3-typed-ast 
   - python3-typepy 
+  - python3-typing_extensions 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 

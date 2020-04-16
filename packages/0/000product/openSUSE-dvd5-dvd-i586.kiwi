@@ -1847,8 +1847,9 @@
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
-      <repopackage name="libgnustep-base1_26"/>
+      <repopackage name="libgnustep-base1_27"/>
       <repopackage name="libgnutls30"/>
+      <repopackage name="libgnutls30-hmac"/>
       <repopackage name="libgoa-1_0-0"/>
       <repopackage name="libgoa-backend-1_0-1"/>
       <repopackage name="libgobject-2_0-0"/>
@@ -2242,7 +2243,7 @@
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
-      <repopackage name="libliveMedia78"/>
+      <repopackage name="libliveMedia79"/>
       <repopackage name="libLLVM10"/>
       <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
@@ -3250,7 +3251,6 @@
       <repopackage name="mutter"/>
       <repopackage name="mutter-data"/>
       <repopackage name="mutter-lang"/>
-      <repopackage name="mypy"/>
       <repopackage name="myspell-cs_CZ"/>
       <repopackage name="myspell-da_DK"/>
       <repopackage name="myspell-de"/>
@@ -3993,7 +3993,6 @@
       <repopackage name="python-sip-common"/>
       <repopackage name="python-Sphinx-doc-man"/>
       <repopackage name="python-tk"/>
-      <repopackage name="python-typeshed"/>
       <repopackage name="python-xml"/>
       <repopackage name="python2-backports"/>
       <repopackage name="python2-backports.functools_lru_cache"/>
@@ -4104,7 +4103,6 @@
       <repopackage name="python3-matplotlib-cairo"/>
       <repopackage name="python3-matplotlib-gtk3"/>
       <repopackage name="python3-msgpack"/>
-      <repopackage name="python3-mypy_extensions"/>
       <repopackage name="python3-mysqlclient"/>
       <repopackage name="python3-netaddr"/>
       <repopackage name="python3-netifaces"/>
@@ -4194,8 +4192,6 @@
       <repopackage name="python3-tevent"/>
       <repopackage name="python3-tornado6"/>
       <repopackage name="python3-Twisted"/>
-      <repopackage name="python3-typed-ast"/>
-      <repopackage name="python3-typing_extensions"/>
       <repopackage name="python3-urllib3"/>
       <repopackage name="python3-urwid"/>
       <repopackage name="python3-Whoosh"/>
