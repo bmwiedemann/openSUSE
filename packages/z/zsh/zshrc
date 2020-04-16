@@ -247,5 +247,25 @@ if [[ "$ZSHEDIT" == "emacs" ]] then
     bindkey    "^^[[B"	down-history
 fi
 
+# Aliases exported from /etc/bash.bashrc
+alias ..='cd ..'
+alias ...='cd ../..'
+alias beep='echo -en "\007"'
+alias cd..='cd ..'
+alias dir='ls -l'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -alF'
+alias la='ls -la'
+alias ll='ls -l'
+alias ls-l='ls -l'
+alias md='mkdir -p'
+alias o=less
+alias rd=rmdir
+alias unmount='echo "Error: Try the command: umount" 1>&2; false'
+alias which-command=whence
+alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "/sbin/yast2 online_update" ; fi'
+
 # Read custom system-wide config if exists
 test -s /etc/zsh.zshrc.local && . /etc/zsh.zshrc.local

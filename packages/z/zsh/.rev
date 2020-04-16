@@ -900,4 +900,13 @@
   a call to manually source /etc/zsh.zshrc.local if available.</comment>
     <requestid>792416</requestid>
   </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>f2501827a6884ca5f8be44b163aeb18d</srcmd5>
+    <version>5.8</version>
+    <time>1587070735</time>
+    <user>dimstar_suse</user>
+    <comment>- Add aliases from /etc/bash.bashrc into /etc/zshrc so we don't
+  regress</comment>
+    <requestid>794119</requestid>
+  </revision>
 </revisionlist>
