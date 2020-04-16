@@ -2,7 +2,6 @@
 # spec file for package mozjs68
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018 Luciano Santos <luc14n0@linuxmail.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +18,7 @@
 
 %global major   68
 Name:           mozjs%{major}
-Version:        68.6.0
+Version:        68.7.0
 Release:        0
 Summary:        MozJS, or SpiderMonkey, is Mozilla's JavaScript engine written in C and C++
 License:        MPL-2.0
