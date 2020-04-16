@@ -103,6 +103,9 @@ Requires:       python3-gobject-cairo
 Requires:       python3-pexpect
 Requires:       python3-pyinotify
 Requires:       python3-python-pam
+# cinnamon-settings calendar module
+Requires:       python3-pytz
+# cinnamon-settings theme module
 Requires:       python3-tinycss2
 Requires:       v4l-tools
 Requires:       wget

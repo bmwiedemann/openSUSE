@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 04:30:19 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- the cinnamon-settings' calendar module requires python3-pytz
+
+-------------------------------------------------------------------
 Thu Apr  2 05:05:02 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - fix an error in cinnamon-settings-4.4.8-tinycss2.patch,
