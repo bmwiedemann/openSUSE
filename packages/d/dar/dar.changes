@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:45:47 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.6.9
+  * too many changes to list, see ChangeLog file 
+- Drop dar-use-libc-xattr.patch (fixed upstream)
+- Drop Group tag
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Jan 24 07:12:50 UTC 2018 - adrian@suse.de
 
 - fix build for Factory
