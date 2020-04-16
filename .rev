@@ -296,4 +296,13 @@ as requested by Michel</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>782084</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4d0c30fcd013b68446d9247e44cd8fb1</srcmd5>
+    <version>1.2.10</version>
+    <time>1587070788</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.2.10
+  * disable -chrp-boot option for ppc64le (bsc#1169420)</comment>
+    <requestid>794217</requestid>
+  </revision>
 </revisionlist>

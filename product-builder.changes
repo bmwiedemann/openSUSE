@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:37:41 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.10
+  * disable -chrp-boot option for ppc64le (bsc#1169420)
+
+-------------------------------------------------------------------
 Fri Feb 28 11:02:19 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.2.9
