@@ -1437,4 +1437,12 @@ New Features
     <comment></comment>
     <requestid>788923</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>1223d9b1fa886538722ace6eeba07a03</srcmd5>
+    <version>9.16.1</version>
+    <time>1587070835</time>
+    <user>dimstar_suse</user>
+    <comment>Added all bugs, fates, and CVEs that were fixed for SLE12 and SLE15 to the entry for the update to 9.14.7 to have a common base for factory, SLE12 and SLE15</comment>
+    <requestid>794462</requestid>
+  </revision>
 </revisionlist>

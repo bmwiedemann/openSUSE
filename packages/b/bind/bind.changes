@@ -86,7 +86,12 @@ Fri Nov  8 12:50:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
   bug-4697-Restore-workaro]und-for-Microsoft-Windows-T.patch,
   bind-fix-fips.patch, bind-CVE-2018-5745.patch,
   bind-CVE-2019-6465.patch, bind-CVE-2018-5743.patch,
-  bind-CVE-2019-6471.patch]
+  bind-CVE-2019-6471.patch, CVE-2016-6170, bsc#1018700,
+  bsc#1018701, bsc#1018702, bsc#1033466, bsc#1033467, bsc#1033468,
+  bsc#1040039, bsc#1047184, bsc#1104129, bsc#906079, bsc#918330,
+  bsc#936476, bsc#937028, bsc#939567, bsc#977657, bsc#983505,
+  bsc#987866, bsc#989528, fate#320694, fate#324357, bnc#1127583,
+  bnc#1127583]
 
 -------------------------------------------------------------------
 Fri Jul 12 08:43:29 UTC 2019 - matthias.gerstner@suse.com
