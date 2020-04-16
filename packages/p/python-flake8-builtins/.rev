@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>725876</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d17863bea24d23fea4fd8f5f30723f4e</srcmd5>
+    <version>1.5.2</version>
+    <time>1587071120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Add python3.8 support. [sobolevn]
+  * Add AnnAssign support. [soboelvn]
+  * Add NamedExpr or := support. [sobolevn]
+  * Adds kwonly and posonly args support. [sobolevn]
+  * Add DictComp, SetComp, and GeneratorExpr support. [sobolevn]</comment>
+    <requestid>794562</requestid>
+  </revision>
 </revisionlist>

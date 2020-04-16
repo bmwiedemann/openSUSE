@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 16 10:50:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.2:
+  * Add python3.8 support. [sobolevn]
+  * Add AnnAssign support. [soboelvn]
+  * Add NamedExpr or := support. [sobolevn]
+  * Adds kwonly and posonly args support. [sobolevn]
+  * Add DictComp, SetComp, and GeneratorExpr support. [sobolevn]
+
+-------------------------------------------------------------------
 Sat Aug 24 16:29:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use proper full sentences in descriptions.
