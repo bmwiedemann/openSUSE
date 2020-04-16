@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop
-Version:        0.81.0
+Version:        0.82.0
 Release:        0
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
@@ -33,7 +33,7 @@ Group:          Development/Languages/Ruby
 URL:            https://github.com/rubocop-hq/rubocop
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
