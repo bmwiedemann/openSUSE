@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSH2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Net-SSH2
-Version:        0.70
+Version:        0.71
 Release:        0
 %define cpan_name Net-SSH2
 Summary:        Support for the SSH 2 protocol via libssh2
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SA/SALVA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -52,7 +52,7 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 # MANUAL END
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
@@ -65,6 +65,6 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc BUILDING.WIN32 Changes const-c.inc const-xs.inc example README
+%doc Changes const-c.inc const-xs.inc example
 
 %changelog
