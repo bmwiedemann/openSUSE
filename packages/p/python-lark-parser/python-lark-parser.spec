@@ -1,7 +1,7 @@
 #
 # spec file for package python-lark-parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lark-parser
-Version:        0.7.7
+Version:        0.8.5
 Release:        0
 Summary:        A parsing library for Python
-License:        MIT
+License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/lark-parser
 Source:         https://github.com/lark-parser/lark/archive/%{version}.tar.gz#/lark-%{version}.tar.gz
 # extracted test gramars from nearley -> https://github.com/kach/nearley
 Source1:        testdata.tar.gz
-BuildRequires:  %{python_module Js2Py}
+BuildRequires:  %{python_module Js2Py >= 0.68}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Suggests:       python-Js2Py
+Suggests:       python-Js2Py >= 0.68
 %python_subpackages
 
 %description

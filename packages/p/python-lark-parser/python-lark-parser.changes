@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:54:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.8.5
+  * Updated js2py version (for the optional nearley support)
+  * Added the g_regex_flags option, to allow applying flags to all terminals.
+  * The standalone parser is now MPL2, instead of GPL. The Mozilla 
+    Public License is much less restrictive, so this shouldn't affect 
+    anyone who's already using the standalone parser. But it should 
+    make it easier for other users to adopt it.
+  * The biggest change to this release is a new LALR engine, that is 
+    capable of dealing with a few edge cases that the previous parser couldn't.
+  * Transformers now visit tokens, as well as rules (an alternative to 
+    lexer_callbacks)
+
+-------------------------------------------------------------------
 Sun Oct 27 14:28:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update to 0.7.7:
