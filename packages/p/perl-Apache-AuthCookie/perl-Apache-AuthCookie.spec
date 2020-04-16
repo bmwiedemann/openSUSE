@@ -17,7 +17,7 @@
 
 
 Name:           perl-Apache-AuthCookie
-Version:        3.29
+Version:        3.30
 Release:        0
 %define cpan_name Apache-AuthCookie
 Summary:        Perl Authentication and Authorization via cookies
