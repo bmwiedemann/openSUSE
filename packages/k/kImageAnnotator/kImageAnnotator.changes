@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 16 09:17:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix building against libkImageAnnotator:
+  * 0001-Don-t-use-lowercase-Qt-keywords-in-public-headers.patch
+  * 0001-Improve-kcolorpicker-linking.patch
+- Update URLs to new location on GitHub
+- Match the full soversion in %files to prevent mismatches
+
+-------------------------------------------------------------------
 Wed Feb 26 13:55:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.1

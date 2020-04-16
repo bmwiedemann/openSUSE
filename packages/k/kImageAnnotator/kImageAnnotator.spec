@@ -24,8 +24,11 @@ Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            https://github.com/DamirPorobic/kImageAnnotator
-Source:         https://github.com/DamirPorobic/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ksnip/kImageAnnotator
+Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Improve-kcolorpicker-linking.patch
+Patch2:         0001-Don-t-use-lowercase-Qt-keywords-in-public-headers.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  kColorPicker-devel >= 0.1.1
@@ -53,7 +56,7 @@ Requires:       %{libname} = %{version}
 Development files for %{name} including headers and libraries
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
@@ -68,7 +71,7 @@ make %{?_smp_mflags}
 
 %files -n %{libname}
 %license LICENSE
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}.so.%{version}
 
 %files devel
 %doc CHANGELOG.md README.md
