@@ -1,7 +1,7 @@
 #
 # spec file for package python-ged4py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ged4py
-Version:        0.1.11
+Version:        0.1.12
 Release:        0
 Summary:        GEDCOM tools for Python
 License:        MIT
@@ -32,6 +32,7 @@ Requires:       python-ansel
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ansel}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -50,7 +51,7 @@ chmod a-x README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
