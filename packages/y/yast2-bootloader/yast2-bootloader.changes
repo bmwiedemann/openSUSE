@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:57:23 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- update s390x secure boot message (bsc#1168165)
+- 4.2.22
+
+-------------------------------------------------------------------
 Thu Apr  2 15:52:56 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - limit s390 secure boot to SCSI disks (bsc#1168165) 
