@@ -42,4 +42,12 @@
     instead of setuptools. Fixes #30.</comment>
     <requestid>730142</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cf9717c5bb7f5d9380fd084dfb472d6</srcmd5>
+    <version>1.4.3</version>
+    <time>1587070759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794168</requestid>
+  </revision>
 </revisionlist>
