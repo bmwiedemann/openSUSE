@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:10:16 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- rework VFAT mount option handling (bsc#1161771)
+- 4.2.108
+
+-------------------------------------------------------------------
 Mon Apr 06 09:14:25 CEST 2020 - aschnell@suse.com
 
 - allow to disable LUKS activation (bsc#1162545)
