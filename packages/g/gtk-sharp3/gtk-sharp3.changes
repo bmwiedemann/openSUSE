@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 22:21:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add cs8-build-fix.patch: fix build failure caused by C# 8
+  changes in mcs.
+
+-------------------------------------------------------------------
 Mon Jun 11 19:05:39 UTC 2018 - bjorn.lie@gmail.com
 
 - Drop pkgconfig(vte) BuildRequires: No longer needed, nor used.

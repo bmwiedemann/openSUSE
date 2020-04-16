@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-sharp3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,6 +28,7 @@ URL:            https://github.com/mono/gtk-sharp
 Source:         gtk-sharp3-%{vsuffix}.tar.xz
 Source99:       create-source-archive.sh
 Patch1:         profiler-update.patch
+Patch2:         cs8-build-fix.patch
 BuildRequires:  gtkhtml2-devel
 BuildRequires:  libmono-2_0-devel
 BuildRequires:  librsvg-devel
@@ -147,6 +148,7 @@ package which depends on all gtk-sharp3 subpackages)
 %prep
 %setup -q -n gtk-sharp3-%{vsuffix}
 %patch1 -p1
+%patch2 -p1
 NOCONFIGURE=1 ./autogen.sh
 
 %build
