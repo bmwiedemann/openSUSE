@@ -609,6 +609,46 @@ This is the minimal SLE runtime system. It is really a minimal system, you can l
 
 ################################################################################
 
+%package bootloader
+%pattern_basetechnologies
+Summary:        Bootloader
+Group:          Metapackages
+Provides:       pattern() = bootloader
+Requires:       pattern() = base
+#
+Requires:       grub2
+%ifarch x86_64
+# XXX: not sure this really belongs here. More like a kernel
+# rather than bootloader related thing?
+Requires:       biosdevname
+%endif
+%ifnarch s390x
+Requires:       (grub2-branding-openSUSE if branding-openSUSE)
+%endif
+%ifarch x86_64
+Requires:       grub2-x86_64-efi
+%endif
+%ifarch aarch64
+Requires:       grub2-arm64-efi
+%endif
+%ifarch armv7l armv7hl
+Requires:       grub2-arm-efi
+Requires:       grub2-arm-uboot
+%endif
+%ifarch x86_64
+Requires:       mokutil
+Requires:       shim
+%endif
+
+%description bootloader
+This pattern holds files required for booting the system
+
+%files bootloader
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/bootloader.txt
+
+################################################################################
+
 %package sw_management
 %pattern_basetechnologies
 Summary:        Software Management
@@ -966,12 +1006,12 @@ done
 # These packages don't generate a 32bit pattern
 for i in \
 %if 0%{?is_opensuse}
-basesystem basic_desktop console documentation transactional_base update_test \
+basesystem bootloader basic_desktop console documentation transactional_base update_test \
 %else
 %ifnarch s390 s390x
 32bit \
 %endif
-basesystem basic_desktop documentation \
+basesystem bootloader basic_desktop documentation \
 %endif
 %ifarch armv6hl armv7hl aarch64
 x11_raspberrypi \

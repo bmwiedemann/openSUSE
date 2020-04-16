@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:46:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Add bootloader pattern. Useful for appliances to not repeat the logic
+  in kiwi files.
+
+-------------------------------------------------------------------
 Thu Mar  5 10:50:15 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
 
 - drop telnet from enhanced_base recommendations

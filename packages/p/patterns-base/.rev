@@ -438,4 +438,13 @@
     <comment></comment>
     <requestid>782599</requestid>
   </revision>
+  <revision rev="52" vrev="16">
+    <srcmd5>0443b26bffbb372bf7ea8912b8351254</srcmd5>
+    <version>20190612</version>
+    <time>1587070785</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bootloader pattern. Useful for appliances to not repeat the logic
+  in kiwi files.</comment>
+    <requestid>794204</requestid>
+  </revision>
 </revisionlist>
