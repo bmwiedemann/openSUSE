@@ -311,4 +311,12 @@
     <comment></comment>
     <requestid>791525</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cca3d835d9dae52ba70e8f53426615c4</srcmd5>
+    <version>20.4.2</version>
+    <time>1587070933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.4.2.</comment>
+    <requestid>794261</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,12 @@
 
 
 Name:           smplayer
-Version:        19.10.2+9287
+Version:        20.4.2
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://smplayer.info/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE smplayer-makeflags.patch
 Patch0:         %{name}-makeflags.patch
 # PATCH-FEATURE-OPENSUSE smplayer-defaults.patch sor.alexei@meowr.ru -- Use PulseAudio, system Qt5 theme, and "Papirus" icon theme by default.
@@ -104,7 +103,7 @@ make \
 %make_install \
   DOC_PATH=%{_docdir}/%{name} \
   PREFIX=%{_prefix}
-rm -rf %{buildroot}%{_docdir}/%{name}/*
+rm -r %{buildroot}%{_docdir}/%{name}/*
 
 mv %{buildroot}%{_bindir}/{,%{name}-}simple_web_server
 
@@ -113,16 +112,6 @@ mv %{buildroot}%{_bindir}/{,%{name}-}simple_web_server
 
 %find_lang %{name} --with-qt
 %fdupes %{buildroot}%{_datadir}/
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license Copying*.txt

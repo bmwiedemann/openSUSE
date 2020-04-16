@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:23:03 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20.4.2 (changes since 19.10.2+svn20200307):
+  * Use IPC with mpv.
+  * Possibility to enter the opensubtitles credentials.
+  * Fix youtube.
+  * Don't use Qt script.
+
+-------------------------------------------------------------------
 Sun Apr  5 11:02:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to svn revision 9278
