@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:39:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Try to get building with ruby 2.7 bsc#1169446
+- Add patches:
+  * ruby27-warnings.patch
+  * ruby-includes.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 06:02:23 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Fix boo#1167467 by gcc10-do-not-optimize-get_externals_to_pin.patch.
