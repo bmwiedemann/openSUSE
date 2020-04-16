@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>695100</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>112027d58e6aff871266856e87373ceb</srcmd5>
+    <version>0.2.1</version>
+    <time>1587071228</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from using nosetest runner to pytest</comment>
+    <requestid>794646</requestid>
+  </revision>
 </revisionlist>

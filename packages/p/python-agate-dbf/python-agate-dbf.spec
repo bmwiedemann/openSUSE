@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-dbf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Read support for dbf files for agate
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://agate-dbf.readthedocs.org/
+URL:            http://agate-dbf.readthedocs.org/
 # https://github.com/wireservice/agate-dbf/issues/4
 Source:         https://github.com/wireservice/agate-dbf/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module agate >= 1.5.0}
 BuildRequires:  %{python_module dbfread >= 2.0.5}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-agate >= 1.5.0
 Requires:       python-dbfread >= 2.0.5
@@ -56,7 +56,7 @@ sed -i -e '/^#!\//, 1d' agatedbf/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
 %defattr(-,root,root,-)
