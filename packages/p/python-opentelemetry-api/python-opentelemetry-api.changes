@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:03:21 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.6b0
+  * Add support for lazy events and links (#474)
+  * Metrics API no longer uses LabelSet (#527)
+  * Adding is_remote flag to SpanContext, indicating when a span is remote (#516)
+  * Allow digit as first char in vendor specific trace state key (#511)
+
+-------------------------------------------------------------------
 Fri Mar 27 14:01:45 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.5b0
