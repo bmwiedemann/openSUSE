@@ -1,7 +1,7 @@
 #
 # spec file for package python-biplist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/wooster/biplist
 Source:         https://files.pythonhosted.org/packages/source/b/biplist/biplist-%{version}.tar.gz
+# Test on 32bit expects long==int which is true only on py3
+Patch0:         skip-test.patch
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,6 +43,7 @@ plists which can be read by OS X, iOS, or other clients.
 
 %prep
 %setup -q -n biplist-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -51,8 +53,7 @@ plists which can be read by OS X, iOS, or other clients.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Test on 32bit expects long==int which is true only on py3
-%python_expand nosetests-%{$python_bin_suffix} -e testIntBoundaries
+%python_exec -m unittest discover -s tests -v
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 11:42:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove nose dep as upstream is using unittest 
+- Add skip-test.patch to disable a failing test
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:09 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
