@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:02:28 UTC 2020 - peter czanik <peter@czanik.hu>
+
+- fix libevtlog package name 
+
+-------------------------------------------------------------------
+Tue Mar 10 10:09:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.26.1
+  * added a new option to multi-line file sources
+  * python-http-header: added this new plugin, which makes it possible
+    for users to implement HTTP header plugins in Python language
+  * azure-auth-header: Added this new plugin, which generates
+    authorization header for applications connecting to Azure
+  * set-severity(): Added this new rewrite rule for changing message severity.
+  * $(list-search): Added a new template function, which returns
+    the first index of a pattern in a list.
+  * other minor improvements
+  * many bug fixes
+
+-------------------------------------------------------------------
 Fri Feb 28 19:19:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix fixing Python shebang

@@ -16,45 +16,13 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
-Name:           syslog-ng
-
-%if %{defined _rundir}
-%define         syslog_ng_rundir        %{_rundir}/syslog-ng
-%else
-%define         syslog_ng_rundir	%{_localstatedir}/run/syslog-ng
-%endif
 %define         syslog_ng_sockets_cfg	%{syslog_ng_rundir}/additional-log-sockets.conf
-
-Version:        3.25.1
-Release:        0
-Summary:        Enhanced system logging daemon
-License:        GPL-2.0-only
-Group:          System/Daemons
-URL:            http://syslog-ng.org/
-Source0:        https://github.com/balabit/syslog-ng/releases/download/syslog-ng-%{version}/%{name}-%{version}.tar.gz
-Source1:        syslog-ng.sysconfig
-Source2:        syslog-ng.conf.default
-Source3:        syslog-ng.service
-Source4:        syslog-ng-service-prepare
-
 %global		py_ver	 %(rpm -qf %{_bindir}/python3 --qf "%%{version}" | awk -F. '{print $1"."$2}')
-
-# turn features on and off
-%bcond_without	python
-%bcond_without	curl
-%bcond_without	smtp
-
 %if !0%{?is_opensuse}
 %bcond_with	redis
 %else
 %bcond_without	redis
 %endif
-
 # missing dependencies on SLES 15
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 %bcond_with	dbi
@@ -65,28 +33,61 @@ Source4:        syslog-ng-service-prepare
 %bcond_without	java
 %bcond_without	geoip
 %endif
-
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+%if %{defined _rundir}
+%define         syslog_ng_rundir        %{_rundir}/syslog-ng
+%else
+%define         syslog_ng_rundir	%{_localstatedir}/run/syslog-ng
+%endif
+# turn features on and off
+%bcond_without	python
+%bcond_without	curl
+%bcond_without	smtp
 # mongodb & amqp C clients are no more bundled with syslog-ng sources
 # and not yet available in openSUSE
 # leaving here for future usage
 %bcond_with	mongodb
 %bcond_with	amqp
-
-Provides:       syslog
-Provides:       sysvinit(syslog)
-Conflicts:      otherproviders(syslog)
-Requires(pre):  %fillup_prereq
-Requires(pre):  syslog-service >= 2.0
-BuildRequires:  pkgconfig(libsystemd)
-
-%if %{with smtp}
-BuildRequires:  libesmtp-devel
-%endif
-
+Name:           syslog-ng
+Version:        3.26.1
+Release:        0
+Summary:        Enhanced system logging daemon
+License:        GPL-2.0-only
+Group:          System/Daemons
+URL:            http://syslog-ng.org/
+Source0:        https://github.com/balabit/syslog-ng/releases/download/syslog-ng-%{version}/%{name}-%{version}.tar.gz
+Source1:        syslog-ng.sysconfig
+Source2:        syslog-ng.conf.default
+Source3:        syslog-ng.service
+Source4:        syslog-ng-service-prepare
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  libcap-devel
+BuildRequires:  libjson-devel
+BuildRequires:  libnet-devel
+BuildRequires:  libopenssl-devel
+BuildRequires:  libtool
+BuildRequires:  pcre-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python3
+BuildRequires:  tcpd-devel
+BuildRequires:  pkgconfig(libsystemd)
+#!BuildIgnore:  rsyslog
+Requires:       libevtlog-3_26-0
+Requires(pre):  %fillup_prereq
+Requires(pre):  syslog-service >= 2.0
+Conflicts:      syslog
+Provides:       syslog
+Provides:       sysvinit(syslog)
+Obsoletes:      syslog-ng-json
+%if %{with smtp}
+BuildRequires:  libesmtp-devel
+%endif
 %if %{with curl}
 BuildRequires:  libcurl-devel
 %endif
@@ -98,46 +99,22 @@ BuildRequires:  libmaxminddb-devel
 BuildRequires:  libmaxminddb-devel
 %endif
 %endif
-
 %if %{with redis}
 BuildRequires:  hiredis-devel
 %endif
-
-BuildRequires:  libjson-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libtool
-BuildRequires:  pcre-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  tcpd-devel
-
 %if %{with dbi}
 BuildRequires:  libdbi-devel
 %endif
-
 %if %{with java}
 BuildRequires:  java-devel < 1.11
 %endif
-
 %if %{with python}
 BuildRequires:  python3-devel
 %endif
-
-BuildRequires:  libcap-devel
-BuildRequires:  libnet-devel
-
 %if 0%{?suse_version} >= 1330
-Requires(pre):  user(news)
 Requires(pre):  group(news)
+Requires(pre):  user(news)
 %endif
-
-Requires:       libevtlog-3_25-0
-
-Obsoletes:      syslog-ng-json
-
-#!BuildIgnore:	rsyslog
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 syslog-ng is an enhanced log daemon, supporting a wide range of input and
@@ -155,11 +132,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_25-0
+%package -n libevtlog-3_26-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_25-0
+%description -n libevtlog-3_26-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -261,7 +238,7 @@ done
 %endif
 
 # fix python
-sed -i 's|^#\s*!/usr/bin/env python|#!%{_bindir}/python|' lib/merge-grammar.py
+sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python|' lib/merge-grammar.py
 
 %build
 ##
@@ -277,7 +254,7 @@ export AM_YFLAGS=-d
 	--enable-manpages			\
 	--enable-tcp-wrapper			\
 	--enable-spoof-source			\
-	--sysconfdir=/etc/syslog-ng		\
+	--sysconfdir=%{_sysconfdir}/syslog-ng		\
 	--localstatedir=%{_localstatedir}/lib/syslog-ng	\
 	--with-pidfile-dir=%{_localstatedir}/run	\
 	--with-module-dir="%{_libdir}/syslog-ng"	\
@@ -287,7 +264,7 @@ export AM_YFLAGS=-d
 	--enable-ssl				\
 	--disable-native			\
 %if %{with smtp}
-        --with-libesmtp=/usr/lib                \
+        --with-libesmtp=%{_prefix}/lib                \
 %endif
 	--enable-systemd			\
 	--with-systemd-journal=system		\
@@ -321,12 +298,12 @@ export AM_YFLAGS=-d
 %else
 	--disable-python			\
 %endif
-        --enable-dynamic-linking  
+        --enable-dynamic-linking
 
 #
 # - build syslog-ng
 #
-make %_smp_mflags
+%make_build
 
 %install
 ##
@@ -367,12 +344,13 @@ install -d -m755 %{buildroot}%{_sysconfdir}/syslog-ng/conf.d/
 ln -sf %{_sbindir}/syslog-ng %{buildroot}/sbin/
 
 # don't package update-patterndb now
-rm %{buildroot}/usr/bin/update-patterndb
+rm %{buildroot}%{_bindir}/update-patterndb
 
 # delete java destination related files
-rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/elasticsearch/plugin.conf
-rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/hdfs/
-rm -fr %{buildroot}/usr/share/syslog-ng/include/scl/kafka/
+rm -fr %{buildroot}%{_datadir}/syslog-ng/include/scl/elasticsearch/plugin.conf
+rm -fr %{buildroot}%{_datadir}/syslog-ng/include/scl/elasticsearch/elastic-java.conf
+rm -fr %{buildroot}%{_datadir}/syslog-ng/include/scl/hdfs/
+rm -fr %{buildroot}%{_datadir}/syslog-ng/include/scl/kafka/
 
 # create ghosts
 install -d -m755 %{buildroot}%{syslog_ng_rundir}
@@ -438,7 +416,7 @@ chmod 640 "${additional_sockets#/}"
 # force the creation of a syslog.service alias link (bnc#790805).
 # We do not check the obsolete SYSLOG_DAEMON variable as we want
 # to switch when installing it and there is a provider conflict.
-/usr/bin/systemctl -f enable syslog-ng.service >/dev/null 2>&1 || :
+%{_bindir}/systemctl -f enable syslog-ng.service >/dev/null 2>&1 || :
 
 %preun
 ##
@@ -460,15 +438,13 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_25-0 -p /sbin/ldconfig
-
-%postun -n libevtlog-3_25-0 -p /sbin/ldconfig
+%post -n libevtlog-3_26-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_26-0 -p /sbin/ldconfig
 
 %files
 ##
 ## file list ################################################
 ##
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS NEWS.md
 %doc syslog-ng.conf.default
@@ -481,13 +457,14 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_bindir}/pdbtool
 %attr(755,root,root) %{_bindir}/dqtool
 %attr(755,root,root) %{_bindir}/persist-tool
-%{_mandir}/man5/syslog-ng.conf.5*
-%{_mandir}/man8/syslog-ng.8*
-%{_mandir}/man1/pdbtool.1*
-%{_mandir}/man1/loggen.1*
-%{_mandir}/man1/syslog-ng-ctl.1*
-%{_mandir}/man1/dqtool.1*
-%{_mandir}/man1/syslog-ng-debun.1*
+%{_mandir}/man5/syslog-ng.conf.5%{?ext_man}
+%{_mandir}/man8/syslog-ng.8%{?ext_man}
+%{_mandir}/man1/pdbtool.1%{?ext_man}
+%{_mandir}/man1/loggen.1%{?ext_man}
+%{_mandir}/man1/syslog-ng-ctl.1%{?ext_man}
+%{_mandir}/man1/dqtool.1%{?ext_man}
+%{_mandir}/man1/syslog-ng-debun.1%{?ext_man}
+%{_mandir}/man1/persist-tool.1.gz
 %dir %{_libdir}/syslog-ng
 %dir %{_libdir}/syslog-ng/loggen
 %dir %{_datadir}/syslog-ng
@@ -578,6 +555,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libhook-commands.so
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_socket_plugin.so
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_ssl_plugin.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libazure-auth-header.so
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/README
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/nodejs/plugin.conf
@@ -614,11 +592,10 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/checkpoint/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_25-0
+%files -n libevtlog-3_26-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with curl}
-
 %files curl
 %attr(755,root,root) %{_libdir}/syslog-ng/libhttp.so
 %dir %{_datadir}/syslog-ng/include/scl/telegram/
@@ -631,16 +608,13 @@ chmod 640 "${additional_sockets#/}"
 %endif
 
 %if %{with dbi}
-
 %files sql
-%defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
 %attr(755,root,root) %{_libdir}/syslog-ng/libafsql.so
 
 %endif
 
 %files devel
-%defattr(-,root,root)
 %attr(644,root,root) %{_libdir}/libsyslog-ng.la
 %attr(644,root,root) %{_libdir}/libevtlog.la
 %attr(644,root,root) %{_libdir}/libsecret-storage.la
@@ -664,21 +638,16 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
 
 %if %{with python}
-
 %files python
 %attr(755,root,root) %{_libdir}/syslog-ng/libmod-python.so
-%defattr(-,root,root)
 %{_libdir}/syslog-ng/python/syslogng-1.0-py%{py_ver}.egg-info
 %dir %{_libdir}/syslog-ng/python
 %dir %{_libdir}/syslog-ng/python/syslogng
-%dir %{_libdir}/syslog-ng/python/syslogng/debuggercli
 %{_libdir}/syslog-ng/python/syslogng/*
-%{_libdir}/syslog-ng/python/syslogng/debuggercli/*
 
 %endif
 
-%if %{with java}  
-
+%if %{with java}
 %files java
 %attr(755,root,root) %{_libdir}/syslog-ng/libmod-java.so
 %dir %{_libdir}/syslog-ng/java-modules
@@ -687,18 +656,14 @@ chmod 640 "${additional_sockets#/}"
 %endif
 
 %if %{with smtp}
-
 %files smtp
-%defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
 %attr(755,root,root) %{_libdir}/syslog-ng/libafsmtp.so
 
 %endif
 
 %if %{with geoip}
-
 %files geoip
-%defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
 %if 0%{?leap_version} >= 420200
 %attr(755,root,root) %{_libdir}/syslog-ng/libgeoip2-plugin.so
@@ -710,9 +675,7 @@ chmod 640 "${additional_sockets#/}"
 %endif
 
 %if %{with redis}
-
 %files redis
-%defattr(-,root,root)
 %dir %{_libdir}/syslog-ng
 %attr(755,root,root) %{_libdir}/syslog-ng/libredis.so
 
