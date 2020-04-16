@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:33:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.2.4:
+  * Add Instruction instance methods: #Instruction.is_jump() and #Instruction.jumps_forward()
+
+-------------------------------------------------------------------
 Tue Mar 24 15:22:55 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.2.3

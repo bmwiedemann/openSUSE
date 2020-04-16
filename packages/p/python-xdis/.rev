@@ -86,4 +86,13 @@
     <comment></comment>
     <requestid>787860</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d38ef9f0f2feb236aa6d8515b4c771b9</srcmd5>
+    <version>4.2.4</version>
+    <time>1587070998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.4:
+  * Add Instruction instance methods: #Instruction.is_jump() and #Instruction.jumps_forward()</comment>
+    <requestid>794470</requestid>
+  </revision>
 </revisionlist>
