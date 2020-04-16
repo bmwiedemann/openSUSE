@@ -17,7 +17,7 @@
 
 
 Name:           inter-fonts
-Version:        3.12
+Version:        3.13
 Release:        0
 Summary:        The Inter font family
 License:        OFL-1.1
@@ -41,7 +41,7 @@ on high legibility of small-to-medium sized text on computer screens.
 
 %install
 install -d %{buildroot}%{_ttfontsdir}
-install -m0644 -t %{buildroot}%{_ttfontsdir} Inter/*.otf
+install -m0644 -t %{buildroot}%{_ttfontsdir} 'Inter Desktop'/*.otf
 
 %reconfigure_fonts_scriptlets
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:44:17 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.13:
+  * Improvements to Greek and Cyrillic glyphs #240
+  * New stylistic set ss04 which is almost identical to ss02 with 
+    the exception of no slashed zero #252
+  * Fixes interpolation issues with several diacritics in the light weights
+  * Removes codepoint mappings for some math-related enclosed glyphs 
+    that would be too large when using the circle-enclosed glyphs #250
+  * Various improvements and adjustments to glyph shapes, spacing and kerning
+  * Improves OpenType feature name metadata
+
+-------------------------------------------------------------------
 Fri Feb 21 01:06:18 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Initial release
