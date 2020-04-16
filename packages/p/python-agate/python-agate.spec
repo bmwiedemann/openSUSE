@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module leather >= 0.3.2}
 BuildRequires:  %{python_module lxml >= 0.3.2}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parsedatetime >= 2.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-slugify >= 1.2.1}
 BuildRequires:  %{python_module pytimeparse >= 1.1.5}
 BuildRequires:  %{python_module setuptools}
@@ -70,7 +70,7 @@ find agate -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %check
 export LANG=en_US.UTF-8
-%python_expand nosetests-%{$python_bin_suffix} tests
+%pytest -k 'not test_join'
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

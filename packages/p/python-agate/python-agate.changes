@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:54:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch from using nosetest runner to pytest
+
+-------------------------------------------------------------------
 Sat Mar  2 10:58:43 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
 
 - export LANG=en_US.UTF-8 for tests
