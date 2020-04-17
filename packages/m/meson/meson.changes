@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:18:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.0:
+  + Emscripten (emcc) now supports threads.
+  + Introduce dataonly for the pkgconfig module.
+  + Consistently report file locations relative to cwd.
+  + Native (build machine) compilers not always required.
+  + Add a system type dependency for zlib.
+  + New option --quiet to meson install.
+  + Property support emscripten's wasm-ld.
+  + Support for overiding the linker with ldc and gdc.
+  + Per subproject default_library and werror options.
+  + Ninja version requirement bumped to 1.7.
+  + Added -C argument to meson init command.
+  + CMake find_package COMPONENTS support.
+  + Added Microchip XC16 C compiler support.
+- Rebase meson-test-installed-bin.patch.
+- Drop meson-testsuite-boost.patch: fixed (and enhanced) upstream.
+- Drop meson-testsuite-boost2.patch: boost test suite globally
+  disabled for now.
+- Drop 6642.patch: Fixed in an alternative way.
+- Remove hacks to drop static llvm and boost tests: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Feb 27 14:58:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.53.2:

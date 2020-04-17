@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.53.2
+Version:        0.54.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -49,12 +49,6 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM meson-testsuite-boost.patch dimstar@opensuse.org -- https://github.com/mesonbuild/meson/issues/4788
-Patch6:         meson-testsuite-boost.patch
-# PATCH-FIX-UPSTREAM 6642.patch mimi.vx@gmail.com -- Fix skip python2 unittests
-Patch8:         6642.patch
-# PATCH-FIX-OPENSUSE meson-testsuite-boost2.patch mimi.vx@gmail.com -- disable libboost_python tests
-Patch9:         meson-testsuite-boost2.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -64,7 +58,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3-setuptools
 %endif
 %if !%{with test}
-Requires:       ninja
+Requires:       ninja >= 1.7
 Requires:       python3-base
 # meson-gui was last used in openSUSE Leap 42.1.
 Provides:       meson-gui = %{version}
@@ -181,24 +175,10 @@ This package provides support for meson.build files in Vim.
 %if !%{with setuptools}
 %patch5 -p1
 %endif
-(cd "test cases/frameworks/1 boost"
-%patch6 -p0
-)
-%patch8 -p1
-%if 0%{?suse_version} >= 1550
-(cd "test cases/frameworks/1 boost"
-%patch9 -p0
-)
-%endif
-
-# Remove static boost tests from "test cases/frameworks/1 boost/".
-sed -i "/static/d" test\ cases/frameworks/1\ boost/meson.build
-
-# Disable test of llvm-static libs: openSUSE does not package/ship them
-sed -i "s/foreach static : \[true, false\]/foreach static : \[false\]/" test\ cases/frameworks/15\ llvm/meson.build
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \
+      "test cases/frameworks/1 boost" \
       "test cases/objc/2 nsstring"
 
 # AddressSanitizer fails here because of ulimit.
