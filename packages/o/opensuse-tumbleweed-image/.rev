@@ -88,4 +88,15 @@
 - Let kiwi uninstall live-add-yast-repos</comment>
     <requestid>790887</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e0a5610eb2b7cf2ed9aa9443573fec45</srcmd5>
+    <version>1.0.4</version>
+    <time>1587162577</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd-sysvinit to the lxc flavor for /sbin/init (boo#1169002)
+
+- Avoid using &lt;packages type=&quot;uninstall&quot;/&gt; as it recreates
+  AnonymousUniqueId (gh#OSInside/kiwi#1396)</comment>
+    <requestid>794931</requestid>
+  </revision>
 </revisionlist>

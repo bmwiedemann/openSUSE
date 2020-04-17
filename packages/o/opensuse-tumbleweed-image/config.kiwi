@@ -52,6 +52,7 @@
   </repository>
   <packages type="image" profiles="lxc">
     <package name="systemd"/>
+    <package name="systemd-sysvinit"/>
     <package name="wicked"/>
   </packages>
   <packages type="bootstrap">
@@ -63,14 +64,11 @@
     <package name="cracklib-dict-small"/>
     <package name="filesystem"/>
     <package name="glibc-locale-base"/>
+    <!-- Only used in config.sh and then removed again -->
     <package name="live-add-yast-repos"/>
     <package name="openSUSE-build-key"/>
     <package name="openSUSE-release-ftp"/>
     <package name="netcfg"/>
     <package name="zypper"/>
-  </packages>
-  <packages type="uninstall">
-    <!-- Only used in config.sh -->
-    <package name="live-add-yast-repos"/>
   </packages>
 </image>

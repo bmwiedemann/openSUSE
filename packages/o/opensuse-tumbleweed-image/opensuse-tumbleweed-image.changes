@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 14:28:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add systemd-sysvinit to the lxc flavor for /sbin/init (boo#1169002)
+
+-------------------------------------------------------------------
+Tue Apr 14 13:47:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid using <packages type="uninstall"/> as it recreates
+  AnonymousUniqueId (gh#OSInside/kiwi#1396)
+
+-------------------------------------------------------------------
 Thu Apr  2 12:16:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Install everything except for systemd/wicked in the bootstrap section

@@ -15,6 +15,7 @@ suseImportBuildKey
 # Add repos from control.xml
 #--------------------------------------
 add-yast-repos
+zypper --non-interactive rm -u live-add-yast-repos
 
 #======================================
 # Disable recommends
