@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 16 12:19:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.7.0
+  v0.7.0 (2020-03-09)
+  -------------------
+  - `parse()` now accepts strings as input
+  - **Breaking**: `parse()` now returns a generator of custom objects instead of
+    triples of strings
+  - Gave `PropertiesFile` a settable `timestamp` property
+  - Gave `PropertiesFile` a settable `header_comment` property
+  - Handle unescaping surrogate pairs on narrow Python builds
+  v0.6.0 (2020-02-28)
+  -------------------
+  - Include changelog in the Read the Docs site
+  - Support Python 3.8
+  - When dumping a value that begins with more than one space, only escape the
+    first space in order to better match Java's behavior
+  - Gave `dump()`, `dumps()`, `escape()`, and `join_key_value()` an
+    `ensure_ascii` parameter for optionally not escaping non-ASCII characters in
+    output
+  - Gave `dump()` and `dumps()` an `ensure_ascii_comments` parameter for
+    controlling what characters in the `comments` parameter are escaped
+  - Gave `to_comment()` an `ensure_ascii` parameter for controlling what
+    characters are escaped
+  - Added a custom encoding error handler `'javapropertiesreplace'` that encodes
+    invalid characters as `\uXXXX` escape sequences
+- really test the package
+
+-------------------------------------------------------------------
 Tue Nov 26 12:33:45 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
