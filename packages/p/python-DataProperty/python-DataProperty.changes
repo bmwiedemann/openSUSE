@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:41:37 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.48.1
+  * Drop Python 2 support
+  * Add metaclass to AbstractContainer class
+  * Improve dictionary type detection (=bump dependencies)
+  * Small fixes
+
+-------------------------------------------------------------------
 Wed Mar 25 16:10:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.46.4
