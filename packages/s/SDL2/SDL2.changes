@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:32:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore libSDL2main.a, patching it out was not easily possible.
+
+-------------------------------------------------------------------
 Wed Mar 11 10:23:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.12

@@ -137,9 +137,11 @@ make %{?_smp_mflags} V=1
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
-# We do not want static libs, but using --disable-static leads to make aborting
-# halfway through %%build. Now it can be removed though.
-rm -f "%buildroot/%_libdir/"*.a
+rm -fv "%buildroot/%_libdir/libSDL2.a" "%buildroot/%_libdir/libSDL2_test.a"
+# Need to keep libSDL2main.a (empty lib), because it is referenced by
+# sdl2-config.cmake, and it seems like that .cmake file cannot be edited to
+# make SDL2::SDL2main a phony target with no file (just leads to more Makefile
+# errors down the road).
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -157,5 +159,6 @@ rm -f "%buildroot/%_libdir/"*.a
 %_datadir/aclocal/sdl2.m4
 %_libdir/pkgconfig/sdl2.pc
 %_libdir/cmake/SDL2/
+%_libdir/libSDL2main.a
 
 %changelog
