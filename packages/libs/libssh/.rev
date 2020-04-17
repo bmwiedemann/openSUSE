@@ -625,4 +625,12 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>778187</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>add225597c0875203b122dc2f5f0022c</srcmd5>
+    <version>0.9.4</version>
+    <time>1587162522</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>794523</requestid>
+  </revision>
 </revisionlist>

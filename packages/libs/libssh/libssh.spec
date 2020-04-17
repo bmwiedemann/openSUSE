@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
