@@ -68,4 +68,14 @@
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755685</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>adaa802957bd1ab9e36d4690f23a466c</srcmd5>
+    <version>2.18.2</version>
+    <time>1587162798</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable non-HPC openmpi3 build (boo#1169792).
+- Remove bogus %undefine suffix - suffix is a RPM builtin, and
+  trying to undefine it is an error since RPM 4.15.</comment>
+    <requestid>794971</requestid>
+  </revision>
 </revisionlist>

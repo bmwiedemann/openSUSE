@@ -2,6 +2,7 @@
   <package>serial</package>
   <package>openmpi</package>
   <package>openmpi2</package>
+  <package>openmpi3</package>
   <package>mvapich2</package>
   <package>mpich</package>
   <package>gnu-openmpi-hpc</package>
