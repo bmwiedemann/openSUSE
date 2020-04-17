@@ -378,6 +378,7 @@
       <repopackage name="cyrus-sasl-gssapi"/>
       <repopackage name="cyrus-sasl-plain"/>
       <repopackage name="dar"/>
+      <repopackage name="dar-doc"/>
       <repopackage name="dar-lang"/>
       <repopackage name="dasher"/>
       <repopackage name="dasher-data-extras"/>
@@ -1681,7 +1682,7 @@
       <repopackage name="libcupsimage2"/>
       <repopackage name="libcurl4"/>
       <repopackage name="libdaemon0"/>
-      <repopackage name="libdar5000"/>
+      <repopackage name="libdar64-6000"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdatrie1-32bit" arch="x86_64"/>
       <repopackage name="libdav1d4"/>

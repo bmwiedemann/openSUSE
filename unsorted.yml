@@ -2978,10 +2978,6 @@ unsorted:
   - felix-gogo-runtime-javadoc 
   - felix-gogo-shell 
   - felix-gogo-shell-javadoc 
-  - felix-osgi-core 
-  - felix-osgi-core-javadoc 
-  - felix-osgi-foundation 
-  - felix-osgi-foundation-javadoc 
   - felix-parent 
   - felix-scr 
   - felix-scr-javadoc 
@@ -8940,7 +8936,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_25-0 
+  - libevtlog-3_26-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -16151,6 +16147,7 @@ unsorted:
   - patterns-base-32bit: [x86_64] 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
+  - patterns-base-bootloader 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
@@ -18928,6 +18925,7 @@ unsorted:
   - python2-colorspacious 
   - python2-colour 
   - python2-combi 
+  - python2-commentjson 
   - python2-compizconfig 
   - python2-concurrentloghandler 
   - python2-configargparse 
@@ -19089,7 +19087,6 @@ unsorted:
   - python2-email_validator 
   - python2-emoji 
   - python2-empy 
-  - python2-enaml 
   - python2-encore 
   - python2-entrypoint2 
   - python2-entrypoints 
@@ -19136,7 +19133,6 @@ unsorted:
   - python2-fixtures 
   - python2-flake8 
   - python2-flake8-blind-except 
-  - python2-flake8-builtins 
   - python2-flake8-class-newline 
   - python2-flake8-debugger 
   - python2-flake8-deprecated 
@@ -21053,6 +21049,7 @@ unsorted:
   - python3-blockdiag 
   - python3-blosc 
   - python3-bloscpack 
+  - python3-blurb 
   - python3-bobo 
   - python3-bobodoctestumentation 
   - python3-bokcolmaps 
@@ -21188,6 +21185,7 @@ unsorted:
   - python3-colorspacious 
   - python3-colour 
   - python3-combi 
+  - python3-commentjson 
   - python3-compizconfig 
   - python3-concurrentloghandler 
   - python3-configargparse 
@@ -21678,6 +21676,7 @@ unsorted:
   - python3-hyper 
   - python3-hypothesis 
   - python3-hypothesis-fspaths 
+  - python3-hypothesmith 
   - python3-i3ipc 
   - python3-icalendar 
   - python3-identify 

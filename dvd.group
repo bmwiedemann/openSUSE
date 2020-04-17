@@ -366,6 +366,7 @@
     <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dar" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="dar-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dar-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dasher" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dasher-data-extras" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1909,7 +1910,7 @@
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdar5000" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libdar64-6000" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdav1d4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
