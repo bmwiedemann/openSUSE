@@ -94,4 +94,15 @@
     <comment></comment>
     <requestid>789079</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27fc9fcd1c5347bd51cd70db740f4496</srcmd5>
+    <version>3.3.3</version>
+    <time>1587162671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  * Reverted PR #388 due to dependency license incompatibility
+  * Updated package upload method to use twine
+  * Updated list of default user protected fields to include admin flags and password</comment>
+    <requestid>794808</requestid>
+  </revision>
 </revisionlist>
