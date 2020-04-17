@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:46:52 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.3
+
+  * KB grabbing fixes (mostly for Wayland)
+  * Adding Freerdp 3 compile option and using FreeRDP tag 2.0.0 as default
+  * Adding remmina terminal dependencies
+  * Updated translations
+
+-------------------------------------------------------------------
 Thu Apr  9 05:44:21 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.2
