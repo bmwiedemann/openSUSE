@@ -180,4 +180,12 @@ BUG FIXES:
     <comment></comment>
     <requestid>786102</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>87c3786b10bd5154a935f00bbd8b25f0</srcmd5>
+    <version>4.3.1</version>
+    <time>1587162725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794852</requestid>
+  </revision>
 </revisionlist>
