@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:32:08 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to libtirpc 1.2.6
+  - Drop patches all patches backported from this release
+	(0001-Add-authdes_seccreate-stub.patch,
+	0001-Avoid-multiple-definiton-with-gcc-fno-common.patch)
+
+-------------------------------------------------------------------
 Wed Feb  5 14:08:52 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Backport upstream fix daed7ee ("Avoid multiple-definiton with gcc -fno-common")

@@ -18,7 +18,7 @@
 
 Name:           libtirpc
 # src/crypt_client.c and tirpc/rpcsvc/crypt.x have the BSD advertising clause
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
@@ -28,8 +28,6 @@ BuildRequires:  pkgconfig(krb5)
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch0:         0001-Add-authdes_seccreate-stub.patch
-Patch1:         0001-Avoid-multiple-definiton-with-gcc-fno-common.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 
@@ -74,8 +72,6 @@ TCP over IPv4.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p1
-%patch1 -p1
 
 %build
 sed -i -e 's|@includedir@/tirpc|@includedir@|g' libtirpc.pc.in
