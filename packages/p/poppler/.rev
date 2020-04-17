@@ -1588,4 +1588,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>789710</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>e68ac47674c5d5232618238ff5ee365f</srcmd5>
+    <version>0.87.0</version>
+    <time>1587162585</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>794550</requestid>
+  </revision>
 </revisionlist>
