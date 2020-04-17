@@ -16,56 +16,19 @@
 #
 
 
-%{!?tmpfiles_create:%global tmpfiles_create systemd-tmpfiles --create}
-# maxcriversion - version of cri-tools which is notsupported by this version of kubeadm.
-%define maxcriversion 1.19
 # baseversion - version of kubernetes for this package
 %define baseversion 1.18
-# prebaseversion - release of kubernetes for the previous supported kubelet version
-%define prebaseversion 1.17
-# preversion - version of kubernetes for the previous supported kubelet version
-%define preversion %{prebaseversion}.4
+# baseversionminus1 - previous version of kubernetes
+%define baseversionminus1 1.17
 
 Name:           kubernetes
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://kubernetes.io
-Source:         %{name}-%{version}.tar.xz
-Source1:        %{name}-%{preversion}.tar.xz
-Source2:        genmanpages.sh
-Source3:        kubelet.sh
-#systemd services
-Source10:       kubelet.service
-#config files
-Source22:       sysconfig.kubelet-kubernetes
-Source23:       kubeadm.conf
-Source24:       90-kubeadm.conf
-Source25:       10-kubeadm.conf
-Source27:       kubelet.tmp.conf
-Source28:       kubernetes-rpmlintrc
-Source29:       kubernetes.obsinfo
-# Patch to change the default registry to registry.opensuse.org/kubic
-Patch2:         kubeadm-opensuse-registry.patch
-# Patch to change the version check server to kubic.opensuse.org
-Patch3:         opensuse-version-checks.patch
-# Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
-Patch4:         kubeadm-opensuse-flexvolume.patch
-# Fix https://github.com/kubernetes/kubernetes/issues/89672
-Patch5:         fix-spn-prefix-added.patch
-BuildRequires:  bash-completion
-BuildRequires:  fdupes
-BuildRequires:  git
-BuildRequires:  go-go-md2man
-# Kubernetes 1.17.0 requires at least go 1.13.4 (see changelog)
-BuildRequires:  golang(API) = 1.13
-BuildRequires:  go >= 1.13.4
-BuildRequires:  golang(github.com/jteeuwen/go-bindata)
-BuildRequires:  golang-packaging
-BuildRequires:  rsync
-BuildRequires:  systemd-rpm-macros
+Source:         README.packaging
 ExcludeArch:    %{ix86} s390 ppc64
 
 %description
@@ -75,13 +38,12 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
-# packages to build containerized control plane
+# packages for containerized control plane
 
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
-Conflicts:      kubernetes-common
-Conflicts:      kubernetes-master
+Requires:       kubernetes%{baseversion}-apiserver = %{version}
 
 %description apiserver
 This subpackage contains the kube-apiserver binary for Kubic images
@@ -89,8 +51,7 @@ This subpackage contains the kube-apiserver binary for Kubic images
 %package controller-manager
 Summary:        Kubernetes controller-manager for container image
 Group:          System/Management
-Conflicts:      kubernetes-common
-Conflicts:      kubernetes-master
+Requires:       kubernetes%{baseversion}-controller-manager = %{version}
 
 %description controller-manager
 This subpackage contains the kube-controller-manager binary for Kubic images
@@ -98,8 +59,7 @@ This subpackage contains the kube-controller-manager binary for Kubic images
 %package scheduler
 Summary:        Kubernetes scheduler for container image
 Group:          System/Management
-Conflicts:      kubernetes-common
-Conflicts:      kubernetes-master
+Requires:       kubernetes%{baseversion}-scheduler = %{version}
 
 %description scheduler
 This subpackage contains the kube-scheduler binary for Kubic images
@@ -107,64 +67,59 @@ This subpackage contains the kube-scheduler binary for Kubic images
 %package proxy
 Summary:        Kubernetes proxy for container image
 Group:          System/Management
-Requires:       conntrack-tools
-Requires:       ebtables
-Requires:       ipset
-Requires:       iptables
+Requires:       kubernetes%{baseversion}-proxy = %{version}
 
 %description proxy
 This subpackage contains the kube-proxy binary for Kubic images
 
-%package kubelet%{baseversion}
+# packages for old containerised control plane
+
+%package apiserver-minus1
+Summary:        Kubernetes apiserver for container image
+Group:          System/Management
+Requires:       kubernetes%{baseversionminus1}-apiserver
+
+%description apiserver-minus1
+This subpackage contains the kube-apiserver binary for Kubic images
+
+%package controller-manager-minus1
+Summary:        Kubernetes controller-manager for container image
+Group:          System/Management
+Requires:       kubernetes%{baseversionminus1}-controller-manager
+
+%description controller-manager-minus1
+This subpackage contains the kube-controller-manager binary for Kubic images
+
+%package scheduler-minus1
+Summary:        Kubernetes scheduler for container image
+Group:          System/Management
+Requires:       kubernetes%{baseversionminus1}-scheduler
+
+%description scheduler-minus1
+This subpackage contains the kube-scheduler binary for Kubic images
+
+%package proxy-minus1
+Summary:        Kubernetes proxy for container image
+Group:          System/Management
+Requires:       kubernetes%{baseversionminus1}-proxy
+%description proxy-minus1
+This subpackage contains the kube-proxy binary for Kubic images
+
+# packages for running on hosts/clients
+
+%package kubelet
 Summary:        Kubernetes kubelet daemon
 Group:          System/Management
-Requires:       cri-runtime
-Requires:       kubernetes-kubelet-common
-Provides:       kubernetes-kubelet = %{version}-%{release}
-%{?systemd_requires}
+Requires:       kubernetes%{baseversion}-kubelet = %{version}
 
-%description kubelet%{baseversion}
-Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
-kubelet daemon (current version)
-
-%package kubelet%{prebaseversion}
-Summary:        Kubernetes kubelet daemon
-Group:          System/Management
-Requires:       cri-runtime
-Requires:       kubernetes-kubelet-common
-Provides:       kubernetes-kubelet = %{preversion}
-%{?systemd_requires}
-
-%description kubelet%{prebaseversion}
-Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
-kubelet daemon (previous version for upgrades)
-
-%package kubelet-common
-Summary:        Kubernetes kubelet daemon
-Group:          System/Management
-Requires:       cri-runtime
-Requires:       kubernetes-kubelet
-
-%description kubelet-common
+%description kubelet
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubelet daemon
 
 %package kubeadm
 Summary:        Kubernetes kubeadm bootstrapping tool
 Group:          System/Management
-Requires:       cri-runtime
-# Kubeadm 1.15.0 requires cri-tools 1.14.0 or higher (see changelog)
-Requires:       cri-tools >= 1.14.0
-Requires:       ebtables
-Requires:       ethtool
-Requires:       kubernetes-kubeadm-criconfig
-Requires:       socat
-Requires(pre):  shadow
-# openSUSE style of upgrade handling
-# Kubeadm requires current kubelet version and previous
-Requires:       kubernetes-kubelet = %{version}-%release
-Requires:       kubernetes-kubelet = %{preversion}
-Conflicts:      cri-tools >= %{maxcriversion}
+Requires:       kubernetes%{baseversion}-kubeadm = %{version}
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
@@ -173,233 +128,50 @@ kubeadm bootstrapping tool
 %package client
 Summary:        Kubernetes client tools
 Group:          System/Management
-Recommends:     bash-completion
+Requires:       kubernetes%{baseversion}-client = %{version}
 
 %description client
 Kubernetes client tools like kubectl.
 
 %prep
-%setup -q -T -D -b 1 -n %{name}-%{preversion}
-%setup -q
-%patch2 -p0
-%patch3 -p1
-%patch4 -p0
-%patch5 -p1
+#Not Needed
 
 %build
-# This is fixing bug bsc#1065972
-export KUBE_GIT_COMMIT=$(grep "commit:" %{SOURCE29} | cut -d ":" -f2 | tr -d " ")
-# KUBE_GIT_TREE_STATE="clean" indicates no changes since the git commit id
-# KUBE_GIT_TREE_STATE="dirty" indicates source code changes after the git commit id
-export KUBE_GIT_TREE_STATE="clean"
-export KUBE_GIT_VERSION=v%{version}
-
-# https://bugzilla.redhat.com/show_bug.cgi?id=1392922#c1
-%ifarch ppc64le
-export GOLDFLAGS='-linkmode=external'
-%endif
-
-#TEST
-make %{?_smp_mflags} WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
-
-# The majority of the documentation has already been moved into
-# http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
-# directory simply point there. That being said, some of the files are actual
-# man pages, but they have to be generated with `hack/generate-docs.sh`. So,
-# let's do that and run `genmanpages.sh`.
-./hack/generate-docs.sh || true
-pushd docs
-pushd admin
-cp kube-apiserver.md kube-controller-manager.md kube-proxy.md kube-scheduler.md kubelet.md ..
-popd
-cp %{SOURCE2} genmanpages.sh
-bash genmanpages.sh
-popd
-
-# Make previous version of kubelet for migration aiding
-echo "+++ BUILDING Previous kubelet version"
-export KUBE_GIT_VERSION=v%{preversion}
-pushd %{_builddir}/%{name}-%{preversion}
-make %{?_smp_mflags} WHAT="cmd/kubelet"
-popd
+echo "This is a dummy package to provide a dependency on supported kubernetes versions." > README
 
 %install
 
-%ifarch ppc64le aarch64
-output_path="_output/local/go/bin"
-%else
-output_path="_output/local/bin/linux/%{go_arch}"
-%endif
-
-install -m 755 -d %{buildroot}%{_bindir}
-
-echo "+++ INSTALLING kubeadm"
-install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/kubeadm
-
-binaries=(kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet kubectl)
-for bin in "${binaries[@]}"; do
-  echo "+++ INSTALLING ${bin}"
-  install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
-done
-
-echo "+++ RENAMING kubelet to kubelet%{baseversion}"
-mv %{buildroot}%{_bindir}/kubelet %{buildroot}%{_bindir}/kubelet%{baseversion}
-
-echo "+++ INSTALLING kubelet multi-version loader"
-install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
-
-echo "+++ INSTALLING kubelet%{prebaseversion}"
-mv %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
-install -p -m 755 -t %{buildroot}%{_bindir} %{_builddir}/%{name}-%{preversion}/${output_path}/kubelet%{prebaseversion}
-
-# create sysconfig.kubelet-kubernetes in fullupdir
-sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
-install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes
-
-
-# install the bash completion
-install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
-%{buildroot}%{_bindir}/kubectl completion bash > %{buildroot}%{_datadir}/bash-completion/completions/kubectl
-
-# move CHANGELOG-%{baseversion}.md to old location
-mv CHANGELOG/CHANGELOG-%{baseversion}.md . 
-
-# cleanup before copying dirs...
-rm -f hack/.linted_packages
-find .    -name '.gitignore' -type f -delete
-find hack -name '*.sh.orig' -type f -delete
-find hack -name '.golint_*' -type f -delete
-
-# systemd service
-install -d -m 0755 %{buildroot}%{_unitdir}
-install -m 0644 -t %{buildroot}%{_unitdir}/ %{SOURCE10}
-
-# make symlinks to rc files
-install -d -m 0755 %{buildroot}%{_sbindir}
-ln -sf service "%{buildroot}%{_sbindir}/rckubelet"
-
-# install manpages
-install -d %{buildroot}%{_mandir}/man1
-install -p -m 644 docs/man/man1/* %{buildroot}%{_mandir}/man1
-
-# create config folder
-install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
-
-# manifests file for the kubelet
-install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/manifests
-
-# place kubernetes.tmp.conf to /usr/lib/tmpfiles.d/kubernetes.conf
-install -d -m 0755 %{buildroot}%{_tmpfilesdir}
-install -D -m 0644 %{SOURCE27} %{buildroot}/%{_tmpfilesdir}/kubelet.conf
-
-# install the place the kubelet defaults to put volumes
-install -d %{buildroot}%{_localstatedir}/lib/kubelet
-
-%define volume_plugin_dir %{_localstatedir}/lib/kubelet/volume-plugin
-install -d %{buildroot}/%{volume_plugin_dir}
-
-# Add kubeadm modprobe.d and sysctl.d drop-in configs
-mkdir -p %{buildroot}%{_libexecdir}/modules-load.d
-mkdir -p %{buildroot}%{_sysctldir}
-install -m 0644 -t %{buildroot}%{_libexecdir}/modules-load.d/ %{SOURCE23}
-install -m 0644 -t %{buildroot}%{_sysctldir} %{SOURCE24}
-
-# Create kubeadm systemd unit drop-in
-install -d -m 0755 %{buildroot}%{_unitdir}/kubelet.service.d
-sed -i -e 's|PATH_TO_FLEXVOLUME|%{volume_plugin_dir}|g' %{SOURCE25}
-install -m 0644 -t %{buildroot}%{_unitdir}/kubelet.service.d/ %{SOURCE25}
-
-%fdupes -s %{buildroot}
-
-%pre kubelet-common
-%service_add_pre kubelet.service
-
-%post kubelet-common
-%fillup_only -an kubelet
-%service_add_post kubelet.service
-%if 0%{?suse_version} < 1500
-# create some subvolumes needed by CNI
-if [ ! -e %{_localstatedir}/lib/cni ]; then
-  if [ "`findmnt -o FSTYPE -l  /|grep -v FSTYPE`" = "btrfs" ]; then
-    %{_sbindir}/mksubvolume %{_localstatedir}/lib/cni
-  fi
-fi
-%endif
-%tmpfiles_create %{_tmpfilesdir}/kubelet.conf
-
-%preun kubelet-common
-%service_del_preun kubelet.service
-
-%postun kubelet-common
-%service_del_postun kubelet.service
-
-%files kubelet-common
-%doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
-%license LICENSE
-%{_mandir}/man1/kubelet.1%{?ext_man}
-%{_bindir}/kubelet
-%{_unitdir}/kubelet.service
-%dir %{_unitdir}/kubelet.service.d
-%{_sbindir}/rckubelet
-%dir %{_localstatedir}/lib/kubelet
-%dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}/%{name}/manifests
-%{_tmpfilesdir}/kubelet.conf
-%attr(0750,root,root) %dir %ghost %{_rundir}/%{name}
-%dir %{volume_plugin_dir}
-%{_fillupdir}/sysconfig.kubelet-kubernetes
-
-# openSUSE is using kubeadm with containerizied control plane, we
-# only need the binaries
-
 %files apiserver
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kube-apiserver.1%{?ext_man}
-%{_bindir}/kube-apiserver
+%doc README
 
 %files controller-manager
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kube-controller-manager.1%{?ext_man}
-%{_bindir}/kube-controller-manager
+%doc README
 
 %files scheduler
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kube-scheduler.1%{?ext_man}
-%{_bindir}/kube-scheduler
+%doc README
 
 %files proxy
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kube-proxy.1%{?ext_man}
-%{_bindir}/kube-proxy
+%doc README
 
-%files kubelet%{baseversion}
-%license LICENSE
-%{_bindir}/kubelet%{baseversion}
+%files apiserver-minus1
+%doc README
 
-%files kubelet%{prebaseversion}
-%license LICENSE
-%{_bindir}/kubelet%{prebaseversion}
+%files controller-manager-minus1
+%doc README
+
+%files scheduler-minus1
+%doc README
+
+%files proxy-minus1
+%doc README
+
+%files kubelet
+%doc README
 
 %files kubeadm
-%doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md
-%{_unitdir}/kubelet.service.d/10-kubeadm.conf
-%dir %{_libexecdir}/modules-load.d
-%{_libexecdir}/modules-load.d/kubeadm.conf
-%{_sysctldir}/90-kubeadm.conf
-%license LICENSE
-%{_bindir}/kubeadm
-%{_mandir}/man1/kubeadm*
+%doc README
 
 %files client
-%doc README.md CONTRIBUTING.md
-%license LICENSE
-%{_mandir}/man1/kubectl.1%{?ext_man}
-%{_mandir}/man1/kubectl-*
-%{_bindir}/kubectl
-%{_datadir}/bash-completion/completions/kubectl
+%doc README
 
 %changelog

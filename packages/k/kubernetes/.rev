@@ -560,4 +560,15 @@
     <comment></comment>
     <requestid>791773</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fce0f9954a458539442f1c24067cafa5</srcmd5>
+    <version>1.18.1</version>
+    <time>1587162549</time>
+    <user>dimstar_suse</user>
+    <comment>- Declare Kubernetes 1.18.1 as default
+
+- Introduce multi-version kubernetes packaging
+- Remove fix-spn-prefix-added.patch kubeadm-opensuse-flexvolume.patch, kubeadm-opensuse-registry.patch and opensuse-version-checks.patch; Now located in version specific packages.</comment>
+    <requestid>794180</requestid>
+  </revision>
 </revisionlist>

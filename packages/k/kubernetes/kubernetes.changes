@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
-Mon Apr  6 10:23:14 UTC 2020 - Robert Munteanu <rombert@apache.org>
+Wed Apr 15 12:36:45 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Add fix-spn-prefix-added.patch, fixing upstream issue #89672 
+- Declare Kubernetes 1.18.1 as default
+
+-------------------------------------------------------------------
+Fri Apr  3 11:42:55 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Introduce multi-version kubernetes packaging
+- Remove fix-spn-prefix-added.patch kubeadm-opensuse-flexvolume.patch, kubeadm-opensuse-registry.patch and opensuse-version-checks.patch; Now located in version specific packages. 
 
 -------------------------------------------------------------------
 Wed Apr  1 12:39:48 UTC 2020 - Richard Brown <rbrown@suse.com>
