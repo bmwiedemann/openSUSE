@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-transip
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        TransIP API Connector
 License:        MIT
