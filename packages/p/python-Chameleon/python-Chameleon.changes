@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:04:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.7.0
+  *  Fixed garbage collection issue with variable scope objects (issue #301).
+  *  Fixed issue where setting a global variable would not be available locally.
+  *  A RepeatDict no longer inherits from dict since it does not actually provide 
+     that interface in a meaningful way.
+  *  Added feature gate enable_comment_interpolation which controls whether 
+     expression interpolation is enabled inside HTML comments (default is enabled).
+  *  Added support for Python 3.6+ f-strings (issue #294).
+
+-------------------------------------------------------------------
 Mon Jul 22 09:10:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Chameleon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Chameleon
-Version:        3.6.2
+Version:        3.7.0
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/malthe/chameleon
-Source:         https://files.pythonhosted.org/packages/source/C/Chameleon/Chameleon-%{version}.tar.gz
+Source:         https://github.com/malthe/chameleon/archive/%{version}.tar.gz#/Chameleon-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +40,7 @@ You can use it in any Python web application with just about any
 version of Python (2.5 and up, including 3.x and pypy).
 
 %prep
-%setup -q -n Chameleon-%{version}
+%setup -q -n chameleon-%{version}
 
 %build
 %python_build
