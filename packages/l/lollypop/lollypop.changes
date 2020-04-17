@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 19:12:57 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.2.35:
+  * Fix an issue with smart playlists.
+  * Do not show genres without albums (glgo#World/lollypop#2301).
+  * Fix bug preventing deletion of empty playlist
+    (glgo#World/lollypop#2299).
+  * Fix an issue with Ctrl+I filter in album view
+    (glgo#World/lollypop#2291).
+
+-------------------------------------------------------------------
 Mon Apr 06 18:39:43 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.2.34:

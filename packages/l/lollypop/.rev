@@ -1352,4 +1352,18 @@
   * Fix an issue with YouTube cache.</comment>
     <requestid>791841</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>78145c0dfee53dcddc53321525c29bfa</srcmd5>
+    <version>1.2.35</version>
+    <time>1587162802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.35:
+  * Fix an issue with smart playlists.
+  * Do not show genres without albums (glgo#World/lollypop#2301).
+  * Fix bug preventing deletion of empty playlist
+    (glgo#World/lollypop#2299).
+  * Fix an issue with Ctrl+I filter in album view
+    (glgo#World/lollypop#2291).</comment>
+    <requestid>794984</requestid>
+  </revision>
 </revisionlist>
