@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 13 03:13:01 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.55
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.55 -- 2020-04-09
+  	[CHANGES]
+  	 * Added List::Util::uniqint
+  	 * Improvements to List::Util::uniqnum handling of floating-point
+  	   values on odd platform configurations (thanks sisyphus)
+  	 * Improvements to $RAND-based unit tests
+
+-------------------------------------------------------------------
 Mon Feb  3 03:15:24 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.54
