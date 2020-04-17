@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:34:29 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- only serial scotch-metis-devel package should conflict with
+  metis-devel (boo#1169791).
+
+-------------------------------------------------------------------
 Thu Jan 30 13:35:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove bogus %undefine suffix - suffix is a RPM builtin, and

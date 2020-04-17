@@ -411,7 +411,7 @@ This package contains libscotch static libraries.
 %package     -n %{f_name -n -%{metis}}-devel
 Summary:        Development libraries for scotch
 Group:          Development/Libraries/C and C++
-%{?!with_hpc:Conflicts:      metis-devel}
+%{?!with_hpc:%{?!with_mpi:Conflicts:      metis-devel}}
 Requires:       %{f_name -l -s %{so_ver}}
 Requires:       %{f_name}-devel = %{version}
 

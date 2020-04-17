@@ -111,4 +111,13 @@
     <comment></comment>
     <requestid>768753</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>9e0f84020b3a882964978da644ed92af</srcmd5>
+    <version>6.0.9</version>
+    <time>1587162790</time>
+    <user>dimstar_suse</user>
+    <comment>- only serial scotch-metis-devel package should conflict with
+  metis-devel (boo#1169791).</comment>
+    <requestid>794965</requestid>
+  </revision>
 </revisionlist>
