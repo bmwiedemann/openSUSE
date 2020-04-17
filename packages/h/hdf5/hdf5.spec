@@ -588,7 +588,7 @@ library packages.
 cat >  %{_sourcedir}/baselibs.conf <<EOF
 libhdf5-%{sonum}%{?my_suffix}
 libhdf5_hl%{sonum_HL}%{?my_suffix}
-libhdf5_fortran%{sonum_HL_F}%{?my_suffix}
+libhdf5_fortran%{sonum_F}%{?my_suffix}
 libhdf5hl_fortran%{sonum_HL_F}%{?my_suffix}
 libhdf5_cpp%{sonum_CXX}%{?my_suffix}
 libhdf5_hl_cpp%{sonum_HL_CXX}%{?my_suffix}
@@ -596,7 +596,7 @@ hdf5%{?my_suffix}-devel
    requires %{?my_suffix}-<targettype>
    requires "libhdf5-%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_hl%{sonum_HL}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5_fortran%{sonum_HL_F}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_fortran%{sonum_F}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5hl_fortran%{sonum_HL_F}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_cpp%{sonum_CXX}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_hl_cpp%{sonum_HL_CXX}%{?my_suffix}-<targettype> = <version>"

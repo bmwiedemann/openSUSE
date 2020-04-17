@@ -642,4 +642,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment>- Fix library link flags on pkg-config file for HPC builds (boo#1134298). (forwarded request 790801 from eeich)</comment>
     <requestid>790802</requestid>
   </revision>
+  <revision rev="66" vrev="9">
+    <srcmd5>7a13f956eaf2e103c33fa57a4ed85d9b</srcmd5>
+    <version>1.10.5</version>
+    <time>1587162794</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix .so number in baselibs.conf for libhdf5_fortran libs (boo#1169793).</comment>
+    <requestid>794967</requestid>
+  </revision>
 </revisionlist>
