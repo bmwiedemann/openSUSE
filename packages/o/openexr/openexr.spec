@@ -22,7 +22,7 @@
 %define sonum 24
 %global so_suffix -2_4
 Name:           openexr
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -30,7 +30,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-Patch0:         Fix-the-symlinks-creation.patch
 Patch1:         0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch
 BuildRequires:  cmake
 BuildRequires:  fltk-devel
@@ -116,7 +115,6 @@ This package contains documentation.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 %build

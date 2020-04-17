@@ -501,4 +501,18 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
 - initial package of version 1.2.1 (forwarded request 773200 from StefanBruens)</comment>
     <requestid>773383</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c69770fed9ed649ec7f419c95d9db131</srcmd5>
+    <version>2.4.1</version>
+    <time>1587162531</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.4.1
+  * Various fixes for memory leaks and invalid memory accesses
+  * Various fixes for integer overflow with large images.
+  * Various cmake fixes for build/install of python modules.
+  * ImfMisc.h is no longer installed, since it's a private header.
+- deleted patches
+  - Fix-the-symlinks-creation.patch (upstreamed)</comment>
+    <requestid>794570</requestid>
+  </revision>
 </revisionlist>
