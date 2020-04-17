@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Apr 16 15:24:56 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubelet-common: conflict with other instances of kubelet-common and require kubernetes-kubelet%{baseversion} 
+
+-------------------------------------------------------------------
+Tue Apr 14 10:46:52 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.18.1:
+  * Ensure Azure availability zone is always in lower cases
+  * Even with build error, kubectl apply should apply all valid resources
+  * fix: update max azure disk max count
+  * Ensure diff doesn't persist patches
+  * Fix permissions for endpointslice controller
+  * Clean up event messages for errors.
+  * Allow list-resources.sh to continue if a resource fails to list
+  * fix a bug where spn: prefix is unexpectedly added to kubeconfig apiserver-id setting
+  * Adds integration test for apply failures when applying multiple resources
+  * Fixes problem where kubectl apply stops after first error
+  * fix cpu resource metric type by changing to counter
+  * fix concurreny issue in lb creation
+  * Kubeadm: fix Ready condition check
+  * kubeadm: add missing RBAC for getting nodes on "upgrade apply"
+  * Check that ImageInspect pointer is not nil
+  * Fix bug about unintentional scale out during updating deployment.
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.0
+  * build/dependencies: Remove bazel WORKSPACE go_version check
+  * deps: Update to Golang 1.13.9
+  * build: Remove kube-cross image building
+  * Label Windows test as Serial.
+
+-------------------------------------------------------------------
+Fri Apr  3 11:45:40 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging - see kubernetes changelog for historic logs 
