@@ -1026,4 +1026,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment>Eliminate the -lang recommends (forwarded request 767094 from dimstar)</comment>
     <requestid>767335</requestid>
   </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>fdc3d4068c7b7aeb8e907494b476b594</srcmd5>
+    <version>0.6.55</version>
+    <time>1587162430</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply as-fate318433-prevent-same-account-multi-logins.patch to Leap. (forwarded request 793698 from yfjiang)</comment>
+    <requestid>794356</requestid>
+  </revision>
 </revisionlist>
