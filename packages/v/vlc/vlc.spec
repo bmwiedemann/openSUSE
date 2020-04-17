@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.8
+Version:        3.0.9.2
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,6 +41,8 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.videolan.org
 Source:         http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source2:        %{name}-rpmlintrc
+Source98:       http://download.videolan.org/%{name}/%{version}/%{name}-%{version}.tar.xz.asc
+Source99:       vlc.keyring
 # PATCH-FIX-UPSTREAM vlc.a52.patch https://trac.videolan.org/vlc/ticket/3731 dimstar@opensuse.org -- Support new version of liba52
 Patch0:         vlc.a52.patch
 # PATCH-FIX-UPSTREAM vlc-allow-deprecated-fribidi.patch dimstar@opensuse.org -- Allow usage of deprecated fribidi functions
@@ -51,16 +53,10 @@ Patch2:         vlc-lua-5.3.patch
 Patch3:         fix-build-with-fdk-2.0.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-leaking-AvahiServiceResolver-in-the-error-paths.patch -- Fix some memleaks
-Patch101:       0001-Fix-leaking-AvahiServiceResolver-in-the-error-paths.patch
-# PATCH-FIX-UPSTREAM 0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch -- Use Avahi for discovery, microdns is not available
-Patch102:       0002-Add-Avahi-implementation-for-chromecast-renderer-dis.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt 5.15 by adding a missing include
 Patch104:       fix-missing-includes-with-qt-5.15.patch
-# PATCH-FIX-UPSTREAM reproducible.patch -- make tar reproducible -- 87ea3c0dfb7367b434f688d657f931c074bb34f4
-Patch105:       reproducible.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -405,11 +401,8 @@ OpenCV based video filters and a face detection example.
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550
 %patch100 -p1
 %endif
-%patch101 -p1
-%patch102 -p1
 %patch103 -p1
 %patch104 -p1
-%patch105 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
