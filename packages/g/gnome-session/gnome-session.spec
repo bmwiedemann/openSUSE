@@ -33,6 +33,8 @@ Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
 Patch1:         gnome-session-remove-gsd-XSettings.patch
 # PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
+# PATCH-FIX-UPSTREAM gnome-session-error-numbers-wrong.patch bsc#1169165 glgo!GNOME/gnome-session#42 xwang@suse.com -- Valid error numbers are all positive numbers 
+Patch3:         gnome-session-error-numbers-wrong.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -111,6 +113,7 @@ functional GNOME desktop.
 %ifarch s390 s390x
 %patch2 -p1
 %endif
+%patch3 -p1
 translation-update-upstream po gnome-session-3.0
 
 %build
