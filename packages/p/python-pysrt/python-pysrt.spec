@@ -26,7 +26,7 @@ URL:            https://github.com/byroot/pysrt
 Source0:        https://files.pythonhosted.org/packages/source/p/pysrt/pysrt-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +51,7 @@ sed -e '1d' -i pysrt/commands.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec %{_bindir}/nosetests
+%pytest
 
 %files %{python_files}
 %doc README.rst
