@@ -1,7 +1,7 @@
 #
 # spec file for package vgrep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 # Project name when using go tooling.
 %define project github.com/vrothberg/vgrep
 Name:           vgrep
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Frontend for git-grep and grep
 License:        GPL-3.0-only
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/vrothberg/vgrep
+URL:            https://github.com/vrothberg/vgrep
 Source0:        https://github.com/vrothberg/vgrep/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.6
