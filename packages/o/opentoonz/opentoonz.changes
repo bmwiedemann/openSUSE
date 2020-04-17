@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 13 18:35:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop p_add-zlo-to-cmake-include-path-suffixes.patch, no
+  longer needed
+- Add patches:
+  * 0001-Fix-linker-errors-on-Linux.patch
+  * 0001-Use-the-system-mypaint-brushes.patch
+- Small spec cleanup
+
+-------------------------------------------------------------------
 Thu Mar 26 16:05:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable RPATH to fix the leap build.

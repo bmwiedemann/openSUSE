@@ -16,8 +16,6 @@
 #
 
 
-%global __requires_exclude ^(libcolorfx|libimage|libsound|libtif).*
-%global __provides_exclude ^(libcolorfx|libimage|libsound|libtif).*
 Name:           opentoonz
 Version:        1.4.0
 Release:        0
@@ -29,7 +27,10 @@ URL:            https://opentoonz.github.io/e/
 Source0:        %{name}-%{version}.tar.xz
 Source3:        %{name}-rpmlintrc
 Patch1:         p_handle-no-return-in-nonvoid-function.patch
-Patch2:         p_add-zlo-to-cmake-include-path-suffixes.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-linker-errors-on-Linux.patch
+# PATCH-FIX-OPENSUSE -- Use the system mypaint brushes
+Patch3:         0001-Use-the-system-mypaint-brushes.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -64,6 +65,13 @@ BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  i586 x86_64
+# the package is called mypaint-brushes1 in the devel project,
+# but mypaint-brushes in the Leap:15.2 repo.
+%if 0%{?sle_version} == 150200
+Requires:       mypaint-brushes < 2.0
+%else
+Requires:       mypaint-brushes1
+%endif
 
 %description
 2D animation software previously known as Toonz.
@@ -76,21 +84,24 @@ find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" ! -name "kiss_fft*"
 # Keep thirdparty/lzo/driver, but remove library.
 rm -r thirdparty/lzo/2.*
 
+# Use the mypaint brushes instead of the local copy
+rm -fr stuff/library/mypaint\ brushes
+
 %build
+
 # TODO upstream planning to replace custom thirdparty libs with system versions
 cd thirdparty/tiff-*
 export CFLAGS="%{optflags} -fPIC"
-%configure
+%configure --disable-jbig
 %make_build
 cd -
 
 cd toonz
 %define __sourcedir sources
 %cmake \
-  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed" \
-  -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--no-as-needed" \
-  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-as-needed" \
-  -DCMAKE_SKIP_RPATH=TRUE
+  -DCMAKE_SKIP_RPATH=TRUE \
+  -DWITH_SYSTEM_LZO=TRUE \
+  -DWITH_SYSTEM_SUPERLU=TRUE
 
 %cmake_build
 
