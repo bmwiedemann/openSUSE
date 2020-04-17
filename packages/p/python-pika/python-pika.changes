@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:48:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch from using nosetest runner to pytest
+
+-------------------------------------------------------------------
 Tue Jul 23 11:28:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.0:

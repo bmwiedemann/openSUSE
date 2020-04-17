@@ -191,4 +191,12 @@
 - Drop merged patch e95001e480ec30f1617c47e77fb92e0384ff9e78.patch</comment>
     <requestid>717865</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6e07efacf777c7c007e84d6e13e0be81</srcmd5>
+    <version>1.1.0</version>
+    <time>1587162684</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from using nosetest runner to pytest</comment>
+    <requestid>794817</requestid>
+  </revision>
 </revisionlist>

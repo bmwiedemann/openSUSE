@@ -1,7 +1,7 @@
 #
 # spec file for package python-pika
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://github.com/pika/pika
 Source:         https://github.com/pika/pika/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
@@ -60,7 +60,7 @@ sed -i -e 's:,tests/acceptance::' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/*.egg-info
 
 %check
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" nosetests-%{$python_bin_suffix} tests/
+%pytest tests/
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
