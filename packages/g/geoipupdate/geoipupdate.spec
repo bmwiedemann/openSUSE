@@ -21,7 +21,7 @@ Name:           geoipupdate
 Version:        4.2.2
 Release:        0
 Summary:        GeoIP update client code
-License:        GPL-2.0-only
+License:        Apache-2.0 OR MIT
 Group:          Productivity/Networking/Other
 URL:            https://github.com/maxmind/geoipupdate
 Source0:        %{name}-%{version}.tar.gz
