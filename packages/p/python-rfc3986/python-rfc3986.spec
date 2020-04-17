@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3986
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rfc3986
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Python module for validating URI references per RFC 3986
 License:        Apache-2.0
@@ -28,10 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/r/rfc3986/rfc3986
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
