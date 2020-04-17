@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:12:37 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gdm-look-for-session-based-on-pid-first.patch: Look for
+  session based on pid first, then fall back to the uid based
+  approach (bsc#1159950, glgo#GNOME/gdm#526).
+
+-------------------------------------------------------------------
 Wed Mar  4 09:44:06 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gdm-disable-wayland-on-mgag200-chipsets.patch: disable wayland

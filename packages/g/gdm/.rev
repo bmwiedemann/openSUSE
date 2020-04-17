@@ -1693,4 +1693,14 @@
 </comment>
     <requestid>782593</requestid>
   </revision>
+  <revision rev="225" vrev="8">
+    <srcmd5>64c902f0f2a9a83d51b843a94cb5568d</srcmd5>
+    <version>3.34.1</version>
+    <time>1587162425</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdm-look-for-session-based-on-pid-first.patch: Look for
+  session based on pid first, then fall back to the uid based
+  approach (bsc#1159950, glgo#GNOME/gdm#526). (forwarded request 793458 from yfjiang)</comment>
+    <requestid>794355</requestid>
+  </revision>
 </revisionlist>
