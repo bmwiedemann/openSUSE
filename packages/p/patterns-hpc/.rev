@@ -112,4 +112,12 @@
   in SLES. They are now Recommended and not Required (jsc#SLE-12109)</comment>
     <requestid>786221</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>2a6099e9aa3e930a09a6cf2fefaa5e52</srcmd5>
+    <version>20190218</version>
+    <time>1587162623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794788</requestid>
+  </revision>
 </revisionlist>

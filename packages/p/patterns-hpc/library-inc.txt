@@ -1,3 +1,5 @@
+# Ping is useful on compute nodes (bsc#1169484)
+Requires:       iputils
 # Recommend libraries which are in hpc
 Recommends:     metis-gnu-hpc
 Recommends:     superlu-gnu-hpc

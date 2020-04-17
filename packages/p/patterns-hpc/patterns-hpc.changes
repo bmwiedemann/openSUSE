@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 15:02:21 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added iputils to relevant patterns (bsc#1169484) 
+
+-------------------------------------------------------------------
 Wed Mar 18 16:40:46 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - removed is_opensuse which was used to mark packages wiich are not

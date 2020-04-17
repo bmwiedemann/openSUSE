@@ -49,6 +49,8 @@ Provides:       pattern-visible()
 Requires:       nfs-client
 Requires:       openssh
 Requires:       sudo
+# Ping is useful on compute nodes (bsc#1169484)
+Requires:       iputils
 
 Recommends:     vim
 Recommends:     salt-minion
@@ -69,7 +71,7 @@ Recommends:     perl-genders
 
 %description compute_node
 A compute node comprises of a minimal software image and mainly runs simulation programs. Services on this node should be reduced to a bare minimum and the node *must* be installed in a automatic manner.  
-The pattern 'HPC modularized libraries' should also be installed.
+The pattern 'HPC Modularized libraries' should also be installed.
 
 %files compute_node
 %dir %{_defaultdocdir}/patterns
@@ -79,7 +81,7 @@ The pattern 'HPC modularized libraries' should also be installed.
 
 %package libraries
 %pattern_serverfunctions
-Summary:        HPC modularized Libraries
+Summary:        HPC Modularized Libraries
 Group:          Metapackages
 Provides:       pattern() = hpc_libraries
 Provides:       pattern-icon() = pattern-generic
@@ -92,7 +94,7 @@ Requires:       lua-lmod
 
 %description libraries
 This package provides all the modularized libraries so that they can be used in an HPC environment. These libraries allow to install several MPI flavors in parallel.
-In order to use thess libraries one needs to load them via the module command first.
+In order to use these libraries one needs to load them via the module command first.
 
 %files libraries
 %dir %{_defaultdocdir}/patterns
@@ -116,6 +118,8 @@ Recommends:     pattern() = devel_python3
 Recommends:     python3-devel
 Requires:       gnu-compilers-hpc-devel
 Requires:       lua-lmod
+# Ping is useful on compute nodes (bsc#1169484)
+Requires:       iputils
 
 # recommend additional development tools
 Recommends:     cmake
@@ -126,7 +130,7 @@ Recommends:     gnuplot-doc
 
 %description development_node
 This package provides all the relevant packages for developing HPC applications.
-It depends on the pattern 'HPC modularized libraries'. In addition it includes the GNU compilers and the relevant management packages.
+It depends on the pattern 'HPC Modularized Libraries'. In addition it includes the GNU compilers and the relevant management packages.
 
 %files development_node
 %dir %{_defaultdocdir}/patterns
@@ -141,8 +145,10 @@ Provides:       pattern() = hpc_workload_server
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-visible()
 
-Recommends:     slurm
-Recommends:     slurm-slurmdbd
+Requires:       slurm
+Requires:       slurm-slurmdbd
+# Ping is useful on compute nodes (bsc#1169484)
+Requires:       iputils
 Suggests:       mariadb
 
 %description workload_server
