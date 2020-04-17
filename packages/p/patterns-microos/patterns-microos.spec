@@ -124,6 +124,7 @@ Requires:       biosdevname
 Requires:       openSUSE-MicroOS-release
 Requires:       openSUSE-build-key
 Obsoletes:      suse-build-key < 12.1
+Requires:       branding-openSUSE
 %ifnarch s390x
 Requires:       grub2-branding-openSUSE
 %endif
@@ -204,7 +205,6 @@ Provides:       patterns-caasp-apparmor
 Obsoletes:      patterns-caasp-apparmor <= 4.0
 Requires:       apparmor-parser
 Requires:       apparmor-profiles
-Requires:       apparmor-utils
 
 %description apparmor
 Packages required to enable Apparmor on openSUSE MicroOS.
@@ -442,6 +442,7 @@ Packages required for the openSUSE MicroOS with KDE Plasma
 Summary:        Packages only for the DVD of openSUSE MicroOS
 Group:          Metapackages
 Provides:       pattern-category() = MicroOS
+Requires:       apparmor-utils
 Requires:       bcache-tools
 Requires:       cracklib-dict-full
 Requires:       cryptsetup

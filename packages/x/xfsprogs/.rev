@@ -550,4 +550,19 @@
     <comment></comment>
     <requestid>784964</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>def22b83a8137ddd3b8da1ff7e6247d2</srcmd5>
+    <version>5.6.0</version>
+    <time>1587162463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v5.6.0:
+  * xfs_scrub: don't set WorkingDirectory in systemd job
+  * xfsprogs: fix silently broken option parsing
+  * xfsprogs: various minor Coverity fixes
+  * xfs_repair: fix dir_read_buf use of libxfs_da_read_buf
+  * libxfs: check retval of device flush when closing
+  * xfs_io: set exitcode on failure appropriately
+  * libxfs changes merged from kernel 5.6 (forwarded request 794385 from ailiopoulos)</comment>
+    <requestid>794397</requestid>
+  </revision>
 </revisionlist>

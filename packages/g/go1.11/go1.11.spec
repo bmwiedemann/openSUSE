@@ -30,7 +30,10 @@
 # The fallback boostrap method via go1.4 would work for Leap
 # but we don't have go1.4 in there. Same for SLE15+
 %if ( 0%{?suse_version} < 1550 && 0%{?is_opensuse} ) || ( 0%{?suse_version} >= 1500 && ! 0%{?is_opensuse} )
+%ifnarch %arm
+# armv7 build hangs with gcc7-go on Leap 15.2, so use go1.4 - boo#1167874
 %define with_gccgo 1
+%endif
 %endif
 
 # The fallback bootstrap method via go1.4 doesn't work

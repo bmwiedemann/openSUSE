@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xonsh
-Version:        0.9.15
+Version:        0.9.17
 Release:        0
 Summary:        Python-powered, cross-platform, Unix-gazing shell
 License:        BSD-2-Clause

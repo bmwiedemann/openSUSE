@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:40:41 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.6 (released April 14 2020 by Oracle)
+
+  This version fixes bsc#1169249, bsc#1169202, and bsc#1166782.
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  GUI: Multiple enhancements including visual elements updates
+  Graphics: Fixed monitor resizing and multi-monitor handling bugs on X11 guests with VMSVGA graphics adapter
+  Graphics: Enhancements in 2D and 3D acceleration and rendering
+  USB: Multiple enhancements improving prformance and stability
+  Serial port: Improve error handling and fix hang when host port disappears
+  VBoxManage: Multiple fixes for guestcontrol operations
+  API: Fix for exception handling bug in Python bindings
+  Shared clipboard: Multiple fixes including possible crash and HTML data support
+  Linux host and guest: Support Linux kernel 5.6 (bug #19312)
+
+  File "VirtualBox-6.1.4-VBoxClient-vmsvga-x11-crash.patch" removed - fixed upstream.
+  File "fixes_for_5.6.patch" removed - fixed upstream.
+  File "change_default_display.patch" removed - fixed upstream.
+
+-------------------------------------------------------------------
+Mon Apr 13 18:02:12 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix bug that deletes everything in ~/.vbox/
+
+-------------------------------------------------------------------
+Mon Apr 13 17:22:38 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix builds for kernel 5.7. File "fixes_for_5.7.patch" is added.
+
+-------------------------------------------------------------------
 Thu Apr  9 21:49:36 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Change default display type for openSUSE virtual machines. The default type

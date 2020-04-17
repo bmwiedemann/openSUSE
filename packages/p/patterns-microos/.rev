@@ -110,4 +110,14 @@
     <comment></comment>
     <requestid>784297</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>4c5a6dcb5c0434e8cfe200260d157a4c</srcmd5>
+    <version>5.0</version>
+    <time>1587162492</time>
+    <user>dimstar_suse</user>
+    <comment>- Install branding-openSUSE meta package
+- Put apparmor-utils only on DVD, but don't install by default
+  (follow Tumbleweed)</comment>
+    <requestid>794453</requestid>
+  </revision>
 </revisionlist>

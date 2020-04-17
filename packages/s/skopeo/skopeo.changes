@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:25:44 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to skopeo v0.2.0:
+  - Update on #834: force runc only when cgroupsv1
+  - Update docs/skopeo.1.md
+  - Add example with repository
+  - Skopeo should support for BigFilesTemporaryDir (SystemContext)
+  - Use fully-qualified image names
+  - Add support for REGISTRY_AUTH_FILE
+  - Partial image encryption support
+  - Remove the list_tags integration test since it does not cover
+    much not already tested by the upstream container/images repo
+    or local unit tests
+  - Updates based on code review to simplify logic and tests
+  - Fix inconsistency in manpage example for list-tags
+  - Adds "list-tags" command to list tags with no known tag
+    required
+
+-------------------------------------------------------------------
 Wed Mar  4 14:09:21 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Removed patches that were merged upstream:

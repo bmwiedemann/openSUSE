@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiagram
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Powerful libraries (KChart, KGantt) for creating business diagrams
 License:        GPL-2.0-or-later

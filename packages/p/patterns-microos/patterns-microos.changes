@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:15:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install branding-openSUSE meta package
+- Put apparmor-utils only on DVD, but don't install by default
+  (follow Tumbleweed)
+
+-------------------------------------------------------------------
 Wed Mar 11 21:17:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop NetworkManager-applet Requires: We do not need this at all

@@ -28,8 +28,6 @@ devrules()
 #
 # Ensure that ~/.config/VirtualBox exists
 mkdir -p ~/.config/VirtualBox
-# Originally, this information was in ~/.vbox. Remove any files found there
-rm -rf ~/.vbox
 # Get the inode for /usr/lib/udev/rules.d/60-vboxdrv.rules
 INODE=$(stat /usr/lib/udev/rules.d/60-vboxdrv.rules | grep Inode | cut -d' ' -f3)
 if [ ! -f ~/.config/VirtualBox/enable ] && [ ! -f ~/.config/VirtualBox/disable ] ; then

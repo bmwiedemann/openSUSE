@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-/usr/sbin/haproxy {
+profile haproxy /usr/sbin/haproxy {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   capability net_bind_service,

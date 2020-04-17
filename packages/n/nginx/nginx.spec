@@ -76,7 +76,7 @@
 %endif
 #
 Name:           nginx
-Version:        1.17.9
+Version:        1.17.10
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -91,7 +91,6 @@ Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v
 Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
 Source8:        https://github.com/leev/ngx_http_geoip2_module/archive/%{nginx_geoip2_version}.tar.gz#/%{nginx_geoip2_module_path}.tar.gz
-
 Source100:      nginx.rpmlintrc
 Source101:      https://nginx.org/download/%{name}-%{version}.tar.gz.asc
 Source102:      https://nginx.org/keys/mdounin.key#/%{name}.keyring

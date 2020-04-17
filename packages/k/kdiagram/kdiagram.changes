@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 06:23:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.3
+  * KChart: Mark layout as dirty when painting a rect != geometry()
+
+-------------------------------------------------------------------
 Sun Mar 29 10:51:37 UTC 2020 - wbauer@tmo.at
 
 - Update to 2.6.2

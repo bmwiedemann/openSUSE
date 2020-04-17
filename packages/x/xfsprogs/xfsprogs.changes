@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 19:48:24 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
+
+- update to v5.6.0:
+  * xfs_scrub: don't set WorkingDirectory in systemd job
+  * xfsprogs: fix silently broken option parsing
+  * xfsprogs: various minor Coverity fixes
+  * xfs_repair: fix dir_read_buf use of libxfs_da_read_buf
+  * libxfs: check retval of device flush when closing
+  * xfs_io: set exitcode on failure appropriately
+  * libxfs changes merged from kernel 5.6
+
+-------------------------------------------------------------------
 Sat Mar 14 11:15:39 UTC 2020 - Anthony Iliopoulos <ailiopoulos@suse.com>
 
 - update to v5.5.0:

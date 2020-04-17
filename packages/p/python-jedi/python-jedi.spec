@@ -18,21 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jedi
-Version:        0.16.0+git55.17b3611c
+Version:        0.17.0
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
-Source0:        jedi-%{version}.tar.xz
+Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{python_module parso >= 0.5.0}
+Patch0:         jedi-pr1543-sorttest.patch
+BuildRequires:  %{python_module parso >= 0.7.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-parso >= 0.5.0
+Requires:       python-parso >= 0.7.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,6 +52,7 @@ implementation as a VIM plugin which uses Jedi's autocompletion.
 
 %prep
 %setup -q -n jedi-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -66,6 +68,8 @@ skiptests="test_venv_and_pths"
 skiptests+=" or test_sqlite3_conversion"
 # some architectures are too slow for these optimizer devel checks
 skiptests+=" or test_speed"
+# fails on some architectures
+skiptests+=" or test_init_extension_module"
 %if 0%{?sle_version} == 150100
   # the python 2 pytest test discovery in Leap 15.1 and SLE15 SP1 
   # trips on purposely placed syntax errors in test/completion/imports.py

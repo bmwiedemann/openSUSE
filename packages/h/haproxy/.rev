@@ -808,4 +808,13 @@
     <comment>Add bugnumbers that werent in the devel project but in leap/sles</comment>
     <requestid>791753</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>1b247a694ce1c7c284e65fb052d694a6</srcmd5>
+    <version>2.1.4+git0.3cfc2f1d9</version>
+    <time>1587162460</time>
+    <user>dimstar_suse</user>
+    <comment>- use the &quot;profile profilename /path/to/binary&quot; syntax to make
+  &quot;ps aufxZ&quot; more readable</comment>
+    <requestid>794395</requestid>
+  </revision>
 </revisionlist>

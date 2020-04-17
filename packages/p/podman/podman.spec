@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -107,29 +107,8 @@ rm -rf $HOME/go/src/%{project}/*
 cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
-%if 0%{?with_libostree}
-echo "Compiling with libostree support"
-export BUILDTAGS="seccomp apparmor varlink systemd"
-%else
-echo "Compiling without libostree support"
-export BUILDTAGS="seccomp apparmor varlink containers_image_ostree_stub systemd"
-%endif
-
 # Build podman
-go generate ./cmd/podman/varlink/...
-
-go build -tags "$BUILDTAGS" \
-         -buildmode=pie \
-         -ldflags '-s -w -X main.podmanVersion=%{version}' \
-         -o bin/podman \
-         %{project}/cmd/podman
-
-# Build remote client
-go build -tags "$BUILDTAGS remoteclient" \
-         -buildmode=pie \
-         -ldflags '-s -w -X main.podmanVersion=%{version}' \
-         -o bin/podman-remote \
-         %{project}/cmd/podman
+make BUILDFLAGS=-buildmode=pie
 
 # Build manpages
 make %{?_smp_mflags} docs

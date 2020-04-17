@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:12:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.17.10
+  * https://nginx.org/en/CHANGES
+  * The "auth_delay" directive.
+
+-------------------------------------------------------------------
 Tue Mar 10 10:49:35 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Replace obsolete GeoIP module with MaxMinDB-based GeoIP2

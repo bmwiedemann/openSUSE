@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-kubernetes
-Version:        10.0.1
+Version:        11.0.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
@@ -74,6 +74,9 @@ Python client for kubernetes http://kubernetes.io/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# quote CONTRIBUTING.md:
+# 2. [End to end tests](kubernetes/e2e_test): these are tests that can only be verified with a live kubernetes server.
+rm kubernetes/dynamic/test_client.py
 %pytest
 
 %files %{python_files}

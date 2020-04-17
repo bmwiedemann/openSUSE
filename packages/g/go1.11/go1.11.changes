@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 09:24:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- armv7 build hangs with gcc7-go on Leap 15.2, so use go1.4 (bsc#1167874)
+
+-------------------------------------------------------------------
 Mon Mar 16 08:50:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - %arm requires binutils-gold to build with go1.4 (bsc#1167874)
