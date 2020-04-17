@@ -1,7 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr 15 05:39:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.28.1 (boo#1169658):
+  + Fix position of default option element popup windows under
+    Wayland.
+  + Fix rendering after a cross site navigation with PSON enabled
+    and hardware acceleration forced.
+  + Fix a crash in nested wayland compositor when closing a tab
+    with PSON enabled.
+  + Update Chrome and Firefox versions in user agent quirks.
+  + Fix a crash with bubblewrap sandbox enabled.
+  + Fix a crash in JavaScriptCore in ppc64el.
+  + Fix the build with GStreamer 1.12.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-11793.
+- Drop webkit2gtk3-gstreamer-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Apr  2 19:53:27 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-gstreamer-build-fix.patch: fix build with
+  gstreamer 1.12 (webkit#209296).
+- Rebase webkit-process.patch.
+- Use WebKit defaults for ENABLE_JIT and USE_SYSTEM_MALLOC, except
+  for aarch64. WebKit now sets reasonable defaults based on
+  architecture. Disable on aarch64 in case a user is still using
+  the kernel-64kb package.
+- Use bubblewrap, xdg-dbus-proxy, wpe, and wpebackend-fdo on 15.2;
+  they had been unintentionally excluded.
+- Increase mem_per_process; otherwise fails on SLE/Leap.
+
+-------------------------------------------------------------------
 Thu Mar 12 12:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.28.0:
+- Update to version 2.28.0 (boo#1165528):
   + Add API to enable Process Swap on (Cross-site) Navigation.
   + Add user messages API for the communication with the web
     extension.
@@ -13,6 +45,7 @@ Thu Mar 12 12:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     accelerated compositing mode.
   + Always use a light theme for rendering form controls.
   + Add about:gpu to show information about the graphics stack.
+  + Security fixes: CVE-2020-10018.
 - Drop webkit2gtk3-ppc-build-fix.patch: Fixed upstream.
 
 -------------------------------------------------------------------

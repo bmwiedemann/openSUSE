@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.28.0
+Version:        2.28.1
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -43,7 +43,7 @@ Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
 Patch0:         webkit2gtk3-fdo-soname.patch
-# PATCH-NEEDS-REBASE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary. WAS PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch1:         webkit-process.patch
 
 BuildRequires:  Mesa-libEGL-devel
@@ -52,7 +52,7 @@ BuildRequires:  Mesa-libGLESv1_CM-devel
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  bison >= 2.3
-%if 0%{?suse_version} > 1510
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  bubblewrap
 %endif
 BuildRequires:  cmake
@@ -66,7 +66,7 @@ BuildRequires:  ninja
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  ruby >= 1.8.7
-%if 0%{?suse_version} > 1510
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  xdg-dbus-proxy
 %endif
 BuildRequires:  pkgconfig(atk)
@@ -102,7 +102,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
-%if 0%{?suse_version} > 1510
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 %endif
@@ -134,11 +134,11 @@ more.
 Summary:        Library for rendering web content, GTK+ Port
 # Require the injected bundles. The bundles are dlopen()ed
 Group:          System/Libraries
-%if 0%{?suse_version} > 1510
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       bubblewrap
 %endif
 Requires:       webkit2gtk-4_0-injected-bundles
-%if 0%{?suse_version} > 1510
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       xdg-dbus-proxy
 %endif
 Provides:       %{_pkgname_no_slpp} = %{version}
@@ -271,9 +271,8 @@ A small test browswer from webkit, useful for testing features.
 %prep
 %setup -n webkitgtk-%{version}
 %patch0 -p1
-%if 0%{?suse_version} <= 1500
-# Needs rebase or dropping + it should not be applied for Leap 15.2
-#%%patch1 -p1
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
+%patch1 -p1
 %endif
 
 %build
@@ -286,7 +285,7 @@ cat /proc/meminfo
 echo "System limits:"
 ulimit -a
 if test -n "$max_link_jobs" -a "$max_link_jobs" -gt 1 ; then
-    mem_per_process=1300000
+        mem_per_process=1500000
     max_mem=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
     max_jobs="$(($max_mem / $mem_per_process))"
     test "$max_link_jobs" -gt "$max_jobs" && max_link_jobs="$max_jobs" && echo "Warning: Reducing number of link jobs to $max_jobs because of memory limits"
@@ -313,15 +312,15 @@ export PYTHON=%{_bindir}/python3
   -DUSE_WOFF2=false \
   -DENABLE_MEDIA_SOURCE=OFF \
 %endif
-%if 0%{?suse_version} <= 1510
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
   -DUSE_WPE_RENDERER=OFF \
   -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
 %endif
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
-%ifarch armv6hl ppc ppc64 ppc64le riscv64 s390 s390x
+%ifarch aarch64
   -DENABLE_JIT=OFF \
+  -DUSE_SYSTEM_MALLOC=ON \
 %endif
-  -DUSE_SYSTEM_MALLOC=OFF \
 
 %ninja_build -j $max_link_jobs
 

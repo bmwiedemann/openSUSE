@@ -1,29 +1,22 @@
-From: Mike Gorse <mgorse@suse.com>
-Date: Thu 19 Dec 2019 10:33:14 AM EST
-Subject: [patch] Use single web process for evolution and geary.
-
-https://mail.gnome.org/archives/distributor-list/2019-October/msg00000.html
-
-Index: webkitgtk/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
-===================================================================
---- webkitgtk.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
-+++ webkitgtk/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
-@@ -348,8 +348,16 @@ ALLOW_DEPRECATED_DECLARATIONS_END
-         configuration.setLocalStorageDirectory(FileSystem::stringFromFileSystemRepresentation(priv->localStorageDirectory.data()));
- 
-     const char* useSingleWebProcess = getenv("WEBKIT_USE_SINGLE_WEB_PROCESS");
--    if (useSingleWebProcess && strcmp(useSingleWebProcess, "0"))
--        configuration.setUsesSingleWebProcess(true);
-+    if (useSingleWebProcess) {
-+        if (strcmp(useSingleWebProcess, "0")) {
-+            configuration.setUsesSingleWebProcess(true);
+diff -urp webkitgtk-2.28.0.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp webkitgtk-2.28.0/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
+--- webkitgtk-2.28.0.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-02-04 04:30:36.000000000 -0600
++++ webkitgtk-2.28.0/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-03-19 14:16:07.742318092 -0500
+@@ -379,8 +379,16 @@ static void webkitWebContextConstructed(
+     configuration.setProcessSwapsOnNavigation(priv->psonEnabled);
+     if (!priv->psonEnabled) {
+         const char* useSingleWebProcess = getenv("WEBKIT_USE_SINGLE_WEB_PROCESS");
+-        if (useSingleWebProcess && strcmp(useSingleWebProcess, "0"))
+-            configuration.setUsesSingleWebProcess(true);
++        if (useSingleWebProcess) {
++            if (strcmp(useSingleWebProcess, "0")) {
++                configuration.setUsesSingleWebProcess(true);
++            }
++        } else {
++            const char* prgname = g_get_prgname();
++            if (!g_strcmp0(prgname, "evolution") || !g_strcmp0(prgname, "geary")) {
++                configuration.setUsesSingleWebProcess(true);
++            }
 +        }
-+    } else {
-+        const char* prgname = g_get_prgname();
-+        if (!g_strcmp0(prgname, "evolution") || !g_strcmp0(prgname, "geary")) {
-+            configuration.setUsesSingleWebProcess(true);
-+        }
-+    }
-     priv->processPool = WebProcessPool::create(configuration);
+     }
+ #endif
  
-     if (!priv->websiteDataManager)
