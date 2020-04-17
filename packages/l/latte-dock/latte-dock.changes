@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 10:35:27 UTC 2020 - wbauer@tmo.at
+
+- Update to 0.9.11
+  * Fix context menu for classic systray items such as Viber and
+    Telegram (kde#419263)
+  * Fix compatibility with KDE Frameworks 5.38 (kde#419657,
+    kde#419678)
+
+-------------------------------------------------------------------
 Sat Mar 28 17:03:47 UTC 2020 - wbauer@tmo.at
 
 - Update to 0.9.10
