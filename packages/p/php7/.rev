@@ -871,4 +871,13 @@
     <comment>- remove Berkeley DB Database support [jsc#SLE-12210]</comment>
     <requestid>790861</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>0bbb3cdf0650d9e93a8f29858340efd2</srcmd5>
+    <version>7.4.5</version>
+    <time>1587162539</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.5: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.5 (forwarded request 794582 from adkorte)</comment>
+    <requestid>794607</requestid>
+  </revision>
 </revisionlist>

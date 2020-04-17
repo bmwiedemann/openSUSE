@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 14:40:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.5: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.5
+
+-------------------------------------------------------------------
 Thu Apr  2 11:14:13 UTC 2020 - pgajdos@suse.com
 
 - remove Berkeley DB Database support [jsc#SLE-12210]
