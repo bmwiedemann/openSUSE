@@ -17,13 +17,13 @@
 
 
 Name:           iso-codes
-Version:        4.1
+Version:        4.4
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later
 Group:          System/Localization
 URL:            https://salsa.debian.org/iso-codes-team/iso-codes
-Source0:        https://salsa.debian.org/iso-codes-team/iso-codes/uploads/049ce6aac94d842be809f4063950646c/iso-codes-4.1.tar.xz
+Source0:        https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/iso-codes-%{version}/iso-codes-iso-codes-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
@@ -47,11 +47,11 @@ translations in gettext .po form.
 %lang_package
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

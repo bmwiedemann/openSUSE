@@ -677,4 +677,14 @@
     <comment></comment>
     <requestid>764790</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>a9017abacba4b096d342b2fed022ffa8</srcmd5>
+    <version>4.4</version>
+    <time>1587162437</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4:
+  * Plenty of changes - see provided ChangeLog.md for details
+- Update source url (forwarded request 794009 from pluskalm)</comment>
+    <requestid>794359</requestid>
+  </revision>
 </revisionlist>
