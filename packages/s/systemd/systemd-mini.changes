@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Apr 15 19:06:27 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Switch back to the hybrid hierarchy
+
+  Unfortunately Kubernetes and runc are not yet ready for
+  cgroupsv2. Let's reconsider the unified hierarchy in a couple of
+  months.
+
+-------------------------------------------------------------------
+Mon Apr  6 12:42:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit c5aa158173ced05201182d1cc18632a25cf43b94 (merge v245.4)
+
+-------------------------------------------------------------------
+Mon Apr  6 10:02:33 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Add 0001-meson-fix-build-of-udev-path_id_compat-builtin-with-.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 09:32:41 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 31f82b39c811b4f731c80c2c2e7c56a0ca924a5b (merge v245.2)
+
+  d1d3f2aa15 docs: Add syntax for templated units to systemd.preset man page
+  3c69813c69 man: add a tiny bit of markup
+  bf595e788c home: fix segfault when parsing arguments in PAM module
+  e110f4dacb test: wait a bit after starting the test service
+  e8df08cfdb fix journalctl regression (#15099)
+  eb3a38cc23 NEWS: add late note about job trimming issue
+  405f0fcfdd systemctl: hide the 'glyph' column when --no-legend is requested
+  1c7de81f89 format-table: allow hiding a specific column
+  b7f2308bda core: transition to FINAL_SIGTERM state after ExecStopPost=
+  2867dfbf70 journalctl: show duplicate entries if they are from the same file (#14898)
+  [...]
+
+-------------------------------------------------------------------
+Wed Mar 18 14:09:57 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v245 (commit 74e2e834b4282c9bbdc12014f6ccf8d86e542b8d)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v245/NEWS for
+  details. 
+
+  The new tools provided by systemd repart, userdb, homed, fdisk,
+  pwquality, p11kit feature have been disabled for now as they require
+  reviews first.
+
+  Default to the "unified" cgroup hierarchy. Indeed most prominent
+  users of cgroup (such as libvirt, kubic) should be ready for such
+  change. It's still possible to switch back to the old "hybrid"
+  hierarchy by passing "systemd.unified_cgroup_hierarchy=0" option to
+  the kernel command line though.
+
+  Added 0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch:
+  upstream commit 097537f07a2fab3cb73aef7bc59f2a66aa93f533 has been
+  reverted for now on as it introduced a behavior change which has
+  impacted plymouth at least.
+
+-------------------------------------------------------------------
+Fri Mar 13 13:15:10 UTC 2020 - Elisei Roca <eroca@suse.com>
+
+- add systemd-network-generator.service file together with systemd-network-generator binary
+
+-------------------------------------------------------------------
 Wed Feb 19 17:24:35 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - move html documentation to sparate package to save space

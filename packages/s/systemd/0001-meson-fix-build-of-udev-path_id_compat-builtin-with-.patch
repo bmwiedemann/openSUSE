@@ -1,0 +1,27 @@
+From 525cbb666e260770ad191d06dac0ab79e341bbe2 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Mon, 6 Apr 2020 11:50:29 +0200
+Subject: [PATCH 1/1] meson: fix build of udev 'path_id_compat' builtin with
+ meson 0.54
+
+Since meson 0.54, branch compats/udev-compat-symlinks needs this fix but it
+should be applied while merging compats/udev-compat-symlinks branch.
+---
+ src/udev/compat/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/udev/compat/meson.build b/src/udev/compat/meson.build
+index 3d683c7ce9..18df75222d 100644
+--- a/src/udev/compat/meson.build
++++ b/src/udev/compat/meson.build
+@@ -4,7 +4,6 @@ foreach prog : ['path_id_compat.c']
+                    prog,
+                    include_directories : includes,
+                    c_args : ['-DLOG_REALM=LOG_REALM_UDEV'],
+-                   link_with : [libudev_internal],
+                    link_with : [libudev_static],
+                    install_rpath : udev_rpath,
+                    install : true,
+-- 
+2.16.4
+

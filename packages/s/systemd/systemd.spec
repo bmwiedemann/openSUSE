@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.138.gf8adabc2b1
+%define suse_version +suse.83.gc5aa158173
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -53,7 +53,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        244
+Version:        245
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -165,6 +165,8 @@ Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 # merged by upstream.
 Patch1:         0001-SUSE-policy-do-not-clean-tmp-by-default.patch
 Patch2:         0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch
+Patch3:         0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
+Patch4:         0001-meson-fix-build-of-udev-path_id_compat-builtin-with-.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -512,6 +514,12 @@ ntp_servers=({0..3}.suse.pool.ntp.org)
         -Dima=false \
         -Delfutils=auto \
         -Dpstore=false \
+        -Drepart=false \
+        -Duserdb=false \
+        -Dhomed=false \
+        -Dfdisk=false \
+        -Dpwquality=false \
+        -Dp11kit=false \
 %if ! 0%{?bootstrap}
         -Dman=true \
         -Dhtml=true \
@@ -1091,6 +1099,7 @@ fi
 %exclude %{_prefix}/lib/systemd/systemd-network-generator
 %exclude %{_prefix}/lib/systemd/systemd-networkd
 %exclude %{_prefix}/lib/systemd/systemd-networkd-wait-online
+%exclude %{_unitdir}/systemd-network-generator.service
 %exclude %{_unitdir}/systemd-networkd.service
 %exclude %{_unitdir}/systemd-networkd.socket
 %exclude %{_unitdir}/systemd-networkd-wait-online.service
@@ -1535,6 +1544,7 @@ fi
 %{_prefix}/lib/systemd/systemd-network-generator
 %{_prefix}/lib/systemd/systemd-networkd
 %{_prefix}/lib/systemd/systemd-networkd-wait-online
+%{_unitdir}/systemd-network-generator.service
 %{_unitdir}/systemd-networkd.service
 %{_unitdir}/systemd-networkd.socket
 %{_unitdir}/systemd-networkd-wait-online.service
