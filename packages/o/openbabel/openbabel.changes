@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:23:08 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Drop old conditionals
+- Use ninja as builder
+- Build only python3 bindings
+
+-------------------------------------------------------------------
 Wed May 16 06:43:44 UTC 2018 - guillaume.gardet@opensuse.org
 
 - Backport https://github.com/openbabel/openbabel/commit/e26491

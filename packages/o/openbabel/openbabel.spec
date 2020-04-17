@@ -1,7 +1,7 @@
 #
 # spec file for package openbabel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           openbabel
 Version:        2.4.1
-Release:        1.5
+Release:        0
 Summary:        A chemistry toolbox
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://openbabel.sourceforge.net/
+URL:            http://openbabel.sourceforge.net/
 Source0:        https://sourceforge.net/projects/openbabel/files/openbabel/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 Source2:        baselibs.conf
 Patch0:         fix_narrowing.patch
 Patch1:         fix_yasara.patch
-BuildRequires:  cairo-devel
 BuildRequires:  cmake >= 2.4.8
-BuildRequires:  eigen3-devel
+BuildRequires:  ninja
 BuildRequires:  gcc-c++
-BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  swig
-BuildRequires:  zlib-devel
 BuildRequires:  wxWidgets-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Open Babel is a chemical toolbox understanding many formats of
@@ -66,12 +66,11 @@ chemical data. It allows to search, convert, analyze, or store data
 from molecular modeling, chemistry, solid-state materials,
 biochemistry, or related areas.
 
-%package -n python-openbabel
+%package -n python3-openbabel
 Summary:        Python bindings for Open Babel, a chemistry toolbox
 Group:          Productivity/Scientific/Chemistry
-%py_requires
 
-%description -n python-openbabel
+%description -n python3-openbabel
 Open Babel is a chemical toolbox understanding many formats of
 chemical data. It allows to search, convert, analyze, or store data
 from molecular modeling, chemistry, solid-state materials,
@@ -81,7 +80,7 @@ biochemistry, or related areas.
 Summary:        Development files for Open Babel
 Group:          Development/Libraries/C and C++
 Requires:       libopenbabel5 = %{version}
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 Provides:       libopenbabel-devel = %{version}
 Obsoletes:      libopenbabel-devel < %{version}
 
@@ -104,32 +103,25 @@ sed -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" -i tools/babel.cpp tools/obabel.cpp
 sed -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -i tools/babel.cpp tools/obabel.cpp
 
 %build
+%define __builder ninja
 %cmake \
-%if 0%{?suse_version} > 1320
-%ifarch ppc64 ppc64le
-      -DCMAKE_CXX_FLAGS="%{optflags} -std=gnu++98" \
-%endif
-%endif
-      -DCMAKE_BUILD_TYPE="Release" \
-      -DRUN_SWIG=ON \
-      -DPYTHON_BINDINGS=ON \
-      -DPYTHON_EXECUTABLE=%{_bindir}/python2 \
-      -DBUILD_GUI=FALSE \
-      -ULIB_INSTALL_DIR
-make %{?_smp_mflags}
+  -DRUN_SWIG=ON \
+  -DPYTHON_BINDINGS=ON \
+  -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
+  -DBUILD_GUI=FALSE \
+  -ULIB_INSTALL_DIR \
+  -Wno-dev
+%cmake_build
 
 %install
-pushd build
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%cmake_install
 
 %post -n libinchi0 -p /sbin/ldconfig
 %postun -n libinchi0 -p /sbin/ldconfig
-
 %post -n libopenbabel5 -p /sbin/ldconfig
 %postun -n libopenbabel5 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/roundtrip
 %{_bindir}/ob*
 %{_bindir}/babel
@@ -138,17 +130,14 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %{_datadir}/openbabel
 
 %files -n libinchi0
-%defattr(-,root,root,-)
 %{_libdir}/libinchi.so.0
 %{_libdir}/libinchi.so.0.4.1
 
 %files -n libopenbabel5
-%defattr(-,root,root,-)
 %{_libdir}/libopenbabel.so.5
 %{_libdir}/libopenbabel.so.5.0.0
 
 %files devel
-%defattr(-,root,root,-)
 %dir %{_includedir}/inchi
 %dir %{_includedir}/openbabel-2.0
 %dir %{_libdir}/cmake/openbabel2
@@ -161,8 +150,7 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 %{_libdir}/libopenbabel.so
 %{_libdir}/pkgconfig/openbabel-2.0.pc
 
-%files -n python-openbabel
-%defattr(-,root,root,-)
-%{python_sitearch}*
+%files -n python3-openbabel
+%{python3_sitearch}*
 
 %changelog
