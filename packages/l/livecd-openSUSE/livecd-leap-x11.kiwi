@@ -215,6 +215,8 @@
     <ignore name="baekmuk-bitmap-fonts"/>
     <package name="aaa_base" replaces="intlfonts-chinese-big-bitmap-fonts"/>
     <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
+    <package name="aaa_base" replaces="xorg-x11-fonts"/>
+    <ignore name="xorg-x11-fonts"/>
     <package name="aaa_base" replaces="strace"/>
     <ignore name="strace"/>
     <package name="aaa_base" replaces="tcsh"/>
@@ -466,8 +468,6 @@
     <ignore name="sbl"/>
     <package name="aaa_base" replaces="gnome-online-accounts"/>
     <ignore name="gnome-online-accounts"/>
-    <package name="aaa_base" replaces="xorg-x11-fonts"/>
-    <ignore name="xorg-x11-fonts"/>
     <package name="aaa_base" replaces="snapper"/>
     <ignore name="snapper"/>
     <package name="aaa_base" replaces="Mesa-libva"/>

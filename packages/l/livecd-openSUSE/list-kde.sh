@@ -19,8 +19,6 @@ install NetworkManager
 buildignore libreoffice
 buildignore libreoffice-icon-themes
 buildignore libreoffice-icon-theme-breeze
-# Required by LO, but otherwise too large
-buildignore xorg-x11-fonts
 buildignore kdenetwork4-filesharing
 buildignore gnome-keyring
 

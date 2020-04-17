@@ -851,4 +851,13 @@
     <comment>- Allow samba-libs on XFCE Live: indirect dependency for
   opensuse-welcome.</comment>
   </revision>
+  <revision rev="103" vrev="103">
+    <srcmd5>a2e1af663dec32742eccf5d883162355</srcmd5>
+    <version>unknown</version>
+    <time>1587162705</time>
+    <user>dimstar_suse</user>
+    <comment>- list-common: Ignore xorg-x11-fonts, LO no longer needs it
+- pkg-diff.sh: Also compare versions</comment>
+    <requestid>794849</requestid>
+  </revision>
 </revisionlist>

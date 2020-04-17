@@ -94,6 +94,7 @@ buildignore google-droid-fonts
 buildignore efont-unicode-bitmap-fonts
 buildignore baekmuk-bitmap-fonts
 buildignore intlfonts-chinese-big-bitmap-fonts
+buildignore xorg-x11-fonts
 
 buildignore strace
 buildignore tcsh

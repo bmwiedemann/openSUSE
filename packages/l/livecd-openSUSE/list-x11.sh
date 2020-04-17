@@ -30,7 +30,6 @@ buildignore ImageMagick
 buildignore awesfx
 buildignore sbl
 buildignore gnome-online-accounts
-buildignore xorg-x11-fonts
 buildignore snapper
 
 buildignore Mesa-libva

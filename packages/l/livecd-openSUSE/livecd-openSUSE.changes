@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:25:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore xorg-x11-fonts, LO no longer needs it
+- pkg-diff.sh: Also compare versions
+
+-------------------------------------------------------------------
 Wed Apr  8 10:19:06 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Allow samba-libs on XFCE Live: indirect dependency for
