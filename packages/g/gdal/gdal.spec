@@ -184,9 +184,12 @@ find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 find . -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} \;
 %if %{with ecw5_support}
 # gdal configure script looks for a given layout, so reproduce what is expected.
-mkdir -p ../ECW/Desktop_Read-Only/lib/x64/
-ln -s %{_libdir} ../ECW/Desktop_Read-Only/lib/x64/release
-ln -s %{_includedir} ../ECW/Desktop_Read-Only/include
+export ECW_PATH="../ECW/Desktop_Read-Only"
+export ECW_LIB_PATH="$ECW_PATH/lib/cpp11abi/x64/release"
+export ECW_INC_PATH="$ECW_PATH/include"
+mkdir -p $ECW_PATH/lib/cpp11abi/x64/
+ln -s %{_libdir} $ECW_LIB_PATH
+ln -s %{_includedir} $ECW_INC_PATH
 %endif
 
 %build
