@@ -25,6 +25,9 @@ Summary:        A schema-based serialization and deserialization library
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://github.com/Pylons/colander
 Source:         https://files.pythonhosted.org/packages/source/c/colander/colander-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests.patch gh#Pylons/colander#210 mcepl@suse.com
+# Fix tests to work with pytest (and nose2) as well
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring}
 BuildRequires:  fdupes
@@ -41,9 +44,9 @@ BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module hupper}
 BuildRequires:  %{python_module iso8601}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -82,6 +85,7 @@ Provides translations for the "%{name}" package.
 
 %prep
 %setup -q -n colander-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -94,7 +98,7 @@ Provides translations for the "%{name}" package.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py nosetests --with-coverage
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
