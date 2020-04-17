@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:15:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.17
+  * Explicitly mark Python 3.8 as supported in wheel metadata.
+  * Migrate from Bitbucket to GitHub
+  * Run black on the entire repository
+
+-------------------------------------------------------------------
 Thu Nov  7 16:15:07 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
