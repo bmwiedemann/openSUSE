@@ -74,7 +74,7 @@ the scope of the CRI.
 
 %package kubeadm-criconfig
 Summary:        CRI-O container runtime configuration for kubeadm
-Requires:       kubernetes-kubeadm
+Requires:       kubernetes-kubeadm-provider
 Requires(post): %fillup_prereq
 Supplements:    cri-o
 Provides:       kubernetes-kubeadm-criconfig
@@ -89,6 +89,7 @@ This package provides the CRI-O container runtime configuration for kubeadm
 %build
 # Keep cgroupfs as the default cgroup manager for SLE15 builds
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
+sed -i "s|.*apparmor_profile =.*|apparmor_profile = \"crio-default-%{version}\"|" %{SOURCE3}
 sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE3}
 sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE5}
 %endif

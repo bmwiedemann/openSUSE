@@ -406,4 +406,14 @@
     <comment></comment>
     <requestid>792930</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>b73ee7b47c980fdde6e3ab22672c9e97</srcmd5>
+    <version>1.17.3</version>
+    <time>1587162552</time>
+    <user>dimstar_suse</user>
+    <comment>- criconfig: Require kubernetes-kubeadm-provider to be compatable with multi-version kubernetes packaging
+
+- Update apparmor_profile with current cri-o version, bsc#1161056</comment>
+    <requestid>794622</requestid>
+  </revision>
 </revisionlist>

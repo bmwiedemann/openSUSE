@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 16 15:24:00 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- criconfig: Require kubernetes-kubeadm-provider to be compatable with multi-version kubernetes packaging
+
+-------------------------------------------------------------------
+Thu Apr 16 09:01:48 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update apparmor_profile with current cri-o version, bsc#1161056
+
+-------------------------------------------------------------------
 Fri Apr 10 09:58:30 UTC 2020 - Michal Jura <mjura@suse.com>
 
 - Update to version 1.17.3:
