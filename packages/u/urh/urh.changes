@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:01:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.6
+  * remove superfluous os.join
+  * Improve appicon_big
+  * New logo and icon (#757)
+  * fix attribute assignment
+  * use more recent UHD version
+
+-------------------------------------------------------------------
 Tue Mar 24 18:13:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.5
