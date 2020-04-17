@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 16 19:32:47 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.15 improved AgsDial of AgsEffectBulk,
+  AgsEffectLine and AgsLine to apply page-size of adjustments.
+- improved AgsTurtle to check against unichar ranges.
+- improved AgsNotationEditor to queue resize.
+- other improvements.
+
+-------------------------------------------------------------------
+Wed Apr 15 09:53:27 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.14 fixed potential NULL pointer dereference and
+  wrong midi-end-mapping of AgsSimpleFile.
+
+-------------------------------------------------------------------
+Mon Apr 13 09:50:01 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.2.13 refactored and extended AgsTurtle, fixed
+  greedy ags-lv2 and ags-dssi recall.
+
+-------------------------------------------------------------------
 Fri Apr 10 12:58:33 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.2.10 improved AgsMachineEditor to create plugin
