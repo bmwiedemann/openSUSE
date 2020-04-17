@@ -42,8 +42,8 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xtst)
-Provides:       synergy = %{version}
-Obsoletes:      synergy < %{version}
+#Provides:       synergy = %{version}
+#Obsoletes:      synergy < %{version}
 %{?systemd_ordering}
 
 %description
