@@ -1,7 +1,8 @@
 #
 # spec file for package printer-driver-brlaser
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Xu Zhao (i@xuzhao.net)
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           printer-driver-brlaser
-Version:        3+git20160302.03bb366
+Version:        6+git20191118.2f63d0a
 Release:        0
 Summary:        Driver for (some) Brother laster printers
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Printing
-Url:            https://github.com/pdewacht/brlaser
+URL:            https://github.com/pdewacht/brlaser
 Source:         brlaser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://github.com/pdewacht/brlaser/pull/5
-Patch0:         0001-mark-DCP-7055W-as-supported.diff
-# PATCH-FIX-UPSTREAM -- https://github.com/pdewacht/brlaser/pull/7
-Patch1:         0002-Add-Brother-DCP1510.diff
-# PATCH-FIX-UPSTREAM -- https://github.com/pdewacht/brlaser/pull/9
-Patch2:         0003-Add-missing-include-string.diff
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 %if 0%{?is_opensuse} || 0%{?suse_version} != 1315
 BuildRequires:  cups-ddk
 BuildRequires:  cups-devel
@@ -55,33 +49,55 @@ drivers don't work, this one might help.
 It is known to support these printers:
 
     Brother DCP-1510 series
+    Brother DCP-1600 series
     Brother DCP-7030
-    Brother DCP-7055
+    Brother DCP-7040 Brother DCP-7055
     Brother DCP-7055W
+    Brother DCP-7060D
     Brother DCP-7065DN
+    Brother DCP-7080
+    Brother DCP-L2500D series
+    Brother DCP-L2520D series
+    Brother DCP-L2540DW series
+    Brother HL-1110 series
+    Brother HL-1200 series
+    Brother HL-2030 series
+    Brother HL-2140 series
+    Brother HL-2220 series
+    Brother HL-2270DW series
+    Brother HL-5030 series
+    Brother HL-L2300D series
+    Brother HL-L2320D series
+    Brother HL-L2340D series
+    Brother HL-L2360D series
+    Brother MFC-1910W
+    Brother MFC-7240
+    Brother MFC-7360N
+    Brother MFC-7365DN
+    Brother MFC-7840W
+    Brother MFC-L2710DW series
+    Lenovo M7605D
 
 %prep
-%autosetup -p1 -n brlaser-%{version}
+%setup -q -n brlaser-%{version}
 
 %build
-autoreconf -fi
-%configure
-make %{?_smp_mflags}
+mkdir build && cd build
+cmake ..
+%make_build
 ppdc brlaser.drv
 
 %install
-%make_install
-# installed via doc
-rm %{buildroot}%{_datadir}/doc/brlaser/README.md
+%cmake_install
 # we use compiled ppds instead
 rm %{buildroot}%{_datadir}/cups/drv/brlaser.drv
 # install compiled ppds
-mkdir -p %{buildroot}%{_datadir}/cups/model
-cp -a ppd %{buildroot}%{_datadir}/cups/model/brlaser
+install -Dm644 build/ppd/* -t %{buildroot}%{_datadir}/cups/model/brlaser
 
 %files
 %defattr(-,root,root)
-%doc README.md COPYING
+%license COPYING
+%doc README.md
 %dir %{_libexecdir}/cups
 %dir %{_libexecdir}/cups/filter
 %{_libexecdir}/cups/filter/rastertobrlaser

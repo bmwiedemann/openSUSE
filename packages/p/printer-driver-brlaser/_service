@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">3+git%cd.%h</param>
+    <param name="versionformat">6+git%cd.%h</param>
     <param name="url">git://github.com/pdewacht/brlaser.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>

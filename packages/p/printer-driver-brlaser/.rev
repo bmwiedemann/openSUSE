@@ -36,4 +36,41 @@
   anyways.</comment>
     <requestid>402885</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>61f0088ed9b2f0c0e67bc911f11f8aae</srcmd5>
+    <version>6+git20191118.2f63d0a</version>
+    <time>1587162601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6+git20191118.2f63d0a:
+  * Package available on guix, too
+  * Bump version number
+  * Version 6
+  * Add Brother HL-2270DW
+  * add gedit backup file to .gitignore (*~)
+  * Add a bunch of printers
+  * Don't compress across bands (#39)
+  * Version 5
+  * Brother HL-1110
+  * Add a bunch of printer stanzas
+
+- Update to version 6:
+  * Added support for some more Brother HL-series printers.
+    Brother HL-2030 series
+    Brother HL-2140 series
+    Brother HL-2220 series
+    Brother HL-2270DW series
+    Brother HL-5030 series
+    Brother DCP-L2520D series
+- Update from version 5:
+  * Fixed problems with Brother HL-series printers in 600 dpi mode.
+  * Added brlaser.drv stanzas for several new printers.
+- Update from version 4:
+  * Added several printers
+  * Merged duplex printing support
+  * Switched to a CMake build system
+- Removed patches as they are already merged:
+  0001-mark-DCP-7055W-as-supported.diff
+  0002-Add-Brother-DCP1510.diff</comment>
+    <requestid>794818</requestid>
+  </revision>
 </revisionlist>
