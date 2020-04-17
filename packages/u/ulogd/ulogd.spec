@@ -1,7 +1,7 @@
 #
 # spec file for package ulogd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            http://netfilter.org/projects/ulogd/
 Source:         http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2
 Source2:        http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2.sig
 Source4:        ulogd.service
+Source5:        ulogd.conf
 Patch1:         0001-build-adjust-configure-for-postgresql-10-11.patch
 Patch4:         ulogd-conf.diff
 
@@ -41,6 +42,8 @@ BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnetfilter_acct) >= 1.0.1
@@ -49,8 +52,8 @@ BuildRequires:  pkgconfig(libnetfilter_log) >= 1.0.0
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.1
 BuildRequires:  pkgconfig(libpq)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires(pre):	/usr/sbin/useradd
 %{?systemd_ordering}
+%sysusers_requires
 
 %description
 ulogd is a userspace logging daemon for netfilter/iptables related
@@ -97,6 +100,7 @@ SQLite3 output target for ulogd.
 autoreconf -fi
 %configure --disable-static
 make %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE5} ulogd
 
 %install
 %make_install
@@ -108,10 +112,10 @@ install -pm0644 ulogd.conf "$b/%_sysconfdir/"
 mkdir -p "$b/%_unitdir"
 install -pm0644 "%{S:4}" "$b/%_unitdir"
 ln -s /sbin/service "$b/%_sbindir/rc%name"
+mkdir -p "$b/%_sysusersdir"
+install -m 644 %{SOURCE5} "$b/%_sysusersdir/"
 
-%pre
-/usr/bin/getent passwd ulogd >/dev/null || \
-/usr/sbin/useradd -c "Userspace logging daemon for Netfilter" -r ulogd
+%pre -f ulogd.pre
 %service_add_pre ulogd.service
 
 %post
@@ -138,6 +142,7 @@ ln -s /sbin/service "$b/%_sbindir/rc%name"
 %_libdir/%name/ulogd_output_XML.so*
 %_mandir/*/*
 %attr(0750,ulogd,root) /var/log/ulogd
+%_sysusersdir/ulogd.conf
 %_unitdir/ulogd.service
 %_sbindir/rc%name
 
