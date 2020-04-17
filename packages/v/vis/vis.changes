@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 16 22:18:41 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 0.5+git.1584517720.08a550d:
+  * color-column: Don't change fg/bg if not set explicitly
+  * Set single cursor style as primary, not secondary
+  * sam: fix X and Y commands which were interchanged
+  * Add Elm lexer
+  * sam: fix spurious "file exists" warnings
+
+-------------------------------------------------------------------
 Wed Feb 26 23:07:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix the license: it is ISC, not MIT.

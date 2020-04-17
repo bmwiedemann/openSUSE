@@ -17,7 +17,7 @@
 
 
 Name:           vis
-Version:        0.5+git.1582699959.bdfea7e
+Version:        0.5+git.1584517720.08a550d
 Release:        0
 Summary:        An editor combining the strengths of both vi(m) and sam
 License:        ISC
