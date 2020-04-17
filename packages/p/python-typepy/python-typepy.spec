@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typepy
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python library for run time variable type checker 
 License:        MIT
@@ -29,7 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/t/typepy/typepy-%
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module mbstrdecoder >= 0.8.3}
+BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module pytz >= 2018.9}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module termcolor}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-mbstrdecoder >= 0.8.3
+Requires:       python-mbstrdecoder >= 1.0.0
 Requires:       python-setuptools >= 38.3.0
 Requires:       python-six >= 1.10.0
 Suggests:       python-python-dateutil >= 2.8.0
