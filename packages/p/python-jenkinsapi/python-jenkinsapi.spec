@@ -87,11 +87,11 @@ and has
 %python_uninstall_alternative jenkins_invoke
 
 %check
+# jenkinsapi_tests/unittests/test_view.py
 # E       fixture '_view_poll' not found
-rm jenkinsapi_tests/unittests/test_view.py
+# jddenkinsapi_tests/unittests/test_plugins.py
 # E           ConnectionError: HTTPSConnectionPool(host='updates.jenkins.io...
-rm jenkinsapi_tests/unittests/test_plugins.py
-%pytest jenkinsapi_tests/unittests jenkinsapi_tests/test_utils
+%pytest jenkinsapi_tests/unittests jenkinsapi_tests/test_utils -k 'not (test_view or test_plugins)'
 
 %files %{python_files}
 %doc README.rst
