@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:54:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v1.4.3:
+  * Bug fixes:
+    - relax gpiod_chip_open() for symbolic links
+
+-------------------------------------------------------------------
 Thu Mar 19 17:37:36 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Rename the libgpiod package (which contains the command-line

@@ -26,7 +26,7 @@
 %bcond_with libgpiod_tests
 %endif
 Name:           libgpiod
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
