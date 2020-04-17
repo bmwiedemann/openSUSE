@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:21:38 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated service_del_preun and service_del_postun for iscsi and
+  iscsiuio packges in SPEC file, so that services get started/
+  stopped in the correct order, and changed systemd macros so
+  that iscsi login service iscsi.service is not restarted during
+  package upgrade (bsc#1166650)
+
+-------------------------------------------------------------------
 Wed Apr  1 18:38:30 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Update with two upstream commits:

@@ -143,34 +143,35 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 if [ ! -f %{_sysconfdir}/iscsi/initiatorname.iscsi ] ; then
     /sbin/iscsi-gen-initiatorname
 fi
-%{service_add_post iscsid.socket iscsid.service iscsi.service}
+%service_add_post iscsi.service iscsid.service iscsid.socket
 
 %posttrans
 %{?regenerate_initrd_posttrans}
 
 %postun
-%{service_del_postun iscsid.socket iscsid.service iscsi.service}
+%service_del_postun_without_restart iscsi.service
+%service_del_postun iscsid.service iscsid.socket
 
 %pre
-%{service_add_pre iscsid.socket iscsid.service iscsi.service}
+%service_add_pre iscsi.service iscsid.service iscsid.socket
 
 %preun
-%{service_del_preun iscsid.socket iscsid.service iscsi.service}
+%service_del_preun iscsi.service iscsid.service iscsid.socket
 
 %post   -n libopeniscsiusr0_2_0 -p /sbin/ldconfig
 %postun -n libopeniscsiusr0_2_0 -p /sbin/ldconfig
 
 %post -n iscsiuio
-%{service_add_post iscsiuio.socket iscsiuio.service}
+%service_add_post iscsiuio.service iscsiuio.socket
 
 %postun -n iscsiuio
-%{service_del_postun iscsiuio.socket iscsiuio.service}
+%service_del_postun iscsiuio.service iscsiuio.socket
 
 %pre -n iscsiuio
-%{service_add_pre iscsiuio.socket iscsiuio.service}
+%service_add_pre iscsiuio.service iscsiuio.socket
 
 %preun -n iscsiuio
-%{service_del_preun iscsiuio.socket iscsiuio.service}
+%service_del_preun iscsiuio.service iscsiuio.socket
 
 %files
 %dir %{_sysconfdir}/iscsi
