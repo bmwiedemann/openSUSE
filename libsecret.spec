@@ -18,11 +18,10 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libsecret
 Source0:        https://download.gnome.org/sources/libsecret/0.20/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
@@ -51,7 +50,6 @@ secrets. It communicates with the "Secret Service" using DBus.
 
 %package -n libsecret-1-0
 Summary:        Library for accessing the Secret Service API
-Group:          System/Libraries
 %if %{have_lang}
 # To make the lang package happy
 Provides:       %{name} = %{version}
@@ -63,7 +61,6 @@ secrets. It communicates with the "Secret Service" using DBus.
 
 %package -n typelib-1_0-Secret-1
 Summary:        Introspection bindings for the Secret Service API library
-Group:          System/Libraries
 
 %description -n typelib-1_0-Secret-1
 libsecret is a library for storing and retrieving passwords and other
@@ -71,17 +68,17 @@ secrets. It communicates with the "Secret Service" using DBus.
 
 This package provides the GObject Introspection bindings for libsecret.
 
-%package tools
-Summary:        Tools from the Secret Service API library
-Group:          System/Libraries
+%package -n secret-tool
+Summary:        Store and retrieve passwords
+Obsoletes:      libsecret-tools < %{version}
+Provides:       libsecret-tools = %{version}
 
-%description tools
-libsecret is a library for storing and retrieving passwords and other
-secrets. It communicates with the "Secret Service" using DBus.
+%description -n secret-tool
+Secret-tool is a command line tool that can be used to store and
+retrieve passwords.
 
 %package devel
 Summary:        Development files for the Secret Service API library
-Group:          Development/Libraries/GNOME
 Requires:       libsecret-1-0 = %{version}
 Requires:       typelib-1_0-Secret-1 = %{version}
 
@@ -118,13 +115,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libsecret-1-0
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_libdir}/libsecret-1.so.*
 
 %files -n typelib-1_0-Secret-1
 %{_libdir}/girepository-1.0/Secret-1.typelib
 
-%files tools
+%files -n secret-tool
 %{_bindir}/secret-tool
 %{_mandir}/man1/secret-tool.1%{?ext_man}
 
