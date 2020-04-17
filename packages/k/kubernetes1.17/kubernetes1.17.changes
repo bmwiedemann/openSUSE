@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Apr 16 15:24:58 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubelet-common: conflict with other instances of kubelet-common and require kubernetes-kubelet%{baseversion} 
+
+-------------------------------------------------------------------
+Fri Apr  3 11:44:37 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging - see kubernetes changelog for historic logs 
