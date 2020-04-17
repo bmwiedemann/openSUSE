@@ -1272,4 +1272,12 @@ http://weekly.golang.org/doc/devel/weekly.html#2012-02-07
   Refs boo#1141689. (forwarded request 774246 from jfkw)</comment>
     <requestid>774248</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>3743346127d87841dbbb50a6a27f7770</srcmd5>
+    <version>1.12.17</version>
+    <time>1587162440</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert truncate changelog for versions older than go1.12 (forwarded request 794690 from jfkw)</comment>
+    <requestid>794691</requestid>
+  </revision>
 </revisionlist>
