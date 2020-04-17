@@ -2427,4 +2427,12 @@
     <comment>Fix for bsc#1161480 and partial fix for bsc#1165206</comment>
     <requestid>788324</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>be5cf1a1dd45b6ae162ec4dd28cb2e03</srcmd5>
+    <version>4.13.0_12</version>
+    <time>1587162450</time>
+    <user>dimstar_suse</user>
+    <comment>Several fixes for Xen Security Advisories (XSA-313,314,316,318) and a few additional fixes</comment>
+    <requestid>794376</requestid>
+  </revision>
 </revisionlist>

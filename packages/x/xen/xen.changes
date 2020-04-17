@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:06:08 MDT 2020 - carnold@suse.com
+
+- bsc#1169392 - VUL-0: CVE-2020-11742: xen: Bad continuation
+  handling in GNTTABOP_copy (XSA-318)
+  5e95afb8-gnttab-fix-GNTTABOP_copy-continuation-handling.patch
+
+-------------------------------------------------------------------
+Mon Apr  6 12:01:45 MDT 2020 - carnold@suse.com
+
+- bsc#1168140 - VUL-0: CVE-2020-11740, CVE-2020-11741: xen: XSA-313
+  multiple xenoprof issues
+  5e95ad61-xenoprof-clear-buffer-intended-to-be-shared-with-guests.patch
+  5e95ad8f-xenoprof-limit-consumption-of-shared-buffer-data.patch
+- bsc#1168142 - VUL-0: CVE-2020-11739: xen: XSA-314 - Missing
+  memory barriers in read-write unlock paths
+  5e95ae77-Add-missing-memory-barrier-in-the-unlock-path-of-rwlock.patch
+- bsc#1168143 - VUL-0: CVE-2020-11743: xen: XSA-316 - Bad error
+  path in GNTTABOP_map_grant
+  5e95af5e-xen-gnttab-Fix-error-path-in-map_grant_ref.patch
+- bsc#1167152 - L3: Xenstored Crashed during VM install Need Core
+  analyzed
+  5e876b0f-tools-xenstore-fix-use-after-free-in-xenstored.patch
+- bsc#1165206 - Xen 4.12 DomU hang / freeze / stall / NMI watchdog
+  bug soft lockup CPU #0 stuck under high load / upstream with
+  workaround. See also bsc#1134506
+  5e86f7b7-credit2-avoid-vCPUs-with-lower-creds-than-idle.patch
+  5e86f7fd-credit2-fix-credit-too-few-resets.patch
+- Drop for upstream solution (bsc#1165206)
+  01-xen-credit2-avoid-vcpus-to.patch
+  default-to-credit1-scheduler.patch
+- Upstream bug fixes (bsc#1027519)
+  5e4ec20e-x86-virtualise-MSR_PLATFORM_ID-properly.patch
+  5e5e7188-fix-error-path-in-cpupool_unassign_cpu_start.patch
+  5e6f53dd-AMD-IOMMU-fix-off-by-one-get_paging_mode.patch
+  5e7a371c-sched-fix-cpu-onlining-with-core-sched.patch
+  5e7c90cf-sched-fix-cpu-offlining-with-core-sched.patch
+  5e7cfb29-x86-ucode-AMD-fix-assert-in-compare_patch.patch
+  5e7cfb29-x86-ucode-fix-error-paths-in-apply_microcode.patch
+  5e7dd83b-libx86-CPUID-fix-not-just-leaf-7.patch
+  5e7dfbf6-x86-ucode-AMD-potential-buffer-overrun-equiv-tab.patch
+  5e846cce-x86-HVM-fix-AMD-ECS-handling-for-Fam10.patch
+  5e84905c-x86-ucode-AMD-fix-more-potential-buffer-overruns.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 17:00:34 UTC 2020 - ohering@suse.de
 
 - bsc#1161480 - Fix xl shutdown for HVM without PV drivers

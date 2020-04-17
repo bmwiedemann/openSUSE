@@ -127,7 +127,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.13.0_11
+Version:        4.13.0_12
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -183,6 +183,25 @@ Patch14:        5e46e090-x86-smp-reset-x2apic_enabled-in-smp_send_stop.patch
 Patch15:        5e4c00ef-VT-d-check-full-RMRR-for-E820-reserved.patch
 Patch16:        5e4d4f5b-sched-fix-get_cpu_idle_time-with-core-sched.patch
 Patch17:        5e4e614d-x86-spec-ctrl-no-xen-also-disables-branch-hardening.patch
+Patch18:        5e4ec20e-x86-virtualise-MSR_PLATFORM_ID-properly.patch
+Patch19:        5e5e7188-fix-error-path-in-cpupool_unassign_cpu_start.patch
+Patch20:        5e6f53dd-AMD-IOMMU-fix-off-by-one-get_paging_mode.patch
+Patch21:        5e7a371c-sched-fix-cpu-onlining-with-core-sched.patch
+Patch22:        5e7c90cf-sched-fix-cpu-offlining-with-core-sched.patch
+Patch23:        5e7cfb29-x86-ucode-AMD-fix-assert-in-compare_patch.patch
+Patch24:        5e7cfb29-x86-ucode-fix-error-paths-in-apply_microcode.patch
+Patch25:        5e7dd83b-libx86-CPUID-fix-not-just-leaf-7.patch
+Patch26:        5e7dfbf6-x86-ucode-AMD-potential-buffer-overrun-equiv-tab.patch
+Patch27:        5e846cce-x86-HVM-fix-AMD-ECS-handling-for-Fam10.patch
+Patch28:        5e84905c-x86-ucode-AMD-fix-more-potential-buffer-overruns.patch
+Patch29:        5e86f7b7-credit2-avoid-vCPUs-with-lower-creds-than-idle.patch
+Patch30:        5e86f7fd-credit2-fix-credit-too-few-resets.patch
+Patch31:        5e876b0f-tools-xenstore-fix-use-after-free-in-xenstored.patch
+Patch32:        5e95ad61-xenoprof-clear-buffer-intended-to-be-shared-with-guests.patch
+Patch33:        5e95ad8f-xenoprof-limit-consumption-of-shared-buffer-data.patch
+Patch34:        5e95ae77-Add-missing-memory-barrier-in-the-unlock-path-of-rwlock.patch
+Patch35:        5e95af5e-xen-gnttab-Fix-error-path-in-map_grant_ref.patch
+Patch36:        5e95afb8-gnttab-fix-GNTTABOP_copy-continuation-handling.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -194,13 +213,11 @@ Patch406:       suse-xendomains-service.patch
 Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
 Patch408:       disable-building-pv-shim.patch
 Patch409:       xenstore-launch.patch
-Patch410:       default-to-credit1-scheduler.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch422:       stubdom-have-iovec.patch
 Patch423:       vif-route.patch
 Patch424:       gcc10-fixes.patch
-Patch425:       01-xen-credit2-avoid-vcpus-to.patch
 # Other bug fixes or features
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
@@ -428,6 +445,25 @@ Authors:
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -439,13 +475,11 @@ Authors:
 %patch407 -p1
 %patch408 -p1
 %patch409 -p1
-%patch410 -p1
 # Needs to go upstream
 %patch420 -p1
 %patch422 -p1
 %patch423 -p1
 %patch424 -p1
-%patch425 -p1
 # Other bug fixes or features
 %patch451 -p1
 %patch452 -p1
