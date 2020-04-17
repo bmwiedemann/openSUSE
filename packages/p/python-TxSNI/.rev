@@ -16,4 +16,12 @@
   * openssl111.patch</comment>
     <requestid>707624</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31648db3f9328f09999b5ca3bab48e9b</srcmd5>
+    <version>0.2.0</version>
+    <time>1587162720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794853</requestid>
+  </revision>
 </revisionlist>

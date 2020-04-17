@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:38:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.20.0
+  * Support new OpenSSL
+  * Test ALPN and NPN separately.
+  * Switch cert_builder from print to twisted.logger. 
+- Drop unneeded openssl111.patch
+
+-------------------------------------------------------------------
 Tue Jun  4 14:29:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new openssl:
