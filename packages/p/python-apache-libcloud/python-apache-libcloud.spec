@@ -16,16 +16,13 @@
 #
 
 
-# No longer build for python2
-%define skip_python2  1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-apache-libcloud
 Version:        2.8.1
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
-Group:          System/Monitoring
 URL:            https://libcloud.apache.org
 Source0:        https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-%{version}.tar.gz
 Patch1:         gce_image_projects.patch
@@ -42,11 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.ssl_match_hostname
 BuildRequires:  python-rpm-macros
-%if ! 0%{?skip_python2}
-BuildRequires:  python2
-%endif
 Requires:       python-lxml
 Requires:       python-requests
 Requires:       python-typing
@@ -55,6 +48,13 @@ Suggests:       python-lockfile
 Suggests:       python-paramiko
 Suggests:       python-pysphere
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-backports.ssl_match_hostname
+BuildRequires:  python2
+%endif
+%ifpython2
+Requires:       python-backports.ssl_match_hostname
+%endif
 %python_subpackages
 
 %description
@@ -83,16 +83,8 @@ find %{buildroot} -name '*.pem' -size 0 -delete
 
 %check
 # Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
-%if ! 0%{?skip_python2}
-python2 -m pytest -k 'not ShellOutSSHClientTests and \
-	not ElasticContainerDriverTestCase'
-%endif
 # Note these two extra py3 failures are undesirable and should be fixed
-python3 -m pytest -k \
-  'not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and \
-   not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and \
-   not ShellOutSSHClientTests and \
-   not ElasticContainerDriverTestCase'
+%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase)'
 
 %files %{python_files}
 %license LICENSE

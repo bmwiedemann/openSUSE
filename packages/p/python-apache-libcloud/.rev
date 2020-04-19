@@ -309,4 +309,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>782015</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>125478a67db2c578bfbc44b3c453a841</srcmd5>
+    <version>2.8.1</version>
+    <time>1587325182</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784258</requestid>
+  </revision>
 </revisionlist>
