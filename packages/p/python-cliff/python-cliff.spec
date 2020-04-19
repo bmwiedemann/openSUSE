@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,47 +25,48 @@ Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-cliff
 Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-2.16.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-PrettyTable
-BuildRequires:  python2-PyYAML
-BuildRequires:  python2-cmd2
-BuildRequires:  python2-docutils
-BuildRequires:  python2-mock
-BuildRequires:  python2-pbr
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-stevedore
-BuildRequires:  python2-testscenarios
-BuildRequires:  python2-testtools
-BuildRequires:  python2-unicodecsv
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-cmd2
 BuildRequires:  python3-docutils
+BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
+BuildRequires:  python3-pytest
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
-Requires:       python-PrettyTable
-Requires:       python-PyYAML
-Requires:       python-cmd2
-Requires:       python-pyparsing
-Requires:       python-six
-Requires:       python-stevedore
+Requires:       python3-PrettyTable
+Requires:       python3-PyYAML
+Requires:       python3-cmd2
+Requires:       python3-pyparsing
+Requires:       python3-six
+Requires:       python3-stevedore
 BuildArch:      noarch
-%ifpython2
-Requires:       python-unicodecsv
-%endif
-%python_subpackages
 
 %description
 cliff is a framework for building command line programs. It uses
 setuptools entry points to provide subcommands, output formatters, and
 other extensions.
+
+%package -n python3-cliff
+Summary:        Command Line Interface Formulation Framework
+Group:          Development/Languages/Python
+Requires:       python3-PrettyTable
+Requires:       python3-PyYAML
+Requires:       python3-cmd2
+Requires:       python3-pyparsing
+Requires:       python3-six
+Requires:       python3-stevedore
+
+%description -n python3-cliff
+cliff is a framework for building command line programs. It uses
+setuptools entry points to provide subcommands, output formatters, and
+other extensions.
+
+This package contains the Python 3.x module.
 
 %package -n python-cliff-doc
 Summary:        %{summary} - Documentation
@@ -83,25 +84,26 @@ This package contains documentation files for %{name}.
 
 %prep
 %autosetup -p1 -n cliff-2.16.0
-
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 PBR_VERSION=2.16.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%python_install
+%py3_install
 
 %check
-%python_exec -m stestr.cli run
+# doesn't work with pytest atm
+rm -v cliff/tests/test_commandmanager.py
+python3 -m pytest cliff/tests
 
-%files %{python_files}
+%files -n python3-cliff
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/cliff
-%{python_sitelib}/*.egg-info
+%{python3_sitelib}/cliff
+%{python3_sitelib}/*.egg-info
 
 %files -n python-cliff-doc
 %license LICENSE
