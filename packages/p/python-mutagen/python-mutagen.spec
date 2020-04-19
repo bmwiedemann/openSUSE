@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Exception: Python 2 no longer supported
+%define skip_python2 1
 Name:           python-mutagen
-Version:        1.43.0
+Version:        1.44.0
 Release:        0
 Summary:        Python module to Handle Audio Metadata
 License:        GPL-2.0-or-later
@@ -71,8 +73,9 @@ done
 
 %check
 export LANG=en_US.UTF-8
-#export PATH="$PATH:%%{buildroot}%%{_bindir}"
-%python_exec setup.py test --no-quality
+#~ setup.py test --no-quality
+rm -r tests/quality
+%pytest
 
 %files %{python_files}
 %defattr(-, root, root, 0755)
