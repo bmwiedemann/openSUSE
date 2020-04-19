@@ -2806,4 +2806,12 @@
     builds of Ada95 (patch by Adam Van Ymeren).</comment>
     <requestid>791735</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>66dacaabb282bf61d45912cbf5e4a4da</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1587324890</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793801</requestid>
+  </revision>
 </revisionlist>

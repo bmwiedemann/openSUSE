@@ -1062,6 +1062,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 %check
 LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
+nm -D %{buildroot}/%{_lib}/libncursesw.so.%{basevers} | grep -q in_wch
 %if %{with onlytinfo}
 nm -D %{buildroot}/%{_lib}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
 %endif

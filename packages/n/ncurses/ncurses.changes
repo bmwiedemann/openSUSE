@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:42:40 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add check for wide character support in libncursesw 
+
+-------------------------------------------------------------------
 Mon Apr  6 10:31:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Use %() to extract patch date for adding it to version 
