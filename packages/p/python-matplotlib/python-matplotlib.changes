@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:40:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * tkagg.py and wx_compat.py are not part of the build process anymore
+    (the backends still exist though); removed appropiate files from %files section
+
+- update to version 3.2.1:
+  * fix Quiver.set_UVC calls with scalar inputs
+  * fix bezier.get_parallels failure from floating point rounding
+    errors
+  * fix markers specified as tuples (polygons, stars, or asterisks)
+  * fix saving PNGs to file objects in some places
+  * fix saving figures using the nbAgg/notebook backend
+  * fix saving with tight layout using the PGF backend
+  * fix setting custom datapath in rcParams (note: it is still
+    deprecated)
+  * fix various issues running setup.py in non-CI environments
+  * fix xpdf distiller
+  * various minor bug and documentation fixes
+
+- changes from version 3.2.0:
+  * default image interpolation is now `'antialiased'` to better
+    handle down-sampling and reduce artifacts when up-sampling by
+    small ratios.
+  * change when ticks switch to using an offset to improve readability
+  * improvements to auto-scaling and auto-limits
+  * `DivergingNorm` has been renamed to `TwoSlopeNorm`
+  * support for 3 and 4 digit hex colors (`#123` maps to `#112233`)
+  * improvements to Logit scale ticker and formatter
+  * control of where errorbars start getting placed with `errorevery`
+  * correct kerning when laying out text
+  * improvements to MovieRegistry
+
+  * For the full details please see the whats new [1] and API changes
+    [2] in the documentation
+    [1] https://matplotlib.org/3.2.0/users/whats_new.html
+    [2] https://matplotlib.org/3.2.0/api/api_changes.html
+
+-------------------------------------------------------------------
 Mon Feb 10 15:18:57 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.1.3

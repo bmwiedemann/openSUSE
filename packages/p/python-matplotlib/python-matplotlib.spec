@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,12 @@
 # The tests also pull in dependencies of all backends done in pure python
 %bcond_with tests
 Name:           python-matplotlib
-Version:        3.1.3
+Version:        3.2.1
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
 Group:          Development/Libraries/Python
-URL:            http://matplotlib.org
+URL:            https://matplotlib.org
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
 Source1:        matplotlib-setup.cfg
 BuildRequires:  %{python_module Cycler >= 0.10}
@@ -50,18 +50,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-%if 0%{?is_opensuse}
-BuildRequires:  qhull-devel >= 2003.1
-%endif
-# SECTION WebAgg dependencies
-BuildRequires:  %{python_module tornado}
-# /SECTION
-# SECTION tk dependencies via tcl
-BuildRequires:  tcl
-BuildRequires:  pkgconfig(freetype2) >= 2.3
-BuildRequires:  pkgconfig(libpng) >= 1.2
-BuildRequires:  pkgconfig(tcl)
-# /SECTION
 Requires:       python-Cycler >= 0.10
 Requires:       python-kiwisolver >= 1.0.1
 Requires:       python-numpy >= 1.7.1
@@ -75,6 +63,18 @@ Recommends:     poppler-tools
 Recommends:     python-Pillow
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
+%if 0%{?is_opensuse}
+BuildRequires:  qhull-devel >= 2003.1
+%endif
+# SECTION WebAgg dependencies
+BuildRequires:  %{python_module tornado}
+# /SECTION
+# SECTION tk dependencies via tcl
+BuildRequires:  tcl
+BuildRequires:  pkgconfig(freetype2) >= 2.3
+BuildRequires:  pkgconfig(libpng) >= 1.2
+BuildRequires:  pkgconfig(tcl)
+# /SECTION
 %if %{with tests}
 # SECTION testing dependencies
 BuildRequires:  %{python_module mock}
@@ -391,9 +391,7 @@ trap "kill $! || true" EXIT
 %license LICENSE/
 %license doc/users/license.rst
 %{python_sitearch}/matplotlib/backends/backend_tkagg.py*
-%{python_sitearch}/matplotlib/backends/tkagg.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_tkagg.*.py*
-%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/tkagg.*.py*
 
 %files %{python_files web}
 %license LICENSE/
@@ -407,10 +405,8 @@ trap "kill $! || true" EXIT
 %files %{python_files wx}
 %license LICENSE/
 %license doc/users/license.rst
-%{python_sitearch}/matplotlib/backends/wx_compat.py*
 %{python_sitearch}/matplotlib/backends/backend_wx.py*
 %{python_sitearch}/matplotlib/backends/backend_wxagg.py*
-%pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/wx_compat.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wx.*.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxagg.*.py*
 
