@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyring
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-keyring
-Version:        18.0.1
+Version:        21.2.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        Python-2.0 AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-BuildRequires:  %{python_module SecretStorage}
+BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-SecretStorage
+Requires:       python-SecretStorage >= 3
 Requires:       python-entrypoints
+Requires:       python-jeepney >= 0.4.2
 Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
@@ -47,7 +50,7 @@ from python. It can be used in any application that needs safe password storage.
 %setup -q -n keyring-%{version}
 # For rpmlint warning: remove shebang from python library:
 sed -i '/^#!/d' keyring/cli.py
-sed -i -e 's,--flake8,,' pytest.ini
+sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 
 %build
 %python_build
@@ -57,10 +60,7 @@ sed -i -e 's,--flake8,,' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# sadly most tests need running dbus to communicate with secretstorage/etc
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3
-}
+%pytest
 
 %files %{python_files}
 %doc README.rst CHANGES.rst
