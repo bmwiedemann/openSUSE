@@ -50,4 +50,13 @@
   * Added wrap and unwrap functions and lorem_ipsum attribute containing the Lorem Ipsum sample text.</comment>
     <requestid>764934</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e5f3933cd8aaa3e63159cc3d9c8fef40</srcmd5>
+    <version>3.2.0</version>
+    <time>1587325236</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on older openSUSE releases as with py3.6 we need the
+  importlib_resources too</comment>
+    <requestid>784817</requestid>
+  </revision>
 </revisionlist>

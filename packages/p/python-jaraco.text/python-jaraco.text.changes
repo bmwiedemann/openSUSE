@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:09:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build on older openSUSE releases as with py3.6 we need the
+  importlib_resources too
+
+-------------------------------------------------------------------
 Thu Jan 16 09:44:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.0:

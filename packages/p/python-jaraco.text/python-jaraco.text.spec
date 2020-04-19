@@ -22,24 +22,21 @@ Version:        3.2.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.text
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.text/jaraco.text-%{version}.tar.gz
+BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-importlib_resources
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib_resources
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-jaraco.functools
 Requires:       python-six
 BuildArch:      noarch
-%ifpython2
-Requires:       python-importlib_resources
-%endif
 %python_subpackages
 
 %description
