@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           inkscape
 Version:        0.92.4
 Release:        0
@@ -218,6 +219,11 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes
 
 %find_lang %{name} %{?no_lang_C}
 
+%if !%{with python2}
+# remove skencil extension as we need sk1 that is py2 only
+rm -rf %{buildroot}%{_datadir}/inkscape/extensions/sk*
+%endif
+
 # split extensions
 bash %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/inkscape/extensions/"
 
@@ -282,7 +288,9 @@ install -D -m 0644 inkscape.appdata.xml %{buildroot}%{_datadir}/metainfo/inkscap
 %exclude %{_datadir}/inkscape/extensions/dia*
 %exclude %{_datadir}/inkscape/extensions/fig*
 %exclude %{_datadir}/inkscape/extensions/*gimp*
+%if %{with python2}
 %exclude %{_datadir}/inkscape/extensions/sk*
+%endif
 %exclude %{_datadir}/inkscape/extensions/*dxf*
 # this one is in extras, manually added there due to large dependencies on ghostscript
 %exclude %{_datadir}/inkscape/extensions/ps2pdf-ext.py
@@ -298,7 +306,9 @@ install -D -m 0644 inkscape.appdata.xml %{buildroot}%{_datadir}/metainfo/inkscap
 %{_datadir}/inkscape/extensions/ps2dxf.sh
 # This extensions seems erronous being copied in here too.
 %exclude %{_datadir}/inkscape/extensions/*gimp*
+%if %{with python2}
 %exclude %{_datadir}/inkscape/extensions/sk*
+%endif
 
 %files extensions-dia
 %{_datadir}/inkscape/extensions/dia*
@@ -310,8 +320,10 @@ install -D -m 0644 inkscape.appdata.xml %{buildroot}%{_datadir}/metainfo/inkscap
 # NOTE: export_gimp_palette* does not depend on gimp, but belongs here logically:
 %{_datadir}/inkscape/extensions/*gimp*
 
+%if %{with python2}
 %files extensions-skencil
 %{_datadir}/inkscape/extensions/sk*
+%endif
 
 %files lang -f %{name}.lang
 
