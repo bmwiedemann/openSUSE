@@ -30,10 +30,10 @@ Version:        0.16
 Release:        0
 Summary:        Python Documentation Utilities
 License:        Python-2.0 AND BSD-2-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
+Patch0:         pygments25.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -63,6 +63,7 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 
 %prep
 %setup -q -n docutils-%{version}
+%patch0 -p1
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
@@ -79,30 +80,9 @@ sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-# To avoid conflicts with the rst2html4 package
-mv %{buildroot}%{_bindir}/rst2html4 %{buildroot}%{_bindir}/rst2html4-docutils
-ln -s -f %{_sysconfdir}/alternatives/rst2html4 %{buildroot}%{_bindir}/rst2html4
-
-# To avoid conflicts with the rst2html5 package
-mv %{buildroot}%{_bindir}/rst2html5 %{buildroot}%{_bindir}/rst2html5-docutils
-ln -s -f %{_sysconfdir}/alternatives/rst2html5 %{buildroot}%{_bindir}/rst2html5
-%endif
-
-%ifpython3
-%post
-update-alternatives --install %{_bindir}/rst2html4 rst2html4 %{_bindir}/rst2html4-docutils 15
-update-alternatives --install %{_bindir}/rst2html5 rst2html5 %{_bindir}/rst2html5-docutils 15
-%endif
-
-%ifpython3
-%postun
-if [ ! -f %{_bindir}/rst2html4-docutils ] ; then
-   update-alternatives --remove rst2html4 %{_bindir}/rst2html4-docutils
-fi
-if [ ! -f %{_bindir}/rst2html5-docutils ] ; then
-   update-alternatives --remove rst2html5 %{_bindir}/rst2html5-docutils
-fi
+for binary in rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do 
+    %python_clone -a %{buildroot}%{_bindir}/$binary
+done
 %endif
 
 %check
@@ -111,25 +91,29 @@ fi
 %endif
 
 %if !%{with test}
+%post
+%{python_install_alternative rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
+
+%postun
+%{python_uninstall_alternative rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %license COPYING.txt licenses/*.txt
 %doc FAQ.txt HISTORY.txt README.txt THANKS.txt BUGS.txt docs/*
-%python3_only %{_bindir}/rst2html
-%python3_only %{_bindir}/rst2latex
-%python3_only %{_bindir}/rst2man
-%python3_only %{_bindir}/rst2odt
-%python3_only %{_bindir}/rst2odt_prepstyles
-%python3_only %{_bindir}/rst2pseudoxml
-%python3_only %{_bindir}/rst2s5
-%python3_only %{_bindir}/rst2xetex
-%python3_only %{_bindir}/rst2xml
-%python3_only %{_bindir}/rstpep2html
-%python3_only %{_bindir}/rst2html4
-%python3_only %{_bindir}/rst2html4-docutils
-%python3_only %{_bindir}/rst2html5
-%python3_only %{_bindir}/rst2html5-docutils
-%python3_only %ghost %{_sysconfdir}/alternatives/rst2html4
-%python3_only %ghost %{_sysconfdir}/alternatives/rst2html5
+%python_alternative %{_bindir}/rst2html
+%python_alternative %{_bindir}/rst2latex
+%python_alternative %{_bindir}/rst2man
+%python_alternative %{_bindir}/rst2odt
+%python_alternative %{_bindir}/rst2odt_prepstyles
+%python_alternative %{_bindir}/rst2pseudoxml
+%python_alternative %{_bindir}/rst2s5
+%python_alternative %{_bindir}/rst2xetex
+%python_alternative %{_bindir}/rst2xml
+%python_alternative %{_bindir}/rstpep2html
+%python_alternative %{_bindir}/rst2html4
+%python_alternative %{_bindir}/rst2html5
 %{python_sitelib}/docutils/
 %{python_sitelib}/docutils-%{version}-py%{python_version}.egg-info
 %endif
