@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:15:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.5
+  * upstream changed
+  * code improvements
+  * Python 3 support
+- Reapplied patch iniparse-insert-after-commented-option.patch
+- Dropped upstreamed patches:
+  * iniparse-fix-issue-28.patch
+  * python-iniparse-python3-compat.patch
+  * python-iniparse-setup-fixes.patch
+
+-------------------------------------------------------------------
 Tue Dec  4 12:49:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

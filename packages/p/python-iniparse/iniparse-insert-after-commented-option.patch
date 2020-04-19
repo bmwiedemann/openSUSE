@@ -1,8 +1,8 @@
 Index: iniparse/ini.py
 ===================================================================
---- iniparse/ini.py	(revision 146)
-+++ iniparse/ini.py	(working copy)
-@@ -232,8 +232,11 @@
+--- iniparse/ini.py.orig
++++ iniparse/ini.py
+@@ -240,8 +240,11 @@ class LineContainer(object):
              if isinstance(d, list): self.extend(d)
              else: self.add(d)
  
@@ -16,15 +16,15 @@ Index: iniparse/ini.py
  
      def extend(self, x):
          for i in x: self.add(i)
-@@ -322,6 +325,7 @@
+@@ -331,6 +334,7 @@ class INISection(config.ConfigNamespace)
      _optionxformvalue = None
      _optionxformsource = None
      _compat_skip_empty_lines = set()
 +    _commented_options = {}
-     def __init__(self, lineobj, defaults = None,
-                        optionxformvalue=None, optionxformsource=None):
+ 
+     def __init__(self, lineobj, defaults=None, optionxformvalue=None, optionxformsource=None):
          self._lines = [lineobj]
-@@ -371,7 +375,10 @@
+@@ -380,7 +384,10 @@ class INISection(config.ConfigNamespace)
          if xkey not in self._options:
              # create a dummy object - value may have multiple lines
              obj = LineContainer(OptionLine(key, ''))
@@ -36,50 +36,50 @@ Index: iniparse/ini.py
              self._options[xkey] = obj
          # the set_value() function in LineContainer
          # automatically handles multi-line values
-@@ -546,6 +553,7 @@
+@@ -556,6 +563,7 @@ class INIConfig(config.ConfigNamespace):
          except AttributeError:
              fname = '<???>'
-         linecount = 0
+         line_count = 0
 +        sectionlinecount = 0
          exc = None
          line = None
  
-@@ -565,6 +573,8 @@
-                     raise MissingSectionHeaderError(fname, linecount, line)
+@@ -574,6 +582,8 @@ class INIConfig(config.ConfigNamespace):
+                     raise MissingSectionHeaderError(fname, line_count, line)
                  else:
-                     lineobj = make_comment(line)
+                     line_obj = make_comment(line)
 +            if cur_section:
 +                sectionlinecount += 1
  
-             if lineobj is None:
+             if line_obj is None:
                  if self._parse_exc:
-@@ -611,6 +621,7 @@
+@@ -622,6 +632,7 @@ class INIConfig(config.ConfigNamespace):
                  pending_empty_lines = False
-                 cur_section = LineContainer(lineobj)
+                 cur_section = LineContainer(line_obj)
                  self._data.add(cur_section)
 +                sectionlinecount = 1
                  cur_option = None
                  cur_option_name = None
                  if cur_section.name == DEFAULTSECT:
-@@ -630,6 +641,13 @@
+@@ -641,6 +652,13 @@ class INIConfig(config.ConfigNamespace):
  
-             if isinstance(lineobj, (CommentLine, EmptyLine)):
-                 pending_lines.append(lineobj)
-+                if isinstance(lineobj, CommentLine) and cur_section_name and cur_section_name != 'DEFAULT':
+             if isinstance(line_obj, (CommentLine, EmptyLine)):
+                 pending_lines.append(line_obj)
++                if isinstance(line_obj, CommentLine) and cur_section_name and cur_section_name != 'DEFAULT':
 +                    # check if there is a config line in the comment
-+                    comment_lineobj = self._parse(lineobj.comment.strip())
++                    comment_lineobj = self._parse(line_obj.comment.strip())
 +                    if isinstance(comment_lineobj, OptionLine):
 +                        obj = LineContainer(comment_lineobj)
 +                        self._sections[cur_section_name]._commented_options[obj.name] = sectionlinecount
 +                        sectionlinecount += 1
-                 if isinstance(lineobj, EmptyLine):
+                 if isinstance(line_obj, EmptyLine):
                      pending_empty_lines = True
  
 Index: tests/test_ini.py
 ===================================================================
---- tests/test_ini.py	(revision 146)
-+++ tests/test_ini.py	(working copy)
-@@ -393,7 +393,41 @@
+--- tests/test_ini.py.orig
++++ tests/test_ini.py
+@@ -404,6 +404,40 @@ another = baz
          ip.section.another = 'baz'
          self.assertEqual(str(ip), self.s6)
  
@@ -88,7 +88,7 @@ Index: tests/test_ini.py
 +[section]
 +# Hello
 +# option1 = foo
- 
++
 +#option2=bazz
 +#option3=spam
 +bumble=bee
@@ -117,7 +117,6 @@ Index: tests/test_ini.py
 +        ip.section.option3 = 'spam'
 +        self.assertEqual(str(ip), self.s8)
 +
-+
- class suite(unittest.TestSuite):
+ 
+ class Suite(unittest.TestSuite):
      def __init__(self):
-         unittest.TestSuite.__init__(self, [
