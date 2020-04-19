@@ -443,4 +443,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>775006</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>68ff4c860625951564d89c0ce6def3ca</srcmd5>
+    <version>5.13.2</version>
+    <time>1587325215</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building python2-qt5 for openSUSE Tumbleweed.</comment>
+    <requestid>784633</requestid>
+  </revision>
 </revisionlist>

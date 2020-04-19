@@ -32,6 +32,9 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "python2"
 %define skip_python3 1
 %define pyname python2
+%if 0%{?suse_version} > 1500
+ExclusiveArch:  do_not_build
+%endif
 %endif
 %define bname python-qt5
 %define pname %{pyname}-qt5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:39:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop building python2-qt5 for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
 Sun Feb 16 17:04:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix dbus mainloop integration, install a noarch wrapper in
