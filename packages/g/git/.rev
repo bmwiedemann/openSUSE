@@ -2158,4 +2158,12 @@ git 2.12.3
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>791228</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>472a0593d3c0ca2913e7b0f013b0fb65</srcmd5>
+    <version>2.26.1</version>
+    <time>1587324926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795368</requestid>
+  </revision>
 </revisionlist>

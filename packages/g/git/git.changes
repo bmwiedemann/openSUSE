@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:56:32 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix git-daemon not starting after conversion from sysvinit to systemd service
+  (bsc#1169605).
+
+-------------------------------------------------------------------
+Tue Apr 14 18:32:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.26.1:
+  * CVE-2020-5260: Specially crafted URLs with newline characters
+    could have been used to make the Git client to send credential
+    information for a wrong host to the attacker's site boo#1168930
+    
+-------------------------------------------------------------------
 Mon Mar 23 16:45:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.26.0 (bsc#1167890, jsc#SLE-11608):
