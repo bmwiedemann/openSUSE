@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:28:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.2
+  * Make hamcrest package PEP 561 compatible, i.e. supply type hints for external use.
+  * Drop formal support for 2.x
+  * Drop formal support for 3.x < 3.5
+  * Made has_properties() report all mismatches, not just the first.
+  * Silence warnings.
+  * Type fixes.
+  * Remove obsolete dependencies.
+  * Add support up to Python 3.8
+- Removed upstreamed patch pytest4-02.patch
+
+-------------------------------------------------------------------
 Thu Nov 21 12:06:53 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Remove pytest4.patch and replace it with pytest4-02.patch,

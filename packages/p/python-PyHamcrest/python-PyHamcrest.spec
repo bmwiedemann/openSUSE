@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyHamcrest
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-PyHamcrest
-Version:        1.9.0
+Version:        2.0.2
 Release:        0
 Summary:        Hamcrest framework for matcher objects
 License:        BSD-3-Clause
@@ -27,20 +28,12 @@ URL:            https://github.com/hamcrest/PyHamcrest
 #Source:         https://files.pythonhosted.org/packages/source/P/PyHamcrest/PyHamcrest-%%{version}.tar.gz
 Source:         https://github.com/hamcrest/PyHamcrest/archive/V%{version}.tar.gz
 Patch0:         0001-Add-boolean-matchers.patch
-# # PATCH-FIX-UPSTREAM pytest4.patch gh#hamcrest/PyHamcrest#123 mcepl@suse.com
-# # eliminate non-compatible test case
-# Patch1:         pytest4.patch
-# PATCH-FIX-UPSTREAM pytest4-02.patch gh#hamcrest/PyHamcrest#123 mcepl@suse.com
-# compatibility with pytest4+ (from gh#hamcrest/PyHamcrest#124)
-Patch1:         pytest4-02.patch
 BuildRequires:  %{python_module hypothesis >= 1.11}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.4
 Provides:       python-hamcrest = %{version}
 Obsoletes:      python-hamcrest < %{version}
 BuildArch:      noarch
@@ -54,8 +47,6 @@ allowing you to declaratively define “match” rules.
 %prep
 %setup -q -n PyHamcrest-%{version}
 %autopatch -p1
-
-rm pytest.ini
 
 %build
 %python_build

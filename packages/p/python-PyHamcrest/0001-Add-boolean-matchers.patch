@@ -16,11 +16,11 @@ Subject: [PATCH] Add boolean matchers
  create mode 100644 tests/hamcrest_unit_test/bool/__init__.py
  create mode 100644 tests/hamcrest_unit_test/bool/bool_comparison_test.py
 
-diff --git a/README.rst b/README.rst
-index 8ef46bb..d2200f8 100644
---- a/README.rst
-+++ b/README.rst
-@@ -148,6 +148,11 @@ PyHamcrest comes with a library of useful matchers:
+Index: PyHamcrest-2.0.2/README.rst
+===================================================================
+--- PyHamcrest-2.0.2.orig/README.rst
++++ PyHamcrest-2.0.2/README.rst
+@@ -182,6 +182,11 @@ PyHamcrest comes with a library of usefu
    * ``greater_than``, ``greater_than_or_equal_to``, ``less_than``,
      ``less_than_or_equal_to`` - match numeric ordering
  
@@ -32,11 +32,11 @@ index 8ef46bb..d2200f8 100644
  * Text
  
    * ``contains_string`` - match part of a string
-diff --git a/src/hamcrest/library/__init__.py b/src/hamcrest/library/__init__.py
-index a5a7963..55dfcda 100644
---- a/src/hamcrest/library/__init__.py
-+++ b/src/hamcrest/library/__init__.py
-@@ -7,6 +7,7 @@ from hamcrest.library.integration import *
+Index: PyHamcrest-2.0.2/src/hamcrest/library/__init__.py
+===================================================================
+--- PyHamcrest-2.0.2.orig/src/hamcrest/library/__init__.py
++++ PyHamcrest-2.0.2/src/hamcrest/library/__init__.py
+@@ -6,6 +6,7 @@ from hamcrest.library.integration import
  from hamcrest.library.number import *
  from hamcrest.library.object import *
  from hamcrest.library.text import *
@@ -45,24 +45,22 @@ index a5a7963..55dfcda 100644
  __author__ = "Jon Reid"
  __copyright__ = "Copyright 2011 hamcrest.org"
 @@ -41,4 +42,6 @@ __all__ = [
-     'ends_with',
-     'starts_with',
-     'string_contains_in_order',
-+    'is_true',
-+    'is_false'
+     "ends_with",
+     "starts_with",
+     "string_contains_in_order",
++    "is_true",
++    "is_false",
  ]
-diff --git a/src/hamcrest/library/bool/__init__.py b/src/hamcrest/library/bool/__init__.py
-new file mode 100644
-index 0000000..7cf13a3
+Index: PyHamcrest-2.0.2/src/hamcrest/library/bool/__init__.py
+===================================================================
 --- /dev/null
-+++ b/src/hamcrest/library/bool/__init__.py
++++ PyHamcrest-2.0.2/src/hamcrest/library/bool/__init__.py
 @@ -0,0 +1 @@
 +from .bool_comparison import is_true, is_false
-diff --git a/src/hamcrest/library/bool/bool_comparison.py b/src/hamcrest/library/bool/bool_comparison.py
-new file mode 100644
-index 0000000..af7e1b6
+Index: PyHamcrest-2.0.2/src/hamcrest/library/bool/bool_comparison.py
+===================================================================
 --- /dev/null
-+++ b/src/hamcrest/library/bool/bool_comparison.py
++++ PyHamcrest-2.0.2/src/hamcrest/library/bool/bool_comparison.py
 @@ -0,0 +1,22 @@
 +from hamcrest.core.base_matcher import BaseMatcher
 +
@@ -86,14 +84,10 @@ index 0000000..af7e1b6
 +
 +def is_false():
 +    return IsABool(False)
-diff --git a/tests/hamcrest_unit_test/bool/__init__.py b/tests/hamcrest_unit_test/bool/__init__.py
-new file mode 100644
-index 0000000..e69de29
-diff --git a/tests/hamcrest_unit_test/bool/bool_comparison_test.py b/tests/hamcrest_unit_test/bool/bool_comparison_test.py
-new file mode 100644
-index 0000000..e865365
+Index: PyHamcrest-2.0.2/tests/hamcrest_unit_test/bool/bool_comparison_test.py
+===================================================================
 --- /dev/null
-+++ b/tests/hamcrest_unit_test/bool/bool_comparison_test.py
++++ PyHamcrest-2.0.2/tests/hamcrest_unit_test/bool/bool_comparison_test.py
 @@ -0,0 +1,34 @@
 +from hamcrest import assert_that, equal_to
 +from hamcrest.core.string_description import StringDescription
@@ -129,6 +123,3 @@ index 0000000..e865365
 +        description = StringDescription()
 +        is_false().describe_to(description)
 +        assert_that(str(description), equal_to('False'))
--- 
-2.9.3
-
