@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycairo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.18.1
+Version:        1.19.1
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/pygobject/pycairo
 Source:         https://github.com/pygobject/pycairo/releases/download/v%{version}/pycairo-%{version}.tar.gz
-Patch0:         python38.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cairo-devel >= 1.13.1
 BuildRequires:  python-rpm-macros
 Provides:       python-cairo = %{version}
 Obsoletes:      python-cairo < %{version}
-%ifpython2
-Provides:       %{oldpython}-cairo = %{version}
-Obsoletes:      %{oldpython}-cairo < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -48,10 +45,6 @@ Requires:       python-pycairo = %{version}
 Requires:       python-pycairo-common-devel = %{version}
 Provides:       python-cairo-devel = %{version}
 Obsoletes:      python-cairo-devel < %{version}
-%ifpython2
-Provides:       %{oldpython}-cairo-devel = %{version}
-Obsoletes:      %{oldpython}-cairo-devel < %{version}
-%endif
 
 %description   devel
 Pycairo is a Python module providing bindings for the cairo graphics library.
@@ -76,7 +69,6 @@ packages that depen on Pycairo.
 
 %prep
 %setup -q -n pycairo-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -95,9 +87,6 @@ packages that depen on Pycairo.
 
 %files %{python_files devel}
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
-%ifpython2
-%{_libdir}/pkgconfig/pycairo.pc
-%endif
 %ifpython3
 %{_libdir}/pkgconfig/py3cairo.pc
 %endif

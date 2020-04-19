@@ -20,4 +20,17 @@
   * python38.patch</comment>
     <requestid>735641</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>920b3fcbcf21d97237a43ceaa8ec455e</srcmd5>
+    <version>1.19.1</version>
+    <time>1587325252</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dep on setuptools
+
+- Update to 1.19.1:
+  * support for new python
+  * remove support for python 2.x
+- Remove patch python38.patch</comment>
+    <requestid>785536</requestid>
+  </revision>
 </revisionlist>
