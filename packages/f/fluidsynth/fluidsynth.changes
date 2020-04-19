@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 13 16:42:51 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 2.1.2
+  * fluidsynth now exits with error when user-provided command-line
+    arguments are out-of-range
+  * add verbose error logging to opensles and oboe drivers
+  * fix a memory leak in oboe driver
+  * fix a NULL dereference in the fluidsynth commandline program
+
+-------------------------------------------------------------------
 Thu Feb 20 17:00:13 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 2.1.1
