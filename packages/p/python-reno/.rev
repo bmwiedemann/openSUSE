@@ -141,4 +141,26 @@
   - Integrate a setuptools command</comment>
     <requestid>709595</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>763b3ce023ed7578d64603aaa59d5d01</srcmd5>
+    <version>3.0.1</version>
+    <time>1587325772</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1
+  * scan the whole branch if a version cannot be found
+
+- version update to 3.0.0
+  * Remove usage of six
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Add extension metadata to sphinxext
+  * Handle Windows compatibility
+  * Scan all branches for cache generation
+  * Avoid docutils 0.15 with py2
+  * Add Python 3 Train unit tests
+  * Fix py27 test: Update sphinx requirement
+  * OpenDev Migration Patch
+  * Switch to current hacking
+  * Remove references to oslosphinx</comment>
+    <requestid>794362</requestid>
+  </revision>
 </revisionlist>
