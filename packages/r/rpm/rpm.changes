@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:50:49 CEST 2020 - mls@suse.de
+
+- Fix verification of DSA2 signatures with libgrcypt [bnc#1165731]
+  * new patch: gcryptdsa2.diff
+- Do not map the index database read-write all the time
+  * new patch: ndb_backport2.diff
+
+-------------------------------------------------------------------
+Tue Apr 14 08:16:30 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix name of Packages DB file in rpmconfigcheck
+
+-------------------------------------------------------------------
 Fri Apr  3 12:34:42 CEST 2020 - mls@suse.de
 
 - Initialize the libgcrypt library [bnc#1167343]

@@ -7,7 +7,7 @@
 #
 
 configcheckfile=/var/adm/rpmconfigcheck
-packages=/var/lib/rpm/Packages
+packages=/var/lib/rpm/Packages.db
 
 if test -s $packages -a \( ! -e $configcheckfile -o -s $configcheckfile -o ! $packages -ot $configcheckfile \) ; then
     echo "Searching for unresolved configuration files"

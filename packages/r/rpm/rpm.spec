@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -132,6 +132,8 @@ Patch120:       disable_bdb.diff
 Patch121:       ndb_backport.diff
 Patch122:       db_conversion.diff
 Patch123:       initgcrypt.diff
+Patch124:       gcryptdsa2.diff
+Patch125:       ndb_backport2.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -256,7 +258,7 @@ cp config.guess config.sub db/dist/
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103                            
 %patch -P 109                                           -P 117
-%patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123
+%patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123 -P 124 -P 125
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
