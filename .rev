@@ -31,4 +31,14 @@
     <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>738348</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b01da7fbade5775ef64424ac49076f0</srcmd5>
+    <version>3.0.0</version>
+    <time>1587325187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0
+  * Drop support for Python 3.5 and earlier (including Python 2).
+  * Adopt black for code style and other updates from jaraco/skeleton.</comment>
+    <requestid>784323</requestid>
+  </revision>
 </revisionlist>

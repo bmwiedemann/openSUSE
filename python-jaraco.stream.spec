@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.stream
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %define _name   jaraco.stream
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.stream
-Version:        2.0
+Version:        3.0.0
 Release:        0
 Summary:        Routines for dealing with data streams
 License:        MIT
@@ -31,12 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-more-itertools
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 # SECTION documentation requirements
 BuildRequires:  %{python_module Sphinx}
@@ -52,7 +51,6 @@ for loading gzip data on the fly.
 
 %package     -n %{name}-doc
 Summary:        Documentation files for %{name}
-Requires:       %{name} = %{version}
 Provides:       %{python_module jaraco.stream-doc = %{version}}
 
 %description -n %{name}-doc
@@ -61,6 +59,7 @@ This package contains documentation files for %{name}.
 %prep
 %setup -q -n %{_name}-%{version}
 sed -i 's/--flake8//' pytest.ini
+sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.stream.egg-info
 
 %build
@@ -76,10 +75,7 @@ rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
 }
 
 %check
-%{python_expand cp jaraco/stream/somefile.json.gz build/lib/jaraco/stream/
-py.test-%{$python_bin_suffix} \
-  --ignore=_build.python3 --ignore _build.python2
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
