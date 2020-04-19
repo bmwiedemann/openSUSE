@@ -25,9 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
+%define skip_python2 1
 Name:           python-soupsieve%{psuffix}
-Version:        1.9.5
+Version:        2.0
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
@@ -41,12 +41,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache
-%endif
-%endif
-%ifpython2
-Requires:       python-backports.functools_lru_cache
 %endif
 %python_subpackages
 
