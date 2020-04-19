@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.collections
-Version:        2.1
+Version:        3.0.0
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT
@@ -32,14 +33,12 @@ BuildRequires:  %{python_module jaraco.text}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-jaraco.classes
 Requires:       python-jaraco.functools
 Requires:       python-jaraco.text
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
