@@ -184,4 +184,12 @@
 - Use python_sitearch instead of deprecated py_sitedir. (forwarded request 624669 from dimstar)</comment>
     <requestid>624750</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>38fc7e500882145b693557e5b3203b3d</srcmd5>
+    <version>2.28.7</version>
+    <time>1587325610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789149</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,8 +21,8 @@
 %define local_py_requires Requires: python(abi) = %{py3_ver}
 %define local_py_sitedir  %{python3_sitearch}
 %else
-%define local_py_requires %{py_requires}
-%define local_py_sitedir  %{python_sitearch}
+%define local_py_requires %py_requires
+%define local_py_sitedir  %{python2_sitearch}
 %endif
 %define _name   pygobject
 Name:           python-gobject2
@@ -30,8 +30,7 @@ Version:        2.28.7
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
-URL:            http://ftp.gnome.org/pub/GNOME/sources/pygobject/
+URL:            https://ftp.gnome.org/pub/GNOME/sources/pygobject/
 Source:         http://download.gnome.org/sources/pygobject/2.28/%{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -53,9 +52,8 @@ GLib's GObjects.
 %package cairo
 %define cairo_real_package %(rpm -q --qf '%%{NAME}' --whatprovides cairo)
 Summary:        Python bindings for GObject -- Cairo bindings
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:%{cairo_real_package})
+Supplements:    (%{name} and %{cairo_real_package})
 
 %description cairo
 Pygobjects is an extension module for python that gives you access to
@@ -65,7 +63,6 @@ This package contains the Python Cairo bindings for GObject.
 
 %package devel
 Summary:        Python bindings for GObject
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 %if %{build_for_python3}
 # Several files are conflicting between python2 and python3 builds
@@ -88,20 +85,18 @@ addon libraries such as pygtk.
 export PYTHON=python3
 %endif
 %configure --disable-static --disable-introspection
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-%makeinstall
-find %{buildroot} -name '*.la' -delete -print
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 rm examples/Makefile*
 %fdupes %{buildroot}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README ChangeLog examples
 %{local_py_sitedir}/glib/
 %{local_py_sitedir}/gobject/
@@ -112,7 +107,6 @@ rm examples/Makefile*
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/pygtk-2.0/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/pygobject-2.0.pc
