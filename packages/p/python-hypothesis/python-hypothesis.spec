@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
+%define skip_python2 1
 Name:           python-hypothesis%{psuffix}
-Version:        4.50.8
+Version:        5.8.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -38,17 +38,16 @@ BuildRequires:  %{python_module setuptools >= 36}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
+Requires:       python-sortedcontainers >= 2.1.0
 Recommends:     python-Django >= 1.11
+Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark-parser >= 0.6.5
 Recommends:     python-numpy >= 1.9.0
-Recommends:     python-pandas
+Recommends:     python-pandas >= 0.19
 Recommends:     python-pytest >= 4.3.0
-Recommends:     python-python-dateutil
+Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
 BuildArch:      noarch
-%ifpython3
-Recommends:     python-dpcontracts
-%endif
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
@@ -56,22 +55,15 @@ BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= %{version}}
 BuildRequires:  %{python_module lark-parser >= 0.6.5}
-BuildRequires:  %{python_module lark-parser}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.9.0}
 BuildRequires:  %{python_module pexpect >= 4.7.0}
 BuildRequires:  %{python_module pytest >= 4.3.0}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz >= 2014.1}
+BuildRequires:  %{python_module python-dateutil >= 1.4}
+BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  python3-dpcontracts
 %endif
 # /SECTION
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       %{oldpython}-enum34
-%endif
 %python_subpackages
 
 %description
@@ -87,10 +79,6 @@ work on Jython or on Python 3.0 through 3.2.
 
 %prep
 %setup -q -n hypothesis-hypothesis-python-%{version}/hypothesis-python
-# remove version specific tests for ease
-rm -r tests/py2
-rm -r tests/py3
-rm -r tests/dpcontracts # py3 only
 # the django fails to initialize
 rm -r tests/django
 # do not pull in pandas as a dep in ring1; it slows down things too much
