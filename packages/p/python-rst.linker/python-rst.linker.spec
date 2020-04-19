@@ -17,9 +17,10 @@
 
 
 %define _name   rst.linker
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rst.linker
-Version:        1.11
+Version:        2.0.0
 Release:        0
 Summary:        Changelog link and timestamp adding Sphinx plugin
 License:        MIT
@@ -48,7 +49,7 @@ changelog.
 
 %prep
 %setup -q -n %{_name}-%{version}
-sed -i 's/--flake8 --black//' pytest.ini
+sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %build
 %python_build
