@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:43:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 5.3.0
+  * Add mypy testing framework (#756)
+  * Add support for messagepack (#734 thx @lovasoa)
+  * Add support for 'show series' (#357 thx @gaker)
+  * Add support for custom request session in InfluxDBClient (#360 thx @dschien)
+  * Add support for handling np.nan and np.inf values in DataFrameClient (#436 thx @nmerket)
+  * Add support for optional `time_precision` in the SeriesHelper (#502 && #719 thx @appunni-dishq && @klDen)
+  * Add ability to specify retention policy in SeriesHelper (#723 thx @csanz91)
+  * Add gzip compression for post and response data (#732 thx @KEClaytor)
+  * Add support for chunked responses in ResultSet (#753 and #538 thx @hrbonz && @psy0rz)
+  * Add support for empty string fields (#766 thx @gregschrock)
+  * Add support for context managers to InfluxDBClient (#721 thx @JustusAdam)
+  * Clean up stale CI config (#755)
+  * Add legacy client test (#752 & #318 thx @oldmantaiter & @sebito91)
+  * Update make_lines section in line_protocol.py to split out core function (#375 thx @aisbaa)
+  * Fix nanosecond time resolution for points (#407 thx @AndreCAndersen && @clslgrnc)
+  * Fix import of distutils.spawn (#805 thx @Hawk777)
+  * Update repr of float values including properly handling of boolean (#488 thx @ghost)
+  * Update DataFrameClient to fix faulty empty tags (#770 thx @michelfripiat)
+  * Update DataFrameClient to properly return `dropna` values (#778 thx @jgspiro)
+  * Update DataFrameClient to test for pd.DataTimeIndex before blind conversion (#623 thx @testforvin)
+  * Update client to type-set UDP port to int (#651 thx @yifeikong)
+  * Update batched writing support for all iterables (#746 thx @JayH5)
+  * Update SeriesHelper to enable class instantiation when not initialized (#772 thx @ocworld)
+  * Update UDP test case to add proper timestamp to datapoints (#808 thx @shantanoo-desai)
+- Drop upstreamed patch python-influxdb-fix-testsuite.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 08:37:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - skip python 2.x build (pandas went py3 only)

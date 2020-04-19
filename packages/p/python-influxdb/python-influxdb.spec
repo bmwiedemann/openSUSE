@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-influxdb
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
 Summary:        InfluxDB client
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/influxdb/influxdb-python
 Source:         https://github.com/influxdata/influxdb-python/archive/v%{version}.tar.gz
-# fix module 'distutils' has no attribute 'spawn'
-Patch1:         python-influxdb-fix-testsuite.patch
 BuildRequires:  %{python_module python-dateutil >= 2.0.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0.3}
@@ -35,6 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-msgpack
 Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-pytz
 Requires:       python-requests >= 1.17.0
@@ -42,6 +41,7 @@ Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module requests-mock}
@@ -57,7 +57,6 @@ InfluxDB-Python is a client for interacting with InfluxDB_. Maintained by @aviau
 
 %prep
 %setup -q -n influxdb-python-%{version}
-%patch1 -p1
 
 %build
 %python_build

@@ -86,4 +86,12 @@
     <comment>- skip python 2.x build (pandas went py3 only)</comment>
     <requestid>783186</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fa9011449ba2f198775dd7fdc2371aa0</srcmd5>
+    <version>5.3.0</version>
+    <time>1587325812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793879</requestid>
+  </revision>
 </revisionlist>
