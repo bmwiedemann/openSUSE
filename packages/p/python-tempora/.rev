@@ -48,4 +48,33 @@
 - Do not pull in flake8</comment>
     <requestid>778726</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7813b6d529ecf899ebf7ecc63552ca60</srcmd5>
+    <version>3.0.0</version>
+    <time>1587325751</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+
+- version update to 3.0.0
+  * #10: strftime now reverts to the stdlib behavior for %u.
+
+- Drop py2 only dependency
+
+- version update to 2.1.0
+  v2.1.0
+  ======
+  - #9: Fixed error when date object is passed to ``strftime``.
+  - #11: ``strftime`` now honors upstream expectation of
+    rendering date values on time objects and vice versa.
+  - #10: ``strftime`` now honors ``%µ`` for rendering just
+    the &quot;microseconds&quot; as ``%u`` supported previously.
+    In a future, backward-incompatible release, the
+    ``%u`` behavior will revert to the behavior as found
+    in stdlib.
+  v2.0.0
+  ======
+  * Require Python 3.6 or later.
+  * Removed DatetimeConstructor.</comment>
+    <requestid>793833</requestid>
+  </revision>
 </revisionlist>

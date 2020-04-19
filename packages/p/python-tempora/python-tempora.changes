@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:12:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
+Thu Mar 26 11:21:36 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.0
+  * #10: strftime now reverts to the stdlib behavior for %u.
+
+-------------------------------------------------------------------
+Sat Mar 14 07:10:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 only dependency
+
+-------------------------------------------------------------------
+Wed Mar 11 12:25:08 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.1.0
+  v2.1.0
+  ======
+  - #9: Fixed error when date object is passed to ``strftime``.
+  - #11: ``strftime`` now honors upstream expectation of
+    rendering date values on time objects and vice versa.
+  - #10: ``strftime`` now honors ``%µ`` for rendering just
+    the "microseconds" as ``%u`` supported previously.
+    In a future, backward-incompatible release, the
+    ``%u`` behavior will revert to the behavior as found
+    in stdlib.
+  v2.0.0
+  ======
+  * Require Python 3.6 or later.
+  * Removed DatetimeConstructor.
+
+-------------------------------------------------------------------
 Mon Feb 24 10:54:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

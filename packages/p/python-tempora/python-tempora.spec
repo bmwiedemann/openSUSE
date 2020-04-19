@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-tempora
-Version:        1.14.1
+Version:        3.0.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -26,6 +27,7 @@ URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
+BuildRequires:  %{python_module pytest-freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools_scm}
@@ -33,11 +35,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-backports.unittest_mock
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
+Requires:       python-setuptools
 Requires:       python-six
 BuildArch:      noarch
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -50,23 +54,29 @@ Modules include:
 
 %prep
 %setup -q -n tempora-%{version}
-# do not require cov/xdist/etc
-sed -i -e 's/--flake8//g' pytest.ini
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/calc-prorate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i -e 's:--black::' -e 's:--cov::' -e 's/--flake8//g' pytest.ini
 %pytest
+
+%post
+%python_install_alternative calc-prorate
+
+%postun
+%python_uninstall_alternative calc-prorate
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst docs/*rst
-%python3_only %{_bindir}/calc-prorate
+%python_alternative %{_bindir}/calc-prorate
 %{python_sitelib}/*
 
 %changelog
