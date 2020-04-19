@@ -17,9 +17,11 @@
 
 
 %define oldpython python
+# Remove Python 2 support from the msgpack/_cmsgpack
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack
-Version:        0.6.2
+Version:        1.0.0
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0
@@ -62,7 +64,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license COPYING
 %{python_sitearch}/msgpack
 %{python_sitearch}/msgpack-%{version}-py*.egg-info

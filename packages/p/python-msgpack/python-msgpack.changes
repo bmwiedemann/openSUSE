@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:18:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * Remove Python 2 support from the msgpack/_cmsgpack. msgpack/fallback still supports Python 2.
+  * Remove encoding option from the Packer and Unpacker.
+  * Unpacker: The default value of max_buffer_type is changed to 100MiB.
+  * Unpacker: strict_map_key is True by default now.
+  * Unpacker: String map keys are interned.
+  * Drop old buffer protocol support.
+  * Support Timestamp type.
+  * Support serializing and decerializing datetime object with tzinfo.
+  * Unpacker: Fix Unpacker.read_bytes() in fallback implementation. (#352)
+
+-------------------------------------------------------------------
 Thu Mar 12 07:25:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
