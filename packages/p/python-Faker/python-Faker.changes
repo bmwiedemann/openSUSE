@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 16 10:32:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove obsolete py2 dependencies
+
+-------------------------------------------------------------------
+Sat Mar 14 12:22:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Add more data for ``ko_KR`` address provider. Thanks @alstn2468.
+  * Improved ``pt_PT`` locale for address and bank. Thanks @mustakarhu.
+  * Add ``port_number`` method to internet provider. Thanks @pishchalnikov.
+  * Add color provider for ``fa_IR`` locale. Thanks @abtinmo.
+  * Add formatting options for ``pt_BR`` postcodes. Thanks @perssonsimon1 and @klaraesr.
+  * Add ``country_calling_code`` to ``phone_number`` provider. Thanks @perssonsimon1.
+  * Fix leap year issue. Thanks @mmcmahon.
+  * Add ``AutomotiveProvider`` for ``fr_FR`` locale. Thanks @clarissedescamps and @perssonsimon1.
+  * Fix ``cellphone_formats`` in ``pt_BR`` ``PhoneNumberProvider``. Thanks @rodrigondec.
+
+-------------------------------------------------------------------
+Fri Feb 28 21:23:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Provider improvements for Russian locale:
+      * added city suffixes, regions and country list
+      * regions converted into states for now
+      * street address formats and states expanded
+      * lists for street titles changed
+      * Fixed errors in Automotive Provider
+      * Fixed errors in Address Provider
+      * Bank Provider expanded:
+          * BIC added)
+          * Added list of banks
+      * Improved Company Provider
+      * Credit Card and Person Provider improvements
+      * Currency Provider improvements
+      * Date-Time Provider improvements
+      * translit fix
+  
+    Thanks @valestel.
+  * Add Birth Number to czech locale. Thanks @Jengah.
+  * Add persons provider for ``fr_QC``. Thanks @Lionesk.
+
+-------------------------------------------------------------------
 Fri Jan 17 09:00:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.1:

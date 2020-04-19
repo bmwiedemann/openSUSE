@@ -134,4 +134,40 @@
   * Fix Faker.random_number intermittent exceptions. Thanks @Jengah.</comment>
     <requestid>765159</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f5579920296d6a9d0189847e6833d6ca</srcmd5>
+    <version>4.0.2</version>
+    <time>1587325284</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete py2 dependencies
+
+- update to 4.0.2:
+  * Add more data for ``ko_KR`` address provider. Thanks @alstn2468.
+  * Improved ``pt_PT`` locale for address and bank. Thanks @mustakarhu.
+  * Add ``port_number`` method to internet provider. Thanks @pishchalnikov.
+  * Add color provider for ``fa_IR`` locale. Thanks @abtinmo.
+  * Add formatting options for ``pt_BR`` postcodes. Thanks @perssonsimon1 and @klaraesr.
+  * Add ``country_calling_code`` to ``phone_number`` provider. Thanks @perssonsimon1.
+  * Fix leap year issue. Thanks @mmcmahon.
+  * Add ``AutomotiveProvider`` for ``fr_FR`` locale. Thanks @clarissedescamps and @perssonsimon1.
+  * Fix ``cellphone_formats`` in ``pt_BR`` ``PhoneNumberProvider``. Thanks @rodrigondec.
+
+- update to 4.0.1:
+  * Provider improvements for Russian locale:
+      * added city suffixes, regions and country list
+      * regions converted into states for now
+      * street address formats and states expanded
+      * lists for street titles changed
+      * Fixed errors in Automotive Provider
+      * Fixed errors in Address Provider
+      * Bank Provider expanded:
+          * BIC added)
+          * Added list of banks
+      * Improved Company Provider
+      * Credit Card and Person Provider improvements
+      * Currency Provider improvements
+      * Date-Time Provider improvements
+      * translit fix</comment>
+    <requestid>785575</requestid>
+  </revision>
 </revisionlist>

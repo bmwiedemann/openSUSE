@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%global skip_python2 1
 Name:           python-Faker
-Version:        3.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/joke2k/faker
 Source:         https://files.pythonhosted.org/packages/source/F/Faker/Faker-%{version}.tar.gz
 BuildRequires:  %{python_module UkPostcodeParser >= 1.1.1}
@@ -39,23 +39,15 @@ BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-ipaddress
 Requires:       python-python-dateutil >= 2.4
 Requires:       python-setuptools
 Requires:       python-six >= 1.10
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-%ifpython2
-Requires:       python2-ipaddress
-Obsoletes:      %{oldpython}-fake-factory < %{version}
-Provides:       %{oldpython}-fake-factory = %{version}
-%endif
-%ifpython3
 Obsoletes:      python3-fake-factory < %{version}
 Provides:       python3-fake-factory = %{version}
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
