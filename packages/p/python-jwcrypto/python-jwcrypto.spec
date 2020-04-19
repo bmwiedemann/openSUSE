@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jwcrypto
-Version:        0.6.0
+Version:        0.7
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
