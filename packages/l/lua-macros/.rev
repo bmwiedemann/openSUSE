@@ -7,4 +7,14 @@
     <comment>Namespacing of lua (will need one staging)</comment>
     <requestid>510366</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c1950d9adaf3c8476d2aeb40227fd55</srcmd5>
+    <version>20170611</version>
+    <time>1587324884</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify lua_incdir to work even on Fedora/RHEL
+
+- Install into /usr/lib/ not libexec (forwarded request 793405 from mcepl)</comment>
+    <requestid>793406</requestid>
+  </revision>
 </revisionlist>

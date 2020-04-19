@@ -1,7 +1,7 @@
 #
 # spec file for package lua-macros
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Macros for lua language
 License:        MIT
 Group:          Development/Languages/Other
-Url:            http://www.lua.org
+URL:            https://www.lua.org
 Source0:        macros.lua
 Requires:       lua
 BuildArch:      noarch
@@ -31,15 +31,18 @@ BuildArch:      noarch
 RPM macros for lua packaging
 
 %prep
-:
+cp -p %{SOURCE0} .
+%if 0%{?rhel} || 0%{?fedora}
+sed -i -e '/includedir/s!/lua!&-!' macros.lua
+%endif
 
 %build
 :
 
 %install
-install -D -m 644 %{SOURCE0} %{buildroot}%{_libexecdir}/rpm/macros.d/macros.lua
+install -D -m 644 macros.lua %{buildroot}%{_usr}/lib/rpm/macros.d/macros.lua
 
 %files
-%{_libexecdir}/rpm/macros.d/macros.lua
+%{_usr}/lib/rpm/macros.d/macros.lua
 
 %changelog

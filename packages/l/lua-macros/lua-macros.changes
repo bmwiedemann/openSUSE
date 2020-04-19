@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:22:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Modify lua_incdir to work even on Fedora/RHEL
+
+-------------------------------------------------------------------
+Sun Apr 12 13:14:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Install into /usr/lib/ not libexec
+
+-------------------------------------------------------------------
 Tue Jul 11 08:24:18 UTC 2017 - tchvatal@suse.com
 
 - Add lua_incdir macro to declare the lua includedir
