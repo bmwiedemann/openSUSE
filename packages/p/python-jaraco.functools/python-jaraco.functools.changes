@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 14 08:13:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Femove leftover py2 dependencies
+
+-------------------------------------------------------------------
+Mon Mar  9 13:14:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.0
+  * Require Python 3.6 or later.
+
+-------------------------------------------------------------------
 Wed Aug 21 14:43:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip another test that is randomly failing

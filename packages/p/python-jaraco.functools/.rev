@@ -33,4 +33,15 @@
     <comment>- Skip another test that is randomly failing</comment>
     <requestid>725100</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49f0174c1e335a275e817061b4b0500d</srcmd5>
+    <version>3.0.0</version>
+    <time>1587325241</time>
+    <user>dimstar_suse</user>
+    <comment>- Femove leftover py2 dependencies
+
+- Update to 3.0.0
+  * Require Python 3.6 or later.</comment>
+    <requestid>784821</requestid>
+  </revision>
 </revisionlist>
