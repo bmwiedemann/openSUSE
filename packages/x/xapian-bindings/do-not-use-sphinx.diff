@@ -28,14 +28,14 @@ Index: xapian-bindings-1.4.4/configure
      fi
 -    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for python3 sphinx module" >&5
 -$as_echo_n "checking for python3 sphinx module... " >&6; }
--    if $PYTHON3 -c 'import sphinx;print(repr(sphinx.main))' >&5 2>&5 ; then
+-    if $PYTHON3 -c 'import sphinx' >&5 2>&5 ; then
 -      { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 -$as_echo "yes" >&6; }
 -    else
 -      { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 -$as_echo "no" >&6; }
 -      if test yes = "$with_python3" ; then
--	as_fn_error $? "Couldn't import sphinx module and call sphinx.main() for Python3 - try package python3-sphinx" "$LINENO" 5
+-	as_fn_error $? "Couldn't import sphinx module for Python3 - try package python3-sphinx" "$LINENO" 5
 -      fi
 -      PYTHON3=
 -    fi
@@ -68,12 +68,12 @@ Index: xapian-bindings-1.4.4/configure.ac
        fi
      fi
 -    AC_MSG_CHECKING([for python3 sphinx module])
--    if $PYTHON3 -c 'import sphinx;print(repr(sphinx.main))' >&5 2>&5 ; then
+-    if $PYTHON3 -c 'import sphinx' >&5 2>&5 ; then
 -      AC_MSG_RESULT([yes])
 -    else
 -      AC_MSG_RESULT([no])
 -      if test yes = "$with_python3" ; then
--	AC_MSG_ERROR([Couldn't import sphinx module and call sphinx.main() for Python3 - try package python3-sphinx])
+-	AC_MSG_ERROR([Couldn't import sphinx module for Python3 - try package python3-sphinx])
 -      fi
 -      PYTHON3=
 -    fi
@@ -109,4 +109,4 @@ Index: xapian-bindings-1.4.4/python3/Makefile.am
 +	cp -R -p `test -r docs/index.rst || echo '$(srcdir)/'`docs '$(DESTDIR)$(docdir)/python3'
  
  $(sphinxdocs): xapian/__init__.py xapian/_xapian$(PYTHON3_SO) docs/conf.py $(RST_DOCS) $(dist_exampledata_DATA)
- ## We need to run Sphinx for the right version of Python here, so we can't
+ 	PYTHONPATH=..:$$PYTHONPATH $(OSX_SIP_HACK_ENV) $(PYTHON3) \

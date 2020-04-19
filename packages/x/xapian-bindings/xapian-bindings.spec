@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-bindings
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,14 @@
 %endif
 
 Name:           xapian-bindings
-Version:        1.4.9
+Version:        1.4.14
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
 Group:          Development/Languages/Other
-Url:            http://www.xapian.org/
-Source0:        http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz
-Source1:        http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://www.xapian.org/
+Source0:        https://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch0:         do-not-use-sphinx.diff
 Patch1:         fix-php7-directory.patch
@@ -56,10 +56,7 @@ BuildRequires:  mono-devel
 BuildRequires:  %{phpver}-devel
 %endif
 BuildRequires:  pkg-config
-BuildRequires:  python-devel >= 2.6
-BuildRequires:  python-setuptools
 %if %{with sphinx}
-BuildRequires:  python-sphinx
 BuildRequires:  python3-Sphinx
 %endif
 BuildRequires:  python3-devel
@@ -73,18 +70,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Xapian is a probabilistic information retrieval library. It offers an
 adaptable toolkit that allows developers to add advanced indexing and
 search facilities to applications.
-
-%package -n python-xapian
-Summary:        Files needed for developing Python scripts which use Xapian
-Group:          Development/Libraries/Python
-Provides:       python2-xapian = %{version}
-
-%description -n python-xapian
-Xapian is a probabilistic information retrieval library. It offers an
-adaptable toolkit that allows developers to add advanced indexing and
-search facilities to applications.
-This package provides the files needed for developing Python 2 scripts
-which use Xapian.
 
 %package -n python3-xapian
 Summary:        Files needed for developing Python scripts which use Xapian
@@ -161,7 +146,6 @@ which use Xapian.
 autoreconf -vfi
 
 %configure        \
-    --with-python \
     --with-python3 \
 %if %{with php}
     --with-%{phppkg} \
@@ -181,18 +165,6 @@ make check %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{?buildroot} %{?_smp_mflags}
-
-%files -n python-xapian
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog HACKING NEWS README TODO
-%if 0%{suse_version} < 1500 && !0%{?is_opensuse}
-%doc COPYING
-%else
-%license COPYING
-%endif
-%dir %{_defaultdocdir}/%{name}
-%doc %{_defaultdocdir}/%{name}/python/
-%{python_sitearch}/xapian/
 
 %files -n python3-xapian
 %defattr(-,root,root)
