@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.classes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.classes
-Version:        2.0
+Version:        3.1.0
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
@@ -28,11 +29,9 @@ BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,6 +41,7 @@ jaraco.classes Tools for working with classes.
 %prep
 %setup -q -n jaraco.classes-%{version}
 sed -i 's/--flake8//' pytest.ini
+sed -i 's/--black --cov//' pytest.ini
 
 %build
 %python_build
@@ -55,9 +55,7 @@ rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
 }
 
 %check
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python3 --ignore _build.python2
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE

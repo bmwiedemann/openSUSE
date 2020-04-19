@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 12:42:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.1.0
+  * Project now requires Python 3.6 or later.
+  * classproperty decorator now supplies a classproperty.Meta class.
+
+-------------------------------------------------------------------
 Mon Oct 14 13:44:35 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
