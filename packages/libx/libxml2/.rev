@@ -841,4 +841,17 @@
     <comment></comment>
     <requestid>757499</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>d184ed595995b1563696ce2bba311f5b</srcmd5>
+    <version>2.9.10</version>
+    <time>1587325263</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in the non-python deps on the python build
+
+- Revert the previous change and use multibuild to determine
+  supported flavors.
+  We need to be able to enable/disable pythons in prjconf and
+  multibuild directly clashes with that.</comment>
+    <requestid>785542</requestid>
+  </revision>
 </revisionlist>
