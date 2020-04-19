@@ -232,4 +232,12 @@
   - Reference OpenStack logo in openstackdocstheme</comment>
     <requestid>736643</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c23de094579ca4bbb96e3798f5fc3401</srcmd5>
+    <version>1.31.1</version>
+    <time>1587325158</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only client</comment>
+    <requestid>784195</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackdocstheme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,28 +27,23 @@ Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocsth
 # https://review.opendev.org/677868
 Patch0:         0001-Catch-any-exception-when-trying-to-call-git.patch
 BuildRequires:  openstack-macros
-BuildRequires:  python2-Sphinx
-BuildRequires:  python2-dulwich >= 0.15.0
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-setuptools
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-dulwich >= 0.15.0
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
-Requires:       python-Sphinx
-Requires:       python-dulwich >= 0.15.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%else
-# on RDO, update-alternatives is in chkconfig
-Requires(post): chkconfig
-Requires(postun): chkconfig
-%endif
-%python_subpackages
 
 %description
+Theme and extension support for Sphinx documentation that is published
+to docs.openstack.org. Intended for use by OpenStack projects.
+
+%package -n python3-openstackdocstheme
+Summary:        OpenStack Docs Theme
+Group:          Development/Languages/Python
+Requires:       python3-Sphinx
+Requires:       python3-dulwich >= 0.15.0
+
+%description -n python3-openstackdocstheme
 Theme and extension support for Sphinx documentation that is published
 to docs.openstack.org. Intended for use by OpenStack projects.
 
@@ -60,34 +55,23 @@ sed -i '/^hacking.*/d' test-requirements.txt
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/docstheme-build-pdf
-%python_clone -a %{buildroot}%{_bindir}/docstheme-build-translated.sh
-%python_clone -a %{buildroot}%{_bindir}/docstheme-lang-display-name.py
-
-%post
-%{python_install_alternative docstheme-build-pdf docstheme-build-translated.sh docstheme-lang-display-name.py}
-
-%postun
-%python_uninstall_alternative docstheme-build-pdf
+%py3_install
 
 %check
-%{python_expand rm -rf .testrepository
-$python setup.py test
-}
+python3 setup.py test
 
-%files %{python_files}
+%files -n python3-openstackdocstheme
 %license LICENSE
 %doc README.rst
-%python_alternative %{_bindir}/docstheme-build-pdf
-%python_alternative %{_bindir}/docstheme-build-translated.sh
-%python_alternative %{_bindir}/docstheme-lang-display-name.py
+%{_bindir}/docstheme-build-pdf
+%{_bindir}/docstheme-build-translated.sh
+%{_bindir}/docstheme-lang-display-name.py
 %exclude %{_sysconfdir}/alternatives/*.pyc
 %exclude %{_sysconfdir}/alternatives/*.pyo
-%{python_sitelib}/openstackdocstheme
-%{python_sitelib}/openstackdocstheme-*-py?.?.egg-info
+%{python3_sitelib}/openstackdocstheme
+%{python3_sitelib}/openstackdocstheme-*-py?.?.egg-info
 
 %changelog
