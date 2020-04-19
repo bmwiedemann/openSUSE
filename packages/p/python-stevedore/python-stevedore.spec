@@ -1,7 +1,7 @@
 #
 # spec file for package python-stevedore
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/stevedore/
 Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-1.31.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-docutils
-BuildRequires:  python2-mock
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-pytest
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-testtools
 BuildRequires:  python3-docutils
 BuildRequires:  python3-mock
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-testtools
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Python makes loading code dynamically easy, allowing you to configure
@@ -53,10 +44,28 @@ for managing entry points tends to be repetitive, though, so stevedore
 provides manager classes for implementing common patterns for using
 dynamically loaded extensions.
 
+%package -n python3-stevedore
+Summary:        Manage dynamic plugins for Python applications
+Group:          Development/Languages/Python
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-six >= 1.10.0
+
+%description -n python3-stevedore
+Python makes loading code dynamically easy, allowing you to configure
+and extend your application by discovering and loading extensions
+(plugins) at runtime. Many applications implement their own
+library for doing this, using ``__import__`` or ``importlib``.
+stevedore avoids creating yet another extension
+mechanism by building on top of setuptools entry points. The code
+for managing entry points tends to be repetitive, though, so stevedore
+provides manager classes for implementing common patterns for using
+dynamically loaded extensions.
+
+This package contains the Python 3.x module
+
 %package -n python-stevedore-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
-BuildRequires:  python2-Sphinx
 BuildRequires:  python3-Sphinx
 Provides:       %{python_module stevedore-doc = %{version}}
 
@@ -78,7 +87,7 @@ This package contains documentation in HTML format.
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 # generate html docs
 PBR_VERSION=1.31.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
@@ -86,17 +95,17 @@ PBR_VERSION=1.31.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%python_install
+%py3_install
 
 %check
 # use pytest instead of stestr to break a build cycle between python-cliff, python-stestr and python-stevedore
-%python_exec -m pytest stevedore/tests
+python3 -m pytest stevedore/tests
 
-%files %{python_files}
+%files -n python3-stevedore
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/stevedore
-%{python_sitelib}/stevedore-*.egg-info
+%{python3_sitelib}/stevedore
+%{python3_sitelib}/stevedore-*.egg-info
 
 %files -n python-stevedore-doc
 %license LICENSE
