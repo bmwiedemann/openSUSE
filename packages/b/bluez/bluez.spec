@@ -142,8 +142,8 @@ printers.
 Summary:        Tools for testing of various Bluetooth-functions
 License:        GPL-2.0-or-later AND MIT
 Group:          Development/Tools/Debuggers
-Requires:       dbus-1-python
-Requires:       python-gobject2
+Requires:       python3-dbus-python
+Requires:       python3-gobject2
 
 %description test
 Contains a few tools for testing various bluetooth functions. The
