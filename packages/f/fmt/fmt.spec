@@ -25,6 +25,7 @@ License:        MIT
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:04:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply 7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch
+  to fix kodi compilation and probably others:
+  https://github.com/fmtlib/fmt/issues/1620
+
+-------------------------------------------------------------------
 Mon Apr  6 14:21:08 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.2.0

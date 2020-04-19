@@ -176,4 +176,15 @@
     <comment></comment>
     <requestid>791804</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>039e10cd004870b4cdb719f8354cb0c0</srcmd5>
+    <version>6.2.0</version>
+    <time>1587324915</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply 7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch
+  to fix kodi compilation and probably others:
+  https://github.com/fmtlib/fmt/issues/1620
+</comment>
+    <requestid>793945</requestid>
+  </revision>
 </revisionlist>
