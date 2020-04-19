@@ -66,4 +66,12 @@
   * Fix pickling/unpickling of cache keys</comment>
     <requestid>730683</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5de231216d688b80e6d9905fa5d6399e</srcmd5>
+    <version>4.0.0</version>
+    <time>1587324956</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769015</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachetools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cachetools
-Version:        3.1.1
+Version:        4.0.0
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
@@ -51,7 +52,7 @@ function decorator.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc CHANGELOG.rst README.rst
 %{python_sitelib}/*
 
 %changelog
