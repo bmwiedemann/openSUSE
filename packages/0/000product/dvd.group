@@ -2662,6 +2662,8 @@
     <package name="libreoffice-base-drivers-firebird" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-calc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-gnome" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libreoffice-icon-themes" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5675,8 +5677,6 @@
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
-    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsamba-credentials0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-errors0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsamba-hostconfig0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

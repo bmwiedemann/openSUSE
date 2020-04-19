@@ -1888,7 +1888,7 @@ unsorted:
   - connman-plugin-vpnc 
   - connman-plugin-wireguard 
   - connman-test 
-  - conntrack-tools 
+  - conntrack-tools: [i586] 
   - conntrackd 
   - console-setup 
   - container-diff 
@@ -1980,10 +1980,8 @@ unsorted:
   - crawl-sdl 
   - crazydiskinfo 
   - creduce 
-  - cri-o: [x86_64] 
-  - cri-o-kubeadm-criconfig: [x86_64] 
-  - cri-tools 
-  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime 
+  - cri-tools: [i586] 
+  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
   - criu-devel: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -6448,7 +6446,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime 
+  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -6953,6 +6951,11 @@ unsorted:
   - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
   - kubernetes-scheduler-minus1: [x86_64] 
+  - kubernetes1.17-apiserver: [x86_64] 
+  - kubernetes1.17-client: [x86_64] 
+  - kubernetes1.17-controller-manager: [x86_64] 
+  - kubernetes1.17-proxy: [x86_64] 
+  - kubernetes1.17-scheduler: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
   - kubicctl: [x86_64] 
@@ -10536,10 +10539,10 @@ unsorted:
   - libnetfilter_conntrack-devel 
   - libnetfilter_conntrack3-32bit: [x86_64] 
   - libnetfilter_cthelper-devel 
-  - libnetfilter_cthelper0 
+  - libnetfilter_cthelper0: [i586] 
   - libnetfilter_cthelper0-32bit: [x86_64] 
   - libnetfilter_cttimeout-devel 
-  - libnetfilter_cttimeout1 
+  - libnetfilter_cttimeout1: [i586] 
   - libnetfilter_cttimeout1-32bit: [x86_64] 
   - libnetfilter_log-devel 
   - libnetfilter_log1 
@@ -11444,8 +11447,6 @@ unsorted:
   - libreoffice-base-drivers-postgresql 
   - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
-  - libreoffice-draw: [i586] 
-  - libreoffice-filters-optional: [i586] 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
   - libreoffice-l10n-af 
@@ -13207,7 +13208,7 @@ unsorted:
   - lua51-zlib 
   - lua53-alt-getopt 
   - lua53-argparse 
-  - lua53-busted: [x86_64] 
+  - lua53-busted 
   - lua53-cliargs 
   - lua53-compat-5.3 
   - lua53-copas 
@@ -13224,8 +13225,8 @@ unsorted:
   - lua53-lpeg 
   - lua53-lpeg-doc 
   - lua53-lua-dbus 
-  - lua53-lua-ev: [x86_64] 
-  - lua53-lua-ev-devel: [x86_64] 
+  - lua53-lua-ev 
+  - lua53-lua-ev-devel 
   - lua53-lua-mpris 
   - lua53-luadbi 
   - lua53-luaevent 
@@ -16181,7 +16182,6 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
-  - patterns-containers-container_runtime_kubernetes: [x86_64] 
   - patterns-containers-kubeadm: [x86_64] 
   - patterns-containers-kubic_admin: [x86_64] 
   - patterns-containers-kubic_worker: [x86_64] 
@@ -25091,7 +25091,7 @@ unsorted:
   - soapysdr0.7-module-uhd 
   - soapysdr0.7-module-xtrx 
   - sobby 
-  - socat 
+  - socat: [i586] 
   - socket_wrapper 
   - sof-firmware 
   - sofia-sip 

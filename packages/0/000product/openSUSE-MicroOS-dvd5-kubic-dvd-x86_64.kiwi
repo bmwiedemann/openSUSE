@@ -82,11 +82,15 @@
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
       <repopackage name="conmon" arch="x86_64"/>
+      <repopackage name="conntrack-tools" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="cpio"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
       <repopackage name="cracklib-dict-small" arch="x86_64"/>
+      <repopackage name="cri-o" arch="x86_64"/>
+      <repopackage name="cri-o-kubeadm-criconfig" arch="x86_64"/>
+      <repopackage name="cri-tools" arch="x86_64"/>
       <repopackage name="cryptsetup" arch="x86_64"/>
       <repopackage name="curl" arch="x86_64"/>
       <repopackage name="cyrus-sasl" arch="x86_64"/>
@@ -102,8 +106,10 @@
       <repopackage name="dracut"/>
       <repopackage name="dracut-ima" arch="x86_64"/>
       <repopackage name="e2fsprogs" arch="x86_64"/>
+      <repopackage name="ebtables" arch="x86_64"/>
       <repopackage name="efibootmgr" arch="x86_64"/>
       <repopackage name="elfutils"/>
+      <repopackage name="ethtool" arch="x86_64"/>
       <repopackage name="evmctl" arch="x86_64"/>
       <repopackage name="fcoe-utils" arch="x86_64"/>
       <repopackage name="file"/>
@@ -190,6 +196,9 @@
       <repopackage name="kpartx" arch="x86_64"/>
       <repopackage name="krb5"/>
       <repopackage name="kubectl-who-can" arch="x86_64"/>
+      <repopackage name="kubernetes1.17-kubeadm" arch="x86_64"/>
+      <repopackage name="kubernetes1.17-kubelet" arch="x86_64"/>
+      <repopackage name="kubernetes1.17-kubelet-common" arch="x86_64"/>
       <repopackage name="kubic-haproxycfg" arch="x86_64"/>
       <repopackage name="kubic-locale-archive" arch="x86_64"/>
       <repopackage name="less" arch="x86_64"/>
@@ -227,6 +236,7 @@
       <repopackage name="libdevmapper1_03"/>
       <repopackage name="libdhash1" arch="x86_64"/>
       <repopackage name="libdw1"/>
+      <repopackage name="libebtc0" arch="x86_64"/>
       <repopackage name="libeconf0"/>
       <repopackage name="libedit0" arch="x86_64"/>
       <repopackage name="libefivar1" arch="x86_64"/>
@@ -281,6 +291,8 @@
       <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
+      <repopackage name="libnetfilter_cthelper0" arch="x86_64"/>
+      <repopackage name="libnetfilter_cttimeout1" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
       <repopackage name="libnghttp2-14" arch="x86_64"/>
@@ -394,7 +406,10 @@
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
       <repopackage name="parted" arch="x86_64"/>
+      <repopackage name="patterns-base-apparmor" arch="x86_64"/>
+      <repopackage name="patterns-base-minimal_base" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime" arch="x86_64"/>
+      <repopackage name="patterns-containers-container_runtime_kubernetes" arch="x86_64"/>
       <repopackage name="patterns-containers-kubernetes_utilities" arch="x86_64"/>
       <repopackage name="patterns-containers-kubic_loadbalancer" arch="x86_64"/>
       <repopackage name="patterns-microos-alt_onlyDVD" arch="x86_64"/>
@@ -499,6 +514,7 @@
       <repopackage name="shim" arch="x86_64"/>
       <repopackage name="slirp4netns" arch="x86_64"/>
       <repopackage name="snapper" arch="x86_64"/>
+      <repopackage name="socat" arch="x86_64"/>
       <repopackage name="sssd" arch="x86_64"/>
       <repopackage name="sssd-krb5-common" arch="x86_64"/>
       <repopackage name="sssd-ldap" arch="x86_64"/>
@@ -510,6 +526,8 @@
       <repopackage name="sysfsutils" arch="x86_64"/>
       <repopackage name="system-group-hardware"/>
       <repopackage name="system-group-wheel" arch="x86_64"/>
+      <repopackage name="system-user-bin" arch="x86_64"/>
+      <repopackage name="system-user-daemon" arch="x86_64"/>
       <repopackage name="system-user-nobody" arch="x86_64"/>
       <repopackage name="system-user-root"/>
       <repopackage name="systemd"/>

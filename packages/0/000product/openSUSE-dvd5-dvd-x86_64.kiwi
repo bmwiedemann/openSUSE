@@ -2737,8 +2737,8 @@
       <repopackage name="libreoffice-base-drivers-firebird"/>
       <repopackage name="libreoffice-branding-openSUSE"/>
       <repopackage name="libreoffice-calc"/>
-      <repopackage name="libreoffice-draw" arch="x86_64"/>
-      <repopackage name="libreoffice-filters-optional" arch="x86_64"/>
+      <repopackage name="libreoffice-draw"/>
+      <repopackage name="libreoffice-filters-optional"/>
       <repopackage name="libreoffice-gnome"/>
       <repopackage name="libreoffice-gtk3"/>
       <repopackage name="libreoffice-icon-themes"/>
