@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-imageio
-Version:        2.5.0
+Version:        2.8.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
@@ -27,26 +27,18 @@ URL:            https://imageio.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/i/imageio/imageio-%{version}.tar.gz
 Source1:        python-imageio-rpmlintrc
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module imageio-ffmpeg}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-imageio-ffmpeg
+Requires:       python-Pillow
+Requires:       python-imageio-ffmpeg
 Requires:       python-numpy
 Recommends:     libfreeimageplus3
-Recommends:     python-Pillow
 BuildArch:      noarch
-%ifpython3
-Requires:       python-imageio-ffmpeg
-%endif
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description

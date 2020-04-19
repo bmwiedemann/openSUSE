@@ -59,4 +59,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>785581</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e586161d4020a20f671530920c52846</srcmd5>
+    <version>2.8.0</version>
+    <time>1587325790</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>794615</requestid>
+  </revision>
 </revisionlist>

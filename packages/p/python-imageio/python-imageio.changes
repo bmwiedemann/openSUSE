@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:50:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.8.0
+  * (skipping version 2.7 to avoid confusion with Python v2.7.)
+  * Added example for compressing GIFs using pygifsicle
+  * Added support for compressed FITS images
+  * Improved support for JPEG2000 (can now provide parameters)
+  * More flexible setting of memory limit in mimread and mvolread
+  * Drop support for Python 2.7 and Python 3.4.
+  * Drop support for AVbin, use ffmpeg instead.
+  * Many bugfixes.
+
+-------------------------------------------------------------------
 Mon Mar 16 10:42:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
