@@ -982,4 +982,13 @@
   and replaced by shadow long ago.</comment>
     <requestid>769339</requestid>
   </revision>
+  <revision rev="132" vrev="13">
+    <srcmd5>2215a662bf575e7a59b1c74f0c7e2a21</srcmd5>
+    <version>0.7</version>
+    <time>1587325765</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in dbus-1-python which is py2 variant but properly
+  pull in the python3 package (forwarded request 792425 from scarabeus_iv)</comment>
+    <requestid>794349</requestid>
+  </revision>
 </revisionlist>

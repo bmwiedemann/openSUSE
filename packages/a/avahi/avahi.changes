@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:51:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in dbus-1-python which is py2 variant but properly
+  pull in the python3 package
+
+-------------------------------------------------------------------
 Sun Feb  2 08:22:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require shadow instead of pwdutils: pwdutils has been absorbed

@@ -104,7 +104,7 @@ BuildRequires:  python3-dbm
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 # For python bindings and utilities:
-#BuildRequires:  dbus-1-python
+#BuildRequires:  python3-dbus-python
 #Requires:       dbus-1
 Requires:       nss-mdns
 Requires(pre):  shadow
@@ -213,9 +213,9 @@ specifications for Zeroconf Computing.
 Summary:        A set of Avahi utilities written in Python
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Requires:       dbus-1-python
 Requires:       python3-Twisted
 Requires:       python3-dbm
+Requires:       python3-dbus-python
 # Old name used for <= 10.3:
 Provides:       avahi-python = %{version}
 Obsoletes:      avahi-python < %{version}
