@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_17_1
+%define _ver 1_18_1
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.17.4
+Version:        1.18.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -89,6 +89,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 %if 0%{?suse_version}
@@ -112,6 +113,8 @@ BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
@@ -159,7 +162,8 @@ This package contains files for developing applications using numpy.
 %patch4 -p1
 %endif
 # Fix non-executable scripts
-sed -i '1s/^#!.*$//' numpy/{compat/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
+sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
+sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 
 # force cythonization
 rm PKG-INFO
@@ -188,15 +192,15 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %python_exec setup.py install --prefix=%{p_prefix} --root=%{buildroot}
 
+%if !%{with hpc}
+%python_clone -a %{buildroot}%{_bindir}/f2py
+%endif
+
 %if 0%{?suse_version}
 %fdupes %{buildroot}%{p_prefix}
 %endif
 
-%if %{without hpc}
-
-#%%python_expand rm -rf %{buildroot}%{$python_sitearch}/numpy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests # Don't package testsuite
-
-%else
+%if %{with hpc}
 
 %define hpc_module_pname python${py_ver/.*/}-numpy
 %{python_expand # Don't package testsuite
@@ -237,6 +241,7 @@ setenv          %{hpc_upcase_trans_hyph %{pname}}_BIN        %{hpc_bindir}
 family "NumPy"
 EOF
 }
+
 %endif
 
 %check
@@ -253,13 +258,20 @@ pushd testing
 popd
 %endif
 
+%if %{without hpc}
+%post
+%python_install_alternative f2py
+
+%postun
+%python_uninstall_alternative f2py
+%endif
+
 %files %{python_files}
 %doc README.md THANKS.txt
-%python3_only %{p_bindir}/f2py3*
-%python3_only %{p_bindir}/f2py
 %if %{without hpc}
+%python_alternative %{_bindir}/f2py
+%python3_only %{_bindir}/f2py3*
 %{python_sitearch}/numpy/
-%{python_sitearch}/numpy/LICENSE.txt
 %{python_sitearch}/numpy-%{version}-py*.egg-info
 %license %{python_sitearch}/numpy/LICENSE.txt
 %exclude %{python_sitearch}/numpy/core/include/
@@ -267,8 +279,8 @@ popd
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
 %else
+%python3_only %{p_bindir}/f2py*
 %{p_python_sitearch}/numpy/
-%{p_python_sitearch}/numpy/LICENSE.txt
 %{p_python_sitearch}/numpy-%{version}-py*.egg-info
 %license %{p_python_sitearch}/numpy/LICENSE.txt
 %exclude %{p_python_sitearch}/numpy/core/include/

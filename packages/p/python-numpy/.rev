@@ -759,4 +759,41 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>749098</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e948d55774d6e81f8168a68396aa0e26</srcmd5>
+    <version>1.18.2</version>
+    <time>1587325736</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use alternatives on HPC as it is pain to get it working
+
+- Also still install f2py&lt;PYTHON_MAJOR&gt; that is used by many other
+  depending software
+
+- Use update-alternatives for /usr/bin/f2py
+
+- update to version 1.18.2:
+  * #15675: TST: move _no_tracing to testing._private
+  * #15676: MAINT: Large overhead in some random functions
+  * #15677: TST: Do not create gfortran link in azure Mac testing.
+  * #15679: BUG: Added missing error check in ndarray.__contains__
+  * #15722: MAINT: use list-based APIs to call subprocesses
+  * #15734: BUG: fix logic error when nm fails on 32-bit
+
+- update to version 1.18.1
+  * The cython random extension test was not using a temporary
+    directory for building, resulting in a permission violation.
+  * Numpy distutils was appending -std=c99 to all C compiler runs,
+    leading to changed behavior and compile problems downstream.
+    That flag is now only applied when building numpy C code.
+
+- update to version 1.18.0:
+  + Highlights
+    * The C-API for ``numpy.random`` has been defined and documented.
+    * Basic infrastructure for linking with 64 bit BLAS and LAPACK libraries.
+    * Many documentation improvements.
+  + New functions
+    * Multivariate hypergeometric distribution added to ``numpy.random``
+  + Deprecations</comment>
+    <requestid>792356</requestid>
+  </revision>
 </revisionlist>

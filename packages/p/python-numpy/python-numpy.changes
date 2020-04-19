@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Tue Apr  7 13:08:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use alternatives on HPC as it is pain to get it working
+
+-------------------------------------------------------------------
+Tue Apr  7 11:55:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Also still install f2py<PYTHON_MAJOR> that is used by many other
+  depending software
+
+-------------------------------------------------------------------
+Mon Apr  6 21:42:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use update-alternatives for /usr/bin/f2py
+
+-------------------------------------------------------------------
+Sat Mar 28 16:39:11 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.2:
+  * #15675: TST: move _no_tracing to testing._private
+  * #15676: MAINT: Large overhead in some random functions
+  * #15677: TST: Do not create gfortran link in azure Mac testing.
+  * #15679: BUG: Added missing error check in ndarray.__contains__
+  * #15722: MAINT: use list-based APIs to call subprocesses
+  * #15734: BUG: fix logic error when nm fails on 32-bit
+
+-------------------------------------------------------------------
+Tue Jan  7 15:10:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.18.1
+  * The cython random extension test was not using a temporary
+    directory for building, resulting in a permission violation.
+  * Numpy distutils was appending -std=c99 to all C compiler runs,
+    leading to changed behavior and compile problems downstream.
+    That flag is now only applied when building numpy C code.
+
+-------------------------------------------------------------------
+Mon Jan  6 15:34:51 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.18.0:
+  + Highlights
+    * The C-API for ``numpy.random`` has been defined and documented.
+    * Basic infrastructure for linking with 64 bit BLAS and LAPACK libraries.
+    * Many documentation improvements.
+  + New functions
+    * Multivariate hypergeometric distribution added to ``numpy.random``
+  + Deprecations
+    * ``np.fromfile`` and ``np.fromstring`` will error on bad data
+    * Deprecate non-scalar arrays as fill values in ``ma.fill_value``
+    * Deprecate ``PyArray_As1D``, ``PyArray_As2D``
+    * Deprecate ``np.alen``
+    * Deprecate the financial functions
+    * The ``axis`` argument to ``numpy.ma.mask_cols`` and ``numpy.ma.mask_row`` is deprecated
+  + Expired deprecations
+    * ``PyArray_As1D`` and ``PyArray_As2D`` have been removed in favor of
+      ``PyArray_AsCArray``
+    * ``np.rank`` has been removed. This was deprecated in NumPy 1.10
+      and has been replaced by ``np.ndim``.
+    * The deprecation of ``expand_dims`` out-of-range axes in 1.13.0 has
+      expired.
+    * ``PyArray_FromDimsAndDataAndDescr`` and ``PyArray_FromDims`` have been
+      removed (they will always raise an error). Use ``PyArray_NewFromDescr``
+      and ``PyArray_SimpleNew`` instead.
+    * ``numeric.loads``, ``numeric.load``, ``np.ma.dump``,
+      ``np.ma.dumps``, ``np.ma.load``, ``np.ma.loads`` are removed,
+      use ``pickle`` methods instead
+    * ``arrayprint.FloatFormat``, ``arrayprint.LongFloatFormat`` has been removed,
+      use ``FloatingFormat`` instead
+    * ``arrayprint.ComplexFormat``, ``arrayprint.LongComplexFormat`` has been
+      removed, use ``ComplexFloatingFormat`` instead
+    * ``arrayprint.StructureFormat`` has been removed, use ``StructureVoidFormat``
+      instead
+    * ``np.testing.rand`` has been removed. This was deprecated in NumPy 1.11
+      and has been replaced by ``np.random.rand``.
+    * Class ``SafeEval`` in ``numpy/lib/utils.py`` has been removed.
+      This was deprecated in NumPy 1.10. Use ``np.safe_eval`` instead.
+    * Remove deprecated support for boolean and empty condition lists in
+      ``np.select``
+    * Array order only accepts 'C', 'F', 'A', and 'K'. More permissive options
+      were deprecated in NumPy 1.11.
+    * np.linspace parameter ``num`` must be an integer. Deprecated in NumPy 1.12.
+    * UFuncs with multiple outputs must use a tuple for the ``out`` kwarg. This
+      finishes a deprecation started in NumPy 1.10.
+    * The files ``numpy/testing/decorators.py``, ``numpy/testing/noseclasses.py``
+      and ``numpy/testing/nosetester.py`` have been removed.  They were never
+      meant to be public (all relevant objects are present in the
+      ``numpy.testing`` namespace), and importing them has given a deprecation
+      warning since NumPy 1.15.0
+  + Compatibility notes
+    * `numpy.lib.recfunctions.drop_fields` can no longer return None
+    * ``numpy.argmin/argmax/min/max`` returns ``NaT`` if it exists in array
+    * ``np.can_cast(np.uint64, np.timedelta64, casting='safe')`` is now ``False``
+    * Changed random variate stream from ``numpy.random.Generator.integers``
+    * Add more ufunc loops for ``datetime64``, ``timedelta64``
+    * Moved modules in ``numpy.random``
+  + C API changes
+    * ``PyDataType_ISUNSIZED(descr)`` now returns False for structured datatypes
+  + New Features
+    * Add our own ``*.pxd`` cython import file
+    * A tuple of axes can now be input to ``expand_dims``
+    * Support for 64-bit OpenBLAS
+    * Add ``--f2cmap`` option to F2PY
+  + Improvements
+    * Different C numeric types of the same size have unique names
+    * ``argwhere`` now produces a consistent result on 0d arrays
+    * Add ``axis`` argument for ``random.permutation`` and ``random.shuffle``
+    * ``method`` keyword argument for ``np.random.multivariate_normal``
+    * Add complex number support for ``numpy.fromstring``
+    * ``numpy.unique`` has consistent axes order when ``axis`` is not None
+    * ``numpy.matmul`` with boolean output now converts to boolean values
+    * ``numpy.random.randint`` produced incorrect value when the range was ``2**32``
+    * Add complex number support for ``numpy.fromfile``
+    * ``std=c99`` added if compiler is named ``gcc``
+  + Changes
+    * ``NaT`` now sorts to the end of arrays
+    * Incorrect ``threshold`` in ``np.set_printoptions`` raises ``TypeError`` or ``ValueError``
+    * Warn when saving a dtype with metadata
+    * ``numpy.distutils`` append behavior changed for LDFLAGS and similar
+    * Remove ``numpy.random.entropy`` without a deprecation
+    * Add options to quiet build configuration and build with ``-Werror``
+
+
+-------------------------------------------------------------------
 Sat Nov 16 17:51:25 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.17.4:
