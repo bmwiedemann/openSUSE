@@ -302,4 +302,12 @@
   - Replace openstack.org git:// URLs with https://</comment>
     <requestid>736631</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3df4102dad975fbf36e479565127239f</srcmd5>
+    <version>3.8.1</version>
+    <time>1587325551</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>788143</requestid>
+  </revision>
 </revisionlist>
