@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:13:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 4.6.8
+  * Add support for health_check_interval option in broker_transport_options.
+  * Adding retry_on_timeout parameter
+  * Support standard values for ssl_cert_reqs query parameter.
+  * enabled ssl certificate verification when amqps is used for pyamqp transport
+
+-------------------------------------------------------------------
 Thu Mar 12 07:23:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
