@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:00:20 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.2.1
+  * #41: templates/searchresults.html is missing in the source tarball
+
+-------------------------------------------------------------------
+Mon Mar  2 09:13:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Drop python2.7 and 3.4 support
+
+-------------------------------------------------------------------
 Thu Jun  6 10:48:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to fix testing issues

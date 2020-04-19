@@ -68,4 +68,12 @@
 - Enable tests (failing for now)</comment>
     <requestid>708109</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>205e4d16bb2eb2056f8f323ba01c2112</srcmd5>
+    <version>1.2.1</version>
+    <time>1587325580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789011</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-websupport
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python2 1
 Name:           python-sphinxcontrib-websupport%{psuffix}
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
