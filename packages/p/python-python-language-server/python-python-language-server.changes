@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 16 10:56:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- make compatible again with Jedi 0.16.0
+- pyls-pr775-jedi017.patch and pyls-pr775-addon.patch
+  moved to pyls-pr781-jedi016-017.patch 
+  gh#palantir/python-language-server#781
+- remove use_newer_ujson.patch because the patch conflicts with the
+  patch from PR781. Made inline sed call instead.
+
+-------------------------------------------------------------------
+Wed Apr 15 20:47:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update patches to work with python-jedi-0.17.0
+  pyls-pr775-jedi016.patch to  pyls-pr775-jedi017.patch
+  pyls-pr775-addon.patch PR gh#dalthviz/python-language-server#1  
+
+-------------------------------------------------------------------
 Mon Apr 13 10:39:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add pyls-pr778-multiplerefs.patch from gh#palantir/python-language-server#778 

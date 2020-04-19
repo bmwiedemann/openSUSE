@@ -1,0 +1,460 @@
+From cb51b09254efac0b2c22130815198fab487db54f Mon Sep 17 00:00:00 2001
+From: Morten Linderud <morten@linderud.pw>
+Date: Sun, 29 Mar 2020 21:36:08 +0200
+Subject: [PATCH 1/7] Changed towards jedi 0.16
+
+Signed-off-by: Morten Linderud <morten@linderud.pw>
+---
+ pyls/plugins/jedi_completion.py | 10 +++++++---
+ pyls/workspace.py               |  9 ++-------
+ setup.py                        |  2 +-
+ 3 files changed, 10 insertions(+), 11 deletions(-)
+
+diff --git a/pyls/plugins/jedi_completion.py b/pyls/plugins/jedi_completion.py
+index caa543a1..9106c3c1 100644
+--- a/pyls/plugins/jedi_completion.py
++++ b/pyls/plugins/jedi_completion.py
+@@ -51,7 +51,11 @@
+ @hookimpl
+ def pyls_completions(config, document, position):
+     try:
+-        definitions = document.jedi_script(position).completions()
++        code_position = {}
++        if position:
++            code_position = {'line': position['line'] + 1,
++                             'column': _utils.clip_column(position['character'], document.lines, position['line'])}
++        definitions = document.jedi_script().complete(**code_position)
+     except AttributeError as e:
+         if 'CompiledObject' in str(e):
+             # Needed to handle missing CompiledObject attribute
+@@ -69,7 +73,7 @@ def pyls_completions(config, document, position):
+     settings = config.plugin_settings('jedi_completion', document_path=document.path)
+     should_include_params = settings.get('include_params')
+     include_params = snippet_support and should_include_params and use_snippets(document, position)
+-    return [_format_completion(d, include_params) for d in definitions] or None
++    return [_format_completion(signature, include_params) for d in definitions for signature in d.get_signatures()] or None
+ 
+ 
+ def is_exception_class(name):
+@@ -173,7 +177,7 @@ def _label(definition):
+ def _detail(definition):
+     try:
+         return definition.parent().full_name or ''
+-    except AttributeError:
++    except (AttributeError, TypeError):
+         return definition.full_name or ''
+ 
+ 
+diff --git a/pyls/workspace.py b/pyls/workspace.py
+index a58b76a2..f5c72375 100644
+--- a/pyls/workspace.py
++++ b/pyls/workspace.py
+@@ -237,16 +237,11 @@ def jedi_script(self, position=None):
+         environment = self.get_enviroment(environment_path) if environment_path else None
+ 
+         kwargs = {
+-            'source': self.source,
+-            'path': self.path,
+-            'sys_path': sys_path,
++            'code': self.source,
+             'environment': environment,
++            'project': jedi.api.Project(self.path, sys_path=sys_path),
+         }
+ 
+-        if position:
+-            kwargs['line'] = position['line'] + 1
+-            kwargs['column'] = _utils.clip_column(position['character'], self.lines, position['line'])
+-
+         return jedi.Script(**kwargs)
+ 
+     def get_enviroment(self, environment_path=None):
+diff --git a/setup.py b/setup.py
+index a56416a0..8120f91a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@
+         'configparser; python_version<"3.0"',
+         'future>=0.14.0; python_version<"3"',
+         'backports.functools_lru_cache; python_version<"3.2"',
+-        'jedi>=0.14.1,<0.16',
++        'jedi>=0.14.1',
+         'python-jsonrpc-server>=0.3.2',
+         'pluggy',
+         'ujson<=1.35; platform_system!="Windows"'
+
+From 7ca854bc87937e153be0e4bffcd6d5afe7ce2c92 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 10 Apr 2020 00:43:16 +0200
+Subject: [PATCH 2/7] remove deprecated params call
+
+---
+ pyls/plugins/jedi_completion.py | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/pyls/plugins/jedi_completion.py b/pyls/plugins/jedi_completion.py
+index 9106c3c1..5c9c358c 100644
+--- a/pyls/plugins/jedi_completion.py
++++ b/pyls/plugins/jedi_completion.py
+@@ -53,18 +53,22 @@ def pyls_completions(config, document, position):
+     try:
+         code_position = {}
+         if position:
+-            code_position = {'line': position['line'] + 1,
+-                             'column': _utils.clip_column(position['character'], document.lines, position['line'])}
+-        definitions = document.jedi_script().complete(**code_position)
++            code_position = {
++                'line': position['line'] + 1,
++                'column': _utils.clip_column(position['character'],
++                                             document.lines,
++                                             position['line'])}
++        completions = document.jedi_script().complete(**code_position)
+     except AttributeError as e:
+         if 'CompiledObject' in str(e):
+             # Needed to handle missing CompiledObject attribute
+             # 'sub_modules_dict'
+-            definitions = None
++            # TODO: probably not needed for new Complete objects
++            completions = None
+         else:
+             raise e
+ 
+-    if not definitions:
++    if not completions:
+         return None
+ 
+     completion_capabilities = config.capabilities.get('textDocument', {}).get('completion', {})
+@@ -73,7 +77,7 @@ def pyls_completions(config, document, position):
+     settings = config.plugin_settings('jedi_completion', document_path=document.path)
+     should_include_params = settings.get('include_params')
+     include_params = snippet_support and should_include_params and use_snippets(document, position)
+-    return [_format_completion(signature, include_params) for d in definitions for signature in d.get_signatures()] or None
++    return [_format_completion(c, include_params) for c in completions] or None
+ 
+ 
+ def is_exception_class(name):
+@@ -142,9 +146,9 @@ def _format_completion(d, include_params=True):
+         path = path.replace('/', '\\/')
+         completion['insertText'] = path
+ 
+-    if (include_params and hasattr(d, 'params') and d.params and
+-            not is_exception_class(d.name)):
+-        positional_args = [param for param in d.params
++    sig = d.get_signatures()
++    if (include_params and sig and not is_exception_class(d.name)):
++        positional_args = [param for param in sig[0].params
+                            if '=' not in param.description and
+                            param.name not in {'/', '*'}]
+ 
+@@ -167,8 +171,9 @@ def _format_completion(d, include_params=True):
+ 
+ 
+ def _label(definition):
+-    if definition.type in ('function', 'method') and hasattr(definition, 'params'):
+-        params = ', '.join([param.name for param in definition.params])
++    sig = definition.get_signatures()
++    if definition.type in ('function', 'method') and sig:
++        params = ', '.join([param.name for param in sig[0].params])
+         return '{}({})'.format(definition.name, params)
+ 
+     return definition.name
+
+From b1e08e1eab69512d34420d8b29d79fd427afa255 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Fri, 10 Apr 2020 00:43:41 +0200
+Subject: [PATCH 3/7] remove deprecated names call
+
+---
+ pyls/workspace.py | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/pyls/workspace.py b/pyls/workspace.py
+index f5c72375..05ca83ec 100644
+--- a/pyls/workspace.py
++++ b/pyls/workspace.py
+@@ -213,16 +213,9 @@ def word_at_position(self, position):
+         return m_start[0] + m_end[-1]
+ 
+     def jedi_names(self, all_scopes=False, definitions=True, references=False):
+-        environment_path = None
+-        if self._config:
+-            jedi_settings = self._config.plugin_settings('jedi', document_path=self.path)
+-            environment_path = jedi_settings.get('environment')
+-        environment = self.get_enviroment(environment_path) if environment_path else None
+-
+-        return jedi.api.names(
+-            source=self.source, path=self.path, all_scopes=all_scopes,
+-            definitions=definitions, references=references, environment=environment,
+-        )
++        script = self.jedi_script()
++        return script.get_names(all_scopes=all_scopes, definitions=definitions,
++                                references=references)
+ 
+     def jedi_script(self, position=None):
+         extra_paths = []
+
+From 9e8d7fdab8b4fa53fbbd0211b720506ba08ae566 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Wed, 15 Apr 2020 18:08:27 +0200
+Subject: [PATCH 4/7] convert position into jedi line, column fix path and
+ project parameters for jedi_script remove deprecated usages() calls
+
+---
+ pyls/_utils.py                  | 11 +++++++++++
+ pyls/plugins/definition.py      |  8 +++++---
+ pyls/plugins/highlight.py       |  5 +++--
+ pyls/plugins/hover.py           |  3 ++-
+ pyls/plugins/jedi_completion.py |  8 +-------
+ pyls/plugins/references.py      |  6 +++---
+ pyls/plugins/signature.py       |  3 ++-
+ pyls/workspace.py               |  8 +++++++-
+ 8 files changed, 34 insertions(+), 18 deletions(-)
+
+diff --git a/pyls/_utils.py b/pyls/_utils.py
+index 919bf1c5..478beda0 100644
+--- a/pyls/_utils.py
++++ b/pyls/_utils.py
+@@ -152,6 +152,17 @@ def clip_column(column, lines, line_number):
+     return min(column, max_column)
+ 
+ 
++def position_to_jedi_linecolumn(document, position):
++    """Convert the format 'line', 'character' to 'line', 'column'"""
++    code_position = {}
++    if position:
++        code_position = {'line': position['line'] + 1,
++                         'column': clip_column(position['character'],
++                                               document.lines,
++                                               position['line'])}
++    return code_position
++
++
+ if os.name == 'nt':
+     import ctypes
+ 
+diff --git a/pyls/plugins/definition.py b/pyls/plugins/definition.py
+index 8ec3b1ad..d4c13179 100644
+--- a/pyls/plugins/definition.py
++++ b/pyls/plugins/definition.py
+@@ -1,6 +1,6 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+ import logging
+-from pyls import hookimpl, uris
++from pyls import hookimpl, uris, _utils
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -8,9 +8,11 @@
+ @hookimpl
+ def pyls_definitions(config, document, position):
+     settings = config.plugin_settings('jedi_definition')
+-    definitions = document.jedi_script(position).goto_assignments(
++    code_position = _utils.position_to_jedi_linecolumn(document, position)
++    definitions = document.jedi_script().goto(
+         follow_imports=settings.get('follow_imports', True),
+-        follow_builtin_imports=settings.get('follow_builtin_imports', True))
++        follow_builtin_imports=settings.get('follow_builtin_imports', True),
++        **code_position)
+ 
+     return [
+         {
+diff --git a/pyls/plugins/highlight.py b/pyls/plugins/highlight.py
+index 839ffb26..4c4c195c 100644
+--- a/pyls/plugins/highlight.py
++++ b/pyls/plugins/highlight.py
+@@ -1,13 +1,14 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+ import logging
+-from pyls import hookimpl, lsp
++from pyls import hookimpl, lsp, _utils
+ 
+ log = logging.getLogger(__name__)
+ 
+ 
+ @hookimpl
+ def pyls_document_highlight(document, position):
+-    usages = document.jedi_script(position).usages()
++    code_position = _utils.position_to_jedi_linecolumn(document, position)
++    usages = document.jedi_script().get_references(**code_position)
+ 
+     def is_valid(definition):
+         return definition.line is not None and definition.column is not None
+diff --git a/pyls/plugins/hover.py b/pyls/plugins/hover.py
+index a98c0ea0..b8ff749d 100644
+--- a/pyls/plugins/hover.py
++++ b/pyls/plugins/hover.py
+@@ -9,7 +9,8 @@
+ 
+ @hookimpl
+ def pyls_hover(document, position):
+-    definitions = document.jedi_script(position).goto_definitions()
++    code_position = _utils.position_to_jedi_linecolumn(document, position)
++    definitions = document.jedi_script().infer(**code_position)
+     word = document.word_at_position(position)
+ 
+     if LooseVersion(_utils.JEDI_VERSION) >= LooseVersion('0.15.0'):
+diff --git a/pyls/plugins/jedi_completion.py b/pyls/plugins/jedi_completion.py
+index 5c9c358c..c8797539 100644
+--- a/pyls/plugins/jedi_completion.py
++++ b/pyls/plugins/jedi_completion.py
+@@ -51,13 +51,7 @@
+ @hookimpl
+ def pyls_completions(config, document, position):
+     try:
+-        code_position = {}
+-        if position:
+-            code_position = {
+-                'line': position['line'] + 1,
+-                'column': _utils.clip_column(position['character'],
+-                                             document.lines,
+-                                             position['line'])}
++        code_position = _utils.position_to_jedi_linecolumn(document, position)
+         completions = document.jedi_script().complete(**code_position)
+     except AttributeError as e:
+         if 'CompiledObject' in str(e):
+diff --git a/pyls/plugins/references.py b/pyls/plugins/references.py
+index 120cde41..4bd47c96 100644
+--- a/pyls/plugins/references.py
++++ b/pyls/plugins/references.py
+@@ -1,14 +1,14 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+ import logging
+-from pyls import hookimpl, uris
++from pyls import hookimpl, uris, _utils
+ 
+ log = logging.getLogger(__name__)
+ 
+ 
+ @hookimpl
+ def pyls_references(document, position, exclude_declaration=False):
+-    # Note that usages is not that great in a lot of cases: https://github.com/davidhalter/jedi/issues/744
+-    usages = document.jedi_script(position).usages()
++    code_position = _utils.position_to_jedi_linecolumn(document, position)
++    usages = document.jedi_script().get_references(**code_position)
+ 
+     if exclude_declaration:
+         # Filter out if the usage is the actual declaration of the thing
+diff --git a/pyls/plugins/signature.py b/pyls/plugins/signature.py
+index 6c509272..fff7a576 100644
+--- a/pyls/plugins/signature.py
++++ b/pyls/plugins/signature.py
+@@ -14,7 +14,8 @@
+ 
+ @hookimpl
+ def pyls_signature_help(document, position):
+-    signatures = document.jedi_script(position).call_signatures()
++    code_position = _utils.position_to_jedi_linecolumn(document, position)
++    signatures = document.jedi_script().get_signatures(**code_position)
+ 
+     if not signatures:
+         return {'signatures': []}
+diff --git a/pyls/workspace.py b/pyls/workspace.py
+index 05ca83ec..8e969e71 100644
+--- a/pyls/workspace.py
++++ b/pyls/workspace.py
+@@ -231,10 +231,16 @@ def jedi_script(self, position=None):
+ 
+         kwargs = {
+             'code': self.source,
++            'path': self.path,
+             'environment': environment,
+-            'project': jedi.api.Project(self.path, sys_path=sys_path),
++            'project': jedi.api.Project(os.path.dirname(self.path),
++                                        sys_path=sys_path),
+         }
+ 
++        if position:
++            # deprecated by Jedi to use in Script() constructor
++            kwargs += _utils.position_to_jedi_linecolumn(self, position)
++
+         return jedi.Script(**kwargs)
+ 
+     def get_enviroment(self, environment_path=None):
+
+From 16a526b1cab9ef00eb298f2637392a0b132ed942 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Thu, 16 Apr 2020 11:45:54 +0200
+Subject: [PATCH 5/7] jedi.Script keywords source vs code
+
+source is deprecated in 0.17.0 in favor of code
+but code did not exist in 0.16.0
+---
+ pyls/workspace.py | 3 ++-
+ setup.py          | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/pyls/workspace.py b/pyls/workspace.py
+index 8e969e71..8b31c56d 100644
+--- a/pyls/workspace.py
++++ b/pyls/workspace.py
+@@ -230,7 +230,8 @@ def jedi_script(self, position=None):
+         environment = self.get_enviroment(environment_path) if environment_path else None
+ 
+         kwargs = {
+-            'code': self.source,
++            # 'source' is deprecated but 'code' was only introduced in 0.17.0
++            'source' if jedi.__version__ < "0.17.0" else 'code': self.source,
+             'path': self.path,
+             'environment': environment,
+             'project': jedi.api.Project(os.path.dirname(self.path),
+diff --git a/setup.py b/setup.py
+index 8120f91a..1070065b 100755
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@
+         'configparser; python_version<"3.0"',
+         'future>=0.14.0; python_version<"3"',
+         'backports.functools_lru_cache; python_version<"3.2"',
+-        'jedi>=0.14.1',
++        'jedi>=0.16.0',
+         'python-jsonrpc-server>=0.3.2',
+         'pluggy',
+         'ujson<=1.35; platform_system!="Windows"'
+
+From 551990f350532b8658dff76421ff234649fd3b7c Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Thu, 16 Apr 2020 11:48:17 +0200
+Subject: [PATCH 6/7] don't expect isabs at first place
+
+sometimes jedi reports some keywords first
+---
+ test/plugins/test_completion.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/plugins/test_completion.py b/test/plugins/test_completion.py
+index 57caa8b3..34ca9f55 100644
+--- a/test/plugins/test_completion.py
++++ b/test/plugins/test_completion.py
+@@ -58,7 +58,8 @@ def test_jedi_completion(config):
+     items = pyls_jedi_completions(config, doc, com_position)
+ 
+     assert items
+-    assert items[0]['label'] == 'isabs(path)'
++    labels = [i['label'] for i in items]
++    assert 'isabs(path)' in labels
+ 
+     # Test we don't throw with big character
+     pyls_jedi_completions(config, doc, {'line': 1, 'character': 1000})
+
+From afafa62b680a7f4762937b956bc2fee57126c56d Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Thu, 16 Apr 2020 12:28:53 +0200
+Subject: [PATCH 7/7] check expected in all refs in builtin test
+
+---
+ test/plugins/test_references.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/test/plugins/test_references.py b/test/plugins/test_references.py
+index 7e7cbe75..2a897d68 100644
+--- a/test/plugins/test_references.py
++++ b/test/plugins/test_references.py
+@@ -75,5 +75,7 @@ def test_references_builtin(tmp_workspace):  # pylint: disable=redefined-outer-n
+     refs = pyls_references(doc2, position)
+     assert len(refs) >= 1
+ 
+-    assert refs[0]['range']['start'] == {'line': 4, 'character': 7}
+-    assert refs[0]['range']['end'] == {'line': 4, 'character': 19}
++    expected = {'start': {'line': 4, 'character': 7},
++                'end': {'line': 4, 'character': 19}}
++    ranges = [r['range'] for r in refs]
++    assert expected in ranges

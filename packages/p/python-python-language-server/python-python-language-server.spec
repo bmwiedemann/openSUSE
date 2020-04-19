@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%if %{without python2}
+  %define skip_python2 1
+%endif
 Name:           python-python-language-server
 Version:        0.31.9
 Release:        0
@@ -25,12 +28,10 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE use_newer_ujson.patch mcepl@suse.com
-# Use system python3-ujson without regards which version it is
-Patch0:         use_newer_ujson.patch
-Patch1:         pyls-pr775-jedi016.patch
-Patch2:         pyls-pr775-addon.patch
-Patch3:         pyls-pr778-multiplerefs.patch
+# gh#palantir/python-language-server#778
+Patch0:         pyls-pr778-multiplerefs.patch 
+# gh#palantir/python-language-server#781
+Patch1:         pyls-pr781-jedi016-017.patch 
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8}
@@ -97,6 +98,8 @@ will be enabled:
 %prep
 %setup -q -n python-language-server-%{version}
 %autopatch -p1
+# Use system python3-ujson without regards which version it is
+sed -i "s/'ujson<=.*'/'ujson'/" setup.py
 
 %build
 %python_build
@@ -106,7 +109,6 @@ will be enabled:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests are switched off ATM, because of gh#palantir/python-language-server#744
 # Remove pytest addopts
 rm setup.cfg
 # unclean tear down
