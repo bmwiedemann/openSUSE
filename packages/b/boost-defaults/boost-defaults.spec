@@ -1,7 +1,7 @@
 #
 # spec file for package boost-defaults
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           boost-defaults
 Version:        1.71.0
 Release:        0
@@ -23,7 +24,7 @@ Release:        0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.boost.org
+URL:            http://www.boost.org
 Source1:        README
 BuildArch:      noarch
 
@@ -513,11 +514,15 @@ cp %{SOURCE1} .
 %files -n libboost_graph_parallel-devel
 %doc README
 
+%if %{with python2}
 %files -n libboost_mpi_python-devel
 %doc README
+%endif
 
+%if %{with python2}
 %files -n python-boost_parallel_mpi
 %doc README
+%endif
 
 %files -n libboost_mpi_python3-devel
 %doc README
@@ -531,11 +536,15 @@ cp %{SOURCE1} .
 %files -n libboost_program_options-devel
 %doc README
 
+%if %{with python2}
 %files -n libboost_python-devel
 %doc README
+%endif
 
+%if %{with python2}
 %files -n libboost_numpy-devel
 %doc README
+%endif
 
 %files -n libboost_python3-devel
 %doc README

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:58:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2 available by generating the py2
+  depending packages only when needed
+
+-------------------------------------------------------------------
 Mon Aug 5 16:14:10 UTC 2019 - Adam Majer <adam.majer@suse.de>
 
 - Update for Boost 1.71.0
