@@ -16,23 +16,24 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gunicorn
-Version:        19.10.0
+Version:        20.0.4
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://gunicorn.org
+URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
-Patch0:         pytest5.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+Requires:       python-setuptools >= 3.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -57,7 +58,6 @@ This package contains the documentation.
 
 %prep
 %setup -q -n gunicorn-%{version}
-%patch0 -p1
 # remove version pinning for test requirements
 sed -i 's/==.*//' requirements_test.txt
 sed -i -e '/cover/d' requirements_test.txt
@@ -69,7 +69,6 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/gunicorn
-%python_clone -a %{buildroot}%{_bindir}/gunicorn_paster
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -77,16 +76,13 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 
 %post
 %python_install_alternative gunicorn
-%python_install_alternative gunicorn_paster
 
 %postun
 %python_uninstall_alternative gunicorn
-%python_uninstall_alternative gunicorn_paster
 
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/gunicorn
-%python_alternative %{_bindir}/gunicorn_paster
 %{python_sitelib}/*
 
 %files -n python-gunicorn-doc

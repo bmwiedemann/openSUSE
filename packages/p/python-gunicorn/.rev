@@ -209,4 +209,12 @@
  * Miscellaneous fixes and improvement for linting using Pylints</comment>
     <requestid>790071</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b2e6c8fec5a5d6ed64577b9e5c17f865</srcmd5>
+    <version>20.0.4</version>
+    <time>1587325744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792782</requestid>
+  </revision>
 </revisionlist>

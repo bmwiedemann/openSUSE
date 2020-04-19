@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  8 14:16:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 20.0.4
+  * Ensure WSGI header value is string before conducting regex search on it.
+  * Use importlib instead of __import__ and eval
+  * Use Python default SSL cipher list by default
+  * Support str and bytes for UNIX socket addresses
+  * fixed the way the config module is loaded. __file__ is now available
+  * only support Python >= 3.5
+  * load the WSGI application before the loader to pick up all files
+- Dropped patch pytest5.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 09:59:42 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 19.10.0
