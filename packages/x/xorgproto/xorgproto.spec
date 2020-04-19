@@ -1,7 +1,7 @@
 #
 # spec file for package xorgproto
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           xorgproto
-Version:        2019.2
+Version:        2020.1
 Release:        0
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Summary:        The X11 Protocol collection
 License:        MIT
 Group:          Development/Libraries/X11

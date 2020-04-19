@@ -56,4 +56,16 @@ for *proto packages.</comment>
     than 1.0.12 will not build without some legacy headers installed.</comment>
     <requestid>741048</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c3dcc9770974be79b5142004689e169d</srcmd5>
+    <version>2020.1</version>
+    <time>1587324924</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2020.1
+  * This release adds a new keysym, a state-change event to the
+    DPMS extension, synchronizes more of the meson and autotools
+    build sytems, and converts some quasi-text documentation to
+    Markdown.</comment>
+    <requestid>793959</requestid>
+  </revision>
 </revisionlist>
