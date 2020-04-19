@@ -1,7 +1,7 @@
 #
 # spec file for package gdb
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Do not provide URL for snapshots as the file lasts there only for 2 days.
 # ftp://sourceware.org/pub/gdb/releases/gdb-%%{version}.tar.gz
 Source:         gdb-%{version}.tar.bz2
-Url:            http://gnu.org/software/gdb/
+URL:            http://gnu.org/software/gdb/
 
 %if "%{scl}" == "devtoolset-1.1"
 Obsoletes:      devtoolset-1.0-%{pkg_name}
@@ -251,6 +251,7 @@ Patch2012:      gdb-0001-remove-alloca-0-calls.patch
 Patch2013:      gdb-arch13-1.diff
 Patch2014:      gdb-arch13-2.diff
 Patch2015:      gdb-arch13-3.diff
+Patch2016:      bfd-change-num_group-to-unsigned-int.patch
 
 # Proposed patch for PR symtab/24971
 Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
@@ -610,6 +611,7 @@ find -name "*.info*"|xargs rm -f
 %patch2013 -p1
 %patch2014 -p1
 %patch2015 -p1
+%patch2016 -p1
 
 %patch2500 -p1
 %patch2501 -p1
