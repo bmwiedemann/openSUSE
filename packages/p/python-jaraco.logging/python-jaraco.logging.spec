@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.logging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.logging
-Version:        2.0
+Version:        3.0.0
 Release:        0
 Summary:        Tools to work with logging
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.logging
+URL:            https://github.com/jaraco/jaraco.logging
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.logging/jaraco.logging-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tempora}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
-Requires:       python-six
 Requires:       python-tempora
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,6 +44,7 @@ jaraco.logging Tools for working with logging.
 %prep
 %setup -q -n jaraco.logging-%{version}
 sed -i 's/--flake8//' pytest.ini
+sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.logging.egg-info
 
 %build
@@ -62,9 +61,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ja
 }
 
 %check
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python2 --ignore=_build.python3
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
