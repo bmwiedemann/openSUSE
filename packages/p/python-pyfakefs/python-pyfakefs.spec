@@ -25,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define skip_python2 1
 Name:           python-pyfakefs%{psuffix}
-Version:        3.7.2
+Version:        4.0.2
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
@@ -36,16 +37,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-pathlib2 >= 2.3.2
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module pathlib2 >= 2.3.2}
 BuildRequires:  %{python_module pytest >= 2.8.6}
 BuildRequires:  %{pythons}
-BuildRequires:  python2-scandir >= 1.8
-%endif
-%ifpython2
-Requires:       python-scandir >= 1.8
 %endif
 %python_subpackages
 

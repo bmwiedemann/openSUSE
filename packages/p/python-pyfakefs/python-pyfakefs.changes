@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 14 07:22:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.2:
+  * py3 only variant
+
+-------------------------------------------------------------------
 Sun Mar  8 03:36:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Swith to multibuild in order to avoid full python buildcycle

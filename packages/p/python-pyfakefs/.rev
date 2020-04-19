@@ -99,4 +99,12 @@
   * Various fixes for python 3.8</comment>
     <requestid>782610</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>253ae478aebd51d0ced1e5f54bdd3ddd</srcmd5>
+    <version>4.0.2</version>
+    <time>1587325232</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I py3 only pkg</comment>
+    <requestid>784798</requestid>
+  </revision>
 </revisionlist>
