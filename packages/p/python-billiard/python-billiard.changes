@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  6 12:24:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Stop building Python 2 packages (we avoid also weird constructs
+  with alternative noarch package).
+
+-------------------------------------------------------------------
+Mon Mar 30 14:04:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.6.3.0
+  * Close the inqueue and outqueue when terminating to avoid file descriptor leakage.
+  * upgrade to pytest<6
+  * Test against the latest Python 3.8 and PyPy3 release
+
+-------------------------------------------------------------------
 Fri Sep 13 11:19:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.1.0:

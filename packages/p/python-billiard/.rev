@@ -168,4 +168,20 @@
   - Fix compatibility with Python 2.7 on Windows (#283)</comment>
     <requestid>730686</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>942e77bcdec0af3d112a131a52f84403</srcmd5>
+    <version>3.6.3.0</version>
+    <time>1587325725</time>
+    <user>dimstar_suse</user>
+    <comment>For Staging:I.
+
+- Stop building Python 2 packages (we avoid also weird constructs
+  with alternative noarch package).
+
+- Update to 3.6.3.0
+  * Close the inqueue and outqueue when terminating to avoid file descriptor leakage.
+  * upgrade to pytest&lt;6
+  * Test against the latest Python 3.8 and PyPy3 release</comment>
+    <requestid>791763</requestid>
+  </revision>
 </revisionlist>
