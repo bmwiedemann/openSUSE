@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:25:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.0.2
+  * Drop Python 2 support.
+  * Fix usage with redis and improve overall real-socket passthrough.
+  * Fix TypeError: wrap_socket() missing 1 required positional argument: 'sock'.
+  * Fix simple typo: neighter -> neither.
+  * Updated documentation for register_uri concerning using ports.
+  * Clarify relation between ``enabled`` and ``httprettized`` in API docs.
+  * Align signature with builtin socket.
+
+-------------------------------------------------------------------
 Mon Jan  7 08:22:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Version update to 0.9.6:
