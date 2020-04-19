@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:04:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- bison 3.5.4:
+  * Fix portability issues of the package itself on old compilers
+  * Fix api.token.raw support in Java
+
+-------------------------------------------------------------------
 Wed Mar 18 12:13:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.5.3
