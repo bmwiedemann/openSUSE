@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        0.6.0
+Version:        3.1.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -35,16 +36,15 @@ URL:            https://github.com/jaraco/zipp
 Source:         https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
-BuildRequires:  python-contextlib2
-BuildRequires:  python-rpm-macros
-BuildRequires:  python-unittest2
+Requires:       python-more-itertools
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module jaraco.itertools}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest >= 3.5}
 %endif
-Requires:       python-more-itertools
 %python_subpackages
 
 %description
@@ -66,6 +66,10 @@ rm -f pytest.ini
 
 %if %{with test}
 %check
+# skip performance test (we do not have func_timeout sofar)
+sed -i -e 's:import func_timeout::' \
+       -e 's:@func_timeout.func_set_timeout(.):@unittest.skip("skip performance test"):' \
+       test_zipp.py
 %pytest
 %endif
 

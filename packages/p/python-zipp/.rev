@@ -56,4 +56,32 @@
     <comment></comment>
     <requestid>727096</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f4a05bc35640d22e63cf1652d2d1f4cf</srcmd5>
+    <version>3.1.0</version>
+    <time>1587325201</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not-removed py2 dependencies
+
+- version update to 3.1.0
+  * #47: ``.open`` now raises ``FileNotFoundError`` and
+    ``IsADirectoryError`` when appropriate.
+  * #44: ``zipp.Path.open()`` now supports a compatible signature
+    as ``pathlib.Path.open()``, accepting text (default) or binary
+    modes and soliciting keyword parameters passed through to
+    ``io.TextIOWrapper`` (encoding, newline, etc). The stream is
+    opened in text-mode by default now. ``open`` no
+    longer accepts ``pwd`` as a positional argument and does not
+    accept the ``force_zip64`` parameter at all. This change is
+    a backward-incompatible change for that single function.
+  * #43: Restored performance of implicit dir computation.
+  * #36: Rebuild package with minimum Python version declared both
+    in package metadata and in the python tag.
+  * #32: For read-only zip files, complexity of ``.exists`` and
+    ``joinpath`` is now constant time instead of ``O(n)``, preventing
+    quadratic time in common use-cases and rendering large
+    zip files unusable for Path. Big thanks to Benjy Weinberger
+    for the bug report and contributed fix (#33).</comment>
+    <requestid>784549</requestid>
+  </revision>
 </revisionlist>
