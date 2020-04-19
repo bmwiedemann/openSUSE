@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.itertools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.itertools
-Version:        4.4.2
+Version:        5.0.0
 Release:        0
 Summary:        Tools to work with iterables
 License:        MIT
@@ -31,13 +32,11 @@ BuildRequires:  %{python_module more-itertools >= 4.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-inflect
 Requires:       python-jaraco.base >= 6.1
 Requires:       python-more-itertools >= 4.0.0
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,6 +47,7 @@ Complements itertools and more_itertools.
 %prep
 %setup -q -n jaraco.itertools-%{version}
 sed -i 's/--flake8//' pytest.ini
+sed -i 's/--black --cov//' pytest.ini
 
 %build
 %python_build

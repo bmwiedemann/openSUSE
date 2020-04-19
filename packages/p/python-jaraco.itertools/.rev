@@ -24,4 +24,12 @@
   * Fixed RuntimeError in takewhile_peek on later Pythons where StopIteration is no longer allowed in a generator.</comment>
     <requestid>691788</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64acf662ef54f3b5ce671644f7b88e0a</srcmd5>
+    <version>5.0.0</version>
+    <time>1587325171</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>784209</requestid>
+  </revision>
 </revisionlist>
