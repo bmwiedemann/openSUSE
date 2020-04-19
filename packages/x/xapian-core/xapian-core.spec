@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-core
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xapian-core
-Version:        1.4.9
+Version:        1.4.14
 Release:        0
 Summary:        The Xapian Probabilistic Information Retrieval Library
 License:        GPL-2.0-only
 Group:          Productivity/Databases/Servers
-Url:            http://www.xapian.org/
+URL:            http://www.xapian.org/
 Source0:        http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz
 Source1:        http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
