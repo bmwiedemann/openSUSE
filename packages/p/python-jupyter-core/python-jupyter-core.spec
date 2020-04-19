@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-jupyter-core%{psuffix}
@@ -56,7 +57,9 @@ Obsoletes:      %{oldpython}-jupyter_core < %{version}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python-mock
+%endif
 %endif
 %python_subpackages
 

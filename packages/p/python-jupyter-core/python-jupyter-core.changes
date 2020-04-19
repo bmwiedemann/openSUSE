@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 28 07:39:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Mar 17 07:20:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull sybmol named package but real named package
