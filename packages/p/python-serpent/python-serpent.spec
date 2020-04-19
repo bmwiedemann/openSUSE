@@ -1,7 +1,7 @@
 #
 # spec file for package python-serpent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-serpent
-Version:        1.28
+Version:        1.30.2
 Release:        0
 Summary:        Serialization based on astliteral_eval
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/irmen/Serpent
 Source:         https://files.pythonhosted.org/packages/source/s/serpent/serpent-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 # /SECTION
-BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
