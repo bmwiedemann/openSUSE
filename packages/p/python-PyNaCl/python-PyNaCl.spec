@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyNaCl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://pypi.org/packages/source/P/PyNaCl/PyNaCl-%{version}.tar.
 # https://github.com/pyca/pynacl/commit/a8c08b18f3a2e8f2140c531afaf42715fcab68e7
 Patch0:         python-PyNaCl-hypothesis-remove-average_size.patch
 Patch1:         fix_tests.patch
+Patch2:         hypothesis-no-unilmited.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycparser}
