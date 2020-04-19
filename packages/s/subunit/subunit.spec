@@ -1,7 +1,7 @@
 #
 # spec file for package subunit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,23 @@
 #
 
 
+%bcond_with python2
+%define skip_python2 1
 # %%global majver  %%(cut -d. -f-2 <<< %%{version})
-%global majver  1.3
+%global majver  1.4
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           subunit
-Version:        1.3.0
+Version:        1.4.0+git.1584197985.0e9f67b
 Release:        0
-Summary:        C bindings for subunit
+Summary:        C library for the subunit testing protocol
 License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/testing-cabal/subunit
-Source0:        https://github.com/testing-cabal/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source99:       subunit-rpmlintrc
+# PATCH-FIX-UPSTREAM python38-failing-tests.patch mcepl@suse.com
+# skip tests failing with Python 3.8+
+Patch0:         python38-failing-tests.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
@@ -104,37 +109,6 @@ BuildArch:      noarch
 Subunit shell bindings.  See the python3-python-subunit package for test
 processing functionality.
 
-%package -n python2-python-%{name}
-Summary:        Streaming protocol for test results
-Group:          Development/Libraries/Python
-Requires:       python2-extras
-Requires:       python2-testtools >= 1.8.0
-Provides:       python-python-subunit = %{version}-%{release}
-Obsoletes:      python-python-subunit < %{version}-%{release}
-BuildArch:      noarch
-
-%description -n python2-python-%{name}
-Subunit is a streaming protocol for test results.  The protocol is a
-binary encoding that is generated and parsed.  By design, all the
-components of the protocol conceptually fit into the xUnit TestCase ->
-TestResult interaction.
-
-Subunit comes with command line filters to process a subunit stream and
-language bindings for Python, C, C++ and Shell. Bindings can be
-written for other languages.
-
-A number of things can be done with subunit:
-- Test aggregation: Tests run separately can be combined and then
-  reported/displayed together.  For instance, tests from different
-  languages can be shown as a seamless whole.
-- Test archiving: A test run may be recorded and replayed later.
-- Test isolation: Tests that may crash or otherwise interact badly with
-  each other can be run separately and then aggregated, rather than
-  interfering with each other.
-- Grid testing: subunit can act as the necessary serialization and
-  deserialization to get test runs on distributed machines to be
-  reported in real time.
-
 %package -n python3-python-%{name}
 Summary:        Streaming protocol for test results
 Group:          Development/Libraries/Python
@@ -167,9 +141,9 @@ A number of useful things can be done easily with subunit:
 %package filters
 Summary:        Command line filters for processing subunit streams
 Group:          Development/Tools/Other
-Requires:       pygtk2
-Requires:       python2-junitxml
-Requires:       python2-python-%{name} = %{version}-%{release}
+Requires:       python3-junitxml
+Requires:       python3-python-%{name} = %{version}-%{release}
+Requires:       typelib-1_0-Gtk-3_0
 BuildArch:      noarch
 
 %description filters
@@ -196,8 +170,8 @@ done
 sed "/^tests_LDADD/ilibcppunit_subunit_la_LIBADD = -lcppunit libsubunit.la\n" \
     -i Makefile.am
 
-# Depend on python2, not just python
-sed -i.orig 's,%{_bindir}/python,&2,' python/subunit/run.py
+# Depend on python3, not just python
+sed -i.orig -e 's,\(%{_bindir}/python\)\s*$,\13,' python/subunit/run.py
 fixtimestamp python/subunit/run.py
 
 # Do not use env
@@ -257,7 +231,10 @@ for fil in filters/*; do
 done
 
 %check
+
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTHON=%{$python}
+# https://bugs.launchpad.net/subunit/+bug/1323410
+find . -name sample\*.py -exec chmod +x '{}' \;
 make %{?_smp_mflags} check
 }
 
@@ -301,15 +278,10 @@ make %{?_smp_mflags} check
 %license Apache-2.0 BSD COPYING
 %config(noreplace) %{_sysconfdir}/profile.d/%{name}.sh
 
-%files -n python2-python-%{name}
-%license Apache-2.0 BSD COPYING
-%{python2_sitelib}/%{name}/
-%{python2_sitelib}/python_%{name}-%{version}-*.egg-info
-
 %files -n python3-python-%{name}
 %license Apache-2.0 BSD COPYING
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/python_%{name}-%{version}-*.egg-info
+%{python3_sitelib}/python_%{name}-*.egg-info
 
 %files filters
 %{_bindir}/*
