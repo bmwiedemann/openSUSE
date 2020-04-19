@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:38:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix matplotlib deprecation:
+  * matplotlib.patch
+- Skip two tests that keep failing everywhere
+
+-------------------------------------------------------------------
 Fri Nov 22 00:41:03 UTC 2019 - steven.kowalik@suse.com
 
 - Drop incorrectly calculated dependency on python33

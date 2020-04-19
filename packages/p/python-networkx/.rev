@@ -192,4 +192,14 @@
 - Update URL, upstream changed to tarballs from zipfiles.</comment>
     <requestid>750202</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7dc309b33292e98d8d5af9c1444d3c45</srcmd5>
+    <version>2.4</version>
+    <time>1587325719</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix matplotlib deprecation:
+  * matplotlib.patch
+- Skip two tests that keep failing everywhere</comment>
+    <requestid>790492</requestid>
+  </revision>
 </revisionlist>

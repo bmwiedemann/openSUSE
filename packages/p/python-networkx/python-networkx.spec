@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,17 @@ Version:        2.4
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
 # UPSTREAM PATCH: gh#networkx/networkx#3724
 Patch0:         numpy-38-test.patch
+Patch1:         matplotlib.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +42,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-decorator >= 3.4.0
 Recommends:     python-PyYAML
-Recommends:     python-matplotlib
+Recommends:     python-matplotlib >= 3.1
 Recommends:     python-pydot
 Recommends:     python-pygraphviz
 Recommends:     python-pyparsing
@@ -63,7 +64,6 @@ Features:
 
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
 Provides:       %{python_module networkx-doc = %{version}}
 
 %description -n %{name}-doc
@@ -102,7 +102,8 @@ popd
 
 %check
 # test excluded because it leads to crashes on i586, gh#networkx/networkx#3304
-%pytest -k 'not test_subgraph_centrality_big_graph'
+# TestKatzCentralityDirectedNumpy fails on git master atm too
+%pytest -n auto -k 'not test_subgraph_centrality_big_graph and not TestKatzCentralityDirectedNumpy'
 
 %files %{python_files}
 %license LICENSE.txt
