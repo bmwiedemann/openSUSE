@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-Version:        2.4.2
+Version:        2.6.1
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# bt#birkenfeld/pygments-main#1490
-Patch1:         denose.patch
+BuildRequires:  %{python_module base >= 3.5}
 # We need pytest just because of its test runner, it seems even
 # python3 stdlib unittest runner doesn't work
 BuildRequires:  %{python_module pytest}
@@ -55,41 +55,41 @@ source code. Highlights are:
 
 %prep
 %setup -q -n Pygments-%{version}
-%autopatch -p1
 
 # Remove non-oss licensed files, see bnc# 760344
-rm tests/examplefiles/{Sorting,test}.mod
+rm tests/examplefiles/firefox.mak tests/examplefiles/example.webidl
+
+# Remove unnecessary shebang
+sed -i '1 { /^#!/ d }' pygments/lexers/_usd_builtins.py
 
 %build
 %python_build
 
 %install
 %python_install
-%{python_expand %$python_install
-mv %{buildroot}%{_bindir}/pygmentize %{buildroot}%{_bindir}/pygmentize-%{$python_bin_suffix}
-rm -rf %{buildroot}%{$python_sitelib}/tests
-%fdupes %{buildroot}%{$python_sitelib}
-%if "%{python3_bin_suffix}" != ""
 install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
-%endif
+%python_clone -a %{buildroot}%{_bindir}/pygmentize
+%python_clone -a %{buildroot}%{_mandir}/man1/pygmentize.1
+%{python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %prepare_alternative pygmentize
 
 %post
-%python_install_alternative pygmentize
+%{python_install_alternative pygmentize pygmentize.1}
 
 %postun
-%python_install_alternative pygmentize
+%python_uninstall_alternative pygmentize
 
 %check
 %pytest
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGES TODO
+%doc AUTHORS CHANGES
 %python_alternative %{_bindir}/pygmentize
-%python3_only %{_mandir}/man1/pygmentize.1*
+%python_alternative %{_mandir}/man1/pygmentize.1%{ext_man}
 %{python_sitelib}/pygments/
 %{python_sitelib}/Pygments-%{version}-py%{python_version}.egg-info/
 

@@ -263,4 +263,41 @@
   - Fix ``TerminalFormatter`` using bold for bright text (#1480)</comment>
     <requestid>707618</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9c74b08e8688956d0ab3ae904aea3ea6</srcmd5>
+    <version>2.6.1</version>
+    <time>1587325757</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+
+- fix the path of non-oss licensed files to remove
+
+- set the minimal version of python to 3.5 to match upstream
+  requirement
+
+- update to version 2.6.1:
+  * This release fixes a packaging issue. No functional changes.
+- additional changes from version 2.6.0:
+  * Running Pygments on Python 2.x is no longer supported.
+  * Added lexers:
+    + Linux kernel logs (PR#1310)
+    + LLVM MIR (PR#1361)
+    + MiniScript (PR#1397)
+    + Mosel (PR#1287, PR#1326)
+    + Parsing Expression Grammar (PR#1336)
+    + ReasonML (PR#1386)
+    + Ride (PR#1319, PR#1321)
+    + Sieve (PR#1257)
+    + USD (PR#1290)
+    + WebIDL (PR#1309)
+  * Updated lexers:
+    + Apache2 (PR#1378)
+    + Chapel (PR#1357)
+    + CSound (PR#1383)
+    + D (PR#1375, PR#1362)
+    + Idris (PR#1360)
+    + Perl6/Raku lexer (PR#1344)
+    + Python3 (PR#1382, PR#1385)</comment>
+    <requestid>793948</requestid>
+  </revision>
 </revisionlist>
