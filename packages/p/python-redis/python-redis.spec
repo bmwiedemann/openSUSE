@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redis
-Version:        3.3.11
+Version:        3.4.1
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/andymccurdy/redis-py
 Source:         https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
-Patch0:         0001-fix-tests-with-redis-pre-5.0.0.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 2.7.0}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +42,6 @@ The Python interface to the Redis key-value store.
 
 %prep
 %setup -q -n redis-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -54,7 +52,7 @@ The Python interface to the Redis key-value store.
 
 %check
 %{_sbindir}/redis-server --port 6379 &
-%python_exec setup.py test
+%pytest
 killall redis-server
 
 %files %{python_files}

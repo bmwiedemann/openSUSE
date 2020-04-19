@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:37:31 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.4.1
+  * 3.4.1
+    * Move the username argument in the Redis and Connection classes to the
+      end of the argument list. This helps those poor souls that specify all
+      their connection options as non-keyword arguments. #1276
+    * Prior to ACL support, redis-py ignored the username component of
+      Connection URLs. With ACL support, usernames are no longer ignored and
+      are used to authenticate against an ACL rule. Some cloud vendors with
+      managed Redis instances (like Heroku) provide connection URLs with a
+      username component pre-ACL that is not intended to be used. Sending that
+      username to Redis servers < 6.0.0 results in an error. Attempt to detect
+      this condition and retry the AUTH command with only the password such
+      that authentication continues to work for these users. #1274
+    * Removed the __eq__ hooks to Redis and ConnectionPool that were added
+      in 3.4.0. This ended up being a bad idea as two separate connection
+      pools be considered equal yet manage a completely separate set of
+      connections.
+  * 3.4.0
+    * Allow empty pipelines to be executed if there are WATCHed keys.
+      This is a convenient way to test if any of the watched keys changed
+      without actually running any other commands. Thanks @brianmaissy.
+      #1233, #1234
+    * Removed support for end of life Python 3.4.
+    * Added support for all ACL commands in Redis 6. Thanks @IAmATeaPot418
+      for helping.
+    * Pipeline instances now always evaluate to True. Prior to this change,
+      pipeline instances relied on __len__ for boolean evaluation which
+      meant that pipelines with no commands on the stack would be considered
+      False. #994
+    * Client instances and Connection pools now support a 'client_name'
+      argument. If supplied, all connections created will call CLIENT SETNAME
+      as soon as the connection is opened. Thanks to @Habbie for supplying
+      the basis of this change. #802
+    * Added the 'ssl_check_hostname' argument to specify whether SSL
+      connections should require the server hostname to match the hostname
+      specified in the SSL cert. By default 'ssl_check_hostname' is False
+      for backwards compatibility. #1196
+    * Slightly optimized command packing. Thanks @Deneby67. #1255
+    * Added support for the TYPE argument to SCAN. Thanks @netocp. #1220
+    * Better thread and fork safety in ConnectionPool and
+      BlockingConnectionPool. Added better locking to synchronize critical
+      sections rather than relying on CPython-specific implementation details
+      relating to atomic operations. Adjusted how the pools identify and
+      deal with a fork. Added a ChildDeadlockedError exception that is
+      raised by child processes in the very unlikely chance that a deadlock
+      is encountered. Thanks @gmbnomis, @mdellweg, @yht804421715. #1270,
+      #1138, #1178, #906, #1262
+    * Added __eq__ hooks to the Redis and ConnectionPool classes.
+      Thanks @brainix. #1240
+- deleted patches
+  - 0001-fix-tests-with-redis-pre-5.0.0.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Dec 13 19:00:52 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Fix tests with redis pre 5.0.0:
