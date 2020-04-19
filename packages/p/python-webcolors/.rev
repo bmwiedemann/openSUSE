@@ -41,4 +41,15 @@
     colors</comment>
     <requestid>731241</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9532ca6bb59b65ff4e8360c152057034</srcmd5>
+    <version>1.11.1</version>
+    <time>1587324963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.1:
+  * Python 2 has reached the end of its support cycle from the Python
+    core team; accordingly, Python 2 support is dropped. Supported
+    Python versions are now 3.5, 3.6, 3.7, and 3.8.</comment>
+    <requestid>783014</requestid>
+  </revision>
 </revisionlist>

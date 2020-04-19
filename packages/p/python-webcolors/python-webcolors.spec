@@ -1,7 +1,7 @@
 #
 # spec file for package python-webcolors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-webcolors
-Version:        1.10
+Version:        1.11.1
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause
