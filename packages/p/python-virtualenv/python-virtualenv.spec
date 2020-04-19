@@ -26,39 +26,50 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        16.7.10
+Version:        20.0.17
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
-%if %{with test}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pypiserver}
-BuildRequires:  %{python_module pytest-localserver}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module virtualenv >= %{version}}
-%endif
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 41.0.0}
+BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-appdirs >= 1.4.3
+Requires:       python-distlib >= 0.3.0
+Requires:       python-filelock >= 3.0.0
+Requires:       python-importlib-metadata >= 0.12
+Requires:       python-importlib_resources >= 1.0
 Requires:       python-setuptools
+Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%ifpython2
+Requires:       python-contextlib2 >= 0.6.0
+Requires:       python-pathlib2 >= 2.3.3
+%endif
+%if %{with test}
+BuildRequires:  %{python_module coverage >= 4.5.1}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pytest >= 4.0.0}
+BuildRequires:  %{python_module pytest-env >= 0.6.2}
+BuildRequires:  %{python_module pytest-mock >= 2.0.0}
+BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
+BuildRequires:  %{python_module virtualenv >= %{version}}
+BuildRequires:  fish
+BuildRequires:  python3-xonsh >= 0.9.13
+BuildRequires:  tcsh
+%endif
 %python_subpackages
 
 %description
 virtualenv is a tool to create isolated Python environments.
 The basic problem being addressed is one of dependencies and versions, and
 indirectly permissions. Imagine you have an application that needs version 1
-of LibFoo, but another application requires version 2. How can you use both
-these applications? If you install everything into
-%{_libexecdir}/python2.4/site-packages (or whatever your platforms standard location
-is), its easy to end up in a situation where you unintentionally upgrade an
-application that shouldnt be upgraded.
+of LibFoo, but another application requires version 2.
 
 Or more generally, what if you want to install an application and leave it be?
 If an application works, any change in its libraries or the versions of those
@@ -81,16 +92,14 @@ libraries either).
 %install
 %if !%{with test}
 %python_install
-%python_expand fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
 %endif
 
 %check
 %if %{with test}
-# test_bootstrap is tied to python2 command calls, skip it
-# test_always_copy_option does not handle system install dirs in /usr/lib64
-# test_wheel_invocation_dash_p or test_use_from_wheel or test_wheel_contains or test_wheel_basic_invocation; online tests
-%pytest -k 'not (test_always_copy_option or test_bootstrap or test_use_from_wheel or test_wheel_contains or test_wheel_basic_invocation or test_wheel_invocation_dash_p)'
+export LANG="en_US.UTF8"
+%pytest
 %endif
 
 %if !%{with test}
@@ -101,11 +110,10 @@ libraries either).
 %python_uninstall_alternative virtualenv
 
 %files %{python_files}
-%license LICENSE.txt
-%doc README.rst
+%license LICENSE
+%doc README.md docs/changelog.rst
 %{python_sitelib}/virtualenv*
 %python_alternative %{_bindir}/virtualenv
-%pycache_only %{python_sitelib}/__pycache__
 %endif
 
 %changelog

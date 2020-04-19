@@ -404,4 +404,22 @@
     <comment></comment>
     <requestid>782218</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>52eeeebd2f644cfc14ad2f5b7350e8c5</srcmd5>
+    <version>20.0.17</version>
+    <time>1587325774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.0.17:
+  * minor fixes
+  * update of embedded modules
+
+- Update to 20.0.11:
+  - Allow the test suite to pass even when called with the system Python - to help repackaging of the tool for Linux
+    distributions -  by :user:`gaborbernat`. (`#1721 &lt;https://github.com/pypa/virtualenv/issues/1721&gt;`_)
+  - Other minor fixes
+
+- Update to 20.0.10:
+  * Complete rewrite and redesign of the virtualenv package</comment>
+    <requestid>794520</requestid>
+  </revision>
 </revisionlist>

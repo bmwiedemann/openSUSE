@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:31:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20.0.17:
+  * minor fixes
+  * update of embedded modules
+
+-------------------------------------------------------------------
+Thu Mar 19 06:59:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20.0.11:
+  - Allow the test suite to pass even when called with the system Python - to help repackaging of the tool for Linux
+    distributions -  by :user:`gaborbernat`. (`#1721 <https://github.com/pypa/virtualenv/issues/1721>`_)
+  - Other minor fixes
+
+-------------------------------------------------------------------
+Fri Mar 13 11:27:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20.0.10:
+  * Complete rewrite and redesign of the virtualenv package
+
+-------------------------------------------------------------------
 Fri Mar  6 17:34:41 UTC 2020 - Tomáš Čech <sleep_walker@opensuse.org>
 
 - update to 16.7.10
