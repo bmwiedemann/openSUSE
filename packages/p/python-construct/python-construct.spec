@@ -1,7 +1,7 @@
 #
 # spec file for package python
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %else
 %bcond_with test
 %endif
+%define skip_python2 1
 Name:           python-construct%{?psuffix}
-Version:        2.9.45
+Version:        2.10.56
 Release:        0
 Summary:        A declarative parser/builder for binary data
 License:        MIT
@@ -35,18 +36,16 @@ Patch0:         split_debug.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-arrow
+Recommends:     python-numpy
+Recommends:     python-ruamel.yaml
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
-BuildRequires:  python2-enum34
-%endif
-Requires:       python-arrow
-Requires:       python-six
-BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
+BuildRequires:  %{python_module ruamel.yaml}
 %endif
 %python_subpackages
 

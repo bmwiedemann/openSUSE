@@ -112,4 +112,15 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>758775</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5fdf6155b52f1ca28fbea0e283c103fe</srcmd5>
+    <version>2.10.56</version>
+    <time>1587325277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.56:
+  * drop support for python2
+  * no upstream changelog
+- Rebase patch split_debug.patch</comment>
+    <requestid>785568</requestid>
+  </revision>
 </revisionlist>
