@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.base
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jaraco.base
-Version:        6.1
+Version:        8.1.0
 Release:        0
 Summary:        Base namespace for jaraco packages
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/jaraco/jaraco.packaging
+URL:            https://github.com/jaraco/jaraco.packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  fdupes

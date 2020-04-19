@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:11:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 8.1.0
+  * In sphinx when loading metadata, trap a ValueError to include the offending value.
+  * Require Python 3.6 or later.
+  * Removed 'cheese' package as it was built for a use-case that is no longer needed.
+  * Sphinx plugin now declares support for parallel reads (optimistically).
+
+-------------------------------------------------------------------
 Mon Oct 14 13:46:38 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run SPEC file through spec-cleaner -i.

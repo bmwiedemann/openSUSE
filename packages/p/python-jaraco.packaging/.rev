@@ -23,4 +23,12 @@
     <comment>- Run SPEC file through spec-cleaner -i.</comment>
     <requestid>744006</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2fd350a8e44116d9cb4455da24a4f9a0</srcmd5>
+    <version>8.1.0</version>
+    <time>1587325181</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>784211</requestid>
+  </revision>
 </revisionlist>

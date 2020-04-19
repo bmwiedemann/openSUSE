@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.packaging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jaraco.packaging
-Version:        6.1
+Version:        8.1.0
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
@@ -28,6 +29,7 @@ BuildRequires:  %{python_module jaraco.base >= 6.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.base >= 6.1
@@ -42,6 +44,7 @@ Tools to supplement packaging Python releases.
 %prep
 %setup -q -n jaraco.packaging-%{version}
 sed -i 's/--flake8//' pytest.ini
+sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.packaging.egg-info
 
 %build
@@ -56,7 +59,6 @@ rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
 }
 
 %python_clone -a %{buildroot}%{_bindir}/dependency-tree
-%python_clone -a %{buildroot}%{_bindir}/upload-package
 
 %post
 %python_install_alternative dependency-tree upload-package
@@ -65,17 +67,13 @@ rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
 %python_uninstall_alternative dependency-tree
 
 %check
-# Two tests depend on accessing PyPI
-%{python_expand py.test-%{$python_bin_suffix} \
-  --ignore=_build.python3 --ignore _build.python2 \
-  -k 'not (load_dependencies or test_revived_distribution)'
-}
+# the test depends on accessing PyPI
+%pytest -k 'not test_revived_distribution'
 
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst CHANGES.rst README.rst
 %python_alternative %{_bindir}/dependency-tree
-%python_alternative %{_bindir}/upload-package
 %{python_sitelib}/jaraco.packaging-%{version}-py*.egg-info
 %{python_sitelib}/jaraco/packaging/
 
