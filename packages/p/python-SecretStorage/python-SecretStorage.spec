@@ -1,7 +1,7 @@
 #
 # spec file for package python-SecretStorage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-SecretStorage
-Version:        2.3.1
+Version:        3.1.2
 Release:        0
 Summary:        Python bindings to FreeDesktoporg Secret Service API
 License:        BSD-3-Clause
 URL:            https://github.com/mitya57/secretstorage
 Source:         https://files.pythonhosted.org/packages/source/S/SecretStorage/SecretStorage-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module dbus-python}
+BuildRequires:  %{python_module jeepney >= 0.4.2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dbus-1-x11
 BuildRequires:  fdupes
 BuildRequires:  gnome-keyring
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
-Requires:       python-dbus-python
+Requires:       python-jeepney >= 0.4.2
 BuildArch:      noarch
 %python_subpackages
 
