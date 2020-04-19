@@ -1,7 +1,7 @@
 #
 # spec file for package python-debtcollector
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,27 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/debtcollector/
 Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-1.22.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-funcsigs >= 1.0.0
-BuildRequires:  python2-pbr >= 2.0.0
-BuildRequires:  python2-python-subunit
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-stestr
-BuildRequires:  python2-wrapt >= 1.7.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-wrapt >= 1.7.0
-Requires:       python-pbr >= 2.0.0
-Requires:       python-six >= 1.10.0
-Requires:       python-wrapt >= 1.7.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-funcsigs >= 1.0.0
-%endif
-%python_subpackages
 
 %description
 A collection of Python deprecation patterns and strategies that help
@@ -57,6 +43,26 @@ these patterns is to apply the warnings module to emit
 DeprecationWarning or PendingDeprecationWarning or similar derivative
 to developers using libraries (or potentially applications) about
 future deprecations.
+
+%package -n python3-debtcollector
+Summary:        A collection of Python deprecation patterns and strategies
+Group:          Development/Languages/Python
+Requires:       python3-pbr >= 2.0.0
+Requires:       python3-six >= 1.10.0
+Requires:       python3-wrapt >= 1.7.0
+
+%description -n python3-debtcollector
+A collection of Python deprecation patterns and strategies that help
+you collect your technical debt in a non-destructive manner. The goal
+of this library is to provide well documented developer facing
+deprecation patterns that start of with a basic set and can expand
+into a larger set of patterns as time goes on. The desired output of
+these patterns is to apply the warnings module to emit
+DeprecationWarning or PendingDeprecationWarning or similar derivative
+to developers using libraries (or potentially applications) about
+future deprecations.
+
+This package contains the Python 3.x module.
 
 %package -n python-debtcollector-doc
 Summary:        Documentation for %{name}
@@ -82,7 +88,7 @@ This package contains documentation in HTML format.
 %py_req_cleanup
 
 %build
-%python_build
+%py3_build
 
 # generate html doc
 PBR_VERSION=1.22.0 %sphinx_build -b html doc/source doc/build/html
@@ -90,16 +96,16 @@ PBR_VERSION=1.22.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf html/.{doctrees,buildinfo}
 
 %check
-%python_exec -m stestr.cli run
+python3 -m stestr.cli run
 
 %install
-%python_install
+%py3_install
 
-%files %{python_files}
+%files -n python3-debtcollector
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/debtcollector
-%{python_sitelib}/debtcollector-*.egg-info
+%{python3_sitelib}/debtcollector
+%{python3_sitelib}/debtcollector-*.egg-info
 
 %files -n python-debtcollector-doc
 %license LICENSE

@@ -52,7 +52,7 @@
   boo#1144894: '20190921'
   boo#1145372: '20191023'
   boo#1145461: '20190820'
-  boo#1146736: '20200416'
+  boo#1146736: '20200417'
   boo#1148477: '20191009'
   boo#1148850: '20191008'
   boo#1150977: '20190917'
@@ -60,7 +60,7 @@
   boo#1151884: '20191025'
   boo#1151951: '20190923'
   boo#1152177: '20191003'
-  boo#1153159: '20200416'
+  boo#1153159: '20200417'
   boo#1153160: '20191210'
   boo#1153162: '20191009'
   boo#1153188: '20191014'
@@ -105,7 +105,7 @@
   boo#1167332: '20200319'
   boo#1167866: '20200327'
   boo#1168341: '20200331'
-  boo#1168347: '20200416'
+  boo#1168347: '20200417'
   boo#1168371: '20200331'
   boo#1168629: '20200415'
   boo#1168849: '20200416'
@@ -122,7 +122,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#7166: '20190430'
   gh#os-autoinst/os-autoinst-distri-opensuse#7278: '20190423'
   gh#os-autoinst/os-autoinst-distri-opensuse#8348: '20190902'
-  gh#os-autoinst/os-autoinst-distri-opensuse#9883: '20200416'
+  gh#os-autoinst/os-autoinst-distri-opensuse#9883: '20200417'
   kde#408594: '20191025'
   kde#412970: '20191018'
   poo#33283: '20190810'
@@ -300,7 +300,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20200417</value>
+    <value>20200419</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64

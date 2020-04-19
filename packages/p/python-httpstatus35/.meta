@@ -1,5 +1,0 @@
-<package name="python-httpstatus35" project="openSUSE:Factory">
-  <title>python-httpstatus35</title>
-  <description>Python 3.5 http.HTTPStatus backported to 3.4 and 27</description>
-  <devel project="devel:languages:python" package="python-httpstatus35"/>
-</package>

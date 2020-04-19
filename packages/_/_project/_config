@@ -2,10 +2,10 @@
 Ignore: firewall-macros:firewalld
 
 # Help python-subinit to win until python-python-subunit is gone
-Prefer: python2-subunit python3-subunit
+Prefer: python3-subunit
 
 # Prepare for the drop of python3-path.py
-Prefer: -python3-path.py python2-path.py
+Prefer: -python3-path.py
 
 %define gcc_version 9
 
@@ -395,7 +395,7 @@ Prefer: go -go1.13
 Prefer: kubernetes1.18-kubelet-common
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python2-tornado python3-tornado -python3-tornado4
+Prefer: python3-tornado -python3-tornado4
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
@@ -406,11 +406,8 @@ Prefer: libftdi-devel
 # have choice for tensorflow: tensorflow tensorflow2 tensorflow2_2_1_0-gnu-hpc tensorflow2_2_1_0-gnu-mvapich2-hpc tensorflow2_2_1_0-gnu-openmpi2-hpc
 Prefer: tensorflow
 
-# Fix for "Have choice for txt2tags: python2-txt2tags python3-txt2tags"; obviously, we prefer py3
-Prefer: python3-txt2tags
-
-# There is python[23]-prompt_toolkit and also python[23]-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python3-prompt_toolkit python2-prompt_toolkit
+# There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
+Prefer: python3-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -460,14 +457,13 @@ Prefer: ruby2.6-rubygem-tilt
 Prefer: ruby2.6-rubygem-webmock-2_3
 
 # python-msgpack-python was renamed to python-msgpack with 0.5 as a single-spec package (provides/obsoletes in place)
-Prefer: python2-msgpack python3-msgpack
+Prefer: python3-msgpack
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
 
-# python2-pytest4 should win over python2-pytest
 # python3-pytest should win over python3-pytest4 since pytest5 is python3 only
-Prefer: python2-pytest4 python3-pytest4
+Prefer: python3-pytest4
 
 # we need to fix python3-pytest4 conflicts with python3-pytest
 # otherwise will breaks staging process
@@ -1007,8 +1003,13 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 
 # PYTHON STUFF
 
+%define skip_python2 1
+%define _without_python2 1
+
 Macros:
-%pythons  %{?!skip_python2:python2} %{?!skip_python3:python3}
+%pythons  %{?!skip_python3:python3}
+skip_python2 1
+%_without_python2 1
 
 # This method for generating python_modules gets too deep to expand at about 5 python flavors.
 # It is replaced by a Lua macro in macros.lua

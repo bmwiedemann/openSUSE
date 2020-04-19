@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:45:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0.0:
+  * Fixes for new pytests
+  * Drop support for python2
+
+-------------------------------------------------------------------
 Wed Jan 15 13:41:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests run as now they all fail under pytest 5.3 due to

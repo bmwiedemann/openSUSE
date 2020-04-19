@@ -1,5 +1,0 @@
-<package name="python-backports.html" project="openSUSE:Factory">
-  <title></title>
-  <description>Backport of Python 3.4+'s html module.</description>
-  <devel project="devel:languages:python" package="python-backports.html"/>
-</package>

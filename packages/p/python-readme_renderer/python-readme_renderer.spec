@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-readme_renderer
-Version:        24.0
+Version:        25.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
-Group:          Development/Languages/Python
-Url:            https://github.com/pypa/readme_renderer
+URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
-BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module Pygments >= 2.5.2}
 BuildRequires:  %{python_module bleach >= 3.0.0}
 BuildRequires:  %{python_module check-manifest}
 BuildRequires:  %{python_module cmarkgfm >= 0.2.0}
@@ -43,7 +43,6 @@ Requires:       python-docutils >= 0.13.1
 Requires:       python-six
 Recommends:     python-cmarkgfm >= 0.2.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,9 +62,7 @@ long_description for packages.
 
 %check
 export LANG=en_US.UTF-8
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix}
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
