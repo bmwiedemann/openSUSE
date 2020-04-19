@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr  5 07:40:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update deps to really match up reality
+
+-------------------------------------------------------------------
+Thu Mar 26 09:15:04 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.1.1
+  bug`548` Restore --non-interactive as a flag not expecting an argument.
+  :feature:`547` Add support for specifying --non-interactive as an environment variable.
+  :feature:`336` When a client certificate is indicated, all password processing is disabled.
+  :feature:`489` Add --non-interactive flag to abort upload rather than interactively prompt if credentials are missing.
+  :feature:`524` Twine now unconditionally requires the keyring library and no longer supports uninstalling keyring as a means to disable that functionality. Instead, use keyring --disable keyring functionality if necessary.
+  :feature:`518` Add Python 3.8 to classifiers.
+  bug`332 major` More robust handling of server response in --skip-existing
+  :feature:`437` Twine now requires Python 3.6 or later. Use pip 9 or pin to "twine<2" to install twine on older Python versions.
+  bug`491 major` Require requests 2.20 or later to avoid reported security vulnerabilities in earlier releases.
+- python3 only package
+
+-------------------------------------------------------------------
+Thu Mar 12 07:53:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Feb 25 11:22:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.15.0

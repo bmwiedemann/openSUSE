@@ -76,4 +76,26 @@
 - Improved output on check command</comment>
     <requestid>779031</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9cc059b0fae5b5a2823b168d8a731a54</srcmd5>
+    <version>3.1.1</version>
+    <time>1587325722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update deps to really match up reality
+
+- version update to 3.1.1
+  bug`548` Restore --non-interactive as a flag not expecting an argument.
+  :feature:`547` Add support for specifying --non-interactive as an environment variable.
+  :feature:`336` When a client certificate is indicated, all password processing is disabled.
+  :feature:`489` Add --non-interactive flag to abort upload rather than interactively prompt if credentials are missing.
+  :feature:`524` Twine now unconditionally requires the keyring library and no longer supports uninstalling keyring as a means to disable that functionality. Instead, use keyring --disable keyring functionality if necessary.
+  :feature:`518` Add Python 3.8 to classifiers.
+  bug`332 major` More robust handling of server response in --skip-existing
+  :feature:`437` Twine now requires Python 3.6 or later. Use pip 9 or pin to &quot;twine&lt;2&quot; to install twine on older Python versions.
+  bug`491 major` Require requests 2.20 or later to avoid reported security vulnerabilities in earlier releases.
+- python3 only package
+
+- Fix build without python2</comment>
+    <requestid>791481</requestid>
+  </revision>
 </revisionlist>
