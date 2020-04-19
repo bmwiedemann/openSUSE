@@ -137,4 +137,41 @@
   * Simplify `WatchedFileHandler.__init__` (#3506)</comment>
     <requestid>759722</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>093ea3295faf384ddfc1c87a77dded4b</srcmd5>
+    <version>0.0.1+git.20200312.b44cd294</version>
+    <time>1587325206</time>
+    <user>dimstar_suse</user>
+    <comment>- Hopeless throwing up my arms in the air over the test suite
+  always failinig.
+
+- Update to version 0.0.1+git.20200312.b44cd294:
+  * add chardet.universaldetector (#3734)
+  * Fix signature of Connection.iterdump() (#3843)
+  * Expand tokenize stub to include Intnumber etc (#3839)
+  * Fix remove_child_handler() return type (#3841)
+
+- Update to version 0.0.1+git.20200310.5162c536:
+  * Make attributes of inspect.ArgSpec optional in Python 3 (#3838)
+  * Make PathMatcher correctly exclude paths on windows / any OS without / seperators (#3837)
+  * email.mime: add policy arguments (#3827)
+  * select: various fixes (#3833)
+  * os: fix platform availability (#3832)
+  * Have datetime.{date,datetime} define __new__ instead of __init__. (#3829)
+  * configparser: add undocumented parameter to SectionProxy.get (#3826)
+  * asyncio: add arguments to subprocess_shell (#3825)
+  * zipfile.ZipFile: fix fp, extract (#3828)
+  * Add parser stubs (#3822)
+  * stdlib/3/ast: add visit_* methods to NodeVisitor (#3796)
+  * Update imghdr's what() to broadly accept readable binaries instead of BinaryIO (#3811)
+  * statistics: fix median_grouped, NormalDist.samples (#3818)
+  * argparse: allow passing a callable to ArgumentParser (#3821)
+  * asyncore: various fixes (#3820)
+  * textwrap: various fixes (#3819)
+  * pdb: various fixes (#3817)
+  * builtins: add mod to various power functions (#3816)
+  * imghdr: h can be None (#3815)
+  * string: various fixes (#3814)</comment>
+    <requestid>784613</requestid>
+  </revision>
 </revisionlist>
