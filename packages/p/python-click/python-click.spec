@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click
-Version:        7.0
+Version:        7.1.1
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/click
-Source:         https://files.pythonhosted.org/packages/source/C/Click/Click-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +39,7 @@ Line Interface Creation Kit". It is configurable, and comes with
 defaults out of the box.
 
 %prep
-%setup -q -n Click-%{version}
+%setup -q -n click-%{version}
 
 %build
 %python_build
@@ -56,6 +56,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/click
-%{python_sitelib}/Click-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/click-%{version}-py%{python_version}.egg-info
 
 %changelog

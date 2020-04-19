@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:57:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 7.1.1
+  *   Fix ``ClickException`` output going to stdout instead of stderr.
+  *   Fix PyPI package name, "click" is lowercase again.
+  *   Fix link in ``unicode_literals`` error message. :pr:`1151`
+  *   Add support for colored output on UNIX Jupyter notebooks.
+  *   Operations that strip ANSI controls will strip the cursor hide/show
+      sequences. :issue:`1216`
+  *   Remove unused compat shim for ``bytes``. :pr:`1195`
+  *   Always return one of the passed choices for ``click.Choice``
+      :issue:`1277`, :pr:`1318`
+  *   Handle ``env MYPATH=''`` as though the option were not passed.
+      :issue:`1196`
+  *   It is once again possible to call ``next(bar)`` on an active
+      progress bar instance. :issue:`1125`
+  *   ``open_file`` with ``atomic=True`` retains permissions of existing
+      files and respects the current umask for new files. :issue:`1376`
+  *   Fix ``TypeError`` raised when using bool flags and specifying
+      ``type=bool``. :issue:`1287`
+  *   Newlines in option help text are replaced with spaces before
+      re-wrapping to avoid uneven line breaks. :issue:`834`
+  *   ``MissingParameter`` exceptions are printable in the Python
+      interpreter. :issue:`1139`
+  *   Fix how default values for file-type options are shown during
+      prompts. :issue:`914`
+  *   Option help text that is wrapped adds an extra newline at the end to
+      distinguish it from the next option. :issue:`1075`
+  *   Consider ``sensible-editor`` when determining the editor to use for
+      ``click.edit()``. :pr:`1469`
+  *   Arguments to system calls such as the executable path passed to
+      ``click.edit`` can contains spaces. :pr:`1470`
+  *   Add ZSH completion autoloading and error handling. :issue:`1348`
+  *   ZSH completion escapes special characters in values. :pr:`1418`
+  *   Add completion support for Fish shell. :pr:`1423`
+  *   Decoding bytes option values falls back to UTF-8 in more cases.
+  *   Make the warning about old 2-arg parameter callbacks a deprecation
+      warning, to be removed in 8.0. This has been a warning since Click
+      2.0. :pr:`1492`
+  
+-------------------------------------------------------------------
 Mon Oct 14 11:43:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
