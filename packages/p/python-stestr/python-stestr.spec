@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# upstream dropped python 2
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -26,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        2.6.0
+Version:        3.0.1
 Release:        0
 Summary:        A test runner runner similar to testrepository
 License:        Apache-2.0
@@ -43,7 +45,7 @@ Requires:       python-cliff >= 2.8.0
 Requires:       python-fixtures >= 3.0.0
 Requires:       python-future
 Requires:       python-pbr >= 2.0.0
-Requires:       python-python-subunit >= 1.3.0
+Requires:       python-python-subunit >= 1.4.0
 Requires:       python-six >= 1.10.0
 Requires:       python-testtools >= 2.2.0
 Requires:       python-voluptuous >= 0.8.9
@@ -58,9 +60,9 @@ BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module mock >= 2.0}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-subunit >= 1.3.0}
+BuildRequires:  %{python_module python-subunit >= 1.4.0}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module stestr >= %{version}}
 BuildRequires:  %{python_module testtools >= 2.2.0}

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr  9 10:47:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix subunit buildtime dep statement
+
+-------------------------------------------------------------------
+Wed Apr  1 09:33:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * use python-requires metadata instead of requires-python
+  * Remove universal flag from release job
+
+-------------------------------------------------------------------
+Mon Mar 30 08:24:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.0
+  * Update README\_ja.rst
+  * Update README in preparation for release 3.0.0
+  * Update test-requirements to be py3 only
+  * Remove six usage from testr\_to\_stestr
+  * Bump python-subunit minimum to 1.4.0
+  * Remove universal wheel tag from setup.cfg
+  * Remove six from tests and requirements
+  * Fix line length issue from pyupgrade
+  * Treat bytes and strings differently
+  * Remove outdated tox envs
+  * Run pyupgrade on repo
+  * Fix import issues
+  * Remove 2.7 ci jobs
+  * Remove six usage from stestr code
+  * Fix typo bug in list\_tests() error code
+  * Remove sys.version switches for python2.7
+  * Update package metadata for python2 removal
+
+-------------------------------------------------------------------
 Fri Feb 28 21:47:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.6.0:

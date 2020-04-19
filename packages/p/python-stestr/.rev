@@ -206,4 +206,35 @@
   * Stop encoding attachments text</comment>
     <requestid>780391</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>199c27a62176a836bf2bd6009a827ef4</srcmd5>
+    <version>3.0.1</version>
+    <time>1587325740</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix subunit buildtime dep statement
+
+- update to 3.0.1:
+  * use python-requires metadata instead of requires-python
+  * Remove universal flag from release job
+
+- version update to 3.0.0
+  * Update README\_ja.rst
+  * Update README in preparation for release 3.0.0
+  * Update test-requirements to be py3 only
+  * Remove six usage from testr\_to\_stestr
+  * Bump python-subunit minimum to 1.4.0
+  * Remove universal wheel tag from setup.cfg
+  * Remove six from tests and requirements
+  * Fix line length issue from pyupgrade
+  * Treat bytes and strings differently
+  * Remove outdated tox envs
+  * Run pyupgrade on repo
+  * Fix import issues
+  * Remove 2.7 ci jobs
+  * Remove six usage from stestr code
+  * Fix typo bug in list\_tests() error code
+  * Remove sys.version switches for python2.7
+  * Update package metadata for python2 removal</comment>
+    <requestid>792696</requestid>
+  </revision>
 </revisionlist>
