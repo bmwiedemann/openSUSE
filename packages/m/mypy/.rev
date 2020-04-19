@@ -211,4 +211,16 @@
   - Many small improvements were made to typeshed — too many to list. Browse the typeshed commit log here.</comment>
     <requestid>761133</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e73e95ac2d128bab2d2caf269654acc6</srcmd5>
+    <version>0.770</version>
+    <time>1587324978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.770: too many changes to
+  list here, but all information is on
+  https://mypy-lang.blogspot.com/2019/12/mypy-0760-released.html
+- Remove 0003-Pass-executable-path-into-main-when-running-installe.patch
+  it got already broken by upstream in e491b5d4aa anyway.</comment>
+    <requestid>783875</requestid>
+  </revision>
 </revisionlist>

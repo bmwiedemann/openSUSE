@@ -17,7 +17,7 @@
 
 
 Name:           mypy
-Version:        0.761
+Version:        0.770
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Languages/Python
 URL:            http://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 Source99:       mypy-rpmlintrc
-Patch2:         0003-Pass-executable-path-into-main-when-running-installe.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-mypy_extensions >= 0.4.0
@@ -58,6 +57,7 @@ and union types.
 
 %prep
 %autosetup -n mypy-%{version} -p1
+
 for scr in mypy/typeshed/tests/*.py ; do
     sed -i -e '1 s|env ||' $scr
 done
@@ -92,5 +92,6 @@ python3 -m mypy --config-file mypy_self_check.ini -p mypy
 %{_bindir}/mypy
 %{_bindir}/mypyc
 %{_bindir}/stubgen
+%{_bindir}/stubtest
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 11:18:05 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.770: too many changes to
+  list here, but all information is on
+  https://mypy-lang.blogspot.com/2019/12/mypy-0760-released.html
+- Remove 0003-Pass-executable-path-into-main-when-running-installe.patch
+  it got already broken by upstream in e491b5d4aa anyway.
+
+-------------------------------------------------------------------
 Wed Jan  1 11:15:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.761
