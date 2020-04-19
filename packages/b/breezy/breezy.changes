@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Apr  7 08:40:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- License: GPL-2.0-or-later. Updated as identified by legal review
+  (info based on README.rst).
+
+-------------------------------------------------------------------
+Tue Mar 31 09:34:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides/obsoletes on bzr as we are the py3 variant and
+  provide the same binaries
+
+-------------------------------------------------------------------
+Tue Mar 31 09:08:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix borked test import fix-tests.patch
+- Enable testing
+
+-------------------------------------------------------------------
+Wed Mar  4 10:49:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of breezy 3.0.2 to replace bzr which only
+  works with python2
