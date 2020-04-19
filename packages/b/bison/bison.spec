@@ -17,7 +17,7 @@
 
 
 Name:           bison
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        The GNU Parser Generator
 License:        GPL-3.0-or-later
@@ -62,7 +62,7 @@ Bison is a parser generator similar to yacc(1).
 
 %check
 # Tests dont work reliably in parallel
-make --jobs=1 check
+%make_build --jobs=1 check
 
 %install
 %make_install
