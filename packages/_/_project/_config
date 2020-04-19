@@ -391,6 +391,9 @@ Prefer: man
 # go exists in mutliple versions by now - we prefer the 'unversioned package'
 Prefer: go -go1.13
 
+# have choice for kubernetes-kubelet-common
+Prefer: kubernetes1.18-kubelet-common
+
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python2-tornado python3-tornado -python3-tornado4
 
