@@ -18356,7 +18356,6 @@ unsorted:
   - python2-GDAL 
   - python2-Genshi 
   - python2-Glances 
-  - python2-HeapDict 
   - python2-Jinja2 
   - python2-Js2Py 
   - python2-JsonWeb 
@@ -18404,7 +18403,6 @@ unsorted:
   - python2-PySDL2 
   - python2-PyScreeze 
   - python2-PySocks 
-  - python2-PyTrie 
   - python2-PyTweening 
   - python2-PyVirtualDisplay 
   - python2-PyWebDAV3 
@@ -18428,9 +18426,7 @@ unsorted:
   - python2-URLObject 
   - python2-UkPostcodeParser 
   - python2-Unidecode 
-  - python2-WSME 
   - python2-WTForms 
-  - python2-WebOb 
   - python2-Whoosh 
   - python2-XStatic 
   - python2-XStatic-Angular-Schema-Form 
@@ -18453,10 +18449,6 @@ unsorted:
   - python2-aenum 
   - python2-aexpect 
   - python2-affine 
-  - python2-agate 
-  - python2-agate-dbf 
-  - python2-agate-sql 
-  - python2-agate-stats 
   - python2-aiohttp-theme 
   - python2-alabaster 
   - python2-alembic 
@@ -18549,7 +18541,6 @@ unsorted:
   - python2-blist 
   - python2-blosc 
   - python2-bloscpack 
-  - python2-bobo 
   - python2-bokeh 
   - python2-boltons 
   - python2-boolean.py 
@@ -18590,7 +18581,6 @@ unsorted:
   - python2-chainmap 
   - python2-chardet 
   - python2-check-manifest 
-  - python2-chest 
   - python2-ciscoconfparse 
   - python2-cli-helpers 
   - python2-click-aliases 
@@ -18617,7 +18607,6 @@ unsorted:
   - python2-commentjson 
   - python2-compizconfig 
   - python2-concurrentloghandler 
-  - python2-configargparse 
   - python2-configobj 
   - python2-configshell-fb 
   - python2-constantly 
@@ -18835,7 +18824,6 @@ unsorted:
   - python2-hankel: [i586] 
   - python2-hanzidentifier 
   - python2-happybase 
-  - python2-hawkauthlib 
   - python2-hetzner 
   - python2-hexdump 
   - python2-hiredis 
@@ -19059,7 +19047,6 @@ unsorted:
   - python2-objgraph 
   - python2-oci-sdk 
   - python2-odfpy 
-  - python2-odorik 
   - python2-olefile 
   - python2-opcodes 
   - python2-opencensus 
@@ -19084,7 +19071,6 @@ unsorted:
   - python2-pako 
   - python2-palettable 
   - python2-pamela 
-  - python2-pamqp 
   - python2-pan-python 
   - python2-pandocfilters 
   - python2-panflute 
@@ -19186,7 +19172,6 @@ unsorted:
   - python2-py-radix 
   - python2-py-ubjson 
   - python2-py2pack 
-  - python2-pyLibravatar 
   - python2-pyModis 
   - python2-pyOCD 
   - python2-pyPEG2 
@@ -19257,7 +19242,6 @@ unsorted:
   - python2-pymad 
   - python2-pymavlink 
   - python2-pymediainfo 
-  - python2-pymemcache 
   - python2-pymod2pkg 
   - python2-pymongo 
   - python2-pyngus 
@@ -19298,7 +19282,6 @@ unsorted:
   - python2-python-bidi 
   - python2-python-cjson 
   - python2-python-crfsuite 
-  - python2-python-crontab 
   - python2-python-daemon 
   - python2-python-dateutil 
   - python2-python-dbusmock 
@@ -19367,11 +19350,9 @@ unsorted:
   - python2-redfish 
   - python2-rednose 
   - python2-regex 
-  - python2-remoto 
   - python2-rencode 
   - python2-reportlab 
   - python2-repoze.lru 
-  - python2-repoze.who 
   - python2-requestsexceptions 
   - python2-requirements-parser 
   - python2-resolvelib 
@@ -19436,9 +19417,7 @@ unsorted:
   - python2-simplekml 
   - python2-sip 
   - python2-sip-devel 
-  - python2-siphashc 
   - python2-six 
-  - python2-sleekxmpp 
   - python2-slimit 
   - python2-slip 
   - python2-slip-dbus 
@@ -19532,7 +19511,6 @@ unsorted:
   - python2-twitter.common.rpc 
   - python2-twodict 
   - python2-txWS 
-  - python2-txt2tags 
   - python2-txtorcon 
   - python2-tzlocal 
   - python2-u-msgpack-python 
