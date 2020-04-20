@@ -261,6 +261,7 @@
     <package name="breeze5-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze5-style-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze5-wallpapers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="breezy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="brltty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-at-spi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -278,8 +279,6 @@
     <package name="build-mkdrpms" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="bzr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="bzr-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="cabextract" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3933,30 +3932,13 @@
     <package name="python-Sphinx-doc-man" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-falcon-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-functools32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-gnome-dvb-daemon" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-sip-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="python2-Cycler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-backports" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-backports.functools_lru_cache" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-matplotlib-tk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-numpy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-olefile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python2-pyparsing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-pytz" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-six" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python2-subprocess32" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -4010,28 +3992,28 @@
     <package name="python3-decorator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-dkimpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python3-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-docutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-dulwich" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-dulwich" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="python3-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-entrypoints" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python3-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python3-fastimport" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python3-fastimport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-fluidity-sm" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-gevent" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python3-geventhttpclient" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python3-gevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="python3-geventhttpclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-gmpy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-gmpy2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-gobject" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-gobject-Gdk" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-gobject-cairo" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="python3-gpg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python3-gpg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="python3-greenlet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-gst" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-gunicorn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4046,6 +4028,7 @@
     <package name="python3-invoke" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-ipaddr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python3-jedi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="python3-jeepney" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python3-keyring" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python3-kiwisolver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-lazr.config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4078,7 +4061,7 @@
     <package name="python3-ply" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-progressbar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="python3-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="python3-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python3-publicsuffix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4088,7 +4071,7 @@
     <package name="python3-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-pycares" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -4147,7 +4130,7 @@
     <package name="python3-zope.configuration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.deferredimport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.deprecation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python3-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-zope.event" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="python3-zope.hookable" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.i18nmessageid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.interface" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
