@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-json_tricks
 Version:        3.15.2
 Release:        0
@@ -39,7 +40,9 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+%if %{with python2}
 BuildRequires:  python-enum34
+%endif
 # /SECTION
 %ifpython2
 Recommends:     python-enum34
