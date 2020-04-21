@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:14:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 dep from py3 only package
+
+-------------------------------------------------------------------
 Thu Feb 20 08:50:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.1:

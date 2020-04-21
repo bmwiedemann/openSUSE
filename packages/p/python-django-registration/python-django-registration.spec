@@ -29,7 +29,6 @@ BuildRequires:  %{python_module confusable-homoglyphs >= 3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-mock
 Requires:       python-Django >= 2.2
 Requires:       python-confusable-homoglyphs >= 3.0
 BuildArch:      noarch

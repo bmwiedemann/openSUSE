@@ -138,4 +138,12 @@
   * no changelog provided</comment>
     <requestid>777599</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>67e3fd0ab55a70202ff0c0512c4b443c</srcmd5>
+    <version>3.1</version>
+    <time>1587467473</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 dep from py3 only package</comment>
+    <requestid>795837</requestid>
+  </revision>
 </revisionlist>
