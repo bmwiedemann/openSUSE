@@ -29,13 +29,18 @@
 %bcond_with    systemd
 %endif
 
-%if 0%{?is_opensuse} || %{defined fedora}
+%if 0%{?sle_version} >= 150000 || 0%{?is_opensuse} || %{defined fedora}
 %bcond_without nginx
+%else
+%bcond_with    nginx
+%endif
+
+%if 0%{?is_opensuse} || %{defined fedora}
 %bcond_without lighttpd
 %else
-%bcond_with nginx
-%bcond_with lighttpd
+%bcond_with    lighttpd
 %endif
+
 %{!?_tmpfilesdir: %global _tmpfilesdir %{_prefix}/lib/tmpfiles.d }
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
@@ -215,8 +220,8 @@ install -m 0644 acme-challenge %{buildroot}%{_sysconfdir}/nginx
 
 %if %{with lighttpd}
 install -m 0755 -d %{buildroot}%{_sysconfdir}/lighttpd/conf.d
-sed "s,@CHALLENGEDIR@,%{_challengedir},g" %{SOURCE3} > acme-challenge
-install -m 0644 acme-challenge %{buildroot}%{_sysconfdir}/lighttpd/conf.d
+sed "s,@CHALLENGEDIR@,%{_challengedir},g" %{SOURCE3} > acme-challenge.conf
+install -m 0644 acme-challenge.conf %{buildroot}%{_sysconfdir}/lighttpd/conf.d
 %endif #with lighttpd
 
 %if %{with systemd}
@@ -247,6 +252,13 @@ perl -p -i -e 's|#DEHYDRATED_USER=|DEHYDRATED_USER="%{_user}"|' %{buildroot}%{_h
 perl -p -i -e 's|#DEHYDRATED_GROUP=|DEHYDRATED_GROUP="%{_user}"|' %{buildroot}%{_home}/config
 
 diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
+
+# Rename existing config file config files fror nginx and lighttpd
+%if %{with nginx}
+%pre nginx 
+[ -f %{_sysconfdir}/nginx/conf.d/acme-challenge ] && \
+  mv %{_sysconfdir}/nginx/conf.d/acme-challenge %{_sysconfdir}/nginx/conf.d/acme-challenge.conf || :
+%endif
 
 %files
 %defattr(-,root,root)
@@ -294,7 +306,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %if %{with lighttpd}
 %files lighttpd
 %defattr(-,root,root)
-%config %attr(640,root,lighttpd) %{_sysconfdir}/lighttpd/conf.d/acme-challenge
+%config %attr(640,root,lighttpd) %{_sysconfdir}/lighttpd/conf.d/acme-challenge.conf
 %endif #with lighttpd
 
 %changelog

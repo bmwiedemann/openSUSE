@@ -142,4 +142,13 @@
     <comment></comment>
     <requestid>769716</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5d630b9aa5f6525fc48e3a2497467c45</srcmd5>
+    <version>0.6.5</version>
+    <time>1587467628</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix lighttpd config file (boo#1169834)
+- Provide nginx subpackage for SLE 15+ (jsc#11756)</comment>
+    <requestid>796008</requestid>
+  </revision>
 </revisionlist>
