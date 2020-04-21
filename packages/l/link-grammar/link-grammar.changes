@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:57:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop python2 bindings:
+  + Remove pkgconfig(python) BuildRequires.
+  + Drop python2-clinkgrammar subpackage (not obsoleted: users
+    that need them can keep them).
+
+-------------------------------------------------------------------
 Sun Feb  2 19:56:27 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 5.7.0 (13 Sept 2019):

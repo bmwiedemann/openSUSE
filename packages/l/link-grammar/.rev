@@ -436,4 +436,12 @@
   * Fix linkage_get_disjunct_*() when parse-option display_morphology is true.</comment>
     <requestid>771556</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c724e3e515235b80c7f4805c77bfa9a6</srcmd5>
+    <version>5.7.0</version>
+    <time>1587467618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795993</requestid>
+  </revision>
 </revisionlist>

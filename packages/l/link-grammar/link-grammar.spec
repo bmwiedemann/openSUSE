@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(python)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
@@ -50,18 +49,6 @@ links connecting pairs of words.
 
 This package contains Link Grammar's utility, its shared library and
 some data files.
-
-%package -n  python2-clinkgrammar
-Summary:        Python 2 bindings for link-grammar, a grammar checker
-Group:          Development/Libraries/Python
-
-%description -n  python2-clinkgrammar
-The Link Grammar Parser is a syntactic parser of a number of
-languages, based on Link Grammar, an original theory of syntax and
-morphology.
-
-This package contains bindings for development with Link Grammar using
-Python 2.
 
 %package -n  python3-clinkgrammar
 Summary:        Python 3 bindings for link-grammar, a grammar checker
@@ -121,9 +108,6 @@ find %{buildroot} ! -type d -size 0 -delete
 %{_bindir}/*
 %{_datadir}/link-grammar
 %{_mandir}/man1/link-parser.1%{?ext_man}
-
-%files -n python2-clinkgrammar
-%{python_sitelib}/linkgrammar
 
 %files -n python3-clinkgrammar
 %{python3_sitelib}/linkgrammar.pth
