@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Pebble
 Version:        4.5.1
 Release:        0
@@ -27,17 +28,18 @@ URL:            https://github.com/noxdafox/pebble
 Source:         https://files.pythonhosted.org/packages/source/P/Pebble/Pebble-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  git
-BuildRequires:  python-futures
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %ifpython2
 Requires:       python-futures
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

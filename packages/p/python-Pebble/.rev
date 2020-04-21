@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>788613</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>95a2f5bd71d8874cfa58b6bb28fca8e3</srcmd5>
+    <version>4.5.1</version>
+    <time>1587467416</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795796</requestid>
+  </revision>
 </revisionlist>

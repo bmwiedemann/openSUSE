@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:18:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Mar 26 16:16:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.5.1
