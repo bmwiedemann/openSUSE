@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-bdd
 Version:        3.2.1
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-bdd
 Source:         https://github.com/pytest-dev/pytest-bdd/archive/%{version}.tar.gz#/pytest-bdd-%{version}.tar.gz
 Patch0:         test_flaky.patch
@@ -47,10 +47,11 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parse_type}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest >= 3.0.0}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module six >= 1.9.0}
+%if %{with python2}
 BuildRequires:  python-enum34
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-enum34

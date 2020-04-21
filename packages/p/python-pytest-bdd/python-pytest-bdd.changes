@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:26:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Tue Mar 10 09:40:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - use %pytest macro 
