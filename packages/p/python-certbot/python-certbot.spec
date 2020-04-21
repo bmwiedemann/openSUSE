@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-certbot
 Version:        1.3.0
 Release:        0
@@ -41,7 +42,6 @@ BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-typing
 Requires:       python-acme >= 0.40.0
 Requires:       python-configargparse >= 0.9.3
 Requires:       python-configobj
@@ -58,12 +58,15 @@ Requires:       python-zope.component
 Requires:       python-zope.interface
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       certbot = %{version}
+Obsoletes:      certbot < %{version}
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-typing
+%endif
 %ifpython2
 Requires:       python-typing
 %endif
-Provides:       certbot = %{version}
-Obsoletes:      certbot < %{version}
 %python_subpackages
 
 %description
