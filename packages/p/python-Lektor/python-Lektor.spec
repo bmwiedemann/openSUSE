@@ -1,7 +1,7 @@
 #
 # spec file for package python-Lektor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Lektor
 Version:        3.1.3
 Release:        0
 Summary:        A static content management system
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/lektor/lektor/
+URL:            https://github.com/lektor/lektor/
 Source:         https://github.com/lektor/lektor/archive/%{version}.tar.gz#/Lektor-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,7 +60,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module watchdog}
 BuildRequires:  git-core
+%if %{with python2}
 BuildRequires:  python2-functools32
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-functools32
