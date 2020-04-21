@@ -43,7 +43,7 @@ BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-intervaltree
-BuildRequires:  python3-jedi >= 0.9.0
+BuildRequires:  python3-jedi >= 0.15.2
 BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
 BuildRequires:  python3-pexpect >= 4.4.0
@@ -124,6 +124,7 @@ BuildArch:      noarch
 BuildRequires:  git-core
 BuildRequires:  python3-Cython >= 0.21
 BuildRequires:  python3-Pillow
+BuildRequires:  python3-autopep8
 BuildRequires:  python3-diff-match-patch
 BuildRequires:  python3-flaky
 BuildRequires:  python3-keyring
@@ -133,6 +134,7 @@ BuildRequires:  python3-matplotlib-tk
 BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas >= 0.13.1
 BuildRequires:  python3-pyaml
+BuildRequires:  python3-pydocstyle
 BuildRequires:  python3-pytest < 5
 BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-faulthandler < 2.0
@@ -266,28 +268,64 @@ find %{buildroot}%{python_sitelib}/spyder/locale -name '*.pot' -delete
 %check
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
-# require Internet
-skiptests="test_github_backend or test_update"
-# times out on armv7l, and is skipped on upstream CI
-# with reason "It makes other tests to segfault in our CIs"
-skiptests="$skiptests or test_introspection"
+
+# upstream splits the tests into slow and fast ones
+# we run the ipythonconsole tests separately because they pose issues with asynchonously opened sockets
+skiptests="test_ipythonconsole"
+skipslowtests="test_ipythonconsole"
+
+# add all tests to skip into $skiptests or $skipttestsslow separated by whitespace
+# the shortcut is not sent by the editorbot
+skiptests+=" test_comment"
+# the click/tab press is not sent by the bot
+skiptests+=" test_tab_copies_find_to_replace"
+# tests that require internet connection
+skiptests+=" test_github_backend test_update"
+# we modified the dependencies in %%prep, this is a pure developer test
+skiptests+=" test_dependencies_for_spyder_dialog_in_sync"
 # segfaults in xvfb
-skiptests="$skiptests or test_arrayeditor_edit_complex_array"
-# this test runs into timeouts and is skipped on some of the
-# upstream CIs for the same reason
-skiptests="$skiptests or test_mpl_backend_change"
+skiptests+=" test_arrayeditor_edit_complex_array"
 # tests not suitable for CIs or OBS as evident from the last assert which fails here
-skiptests="$skiptests or test_connection_dialog_remembers_input_with_ssh_passphrase"
-skiptests="$skiptests or test_connection_dialog_remembers_input_with_password"
-# tests fail on CIs
-skiptests="$skiptests or test_comment or test_tab_copies_find_to_replace"
-# tests rely on IPythonConsole behaving well on OBS (which does not..)
-ipythonplugin="spyder/plugins/ipythonconsole"
-ignoretestfiles="--ignore=$ipythonplugin/tests/test_ipythonconsole.py
-                 --ignore=$ipythonplugin/comms/tests/test_comms.py"
-# we modified the check in prep
-skiptests="$skiptests or test_dependencies_for_spyder_dialog_in_sync"
-%pytest -k "not ($skiptests)" $ignoretestfiles
+skiptests+=" test_connection_dialog_remembers_input_with_ssh_passphrase"
+skiptests+=" test_connection_dialog_remembers_input_with_password"
+# completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
+skipslowtests+=" test_completions"
+
+# the linter does not report warnings with the D and E error codes
+skipslowtests+=" test_ignore_warnings test_move_warnings test_get_warnings test_update_warnings"
+# opens too many files ?
+# likely a test before....
+skipslowtests+=" test_open_notebooks_from_project_explorer"
+
+# the following tests rely on IPythonConsole behaving well on OBS (which does not..)
+skipipythontests=""
+skipipythonslowtests=""
+# xvfb does not like the repeating restart of the kernels in those tests
+skipipythontests+=" test_load_kernel_file"
+# running into timeouts
+skipipythontests+=" test_mpl_backend_change"
+skipipythontests+=" test_calltip"
+skipipythontests+=" test_dbg_input"
+# pdb seems to be the root cause of a lot of test problems
+skipipythontests+=" test_pdb"
+# timeout, hard abort, permission errors
+skipipythontests+=" test_stderr_"
+skipipythontests+=" test_kernel_kill test_conda_env_activation"
+# segfault (?)
+skipipythonslowtests+=" test_runfile_from_project_explorer"
+
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
+for s in tests slowtests ipythontests ipythonslowtests; do
+    skips=skip$s
+    declare skip${s}_p="$($python -c "import sys; print(' or '.join('${!skips}'.split()))")"
+done
+$python runtests.py -k "not ($skiptests_p)"
+# the slow tests still segfault unreproducibly at different tests. Something does not clean up
+# $python runtests.py --run-slow -k "not ($skipslowtests_p)"
+$python runtests.py -k "test_ipythonconsole and not ($skipipythontests_p)"
+# the slow tests still fail unreproducibly at different tests. Something does not clean up
+# $python runtests.py --run-slow -k "test_ipythonconsole and not ($skipipythonslowtests_p)"
+}
 %endif
 
 %files

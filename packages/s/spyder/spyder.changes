@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:09:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- More work on running the unit tests. Do not run the slow tests for
+  now. (They were not run in the previous setup either)
+
+-------------------------------------------------------------------
 Sat Apr  4 20:48:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - new version 4.1.2

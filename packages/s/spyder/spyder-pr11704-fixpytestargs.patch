@@ -1,7 +1,7 @@
-From 958cc2b0d5cc17d0e5440196a579951e4008f449 Mon Sep 17 00:00:00 2001
+From 2d979566809d783bc57692d1c6ab4f6ad22f5e77 Mon Sep 17 00:00:00 2001
 From: "C.A.M. Gerlach" <CAM.Gerlach@Gerlach.CAM>
 Date: Mon, 2 Mar 2020 21:06:19 -0600
-Subject: [PATCH 1/3] Fix, improve and cleanup runtests.py script arg parsing
+Subject: [PATCH 1/7] Fix, improve and cleanup runtests.py script arg parsing
 
 ---
  runtests.py | 48 +++++++++++++++++++++++-------------------------
@@ -99,20 +99,20 @@ index 7d16848cb2..5760e9a7fe 100644
 +if __name__ == '__main__':
 +    main()
 
-From b83a72e4e7db2fa173fa16b8c69ad6830ed2fefa Mon Sep 17 00:00:00 2001
+From ea20ef85f96c0e9f1db51890496915fc381094c3 Mon Sep 17 00:00:00 2001
 From: "C.A.M. Gerlach" <CAM.Gerlach@Gerlach.CAM>
 Date: Mon, 2 Mar 2020 21:07:30 -0600
-Subject: [PATCH 2/3] Ignore pytest args properly in Spyder mainwindow setup
+Subject: [PATCH 2/7] Ignore pytest args properly in Spyder mainwindow setup
 
 ---
  spyder/app/mainwindow.py | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/spyder/app/mainwindow.py b/spyder/app/mainwindow.py
-index 71f9f4ed94..a3847c84c0 100644
+index a05ccd877e..0634bb326b 100644
 --- a/spyder/app/mainwindow.py
 +++ b/spyder/app/mainwindow.py
-@@ -104,7 +104,12 @@
+@@ -105,7 +105,12 @@
  from spyder.app.cli_options import get_options
  
  # Get CLI options/args and make them available for future use
@@ -127,20 +127,20 @@ index 71f9f4ed94..a3847c84c0 100644
  # **** Set OpenGL implementation to use ****
  if CLI_OPTIONS.opengl_implementation:
 
-From 1a0caedbc4864b5c257097a435d9ad290e7c9b15 Mon Sep 17 00:00:00 2001
+From e5bf38e63f78201e1684e16092fd0a606e3ae7bb Mon Sep 17 00:00:00 2001
 From: "C.A.M. Gerlach" <CAM.Gerlach@Gerlach.CAM>
 Date: Mon, 2 Mar 2020 21:10:53 -0600
-Subject: [PATCH 3/3] Add .pylint.d to gitignore
+Subject: [PATCH 3/7] Add .pylint.d to gitignore
 
 ---
  .gitignore | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/.gitignore b/.gitignore
-index b407abc4d8..a1ef21c876 100644
+index 2c88b3c2a1..4d4e041652 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -34,4 +34,7 @@ spyder_crash.log
+@@ -35,4 +35,7 @@ MANIFEST
  # Rope project folders
  .ropeproject/
  .vscode/
@@ -150,3 +150,150 @@ index b407abc4d8..a1ef21c876 100644
 +
 +# Pylint dirs/files
 +.pylint.d/
+
+From 34263ae136b877a8a0448f9922ae9c432cf4f646 Mon Sep 17 00:00:00 2001
+From: CAM Gerlach <CAM.Gerlach@Gerlach.CAM>
+Date: Wed, 8 Apr 2020 15:16:35 -0500
+Subject: [PATCH 4/7] Apply @bnavigator's patch to handle optional pytest args
+ in runtests.py
+
+Co-Authored-By: Ben <code@bnavigator.de>
+---
+ runtests.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/runtests.py b/runtests.py
+index 5760e9a7fe..23de13ea5b 100644
+--- a/runtests.py
++++ b/runtests.py
+@@ -61,13 +61,12 @@ def run_pytest(run_slow=False, extra_args=None):
+ def main():
+     """Parse args then run the pytest suite for Spyder."""
+     test_parser = argparse.ArgumentParser(
++        usage='python runtests.py [-h] [--run-slow] [pytest_args]',
+         description="Helper script to run Spyder's test suite")
+     test_parser.add_argument('--run-slow', action='store_true', default=False,
+                              help='Run the slow tests')
+-    test_parser.add_argument('pytest_args', nargs=argparse.REMAINDER,
+-                             metavar="...", help="Args to pass to pytest")
+-    test_args = test_parser.parse_args()
+-    run_pytest(run_slow=test_args.run_slow, extra_args=test_args.pytest_args)
++    test_args, pytest_args = test_parser.parse_known_args()
++    run_pytest(run_slow=test_args.run_slow, extra_args=pytest_args)
+ 
+ 
+ if __name__ == '__main__':
+
+From cdaf261e7310659ca5b4f5c8df6646624c2cf88d Mon Sep 17 00:00:00 2001
+From: Carlos Cordoba <ccordoba12@gmail.com>
+Date: Sun, 12 Apr 2020 14:45:40 -0500
+Subject: [PATCH 5/7] Main Window: Use running_under_pytest instead of checking
+ for SPYDER_PYTEST directly
+
+---
+ spyder/app/mainwindow.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/spyder/app/mainwindow.py b/spyder/app/mainwindow.py
+index 0634bb326b..01af3d6eb3 100644
+--- a/spyder/app/mainwindow.py
++++ b/spyder/app/mainwindow.py
+@@ -103,10 +103,11 @@
+ #==============================================================================
+ from spyder.app.utils import set_opengl_implementation
+ from spyder.app.cli_options import get_options
++from spyder.config.base import running_under_pytest
+ 
+-# Get CLI options/args and make them available for future use
+-# Ignore args if running tests or Spyder will try and fail to parse pytests's
+-if bool(os.environ.get('SPYDER_PYTEST')):
++# Get CLI options/args and make them available for future use.
++# Ignore args if running tests or Spyder will try and fail to parse pytests's.
++if running_under_pytest():
+     sys_argv = [sys.argv[0]]
+ else:
+     sys_argv = sys.argv
+@@ -139,7 +140,7 @@
+ #==============================================================================
+ # Create splash screen out of MainWindow to reduce perceived startup time.
+ #==============================================================================
+-from spyder.config.base import _, get_image_path, DEV, running_under_pytest
++from spyder.config.base import _, get_image_path, DEV
+ 
+ if not running_under_pytest():
+     SPLASH = QSplashScreen(QPixmap(get_image_path('splash.svg')))
+
+From 595ff84412aacf1777dee13312e0edb9c4426e26 Mon Sep 17 00:00:00 2001
+From: Carlos Cordoba <ccordoba12@gmail.com>
+Date: Sun, 12 Apr 2020 14:46:49 -0500
+Subject: [PATCH 6/7] Main Window: Don't mock options when running under pytest
+ because it's not needed anymore
+
+---
+ spyder/app/mainwindow.py | 21 +--------------------
+ 1 file changed, 1 insertion(+), 20 deletions(-)
+
+diff --git a/spyder/app/mainwindow.py b/spyder/app/mainwindow.py
+index 01af3d6eb3..b2d05fb550 100644
+--- a/spyder/app/mainwindow.py
++++ b/spyder/app/mainwindow.py
+@@ -3670,32 +3670,13 @@ def run_spyder(app, options, args):
+ def main():
+     """Main function"""
+     # **** For Pytest ****
+-    # We need to create MainWindow **here** to avoid passing pytest
+-    # options to Spyder
+     if running_under_pytest():
+-        try:
+-            from unittest.mock import Mock
+-        except ImportError:
+-            from mock import Mock  # Python 2
+-
+-        options = Mock()
+-        options.working_directory = None
+-        options.profile = False
+-        options.multithreaded = False
+-        options.new_instance = False
+-        options.project = None
+-        options.window_title = None
+-        options.opengl_implementation = None
+-        options.debug_info = None
+-        options.debug_output = None
+-        options.paths = None
+-
+         if CONF.get('main', 'opengl') != 'automatic':
+             option = CONF.get('main', 'opengl')
+             set_opengl_implementation(option)
+ 
+         app = initialize()
+-        window = run_spyder(app, options, None)
++        window = run_spyder(app, CLI_OPTIONS, None)
+         return window
+ 
+     # **** Collect command line options ****
+
+From 53507e4bac85fdf6ca5d0debb7a77b08f7d6b377 Mon Sep 17 00:00:00 2001
+From: Carlos Cordoba <ccordoba12@gmail.com>
+Date: Sun, 12 Apr 2020 14:47:10 -0500
+Subject: [PATCH 7/7] Testing: Skip a test on Linux locally
+
+---
+ spyder/app/tests/test_mainwindow.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/spyder/app/tests/test_mainwindow.py b/spyder/app/tests/test_mainwindow.py
+index 86245f2cc6..9503970f6b 100644
+--- a/spyder/app/tests/test_mainwindow.py
++++ b/spyder/app/tests/test_mainwindow.py
+@@ -546,8 +546,9 @@ def test_get_help_ipython_console(main_window, qtbot):
+ 
+ @pytest.mark.slow
+ @flaky(max_runs=3)
+-@pytest.mark.skipif(not sys.platform.startswith('linux'),
+-                    reason="Only works on Linux")
++@pytest.mark.skipif((not sys.platform.startswith('linux') or
++                     os.environ.get('CI', None) is None),
++                    reason="Only works on Linux and CIs")
+ @pytest.mark.use_introspection
+ @pytest.mark.parametrize(
+     "object_info",
