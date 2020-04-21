@@ -1,7 +1,7 @@
 #
 # spec file for package python-vim-vint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-vim-vint
 Version:        0.3.21
 Release:        0
@@ -35,14 +36,16 @@ BuildRequires:  %{python_module pytest >= 2.6.4}
 BuildRequires:  %{python_module pytest-cov >= 1.8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34 >= 1.0.4
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-typing >= 3.6.2
-BuildRequires:  python2-mock >= 1.0.1
 Requires:       python-PyYAML >= 3.11
 Requires:       python-ansicolor >= 0.2.4
 Requires:       python-chardet >= 2.3.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34 >= 1.0.4
+BuildRequires:  python-mock >= 1.0.1
+BuildRequires:  python-typing >= 3.6.2
+%endif
 %ifpython2
 Requires:       python-enum34 >= 1.0.4
 Requires:       python-pathlib >= 1.0.1
