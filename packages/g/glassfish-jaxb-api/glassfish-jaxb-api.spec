@@ -65,8 +65,10 @@ This package contains javadoc for %{name}.
         <exclude>module-info.java</exclude>
     </sourceFileExcludes>" jaxb-api
 
-%build
 %{mvn_file} :{*} @1
+%{mvn_alias} javax.xml.bind:jaxb-api jakarta.xml.bind:jakarta.xml.bind-api
+
+%build
 %{mvn_build} -f -- -Dsource=8
 
 %install
