@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:06:56 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-14.0.1+7 (April 2020 CPU,
+  bsc#1169511)
+  * Security fixes:
+    + S8223898, CVE-2020-2754: Forward references to Nashorn
+    + S8223904, CVE-2020-2755: Improve Nashorn matching
+    + S8224541, CVE-2020-2756: Better mapping of serial ENUMs
+    + S8224549, CVE-2020-2757: Less Blocking Array Queues
+    + S8225603: Enhancement for big integers
+    + S8226346: Build better binary builders
+    + S8227467: Better class method invocations
+    + S8227542: Manifest improved jar headers
+    + S8229733: TLS message handling improvements
+    + S8231415, CVE-2020-2773: Better signatures in XML
+    + S8231785: Improved socket permissions
+    + S8232424, CVE-2020-2778: More constrained algorithms
+    + S8232581, CVE-2020-2767: Improve TLS verification
+    + S8233250: Better X11 rendering
+    + S8233410: Better Build Scripting
+    + S8234027: Better JCEKS key support
+    + S8234408, CVE-2020-2781: Improve TLS session handling
+    + S8234825, CVE-2020-2800: Better Headings for HTTP Servers
+    + S8234841, CVE-2020-2803: Enhance buffering of byte buffers
+    + S8235274, CVE-2020-2805: Enhance typing of methods
+    + S8235691, CVE-2020-2816: Enhance TLS connectivity
+    + S8236201, CVE-2020-2830: Better Scanner conversions
+    + S8238960: linux-i586 builds are inconsistent as the newly
+      built jdk is not able to reserve enough space for object heap
+  * Other changes:
+    + S8044365: (dc) MulticastSendReceiveTests.java failing with
+      ENOMEM when joining group (OS X 10.9)
+    + S8183369: RFC unconformity of HttpURLConnection with proxy
+    + S8221741: ClassCastException can happen when
+      fontconfig.properties is used
+    + S8223935: PIT: java/awt/font/WindowsIndicFonts.java fails on
+      windows10
+    + S8225130: Add exception for expiring Comodo roots to
+      VerifyCACerts test
+    + S8225216: gc/logging/TestMetaSpaceLog.java doesn't work for
+      Shenandoah
+    + S8231118: ARM32: Math tests failures
+    + S8233245: More adaptive sockets
+    + S8234146: compiler/jsr292/ContinuousCallSiteTargetChange.java
+      times out on SPARC
+    + S8235332: TestInstanceCloneAsLoadsStores.java fails with
+      -XX:+StressGCM
+    + S8236759: ShouldNotReachHere in
+      PhaseIdealLoop::verify_strip_mined_scheduling
+    + S8236851: Shenandoah: More details in Traversal GC event
+      messages
+    + S8237192: Generate stripped/public pdbs on Windows for jdk
+      images
+    + S8237217: Incorrect G1StringDedupEntry type used in
+      StringDedupTable destructor
+    + S8237350: Bump release strings for JDK 14.0.1
+    + S8237350: create tag jdk-14.0.1+0 on the same revisions of
+      jdk-14+31
+    + S8237543: Shenandoah: More asserts around code roots
+    + S8237632: Shenandoah: accept NULL fwdptr to cooperate with
+      JVMTI and JFR
+    + S8237780: Shenandoah: More reliable nmethod verification
+    + S8237837: Shenandoah: assert(mem == __null) failed: only one
+      safepoint
+    + S8237879: make 4.3 breaks build
+    + S8237919: Change jdk 14.0.1 milestone to ea for build b02
+    + S8237945: CTW: C2 compilation fails with
+      assert(just_allocated_object(alloc_ctl) == ptr) failed: most
+      recent allo...
+    + S8237951: CTW: C2 compilation fails with "malformed control
+      flow"
+    + S8238190: [JVMCI] Fix single implementor speculation for
+      diamond shapes.
+    + S8238225: Issues reported after replacing symlink at
+      Contents/MacOS/libjli.dylib with binary
+    + S8238247: CTW runner should sweep nmethods more aggressively
+    + S8238356: CodeHeap::blob_count() overestimates the number of
+      blobs
+    + S8238366: CTW runner closes standard output on exit
+    + S8238385: CTW: C2 (Shenandoah) compilation fails with "Range
+      check dependent CastII node was not removed"
+    + S8238438: SuperWord::co_locate_pack picks memory state of
+      first instead of last load
+    + S8238452: Keytool generates wrong expiration date if validity
+      is set to 2050/01/01
+    + S8238534: Deep sign macOS bundles before bundle archive is
+      being created
+    + S8238721: Add failing client jtreg tests to the Problem List
+    + S8238756: C2: assert(((n) == __null || !VerifyIterativeGVN ||
+      !((n)->is_dead()))) failed: can not use dead node
+    + S8238811: C2: assert(i >= req() || i == 0 || is_Region() ||
+      is_Phi()) with -XX:+VerifyGraphEdges
+    + S8238851: Shenandoah: C1: Resolve into registers of correct
+      type
+    + S8238932: Invalid tier1_gc_1 test group definition
+    + S8239005: [TESTBUG] test/hotspot/jtreg/runtime/
+      /StackGuardPages/TestStackGuardPages.java: exeinvoke.c: must
+      initialize static state before calling do_overflow()
+    + S8239081: Shenandoah: Consolidate C1 LRB and native barriers
+    + S8239142: C2's UseUniqueSubclasses optimization is broken for
+      array accesses
+    + S8239354: Shenandoah: minor enhancements to traversal GC
+    + S8239429: AbsPathsInImage.java fails in JDK 11u and 14u on
+      Windows
+    + S8239456: vtable stub generation: assert failure (code size
+      estimate)
+    + S8239787: AArch64: String.indexOf may incorrectly handle
+      empty strings
+    + S8239798: SSLSocket closes socket both socket endpoints on a
+      SocketTimeoutException
+    + S8239852: java/util/concurrent tests fail with
+      -XX:+VerifyGraphEdges: assert(!VerifyGraphEdges) failed:
+      verification should have failed
+    + S8239868: Shenandoah: ditch C2 node limit adjustments
+    + S8239904: Shenandoah: accumulated penalties should not be
+      over 100% of capacity
+    + S8239915: Zero VM crashes when handling dynamic constant
+    + S8239931: [win][x86] vtable stub generation: assert failure
+      (code size estimate) follow-up
+    + S8240069: Shenandoah: turn more flags diagnostic
+    + S8240070: Shenandoah: remove obsolete
+      ShenandoahCommonGCStateLoads
+    + S8240076: Shenandoah: pacer should cover reset and preclean
+      phases
+    + S8240215: Shenandoah: remove ShenandoahAllocationTrace
+    + S8240216: Shenandoah: remove ShenandoahTerminationTrace
+    + S8240217: Shenandoah: remove ShenandoahEvacAssist
+    + S8240220: IdealLoopTree::dump_head predicate printing is
+      broken
+    + S8240286: [TESTBUG] Test command error in hotspot/jtreg/
+      /compiler/loopopts/superword/SumRedAbsNeg_Float.java
+    + S8240511: Shenandoah: parallel safepoint workers count should
+      be ParallelGCThreads
+    + S8240534: Shenandoah: ditch debug safepoint timeout adjustment
+    + S8240589: OtherRegionsTable::_num_occupied not updated
+      correctly
+    + S8240629: argfiles parsing broken for argfiles with comment
+      cross 4096 bytes chunk
+    + S8240671: Shenandoah: refactor ShenandoahPhaseTimings
+    + S8240749: Shenandoah: refactor ShenandoahUtils
+    + S8240750: Shenandoah: remove leftover files and mentions of
+      ShenandoahAllocTracker
+    + S8240868: Shenandoah: remove CM-with-UR piggybacking cycles
+    + S8240948: Shenandoah: cleanup not-forwarded-objects paths
+      after JDK-8240868
+    + S8240972: macOS codesign fail on macOS 10.13.5 or older
+    + S8241296: Segfault in JNIHandleBlock::oops_do()
+    + S8241445: Fix copyright in
+      test/jdk/tools/launcher/ArgFileSyntax.java
+    + S8241568: (fs) UserPrincipalLookupService.lookupXXX failure
+      with IOE "Operation not permitted"
+    + S8241586: compiler/cpuflags/
+      /TestAESIntrinsicsOnUnsupportedConfig.java fails on aarch64
+
+-------------------------------------------------------------------
+Wed Mar 25 14:20:35 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add gcc-fno-common-fix.patch in order to fix
+  boo#1167462.
+
+-------------------------------------------------------------------
 Tue Mar 17 17:43:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Tag jdk-14+36 has been promoted to OpenJDK 14 release
@@ -2320,6 +2481,18 @@ Tue Mar 17 08:33:30 UTC 2020 - Fridrich Strba <fstrba@suse.com>
     + S8231210: [BACKOUT] JDK-8207266
       ThreadMXBean::getThreadAllocatedBytes() can be quicker for
       self thread
+
+-------------------------------------------------------------------
+Thu Feb 13 15:46:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- DependOnVariableHelper.patch: Fix DependOnVariableHelper for make 4.3
+
+-------------------------------------------------------------------
+Sun Feb  2 22:35:55 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Install java icons not only versioned, but also postfixed by the
+  "openjdk", in order to prevent install conflicts with other
+  jdk 11 flavours.
 
 -------------------------------------------------------------------
 Tue Oct  8 15:35:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>

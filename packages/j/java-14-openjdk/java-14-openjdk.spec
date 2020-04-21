@@ -1,7 +1,7 @@
 #
-# spec file for package java
+# spec file for package java-14-openjdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,17 +32,16 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      14
 %global interimver      0
-%global updatever       0
+%global updatever       1
 %global patchver        0
-%global datever         2020-03-17
-%global buildver        36
+%global datever         2020-04-14
+%global buildver        7
 %global hg_project      jdk-updates
 %global hg_repository   jdk14u
-%global hg_revision     bc54620a3848
+%global hg_revision     dff61ec755a9
 %global icedtea_sound_version 1.0.1
 %global java_atk_wrapper_version 0.33.2
 # JavaEE modules
-%global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
 %global java_activation_tag JAF-1_2_0
 %global java_xml_bind_repository jaxb-spec
@@ -212,6 +211,9 @@ Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
+#
+Patch31:        DependOnVariableHelper.patch
+Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
 #
@@ -489,6 +491,9 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch16 -p1
 
 %patch20 -p1
+
+%patch31 -p1
+%patch32 -p1
 
 # s390 build fixes
 
@@ -923,7 +928,7 @@ cp -a %{buildoutputdir}/images/docs %{buildroot}%{_javadocdir}/%{sdklnk}
 for s in 16 24 32 48 ; do
   install -D -p -m 644 \
     src/java.desktop/unix/classes/sun/awt/X11/java-icon${s}.png \
-    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/java-%{javaver}.png
+    %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/java-%{javaver}-openjdk.png
 done
 
 # Install desktop file.
@@ -1180,7 +1185,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libjawt.so
 %{_jvmdir}/%{sdkdir}/lib/libsplashscreen.so
 %dir %{_datadir}/icons/hicolor
-%{_datadir}/icons/hicolor/*x*/apps/java-%{javaver}.png
+%{_datadir}/icons/hicolor/*x*/apps/java-%{javaver}-openjdk.png
 
 %files headless
 %dir %{_jvmdir}
