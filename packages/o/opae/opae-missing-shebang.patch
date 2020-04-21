@@ -1,56 +1,26 @@
-commit a6fe8dc0afbbc26b16a906db8347ccabf244d709
-Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
-Date:   Wed Sep 6 10:06:23 2017 +0200
+commit 3f99e48371a6a6c19aeec36d3b5612037f3dad18
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Apr 17 10:00:07 2020 +0200
 
     opae missing shebang
     
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
-diff --git cmake/modules/packaging.cmake cmake/modules/packaging.cmake
-index 7b2dfd168d2c..a028cb147d78 100644
---- cmake/modules/packaging.cmake
-+++ cmake/modules/packaging.cmake
-@@ -98,7 +98,7 @@ macro(CREATE_PYTHON_EXE EXE_NAME MAIN_MODULE)
+diff --git opae-libs/cmake/modules/OPAEPackaging.cmake opae-libs/cmake/modules/OPAEPackaging.cmake
+index 4f0b458dacb3..dab3e6af2591 100644
+--- opae-libs/cmake/modules/OPAEPackaging.cmake
++++ opae-libs/cmake/modules/OPAEPackaging.cmake
+@@ -129,7 +129,7 @@ macro(CREATE_PYTHON_EXE EXE_NAME MAIN_MODULE)
          "\n"
          "# Write to a buffer so that the shebang can be prepended easily\n"
          "wr_buf = BytesIO()\n"
--        "wr_buf.write('#!/usr/bin/env python' + os.linesep)\n"
-+        "wr_buf.write('#!/usr/bin/python3' + os.linesep)\n"
+-        "wr_buf.write('#!/usr/bin/env python3{}'.format(os.linesep).encode())\n"
++        "wr_buf.write('#!/usr/bin/python3{}'.format(os.linesep).encode())\n"
          "\n"
          "z = zipfile.PyZipFile(wr_buf, 'w')\n")
  
-diff --git libopae/plugins/ase/scripts/afu_sim_setup libopae/plugins/ase/scripts/afu_sim_setup
-index 7d1939ce29ac..af6de5ba3c2c 100755
---- libopae/plugins/ase/scripts/afu_sim_setup
-+++ libopae/plugins/ase/scripts/afu_sim_setup
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2013-2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git libopae/plugins/ase/scripts/generate_ase_environment.py libopae/plugins/ase/scripts/generate_ase_environment.py
-index 99d569789aa2..6372081972f4 100755
---- libopae/plugins/ase/scripts/generate_ase_environment.py
-+++ libopae/plugins/ase/scripts/generate_ase_environment.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2013-2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git libopae/plugins/ase/scripts/ipc_clean.py libopae/plugins/ase/scripts/ipc_clean.py
-index 2ca3f985afb5..85f653a992a8 100755
---- libopae/plugins/ase/scripts/ipc_clean.py
-+++ libopae/plugins/ase/scripts/ipc_clean.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2013-2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git platforms/scripts/afu_platform_config platforms/scripts/afu_platform_config
-index 5bab88b8f7c5..fd6622988307 100755
+index fd25acb79dc4..8ea9afaa5132 100755
 --- platforms/scripts/afu_platform_config
 +++ platforms/scripts/afu_platform_config
 @@ -1,4 +1,4 @@
@@ -80,7 +50,7 @@ index 5cba6af04610..4d5f99384a89 100755
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git platforms/scripts/rtl_src_config platforms/scripts/rtl_src_config
-index 7703005ddfe6..bb132f316c8c 100755
+index d75fec7cd63d..97bc02422901 100755
 --- platforms/scripts/rtl_src_config
 +++ platforms/scripts/rtl_src_config
 @@ -1,4 +1,4 @@
@@ -89,36 +59,76 @@ index 7703005ddfe6..bb132f316c8c 100755
  
  #
  # Consume a file with a list of source files, include paths and preprocessor
-diff --git pyopae/pybind11/docs/conf.py pyopae/pybind11/docs/conf.py
-index e328eb161d76..55bb723956b9 100644
---- pyopae/pybind11/docs/conf.py
-+++ pyopae/pybind11/docs/conf.py
+diff --git python/opae.admin/debian/deb-changelog.py python/opae.admin/debian/deb-changelog.py
+index 5eab4e4aa988..36fd062c30c8 100755
+--- python/opae.admin/debian/deb-changelog.py
++++ python/opae.admin/debian/deb-changelog.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- # -*- coding: utf-8 -*-
- #
- # pybind11 documentation build configuration file, created by
-diff --git pyopae/pybind11/setup.py pyopae/pybind11/setup.py
-index f677f2af4a6f..9a184673fbba 100644
---- pyopae/pybind11/setup.py
-+++ pyopae/pybind11/setup.py
+ 
+ from __future__ import absolute_import
+ import argparse
+diff --git python/opae.admin/opae/admin/tools/fpgaflash.py python/opae.admin/opae/admin/tools/fpgaflash.py
+index 84fa52decfbc..8fa43f9da4b0 100755
+--- python/opae.admin/opae/admin/tools/fpgaflash.py
++++ python/opae.admin/opae/admin/tools/fpgaflash.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- 
- # Setup script for PyPI; use CMakeFile.txt to build extension modules
- 
-diff --git pyopae/pybind11/tools/mkdoc.py pyopae/pybind11/tools/mkdoc.py
-index 1fd8cceed52b..3e4b5d6c3622 100644
---- pyopae/pybind11/tools/mkdoc.py
-+++ pyopae/pybind11/tools/mkdoc.py
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/fpgaotsu.py python/opae.admin/opae/admin/tools/fpgaotsu.py
+index d2bba06dfa54..ba375a2c3038 100755
+--- python/opae.admin/opae/admin/tools/fpgaotsu.py
++++ python/opae.admin/opae/admin/tools/fpgaotsu.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/fpgasupdate.py python/opae.admin/opae/admin/tools/fpgasupdate.py
+index ce06c6c564af..e91503740412 100755
+--- python/opae.admin/opae/admin/tools/fpgasupdate.py
++++ python/opae.admin/opae/admin/tools/fpgasupdate.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/ihex2ipmi.py python/opae.admin/opae/admin/tools/ihex2ipmi.py
+index 032e31e355d3..d4d05e6d2553 100644
+--- python/opae.admin/opae/admin/tools/ihex2ipmi.py
++++ python/opae.admin/opae/admin/tools/ihex2ipmi.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/rsu.py python/opae.admin/opae/admin/tools/rsu.py
+index 580eae896d95..a4075d8ced1a 100644
+--- python/opae.admin/opae/admin/tools/rsu.py
++++ python/opae.admin/opae/admin/tools/rsu.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
  #
- #  Syntax: mkdoc.py [-I<path> ..] [.. a list of header files ..]
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/super_rsu.py python/opae.admin/opae/admin/tools/super_rsu.py
+index 045fa2e0d32d..b73ba7861b10 100755
+--- python/opae.admin/opae/admin/tools/super_rsu.py
++++ python/opae.admin/opae/admin/tools/super_rsu.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019-2020, Intel Corporation
  #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git scripts/index_generator.py scripts/index_generator.py
 index dc0bcc2d13fd..0f406738c384 100644
 --- scripts/index_generator.py
@@ -129,14 +139,83 @@ index dc0bcc2d13fd..0f406738c384 100644
  # -*- coding: utf-8 -*-
  # vim:fenc=utf-8
  #
-diff --git tools/base/fpgaport/fpgaport tools/base/fpgaport/fpgaport
-index af0beafdcb57..bbb47654c873 100644
---- tools/base/fpgaport/fpgaport
-+++ tools/base/fpgaport/fpgaport
+diff --git tools/extra/fpgabist/bist_app.py tools/extra/fpgabist/bist_app.py
+index 846bcb668f87..fdfec981dece 100644
+--- tools/extra/fpgabist/bist_app.py
++++ tools/extra/fpgabist/bist_app.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/bist_common.py tools/extra/fpgabist/bist_common.py
+index 8de0cea2c6d8..f3b27f64e6c5 100644
+--- tools/extra/fpgabist/bist_common.py
++++ tools/extra/fpgabist/bist_common.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/bist_def.py tools/extra/fpgabist/bist_def.py
+index 7812a822a5ae..bdb1d7e7fc29 100644
+--- tools/extra/fpgabist/bist_def.py
++++ tools/extra/fpgabist/bist_def.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/bist_dma.py tools/extra/fpgabist/bist_dma.py
+index aec5f8770d48..ee4e620b586e 100644
+--- tools/extra/fpgabist/bist_dma.py
++++ tools/extra/fpgabist/bist_dma.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/bist_nlb0.py tools/extra/fpgabist/bist_nlb0.py
+index 6930172bfcd9..608f11c66137 100644
+--- tools/extra/fpgabist/bist_nlb0.py
++++ tools/extra/fpgabist/bist_nlb0.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python
+ # Copyright(c) 2018, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/bist_nlb3.py tools/extra/fpgabist/bist_nlb3.py
+index 24fcb9468556..952169dbf0a0 100644
+--- tools/extra/fpgabist/bist_nlb3.py
++++ tools/extra/fpgabist/bist_nlb3.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgabist/fpgabist tools/extra/fpgabist/fpgabist
+index 396470f888f3..b4c9876229da 100755
+--- tools/extra/fpgabist/fpgabist
++++ tools/extra/fpgabist/fpgabist
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # Copyright(c) 2017, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/common.py tools/extra/fpgadiag/common.py
+index 5d0e4fe0ae20..7a7cd78b8fc5 100755
+--- tools/extra/fpgadiag/common.py
++++ tools/extra/fpgadiag/common.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#! /usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
+ # Copyright(c) 2018-2019, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/fpgadiag tools/extra/fpgadiag/fpgadiag
@@ -149,8 +228,38 @@ index 98063daf8476..c798d26b4e2d 100755
  # Copyright(c) 2019, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/fpgalpbk.py tools/extra/fpgadiag/fpgalpbk.py
+index 837e007d8285..169b89174372 100755
+--- tools/extra/fpgadiag/fpgalpbk.py
++++ tools/extra/fpgadiag/fpgalpbk.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/fpgastats.py tools/extra/fpgadiag/fpgastats.py
+index e9c0704cc7e7..b116c8f874eb 100755
+--- tools/extra/fpgadiag/fpgastats.py
++++ tools/extra/fpgadiag/fpgastats.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2018-2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/mactest.py tools/extra/fpgadiag/mactest.py
+index 06e410c457fe..13662a2a48a5 100755
+--- tools/extra/fpgadiag/mactest.py
++++ tools/extra/fpgadiag/mactest.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python3
+ # Copyright(c) 2018-2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/mux.py tools/extra/fpgadiag/mux.py
-index 4752973c18d3..7396a1b6995a 100644
+index 099c4e56ba61..1a4b1605c7a2 100644
 --- tools/extra/fpgadiag/mux.py
 +++ tools/extra/fpgadiag/mux.py
 @@ -1,4 +1,4 @@
@@ -159,117 +268,18 @@ index 4752973c18d3..7396a1b6995a 100644
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_app.py tools/extra/pac/fpgabist/bist_app.py
-index 3eb0bf3672d4..b7578740dbaf 100644
---- tools/extra/pac/fpgabist/bist_app.py
-+++ tools/extra/pac/fpgabist/bist_app.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_common.py tools/extra/pac/fpgabist/bist_common.py
-index ee9ca852cb53..f978698c4ba9 100644
---- tools/extra/pac/fpgabist/bist_common.py
-+++ tools/extra/pac/fpgabist/bist_common.py
-@@ -1,3 +1,4 @@
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_def.py tools/extra/pac/fpgabist/bist_def.py
-index a8f8583910fb..6f83af0ad182 100644
---- tools/extra/pac/fpgabist/bist_def.py
-+++ tools/extra/pac/fpgabist/bist_def.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_dma.py tools/extra/pac/fpgabist/bist_dma.py
-index 7843828e08a7..085fa1bf426b 100644
---- tools/extra/pac/fpgabist/bist_dma.py
-+++ tools/extra/pac/fpgabist/bist_dma.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_nlb0.py tools/extra/pac/fpgabist/bist_nlb0.py
-index 8bcc34dc4b1e..9db58dc35a3d 100644
---- tools/extra/pac/fpgabist/bist_nlb0.py
-+++ tools/extra/pac/fpgabist/bist_nlb0.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python
- # Copyright(c) 2018, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/bist_nlb3.py tools/extra/pac/fpgabist/bist_nlb3.py
-index e54333c9d018..02b9e7fd120e 100644
---- tools/extra/pac/fpgabist/bist_nlb3.py
-+++ tools/extra/pac/fpgabist/bist_nlb3.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgabist/fpgabist tools/extra/pac/fpgabist/fpgabist
-index f0d477209ae4..0825587e7722 100755
---- tools/extra/pac/fpgabist/fpgabist
-+++ tools/extra/pac/fpgabist/fpgabist
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgaflash/fpgaflash tools/extra/pac/fpgaflash/fpgaflash
-index ff22bd583c43..c14faea6c11d 100755
---- tools/extra/pac/fpgaflash/fpgaflash
-+++ tools/extra/pac/fpgaflash/fpgaflash
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2019, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/fpgaflash/super-rsu tools/extra/pac/fpgaflash/super-rsu
-index cd2e129c3068..9d1c50bb0eff 100755
---- tools/extra/pac/fpgaflash/super-rsu
-+++ tools/extra/pac/fpgaflash/super-rsu
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#! /usr/bin/python
- # Copyright(c) 2019, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/pac_hssi_config/pac_hssi_config.py tools/extra/pac/pac_hssi_config/pac_hssi_config.py
+diff --git tools/extra/pac_hssi_config/pac_hssi_config.py tools/extra/pac_hssi_config/pac_hssi_config.py
 index 83d52b5374ab..0eea7221ea9a 100755
---- tools/extra/pac/pac_hssi_config/pac_hssi_config.py
-+++ tools/extra/pac/pac_hssi_config/pac_hssi_config.py
+--- tools/extra/pac_hssi_config/pac_hssi_config.py
++++ tools/extra/pac_hssi_config/pac_hssi_config.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  # Copyright(c) 2018, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pac/pyfpgaflash/fpgaflash tools/extra/pac/pyfpgaflash/fpgaflash
-index 28bf85235e6f..fa0eb473934a 100755
---- tools/extra/pac/pyfpgaflash/fpgaflash
-+++ tools/extra/pac/pyfpgaflash/fpgaflash
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/packager/afu_json_mgr.py tools/extra/packager/afu_json_mgr.py
-index 0e31ec2646f1..d4bc864ddaf7 100755
+index a6fc98730f2f..50987b7598f9 100755
 --- tools/extra/packager/afu_json_mgr.py
 +++ tools/extra/packager/afu_json_mgr.py
 @@ -1,4 +1,4 @@
@@ -289,59 +299,9 @@ index 96108c86ba25..91592830263e 100755
  import sys
  import textwrap
 diff --git tools/extra/packager/packager.py tools/extra/packager/packager.py
-index 859932700e3d..f6224dba369d 100755
+index f1edf9ac4b2c..fd1ce183d6ae 100755
 --- tools/extra/packager/packager.py
 +++ tools/extra/packager/packager.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgadiag.py tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgadiag.py
-index cb9971175ef3..9aa03755fb3d 100644
---- tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgadiag.py
-+++ tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgadiag.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2018, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgamux.py tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgamux.py
-index 2a2a507f223e..5cd267bdab03 100644
---- tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgamux.py
-+++ tools/extra/pyfpgadiag/opae/tools/fpgadiag/fpgamux.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2018, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pyfpgadiag/opae/utils/byteutils.py tools/extra/pyfpgadiag/opae/utils/byteutils.py
-index 19e23d77f084..4290bc342424 100644
---- tools/extra/pyfpgadiag/opae/utils/byteutils.py
-+++ tools/extra/pyfpgadiag/opae/utils/byteutils.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2018, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pypackager/afu_json_mgr.py tools/extra/pypackager/afu_json_mgr.py
-index 0e31ec2646f1..d4bc864ddaf7 100755
---- tools/extra/pypackager/afu_json_mgr.py
-+++ tools/extra/pypackager/afu_json_mgr.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # Copyright(c) 2017, Intel Corporation
- #
- # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/extra/pypackager/packager.py tools/extra/pypackager/packager.py
-index 859932700e3d..f6224dba369d 100755
---- tools/extra/pypackager/packager.py
-+++ tools/extra/pypackager/packager.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -1905,3 +1865,33 @@ index 000000000000..cbc85bc91df4
 +
 +clean-wrapper:
 +	rm -f $(ADAPT_DEST_ROOT)/bin/packager
+diff --git tools/utilities/vc_image_convert/extract_fpga_image.py tools/utilities/vc_image_convert/extract_fpga_image.py
+index 176f5e56a203..9c05e4cf7afd 100644
+--- tools/utilities/vc_image_convert/extract_fpga_image.py
++++ tools/utilities/vc_image_convert/extract_fpga_image.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ """ Extrats section for use in fpgaflash that contains:
+     0x010000 to 0x01FFFF     : pfl option_bits
+     0x020000 to 0x0381FFFF   : S10 factory image page0
+diff --git tools/utilities/vc_image_convert/merge_device_table.py tools/utilities/vc_image_convert/merge_device_table.py
+index a0e47f586c29..2cd0ef3bd60f 100644
+--- tools/utilities/vc_image_convert/merge_device_table.py
++++ tools/utilities/vc_image_convert/merge_device_table.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ """ splice in max10 device table info at 0x3820000
+ 
+     0x03820000 to 0x03ffffff : Max10 device table range
+diff --git tools/utilities/vc_image_convert/reverse.py tools/utilities/vc_image_convert/reverse.py
+index 54ceedb426eb..6fe2cc8721b0 100644
+--- tools/utilities/vc_image_convert/reverse.py
++++ tools/utilities/vc_image_convert/reverse.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ import argparse
+ from array import array

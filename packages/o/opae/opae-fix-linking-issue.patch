@@ -1,0 +1,36 @@
+commit 05d809cab5780e79ebbbbb8c833e9f03df1b2565
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Apr 17 11:09:52 2020 +0200
+
+    opae: fix linking issue
+    
+    Add missing -lopae-c for libopaecxx
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git opae-libs/libopaecxx/CMakeLists.txt opae-libs/libopaecxx/CMakeLists.txt
+index 38d6124b0c98..2610278ca437 100644
+--- opae-libs/libopaecxx/CMakeLists.txt
++++ opae-libs/libopaecxx/CMakeLists.txt
+@@ -43,6 +43,7 @@ opae_add_shared_library(TARGET opae-cxx-core
+     VERSION ${OPAE_VERSION}
+     SOVERSION ${OPAE_VERSION_MAJOR}
+     COMPONENT opaecxxcorelib
++	LIBS opae-c
+ )
+ 
+ opae_add_executable(TARGET hello_cxxcore
+diff --git tools/extra/fpgadiag/CMakeLists.txt tools/extra/fpgadiag/CMakeLists.txt
+index 606bb75ff3d5..d5bd2c8283ce 100644
+--- tools/extra/fpgadiag/CMakeLists.txt
++++ tools/extra/fpgadiag/CMakeLists.txt
+@@ -42,7 +42,8 @@ opae_add_shared_library(TARGET opae-c++-nlb
+         diag_utils.cpp
+     LIBS
+         opae-c
+-        opae-cxx-core 
++        opae-cxx-core
++		opae-c++-utils
+     VERSION ${OPAE_VERSION}
+     SOVERSION ${OPAE_VERSION_MAJOR}
+     COMPONENT opaecxxnlb
