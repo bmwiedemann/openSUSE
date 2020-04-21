@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 12:03:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Nov 15 19:15:59 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Use %pytest instead of python setup.py test combination.

@@ -59,4 +59,12 @@
     <comment>- Use %pytest instead of python setup.py test combination.</comment>
     <requestid>748961</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>574d7b6cd23cec3f818891c8b421e62b</srcmd5>
+    <version>0.9.3</version>
+    <time>1587467460</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795818</requestid>
+  </revision>
 </revisionlist>

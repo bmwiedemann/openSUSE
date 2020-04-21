@@ -1,7 +1,7 @@
 #
 # spec file for package python-flower
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           python-flower
 Version:        0.9.3
 Release:        0
@@ -36,7 +37,6 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4.2.0}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 Requires:       python-Babel >= 1.0
 Requires:       python-celery >= 3.1.0
 Requires:       python-certifi
@@ -45,6 +45,9 @@ Requires:       python-tornado >= 4.2.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
 %ifpython2
 Requires:       python-futures
 %endif
