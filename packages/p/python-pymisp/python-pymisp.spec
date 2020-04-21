@@ -47,9 +47,6 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
-BuildRequires:  python2-cachetools
-BuildRequires:  python2-enum34
-BuildRequires:  python2-functools32
 # /SECTION
 # SECTION docs
 BuildRequires:  python3-CommonMark
@@ -57,11 +54,6 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-recommonmark
 BuildRequires:  python3-sphinx-autodoc-typehints
 # /SECTION
-%ifpython2
-Requires:       python2-cachetools
-Requires:       python2-enum34
-Requires:       python2-functools32
-%endif
 Requires:       python-Deprecated
 %python_subpackages
 
@@ -94,7 +86,7 @@ popd
 
 %install
 %python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
