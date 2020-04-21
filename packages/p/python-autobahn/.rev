@@ -72,4 +72,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>732185</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b950b7403d6425bcd725d887e52b207</srcmd5>
+    <version>20.4.2</version>
+    <time>1587467223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.4.2:
+  * new: XBR - adjust eip712 signature for channel close
+  * new: XBR - adjustments after xbr refactoring (#1357)
+  * new: XBR - add channel open/close eip712 types to AB (#1358)
+  * new: WAMP-cryptosign - make channel_id_type optional in transport_channel_id()
+  * new: expose new XBR top-level contracts
+  * fix: bump dependencies versions for attrs and identity (#1346)
+  * fix: FrontendProxyProtocol object has no attribute 'write' (#1339)
+  * fix: WAMP-cryptosign authid is not mandatory; reduce log noise (#1340)
+  * fix: confusion between paying and payment channel (#1337)
+  * new: forward explicitly set app level errors from ApplicationRunner.run() (#1336)
+  * fix: simple typo: hookinh -&gt; hooking (#1333)
+  * new: update for xbr v20.3.1
+  * fix: for #1327 - cancel Auto Ping Timeout (#1328)
+  * new: helper function to create a configured Web3 blockchain connection (#1329)
+  * fix: add AuthAnonymous to __all__ (#1303)
+  * fix: CI building (caching?) issue &quot;corrupt ZIP file&quot;
+  * fix: update docker image build scripts and add ARM64/PyPy
+  * fix: use :func:`txaio.time_ns` and drop deprecated :func:`autobahn.util.time_ns`
+  * fix: update project README and docs for supported python versions (#1296)
+  * fix: WebSocket protocol instances now raise autobahn.exception.Disconnected when sending on a closed connection (#1002)
+  * fix: version conflict in xbr downstream application dependency (crossbarfx) (#1295)
+  * fix: add python_requires&gt;=3.5 to prevent installation on python 2 (#1293)
+  * fix: first part of cleaning up code, dropping Python 2 support (#1282).
+  * fix: add docs for parameters to component.py (#1276)
+  * new: statistics tracking on WAMP serializers :class:`autobahn.wamp.serializer.Serializer`
+  * new: helper :func:`autobahn.util.time_ns`
+- No longer build for Python 2
+- Update BuildRequires.</comment>
+    <requestid>795683</requestid>
+  </revision>
 </revisionlist>
