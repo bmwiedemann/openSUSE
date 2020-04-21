@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsimonious
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/parsimonious
 Source:         https://files.pythonhosted.org/packages/source/p/parsimonious/parsimonious-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# PATCH-FIX-UPSTREAM replace-nose.patch gh#erikrose/parsimonious#160 mcepl@suse.com
+# replace use of nose with the standard library
+Patch0:         replace-nose.patch
+
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
@@ -41,6 +45,7 @@ means you feed it a simplified sort of EBNF notation.
 
 %prep
 %setup -q -n parsimonious-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -50,7 +55,7 @@ means you feed it a simplified sort of EBNF notation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py nosetests
+%pytest
 
 %files %{python_files}
 %doc README.rst
