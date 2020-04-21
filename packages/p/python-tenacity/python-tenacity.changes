@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:03:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Feb 28 21:45:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.1.0:

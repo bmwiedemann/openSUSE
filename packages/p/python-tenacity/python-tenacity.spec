@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
+%bcond_without  python2
 Name:           python-tenacity
 Version:        6.1.0
 Release:        0
@@ -26,28 +26,24 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jd/tenacity
 Source:         https://files.pythonhosted.org/packages/source/t/tenacity/tenacity-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six >= 1.9.0
+Recommends:     python-tornado
+BuildArch:      noarch
+%if %{with python2}
 BuildRequires:  python2-futures >= 3.0
 BuildRequires:  python2-monotonic >= 0.6
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tornado}
 %endif
-Requires:       python-six >= 1.9.0
 %ifpython2
 Requires:       python-futures >= 3.0
 Requires:       python-monotonic >= 0.6
 %endif
-%if 0%{?_no_weakdeps}
-Requires:       python-tornado >= 4.5
-%else
-Recommends:     python-tornado
-%endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -72,10 +68,8 @@ Features
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %pytest --ignore tenacity/tests/test_asyncio.py
-%endif
 
 %files %{python_files}
 %license LICENSE
