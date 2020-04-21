@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:56:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix condition for py2 only packages
+
+-------------------------------------------------------------------
 Wed Apr  8 07:20:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.16.0

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-google-api-core
 Version:        1.16.0
 Release:        0
@@ -48,7 +49,7 @@ Requires:       python-setuptools >= 34.0.0
 Requires:       python-six >= 1.10.0
 Suggests:       python-grpcio-gcp >= 0.2.2
 BuildArch:      noarch
-%ifpython2
+%if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-futures >= 3.2.0
 %endif
