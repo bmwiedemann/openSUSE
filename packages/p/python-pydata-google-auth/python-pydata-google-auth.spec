@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pydata-google-auth
 Version:        0.3.0
 Release:        0
@@ -33,7 +34,9 @@ BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python-mock
+%endif
 # /SECTION
 Requires:       python-google-auth
 Requires:       python-google-auth-oauthlib

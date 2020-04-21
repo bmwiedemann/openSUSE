@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>773483</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>865f310cd28c695500b2b1ce7711f5ac</srcmd5>
+    <version>0.3.0</version>
+    <time>1587467385</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795777</requestid>
+  </revision>
 </revisionlist>
