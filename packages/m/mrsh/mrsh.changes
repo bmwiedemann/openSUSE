@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 18 10:12:46 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Remove previous workaround as chkstat from the updated
+  'permissions' is expected to handle the symlinks correctly,
+  now.
+
+-------------------------------------------------------------------
 Wed Feb 12 11:40:04 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Create compatibility symlinks as relative links. This doesn't

@@ -108,9 +108,6 @@ DESTDIR="%{buildroot}" make install
 
 ln -sf in.mrlogind %{buildroot}%{_sbindir}/in.rlogind
 ln -sf in.mrshd %{buildroot}%{_sbindir}/in.rshd
-for i in rcp rlogin rsh; do
-   ln -sf m$i %{buildroot}/%{_bindir}/$i
-done
 
 for i in mrsh mrlogin
 do
