@@ -44,7 +44,6 @@ BuildArch:      noarch
 # BuildRequires:  %%{python_module dask-dataframe}
 BuildRequires:  %{python_module pytest >= 2.7.1}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  python2-mock
 # /SECTION
 %python_subpackages
 

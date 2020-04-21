@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 07:11:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Package is py3 only -> drop py2 dependency
+
+-------------------------------------------------------------------
 Sat Mar 28 16:43:47 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.15.1:

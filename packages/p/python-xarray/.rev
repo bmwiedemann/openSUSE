@@ -768,4 +768,12 @@
     <comment></comment>
     <requestid>789448</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0c31e2a47e2b66de32faf09b3ea0be0e</srcmd5>
+    <version>0.15.1</version>
+    <time>1587467238</time>
+    <user>dimstar_suse</user>
+    <comment>- Package is py3 only -&gt; drop py2 dependency</comment>
+    <requestid>795672</requestid>
+  </revision>
 </revisionlist>
