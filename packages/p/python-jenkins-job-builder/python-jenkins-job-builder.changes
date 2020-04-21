@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:45:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull configparser only on python2
+
+-------------------------------------------------------------------
 Mon Mar  9 16:44:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.3.0

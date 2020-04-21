@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-jenkins-job-builder
 Version:        3.3.0
 Release:        0
@@ -28,7 +29,6 @@ URL:            https://opendev.org/jjb/jenkins-job-builder
 Source:         https://files.pythonhosted.org/packages/source/j/jenkins-job-builder/jenkins-job-builder-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.10.0}
-BuildRequires:  %{python_module configparser}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr >= 1.8}
@@ -51,6 +51,9 @@ Requires:       python-stevedore >= 1.17.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-configparser
+%endif
 %python_subpackages
 
 %description
