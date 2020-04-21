@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>744577</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cb25773f55d07faf4d76da51caee6df2</srcmd5>
+    <version>0.3</version>
+    <time>1587467204</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version req on pyramid</comment>
+    <requestid>795620</requestid>
+  </revision>
 </revisionlist>

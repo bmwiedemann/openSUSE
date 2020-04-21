@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-chameleon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module hupper}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
-BuildRequires:  %{python_module pyramid} >= 1.4
+BuildRequires:  %{python_module pyramid >= 1.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes

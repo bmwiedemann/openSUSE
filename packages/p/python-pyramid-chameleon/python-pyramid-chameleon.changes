@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:03:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix version req on pyramid
+
+-------------------------------------------------------------------
 Mon Oct 14 14:16:55 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
