@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 10 03:12:51 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.004000
+   see /usr/share/doc/packages/perl-Moo/Changes
+
+  2.004000 - 2020-04-09
+    - minor documentation tweaks
+    - minor test tweaks
+    - refactor creation and installation of helper subs allowing extensions to
+      customize the behavior easier.
+    - added is_class and make_class methods to Moo
+    - added make_role method to Moo::Role
+    - lower Scalar::Util dependency to 1.00
+    - fix unlikely failure to properly inflate Type::Tiny types to Moose under
+      threads on perl 5.8
+
+-------------------------------------------------------------------
 Mon Oct 28 10:57:48 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.003006
