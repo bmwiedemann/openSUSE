@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -148,7 +148,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 %{_datadir}/zsh/site-functions/_herbstclient
 
 %files bash-completion
-%config %{_sysconfdir}/bash_completion.d/herbstclient-completion
+%{_datadir}/bash-completion/completions/herbstclient
 
 %files fish-completion
 %dir %{_datadir}/fish
