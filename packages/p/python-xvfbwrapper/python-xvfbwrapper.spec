@@ -1,7 +1,7 @@
 #
 # spec file for package python-xvfbwrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-xvfbwrapper
 Version:        0.2.9
 Release:        0
 Summary:        Python wrapper for controlling X virtual framebuffer (Xvfb)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cgoldberg/xvfbwrapper
 Source:         https://files.pythonhosted.org/packages/source/x/xvfbwrapper/xvfbwrapper-%{version}.tar.gz
 Patch0:         skip_failing_test.patch
@@ -32,8 +32,10 @@ BuildRequires:  python-rpm-macros
 Requires:       xorg-x11-Xvfb
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  python-mock
 BuildRequires:  xorg-x11-Xvfb
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %python_subpackages
 
