@@ -17,7 +17,7 @@
 
 
 Name:           minigalaxy
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        A GOG client for Linux that lets you download and play your GOG Linux games
 License:        GPL-3.0-only
@@ -51,13 +51,13 @@ rm -rf %{buildroot}%{python3_sitelib}/tests/
 %doc README.md
 %license LICENSE
 %{_bindir}/minigalaxy
-%{_datadir}/applications/minigalaxy.desktop
 %{_datadir}/minigalaxy/
 %dir %{_datadir}/icons
 %dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/192x192/
-%{_datadir}/icons/hicolor/192x192/apps/
-%{_datadir}/metainfo/minigalaxy.metainfo.xml
+%dir %{_datadir}/icons/hicolor/???x???/
+%{_datadir}/applications/io.github.sharkwouter.Minigalaxy.desktop
+%{_datadir}/icons/hicolor/???x???/apps/
+%{_datadir}/metainfo/io.github.sharkwouter.Minigalaxy.metainfo.xml
 %{python3_sitelib}/{m,M}inigalaxy*
 
 %changelog
