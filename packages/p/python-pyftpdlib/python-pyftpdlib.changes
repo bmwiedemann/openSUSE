@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:41:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Mar 27 08:46:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not remove tests, other packages import them

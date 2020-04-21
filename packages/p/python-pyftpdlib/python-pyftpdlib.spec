@@ -20,6 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests randomly fail: https://github.com/giampaolo/pyftpdlib/issues/386
 %bcond_with     test
+%bcond_without python2
 Name:           python-pyftpdlib
 Version:        1.5.6
 Release:        0
@@ -34,15 +35,17 @@ BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pysendfile}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-ipaddress
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 Recommends:     python-pysendfile
+BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-ipaddress
+BuildRequires:  python-mock
+%endif
 %ifpython2
 Requires:       python-ipaddress
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
