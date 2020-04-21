@@ -59,4 +59,49 @@
 </comment>
     <requestid>778180</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e557d0618b7bc42b7a82a8aef262457</srcmd5>
+    <version>0.17.2</version>
+    <time>1587467567</time>
+    <user>dimstar_suse</user>
+    <comment>- drop patch fix_build_with_openAL_1.20.patch
+- update to 0.17.2
+  Features:
+  * Implement ctrl+F: toggle flist online status filter (b7fdac2)
+  * Implement ctrl+f: focus on flist search input field (0b401eb)
+  * Search friend list also by Tox ID (ae85208)
+  * Implement ontab and onshifttab callbacks for text fields in add friend page (4842553)
+  * Handle Home &amp; End key in friend list (ctrl+Home, ctrl+End; go to first and last friend) (f1de42b)
+  * Handle Home &amp; End key in messages panel (For going to the top and bottom of the chat log) (8f19de0)
+  * Make Esc key unfocus from text input fields (This allows to scroll the chat log without having to click into it.) (b227afe)
+  * Focus message input field when starting to type (e4cc50c)
+  * Implement ontab and onshifttab callbacks for all text fields in settings (7194761)
+  Fixes:
+  * Fix a crash when adding a friend to a group (cb451de)
+  * Load window position from config file (0bcfead)
+  * Unbreak build with OpenAL 1.20.0 (@t6) (b608d58)
+  * Friend list fixes (1504fc0 195553d 58707ee)
+  * Fix Up key in message input field (118298e)
+  * Fix memory leaks (8b04e6f)
+  * Fix compilation error on GNU/kFreebsd (@yangfl) (bb790c5)
+  * Fix typos (@yangfl) (23e9e9b)
+  * Use correct evdev header on FreeBSD (@t6) (37271f9)
+  Development:
+  * Remove auto-updater (@robinlinden &amp; @avoidr) (3d1b1df)
+  * Show value of $ENABLE_LTO in cmake output (fb57530)
+  * Static linking fixes (02c5898 bc048af 812ad6d 507ea0a 6ca51bd ea876ca)
+  * Don't pass 2 of every flags in CFLAGS (@robinlinden) (4b1228d)
+  * Travis: Linux: disable auto-update test (e5a564f)
+  * CMakeLists.txt: add CFLAG -fno-common (ee15dbe)
+  * Make uTox gcc10-ready (-fno-common fix) (@eclipseo) (c7cb563)
+  * Remove WinXP support (eb81ba5)
+  * add tools/relnotes_to_cstring.sed (bb8ce78)
+  Documentation:
+  * add instructions to install from Guix (@metallicmole) (60fb4ee)
+  * add keybindings to manpage (@metallicmole) (192ed8d)
+  * docs/BUILD.md: minor rephrasing (c4d101f)
+  * docs/BUILD.md: add note about musl+clang linking issue (9a8a632)
+</comment>
+    <requestid>795902</requestid>
+  </revision>
 </revisionlist>

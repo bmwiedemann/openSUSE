@@ -18,7 +18,7 @@
 
 %define realname uTox
 Name:           utox
-Version:        0.17.1
+Version:        0.17.2
 Release:        0
 Summary:        The lightweight Tox client
 License:        MIT
@@ -27,8 +27,6 @@ URL:            https://utox.org/
 Source:         https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz
 Source1:        https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz.asc
 Source2:        uTox.keyring
-# PATCH-FEATURE-UPSTREAM fix_build_with_openAL_1.20.patch
-Patch:          fix_build_with_openAL_1.20.patch
 BuildRequires:  c-toxcore-devel
 BuildRequires:  cmake >= 3.2
 BuildRequires:  dbus-1-devel
@@ -54,7 +52,6 @@ Lightweight Tox client.
 
 %prep
 %setup -q -n %{realname}
-%patch0 -p1
 
 %build
 %cmake \
