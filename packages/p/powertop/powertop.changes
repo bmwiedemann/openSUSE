@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:13:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12:
+  * README: suggest to install autoconf-archive
+  * intel_cpus: Enable Jasper Lake support in PowerTop
+  * src/cpu: intel_cpus: Re-arrange the order of cpu model numbers
+  * intel_cpus: Enable Sky Lake server support in PowerTop
+  * src/display.cpp: Fix: Add the missing part of the patch changes
+  * configure.ac: Add a new release candidate v2.12-rc1 to PowerTop
+  * powertop.pot: Update powertop.pot
+  * configure.ac: Add a new release v2.12 to PowerTop
+  * Revert "configure.ac: version strings from git describe"
+  * configure.ac: required version to 2.69
+  * configure.ac: ax_add_fortify_source
+  * po: update translation files and template
+  * intel_cpus: Enable Comet Lake (Mobile) and Comet Lake (Desktop) support
+  * tuningsysfs: use med_power_with_dipm for SATA link power management
+
+-------------------------------------------------------------------
 Fri Jan 31 23:50:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
