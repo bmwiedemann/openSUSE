@@ -65,7 +65,7 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
-Requires:       logrotate
+Recommends:     logrotate
 Requires(pre):  permissions
 Provides:       http_proxy
 # due to package rename

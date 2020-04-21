@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:24:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make logrotate recommended, it's not strictly required and 
+  doesn't make any sense in containers
+
+-------------------------------------------------------------------
 Tue Feb 18 15:46:02 CET 2020 - kukuk@suse.de
 
 - Use sysusers instead of shadow to create squid user and groups

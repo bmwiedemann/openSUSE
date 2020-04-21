@@ -795,4 +795,12 @@ from the squid 3.x changelog</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>792007</requestid>
   </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>84d4fe7b2998fe45902deed5ff3be96f</srcmd5>
+    <version>4.10</version>
+    <time>1587467503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795800</requestid>
+  </revision>
 </revisionlist>
