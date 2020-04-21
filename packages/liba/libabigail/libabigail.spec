@@ -39,7 +39,7 @@ BuildRequires:  libtool >= 2.2
 BuildRequires:  libzip-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkg-config
-BuildRequires:  python-sphinx
+BuildRequires:  python3-Sphinx
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.22
 BuildRequires:  pkgconfig(libzip) >= 0.10

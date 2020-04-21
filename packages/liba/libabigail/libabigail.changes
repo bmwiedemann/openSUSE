@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 21 02:51:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Shift BuildRequires to Python 3 Sphinx due to removal of Python 2.
+
+-------------------------------------------------------------------
 Sun Mar 15 20:31:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7
