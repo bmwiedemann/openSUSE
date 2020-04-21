@@ -100,9 +100,7 @@ Group:          System/I18n/Chinese
 Provides:       ibus-table-erbi = %{version}-%{release}
 Obsoletes:      ibus-table-erbi < 1.3
 %{ibus_table_requires}
-%if 0%{?is_opensuse}
 Provides:       locale(ibus:zh_CN)
-%endif
 
 %description erbi
 Erbi input methods. Includes:
@@ -148,9 +146,7 @@ Group:          System/I18n/Chinese
 Provides:       ibus-table-stroke5 = %{version}-%{release}
 Obsoletes:      ibus-table-stroke5 < 1.3
 %{ibus_table_requires}
-%if 0%{?is_opensuse}
 Provides:       locale(ibus:zh_CN)
-%endif
 
 %description stroke5
 Stroke 5 input method.
@@ -161,9 +157,7 @@ Group:          System/I18n/Chinese
 Provides:       ibus-table-wu = %{version}-%{release}
 Obsoletes:      ibus-table-wu < 1.3
 %{ibus_table_requires}
-%if 0%{?is_opensuse}
 Provides:       locale(ibus:zh_CN)
-%endif
 
 %description wu
 Wu pronunciation input method.
@@ -199,9 +193,7 @@ Group:          System/I18n/Chinese
 Provides:       ibus-table-yong = %{version}-%{release}
 Obsoletes:      ibus-table-yong < 1.3
 %{ibus_table_requires}
-%if 0%{?is_opensuse}
 Provides:       locale(ibus:zh_CN)
-%endif
 
 %description yong
 YongMa input method.
@@ -275,12 +267,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %ibus_table_index_post yong
 
 %files array
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/array30.*
 %{_ibus_tabledir}/array30.db
@@ -288,12 +275,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/array30-big.db
 
 %files cangjie
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/cangjie3.*
 %{_ibus_tabledir}/cangjie3.db
@@ -303,12 +285,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/cangjie-big.db
 
 %files cantonese
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/cantonese.*
 %{_ibus_tabledir}/cantonese.db
@@ -318,34 +295,19 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/cantonyale.db
 
 %files jyutping
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/jyutping.*
 %{_ibus_tabledir}/jyutping.db
 
 %files easy
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/easy-big.*
 %{_ibus_tabledir}/easy-big.db
 
 %files erbi
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/erbi.*
 %{_ibus_tabledir}/erbi.db
@@ -353,12 +315,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/erbi-qs.db
 
 %files quick
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/quick3.*
 %{_ibus_tabledir}/quick3.db
@@ -368,45 +325,25 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/quick-classic.db
 
 %files scj
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/scj6.*
 %{_ibus_tabledir}/scj6.db
 
 %files stroke5
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/stroke5.*
 %{_ibus_tabledir}/stroke5.db
 
 %files wu
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/wu.*
 %{_ibus_tabledir}/wu.db
 
 %files wubi-haifeng
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %license tables/wubi-haifeng/COPYING
 %doc tables/wubi-haifeng/README
@@ -414,23 +351,13 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %{_ibus_tabledir}/wubi-haifeng86.db
 
 %files wubi-jidian
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/wubi-jidian86.*
 %{_ibus_tabledir}/wubi-jidian86.db
 
 %files yong
-# /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 %license COPYING
-%else
-%license COPYING
-%endif
 %doc ChangeLog AUTHORS NEWS README RELEASE-NOTES.txt
 %{_ibus_icondir}/yong.*
 %{_ibus_tabledir}/yong.db

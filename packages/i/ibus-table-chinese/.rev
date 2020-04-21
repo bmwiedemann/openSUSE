@@ -177,4 +177,12 @@
     <comment></comment>
     <requestid>687825</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>e7d3d5a91ce8ae0067010250bd26e5a8</srcmd5>
+    <version>1.8.3~pre.1531454400.f1f6a33</version>
+    <time>1587467192</time>
+    <user>dimstar_suse</user>
+    <comment>Update ibus-table-chinese.spec: Drop the is_opensuse macro to eliminate in behavior in between SLE-15 and openSUSE Leap. (forwarded request 795694 from qzhao)</comment>
+    <requestid>795709</requestid>
+  </revision>
 </revisionlist>
