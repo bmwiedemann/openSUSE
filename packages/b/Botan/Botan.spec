@@ -1,7 +1,7 @@
 #
 # spec file for package Botan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define version_suffix 2-10
+%define version_suffix 2-13
 %define short_version 2
 Name:           Botan
-Version:        2.10.0
+Version:        2.14.0
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://botan.randombit.net
-Source0:        http://botan.randombit.net/releases/Botan-%{version}.tgz
-Source1:        http://botan.randombit.net/releases/Botan-%{version}.tgz.asc
+URL:            http://botan.randombit.net
+Source0:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz
+Source1:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  bzip2 >= 1.0.2
@@ -89,6 +89,7 @@ Documentation of Botan package.
 %setup -q -n Botan-%{version}
 
 %build
+%define _lto_cflags %{nil}
 export RPM_OPT_FLAGS
 python3 ./configure.py \
   --prefix=%{_prefix} \

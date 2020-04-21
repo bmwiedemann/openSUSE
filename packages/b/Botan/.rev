@@ -530,4 +530,12 @@
   * Support for using Boost filesystem and MSVCâ€™s std::filesystem have been</comment>
     <requestid>691275</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b4214b3a5d294c99dc037f163688a50b</srcmd5>
+    <version>2.14.0</version>
+    <time>1587467148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795525</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:19:50 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to Botan 2.14:
+  * Add support for using POWER8+ VPSUMD instruction to accelerate GCM (GH #2247)
+  * Optimize the vector permute AES implementation, especially improving
+    performance on ARMv7, Aarch64, and POWER. (GH #2243)
+  * Use a new algorithm for modular inversions which is both faster
+    and more resistant to side channel attacks. (GH #2287 #2296 #2301)
+  * Address an issue in CBC padding which would leak the length of the plaintext
+    which was being padded. Unpadding during decryption was not affected.
+  * Optimize NIST prime field reductions, improving ECDSA by 3-9% (GH #2295)
+  * Increase the size of the ECC blinding mask and scale it based on the
+    size of the group order. (GH #880 #893 #2308)
+  * Add server side support for the TLS asio wrapper. (GH #2229)
+  * Add support for using Windows certificate store on MinGW (GH #2280)
+  * Add a CLI utility cpu_clock which estimates the speed of the processor cycle counter.
+  * Add Roughtime client (GH #2143 #1842)
+  * Add support for XMSS X.509 certificates (GH #2172)
+  * Add support for X.509 CRLs in FFI layer and Python wrapper (GH #2213)
+  * Add AVX2 implementation of SHACAL2 (GH #2196)
+  * Support more functionality for X.509 in the Python API (GH #2165)
+  * Add generic CPU target useful when building for some new or unusual platform.
+  * Disable MD5 in BSI or NIST modes (GH #2188)
+  * Many currently public headers are being deprecated. If any such header is included by
+    an application, a warning is issued at compile time.
+    Headers issuing this warning will be made internal in a future major release.
+  * RSA signature performance improvements (GH #2068 #2070)
+  * Performance improvements for GCM (GH #2024 #2099 #2119), OCB (#2122), XTS (#2123) and
+    ChaCha20Poly1305 (GH #2117), especially for small messages.
+  * Add support for constant time AES using NEON and AltiVec (GH #2093 #2095 #2100)
+  * Improve performance of POWER8 AES instructions (GH #2096)
+  * Add support for the POWER9 hardware random number generator (GH #2026)
+  * Add support for 64-bit version of RDRAND, doubling performance on x86-64 (GH #934 #2022)
+  * In DTLS server, support a client crashing and then reconnecting from the same
+    source port, as described in RFC 6347 sec 4.2.8 (GH #2029)
+  * Optimize DTLS MTU splitting to split precisely to the set MTU (GH #2042)
+  * Add support for the TLS v1.3 downgrade indicator. (GH #2027)
+  * Add Argon2 PBKDF and password hash (GH #459 #1981 #1987)
+  * Add Bcrypt-PBKDF (GH #1990)
+  * Add server side support for issuing DTLS HelloVerifyRequest messages (GH #1999)
+  * Add support for the TLS v1.3 supported_versions extension. (GH #1976)
+  * Add Ed25519ph compatible with RFC 8032 (GH #1699 #2000)
+  * Add support for OCSP stapling on server side. (GH #1703 #1967)
+  * Add a boost::asio TLS stream compatible with boost::asio::ssl. (GH #1839 #1927 #1992)
+  * Add a certificate store for Linux/Unix systems. (GH #1885 #1936)
+  * Various Fixes
+
+-------------------------------------------------------------------
 Tue Apr  2 12:54:40 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Update to Botan 2.10
