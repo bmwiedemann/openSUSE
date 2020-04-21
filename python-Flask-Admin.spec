@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Flask-Admin
 Version:        1.5.6
 Release:        0
@@ -37,8 +38,10 @@ BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-ipaddr
+%endif
 Requires:       python-Flask >= 0.7
 Requires:       python-WTForms
 BuildArch:      noarch
