@@ -17,17 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
+%bcond_without python2
 Name:           python-txtorcon
 Version:        20.0.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://txtorcon.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/t/txtorcon/txtorcon-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 36.2}
 BuildRequires:  fdupes
-BuildRequires:  python-ipaddress
 BuildRequires:  python-rpm-macros
 Requires:       python-Automat
 Requires:       python-Twisted >= 15.5.0
@@ -40,6 +39,9 @@ BuildRequires:  %{python_module Twisted >= 15.5.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
+%if %{with python2}
+BuildRequires:  python-ipaddress
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-ipaddress >= 1.0.16
