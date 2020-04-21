@@ -580,4 +580,33 @@
     (https://github.com/adrianherrera/afl-ngram-pass/), activate by setting (forwarded request 793419 from msmeissn)</comment>
     <requestid>793420</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7177d2669cf97ea3db88bea694772887</srcmd5>
+    <version>2.64c</version>
+    <time>1587467530</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.64c
+  - llvm_mode LTO mode:
+    - now requires llvm11 - but compiles all targets! :)
+    - autodictionary feature added, enable with `AFL_LLVM_LTO_AUTODICTIONARY`
+    - variable map size usage
+  - afl-fuzz:
+    - variable map size support added (only LTO mode can use this)
+    - snapshot feature usage now visible in UI
+    - Now setting `-L -1` will enable MOpt in parallel to normal mutation.
+      Additionally, this allows to run dictionaries, radamsa and cmplog.
+    - fix for cmplog/redqueen mode if stdin was used
+    - fix for writing a better plot_data file
+  - qemu_mode: fix for persistent mode (which would not terminate or get stuck)
+  - compare-transform/AFL_LLVM_LAF_TRANSFORM_COMPARES now transforms also
+    static global and local variable comparisons (cannot find all though)
+  - extended forkserver: map_size and more information is communicated to
+    afl-fuzz (and afl-fuzz acts accordingly)
+  - new environment variable: AFL_MAP_SIZE to specify the size of the shared map
+  - if AFL_CC/AFL_CXX is set but empty afl compilers did fail, fixed
+    (this bug is in vanilla afl too)
+  - added NO_PYTHON flag to disable python support when building afl-fuzz
+  - more refactoring (forwarded request 795493 from msmeissn)</comment>
+    <requestid>795494</requestid>
+  </revision>
 </revisionlist>
