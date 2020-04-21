@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-google-cloud-kms
 Version:        1.3.0
 Release:        0
@@ -25,22 +26,22 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms/google-cloud-kms-%{version}.tar.gz
+BuildRequires:  %{python_module google-api-core >= 1.14.0}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.3}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.14.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.3
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %ifpython2
 Requires:       python-enum34
 %endif
-# SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.14.0}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.3}
-# /SECTION
 %python_subpackages
 
 %description
