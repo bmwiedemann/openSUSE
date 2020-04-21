@@ -89,4 +89,12 @@
       * Tested with 5.24.0, blead and Tk (git)</comment>
     <requestid>532540</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4089324e08b692548d95e7e64e4a0ff0</srcmd5>
+    <version>0.41</version>
+    <time>1587467131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795270</requestid>
+  </revision>
 </revisionlist>

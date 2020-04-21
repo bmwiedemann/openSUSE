@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk-Clock
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,39 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Tk-Clock
-Version:        0.40
+Version:        0.41
 Release:        0
 %define cpan_name Tk-Clock
 Summary:        Clock widget with analog and digital display
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Tk-Clock/
+Url:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::More) >= 0.9
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Tk) >= 402.000
 BuildRequires:  perl(Tk::Canvas)
 BuildRequires:  perl(Tk::Derived)
 BuildRequires:  perl(Tk::Widget)
-Requires:       perl(Test::More) >= 0.88
+Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Test::NoWarnings)
 Requires:       perl(Tk) >= 402.000
 Requires:       perl(Tk::Canvas)
 Requires:       perl(Tk::Derived)
 Requires:       perl(Tk::Widget)
-Recommends:     perl(Encode) >= 2.84
-Recommends:     perl(Test::More) >= 1.302015
-Recommends:     perl(Tk) >= 804.033
+Recommends:     perl(Encode) >= 3.05
+Recommends:     perl(Test::More) >= 1.302174
+Recommends:     perl(Tk) >= 804.035
 %{perl_requires}
 
 %description
@@ -55,17 +55,17 @@ Both analog and digital clocks are implemented.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,/pro/bin/perl,/usr/bin/perl,' examples/*pl
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
