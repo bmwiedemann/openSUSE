@@ -17,7 +17,7 @@
 
 
 Name:           sparse
-Version:        0.6.1+20200129
+Version:        0.6.1+20200413
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
@@ -32,8 +32,8 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 %if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
 %ifarch         x86_64
-BuildRequires:  clang
-BuildRequires:  llvm-devel
+BuildRequires:  clang9
+BuildRequires:  llvm9-devel
 %endif
 %endif
 
@@ -72,8 +72,7 @@ LLVM backend for sparse, including sparsec
 %setup -q
 
 %build
-make \
-  %{?_smp_mflags} \
+%make_build \
   PREFIX=%{_prefix} \
   LIBDIR=%{_libdir} \
   MANDIR=%{_mandir} \

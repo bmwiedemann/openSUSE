@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 18 06:41:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.1+20200413:
+  * do not use expr->left for conditionals
+  * add support for GCC's __auto_type
+  * And plenty more
+- Use llvm9 for building as llvm10 is not yet supported
+
+-------------------------------------------------------------------
 Thu Jan 30 10:30:14 UTC 2020 - jslaby@suse.com
 
 - Update to version 0.6.1+20200129:

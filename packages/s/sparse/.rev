@@ -384,4 +384,12 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>770523</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>877c78bdd5ea177b1ffb7a9edae4c9ff</srcmd5>
+    <version>0.6.1+20200413</version>
+    <time>1587467263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795670</requestid>
+  </revision>
 </revisionlist>
