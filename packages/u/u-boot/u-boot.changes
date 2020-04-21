@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:05:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop downstream zynqmp generic patches since zynqmp virt config
+  superseed it:
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.04
+* Patches dropped:
+  0005-zynqmp-Add-generic-target.patch
+  0006-tools-zynqmpbif-Add-support-for-loa.patch
+  0007-boo-1123170-Remove-ubifs-support-fr.patch
+  0008-zynqmp-generic-fix-compilation.patch
+  0009-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+  0010-Kconfig-add-btrfs-to-distro-boot.patch
+  0011-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0012-configs-am335x_evm-disable-BTRFS.patch
+  0013-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+  0014-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+  0015-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+* Patches added:
+  0005-tools-zynqmpbif-Add-support-for-loa.patch
+  0006-boo-1123170-Remove-ubifs-support-fr.patch
+  0007-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+  0008-Kconfig-add-btrfs-to-distro-boot.patch
+  0009-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0010-configs-am335x_evm-disable-BTRFS.patch
+  0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+  0012-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+  0013-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+
+-------------------------------------------------------------------
+Wed Apr 15 10:02:37 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Follow upstream commits f7c6ee7f and be1b6c32 to unify 
+  zynq/zynqmp configs:
+  * Update zynq configs to use generic config + device tree for
+    u-boot-avnetultra96rev1 and u-boot-xilinxzynqmpzcu102rev10
+  * Use upstream u-boot-xilinxzynqmpvirt instead of downstream
+    u-boot-xilinxzynqmpgeneric
+
+-------------------------------------------------------------------
+Wed Apr 15 09:36:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Switch to http URLs, ftp is obsolete
+
+-------------------------------------------------------------------
+Tue Apr 14 10:29:42 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2020.04:
+  * Platfrom fixes: Amlogic, Atmel, fsl, iMX, Marvell, Mediatek,
+    rockchip, RPi, samsung, socfpga, sunxi, Tegra, TI
+  * EFI fixes
+  * I2C fixes
+  * GPIO fixes
+  * MMC fixes
+  * SPI fixes
+  * USB fixes
+  * Filesystem fixes
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.04
+* Patches dropped:
+  0010-ARM-tegra-Add-NVIDIA-Jetson-Nano-De.patch
+  0011-net-Add-support-for-Broadcom-GENETv.patch
+  0012-rpi4-Update-memory-map-to-accommoda.patch
+  0013-rpi4-Enable-GENET-Ethernet-controll.patch
+  0014-Kconfig-add-btrfs-to-distro-boot.patch
+  0015-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0016-configs-am335x_evm-disable-BTRFS.patch
+  0017-net-phy-Fix-overlong-PHY-timeout.patch
+  0018-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+  0019-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+  0020-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+* Patches added:
+  0010-Kconfig-add-btrfs-to-distro-boot.patch
+  0011-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0012-configs-am335x_evm-disable-BTRFS.patch
+  0013-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+  0014-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+  0015-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+
+-------------------------------------------------------------------
 Mon Apr  6 06:46:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build odroid-n2 version

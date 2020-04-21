@@ -35,6 +35,7 @@
 %define is_armv8 0
 %define is_ppc 0
 %define is_riscv64 0
+%define is_zynqmp 0
 %define tools_only 0
 %if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
 %define is_rpi 1
@@ -135,7 +136,8 @@
 %if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "odroid-n2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
 %define is_armv8 1
 %endif
-%if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpgeneric" || "%target" == "xilinxzynqmpzcu102rev10"
+%if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpvirt" || "%target" == "xilinxzynqmpzcu102rev10"
+%define is_zynqmp 1
 %define is_armv8 1
 %define binext .elf
 %endif
@@ -157,7 +159,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2020.01
+%define archive_version 2020.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -189,14 +191,14 @@ ExclusiveArch:  do_not_build
 %endif
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
-Version:        2020.01
+Version:        2020.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            http://www.denx.de/wiki/U-Boot
-Source:         ftp://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
-Source1:        ftp://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
+Source:         http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
+Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img
 Source300:      u-boot-rpmlintrc
 Source900:      update_git.sh
@@ -205,22 +207,15 @@ Patch0001:      0001-XXX-openSUSE-XXX-Prepend-partition-.patch
 Patch0002:      0002-Revert-Revert-omap3-Use-raw-SPL-by-.patch
 Patch0003:      0003-rpi-Use-firmware-provided-device-tr.patch
 Patch0004:      0004-Temp-workaround-for-Chromebook-snow.patch
-Patch0005:      0005-zynqmp-Add-generic-target.patch
-Patch0006:      0006-tools-zynqmpbif-Add-support-for-loa.patch
-Patch0007:      0007-boo-1123170-Remove-ubifs-support-fr.patch
-Patch0008:      0008-zynqmp-generic-fix-compilation.patch
-Patch0009:      0009-boo-1144161-Remove-nand-mtd-spi-dfu.patch
-Patch0010:      0010-ARM-tegra-Add-NVIDIA-Jetson-Nano-De.patch
-Patch0011:      0011-net-Add-support-for-Broadcom-GENETv.patch
-Patch0012:      0012-rpi4-Update-memory-map-to-accommoda.patch
-Patch0013:      0013-rpi4-Enable-GENET-Ethernet-controll.patch
-Patch0014:      0014-Kconfig-add-btrfs-to-distro-boot.patch
-Patch0015:      0015-configs-Re-sync-with-CONFIG_DISTRO_.patch
-Patch0016:      0016-configs-am335x_evm-disable-BTRFS.patch
-Patch0017:      0017-net-phy-Fix-overlong-PHY-timeout.patch
-Patch0018:      0018-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
-Patch0019:      0019-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
-Patch0020:      0020-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+Patch0005:      0005-tools-zynqmpbif-Add-support-for-loa.patch
+Patch0006:      0006-boo-1123170-Remove-ubifs-support-fr.patch
+Patch0007:      0007-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+Patch0008:      0008-Kconfig-add-btrfs-to-distro-boot.patch
+Patch0009:      0009-configs-Re-sync-with-CONFIG_DISTRO_.patch
+Patch0010:      0010-configs-am335x_evm-disable-BTRFS.patch
+Patch0011:      0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+Patch0012:      0012-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+Patch0013:      0013-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -320,6 +315,10 @@ Provides:       u-boot-rpi3 = %{version}
 Obsoletes:      u-boot-rpi4 < %{version}
 Provides:       u-boot-rpi4 = %{version}
 %endif
+%if "%{name}" == "u-boot-xilinxzynqmpvirt"
+Obsoletes:      u-boot-xilinxzynqmpgeneric < %{version}
+Provides:       u-boot-xilinxzynqmpgeneric = %{version}
+%endif
 
 %description
 Das U-Boot (or just "U-Boot" for short) is Open Source Firmware for Embedded PowerPC, ARM, MIPS and x86 processors.
@@ -375,7 +374,17 @@ cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
 
+%if !%{is_zynqmp}
 confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
+%else
+confname="xilinx_zynqmp_virt_defconfig"
+%if "%target" == "avnetultra96rev1"
+export DEVICE_TREE=avnet-ultra96-rev1
+%endif
+%if "%target" == "xilinxzynqmpzcu102rev10"
+export DEVICE_TREE=zynqmp-zcu102-rev1.0
+%endif
+%endif
 
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."

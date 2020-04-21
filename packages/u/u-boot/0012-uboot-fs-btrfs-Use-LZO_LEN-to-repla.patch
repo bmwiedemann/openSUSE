@@ -1,4 +1,4 @@
-From 528169a95fac4edbc0935796d919876b1c64b204 Mon Sep 17 00:00:00 2001
+From 35fec3c2ae56857f07d5f68a48da84d010a62429 Mon Sep 17 00:00:00 2001
 From: Qu Wenruo <wqu@suse.com>
 Date: Thu, 19 Mar 2020 20:30:05 +0800
 Subject: [PATCH] uboot: fs/btrfs: Use LZO_LEN to replace immediate number

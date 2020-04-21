@@ -1,4 +1,4 @@
-From a6aa59c7e4daef9ba202eb260daf23c4c5de63c1 Mon Sep 17 00:00:00 2001
+From 82ad3674e71029334b519ff8c2bc077df82c2243 Mon Sep 17 00:00:00 2001
 From: Qu Wenruo <wqu@suse.com>
 Date: Thu, 19 Mar 2020 20:30:06 +0800
 Subject: [PATCH] uboot: fs/btrfs: Fix LZO false decompression error caused by
