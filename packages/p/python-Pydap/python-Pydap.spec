@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pydap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Pydap
 Version:        3.2.2
 Release:        0
@@ -26,15 +27,32 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pydap/pydap
 Source:         https://files.pythonhosted.org/packages/source/P/Pydap/Pydap-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WebOb}
+BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module coards}
 BuildRequires:  %{python_module docopt}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module netCDF4}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pytest >= 2.8}
+BuildRequires:  %{python_module pytest-attrib}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+%if %{with python2}
+BuildRequires:  python-mock
 BuildRequires:  python-singledispatch
+%endif
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-gsw
 Requires:       python-Jinja2
 Requires:       python-WebOb
 Requires:       python-beautifulsoup4
@@ -44,43 +62,17 @@ Requires:       python-six >= 1.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-PasteDeploy
-Recommends:     python-WebTest
 Recommends:     python-coards
-Recommends:     python-flake8
 Recommends:     python-gunicorn
 Recommends:     python-lxml
 Recommends:     python-netCDF4
-Recommends:     python-pytest >= 2.8
-Recommends:     python-pytest-attrib
-Recommends:     python-pytest-cov
 Recommends:     python-requests
-Recommends:     python-requests-mock
 BuildArch:      noarch
-# SECTION tests
-BuildRequires:  %{python_module PasteDeploy}
-BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module coards}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module netCDF4}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest >= 2.8}
-BuildRequires:  %{python_module pytest-attrib}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module requests}
-BuildRequires:  python-mock
-BuildRequires:  python3-gsw
-# /SECTION
 %ifpython3
 Recommends:     python-gsw
 %endif
 %ifpython2
 Requires:       python-singledispatch
-%endif
-%ifpython2
-Recommends:     python-mock
 %endif
 %python_subpackages
 
