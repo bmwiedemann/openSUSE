@@ -39,7 +39,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-ipaddress
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
 Requires:       python-pyramid >= 1.2
