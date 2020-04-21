@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-parsel
 Version:        1.5.2
 Release:        0
@@ -41,9 +42,10 @@ BuildArch:      noarch
 Requires:       python-functools32
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python-functools32
+%endif
 # /SECTION
 %python_subpackages
 
@@ -53,6 +55,7 @@ selectors.
 
 %prep
 %setup -q -n parsel-%{version}
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %python_build
@@ -62,7 +65,7 @@ selectors.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
