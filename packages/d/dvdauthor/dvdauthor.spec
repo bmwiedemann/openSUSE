@@ -1,7 +1,7 @@
 #
 # spec file for package dvdauthor
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,14 @@ Name:           dvdauthor
 Version:        0.7.2
 Release:        0
 Summary:        Low-level DVD Authoring Tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 Url:            http://dvdauthor.sourceforge.net/
 Source0:        https://github.com/ldo/dvdauthor/archive/%{version}.tar.gz#/dvdauthor-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM dvdauthor-0.7.0_glibc-2.20.patch avvissu@yandex.ru -- Fix build with glibc-2.20
 Patch0:         dvdauthor-0.7.0_glibc-2.20.patch
-#
-#Patch1:         dvdauthor-imagemagick7.patch
+Patch1:         dvdauthor-0.7.2-imagemagick7.patch
+BuildRequires:  ImageMagick-devel
 BuildRequires:  bison
 BuildRequires:  docbook-utils
 BuildRequires:  flex
@@ -41,7 +41,6 @@ BuildRequires:  texlive-dviasm-bin
 BuildRequires:  texlive-footmisc
 BuildRequires:  texlive-koma-script
 BuildRequires:  texlive-luatexbase
-BuildRequires:  GraphicsMagick-devel
 BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi)
@@ -60,7 +59,7 @@ FFmpeg, or by by passing `-f 8` to `mplex`.
 %prep
 %setup -q
 %patch0
-#%%patch1
+%patch1 -p1
 
 %build
 %if 1 == 0
@@ -70,8 +69,8 @@ export CPP=cpp-7
 export CXX=g++-7
 %endif
 ./bootstrap
-export MAGICK_CFLAGS=`GraphicsMagick-config --cppflags`
-export CFLAGS="%{optflags} $MAGICK_CFLAGS"
+# export MAGICK_CFLAGS=`ImageMagick-config --cppflags`
+# export CFLAGS="%{optflags} $MAGICK_CFLAGS"
 export LDFLAGS="$LDFLAGS -Wl,-z -Wl,noexecstack"
 %configure
 make %{?_smp_mflags}

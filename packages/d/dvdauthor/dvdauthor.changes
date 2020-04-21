@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 19 21:09:27 CEST 2020 - tiwai@suse.de
+
+- Revert to ImageMagick from GraphicsMagick due to the spumux error
+  (boo#1169848)
+- Fix the build with ImageMagick 7, a downstream patch taken from
+  Arch linux package:
+  dvdauthor-0.7.2-imagemagick7.patch
+
+-------------------------------------------------------------------
 Thu Jun  1 11:20:53 UTC 2017 - alarrosa@suse.com
 
 - Obsolete dvdauthor07 <= %version-%release instead of only older
