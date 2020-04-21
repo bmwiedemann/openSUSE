@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 20 20:57:04 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1587416201.4df4ad16d:
+  * Fix load_templates --clean to wipe more than one entry per table
+  * Partially revert t/ui/13-admin.t change
+  * Fix missing import 'log_error' in WebAPI::Controller::Running
+  * t: Stabilize ui/15-admin-workers.t
+  * t: Stabilize ui/27-plugin_obs_rsync_status_details.t
+  * t: Stabilize ui/13-admin.t
+  * t: Stabilize ui/10-tests_overview.t
+  * Remove duplicated line in CSS file
+  * Revert "Extract duplicated code from generating job settings"
+  * tools: Improve output of retry
+  * t: Cleanup nonsensical notes and steps in ui/06-operator_links.t
+  * t: Turn comments of 06-operator_links into explicit test notes
+  * Delete obsolete reference to phantomjs
+  * t: Delete obsolete FIXME
+  * t: Stabilize ui tests waiting for ajax
+  * t: Stabilize ui/14-dashboard-parents.t waiting for build results
+  * t: Use descriptive string in wait_for_ajax rather than comment
+  * Add output of each try in tools/retry
+  * t: Replace busy-loop with small-interval sleep in 25-cache-service.t
+  * t: Make test messages in 25-cache-service.t unambiguous
+  * t: Speedup 25-cache-service.t
+  * Extract method do_asset_caching for easier testing
+  * t: Fix instabilities in ui/01-list.t on accessing /tests
+  * Validate parameter passed to comment API routes
+  * Validate parameters passed to Worker API routes
+  * Cover asset_caching by tests
+  * Pick up extended reason from state file if available
+  * Use Mojo::File correctly in OpenQA::Client::Archive
+  * Fix --with-thumbnails option of client --archive feature
+
+-------------------------------------------------------------------
 Thu Apr 16 08:29:28 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1586954096.7160d88d9:
