@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-vcrpy
 Version:        4.0.2
 Release:        0
@@ -26,30 +27,20 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
-# Enable Python 2 again. Drop as soon as Python 2 will be dropped from Factory.
-Patch0:         0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.5}
 BuildRequires:  %{python_module wrapt}
+BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
-BuildRequires:  python-contextlib2
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-yarl
 Requires:       python-PyYAML
 Requires:       python-six >= 1.5
 Requires:       python-wrapt
 BuildArch:      noarch
-%ifpython2
-Requires:       python-contextlib2
-Requires:       python-mock
-%endif
-%ifpython3
 Requires:       python-yarl
-%endif
 %python_subpackages
 
 %description
@@ -60,7 +51,6 @@ This is a Python version of Ruby's VCR library.
 
 %prep
 %setup -q -n vcrpy-%{version}
-%patch0 -p1
 # online integration tests
 rm -r tests/integration
 

@@ -69,4 +69,13 @@
     <comment></comment>
     <requestid>778779</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b4e1a9ba5cbd16c966bc5ec75d42663e</srcmd5>
+    <version>4.0.2</version>
+    <time>1587467226</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch 0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch
+  as we dropped py2 integration support on Tumbleweed</comment>
+    <requestid>795684</requestid>
+  </revision>
 </revisionlist>

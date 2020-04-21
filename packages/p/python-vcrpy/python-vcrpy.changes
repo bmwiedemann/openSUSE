@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 07:29:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove patch 0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch
+  as we dropped py2 integration support on Tumbleweed
+
+-------------------------------------------------------------------
 Mon Feb 24 09:14:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Added patch 0001-Revert-v4.0.x-Remove-legacy-python-and-add-python3.8.patch
