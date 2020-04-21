@@ -262,4 +262,18 @@
   - Add sphinxcontrib-svg2pdfconverter mapping for RDO</comment>
     <requestid>735595</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f20e1b39d2f1578be280f827470eeb8b</srcmd5>
+    <version>0.23.0</version>
+    <time>1587467189</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Obsoletes
+
+- update to version 0.23.0
+  - Drop use of unittest2
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Switch away from deprecated distribution lookup
+  - Fix some upstream mappings</comment>
+    <requestid>795685</requestid>
+  </revision>
 </revisionlist>
