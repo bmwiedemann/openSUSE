@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
+# PATCH-FIX-UPSTEAM fix-click-711.patch -- compatibility with click 7.1.1
+Patch0:         fix-click-711.patch
 BuildRequires:  git
 BuildRequires:  python3-Jinja2 >= 2.7
 BuildRequires:  python3-binaryornot >= 0.2.0
@@ -83,6 +85,7 @@ This package contains the documentation for cookiecutter.
 %setup -q -n cookiecutter-%{version}
 sed -i "s/cookiecutter =/cookiecutter-%{py3_ver} =/" setup.py
 cp %{SOURCE1} docs
+%patch0 -p1
 
 %build
 python3 setup.py build
