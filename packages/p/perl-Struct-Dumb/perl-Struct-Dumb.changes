@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 17 03:10:41 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Struct-Dumb/Changes
+
+  0.11    2020-04-17
+          [BUGFIXES]
+           * Fix for detecting Data::Dump being loaded afterward Struct::Dumb
+  
+  0.10    2020-04-17
+          [CHANGES]
+           * Optional named parameter versions of constructor functions
+           * Apply hackery to Data::Dump to allow it to print structures
+
+-------------------------------------------------------------------
 Fri Mar 11 10:50:16 UTC 2016 - coolo@suse.com
 
 - updated to 0.09
