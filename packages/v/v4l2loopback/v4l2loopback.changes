@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 19 17:41:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.5
+  * Fix build in Linux 5.7-rc1 due to symbol name changes
+  * Simplify set/clear of V4L2_CAP_DEVICE_CAPS in querycaps
+  * Use temp-var for capabilities
+  * Also set vdev->device_caps
+
+-------------------------------------------------------------------
 Thu Apr  9 20:38:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.12.4

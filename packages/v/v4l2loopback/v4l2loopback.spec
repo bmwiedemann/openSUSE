@@ -17,14 +17,14 @@
 
 
 Name:           v4l2loopback
-Version:        0.12.4
+Version:        0.12.5
 Release:        0
 Summary:        A kernel module to create V4L2 loopback devices
 License:        GPL-2.0-or-later
 URL:            https://github.com/umlaeute/v4l2loopback
 Source:         https://github.com/umlaeute/v4l2loopback/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        preamble
-#PATCH-FIX-OPENSUSE v4l2loopback-include_header.patch
+# PATCH-FIX-OPENSUSE v4l2loopback-include_header.patch
 Patch0:         v4l2loopback-include_header.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  help2man
