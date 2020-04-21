@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 08:59:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not skip temporarily disabled tests as they work now with new
+  releases
+
+-------------------------------------------------------------------
+Tue Apr 21 08:53:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Don't pull dotenv package which does not exist on runtime
+
+-------------------------------------------------------------------
+Thu Apr  2 12:49:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.25.4
+  * Allow compatibility option with COMPOSE_COMPATIBILITY environment variable
+  * Fix v3.8 schema support for binaries
+  * few dependendy version bumps
+
+-------------------------------------------------------------------
 Fri Jan 10 14:56:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Properly conditionalize python2 build

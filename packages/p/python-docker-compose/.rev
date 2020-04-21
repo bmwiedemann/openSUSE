@@ -58,4 +58,20 @@
     <comment>- Properly conditionalize python2 build</comment>
     <requestid>762865</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35e5ff66e51f6b8ae6e0ed9b8a61164b</srcmd5>
+    <version>1.25.4</version>
+    <time>1587467116</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not skip temporarily disabled tests as they work now with new
+  releases
+
+- Don't pull dotenv package which does not exist on runtime
+
+- Update to 1.25.4
+  * Allow compatibility option with COMPOSE_COMPATIBILITY environment variable
+  * Fix v3.8 schema support for binaries
+  * few dependendy version bumps</comment>
+    <requestid>795999</requestid>
+  </revision>
 </revisionlist>

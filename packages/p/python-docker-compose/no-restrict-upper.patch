@@ -1,14 +1,14 @@
-Index: docker-compose-1.25.0/setup.py
+Index: docker-compose-1.25.4/setup.py
 ===================================================================
---- docker-compose-1.25.0.orig/setup.py
-+++ docker-compose-1.25.0/setup.py
-@@ -30,16 +30,16 @@ def find_version(*file_paths):
+--- docker-compose-1.25.4.orig/setup.py
++++ docker-compose-1.25.4/setup.py
+@@ -30,35 +30,35 @@ def find_version(*file_paths):
  
  
  install_requires = [
 -    'cached-property >= 1.2.0, < 2',
 -    'docopt >= 0.6.1, < 1',
--    'PyYAML >= 3.10, < 5',
+-    'PyYAML >= 3.10, < 6',
 -    'requests >= 2.20.0, < 3',
 -    'texttable >= 0.9.0, < 2',
 -    'websocket-client >= 0.32.0, < 1',
@@ -29,7 +29,10 @@ Index: docker-compose-1.25.0/setup.py
  ]
  
  
-@@ -49,16 +49,16 @@ tests_require = [
+ tests_require = [
+-    'pytest < 6',
++    'pytest',
+ ]
  
  
  if sys.version_info[:2] < (3, 4):

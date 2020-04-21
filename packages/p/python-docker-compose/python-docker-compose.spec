@@ -17,14 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{suse_version} > 1500
-%bcond_with python2
-%define skip_python2 1
-%else
 %bcond_without python2
-%endif
 Name:           python-docker-compose
-Version:        1.25.1
+Version:        1.25.4
 Release:        0
 Summary:        Tool to define and run complex applications using Docker
 License:        Apache-2.0
@@ -34,6 +29,7 @@ Source0:        https://files.pythonhosted.org/packages/source/d/docker-compose/
 Patch0:         no-restrict-upper.patch
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module cached-property >= 1.2.0}
+BuildRequires:  %{python_module ddt >= 1.2.2}
 BuildRequires:  %{python_module docker >= 3.7.0}
 BuildRequires:  %{python_module dockerpty >= 0.4.1}
 BuildRequires:  %{python_module docopt >= 0.6.1}
@@ -41,7 +37,7 @@ BuildRequires:  %{python_module jsonschema >= 2.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.3.0}
-BuildRequires:  %{python_module texttable >= 0.9.0}
+BuildRequires:  %{python_module texttable >= 0.9.1}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,7 +55,6 @@ Requires:       python-jsonschema >= 2.6.0
 Requires:       python-requests >= 2.20.0
 Requires:       python-six >= 1.3.0
 Requires:       python-texttable >= 0.9.1
-Requires:       python-urllib3 >= 1.21.1
 Requires:       python-websocket-client >= 0.32.0
 BuildArch:      noarch
 # This is py3 only as we have the binary just there
@@ -107,9 +102,6 @@ Previously known as Fig.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# the test requires pytes3 for now (uses ensuretemp)
-rm tests/unit/config/config_test.py
-rm tests/unit/config/environment_test.py
 %pytest tests/unit
 
 %files %{python_files}
