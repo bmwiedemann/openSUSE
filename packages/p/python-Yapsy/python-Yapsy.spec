@@ -1,7 +1,7 @@
 #
 # spec file for package python-Yapsy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,24 +22,15 @@ Version:        1.12.2
 Release:        0
 Summary:        Yet another plugin system
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            http://yapsy.sourceforge.net
+URL:            http://yapsy.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/Y/Yapsy/Yapsy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION docs
-BuildRequires:  python-Sphinx
-# /SECTION
 Provides:       python-yapsy
-Suggests:       %{name}-doc
+Obsoletes:      %{name}-doc
 BuildArch:      noarch
-
-%{python_subpackages}
-
-%package -n %{name}-doc
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
+%python_subpackages
 
 %description
 Yapsy is a small library implementing the core mechanisms needed to
@@ -49,34 +40,23 @@ The main purpose is to depend only on Python's standard libraries (at
 least version 2.3) and to implement only the basic functionalities
 needed to detect, load and keep track of several plugins.
 
-%description -n %{name}-doc
-HTML documentation files for %{name}.
-
 %prep
 %setup -q -n Yapsy-%{version}
 
 %build
-%{python_build}
+%python_build
 find yapsy/ -name "*.py" -exec sed -i -e  '/^#!\s\?\/usr\/bin\/\(env\s\)\?python$/d' {} ';'
-pushd doc
-make html
-#rm _build/html/.buildinfo
-popd
 
 %install
-%{python_install}
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_exec setup.py test}
+%python_exec setup.py test
 
 %files %{python_files}
 %{python_sitelib}/*
 %doc CHANGELOG.txt README.txt
 %license LICENSE.txt
-
-%files -n %{name}-doc
-%doc doc/_build/html
-%doc artwork
 
 %changelog
