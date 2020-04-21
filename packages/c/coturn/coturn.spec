@@ -17,6 +17,12 @@
 
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+%bcond_without  apparmor
+%if 0%{?suse_version} > 1320
+%bcond_without  apparmor_reload
+%else
+%bcond_with     apparmor_reload
+%endif
 Name:           coturn
 Version:        4.5.1.1
 Release:        0
@@ -32,6 +38,7 @@ Source4:        %{name}-user.conf
 Source5:        %{name}.sysconfig
 Source6:        %{name}.firewalld
 Source7:        README.SUSE
+Source8:        %{name}-apparmor-usr.bin.turnserver
 # PATCH-FIX-UPSTREAM coturn-4.5.1.0-append-log.patch Append only to log files rather to override them
 Patch0:         coturn-4.5.1.0-append-log.patch
 # PATCH-FIX-UPSTREAM  coturn-4.5.1.1-cve-2020-6061.patch CVE-2020-6061
@@ -52,6 +59,18 @@ BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssl) >= 1.0.2
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+%if %{with apparmor}
+%if 0%{?suse_version} <= 1315
+BuildRequires:  apparmor-profiles
+Recommends:     apparmor-profiles
+%else
+BuildRequires:  apparmor-abstractions
+Recommends:     apparmor-abstractions
+%endif
+%if %{with apparmor_reload}
+BuildRequires:  apparmor-rpm-macros
+%endif
+%endif
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
 Recommends:     logrotate
@@ -102,7 +121,7 @@ This package contains the TURN development headers.
 
 %install
 %make_install
-mkdir -p %{buildroot}{%{_sysconfdir}/pki/coturn/{public,private},{%{_rundir},%{_localstatedir}/{lib,log}}/%{name},%{_unitdir},%{_sysusersdir},%{_sbindir}}
+mkdir -p %{buildroot}{%{_sysconfdir}/pki/coturn/{public,private},{%{_rundir},%{_localstatedir}/{lib,log}}/%{name},%{_unitdir},%{_sysusersdir},%{_sbindir},%{_sysconfdir}/apparmor.d/local}
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
@@ -110,6 +129,13 @@ install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/
 install -Dpm 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -Dpm 0644 %{SOURCE6} %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
 install -Dpm 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/
+%if %{with apparmor}
+install -Dpm 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.turnserver
+cat > %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.bin.turnserver << EOF
+# Site-specific additions and overrides for usr.bin.turnserver
+# See /etc/apparmor.d/local/README for details.
+EOF
+%endif
 
 sed -i \
     -e "s|^syslog$|#syslog|g" \
@@ -148,6 +174,9 @@ done
 systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{fillup_only -n %{name}}
 %firewalld_reload
+%if %{with apparmor} && %{with apparmor_reload}
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.turnserver
+%endif
 
 %preun
 %service_del_preun %{name}.service
@@ -203,6 +232,13 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %dir %attr(0750,%{name},%{name}) %{_localstatedir}/log/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
+%if %{with apparmor}
+%dir %{_sysconfdir}/apparmor.d
+%dir %{_sysconfdir}/apparmor.d/local
+%config %{_sysconfdir}/apparmor.d/usr.bin.turnserver
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.bin.turnserver
+%endif
+
 %files utils
 %license LICENSE
 %{_bindir}/turnutils_peer
@@ -215,6 +251,7 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_mandir}/man1/turnutils_*.1%{?ext_man}
 
 %files devel
+%defattr(0644,root,root)
 %license LICENSE
 %{_includedir}/turn
 %{_libdir}/libturnclient.a
