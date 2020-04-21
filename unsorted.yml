@@ -6380,7 +6380,6 @@ unsorted:
   - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
   - jupyter-qtconsole 
-  - jupyter-rise 
   - jupyter-sidecar-jupyterlab 
   - jupyter-vega 
   - jupyter-vispy 
@@ -8033,7 +8032,6 @@ unsorted:
   - libasan5-32bit: [x86_64] 
   - libasan6 
   - libasan6-32bit: [x86_64] 
-  - libase1: [x86_64] 
   - libaslcommon0 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
@@ -8214,7 +8212,6 @@ unsorted:
   - libbluray-devel 
   - libbluray-tools 
   - libbluray2-32bit: [x86_64] 
-  - libbmc1: [x86_64] 
   - libbml-devel 
   - libbml1 
   - libboinc-devel 
@@ -8334,8 +8331,8 @@ unsorted:
   - libboost_wave1_71_0-32bit: [x86_64] 
   - libboost_wave1_71_0-devel 
   - libboringssl1 
-  - libbotan-2-10 
-  - libbotan-2-10-32bit: [x86_64] 
+  - libbotan-2-13 
+  - libbotan-2-13-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbpf-devel 
@@ -9107,7 +9104,6 @@ unsorted:
   - libfonts-javadoc 
   - libformula-javadoc 
   - libfparser-4_5_2 
-  - libfpgad-api1: [x86_64] 
   - libfplll6 
   - libfpm_helper-devel 
   - libfpm_helper0 
@@ -9727,7 +9723,6 @@ unsorted:
   - libhpdf2_3_0 
   - libhpx1 
   - libhs5 
-  - libhssi-io1: [x86_64] 
   - libhtp-devel 
   - libhtp2 
   - libhts-devel 
@@ -11174,7 +11169,7 @@ unsorted:
   - libqmmp1-32bit: [x86_64] 
   - libqoauth2 
   - libqobs-devel 
-  - libqobs1 
+  - libqobs2 
   - libqore5 
   - libqpid-proton-cpp10 
   - libqpid-proton10 
@@ -12198,6 +12193,8 @@ unsorted:
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
+  - libtty-devel 
+  - libtty1 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -15518,7 +15515,6 @@ unsorted:
   - opa-fmgui 
   - opa-snapconfig: [x86_64] 
   - opae: [x86_64] 
-  - opae-ase: [x86_64] 
   - opae-devel: [x86_64] 
   - opam 
   - opam-devel 
@@ -18126,7 +18122,6 @@ unsorted:
   - python-WebOb-doc 
   - python-WebTest-doc 
   - python-Whoosh-doc 
-  - python-Yapsy-doc 
   - python-ZODB-doc 
   - python-acitoolkit-doc 
   - python-acitoolkit-doc-applications 
@@ -18175,7 +18170,6 @@ unsorted:
   - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
   - python-gevent-doc 
-  - python-gexiv2 
   - python-glanceclient-doc 
   - python-gobject-common-devel 
   - python-gobject2-devel 
@@ -18193,12 +18187,10 @@ unsorted:
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
-  - python-katedj 
   - python-keybinder 
   - python-keystoneauth1-doc 
   - python-keystoneclient-doc 
   - python-keystonemiddleware-doc 
-  - python-kid-doc 
   - python-ktoblzcheck 
   - python-lammps 
   - python-libaddrxlat 
@@ -18275,11 +18267,9 @@ unsorted:
   - python-pygraphviz-doc 
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
-  - python-pynag 
   - python-pyotherside 
   - python-pyqtgraph-doc 
   - python-pyramid-debugtoolbar-doc 
-  - python-pyrrd-docs 
   - python-pyserial-doc 
   - python-pysnmp-doc 
   - python-python-openid 
@@ -18335,7 +18325,6 @@ unsorted:
   - python2-Beaker 
   - python2-BitVector 
   - python2-Brotli 
-  - python2-CDDB 
   - python2-Cerberus 
   - python2-Chameleon 
   - python2-CommonMark 
@@ -18348,12 +18337,10 @@ unsorted:
   - python2-EditorConfig 
   - python2-ExifRead 
   - python2-Fabric 
-  - python2-Flask-Admin 
   - python2-Flask-Cache 
   - python2-Flask-Cache-doc 
   - python2-FontTools 
   - python2-FormEncode 
-  - python2-GDAL 
   - python2-Genshi 
   - python2-Glances 
   - python2-Jinja2 
@@ -18361,11 +18348,9 @@ unsorted:
   - python2-JsonWeb 
   - python2-Kajiki 
   - python2-LEPL 
-  - python2-Lektor 
   - python2-Levenshtein 
   - python2-Logbook 
   - python2-Mako 
-  - python2-MapProxy 
   - python2-MarkupPy 
   - python2-MarkupSafe 
   - python2-Ming 
@@ -18376,7 +18361,6 @@ unsorted:
   - python2-PasteDeploy 
   - python2-Paver 
   - python2-PeachPy: [x86_64] 
-  - python2-Pebble 
   - python2-Pillow 
   - python2-Pillow-tk 
   - python2-PrettyTable 
@@ -18390,7 +18374,6 @@ unsorted:
   - python2-PyExecJS 
   - python2-PyICU 
   - python2-PyInstaller 
-  - python2-PyKMIP 
   - python2-PyMeeus 
   - python2-PyMeta3 
   - python2-PyMsgBox 
@@ -18407,7 +18390,6 @@ unsorted:
   - python2-PyVirtualDisplay 
   - python2-PyWebDAV3 
   - python2-PyYAML 
-  - python2-Pydap 
   - python2-Pykka 
   - python2-Pympler 
   - python2-Pyphen 
@@ -18436,14 +18418,12 @@ unsorted:
   - python2-XStatic-term.js 
   - python2-XStatic-tv4 
   - python2-XlsxWriter 
-  - python2-Yapsy 
   - python2-ZConfig 
   - python2-ZConfig-doc 
   - python2-ZODB 
   - python2-abimap 
   - python2-abimap-doc 
   - python2-abseil 
-  - python2-aci-integration-module 
   - python2-adapt-parser 
   - python2-addict 
   - python2-aenum 
@@ -18491,9 +18471,7 @@ unsorted:
   - python2-attrs 
   - python2-audiogrep 
   - python2-audioread 
-  - python2-audit 
   - python2-augeas 
-  - python2-autobahn 
   - python2-autodoc 
   - python2-autoflake 
   - python2-autopep8 
@@ -18552,7 +18530,6 @@ unsorted:
   - python2-bsddb3-devel 
   - python2-bson 
   - python2-bugzillatools 
-  - python2-bz2file 
   - python2-cPyparsing 
   - python2-cached-property 
   - python2-cachelib 
@@ -18570,9 +18547,7 @@ unsorted:
   - python2-cbor 
   - python2-cbor2 
   - python2-cchardet 
-  - python2-cdecimal 
   - python2-cerealizer 
-  - python2-certbot 
   - python2-certifi 
   - python2-certstream 
   - python2-cffi 
@@ -18586,7 +18561,6 @@ unsorted:
   - python2-click-aliases 
   - python2-click-didyoumean 
   - python2-click-threading 
-  - python2-clinkgrammar 
   - python2-clint 
   - python2-cluster-preflight-check 
   - python2-clustershell 
@@ -18677,10 +18651,7 @@ unsorted:
   - python2-distro 
   - python2-distutils-extra 
   - python2-dj-database-url 
-  - python2-django-jinja 
   - python2-django-nine 
-  - python2-django-pipeline 
-  - python2-django-storages 
   - python2-djvulibre 
   - python2-dnspython 
   - python2-docformatter 
@@ -18701,7 +18672,6 @@ unsorted:
   - python2-ebcdic 
   - python2-ecdsa 
   - python2-ed25519 
-  - python2-ed25519ll 
   - python2-editdistance 
   - python2-editdistance-devel 
   - python2-efilter 
@@ -18711,7 +18681,6 @@ unsorted:
   - python2-email_validator 
   - python2-emoji 
   - python2-empy 
-  - python2-encore 
   - python2-entrypoint2 
   - python2-environmental-override 
   - python2-enzyme 
@@ -18738,7 +18707,6 @@ unsorted:
   - python2-fedmsg 
   - python2-feedgenerator 
   - python2-feedparser 
-  - python2-fido2 
   - python2-fields 
   - python2-filelock 
   - python2-filetype 
@@ -18747,13 +18715,11 @@ unsorted:
   - python2-fixtures 
   - python2-flake8-blind-except 
   - python2-flake8-debugger 
-  - python2-flake8-import-order 
   - python2-flaky 
   - python2-flask-restplus 
   - python2-flatbuffers 
   - python2-flexmock 
   - python2-flit-core 
-  - python2-flower 
   - python2-fluent 
   - python2-fluidity-sm 
   - python2-flup 
@@ -18762,9 +18728,7 @@ unsorted:
   - python2-freetype-py 
   - python2-freezegun 
   - python2-frozendict 
-  - python2-fs 
   - python2-ftputil 
-  - python2-fudge 
   - python2-funcparserlib 
   - python2-funcy 
   - python2-furl 
@@ -18793,17 +18757,9 @@ unsorted:
   - python2-gobject-Gdk 
   - python2-gobject-cairo 
   - python2-gobject-devel 
-  - python2-goocanvas 
-  - python2-goocanvas-devel 
-  - python2-google-api-core 
-  - python2-google-auth-oauthlib 
-  - python2-google-cloud-core 
-  - python2-google-cloud-kms 
-  - python2-google-cloud-speech 
   - python2-google-cloud-storage 
   - python2-google-resumable-media 
   - python2-googleapis-common-protos 
-  - python2-gpg 
   - python2-gpgme 
   - python2-gphoto2 
   - python2-gprof2dot 
@@ -18845,7 +18801,6 @@ unsorted:
   - python2-icalendar 
   - python2-identify 
   - python2-idna 
-  - python2-ifaddr 
   - python2-ifconfig-parser 
   - python2-ijson 
   - python2-imagesize 
@@ -18871,14 +18826,11 @@ unsorted:
   - python2-jdcal 
   - python2-jedi 
   - python2-jedihttp 
-  - python2-jenkins-job-builder 
-  - python2-jinja2-fsloader 
   - python2-jmespath 
   - python2-jsbeautifier 
   - python2-jsmin 
   - python2-json-rpc 
   - python2-json5 
-  - python2-json_tricks 
   - python2-jsondate 
   - python2-jsondiff 
   - python2-jsonextended 
@@ -18901,7 +18853,6 @@ unsorted:
   - python2-kerberos 
   - python2-keyczar 
   - python2-keyrings.alt 
-  - python2-kid 
   - python2-kismetdb 
   - python2-kitchen 
   - python2-kiwisolver 
@@ -18942,7 +18893,6 @@ unsorted:
   - python2-libmsiecf 
   - python2-libnacl 
   - python2-libolecf 
-  - python2-libpamtest 
   - python2-libpfm 
   - python2-libqcow 
   - python2-libregf 
@@ -18979,8 +18929,6 @@ unsorted:
   - python2-lzmaffi 
   - python2-macholib 
   - python2-magic 
-  - python2-magic-wormhole 
-  - python2-magic-wormhole-mailbox-server 
   - python2-managesieve 
   - python2-mando 
   - python2-manuel 
@@ -18989,11 +18937,9 @@ unsorted:
   - python2-mccabe 
   - python2-meld3 
   - python2-metaextract 
-  - python2-mhash 
   - python2-miniupnpc 
   - python2-misaka 
   - python2-mistune 
-  - python2-mockldap 
   - python2-modernize 
   - python2-mohawk 
   - python2-moksha-common 
@@ -19049,7 +18995,6 @@ unsorted:
   - python2-odfpy 
   - python2-olefile 
   - python2-opcodes 
-  - python2-opencensus 
   - python2-opencensus-context 
   - python2-opencensus-ext-azure 
   - python2-opencensus-ext-threading 
@@ -19073,16 +19018,12 @@ unsorted:
   - python2-pamela 
   - python2-pan-python 
   - python2-pandocfilters 
-  - python2-panflute 
   - python2-parallax 
   - python2-param 
   - python2-parameterized 
-  - python2-paramiko-expect 
   - python2-parse 
   - python2-parse_type 
   - python2-parsedatetime 
-  - python2-parsel 
-  - python2-parsimonious 
   - python2-parso 
   - python2-partd 
   - python2-parted 
@@ -19100,7 +19041,6 @@ unsorted:
   - python2-peewee 
   - python2-pefile 
   - python2-pem 
-  - python2-pendulum 
   - python2-pep517 
   - python2-peppercorn 
   - python2-persistent 
@@ -19151,20 +19091,16 @@ unsorted:
   - python2-progress 
   - python2-progressbar 
   - python2-proliantutils 
-  - python2-prometheus_client 
   - python2-prompt_toolkit1 
-  - python2-proselint 
   - python2-protobuf 
   - python2-pscript 
   - python2-psycopg2 
-  - python2-ptpython 
   - python2-ptyprocess 
   - python2-publicsuffix2 
   - python2-publicsuffixlist 
   - python2-pudb 
   - python2-pure-sasl 
   - python2-purl 
-  - python2-pushy 
   - python2-pwquality 
   - python2-py 
   - python2-py-cpuinfo 
@@ -19203,7 +19139,6 @@ unsorted:
   - python2-pycurl 
   - python2-pycxx 
   - python2-pycxx-devel 
-  - python2-pydata-google-auth 
   - python2-pydbus 
   - python2-pydenticon 
   - python2-pydicom 
@@ -19215,10 +19150,9 @@ unsorted:
   - python2-pyeapi 
   - python2-pyee 
   - python2-pyelftools 
-  - python2-pyenchant 
+  - python2-pyenchant: [x86_64] 
   - python2-pyfiglet 
   - python2-pyflakes 
-  - python2-pyftpdlib 
   - python2-pygal 
   - python2-pygaljs 
   - python2-pygit2 
@@ -19235,16 +19169,13 @@ unsorted:
   - python2-pylama 
   - python2-pylev 
   - python2-pylibacl 
-  - python2-pyliblzma 
   - python2-pylibmc 
   - python2-pylru 
   - python2-pylzma 
   - python2-pymad 
   - python2-pymavlink 
   - python2-pymediainfo 
-  - python2-pymod2pkg 
   - python2-pymongo 
-  - python2-pyngus 
   - python2-pyodbc 
   - python2-pyotp 
   - python2-pyparallel 
@@ -19256,7 +19187,6 @@ unsorted:
   - python2-pyquery 
   - python2-pyrad 
   - python2-pyroute2 
-  - python2-pyrrd 
   - python2-pyrsistent 
   - python2-pysaml2: [i586] 
   - python2-pyscard 
@@ -19273,10 +19203,6 @@ unsorted:
   - python2-pytaglib 
   - python2-pyte 
   - python2-pytesseract 
-  - python2-pytest-bdd 
-  - python2-pytest-console-scripts 
-  - python2-pytest-sphinx 
-  - python2-pytest-translations 
   - python2-python-afl 
   - python2-python-aiml 
   - python2-python-bidi 
@@ -19304,7 +19230,6 @@ unsorted:
   - python2-python-openid-teams 
   - python2-python-pam 
   - python2-python-ptrace 
-  - python2-python-qpid-proton 
   - python2-python-redmine 
   - python2-python-slugify 
   - python2-python-snappy 
@@ -19362,7 +19287,6 @@ unsorted:
   - python2-retrying 
   - python2-rfc3986 
   - python2-rfc3987 
-  - python2-rfc6266 
   - python2-rjsmin 
   - python2-rnginline 
   - python2-roman 
@@ -19377,7 +19301,6 @@ unsorted:
   - python2-ruamel.std.pathlib 
   - python2-ruamel.yaml.clib 
   - python2-ruffus: [x86_64] 
-  - python2-s3transfer: [i586] 
   - python2-sadisplay 
   - python2-sane 
   - python2-sanlock 
@@ -19389,7 +19312,6 @@ unsorted:
   - python2-schedule 
   - python2-schema 
   - python2-scikit-build 
-  - python2-scitools 
   - python2-scour 
   - python2-scripttest 
   - python2-scrypt 
@@ -19405,7 +19327,6 @@ unsorted:
   - python2-setuptools-git 
   - python2-setuptools_scm 
   - python2-setuptools_scm_git_archive 
-  - python2-sh 
   - python2-shaptools 
   - python2-shellingham 
   - python2-shutilwhich 
@@ -19415,8 +19336,6 @@ unsorted:
   - python2-simplegeneric 
   - python2-simplejson 
   - python2-simplekml 
-  - python2-sip 
-  - python2-sip-devel 
   - python2-six 
   - python2-slimit 
   - python2-slip 
@@ -19448,11 +19367,6 @@ unsorted:
   - python2-ssdeep 
   - python2-statsd 
   - python2-stomper 
-  - python2-storm 
-  - python2-storm-django 
-  - python2-storm-mysql 
-  - python2-storm-postgresql 
-  - python2-storm-twisted 
   - python2-straight-plugin 
   - python2-strict-rfc3339 
   - python2-subliminal 
@@ -19472,7 +19386,6 @@ unsorted:
   - python2-tblib 
   - python2-technicolor 
   - python2-template-remover 
-  - python2-tenacity 
   - python2-termcolor 
   - python2-terminaltables 
   - python2-termstyle 
@@ -19488,7 +19401,6 @@ unsorted:
   - python2-texttable 
   - python2-textwrap3 
   - python2-thespian 
-  - python2-thrift 
   - python2-thriftpy2 
   - python2-tinydb 
   - python2-tinyrecord 
@@ -19511,7 +19423,6 @@ unsorted:
   - python2-twitter.common.rpc 
   - python2-twodict 
   - python2-txWS 
-  - python2-txtorcon 
   - python2-tzlocal 
   - python2-u-msgpack-python 
   - python2-ua-parser 
@@ -19538,15 +19449,12 @@ unsorted:
   - python2-validate_email 
   - python2-validators 
   - python2-varlink 
-  - python2-vcrpy 
-  - python2-vcs 
   - python2-vcver 
   - python2-vcversioner 
   - python2-verboselogs 
   - python2-versioneer 
   - python2-versiontag 
   - python2-versiontools 
-  - python2-vim-vint 
   - python2-vine 
   - python2-virt-bootstrap: [x86_64] 
   - python2-virtkey 
@@ -19561,7 +19469,6 @@ unsorted:
   - python2-waitress-doc 
   - python2-wakeonlan 
   - python2-wcwidth 
-  - python2-weave 
   - python2-webassets 
   - python2-webencodings 
   - python2-weblib 
@@ -19577,7 +19484,6 @@ unsorted:
   - python2-wsgi_intercept 
   - python2-wstools 
   - python2-wtf-peewee 
-  - python2-wurlitzer 
   - python2-wxPython 
   - python2-wxPython-lang 
   - python2-xattr 
@@ -19593,7 +19499,6 @@ unsorted:
   - python2-xmlsec 
   - python2-xmltodict 
   - python2-xpybutil 
-  - python2-xvfbwrapper 
   - python2-xxhash 
   - python2-yamldoc 
   - python2-yamllint 
@@ -20869,6 +20774,7 @@ unsorted:
   - python3-irc 
   - python3-ironic-inspector-client 
   - python3-ironicclient 
+  - python3-isc_dhcp_leases 
   - python3-iso8601 
   - python3-isodate 
   - python3-isort 
@@ -20938,6 +20844,7 @@ unsorted:
   - python3-jupyter-require 
   - python3-jupyter-server 
   - python3-jupyter-sphinx 
+  - python3-jupyter-telemetry 
   - python3-jupyter_console 
   - python3-jupyter_contrib_core 
   - python3-jupyter_highlight_selected_word 
@@ -22758,6 +22665,7 @@ unsorted:
   - rmt-server-pubcloud: [x86_64] 
   - rnd_jue 
   - rnd_jue-data 
+  - robin-map-devel 
   - robinhood: [x86_64] 
   - robinhood-tests: [x86_64] 
   - robinhood-tools: [x86_64] 
@@ -24325,6 +24233,7 @@ unsorted:
   - srt 
   - srt-devel 
   - sscape-ctl: [i586] 
+  - sscep 
   - ssdeep 
   - ssdp-responder 
   - ssh-audit 
@@ -24723,6 +24632,7 @@ unsorted:
   - terminology-theme-upstream 
   - terminus 
   - terminus-lang 
+  - termrec 
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
   - terraform-provider-openstack 
@@ -32320,6 +32230,7 @@ unsorted:
   - tslib-devel-32bit: [x86_64] 
   - tslib-plugins 
   - tsung 
+  - ttf-converter 
   - ttf2pt1 
   - tudu 
   - tuladha-jejeg-fonts 
