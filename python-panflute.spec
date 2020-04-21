@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-panflute
 Version:        1.12.5
 Release:        0
@@ -28,23 +29,24 @@ Source:         https://files.pythonhosted.org/packages/source/p/panflute/panflu
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
+Requires:       python-click
+Requires:       python-future
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python-configparser
 BuildRequires:  python-shutilwhich
+%endif
 # /SECTION
-Requires:       python-PyYAML
-Requires:       python-click
-Requires:       python-future
 %ifpython2
 Requires:       python-shutilwhich
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
