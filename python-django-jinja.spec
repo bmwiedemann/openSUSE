@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-django-jinja
 Version:        2.6.0
 Release:        0
@@ -30,7 +31,9 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-mock
+%endif
 Requires:       python-Django >= 1.11
 Requires:       python-Jinja2 >= 2.5
 BuildArch:      noarch
