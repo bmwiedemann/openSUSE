@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-PyKMIP
 Version:        0.10.0
 Release:        0
@@ -36,17 +37,19 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
 Requires:       python-SQLAlchemy
 Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-six
-%ifpython2
-Requires:       python-enum34
-%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
+%ifpython2
+Requires:       python-enum34
+%endif
 %python_subpackages
 
 %description
