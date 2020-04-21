@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-openfiles
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-openfiles
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Pytest plugin for detecting inadvertent open file handles
 License:        BSD-3-Clause
@@ -26,12 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/astropy/pytest-openfiles
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-openfiles/pytest-openfiles-%{version}.tar.gz
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest >= 2.8.0}
+BuildRequires:  %{python_module pytest >= 4.6}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
-Requires:       python-pytest >= 2.8.0
+Requires:       python-pytest >= 4.6
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,8 +44,6 @@ inadvertently left open at the end of a unit test.
 
 %prep
 %setup -q -n pytest-openfiles-%{version}
-# do not override pytest config
-rm setup.cfg
 
 %build
 %python_build
@@ -53,11 +53,14 @@ rm setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+# do not override pytest config
+rm setup.cfg
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_openfiles
+%{python_sitelib}/pytest_openfiles-%{version}-py*.egg-info
 
 %changelog
