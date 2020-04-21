@@ -1,7 +1,7 @@
 #
 # spec file for package python-mockldap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-mockldap
 Version:        0.3.0.post1
 Release:        0
@@ -29,14 +30,16 @@ BuildRequires:  %{python_module funcparserlib >= 0.3.6}
 BuildRequires:  %{python_module ldap >= 3.0}
 BuildRequires:  %{python_module setuptools >= 0.6c11}
 BuildRequires:  fdupes
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 Requires:       python-funcparserlib >= 0.3.6
 Requires:       python-ldap >= 3.0
+BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %ifpython2
 Requires:       python-mock
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description

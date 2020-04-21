@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:36:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Wed Sep 11 11:24:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.0post1:

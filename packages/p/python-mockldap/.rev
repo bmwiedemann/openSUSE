@@ -38,4 +38,12 @@
   * project archived and moved to github</comment>
     <requestid>730111</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>36f01186a8ad9b41d4bea1e0c63bac94</srcmd5>
+    <version>0.3.0.post1</version>
+    <time>1587467429</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795803</requestid>
+  </revision>
 </revisionlist>
