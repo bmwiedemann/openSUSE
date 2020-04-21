@@ -25,4 +25,12 @@
   * use selectors instead of select.poll #34</comment>
     <requestid>745984</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ae99d011e772be9c3ec20c798496846</srcmd5>
+    <version>2.0.0</version>
+    <time>1587467217</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2 available</comment>
+    <requestid>795679</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wurlitzer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-wurlitzer
 Version:        2.0.0
 Release:        0
@@ -29,8 +30,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-selectors2
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-selectors2
+%endif
 %ifpython2
 Requires:       python-selectors2
 %endif
