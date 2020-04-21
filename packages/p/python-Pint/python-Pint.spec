@@ -27,18 +27,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uncertainties}
 BuildRequires:  fdupes
-BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
 Requires:       python-uncertainties
 Recommends:     python-numpy
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description

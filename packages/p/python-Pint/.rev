@@ -68,4 +68,12 @@
     <comment></comment>
     <requestid>768794</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5f4a23ea4d702f3b75480c1cd7d89968</srcmd5>
+    <version>0.10.1</version>
+    <time>1587467391</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 dep as the package is marked as python3 only</comment>
+    <requestid>795783</requestid>
+  </revision>
 </revisionlist>
