@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:15:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop unused patch django-pipeline-setpcfg.patch
+- Fix build wihtout python2
+
+-------------------------------------------------------------------
 Thu Jan  9 08:42:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.0:
