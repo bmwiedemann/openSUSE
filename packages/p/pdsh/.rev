@@ -318,4 +318,16 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
   SLURM versions.</comment>
     <requestid>790363</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>22a76b5e267f50a3cb967778f7b8e96c</srcmd5>
+    <version>2.34</version>
+    <time>1587467177</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring QA to the package build: add %%check stage
+
+- Since the build for the SLE-12 HPC Module got fixed, simplify
+  spec file and remove legacy workarounds.
+- Remove _multibuild file where not needed.</comment>
+    <requestid>795856</requestid>
+  </revision>
 </revisionlist>

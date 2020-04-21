@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 18 06:04:16 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Bring QA to the package build: add %%check stage
+
+-------------------------------------------------------------------
+Fri Apr 10 09:28:25 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Since the build for the SLE-12 HPC Module got fixed, simplify
+  spec file and remove legacy workarounds.
+- Remove _multibuild file where not needed.
+
+-------------------------------------------------------------------
 Tue Mar 31 17:27:24 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add better legacy support.

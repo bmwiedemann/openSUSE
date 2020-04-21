@@ -19,22 +19,8 @@
 #
 %define slurm_version @BUILD_FLAVOR@%{nil}
 
-%if "%slurm_version" == ""
-ExclusiveArch:  do_not_build
-%else
-%if "%slurm_version" == "base"
-%define slurm_version %{nil}
-%else
-%define slurm_mod_only 1
+%if "%slurm_version" != ""
 %define _slurm_version _%{slurm_version}
-%endif
-%endif
-
-%if 0%{?suse_version} > 1315 || 0%{?sle_version} > 120200
-%define license_string GPL-2.0-or-later
-%else
-%define legacy 1
-%define license_string GPL-2.0+
 %endif
 
 %if 0%{!?sle_version:1} || 0%{?sle_version} >= 120300 || (0%{!?is_opensuse:1} && 0%{?sle_version} >= 120200)
@@ -48,7 +34,7 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if !0%{?have_slurm} && 0%{?slurm_mod_only}
+%if !0%{?have_slurm} && 0%{?_slurm_version:1}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -73,7 +59,7 @@ Version:        2.34
 Release:        0
 Summary:        Parallel remote shell program
 # git clone of https://code.google.com/p/pdsh/
-License:        %{license_string}
+License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{pname}/releases/download/%{pname}-%{version}/%{pname}-%{version}.tar.gz
 
@@ -85,7 +71,7 @@ remote shell services, including Kerberos IV and ssh.
 %package -n     %{pname}-slurm%{?_slurm_version}
 Summary:        SLURM plugin for pdsh
 Group:          Productivity/Clustering/Computing
-%{?slurm_mod_only:BuildRequires:  %pname}
+%{?_slurm_version:BuildRequires:  %pname}
 Requires:       %pname = %{version}
 Enhances:       slurm%{?_slurm_version}
 %if 0%{?_slurm_version:1}
@@ -141,7 +127,7 @@ Plugin for pdsh to determine nodes to run on from netgroups.
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
-%if 0%{?slurm_mod_only}
+%if 0%{?_slurm_version:1}
         --without-exec \
 %else    
 	--with-readline \
@@ -164,15 +150,16 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %make_build
 
 %install
-%{?slurm_mod_only:cd src/modules}
+%{?_slurm_version:cd src/modules}
 %make_install
 rm -f %buildroot/%{_libdir}/pdsh/*.la
-%{?legacy:mkdir -p %{buildroot}/%{_datarootdir}/licenses}
 
-%if !0%{?slurm_mod_only}
+%if !0%{?_slurm_version:1}
+%check
+make check
+
 %files
 %doc README DISCLAIMER.* README.* NEWS TODO
-%{?legacy:%dir %{_datarootdir}/licenses}
 %license COPYING
 %attr(755, root, root) %{_bindir}/pdsh
 %attr(755, root, root) %{_bindir}/pdcp 
@@ -202,7 +189,7 @@ rm -f %buildroot/%{_libdir}/pdsh/*.la
 
 %files netgroup
 %{_libdir}/pdsh/netgroup.so
-%endif # if slurm_mod_only
+%endif # if _slurm_version
 
 %if 0%{?have_slurm}
 %files -n %{pname}-slurm%{?_slurm_version}
