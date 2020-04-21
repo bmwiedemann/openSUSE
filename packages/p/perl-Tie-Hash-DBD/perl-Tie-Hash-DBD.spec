@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Hash-DBD
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Tie-Hash-DBD
-Version:        0.20
+Version:        0.21
 Release:        0
 %define cpan_name Tie-Hash-DBD
 Summary:        Tie a plain hash to a database table
@@ -35,10 +35,10 @@ BuildRequires:  perl(Test::More) >= 0.9
 Requires:       perl(DBI) >= 1.613
 Requires:       perl(Test::More) >= 0.9
 Recommends:     perl(DBD::CSV) >= 0.54
-Recommends:     perl(DBD::Pg) >= v3.9.1
+Recommends:     perl(DBD::Pg) >= v3.10.5
 Recommends:     perl(DBD::SQLite) >= 1.64
-Recommends:     perl(DBI) >= 1.642
-Recommends:     perl(Test::More) >= 1.302167
+Recommends:     perl(DBI) >= 1.643
+Recommends:     perl(Test::More) >= 1.302174
 %{perl_requires}
 
 %description
