@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-google-cloud-core
 Version:        1.3.0
 Release:        0
@@ -31,11 +32,13 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.16.0
 Recommends:     python-grpcio >= 1.8.2
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
 %ifpython2
 Requires:       python-futures >= 3.2.0
 %endif
