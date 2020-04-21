@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-oauthlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-google-auth-oauthlib
 Version:        0.4.1
 Release:        0
@@ -39,7 +40,9 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
 BuildRequires:  %{python_module six}
+%if %{with python2}
 BuildRequires:  python-futures
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-futures
