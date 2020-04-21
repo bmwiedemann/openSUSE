@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-django-storages
 Version:        1.9.1
 Release:        0
@@ -44,7 +45,9 @@ BuildRequires:  %{python_module dropbox >= 7.2.1}
 BuildRequires:  %{python_module google-cloud-storage >= 1.15.0}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
 BuildRequires:  python2-mock
+%endif
 # /SECTION
 %python_subpackages
 
