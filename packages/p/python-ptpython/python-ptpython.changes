@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:39:09 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.1
+  - Fix backwards-compatibility of the `run_config` function. (used by
+    django-extensions).
+  - Fix input mode in status bar for block selection.
+  - Upgrade to prompt_toolkit 3.0.
+  - Requires at least Python 3.6.
+  - Uses XDG base directory specification.
+  - Added dictionary completer (off by default).
+  - Added fuzzy completion (off by default).
+  - Highlight keywords in completion dropdown menu.
+  - Enable universal wheels.
+  - Fixed embedding repl as asyncio coroutine.
+  - Fixed patching stdout in embedded repl.
+  - Fixed ResourceWarning in setup.py.
+
+-------------------------------------------------------------------
 Mon Jun  3 17:04:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix jupyter dependencies.
