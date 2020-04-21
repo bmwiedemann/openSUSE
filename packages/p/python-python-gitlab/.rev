@@ -97,4 +97,12 @@
     <comment></comment>
     <requestid>787370</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fb3064be81b765f6bf22fda6af513f1e</srcmd5>
+    <version>2.1.2</version>
+    <time>1587467320</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies for testing</comment>
+    <requestid>795759</requestid>
+  </revision>
 </revisionlist>

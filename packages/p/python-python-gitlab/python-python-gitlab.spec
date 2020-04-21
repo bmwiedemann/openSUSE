@@ -36,7 +36,6 @@ Requires:       python-setuptools
 Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module configparser}
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
