@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Apr 19 12:19:18 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Created robin-map package from Fedora source rpm to enable
+  OpenImageIO > 2.0.0 to build to enable OpenShadingLanguage to be
+  updated and build with LLVM10.
