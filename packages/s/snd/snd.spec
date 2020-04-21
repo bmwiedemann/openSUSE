@@ -16,14 +16,22 @@
 #
 
 
-%ifarch %ix86 x86_64 %ppc ppc64 ppc64le
+%ifarch %{ix86} x86_64 %{ppc} ppc64 ppc64le
 # The jack support has some inline assembly, but only for x86/ppc
 %bcond_without jack
 %else
 %bcond_with jack
 %endif
-
 Name:           snd
+Version:        20.3
+Release:        0
+Summary:        Sound File Editor
+License:        LGPL-2.1-or-later
+Group:          Productivity/Multimedia/Sound/Editors and Convertors
+URL:            https://ccrma.stanford.edu/software/snd/
+Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
+Source1:        snd.desktop
+Source2:        snd.png
 BuildRequires:  alsa-devel
 BuildRequires:  fftw3-devel
 BuildRequires:  freeglut-devel
@@ -35,17 +43,7 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  update-desktop-files
-Summary:        Sound File Editor
-License:        LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        20.2
-Release:        0
 Requires:       ladspa
-Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
-Source1:        snd.desktop
-Source2:        snd.png
-URL:            https://ccrma.stanford.edu/software/snd/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Snd is a sound editor modelled loosely after Emacs and an old,
@@ -60,20 +58,16 @@ find -name "*.png" -type f -exec chmod 0644 "{}" "+"
 
 %build
 %configure \
-            CFLAGS="%{optflags} -fno-strict-aliasing" \
-            CXXFLAGS="%{optflags} -fno-strict-aliasing" \
-            LDFLAGS="-Wl,-z -Wl,noexecstack" \
-            --with-gtk \
-	    --with-alsa \
-	    --with-ladspa \
-	    --with-static-xm \
-	    --with-gl \
-            %{?with_jack:--with-jack} \
-
+  --with-gtk \
+  --with-alsa \
+  --with-ladspa \
+  --with-static-xm \
+  --with-gl \
+  %{?with_jack:--with-jack} \
 # feel free to improve following change and please notify upstream
 sed -i "s:\(^LIBS =.*\):\1 -lX11 -ldl:" makefile
-make %{?_smp_mflags}
-make sndplay sndinfo
+%make_build
+%make_build sndplay sndinfo
 
 %install
 install -d -m 755 %{buildroot}/%{_bindir}
