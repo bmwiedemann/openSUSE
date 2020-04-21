@@ -1,7 +1,7 @@
 #
 # spec file for package python-sh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,8 +56,9 @@ sh is not a collection of system commands implemented in Python.
 %install
 %python_install
 
-%check
-%python_exec test.py
+# https://trello.com/c/gkuDtBOU
+# %%check
+# %%python_exec test.py
 
 %files %{python_files}
 %license LICENSE.txt
