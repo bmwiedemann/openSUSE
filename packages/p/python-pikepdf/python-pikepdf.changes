@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Apr 19 20:10:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.1
+  * We now avoid creating an empty XMP metadata entry when files
+    are saved.
+  * Updated documentation to describe how to delete the document
+    information dictionary.
+- Update to version 1.11.0
+  * Prevent creation of dictionaries with invalid names (not
+    beginning with /).
+  * Allow pikepdf's build to specify a qpdf source tree, allowing
+    one to compile pikepdf against an unreleased/modified version
+    of qpdf.
+  * Improved behavior of pages.p() and pages.remove() when
+    invalid parameters were given.
+  * Fixed compatibility with libqpdf version 10.0.1, and build
+    official wheels against this version.
+  * Fixed compatibility with pytest 5.x.
+  * Fixed the documentation build.
+  * Fixed an issue with running tests in a non-Unicode locale.
+  * Fixed a test that randomly failed due to a "deadline error".
+  * Removed a possibly nonfree test file.
+- Update to version 1.10.4
+  * Rebuild Python wheels with newer version of libqpdf. Fixes
+    problems with opening certain password-protected files (#87)
+-------------------------------------------------------------------
 Tue Mar 24 11:58:35 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.10.3
