@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Sun Apr 19 10:53:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.0.1.post1 
+  * astropy.config
+    [gh#astropy/astropy#9975]
+    Fixed a bug where importing a development version of a package that
+    uses ``astropy`` configuration system can result in a
+    ``~/.astropy/config/package..cfg`` file.
+  * astropy.coordinates 
+    [gh#astropy/astropy#9815]
+    Fixed a bug where a vestigal trace of a frame class could persist in the
+    transformation graph even after the removal of all transformations involving
+    that frame class.   
+    [gh#astropy/astropy#9815]
+    Fixed a bug with ``TransformGraph.remove_transform()`` when the "from" and
+    "to" frame classes are not explicitly specified.   
+    [gh#astropy/astropy#9900]
+    Read-only longitudes can now be passed in to ``EarthLocation`` even if
+    they include angles outside of the range of -180 to 180 degrees.   
+    [gh#astropy/astropy#9980]
+    ```SkyCoord.radial_velocity_correction``` no longer raises an Exception
+    when space motion information is present on the SkyCoord.   
+  * astropy.io 
+    [gh#astropy/astropy#9866]
+    Fixed a bug that prevented the unified I/O infrastructure from working with
+    datasets that are represented by directories rather than files.   
+  * astropy.io.ascii
+    [gh#astropy/astropy#9918]
+    Fixed a bug in the ``fast_reader`` C parsers incorrectly returning entries
+    of isolated positive/negative signs as ``float`` instead of ``str``.   
+    [gh#astropy/astropy#9923]
+    Fixed a segmentation fault in the ``fast_reader`` C parsers when parsing an
+    invalid file with ``guess=True`` and the file contains inconsistent column
+    numbers in combination with a quoted field; e.g., ``"1  2\n 3  4 '5'"``.
+    [gh#astropy/astropy#9933]
+    Magnitude, decibel, and dex can now be stored in ``ecsv`` files.   
+  * astropy.io.misc
+    [gh#astropy/astropy#9933]
+    Magnitude, decibel, and dex can now be stored in ``hdf5`` files.   
+    [gh#astropy/astropy#9956, gh#astropy/astropy#9961]
+    Fixed serialization of polynomial models to include non default values of
+    domain and window values.   
+    [gh#astropy/astropy#9950]
+    Fixed a bug which affected overwriting tables within ``hdf5`` files.
+    Overwriting an existing path with associated column meta data now also
+    overwrites the meta data associated with the table.   
+    [gh#astropy/astropy#9983]
+    Fixed serialization of Time objects with location under time-1.0.0
+    ASDF schema.   
+  * astropy.io.fits
+    [gh#astropy/astropy#9711, gh#astropy/astropy#9934]
+    Fix regression with ``GroupsHDU`` which needs to modify the header to handle
+    invalid headers, and fix accesing ``.data`` for empty HDU.   
+    [gh#astropy/astropy#9711]
+    Fix ``fitsdiff`` when its arguments are directories that contain other
+    directories.   
+    [gh#astropy/astropy#9958]
+    Fix writing noncontiguous data to a compressed HDU.   
+    [gh#astropy/astropy#9978]
+    Added verification of ``disp`` (``TDISP``) keyword to ``fits.Column`` and
+    extended tests for ``TFORM`` and ``TDISP`` validation.   
+    [gh#astropy/astropy#10012]
+    Fix checksum verification to process all HDUs instead of only the first one
+    because of the lazy loading feature.   
+    [gh#astropy/astropy#10030]
+    Allow passing ``output_verify`` to ``.close`` when using the context manager.
+    [gh#astropy/astropy#10041]
+    Prevent instantiation of ``PrimaryHDU`` and ``ImageHDU`` with a scalar.
+    [gh#astropy/astropy#10069]
+    Fix column access by attribute with FITS_rec: columns with scaling or columns
+    from ASCII tables where not properly converted when accessed by attribute
+    name.   
+  * astropy.io.misc
+    [gh#astropy/astropy#9933]
+    Magnitude, decibel, and dex can now be stored in ``hdf5`` files.   
+    [gh#astropy/astropy#9956, gh#astropy/astropy#9961]
+    Fixed serialization of polynomial models to include non default values of
+    domain and window values.   
+    [gh#astropy/astropy#9950]
+    Fixed a bug which affected overwriting tables within ``hdf5`` files.
+    Overwriting an existing path with associated column meta data now also
+    overwrites the meta data associated with the table.   
+    [gh#astropy/astropy#9983]
+    Fixed serialization of Time objects with location under time-1.0.0
+    ASDF schema.   
+  * astropy.modeling
+    [gh#astropy/astropy#9987]
+    Fixed a bug in setting default values of parameters of orthonormal
+    polynomials when constructing a model set.   
+  * astropy.table
+    [gh#astropy/astropy#9839]
+    Fixed bug in ``Table.reverse`` for tables that contain non-mutable mixin columns
+    (like ``SkyCoord``) for which in-place item update is not allowed.   
+    [gh#astropy/astropy#9933]
+    Tables containing Magnitude, decibel, and dex columns can now be saved to
+    ``ecsv`` files.   
+    [gh#astropy/astropy#10027]
+    Fixed bug where adding or inserting a row fails on a table with an index
+    defined on a column that is not the first one.   
+    [gh#astropy/astropy#10068]
+    Ensured that ``table.show_in_browser`` also worked for mixin columns like
+    ``Time`` and ``SkyCoord``.   
+  * astropy.time
+    [gh#astropy/astropy#9679]
+    Fix inaccuracy when converting between TimeDelta and datetime.timedelta.   
+    [gh#astropy/astropy#9812]
+    Fixed exception when changing ``format`` in the case when ``out_subfmt`` is
+    defined and is incompatible with the new format.   
+    [gh#astropy/astropy#9812]
+    Fixed exceptions in ``Time.to_value()``: when supplying any ``subfmt`` argument
+    for string-based formats like 'iso', and for ``subfmt='long'`` for the formats
+    'byear', 'jyear', and 'decimalyear'.   
+    [gh#astropy/astropy#9969]
+    Fixed bug where the location attribute was lost when creating a new ``Time``
+    object from an existing ``Time`` or list of ``Time`` objects.   
+    [gh#astropy/astropy#10034]
+    Fixed a bug where an exception occurred when creating a ``Time`` object
+    if the ``val1`` argument was a regular double and the ``val2`` argument
+    was a ``longdouble``.   
+  * astropy.timeseries
+    [gh#astropy/astropy#10013]
+    Fixed issue with reference time for the ``transit_time`` parameter returned by
+    the ``BoxLeastSquares`` periodogram. Now, the ``transit_time`` will be within
+    the range of the input data and arbitrary time offsets/zero points no longer
+    affect results.   
+  * astropy.units
+    [gh#astropy/astropy#9948]
+    Fix for ``quantity_input`` annotation raising an exception on iterable
+    types that don't define a general ``__contains__`` for checking if ``None``
+    is contained (e.g. Enum as of python3.8), by instead checking for instance of
+    Sequence.   
+    [gh#astropy/astropy#10066]
+    Fix for ``u.Quantity`` not taking into account ``ndmin`` if constructed from
+    another ``u.Quantity`` instance with different but convertible unit   
+  * astropy.utils
+    [gh#astropy/astropy#9981]
+    Fixed ``deprecated_renamed_argument`` not passing in user value to
+    deprecated keyword when the keyword has no new name.   
+    [gh#astropy/astropy#9985]
+    Fixed ``deprecated_renamed_argument`` not issuing a deprecation warning when
+    deprecated keyword without new name is passed in as positional argument.
+    [gh#astropy/astropy#10007]
+    Fixed detection of read-only filesystems in the caching code.   
+  * astropy.visualization
+    [gh#astropy/astropy#9848]
+    Fixed bug from matplotlib >=3.1 where an empty Quantity array is
+    sent for unit conversion as an empty list.   
+    [gh#astropy/astropy#9913]
+    Fix bug in ``ZScaleInterval`` to return the array minimum and
+    maximum when there are less then ``min_npixels`` in the input array.   
+    [gh#astropy/astropy#8004, gh#astropy/astropy#9991]
+    Fix a bug in simplifying axis labels that affected non-rectangular frames.
+  * Increase minimum asdf version to 2.5.2.
+    [gh#astropy/astropy#9996, gh#astropy/astropy#9819]   
+  * Updated wcslib to v7.2. [gh#astropy/astropy#10021]
+- updated test requirements and recommends
+- run pytest directly
+
+-------------------------------------------------------------------
 Tue Jan  7 10:19:19 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Require erfa >= 1.7 because of https://github.com/astropy/astropy/issues/9654

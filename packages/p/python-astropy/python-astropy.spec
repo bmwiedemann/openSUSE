@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy
-Version:        4.0
+Version:        4.0.1.post1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -31,9 +31,7 @@ Source100:      python-astropy-rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.21}
 BuildRequires:  %{python_module astropy-helpers}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module matplotlib >= 2.1}
-BuildRequires:  %{python_module numpy-devel >= 1.7.0}
+BuildRequires:  %{python_module numpy-devel >= 1.16}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,34 +51,40 @@ Requires:       python-numpy >= 1.7.0
 Recommends:     libxml2-tools
 Recommends:     python-Jinja2
 Recommends:     python-PyYAML
+Recommends:     python-asdf >= 2.5
 Recommends:     python-beautifulsoup4
+Recommends:     python-Bottleneck
 Recommends:     python-bleach
 Recommends:     python-h5py
+Recommends:     python-ipython
 Recommends:     python-jplephem
 Recommends:     python-matplotlib >= 2.1
 Recommends:     python-pandas
 Recommends:     python-scikit-image
-Recommends:     python-scipy
+Recommends:     python-scipy >= 0.18
 Conflicts:      perl-Data-ShowTable
 # SECTION Optional requirements
+BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module asdf >= 2.5}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jplephem}
+BuildRequires:  %{python_module matplotlib >= 2.1}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scipy >= 0.18}
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module mpmath}
-BuildRequires:  %{python_module pytest >= 3.1.0}
-BuildRequires:  %{python_module pytest-arraydiff >= 0.1}
+BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module pytest >= 3.1}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-doctestplus}
-BuildRequires:  %{python_module pytest-openfiles}
-BuildRequires:  %{python_module pytest-remotedata}
+BuildRequires:  %{python_module pytest-mpl}
 # /SECTION
 %python_subpackages
 
@@ -108,9 +112,14 @@ echo "use_system_libraries=1" >> setup.cfg
 %install
 %python_install --use-system-libraries --offline
 
+chmod a-x %{buildroot}%{python_sitearch}/astropy/wcs/tests/data/header_with_time.fits
+
 # Deduplicating files can generate a RPMLINT warning for pyc mtime
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
+rm -rf %{buildroot}%{$python_sitearch}/astropy/io/misc/tests/__pycache__/__init__.*.pyc
 rm -rf %{buildroot}%{$python_sitearch}/astropy/io/votable/tests/__pycache__/*_test.*.pyc
+rm -rf %{buildroot}%{$python_sitearch}/astropy/io/votable/tests/__pycache__/__init__.*.pyc
+rm -rf %{buildroot}%{$python_sitearch}/astropy/wcs/tests/__pycache__/__init__.*.pyc
 rm -rf %{buildroot}%{$python_sitearch}/astropy/wcs/tests/extension/__pycache__/__init__.*.pyc
 $python    -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/astropy/io/misc/tests/
 $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/astropy/io/misc/tests/
@@ -125,12 +134,16 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-pushd static
-%{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
-$python -B -c "import astropy;astropy.test()"
-rm -rf %{buildroot}%{$python_sitearch}/astropy/wcs/tests/extension/build
+# http://docs.astropy.org/en/latest/development/testguide.html#running-tests
+%python_exec setup.py build_ext --inplace --offline
+%ifarch aarch64 
+# doctest failure because of precision errors
+  %define skippytest -k 'not bayesian_info_criterion_lsq'
+%endif
+%{pytest_arch -W "ignore:the imp module is deprecated:DeprecationWarning" \
+              -W "ignore:Unknown pytest.mark.openfiles_ignore:pytest.PytestUnknownMarkWarning" \
+              --ignore "docs/whatsnew" %{?skippytest}
 }
-popd
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
