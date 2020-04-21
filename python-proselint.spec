@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-proselint
 Version:        0.10.2
 Release:        0
@@ -41,7 +42,9 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module six}
-BuildRequires:  python2-mock
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %python_subpackages
 
