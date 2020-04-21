@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:53:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Feb 27 12:57:33 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Temporarily skip some tests failing on ppc64le due to upstream issues

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-prometheus_client
 Version:        0.7.1
 Release:        0
@@ -25,15 +26,18 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/prometheus/client_python
 Source:         https://github.com/prometheus/client_python/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
-Suggests:       python-twisted
+Recommends:     python-Twisted
 Provides:       python-prometheus-client = %{version}-%{release}
 Obsoletes:      python-prometheus-client < %{version}-%{release}
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
 %python_subpackages
 
 %description
@@ -50,7 +54,7 @@ The official Python 2 and 3 client for Prometheus.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# some tests are currently broken in ppc64le 
+# some tests are currently broken in ppc64le
 # see https://bugzilla.suse.com/show_bug.cgi?id=1164604
 %pytest -k "not TestProcessCollector"
 
