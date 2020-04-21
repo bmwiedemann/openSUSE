@@ -1,7 +1,7 @@
 #
 # spec file for package python-fido2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-fido2
 Version:        0.8.1
 Release:        0
 Summary:        Python-based FIDO 2.0 library
 License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MPL-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/Yubico/python-fido2
+URL:            https://github.com/Yubico/python-fido2
 Source0:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz
 Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.sig
 BuildRequires:  %{python_module cryptography >= 1.5}
@@ -33,10 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
 Requires:       python-cryptography >= 1.5
 Requires:       python-six
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-enum34
+%endif
 %ifpython2
 Requires:       python2-enum34
 %endif
