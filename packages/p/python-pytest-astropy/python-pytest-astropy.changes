@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 16 08:33:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- UPdate to 0.8.0:
+  * Added pytest-filter-subpackage and pytest-cov as dependencies. [#29]
+  * Dropped support for Python 2.7 and 3.5. [#29]
+  * Require Hypothesis 5.1 or later. [#29]
+
+-------------------------------------------------------------------
 Wed Dec 18 21:29:00 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.7.0
