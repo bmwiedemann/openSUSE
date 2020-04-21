@@ -27,7 +27,7 @@ SYMBOL_DIR="${ROOT_DIR}/symbols"
 SOURCE_DIR="${ROOT_DIR}/src"
 DEBUGSOURCE_DIR="${SOURCE_DIR}/debug"
 
-for f in `find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll"`
+for f in `find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort`
 do
 	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
 	    *debuglink*) continue ;;
@@ -64,6 +64,7 @@ find $RPM_BUILD_ROOT -type f \
 	-or -name "*.dll.debug" \
 	-or -name "*.exe.mdb" \
 	-or -name "*.dll.mdb" \
+| sort \
 | sed -n -e "s#^$RPM_BUILD_ROOT##p" >"$BUILDDIR/$target-debugfiles.list"
 
 if [ -e "$RPM_BUILD_ROOT/$SYMBOL_DIR" ]; then
