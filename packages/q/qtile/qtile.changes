@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Apr 14 15:17:22 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Update to version 0.15.1:
+  * Bugfixes
+    - Revert core: properly shutdown event loop (#1615)(#1609)
+
+- Update to version 0.15.0:
+  * Config breakage
+    - removed the mpd widget, which depended on python-mpd
+  * Bugfixes
+    - Fix #1298: fall back to get int items for digit string in qtile_cmd.
+    - Fix qtile-cmd failure, #1410.
+    - Fix #755: use a valid timestamp for WM_TAKE_FOCUS events.
+    - Issue #1510: Added missing kwargs argument in EzKey class.
+    - Toggle group if setting a group twice. (#1491)
+    - Added non-graph CPU widget (feature req #1439)
+    - Changes to make the dev.sh script more generic. (#1471)
+    - Show current layout and prepare all layouts in the default config. (#1469)
+    - Fix #1394: handle empty HOME completion in test_bar.py::test_completion.
+    - Center-align groupboxes by default. (#1452)
+    - Reorganize and complete hacking.rst (#1442)
+    - Update gmail_checker.py (#1448)
+    - docs: Fix parameter type of Screen's top/left/right/bottom (#1438)
+    - docs: Fix missing psutil mock (#1432)
+    - Remove pythonwifi related code in Wlan widget (#1429)
+    - Fix command to build cffi module (#1427)
+    - Use lazy.lazy in default config instead of command.lazy (deprecated) (#1428)
+    - Use new style format in pomodoro widget (#1426)
+    - docs: Add missing requirement for Wlan widget (#1400)
+    - Use `$PYTHON` instead of `PYTHON`. (#1397)
+    - Make it explicit to install cairocffi after xcffib. (#1406)
+    - Fix #1407 (missing "-o screen" in "qtile-cmd" output)
+    - Small bug fix (#1366)
+    - Make the Spacer widget accept a background color (#1365)
+    - Fix (#1361) - Battery widget debug info
+    - Execute the volume widget commands in a shell (#1359)
+  * Features
+    - Add pyxdg widget requirement in LaunchBar docstring
+    - Add PyCharm debugging instructions in hacking.rst
+    - Add missing instruction to build docs in hacking.rst
+    - Add more docs and qtile-session file
+    - Add notes about graphviz and dev.sh in hacking.rst
+    - Add groupbox feature: Font colour when box highlighting
+    - add an issue template
+    - add callback functions to textbox widget
+    - Add test_qtile_cmd.py file.
+    - Add a test case for int indexed items in InteractiveCommandClient.
+    - add pulseaudio C api based volume control widget
+    - add setting wallpapers per Screen, with x11 backend
+    - add display option to Net widget and introduce f-strings
+    - Add Python script to automate screenshots
+    - Add the license header to the xcore file
+    - Add ability to use bits as unit in net widget
+    - Add a quick_exit widget to __init__.py to pass the static checker(mypy).
+    - Add a quick exit widget and add this widget to default configuration that is loaded when configuratin error occured.
+    - Add non-graph CPU widget (feature req #1439)
+    - Add support for checking updates via yay on Arch
+    - Add an error handling when backlight widget failed to read a status file.
+    - Add steps about how to run qtile within a virtualenv.
+    - Add option "options" to keyboardLayout widget
+    - Add gkrellm to run all tests
+    - Add note about psutil
+    - Add line length to pylintrc
+    - Add type annotations to the command object
+    - Add a command object that operates against a running command object
+    - Add a command graph object for IPC
+    - Add functions to the command interface to enable lazy evaluation
+    - Add an interface for eagerly evaluating command graph elements
+    - Add client to dispatch into command graph
+    - Add tests to the command graph
+
+-------------------------------------------------------------------
 Mon Aug 12 11:01:35 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
 - Increase required cairocffi version
