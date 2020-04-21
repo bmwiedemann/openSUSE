@@ -13,18 +13,6 @@ diff --git a/Common/mkversion.sh b/Common/mkversion.sh
 index f5cd712c..33100743 100755
 --- a/Common/mkversion.sh
 +++ b/Common/mkversion.sh
-@@ -40,15 +40,17 @@ export LANG LC_ALL
- set -e
- 
- . ${2-./version.txt}
--builddate=`date`
--sccsdate=`date +%Y/%m/%d`
-+date="date -u"
-+[ -n "$SOURCE_DATE_EPOCH" ] && date="$date -d@$SOURCE_DATE_EPOCH"
-+builddate=`$date`
-+sccsdate=`$date +%Y/%m/%d`
- user=${LOGNAME-$USER}
- 
  # Create an all numeric timestamp for rpqnames.
  # rpq.c will return this string of numbers in bcd format
  # It is OK to change the length (+ or -), but use

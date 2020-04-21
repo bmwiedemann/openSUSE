@@ -289,4 +289,12 @@
   out incompat definition.</comment>
     <requestid>728485</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>be297fa1be350d022087384f7afb389c</srcmd5>
+    <version>3.6</version>
+    <time>1587467510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795515</requestid>
+  </revision>
 </revisionlist>

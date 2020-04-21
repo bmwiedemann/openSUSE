@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _suffix ga9
+%define _suffix ga12
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
 Group:          System/X11/Terminals
-Url:            http://x3270.bgp.nu
+URL:            http://x3270.bgp.nu
 Source0:        http://download.sourceforge.net/%{name}/%{_fullname}-src.tgz
 Source1:        http://download.sourceforge.net/%{name}/x026-%{_x026ver}.tgz
 Source2:        x3270.desktop
@@ -34,9 +34,7 @@ Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
 Patch105:       x3270-missing-include.patch
 Patch106:       x3270-missing-file.patch
-Patch107:       reproducible.patch
 Patch108:       mkversion.patch
-Patch109:       x3270-fix-build.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -54,7 +52,6 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package contains a family of IBM 3270 mainframe terminal
@@ -108,8 +105,6 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch102
 %patch105 -p1
 %patch106 -p1
-%patch107 -p1
-%patch109 -p1
 for d in x3270 c3270 s3270 tcl3270 pr3287 ; do
 (cd $d
 %patch108 -p2
@@ -132,11 +127,11 @@ export LIBX3270DIR=%{_sysconfdir}/x3270
   --with-fontdir=%{_miscfontsdir}
 # There is broken generated makefile
 sed -i -e 's:$(FALLBACKS_:$(FALLBACKS):g' x3270/Makefile
-make %{?_smp_mflags} LIBX3270DIR=${LIBX3270DIR} unix CC="gcc %{optflags}"
+%make_build LIBX3270DIR=${LIBX3270DIR} unix CC="gcc %{optflags}"
 # the IBM 026 keypunch emulator
 cd x026-%{_x026ver}
     xmkmf
-    make %{?_smp_mflags}
+    %make_build
 cd ..
 
 %install
@@ -193,35 +188,35 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %dir %{_docdir}/%{name}
 %dir %{_docdir}/%{name}/*
 %config(noreplace) %{_sysconfdir}/x3270/ibm_hosts
-%{_mandir}/man5/ibm_hosts.5%{ext_man}
-%{_mandir}/man1/x3270if.1%{ext_man}
-%{_mandir}/man1/x3270-script.1%{ext_man}
+%{_mandir}/man5/ibm_hosts.5%{?ext_man}
+%{_mandir}/man1/x3270if.1%{?ext_man}
+%{_mandir}/man1/x3270-script.1%{?ext_man}
 %{_bindir}/x3270if
 # x3270
 %{_bindir}/x3270
 %dir %{_miscfontsdir}
 %{_miscfontsdir}/*
-%{_mandir}/man1/x3270.1%{ext_man}
+%{_mandir}/man1/x3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/x3270/Examples
 %doc %{_docdir}/%{name}/x3270/html
 %doc %{_docdir}/%{name}/Playback
 %{_datadir}/applications/x3270.desktop
 # c3270
 %{_bindir}/c3270
-%{_mandir}/man1/c3270.1%{ext_man}
+%{_mandir}/man1/c3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/c3270/html
 # pr3287
 %{_bindir}/pr3287
-%{_mandir}/man1/pr3287.1%{ext_man}
+%{_mandir}/man1/pr3287.1%{?ext_man}
 %doc %{_docdir}/%{name}/pr3287/html
 # s3270
 %{_bindir}/s3270
-%{_mandir}/man1/s3270.1%{ext_man}
+%{_mandir}/man1/s3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/s3270/Examples
 %doc %{_docdir}/%{name}/s3270/html
 # tcl3270
 %{_bindir}/tcl3270
-%{_mandir}/man1/tcl3270.1%{ext_man}
+%{_mandir}/man1/tcl3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/tcl3270/Examples
 %doc %{_docdir}/%{name}/tcl3270/html
 # x026

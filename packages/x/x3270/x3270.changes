@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:29:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- x3270 3.r6ga12:
+  * Potentially incompatible changes:
+    + Removed explicit support for self-signed host certificates.
+    + To allow self-signed certificates, disable verification.
+    + Switched to verifying host certficates by default. This can
+      be disabled by using the -noverifycert opton or by setting
+      the verifyHostCert resource to false.
+  * Many bug fixes and minor feature additions
+- drop reproducible.patch, x3270-fix-build.patch, upstreamed
+
+-------------------------------------------------------------------
 Thu Sep  5 11:59:49 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - x3270-fix-build.patch: fixed a bug triggered by LTO, commented
