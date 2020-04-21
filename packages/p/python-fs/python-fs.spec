@@ -1,7 +1,7 @@
 #
 # spec file for package python-fs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-fs
 Version:        2.4.11
 Release:        0
@@ -38,9 +39,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.os >= 0.1
-BuildRequires:  python-enum34 >= 1.1.6
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
 Requires:       python-psutil
@@ -50,6 +48,11 @@ Requires:       python-six >= 1.10.0
 Requires:       python-typing >= 3.6
 Recommends:     python-pyftpdlib
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-backports.os >= 0.1
+BuildRequires:  python-enum34 >= 1.1.6
+BuildRequires:  python-mock
+%endif
 %ifpython2
 Requires:       python-backports.os >= 0.1
 %endif
