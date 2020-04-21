@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 17 19:51:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * increase cert buf size to cope with long identifiers
+  * fix gcc8 -Wstringop-truncation warning
+
+- Update to version 1.2
+  * add uacme OCSP certificate status check
+  * add ualpn OpenSSL/mbedTLS implementations
+  * add key usage to ualpn challenge certificate
+  * ensure top bit of ualpn certificate S/N is 0 with OpenSSL
+  * fix ualpn memory leaks and corner case bugs
+  * minor cosmetic code and documentation changes
+
+-------------------------------------------------------------------
 Fri Mar 13 18:15:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.2

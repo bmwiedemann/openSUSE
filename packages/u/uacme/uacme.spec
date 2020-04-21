@@ -18,7 +18,7 @@
 
 
 Name:           uacme
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        A minimal ACMEv2 client
 License:        GPL-3.0-or-later
