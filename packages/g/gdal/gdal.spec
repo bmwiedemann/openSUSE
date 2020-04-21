@@ -25,6 +25,7 @@
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
+%bcond_without python2
 Name:           gdal
 Version:        3.0.4
 Release:        0
@@ -60,8 +61,10 @@ BuildRequires:  opencl-headers
 BuildRequires:  perl-ExtUtils-MakeMaker
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
+%if %{with python2}
 BuildRequires:  python-numpy-devel
 BuildRequires:  python-setuptools
+%endif
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  swig
@@ -449,10 +452,12 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %attr(755,root,root) %{perl_vendorarch}/auto/Geo/OSR/OSR.so
 %{_mandir}/man3/Geo::GDAL.3pm%{?ext_man}
 
+%if %{with python2}
 %files -n python2-%{pypi_package_name}
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
 %{python_sitearch}/*
+%endif
 
 %files -n python3-%{pypi_package_name}
 %license LICENSE.TXT

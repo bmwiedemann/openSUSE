@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:31:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without py2 available
+
+-------------------------------------------------------------------
 Fri Apr 17 09:58:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fixes for previous commit "Rework ECW5 SDK handling"
