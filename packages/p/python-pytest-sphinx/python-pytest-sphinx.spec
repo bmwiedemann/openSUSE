@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-sphinx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pytest-sphinx
 Version:        0.2.2
 Release:        0
 Summary:        Doctest plugin for pytest with support for Sphinx-specific doctest-directives
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/thisch/pytest-sphinx
 Source:         https://github.com/thisch/pytest-sphinx/archive/v0.2.2.tar.gz#/pytest-sphinx-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -36,8 +36,9 @@ Requires:       python-enum34
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.1.1}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
+%if %{with python2}
 BuildRequires:  python2-enum34
+%endif
 # /SECTION
 %python_subpackages
 
