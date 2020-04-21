@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:45:53 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- updated to version 1.1.0
+  * #138 - Fix panel header overflow on Chrome
+  * 39e6cae9 - Display version using -v or --version flags
+
+-------------------------------------------------------------------
 Tue Feb 27 05:32:32 UTC 2018 - factory-auto@kulow.org
 
 - updated to version 1.0.0
