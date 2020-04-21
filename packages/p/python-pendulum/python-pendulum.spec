@@ -31,10 +31,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2018.3}
 BuildRequires:  %{python_module pytzdata >= 2018.3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
 BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-typing
 BuildRequires:  python3-dephell
 Requires:       python-python-dateutil >= 2.6
 Requires:       python-pytz >= 2018.3
@@ -47,7 +47,7 @@ Python datetimes made easy
 
 %prep
 %setup -q -n pendulum-%{version}
-%{dephell_gensetup}
+%dephell_gensetup
 
 %build
 export CFLAGS="%{optflags}"
