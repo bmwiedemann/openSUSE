@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Apr 18 19:11:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5
+  * Make includes/excludes arguments for .dict(), ._iter(), ...,
+    immutable
+  * Always use a field's real name with includes/excludes in
+    model._iter(), regardless of by_alias, #1397 by @AlexECX
+  * Update constr regex example to include start and end lines,
+  * Confirm that shallow model.copy() does make a shallow copy of
+    attributes
+  * Renaming model_name argument of main.create_model()
+    to __model_name to allow using model_name as a field name
+  * Replace raising of exception to silent passing for non-Var
+    attributes in mypy plugin
+  * Remove typing_extensions dependency for python 3.8
+  * Make SecretStr and SecretBytes initialization idempotent
+  * document making secret types dumpable using the json method
+  * fix card number length check in PaymentCardNumber,
+    PaymentCardBrand  now inherits from str
+  * Have BaseModel inherit from Representation to make mypy happy
+    when overriding __str__
+  * Allow None as input to all optional list fields
+  * Add datetime field to default_factory example
+  * Allow subclasses of known types to be encoded with superclass
+    encoder
+  * Exclude exported fields from all elements of a list/tuple of
+    submodels/dicts with '__all__', #1286 by @masalim2
+  * Add pydantic.color.Color objects as available input for Color
+    fields
+  * In examples, type nullable fields as Optional, so that these
+    are valid mypy annotations
+  * Make pattern_validator() accept pre-compiled Pattern objects.
+    Fix str_validator() return type to str
+  * Support instance methods and class methods with
+    @validate_arguments
+  * Add default_factory argument to Field to create a dynamic
+    default value by passing a zero-argument callable
+  * add support for NewType of List, Optional, etc
+  * fix mypy signature for root_validator
+  * Fixed parsing of nested 'custom root type' models
+  * Add validate_arguments function decorator which checks the
+    arguments to a function matches type annotations
+  * Add __signature__ to models
+  * Refactor ._iter() method, 10x speed boost for dict(model)
+
+-------------------------------------------------------------------
 Thu Mar 19 13:25:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.4

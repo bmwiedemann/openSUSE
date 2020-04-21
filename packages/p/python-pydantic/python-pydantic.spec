@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-email-validator >= 1.0.3
-Suggests:       python-typing-extensions >= 3.7.2
 Suggests:       python-ujson >= 1.35
 BuildArch:      noarch
 %python_subpackages
