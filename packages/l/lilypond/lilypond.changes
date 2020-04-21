@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:33:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %license
+
+-------------------------------------------------------------------
 Fri Feb 21 06:34:35 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Work around boo#1163190 by requiring pkgconfig(cairo) for 15.2

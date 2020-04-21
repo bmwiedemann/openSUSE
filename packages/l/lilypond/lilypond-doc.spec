@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond-doc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only
 Group:          Documentation/HTML
-Url:            http://lilypond.org/
+URL:            http://lilypond.org/
 Source0:        http://download.linuxaudio.org/lilypond/sources/v%{ver}/lilypond-%{version}.tar.gz
 # Patches taken from Debian, see headers for info.
 Patch2:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
@@ -44,7 +44,7 @@ BuildRequires:  dejavu
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  fontconfig-devel >= 2.4.0
-BuildRequires:  fontforge-devel
+BuildRequires:  fontforge
 BuildRequires:  fonts-arabic
 BuildRequires:  freetype2-devel >= 2.1.10
 BuildRequires:  gcc-c++

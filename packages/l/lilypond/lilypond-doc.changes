@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:27:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace a BuildRequires: fontforge-devel with
+  BuildRequires: fontforge, since the build system only requires
+  the fontforge binary.
+
+-------------------------------------------------------------------
 Thu Mar 14 12:02:29 UTC 2019 - normand@linux.vnet.ibm.com
 
 - Add _constraints for PowerPC to avoid build error of lilypond-doc

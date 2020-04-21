@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
-Url:            http://www.lilypond.org
+URL:            http://www.lilypond.org
 Source0:        http://download.linuxaudio.org/lilypond/sources/v2.18/lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
@@ -203,8 +203,9 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS.txt COPYING DEDICATION HACKING LICENSE*
+%doc AUTHORS.txt DEDICATION HACKING
 %doc NEWS.txt README.txt ROADMAP VERSION
+%license COPYING LICENSE*
 %{_bindir}/*
 %{_libdir}/lilypond
 %{_datadir}/lilypond
@@ -223,7 +224,7 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
 %files fonts-common
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %defattr(0644,root,root,0755)
 %dir %{ttfdir}
 
