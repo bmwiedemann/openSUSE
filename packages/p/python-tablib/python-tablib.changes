@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:06:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove py2 dependencies as the package is py3 only
+
+-------------------------------------------------------------------
 Tue Feb 25 05:52:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.0:

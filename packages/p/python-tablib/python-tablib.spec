@@ -45,7 +45,6 @@ BuildRequires:  %{python_module xlwt >= 1.3.0}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-backports.csv
 Requires:       python-MarkupPy
 Requires:       python-PyYAML >= 3.12
 Requires:       python-odfpy >= 1.3.5
@@ -55,9 +54,6 @@ Requires:       python-xlwt >= 1.3.0
 Requires:       python-xml
 Suggests:       python-pandas >= 0.20.3
 BuildArch:      noarch
-%ifpython2
-Requires:       python2-backports.csv
-%endif
 %python_subpackages
 
 %description
