@@ -27,4 +27,12 @@
   * Fixed compatibility with pytest 4.2. [#20]</comment>
     <requestid>717483</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05e99eac4253ca2953d5abefdcfa3842</srcmd5>
+    <version>0.5.0</version>
+    <time>1587467146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795576</requestid>
+  </revision>
 </revisionlist>
