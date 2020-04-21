@@ -1,7 +1,7 @@
 #
 # spec file for package sndio
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libsndio7_0
 Name:           sndio
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Small audio and MIDI framework
 License:        ISC
@@ -27,6 +27,7 @@ URL:            http://www.sndio.org/
 Source:         http://www.sndio.org/sndio-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(libbsd)
 
 %description
 It provides an lightweight audio & MIDI server and a fully documented
@@ -63,8 +64,8 @@ library.
 %build
 export CFLAGS="%{optflags}"
 # not autotools configure
-./configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-alsa
-make %{?_smp_mflags}
+./configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-alsa --with-libbsd
+%make_build
 
 %install
 %make_install
