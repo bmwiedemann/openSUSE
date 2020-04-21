@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:01:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 dep from py3 only package
+
+-------------------------------------------------------------------
 Sat Apr 11 21:45:43 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.14.0:

@@ -86,7 +86,6 @@ BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
-BuildRequires:  python-mock
 BuildRequires:  python3-sparse
 BuildConflicts: python3-buildservice-tweak
 %endif

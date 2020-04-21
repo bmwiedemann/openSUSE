@@ -1130,4 +1130,12 @@
     <comment></comment>
     <requestid>793342</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2c16831cb078863317ac903b5bae77ca</srcmd5>
+    <version>2.14.0</version>
+    <time>1587467488</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 dep from py3 only package</comment>
+    <requestid>795831</requestid>
+  </revision>
 </revisionlist>
