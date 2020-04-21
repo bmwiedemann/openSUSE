@@ -60,7 +60,8 @@ Group:          Documentation/HTML
 %pom_remove_plugin -r :osgiversion-maven-plugin
 %pom_xpath_inject pom:project/pom:properties "<activation.osgiversion>\${project.version}</activation.osgiversion>" activation
 
-%mvn_alias :javax.activation-api :activation
+%{mvn_alias} :javax.activation-api :activation
+%{mvn_alias} javax.activation:javax.activation-api jakarta.activation:jakarta.activation-api
 
 %build
 %{mvn_build} -- \
