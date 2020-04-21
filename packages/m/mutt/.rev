@@ -1052,4 +1052,14 @@
     was overly optimistic, and caused breakage. (forwarded request 775085 from namtrac)</comment>
     <requestid>775097</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>00924fc8e70a5d604a82008a4697b694</srcmd5>
+    <version>1.13.5</version>
+    <time>1587467399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.5 (2020-03-28)
+  * Fix use-after-free in mutt_str_replace()
+  * Fix format string parameters. (forwarded request 795766 from namtrac)</comment>
+    <requestid>795771</requestid>
+  </revision>
 </revisionlist>

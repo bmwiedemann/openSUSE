@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:29:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.13.5 (2020-03-28)
+  * Fix use-after-free in mutt_str_replace()
+  * Fix format string parameters.
+
+-------------------------------------------------------------------
 Tue Feb 18 09:23:40 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.13.4 (2020-02-15)
