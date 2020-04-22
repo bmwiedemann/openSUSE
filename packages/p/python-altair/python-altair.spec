@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-altair
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause

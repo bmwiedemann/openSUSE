@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr 18 21:05:04 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.1.0:
+  * Minimum Python version is now 3.6
+  * Update Vega-Lite to version 4.8.1; many new features and bug fixes
+    from Vega-Lite versions 4.1 through 4.8; see Vega-Lite Release
+    Notes.
+  * Enhancements
+    + strokeDash encoding can now be used to control line styles
+      (Example: Multi Series Line Chart)
+    + chart.save() now relies on altair_saver for more flexibility
+      (#1943).
+    + New chart.show() method replaces chart.serve(), and relies on
+      altair_viewer to allow offline viewing of charts (#1988).
+  * Bug Fixes
+    + Support Python 3.8 (#1958)
+    + Support multiple views in JupyterLab (#1986)
+    + Support numpy types within specifications (#1914)
+    + Support pandas nullable ints and string types (#1924)
+  * Maintenance
+    + Altair now uses black and flake8 for maintaining code quality &
+      consistency.
+
+-------------------------------------------------------------------
 Thu Jan 30 17:31:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.0.1
