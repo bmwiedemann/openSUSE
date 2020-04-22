@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 21 03:12:17 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Struct-Dumb/Changes
+
+  0.12    2020-04-21
+          [BUGFIXES] 
+           * Better ways to detect late-loading of Data::Dump.
+              + Avoid touching its $VERSION
+              + Check it is loaded when the destroywatch is invoked before
+                actually applying filter
+
+-------------------------------------------------------------------
 Fri Apr 17 03:10:41 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.11

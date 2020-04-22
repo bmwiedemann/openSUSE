@@ -17,7 +17,7 @@
 
 
 Name:           perl-Struct-Dumb
-Version:        0.11
+Version:        0.12
 Release:        0
 %define cpan_name Struct-Dumb
 Summary:        Make simple lightweight record-like structures
@@ -30,7 +30,6 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Data::Dump)
 BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
