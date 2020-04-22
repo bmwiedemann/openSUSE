@@ -32,4 +32,13 @@
 </comment>
     <requestid>680144</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc99ac2db1f1b7c0286b5240057a21fe</srcmd5>
+    <version>2.2.1</version>
+    <time>1587581496</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the runtime dependencies
+- Fix build without python2</comment>
+    <requestid>795750</requestid>
+  </revision>
 </revisionlist>

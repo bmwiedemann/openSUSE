@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-redmine
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-python-redmine
 Version:        2.2.1
 Release:        0
@@ -26,14 +28,16 @@ URL:            https://python-redmine.com
 Source:         https://files.pythonhosted.org/packages/source/p/python-redmine/python-redmine-%{version}.tar.gz
 Patch0:         python-python-redmine-use-system-requests.patch
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-requests
 BuildRequires:  python-rpm-macros
+Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
@@ -52,7 +56,6 @@ powerful Pythonic API inspired by a well-known Django ORM.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/redminelib/packages/
 
 %check
 %python_exec setup.py test

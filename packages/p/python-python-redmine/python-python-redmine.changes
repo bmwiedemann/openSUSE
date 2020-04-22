@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:04:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the runtime dependencies
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Feb 28 14:20:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
