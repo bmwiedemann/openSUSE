@@ -18,15 +18,16 @@
 
 # from coretypes.h
 %define corefreq_major  1
-%define corefreq_minor  73
-%define corefreq_rev    7
+%define corefreq_minor  75
+%define corefreq_rev    2
+%define gitdate 20200418
 Name:           CoreFreq
-Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}
+Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}+git%{gitdate}
 Release:        0
-Summary:        CPU monitoring software designed for the 64-bits Processors
+Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
-Source0:        https://github.com/cyring/CoreFreq/archive/%{corefreq_major}.%{corefreq_minor}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -41,11 +42,10 @@ Processors of architecture Intel Atom, Core2, Nehalem, SandyBridge and superiors
 AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 
 %prep
-%setup -q -n CoreFreq-%{corefreq_major}.%{corefreq_minor}
+%setup -q -n CoreFreq
 
 %build
 %make_build
-
 
 %install
 export INSTALL_MOD_PATH=%{buildroot}
