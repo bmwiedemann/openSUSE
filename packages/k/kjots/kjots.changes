@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:08:57 UTC 2020 - wbauer@tmo.at
+
+- Add Fix-bookmarks-actions.patch to fix "Ambiguous shortcuts"
+  warning and a possible crash on start (kde#384000)
+
+-------------------------------------------------------------------
 Mon Dec 19 16:42:38 UTC 2016 - wbauer@tmo.at
 
 - Update to version 5.0.2:

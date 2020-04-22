@@ -1,7 +1,7 @@
 #
 # spec file for package kjots
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,12 @@ Name:           kjots
 Version:        5.0.2
 Release:        0
 Summary:        A note taking application for KDE using Akonadi
-License:        GPL-2.0 and LGPL-2.1+
+License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
-Url:            http://www.kde.org
+URL:            http://www.kde.org
 Source0:        http://download.kde.org/stable/kjots/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-bookmarks-actions.patch
 BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  grantlee5-devel
@@ -53,6 +55,7 @@ This package contains KJOTS, a note taking application for KDE using Akonadi.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 -d build
