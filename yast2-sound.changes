@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:53:21 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- jsc#SLE-11873
+  - dropped conditional build to unify SLE and OS builds
+- 4.2.3 
+
+-------------------------------------------------------------------
 Tue Aug 27 18:36:49 CEST 2019 - schubi@suse.de
 
 - Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).

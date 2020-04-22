@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-sound
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-sound
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        YaST2 - Sound Configuration
 License:        GPL-2.0-or-later
@@ -25,12 +25,6 @@ Group:          System/YaST
 Url:            https://github.com/yast/yast-sound
 
 Source0:        %{name}-%{version}.tar.bz2
-
-# FIXME: SLE-12/15 builds packages for x86 and s390 (both 32 bit),
-# but no runnable kernel, so this package cannot be built there.
-%if !0%{?is_opensuse}
-ExcludeArch:    %ix86 s390
-%endif
 
 BuildRequires:  alsa-devel
 BuildRequires:  doxygen
