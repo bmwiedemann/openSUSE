@@ -7,4 +7,20 @@
     <comment>A new package set.  The packaging is as same as google-noto-sans-cjk-fonts.</comment>
     <requestid>493673</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ed13a3ac07440e1f58625d5135cb9d8</srcmd5>
+    <version>20170403</version>
+    <time>1587581336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.001(20190410)
+- Update version to 2.001(20190410) (forwarded request 795504 from hillwood)</comment>
+    <requestid>795505</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d18edcf0b02f372a3a42057b93f16b7b</srcmd5>
+    <version>unknown</version>
+    <time>1587582020</time>
+    <user>dimstar_suse</user>
+    <comment>updated by OSRT tools (host ani)</comment>
+  </revision>
 </revisionlist>
