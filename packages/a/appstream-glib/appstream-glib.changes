@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 22 09:30:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add as-glib-PR359.patch: Fix crash with invalid children of <ul>.
+
+-------------------------------------------------------------------
+Wed Apr 15 17:12:57 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.7.17:
+  * Support versioning on clang/macOS
+  * Use ".so" suffix for the plugins on macOS
+  * Use internal uuid library in macOS
+  * docs: Fix examples of AsNodeToXmlFlags using an invalid flag.
+  * Bump minimum glib2 dependency.
+  * Update Galician translations
+  * as-app: properly initialize unique_id_mutex
+  * Use _fullpath() instead of GetFullPathNameA().
+  * Fix Win32 headers.
+  * Support ${id}/${locale}.qm in addition to ${id}_${locale}.qm
+  * as-app: add "icon-theme" as recognised component type
+  * as-content-rating: Make default values match OARS semantics
+
+-------------------------------------------------------------------
 Thu Dec 19 12:07:58 UTC 2019 - dimstar@opensuse.org
 
 - Update to version 0.7.16:

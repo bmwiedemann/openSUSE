@@ -1,7 +1,7 @@
 #
 # spec file for package appstream-glib
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           appstream-glib
-Version:        0.7.16
+Version:        0.7.17
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -26,6 +26,8 @@ Group:          System/Libraries
 URL:            http://people.freedesktop.org/~hughsient/appstream-glib/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        openSUSE-appstream-process
+# PATCH-FIX-UPSTREAM as-glib-PR359.patch dimstar@opensuse.org -- Fix crash with invalid children of <ul>
+Patch0:         as-glib-PR359.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcab >= 0.6
 BuildRequires:  gobject-introspection-devel
