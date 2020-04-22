@@ -379,6 +379,8 @@ products:
     - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
+  - opensuse-rstudio-server:
+    - x86_64
   - opensuse-squid-image:
     - x86_64
   - opensuse-tensorflow2-image:
@@ -471,7 +473,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20200419'
 publishing: '20200419'
-testing: '20200419'
+testing: '20200421'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
