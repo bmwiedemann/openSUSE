@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Apr 19 10:27:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.2.3
+  This release fixes some annoying bugs and UI glitches.
+  + Issues Closed
+      * gh#spyder-ide/spyder-notebook/issues/254
+          Update badges in Readme 
+          ([PR 255] gh#spyder-ide/spyder-notebook#255)
+      * gh#spyder-ide/spyder-notebook/issues/245
+          Cannot undock "Notebook" pane
+          ([PR 256] gh#spyder-ide/spyder-notebook#256)
+      * gh#spyder-ide/spyder-notebook/issues/241
+          Move CI to github actions
+          ([PR 253] gh#spyder-ide/spyder-notebook#253)
+      * gh#spyder-ide/spyder-notebook/issues/215
+          "Open recent" menu is buggy. Flickers when moused over.
+          ([PR 256] gh#spyder-ide/spyder-notebook#256)
+      * gh#spyder-ide/spyder-notebook/issues/187
+          Error when trying to open a moved recent file
+          ([PR 249] gh#spyder-ide/spyder-notebook#249)
+      * gh#spyder-ide/spyder-notebook/issues/150
+          Error when saving notebooks in write-protected directory
+          ([PR 250] gh#spyder-ide/spyder-notebook#250)
+      In this release 6 issues were closed.
+  + Pull Requests Merged
+      * gh#spyder-ide/spyder-notebook#256
+          PR: Use _options_menu instead of options_menu in plugin
+          (gh#spyder-ide/spyder-notebook#245,
+          gh#spyder-ide/spyder-notebook#215)
+      * gh#spyder-ide/spyder-notebook#255
+          PR: Update badges in README
+          (gh#spyder-ide/spyder-notebook#254)
+      * gh#spyder-ide/spyder-notebook#253
+          PR: Use GitHub Actions to do automatic testing
+          (gh#spyder-ide/spyder-notebook#241)
+      * gh#spyder-ide/spyder-notebook#250
+          PR: Handle I/O errors when doing "Save As"
+          (gh#spyder-ide/spyder-notebook#150)
+      * gh#spyder-ide/spyder-notebook#249
+          PR: Avoid reading notebook file when closing tab
+          (gh#spyder-ide/spyder-notebook#187)
+      In this release 5 pull requests were merged.
+
+-------------------------------------------------------------------
 Mon Mar 23 18:08:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 0.2.2 

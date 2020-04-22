@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-notebook
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Jupyter notebook integration with Spyder
 License:        MIT
