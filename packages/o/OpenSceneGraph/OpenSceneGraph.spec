@@ -23,6 +23,23 @@
 %else
 %bcond_with gdal
 %endif
+# asio is not available in Leap < 15.2 and SLE15SP1
+# dcmtk is not available in SLE15SP1 and causes a build issue in Leap 15.1
+%if 0%{?sle_version} < 150200 && 0%{?suse_version} == 1500
+%bcond_with asio
+%bcond_with dcmtk
+%else
+%bcond_without asio
+%bcond_without dcmtk
+%endif
+# occt and fox are not available in SLE15SP1
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
+%bcond_without fox
+%bcond_without occt
+%else
+%bcond_with fox
+%bcond_with occt
+%endif
 Name:           OpenSceneGraph
 Version:        3.6.5
 Release:        0
@@ -39,6 +56,7 @@ Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{vers
 Source99:       %{name}-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  curl-devel
+BuildRequires:  ffmpeg-devel
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -49,6 +67,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
+BuildRequires:  pkgconfig(IlmBase)
+BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -61,11 +81,24 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtkglext-1.0)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(xrandr)
+%if %{with dcmtk}
+BuildRequires:  cmake(DCMTK)
+%endif
+%if %{with fox}
+BuildRequires:  pkgconfig(fox)
+%endif
+%if %{with occt}
+BuildRequires:  occt-devel
+%endif
+%if %{with asio}
+BuildRequires:  asio-devel
+%endif
 %if %{with gdal}
 BuildRequires:  pkgconfig(gdal)
 %endif
