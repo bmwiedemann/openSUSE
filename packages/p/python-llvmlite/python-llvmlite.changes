@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:37:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rebase patch support-clang9.patch to include clang 10 support too
+
+-------------------------------------------------------------------
+Sun Apr 19 09:32:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.32.0:
+  * The main changes in this release are the removal of specific code for Python 2
+    and Python <3.6, and making the code base PEP8 compliant.
+
+-------------------------------------------------------------------
 Mon Apr  6 09:11:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use properly llvm9 which is now TW default

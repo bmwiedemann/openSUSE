@@ -160,4 +160,16 @@ This version works with llvm 4.</comment>
     <comment>- Use properly llvm9 which is now TW default</comment>
     <requestid>791703</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dce1838bd3596b4ca308a7ee37dadead</srcmd5>
+    <version>0.32.0</version>
+    <time>1587581430</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase patch support-clang9.patch to include clang 10 support too
+
+- Update to 0.32.0:
+  * The main changes in this release are the removal of specific code for Python 2
+    and Python &lt;3.6, and making the code base PEP8 compliant.</comment>
+    <requestid>795475</requestid>
+  </revision>
 </revisionlist>
