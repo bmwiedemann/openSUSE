@@ -47,4 +47,16 @@
     <comment>- Add fix-tests.patch allowing use of pytest (gh#Pylons/colander#210)</comment>
     <requestid>794806</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1ce70ff311156be5a242d11a778f00a0</srcmd5>
+    <version>1.7.0</version>
+    <time>1587581500</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete the lang subpackage to avoid conflicts
+- Do not generate docu twice, it is provided online by
+  upstream so we don't have to bother really at all
+
+- Eliminate complicated py2k constructs</comment>
+    <requestid>795833</requestid>
+  </revision>
 </revisionlist>

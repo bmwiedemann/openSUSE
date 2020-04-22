@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:05:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Obsolete the lang subpackage to avoid conflicts
+- Do not generate docu twice, it is provided online by
+  upstream so we don't have to bother really at all
+
+-------------------------------------------------------------------
+Mon Apr 20 09:19:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Eliminate complicated py2k constructs
+
+-------------------------------------------------------------------
 Fri Apr 17 08:10:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add fix-tests.patch allowing use of pytest (gh#Pylons/colander#210)
