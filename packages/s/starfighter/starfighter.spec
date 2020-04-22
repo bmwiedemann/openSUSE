@@ -1,7 +1,7 @@
 #
 # spec file for package starfighter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define baseversion 2.0
 Name:           starfighter
-Version:        1.7
+Version:        2.0.0.3
 Release:        0
 Summary:        Liberate the universe from the evil company WEAPCO
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://starfighter.nongnu.org/
-Source0:        http://download.savannah.gnu.org/releases/%{name}/%{version}/%{name}-%{version}-src.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://pr-starfighter.github.io/
+Source0:        https://github.com/pr-starfighter/%{name}/releases/download/v%{version}/starfighter-%{baseversion}-src.tar.gz
 Source1:        %{name}-icons.tar
-BuildRequires:  dos2unix
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sdl)
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 Project: Starfighter is an old school 2D shoot 'em up. In the game you take on
@@ -48,14 +48,11 @@ freeing key systems along the way. The game opens with Chris attempting to
 escape a Weapco patrol that has intercepted him.
 
 %prep
-%setup -q -a 1 -n %{name}-%{version}-src
-
-# Some docs have the DOS line ends
-dos2unix README.txt
+%setup -q -a 1 -n %{name}-%{baseversion}-src
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -68,13 +65,12 @@ done
 # remove duplicate docs
 rm -fr %{buildroot}%{_datadir}/doc/%{name}
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-    %fdupes -s %{buildroot}%{_prefix}
-%endif
+%suse_update_desktop_file %{name}
+%fdupes -s %{buildroot}%{_prefix}
 
 %files
-%doc docs/* COPYING LICENSES README.txt
+%license COPYING LICENSES
+%doc README.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:31:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0:
+  * New URL
+  * Full conversion from C++ to C
+  * Full support for Unicode and gettext translations
+  * Nearly perfected emulation of the original game experience
+  * Implemented full window resizing support
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jan  4 17:27:41 UTC 2018 - avindra@opensuse.org
 
 - Update to 1.7, announce message is here:
