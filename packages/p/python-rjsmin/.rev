@@ -47,4 +47,12 @@
     <comment>py38 fix</comment>
     <requestid>783308</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>275b2547097a08f5cde3c03967fd9ea6</srcmd5>
+    <version>1.1.0</version>
+    <time>1587581488</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795741</requestid>
+  </revision>
 </revisionlist>

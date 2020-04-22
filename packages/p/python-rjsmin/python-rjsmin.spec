@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define mod_name rjsmin
 %define release_sha 53a0848b2372c1b49c03326bc8209ea39e889c47
+%bcond_without python2
 Name:           python-%{mod_name}
 Version:        1.1.0
 Release:        0
@@ -32,9 +33,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 Obsoletes:      %{name}-doc
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
