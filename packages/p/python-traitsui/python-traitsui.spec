@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitsui
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 %define         X_display         ":98"
+%bcond_without python2
 Name:           python-traitsui
 Version:        6.1.3
 Release:        0
@@ -50,8 +51,10 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module wxPython}
 BuildRequires:  Mesa-dri
-BuildRequires:  python-mock
 BuildRequires:  xorg-x11-server
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %ifpython2
 Provides:       %{oldpython}-TraitsGUI = %{version}
