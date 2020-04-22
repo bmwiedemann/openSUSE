@@ -44,3 +44,4 @@ main.system_mysql_db                         : since 10.4.10 - all
 main.gis_notembedded                         : since 10.4.10 - all 
 funcs_1.is_columns_mysql                     : since 10.4.10 - all 
 sys_vars.tcp_nodelay                         : since 10.4.10 - all
+oqgraph.social                               : since 10.4.12 - i386

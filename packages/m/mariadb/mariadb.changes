@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:51:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Add oqgraph.social to the suse_skipped_tests.list (reported
+  upstream as MDEV-22280) [bsc#1169369]
+
+-------------------------------------------------------------------
 Sat Apr  4 18:13:48 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add -Wl,-Bsymbolic -Wl,-Bsymbolic-functions to linker flags so
