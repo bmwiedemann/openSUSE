@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 16 15:42:42 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.10.0:
+  * Now it receives the focus under X11
+
+-------------------------------------------------------------------
+Mon Apr 13 00:44:00 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.0:
+  * Now guarantees under Wayland that occupies the whole width
+  * Changed license to GPLv3 only
+
+-------------------------------------------------------------------
 Sat Jan 11 10:18:21 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.8.0:
