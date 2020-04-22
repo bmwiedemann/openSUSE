@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-SQLAlchemy-Utils
 Version:        0.36.3
 Release:        0
@@ -42,8 +43,6 @@ BuildRequires:  %{python_module pytz >= 2014.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
-BuildRequires:  python-ipaddr
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy >= 1.0
 Requires:       python-six
@@ -58,6 +57,10 @@ Recommends:     python-intervals >= 0.7.1
 Recommends:     python-passlib >= 1.6
 Recommends:     python-phonenumbers >= 5.9.2
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-enum34
+BuildRequires:  python-ipaddr
+%endif
 %ifpython2
 Requires:       python-enum34
 Requires:       python-ipaddr
