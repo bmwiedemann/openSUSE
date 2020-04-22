@@ -76,4 +76,12 @@
 </comment>
     <requestid>786808</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bd36dbebba0b839879616e034129ed26</srcmd5>
+    <version>2020.1</version>
+    <time>1587581493</time>
+    <user>dimstar_suse</user>
+    <comment>- Make requires to really be the requires</comment>
+    <requestid>795746</requestid>
+  </revision>
 </revisionlist>

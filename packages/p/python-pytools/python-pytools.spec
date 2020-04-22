@@ -33,11 +33,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.8.0}
 BuildRequires:  fdupes
-BuildRequires:  python-appdirs >= 1.4.0
-BuildRequires:  python-decorator >= 3.2.0
-BuildRequires:  python-numpy >= 1.6.0
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-six >= 1.8.0
+Requires:       python-appdirs >= 1.4.0
+Requires:       python-decorator >= 3.2.0
+Requires:       python-numpy >= 1.6.0
+Requires:       python-six >= 1.8.0
 BuildArch:      noarch
 %python_subpackages
 
