@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sat Mar 21 22:08:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2.2.0 
+  introducing SLA hollowing and hole drilling, support for 3rd party 
+  printer vendors, 3Dconnexion support, automatic variable layer height, 
+  macOS dark mode support, greatly improved ColorPrint feature and much, 
+  much more.
+  See https://github.com/prusa3d/PrusaSlicer/releases/tag/version_2.2.0
+  and the changelogs for the release candidates, betas and alphas since
+  2.1.1 for a complete list of changes.
+- reactivate parallel builds, but need strong enough workers and reserve 
+  4G of memory per thread (memory-constraints, %limit_build)
+- new build dependencies: cgal, ilmbase, more of boost, libudev, openvdb
+
+
+-------------------------------------------------------------------
+Wed Dec 11 10:24:01 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2.1.1
+  - integrating the Prusa Mini printer into the 
+    installation wizard
+  - 3D scene thumbnails are newly generated and exported 
+    into the G-code to be displayed on the Prusa Mini 
+    printer's display
+- use Graphics;3DGraphics for non Tumbleweed distros
+
+------------------------------------------------------------------- 
+Fri Sep 13 19:34:47 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- final 2.1.0 
+- symlink icon files instead of duplicate copy
+
+-------------------------------------------------------------------
+Sat Sep  7 15:00:17 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- new version 2.1.0-rc 
+- remove obsolete patch file
+- tag localization files
+- remove stray Noto font file, add as dependency
+- outsource Desktop file creation
+- move Desktop category to "Science;Construction"
+
+-------------------------------------------------------------------
+Mon Jul 29 11:30:21 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Clean up specfile according to declined submit request 718985
+  - Remove non-devel BuildRequires
+  - Move icons to icons/hicolor
+- build with -j1 as otherwise x64 build is stuck
+
+-------------------------------------------------------------------
+Fri Jul 26 15:25:15 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- use new patch from upstream 
+  (see https://github.com/prusa3d/PrusaSlicer/pull/2676)
+- use Education;Construction as long as boo#1074711 is not resolved
+
+-------------------------------------------------------------------
+Tue Jul 23 11:29:49 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- initial specfile 
