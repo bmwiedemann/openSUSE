@@ -1,7 +1,7 @@
 #
 # spec file for package python-Beaker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%bcond_without python2
 Name:           python-Beaker
 Version:        1.11.0
 Release:        0
 Summary:        A Session and Caching library with WSGI Middleware
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bbangert/beaker
 Source:         https://github.com/bbangert/beaker/archive/%{version}.tar.gz
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodome}
@@ -39,26 +40,27 @@ BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-funcsigs
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dbm
 Requires:       python-pylibmc
 Requires:       python-setuptools
 Recommends:     python-SQLAlchemy
 Recommends:     python-cryptography
-Recommends:     python-python-memcached
 Recommends:     python-pycrypto
 Recommends:     python-pycryptopp >= 0.5.12
 Recommends:     python-pymongo
+Recommends:     python-python-memcached
 Recommends:     python-redis
 BuildArch:      noarch
-%ifpython3
-Requires:       python3-dbm
+%if %{with python2}
+BuildRequires:  python-funcsigs
 %endif
 %ifpython2
 Requires:       python-funcsigs
 Provides:       %{oldpython}-beaker = %{version}
 Obsoletes:      %{oldpython}-beaker < %{version}
+%endif
+%ifpython3
+Requires:       python3-dbm
 %endif
 %python_subpackages
 
