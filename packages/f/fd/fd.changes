@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Apr 16 10:56:42 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 8.0.0
+  * Features
+    - Add a new -l/--list-details option to show more details about
+      the search results.
+    - Add a new --max-results=<count> option to limit the number of
+      search results, see #472, #476 and #555
+    - Add the alias -1 for --max-results=1, see #561.
+    - Add new --type socket and --type pipe filters, see #511.
+    - Add new --min-depth <depth> and --exact-depth <depth> options
+      in addition to the existing option to limit the maximum
+      depth. See #404.
+    - Support additional ANSI font styles in LS_COLORS: faint, slow
+      blink, rapid blink, dimmed, hidden and strikethrough.
+  * Bugfixes
+    - Preserve non-UTF8 filenames: invalid UTF-8 filenames are now
+      properly passed to child-processes when using --exec,
+      --exec-batch or --list-details. In fd's output, we replace
+      non-UTF-8 sequences with the "�" character. However, if the
+      output of fd goes to another process, we print the actual
+      bytes of the filename. For more details, see #558 and #295.
+    - LS_COLORS entries with unsupported font styles are not
+      completely ignored, see #552
+  * Changes
+    - When using --glob in combination with --full-path, a *
+      character does not match a path separation character (/ or
+      \\) anymore. You can use ** for that. This allows things like
+      fd -p -g '/some/base/path/*/*/*.txt' which would previously
+      match to arbitrary depths (instead of exactly two folders
+      below /some/base/path. See #404.
+    - "Legacy" support to use fd -exec (with a single dash) has
+      been removed. Use fd -x or fd --exec instead.
+    - Overall improved error handling and error messages.
+  * Other
+    - Korean translation of the README, see: 한국어
+
+- Changes from 7.5.0
+  * Features
+    - Added --one-file-system (aliases: --mount, --xdev) to not
+      cross file system boundaries on Unix and Windows, see #507
+    - Added --base-directory to change the working directory in
+      which fd is run, see #509 and #475
+    - fd will not use colored output if the NO_COLOR environment
+      variable is set, see #550 and #551
+    - fd --exec will return exit code 1 if one of the executed
+      commands fails, see #526 and #531
+  * Bug Fixes
+    - Fixed 'command not found' error when using zsh completion,
+      see #487
+    - fd -L should include broken symlinks, see #357 and #497
+    - Display directories even if we don't have permission to
+      enter, see #437
+  * Changes
+    - A flag can now be passed multiple times without producing an
+      error, see #488 and #496
+    - Search results are sorted when using the -X option to match
+      the behaviour of piping to xargs, see #441 and #524
+
+-------------------------------------------------------------------
 Sun Mar 15 08:47:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.4.0
