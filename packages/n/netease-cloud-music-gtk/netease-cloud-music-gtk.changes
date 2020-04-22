@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Mar 28 13:38:12 2020 - gmg137 <gmg137@live.com>
+- Update to version 1.1.0:
+ + Replace the NetEase API implementation.
+ + Replace the curl with isahc.
+ + Remove useless dependencies.
+ + Fix FM-related errors.
+ + Streamline dependencies, optimize cache downloads.
+ + fix bugs and optimize in many details.
+ 
+-------------------------------------------------------------------
+Thu Feb 13 19:54:40 2020 - gmg137 <gmg137@live.com>
+- Update to version 1.0.0:
+ + No longer use the sled database, replace it with a standard bincode formatted file.
+ + Asynchronous refactoring of network requests and file read/write.
+ + Add volume control button.
+ + Remember to play the loop mode.
+ + Add music cloud discs.
+ + Add simple lyrics.
+ + Sync FM play button with playbar button status.
+ + Comply with XDG catalog specifications.
+ + Add cache cleanup option.
+ + Add debug mode.
+ + Optimize memory usage.
+ + optimized interface design.
+ + fix bugs and optimize with lots of detail.
