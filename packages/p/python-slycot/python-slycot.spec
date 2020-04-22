@@ -27,6 +27,7 @@
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-slycot
 Version:        0.3.5.0
 Release:        0
@@ -48,7 +49,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-configparser
+%endif
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %else

@@ -62,4 +62,13 @@
     <comment></comment>
     <requestid>791982</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3183a454b56a3cfb1997b05e5c45aee4</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1587581521</time>
+    <user>dimstar_suse</user>
+    <comment>- python2 dependency only for python2 enabling repos
+</comment>
+    <requestid>795721</requestid>
+  </revision>
 </revisionlist>
