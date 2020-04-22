@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 15:32:54 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.2:
+  * modprobe.conf.common: eliminate circular uas/usb-storage dependency
+  (bsc#1168661)
+
+-------------------------------------------------------------------
 Mon Jan 20 15:03:51 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.2.10:
