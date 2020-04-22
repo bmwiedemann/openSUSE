@@ -55,10 +55,10 @@
 %endif
 
 Name:           darktable
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 %define pkg_name darktable
-%define pkg_version 3.0.1
+%define pkg_version 3.0.2
 URL:            http://www.darktable.org/
 Source0:        %{pkg_name}-%{pkg_version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual.pdf
@@ -71,7 +71,6 @@ Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
 Patch:          darktable-old-glib.patch
-Patch1:         https://github.com/darktable-org/darktable/commit/8bceae80bd8459f4ec5929df75d6ec0471c3d26c.patch
 
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
