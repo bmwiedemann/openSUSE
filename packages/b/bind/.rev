@@ -1445,4 +1445,12 @@ New Features
     <comment>Added all bugs, fates, and CVEs that were fixed for SLE12 and SLE15 to the entry for the update to 9.14.7 to have a common base for factory, SLE12 and SLE15</comment>
     <requestid>794462</requestid>
   </revision>
+  <revision rev="149" vrev="4">
+    <srcmd5>f95bd097569c1d9da7f8ff949e0ac1e2</srcmd5>
+    <version>9.16.1</version>
+    <time>1587581032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795499</requestid>
+  </revision>
 </revisionlist>

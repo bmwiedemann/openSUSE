@@ -80,7 +80,7 @@ Fri Nov  8 12:50:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
   bsc#1138687, CVE-2019-6476, CVE-2019-6475,
   CVE-2019-6471, CVE-2018-5743, CVE-2019-6467, CVE-2019-6465,
   CVE-2018-5745, CVE-2018-5744, CVE-2018-5740, CVE-2018-5738,
-  CVE-2018-5737, CVE-2018-5736, CVE-2017-3145,
+  CVE-2018-5737, CVE-2018-5736, CVE-2017-3145, CVE-2017-3136,
   configure.in.diff, bind-99-libidn.patch, perl-path.diff,
   bind-sdb-ldap.patch, bind-CVE-2017-3145.patch,
   bug-4697-Restore-workaro]und-for-Microsoft-Windows-T.patch,
@@ -91,7 +91,7 @@ Fri Nov  8 12:50:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
   bsc#1040039, bsc#1047184, bsc#1104129, bsc#906079, bsc#918330,
   bsc#936476, bsc#937028, bsc#939567, bsc#977657, bsc#983505,
   bsc#987866, bsc#989528, fate#320694, fate#324357, bnc#1127583,
-  bnc#1127583]
+  bnc#1127583, bnc#1109160]
 
 -------------------------------------------------------------------
 Fri Jul 12 08:43:29 UTC 2019 - matthias.gerstner@suse.com
