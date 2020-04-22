@@ -1,7 +1,7 @@
 #
 # spec file for package wavpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %define soname  1
 Name:           wavpack
-Version:        5.1.0+71.22977b2
+Version:        5.3.0
 Release:        0
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://www.wavpack.com/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        http://www.wavpack.com/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -71,16 +70,15 @@ applications that want to make use of wavpack.
 %setup -q
 
 %build
-autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n libwavpack%{soname} -p /sbin/ldconfig
 %postun -n libwavpack%{soname} -p /sbin/ldconfig
