@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-webviewer
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           orthanc-webviewer
 Summary:        Web Viewer plugin for Orthanc
@@ -22,7 +23,7 @@ License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Version:        2.5
 Release:        0
-Url:            https://orthanc-server.com
+URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-webviewer/OrthancWebViewer-%{version}.tar.gz
 Source1:        cornerstone-0.11.0.zip
 Source2:        jquery-ui-1.11.3.zip
@@ -34,9 +35,9 @@ Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
 Patch0:         cachemngr.diff
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gdcm-devel
 BuildRequires:  gdcm-libgdcm3_0
-BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -53,7 +54,7 @@ BuildRequires:  unzip
 
 Requires:       orthanc
 
-BuildRoot:      OrthancWebViewer-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Webviewer plugin for Orthanc
@@ -81,7 +82,7 @@ cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
        -DBoost_NO_BOOST_CMAKE=ON \
        -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 %install
@@ -97,7 +98,7 @@ mv %{buildroot}%{_prefix}/share/orthanc/plugins/*.so* %{buildroot}%{_libdir}/sha
 #Link from lib64 to orthanc plugin-directory, where it is expected
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancWebViewer.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancWebViewer.so
-      
+
 rm %{buildroot}%{_libdir}/share/orthanc/plugins/*.so
 
 cp %{S:11} %{S:12} %{buildroot}%{_docdir}/orthanc/.
