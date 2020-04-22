@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:10:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.29.16
+  * Temporary internal variables in nested prange loops could leak into other
+    threads.  Patch by Frank Schlimbach.  (Github issue #3348)
+  * Default arguments on fused functions could crash.
+    Patch by David Woods.  (Github issue #3370)
+  * C-tuples declared in ``.pxd`` files could generate incomplete C code.
+    Patch by Kirk Meyer.  (Github issue #1427)
+  * Fused functions were not always detected and optimised as Cython
+    implemented functions.
+    Patch by David Woods.  (Github issue #3384)
+  * Valid Python object concatenation of (iterable) strings to non-strings
+    could fail with an exception.
+    Patch by David Woods.  (Github issue #3433)
+  * Using C functions as temporary values lead to invalid C code.
+    Original patch by David Woods.  (Github issue #3418)
+  * Fix an unhandled C++ exception in comparisons.
+    Patch by David Woods.  (Github issue #3361)
+  * Fix deprecated import of "imp" module.
+    Patch by Matti Picus.  (Github issue #3350)
+  * Fix compatibility with Pythran 0.9.6 and later.
+    Patch by Serge Guelton.  (Github issue #3308)
+  * The ``_Py_PyAtExit()`` function in ``cpython.pylifecycle`` was misdeclared.
+    Patch by Zackery Spytz.  (Github issue #3382)
+  * Several missing declarations in ``cpython.*`` were added.
+    Patches by Zackery Spytz.  (Github issue #3452, #3421, #3411, #3402)
+  * A declaration for ``libc.math.fpclassify()`` was added.
+    Patch by Zackery Spytz.  (Github issue #2514)
+  * Avoid "undeclared" warning about automatically generated pickle methods.
+    Patch by David Woods.  (Github issue #3353)
+  * Avoid C compiler warning about unreachable code in ``prange()``.
+  * Some C compiler warnings in PyPy were resolved.
+    Patch by Matti Picus.  (Github issue #3437)
+
+-------------------------------------------------------------------
 Tue Feb 18 16:45:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.29.15
