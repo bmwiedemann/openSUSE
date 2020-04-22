@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 04:44:06 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update cinnamon-settings-native.patch, use more yast2 modules
+
+-------------------------------------------------------------------
 Thu Apr 16 04:30:19 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - the cinnamon-settings' calendar module requires python3-pytz
