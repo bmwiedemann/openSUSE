@@ -11,5 +11,16 @@
         <size unit="M">16000</size>
       </memory>
     </hardware>
+</overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <processors>4</processors>
+      <memory>
+        <size unit="M">12384</size>
+      </memory>
+    </hardware>
   </overwrite>
 </constraints>
