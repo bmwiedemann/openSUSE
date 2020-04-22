@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 17:35:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add big-endian-support.patch to fix build on s390x:
+  * backport of an already upstream patch at https://github.com/envoyproxy/envoy/pull/10250
+
+-------------------------------------------------------------------
 Mon Mar 16 16:49:33 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fix the include dir of moonjit.

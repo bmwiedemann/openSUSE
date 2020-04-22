@@ -68,4 +68,12 @@ After accepting this SR, please create links:
     <comment>- Fix the include dir of moonjit. (forwarded request 785691 from mrostecki)</comment>
     <requestid>785692</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>532e6b8745f212e8ccf811e62ac13e27</srcmd5>
+    <version>1.12.2+git.20200109</version>
+    <time>1587580886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794698</requestid>
+  </revision>
 </revisionlist>

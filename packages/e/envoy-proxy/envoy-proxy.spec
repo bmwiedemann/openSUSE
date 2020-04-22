@@ -37,6 +37,7 @@ Patch5:         0003-test-Fix-format.patch
 Patch6:         0004-server-Add-comments-pointing-out-implementation-deta.patch
 Patch7:         0005-server-Move-setInitManager-to-TransportSocketFactory.patch
 Patch8:         0006-fix-format.patch
+Patch9:         big-endian-support.patch
 BuildRequires:  abseil-cpp-source
 BuildRequires:  backward-cpp-devel
 BuildRequires:  bazel-apple-support-source
