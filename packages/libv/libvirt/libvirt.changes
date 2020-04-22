@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:45:36 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Add support for 'passthrough' and 'e820_host' settings
+  b7d6648d-conf-add-e820-host.patch,
+  5749395b-libxl-e820-host.patch,
+  f3ef7daf-xenconfig-e820-host.patch,
+  34077c1b-tests-check-e820-host.patch,
+  fadbaa23-conf-add-passthrough.patch,
+  9529e007-libxl-passthrough.patch,
+  9cb8bc6f-xenconfig-refactor-features.patch,
+  b523e225-xenconfig-passthrough.patch,
+  bed32525-tests-check-passthrough.patch
+  bsc#1167217
+
+-------------------------------------------------------------------
+Fri Apr 17 05:19:57 UTC 2020 - Lin Ma <lma@suse.com>
+
+- qemu: fix hang in p2p + xbzrle compression + parallel migration
+  93b15ba0-qemu-fix-hang-in-p2p-xbzrle-compression-parallel-mig.patch
+  bsc#1161159
+
+-------------------------------------------------------------------
 Thu Apr  9 22:04:57 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Add support for max event channels with maxEventChannel

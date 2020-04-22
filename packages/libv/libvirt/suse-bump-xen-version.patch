@@ -31,7 +31,7 @@ Index: libvirt-6.2.0/src/libxl/libxl_conf.c
 ===================================================================
 --- libvirt-6.2.0.orig/src/libxl/libxl_conf.c
 +++ libvirt-6.2.0/src/libxl/libxl_conf.c
-@@ -1788,7 +1788,7 @@ libxlDriverConfigNew(void)
+@@ -1823,7 +1823,7 @@ libxlDriverConfigNew(void)
  int
  libxlDriverConfigInit(libxlDriverConfigPtr cfg)
  {

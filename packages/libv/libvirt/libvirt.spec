@@ -342,6 +342,16 @@ Patch0:         88011ed2-libxl-driver-crash-fix.patch
 Patch1:         8e669b38-conf-add-event-channels.patch
 Patch2:         a93f55c5-libxl-add-event-channels.patch
 Patch3:         967f4eeb-xenconfig-event-channels.patch
+Patch4:         93b15ba0-qemu-fix-hang-in-p2p-xbzrle-compression-parallel-mig.patch
+Patch5:         b7d6648d-conf-add-e820-host.patch
+Patch6:         5749395b-libxl-e820-host.patch
+Patch7:         f3ef7daf-xenconfig-e820-host.patch
+Patch8:         34077c1b-tests-check-e820-host.patch
+Patch9:         fadbaa23-conf-add-passthrough.patch
+Patch10:        9529e007-libxl-passthrough.patch
+Patch11:        9cb8bc6f-xenconfig-refactor-features.patch
+Patch12:        b523e225-xenconfig-passthrough.patch
+Patch13:        bed32525-tests-check-passthrough.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -881,6 +891,16 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1

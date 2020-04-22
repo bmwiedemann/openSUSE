@@ -213,7 +213,7 @@ Index: libvirt-6.2.0/src/libvirt_private.syms
 ===================================================================
 --- libvirt-6.2.0.orig/src/libvirt_private.syms
 +++ libvirt-6.2.0/src/libvirt_private.syms
-@@ -725,6 +725,9 @@ virDomainConfNWFilterInstantiate;
+@@ -727,6 +727,9 @@ virDomainConfNWFilterInstantiate;
  virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
@@ -223,7 +223,7 @@ Index: libvirt-6.2.0/src/libvirt_private.syms
  
  # conf/interface_conf.h
  virInterfaceDefFormat;
-@@ -1751,6 +1754,7 @@ virCgroupGetMemoryUsage;
+@@ -1753,6 +1756,7 @@ virCgroupGetMemoryUsage;
  virCgroupGetMemSwapHardLimit;
  virCgroupGetMemSwapUsage;
  virCgroupGetPercpuStats;

@@ -3554,4 +3554,12 @@ StandardGroups in rpmlint package.
     disable-multipath-pr-tests.patch</comment>
     <requestid>792818</requestid>
   </revision>
+  <revision rev="304" vrev="2">
+    <srcmd5>ff4af194801c99c4818caedf5176c796</srcmd5>
+    <version>6.2.0</version>
+    <time>1587581005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796124</requestid>
+  </revision>
 </revisionlist>
