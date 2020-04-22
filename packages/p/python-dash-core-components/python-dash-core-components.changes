@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 18 20:51:50 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.9.1:
+  * Changed
+    + #740 Keep components that are loading in the DOM, but not
+       visible, as opposed to removing them entirely. This will ensure
+       that the size of the component's container does not shrink or
+       expand when the component goes into the loading state.
+  * Fixed
+    + #740 Fixed bug in which mapbox uirevision was not behaving when
+       inside a dcc.Loading component
+
+- changes from version 1.9.0:
+  * Changed
+    + #766 Update from React 16.8.6 to 16.13.0
+    + #768 Added title property to dcc.Link
+    + #776 Update dcc.Link to set href as children if children not
+       defined. Makes href a required prop as well.
+    + #767 Updated dcc.Link to respond to click modifiers, and added a
+       target prop.
+    + #774 Fixed dcc.Location firing callbacks for wrong property.
+    + 772 Modified dcc.Link to work with absolute paths if
+      refresh=True.
+  * Updated
+    + #784 Feature release of Plotly.js 1.53.0 which contains:
+      o rangebreaks on date axes #4614
+      o (x|y) unified hovermode #4620
+      o "hovered data" mode to spikesnap #4665
+      o "full-json" export format to Plotly.toImage and
+        Plotly.dowloadImage #4593
+      o node.customdata and link.customdata in sankey traces #4621
+      o opacityscale for surface traces #4480
+
+-------------------------------------------------------------------
 Tue Mar 31 08:26:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests for now as selenium explodes

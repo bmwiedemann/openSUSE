@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-dash-core-components%{psuffix}
-Version:        1.8.1
+Version:        1.9.1
 Release:        0
 Summary:        Core component suite for Dash
 License:        MIT
@@ -72,7 +72,8 @@ Core component suite for Dash
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dash_core_components
+%{python_sitelib}/dash_core_components-%{version}-py*.egg-info
 %endif
 
 %changelog
