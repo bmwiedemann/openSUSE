@@ -1,7 +1,7 @@
 #
 # spec file for package wxsvg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
@@ -20,12 +20,11 @@
 
 %define sover   3
 Name:           wxsvg
-Version:        1.5.20
+Version:        1.5.22
 Release:        0
 Summary:        Library to create, manipulate and render SVG files
-License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-URL:            https://wxsvg.sourceforge.net/
+License:        LGPL-2.1+ WITH WxWindows-exception-3.1
+URL:            http://wxsvg.sourceforge.net/
 Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -44,14 +43,12 @@ WxSVG is a C++ library to create, manipulate and render SVG files.
 
 %package -n     lib%{name}%{sover}
 Summary:        Library to create, manipulate and render SVG files
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 Dynamic libraries from %{name}, as required at runtime.
 
 %package -n     lib%{name}-devel
 Summary:        Header files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       wxWidgets-devel >= 3
