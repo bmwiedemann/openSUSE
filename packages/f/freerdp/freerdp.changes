@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:51:02 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated and reviewed make command and added fix-freerdp-2.0.0-usbdk-build.patch
+  to fix boo#1169679 and make USB working again
+- Fixed build for SLE_12
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Fri Apr 17 09:37:36 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch in order
+  to fix boo#1169748.
+
+-------------------------------------------------------------------
 Mon Apr 13 05:23:54 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added cairo support for scaling

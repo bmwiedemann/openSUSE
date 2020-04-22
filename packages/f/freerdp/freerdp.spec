@@ -18,10 +18,7 @@
 
 # X264 and OPENH264 are disabled because openSUSE does not provide the codecs
 # enable -DWITH_GSSAPI=ON again after #gh/FreeRDP/FreeRDP/4348 has been fixed
-#
-#global _with_ffmpeg 1
-#global _with_x264 1
-#global _with_openh264 1
+#global _with_gss 1
 #
 %define major_version 2
 %define uwac_version 0
@@ -37,6 +34,10 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch boo#1169748
+Patch0:         fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch
+# PATCH-FIX-UPSTREAM fix-freerdp-2.0.0-usbdk-build.patch boo#1169679
+Patch1:         fix-freerdp-2.0.0-usbdk-build.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -75,6 +76,9 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xv)
 Requires:       lib%{name}%{major_version} = %{version}-%{release}
+%if 0%{?sle_version} >= 150000
+BuildRequires:  pkgconfig(libavcodec)
+%endif
 
 %description
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
@@ -171,6 +175,7 @@ use the uwac library.
 
 %prep
 %setup -q -n FreeRDP-%{version}
+%autopatch -p1
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
@@ -181,47 +186,23 @@ export CFLAGS="%{optflags} -fPIE -pie"
 
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
 	-DCMAKE_SKIP_RPATH=ON \
-	-DWITH_ALSA=ON \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DWITH_SERVER=ON \
 	-DWITH_PCSC=ON \
 	-DWITH_CAIRO=ON \
 	-DWITH_CUPS=ON \
-	-DWITH_PULSE=ON \
-%ifarch %{ix86} x86_64
-	-DWITH_SSE2=ON \
-%endif
+	-DWITH_JPEG=ON \
 	-DWITH_X264=OFF \
 	-DWITH_OPENH264=OFF \
-	-DWITH_CLIENT=ON \
-	-DWITH_SERVER=ON \
-	-DCHANNEL_GEOMETRY=ON \
-	-DWITH_CHANNELS=ON \
-	-DWITH_DIRECTFB=OFF \
-	-DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
 	-DWITH_GSM=ON \
 	-DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
-	-DWITH_GSTREAMER_0_10=OFF \
-	-DWITH_GSTREAMER_1_0=ON \
-	-DWITH_ICU=ON \
-	-DWITH_IPP=OFF \
-	-DWITH_JPEG=ON \
-	-DWITH_KRB5=ON \
-	-DWITH_LIBRARY_VERSIONING=ON \
-	-DWITH_OPENH264=%{?_with_openh264:ON}%{?!_with_openh264:OFF} \
-	-DWITH_OPENSSL=ON \
-	-DWITH_X11=ON \
-	-DWITH_X264=%{?_with_x264:ON}%{?!_with_x264:OFF} \
-	-DWITH_XCURSOR=ON \
-	-DWITH_XEXT=ON \
-	-DWITH_XKBFILE=ON \
-	-DWITH_XI=ON \
-	-DWITH_XINERAMA=ON \
-	-DWITH_XRENDER=ON \
-	-DWITH_XV=ON \
-	-DWITH_ZLIB=ON
+	-DWITH_CHANNELS=ON \
+	-DBUILTIN_CHANNELS=ON \
+	-DCHANNEL_URBDRC=ON \
+	-DCHANNEL_URBDRC_CLIENT=ON
 
-%make_build
+make %{?_smp_mflags}
 
 %install
 cd build
