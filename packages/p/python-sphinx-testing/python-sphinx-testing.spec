@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-testing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-sphinx-testing
 Version:        1.0.1
 Release:        0
@@ -30,11 +31,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
 Requires:       python-six
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
