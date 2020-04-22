@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.9.1
+Version:        1.11.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -32,10 +32,10 @@ Requires:       python-Flask >= 1.0.2
 Requires:       python-Flask-Compress
 # dash/testing/dash_page.py
 Requires:       python-beautifulsoup4
-Requires:       python-dash-core-components >= 1.8.1
-Requires:       python-dash-html-components >= 1.0.2
-Requires:       python-dash-renderer >= 1.2.4
-Requires:       python-dash-table >= 4.6.1
+Requires:       python-dash-core-components >= 1.9.1
+Requires:       python-dash-html-components >= 1.0.3
+Requires:       python-dash-renderer >= 1.4.0
+Requires:       python-dash-table >= 4.6.2
 Requires:       python-future
 # needed for dash/testing/browser.py
 Requires:       python-percy
@@ -45,10 +45,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Flask >= 1.0.2}
 BuildRequires:  %{python_module Flask-Compress}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module dash-core-components >= 1.8.1}
-BuildRequires:  %{python_module dash-html-components >= 1.0.2}
-BuildRequires:  %{python_module dash-renderer >= 1.2.4}
-BuildRequires:  %{python_module dash-table >= 4.6.1}
+BuildRequires:  %{python_module dash-core-components >= 1.9.1}
+BuildRequires:  %{python_module dash-html-components >= 1.0.3}
+BuildRequires:  %{python_module dash-renderer >= 1.4.0}
+BuildRequires:  %{python_module dash-table >= 4.6.2}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module percy}
 BuildRequires:  %{python_module plotly}
