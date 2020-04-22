@@ -2,7 +2,7 @@
     <service name="tar_scm" mode="disabled">
         <param name="url">git://github.com/SUSE/sap_host_exporter.git</param>
         <param name="scm">git</param>
-        <param name="revision">33dcd8ae7f01b721cb65fd4bae7f64f4f534007c</param>
+        <param name="revision">0.4.0</param>
         <param name="exclude">.git</param>
         <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
         <param name="filename">prometheus-sap_host_exporter</param>

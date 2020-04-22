@@ -18,7 +18,7 @@
 
 Name:           prometheus-sap_host_exporter
 # Version will be processed via set_version source service
-Version:        0.3.0+git.1585067146.33dcd8a
+Version:        0.4.0+git.1587141635.71f3338
 Release:        0
 Summary:        Prometheus exporter for SAP systems (a.k.a. NetWeaver)
 License:        Apache-2.0

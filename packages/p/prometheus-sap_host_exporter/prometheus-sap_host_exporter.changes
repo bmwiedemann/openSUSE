@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 21 10:02:42 2020 UTC - shap-staff@suse.de
+
+- Release 0.4.0
+
+  ## Added
+  - Unix Domain Socket can now be used in place of TCP/IP to connect to SAPControl (#32)
+  - `sap_start_service_instances` metric now tracks the status of the current SAP Instance. (#38) 
+  - Collectors are now activated conditionally, only for SAP processes that are actually running. (#39)
+  - Common labels to identify source SAP instance are now added to all metrics (#40)
+
+  ## Changed
+  - Updated CI with OBS to continuously deliver the master branch (#29)
+  - Collector error handling is now more consistent across the board (#33) 
+
+  ## Fixed
+  - Concurrent metric recording no longer leaks goroutines (#35)
+  - Configuration sanitation is now applied correctly (#37) 
+
+  ## Removed
+  - HA Checks and alert collector have been entirely removed due to SAP system crashes caused by the related SAPControl methods (#36 #41)
+
+-------------------------------------------------------------------
 Mon Mar 23 18:35:55 2020 UTC - shap-staff@suse.de
 
 - Release 0.3.0
