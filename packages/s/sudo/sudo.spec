@@ -21,16 +21,15 @@
 %else
 %define use_usretc 1
 %endif
-
 Name:           sudo
-Version:        1.8.31p1
+Version:        1.9.0rc2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
 Group:          System/Base
 URL:            https://www.sudo.ws/
-Source0:        https://sudo.ws/sudo/dist/%{name}-%{version}.tar.gz
-Source1:        https://sudo.ws/sudo/dist/%{name}-%{version}.tar.gz.sig
+Source0:        https://www.sudo.ws/dist/beta/%{name}-%{version}.tar.gz
+Source1:        https://www.sudo.ws/dist/beta/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        sudo.pamd
 Source4:        sudo-i.pamd
@@ -45,6 +44,7 @@ BuildRequires:  groff
 BuildRequires:  libselinux-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires(pre):  coreutils
@@ -103,6 +103,7 @@ export LDFLAGS="-pie"
     --with-tty-tickets \
     --enable-shell-sets-home \
     --enable-warnings \
+    --enable-python \
     --with-sendmail=%{_sbindir}/sendmail \
     --with-sudoers-mode=0440 \
     --with-env-editor \
@@ -111,7 +112,7 @@ export LDFLAGS="-pie"
     --with-rundir=%{_localstatedir}/lib/sudo \
     --with-sssd
 # -B required to make every build give the same result - maybe from bad build deps in Makefiles?
-make -B %{?_smp_mflags}
+%make_build -B
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`
@@ -143,15 +144,14 @@ rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE
 %pre
 # move outdated pam.d/*.rpmsave files away
 for i in sudo sudo-i ; do
-    test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
+    test -f %{_sysconfdir}/pam.d/${i}.rpmsave && mv -v %{_sysconfdir}/pam.d/${i}.rpmsave %{_sysconfdir}/pam.d/${i}.rpmsave.old ||:
 done
 
 %posttrans
 # Migration to /usr/etc.
 for i in  sudo sudo-i ; do
-  test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
+  test -f %{_sysconfdir}/pam.d/${i}.rpmsave && mv -v %{_sysconfdir}/pam.d/${i}.rpmsave %{_sysconfdir}/pam.d/${i} ||:
 done
-
 %endif
 
 %post
@@ -178,9 +178,16 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_mandir}/man8/sudoedit.8%{?ext_man}
 %{_mandir}/man8/sudoreplay.8%{?ext_man}
 %{_mandir}/man8/visudo.8%{?ext_man}
+%{_mandir}/man5/sudo_logsrv.proto.5%{?ext_man}
+%{_mandir}/man5/sudo_logsrvd.conf.5%{?ext_man}
+%{_mandir}/man8/sudo_logsrvd.8%{?ext_man}
+%{_mandir}/man8/sudo_plugin_python.8%{?ext_man}
+%{_mandir}/man8/sudo_sendlog.8%{?ext_man}
 
 %config(noreplace) %attr(0440,root,root) %{_sysconfdir}/sudoers
 %dir %{_sysconfdir}/sudoers.d
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo.conf
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo_logsrvd.conf
 %if %{defined use_usretc}
 %{_distconfdir}/pam.d/sudo
 %{_distconfdir}/pam.d/sudo-i
@@ -196,6 +203,8 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_bindir}/sudoreplay
 %{_bindir}/cvtsudoers
 %{_sbindir}/visudo
+%{_sbindir}/sudo_logsrvd
+%{_sbindir}/sudo_sendlog
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/sesh
 %{_libexecdir}/%{name}/sudo_noexec.so
@@ -203,6 +212,9 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_libexecdir}/%{name}/%{name}/sudoers.so
 %{_libexecdir}/%{name}/%{name}/group_file.so
 %{_libexecdir}/%{name}/%{name}/system_group.so
+%{_libexecdir}/%{name}/%{name}/audit_json.so
+%{_libexecdir}/%{name}/%{name}/sample_approval.so
+%{_libexecdir}/%{name}/%{name}/python_plugin.so
 %{_libexecdir}/%{name}/libsudo_util.so.*
 %attr(0711,root,root) %dir %ghost %{_localstatedir}/lib/%{name}
 %attr(0700,root,root) %dir %ghost %{_localstatedir}/lib/%{name}/ts
