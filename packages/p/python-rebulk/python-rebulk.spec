@@ -1,7 +1,7 @@
 #
 # spec file for package python-rebulk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ Summary:        Library for defining bulk search patterns to perform advanced st
 License:        MIT
 URL:            https://github.com/Toilal/rebulk
 Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
+Patch0:         fix-for-regex-2020.1.7.patch
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Recommends:     python-regex
 %python_subpackages
 
 %description
@@ -42,6 +44,8 @@ allow building a custom and complex string matcher.
 
 %prep
 %setup -q -n rebulk-%{version}
+%patch0 -p1
+
 # Remove shebang from non-executable files
 for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
 sed -i -e "1d" "rebulk/$i.py"
@@ -59,9 +63,7 @@ done
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_version} rebulk/test/
-}
+%pytest rebulk/test/
 
 %files %{python_files}
 %doc README.rst
