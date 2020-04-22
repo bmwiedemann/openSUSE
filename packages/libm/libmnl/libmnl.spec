@@ -1,7 +1,7 @@
 #
 # spec file for package libmnl
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           libmnl
 %define lname	%{name}0
+Name:           libmnl
 Version:        1.0.4
 Release:        0
-Url:            http://netfilter.org/projects/libmnl/
 Summary:        Minimalistic Netlink communication library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
-
+URL:            https://netfilter.org/projects/libmnl/
 #Git-Clone:	git://git.netfilter.org/libmnl
 Source:         ftp://ftp.netfilter.org/pub/libmnl/%name-%version.tar.bz2
 Source2:        ftp://ftp.netfilter.org/pub/libmnl/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf, automake >= 1.6
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.21
@@ -54,9 +52,9 @@ and easy to get wrong. This library aims to provide simple helpers
 that allows you to re-use code and to avoid re-inventing the wheel.
 
 %package -n %name-devel
-Requires:       %lname = %version
 Summary:        Development files for libmnl
 Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
 
 %description -n %name-devel
 libmnl is a minimalistic user-space library oriented to Netlink
@@ -69,25 +67,26 @@ that allows you to re-use code and to avoid re-inventing the wheel.
 %setup -q
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fi;
-fi;
 %configure --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+%make_build
+
+%check
+%make_build check
 
 %install
 %make_install
-rm -f "%buildroot/%_libdir"/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/libmnl.so.0*
+%license COPYING
+%_libdir/libmnl.so.*
 
 %files -n %name-devel
-%defattr(-,root,root)
+%license COPYING
+%doc README
 %_includedir/%name/
 %_libdir/libmnl.so
 %_libdir/pkgconfig/libmnl.pc
