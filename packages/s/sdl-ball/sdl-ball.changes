@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:10:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.03
+  * Added a metadata file
+  * Minor changes
+- Drop sdl-ball-1.02-sdl-ball.desktop.patch. Merged upstream.
+- Trim marketing wording from description.
+
+-------------------------------------------------------------------
 Mon Oct  3 00:14:14 UTC 2016 - badshah400@gmail.com
 
 - Do not run fdupes as symlinking icon files vetoes the

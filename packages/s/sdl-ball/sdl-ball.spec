@@ -1,7 +1,7 @@
 #
 # spec file for package sdl-ball
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright Vincent Petry <PVince81@yahoo.fr>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,35 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sdl-ball
-Version:        1.02
+Version:        1.03
 Release:        0
 Summary:        A Free/OpenSource brick-breaking game with pretty graphics
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Breakout
-Url:            http://dustedgames.blogspot.co.uk/p/sdl-ball_20.html
-Source0:        http://downloads.sourceforge.net/%{name}/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://dustedgames.blogspot.co.uk/p/sdl-ball_20.html
+Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/SDL-Ball_%{version}_build-6_src.tar.xz
 Source1:        %{name}.sh
-# PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/sdl-ball/patches/6/
-Source2:        %{name}.appdata.xml
-# PATCH-FIX-UPSTREAM https://sourceforge.net/p/sdl-ball/patches/5/
-Patch0:         %{name}-%{version}-sdl-ball.desktop.patch
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(SDL_ttf)
 BuildRequires:  pkgconfig(sdl)
+%if 0%{?suse_version}
+BuildRequires:  update-desktop-files
+%endif
 
 %description
-SDL-Ball is a Free/OpenSource brick-breaking game with pretty graphics.
+SDL-Ball is a Free/OpenSource brick-breaking game.
 It is written in C++ using SDL and OpenGL.
 
 Your mission: To smash your way through a series of progressively harder
@@ -50,13 +47,13 @@ trusty Gruntmazter-3000-Paddle edition.
 
 Features:
 * 50 levels.
-* OpenGL eye candy. (Nice graphics, really)
+* OpenGL eye candy.
 * Lots of powerups and powerdowns.
 * Powerup Shop - You get special coins for collecting powerups,
   you can spend them on more powerups.
 * Highscores.
 * Sound.
-* Easy to use level editor.
+* Level editor.
 * Themes - Selectable from options menu.
   Themes support loading new gfx,snd and levels.
   A theme can be partial, if a file is missing,
@@ -68,20 +65,21 @@ Features:
 * Screenshot function
 
 %prep
-%setup -q
+%setup -q -n SDL-Ball_source_build_0006_src
 
 # Convert to unix line end
 find . -name "*.cpp" -exec dos2unix "{}" "+"
 
-%patch0
+# Drop unneeded directories
+rm -fr win32
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 # install wrapper
-install -Dm 0755 %{S:1} %{buildroot}%{_bindir}/%{name}
+install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
 
 # install executable
 install -Dm 0755 %{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
@@ -99,19 +97,19 @@ install -Dm 0644 themes/default/icon32.png %{buildroot}%{_datadir}/pixmaps/%{nam
 install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # install meta data
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
 %endif
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE.txt README
+%license LICENSE.txt
+%doc README
+%dir %{_datadir}/metainfo
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/pixmaps/%{name}.png
 %{_libexecdir}/%{name}
 
