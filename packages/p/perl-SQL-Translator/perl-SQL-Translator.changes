@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 03:12:03 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.61
+   see /usr/share/doc/packages/perl-SQL-Translator/Changes
+
+  1.61 - 2020-04-19
+   * Fixes for Sybase producer
+   * Support CHECK (expr) for SQLite and MySQLoids
+   * Avoid accidentally whole objects in YAML output
+   * Prettify comment generation
+   * Tyop fixes
+
+-------------------------------------------------------------------
 Thu May 30 05:22:10 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.60

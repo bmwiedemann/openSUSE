@@ -121,4 +121,12 @@ See e.g. script/sqlt (forwarded request 185916 from babelworx)</comment>
     <comment></comment>
     <requestid>707185</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9fc8bea5d33de2ed909c8b713c881183</srcmd5>
+    <version>1.61</version>
+    <time>1587581746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796189</requestid>
+  </revision>
 </revisionlist>
