@@ -1072,4 +1072,12 @@
     <comment></comment>
     <requestid>788107</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>3e2588d3d65820613da82ed8239e8b33</srcmd5>
+    <version>2.3.4</version>
+    <time>1587580906</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream patch (forwarded request 794659 from iznogood)</comment>
+    <requestid>794794</requestid>
+  </revision>
 </revisionlist>

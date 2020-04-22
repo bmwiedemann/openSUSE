@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 20:05:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add tracker-Use-correct-signature.patch: tracker-store: Use
+  correct signature for DBusSignalCallback.
+
+-------------------------------------------------------------------
 Wed Mar 25 07:42:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable tests on %arm as they fail in OBS but succeed in a
