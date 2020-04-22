@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:43:16 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.14.6
+  - Exclude virtualenv depencency versions with known
+    regressions (20.0.[0-7]) - by :user:`webknjaz`.
+    `#1537 <https://github.com/tox-dev/tox/issues/1537>`_
+  - Fix ``tox -h`` and ``tox --hi`` shows an error when run outside a directory with tox support files by :user:`nkpro2000sr`.
+    `#1539 <https://github.com/tox-dev/tox/issues/1539>`_
+
+-------------------------------------------------------------------
 Fri Mar 20 10:30:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable spinner tests as the monkeypatch changed behaviour in pytest

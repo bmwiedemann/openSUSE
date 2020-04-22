@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tox
-Version:        3.14.5
+Version:        3.14.6
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
 URL:            https://github.com/tox-dev/tox
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
-BuildRequires:  %{python_module filelock}
+BuildRequires:  %{python_module filelock >= 3.0.0}
 BuildRequires:  %{python_module flaky >= 3.4.0}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module importlib-metadata >= 0.12}
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-base
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-filelock
+Requires:       python-filelock >= 3.0.0
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-packaging >= 17.1
 Requires:       python-pluggy >= 0.12.0

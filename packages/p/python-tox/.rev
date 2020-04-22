@@ -380,4 +380,12 @@ please add to Staging:E, should fix the tox failure</comment>
     `#1521 &lt;https://github.com/tox-dev/tox/issues/1521&gt;`_</comment>
     <requestid>786809</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de95668ee77adb7e3ac872c938271b09</srcmd5>
+    <version>3.14.6</version>
+    <time>1587580939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794895</requestid>
+  </revision>
 </revisionlist>
