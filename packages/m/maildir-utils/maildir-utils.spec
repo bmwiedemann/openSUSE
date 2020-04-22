@@ -1,7 +1,7 @@
 #
 # spec file for package maildir-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           maildir-utils
-Version:        1.2
+Version:        1.4.1
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-Url:            http://www.djcbsoftware.nl/code/mu/
-Source:         https://github.com/djcb/mu/releases/download/%{version}/mu-%{version}.0.tar.xz
+URL:            https://www.djcbsoftware.nl/code/mu/
+Source:         https://github.com/djcb/mu/releases/download/%{version}/mu-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.14
 BuildRequires:  emacs-nox >= 24.4
+# Optional: for outputting of messages in json
+BuildRequires:  json-glib-devel
 BuildRequires:  libtool
 BuildRequires:  libxapian-devel
 BuildRequires:  makeinfo
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmime-3.0) >= 3.0
-# Optional: for outputting of messages in json
-BuildRequires:  json-glib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Set of utilities to index and search Maildirs. Upstream name is mu.
@@ -49,15 +49,15 @@ Requires(preun): %{install_info_prereq}
 mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searcher.
 
 %prep
-%setup -q -n mu-%{version}.0
+%setup -q -n mu-%{version}
 
 %build
 autoreconf -i
 %configure
 
 #bsc#1111950: build individually for now. to have reproducible.
-make -C lib %{?_smp_mflags}
-make
+%make_build -C lib
+%make_build
 
 %install
 %make_install
@@ -69,18 +69,17 @@ make
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/mu4e.info.gz
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog README COPYING
+%doc ChangeLog README
+%license COPYING
 %dir %{_datadir}/doc/mu
 %{_bindir}/mu
 %{_datadir}/doc/mu/NEWS.org
 %{_mandir}/man?/*%{ext_man}
 
 %files -n mu4e
-%defattr(-,root,root)
 %{_datadir}/doc/mu/mu4e-about.org
 %dir %{_datadir}/emacs/site-lisp/mu4e/
 %{_datadir}/emacs/site-lisp/mu4e/*.{el,elc}
-%{_infodir}/mu4e.info%{ext_info}
+%{_infodir}/mu4e.info%{?ext_info}
 
 %changelog

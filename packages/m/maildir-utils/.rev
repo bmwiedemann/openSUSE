@@ -123,4 +123,41 @@
   * Bug fixes</comment>
     <requestid>692237</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37aefbb8008d76a57b6f358555a7f1dd</srcmd5>
+    <version>1.4.1</version>
+    <time>1587581531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * ~/.mu -&gt; ~/.cache/mu
+  * remove mentions of --rebuild
+  * properly close config group
+
+-Update to 1.4:
+  mu:
+  * Defaults to XDG Base Directory Specification
+  * New subcommand `mu init` to initialize database -- takes
+    `--my-address` and `--maildir` parameters, `mu index` does not
+    accept them anymore
+  * New subcommand `mu info` to display information about the database
+  * Contacts are now saved in the database instead of in a separate
+    file
+  * `--xbatchsize` and `--autoupgrade` (for `mu index`) are removed,
+    both are implicit now
+  mu4e:
+  * Does not use `mu4e-maildir` and `mu4e-user-mail-address-list`
+    variables anymore, uses information from `mu init`
+  * Performance improvements related to contacts handling
+  * Added gnus' calendar-invitation handling
+  * Added support for custom headers
+  * Added experimental &quot;Account Setup Handler&quot;
+  * Org-mode support is enabled by default
+  * Speedbar support is disabled by default
+  * Messaged-id are added to draft messages (can be found with
+    `mu4e-headers-skip-duplicates` enabled)
+  * Bookmarks are simple plists now (`make-mu4e-bookmark` was updated)
+  * Specific bookmarks can be hidden from main menu
+  * `mu4e-maildir-shortcuts` are simple plists now (old format is still</comment>
+    <requestid>795668</requestid>
+  </revision>
 </revisionlist>
