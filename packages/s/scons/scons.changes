@@ -2,7 +2,7 @@
 Fri Jan  3 19:23:47 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch off tests
-- Update to 3.1.2:
+- Update to 3.1.2 (jsc#SLE-12199, bsc#1169143):
     - Added debug option "action_timestamps" which outputs to
       stdout the absolute start and end time for each target.
     - Fix suncxx tool (Oracle Studio compiler) when using Python 3.
