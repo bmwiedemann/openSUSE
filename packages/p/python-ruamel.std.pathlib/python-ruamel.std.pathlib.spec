@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.std.pathlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.std.pathlib
 Version:        0.6.4
 Release:        0
-License:        MIT
 Summary:        Improvements over the standard pathlib module and pathlib2 package
-Url:            https://bitbucket.org/ruamel/std.pathlib
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://sourceforge.net/projects/ruamel-std-pathlib/
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.pathlib/ruamel.std.pathlib-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.base >= 1.0.0+post1
+BuildArch:      noarch
 %ifpython2
 Requires:       python-pathlib2
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,8 +49,9 @@ sed -i '/keywords=/d' setup.py
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %python_install
 # This makes this package the owner of the Python 2 namespace ruamel.std
-touch %{buildroot}%{python2_sitelib}/ruamel/std/__init__.py
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand touch %{buildroot}%{$python_sitelib}/ruamel/std/__init__.py
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %files %{python_files}
 %doc README.rst
