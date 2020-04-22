@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 16:08:25 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.10.2
+Fixed
+  * The WhatsApp workaround now also works when using WhatsApp in
+    languages other than English.
+
+-------------------------------------------------------------------
 Sun Feb 16 12:38:59 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.10.1

@@ -1171,4 +1171,15 @@ Changed
     issue where the cursor was invisible in that case.</comment>
     <requestid>774697</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>61f25f0dccf43122edb9c3c427030d6a</srcmd5>
+    <version>1.10.2</version>
+    <time>1587581461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.2
+Fixed
+  * The WhatsApp workaround now also works when using WhatsApp in
+    languages other than English.</comment>
+    <requestid>795567</requestid>
+  </revision>
 </revisionlist>
