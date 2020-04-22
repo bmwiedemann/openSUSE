@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>631612</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4197bde238248e6ee4fcff7d3a94a582</srcmd5>
+    <version>1.8</version>
+    <time>1587581799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8:
+  * See provided NEWS for detailed list of changes
+- Drop no longer needed patches:
+  * zutils-1.7-zcat-buffer-overrun.patch</comment>
+    <requestid>796197</requestid>
+  </revision>
 </revisionlist>

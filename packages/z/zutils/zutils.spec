@@ -1,7 +1,7 @@
 #
 # spec file for package zutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           zutils
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://www.nongnu.org/zutils/zutils.html
 Source0:        https://download.savannah.gnu.org/releases/zutils/zutils-%{version}.tar.lz
 Source1:        https://download.savannah.gnu.org/releases/zutils/zutils-%{version}.tar.lz.sig
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM zutils-1.7-zcat-buffer-overrun.patch
-Patch0:         zutils-1.7-zcat-buffer-overrun.patch
 # PATCH-FIX-OPENSUSE zutils-1.7-noconflict.patch
 Patch1:         zutils-1.7-noconflict.patch
 BuildRequires:  gcc-c++
@@ -46,13 +44,11 @@ C++ programs. In particular the "--recursive" option is very efficient
 in those utilities supporting it.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
-%configure
-make CXXFLAGS="%{optflags}" %{?_smp_mflags}
+%configure CXXFLAGS="%{optflags}"
+%make_build
 
 %install
 %make_install
