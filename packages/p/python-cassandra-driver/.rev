@@ -120,4 +120,12 @@
   * Asyncore logging exception on shutdown (PYTHON-1228)</comment>
     <requestid>791950</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1d0a49c25dc6dd81d2a407b07879c955</srcmd5>
+    <version>3.23.0</version>
+    <time>1587581927</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796254</requestid>
+  </revision>
 </revisionlist>

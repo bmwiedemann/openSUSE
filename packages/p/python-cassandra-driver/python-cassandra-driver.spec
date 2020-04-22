@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-cassandra-driver
 Version:        3.23.0
 Release:        0
@@ -42,7 +43,6 @@ BuildRequires:  %{python_module sure}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-futures
 Requires:       python-Cython
 Requires:       python-blist
 Requires:       python-geomet >= 0.1
@@ -50,6 +50,9 @@ Requires:       python-six >= 1.9
 Recommends:     python-Twisted
 Recommends:     python-eventlet
 Recommends:     python-gevent
+%if %{with python2}
+BuildRequires:  python2-futures
+%endif
 %ifpython2
 Requires:       python2-futures
 %endif
