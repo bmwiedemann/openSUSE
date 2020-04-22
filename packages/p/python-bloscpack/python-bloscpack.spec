@@ -1,7 +1,7 @@
 #
 # spec file for package python-bloscpack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-bloscpack
 Version:        0.16.0
 Release:        0
 Summary:        Command line interface and serialization format for Blosc
 License:        MIT
-Group:          Development/Languages/Python
-Url:            https://github.com/blosc/bloscpack
+URL:            https://github.com/blosc/bloscpack
 Source:         https://files.pythonhosted.org/packages/source/b/bloscpack/bloscpack-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-blosc
+Requires:       python-numpy
+Requires:       python-six
+Recommends:     cryptography >= 1.3.4
+Recommends:     python-pyOpenSSL >= 0.14
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module coverage}
@@ -40,18 +46,13 @@ BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module wheel}
+%if %{with python2}
 BuildRequires:  python-ipaddress
+%endif
 # /SECTION
-Requires:       python-blosc
-Requires:       python-numpy
-Requires:       python-six
-Recommends:     cryptography >= 1.3.4
-Recommends:     python-pyOpenSSL >= 0.14
 %ifpython2
 Requires:       python-ipaddress
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -62,7 +63,7 @@ support for serializing and deserializing Numpy arrays.
 
 %prep
 %setup -q -n bloscpack-%{version}
-find bloscpack -name '*.py' -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
+find bloscpack -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} +
 
 %build
 export LANG=en_US.UTF-8
