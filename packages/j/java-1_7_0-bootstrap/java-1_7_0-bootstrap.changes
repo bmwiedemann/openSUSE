@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- The pack200 and unpack200 alternatives should be slaves of java
+  and not of javac, since they are part of JRE.
+
+-------------------------------------------------------------------
 Tue May  8 11:27:36 UTC 2018 - dmueller@suse.com
 
 - add armv7hl bootstrap binaries (copied from Leap 42.3 Ports GA)

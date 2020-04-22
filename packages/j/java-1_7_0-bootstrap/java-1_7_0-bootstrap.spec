@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_7_0-bootstrap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -81,7 +81,7 @@ Release:        0
 Summary:        A bootstrap version of openJDK
 License:        GPL-2.0-with-classpath-exception
 Group:          Development/Languages/Java
-Url:            http://icedtea.classpath.org
+URL:            http://icedtea.classpath.org
 Source0:        java-1_7_0-openjdk.i586.rpm
 Source1:        java-1_7_0-openjdk-devel.i586.rpm
 Source2:        java-1_7_0-openjdk-headless.i586.rpm
@@ -287,7 +287,7 @@ export NO_BRP_STRIP_DEBUG=true
 
 %post headless
 ext=.gz
-update-alternatives \
+update-alternatives --force \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_jvmjardir}/jre jre_exports %{_jvmjardir}/%{jrelnk} \
@@ -297,7 +297,9 @@ update-alternatives \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_bindir}/servertool servertool %{jrebindir}/servertool \
-  --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameservSuSE/ \
+  --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameserv \
+  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
+  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
@@ -386,8 +388,6 @@ update-alternatives \
   --slave %{_bindir}/javah javah %{sdkbindir}/javah \
   --slave %{_bindir}/javap javap %{sdkbindir}/javap \
   --slave %{_bindir}/jconsole jconsole %{sdkbindir}/jconsole \
-  --slave %{_bindir}/pack200                  pack200                     %{sdkbindir}/pack200 \
-  --slave %{_bindir}/unpack200                unpack200                   %{sdkbindir}/unpack200 \
   --slave %{_bindir}/jdb jdb %{sdkbindir}/jdb \
   --slave %{_bindir}/jhat jhat %{sdkbindir}/jhat \
   --slave %{_bindir}/jinfo jinfo %{sdkbindir}/jinfo \
