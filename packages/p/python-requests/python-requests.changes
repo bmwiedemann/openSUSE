@@ -91,7 +91,7 @@ Sat Oct 20 15:39:32 UTC 2018 - Arun Persaud <arun@gmx.de>
   * remove restriction for urllib3 < 1.24
   * HISTORY and README changed from .rst to .md
 
-- update to version 2.20.0:
+- update to version 2.20.0 bsc#1111622:
   * Bugfixes
     + Content-Type header parsing is now case-insensitive
       (e.g. charset=utf8 v Charset=utf8).

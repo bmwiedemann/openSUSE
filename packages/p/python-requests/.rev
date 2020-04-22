@@ -678,4 +678,12 @@
  * Requests no longer outputs password in basic auth usage warning</comment>
     <requestid>778804</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>767c3d8ed7702c7a80b4c0e5cc36c4b1</srcmd5>
+    <version>2.23.0</version>
+    <time>1587581073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.20.0 bsc#1111622:</comment>
+    <requestid>796260</requestid>
+  </revision>
 </revisionlist>
