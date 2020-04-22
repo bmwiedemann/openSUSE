@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:05:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup of the SPEC file, remove warnings.
+
+-------------------------------------------------------------------
 Fri Feb 14 11:31:46 UTC 2020 - trenn@suse.de
 
 - python-Markdown is a BuildRequire for python-Cheetah3
