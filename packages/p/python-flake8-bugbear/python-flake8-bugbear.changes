@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:09:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 20.1.4:
+  * Ignore keywords for B009/B010
+  * Silence B009/B010 for non-identifiers
+  * State an ignore might be needed for optional B9x checks
+  * Fix error on attributes-of-attributes in except (...): clauses
+  * Allow continue/break within loops in finally clauses for B012
+  * For B001, also check for except ():
+  * Introduce B013 and B014 to check tuples in except (..., ): statements
+  * Warn about continue/return/break in finally block (#100)
+  * Removed a colon from the descriptive message in B008. (#96)
+
+-------------------------------------------------------------------
 Fri Sep 13 07:31:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.8.0:

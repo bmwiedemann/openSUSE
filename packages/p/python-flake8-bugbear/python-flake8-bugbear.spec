@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-bugbear
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,24 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-bugbear
-Version:        19.8.0
+Version:        20.1.4
 Release:        0
 Summary:        A plugin for flake8 finding likely bugs and design problems in your program
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/flake8-bugbear
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-bugbear/flake8-bugbear-%{version}.tar.gz
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module flake8 >= 3.0.0}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-attrs >= 19.2.0
+Requires:       python-flake8 >= 3.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,8 +56,8 @@ pycodestyle.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/PyCQA/flake8-bugbear/issues/89
-%pytest -k 'not test_selfclean_bugbear'
+# Fuzz testing needs fast machine for quick enough data responses
+%pytest -k 'not TestFuzz'
 
 %files %{python_files}
 %license LICENSE

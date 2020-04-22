@@ -47,4 +47,21 @@
   * Make B901 not apply to __await__ methods</comment>
     <requestid>730552</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8bf26fc1ca9b247d4a7961fe6a49e05b</srcmd5>
+    <version>20.1.4</version>
+    <time>1587580872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.1.4:
+  * Ignore keywords for B009/B010
+  * Silence B009/B010 for non-identifiers
+  * State an ignore might be needed for optional B9x checks
+  * Fix error on attributes-of-attributes in except (...): clauses
+  * Allow continue/break within loops in finally clauses for B012
+  * For B001, also check for except ():
+  * Introduce B013 and B014 to check tuples in except (..., ): statements
+  * Warn about continue/return/break in finally block (#100)
+  * Removed a colon from the descriptive message in B008. (#96)</comment>
+    <requestid>794563</requestid>
+  </revision>
 </revisionlist>
