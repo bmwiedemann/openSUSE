@@ -16,4 +16,13 @@ The fonts are split into per-language subpackages for the size reduction.</comme
     <comment></comment>
     <requestid>697732</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ed13a3ac07440e1f58625d5135cb9d8</srcmd5>
+    <version>20190410</version>
+    <time>1587581212</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.001(20190410)
+- Update version to 2.001(20190410) (forwarded request 795506 from hillwood)</comment>
+    <requestid>795507</requestid>
+  </revision>
 </revisionlist>
