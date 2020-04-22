@@ -1,5 +1,5 @@
 #
-# spec file for package pyton-dash-table
+# spec file for package python-dash-table
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-dash-table%{psuffix}
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        Dash table
 License:        MIT
@@ -68,7 +68,8 @@ An interactive DataTable for Dash.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/dash_table/
+%{python_sitelib}/dash_table-%{version}-py*.egg-info
 %endif
 
 %changelog
