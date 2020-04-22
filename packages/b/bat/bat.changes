@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:09:04 UTC 2020 - Dany Marcoux <dmarcoux@suse.com>
+
+- Update to version 0.13.0
+  * Beginning with this release, bat can be used as a library
+  * (Breaking change) Glob-based syntax mapping
+  * Many bugfixes and new syntaxes
+  * And more... see upstream
+- Pass "no-track" option to "cargo install" to avoid generating
+  ".crates2.json"
+
+-------------------------------------------------------------------
 Tue Oct 15 12:59:38 UTC 2019 - Dany Marcoux <dmarcoux@suse.com>
 
 - Instruct packager to install cargo directly from the cargo package
