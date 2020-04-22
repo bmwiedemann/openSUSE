@@ -176,4 +176,12 @@
   inside gnome-shell, we have had built-in tools for a long time. (forwarded request 743235 from iznogood)</comment>
     <requestid>743762</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ac591d0220212a948906873e8085336</srcmd5>
+    <version>20200416</version>
+    <time>1587580899</time>
+    <user>dimstar_suse</user>
+    <comment>- add gnome-packagekit recommends to gnome_basic pattern for SLE and Leap (bsc#1164858 and bsc#1081584) (forwarded request 794653 from suntorytimed)</comment>
+    <requestid>794793</requestid>
+  </revision>
 </revisionlist>

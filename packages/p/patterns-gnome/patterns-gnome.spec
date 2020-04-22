@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-gnome
-Version:        20180321
+Version:        20200416
 Release:        0
 Summary:        Patterns for Installation (Gnome)
 License:        MIT
@@ -386,6 +386,12 @@ Recommends:     gnome-tweak-tool
 Recommends:     nautilus-extension-terminal
 Recommends:     nautilus-share
 Recommends:     pinentry-gnome3
+# bsc#1164858 bsc#1081584 
+# - only in Leap and SLE as we don't want to install gnome-packagekit by 
+#   default on TW
+%if 0%{?sle_version}
+Recommends:     gnome-packagekit
+%endif
 %if !0%{?is_opensuse}
 Obsoletes:      patterns-sles-gnome-basic
 %endif
