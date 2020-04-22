@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 06:59:36 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libnma-fix-segment-fault.patch: nma-ws: properly dispose
+  wireless security objects(bsc#1168347 glgo#GNOME/libnma#7).
+
+-------------------------------------------------------------------
 Fri Mar  6 19:15:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.28:
