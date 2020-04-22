@@ -1660,4 +1660,61 @@ Address python compatibility issue.</comment>
     <comment></comment>
     <requestid>787001</requestid>
   </revision>
+  <revision rev="172" vrev="8">
+    <srcmd5>92c4085b308984a932a9aa9ec27b134d</srcmd5>
+    <version>4.2.0</version>
+    <time>1587580994</time>
+    <user>dimstar_suse</user>
+    <comment>- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  spapr-Fix-failure-path-for-attempting-to.patch
+  target-i386-do-not-set-unsupported-VMX-s.patch
+  target-xtensa-fix-pasto-in-pfwait.r-opco.patch
+  tcg-i386-Fix-INDEX_op_dup2_vec.patch
+  tcg-mips-mips-sync-encode-error.patch
+  vhost-user-gpu-Release-memory-returned-b.patch
+  vpc-Don-t-round-up-already-aligned-BAT-s.patch
+  xen-block-Fix-double-qlist-remove-and-re.patch
+- Fix bug causing weak encryption in PAuth for ARM
+  (CVE-2020-10702 bsc#1168681)
+  target-arm-Fix-PAuth-sbox-functions.patch
+- Fix OOB in tulip NIC emulation (CVE-2020-11102 bsc#1168713
+  net-tulip-check-frame-size-and-r-w-data-.patch
+- Note that previously included patch addresses CVE-2020-1711
+  and bsc#1166240
+  iscsi-Cap-block-count-from-GET-LBA-STATU.patch
+- Include performance improvement (and related?) patch
+  aio-wait-delegate-polling-of-main-AioCon.patch
+  async-use-explicit-memory-barriers.patch
+- Rework previous patch at Olaf H.'s direction
+  hw-i386-disable-smbus-migration-for-xenf.patch
+- Eliminate is_opensuse usage in producing seabios version string
+  what we are doing here is just replacing the upstream string
+  with one indicating that the openSUSE build service built it,
+  and so just leave it as &quot;-rebuilt.opensuse.org&quot;
+- Alter algorithm used to produce &quot;unique&quot; symbol for coordinating
+  qemu with the optional modules it may load. This is a reasonable
+  relaxation for broader compatibility
+  configure-remove-pkgversion-from-CONFIG_.patch
+- Tweak supported.*.txt for latest deprecations, and other fixes
+- Tweak update_git.sh, config.sh
+- One more fix is needed for: s390x Protected Virtualization support
+  - start and control guest in secure mode (bsc#1167075 jsc#SLE-7407)
+  s390x-s390-virtio-ccw-Fix-build-on-syste.patch
+- Include upstream patches targeted for the next stable release
+  (bug fixes only)
+  block-Avoid-memleak-on-qcow2-image-info-.patch
+  block-bdrv_set_backing_bs-fix-use-after-.patch
+  hmp-vnc-Fix-info-vnc-list-leak.patch
+  migration-colo-fix-use-after-free-of-loc.patch
+  migration-ram-fix-use-after-free-of-loca.patch
+  ppc-ppc405_boards-Remove-unnecessary-NUL.patch
+  qcow2-List-autoclear-bit-names-in-header.patch
+  scsi-qemu-pr-helper-Fix-out-of-bounds-ac.patch
+  sheepdog-Consistently-set-bdrv_has_zero_.patch
+- Note The previous set of s390x patches also includes the fix for:
+  bsc#1167445
+</comment>
+    <requestid>795126</requestid>
+  </revision>
 </revisionlist>

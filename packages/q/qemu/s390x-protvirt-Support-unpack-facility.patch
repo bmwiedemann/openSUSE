@@ -69,7 +69,7 @@ index e02ed80b6829a511362abc3525ec..a46a1c7894e0f612a2d74cec74f6 100644
  obj-y += ap-device.o
  obj-y += ap-bridge.o
 diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-index ca544d64c5e04782fb49d12521d5..73e5210b4d4e7ad912cfe5475ac4 100644
+index ca544d64c5e04782fb49d12521d5..c343cfb0bed4272cecf31207dae8 100644
 --- a/hw/s390x/ipl.c
 +++ b/hw/s390x/ipl.c
 @@ -1,10 +1,11 @@
@@ -139,7 +139,7 @@ index ca544d64c5e04782fb49d12521d5..73e5210b4d4e7ad912cfe5475ac4 100644
 +
 +    cpu_physical_memory_read(ipib_pv->pv_header_addr, hdr,
 +                             ipib_pv->pv_header_len);
-+    rc = s390_pv_set_sec_parms((uint64_t)(uintptr_t)hdr,
++    rc = s390_pv_set_sec_parms((uintptr_t)hdr,
 +                               ipib_pv->pv_header_len);
 +    g_free(hdr);
 +    return rc;

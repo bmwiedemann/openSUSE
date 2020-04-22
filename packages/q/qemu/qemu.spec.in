@@ -942,7 +942,7 @@ mkdir -p %mybuilddir
 cd %mybuilddir
 %endif
 
-%{_builddir}/%buildsubdir/configure \
+../%buildsubdir/configure \
 	--prefix=%_prefix \
 	--sysconfdir=%_sysconfdir \
 	--libdir=%_libdir \
@@ -1180,11 +1180,7 @@ export LD=x86_64-suse-linux-ld
 %endif
 
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms bios \
-%if 0%{?is_opensuse} == 0
-  SEABIOS_EXTRAVERSION="-rebuilt.suse.com" \
-%else
   SEABIOS_EXTRAVERSION="-rebuilt.opensuse.org" \
-%endif
 %ifnarch %ix86 x86_64
   HOSTCC=cc \
 %endif

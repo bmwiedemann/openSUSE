@@ -1,0 +1,55 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Fri, 20 Mar 2020 16:57:40 +0100
+Subject: ppc/ppc405_boards: Remove unnecessary NULL check
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 1583794b9b36911df116cc726750dadbeeac506a
+
+This code is inside the "if (dinfo)" condition, so testing
+again here whether it is NULL is unnecessary.
+
+Fixes: dd59bcae7 (Don't size flash memory to match backing image)
+Reported-by: Coverity (CID 1421917)
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200320155740.5342-1-philmd@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/ppc/ppc405_boards.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index 1f721feed6a4bfc128187aefb5d9..556f3a80ec1ddbc018e00941c5c5 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -184,7 +184,7 @@ static void ref405ep_init(MachineState *machine)
+         bios_size = 8 * MiB;
+         pflash_cfi02_register((uint32_t)(-bios_size),
+                               "ef405ep.bios", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               2, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);
+@@ -450,7 +450,7 @@ static void taihu_405ep_init(MachineState *machine)
+         bios_size = 2 * MiB;
+         pflash_cfi02_register(0xFFE00000,
+                               "taihu_405ep.bios", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);
+@@ -486,7 +486,7 @@ static void taihu_405ep_init(MachineState *machine)
+     if (dinfo) {
+         bios_size = 32 * MiB;
+         pflash_cfi02_register(0xfc000000, "taihu_405ep.flash", bios_size,
+-                              dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
++                              blk_by_legacy_dinfo(dinfo),
+                               64 * KiB, 1,
+                               4, 0x0001, 0x22DA, 0x0000, 0x0000, 0x555, 0x2AA,
+                               1);

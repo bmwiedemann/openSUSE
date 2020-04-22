@@ -1,0 +1,33 @@
+From: David Gibson <david@gibson.dropbear.id.au>
+Date: Thu, 26 Mar 2020 16:12:40 +1100
+Subject: spapr: Fix failure path for attempting to hot unplug PCI bridges
+
+Git-commit: 7aab5899764887f6b0512cb2e5c11bdc2a5d3644
+
+For various technical reasons we can't currently allow unplug a PCI to PCI
+bridge on the pseries machine.  spapr_pci_unplug_request() correctly
+generates an error message if that's attempted.
+
+But.. if the given errp is not error_abort or error_fatal, it doesn't
+actually stop trying to unplug the bridge anyway.
+
+Fixes: 14e714900f6b "spapr: Allow hot plug/unplug of PCI bridges and devices under PCI bridges"
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Greg Kurz <groug@kaod.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/ppc/spapr_pci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index f6fbcf99edaaf9844fe669951716..5b544adb4a4d7868cf17d6534e19 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1663,6 +1663,7 @@ static void spapr_pci_unplug_request(HotplugHandler *plug_handler,
+ 
+         if (pc->is_bridge) {
+             error_setg(errp, "PCI: Hot unplug of PCI bridges not supported");
++            return;
+         }
+ 
+         /* ensure any other present functions are pending unplug */

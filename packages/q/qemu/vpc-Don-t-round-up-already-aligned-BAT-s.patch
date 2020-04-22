@@ -1,0 +1,47 @@
+From: Kevin Wolf <kwolf@redhat.com>
+Date: Thu, 2 Apr 2020 11:36:03 +0200
+Subject: vpc: Don't round up already aligned BAT sizes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 3f6de653b946fe849330208becf79d6af7e876cb
+
+As reported on Launchpad, Azure apparently doesn't accept images for
+upload that are not both aligned to 1 MB blocks and have a BAT size that
+matches the image size exactly.
+
+As far as I can tell, there is no real reason why we create a BAT that
+is one entry longer than necessary for aligned image sizes, so change
+that.
+
+(Even though the condition is only mentioned as "should" in the spec and
+previous products accepted larger BATs - but we'll try to maintain
+compatibility with as many of Microsoft's ever-changing interpretations
+of the VHD spec as possible.)
+
+Fixes: https://bugs.launchpad.net/bugs/1870098
+Reported-by: Tobias Witek
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20200402093603.2369-1-kwolf@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block/vpc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/block/vpc.c b/block/vpc.c
+index a65550298e195af52c51a31d1f9f..21b08033a6ab56115c6258b7ef3c 100644
+--- a/block/vpc.c
++++ b/block/vpc.c
+@@ -835,7 +835,7 @@ static int create_dynamic_disk(BlockBackend *blk, uint8_t *buf,
+ 
+     /* Write the footer (twice: at the beginning and at the end) */
+     block_size = 0x200000;
+-    num_bat_entries = (total_sectors + block_size / 512) / (block_size / 512);
++    num_bat_entries = DIV_ROUND_UP(total_sectors, block_size / 512);
+ 
+     ret = blk_pwrite(blk, offset, buf, HEADER_SIZE, 0);
+     if (ret < 0) {

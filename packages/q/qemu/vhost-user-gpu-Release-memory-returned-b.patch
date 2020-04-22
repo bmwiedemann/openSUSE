@@ -1,0 +1,58 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 23 Mar 2020 12:29:41 +0100
+Subject: vhost-user-gpu: Release memory returned by vu_queue_pop() with free()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 4ff97121a3ee631971aadc87e3d4e7fb66f15aa8
+
+vu_queue_pop() returns memory that must be freed with free().
+
+Cc: qemu-stable@nongnu.org
+Reported-by: Coverity (CID 1421887 ALLOC_FREE_MISMATCH)
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ contrib/vhost-user-gpu/main.c  | 4 ++--
+ contrib/vhost-user-gpu/virgl.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/contrib/vhost-user-gpu/main.c b/contrib/vhost-user-gpu/main.c
+index b45d2019b46bdfac64b59d5702ae..a019d0a9acea61a7629f1c74c79a 100644
+--- a/contrib/vhost-user-gpu/main.c
++++ b/contrib/vhost-user-gpu/main.c
+@@ -848,7 +848,7 @@ vg_handle_ctrl(VuDev *dev, int qidx)
+             QTAILQ_INSERT_TAIL(&vg->fenceq, cmd, next);
+             vg->inflight++;
+         } else {
+-            g_free(cmd);
++            free(cmd);
+         }
+     }
+ }
+@@ -939,7 +939,7 @@ vg_handle_cursor(VuDev *dev, int qidx)
+         }
+         vu_queue_push(dev, vq, elem, 0);
+         vu_queue_notify(dev, vq);
+-        g_free(elem);
++        free(elem);
+     }
+ }
+ 
+diff --git a/contrib/vhost-user-gpu/virgl.c b/contrib/vhost-user-gpu/virgl.c
+index 43413e29df9d46739c09d2d501df..b0bc22c3c13db0e8b0b450dac19d 100644
+--- a/contrib/vhost-user-gpu/virgl.c
++++ b/contrib/vhost-user-gpu/virgl.c
+@@ -519,7 +519,7 @@ virgl_write_fence(void *opaque, uint32_t fence)
+         g_debug("FENCE %" PRIu64, cmd->cmd_hdr.fence_id);
+         vg_ctrl_response_nodata(g, cmd, VIRTIO_GPU_RESP_OK_NODATA);
+         QTAILQ_REMOVE(&g->fenceq, cmd, next);
+-        g_free(cmd);
++        free(cmd);
+         g->inflight--;
+     }
+ }

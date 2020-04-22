@@ -1,0 +1,49 @@
+From: lixinyu <precinct@mail.ustc.edu.cn>
+Date: Sat, 11 Apr 2020 20:46:12 +0800
+Subject: tcg/mips: mips sync* encode error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: a4e57084c16d5b0eff3651693fba04f26b30b551
+
+OPC_SYNC_WMB, OPC_SYNC_MB, OPC_SYNC_ACQUIRE, OPC_SYNC_RELEASE and
+OPC_SYNC_RMB have wrong encode. According to the mips manual,
+their encode should be 'OPC_SYNC | 0x?? << 6' rather than
+'OPC_SYNC | 0x?? << 5'. Wrong encode can lead illegal instruction
+errors. These instructions often appear with multi-threaded
+simulation.
+
+Fixes: 6f0b99104a3 ("tcg/mips: Add support for fence")
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: lixinyu <precinct@mail.ustc.edu.cn>
+Message-Id: <20200411124612.12560-1-precinct@mail.ustc.edu.cn>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tcg/mips/tcg-target.inc.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tcg/mips/tcg-target.inc.c b/tcg/mips/tcg-target.inc.c
+index 544216704526a4bd24dce51ade83..006835348fe5c5818d89b0806ba3 100644
+--- a/tcg/mips/tcg-target.inc.c
++++ b/tcg/mips/tcg-target.inc.c
+@@ -404,11 +404,11 @@ typedef enum {
+ 
+     /* MIPS r6 introduced names for weaker variants of SYNC.  These are
+        backward compatible to previous architecture revisions.  */
+-    OPC_SYNC_WMB     = OPC_SYNC | 0x04 << 5,
+-    OPC_SYNC_MB      = OPC_SYNC | 0x10 << 5,
+-    OPC_SYNC_ACQUIRE = OPC_SYNC | 0x11 << 5,
+-    OPC_SYNC_RELEASE = OPC_SYNC | 0x12 << 5,
+-    OPC_SYNC_RMB     = OPC_SYNC | 0x13 << 5,
++    OPC_SYNC_WMB     = OPC_SYNC | 0x04 << 6,
++    OPC_SYNC_MB      = OPC_SYNC | 0x10 << 6,
++    OPC_SYNC_ACQUIRE = OPC_SYNC | 0x11 << 6,
++    OPC_SYNC_RELEASE = OPC_SYNC | 0x12 << 6,
++    OPC_SYNC_RMB     = OPC_SYNC | 0x13 << 6,
+ 
+     /* Aliases for convenience.  */
+     ALIAS_PADD     = sizeof(void *) == 4 ? OPC_ADDU : OPC_DADDU,

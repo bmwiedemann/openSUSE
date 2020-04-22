@@ -23,23 +23,21 @@ Adjust 'xenfv' to stay compatible with with 'pc-i440fx-3.1':
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 Signed-off-by: Bruce Rogers <brogers@suse.com>
+[BR: Adjust implementation to simply call pc_i440fx_3_1_machine_options]
 ---
- hw/i386/pc_piix.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ hw/i386/pc_piix.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index d760d3589607daf4997ea76854c4..7bf1021200a3baa06a58fa36c430 100644
+index d760d3589607daf4997ea76854c4..000e692d0e5af449270214ea9345 100644
 --- a/hw/i386/pc_piix.c
 +++ b/hw/i386/pc_piix.c
-@@ -1043,6 +1043,11 @@ DEFINE_PC_MACHINE(isapc, "isapc", pc_init_isa,
+@@ -1043,6 +1043,8 @@ DEFINE_PC_MACHINE(isapc, "isapc", pc_init_isa,
  #ifdef CONFIG_XEN
  static void xenfv_machine_options(MachineClass *m)
  {
 +    /* compat with pc_i440fx_3_1_machine_options */
-+    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-+    pcmc->do_not_add_smb_acpi = true;
-+    m->smbus_no_migration_support = true;
-+    pcmc->pvh_enabled = false; /* FIXME */
++    pc_i440fx_3_1_machine_options(m);
      m->desc = "Xen Fully-virtualized PC";
      m->max_cpus = HVM_MAX_VCPUS;
      m->default_machine_opts = "accel=xen";

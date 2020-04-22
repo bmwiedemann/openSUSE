@@ -2,7 +2,7 @@ From: Jason Wang <jasowang@redhat.com>
 Date: Mon, 2 Mar 2020 12:24:54 +0800
 Subject: vhost: correctly turn on VIRTIO_F_IOMMU_PLATFORM
 
-References: bsc#1167075
+References: bsc#1167075, bsc#1167445
 
 We turn on device IOTLB via VIRTIO_F_IOMMU_PLATFORM unconditionally on
 platform without IOMMU support. This can lead unnecessary IOTLB

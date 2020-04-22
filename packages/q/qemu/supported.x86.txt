@@ -30,9 +30,10 @@ Overview
   libvirt domain xml references. The QEMU emulator binaries qemu-system-x86_64
   and qemu-system-i386 (x86 host) are now the primary programs to use to access
   KVM virtualization. When using these programs, the -machine option accel=kvm
-  (or its alias -enable-kvm) must be specified for KVM acceleration to be
-  used by the guest. Although Xen uses QEMU for virtualization as well, this
-  document does not identify Xen supported features.
+  (or its alias -enable-kvm), or --accel kvm option must be specified for KVM
+  acceleration to be used by the guest. Although Xen uses QEMU for
+  virtualization as well, this document does not identify Xen supported
+  features.
 
   Libvirt is the preferred means of accessing QEMU/KVM functionality and is
   documented elsewhere. This document focuses on the features and direct usage
@@ -208,8 +209,11 @@ Deprecated, Superseded, Modified and Dropped Features
   deprecated.
  
 - These previously supported command line options are now considered deprecated:
-  -device ide-drive (use ide-hd or ide-cd)
-  -device scsi-disk (use scsi-hd or scsi-cd)
+  -device ide-drive (use ide-hd or ide-cd instead)
+  -device scsi-disk (use scsi-hd or scsi-cd instead)
+  -device virtio-blk,scsi= (use virtio-scsi instead)
+  -device virtio-blk-pci,scsi= (use virtio-scsi instead)
+  -realtime mlock= (use -overcommit mem-lock= instead)
 
 - These previously supported command line options are no longer supported:
   <previously mentioned items have been moved to another category>

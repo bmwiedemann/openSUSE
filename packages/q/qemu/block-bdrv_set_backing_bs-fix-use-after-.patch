@@ -1,0 +1,114 @@
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Date: Mon, 16 Mar 2020 09:06:30 +0300
+Subject: block: bdrv_set_backing_bs: fix use-after-free
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 6e57963a77df1e275a73dab4c6a7ec9a9d3468d4
+
+There is a use-after-free possible: bdrv_unref_child() leaves
+bs->backing freed but not NULL. bdrv_attach_child may produce nested
+polling loop due to drain, than access of freed pointer is possible.
+
+I've produced the following crash on 30 iotest with modified code. It
+does not reproduce on master, but still seems possible:
+
+    #0  __strcmp_avx2 () at /lib64/libc.so.6
+    #1  bdrv_backing_overridden (bs=0x55c9d3cc2060) at block.c:6350
+    #2  bdrv_refresh_filename (bs=0x55c9d3cc2060) at block.c:6404
+    #3  bdrv_backing_attach (c=0x55c9d48e5520) at block.c:1063
+    #4  bdrv_replace_child_noperm
+        (child=child@entry=0x55c9d48e5520,
+        new_bs=new_bs@entry=0x55c9d3cc2060) at block.c:2290
+    #5  bdrv_replace_child
+        (child=child@entry=0x55c9d48e5520,
+        new_bs=new_bs@entry=0x55c9d3cc2060) at block.c:2320
+    #6  bdrv_root_attach_child
+        (child_bs=child_bs@entry=0x55c9d3cc2060,
+        child_name=child_name@entry=0x55c9d241d478 "backing",
+        child_role=child_role@entry=0x55c9d26ecee0 <child_backing>,
+        ctx=<optimized out>, perm=<optimized out>, shared_perm=21,
+        opaque=0x55c9d3c5a3d0, errp=0x7ffd117108e0) at block.c:2424
+    #7  bdrv_attach_child
+        (parent_bs=parent_bs@entry=0x55c9d3c5a3d0,
+        child_bs=child_bs@entry=0x55c9d3cc2060,
+        child_name=child_name@entry=0x55c9d241d478 "backing",
+        child_role=child_role@entry=0x55c9d26ecee0 <child_backing>,
+        errp=errp@entry=0x7ffd117108e0) at block.c:5876
+    #8  in bdrv_set_backing_hd
+        (bs=bs@entry=0x55c9d3c5a3d0,
+        backing_hd=backing_hd@entry=0x55c9d3cc2060,
+        errp=errp@entry=0x7ffd117108e0)
+        at block.c:2576
+    #9  stream_prepare (job=0x55c9d49d84a0) at block/stream.c:150
+    #10 job_prepare (job=0x55c9d49d84a0) at job.c:761
+    #11 job_txn_apply (txn=<optimized out>, fn=<optimized out>) at
+        job.c:145
+    #12 job_do_finalize (job=0x55c9d49d84a0) at job.c:778
+    #13 job_completed_txn_success (job=0x55c9d49d84a0) at job.c:832
+    #14 job_completed (job=0x55c9d49d84a0) at job.c:845
+    #15 job_completed (job=0x55c9d49d84a0) at job.c:836
+    #16 job_exit (opaque=0x55c9d49d84a0) at job.c:864
+    #17 aio_bh_call (bh=0x55c9d471a160) at util/async.c:117
+    #18 aio_bh_poll (ctx=ctx@entry=0x55c9d3c46720) at util/async.c:117
+    #19 aio_poll (ctx=ctx@entry=0x55c9d3c46720,
+        blocking=blocking@entry=true)
+        at util/aio-posix.c:728
+    #20 bdrv_parent_drained_begin_single (poll=true, c=0x55c9d3d558f0)
+        at block/io.c:121
+    #21 bdrv_parent_drained_begin_single (c=c@entry=0x55c9d3d558f0,
+        poll=poll@entry=true)
+        at block/io.c:114
+    #22 bdrv_replace_child_noperm
+        (child=child@entry=0x55c9d3d558f0,
+        new_bs=new_bs@entry=0x55c9d3d27300) at block.c:2258
+    #23 bdrv_replace_child
+        (child=child@entry=0x55c9d3d558f0,
+        new_bs=new_bs@entry=0x55c9d3d27300) at block.c:2320
+    #24 bdrv_root_attach_child
+        (child_bs=child_bs@entry=0x55c9d3d27300,
+        child_name=child_name@entry=0x55c9d241d478 "backing",
+        child_role=child_role@entry=0x55c9d26ecee0 <child_backing>,
+        ctx=<optimized out>, perm=<optimized out>, shared_perm=21,
+        opaque=0x55c9d3cc2060, errp=0x7ffd11710c60) at block.c:2424
+    #25 bdrv_attach_child
+        (parent_bs=parent_bs@entry=0x55c9d3cc2060,
+        child_bs=child_bs@entry=0x55c9d3d27300,
+        child_name=child_name@entry=0x55c9d241d478 "backing",
+        child_role=child_role@entry=0x55c9d26ecee0 <child_backing>,
+        errp=errp@entry=0x7ffd11710c60) at block.c:5876
+    #26 bdrv_set_backing_hd
+        (bs=bs@entry=0x55c9d3cc2060,
+        backing_hd=backing_hd@entry=0x55c9d3d27300,
+        errp=errp@entry=0x7ffd11710c60)
+        at block.c:2576
+    #27 stream_prepare (job=0x55c9d495ead0) at block/stream.c:150
+    ...
+
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-Id: <20200316060631.30052-2-vsementsov@virtuozzo.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ block.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/block.c b/block.c
+index 8539f99ac47cdbf0e9b823751074..3d0134f00b55e0400efc70058d00 100644
+--- a/block.c
++++ b/block.c
+@@ -2577,10 +2577,10 @@ void bdrv_set_backing_hd(BlockDriverState *bs, BlockDriverState *backing_hd,
+ 
+     if (bs->backing) {
+         bdrv_unref_child(bs, bs->backing);
++        bs->backing = NULL;
+     }
+ 
+     if (!backing_hd) {
+-        bs->backing = NULL;
+         goto out;
+     }
+ 
