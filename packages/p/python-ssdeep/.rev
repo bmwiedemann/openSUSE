@@ -16,4 +16,13 @@
     <comment></comment>
     <requestid>785940</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>81e694904f381829ea7c7e02c99c470d</srcmd5>
+    <version>3.4</version>
+    <time>1587581476</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate docu, fails with new sphinx and till now used
+  py2 version for that</comment>
+    <requestid>795733</requestid>
+  </revision>
 </revisionlist>

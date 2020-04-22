@@ -37,10 +37,6 @@ Requires:       ssdeep
 # SECTION tests
 BuildRequires:  %{python_module pytest-runner}
 # /SECTION
-# SECTION docs
-BuildRequires:  python-mock
-BuildRequires:  python-sphinx
-# /SECTION
 %python_subpackages
 
 %description
@@ -53,10 +49,6 @@ content and length.
 
 %build
 %python_build
-pushd docs
-%make_build html
-rm build/html/.buildinfo
-popd
 
 %install
 %python_install
@@ -67,7 +59,7 @@ popd
 
 %files %{python_files}
 %{python_sitearch}/*
-%doc README.rst CHANGELOG.rst docs/build/html/
+%doc README.rst CHANGELOG.rst
 %license LICENSE
 
 %changelog
