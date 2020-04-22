@@ -43,8 +43,8 @@ Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
 Patch0:         shebang.diff
-##atch1:         xmlfix.diff
-##atch2:         demo.diff
+Patch1:         lab1.diff
+Patch2:         lab2.diff
 
 BuildArch:      noarch
 
@@ -108,8 +108,8 @@ This package provides the interface to Orthanc
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-##atch1 -p1
-##atch2 -p1
+%patch1 -p1
+%patch2 -p1
 cp %{S:1} .
 cp %{S:2} .
 
@@ -145,7 +145,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/tryton
 #remove double license file:
 rm backend/fhir/client/COPYING
 
-#Move FHIR serer to examples directory
+#Move FHIR server to examples directory
 mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}/examples/
 mv backend/fhir* %{buildroot}%{_docdir}/%{name}/examples/.
 rmdir backend
@@ -189,7 +189,10 @@ EOF
 %{python3_sitelib}/trytond/modules/health_orthanc*
 
 %files 
+%defattr(-,root,root)
+%{_bindir}/gnuhealth
 %{_bindir}/gnuhealth-control
+%{_bindir}/gnuhealth-webdav-server
 %{_bindir}/openSUSE-gnuhealth-setup
 %{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
