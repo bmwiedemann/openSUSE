@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2019 Dr. Axel Braun
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
@@ -22,16 +23,16 @@ License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Version:        0.6
 Release:        0
-Url:            https://orthanc-server.com
+URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/whole-slide-imaging/OrthancWSI-%{version}.tar.gz
 Source1:        openlayers-3.19.0-dist.zip
+Source2:        http://www.orthanc-server.com/downloads/get.php?path=/orthanc/Orthanc-1.5.2.tar.gz
 Source11:       orthanc-wsi-readme.SUSE
-Source12:       wsi.json
 BuildRequires:  cmake
+BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
 BuildRequires:  gcc-c++
-BuildRequires:  curl-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
@@ -40,11 +41,11 @@ BuildRequires:  libboost_program_options-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
-BuildRequires:  libuuid-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
+BuildRequires:  libuuid-devel
 # Check was missing:
 BuildRequires:  libxml2-devel
 BuildRequires:  tcpd-devel
@@ -52,12 +53,12 @@ BuildRequires:  tcpd-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
-BuildRequires:  orthanc-source
+##uildRequires:  orthanc-source
 BuildRequires:  unzip
 
 Requires:       orthanc
 
-BuildRoot:      OrthancWSI-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Orthanc project provides three official tools to support DICOM for whole-slide microscopic imaging (WSI):
@@ -70,9 +71,12 @@ The Orthanc project provides three official tools to support DICOM for whole-sli
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
-cd ViewerPlugin
-mkdir ThirdPartyDownloads
-cp %{S:1} ThirdPartyDownloads/.
+
+mkdir ViewerPlugin/ThirdPartyDownloads
+cp %{S:1} ViewerPlugin/ThirdPartyDownloads/.
+
+mkdir Applications/ThirdPartyDownloads
+cp %{S:2} Applications/ThirdPartyDownloads/.
 
 %build
 # build the applications
@@ -81,11 +85,11 @@ cd Applications
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
-       -DORTHANC_FRAMEWORK_SOURCE=path \
+       -DORTHANC_FRAMEWORK_SOURCE=web \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
+       -DORTHANC_FRAMEWORK_ROOT=ThirdPartyDownloads/ \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 #and the plugins
@@ -96,9 +100,9 @@ cd ../../ViewerPlugin
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
+       -DORTHANC_FRAMEWORK_ROOT=%{_builddir}/OrthancWSI-0.6/Applications/build/Orthanc-1.5.2 \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 %install
@@ -117,10 +121,10 @@ mv %{buildroot}%{_prefix}/share/orthanc/plugins/*.so* %{buildroot}%{_libdir}/sha
 #Link from lib64 to orthanc plugin-directory, where it is expected
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancWSI.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancWSI.so
-      
+
 rm %{buildroot}%{_libdir}/share/orthanc/plugins/*.so
 
-cp %{S:11} %{S:12} %{buildroot}%{_docdir}/orthanc/.
+cp %{S:11} %{buildroot}%{_docdir}/orthanc/.
 
 %post -p /sbin/ldconfig
 

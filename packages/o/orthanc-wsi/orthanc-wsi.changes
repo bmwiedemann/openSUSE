@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 19 07:06:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- orthanc 1.6.0 breaks build of this plugin.
+  inclusion of Orthanc 1.5.2 source and adaption of build options 
+  wsi.json removed (plugin definition moved to Configuration.json)
+
+-------------------------------------------------------------------
 Tue Dec 10 16:43:07 UTC 2019 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.6
