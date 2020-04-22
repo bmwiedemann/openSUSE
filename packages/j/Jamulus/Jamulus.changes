@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 20:25:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Rename source tarball
+
+-------------------------------------------------------------------
+Wed Apr  8 17:06:46 UTC 2020 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Update to version 3.4.5
+  The upstream maintainer announced that he will no longer publish source
+  tarballs to SF.net, so fetched the tarball from github directly.
+  Changes included:
+  * audio fade-in at the server if a new client connects
+  * added a scroll bar to the mixer board to support large numbers of
+    mixer faders (a thank you to doloopuntil for his help)
+  * changed the maximum number of clients supported by the server from 20 to 50
+  * Windows installer now contains a 32 and 64 bit version of Jamulus (the version to
+    be installed is selected automatically according to the detected operating system)
+  * bug fix: server list ping times may not be accurate and client list may not be retrieved
+
+-------------------------------------------------------------------
 Fri Apr  3 19:45:45 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Rename source icon to Jamulus_icon.png to avoid troubles

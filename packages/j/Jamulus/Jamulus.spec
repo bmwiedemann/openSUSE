@@ -17,13 +17,15 @@
 #
 
 
+%define tarball_version 3_4_5
+
 Name:           Jamulus
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
 URL:            http://llcon.sourceforge.net/index.html
-Source0:        https://sourceforge.net/projects/llcon/files/Jamulus/%{version}/Jamulus-%{version}.tar.gz
+Source0:        https://github.com/corrados/jamulus/archive/r%{tarball_version}.tar.gz#/jamulus-r%{tarball_version}.tar.gz
 Source1:        %{name}_icon.png
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
@@ -49,7 +51,7 @@ collects the audio data from each Jamulus client software, mixes the audio data
 and sends the mix back to each client.
 
 %prep
-%setup -q -n %{name}%{version}
+%setup -q -n jamulus-r%{tarball_version}
 install %{SOURCE1} .
 
 %build

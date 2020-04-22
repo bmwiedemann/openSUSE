@@ -51,4 +51,24 @@
 </comment>
     <requestid>791268</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97c47806f52e57bf8731853275eca046</srcmd5>
+    <version>3.4.5</version>
+    <time>1587581586</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename source tarball
+- Update to version 3.4.5
+  The upstream maintainer announced that he will no longer publish source
+  tarballs to SF.net, so fetched the tarball from github directly.
+  Changes included:
+  * audio fade-in at the server if a new client connects
+  * added a scroll bar to the mixer board to support large numbers of
+    mixer faders (a thank you to doloopuntil for his help)
+  * changed the maximum number of clients supported by the server from 20 to 50
+  * Windows installer now contains a 32 and 64 bit version of Jamulus (the version to
+    be installed is selected automatically according to the detected operating system)
+  * bug fix: server list ping times may not be accurate and client list may not be retrieved
+</comment>
+    <requestid>794380</requestid>
+  </revision>
 </revisionlist>
