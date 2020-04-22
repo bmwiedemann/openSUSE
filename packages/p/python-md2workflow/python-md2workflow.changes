@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:11:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- The package name is python-redmine not just redmine on pypi
+  thus fix the requires
+
+-------------------------------------------------------------------
+Mon Apr 20 08:34:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix files sections and alternatives
+
+-------------------------------------------------------------------
+Tue Feb 18 12:23:16 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.12
+* Add redmine support https://github.com/openSUSE/md2workflow/issues/11
+  This was part of hackweek19
+* Add config for progress.opensuse.org (opensuse-prod)
+
+* Split JIRA and Redmine plugins into a separate packages
+  SLE doesn't have python-redmine so let's not force them to install
+  it
+
+* Add LICENSE as a Source1 (bump all remaining by one)
+
+-------------------------------------------------------------------
 Thu Oct 31 10:39:58 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update to 1.4.9
