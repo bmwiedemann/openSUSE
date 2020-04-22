@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2020-03-R1
+%define realver 2020-04-R1
 Name:           kismet
-Version:        2020_03_R1
+Version:        2020_04_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -313,9 +313,11 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_libdir}/kismet/alertsyslog.so
 
 %files logtools
+%{_bindir}/kismetdb_clean
 %{_bindir}/kismetdb_dump_devices
 %{_bindir}/kismetdb_statistics
 %{_bindir}/kismetdb_strip_packets
+%{_bindir}/kismetdb_to_gpx
 %{_bindir}/kismetdb_to_kml
 %{_bindir}/kismetdb_to_wiglecsv
 

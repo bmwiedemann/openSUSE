@@ -370,4 +370,28 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>790009</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>26124507c2027fedae73b3d0abb23ba0</srcmd5>
+    <version>2020_04_R1</version>
+    <time>1587581935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-04-R1
+  * New web-based UI with searching, device notes, realtime
+    graphs, and more.
+  * A REST-like API
+  * Expanded support for non-WiFi capture types
+  * New remote capture
+  * Massive data set support
+  * New KismetDB logs
+  * Multithreaded optimizations
+  * Kismet will now take advantage of multi-core systems, both on
+    large servers, and on small systems like the Raspberry Pi;
+  * Live packet export
+  * Packets can now be streamed live via the export endpoints, as
+    a pcapng stream of all packets or with live filtering by data
+    source, device, and more.
+  * Scriptable alerts
+  * Alerts can be defined (and triggered) via REST endpoints (forwarded request 796131 from mnhauke)</comment>
+    <requestid>796267</requestid>
+  </revision>
 </revisionlist>

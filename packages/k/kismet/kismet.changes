@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 21 20:17:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-04-R1
+  * New web-based UI with searching, device notes, realtime
+    graphs, and more.
+  * A REST-like API
+  * Expanded support for non-WiFi capture types
+  * New remote capture
+  * Massive data set support
+  * New KismetDB logs
+  * Multithreaded optimizations
+  * Kismet will now take advantage of multi-core systems, both on
+    large servers, and on small systems like the Raspberry Pi;
+  * Live packet export
+  * Packets can now be streamed live via the export endpoints, as
+    a pcapng stream of all packets or with live filtering by data
+    source, device, and more.
+  * Scriptable alerts
+  * Alerts can be defined (and triggered) via REST endpoints
+
+-------------------------------------------------------------------
 Sun Mar 29 17:32:50 UTC 2020 - ecsos@opensuse.org
 
 - Install plugin alertsyslog.
