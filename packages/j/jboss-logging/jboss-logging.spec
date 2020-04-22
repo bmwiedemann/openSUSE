@@ -19,19 +19,19 @@
 %global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
 Name:           jboss-logging
-Version:        3.3.0
+Version:        3.4.1
 Release:        0
 Summary:        The JBoss Logging Framework
 License:        Apache-2.0
 URL:            https://github.com/jboss-logging/jboss-logging
-Source0:        https://github.com/jboss-logging/jboss-logging/archive/%{namedversion}.tar.gz
+Source0:        https://github.com/jboss-logging/jboss-logging/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(log4j:log4j)
+BuildRequires:  mvn(log4j:log4j:1.2.16)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
-BuildRequires:  mvn(org.jboss.logmanager:jboss-logmanager)
 BuildRequires:  mvn(org.jboss:jboss-parent:pom:)
+BuildRequires:  mvn(org.jboss.logmanager:jboss-logmanager)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
@@ -45,7 +45,7 @@ Summary:        Javadoc for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n jboss-logging-%{namedversion}
+%setup -qn %{name}-%{namedversion}
 
 %pom_xpath_set pom:properties/pom:version.org.apache.log4j 12
 
@@ -56,14 +56,11 @@ sed -i "s|map = MDC.getCopyOfContextMap();|map = (Map) MDC.getCopyOfContextMap()
 # Unneeded task
 %pom_remove_plugin :maven-source-plugin
 
-# Javadoc broken with apiviz taglet
-%pom_remove_plugin :maven-javadoc-plugin
-
 cp -p src/main/resources/META-INF/LICENSE.txt .
 sed -i 's/\r//' LICENSE.txt
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
