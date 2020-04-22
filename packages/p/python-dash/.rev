@@ -55,4 +55,12 @@
     <comment>- Fix all the runtime dependencies</comment>
     <requestid>790028</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c5ec3c756d4f722521b594b2f8d75d3</srcmd5>
+    <version>1.11.0</version>
+    <time>1587581422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795470</requestid>
+  </revision>
 </revisionlist>
