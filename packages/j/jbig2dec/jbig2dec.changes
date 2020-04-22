@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:31:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.18
+  * Performance enhancements related to decoding of MMR and
+    generic regions as well as composing images onto pages.
+  * Bug fixes for a few issues reported by Coverity and OSS-Fuzz.
+    version 0.17:
+  * Improved test suite by verifying input file contents and
+    adding all ubc test streams. Fixed bugs where previously
+    missing ubc test streams were decoded incorrectly.
+  * Bug fixes for a few issues reported by Coverity.
+  * Moved version number to jbig2.h, and adapted configure
+    correspondingly. Added pkg-config file to be installed
+    along side library.
+    version 0.16:
+  * API change allowing for library users to get the custom
+    allocator so it may be freed if necessary. This is useful if
+    the allocator is extended with e.g. a custom pointer needed
+    by the allocator callbacks.
+    version 0.15:
+  * Bug fix release, with many security related and stability
+    fixes as well as better tolerance/behaviour with out of spec
+    files
+- New upstream source
+- Now running autoreconf before configure to avoid problems with
+  the latter. Also build require automake and libtool for this
+  purpose.
+- Dropped Group tag
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Nov 19 05:13:13 UTC 2017 - aloisio@gmx.com
 
 - Use AGPL-3.0+ license

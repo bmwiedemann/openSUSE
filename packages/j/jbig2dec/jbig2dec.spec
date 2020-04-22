@@ -1,7 +1,7 @@
 #
 # spec file for package jbig2dec
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define _gsver  952
+%define _sover  0
 Name:           jbig2dec
-Version:        0.14
+Version:        0.18
 Release:        0
 Summary:        JBIG2 Decoder Utility
-License:        AGPL-3.0+
-Group:          Productivity/Other
-URL:            https://www.ghostscript.com/jbig2dec.html
-Source:         http://downloads.ghostscript.com/public/jbig2dec/%{name}-%{version}.tar.gz
+License:        AGPL-3.0-or-later
+URL:            https://jbig2dec.com
+Source:         https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs%{_gsver}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
 
 %description
@@ -32,18 +36,16 @@ jbig2dec is a decoder utility implementing the JBIG2 bi-level image compression
 spec. Also known as ITU T.88 and ISO IEC 14492, and included by reference in
 Adobe's PDF version 1.4 and later.
 
-%package -n libjbig2dec0
+%package -n libjbig2dec%{_sover}
 Summary:        JBIG2 Decoder Library
-Group:          System/Libraries
 
-%description -n libjbig2dec0
+%description -n libjbig2dec%{_sover}
 jbig2dec is a decoder utility implementing the JBIG2 bi-level image compression
 spec. Also known as ITU T.88 and ISO IEC 14492, and included by reference in
 Adobe's PDF version 1.4 and later.
 
 %package devel
 Summary:        JBIG2 decoder development files
-Group:          Development/Libraries/C and C++
 Requires:       libjbig2dec0 = %{version}
 
 %description devel
@@ -51,11 +53,12 @@ This package contains development files needed for developing applications
 based on libjbig2dec.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -fPIC"
 export LDFLAGS="-pie"
+autoreconf -fiv
 %configure \
   --disable-static \
   --with-libpng
@@ -74,14 +77,15 @@ rm %{buildroot}%{_libdir}/libjbig2dec.la
 %doc CHANGES README
 %license COPYING LICENSE
 %{_bindir}/jbig2dec
-%{_mandir}/man1/jbig2dec.1%{ext_man}
+%{_mandir}/man1/jbig2dec.1%{?ext_man}
 
-%files -n libjbig2dec0
+%files -n libjbig2dec%{_sover}
 %{_libdir}/libjbig2dec.so.*
 
 %files devel
 %{_includedir}/jbig2.h
 %{_includedir}/memento.h
 %{_libdir}/libjbig2dec.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
