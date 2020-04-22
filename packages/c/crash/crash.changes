@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:00:31 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Make Factory ppc64 crash usable on both SLE 15 SP1 and releases before
+  SLE15 SP1 (bsc#1148197).  This is only a workaround that requires to build
+  crash for each codestream separately.
+
+-------------------------------------------------------------------
+Fri Apr 17 23:53:17 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Drop crash-s390-autodetect-kaslr.patch which has been merged in 7.2.7.
+
+-------------------------------------------------------------------
 Wed Apr  8 09:42:08 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Add crash-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
@@ -38,9 +50,11 @@ Tue Feb  4 15:50:22 UTC 2020 - David Mair <dmair@suse.com>
 -------------------------------------------------------------------
 Fri Jan 10 17:41:20 UTC 2020 - David Mair <dmair@suse.com>
 
-- Upgrade source tarball to version 7.2.7 to support currently used
-  kernel versions.
-- drop the following patch that is obsoleted by souce upgrade:
+- Upgraded the source tarball to version 7.2.7. This is required
+  to support coredumps from currently used kernel versions in the
+  product (bsc#1159686).
+- droped the patch obsoleted due to already being present in the
+  new source:
   * crash-allow-kmem-section-is-early.patch
 
 -------------------------------------------------------------------
@@ -69,15 +83,18 @@ Wed Aug 21 12:57:09 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 -------------------------------------------------------------------
 Thu Aug  8 15:22:17 UTC 2019 - David Mair <dmair@suse.com>
 
-- Add patch for commit 326e1b8f83a4318b09033ef754f40c785aed5e68
+- Added patch for commit 326e1b8f83a4318b09033ef754f40c785aed5e68
   in linux 5.3:
   crash-allow-kmem-section-is-early.patch
 
 -------------------------------------------------------------------
 Mon Jun 24 18:00:01 UTC 2019 - David Mair <dmair@suse.com>
 
-- Upgrade source tarball to version 7.2.6
-- drop patches obsoleted by version upgrade
+  Upgraded the source tarball to version 7.2.6 to bring better
+  support of version 5 kernels such as 5.3 in SLE-15-SP2
+  (bsc#114706)
+
+  Dropped the following patches obsoleted by the version upgrade:
   * crash-xen-invalid-pcpu-vaddr-use-hardware-domain-symbol.patch
   * crash-fix-for-4.20-without-CONFIG_RANDOMIZE_BASE.patch
   * crash-fix-for-virsh-dump-dumps-with-KASLR.patch
@@ -88,6 +105,19 @@ Mon Jun 24 18:00:01 UTC 2019 - David Mair <dmair@suse.com>
   * crash-handle-radix_tree_root-changes-in-post-5.1-kernels.patch
   * crash-find-kernel-configuration-data-with-kernel-5.1.patch
   * crash-fix-dev-dD-on-kernel-5.1.patch
+    crash-Fix-and-an-update-for-the-ipcs-command.patch
+    crash-update-recognition-of-x86_64-CPU_ENTRY_AREA.patch
+
+  Re-aligned the following patches with the new version source:
+    crash-allow-use-of-sadump-captured-KASLR-kernel.patch
+    crash-debuginfo-compressed.patch
+    crash-make-emacs-default.diff
+    crash-sles9-time.patch
+
+  Modified the following patches to integrate with version upgrade:
+    crash-compressed-booted-kernel.patch
+    crash-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
+    crash-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 
 -------------------------------------------------------------------
 Tue Apr 23 09:21:32 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
@@ -95,7 +125,6 @@ Tue Apr 23 09:21:32 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
 - Upgrade the source tarball to version 7.2.5
 - drop patches obsoleted by version upgrade:
   * crash-fix-snprintf-overflow.patch
-  * crash-stop_read_error_when_intent_is_retry.patch
   * crash-update-recognition-of-x86_64-CPU_ENTRY_AREA.patch
 - post-7.2.5 upstream patches for kernel 5.0/5.1 compatibility:
   * crash-fix-for-4.20-without-CONFIG_RANDOMIZE_BASE.patch
@@ -111,17 +140,49 @@ Tue Apr 23 09:21:32 UTC 2019 - Michal Kubecek <mkubecek@suse.cz>
 -------------------------------------------------------------------
 Thu Feb 14 19:23:00 CET 2019 - dmair@suse.de
 
-- With a xen 4.11 dump crash will fail to start reporting "cannot 
-  fill pcpu struct" and "cannot read cpu_info" due to xen changes 
-  not tracked by crash updates. Fixed by including:
+- Update for XEN dom0 changes in v4.11 that cause coredumps made
+  of a domU using virch on the dom0 to fail to load in the dom0
+  version of crash reporting "crash: invalid kernel virtual address:
+  <address> type:fill_pcpu_struct", followed by "WARNING: cannot 
+  fill pcpu_struct" and "crash: cannot read cpu_info"
+  (bsc#1124690 and bsc#1122594)
+  Added:
   crash-xen-invalid-pcpu-vaddr-use-hardware-domain-symbol.patch
-  (bsc#1122594)
+
+-------------------------------------------------------------------
+Fri Jan 11 15:07:52 UTC 2019 - sparschauer@suse.de
+
+- Update the recognition of x86_64 CPU_ENTRY_AREA (bsc#1104743, bsc#1090127)
+  Added:
+     crash-update-recognition-of-x86_64-CPU_ENTRY_AREA.patch
+
+-------------------------------------------------------------------
+Tue Dec 18 16:36:40 UTC 2018 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix SLE15 SP1 Incorrect vmcore generated (bsc#1119791).
+   Added:
+     crash-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
+     crash-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
+  This is not compatible with SLE15 and SLE12 SP4.
 
 -------------------------------------------------------------------
 Fri Oct 12 05:00:27 UTC 2018 - Jeffrey Cheung <jcheung@suse.com>
 
 - Sync with SLE15 SP1 (SR#173916) to enable the kmp-rt for SLERT15 SP1 only
   set %if 0%{?sle_version} >= 150100
+
+-------------------------------------------------------------------
+Wed Aug  8 11:02:28 UTC 2018 - msuchanek@suse.com
+
+- Added:
+    crash-Fix-and-an-update-for-the-ipcs-command.patch
+
+  The update is required for Linux 4.11 and greater kernels, which
+  reimplemented the IDR facility to use radix trees in kernel commit
+  0a835c4f090af2c76fc2932c539c3b32fd21fbbb, titled "Reimplement IDR and IDA
+  using the radix tree".  Without the patch, if any IPCS entry exists, the
+  command would fail with the message "ipcs: invalid structure member offset:
+  idr_top" (bsc#1092101)
 
 -------------------------------------------------------------------
 Wed Jul  4 19:26:40 UTC 2018 - ptesarik@suse.com

@@ -87,8 +87,10 @@ Patch12:        eppic-switch-to-system-lib.patch
 Patch13:        %{name}-patch-gdb.patch
 Patch15:        %{name}_enable_snappy_support.patch
 Patch16:        eppic-support-arm64.patch
+Patch18:        %{name}-stop_read_error_when_intent_is_retry.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
-Patch24:        %{name}-s390-autodetect-kaslr.patch
+Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
+Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch25:        %{name}-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
 Patch26:        %{name}-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
@@ -275,6 +277,18 @@ Authors:
 
 %endif
 
+# Compatibility cruft
+# there is no %%license prior to SLE12
+%if %{undefined _defaultlicensedir}
+%define license %doc
+%else
+# filesystem before SLE12 SP3 lacks /usr/share/licenses
+%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
+%define _defaultlicensedir %{_defaultdocdir}
+%endif
+%endif
+# End of compatibility cruft
+
 %prep
 %setup -q -a 2 -a 4
 %patch1 -p1
@@ -285,8 +299,14 @@ Authors:
 %patch10 -p1
 %patch11 -p1
 %patch13 -p1
+%patch18 -p1
 %patch21 -p1
+# Patches for SLE 15 SP1 potentially break support for SLE15 and SLE 12 SP4
+# Don't apply on these (and earlier) versions - see bsc#1148197
+%if 0%{?sle_version} > 120400 && 0%{?sle_version} != 150000 
+%patch23 -p1
 %patch24 -p1
+%endif
 %patch25 -p1
 %patch26 -p1
 %if %{have_snappy}
@@ -400,7 +420,8 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_bindir}/crash
 %{_mandir}/man8/crash.8*
-%doc README README.SUSE COPYING3
+%license COPYING3
+%doc README README.SUSE
 %dir %{_libdir}/crash
 %dir %{_libdir}/crash/extensions
 
