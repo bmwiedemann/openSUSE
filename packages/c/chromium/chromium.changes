@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 21 23:24:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 81.0.4044.122 (boo#1170107):
+  * CVE-2020-6459: Use after free in payments
+  * CVE-2020-6460: Insufficient data validation in URL formatting
+  * CVE-2020-6458: Out of bounds read and write in PDFium
+
+-------------------------------------------------------------------
+Fri Apr 17 08:12:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 81.0.4044.113 bsc#1169729:
+  * CVE-2020-6457: Use after free in speech recognizer
+
+-------------------------------------------------------------------
 Tue Apr 14 13:38:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Try to use system version of xdg-utils

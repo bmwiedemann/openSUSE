@@ -2894,4 +2894,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>- Try to use system version of xdg-utils</comment>
     <requestid>794067</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>17ced56ab2c8b9bb841597e0dcd4e071</srcmd5>
+    <version>81.0.4044.122</version>
+    <time>1587581012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796194</requestid>
+  </revision>
 </revisionlist>
