@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 18 20:54:40 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.0.3:
+  * Updated
+    + Update generated props
+    + Update generated R artifacts
+
+-------------------------------------------------------------------
 Tue Mar 31 07:11:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix buildrequires
