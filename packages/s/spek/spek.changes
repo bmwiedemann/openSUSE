@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Apr 16 18:45:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Complete specfile overhaul
+  + Use proper BuildRequires
+  + Use correct Group Tag
+  + Convert inline changelog to changes file
+  + Add patches to make it compile on modern systems:
+    * ffmpeg_2.9.patch
+    * fix-compilation-with-libav-8.patch 
+
+-------------------------------------------------------------------
+Wed Oct 30 00:00:00 UTC 2013 - Huaren Zhong <huaren.zhong@gmail.com>
+
+- Rebuild for Fedora
+
+-------------------------------------------------------------------
+Fri Jul 12 00:00:00 UTC 2013 - fwang <fwang> 0.8.1-4.mga4
+
++ Revision: 453382
+- fix build with recent ffmpeg
+
+-------------------------------------------------------------------
+Mon Jan 14 00:00:00 UTC 2013 - umeabot <umeabot> 0.8.1-4.mga3
+
++ Revision: 382517
+- Mass Rebuild - https://wiki.mageia.org/en/Feature:Mageia3MassRebuild
+
+-------------------------------------------------------------------
+Wed Jan  9 00:00:00 UTC 2013 - malo <malo> 0.8.1-3.mga3
+
++ Revision: 343376
+- updated RPM group (Visualization is no more)
+
+-------------------------------------------------------------------
+Tue Jan  8 00:00:00 UTC 2013 - fwang <fwang> 0.8.1-2.mga3
+
++ Revision: 341743
+- rebuild for new ffmpeg
+
+-------------------------------------------------------------------
+Thu Nov 22 00:00:00 UTC 2012 - mitya <mitya> 0.8.1-1.mga3
+
++ Revision: 320424
+- 0.8.1
+- Created package structure for spek.
+
+
