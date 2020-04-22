@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 07:27:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add BR on pkgconfig(ffnvcodec) to enable CUDA support 
+
+-------------------------------------------------------------------
 Mon Apr 20 12:50:18 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20200418T001652.a09c7691d7:

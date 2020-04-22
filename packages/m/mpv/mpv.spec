@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(caca) >= 0.99.beta18
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(ffnvcodec) >= 8.2.15.7
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)

@@ -804,4 +804,12 @@
     for the complete changelog.</comment>
     <requestid>795829</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>c69a8c08541a2809be7e6897832898aa</srcmd5>
+    <version>0.32.0+git.20200418T001652.a09c7691d7</version>
+    <time>1587581807</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BR on pkgconfig(ffnvcodec) to enable CUDA support</comment>
+    <requestid>796211</requestid>
+  </revision>
 </revisionlist>
