@@ -17,7 +17,7 @@
 
 
 Name:           creduce
-Version:        2.10.0+git.20191010.8a67e69
+Version:        2.10.0+git.20200420.d83cbda
 Release:        0
 Summary:        C-Reduce, a C program reducer
 License:        BSD-3-Clause
@@ -25,13 +25,11 @@ Group:          Development/Tools/Other
 URL:            https://github.com/csmith-project/creduce
 Source:         %{name}-%{version}.tar.xz
 Patch0:         llvm9-libs-fix.patch
-Patch1:         install-location.patch
 Patch2:         binary-search-location.patch
 Patch3:         port-to-llvm10.patch
 Patch4:         std-cpp14.patch
 BuildRequires:  astyle
 BuildRequires:  clang9-devel
-BuildRequires:  cmake
 BuildRequires:  delta
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -70,22 +68,21 @@ bugs in compilers and other tools that process C/C++ code.
 %autopatch -p1
 
 %build
-%cmake
+%configure
 %make_build
 
 %install
-cd build
 %make_install
 
-rm %{buildroot}/usr/libexec/topformflat
-rm %{buildroot}/usr/libexec/unifdef
+rm %{buildroot}%{_libexecdir}/topformflat
+rm %{buildroot}%{_libexecdir}/unifdef
 
 %files
 %license COPYING
 %{_bindir}/creduce
-%{_bindir}/clang_delta
-%{_bindir}/clex
-%{_bindir}/strlex
+%{_libexecdir}/clang_delta
+%{_libexecdir}/clex
+%{_libexecdir}/strlex
 %{_datadir}/creduce
 
 %changelog

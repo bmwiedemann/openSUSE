@@ -11,45 +11,6 @@ index 1e71112..4578b30 100644
  };
  
  our @EXPORT = qw();
-diff --git a/creduce/pass_clang.pm b/creduce/pass_clang.pm
-index 3bd8314..3b8085b 100644
---- a/creduce/pass_clang.pm
-+++ b/creduce/pass_clang.pm
-@@ -35,7 +35,7 @@ sub check_prereqs () {
-     if ((defined $abs_bindir) && ($FindBin::RealBin eq $abs_bindir)) {
- 	# This script is in the installation directory.
- 	# Use the installed `clang_delta'.
--	$path = libexecdir . "/clang_delta";
-+	$path = $abs_bindir . "/clang_delta";
-     } else {
- 	# Assume that this script is in the C-Reduce build tree.
- 	# Use the `clang_delta' that is also in the build tree.
-diff --git a/creduce/pass_clang_binsrch.pm b/creduce/pass_clang_binsrch.pm
-index 7470d51..b079214 100644
---- a/creduce/pass_clang_binsrch.pm
-+++ b/creduce/pass_clang_binsrch.pm
-@@ -47,7 +47,7 @@ sub check_prereqs () {
-     if ((defined $abs_bindir) && ($FindBin::RealBin eq $abs_bindir)) {
- 	# This script is in the installation directory.
- 	# Use the installed `clang_delta'.
--	$path = libexecdir . "/clang_delta";
-+	$path = $abs_bindir . "/clang_delta";
-     } else {
- 	# Assume that this script is in the C-Reduce build tree.
- 	# Use the `clang_delta' that is also in the build tree.
-diff --git a/creduce/pass_clex.pm b/creduce/pass_clex.pm
-index 66707bf..29ea764 100644
---- a/creduce/pass_clex.pm
-+++ b/creduce/pass_clex.pm
-@@ -35,7 +35,7 @@ sub check_prereqs () {
-     if ((defined $abs_bindir) && ($FindBin::RealBin eq $abs_bindir)) {
- 	# This script is in the installation directory.
- 	# Use the installed `clex'.
--	$path = libexecdir . "/clex";
-+	$path = $abs_bindir . "/clex";
-     } else {
- 	# Assume that this script is in the C-Reduce build tree.
- 	# Use the `clex' that is also in the build tree.
 diff --git a/creduce/pass_ifs.pm b/creduce/pass_ifs.pm
 index c8811a4..238f977 100644
 --- a/creduce/pass_ifs.pm

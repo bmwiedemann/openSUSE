@@ -279,4 +279,25 @@
 - Add port-to-llvm10.patch and std-cpp14.patch to use LLVM10.</comment>
     <requestid>793392</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1686e87fda90a286437c122738f08b5f</srcmd5>
+    <version>2.10.0+git.20200420.d83cbda</version>
+    <time>1587581856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0+git.20200420.d83cbda:
+  * fixed an issue of infinitely looking-up function decls
+  * added several tests for remove-unused-function
+  * Fixed issues for replacing decls with macro expansions
+  * Do `apt-key add` before adding the `apt.llvm.org` repository.
+  * Include newly added test in distribution tarball.
+  * skip AutoType for reduce-pointer-level at the moment
+  * workaround to skip invalid locations
+  * remove an assert that was too conservative
+  * handle an initializer of CXXOperatorCallExpr
+  * generate auto decl for callee expr with auto type
+
+- Move back to configure and make.
+- Remove not needed install-location.patch.</comment>
+    <requestid>796230</requestid>
+  </revision>
 </revisionlist>

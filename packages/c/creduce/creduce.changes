@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:20:25 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.10.0+git.20200420.d83cbda:
+  * fixed an issue of infinitely looking-up function decls
+  * added several tests for remove-unused-function
+  * Fixed issues for replacing decls with macro expansions
+  * Do `apt-key add` before adding the `apt.llvm.org` repository.
+  * Include newly added test in distribution tarball.
+  * skip AutoType for reduce-pointer-level at the moment
+  * workaround to skip invalid locations
+  * remove an assert that was too conservative
+  * handle an initializer of CXXOperatorCallExpr
+  * generate auto decl for callee expr with auto type
+
+-------------------------------------------------------------------
+Wed Apr 22 08:17:53 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Move back to configure and make.
+- Remove not needed install-location.patch.
+
+-------------------------------------------------------------------
 Sun Apr 12 10:44:12 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Revert to LLVM 9 due to:
