@@ -1,7 +1,7 @@
 #
 # spec file for package tealdeer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tealdeer
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        MIT OR Apache-2.0
@@ -52,10 +52,7 @@ EOF
 cargo build --release --locked %{?_smp_mflags}
 
 %install
-cargo install --root=%{buildroot}%{_prefix} --path .
-
-# remove residue crate file
-rm %{buildroot}%{_prefix}/.crates.toml
+cargo install --no-track --root=%{buildroot}%{_prefix} --path .
 
 %files
 %doc README.md
