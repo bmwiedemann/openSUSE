@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-abseil
 Version:        0.9.0
 Release:        0
@@ -25,11 +26,9 @@ License:        Apache-2.0
 URL:            https://github.com/abseil/abseil-py
 Source0:        https://github.com/abseil/abseil-py/archive/pypi-v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
-BuildRequires:  python-mock
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-six
 Requires:       python-six
 BuildArch:      noarch
 %ifpython2
@@ -37,6 +36,10 @@ Requires:       python-enum34
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module six}
+%if %{with python2}
+BuildRequires:  python-enum34
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %python_subpackages
 

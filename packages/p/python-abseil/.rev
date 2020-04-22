@@ -42,4 +42,12 @@
     <comment>py38</comment>
     <requestid>782812</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bdcf32e3d60b39ca011c5b79d0ef83cf</srcmd5>
+    <version>0.9.0</version>
+    <time>1587581923</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796253</requestid>
+  </revision>
 </revisionlist>
