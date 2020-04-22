@@ -31,12 +31,12 @@ BuildRequires:  %{python_module urllib3 >= 1.25.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module maxminddb >= 1.4.0}
-BuildRequires:  %{python_module requests >= 2.9}
+BuildRequires:  %{python_module maxminddb >= 1.5.2}
+BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module requests-mock >= 0.5}
 # /SECTION
-Requires:       python-maxminddb >= 1.4.0
-Requires:       python-requests >= 2.9
+Requires:       python-maxminddb >= 1.5.2
+Requires:       python-requests >= 2.22.0
 Requires:       python-urllib3 >= 1.25.2
 BuildArch:      noarch
 %ifpython2
