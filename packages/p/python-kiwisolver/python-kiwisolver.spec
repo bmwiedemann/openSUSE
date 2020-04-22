@@ -1,7 +1,7 @@
 #
 # spec file for package python-kiwisolver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-kiwisolver
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/nucleic/kiwi
+URL:            https://github.com/nucleic/kiwi
 Source:         https://github.com/nucleic/kiwi/archive/%{version}.tar.gz
+BuildRequires:  %{python_module cppy >= 1.1.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
