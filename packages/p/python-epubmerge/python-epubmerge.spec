@@ -1,7 +1,7 @@
 #
 # spec file for package python-epubmerge
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,22 @@
 
 %define upname EpubMerge
 %define upnamedown epubmerge
-%define skip_python3 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-epubmerge
-Version:        2.3.0
+Version:        2.9.0
 Release:        0
 Summary:        EpubMerge Calibre Plugin
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/EpubMerge
 Source:         https://github.com/JimmXinu/EpubMerge/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2
+Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+# converted to update-alternatives with 2.9.0 release
+Conflicts:      python2-%{upnamedown} < 2.9.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,14 +63,23 @@ merged books comments. These options are stored by Library.
 %setup -q -n %{upname}-%{version}
 
 %build
-/bin/true
+%python_build
 
 %install
-install -p -D epubmerge.py %{buildroot}%{_bindir}/%{upnamedown}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/%{upnamedown}
+
+%post
+%python_install_alternative %{upnamedown}
+
+%postun
+%python_uninstall_alternative %{upnamedown}
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{_bindir}/%{upnamedown}
+%python_alternative %{_bindir}/%{upnamedown}
+%{python_sitelib}/%{upname}*
 
 %changelog

@@ -8,4 +8,25 @@
 </comment>
     <requestid>659764</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f3085556cee9198dd495eed948babc1</srcmd5>
+    <version>2.9.0</version>
+    <time>1587581605</time>
+    <user>dimstar_suse</user>
+    <comment>- Use update-alternatives for the binary
+
+- Upgrade to 2.9.0:
+  - Update translations.
+  - Set allowZip64=True when writing zip files. Should only
+    matter for files &gt;2G.
+  - Update cover view as well as tags and library list on new
+    book create.
+  - Copy six.ensure_binary for Calibre v3.
+  - Reduce debug output.
+  - Changes for eventual Python3 migration of Calibre.
+  - Add 'current time' option to custom datetime columns.
+  - Add a check and error message for unsupported epub3.
+- Rewrite SPEC into the standard pythonish one.</comment>
+    <requestid>796281</requestid>
+  </revision>
 </revisionlist>
