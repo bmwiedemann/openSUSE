@@ -25,9 +25,9 @@ Summary:        SunPy: Python for Solar Physics
 License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
+Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-UPSTREAM fix_importlib_py_ver.patch -- https://github.com/sunpy/sunpy/pull/3683
 Patch0:         fix_importlib_py_ver.patch
-Source100:      python-sunpy-rpmlintrc
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module astropy >= 1.0.0}
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module astropy-helpers >= 1.0.0}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module drms}
+BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module matplotlib >= 1.1}
 BuildRequires:  %{python_module numpy-devel > 1.7.1}
 BuildRequires:  %{python_module pandas >= 0.12.0}
@@ -45,12 +46,11 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module suds-jurko}
-BuildRequires:  %{python_module drms}
 BuildRequires:  fdupes
-BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-rpm-macros
 Requires:       python-aioftp
 Requires:       python-astropy >= 1.0.0
+Requires:       python-importlib_resources
 Requires:       python-matplotlib >= 1.1
 Requires:       python-numpy > 1.7.1
 Requires:       python-pandas >= 0.12.0
@@ -74,10 +74,6 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zeep}
 # /SECTION
-%if %{python3_version_nodots} < 37
-BuildRequires:  %{python_module importlib_resources}
-Requires:       python-importlib_resources
-%endif
 %python_subpackages
 
 %description

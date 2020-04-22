@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:09:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove python2 dependencies
+- Do not condition importlib_resources, namespace is provided by
+  our interpreter to allow compat
+
+-------------------------------------------------------------------
 Wed Jan 29 18:49:45 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 1.1.0

@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>768899</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>256a7efe40f6874858016b844a8bdbf7</srcmd5>
+    <version>1.1.0</version>
+    <time>1587581526</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python2 dependencies
+- Do not condition importlib_resources, namespace is provided by
+  our interpreter to allow compat</comment>
+    <requestid>795723</requestid>
+  </revision>
 </revisionlist>
