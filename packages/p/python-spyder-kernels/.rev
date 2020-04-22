@@ -330,4 +330,13 @@
 - update to version 1.9.0:</comment>
     <requestid>787271</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>187362c7a084cd97ea9e166de1e46de8</srcmd5>
+    <version>1.9.0</version>
+    <time>1587581512</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unused python2 requirements 
+</comment>
+    <requestid>795706</requestid>
+  </revision>
 </revisionlist>

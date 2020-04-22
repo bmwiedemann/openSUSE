@@ -42,16 +42,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module wurlitzer}
 BuildRequires:  %{python_module xarray}
-BuildRequires:  python-futures
 # /SECTION
 Requires:       python-cloudpickle
 Requires:       python-ipykernel >= 4.8.2
 Requires:       python-jupyter_client >= 5.2.3
 Requires:       python-pyzmq >= 17
 Requires:       python-wurlitzer
-%ifpython2
-Requires:       python-futures
-%endif
 BuildArch:      noarch
 
 %python_subpackages

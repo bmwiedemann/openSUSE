@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:39:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove unused python2 requirements 
+
+-------------------------------------------------------------------
 Sun Mar 22 13:49:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove fix-tests-ipython-7.10.patch, already included upstream
