@@ -47,4 +47,12 @@
     <comment>- Update to release 10.0.3</comment>
     <requestid>786179</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>909f66d2489855d1030640e018ddbf9d</srcmd5>
+    <version>10.0.4</version>
+    <time>1587581051</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>795756</requestid>
+  </revision>
 </revisionlist>

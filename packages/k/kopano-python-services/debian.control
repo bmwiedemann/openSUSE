@@ -10,6 +10,7 @@ Build-Depends:
  binutils (>= 2.20),
  debhelper (>= 9),
  devscripts,
+ dh-python,
  dh-systemd (>= 1.5),
  fakeroot,
  g++ (>= 4.8),
