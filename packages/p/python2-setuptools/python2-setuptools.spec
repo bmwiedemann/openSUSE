@@ -57,23 +57,35 @@ sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py \
 
 %install
 %python2_install
-%prepare_alternative easy_install
+
+# update-alternatives
+mkdir -p %{buildroot}%{_bindir}
+mv %{buildroot}%{_bindir}/easy_install{,-%{python_version}}
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
+touch %{buildroot}%{_sysconfdir}/alternatives/easy_install
+ln -sf %{_sysconfdir}/alternatives/easy_install \
+    %{buildroot}%{_bindir}/easy_install
+
 %fdupes %{buildroot}%{python2_sitelib}
 
 %post
-%python_install_alternative easy_install
+%{_sbindir}/update-alternatives --install %{_bindir}/easy_install \
+    easy_install %{_bindir}/easy_install-%{python_version} 27
 
 %postun
-%python_uninstall_alternative easy_install
+if [ ! -f %{_bindir}/easy_install ] ; then
+    %{_sbindir}/update-alternatives --remove easy_install %{_bindir}/easy_install-%{python_version}
+fi
 
 %files
 %license LICENSE
 %doc CHANGES.rst README.rst
-%python_alternative %{_bindir}/easy_install
+%{_bindir}/easy_install*
+%{python2_sitelib}/easy_install*
 %{python2_sitelib}/setuptools
 %{python2_sitelib}/setuptools-%{version}-py*.egg-info
-%{python2_sitelib}/easy_install.py*
 %dir %{python2_sitelib}/pkg_resources
 %{python2_sitelib}/pkg_resources/*
+%ghost %_sysconfdir/alternatives/easy_install
 
 %changelog
