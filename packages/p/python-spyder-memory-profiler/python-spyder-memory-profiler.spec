@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-spyder-memory-profiler
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Memory profiler plugin for the Spyder IDE
 License:        MIT
@@ -80,7 +80,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
 %files -n spyder-memory-profiler
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/spyder_memory_profiler
 %{python_sitelib}/spyder_memory_profiler-%{version}-*.egg-info

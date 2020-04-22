@@ -58,4 +58,12 @@
 [1] https://build.opensuse.org/request/show/790068</comment>
     <requestid>790070</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b070b0374f2621af67850c71e97ed5c7</srcmd5>
+    <version>0.2.1</version>
+    <time>1587581436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795548</requestid>
+  </revision>
 </revisionlist>

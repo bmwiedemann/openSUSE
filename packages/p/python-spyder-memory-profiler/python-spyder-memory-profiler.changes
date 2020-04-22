@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:58:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version .2.1
+  This release fixes some compatibility issues with Spyder 4.1 and some other bugs.
+  ### Issues Closed
+
+  * gh#spyder-ide/spyder-memory-profiler#27
+    Check TextEditor call
+    (PR gh#spyder-ide/spyder-memory-profiler#29)
+  * gh#spyder-ide/spyder-memory-profiler#26
+    Move README to markdown
+    (PR gh#spyder-ide/spyder-memory-profiler#28)
+  * gh#spyder-ide/spyder-memory-profiler#25
+    Move CI to github actions
+    (PR gh#spyder-ide/spyder-memory-profiler#28)
+  * gh#spyder-ide/spyder-memory-profiler#21
+    start Profile memory usage
+    (PR gh#spyder-ide/spyder-memory-profiler#31)
+
+  ### Pull Requests Merged
+
+  * gh#spyder-ide/spyder-memory-profiler#31
+    PR: Fix Start button
+    (gh#spyder-ide/spyder-memory-profiler#21)
+  * gh#spyder-ide/spyder-memory-profiler#30
+    PR: Fix opening editor from profiler widget
+  * gh#spyder-ide/spyder-memory-profiler#29
+    Widget: Fix initialization of TextEditor
+    (gh#spyder-ide/spyder-memory-profiler#27)
+  * gh#spyder-ide/spyder-memory-profiler#28
+    PR: Transfer CI to GitHub Actions
+    (gh#spyder-ide/spyder-memory-profiler#26,
+    gh#spyder-ide/spyder-memory-profiler#25)
+  * gh#spyder-ide/spyder-memory-profiler#24
+    PR: Add CONF_DEFAULTS
+
+  In this release 4 issues and 5 pull requests were closed.  
+
+-------------------------------------------------------------------
 Tue Mar 24 16:05:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - add release to provides and obsoletes
