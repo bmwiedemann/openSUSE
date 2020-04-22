@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 10:02:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix use of alternatives
+
+-------------------------------------------------------------------
 Tue Apr  7 08:46:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch pip binary to update-alternatives to allow coinstall with

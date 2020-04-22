@@ -36,8 +36,8 @@ Recommends:     ca-certificates-mozilla
 BuildArch:      noarch
 
 %description
-Pip is a replacement for easy_install. It uses mostly the same techniques for
-finding packages, so packages that were made easy_installable should be
+Pip is a replacement for pip. It uses mostly the same techniques for
+finding packages, so packages that were made pipable should be
 pip-installable as well.
 
 %prep
@@ -55,16 +55,24 @@ rm src/pip/_vendor/certifi/cacert.pem
 
 %install
 %python2_install
-%prepare_alternative pip
+
+# update-alternatives
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
+touch %{buildroot}%{_sysconfdir}/alternatives/pip
+ln -sf %{_sysconfdir}/alternatives/pip \
+     %{buildroot}%{_bindir}/pip
+
 %fdupes %{buildroot}%{python2_sitelib}
 
 %post
 # can't use `python_install_alternative` because it's pipX.Y, not pip-X.Y
-PRIO=$(echo %{python_version} | tr -d .)
-%install_alternative pip %{_bindir}/pip%{python2_version} $PRIO
+%{_sbindir}/update-alternatives --install %{_bindir}/pip \
+    pip %{_bindir}/pip2.7 27
 
 %postun
-%uninstall_alternative pip %{_bindir}/pip%{python2_version}
+if [ ! -f %{_bindir}/pip ] ; then
+    %{_sbindir}/update-alternatives --remove pip %{_bindir}/pip2.7
+fi
 
 %files
 %license LICENSE.txt
