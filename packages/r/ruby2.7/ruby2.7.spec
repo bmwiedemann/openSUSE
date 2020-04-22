@@ -81,6 +81,8 @@ Source4:        %{name}-default.macros
 Source98:       series
 Source99:       %{name}-rpmlintrc
 Patch:          use-pie.patch
+# PATCH-FIX-UPSTREAM bmwiedemann --https://github.com/ruby/io-console/commit/679a941d05d869f5e575730f6581c027203b7b26
+Patch1:         ruby2.7-drop-build-date.patch
 
 #
 BuildRequires:  ruby-bundled-gems-rpmhelper
@@ -274,6 +276,7 @@ tasks (as in Perl).  It is extensible.
 %setup -q -n ruby-%{pkg_version}
 #setup -q -n snapshot
 %patch -p1
+%patch1 -p1
 find sample -type f -perm /a=x -ls -exec chmod a-x \{\} \+
 # replace "/usr/bin/env ruby" and "/usr/local/bin/ruby" with correct path
 grep -Erl '^#! */.*ruby' benchmark bootstraptest ext lib sample test \
