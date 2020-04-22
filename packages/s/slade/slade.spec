@@ -1,7 +1,7 @@
 #
 # spec file for package slade
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           slade
-Version:        3.1.1.5
+Version:        3.1.11
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            https://github.com/sirjuddington/SLADE
+URL:            https://github.com/sirjuddington/SLADE
 Source:         https://github.com/sirjuddington/%name/archive/%version.tar.gz
 Source2:        slade.desktop
 Source100:      slade.appdata.xml
 Patch1:         basepk3.diff
-Patch2:         wxChar.patch
+Patch2:         wx.diff
 Patch10:        disable_sse.patch
-# PATCH-FIX-UPSTREAM https://github.com/sirjuddington/SLADE/pull/892 
-Patch11:        reproducible.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ImageMagick
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  freeimage-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 6
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_0-devel
 BuildRequires:  zip
@@ -51,7 +48,7 @@ BuildRequires:  strip-nondeterminism
 %endif
 
 %description
-SLADE3 is a modern editor for Doom-engine based games and source
+SLADE3 is an editor for Doom-engine based games and source
 ports. It has the ability to view, modify, and write many different
 game-specific formats, and even convert between some of them, or
 from/to other generic formats such as PNG.
@@ -59,13 +56,13 @@ from/to other generic formats such as PNG.
 %prep
 %setup -qn SLADE-%version
 %patch -P 1 -P 2 -p1
-%ifnarch %{ix86} x86_64
+%ifnarch %ix86 x86_64
 %patch10 -p0
 %endif
-%patch11 -p1
 
 %build
-%cmake -DUSE_WEBKIT_STARTPAGE=ON
+%define _lto_cflags %nil
+%cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF
 make %{?_smp_mflags}
 
 %install
@@ -99,8 +96,8 @@ install -Dm644 "%_sourcedir/slade.desktop" "$b/%_datadir/applications/%name.desk
 %endif
 
 %files
-%defattr(-,root,root)
-%doc gpl-2.0.txt README.md
+%license gpl-2.0.txt
+%doc README.md
 %_bindir/slade
 %_datadir/slade3/
 %_datadir/pixmaps/%name.png
