@@ -17,13 +17,15 @@
 
 
 Name:           quiterss
-Version:        0.19.3
+Version:        0.19.4
 Release:        0
 Summary:        RSS/Atom aggregator
 License:        GPL-3.0-or-later
 URL:            https://www.quiterss.org
-Source:         https://quiterss.org/files/%{version}/QuiteRSS-%{version}-src.tar.gz
+Source:         https://quiterss.org/files/%{version}_/QuiteRSS-%{version}-src.tar.gz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM quiterss-fix_webkit.patch aloisio@gmx.com -- fixes build with qt5webkit < 5.212~alpha4
+Patch0:         quiterss-fix_webkit.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -49,6 +51,7 @@ QuiteRSS is a RSS/Atom news feed reader.
 
 %prep
 %setup -q -c
+%patch0 -p1
 dos2unix AUTHORS CHANGELOG README.md
 
 %build

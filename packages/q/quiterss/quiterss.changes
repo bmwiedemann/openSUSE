@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 11:48:35 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.19.4
+  * Added: Share. Viber, Telegram
+  * Added: Support Media-RSS
+  * Added: Switch focus from search when pressing Esc
+  * Changed: Lock headline news while scrolling content
+  * Changed: Hide directories when searching in feeds
+  * Fixed: Some news links do not have a scheme ("http")
+  * Fixed: Dark App Style. Setting background color and text
+    color for labels
+  * Fixed: Dark App Style. Setting background color of
+    alternative rows
+  * Fixed: Updating some feeds
+  * Fixed: Collapse of news description
+
+- Added quiterss-fix_webkit.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 18:38:04 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.19.3
