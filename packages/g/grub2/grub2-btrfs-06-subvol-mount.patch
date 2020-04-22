@@ -3,11 +3,15 @@ V2:
 * Fix grub2-install --root-directory does not work for /boot/grub2/<arch> on
   separate btrfs subvolume (boo#1098420) 
 
-Index: grub-2.02/grub-core/fs/btrfs.c
+v3:
+* Fix executable stack on which function trampoline is constructed to support
+  closure (nested function). The closure sematic is replaced.
+
+Index: grub-2.04/grub-core/fs/btrfs.c
 ===================================================================
---- grub-2.02.orig/grub-core/fs/btrfs.c
-+++ grub-2.02/grub-core/fs/btrfs.c
-@@ -32,6 +32,7 @@
+--- grub-2.04.orig/grub-core/fs/btrfs.c
++++ grub-2.04/grub-core/fs/btrfs.c
+@@ -43,6 +43,7 @@
  #include <grub/command.h>
  #include <grub/env.h>
  #include <grub/extcmd.h>
@@ -15,7 +19,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -245,6 +246,12 @@ static grub_err_t
+@@ -263,6 +264,12 @@ static grub_err_t
  grub_btrfs_read_logical (struct grub_btrfs_data *data,
  			 grub_disk_addr_t addr, void *buf, grub_size_t size,
  			 int recursion_depth);
@@ -28,7 +32,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  
  static grub_err_t
  read_sblock (grub_disk_t disk, struct grub_btrfs_superblock *sb)
-@@ -887,9 +894,26 @@ lookup_root_by_name(struct grub_btrfs_da
+@@ -1203,9 +1210,26 @@ lookup_root_by_name(struct grub_btrfs_da
    grub_err_t err;
    grub_uint64_t tree = 0;
    grub_uint8_t type;
@@ -55,7 +59,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    if (err)
        return grub_error(GRUB_ERR_FILE_NOT_FOUND, "couldn't locate %s\n", path);
  
-@@ -1758,11 +1782,20 @@ grub_btrfs_dir (grub_device_t device, co
+@@ -2179,11 +2203,20 @@ grub_btrfs_dir (grub_device_t device, co
    int r = 0;
    grub_uint64_t tree;
    grub_uint8_t type;
@@ -77,7 +81,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -1864,11 +1897,21 @@ grub_btrfs_open (struct grub_file *file,
+@@ -2285,11 +2318,21 @@ grub_btrfs_open (struct grub_file *file,
    struct grub_btrfs_inode inode;
    grub_uint8_t type;
    struct grub_btrfs_key key_in;
@@ -100,7 +104,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2039,6 +2082,150 @@ grub_cmd_btrfs_info (grub_command_t cmd
+@@ -2460,6 +2503,150 @@ grub_cmd_btrfs_info (grub_command_t cmd
    return 0;
  }
  
@@ -251,7 +255,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  static grub_err_t
  get_fs_root(struct grub_btrfs_data *data, grub_uint64_t tree,
              grub_uint64_t objectid, grub_uint64_t offset,
-@@ -2245,6 +2432,7 @@ static struct grub_fs grub_btrfs_fs = {
+@@ -2666,6 +2853,7 @@ static struct grub_fs grub_btrfs_fs = {
  };
  
  static grub_command_t cmd_info;
@@ -259,7 +263,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  static grub_extcmd_t cmd_list_subvols;
  
  static char *
-@@ -2308,6 +2496,9 @@ GRUB_MOD_INIT (btrfs)
+@@ -2729,6 +2917,9 @@ GRUB_MOD_INIT (btrfs)
    cmd_info = grub_register_command("btrfs-info", grub_cmd_btrfs_info,
  				   "DEVICE",
  				   "Print BtrFS info about DEVICE.");
@@ -269,10 +273,10 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    cmd_list_subvols = grub_register_extcmd("btrfs-list-subvols",
  					 grub_cmd_btrfs_list_subvols, 0,
  					 "[-p|-n] [-o var] DEVICE",
-Index: grub-2.02/grub-core/osdep/linux/getroot.c
+Index: grub-2.04/grub-core/osdep/linux/getroot.c
 ===================================================================
---- grub-2.02.orig/grub-core/osdep/linux/getroot.c
-+++ grub-2.02/grub-core/osdep/linux/getroot.c
+--- grub-2.04.orig/grub-core/osdep/linux/getroot.c
++++ grub-2.04/grub-core/osdep/linux/getroot.c
 @@ -107,6 +107,14 @@ struct btrfs_ioctl_search_key
    grub_uint32_t unused[9];
  };
@@ -393,12 +397,12 @@ Index: grub-2.02/grub-core/osdep/linux/getroot.c
 +  return NULL;
 +}
 +
-+void (*grub_find_root_btrfs_mount_path_hook)(const char *mount_path);
++static char *grub_btrfs_mount_path;
 +
  char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot)
  {
-@@ -519,12 +630,15 @@ again:
+@@ -519,12 +630,17 @@ again:
        else if (grub_strcmp (entries[i].fstype, "btrfs") == 0)
  	{
  	  ret = grub_find_root_devices_from_btrfs (dir);
@@ -408,8 +412,10 @@ Index: grub-2.02/grub-core/osdep/linux/getroot.c
 -	      if (fs_prefix)
 -	        free (fs_prefix);
  	      fs_prefix = xstrdup ("/");
-+	      if (grub_find_root_btrfs_mount_path_hook)
-+		grub_find_root_btrfs_mount_path_hook (entries[i].enc_path);
++
++	      if (grub_btrfs_mount_path)
++		grub_free (grub_btrfs_mount_path);
++	      grub_btrfs_mount_path = grub_strdup (entries[i].enc_path);
 +	    }
 +	  else
 +	    {
@@ -417,7 +423,7 @@ Index: grub-2.02/grub-core/osdep/linux/getroot.c
  	    }
  	}
        else if (!retry && grub_strcmp (entries[i].fstype, "autofs") == 0)
-@@ -1148,6 +1262,34 @@ grub_util_get_grub_dev_os (const char *o
+@@ -1192,6 +1308,24 @@ grub_util_get_grub_dev_os (const char *o
    return grub_dev;
  }
  
@@ -425,38 +431,28 @@ Index: grub-2.02/grub-core/osdep/linux/getroot.c
 +char *
 +grub_util_get_btrfs_subvol (const char *path, char **mount_path)
 +{
-+  char *mp = NULL;
-+
 +  if (mount_path)
 +    *mount_path = NULL;
 +
-+  auto void
-+  mount_path_hook (const char *m)
-+  {
-+    mp = strdup (m);
-+  }
-+
-+  grub_find_root_btrfs_mount_path_hook = mount_path_hook;
 +  grub_free (grub_find_root_devices_from_mountinfo (path, NULL));
-+  grub_find_root_btrfs_mount_path_hook = NULL;
 +
-+  if (!mp)
++  if (!grub_btrfs_mount_path)
 +    return NULL;
 +
 +  if (mount_path)
-+    *mount_path = mp;
++    *mount_path = grub_strdup (grub_btrfs_mount_path);
 +
-+  return get_btrfs_subvol (mp);
++  return get_btrfs_subvol (grub_btrfs_mount_path);
 +}
 +
  char *
  grub_make_system_path_relative_to_its_root_os (const char *path)
  {
-Index: grub-2.02/util/grub-install.c
+Index: grub-2.04/util/grub-install.c
 ===================================================================
---- grub-2.02.orig/util/grub-install.c
-+++ grub-2.02/util/grub-install.c
-@@ -1560,6 +1560,58 @@ main (int argc, char *argv[])
+--- grub-2.04.orig/util/grub-install.c
++++ grub-2.04/util/grub-install.c
+@@ -1591,6 +1591,58 @@ main (int argc, char *argv[])
        prefix_drive = xasprintf ("(%s)", grub_drives[0]);
      }
  
@@ -515,10 +511,10 @@ Index: grub-2.02/util/grub-install.c
    char mkimage_target[200];
    const char *core_name = NULL;
  
-Index: grub-2.02/include/grub/emu/getroot.h
+Index: grub-2.04/include/grub/emu/getroot.h
 ===================================================================
---- grub-2.02.orig/include/grub/emu/getroot.h
-+++ grub-2.02/include/grub/emu/getroot.h
+--- grub-2.04.orig/include/grub/emu/getroot.h
++++ grub-2.04/include/grub/emu/getroot.h
 @@ -53,6 +53,11 @@ char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot);
  #endif

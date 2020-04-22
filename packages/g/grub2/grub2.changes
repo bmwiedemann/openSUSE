@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 13:35:10 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix executable stack in grub-probe and other grub utility (bsc#1169137)
+  * grub2-btrfs-06-subvol-mount.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 08:17:33 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix GCC 10 build fail (bsc#1158189)
