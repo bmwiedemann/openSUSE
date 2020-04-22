@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,9 +65,9 @@ BuildRequires:  libtool >= 2
 BuildRequires:  log4cplus-devel
 BuildRequires:  pkgconfig >= 0.23
 BuildRequires:  postgresql-server-devel
-BuildRequires:  python-Sphinx
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-Sphinx
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
 Requires(pre):  shadow
