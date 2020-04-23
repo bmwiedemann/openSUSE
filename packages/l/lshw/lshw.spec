@@ -77,6 +77,12 @@ http://www.ezix.org/software/lshw.html
 %autosetup
 
 %build
+%ifarch ppc64 ppc64le aarch64
+# Disable LTO for specified arches, bypass bug
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1168865
+%define _lto_cflags %{nil}
+%endif
+
 %make_build \
   SBINDIR="%{_sbindir}" \
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \

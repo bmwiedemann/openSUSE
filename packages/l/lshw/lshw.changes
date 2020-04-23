@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:16:28 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Disable LTO for aarch64 & PowerPC, bypass boo#1168865
+
+-------------------------------------------------------------------
 Mon Mar 30 06:49:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19.2:

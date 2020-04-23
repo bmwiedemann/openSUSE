@@ -163,4 +163,12 @@ factory)</comment>
   * lshw-nvme.patch</comment>
     <requestid>789653</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>dcd34078ecc29a7c85b8e79a617e0d66</srcmd5>
+    <version>B.02.19.2</version>
+    <time>1587660034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796573</requestid>
+  </revision>
 </revisionlist>
