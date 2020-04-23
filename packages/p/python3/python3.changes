@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 16 12:06:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add #!BuildIgnore: gdk-pixbuf-loader-rsvg to python3 SPEC
+
+-------------------------------------------------------------------
+Thu Mar 26 15:36:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch bsc1167501-invalid-alignment.patch
+  (bsc#1167501, bpo#40052) to fix alignment in abstract.h header file.
+
+-------------------------------------------------------------------
 Wed Mar 11 11:09:41 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update list of skipped tests for qemu linux-user build, test_setegid

@@ -88,6 +88,7 @@ Source1:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar
 Source20:       idle3.desktop
 Source21:       idle3.appdata.xml
 Source99:       python.keyring
+#!BuildIgnore:  gdk-pixbuf-loader-rsvg
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -176,6 +177,9 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # Fixes Python urrlib allowed an HTTP server to conduct Regular
 # Expression Denial of Service (ReDoS)
 Patch30:        CVE-2020-8492-urllib-ReDoS.patch
+# PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
+# Fix wrong misalignment of pointer to vectorcallfunc
+Patch31:        bsc1167501-invalid-alignment.patch
 ### COMMON-PATCH-END ###
 
 %description
@@ -257,6 +261,7 @@ a debugger.
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
