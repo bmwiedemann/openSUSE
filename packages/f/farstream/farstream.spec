@@ -18,7 +18,7 @@
 
 %define gst_pluginsdir %(pkg-config --variable pluginsdir gstreamer-1.0)
 Name:           farstream
-Version:        0.2.8+30
+Version:        0.2.9+4
 Release:        0
 # License note: the only GPL-2.0+ files are farstream-0.1.1/common/coverage/*
 # and common/gstdoc-scangobj; those are just used during the build and do not
@@ -32,12 +32,6 @@ Source1:        baselibs.conf
 
 # PATCH-FEATURE-OPENSUSE farstream-plugin-path.patch fcrozat@suse.com -- Use library policy compliant path for plugin
 Patch0:         farstream-plugin-path.patch
-# PATCH-FIX-UPSTREAM farstream-fix-build-gst116.patch -- Fix build with gstreamer 1.16.x
-Patch1:         farstream-fix-build-gst116.patch
-# PATCH-FIX-UPSTREAM farstream-add-check-for-glib-mkenums.patch -- Fix autoconf build failure for glib-mkenums
-Patch2:         farstream-add-check-for-glib-mkenums.patch
-# PATCH-FIX-UPSTREAM farstream-fix-make43.patch -- Fix build with make-4.3
-Patch3:         farstream-fix-make43.patch
 
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.32
@@ -47,7 +41,7 @@ BuildRequires:  gtk-doc
 #needed by patch0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.16
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.40
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.4
 BuildRequires:  pkgconfig(gupnp-igd-1.0) >= 0.2
 BuildRequires:  pkgconfig(nice) >= 0.1.8

@@ -3,9 +3,11 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/farstream/farstream.git</param>
-    <param name="revision">092d884d</param>
+    <param name="revision">46d7b108</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-  </service>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+</service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 12 21:01:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 2.4.9+4:
+  + nice agent: keep the main context alive until the agent is
+    destroyed.
+  + configure: add check for glib-mkenums.
+  + build: Adapt to backwards incompatible change in GNU Make 4.3.
+- Following this, drop upstream fixed patches:
+  + farstream-add-check-for-glib-mkenums.patch
+  + farstream-fix-make43.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 10:10:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.9:
+  + Add OPUS specific SDP OA negotiation to match RFC.
+  + Switch VP8 to standard encoding name.
+  + Removed MSN plugin, MSN Messenger is long dead.
+  + Port away from deprecated libnice signals.
+  + Bug fixes.
+- Drop farstream-fix-build-gst116.patch: Fixed differently
+  upstream.
+
+-------------------------------------------------------------------
 Wed Mar  4 13:50:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to git-checkout via source services, commit 092d884d.
