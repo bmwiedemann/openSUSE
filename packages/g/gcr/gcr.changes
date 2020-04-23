@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Mar 11 10:43:15 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + gcr: Update gtk-doc get_der_data() vfunc.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:41:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Mark deprecated functions with G_DEPRECATED.
+  + egg-oid: Add comments for translators for new abbrevations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:54:13 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Add support for "NEW CERTIFICATE REQUEST" header.
+  + Add support for GOST certificates.
+  + Rework handling of ASN.1 standard types.
+  + Fix a few regressions in the Meson build.
+  + Add support for g_autoptr.
+  + Fixed some compiler warnings.
+- Changes from version 3.35.1:
+  + gcr-certificate: Add (virtual) annotation.
+  + Always use G_PARAM_STATIC_STRINGS.
+  + Support Meson build system.
+  + Avoid potential 64-bit pointer aliasing alignment issues.
+  + Update README to mention correct environment variables.
+  + build: Use sed for .desktop variables substitution.
+  + Updated translations.
+- Switch to meson buildsystem: replace configure/make/make_install
+  macros with the meson/meson_build/meson_install counterparts.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:07:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

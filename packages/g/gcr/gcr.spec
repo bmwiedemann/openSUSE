@@ -1,7 +1,7 @@
 #
 # spec file for package gcr
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gcr
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/3.36/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
@@ -36,6 +36,7 @@ BuildRequires:  gobject-introspection-devel >= 1.34
 BuildRequires:  gpg2
 BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.4.5
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.18.0.22
@@ -43,7 +44,7 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
@@ -139,10 +140,10 @@ key stores.
 
 %package -n libgck-1-0
 Summary:        GObject library to access PKCS#11 modules
-Group:          System/Libraries
 # Small hack, to help gnome-keyring subpackage containing gck
 # modules have a proper dependency, without having to care about
 # the soname.
+Group:          System/Libraries
 Provides:       gck = %{version}
 
 %description -n libgck-1-0
@@ -178,14 +179,11 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %endif
 
 %build
-%configure \
-    --disable-static \
-    --enable-gtk-doc
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %suse_update_desktop_file gcr-prompter
 %suse_update_desktop_file gcr-viewer
 %find_lang %{name}
@@ -224,7 +222,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgcr-3-1
 %license COPYING
 %doc AUTHORS ChangeLog HACKING NEWS README
-%{_libdir}/libgcr-3.so.*
 %{_libdir}/libgcr-base-3.so.*
 %{_libdir}/libgcr-ui-3.so.*
 
@@ -235,8 +232,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GcrUi-3.typelib
 
 %files -n libgcr-devel
-%doc %{_datadir}/gtk-doc/html/gcr-3/
-%{_libdir}/libgcr-3.so
+%doc %{_datadir}/gtk-doc/html/gcr/
 %{_libdir}/libgcr-base-3.so
 %{_libdir}/libgcr-ui-3.so
 %{_libdir}/pkgconfig/gcr-3.pc
