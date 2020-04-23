@@ -7,10 +7,10 @@ Subject: [PATCH] Disable ibus when out of CJK
  js/misc/ibusManager.js | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/js/misc/ibusManager.js b/js/misc/ibusManager.js
-index e43f88c..9d16f09 100644
---- a/js/misc/ibusManager.js
-+++ b/js/misc/ibusManager.js
+Index: gnome-shell-3.36.1/js/misc/ibusManager.js
+===================================================================
+--- gnome-shell-3.36.1.orig/js/misc/ibusManager.js
++++ gnome-shell-3.36.1/js/misc/ibusManager.js
 @@ -31,6 +31,10 @@ function getIBusManager() {
  
  var IBusManager = class {
@@ -32,7 +32,4 @@ index e43f88c..9d16f09 100644
 +
          try {
              let cmdLine = ['ibus-daemon', '--panel', 'disable', ...extraArgs];
-             Gio.Subprocess.new(cmdLine, Gio.SubprocessFlags.NONE);
--- 
-2.26.0
-
+             let launcher = Gio.SubprocessLauncher.new(Gio.SubprocessFlags.NONE);

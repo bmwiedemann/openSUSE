@@ -1,18 +1,24 @@
 diff --git a/js/ui/endSessionDialog.js b/js/ui/endSessionDialog.js
-index f51eb7b..5abad41 100644
+index 42ae0d3f2..3e5eb94a8 100644
 --- a/js/ui/endSessionDialog.js
 +++ b/js/ui/endSessionDialog.js
-@@ -327,11 +327,11 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
-         this._inhibitorSection.add_actor(this._applicationList);
+@@ -270,7 +270,7 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+         this.contentLayout.add_child(this._applicationSection);
  
-         this._sessionHeader = new St.Label({ style_class: 'end-session-dialog-list-header',
--                                             text: _("Other users are logged in.") });
-+                                             text: _("Other users are logged in. You can list these users by 'who' command.") });
-         this._sessionList = new St.BoxLayout({ style_class: 'end-session-dialog-session-list',
-                                                vertical: true });
-         this._inhibitorSection.add_actor(this._sessionHeader);
--        this._inhibitorSection.add_actor(this._sessionList);
-+        //this._inhibitorSection.add_actor(this._sessionList); Hide _sessionList for jsc#SLE-9267
+         this._sessionSection = new Dialog.ListSection({
+-            title: _('Other users are logged in'),
++            title: _('Other users are logged in. You can list these users with the "who" command.'),
+         });
+         this.contentLayout.add_child(this._sessionSection);
  
-         this._dbusImpl = Gio.DBusExportedObject.wrapJSObject(EndSessionDialogIface, this);
-         this._dbusImpl.export(Gio.DBus.session, '/org/gnome/SessionManager/EndSessionDialog');
+@@ -643,8 +643,8 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+             this._applications.push(inhibitor);
+         }
+ 
+-        if (dialogContent.showOtherSessions)
+-            this._loadSessions();
++        // if (dialogContent.showOtherSessions) // Hide _sessionList for jsc#SLE-9267
++        //    this._loadSessions();
+ 
+         // Only consider updates and upgrades if PackageKit is available.
+         let updateTriggered = this._pkOfflineProxy ? this._pkOfflineProxy.UpdateTriggered : false;

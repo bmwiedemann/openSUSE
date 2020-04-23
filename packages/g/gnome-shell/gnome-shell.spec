@@ -19,10 +19,11 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.34.5
+Version:        3.36.1
 Release:        0
 Summary:        GNOME Shell
-License:        GPL-2.0-or-later
+# shew extension is LGPL 2.1
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 Source:         %{name}-%{version}.tar.xz
@@ -35,9 +36,9 @@ Source2:        sle-background.png
 Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
-# PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- make GDM background image configurable
+# PATCH-NEEDS-REBASE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- make GDM background image configurable WAS: PATCH-FEATURE-OPENSUSE
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
-# PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
+# PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
@@ -71,12 +72,13 @@ BuildRequires:  sassc
 BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk-bridge-2.0)
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gcr-base-3) >= 3.7.5
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.57.3
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.63.2
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.34.2
@@ -95,7 +97,7 @@ BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.2
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-5) >= 3.34.0
+BuildRequires:  pkgconfig(libmutter-6) >= 3.36.1
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -104,9 +106,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-5) >= 3.34.0
-BuildRequires:  pkgconfig(mutter-cogl-5) >= 3.34.0
-BuildRequires:  pkgconfig(mutter-cogl-pango-5) >= 3.34.0
+BuildRequires:  pkgconfig(mutter-clutter-6) >= 3.36.1
+BuildRequires:  pkgconfig(mutter-cogl-6) >= 3.36.1
+BuildRequires:  pkgconfig(mutter-cogl-pango-6) >= 3.36.1
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -119,8 +121,7 @@ Requires:       gnome-settings-daemon
 # "High Contrast" in accessibility status icon
 Requires:       gnome-themes-accessibility
 Requires:       gsettings-desktop-schemas
-# Due to now private typelib(Meta)
-Requires:       mutter
+Requires:       mutter >= 3.35.90
 Requires:       typelib(Rsvg)
 Recommends:     %{name}-calendar
 ## Finally, dependencies for session services that are needed for system icons and the user menu
@@ -167,8 +168,8 @@ into GNOME Shell calendar.
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%patch4 -p1
-%patch5 -p1
+#patch4 -p1
+#patch5 -p1
 
 translation-update-upstream
 
@@ -233,7 +234,7 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gnome-shell-overrides.convert
 %{_datadir}/applications/org.gnome.Shell.desktop
-%{_datadir}/applications/gnome-shell-extension-prefs.desktop
+%{_datadir}/applications/org.gnome.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
@@ -267,6 +268,29 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_sysconfdir}/xdg/autostart/gnome-shell-overrides-migration.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-overrides-migration.sh
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
+# Should this be here or in devel sub package?
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
+
+%dir %{_libdir}/gnome-shell/girepository-1.0
+%{_libdir}/gnome-shell/girepository-1.0/Shew-0.typelib
+
+%{_libdir}/gnome-shell/libshew-0.so
+
+%{_datadir}/bash-completion/completions/gnome-extensions
+%{_datadir}/dbus-1/services/org.gnome.Extensions.service
+%{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
+%{_datadir}/dbus-1/services/org.gnome.Shell.Notifications.service
+
+%{_datadir}/gnome-shell/org.gnome.Extensions
+%{_datadir}/gnome-shell/org.gnome.Extensions.data.gresource
+%{_datadir}/gnome-shell/org.gnome.Extensions.src.gresource
+%{_datadir}/gnome-shell/org.gnome.Shell.Extensions
+%{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
+%{_datadir}/gnome-shell/org.gnome.Shell.Notifications
+%{_datadir}/gnome-shell/org.gnome.Shell.Notifications.src.gresource
+%{_datadir}/metainfo/org.gnome.Extensions.metainfo.xml
 
 %files devel
 %doc HACKING.md
@@ -274,6 +298,8 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_bindir}/gnome-shell-extension-tool
 %{_bindir}/gnome-shell-perf-tool
 %{_datadir}/gnome-shell/*.gir
+%dir %{_datadir}/gnome-shell/gir-1.0
+%{_datadir}/gnome-shell/gir-1.0/Shew-0.gir
 
 %files calendar
 %{_datadir}/applications/evolution-calendar.desktop
