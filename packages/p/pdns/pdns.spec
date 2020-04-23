@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without systemd
 %if 0%{?fedora_version} >= 24 || 0%{?fc24}%{?fc25}
 %bcond_with    systemd_separetedlibs
 %else
@@ -24,15 +23,18 @@
 %endif
 #
 %bcond_without pdns_lua
-%bcond_without pdns_mydns
+# no idea which package provides pkgconfig(gss)
 %bcond_with    pdns_experimental_gss_tsig
 %bcond_without pdns_odbc
 %bcond_without pdns_sqlite3
 %bcond_with    pdns_tinydns
 %if 0%{?is_opensuse}
 %bcond_without pdns_geoip
+%bcond_without pdns_ixfrdist
+%define ixfrdist_services ixfrdist.service ixfrdist@.service
 %else
 %bcond_with    pdns_geoip
+%bcond_with    pdns_ixfrdist
 %endif
 %if 0%{?suse_version} > 1315 || 0%{?is_opensuse}
 %bcond_without pdns_protobuf
@@ -42,17 +44,24 @@
 %bcond_without pdns_tools
 %bcond_without pdns_pkcs11
 %bcond_without pdns_zeromq
+%if 0%{?suse_version} >= 1550
+%bcond_without pdns_lmdb
+%else
+%bcond_with    pdns_lmdb
+%endif
+
+%define services %{name}.service %{name}@.service %{?ixfrdist_services}
+
 Name:           pdns
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.powerdns.com/
 Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
-Source2:        README.opendbx
-Source3:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
-Source4:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
+Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
+Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -72,11 +81,14 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_serialization-devel
 %else
 BuildRequires:  boost-devel
 %endif
+%if %{with pdns_geoip} || %{with pdns_ixfrdist}
+BuildRequires:  yaml-cpp-devel >= 0.5
+%endif
 %if %{with pdns_geoip}
-BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(libmaxminddb)
 %endif
 %if %{with pdns_experimental_gss_tsig}
@@ -105,10 +117,6 @@ BuildRequires:  sqlite-devel >= 3
 BuildRequires:  unixODBC-devel
 %endif
 #
-%if %{with pdns_opendbx}
-BuildRequires:  opendbx-backend-pgsql
-BuildRequires:  opendbx-devel
-%endif
 %if %{with pdns_pkcs11}
 BuildRequires:  pkgconfig(p11-kit-1)
 %endif
@@ -118,12 +126,17 @@ BuildRequires:  zeromq-devel
 %if %{with systemd_separetedlibs}
 BuildRequires:  pkgconfig(libsystemd)
 %endif
+%if %{with pdns_lmdb}
+BuildRequires:  lmdb-devel
+%endif
 
 # FIXME: use proper Requires(pre/post/preun/...)
 #PreReq:         pdns-common
 #Requires(post): pdns-common
 Requires(pre):  pdns-common
 Requires:       pdns-common
+# dropped with version 4.3.0
+Obsoletes:      pdns-backend-mydns < %{version}
 
 %description
 The PowerDNS Nameserver is a authoritative-only nameserver.
@@ -141,21 +154,6 @@ The PowerDNS Nameserver is a authoritative-only nameserver.
 It conforms to contemporary DNS standards documents.
 
 This package holds the MySQL backend for pdns.
-
-%if %{with pdns_mydns}
-%package backend-mydns
-#
-Summary:        MyDNS backend for pdns
-Group:          Productivity/Networking/DNS/Servers
-Requires:       %{name} = %{version}
-
-%description backend-mydns
-The PowerDNS Nameserver is a authoritative-only nameserver.
-It conforms to contemporary DNS standards documents.
-
-This package holds the MyDNS backend for pdns.
-
-%endif
 
 %package backend-postgresql
 #
@@ -207,18 +205,6 @@ It conforms to contemporary DNS standards documents.
 
 This package holds the LDAP backend for pdns.
 
-%package backend-opendbx
-#
-Summary:        OpenDBX backend for pdns
-Group:          Productivity/Networking/DNS/Servers
-Requires:       %{name} = %{version}
-
-%description backend-opendbx
-The PowerDNS Nameserver is a authoritative-only nameserver.
-It conforms to contemporary DNS standards documents.
-
-This package holds the OpenDBX backend for pdns.
-
 %package backend-lua
 #
 Summary:        Lua backend for pdns
@@ -255,12 +241,23 @@ It conforms to contemporary DNS standards documents.
 
 This package holds the GeoIP backend for pdns.
 
-%prep
-%setup -q
-%patch0 -p1
-%if %{with pdns_opendbx}
-cp %{SOURCE2} README.opendbx
+%if %{with pdns_lmdb}
+%package backend-lmdb
+#
+Summary:        LMDB backend for pdns
+Group:          Productivity/Networking/DNS/Servers
+Requires:       %{name} = %{version}
+
+%description backend-lmdb
+The PowerDNS Nameserver is a authoritative-only nameserver.
+It conforms to contemporary DNS standards documents.
+
+This package holds the LMDB backend for pdns.
 %endif
+
+%prep
+%setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 %configure \
@@ -268,8 +265,11 @@ cp %{SOURCE2} README.opendbx
   --disable-silent-rules \
   --with-socketdir=%{_localstatedir} \
   --localstatedir=%{_localstatedir} \
-  --enable-libsodium \
   --enable-reproducible \
+  --with-libsodium \
+  --with-service-user=pdns \
+  --with-service-group=pdns \
+  --with-socketdir=/run/ \
 %if %{with pdns_protobuf}
   --with-protobuf \
 %endif
@@ -278,7 +278,6 @@ cp %{SOURCE2} README.opendbx
 %endif
   --sysconfdir=%{_sysconfdir}/%{name} \
   --libdir=%{_libdir} \
-  --with-pgsql-lib=%{_libdir} \
   --with-mysql-lib=%{_libdir} \
 %if %{with pdns_pkcs11}
   --enable-experimental-pkcs11 \
@@ -307,25 +306,16 @@ cp %{SOURCE2} README.opendbx
 %if %{with pdns_odbc}
   godbc    \
 %endif
-%if %{with pdns_oracle}
-  goracle  \
-%endif
   gpgsql   \
 %if %{with pdns_sqlite3}
   gsqlite3 \
 %endif
   ldap     \
+%if %{with pdns_lmdb}
+  lmdb     \
+%endif
 %if %{with pdns_lua}
-  lua      \
-%endif
-%if %{with pdns_mydns}
-  mydns    \
-%endif
-%if %{with pdns_opendbx}
-  opendbx  \
-%endif
-%if %{with pdns_oracle}
-  oracle   \
+  lua2     \
 %endif
   pipe     \
   random   \
@@ -336,9 +326,12 @@ cp %{SOURCE2} README.opendbx
   "\
 %if %{with pdns_tools}
   --enable-tools \
+%if %{with pdns_ixfrdist}
+  --enable-ixfrdist \
+%endif
 %endif
   --disable-static
-make %{?_smp_mflags}
+make %{?_smp_mflags} all
 
 %install
 %make_install
@@ -350,19 +343,24 @@ mv %{buildroot}%{_sysconfdir}/%{name}/pdns.conf-dist %{buildroot}%{_sysconfdir}/
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
+%if %{with pdns_ixfrdist}
+mv %{buildroot}%{_sysconfdir}/%{name}/ixfrdist.{example.yml,yml}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcixfrdist
+%endif
+
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %pre
-%service_add_pre %{name}.service
+%service_add_pre %{services}
 
 %post
-%service_add_post %{name}.service
+%service_add_post %{services}
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun %{services}
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun %{services}
 
 %files
 %doc NOTICE README*
@@ -424,19 +422,23 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/libpipebackend.so*
 %{_libdir}/%{name}/libbindbackend.so*
 %{_libdir}/%{name}/librandombackend.so*
+%if %{with pdns_ixfrdist}
+%config(noreplace) %attr(640,root,pdns) %{_sysconfdir}/%{name}/ixfrdist.yml
+%{_unitdir}/ixfrdist.service
+%{_unitdir}/ixfrdist@.service
+%{_bindir}/ixfrdist
+%{_sbindir}/rcixfrdist
+%{_mandir}/man5/ixfrdist.yml.5%{?ext_man}
+%{_mandir}/man1/ixfrdist.1%{?ext_man}
+%endif
 
 %files backend-mysql
 %{_libdir}/%{name}/libgmysqlbackend.so*
 %doc %{_docdir}/%{name}/*.mysql.sql
 
-%if %{with pdns_mydns}
-%files backend-mydns
-%{_libdir}/%{name}/libmydnsbackend.so*
-%endif
-
 %if %{with pdns_lua}
 %files backend-lua
-%{_libdir}/%{name}/libluabackend.so*
+%{_libdir}/%{name}/liblua2backend.so*
 %endif
 
 %files backend-postgresql
@@ -455,11 +457,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/zone2ldap.1%{?ext_man}
 %doc %{_docdir}/%{name}/*.schema
 
-%if %{with pdns_opendbx}
-%files backend-opendbx
-%{_libdir}/%{name}/libopendbxbackend.so*
-%endif
-
 %if %{with pdns_odbc}
 %files backend-godbc
 %{_libdir}/%{name}/libgodbcbackend.so*
@@ -472,5 +469,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files backend-remote
 %{_libdir}/%{name}/libremotebackend.so
+
+%if %{with pdns_lmdb}
+%files backend-lmdb
+%{_libdir}/%{name}/liblmdbbackend.so
+%endif
 
 %changelog

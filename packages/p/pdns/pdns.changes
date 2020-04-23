@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:13:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.3.0: 
+  A lot of internals have been reworked, with some visible changes
+  for users. If you read the upgrade notes for a beta or RC, please
+  read them again!
+
+  A notable new feature in 4.3 is support for hiding DNSSEC keys,
+  which makes it possible to do algorithm rollovers. This feature
+  was contributed by Robin Geuze of TransIP, thanks! Another
+  interesting new feature is support for automatically publishing
+  CDS/CDNSKEY records with a single pdns.conf setting.
+
+  Please note that 4.3.0 comes with a mandatory database schema
+  upgrade.
+
+  https://doc.powerdns.com/authoritative/upgrading.html#x-to-4-3-0
+- refreshed patch pdns-4.0.3_allow_dacoverride_in_capset.patch
+- dropped subpackages for mydns and opendbx
+- change run directory from /var/run/ to /run/
+- pdns-backend-lua now has the lua2 backend
+
+-------------------------------------------------------------------
+Sun Apr  5 21:49:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- guard ixfrdist support so it is only enabled on the distros that
+  have the dependencies
+
+-------------------------------------------------------------------
+Sun Apr  5 21:34:17 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add ixfrdist to the systemd macros 
+- add instantiated services to the systemd macros 
+
+-------------------------------------------------------------------
+Sun Apr  5 21:05:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable ixfrdist 
+- enable lmdb support on Tumbleweed 
+  - new BR for libboost_serialization-devel and lmdb-devel
+- fix configure option for libsodium
+
+-------------------------------------------------------------------
 Thu Mar  5 14:10:29 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Build with libmaxminddb instead of the obsolete GeoIP (bsc#1156196)
