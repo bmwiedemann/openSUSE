@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 23 03:10:19 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.45
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.45    2020-04-22
+          [CHANGES]
+           * API changes to make duck-typing closer to Promises/A+ et.al:
+              + Allow sequencing methods to yield non-Future results; upgrade
+                them to being Future-wrapped
+              + Add ->resolve and ->reject as aliases of ->done and ->fail
+           * Recognise PERL_FUTURE_STRICT environment variable to restore
+             previous sequencing method behaviour
+  
+          [BUGFIXES]
+           * ->without_cancel still needs to cancel result if caller is
+             cancelled
+           * Ensure all Future::AsyncAwait interop methods properly respect
+             subclassing
+
+-------------------------------------------------------------------
 Wed Mar 25 03:09:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.44
