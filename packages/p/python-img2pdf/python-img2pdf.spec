@@ -33,7 +33,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pdfrw}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python-enum34
 # /SECTION
 Requires:       python-Pillow
 Requires:       python-pdfrw
@@ -67,7 +66,6 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %python_exec setup.py test
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc CHANGES.rst README.md
 %python3_only %{_bindir}/img2pdf

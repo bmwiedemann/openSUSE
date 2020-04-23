@@ -45,4 +45,12 @@
 - Drop patch python-img2pdf-test-python2.patch</comment>
     <requestid>792693</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ac5023bedda1abdd304508951729c7dd</srcmd5>
+    <version>0.3.4</version>
+    <time>1587659803</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 dep from py3 only package</comment>
+    <requestid>796497</requestid>
+  </revision>
 </revisionlist>
