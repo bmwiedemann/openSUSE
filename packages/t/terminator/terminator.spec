@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        1.91
+Version:        1.92
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            https://gnometerminator.blogspot.com/p/introduction.html
-Source0:        https://launchpad.net/%{name}/gtk3/%{version}/+download/%{name}-%{version}.tar.gz
+Source:         https://github.com/gnome-terminator/terminator/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         terminator-desktop.patch
-Patch1:         terminator-1.91-python3.patch
-Patch2:         terminator-1.91-py3_dnd.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -58,8 +56,6 @@ arrangements of terminals for different tasks.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p1
-%patch2 -p0
 
 # remove pointless shebangs
 sed -i '/#! \?\/usr.*/d' terminatorlib/*.py
@@ -81,17 +77,8 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %fdupes %{buildroot}
 %find_lang %{name}
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %files
 %license COPYING
-%doc ChangeLog README
 %dir %{_datadir}/icons/HighContrast
 %dir %{_datadir}/icons/HighContrast/16x16
 %dir %{_datadir}/icons/HighContrast/16x16/actions

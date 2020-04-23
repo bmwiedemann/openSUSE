@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:34:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.92:
+  * python3 support
+  * new home on github
+  * fixed lots of gtk and vte related bugs
+- Removed terminator-1.91-python3.patch
+- Removed terminator-1.91-py3_dnd.patch
+
+-------------------------------------------------------------------
 Sat Jan 18 09:12:15 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - add terminator-1.91-python3.patch to add python3 support
