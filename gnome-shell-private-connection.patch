@@ -13,10 +13,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=646187
  js/ui/status/network.js | 38 ++++++++++++++++++++++++++++++++------
  1 file changed, 32 insertions(+), 6 deletions(-)
 
-Index: gnome-shell-3.34.0+94/js/ui/status/network.js
+Index: gnome-shell-3.36.1/js/ui/status/network.js
 ===================================================================
---- gnome-shell-3.34.0+94.orig/js/ui/status/network.js
-+++ gnome-shell-3.34.0+94/js/ui/status/network.js
+--- gnome-shell-3.36.1.orig/js/ui/status/network.js
++++ gnome-shell-3.36.1/js/ui/status/network.js
 @@ -1,6 +1,6 @@
  // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
  /* exported NMApplet */
@@ -25,7 +25,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
  const Signals = imports.signals;
  
  const Animation = imports.ui.animation;
-@@ -326,6 +326,11 @@ var NMConnectionDevice = class NMConnect
+@@ -327,6 +327,11 @@ var NMConnectionDevice = class NMConnect
  
      _autoConnect() {
          let connection = new NM.SimpleConnection();
@@ -50,7 +50,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
      }
  
      get category() {
-@@ -682,11 +688,12 @@ var NMWirelessDialogItem = GObject.regis
+@@ -694,11 +700,12 @@ var NMWirelessDialogItem = GObject.regis
  
  var NMWirelessDialog = GObject.registerClass(
  class NMWirelessDialog extends ModalDialog.ModalDialog {
@@ -64,7 +64,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
  
          this._wirelessEnabledChangedId = this._client.connect('notify::wireless-enabled',
                                                                this._syncView.bind(this));
-@@ -917,6 +924,11 @@ class NMWirelessDialog extends ModalDial
+@@ -932,6 +939,11 @@ class NMWirelessDialog extends ModalDial
                              this._device.get_path(), accessPoints[0].get_path()]);
              } else {
                  let connection = new NM.SimpleConnection();
@@ -76,7 +76,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
                  this._client.add_and_activate_connection_async(connection, this._device, accessPoints[0].get_path(), null, null);
              }
          }
-@@ -1153,9 +1165,10 @@ class NMWirelessDialog extends ModalDial
+@@ -1168,9 +1180,10 @@ class NMWirelessDialog extends ModalDial
  });
  
  var NMDeviceWireless = class {
@@ -88,7 +88,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
  
          this._description = '';
  
-@@ -1241,7 +1254,7 @@ var NMDeviceWireless = class {
+@@ -1255,7 +1268,7 @@ var NMDeviceWireless = class {
      }
  
      _showDialog() {
@@ -97,7 +97,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
          this._dialog.connect('closed', this._dialogClosed.bind(this));
          this._dialog.open();
      }
-@@ -1616,6 +1629,19 @@ var NMApplet = class extends PanelMenu.S
+@@ -1632,6 +1645,19 @@ class Indicator extends PanelMenu.System
  
      _clientGot(obj, result) {
          this._client = NM.Client.new_finish(result);
@@ -117,7 +117,7 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
  
          this._activeConnections = [];
          this._connections = [];
-@@ -1736,7 +1762,7 @@ var NMApplet = class extends PanelMenu.S
+@@ -1752,7 +1778,7 @@ class Indicator extends PanelMenu.System
  
          let wrapperClass = this._dtypes[device.get_device_type()];
          if (wrapperClass) {
@@ -125,4 +125,5 @@ Index: gnome-shell-3.34.0+94/js/ui/status/network.js
 +            let wrapper = new wrapperClass(this._client, device, this._privateConnections);
              device._delegate = wrapper;
              this._addDeviceWrapper(wrapper);
- 
+
+
