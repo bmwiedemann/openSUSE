@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define libname  lib%{name}-2_44-1
 
 Name:           pangomm
-Version:        2.43.1
+Version:        2.43.2
 Release:        0
 Summary:        C++ interface for pango
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only
@@ -29,8 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org
 Source0:        https://download.gnome.org/sources/%{name}/2.43/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM pangomm-use-glibmm-262.patch -- Forward port to use glibmm-2.62
-Patch0:         pangomm-use-glibmm-262.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -38,7 +36,7 @@ BuildRequires:  libtool
 BuildRequires:  mm-common
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
-BuildRequires:  pkgconfig(glibmm-2.62)
+BuildRequires:  pkgconfig(glibmm-2.66)
 BuildRequires:  pkgconfig(pangocairo) >= 1.31.0
 Recommends:     %{name}-doc = %{version}
 

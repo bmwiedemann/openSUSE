@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 22 12:31:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.43.2:
+  + Coverage: Remove max(), to_bytes() and one create()
+  + Layout::get_lines(): Fix ownership of the GSList
+  + Remove deprecated API:
+    - AttrList: non-const operator bool()
+    - CairoFontMap: create_context()
+    - Color: non-const operator bool()
+    - Layout: get_iter(LayoutIter& iter)
+    - LayoutIter: assign_gobj()
+  + pango/src/color.hg: Fix call to _CLASS_BOXEDTYPE_STATIC
+  + Build:
+    - Use glibmm-2.66 instead of glibmm-2.60
+    - tools/gen_scripts: Update for non-source-dir builds
+    - Add support for building pangomm with Meson
+    - meson.build: Check if .git is a directory or file
+    - NMake Makefiles: Allow builds from a GIT checkout
+    - Visual Studio: Drop gendef.exe, use __declspec(dllexport)
+    - The fixed call to _CLASS_BOXEDTYPE_STATIC in color.hg is
+      necessary in order to use glibmm 2.65.1 or later, combined
+      with maintainer-mode in pangomm.
+- Drop upstream fixed patches:
+  + pangomm-use-glibmm-266.patch
+  + pangomm-use-glibmm-264.patch
+  + pangomm-use-glibmm-262.patch
+
+-------------------------------------------------------------------
+Sat Mar 21 15:24:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pangomm-use-glibmm-266.patch: Forward port to use libmm-2.66.
+- Replace pkgconfig(glibmm-2.64) BuildRequires with
+  pkgconfig(glibmm-2.66).
+
+-------------------------------------------------------------------
+Thu Feb 20 17:06:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add pangomm-use-glibmm-264.patch: Forward port to use libmm-2.64.
+- Replace pkgconfig(glibmm-2.62) BuildRequires with
+  pkgconfig(glibmm-2.64).
+
+-------------------------------------------------------------------
 Mon Sep  9 19:09:42 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pangomm-use-glibmm-262.patch: Forward port to use
