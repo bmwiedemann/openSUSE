@@ -22,7 +22,7 @@
 %define baseversionminus1 1.17
 
 Name:           kubernetes
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -120,6 +120,7 @@ kubelet daemon
 Summary:        Kubernetes kubeadm bootstrapping tool
 Group:          System/Management
 Requires:       kubernetes%{baseversion}-kubeadm = %{version}
+Requires:       kubernetes%{baseversionminus1}-kubelet
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.

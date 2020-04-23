@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:49:17 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Bump to kubernetes 1.18.2 
+
+-------------------------------------------------------------------
+Tue Apr 21 10:09:31 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- kubeadm requires kubernetes%{baseversionminus1}-kubelet for migration purposes 
+
+-------------------------------------------------------------------
 Wed Apr 15 12:36:45 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Declare Kubernetes 1.18.1 as default
