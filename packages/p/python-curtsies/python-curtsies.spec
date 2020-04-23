@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-curtsies
 Version:        0.3.1
 Release:        0
@@ -34,10 +35,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-typing
 Requires:       python-blessings
 Requires:       python-wcwidth
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-typing
+%endif
 %if %{python_version_nodots} < 35
 BuildRequires:  python3-typing
 %endif
