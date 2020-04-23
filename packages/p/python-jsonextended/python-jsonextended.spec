@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonextended
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,11 +45,10 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module ruamel.yaml}
+%if %{with python2}
 BuildRequires:  python-pathlib2
-# /SECTION
-%ifpython2
-Requires:       python-pathlib2
 %endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -81,7 +80,8 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 # Some tests fail in i586
-%pytest jsonextended -k 'not Encode_NDArray and not HDF5_Parser'
+# jsonextended.units.core.apply_unitschema rounding issue depending on interpreter version
+%pytest jsonextended -k 'not Encode_NDArray and not HDF5_Parser and not apply_unitschema'
 
 %files %{python_files}
 %doc README.md
