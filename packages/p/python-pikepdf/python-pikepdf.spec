@@ -33,6 +33,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis >= 4.24}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
+BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-helpers-namespace >= 2019.1.8}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.3}
@@ -44,7 +45,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python-pybind11-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libqpdf)
 Requires:       python-Pillow >= 5.0.0
