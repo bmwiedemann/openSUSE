@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:18:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + AddreeBookList: Fix local addressbook isn't set as default
+    addressbook.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 11 00:25:50 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36:
+  + A few minor fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:10:03 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + When showing a contact, Contacts now provides buttons to
+    perform relevant actions.
+  + A refreshed UI when creating or editing a contact.
+  + The address book window is now adaptive.
+- Changes from version 3.35.1:
+  + You can now use a "back" gesture on touch devices to go back to
+    the contact list when viewing or editing a contact.
+  + Contacts now works on even smaller screens.
+  + Nightly now show off with a fancy new icon.
+  + Updated translations.
+- Disable translation-upate-upstream: execution fails.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:09:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

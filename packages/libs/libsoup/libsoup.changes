@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 16 18:23:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libsoup-disable-ssl-tests.patch: Disable ssl tests, as they
+  randomly fail for all arches (glgo#GNOME/libsoup#188).
+- Rebase/refresh patches.
+
+-------------------------------------------------------------------
+Tue Mar 24 13:09:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libsoup-test-utils-fix.patch: test-utils: Clarify meaning of
+  an environment variable.
+
+-------------------------------------------------------------------
+Sat Mar  7 17:51:57 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 2.70.0:
+  + Deprecate SoupSession:proxy-uri.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 26 08:57:51 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.69.90:
+  + Add new API to expose support for same-site cookies.
+  + Fix TRACE method not being considered safe and idempotent
+    internally.
+  + WebSockets: ensure a new connection is created for WebSocket
+    requests.
+  + WebSockets: do not start the input source when IO is closing.
+  + Deprecate soup_date_to_timeval().
+  + build: Update glib requirement to 2.58.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb 26 08:57:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.68.4:

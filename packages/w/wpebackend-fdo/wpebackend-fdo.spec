@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.4.2
+Version:        1.6.0
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
@@ -32,9 +32,12 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wpe-1.0)
+BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wpe-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -61,6 +64,7 @@ header files for developing applications that use %{name}.
 
 %build
 %cmake \
+	-DWayland_VERSION_HEADER_PATH=$(pkg-config --variable=includedir wayland-client) \
 	%{nil}
 %cmake_build
 

@@ -604,4 +604,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767157 from dimstar)</comment>
     <requestid>767422</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>47d451e58722e6ed6214f60b821290e9</srcmd5>
+    <version>3.36.1</version>
+    <time>1587659242</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795072 from iznogood)</comment>
+    <requestid>795223</requestid>
+  </revision>
 </revisionlist>

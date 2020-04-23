@@ -1,7 +1,7 @@
 #
 # spec file for package vte
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _name   vte
 
 Name:           vte
-Version:        0.58.3
+Version:        0.60.1
 Release:        0
 Summary:        Terminal Emulator Library
 License:        LGPL-2.0-only AND LGPL-3.0-only AND GPL-3.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(gnutls) >= 3.2.7
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango) >= 1.22.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
 BuildRequires:  pkgconfig(zlib)
@@ -59,10 +60,10 @@ emulation settings.
 
 %package -n libvte%{_sover}
 Summary:        Terminal Emulator Library
-License:        LGPL-2.0-only
-Group:          System/Libraries
 # Needed to make lang package installable (and because we used to
 # have a vte package earlier).
+License:        LGPL-2.0-only
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -137,6 +138,10 @@ translation-update-upstream po vte-%{_apiver}
 %license COPYING.GPL3 COPYING.LGPL2 COPYING.LGPL3
 %{_libdir}/*.so.*
 %config %{_sysconfdir}/profile.d/vte.sh
+%config %{_sysconfdir}/profile.d/vte.csh
+%dir %{_userunitdir}/vte-spawn-.scope.d
+%{_userunitdir}/vte-spawn-.scope.d/defaults.conf
+%{_libexecdir}/vte-urlencode-cwd
 
 %files -n typelib-1_0-Vte-%{?_binver}
 %{_libdir}/girepository-1.0/Vte-%{_apiver}.typelib

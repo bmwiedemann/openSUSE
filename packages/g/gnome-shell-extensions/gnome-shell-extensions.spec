@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        3.34.2
+Version:        3.36.1
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.36/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source3:        SLE-theme.tar.gz
@@ -106,6 +106,7 @@ gnome-shell classic.
 %package -n gnome-shell-extension-user-theme
 Summary:        Allow the user to change GNOME Shell Themes
 Group:          System/GUI/GNOME
+BuildArch:      noarch
 
 %description -n gnome-shell-extension-user-theme
 This extension allows the user to switch to different themes. It's possible

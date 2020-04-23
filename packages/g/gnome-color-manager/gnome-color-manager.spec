@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-color-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,15 @@
 
 
 Name:           gnome-color-manager
-Version:        3.32.0
+Version:        3.36.0
 Release:        0
 Summary:        Color management tools for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-color-manager
-Source:         https://download.gnome.org/sources/gnome-color-manager/3.32/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-color-manager/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-utils-minimal
-BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
@@ -35,15 +34,10 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(colord) >= 1.3.1
-BuildRequires:  pkgconfig(colord-gtk) >= 0.1.20
-BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.31.10
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.0
 BuildRequires:  pkgconfig(lcms2) >= 2.2
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(vte-2.91)
-Requires:       argyllcms
 Requires:       colord
 Requires:       colord-color-profiles
 # We only recommend PackageKit - knowing that some features are not available if not present
@@ -69,7 +63,7 @@ translation-update-upstream
 
 %install
 %meson_install
-%suse_update_desktop_file gcm-calibrate
+
 %suse_update_desktop_file gcm-import
 %suse_update_desktop_file gcm-picker
 %suse_update_desktop_file org.gnome.ColorProfileViewer HardwareSettings
@@ -77,14 +71,13 @@ translation-update-upstream
 
 %files
 %license COPYING
-%doc AUTHORS MAINTAINERS README
+%doc AUTHORS README
 %{_bindir}/gcm-*
 %{_datadir}/applications/*.desktop
 %{_datadir}/gnome-color-manager/
 %doc %{_datadir}/help/C/gnome-color-manager/
 %{_datadir}/icons/hicolor/*/apps/gnome-color-manager.*
 %{_mandir}/man?/*%{ext_man}
-%{_libexecdir}/gcm-helper-exiv
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.ColorProfileViewer.appdata.xml
 

@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>784410</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>103c217ba649912586d80ab3bd898da4</srcmd5>
+    <version>1.6.0</version>
+    <time>1587659338</time>
+    <user>dimstar_suse</user>
+    <comment>Push forgotten glib2 update</comment>
+    <requestid>795604</requestid>
+  </revision>
 </revisionlist>

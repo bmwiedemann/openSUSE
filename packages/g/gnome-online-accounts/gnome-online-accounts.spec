@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-accounts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.34.1
+Version:        3.36.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineAccounts
-Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
@@ -112,7 +112,6 @@ translation-update-upstream
         --enable-kerberos \
         --disable-media-server \
         --enable-owncloud \
-        --enable-pocket \
         --enable-windows-live \
         %{nil}
 %make_build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-atspi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi
-Version:        2.34.0
+Version:        2.36.0
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/pyatspi/2.34/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pyatspi/2.36/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gobject >= 2.90.1}

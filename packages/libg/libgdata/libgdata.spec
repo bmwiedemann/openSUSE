@@ -1,7 +1,7 @@
 #
 # spec file for package libgdata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
-Version:        0.17.11
+Version:        0.17.12
 Release:        0
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 License:        LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.55.90
 BuildRequires:  pkgconfig(libuhttpmock-0.0) >= 0.5.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(oauth)
+BuildRequires:  pkgconfig(oauth) >= 0.9.4
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -100,6 +100,7 @@ translation-update-upstream
 	-Dinstalled_tests=false \
 	-Dgtk_doc=true \
 	-Dvapi=true \
+	-Doauth1=enabled \
 	%{nil}
 %meson_build
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 11 18:48:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update source service to obs_scm.
+
+-------------------------------------------------------------------
+Wed Mar 11 14:30:14 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

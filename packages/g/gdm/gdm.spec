@@ -231,8 +231,7 @@ cp %{SOURCE8} .
 %endif
 
 %build
-NOCONFIGURE=1 sh autogen.sh
-autoreconf -fiv
+NOCONFIGURE=1 ./autogen.sh
 %configure\
         --disable-static \
         --libexecdir=%{_libexecdir}/gdm \
@@ -254,7 +253,7 @@ autoreconf -fiv
         --with-initial-vt=7 \
         --with-run-dir=/run/gdm \
         --with-udevdir=%{_prefix}/lib/udev
-%make_build V=1
+%make_build
 
 %install
 %make_install
@@ -304,6 +303,9 @@ install -m 644 %{SOURCE10} %{buildroot}%{_libexecdir}/systemd/logind.conf.d/rese
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
+
+%check
+%make_build check
 
 %pre
 %{_sbindir}/groupadd -r gdm 2> /dev/null || :

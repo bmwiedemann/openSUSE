@@ -22,16 +22,16 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.34.4
+Version:        3.36.2
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -46,12 +46,12 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gtk-vnc-2.0) >= 0.4.4
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
-BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.38
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
 BuildRequires:  pkgconfig(libvirt-gconfig-1.0) >= 2.0.0
-BuildRequires:  pkgconfig(libvirt-gobject-1.0) >= 2.0.0
+BuildRequires:  pkgconfig(libvirt-gobject-1.0) >= 3.0.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(spice-client-gtk-3.0) >= 0.32
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
@@ -183,7 +183,7 @@ translation-update-upstream
 
 %files
 %license COPYING
-%doc AUTHORS NEWS HACKING README.md README.logos TODO
+%doc AUTHORS NEWS HACKING README.md README.logos
 %doc %{_datadir}/help/C/gnome-boxes
 %{_bindir}/gnome-boxes
 %dir %{_datadir}/metainfo
@@ -250,7 +250,7 @@ translation-update-upstream
 %{_datadir}/dbus-1/services/org.gnome.Boxes.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
-%{_datadir}/gnome-shell/search-providers/gnome-boxes-search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Boxes.SearchProvider.ini
 %{_libexecdir}/gnome-boxes-search-provider
 
 %files lang -f %{name}.lang

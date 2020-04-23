@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-clocks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-clocks
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -33,15 +33,16 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.23.3
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 1.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.8
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.44
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound) >= 0.98
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.27.2
+BuildRequires:  pkgconfig(gweather-3.0) >= 3.32.0
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
 
 %description
 A nice simple app to show the time, date, and alarms.
@@ -72,12 +73,11 @@ translation-update-upstream
 %fdupes %{buildroot}/%{_datadir}
 
 %files
-%license COPYING
-%doc README.md
+%license LICENSE.md
+%doc README.md NEWS.md
 %doc %{_datadir}/help/C/gnome-clocks/
 %{_bindir}/%{name}
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.clocks.appdata.xml
+%{_datadir}/metainfo/org.gnome.clocks.metainfo.xml
 %{_datadir}/dbus-1/services/org.gnome.clocks.service
 %{_datadir}/glib-2.0/schemas/org.gnome.clocks.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.clocks*

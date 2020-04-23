@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-menus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-menus
-Version:        3.32.0
+Version:        3.36.0
 Release:        0
 Summary:        The GNOME Desktop Menu
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-menus/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-menus/3.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes

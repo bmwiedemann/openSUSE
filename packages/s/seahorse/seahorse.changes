@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:09:42 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36:
+  + Add hyperlink for COPYING in README.
+  + meson: Validate appdata and desktop files.
+  + flatpak: Remove dconf workaround.
+  + flatpak: Remove libsoup.
+  + gkr: Try to guess the username.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:12:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + ui:
+    - Add F10 shortcut for 'open menu'.
+    - Remove ctrl+f1 shortcut.
+  + pgp:
+    - Allow exporting both public & secret key.
+    - Use gpgme_op_create_subkey() over gpgme_op_edit().
+    - Port several dialogs to GtkTemplate.
+    - Small UI changes to KeyProperties.
+  + gkr:
+    - Try to display a username if available.
+    - Strip verbose 'Network secret for' prefix.
+    - Use "network-wired" icon for NM secret.
+  + common: Remove SeahorseObjectWidget.
+  + css: Fix a missing 'px' unit.
+  + meson: Use files() for source.
+
+-------------------------------------------------------------------
+Wed Feb 12 09:50:32 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + a11y: Make sure import buttons have a mnemonic.
+  + ui:
+    - Add keyboard shortcuts window.
+    - Take initials steps to provide an adaptive UI.
+    - Remove "Show combined" option.
+    - sidebar: Group by Passwords, Keys, Certificates.
+    - sidebar: Don't show "System Trust" if empty.
+  + ssh: Show the public key and add button to copy it.
+  + pgp: Don't use short key IDs.
+  + build: glgo#GNOME/seahorse!103, glgo#GNOME/seahorse!104,
+    glgo#GNOME/seahorse!110, glgo#GNOME/seahorse!113.
+- Changes from version 3.35.1:
+  + Replace GtkFileChooserDialog with GtkFileChooserNative.
+  + Add development profile.
+  + icon: Create a nightly app icon.
+  + pgp:
+    - Update documentation for exporting public keys
+    - Fix segfault when deleting subkeys (glgo#GNOME/seahorse#250).
+    - Fix deadlock with trust-model tofu or tofu-pgp
+      (glgo#GNOME/seahorse#2).
+  + Updated translations.
+- Replace libgpgme-devel BuildRequires with pkgconfig(gpgme).
+- Add pkgcofig(libhandy-0.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sun Jan  5 23:48:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

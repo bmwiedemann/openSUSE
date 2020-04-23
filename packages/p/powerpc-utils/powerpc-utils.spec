@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch4:         libvirt-service-dep.patch
 Patch5:         Revert-lparstat-Show-available-physical-processors-i.patch
 Patch6:         bug-1158312-parse-ibm-drc-info-property.patch
 Patch7:         0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch
+Patch8:         0002-Reduce-number-of-searches-of-sys-hierarchy.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
@@ -69,6 +70,7 @@ utilities for maintaining and enabling certain features of Linux on Power.
 %endif
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 autoreconf -fvi

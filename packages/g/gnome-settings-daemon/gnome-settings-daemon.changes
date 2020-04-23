@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:46:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable testsuite: Add python3-gobject-devel and
+  python3-python-dbusmock BuildRequires and check section, and pass
+  meson_test macro, run the testsuite during build.
+
+-------------------------------------------------------------------
+Wed Mar 11 00:20:04 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  2 13:35:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.92:
+  + CI improvements
+  + Xsettings:
+    - Load scripts from /etc/xdg/Xwayland-session.d in order to
+      lazily set up X11 sessions for wayland (e.g. Xwayland being
+      raised on demand)
+    - Delegate on gnome-shell to enable/disable animations
+  + Sharing: Drop support for vino. It is replaced by the windowing
+    agnostic gnome-remote-desktop in other places of the stack.
+  + Wacom: Fix build without wayland.
+  + Housekeeping:
+    - Use atime instead of mtime in thumbnail cleaner.
+    - Avoid crossing into different filesystems in cleanup dirs.
+  + Power: Add missing error check to realpath call.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:54:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Add capability to disable USB while the lockscreen is on.
+  + Power: Increase permissible runtime for some tests.
+  + Color: Look for builtin profiles in UEFI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 21:03:06 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.0:
+  + Lower systemd stop timeout.
+  + Media-keys:
+    - Add volume step configuration key.
+    - Make brightness a 0.0..1.0 float in DBus.
+    - Let the screenshot service handle saving to clipboard.
+    - Fix crash on old settings migration.
+    - Skip volume-change feedback while playing.
+  + Power:
+    - Fix rounding of brightness value.
+    - Use logind helper to change backlight brightness.
+  + Smartcard:
+    - Change manager to non-blocking.
+    - Use correct parent type for structs.
+- Switch back to regular release tarballs.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:11:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

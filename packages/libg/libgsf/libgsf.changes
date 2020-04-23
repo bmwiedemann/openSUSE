@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:16:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.47:
+  + GsfOutputMemory improvement.
+  + Teach GsfOutputGzip to control compression level.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:16:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

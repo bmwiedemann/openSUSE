@@ -25,17 +25,12 @@ Summary:        SLF4J Source JARs
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
 License:        MIT AND Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.slf4j.org/
+URL:            https://www.slf4j.org/
 Source0:        https://github.com/qos-ch/%{base_name}/archive/v_%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Patch2:         slf4j-commons-lang3.patch
 BuildRequires:  javapackages-local
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 BuildArch:      noarch
-Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(log4j:log4j:1.2.17)
-Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description
 SLF4J Source JARs.
@@ -47,8 +42,8 @@ find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 
 # Compat symlinks
-%mvn_file ':{*}' %{base_name}/@1
-%mvn_package :::sources: 
+%{mvn_file} ':{*}' %{base_name}/@1
+%{mvn_package} :::sources:
 
 %build
 rm -f */src/main/resources/META-INF/MANIFEST.MF
@@ -56,17 +51,27 @@ for i in api ext jcl jdk14 log4j12 nop simple; do
   mkdir -p %{base_name}-${i}/target
   jar cf %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar -C %{base_name}-${i}/src/main/java .
   jar uf %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar -C %{base_name}-${i}/src/main/resources .
-  %mvn_artifact org.slf4j:%{base_name}-${i}:jar:sources:%{version} %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar
+#  %{mvn_artifact} org.slf4j:%{base_name}-${i}:jar:sources:%{version} %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar
 done
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   mkdir -p ${i}/target
   jar cf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
   jar uf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
-  %mvn_artifact org.slf4j:${i}:jar:sources:%{version} ${i}/target/${i}-%{version}-sources.jar
+#  %{mvn_artifact} org.slf4j:${i}:jar:sources:%{version} ${i}/target/${i}-%{version}-sources.jar
 done
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+for i in api ext jcl jdk14 log4j12 nop simple; do
+  install -pm 0644 %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar \
+    %{buildroot}%{_javadir}/%{base_name}/%{base_name}-${i}-sources.jar
+  %add_maven_depmap org.slf4j:%{base_name}-${i}:jar:sources:%{version} %{base_name}/%{base_name}-${i}-sources.jar
+done
+for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  install -pm 0644 ${i}/target/${i}-%{version}-sources.jar \
+    %{buildroot}%{_javadir}/%{base_name}/${i}-sources.jar
+  %add_maven_depmap org.slf4j:${i}:jar:sources:%{version} %{base_name}/${i}-sources.jar
+done
 
 %files -f .mfiles
 %license LICENSE.txt APACHE-LICENSE

@@ -1,4 +1,218 @@
 -------------------------------------------------------------------
+Mon Apr  6 16:28:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.48.3:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Append initializer for "_*_size_" of array field in
+        internal struct
+      . Avoid critical trying to serialize an unsupported type to
+        Variant
+      . Don't free value if property setter takes ownership
+      . Correct field declaration for captured inline-allocated
+        array
+      . Include "glib.h" for G_BEGIN_DECLS/G_END_DECLS usage
+      . Correctly handle transformation of translated string-literal constants
+      . Don't pass CCodeCastExpression to NULL-aware free macro
+    - vala:
+      . Support struct initializer list in non-constant array
+      . Handle unlock() statement in CodeWriter
+      . Handle all ctors and dtors in CodeWriter
+      . Consider boolean types are compatible with each other
+      . Parse standalone integer/real literals as expression
+        statement
+      . Warn about usage of override to implement abstract
+        interface methods
+  + Bindings:
+    - gio-2.0: Update to 2.65.0~a136776e
+    - gstreamer: Update from 1.17.0+ git master
+    - gtk4: Update to 3.98.2+11495027.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:48:02 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.48.2:
+  + Various improvements and bug fixes:
+    - vapigen: Define "GOBJECT" corresponding to set profile of
+      CodeContext
+    - codegen:
+      . Reset outdated array _size_ variable after use as ref
+        parameter
+      . Emit postconditions before free'ing local variables
+      . Correctly access captured parameter in precondition of
+        method
+      . Use correctly typed array-length variable for
+        property-getter
+      . Use correctly typed array-length variable for delegate
+        invocation
+      . Inherit "array_length_type" from (base-)
+        parameter/property/method
+      . Improve handling of "array_length_type" attribute
+      . Use memset to init inline-allocated array with non-constant
+        size
+      . Initialize temp-var for property array length before
+        calling getter
+      . Include "glib.h" for g_return_*() usage
+    - vala:
+      . Use error() instead of Report.error() inside of
+        CodeContext.get()
+      . Accept enum-values as length for inline allocated arrays
+      . Improve copy of required attributes from delegate to lamdba
+        method
+      . Inherit lambda parameter attributes from delegate
+      . Inline-allocated array aren't instantiated with creation
+        expression
+    - valadoc: Create and register current Vala.CodeContext
+      properly
+    - parser: Improve error message for invalid
+      ArrayCreationExpression
+    - tests: Drop usage of "--main main" and avoid ambigious
+      entry-points
+    - manual: Update from wiki.gnome.org
+  + Bindings:
+    - Add cairo-gobject binding
+    - cairo: Add missing type_id attributes guarded by GOBJECT
+      define
+    - glib-2.0: Add binding for g_poll() [#924]
+    - glib-2.0: Add binding for g_win32_ftruncate()
+    - glib-2.0: Add missing IOChannel's win32 API
+    - gio-2.0: Add binding for g_io_error_from_win32_error()
+    - gstreamer: Update from 1.17.0+ git master
+    - gtk4: Update to 3.98.1
+    - posix: Add pathconf and fpathconf bindings
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:48:01 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.48.1:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Replace hard-coded "gsize" with resolved "size_t"
+      . Add destroy of parameter in vfunc of delegate property
+        setter
+      . Inherit "array" attributes from (base/-interface) property
+      . Inherit "delegate_target" from (base/-interface)
+        parameter/property/method
+      . Actually respect "delegate_target" attribute of
+        method/parameter
+      . Move ObjectTypeSymbol casting to GTypeModule
+      . Factor out GValueModule and GLibValue into a separate
+        source-files
+      . Avoid symbol clashes with "va_*" from "stdarg.h"
+    - vala:
+      . Fix search for Parameter.base_parameter
+      . Real struct-type without type_id can't be used for GObject
+        property
+    - codewriter: Output inner interface declarations
+  + Bindings:
+    - glib-2.0: Add missing "type_id"/"has_type_id" attributes to
+      structs
+    - glib-2.0: Memory profiling ("g_mem_*") is deprecated since
+      2.46
+    - linux: Don't depend on GLib.Time when using POSIX profile
+    - gtk4: Update to 3.98+2da445f9
+    - poppler-glib: Update to 0.85
+    - vapi: Update GIR-based bindings
+
+-------------------------------------------------------------------
+Sat Mar 28 00:48:00 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.48.0:
+  + Various improvements and bug fixes:
+    - vala:
+      . Fix circular reference in Property/EnumValueType.
+      . Report an internal error for unavailable context and bail.
+      . Prevent possible stack-overflow in Class.is_subtype_of().
+    - Add missing CodeContext.pop() calls.
+    - codegen: Add more "low-level" includes of "glib.h".
+    - girparser: Decrease return_array_length_idx for transformed
+      function.
+    - girparser: Delay adding of "GLib.Object" prerequisite to
+      interfaces.
+    - manual: Update from wiki.gnome.org.
+  + Bindings: vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:47:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.47.92:
+  + Various improvements and bug fixes:
+    - Add support for sealed classes in bindings.
+    - codegen: Don't initialize stack-allocated array with
+      local-constant length.
+    - vala: Improve robustness of analyzer pass for
+      language-servers.
+    - vala: Add local-variables to current scope regardless its
+      error state.
+    - testrunner: Pass G_DEBUG=fatal-warnings to invalid test.
+  + Bindings: Add some fundamental deps files to improve --nostdpkg
+    support.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:47:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.47.91:
+  + Various improvements and bug fixes:
+    - vala:
+      + Fix base-access check for compact classes.
+      + Don't ignore errors in Parameter and acknowledge them
+        further.
+      . Properly set CodeNode.error when reporting an error.
+    - girparser: Report a warning for conflicting class and
+      instance methods.
+    - testrunner: Invalid tests and therefore expected failures
+      must return 1.
+    - manual: Update from wiki.gnome.org.
+  + Bindings:
+    - Add harfbuzz-gobject binding.
+    - gstreamer: Update from 1.17.0+ git master.
+    - gtk+-*.0,gtk4: Fix iter parameter of TextIter.order().
+    - gtk4: Update to 3.98.0+410dbdf6.
+    - pango: Update and add harfbuzz-gobject as dependency.
+    - webkit2gtk-4.0: Update to 2.27.90.
+
+-------------------------------------------------------------------
+Sat Mar 28 00:47:04 CET 2020 - dimstar@opensuse.org
+
+- Update to version 0.47.4:
+  + Various improvements and bug fixes:
+    - vala:
+      . Make *_try_id specific to emit-context instead being global
+        states.
+      . Improve detection of recursive struct declarations.
+      . Inline allocated arrays require length or initializer.
+    - parser: Improve robustness and behavior of --keep-going.
+    - Bindings:
+      . javascriptcoregtk-4.0: Make JSC.Class usable by defining
+        the right callback.
+      . gtk4: Update to 3.96.0+4ab12ab7.
+      . vapi: Update GIR-based bindings.
+- Changes from version 0.47.3:
+  + Highlight: Add further support for params arrays.
+  + Various improvements and bug fixes:
+    - codegen:
+      . Don't set implemenation of interface property to its own.
+      . Use result value of assignment rather than its computation.
+      . Cast instance parameter in member-initializer for
+        base-properties.
+    - vala:
+      . Infer target_type in coalescing expressions.
+      . Non-nullable value-type in coalesce expression needs to be
+        copied.
+      . Fix short-circuiting behavior of coalescing operator.
+      . Always bail if there are semantic errors.
+    - girparser: Apply explicitly given ctype metadata attributes
+      on callables.
+  + Bindings:
+    - glib-2.0: Let (u)int.try_parse() return false if there is an
+      unparsed part.
+    - gtk4: Update to 3.96.0+7e2e92a8.
+    - gstreamer: Update from 1.17.0+ git master.
+    - vapi: Update GIR-based bindings.
+    - webkit2gtk-4.0: Update to 2.27.4.
+
+-------------------------------------------------------------------
 Thu Mar 26 10:03:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.46.7:

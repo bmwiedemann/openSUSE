@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm1_4
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define so_ver -1_4-1
 %define _name   pangomm
 Name:           pangomm1_4
-Version:        2.42.0
+Version:        2.42.1
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairomm-1.0) >= 1.2.2
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.48.0
-BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.41.0
 
 %description
 pangomm provides a C++ interface to the pango library.

@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:11:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gt-Suppress-debug-message-spam.patch: Supress debug messages
+  spam in terminal.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:33:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1.1:
+  + screen: Don't dereference data unchecked.
+
+-------------------------------------------------------------------
+Fri Mar 27 20:54:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + screen:
+    - Use clean env when creating new tab.
+    - Start new tabs/windows with the profile settings.
+    - Use the client cwd with the client command line.
+    - Fix non-preserved working dir.
+  + help: Fix a typo.
+  + Fix broken markup in various Ui translations.
+  + Updated translation.
+
+-------------------------------------------------------------------
+Fri Mar  6 10:15:17 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 29 20:20:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.35.92:
+  + help: Make pref-profile-char-width.page pass "yelp-check ids".
+  + regex:
+    - Workaround a PCRE bug resulting in not recognizing schemeless
+      URLs.
+    - Add a comment explaining APOS_START_DEF.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Feb 16 00:19:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.35.91:
+  + build:
+    - Migrate from intltool to gettext. Drop the outdated intltool
+      dependency, prefer recent gettext.
+    - Stop terminal service together with graphical session.
+    - Group terminal processes into a slice.
+    - Remove KillMode from gnome-terminal-server service file.
+  + help:
+    - Add section about "Show bold text in bright colors".
+    - Make txt-save-text.page pass "yelp-check validate".
+    - Clarify how/when to use the 'Open new terminals in'
+      preference.
+    - Update application screenshot for 3.34
+    - Correct instructions how to enable/disable the menubar.
+    - No more 'View' menu to go full screen.
+    - No more 'Terminal' or 'Edit' menu to set the terminal size.
+    - No more 'View' menu to change zoom.
+    - Page 'Hide and restore the menubar' only makes sense when
+      manually enabled.
+    - Split a sentence to reuse and save translators' time.
+    - No more 'Edit' menu to get to Preferences.
+  + client: legacy: Implicitly opened tab should become active.
+  + screen: container: Realize the screen when realizing the
+    container.
+  + Updated translations.
+- Drop intltool BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Wed Feb 12 19:05:46 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.1:
+  + prefs: Remove the "Allow bold text" hidden setting.
+  + nautilus: Spawn login shell: Spawn a login shell when opening a
+    directory from nautilus. Using "$SHELL -l" works for bash,
+    fish, tcsh, and zsh, at least, but is known not to work on
+    (at least old) illumos.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:12:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

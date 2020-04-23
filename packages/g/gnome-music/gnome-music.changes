@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Mar 28 22:04:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Fix crash when Pango 1.44 is not available.
+  + Do not change python module search path.
+  + Various CoreModel and Playlist binding optimizations.
+  + Various crash and bugfixes.
+  + Bugs fixed:
+    - Crash while searching due to bugs in searchview.py.
+    - Do not change the module search path.
+    - Wrong song count in favourite playlist.
+    - First song selected displays selected count as 2.
+    - App crashing on start: type object 'AttrFontFeatures' has no
+      attribute 'new'.
+
+-------------------------------------------------------------------
+Sat Mar 28 22:04:55 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 22:04:54 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.35.92:
+  + Restore smart playlists update.
+  + Improve Tracker content tracking.
+  + Flatpak cleanups and updates.
+  + Bugs fixed:
+    - Properly load Grilo Tracker plugin.
+    - Stop a deleted playlist if it is playing.
+    - Misc playlists fixes.
+    - Flatpak: remove unused dleyna support.
+    - flatpak assorted fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 22:04:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91.1:
+  + Bug fixed: Possible crash on warning.
+- Changes from version 3.35.91:
+  + Use natural order for sorting.
+  + Expose Last.fm scrobbler in the UI.
+  + Add local runtime cache for scrobbling.
+  + Add GLib style logging and remove old logging and debug switch.
+  + Bugs fixed:
+    - Sort albums title containing digits numerically.
+    - PlaylistsView: select the next playlist on deletion.
+    - Expose scrobbling support.
+    - Switching to playlist gives an empty view.
+    - Use tabular numbers for song duration.
+    - Crash after select all items.
+    - Deleting an empty playlist crashes.
+    - Disable selection button in Playlist View while searching.
+    - Help overlay remove Ctrl+F1 shortcut.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 22:04:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.3:
+  + Improve Tracker content tracking.
+  + Update appdate screenshots.
+  + Bugs fixed:
+    + F1 key is not opening help page.
+    + Play on empty playlist crashes Music.
+    + Crash when pressing Alt+Left in SearchView.
+- Changes from version 3.35.2:
+  + Use MusicBrainz identifiers to download album covers.
+  + Restore MPRIS playlist support and misc MPRIS cleanups.
+  + Playlist fixes.
+  + Bring back loading notifications.
+  + Nightly application icon.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 28 22:04:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.5:

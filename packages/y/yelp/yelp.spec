@@ -1,7 +1,7 @@
 #
 # spec file for package yelp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           yelp
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/yelp/3.36/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE yelp-lang-bundle.patch bnc#689979 vuntz@opensuse.org -- Support help documents shipped in bundles
 Patch1:         yelp-lang-bundle.patch
 BuildRequires:  fdupes

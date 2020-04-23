@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Mar  9 00:12:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add sysprof-fix-build-32-bit-platforms.patch: Fix build on 32 bit
+  arches (glgo#GNOME/sysprof!24).
+
+-------------------------------------------------------------------
+Sun Mar  8 14:07:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Preload library has been moved to $libdir from $libexecdir.
+  + Build system improvements.
+  + Fix whole-system capture setting when using "Record Again"
+    feature.
+  + New SysprofCollector interfaces for samples, marks, and logs to
+    sit alongside allocations.
+  + Updated translations.
+- Enable meson_test in check section again.
+
+-------------------------------------------------------------------
+Fri Feb 28 22:56:23 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.35.92:
+  + A new profiler for tracking memory allocations within processes
+    that are spawned by Sysprof. Select "Track Allocations" to use
+    an LD_PRELOAD module which monitors allocations within the
+    target process. A callgraph is provided with allocations and
+    their stack traces. This brings the main features of the
+    venerable "Memprof" into Sysprof.
+  + Port Sysprof to work on RHEL 7.
+  + Improvements to marks and counters displays.
+  + A new data frame in libsysprof-capture for memory allocations
+    with stack traces.
+  + sysprof-cli --merge can now be used to merge multiple syscap
+    files together.
+  + sysprof <program-path> can now be used to open Sysprof directly
+    to a program to execute.
+  + Sysprof now builds with additional security protections and
+    optimization flags such as -Bsymbolic, -Wl,-z,defs, -Wl,-z,now,
+    and -Wl,-z,relro.
+  + Fixes for macOS
+  + The ELF symbol resolver is faster.
+  + sysprof-cli now properly adds supplemental information to the
+    capture file such as decoded symbols. This makes sharing syscap
+    files across machines easier and more reliable.
+  + A new mmap()'d ring buffer can be shared between processes for
+    faster data transfer to sysprof. We expect more features around
+    this SysprofCollector interface in future releases.
+  + A new set if icons has been provided for the collectors
+  + Updated translations.
+- Add pkgconfig(libunwind-generic) BuildRequires: New optional
+  dependency.
+
+-------------------------------------------------------------------
+Wed Feb 12 20:49:00 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.3:
+  + Build and test fixes.
+  + Track changes to gdbus-codegen.
+  + Include additional pkg-config variable for access to D-Bus
+    data.
+  + Updated translations.
+- Drop sysprof-libsysprof-ui-avoid-use-of-env.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Nov 19 12:12:49 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add sysprof-libsysprof-ui-avoid-use-of-env.patch: libsysprof-ui:

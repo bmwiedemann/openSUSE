@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 11 12:52:59 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.17.12:
+  + Make OAuth 1 support optional and disabled by default; this
+    makes the `oauth` dependency optional on `-Doauth1=enabled`.
+  + Bugs fixed:
+    - glgo#GNOME/libgdata#1 Consider loosening the liboauth
+      dependency.
+    - glgo#GNOME/libgdata#23 Authentication errors with Google
+      Drive.
+    - glgo#GNOME/libgdata#36 Clarify license in meson.build.
+  + Updated translations.
+- Pass -Doauth1=enabled to meson, still build oauth support.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:16:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

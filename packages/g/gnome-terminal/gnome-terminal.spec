@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-terminal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           gnome-terminal
-Version:        3.34.2
+Version:        3.36.1.1
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        https://download.gnome.org/sources/gnome-terminal/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-terminal/3.36/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gt-Suppress-debug-message-spam.patch -- Supress debug messages spam in terminal
+Patch0:         gt-Suppress-debug-message-spam.patch
 
 BuildRequires:  fdupes
 # Needed for search provider. It should not be needed in my opinion,
 # we have to take this up with upstream, or just provide search
 # provider interface definition file as source.
 BuildRequires:  gnome-shell
-BuildRequires:  intltool >= 0.50.1
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -38,13 +39,13 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dconf) >= 0.14.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 0.1.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.58.0
+BuildRequires:  pkgconfig(vte-2.91) >= 0.60.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 

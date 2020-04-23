@@ -1,7 +1,7 @@
 #
 # spec file for package gobject-introspection
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.62.0
+Version:        1.64.1
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,7 +25,7 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.62/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.64/%{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
@@ -37,7 +37,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.49.2
+BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
@@ -103,8 +103,8 @@ a uniform, machine readable format.
 
 %build
 %meson \
-	-Dcairo=true \
-	-Ddoctool=true \
+	-Dcairo=enabled \
+	-Ddoctool=enabled \
 	-Dgtk_doc=true \
 	-Dpython='%{_bindir}/python3' \
 	%{nil}

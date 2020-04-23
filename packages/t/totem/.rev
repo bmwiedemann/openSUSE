@@ -1086,4 +1086,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767225 from dimstar)</comment>
     <requestid>767485</requestid>
   </revision>
+  <revision rev="145" vrev="5">
+    <srcmd5>ebbfbed2cc28fe7737547059613affde</srcmd5>
+    <version>3.34.1</version>
+    <time>1587659330</time>
+    <user>dimstar_suse</user>
+    <comment>Push forgotten glib2 update</comment>
+    <requestid>795601</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:52:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.1:
+  + The BigInt type is now _actually_ available, as it wasn't
+    enabled in the 1.64.0 release even though it was mentioned in
+    the release notes.
+  + Closed bugs and merge requests:
+    - testCommandLine's Unicode tests failing on Alpine Linux.
+    - build: Various clean-ups.
+    - Correctly handle vfunc inout parameters.
+    - Fix failed redirect of output in CommandLine tests.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.0:
+  + No changes, stable version update only.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:26 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.63.92:
+  + object: Use g_irepository_get_object_gtype_interfaces.
+  + Add -fno-semantic-interposition to -Bsymbolic-functions.
+  + examples: add a dbus-client and dbus-service example.
+  + Various GNOME Shell crashes during GC, mozjs68 regression.
+- Drop gjs-fix-gnome-shell-crash-mr396.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add yet a commit from upstream wip mr (glgo#GNOME/gjs!396).
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gjs-fix-gnome-shell-crash-mr396.patch: Fix various crashes in
+  gnome-shell caused by gjs, drop gjs-dont-zero-out-wrapper.patch
+  as that is part of this new patch too.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:23 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gjs-dont-zero-out-wrapper.patch: object: Don't zero out
+  wrapper if destroying ObjectInstance anyway (glgo#GNOME/gjs!396).
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.63.91:
+  + [mozjs68] Reorganize modules for ESM.
+  + Various maintenance.
+  + Fix building GJS master with Visual Studio and update build
+    instructions.
+  + Resolve "Gnome Shell crash on GC run with mozjs68".
+  + installed-tests/js: Add missing dep on warnlib_typelib.
+  + object: Cache known unresolvable properties.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:52:21 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.63.90:
+  + This version of GJS is based on SpiderMonkey 68, an upgrade
+    from the previous ESR (Extended Support Release) of
+    SpiderMonkey 60.
+  + New language features
+    - The BigInt type, currently a stage 3 proposal in the ES
+      standard, is now available.
+  + New syntax
+    - `globalThis` is now the ES-standard supported way to get the
+      global object, no matter what kind of JS environment.
+    - BigInt literals are expressed by a number with "n" appended
+      to it: for example, `1n`, `9007199254740992n`.
+  + New behaviour: There are a lot of minor behaviour changes as
+    SpiderMonkey's JS implementation conforms ever closer to
+    existing ECMAScript standards and adopts new ones. For complete
+    information, read the Firefox developer release notes
+  + Backwards-incompatible changes: The nonstandard String generics
+    were removed.
+- Changes from version 1.63.3:
+  + JS ERROR: TypeError: this._rooms.get(...) is undefined.
+  + gjs-symlink script is incompatible with distro builds.
+  + object: Warn when setting a deprecated property.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Replace gcc-c++ with c++_compiler BuildRequires.
+- Add git BuildRequires: New dependency (expected to be dropped).
+- Add pkgconfig(sysprof-3) and pkgconfig(sysprof-capture-3)
+  BuildRequires, build profiler support.
+- Pass -Dinstalled_tests=false to meson: do not install the test
+  suite (it's meant to be invalid code, which in turn confuses the
+  dep scanner).
+
+-------------------------------------------------------------------
 Sat Mar 28 16:52:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.58.6:

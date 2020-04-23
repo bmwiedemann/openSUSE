@@ -17,13 +17,13 @@
 
 
 Name:           gnome-session
-Version:        3.34.2
+Version:        3.36.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/3.36/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 

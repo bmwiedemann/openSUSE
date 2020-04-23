@@ -17,17 +17,17 @@
 
 
 Name:           gnome-contacts
-Version:        3.34.1
+Version:        3.36.1
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
-BuildRequires:  meson >= 0.41
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala
@@ -89,7 +89,8 @@ search results from contacts.
 
 %prep
 %autosetup -p1
-translation-update-upstream
+# t-u-u disabled since 3.35.x - execution failure
+#translation-update-upstream
 
 %build
 %meson \

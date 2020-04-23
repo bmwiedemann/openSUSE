@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%define sover 1-0_0_0
+%define sover 2-1_0_1
+%define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        3.34.1
+Version:        3.36.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig
@@ -63,13 +64,21 @@ Summary:        Shared library for %{name}
 Group:          System/Libraries
 
 %description -n libgcalc-%{sover}
-This package contains the shared library for %{name}.
+GNOME Calculator Library
+
+%package -n libgci-%{gcisover}
+Summary:        GNOME Calculator Library GTK Interface
+Group:          System/Libraries
+
+%description -n libgci-%{gcisover}
+This package contains a shared library for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
 Requires:       libgcalc-%{sover} = %{version}
+Requires:       libgci-%{gcisover} = %{version}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -95,6 +104,8 @@ translation-update-upstream
 
 %post -n libgcalc-%{sover} -p /sbin/ldconfig
 %postun -n libgcalc-%{sover} -p /sbin/ldconfig
+%post -n libgci-%{gcisover} -p /sbin/ldconfig
+%postun -n libgci-%{gcisover} -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -117,20 +128,25 @@ translation-update-upstream
 %{_libexecdir}/gnome-calculator-search-provider
 
 %files -n libgcalc-%{sover}
-%{_libdir}/libgcalc-1.so.*
+%{_libdir}/libgcalc-2.so.*
+
+%files -n libgci-%{gcisover}
+%{_libdir}/libgci-1.so.*
 
 %files devel
-%dir %{_includedir}/gcalc-1
-%dir %{_includedir}/gcalc-1/gcalc
-%{_includedir}/gcalc-1/gcalc/gcalc.h
-%{_libdir}/libgcalc-1.so
-%{_libdir}/pkgconfig/gcalc-1.pc
+%{_includedir}/gcalc-2/
+%{_includedir}/gci-2/
+%{_libdir}/libgcalc-2.so
+%{_libdir}/pkgconfig/gcalc-2.pc
+%{_libdir}/pkgconfig/gci-1.pc
+%{_libdir}/libgci-1.so
 %dir %{_datadir}/gir-1.0
-%{_datadir}/gir-1.0/GCalc-1.gir
+%{_datadir}/gir-1.0/GCalc-2.gir
+%{_datadir}/gir-1.0/GCi-1.gir
 %dir %{_datadir}/vala
 %dir %{_datadir}/vala/vapi
-%{_datadir}/vala/vapi/gcalc-1.deps
-%{_datadir}/vala/vapi/gcalc-1.vapi
+%{_datadir}/vala/vapi/gcalc-2.*
+%{_datadir}/vala/vapi/gci-1.*
 
 %files lang -f %{name}.lang
 

@@ -17,13 +17,13 @@
 
 
 Name:           libwnck
-Version:        3.32.0
+Version:        3.36.0
 Release:        0
 Summary:        Window Navigator Construction Kit (Library Package)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
-Source0:        https://download.gnome.org/sources/libwnck/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libwnck/3.36/%{name}-%{version}.tar.xz
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
 
@@ -101,7 +101,7 @@ translation-update-upstream po libwnck
 %install
 %meson_install
 %find_lang %{name}-3.0
-%fdupes %{buildroot}
+%fdupes %{buildroot}/{_prefix}
 
 %post -n libwnck-3-0 -p /sbin/ldconfig
 %postun -n libwnck-3-0 -p /sbin/ldconfig
@@ -114,13 +114,13 @@ translation-update-upstream po libwnck
 
 %files -n libwnck-3-0
 %license COPYING
-%doc AUTHORS README NEWS ChangeLog
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Wnck-3_0
 %{_libdir}/girepository-1.0/Wnck-3.0.typelib
 
 %files devel
+%doc AUTHORS README NEWS ChangeLog
 %{_includedir}/libwnck-3.0/
 %{_libdir}/pkgconfig/libwnck-3.0.pc
 %{_libdir}/*.so

@@ -20,10 +20,10 @@
 %global __requires_exclude typelib\\(Ide\\)
 
 # Update this on every major/minor bump
-%define basever 3.34
+%define basever 3.36
 
 Name:           gnome-builder
-Version:        3.34.1
+Version:        3.36.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0
@@ -31,15 +31,12 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
 Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gnome-builder-meson-fixes.patch -- Fix build with new meson
-Patch0:         gnome-builder-meson-fixes.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
-BuildRequires:  libvala-devel
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.52.0
+BuildRequires:  meson >= 0.51.2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gobject
@@ -60,6 +57,7 @@ BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.25.1
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
 BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.22.0
+BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
@@ -80,7 +78,6 @@ Recommends:     flatpak
 Recommends:     flatpak-builder
 Recommends:     gnome-builder-plugin-jedi = %{version}
 Recommends:     gnome-builder-plugin-jhbuild = %{version}
-Recommends:     gnome-builder-plugin-vala-pack = %{version}
 Obsoletes:      gnome-builder-plugin-beautifier < 3.27.4
 Obsoletes:      gnome-builder-plugin-clang < %{version}
 Obsoletes:      gnome-builder-plugin-cmake < %{version}
@@ -94,6 +91,7 @@ Obsoletes:      gnome-builder-plugin-mingw < %{version}
 Obsoletes:      gnome-builder-plugin-symbol-tree < %{version}
 Obsoletes:      gnome-builder-plugin-sysmon < %{version}
 Obsoletes:      gnome-builder-plugin-todo < %{version}
+Obsoletes:      gnome-builder-plugin-vala-pack < %{version}
 Obsoletes:      gnome-builder-plugin-xml-pack < %{version}
 
 %description
@@ -132,16 +130,6 @@ Supplements:    packageand(%{name}:jhbuild)
 %description plugin-jhbuild
 This package provides the jhbuild plugin for %{name}.
 
-%package plugin-vala-pack
-Summary:        Vala-pack plugin for %{name}
-Group:          Development/Tools/IDE
-Requires:       %{name} = %{version}
-Requires:       vala
-Supplements:    packageand(%{name}:vala)
-
-%description plugin-vala-pack
-This package provides the vala-pack plugin for %{name}.
-
 %lang_package
 
 %prep
@@ -178,32 +166,32 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_libdir}/%{name}
 %{_libexecdir}/%{name}-clang
 %{_libexecdir}/%{name}-git
-%{_libexecdir}/%{name}-vala
 # EXCLUDE THE OPTIONAL PLUGINS FROM THE MAIN PACKAGE
 %exclude %{_libdir}/%{name}/plugins/jedi.plugin
 %exclude %{_libdir}/%{name}/plugins/jedi_plugin.py
 %exclude %{_libdir}/%{name}/plugins/jhbuild.plugin
 %exclude %{_libdir}/%{name}/plugins/jhbuild_plugin.py
-%exclude %{_libdir}/%{name}/plugins/vala-pack.plugin
 %{_datadir}/metainfo/org.gnome.Builder.appdata.xml
 %{_datadir}/applications/org.gnome.Builder.desktop
 %{_datadir}/dbus-1/services/org.gnome.Builder.service
 %{_datadir}/%{name}/
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.gnome-code-assistance.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.build.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.clang.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.code-insight.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.editor.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.editor.language.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.extension-type.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.code-insight.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.color_picker_plugin.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.eslint.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.project-tree.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.workbench.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.build.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.gnome-code-assistance.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.plugin.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.color_picker_plugin.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.copyright.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.eslint.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.plugins.stylelint.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.project-tree.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.project.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.builder.terminal.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.builder.clang.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.builder.workbench.gschema.xml
 %dir %{_datadir}/gtksourceview-3.0
 %dir %{_datadir}/gtksourceview-3.0/styles
 %{_datadir}/gtksourceview-3.0/styles/builder-dark.style-scheme.xml
@@ -227,10 +215,6 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/jhbuild.plugin
 %{_libdir}/%{name}/plugins/jhbuild_plugin.py
-
-%files plugin-vala-pack
-%dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/vala-pack.plugin
 
 %files lang -f %{name}.lang
 

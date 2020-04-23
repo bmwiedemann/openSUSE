@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview4
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview4
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/4.4/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/4.6/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel

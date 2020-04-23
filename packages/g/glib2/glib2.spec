@@ -18,13 +18,13 @@
 
 %bcond_without     systemtap
 Name:           glib2
-Version:        2.62.6
+Version:        2.64.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        http://download.gnome.org/sources/glib/2.62/glib-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib/2.64/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -51,12 +51,12 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gamin-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
+BuildRequires:  gtk-doc >= 1.32
 BuildRequires:  libselinux-devel
 BuildRequires:  m4
 BuildRequires:  meson >= 0.49.2
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
+BuildRequires:  python3-base >= 3.5
 # gdbus-codegen is run during the build, so we need python3-xml
 BuildRequires:  python3-xml
 BuildRequires:  translation-update-upstream
@@ -391,7 +391,6 @@ done
 %{_bindir}/gapplication
 %{_bindir}/gdbus
 %{_bindir}/gio
-%{_bindir}/gio-launch-desktop
 %{_bindir}/gio-querymodules*
 %{_bindir}/glib-compile-schemas
 %{_bindir}/gresource

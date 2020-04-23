@@ -19,11 +19,11 @@
 # don't enable sysprof support by default
 %bcond_with profiler
 
-%define api_major 5
+%define api_major 6
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.34.5
+Version:        3.36.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -35,12 +35,7 @@ Source:         %{name}-%{version}.tar.xz
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch4:         mutter-disable-cvt-s390x.patch
-# PATCH-FIX-UPSTREAM mutter-fix-mesa20.patch sndirsch@suse.de -- EGL: Include EGL/eglmesaext.h
-Patch5:         mutter-fix-mesa20.patch
-# PATCH-FIX-UPSTREAM 0001-Update-to-PipeWire-0.3-API.patch alarrosa@suse.de -- Port mutter to build with pipewire 0.3.0
-Patch6:         0001-Update-to-PipeWire-0.3-API.patch
-# PATCH-FIX-UPSTREAM mutter-wayland-fix-keyboard-move-resize-window.patch bsc#1159976, glgo#GNOME/mutter!997 alynx.zhou@suse.com -- Fix window keyboard move/resize mode in wayland
-Patch7:         mutter-wayland-fix-keyboard-move-resize-window.patch
+
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
 Patch1000:      mutter-SLE-bell.patch
@@ -50,7 +45,6 @@ Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
 Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -68,6 +62,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.61.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
+BuildRequires:  pkgconfig(graphene-gobject-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.7
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
@@ -161,9 +156,6 @@ applications that want to make use of the mutter library.
 %setup -q
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter
@@ -174,13 +166,13 @@ translation-update-upstream po mutter
 %endif
 
 %build
-%define _lto_cflags %{nil}
 %meson \
 	-Degl_device=true \
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
 	-Dtests=false \
 	-Dinstalled_tests=false \
+	-Dxwayland_initfd=disabled \
 %if %{with profiler}
 	-Dprofiler=true \
 %else

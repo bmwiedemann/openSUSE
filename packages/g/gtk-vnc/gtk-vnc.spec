@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-vnc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gnutls) >= 3.1.18
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gvnc-1.0)
 BuildRequires:  pkgconfig(libpulse-simple)
 
 %description
@@ -169,6 +168,9 @@ sed -i '/install:/s/false/true/' examples/meson.build
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %post    -n libgvnc-1_0-0 -p /sbin/ldconfig
 %postun  -n libgvnc-1_0-0 -p /sbin/ldconfig

@@ -640,4 +640,12 @@
     <comment>New stable release</comment>
     <requestid>774604</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9a78508b975c3446df41d15bc0579ad5</srcmd5>
+    <version>1.12.8</version>
+    <time>1587659328</time>
+    <user>dimstar_suse</user>
+    <comment>Push forgotten glib2 update</comment>
+    <requestid>795600</requestid>
+  </revision>
 </revisionlist>

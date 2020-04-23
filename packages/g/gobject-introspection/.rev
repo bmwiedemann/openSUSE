@@ -725,4 +725,12 @@
   website contents. (forwarded request 756873 from StefanBruens)</comment>
     <requestid>757338</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>dc50daa4ea2ec26a5eff0294815da177</srcmd5>
+    <version>1.64.1</version>
+    <time>1587659245</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795074 from iznogood)</comment>
+    <requestid>795225</requestid>
+  </revision>
 </revisionlist>

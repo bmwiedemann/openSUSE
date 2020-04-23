@@ -1033,4 +1033,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
   sddm (see boo#1167321). (forwarded request 787927 from cornelisbb)</comment>
     <requestid>789274</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>aa79b66838a503ca2e8e3bcf81043520</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659203</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795048 from iznogood)</comment>
+    <requestid>795201</requestid>
+  </revision>
 </revisionlist>

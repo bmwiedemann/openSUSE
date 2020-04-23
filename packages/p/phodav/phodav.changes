@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  5 19:10:31 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 2.4:
+  + Added udev option to meson.
+  + spice-webdavd:
+    - Several improvements and fixes including some leaks.
+    - Disconnect the client gracefully.
+    - Code refcatory to improve performance and error handling.
+    - Avahi fixes on registering and unregistering service.
+    - Fixes DAV:quota-used-bytes in resource is not in root fs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 25 23:43:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add %systemd_ordering for %service_*.

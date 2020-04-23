@@ -187,4 +187,18 @@
     <comment>Update to 1.7.30</comment>
     <requestid>779963</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>58122d7282f8ed618e3508b83ce41607</srcmd5>
+    <version>1.7.30</version>
+    <time>1587659349</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %%mvn_artifact, but %%add_maven_depmap for the
+  sources artifacts, so that they don't suck in half of the xmvn*
+  stack in order to build
+- Don't use %%mvn_artifact, but %%add_maven_depmap for the
+  sources artifacts, so that they don't suck in half of the xmvn*
+  stack in order to build
+</comment>
+    <requestid>796004</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 17 02:43:41 UTC 2020 - Xiaoguang Wang <xwang@suse.com>
+
+- Update to version 20.04.0:
+  * fileItem.js Fix stretched icons
+  * fileItem.js: Add missing semicolons
+  * desktopManager: Remove hint text from rename popup
+  * general: honor "dont_show_thumbnails" settings
+  * Apply suggestion to fileItem.js
+  * fileItem.js: show hand cursor whit SINGLE_CLICK
+  * desktopManager: clear selected files on desktop refresh
+  * DesktopManager: Ignore attribute changes on fileItem if it's not there yet
+  * general: Remove fileItemHandlers if item is destroyed
+  * createFolderDialog: Use actor Easing instead of Tweener
+  * cleanup: Use inheritance for Actor classes instead of composition
+  * general: Don't use actor property for native objects
+  * createFolterDialog: Port to be a native GObject
+  * fileItem.js: always update the metadata of a file
+  * general: launch only executable files
+  * Update translation
+
+-------------------------------------------------------------------
 Thu Nov 14 19:25:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop superfluous tarball, we use sourceservice during build.

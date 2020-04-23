@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2-glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,19 @@
 
 
 Name:           libgit2-glib
-Version:        0.28.0.1
+Version:        0.99.0+16
 Release:        0
 Summary:        GLib wrapper library around libgit2
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/Libgit2-glib
-Source0:        https://download.gnome.org/sources/libgit2-glib/0.28/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3
+BuildRequires:  python3-base
 # Needed to create the vala bindings
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
@@ -69,16 +71,19 @@ libgit2-glib is a GLib wrapper library around the libgit2 git access library.
 
 %build
 %meson \
-    -D gtk_doc=true \
-    -D introspection=true \
-    -D python=false \
-    -D ssh=true \
-    -D vapi=true \
-    %{nil}
+	-Dgtk_doc=true \
+	-Dintrospection=true \
+	-Dpython=false \
+	-Dssh=true \
+	-Dvapi=true \
+	%{nil}
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %post -n libgit2-glib-1_0-0 -p /sbin/ldconfig
 %postun -n libgit2-glib-1_0-0 -p /sbin/ldconfig

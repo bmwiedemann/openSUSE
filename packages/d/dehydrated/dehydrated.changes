@@ -2,7 +2,7 @@
 Mon Apr 20 00:37:26 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Fix lighttpd config file (boo#1169834)
-- Provide nginx subpackage for SLE 15+ (jsc#11756)
+- Provide nginx subpackage for SLE 15+ (jsc#SLE-11727)
 
 -------------------------------------------------------------------
 Mon Feb  3 12:25:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

@@ -6,6 +6,25 @@ Wed Apr 15 01:20:42 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   (bsc#1169165 glgo!GNOME/gnome-session#42).
 
 -------------------------------------------------------------------
+Sat Mar 28 03:36:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + data: Require UsbProtection component.
+  + doap: Call this "GNOME Session Manager".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:35:03 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.3:
+  + binary: Allow quitting early on SIGTERM/SIGINT
+  + binary: Log a critical when our SIGTERM/SIGINT handler fails to
+    log out.
+  + Updated translations.
+- Switch back to regular release tarballs.
+- Rebase gnome-session-remove-gsd-XSettings.patch.
+
+-------------------------------------------------------------------
 Mon Mar 16 03:51:13 UTC 2020 - Xiaoguang Wang <xwang@suse.com>
 
 - Add gnome-session-remove-gsd-XSettings.patch: Remove

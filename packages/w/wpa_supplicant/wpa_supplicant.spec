@@ -25,6 +25,7 @@ URL:            https://w1.fi/wpa_supplicant
 Source0:        https://w1.fi/releases/%{name}-%{version}.tar.gz
 Source1:        config
 Source2:        %{name}.conf
+Source3:        fi.epitest.hostap.WPASupplicant.service
 Source4:        logrotate.wpa_supplicant
 Source5:        fi.w1.wpa_supplicant1.service
 Source6:        wpa_supplicant.service
@@ -38,6 +39,7 @@ Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch4:         wpa_supplicant-getrandom.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
+Patch6:         restore-old-dbus-interface.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -87,6 +89,7 @@ install -m 0644 wpa_supplicant/dbus/dbus-wpa_supplicant.conf %{buildroot}%{_sysc
 install -d %{buildroot}/%{_sysconfdir}/%{name}
 install -m 0600 %{SOURCE2} %{buildroot}/%{_sysconfdir}/%{name}
 install -d %{buildroot}/%{_datadir}/dbus-1/system-services
+install -m 0644 %{SOURCE3} %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/dbus-1/system-services
 install -d %{buildroot}/%{_sysconfdir}/logrotate.d/
 install -m 644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/logrotate.d/wpa_supplicant
@@ -104,6 +107,7 @@ ln -s service %{buildroot}/%{_sbindir}/rcwpa_supplicant
 # avoid spurious dependency on /usr/bin/python
 chmod -x wpa_supplicant/examples/*.py
 # dbus auto activation boo#966535
+ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.epitest.hostap.WPASupplicant.service
 ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.w1.wpa_supplicant1.service
 
 %pre
@@ -134,6 +138,7 @@ ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.w1.wpa_supplicant1.
 %ghost %{_rundir}/%{name}
 %{_unitdir}/wpa_supplicant.service
 %{_unitdir}/wpa_supplicant@.service
+%{_unitdir}/dbus-fi.epitest.hostap.WPASupplicant.service
 %{_unitdir}/dbus-fi.w1.wpa_supplicant1.service
 %dir %{_sysconfdir}/%{name}
 %{_mandir}/man8/*

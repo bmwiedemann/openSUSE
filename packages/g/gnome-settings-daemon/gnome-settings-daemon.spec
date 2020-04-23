@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.34.2+0
+Version:        3.36.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/3.36/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.35.91
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.9.5
@@ -95,6 +95,10 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
+# Needed for tests
+BuildRequires:  python3-gobject-devel
+BuildRequires:  python3-python-dbusmock
+#
 Requires:       gsettings-desktop-schemas
 # g-s-d uses the pkexec binary
 Requires:       polkit
@@ -174,6 +178,9 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
+
+%check
+%meson_test
 
 %files
 %license COPYING COPYING.LIB
@@ -271,6 +278,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-oled-helper
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
+%dir %{_sysconfdir}/xdg/Xwayland-session.d
+%{_sysconfdir}/xdg/Xwayland-session.d/00-xrdb
 %{_userunitdir}/gsd-wacom.service
 %{_userunitdir}/gsd-wacom.target
 %endif
@@ -278,6 +287,10 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_userunitdir}/gnome-session-initialized.target.wants/
 %dir %{_userunitdir}/gnome-session-x11-services.target.wants/
 %{_userunitdir}/gnome-session-x11-services.target.wants/gsd-xsettings.target
+%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.UsbProtection.desktop
+%{_userunitdir}/gsd-usb-protection.service
+%{_userunitdir}/gsd-usb-protection.target
+%{_libexecdir}/gnome-settings-daemon-3.0/gsd-usb-protection
 
 %files devel
 %doc AUTHORS ChangeLog

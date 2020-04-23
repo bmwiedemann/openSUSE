@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar 28 03:36:00 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:35:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.90:
+  + Use shorter strings for prompt titles.
+  + pam: Provide more insight from pam_gnome_keyring about
+    unlocking.
+  + Don't use GTimeVal/g_get_current_time().
+  + Don't use g_type_class_add_private().
+  + Build fixes.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:35:01 CET 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.1:
+  + dbus: Implement secret portal backend.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 24 20:17:50 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - According to the warning in the spec file baselibs.conf should be

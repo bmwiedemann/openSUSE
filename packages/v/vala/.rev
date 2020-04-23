@@ -890,4 +890,12 @@
     <comment>New stable rel (forwarded request 788477 from iznogood)</comment>
     <requestid>789276</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>5a970b737991d6cbca1ba8da546bb323</srcmd5>
+    <version>0.48.3</version>
+    <time>1587659297</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795109 from iznogood)</comment>
+    <requestid>795254</requestid>
+  </revision>
 </revisionlist>

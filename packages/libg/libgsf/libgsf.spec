@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgsf
-Version:        1.14.46
+Version:        1.14.47
 Release:        0
 Summary:        I/O library for dealing with structured file formats
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -59,8 +59,8 @@ This package provides a thumbnailer for office files.
 
 %package 1-114
 Summary:        I/O library for dealing with structured file formats
-Group:          System/Libraries
 # To make lang package installable
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 # With libgsf 1.14.22 (first in 12.2), gnome-vfs and bonobo support got dropped, so no more gnome package.
 Obsoletes:      libgsf-gnome < 1.14.22

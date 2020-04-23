@@ -423,4 +423,12 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767167 from dimstar)</comment>
     <requestid>767432</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>3b6396b16c21c70117a0934a47bda0f5</srcmd5>
+    <version>1.0.0</version>
+    <time>1587659333</time>
+    <user>dimstar_suse</user>
+    <comment>Push forgotten glib2 update</comment>
+    <requestid>795602</requestid>
+  </revision>
 </revisionlist>

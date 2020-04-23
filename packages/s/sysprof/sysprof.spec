@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,15 +20,15 @@
 %define sover 3
 
 Name:           sysprof
-Version:        3.34.1
+Version:        3.36.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        http://download.gnome.org/sources/sysprof/3.34/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM sysprof-libsysprof-ui-avoid-use-of-env.patch -- Avoid use of env
-Patch0:         sysprof-libsysprof-ui-avoid-use-of-env.patch
+Source0:        https://download.gnome.org/sources/sysprof/3.36/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM sysprof-fix-build-32-bit-platforms.patch -- Fix build on 32 bit arches
+Patch0:         sysprof-fix-build-32-bit-platforms.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -38,10 +38,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.61.3
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
 BuildRequires:  pkgconfig(libsystemd) >= 222
+BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.105
 BuildRequires:  pkgconfig(systemd)
 Requires:       hicolor-icon-theme
@@ -85,8 +86,7 @@ syspref's capture format.
 %suse_update_desktop_file org.gnome.Sysprof%{sover} Profiling
 
 %check
-### FIXME ### Temp disabled during 3.34 devel period
-#%%meson_test
+%meson_test
 
 %pre
 %service_add_pre sysprof%{sover}.service
@@ -126,6 +126,7 @@ syspref's capture format.
 %{_datadir}/mime/packages/sysprof-mime.xml
 %{_datadir}/polkit-1/actions/org.gnome.sysprof%{sover}.policy
 %{_libdir}/libsysprof-%{sover}.so
+%{_libdir}/libsysprof-memory-%{sover}.so
 %{_libdir}/libsysprof-ui-%{sover}.so
 %{_libexecdir}/sysprofd
 %{_unitdir}/sysprof2.service
@@ -134,7 +135,7 @@ syspref's capture format.
 %doc %{_datadir}/help/C/sysprof/*
 
 %files devel
-%doc AUTHORS TODO
+%doc AUTHORS
 %{_includedir}/sysprof-%{sover}/
 %{_libdir}/pkgconfig/sysprof-%{sover}.pc
 %{_libdir}/pkgconfig/sysprof-ui-%{sover}.pc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 19:11:24 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Don't use %%mvn_artifact, but %%add_maven_depmap for the
+  sources artifacts, so that they don't suck in half of the xmvn*
+  stack in order to build
+
+-------------------------------------------------------------------
 Wed Feb 26 12:40:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.7.30

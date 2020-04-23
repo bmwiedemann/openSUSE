@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:25:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Update man page for info panel change.
+  + Display: Fix resolution options getting stuck in a low
+    resolution.
+  + Sound: Remove unused files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 30 08:25:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 30 08:25:51 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.35.92:
+  + Applications: Update icon.
+  + Background:
+    - Remove split desktop and lock screen wallpapers.
+    - Improve visuals of the background icons.
+  + Network: Make VPN gear buttons consistent with other buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 30 08:25:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Share GCancellable code
+  + Background: Remove unused GCancellable.
+  + Power: Fix mobile broadband switch logic.
+  + Sharing: Remember password on remote desktop sharing.
+  + Thunderbolt: Fix GCancellable leak.
+  + User Accounts: Always generate user avatars.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 30 08:25:49 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + New sidebar panel order and grouping.
+  + Introduce CcPermissionInfoBar.
+  + More code style updates.
+  + Applications:
+    - Add "Run in Background" switch.
+    - Add "Set Desktop Background" switch.
+    - Show snap packages.
+  + Network:
+    - Add SAE support.
+    - Many code refactorings.
+    - Switch to use GtkTemplate.
+  + Power: Hide power button the chassis is handset.
+  + Printers: Use CcPermissionInfoBar.
+  + Region & Language: New design for the Formats dialog.
+  + User Accounts:
+    - Use CcPermissionInfoBar.
+    - Improved layout.
+- Changes from version 3.35.2:
+  + Tighten up code style.
+  + Improve timezone for various countries.
+  + Replace deprecated logging functions with modern equivalents.
+  + Background: Update clock in both preview modes.
+  + Date & Time: Allow changing the timezone when auto-update is
+    prohibited.
+  + Display: Replace CC_DISPLAY_*_GET_PRIVATE.
+  + Info:
+    - Implement new design.
+    - Add windowing system field.
+  + Network
+    - Add new hotspot creation dialog.
+    - Major cleanups and code refactorings.
+    - Plug various memory leaks.
+  + Privacy: Drop the panel and replace it by various subpanels.
+  + Search: Make rows and its elements reachable via keyboard.
+  + Sharing: Set new shared folder visible as soon as it gets
+    added.
+  + Sound: Remove leftover canberra-gtk header inclusion.
+  + Universal Access: Make rows and its elements reachable via
+    keyboard.
+  + User Accounts: Use 'pw usershow' to check username validity on
+    FreeBSD.
+  + Updated translations.
+- Drop gnome-control-center-can-not-find-usermod.patch,
+  gnome-control-center-fno-common.patch and
+  gnome-control-center-Initialize-GError-to-NULL-before-use.patch:
+  fixed upstream.
+- Switch back to regular release tarballs.
+
+-------------------------------------------------------------------
 Mon Mar 30 08:25:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.5:

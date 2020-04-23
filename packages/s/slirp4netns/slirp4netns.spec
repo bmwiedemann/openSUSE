@@ -17,7 +17,7 @@
 
 
 Name:           slirp4netns
-Version:        0.4.4
+Version:        1.0.0
 Release:        0
 Summary:        User-mode networking for unprivileged network namespaces
 License:        GPL-2.0-only AND MIT AND BSD-2-Clause
@@ -32,6 +32,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  go-go-md2man
 BuildRequires:  libcap-devel
 BuildRequires:  libseccomp-devel
+BuildRequires:  libslirp-devel
 BuildRequires:  make
 
 %description

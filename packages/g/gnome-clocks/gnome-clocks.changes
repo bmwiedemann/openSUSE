@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  5 18:47:14 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Major redesign of the application.
+  + Multiple timers support.
+  + Daylight status for World clocks.
+  + Adaptive layout: Mobile support.
+  + Updated translations.
+- Add pkgconfig(libhandy-0.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:09:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

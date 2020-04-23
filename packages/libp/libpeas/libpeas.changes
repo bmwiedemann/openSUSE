@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar  7 17:59:20 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.26.0:
+  + Simplified i18n usage.
+  + Build system fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 23:08:13 CET 2020 - dimstar@opensuse.org
+
+- Update to version 1.25.3:
+  + Fix access to peas_gettext().
+  + Fix duplicate rename-to annotations.
+  + Tighten symbol availability for GLib symbols.
+  + Fix various tests to work with G_DISABLE_ASSERT.
+  + Fix building with luajit.
+  + Add peas_extension_set_new_with_properties() to aid in using
+    libpeas from language bindings.
+  + Fix naming of Python2 loader.
+  + Remove use of undocumented -export-dynamic.
+  + Fis use of PeasExtension with GInitiallyUnowned.
+  + Build fixes for macOS.
+  + Fixes to pkg-config files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:17:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 14:23:25 UTC 2020 - Oliver Bengs <appleonkel@opensuse.org> - 1.0.0
+
+- Update to 1.0.0
+  * libslirp to v0.4.3: 
+    * libslirp is no longer included in slirp4netns and needs be 
+      installed separately
+    * --enable-sandbox is now out of experimental
+    * New build dependeny: libslirp-devel >= 4.1
+
+-------------------------------------------------------------------
 Fri Mar 27 09:28:47 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 0.4.4 (bsc#1167850)

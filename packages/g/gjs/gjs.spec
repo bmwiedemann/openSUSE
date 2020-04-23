@@ -17,15 +17,17 @@
 
 
 Name:           gjs
-Version:        1.58.6
+Version:        1.64.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.58/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.64/%{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  git
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  readline-devel
@@ -41,7 +43,10 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.53.4
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-60)
+BuildRequires:  pkgconfig(mozjs-68)
+# Hack - fix sysprof static devel requires instead
+BuildRequires:  pkgconfig(sysprof-3)
+BuildRequires:  pkgconfig(sysprof-capture-3)
 Requires:       libgjs0 = %{version}
 ExcludeArch:    s390
 
@@ -89,25 +94,29 @@ Mozilla SpiderMonkey JavaScript engine.
 %autosetup -p1
 
 %build
-#doesn't play well with systemtap
+# FIXME # Doesn't play well with systemtap -- lets test this during 3.37 unstable round, do we still needed?
 %global _lto_cflags %{nil}
 
-%configure \
-    --disable-static \
-    --enable-systemtap
-make %{?_smp_mflags}
+%meson \
+	-Ddtrace=true \
+	-Dsystemtap=true \
+        -Dinstalled_tests=false \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-rm %{buildroot}/usr/share/glib-2.0/schemas/org.gnome.GjsTest.gschema.xml
+%meson_install
+
+# FIXME # Try again on next versionbump
+#%%check
+#%%meson_test
 
 %post -n libgjs0 -p /sbin/ldconfig
 %postun -n libgjs0 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_bindir}/gjs
 %{_bindir}/gjs-console
 

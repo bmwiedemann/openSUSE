@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           harfbuzz
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
-Source0:        https://www.freedesktop.org/software/harfbuzz/release/%{name}-%{version}.tar.xz
-Source1:        https://www.freedesktop.org/software/harfbuzz/release/%{name}-%{version}.tar.xz.sha256.asc
+Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz.sha256.asc
 # http://behdad.org
 Source2:        %{name}.keyring
 Source99:       baselibs.conf

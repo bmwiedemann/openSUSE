@@ -20,20 +20,20 @@
 %bcond_with python2
 %bcond_without python3
 Name:           libpeas
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.24/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.26/%{name}-%{version}.tar.xz
 
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
-BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0

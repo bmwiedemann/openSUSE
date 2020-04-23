@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar  8 23:28:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.0:
+  + No changes, stable release bump only.
+
+-------------------------------------------------------------------
+Wed Feb 12 23:06:45 CET 2020 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + Fix dead link in README.
+  + Adjust accepted test results for python 3.8 compatibility.
+  + Add ROLE_MARK and ROLE_SUGGESTION.
+
+-------------------------------------------------------------------
 Mon Sep  9 15:15:54 CDT 2019 - mgorse@suse.com
 
 - Update to version 2.34.0:

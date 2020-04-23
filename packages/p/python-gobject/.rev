@@ -644,4 +644,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment></comment>
     <requestid>771845</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9183b557ba2ab1fbb217dcd144e13cdf</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659288</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795103 from iznogood)</comment>
+    <requestid>795247</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 16 20:43:07 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.99.0+16:
+  + Check subcommand execution
+  + tests: Replace use of deprecated GTimeVal
+  + ggit_object_factory: Replace use of deprecated g_object_newv
+  + ggit_object_factory: Fix constructor return type
+  + ggit_submodule_update: Fix constness of update options
+  + ggit_repository_merge: Fix constness of their_heads_native
+  + examples: Fix clone example's compiler warnings
+  + meson_vapi_link.py: Use python's own utils instead of calling 'ln'
+  + meson_vapi_link.py: Improve calculation of vapidir
+  + meson_vapi_link.py: Remove unnecessary os.path.join
+- Switch to git checkout via source service.
+
+-------------------------------------------------------------------
+Thu Apr 16 20:29:22 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.99.0.1:
+  + git_merge: fix their_heads_length parameter
+  + Use correct free functions
+  + Detect libgit2 version
+- Changes from version 0.99.0:
+  + Detect libgit2 version
+  + Added ggit_repository_rename_remote
+  + Added ggit_repository_set_remote_url
+  + Added ggit_repository_remove_remote
+  + Use python3
+  + Added ggit_diff_new_buffers.
+- Add explicit python3-base BuildRequires following upstreams
+  changes.
+- Add check section and pass meson_test macro, run test-suite
+  during build.
+
+-------------------------------------------------------------------
 Tue May  7 08:03:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.28.0.1:

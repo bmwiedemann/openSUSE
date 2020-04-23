@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:22:08 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:46:59 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Polish some rough edges in the Meson build.
+  + Various build fixes.
+  + kerberos-identity-manager: Remove unused signal handler ID.
+  + daemon, dbus: Enable checking if a provider type is supported.
+- Changes from version 3.35.3:
+  + Remove Pocket.
+  + Bugs fixed:
+    - Drop the priv pointer from the GObject instance structures.
+    - Port away from deprecated GLib API like g_memove and
+      g_get_current_time.
+    - webview: Port to JSCValue.
+    - Use the G_DECLARE_* macros to reduce GObject boilerplate.
+    - Add Exchange and Last.fm icons.
+- Changes from version 3.35.1:
+  + Updated translations.
+- Drop --enable-pocket configure parameter: no longer supported.
+
+-------------------------------------------------------------------
 Wed Oct 16 04:32:47 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.1:

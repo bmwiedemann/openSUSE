@@ -75,7 +75,6 @@ Recommends:     gstreamer-plugin-cluttergst3
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-ugly
 Recommends:     totem-plugins
-Suggests:       gnome-dvb-daemon
 # totem-plugin-brasero has been removed.
 Obsoletes:      totem-plugin-brasero
 # totem-plugin-upnp has been substituted by a grilo plugin.

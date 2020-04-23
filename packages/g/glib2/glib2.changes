@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:26:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.64.2:
+  + Bugs fixed: glgo#GNOME/GLib#2067, glgo#GNOME/GLib#2081,
+    glgo#GNOME/GLib!1421, glgo#GNOME/GLib!1438,
+    glgo#GNOME/GLib!1424, glgo#GNOME/GLib!1428,
+    glgo#GNOME/GLib!1429, glgo#GNOME/GLib !1431,
+    glgo#GNOME/GLib!1432, glgo#GNOME/GLib!1435,
+    glgo#GNOME/GLib!1447.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:04:01 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 2.64.1:
+  + Fix memory monitor tests to only be installed if
+    installed-tests are enabled, and to be skipped if
+    GObject-Introspection is too old.
+  + Bugs fixed: glgo#GNOME/GLib#1986, glgo#GNOME/GLib#1988,
+    glgo#GNOME/GLib!1407, glgo#GNOME/GLib!1412.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:04:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.64.0:
+  + Use `posix_spawn()` to speed up launching test D-Bus instances.
+  + Bugs fixed: glgo#GNOME/GLib#1783, glgo#GNOME/GLib#2049,
+    glgo#GNOME/GLib!1384, glgo#GNOME/GLib!1386,
+    glgo#GNOME/GLib!1387, glgo#GNOME/GLib!1388,
+    glgo#GNOME/GLib!1389.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:03:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.6:
+  + Fix potential relative read when calling g_printerr(), which
+    could lead to a denial of service from a setuid-root process
+    being used to block access to the TTY for another user.
+  + Fix SOCKS proxy resolver sometimes not being used when
+    resolving addresses via Happy Eyeballs (CVE-2020-6750).
+  + Several other Happy Eyeballs fixes for address resolution.
+  + Various race fixes in `GDBusConnection` and its unit tests.
+  + Fix a race condition with D-Bus name ownership.
+  + Drop `gio-launch-desktop` helper application in favour of
+    calling `sh` directly.
+  + Fix win32 exception handling with C# exceptions.
+  + Fix thread safety of `GUnixMountMonitor`.
+  + Additional fixes to new thread pool attribute behaviour from
+    GLib 2.63.4 to check if sched_setattr() is allowed by system
+    policies before depending on it.
+  + Fix memory leaks and corruption when freeing `GSource`s while
+    freeing a `GMainContext`.
+  + Drop inappropriate installation of object manager example
+    documentation.
+  + Varioius other bugs and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 28 03:03:05 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.63.5:
+  + Fix behaviour of `g_file_move()` fallback code to not follow
+    symlinks.
+  + Rename `--glib-min-version` argument of `gdbus-codegen` to
+    `--glib-min-required`.
+  + Add gtk-doc checks to CI and fix a number of documentation
+    issues.
+  + Add a debug message if `g_setenv()` or `g_unsetenv()` are used
+    after any threads have been spawned — this will be upgraded to
+    a warning in future.
+  + Skip memory monitor tests if xdg-desktop-portal or dbusmock are
+    not available.
+  + Change the `libmount` configure option from a boolean to a
+    Meson `feature`.
+  + Do not return `target-uri` from `g_file_peek_path()` when
+    called on trash/recent files.
+  + Drop new TLS certificate API for PKCS #11 backed certificates,
+    as the implementation is not ready yet (this is not an API
+    break as the API was added earlier in the 2.63 cycle).
+  + Updated translations.
+  + For changes from earlier in the dev cycle see the NEWS file.
+- Rebase glib2-gdbus-codegen-version.patch.
+
+-------------------------------------------------------------------
 Wed Mar 18 16:18:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.6:

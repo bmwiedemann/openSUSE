@@ -18,13 +18,13 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        3.34.1
+Version:        3.36.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/3.36/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
@@ -35,23 +35,22 @@ BuildRequires:  gobject-introspection-devel >= 0.9.3
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  iso-codes-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(gio-2.0) >= 2.52
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gspell-1) >= 0.2.5
+BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(tepl-4) >= 4.4
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -112,7 +111,7 @@ translation-update-upstream po %{name}
 	-Dintrospection=true \
 	-Dvapi=true \
 	-Dplugins=true \
-	-Ddocumentation=true \
+	-Dgtk_doc=true \
 	%{nil}
 %meson_build
 
@@ -143,7 +142,7 @@ translation-update-upstream po %{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-%{_libdir}/gedit/libgedit-3.14.so
+%{_libdir}/gedit/libgedit-3.36.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:37:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Updated POI definitions for OpenStreetMap editing.
+  + Fixed link to sign up for an OpenStreetMap account.
+  + Removed ctrl+f1 shortcut from the help overlay, since this was
+    removed from GTK.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  7 12:36:05 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 29 18:43:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.35.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:26:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Add additional category code for busses in the Opendata.ch
+    plugin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:04:21 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Move “Export as Image” to the hamburger menu.
+  + Restructure context menu items for routing to allow changing
+    start and destination points without resetting the query from
+    the sidebar.
+  + Allow more width for the favourites popover and search result
+    popovers in the routing sidebar to better avoid clipping longer
+    place names.
+- Changes from version 3.35.3:
+  + Avoid flickering when animating user location marker.
+- Changes from version 3.35.2:
+  + Added public transit routing plugins for Resrobot (national
+    Swedish transit API) and opendata.ch (for Switzerland).
+  + Avoid "overflowing" the sidebar when a public transit itinerary
+    has a large number of parts (legs) by ellipsizing in the middle
+    when showing them in the journeys overview.
+  + Add command line option to always consider being online
+    (--force-online) as a work-around for certain VPN and proxy
+    networks not playing well with NetworkManager.
+  + Set User-Agent HTTP header in places where it was missing.
+- Changes from version 3.35.1:
+  + Initial support for public trasit routing/journey planning
+    using third-party service providers.
+  + Add nightly app icon (currently not installed, awaiting support
+    for dual installations).
+  + Update default tile size when using local tiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jan  5 14:11:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.3:

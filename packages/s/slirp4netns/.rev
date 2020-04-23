@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>789009</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a6d58a4a6b21d0769343aab8f581976b</srcmd5>
+    <version>1.0.0</version>
+    <time>1587659383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * libslirp to v0.4.3: 
+    * libslirp is no longer included in slirp4netns and needs be 
+      installed separately
+    * --enable-sandbox is now out of experimental
+    * New build dependeny: libslirp-devel &gt;= 4.1
+</comment>
+    <requestid>796094</requestid>
+  </revision>
 </revisionlist>

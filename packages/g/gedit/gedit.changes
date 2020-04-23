@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Mar 20 20:42:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + File chooser dialog: use text files filter by default.
+  + Fix compilation on macOS.
+  + Fix External Tools plugin.
+  + Fix Snippets plugin.
+  + Other bug fixes.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Fri Mar  6 17:44:59 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Fix a bug in the quickopen plugin.
+  + Updates to the user manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:52:08 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Remove text centering when in fullscreen mode and when a right
+    margin was set.
+  + Make the scrollbars always visible around the main text area.
+  + Remove the overview map.
+  + File chooser dialog: re-add the feature to be able to customize
+    the list of character encodings.
+  + Open a file from the headerbar: re-implement the previous user
+    interface: two buttons, "Open" to open the dialog window, and
+    an arrow to open the recent menu.
+  + GSettings schema: enable more features by default (auto-indent,
+    display-line-numbers, highlight-current-line and
+    bracket-matching) and set default style scheme to 'tango'.
+- Changes from version 3.35.1:
+  + File browser plugin: fix interactive search.
+  + A few fixes in the CSS style.
+  + Updated translations.
+- Drop pkgconfig(libxml-2.0) and pkgconfig(libsoup-2.0)
+  BuildRequires: no longer needed.
+- Add pkgconfig(tepl-4) BuildRequires: new depenedency.
+- Rebase gedit-desktop.patch.
+
+-------------------------------------------------------------------
 Fri Jan 31 22:45:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own %{python3_sitearch}/gi/ and subdirectories: in the past,

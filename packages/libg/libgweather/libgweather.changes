@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:14:33 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + This version contains translation updates, addition of a number
+    of cities and airports, some memory leak and possible crash
+    fixes. The gweather_location_get_english_name() function is
+    also exported.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:17:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

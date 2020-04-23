@@ -81,4 +81,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736523</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bfad4a3f9f82ab185ab84eea20b06db4</srcmd5>
+    <version>2.64.2</version>
+    <time>1587659183</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795031 from iznogood)</comment>
+    <requestid>795186</requestid>
+  </revision>
 </revisionlist>

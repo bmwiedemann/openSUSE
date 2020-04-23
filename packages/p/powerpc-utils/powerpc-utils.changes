@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 28 09:41:54 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Reduce the number of searches of /sys by each invocation
+  of 'ofpathname' to at most one (1) by caching the content of a
+  single search into a file in /tmp, and using 'grep' to identify
+  the appropriate files for further examination.
+  [bsc#1164726,
+   0002-Reduce-number-of-searches-of-sys-hierarchy.patch]
+
+-------------------------------------------------------------------
 Wed Feb 26 14:56:16 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Fixed one instance where the previous change corrupted the

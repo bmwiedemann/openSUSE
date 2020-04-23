@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 11 22:24:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable testsuite: Add check section and run make_build check.
+- Tweak bootstrap call, drop superfluous explicit autoreconf call.
+
+-------------------------------------------------------------------
 Fri Apr 10 09:12:37 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Add gdm-look-for-session-based-on-pid-first.patch: Look for

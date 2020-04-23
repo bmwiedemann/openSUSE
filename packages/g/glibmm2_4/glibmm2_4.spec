@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2_4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,15 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.62.0
+Version:        2.64.2
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.62/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.64/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -83,16 +84,16 @@ library Glib. It provides non-UI API that is not available in standard
 C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}
+%fdupes %{buildroot}/{_prefix}
 
 %post -n libglibmm%{so_ver} -p /sbin/ldconfig
 %postun -n libglibmm%{so_ver} -p /sbin/ldconfig
@@ -101,7 +102,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libglibmm%{so_ver}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/libglibmm-2.4.so.*
 %{_libdir}/libglibmm_generate_extra_defs-2.4.so.*
 
@@ -109,6 +109,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgiomm-2.4.so.*
 
 %files devel
+%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*

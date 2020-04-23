@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Apr  5 17:13:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.1:
+  + Replace calls to deprecated xml.etree.cElementTree removed in
+    Python 3.9.
+  + gimarshallingtests: Use g_assert_cmpfloat_with_epsilon. Fixes
+    tests on some architectures.
+
+-------------------------------------------------------------------
+Sun Mar  8 12:12:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.0:
+  + Update glib annotations.
+  + Fix regress scanner tests for non-gcc/clang compilers.
+  + Document how to update glib GIR.
+
+-------------------------------------------------------------------
+Wed Feb 12 14:50:02 CET 2020 - dimstar@opensuse.org
+
+- Update to version 1.63.2:
+  + Update glib annotations.
+  + Fix build reproducibility.
+  + Drop deprecated xml.etree.ElementTree.Element.getchildren()
+    calls.
+- Changes from version 1.63.1:
+  + Update glib annotations.
+  + build: require meson 0.50.1.
+  + scanner: Support array arguments with static keyword.
+  + Fix non-libtool code being run with no nob-libtool
+    dependencies.
+  + meson: change "cairo" and "doctool" from a boolean to a
+    feature option.
+  + Fix a memory leak in g_irepository_get_object_gtype_interfaces.
+  + autotools: Make INTROSPECTION_GIRDIR/INTROSPECTION_TYPELIBDIR
+    respect prefix/datadir/libdir.
+  + girepository: Also store GType cache misses.
+  + docs: Document GI_CROSS_LAUNCHER envvar.
+- Change  -Dcairo=true and -Ddoctool=true meson parameters to
+  -Dcairo=enabled and -Ddoctool=enabled: follow upstreams changes.
+
+-------------------------------------------------------------------
 Fri Dec 13 16:12:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop python3-Sphix BuildRequires, only used for rebuilding the

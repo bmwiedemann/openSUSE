@@ -1,7 +1,7 @@
 #
 # spec file for package gsettings-desktop-schemas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
-Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/3.36/%{name}-%{version}.tar.xz
 
 # PATCH-FEATURE-OPENSUSE gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch fate#324570, glgo#GNOME/gnome-shell#680 qkzhu@suse.com -- This key is used by gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 Patch0:         gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch

@@ -1703,4 +1703,12 @@
   approach (bsc#1159950, glgo#GNOME/gdm#526). (forwarded request 793458 from yfjiang)</comment>
     <requestid>794355</requestid>
   </revision>
+  <revision rev="226" vrev="9">
+    <srcmd5>bb33387b9cd2b7f6b067656b8b91004a</srcmd5>
+    <version>3.34.1</version>
+    <time>1587659171</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795024 from iznogood)</comment>
+    <requestid>795179</requestid>
+  </revision>
 </revisionlist>

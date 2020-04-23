@@ -1281,4 +1281,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767149 from dimstar)</comment>
     <requestid>767414</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>e711a11f2273652a304ec40b11be852a</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659226</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795062 from iznogood)</comment>
+    <requestid>795215</requestid>
+  </revision>
 </revisionlist>

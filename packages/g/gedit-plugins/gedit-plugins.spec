@@ -18,19 +18,19 @@
 
 
 Name:           gedit-plugins
-Version:        3.34.1
+Version:        3.36.2
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        https://download.gnome.org/sources/gedit-plugins/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit-plugins/3.36/%{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  translation-update-upstream
@@ -40,7 +40,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 3.31.0
+BuildRequires:  pkgconfig(gedit) >= 3.36
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
@@ -49,8 +49,7 @@ BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.0.6
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.12
-Requires:       gedit >= 3.14.0
+Requires:       gedit >= 3.36
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
 Suggests:       gedit-plugin-bracketcompletion
@@ -71,6 +70,8 @@ Suggests:       gedit-plugin-textsize
 Suggests:       gedit-plugin-wordcompletion
 Enhances:       gedit
 Obsoletes:      gedit-plugin-dashboard <= %{version}
+# Zeitgeist plugin was removed with version 3.35.90
+Obsoletes:      gedit-plugin-zeitgeist < 3.35.90
 
 %description
 This package contains a number of plugins for gedit, such as:
@@ -268,18 +269,6 @@ The gedit translate plugin
 %description -n gedit-plugin-wordcompletion
 The gedit wordcompletion plugin
 
-%package -n gedit-plugin-zeitgeist
-Summary:        Zeitgeist dataprovider for gedit
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data
-Requires:       gedit
-Requires:       zeitgeist
-Supplements:    packageand(gedit:zeitgeist)
-
-%description -n gedit-plugin-zeitgeist
-The zeitgeist plugin for gedit provides a zeitgeist dataprovider that
-logs access and leave event for documents used with gedit.
-
 %lang_package
 
 %prep
@@ -428,11 +417,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/wordcompletion.plugin
 %{_libdir}/gedit/plugins/libwordcompletion.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.wordcompletion.gschema.xml
-
-%files -n gedit-plugin-zeitgeist
-%{_datadir}/metainfo/gedit-zeitgeist.metainfo.xml
-%{_libdir}/gedit/plugins/zeitgeist.plugin
-%{_libdir}/gedit/plugins/libzeitgeist.so
 
 %files lang -f %{name}.lang
 

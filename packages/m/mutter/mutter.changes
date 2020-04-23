@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Fri Apr 17 03:36:02 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.1:
+  + Fix hardware cursor on GPU hotplug.
+  + Fix black areas around XWayland windows when resizing.
+  + Fix applying wrong scale to monitors on X11.
+  + Fix moving/resizing windows via keyboard on wayland.
+  + Fix locate-pointer feature interfering with keybindings.
+  + Add support for middle-click emulation.
+  + Fix freeze when moving cursor between scaled monitors.
+  + Fix popup misplacement with focus-follows-mouse.
+  + Fix misplaced cursor in preedit strings.
+  + Support mirroring with proprietary Nvidia driver.
+  + Support tablets with multiple mode switch buttons in a group.
+  + Ignore foreground color for color glyphs (emojis).
+  + Allow pad mode switches while showing OSD.
+  + Fix positioning of OSD for display-attached tablets.
+  + Respect configured RANDR panning on X11.
+  + Use correct texture filtering with scaled displays.
+  + Fix cursor hotspots in virtual machines.
+  + Fix build with GLES and no GL.
+  + Work around Firefox bug when copying images on wayland.
+  + Fix wrong cursor rotation on rotated displays.
+  + Fix glitches in window screencasts.
+  + Fix IM support for deleting surrounding text.
+  + Fix map animation of maximized windows.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Stop passing %%define _lto_cflags %%{nil}: No longer needed.
+- Drop mutter-wayland-fix-keyboard-move-resize-window.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:36:00 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Fix placement of popup windows in multi-monitor setups.
+  + Fix invisible mouse cursor on some hardware.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:35:54 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.92:
+  + Fix visibility of initially hidden windows.
+  + Avoid flicker when (un)redirecting windows.
+  + Let BindConstraints update the preferred size.
+  + Learn about GLES3.
+  + Ping windows on every window focus.
+  + Remove overhead from hot code paths.
+  + Allow remote desktop services to inhibit animations.
+  + Update screen-cast code to PipeWire 0.3 API.
+  + Make check-alive timeouts configurable.
+  + Make each stage view correspond to a single CRTC.
+  + Implement scaled/transformed hardware cursors.
+  + Use DMA buffers for screencasting if possible.
+  + Make Xwayland startup asynchronous.
+  + Fix clipping glitches in long text entries.
+  + Add side channel for starting required X11 services.
+  + Support synchronized wayland popup moving.
+  + Fixed crashes.
+  + Plugged memory leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Pass -Dxwayland_initfd=disabled to meson, we are not ready for
+  this feature yet in openSUSE, and leaving it to auto breaks
+  wayland sessions.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:35:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91+37:
+  + clutter/actor: Add CLUTTER_OFFSCREEN_REDIRECT_ON_IDLE
+  + screen-cast: Update to PipeWire 0.3 API
+  + window-actor: Make culling of opaque windows X11 only
+  + renderer-native: Use hardware acceleration check in generic
+    layer
+  + remote-access-handle: Expose disable-animations property
+  + screen-cast-session: Add 'disable-animations' property
+  + wayland: DND and Metawindow fixes.
+  + clutter: Make clutter_contraint_update_preferred_size() public
+  + bind-constraint: Update the preferred size
+  + surface-actor-x11: Avoid flicker when (un)redirecting windows
+  + window-actor: Don't show actor until meta_window_actor_show()
+  + settings: Improve logging of enabled experimental features
+  + Updated translations.
+- Drop 0001-Update-to-PipeWire-0.3-API.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:35:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Honor accelerometer orientation on monitor config changes.
+  + Enable culling for integer-scaled actors.
+  + Add ClutterSeat::touch-mode property.
+  + Fix mis-scaling when streaming windows.
+  + Make the cursor renderer use the transactional KMS API.
+  + Advertise MetaMonitor as wl_output.
+  + Fix culling of XWayland windows.
+  + Only consider enabled effects when disabling culling.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Apr 17 03:35:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.90:
+  + Cull out clip region.
+  + Always enable tap-to-click/drag on opaque Wacom tablets.
+  + Fix visual glitches with offscreen effects applied.
+  + Fix "sticky corner" in multi-head setups.
+  + Fix black shadows around XWayland windows during resizes.
+  + Zero-copy path for GPU-less secondary GPUs.
+  + Cancel DND on Esc.
+  + Sync XWayland window shadows to frame during resizes.
+  + Add support for per-monitor workareas.
+  + Ensure newly mapped wayland windows receive ENTER event.
+  + Add ClutterSeat object.
+  + Honour CLUTTER_ACTOR_NO_LAYOUT flag more efficiently.
+  + Fix interoperation with wl_data_device_manager v1.
+  + Favor text over images in clipboard manager.
+  + Apply monitor scale after background texture creation.
+  + Plugged memory leaks.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.35.3:
+  + backends/native: Correct dy value in pinch gesture event.
+  + Upload clipping rectangles in parallel.
+  + More cogl API cleanups.
+  + Fix window recording on HiDPI.
+  + Fix top-left pixel being insensitive to clicks.
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.35.1:
+  + Fix immediate screen blank after releaseing inhibitor.
+  + Respond to frame callbacks regardless of damage.
+  + Fix Night Light on wayland.
+  + Fix various copy+paste/DND regressions.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop mutter-fix-mesa20.patch: fixed upstream.
+- Add pkgconfig(graphene-gobject-1.0) BuildRequires: new
+  dependency.
+- Drop cmake BuildRequires: mutter uses meson. No need for a 2nd
+  build system.
+- Bump api_major to 6, following upstream changes.
+
+-------------------------------------------------------------------
 Wed Apr 01 11:02:28 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.34.5:

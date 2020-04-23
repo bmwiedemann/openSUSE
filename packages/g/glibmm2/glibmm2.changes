@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sun Mar 22 17:55:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.65.3:
+  + Tests: glibmm_buildfilename: Add some tests.
+  + Build: Meson build: Install generate_extra_defs.h.
+
+-------------------------------------------------------------------
+Wed Mar 18 20:03:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.65.2:
+  + Glib: Add missing #includes.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:10:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.65.1:
+  + Glib:
+    - Add get_user_runtime_dir().
+    - Add get_host_name().
+    - MainContext: Add push/pop/get_thread_default().
+    - Add StdStringView and UStringView. Use them in
+      build_filename() and other functions
+    - Regex::match(): Avoid using string after deletion.
+    - Add Glib::canonicalize_filename().
+    - Binding: get_source() and get_target() return ObjectBase*.
+    - ustring: Fix insert(iterator, In, In).
+    - Value: Adding static_assert() for template parameter.
+    - Error: Derive from std::exception, remove Glib::Exception.
+    - Binding: Keep a binding alive even without a RefPtr.
+  + Gio:
+    - DBus::Connection: Make the wrap() function thread-safe.
+    - SettingsSchemaSource: Add list_schemas(). Add a create(),
+      wrapping new_from_directory().
+    - DBus::Message::get_unix_fd_list(): Add refreturn.
+  + Tests:
+    - Add glibmm_ustring_compare test.
+    - Add glibmm_regex test.
+    - Add glibmm_binding test.
+  + gmmproc: Add optional decl_prefix parameter to
+    _CLASS_BOXEDTYPE, _CLASS_BOXEDTYPE_STATIC, _CLASS_GOBJECT,
+    _CLASS_INTERFACE, _CLASS_OPAQUE_COPYABLE,
+    _CLASS_OPAQUE_REFCOUNTED, _WRAP_GERROR. Used for adding
+    GLIBMM_API or similar for MS Visual C++.
+  + Build:
+    - Require glib-2.0 >= 2.6.
+    - Change the ABI to glibmm-2.66.
+    - Add Meson support.
+    - Drop gendef from Windows builds.
+  + Documentation:
+    - Correct spelling of spawn_async_with_pipes().
+    - Glib::Binding: Several doc improvements.
+    - Glib::Binding: Explain why SlotTransform takes GValue*.
+    - Gio::AsyncResult: Improve the class description.
+- Bump so_ver, base_ver and baselibs following upstream changes.
+
+-------------------------------------------------------------------
+Thu Feb 20 12:26:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.63.1:
+  + Glib:
+    - ustring: Fix memory leak in make_valid().
+    - Add ustring::sprintf(), wrapping g_strdup_printf().
+    - Fix callback races in glibmm when GSource is destructed.
+    - Checksum, Datetime, TimeZone: Declare as _CLASS_BOXEDTYPE.
+    - Property: Add const get_proxy() returning ReadOnly
+      Getting Proxy from ReadOnly is const.
+    - Property: Update for compatibility with Gtk::Builder.
+    - Fix memory leak in Variant<std::tuple<>>::create().
+    - Remove TimeVal.
+  + Gio:
+    - Add Application::add_option_group().
+    - DBus::Object: Fix refcounts in some vfuncs.
+    - Gio::DBus: Add ObjectProxy, ObjectSkeleton, ObjectManager,
+      ObjectManagerClient, ObjectManagerServer.
+    - Drive, MountOperation, ThemedIcon, TlsDatabase,
+      VolumeMonitor: Fix ownership of some lists and arrays
+      (Fixes memory leaks and dangling pointers).
+    - Add SocketControlMessage::add_deserialize_func().
+  + gmmproc: Update for new glib deprecation macros.
+  + Build:
+    - Doxyfile.in: Remove unused configuration constants.
+    - Require glib-2.0 >= 2.61.2.
+    - Change the ABI to glibmm-2.64.
+  + Documentation:
+    - Glib::init(), Gio::init(): Improve the documentation.
+    - Glib::ustring can't always replace std::string.
+
+-------------------------------------------------------------------
 Mon Sep  9 17:22:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop glibmm2 Provides and Obsoletes: Only glibmm2_4 compat

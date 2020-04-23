@@ -151,4 +151,12 @@
 - Provide nginx subpackage for SLE 15+ (jsc#11756)</comment>
     <requestid>796008</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>c73e41c90aa79ecbc498d2e71c009630</srcmd5>
+    <version>0.6.5</version>
+    <time>1587659202</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide nginx subpackage for SLE 15+ (jsc#SLE-11727)</comment>
+    <requestid>796512</requestid>
+  </revision>
 </revisionlist>

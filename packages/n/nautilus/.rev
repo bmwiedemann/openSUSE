@@ -1321,4 +1321,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767208 from dimstar)</comment>
     <requestid>767469</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>dfc7559638345a3bc0b0f711d0f53eec</srcmd5>
+    <version>3.36.1.1</version>
+    <time>1587659274</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795096 from iznogood)</comment>
+    <requestid>795241</requestid>
+  </revision>
 </revisionlist>

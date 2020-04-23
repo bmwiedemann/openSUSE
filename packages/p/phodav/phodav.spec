@@ -1,7 +1,7 @@
 #
 # spec file for package phodav
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define shlib libphodav-2_0-0
 Name:           phodav
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        A WebDAV server using libsoup
 License:        LGPL-2.0-or-later
@@ -28,15 +28,15 @@ Source0:        https://download.gnome.org/sources/%{name}/%{version}/%{name}-%{
 
 BuildRequires:  asciidoc
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-gobject)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)

@@ -1,7 +1,7 @@
 #
 # spec file for package librsvg
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,19 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.46.4
+Version:        2.48.3
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        https://download.gnome.org/sources/librsvg/2.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/librsvg/2.48/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cargo
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.34
+BuildRequires:  rust >= 1.39
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
@@ -41,10 +41,9 @@ BuildRequires:  pkgconfig(freetype2) >= 20.0.14
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.20
 BuildRequires:  pkgconfig(gio-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.12.0
-BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
@@ -100,7 +99,7 @@ to develop applications that require these.
 Summary:        A gdk-pixbuf loader for SVG using librsvg
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Supplements:    packageand(librsvg-2-%{librsvg_sover}:gdk-pixbuf)
+Supplements:    (librsvg-2-%{librsvg_sover} and gdk-pixbuf)
 %{gdk_pixbuf_loader_requires}
 
 %description -n gdk-pixbuf-loader-rsvg
@@ -150,6 +149,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%make_build check
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 %post -n gdk-pixbuf-loader-rsvg

@@ -18,18 +18,16 @@
 
 
 Name:           polari
-Version:        3.34.1
+Version:        3.36.1
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/3.36/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
-# PATCH-FIX-UPSTREAM polari-appdata-screenshotfix.patch -- appdata: Point screenshots to the stable branch
-Patch0:         polari-appdata-screenshotfix.patch
 # PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
-Patch1:         polari-fix-nb-translation.patch
+Patch0:         polari-fix-nb-translation.patch
 
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  meson >= 0.43.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 13:03:40 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gvnc-1.0) BuildRequires: Package builds fine
+  without buildrequiring itself, but complains somewhat loudly.
+- Add check section and meson_test macro, run tests during build.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:14:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
