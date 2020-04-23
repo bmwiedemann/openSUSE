@@ -1,7 +1,7 @@
 #
 # spec file for package clutter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           clutter
-Version:        1.26.2
+Version:        1.26.4
 Release:        0
 Summary:        Library for creating dynamic user interfaces
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://clutter-project.org/
-Source0:        http://download.gnome.org/sources/clutter/1.26/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/clutter/1.26/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
@@ -59,8 +60,8 @@ graphical user interfaces. It uses OpenGL (or GLES) for rendering.
 
 %package -n libclutter-1_0-0
 Summary:        Library for creating dynamic graphical user interfaces
-Group:          System/Libraries
 # To make the lang package installable
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 # This is technically wrong, but we need this for smooth upgrades so that
 # typelib-1_0-Clutter-1_0 can be installed
@@ -99,7 +100,7 @@ This package contains the files for development.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -111,7 +112,7 @@ This package contains the files for development.
         --enable-wayland-compositor \
         --enable-egl-backend \
         --enable-docs
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -129,7 +130,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libclutter-1_0-0
 %license COPYING
-%doc README ChangeLog
+%doc README.md ChangeLog
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-Clutter-1_0
@@ -140,6 +141,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/clutter-1.0
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/*.gir
+%dir %{_datadir}/clutter-1.0/valgrind
+%{_datadir}/clutter-1.0/valgrind/clutter.supp
 %dir %{_datadir}/clutter-1.0/
 %doc %{_datadir}/clutter-1.0/cookbook/
 %doc %{_datadir}/gtk-doc/html/clutter/

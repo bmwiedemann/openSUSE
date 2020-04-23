@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 10 19:09:54 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.26.4:
+  + Require GLib 2.54
+  + Build fixes
+  + Add an experimental Meson build
+  + Documentation fixes
+  + Handle 8 and 10 bits colour depth in picking code
+  + Bugs fixed: bgo#792716, bgo#772213, bgo769190,
+    glgo#GNOME/clutter#8, glgo#GNOME/clutter#11,
+    glgo#GNOME/clutter!8, glgo#GNOME/clutter!9,
+    glgo#GNOME/clutter!11.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + clutter-handle-8-10-bits.patch
+  + clutter-ensure-surface-buffer-set.patch
+
+-------------------------------------------------------------------
+Mon Feb 24 06:02:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add clutter-handle-8-10-bits.patch: Handle 8 and 10 bits colour
+  depth in picking code (glgo#GNOME/clutter!10).
+- Add clutter-ensure-surface-buffer-set.patch: gdk: Ensure surface
+  buffer scale is set (glgo#GNOME/clutter!7).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:06:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
