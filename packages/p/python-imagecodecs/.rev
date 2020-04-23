@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>754755</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b1d42f34c7cf0055733006c5b56b1f9</srcmd5>
+    <version>2019.5.22</version>
+    <time>1587659815</time>
+    <user>dimstar_suse</user>
+    <comment>- As the package is marked as py3 only drop the python2 deps</comment>
+    <requestid>796498</requestid>
+  </revision>
 </revisionlist>

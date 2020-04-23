@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagecodecs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,9 +43,6 @@ BuildRequires:  jxrlib-devel
 BuildRequires:  libjpeg62-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-enum34
-BuildRequires:  python2-futures
-BuildRequires:  python2-pathlib
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(lcms2)
@@ -57,11 +54,6 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-numpy >= 1.11.3
-%ifpython2
-Requires:       python2-enum34
-Requires:       python2-futures
-Requires:       python2-pathlib
-%endif
 Recommends:     python-Pillow
 Recommends:     python-blosc
 Recommends:     python-lz4
