@@ -1,7 +1,7 @@
 #
 # spec file for package gvfs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.42.2
+Version:        1.44.1
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        LGPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gvfs/1.44/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libgdata) >= 0.17.3
+BuildRequires:  pkgconfig(libgdata) >= 0.17.11
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.2
 BuildRequires:  pkgconfig(libmtp) >= 1.1.12
@@ -76,7 +76,7 @@ Recommends:     gvfs-fuse
 %if %{with cdda}
 BuildRequires:  pkgconfig(libcdio_paranoia) >= 0.78.2
 %endif
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 # The library gvfscommon was converted to a private library and is not used outside of gvfs
 Obsoletes:      libgvfscommon0 <= %{version}
 %endif
@@ -161,7 +161,7 @@ gvfs plugins.
 %setup -q
 translation-update-upstream po %{name}
 
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
 %endif
@@ -299,7 +299,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/remote-volume-monitors/mtp.monitor
 %{_datadir}/dbus-1/services/org.gtk.vfs.MTPVolumeMonitor.service
 %{_datadir}/%{name}/mounts/mtp.mount
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %{_libexecdir}/%{name}/gvfsd-nds
 %{_libexecdir}/%{name}/gvfsd-nvvfs
 %{_datadir}/%{name}/mounts/nds.mount

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:46:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.1:
+  + udisks2: Fix several memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 02:25:18 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable gvfs-nds.patch and gvfs-nvvfs.patch for Leap to remove
+  difference between Leap and SLE.
+
+-------------------------------------------------------------------
+Fri Mar  6 10:19:47 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 19:16:21 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.43.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:20:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.43.91:
+  + build: Fix login_tty detection on systems without libutil.
+  + afc: Handle permission denied error.
+  + Test: Several smaller fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:21:27 CET 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.43.90:
+  + google: Add support for move and copy operations.
+  + google: Several smaller bugfixes and enhancements.
+  + goa: Add support for certificate prompts.
+  + sftp: Fix file ownership when replacing.
+  + dnssd: Prevent crashes after releasing resolver.
+  + fuse: Prevent abortions if modified time is not set.
+- Changes from version 1.43.2:
+  + smb: Improve enumeration performance.
+  + test: Port to python3-twisted.
+- Changes from version 1.43.1:
+  + Don't set a content-type that isn't certain.
+  + Replace usage of deprecated GTimeVal by GDateTime.
+  + dav: Add support for services with IPv6 link-local addresses.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:15:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
