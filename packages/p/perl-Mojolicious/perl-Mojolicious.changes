@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:37:37 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 8.40
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.40  2020-04-23
+    - Fixed support for disabling the inactivity timeout in Mojo::UserAgent.
+
+-------------------------------------------------------------------
 Wed Apr 22 13:58:16 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.39
