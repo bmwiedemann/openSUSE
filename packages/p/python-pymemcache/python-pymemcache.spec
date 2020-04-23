@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pymemcache
 Version:        3.0.1
 Release:        0
@@ -34,9 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-future
+%endif
 %ifpython2
-BuildRequires:  python2-future
-Requires:       python2-future
+Requires:       python-future
 %endif
 %python_subpackages
 
