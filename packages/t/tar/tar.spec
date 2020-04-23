@@ -43,7 +43,6 @@ Patch5:         add_readme-tests.patch
 BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
-Requires(pre):  info
 Recommends:     %{name}-rmt = %{version}
 Recommends:     mt
 Recommends:     xz

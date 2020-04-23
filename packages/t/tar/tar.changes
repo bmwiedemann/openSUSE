@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 07:20:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop Requires(pre) info in the preamble: the main package does
+  not contain any info files, and has not even a pre script. The
+  -doc subpackage already has the correct deps.
+
+-------------------------------------------------------------------
 Fri Jan 31 23:45:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.
