@@ -17,13 +17,13 @@
 
 
 Name:           file-roller
-Version:        3.32.4
+Version:        3.36.1
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-Source0:        https://download.gnome.org/sources/file-roller/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/file-roller/3.36/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
@@ -31,20 +31,18 @@ Patch0:         file-roller-3.4-change-archiver-priority.patch
 Patch1:         file-roller-pkg-match.patch
 # PATCH-FIX-OPENSUSE file-roller-ignore-unrar-if-wrapper.patch bsc#1072118 mgorse@suse.com -- if unrar is a wrapper script for unar, then ignore it, and use unar instead.
 Patch2:         file-roller-ignore-unrar-if-wrapper.patch
-# PATCH-FIX-UPSTREAM gcc-fno-common-fix.patch boo#1160390 -- Fix build with fno-common
-Patch3:         gcc-fno-common-fix.patch
 
 # Needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
 BuildRequires:  pkgconfig(libnotify) >= 0.4.3
@@ -85,11 +83,7 @@ contained in the archive, and extract files from the archive.
 %lang_package
 
 %prep
-%autosetup -N
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 translation-update-upstream po %{name}
 
 %build
@@ -107,7 +101,7 @@ translation-update-upstream po %{name}
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_bindir}/file-roller
 %{_libexecdir}/file-roller/
 %dir %{_datadir}/metainfo

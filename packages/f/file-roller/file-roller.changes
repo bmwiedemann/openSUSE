@@ -1,7 +1,50 @@
 -------------------------------------------------------------------
+Fri Apr  3 05:56:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Fixed Properties command in menubar.
+  + Fixed compiling with GCC 10.
+  + Updated translations.
+- Drop gcc-fno-common-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Apr  3 05:56:16 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add gcc-fno-common-fix.patch in order to fix boo#1160390.
+
+-------------------------------------------------------------------
+Sun Mar  8 21:26:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  1 00:01:43 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.35.92:
+  + Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:37:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Updated manual.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 15 19:05:29 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Updated translations.
+- Changes from version 3.35.1:
+  + Support for Zstandard compressed files/archives.
+  + Allow to directly open .tar.lzo files.
+  + libarchive: implemented read support for 7z.
+  + Provide a development variant of the app icon.
+  + Remove file-roller from the recommended applications for ePub
+    files.
 
 -------------------------------------------------------------------
 Sat Feb 15 19:05:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
