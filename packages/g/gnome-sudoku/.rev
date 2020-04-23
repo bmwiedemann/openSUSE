@@ -281,4 +281,12 @@
   + Updated translations. (forwarded request 738451 from iznogood)</comment>
     <requestid>738533</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cf3f173298c3831b5a3374d5a64a7e14</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659491</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795067 from iznogood)</comment>
+    <requestid>795218</requestid>
+  </revision>
 </revisionlist>
