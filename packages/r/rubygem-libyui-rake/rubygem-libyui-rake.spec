@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-libyui-rake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-libyui-rake
-Version:        0.1.19
+Version:        0.1.20
 Release:        0
 %define mod_name libyui-rake
 %define mod_full_name %{mod_name}-%{version}
@@ -25,7 +25,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.org/openSUSE/libyui-rake
+URL:            http://github.org/openSUSE/libyui-rake
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
 Summary:        Rake tasks providing basic work-flow for libyui development
 License:        LGPL-2.1-only

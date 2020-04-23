@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 07:31:19 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "sle15sp2" target, "sle_latest" moved to SLE15-SP3
+  (bsc#1170286)
+- 0.1.20
+
+-------------------------------------------------------------------
 Thu Sep  5 13:59:54 UTC 2019 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Unified spec_version (bsc#1149618)
