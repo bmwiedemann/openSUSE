@@ -32,13 +32,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.34.4
+Version:        3.36.1
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cmake
@@ -59,7 +59,7 @@ BuildRequires:  nss-shared-helper-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libical) >= 3.0.5
-BuildRequires:  pkgconfig(libical-glib) >= 3.0.5
+BuildRequires:  pkgconfig(libical-glib) >= 3.0.7
 # For adressbook data generating
 BuildRequires:  python3-base
 BuildRequires:  sqlite3-devel >= 3.7.17
