@@ -1,0 +1,2 @@
+# Filter obsolete-not-provided gtranslator-devel warning, the Obsolete without Provides is intentional
+addFilter("gtranslator.* obsolete-not-provided gtranslator-devel")

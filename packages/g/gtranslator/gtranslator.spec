@@ -17,13 +17,14 @@
 
 
 Name:           gtranslator
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source:         https://download.gnome.org/sources/gtranslator/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/3.36/%{name}-%{version}.tar.xz
+Source99:       gtranslator-rpmlintrc
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -42,6 +43,7 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
+BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-5.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
@@ -55,10 +57,17 @@ Gtranslator is a ".po" file editor with many bells and whistles.
 It features many functions which aid in the work of translators of po
 files imminently.
 
+%package doc
+Summary:        Documentation for %{name}
+Group:          Development/Tools/Other
+
+%description doc
+This package contains documentation for %{name}.
+
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson \
@@ -70,11 +79,11 @@ files imminently.
 find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %suse_update_desktop_file -r org.gnome.Gtranslator GNOME GTK Development Translation
 %find_lang %{name}
+%fdupes %{buildroot}/%{_prefix}
 
 %files
 %license COPYING
-%doc AUTHORS MAINTAINERS NEWS README.md THANKS
-%doc %{_datadir}/gtk-doc/html/%{name}/
+%doc README.md
 %{_mandir}/man?/*
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
@@ -83,6 +92,10 @@ find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
 %{_datadir}/metainfo/org.gnome.Gtranslator.appdata.xml
 %{_datadir}/pixmaps/gtranslator-*.png
+
+%files doc
+%doc AUTHORS MAINTAINERS NEWS THANKS
+%doc %{_datadir}/gtk-doc/html/%{name}/
 
 %files lang -f %{name}.lang
 
