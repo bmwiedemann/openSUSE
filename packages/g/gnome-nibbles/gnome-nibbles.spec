@@ -17,13 +17,13 @@
 
 
 Name:           gnome-nibbles
-Version:        3.34.2
+Version:        3.36.0
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Lightsoff
-Source0:        https://download.gnome.org/sources/gnome-nibbles/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-nibbles/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
