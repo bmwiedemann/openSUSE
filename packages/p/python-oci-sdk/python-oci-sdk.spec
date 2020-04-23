@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-oci-sdk
 Version:        2.11.0
 Release:        0
@@ -55,7 +56,7 @@ BuildRequires:  %{python_module pytz >= 2016.10}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vcrpy}
-%ifpython2
+%if %{with python2}
 BuildRequires:  python-configparser >= 3.5.0
 %endif
 # /SECTION
