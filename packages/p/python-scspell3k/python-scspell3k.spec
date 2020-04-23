@@ -1,7 +1,7 @@
 #
 # spec file for package python-scspell3k
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,8 @@ Version:        2.2
 Release:        0
 Summary:        A conservative interactive spell checker for source code
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/scspell
-Source:         https://files.pythonhosted.org/packages/source/s/scspell3k/scspell3k-%{version}.tar.gz
-Source1:        https://github.com/myint/scspell/archive/v%{version}.tar.gz
+Source0:        https://github.com/myint/scspell/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -71,8 +69,7 @@ to three different sub-dictionaries may be searched for any given file:
        are not likely to be found in more than a handful of unique files.
 
 %prep
-%setup -q -n scspell3k-%{version}
-tar --wildcards --strip-components=1 -xzf %{SOURCE1} scspell-%{version}/test*
+%setup -q -n scspell-%{version}
 
 %build
 %python_build
@@ -82,7 +79,8 @@ tar --wildcards --strip-components=1 -xzf %{SOURCE1} scspell-%{version}/test*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+%pytest
+sed -i -e 's:python $TESTDIR:python3 $TESTDIR:g' ./test.cram
 python3 -m cram --indent=4 ./test.cram
 
 %files %{python_files}
