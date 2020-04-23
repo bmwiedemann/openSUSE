@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.34.4
+Version:        3.36.1
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -28,7 +28,7 @@ Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
 License:        LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GFDL-1.3-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
-Source0:        https://download.gnome.org/sources/evolution/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
@@ -72,6 +72,7 @@ BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.10
 # /NOTE
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libebackend-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
