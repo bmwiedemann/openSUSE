@@ -17,21 +17,21 @@
 
 
 Name:           gnome-klotski
-Version:        3.34.4
+Version:        3.36.0
 Release:        0
 Summary:        Klotski Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Klotski
-Source0:        https://download.gnome.org/sources/gnome-klotski/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-klotski/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
 BuildRequires:  pkgconfig(libgnome-games-support-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen)
@@ -61,6 +61,7 @@ its way.
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/applications/org.gnome.Klotski.desktop
+%{_datadir}/dbus-1/services/org.gnome.Klotski.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Klotski.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Klotski*
 %{_datadir}/metainfo/org.gnome.Klotski.appdata.xml
