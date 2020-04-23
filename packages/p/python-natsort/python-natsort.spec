@@ -34,7 +34,6 @@ BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-pathlib
 Requires:       python-setuptools
 Recommends:     python-PyICU >= 1.0.0
 Recommends:     python-fastnumbers >= 2.0.0

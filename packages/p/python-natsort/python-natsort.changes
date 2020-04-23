@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:45:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 dependency from py3 only package
+
+-------------------------------------------------------------------
 Sun Feb  9 17:17:05 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 * specfile:
