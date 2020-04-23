@@ -26,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.0.7
+%define libbpf_version 0.0.8
 
 Name:           bcc
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -37,7 +37,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz
 Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz
-Patch1:         support-clang9.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -131,9 +130,6 @@ Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
 %setup -q -D -n %{name}-%{version}
-%if %{?pkg_vcmp:%pkg_vcmp llvm-devel >= 9.0}%{!?pkg_vcmp:0}
-%patch1 -p1
-%endif
 
 pushd src/cc/libbpf
 tar xf %{SOURCE1} --strip 1
@@ -182,7 +178,7 @@ find tools/ examples/ -type f -exec \
 find tools/ examples/ -type f -exec \
 	sed -Ei '1s|^#!/usr/bin/env bcc-lua|#!/usr/bin/bcc-lua|' {} +
 find tools/ examples/ -type f -exec \
-	sed -i '1s|/bin/python|/bin/python3|g' {} +
+	sed -i '1s|/bin/python$|/bin/python3|g' {} +
 
 %install
 pushd build
