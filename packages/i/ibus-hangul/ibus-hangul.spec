@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-hangul
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           ibus-hangul
-Version:        1.5.2~git20181223.10c4795
+Version:        1.5.3
 Release:        0
 Summary:        The Hangul engine for IBus input platform
 License:        GPL-2.0-or-later
 Group:          System/I18n/Korean
 URL:            https://github.com/libhangul/ibus-hangul
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libhangul/ibus-hangul/archive/1.5.3/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  ibus-devel
-BuildRequires:  libhangul-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(libhangul)
+BuildRequires:  pkgconfig(python3)
 Requires:       python3-gobject
 # Make sure there is a font available. Pango 1.44 requires
 # a scalable font. However, since scalable-font-ko does not
@@ -47,12 +47,12 @@ libhangul.
 
 %prep
 %setup -q
-NO_CONFIGURE=1 ./autogen.sh
 
 %build
+autoreconf -fi
 %configure --disable-static \
            --libexecdir=%{_ibus_libdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -64,11 +64,7 @@ ln -sf %{_ibus_libdir}/ibus-setup-hangul %{buildroot}%{_bindir}/ibus-setup-hangu
 
 %files -f %{name}.lang
 # /usr/share/licenses is not owned by any package on SLE 12 SP2 and older
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
-%doc COPYING
-%else
 %license COPYING
-%endif
 %doc AUTHORS README
 %{_bindir}/ibus-setup-hangul
 %{_ibus_libdir}/ibus-engine-hangul

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:24:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.3
+  * Fix critical bug #90
+  * Fix issue #89
+
+-------------------------------------------------------------------
+Wed Apr 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: Drop the is_opensuse macro to eliminate 
+  the difference between SLE-15 and openSUSE Leap.
+
+-------------------------------------------------------------------
 Sat Jan 11 04:05:18 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Add explanation about recommending Noto Sans KR
