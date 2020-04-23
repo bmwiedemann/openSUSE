@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>764704</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7648195bbf1c3898e45e181801450711</srcmd5>
+    <version>unknown</version>
+    <time>1587659859</time>
+    <user>dimstar_suse</user>
+    <comment>- As py2 support is dropped remove py2 dependencies</comment>
+    <requestid>796487</requestid>
+  </revision>
 </revisionlist>

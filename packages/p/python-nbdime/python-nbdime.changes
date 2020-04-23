@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:42:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As py2 support is dropped remove py2 dependencies
+
+-------------------------------------------------------------------
 Sat Jan 11 14:10:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)

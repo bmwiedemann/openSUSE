@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Version:        %{mainver}
 Release:        0
 Summary:        Tools for diffing and merging Jupyter Notebooks
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbdime
 Source:         https://files.pythonhosted.org/packages/py2.py3/n/nbdime/nbdime-%{mainver}-py2.py3-none-any.whl
 BuildRequires:  %{python_module GitPython >= 2.1.6}
@@ -40,8 +39,6 @@ BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-backports.shutil_which
 # SECTION test requirements
 BuildRequires:  %{python_module jsonschema > 3}
 BuildRequires:  %{python_module mock}
@@ -56,17 +53,8 @@ Requires:       python-notebook
 Requires:       python-requests
 Requires:       python-six
 Requires:       python-tornado
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python-backports.shutil_which
-Provides:       python-jupyter_nbdime-hg = %{mainver}
-Obsoletes:      python-jupyter_nbdime-hg < %{mainver}
-Provides:       python-jupyter_nbdime-git = %{mainver}
-Obsoletes:      python-jupyter_nbdime-git < %{mainver}
-%else
 Conflicts:      python-jupyter_nbdime-hg < 1.0.5
 Conflicts:      python-jupyter_nbdime-git < 1.0.5
-%endif
 Recommends:     python-tabulate
 Provides:       python-jupyter_nbdime = %{mainver}
 Obsoletes:      python-jupyter_nbdime < %{mainver}
@@ -94,6 +82,7 @@ This package provides the tools and jupyter notebook extension.
 
 %package     -n jupyter-nbdime-jupyterlab
 Version:        %{labver}
+Release:        0
 Summary:        A JupyterLab extension for showing Notebook diffs
 Requires:       jupyter-jupyterlab
 Requires:       python3-nbdime = %{mainver}
@@ -108,8 +97,7 @@ This package provides the JupyterLab extension.
 
 %package     -n jupyter-nbdime-git
 Summary:        Git integration for jupyter-nbdime
-Group:          Development/Languages/Python
-Requires:       git
+Requires:       git-core
 Requires:       jupyter-nbdime = %{mainver}
 Provides:       python3-jupyter_nbdime-git = %{mainver}
 Obsoletes:      python3-jupyter_nbdime-git < %{mainver}
@@ -122,7 +110,6 @@ This package provides git integration.
 
 %package     -n jupyter-nbdime-hg
 Summary:        Mercurial integration for jupyter-nbdime
-Group:          Development/Languages/Python
 Requires:       jupyter-nbdime = %{mainver}
 Requires:       mercurial
 Provides:       python3-jupyter_nbdime-hg = %{mainver}
