@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 08:17:46 UTC 2020 - Jean Delvare <jdelvare@suse.de>
+
+3 recommended fixes from upstream:
+- dmidecode-print-type-33-name-unconditionally.patch: Print type 33
+  name unconditionally.
+- dmidecode-dont-choke-on-invalid-processor-voltage.patch: Don't
+  choke on invalid processor voltage.
+- dmidecode-fix-the-alignment-of-type-25-name.patch: Fix the
+  alignment of type 25 name.
+
+Build fix:
+- dmidecode-allow-overriding-build-settings-from-env.patch: Fix the
+  build system so that the compilation flags passed by OBS are
+  added to the ones dmidecode needs, instead of overriding them
+  entirely.
+- dmidecode.spec: Pass the CFLAGS through the environment, instead
+  of as a parameter.
+
+-------------------------------------------------------------------
 Wed Oct 23 13:31:26 UTC 2019 - Jean Delvare <jdelvare@suse.de>
 
 1 recommended fixe from upstream:

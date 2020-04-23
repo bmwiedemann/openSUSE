@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        DMI table decoder
 License:        GPL-2.0-or-later
 Group:          System/Console
-Url:            http://www.nongnu.org/dmidecode/
+URL:            http://www.nongnu.org/dmidecode/
 Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
@@ -33,6 +33,10 @@ Patch3:         dmidecode-only-scan-dev-mem-for-entry-point-on-x86.patch
 Patch4:         dmidecode-fix-formatting-of-tpm-table-output.patch
 Patch5:         dmidecode-fix-system-slot-information-for-pcie-ssd.patch
 Patch6:         dmidecode-add-enumerated-values-from-smbios-3.3.0.patch
+Patch7:         dmidecode-print-type-33-name-unconditionally.patch
+Patch8:         dmidecode-dont-choke-on-invalid-processor-voltage.patch
+Patch9:         dmidecode-fix-the-alignment-of-type-25-name.patch
+Patch10:        dmidecode-allow-overriding-build-settings-from-env.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -61,9 +65,13 @@ the BIOS told it to.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+CFLAGS="%{optflags}" make %{?_smp_mflags}
 
 %install
 install -dm 755 %{buildroot}%{_sbindir}

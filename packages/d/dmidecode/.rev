@@ -348,4 +348,12 @@ Partial support for SMBIOS 3.3.0:
 </comment>
     <requestid>742155</requestid>
   </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>9bff286277d11410934de25e7326442d</srcmd5>
+    <version>3.2</version>
+    <time>1587659354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796027</requestid>
+  </revision>
 </revisionlist>
