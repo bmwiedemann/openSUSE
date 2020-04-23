@@ -19,15 +19,14 @@
 %bcond_with zeitgeist
 
 Name:           bijiben
-Version:        3.34.2
+Version:        3.36.1
 Release:        0
 Summary:        Note editor for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
-Source0:        http://download.gnome.org/sources/bijiben/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/bijiben/3.36/%{name}-%{version}.tar.xz
 
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  meson
@@ -41,6 +40,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.92
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.92
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 BuildRequires:  pkgconfig(uuid)
