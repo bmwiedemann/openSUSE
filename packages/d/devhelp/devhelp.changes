@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 26 21:12:12 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + AppData: add <releases> tag for the Flatpak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar  5 10:57:51 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 18:55:01 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Create page about professional services for Devhelp.
+  + A few improvements to the build system.
+  + Write more user documentation.
+  + Fix a minor bug with the Ctrl+F keyboard shortcut.
+  + Start to apply REUSE recommendations for copyright and license
+    information (https://reuse.software/).
+  + Use a few new GLib APIs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:06:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
