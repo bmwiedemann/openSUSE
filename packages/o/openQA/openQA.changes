@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:29:42 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1587630471.ceb108926:
+  * Improve tests for job restarting
+  * Allow to force restarting a job via the web UI
+  * Update build_dependencies.sh to work on dependencies.yaml
+  * Run make update-deps
+  * Add t/45-make-update-deps.t
+  * Make an exception for Perl::Tidy
+  * Add tools/update-deps and dependencies.yaml
+  * t: Stabilize and simplify ui/02-list-group.t (again)
+  * Speed up dashboard tests
+  * t: Stabilize ui/02-list-group.t
+  * spec: Sort dependencies
+  * t: Improve test stack reporting by avoiding Test::More tests in helper libs
+  * t: Extract common full stack function "schedule_one_job_over_api_and_verify"
+  * t: Add timeout for loops in full-stack.t
+  * Consider directly chained dependencies when registering assets
+  * Dependencies: Remove commas from requirements in spec
+  * Scripts should return 0 when called with --help
+  * Add test running all perl scripts with --help
+  * Select also script directory in CI
+  * Dependencies: Sort cpanfile
+  * Allow running tests within Makefile despite unclean environment
+  * Return error when error happens in caching assets
+  * t: Speedup full stack test with KVM when available
+  * UI tests: Add message to wait_for_ajax calls
+  * Show test details tabs only via hash if it makes sense for the job state
+  * Add explicit tests for the job's has_* functions
+  * Load test result tabs async on demand
+
+-------------------------------------------------------------------
 Mon Apr 20 20:57:04 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1587416201.4df4ad16d:
