@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:40:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Fri Apr 17 07:17:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.3.3:

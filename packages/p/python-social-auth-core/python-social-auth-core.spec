@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-social-auth-core
 Version:        3.3.3
 Release:        0
@@ -48,7 +49,9 @@ BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-python-openid >= 2.2.5
+%endif
 BuildRequires:  python3-defusedxml >= 0.5.0
 BuildRequires:  python3-python3-openid >= 3.0.10
 Requires:       python-PyJWT >= 1.4.0
@@ -94,7 +97,7 @@ cp %{SOURCE1} social_core/tests/backends/data/
 %check
 # python3 only: assertRaisesRegexp -> assertRaisesRegex
 # skipped tests are online based
-rm -r _build.python2
+rm -rf _build.python2
 python3 -m pytest -v -k 'not (test_login or test_partial_pipeline)'
 
 %files %{python_files}
