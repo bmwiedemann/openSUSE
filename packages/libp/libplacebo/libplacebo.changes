@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Apr 23 00:10:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Add libepoxy to BuildRequires
+- Enable test suite
+- Update to version 2.43.0
+The major highlight of this release is the introduction of a new
+OpenGL backend, documented in <libplacebo/opengl.h>, which is also
+the reason for the major version bump.
+
+Apart from the addition of OpenGL support, this release brings with
+it a large number of fixes for backwards compatibility with older
+versions of GLSL and GLES, allowing libplacebo to be used to
+generate legal shaders for virtually any GLSL version in existence.
+
+Supporting these changes, the test framework has been expanded
+considerably to allow for automated testing of older OpenGL context
+versions and older GLSL versions.
+
+Additions:
+  * add pl_gpu.pci, containing the PCI address of the underlying
+    GPU
+  * add pl_image.av1_grain, allowing pl_renderer to add AV1 grain
+  * add pl_opengl backend (see <libplacebo/opengl.h>)
+  * add pl_color_levels_guess, to infer color levels from
+    pl_color_repr
+  * pl_shader_encode_color now handles non-linear color systems
+  * add pl_render_params.force_dither, to force use of the dither
+    code
+  * add pl_render_params.disable_fbos, to forcibly disable FBOs
+  * add pl_vk_inst_params.layers, to allow loading extra vulkan
+    layers
+  * add a way to restrict the maximum GLSL version provided by the
+    various pl_gpu backends, for testing purposes
+
+Changes:
+  * load all vulkan function pointers indirectly, using a
+    user-provided vkGetInstanceProcAddr function
+  * vulkan can now be built without linking against libvulkan.so
+  * refactor av1 grain data struct, splitting it up into
+    "grain metadata" and "shader params"
+  * pl_swapchain_resize now recreates suboptimal swapchains even
+    if the size does not change
+  * pl_tex_blit now requires the new cap PL_GPU_CAP_BLITTABLE_1D_3D
+    for 1D/3D textures
+  * pl_tex_params.host_readable now requires the new cap
+    PL_FMT_CAP_HOST_READABLE on the chosen format
+  * pl_vk_inst_create will now automatically load any layers needed
+    for extensions specified by the user
+
+Fixes and performance improvements:
+  * make pl_color_adjustment.gamma actually do something
+  * fix av1 grain shader for separated planes
+  * fix memory corruption in pl_vulkan_swapchain_suboptimal
+  * fix access mask on API writes to read-writable vulkan buffers
+  * fix some instances of undefined behavior in av1 grain synthesis
+  * fix av1 grain scale for PL_COLOR_LEVELS_UNKNOWN
+  * fix use of local #include for config.h in installed headers
+  * fix various incorrect literals for compatibility with older
+    GLSL
+  * fix potential type error in XYZ input handling
+  * fix numerous backwards compatibility issues for older GLSL and
+    GLES versions, across the board
+  * quench some meson warnings, as well as some compiler warnings
+
+-------------------------------------------------------------------
 Tue Dec 24 15:21:06 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 1.29.1

@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 29
+%define sover 43
 Name:           libplacebo
-Version:        1.29.1
+Version:        2.43.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -30,6 +30,7 @@ BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc-devel
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(vulkan)
 
@@ -62,11 +63,14 @@ of mpv.
 %setup -q -n %{name}-v%{version}
 
 %build
-%meson -Dglslang=disabled
+%meson -Dglslang=disabled -Dtests=true
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
