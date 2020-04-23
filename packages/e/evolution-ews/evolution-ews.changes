@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 27 18:03:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Bugs fixed: Free/Busy times are not in UTC.
+
+-------------------------------------------------------------------
+Fri Mar  6 10:11:35 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + No changes, stable release only.
+
+-------------------------------------------------------------------
+Sat Feb 29 01:05:31 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.35.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 10:39:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Mark connection disconnected only when disconnecting
+    backend/store.
+  + Various bugs fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 09:57:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.90:
+  + Allow enter distinguished folder names when subscribing to
+    other user's folder.
+  + Prefer GSlice over heap allocation for short-lived structures.
+  + Various bugs fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 14 09:57:08 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.4:
