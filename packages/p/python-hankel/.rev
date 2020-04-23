@@ -49,4 +49,12 @@
     <comment></comment>
     <requestid>792494</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7dfe626d0252a4af842722ffde03a573</srcmd5>
+    <version>1.0.2</version>
+    <time>1587659839</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 deps as package is py3 only</comment>
+    <requestid>796501</requestid>
+  </revision>
 </revisionlist>

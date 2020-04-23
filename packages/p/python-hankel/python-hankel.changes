@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:02:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 deps as package is py3 only
+
+-------------------------------------------------------------------
 Wed Apr  8 14:46:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.0.2

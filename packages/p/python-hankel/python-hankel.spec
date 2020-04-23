@@ -39,11 +39,7 @@ BuildRequires:  %{python_module mpmath >= 0.18}
 BuildRequires:  %{python_module numpy >= 1.6.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.12.0}
-BuildRequires:  python-future
 # /SECTION
-%ifpython2
-Requires:       python-future
-%endif
 %python_subpackages
 
 %description
