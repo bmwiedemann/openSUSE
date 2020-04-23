@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:21:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Symbolic:
+    - User-not-tracked bugfix.
+    - Color coding of battery states.
+    - Hw disabled states.
+    - Microphone state icons.
+  + Fullcolor: video-x-generic metaphor.
+- Switch back to tarball release. Following this, drop libtool
+  BuildRequires and autogen call, no longer needed.
+
+-------------------------------------------------------------------
+Sun Mar  8 12:40:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Symbolic:
+    - Media rtl cleanup.
+    - Night light more identifiable.
+
+-------------------------------------------------------------------
+Fri Feb 28 19:00:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.35.92:
+  + Fullcolor mimetype icons - firmware, addons for they are
+    prominently exposed in Software.
+  + Drop rtl variant for playback.
+- Use explicit commitid as upstream borked the tag and tarball.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:44:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Updated icon set.
+
+-------------------------------------------------------------------
 Tue Nov 26 16:01:41 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure we have a recent enough version of gtk3-tools to build

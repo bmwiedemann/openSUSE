@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-icon-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           adwaita-icon-theme
-Version:        3.34.3
+Version:        3.36.1
 Release:        0
 Summary:        GNOME Icon Theme
 License:        LGPL-3.0-or-later OR CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gtk3-tools >= 3.24.2
-BuildRequires:  libtool
+
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated
 Requires(post): gtk3-tools
@@ -42,7 +42,6 @@ The default GNOME icon theme, Adwaita.
 %autosetup
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build
 
