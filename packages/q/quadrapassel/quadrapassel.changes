@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:13:14 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.00:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Mar  2 13:06:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.92:
+  + Defect fix to ensure keys are always unique when they are
+    configured using the settings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 14:22:25 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Updated translations.
+- Changes from version 3.35.3:
+  + Updates to help.
+- Changes from version 3.35.2:
+  + Correctly added the dependancy for the library m (libm).
+  + Added the TODOs to define a short-term roadmap for the game.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:19:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
