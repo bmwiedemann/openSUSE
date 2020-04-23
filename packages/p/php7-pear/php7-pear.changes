@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 19 18:42:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 1.10.19
+  - PEAR 1.10.12
+    * adjust dependencies based on new releases
+  - XML_Util 1.4.5
+    * fix Trying to access array offset on value of type int
+
+-------------------------------------------------------------------
 Fri Apr 10 20:17:07 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 1.10.18
