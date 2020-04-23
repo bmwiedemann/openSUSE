@@ -27,9 +27,11 @@ URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         protobuf.patch
+Patch1:         no-python2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module protobuf}
+BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -39,7 +41,6 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel
-BuildRequires:  python-pybind11-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-protobuf
@@ -59,7 +60,7 @@ community of partners.
 %setup -q -n onnx-%{version}
 # avoid bundles
 rm -rf third_party
-%patch0 -p1
+%autopatch -p1
 # say that the cmake was already built (we used our macros)
 sed -i -e 's:built = False:built = True:g' setup.py
 # do not require extra pytest modules
@@ -79,6 +80,7 @@ sed -i -e '/pytest-runner/d' setup.py
   -DBUILD_ONNX_PYTHON=ON \
   -DBUILD_SHARED_LIBS=OFF \
   -DBUILD_STATIC_LIBS=ON \
+  -DPYTHON_EXECUTABLE="%{_bindir}/$python" \
   -DPY_EXT_SUFFIX="`$python-config --extension-suffix`"
 %cmake_build ; cd ..
 }

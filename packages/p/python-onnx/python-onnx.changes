@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Force the interpreter to match the one during build
+- Mypy should use python3 to generate stuff not python2
+  * no-python2.patch
+
+-------------------------------------------------------------------
+Thu Apr 23 10:35:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in py2 devel of pybind11
+
+-------------------------------------------------------------------
 Mon Mar 23 15:08:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do also provide/obsolete for the devel to support migration

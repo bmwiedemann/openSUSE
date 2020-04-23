@@ -1,0 +1,10 @@
+Index: onnx-1.6.0/tools/protoc-gen-mypy.py
+===================================================================
+--- onnx-1.6.0.orig/tools/protoc-gen-mypy.py
++++ onnx-1.6.0/tools/protoc-gen-mypy.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Taken from https://github.com/dropbox/mypy-protobuf/blob/d984389124eae6dbbb517f766b9266bb32171510/python/protoc-gen-mypy
+ # (Apache 2.0 License)
