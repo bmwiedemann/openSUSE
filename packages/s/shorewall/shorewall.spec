@@ -20,13 +20,13 @@
 %define dmaj 5.2
 %define dmin 5.2.4
 # Warn users for upgrading configuration but only on major or minor version changes
-%define conf_need_update 1
+%define conf_need_update 0
 #2017+ New fillup location
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           shorewall
-Version:        5.2.4
+Version:        5.2.4.2
 Release:        0
 Summary:        An iptables-based firewall for Linux systems
 License:        GPL-2.0-only
@@ -175,29 +175,34 @@ This package contains the core libraries for Shorewall.
 %prep
 %setup -q -c -a1 -a2 -a3 -a4 -a5 -a6
 # Patch for fillup
-pushd %{name}-init-%version
+pushd %{name}-init-%{version}
 %patch1 -p1
 popd
-pushd %{name}-%version
+pushd %{name}-%{version}
 %patch2 -p1
 popd
-pushd %{name}6-%version
+pushd %{name}6-%{version}
 %patch2 -p1
 popd
-pushd %{name}-lite-%version
+pushd %{name}-lite-%{version}
 %patch3 -p1
 popd
-pushd %{name}6-lite-%version
+pushd %{name}6-lite-%{version}
 %patch3 -p1
 popd
 
-chmod -x %{name}-docs-html-%version/images/*.png
-chmod -x %{name}6-%version/tunnel
-chmod -x %{name}6-%version/ipv6
-chmod -x %{name}-%version/Contrib/swping.init
-chmod -x %{name}-%version/Contrib/tunnel
+chmod -x %{name}-docs-html-%{version}/images/*.png
+chmod -x %{name}6-%{version}/tunnel
+chmod -x %{name}6-%{version}/ipv6
+chmod -x %{name}-%{version}/Contrib/swping.init
+chmod -x %{name}-%{version}/Contrib/tunnel
 
-cp %{SOURCE8} %{name}-%version/.
+cp %{SOURCE8} %{name}-%{version}/.
+
+# We don't have /sbin /bin merged on /usr so symlinks can't work.
+# so we dynamically patch last /sbin calls in lib.cli-std
+# and make shorewall remote working without hacks
+sed -i 's#/sbin/shorewall#/usr/sbin/shorewall#g' %{name}-%{version}/lib.cli-std
 
 %build
 
@@ -219,9 +224,9 @@ targets="shorewall shorewall-core shorewall-lite shorewall6 shorewall6-lite shor
 for i in $targets; do
     pushd ${i}-%{version}
     ./configure \
-        vendor=%_vendor \
-        host=%_vendor \
-        prefix=%_prefix \
+        vendor=%{_vendor} \
+        host=%{_vendor} \
+        prefix=%{_prefix} \
         perllibdir=%{perl_vendorlib} \
         libexecdir=%{_libexecdir} \
         sbindir=%{_sbindir} \
@@ -231,8 +236,9 @@ for i in $targets; do
         %endif
        sharedir=%{_datadir}
 
-    if [ $i != shorewall-init ];then
-       DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh  shorewallrc
+    if [ $i != shorewall-init ];
+    then
+       DESTDIR=%{buildroot} FILLUPDIR=%{_fillupdir} ./install.sh shorewallrc
     else
        install -d %buildroot/%{_sysconfdir}/NetworkManager/dispatcher.d
                %if 0%{?suse_version}
@@ -247,7 +253,6 @@ for i in $targets; do
             done
       fi
     fi
-
     popd
 done
 
@@ -373,7 +378,6 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %defattr(-,root,root,-)
 %doc %{name}-%version/{COPYING,changelog.txt,releasenotes.txt,README.openSUSE}
 %{_sbindir}/rc%{name}
-%{_sbindir}/%{name}
 %{_fillupdir}/sysconfig.%{name}
 %dir %{_sysconfdir}/%{name}
 %ghost %{_sysconfdir}/%{name}/isusable
@@ -407,11 +411,9 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %files lite
 %defattr(-,root,root,-)
 %doc %{name}-lite-%version/{COPYING,changelog.txt,releasenotes.txt}
-# FIXME
 %{_fillupdir}/sysconfig.%{name}-lite
 %dir %{_sysconfdir}/%{name}-lite
-%config(noreplace) %{_sysconfdir}/%{name}-lite/%{name}-lite.conf
-# FIXME
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}-lite/%{name}-lite.conf
 %{_sbindir}/rc%{name}-lite
 %{_sbindir}/%{name}-lite
 %dir %{_datadir}/%{name}-lite
@@ -422,7 +424,6 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %{_datadir}/%{name}-lite/configpath
 %attr(- ,root,root) %{_datadir}/%{name}-lite/functions
 %{_datadir}/%{name}-lite/lib.base
-# Removed in 5.2.3 %%{_datadir}/%%{name}-lite/modules*
 %{_datadir}/%{name}-lite/helpers
 %attr(0544,root,root) %{_libexecdir}/%{name}-lite/shorecap
 %{_mandir}/man5/%{name}-lite*.5*
@@ -465,7 +466,7 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %doc %{name}6-lite-%version/{COPYING,changelog.txt,releasenotes.txt}
 %{_fillupdir}/sysconfig.%{name}6-lite
 %dir %{_sysconfdir}/%{name}6-lite
-%config(noreplace) %{_sysconfdir}/%{name}6-lite/%{name}6-lite.conf
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}6-lite/%{name}6-lite.conf
 %{_sbindir}/rc%{name}6-lite
 %{_sbindir}/%{name}6-lite
 %dir %{_datadir}/%{name}6-lite
@@ -502,6 +503,7 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %files core
 %defattr(-,root,root,-)
 %doc shorewall-core-%{version}/{COPYING,changelog.txt,releasenotes.txt}
+%{_sbindir}/%{name}
 %dir %{_datadir}/shorewall/
 %{_datadir}/shorewall/coreversion
 %{_datadir}/shorewall/functions

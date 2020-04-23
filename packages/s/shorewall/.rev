@@ -2063,4 +2063,26 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
 - Add version to requires in -lite version</comment>
     <requestid>793944</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>8ca423100fba28be5130b6a96e836d11</srcmd5>
+    <version>5.2.4.2</version>
+    <time>1587659621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.4.2
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/releasenotes.txt
+  + Fixes for debian
+- Update to version 5.2.4.1
+  + Fixes for openSUSE shorewall-init
+  will now ignore 'start' and 'stop' commands, for running firewalls
+  + Spurious messages have been removed
+- Packaging
+  + Move /usr/sbin/shorewall to shorewall-core so -lite version
+    doesn't need main shorewall package
+  + To make shorewall remote-* command working we patch lib.cli-std
+    to use /usr/sbin instead of /sbin + commented spec
+  + Desactivate for the moment the upgrade warning. we need to
+    find a 100% working solution.
+  + use %{var} form everywhere</comment>
+    <requestid>796435</requestid>
+  </revision>
 </revisionlist>

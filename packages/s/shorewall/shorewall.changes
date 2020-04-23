@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:50:24 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.2.4.2
+  https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.4/releasenotes.txt
+  + Fixes for debian
+- Update to version 5.2.4.1
+  + Fixes for openSUSE shorewall-init
+  will now ignore 'start' and 'stop' commands, for running firewalls
+  + Spurious messages have been removed
+- Packaging
+  + Move /usr/sbin/shorewall to shorewall-core so -lite version
+    doesn't need main shorewall package
+  + To make shorewall remote-* command working we patch lib.cli-std
+    to use /usr/sbin instead of /sbin + commented spec
+  + Desactivate for the moment the upgrade warning. we need to
+    find a 100% working solution.
+  + use %{var} form everywhere
+
+-------------------------------------------------------------------
 Tue Apr 14 14:35:51 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Add perl-base as buildrequirement to force choice of SHA-DIGEST
