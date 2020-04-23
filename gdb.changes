@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:29:12 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix python 3.8 warning [bsc#1169495].
+  * gdb-fix-incorrect-use-of-is-operator-for-comparison-in-python-lib-gdb-command-prompt.py.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 07:40:12 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix build with gcc 10 [bsc#1169368, swo#25717].
