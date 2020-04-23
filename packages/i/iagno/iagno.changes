@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:16:10 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:18:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + The “Escape” key works again during a game.
+  + The code that manages inputs (keyboard and mouse) changed
+    a bit.
+  + Help had cosmetic improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 08:58:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + The History button is now drawn using the same images as the
+    board; it removes the need to ensure a working font is
+    installed. It also allowed to optimize a bit.
+  + The "Vary start position" option now enables or disables the
+    human opening when on a two-player game.
+  + Transition to the game also changed on large windows.
+  + Finally, help pages were reworked and are up-to-date.
+- Changes from version 3.35.3:
+  + There is now a new option (not checked by default) to highlight
+    the playable tiles (yes, the playable ones, this time), for
+    making the game easier for newcomers.
+  + In the New Game screen, arrows have been added to the
+    menubuttons for clarifying a bit what they are.
+  + The window layout has improved on phone-like screens, with the
+    game name being displayed in a bottom bar.
+- Changes from version 3.35.2:
+  + The most visible change is probably the first part of the
+    replacement of the “Iagno” name by “Reversi”.
+  + There is now a “--print-logs” command-line option for recording
+    a game.
+  + when configuring meson using option “-Dperfs_tests=true”, you
+    can now check if the AI has been changed and test it for
+    performance regressions.
+  + Iagno should now be activatable using D-Bus.
+- Changes from version 3.35.1:
+  + Many changes! The biggest one is of course that Iagno now
+    allows to play the reversed reversi game, that is played like
+    an usual reversi game, but where the goal is to finish with
+    less tiles than your opponent.
+  + There is now a toggle to start with different initial
+    positions randomly.
+  + For two-player games, this is replaced by an old-style opening,
+    where players place the four initial tiles on the board.
+  + Another toggle to alternate who starts when a user is playing
+    multiple times in a row.
+  + Updated help.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 14 08:58:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.5:

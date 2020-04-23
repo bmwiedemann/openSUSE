@@ -17,21 +17,21 @@
 
 
 Name:           iagno
-Version:        3.34.5
+Version:        3.36.0
 Release:        0
 Summary:        Reversi Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Iagno
-Source0:        https://download.gnome.org/sources/iagno/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/iagno/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(gio-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
@@ -68,6 +68,7 @@ board.
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/org.gnome.Reversi.appdata.xml
 %{_datadir}/applications/org.gnome.Reversi.desktop
+%{_datadir}/dbus-1/services/org.gnome.Reversi.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Reversi.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man6/%{name}.6%{?ext_man}
