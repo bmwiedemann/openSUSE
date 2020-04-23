@@ -16,6 +16,9 @@
 #
 
 
+%if 0%{?fedora_version}
+%global debug_package %{nil}
+%endif
 %define libsoname %{name}1
 Name:           libbaseencode
 Version:        1.0.9
