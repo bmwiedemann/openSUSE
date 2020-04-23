@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:46:36 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Enable container-image-prune.timer by default
+
+-------------------------------------------------------------------
 Mon Mar 23 10:03:58 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Enable kubelet by default (as expected by kubeadm) [boo#1167369]

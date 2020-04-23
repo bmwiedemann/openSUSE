@@ -10,6 +10,7 @@ enable cloud-init-local.service
 enable cloud-init.service
 enable health-checker.service
 enable kubelet.service
+enable container-image-prune.timer
 disable purge-kernels.service
 # optional packages
 enable man-db-create.service

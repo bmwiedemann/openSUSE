@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>787393</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8c5e9435fa1413ca857beef62a3f3666</srcmd5>
+    <version>20200323</version>
+    <time>1587659390</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable container-image-prune.timer by default</comment>
+    <requestid>796305</requestid>
+  </revision>
 </revisionlist>
