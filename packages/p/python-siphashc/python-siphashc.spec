@@ -30,7 +30,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python-unittest2
 Obsoletes:      python-siphashc3 < %{version}
 Provides:       python-siphashc3 = %{version}
 %python_subpackages

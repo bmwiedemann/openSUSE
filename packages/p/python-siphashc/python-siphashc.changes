@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:31:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop unused unittest2 dependency
+
+-------------------------------------------------------------------
 Mon Jan  6 13:30:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.3:
