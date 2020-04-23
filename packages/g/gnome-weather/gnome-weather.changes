@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:57:13 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Bugs fixed: Unknown temperature and cloud conditions when using
+    autolocation.
+- Enable testsuite: Add check section and run meson_test macro.
+
+-------------------------------------------------------------------
+Fri Apr 10 09:55:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Bugs fixed:
+    - Always shows weather for wrong location.
+    - Deduplicate cities in locations popover.
+  + Bugs introduced: Unknown location since 3.34.1 (sorry!).
+  + New nightly app icon.
+  + Publish nightlies from CI.
+  + Added README.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 10 09:55:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:

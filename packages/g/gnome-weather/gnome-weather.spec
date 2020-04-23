@@ -17,14 +17,15 @@
 
 
 %define _name org.gnome.Weather
+
 Name:           gnome-weather
-Version:        3.34.2
+Version:        3.36.1
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://live.gnome.org/Design/Apps/Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-weather/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson
@@ -75,8 +76,12 @@ search results from GNOME Weather.
 %suse_update_desktop_file %{_name} Utility DesktopUtility
 %find_lang %{_name} %{?no_lang_C} %{name}.lang
 
+%check
+%meson_test
+
 %files
 %license COPYING.md
+%doc NEWS README.md
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Weather.appdata.xml
 %{_datadir}/applications/org.gnome.Weather.desktop
