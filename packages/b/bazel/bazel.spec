@@ -26,9 +26,6 @@ URL:            http://bazel.io/
 Source:         README
 Provides:       bazel = %{version}
 Requires:       bazel%{version}
-%ifarch armv7l
-ExclusiveArch:  do_not_build
-%endif
 
 %description
 Tool for the automation of building and testing of software. It supports Java,

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:06:36 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove useless tentative to disable armv7 build
+
+-------------------------------------------------------------------
 Fri Jan 17 03:32:44 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Switch bazel to default version 2.0.
