@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-latex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           gnome-latex
-Version:        3.32.0
+Version:        3.36.0
 Release:        0
 Summary:        Integrated LaTeX Environment for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://wiki.gnome.org/Apps/GNOME-LaTeX
-Source0:        https://download.gnome.org/sources/%{name}/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/3.36/%{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  gsettings-desktop-schemas-devel
 BuildRequires:  gtk-doc
@@ -36,8 +37,8 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.34
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
