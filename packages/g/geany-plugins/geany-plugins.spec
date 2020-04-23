@@ -29,9 +29,8 @@ Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
 
-# PATCH-FIX-UPSTREAM geany-plugins-lua-5_2.patch sf#3476581 dimstar@opensuse.org -- Fix build with lua 5.2.
-# FIXME: the patch breaks GeanyLua building with lua 5.1.5
-Patch0:         geany-plugins-lua-5_2.patch
+# PATCH-FIX-UPSTREAM geany-plugins-Make-libgit2-compatible.patch -- Make libgit2 version preprocessor conditionals compatible with libgit2-0.99
+Patch0:         geany-plugins-Make-libgit2-compatible.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
@@ -69,9 +68,9 @@ Geany-Plugins is a collection of different plugins for Geany,
 a lightweight IDE.
 
 %lang_package
+
 %prep
-%setup -q
-#patch0 -p1
+%autosetup -p1
 
 %build
 %configure \

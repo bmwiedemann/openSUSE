@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 23:11:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add geany-plugins-Make-libgit2-compatible.patch: Make libgit2
+  version preprocessor conditionals compatible with libgit2-0.99.
+- Drop long disabled downstream patch, geany-plugins-lua-5_2.patch:
+  We will move to lua 5.2 when upstream does.
+
+-------------------------------------------------------------------
 Fri Feb 21 15:41:39 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch off building with PyGtk (as it is Python 2-based).
