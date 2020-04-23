@@ -1,7 +1,7 @@
 #
 # spec file for package python-fudge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://farmdev.com/projects/fudge/
 Source:         https://files.pythonhosted.org/packages/source/f/fudge/fudge-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#fudge-py/fudge#11 mcepl@suse.com
+# Remove the need of using nose and port to py3k
+Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-2to3
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,6 +49,7 @@ with a traceback that points to the culprit.
 
 %prep
 %setup -q -n fudge-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -55,20 +59,9 @@ with a traceback that points to the culprit.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-mkdir testdir
-pushd testdir
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-cp -r ../fudge/tests tests2
-export PYTHONPATH=%{buildroot}%{python2_sitelib}
-nosetests-%{python2_bin_suffix} -w tests2
-%endif
-%if 0%{?have_python3} && ! 0%{?skip_python3}
-cp -r ../fudge/tests tests3
-2to3 -w tests3
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-nosetests-%{python3_bin_suffix} -w tests3
-%endif
-popd
+# gh#fudge-py/fudge#11
+# Still unported tests
+%pytest -k 'not (test_decorator_on_def or test_expectations_are_always_cleared or test_expectations_are_always_cleared or test_global_clear_expectations)'
 
 %files %{python_files}
 %license LICENSE.txt

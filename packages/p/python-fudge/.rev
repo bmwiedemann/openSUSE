@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>731193</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>bf31bf68ab284324a9285eb595f33cb1</srcmd5>
+    <version>1.1.1</version>
+    <time>1587659556</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch which removes need to use nose, and ports
+  the package to py3k-compatible syntax. (gh#fudge-py/fudge#11)</comment>
+    <requestid>796348</requestid>
+  </revision>
 </revisionlist>
