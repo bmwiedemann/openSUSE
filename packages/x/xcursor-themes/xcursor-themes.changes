@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:39:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 1.0.6
+  + Switch to NO_ARCH 
+  + Remove unneded dependency on xorgproto
+  + This adds some symlinks to the whiteglass cursor theme, that gnome-shell expects
+
+-------------------------------------------------------------------
 Wed Apr  4 14:19:36 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.5:
