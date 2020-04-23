@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ Source0:        https://download.gnome.org/sources/%{name}/2.29/%{name}-%{versio
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM atkmm-use-glibmm-262.patch -- Forward port to use new glibmm2
 Patch0:         atkmm-use-glibmm-262.patch
+# PATCH-FIX-UPSTREAM atkmm-use-glibmm-264.patch -- Forward port to use new glibmm2
+Patch1:         atkmm-use-glibmm-264.patch
+# PATCH-FIX-UPSTREAM atkmm-use-glibmm-264.patch -- Forward port to use new glibmm2
+Patch2:         atkmm-use-glibmm-266.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -38,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  mm-common
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(atk) >= 1.18
-BuildRequires:  pkgconfig(glibmm-2.62)
+BuildRequires:  pkgconfig(glibmm-2.66)
 Recommends:     %{name}-doc = %{version}
 
 %description
