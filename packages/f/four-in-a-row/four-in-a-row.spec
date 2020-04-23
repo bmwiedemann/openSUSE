@@ -17,14 +17,14 @@
 
 
 Name:           four-in-a-row
-Version:        3.34.4
+Version:        3.36.0
 Release:        0
 Summary:        Connect Four Game for GNOME
 # License notice: Source code is GPL-2.0+, Icon themes are GPL-3.0+
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Four-in-a-row
-Source0:        https://download.gnome.org/sources/four-in-a-row/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/four-in-a-row/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 
 %description
@@ -68,6 +68,7 @@ human or the computer.
 %{_datadir}/glib-2.0/schemas/org.gnome.Four-in-a-row.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Four-in-a-row*
 %{_mandir}/man6/%{name}.6%{?ext_man}
+%{_datadir}/dbus-1/services/org.gnome.Four-in-a-row.service
 
 %files lang -f %{name}.lang
 
