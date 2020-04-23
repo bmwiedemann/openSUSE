@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:43:20 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Require containers-systemd for container-runtime pattern 
+
+-------------------------------------------------------------------
 Wed Mar 11 14:20:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add kube-prometheus-k8s-yaml to kubeadm pattern

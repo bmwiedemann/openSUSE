@@ -169,4 +169,12 @@
     <comment>- Add kube-prometheus-k8s-yaml to kubeadm pattern</comment>
     <requestid>785535</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>a8228bf30ac8a4c1d3474b434f937153</srcmd5>
+    <version>5.0</version>
+    <time>1587659388</time>
+    <user>dimstar_suse</user>
+    <comment>- Require containers-systemd for container-runtime pattern</comment>
+    <requestid>796304</requestid>
+  </revision>
 </revisionlist>

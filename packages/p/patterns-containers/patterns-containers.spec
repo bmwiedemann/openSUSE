@@ -82,6 +82,7 @@ Provides:       pattern-visible()
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-container-runtime
 Obsoletes:      patterns-caasp-container-runtime <= 4.0
+Requires:       containers-systemd
 Requires:       podman
 Requires:       podman-cni-config
 Requires:       toolbox
