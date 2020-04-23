@@ -18,13 +18,13 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.62.3
+Version:        2.64.2
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/glib-networking/2.62/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib-networking/2.64/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  ca-certificates-mozilla
@@ -36,8 +36,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 # If this BuildRequires changes because of a gio library version change, change gio_real_package accordingly
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.55.1
-BuildRequires:  pkgconfig(gnutls) >= 3.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.63.0
+BuildRequires:  pkgconfig(gnutls) >= 3.6.5
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(libproxy-1.0) >= 0.3.1
 BuildRequires:  pkgconfig(systemd)

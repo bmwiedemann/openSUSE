@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:43:08 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.64.2:
+  + Reenable TLS 1.0/1.1 protocols due to COVID-19.
+  + Fix build warning on Windows.
+
+-------------------------------------------------------------------
+Sat Mar 28 16:45:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.64.1:
+  + Warn when server-identity property is missing.
+  + Fix crashes in debug logs.
+  + Fix write loop in OpenSSL backend.
+
+-------------------------------------------------------------------
+Fri Mar  6 18:25:57 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 2.64.0:
+  + Fix OpenSSL backend on RHEL 6.
+
+-------------------------------------------------------------------
+Fri Feb 28 06:15:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.92:
+  + Revert fix for glgo#GNOME/glib-networking#127, which broke
+    libsoup (glgo#GNOME/glib-networking#129).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:40:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.63.91:
+  + Fix peer-certificate properties changing too soon.
+  + GnuTLS backend: reduce session resumption cache lifetime.
+  + GnuTLS backend: restore TLS 1.2 support for copy session state.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:11:40 CET 2020 - dimstar@opensuse.org
+
+- Update to version 2.63.90:
+  + Remove PKCS#11 support, deferred until next cycle.
+  + Remove OpenSSL backend's OCSP support.
+- Changes from version 2.63.3:
+  + Fix OpenSSL backend regressions and reenable OpenSSL testsuite.
+  + Temporarily disable cancellation of sync handshakes.
+  + Disable flaky test (#104) and resolve testsuite flakiness.
+  + Fix regression where GnuTLS connection init could theoretically
+    fail without error.
+- Changes from version 2.63.2:
+  + Fix crash when handshake context is reset too late.
+  + Require GnuTLS 3.6.5.
+  + Build mock PKCS #11 module only for GnuTLS backend.
+  + Rework session resumption support for TLS 1.3.
+  + Run GnuTLS tests under TLS 1.2 in addition to TLS 1.3.
+  + Support OpenSSL 1.0.1.
+  + Drop rehandshake mode and protocol version fallback support.
+  + Add logging functions.
+  + Fix PKCS #11 tests with TLS 1.2.
+  + Add more debug logging for PKCS #11.
+  + Fix leak in GTlsCertificateGnutls finalizer.
+- Changes from version 2.63.1:
+  + Add support for new PKCS#11 APIs to facilitate use with
+    smartcards.
+  + Disable TLS 1.0 and TLS 1.1 when using GnuTLS.
+  + Fix threadsafety issue.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:08:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
