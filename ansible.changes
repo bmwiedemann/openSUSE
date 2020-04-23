@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 17 06:49:56 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.7 with many bug fixes,
+  especially for these security issues:
+  * CVE-2020-1733  - insecure temporary directory when running become_user from become directive
+  * CVE-2020-1735  - path injection on dest parameter in fetch module
+  * CVE-2020-1737  - Extract-Zip function in win_unzip module does not check extracted path
+  * CVE-2020-1739  - svn module leaks password when specified as a parameter
+  * CVE-2020-1740  - secrets readable after ansible-vault edit
+  * CVE-2020-1746  - information disclosure issue in ldap_attr and ldap_entry modules
+  * CVE-2020-1753  - kubectl connection plugin leaks sensitive information [1]
+  * CVE-2020-10684 - code injection when using ansible_facts as a subkey
+  * CVE-2020-10685 - modules which use files encrypted with vault are not properly cleaned up
+  * CVE-2020-10691 - archive traversal vulnerability in ansible-galaxy collection install [2]
+
+-------------------------------------------------------------------
 Mon Apr  6 20:45:04 UTC 2020 - lars@linux-schulserver.de - 2.9.6
 
 - create missing (empty) template and files directories for 
