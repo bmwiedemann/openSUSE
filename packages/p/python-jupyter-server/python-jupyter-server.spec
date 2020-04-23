@@ -51,8 +51,6 @@ BuildRequires:  %{python_module terminado >= 0.8.1}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
 BuildRequires:  pandoc
-BuildRequires:  python-ipaddress
-BuildRequires:  python-mock
 # /SECTION
 Requires:       jupyter-jupyter-server = %{version}
 Requires:       python-Jinja2

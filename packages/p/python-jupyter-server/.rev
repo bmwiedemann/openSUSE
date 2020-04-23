@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774938</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>884ec5e9045aa02ade48974af2567158</srcmd5>
+    <version>0.2.1</version>
+    <time>1587659869</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 deps from the spec</comment>
+    <requestid>796493</requestid>
+  </revision>
 </revisionlist>

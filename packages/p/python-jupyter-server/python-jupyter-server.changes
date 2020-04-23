@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:50:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 deps from the spec
+
+-------------------------------------------------------------------
 Wed Jan 15 15:25:43 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.2.1
