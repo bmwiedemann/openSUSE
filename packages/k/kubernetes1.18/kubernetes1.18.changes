@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:49:10 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.18.2:
+  * Fix GCE ILB for large clusters
+  * Restore the ability to `kubectl apply --prune` without -n flag
+  * Fix client watch reestablishment handling of client-side timeouts
+  * Fix priorityClass typo, add numeric priority to static pods
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.1
+  * Test dropped round-trip annotations in HPA conversion
+  * Drop round-trip annotations in HPA conversion
+  * Skip updating cache on pod update if the node was deleted
+
+-------------------------------------------------------------------
 Thu Apr 16 15:24:56 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - kubelet-common: conflict with other instances of kubelet-common and require kubernetes-kubelet%{baseversion} 

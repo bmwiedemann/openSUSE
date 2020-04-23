@@ -1,7 +1,7 @@
 #
-# spec file for package kubernetes
+# spec file for package kubernetes1.18
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define baseversion 1.18
 
 Name:           kubernetes%{baseversion}
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -53,12 +53,12 @@ BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
 # Kubernetes 1.17.0 requires at least go 1.13.4 (see changelog)
-BuildRequires:  golang(API) = 1.13
 BuildRequires:  go >= 1.13.4
-BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64
 
 %description
