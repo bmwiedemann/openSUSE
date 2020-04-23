@@ -28,6 +28,7 @@ URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
 BuildRequires:  %{python_module Cython} >= 0.23.5
 BuildRequires:  %{python_module Shapely}
+BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -35,23 +36,14 @@ BuildRequires:  fdupes
 BuildRequires:  proj
 BuildRequires:  proj-devel >= 6.2.0
 BuildRequires:  python-rpm-macros
+Requires:       python-aenum
 Requires:       python-numpy
-%if %{python3_version_nodots} < 36
-BuildRequires:  %{python_module aenum}
-Requires:       python-aenum
-%else
-BuildRequires:  python-aenum
-%ifpython2
-Requires:       python-aenum
-%endif
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module cov-core}
 BuildRequires:  %{python_module coverage} >= 4.0
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-
 %python_subpackages
 
 %description

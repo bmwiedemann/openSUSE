@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>786186</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>56618c5d4fa83272ab3ca4f92fc37ea3</srcmd5>
+    <version>2.6.0</version>
+    <time>1587659657</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify spec file</comment>
+    <requestid>796478</requestid>
+  </revision>
 </revisionlist>
