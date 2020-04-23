@@ -1,7 +1,7 @@
 #
 # spec file for package python-cli-helpers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-cli-helpers
 Version:        1.2.1
 Release:        0
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module tabulate >= 0.8.2}
 BuildRequires:  %{python_module terminaltables >= 3.0.0}
 BuildRequires:  %{python_module wcwidth}
-%ifpython2
+%if %{with python2}
 BuildRequires:  python2-backports.csv >= 1.0.0
 %endif
 # /SECTION
