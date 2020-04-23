@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           nautilus
-Version:        3.34.2
+Version:        3.36.1.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
 
-Source0:        https://download.gnome.org/sources/nautilus/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/3.36/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:16:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 27 18:30:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Fix check to not clear clipboard after each move/copy
+    operation.
+  + Ignore hidden directories in the templates folder.
+  + Honor umask when creating new files from templates.
+  + Fix endless content size calculations in properties dialog.
+
+-------------------------------------------------------------------
+Fri Mar  6 17:43:17 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 23:03:02 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.35.92:
+  + Fix crashes often happening when searching.
+  + Say "Trash is Empty" only in the root of trash folder.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:17:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91.1:
+  + Add support for hidden template files.
+  + Fix conflict dialog for google-drive.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:45:06 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Fix crashes after conflict dialog response.
+  + Add support for numeric keypad for zooming.
+  + Fix missing filename results when searching.
+  + Fix compilation on Wayland-only systems.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:18:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
