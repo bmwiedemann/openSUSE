@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar 15 13:22:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Use UTC time in note directory watcher.
+  + Use UTC time in file system sync server.
+  + Fix crash on lock file update.
+  + Handle Glib exceptions in sync thread.
+  + Ditch file monitor from gnote sync client (causes random
+    crashes and does seem to be of any use.
+  + Use now if date time is invalid, use UTC time for sync.
+  + Bump required Glibmm version to 2.62.
+  + Updated translations.
+- Bump base_version define to 3.36 following upstream changes.
+- Add gnote-rpmlintrc as source, and filter out rpmlint warning
+  about shlib-policy-missing-suffix. We do not split out this on
+  purpose in this case, as the lib is only for gnote itself, and as
+  such the split makes no sense nor add value. Following this, also
+  add filter for devel-file-in-non-devel-package, using the same
+  reasoning.
+
+-------------------------------------------------------------------
+Sun Mar  8 20:51:30 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.35.0:
+  + Required C++ standard is now C++14.
+  + Added 64-bit version D-Bus functions GetNoteCreateDateUnix and
+    GeNoteChangeDateUnix.
+  + Fix possible crash when removing tags.
+  + Updated translations.
+- Bump base_version define to 3.35 following upstream changes.
+
+-------------------------------------------------------------------
 Sun Mar  8 20:51:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:

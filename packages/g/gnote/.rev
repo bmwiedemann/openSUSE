@@ -527,4 +527,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>782741</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4b34611d96b64084434b6738a5bd14e0</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659409</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 794993 from iznogood)</comment>
+    <requestid>795149</requestid>
+  </revision>
 </revisionlist>

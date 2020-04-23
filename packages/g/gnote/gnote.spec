@@ -16,16 +16,17 @@
 #
 
 
-%define base_version 3.34
+%define base_version 3.36
 
 Name:           gnote
-Version:        3.34.2
+Version:        3.36.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
+Source99:       gnote-rpmlintrc
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -35,7 +36,7 @@ BuildRequires:  libboost_test-devel >= 1.5.1
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32
+BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
 BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.18
