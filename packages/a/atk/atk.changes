@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr  2 12:11:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.0:
+  + New API:
+    - Added ATK_ROLE_MARK and ATK_ROLE_SUGGESTION
+    - Add ATK_TEX_ATTR_TEXT_POSITION to the list of possible
+      AtkText attributes
+  + Documentation: Updated documentation for
+    atk_text_set_caret_offset
+  + Building - meson:
+    - Fix building atk as subproject
+    - Add Meson wrap file for GLib
+  + Building - visual studio: Use -utf-8 if available
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 20:10:07 CET 2020 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + AtkComponent, AtkImage, AtkText: Make sure returned values are
+    initialized to some known default value.
+  + AtkPlug: Add atk_plug_set_child.
+  + AtkSocket:
+    - Make AtkSocket get_extents return parent extents by default
+    - atk_socket_embed: make plug_id parameter const.
+    - Make AtkSocketClass (embed) use const for plug_id.
+  + AtkText: Make atk_text_rectangle_union ignore undefined
+    rectangles.
+  + Documentation:
+    - Refine *_scroll_to_point documentation.
+    - Refine AtkScrollType documentation.
+
+-------------------------------------------------------------------
 Thu Sep 12 12:30:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.34.1:
