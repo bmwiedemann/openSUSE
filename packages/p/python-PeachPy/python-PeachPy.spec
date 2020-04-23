@@ -1,7 +1,7 @@
 #
 # spec file for package python-PeachPy
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-PeachPy
-Version:        0.2.0
+Version:        0.2.0~pre.1583266105.f189ad2
 Release:        0
 Summary:        Portable Efficient Assembly Codegen in Higher-level Python
 License:        BSD-2-Clause
@@ -26,14 +27,20 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Maratyszcza/PeachPy
 Source0:        PeachPy-%{version}.tar.xz
 Patch1:         automated-convertion-form-2to3.patch
-BuildRequires:  %{python_module opcodes}
+BuildRequires:  %{python_module opcodes >= 0.3.13}
 BuildRequires:  %{python_module rednose}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 ExclusiveArch:  x86_64
-
+%ifpython2
+Requires:       python-enum34
+%endif
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 %python_subpackages
 
 %description
@@ -55,7 +62,7 @@ PEACH-Py features:
 
 %prep
 %setup -q -n PeachPy-%{version}
-%autopatch -p1 
+%autopatch -p1
 
 %build
 %python_build
@@ -67,9 +74,9 @@ PEACH-Py features:
 %check
 # we use the local build install for the nosetests
 sed -i '/no-path-adjustment=1/d' setup.cfg
-%python_expand nosetests-%{$python_bin_suffix}
+%python_expand nosetests-%{$python_bin_suffix} -v
 
-%files %python_files
+%files %{python_files}
 %doc README.rst
 %license LICENSE.rst
 %{python_sitelib}/*
