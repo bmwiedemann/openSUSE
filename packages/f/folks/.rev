@@ -394,4 +394,12 @@
     <comment></comment>
     <requestid>766580</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4c0a8b95dff87dee4a41e2ee1f78eb75</srcmd5>
+    <version>0.14.0</version>
+    <time>1587659168</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795020 from iznogood)</comment>
+    <requestid>795176</requestid>
+  </revision>
 </revisionlist>

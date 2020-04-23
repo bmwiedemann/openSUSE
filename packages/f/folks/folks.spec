@@ -17,22 +17,21 @@
 
 
 %define soversion      25
-%define module_version 45
+%define module_version 46
 %define with_zeitgeist  0
 Name:           folks
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
-Source:         https://download.gnome.org/sources/folks/0.13/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM folks-meson-0.53.patch dimstar@opensuse.org -- https://gitlab.gnome.org/GNOME/folks/issues/119
-Patch0:         folks-meson-0.53.patch
+Source:         https://download.gnome.org/sources/folks/0.14/%{name}-%{version}.tar.xz
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
+BuildRequires:  python3-dbusmock
 BuildRequires:  readline-devel
 BuildRequires:  vala >= 0.22.0.28
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig(tracker-sparql-2.0)
 %if %{with_zeitgeist}
 BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.14
 %endif
+Requires:       python3-dbusmock
 
 %description
 libfolks is a library that aggregates people from multiple sources (e.g.
@@ -57,19 +57,21 @@ Summary:        Library to create metacontacts from multiple sources
 # To make lang package installable
 # We assume that future -data packages remain backwards compatible
 Group:          System/Libraries
-Requires:       libfolks-data >= %{version}
+Requires:       folks-data >= %{version}
 Provides:       %{name} = %{version}
 
 %description -n libfolks%{soversion}
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
-%package -n libfolks-data
+%package data
 Summary:        Data files for libfolks, a library to create metacontacts from many sources
 Group:          System/Libraries
 %glib2_gsettings_schema_requires
+Obsoletes:      libfolks-data < %{version}
+Provides:       libfolks-data = %{version}
 
-%description -n libfolks-data
+%description data
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
@@ -155,7 +157,7 @@ This package provides tools based on libfolks, like an importer for Pidgin
 metacontacts.
 
 %package devel
-Summary:        Development files for libfolks, a library to create metacontacts from many sources
+Summary:        Development files for libfolks
 Group:          Development/Libraries/GNOME
 Requires:       libfolks%{soversion} = %{version}
 Requires:       libfolks-eds%{soversion} = %{version}
@@ -169,6 +171,8 @@ Requires:       typelib-1_0-FolksTracker-0_6 = %{version}
 %description devel
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
+
+This package provides the development files.
 
 %lang_package
 
@@ -188,6 +192,10 @@ Telepathy connection managers) to create metacontacts.
 %install
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# We don't need the gconf -> gsettings convesion tool anymore
+# it was not installed in the previous versions and did not
+# cause bug reports.
+rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %find_lang folks %{?no_lang_C}
 
 %post -n libfolks%{soversion} -p /sbin/ldconfig
@@ -215,7 +223,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/folks/%{module_version}/backends/key-file/
 %{_libdir}/folks/%{module_version}/backends/ofono/
 
-%files -n libfolks-data
+%files data
 %{_datadir}/glib-2.0/schemas/org.freedesktop.folks.gschema.xml
 
 %files -n typelib-1_0-Folks-0_6
