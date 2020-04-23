@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:08:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove py2 deps as the package is py3 only
+
+-------------------------------------------------------------------
 Sun Mar  8 19:04:45 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.12.0:

@@ -33,7 +33,6 @@ BuildRequires:  %{python_module scikit-learn >= 0.17.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-futures
 Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
@@ -63,11 +62,6 @@ BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.7.4}
 BuildRequires:  %{python_module tornado >= 4.5.1}
 BuildRequires:  %{python_module zict >= 0.1.3}
-BuildRequires:  python2-mock
-%endif
-%ifpython2
-Requires:       python-futures
-Requires:       python-singledispatch
 %endif
 %python_subpackages
 
