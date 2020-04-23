@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Fri Mar 27 20:46:10 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.60.1:
+  * widget: Emit the ::commit signal even when the terminal has no
+    PTY.
+  * bindings: gir: Fix VtePty.
+  * vte.csh: Fix the behavior if VTE_VERSION is undefined.
+
+-------------------------------------------------------------------
+Fri Mar 06 10:13:33 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.60.0:
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 29 20:11:07 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.59.92:
+  * app: Add option to disable scrollbar.
+  * build: systemd: Add option to disable systemd support.
+  * draw:
+    - Enable unicode 13 legacy terminal characters.
+    - Add extra define for separated mosaic drawing.
+  * emulation: Remove 'separated mosaic' SGR.
+  * lib: Use g_propagate_error here.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 15 23:09:28 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.59.91:
+  * pty:
+    - Reduce wait-for-EOS time to 2 seconds
+    - Document VTE_SPAWN_NO_PARENT_ENVV
+    - Fix indefinite wait for EOS after child-exited
+    - Add debug output for when EOS happens
+    - Cleanup session creation
+    - Add more error checking
+    - Start new session before opening the PTY peer
+    - Separate PTY code from its GObject wrapper
+    - Set size on creation
+  * build:
+    - Fix libsystemd req version
+    - Suppress warnings about ignored returned value
+    - Remove unncessary feature test
+    - Remove unnecessary feature test for functions
+    - Add configure switch to disable a11y code
+    - Ensure LTO is off
+    - Add option to disable -Bsymbolic-functions
+    - Add no-exceptions sanity check
+  * systemd:
+    - Put child process into the parent's slice
+    - Install config drop-in for vte-spawn-.scope
+    - Add systemd support
+  * lib:
+    - Add smart pointer for g_free()able things
+    - Add missing noexcept
+    - Use Timer class for mouse autoscroll timer
+    - Use Timer class for text blink timer
+    - Use Timer class for cursor blink timer
+    - Add convenience class for timeouts
+    - Add GError convenience class
+    - Add missing files
+    - Rework child exit and EOF handling
+    - Use ICU for legacy charset support
+    - Typo fix
+    - Remove GIOChannel use
+  * emulation:
+    - Remove support for obsolete charset
+    - Remove support for window control sequences
+    - Report fixed origin for CSI 13 t
+    - Maintain cursor column during screen switch
+    - Ignore delete/insert line outside the scroll region
+    - Fix vertical cursor movememnt outside the scroll region
+  * vte.sh:
+    - Add vte.csh, a tcsh counterpart of vte.sh
+    - Use the vte-urlencode utility
+    - Remove the obsolete __vte_ps1 function
+  * prompt:
+    - Add a test for the vte-urlencode-cwd utility
+    - Add a vte-urlencode-cwd utility
+  * widget:
+    - Set terminal input purpose
+    - Finish deprecation of GRegex taking APIs
+    - Add missing (nullable) annotations
+    - Emit EOF signal from idle handler
+    - Fix crash using nullptr for word char exceptions
+    - Move some calls to Widget constructor
+    - Move scrollable adjustments up to Widget
+    - Deprecate vte_terminal_feed_child_binary
+  * regex:
+    - Use string_view and optional
+    - Use string_view
+  * parser:
+    - Small documentation addition
+    - Make unused command a NOP
+  * draw:
+    - Fix unused function warning
+    - Use functions instead of macros
+    - Make some data static and shrink it
+    - Narrow the range of characters in the U+1FBxx block
+    - Implement U+1FBAF
+    - Improve diagnoals drawing
+    - Make new diagonal characters align better with box drawings
+    - Use binary notation for some constants
+    - Change checkboard pattern
+    - Implement hatching pattern characters U+1FB98 and U+1FB99
+    - Implement separated mosaic graphics
+    - Add manual drawing for new legacy terminal unicode characters
+    - Fix reporting the dimensions of locally drawn graphic
+      characters
+  * terminal:
+    - Don't append data to sealed chunks
+    - Use smart pointer
+    - Use string_view
+    - Skip commit signal emission when there are no handlers
+    - Remove some incorrect doc comments
+    - Remove redundant function
+    - Use an enum class for selection type
+    - Move enums used in only one file into it
+    - Use an enum class for mouse tracking mode
+    - Remove unused enum
+    - Remove double-initialisation
+    - Use an enum class for erase bindings
+    - Store word chars exceptions string in Widget
+    - Use an enum class for text blink mode
+    - Use an enum class for cursor shape
+    - Use an enum class for cursor blink mode
+    - Use an enum class for cursor style
+    - Move some initialisations to the class
+    - Remove extraneous fcntl
+  * introspection: Fix signedness in vte_terminal_feed_child's
+    annotation.
+  * test:
+    - Add some more explanation to the UTF-8-test.txt file
+    - Document the changes made to UTF-8-test.txt
+    - Add UTF-8 test
+  * git: Diff *.txt files as text
+  * debug: Handle all enum values in switch
+  * spawn: Warn if G_SPAWN_LEAVE_DESCRIPTORS_OPEN is passed
+  * fixup pty gobject
+  * Updated translations.
+- Add pkgconfig(libsystemd) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Feb 12 16:38:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.59.0:
+  * emulation:
+    - Ensure the cursor remains onscreen when moving down.
+    - Make DEC alternate charset convert underscore to space.
+    - Remove SRM support.
+    - Remove urxvt mouse extension support.
+  * lib: Rework how vte stores the match and search regexes.
+  * pty: Fix error check for ioctl(TIOCGPTPEER) failure.
+  * regex: Add missing noexcept.
+  * regex: Make regex a C++ class.
+  * ring: Fix an incorrect assertion.
+  * ring: Tiny code cleanup: maintain GString integrity.
+  * spawn: Port fdwalk improvements from glib.
+  * widget: Deprecate vte_terminal_[sg]et_allow_bold().
+  * widget: Don't scroll to bottom on keystroke in read-only mode.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
