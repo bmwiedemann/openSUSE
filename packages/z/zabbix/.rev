@@ -39,4 +39,35 @@
     <comment></comment>
     <requestid>759169</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5565d1f72330fcf9abe6fc21a512ec35</srcmd5>
+    <version>4.0.19</version>
+    <time>1587659979</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest release 4.0.19
+- replaced URL for source downloads to zabbix CDN network location
+- New Features and improvements
+  + ZBXNEXT-5649 Added name referencing support ('~' suffix) to jsonpath
+  + ZBXNEXT-3604 Added support of user configurable ciphers for communication between zabbix components 
+- Bug Fixes
+  + ZBX-17173 Improved windows agent build scripts
+  + ZBX-17425 Fixed template.massupdate api macros update
+  + ZBX-17344 Fixed php 7.4 errors in latest data-&gt;history page for text and
+    log items having an empty filter
+  + ZBX-17330 Fixed error reading vmware events with keys over 2^31
+  + ZBX-17288 Fixed undefined indexes in administration-&gt;regular expressions-&gt;test tab
+  + ZBX-17350 Fixed displaying of multiple value types in latest data-&gt;history page
+  + ZBX-16802 Added mtime-reread/mtime-noreread options parameter to log* keys
+  + ZBX-17390 Fixed validation of the maximum selected period
+  + ZBX-17185 Fixed non-disappearing messages of failed login attempts
+  + ZBX-17322 Fixed deadlock between server and frontend when updating multiple hosts
+  + ZBX-9057 Fixed duplicate entries being written into in profiles table
+  + ZBX-17159 Fixed overlay dialogue instantiation
+  + ZBX-17108 Improved process utilization calculation
+  + ZBX-17269 Fixed undefined indexes in history page
+  + ZBX-17342 Dump memory statistics and items with most values when value cache is fully used
+  + ZBX-16926 Fix int_max error when compiling on sunos/joyent/solaris
+</comment>
+    <requestid>796542</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.16
+Version:        4.0.19
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://www.zabbix.com
-Source0:        https://sourceforge.net/projects/zabbix/files/ZABBIX%%20Latest%%20Stable/%{version}/zabbix-%{version}.tar.gz
+Source0:        https://cdn.zabbix.com/stable/%{version}/zabbix-%{version}.tar.gz
 Source1:        rn4.0.0.html
 Source2:        zabbix-tmpfiles.conf
 Source3:        zabbix-java-gateway.sh
