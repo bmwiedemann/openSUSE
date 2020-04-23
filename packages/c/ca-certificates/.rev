@@ -378,4 +378,12 @@
 - no longer require openssl, it's all done by p11-kit</comment>
     <requestid>777924</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>d60072123fdc633cdbdd69017c53ae11</srcmd5>
+    <version>2+git20200129.d1a437d</version>
+    <time>1587659360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796051</requestid>
+  </revision>
 </revisionlist>
