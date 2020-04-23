@@ -1001,7 +1001,7 @@ unsorted:
   - babelstone-ogham-fonts 
   - babelstone-phags-pa-fonts 
   - babelstone-runic-fonts 
-  - babeltrace: [i586] 
+  - babeltrace 
   - babeltrace-devel 
   - babeltrace2 
   - babeltrace2-devel 
@@ -1151,6 +1151,8 @@ unsorted:
   - blas-devel-static 
   - blas-man 
   - blasphemer 
+  - bleachbit 
+  - bleachbit-lang 
   - blender 
   - blender-cycles-devel: [x86_64] 
   - blender-lang 
@@ -1340,7 +1342,7 @@ unsorted:
   - bumpversion 
   - busybox 
   - busybox-container 
-  - busybox-k8s-yaml: [i586] 
+  - busybox-k8s-yaml 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1542,6 +1544,7 @@ unsorted:
   - celt051-devel 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
+  - ceph-common: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
@@ -1568,7 +1571,7 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certmonger 
-  - certstrap: [i586] 
+  - certstrap 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -1635,9 +1638,10 @@ unsorted:
   - cifs-utils-devel 
   - cilium: [x86_64] 
   - cilium-cni: [x86_64] 
-  - cilium-devel: [x86_64] # devel package of opensuse_kubic:cilium-k8s-yaml 
+  - cilium-devel: [x86_64] 
   - cilium-docker: [x86_64] 
   - cilium-etcd-operator 
+  - cilium-k8s-yaml: [x86_64] 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cimple 
@@ -1898,7 +1902,7 @@ unsorted:
   - containerd-ctr 
   - containerd-kubic 
   - containerd-kubic-ctr 
-  - containers-systemd 
+  - containers-systemd: [i586] 
   - containment-rpm-docker 
   - contractor 
   - converseen 
@@ -1982,7 +1986,7 @@ unsorted:
   - crazydiskinfo 
   - creduce 
   - cri-tools: [i586] 
-  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
   - criu-devel: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -2794,6 +2798,7 @@ unsorted:
   - etc-update 
   - etcd: [x86_64] 
   - etcd-for-k8s-image: [x86_64] 
+  - etcdctl: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -3108,7 +3113,7 @@ unsorted:
   - flameshot-bash-completion 
   - flann-devel 
   - flannel 
-  - flannel-k8s-yaml: [i586] 
+  - flannel-k8s-yaml 
   - flare 
   - flare-game 
   - flarq 
@@ -4621,6 +4626,8 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
+  - gnome-dvb-daemon 
+  - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
   - gnome-firmware 
   - gnome-firmware-lang 
@@ -5117,7 +5124,9 @@ unsorted:
   - gtick 
   - gtick-lang 
   - gtk-doc 
-  - gtk-doc-lang 
+  - gtk-doc-manual 
+  - gtk-doc-manual-lang 
+  - gtk-doc-mkpdf 
   - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
@@ -5249,10 +5258,12 @@ unsorted:
   - gtkspell-devel 
   - gtkspell-doc 
   - gtkspell3-devel 
+  - gtkspell3-lang 
   - gtkwave 
   - gtkwave-doc 
   - gtkwave-examples 
   - gtranslator 
+  - gtranslator-doc 
   - gtranslator-lang 
   - gts 
   - gts-devel 
@@ -5456,7 +5467,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-plugins-caasp 
-  - health-checker-plugins-kubic: [i586] 
+  - health-checker-plugins-kubic 
   - health-checker-testing 
   - heapster 
   - heaptrack-devel 
@@ -5466,6 +5477,7 @@ unsorted:
   - heimdall-frontend 
   - hello 
   - hello-kubic: [x86_64] 
+  - hello-kubic-k8s-yaml: [x86_64] 
   - hello-lang 
   - helm: [i586] 
   - helm-mirror 
@@ -6466,7 +6478,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
+  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -6953,14 +6965,17 @@ unsorted:
   - ktp-send-file-lang 
   - ktp-text-ui 
   - ktp-text-ui-lang 
-  - kube-prometheus-k8s-yaml: [i586] 
+  - kube-prometheus-k8s-yaml 
   - kube-prometheus-sources 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
+  - kubernetes-client: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
   - kubernetes-dashboard: [x86_64] 
   - kubernetes-dns 
+  - kubernetes-kubeadm: [x86_64] 
+  - kubernetes-kubelet: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -6977,11 +6992,14 @@ unsorted:
   - kubernetes1.17-proxy: [x86_64] 
   - kubernetes1.17-scheduler: [x86_64] 
   - kubernetes1.18-apiserver: [x86_64] 
+  - kubernetes1.18-client: [x86_64] 
   - kubernetes1.18-controller-manager: [x86_64] 
   - kubernetes1.18-proxy: [x86_64] 
   - kubernetes1.18-scheduler: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
+  - kubicctl: [x86_64] 
+  - kubicd: [x86_64] 
   - kuiviewer 
   - kuiviewer-lang 
   - kunitconversion-devel 
@@ -6990,11 +7008,12 @@ unsorted:
   - kup-server 
   - kupfer 
   - kured 
-  - kured-k8s-yaml: [i586] 
+  - kured-k8s-yaml 
   - kurso-de-esperanto 
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
+  - kustomize: [x86_64] 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -8481,6 +8500,7 @@ unsorted:
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
   - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs2: [x86_64] 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -9219,11 +9239,12 @@ unsorted:
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
   - libgbm1-32bit: [x86_64] 
-  - libgcalc-1-0_0_0 
+  - libgcalc-2-1_0_1 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgcc_s1-gcc9 
   - libgcc_s1-gcc9-32bit: [x86_64] 
+  - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
   - libgck-devel 
@@ -9310,8 +9331,8 @@ unsorted:
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
   - libgiomm-2_4-1-32bit: [x86_64] 
-  - libgiomm-2_62-1 
-  - libgiomm-2_62-1-32bit: [x86_64] 
+  - libgiomm-2_66-1 
+  - libgiomm-2_66-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2-28-32bit: [x86_64] 
@@ -9330,8 +9351,8 @@ unsorted:
   - libglfw2 
   - libglfw3 
   - libglibmm-2_4-1-32bit: [x86_64] 
-  - libglibmm-2_62-1 
-  - libglibmm-2_62-1-32bit: [x86_64] 
+  - libglibmm-2_66-1 
+  - libglibmm-2_66-1-32bit: [x86_64] 
   - libglog0 
   - libglom-1_32-0 
   - libglom-devel 
@@ -9359,7 +9380,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_5 
-  - libgnome-desktop-3-18-32bit: [x86_64] 
+  - libgnome-desktop-3-19-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
@@ -9495,6 +9516,7 @@ unsorted:
   - libgstriff-1_0-0-32bit: [x86_64] 
   - libgstrtp-1_0-0-32bit: [x86_64] 
   - libgstrtsp-1_0-0-32bit: [x86_64] 
+  - libgstrtspserver-1_0-0 
   - libgstsctp-1_0-0-32bit: [x86_64] 
   - libgstsdp-1_0-0-32bit: [x86_64] 
   - libgsttag-1_0-0-32bit: [x86_64] 
@@ -9526,6 +9548,7 @@ unsorted:
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-4_0-0 
+  - libgtkspell3-3-0 
   - libgtop 
   - libgtop-2_0-11-32bit: [x86_64] 
   - libgtop-devel 
@@ -10398,7 +10421,6 @@ unsorted:
   - libmozjs-38 
   - libmozjs-38-32bit: [x86_64] 
   - libmozjs-52 
-  - libmozjs-68 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -10641,7 +10663,7 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0: [i586] 
+  - liboath0 
   - liboauth-devel 
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
@@ -11007,7 +11029,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo29 
+  - libplacebo43 
   - libplank1 
   - libplayerctl2 
   - libplib0 
@@ -11068,7 +11090,6 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler98-32bit: [x86_64] 
   - libportal-devel 
-  - libportal0 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi0 
@@ -11391,6 +11412,7 @@ unsorted:
   - librados-devel: [x86_64] # devel package of dvd:librbd1 
   - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libradosstriper-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradosstriper1: [x86_64] 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -11639,6 +11661,7 @@ unsorted:
   - librevenge-generators-0_0-0 
   - librfxencode0 
   - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -11832,6 +11855,8 @@ unsorted:
   - libskk0 
   - libskk0-32bit: [x86_64] 
   - libslang2-32bit: [x86_64] 
+  - libslirp-devel 
+  - libslirp0: [i586] 
   - libslopy7_4 
   - libslurm35: [x86_64] 
   - libsmartcols-devel 
@@ -12113,7 +12138,6 @@ unsorted:
   - libtensorflow_framework2: [x86_64] 
   - libtensorflow_framework2-gnu-hpc: [x86_64] 
   - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
-  - libtepl-4-0 
   - libteredo5 
   - libtermkey-devel 
   - libtermkey1 
@@ -12240,7 +12264,6 @@ unsorted:
   - libubsan1-gcc9 
   - libubsan1-gcc9-32bit: [x86_64] 
   - libuchardet-devel 
-  - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
   - libucm-devel: [x86_64] 
@@ -12368,9 +12391,9 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_46-devel 
-  - libvaladoc-0_46-0 
-  - libvaladoc-0_46-devel 
+  - libvala-0_48-devel 
+  - libvaladoc-0_48-0 
+  - libvaladoc-0_48-devel 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
@@ -13843,6 +13866,7 @@ unsorted:
   - metacity-theme-plata 
   - metacity-tools 
   - metallb-controller: [x86_64] 
+  - metallb-k8s-yaml: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
   - metamath-book 
@@ -14879,7 +14903,7 @@ unsorted:
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml: [i586] 
+  - nfs-client-provisioner-k8s-yaml 
   - nfs-ganesha: [x86_64] 
   - nfs-ganesha-ceph: [x86_64] 
   - nfs-ganesha-mount-9P: [x86_64] 
@@ -15234,7 +15258,7 @@ unsorted:
   - o2scl-doc 
   - oaml-devel 
   - oath-toolkit 
-  - oath-toolkit-xml: [i586] 
+  - oath-toolkit-xml 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -16208,6 +16232,9 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
+  - patterns-containers-kubeadm: [x86_64] 
+  - patterns-containers-kubic_admin: [x86_64] 
+  - patterns-containers-kubic_worker: [x86_64] 
   - patterns-desktop-books 
   - patterns-desktop-technical_writing 
   - patterns-devel-base-devel_basis-32bit 
@@ -16394,8 +16421,8 @@ unsorted:
   - pdns-backend-geoip 
   - pdns-backend-godbc 
   - pdns-backend-ldap 
+  - pdns-backend-lmdb 
   - pdns-backend-lua 
-  - pdns-backend-mydns 
   - pdns-backend-mysql 
   - pdns-backend-postgresql 
   - pdns-backend-remote 
@@ -18141,7 +18168,6 @@ unsorted:
   - pythia-devel 
   - pythia-doc 
   - python-32bit: [x86_64] 
-  - python-Cheetah 
   - python-Genshi-doc 
   - python-Hamlib 
   - python-Jinja2-vim 
@@ -18209,6 +18235,7 @@ unsorted:
   - python-gdbm 
   - python-gevent-doc 
   - python-glanceclient-doc 
+  - python-gnome-dvb-daemon 
   - python-gobject-common-devel 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
@@ -18348,7 +18375,6 @@ unsorted:
   - python-typeshed 
   - python-vips 
   - python-volatility 
-  - python-weakrefmethod 
   - python-xml 
   - python-yui 
   - python-zope.deprecation-doc 
@@ -18361,13 +18387,10 @@ unsorted:
   - python2-FontTools 
   - python2-Glances 
   - python2-LEPL 
-  - python2-PeachPy: [x86_64] 
   - python2-PyExecJS 
   - python2-QR-Code-generator 
-  - python2-QtAwesome 
   - python2-ZODB 
   - python2-aexpect 
-  - python2-aniso8601 
   - python2-antlr 
   - python2-apicapi 
   - python2-appindicator 
@@ -18377,19 +18400,14 @@ unsorted:
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
   - python2-bcolz 
-  - python2-bokeh 
   - python2-boost_parallel_mpi1_71_0 
   - python2-braille 
   - python2-capng 
   - python2-cfn-lint 
-  - python2-ciscoconfparse 
-  - python2-cli-helpers 
   - python2-click-aliases 
   - python2-click-didyoumean 
-  - python2-click-threading 
   - python2-clustershell 
   - python2-cram 
-  - python2-curtsies 
   - python2-daemonize 
   - python2-deltarpm 
   - python2-efilter 
@@ -18407,9 +18425,7 @@ unsorted:
   - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
-  - python2-hyper 
   - python2-inspect2 
-  - python2-jsonextended 
   - python2-jsonrpclib-pelix 
   - python2-jupyter-packaging 
   - python2-keyrings.alt 
@@ -18451,7 +18467,6 @@ unsorted:
   - python2-net-snmp 
   - python2-newt 
   - python2-num2words 
-  - python2-oci-sdk 
   - python2-opencensus-ext-threading 
   - python2-opencv 
   - python2-opencv3 
@@ -18478,16 +18493,11 @@ unsorted:
   - python2-python-dotenv 
   - python2-raet 
   - python2-sanlock 
-  - python2-scspell3k 
   - python2-setuptools 
   - python2-shutilwhich 
-  - python2-snakefood 
-  - python2-social-auth-core 
-  - python2-sphinxcontrib-plantuml 
   - python2-subliminal 
   - python2-suds-jurko 
   - python2-sushy 
-  - python2-tagpy 
   - python2-tooz 
   - python2-tox-wheel 
   - python2-ucsmsdk 
@@ -18603,7 +18613,7 @@ unsorted:
   - python3-Pebble 
   - python3-Pillow-tk 
   - python3-Pint 
-  - python3-PrettyTable: [i586] 
+  - python3-PrettyTable 
   - python3-Protego 
   - python3-PsyLab 
   - python3-PsychoPy 
@@ -19109,6 +19119,9 @@ unsorted:
   - python3-celery 
   - python3-celery-batches 
   - python3-celerymon 
+  - python3-ceph-argparse: [x86_64] 
+  - python3-ceph-common: [x86_64] 
+  - python3-cephfs: [x86_64] 
   - python3-cerealizer 
   - python3-certbot 
   - python3-certbot-apache 
@@ -20717,6 +20730,7 @@ unsorted:
   - python3-queuelib 
   - python3-quicktions 
   - python3-radon 
+  - python3-rados: [x86_64] 
   - python3-raet 
   - python3-random2 
   - python3-rarfile 
@@ -20725,6 +20739,7 @@ unsorted:
   - python3-raven 
   - python3-raven-aiohttp 
   - python3-rawkit 
+  - python3-rbd: [x86_64] 
   - python3-rcssmin 
   - python3-rdflib 
   - python3-readme_renderer 
@@ -20776,6 +20791,7 @@ unsorted:
   - python3-rfc3986 
   - python3-rfc3987 
   - python3-rfc6555 
+  - python3-rgw: [x86_64] 
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
@@ -20987,7 +21003,6 @@ unsorted:
   - python3-tables 
   - python3-tablib 
   - python3-tabulate 
-  - python3-tagpy 
   - python3-talloc-32bit: [x86_64] 
   - python3-talloc-devel 
   - python3-tap.py 
@@ -21660,6 +21675,7 @@ unsorted:
   - rook: [x86_64] 
   - rook-ceph-helm-charts: [x86_64] 
   - rook-integration: [x86_64] 
+  - rook-k8s-yaml: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
   - rosegarden 
@@ -22558,7 +22574,7 @@ unsorted:
   - salt-proxy 
   - salt-shaptools 
   - salt-ssh 
-  - salt-standalone-formulas-configuration: [i586] 
+  - salt-standalone-formulas-configuration 
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
@@ -23574,7 +23590,6 @@ unsorted:
   - tensorflow_1_15_2-gnu-hpc-devel: [x86_64] 
   - tensorflow_1_15_2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow_1_15_2-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tepl-4-lang 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
@@ -31064,6 +31079,7 @@ unsorted:
   - torsocks 
   - totem-devel 
   - totem-pl-parser-devel 
+  - totem-plugin-gnome-dvb-daemon 
   - touchegg 
   - touchegg-gui 
   - tpm-quote-tools 
@@ -31347,7 +31363,6 @@ unsorted:
   - typelib-1_0-GooCanvas-2_0 
   - typelib-1_0-Govf-0_1 
   - typelib-1_0-Granite-1_0 
-  - typelib-1_0-Graphene-1_0 
   - typelib-1_0-GrlNet-0_3 
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Grss-0_7 
@@ -31926,6 +31941,7 @@ unsorted:
   - wcslib-doc 
   - wcslib-tools 
   - wdm 
+  - weave-k8s-yaml: [x86_64] 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -32571,7 +32587,7 @@ unsorted:
   - ykclient 
   - ykpers 
   - yodl 
-  - yomi-formula: [i586] 
+  - yomi-formula 
   - you-get 
   - you-get-bash-completion 
   - you-get-fish-completion 
