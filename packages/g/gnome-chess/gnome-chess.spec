@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-chess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-chess
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        https://download.gnome.org/sources/gnome-chess/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-chess/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (3.27.2).
