@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:00:28 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Mark header and config packages 'noarch' (boo#1170259).
+- Add a bit of QA: include a %check stage.
+
+-------------------------------------------------------------------
 Wed Apr  8 12:35:30 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Create separate plugins package. Since libpmix2 obtains its

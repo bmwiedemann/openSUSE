@@ -91,6 +91,7 @@ aware applications.
 %package headers
 Summary:        Process Management Interface for MPI
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 
 %description headers
 This Package contains necessary the headers for PMI-X.
@@ -100,6 +101,7 @@ Summary:        Settings for the Module Component Architecure
 Group:          Development/Libraries/C and C++
 Provides:       pmix-runtime-config = %{version}
 Conflicts:      otherproviders(pmix-runtime-config)
+BuildArch:      noarch
 
 %description -n pmix-mca-params
 PMIX is part of the Module Component Architecure and needs so to have its
@@ -115,6 +117,8 @@ parameters configured.
   --with-munge \
   --with-devel-headers \
   --disable-pmi-backward-compatibility \
+  --enable-pmix-binaries \
+  --with-tests-examples \
 %ifarch x86_64
   --with-psm2 \
 %endif
@@ -127,6 +131,9 @@ make %{?_smp_mflags}
 # removed static libaries
 rm -v %{buildroot}/%{_libdir}/*.la %{buildroot}/%{_libdir}/pmix/*.la
 %fdupes %{buildroot}/%{_datadir} 
+
+%check
+make check
 
 %post -n libpmix2 -p /sbin/ldconfig
 %postun -n libpmix2 -p /sbin/ldconfig
