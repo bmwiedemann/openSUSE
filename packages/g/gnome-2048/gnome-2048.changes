@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:34:09 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 08:55:14 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Updated translations.
+- Changes from version 3.35.2:
+  + Some command-line options were added: the usual “--version”,
+    “--size” to start a new game of a given size (the exact
+    behavior might change) and “--cli” for playing in a terminal.
+  + The game window has been allowed to be resized to a phone
+    screen, even if more work is needed.
+
+-------------------------------------------------------------------
 Fri Feb 14 08:55:13 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.5:
