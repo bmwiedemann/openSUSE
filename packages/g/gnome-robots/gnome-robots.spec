@@ -17,13 +17,13 @@
 
 
 Name:           gnome-robots
-Version:        3.34.1
+Version:        3.36.1
 Release:        0
 Summary:        Robots Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Robots
-Source0:        https://download.gnome.org/sources/gnome-robots/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-robots/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gnome-games-scripts
