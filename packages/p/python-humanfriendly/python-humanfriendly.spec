@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanfriendly%{psuffix}
 Version:        8.1
@@ -47,7 +48,9 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 BuildRequires:  %{pythons}
+%if %{with python2}
 BuildRequires:  python2-monotonic
+%endif
 %endif
 %ifpython2
 Requires:       python-monotonic
