@@ -1,7 +1,7 @@
 #
 # spec file for package python-aniso8601
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname aniso8601
+%bcond_without python2
 Name:           python-%{modname}
 Version:        8.0.0
 Release:        0
@@ -29,7 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/a/aniso8601/%{mod
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+%if %{with python2}
 BuildRequires:  python-mock
+%endif
 BuildRequires:  python-rpm-macros
 Recommends:     python-python-dateutil
 BuildArch:      noarch
