@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:15:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Feb 20 11:25:43 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.

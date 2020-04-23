@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-configargparse
 Version:        1.0
 Release:        0
@@ -31,11 +32,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-devel
-BuildRequires:  python2-unittest2
 Requires:       python-PyYAML
 Requires:       python-setuptools
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python2-devel
+BuildRequires:  python2-unittest2
+%endif
 %python_subpackages
 
 %description
