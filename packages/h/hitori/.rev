@@ -190,4 +190,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767181 from dimstar)</comment>
     <requestid>767444</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>132e3a69cb83e6d7b2466c8a67aff7d9</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659504</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795080 from iznogood)</comment>
+    <requestid>795229</requestid>
+  </revision>
 </revisionlist>
