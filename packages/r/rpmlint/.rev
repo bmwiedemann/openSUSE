@@ -2977,4 +2977,12 @@ will self heal once rpmlint-mini is rebuild
   * Mention upstream repo in README (forwarded request 790149 from mgerstner)</comment>
     <requestid>790150</requestid>
   </revision>
+  <revision rev="333" vrev="22">
+    <srcmd5>b10d58ee9813121f50348cf3eb086598</srcmd5>
+    <version>1.11</version>
+    <time>1587659089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794612</requestid>
+  </revision>
 </revisionlist>
