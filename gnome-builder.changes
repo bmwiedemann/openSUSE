@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Mar  8 20:13:02 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Support alt+left and mouse back button within greeter window.
+  + Improvements to symbol selection and activation in editor frame.
+  + Rust template improvements.
+  + Support for snippets in LSP protocol.
+  + Improvements to Vala language server integration.
+  + Cargo build system improvements.
+  + Updated translations.
+- Drop gnome-builder-plugin-vala-pack Recommends: The sub-package
+  does not exist anymore.
+
+-------------------------------------------------------------------
+Thu Feb 20 10:16:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Updated list of newcomers projects.
+  + Various i18n improvements for more complete translations.
+  + Many improvements in Language Server Protocol support.
+  + Vala support is now provided from GVls instead of an internal
+    plugin.
+  + Remove RUSTFLAGS overrides from Cargo integration.
+  + Added an update-manager plugin to track flatpak update
+    availability.
+  + Robustness fixes when running on non-local file systems.
+  + Improvements to shortcuts including Glade integration.
+  + Improvements to meson plugins.
+  + A new copyright plugin that can update copyright years in
+    headers.
+  + Detection of CFLAGS and CXXFLAGS environment variables when
+    using Makefile has been fixed.
+  + Jedi improvements.
+  + Go language server is not set to use the upstream "gopls".
+  + Updated translations.
+- Add pkgconfig(libportal) BuildRequires: new dependency.
+- Drop gnome-builder-plugin-vala-pack subpackage and obsolete it
+  from the main package: the plugin is no longer built by default.
+
+-------------------------------------------------------------------
+Wed Feb 12 21:41:13 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.3:
+  + Many bug fixes and build system improvements.
+  + Updated URLs for flatpak.
+  + Performance improvement for default sourceview styles.
+  + Ensure access to document portals.
+  + Many improvements to language server protocol support.
+  + VTE is now bundled in flatpak builds.
+  + Single click support for hyperlinks in build terminals.
+  + Improvements to "find other file" for similar file types.
+  + Tweak styling for command bar and search button.
+  + Add close button to search bar.
+  + Podman improvements.
+  + Markdown improvements.
+  + A new stylelint plugin was added.
+- Drop gnome-builder-meson-fixes.patch: fixed upstream.
+- Bump basever to 3.35.
+
+-------------------------------------------------------------------
 Fri Feb  7 12:15:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit python3-gobject BuildRequires: used to pulled in by
