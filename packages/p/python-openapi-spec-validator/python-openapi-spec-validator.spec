@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-spec-validator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-openapi-spec-validator
 Version:        0.2.8
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz
 Patch0:         openapi-spec-validator-skip-urls.patch
@@ -33,7 +33,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-pathlib2
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
 Requires:       python-jsonschema
@@ -42,6 +41,9 @@ Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-pathlib2
+%endif
 %ifpython2
 Requires:       python-pathlib2
 %endif
