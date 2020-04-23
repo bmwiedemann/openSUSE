@@ -43,10 +43,6 @@ BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module coverage >= 3.5.1b1}
-BuildRequires:  python-mock >= 1.3.0
-# /SECTION
 BuildArch:      noarch
 
 %python_subpackages

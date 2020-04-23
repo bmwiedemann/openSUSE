@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>788551</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5436afdde50f5b0ab7e1c6cae386c25d</srcmd5>
+    <version>1.0.5</version>
+    <time>1587659891</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 deps as it works only on py3 atm</comment>
+    <requestid>796508</requestid>
+  </revision>
 </revisionlist>

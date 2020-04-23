@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:11:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop py2 deps as it works only on py3 atm
+
+-------------------------------------------------------------------
 Thu Mar 26 12:32:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to v1.0.5
