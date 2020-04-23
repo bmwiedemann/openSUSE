@@ -803,4 +803,26 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>795800</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>a25d1b5b0ec6dc240cd052ca28a9bf16</srcmd5>
+    <version>4.11</version>
+    <time>1587660020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to squid 4.11:
+  * Fix incorrect buffer handling that can result in cache
+    poisoning, remote execution, and denial of service attacks when
+    processing ESI responses
+    (CVE-2019-12519, CVE-2019-12521, bsc#1169659)
+  * Fixes possible information disclosure when translating
+    FTP server listings into HTTP responses.
+    (CVE-2019-12528, bsc#1162689)
+  * Fixes possible denial of service caused by incorrect buffer
+    management ext_lm_group_acl when processing NTLM Authentication
+    credentials. (CVE-2020-8517, bsc#1162691)
+  * Fixes a potential remote execution vulnerability when using
+    HTTP Digest Authentication (CVE-2020-11945, bsc#1170313)
+  * Fixes problem when reconfigure killed Coordinator in
+    SMP+ufs configurations (#556)</comment>
+    <requestid>796564</requestid>
+  </revision>
 </revisionlist>

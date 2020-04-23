@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 23 13:02:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to squid 4.11:
+  * Fix incorrect buffer handling that can result in cache
+    poisoning, remote execution, and denial of service attacks when
+    processing ESI responses
+    (CVE-2019-12519, CVE-2019-12521, bsc#1169659)
+  * Fixes possible information disclosure when translating
+    FTP server listings into HTTP responses.
+    (CVE-2019-12528, bsc#1162689)
+  * Fixes possible denial of service caused by incorrect buffer
+    management ext_lm_group_acl when processing NTLM Authentication
+    credentials. (CVE-2020-8517, bsc#1162691)
+  * Fixes a potential remote execution vulnerability when using
+    HTTP Digest Authentication (CVE-2020-11945, bsc#1170313)
+  * Fixes problem when reconfigure killed Coordinator in
+    SMP+ufs configurations (#556)
+
+-------------------------------------------------------------------
 Mon Apr 20 10:24:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Make logrotate recommended, it's not strictly required and 

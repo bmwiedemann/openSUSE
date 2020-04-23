@@ -19,7 +19,7 @@
 %define         squidlibdir %{_libdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
 Name:           squid
-Version:        4.10
+Version:        4.11
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
