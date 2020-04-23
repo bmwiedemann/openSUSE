@@ -163,4 +163,12 @@
     <comment>Removal of -lang recommends (forwarded request 768611 from dimstar)</comment>
     <requestid>768677</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>175d532860e00950e95595f5ce22c059</srcmd5>
+    <version>1.2.2</version>
+    <time>1587659424</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel (forwarded request 795133 from iznogood)</comment>
+    <requestid>795153</requestid>
+  </revision>
 </revisionlist>

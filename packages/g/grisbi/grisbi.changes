@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:54:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.2:
+  + Bug fixes.
+- Changes from version 1.2.1:
+  + Bug fixes.
+- Changes from version 1.2.0:
+  + Added rules for importing CSV files.
+  + Addition of new rules for payees management.
+  + Added automatic creation of vented transactions for loan
+    maturities.
+  + Various improvements for preferences and reports.
+  + Bug fixes.
+- Drop obsolete post(un) scriptlets.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:13:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
@@ -8,6 +24,14 @@ Thu Jun 14 01:14:50 UTC 2018 - luc14n0@linuxmail.org
 
 - Add conditionalized post(un) scriptlets to run desktop_database,
   icon_theme_cache and mime_database for suse_version < 1330.
+
+-------------------------------------------------------------------
+Wed Jun 13 22:27:03 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.1.93:
+  + Fix a crash.
+  + Port to Gtk 3.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Jun 12 16:14:26 UTC 2018 - bjorn.lie@gmail.com
