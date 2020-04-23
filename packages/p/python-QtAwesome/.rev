@@ -51,4 +51,13 @@
     <comment></comment>
     <requestid>719537</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5ca9ed4d7ad2dd2608cc8c1eebf44823</srcmd5>
+    <version>0.6.0</version>
+    <time>1587659971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not call python2:
+  * no-py2.patch</comment>
+    <requestid>796537</requestid>
+  </revision>
 </revisionlist>

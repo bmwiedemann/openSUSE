@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtAwesome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtawesome
 Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
+Patch0:         no-py2.patch
 BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
@@ -47,6 +48,7 @@ library by Rick Blommers.
 
 %prep
 %setup -q -n QtAwesome-%{version}
+%patch0 -p1
 
 %build
 %python_build
