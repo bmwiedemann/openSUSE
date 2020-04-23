@@ -335,4 +335,13 @@ Staging suggested. I know of at least one package that failed with this update (
     <comment></comment>
     <requestid>727978</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>25562578897780aca9378ee58cf05b5f</srcmd5>
+    <version>1.32</version>
+    <time>1587659125</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit - we need to get rid of that cycle; the glib update depends on this version of gtk-doc&quot;
+</comment>
+    <requestid>794482</requestid>
+  </revision>
 </revisionlist>
