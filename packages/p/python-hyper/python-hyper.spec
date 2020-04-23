@@ -1,7 +1,7 @@
 #
 # spec file for package python-hyper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-hyper
 Version:        0.7.0+git88.18b629b
 Release:        0
@@ -43,13 +44,15 @@ BuildRequires:  %{python_module rfc3986 >= 1.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv >= 14.0.0}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34 >= 1.0.4
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-brotlipy >= 0.7.0
 Requires:       python-h2 > 2.5.0
 Requires:       python-hyperframe >= 3.2
 Requires:       python-rfc3986 >= 1.1.0
+%if %{with python2}
+BuildRequires:  python-enum34 >= 1.0.4
+BuildRequires:  python-futures
+%endif
 %ifpython2
 Requires:       python-enum34
 %endif
