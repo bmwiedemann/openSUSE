@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Mar 06 18:01:11 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0+1:
+  * core-deps-latest: Switch libhandy to libhandy-0-0 branch
+  * world: gnome-flashback doesn't use gnome-screensaver
+  * gst-plugins-base: add dependency on x11-xcb
+  * sysdeps: try to fix egl.pc version check
+  * core-deps-latest: WebKitGTK 2.27.91
+  * core-deps-latest: Update meson to 0.53.2
+  * world: Switch sound-juicer to meson
+  * core-deps-latest: switch tracker to 2.3 branch
+  * core-latest: Switch pipewire back to master
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 29 22:47:53 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch the package to Python 3 only.
+
+-------------------------------------------------------------------
+Tue Feb 18 17:49:29 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.2+85:
+  * world: gnome-panel needs alacarte
+  * core-deps-latest: WebKitGTK 2.27.90
+  * core-deps: build libpsl instead of having it as a sysdep
+  * world: Update fprintd module
+  * meson: refresh patch
+  * core-deps: Adjust mesonargs of glib
+  * world: fix libwnck module definition
+  * core-deps-latest: Update meson to 0.53.1
+  * core-deps-latest: force non srcdir build for mozjs68
+  * world: Add libhandy dependency to seahorse
+
+-------------------------------------------------------------------
+Sat Jan 25 14:15:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Thu Sep 12 12:43:52 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.34.0+22:
+  + Support 'python3' sysdeps.
+  + Speed up AptSystemInstall.
+  + Improvements to the documentation.
+  + CI improvements.
+  + Moduleset updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jul 29 09:14:18 UTC 2019 - dimstar@opensuse.org
 
 - Update to version 3.30.0~20190728:

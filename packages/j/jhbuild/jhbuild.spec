@@ -1,7 +1,7 @@
 #
 # spec file for package jhbuild
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define moduleset latest
 Name:           jhbuild
-Version:        3.30.0~20190728
+Version:        3.36.0+1
 Release:        0
 Summary:        Tool to build GNOME
 License:        GPL-2.0-or-later
@@ -32,7 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -45,8 +46,6 @@ Requires:       docbook-xsl-stylesheets
 Requires:       flex
 Requires:       gettext-tools
 Requires:       libtool
-Requires:       python-gtk
-Recommends:     %{name}-lang
 Recommends:     git-core
 Recommends:     patch
 Recommends:     subversion
@@ -83,8 +82,8 @@ Requires:       makeinfo
 Requires:       mpfr-devel
 Requires:       pam-devel
 Requires:       ppp-devel
-Requires:       python-libxml2
-Requires:       python-rdflib
+Requires:       python3-libxml2
+Requires:       python3-rdflib
 Requires:       ragel
 Requires:       raptor
 Requires:       sqlite
@@ -98,7 +97,7 @@ Recommends:     gcc-c++
 Recommends:     gettext-tools
 Recommends:     libtool
 Recommends:     pkgconfig
-Recommends:     python
+Recommends:     python3
 ## System Dependencies as defined by the moduleset configuration
 # only pkg-config deps are auto extracted, as we do not have to
 # worry about package names there
@@ -132,15 +131,18 @@ make %{?_smp_mflags}
 %install
 %make_install
 %suse_update_desktop_file jhbuild
-%fdupes %{buildroot}%{python_sitelib}
+sed -i "s|#!\s*%{_bindir}/env python|#!%{_bindir}/python|" \
+    %{buildroot}%{_bindir}/jhbuild \
+    %{buildroot}%{_datadir}/jhbuild/hg-update.py
+%fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING
-%doc AUTHORS HACKING MAINTAINERS NEWS README sample.jhbuildrc
+%doc AUTHORS HACKING MAINTAINERS NEWS README.rst sample.jhbuildrc
 %{_bindir}/jhbuild
-%{python_sitelib}/jhbuild/
+%{python3_sitelib}/jhbuild/
 %{_datadir}/applications/jhbuild.desktop
 %{_datadir}/jhbuild/
 
