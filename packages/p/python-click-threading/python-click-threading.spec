@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-threading
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-click-threading
 Version:        0.4.4
 Release:        0
@@ -28,10 +29,12 @@ BuildRequires:  %{python_module click >= 5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures
+%endif
 %ifpython2
 Requires:       python-futures
 %endif

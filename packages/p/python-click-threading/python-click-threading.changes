@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:16:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Mon Oct 14 11:44:00 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
