@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_contrib_core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Common utilities for jupyter-contrib projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/jupyter-contrib/jupyter_contrib_core
+URL:            https://github.com/jupyter-contrib/jupyter_contrib_core
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_contrib_core/jupyter_contrib_core-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,7 +36,6 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module notebook >= 4.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
-BuildRequires:  python-mock
 %endif
 Requires:       python-jupyter-core
 Requires:       python-notebook >= 4.0
@@ -92,9 +91,7 @@ export LANG=en_US.UTF-8
 %if %{with tests}
 %check
 export LANG=en_US.UTF-8
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix}
-}
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
 %endif
 
 %files %{python_files}

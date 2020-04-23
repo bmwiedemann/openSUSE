@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>747932</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>53eea4cc77a63efd968e028d3a60d86f</srcmd5>
+    <version>0.3.3</version>
+    <time>1587659865</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 deps as the py2 support is disabled</comment>
+    <requestid>796492</requestid>
+  </revision>
 </revisionlist>
