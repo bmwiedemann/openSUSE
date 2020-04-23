@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-tss-engine
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,6 @@ Source0:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.
 BuildRequires:  autoconf-archive
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
-%if 0%{?is_opensuse}
-# there's no pandoc on SLE, see also tpm2.0-tools for reasoning.
-#
-# current release tarballs contain the generated man pages already so nothing
-# is lost.
-BuildRequires:  pandoc
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  pkgconfig(libcrypto)

@@ -39,4 +39,14 @@
   vs. SLE.</comment>
     <requestid>762798</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c64e714b6baeee145f9fe293fd345dfe</srcmd5>
+    <version>1.0.1</version>
+    <time>1587659654</time>
+    <user>dimstar_suse</user>
+    <comment>- remove conditional pandoc BuildRequires for openSUSE. Nothing much is gained
+  from rebuilding the man pages. This shall help synchronizing SLE and
+  openSUSE package builds. (jsc#SLE-12325).</comment>
+    <requestid>796447</requestid>
+  </revision>
 </revisionlist>

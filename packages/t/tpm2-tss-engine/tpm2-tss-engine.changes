@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:30:46 UTC 2020 - matthias.gerstner@suse.com
+
+- remove conditional pandoc BuildRequires for openSUSE. Nothing much is gained
+  from rebuilding the man pages. This shall help synchronizing SLE and
+  openSUSE package builds. (jsc#SLE-12325).
+
+-------------------------------------------------------------------
 Fri Jan 10 11:12:19 UTC 2020 - matthias.gerstner@suse.com
 
 - remove the _service file as requested in declined OBS sr#762653.
