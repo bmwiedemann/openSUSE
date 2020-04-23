@@ -34,7 +34,6 @@ Source2:        https://media.readthedocs.org/htmlzip/ipyparallel/%{doc_ver}/ipy
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-futures
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # SECTION test requirements
@@ -71,9 +70,6 @@ Recommends:     python-pymongo
 Provides:       python-jupyter_ipyparallel = %{version}
 Obsoletes:      python-jupyter_ipyparallel < %{version}
 BuildArch:      noarch
-%ifpython2
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description

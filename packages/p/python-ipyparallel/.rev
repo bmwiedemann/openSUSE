@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>785246</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0ae0cf859d8fe1a6d54bb1bd99406b81</srcmd5>
+    <version>6.3.0~git.20191010T150914.ce996ae</version>
+    <time>1587659874</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 code from py3 only package</comment>
+    <requestid>796496</requestid>
+  </revision>
 </revisionlist>
