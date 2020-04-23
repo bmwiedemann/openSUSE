@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Mar  7 19:03:07 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Update all annotations-nav-to-page.png screenshots to 3.34 UI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 27 17:07:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.92:
+  + backends:
+    - Show XMP data if newer than modification date.
+    - Fix some code formatting in poppler.
+  + Various build fixes.
+  + Updated help.
+  + shell/libraries:
+    - Hopefully fix pipeline for 740f12f6 by removing another
+      localized image.
+    - Implement SaveAs named action.
+    - Update Keyboard Shortcuts page.
+    - Update screenshots to fit current UI.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 21:32:23 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.1:
+  + libview/ev-view:
+    - Make document direction independent of UI direction.
+    - Follow the text direction for laying out pages in dual mode.
+    - Fix annots from dbl/tpl click + drag.
+    - Fix caret cursor navigation in non-continuous mode.
+    - Keep cursor visible when changing pages.
+    - Don't enable popup actions on page change.
+    - Implement ATK's scrollSubstringTo() and
+      scrollSubstringToPoint().
+  + libdocument:
+    - Get DPI from GdkMonitor.
+    - Deprecate ev_document_misc_get_screen_dpi().
+  + shell:
+    - Set a11y names for annotation buttons.
+    - Go to annotation on right click.
+    - Document presentation mode shortcuts.
+  + Updated translations.
+- Switch back to regular tarball usage.
+
+-------------------------------------------------------------------
 Sat Nov 23 18:43:05 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.2:
