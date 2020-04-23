@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 16 22:21:16 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.32.1+246:
+  + Fix libgitg compile on macOS
+  + Fixup! Honor prepare-commit-msg hook
+  + Various bug and feature fixes.
+  + Updated translations.
+- Switch to git checkout via source services.
+- Drop gitg-port-to-gtksourceview4.patch: Fixed upstream.
+- Replace pkgconfig(gtkspell3-3.0) with pkgconfig(gspell-1)
+  BuildRequires following upstreams port.
+- Add check section and pass meson_test macro: Run test-suite
+  during build.
+- Rebase/refresh patch with quilt.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:08:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

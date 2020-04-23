@@ -1,7 +1,7 @@
 #
 # spec file for package gitg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           gitg
-Version:        3.32.1
+Version:        3.32.1+246
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://wiki.gnome.org/Apps/Gitg
-Source0:        https://download.gnome.org/sources/gitg/3.32/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gitg-typelib-dependencies.patch dimstar@opensuse.org -- Change the way we add library dependencies to .typelibs. openSUSE requires a full library name, incl. version
 Patch0:         gitg-typelib-dependencies.patch
-# PATCH-FIX-UPSTREAM gitg-port-to-gtksourceview4.patch -- Port to gtksourceview4
-Patch1:         gitg-port-to-gtksourceview4.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -41,9 +39,9 @@ BuildRequires:  pkgconfig(gladeui-2.0) >= 3.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gspell-1) >= 1.8.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
-BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0.3
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libdazzle-1.0)
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.27.7
@@ -160,6 +158,9 @@ translation-update-upstream po gitg
 %suse_update_desktop_file -G "Git repository viewer" org.gnome.gitg RevisionControl
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %post -n libgitg-1_0-0 -p /sbin/ldconfig
 %postun -n libgitg-1_0-0 -p /sbin/ldconfig
