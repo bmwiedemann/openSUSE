@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>782223</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>377e9e0d45028241895f713359115cd4</srcmd5>
+    <version>0.18</version>
+    <time>1587659915</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to call tests using python3 not python2:
+  * py3-for-tests.patch</comment>
+    <requestid>796518</requestid>
+  </revision>
 </revisionlist>

@@ -25,6 +25,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-contrib/plantuml/
 Source:         https://github.com/sphinx-contrib/plantuml/archive/%{version}.tar.gz#/sphinxcontrib-plantuml-%{version}.tar.gz
+Patch0:         py3-for-tests.patch
 BuildRequires:  %{python_module Sphinx >= 1.1}
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  %{python_module nose}
@@ -49,6 +50,7 @@ will create a nice UML schema. WIth PlantUML, you can specify things like height
 
 %prep
 %setup -q -n plantuml-%{version}
+%patch0 -p1
 
 %build
 %python_build

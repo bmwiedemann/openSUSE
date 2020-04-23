@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:38:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to call tests using python3 not python2:
+  * py3-for-tests.patch
+
+-------------------------------------------------------------------
 Fri Mar  6 12:41:55 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.18
