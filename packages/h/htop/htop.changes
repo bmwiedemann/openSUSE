@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:46:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Add patches:
+  * htop-2.2.0-fix-linux-process-ordering.patch
+  * htop-2.2.0-fix-option-string.patch (fixes boo#1165352)
+
+-------------------------------------------------------------------
 Thu Apr 12 12:09:09 UTC 2018 - mpluskal@suse.com
 
 - Simplify spec file

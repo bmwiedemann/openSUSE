@@ -413,4 +413,14 @@
 - rebase htop-script-python3.patch</comment>
     <requestid>595963</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>01bfb97733d1be31fe59336a4a4000fd</srcmd5>
+    <version>2.2.0</version>
+    <time>1587659564</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches:
+  * htop-2.2.0-fix-linux-process-ordering.patch
+  * htop-2.2.0-fix-option-string.patch (fixes boo#1165352)</comment>
+    <requestid>796378</requestid>
+  </revision>
 </revisionlist>

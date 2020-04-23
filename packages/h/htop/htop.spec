@@ -1,7 +1,7 @@
 #
 # spec file for package htop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,6 +29,10 @@ Source2:        %{name}.keyring
 Patch0:         htop-desktop-file-fix-thoenig-01.patch
 # PATCH-FIX-OPENSUSE htop-script-python3.patch
 Patch1:         htop-script-python3.patch
+# PATCH-FIX-UPSTREAM This broke with commit db05ba61065f64b59d0014518be0786b5439e54c -- allow args for specific options
+Patch2:         htop-2.2.0-fix-option-string.patch
+# PATCH-FIX-UPSTREAM Make sure the auto-regenerated headers (after scripts/MakeHeader.py) actually compile
+Patch3:         htop-2.2.0-fix-linux-process-ordering.patch
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
