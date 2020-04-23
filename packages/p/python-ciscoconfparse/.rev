@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>793532</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5a13aa718fb1a806e6e3397799f965f5</srcmd5>
+    <version>1.5.3</version>
+    <time>1587659902</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796515</requestid>
+  </revision>
 </revisionlist>

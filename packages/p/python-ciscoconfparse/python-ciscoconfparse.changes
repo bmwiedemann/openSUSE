@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:24:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Sun Apr 12 17:00:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.3
