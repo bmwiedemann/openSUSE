@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:02:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.3:
+  * Allow individually setting margins and padding for each edge
+    (left, right, top, bottom). Margins can also be controlled per
+    window via remote control (#2546)
+  * Fix reverse video not being rendered correctly when using
+    transparency or a background image (#2419)
+  * Allow mapping arbitrary remote control commands to key
+    presses in kitty.conf
+  * X11: Fix crash when doing drag and drop from some
+    applications (#2505)
+  * Fix launch --stdin-add-formatting not working (#2512)
+  * Update to Unicode 13.0 (#2513)
+  * Render country flags designated by a pair of unicode
+    codepoints in two cells instead of four.
+  * diff kitten: New option to control the background color for
+    filler lines in the margin (#2518)
+  * Fix specifying options for layouts in the startup session
+    file not working (#2520)
+  * Linux: Ignore keys if they are designated as
+    layout/group/mode switch keys (#2519)
+  * Marks: Fix marks not handling wide characters and tab
+    characters correctly (#2534)
+  * Add a new listen_on option in kitty.conf to set kitty
+    --listen-on globally. Also allow using environment
+    variables in this option (#2569).
+  * Allow sending mouse events in kittens (#2538)
+  * icat kitten: Fix display of 16-bit depth images (#2542)
+  * Add ncurses specific terminfo definitions for
+    strikethrough (#2567)
+  * Fix a regression in 0.17 that broke displaying graphics
+    over SSH (#2568)
+  * Fix --title not being applied at window creation time (#2570)
+
+-------------------------------------------------------------------
 Sun Mar 29 11:26:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.2:
