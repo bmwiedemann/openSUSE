@@ -1,8 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar  8 23:30:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.0:
+  + No changes, stable version update only.
+
+-------------------------------------------------------------------
+Sat Feb 29 23:49:00 UTC 2020 - mgorse@suse.com
+
+- Update to version 2.35.92:
+  + bus-launcher: make session management more robust
+    (boo#1154582).
+- Drop at-spi2-core-async-session-register.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Feb 27 15:04:35 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Ad at-spi2-core-async-session-register.patch: make bus-launcher
   session registration more robust (boo#1154582).
+
+-------------------------------------------------------------------
+Wed Feb 12 21:09:48 CET 2020 - dimstar@opensuse.org
+
+- Update to version 2.35.1:
+  + Fix source reproducibility.
+  + Avoid depending on Meson 0.50.
+  + Add ATSPI_ROLE_MARK and ATSPI_ROLE_SUGGESTION.
 
 -------------------------------------------------------------------
 Mon Sep  9 15:08:37 CDT 2019 - mgorse@suse.com

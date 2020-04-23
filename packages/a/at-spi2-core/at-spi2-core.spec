@@ -17,20 +17,17 @@
 
 
 Name:           at-spi2-core
-Version:        2.34.0
+Version:        2.36.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-# PATCH-FIX-UPSTREAM at-spi2-core-async-session-register.patch boo#1154582 mgorse@suse.com -- make bus-launcher session registration more robust.
-Patch0:         at-spi2-core-async-session-register.patch
-
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.40.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
