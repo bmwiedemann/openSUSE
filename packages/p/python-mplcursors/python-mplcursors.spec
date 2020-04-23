@@ -1,7 +1,7 @@
 #
 # spec file for package python-mplcursors
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplc
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-pathlib
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 2.1
 BuildArch:      noarch
@@ -36,9 +35,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module matplotlib >= 2.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%ifpython2
-Requires:       python-pathlib
-%endif
 %python_subpackages
 
 %description
