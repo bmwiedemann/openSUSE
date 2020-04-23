@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-games
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-games
-Version:        3.34.2
+Version:        3.36.1
 Release:        0
 Summary:        Browse and play your games - all of them
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Games
-Source0:        https://download.gnome.org/sources/gnome-games/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-games/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.46.1
