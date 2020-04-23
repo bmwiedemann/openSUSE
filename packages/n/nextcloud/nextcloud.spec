@@ -49,7 +49,7 @@
 %endif
 
 Name:           nextcloud
-Version:        18.0.3
+Version:        18.0.4
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -64,6 +64,7 @@ Source5:        robots.txt
 Source10:       %{name}-cron
 Source11:       %{name}-cron.service
 Source12:       %{name}-cron.timer
+Source99:       %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

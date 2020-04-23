@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:23:41 UTC 2020 - ecsos@opensuse.org
+
+- Update to 18.0.4
+  - No changelog from upstream at this time.
+
+- Add nextcloud-rpmlintrc to reduce build warnings.
+- Fix RewriteRules in apache_secure_data.
+
+-------------------------------------------------------------------
 Sun Apr 12 13:20:14 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - Make core/js/mimetypelist.js writable
