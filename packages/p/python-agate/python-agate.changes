@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 04:26:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only BuildRequire unittest2 under Python 2. 
+
+-------------------------------------------------------------------
 Thu Apr 16 11:54:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch from using nosetest runner to pytest
