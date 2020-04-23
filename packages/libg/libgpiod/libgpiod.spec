@@ -19,14 +19,14 @@
 %define libgpiod_soversion 2
 %define libgpiodcxx_soversion 1
 %define libgpiomockup_soversion 0
-# Tests are only available for kernel 5.1+ (so TW only)
+# Tests are only available for kernel 5.5+ (so TW only)
 %if 0%{?suse_version} > 1500
 %bcond_without libgpiod_tests
 %else
 %bcond_with libgpiod_tests
 %endif
 Name:           libgpiod
-Version:        1.4.3
+Version:        1.5.1
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
@@ -43,10 +43,12 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  python3-devel
 %if %{with libgpiod_tests}
-BuildRequires:  kernel-devel >= 5.1
+BuildRequires:  Catch2-devel
+BuildRequires:  glib2-devel >= 2.50
+BuildRequires:  kernel-devel >= 5.5
 BuildRequires:  pkgconfig(libudev)
 %else
-BuildRequires:  kernel-devel >= 4.8
+BuildRequires:  kernel-devel >= 5.5
 %endif
 
 %description
@@ -151,6 +153,10 @@ make %{?_smp_mflags}
 %make_install
 rm -rf %{buildroot}%{_libdir}/*.{a,la}
 rm -rf %{buildroot}%{python3_sitearch}/*.{a,la}
+# Fix scripts interpreters
+sed -i 's#%{_bindir}/env bash#/bin/bash#' %{buildroot}/%{_bindir}/gpio-tools-test
+sed -i 's#%{_bindir}/env bats#%{_bindir}/bats#' %{buildroot}/%{_bindir}/gpio-tools-test.bats
+sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}/%{_bindir}/gpiod_py_test.py
 
 %post -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
 %postun -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
