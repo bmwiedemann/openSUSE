@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyLibravatar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyLibravatar
 Version:        1.7
 Release:        0
 Summary:        Python module for Libravatar
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://launchpad.net/pylibravatar
 Source:         https://files.pythonhosted.org/packages/source/p/pyLibravatar/pyLibravatar-%{version}.tar.gz
+BuildRequires:  %{python_module py3dns}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-pydns
-BuildRequires:  python3-py3dns
+Requires:       python-py3dns
 BuildArch:      noarch
-%ifpython2
-Requires:       python2-pydns
-%endif
-%ifpython3
-Requires:       python3-py3dns
-%endif
 %python_subpackages
 
 %description
@@ -54,6 +48,7 @@ avatar hosting service from within Python applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%license README.txt
 %doc README.txt Changelog.txt
 %{python_sitelib}/*
 
