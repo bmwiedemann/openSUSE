@@ -20,6 +20,11 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	dh_auto_build -Bpy3 -- V=1
 
+override_dh_auto_test:
+	echo "test"
+	dh_auto_test -- test-short
+	echo "finish"
+
 override_dh_systemd_start:
 	# Restart services, after they have upgraded to minify downtime while
 	# upgrading and to ensure all services actually are restarted on upgrade.

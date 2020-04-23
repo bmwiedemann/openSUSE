@@ -1,7 +1,7 @@
 Format: 1.0
 Source: kopano
 Architecture: any all
-Version: 10.0.3-0
+Version: 10.0.4-0
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Kopano Development <development@kopano.io>
 Homepage: https://kopano.com
@@ -14,6 +14,7 @@ Build-Depends:
  binutils (>= 2.20),
  debhelper (>= 9),
  devscripts,
+ dh-python,
  dh-systemd (>= 1.5),
  dts4debian [amd64],
  fakeroot,

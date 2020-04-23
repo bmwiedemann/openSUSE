@@ -210,4 +210,12 @@
     <comment>- Update to release 10.0.3</comment>
     <requestid>786178</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7a7a71dabec1e6da3982b5fd57aac685</srcmd5>
+    <version>10.0.4</version>
+    <time>1587659516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>795755</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:43:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.4
+  * daemons: now run with systemd protections
+
+-------------------------------------------------------------------
 Wed Mar 18 12:28:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.3
