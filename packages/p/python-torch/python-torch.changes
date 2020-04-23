@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:54:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in python2 only dependencies
+
+-------------------------------------------------------------------
 Wed Feb 26 13:07:14 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Exclude i586 builds for now, they fail with a cryptic return

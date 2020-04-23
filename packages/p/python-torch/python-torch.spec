@@ -21,8 +21,6 @@
 %define skip_python2 1
 %define pname torch
 
-
-
 Name:           python-torch
 Version:        1.4.0
 Release:        0
@@ -97,8 +95,6 @@ BuildRequires:  openblas-devel
 BuildRequires:  openssl-devel
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
-BuildRequires:  python-py-cpuinfo
-BuildRequires:  python-pybind11-devel
 BuildRequires:  snappy-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       python-future
