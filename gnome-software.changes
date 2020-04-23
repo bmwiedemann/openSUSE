@@ -1,8 +1,80 @@
 -------------------------------------------------------------------
+Wed Mar 11 13:57:51 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + gs-app-row: Remove ‘show-folders’ functionality.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 19:43:55 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.35.92:
+  + Fix crash when viewing application details.
+  + Fix “thrice daily” check running every 3 days.
+  + Improve the appearance of the front page banners.
+  + Show the correct upgrade banner contents when a reboot is
+    required.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 20 11:06:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Add an info bar about automatic updates.
+  + Avoid rpm-ostree downgrade error when doing distro upgrade.
+  + Click on stars to open review dialog in the details view.
+  + Fix loading of icons from AppStream YAML.
+  + Fix weird font sizes in the batter.
+  + Hide any in-app notifications when closing the main window.
+  + Integrate better with snapd.
+  + Only ignore flatpak estimated progress if >10%.
+  + Remove color stripes on categories in the Explore page.
+  + Remove support for Shell extensions.
+  + Remove webapp support.
+  + Reset star rating when loading an unrated app.
+  + Sort applications using locale based algorithms.
+  + Stop snaps from being automatically updated.
+  + Updated translations.
+- Add pkgconfig(ostree-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Feb 12 20:39:42 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.2:
+  + Add missing OARS content rating descriptions.
+  + Add new plugin for restricting access to apps.
+  + Avoid a UI crash when switching modes.
+  + Build libmalcontent dependency on Fedora CI.
+  + Correctly distinguish empty content ratings from missing ones.
+  + Correctly set the application state if autoupdate is in
+    progress.
+  + Do not show a crazy error when installing packages.
+  + Do not show non-applications in the installed panel.
+  + Download Flatpak updates in the correct installation.
+  + Expose snap channels as app alternates.
+  + Fix a crash on 32-bit systems.
+  + Fix manual detach when updating removable device firmware.
+  + Fix third party repo enabling not working.
+  + Hide add/remove shortcut buttons for parentally filtered apps.
+  + Improve some front page banners.
+  + Invalidate caches when adding or removing remotes.
+  + Make flatpak more thread-safe to fix some crashes.
+  + Match the exact ID when refining a wildcard.
+  + Only set the app row's buttons as destructive when they remove
+    an app.
+  + Rework age ratings handling to avoid hard-coded list.
+  + Set the shell extension origin correctly in all cases.
+  + Show the channel for snaps.
+  + Speed up the flatpak plugin in some situations.
+  + Use plugin API to launch apps from install notification.
+- Pass -Dmalcontent=false to meson: Disable parental control
+  integration for now, as we don't have malcontent packaged yet.
+
+-------------------------------------------------------------------
 Wed Jan 29 16:57:40 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Apply polkit workaround also for Leap 15.2
-  bsc#1157928 poo#62762 
+  bsc#1157928 poo#62762.
 
 -------------------------------------------------------------------
 Thu Nov 28 09:48:12 UTC 2019 - Frederic Crozat <fcrozat@suse.com>

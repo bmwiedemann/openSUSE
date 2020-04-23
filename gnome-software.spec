@@ -18,20 +18,20 @@
 
 %define gs_plugin_api 13
 Name:           gnome-software
-Version:        3.34.2
+Version:        3.36.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/3.36/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
-%endif 0%{?sle_version}
+%endif
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
+BuildRequires:  pkgconfig(ostree-1)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(sqlite3)
@@ -80,6 +81,7 @@ GNOME software store plugins.
 %meson \
 	-Dtests=false \
 	-Dvalgrind=false \
+	-Dmalcontent=false \
 	%{nil}
 %meson_build
 
@@ -109,14 +111,12 @@ EOF
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/%{name}
-%{_bindir}/%{name}-editor
 %{_datadir}/%{name}/
 %dir %{_datadir}/app-info
 %dir %{_datadir}/app-info/xmls
 %{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.Software.appdata.xml
-%{_datadir}/metainfo/org.gnome.Software.Plugin.Epiphany.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Odrs.metainfo.xml
@@ -138,9 +138,7 @@ EOF
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_mandir}/man1/%{name}-editor.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
-%{_datadir}/applications/org.gnome.Software.Editor.desktop
 
 %files devel
 %doc AUTHORS MAINTAINERS
