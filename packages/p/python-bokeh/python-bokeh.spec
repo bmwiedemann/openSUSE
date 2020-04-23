@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 # Tests fail due to missing git data,
 # and building the JS from source doesn't work
 %bcond_with     tests
+%bcond_without python2
 Name:           python-bokeh
 Version:        1.4.0
 Release:        0
@@ -39,7 +40,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.5.2}
 BuildRequires:  %{python_module tornado >= 4.3}
 BuildRequires:  fdupes
-BuildRequires:  python-futures >= 3.0.3
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
 Requires:       python-Jinja2 >= 2.7
@@ -58,6 +58,9 @@ Recommends:     python-networkx
 Recommends:     python-pscript
 Recommends:     python-vincent
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-futures >= 3.0.3
+%endif
 %if %{with tests}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module boto}
