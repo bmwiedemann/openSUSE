@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           less
-Version:        551
+Version:        557
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        GPL-3.0-or-later OR BSD-2-Clause
@@ -66,7 +66,7 @@ export LDFLAGS="-pie"
 ./mkhelp.pl <less.hlp >help.c
 #
 # build less
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

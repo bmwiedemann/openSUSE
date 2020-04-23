@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  4 18:54:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- less 557:
+  * Update Unicode tables
+  * Treat Hangul Jamo medial vowels and final consonants as zero width
+  * Display error message immediately when -o is toggled and 
+    input is not a pipe
+  * Fix memory corruption when built with libtermcap
+  * Support libtinfow
+
+-------------------------------------------------------------------
 Wed Dec 11 16:02:09 UTC 2019 - kukuk@suse.com
 
 - Move lesskey* from /etc to /usr/etc
