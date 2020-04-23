@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 21 19:15:31 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Drop deprecated usage of %python3_only in favour of
+  %python_alternative.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:54 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -1,8 +1,8 @@
 #
 # spec file for package python-ntfy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 Matthias Bach <marix@marix.org>.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        A utility for sending push notifications
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-Url:            https://github.com/dschep/ntfy
+URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module requests}
@@ -51,6 +51,8 @@ Suggests:       python-psutil
 Suggests:       python-instapush
 Suggests:       python-rocketchat-API
 Suggests:       python-emoji
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -77,16 +79,23 @@ Quickstart
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ntfy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/ntfy*
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative ntfy
+
+%postun
+%python_uninstall_alternative ntfy
+
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/ntfy
+%python_alternative %{_bindir}/ntfy
 %{python_sitelib}/*
 
 %changelog

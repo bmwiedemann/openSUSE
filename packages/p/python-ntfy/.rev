@@ -28,4 +28,14 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659517</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b154353171d5f35b0223a091342ac3cf</srcmd5>
+    <version>2.7.0</version>
+    <time>1587659549</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop deprecated usage of %python3_only in favour of
+  %python_alternative.
+</comment>
+    <requestid>796344</requestid>
+  </revision>
 </revisionlist>
