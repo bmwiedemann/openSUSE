@@ -40,10 +40,14 @@ BuildRequires:  %{python_module pyScss >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-pathlib
 Requires:       python-Django >= 1.10
 Requires:       python-pyScss >= 1.3.4
-Requires:       python2-pathlib
+%if %{with python2}
+BuildRequires:  python-pathlib
+%endif
+%ifpython2
+Requires:       python-pathlib
+%endif
 %python_subpackages
 
 %description
@@ -74,16 +78,14 @@ This app smooths over a lot of things when dealing with pyScss in Django. It
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# %%check
-# Tests crash python interpreter gh#Kronuz/pyScss#378
-# %%python_exec setup.py test -v
+%check
+# Tests crash python interpreter gh#Kronuz/pyScss#378 on python2
+%python_exec setup.py test -v
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/django_pyscss
 %{python_sitelib}/django_pyscss-%{version}-py*.egg-info
-
-%{python_sitelib}/*
 
 %changelog

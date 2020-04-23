@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>769475</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a6e2a613510840e860420aefb6a9106</srcmd5>
+    <version>2.0.2</version>
+    <time>1587659854</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the deps and make sure we build with python2 and 3 and pull
+  correct dependencies</comment>
+    <requestid>796507</requestid>
+  </revision>
 </revisionlist>
