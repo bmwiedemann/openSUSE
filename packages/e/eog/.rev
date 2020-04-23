@@ -1094,4 +1094,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767110 from dimstar)</comment>
     <requestid>767361</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>7310648e1cfc6b53a23eaf985f158397</srcmd5>
+    <version>3.36.1</version>
+    <time>1587659150</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795011 from iznogood)</comment>
+    <requestid>795167</requestid>
+  </revision>
 </revisionlist>
