@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200422" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200423" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200422</productvar>
+      <productvar name="VERSION">20200423</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200422,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200423,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200422/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200423/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
@@ -109,6 +109,7 @@
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
       <repopackage name="conmon" arch="x86_64"/>
+      <repopackage name="containers-systemd" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="cpio"/>
       <repopackage name="cpp" arch="x86_64"/>
@@ -424,7 +425,6 @@
       <repopackage name="libcontainers-common" arch="x86_64"/>
       <repopackage name="libcrack2"/>
       <repopackage name="libcreaterepo_c0" arch="x86_64"/>
-      <repopackage name="libcroco-0_6-3" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcrypto45" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
@@ -514,7 +514,7 @@
       <repopackage name="libgmp10"/>
       <repopackage name="libgnome-autoar-0-0" arch="x86_64"/>
       <repopackage name="libgnome-bluetooth13" arch="x86_64"/>
-      <repopackage name="libgnome-desktop-3-18" arch="x86_64"/>
+      <repopackage name="libgnome-desktop-3-19" arch="x86_64"/>
       <repopackage name="libgnome-desktop-3_0-common" arch="x86_64"/>
       <repopackage name="libgnome-menu-3-0" arch="x86_64"/>
       <repopackage name="libgnomekbd8" arch="x86_64"/>
@@ -713,6 +713,7 @@
       <repopackage name="libmodulemd2" arch="x86_64"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmozjs-60" arch="x86_64"/>
+      <repopackage name="libmozjs-68" arch="x86_64"/>
       <repopackage name="libmp3lame0" arch="x86_64"/>
       <repopackage name="libmpath0" arch="x86_64"/>
       <repopackage name="libmpc3" arch="x86_64"/>
@@ -725,7 +726,7 @@
       <repopackage name="libmtdev1" arch="x86_64"/>
       <repopackage name="libmtp-udev" arch="x86_64"/>
       <repopackage name="libmtp9" arch="x86_64"/>
-      <repopackage name="libmutter-5-0" arch="x86_64"/>
+      <repopackage name="libmutter-6-0" arch="x86_64"/>
       <repopackage name="libnautilus-extension1" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libndp0" arch="x86_64"/>
@@ -862,6 +863,7 @@
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
       <repopackage name="libsignon-qt5-1" arch="x86_64"/>
       <repopackage name="libslang2" arch="x86_64"/>
+      <repopackage name="libslirp0" arch="x86_64"/>
       <repopackage name="libslp1" arch="x86_64"/>
       <repopackage name="libSM6" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
@@ -1336,6 +1338,7 @@
       <repopackage name="typelib-1_0-GMenu-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GnomeBluetooth-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GnomeDesktop-3_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Graphene-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Gtk-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GWeather-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Handy-0_0" arch="x86_64"/>
