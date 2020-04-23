@@ -17,13 +17,13 @@
 
 
 Name:           accerciser
-Version:        3.34.4
+Version:        3.36.0
 Release:        0
 Summary:        Accessibility debugging tool
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Accerciser
-Source0:        https://download.gnome.org/sources/accerciser/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/accerciser/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection

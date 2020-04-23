@@ -521,4 +521,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>New stable release</comment>
     <requestid>773685</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>d3256447639051582bb613f98ffd2b7b</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659429</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 794998 from iznogood)</comment>
+    <requestid>795155</requestid>
+  </revision>
 </revisionlist>
