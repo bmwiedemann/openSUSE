@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 28 22:46:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  7 12:34:36 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:10:27 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 13:58:52 CET 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Updated help.
+  + Updated translations.
+- Changes from version 3.35:
+  + Fix Ctrl+Q keyboard shortcut for Quit.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

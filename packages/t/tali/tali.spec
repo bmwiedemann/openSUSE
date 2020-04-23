@@ -1,7 +1,7 @@
 #
 # spec file for package tali
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           tali
-Version:        3.32.1
+Version:        3.36.1
 Release:        0
 Summary:        Yahtzee Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://live.gnome.org/Tali
-Source0:        https://download.gnome.org/sources/tali/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tali/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
