@@ -26,18 +26,14 @@
 %endif
 
 Name:           gnome-control-center
-Version:        3.34.5
+Version:        3.36.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-control-center/3.36/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM gnome-control-center-Initialize-GError-to-NULL-before-use.patch xwang@suse.com -- user-accounts: Initialize GError* to NULL before use
-Patch2:         gnome-control-center-Initialize-GError-to-NULL-before-use.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-fno-common.patch boo#1160393 mgorse@suse.com -- fix build with -fno-common.
-Patch3:         gnome-control-center-fno-common.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -193,8 +189,6 @@ GNOME control center.
 %setup -q
 translation-update-upstream po gnome-control-center-2.0
 
-%patch2 -p1
-%patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
@@ -251,6 +245,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %dir %{_datadir}/sounds/gnome/default/alerts
 %{_datadir}/sounds/gnome/default/alerts/*.ogg
 %{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-print-renderer
 %{_libexecdir}/gnome-control-center-search-provider
 %{_mandir}/man1/gnome-control-center.1%{?ext_man}
 

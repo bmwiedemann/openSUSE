@@ -1604,4 +1604,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>790685</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>7960d955e49260db7c59db7c51a52cc2</srcmd5>
+    <version>3.36.1</version>
+    <time>1587659311</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, spellfix (forwarded request 795115 from iznogood)</comment>
+    <requestid>795259</requestid>
+  </revision>
 </revisionlist>
