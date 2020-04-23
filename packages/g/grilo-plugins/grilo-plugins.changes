@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 15:51:32 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Remove use of is_opensuse. Chromaprint and libdmapsharing3 are
+  now built in SLE-15-SP2 (jsc#SLE-11723).
+
+-------------------------------------------------------------------
 Fri Feb 14 16:53:15 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.3.11:

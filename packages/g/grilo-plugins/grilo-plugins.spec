@@ -63,16 +63,12 @@ BuildRequires:  pkgconfig(totem-plparser) >= 3.4.1
 BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 2.3.0
 # Recommend gupnp-plugin-dleyna (UPnP support)
 Recommends:     gupnp-plugin-dleyna
-%if 0%{?is_opensuse}
 %ifarch armv7hl i586
 BuildRequires:  gstreamer1(element-chromaprint)
 %else
 BuildRequires:  gstreamer1(element-chromaprint)()(64bit)
 %endif
-%endif
-%if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libdmapsharing-3.0) >= 2.9.12
-%endif
 
 %description
 Grilo is a framework for browsing and searching media content from
@@ -139,9 +135,6 @@ This package provides the development files.
 
 %build
 %meson \
-%if !0%{?is_opensuse}
-	-Denable-chromaprint=no \
-%endif
 	%{nil}
 %meson_build
 
@@ -163,11 +156,9 @@ This package provides the development files.
 %{_datadir}/help/C/grilo-plugins/
 # Explicitly list plugins
 %{plugin_dir}/libgrlbookmarks.so
-%if 0%{?is_opensuse}
 %{plugin_dir}/libgrlchromaprint.so
 %{plugin_dir}/libgrldaap.so
 %{plugin_dir}/libgrldpap.so
-%endif
 %{plugin_dir}/libgrlfilesystem.so
 %{plugin_dir}/libgrlflickr.so
 %{plugin_dir}/libgrlfreebox.so
