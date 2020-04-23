@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd i6300esb efivarfs
+%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg
 
 %define virtio_modules virtio virtio_.* virtio-.*
 

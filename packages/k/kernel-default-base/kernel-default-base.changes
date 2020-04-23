@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 21 12:42:55 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add qemu_fw_cfg needed by ignition (boo#1170069).
+
+-------------------------------------------------------------------
 Thu Feb 27 12:07:22 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add tcp_diag, needed by openslp
