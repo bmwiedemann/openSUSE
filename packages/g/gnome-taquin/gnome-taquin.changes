@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:18:54 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:58:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Just a bit of code cleaning.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 08:51:43 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + The transition from the new-game screen to the game itself has
+    been changed when having a large window.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 14 08:51:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.4:
