@@ -1,7 +1,7 @@
 #
 # spec file for package libgnome-games-support
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 %define sover 3
 
 Name:           libgnome-games-support
-Version:        1.4.4
+Version:        1.6.1
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libgnome-games-support/
-Source0:        https://download.gnome.org/sources/libgnome-games-support/1.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgnome-games-support/1.6/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool >= 0.50.2
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.40
 BuildRequires:  pkgconfig(gee-0.8)
@@ -64,22 +65,24 @@ with the major version number. The ABI is unstable.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %post -n libgnome-games-support-1-%{sover} -p /sbin/ldconfig
 %postun -n libgnome-games-support-1-%{sover} -p /sbin/ldconfig
 
 %files -n libgnome-games-support-1-%{sover}
-%license COPYING.LESSER
+%license COPYING COPYING.LESSER
 %{_libdir}/libgnome-games-support-1.so.%{sover}*
 
 %files devel
