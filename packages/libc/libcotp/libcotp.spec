@@ -16,6 +16,9 @@
 #
 
 
+%if 0%{?fedora_version}
+%global debug_package %{nil}
+%endif
 %define libsoname %{name}12
 Name:           libcotp
 Version:        1.2.2
