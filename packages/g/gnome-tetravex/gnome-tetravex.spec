@@ -17,21 +17,21 @@
 
 
 Name:           gnome-tetravex
-Version:        3.34.4
+Version:        3.36.0
 Release:        0
 Summary:        Tetravex Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Tetravex
-Source0:        https://download.gnome.org/sources/gnome-tetravex/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tetravex/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.23
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24
 # gnome-tetravex used to be called 'gnotravex' and was part of gnome-games until 3.7.x
@@ -56,6 +56,7 @@ stored in a system-wide scoreboard.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+%find_lang %{name}-gui %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
 %files
@@ -65,10 +66,11 @@ stored in a system-wide scoreboard.
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Tetravex.appdata.xml
 %{_datadir}/applications/org.gnome.Tetravex.desktop
+%{_datadir}/dbus-1/services/org.gnome.Tetravex.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Tetravex.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f %{name}-gui.lang
 
 %changelog

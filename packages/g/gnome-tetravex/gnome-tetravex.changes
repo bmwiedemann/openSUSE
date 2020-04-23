@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar 11 00:18:05 UTC 2020 - mgorse@suse.com
+
+- Update to version 3.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  2 18:29:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.35.92:
+  + The F10 keyboard shortcut has been added, as a toggle for the
+    hamburger button menu. Documentation for this shortcut will be
+    added next cycle, no string changed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:24:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.35.91:
+  + Fullscreen is better handled; some code improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 14 08:50:06 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.35.90:
+  + Updated translations.
+- Changes from version 3.35.2:
+  + The current game is being saved if the window is closed and a
+    button was added to restore it (you can also directly restore,
+    using the “--restore” command-line option).
+  + The game can also be played with the keyboard (using arrows).
+  + You can move all the tiles from one of the half-board using the
+    mouse, by clicking on an empty border tile (even if this
+    function is for now hidden).
+  + Tetravex can for now be played in command-line, using the
+    “--cli” option (see “--cli help” documentation.
+  + GNOME Tetravex should be D-Bus activatable, what is more
+    future-proof.
+- Changes from version 3.35.1:
+  + The most visible is the end of a game, where instead of having
+    the Scores dialog popped-up, the ranking is overlaid on the
+    now-empty right part of the board.
+  + A default new theme.
+  + Multiple themes are available (including the old one, under the
+    name Nostalgia).
+  + A new undo/redo functions, a great addition to the gameplay.
+  + The puzzle will not anymore start already solved.
+  + Scores are now displayed with a higher precision.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 14 08:50:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.4:
