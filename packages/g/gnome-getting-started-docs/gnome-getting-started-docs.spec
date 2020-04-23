@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-getting-started-docs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-getting-started-docs
-Version:        3.34.1
+Version:        3.36.1
 Release:        0
 Summary:        Getting started with GNOME - Documentation
 License:        CC-BY-SA-3.0
 Group:          Documentation/Other
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-getting-started-docs/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-getting-started-docs/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
