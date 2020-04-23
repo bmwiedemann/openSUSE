@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:01:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Mon Mar 30 09:38:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 8.1
