@@ -19,21 +19,20 @@
 %define with_GLES2 1
 %define with_COGLGST 0
 Name:           cogl
-Version:        1.22.4+8
+Version:        1.22.6
 Release:        0
 Summary:        An object oriented GL/GLES Abstraction/Utility Layer
 License:        MIT
 Group:          Development/Libraries/GNOME
 URL:            http://clutter-project.org/
-#Source0:       http://download.gnome.org/sources/cogl/1.22/%%{name}-%%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cogl/1.22/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM cogl-fix-mesa20.patch sndirsch@suse.de -- Fix build against Mesa 20
 Patch0:         cogl-fix-mesa20.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc >= 1.13
-# Needed as we are using a git-checkout
+# Needed as patch0 touches the buildsystem
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.10
@@ -190,8 +189,8 @@ applications that want to make use of cogl.
 %autosetup -p1
 
 %build
-# Needed as we are using a git-checkout
-NOCONFIGURE=1 ./autogen.sh
+# Needed as patch0 touches buildsystem
+autoreconf -fiv
 %configure \
 	--disable-static \
 	--enable-gtk-doc \
