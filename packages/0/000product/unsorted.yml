@@ -1001,7 +1001,7 @@ unsorted:
   - babelstone-ogham-fonts 
   - babelstone-phags-pa-fonts 
   - babelstone-runic-fonts 
-  - babeltrace 
+  - babeltrace: [i586] 
   - babeltrace-devel 
   - babeltrace2 
   - babeltrace2-devel 
@@ -1342,7 +1342,7 @@ unsorted:
   - bumpversion 
   - busybox 
   - busybox-container 
-  - busybox-k8s-yaml 
+  - busybox-k8s-yaml: [i586] 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1544,7 +1544,6 @@ unsorted:
   - celt051-devel 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
-  - ceph-common: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
@@ -1571,7 +1570,7 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certmonger 
-  - certstrap 
+  - certstrap: [i586] 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -1638,10 +1637,9 @@ unsorted:
   - cifs-utils-devel 
   - cilium: [x86_64] 
   - cilium-cni: [x86_64] 
-  - cilium-devel: [x86_64] 
+  - cilium-devel: [x86_64] # devel package of opensuse_kubic:cilium-k8s-yaml 
   - cilium-docker: [x86_64] 
   - cilium-etcd-operator 
-  - cilium-k8s-yaml: [x86_64] 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cimple 
@@ -1986,7 +1984,7 @@ unsorted:
   - crazydiskinfo 
   - creduce 
   - cri-tools: [i586] 
-  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
+  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - criu-devel: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -2798,7 +2796,6 @@ unsorted:
   - etc-update 
   - etcd: [x86_64] 
   - etcd-for-k8s-image: [x86_64] 
-  - etcdctl: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -3113,7 +3110,7 @@ unsorted:
   - flameshot-bash-completion 
   - flann-devel 
   - flannel 
-  - flannel-k8s-yaml 
+  - flannel-k8s-yaml: [i586] 
   - flare 
   - flare-game 
   - flarq 
@@ -5467,7 +5464,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-plugins-caasp 
-  - health-checker-plugins-kubic 
+  - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
   - heapster 
   - heaptrack-devel 
@@ -5477,7 +5474,6 @@ unsorted:
   - heimdall-frontend 
   - hello 
   - hello-kubic: [x86_64] 
-  - hello-kubic-k8s-yaml: [x86_64] 
   - hello-lang 
   - helm: [i586] 
   - helm-mirror 
@@ -6478,7 +6474,7 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
+  - katacontainers: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -6965,17 +6961,14 @@ unsorted:
   - ktp-send-file-lang 
   - ktp-text-ui 
   - ktp-text-ui-lang 
-  - kube-prometheus-k8s-yaml 
+  - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
-  - kubernetes-client: [x86_64] 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
   - kubernetes-dashboard: [x86_64] 
   - kubernetes-dns 
-  - kubernetes-kubeadm: [x86_64] 
-  - kubernetes-kubelet: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -6987,19 +6980,15 @@ unsorted:
   - kubernetes1.17-client: [x86_64] 
   - kubernetes1.17-controller-manager: [x86_64] 
   - kubernetes1.17-kubeadm: [x86_64] 
-  - kubernetes1.17-kubelet: [x86_64] 
   - kubernetes1.17-kubelet-common: [x86_64] 
   - kubernetes1.17-proxy: [x86_64] 
   - kubernetes1.17-scheduler: [x86_64] 
   - kubernetes1.18-apiserver: [x86_64] 
-  - kubernetes1.18-client: [x86_64] 
   - kubernetes1.18-controller-manager: [x86_64] 
   - kubernetes1.18-proxy: [x86_64] 
   - kubernetes1.18-scheduler: [x86_64] 
   - kubic-locale-archive: [i586] 
   - kubic-pause 
-  - kubicctl: [x86_64] 
-  - kubicd: [x86_64] 
   - kuiviewer 
   - kuiviewer-lang 
   - kunitconversion-devel 
@@ -7008,12 +6997,11 @@ unsorted:
   - kup-server 
   - kupfer 
   - kured 
-  - kured-k8s-yaml 
+  - kured-k8s-yaml: [i586] 
   - kurso-de-esperanto 
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
-  - kustomize: [x86_64] 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -8500,7 +8488,6 @@ unsorted:
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
   - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
-  - libcephfs2: [x86_64] 
   - libceres-devel 
   - libceres1 
   - libcerf-devel 
@@ -10663,7 +10650,7 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0 
+  - liboath0: [i586] 
   - liboauth-devel 
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
@@ -11412,7 +11399,6 @@ unsorted:
   - librados-devel: [x86_64] # devel package of dvd:librbd1 
   - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libradosstriper-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradosstriper1: [x86_64] 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -11661,7 +11647,6 @@ unsorted:
   - librevenge-generators-0_0-0 
   - librfxencode0 
   - librgw-devel: [x86_64] # devel package of dvd:librbd1 
-  - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
   - librime1 
@@ -13866,7 +13851,6 @@ unsorted:
   - metacity-theme-plata 
   - metacity-tools 
   - metallb-controller: [x86_64] 
-  - metallb-k8s-yaml: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
   - metamath-book 
@@ -14903,7 +14887,7 @@ unsorted:
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml 
+  - nfs-client-provisioner-k8s-yaml: [i586] 
   - nfs-ganesha: [x86_64] 
   - nfs-ganesha-ceph: [x86_64] 
   - nfs-ganesha-mount-9P: [x86_64] 
@@ -15258,7 +15242,7 @@ unsorted:
   - o2scl-doc 
   - oaml-devel 
   - oath-toolkit 
-  - oath-toolkit-xml 
+  - oath-toolkit-xml: [i586] 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -16232,9 +16216,6 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
-  - patterns-containers-kubeadm: [x86_64] 
-  - patterns-containers-kubic_admin: [x86_64] 
-  - patterns-containers-kubic_worker: [x86_64] 
   - patterns-desktop-books 
   - patterns-desktop-technical_writing 
   - patterns-devel-base-devel_basis-32bit 
@@ -18613,7 +18594,7 @@ unsorted:
   - python3-Pebble 
   - python3-Pillow-tk 
   - python3-Pint 
-  - python3-PrettyTable 
+  - python3-PrettyTable: [i586] 
   - python3-Protego 
   - python3-PsyLab 
   - python3-PsychoPy 
@@ -19119,9 +19100,6 @@ unsorted:
   - python3-celery 
   - python3-celery-batches 
   - python3-celerymon 
-  - python3-ceph-argparse: [x86_64] 
-  - python3-ceph-common: [x86_64] 
-  - python3-cephfs: [x86_64] 
   - python3-cerealizer 
   - python3-certbot 
   - python3-certbot-apache 
@@ -20730,7 +20708,6 @@ unsorted:
   - python3-queuelib 
   - python3-quicktions 
   - python3-radon 
-  - python3-rados: [x86_64] 
   - python3-raet 
   - python3-random2 
   - python3-rarfile 
@@ -20739,7 +20716,6 @@ unsorted:
   - python3-raven 
   - python3-raven-aiohttp 
   - python3-rawkit 
-  - python3-rbd: [x86_64] 
   - python3-rcssmin 
   - python3-rdflib 
   - python3-readme_renderer 
@@ -20791,7 +20767,6 @@ unsorted:
   - python3-rfc3986 
   - python3-rfc3987 
   - python3-rfc6555 
-  - python3-rgw: [x86_64] 
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
@@ -21675,7 +21650,6 @@ unsorted:
   - rook: [x86_64] 
   - rook-ceph-helm-charts: [x86_64] 
   - rook-integration: [x86_64] 
-  - rook-k8s-yaml: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
   - rosegarden 
@@ -22574,7 +22548,7 @@ unsorted:
   - salt-proxy 
   - salt-shaptools 
   - salt-ssh 
-  - salt-standalone-formulas-configuration 
+  - salt-standalone-formulas-configuration: [i586] 
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
@@ -31941,7 +31915,6 @@ unsorted:
   - wcslib-doc 
   - wcslib-tools 
   - wdm 
-  - weave-k8s-yaml: [x86_64] 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -32587,7 +32560,7 @@ unsorted:
   - ykclient 
   - ykpers 
   - yodl 
-  - yomi-formula 
+  - yomi-formula: [i586] 
   - you-get 
   - you-get-bash-completion 
   - you-get-fish-completion 
