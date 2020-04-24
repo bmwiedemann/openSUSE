@@ -45,6 +45,7 @@ unsorted:
   - EternalTerminal 
   - FAudio-devel 
   - FAudio-devel-32bit: [x86_64] 
+  - FastCGI 
   - FastCGI-devel 
   - FirmwareUpdateKit 
   - FlightGear 
@@ -607,6 +608,7 @@ unsorted:
   - apache2-mod_maxminddb 
   - apache2-mod_mono 
   - apache2-mod_nss 
+  - apache2-mod_perl 
   - apache2-mod_perl-devel 
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
@@ -1603,6 +1605,7 @@ unsorted:
   - charliecloud-examples 
   - chartmuseum 
   - charybdis 
+  - chasen 
   - chasen-devel 
   - chck-devel 
   - check-create-certificate 
@@ -2127,6 +2130,7 @@ unsorted:
   - cryfs 
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
+  - cscope 
   - csindex 
   - csmith 
   - csound 
@@ -2138,6 +2142,7 @@ unsorted:
   - csvprintf 
   - csync 
   - csync2 
+  - ctags 
   - ctdb 
   - ctdb-pcp-pmda 
   - ctdb-tests 
@@ -3074,7 +3079,7 @@ unsorted:
   - finger-server 
   - fio 
   - fips 
-  - fipscheck: [i586] 
+  - fipscheck 
   - fipscheck-devel 
   - firebird-doc 
   - firebird-examples 
@@ -5554,6 +5559,7 @@ unsorted:
   - hte 
   - html-dtd 
   - html-xml-utils 
+  - html2ps 
   - html2text 
   - htmldoc 
   - htop 
@@ -5778,6 +5784,8 @@ unsorted:
   - incidenceeditor-devel 
   - include-what-you-use 
   - include-what-you-use-tools 
+  - indent 
+  - indent-lang 
   - indriya 
   - indriya-javadoc 
   - ineffassign 
@@ -5857,6 +5865,7 @@ unsorted:
   - ipa-pgothic-bold-fonts 
   - ipa-pgothic-bolditalic-fonts 
   - ipa-pgothic-italic-fonts 
+  - ipadic 
   - ipcalc 
   - iperf 
   - iperf-devel 
@@ -6456,7 +6465,9 @@ unsorted:
   - kajaani-kombat-server 
   - kajongg 
   - kajongg-lang 
+  - kakasi 
   - kakasi-devel 
+  - kakasi-dict 
   - kakoune 
   - kalarm 
   - kalarm-lang 
@@ -6587,16 +6598,21 @@ unsorted:
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
+  - kernel-default-devel 
+  - kernel-devel 
+  - kernel-docs 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
+  - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa 
   - kernel-pae: [i586] 
   - kernel-pae-devel: [i586] 
+  - kernel-source 
   - kernel-source-vanilla 
-  - kernel-syms: [i586] 
+  - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
   - ketchup 
@@ -8923,6 +8939,7 @@ unsorted:
   - libelektra-devel-doc 
   - libelektra4 
   - libelementary1 
+  - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
   - libell0 
@@ -9039,6 +9056,7 @@ unsorted:
   - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
+  - libfcgi0 
   - libfcitx-4_2_9-32bit: [x86_64] 
   - libfdata-devel 
   - libfdata1 
@@ -9092,7 +9110,7 @@ unsorted:
   - libfinal-devel 
   - libfinal-examples 
   - libfinal0 
-  - libfipscheck1: [i586] 
+  - libfipscheck1 
   - libfipscheck1-32bit: [x86_64] 
   - libfishsound-devel 
   - libfishsound1 
@@ -10764,7 +10782,9 @@ unsorted:
   - libopenspecfun1 
   - libopenssl-1_0_0-devel 
   - libopenssl-1_0_0-devel-32bit: [x86_64] 
+  - libopenssl-1_1-devel 
   - libopenssl-1_1-devel-32bit: [x86_64] 
+  - libopenssl-devel 
   - libopenssl1_0_0 
   - libopenssl1_0_0-32bit: [x86_64] 
   - libopenssl1_0_0-hmac 
@@ -11011,6 +11031,7 @@ unsorted:
   - libpinyin13-32bit: [x86_64] 
   - libpipeline-devel 
   - libpisock-devel 
+  - libpisock9 
   - libpisync-devel 
   - libpisync1 
   - libpkcs11-helper1-32bit: [x86_64] 
@@ -16203,6 +16224,7 @@ unsorted:
   - pasystray 
   - patch2mail 
   - patchelf 
+  - patchutils 
   - patool 
   - patool-bash-completion 
   - patterns-base-32bit: [x86_64] 
@@ -16219,11 +16241,14 @@ unsorted:
   - patterns-desktop-books 
   - patterns-desktop-technical_writing 
   - patterns-devel-base-devel_basis-32bit 
+  - patterns-devel-base-devel_kernel 
   - patterns-devel-base-devel_kernel-32bit 
   - patterns-devel-base-devel_web 
   - patterns-devel-java-devel_java 
   - patterns-devel-mono-devel_mono 
+  - patterns-devel-perl-devel_perl 
   - patterns-devel-python-devel_python3 
+  - patterns-devel-ruby-devel_ruby 
   - patterns-devel-tcl-devel_tcl 
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
@@ -16440,16 +16465,22 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
+  - perl-Algorithm-Diff 
   - perl-Alien-Build 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
   - perl-Alien-Tidyp 
   - perl-Alien-wxWidgets 
   - perl-Any-Moose 
+  - perl-AnyEvent 
   - perl-AnyEvent-HTTP 
   - perl-AnyEvent-I3 
+  - perl-Apache-AuthCookie 
+  - perl-Apache-DBI 
   - perl-Apache-Filter 
   - perl-Apache-LogFormat-Compiler 
+  - perl-Apache-Session 
+  - perl-Apache-SessionX 
   - perl-Apache2-AuthCookieDBI 
   - perl-App-Ack 
   - perl-App-CELL 
@@ -16467,6 +16498,7 @@ unsorted:
   - perl-App-Rad-Plugin-MoreHelp 
   - perl-App-cpanminus 
   - perl-App-perlbrew 
+  - perl-AppConfig 
   - perl-Archive-Cpio 
   - perl-Archive-Extract 
   - perl-Archive-Peek 
@@ -16475,12 +16507,17 @@ unsorted:
   - perl-Audio-RPLD 
   - perl-Authen-DecHpwd 
   - perl-Authen-Passphrase 
+  - perl-Authen-SASL-Cyrus 
   - perl-B-COW 
   - perl-B-Debug 
+  - perl-B-Hooks-EndOfScope 
   - perl-B-Hooks-OP-Annotation 
   - perl-B-Hooks-OP-Check 
   - perl-B-Hooks-OP-PPAddr 
   - perl-B-Keywords 
+  - perl-B-Utils 
+  - perl-BIND-Conf_Parser 
+  - perl-BSD-Resource 
   - perl-Benchmark-Timer 
   - perl-Bit-Vector 
   - perl-Boost-Geometry-Utils 
@@ -16491,6 +16528,7 @@ unsorted:
   - perl-Business-ISMN 
   - perl-Business-ISSN 
   - perl-CGI-Ajax 
+  - perl-CGI-Application 
   - perl-CGI-FastTemplate 
   - perl-CGI-FormBuilder 
   - perl-CGI-Session 
@@ -16509,15 +16547,19 @@ unsorted:
   - perl-Cache-Cache 
   - perl-Cache-LRU 
   - perl-Cache-Memcached 
+  - perl-Cairo 
   - perl-Cairo-GObject 
   - perl-Calendar-Simple 
   - perl-Canary-Stability 
   - perl-Capture-Tiny 
   - perl-Carp-Always 
+  - perl-Carp-Assert 
   - perl-Carp-Assert-More 
   - perl-Carp-Clan 
   - perl-Carton 
   - perl-Catalyst-Manual 
+  - perl-Chart 
+  - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
   - perl-Class-Accessor-Grouped 
   - perl-Class-Accessor-Lite 
@@ -16530,19 +16572,32 @@ unsorted:
   - perl-Class-C3-XS 
   - perl-Class-Container 
   - perl-Class-DBI 
+  - perl-Class-Data-Inheritable 
+  - perl-Class-Date 
   - perl-Class-ErrorHandler 
   - perl-Class-Factory-Util 
+  - perl-Class-ISA 
   - perl-Class-Inner 
+  - perl-Class-Inspector 
+  - perl-Class-Load 
+  - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
+  - perl-Class-Method-Modifiers 
   - perl-Class-Method-Modifiers-Fast 
+  - perl-Class-MethodMaker 
   - perl-Class-Mix 
+  - perl-Class-Multimethods 
   - perl-Class-ReturnValue 
+  - perl-Class-Singleton 
   - perl-Class-Spiffy 
   - perl-Class-Std 
   - perl-Class-Tiny 
   - perl-Class-Trigger 
   - perl-Class-Unload 
+  - perl-Class-WhiteHole 
   - perl-Class-XPath 
+  - perl-Class-XSAccessor 
+  - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -16556,6 +16611,7 @@ unsorted:
   - perl-Config-GitLike 
   - perl-Config-Grammar 
   - perl-Config-INI 
+  - perl-Config-IniFiles 
   - perl-Config-MVP 
   - perl-Config-MVP-Reader-INI 
   - perl-Config-MySQL 
@@ -16567,6 +16623,8 @@ unsorted:
   - perl-Contextual-Return 
   - perl-Convert-BER 
   - perl-Cookie-Baker 
+  - perl-Crypt-Blowfish 
+  - perl-Crypt-CBC 
   - perl-Crypt-DH-GMP 
   - perl-Crypt-Eksblowfish 
   - perl-Crypt-MySQL 
@@ -16580,7 +16638,12 @@ unsorted:
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
+  - perl-DBD-CSV 
   - perl-DBD-MariaDB 
+  - perl-DBD-ODBC 
+  - perl-DBD-Pg 
+  - perl-DBD-XBase 
+  - perl-DBD-mysql 
   - perl-DBICx-TestDatabase 
   - perl-DBIx-Class 
   - perl-DBIx-Class-DeploymentHandler 
@@ -16610,6 +16673,7 @@ unsorted:
   - perl-Data-Hierarchy 
   - perl-Data-Integer 
   - perl-Data-ObjectDriver 
+  - perl-Data-OptList 
   - perl-Data-Page 
   - perl-Data-Peek 
   - perl-Data-Perl 
@@ -16629,38 +16693,51 @@ unsorted:
   - perl-Date-Holidays-CZ 
   - perl-Date-Simple 
   - perl-Date-Tiny 
+  - perl-DateTime 
   - perl-DateTime-Calendar-Julian 
   - perl-DateTime-Calendar-Mayan 
+  - perl-DateTime-Format-Builder 
   - perl-DateTime-Format-DateParse 
   - perl-DateTime-Format-Flexible 
+  - perl-DateTime-Format-ISO8601 
   - perl-DateTime-Format-Mail 
   - perl-DateTime-Format-MySQL 
   - perl-DateTime-Format-Natural 
   - perl-DateTime-Format-Pg 
   - perl-DateTime-Format-SQLite 
+  - perl-DateTime-Format-Strptime 
   - perl-DateTime-Format-W3CDTF 
+  - perl-DateTime-Locale 
+  - perl-DateTime-TimeZone 
   - perl-DateTime-Tiny 
   - perl-Debug-Trace 
   - perl-Declare-Constraints-Simple 
+  - perl-Devel-Caller 
   - perl-Devel-CheckBin 
   - perl-Devel-CheckCompiler 
   - perl-Devel-CheckLib 
   - perl-Devel-CheckOS 
   - perl-Devel-Confess 
+  - perl-Devel-CoreStack 
   - perl-Devel-Cover 
   - perl-Devel-Cover-Report-Codecov 
   - perl-Devel-Cycle 
   - perl-Devel-Declare 
   - perl-Devel-FindPerl 
+  - perl-Devel-GlobalDestruction 
   - perl-Devel-GlobalPhase 
   - perl-Devel-Hide 
   - perl-Devel-Leak 
+  - perl-Devel-LexAlias 
   - perl-Devel-NYTProf 
+  - perl-Devel-OverloadInfo 
   - perl-Devel-PPPort 
   - perl-Devel-PartialDump 
   - perl-Devel-PatchPerl 
   - perl-Devel-REPL 
+  - perl-Devel-StackTrace 
   - perl-Devel-StackTrace-AsHTML 
+  - perl-Devel-Symdump 
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
@@ -16669,11 +16746,13 @@ unsorted:
   - perl-Digest-JHash 
   - perl-Digest-MD5 
   - perl-Digest-Perl-MD5 
+  - perl-Dist-CheckConflicts 
   - perl-Dist-Zilla 
   - perl-Dumbbench 
   - perl-Email-Abstract 
   - perl-Email-Address 
   - perl-Email-Address-XS 
+  - perl-Email-Date-Format 
   - perl-Email-MIME 
   - perl-Email-MIME-ContentType 
   - perl-Email-MIME-Encodings 
@@ -16683,27 +16762,37 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
+  - perl-Encode-HanExtra 
+  - perl-Encode-JIS2K 
+  - perl-Eval-Closure 
   - perl-Eval-LineNumbers 
   - perl-Event 
   - perl-Exception-Base 
+  - perl-Exception-Class 
   - perl-Export-Attrs 
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
+  - perl-Exporter-Tiny 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
   - perl-ExtUtils-CppGuess 
+  - perl-ExtUtils-Depends 
+  - perl-ExtUtils-F77 
   - perl-ExtUtils-Helpers 
   - perl-ExtUtils-InstallPaths 
   - perl-ExtUtils-LibBuilder 
   - perl-ExtUtils-MakeMaker 
   - perl-ExtUtils-MakeMaker-CPANfile 
   - perl-ExtUtils-Manifest 
+  - perl-ExtUtils-PkgConfig 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
   - perl-FFI-CheckLib 
+  - perl-FastCGI 
   - perl-Feed-Find 
   - perl-Fennec-Lite 
   - perl-File-BaseDir 
@@ -16713,19 +16802,23 @@ unsorted:
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
   - perl-File-FcntlLock 
+  - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
   - perl-File-Finder 
   - perl-File-Flock 
   - perl-File-HomeDir 
   - perl-File-LibMagic 
+  - perl-File-MMagic 
   - perl-File-Map 
   - perl-File-MimeInfo 
   - perl-File-Mork 
   - perl-File-Next 
+  - perl-File-Path 
   - perl-File-Path-Tiny 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
+  - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -16733,9 +16826,12 @@ unsorted:
   - perl-File-Slurp-Unicode 
   - perl-File-Slurper 
   - perl-File-Sync 
+  - perl-File-Tail 
   - perl-File-Temp 
   - perl-File-Touch 
+  - perl-File-Type 
   - perl-File-Unpack 
+  - perl-File-Which 
   - perl-File-chdir 
   - perl-File-pushd 
   - perl-Filesys-Df 
@@ -16743,12 +16839,17 @@ unsorted:
   - perl-Filesys-Statvfs 
   - perl-Finance-Quote 
   - perl-FindBin-Real 
+  - perl-Font-AFM 
   - perl-Font-TTF 
   - perl-FreezeThaw 
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
+  - perl-GD 
   - perl-GD-Barcode 
+  - perl-GD-Graph3d 
+  - perl-GDGraph 
+  - perl-GDTextUtil 
   - perl-GStreamer1 
   - perl-Geo-Coordinates-UTM 
   - perl-Geography-Countries 
@@ -16756,6 +16857,7 @@ unsorted:
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
   - perl-Git-Version-Compare 
+  - perl-Glib 
   - perl-Glib-Object-Introspection 
   - perl-Gnome2-Canvas 
   - perl-Gnome2-VFS 
@@ -16768,22 +16870,32 @@ unsorted:
   - perl-GraphicsMagick 
   - perl-Gravatar-URL 
   - perl-Growl-GNTP 
+  - perl-Gtk2 
   - perl-Gtk2-AppIndicator 
   - perl-Gtk2-ImageView 
   - perl-Gtk2-Unique 
   - perl-Gtk3 
   - perl-Gtk3-SimpleList 
+  - perl-Guard 
+  - perl-HTML-Clean 
   - perl-HTML-Element-Extended 
   - perl-HTML-Encoding 
+  - perl-HTML-FillInForm 
   - perl-HTML-Form 
   - perl-HTML-FormHandler 
+  - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
   - perl-HTML-RewriteAttributes 
   - perl-HTML-Scrubber 
+  - perl-HTML-SimpleParse 
   - perl-HTML-Stream 
   - perl-HTML-TableExtract 
+  - perl-HTML-Template 
   - perl-HTML-Tidy 
   - perl-HTML-TokeParser-Simple 
+  - perl-HTML-Tree 
+  - perl-HTTP-Body 
+  - perl-HTTP-DAV 
   - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
   - perl-HTTP-Headers-Fast 
@@ -16794,10 +16906,12 @@ unsorted:
   - perl-HTTP-Server-Simple 
   - perl-HTTP-Thin 
   - perl-HTTP-Tiny 
+  - perl-HTTPS-Daemon 
   - perl-Hamlib 
   - perl-Hash-Merge 
   - perl-Hash-Merge-Simple 
   - perl-Hash-MoreUtils 
+  - perl-Hash-MultiValue 
   - perl-Hash-Util-FieldHash-Compat 
   - perl-Hook-LexWrap 
   - perl-IO-All 
@@ -16810,12 +16924,16 @@ unsorted:
   - perl-IO-Multiplex 
   - perl-IO-Pager 
   - perl-IO-Pipely 
+  - perl-IO-SessionData 
   - perl-IO-Socket-Multicast 
   - perl-IO-Socket-PortState 
   - perl-IO-Socket-Timeout 
+  - perl-IO-String 
+  - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
   - perl-IP-Country 
+  - perl-IPC-Run 
   - perl-IPC-Run3 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -16823,16 +16941,20 @@ unsorted:
   - perl-Ima-DBI 
   - perl-Image-Info 
   - perl-Image-Sane 
+  - perl-Image-Size 
   - perl-Import-Into 
   - perl-Importer 
+  - perl-Inline 
   - perl-Inline-Python 
   - perl-Iterator 
   - perl-Iterator-Util 
+  - perl-JSON 
   - perl-JSON-Any 
   - perl-JSON-DWIW 
   - perl-JSON-MaybeXS 
   - perl-JSON-RPC 
   - perl-JSON-Validator 
+  - perl-JSON-XS 
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-Online 
   - perl-Lexical-Persistence 
@@ -16855,9 +16977,12 @@ unsorted:
   - perl-Lingua-Translit 
   - perl-Linux-DesktopFiles 
   - perl-Linux-Inotify2 
+  - perl-Linux-Pid 
   - perl-List-AllUtils 
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
+  - perl-List-MoreUtils 
+  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -16868,15 +16993,22 @@ unsorted:
   - perl-LockFile-Simple 
   - perl-Log-Any 
   - perl-Log-Contextual 
+  - perl-Log-Dispatch 
   - perl-Log-Dispatch-Array 
   - perl-Log-Dispatch-Config 
   - perl-Log-Dispatch-FileRotate 
   - perl-Log-Dispatchouli 
+  - perl-Log-Log4perl 
   - perl-Log-Message 
   - perl-Log-Message-Simple 
   - perl-MCE 
   - perl-MIME-Charset 
   - perl-MIME-EncWords 
+  - perl-MIME-Lite 
+  - perl-MIME-Types 
+  - perl-MLDBM 
+  - perl-MLDBM-Sync 
+  - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-SPF-Test 
@@ -16884,6 +17016,7 @@ unsorted:
   - perl-Mail-Sendmail 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
   - perl-Mason 
+  - perl-Math-Base-Convert 
   - perl-Math-BigInt 
   - perl-Math-BigInt-GMP 
   - perl-Math-Calc-Units 
@@ -16906,6 +17039,7 @@ unsorted:
   - perl-Mock-Config 
   - perl-Mock-Quick 
   - perl-Modern-Perl 
+  - perl-Module-Build 
   - perl-Module-Build-Deprecated 
   - perl-Module-Build-Tiny 
   - perl-Module-Build-WithXSpp 
@@ -16913,6 +17047,8 @@ unsorted:
   - perl-Module-CPANfile 
   - perl-Module-Depends 
   - perl-Module-Find 
+  - perl-Module-Implementation 
+  - perl-Module-Info 
   - perl-Module-Install 
   - perl-Module-Install-AuthorTests 
   - perl-Module-Install-ExtraTests 
@@ -16922,7 +17058,10 @@ unsorted:
   - perl-Module-Pluggable 
   - perl-Module-Reader 
   - perl-Module-Refresh 
+  - perl-Module-Runtime 
+  - perl-Module-Runtime-Conflicts 
   - perl-Module-ScanDeps 
+  - perl-Module-Signature 
   - perl-Module-Starter 
   - perl-Module-Util 
   - perl-Mojo-DOM58 
@@ -16942,6 +17081,7 @@ unsorted:
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
   - perl-MooX-late 
+  - perl-Moose 
   - perl-Moose-Autobox 
   - perl-MooseX-Aliases 
   - perl-MooseX-App-Cmd 
@@ -17003,19 +17143,25 @@ unsorted:
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
   - perl-Mozilla-LDAP 
+  - perl-NKF 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
   - perl-Net-DNS-Resolver-Programmable 
+  - perl-Net-Daemon 
   - perl-Net-Domain-TLD 
   - perl-Net-Dropbox-API 
   - perl-Net-HTTPServer 
   - perl-Net-IDN-Encode 
   - perl-Net-IDN-Nameprep 
   - perl-Net-INET6Glue 
+  - perl-Net-IP 
+  - perl-Net-IPv4Addr 
   - perl-Net-Ident 
+  - perl-Net-Jabber 
   - perl-Net-Libproxy 
+  - perl-Net-Netmask 
   - perl-Net-OAuth 
   - perl-Net-OpenID-Common 
   - perl-Net-OpenID-Consumer 
@@ -17025,11 +17171,14 @@ unsorted:
   - perl-Net-SSH2 
   - perl-Net-SSLGlue 
   - perl-Net-TFTP 
+  - perl-Net-Telnet 
   - perl-Net-Twitter 
   - perl-Net-Whois-RIPE 
   - perl-Net-Whois-Raw 
+  - perl-Net-XMPP 
   - perl-NetPacket 
   - perl-NetxAP 
+  - perl-Number-Compare 
   - perl-Number-Format 
   - perl-Number-WithError 
   - perl-OLE-Storage_Lite 
@@ -17044,6 +17193,7 @@ unsorted:
   - perl-PCP-LogSummary 
   - perl-PCP-MMV 
   - perl-PCP-PMDA 
+  - perl-PDA-Pilot 
   - perl-PDF-API2 
   - perl-PHP-Serialization 
   - perl-POE 
@@ -17053,14 +17203,23 @@ unsorted:
   - perl-PPIx-QuoteLike 
   - perl-PPIx-Regexp 
   - perl-PPIx-Utilities 
+  - perl-Package-DeprecationManager 
   - perl-Package-Generator 
+  - perl-Package-Stash 
+  - perl-Package-Stash-XS 
   - perl-Package-Variant 
+  - perl-PadWalker 
+  - perl-Pango 
   - perl-Params-Classify 
   - perl-Params-Coerce 
+  - perl-Params-Util 
+  - perl-Params-Validate 
+  - perl-Params-ValidationCompiler 
   - perl-Parse-CPAN-Packages 
   - perl-Parse-Method-Signatures 
   - perl-Parse-PMFile 
   - perl-Parse-Win32Registry 
+  - perl-Parse-Yapp 
   - perl-PatchReader 
   - perl-Path-Class 
   - perl-Path-FindDev 
@@ -17073,6 +17232,7 @@ unsorted:
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
   - perl-Perl-PrereqScanner 
+  - perl-Perl-Tidy 
   - perl-Perl-Version 
   - perl-Perl6-Junction 
   - perl-PerlIO-Layers 
@@ -17081,6 +17241,7 @@ unsorted:
   - perl-PerlIO-utf8_strict 
   - perl-PerlIO-via-Timeout 
   - perl-PerlIO-via-dynamic 
+  - perl-PerlMagick 
   - perl-Plack 
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-Session 
@@ -17088,12 +17249,14 @@ unsorted:
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Eventual 
+  - perl-Pod-HtmlPsPdf 
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
+  - perl-PostScript-Simple 
   - perl-Prima 
   - perl-Probe-Perl 
   - perl-Proc-Fork 
@@ -17102,7 +17265,9 @@ unsorted:
   - perl-Protocol-Redis 
   - perl-Protocol-Redis-Faster 
   - perl-Protocol-WebSocket 
+  - perl-Quantum-Superpositions 
   - perl-RDF-Trine 
+  - perl-RPC-XML 
   - perl-RPM-Header-PurePerl 
   - perl-RPM2 
   - perl-Readonly 
@@ -17115,17 +17280,22 @@ unsorted:
   - perl-Return-Value 
   - perl-Role-HasMessage 
   - perl-Role-Identifiable 
+  - perl-Role-Tiny 
   - perl-Rose-Object 
   - perl-Router-Simple 
   - perl-SDL 
   - perl-SGML-Parser-OpenSP 
+  - perl-SGMLS 
+  - perl-SOAP-Lite 
   - perl-SQL-Abstract 
   - perl-SQL-ReservedWords 
   - perl-SQL-SplitStatement 
+  - perl-SQL-Statement 
   - perl-SQL-Tokenizer 
   - perl-SQL-Translator 
   - perl-SUPER 
   - perl-SVG 
+  - perl-SVN-Simple 
   - perl-Safe-Isa 
   - perl-Scalar-List-Utils 
   - perl-Scalar-String 
@@ -17135,7 +17305,10 @@ unsorted:
   - perl-Sereal 
   - perl-Sereal-Decoder 
   - perl-Sereal-Encoder 
+  - perl-Set-Crontab 
   - perl-Set-IntSpan 
+  - perl-Set-Object 
+  - perl-Set-Scalar 
   - perl-Smart-Comments 
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
@@ -17144,6 +17317,7 @@ unsorted:
   - perl-Sort-Key 
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
+  - perl-Specio 
   - perl-Spiffy 
   - perl-Spooky-Patterns-XS: [x86_64] 
   - perl-Spreadsheet-ParseExcel 
@@ -17169,10 +17343,16 @@ unsorted:
   - perl-String-Truncate 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
+  - perl-Sub-Exporter 
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
+  - perl-Sub-Exporter-Progressive 
+  - perl-Sub-Identify 
   - perl-Sub-Info 
+  - perl-Sub-Install 
+  - perl-Sub-Name 
   - perl-Sub-Override 
+  - perl-Sub-Quote 
   - perl-Sub-Retry 
   - perl-Sub-Spec 
   - perl-Sub-Uplevel 
@@ -17200,7 +17380,9 @@ unsorted:
   - perl-Task-Kensho-Testing 
   - perl-Task-Kensho-XML 
   - perl-Task-Moose 
+  - perl-Task-Weaken 
   - perl-Template-GD 
+  - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
   - perl-Term-ReadPassword 
@@ -17227,6 +17409,7 @@ unsorted:
   - perl-Test-Exception 
   - perl-Test-Exception-LessClever 
   - perl-Test-FailWarnings 
+  - perl-Test-Fatal 
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
@@ -17237,6 +17420,7 @@ unsorted:
   - perl-Test-JSON 
   - perl-Test-Kit 
   - perl-Test-LWP-UserAgent 
+  - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
   - perl-Test-LongString 
   - perl-Test-Manifest 
@@ -17259,8 +17443,10 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
+  - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
+  - perl-Test-Requires 
   - perl-Test-Requires-Git 
   - perl-Test-Script 
   - perl-Test-SharedFork 
@@ -17294,16 +17480,23 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
+  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
+  - perl-Text-ChaSen 
   - perl-Text-CharWidth 
+  - perl-Text-DelimMatch 
   - perl-Text-Diff 
   - perl-Text-German 
+  - perl-Text-Glob 
   - perl-Text-Hunspell 
+  - perl-Text-Iconv 
+  - perl-Text-Kakasi 
   - perl-Text-Markdown 
   - perl-Text-Patch 
   - perl-Text-RecordParser 
   - perl-Text-Reform 
   - perl-Text-Roman 
+  - perl-Text-Soundex 
   - perl-Text-SpellChecker 
   - perl-Text-Sprintf-Named 
   - perl-Text-Table 
@@ -17313,25 +17506,31 @@ unsorted:
   - perl-Text-Wrapper 
   - perl-TheSchwartz 
   - perl-Throwable 
+  - perl-Tie-Cache 
   - perl-Tie-Cycle 
   - perl-Tie-Hash-DBD 
   - perl-Tie-Hash-Method 
+  - perl-Tie-IxHash 
   - perl-Tie-RefHash-Weak 
   - perl-Tie-Simple 
   - perl-Tie-ToObject 
   - perl-Time-Clock 
+  - perl-Time-Duration 
   - perl-Time-Duration-Parse 
   - perl-Time-Local 
   - perl-Time-Mock 
   - perl-Time-Moment 
   - perl-Time-Out 
+  - perl-Time-Period 
   - perl-Time-Tiny 
+  - perl-Time-modules 
   - perl-Tk 
   - perl-Tk-Clock 
   - perl-Tk-devel 
   - perl-Tree-DAG_Node 
   - perl-TryCatch 
   - perl-Type-Tiny 
+  - perl-Types-Serialiser 
   - perl-UNIVERSAL-can 
   - perl-UNIVERSAL-isa 
   - perl-UNIVERSAL-moniker 
@@ -17344,14 +17543,19 @@ unsorted:
   - perl-Unicode-Collate 
   - perl-Unicode-LineBreak 
   - perl-Unicode-Map 
+  - perl-Unicode-Map8 
   - perl-Unicode-Normalize 
+  - perl-Unicode-String 
   - perl-Unicode-Stringprep 
+  - perl-Variable-Magic 
   - perl-Verilog-Perl 
+  - perl-WWW-Form-UrlEncoded 
   - perl-WWW-Mechanize 
   - perl-WWW-PAUSE-CleanUpHomeDir 
   - perl-WWW-Pastebin-PastebinCom-Create 
   - perl-WWW-Shorten 
   - perl-Want 
+  - perl-WeakRef 
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
@@ -17362,6 +17566,7 @@ unsorted:
   - perl-XML-Atom-SimpleFeed 
   - perl-XML-Bare 
   - perl-XML-CommonNS 
+  - perl-XML-DOM 
   - perl-XML-DOM-XPath 
   - perl-XML-Entities 
   - perl-XML-Feed 
@@ -17370,18 +17575,23 @@ unsorted:
   - perl-XML-Handler-YAWriter 
   - perl-XML-LibXML-PrettyPrint 
   - perl-XML-LibXML-Simple 
+  - perl-XML-LibXSLT 
   - perl-XML-Namespace 
   - perl-XML-NamespaceFactory 
   - perl-XML-NodeFilter 
+  - perl-XML-Parser-Lite 
   - perl-XML-RSS 
+  - perl-XML-RegExp 
   - perl-XML-SAX-ExpatXS 
   - perl-XML-SAX-Writer 
   - perl-XML-SemanticDiff 
   - perl-XML-SimpleObject-LibXML 
+  - perl-XML-Stream 
   - perl-XML-Structured 
   - perl-XML-Writer-String 
   - perl-XML-XPath 
   - perl-XML-XPathEngine 
+  - perl-XML-XSLT 
   - perl-XMLRPC-Lite 
   - perl-XSLoader 
   - perl-YAML-LibYAML-API 
@@ -17407,12 +17617,16 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
+  - perl-libconfigfile 
   - perl-libintl-perl 
   - perl-libprelude 
+  - perl-libxml-perl 
   - perl-local-lib 
   - perl-marisa 
   - perl-mousex-getopt 
   - perl-multidimensional 
+  - perl-namespace-autoclean 
+  - perl-namespace-clean 
   - perl-obexftp 
   - perl-pcsc 
   - perl-prefork 
@@ -17436,8 +17650,8 @@ unsorted:
   - permissions-zypp-plugin 
   - permlib-devel 
   - perseus-sdr-tools 
-  - pesign: [i586] 
-  - pesign-obs-integration: [i586] 
+  - pesign 
+  - pesign-obs-integration 
   - petsc-devel 
   - petsc-doc 
   - petsc-gnu-mpich-hpc-devel 
@@ -21729,6 +21943,7 @@ unsorted:
   - ruby-apparmor 
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
+  - ruby-devel 
   - ruby-geos 
   - ruby-libprelude 
   - ruby-marisa 
@@ -21737,6 +21952,7 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
+  - ruby2.6-devel 
   - ruby2.6-devel-extra 
   - ruby2.6-doc 
   - ruby2.6-doc-ri 
@@ -22496,6 +22712,7 @@ unsorted:
   - rubygem-mail-2_4 
   - rubygem-mail-2_4-doc 
   - rubygem-passenger-nginx 
+  - rubygem-ruby-fcgi 
   - rubygem-ruby-fcgi-doc 
   - rubygem-ruby-fcgi-testsuite 
   - rubygem-sexp_processor-3_2 
