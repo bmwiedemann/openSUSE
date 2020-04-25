@@ -1,7 +1,7 @@
 #
 # spec file for package libyaml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           libyaml
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
-Summary:        A YAML 1.1 parser and emitter written in C
+Summary:        A YAML parser and emitter written in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://pyyaml.org/wiki/LibYAML
+URL:            https://pyyaml.org/wiki/LibYAML
 Source:         http://pyyaml.org/download/libyaml/yaml-%{version}.tar.gz
 BuildRequires:  pkgconfig
 
 %description
-A YAML 1.1 parser and emitter written in C
+A YAML parser and emitter written in C
 
 %define lib_name libyaml-0-2
 
 %package -n %{lib_name}
-Summary:        A YAML 1.1 parser and emitter written in C
+Summary:        A YAML parser and emitter written in C
 Group:          System/Libraries
 
 %description -n %{lib_name}
@@ -45,21 +45,21 @@ Requires:       %{lib_name} = %{version}
 
 %description devel
 This package holds the development files for libyaml,
-a YAML 1.1 parser and emitter written in C.
+a YAML parser and emitter written in C.
 
 %prep
 %setup -q -n yaml-%{version}
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig
