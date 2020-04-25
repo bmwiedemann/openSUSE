@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:39:46 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200418
+  + improve tracemunch logic for "RUN" compaction.
+  + fix a special case in wresize() where copying the old text did not
+    check if the last cell on a row was the beginning of a fullwidth
+    character (adapted from patch by Benno Schulenberg).
+  + use vt52+keypad in xterm-vt52, from xterm #354 -TD
+  + improve see-also section of user_caps.5
+- Add ncurses patch 20200411
+  + fix find_pair(), overlooked when refactoring for _nc_reserve_pairs()
+    (report/testcase by Brad Town, cf: 20170812).
+  + add a trailing null for magic-string in putwin, flagged by gcc 10
+  + update check for gcc version versus gnat to work with gcc 10.x
+
+-------------------------------------------------------------------
 Tue Apr  7 08:42:40 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add check for wide character support in libncursesw 

@@ -2814,4 +2814,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>793801</requestid>
   </revision>
+  <revision rev="172" vrev="3">
+    <srcmd5>b8896bf6c5739ab5d2af4e5a26915987</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1587838112</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20200418
+  + improve tracemunch logic for &quot;RUN&quot; compaction.
+  + fix a special case in wresize() where copying the old text did not
+    check if the last cell on a row was the beginning of a fullwidth
+    character (adapted from patch by Benno Schulenberg).
+  + use vt52+keypad in xterm-vt52, from xterm #354 -TD
+  + improve see-also section of user_caps.5
+- Add ncurses patch 20200411
+  + fix find_pair(), overlooked when refactoring for _nc_reserve_pairs()
+    (report/testcase by Brad Town, cf: 20170812).
+  + add a trailing null for magic-string in putwin, flagged by gcc 10
+  + update check for gcc version versus gnat to work with gcc 10.x</comment>
+    <requestid>795662</requestid>
+  </revision>
 </revisionlist>
