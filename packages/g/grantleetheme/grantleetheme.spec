@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantleetheme
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 5.19.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
@@ -42,8 +38,12 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(Qt5Network) >= 5.4.0
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-%requires_eq    grantlee5
 %if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+%if %{with lang}
+%requires_eq    grantlee5
 Recommends:     %{name}-lang
 %endif
 
