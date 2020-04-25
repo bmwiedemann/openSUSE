@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restplus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
+%bcond_without python2
 Name:           python-flask-restplus
 Version:        0.13.0
 Release:        0
@@ -27,6 +28,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/noirbizarre/flask-restplus
 Source:         https://github.com/noirbizarre/flask-restplus/archive/%{version}.tar.gz
 Patch0:         pytest4.patch
+Patch1:         001-Fix-content-type-assertion-for-werkzeug-1.0.patch
+Patch2:         002-Update-cached_property-import-for-werkzeug-1.0.patch
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module aniso8601 >= 0.82}
 BuildRequires:  %{python_module jsonschema}
@@ -35,8 +38,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-ipaddress
+%endif
 Requires:       python-Flask >= 0.8
 Requires:       python-aniso8601 >= 0.82
 Requires:       python-jsonschema
@@ -67,6 +72,8 @@ to describe APIs and to expose their documentation using Swagger.
 %prep
 %setup -q -n flask-restplus-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %python_build
