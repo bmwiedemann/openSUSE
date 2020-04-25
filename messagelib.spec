@@ -21,22 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
-Patch1:         0002-Initialize-variable.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         0001-Revert-Disable-reply-with-quote-text-as-this-bug-is-.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
@@ -86,14 +77,12 @@ BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+BuildRequires:  libboost_headers-devel
+Recommends:     %{name}-lang
 
 %description
 This package contains the messagelib library. It is used by KDE PIM to parse and
@@ -112,18 +101,11 @@ Requires:       cmake(KF5Libkleo)
 Requires:       cmake(KF5MessageCore)
 Requires:       cmake(KF5Mime)
 Requires:       cmake(KF5PimCommon)
-%if 0%{?suse_version} > 1325
-Requires:       libboost_headers-devel
-%else
-Requires:       boost-devel
-%endif
 
 %description devel
 This package contains source headers for messagelib.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1
