@@ -27,6 +27,10 @@ URL:            https://www.ezix.org/project/wiki/HardwareLiSter
 Source:         https://www.ezix.org/software/files/lshw-%{version}.tar.gz
 Source1:        lshw.desktop.in
 Source2:        lshw.png
+# PATCH-FIX-UPSTREAM - https://ezix.org/src/pkg/lshw/pulls/32 - boo#1168865 and boo#1169668
+Patch1:         lshw-fix-segfault-in-apfs-volume-code.patch
+# PATCH-FIX-UPSTREAM - https://github.com/lyonel/lshw/pull/52 - boo#1169668
+Patch2:         lshw-fix-mmc.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
@@ -74,14 +78,9 @@ included documentation or go to the lshw Web page,
 http://www.ezix.org/software/lshw.html
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%ifarch ppc64 ppc64le aarch64
-# Disable LTO for specified arches, bypass bug
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1168865
-%define _lto_cflags %{nil}
-%endif
 
 %make_build \
   SBINDIR="%{_sbindir}" \

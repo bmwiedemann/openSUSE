@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 24 13:15:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Reenable LTO for powerpc and aarch64
+- Fix PowerPC and aarch64 LTO: boo#1168865 and boo#1169668
+  * lshw-fix-segfault-in-apfs-volume-code.patch
+- Fix aarch64 SIGABRT: (boo#1169668)
+  * lshw-fix-mmc.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 12:16:28 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Disable LTO for aarch64 & PowerPC, bypass boo#1168865
