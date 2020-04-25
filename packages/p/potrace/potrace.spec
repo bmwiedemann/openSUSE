@@ -1,7 +1,7 @@
 #
 # spec file for package potrace
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           potrace
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Utility for Tracing a Bitmap to Scalable Outline Image
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            http://potrace.sourceforge.net/
+URL:            http://potrace.sourceforge.net/
 Source:         http://potrace.sourceforge.net/download/%{version}/%{name}-%{version}.tar.gz
+Patch1:         potrace_configure_chg_for_lto.patch
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
-Patch1:         potrace_configure_chg_for_lto.patch
 Provides:       bitmap_tracing
 
 %description
@@ -85,7 +85,7 @@ autoreconf -fvi
 	--docdir=%{_docdir}/%{name}\
 	--with-libpotrace\
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %if 0%{?suse_version} > 1110
@@ -95,6 +95,9 @@ make %{?_smp_mflags}
 %endif
 cp -a AUTHORS ChangeLog COPYING NEWS README %{buildroot}%{_docdir}/%{name}/
 rm %{buildroot}%{_libdir}/*.*a
+
+%check
+%make_build check
 
 %post -n libpotrace0 -p /sbin/ldconfig
 %postun -n libpotrace0 -p /sbin/ldconfig
