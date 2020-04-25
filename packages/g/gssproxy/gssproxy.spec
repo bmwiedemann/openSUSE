@@ -1,7 +1,7 @@
 #
 # spec file for package gssproxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           gssproxy
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Daemon for managing gss-api requests
 License:        MIT
 Group:          Productivity/Networking/System
-URL:            https://pagure.io/gssproxy
-Source0:        https://releases.pagure.org/gssproxy/%{name}-%{version}.tar.gz
-# PATCH-FIX-SUSE tchvatal@suse.com disable test that fails only on OBS builds
-Patch0:         0001-Fix-runtests.py.patch
+URL:            https://github.com/gssapi/gssproxy 
+Source0:        https://github.com/gssapi/gssproxy/releases/download/v%{version}/gssproxy-%{version}.tar.gz
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  krb5-client
@@ -65,7 +63,6 @@ keys directly.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 autoreconf -fvi

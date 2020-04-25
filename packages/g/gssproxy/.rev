@@ -33,4 +33,14 @@
     <comment></comment>
     <requestid>713631</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>499e63701165e38f1801d09177214940</srcmd5>
+    <version>0.8.3</version>
+    <time>1587839385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.3:
+  * various fixes
+- Removed 0001-Fix-runtests.py.patch (forwarded request 796436 from polslinux)</comment>
+    <requestid>796767</requestid>
+  </revision>
 </revisionlist>
