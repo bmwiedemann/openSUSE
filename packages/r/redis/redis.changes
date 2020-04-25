@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 18 07:57:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 5.0.9:
+  * Critical fix when Streams with AOF ore replicas are used:
+    Prevent reprocesing some entries upon restart
+  * Speed improvement: Clients blocked on the same key are now
+    unblocked on O(1) time
+
+-------------------------------------------------------------------
 Tue Mar 24 19:04:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use the tmpfiles macros instead of calling systemd-tempfiles
@@ -6,6 +15,7 @@ Tue Mar 24 19:04:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 -------------------------------------------------------------------
 Wed Mar 18 02:18:24 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
 - Refresh spec-file with spec-cleaner and manual optimizations
   * Remove Group tag.
   * Replace make by %make_build macros.
