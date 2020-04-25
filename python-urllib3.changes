@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 21 21:07:06 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Explicitly switch off building python 2 version.
+
+-------------------------------------------------------------------
 Fri Feb  7 15:24:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.25.8
