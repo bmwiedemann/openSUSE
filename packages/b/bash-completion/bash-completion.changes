@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:54:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Improve patch to fix lookup of qdbus-qt5 completion, previously
+  it was only loaded if qdbus was used first:
+  * qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Sat Mar 28 15:01:27 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix completion excluding directories (boo#1167952).

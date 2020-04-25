@@ -463,4 +463,14 @@
     <comment></comment>
     <requestid>790064</requestid>
   </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>85d87676ec448e04e588b65717604ca7</srcmd5>
+    <version>2.10</version>
+    <time>1587838236</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve patch to fix lookup of qdbus-qt5 completion, previously
+  it was only loaded if qdbus was used first:
+  * qdbus-qt5.patch (forwarded request 793893 from Vogtinator)</comment>
+    <requestid>795879</requestid>
+  </revision>
 </revisionlist>
