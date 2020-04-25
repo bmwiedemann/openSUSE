@@ -49,4 +49,12 @@
   openSUSE package builds. (jsc#SLE-12325).</comment>
     <requestid>796447</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>acf563bdcc55ce51c37a0e0a3be7fb63</srcmd5>
+    <version>1.0.1</version>
+    <time>1587838413</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog to use jsc# epic, not dev task</comment>
+    <requestid>797153</requestid>
+  </revision>
 </revisionlist>

@@ -224,4 +224,17 @@
     <comment></comment>
     <requestid>778691</requestid>
   </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>38f9e818b9e4cd672b31cf678df69e16</srcmd5>
+    <version>0.3.2</version>
+    <time>1587838568</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 0001-Limit-to-one-automatic-check-each-10-minutes.patch
+  to handle msecs properly
+
+- Add patch to make avoiding error messages more effective (boo#1156387):
+  * 0001-Limit-to-one-automatic-check-each-10-minutes.patch
+  * 0001-Also-treat-ErrorNotAuthorized-as-temporary.patch</comment>
+    <requestid>796472</requestid>
+  </revision>
 </revisionlist>

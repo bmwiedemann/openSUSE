@@ -569,4 +569,14 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   (currently in glibc), and the groupadd (currently in shadow)</comment>
     <requestid>783801</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>79193c1cf4c386e10101fe881b6ad15d</srcmd5>
+    <version>0.18.1</version>
+    <time>1587838554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.1
+  + Fix crashes when creating a user session
+  + 0001-Use-C-scoping-for-handling-buffer-deletion.patch no longer required</comment>
+    <requestid>796293</requestid>
+  </revision>
 </revisionlist>

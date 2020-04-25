@@ -32,7 +32,7 @@
 %endif
 
 Name:           git
-Version:        2.26.1
+Version:        2.26.2
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -58,6 +58,7 @@ Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 Patch11:        0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
 Patch13:        0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
+Patch14:        Revert-fetch-default-to-protocol-version-2.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -286,6 +287,7 @@ directory /git/ that calls the cgi script.
 %patch10 -p1
 %patch11 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 cat > .make <<'EOF'

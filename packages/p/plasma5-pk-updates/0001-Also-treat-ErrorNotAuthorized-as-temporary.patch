@@ -1,0 +1,25 @@
+From 4cf369b6676d92dcfaed48fb3837c98ce6c6f0fa Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 17 Apr 2020 16:42:41 +0200
+Subject: [PATCH] Also treat ErrorNotAuthorized as temporary
+
+This can happen if updates are checked while it's not the active session.
+---
+ src/declarative/pkupdates.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/declarative/pkupdates.cpp b/src/declarative/pkupdates.cpp
+index 1c958db..857a6a1 100644
+--- a/src/declarative/pkupdates.cpp
++++ b/src/declarative/pkupdates.cpp
+@@ -490,6 +490,7 @@ void PkUpdates::onRefreshErrorCode(PackageKit::Transaction::Error error, const Q
+     if(!m_isManualCheck) {
+         auto isTransientError = [] (PackageKit::Transaction::Error error) {
+             return (error == PackageKit::Transaction::ErrorFailedInitialization) ||
++                   (error == PackageKit::Transaction::ErrorNotAuthorized) ||
+                    (error == PackageKit::Transaction::ErrorNoNetwork) ||
+                    (error == PackageKit::Transaction::ErrorCannotGetLock);
+         };
+-- 
+2.25.1
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 16:47:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add msgpack-1.patch for msgpack 1.0.0 compatibility
+
+-------------------------------------------------------------------
+Mon Apr 20 09:52:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix resolution without python2
+
+-------------------------------------------------------------------
 Fri Aug 10 13:10:45 UTC 2018 - tchvatal@suse.com
 
 - Add patch to fix unittests fix_unittest.patch

@@ -465,4 +465,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Applications 19.12.3</comment>
     <requestid>782472</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>89d282a1ff52d7872ab5afe338c145ed</srcmd5>
+    <version>20.04.0</version>
+    <time>1587839078</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.04.0</comment>
+    <requestid>797020</requestid>
+  </revision>
 </revisionlist>

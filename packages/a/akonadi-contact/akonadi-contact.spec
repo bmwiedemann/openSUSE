@@ -18,30 +18,25 @@
 
 %define rname akonadi-contacts
 %define sonum   5
-%define kf5_version 5.63.0
+%define kf5_version 5.66.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-contact
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5Contacts) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
@@ -59,6 +54,10 @@ Requires:       libKF5ContactEditor5 = %{version}
 Recommends:     %{name}-lang
 Provides:       akonadi-contacts = %{version}
 Obsoletes:      akonadi-contacts < %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package provides a library used for handling personal contacts,

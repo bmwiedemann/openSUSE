@@ -16,54 +16,56 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.66.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pimcommon
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  extra-cmake-modules >= 5.19.0
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
-BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Designer)
-BuildRequires:  cmake(Qt5Network) >= 5.4.0
-BuildRequires:  cmake(Qt5Script) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network) >= 5.12.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
+BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5UiTools) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 Recommends:     %{name}-lang
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package contains the pimcommon library, used by several KDE PIM
@@ -108,7 +110,7 @@ The PimCommon Akonadi library
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DQTWEBENGINE_SUPPORT_OPTION=TRUE
+%cmake_kf5 -d build
 
 %cmake_build
 

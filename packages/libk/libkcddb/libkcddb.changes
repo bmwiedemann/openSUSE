@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Switch from freedb.org to gnudb.org (kde#418421)
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::. They reverted change error() to socketError
+  * Update some links
+  * Make it compile against last qt5.15 without deprecated methods
+  * Remove not necessary endl here
+  * Fix the test: Some Days -> Somedays
+  * Q_DECL_OVERRIDE -> override
+- Dropped patches, now upstream:
+  * Switch-from-freedb.org-to-gnudb.org.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 08:21:09 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Switch-from-freedb.org-to-gnudb.org.patch to use gnudb.org by

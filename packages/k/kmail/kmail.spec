@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel
@@ -103,11 +99,6 @@ Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
 Recommends:     %{name}-lang
-%if %{with lang}
-%requires_eq    libKF5PimCommon5
-%requires_eq    libKF5PimCommonAkonadi5
-%requires_eq    messagelib
-%endif
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search
 Recommends:     kleopatra
@@ -119,9 +110,14 @@ Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} < 1500
-# the default gcc 4.8 is too old
-BuildRequires:  gcc7-c++
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+%if %{with lang}
+%requires_eq    libKF5PimCommon5
+%requires_eq    libKF5PimCommonAkonadi5
+%requires_eq    messagelib
 %endif
 
 %description
@@ -150,11 +146,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1500
-# the default gcc 4.8 is too old
-export CC=gcc-7
-export CXX=g++-7
-%endif
 %cmake_kf5 -d build
 %cmake_build
 
@@ -170,8 +161,6 @@ export CXX=g++-7
 
 %files -n ktnef
 %doc %lang(en) %{_kf5_htmldir}/en/ktnef/
-%{_kf5_debugdir}/ktnefapps.categories
-%{_kf5_debugdir}/ktnefapps.renamecategories
 %{_kf5_applicationsdir}/org.kde.ktnef.desktop
 %{_kf5_bindir}/ktnef
 %{_kf5_iconsdir}/*/*/*/ktnef*.png

@@ -784,7 +784,7 @@ fi
 
 %post headless
 ext=.gz
-update-alternatives \
+update-alternatives --force \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_jvmjardir}/jre jre_exports %{_jvmjardir}/%{jrelnk} \
@@ -795,6 +795,8 @@ update-alternatives \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_bindir}/servertool servertool %{jrebindir}/servertool \
   --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameserv \
+  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
+  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
@@ -811,6 +813,10 @@ update-alternatives \
   %{_mandir}/man1/servertool-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/tnameserv.1$ext tnameserv.1$ext \
   %{_mandir}/man1/tnameserv-%{sdklnk}.1$ext  \
+  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
+  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
+  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/policytool.desktop policytool.desktop \
   %{_jvmdir}/%{jredir}/lib/desktop/policytool.desktop \
   || :
@@ -883,8 +889,6 @@ update-alternatives \
   --slave %{_bindir}/javah javah %{sdkbindir}/javah \
   --slave %{_bindir}/javap javap %{sdkbindir}/javap \
   --slave %{_bindir}/jconsole jconsole %{sdkbindir}/jconsole \
-  --slave %{_bindir}/pack200                  pack200                     %{sdkbindir}/pack200 \
-  --slave %{_bindir}/unpack200                unpack200                   %{sdkbindir}/unpack200 \
   --slave %{_bindir}/jdb jdb %{sdkbindir}/jdb \
   --slave %{_bindir}/jhat jhat %{sdkbindir}/jhat \
   --slave %{_bindir}/jinfo jinfo %{sdkbindir}/jinfo \
@@ -924,10 +928,6 @@ update-alternatives \
   %{_mandir}/man1/jcmd-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jdb.1$ext jdb.1$ext \
   %{_mandir}/man1/jdb-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jhat.1$ext jhat.1$ext \
   %{_mandir}/man1/jhat-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jinfo.1$ext jinfo.1$ext \

@@ -16,41 +16,23 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-common-internals
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Telepathy common module
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kaccounts-integration-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kpeople5-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
 BuildRequires:  libaccounts-glib-devel
-BuildRequires:  libaccounts-qt5-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libsignon-qt5-devel
 BuildRequires:  pkgconfig
@@ -58,15 +40,30 @@ BuildRequires:  telepathy-accounts-signon
 BuildRequires:  telepathy-logger-qt5-devel
 BuildRequires:  telepathy-mission-control-devel
 BuildRequires:  telepathy-qt5-devel
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(AccountsQt5)
+BuildRequires:  cmake(KAccounts)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5People)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Qml) >= 5.2.0
+BuildRequires:  cmake(Qt5Sql) >= 5.2.0
+BuildRequires:  cmake(Qt5Test) >= 5.2.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 Requires:       ktp-icons
 Requires:       telepathy-accounts-signon
+Recommends:     %{name}-lang
 Provides:       libktpcommoninternals6 = %{version}
 Provides:       libktpcommoninternals7 = %{version}
 Provides:       libktpcommoninternals8 = %{version}
@@ -76,7 +73,10 @@ Obsoletes:      libktpcommoninternals7 < %{version}
 Obsoletes:      libktpcommoninternals8 <= %{version}
 Provides:       %{name}5 = %{version}
 Obsoletes:      ktp-kpeople < %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 ktp-common-internals is the base library for all the KDE Telepathy packages.
@@ -86,12 +86,12 @@ Summary:        Telepathy common module
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
-Requires:       kcmutils-devel
-Requires:       kwallet-devel
 Requires:       pkgconfig
 Requires:       telepathy-logger-qt5-devel
 Requires:       telepathy-qt5-devel
-Requires:       pkgconfig(Qt5Widgets)
+Requires:       cmake(KF5KCMUtils)
+Requires:       cmake(KF5Wallet)
+Requires:       cmake(Qt5Widgets)
 Obsoletes:      %{name}5-devel < %{version}
 Provides:       %{name}5-devel = %{version}
 
@@ -111,7 +111,6 @@ icons for all the KDE Telepathy packages.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build

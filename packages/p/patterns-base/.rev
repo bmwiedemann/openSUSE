@@ -447,4 +447,22 @@
   in kiwi files.</comment>
     <requestid>794204</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>970868f53a104a2f8124c7be90653b61</srcmd5>
+    <version>20200417</version>
+    <time>1587838577</time>
+    <user>dimstar_suse</user>
+    <comment>- bootloader: pull in grub2-snapper plugin if snapper is installed
+
+- base pattern cleanup:
+  * make minimal_base really minimal by moving packages to base instead. Only
+    pull in the release package and branding. So this is really what
+    can be used for application containers, portable services etc.
+    In it's current form it also pulls in bash, glibc, coreutils
+    etc, so no need to specify explicitly.
+  * strip down base so it forms a minimal booting system that can install
+    packages.
+  * don't pull in man into transactional system</comment>
+    <requestid>796568</requestid>
+  </revision>
 </revisionlist>

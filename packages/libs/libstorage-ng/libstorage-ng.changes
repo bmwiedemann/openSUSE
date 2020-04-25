@@ -1,4 +1,55 @@
 --------------------------------------------------------------------
+Fri Apr 24 11:48:07 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#724
+- avoid forward class declaration
+- coding style
+- mark some save functions as deprecated
+- documentation updates
+- avoid deprecated functions
+- use more specific exception class
+- minor code and documentation improvements
+- 4.3.2
+
+--------------------------------------------------------------------
+Wed Apr 22 09:18:09 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#722
+- extended documentation
+- 4.3.1
+
+--------------------------------------------------------------------
+Mon Apr 20 14:44:30 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#721
+- fixed constness
+- added support to probe lvm cache
+- added documentation
+- added unit tests
+- show lv_type in graphviz output
+- extended documentation
+- use switch statement instead of if statement
+- more defensive programming
+- add support to probe lvm cache
+- 4.3.0
+
+--------------------------------------------------------------------
+Mon Apr 20 08:07:53 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#719
+- document device block size handling (RAID, LVM, BTRFS)
+- document device block size handling (BCACHE)
+- clarify LV block size remark
+- 4.2.74
+
+--------------------------------------------------------------------
+Fri Apr 17 14:43:25 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/libstorage-ng#720
+- fix unit test
+- 4.2.73
+
+--------------------------------------------------------------------
 Wed Apr 1 09:07:32 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#718

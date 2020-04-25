@@ -1,19 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 22 13:31:12 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix previous changelog entries
+
+-------------------------------------------------------------------
 Tue Apr  7 05:25:54 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 0.324 (bsc#1168806):
+- Update to version 0.334 (bsc#1168806):
   * Updated pci, usb and vendor ids.
 
 -------------------------------------------------------------------
 Tue Mar  3 11:33:42 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 0.323:
+- Update to version 0.333:
   * Updated pci, usb and vendor ids.
 
 -------------------------------------------------------------------
 Mon Feb  3 11:42:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 0.322:
+- Update to version 0.332:
   * Updated pci, usb and vendor ids.
 
 -------------------------------------------------------------------

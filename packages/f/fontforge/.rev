@@ -413,4 +413,72 @@
     <comment></comment>
     <requestid>745114</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>011219e84a9544b14bf9bac189917167</srcmd5>
+    <version>20200314</version>
+    <time>1587838485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200314:
+  * FontForge now has much improved stroke expansion functionality.
+    The main change is that it actually works most of the time. New
+    features include support for arbitrary convex nibs and the
+    miter-clip and arc join styles from SVG 2. All functionality is
+    accessible from the Python and native APIs.
+  * Remove overlap handles certain important edge cases better.
+  * The Python API now has a function called genericGlyphChange
+    that matches the &quot;Change Glyph&quot; command in the GUI. See #4133
+    for more details.
+  * The Python API now has functions for getting Unicode script and
+    for interrogating glyph boundaries.
+  * One can now use text flags (rather than just numerical flags)
+    when opening a font file via the Python API.
+  * UFO import now outputs the note field properly.
+  * SVG import is much more robust.
+  * We have dropped most gnulib and autotools logic in favor of
+    CMake, which dramatically simplifies the build system and just
+    as dramatically improves build time.
+  * As part of the switch to CMake, per the deprecation of
+    Python 2, and per the lack of objections to the proposal on
+    the mailing list, we have dropped support for building
+    FontForge with Python 2 support. The non-build-system Python 2
+    code remains, but it is neither tested nor maintained nor
+    supported and is likely to follow a trajectory of decay and
+    then removal.
+  * Documentation is now rendered in Sphinx, which makes
+    maintenance and improvement easier.
+  * Translations now happen on crowdin, which makes contributions
+    easier.
+  * We got such a contribution for Croatian.
+  * Character view point coloring is more consistent, and preview
+    fills support transparency.
+  * The user can now move and close tabs in the character view.
+  * The metrics view now allows for entry of negative kerning
+    values and runs a bit more smoothly.
+  * There is now a warning when a user is about to discard an
+    unsaved script.
+  * We fixed bugs all over, as always, with particular attention
+    given to the metrics view, Python, Spiro, and high-resolution
+    displays.
+  * Notes on build system changes:
+    + libgutils and libgunicode have been combined into
+      libfontforge
+    + libgdraw and libfontforgeexe have been combined into the
+      fontforge executable itself
+    + No development files are installed (headers, or pkg-config).
+      This is because we do not provide a stable API or ABI to work
+      against, nor are the headers actually well configured to be
+      used externally. We are also not aware of any maintained
+      product that compiles against FontForge itself.
+  * Fixes use-after-free (heap) in the SFD_GetFontMetaData()
+    function and fix NULL pointer dereference in the
+    SFDGetSpiros() and SFD_AssignLookups() function(bnc#1160220,
+    bnc#1160236, CVE-2020-5395, CVE-2020-5496).
+- Drop patch that isn't needed anymore:
+  * python38_config.patch
+- Add patches to fix build:
+  * fix-return-statement.patch
+  * fix-sphinx-doc.patch (only for Leap 15.2)
+</comment>
+    <requestid>796236</requestid>
+  </revision>
 </revisionlist>

@@ -166,4 +166,12 @@
   number in setup.py correctly. gh#neovim/pynvim#431 (forwarded request 777949 from mcepl)</comment>
     <requestid>777951</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a6d476b3f36f92c166298eda382a1fb0</srcmd5>
+    <version>0.4.1</version>
+    <time>1587839170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796595</requestid>
+  </revision>
 </revisionlist>

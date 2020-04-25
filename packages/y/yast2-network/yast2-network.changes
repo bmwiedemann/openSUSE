@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:19:26 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not try to install kernel packages anymore since ISDN support
+  was already dropped which was the most common use case. Removed
+  also hardware methods used mainly for ISDN config. (bsc#1151187)
+- 4.2.66
+
+-------------------------------------------------------------------
 Thu Apr  2 11:33:49 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: Do not try to activate network devices that are already

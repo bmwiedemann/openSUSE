@@ -5074,4 +5074,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.6.4 &amp; 5.6.3 &amp; other fixes</comment>
     <requestid>793684</requestid>
   </revision>
+  <revision rev="539" vrev="1">
+    <srcmd5>46b4866e95bf1cc47bf031cd0816dae5</srcmd5>
+    <version>5.6.6</version>
+    <time>1587838368</time>
+    <user>dimstar_suse</user>
+    <comment>5.6.6 &amp; 5.6.5 &amp; one revert &amp; an alsa fix</comment>
+    <requestid>796199</requestid>
+  </revision>
 </revisionlist>

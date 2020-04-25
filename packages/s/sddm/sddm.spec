@@ -17,13 +17,13 @@
 
 
 Name:           sddm
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        QML-based display manager
 License:        GPL-2.0+
 Group:          System/GUI/KDE
 Url:            https://github.com/sddm/sddm
-Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        X11-displaymanagers-%{name}
 Source2:        00-general.conf
 Source3:        10-theme.conf
@@ -31,8 +31,6 @@ Source4:        sddm-tmpfiles.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
 # Merged: https://github.com/sddm/sddm/pull/1062
 Patch0:         0001-Session-reuse-Only-consider-online-sessions.patch
-# No PR, committed directly
-Patch1:         0001-Use-C-scoping-for-handling-buffer-deletion.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1017

@@ -20,17 +20,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgapi
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 5.55.0
 BuildRequires:  kf5-filesystem
@@ -49,6 +45,10 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
 BuildRequires:  cmake(Qt5Xml) >= 5.10.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
@@ -157,7 +157,7 @@ to develop KDE PIM applications.
 %build
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
 %define _lto_cflags %{nil}
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
   %cmake_build
 
 %install

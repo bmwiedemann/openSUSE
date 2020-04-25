@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -26,7 +27,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
 Name:           python-urllib3%{psuffix}
 Version:        1.25.8
 Release:        0
@@ -53,13 +53,6 @@ BuildArch:      noarch
 %if 0%{?suse_version} < 1500
 BuildRequires:  %{oldpython}
 %endif
-%if %{with python2}
-BuildRequires:  python-backports.ssl_match_hostname
-BuildRequires:  python-ipaddress
-%endif
-%ifpython2
-Requires:       python-backports.ssl_match_hostname
-%endif
 %if %{with test}
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module brotlipy >= 0.6.0}
@@ -74,15 +67,8 @@ BuildRequires:  %{python_module tornado < 6}
 BuildRequires:  %{python_module trustme >= 0.5.3}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 %endif
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-PySocks >= 1.5.6
 Recommends:     python-brotlipy >= 0.6.0
-%endif
-%ifpython2
-Requires:       python-ipaddress
-Obsoletes:      python-urllib3 <= %{version}
-Provides:       python-urllib3 = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -124,20 +110,6 @@ $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urlli
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/urllib3/
 }
 
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-# Unbundle the Python 2 build
-rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/six.py*
-rm -rf %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname/
-
-mkdir -p %{buildroot}/%{python2_sitelib}/urllib3/packages/
-ln -s %{python2_sitelib}/six.py %{buildroot}/%{python2_sitelib}/urllib3/packages/six.py
-ln -s %{python2_sitelib}/six.pyc %{buildroot}/%{python2_sitelib}/urllib3/packages/six.pyc
-ln -s %{python2_sitelib}/six.pyo %{buildroot}/%{python2_sitelib}/urllib3/packages/six.pyo
-ln -s %{python2_sitelib}/backports/ssl_match_hostname \
-      %{buildroot}/%{python2_sitelib}/urllib3/packages/ssl_match_hostname
-%endif
-
-%if 0%{?have_python3} && ! 0%{?skip_python3}
 # Unbundle the Python 3 build
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/six.py*
 rm -rf %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/six*
@@ -150,21 +122,8 @@ ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.opt-1
       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
 ln -s %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc \
       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
-%endif
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
-
-%if ! %{with test} && "%{python_flavor}" == "python2"
-%pre -n python2-urllib3
-  SITELIB=%{python2_sitelib}
-  CONFLICTED="${SITELIB}/urllib3/packages/ssl_match_hostname"
-  if [ -d "$CONFLICTED" -a ! -L "$CONFLICTED" ] ; then
-      # Change from directory to symlink
-      rm -rfv "$CONFLICTED"
-      ln -s ../../backports/ssl_match_hostname \
-        $CONFLICTED
-  fi
 %endif
 
 %if %{with test}

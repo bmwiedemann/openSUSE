@@ -2305,6 +2305,7 @@ rm -Rf $RPM_BUILD_ROOT
 
 %build
 %define _lto_cflags %{nil}
+%global optflags %{optflags} -fcommon
 %if 0%{?suse_version}
 # in case we're building without os-release (bsc#1123311)...
 export PACKAGE_DISTRIBUTION="suse"

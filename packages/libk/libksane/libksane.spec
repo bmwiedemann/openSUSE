@@ -1,7 +1,7 @@
 #
 # spec file for package libksane
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,29 +23,29 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksane
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE scanning library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5Config)
 BuildRequires:  kf5-filesystem
+BuildRequires:  sane-backends-devel
+BuildRequires:  xz
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  sane-backends-devel
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 The KDE scanner library provides an API and widgets for using
@@ -55,10 +55,10 @@ scanners and other imaging devices supported by SANE.
 Summary:        Development files for the KDE scanning library
 Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
-Requires:       cmake(KF5Wallet)
-Requires:       cmake(KF5WidgetsAddons)
 Requires:       pkgconfig
 Requires:       sane-backends-devel
+Requires:       cmake(KF5Wallet)
+Requires:       cmake(KF5WidgetsAddons)
 Requires:       cmake(Qt5Widgets)
 Obsoletes:      libksane-kf5-devel < %{version}
 Provides:       libksane-kf5-devel = %{version}

@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.83.gc5aa158173
+%define suse_version +suse.117.g08cd65ac38
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -168,7 +168,6 @@ Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 Patch1:         0001-SUSE-policy-do-not-clean-tmp-by-default.patch
 Patch2:         0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch
 Patch3:         0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
-Patch4:         0001-meson-fix-build-of-udev-path_id_compat-builtin-with-.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -976,7 +975,6 @@ fi
 %endif
 
 %post network
-%tmpfiles_create portables.conf
 %if %{with networkd}
 %service_add_post systemd-networkd.service
 %service_add_post systemd-networkd-wait-online.service

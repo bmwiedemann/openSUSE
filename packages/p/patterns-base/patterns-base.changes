@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:16:47 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- bootloader: pull in grub2-snapper plugin if snapper is installed
+
+-------------------------------------------------------------------
+Fri Apr 17 12:44:38 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- base pattern cleanup:
+  * make minimal_base really minimal by moving packages to base instead. Only
+    pull in the release package and branding. So this is really what
+    can be used for application containers, portable services etc.
+    In it's current form it also pulls in bash, glibc, coreutils
+    etc, so no need to specify explicitly.
+  * strip down base so it forms a minimal booting system that can install
+    packages.
+  * don't pull in man into transactional system
+
+-------------------------------------------------------------------
 Wed Apr 15 13:46:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Add bootloader pattern. Useful for appliances to not repeat the logic

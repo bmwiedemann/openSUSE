@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcompactdisc
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            http://www.kde.org/
+URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  xz
@@ -42,6 +38,10 @@ BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 The KDE Compact Disc library provides an API for applications using
@@ -51,9 +51,7 @@ the KDE Platform to interface with the CD drives for audio CDs.
 Summary:        CD drive library for KDE Platform
 Group:          System/Libraries
 Provides:       %{name} = %{version}
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description -n libKF5CompactDisc5
 The KDE Compact Disc library provides an API for applications using
@@ -67,9 +65,7 @@ Requires:       libKF5CompactDisc5 = %{version}
 %description devel
 This package contains the development headers for libkcompactdisc.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q

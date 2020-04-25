@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 15:00:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.18.1
+  + Fix crashes when creating a user session
+  + 0001-Use-C-scoping-for-handling-buffer-deletion.patch no longer required
+
+-------------------------------------------------------------------
 Wed Mar 11 11:55:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't add sddm to the video group, it's not necessary (see later

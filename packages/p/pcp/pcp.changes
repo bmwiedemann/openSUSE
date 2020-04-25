@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 04:21:13 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1160411.
+
+-------------------------------------------------------------------
 Fri Mar 27 09:43:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch (submitted to upstream) to fix missing includes with Qt 5.15:

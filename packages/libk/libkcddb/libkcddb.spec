@@ -21,19 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            http://www.kde.org
+URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-UPSTREAM
-Patch:          Switch-from-freedb.org-to-gnudb.org.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libmusicbrainz5-devel
 BuildRequires:  xz
@@ -46,11 +40,15 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
 Obsoletes:      libkcddb5 < %{version}
 Provides:       libkcddb5 = %{version}
 Obsoletes:      libkcddb16 < %{version}
 Provides:       libkcddb16 < %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 The KDE Compact Disc DataBase library provides an API for
@@ -69,13 +67,6 @@ Provides:       libkcddb5-devel = %{version}
 %description devel
 This package includes the development headers for %{name}.
 
-%package -n libKF5CddbWidgets5
-Summary:        CDDB widgets library for KDE Applications
-Group:          System/Libraries
-
-%description -n libKF5CddbWidgets5
-This package includes the libkcddb widgets library.
-
 %package -n libKF5Cddb5
 Summary:        CDDB library for KDE Applications
 Group:          System/Libraries
@@ -86,13 +77,17 @@ The KDE Compact Disc DataBase library provides an API for
 applications to fetch and submit audio CD
 information over the Internet.
 
-%if %{with lang}
+%package -n libKF5CddbWidgets5
+Summary:        CDDB widgets library for KDE Applications
+Group:          System/Libraries
+
+%description -n libKF5CddbWidgets5
+This package includes the libkcddb widgets library.
+
 %lang_package
-%endif
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build

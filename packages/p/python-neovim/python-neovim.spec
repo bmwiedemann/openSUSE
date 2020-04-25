@@ -18,7 +18,9 @@
 
 %define modname pynvim
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
+%if 0%{?rhel} >= 7
+%define python_module() python34-%{**}
+%endif
 Name:           python-neovim
 Version:        0.4.1
 Release:        0
@@ -30,25 +32,15 @@ Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modnam
 # PATCH-FIX-UPSTREAM setup_version.patch gh#neovim/pynvim#431 mcepl@suse.com
 # Upstream setup.py has incorrect version.
 Patch0:         setup_version.patch
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-%if 0%{?rhel} >= 7
-BuildRequires:  python34-pytest
-BuildRequires:  python34-setuptools
-%else
-BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
-%endif
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-pytest
-BuildRequires:  python2-setuptools
 Requires:       neovim >= 0.1.6
 Requires:       python-greenlet
 Requires:       python-msgpack-python
-BuildArch:      noarch
-%if "%{python_flavor}" == "python2"
-Requires:       python-trollius
-%endif
 Provides:       python-nvim
+BuildArch:      noarch
 %python_subpackages
 
 %description

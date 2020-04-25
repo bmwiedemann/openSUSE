@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,30 @@
 
 
 Name:           fontforge
-Version:        20190801
+Version:        20200314
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
 URL:            http://fontforge.org/
-#       Source: https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
+#       Source: https://github.com/fontforge/fontforge/archive/%%{version}.tar.gz
 #           see bug 926061, fontforge-*-repacked.tar.xz does not contain fontforge-*/win/gold/libX11-*.noarch.rpm
 Source0:        fontforge-%{version}-repacked.tar.xz
 Source1:        get-source.sh
 # workardound for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
-# fix for build with python38
-Patch1:         python38_config.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch1:         fix-return-statement.patch
+Patch2:         fix-sphinx-doc.patch
 BuildRequires:  cairo-devel
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  giflib-devel
 BuildRequires:  git
+BuildRequires:  gtk3-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -49,8 +50,11 @@ BuildRequires:  libuninameslist-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
+BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  woff2-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
@@ -94,25 +98,22 @@ to develop applications that use FontForge libraries.
 %prep
 %setup -q
 %patch0 -p1
-%if 0%{?python3_version_nodots} >= 38
 %patch1 -p1
+%if %{?suse_version} < 1550
+%patch2 -p1
 %endif
-sed -i 's/\r$//' doc/html/{Big5.txt,corpchar.txt}
 
 %build
-./bootstrap --force
-%configure \
-    --disable-static \
-    --enable-pyextension \
-    --with-regular-link \
-    --docdir=%{_docdir}/%{name}/html
-make %{?_smp_mflags}
+%cmake \
+    -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}/html
 
 %install
-%make_install
+%cmake_install
 %suse_update_desktop_file -i org.fontforge.FontForge VectorGraphics
 %find_lang FontForge
 find %{buildroot} -type f -name "*.la" -delete -print
+rm %{buildroot}%{_docdir}/%{name}/html/.buildinfo
+rm %{buildroot}%{_docdir}/%{name}/html/.nojekyll
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
 %post -p /sbin/ldconfig
@@ -129,7 +130,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/applications/org.fontforge.FontForge.desktop
 %{_datadir}/icons/hicolor/*/apps/org.fontforge.FontForge.png
 %{_datadir}/icons/hicolor/scalable/apps/org.fontforge.FontForge.svg
-%{_datadir}/appdata/org.fontforge.FontForge.appdata.xml
 %{_datadir}/metainfo/org.fontforge.FontForge.*.xml
 %{_datadir}/pixmaps/org.fontforge.FontForge.*
 %{_datadir}/mime/packages/%{name}.xml
@@ -142,8 +142,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %doc CONTRIBUTING.md
-%{_includedir}/fontforge/
-%{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib*.so
 
 %changelog

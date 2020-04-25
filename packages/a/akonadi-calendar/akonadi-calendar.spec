@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
@@ -48,6 +44,10 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Test)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This library provides calendar integration for Akonadi based Applications.
@@ -72,13 +72,13 @@ This package provides plugins required by PIM applications to read and write cal
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Group:          Development/Libraries/KDE
-Obsoletes:      akonadi5-calendar-devel < %{version}
-Provides:       akonadi5-calendar-devel = %{version}
 Requires:       libKF5AkonadiCalendar5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5WidgetsAddons)
+Obsoletes:      akonadi5-calendar-devel < %{version}
+Provides:       akonadi5-calendar-devel = %{version}
 
 %description devel
 Development package for akonadi-calendar.

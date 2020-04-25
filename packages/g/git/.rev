@@ -2166,4 +2166,24 @@ git 2.12.3
     <comment></comment>
     <requestid>795368</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>69132784bee5f63d9806e20879042419</srcmd5>
+    <version>2.26.2</version>
+    <time>1587838603</time>
+    <user>dimstar_suse</user>
+    <comment>- With recent switch to protocol v2 people are reporting fetches transferring
+  unreasonable amount of data. Upstream proposes switching the protocol back
+  until the issue is properly diagnosed. The regression is problematic for
+  people with lower network connection speed.
+  Added: Revert-fetch-default-to-protocol-version-2.patch
+
+- git 2.26.2:
+  * CVE-2020-11008: Specially crafted URLs may have tricked the
+    credentials helper to providing credential information that
+    is not appropriate for the protocol in use and host being
+    contacted (boo#1169936)
+
+- Submit to SLE15 / resubmit to Factory (bsc#1169786, jsc#SLE-12396, bsc#1149792)</comment>
+    <requestid>797168</requestid>
+  </revision>
 </revisionlist>

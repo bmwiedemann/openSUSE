@@ -1,7 +1,7 @@
 #
 # spec file for package asciidoc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           asciidoc
-Version:        8.6.10
+Version:        9.0.0rc2
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
-Url:            http://asciidoc.org
-Source0:        https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/asciidoc/asciidoc-py3
+Source0:        https://github.com/%{name}/%{name}-py3/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         asciidoc.version.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  python2 >= 2.3
-BuildRequires:  python2-xml
+BuildRequires:  python3-xml
 Requires:       docbook-xsl-stylesheets
-Requires:       python2 >= 2.3
-Requires:       python2-xml
+Requires:       python3-xml
 Recommends:     dblatex
 # a2x needs /usr/bin/xsltproc
 Recommends:     libxslt
@@ -49,12 +47,13 @@ Summary:        Examples and Documents for asciidoc
 This package contains examples and documents of asciidoc.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -n %{name}-py3-%{version} -p1
+
+# do not use env
+find ./ -name \*.py -exec sed -i -e 's:%{_bindir}/env\ :%{_bindir}/:g' {} \;
 
 %build
-sed -i "s|python|python2|g" Makefile.in
-autoreconf -fi
+autoreconf -fiv
 %configure
 
 %install
@@ -71,12 +70,13 @@ mkdir -p %{buildroot}%{_datadir}/vim/site/{syntax,ftdetect}
 install -m 0644 vim/syntax/* %{buildroot}%{_datadir}/vim/site/syntax
 
 %files
+%license COPYRIGHT
+%doc README.asciidoc BUGS.txt CHANGELOG.txt
 %config %{_sysconfdir}/%{name}
 %{_bindir}/%{name}
 %{_bindir}/a2x
 %{_datadir}/vim
 %{_mandir}/man1/*
-%doc README.asciidoc BUGS.txt CHANGELOG.txt COPYRIGHT
 
 %files examples
 %doc doc examples

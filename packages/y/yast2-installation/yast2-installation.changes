@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 12:10:19 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Force the use of en_US.UTF-8 when running firstboot or the
+  AutoYaST Second Stage with 'POSIX' or 'C as RC_LANG (bsc#1169017)
+- 4.2.41
+
+-------------------------------------------------------------------
 Fri Mar 20 14:04:48 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - In the proposal runner, restore the scroll only when it was

@@ -28,20 +28,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       6
+%global updatever       7
 %global patchver        0
-%global datever         2020-01-14
+%global datever         2020-04-14
 %global buildver        10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   97897f4e4d7cb61d36ca114cc585ea148ccf9f45
-%global root_branch     openj9-0.18.1
+%global root_revision   838028fc9d9a8cb83630927ca476674f5080b1c3
+%global root_branch     openj9-0.20.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    7a1b0239a91f9d8819cb541812b4d774edd5bba4
-%global omr_branch      v0.18.0-release
+%global omr_revision    d4365f371ce896bead71bc601cbdb53cc35ab47b
+%global omr_branch      v0.20.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 51a5857d24eca5e220ccd932bc98e9f1d0438e71
-%global openj9_branch   v0.18.1-release
-%global openj9_tag      openj9-0.18.1
+%global openj9_revision 05fa2d3611f757a1ca7bd45d7312f99dd60403cc
+%global openj9_branch   v0.20.0-release
+%global openj9_tag      openj9-0.20.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # JavaEE modules
@@ -158,6 +158,8 @@ Patch15:        system-pcsclite.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
+Patch31:        aarch64.patch
+Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
 #
@@ -256,7 +258,7 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
-ExclusiveArch:  x86_64 ppc64le s390x
+ExclusiveArch:  x86_64 ppc64le s390x aarch64
 %if %{bootcycle}
 BuildRequires:  java-devel >= 10
 BuildConflicts: java-devel >= 12
@@ -444,6 +446,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch30 -p1
+%patch31 -p1
+%patch32 -p1
 
 %patch302 -p1
 %patch303 -p1
@@ -490,6 +494,8 @@ bash configure \
     --with-version-pre="" \
     --with-version-opt="suse-%{release}-%{_arch}" \
     --disable-warnings-as-errors \
+    --disable-warnings-as-errors-omr \
+    --disable-warnings-as-errors-openj9 \
     --disable-keep-packaged-modules \
     --with-debug-level=%{debugbuild} \
     --with-conf-name=%{debugbuild} \
@@ -849,18 +855,24 @@ update-alternatives \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_bindir}/jjs jjs %{jrebindir}/jjs \
   --slave %{_bindir}/keytool keytool %{jrebindir}/keytool \
+  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
+  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jjs.1$ext jjs.1$ext \
   %{_mandir}/man1/jjs-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
   %{_mandir}/man1/keytool-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
+  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmid.1$ext rmid.1$ext \
   %{_mandir}/man1/rmid-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmiregistry.1$ext rmiregistry.1$ext \
   %{_mandir}/man1/rmiregistry-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
+  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   || :
 
 update-alternatives \
@@ -934,10 +946,8 @@ update-alternatives \
   --slave %{_bindir}/jshell jshell %{sdkbindir}/jshell \
   --slave %{_bindir}/jstack jstack %{sdkbindir}/jstack \
   --slave %{_bindir}/jstat jstat %{sdkbindir}/jstat \
-  --slave %{_bindir}/pack200 pack200 %{sdkbindir}/pack200 \
   --slave %{_bindir}/rmic rmic %{sdkbindir}/rmic \
   --slave %{_bindir}/serialver serialver %{sdkbindir}/serialver \
-  --slave %{_bindir}/unpack200 unpack200 %{sdkbindir}/unpack200 \
   --slave %{_mandir}/man1/jar.1$ext jar.1$ext \
   %{_mandir}/man1/jar-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jarsigner.1$ext jarsigner.1$ext \
@@ -948,8 +958,6 @@ update-alternatives \
   %{_mandir}/man1/javadoc-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/javap.1$ext javap.1$ext \
   %{_mandir}/man1/javap-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jcmd.1$ext jcmd.1$ext \
-  %{_mandir}/man1/jcmd-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jconsole.1$ext jconsole.1$ext \
   %{_mandir}/man1/jconsole-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jdb.1$ext jdb.1$ext \
@@ -958,22 +966,12 @@ update-alternatives \
   %{_mandir}/man1/jdeps-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jmap.1$ext jmap.1$ext \
   %{_mandir}/man1/jmap-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jps.1$ext jps.1$ext \
-  %{_mandir}/man1/jps-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jrunscript.1$ext jrunscript.1$ext \
   %{_mandir}/man1/jrunscript-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jstack.1$ext jstack.1$ext \
-  %{_mandir}/man1/jstack-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jstat.1$ext jstat.1$ext \
-  %{_mandir}/man1/jstat-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmic.1$ext rmic.1$ext \
   %{_mandir}/man1/rmic-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/serialver.1$ext serialver.1$ext \
   %{_mandir}/man1/serialver-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/jconsole.desktop jconsole.desktop \
   %{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop \
   || :
@@ -1051,8 +1049,10 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/java
 %{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
+%{_jvmdir}/%{sdkdir}/bin/pack200
 %{_jvmdir}/%{sdkdir}/bin/rmid
 %{_jvmdir}/%{sdkdir}/bin/rmiregistry
+%{_jvmdir}/%{sdkdir}/bin/unpack200
 %{_jvmdir}/%{sdkdir}/conf/logging.properties
 %{_jvmdir}/%{sdkdir}/conf/management/jmxremote.access
 %{_jvmdir}/%{sdkdir}/conf/management/jmxremote.password.template
@@ -1089,7 +1089,6 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9vrb29.so
 %{_jvmdir}/%{sdkdir}/lib/compressedrefs/libj9zlib29.so
 %{_jvmdir}/%{sdkdir}/lib/compressedrefs/libjclse29.so
-%{_jvmdir}/%{sdkdir}/lib/compressedrefs/libmanagement.so
 %{_jvmdir}/%{sdkdir}/lib/compressedrefs/libmanagement_ext.so
 %{_jvmdir}/%{sdkdir}/lib/compressedrefs/libomrsig.so
 %{_jvmdir}/%{sdkdir}/lib/ddr/j9ddr.jar
@@ -1118,6 +1117,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libjsig.so
 %{_jvmdir}/%{sdkdir}/lib/libjsound.so
 %{_jvmdir}/%{sdkdir}/lib/liblcms.so
+%{_jvmdir}/%{sdkdir}/lib/libmanagement.so
 %{_jvmdir}/%{sdkdir}/lib/libmanagement_agent.so
 %{_jvmdir}/%{sdkdir}/lib/libmlib_image.so
 %{_jvmdir}/%{sdkdir}/lib/libnet.so
@@ -1130,7 +1130,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libverify.so
 %{_jvmdir}/%{sdkdir}/lib/libzip.so
 %{_jvmdir}/%{sdkdir}/lib/modules
-%{_jvmdir}/%{sdkdir}/lib/openj9-notices.html
+#%{_jvmdir}/%{sdkdir}/lib/openj9-notices.html
 %{_jvmdir}/%{sdkdir}/lib/options.default
 %{_jvmdir}/%{sdkdir}/lib/psfontj2d.properties
 %{_jvmdir}/%{sdkdir}/lib/psfont.properties.ja
@@ -1146,8 +1146,10 @@ fi
 %{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/pack200-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmid-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmiregistry-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 
 %files devel
 %dir %{_jvmdir}/%{sdkdir}/bin
@@ -1176,11 +1178,9 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/jshell
 %{_jvmdir}/%{sdkdir}/bin/jstack
 %{_jvmdir}/%{sdkdir}/bin/jstat
-%{_jvmdir}/%{sdkdir}/bin/pack200
 %{_jvmdir}/%{sdkdir}/bin/rmic
 %{_jvmdir}/%{sdkdir}/bin/serialver
 %{_jvmdir}/%{sdkdir}/bin/traceformat
-%{_jvmdir}/%{sdkdir}/bin/unpack200
 %{_jvmdir}/%{sdkdir}/include/classfile_constants.h
 %{_jvmdir}/%{sdkdir}/include/ibmjvmti.h
 %{_jvmdir}/%{sdkdir}/include/jawt.h
@@ -1199,19 +1199,13 @@ fi
 %{_mandir}/man1/javac-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/javadoc-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/javap-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jcmd-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jconsole-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdb-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdeps-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jmap-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jps-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jrunscript-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jstack-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jstat-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/pack200-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/serialver-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 
 %files jmods
 %dir %{_jvmdir}/%{sdkdir}/jmods

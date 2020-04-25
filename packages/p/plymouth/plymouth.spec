@@ -16,32 +16,32 @@
 #
 
 
-# plymouth's X11 renderer adds many GTK3 packages to the build cycle,
-# it is not used in the production environment.
 %bcond_with x11_renderer
+%bcond_with fedora_theme
 
-%global git_version git20191224+d7c737d
+%global git_version 20200407+6ca4b5b
 %global so_version 5
 
 Name:           plymouth
-Version:        0.9.5+%{git_version}
+Version:        0.9.5+git%{git_version}
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://www.freedesktop.org/wiki/Software/Plymouth
 Source0:        %{name}-%{version}.tar.xz
-Source1:        boot-duration
 # PATCH-FIX-OPENSUSE plymouth-some-greenish-openSUSE-colors.patch bnc#886148 fcrozat@suse.com -- To use suse colors in tribar.
 Patch0:         plymouth-some-greenish-openSUSE-colors.patch
-# PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de  -- Fix man page installation
+# PATCH-FIX-OPENSUSE plymouth-manpages.patch bnc#871419 idoenmez@suse.de -- Fix man page installation
 Patch1:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch2:         plymouth-only_use_fb_for_cirrus_bochs.patch
-# PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
-Patch3:         plymouth-avoid-umount-hanging-shutdown.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
-Patch4:         plymouth-disable-fedora-logo.patch
+Patch3:         plymouth-disable-fedora-logo.patch
+# PATCH-FIX-OPENSUSE plymouth-disable-fedora-bizcom-theme.patch qzhao@opensuse.org -- Disable to compile fedora related themes.
+Patch4:         plymouth-disable-fedora-bizcom-theme.patch
+# PATCH-FIX-OPENSUSE plymouth-ignore-serial-console.patch qzhao@opensuse.org bnc#1164123 -- Don't output in serial console for openQA need to take serial in the test, and yast-installation prgram has a feature to install system through it.
+Patch5:         plymouth-ignore-serial-console.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
@@ -55,12 +55,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-%if 0%{suse_version} >= 1550
-# regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
-BuildRequires:  rpm-config-SUSE >= 0.g11
-%else
-BuildRequires:  suse-module-tools
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo)
@@ -72,6 +66,12 @@ BuildRequires:  pkgconfig(pango) >= 1.21.0
 BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
+%endif
+%if 0%{suse_version} >= 1550
+# regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
+BuildRequires:  rpm-config-SUSE >= 0.g11
+%else
+BuildRequires:  suse-module-tools
 %endif
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
@@ -150,15 +150,6 @@ Supplements:    packageand(plymouth:dracut)
 %description dracut
 This package contains utilities that integrate dracut with Plymouth
 
-%package x11-renderer
-Summary:        Plymouth X11 renderer
-Group:          System/Base
-Requires:       %{name} = %{version}
-
-%description x11-renderer
-This package provides the X11 renderer which allows to test plymouth
-behavior on environments with a valid DISPLAY.
-
 %package scripts
 Summary:        Plymouth related scripts
 Group:          System/Base
@@ -194,44 +185,6 @@ This package contains the label control plugin for
 Plymouth. It provides the ability to render text on
 graphical boot splashes using FreeType
 
-%package plugin-fade-throbber
-Summary:        Plymouth "Fade-Throbber" plugin
-Group:          System/Base
-Requires:       libply%{so_version} = %{version}
-Requires:       libply-splash-core%{so_version} = %{version}
-Requires:       libply-splash-graphics%{so_version} = %{version}
-
-%description plugin-fade-throbber
-This package contains the "Fade-In" boot splash plugin for
-Plymouth. It features a centered image that fades in and out
-while other images pulsate around during system boot up.
-
-%package plugin-space-flares
-Summary:        Plymouth "space-flares" plugin
-Group:          System/Base
-Requires:       %{name}-plugin-label = %{version}
-Requires:       libply%{so_version} = %{version}
-Requires:       libply-splash-core%{so_version} = %{version}
-Requires:       libply-splash-graphics%{so_version} = %{version}
-
-%description plugin-space-flares
-This package contains the "space-flares" boot splash plugin for
-Plymouth. It features a corner image with animated flares.
-
-%package plugin-two-step
-Summary:        Plymouth "two-step" plugin
-Group:          System/Base
-Requires:       libply%{so_version} = %{version}
-Requires:       libply-splash-core%{so_version} = %{version}
-Requires:       libply-splash-graphics%{so_version} = %{version}
-Requires:       plymouth-plugin-label = %{version}
-
-%description plugin-two-step
-This package contains the "two-step" boot splash plugin for
-Plymouth. It features a two phased boot process that starts with
-a progressing animation synced to boot time and finishes with a
-short, fast one-shot animation.
-
 %package plugin-script
 Summary:        Plymouth "script" plugin
 Group:          System/Base
@@ -258,18 +211,43 @@ Plymouth. It features an extensible, scriptable boot splash
 language that simplifies the process of designing custom
 boot splash themes.
 
-%package theme-fade-in
-Summary:        Plymouth "Fade-In" theme
+%package plugin-two-step
+Summary:        Plymouth "two-step" plugin
 Group:          System/Base
-Requires:       %{name}-plugin-fade-throbber = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
 Requires:       plymouth-plugin-label = %{version}
+
+%description plugin-two-step
+This package contains the "two-step" boot splash plugin for
+Plymouth. It features a two phased boot process that starts with
+a progressing animation synced to boot time and finishes with a
+short, fast one-shot animation.
+
+%package theme-bgrt
+Summary:        Plymouth "bgrt" theme
+Group:          System/Base
+Requires:       %{name}-plugin-two-step = %{version}
+Requires:       %{name}-theme-spinner = %{version}
 Requires(post): %{name}-scripts
 BuildArch:      noarch
 
-%description theme-fade-in
-This package contains the "Fade-In" boot splash theme for
-Plymouth. It features a centered logo that fades in and out
-while stars twinkle around the logo during system boot up.
+%description theme-bgrt
+This package contains the "bgrt" boot splash theme for
+Plymouth. 
+
+%package theme-script
+Summary:        Plymouth "Script" theme
+Group:          System/Base
+Requires:       %{name}-plugin-script = %{version}
+Requires(post): %{name}-scripts
+BuildArch:      noarch
+
+%description theme-script
+This package contains the "script" boot splash theme for
+Plymouth. It is a simple example theme the uses the "script"
+plugin.
 
 %package theme-spinfinity
 Summary:        Plymouth "Spinfinity" theme
@@ -295,17 +273,6 @@ BuildArch:      noarch
 This package contains the "spinner" boot splash theme for
 Plymouth.
 
-%package theme-solar
-Summary:        Plymouth "Solar" theme
-Group:          System/Base
-Requires:       %{name}-plugin-space-flares = %{version}
-Requires(post): %{name}-scripts
-BuildArch:      noarch
-
-%description theme-solar
-This package contains the "Solar" boot splash theme for
-Plymouth. It features a blue flamed sun with animated solar flares.
-
 %package theme-tribar
 Summary:        Plymouth "Tribar" theme
 Group:          System/Base
@@ -317,41 +284,82 @@ BuildArch:      noarch
 This package contains the "Tribar" boot splash theme for
 Plymouth
 
-%package theme-script
-Summary:        Plymouth "Script" theme
+%if %{with x11_renderer}
+%package x11-renderer
+Summary:        Plymouth X11 renderer
 Group:          System/Base
-Requires:       %{name}-plugin-script = %{version}
+Requires:       %{name} = %{version}
+
+%description x11-renderer
+This package provides the X11 renderer which allows to test Plymouth
+behavior on environments with a valid DISPLAY.
+%endif
+
+%if %{with fedora_theme}
+%package plugin-fade-throbber
+Summary:        Plymouth "Fade-Throbber" plugin
+Group:          System/Base
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
+
+%description plugin-fade-throbber
+This package contains the "Fade-In" boot splash plugin for
+Plymouth. It features a centered image that fades in and out
+while other images pulsate around during system boot up.
+
+%package theme-fade-in
+Summary:        Plymouth "Fade-In" theme
+Group:          System/Base
+Requires:       %{name}-plugin-fade-throbber = %{version}
+Requires:       plymouth-plugin-label = %{version}
 Requires(post): %{name}-scripts
 BuildArch:      noarch
 
-%description theme-script
-This package contains the "script" boot splash theme for
-Plymouth. It is a simple example theme the uses the "script"
-plugin.
+%description theme-fade-in
+This package contains the "Fade-In" boot splash theme for
+Plymouth. It features a centered logo that fades in and out
+while stars twinkle around the logo during system boot up.
 
-%package theme-bgrt
-Summary:        Plymouth "bgrt" theme
+%package theme-glow
+Summary:        Plymouth "glow" theme
 Group:          System/Base
-Requires:       %{name}-plugin-two-step = %{version}
-Requires:       %{name}-theme-spinner = %{version}
+Requires:       %{name}-plugin-tribar = %{version}
 Requires(post): %{name}-scripts
 BuildArch:      noarch
 
-%description theme-bgrt
-This package contains the "bgrt" boot splash theme for
-Plymouth. 
+%description theme-glow
+This package contains the "glow" boot splash theme for
+Plymouth
+
+%package plugin-space-flares
+Summary:        Plymouth "space-flares" plugin
+Group:          System/Base
+Requires:       %{name}-plugin-label = %{version}
+Requires:       libply%{so_version} = %{version}
+Requires:       libply-splash-core%{so_version} = %{version}
+Requires:       libply-splash-graphics%{so_version} = %{version}
+
+%description plugin-space-flares
+This package contains the "space-flares" boot splash plugin for
+Plymouth. It features a corner image with animated flares.
+
+%package theme-solar
+Summary:        Plymouth "Solar" theme
+Group:          System/Base
+Requires:       %{name}-plugin-space-flares = %{version}
+Requires(post): %{name}-scripts
+BuildArch:      noarch
+
+%description theme-solar
+This package contains the "Solar" boot splash theme for
+Plymouth. It features a blue flamed sun with animated solar flares.
+%endif
 
 %prep
 %setup -q
 %autopatch -p1
 autoreconf -ivf
-
-# Change the default theme
-%if 0%{?is_opensuse}
-sed -i -e 's/spinner/bgrt/g' src/plymouthd.defaults
-%else
-sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
-%endif
 
 %build
 %configure \
@@ -367,6 +375,7 @@ sed -i -e 's/spinner/SLE/g' src/plymouthd.defaults
            --with-background-end-color-stop=0x4EA65C             \
            --with-background-color=0x3391cd                      \
            --without-rhgb-compat-link                            \
+           --without-logo                                        \
            --without-system-root-install                         \
 %if %{without x11_renderer}
            --disable-gtk
@@ -376,27 +385,31 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-rm -f %{buildroot}/%{_bindir}/rhgb-client
 
-#Link the plymouth client binary also to /bin until the move to /usr is completed
-mkdir %{buildroot}/bin
-(cd %{buildroot}/bin; ln -s ..%{_bindir}/plymouth)
-
-# Glow isn't quite ready for primetime
-rm -rf %{buildroot}%{_datadir}/plymouth/glow/
-rm -rf %{buildroot}%{_datadir}/plymouth/themes/glow/
-rm -f %{buildroot}%{_libdir}/plymouth/glow.so
-
-find %{buildroot} -type f -name "*.la" -delete -print
-
+# Create necessary directories:
 mkdir -p %{buildroot}%{_localstatedir}/lib/plymouth
 mkdir -p %{buildroot}/run/plymouth
 mkdir -p %{buildroot}%{_localstatedir}/log
-touch %{buildroot}%{_localstatedir}/log/boot.log
-touch %{buildroot}%{_localstatedir}/spool/plymouth/boot.log
-cp $RPM_SOURCE_DIR/boot-duration %{buildroot}%{_datadir}/plymouth/default-boot-duration
-cp $RPM_SOURCE_DIR/boot-duration %{buildroot}%{_localstatedir}/lib/plymouth
+
+# Copy upstream's default config file to system and change release settings:
 cp %{buildroot}/%{_datadir}/plymouth/plymouthd.defaults %{buildroot}/%{_sysconfdir}/plymouth/plymouthd.conf
+
+%if 0%{?is_opensuse}
+sed -i -e 's/spinner/bgrt/g' %{buildroot}/%{_sysconfdir}/plymouth/plymouthd.conf
+%else
+sed -i -e 's/spinner/SLE/g' %{buildroot}/%{_sysconfdir}/plymouth/plymouthd.conf
+%endif
+
+# Link the plymouth client binary to /bin to fit display and emergency service requirement:
+mkdir %{buildroot}/bin
+(cd %{buildroot}/bin; ln -s ..%{_bindir}/plymouth)
+
+# Create boot-duration file for recording boot info:
+touch %{buildroot}%{_datadir}/plymouth/default-boot-duration
+touch %{buildroot}%{_localstatedir}/lib/plymouth
+
+# Remove temp files which produced during the compilation:
+find $RPM_BUILD_ROOT -name '*.la' -delete
 
 %post
 %{?regenerate_initrd_post}
@@ -416,14 +429,30 @@ fi
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%post -n libply-boot-client%{so_version} -p /sbin/ldconfig
+%post   -n libply-boot-client%{so_version} -p /sbin/ldconfig
 %postun -n libply-boot-client%{so_version} -p /sbin/ldconfig
-%post -n libply-splash-core%{so_version} -p /sbin/ldconfig
+%post   -n libply-splash-core%{so_version} -p /sbin/ldconfig
 %postun -n libply-splash-core%{so_version} -p /sbin/ldconfig
-%post -n libply-splash-graphics%{so_version} -p /sbin/ldconfig
+%post   -n libply-splash-graphics%{so_version} -p /sbin/ldconfig
 %postun -n libply-splash-graphics%{so_version} -p /sbin/ldconfig
-%post -n libply%{so_version} -p /sbin/ldconfig
+%post   -n libply%{so_version} -p /sbin/ldconfig
 %postun -n libply%{so_version} -p /sbin/ldconfig
+
+%postun theme-bgrt
+if [ $1 -eq 0 ]; then
+    export LIB=%{_libdir}
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "bgrt" ]; then
+        %{_sbindir}/plymouth-set-default-theme -R --reset
+    fi
+fi
+
+%postun theme-script
+if [ $1 -eq 0 ]; then
+    export LIB=%{_libdir}
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "script" ]; then
+        %{_sbindir}/plymouth-set-default-theme -R --reset
+    fi
+fi
 
 %postun theme-spinfinity
 if [ $1 -eq 0 ]; then
@@ -433,10 +462,35 @@ if [ $1 -eq 0 ]; then
     fi
 fi
 
+%postun theme-spinner
+if [ $1 -eq 0 ]; then
+    export LIB=%{_libdir}
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "spinner" ]; then
+        %{_sbindir}/plymouth-set-default-theme -R --reset
+    fi
+fi
+
+%postun theme-tribar
+if [ $1 -eq 0 ]; then
+    export LIB=%{_libdir}
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "tribar" ]; then
+        %{_sbindir}/plymouth-set-default-theme -R --reset
+    fi
+fi
+
+%if %{with fedora_theme}
 %postun theme-fade-in
 if [ $1 -eq 0 ]; then
     export LIB=%{_libdir}
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "fade-in" ]; then
+        %{_sbindir}/plymouth-set-default-theme -R --reset
+    fi
+fi
+
+%postun theme-glow
+if [ $1 -eq 0 ]; then
+    export LIB=%{_libdir}
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" = "glow" ]; then
         %{_sbindir}/plymouth-set-default-theme -R --reset
     fi
 fi
@@ -448,10 +502,9 @@ if [ $1 -eq 0 ]; then
         %{_sbindir}/plymouth-set-default-theme -R --reset
     fi
 fi
+%endif
 
 %files
-%license COPYING
-%doc AUTHORS NEWS README
 %dir %{_datadir}/plymouth
 %dir %{_datadir}/plymouth/themes
 %dir %{_datadir}/plymouth/themes/details
@@ -460,11 +513,11 @@ fi
 %dir %{_libdir}/plymouth
 %dir %{_libdir}/plymouth/renderers
 %dir %{_sysconfdir}/plymouth
+/bin/plymouth
+%{_bindir}/plymouth
+%{_sbindir}/plymouthd
 %config(noreplace) %{_sysconfdir}/plymouth/plymouthd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/bootlog
-%{_sbindir}/plymouthd
-%{_bindir}/plymouth
-/bin/plymouth
 %{_libdir}/plymouth/details.so
 %{_libdir}/plymouth/text.so
 %{_libdir}/plymouth/renderers/drm*
@@ -473,13 +526,14 @@ fi
 %{_datadir}/plymouth/themes/details/details.plymouth
 %{_datadir}/plymouth/themes/text/text.plymouth
 %{_datadir}/plymouth/plymouthd.defaults
-%{_datadir}/plymouth/bizcom.png
-%ghost /run/plymouth
 %{_localstatedir}/spool/plymouth
-%{_mandir}/man?/*
-%ghost %{_localstatedir}/lib/plymouth/boot-duration
 %{_unitdir}/*
+%ghost /run/plymouth
+%ghost %{_localstatedir}/lib/plymouth/boot-duration
 %ghost %{_localstatedir}/log/boot.log
+%{_mandir}/man?/*
+%doc AUTHORS NEWS README
+%license COPYING
 /usr/share/locale/
 
 %files dracut
@@ -513,35 +567,28 @@ fi
 %{_sbindir}/plymouth-set-default-theme
 %{_libexecdir}/plymouth/plymouth-update-initrd
 
-%if %{with x11_renderer}
-%files x11-renderer
-%{_libdir}/plymouth/renderers/x11*
-%endif
-
 %files plugin-label
 %{_libdir}/plymouth/label.so
 
 %files plugin-label-ft
 %{_libdir}/plymouth/label-ft.so
 
-%files plugin-fade-throbber
-%{_libdir}/plymouth/fade-throbber.so
-
-%files plugin-space-flares
-%{_libdir}/plymouth/space-flares.so
-
-%files plugin-two-step
-%{_libdir}/plymouth/two-step.so
+%files plugin-script
+%{_libdir}/plymouth/script.so
 
 %files plugin-tribar
 %{_libdir}/plymouth/tribar.so
 
-%files plugin-script
-%{_libdir}/plymouth/script.so
+%files plugin-two-step
+%{_libdir}/plymouth/two-step.so
 
-%files theme-fade-in
-%dir %{_datadir}/plymouth/themes/fade-in
-%{_datadir}/plymouth/themes/fade-in/*
+%files theme-bgrt
+%dir %{_datadir}/plymouth/themes/bgrt
+%{_datadir}/plymouth/themes/bgrt/*
+
+%files theme-script
+%dir %{_datadir}/plymouth/themes/script/
+%{_datadir}/plymouth/themes/script/*
 
 %files theme-spinfinity
 %dir %{_datadir}/plymouth/themes/spinfinity
@@ -551,20 +598,33 @@ fi
 %dir %{_datadir}/plymouth/themes/spinner
 %{_datadir}/plymouth/themes/spinner/*
 
-%files theme-solar
-%dir %{_datadir}/plymouth/themes/solar
-%{_datadir}/plymouth/themes/solar/*
-
 %files theme-tribar
 %dir %{_datadir}/plymouth/themes/tribar
 %{_datadir}/plymouth/themes/tribar/*
 
-%files theme-script
-%dir %{_datadir}/plymouth/themes/script/
-%{_datadir}/plymouth/themes/script/*
+%if %{with x11_renderer}
+%files x11-renderer
+%{_libdir}/plymouth/renderers/x11*
+%endif
 
-%files theme-bgrt
-%dir %{_datadir}/plymouth/themes/bgrt
-%{_datadir}/plymouth/themes/bgrt/*
+%if %{with fedora_theme}
+%files plugin-fade-throbber
+%{_libdir}/plymouth/fade-throbber.so
+
+%files theme-fade-in
+%dir %{_datadir}/plymouth/themes/fade-in
+%{_datadir}/plymouth/themes/fade-in/*
+
+%files theme-glow
+%dir %{_datadir}/plymouth/themes/glow
+%{_datadir}/plymouth/themes/glow/*
+
+%files plugin-space-flares
+%{_libdir}/plymouth/space-flares.so
+
+%files theme-solar
+%dir %{_datadir}/plymouth/themes/solar
+%{_datadir}/plymouth/themes/solar/*
+%endif
 
 %changelog

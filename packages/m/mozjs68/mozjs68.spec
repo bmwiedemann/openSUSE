@@ -37,6 +37,8 @@ Patch7:         tests-Adapt-formatted-strings-results-to-system-ICU.patch
 Patch8:         TestingFunctions-Update-ICU-s-default-tz-when-setting-TZ.patch
 Patch9:         Skip-time-zone-tests-that-fails-with-system-ICU.patch
 Patch10:        Skip-tests-expected-fail-i586-ppc64.patch
+Patch11:        gcc10-include-fix.patch
+Patch12:        mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 
 BuildRequires:  autoconf213
 BuildRequires:  cargo
@@ -50,9 +52,9 @@ BuildRequires:  python-xml
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  rust
+BuildRequires:  pkgconfig(icu-i18n) >= 63.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(icu-i18n) >= 63.1
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -130,7 +132,6 @@ cd build_OPT.OBJ
     --disable-jemalloc \
     --enable-unaligned-private-values \
     --enable-posix-nspr-emulation \
-
 
 # do not eat all memory
 %limit_build -m 1300

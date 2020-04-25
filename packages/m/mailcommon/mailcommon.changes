@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:12 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Save external ref here too
+  * Fix Bug 419720 - Message status filter broken (kde#419720)
+  * It's already initialize in header
+  * do not lose address headers when decrypting mail (kde#413022)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Qt guys reverted some changes in qt5.15...
+  * Not necessary to connect to QDialogButton signal
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

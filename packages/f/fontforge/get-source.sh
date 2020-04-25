@@ -19,8 +19,7 @@ pushd fontforge-$VERSION
 git clone https://github.com/troydhanson/uthash
 git clone --depth 1 https://github.com/coreutils/gnulib.git gnulib
 # remove not shippable files (bug 926061)
-rm win/gold/libX11-*.noarch.rpm
-./bootstrap --copy --force
+# rm win/gold/libX11-*.noarch.rpm
 popd
 tar cJf fontforge-$VERSION-repacked.tar.xz fontforge-$VERSION
 rm -rf fontforge-$VERSION

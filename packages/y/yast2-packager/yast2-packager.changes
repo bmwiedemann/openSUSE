@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:46:59 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- prevent race condition between log rotation and migration
+  log backup (bsc#1166174)
+- 4.2.62
+
+-------------------------------------------------------------------
 Wed Apr  8 14:44:49 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Allow updating the roles via self_update repository (bsc#1168702)

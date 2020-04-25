@@ -64,7 +64,11 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       alsa-utils
 Requires:       desktop-data
 Requires:       icewm-bin
+%if !0%{?sle_version}
 Requires:       icewm-configuration-files
+%else
+Requires:       icewm-theme-branding
+%endif
 Requires:       xdg-menu
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -98,6 +102,7 @@ Summary:        Window Manager with a Taskbar -- Default configuration
 Group:          System/GUI/Other
 Provides:       icewm-configuration-files = %{version}
 BuildArch:      noarch
+Conflicts:      icewm-theme-branding
 
 %description config-upstream
 A window manager for the X Window System that can emulate the look

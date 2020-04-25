@@ -879,4 +879,12 @@ require bash-completion for iproute2-bash-completion]</comment>
   [jira#PM-1185]</comment>
     <requestid>792342</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>ad6e9ccb2154066eace18a019fd55aa4</srcmd5>
+    <version>5.6.0</version>
+    <time>1587838378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797138</requestid>
+  </revision>
 </revisionlist>

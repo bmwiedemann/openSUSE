@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:10 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Use QLatin1Char('/') here
+  * Fix KNS3::UploadDialog usage
+  * Fix compilation with more recent Qt 5.15
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Increase version
+  * Fix settings, so now we can use SelectImapWidget
+  * Assign sieveImapAccountSettings for AbstractMoveImapFolderWidget
+  * Allow to use dnd for moving script part
+  * Fix cppcheck warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

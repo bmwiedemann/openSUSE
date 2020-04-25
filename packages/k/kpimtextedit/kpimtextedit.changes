@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:47 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:22 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix Bug 419473 - kmail crashed on sending mail (kde#419473)
+  * Fix clazy warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Autogenerate categories file
+  * Fix another fallout of a recent ECM change
+  *  Remove unused method
+  * Look at for switch from plaintext to html
+  * Clean undo class when text is modified
+  * Allow to restore html version when we made an error:
+  * We depend against 5.2 now
+  * Don't use nullptr for flags
+  * Use correct includes
+  * Adapt to new api
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

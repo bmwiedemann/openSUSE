@@ -21,19 +21,16 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkleo
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Base package of Kleopatra, a KDE key manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  extra-cmake-modules >= 5.19.0
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
@@ -46,14 +43,11 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qt5Widgets)
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 libkleo is a library used by KDE PIM applications to handle cryptographic key and certificate management.
@@ -78,9 +72,7 @@ Requires:       cmake(QGpgme)
 %description devel
 The development package for the libkleo libraries
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q

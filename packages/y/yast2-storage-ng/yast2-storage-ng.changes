@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:32:38 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- update /etc/crypttab status properly (bsc#1118977)
+- 4.3.2
+
+-------------------------------------------------------------------
+Wed Apr 22 13:29:05 CEST 2020 - aschnell@suse.com
+
+- disallow to edit LVM cache pools (related to bsc#1099744)
+- 4.3.1
+
+-------------------------------------------------------------------
+Fri Apr 17 15:08:48 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Fix the severity of some boot checks, making them warnings
+  instead of errors.
+
+-------------------------------------------------------------------
+Fri Apr 17 11:45:31 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: in the initial attempt, consider only a reasonable
+  number of disks (bsc#1154070).
+- Proposal: speed up the initial attempt when "allocate_volume_mode"
+  is set to "device" in the control file (part of jsc#SLE-7238).
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Apr 15 11:10:16 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - rework VFAT mount option handling (bsc#1161771)
-- 4.2.108
 
 -------------------------------------------------------------------
 Mon Apr 06 09:14:25 CEST 2020 - aschnell@suse.com

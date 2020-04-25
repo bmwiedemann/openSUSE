@@ -1,7 +1,7 @@
 #
 # spec file for package kopete
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kopete
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-OPENSUSE
-Patch0:         fix-build-with-gcc48.patch
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  giflib-devel
@@ -44,7 +38,6 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  meanwhile-devel
 BuildRequires:  openslp-devel
-BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  pkgconfig
 BuildRequires:  speex-devel
 BuildRequires:  sqlite-devel
@@ -67,6 +60,7 @@ BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
@@ -76,6 +70,10 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 BuildRequires:  pkgconfig(libsrtp)
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 %if 0%{?is_opensuse} || !0%{?sle_version}
 BuildRequires:  mediastreamer2-devel
 %endif
@@ -98,9 +96,6 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1500
-%patch0 -p1
-%endif
 
 %build
   %cmake_kf5 -d build

@@ -21,19 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Use-qdbus-qt5-instead-of-qdbus.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
@@ -66,12 +60,16 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+Recommends:     %{name}-lang
 Obsoletes:      kscreengenie < %{version}
 Provides:       kscreengenie = %{version}
 # Upstream changed name twice (kscreengenie - kapture - spectacle)
 Obsoletes:      kapture < %{version}
 Provides:       kapture = %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Spectactle is a screenshot-taking program made by KDE. It allows taking screenshots
@@ -120,6 +118,7 @@ screenshot capture program by KDE.
 %{_kf5_sharedir}/dbus-1/services/org.kde.Spectacle.service
 %{_kf5_libdir}/kconf_update_bin/spectacle-migrate-shortcuts
 %{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
+%{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
 %{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
 %{_kf5_debugdir}/spectacle.categories
 

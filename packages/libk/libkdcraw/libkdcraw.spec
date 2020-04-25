@@ -1,7 +1,7 @@
 #
 # spec file for package libkdcraw
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdcraw
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Revert-Bump-libraw-minimal-version-increase-supporte.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -45,6 +39,10 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  pkgconfig(libraw) >= 0.16.0
 Obsoletes:      libkdcraw-kf5 < %{version}
 Provides:       libkdcraw-kf5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Libkdcraw is a C++ interface around dcraw binary program used to decode
@@ -56,9 +54,6 @@ programs.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1500
-%patch0 -p1
-%endif
 
 %build
   %cmake_kf5 -d build -- -DENABLE_LCMS2=true -DENABLE_RAWSPEED=true

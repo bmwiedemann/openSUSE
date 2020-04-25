@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:38:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop %tmpfiles_create portables.conf from %post of networkd sub-package
+
+  It was probably mistakenly added because systemd-portable served as
+  template for systemd-network.
+
+-------------------------------------------------------------------
+Thu Apr 23 14:17:31 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 08cd65ac385c884ed6e4bd71128a0796f56ecd17 (include merge of v245.5)
+
+  1ceedf8535 meson: fix build of udev 'path_id_compat' builtin with meson 0.54
+  e61569d4a9 pid1: by default make user units inherit their umask from the user manager (bsc#1162698)
+  64fdacd5f1 user-util: rework how we validate user names (bsc#1170272)
+  [...]
+
+-------------------------------------------------------------------
+Thu Apr 23 14:00:42 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop 0001-meson-fix-build-of-udev-path_id_compat-builtin-with-.patch
+
+  It's been merged in 'openSUSE-Factory' branch otherwise this branch
+  won't build anymore since meson has been upgraded to version 0.54 in
+  Factory.
+
+-------------------------------------------------------------------
 Wed Apr 15 19:06:27 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Switch back to the hybrid hierarchy

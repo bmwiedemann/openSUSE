@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Comment for the moment
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Port deprecated toSet method
+  * Autogenerate categories file
+  * Make it compile without deprecated methods
+  * Make it compile against qt5.15
+  * addVersionOption()/addHelpOption() already adds by KAboutData::setApplicationData
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

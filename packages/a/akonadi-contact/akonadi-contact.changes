@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix compilation with more recent Qt 5.15
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * standardcontactformatter.cpp - fix crash on iterating
+  * Make it compile against last qt5.15
+  * Port deprecated methods
+  * Autogenerate categories file
+  * Remove usage of KDBusConnectionPool
+  * Make it compile against last qt5.15 without deprecated method
+  * Port toSet method
+  * Port to QRegularExpression
+  * Port to QCombobox
+  * Don't use nullptr for flags
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

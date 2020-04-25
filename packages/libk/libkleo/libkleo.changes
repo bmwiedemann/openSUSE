@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Qt guys reverted api in qt5.15
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Autogenerate categories files
+  * Fix clazy warning
+  * Port some deprecated methods
+  * Add gnupg-helper and hex utils from Kleopatra
+  * Port endl to \n
+  * Add remark support to keylistmodel and keycache
+  * Add cases for revoked etc. in compliancestring
+  * Insert double space in the middle of fpr
+  * Show explicit info button in keyapprovaldialog
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

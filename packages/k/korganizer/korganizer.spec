@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Patch1:         korgac-autostart-default.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
@@ -80,11 +76,11 @@ Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+BuildRequires:  libboost_headers-devel
 
 %description
 KOrganizer is a calendar application for KDE.

@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-pk-updates
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Software Update Manager for Plasma
 License:        GPL-3.0-or-later
 Group:          System/Packages
-Url:            https://www.kde.org/
+URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/plasma-pk-updates/%{version}/plasma-pk-updates-%{version}.tar.xz
 # Updated translations
 Source1:        plasma5-pk-updates-lang.tar.xz
@@ -42,6 +42,9 @@ Patch9:         0007-Port-away-from-KDELibs4Support-use-Solid-Power-inter.patch
 # PATCH-FEATURE-UPSTREAM
 Patch10:        0001-Add-support-for-license-prompts.patch
 Patch11:        0001-Don-t-show-an-error-for-a-failed-automatic-refresh.patch
+# To be sent upstream if confirmed to work as expected
+Patch12:        0001-Limit-to-one-automatic-check-each-10-minutes.patch
+Patch13:        0001-Also-treat-ErrorNotAuthorized-as-temporary.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= 1.3.0

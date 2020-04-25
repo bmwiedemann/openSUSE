@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:27:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.7 with OpenJ9 0.20.0 virtual machine
+  * including Oracle April 2020 CPU changes (bsc#1169511)
+  * Initial experimental support of 64-bit ARM architecture
+  * OpenJ9 changes,
+    see https://www.eclipse.org/openj9/docs/version0.20
+- Added patch:
+  * aarch64.patch
+    + fix OpenJ9 linking on aarch64
+    + enable omrsig support for aarch64
+- Removed patch:
+  * DependOnVariableHelper.patch
+    + integrated in OpenJDK 11.0.7 code-base
+
+-------------------------------------------------------------------
+Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- The pack200 and unpack200 alternatives should be slaves of java
+  and not of javac, since they are part of JRE.
+
+-------------------------------------------------------------------
+Wed Mar 25 14:20:35 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add gcc-fno-common-fix.patch in order to fix
+  boo#1167462.
+
+-------------------------------------------------------------------
+Thu Feb 13 15:46:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- DependOnVariableHelper.patch: Fix DependOnVariableHelper for make 4.3
+
+-------------------------------------------------------------------
 Sun Feb  2 15:47:35 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial release of OpenJDK 11.0.6 with OpenJ9 0.18.1 virtual

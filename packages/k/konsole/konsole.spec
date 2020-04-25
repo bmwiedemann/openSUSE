@@ -1,7 +1,7 @@
 #
 # spec file for package konsole
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
-URL:            http://www.kde.org/
+URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Source3:        Root_Shell.profile
 Source4:        konsolesu.desktop
 Source21:       utilities-terminal-su-16.png
@@ -41,6 +37,8 @@ Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
 BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -49,7 +47,6 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -66,7 +63,6 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Concurrent) >= 5.2.0
 BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5DBus) >= 5.2.0
@@ -77,6 +73,10 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       %{name}-part = %{version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Konsole is a terminal emulator for the K Desktop Environment.
@@ -96,7 +96,7 @@ This package provides KPart of the Konsole application.
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name}-part = %{version}
-Supplements:    packageand(bundle-lang-other:%{name}-part)
+Supplements:    (bundle-lang-other and %{name}-part)
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-part-lang-all = %{version}

@@ -1,7 +1,7 @@
 #
 # spec file for package libkomparediff2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkomparediff2
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
@@ -47,6 +43,10 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 A library to compare files and strings, used in Kompare and KDevelop.
@@ -65,16 +65,12 @@ Development package for libkomparediff2.
 Summary:        A library to compare files and strings
 Group:          System/Libraries
 Provides:       %{name} = %{version}
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description %{soname}
 A library to compare files and strings, used in Kompare and KDevelop.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q

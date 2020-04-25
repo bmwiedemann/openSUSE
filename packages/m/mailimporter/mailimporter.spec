@@ -16,40 +16,38 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.66.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailimporter
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 The mailimporter library is a KDE PIM project to provide a framework
@@ -88,9 +86,7 @@ This package provides the mailimporter library for Akonadi based functions,
 used by KDE PIM applications to import data from other mail formats
 (such as mbox, Maildir...).
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q

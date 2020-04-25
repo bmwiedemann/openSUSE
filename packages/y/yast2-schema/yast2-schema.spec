@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-schema
-Version:        4.2.6
+Version:        4.2.10
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
 
-Url:            https://github.com/yast/yast-schema
-
-# XXX: SLE-12 build packages for x86 and s390, but no runnable kernel, so
-# this package cannot be build here. Remove when SLE stop doing it
-%if !0%{?is_opensuse}
-ExcludeArch:    %ix86 s390
-%endif
+URL:            https://github.com/yast/yast-schema
 
 # Dependencies needed to build the package
 BuildRequires:  trang
 BuildRequires:  yast2-devtools
-BuildRequires:  yast2-testsuite
 
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# crypt_method element in 'partition' sections
-BuildRequires:  autoyast2 >= 4.2.17
+# fixes for scripts elements
+BuildRequires:  autoyast2 >= 4.2.25
 BuildRequires:  yast2
 # add_on_others element
 BuildRequires:  yast2-add-on >= 4.2.4
@@ -71,8 +64,8 @@ BuildRequires:  yast2-online-update-configuration
 BuildRequires:  yast2-printer
 BuildRequires:  yast2-proxy
 BuildRequires:  yast2-tftp-server >= 4.1.7
-# Available on SLE (12) only
-%if !0%{?is_opensuse}
+# registration is available only where suse connect is also available
+%ifnarch s390 %ix86
 BuildRequires:  yast2-registration
 %endif
 # Package available for S390 only
@@ -81,8 +74,8 @@ BuildRequires:  yast2-s390
 %endif
 BuildRequires:  yast2-samba-client
 BuildRequires:  yast2-samba-server
-# extra_services in security.rnc
-BuildRequires:  yast2-security >= 4.2.5
+# sys_gid_max, sys_gid_min, sys_uid_max,... in security.rnc
+BuildRequires:  yast2-security >= 4.2.8
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-sound
 BuildRequires:  yast2-squid

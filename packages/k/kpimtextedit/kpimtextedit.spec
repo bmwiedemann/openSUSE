@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpimtextedit
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
@@ -51,14 +47,12 @@ BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.34
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+BuildRequires:  libboost_headers-devel
+Recommends:     %{name}-lang
 
 %description
 This package contains the basic packages for KDE PIM applications, in particular those related to editing text, like email messages.
@@ -82,9 +76,7 @@ Requires:       cmake(KF5TextWidgets)
 This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n kpimtextedit-%{version}

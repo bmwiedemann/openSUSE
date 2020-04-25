@@ -1,7 +1,7 @@
 #
 # spec file for package okular
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -29,13 +29,20 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
+BuildRequires:  kf5-filesystem
+BuildRequires:  libdjvulibre-devel
+BuildRequires:  libepub-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  libmarkdown-devel
+BuildRequires:  libpoppler-qt5-devel
+BuildRequires:  libqca-qt5-devel
+BuildRequires:  libspectre-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  libzip-devel
+BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Bookmarks)
@@ -45,30 +52,19 @@ BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5JS)
+BuildRequires:  cmake(KF5KExiv2)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  libdjvulibre-devel
-BuildRequires:  libepub-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  cmake(KF5KExiv2)
-BuildRequires:  libmarkdown-devel
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  libspectre-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libzip-devel
-BuildRequires:  cmake(QMobipocket)
-BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  zlib-devel
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(QMobipocket)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
@@ -82,6 +78,10 @@ Recommends:     %{name}-lang
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Document viewing program; supports document in PDF, PS and
@@ -119,7 +119,7 @@ Document viewing program; supports document in various formats
 %setup -q -n okular-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DOKULAR_UI=desktop
 %cmake_build
 
 %install
@@ -130,8 +130,6 @@ Document viewing program; supports document in various formats
 %endif
 
 rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
-rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.okular.kirigami*
-rm -rfv %{buildroot}/%{_kf5_bindir}/okularkirigami
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -177,7 +175,6 @@ rm -rfv %{buildroot}/%{_kf5_bindir}/okularkirigami
 %{_kf5_appstreamdir}/org.kde.okular-txt.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-xps.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular.appdata.xml
-%{_kf5_appstreamdir}/org.kde.okular.kirigami.appdata.xml
 %{_kf5_bindir}/okular
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/*/okular.*
@@ -203,7 +200,6 @@ rm -rfv %{buildroot}/%{_kf5_bindir}/okularkirigami
 %{_kf5_plugindir}/okular/generators/okularGenerator_tiff.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_txt.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_xps.so
-%{_kf5_qmldir}/
 %{_kf5_servicesdir}/okularChm.desktop
 %{_kf5_servicesdir}/okularComicbook.desktop
 %{_kf5_servicesdir}/okularDjvu.desktop

@@ -562,4 +562,12 @@
     <comment>Fix build with gcc 10</comment>
     <requestid>769970</requestid>
   </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>ce79ffd08a2df1a816b21febe02c5ecc</srcmd5>
+    <version>1.8.0.242</version>
+    <time>1587838510</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>796256</requestid>
+  </revision>
 </revisionlist>

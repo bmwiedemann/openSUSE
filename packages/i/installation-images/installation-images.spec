@@ -437,7 +437,6 @@ BuildRequires:  pothana2000
 BuildRequires:  procinfo
 BuildRequires:  procps
 BuildRequires:  psmisc
-BuildRequires:  python
 BuildRequires:  reiserfs
 BuildRequires:  rgb
 BuildRequires:  rpcbind

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix Bug 419948 - Changing an individual folder to "Prefer HTML"
+    or to "Prefer Plain Text" is not remembered after restarting
+    KMail (kde#419948)
+  * Refresh message when we change display format
+  * Remove extra margin
+  * Fix assert when removing the selected folder from the local subscription
+  * Use QLatin1Char('/') here
+  * Show message info about restarting apps when we change a settings
+  * comment not implement userfeedback plugin
+  * Disable send again when we open directly an mbox
+  * Fix generate pdf file
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:12 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix export to pdf filename
+  * Do not ask users if they want to overwrite saved file twice
+  * Fix clazy warning
+  * Fix cppcheck warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:15 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

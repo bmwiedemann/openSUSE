@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-base
-Version:        20190612
+Version:        20200417
 Release:        0
 Summary:        Patterns for Installation (base patterns)
 License:        MIT
@@ -96,11 +96,11 @@ AppArmor is an application security framework that provides mandatory access con
 
 %package basesystem
 %pattern_basetechnologies
-Summary:        Minimal Base System (alias pattern for base)
+Summary:        Base System (alias pattern for base)
 Group:          Metapackages
 Provides:       pattern() = basesystem
 Provides:       pattern-icon() = pattern-basis
-Requires:       pattern() = minimal_base
+Requires:       pattern() = base
 
 %description basesystem
 This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
@@ -123,47 +123,39 @@ Provides:       pattern-visible()
 %obsolete_legacy_pattern minimal
 Requires:       pattern() = minimal_base
 
-Requires:       kmod
-Requires:       polkit
-Requires:       polkit-default-privs
+Requires:       aaa_base
+Requires:       bash
+Requires:       ca-certificates-mozilla
+Requires:       coreutils
+Requires:       glibc
+Requires:       libnss_usrfiles2
+Requires:       pam
+Requires:       pam-config
+Requires:       rpm
 Requires:       shadow
+Requires:       sysconfig
+Requires:       system-user-nobody
+Requires:       systemd
 Requires:       util-linux
-Requires:       which
-%if ! 0%{?is_opensuse}
-Requires:       systemd-coredump
+Requires:       zypper
+%if 0%{?sle_version}
+Recommends:     rollback-helper
+Recommends:     SUSEConnect
 %endif
-# Support multiversion(kernel) (jsc#SLE-10162, jsc#SLE-10465)
-Requires:       purge-kernels-service
 # Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
 Recommends:     busybox-static
-Recommends:     bash-completion
-Recommends:     ca-certificates-mozilla
-Recommends:     chrony
-Recommends:     cron
-# we rely on cron for daily/hourly
-Recommends:     cronie
+Recommends:     elfutils
+Recommends:     iproute2
+Recommends:     system-group-trusted
+Recommends:     system-group-wheel
+Recommends:     system-user-bin
+Recommends:     system-user-daemon
+Recommends:     terminfo
+Recommends:     terminfo-iterm
+Recommends:     terminfo-screen
+Recommends:     timezone
 Recommends:     glibc-locale-base
-Recommends:     glibc-locale
-Recommends:     systemd-sysvinit
-# workaround for boo#1151148
-Recommends:     snapper
 
-%if 0%{?is_opensuse}
-# get it branded
-Recommends:     branding-openSUSE
-%else
-Recommends:     branding-SLE
-%endif
-%ifarch ppc ppc64 ppc64le
-%if !0%{?is_opensuse}
-Recommends:     lshw
-Recommends:     lsvpd
-%endif
-%endif
-%ifarch ppc64 ppc64le
-# bsc#1098849
-Requires:       ppc64-diag
-%endif
 # Current systems suffer from entropy starvation (bsc#1131369)
 %ifarch aarch64 %ix86 x86_64 ppc64 ppc64le s390x
 Recommends:     haveged
@@ -553,55 +545,17 @@ Provides:       pattern-order() = 5190
 Provides:       pattern-visible()
 %obsolete_legacy_pattern minimal_base
 
-Requires:       aaa_base
-Requires:       bash
-Requires:       coreutils
-Requires:       device-mapper
-Requires:       distribution-release
-Requires:       filesystem
-Requires:       glibc
-Requires:       iproute2
-Requires:       kbd
-Requires:       libnss_usrfiles2
-Requires:       pam
-Requires:       procps
-Requires:       rpm
-Requires:       sysconfig
-Requires:       system-group-hardware
-Requires:       system-group-wheel
-Requires:       system-user-bin
-Requires:       system-user-daemon
-Requires:       system-user-nobody
-Requires:       systemd
-Requires:       udev
-Requires:       zypper
-# the release package recommends a specific branding package so
-# the solver should pick the right one
 Requires:       branding
-# Note it makes no sense to recommend packages in minimal_base as it can't
-# be installed with --no-recommends if your package can be Recommended rather
-# then required it likely belongs in base and not here.
-# rollback-helper is useful on Leap / SLE but not tumbleweed
-%if 0%{?sle_version}
-Requires:       rollback-helper
-%endif
-%if 0%{?is_opensuse}
-Requires:       openSUSE-build-key
-# There are two release packages in the repo, pick this over openSUSE-Tumbleweed-Kubic-release
+Requires:       distribution-release
+# Tell the solver to default to the main product
 Suggests:       openSUSE-release
-%else
-Requires:       SUSEConnect
-Requires:       rollback_helper
-Requires:       suse-build-key
-%endif
+Requires:       filesystem
+# those packages are actually useless as they don't use
+# %_keyringpath but we need them eg for kiwi
+Requires:       build-key
 
-%if 0%{?is_opensuse}
 %description minimal_base
-This is the minimal openSUSE runtime system. It is really a minimal system, you can login and a shell will be started, that's all. It is intended as base for Appliances.
-%else
-%description minimal_base
-This is the minimal SLE runtime system. It is really a minimal system, you can login and a shell will be started, that's all. It is intended as base for Appliances.
-%endif
+This is the minimal runtime system. It is really a minimal system. It is intended as base for Appliances.
 
 %files minimal_base
 %dir %{_docdir}/patterns
@@ -617,6 +571,7 @@ Provides:       pattern() = bootloader
 Requires:       pattern() = base
 #
 Requires:       grub2
+Requires:       (grub2-snapper-plugin if snapper)
 %ifarch x86_64
 # XXX: not sure this really belongs here. More like a kernel
 # rather than bootloader related thing?
@@ -685,13 +640,11 @@ Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
 Requires:       pattern() = base
 
-Requires:       man
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       systemd-presets-branding-transactional-server
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
-Recommends:     pattern() = enhanced_base
 Suggests:       health-checker
 
 %description transactional_base

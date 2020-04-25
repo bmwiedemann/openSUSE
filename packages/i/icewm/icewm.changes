@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 00:51:41 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Explicitly require icewm-theme-branding on SLE and Leap. 
+- Add Conflicts between icewm-config-upstream and icewm-theme-branding
+
+-------------------------------------------------------------------
 Mon Mar 16 03:45:48 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Improve build tag consistency between SLE and Leap.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:48:52 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- reimplement Builtins#tointeger to not use scanf removed from ruby
+  2.7 (bsc#1169442)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Jan 22 15:04:11 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Added a COPYING file with the GPL license (bsc#1161470)
