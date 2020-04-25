@@ -143,4 +143,12 @@
     <comment>- Update to release 1.2.135</comment>
     <requestid>792398</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>68fb90fdd46ff065ac09d5afb1f0bea2</srcmd5>
+    <version>1.2.137</version>
+    <time>1587838185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>795753</requestid>
+  </revision>
 </revisionlist>
