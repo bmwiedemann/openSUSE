@@ -1,7 +1,7 @@
 #
 # spec file for package kio_audiocd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,33 +22,31 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio_audiocd
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            http://www.kde.org
+URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  alsa-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
-BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  libvorbis-devel
+BuildRequires:  cmake(KF5Cddb)
+BuildRequires:  cmake(KF5CompactDisc)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(KF5CompactDisc)
-BuildRequires:  libvorbis-devel
 BuildRequires:  cmake(Phonon4Qt5)
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 This package contains an KIO slave to access audio CDs.
@@ -62,9 +60,7 @@ Requires:       %{name} = %{version}
 %description devel
 This package contains the development files for the audiocd kio slave
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n %{rname}-%{version}
