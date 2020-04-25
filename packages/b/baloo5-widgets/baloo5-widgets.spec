@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5-widgets
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Source99:       baloo5-widgets-rpmlintrc
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
@@ -48,6 +44,10 @@ Recommends:     %{name}-lang
 Obsoletes:      libKF5BalooWidgets5
 Provides:       libKF5BalooNaturalQueryParser1 = %{version}
 Obsoletes:      libKF5BalooNaturalQueryParser1 < %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Baloo is a framework for searching and managing metada
@@ -87,6 +87,7 @@ Development package for baloo5-widgets
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
 %{_kf5_bindir}/baloo_filemetadata_temp_extractor
+%{_kf5_debugdir}/baloo-widgets.categories
 %{_kf5_libdir}/libKF5BalooWidgets.so.*
 %{_kf5_plugindir}/baloofilepropertiesplugin.so
 %{_kf5_plugindir}/kf5/kfileitemaction/tagsfileitemaction.so
