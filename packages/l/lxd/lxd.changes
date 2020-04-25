@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:58:55 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.0.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-0-1-lts-has-been-released/7515
+  boo#1170404
+
+  * Tweaked and improved the resources API
+  * Added lxd cluster remove-raft-node disaster recovery function
+  * Implemented ceph rbd/fs disk devices can now be attached to virtual machines
+  * Fixed some data migration issues for users of < 3.0 upgrading to 4.0 directly
+  * Fixed file descriptor leakage in exec
+
+-------------------------------------------------------------------
 Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.0.0. The full upstream changelog is available from:
