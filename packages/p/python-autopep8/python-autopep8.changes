@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Apr 24 15:15:40 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.5.2:
+  * add test for verbose log
+  * remove unnecessary format's argument
+  * add unit test
+  * fix incorrect E702 fixes with --select=E702 option
+  * refactoring
+  * enable exclude option when specify directly file args
+  * add unit test: exclude option when specify directly file args
+  * support parallel jobs for --diff option (#480)
+  * add test for diff option parallel jobs
+  * add python 3.8 to files
+  * add unit test: --ignore=E503,E504 case
+  * fix degrade to case of --select=W --ignore=W503
+  * add test for W503,504 more complex case
+
+- changes from version 1.5.1:
+  * remove skip mark in test
+  * refactoring
+  * add unit test for w503 and w504 confliction case
+  * change: both W503 and W504 are specified, priority is given to
+    W503 (for #518)
+  * fix E402 with __all__ (for #529)
+  * Fix a bug causing both W503 and W504 to be ignored
+  * return diff exit code when reading from stdin too
+
+-------------------------------------------------------------------
 Wed Jan 22 15:04:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.5
