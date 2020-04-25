@@ -378,4 +378,28 @@ bsc#1007869) (CVE-2016-8706)</comment>
 </comment>
     <requestid>791377</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a1a29985ec21bb88ee1d63ea32deecaf</srcmd5>
+    <version>1.6.5</version>
+    <time>1587838098</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.5
+  https://github.com/memcached/memcached/wiki/ReleaseNotes165
+- drop link_sasl.patch issue is fixed
+- dropped 635.patch and 634.patch: in 1.6.5 release
+
+- update to version 1.6.4
+  https://github.com/memcached/memcached/wiki/ReleaseNotes163
+  https://github.com/memcached/memcached/wiki/ReleaseNotes164
+- drop patches as they are included in the update:
+  https://github.com/memcached/memcached/pull/634
+  https://github.com/memcached/memcached/pull/635
+- added link_sasl.patch: it seems libsasl2 wasnt linked which lead
+  to undefined references
+
+- disable extstore also on ppc(64)
+- limit tls support to 15 and above
+- disable lto until the 2 settings structs are resolved</comment>
+    <requestid>795535</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 13 19:08:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 1.6.5
+  https://github.com/memcached/memcached/wiki/ReleaseNotes165
+- drop link_sasl.patch issue is fixed
+- dropped 635.patch and 634.patch: in 1.6.5 release
+
+-------------------------------------------------------------------
+Mon Apr 13 12:00:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 1.6.4
+  https://github.com/memcached/memcached/wiki/ReleaseNotes163
+  https://github.com/memcached/memcached/wiki/ReleaseNotes164
+- drop patches as they are included in the update:
+  https://github.com/memcached/memcached/pull/634
+  https://github.com/memcached/memcached/pull/635
+- added link_sasl.patch: it seems libsasl2 wasnt linked which lead
+  to undefined references
+
+-------------------------------------------------------------------
 Wed Apr  1 23:59:38 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- disable extstore also on ppc(64) 
+- disable extstore also on ppc(64)
 
 -------------------------------------------------------------------
 Wed Apr  1 23:26:11 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
@@ -21,12 +41,12 @@ Thu Mar 26 01:22:59 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Mar 24 21:27:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- limit tls support to 15 and above 
+- limit tls support to 15 and above
 
 -------------------------------------------------------------------
 Tue Mar 24 21:20:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- disable lto until the 2 settings structs are resolved 
+- disable lto until the 2 settings structs are resolved
 
 -------------------------------------------------------------------
 Tue Mar 24 20:54:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>

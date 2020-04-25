@@ -28,7 +28,7 @@
 %endif
 
 Name:           memcached
-Version:        1.6.2
+Version:        1.6.5
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -39,8 +39,6 @@ Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
-Patch:          https://patch-diff.githubusercontent.com/raw/memcached/memcached/pull/635.patch 
-Patch1:         https://patch-diff.githubusercontent.com/raw/memcached/memcached/pull/634.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -90,8 +88,6 @@ This package contains development files
 
 %prep
 %setup -q
-%patch -p1
-%patch1 -p1
 
 %build
 autoreconf -fi
