@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Addons for KDEPIM applications
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
 BuildRequires:  extra-cmake-modules
@@ -85,11 +81,11 @@ Requires(postun): shared-mime-info
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+BuildRequires:  libboost_headers-devel
 
 %description
 Addons for KDE PIM applications, such as extensions for KMail, additional
@@ -126,6 +122,10 @@ themes, and plugins providing extra or advanced functionality.
 %dir %{_kf5_libdir}/contacteditor/editorpageplugins
 %dir %{_kf5_plugindir}/messageviewer
 %dir %{_kf5_plugindir}/messageviewer/bodypartformatter
+%dir %{_kf5_plugindir}/messageviewer/configuresettings
+%dir %{_kf5_plugindir}/messageviewer/headerstyle
+%dir %{_kf5_plugindir}/messageviewer/viewercommonplugin
+%dir %{_kf5_plugindir}/messageviewer/viewerplugin
 %dir %{_kf5_plugindir}/messageviewer/grantlee
 %dir %{_kf5_plugindir}/messageviewer/grantlee/5.0
 %dir %{_kf5_qmldir}/org/kde/plasma
@@ -163,8 +163,20 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/templateparser/
 %{_kf5_plugindir}/webengineviewer/
 %{_kf5_plugindir}/messageviewer/bodypartformatter/messageviewer_bodypartformatter*.so
-%{_kf5_plugindir}/messageviewer/messageviewer_*.so
 %{_kf5_plugindir}/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_dkimconfigplugin.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_gravatarconfigplugin.so
+%{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_briefheaderstyleplugin.so
+%{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_fancyheaderstyleplugin.so
+%{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_grantleeheaderstyleplugin.so
+%{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_longheaderstyleplugin.so
+%{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_standardsheaderstyleplugin.so
+%{_kf5_plugindir}/messageviewer/viewercommonplugin/messageviewer_expandurlplugin.so
+%{_kf5_plugindir}/messageviewer/viewercommonplugin/messageviewer_translatorplugin.so
+%{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createeventplugin.so
+%{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createnoteplugin.so
+%{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createtodoplugin.so
+%{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_externalscriptplugin.so
 %{_kf5_qmldir}/org/kde/plasma/PimCalendars/
 %{_kf5_servicesdir}/korganizer/
 %{_kf5_sharedir}/kconf_update/webengineurlinterceptoradblock.upd

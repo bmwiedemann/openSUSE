@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Use qDebug here
+  * Fix build with Qt >= 5.15.0-beta3
+  * Use QLatin1Char('/') here
+  * React when we click on cancel
+  * Not necessary to show messagebox when we click on cancel
+  * Fix compilation with more recent Qt 5.15
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix build against recent KIO
+  * Fix cppcheck warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+- Drop checks for obsolete distribution versions
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
