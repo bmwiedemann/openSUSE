@@ -219,8 +219,10 @@ files are pre-byte compiled and therefore not necessary.
 %package     -n emacs-info
 Summary:        Info files for GNU Emacs
 Group:          Productivity/Text/Editors
+%if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
+%endif
 BuildArch:      noarch
 
 %description -n emacs-info
@@ -645,6 +647,7 @@ if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
   cd $owd
 fi
 
+%if 0%{?suse_version} <= 1500
 %post info
 for f in %info_files; do
   test "$f" = "info.info" && continue
@@ -658,6 +661,7 @@ for f in %info_files; do
   test -e "$f" || f="${f}.info"
   %install_info_delete --info-dir=%{_infodir} "%{_infodir}/$f.gz"
 done
+%endif
 
 %post -n etags
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
