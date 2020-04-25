@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 18 21:29:00 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.2.1:
+  * Handle system commands that use UNC paths on Windows
+    (:ghpull:`500`)
+  * Add offset argument to seek in io test (:ghpull:`496`)
+
+-------------------------------------------------------------------
 Sat Mar 28 16:35:30 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
