@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Apr 23 15:50:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use more modern macros
+- Use ninja as builder
+
+-------------------------------------------------------------------
+Thu Apr 23 14:48:03 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200423.15ffa09:
+  * Skip a failing test-case (csmith-project/creduce#212).
+
+-------------------------------------------------------------------
+Thu Apr 23 10:03:02 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Come up with initial version 1.0.0:
+
+  This is an initial project release as announced here:
+  http://www.flux.utah.edu/listarchives/creduce-dev/msg00475.html
+
+  Features and limitations:
+
+  1) C-Vise is a super-parallel implementation where all passes run their transform and test script
+  phase in parallel; that resolves csmith-project/creduce#160; I've seen significant speed up on a 16-core Zen CPU
+  2) the project contains native BinaryState object which can help with fast traversal of a state space
+  3) Python is hopefully more popular language than Perl
+
+  Minor improvements:
+
+  --log-level option - one can print different level of messages
+  --remove-pass - one can skip a pass in pass manager (csmith-project/creduce#200, csmith-project/creduce#202)
+  --list-passes - listing of existing passes (csmith-project/creduce#150)
+  project contains unit tests for some passes
+  LLVM 9 and 10 support (csmith-project/creduce#193, csmith-project/creduce#204)
+  --clang-delta-std option - workaround for csmith-project/creduce#210
+  unifdef and delta subprojects are removed from the repository
+  --timing-since-start - print timestamps since the start of a reduction
+  Known limitations:
+
+  configure & make build support is dropped
+  FreeBSD and Windows port is not tested
+  dependency on python-Pebble package
+  a small issue observed in Pebble (noxdafox/pebble#58)
