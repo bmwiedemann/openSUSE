@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -27,10 +27,6 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
-Patch1:         gawk-inplace-namespace-part1.patch
-Patch2:         gawk-inplace-namespace-part2.patch
-#Parts of the patch dealing with .info files, were removed, some parts of documentation might be broken
-Patch3:         gawk-inplace-namespace-part3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

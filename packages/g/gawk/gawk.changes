@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:48:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.0: 
+  * The major version of the API is bumped to 3, something that should
+     have happened at the 5.0.0 release but didn't.
+  * A number of memory leak issues have been fixed.
+  * Infrastructure upgrades: Bison 3.5.4, Texinfo 6.7, Gettext 0.20.1,
+     Automake 1.16.2.
+  * The indexing in the manual has been thoroughly revised, in particular
+     making use of the facilities in Texinfo 6.7.  That version (or newer)
+     must be used to format the manual.
+  * MSYS2 is now supported out-of-the-box by configure.
+  * Several bugs have been fixed.  See the ChangeLog for details.
+- Removed gawk-inplace-namespace-part3.patch
+- Removed gawk-inplace-namespace-part1.patch
+- Removed gawk-inplace-namespace-part2.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 11:30:29 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Fix typo in Summary
