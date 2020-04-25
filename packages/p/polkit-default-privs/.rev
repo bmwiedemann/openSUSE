@@ -1635,4 +1635,12 @@ for 12.3</comment>
   * whitelist chvt action in logind (bsc#1167542)</comment>
     <requestid>788249</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>2477c4697314236d798af05e0cab5ca9</srcmd5>
+    <version>1550+20200417.940923e</version>
+    <time>1587838131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795693</requestid>
+  </revision>
 </revisionlist>
