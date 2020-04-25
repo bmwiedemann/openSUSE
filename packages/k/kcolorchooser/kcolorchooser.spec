@@ -1,7 +1,7 @@
 #
 # spec file for package kcolorchooser
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,36 +21,32 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcolorchooser
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Color Chooser
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  oxygen-icon-theme-large
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 This is an color chooser application for KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
