@@ -18,17 +18,13 @@
 
 %bcond_without  lang
 Name:           kdav
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        DAV protocol implementation
 License:        GPL-2.0-only
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -38,24 +34,28 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 kdav is a library providing a KJob-based implementation of DAV protocols such as
 CardDAV, WebDAV, and CalDAV.
 
-%package -n libKPimKDAV5
+%package -n libKF5DAV5
 Summary:        Core library for kdav
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
-%description -n libKPimKDAV5
+%description -n libKF5DAV5
 kdav is a library providing a KJob-based implementation of DAV protocols such as
 CardDAV, WebDAV, and CalDAV.
 
 %package devel
 Summary:        Development package for kdav
 Group:          Development/Libraries/KDE
-Requires:       libKPimKDAV5 = %{version}
+Requires:       libKF5DAV5 = %{version}
 
 %description devel
 This package contains development files needed to use kdav in other applications.
@@ -75,25 +75,26 @@ This package contains development files needed to use kdav in other applications
     %find_lang %{name} --with-man --all-name
   %endif
 
-%post -n libKPimKDAV5 -p /sbin/ldconfig
-%postun -n libKPimKDAV5 -p /sbin/ldconfig
+%post -n libKF5DAV5 -p /sbin/ldconfig
+%postun -n libKF5DAV5 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %doc README.md
 %{_kf5_debugdir}/kdav.categories
 
-%files -n libKPimKDAV5
+%files -n libKF5DAV5
 %license COPYING
 %doc README.md
-%{_kf5_libdir}/libKPimKDAV.so.*
+%{_kf5_libdir}/libKF5DAV.so.5
+%{_kf5_libdir}/libKF5DAV.so.5.*
 
 %files devel
 %license COPYING
 %doc README.md
-%{_includedir}/KPim/
-%{_kf5_libdir}/cmake/KPimKDAV/
-%{_kf5_libdir}/libKPimKDAV.so
+%{_includedir}/KF5/
+%{_kf5_libdir}/cmake/KF5DAV/
+%{_kf5_libdir}/libKF5DAV.so
 %{_kf5_mkspecsdir}/qt_kdav.pri
 
 %if %{with lang}

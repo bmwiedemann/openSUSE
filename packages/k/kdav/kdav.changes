@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:13 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Port DavCollectionsMultiFetchJob to KCompositeJob
+  * autotests: add test for 404 error, make tests more robust
+  * Extend unittest to spy for DavCollectionsMultiFetchJob::collectionDiscovered()
+  * KDAV: use a different port in each test
+  * Add unittest for DavCollectionsMultiFetchJob
+  * Use enum rather than int as signal argument
+  * Return a QString rather than a QLatin1String
+  * Unexport protected methods only needed internally here
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * KDAV: Convert license headers to SPDX identifiers
+  * Fix autogenerate categories file
+  * Move ecm_generate_pri_file below the definition of the target
+  * Rename library/target to KF5::DAV
+  * Port deprecated toSet() methods
+  * We depend against 5.64
+  * Master is open
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
