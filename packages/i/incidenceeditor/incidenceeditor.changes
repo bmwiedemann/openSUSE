@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix "Only resources can modify remote identifiers" when re-editing event (kde#407965)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Qt guys reverted api in qt5.15
+  * Fix cppcheck warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * remove the lastselectedfolder configuration
+  * incidencedialog.cpp - default collection for initial calendar
+  * Make it compile against last qt5.15
+  * Fix build with latest Qt 5.14, QSet::fromList is deprecated there
+  * Fix non-working links and typos
+  * Autogenerate categories
+  * Make it compile against qt5.15
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
