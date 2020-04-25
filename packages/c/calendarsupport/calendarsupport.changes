@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:51 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Yet another KIO build fix
+  * Fix build against recent KIO
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Fix compile against kio 5.69.0
+  * utils.cpp - add reminder blocking info to calendar tooltip
+  * Fix compile against qt5.15
+  * utils.cpp - add more info to the calendar collection tooltip
+  * UiTools is not required for building it
+  * Implement deduplication without three copies
+  * Autogenerate categories file
+  * All signal from qbuttongroup::..(int) was deprecated in qt5.15
+  * Port toSet() method
+  * Port to QCombobox when it's possible
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
