@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:43:34 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.0.0
+  - Fix portability issue to 32 bits architectures
+
+-------------------------------------------------------------------
 Tue Mar 17 16:04:37 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v0.7.8
