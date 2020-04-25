@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Improve responsiveness when showing single image without thumbnail bar
+  * Fix hang on exit when viewing huge folder
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix jpeg save quality
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Give Exit Full Screen and Configure buttons text and adjust wording (kde#385314)
+  * Setup paste action text before main loop starts (kde#411196)
+  * Add button to toggle sidebar in fullscreen mode (kde#414694)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

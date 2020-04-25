@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           gwenview5
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  cfitsio-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
@@ -67,14 +63,9 @@ BuildRequires:  cmake(Qt5X11Extras)
 Recommends:     %{name}-lang
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
-# Needed for 42.3
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 
 %description
@@ -88,27 +79,17 @@ hierarchies.
 %setup -q -n %{rname}-%{version}
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-    %if 0%{?sle_version} < 120300
-      export CC=gcc-6
-      export CXX=g++-6
-    %else
-      export CC=gcc-7
-      export CXX=g++-7
-    %endif
-  %endif
-  %cmake_kf5 -d build -- -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo"
-  %cmake_build
+%cmake_kf5 -d build -- -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo"
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
 
-  %suse_update_desktop_file -r org.kde.gwenview       Graphics RasterGraphics Viewer KDE
+%suse_update_desktop_file -r org.kde.gwenview       Graphics RasterGraphics Viewer KDE
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -124,6 +105,7 @@ hierarchies.
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/gwenview
 %{_kf5_bindir}/gwenview_importer
+%{_kf5_debugdir}/gwenview.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_libdir}/libgwenviewlib.so.*
 %{_kf5_plugindir}/
