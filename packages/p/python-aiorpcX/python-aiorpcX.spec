@@ -59,8 +59,12 @@ rm tests/test_websocket.py
 
 %check
 # the two disabled tests below need network
+SKIP_TESTS="test_auto_detect_address_failure or test_create_connection_resolve_good"
 # test_slow_connection_aborted - randomly fails, out of 10 runs 6 fails
-%pytest -k 'not (test_auto_detect_address_failure or test_create_connection_resolve_good or test_slow_connection_aborted)'
+SKIP_TESTS="$SKIP_TESTS or test_slow_connection_aborted"
+# Fails with Python 3.8 gh#kyuupichan/aiorpcX#30
+SKIP_TESTS="$SKIP_TESTS or test_nested_context_timeout2 or test_nested_context_timeout3 or test_handler_invocation or test_random"
+%pytest -k "not ($SKIP_TESTS)"
 
 %files %{python_files}
 %doc README.rst
