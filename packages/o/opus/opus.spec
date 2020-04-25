@@ -1,7 +1,7 @@
 #
 # spec file for package opus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ Source99:       baselibs.conf
 Patch0:         opus-Silk-CNG-adapts-faster.patch
 # PATCH-FIX-UPSTREAM opus-Silk-fix-arm-optimization.patch -- Avoid processing LPC coeffs beyond the given order in NEON optimizations
 Patch1:         opus-Silk-fix-arm-optimization.patch
+# PATCH-FIX-UPSTREAM opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch -- Fix celt decoder assertion when using OPUS_CUSTOM
+Patch2:         opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -61,6 +63,7 @@ technology from Skype's SILK codec and Xiph.Org's CELT codec.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure \

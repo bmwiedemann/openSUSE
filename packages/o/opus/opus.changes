@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:38:39 UTC 2020 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Backport of an upstream fix for celt decoder:
+  * opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch: When
+    using OPUS_CUSTOM, `CELTDecoder->end` can be larger than 21.
+    Assert against 25 instead in OPUS_CUSTOM builds.
+
+-------------------------------------------------------------------
 Thu Aug 15 17:37:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 2 upstream bug fixes for Silk:
