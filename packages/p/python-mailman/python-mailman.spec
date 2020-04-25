@@ -27,17 +27,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mailman%{psuffix}
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Mailman -- the GNU mailing list manager
 License:        GPL-3.0-only
 URL:            https://www.list.org
 Source:         https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
+Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
+Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 # whitespace fix
 Patch0:         python-mailman-test_interact_default_banner.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-SQLAlchemy >= 1.2.3
 Requires:       python-aiosmtpd >= 1.1
 Requires:       python-alembic
 Requires:       python-atpublic
@@ -50,22 +53,20 @@ Requires:       python-flufl.bounce
 Requires:       python-flufl.i18n >= 2.0
 Requires:       python-flufl.lock >= 3.1
 Requires:       python-gunicorn
+Requires:       python-importlib_resources >= 1.1.0
 Requires:       python-lazr.config
 Requires:       python-passlib
 Requires:       python-python-dateutil >= 2.0
 Requires:       python-requests
 Requires:       python-setuptools
-Requires:       python-sqlalchemy >= 1.2.3
 Requires:       python-zope.component
 Requires:       python-zope.configuration
 Requires:       python-zope.event
-Requires:       python-zope.interface
-%if 0%{?suse_version} <= 1500
-Requires:       python-importlib_resources
-%endif
+Requires:       python-zope.interface >= 5.0
 Provides:       mailman = %{version}
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module SQLAlchemy >= 1.2.3}
 BuildRequires:  %{python_module aiosmtpd >= 1.1}
 BuildRequires:  %{python_module alembic}
 BuildRequires:  %{python_module atpublic}
@@ -79,6 +80,7 @@ BuildRequires:  %{python_module flufl.i18n >= 2.0}
 BuildRequires:  %{python_module flufl.lock >= 3.1}
 BuildRequires:  %{python_module flufl.testing}
 BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module importlib_resources >= 1.1.0}
 BuildRequires:  %{python_module lazr.config}
 BuildRequires:  %{python_module mailman >= %{version}}
 BuildRequires:  %{python_module nose2}
@@ -87,14 +89,10 @@ BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.0}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sqlalchemy >= 1.2.3}
 BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.configuration}
 BuildRequires:  %{python_module zope.event}
-BuildRequires:  %{python_module zope.interface}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module importlib_resources}
-%endif
+BuildRequires:  %{python_module zope.interface >= 5.0}
 %endif
 %python_subpackages
 
@@ -104,6 +102,10 @@ Mailman -- the GNU mailing list manager
 %prep
 %setup -q -n mailman-%{version}
 %patch0 -p1
+
+# https://gitlab.com/mailman/mailman/-/issues/704
+cp %{SOURCE100} src/mailman/testing/
+cp %{SOURCE101} src/mailman/testing/
 
 %build
 sed -i 's:/sbin:%{_prefix}/bin:' src/mailman/config/mailman.cfg
