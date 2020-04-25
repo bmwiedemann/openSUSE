@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 10:39:15 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.7.1
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+- Add BR on libjpeg8-devel
+
+-------------------------------------------------------------------
 Wed Mar 11 06:51:01 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.6.2

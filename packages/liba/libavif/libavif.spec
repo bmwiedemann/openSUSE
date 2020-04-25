@@ -18,10 +18,10 @@
 
 %bcond_with aom
 
-%define lib_name libavif2
+%define lib_name libavif3
 
 Name:           libavif
-Version:        0.6.2
+Version:        0.7.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -32,6 +32,7 @@ Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{na
 #
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libjpeg8-devel
 BuildRequires:  nasm
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(libpng)
