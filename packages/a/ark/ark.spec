@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,41 @@
 #
 
 
-%define SOMAJOR 19
+%define SOMAJOR 20
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-OPENSUSE lower-libarchive-minimum-version.patch
-Patch0:         lower-libarchive-minimum-version.patch
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Support-building-against-libarchive-3.3.2-again.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Pty)
 BuildRequires:  libarchive-devel
+BuildRequires:  libzip-devel >= 1.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Pty)
+BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
@@ -57,17 +62,16 @@ Recommends:     xz
 # unrar is non-free. Avoid installing it automatically.
 Suggests:       unrar
 Obsoletes:      ark-devel
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libzip-devel >= 1.2.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 %if 0%{?suse_version} > 1500
 Recommends:     p7zip-full
 %else
 Recommends:     p7zip
 %endif
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description
 This is a KDE application to work with compressed archives.
@@ -79,13 +83,10 @@ Group:          System/Libraries
 %description -n libkerfuffle%{SOMAJOR}
 This is a KDE application to work with compressed archives.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -124,7 +125,6 @@ This is a KDE application to work with compressed archives.
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kxmlgui5/
-%{_kf5_sharedir}/mime/packages/kerfuffle.xml
 
 %files -n libkerfuffle%{SOMAJOR}
 %license COPYING*
