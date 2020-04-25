@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:57:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.137
+  * Allow vkGetInstanceProcAddr to resolve itself with no instance.
+  * loader: Strip out empty search paths.
+
+-------------------------------------------------------------------
 Wed Apr  1 13:53:57 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to release 1.2.135
