@@ -1,7 +1,7 @@
 #
 # spec file for package kamera
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,27 +21,27 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamera
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  libgphoto2-devel
+BuildRequires:  oxygen-icon-theme-large
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  libgphoto2-devel
-BuildRequires:  oxygen-icon-theme-large
 BuildRequires:  cmake(Qt5Core)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package allows any KDE application to access and manipulate pictures on a digital camera.
