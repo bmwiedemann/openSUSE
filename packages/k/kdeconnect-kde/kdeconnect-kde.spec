@@ -16,15 +16,20 @@
 #
 
 
+%bcond_without  lang
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        1.4
+Version:        20.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://community.kde.org/KDEConnect
-Source:         https://download.kde.org/stable/kdeconnect/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/kdeconnect/%{version}/%{name}-%{version}.tar.xz.sig
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+%endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
 BuildRequires:  cmake >= 3.0
@@ -95,9 +100,12 @@ ZSH command line completion support for %{name}.
 %install
 %kf5_makeinstall -C build
 
-for translation_file in kdeconnect-{cli,core,fileitemaction,kcm,kded,kio,nautilus-extension,plugins,urlhandler} plasma_applet_org.kde.kdeconnect; do
+%if %{with lang}
+for translation_file in kdeconnect-{app,cli,core,fileitemaction,indicator,interfaces,kcm,kded,kio,nautilus-extension,plugins,settings,sms,urlhandler} plasma_applet_org.kde.kdeconnect; do
     %find_lang $translation_file %{name}.lang
 done
+%kf5_find_htmldocs
+%endif
 
 %if 0%{?suse_version} < 1550
 # susefirewall config file
@@ -160,6 +168,8 @@ install -D -m 0644 %{SOURCE101} \
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Exception doesn't have strerr
+  * Check for null notification
+  * [fileitemactionplugin] Use async DBus call (kde#419133)
+  * Improve call notification handling
+  * Read payload size as qint64
+  * Use kdeconnect-settings for command configuration
+
+-------------------------------------------------------------------
+Sun Mar 22 22:48:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * kdeconnect-kde is now part of the KDE applications release
+    service
+
+-------------------------------------------------------------------
 Sat Jan 25 18:00:57 UTC 2020 - wbauer@tmo.at
 
 - Update to 1.4
@@ -113,7 +144,7 @@ Mon Apr  9 12:40:29 UTC 2018 - kamikazow@opensuse.org
 -------------------------------------------------------------------
 Tue Feb 20 15:47:11 UTC 2018 - alarrosa@suse.com
 
-- Add 0001-Fix-null-dereference.patch to fix a null dereference. 
+- Add 0001-Fix-null-dereference.patch to fix a null dereference.
 
 - Add signature file kdeconnect-kde-v1.2.1.tar.xz.sig
 
@@ -193,7 +224,7 @@ Fri Aug 26 19:14:41 UTC 2016 - lbeltrame@kde.org
   * Trigger custom commands from phone
   * Reply to SMS messages from the desktop
   * Receive desktop notifications on phone
-  * TLS encryption 
+  * TLS encryption
 
 -------------------------------------------------------------------
 Mon Feb  1 17:30:52 UTC 2016 - hrvoje.senjan@gmail.com

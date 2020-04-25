@@ -165,4 +165,12 @@
     <comment></comment>
     <requestid>767555</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1f9e8ef926853759c7c88104f5cccbc5</srcmd5>
+    <version>20.04.0</version>
+    <time>1587838946</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.04.0</comment>
+    <requestid>796909</requestid>
+  </revision>
 </revisionlist>
