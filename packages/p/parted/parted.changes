@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  8 17:37:47 UTC 2020 - Anna Maresova <anicka@suse.com>
+
+- print maximum number of partitions for yast
+  (bsc#1168756, bsc#1161783) 
+ - add parted-print-max-partitions-for-yast.patch
+- make parted work with pmemXs devices (bsc#1164260)
+ - add libparted-linux-pmem-path.patch
+
+-------------------------------------------------------------------
 Fri Jan  3 14:46:27 UTC 2020 - Anna Maresova <anicka@suse.com>
 
 - fix crash in do_resizepart

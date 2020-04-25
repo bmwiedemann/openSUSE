@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
-Url:            http://www.gnu.org/software/parted/
+URL:            http://www.gnu.org/software/parted/
 Source0:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=parted&download=1#/%{name}.keyring
@@ -63,6 +63,13 @@ Patch32:        parted-fix-resizepart-and-rm-command.patch
 Patch33:        libparted-use-BLKRRPART-only-when-needed.patch
 Patch34:        libparted-canonicalize-dev-md-paths.patch
 Patch35:        parted-fix-end_input-usage.patch 
+
+# bsc#1168756
+Patch36:        libparted-linux-pmem-path.patch
+
+# bsc#1164260
+Patch37:        parted-print-max-partitions-for-yast.patch
+
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
 Patch101:       fatresize-fix-getting-dev-name.patch
@@ -149,6 +156,8 @@ to develop applications that require these.
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
+%patch36 -p1
+%patch37 -p1
 %patch100 -p1
 %patch101 -p1
 %patch156 -p1
