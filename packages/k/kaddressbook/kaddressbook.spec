@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
-Summary:        Address book application to manage contacts 
+Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig
@@ -56,12 +52,16 @@ BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
 BuildRequires:  cmake(Qt5Test) >= 5.2.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       kdepim-runtime
-Recommends:     %{name}-lang
 Recommends:     %{name}-doc
+Recommends:     %{name}-lang
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 KAddressbook is an application by KDE to manage contacts.

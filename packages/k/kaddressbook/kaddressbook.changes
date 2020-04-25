@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Use QLatin1Char('/') here
+  * Inform when loading settings was done
+  * Fix show config dialog in kontact app
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix clazy warning
+  * Fix cppcheck warning
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
