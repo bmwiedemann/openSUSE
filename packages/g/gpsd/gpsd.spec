@@ -22,7 +22,7 @@
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.19
+Version:        3.20
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -34,8 +34,6 @@ Source2:        udev.gpsd
 Source3:        sysconfig.gpsd
 Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
-# PATCH-FIX-UPSTREAM
-Source100:      0001-Make-sure-Qgpsmm.pc-is-usable.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -55,6 +53,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libusb-1.0)
 %if %{with python2}
 BuildRequires:  pkgconfig(python2)
@@ -165,12 +164,6 @@ mkdir -p %{name}-%{version}/python2
 mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
-pushd %{name}-%{version}/python2/%{name}-%{version}
-patch -p1 < %{SOURCE100}
-popd
-pushd %{name}-%{version}/python3/%{name}-%{version}
-patch -p1 < %{SOURCE100}
-popd
 cd %{name}-%{version}
 
 # fix systemd path
@@ -184,6 +177,9 @@ sed -i 's|env.Prepend.*RPATH.*|pass #\0|' python*/%{name}-%{version}/SConstruct
 
 # fix gpsd path
 sed -i 's|ExecStart=.*/gpsd|ExecStart=%{_sbindir}/gpsd|' python*/%{name}-%{version}/systemd/gpsd.service
+
+# fix socket path
+sed -i 's|ListenStream=/var/run/gpsd.sock|ListenStream=/run/gpsd.sock|' python*/%{name}-%{version}/systemd/gpsd.socket
 
 %build
 # The SCons description does not handle CXXFLAGS correctly, pass C++ flags also in CFLAGS
@@ -296,7 +292,6 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 
 %files
 %license %{name}-%{version}/python3/%{name}-%{version}/COPYING
-%doc %{name}-%{version}/python3/%{name}-%{version}/README
 %{_mandir}/man?/gpsd.*
 %{_mandir}/man?/gpsdctl.*
 %{_mandir}/man?/gpsctl.*

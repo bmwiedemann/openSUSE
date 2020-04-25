@@ -434,4 +434,12 @@ Old 2.95 segfaults on me, with a TSI_747A+ device. (forwarded request 68916 from
     <comment></comment>
     <requestid>785632</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e013c0c52b790bbd5774ec576ea7618c</srcmd5>
+    <version>3.20</version>
+    <time>1587837910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795308</requestid>
+  </revision>
 </revisionlist>

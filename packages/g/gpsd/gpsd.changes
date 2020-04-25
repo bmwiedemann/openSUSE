@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:18:26 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.20
+  * Change README into an asciidoc file and publish HTML from it
+  * Add NED and geoid_sep to gps_fix_t and TPV JSON.
+  * Add "-e NED" to ubxtool to enable NED messages.
+  * gpsdata.separation replaced by gpsdata.fix.geoid_sep.
+  * Remove nofloats build option.
+  * TPV JSON "alt" is now fixed at WGS84.  Probably.
+  * xgps now uses XGPSOPTS environment variable.
+  * add health variable to satellite_t
+  * change satellite_t elevation and azimuth to double
+  * satellite_t elevation, azimuth, and ss use NAN for unknown value.
+  * add altMSL, altHAE, and depth, to gps_fix_t
+  * altitude in gps_fix_t is deprecated and undefined
+  * wgs84_separation() now return EGM2008 computed from 5x5 degree base data.
+  * The best results are close to cm, the worst off up to 12m.
+  * Move mag_var from gps_device_t to magnetic_var gps_data_t.
+  * Added mag_var() to interpolate magnetic variation (deviation) from a table.
+  * Remove true2magnetic() as mag_var() improves on it.
+  * Remove TIMEHINT_ENABLE.  It only worked when enabled.
+  * Remove NTP_ENABLE and NTPSHM_ENABLE.  It only worked when enabled.
+  * Remove PPS_ENABLE and TIMING_ENABLE.
+  * Add dgps_age and dgps_station to gps_fix_t
+  * Convert all timestamp_t to timespec_t.
+  * Remove FIXED_PORT_SPEED and FIXED_STOP_BITS build options.
+  * Add -s [speed] and -f [framing] runtime options to gpsd.
+  * A working CC and termios.h are mandatory.
+  * use the current leap second to determine the current GPS epoch.
+  * leapfetch.py, leapseconds.cache, timebase.h and leapfetch option gone.
+- Remove 0001-Make-sure-Qgpsmm.pc-is-usable.patch (upstreamed)
+- Fix legacy socket path
+
+-------------------------------------------------------------------
 Mon Mar 16 12:19:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Allow building without python2 available

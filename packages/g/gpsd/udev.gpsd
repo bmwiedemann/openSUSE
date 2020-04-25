@@ -1,6 +1,6 @@
 #!/bin/bash
-CTRL_SOCK="/var/run/gpsd.socket"
-DEV_NAME="/var/run/gpsd.device"
+CTRL_SOCK="/run/gpsd.socket"
+DEV_NAME="/run/gpsd.device"
 
 . /etc/sysconfig/gpsd
 
