@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:19:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Always-create-actioncollection.patch to fix crash in
+  Konqueror when going to a subfolder in the bookmarks menu
+  (boo#1169838)
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0

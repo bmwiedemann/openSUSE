@@ -614,4 +614,14 @@
     <comment>KDE Frameworks 5.69.0 (forwarded request 791660 from cgiboudeaux)</comment>
     <requestid>793131</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>17a2c86aaa01c37de71417fa851cb01c</srcmd5>
+    <version>5.69.0</version>
+    <time>1587838175</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Always-create-actioncollection.patch to fix crash in
+  Konqueror when going to a subfolder in the bookmarks menu
+  (boo#1169838) (forwarded request 795743 from wolfi323)</comment>
+    <requestid>795748</requestid>
+  </revision>
 </revisionlist>
