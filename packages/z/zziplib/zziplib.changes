@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:28:53 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to 1.13.70:
+  * there have been tons of bugfixes over the last two years ...
+  * Thanks go to Patrick Steinhardt (then at Aservo) for python3 updates
+  * Thanks go to Josef Moellers (working at SUSE Labs) for many CVE fixes
+  * and of course all the other patches that came in via github issues.
+  * I have cleaned up sources to only uses Python3 (as needed by 2020).
+  * !!! The old automake/autconf/libtool system will be dumped soon!!!
+  * The build system was ported to 'cmake' .. (last tested cmake 3.10.2)
+  Obsoletes patches
+  - CVE-2018-7726.patch
+  - CVE-2018-7725.patch
+  - CVE-2018-16548.patch
+  - CVE-2018-17828.patch
+  - bsc1129403-prevent-division-by-zero.patch
+  [zziplib-0.13.70.tar.gz, CVE-2018-7726.patch, CVE-2018-7725.patch,
+   CVE-2018-16548.patch, CVE-2018-17828.patch,
+   bsc1129403-prevent-division-by-zero.patch]
+
+-------------------------------------------------------------------
 Mon Feb 24 15:08:13 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Corrected control flow in zzip_mem_entry_make() to

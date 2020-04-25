@@ -1,7 +1,7 @@
 #
 # spec file for package zziplib
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,17 @@
 
 %define lname   libzzip-0-13
 Name:           zziplib
-Version:        0.13.69
+Version:        0.13.70
 Release:        0
 Summary:        ZIP Compression Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://zziplib.sourceforge.net
+URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         zziplib-0.13.62.patch
 Patch1:         zziplib-0.13.62-wronglinking.patch
 Patch2:         zziplib-largefile.patch
-Patch3:         CVE-2018-7726.patch
-Patch4:         CVE-2018-7725.patch
-Patch5:         CVE-2018-16548.patch
-Patch6:         CVE-2018-17828.patch
-Patch7:         bsc1129403-prevent-division-by-zero.patch
 Patch8:         bsc1154002-prevent-unnecessary-perror.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -71,11 +66,6 @@ ZZipLib.
 %patch0
 %patch1
 %patch2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 %patch8 -p1
 # do not bother with html docs saving us python2 dependency
 sed -i -e 's:docs ::g' Makefile.am
