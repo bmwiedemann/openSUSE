@@ -19,15 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-terminal
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-terminal
-Source:         https://files.pythonhosted.org/packages/source/s/spyder-terminal/spyder-terminal-%{version}.tar.gz
-Source:         %{name}-rpmlintrc
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/s/spyder-terminal/spyder-terminal-%{version}.tar.gz#/%{name}-%{version}-pypi.tar.gz
+Source1:        https://github.com/spyder-ide/spyder-terminal/archive/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
+Source2:        %{name}-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -75,14 +75,19 @@ This package contains the plugin for displaying a virtual terminal
 (OS independent) inside the main Spyder window.
 
 %prep
+# The PyPI tarfile is the official release but does not include the tests.
+# The Github tarfile does not include the bundled nodejs dependencies in
+# server/static/components.  Thus we use the PyPI release and add the testdir
+# from the Github package.
 %setup -q -n spyder-terminal-%{version}
-
-# fix python call in unit test gh#spyder-ide/spyder-terminal#179
-sed -i "s/python_exec = 'python /python_exec = 'python3 /" spyder_terminal/server/tests/test_server.py
+tar --strip-components=1 -xzf %{S:1} spyder-terminal-%{version}/spyder_terminal/{tests/,server/tests/}
 
 # fix rpmlint non-executable-script
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
+
+# fix confpage import gh#spyder-ide/spyder-terminal#201
+sed -i -e '/import platform/ a import sys' spyder_terminal/confpage.py
 
 %build
 %python_build
@@ -90,6 +95,7 @@ sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%find_lang spyder_terminal
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
@@ -98,11 +104,11 @@ export PYTHONDONTWRITEBYTECODE=1
 %ifarch %ix86 
 export QTWEBENGINE_DISABLE_SANDBOX=1
 %endif
-# not in DEV mode gh#spyder-ide/spyder-terminal#180
-skiptests="test_output_redirection"
-%pytest -k "not $skiptests"
+# tests must be run in DEV mode gh#spyder-ide/spyder-terminal#180
+export SPYDER_DEV=True
+%pytest
 
-%files -n spyder-terminal
+%files -n spyder-terminal -f spyder_terminal.lang
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
