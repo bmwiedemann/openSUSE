@@ -48,6 +48,7 @@ ambassadors or links.
 %package kube
 Summary:        Pod Network Add-On
 Group:          System/Management
+Requires:       /usr/sbin/modprobe
 Requires:       bind-utils
 Requires:       ca-certificates-mozilla
 Requires:       conntrack-tools
@@ -55,7 +56,6 @@ Requires:       curl
 Requires:       iproute2
 Requires:       ipset
 Requires:       iptables
-Requires:       kmod-compat
 
 %description kube
 Weave Net creates a virtual network that connects containers across multiple
