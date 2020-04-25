@@ -18,19 +18,16 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libopenssl-devel
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  zlib-devel
@@ -43,6 +40,10 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 Requires:       libKPimItinerary5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  libphonenumber-devel
 BuildRequires:  cmake(ZXing)
@@ -111,6 +112,7 @@ to build programs that use the kitinerary library.
 %dir %{_includedir}/KPim/
 %{_includedir}/KPim/KItinerary/
 %{_includedir}/KPim/kitinerary/
+%{_includedir}/KPim/kitinerary_version.h
 %{_kf5_cmakedir}/KPimItinerary/
 %{_kf5_libdir}/libKPimItinerary.so
 
