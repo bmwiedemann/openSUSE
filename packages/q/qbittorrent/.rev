@@ -1050,4 +1050,18 @@
     <comment></comment>
     <requestid>796424</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>65bf6922fb9c9a52a0007534c6f00885</srcmd5>
+    <version>4.2.5</version>
+    <time>1587839721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tov ersion 4.2.5
+  * BUGFIX: Fix crash when torrent is deleted on limit reached
+    (glassez)
+  * BUGFIX: Register datatype properly (Chocobo1)
+  * WEBUI: Add ability to send custom HTTP headers (Chocobo1)
+  * WEBUI: Expand RSS related API (Sepro)
+</comment>
+    <requestid>797576</requestid>
+  </revision>
 </revisionlist>
