@@ -63,7 +63,6 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch33:        file-5.16-ocloexec.patch
 Patch34:        file-5.23-endian.patch
-Patch35:        file-5.24-nitpick.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
 Patch40:        file-5.38-allow-readlinkat.dif
@@ -129,7 +128,6 @@ to develop applications that require the magic "file" interface.
 %patch32 -p0 -b .clicfs
 %patch33 -p0 -b .clexe
 %patch34 -p0 -b .endian
-%patch35 -p0 -b .nitpick
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
 %patch40 -p1 -b .readlinkat

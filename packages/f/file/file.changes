@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 20:36:31 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- file-5.24-nitpick.dif: remove obsolete patch (bsc#1169512)
+- file-secure_getenv.patch: refresh
+
+-------------------------------------------------------------------
 Wed Jan 15 09:17:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Looks like libseccomp filter stumble over decompressors like
