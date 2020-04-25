@@ -111,4 +111,12 @@
     <comment>- Update to version 3.0.38.</comment>
     <requestid>786967</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>619cbb49b3668ca451be758a08954ce2</srcmd5>
+    <version>3.1.00</version>
+    <time>1587839710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.00.</comment>
+    <requestid>797292</requestid>
+  </revision>
 </revisionlist>
