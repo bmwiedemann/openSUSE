@@ -18,17 +18,15 @@
 
 %define origname mypaint-brushes
 Name:           %{origname}1
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Brushes to be used with the MyPaint library
 # According to Licenses.dep5 the files used for building/installing are GPLv2+
 # but the shipped brush files are CC0-1.0
 License:        CC0-1.0
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            https://github.com/Jehan/mypaint-brushes
-Source0:        https://github.com/Jehan/mypaint-brushes/archive/v%{version}.tar.gz#/mypaint-brushes-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mypaint-brushes-1.3.0-automake16.patch -- autogen: add automake 1.16 support.
-Patch0:         mypaint-brushes-1.3.0-automake16.patch
+URL:            https://github.com/mypaint/mypaint-brushes/
+Source0:        https://github.com/mypaint/mypaint-brushes/archive/v%{version}.tar.gz#/mypaint-brushes-%{version}.tar.gz
 BuildRequires:  automake >= 1.13
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -55,7 +53,6 @@ programs using these brush files.
 
 %prep
 %setup -q -n %{origname}-%{version}
-%patch0 -p1
 
 %build
 ./autogen.sh
