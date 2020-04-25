@@ -1,7 +1,7 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           socat
-Version:        1.7.3.3
+Version:        1.7.3.4
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
 License:        SUSE-GPL-2.0-with-openssl-exception AND MIT
@@ -65,7 +65,7 @@ test -n "$CL_DATE"
 export BUILD_DATE="$(LANG=C date --utc -d "${CL_DATE}" +"%{b} %{e} %{Y} %{T}")"
 export CFLAGS="%{optflags} -fno-strict-aliasing -DHAVE_SSLv23_client_method -DHAVE_SSLv23_server_method -fno-common"
 %configure
-make %{?_smp_mflags} all
+%make_build all
 mkdir examples
 cp -a daemon.sh ftp.sh mail.sh proxyecho.sh readline.sh examples
 

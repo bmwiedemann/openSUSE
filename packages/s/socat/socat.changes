@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 17 06:58:23 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.3.4:
+  * bugfix release, see the CHANGES file for all changes
+- Refresh patches:
+  * socat-common-fixes.patch
+  * socat-ignore-tests-failure-boo1078346.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 12:41:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - socat-common-fixes.patch: include tcpd.h where needed to fix

@@ -319,4 +319,12 @@ See README (forwarded request 157221 from babelworx)</comment>
   -fno-common bsc#1160293 (forwarded request 769978 from msmeissn)</comment>
     <requestid>769984</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>743edfae3303eef30d3445654a56ed16</srcmd5>
+    <version>1.7.3.4</version>
+    <time>1587838025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795509</requestid>
+  </revision>
 </revisionlist>
