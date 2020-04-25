@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:13:26 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Revoke the patch bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
+  Deleted: bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
+
+  Reason: That path will cause problems while doing rolling upgrade, see bsc#1168771
+
+-------------------------------------------------------------------
 Fri Mar 20 14:07:26 UTC 2020 - XinLiang <XLiang@suse.com>
 
 - Fix bsc#1163460 Corosync does not support link-local IPv6 addresses
