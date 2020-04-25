@@ -25,18 +25,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       242
-%global buildver        b08
+%global updatever       252
+%global buildver        b09
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   8cf8a305812fe1f710d79d215f17bff241a6c4d6
-%global root_branch     openj9-0.18.0
+%global root_revision   cfa47e66cd5f48491f6e235e0bf41cf753a2cacd
+%global root_branch     openj9-0.20.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    7a1b0239a91f9d8819cb541812b4d774edd5bba4
-%global omr_branch      v0.18.0-release
+%global omr_revision    d4365f371ce896bead71bc601cbdb53cc35ab47b
+%global omr_branch      v0.20.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 51a5857d24eca5e220ccd932bc98e9f1d0438e71
-%global openj9_branch   v0.18.1-release
-%global openj9_tag      openj9-0.18.1
+%global openj9_revision 05fa2d3611f757a1ca7bd45d7312f99dd60403cc
+%global openj9_branch   v0.20.0-release
+%global openj9_tag      openj9-0.20.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
@@ -676,6 +676,8 @@ update-alternatives \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_bindir}/servertool servertool %{jrebindir}/servertool \
   --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameserv \
+  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
+  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
@@ -692,6 +694,10 @@ update-alternatives \
   %{_mandir}/man1/servertool-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/tnameserv.1$ext tnameserv.1$ext \
   %{_mandir}/man1/tnameserv-%{sdklnk}.1$ext  \
+  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
+  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
+  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/policytool.desktop policytool.desktop \
   %{_jvmdir}/%{jredir}/lib/desktop/policytool.desktop \
   || :
@@ -758,8 +764,6 @@ update-alternatives \
   --slave %{_bindir}/javah javah %{sdkbindir}/javah \
   --slave %{_bindir}/javap javap %{sdkbindir}/javap \
   --slave %{_bindir}/jconsole jconsole %{sdkbindir}/jconsole \
-  --slave %{_bindir}/pack200                  pack200                     %{sdkbindir}/pack200 \
-  --slave %{_bindir}/unpack200                unpack200                   %{sdkbindir}/unpack200 \
   --slave %{_bindir}/jdb jdb %{sdkbindir}/jdb \
   --slave %{_bindir}/jmap jmap %{sdkbindir}/jmap \
   --slave %{_bindir}/jps jps %{sdkbindir}/jps \
@@ -792,26 +796,14 @@ update-alternatives \
   %{_mandir}/man1/javap-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jconsole.1$ext jconsole.1$ext \
   %{_mandir}/man1/jconsole-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jcmd.1$ext jcmd.1$ext \
-  %{_mandir}/man1/jcmd-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jdb.1$ext jdb.1$ext \
   %{_mandir}/man1/jdb-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jmap.1$ext jmap.1$ext \
   %{_mandir}/man1/jmap-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jps.1$ext jps.1$ext \
-  %{_mandir}/man1/jps-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jrunscript.1$ext jrunscript.1$ext \
   %{_mandir}/man1/jrunscript-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jsadebugd.1$ext jsadebugd.1$ext \
   %{_mandir}/man1/jsadebugd-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jstack.1$ext jstack.1$ext \
-  %{_mandir}/man1/jstack-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jstat.1$ext jstat.1$ext \
-  %{_mandir}/man1/jstat-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/native2ascii.1$ext native2ascii.1$ext \
   %{_mandir}/man1/native2ascii-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmic.1$ext rmic.1$ext \
@@ -963,15 +955,11 @@ fi
 %{_mandir}/man1/javah-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/javap-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jconsole-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jcmd-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdb-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdeps-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jmap-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jps-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jrunscript-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jsadebugd-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jstack-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jstat-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/native2ascii-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/schemagen-%{sdklnk}.1%{?ext_man}
