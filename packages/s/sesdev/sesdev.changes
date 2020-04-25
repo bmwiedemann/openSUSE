@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 24 10:07:59 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.11+1587722868.gc7e5625:
+  + upstream 1.1.11 release (2020-04-24)
+    * Implement feature "sesdev create makecheck" (PR #236)
+    * Deployment: silently add "master" and "bootstrap" roles (PR #254)
+    * sesdev: implement "sesdev list --format json" and PrettyTable-based
+      "sesdev list" (PR #259)
+    * qa: fix maybe_wait_for_mdss test (PR #262)
+    * provision.sh: remove Non-OSS repos on openSUSE (PR #265)
+    * sesdev: support Click 6.7 (PR #268)
+    * seslib: more robust dashboard tunnelling (PR #274)
+    * deepsea: "openattic" role needs Stage 4 (PR #275)
+    * provision.sh: refactor while loops and fix packaging-related breakage
+      (PR #279)
+    * Remove "disable cephadm bootstrap" functionality (PR #261)
+    * Rename --deepsea-cli and --ceph-salt-deploy options to --salt
+      (PR #267)
+
+-------------------------------------------------------------------
 Fri Apr 17 11:48:33 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.10+1587124098.ga2f8189:

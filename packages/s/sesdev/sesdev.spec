@@ -16,7 +16,7 @@
 #
 
 Name:           sesdev
-Version:        1.1.10+1587124098.ga2f8189
+Version:        1.1.11+1587722868.gc7e5625
 Release:        1%{?dist}
 Summary:        CLI tool to deploy and manage SES clusters
 License:        MIT
@@ -40,11 +40,13 @@ BuildRequires:  python3-setuptools
 %if 0%{?suse_version}
 Requires:       python3-Jinja2 >= 2.10.1
 Requires:       python3-libvirt-python >= 5.1.0
+Requires:       python3-PrettyTable
 Requires:       python3-PyYAML >= 3.13
 %endif
 %if 0%{?el8} || 0%{?fedora}
 Requires:       python3-jinja2 >= 2.10.1
 Requires:       python3-libvirt >= 5.1.0
+Requires:       python3-prettytable
 Requires:       python3-pyyaml >= 3.13
 %endif
 Requires:       python3-click >= 6.7
@@ -84,7 +86,6 @@ sed -i -e 's/^\s*lv.qemu_use_session = false$//g' seslib/templates/Vagrantfile.j
 %install
 %py3_install
 %fdupes %{buildroot}%{python3_sitelib}
-# qa script installation
 install -m 0755 -d %{buildroot}/%{_datadir}/%{name}/qa
 install -m 0755 -d %{buildroot}/%{_datadir}/%{name}/qa/common
 install -m 0755 qa/health-ok.sh %{buildroot}/%{_datadir}/%{name}/qa/health-ok.sh
