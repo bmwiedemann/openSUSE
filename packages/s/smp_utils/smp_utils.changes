@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 16 13:33:25 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.99:
+  - smp_discover(_list): add --dsn option to show
+    device slot number in single line per phy summary
+    - attached SAS device type, word SAS added (spl4r01)
+    - add SAS connector types, shared with NVMe (ses3r8)
+    - add buffered phy burst size field (spl4r07)
+    - add attached apta capable field
+    - update phy capabilities decode (spl5r02)
+    - use Report general to get number phys rather
+      than loop until an error occurs
+  - smp_rep_general: add extended fairness field
+    - add initial time to delay expander forward open
+      indication field
+    - add external port field (spl5r02)
+  - smp_phy_test: change default linkrate from 3 to 6 Gbps
+    which is value 0xa
+  - smp_conf_phy_event: fix file pointer leak
+  - add G5 (22.5 Gbps for SAS-4) settings [spl4r06]
+  - convert many two valued ints to bools
+  - smp_lib:
+    - add smp_get_connector_type_str(), smp_get_num_nomult()
+      and smp_get_llnum_nomult()
+    - add dStrHexErr() and dStrHexStr()
+    - add hex2stdout, hex2stderr and hex2str
+    - add smp_is_big_endian(), smp_all_zeros() and
+      smp_all_ffs()
+    - add sg_unaligned.h and sg_pr2serr.h headers
+    - change connector name: 'SAS SlimLine' to 'SlimSAS'
+  - sync with spl5r08
+  - cleanup configure.ac + Makefile.am
+  - update BSD license from 3 to 2 clause aka FreeBSD
+    license (without reference to FreeBSD project)
+  - debian: bump compat file contents from 7 to 10
+- Drop no longer needed sysmacros.patch
+
+-------------------------------------------------------------------
 Wed Aug  1 14:19:38 UTC 2018 - schwab@suse.de
 
 - sysmacros.patch: Include <sys/sysmacros.h> for major/minor/makedev
