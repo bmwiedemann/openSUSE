@@ -1,7 +1,7 @@
 #
 # spec file for package libdrm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           libdrm
-Version:        2.4.100
+Version:        2.4.101
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
 Group:          Development/Libraries/X11
-Url:            http://dri.freedesktop.org/
+URL:            http://dri.freedesktop.org/
 # Git-Clone:    https://gitlab.freedesktop.org/mesa/drm.git
 # Git-Web:      https://gitlab.freedesktop.org/mesa/drm
 # Source URL:   https://dri.freedesktop.org/libdrm/
-Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.bz2
+Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 
 # Required for building manpages
