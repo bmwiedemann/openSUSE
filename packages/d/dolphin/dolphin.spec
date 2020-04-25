@@ -21,23 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Restore-former-position-of-Create-New-menu-item-in-v.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Activities) >= 5.7.0
@@ -73,6 +67,10 @@ Requires:       dolphin-part = %{version}-%{release}
 Recommends:     kio-extras5
 Recommends:     konsole-part
 Obsoletes:      dolphin5
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package contains the default file manager of KDE Workspaces.
@@ -106,10 +104,11 @@ This package contains the libraries used by Dolphin and Konqueror.
 
 %if %{with lang}
 %package -n %{name}-part-lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name}-part = %{version}
-Supplements:    packageand(bundle-lang-other:%{name}-part)
+Supplements:    (bundle-lang-other and %{name}-part)
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-part-lang-all = %{version}
