@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:11:25 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Build all non-native firmware files on x86_64 and aarch64 with
+  cross-compilers (bsc#1159134)
+  + Exclude i586 and armv7hl due to the availability of
+    cross-compilers
+  + Move some bash functions to ovmf-build-funcs.sh
+- Clean up PKG_TO_REMOVE
+  + Only EmulatorPkg still exists.
+
+-------------------------------------------------------------------
 Mon Apr  6 03:37:22 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1163927-fix-ping-and-ip6dxe.patch to fix crash and
