@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:14:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.5
+  * touchpad: ratelimit the touch jump tests
+  * udev: don't use IMPORT+=
+
+-------------------------------------------------------------------
 Wed Apr  8 17:01:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove utilities with unsatisfied runtime
