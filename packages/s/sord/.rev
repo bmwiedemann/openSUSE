@@ -112,4 +112,12 @@
   * Fix warious compiler warnings and clang-format reports</comment>
     <requestid>631384</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>85ba6443bb054d7ac6d5308e0db76298</srcmd5>
+    <version>0.16.4</version>
+    <time>1587838206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795776</requestid>
+  </revision>
 </revisionlist>
