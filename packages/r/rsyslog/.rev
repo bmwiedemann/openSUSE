@@ -1374,4 +1374,12 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment></comment>
     <requestid>773656</requestid>
   </revision>
+  <revision rev="148" vrev="7">
+    <srcmd5>b2fb3842dcf6226262745c5ed1a7c781</srcmd5>
+    <version>8.39.0</version>
+    <time>1587838048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795524</requestid>
+  </revision>
 </revisionlist>
