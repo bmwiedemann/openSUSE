@@ -37,4 +37,13 @@
     <comment></comment>
     <requestid>758982</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc8f3d7ea77f63ffd7d2d91e0a45620c</srcmd5>
+    <version>0.9.10</version>
+    <time>1587839378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.10:
+  * Adds support for UCSM release 4.1(1a), 4.1(1b), 4.1(1c)</comment>
+    <requestid>796780</requestid>
+  </revision>
 </revisionlist>
