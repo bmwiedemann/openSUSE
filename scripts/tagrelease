@@ -1,4 +1,4 @@
 #!/bin/sh
 date=$(date -u -d @$(($(date +%s) - 60*60*23)) +%Y%m%d)
 git tag $date
-git push --tags
+[ -z "$SSH_AUTH_SOCK" ] || git push --tags
