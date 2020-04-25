@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:46:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.30.2:
+  * Fix GCC 4 build
+  * Fix colliding blank nodes when parsing TriG
+  * Fix missing parse error messages
+  * Fix parsing "a" abbreviation without padding whitespace
+  * Fix parsing TriG graphs with several squashed trailing dots
+  * Fix resolving some URIs against base URIs with no trailing slash
+  * Improve build system and CI integration
+  * Improve documentation
+
+-------------------------------------------------------------------
 Fri Sep 21 06:23:43 UTC 2018 - olaf@aepfle.de
 
 - Use -std=gnu99 to fix compilation of bogus C code
