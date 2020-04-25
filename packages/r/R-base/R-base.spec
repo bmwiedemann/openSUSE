@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        3.6.3
+Version:        4.0.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -52,7 +52,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pango-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  readline-devel
 BuildRequires:  shadow
@@ -1109,7 +1109,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.15
+Version:        7.3.16
 Release:        %release
 Requires:       R-base
 
@@ -1134,6 +1134,7 @@ This packages provides R-class, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/class/po/de/
 %lang(en) %{_libdir}/R/library/class/po/en*/
 %lang(fr) %{_libdir}/R/library/class/po/fr/
+%lang(fr) %{_libdir}/R/library/class/po/it/
 %lang(ko) %{_libdir}/R/library/class/po/ko/
 %lang(pl) %{_libdir}/R/library/class/po/pl/
 %{_libdir}/R/library/class/R/
@@ -1193,7 +1194,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.75
+Version:        0.8.78
 Release:        %release
 Requires:       R-base
 
@@ -1250,7 +1251,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.20.38
+Version:        0.20.41
 Release:        %release
 Requires:       R-base
 
@@ -1400,7 +1401,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.144
+Version:        3.1.147
 Release:        %release
 Requires:       R-base
 
@@ -1433,7 +1434,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.12
+Version:        7.3.13
 Release:        %release
 Requires:       R-base
 
@@ -1527,7 +1528,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.1.8
+Version:        3.1.12
 Release:        %release
 Requires:       R-base
 

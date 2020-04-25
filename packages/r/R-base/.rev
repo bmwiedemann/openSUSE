@@ -1475,4 +1475,41 @@ CHANGES IN R 3.4.2:
 </comment>
     <requestid>780561</requestid>
   </revision>
+  <revision rev="73" vrev="30">
+    <srcmd5>40e3259cb4cb07993d49985646610329</srcmd5>
+    <version>unknown</version>
+    <time>1587839424</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN 4.0.0:
+  SIGNIFICANT USER-VISIBLE CHANGES:
+    * Packages need to be (re-)installed under this version (4.0.0) of
+      R.
+    * matrix objects now also inherit from class &quot;array&quot;, so e.g.,
+      class(diag(1)) is c(&quot;matrix&quot;, &quot;array&quot;).  This invalidates code
+      incorrectly assuming that class(matrix_obj)) has length one.
+      S3 methods for class &quot;array&quot; are now dispatched for matrix
+      objects.
+    * There is a new syntax for specifying _raw_ character constants
+      similar to the one used in C++: r&quot;(...)&quot; with ... any character
+      sequence not containing the sequence )&quot;.  This makes it easier to
+      write strings that contain backslashes or both single and double
+      quotes.  For more details see ?Quotes.
+    * R now uses a stringsAsFactors = FALSE default, and hence by
+      default no longer converts strings to factors in calls to
+      data.frame() and read.table().
+      A large number of packages relied on the previous behaviour and
+      so have needed/will need updating.
+    * The plot() S3 generic function is now in package base rather than
+      package graphics, as it is reasonable to have methods that do not
+      use the graphics package.  The generic is currently re-exported
+      from the graphics namespace to allow packages importing it from
+      there to continue working, but this may change in future.
+      Packages which define S4 generics for plot() should be
+      re-installed and package code using such generics from other
+      packages needs to ensure that they are imported rather than rely
+      on their being looked for on the search path (as in a namespace,
+      the base namespace has precedence over the search path).
+  REFERENCE COUNTING:</comment>
+    <requestid>797070</requestid>
+  </revision>
 </revisionlist>
