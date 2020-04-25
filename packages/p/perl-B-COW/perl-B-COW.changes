@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 03:07:23 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.003
+   see /usr/share/doc/packages/perl-B-COW/Changes
+
+  0.003     2020-04-20 09:59:34-06:00 America/Denver
+  
+  support for Perl compiled without COW
+
+-------------------------------------------------------------------
 Thu Jan 30 03:08:13 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.002
