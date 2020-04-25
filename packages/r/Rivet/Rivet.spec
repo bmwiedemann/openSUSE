@@ -150,7 +150,7 @@ make %{?_smp_mflags}
 %make_install
 
 # SECTION Fix env based hashbangs in binaries
-sed -Ei "1s:^#!\s*%{_bindir}/env python:#!%{_bindir}/python:" %{buildroot}%{_bindir}/*
+sed -Ei "1s:^#!\s*%{_bindir}/env python:#!%{_bindir}/python3:" %{buildroot}%{_bindir}/*
 sed -Ei "1s:^#!\s*%{_bindir}/env bash:#!/bin/bash:" %{buildroot}%{_bindir}/*
 # /SECTION
 

@@ -140,4 +140,13 @@ Depends on
 </comment>
     <requestid>765274</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0c2d8a44375a836ee8d99332f4829a04</srcmd5>
+    <version>3.1.0</version>
+    <time>1587839222</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python version in hashbangs. #!%{_bindir}/python introduces wrong for python3 package dependency on python-base.
+</comment>
+    <requestid>796650</requestid>
+  </revision>
 </revisionlist>
