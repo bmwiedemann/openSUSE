@@ -1,7 +1,7 @@
 #
 # spec file for package tellico
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,17 @@
 
 
 Name:           tellico
-Version:        3.2.3
+Version:        3.3
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Use-unnamespaced-hex-for-Qt-lt-5.14.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-build-with-Qt-5.9.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcdio-devel
@@ -80,6 +84,7 @@ stamps, trading cards, comic books, and wines.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build
