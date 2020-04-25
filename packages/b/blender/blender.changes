@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:13:07 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Add blender-bad-override.patch to fix build with
+  OpenShadingLanguage >= 2.0.0
+
+-------------------------------------------------------------------
 Fri Apr  3 00:57:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort file lists

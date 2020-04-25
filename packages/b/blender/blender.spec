@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,8 +37,10 @@
 
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
+
 # Find the version of python3 that blender is going to build against.
 %define py3version %(pkg-config python3 --modversion)
+
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
@@ -52,9 +54,9 @@ Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
-# http://git.blender.org/
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}.tar.xz.md5sum
+# Please leave the source url intact
+Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
+Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
 Source4:        blender-sample
@@ -65,6 +67,7 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
+Patch2:         blender-bad-override.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -72,6 +75,7 @@ BuildRequires:  OpenImageIO
 BuildRequires:  OpenImageIO-devel
 BuildRequires:  SDL2-devel
 BuildRequires:  binutils-gold
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
@@ -231,6 +235,7 @@ popd
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
@@ -259,7 +264,7 @@ cmake ../ \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
       -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp " \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp " \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp" \
 %endif
       -DCMAKE_VERBOSE_MAKEFILE=ON \
       -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \

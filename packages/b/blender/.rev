@@ -1021,4 +1021,12 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>791060</requestid>
   </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>1fe522edc0632a9e8669c3ae90c88102</srcmd5>
+    <version>2.82a</version>
+    <time>1587839562</time>
+    <user>dimstar_suse</user>
+    <comment>Slow build service missed the updated changes file</comment>
+    <requestid>797122</requestid>
+  </revision>
 </revisionlist>
