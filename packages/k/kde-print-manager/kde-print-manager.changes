@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fixes printer-manager error messages from exceeding window dimenssions (kde#415444)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * use httpAssembleURI not httpAssembleURIf
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Fix authentication (kde#408512)
+  * [Applet] Fix list item margins (kde#360199)
+  * Update the GUI enabled/paused state if it changes externally
+  * [kded] Port plugin metadata to JSON
+  * Use URLs with transport encryption
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:52 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

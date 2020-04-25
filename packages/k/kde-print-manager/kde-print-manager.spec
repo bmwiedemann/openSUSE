@@ -23,17 +23,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-print-manager
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        A print manager for KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  cups
 BuildRequires:  cups-backends
 BuildRequires:  cups-client
@@ -67,6 +63,10 @@ Obsoletes:      kde4-print-manager < %{version}
 Obsoletes:      print-manager5 < %{version}
 Provides:       print-manager5 = %{version}
 Provides:       dbus(com.redhat.NewPrinterNotification)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This project is a replacement for the previous printing management of KDE.
@@ -96,12 +96,12 @@ This project is a replacement for the previous printing management of KDE.
 %files
 %license COPYING
 %doc README
-%dir %{_kf5_appstreamdir}/
-%dir %{_kf5_plasmadir}
 %dir %{_kf5_plasmadir}/plasmoids
-%{_kf5_applicationsdir}/org.kde.kde-add-printer.desktop
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_applicationsdir}/org.kde.ConfigurePrinter.desktop
 %{_kf5_applicationsdir}/org.kde.PrintQueue.desktop
+%{_kf5_applicationsdir}/org.kde.kde-add-printer.desktop
 %{_kf5_appstreamdir}/org.kde.plasma.printmanager.appdata.xml
 %{_kf5_appstreamdir}/org.kde.print-manager.metainfo.xml
 %{_kf5_bindir}/configure-printer
@@ -111,10 +111,9 @@ This project is a replacement for the previous printing management of KDE.
 %{_kf5_notifydir}/printmanager.notifyrc
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.printmanager/
 %{_kf5_plugindir}/kcm_printer_manager.so
-%{_kf5_plugindir}/kded_printmanager.so
+%{_kf5_plugindir}/kf5/kded/printmanager.so
 %{_kf5_qmldir}/org/kde/plasma/printmanager/
 %{_kf5_servicesdir}/kcm_printer_manager.desktop
-%{_kf5_servicesdir}/kded/
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.printmanager.desktop
 
 %if %{with lang}
