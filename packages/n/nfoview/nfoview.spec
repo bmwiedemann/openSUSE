@@ -17,16 +17,13 @@
 
 
 Name:           nfoview
-Version:        1.27
+Version:        1.27.1
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://otsaloma.io/nfoview/
 Source:         https://github.com/otsaloma/nfoview/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nfoview-fix-css-font-abnormal-weight.patch -- Fix CSS error with the abnormal weight of the Unscii font
-Patch:          nfoview-fix-css-font-abnormal-weight.patch
-
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme

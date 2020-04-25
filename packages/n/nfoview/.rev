@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>785698</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dde2c9c7bd1de64a76f28a66e85c2dc</srcmd5>
+    <version>1.27.1</version>
+    <time>1587839268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1:
+  * Fix CSS error with the abnormal weight of the Unscii font
+- Drop nfoview-fix-css-font-abnormal-weight.patch</comment>
+    <requestid>796689</requestid>
+  </revision>
 </revisionlist>
