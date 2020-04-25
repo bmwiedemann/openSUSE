@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khelpcenter5
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxapian-devel
@@ -57,6 +53,10 @@ Requires:       kdoctools
 Recommends:     %{name}-lang
 Conflicts:      kdebase4-runtime < 17.04.1
 Provides:       suse_help_viewer
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Application to show KDE Applications' documentation.
