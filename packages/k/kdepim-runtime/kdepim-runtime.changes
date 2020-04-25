@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * IMAP: fix use-after free in ChangeItemTask
+  * Register IMAP D-Bus interfaces before the service gets registered
+  * Adapt to KDAV changes
+  * Fix compilation with more recent Qt 5.15
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:59 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix cppcheck warning
+  * Disable for the moment
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * [resources/maildir] Don't save "file:" schema to the config (kde#408354)
+- Dropped patches, now upstream:
+  * 0001-resources-maildir-Don-t-save-file-schema-to-the-conf.patch
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
