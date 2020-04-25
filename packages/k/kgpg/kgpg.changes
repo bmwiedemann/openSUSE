@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:24 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:59 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * fix -Wzero-as-null-pointer-constant warnings
+  * GroupEditProxyModel: fix unintended fallthrough
+  * Remove unused include
+  * fix indentation
+  * Port deprecated enum (scripted)
+  * Don't use 0 for flag
+  * Fix minor issues found by EBN
+- Drop checks for obsolete distribution versions
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

@@ -1,7 +1,7 @@
 #
 # spec file for package kgpg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,56 +21,48 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgpg
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Patch1:         kgpg-autostart.diff
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  extra-cmake-modules
+BuildRequires:  kf5-filesystem
+BuildRequires:  libgpgme-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  libgpgme-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       gpg2
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+BuildRequires:  libboost_headers-devel
+Recommends:     %{name}-lang
 
 %description
 Kgpg is a simple GUI for gpg
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n kgpg-%{version}
