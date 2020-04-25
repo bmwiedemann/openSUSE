@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 16:22:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.4
+  - Requires Python 3.6
+  - Removed Python2 support
+  - Optimized/faster svgparser.py module by Florian Festi
+  - Removed batch files to run tests on Windows, use pytest or tox
+    instead
+
+-------------------------------------------------------------------
 Tue Mar 10 10:43:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one test that started to fail with python 3.8:
