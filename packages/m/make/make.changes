@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:30:14 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add fix-57962.patch in order to fix bug #57962.
+
+-------------------------------------------------------------------
 Sat Feb 22 19:55:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use.

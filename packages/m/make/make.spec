@@ -28,6 +28,7 @@ Source1:        http://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
 # keyring downloaded from https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make&download=1
 Source2:        %{name}.keyring
 Patch1:         make-testcases_timeout.diff
+Patch2:         fix-57962.patch
 Patch5:         test-driver.patch
 Patch64:        make-library-search-path.diff
 BuildRequires:  autoconf
@@ -45,6 +46,7 @@ The GNU make command with extensive documentation.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 %patch5 -p1
 if [ %{_lib} = lib64 ]; then
 %patch64 -p1

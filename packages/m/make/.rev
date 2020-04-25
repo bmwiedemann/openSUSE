@@ -388,4 +388,12 @@ now with changed patch tag, even though the patch might be accepted by upstream 
     <comment></comment>
     <requestid>778460</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7e202faca747a81fa86738e521255331</srcmd5>
+    <version>4.3</version>
+    <time>1587838089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795530</requestid>
+  </revision>
 </revisionlist>
