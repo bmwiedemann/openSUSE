@@ -47,4 +47,13 @@
 - Remove merged tests-fix-urls.patch</comment>
     <requestid>761365</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e00f8c820a665ef14b531a3b70397e1f</srcmd5>
+    <version>4.11.0</version>
+    <time>1587839404</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new msgpack:
+  * msgpack-1.patch</comment>
+    <requestid>796789</requestid>
+  </revision>
 </revisionlist>

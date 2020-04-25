@@ -23,9 +23,9 @@ Version:        4.11.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/niwibe/django-redis
 Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
+Patch0:         msgpack-1.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module mock}
@@ -48,6 +48,7 @@ A redis cache backend for Django.
 
 %prep
 %setup -q -n django-redis-%{version}
+%patch0 -p1
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:21:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build with new msgpack:
+  * msgpack-1.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 09:06:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.11.0:
