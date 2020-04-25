@@ -27,7 +27,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.envs
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.envs/jaraco.envs-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
@@ -60,7 +60,7 @@ sed -i 's/--flake8 --black --cov//' pytest.ini
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst CHANGES.rst
-%{python_sitelib}/jaraco.envs-%{version}-py*.egg-info
+%{python_sitelib}/jaraco.envs-*-py*.egg-info
 %{python_sitelib}/jaraco*
 
 %changelog
