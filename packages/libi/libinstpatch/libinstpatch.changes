@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 16:46:05 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to version 1.1.4
+  * avoid hijacking the application's locale, causing potentially
+    heavy side-effects
+
+-------------------------------------------------------------------
 Thu Feb 20 17:16:57 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 1.1.3
