@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-mime
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
@@ -48,6 +44,10 @@ BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package provides libraries needed for the correct parsing of email messages.
