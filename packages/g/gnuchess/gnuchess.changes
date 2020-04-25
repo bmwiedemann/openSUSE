@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 19 22:09:23 CEST 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to the version 6.2.6:
+  - Fix buffer overflow on load EPD file (bsc#1148736 CVE-2019-15767).
+  - Fix move validation when cleaning up moves, e.g. accepting
+    '0-0' for O-O'.
+  - More consistent use of period in translatable texts.
+  - Minor fixes on compilation warnings
+  - New and updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 28 10:18:31 UTC 2018 - antoine.belvire@opensuse.org
 
 - Only suggest xboard, don't recommend it.

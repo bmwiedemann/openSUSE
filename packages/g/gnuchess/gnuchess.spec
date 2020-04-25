@@ -1,7 +1,7 @@
 #
 # spec file for package gnuchess
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnuchess
-Version:        6.2.5
+Version:        6.2.6
 Release:        0
 Summary:        GNU Chess Program
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
-Url:            http://www.gnu.org/software/chess/
+URL:            https://www.gnu.org/software/chess/
 Source0:        http://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz
 # WARNING: Don't forget to re-generate book.dat manually before submit!
 # Simply remove the source and build, updated book will be generated.
@@ -51,7 +51,7 @@ in the xboard package.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 sed -i 's/^Book[[:space:]]*=[[:space:]]*false/Book = true/;s/^OwnBook[[:space:]]=[[:space:]]*false/OwnBook = true/' src/gnuchess.ini
 sh %{SOURCE3} %{SOURCE1}
 
@@ -72,7 +72,7 @@ install -m 755 %{SOURCE5} %{buildroot}/%{_bindir}
 %license COPYING
 %{_bindir}/*
 %{_mandir}/man*/*
-%{_infodir}/gnuchess.info%{ext_info}
+%{_infodir}/gnuchess.info%{?ext_info}
 %{_datadir}/gnuchess
 %dir %{_datadir}/games/plugins
 %dir %{_datadir}/games/plugins/logos
