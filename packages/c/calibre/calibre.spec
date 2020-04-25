@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           calibre
-Version:        4.13.0
+Version:        4.14.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -56,9 +56,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  chmlib-devel >= 0.40
 BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  hyphen-devel >= 2.8.8
-BuildRequires:  libQt5Core-private-headers-devel >= 5.13.0
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.13.0
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.13.0
+BuildRequires:  libQt5Core-private-headers-devel >= 5.14.1
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.14.1
+BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.14.1
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
 BuildRequires:  libmtp-devel >= 1.1.5
@@ -70,11 +70,11 @@ BuildRequires:  optipng >= 0.7.5
 BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
 BuildRequires:  xdg-utils >= 1.0.2
-BuildRequires:  pkgconfig(Qt5Core) >= 5.13.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.13.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.13.0
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.13.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.14.1
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.14.1
+BuildRequires:  pkgconfig(Qt5Network) >= 5.14.1
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.14.1
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.14.1
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
@@ -84,48 +84,55 @@ BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
 BuildRequires:  libjpeg-turbo
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-qt5-devel >= 5.13.0
+BuildRequires:  python3-qt5-devel >= 5.13.1
 BuildRequires:  pkgconfig(libjpeg)
-# BuildRequires:  python-Pillow >= 3.2.0
-BuildRequires:  %{python_module Pillow >= 3.2.0}
+# upstream use python-Pillow 6.0.0
+BuildRequires:  %{python_module Pillow >= 5.0.0}
 # upstream use python-Pygments 2.3.1
 BuildRequires:  %{python_module Pygments >= 2.2.0}
-# upstream use python-apsw 3.27.1
-BuildRequires:  %{python_module apsw >= 3.7.17}
-BuildRequires:  %{python_module beautifulsoup4}
-# upstream use python-chardet 3.0.3
-BuildRequires:  %{python_module chardet}
+# upstream use python-apsw 3.30.1-r1
+BuildRequires:  %{python_module apsw >= 3.9.2}
+# upstream use python-beautifulsoup4 4.7.1
+BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
+BuildRequires:  %{python_module chardet >= 3.0.4}
 BuildRequires:  %{python_module css-parser >= 1.0.4}
-BuildRequires:  %{python_module dateutil >= 2.5.3}
-# upstream use python-dnspython 0.14.0
-BuildRequires:  %{python_module dnspython >= 1.12.0}
+# upstream use python-dateutil 2.8.0
+BuildRequires:  %{python_module dateutil >= 2.7.3}
+# upstream use python-dnspython 0.16.0
+BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module dukpy-kovidgoyal >= 0.3}
+# upstream use python-html5-paser 0.4.9
 BuildRequires:  %{python_module html5-parser >= 0.4.6}
-BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module lxml >= 3.8.0}
+BuildRequires:  %{python_module html5lib >= 1.0.1}
+# upstream use python-lxml 4.3.3
+BuildRequires:  %{python_module lxml >= 4.0.0}
+# upstream use python-mechanize 0.4.3
 BuildRequires:  %{python_module mechanize >= 0.3.5}
-# upstream use python-msgpack 0.5.6
-BuildRequires:  %{python_module msgpack >= 0.5.4}
-# upstream use python-netifaces 0.10.7
+# upstream use python-msgpack 0.6.1
+BuildRequires:  %{python_module msgpack >= 0.5.6}
+# upstream use python-netifaces 0.10.9
 BuildRequires:  %{python_module netifaces >= 0.10.6}
 BuildRequires:  %{python_module odfpy}
-BuildRequires:  %{python_module psutil >= 4.3.0}
-# upstream use python-regex 2018.07.11
+# upstream use python-psutil 5.6.2
+BuildRequires:  %{python_module psutil >= 5.4.8}
+# upstream use python-ifaddr 0.1.6
+BuildRequires:  %{python_module ifaddr >= 0.1.4}
+# upstream use python-regex 2019.04.14
+BuildRequires:  %{python_module Markdown >= 3.1}
 BuildRequires:  %{python_module feedparser >= 5.2.1}
+BuildRequires:  %{python_module html2text >= 2018.1.9}
+BuildRequires:  %{python_module pycrypto >= 2.6.1}
 BuildRequires:  %{python_module regex >= 2017.07.28}
 BuildRequires:  %{python_module setuptools >= 23.1.0}
 BuildRequires:  %{python_module sip-devel >= 4.12}
-# upstream use python-Markdown 3.0.1
-BuildRequires:  %{python_module Markdown >= 2.6.11}
-BuildRequires:  %{python_module html2text >= 2018.1.9}
-BuildRequires:  %{python_module pycrypto >= 2.6.1}
 # Need at buildtime too, to produce the bash completion
-BuildRequires:  %{python_module qtwebengine-qt5 >= 5.13.0}
+BuildRequires:  %{python_module qtwebengine-qt5 >= 5.13.1}
 BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module soupsieve >= 1.8}
+BuildRequires:  %{python_module soupsieve >= 1.9.1}
 #BuildRequires:  python-unrardll >= 0.1.3
 BuildRequires:  %{python_module webencodings >= 0.5.1}
-BuildRequires:  %{python_module zeroconf}
+# upstream use python-zeroconf 0.21.3
+BuildRequires:  %{python_module zeroconf >= 0.19.1}
 #
 Requires:       chmlib >= 0.40
 Requires:       dbus-1-python3 >= 1.2.0
@@ -136,37 +143,38 @@ Requires:       optipng >= 0.7.5
 Requires:       podofo >= 0.8.2
 Requires:       poppler-tools >= 0.20.2
 Requires:       python3
-Requires:       python3-Markdown >= 2.6.11
-Requires:       python3-Pillow >= 3.2.0
+Requires:       python3-Markdown >= 3.1
+Requires:       python3-Pillow >= 5.0.0
 Requires:       python3-Pygments >= 2.1.3
-Requires:       python3-apsw >= 3.7.17
-Requires:       python3-beautifulsoup4
-Requires:       python3-chardet
+Requires:       python3-apsw >= 3.9.2
+Requires:       python3-beautifulsoup4 >= 4.6.0
+Requires:       python3-chardet >= 3.0.4
 Requires:       python3-css-parser >= 1.0.4
-Requires:       python3-dateutil >= 2.5.3
-Requires:       python3-dnspython >= 1.12.0
+Requires:       python3-dateutil >= 2.7.3
+Requires:       python3-dnspython >= 1.15.0
 Requires:       python3-dukpy-kovidgoyal >= 0.3
 Requires:       python3-feedparser >= 5.2.1
 Requires:       python3-html2text >= 2018.1.9
 Requires:       python3-html5-parser >= 0.4.6
-Requires:       python3-html5lib
-Requires:       python3-lxml >= 3.8.0
+Requires:       python3-html5lib >= 1.0.1
+Requires:       python3-ifaddr >= 0.1.4
+Requires:       python3-lxml >= 4.0.0
 Requires:       python3-mechanize >= 0.3.5
-Requires:       python3-msgpack >= 0.5.4
+Requires:       python3-msgpack >= 0.5.6
 Requires:       python3-netifaces >= 0.10.7
 Requires:       python3-odfpy
-Requires:       python3-psutil >= 4.3.0
+Requires:       python3-psutil >= 5.4.8
 Requires:       python3-pycrypto >= 2.6.1
-Requires:       python3-qt5 >= 5.13.0
-Requires:       python3-qtwebengine-qt5 >= 5.13.0
+Requires:       python3-qt5 >= 5.13.1
+Requires:       python3-qtwebengine-qt5 >= 5.13.1
 Requires:       python3-regex >= 2017.07.28
 Requires:       python3-setuptools >= 23.1.0
 Requires:       python3-sip >= 4.12.1
 Requires:       python3-six >= 1.10.0
-Requires:       python3-soupsieve >= 1.8
+Requires:       python3-soupsieve >= 1.9.1
 #Requires:       python3-unrardll >= 0.1.3
 Requires:       python3-webencodings >= 0.5.1
-Requires:       python3-zeroconf
+Requires:       python3-zeroconf >= 0.19.1
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2
