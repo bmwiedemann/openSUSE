@@ -21,16 +21,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-Source:         %{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        %{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -56,6 +52,10 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       accounts-qml-module
 Recommends:     %{name}-lang
 Recommends:     kaccounts-providers
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Small system to administer web accounts for the sites
