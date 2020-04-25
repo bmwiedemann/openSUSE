@@ -1,7 +1,7 @@
 #
 # spec file for package novprog
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           novprog
-Version:        3.1.5
+Version:        3.1.7
 Release:        0
 Summary:        Wordcount graphing program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
-URL:            http://gottcode.org/novprog/
+URL:            https://gottcode.org/novprog/
 Source:         http://gottcode.org/novprog/%{name}-%{version}-src.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -34,11 +34,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       hicolor-icon-theme
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
-Recommends:     %{name}-lang
 
 %description
 NovProg allows you to create a graph of your progress in writing a
@@ -60,16 +55,6 @@ graph will show a tooltip with that day's wordcount.
 %qmake5_install
 %suse_update_desktop_file -u -r %{name} Office Publishing
 %find_lang %{name} --with-qt
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

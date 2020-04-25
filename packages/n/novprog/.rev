@@ -54,4 +54,20 @@
     <comment></comment>
     <requestid>652427</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3bb031c55410c457ae39beb8408bd00d</srcmd5>
+    <version>3.1.7</version>
+    <time>1587839477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7:
+  * FIXED: Did not load locales with underscores
+  * Improved Windows deployment
+  * Replaced deprecated code
+- Changes in version 3.1.6:
+  * FIXED: Window icon didn't work in Wayland
+  * Improved loading locales
+  * Improved Windows deployment
+  * Replaced deprecated code</comment>
+    <requestid>796896</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 24 08:12:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.7:
+  * FIXED: Did not load locales with underscores
+  * Improved Windows deployment
+  * Replaced deprecated code
+- Changes in version 3.1.6:
+  * FIXED: Window icon didn't work in Wayland
+  * Improved loading locales
+  * Improved Windows deployment
+  * Replaced deprecated code
+
+-------------------------------------------------------------------
 Wed Nov 21 10:00:43 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.1.5:
