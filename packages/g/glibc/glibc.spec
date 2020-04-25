@@ -446,6 +446,8 @@ The glibc-extra package contains some extra binaries for glibc that
 are not essential but recommend to use.
 
 makedb: A program to create a database for nss
+
+%lang_package
 %endif # main
 
 %prep
@@ -819,8 +821,14 @@ cc-base/elf/ldconfig -vn $destdir
 	mv {en_US,C}.utf8 %{buildroot}/usr/lib/locale/
 	cd ..
 %endif
-# Create file list for glibc-locale package
+
+%ifnarch i686
+# Create file list for glibc-lang package
 %{find_lang} libc
+%else
+# The translations are shared with the base flavour
+rm -rf %{buildroot}%{_datadir}/locale/*/
+%endif
 
 # Miscelanna:
 
@@ -1225,7 +1233,7 @@ exit 0
 %{_libdir}/gconv/gconv-modules
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
 
-%files locale -f libc.lang
+%files locale
 %defattr(-,root,root)
 %if %{build_locales}
 %{_prefix}/lib/locale
@@ -1328,6 +1336,8 @@ exit 0
 %{_bindir}/makedb
 %{_prefix}/share/misc/Makefile.makedb
 /var/lib/misc/Makefile
+
+%files lang -f libc.lang
 %endif # !i686
 
 %endif # main
