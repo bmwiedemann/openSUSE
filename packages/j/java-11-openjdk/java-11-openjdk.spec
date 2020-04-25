@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       6
+%global updatever       7
 %global patchver        0
-%global datever         2020-01-14
+%global datever         2020-04-14
 %global buildver        10
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     837b7afec083
+%global hg_revision     44ce940b344b
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -209,7 +209,9 @@ Patch16:        missing-return.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
-Patch31:        DependOnVariableHelper.patch
+# 8228407: JVM crashes with shared archive file mismatch
+# Summary: Stop processing other header fields if initial header check has failed.
+Patch31:        JDK-8228407.patch
 Patch32:        gcc-fno-common-fix.patch
 #
 # OpenJDK specific patches
@@ -997,18 +999,24 @@ update-alternatives \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_bindir}/jjs jjs %{jrebindir}/jjs \
   --slave %{_bindir}/keytool keytool %{jrebindir}/keytool \
+  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
+  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jjs.1$ext jjs.1$ext \
   %{_mandir}/man1/jjs-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
   %{_mandir}/man1/keytool-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
+  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmid.1$ext rmid.1$ext \
   %{_mandir}/man1/rmid-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmiregistry.1$ext rmiregistry.1$ext \
   %{_mandir}/man1/rmiregistry-%{sdklnk}.1$ext \
+  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
+  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   || :
 
 update-alternatives \
@@ -1092,10 +1100,8 @@ update-alternatives \
   --slave %{_bindir}/jstack jstack %{sdkbindir}/jstack \
   --slave %{_bindir}/jstat jstat %{sdkbindir}/jstat \
   --slave %{_bindir}/jstatd jstatd %{sdkbindir}/jstatd \
-  --slave %{_bindir}/pack200 pack200 %{sdkbindir}/pack200 \
   --slave %{_bindir}/rmic rmic %{sdkbindir}/rmic \
   --slave %{_bindir}/serialver serialver %{sdkbindir}/serialver \
-  --slave %{_bindir}/unpack200 unpack200 %{sdkbindir}/unpack200 \
   --slave %{_mandir}/man1/jar.1$ext jar.1$ext \
   %{_mandir}/man1/jar-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jarsigner.1$ext jarsigner.1$ext \
@@ -1128,14 +1134,10 @@ update-alternatives \
   %{_mandir}/man1/jstat-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jstatd.1$ext jstatd.1$ext \
   %{_mandir}/man1/jstatd-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmic.1$ext rmic.1$ext \
   %{_mandir}/man1/rmic-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/serialver.1$ext serialver.1$ext \
   %{_mandir}/man1/serialver-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/jconsole.desktop jconsole.desktop \
   %{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop \
   || :
@@ -1219,8 +1221,10 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/jfr
 %{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
+%{_jvmdir}/%{sdkdir}/bin/pack200
 %{_jvmdir}/%{sdkdir}/bin/rmid
 %{_jvmdir}/%{sdkdir}/bin/rmiregistry
+%{_jvmdir}/%{sdkdir}/bin/unpack200
 %{_jvmdir}/%{sdkdir}/conf/logging.properties
 %{_jvmdir}/%{sdkdir}/conf/management/jmxremote.access
 %{_jvmdir}/%{sdkdir}/conf/management/jmxremote.password.template
@@ -1293,8 +1297,10 @@ fi
 %{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/pack200-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmid-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmiregistry-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 
 %files devel
 %dir %{_jvmdir}/%{sdkdir}/bin
@@ -1334,10 +1340,8 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/jstack
 %{_jvmdir}/%{sdkdir}/bin/jstat
 %{_jvmdir}/%{sdkdir}/bin/jstatd
-%{_jvmdir}/%{sdkdir}/bin/pack200
 %{_jvmdir}/%{sdkdir}/bin/rmic
 %{_jvmdir}/%{sdkdir}/bin/serialver
-%{_jvmdir}/%{sdkdir}/bin/unpack200
 %{_jvmdir}/%{sdkdir}/include/classfile_constants.h
 %{_jvmdir}/%{sdkdir}/include/jawt.h
 %{_jvmdir}/%{sdkdir}/include/jdwpTransport.h
@@ -1374,10 +1378,8 @@ fi
 %{_mandir}/man1/jstack-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jstat-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jstatd-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/pack200-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/serialver-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 
 %if %{with_systemtap}
 %{tapsetroot}

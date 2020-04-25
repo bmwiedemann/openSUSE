@@ -295,4 +295,12 @@
     <comment></comment>
     <requestid>788350</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a90744c7dbb5cc08c1c971fef9b288f8</srcmd5>
+    <version>11.0.7.0</version>
+    <time>1587838344</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle April 2020 CPU</comment>
+    <requestid>795995</requestid>
+  </revision>
 </revisionlist>
