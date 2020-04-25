@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Apr 24 09:11:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 49:
+  * Updated to python 3.8 on windows
+  * Updated visual studio 2019 runtime version
+  * Updated zimg and added support for spline64 resize method
+  * Fixed transfer characteristics not being applied to gray
+    format clips
+  * Fixed vdecimate bugs when compiled on systems where char is
+    unsigned by default
+  * Fixed a regression introduced in r48 in that could sometimes
+    cause corrupt output from expr on cpus without sse4.1
+  * Fixed a savestring bug in avscompat
+  * Interleave, selectevery and separate fields now have a
+    modify_duration argument to determine if they modify frame
+    durations and fps
+  * Addborders and crop now update the _fieldbased attribute
+    properly when an odd number of lines are cut from the top
+  * Fixed add to path not working for single user installs
+  * Fixed compilation on non-x86 systems
+  * Fixed an infinite loop in the expr filter optimizer that
+    was introduced in r48
+- Remove python38-compile.patch: contained in upstream
+- Rebase vapoursynth-version.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 04:29:02 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch python38-compile.patch to build against Python 3.8, from
