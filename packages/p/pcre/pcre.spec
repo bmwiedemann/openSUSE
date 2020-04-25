@@ -1,7 +1,7 @@
 #
 # spec file for package pcre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           pcre
-Version:        8.42
+Version:        8.44
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.pcre.org/
+URL:            http://www.pcre.org/
 #SVN-Clone:	svn://vcs.exim.org/pcre/code/trunk
-Source:         ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/%{name}-%{version}.tar.bz2
-Source2:        ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/%{name}-%{version}.tar.bz2.sig
+Source:         https://ftp.pcre.org/pub/pcre/pcre-%{version}.tar.bz2
+Source2:        https://ftp.pcre.org/pub/pcre/pcre-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 #PATCH-FIX-UPSTREAM crrodriguez@opensuse.org http://bugs.exim.org/show_bug.cgi?id=1173
@@ -167,12 +167,12 @@ autoreconf -fiv
   # RunTest test 2 needs lots of stack, if it ever segfaults
   # try increasing this
   ulimit -s $((16*1024))
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
-  make CFLAGS="%{optflags} %{cflags_profile_generate}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %install
@@ -186,7 +186,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # RunTest test 2 needs lots of stack, if it ever segfaults
 # try increasing this
 ulimit -s $((16*1024))
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libpcre1 -p /sbin/ldconfig
 %postun -n libpcre1 -p /sbin/ldconfig
@@ -214,8 +214,8 @@ make %{?_smp_mflags} check
 %files tools
 %{_bindir}/pcregrep
 %{_bindir}/pcretest
-%{_mandir}/man1/pcregrep.1%{ext_man}
-%{_mandir}/man1/pcretest.1%{ext_man}
+%{_mandir}/man1/pcregrep.1%{?ext_man}
+%{_mandir}/man1/pcretest.1%{?ext_man}
 
 %files doc
 %license COPYING LICENCE
@@ -231,7 +231,7 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/libpcre16.pc
 %{_libdir}/pkgconfig/libpcrecpp.pc
 %{_libdir}/pkgconfig/libpcreposix.pc
-%{_mandir}/man1/pcre-config.1%{ext_man}
+%{_mandir}/man1/pcre-config.1%{?ext_man}
 %{_mandir}/man3/pcre*.3*%{ext_man}
 
 %files devel-static
