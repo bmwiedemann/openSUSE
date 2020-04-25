@@ -21,18 +21,15 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 5.19.0
+BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(KChart)
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -49,22 +46,17 @@ BuildRequires:  cmake(Qt5UiTools) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
