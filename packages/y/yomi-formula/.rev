@@ -149,4 +149,13 @@
   * network: add systemd link for the NIC (bsc#1168076)</comment>
     <requestid>791002</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ed91b6100a3459526b505f2abc5f4b13</srcmd5>
+    <version>0.0.1+git.1587385401.ce3ed18</version>
+    <time>1587838211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1587385401.ce3ed18:
+  * storage: suppor XFS filesystem</comment>
+    <requestid>795823</requestid>
+  </revision>
 </revisionlist>
