@@ -16,22 +16,18 @@
 #
 
 
-%define kf5_version 5.63.0
+%define kf5_version 5.66.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail-account-wizard
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Akonadi)
@@ -52,7 +48,6 @@ BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
@@ -67,15 +62,15 @@ Obsoletes:      kdepim
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 An application which assists you with the configuration of accounts in KMail.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
