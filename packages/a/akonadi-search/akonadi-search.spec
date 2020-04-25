@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-search
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxapian-devel
@@ -51,8 +47,10 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      baloo-pim < %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 AkonadiSearch is a framework for searching and managing PIM metada
@@ -81,9 +79,7 @@ Requires:       cmake(Qt5Core)
 Baloo is a framework for searching and managing metadata. This
 package contains aditional command line utilities. Development files.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
