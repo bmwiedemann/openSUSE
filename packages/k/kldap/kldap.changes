@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:31 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Use certificate handling code for both SSL and TLS
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:10 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * Autogenerate categories file
+  * Remove extra endl at the end of qdebug
+  * [kldap] Fix compilation without LDAP
+  * Remove unused LDAP model code
+  * Remove QCombobox usage
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:12 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
