@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -70,18 +66,11 @@ Provides:       akregator5 = %{version}
 Obsoletes:      akregator5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-# Needed for 42.3
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Akregator is a news feed reader. It enables you to follow news sites,
@@ -91,24 +80,12 @@ for convenient reading of hundreds of news sources. It comes with
 Konqueror integration for adding news feeds and with an internal
 browser for news reading.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1330
-  # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-  %if 0%{?sle_version} < 120300
-    export CC=gcc-6
-    export CXX=g++-6
-  %else
-    export CC=gcc-7
-    export CXX=g++-7
-  %endif
-%endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
 %cmake_build
 
