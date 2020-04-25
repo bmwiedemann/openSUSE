@@ -23,4 +23,12 @@
     <comment>- Build with -fpermissive to avoid build failure on current TW</comment>
     <requestid>548030</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ac76024000639a8e2a0434fc0c901dc8</srcmd5>
+    <version>1.0.0</version>
+    <time>1587839231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796596</requestid>
+  </revision>
 </revisionlist>

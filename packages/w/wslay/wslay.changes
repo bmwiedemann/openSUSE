@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:22:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use py3 version of sphinx
+
+-------------------------------------------------------------------
 Mon Dec  4 09:43:03 UTC 2017 - mpluskal@suse.com
 
 - Build with -fpermissive to avoid build failure on current TW

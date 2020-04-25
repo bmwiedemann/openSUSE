@@ -1,7 +1,7 @@
 #
 # spec file for package wslay
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        WebSocket library in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/tatsuhiro-t/wslay
+URL:            https://github.com/tatsuhiro-t/wslay
 Source0:        https://github.com/tatsuhiro-t/wslay/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -32,7 +32,7 @@ BuildRequires:  cunit-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python-Sphinx
+BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(nettle)
 
 %description
@@ -99,7 +99,7 @@ autoreconf -fiv
   --disable-static \
   --docdir=%{_docdir}
 # documentation building fails with parallel build
-make --jobs=1
+%make_build -j1
 
 %install
 %make_install
@@ -110,13 +110,14 @@ pushd %{buildroot}%{_bindir}/
 popd
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{c_lib} -p /sbin/ldconfig
 %postun -n %{c_lib} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS COPYING NEWS README README.rst
+%license COPYING
+%doc AUTHORS NEWS README README.rst
 %{_bindir}/wslay*
 
 %files -n %{c_lib}
