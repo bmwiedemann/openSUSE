@@ -31,6 +31,7 @@ PreReq:         glibc >= 2.19
 Requires(post): coreutils
 Recommends:     branding-openSUSE
 Recommends:     distribution-logos-openSUSE-MicroOS
+Suggests:       openSUSE-build-key
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release

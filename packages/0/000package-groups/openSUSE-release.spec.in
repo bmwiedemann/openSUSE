@@ -37,6 +37,7 @@ Requires(post): awk
 Requires(post): issue-generator
 Recommends:     branding-openSUSE
 Recommends:     distribution-logos-openSUSE-Tumbleweed
+Suggests:       openSUSE-build-key
 Suggests:       java-11-openjdk
 Suggests:       mariadb
 Suggests:       mariadb-client

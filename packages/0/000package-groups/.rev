@@ -789,4 +789,16 @@ remove obsolete _opt patterns</comment>
     <user>dimstar_suse</user>
     <comment>Drop various devel patterns from the DVD</comment>
   </revision>
+  <revision rev="111" vrev="109">
+    <srcmd5>71d0981e07320373b8c4c8efd779872c</srcmd5>
+    <version>unknown</version>
+    <time>1587838145</time>
+    <user>dimstar_suse</user>
+    <comment>Add hint about correct build key
+
+Build key packages provide the generic &quot;build-key&quot; name which can be
+used in eg. patterns in a reusable way. The product has to hint what
+it wants then though.</comment>
+    <requestid>795732</requestid>
+  </revision>
 </revisionlist>
