@@ -91,6 +91,7 @@ Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v
 Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
 Source8:        https://github.com/leev/ngx_http_geoip2_module/archive/%{nginx_geoip2_version}.tar.gz#/%{nginx_geoip2_module_path}.tar.gz
+Source9:        nginx.sysusers
 Source100:      nginx.rpmlintrc
 Source101:      https://nginx.org/download/%{name}-%{version}.tar.gz.asc
 Source102:      https://nginx.org/keys/mdounin.key#/%{name}.keyring
@@ -117,10 +118,8 @@ BuildRequires:  vim
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libmaxminddb)
 %requires_eq    perl
-Requires(pre):  shadow
 Recommends:     logrotate
 Recommends:     vim-plugin-nginx
-Conflicts:      nginx
 Provides:       http_daemon
 Provides:       httpd
 #
@@ -135,7 +134,11 @@ BuildRequires:  libatomic-ops-devel
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%sysusers_requires
 %else
+Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
 %endif
@@ -263,6 +266,9 @@ sed -i "s/\/var\/run/\/run/" conf/nginx.conf
   --with-cc-opt="%{optflags}"
 %endif
 %make_build
+%if %{with systemd}
+%sysusers_generate_pre %{SOURCE9} nginx
+%endif
 
 %install
 %make_install
@@ -275,6 +281,7 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{pkg_name}
 %if %{with systemd}
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/nginx.service
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rcnginx
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/nginx.conf
 %else
 install -D -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
 ln -s -f %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
@@ -344,12 +351,13 @@ copydocs %{nginx_rtmp_module_path} \
 %insserv_cleanup
 %endif
 
+%if %{with systemd}
+%pre -f nginx.pre
+%service_add_pre nginx.service
+%else
 %pre
 %{_sbindir}/groupadd -r %{ngx_user_group} &>/dev/null ||:
 %{_sbindir}/useradd -g %{ngx_user_group} -s /bin/false -r -c "user for %{ngx_user_group}" -d %{ngx_home} %{ngx_user_group} &>/dev/null ||:
-
-%if %{with systemd}
-%service_add_pre nginx.service
 %endif
 
 %files
@@ -406,6 +414,7 @@ copydocs %{nginx_rtmp_module_path} \
 %doc %{ngx_doc_dir}
 %if %{with systemd}
 %{_unitdir}/nginx.service
+%{_sysusersdir}/nginx.conf
 %else
 %{_sysconfdir}/init.d/%{pkg_name}
 %endif
