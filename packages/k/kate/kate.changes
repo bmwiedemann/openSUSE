@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Revert premature porting
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fix External Tool "Google Selected Text" (kde#416509)
+  * lspclient: avoid repeated restart of failing LSP server (kde#415847)
+  * try to fix embedding of icon for windows (kde#415260)
+  * document that the version is important for the choice of the syntax definition to load (kde#414997)
+  * Open/close and focus/defocus terminal using the same shortcuts as Dolphin (kde#414587)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:52 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

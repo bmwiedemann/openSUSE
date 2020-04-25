@@ -1,7 +1,7 @@
 #
 # spec file for package kate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,16 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-URL:            http://www.kde.org
+URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
+BuildRequires:  libgit2-devel
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -43,19 +40,20 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  libgit2-devel
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5ThreadWeaver)
+BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qt5Core) >= 5.10.0
 BuildRequires:  cmake(Qt5DBus) >= 5.10.0
 BuildRequires:  cmake(Qt5Script) >= 5.10.0
@@ -66,6 +64,10 @@ Requires:       %{name}-plugins = %{version}
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Kate is an advanced text editor for KDE.
@@ -115,12 +117,12 @@ plugins and data files for Kate and KWrite editors.
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_iconsdir}/hicolor/150x150/
 %dir %{_kf5_iconsdir}/hicolor/150x150/apps
-%dir %{_kf5_iconsdir}/hicolor/256x256/
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_iconsdir}/hicolor/310x310/
 %dir %{_kf5_iconsdir}/hicolor/310x310/apps
 %dir %{_kf5_iconsdir}/hicolor/44x44/
 %dir %{_kf5_iconsdir}/hicolor/44x44/apps
+%dir %{_kf5_iconsdir}/hicolor/256x256/
+%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_iconsdir}/hicolor/512x512/
 %dir %{_kf5_iconsdir}/hicolor/512x512/apps
 %doc %lang(en) %{_kf5_htmldir}/en/kate/
