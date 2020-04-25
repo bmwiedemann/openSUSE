@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 24 15:15:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 6.0.0
+  + New Features:
+    * Added async API
+  + Changes:
+    * Python 3.8 testing and support added
+    * Session.msg_id optimization
+    * Only cache ports if the cache_ports flag is set to True
+    * Removed direct dependency on pywin32 as this is now in jupyter core
+  + Fixes:
+    * Prevent two kernels to have the same ports
+  + Docs:
+    * Document the handling of error in do_execute
+  + Breaking changes:
+    * Dropped support for Python 2.7!
+- Implement tests via multibuild
+- Drop doc subpackage.  This was only around to resolve dependency
+  cycles in testing, which the multibuild now does.  Keeping up
+  with rapid changes in readthedocs was becoming difficult.
+
+-------------------------------------------------------------------
 Tue Nov 12 15:39:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 5.3.4

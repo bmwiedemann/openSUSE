@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,19 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
-Name:           python-jupyter-client
-Version:        5.3.4
+%define         skip_python2 1
+Name:           python-jupyter-client%{psuffix}
+Version:        6.0.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -38,11 +47,12 @@ Requires:       python-tornado >= 4.1
 Requires:       python-traitlets
 Provides:       python-jupyter_client = %{version}
 Obsoletes:      python-jupyter_client < %{version}
-%ifpython2
-Provides:       %{oldpython}-jupyter_client = %{version}
-Obsoletes:      %{oldpython}-jupyter_client < %{version}
-%endif
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -60,6 +70,8 @@ Group:          Development/Languages/Python
 Requires:       python3-jupyter-client = %{version}
 Provides:       jupyter-jupyter_client = %{version}
 Obsoletes:      jupyter-jupyter_client < %{version}
+Provides:       jupyter-jupyter-client-doc = %{version}
+Obsoletes:      jupyter-jupyter-client-doc < %{version}
 
 %description -n jupyter-jupyter-client
 This package contains the reference implementation of the Jupyter protocol.
@@ -77,9 +89,19 @@ This package provides the jupyter components.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
+%check
+pushd jupyter_client/tests
+%pytest
+popd
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %license COPYING.md
 %{python_sitelib}/jupyter_client-%{version}-py*.egg-info
@@ -91,5 +113,6 @@ This package provides the jupyter components.
 %{_bindir}/jupyter-kernel
 %{_bindir}/jupyter-kernelspec
 %{_bindir}/jupyter-run
+%endif
 
 %changelog
