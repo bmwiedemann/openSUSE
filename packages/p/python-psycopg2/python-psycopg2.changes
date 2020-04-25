@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 23 16:13:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.8.5 
+  - Fixed use of connection_factory and cursor_factory together
+    (ticket #1019).
+  - Added support for logging.LoggerAdapter in LoggingConnection
+    (ticket #1026).
+  - Column objects in cursor.description can be sliced (ticket
+    #1034).
+  - Added AIX support (ticket #1061).
+  - Fixed copy() of DictCursor rows (ticket #1073).
+
+-------------------------------------------------------------------
 Thu Mar 19 08:19:57 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - fix postgresql build dependency: pg_config is in postgresql-server-devel (bsc#1167541)

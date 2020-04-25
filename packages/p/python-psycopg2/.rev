@@ -304,4 +304,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment>- fix postgresql build dependency: pg_config is in postgresql-server-devel (bsc#1167541)</comment>
     <requestid>787714</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bf83440738d6012f5f28cd3aef9825e5</srcmd5>
+    <version>2.8.5</version>
+    <time>1587839282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796702</requestid>
+  </revision>
 </revisionlist>
