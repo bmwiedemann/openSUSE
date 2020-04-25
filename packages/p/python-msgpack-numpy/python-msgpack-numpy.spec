@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack-numpy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack-numpy
-Version:        0.4.4.3
+Version:        0.4.5
 Release:        0
 Summary:        Numpy data serialization library using msgpack
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lebedov/msgpack-numpy
 Source:         https://files.pythonhosted.org/packages/source/m/msgpack-numpy/msgpack-numpy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,6 +60,8 @@ sed -i -e '/^#!\//, 1d' msgpack_numpy.py
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/msgpack_numpy-%{version}-py*.egg-info
+%{python_sitelib}/msgpack_numpy.*
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
