@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Source99:       akonadi-server-rpmlintrc
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -73,15 +69,19 @@ Requires:       libqt5-sql-mysql
 Requires:       mysql
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
+# FIXME: Check if it's worth it
+Recommends:     kaccounts-integration
+Recommends:     kaccounts-providers
 Suggests:       mariadb
 Obsoletes:      akonadi5 < %{version}
 Provides:       akonadi5 = %{version}
 # Needed for users of unstable repositories
 Obsoletes:      akonadi < %{version}
 Obsoletes:      akonadi-runtime < %{version}
-# FIXME: Check if it's worth it
-Recommends:     kaccounts-integration
-Recommends:     kaccounts-providers
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package contains the data files of Akonadi, the KDE PIM storage
@@ -131,7 +131,7 @@ This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage s
 Summary:        akonadi server's SQlite plugin
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:sqlite3)
+Supplements:    (%{name} and sqlite3)
 
 %description sqlite
 Akonadi server's SQlite plugin.
