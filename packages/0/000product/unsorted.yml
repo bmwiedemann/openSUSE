@@ -2173,6 +2173,7 @@ unsorted:
   - cutmp3-doc 
   - cutterff 
   - cutterff-lang 
+  - cvise 
   - cvs-doc 
   - cwstudio 
   - cxref 
@@ -2833,6 +2834,7 @@ unsorted:
   - exempi-tools 
   - exercism 
   - exfat-utils 
+  - exfatprogs: [x86_64] 
   - exif 
   - exiftran 
   - eximon 
@@ -4449,6 +4451,7 @@ unsorted:
   - git-filter-repo 
   - git-lfs 
   - git-merge-changelog 
+  - git-mr 
   - git-p4 
   - git-remote-gcrypt 
   - git-review 
@@ -4643,6 +4646,8 @@ unsorted:
   - gnome-getting-started-docs-lang 
   - gnome-gmail-notifier 
   - gnome-gmail-notifier-lang 
+  - gnome-initial-setup 
+  - gnome-initial-setup-lang 
   - gnome-internet-radio-locator 
   - gnome-internet-radio-locator-lang 
   - gnome-keyring-sharp 
@@ -6374,7 +6379,6 @@ unsorted:
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
-  - jupyter-jupyter-client-doc 
   - jupyter-jupyter-contrib-nbextensions 
   - jupyter-jupyter-core 
   - jupyter-jupyter-full-width 
@@ -6410,7 +6414,6 @@ unsorted:
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
   - jupyter-nbformat 
-  - jupyter-nbformat-doc 
   - jupyter-nbinteract 
   - jupyter-nbpresent 
   - jupyter-notebook 
@@ -8152,7 +8155,8 @@ unsorted:
   - libavformat58-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif2 
+  - libavif2: [i586] 
+  - libavif3: [x86_64] 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
   - libavtp-devel 
@@ -9013,6 +9017,7 @@ unsorted:
   - libexe1 
   - libexempi-devel 
   - libexempi3-32bit: [x86_64] 
+  - libexfat0: [x86_64] 
   - libexif-devel 
   - libexif-devel-32bit: [x86_64] 
   - libexif-gtk 
@@ -12403,7 +12408,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-48 
+  - libvapoursynth-49 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -16023,7 +16028,7 @@ unsorted:
   - otrs-itsm 
   - otter-browser 
   - ovirt-guest-agent-common 
-  - ovmf-tools 
+  - ovmf-tools: [x86_64] 
   - ovnkube 
   - ovnkube-cni 
   - owasp-modsecurity-crs 
@@ -17954,16 +17959,12 @@ unsorted:
   - pluma-devel 
   - pluma-lang 
   - plymouth-devel 
-  - plymouth-plugin-fade-throbber 
   - plymouth-plugin-label-ft 
   - plymouth-plugin-script 
-  - plymouth-plugin-space-flares 
   - plymouth-plugin-tribar 
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
-  - plymouth-theme-fade-in 
   - plymouth-theme-script 
-  - plymouth-theme-solar 
   - plymouth-theme-spinfinity 
   - plymouth-theme-tribar 
   - plzip 
@@ -18342,6 +18343,7 @@ unsorted:
   - pulseview 
   - pumpa 
   - pure-ftpd 
+  - purge-kernels-service 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -18611,12 +18613,10 @@ unsorted:
   - python2-efl-examples 
   - python2-evemu 
   - python2-fedmsg 
-  - python2-flask-restplus 
   - python2-geopy 
   - python2-glean 
   - python2-gobject-Dee 
   - python2-google-cloud-storage 
-  - python2-gpsd 
   - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
@@ -18658,7 +18658,6 @@ unsorted:
   - python2-moviepy 
   - python2-mraa 
   - python2-napalm-asa 
-  - python2-neovim 
   - python2-net-snmp 
   - python2-newt 
   - python2-num2words 
@@ -18686,7 +18685,6 @@ unsorted:
   - python2-pysmb 
   - python2-python-cjson 
   - python2-python-dotenv 
-  - python2-raet 
   - python2-sanlock 
   - python2-setuptools 
   - python2-shutilwhich 
@@ -18695,7 +18693,6 @@ unsorted:
   - python2-sushy 
   - python2-tooz 
   - python2-tox-wheel 
-  - python2-ucsmsdk 
   - python2-unbound 
   - python2-upm 
   - python2-yaql 
@@ -18981,6 +18978,7 @@ unsorted:
   - python3-arrow 
   - python3-asciimatics 
   - python3-asdf 
+  - python3-asgiref 
   - python3-aspectlib 
   - python3-aspy.yaml 
   - python3-asteval 
@@ -20258,6 +20256,7 @@ unsorted:
   - python3-nagiosplugin 
   - python3-napalm 
   - python3-napalm-ansible 
+  - python3-napalm-arubaos-switch 
   - python3-napalm-asa 
   - python3-napalm-digineo-procurve 
   - python3-napalm-exos 
@@ -21033,6 +21032,7 @@ unsorted:
   - python3-scipy-gnu-hpc: [x86_64] 
   - python3-scipy_1_4_1-gnu-hpc: [x86_64] 
   - python3-scp 
+  - python3-screeninfo 
   - python3-scripttest 
   - python3-scrypt 
   - python3-scspell3k 
@@ -21512,6 +21512,7 @@ unsorted:
   - qemu-audio-sdl 
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
+  - qemu-uefi-aarch32: [x86_64] 
   - qgis 
   - qgis-devel 
   - qgis-plugin-grass 
@@ -23740,7 +23741,6 @@ unsorted:
   - telepathy-gabble-xmpp-console 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
-  - telepathy-haze 
   - telepathy-logger-devel 
   - telepathy-logger-qt5-devel 
   - telepathy-mission-control-devel 
@@ -23786,7 +23786,6 @@ unsorted:
   - termcap-32bit: [x86_64] 
   - terminator 
   - terminator-lang 
-  - terminfo-iterm 
   - terminology 
   - terminology-lang 
   - terminology-theme-dark 

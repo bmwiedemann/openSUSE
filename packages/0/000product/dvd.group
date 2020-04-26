@@ -667,8 +667,9 @@
     <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="glibc-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
-    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gmenudbusmenuproxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gmp-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="gnome-backgrounds" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1470,6 +1471,7 @@
     <package name="libKF5Contacts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5CoreAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Crash5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5DAV5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5DBusAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5DBusAddons5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5DNSSD5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1584,7 +1586,6 @@
     <package name="libKPimImportWizard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimItinerary5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimItinerary5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPimKDAV5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1804,7 +1805,7 @@
     <package name="libbrotlienc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbs2b0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbsd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libburn4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbytesize-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbytesize1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2277,7 +2278,7 @@
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdevplatform55" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libkerfuffle19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkerfuffle20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeybinder-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libkf5kdegames6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2722,7 +2723,7 @@
     <package name="libsmi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libsmi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libsmputils1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsnapper5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsnapper5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsndfile1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsnmp30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3337,7 +3338,6 @@
     <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="osc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="oxygen5-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="oxygen5-icon-theme-large" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="oxygen5-sounds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3707,7 +3707,6 @@
     <package name="pulseaudio-module-zeroconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pwgen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4549,8 +4548,8 @@
     <package name="slrn-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="smartmontools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="smp_utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="snapper-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="snapper-zypp-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="snmp-mibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="solid-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="solid-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4664,6 +4663,7 @@
     <package name="tepl-4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="terminfo-screen" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="texlive-lm-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5182,7 +5182,7 @@
     <package name="yast2-security" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-services-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-slp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="yast2-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="yast2-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-sound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2-squid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2-storage-ng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5494,6 +5494,7 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_apparmor-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5523,6 +5524,7 @@
     <package name="python3-virt-bootstrap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
+    <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-winbind-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
