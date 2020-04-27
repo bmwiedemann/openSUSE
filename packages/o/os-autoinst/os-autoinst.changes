@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:29:24 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1587738559.30bdb018:
+  * Dependencies: Remove Data::Dump, JSON, JSON::XS from spec
+  * Create and remove tempfiles in every test
+  * Dependencies: sort requires
+  * Dependencies: remove commas in spec
+
+-------------------------------------------------------------------
 Wed Apr 22 16:19:11 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1587572338.0c00bf0a:
