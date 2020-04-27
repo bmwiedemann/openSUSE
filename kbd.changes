@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 13:08:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- drop broken kbd command as well as guess_encoding (boo#1170067)
+- don't use subdirectory for legacy keymaps (boo#1166423)
+- use fdupes
+
+-------------------------------------------------------------------
 Tue Mar  3 02:25:10 CET 2020 - sbrabec@suse.com
 
 - Update to version 2.2.0:

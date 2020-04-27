@@ -777,4 +777,12 @@ Fix version typo:
     <comment></comment>
     <requestid>781687</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>7a90cc77c7dff1284ec2a2aa0fe7b273</srcmd5>
+    <version>2.2.0</version>
+    <time>1588022965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796365</requestid>
+  </revision>
 </revisionlist>

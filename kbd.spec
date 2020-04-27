@@ -21,6 +21,8 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%define legacy_folders amiga,atari,i386,include,mac,ppc,sun
+
 Name:           kbd
 Version:        2.2.0
 Release:        0
@@ -41,8 +43,6 @@ Source8:        sysconfig.console
 Source9:        sysconfig.keyboard
 Source11:       fbtest.c
 Source12:       fbtest.8
-Source13:       guess_encoding.pl
-Source14:       kbd.pl
 Source15:       cz-map.patch
 Source20:       kbdsettings
 Source21:       kbdsettings.service
@@ -73,6 +73,7 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  check-devel
 BuildRequires:  console-setup
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc >= 4.6
 BuildRequires:  pam-devel
@@ -278,8 +279,6 @@ install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 install -d %{buildroot}%{_distconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
-install -m 755 %{SOURCE13} %{buildroot}%{_bindir}/guess_encoding
-install -m 755 %{SOURCE14} %{buildroot}%{_bindir}/kbd
 #UsrMerge
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}/sbin
@@ -289,7 +288,6 @@ ln -s %{_bindir}/deallocvt %{buildroot}/bin
 ln -s %{_bindir}/dumpkeys %{buildroot}/bin
 ln -s %{_bindir}/fgconsole %{buildroot}/bin
 ln -s %{_bindir}/getunimap %{buildroot}/bin
-ln -s %{_bindir}/guess_encoding %{buildroot}/bin
 ln -s %{_bindir}/kbd_mode %{buildroot}/bin
 ln -s %{_bindir}/kbdinfo %{buildroot}/bin
 ln -s %{_bindir}/kbdrate %{buildroot}/bin
@@ -325,10 +323,6 @@ ln -s %{_bindir}/setkeycodes %{buildroot}/bin
 ln -s %{_bindir}/resizecons %{buildroot}/bin
 %endif
 #EndUsrMerge
-
-# Move original keymaps to legacy directory
-mkdir -p %{buildroot}%{kbd}/keymaps/legacy
-mv %{buildroot}%{kbd}/keymaps/{amiga,atari,i386,include,mac,ppc,sun} %{buildroot}%{kbd}/keymaps/legacy
 
 # Make sure Perl has a locale where uc/lc works for unicode codepoints
 # see e.g. https://perldoc.perl.org/perldiag.html#Wide-character-(U%2b%25X)-in-%25s
@@ -373,6 +367,8 @@ install -m0755 kbdsettings %{buildroot}%{_sbindir}/
 install -d %{buildroot}%{_prefix}/lib/systemd/system
 install -m0644 kbdsettings.service %{buildroot}%{_prefix}/lib/systemd/system
 
+%fdupes -s %{buildroot}%{_datadir}
+
 %find_lang %{name}
 
 %pre
@@ -412,7 +408,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_fillupdir}/sysconfig.console
 %{_fillupdir}/sysconfig.keyboard
 %{kbd}
-%exclude %{kbd}/keymaps/legacy
+%exclude %{kbd}/keymaps/{%{legacy_folders}}
 #UsrMerge
 /sbin/fbtest
 /bin/chvt
@@ -445,7 +441,6 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 /bin/unicode_start
 /bin/unicode_stop
 /bin/kbdrate
-/bin/guess_encoding
 /bin/clrunimap
 /bin/getunimap
 /bin/outpsfheader
@@ -487,8 +482,6 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_bindir}/unicode_start
 %{_bindir}/unicode_stop
 %{_bindir}/kbdrate
-%{_bindir}/guess_encoding
-%{_bindir}/kbd
 %{_bindir}/clrunimap
 %{_bindir}/getunimap
 %{_bindir}/outpsfheader
@@ -532,6 +525,6 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_sbindir}/kbdsettings
 
 %files legacy
-%{kbd}/keymaps/legacy
+%{kbd}/keymaps/{%{legacy_folders}}
 
 %changelog
