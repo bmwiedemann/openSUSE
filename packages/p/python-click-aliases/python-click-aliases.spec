@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-aliases
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-aliases
 Version:        1.0.1
 Release:        0
-License:        MIT
 Summary:        Command aliases for Click
-Url:            https://github.com/click-contrib/click-aliases
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/click-contrib/click-aliases
 Source:         https://files.pythonhosted.org/packages/source/c/click-aliases/click-aliases-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-click
+BuildArch:      noarch
 # SECTION test requirements
 # See https://github.com/click-contrib/click-aliases/issues/5
 # for problems with click 6.7 currently on Leap.
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-click
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,7 +52,8 @@ Command aliases for Click.
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# test_invalid fails with new click as the quotes in output changed from single to regular ones
+%pytest -k 'not test_invalid'
 
 %files %{python_files}
 %doc README.md
