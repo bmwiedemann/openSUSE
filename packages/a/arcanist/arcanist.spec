@@ -17,29 +17,27 @@
 
 
 Name:           arcanist
-Version:        0.0~git.20191118T203151~cc850163
+Version:        0.0~git.20200426T084008~b81818b2
 Release:        0
 Summary:        Command-line interface to Phabricator
 License:        Apache-2.0
-
 URL:            https://secure.phabricator.com/diffusion/ARC/
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE remove-arc-upgrade.patch -- Remove workflow/ArcanistUpgradeWorkflow.php
 Patch0:         remove-arc-upgrade.patch
-
-BuildArch:      noarch
+BuildRequires:  php7-curl
 BuildRequires:  php7-devel
+BuildRequires:  php7-json
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 Requires:       php7
 Requires:       php7-curl
 Requires:       php7-json
-Requires:       php7-libphutil
-
 Recommends:     bash-completion
-
 # /usr/bin/arc binary name conflicts
 Conflicts:      arc
+Provides:       php7-libphutil = %{version}
+Obsoletes:      php7-libphutil < %{version}
+BuildArch:      noarch
 
 %description
 Arcanist is the command-line tool for Phabricator.
@@ -60,30 +58,33 @@ rm -f src/workflow/ArcanistUpgradeWorkflow.php
 # Remove tests
 find src -name __tests__ -type d -print0 | xargs -0 rm -rf
 
+# Generate bash completion
+bin/arc shell-complete --generate
+
 %build
 
 %install
 # arcanist
 install -d %{buildroot}%{_datadir}/phabricator/%{name}
-cp -a bin/ resources/ scripts/ src/ %{buildroot}%{_datadir}/phabricator/%{name}/
+cp -a bin/ support/ resources/ scripts/ src/ %{buildroot}%{_datadir}/phabricator/%{name}/
 
 find %{buildroot}%{_datadir}/phabricator/%{name}/bin \
      %{buildroot}%{_datadir}/phabricator/%{name}/scripts -type f | \
-    xargs sed -i '1 s|/usr/bin/env\ php|/usr/bin/php7|'
+    xargs sed -i '1 s|%{_bindir}/env\ php|%{_bindir}/php7|'
 
 find %{buildroot}%{_datadir}/phabricator/%{name}/bin -type f | \
-    xargs sed -i '1 s|/usr/bin/env\ bash|/bin/bash|'
+    xargs sed -i '1 s|%{_bindir}/env\ bash|/bin/bash|'
 
 # symlink arc
 install -d -m 0755 %{buildroot}%{_bindir}
 ln -sf %{_datadir}/phabricator/%{name}/bin/arc %{buildroot}%{_bindir}/arc
 
 # bash completition
+
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions
-install -m 0644 resources/shell/bash-completion %{buildroot}%{_datadir}/bash-completion/completions/arc
+install -m 0644 support/shell/rules/bash-rules.sh %{buildroot}%{_datadir}/bash-completion/completions/arc
 
 %files
-%defattr(-,root,root,-)
 %doc NOTICE README.md
 %license LICENSE
 %{_bindir}/arc
