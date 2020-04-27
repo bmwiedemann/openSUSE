@@ -1,7 +1,7 @@
 #
 # spec file for package python-pgmagick
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  test
+%bcond_without  python2
 Name:           python-pgmagick
 Version:        0.7.4
 Release:        0
-Url:            https://github.com/hhatto/pgmagick/
 Summary:        Yet Another Python wrapper for GraphicsMagick
 License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/hhatto/pgmagick/
 Source:         https://files.pythonhosted.org/packages/source/p/pgmagick/pgmagick-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/hhatto/pgmagick/pull/47
 Patch0:         reproducible.patch
-BuildRequires:  boost-devel
-BuildRequires:  fdupes
-BuildRequires:  pkgconfig(GraphicsMagick++)
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_python-devel
-BuildRequires:  libboost_python3-devel
-%endif
-%if %{with test}
+BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(GraphicsMagick++)
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libboost_python3-devel
+%if %{with python2}
+BuildRequires:  libboost_python-devel
 %endif
-
+%else
+BuildRequires:  boost-devel
+%endif
 %python_subpackages
 
 %description
@@ -60,20 +61,15 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
 mkdir tester
 pushd tester
 cp -r ../test .
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -m unittest discover 
-}
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
 popd
 rm -r tester
-%endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pgmagick/
