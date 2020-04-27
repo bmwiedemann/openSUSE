@@ -31,4 +31,16 @@
     <comment>Build with tycho/maven so that it can be eclipse plugin</comment>
     <requestid>788460</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a873ac9e566f22e3df1c3a9e42cfd971</srcmd5>
+    <version>0.10.0</version>
+    <time>1588023558</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring back the old ant way of building in order to avoid this
+  package depending unnecessarily on eclipse/tycho
+- Keep still generation of bundle manifest and osgi(...)
+  requires and provides
+</comment>
+    <requestid>798216</requestid>
+  </revision>
 </revisionlist>

@@ -24,12 +24,14 @@ License:        EPL-1.0
 Group:          Development/Languages/Java
 URL:            http://www.swtchart.org/
 Source:         %{name}-%{version}.tar.xz
+Source1:        build.xml
+BuildRequires:  ant
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  tycho
-#!BuildIgnore:  libjawt.so(SUNWprivate_1.1)
-#!BuildIgnore:  libjawt.so(SUNWprivate_1.1)(64bit)
+BuildRequires:  java-devel
+BuildRequires:  javapackages-local
+BuildRequires:  sed
+BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -44,32 +46,25 @@ Developer documentation of SWT Chart.
 
 %prep
 %setup -q
-# Create the poms
-xmvn -o org.eclipse.tycho:tycho-pomgenerator-plugin:generate-poms -DgroupId=org.swtchart
-%{mvn_package} "::pom::" __noinstall
-%{mvn_package} :org.swtchart.example* __noinstall
-
-%{mvn_file} :{*} @1 %{name}/@1
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6
-%else
-	-Dsource=6
-%endif
+sed "s#SWTJAR#$(build-classpath swt)#g" <%{SOURCE1} >build.xml
+sed -i -e '/Classpath/d' org.swtchart/META-INF/MANIFEST.MF
+%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
 
 %install
-%mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
+mkdir -p %{buildroot}%{_javadir}
+install org.swtchart.jar %{buildroot}%{_javadir}
 
-install -dm 0755 -p %{buildroot}%{_javadir}
-install -pm 0644 org.swtchart/target/org.swtchart*.jar %{buildroot}%{_javadir}/org.swtchart.jar
-%fdupes -s %{buildroot}%{_datadir}
+%add_maven_depmap org.swtchart:org.swtchart:%{version} org.swtchart.jar
+
+mkdir -p %{buildroot}%{_javadocdir}/%{name}
+cp -r api/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%{_javadir}
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 
 %changelog

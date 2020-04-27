@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:03:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Bring back the old ant way of building in order to avoid this
+  package depending unnecessarily on eclipse/tycho
+- Keep still generation of bundle manifest and osgi(...)
+  requires and provides
+
+-------------------------------------------------------------------
 Wed Mar 25 10:51:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build using tycho/maven so that it can be used as eclipse plugin
