@@ -1,7 +1,7 @@
 #
 # spec file for package shared-python-startup
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source1:        LICENSE
 BuildRequires:  filesystem
 Supplements:    python(abi)
 Conflicts:      python3 < 3.8
-%if 0%{?suse_version} > 1200
+%if 0%{?suse_version} > 1315
 Conflicts:      (python2 without python2_split_startup)
 %else
 Conflicts:      python2 < 2.7.17
