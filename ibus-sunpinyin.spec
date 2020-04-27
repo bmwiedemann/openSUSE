@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-sunpinyin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           ibus-sunpinyin
 Version:        2.0.99
 Release:        0
 Summary:        Sunpinyin module for ibus
-License:        LGPL-2.1 or CDDL-1.0
+License:        LGPL-2.1-only OR CDDL-1.0
 Group:          System/I18n/Chinese
 Url:            https://github.com/sunpinyin/sunpinyin
 Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc1/sunpinyin-3.0.0-rc1.tar.gz
