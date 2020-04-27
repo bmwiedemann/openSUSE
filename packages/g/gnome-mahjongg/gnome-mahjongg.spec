@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mahjongg
-Version:        3.36.1
+Version:        3.36.2
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later

@@ -181,4 +181,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795051 from iznogood)</comment>
     <requestid>795204</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>03e2cead35d8de68804a5959b3e025f8</srcmd5>
+    <version>3.36.2</version>
+    <time>1588023813</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 797733 from iznogood)</comment>
+    <requestid>798346</requestid>
+  </revision>
 </revisionlist>
