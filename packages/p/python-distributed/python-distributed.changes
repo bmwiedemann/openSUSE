@@ -1,7 +1,149 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:23:42 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.15.0:
+  * Reinstate support for legacy @gen_cluster functions (GH#3738)
+    crusaderky
+  * Relax NumPy requirement in UCX (GH#3731) jakirkham
+  * Add Configuration Schema (GH#3696) Matthew Rocklin
+  * Reuse CI scripts for local installation process (GH#3698)
+    crusaderky
+  * Use PeriodicCallback class from tornado (GH#3725) James Bourbeau
+  * Add remote_python option in ssh cmd (GH#3709) Abdulelah Bin
+    Mahfoodh
+  * Configurable polling interval for cluster widget (GH#3723) Julia
+    Signell
+  * Fix copy-paste in docs (GH#3728) Julia Signell
+  * Replace gen.coroutine with async-await in tests (GH#3706)
+    crusaderky
+  * Fix flaky test_oversubscribing_leases (GH#3726) Florian Jetter
+  * Add batch_size to Client.map (GH#3650) Tom Augspurger
+  * Adjust semaphore test timeouts (GH#3720) Florian Jetter
+  * Dask-serialize dicts longer than five elements (GH#3689) Richard J
+    Zamora
+  * Force threads_per_worker (GH#3715) crusaderky
+  * Idempotent semaphore acquire with retries (GH#3690) Florian Jetter
+  * Always use readinto in TCP (GH#3711) jakirkham
+  * Avoid DeprecationWarning from pandas (GH#3712) Tom Augspurger
+  * Allow modification of distributed.comm.retry at runtime (GH#3705)
+    Florian Jetter
+  * Do not log an error on unset variable delete (GH#3652) Jonathan
+    J. Helmus
+  * Add remote_python keyword to the new SSHCluster (GH#3701)
+    Abdulelah Bin Mahfoodh
+  * Replace Example with Examples in docstrings (GH#3697) Matthew
+    Rocklin
+  * Add Cluster __enter__ and __exit__ methods (GH#3699) Matthew
+    Rocklin
+  * Fix propagating inherit config in SSHCluster for non-bash shells
+    (GH#3688) Abdulelah Bin Mahfoodh
+  * Add Client.wait_to_workers to Client autosummary table (GH#3692)
+    James Bourbeau
+  * Replace Bokeh Server with Tornado HTTPServer (GH#3658) Matthew
+    Rocklin
+  * Fix dask-ssh after removing local-directory from dask_scheduler
+    cli (GH#3684) Abdulelah Bin Mahfoodh
+  * Support preload modules in Nanny (GH#3678) Matthew Rocklin
+  * Refactor semaphore internals: make _get_lease synchronous
+    (GH#3679) Lucas Rademaker
+  * Don’t make task graphs too big (GH#3671) Martin Durant
+  * Pass through connection/listen_args as splatted keywords (GH#3674)
+    Matthew Rocklin
+  * Run preload at import, start, and teardown (GH#3673) Matthew
+    Rocklin
+  * Use relative URL in scheduler dashboard (GH#3676) Nicholas Smith
+  * Expose Security object as public API (GH#3675) Matthew Rocklin
+  * Add zoom tools to profile plots (GH#3672) James Bourbeau
+  * Update Scheduler.rebalance return value when data is missing
+    (GH#3670) James Bourbeau
+
+-------------------------------------------------------------------
 Thu Apr 23 11:08:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove py2 deps as the package is py3 only
+
+-------------------------------------------------------------------
+Sat Apr 11 21:46:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.14.0:
+  * Enable more UCX tests (GH#3667) jakirkham
+  * Remove openssl 1.1.1d pin for Travis (GH#3668) Jonathan J. Helmus
+  * More documentation for Semaphore (GH#3664) Florian Jetter
+  * Get CUDA context to finalize Numba DeviceNDArray (GH#3666)
+    jakirkham
+  * Add Resouces option to get_task_stream and call output_file
+    (GH#3653) Prasun Anand
+  * Add Semaphore extension (GH#3573) Lucas Rademaker
+  * Replace ncores with nthreads in work stealing tests (GH#3615)
+    James Bourbeau
+  * Clean up some test warnings (GH#3662) Matthew Rocklin
+  * Write “why killed” docs (GH#3596) Martin Durant
+  * Update Python version checking (GH#3660) James Bourbeau
+  * Add newlines to ensure code formatting for retire_workers
+    (GH#3661) Rami Chowdhury
+  * Clean up performance report test (GH#3655) Matthew Rocklin
+  * Avoid diagnostics time in performance report (GH#3654) Matthew
+    Rocklin
+  * Introduce config for default task duration (GH#3642) Gabriel
+    Sailer
+  * UCX simplify receiving frames in comm (GH#3651) jakirkham
+  * Bump checkout GitHub action to v2 (GH#3649) James Bourbeau
+  * Handle exception in faulthandler (GH#3646) Jacob Tomlinson
+  * Add prometheus metric for suspicious tasks (GH#3550) Gabriel
+    Sailer
+  * Remove local-directory keyword (GH#3620) Prasun Anand
+  * Don’t create output Futures in Client when there are mixed Client
+    Futures (GH#3643) James Bourbeau
+  * Add link to contributing.md (GH#3621) Prasun Anand
+  * Update bokeh dependency in CI builds (GH#3637) James Bourbeau
+
+-------------------------------------------------------------------
+Sat Mar 28 16:48:48 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.0:
+  * UCX synchronize default stream only on CUDA frames (GH#3638) Peter
+    Andreas Entschev
+  * Add as_completed.clear method (GH#3617) Matthew Rocklin
+  * Drop unused line from pack_frames_prelude (GH#3634) John Kirkham
+  * Add logging message when closing idle dask scheduler (GH#3632)
+    Matthew Rocklin
+  * Include frame lengths of CUDA objects in header["lengths"]
+    (GH#3631) John Kirkham
+  * Ensure Client connection pool semaphore attaches to the Client
+    event loop (GH#3546) James Bourbeau
+  * Remove dead stealing code (GH#3619) Florian Jetter
+  * Check nbytes and types before reading data (GH#3628) John Kirkham
+  * Ensure that we don’t steal blacklisted fast tasks (GH#3591)
+    Florian Jetter
+  * Support async Listener.stop functions (GH#3613) Matthew Rocklin
+  * Add str/repr methods to as_completed (GH#3618) Matthew Rocklin
+  * Add backoff to comm connect attempts. (GH#3496) Matthias Urlichs
+  * Make Listeners awaitable (GH#3611) Matthew Rocklin
+  * Increase number of visible mantissas in dashboard plots (GH#3585)
+    Scott Sievert
+  * Pin openssl to 1.1.1d for Travis (GH#3602) Jacob Tomlinson
+  * Replace tornado.queues with asyncio.queues (GH#3607) James
+    Bourbeau
+  * Remove dill from CI environments (GH#3608) Loïc Estève
+  * Fix linting errors (GH#3604) James Bourbeau
+  * Synchronize default CUDA stream before UCX send/recv (GH#3598)
+    Peter Andreas Entschev
+  * Add configuration for Adaptive arguments (GH#3509) Gabriel Sailer
+  * Change Adaptive docs to reference adaptive_target (GH#3597) Julia
+    Signell
+  * Optionally compress on a frame-by-frame basis (GH#3586) Matthew
+    Rocklin
+  * Add Python version to version check (GH#3567) James Bourbeau
+  * Import tlz (GH#3579) John Kirkham
+  * Pin numpydoc to avoid double escaped * (GH#3530) Gil Forsyth
+  * Avoid performance_report crashing when a worker dies mid-compute
+    (GH#3575) Krishan Bhasin
+  * Pin bokeh in CI builds (GH#3570) James Bourbeau
+  * Disable fast fail on GitHub Actions Windows CI (GH#3569) James
+    Bourbeau
+  * Fix typo in Client.shutdown docstring (GH#3562) John Kirkham
+  * Add local_directory option to dask-ssh (GH#3554) Abdulelah Bin
+    Mahfoodh
 
 -------------------------------------------------------------------
 Sun Mar  8 19:04:45 UTC 2020 - Arun Persaud <arun@gmx.de>

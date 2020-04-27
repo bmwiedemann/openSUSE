@@ -348,4 +348,12 @@
     <comment>- Remove py2 deps as the package is py3 only</comment>
     <requestid>796505</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ecb2a47d9c1c5b6552dbadb403e21e05</srcmd5>
+    <version>2.15.0</version>
+    <time>1588023455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797794</requestid>
+  </revision>
 </revisionlist>
