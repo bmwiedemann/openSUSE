@@ -18,15 +18,14 @@
 
 %bcond_with extras
 Name:           log4j
-Version:        2.13.0
+Version:        2.13.2
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
 URL:            http://logging.apache.org/%{name}
 Source0:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz
 Source1:        http://archive.apache.org/dist/logging/%{name}/%{version}/apache-%{name}-%{version}-src.tar.gz.asc
-Patch1:         logging-log4j-LOG4J2-2745-LOG4J2-2744-slf4j.patch
-Patch2:         logging-log4j-Remove-unsupported-EventDataConverter.patch
+Patch1:         logging-log4j-Remove-unsupported-EventDataConverter.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -208,6 +207,7 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-appserver
 %pom_disable_module %{name}-spring-cloud-config
 %pom_disable_module %{name}-kubernetes
+%pom_disable_module %{name}-jpl
 
 %pom_remove_dep -r :jackson-dataformat-yaml
 %pom_remove_dep -r :jackson-dataformat-xml

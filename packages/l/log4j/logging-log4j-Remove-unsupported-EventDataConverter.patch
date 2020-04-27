@@ -74,7 +74,7 @@ index 620232a..0000000
 -    }
 -}
 diff --git a/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java b/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
-index ec4decb..21cbbb6 100644
+index 1fa8080..90cfe4e 100644
 --- a/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
 +++ b/log4j-slf4j-impl/src/main/java/org/apache/logging/slf4j/Log4jLogger.java
 @@ -27,9 +27,7 @@ import org.apache.logging.log4j.message.Message;
@@ -87,44 +87,37 @@ index ec4decb..21cbbb6 100644
  import org.slf4j.impl.StaticMarkerBinder;
  import org.slf4j.spi.LocationAwareLogger;
  
-@@ -41,17 +39,11 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
-     public static final String FQCN = Log4jLogger.class.getName();
+@@ -39,18 +37,13 @@ import org.slf4j.spi.LocationAwareLogger;
+ public class Log4jLogger implements LocationAwareLogger, Serializable {
  
+     public static final String FQCN = Log4jLogger.class.getName();
+-
      private static final long serialVersionUID = 7869000638091304316L;
 -    private static final Marker EVENT_MARKER = MarkerFactory.getMarker("EVENT");
+-    private static final EventDataConverter CONVERTER = createConverter();
+ 
 -    private final boolean eventLogger;
      private transient ExtendedLogger logger;
      private final String name;
--    private transient EventDataConverter converter;
--
+ 
      public Log4jLogger(final ExtendedLogger logger, final String name) {
          this.logger = logger;
 -        this.eventLogger = "EventLogger".equals(name);
          this.name = name;
--        this.converter = createConverter();
      }
  
-     @Override
-@@ -363,9 +355,7 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
+@@ -363,9 +356,7 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
              return;
          }
          final Message msg;
--        if (eventLogger && marker != null && marker.contains(EVENT_MARKER) && converter != null) {
--            msg = converter.convertEvent(message, params, throwable);
+-        if (CONVERTER != null && eventLogger && marker != null && marker.contains(EVENT_MARKER)) {
+-            msg = CONVERTER.convertEvent(message, params, throwable);
 -        } else if (params == null) {
 +        if (params == null) {
              msg = new SimpleMessage(message);
          } else {
              msg = new ParameterizedMessage(message, params, throwable);
-@@ -400,7 +390,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
-         // always perform the default de-serialization first
-         aInputStream.defaultReadObject();
-         logger = LogManager.getContext().getLogger(name);
--        converter = createConverter();
-     }
- 
-     /**
-@@ -411,15 +400,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
+@@ -410,15 +401,6 @@ public class Log4jLogger implements LocationAwareLogger, Serializable {
          aOutputStream.defaultWriteObject();
      }
  
@@ -292,6 +285,3 @@ index a64bdfa..07a2be6 100644
      <Logger name="org.apache.logging.log4j.test2" level="debug" additivity="false">
        <AppenderRef ref="File"/>
      </Logger>
--- 
-2.23.0
-
