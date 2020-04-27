@@ -1,7 +1,7 @@
 #
 # spec file for package product-builder-plugin-Tumbleweed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           product-builder-plugin-Tumbleweed
 Summary:        openSUSE - KIWI Image System
 License:        GPL-2.0-or-later
 Group:          System/Management
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Source:         product-builder-plugins-%version.tar.xz
 Provides:       product-builder-plugin = %version-%release
@@ -57,8 +57,8 @@ make buildroot="%{buildroot}" version="tumbleweed" install
 %dir %{_datadir}/kiwi
 %dir %{_datadir}/kiwi/modules
 %dir %{_datadir}/kiwi/modules/plugins
-%dir %{_datadir}/kiwi/modules/plugins/suse-tumbleweed
-%{_datadir}/kiwi/modules/plugins/suse-tumbleweed/*.pm
-%config(noreplace) %{_datadir}/kiwi/modules/plugins/suse-tumbleweed/*.ini
+%dir %{_datadir}/kiwi/modules/plugins/tumbleweed
+%{_datadir}/kiwi/modules/plugins/tumbleweed/*.pm
+%config(noreplace) %{_datadir}/kiwi/modules/plugins/tumbleweed/*.ini
 
 %changelog
