@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:38:54 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200426.be575d6:
+  * Update build matrix.
+  * Test both LLVM 9 and LLVM 10.
+  * Enable non-type-temp-arg.cpp test (csmith-project/creduce#212).
+  * handle DREs coming from template instantiations
+  * don't call EvaluateAsInt on dependent expressions
+  * Update documentation for latest FreeBSD.
+  * Change logic deciding which clang libs to link with clang_delta
+  * Switch to lib names exported from ClangConfig.cmake
+  * Support multiple passes for --remove-pass option.
+  * Add 2 tests for clang_delta's try-catch pass.
+
+-------------------------------------------------------------------
 Thu Apr 23 15:50:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Use more modern macros
