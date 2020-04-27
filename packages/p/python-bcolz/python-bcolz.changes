@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 06:11:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only BuildRequire python-mock under Python 2. 
+
+-------------------------------------------------------------------
 Mon Aug 13 14:12:59 UTC 2018 - mcepl@suse.com
 
 - Remove dependency on unittest2

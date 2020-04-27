@@ -1,7 +1,7 @@
 #
 # spec file for package python-bcolz
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch %{ix86} x86_64
 %bcond_without tests
 %else
 %bcond_with tests
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-bcolz
 Version:        1.2.1
 Release:        0
 Summary:        Columnar and compressed data containers
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/Blosc/bcolz
+URL:            https://github.com/Blosc/bcolz
 Source:         https://files.pythonhosted.org/packages/source/b/bcolz/bcolz-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.22}
 BuildRequires:  %{python_module devel}
@@ -37,20 +36,19 @@ BuildRequires:  %{python_module numpy-devel >= 1.8}
 BuildRequires:  %{python_module setuptools > 18.0}
 BuildRequires:  %{python_module setuptools_scm > 1.5.4}
 BuildRequires:  %{python_module xml}
-BuildRequires:  blosc-devel >=  1.8.0
+BuildRequires:  blosc-devel >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-%if %{with tests}
-BuildRequires:  python-mock
-%endif
 Requires:       python-numpy >= 1.8
 Requires:       python-xml
 Recommends:     python-numexpr >= 2.5.2
 Recommends:     python-pandas
 Recommends:     python-tables
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
+%if %{with tests} && %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
@@ -85,7 +83,6 @@ popd
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc ANNOUNCE.rst README.rst RELEASE_NOTES.rst THANKS.rst
 %license LICENSES/*
 %{python_sitearch}/bcolz
