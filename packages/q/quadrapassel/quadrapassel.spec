@@ -17,7 +17,7 @@
 
 
 Name:           quadrapassel
-Version:        3.36.00
+Version:        3.36.02
 Release:        0
 Summary:        Tetris Game for GNOME
 License:        GPL-2.0-or-later
