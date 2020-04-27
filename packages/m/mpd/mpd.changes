@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 25 18:01:18 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.21.23
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.23/NEWS
+  * protocol: add tag fallback for AlbumSort
+  * storage
+    * curl: fix corrupt "href" values in the presence of XML entities
+    * curl: unescape "href" values
+  * input
+    * nfs: fix crash bug
+    * nfs: fix freeze bug on reconnect
+  * decoder: gme: adapt to API change in the upcoming version 0.7.0
+  * output: alsa: implement channel mapping for 5.0 and 7.0
+  * player: drain: outputs at end of song in "single" mode
+
+-------------------------------------------------------------------
 Sat Apr  4 22:04:54 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.21.22
