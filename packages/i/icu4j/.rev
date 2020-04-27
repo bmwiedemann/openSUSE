@@ -132,4 +132,35 @@
 </comment>
     <requestid>791183</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccb926e2de225b91640959e90af4ec8f</srcmd5>
+    <version>67.1</version>
+    <time>1588022991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 67.1
+  * Unicode 13 (ICU-20893, same as in ICU 66)
+    + Total of 5930 new characters
+    + 4 new scripts
+    + 55 new emoji characters, plus additional new sequences
+    + New CJK extension, first characters in plane 3: U+30000..U+3134A
+  * CLDR 37
+    + New language at Modern coverage: Nigerian Pidgin
+    + New languages at Basic coverage: Fulah (Adlam), Maithili,
+      Manipuri, Santali, Sindhi (Devanagari), Sundanese
+    + Region containment: EU no longer includes GB
+    + Unicode 13 root collation data and Chinese data for collation and transliteration
+  * DateTimePatternGenerator now obeys the &quot;hc&quot; preference in the locale identifier (ICU-20442)
+  * Various other improvements for ECMA-402 conformance
+  * Number skeletons have a new &quot;concise&quot; form that can be used in MessageFormat strings (ICU-20418)
+  * Currency formatting options for formal and other currency display name variants (ICU-20854)
+  * ListFormatter: new public API to select the style &amp; type (ICU-12863)
+  * ListFormatter now selects the proper “and”/“or” form for Spanish &amp; Hebrew (ICU-21016)
+  * Locale ID canonicalization upgraded to implement the complete CLDR spec (ICU-20834, ICU-20272)
+  * LocaleMatcher: New option to ignore one-way matches (ICU-20936),
+    and other tweaks to the code (ICU-20916, ICU-20917) and data (from CLDR)
+  * acceptLanguage() reimplemented via LocaleMatcher (ICU-20700)
+  * Data build tool: tzdbNames.res moved from the &quot;zone_tree&quot; category to the &quot;zone_supplemental&quot; category (ICU-21073)
+</comment>
+    <requestid>796522</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 #
 
 
-%global majorver 66
+%global majorver 67
 %global minorver 1
 Name:           icu4j
 Version:        %{majorver}.%{minorver}
