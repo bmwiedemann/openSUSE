@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:30:33 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(Archive::Tar)
+- Added dependency perl(Carp)
+- Added dependency perl(constant)
+- Added dependency perl(Cwd)
+- Added dependency perl(Data::Dump)
+- Added dependency perl(Exporter)
+- Added dependency perl(File::Find)
+- Added dependency perl(File::Temp)
+- Added dependency perl(List::MoreUtils)
+- Added dependency perl(Mojo::Base)
+- Added dependency perl(Mojo::File)
+- Added dependency perl(Mojo::JSON)
+- Added dependency perl(Mojo::UserAgent)
+- Added dependency perl(Mojo::Util)
+- Added dependency perl(parent)
+- Added dependency perl(POSIX)
+- Added dependency perl(Regexp::Common)
+- Added dependency perl(Storable)
+- Added dependency perl(strict)
+- Added dependency perl(Term::ANSIColor)
+- Added dependency perl(Time::HiRes)
+- Added dependency perl(utf8)
+- Added dependency perl(version)
+- Added dependency perl(warnings)
+
+-------------------------------------------------------------------
 Fri Feb 21 19:04:13 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(Tie::IxHash)
