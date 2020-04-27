@@ -26,6 +26,13 @@ Source:         ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{version}.tar.
 Patch1:         0001-sof-bdw-rt5677-initial-port-to-UCM2.patch
 Patch2:         0002-ucm2-treewide-JackHWMute-fixes.patch
 Patch3:         0003-sof-hda-dsp-Support-systems-without-integrated-graph.patch
+Patch4:         0004-hda-dsp-add-basic-ucm-config.patch
+Patch5:         0005-update-README-files.patch
+Patch6:         0006-bytcr-rt5651-Fix-dmic-check-in-HiFi-Components.conf.patch
+Patch7:         0007-chtrt5645-Add-ASUSTeKCOMPUTERINC.-T100HAN-1.0-symlin.patch
+Patch8:         0008-chtrt5645-Add-MEDION-E1239TMD60568-0.1-Wingman.conf-.patch
+Patch9:         0009-chtrt5645-Remove-bogus-JackHWMute-settings.patch
+Patch10:        0010-sof-hda-dsp-change-Headphones2-to-Mic2.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -37,6 +44,13 @@ This package contains the profiles files for ALSA UCM (Use Case Manager).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 

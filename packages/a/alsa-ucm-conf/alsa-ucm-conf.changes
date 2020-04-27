@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:04:59 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  HDA SOF DSP support, Intel Atom profiles, etc
+  0004-hda-dsp-add-basic-ucm-config.patch
+  0005-update-README-files.patch
+  0006-bytcr-rt5651-Fix-dmic-check-in-HiFi-Components.conf.patch
+  0007-chtrt5645-Add-ASUSTeKCOMPUTERINC.-T100HAN-1.0-symlin.patch
+  0008-chtrt5645-Add-MEDION-E1239TMD60568-0.1-Wingman.conf-.patch
+  0009-chtrt5645-Remove-bogus-JackHWMute-settings.patch
+  0010-sof-hda-dsp-change-Headphones2-to-Mic2.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 14:42:51 CET 2020 - tiwai@suse.de
 
 - Update to alsa-ucm-conf 1.2.2:
