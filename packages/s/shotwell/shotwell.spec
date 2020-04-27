@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Shotwell
 
 Source0:        https://download.gnome.org/sources/%{name}/0.30/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
+# PATCH-FIX-UPSTREAM shotwell-Make_fatal-warnings_an_option.patch -- Make fatal-warnings an option
+Patch0:         shotwell-Make_fatal-warnings_an_option.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
