@@ -134,6 +134,9 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 # Configure Raspberry Pi specifics
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"RaspberryPi"* ]]; then
+        # Also show WLAN interfaces in /etc/issue
+        baseUpdateSysConfig /etc/sysconfig/issue-generator NETWORK_INTERFACE_REGEX '^[bew]'
+
 	# Add necessary kernel modules to initrd (will disappear with bsc#1084272)
 	echo 'add_drivers+=" bcm2835_dma dwc2 "' > /etc/dracut.conf.d/raspberrypi_modules.conf
 
