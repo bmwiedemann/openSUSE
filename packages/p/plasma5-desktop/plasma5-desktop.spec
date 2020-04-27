@@ -39,6 +39,8 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-krdb-Drop-GTK2-colour-exporting.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel

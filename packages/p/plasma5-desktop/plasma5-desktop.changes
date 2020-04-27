@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 13:21:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix GTK2 application appearance (kde#412331, boo#1169968):
+  * 0001-krdb-Drop-GTK2-colour-exporting.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:
