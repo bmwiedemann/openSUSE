@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:48:39 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+
+- update to version 0.1.1:
+  * no changelog available
+
+-------------------------------------------------------------------
 Wed Nov 13 19:11:00 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Make python3-only because jupyterlab is python3-only
