@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-public_suffix
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-public_suffix
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 %define mod_name public_suffix
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://simonecarletti.com/code/publicsuffix-ruby
+URL:            https://simonecarletti.com/code/publicsuffix-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Domain name parser based on the Public Suffix List
