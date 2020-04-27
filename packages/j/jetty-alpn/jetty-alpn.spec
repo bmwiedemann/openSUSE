@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-alpn
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/jetty-project/jetty-alpn
 Source0:        https://github.com/jetty-project/%{name}/archive/alpn-project-%{version}.tar.gz
 Patch0:         Unshade-alpn-api.patch
+Patch1:         no-nullsession.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.eclipse.jetty.alpn:alpn-api)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-parent:pom:)
-BuildConflicts: java-devel >= 9
+BuildConflicts: java-devel >= 9 java-headless >= 9 java >= 9
 BuildArch:      noarch
 
 %description
@@ -51,6 +52,8 @@ This package contains the API documentation for %{name}.
 # unshade jetty-alpn-api
 %patch0 -p1
 %pom_remove_plugin -r :maven-shade-plugin
+
+%patch1 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 
