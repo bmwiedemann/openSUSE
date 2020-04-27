@@ -117,4 +117,13 @@
 pypi works again now (at least for me)</comment>
     <requestid>788522</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d84af572abf552caef28fb9f45d83d4</srcmd5>
+    <version>0.12</version>
+    <time>1588023413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.12:
+ - Use Public Suffix list instead of deprecated Mozilla's MXR.</comment>
+    <requestid>797840</requestid>
+  </revision>
 </revisionlist>
