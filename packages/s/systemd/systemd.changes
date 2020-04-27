@@ -16,6 +16,9 @@ Thu Apr 23 14:17:31 UTC 2020 - Franck Bui <fbui@suse.com>
   64fdacd5f1 user-util: rework how we validate user names (bsc#1170272)
   [...]
 
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c5aa158173ced05201182d1cc18632a25cf43b94...08cd65ac385c884ed6e4bd71128a0796f56ecd17
+  
 -------------------------------------------------------------------
 Thu Apr 23 14:00:42 UTC 2020 - Franck Bui <fbui@suse.com>
 
