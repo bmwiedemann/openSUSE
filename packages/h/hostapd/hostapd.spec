@@ -1,7 +1,7 @@
 #
 # spec file for package hostapd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        https://w1.fi/releases/hostapd-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
+Patch1:         CVE-2019-16275.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -48,6 +49,7 @@ authentication via any ethernet driver.
 %prep
 %setup -q
 cp %{SOURCE3} hostapd/.config
+%autopatch -p1
 
 %build
 cd hostapd
