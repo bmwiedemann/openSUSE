@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:54:33 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.0
+
+  ### Features
+
+  * Allow more CSS length units: "ch", "vw", "vh", "Q", "lh", "vmin", "vmax". [#178] (Thanks, @JuanitoFatas!)
+
+
+  ### Fixes
+
+  * Remove comments from `Loofah::HTML::Document`s that exist outside the `html` element. [#80]
+
+
+  ### Other changes
+
+  * Gem metadata being set [#181] (Thanks, @JuanitoFatas!)
+  * Test files removed from gem file [#180,#166,#159] (Thanks, @JuanitoFatas and @greysteil!)
+
+-------------------------------------------------------------------
 Thu Nov 28 07:22:05 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.0
