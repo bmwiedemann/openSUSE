@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:01:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.8.0:
+  - Lua 5.4 support
+  - lfs.link and lfs.symlinkattributes now work on Windows
+  - MACOSX_DEPLOYMENT_TARGET is configurable in the Makefile
+  - Fallback to _POSIX_PATH_MAX when MAXPATHLEN is not avaliable
+  - Fixed memory leak in case of realloc failure
+
+-------------------------------------------------------------------
 Sun Dec 24 19:30:26 UTC 2017 - avindra@opensuse.org
 
 - Fix target folder name in tarball

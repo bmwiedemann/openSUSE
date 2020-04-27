@@ -32,4 +32,17 @@
     <comment></comment>
     <requestid>559803</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f6556acaa72c42b6e221e3be915f972</srcmd5>
+    <version>1.8.0</version>
+    <time>1588022982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  - Lua 5.4 support
+  - lfs.link and lfs.symlinkattributes now work on Windows
+  - MACOSX_DEPLOYMENT_TARGET is configurable in the Makefile
+  - Fallback to _POSIX_PATH_MAX when MAXPATHLEN is not avaliable
+  - Fixed memory leak in case of realloc failure</comment>
+    <requestid>796457</requestid>
+  </revision>
 </revisionlist>
