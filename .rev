@@ -254,4 +254,14 @@ I will review and accept later; your review is welcome. (forwarded request 18401
     <comment></comment>
     <requestid>769414</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>10d85fa6bb6c2839d925b8bf8d0d75b3</srcmd5>
+    <version>2.23.2815.102</version>
+    <time>1588023113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update mozc.spec: Drop the is_opensuse macro to eliminate in 
+  behavior in between SLE-15 and openSUSE Leap (jsc#SLE-11737). 
+</comment>
+    <requestid>796234</requestid>
+  </revision>
 </revisionlist>
