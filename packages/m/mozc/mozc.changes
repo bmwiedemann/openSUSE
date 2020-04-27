@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 05:33:17 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update mozc.spec: Drop the is_opensuse macro to eliminate in 
+  behavior in between SLE-15 and openSUSE Leap (jsc#SLE-11737). 
+
+-------------------------------------------------------------------
 Sun Feb  2 03:01:07 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Upstream update to 2.23.2815

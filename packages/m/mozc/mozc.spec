@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,7 @@
 
 
 %define with_fcitx 1
-%if !0%{?is_opensuse}
-%define with_fcitx 0
-%endif
+
 %if %{with_fcitx}
 %define fcitx_icon_dir %{_datadir}/fcitx/mozc/icon/
 %define fcitx_addon_dir %{_datadir}/fcitx/addon/
