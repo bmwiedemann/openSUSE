@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-autoprefixer-rails
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-autoprefixer-rails
-Version:        9.7.4
+Version:        9.7.6
 Release:        0
 %define mod_name autoprefixer-rails
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/ai/autoprefixer-rails
+URL:            https://github.com/ai/autoprefixer-rails
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Parse CSS and add vendor prefixes to CSS rules usingvalues from the

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 13:23:09 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 9.7.6
+
+  * Revert -webkit-stretch fix.
+
+-------------------------------------------------------------------
 Mon Jan 27 12:40:47 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 9.7.4
