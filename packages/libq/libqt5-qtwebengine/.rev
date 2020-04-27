@@ -579,4 +579,13 @@
     <comment>- Add fix1163766.patch to fix opensuse-welcome on i686 (boo#1163766)</comment>
     <requestid>792653</requestid>
   </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>ff10bb41ef520184d5db522671f8f3f6</srcmd5>
+    <version>5.14.1</version>
+    <time>1588023033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add icu-v67.patch to fix compilation with icu v67, this is a backport
+  of https://github.com/v8/v8/commit/3f8dc4b2e5baf77b463334c769af85b79d8c1463</comment>
+    <requestid>797111</requestid>
+  </revision>
 </revisionlist>

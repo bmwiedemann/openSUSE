@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 10:19:13 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add icu-v67.patch to fix compilation with icu v67, this is a backport
+  of https://github.com/v8/v8/commit/3f8dc4b2e5baf77b463334c769af85b79d8c1463 
+
+-------------------------------------------------------------------
 Thu Apr  9 08:21:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix1163766.patch to fix opensuse-welcome on i686 (boo#1163766)
