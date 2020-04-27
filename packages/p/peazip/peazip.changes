@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 27 14:01:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.2.1
+  * improve and fix archive creation features introduced in
+    the previous release
+    + save advanced options
+    + save and load custom compression profiles
+    + customize compression presets
+  * it is now possible to directly add files to encrypted 7z
+    archive from context menu
+  * new SMART disk iformation tool is available in File Manager
+    > System tools.
+
+-------------------------------------------------------------------
 Wed Apr  8 10:31:44 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.2.0
