@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-initial-setup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           gnome-initial-setup
-Version:        3.36.1
+Version:        3.36.2
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Url:            https://wiki.gnome.org/Design/OS/InitialSetup
+URL:            https://wiki.gnome.org/Design/OS/InitialSetup
 Source0:        https://download.gnome.org/sources/gnome-initial-setup/3.36/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-SLE gnome-initial-setup-smarter.patch FATE#325763 FATE#321126 boo#1067288 bnc#1029083 qzhao@suse.com -- Investigate gnome-initial-setup, and make a Smarter gnome initial configuration.
 Patch0:         gnome-initial-setup-smarter.patch
+
 BuildRequires:  krb5-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -69,10 +70,9 @@ Initial assistant, helping you to get the system up and running.
 
 %prep
 %setup -q
-%if !0%{?is_opensuse}
+%if 0%{?sle_version} >= 150200
 %patch0 -p1
 %endif
-
 
 %build
 %meson \
@@ -82,7 +82,7 @@ Initial assistant, helping you to get the system up and running.
 
 %install
 %meson_install
-%if !0%{?is_opensuse}
+%if 0%{?sle_version} >= 150200
 rm -rf %{buildroot}%{_libexecdir}/gnome-welcome-tour
 rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-welcome-tour.desktop
 %endif
@@ -119,7 +119,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %{_userunitdir}/gnome-session.target.wants/gnome-welcome-tour.service
 %dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.wants
 %{_userunitdir}/gnome-session@gnome-initial-setup.target.wants/gnome-initial-setup.service
-%if 0%{?is_opensuse}
+%if 0%{?sle_version} < 150200
 %{_libexecdir}/gnome-welcome-tour
 %{_sysconfdir}/xdg/autostart/gnome-welcome-tour.desktop
 %endif
