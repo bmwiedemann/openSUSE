@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:36:34 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.4.2
+  * http://knro.blogspot.com/2020/04/kstars-v342-is-released.html
+  * Reduce memory usage when zooming in FITS Viewer tool
+  * Standardize unit and GUI tests for KStars in order to ensure
+    reliability and detect any regressions that might affect the
+    code
+  * Preliminary support for INDIHub project
+  * Correct bug in median computation
+  * Re-enabled the Jupiter's Moons tool
+  * Add a warning if the dust cap is missing instead of total abort
+  * Fixed KStars deadlock on disconnecting from INDI server
+    (kde#398192, kde#416173)
+  * Mount box layout corrected so that everything fits well into
+    the window
+  * SEP Focus improvements
+
+-------------------------------------------------------------------
 Mon Feb 24 09:23:38 UTC 2020 - wbauer@tmo.at
 
 - Update to 3.4.1

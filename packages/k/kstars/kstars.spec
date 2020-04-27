@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kstars
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
