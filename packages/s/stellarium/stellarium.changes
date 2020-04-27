@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:20:51 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 0.20.1
+  * Restore working Stellarium in ANGLE mode on Window
+  * Many changes in scripting engline and Script Console
+  * Fixes in GUI and plugins
+  * Updated DSO catalog
+
+-------------------------------------------------------------------
 Sun Mar 29 15:17:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.20.0
