@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %bcond_with tests
 Name:           httpcomponents-core
-Version:        4.4.10
+Version:        4.4.13
 Release:        0
 Summary:        Set of low level Java HTTP transport components for HTTP services
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://hc.apache.org/
-Source0:        http://www.apache.org/dist/httpcomponents/httpcore/source/httpcomponents-core-%{version}-src.tar.gz
+URL:            https://hc.apache.org/
+Source0:        https://archive.apache.org/dist/httpcomponents/httpcore/source/httpcomponents-core-%{version}-src.tar.gz
 Source1:        %{name}-build.tar.xz
-# Expired test certificates. Backported from upstream commit 8caeb927a.
-Patch0:         0001-Re-generated-expired-test-certificates.patch
-Patch1:         %{name}-java8compat.patch
+Patch0:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -68,7 +66,6 @@ Group:          Development/Libraries/Java
 %setup -q -a1
 
 %patch0 -p1
-%patch1 -p1
 
 # Random test failures on ARM -- 100 ms sleep is not eneough on this
 # very performant arch, lets make it 2 s
@@ -122,7 +119,7 @@ mkdir -p lib
 %if %{with tests}
 build-jar-repository -s lib cglib/cglib commons-lang3 commons-logging mockito/mockito-core objectweb-asm/asm objenesis/objenesis
 %endif
-%ant \
+%{ant} \
 %if %{without tests}
   -Dtest.skip=true \
 %endif
@@ -134,7 +131,7 @@ install -dm 0755 %{buildroot}%{_javadir}/httpcomponents
 for module in httpcore httpcore-nio; do
   install -pm 0644 ${module}/target/${module}-%{version}.jar %{buildroot}%{_javadir}/httpcomponents/${module}.jar
 done
-# pom 
+# pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/httpcomponents
 for module in httpcore httpcore-nio; do
   install -pm 0644 ${module}/pom.xml %{buildroot}%{_mavenpomdir}/httpcomponents/${module}.pom

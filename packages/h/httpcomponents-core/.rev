@@ -15,4 +15,12 @@
     <comment>avoid version-less dependencies that gradle does not like</comment>
     <requestid>735435</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3553ab51f527252b996221dd4a07c1dc</srcmd5>
+    <version>4.4.13</version>
+    <time>1588023544</time>
+    <user>dimstar_suse</user>
+    <comment>4.4.13</comment>
+    <requestid>798212</requestid>
+  </revision>
 </revisionlist>

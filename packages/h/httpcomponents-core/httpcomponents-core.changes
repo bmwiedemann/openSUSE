@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:57:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgraded to version 4.4.13
+- Removed patch:
+  * 0001-Re-generated-expired-test-certificates.patch
+    + included in this version
+- Modified patch:
+  * httpcomponents-core-java8compat.patch
+    + rediffed to changed context
+
+-------------------------------------------------------------------
 Sat Oct  5 12:43:58 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid version-less dependencies in pom files, since

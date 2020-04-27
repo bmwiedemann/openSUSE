@@ -1,5 +1,5 @@
---- httpcomponents-core-4.4.10/httpcore/src/main/java/org/apache/http/impl/io/SessionInputBufferImpl.java	2017-06-15 13:33:20.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore/src/main/java/org/apache/http/impl/io/SessionInputBufferImpl.java	2019-03-13 09:49:02.215922903 +0100
+--- httpcomponents-core-4.4.13/httpcore/src/main/java/org/apache/http/impl/io/SessionInputBufferImpl.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore/src/main/java/org/apache/http/impl/io/SessionInputBufferImpl.java	2020-04-01 11:34:15.820448452 +0200
 @@ -29,6 +29,7 @@
  
  import java.io.IOException;
@@ -8,7 +8,7 @@
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.charset.CharsetDecoder;
-@@ -366,7 +367,7 @@
+@@ -364,7 +365,7 @@
          }
          final CoderResult result = this.decoder.flush(this.cbuf);
          len += handleDecodingResult(result, charbuffer, bbuf);
@@ -17,7 +17,7 @@
          return len;
      }
  
-@@ -377,7 +378,7 @@
+@@ -375,7 +376,7 @@
          if (result.isError()) {
              result.throwException();
          }
@@ -26,8 +26,8 @@
          final int len = this.cbuf.remaining();
          while (this.cbuf.hasRemaining()) {
              charbuffer.append(this.cbuf.get());
---- httpcomponents-core-4.4.10/httpcore/src/main/java/org/apache/http/impl/io/SessionOutputBufferImpl.java	2017-05-12 09:14:53.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore/src/main/java/org/apache/http/impl/io/SessionOutputBufferImpl.java	2019-03-13 09:46:50.107248277 +0100
+--- httpcomponents-core-4.4.13/httpcore/src/main/java/org/apache/http/impl/io/SessionOutputBufferImpl.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore/src/main/java/org/apache/http/impl/io/SessionOutputBufferImpl.java	2020-04-01 11:34:15.820448452 +0200
 @@ -29,6 +29,7 @@
  
  import java.io.IOException;
@@ -45,8 +45,8 @@
      }
  
      private void handleEncodingResult(final CoderResult result) throws IOException {
---- httpcomponents-core-4.4.10/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionInputBuffer.java	2017-05-12 09:14:53.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionInputBuffer.java	2019-03-13 09:44:05.490407553 +0100
+--- httpcomponents-core-4.4.13/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionInputBuffer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionInputBuffer.java	2020-04-01 11:34:15.820448452 +0200
 @@ -29,6 +29,7 @@
  
  import java.io.IOException;
@@ -55,7 +55,7 @@
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.charset.Charset;
-@@ -369,7 +370,7 @@
+@@ -367,7 +368,7 @@
          }
          final CoderResult result = this.decoder.flush(this.cbuf);
          len += handleDecodingResult(result, charbuffer, bbuf);
@@ -64,7 +64,7 @@
          return len;
      }
  
-@@ -380,7 +381,7 @@
+@@ -378,7 +379,7 @@
          if (result.isError()) {
              result.throwException();
          }
@@ -73,8 +73,8 @@
          final int len = this.cbuf.remaining();
          while (this.cbuf.hasRemaining()) {
              charbuffer.append(this.cbuf.get());
---- httpcomponents-core-4.4.10/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionOutputBuffer.java	2017-05-12 09:14:53.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionOutputBuffer.java	2019-03-13 09:44:13.614449039 +0100
+--- httpcomponents-core-4.4.13/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionOutputBuffer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore/src/main/java-deprecated/org/apache/http/impl/io/AbstractSessionOutputBuffer.java	2020-04-01 11:34:15.824448473 +0200
 @@ -29,6 +29,7 @@
  
  import java.io.IOException;
@@ -100,8 +100,8 @@
          while (this.bbuf.hasRemaining()) {
              write(this.bbuf.get());
          }
---- httpcomponents-core-4.4.10/httpcore-nio/src/examples/org/apache/http/examples/nio/ElementalEchoServer.java	2017-09-03 13:21:05.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/examples/org/apache/http/examples/nio/ElementalEchoServer.java	2019-03-13 09:50:53.600493731 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/examples/org/apache/http/examples/nio/ElementalEchoServer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/examples/org/apache/http/examples/nio/ElementalEchoServer.java	2020-04-01 11:34:15.824448473 +0200
 @@ -29,6 +29,7 @@
  import java.io.IOException;
  import java.io.InterruptedIOException;
@@ -119,17 +119,17 @@
                  final int bytesWritten = session.channel().write(this.buffer);
                  if (!this.buffer.hasRemaining()) {
                      session.setEventMask(EventMask.READ);
---- httpcomponents-core-4.4.10/httpcore-nio/src/examples/org/apache/http/examples/nio/NHttpReverseProxy.java	2017-09-03 13:21:05.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/examples/org/apache/http/examples/nio/NHttpReverseProxy.java	2019-03-13 09:53:52.393418469 +0100
-@@ -30,6 +30,7 @@
- import java.io.InterruptedIOException;
+--- httpcomponents-core-4.4.13/httpcore-nio/src/examples/org/apache/http/examples/nio/NHttpReverseProxy.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/examples/org/apache/http/examples/nio/NHttpReverseProxy.java	2020-04-01 11:34:15.824448473 +0200
+@@ -31,6 +31,7 @@
  import java.net.InetSocketAddress;
+ import java.net.SocketTimeoutException;
  import java.net.URI;
 +import java.nio.Buffer;
  import java.nio.ByteBuffer;
  import java.security.cert.CertificateException;
  import java.security.cert.X509Certificate;
-@@ -343,8 +344,8 @@
+@@ -341,8 +342,8 @@
          }
  
          public void reset() {
@@ -140,8 +140,8 @@
              this.target = null;
              this.id = null;
              this.responseTrigger = null;
-@@ -555,7 +556,7 @@
-                 this.httpExchange.setOriginIOControl(ioctrl);
+@@ -553,7 +554,7 @@
+                 this.httpExchange.setOriginIOControl(ioControl);
                  // Send data to the origin server
                  final ByteBuffer buf = this.httpExchange.getInBuffer();
 -                buf.flip();
@@ -149,8 +149,8 @@
                  final int n = encoder.write(buf);
                  buf.compact();
                  System.out.println("[proxy->origin] " + this.httpExchange.getId() + " " + n + " bytes written");
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentDecoder.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentDecoder.java	2019-03-13 10:07:11.833553436 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentDecoder.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentDecoder.java	2020-04-01 11:34:15.824448473 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.impl.nio.codecs;
  
@@ -159,7 +159,7 @@
  import java.nio.ByteBuffer;
  import java.nio.channels.ReadableByteChannel;
  
-@@ -120,9 +121,9 @@
+@@ -147,9 +148,9 @@
          if (dst.remaining() > limit) {
              final int oldLimit = dst.limit();
              final int newLimit = oldLimit - (dst.remaining() - limit);
@@ -171,8 +171,8 @@
          } else {
              bytesRead = this.channel.read(dst);
          }
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentEncoder.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentEncoder.java	2019-03-13 10:08:17.497898152 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentEncoder.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/AbstractContentEncoder.java	2020-04-01 11:34:15.824448473 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.impl.nio.codecs;
  
@@ -193,8 +193,8 @@
          } else {
              bytesWritten = doWriteChunk(src, direct);
          }
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/ChunkEncoder.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/ChunkEncoder.java	2019-03-13 10:04:27.556703765 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/ChunkEncoder.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/codecs/ChunkEncoder.java	2020-04-01 11:34:15.824448473 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.impl.nio.codecs;
  
@@ -215,8 +215,8 @@
                  } else {
                      // write all
                      this.lineBuffer.clear();
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionInputBufferImpl.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionInputBufferImpl.java	2019-03-13 10:36:24.146708469 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionInputBufferImpl.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionInputBufferImpl.java	2020-04-01 11:41:03.098682887 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.impl.nio.reactor;
  
@@ -225,7 +225,7 @@
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.channels.ReadableByteChannel;
-@@ -221,9 +222,9 @@
+@@ -248,9 +249,9 @@
          if (this.buffer.remaining() > chunk) {
              final int oldLimit = this.buffer.limit();
              final int newLimit = this.buffer.position() + chunk;
@@ -235,9 +235,9 @@
 -            this.buffer.limit(oldLimit);
 +            ((Buffer)(this.buffer)).limit(oldLimit);
              return len;
-         } else {
-             dst.put(this.buffer);
-@@ -249,9 +250,9 @@
+         }
+         dst.put(this.buffer);
+@@ -275,9 +276,9 @@
          if (this.buffer.remaining() > maxLen) {
              final int oldLimit = this.buffer.limit();
              final int newLimit = oldLimit - (this.buffer.remaining() - maxLen);
@@ -249,7 +249,7 @@
          } else {
              bytesRead = dst.write(this.buffer);
          }
-@@ -302,7 +303,7 @@
+@@ -328,7 +329,7 @@
              }
          }
          final int origLimit = this.buffer.limit();
@@ -258,40 +258,40 @@
  
          final int requiredCapacity = this.buffer.limit() - this.buffer.position();
          // Ensure capacity of len assuming ASCII as the most likely charset
-@@ -314,7 +315,7 @@
+@@ -340,7 +341,7 @@
                  final int off = this.buffer.position();
                  final int len = this.buffer.remaining();
-                 linebuffer.append(b, off, len);
+                 lineBuffer.append(b, off, len);
 -                this.buffer.position(off + len);
-+                ((Buffer)(this.buffer)).position(off + len);
++                ((Buffer)this.buffer).position(off + len);
              } else {
                  while (this.buffer.hasRemaining()) {
-                     linebuffer.append((char) (this.buffer.get() & 0xff));
-@@ -335,12 +336,12 @@
+                     lineBuffer.append((char) (this.buffer.get() & 0xff));
+@@ -361,12 +362,12 @@
                      result.throwException();
                  }
                  if (result.isOverflow()) {
--                    this.charbuffer.flip();
-+                    ((Buffer)(this.buffer)).flip();
-                     linebuffer.append(
-                             this.charbuffer.array(),
-                             this.charbuffer.position(),
-                             this.charbuffer.remaining());
--                    this.charbuffer.clear();
-+                    ((Buffer)(this.charbuffer)).clear();
+-                    this.charBuffer.flip();
++                    ((Buffer)this.charBuffer).flip();
+                     lineBuffer.append(
+                             this.charBuffer.array(),
+                             this.charBuffer.position(),
+                             this.charBuffer.remaining());
+-                    this.charBuffer.clear();
++                    ((Buffer)this.charBuffer).clear();
                  }
                  if (result.isUnderflow()) {
                      break;
-@@ -349,7 +350,7 @@
+@@ -375,7 +376,7 @@
  
              // flush the decoder
-             this.chardecoder.flush(this.charbuffer);
--            this.charbuffer.flip();
-+            ((Buffer)(this.charbuffer)).flip();
+             this.charDecoder.flush(this.charBuffer);
+-            this.charBuffer.flip();
++            ((Buffer)this.charBuffer).flip();
              // append the decoded content to the line buffer
-             if (this.charbuffer.hasRemaining()) {
-                 linebuffer.append(
-@@ -359,7 +360,7 @@
+             if (this.charBuffer.hasRemaining()) {
+                 lineBuffer.append(
+@@ -385,7 +386,7 @@
              }
  
          }
@@ -299,9 +299,9 @@
 +        ((Buffer)(this.buffer)).limit(origLimit);
  
          // discard LF if found
-         int l = linebuffer.length();
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionOutputBufferImpl.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionOutputBufferImpl.java	2019-03-13 10:30:57.585039770 +0100
+         int len = lineBuffer.length();
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionOutputBufferImpl.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/impl/nio/reactor/SessionOutputBufferImpl.java	2020-04-01 11:42:00.798999509 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.impl.nio.reactor;
  
@@ -310,17 +310,17 @@
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.channels.ReadableByteChannel;
-@@ -243,7 +244,7 @@
+@@ -259,7 +260,7 @@
                          eol = true;
                      }
-                     this.charbuffer.put(linebuffer.buffer(), offset, l);
--                    this.charbuffer.flip();
-+                    ((Buffer)(this.charbuffer)).flip();
+                     this.charBuffer.put(lineBuffer.buffer(), offset, l);
+-                    this.charBuffer.flip();
++                    ((Buffer)this.charBuffer).flip();
  
                      boolean retry = true;
                      while (retry) {
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/entity/EntityAsyncContentProducer.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/entity/EntityAsyncContentProducer.java	2019-03-13 10:13:33.467573632 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/EntityAsyncContentProducer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/EntityAsyncContentProducer.java	2020-04-01 11:34:15.828448495 +0200
 @@ -29,6 +29,7 @@
  
  import java.io.IOException;
@@ -338,8 +338,8 @@
          encoder.write(this.buffer);
          final boolean buffering = this.buffer.hasRemaining();
          this.buffer.compact();
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/entity/NByteArrayEntity.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/entity/NByteArrayEntity.java	2019-03-13 10:17:13.516740495 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/NByteArrayEntity.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/NByteArrayEntity.java	2020-04-01 11:34:15.828448495 +0200
 @@ -31,6 +31,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -357,8 +357,8 @@
      }
  
      /**
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/entity/NStringEntity.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/entity/NStringEntity.java	2019-03-13 10:18:25.637122928 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/NStringEntity.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/entity/NStringEntity.java	2020-04-01 11:34:15.828448495 +0200
 @@ -32,6 +32,7 @@
  import java.io.InputStream;
  import java.io.OutputStream;
@@ -376,8 +376,8 @@
      }
  
      /**
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/protocol/NullRequestConsumer.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/protocol/NullRequestConsumer.java	2019-03-13 10:11:01.842769659 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/protocol/NullRequestConsumer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/protocol/NullRequestConsumer.java	2020-04-01 11:34:15.828448495 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.nio.protocol;
  
@@ -387,7 +387,7 @@
  
  import org.apache.http.HttpRequest;
 @@ -54,7 +55,7 @@
-             final ContentDecoder decoder, final IOControl ioctrl) throws IOException {
+             final ContentDecoder decoder, final IOControl ioControl) throws IOException {
          int lastRead;
          do {
 -            this.buffer.clear();
@@ -395,8 +395,8 @@
              lastRead = decoder.read(this.buffer);
          } while (lastRead > 0);
      }
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/reactor/ssl/SSLIOSession.java	2018-06-26 14:35:43.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/reactor/ssl/SSLIOSession.java	2019-03-13 10:23:52.638856850 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/reactor/ssl/SSLIOSession.java	2019-12-07 14:35:57.000000000 +0100
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/reactor/ssl/SSLIOSession.java	2020-04-01 11:36:25.309158888 +0200
 @@ -30,6 +30,7 @@
  import java.io.IOException;
  import java.net.Socket;
@@ -405,34 +405,34 @@
  import java.nio.ByteBuffer;
  import java.nio.channels.ByteChannel;
  import java.nio.channels.CancelledKeyException;
-@@ -312,7 +313,7 @@
+@@ -327,7 +328,7 @@
                  final ByteBuffer inPlainBuf = this.inPlain.acquire();
  
                  // Perform operations
 -                inEncryptedBuf.flip();
 +                ((Buffer)inEncryptedBuf).flip();
-                 result = doUnwrap(inEncryptedBuf, inPlainBuf);
-                 inEncryptedBuf.compact();
+                 try {
+                     result = doUnwrap(inEncryptedBuf, inPlainBuf);
+                 } finally {
+@@ -448,7 +449,7 @@
  
-@@ -421,7 +422,7 @@
-         final ByteBuffer outEncryptedBuf = this.outEncrypted.acquire();
- 
+         final int bytesWritten;
          // Perform operation
 -        outEncryptedBuf.flip();
 +        ((Buffer)outEncryptedBuf).flip();
-         final int bytesWritten = this.session.channel().write(outEncryptedBuf);
-         outEncryptedBuf.compact();
+         try {
+             bytesWritten = this.session.channel().write(outEncryptedBuf);
+         } finally {
+@@ -492,7 +493,7 @@
  
-@@ -458,7 +459,7 @@
-             final ByteBuffer inPlainBuf = this.inPlain.acquire();
- 
+             final SSLEngineResult result;
              // Perform operations
 -            inEncryptedBuf.flip();
 +            ((Buffer)inEncryptedBuf).flip();
-             final SSLEngineResult result = doUnwrap(inEncryptedBuf, inPlainBuf);
-             inEncryptedBuf.compact();
- 
-@@ -579,7 +580,7 @@
+             try {
+                 result = doUnwrap(inEncryptedBuf, inPlainBuf);
+             } finally {
+@@ -613,7 +614,7 @@
              final ByteBuffer inPlainBuf = this.inPlain.acquire();
  
              // Perform opertaions
@@ -441,8 +441,8 @@
              final int n = Math.min(inPlainBuf.remaining(), dst.remaining());
              for (int i = 0; i < n; i++) {
                  dst.put(inPlainBuf.get());
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java/org/apache/http/nio/util/ExpandableBuffer.java	2018-02-16 15:33:59.000000000 +0100
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java/org/apache/http/nio/util/ExpandableBuffer.java	2019-03-13 10:28:16.808218211 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/util/ExpandableBuffer.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java/org/apache/http/nio/util/ExpandableBuffer.java	2020-04-01 11:34:15.828448495 +0200
 @@ -27,6 +27,7 @@
  
  package org.apache.http.nio.util;
@@ -487,8 +487,8 @@
          this.mode = INPUT_MODE;
      }
  
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/NHttpEntityWrapper.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/NHttpEntityWrapper.java	2019-03-13 10:01:50.723892601 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/NHttpEntityWrapper.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/NHttpEntityWrapper.java	2020-04-01 11:34:15.828448495 +0200
 @@ -30,6 +30,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -499,15 +499,15 @@
  import java.nio.channels.ReadableByteChannel;
 @@ -86,7 +87,7 @@
              final ContentEncoder encoder,
-             final IOControl ioctrl) throws IOException {
+             final IOControl ioControl) throws IOException {
          final int i = this.channel.read(this.buffer);
 -        this.buffer.flip();
 +        ((Buffer)(this.buffer)).flip();
          encoder.write(this.buffer);
          final boolean buffering = this.buffer.hasRemaining();
          this.buffer.compact();
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/SkipContentListener.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/SkipContentListener.java	2019-03-13 10:02:44.656171552 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/SkipContentListener.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/entity/SkipContentListener.java	2020-04-01 11:34:15.828448495 +0200
 @@ -28,6 +28,7 @@
  package org.apache.http.nio.entity;
  
@@ -517,7 +517,7 @@
  
  import org.apache.http.nio.ContentDecoder;
 @@ -59,7 +60,7 @@
-             final IOControl ioctrl) throws IOException {
+             final IOControl ioControl) throws IOException {
          int lastRead;
          do {
 -            buffer.clear();
@@ -525,8 +525,8 @@
              lastRead = decoder.read(buffer);
          } while (lastRead > 0);
      }
---- httpcomponents-core-4.4.10/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/protocol/NullNHttpEntity.java	2017-05-10 09:30:47.000000000 +0200
-+++ httpcomponents-core-4.4.10.new/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/protocol/NullNHttpEntity.java	2019-03-13 10:00:53.319595690 +0100
+--- httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/protocol/NullNHttpEntity.java	2019-10-23 15:36:25.000000000 +0200
++++ httpcomponents-core-4.4.13/httpcore-nio/src/main/java-deprecated/org/apache/http/nio/protocol/NullNHttpEntity.java	2020-04-01 11:34:15.828448495 +0200
 @@ -30,6 +30,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -536,7 +536,7 @@
  
  import org.apache.http.HttpEntity;
 @@ -72,7 +73,7 @@
-             final IOControl ioctrl) throws IOException {
+             final IOControl ioControl) throws IOException {
          int lastRead;
          do {
 -            buffer.clear();
