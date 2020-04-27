@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -38,8 +38,6 @@ Source10:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap
 Source11:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz 
 Source12:       http://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
 Source13:       http://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
-# Patch against SQL injection:
-Patch0:         sqlitewrapper.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -120,8 +118,6 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 
 %prep
 %setup -q -n Orthanc-%{version}
-
-%patch0 -p0 
 
 cp %{S:1} %{S:2} .	
 

@@ -52,7 +52,9 @@
   // folders, in which case they will be scanned non-recursively to
   // find shared libraries. Backslashes must be either escaped by
   // doubling them, or replaced by forward slashes "/".
+  // global definition for openSUSE
   "Plugins" : [
+  "/usr/share/orthanc/plugins"
   ],
 
   // Maximum number of processing jobs that are simultaneously running
