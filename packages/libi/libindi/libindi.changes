@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:26:20 UTC 2020 - wbauer@tmo.at
+
+- Update to version 1.8.5:
+  * New PlaneWave EFA driver.
+  * New PlaneWave Delta-T driver.
+  * New SestoSenso2 driver.
+  * New Lunatico DragonFly Rolloff driver.
+  * New Lunatico Seletek Rotator driver.
+  * New Radio Astronomy Interferometer Driver.
+  * Fixed parking in Temma driver.
+  * Improved Slew accuray for Celestron mounts.
+  * Improved TeenAstro Mount driver.
+  * Fixed declination issue in Rainbow driver.
+  * Fixed Guide problem with StarSense.
+  * Fixed AAG driver and Weather Parameters state.
+  * Fixed OnStep Speed change
+  * Added Park3 to AP mount driver.
+  * Improved XAGYL driver.
+  * Added hour axis offset to CCD Simulator.
+  * Added FOCUSPOS to the FITS header.
+  * Updated Telescope Simulator Driver.
+- Drop remove-unused-websocket-block.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Feb 24 08:44:29 UTC 2020 - wbauer@tmo.at
 
 - Update to version 1.8.4:
