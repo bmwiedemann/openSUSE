@@ -553,4 +553,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795034 from iznogood)</comment>
     <requestid>795189</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0498fa1864eb711797ab507a19ca100d</srcmd5>
+    <version>3.36.3</version>
+    <time>1588022920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796641</requestid>
+  </revision>
 </revisionlist>
