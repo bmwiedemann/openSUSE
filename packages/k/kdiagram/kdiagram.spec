@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiagram
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
 Summary:        Powerful libraries (KChart, KGantt) for creating business diagrams
 License:        GPL-2.0-or-later
@@ -91,18 +91,23 @@ Development package for the KDiagram libraries
 %postun -n libKGantt2 -p /sbin/ldconfig
 
 %files -n libKChart2
+%license LICENSE.GPL.txt
 %{_libdir}/libKChart.so.*
 
 %files -n libKGantt2
+%license LICENSE.GPL.txt
 %{_libdir}/libKGantt.so.*
 
 %if %{with lang}
 %files -n libkchart-lang -f kchart.lang
+%license LICENSE.GPL.txt
 
 %files -n libkgantt-lang -f kgantt.lang
+%license LICENSE.GPL.txt
 %endif
 
 %files devel
+%license LICENSE.GPL.txt
 %{_includedir}/KChart/
 %{_includedir}/kchart_version.h
 %{_includedir}/KGantt/

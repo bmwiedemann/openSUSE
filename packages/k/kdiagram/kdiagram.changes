@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:24:44 UTC 2020 - wbauer@tmo.at
+
+- Update to 2.7.0
+  * KGantt:
+    + Add timeline and a settings dialog to enable user control
+    + Let the selectionmodel control the selection of items
+    + Fix crash when setGraphicsView() is called
+  * KChart:
+    + Fix Bug 420180 - Gaps not respected when x-axis is reversed
+      (kde#420180)
+    + Legend: Add new paint method
+    + Give Rulerattributes a ruler pen
+    + Don't hardcode default text color but use the palette
+    + Fix build issues when qreal == float
+- Install license file
+
+-------------------------------------------------------------------
 Wed Apr 15 06:23:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.6.3
