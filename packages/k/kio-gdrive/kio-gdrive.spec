@@ -1,7 +1,7 @@
 #
 # spec file for package kio-gdrive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %bcond_without lang
 Name:           kio-gdrive
-Version:        1.2.7
+Version:        1.3.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://community.kde.org/KIO_GDrive
 Source:         https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
+BuildRequires:  extra-cmake-modules >= 5.48.0
 BuildRequires:  intltool
-BuildRequires:  libaccounts-glib-devel
-BuildRequires:  libsignon-qt5-devel
-BuildRequires:  cmake(KAccounts)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n) >= 5.14.0
-BuildRequires:  cmake(KF5KIO) >= 5.14.0
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KPimGAPI) >= 5.5.0
+BuildRequires:  cmake(KAccounts) >= 20.03.80
+BuildRequires:  cmake(KF5DocTools) >= 5.48.0
+BuildRequires:  cmake(KF5I18n) >= 5.48.0
+BuildRequires:  cmake(KF5KIO) >= 5.48.0
+BuildRequires:  cmake(KF5Notifications) >= 5.48.0
+BuildRequires:  cmake(KPimGAPI) >= 5.11.41
+BuildRequires:  cmake(Qt5Gui) >= 5.2.0
 BuildRequires:  cmake(Qt5Network) >= 5.2.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 # Used by the .desktop file
@@ -72,7 +71,7 @@ This can be Dolphin or Gwenview or Konqueror.
 %{_kf5_plugindir}/kf5/
 %dir %{_datadir}/remoteview
 %{_datadir}/remoteview/gdrive-network.desktop
-%{_kf5_appstreamdir}/org.kde.kio-gdrive.appdata.xml
+%{_kf5_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
 %{_datadir}/accounts/
 %{_kf5_notifydir}/gdrive.notifyrc
 
