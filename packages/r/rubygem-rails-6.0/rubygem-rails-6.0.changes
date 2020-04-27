@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:33:10 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Update Rails to version 6.0.2.2
+
+  Changes are in Rails's modules.
+
+  Release Blog entry:
+  https://weblog.rubyonrails.org/2020/3/19/Rails-6-0-2-2-and-5-2-4-2-has-been-released/
+
+-------------------------------------------------------------------
 Sat Apr 11 11:16:08 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - Recommend yarn package
