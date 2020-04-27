@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:24:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.13.0
+  + Support for the Data Safe service
+  + Support for the Incident Management service
+  + Support for showing which database versions support always-free in the Database service
+  + Support in instance configurations for flex shapes, dedicated VM
+    hosts, encryption in transit, and KMS keys in the Compute Autoscaling service
+  + Support for server-side object encryption using a customer-provided
+    encryption key in the Object Storage service
+  + Support for specifying maintenance preferences while launching and
+    updating Exadata Database systems in the Database service
+  + Support for flexible-shaped VM instances in the Compute service
+  + Support for scheduled cross-region backups in the Block Volume service
+  + Support for object versioning in the Object Storage service
+  + Deleted models Archiver, CreateArchiverDetails and
+    UpdateArchiverDetails from the streaming service
+- from version 2.12.4
+  + Support for access types on instances in the Content and Experience service
+  + Support for identity contexts in the Search service
+  + Support for Client Side Encryption:
+    https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/clientsideencryption.htm
+  + Support for retries on Python built-in ConnectionError
+- from version 2.12.3
+  + Support for changing compartments of runs and
+    applications in the Data Flow service
+  + Support for getting usage information in the
+    Key Management Vault service
+  + Support for custom Key Management service endpoints and private
+    endpoints on stream pools in the Streaming service
+  + Fixed kms_example and added secrets examples
+- from version 2.12.2
+  + Support for the Secrets Management service
+  + Support for the Big Data service
+  + Support for updating class name, file URI, language, and spark
+    version of applications in the Data Flow service
+  + Support for cross-region replication in the Object Storage service
+  + Support for retention rules in the Object Storage service
+  + Support for enabling and disabling pod security policy admission
+    controllers in the Container Engine for Kubernetes service
+- from version 2.12.1
+  + Support for Web Application Acceleration and Security configurations
+    on instances in the Content and Experience service
+  + Support for shared database homes on Exadata Cloud at Customer
+    resources in the Database service
+  + Support for Exadata database creation from backup in the Database service
+  + Support for conditions on JavaScript challenges, new action types on
+    access rules, new policy configuration settings, exclusions on custom
+    protection rules, and IP address lists on IP whitelists in the Web
+    Application Acceleration and Security service
+- from version 2.12.0
+  + Support for serial console connections in the Database service
+  + Support for preview database versions in the Database service
+  + Support for node reboot migration maintenance status and
+    maintenance windows in the Database service
+  + Support for using instance metadata API v2 for instance
+    principals authentication
+  + Upgraded configparser dependency version
+  + Deleted model autonomous_exadata_infrastructure_maintenance_window.py
+    from the database service
+- Refresh patches for new version
+  + ops_relax-python-depends.patch
+- Update BuildRequires and Requires from requirements.txt and setup.py
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Thu Apr 23 10:38:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
