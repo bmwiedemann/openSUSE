@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 18 21:29:25 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.7.3:
+  * Fix all misuses of QtGui.
+
+-------------------------------------------------------------------
 Sat Mar 28 16:34:48 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.7.2:
