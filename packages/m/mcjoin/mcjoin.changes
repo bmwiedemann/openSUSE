@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 17:52:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6
+  * Full IPv6 support, both send and join.
+  * Increase MAX number of groups to join: 250 -> 2048
+  * Relocate source code to src/ sub-directory
+  * Add support for sending with/to IPv6 address/group
+  * Update docs slightly
+
+-------------------------------------------------------------------
 Wed Feb 26 11:56:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5

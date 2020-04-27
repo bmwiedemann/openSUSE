@@ -18,7 +18,7 @@
 
 
 Name:           mcjoin
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        IPv4 tool for verifying multicast connectivity
 License:        ISC
