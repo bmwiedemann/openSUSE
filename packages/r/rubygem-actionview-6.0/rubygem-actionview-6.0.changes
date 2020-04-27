@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:41:51 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.2.2
+
+  * Fix possible XSS vector in escape_javascript helper
+    (CVE-2020-5267, bsc#1167240)
+
+    Aaron Patterson
+
+-------------------------------------------------------------------
 Fri Dec 20 04:21:15 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.2.1
