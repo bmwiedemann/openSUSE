@@ -38,4 +38,20 @@
     <comment></comment>
     <requestid>786084</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ff2eadb5ca0c5613f9e06b5dd0de9c26</srcmd5>
+    <version>1.6.9</version>
+    <time>1588023427</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fixing build with no python2 available:
+  * no-python2.patch
+- Update to 1.6.9:
+  * Last version to support Python 2.6; added python_requires (#507)
+  * Paths: Fix bug with subscription operations (#498), (#506)
+  * Paths: Fix resolve (#492)
+  * Commands: Fix resolve (#491)
+  * Commands: Add context manager on popen (#495)
+  * Several smaller fixes (#500), (#505)</comment>
+    <requestid>798106</requestid>
+  </revision>
 </revisionlist>

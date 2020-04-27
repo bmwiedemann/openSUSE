@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plumbum
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tomerfiliba/plumbum
 Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.gz
+Patch0:         no-python2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,6 +51,7 @@ application toolkit.
 
 %prep
 %setup -q -n plumbum-%{version}
+%patch0 -p1
 # remote tests won't work in OBS
 rm tests/test_remote.py
 

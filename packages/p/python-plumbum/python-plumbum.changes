@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:26:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch fixing build with no python2 available:
+  * no-python2.patch
+- Update to 1.6.9:
+  * Last version to support Python 2.6; added python_requires (#507)
+  * Paths: Fix bug with subscription operations (#498), (#506)
+  * Paths: Fix resolve (#492)
+  * Commands: Fix resolve (#491)
+  * Commands: Add context manager on popen (#495)
+  * Several smaller fixes (#500), (#505)
+
+-------------------------------------------------------------------
 Wed Mar 18 07:29:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.6.8
