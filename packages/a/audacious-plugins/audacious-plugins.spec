@@ -27,6 +27,8 @@ Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM 0001-Implement-qthotkey-plugin.patch -- Implement qthotkey plugin (commit 9904ac5d).
+Patch1:         0001-Implement-qthotkey-plugin.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.5
 BuildRequires:  libmp3lame-devel
@@ -95,6 +97,7 @@ Extra plugins for the Audacious audio player.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %meson \
