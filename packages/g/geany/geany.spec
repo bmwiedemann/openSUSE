@@ -1,7 +1,7 @@
 #
 # spec file for package geany
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Release:        0
 Summary:        GTK-based integrated development environment
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
-Url:            https://geany.org
+URL:            https://geany.org
 Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream
 Patch0:         geany-appstream.patch
+Patch100:       geany-avoid-segfault-on-quit.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docutils
@@ -74,6 +75,7 @@ Geany's developers documentation
 %prep
 %setup -q
 %patch0 -p1
+%patch100 -p1
 
 %build
 autoreconf -i

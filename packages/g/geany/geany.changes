@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 21:24:34 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- geany-avoid-segfault-on-quit.patch: Add patch. (boo#1166820)
+- geany-appstream.patch: Refresh patch.
+- geany.spec: Reference above new patch.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:08:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

@@ -1,7 +1,13 @@
-diff --git a/Makefile.am b/Makefile.am
-index 04e4a87..a1b35b7 100644
---- a/Makefile.am
-+++ b/Makefile.am
+---
+ Makefile.am          |    7 +++++++
+ geany.appdata.xml.in |   32 ++++++++++++++++++++++++++++++++
+ po/POTFILES.in       |    1 +
+ 3 files changed, 40 insertions(+)
+
+Index: geany-1.36/Makefile.am
+===================================================================
+--- geany-1.36.orig/Makefile.am
++++ geany-1.36/Makefile.am
 @@ -15,6 +15,7 @@ WIN32_BUILD_FILES = \
  EXTRA_DIST = \
  	autogen.sh \
@@ -10,7 +16,7 @@ index 04e4a87..a1b35b7 100644
  	geany.desktop.in \
  	geany.pc.in \
  	ChangeLog.pre-1-22 \
-@@ -85,3 +86,9 @@ desktopdir = $(datadir)/applications
+@@ -83,3 +84,9 @@ desktopdir = $(datadir)/applications
  desktop_in_files = geany.desktop
  desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
  @INTLTOOL_DESKTOP_RULE@
@@ -20,11 +26,10 @@ index 04e4a87..a1b35b7 100644
 +appdatadir = $(datadir)/appdata
 +nodist_appdata_DATA = geany.appdata.xml
 +@INTLTOOL_XML_RULE@
-diff --git a/geany.appdata.xml.in b/geany.appdata.xml.in
-new file mode 100644
-index 0000000..862cbcc
+Index: geany-1.36/geany.appdata.xml.in
+===================================================================
 --- /dev/null
-+++ b/geany.appdata.xml.in
++++ geany-1.36/geany.appdata.xml.in
 @@ -0,0 +1,32 @@
 +<?xml version='1.0' encoding='UTF-8'?>
 +<component>
@@ -58,10 +63,10 @@ index 0000000..862cbcc
 +  <update_contact>badshah400@gmail.com</update_contact>
 +  <translation type="gettext">geany</translation>
 +</component>
-diff --git a/po/POTFILES.in b/po/POTFILES.in
-index 83057ac..3d14135 100644
---- a/po/POTFILES.in
-+++ b/po/POTFILES.in
+Index: geany-1.36/po/POTFILES.in
+===================================================================
+--- geany-1.36.orig/po/POTFILES.in
++++ geany-1.36/po/POTFILES.in
 @@ -1,5 +1,6 @@
  # List of source files containing translatable strings.
  
@@ -69,4 +74,3 @@ index 83057ac..3d14135 100644
  geany.desktop.in
  data/geany.glade
  src/about.c
-
