@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        2.7.1
+Version:        2.8
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
