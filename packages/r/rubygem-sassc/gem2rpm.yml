@@ -21,8 +21,7 @@
 :preamble: |-
   BuildRequires:  gcc-c++
 # ## used by gem2rpm
-:patches:
-  reproducible.patch: -p1
+#:patches:
 #   bar.patch:
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem
