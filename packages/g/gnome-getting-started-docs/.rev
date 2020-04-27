@@ -200,4 +200,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795046 from iznogood)</comment>
     <requestid>795200</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d08a7c1b37a0abc0bd8ccf7cb9a15620</srcmd5>
+    <version>3.36.2</version>
+    <time>1588023829</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 798004 from iznogood)</comment>
+    <requestid>798358</requestid>
+  </revision>
 </revisionlist>
