@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:42:20 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.2.7
+
+  * Fixed 'wrong number of arguments' errors when running on JRuby 9.0. #114.
+  * Fixed warnings when running on Ruby 2.8. #112.
+
+-------------------------------------------------------------------
 Mon Jan 27 12:23:31 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.2.6

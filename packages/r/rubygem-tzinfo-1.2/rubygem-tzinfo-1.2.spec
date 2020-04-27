@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tzinfo-1.2
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 %define mod_name tzinfo
 %define mod_full_name %{mod_name}-%{version}
@@ -40,7 +40,7 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-Url:            http://tzinfo.github.io
+Url:            https://tzinfo.github.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Daylight savings aware timezone library
