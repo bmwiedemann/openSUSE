@@ -53,4 +53,35 @@
   * 0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch</comment>
     <requestid>745456</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>56a083196613f06e33c7bfd380d526ad</srcmd5>
+    <version>1.1</version>
+    <time>1588023199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1
+  * Performance improvements when loading and editing
+    very large SGF files.
+  * q5go can now detect when an observed game on IGS is
+    adjourned and restarted and follow it in the same window.
+    This requires the server to be set to non-quiet mode.
+  * When playing an engine, there is now a &quot;Play again&quot; button.
+  * In an online match with Canadian time, time warnings can
+    now be enabled for remaining average time, not just
+    remaining total time.
+  * In an online match, remaining seconds in low time situations
+    can now be shown on the opponent's last placed stone.
+  * Added a &quot;Go terminology&quot; SGF to the tutorials.
+  * The greeter window now has a hint to choose &quot;Play online&quot;
+    for a full set of menus.
+  * The program is more helpful when detecting a broken SGF
+    written by Jago.
+  * Added more helpful error messages when editing servers
+    in the preferences.
+  * Score evaluations are now shown in the board window when
+    analysis is on.
+  * Added a feature to visualize connected stones by drawing thick
+    lines between them. May be helpful for beginners.
+  * GTP support was extended to support board sizes &gt; 25, for KataGo.</comment>
+    <requestid>797596</requestid>
+  </revision>
 </revisionlist>
