@@ -305,4 +305,12 @@ as requested by Michel</comment>
   * disable -chrp-boot option for ppc64le (bsc#1169420)</comment>
     <requestid>794217</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9fe494247536ba57f6b258c9beab773b</srcmd5>
+    <version>1.3.0</version>
+    <time>1588022948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797196</requestid>
+  </revision>
 </revisionlist>
