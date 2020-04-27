@@ -1,7 +1,7 @@
 #
 # spec file for package gpaste
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Simone Tolotti, <simone.tolotti@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.34.1
+Version:        3.36.3
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-5)
+BuildRequires:  pkgconfig(mutter-clutter-6)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)

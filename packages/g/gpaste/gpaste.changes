@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 26 17:29:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.3:
+  + Fix activating items using Ctrl-Number in gnome-shell.
+- Changes from version 3.36.2:
+  + Fix keybinding regrab with gnome-shell.
+- Changes from version 3.36.1:
+  + Fix keybinding grab with gnome-shell.
+- Changes from version 3.36.0:
+  + Update to gnome-shell 3.36.0.
+- Changes from version 3.34.4:
+  + Fix activating items using Ctrl-Number in gnome-shell.
+- Changes from version 3.34.3:
+  + Fix keybinding regrab with gnome-shell.
+- Changes from version 3.34.2:
+  + Fix keybinding grab with gnome-shell.
+- Replace pkgconfig(mutter-clutter-5) with
+  pkgconfig(mutter-clutter-6) BuildRequires following upstreams
+  changes.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:12:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
