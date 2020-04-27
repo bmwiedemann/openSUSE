@@ -1,8 +1,8 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 #
 
 
-%define pkgver %(v=%version; echo -n "${v//\./_}")
+%define pkgver 3_4_3
 %define libname libosdCPU%{pkgver}
 
 Name:           OpenSubdiv
-Version:        3.4.0
+Version:        3.4.3
 Release:        0
 Summary:        Subdivision surface evaluation library
 License:        Apache-2.0
 Group:          Productivity/Graphics/Visualization/Raytracers
-URL:            http://graphics.pixar.com/opensubdiv/docs/intro.html
-Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v3_4_0.tar.gz#/%{name}-3_4_0.tar.gz
+URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
+Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -72,6 +72,8 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}-%{pkgver}
+# work around linking glitch
+sed -i 's/${PLATFORM_GPU_LIBRARIES}/${PLATFORM_GPU_LIBRARIES} ${CMAKE_DL_LIBS}/' opensubdiv/CMakeLists.txt
 
 %build
 # sse options only on supported archs
