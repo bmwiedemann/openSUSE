@@ -51,6 +51,7 @@ This package contains files for developing applications using pybind11.
 Summary:        Development files for pybind11
 Requires:       %{name}-common-devel = %{version}
 Requires:       python-devel
+Requires:       python-pybind11 = %{version}
 
 %description devel
 This package contains files for developing applications using pybind11.
