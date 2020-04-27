@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:44:59 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Added remove-duplicate-typedef.patch to fix i586 build 
+
+-------------------------------------------------------------------
 Wed Nov 28 10:04:42 UTC 2018 - mvetter@suse.com
 
 - Update to 11.2:
