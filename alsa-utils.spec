@@ -30,6 +30,9 @@ Source1:        01beep.conf
 Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
 Patch1:         0001-alsaloop-reduce-cumulative-error-caused-by-non-atomi.patch
+Patch2:         0002-alsactl-don-t-exit-on-EINTR-from-epoll_wait.patch
+Patch3:         0003-alsactl-avoid-needless-wakeups-in-monitor-loop.patch
+Patch4:         0004-alsactl-fix-error-handling-for-sched_setscheduler-ca.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  alsa-topology-devel
@@ -71,6 +74,9 @@ and test audio before and after PM state changes.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action

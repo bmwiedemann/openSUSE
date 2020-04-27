@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:59:59 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes for alsactl:
+  0002-alsactl-don-t-exit-on-EINTR-from-epoll_wait.patch
+  0003-alsactl-avoid-needless-wakeups-in-monitor-loop.patch
+  0004-alsactl-fix-error-handling-for-sched_setscheduler-ca.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 14:48:05 CET 2020 - tiwai@suse.de
 
 - Update to alsa-utils 1.2.2; including previous fixes
