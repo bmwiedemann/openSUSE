@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2020-04-R1
+%define realver 2020-04-R2
 Name:           kismet
-Version:        2020_04_R1
+Version:        2020_04_R2
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later

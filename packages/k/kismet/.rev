@@ -394,4 +394,12 @@ better packaging for distros, and various other quirks.
   * Alerts can be defined (and triggered) via REST endpoints (forwarded request 796131 from mnhauke)</comment>
     <requestid>796267</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e2eaffaa437d758e3d1904a8e16ef751</srcmd5>
+    <version>2020_04_R2</version>
+    <time>1588023712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798200</requestid>
+  </revision>
 </revisionlist>
