@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:46:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to support clang 10:
+  * 0001-shiboken-Support-Clang-version-10.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 13:08:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.14.1

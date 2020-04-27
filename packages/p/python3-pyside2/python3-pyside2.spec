@@ -33,11 +33,14 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-
 Group:          Development/Languages/Python
 URL:            http://wiki.qt.io/Qt_for_Python
 Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-%{version}-src/pyside-setup-opensource-src-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
 Patch0:         lib64.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-Fix-the-openSUSE-executable-names.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-shiboken-Support-Clang-version-10.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -122,6 +125,7 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %setup -q -n pyside-setup-opensource-src-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
 %endif
