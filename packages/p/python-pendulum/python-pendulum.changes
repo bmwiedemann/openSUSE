@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:48:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Depend on python-dateutil not just dateutil to solve on Leap
+
+-------------------------------------------------------------------
 Mon Apr 20 10:58:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

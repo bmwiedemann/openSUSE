@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://pendulum.eustace.io
 # https://github.com/sdispater/pendulum/issues/453
 Source:         https://github.com/sdispater/pendulum/archive/%{version}.tar.gz
-BuildRequires:  %{python_module dateutil >= 2.6}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module pytz >= 2018.3}
 BuildRequires:  %{python_module pytzdata >= 2018.3}
 BuildRequires:  %{python_module setuptools}
