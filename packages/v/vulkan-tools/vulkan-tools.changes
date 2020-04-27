@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:32:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.137
+  * vulkaninfo: Fix lack of display throwing on linux
+  * cube: Pick non-SRGB surface formats first
+  * vulkaninfo: fix app bundle not finding loader
+
+-------------------------------------------------------------------
 Wed Apr  8 10:39:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.135
