@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:06:19 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.8 → 9.20.9
+
+-------------------------------------------------------------------
+Fri Apr 17 10:21:57 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed _get_grub2_mkconfig_tool
+
+  Last patch on this method breaks the search for alternative
+  mkconfig names. It returns always on the first lookup which
+  could be none. This breaks on systems that uses a different
+  name than grub2-mkconfig, like on Ubuntu.
+
+-------------------------------------------------------------------
+Thu Apr 16 12:13:39 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.7 → 9.20.8
+
+-------------------------------------------------------------------
+Thu Apr 16 11:52:26 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Increase spare space on disk repart
+
+  The sizing of the virtual cylinders in parted seems to be unfavorable,
+  as with some disks and SD cards here the device size is not a multiple
+  of the cylinder size, so the last incomplete cylinder is wasted.
+  If this wasted space is more than 5MiB, kiwi tries to resize indefinitely.
+  Therefore min_additional_mbytes gets increased to prevent running
+  into this situation. This Fixes bsc#1165823
+
+-------------------------------------------------------------------
+Thu Apr 16 11:24:28 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed return value from _get_grub2_mkconfig_tool
+
+  The method returned the basename of the tool if it could
+  be found by Path.which(). But the method's scope has been
+  changed in a way that the return value of the method must
+  be the result from Path.which() to allow working on the
+  full path name.
+
+-------------------------------------------------------------------
+Thu Apr 16 10:26:29 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.20.6 → 9.20.7
+
+-------------------------------------------------------------------
+Wed Apr 15 15:53:48 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Make CommandCapabilities.check_version take the longest match
+
+  This commit ensures that when trying to parse the version of a tool
+  the comparison is done with the longest match for the given regular
+  expression. This solves cases such in `grub2` where the tool name
+  already provides some digit that could be seen as a version.
+
+-------------------------------------------------------------------
+Wed Apr 15 11:20:45 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed check for grub mkconfig capabilities
+
+  The check for the capabilities of the tool were applied to
+  the tool installed on the host but the later call of the
+  tool will be done with the tool inside the image root
+
+-------------------------------------------------------------------
+Wed Apr 15 10:51:44 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Validate use of GRUB_USE_LINUXEFI
+
+  On systems that uses GRUB_USE_LINUXEFI with grub2 version
+  less than 2.04 there is no support for dynamic EFI
+  environment checking. In this condition we extend the grub
+  setup to add this support. The change kiwi does is as
+  follows:
+
+  * Apply only on grub < 2.04
+  1. Modify 10_linux to set linux/initrd as variables
+  2. Write hybrid setup as 01_efihybrid
+
+  This Fixes bsc#1165960 and bsc#1168480
+
+-------------------------------------------------------------------
+Tue Apr 14 16:25:48 CEST 2020 - Jan Löser <jan.loeser@elektrobit.com>
+
+- Fixed typo in docstring
+
+  Istall -> Install
+
+-------------------------------------------------------------------
+Sat Apr 11 18:18:02 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Create qcow2 images in two steps
+
+  The creation of the qcow2 format was done in one qemu-img
+  convert call. That call instructs qemu to compress and
+  convert in one call. The downside of this approach is that
+  not all qcow2 options can be used. For example the setup
+  of:
+
+  <type ... formatoptions="preallocation=metadata"/>
+
+  failed the build with an error message that compression and
+  preallocation is not possible at the same time. Thus this patch
+  changes the way the qcow2 image is created to be done in two
+  steps. The first step converts the format without compression
+  and therefore allows for any format option to be used. The
+  second call only applies the compression and leads to the
+  final result.
+
+-------------------------------------------------------------------
 Fri Apr 03 16:11:57 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.20.5 → 9.20.6
