@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-client
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_with     tests
 Name:           httpcomponents-client
-Version:        4.5.6
+Version:        4.5.12
 Release:        0
 Summary:        HTTP agent implementation based on httpcomponents HttpCore
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://hc.apache.org/
-Source0:        http://www.apache.org/dist/httpcomponents/httpclient/source/%{name}-%{version}-src.tar.gz
+URL:            https://hc.apache.org/
+Source0:        https://archive.apache.org/dist/httpcomponents/httpclient/source/%{name}-%{version}-src.tar.gz
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Use-system-copy-of-effective_tld_names.dat.patch
 Patch1:         %{name}-java8compat.patch
