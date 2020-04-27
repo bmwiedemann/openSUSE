@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 24 15:06:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.07
+  * net.c: move declaration of send_total recv_total fix build
+    failure
+
+-------------------------------------------------------------------
 Sun Mar  8 13:19:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash
