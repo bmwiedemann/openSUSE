@@ -17,7 +17,7 @@
 
 
 Name:           python
-Version:        2.7.17
+Version:        2.7.18
 Release:        0
 Summary:        Python Interpreter
 License:        Python-2.0

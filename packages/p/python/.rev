@@ -1386,4 +1386,35 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   %{so_version}) (bsc#1162224).</comment>
     <requestid>772516</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>ffa9a99641027e3922ee4354f7bc7733</srcmd5>
+    <version>2.7.18</version>
+    <time>1588023047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.18, final release of Python 2. Ever.:
+  - Newline characters have been escaped when performing uu
+    encoding to prevent them from overflowing into to content
+    section of the encoded file. This prevents malicious or
+    accidental modification of data during the decoding process.
+  - Fixes a ReDoS vulnerability in :mod:`http.cookiejar`. Patch
+    by Ben Caller.
+  - Fixed line numbers and column offsets for AST nodes for calls
+    without arguments in decorators.
+  - Disallow control characters in hostnames in http.client,
+    addressing CVE-2019-18348. Such potentially malicious header
+    injection URLs now cause a InvalidURL to be raised.
+  - Fix urllib.urlretrieve failing on subsequent ftp transfers
+    from the same host.
+  - Fix problems identified by GCC's -Wstringop-truncation
+    warning.
+  - AddRefActCtx() was needlessly being checked for failure in
+    PC/dl_nt.c.
+  - Prevent failure of test_relative_path in test_py_compile on
+    macOS Catalina.
+  - Fixed possible leak in :c:func:`PyArg_Parse` and similar
+    functions for format units &quot;es#&quot; and &quot;et#&quot; when the macro
+    :c:macro:`PY_SSIZE_T_CLEAN` is not defined.
+- Use python3-Sphinx on anything more recent than SLE-15 (inclusive).</comment>
+    <requestid>798115</requestid>
+  </revision>
 </revisionlist>

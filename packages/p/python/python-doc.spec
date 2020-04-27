@@ -17,7 +17,7 @@
 
 
 Name:           python-doc
-Version:        2.7.17
+Version:        2.7.18
 Release:        0
 Summary:        Additional Package Documentation for Python
 License:        Python-2.0
@@ -31,7 +31,11 @@ Source0:        %{tarname}.tar.xz
 #Source3:        http://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-letter.tar.bz2
 Source2:        python-%{version}-docs-pdf-a4.tar.bz2
 Source3:        python-%{version}-docs-pdf-letter.tar.bz2
+%if 0%{?suse_version} >= 1500
+BuildRequires:  python3-Sphinx
+%else
 BuildRequires:  python-Sphinx
+%endif
 BuildRequires:  xz
 # COMMON-PATCH-BEGIN
 Patch1:         python-2.7-dirs.patch

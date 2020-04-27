@@ -19,7 +19,7 @@
 %define so_version 2_7-1_0
 
 Name:           python-base
-Version:        2.7.17
+Version:        2.7.18
 Release:        0
 Summary:        Python Interpreter base package
 License:        Python-2.0

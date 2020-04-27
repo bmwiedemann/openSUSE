@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:56:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use python3-Sphinx on anything more recent than SLE-15 (inclusive).
+
+-------------------------------------------------------------------
+Thu Apr 23 09:17:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.7.18, final release of Python 2. Ever.:
+  - Newline characters have been escaped when performing uu
+    encoding to prevent them from overflowing into to content
+    section of the encoded file. This prevents malicious or
+    accidental modification of data during the decoding process.
+  - Fixes a ReDoS vulnerability in :mod:`http.cookiejar`. Patch
+    by Ben Caller.
+  - Fixed line numbers and column offsets for AST nodes for calls
+    without arguments in decorators.
+  - Disallow control characters in hostnames in http.client,
+    addressing CVE-2019-18348. Such potentially malicious header
+    injection URLs now cause a InvalidURL to be raised.
+  - Fix urllib.urlretrieve failing on subsequent ftp transfers
+    from the same host.
+  - Fix problems identified by GCC's -Wstringop-truncation
+    warning.
+  - AddRefActCtx() was needlessly being checked for failure in
+    PC/dl_nt.c.
+  - Prevent failure of test_relative_path in test_py_compile on
+    macOS Catalina.
+  - Fixed possible leak in :c:func:`PyArg_Parse` and similar
+    functions for format units "es#" and "et#" when the macro
+    :c:macro:`PY_SSIZE_T_CLEAN` is not defined.
+
+-------------------------------------------------------------------
+Sat Feb  8 23:29:28 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-9674-zip-bomb.patch to improve documentation
+  warning about dangers of zip-bombs and other security problems
+  with zipfile library. (bsc#1162825 CVE-2019-9674)
+
+-------------------------------------------------------------------
 Sat Feb  8 22:30:51 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Change to Requires: libpython%{so_version} == %{version}-%{release}
