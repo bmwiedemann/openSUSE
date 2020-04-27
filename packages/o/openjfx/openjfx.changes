@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:53:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 11.0.7, including April 2020 CPU
+  security fixes (bsc#1169511)
+
+-------------------------------------------------------------------
 Wed Jan 22 15:11:31 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of openjfx 11.0.6
