@@ -18,10 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
-# Test requires network connection
-%bcond_with     test
 Name:           python-aspectlib
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Aspect-oriented programming
 License:        BSD-2-Clause
@@ -31,17 +29,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-fields
-Recommends:     python-tornado
 BuildArch:      noarch
-%if %{with test}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tornado}
 %if %{with python2}
 BuildRequires:  python-mock
 BuildRequires:  python-trollius
-%endif
 %endif
 %ifpython2
 Requires:       python-trollius
@@ -57,6 +51,9 @@ framework.
 
 %prep
 %setup -q -n aspectlib-%{version}
+# both tests not working (the first skipped by design, the second needed old tornado)
+# don't pull in tornado when not needed
+rm tests/test_integrations_py3.py
 
 %build
 %python_build
@@ -65,10 +62,8 @@ framework.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 %pytest --ignore=src
-%endif
 
 %files %{python_files}
 %license LICENSE

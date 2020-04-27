@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:20:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.5.0
+  * Fixed ``weave`` to stop reading attributes that don't match the method selector.
+    Contributed by Jonas Maurus in `#14 <https://github.com/ionelmc/python-aspectlib/pull/14>`_.
+  * Added support for Python 3.7 and 3.8 (``async def`` functions and generators).
+  * Added a convenience ``weave`` fixture for pytest.
+- Launch tests
+
+-------------------------------------------------------------------
 Mon Mar 16 06:39:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
