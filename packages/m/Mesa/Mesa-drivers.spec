@@ -32,6 +32,10 @@
 # Note that if you actually need to render something, you need the packages
 # from Mesa-driver.
 
+%ifarch armv6l armv6hl
+%define _lto_cflags %{nil}
+%endif
+
 ##### WARNING: please do not edit this auto generated spec file. Use the Mesa.spec! #####
 %define drivers 1
 %define libglvnd 0
@@ -42,7 +46,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.0.4
+%define _version 20.0.5
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -110,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.0.4
+Version:        20.0.5
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -124,9 +128,7 @@ Source3:        README.updates
 Source4:        manual-pages.tar.bz2
 Source6:        %{name}-rpmlintrc
 Source7:        Mesa.keyring
-Patch1:         n_opencl_dep_libclang.patch
 Patch2:         n_add-Mesa-headers-again.patch
-Patch3:         U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -733,19 +735,7 @@ programs against the XA state tracker.
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
 
-%if 0%{with_llvm}
-%if 0%{?suse_version} >= 1550
-%if %{pkg_vcmp llvm-devel >= 9.0}
-%patch1 -p1
-%endif
-%else
-%if %{pkg_vcmp llvm9-devel >= 9.0}
-%patch1 -p1
-%endif
-%endif
-%endif
 %patch2 -p1
-%patch3 -p1
 %patch54 -p1
 %patch58 -p1
 

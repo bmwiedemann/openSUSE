@@ -4082,4 +4082,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * Fix Weston launch on tumbleweed by backporting commit bfb9c08e</comment>
     <requestid>791558</requestid>
   </revision>
+  <revision rev="377" vrev="249">
+    <srcmd5>0045dc4d0286c4c9c83f1105de64a36a</srcmd5>
+    <version>unknown</version>
+    <time>1588022934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.5
+  *  pretty big release with AMD and Intel drivers receiving the 
+     majority of the work.
+- supersedes U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
+- supersedes n_opencl_dep_libclang.patch
+
+- Disable LTO on armv6 to fix build</comment>
+    <requestid>797123</requestid>
+  </revision>
 </revisionlist>
