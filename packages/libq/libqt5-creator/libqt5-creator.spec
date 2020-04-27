@@ -15,9 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Enable the clangcodemodel plugin on openSUSE TW and Leap 15.2+, which have LLVM >= 8.0.
+%global build_clang_backend 0
+%ifarch %arm aarch64 %ix86 x86_64
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%global build_clang_backend 1
+%endif
+%endif
 
 Name:           libqt5-creator
-Version:        4.11.2
+Version:        4.12.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -29,10 +36,9 @@ Summary:        Integrated Development Environment targeting Qt apps
 License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only) AND GPL-3.0-only AND LGPL-3.0-only AND MIT AND BSD-3-Clause
 Group:          Development/Tools/IDE
 Url:            https://www.qt.io/ide/
-%define major_ver 4.11
+%define major_ver 4.12
 %define qt5_version 5.11.0
-%define tar_version 4.11.2
-# Change back from 'development_releases' to 'official_releases' for 4.11.0
+%define tar_version 4.12.0
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE
@@ -54,13 +60,10 @@ BuildRequires:  libqt5-qtwebengine-devel >= %{qt5_version}
 BuildRequires:  libqt5-qtx11extras-devel >= %{qt5_version}
 # Needs an internal patched version :-/
 # BuildRequires:  cmake(KF5SyntaxHighlighting)
-# Enable the clangcodemodel plugin on openSUSE TW and Leap 15.2+, which have LLVM >= 8.0.
-%ifarch %arm aarch64 %ix86 x86_64
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if %{build_clang_backend}
 BuildRequires:  llvm-clang-devel >= 8.0
 # clangcodemodel hardcodes clang include paths: QTCREATORBUG-21972
 %requires_eq    libclang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
-%endif
 %endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -97,6 +100,8 @@ This package contains all files from the Qt Creator source directory
 
 %prep
 %autosetup -p1 -n qt-creator-opensource-src-%{tar_version}
+# We have a separate package for qbs
+rm -r src/shared/qbs
 
 %build
 sed -i s,libexec/qtcreator,%{_lib}/qtcreator/libexec,g qtcreator.qbs
@@ -104,13 +109,7 @@ sed -i 's,libexec/qtcreator,$$IDE_LIBRARY_BASENAME/qtcreator/libexec,g' qtcreato
 # https://bugzilla.opensuse.org/962650
 sed -i s,libexec/qtcreator,%{_lib}/qtcreator/libexec,g src/plugins/coreplugin/icore.cpp
 
-# Enable the clangcodemodel plugin on openSUSE TW, which has LLVM >= 6.0.
-%ifarch %arm %ix86 x86_64
-%if 0%{?suse_version} > 1500
-opts="LLVM_INSTALL_DIR=%{_prefix}"
-%endif
-%endif
-opts="$opts IDE_LIBRARY_BASENAME=%{_lib}"
+opts="IDE_LIBRARY_BASENAME=%{_lib}"
 opts="$opts CONFIG+=use_system_botan"
 
 %qmake5 $opts
@@ -125,8 +124,6 @@ make INSTALL_ROOT=%{buildroot}/%{_prefix} install
 
 # Source Code Pro is packaged independently
 rm -r %{buildroot}%{_datadir}/qtcreator/fonts
-# Only relevant for macOS, needs python2
-rm -r %{buildroot}%{_libdir}/qtcreator/libexec/dmgbuild
 
 mkdir -p %{buildroot}%{_datadir}/doc/packages/qt5
 cp share/doc/qtcreator/qtcreator.qch %{buildroot}%{_datadir}/doc/packages/qt5/
@@ -161,8 +158,11 @@ EOF
 
 %files
 %license *GPL*
-%{_bindir}/*
+%{_bindir}/qtcreator
 %{_libdir}/qtcreator/
+%if %{build_clang_backend}
+%{_libdir}/qtcreator/libexec/clangbackend
+%endif
 %{_datadir}/qtcreator/
 %{_datadir}/icons/hicolor
 %{_datadir}/applications/org.qt-project.qtcreator.desktop

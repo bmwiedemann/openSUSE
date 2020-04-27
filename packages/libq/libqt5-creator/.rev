@@ -711,4 +711,20 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
   * Fixed debugging of Qt Quick tests (forwarded request 791122 from cgiboudeaux)</comment>
     <requestid>791125</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8b454cd33d012acbe027bcdec9458ffc</srcmd5>
+    <version>4.12.0</version>
+    <time>1588023125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.0:
+  * Added browser for Marketplace items to Welcome mode
+  * Added option to register documentation only for highest Qt version, and made that default
+  * Updated QML parser to Qt 5.15
+  * Changed to use separate Qbs executable instead of direcly linking to Qbs
+  * And much more. Full changelog on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.12.0.md?h=4.12
+- Dropped unneeded exporting of LLVM_INSTALL_DIR
+- Don't build the bundled Qbs anymore</comment>
+    <requestid>796783</requestid>
+  </revision>
 </revisionlist>

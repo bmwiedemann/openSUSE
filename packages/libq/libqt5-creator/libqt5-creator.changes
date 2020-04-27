@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:37:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 4.12.0:
+  * Added browser for Marketplace items to Welcome mode
+  * Added option to register documentation only for highest Qt version, and made that default
+  * Updated QML parser to Qt 5.15
+  * Changed to use separate Qbs executable instead of direcly linking to Qbs
+  * And much more. Full changelog on
+    https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.12.0.md?h=4.12
+- Dropped unneeded exporting of LLVM_INSTALL_DIR
+- Don't build the bundled Qbs anymore
+
+-------------------------------------------------------------------
 Wed Apr  1 08:47:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.11.2.
