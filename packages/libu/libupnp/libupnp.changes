@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:37:33 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to version 1.12.1:
+    * #129: Remove and replace the list.h file
+    * Reduce spurious HTTP 416 errors due to ill-defined bytes header
+    * #138: Use stdbool.h instead of BOOL typedef and defines
+    * #140: Remove IN, OUT and INOUT defines
+    * #129: Remove and replace the list.h file
+    * and many more, see ChangeLog
+- Bump libpnpn defines to 16 following upstream changes (also in
+  baselibs.conf).
+- ChangeLog installed with devel package, not libXY ones
+
+
+-------------------------------------------------------------------
 Mon Dec 30 14:37:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.1:
