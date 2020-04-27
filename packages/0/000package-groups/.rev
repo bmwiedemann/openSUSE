@@ -801,4 +801,12 @@ used in eg. patterns in a reusable way. The product has to hint what
 it wants then though.</comment>
     <requestid>795732</requestid>
   </revision>
+  <revision rev="112" vrev="110">
+    <srcmd5>66c288b22973b11a46a48cd3481de941</srcmd5>
+    <version>unknown</version>
+    <time>1588022959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797205</requestid>
+  </revision>
 </revisionlist>
