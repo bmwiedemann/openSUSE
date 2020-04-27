@@ -1711,4 +1711,16 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795024 from iznogood)</comment>
     <requestid>795179</requestid>
   </revision>
+  <revision rev="227" vrev="10">
+    <srcmd5>03e4d5233756eb8ebef2082debf9d4b3</srcmd5>
+    <version>3.34.1</version>
+    <time>1588022940</time>
+    <user>dimstar_suse</user>
+    <comment>- Burnish gdm-look-for-session-based-on-pid-first.patch according
+  to the upstream change (bsc#1159950, glgo#GNOME/gdm#526).
+
+- Disable gnome-initial-setup under gdm mode in Leap and SLE
+  (jsc#SLE-11856). (forwarded request 797868 from yfjiang)</comment>
+    <requestid>798354</requestid>
+  </revision>
 </revisionlist>

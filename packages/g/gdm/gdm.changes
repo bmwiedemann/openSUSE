@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:42:29 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Burnish gdm-look-for-session-based-on-pid-first.patch according
+  to the upstream change (bsc#1159950, glgo#GNOME/gdm#526).
+
+-------------------------------------------------------------------
+Wed Apr 22 01:32:07 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Disable gnome-initial-setup under gdm mode in Leap and SLE
+  (jsc#SLE-11856).
+
+-------------------------------------------------------------------
+Sat Apr 18 16:12:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gdm-Use-pkg-config-for-keyutils.patch: configure: Use
+  pkg-config to look for keyutils. Following this, replace
+  keyutils-devel pkgconfig(libkeyutils) BuildRequires.
+- Rebase/refresh patches with quilt.
+
+-------------------------------------------------------------------
 Sat Apr 11 22:24:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable testsuite: Add check section and run make_build check.

@@ -1,8 +1,8 @@
-Index: gdm-3.31.91/common/Makefile.am
+Index: gdm-3.34.1/common/Makefile.am
 ===================================================================
---- gdm-3.31.91.orig/common/Makefile.am	2019-02-21 20:44:14.000000000 +0100
-+++ gdm-3.31.91/common/Makefile.am	2019-02-27 07:44:47.645367708 +0100
-@@ -46,11 +46,15 @@ libgdmcommon_la_SOURCES =	\
+--- gdm-3.34.1.orig/common/Makefile.am
++++ gdm-3.34.1/common/Makefile.am
+@@ -45,11 +45,15 @@ libgdmcommon_la_SOURCES =	\
  	gdm-settings-backend.h	\
  	gdm-settings-desktop-backend.c 	\
  	gdm-settings-desktop-backend.h	\
@@ -18,10 +18,10 @@ Index: gdm-3.31.91/common/Makefile.am
  	gdm-log.h		\
  	gdm-log.c		\
  	$(NULL)
-Index: gdm-3.31.91/common/gdm-settings-system-backend.c
+Index: gdm-3.34.1/common/gdm-settings-system-backend.c
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ gdm-3.31.91/common/gdm-settings-system-backend.c	2019-02-27 07:44:47.645367708 +0100
+--- /dev/null
++++ gdm-3.34.1/common/gdm-settings-system-backend.c
 @@ -0,0 +1,369 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -392,10 +392,10 @@ Index: gdm-3.31.91/common/gdm-settings-system-backend.c
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
-Index: gdm-3.31.91/common/gdm-settings-system-backend.h
+Index: gdm-3.34.1/common/gdm-settings-system-backend.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ gdm-3.31.91/common/gdm-settings-system-backend.h	2019-02-27 07:44:47.645367708 +0100
+--- /dev/null
++++ gdm-3.34.1/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -453,10 +453,10 @@ Index: gdm-3.31.91/common/gdm-settings-system-backend.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
-Index: gdm-3.31.91/common/gdm-settings.c
+Index: gdm-3.34.1/common/gdm-settings.c
 ===================================================================
---- gdm-3.31.91.orig/common/gdm-settings.c	2019-02-21 20:44:14.000000000 +0100
-+++ gdm-3.31.91/common/gdm-settings.c	2019-02-27 07:44:47.645367708 +0100
+--- gdm-3.34.1.orig/common/gdm-settings.c
++++ gdm-3.34.1/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
  
@@ -474,10 +474,10 @@ Index: gdm-3.31.91/common/gdm-settings.c
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
-Index: gdm-3.31.91/common/gdm-sysconfig.c
+Index: gdm-3.34.1/common/gdm-sysconfig.c
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ gdm-3.31.91/common/gdm-sysconfig.c	2019-02-27 07:44:47.645367708 +0100
+--- /dev/null
++++ gdm-3.34.1/common/gdm-sysconfig.c
 @@ -0,0 +1,484 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -963,10 +963,10 @@ Index: gdm-3.31.91/common/gdm-sysconfig.c
 +        g_strfreev (lines);
 +        return result;
 +}
-Index: gdm-3.31.91/common/gdm-sysconfig.h
+Index: gdm-3.34.1/common/gdm-sysconfig.h
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ gdm-3.31.91/common/gdm-sysconfig.h	2019-02-27 07:44:47.645367708 +0100
+--- /dev/null
++++ gdm-3.34.1/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -1011,10 +1011,10 @@ Index: gdm-3.31.91/common/gdm-sysconfig.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
-Index: gdm-3.31.91/data/gdm.conf-custom.in
+Index: gdm-3.34.1/data/gdm.conf-custom.in
 ===================================================================
---- gdm-3.31.91.orig/data/gdm.conf-custom.in	2019-02-21 20:44:14.000000000 +0100
-+++ gdm-3.31.91/data/gdm.conf-custom.in	2019-02-27 07:44:47.649367731 +0100
+--- gdm-3.34.1.orig/data/gdm.conf-custom.in
++++ gdm-3.34.1/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#

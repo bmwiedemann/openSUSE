@@ -67,6 +67,9 @@ Patch14:        gdm-switch-user-tty7.patch
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
 # PATCH-FIX-UPSTREAM gdm-look-for-session-based-on-pid-first.patch bsc#1159950 glgo#GNOME/gdm#526 yfjiang@suse.com -- Look for session based on pid first, then fall back to the uid based approach
 Patch16:        gdm-look-for-session-based-on-pid-first.patch
+# PATCH-FIX-UPSTREAM gdm-Use-pkg-config-for-keyutils.patch -- configure: Use pkg-config to look for keyutils
+Patch17:        gdm-Use-pkg-config-for-keyutils.patch
+
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
@@ -76,7 +79,6 @@ BuildRequires:  dconf
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  gnome-session-core
-BuildRequires:  keyutils-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
@@ -96,6 +98,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.4
+BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ply-boot-client)
 BuildRequires:  pkgconfig(x11)
@@ -224,9 +227,10 @@ cp %{SOURCE8} .
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
-# SLE-only patches start at 1000
-%if !0%{?is_opensuse}
+# SLE and Leap only patches start at 1000
+%if 0%{?sle_version}
 %patch1000 -p1
 %endif
 

@@ -1,4 +1,4 @@
-From 82c3c9bbe924c43e93e74cd622207a54bc44962c Mon Sep 17 00:00:00 2001
+From 32646105196ed7a687f3684b69ea544dd01d2ade Mon Sep 17 00:00:00 2001
 From: Benjamin Berg <bberg@redhat.com>
 Date: Thu, 23 Jan 2020 14:32:38 +0100
 Subject: [PATCH] manager: Try looking up session based on PID first
@@ -22,7 +22,7 @@ See: #526
  4 files changed, 32 insertions(+), 9 deletions(-)
 
 diff --git a/common/gdm-common.c b/common/gdm-common.c
-index 41bdb389..d13cf618 100644
+index 41bdb389..b8de7555 100644
 --- a/common/gdm-common.c
 +++ b/common/gdm-common.c
 @@ -497,7 +497,7 @@ goto_login_session (GDBusConnection  *connection,
@@ -41,7 +41,7 @@ index 41bdb389..d13cf618 100644
 -gdm_find_display_session_for_uid (const uid_t uid,
 -                                  char      **out_session_id,
 -                                  GError    **error)
-+gdm_find_display_session (int         pid,
++gdm_find_display_session (GPid        pid,
 +                          const uid_t uid,
 +                          char      **out_session_id,
 +                          GError    **error)
@@ -61,15 +61,15 @@ index 41bdb389..d13cf618 100644
 +         */
 +        res = sd_pid_get_session (pid, &local_session_id);
 +        if (res >= 0) {
-+                g_debug ("Found session %s for PID %d, using", local_session_id, pid);
++                g_debug ("GdmCommon: Found session %s for PID %d, using", local_session_id, pid);
 +
 +                *out_session_id = g_strdup (local_session_id);
-+                g_free (local_session_id);
++                free (local_session_id);
 +
 +                return TRUE;
 +        } else {
 +                if (res != -ENODATA)
-+                        g_warning ("Failed to retrieve session information for pid %d: %s",
++                        g_warning ("GdmCommon: Failed to retrieve session information for pid %d: %s",
 +                                   pid, strerror (-res));
 +        }
 +
@@ -77,7 +77,7 @@ index 41bdb389..d13cf618 100644
  
          n_sessions = sd_uid_get_sessions (uid,
 diff --git a/common/gdm-common.h b/common/gdm-common.h
-index 5c3fe137..3d037d68 100644
+index 5c3fe137..001b70c1 100644
 --- a/common/gdm-common.h
 +++ b/common/gdm-common.h
 @@ -51,9 +51,10 @@ int            gdm_wait_on_and_disown_pid (int pid,
@@ -87,7 +87,7 @@ index 5c3fe137..3d037d68 100644
 -gboolean       gdm_find_display_session_for_uid (const uid_t uid,
 -                                                 char      **out_session_id,
 -                                                 GError    **error);
-+gboolean       gdm_find_display_session (int         pid,
++gboolean       gdm_find_display_session (GPid        pid,
 +                                         const uid_t uid,
 +                                         char      **out_session_id,
 +                                         GError    **error);
@@ -121,5 +121,4 @@ index 3a33fcbb..20235fd8 100644
  
                  return FALSE;
 -- 
-2.24.1
-
+2.26.2

@@ -8,11 +8,11 @@ Closes #532
  daemon/gdm-session-worker.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/daemon/gdm-session-worker.c b/daemon/gdm-session-worker.c
-index 1319907e..0ca3dd0c 100644
---- a/daemon/gdm-session-worker.c
-+++ b/daemon/gdm-session-worker.c
-@@ -2201,7 +2201,7 @@ set_up_for_new_vt (GdmSessionWorker *worker)
+Index: gdm-3.34.1/daemon/gdm-session-worker.c
+===================================================================
+--- gdm-3.34.1.orig/daemon/gdm-session-worker.c
++++ gdm-3.34.1/daemon/gdm-session-worker.c
+@@ -2201,7 +2201,7 @@ set_up_for_new_vt (GdmSessionWorker *wor
                  return FALSE;
          }
  
@@ -21,6 +21,3 @@ index 1319907e..0ca3dd0c 100644
                  session_vt = GDM_INITIAL_VT;
          } else {
                  if (ioctl(fd, VT_OPENQRY, &session_vt) < 0) {
--- 
-2.16.4
-

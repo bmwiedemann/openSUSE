@@ -1,8 +1,8 @@
-diff --git a/data/61-gdm.rules.in b/data/61-gdm.rules.in
-index ad5b87d..f964259 100644
---- a/data/61-gdm.rules.in
-+++ b/data/61-gdm.rules.in
-@@ -4,3 +4,12 @@ ATTR{vendor}=="0x1013", ATTR{device}=="0x00b8", ATTR{subsystem_vendor}=="0x1af4"
+Index: gdm-3.34.1/data/61-gdm.rules.in
+===================================================================
+--- gdm-3.34.1.orig/data/61-gdm.rules.in
++++ gdm-3.34.1/data/61-gdm.rules.in
+@@ -4,3 +4,12 @@ ATTR{vendor}=="0x1013", ATTR{device}=="0
  ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", RUN+="@libexecdir@/gdm-disable-wayland"
  # disable Wayland when using the proprietary nvidia driver
  DRIVER=="nvidia", RUN+="@libexecdir@/gdm-disable-wayland"
