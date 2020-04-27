@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 25 06:01:10 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.7 development release
+  - Wine Mono engine updated to 5.0.0, with upstream WPF support.
+  - More progress on the WineD3D Vulkan backend.
+  - Beginnings of a USB device driver.
+  - Support for building with Clang in MSVC mode.
+  - Builtin modules no longer depend on libwine.
+  - Support for configuring Windows version from the command line.
+  - Various bug fixes.
+- update staging to 5.7 release
+- libusb build requires
+
+-------------------------------------------------------------------
 Sat Apr 11 08:45:21 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.6 development release
