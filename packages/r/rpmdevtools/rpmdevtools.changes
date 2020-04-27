@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:50:20 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Switch to python 3:
+  * Require python3-rpm instead of python2-rpm
+  * Add python3-shebang.patch to run python scripts with python3
+  * Add rmdevelrpms_fix_filename_search.patch to add compatibility
+    with both newer and older rpm binding
+  * Backport upstream commits 2ddae80, 693c954 and ea772da as
+    rmdevelrpms_use_more_raw_strings.patch
+    bumpspec_checksig_avoid_python_3.6_regex_related_deprecations.patch
+    limit_newversion_re.sub_to_a_single_replacement.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 07:31:07 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Clean up spec file with spec-cleaner

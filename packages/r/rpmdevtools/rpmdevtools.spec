@@ -31,9 +31,19 @@ Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE suse-specfile.patch -- Apply fix to comply to http://en.opensuse.org/openSUSE:Specfile_guidelines
 Patch0:         suse-specfile.patch
 Patch1:         dont-drop-Groups.patch
+# PATCH-FIX-OPENSUSE python3-shebang.patch -- Run python scripts with python3
+Patch2:         python3-shebang.patch
+# PATCH-FIX-UPSTREAM rmdevelrpms_use_more_raw_strings.patch -- Backport of commit 2ddae80 for python3
+Patch3:         rmdevelrpms_use_more_raw_strings.patch
+# PATCH-FIX-UPSTREAM bumpspec_checksig_avoid_python_3.6_regex_related_deprecations.patch -- Backport of commit 693c954 for python3
+Patch4:         bumpspec_checksig_avoid_python_3.6_regex_related_deprecations.patch
+# PATCH-FIX-UPSTREAM limit_newversion_re.sub_to_a_single_replacement.patch -- Backport of commit ea772da for python3
+Patch5:         limit_newversion_re.sub_to_a_single_replacement.patch
+# PATCH-FIX-OPENSUSE rmdevelrpms_fix_filename_search.patch -- Add compat with both newer and older rpm binding
+Patch6:         rmdevelrpms_fix_filename_search.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
-BuildRequires:  python2-rpm
+BuildRequires:  python3-rpm
 BuildRequires:  pkgconfig(bash-completion)
 # Required for bash-completion
 Requires:       bash-completion
@@ -43,7 +53,7 @@ Requires:       curl
 # Minimal RPM build requirements
 Requires:       distribution-release
 Requires:       fakeroot
-Requires:       python2-rpm
+Requires:       python3-rpm
 BuildArch:      noarch
 
 %description
@@ -65,6 +75,7 @@ rpmdev-bumpspec     Bump revision in specfile
 
 %prep
 %autosetup -p1
+
 cp -a %{SOURCE1} template.init
 
 # Use the "rpmdev-" prefix for spectool that conflicts with Redhat spectool
