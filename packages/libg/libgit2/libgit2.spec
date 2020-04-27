@@ -17,9 +17,10 @@
 #
 
 
-%define sover 28
+%define sover 1_0
+
 Name:           libgit2
-Version:        0.28.5
+Version:        1.0.0
 Release:        0
 Summary:        C git library
 License:        GPL-2.0 WITH GCC-exception-2.0
@@ -27,6 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://libgit2.github.com/
 Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+
 BuildRequires:  cmake >= 2.8
 BuildRequires:  http-parser-devel
 BuildRequires:  pkgconfig
@@ -61,14 +63,15 @@ This package contains all necessary include files and libraries needed
 to compile and develop applications that use libgit2.
 
 %prep
-%setup -q
+%autosetup -p1
 find examples -type f -name ".gitignore" -print -delete
 
 %build
 %cmake \
-    -DTHREADSAFE:BOOL=ON \
-    -DUSE_SSH:BOOL=ON \
-    -DUSE_SHA1DC:BOOL=ON
+	-DTHREADSAFE:BOOL=ON \
+	-DUSE_SSH:BOOL=ON \
+	-DUSE_SHA1DC:BOOL=ON \
+	%{nil}
 %cmake_build
 
 %install
@@ -80,7 +83,7 @@ find examples -type f -name ".gitignore" -print -delete
 %files -n %{name}-%{sover}
 %license COPYING
 %doc AUTHORS README.md
-%{_libdir}/%{name}.so.*%{sover}*
+%{_libdir}/%{name}.so.*
 
 %files devel
 %doc examples
