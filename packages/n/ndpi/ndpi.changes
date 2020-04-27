@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 17:25:05 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Add upstream patch to fix ntopng build failure (ntopng#3675)
+  001-Refresh-of-ndpi_netbios_name_interpret.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 21:03:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2

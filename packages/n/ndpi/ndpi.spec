@@ -31,6 +31,7 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ntop/nDPI
 Source:         https://github.com/ntop/nDPI/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         001-Refresh-of-ndpi_netbios_name_interpret.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -88,6 +89,7 @@ This package contains the ndpiReader binary.
 
 %prep
 %setup -q -n nDPI-%{version}
+%patch0 -p1
 
 %build
 sh autogen.sh
