@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:25:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Pull sources with source service in order to have the right
+  revisions of submodules
+- Added patch:
+  * xgboost-fix-big-endian.patch
+    + flip default from little endian to big endian on big endian
+      architectures
+
+-------------------------------------------------------------------
 Fri Mar  6 11:08:29 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of xgboost 0.90

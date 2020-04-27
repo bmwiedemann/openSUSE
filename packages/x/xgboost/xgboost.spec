@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%global dlmc_core_version 0.3
-%global rabit_version 0.1
 Name:           xgboost
 Version:        0.90
 Release:        0
 Summary:        Gradient Boosting (GBDT, GBRT or GBM) Library
 License:        Apache-2.0
 URL:            https://github.com/dmlc/%{name}
-Source0:        https://github.com/dmlc/%{name}/archive/v%{version}.tar.gz
-Source1:        https://github.com/dmlc/dmlc-core/archive/v%{dlmc_core_version}.tar.gz
-Source2:        https://github.com/dmlc/rabit/archive/v%{rabit_version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         xgboost-fix-big-endian.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,12 +53,9 @@ BuildArch:      noarch
 
 %prep
 %setup -q
-pushd dmlc-core
-tar --strip-components=1 -xf %{SOURCE1}
-popd
-pushd rabit
-tar --strip-components=1 -xf %{SOURCE2}
-popd
+%ifarch s390x ppc64
+%patch0
+%endif
 pushd jvm-packages
 %pom_remove_plugin :scalatest-maven-plugin
 %pom_remove_plugin :scalastyle-maven-plugin
