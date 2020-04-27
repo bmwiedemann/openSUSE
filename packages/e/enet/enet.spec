@@ -1,7 +1,7 @@
 #
 # spec file for package enet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           enet
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        Network Communication Layer on Top of UDP
 License:        MIT
