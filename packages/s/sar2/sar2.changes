@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 26 13:30:00 UTC 2020 - code@hector.link
+
+- Update to version 2.4.0:
+  * Improvements to the Joystick system, adding new Rudder+Brakes mode, moving to libSDL2 and cleaning up unused menu settings.
+  * Fix lagging when aircraft is landed.
+  *  Honor wheel brake coefficient.
+
+-------------------------------------------------------------------
 Tue Jun 12 21:09:13 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to version 2.3.3:

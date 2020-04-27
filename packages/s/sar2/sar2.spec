@@ -1,7 +1,7 @@
 #
 # spec file for package sar2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sar2
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Rescue Helicopter Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
-Url:            https://searchandrescue2.github.io/sar2/
-Source:         https://github.com/SearchAndRescue2/sar2/archive/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://searchandrescue2.github.io/sar2/
+Source:         https://github.com/SearchAndRescue2/sar2/archive/v%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  fdupes
 BuildRequires:  freealut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL-devel
+BuildRequires:  libSDL2-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  scons

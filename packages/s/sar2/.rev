@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>618004</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1910983ab370d0548cf51d7db49148a</srcmd5>
+    <version>2.4.0</version>
+    <time>1588023500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0:
+  * Improvements to the Joystick system, adding new Rudder+Brakes mode, moving to libSDL2 and cleaning up unused menu settings.
+  * Fix lagging when aircraft is landed.
+  *  Honor wheel brake coefficient.
+</comment>
+    <requestid>797881</requestid>
+  </revision>
 </revisionlist>
