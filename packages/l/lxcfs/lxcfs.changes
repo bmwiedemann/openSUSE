@@ -12,6 +12,7 @@ Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
   * Improved command line options
   * Compiler based hardening
   * Minimal compiler based resource management
+- Clean up %if macro.
 
 -------------------------------------------------------------------
 Mon Feb  3 15:02:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

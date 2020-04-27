@@ -17,7 +17,7 @@
 
 
 # On pre-15 SLE versions, _sharedstatedir was /usr/com -- which is just wrong.
-%if 0%{suse_version} < 1500
+%if 0%{?suse_version} < 1500
 %define _sharedstatedir /var/lib
 %endif
 
