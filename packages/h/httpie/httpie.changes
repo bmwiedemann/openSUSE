@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 18 11:41:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  * Added --path-as-is to bypass dot segment (/../ or /./) URL
+    squashing.
+  * Changed the default value Accept header value for JSON requests
+    from application/json, */* to application/json, */*;q=0.5 to
+    clearly indicate preference.
+  * Fixed --form file upload mixed with redirected stdin error
+    handling.
+
+-------------------------------------------------------------------
 Tue Mar 31 16:59:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
