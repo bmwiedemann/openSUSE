@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-streamz
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mrocklin/streamz/
+URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,9 +45,9 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module confluent-kafka}
-BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask-distributed}
+BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module networkx}
@@ -80,14 +80,14 @@ Streamz helps you build pipelines to manage continuous streams of data.
 rm -rf build _build.*
 # Tests assume 64bit numbers
 %ifarch x86_64
-%{python_expand rm -rf build _build.* 
-pytest-%{$python_bin_suffix}
-}
+rm -rf build _build.*
+%pytest
 %endif
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/streamz
+%{python_sitelib}/streamz-%{version}-py*.egg-info
 
 %changelog

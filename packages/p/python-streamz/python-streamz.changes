@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:26:25 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * updated url
+  * use %pytest macro
+
+- update to version 0.5.3:
+  * fix some streams overwriting Stream.buffer method closes #317
+  * Fixed flake8 issue and added comments to metadata tests
+  * Created more elegant solution for getting the metadata out of the
+    stream for tests
+  * make sure collection functions emit metadata as a flat list added
+    tests for metadata output
+  * Use only auto.offset.reset for latest functionality; add doc links
+  * Fix key error in consumer configs
+  * Consider Kafka consumer configurations
+  * Revert multi-kafka changes
+  * Multi-kafka failover
+  * Fix test for latest parameter
+  * Add the latest parameter to from_kafka_batched
+  * Add max_batch_size test
+  * Add max_batch_size parameter to from_kafka_batched
+  * Fix key tests
+  * Adding keys PR code again
+  * Fix collections.abc deprecation warnings
+  * Added documentation for Metadata and reference counting.
+  * Removed keys parameter from Kafka code and fixed Kafka tests
+  * Added documentation and cleaned up reference counter code
+  * Added reference counting and Kafka checkpointing
+  * Add keys to from_kafka_batched doc string
+  * Make extracting Kafka keys optional
+  * Fix rolling aggregate test to increase coverage
+  * Make Kafka message key,value a dict output
+  * Removing deprecated usage of renaming columns with agg()
+  * Fix pandas warning for deprecated usage of pd.DatetimeIndex
+  * Correctly forming key, value tuples for Kafka messages
+  * Update Kafka tests to incorporate message key
+  * Read key along with value for messages from Kafka
+  * Add reference to cuDF DataFrames support
+  * Update links to rst format
+  * Add reference to cuDF DataFrames support
+  * Update dataframes.rst
+  * STREAMZ-293: Added vscode to list of gitignore directories. This
+    closes# 293
+  * Update core.rst
+  * Update core.py
+  * Configured Travis CI to use the new conda environment file instead
+    of manually installing them. Also added a few more dependencies to
+    the environment file that were missed
+  * Removed cython from conda environment file as it was left their by
+    mistake
+  * Added docs requirements to conda environment file
+  * Added base Conda environment yml file
+  * fix networkx error
+  * add installation docs
+  * fix stale docstring in `streamz.unique`.
+  * Remove cudf tests, since they would now live to
+    RAPIDS/cudf/custreamz.
+  * Fix directory structure for checkpointing (2)
+  * Added cleanup of old checkpoints
+  * Add directory structure for checkpointing
+  * Checkpointing feature added
+  * Add groupby aggregate tests, along with a few additons for cudf
+    integration for SDFs
+  * Update build status image url in readme
+  * update url in setup
+
+-------------------------------------------------------------------
 Fri Sep 13 15:04:15 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.5.2
