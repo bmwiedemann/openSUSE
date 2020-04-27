@@ -17,7 +17,7 @@
 
 
 Name:           tilda
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        A Gtk based drop down terminal for Linux and Unix
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libconfuse)
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(vte-2.91)
 Recommends:     %{name}-lang
 
@@ -66,8 +67,8 @@ NOCONFIGURE=1 ./autogen.sh
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
 
