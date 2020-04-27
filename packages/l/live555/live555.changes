@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:12:15 UTC 2020 - munix9@googlemail.com
+
+- Added pkgconfig(openssl) as a requirement for the devel package:
+  iveMedia/TLSState.hh #includes openssl/ssl.h.
+
+-------------------------------------------------------------------
 Tue Apr 14 13:41:31 UTC 2020 - munix9@googlemail.com
 
 - Update to version 2020.04.12:

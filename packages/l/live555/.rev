@@ -149,4 +149,13 @@
     <comment></comment>
     <requestid>793903</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3535ef8a831765b42dcc2a1af40e5ac2</srcmd5>
+    <version>2020.04.12</version>
+    <time>1588022978</time>
+    <user>dimstar_suse</user>
+    <comment>- Added pkgconfig(openssl) as a requirement for the devel package:
+  iveMedia/TLSState.hh #includes openssl/ssl.h.</comment>
+    <requestid>796439</requestid>
+  </revision>
 </revisionlist>

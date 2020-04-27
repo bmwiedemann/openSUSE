@@ -80,7 +80,9 @@ Group:          Development/Languages/C and C++
 Requires:       libBasicUsageEnvironment1 = %{version}
 Requires:       libUsageEnvironment3 = %{version}
 Requires:       libgroupsock8 = %{version}
-Requires:       libliveMedia%{lmdmaj} =  %{version}
+Requires:       libliveMedia%{lmdmaj} = %{version}
+Requires:       pkgconfig
+Requires:       pkgconfig(openssl)
 
 %description devel
 This code forms a set of C++ libraries for multimedia streaming,
