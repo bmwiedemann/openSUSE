@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 11:52:17 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Fix gnome shell version requirements since upstream supports 
+  single gnome-shell version only.
+- Clean gnome-pomodoro.spec with spec-cleaner.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:35:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:

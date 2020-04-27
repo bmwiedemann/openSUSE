@@ -17,22 +17,21 @@
 
 
 %global __requires_exclude typelib\\(Meta\\)
-
 Name:           gnome-pomodoro
 Version:        0.17.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
-URL:            http://gnomepomodoro.org
+URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
-
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell >= 3.16.0
+BuildRequires:  gnome-shell < 3.37.0
+BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
@@ -47,7 +46,8 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell >= 3.16.0
+Requires:       gnome-shell < 3.37.0
+Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
 Requires:       hicolor-icon-theme
@@ -66,7 +66,7 @@ intends to improve productivity and focus by taking short breaks after every
 %build
 NOCONFIGURE=1 ./autogen.sh
 LDFLAGS="-Wl,--as-needed" %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} INSTALL="install -p"

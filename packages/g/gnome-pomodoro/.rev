@@ -164,4 +164,19 @@
   * Updated Catalan translation (thanks @antoniofsm) (forwarded request 787368 from jubalh)</comment>
     <requestid>789267</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>833c1546316822c91198bb549298b4ef</srcmd5>
+    <version>0.17.0</version>
+    <time>1588023781</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes gnome shell version requirements in line with upstream gnome-shell support.
+
+As of not sure when, upstream changed its' gnome-shell support policy to 
+&quot;supporting single gnome-shell version only&quot;, which rendered 0.17.0 unusable in 
+recent Tumbleweed (which has g-s 3.34). This request intentionally makes the 
+package unresolvable in recent Tubmleweed (20200419 at the time of submitting) 
+which is only a reflection of such policy since gnome-shell pomodoro extension 
+doesn't work anyway. (forwarded request 796279 from develop7)</comment>
+    <requestid>798370</requestid>
+  </revision>
 </revisionlist>
