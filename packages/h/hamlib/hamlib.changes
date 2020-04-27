@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 25 07:58:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not build python2 bindings for Tumbleweed
+- Modernise spec file
+
+-------------------------------------------------------------------
 Thu Aug 30 19:01:52 UTC 2018 - mardnh@gmx.de
 
 - Update to version 3.3

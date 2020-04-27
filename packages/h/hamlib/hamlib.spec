@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,6 @@ URL:            http://hamlib.sourceforge.net
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hamlib-3.0-perl_install.patch -- patch from Fedora
 Patch0:         hamlib-3.0-perl_install.patch
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  makeinfo
@@ -40,10 +39,13 @@ BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(tcl)
-Requires(post): info
-Requires(preun): info
+%if 0%{?suse_version} <= 1500
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig(python2)
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
+%endif
 
 %description
 The Ham Radio Control Libraries (Hamlib) provide a programming
@@ -86,6 +88,7 @@ Group:          Development/Libraries/Other
 Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
+%if 0%{?suse_version} <= 1500
 %package -n python-Hamlib
 Summary:        Python bindings for Hamlib
 Group:          Development/Libraries/Python
@@ -93,6 +96,7 @@ Group:          Development/Libraries/Python
 %description -n python-Hamlib
 Hamlib provide a programming interface for controlling radios and
 other shack hardware.
+%endif
 
 %package -n tcl-Hamlib
 Summary:        Tcl bindings for Hamlib
@@ -121,9 +125,11 @@ autoreconf -fiv
   --with-perl-binding \
   --with-tcl-binding \
   --with-lua-binding \
+  %if 0%{?suse_version} <= 1500
   --with-python-binding \
+  %endif
   --with-xml-support
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -134,10 +140,12 @@ rm %{buildroot}%{perl_vendorarch}/auto/Hamlib/.packlist
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
+%if 0%{?suse_version} <= 1500
 %fdupes %{buildroot}%{python_sitearch}
+%endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
@@ -192,9 +200,11 @@ make %{?_smp_mflags} check
 %files -n lua-Hamliblua
 %{_libdir}/lua
 
+%if 0%{?suse_version} <= 1500
 %files -n python-Hamlib
 %{python_sitearch}/Hamlib.*
 %{python_sitearch}/_Hamlib.*
+%endif
 
 %files -n tcl-Hamlib
 %dir %{_libdir}/tcl*/
