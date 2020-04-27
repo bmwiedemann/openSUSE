@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:30:05 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1587822981.75468e7ef:
+  * Fix exit code returned by client
+  * Rename YAMLRenderer plugin to YAML
+  * Update all overlooked old copyright notices
+  * Add soft failure support for JUnit log parser
+  * Dependency cron 200424
+  * Fix a very sporadic issue of a wrong comment header applied
+  * openqa-clone-custom-git-refspec: Prevent warning about empty variable
+  * Improve warning about undefined empty arg on clone with quotes
+  * Improve the check for missing assets
+  * tests: deduplicate $schema->resultset('Jobs') in t/15-assets.t
+  * Remove a small race condition in asset tests
+  * Set the machine name before expanding specified variables
+  * Extract duplicated code from generating job settings
+  * Dependency cron 200423
+  * Check if there is a recent event before returning it
+  * Correct creating directly chained dependencies when cloning job
+  * Extend client test for JSON/YAML output and error handling
+  * Cover client with more tests by extracting methods into lib/
+  * t: Split out Client::Archive test from generic client test
+  * Add simple test for client script
+  * Slightly simplify script/client
+  * Fix repo in dirty status request in ObsRsync Plugin
+
+-------------------------------------------------------------------
 Thu Apr 23 08:29:42 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1587630471.ceb108926:
