@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Apr 24 10:30:48 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#126
+- always install EFI fallback boot for aarch64 (bsc#1167015)
+- 0.927
+
+--------------------------------------------------------------------
 Mon Oct 14 11:37:54 UTC 2019 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#123
