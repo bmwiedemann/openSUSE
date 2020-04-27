@@ -1,7 +1,7 @@
 #
 # spec file for package newt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define         libname lib%{name}
 %define         libsoname %{libname}0_52
+%{!?python2_sitearch: %global python2_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %bcond_without python2
-%{!?python2_sitearch: %global python2_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 Name:           newt
-Version:        0.52.20
+Version:        0.52.21
 Release:        0
 Summary:        A library for text mode user interfaces
 License:        LGPL-2.1-or-later
@@ -33,6 +33,7 @@ Source10:       %{name}-rpmlintrc
 Patch0:         newt-0.52.20-implicit-pointer-decl.patch
 # needed for tutorial.pdf
 BuildRequires:  docbook-toys
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  python3-devel
@@ -46,7 +47,6 @@ BuildRequires:  texlive-times
 %if %{with python2}
 BuildRequires:  python-devel
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Newt is a programming library for color text-mode, widget-based user
@@ -200,6 +200,7 @@ popd 1>/dev/null
 %endif
 %py3_compile %{buildroot}/%{python3_sitearch}
 %py3_compile -O %{buildroot}/%{python3_sitearch}
+%fdupes %{buildroot}/%{python3_sitearch}
 # pointless examples
 rm %{buildroot}%{_defaultdocdir}/%{name}/examples/*.py
 
@@ -212,7 +213,7 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/examples/*.py
 %if 0%{?suse_version} >= 01500
 %license %{_defaultdocdir}/%{name}/COPYING
 %else
-%doc %{_defaultdocdir}/%{name}/COPYING
+%license %{_defaultdocdir}/%{name}/COPYING
 %endif
 %{_bindir}/whiptail
 %{_mandir}/man1/whiptail.1%{?ext_man}

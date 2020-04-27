@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:18:18 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.52.21:
+  * define env NEWT_NOFLOWCTRL to disable flow control (Robert Gill)
+  * don't leak memory on errors in dialogboxes
+  * fix radio button selection check in snack
+  * fix plural forms in Lithuanian translation (#1568999)
+  * fix parallel build (Émeric Dupont)
+  * allow python versions to be specified with --with-python option
+
+-------------------------------------------------------------------
 Fri Aug  2 08:15:55 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
