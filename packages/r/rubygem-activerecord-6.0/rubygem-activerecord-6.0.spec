@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-activerecord-6.0
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activerecord-6.0
-Version:        6.0.2.1
+Version:        6.0.2.2
 Release:        0
 %define mod_name activerecord
 %define mod_full_name %{mod_name}-%{version}
@@ -40,7 +40,7 @@ BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://rubyonrails.org
+URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Object-relational mapper framework (part of Rails)
