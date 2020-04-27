@@ -1,9 +1,9 @@
-From 230b5152e9660eb5e5821c2dbc84ae300dfe1fb1 Mon Sep 17 00:00:00 2001
+From 79ccd96ec69d2367291568c586aeaae941d2635c Mon Sep 17 00:00:00 2001
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 Date: Wed, 18 Jul 2018 13:14:07 +0200
 Subject: [PATCH] Add support for IBM Z hardware-accelerated deflate
 
-Future versions of IBM Z mainframes will provide DFLTCC instruction,
+IBM Z mainframes starting from version z15 provide DFLTCC instruction,
 which implements deflate algorithm in hardware with estimated
 compression and decompression performance orders of magnitude faster
 than the current zlib and ratio comparable with that of level 1.
@@ -11,15 +11,15 @@ than the current zlib and ratio comparable with that of level 1.
 This patch adds DFLTCC support to zlib. In order to enable it, the
 following build commands should be used:
 
-    $ CFLAGS=-DDFLTCC ./configure
-    $ make OBJA=dfltcc.o PIC_OBJA=dfltcc.lo
+    $ ./configure --dfltcc
+    $ make
 
 When built like this, zlib would compress in hardware on level 1, and in
 software on all other levels. Decompression will always happen in
 hardware. In order to enable DFLTCC compression for levels 1-6 (i.e. to
 make it used by default) one could either add -DDFLTCC_LEVEL_MASK=0x7e
-at compile time, or set the environment variable DFLTCC_LEVEL_MASK to
-0x7e at run time.
+to CFLAGS at compile time, or set the environment variable
+DFLTCC_LEVEL_MASK to 0x7e at run time.
 
 Two DFLTCC compression calls produce the same results only when they
 both are made on machines of the same generation, and when the
@@ -34,15 +34,14 @@ DFLTCC does not support every single zlib feature, in particular:
     * inflate(Z_BLOCK) and inflate(Z_TREES)
     * inflateMark()
     * inflatePrime()
-    * deflateParams() after the first deflate() call
 
 When used, these functions will either switch to software, or, in case
 this is not possible, gracefully fail.
 
-This patch tries to add DFLTCC support in a least intrusive way.
-All SystemZ-specific code was placed into a separate file, but
+This patch tries to add DFLTCC support in the least intrusive way.
+All SystemZ-specific code is placed into a separate file, but
 unfortunately there is still a noticeable amount of changes in the
-main zlib code. Below is the summary of those changes.
+main zlib code. Below is the summary of these changes.
 
 DFLTCC takes as arguments a parameter block, an input buffer, an output
 buffer and a window. Since DFLTCC requires parameter block to be
@@ -61,9 +60,12 @@ deflateResetKeep() and inflateResetKeep() now update the DFLTCC
 parameter block, which is allocated alongside zlib state, using
 the new DEFLATE_RESET_KEEP_HOOK and INFLATE_RESET_KEEP_HOOK macros.
 
-In order to make unsupported deflateParams(), inflatePrime() and
-inflateMark() calls to fail gracefully, the new DEFLATE_PARAMS_HOOK,
-INFLATE_PRIME_HOOK and INFLATE_MARK_HOOK macros were introduced.
+The new DEFLATE_PARAMS_HOOK switches between hardware and software
+deflate implementations when deflateParams() arguments demand this.
+
+In order to make unsupported inflatePrime() and inflateMark() calls
+fail gracefully, the new INFLATE_PRIME_HOOK and INFLATE_MARK_HOOK macros
+were introduced.
 
 The algorithm implemented in hardware has different compression ratio
 than the one implemented in software. In order for deflateBound() to
@@ -93,12 +95,12 @@ might be not allocated yet, inflate_ensure_window was factored out of
 updatewindow and made ZLIB_INTERNAL.
 ---
  Makefile.in                   |   8 +
- configure                     |  13 +
+ configure                     |  20 +
  contrib/README.contrib        |   4 +
- contrib/s390/dfltcc.c         | 904 ++++++++++++++++++++++++++++++++++
- contrib/s390/dfltcc.h         |  55 +++
- contrib/s390/dfltcc_deflate.h |  50 ++
- deflate.c                     |  60 ++-
+ contrib/s390/dfltcc.c         | 920 ++++++++++++++++++++++++++++++++++
+ contrib/s390/dfltcc.h         |  55 ++
+ contrib/s390/dfltcc_deflate.h |  54 ++
+ deflate.c                     |  68 ++-
  deflate.h                     |  12 +
  gzguts.h                      |   4 +
  inflate.c                     |  85 +++-
@@ -106,7 +108,7 @@ updatewindow and made ZLIB_INTERNAL.
  test/infcover.c               |   2 +-
  test/minigzip.c               |   4 +
  trees.c                       |  13 +-
- 14 files changed, 1165 insertions(+), 51 deletions(-)
+ 14 files changed, 1197 insertions(+), 54 deletions(-)
  create mode 100644 contrib/s390/dfltcc.c
  create mode 100644 contrib/s390/dfltcc.h
  create mode 100644 contrib/s390/dfltcc_deflate.h
@@ -134,7 +136,28 @@ Index: zlib-1.2.11/configure
 ===================================================================
 --- zlib-1.2.11.orig/configure
 +++ zlib-1.2.11/configure
-@@ -911,6 +911,19 @@ EOF
+@@ -114,6 +114,7 @@ case "$1" in
+       echo '  configure [--const] [--zprefix] [--prefix=PREFIX]  [--eprefix=EXPREFIX]' | tee -a configure.log
+       echo '    [--static] [--64] [--libdir=LIBDIR] [--sharedlibdir=LIBDIR]' | tee -a configure.log
+       echo '    [--includedir=INCLUDEDIR] [--archs="-arch i386 -arch x86_64"]' | tee -a configure.log
++      echo '    [--dfltcc]' | tee -a configure.log
+         exit 0 ;;
+     -p*=* | --prefix=*) prefix=`echo $1 | sed 's/.*=//'`; shift ;;
+     -e*=* | --eprefix=*) exec_prefix=`echo $1 | sed 's/.*=//'`; shift ;;
+@@ -137,6 +138,12 @@ case "$1" in
+     -c* | --const) zconst=1; shift ;;
+     -w* | --warn) warn=1; shift ;;
+     -d* | --debug) debug=1; shift ;;
++    --dfltcc)
++      CFLAGS="$CFLAGS -DDFLTCC"
++      OBJC="$OBJC dfltcc.o"
++      PIC_OBJC="$PIC_OBJC dfltcc.lo"
++      shift
++      ;;
+     *)
+       echo "unknown option: $1" | tee -a configure.log
+       echo "$0 --help for help" | tee -a configure.log
+@@ -911,6 +918,19 @@ EOF
    fi
  fi
  
@@ -173,14 +196,14 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 ===================================================================
 --- /dev/null
 +++ zlib-1.2.11/contrib/s390/dfltcc.c
-@@ -0,0 +1,904 @@
+@@ -0,0 +1,920 @@
 +/* dfltcc.c - SystemZ DEFLATE CONVERSION CALL support. */
 +
 +/*
 +   Use the following commands to build zlib with DFLTCC support:
 +
-+        $ CFLAGS=-DDFLTCC ./configure
-+        $ make OBJA=dfltcc.o PIC_OBJA=dfltcc.lo
++        $ ./configure --dfltcc
++        $ make
 +*/
 +
 +#define _GNU_SOURCE
@@ -407,31 +430,28 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +/*
 +   Compress.
 + */
-+local inline int dfltcc_are_params_ok(int level,
-+                                      uInt window_bits,
-+                                      int strategy,
-+                                      uLong level_mask);
-+local inline int dfltcc_are_params_ok(level, window_bits, strategy, level_mask)
++local inline int dfltcc_can_deflate_with_params(z_streamp strm,
++                                                int level,
++                                                uInt window_bits,
++                                                int strategy);
++local inline int dfltcc_can_deflate_with_params(strm,
++                                                level,
++                                                window_bits,
++                                                strategy)
++    z_streamp strm;
 +    int level;
 +    uInt window_bits;
 +    int strategy;
-+    uLong level_mask;
-+{
-+    return (level_mask & (1 << level)) != 0 &&
-+        (window_bits == HB_BITS) &&
-+        (strategy == Z_FIXED || strategy == Z_DEFAULT_STRATEGY);
-+}
-+
-+
-+int ZLIB_INTERNAL dfltcc_can_deflate(strm)
-+    z_streamp strm;
 +{
 +    deflate_state FAR *state = (deflate_state FAR *)strm->state;
 +    struct dfltcc_state FAR *dfltcc_state = GET_DFLTCC_STATE(state);
 +
 +    /* Unsupported compression settings */
-+    if (!dfltcc_are_params_ok(state->level, state->w_bits, state->strategy,
-+                              dfltcc_state->level_mask))
++    if ((dfltcc_state->level_mask & (1 << level)) == 0)
++        return 0;
++    if (window_bits != HB_BITS)
++        return 0;
++    if (strategy != Z_FIXED && strategy != Z_DEFAULT_STRATEGY)
 +        return 0;
 +
 +    /* Unsupported hardware */
@@ -441,6 +461,17 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +        return 0;
 +
 +    return 1;
++}
++
++int ZLIB_INTERNAL dfltcc_can_deflate(strm)
++    z_streamp strm;
++{
++    deflate_state FAR *state = (deflate_state FAR *)strm->state;
++
++    return dfltcc_can_deflate_with_params(strm,
++                                          state->level,
++                                          state->w_bits,
++                                          state->strategy);
 +}
 +
 +local void dfltcc_gdht OF((z_streamp strm));
@@ -526,22 +557,24 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    soft_bcc = 0;
 +    no_flush = flush == Z_NO_FLUSH;
 +
-+    /* Trailing empty block. Switch to software, except when Continuation Flag
-+     * is set, which means that DFLTCC has buffered some output in the
-+     * parameter block and needs to be called again in order to flush it.
++    /* No input data. Return, except when Continuation Flag is set, which means
++     * that DFLTCC has buffered some output in the parameter block and needs to
++     * be called again in order to flush it.
 +     */
-+    if (flush == Z_FINISH && strm->avail_in == 0 && !param->cf) {
-+        if (param->bcf) {
-+            /* A block is still open, and the hardware does not support closing
-+             * blocks without adding data. Thus, close it manually.
-+             */
++    if (strm->avail_in == 0 && !param->cf) {
++        /* A block is still open, and the hardware does not support closing
++         * blocks without adding data. Thus, close it manually.
++         */
++        if (!no_flush && param->bcf) {
 +            send_eobs(strm, param);
 +            param->bcf = 0;
 +        }
-+        return 0;
-+    }
-+
-+    if (strm->avail_in == 0 && !param->cf) {
++        /* Let one of deflate_* functions write a trailing empty block. */
++        if (flush == Z_FINISH)
++            return 0;
++        /* Clear history. */
++        if (flush == Z_FULL_FLUSH)
++            param->hl = 0;
 +        *result = need_more;
 +        return 1;
 +    }
@@ -595,7 +628,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    param->cvt = state->wrap == 2 ? CVT_CRC32 : CVT_ADLER32;
 +    if (!no_flush)
 +        /* We need to close a block. Always do this in software - when there is
-+         * no input data, the hardware will not nohor BCC. */
++         * no input data, the hardware will not honor BCC. */
 +        soft_bcc = 1;
 +    if (flush == Z_FINISH && !param->bcf)
 +        /* We are about to open a BFINAL block, set Block Header Final bit
@@ -610,8 +643,8 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    param->sbb = (unsigned int)state->bi_valid;
 +    if (param->sbb > 0)
 +        *strm->next_out = (Bytef)state->bi_buf;
-+    if (param->hl)
-+        param->nt = 0; /* Honor history */
++    /* Honor history and check value */
++    param->nt = 0;
 +    param->cv = state->wrap == 2 ? ZSWAP32(strm->adler) : strm->adler;
 +
 +    /* When opening a block, choose a Huffman-Table Type */
@@ -971,17 +1004,20 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +   fly with deflateParams, we need to convert between hardware and software
 +   window formats.
 +*/
-+int ZLIB_INTERNAL dfltcc_deflate_params(strm, level, strategy)
++int ZLIB_INTERNAL dfltcc_deflate_params(strm, level, strategy, flush)
 +    z_streamp strm;
 +    int level;
 +    int strategy;
++    int *flush;
 +{
 +    deflate_state FAR *state = (deflate_state FAR *)strm->state;
 +    struct dfltcc_state FAR *dfltcc_state = GET_DFLTCC_STATE(state);
 +    struct dfltcc_param_v0 FAR *param = &dfltcc_state->param;
 +    int could_deflate = dfltcc_can_deflate(strm);
-+    int can_deflate = dfltcc_are_params_ok(level, state->w_bits, strategy,
-+                                           dfltcc_state->level_mask);
++    int can_deflate = dfltcc_can_deflate_with_params(strm,
++                                                     level,
++                                                     state->w_bits,
++                                                     strategy);
 +
 +    if (can_deflate == could_deflate)
 +        /* We continue to work in the same mode - no changes needed */
@@ -991,8 +1027,11 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +        /* DFLTCC was not used yet - no changes needed */
 +        return Z_OK;
 +
-+    /* Switching between hardware and software is not implemented */
-+    return Z_STREAM_ERROR;
++    /* For now, do not convert between window formats - simply get rid of the
++     * old data instead.
++     */
++    *flush = Z_FULL_FLUSH;
++    return Z_OK;
 +}
 +
 +/*
@@ -1142,7 +1181,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 ===================================================================
 --- /dev/null
 +++ zlib-1.2.11/contrib/s390/dfltcc_deflate.h
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,54 @@
 +#ifndef DFLTCC_DEFLATE_H
 +#define DFLTCC_DEFLATE_H
 +
@@ -1154,7 +1193,8 @@ Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 +                                     block_state *result));
 +int ZLIB_INTERNAL dfltcc_deflate_params OF((z_streamp strm,
 +                                            int level,
-+                                            int strategy));
++                                            int strategy,
++                                            int *flush));
 +int ZLIB_INTERNAL dfltcc_deflate_set_dictionary OF((z_streamp strm,
 +                                                    const Bytef *dictionary,
 +                                                    uInt dict_length));
@@ -1174,11 +1214,14 @@ Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 +    } while (0)
 +#define DEFLATE_RESET_KEEP_HOOK(strm) \
 +    dfltcc_reset((strm), sizeof(deflate_state))
-+#define DEFLATE_PARAMS_HOOK(strm, level, strategy) \
++#define DEFLATE_PARAMS_HOOK(strm, level, strategy, hook_flush) \
 +    do { \
 +        int err; \
 +\
-+        err = dfltcc_deflate_params((strm), (level), (strategy)); \
++        err = dfltcc_deflate_params((strm), \
++                                    (level), \
++                                    (strategy), \
++                                    (hook_flush)); \
 +        if (err == Z_STREAM_ERROR) \
 +            return err; \
 +    } while (0)
@@ -1221,7 +1264,7 @@ Index: zlib-1.2.11/deflate.c
 +#define DEFLATE_SET_DICTIONARY_HOOK(strm, dict, dict_len) do {} while (0)
 +#define DEFLATE_GET_DICTIONARY_HOOK(strm, dict, dict_len) do {} while (0)
 +#define DEFLATE_RESET_KEEP_HOOK(strm) do {} while (0)
-+#define DEFLATE_PARAMS_HOOK(strm, level, strategy) do {} while (0)
++#define DEFLATE_PARAMS_HOOK(strm, level, strategy, hook_flush) do {} while (0)
 +#define DEFLATE_BOUND_ADJUST_COMPLEN(strm, complen, sourceLen) do {} while (0)
 +#define DEFLATE_NEED_CONSERVATIVE_BOUND(strm) 0
 +#define DEFLATE_HOOK(strm, flush, bstate) 0
@@ -1285,15 +1328,33 @@ Index: zlib-1.2.11/deflate.c
      return Z_OK;
  }
  
-@@ -584,6 +601,7 @@ int ZEXPORT deflateParams(strm, level, s
+@@ -572,6 +589,7 @@ int ZEXPORT deflateParams(strm, level, s
+ {
+     deflate_state *s;
+     compress_func func;
++    int hook_flush = Z_NO_FLUSH;
+ 
+     if (deflateStateCheck(strm)) return Z_STREAM_ERROR;
+     s = strm->state;
+@@ -584,12 +602,14 @@ int ZEXPORT deflateParams(strm, level, s
      if (level < 0 || level > 9 || strategy < 0 || strategy > Z_FIXED) {
          return Z_STREAM_ERROR;
      }
-+    DEFLATE_PARAMS_HOOK(strm, level, strategy);
++    DEFLATE_PARAMS_HOOK(strm, level, strategy, &hook_flush);
      func = configuration_table[s->level].func;
  
-     if ((strategy != s->strategy || func != configuration_table[level].func) &&
-@@ -659,6 +677,7 @@ uLong ZEXPORT deflateBound(strm, sourceL
+-    if ((strategy != s->strategy || func != configuration_table[level].func) &&
+-        s->high_water) {
++    if ((strategy != s->strategy || func != configuration_table[level].func ||
++         hook_flush != Z_NO_FLUSH) && s->high_water) {
+         /* Flush the last buffer: */
+-        int err = deflate(strm, Z_BLOCK);
++        int err = deflate(strm, RANK(hook_flush) > RANK(Z_BLOCK) ?
++                          hook_flush : Z_BLOCK);
+         if (err == Z_STREAM_ERROR)
+             return err;
+         if (strm->avail_out == 0)
+@@ -659,6 +679,7 @@ uLong ZEXPORT deflateBound(strm, sourceL
      /* conservative upper bound for compressed data */
      complen = sourceLen +
                ((sourceLen + 7) >> 3) + ((sourceLen + 63) >> 6) + 5;
@@ -1301,7 +1362,7 @@ Index: zlib-1.2.11/deflate.c
  
      /* if can't get parameters, return conservative bound plus zlib wrapper */
      if (deflateStateCheck(strm))
-@@ -700,7 +719,8 @@ uLong ZEXPORT deflateBound(strm, sourceL
+@@ -700,7 +721,8 @@ uLong ZEXPORT deflateBound(strm, sourceL
      }
  
      /* if not default parameters, return conservative bound */
@@ -1311,7 +1372,7 @@ Index: zlib-1.2.11/deflate.c
          return complen + wraplen;
  
      /* default settings: return tight bound for that case */
-@@ -727,7 +747,7 @@ local void putShortMSB (s, b)
+@@ -727,7 +749,7 @@ local void putShortMSB (s, b)
   * applications may wish to modify it to avoid allocating a large
   * strm->next_out buffer and copying into it. (See also read_buf()).
   */
@@ -1320,7 +1381,7 @@ Index: zlib-1.2.11/deflate.c
      z_streamp strm;
  {
      unsigned len;
-@@ -997,7 +1017,8 @@ int ZEXPORT deflate (strm, flush)
+@@ -997,7 +1019,8 @@ int ZEXPORT deflate (strm, flush)
          (flush != Z_NO_FLUSH && s->status != FINISH_STATE)) {
          block_state bstate;
  
@@ -1330,7 +1391,7 @@ Index: zlib-1.2.11/deflate.c
                   s->strategy == Z_HUFFMAN_ONLY ? deflate_huff(s, flush) :
                   s->strategy == Z_RLE ? deflate_rle(s, flush) :
                   (*(configuration_table[s->level].func))(s, flush);
-@@ -1086,9 +1107,9 @@ int ZEXPORT deflateEnd (strm)
+@@ -1086,9 +1109,9 @@ int ZEXPORT deflateEnd (strm)
      TRY_FREE(strm, strm->state->pending_buf);
      TRY_FREE(strm, strm->state->head);
      TRY_FREE(strm, strm->state->prev);
@@ -1342,7 +1403,7 @@ Index: zlib-1.2.11/deflate.c
      strm->state = Z_NULL;
  
      return status == BUSY_STATE ? Z_DATA_ERROR : Z_OK;
-@@ -1119,13 +1140,13 @@ int ZEXPORT deflateCopy (dest, source)
+@@ -1119,13 +1142,13 @@ int ZEXPORT deflateCopy (dest, source)
  
      zmemcpy((voidpf)dest, (voidpf)source, sizeof(z_stream));
  
@@ -1359,7 +1420,7 @@ Index: zlib-1.2.11/deflate.c
      ds->prev   = (Posf *)  ZALLOC(dest, ds->w_size, sizeof(Pos));
      ds->head   = (Posf *)  ZALLOC(dest, ds->hash_size, sizeof(Pos));
      overlay = (ushf *) ZALLOC(dest, ds->lit_bufsize, sizeof(ush)+2);
-@@ -1174,7 +1195,8 @@ local unsigned read_buf(strm, buf, size)
+@@ -1174,7 +1197,8 @@ local unsigned read_buf(strm, buf, size)
      strm->avail_in  -= len;
  
      zmemcpy(buf, strm->next_in, len);

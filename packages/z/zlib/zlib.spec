@@ -21,7 +21,6 @@ Version:        1.2.11
 Release:        0
 Summary:        Library implementing the DEFLATE compression algorithm
 License:        Zlib
-Group:          Development/Libraries/C and C++
 URL:            http://www.zlib.net/
 Source0:        http://zlib.net/zlib-%{version}.tar.gz
 Source1:        http://zlib.net/zlib-%{version}.tar.gz.asc
@@ -55,7 +54,6 @@ format.
 
 %package -n libz1
 Summary:        Library implementing the DEFLATE compression algorithm
-Group:          System/Libraries
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
 
@@ -67,7 +65,6 @@ format.
 
 %package devel
 Summary:        Development files for zlib, a data compression library
-Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       libz1 = %{version}
 
@@ -89,7 +86,6 @@ compression.
 
 %package devel-static
 Summary:        Static library for zlib
-Group:          Development/Languages/C and C++
 Requires:       %{name}-devel = %{version}
 Provides:       %{name}-devel:%{_libdir}/libz.a
 
@@ -104,14 +100,12 @@ used for development.
 
 %package -n libminizip1
 Summary:        Library for manipulation with .zip archives
-Group:          System/Libraries
 
 %description -n libminizip1
 Minizip is a library for manipulation with files from .zip archives.
 
 %package -n minizip-devel
 Summary:        Development files for the minizip library
-Group:          Development/Languages/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libminizip1 = %{version}
 Requires:       pkgconfig
@@ -133,26 +127,24 @@ cp %{SOURCE4} .
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
-%ifarch s390x s390
-export CFLAGS="%{optflags} -DDFLTCC"
-%define addopts OBJA=dfltcc.o PIC_OBJA=dfltcc.lo
-%else
 export CFLAGS="%{optflags}"
-%define addopts %{nil}
-%endif
 # For sure not autotools build
 CC="cc" ./configure \
     --shared \
     --prefix=%{_prefix} \
-    --libdir=/%{_lib}
+    --libdir=/%{_lib} \
+%ifarch s390x s390
+    --dfltcc \
+%endif
+    %{nil}
 
 %if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" %{addopts}
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
   make check %{?_smp_mflags}
   make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" %{addopts}
+  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} %{addopts}
+  make %{?_smp_mflags}
 %endif
 
 # And build minizip
@@ -161,7 +153,7 @@ autoreconf -fvi
 %configure \
     --disable-static \
     --disable-silent-rules
-make %{?_smp_mflags} %{addopts}
+make %{?_smp_mflags}
 
 %check
 make check %{?_smp_mflags}
