@@ -1,7 +1,7 @@
 #
 # spec file for package capnproto
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
+%define _libver 0_8
 Name:           capnproto
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://capnproto.org
 Source:         https://capnproto.org/capnproto-c++-%{version}.tar.gz
 BuildRequires:  cmake
@@ -31,17 +31,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc7-c++
 %endif
 BuildRequires:  pkgconfig
-Requires:       libcapnp-0_7 = %{version}
+Requires:       libcapnp-%{_libver} = %{version}
 
 %description
 Cap'n Proto is a binary data interchange format and capability-based
 RPC system.
 
-%package     -n libcapnp-0_7
+%package     -n libcapnp-%{_libver}
 Summary:        The Cap'n Proto data serialization library
-Group:          System/Libraries
 
-%description -n libcapnp-0_7
+%description -n libcapnp-%{_libver}
 Cap'n Proto is a binary data interchange format and capability-based
 RPC system.
 
@@ -49,8 +48,7 @@ This package provides runtime libraries for capnproto.
 
 %package     -n libcapnp-devel
 Summary:        Development headers for the Cap'n Proto C++ Library
-Group:          Development/Libraries/C and C++
-Requires:       libcapnp-0_7 = %{version}
+Requires:       libcapnp-%{_libver} = %{version}
 
 %description -n libcapnp-devel
 Cap'n Proto is a binary data interchange format and capability-based
@@ -71,8 +69,8 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -print
 
-%post -n libcapnp-0_7 -p /sbin/ldconfig
-%postun -n libcapnp-0_7 -p /sbin/ldconfig
+%post -n libcapnp-%{_libver} -p /sbin/ldconfig
+%postun -n libcapnp-%{_libver} -p /sbin/ldconfig
 
 %files
 %license LICENSE.txt
@@ -82,7 +80,7 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_bindir}/capnpc-c++
 %{_bindir}/capnpc-capnp
 
-%files -n libcapnp-0_7
+%files -n libcapnp-%{_libver}
 %{_libdir}/libcapnp-%{version}.so
 %{_libdir}/libcapnp-rpc-%{version}.so
 %{_libdir}/libcapnpc-%{version}.so
@@ -112,8 +110,10 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_libdir}/pkgconfig/capnp-json.pc
 %{_libdir}/pkgconfig/capnp-rpc.pc
 %{_libdir}/pkgconfig/kj-async.pc
+%{_libdir}/pkgconfig/kj-gzip.pc
 %{_libdir}/pkgconfig/kj-http.pc
 %{_libdir}/pkgconfig/kj-test.pc
+%{_libdir}/pkgconfig/kj-tls.pc
 %{_libdir}/pkgconfig/kj.pc
 
 %changelog
