@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.0.17
+Version:        1.0.18
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
@@ -55,7 +55,6 @@ It supports pen input, e.g. Wacom tablets.
 
 %build
 %cmake
-%cmake_build translations
 
 %install
 %cmake_install
