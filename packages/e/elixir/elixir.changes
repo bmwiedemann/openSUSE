@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:20:54 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.10.3
+ * Bug fixes
+   Elixir
+   [Code] Return `[{mod, bin}]` from `Code.compile_file/2`, `Code.require_file/2`, `Code.load_file/2`
+   [Code] Make sure the formatter respects newlines before and after module attributes
+   [Kernel.ParallelCompiler] Fix a bug where the parallel compiler would raise in long compilation cycles
+   [Kernel.ParallelCompiler] Fix a bug where the parallel compiler would raise if some of the modules being compiled referred to a module that has been loaded directly to memory
+   [Module] Fix accidental breaking change where bodiless clauses had their body value on `@on_definition` callbacks set to an empty list instead of `nil`
+   [String] Undeprecate `String.normalize/2` normalize and fix infinite loop caused by certain invalid strings
+   ExUnit
+   [ExUnit.Assertions] Fix pattern matching diff when matching on pinned variables
+   [ExUnit.Assertions] Fix pattern matching diff when matching variable struct names
+   [ExUnit.Assertions] Fix pattern matching diff when matching on the binary concat operator (`<>`) and the left side is not a literal string
+   [ExUnit.Assertions] Fix pattern matching diff when matching on pseudo-vars (`__MODULE__`, `__DIR__`, etc)
+   Mix
+   [mix release] Respect the `:path` option when creating a `:tar` file for releases 
+
+-------------------------------------------------------------------
 Thu Apr 16 08:09:49 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Elixir 1.10.2

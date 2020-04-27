@@ -17,7 +17,7 @@
 
 
 Name:           elixir-doc
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        Documentation for elixir
 License:        Apache-2.0
