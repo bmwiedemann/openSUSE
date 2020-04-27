@@ -1,6 +1,7 @@
 #
-# spec file for package specRPM_CREATION_NAME
+# spec file for package netease-cloud-music-gtk
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,25 +13,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:       netease-cloud-music-gtk
-Version:    1.1.0
-Release:    0
-Summary:    Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
-License:    GPL-3.0-or-later
-Group:      Productivity/Multimedia/Sound/Players
-Url:        https://github.com/gmg137/netease-cloud-music-gtk
-Source:     %{name}-%{version}.tar.xz
-Source1:    vendor.tar.xz
+
+Name:           netease-cloud-music-gtk
+Version:        1.1.1
+Release:        0
+Summary:        Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
+License:        GPL-3.0-or-later
+Group:          Productivity/Multimedia/Sound/Players
+URL:            https://github.com/gmg137/netease-cloud-music-gtk
+Source:         %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.41
-BuildRequires:  rust-std
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.41
+BuildRequires:  rust-std
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -45,12 +47,12 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openssl)
-Requires:  openssl
-Requires:  gstreamer
-Requires:  gstreamer-plugins-good
-Requires:  gstreamer-plugins-base
-Requires:  gstreamer-plugins-bad
-Requires:  gstreamer-plugins-ugly
+Requires:       gstreamer
+Requires:       gstreamer-plugins-bad
+Requires:       gstreamer-plugins-base
+Requires:       gstreamer-plugins-good
+Requires:       gstreamer-plugins-ugly
+Requires:       openssl
 
 %description
 netease-cloud-music-gtk 是基于 Rust + GTK 开发的网易云音乐播放器，专为 Linux 系统打造。
