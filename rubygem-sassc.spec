@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sassc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sassc
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 %define mod_name sassc
 %define mod_full_name %{mod_name}-%{version}
@@ -35,13 +35,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/sass/sassc-ruby
+URL:            https://github.com/sass/sassc-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rpmlintrc
 Source2:        gem2rpm.yml
-# MANUAL
-Patch0:  reproducible.patch
-# /MANUAL
 Summary:        Use libsass with Ruby!
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -50,10 +47,6 @@ Group:          Development/Languages/Ruby
 Use libsass with Ruby!.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
 
 %build
 
@@ -66,7 +59,6 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 # MANUAL
 find %{buildroot}%{_libdir} -name sassc-2.\*.info -delete
 # /MANUAL
-
 
 %gem_packages
 
