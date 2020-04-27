@@ -40,6 +40,7 @@ Patch3:         wpa_supplicant-alloc_size.patch
 Patch4:         wpa_supplicant-getrandom.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         restore-old-dbus-interface.patch
+Patch7:         CVE-2019-16275.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros

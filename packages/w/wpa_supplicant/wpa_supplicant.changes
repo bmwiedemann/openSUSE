@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 21:51:17 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2019-16275.patch -- AP mode PMF disconnection protection bypass
+  (bsc#1150934)
+
+-------------------------------------------------------------------
 Fri Apr 17 08:37:34 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add restore-old-dbus-interface.patch to fix wicked wlan (boo#1156920)
