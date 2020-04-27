@@ -53,6 +53,17 @@ Patch2:         0002-conf-namehint-add-omit_noargs-to-the-hint-section.patch
 Patch3:         0003-Change-PCM-device-number-of-Asus-Xonar-U5.patch
 Patch4:         0004-configure-add-embed-for-python3-config-python-3.8.patch
 Patch5:         0005-conf-USB-Audio-Add-C-Media-USB-Headphone-Set-to-the-.patch
+Patch6:         0006-topology-add-back-asrc-to-widget_map-in-dapm.c.patch
+Patch7:         0007-ucm-clarify-the-index-syntax-for-the-device-names.patch
+Patch8:         0008-ucm-fix-uc_mgr_scan_master_configs.patch
+Patch9:         0009-namehint-remember-the-direction-from-the-upper-level.patch
+Patch10:        0010-conf-fix-namehint-for-pcm.front-and-pcm.iec958.patch
+Patch11:        0011-pcm-add-chmap-option-to-route-plugin.patch
+Patch12:        0012-usecase-allow-indexes-also-for-modifier-names.patch
+Patch13:        0013-ucm-fix-the-device-remove-operation.patch
+Patch14:        0014-ucm-fix-copy-n-paste-typo-RemoveDevice-list.patch
+Patch15:        0015-pcm-dmix-fix-sw_params-handling-of-timestamp-types-i.patch
+Patch16:        0016-conf-USB-Audio-Fix-S-PDIF-output-of-ASUS-Xonar-AE.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -142,6 +153,17 @@ This package contains the library for ALSA topology support.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
 %patch101 -p1
 
 %build
