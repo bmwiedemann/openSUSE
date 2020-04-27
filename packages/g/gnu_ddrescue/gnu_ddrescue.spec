@@ -17,19 +17,18 @@
 
 
 Name:           gnu_ddrescue
-Version:        1.25~rc1
+Version:        1.25
 Release:        0
-%define rversion	1.25-rc1
 Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
 Group:          System/Base
-URL:            http://gnu.org/software/ddrescue/ddrescue.html
-Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz
-#Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%rversion.tar.lz.sig
+URL:            https://gnu.org/software/ddrescue/ddrescue.html
+Source:         http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz
+Source2:        http://download.savannah.gnu.org/releases/ddrescue/ddrescue-%version.tar.lz.sig
 Source3:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
-Requires(post):  %install_info_prereq
+Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 
 %description
@@ -41,7 +40,7 @@ It is more memory and time efficient than dd_rescue+dd_rhelp on disks
 with more than a few hundred bad sectors.
 
 %prep
-%autosetup -n ddrescue-%rversion
+%autosetup -n ddrescue-%version
 
 %build
 # not autoconf, but at least it behaves (nearly) like it.
