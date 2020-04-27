@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           lsp-plugins
-Version:        1.1.10
+Version:        1.1.19
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-only AND Zlib
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
-Source:         https://github.com/sadko4u/lsp-plugins/archive/lsp-plugins-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM lsp-plugins-fix_memory_corruption.patch
-Patch0:         lsp-plugins-fix_memory_corruption.patch
+Source0:        https://github.com/sadko4u/lsp-plugins/archive/%{name}-%{version}.tar.gz#/%{name}-%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
 BuildRequires:  php7-devel
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(jack)
@@ -105,20 +104,33 @@ This is the LADSPA version of the plugins.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
 
 %build
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make %{?_smp_mflags} SHELL="$(which bash) -x"
+%make_build SHELL="$(which bash) -x"
 
 %install
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %make_install
+
+for desktop in %{buildroot}%{_datadir}/applications/*.desktop; do
+%suse_update_desktop_file ${desktop} Mixer
+done
+
 %fdupes -s %{buildroot}%{_libdir}
 
 %files
 %{_bindir}/%{name}-*
+%dir %{_datadir}/applications
+%dir %{_datadir}/desktop-directories
+%dir %{_sysconfdir}/xdg
+%dir %{_sysconfdir}/xdg/menus
+%dir %{_sysconfdir}/xdg/menus/applications-merged
+%{_datadir}/applications/*.desktop
+%{_datadir}/desktop-directories/*
+%exclude %{_datadir}/icons/hicolor/*
+%config %{_sysconfdir}/xdg/menus/applications-merged/lsp-plugins.menu
 
 %files common
 %license LICENSE.txt
