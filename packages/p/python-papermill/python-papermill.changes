@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 23 07:30:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove py2 code as upstream says it is py3 only compatible
+
+-------------------------------------------------------------------
+Mon Feb 24 15:56:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 2.0.0
+  * Papermill is now Python 3.5+ only
+
+-------------------------------------------------------------------
 Mon Nov 18 16:21:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
