@@ -47,6 +47,7 @@ BuildRequires:  libmp3lame-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
+BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -130,6 +131,7 @@ cp %{SOURCE1} .
 
 %install
 %cmake_install
+strip-nondeterminism -t zip %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/workspaces/*.workspace
 
 # install fonts
 mkdir -p %{buildroot}%{fontdir}
