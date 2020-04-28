@@ -4,7 +4,7 @@
  <product>
         <vendor>openSUSE</vendor>
         <name>openSUSE-Addon-NonOss</name>
-        <version>20200425</version>
+        <version>20200427</version>
         <release>0</release> 
         <summary>openSUSE NonOSS Addon</summary>
         <shortsummary>non oss addon</shortsummary>
@@ -78,7 +78,7 @@
                name="openSUSE-Addon-NonOss-FTP" 
                flavor="ftp"
                sourcemedia="2"
-               mediastyle="openSUSE"
+               mediastyle="tumbleweed"
                use_required="true" 
                use_recommended="true" 
                use_undecided="true"

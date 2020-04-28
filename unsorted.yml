@@ -6363,6 +6363,7 @@ unsorted:
   - jupyter-bqplot 
   - jupyter-calysto 
   - jupyter-doc 
+  - jupyter-hide-code 
   - jupyter-imatlab 
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
@@ -6426,6 +6427,7 @@ unsorted:
   - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
   - jupyter-qtconsole 
+  - jupyter-rise 
   - jupyter-sidecar-jupyterlab 
   - jupyter-vega 
   - jupyter-vispy 
@@ -8468,7 +8470,7 @@ unsorted:
   - libcap2-32bit: [x86_64] 
   - libcapi20 
   - libcapi20-devel 
-  - libcapnp-0_7 
+  - libcapnp-0_8 
   - libcapnp-devel 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
@@ -9345,7 +9347,7 @@ unsorted:
   - libgiomm-2_66-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
-  - libgit2-28-32bit: [x86_64] 
+  - libgit2-1_0-32bit: [x86_64] 
   - libgit2-devel 
   - libgit2-glib-devel 
   - libgitg-devel 
@@ -9790,6 +9792,7 @@ unsorted:
   - libhts-devel-32bit: [x86_64] 
   - libhts3 
   - libhts3-32bit: [x86_64] 
+  - libhttp_parser2_7_1 
   - libhttp_parser2_7_1-32bit: [x86_64] 
   - libhttrack2 
   - libhubbub-devel 
@@ -10822,7 +10825,7 @@ unsorted:
   - liborigin3 
   - libortp14 
   - libortp14-32bit: [x86_64] 
-  - libosdCPU3_4_0 
+  - libosdCPU3_4_3 
   - libosinfo-devel 
   - liboslcomp1_10 
   - liboslexec1_10 
@@ -12336,7 +12339,7 @@ unsorted:
   - libupb0 
   - libupm1 
   - libupnp-devel 
-  - libupnp15-32bit: [x86_64] 
+  - libupnp16-32bit: [x86_64] 
   - libupower-glib-devel 
   - liburcu-devel 
   - liburcu6-32bit: [x86_64] 
@@ -17867,7 +17870,6 @@ unsorted:
   - plasma-vault-lang 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
-  - plasma5-desktop-lang 
   - plasma5-sdk 
   - plasma5-sdk-lang 
   - plasma5-workspace-devel 
@@ -18366,7 +18368,6 @@ unsorted:
   - pythia-doc 
   - python-32bit: [x86_64] 
   - python-Genshi-doc 
-  - python-Hamlib 
   - python-Jinja2-vim 
   - python-Kivy-doc 
   - python-LHAPDF 
@@ -18596,13 +18597,10 @@ unsorted:
   - python2-aws-sam-translator 
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
-  - python2-bcolz 
   - python2-boost_parallel_mpi1_71_0 
   - python2-braille 
   - python2-capng 
   - python2-cfn-lint 
-  - python2-click-aliases 
-  - python2-click-didyoumean 
   - python2-clustershell 
   - python2-cram 
   - python2-daemonize 
@@ -18659,17 +18657,14 @@ unsorted:
   - python2-mraa 
   - python2-napalm-asa 
   - python2-net-snmp 
-  - python2-newt 
   - python2-num2words 
   - python2-opencensus-ext-threading 
   - python2-opencv 
   - python2-opencv3 
   - python2-osc-tiny 
   - python2-ovs 
-  - python2-pgmagick 
   - python2-pip 
   - python2-pivy 
-  - python2-plumbum 
   - python2-positional 
   - python2-proliantutils 
   - python2-protobuf 
@@ -19007,6 +19002,7 @@ unsorted:
   - python3-augeas 
   - python3-autobahn 
   - python3-autodoc 
+  - python3-autodocsumm 
   - python3-autoflake 
   - python3-automaton 
   - python3-autopep8 
@@ -19718,6 +19714,7 @@ unsorted:
   - python3-flaky 
   - python3-flasgger 
   - python3-flask-jwt-extended 
+  - python3-flask-oidc 
   - python3-flask-peewee 
   - python3-flask-restplus 
   - python3-flatbuffers 
@@ -19848,6 +19845,7 @@ unsorted:
   - python3-hetzner 
   - python3-hetznercloud 
   - python3-hexdump 
+  - python3-hide-code 
   - python3-hivex 
   - python3-hkdf 
   - python3-hl7apy 
@@ -20264,6 +20262,7 @@ unsorted:
   - python3-natsort 
   - python3-nautilus 
   - python3-nautilus-devel 
+  - python3-nbclient 
   - python3-nbconvert 
   - python3-nbdime 
   - python3-nbformat 
@@ -20643,6 +20642,7 @@ unsorted:
   - python3-pygame-devel 
   - python3-pygerrit2 
   - python3-pyghmi 
+  - python3-pygit2 
   - python3-pyglet 
   - python3-pygments-ansi-color 
   - python3-pygments-pytest 
@@ -20980,6 +20980,7 @@ unsorted:
   - python3-rfc3986 
   - python3-rfc3987 
   - python3-rfc6555 
+  - python3-rise 
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
@@ -22307,7 +22308,6 @@ unsorted:
   - ruby2.6-rubygem-logging-testsuite 
   - ruby2.6-rubygem-lolcat-doc 
   - ruby2.6-rubygem-loofah-doc 
-  - ruby2.6-rubygem-loofah-testsuite 
   - ruby2.6-rubygem-mail-doc 
   - ruby2.6-rubygem-mail-doc-2_5 
   - ruby2.6-rubygem-manpages-doc 
@@ -22425,6 +22425,8 @@ unsorted:
   - ruby2.6-rubygem-po_to_json-doc 
   - ruby2.6-rubygem-po_to_json-testsuite 
   - ruby2.6-rubygem-polyglot-doc 
+  - ruby2.6-rubygem-pry 
+  - ruby2.6-rubygem-pry-doc 
   - ruby2.6-rubygem-pry-doc-testsuite 
   - ruby2.6-rubygem-pry_debug 
   - ruby2.6-rubygem-pry_debug-doc 
@@ -22520,6 +22522,8 @@ unsorted:
   - ruby2.6-rubygem-rspec-its-testsuite 
   - ruby2.6-rubygem-rspec-mocks-doc 
   - ruby2.6-rubygem-rspec-mocks-doc-3_5 
+  - ruby2.6-rubygem-rspec-rails-doc 
+  - ruby2.6-rubygem-rspec-rails-doc-3.9 
   - ruby2.6-rubygem-rspec-support-doc 
   - ruby2.6-rubygem-rspec-support-doc-3_5 
   - ruby2.6-rubygem-rubocop-doc 
@@ -22554,9 +22558,11 @@ unsorted:
   - ruby2.6-rubygem-sass-rails-doc 
   - ruby2.6-rubygem-sass-rails-doc-5.1 
   - ruby2.6-rubygem-sassc-doc 
+  - ruby2.6-rubygem-sassc-doc-2.2 
   - ruby2.6-rubygem-sassc-rails-doc 
   - ruby2.6-rubygem-sassc-rails-testsuite 
   - ruby2.6-rubygem-sassc-testsuite 
+  - ruby2.6-rubygem-sassc-testsuite-2.2 
   - ruby2.6-rubygem-sdoc-doc 
   - ruby2.6-rubygem-sdoc-testsuite 
   - ruby2.6-rubygem-securecompare-doc 
@@ -32643,6 +32649,7 @@ unsorted:
   - xteddy 
   - xterm-console 
   - xtexit 
+  - xtl-devel 
   - xtrx-tools 
   - xtrx-usb-udev 
   - xtrx_lms7002m-devel 
