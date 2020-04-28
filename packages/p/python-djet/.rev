@@ -16,4 +16,13 @@
     <comment>- Disable py2 build as it is unresolvable</comment>
     <requestid>735852</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>da074fcbd8b7ba05f426d6d21c4b8169</srcmd5>
+    <version>0.2.2</version>
+    <time>1588105913</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with django 3.x:
+  * django3.patch</comment>
+    <requestid>798600</requestid>
+  </revision>
 </revisionlist>

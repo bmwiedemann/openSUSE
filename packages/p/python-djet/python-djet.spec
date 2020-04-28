@@ -1,7 +1,7 @@
 #
 # spec file for package python-djet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,18 @@ Summary:        Set of helpers for easy testing of Django apps
 License:        MIT
 URL:            https://github.com/sunscrapers/djet
 Source:         https://github.com/sunscrapers/djet/archive/%{version}.tar.gz#/djet-%{version}.tar.gz
+Patch0:         django3.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Requires:       python-Pillow
+Requires:       python-six
 Suggests:       python-djangorestframework
 BuildArch:      noarch
 %python_subpackages
@@ -43,6 +46,7 @@ Set of helpers for easy testing of Django apps.
 
 %prep
 %setup -q -n djet-%{version}
+%patch0 -p1
 
 %build
 %python_build

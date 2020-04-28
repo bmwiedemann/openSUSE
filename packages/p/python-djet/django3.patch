@@ -1,0 +1,24 @@
+From 973325c14324c00d47f7c128f1c5c5e1233f3d59 Mon Sep 17 00:00:00 2001
+From: maurepass <maurepass@gmail.com>
+Date: Thu, 6 Feb 2020 04:34:23 +0100
+Subject: [PATCH] changed the source of importing 'six' library
+
+---
+ djet/files.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/djet/files.py b/djet/files.py
+index d5eb2ea..7b6cc92 100644
+--- a/djet/files.py
++++ b/djet/files.py
+@@ -1,8 +1,9 @@
+ import os
+ import datetime
++
++import six
+ from django.core.files.storage import Storage, default_storage
+ from django.core.files.uploadedfile import InMemoryUploadedFile
+-from django.utils import six
+ 
+ 
+ class InMemoryStorage(Storage):
