@@ -49,8 +49,6 @@ Patch0:         %{name}-config.patch
 Patch1:         %{name}-pma.patch
 BuildRequires:  apache2-devel
 BuildRequires:  fdupes
-BuildRequires:  python-devel
-BuildRequires:  xz
 #
 Requires:       php-bz2
 Requires:       php-ctype
