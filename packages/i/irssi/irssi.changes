@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 16:33:09 UTC 2020 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- added glib-2-63.patch:
+  - Backport a fix that froze Irssi on GLib >2.62 when typing
+    Ctrl+Space (#1180, #1183)
+
+-------------------------------------------------------------------
 Thu Aug 29 00:29:56 UTC 2019 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - update to 1.2.2

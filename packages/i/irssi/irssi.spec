@@ -31,6 +31,7 @@ Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irss
 # https://sks-keyservers.net/pks/lookup?op=get&search=0x00CCB587DDBEF0E1
 Source4:        %{name}.keyring
 Source99:       irssi-rpmlintrc
+Patch0:         https://github.com/ailin-nemui/irssi/commit/glib-2-63.patch
 # PATCH-FIX-OPENSUSE irssi-0.8.16_missing_prototype_warnings.patch
 Patch1:         irssi-0.8.16_missing_prototype_warnings.patch
 BuildRequires:  glib2-devel
@@ -78,6 +79,7 @@ compile plugins for the irssi package.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch1
 
 %build
