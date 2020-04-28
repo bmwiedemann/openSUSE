@@ -18,7 +18,7 @@
 
 %define         short_name openQA-client
 Name:           %{short_name}-test
-Version:        4.6.1587822981.75468e7ef
+Version:        4.6.1588072966.ee098707b
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ touch %{_sourcedir}/%{short_name}
 
 %build
 openqa-client --help
+openqa-cli --help
 
 %install
 # disable debug packages in package test to prevent error about missing files

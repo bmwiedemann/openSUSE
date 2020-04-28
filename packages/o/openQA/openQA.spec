@@ -73,7 +73,7 @@
 %define devel_requires %build_requires %qemu %test_requires chromedriver curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
 
 Name:           openQA
-Version:        4.6.1587822981.75468e7ef
+Version:        4.6.1588072966.ee098707b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -259,6 +259,7 @@ ln -s %{_sysconfdir}/openqa/openqa.ini %{buildroot}%{_datadir}/openqa%{_sysconfd
 ln -s %{_sysconfdir}/openqa/database.ini %{buildroot}%{_datadir}/openqa%{_sysconfdir}/openqa/database.ini
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{_datadir}/openqa/script/client %{buildroot}%{_bindir}/openqa-client
+ln -s %{_datadir}/openqa/script/openqa-cli %{buildroot}%{_bindir}/openqa-cli
 ln -s %{_datadir}/openqa/script/openqa-clone-job %{buildroot}%{_bindir}/openqa-clone-job
 ln -s %{_datadir}/openqa/script/dump_templates %{buildroot}%{_bindir}/openqa-dump-templates
 ln -s %{_datadir}/openqa/script/load_templates %{buildroot}%{_bindir}/openqa-load-templates
@@ -428,18 +429,22 @@ fi
 %{_datadir}/openqa/public
 %{_datadir}/openqa/assets
 %{_datadir}/openqa/dbicdh
-%{_datadir}/openqa/script/check_dependencies
 %{_datadir}/openqa/script/create_admin
 %{_datadir}/openqa/script/fetchneedles
 %{_datadir}/openqa/script/initdb
 %{_datadir}/openqa/script/openqa
 %{_datadir}/openqa/script/openqa-scheduler
+%{_datadir}/openqa/script/openqa-scheduler-daemon
 %{_datadir}/openqa/script/openqa-websockets
+%{_datadir}/openqa/script/openqa-websockets-daemon
 %{_datadir}/openqa/script/openqa-livehandler
+%{_datadir}/openqa/script/openqa-livehandler-daemon
 %{_datadir}/openqa/script/openqa-enqueue-asset-cleanup
 %{_datadir}/openqa/script/openqa-enqueue-audit-event-cleanup
 %{_datadir}/openqa/script/openqa-enqueue-bug-cleanup
 %{_datadir}/openqa/script/openqa-enqueue-result-cleanup
+%{_datadir}/openqa/script/openqa-gru
+%{_datadir}/openqa/script/openqa-webui-daemon
 %{_datadir}/openqa/script/upgradedb
 %{_datadir}/openqa/script/modify_needle
 # TODO: define final user
@@ -505,6 +510,8 @@ fi
 %{_unitdir}/openqa-worker-no-cleanup@.service
 %{_unitdir}/openqa-slirpvde.service
 %{_unitdir}/openqa-vde_switch.service
+%{_datadir}/openqa/script/openqa-slirpvde
+%{_datadir}/openqa/script/openqa-vde_switch
 %{_tmpfilesdir}/openqa.conf
 %ghost %dir %{_rundir}/openqa
 # worker libs
@@ -512,6 +519,8 @@ fi
 %dir %{_datadir}/openqa/script
 %{_datadir}/openqa/script/worker
 %{_datadir}/openqa/script/openqa-workercache
+%{_datadir}/openqa/script/openqa-workercache-daemon
+%{_datadir}/openqa/script/openqa-worker-cacheservice-minion
 %dir %{_localstatedir}/lib/openqa/pool
 %defattr(-,_openqa-worker,root)
 %dir %{_localstatedir}/lib/openqa/cache
@@ -525,6 +534,7 @@ fi
 %{_datadir}/openqa/script/clone_job.pl
 %{_datadir}/openqa/script/dump_templates
 %{_datadir}/openqa/script/load_templates
+%{_datadir}/openqa/script/openqa-cli
 %{_datadir}/openqa/script/openqa-clone-job
 %{_datadir}/openqa/script/openqa-clone-custom-git-refspec
 %{_datadir}/openqa/script/openqa-validate-yaml
@@ -534,6 +544,7 @@ fi
 %{_datadir}/openqa/lib/OpenQA/Client
 %{_datadir}/openqa/lib/OpenQA/UserAgent.pm
 %{_bindir}/openqa-client
+%{_bindir}/openqa-cli
 %{_bindir}/openqa-clone-job
 %{_bindir}/openqa-dump-templates
 %{_bindir}/openqa-load-templates

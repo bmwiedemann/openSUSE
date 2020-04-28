@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:24:55 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1588072966.ee098707b:
+  * t: Use proper copyright header for OpenQA::Test::Database
+  * Delete obsolete 'check_dependencies' script
+  * Default to HTTPS in openqa-cli
+  * Consistently use openqa.example.com for examples
+  * Update documentation to use openqa-cli
+  * Update openqa-cli usage messages and add --osd/--o3 options
+  * Use openqa-cli in full-stack tests
+  * Remove dead test code
+  * More unicode tests for openqa-cli
+  * Add new openQA client to openQA-client package
+  * Implement openqa-cli archive subcommand
+  * Add user friendly exception handling with color highlighting and pretty printing of JSON
+  * Allow loading the request body and form data from a file
+  * Turn JSON objects into form parameters with --form
+  * Rework JSON handling and set a default Accept header
+  * Allow key/value pairs to be passed as arguments
+  * Move apibase handling to base class too
+  * Use the new license header
+  * Add an archive command to openqa-cli as a first example for extensions
+  * Add basic openqa-cli structure
+  * Allow to overwrite 'worker connect retries' by environment variable
+  * Fix local runs of full-stack test failing on "Content has not changed"
+  * t: Cover test output with Test::Output
+  * Use defaults already in startup scripts rather than systemd
+  * Rename old "slenkins" data to be more generic
+  * t: Try to stabilize t/ui/01-list.t
+
+-------------------------------------------------------------------
 Sat Apr 25 16:30:05 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1587822981.75468e7ef:
