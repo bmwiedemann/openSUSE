@@ -1,7 +1,7 @@
 #
 # spec file for package python-acoular
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define		github_version 20.02
 Name:           python-acoular
-Version:        19.11
+Version:        20.2
 Release:        0
 Summary:        Library for acoustic beamforming
 License:        BSD-3-Clause
 URL:            https://github.com/acoular/acoular
-Source0:        https://files.pythonhosted.org/packages/source/a/acoular/acoular-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/acoular/acoular/41c512e0603f16cd437927914c64a45bead06e7d/LICENSE
+Source0:        https://github.com/acoular/acoular/archive/v%{github_version}.tar.gz#/acoular-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.40.0
 Requires:       python-numpy >= 1.11.3
-Requires:       python-qt5 >= 5.6
 Requires:       python-scikit-learn >= 0.19.1
 Requires:       python-scipy >= 0.1.0
 Requires:       python-tables >= 3.4.4
@@ -40,12 +39,11 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numba >= 0.40.0}
 BuildRequires:  %{python_module numpy >= 1.11.3}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5 >= 5.6}
 BuildRequires:  %{python_module scikit-learn >= 0.19.1}
 BuildRequires:  %{python_module scipy >= 0.1.0}
 BuildRequires:  %{python_module tables >= 3.4.4}
 BuildRequires:  %{python_module traits >= 4.6.0}
+BuildRequires:  %{python_module traitsui}
 # /SECTION
 %python_subpackages
 
@@ -57,9 +55,10 @@ order to generate mappings of sound source distributions. The maps
 interest and to characterize them using their spectra.
 
 %prep
-%setup -q -n acoular-%{version}
-cp %{SOURCE10} .
+%setup -q -n acoular-%{github_version}
 sed -i -e '/^#!\//, 1d' acoular/fastFuncs.py
+# UNIX-incompatible test
+rm acoular/nidaqimport.py
 
 %build
 %python_build
@@ -69,11 +68,10 @@ sed -i -e '/^#!\//, 1d' acoular/fastFuncs.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm %{buildroot}%{_bindir}/acoular_demo.py
 
-# Tests are not in sdists and there are no tags
-# See https://github.com/acoular/acoular/pull/29
-# and https://github.com/acoular/acoular/issues/30
-# %%check
-# %%pyest
+%check
+%python_expand $python -c 'import acoular';
+cd acoular/tests
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v -p "test_*.py"
 
 %files %{python_files}
 %doc README.rst
