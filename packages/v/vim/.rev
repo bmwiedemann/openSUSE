@@ -4488,4 +4488,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Gcc warns for ambiguous else.</comment>
     <requestid>792680</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>0c25c3ddc8d3723fe4587a3333f6428f</srcmd5>
+    <version>8.2.0530</version>
+    <time>1588105767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797633</requestid>
+  </revision>
 </revisionlist>

@@ -294,4 +294,12 @@
     <comment>submit new version 4.2.6</comment>
     <requestid>793687</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d5cb18823362916aa1a9fd71e862d205</srcmd5>
+    <version>4.2.6</version>
+    <time>1588105784</time>
+    <user>dimstar_suse</user>
+    <comment>jsc#SLE-12432, add qdevice heuristics support</comment>
+    <requestid>798634</requestid>
+  </revision>
 </revisionlist>

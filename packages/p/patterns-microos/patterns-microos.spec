@@ -68,8 +68,6 @@ Requires:       dracut
 Requires:       elfutils
 Requires:       filesystem
 Requires:       glibc
-Requires:       grub2
-Requires:       grub2-snapper-plugin
 Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
@@ -90,7 +88,6 @@ Requires:       net-tools
 Requires:       openssh
 Requires:       pam
 Requires:       parted
-Requires:       pciutils
 Requires:       pkg-config
 Requires:       procps
 Requires:       rebootmgr
@@ -116,32 +113,13 @@ Requires:       xfsprogs
 Requires:       yast2-logs
 Requires:       zypper
 Requires:       zypper-needs-restarting
+Requires:       pattern() = bootloader
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
-%ifarch x86_64
-Requires:       biosdevname
-%endif
 Requires:       openSUSE-MicroOS-release
 Requires:       openSUSE-build-key
 Obsoletes:      suse-build-key < 12.1
 Requires:       branding-openSUSE
-%ifnarch s390x
-Requires:       grub2-branding-openSUSE
-%endif
-%ifarch x86_64
-Requires:       grub2-x86_64-efi
-%endif
-%ifarch aarch64
-Requires:       grub2-arm64-efi
-%endif
-%ifarch armv7l armv7hl
-Requires:       grub2-arm-efi
-Requires:       grub2-arm-uboot
-%endif
-%ifarch x86_64
-Requires:       mokutil
-Requires:       shim
-%endif
 Requires:       system-group-hardware
 Requires:       system-group-wheel
 Requires:       system-user-nobody
@@ -337,6 +315,10 @@ Requires:       gnome-packagekit
 Requires:       gnome-software
 Requires:       gnome-system-monitor
 Requires:       gnome-tweak-tool
+# for online accounts and calendar integration
+Requires:       gnome-control-center-goa
+Requires:       gnome-online-accounts
+Requires:       gnome-shell-calendar
 Requires:       google-carlito-fonts
 Requires:       google-droid-fonts
 Requires:       google-opensans-fonts
@@ -367,7 +349,6 @@ Requires:       NetworkManager
 Requires:       canberra-gtk-play
 %endif
 %if 0%{is_opensuse}
-Requires:       MozillaFirefox
 Requires:       avahi
 #
 # Branding

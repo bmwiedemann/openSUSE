@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Libxml2
-Version:        0.15
+Version:        0.16
 Release:        0
 %define cpan_name Alien-Libxml2
 Summary:        Install the C libxml2 library on your system

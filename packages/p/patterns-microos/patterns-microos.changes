@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:55:56 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- base pattern:
+  * remove pciutils, pulls in pciutils-ids which pulls in perl. In Factory
+    pciutils-ids has been replaced by hwdata.
+  * use bootloader pattern
+
+-------------------------------------------------------------------
+Thu Apr 23 11:13:09 UTC 2020 - Christian Dywan <cdywan@suse.com>
+
+- Drop Firefox package in favor of org.mozilla.firefox on FlatHub
+
+-------------------------------------------------------------------
 Thu Apr 16 06:15:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install branding-openSUSE meta package

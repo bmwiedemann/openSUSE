@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 24 15:22:12 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * no more need to remove tests manually before install
+
+- update to version 1.0.3:
+  * Fix path to html_context
+
+- changes from version 1.0.2:
+  * Add Python 3.8 to tests
+  * Add more versions to test against
+  * Revert #77
+  * Make setup.py executable
+  * Stop installing tests
+  * Remove broken distutils compat
+
+-------------------------------------------------------------------
 Sat Jan 18 18:41:10 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
