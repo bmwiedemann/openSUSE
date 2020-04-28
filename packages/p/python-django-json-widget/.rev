@@ -28,4 +28,13 @@
   * update jsoneditor to latest version</comment>
     <requestid>777594</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11cc6995b2e797b59c0fb8c82f204b98</srcmd5>
+    <version>1.0.1</version>
+    <time>1588105910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * no changelog</comment>
+    <requestid>798596</requestid>
+  </revision>
 </revisionlist>

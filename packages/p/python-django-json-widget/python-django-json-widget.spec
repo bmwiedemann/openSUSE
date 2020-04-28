@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-json-widget
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Django JSON widget for editing the Django jsonfield
 License:        MIT
