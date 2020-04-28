@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-line-profiler
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Line profiler plugin for the Spyder IDE
 License:        MIT
@@ -79,7 +79,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
 %files -n spyder-line-profiler
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/spyder_line_profiler-%{version}-py*.egg-info
 %{python_sitelib}/spyder_line_profiler
