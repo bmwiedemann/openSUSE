@@ -1,7 +1,7 @@
 #
 # spec file for package raft
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH linking-exception-lgpl-3.0
@@ -85,7 +85,7 @@ autoreconf -iv
 	--disable-uv \
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

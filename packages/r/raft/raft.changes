@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 19:37:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.9.18:
+  * ignore empty snapshot data files, and other bug fixes
+
+-------------------------------------------------------------------
 Fri Jan 31 18:03:36 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.9.17:
