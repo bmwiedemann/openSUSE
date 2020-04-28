@@ -60,6 +60,7 @@ Compiz settings manager focused on simplicity for an end-user.
 
 %build
 %py3_build \
+  --prefix=%{_prefix} \
   --enableDesktopEffects
 
 %install
