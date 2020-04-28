@@ -1,5 +1,0 @@
-<package name="python-inspect2" project="openSUSE:Factory">
-  <title>python-inspect2</title>
-  <description>Backport of the Python 3.6 inspect module to Python 2.7-3.5</description>
-  <devel project="devel:languages:python" package="python-inspect2"/>
-</package>
