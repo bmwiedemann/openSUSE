@@ -54,6 +54,14 @@ Patch2:         0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
 # TODO(mrostecki): Submit it upstream after we confirm that our images work 100%
 # fine, also on aarch64.
 Patch3:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+# PATCH-FIX-UPSTREAM 0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch 
+Patch5:         0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch 
+# PATCH-FIX-UPSTREAM 0006-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
+Patch6:         0006-allow-to-configure-bpf-nat-global-max-using-helm.patch
+# PATCH-FIX-UPSTREAM 0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
+Patch7:         0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
+# PATCH-FIX-UPSTREAM 0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch 
+Patch8:         0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
 # Cilium needs to be aware of the version string of cilium-proxy
 BuildRequires:  cilium-proxy
 BuildRequires:  clang

@@ -253,4 +253,12 @@
     <comment>- Remove cilium-init package. (forwarded request 783749 from mrostecki)</comment>
     <requestid>783750</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>4dcb0e159a383010dd2abf0d27d27f32</srcmd5>
+    <version>1.7.0</version>
+    <time>1588105760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797590</requestid>
+  </revision>
 </revisionlist>

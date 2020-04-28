@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 25 03:57:30 UTC 2020 - Swaminathan Vasudevan <svasudevan@suse.com>
+
+- Adds a couple of patches that fixes bpf load error (bsc#1151876)
+  * 0005-rename-PolicyMapMaxEntries-to-PolicyMapEntries-and-define-policy-map-size-limits-as-consts.patch(combined) 
+  * 0006-allow-to-configure-bpf-nat-global-max-using-helm.patch
+  * 0007-reduce-default-number-for-TCP-CT-and-NAT-table-max-entries.patch
+  * 0008-add-option-to-dynamically-size-BPF-maps-based-on-system-memory.patch
+  
+-------------------------------------------------------------------
 Mon Mar  9 11:03:44 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Remove cilium-init package.
