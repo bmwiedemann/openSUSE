@@ -67,7 +67,8 @@ The backend to Compiz Config Manager.
 %setup -q -n %{_name}-%{version}
 
 %build
-%py3_build
+%py3_build \
+  --prefix=%{_prefix}
 
 %install
 %py3_install
