@@ -16,4 +16,12 @@
     <comment></comment>
     <requestid>703744</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4d47ff221e4b9207c853be2468e0948b</srcmd5>
+    <version>0.4.2</version>
+    <time>1588105899</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testing for now as it needs python2 and old virtualenv</comment>
+    <requestid>798587</requestid>
+  </revision>
 </revisionlist>
