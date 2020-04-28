@@ -1,7 +1,7 @@
 #
 # spec file for package klee-uclibc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 9
+%define llvm_version 10
 
 %define version_unconverted 1.0.0+git.20190816
 
@@ -26,7 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
 Version:        1.0.0+git.20190816
 Release:        0
-Url:            https://github.com/klee/klee-uclibc
+URL:            https://github.com/klee/klee-uclibc
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        uClibc-locale-030818.tgz
