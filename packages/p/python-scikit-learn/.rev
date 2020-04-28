@@ -421,4 +421,12 @@
     <comment></comment>
     <requestid>761535</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3574c829a3508be96d702e147fcdc524</srcmd5>
+    <version>0.22.1</version>
+    <time>1588105935</time>
+    <user>dimstar_suse</user>
+    <comment>- Require at least pytest 4.x for testing</comment>
+    <requestid>798641</requestid>
+  </revision>
 </revisionlist>

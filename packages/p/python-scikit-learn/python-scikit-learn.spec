@@ -44,7 +44,7 @@ Requires:       python-xml
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module xml}
 # /SECTION
 %python_subpackages

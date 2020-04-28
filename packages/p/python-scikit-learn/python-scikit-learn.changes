@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:13:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Require at least pytest 4.x for testing
+
+-------------------------------------------------------------------
 Tue Jan  7 10:53:55 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.22.1
