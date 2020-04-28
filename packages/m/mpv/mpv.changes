@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:04:50 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20200426T233854.027ae815ec:
+  * See https://github.com/mpv-player/mpv/compare/a09c7691d7..027ae815ec
+    for the complete changelog.
+
+-------------------------------------------------------------------
 Wed Apr 22 07:27:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add BR on pkgconfig(ffnvcodec) to enable CUDA support 

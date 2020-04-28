@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.9
 %define lname   libmpv1
 Name:           mpv
-Version:        0.32.0+git.20200418T001652.a09c7691d7
+Version:        0.32.0+git.20200426T233854.027ae815ec
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
