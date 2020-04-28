@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200427" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200428" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200427</productvar>
+      <productvar name="VERSION">20200428</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200427,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200428,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200427/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200428/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -152,7 +152,6 @@
       <repopackage name="hello-kubic-k8s-yaml" arch="x86_64"/>
       <repopackage name="helm" arch="x86_64"/>
       <repopackage name="hostname" arch="x86_64"/>
-      <repopackage name="hwdata" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
       <repopackage name="hyper-v" arch="x86_64"/>
       <repopackage name="info" arch="x86_64"/>
@@ -450,6 +449,8 @@
       <repopackage name="pam-config"/>
       <repopackage name="parted" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
+      <repopackage name="patterns-base-base" arch="x86_64"/>
+      <repopackage name="patterns-base-bootloader" arch="x86_64"/>
       <repopackage name="patterns-base-minimal_base" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime" arch="x86_64"/>
       <repopackage name="patterns-containers-container_runtime_kubernetes" arch="x86_64"/>
@@ -469,7 +470,6 @@
       <repopackage name="patterns-microos-onlyDVD" arch="x86_64"/>
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
-      <repopackage name="pciutils" arch="x86_64"/>
       <repopackage name="perl" arch="x86_64"/>
       <repopackage name="perl-apparmor" arch="x86_64"/>
       <repopackage name="perl-base"/>
