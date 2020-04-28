@@ -16,11 +16,10 @@
 #
 
 
-%define llvm_version_major 9
-%define llvm_version_minor 0
+%define llvm_version_major 10
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.0+20200119
+%define version_unconverted 2.1+20200420
 
 %ifarch %{ix86} x86_64
 %define with_uclibc 1
@@ -32,13 +31,13 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.0+20200119
+Version:        2.1+20200420
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-Source2:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/not/not.cpp
-Source3:        https://raw.githubusercontent.com/llvm-mirror/llvm/release_%{llvm_version_major}%{llvm_version_minor}/utils/FileCheck/FileCheck.cpp
+Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
+Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
@@ -94,6 +93,7 @@ sed -i '1s@/usr/bin/env python3*@/usr/bin/python3@' \
 	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_AR=%{_bindir}/llvm-ar \
 	-DCMAKE_RANLIB=%{_bindir}/llvm-ranlib \
+	-DENABLE_KLEE_ASSERTS=OFF \
 	-DENABLE_DOXYGEN=OFF \
 	-DENABLE_SOLVER_STP=ON \
 	-DENABLE_TCMALLOC=ON \

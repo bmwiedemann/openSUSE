@@ -1081,4 +1081,15 @@ build with uclibc</comment>
 - Remove 0001-runtime-workaround-for-glibc-2.30.patch (upstreamed)</comment>
     <requestid>766883</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5d52b51bac5efb19e733f7792f580e93</srcmd5>
+    <version>2.1+20200420</version>
+    <time>1588105809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+20200420.
+- Switch to LLVM 10.
+- Disable assertions.
+- Take &quot;FileCheck&quot; and &quot;not&quot; from official git repository.</comment>
+    <requestid>798304</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:10:44 UTC 2020 - aaronpuchert@alice-dsl.net
+
+- Update to version 2.1+20200420:
+  * Consistently define variable using notation VAR=value; fixed comment placement
+  * Named jobs in Travis CI for better visualization of results
+  * [posix-runtime] Improve model to handle full-path symbolic files
+  * [posix-runtime] Add test for full path consistency for symbolic files
+  * readStringAtAddress: support pointer into objects
+  * test: add a new test for readStringAtAddress
+  * readStringAtAddress: use stringstream to obtain the string
+  * stats: rename QueriesConstructs to QueryConstructs
+  * Statistic: slightly modernise class definition
+  * stats: remove queryConstructTime (unused)
+  * Add unit test for Z3Solver::getConstraintLog
+  * Run "pkg update -f" before installing dependencies on FreeBSD
+  * Don't search for CryptoMiniSAT when configuring STP
+  * Fixed some messages, particularly Klee -> KLEE
+  * Ensure that temp_builder is used when adding constant array value assertion constraints
+  * StatsTracker: remove NumObjects, fix assignment of and always write ArrayHashTime
+  * [posix-runtime] Simple GET/SET_LK model
+  * Additional test for dealing with vector instructions
+  * Added another `ScalarizerLegacyPass` run to remove vectorized code introduced during the optimization step
+  * Fixed compiler warning when printing variable of type off_t
+  * stat64 is deprecated on macOS; use stat instead
+  * Use -snap VMs on Cirrus for FreeBSD
+  * Updating KLEE's version post-release
+  * Release notes for 2.1
+  * Set version to 2.1
+  * fix lit.cfg: numerical comparison of LLVM version numbers
+  * travis: add LLVM 10.0
+  * test/lit.cfg: add LLVM 10.0
+  * stats: enforce table creation
+  * [klee-stats] Grafana: Limit number of entries to query for column names
+  * [klee-stats] Use the last row inserted instead of the row with highest Instructions
+  * [klee-stats] Refactor preparing and printing the table
+  * [klee-stats] Check for existence of stats file for Grafana as well
+  * [klee-stats] Do not crash if tabulate is not installed but requested
+  * [klee-stats] Refactor writing table into own function
+  * [klee-stats] Refactor CSV printout in own function
+  * [klee-stats] Check if stats file exist before trying to open it
+  * Add leading zeros to genbout
+  * fix p-llvm.inc: invocation for monorepo directory layout
+  * find_llvm.cmake: enable parsing for git version
+  * Use FreeBSD 11.3-STABLE instead of EoLed 11.2.
+  * Workaround `pkg` breakage on FreeBSD CI.
+  * Use `ref<>` for MemoryObject handling
+  * Use `ref<>` for UpdateNode
+  * Clean-up header files
+  * Add move assignment operator and move construct for `ref` class.
+  * Add `ReferenceCounter` struct utilized by ref<>
+  * Fix ptr reference invalidation if last reference gets freed before new reference assigned.
+  * Use call-by-reference for hash-function invocation
+  * Replace old TR1 implementations of unordered_map/set with std::* versions
+  * Use a newer Ubuntu 18.04 from the year 2020 to build KLEE Dockerimage
+  * Use a newer Ubuntu 18.04 from the year 2020 to build KLEE
+  * Update Docker image template for KLEE.
+  * Use system's boost when building metasmt and user newer boolector version
+  * Do not wait if SANITIZER_BUILD is empty
+  * Add llvm as build dependency of clang in case no system packages are available
+  * Add patch support for libcxx
+  * Use git repository to build LLVM
+  * Update ubuntu build dependencies for KLEE
+  * update
+- Switch to LLVM 10.
+- Disable assertions.
+- Take "FileCheck" and "not" from official git repository.
+
+-------------------------------------------------------------------
 Fri Jan 24 07:34:10 UTC 2020 - jslaby@suse.com
 
 - Update to version 2.0+20200119:
