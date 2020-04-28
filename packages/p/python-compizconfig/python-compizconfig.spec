@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define _rev    11bb53f9054e95f715e631a261968e2c
 %define _name   compizconfig-python
 Name:           python-compizconfig
@@ -33,16 +33,10 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython
-BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcompizconfig) < 0.9
 BuildRequires:  pkgconfig(x11)
 Requires:       compiz < 0.9
-%ifpython2
-Obsoletes:      ccs-python < %{version}
-Provides:       ccs-python = %{version}
-%endif
 %python_subpackages
 
 %description
