@@ -20,6 +20,7 @@
 %define module_name pudb
 %define py_maj_ver %(c=%{python})
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pudb
 Version:        2019.2
 Release:        0
@@ -57,8 +58,10 @@ sed -i '1{\@^#! %{_bindir}/env python@d}' pudb/debugger.py
 %install
 %python_install
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%if %{with python2}
 mv -v %{buildroot}%{_bindir}/%{upstream_name} \
     %{buildroot}%{_bindir}/%{upstream_name}-%{python2_bin_suffix}
+%endif
 mv -v %{buildroot}%{_bindir}/%{upstream_name}3 \
     %{buildroot}%{_bindir}/%{upstream_name}-%{python3_bin_suffix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -78,7 +81,6 @@ mv -v %{buildroot}%{_bindir}/%{upstream_name}3 \
 %python_uninstall_alternative pudb
 
 %check
-export PYTHONPATH=$(pwd -P)
 export LC_ALL=en_US.utf8
 # https://github.com/inducer/pudb/issues/304
 %pytest -k 'not test_get_lines'
