@@ -240,4 +240,17 @@
     newly created doc</comment>
     <requestid>784233</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b744c14b679a5a6514257c12ffeaabf1</srcmd5>
+    <version>0.14.0</version>
+    <time>1588105787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Speed up syntax highlighting
+  * Fix handling relative file paths that contain no slash
+  * JavaScript template literals (back quotes) are supported
+  * CSS syntax highlighting is fixed and improved
+  * Small fixes</comment>
+    <requestid>797595</requestid>
+  </revision>
 </revisionlist>
