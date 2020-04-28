@@ -1,7 +1,7 @@
 #
 # spec file for package lsvpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://sourceforge.net/projects/linux-diag/
+URL:            http://sourceforge.net/projects/linux-diag/
 Source0:        http://sourceforge.net/projects/linux-diag/files/lsvpd-new/%{version}/%{name}-%{version}.tar.gz
+Patch0:         bsc1163284-Add_version_and_debug_options_to_man_page.patch
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
 BuildRequires:  libvpd2-devel
@@ -45,6 +46,7 @@ levels.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"
