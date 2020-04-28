@@ -32,7 +32,11 @@ Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{versio
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       fftw3
 Requires:       proj >= 6
+%if 0%{suse_version} >= 1550
+Requires:       python3-wxPython
+%else
 Requires:       python-wxWidgets >= 2.8
+%endif
 Requires:       python3
 Requires:       python3-dateutil
 Requires:       python3-numpy
@@ -80,7 +84,11 @@ BuildRequires:  xorg-x11-Mesa-devel
 BuildRequires:  zlib-devel
 # Post Leap 42 / TW
 %if 0%{?suse_version} > 1325
+%if 0%{suse_version} >= 1550
+BuildRequires:  python3-wxPython
+%else
 BuildRequires:  python-wxWidgets-devel >= 3.0
+%endif
 BuildRequires:  wxWidgets-devel >= 3.0
 %else
 # Don't work for SLE why ?
