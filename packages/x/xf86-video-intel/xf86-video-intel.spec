@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-intel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Intel video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://x.org/wiki/IntelGraphicsDriver/
+URL:            http://x.org/wiki/IntelGraphicsDriver/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/driver/xf86-video-intel
 #Git-Web:	http://cgit.freedesktop.org/xorg/driver/xf86-video-intel/
 # http://xorg.freedesktop.org/releases/individual/driver/
@@ -33,6 +33,7 @@ Url:            http://x.org/wiki/IntelGraphicsDriver/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         n_fix-build-on-i686.patch
+Patch1:         U_i810-multidef-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -140,6 +141,7 @@ the 830M and later.
 # Applied only on 32bit architectures because only those need it to build with
 # GCC8. It may slightly hurt performance, so lets not apply it where not needed.
 %patch0 -p1
+%patch1 -p1
 %endif
 
 %build

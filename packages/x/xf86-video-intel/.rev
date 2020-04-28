@@ -965,4 +965,12 @@ why not just update to this version instead? O.o (forwarded request 207632 from 
     <comment></comment>
     <requestid>741244</requestid>
   </revision>
+  <revision rev="82" vrev="5">
+    <srcmd5>2405f26003b2b3e560a12977278e7a8c</srcmd5>
+    <version>2.99.917+git8674.25c9a2fcc</version>
+    <time>1588105747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>797215</requestid>
+  </revision>
 </revisionlist>
