@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -158,7 +158,8 @@ This package contains files for developing applications using numpy.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%ifarch s390x
+%ifarch s390x ppc ppc64
+# TestF{77,90}ReturnCharacter are broken on all big-endian architectures (#11831)
 %patch4 -p1
 %endif
 # Fix non-executable scripts

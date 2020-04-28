@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 26 13:04:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Disable TestF{77,90}ReturnCharacter on big-endian architectures (#11831)
+
+-------------------------------------------------------------------
+Fri Apr 24 15:44:55 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.3:
+  * #15916: BUG: Fix eigh and cholesky methods of
+     numpy.random.multivariate_normal
+  * #15929: BUG,MAINT: Remove incorrect special case in string to
+     number...
+  * #15930: BUG: Guarantee array is in valid state after memory error
+     occurs...
+  * #15954: BUG: Check that pvals is 1D in _generator.multinomial.
+  * #16017: BUG: Alpha parameter must be 1D in generator.dirichlet
+
+-------------------------------------------------------------------
 Tue Apr  7 13:08:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not use alternatives on HPC as it is pain to get it working

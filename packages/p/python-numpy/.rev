@@ -796,4 +796,12 @@ All packages broken by this update should be fixed now</comment>
   + Deprecations</comment>
     <requestid>792356</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4f9e7719b9d99a5355165297568c3cfb</srcmd5>
+    <version>1.18.3</version>
+    <time>1588105775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798036</requestid>
+  </revision>
 </revisionlist>
