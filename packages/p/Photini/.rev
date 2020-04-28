@@ -115,4 +115,12 @@ Also see sr#741039 for missing runtime dependency.</comment>
     <comment>update to 2019.10.1</comment>
     <requestid>743473</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bff0910f741059da526b5432b063409d</srcmd5>
+    <version>2020.4.0</version>
+    <time>1588105979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798700</requestid>
+  </revision>
 </revisionlist>
