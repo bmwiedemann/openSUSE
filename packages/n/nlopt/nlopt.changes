@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 26 23:56:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to verion 2.6.2:
+  * Fixed forced stop exception with dimension elimination
+    (gh#stevengj/nlopt#317).
+  * Fixed get_initial_step wrapping (gh#stevengj/nlopt#319).
+  * Various build fixes (gh#stevengj/nlopt#314,
+    gh#stevengj/nlopt#308, gh#stevengj/nlopt#303,
+    gh#stevengj/nlopt#278).
+- Rename source tarball into %{name}-%{version} format. 
+
+-------------------------------------------------------------------
 Mon Apr 15 15:38:18 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.6.1:
