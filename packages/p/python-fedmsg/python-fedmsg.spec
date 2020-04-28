@@ -1,7 +1,7 @@
 #
 # spec file for package python-fedmsg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Version:        1.1.1
 Release:        0
 Summary:        Fedora Messaging Client API
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/fedora-infra/fedmsg
 # source from pypi is missing test fixtures
-Source:         %{url}/archive/%{version}/fedmsg-%{version}.tar.gz
+Source:         https://github.com/fedora-infra/fedmsg/archive/%{version}/fedmsg-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -71,16 +70,13 @@ subscribers.
 
 %package        -n %{name}-doc
 Summary:        Documentation for fedmsg
-Group:          Documentation/HTML
 
 %description    -n %{name}-doc
 This package contains the documentation for the fedmsg library and CLI programs.
 
 %package        -n %{name}-base
 Summary:        Base files system layout for packages using fedmsg
-Group:          Development/Languages/Python
-Supplements:    python3-%{name}
-Supplements:    python2-%{name}
+Supplements:    %{python_module %{name}}
 
 %description    -n %{name}-base
 This package contains the common filesystem layout shared by the python2 and
@@ -99,20 +95,13 @@ rm doc/_build/html/.buildinfo
 rm doc/_build/html/objects.inv
 
 %check
-export PYTHONPATH=$(pwd)
-%if 0%{?suse_version} > 1500
-py.test3 fedmsg
-%else
-# these tests fail on anything except Tumbleweed, we skip them therefore, as the
-# issue is not reproducible locally
-py.test3 fedmsg -k 'not (test_no_monitor_endpoint or test_socket_timeout or test_no_consumers_or_producers or test_missing or test_uninitialized or test_all_good)'
-%endif
-py.test2 fedmsg
+%pytest fedmsg
 
 %install
 %python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand # first remove the tests
 rm -r %{buildroot}%{$python_sitelib}/fedmsg/tests/
+%fdupes %{buildroot}%{$python_sitelib}
 }
 # system wide "config" files for fedmsg-base
 mkdir -p %{buildroot}%{_sysconfdir}/fedmsg.d/
