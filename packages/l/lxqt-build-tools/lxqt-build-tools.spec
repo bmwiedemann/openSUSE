@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-build-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           lxqt-build-tools
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Core build tools for LXQt
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://www.lxqt.org
-Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7.1
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildArch:      noarch
 
