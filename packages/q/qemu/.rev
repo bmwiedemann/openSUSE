@@ -1717,4 +1717,17 @@ Address python compatibility issue.</comment>
 </comment>
     <requestid>795126</requestid>
   </revision>
+  <revision rev="173" vrev="9">
+    <srcmd5>9b60971e08c0ca79a835114ba4bc592b</srcmd5>
+    <version>4.2.0</version>
+    <time>1588105738</time>
+    <user>dimstar_suse</user>
+    <comment>- Minor tweaks to patches and support doc
+ 
+- Add gcc10-maybe-uninitialized.patch in order to fix
+  boo#1169728.
+
+So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's the motivation for this SR.</comment>
+    <requestid>797210</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:23:15 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Minor tweaks to patches and support doc
+
+-------------------------------------------------------------------
+Tue Apr 21 13:24:59 UTC 2020 - Martin Liška <mliska@suse.cz>
+ 
+- Add gcc10-maybe-uninitialized.patch in order to fix
+  boo#1169728.
+
+-------------------------------------------------------------------
 Fri Apr 17 19:23:38 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Include upstream patches targeted for the next stable release

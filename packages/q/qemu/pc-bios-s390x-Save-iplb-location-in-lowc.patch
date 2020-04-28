@@ -2,6 +2,7 @@ From: Janosch Frank <frankja@linux.ibm.com>
 Date: Wed, 4 Mar 2020 06:42:31 -0500
 Subject: pc-bios: s390x: Save iplb location in lowcore
 
+Git-commit: 9bfc04f9ef6802fff0fc77130ff345a541783363
 References: bsc#1163140, bsc#1167075
 
 The POP states that for a list directed IPL the IPLB is stored into
@@ -23,7 +24,6 @@ Message-Id: <20200304114231.23493-19-frankja@linux.ibm.com>
 Reviewed-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Reviewed-by: David Hildenbrand <david@redhat.com>
 Signed-off-by: Christian Borntraeger <borntraeger@de.ibm.com>
-(cherry picked from commit 9bfc04f9ef6802fff0fc77130ff345a541783363)
 Signed-off-by: Liang Yan <lyan@suse.com>
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
