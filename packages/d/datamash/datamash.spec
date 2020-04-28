@@ -1,7 +1,7 @@
 #
 # spec file for package datamash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           datamash
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        Statistical, numerical and textual operations in the command line
 License:        GPL-3.0-or-later
@@ -69,7 +69,7 @@ make %{?_smp_mflags} check
 %files -f %{name}.lang
 %license COPYING
 %doc ChangeLog README AUTHORS THANKS TODO
-%{_bindir}/%{name}
+%{_bindir}/*
 %{_mandir}/man1/*.1%{?ext_man}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_datadir}/%{name}
