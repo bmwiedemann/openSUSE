@@ -24,7 +24,7 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.17.3
+Version:        1.18.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -36,8 +36,6 @@ Source2:        sysconfig.crio
 Source3:        crio.conf
 Source4:        cri-o-rpmlintrc
 Source5:        kubelet.env
-Source6:        crio-wipe.service
-Source7:        crio-shutdown.service
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -48,7 +46,8 @@ BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.13
+BuildRequires:  go >= 1.13
 BuildRequires:  sed
 Requires:       patterns-base-apparmor
 Requires:       conntrack-tools
@@ -106,10 +105,10 @@ cd $HOME/go/src/%{project}
 make
 
 %pre
-%service_add_pre crio.service crio-wipe.service crio-shutdown.service
+%service_add_pre crio.service
 
 %post
-%service_add_post crio.service crio-wipe.service crio-shutdown.service
+%service_add_post crio.service
 # This is the additional directory where cri-o is going to look up for CNI
 # plugins installed by DaemonSets running on Kubernetes (i.e. Cilium).
 mkdir -p /opt/cni/bin
@@ -118,10 +117,10 @@ mkdir -p /opt/cni/bin
 %fillup_only -n kubelet
 
 %preun
-%service_del_preun crio.service crio-wipe.service crio-shutdown.service
+%service_del_preun crio.service
 
 %postun
-%service_del_postun crio.service crio-wipe.service crio-shutdown.service
+%service_del_postun crio.service
 
 %install
 cd $HOME/go/src/%{project}
@@ -149,8 +148,6 @@ install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umou
 install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/sysconfig.crio
 # Systemd
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/crio.service
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/crio-wipe.service
-install -D -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/crio-shutdown.service
 # place kubelet.env in fillupdir
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 # Symlinks to rc files
@@ -191,8 +188,6 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %{_fillupdir}/sysconfig.crio
 # Systemd
 %{_unitdir}/crio.service
-%{_unitdir}/crio-wipe.service
-%{_unitdir}/crio-shutdown.service
 %{_sbindir}/rccrio
 
 %files kubeadm-criconfig

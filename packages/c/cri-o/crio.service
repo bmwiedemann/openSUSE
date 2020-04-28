@@ -4,8 +4,6 @@ Documentation=https://github.com/cri-o/cri-o
 After=network.target
 After=lwm2-monitor.service
 After=SuSEfirewall2.service
-After=crio-wipe.service
-Requires=crio-wipe.service
 
 [Service]
 Type=notify

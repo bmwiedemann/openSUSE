@@ -416,4 +416,12 @@
 - Update apparmor_profile with current cri-o version, bsc#1161056</comment>
     <requestid>794622</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b688505917d43a612456229a6f3dc20c</srcmd5>
+    <version>1.18.0</version>
+    <time>1588105778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798305</requestid>
+  </revision>
 </revisionlist>
