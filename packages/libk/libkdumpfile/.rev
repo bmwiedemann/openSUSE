@@ -86,4 +86,14 @@
     <comment></comment>
     <requestid>697355</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a84f049205dfd344b69e7a952532706a</srcmd5>
+    <version>0.3.0</version>
+    <time>1588105871</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build in Factory.
+- Mark COPYING* files with %license.
+</comment>
+    <requestid>798526</requestid>
+  </revision>
 </revisionlist>

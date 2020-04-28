@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:33:56 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Mark COPYING* files with %license.
+
+-------------------------------------------------------------------
 Tue Apr  9 22:02:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add fix-build-with-recent-glibc.patch

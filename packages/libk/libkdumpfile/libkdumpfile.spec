@@ -1,7 +1,7 @@
 #
 # spec file for package libkdumpfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,15 @@
 #
 # End compatibility cruft
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 Name:           libkdumpfile
 Version:        0.3.0
 Release:        0
 Summary:        Kernel dump file access library
 License:        LGPL-3.0-or-later OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/ptesarik/libkdumpfile
+URL:            https://github.com/ptesarik/libkdumpfile
 Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%version/%name-%version.tar.bz2
 Patch0:         fix-build-with-recent-glibc.patch
 BuildRequires:  lzo-devel
@@ -50,7 +52,7 @@ BuildRequires:  binutils
 %else
 BuildRequires:  binutils-devel
 %endif
-BuildRequires:  python-devel
+BuildRequires:  %{python_module devel}
 %if %{have_snappy}
 BuildRequires:  snappy-devel
 %endif
@@ -117,6 +119,18 @@ Requires:       libaddrxlat0 = %{version}
 This package contains all necessary python modules to use libaddrxlat via
 the Python interpreter.
 
+# Compatibility cruft
+# there is no %%license prior to SLE12
+%if %{undefined _defaultlicensedir}
+%define license %doc
+%else
+# filesystem before SLE12 SP3 lacks /usr/share/licenses
+%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
+%define _defaultlicensedir %{_defaultdocdir}
+%endif
+%endif
+# End of compatibility cruft
+
 %prep
 %setup -q
 %patch0 -p1
@@ -150,7 +164,8 @@ rm -v %{buildroot}%{_bindir}/showxlat
 %files -n libkdumpfile7
 %defattr(-,root,root)
 %{_libdir}/libkdumpfile.so.*
-%doc README.md COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3 NEWS
+%license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
+%doc README.md NEWS
 
 %files devel
 %defattr(-,root,root)
@@ -161,7 +176,8 @@ rm -v %{buildroot}%{_bindir}/showxlat
 %files -n libaddrxlat0
 %defattr(-,root,root)
 %{_libdir}/libaddrxlat.so.*
-%doc README.md COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3 NEWS
+%license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
+%doc README.md NEWS
 
 %files -n libaddrxlat-devel
 %defattr(-,root,root)
@@ -172,17 +188,17 @@ rm -v %{buildroot}%{_bindir}/showxlat
 
 %files -n python-libkdumpfile
 %defattr(-,root,root)
-%dir %{python_sitelib}/kdumpfile
-%{python_sitelib}/kdumpfile/__init__.py*
-%{python_sitelib}/kdumpfile/exceptions.py*
-%{python_sitelib}/kdumpfile/views.py*
+%dir %{python_sitelib}/kdumpfile{,/__pycache__}
+%{python_sitelib}/kdumpfile{,/__pycache__}/__init__.*py*
+%{python_sitelib}/kdumpfile{,/__pycache__}/exceptions.*py*
+%{python_sitelib}/kdumpfile{,/__pycache__}/views.*py*
 %{python_sitearch}/_kdumpfile.so
 
 %files -n python-libaddrxlat
 %defattr(-,root,root)
-%dir %{python_sitelib}/addrxlat
-%{python_sitelib}/addrxlat/__init__.py*
-%{python_sitelib}/addrxlat/exceptions.py*
+%dir %{python_sitelib}/addrxlat{,/__pycache__}
+%{python_sitelib}/addrxlat{,/__pycache__}/__init__.*py*
+%{python_sitelib}/addrxlat{,/__pycache__}/exceptions.*py*
 %{python_sitearch}/_addrxlat.so
 
 %changelog
