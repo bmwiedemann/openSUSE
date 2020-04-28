@@ -32,17 +32,20 @@ Patch3:         django-1.10-urls.patterns-removed.patch
 Patch4:         FTBFS-fix-unit-tests.patch
 Patch5:         django-2.0.patch
 Patch6:         crashing_templates.patch
+Patch7:         django3.patch
 BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module django-compressor >= 1.3}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyScss >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.10
 Requires:       python-pyScss >= 1.3.4
+Requires:       python-six
 %if %{with python2}
+BuildRequires:  python-mock
 BuildRequires:  python-pathlib
 %endif
 %ifpython2

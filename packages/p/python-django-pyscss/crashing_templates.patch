@@ -73,7 +73,7 @@
 -    'mock',
  ]
  
-+if sys.version_info[0] >= 3:
++if sys.version_info[0] < 3:
 +    tests_require.append('mock')
  
  version = '2.0.2'

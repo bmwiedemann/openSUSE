@@ -24,4 +24,15 @@
   correct dependencies</comment>
     <requestid>796507</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>13b610171f5555f9f8ff7ba4c64b360c</srcmd5>
+    <version>2.0.2</version>
+    <time>1588105919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch django3.patch to fix building with Django 3.x
+
+- Fix the logic in patch to require mock only on python2:
+  * crashing_templates.patch</comment>
+    <requestid>798612</requestid>
+  </revision>
 </revisionlist>

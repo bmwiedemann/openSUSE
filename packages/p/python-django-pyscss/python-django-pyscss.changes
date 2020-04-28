@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:53:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch django3.patch to fix building with Django 3.x
+
+-------------------------------------------------------------------
+Tue Apr 28 09:48:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the logic in patch to require mock only on python2:
+  * crashing_templates.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 11:05:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the deps and make sure we build with python2 and 3 and pull
