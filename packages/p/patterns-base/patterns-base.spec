@@ -309,6 +309,7 @@ Recommends:     alsa-plugins
 # getattr and setattr
 Recommends:     attr
 Recommends:     autofs
+Recommends:     bash-completion
 Recommends:     bind-utils
 Recommends:     binutils
 # compressor is interesting

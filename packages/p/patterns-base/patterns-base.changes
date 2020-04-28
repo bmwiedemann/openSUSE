@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:23:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Recommend bash-completion in enhanced_base as it got lost in the
+  base pattern cleanup
+
+-------------------------------------------------------------------
 Thu Apr 23 14:16:47 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - bootloader: pull in grub2-snapper plugin if snapper is installed
