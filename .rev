@@ -8,4 +8,13 @@
 </comment>
     <requestid>697042</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed7931a4595f86df98b51876feeb0864</srcmd5>
+    <version>0.7.0</version>
+    <time>1588105922</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with Django 3.x:
+  * django3.patch</comment>
+    <requestid>798615</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,170 @@
+From 4209f668cc3e3be329f6b1c6ca6efe57dba666ba Mon Sep 17 00:00:00 2001
+From: Nicolas Barberis <nickoarg@gmail.com>
+Date: Tue, 21 Apr 2020 09:21:55 +0200
+Subject: [PATCH 1/5] commit
+
+---
+ example/app/settings.py                       |  2 +-
+ example/app/templates/base.html               |  6 +-
+ example/app/templates/home.html               |  2 +-
+ .../templates/oidc_provider/authorize.html    |  2 +-
+ example/app/urls.py                           | 11 ++--
+ .../oidc_provider/check_session_iframe.html   |  2 +-
+ oidc_provider/urls.py                         | 17 +++---
+ 9 files changed, 55 insertions(+), 48 deletions(-)
+
+Index: django-oidc-provider-0.7.0/docs/sections/installation.rst
+===================================================================
+--- django-oidc-provider-0.7.0.orig/docs/sections/installation.rst
++++ django-oidc-provider-0.7.0/docs/sections/installation.rst
+@@ -26,7 +26,7 @@ Add it to your apps in your project's dj
+         'django.contrib.contenttypes',
+         'django.contrib.sessions',
+         'django.contrib.messages',
+-        'django.contrib.staticfiles',
++        'django.contrib.static',
+         'oidc_provider',
+         # ...
+     )
+Index: django-oidc-provider-0.7.0/example/app/settings.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/settings.py
++++ django-oidc-provider-0.7.0/example/app/settings.py
+@@ -19,7 +19,7 @@ INSTALLED_APPS = [
+     'django.contrib.contenttypes',
+     'django.contrib.sessions',
+     'django.contrib.messages',
+-    'django.contrib.staticfiles',
++    'django.contrib.static',
+     'app',
+     'oidc_provider',
+ ]
+Index: django-oidc-provider-0.7.0/example/app/templates/base.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/base.html
++++ django-oidc-provider-0.7.0/example/app/templates/base.html
+@@ -1,4 +1,4 @@
+-{% load i18n staticfiles %}
++{% load i18n static %}
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+Index: django-oidc-provider-0.7.0/example/app/templates/home.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/home.html
++++ django-oidc-provider-0.7.0/example/app/templates/home.html
+@@ -1,5 +1,5 @@
+ {% extends "base.html" %}
+-{% load i18n staticfiles %}
++{% load i18n static %}
+ 
+ {% block content %}
+ 
+Index: django-oidc-provider-0.7.0/example/app/templates/oidc_provider/authorize.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/oidc_provider/authorize.html
++++ django-oidc-provider-0.7.0/example/app/templates/oidc_provider/authorize.html
+@@ -1,5 +1,5 @@
+ {% extends 'base.html' %}
+-{% load i18n staticfiles %}
++{% load i18n static %}
+ 
+ {% block content %}
+ 
+Index: django-oidc-provider-0.7.0/example/app/urls.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/urls.py
++++ django-oidc-provider-0.7.0/example/app/urls.py
+@@ -5,12 +5,13 @@ except ImportError:
+     from django.conf.urls import include, url
+ from django.contrib import admin
+ from django.views.generic import TemplateView
++from django.urls import re_path
+ 
+ 
+ urlpatterns = [
+-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+-    url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+-    url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+-    url(r'^', include('oidc_provider.urls', namespace='oidc_provider')),
+-    url(r'^admin/', admin.site.urls),
++    re_path(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
++    re_path(r'^accounts/login/$', auth_views.LoginView, {'template_name': 'login.html'}, name='login'),
++    re_path(r'^accounts/logout/$', auth_views.LogoutView, {'next_page': '/'}, name='logout'),
++    re_path(r'^', include('oidc_provider.urls', namespace='oidc_provider')),
++    re_path(r'^admin/', admin.site.urls),
+ ]
+Index: django-oidc-provider-0.7.0/oidc_provider/templates/oidc_provider/check_session_iframe.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/templates/oidc_provider/check_session_iframe.html
++++ django-oidc-provider-0.7.0/oidc_provider/templates/oidc_provider/check_session_iframe.html
+@@ -1,4 +1,4 @@
+-{% load staticfiles %}
++{% load static %}
+ 
+ <html lang="en">
+     <head>
+Index: django-oidc-provider-0.7.0/oidc_provider/urls.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/urls.py
++++ django-oidc-provider-0.7.0/oidc_provider/urls.py
+@@ -3,6 +3,7 @@ try:
+ except ImportError:
+     from django.conf.urls import url
+ from django.views.decorators.csrf import csrf_exempt
++from django.urls import re_path
+ 
+ from oidc_provider import (
+     settings,
+@@ -11,18 +12,18 @@ from oidc_provider import (
+ 
+ app_name = 'oidc_provider'
+ urlpatterns = [
+-    url(r'^authorize/?$', views.AuthorizeView.as_view(), name='authorize'),
+-    url(r'^token/?$', csrf_exempt(views.TokenView.as_view()), name='token'),
+-    url(r'^userinfo/?$', csrf_exempt(views.userinfo), name='userinfo'),
+-    url(r'^end-session/?$', views.EndSessionView.as_view(), name='end-session'),
+-    url(r'^\.well-known/openid-configuration/?$', views.ProviderInfoView.as_view(),
++    re_path(r'^authorize/?$', views.AuthorizeView.as_view(), name='authorize'),
++    re_path(r'^token/?$', csrf_exempt(views.TokenView.as_view()), name='token'),
++    re_path(r'^userinfo/?$', csrf_exempt(views.userinfo), name='userinfo'),
++    re_path(r'^end-session/?$', views.EndSessionView.as_view(), name='end-session'),
++    re_path(r'^\.well-known/openid-configuration/?$', views.ProviderInfoView.as_view(),
+         name='provider-info'),
+-    url(r'^introspect/?$', views.TokenIntrospectionView.as_view(), name='token-introspection'),
+-    url(r'^jwks/?$', views.JwksView.as_view(), name='jwks'),
++    re_path(r'^introspect/?$', views.TokenIntrospectionView.as_view(), name='token-introspection'),
++    re_path(r'^jwks/?$', views.JwksView.as_view(), name='jwks'),
+ ]
+ 
+ if settings.get('OIDC_SESSION_MANAGEMENT_ENABLE'):
+     urlpatterns += [
+-        url(r'^check-session-iframe/?$', views.CheckSessionIframeView.as_view(),
++        re_path(r'^check-session-iframe/?$', views.CheckSessionIframeView.as_view(),
+             name='check-session-iframe'),
+     ]
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_claims.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_claims.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_claims.py
+@@ -1,7 +1,7 @@
+ from __future__ import unicode_literals
+ 
+ from django.test import TestCase
+-from django.utils.six import text_type
++from six import text_type
+ from django.utils.translation import override as override_language
+ 
+ from oidc_provider.lib.claims import ScopeClaims, StandardScopeClaims, STANDARD_CLAIMS
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_commands.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_commands.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_commands.py
+@@ -1,6 +1,6 @@
+ from django.core.management import call_command
+ from django.test import TestCase
+-from django.utils.six import StringIO
++from six import StringIO
+ 
+ 
+ class CommandsTest(TestCase):
