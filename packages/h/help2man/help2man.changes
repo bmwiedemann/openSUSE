@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 11:19:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.14:
+  * Revert --version parsing change from 1.47.13.
+    Multi-word package names are supported only in form
+    "program (GNU package) version"
+
+-------------------------------------------------------------------
 Sat Mar 28 10:14:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - help2man 1.47.13:
