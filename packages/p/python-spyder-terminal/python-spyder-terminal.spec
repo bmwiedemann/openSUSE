@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-terminal
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 License:        MIT
@@ -36,7 +36,7 @@ Requires:       python3-pexpect
 Requires:       python3-requests
 Requires:       python3-terminado
 Requires:       python3-tornado
-Requires:       spyder >= 4
+Requires:       spyder >= 4.1.0
 # SECTION test requirements
 BuildRequires:  %{python_module coloredlogs}
 BuildRequires:  %{python_module flaky}
@@ -48,7 +48,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module terminado}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  spyder >= 4
+BuildRequires:  spyder >= 4.1.0
 BuildRequires:  xdpyinfo
 # /SECTION
 
@@ -59,7 +59,8 @@ Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
 This package contains the plugin for displaying a virtual terminal
-(OS independent) inside the main Spyder window.
+(OS independent) inside the main Spyder window. It uses a nodejs
+backend.
 
 %package     -n spyder-terminal
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
@@ -72,7 +73,8 @@ Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
 This package contains the plugin for displaying a virtual terminal
-(OS independent) inside the main Spyder window.
+(OS independent) inside the main Spyder window. It uses a nodejs
+backend.
 
 %prep
 # The PyPI tarfile is the official release but does not include the tests.
@@ -85,9 +87,6 @@ tar --strip-components=1 -xzf %{S:1} spyder-terminal-%{version}/spyder_terminal/
 # fix rpmlint non-executable-script
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
-
-# fix confpage import gh#spyder-ide/spyder-terminal#201
-sed -i -e '/import platform/ a import sys' spyder_terminal/confpage.py
 
 %build
 %python_build

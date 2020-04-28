@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:34:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.2
+  Minor release: Spyder-Terminal bug fix for Spyder 4
+  * Fixes the crash bug when opening the preferences tab 
+- Add nodejs mention to package description
+- Update spyder requirement to match with upstream
+
+-------------------------------------------------------------------
 Thu Apr 23 13:34:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.3.1
