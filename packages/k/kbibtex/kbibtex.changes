@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:44:13 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 0.9.2:
+  * Updating favicon URLs
+  * (PDF) files associated with newly saved bibliography files can
+    only be associated with absolute URLs, not relative URLs as
+    should be possible (kde#409281)
+  * Fixing potential crash due to defining TRANSLATION_DOMAIN
+    (kde#414375, kde#414385)
+  * Deselecting all fields on BibTeX Viewer hides the field sorting
+    header (kde#414195)
+  * File URLs passed by command line preceed over LRU (kde#417164)
+  * View documents containing question mark characters (kde#401553)
+  * Fix bug preventing editing of comments
+  * Edit Element dialog closes without confirming, possibly losing
+    edits (kde#417210)
+
+-------------------------------------------------------------------
 Mon Nov 18 10:40:45 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 0.9.1:

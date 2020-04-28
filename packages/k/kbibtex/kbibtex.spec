@@ -1,7 +1,7 @@
 #
 # spec file for package kbibtex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without lang
 
 Name:           kbibtex
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        The BibTeX (Latex) bibliography manager by KDE
 License:        GPL-2.0-only
