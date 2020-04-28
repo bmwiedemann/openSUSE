@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
