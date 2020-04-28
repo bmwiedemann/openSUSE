@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-server
-Version:        20200312
+Version:        20200325
 Release:        0
 Summary:        Patterns for Installation (server patterns)
 License:        MIT
@@ -217,7 +217,7 @@ Requires:       qemu-ppc
 %ifarch s390x
 Requires:       qemu-s390
 %endif
-%ifarch %arm aarch64 armv7hl
+%ifarch %arm %arm64
 Requires:       qemu-arm
 Requires:       qemu-ipxe
 %endif

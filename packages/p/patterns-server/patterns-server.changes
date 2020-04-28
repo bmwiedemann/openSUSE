@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:14:43 UTC 2020 - Sergio Lindo Mansilla <slindomansilla@suse.com>
+
+- Use new macro %arm64 instead of bare arch name
+- Remove redundant arch armv7hl which is already included in %arm
+
+-------------------------------------------------------------------
 Mon Mar 23 10:24:43 UTC 2020 - Antoine Ginies <aginies@suse.com>
 
 - fix reordering of pattern()
