@@ -1,7 +1,7 @@
 #
 # spec file for package ruby2.7
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,6 +32,7 @@ Release:        0
 %define api_version 2.7.0
 %define rb_binary_suffix .ruby2.7
 %define rb_soname ruby2.7
+%define _rb_ua_weight 27
 
 # ruby-macros and ruby-common version
 %define rpm_macros_version 3
@@ -52,6 +53,9 @@ Release:        0
 
 %if "%{rb_default_ruby_suffix}" == "%{rb_soname}"
 %define is_default_ruby 1
+%define rb_ua_weight 1%{_rb_ua_weight}
+%else
+%define rb_ua_weight %{_rb_ua_weight}
 %endif
 
 %define ua_binaries rake rdoc ri bundle bundler racc racc2y y2racc
@@ -73,7 +77,7 @@ Release:        0
 %bcond_with    separate_stdlib
 
 #
-Url:            https://www.ruby-lang.org/
+URL:            https://www.ruby-lang.org/
 Source:         https://cache.ruby-lang.org/pub/ruby/2.7/ruby-%{pkg_version}.tar.xz
 #
 Source3:        %{name}.macros
@@ -366,9 +370,9 @@ chmod -vR go-w,go+rX %{buildroot}%{_libdir}/ruby
 %post
 for bin in %{ua_binaries}; do
   /usr/sbin/update-alternatives --install \
-    %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} 3
+    %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
   /usr/sbin/update-alternatives --install \
-    %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} 3
+    %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
 done
 
 %preun

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 17:59:59 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- make sure that update-alternative weight for the default
+  distribution is always greater than our normal weight
+
+-------------------------------------------------------------------
+Tue Apr 28 17:18:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- make the update-alternative weight based on the ruby version
+
+-------------------------------------------------------------------
 Tue Apr 14 07:47:25 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add ruby2.7-drop-build-date.patch (boo#1047218)
