@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-jsonfield
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-jsonfield
-Version:        2.0.2
+Version:        3.1.0
 Release:        0
 Summary:        A reusable Django field to store validated JSON
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dmkoch/django-jsonfield/
 Source:         https://files.pythonhosted.org/packages/source/j/jsonfield/jsonfield-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.8.0}
+BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.8.0
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,7 +52,8 @@ store validated JSON in your model.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+export DJANGO_SETTINGS_MODULE="tests.settings"
+%pytest
 
 %files %{python_files}
 %doc README.rst
