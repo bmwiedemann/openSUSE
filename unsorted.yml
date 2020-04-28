@@ -2516,7 +2516,6 @@ unsorted:
   - dracut-tools 
   - drbd-formula 
   - drbd-utils: [i586] 
-  - drbdmanage 
   - drc 
   - drc-doc 
   - driverctl 
@@ -16238,7 +16237,7 @@ unsorted:
   - patterns-base-32bit: [x86_64] 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
-  - patterns-base-bootloader 
+  - patterns-base-bootloader: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
@@ -18590,7 +18589,6 @@ unsorted:
   - python2-ZODB 
   - python2-aexpect 
   - python2-antlr 
-  - python2-apicapi 
   - python2-appindicator 
   - python2-arabic-reshaper 
   - python2-argcomplete 
@@ -18618,7 +18616,6 @@ unsorted:
   - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
-  - python2-inspect2 
   - python2-jsonrpclib-pelix 
   - python2-jupyter-packaging 
   - python2-keyrings.alt 
@@ -18654,7 +18651,7 @@ unsorted:
   - python2-miniupnpc 
   - python2-moto 
   - python2-moviepy 
-  - python2-mraa 
+  - python2-mraa: [i586] 
   - python2-napalm-asa 
   - python2-net-snmp 
   - python2-num2words 
@@ -18668,13 +18665,11 @@ unsorted:
   - python2-positional 
   - python2-proliantutils 
   - python2-protobuf 
-  - python2-pudb 
   - python2-pwquality 
   - python2-pybugz 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-pycallgraph 
-  - python2-pydns 
   - python2-pykeepass 
   - python2-pysaml2: [i586] 
   - python2-pysmb 
@@ -18687,7 +18682,6 @@ unsorted:
   - python2-suds-jurko 
   - python2-sushy 
   - python2-tooz 
-  - python2-tox-wheel 
   - python2-unbound 
   - python2-upm 
   - python2-yaql 
