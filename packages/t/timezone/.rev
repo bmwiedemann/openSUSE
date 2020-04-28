@@ -1210,4 +1210,22 @@ bsc#1024677</comment>
     <comment></comment>
     <requestid>730290</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>7a2a5c9dac77c37eb1081530c0c7d34a</srcmd5>
+    <version>2020a</version>
+    <time>1588105735</time>
+    <user>dimstar_suse</user>
+    <comment>- timezone update 2020a (bsc#1169582)
+  * Morocco springs forward on 2020-05-31, not 2020-05-24.
+  * Canada's Yukon advanced to -07 year-round on 2020-03-08.
+  * America/Nuuk renamed from America/Godthab.
+  * zic now supports expiration dates for leap second lists.
+
+- timezone update 2020a (bsc#1169582)
+  * Morocco springs forward on 2020-05-31, not 2020-05-24.
+  * Canada's Yukon advanced to -07 year-round on 2020-03-08.
+  * America/Nuuk renamed from America/Godthab.
+  * zic now supports expiration dates for leap second lists.</comment>
+    <requestid>796820</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package timezone-java
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Time Zone Descriptions
 # COMMON-BEGIN
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-Version:        2019c
+Version:        2020a
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -38,7 +38,7 @@ Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
 # COMMON-END
 # COMMON-END
-Url:            https://www.iana.org/time-zones
+URL:            https://www.iana.org/time-zones
 Requires(pre):  filesystem, coreutils
 BuildArch:      noarch
 Provides:       tzdata-java = %{version}-%{release}

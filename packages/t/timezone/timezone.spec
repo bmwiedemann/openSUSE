@@ -1,7 +1,7 @@
 #
 # spec file for package timezone
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@ Name:           timezone
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-Url:            http://www.iana.org/time-zones
+URL:            http://www.iana.org/time-zones
 PreReq:         filesystem, coreutils
 # COMMON-BEGIN
-Version:        2019c
+Version:        2020a
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
