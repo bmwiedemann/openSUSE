@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.48.0
+Version:        0.49.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -36,23 +36,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{v
 Patch0:         skip-failing-tests.patch
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch1:         fix-max-name-size.patch
-%if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module llvmlite >= 0.31}
-BuildRequires:  %{python_module numba >= %{version}}
-BuildRequires:  %{python_module numba-devel >= %{version}}
-BuildRequires:  %{python_module numpy-devel >= 1.11}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.16}
-BuildRequires:  %{python_module tbb}
-%endif
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.11}
+BuildRequires:  %{python_module numpy-devel >= 1.15}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -67,6 +52,19 @@ Recommends:     python-Jinja2
 Recommends:     python-Pygments
 Recommends:     python-cffi
 Recommends:     python-tbb
+%if %{with test}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module llvmlite >= 0.31}
+BuildRequires:  %{python_module numba >= %{version}}
+BuildRequires:  %{python_module numba-devel >= %{version}}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 0.16}
+BuildRequires:  %{python_module tbb}
+%endif
 %python_subpackages
 
 %description
@@ -113,6 +111,8 @@ rm numba/tests/test_hashing.py
 rm numba/tests/test_typedlist.py
 # as we reduced the amount of tests:
 sed -i -e 's:5000:3000:' numba/tests/test_runtests.py
+# unpin llvmlite since it screws up dependencies
+sed -i 's/,<={max_llvmlite_version}//' setup.py
 
 %build
 export CFLAGS="%{optflags} -fPIC"
@@ -147,7 +147,7 @@ mv numba_temp numba
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGE_LOG README.rst
+%doc CHANGE_LOG README.rst
 %python_alternative %{_bindir}/numba
 %python_alternative %{_bindir}/pycc
 %{python_sitearch}/numba/

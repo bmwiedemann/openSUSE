@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Apr 24 14:07:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.49.0
+  * Removal of all Python 2 related code and also updating the minimum supported
+    Python version to 3.6, the minimum supported NumPy version to 1.15 and the
+    minimum supported SciPy version to 1.0. (Stuart Archibald).
+  * Refactoring of the Numba code base. The code is now organised into submodules
+    by functionality. This cleans up Numba's top level namespace.
+    (Stuart Archibald).
+  * Introduction of an ``ir.Del`` free static single assignment form for Numba's
+    intermediate representation (Siu Kwan Lam and Stuart Archibald).
+  * An OpenMP-like thread masking API has been added for use with code using the
+    parallel CPU backends (Aaron Meurer and Stuart Archibald).
+  * For the CUDA target, all kernel launches now require a configuration, this
+    preventing accidental launches of kernels with the old default of a single
+    thread in a single block. The hard-coded autotuner is also now removed, such
+    tuning is deferred to CUDA API calls that provide the same functionality
+    (Graham Markall).
+  * The CUDA target also gained an External Memory Management plugin interface to
+    allow Numba to use another CUDA-aware library for all memory allocations and
+    deallocations (Graham Markall).
+  * The Numba Typed List container gained support for construction from iterables
+    (Valentin Haenel).
+  * Experimental support was added for first-class function types
+    (Pearu Peterson).
+- Refreshed patch skip-failing-tests.patch 
+  * the troublesome tests are skipped upstream on 32-bit
+- Unpin llvmlite
+
+-------------------------------------------------------------------
 Mon Apr  6 07:56:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuilt as the tests take ages to build and we
