@@ -25,6 +25,7 @@ Summary:        Authentication for Django REST framework
 License:        MIT
 URL:            https://github.com/James1345/django-rest-knox
 Source:         https://github.com/James1345/django-rest-knox/archive/%{version}.tar.gz#/django-rest-knox-%{version}.tar.gz
+Patch0:         django3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,6 +47,7 @@ Authentication for Django REST framework.
 
 %prep
 %setup -q -n django-rest-knox-%{version}
+%patch0 -p1
 # knox does not use pyOpenSSL; it uses cryptography.
 # pyOpenSSL is a proxy for cryptography in 3.6.0,
 # and replaced by cryptography in 4.0.0

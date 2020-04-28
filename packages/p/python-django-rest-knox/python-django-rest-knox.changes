@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:42:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with Django 3.x:
+  * django3.patch
+
+-------------------------------------------------------------------
 Sun Apr  5 07:54:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.1.0:

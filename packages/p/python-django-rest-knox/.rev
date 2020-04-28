@@ -39,4 +39,13 @@
     the token to allow the expiry field to be included in the success response.</comment>
     <requestid>791487</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ed8faf5a82f613386837a1e672fc21e8</srcmd5>
+    <version>4.1.0</version>
+    <time>1588105917</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with Django 3.x:
+  * django3.patch</comment>
+    <requestid>798611</requestid>
+  </revision>
 </revisionlist>
