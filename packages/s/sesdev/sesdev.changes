@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 14:36:27 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.1.12+1588084576.g8b2afa1:
+  + upstream 1.1.12 release (2020-04-28)
+    * provision.sh: enable autorefresh on all repos (PR #288)
+    * seslib: fix "Unused argument" linter warning (PR #286)
+    * provision.sh.j2: Properly prepare CaaSP nodes (PR #283)
+    * ceph_salt_deployment: really sync clocks (PR #285)
+    * Rename 'ceph-salt deploy' to 'ceph-salt apply' (PR #280)
+
+-------------------------------------------------------------------
 Fri Apr 24 10:07:59 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.11+1587722868.gc7e5625:
