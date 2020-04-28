@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:06:29 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.20200427T203812.7a77abb815:
+  * Debugger: Add a Network widget
+  * Android: Use touch emulation of IR by default
+  * Don't defer EFB Copies to RAM - PMTTYD Issues
+  * VolumeVerifier: Show desync warning for dual layer discs too
+  * Externals: Add libLZMA.
+  * Externals: Add bzip2.
+  * DiscIO: Use a struct for Wii hashes
+  * DiscIO: Parallelize the re-encryption code
+  * DiscIO: Implement re-encryption of Wii partition data
+  * DiscIO: Use partition data offset for ReadWiiDecrypted parameter
+  * Analytics: Report correct quirk for mismatched xf/bp colors
+  * Android: Run installWAD on separate thread
+  * Android: Add Install WAD to menu_game_grid
+  * Socket: Abort pending operations on close
+  * Jit64: subfx - Use LEA when possible
+  * Jit64: addx - Skip ADD after MOV when possible
+  * Jit64: addx - Prefer smaller MOV+ADD sequence
+  * Jit64: addx - Emit MOV when possible
+  * Jit64: addx - Emit nothing when possible
+  * Jit64: addx - Deduplicate branches part 2
+  * Jit64: addx - Deduplicate branches part 1
+  * Remove unnecessary EFB to Texture disabling for Spider-Man 2
+  * WiimoteEmu: Rename some variables from "cursor" to "point".
+  * WiimoteEmu: Apply "Tilt" rotations separately and before those of "Point" and "Swing" for proper tilted pointing.
+  * IOS/FS: Fix FST write failure on some platforms
+  * Translation resources sync with Transifex
+  * Android: Set Insert SD Card default setting to true
+  * DiscIO: Clean up decompression size calculation
+  * Qt/Debugger: Refresh windows on savestate load.
+  * IOS/USBHost: Skip starting threads when determinism is enabled
+  * DolphinQt: Added checkbox to filter out NetPlay sessions that are already in-game.
+  * DiscIO: Fix decompressing writing too much sometimes
+  * DiscIO: Fix decompressing writing too little sometimes
+  * Fix bug 11920
+  * Android: Reload Wii Remote settings upon saving them
+  * Remove outdated comment from Movie::FrameUpdate
+  * Adjust s_DIMAR/s_DILENGTH behavior (fixes Baten Kaitos music)
+  * Core: Skip duplicate frames when using frame advance
+  * Core: Clarify Callback_VideoCopiedToXFB and FrameUpdate
+  * Respect Core::WantsDeterminism for DNS on Linux
+  * Qt/GameList: Use KeyPress instead of KeyRelease
+  * Remove unused function Host_UpdateProgressDialog
+  * DolphinQt: Run tasks that use progress dialogs on separate threads
+  * Delete properties dialog on close
+  * Android: Use the newly added style for all dialogs
+  * Android: Use the newly added style for the analytics alert too
+  * Android TV: Fix crash when long pressing a game
+  * Analytics: Add quirk for mismatched xf/bp texgens/colors
+  * VertexManagerBase: Skip drawing objects with mismatched xf/bp stages
+  * AudioPane: Do not enable DPL II quality slider with HLE audio on init
+  * Android: Add Insert SD Card and update description
+  * HLE: Add more debug functions
+  * Set Insert SD Card default value to true
+  * Qt: Display default Paths
+  * Android: Reduce Submenu height by 25 percent
+  * Android: Split General settings
+  * Match path type to BundleUtilities when running fixup_bundle
+  * Cleanup warnings of -Wmissing-declarations
+  * VideoCommon: Remove widescreen heuristic debug logs.
+  * VideoCommon: Tweak widescreen heuristic and clean up some related Renderer logic.
+  * DolphinQt: Don't overwrite >8x IR scale in ini, add maximum internal res option
+- Add BR on libbz2-devel and xz-devel
+- Force shared enet and force xxhash as found
+  (xxhash has no findxxhash.cmake file but it's not needed here)
+
+-------------------------------------------------------------------
 Thu Apr 09 06:12:41 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.1586380832.9a2d8a9623:

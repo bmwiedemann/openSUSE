@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">dolphin-emu</param>
     <param name="versionprefix">5.0+git</param>
-    <param name="versionformat">%ct.%h</param>
+    <param name="versionformat">%ci.%h</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">*/Externals/Qt*</param>
     <param name="exclude">*/Externals/LZO*</param>
