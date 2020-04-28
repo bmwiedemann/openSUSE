@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200425" schemaversion="4.1">
+<image name="OBS__openSUSE___20200427" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,14 +35,14 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200425</productvar>
+      <productvar name="VERSION">20200427</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200425,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200427,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200425/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200427/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
-      <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
-      <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/openSUSE</productoption>
+      <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
+      <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="REPO_LOCATION">http://download.opensuse.org/tumbleweed/repo/oss/</productoption>
       <productoption name="SOURCEMEDIUM">0</productoption>
     </productoptions>
@@ -1861,7 +1861,7 @@
       <repopackage name="libgio-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgirepository-1_0-1"/>
-      <repopackage name="libgit2-28"/>
+      <repopackage name="libgit2-1_0"/>
       <repopackage name="libgit2-glib-1_0-0"/>
       <repopackage name="libgitg-1_0-0"/>
       <repopackage name="libgitg-ext-1_0-0"/>
@@ -2013,7 +2013,6 @@
       <repopackage name="libhivex0" arch="x86_64"/>
       <repopackage name="libhogweed5"/>
       <repopackage name="libhogweed5-32bit" arch="x86_64"/>
-      <repopackage name="libhttp_parser2_7_1"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libHX28"/>
       <repopackage name="libHX28-32bit" arch="x86_64"/>
@@ -2943,7 +2942,7 @@
       <repopackage name="libunity-gtk2-parser0"/>
       <repopackage name="libunity-gtk3-parser0"/>
       <repopackage name="libunwind"/>
-      <repopackage name="libupnp15"/>
+      <repopackage name="libupnp16"/>
       <repopackage name="libupower-glib3"/>
       <repopackage name="libupsclient1"/>
       <repopackage name="liburcu6"/>
@@ -3879,6 +3878,7 @@
       <repopackage name="plasma5-defaults-openSUSE"/>
       <repopackage name="plasma5-desktop"/>
       <repopackage name="plasma5-desktop-emojier"/>
+      <repopackage name="plasma5-desktop-lang"/>
       <repopackage name="plasma5-integration-plugin"/>
       <repopackage name="plasma5-integration-plugin-lang"/>
       <repopackage name="plasma5-pa"/>
@@ -4110,7 +4110,6 @@
       <repopackage name="python3-pycups"/>
       <repopackage name="python3-pycurl"/>
       <repopackage name="python3-pydot" arch="x86_64"/>
-      <repopackage name="python3-pygit2"/>
       <repopackage name="python3-Pygments"/>
       <repopackage name="python3-pygraphviz" arch="x86_64"/>
       <repopackage name="python3-PyHamcrest"/>
@@ -4582,8 +4581,6 @@
       <repopackage name="ruby2.6-rubygem-pkg-config"/>
       <repopackage name="ruby2.6-rubygem-po_to_json"/>
       <repopackage name="ruby2.6-rubygem-polyglot"/>
-      <repopackage name="ruby2.6-rubygem-pry"/>
-      <repopackage name="ruby2.6-rubygem-pry-doc"/>
       <repopackage name="ruby2.6-rubygem-public_suffix"/>
       <repopackage name="ruby2.6-rubygem-public_suffix-3.1"/>
       <repopackage name="ruby2.6-rubygem-puma"/>
@@ -4644,6 +4641,8 @@
       <repopackage name="ruby2.6-rubygem-rspec-its"/>
       <repopackage name="ruby2.6-rubygem-rspec-mocks"/>
       <repopackage name="ruby2.6-rubygem-rspec-mocks-3_5"/>
+      <repopackage name="ruby2.6-rubygem-rspec-rails"/>
+      <repopackage name="ruby2.6-rubygem-rspec-rails-3.9"/>
       <repopackage name="ruby2.6-rubygem-rspec-support"/>
       <repopackage name="ruby2.6-rubygem-rspec-support-3_5"/>
       <repopackage name="ruby2.6-rubygem-rubocop"/>
@@ -4669,6 +4668,7 @@
       <repopackage name="ruby2.6-rubygem-sass-rails"/>
       <repopackage name="ruby2.6-rubygem-sass-rails-5.1"/>
       <repopackage name="ruby2.6-rubygem-sassc"/>
+      <repopackage name="ruby2.6-rubygem-sassc-2.2"/>
       <repopackage name="ruby2.6-rubygem-sassc-rails"/>
       <repopackage name="ruby2.6-rubygem-sdoc"/>
       <repopackage name="ruby2.6-rubygem-securecompare"/>
