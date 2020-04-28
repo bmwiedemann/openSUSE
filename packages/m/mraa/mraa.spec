@@ -1,7 +1,7 @@
 #
 # spec file for package mraa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 2
 Name:           mraa
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Low Level Skeleton Library for IO Communication
 License:        MIT
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
@@ -79,23 +78,6 @@ detection done at runtime, you can create portable code that will work
 across the supported platforms.
 
 This package contains development files for %{name}.
-
-%package -n python2-%{name}
-Summary:        Python bindings for %{name}
-Group:          Development/Languages/Python
-Requires:       lib%{name}%{sover} = %{version}
-Provides:       python-%{name} = %{version}-%{release}
-Obsoletes:      python-%{name} < %{version}-%{release}
-
-%description -n python2-%{name}
-libmraa is a C/C++ library with bindings to Java, Python and JavaScript to
-interface with the IO on Galileo, Edison & other platforms, with a
-structured API where port names/numbering matches the board that
-you are on. Use of libmraa does not tie you to specific hardware. With board
-detection done at runtime, you can create portable code that will work
-across the supported platforms.
-
-This package contains python bindings for %{name}.
 
 %package -n python3-%{name}
 Summary:        Python3 bindings for %{name}
@@ -173,7 +155,7 @@ This package contains examples for %{name}.
   -DBUILDSWIGJAVA=on \
   -DBUILDSWIGNODE=off \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -204,9 +186,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_includedir}/%{name}.*
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-
-%files -n python2-%{name}
-%{python_sitearch}/*
 
 %files -n python3-%{name}
 %{python3_sitearch}/*

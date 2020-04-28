@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 28 05:53:58 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.0:
+  * New platforms UP Xtreme, IPi SMARC, ROCK PI 4, Raspberry Pi 4,
+    Ultra96
+  * Added support for chardev GPIO devices on Rock960
+  * Introduced APIs to initialize GPIOs by name
+  * Multiple fixes to address static tool scans and user submitted
+    bug reports
+  * Revised documentation to reflect project transfer to the
+    Eclipse Foundation
+  * Updated installation instructions for multiple distribution
+    channels
+- Drop python2 bindings
+
+-------------------------------------------------------------------
 Mon Mar 11 08:07:26 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop nodejs bindings as they dont work with lates versions of
