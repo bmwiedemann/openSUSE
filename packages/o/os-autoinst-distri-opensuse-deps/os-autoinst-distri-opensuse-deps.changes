@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:25:27 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Removed dependency perl(YAML::Tiny)
+- Added dependency perl(YAML::PP)
+
+-------------------------------------------------------------------
 Sat Apr 25 16:30:33 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(Archive::Tar)
