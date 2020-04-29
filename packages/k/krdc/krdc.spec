@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krdc
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freerdp
 BuildRequires:  freerdp-devel
+BuildRequires:  libssh-devel
 BuildRequires:  oxygen5-icon-theme-large
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Bookmarks)
@@ -54,8 +51,10 @@ BuildRequires:  cmake(KF5XmlGui)
 Requires:       breeze5-icons
 Requires:       freerdp
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Krdc allows to connect to VNC and RDP compatible servers.
@@ -68,9 +67,7 @@ Requires:       krdc = %{version}
 %description devel
 Development libraries and headers needed to build software using krdc
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
@@ -80,7 +77,7 @@ Development libraries and headers needed to build software using krdc
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
   %cmake_kf5 -d build
-  make %{?_smp_mflags}
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
