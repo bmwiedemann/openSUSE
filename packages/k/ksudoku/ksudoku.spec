@@ -1,7 +1,7 @@
 #
 # spec file for package ksudoku
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,35 +21,31 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksudoku
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
@@ -61,8 +57,10 @@ BuildRequires:  pkgconfig(glu)
 Obsoletes:      ksudoku5 < %{version}
 Provides:       ksudoku5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 KSudoku is a program that can generate and solve sudoku puzzles. The
@@ -71,9 +69,7 @@ cells are filled with a number at the beginnning: the remaining are to
 be filled by the player using numbers from 1 to 9, without repeating a
 number twice on each column, row, or subsquare.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
