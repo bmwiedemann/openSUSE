@@ -54,6 +54,7 @@ Source43:       DDNS-howto.txt
 Source44:       contrib.tar.gz
 Source45:       examples.tar.gz
 Source46:       slp.reg.d.dhcp.reg
+Source47:       dhcp-user.conf
 Patch1:         0001-dhcp-4.1.1-default-paths.patch
 # paranoia patch is included now, but not the
 # additional patch by thomas@suse.de not ...
@@ -92,6 +93,10 @@ BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
+%if 0%{?suse_version} >= 1330
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%endif
 
 %package server
 Summary:        ISC DHCP Server
@@ -106,10 +111,12 @@ Requires:       dhcp = %{version}
 Requires:       net-tools
 %endif
 Requires(post): %fillup_prereq
-Requires(pre):  shadow
 %systemd_ordering
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
+%sysusers_requires
+%else
+Requires(pre):  shadow
 %endif
 
 %package client
@@ -262,6 +269,9 @@ cat bind/build.log
 cat bind/install.log
 : building dhcp sources
 make %{?_smp_mflags}
+%if 0%{?suse_version} >= 1330
+%sysusers_generate_pre %{SOURCE47} dhcp-server
+%endif
 
 %check
 # check example config, see if it runs
@@ -387,9 +397,17 @@ mv %{buildroot}%{_includedir}/{dhcpctl,isc-dhcp,omapip} \
    %{buildroot}%{_includedir}/dhcp/
 mv %{buildroot}%{_libdir}/lib*.* \
    %{buildroot}%{_libdir}/dhcp/
+%if 0%{?suse_version} >= 1330
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE47} %{buildroot}%{_sysusersdir}/
+%endif
 
+%if 0%{?suse_version} >= 1330
+%pre server -f dhcp-server.pre
+%else
 %pre server
 getent passwd dhcpd >/dev/null || useradd -r -g nogroup -s /bin/false -c "DHCP server daemon" -d %{_localstatedir}/lib/dhcp dhcpd
+%endif
 %service_add_pre dhcpd.service
 %service_add_pre dhcpd6.service
 
@@ -465,6 +483,9 @@ test -e %{_localstatedir}/lib/dhcp6/dhclient6.leases || \
 %{_sbindir}/rcdhcpd6
 %{_unitdir}/dhcpd.service
 %{_unitdir}/dhcpd6.service
+%if 0%{?suse_version} >= 1330
+%{_sysusersdir}/dhcp-user.conf
+%endif
 %dir %{_libexecdir}/initscripts/legacy-actions/dhcpd
 %{_libexecdir}/initscripts/legacy-actions/dhcpd/*
 %dir %{_libexecdir}/initscripts/legacy-actions/dhcpd6

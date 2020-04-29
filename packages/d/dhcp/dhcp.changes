@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 06:32:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use sysusers.d instead of shadow
+
+-------------------------------------------------------------------
 Mon Mar  2 17:26:39 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Add -fcommon to CFLAGS to fix build with gcc10 (boo#1160262).
