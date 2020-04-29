@@ -64,4 +64,12 @@
     <comment>- Update to release 3.1.11</comment>
     <requestid>795413</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b46075f3a04544488a68b669c9135811</srcmd5>
+    <version>3.1.11</version>
+    <time>1588186415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798915</requestid>
+  </revision>
 </revisionlist>

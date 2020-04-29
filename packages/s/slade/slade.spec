@@ -33,6 +33,7 @@ BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 3.1
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++ >= 6
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_0-devel
 BuildRequires:  zip
@@ -54,7 +55,7 @@ game-specific formats, and even convert between some of them, or
 from/to other generic formats such as PNG.
 
 %prep
-%setup -qn SLADE-%version
+%setup -q -n SLADE-%version
 %patch -P 1 -P 2 -p1
 %ifnarch %ix86 x86_64
 %patch10 -p0
@@ -69,7 +70,7 @@ make %{?_smp_mflags}
 %if 0%{?suse_version} > 1320
 strip-nondeterminism build/slade.pk3
 %endif
-b="%buildroot"
+b=%{buildroot}
 install -Dm755 build/slade "$b/%_bindir/slade"
 install -Dm644 build/slade.pk3 "$b/%_datadir/slade3/slade.pk3"
 
