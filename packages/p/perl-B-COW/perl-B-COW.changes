@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 24 03:07:30 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.004
+   see /usr/share/doc/packages/perl-B-COW/Changes
+
+  0.004     2020-04-23 14:41:21-06:00 America/Denver
+  
+  fix CowREFCNT issues on big endian
+
+-------------------------------------------------------------------
 Tue Apr 21 03:07:23 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.003

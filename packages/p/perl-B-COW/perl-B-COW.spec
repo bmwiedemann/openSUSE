@@ -17,7 +17,7 @@
 
 
 Name:           perl-B-COW
-Version:        0.003
+Version:        0.004
 Release:        0
 %define cpan_name B-COW
 Summary:        B::COW additional B helpers to check COW status
