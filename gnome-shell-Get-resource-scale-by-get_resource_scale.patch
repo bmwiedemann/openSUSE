@@ -1,0 +1,35 @@
+From be12c71534199a1a1fd0a334d046ddb85c6f165e Mon Sep 17 00:00:00 2001
+From: Xiaoguang Wang <xwang@suse.com>
+Date: Tue, 21 Apr 2020 16:17:09 +0800
+Subject: [PATCH] loginDialog: Get resource scale by get_resource_scale
+
+To shut up 'Getting invalid resource scale property' warnings in the log.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1206
+---
+ js/gdm/loginDialog.js | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
+index 16a7536ce..0ee51e637 100644
+--- a/js/gdm/loginDialog.js
++++ b/js/gdm/loginDialog.js
+@@ -810,12 +810,13 @@ var LoginDialog = GObject.registerClass({
+             return;
+ 
+         this._logoBin.destroy_all_children();
+-        if (this._logoFile && this._logoBin.resource_scale > 0) {
++        const [valid, resourceScale] = this._logoBin.get_resource_scale();
++        if (this._logoFile && valid) {
+             let scaleFactor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
+             this._logoBin.add_child(this._textureCache.load_file_async(this._logoFile,
+                                                                        -1, -1,
+                                                                        scaleFactor,
+-                                                                       this._logoBin.resource_scale));
++                                                                       resourceScale));
+         }
+     }
+ 
+-- 
+2.26.0
+
