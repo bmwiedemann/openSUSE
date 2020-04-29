@@ -22,17 +22,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kdesdk-scripts
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          System/GUI/KDE
-URL:            http://www.kde.org/
+URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Patch0:         kde-dev-scripts-4.14.3-fix-bashisms.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -42,8 +38,10 @@ Provides:       kdesdk4-scripts = %{_kapp_version}
 Obsoletes:      kde-dev-scripts < %{_kapp_version}
 Provides:       kde-dev-scripts = %{_kapp_version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 This package contains scripts useful for development of KDE software.
@@ -58,9 +56,7 @@ Provides:       kdesdk4-scripts-kf5-porting = %{version}
 This package contains the scripts to make the porting KDE software from
 kdelibs and Qt4 to Qt5 and KDE Frameworks 5.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n %{rname}-%{version}

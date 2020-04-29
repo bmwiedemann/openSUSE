@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:51 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * c++-*-class-and-file: add support for camelcase filenames
+  * Not necessary now
+  * Fix string
+  * Add my relicensing agreements (mjansen)
+  * add tfella to relicense check
+  * Updating my relicensing agreements
+  * Fix minor EBN issues and typo
+  * Add myself (arichardson) to relicensecheck.pl
+  * Add vladz to relicensecheck.pl
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
