@@ -1,7 +1,7 @@
 #
 # spec file for package bomber
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,35 +21,31 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bomber
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Game involving the invasion of cities with a plane
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
@@ -57,17 +53,17 @@ BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Bomber is a single player arcade game. The player is invading various cities in a plane that is decreasing in height.
 
 The goal of the game is to destroy all the buildings and advance to the next level. Each level gets a harder by increasing the speed of the plane and the height of the buildings.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n bomber-%{version}
