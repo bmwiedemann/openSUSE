@@ -358,4 +358,17 @@
   * fix-crash-on-shutdown.patch (forwarded request 762623 from favogt)</comment>
     <requestid>762624</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>e0cbf06f62dad1b1c32ae0320b1126aa</srcmd5>
+    <version>0.9.12</version>
+    <time>1588185680</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2019-15690 [bsc#1160471], heap buffer overflow
+  + LibVNCServer-CVE-2019-15690.patch
+  fix CVE-2019-20788 [bsc#1170441], integer overflow and heap-based buffer overflow via a large height or width value
+  + LibVNCServer-CVE-2019-20788.patch</comment>
+    <requestid>798132</requestid>
+  </revision>
 </revisionlist>

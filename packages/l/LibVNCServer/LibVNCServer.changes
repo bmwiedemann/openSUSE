@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:20:21 UTC 2020 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2019-15690 [bsc#1160471], heap buffer overflow
+  + LibVNCServer-CVE-2019-15690.patch
+  fix CVE-2019-20788 [bsc#1170441], integer overflow and heap-based buffer overflow via a large height or width value
+  + LibVNCServer-CVE-2019-20788.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 08:24:05 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patches to fix crash on shutdown:

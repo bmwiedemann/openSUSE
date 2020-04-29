@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        VNC Development Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/X11
-Url:            https://github.com/LibVNC/libvncserver
+URL:            https://github.com/LibVNC/libvncserver
 # Archive is renamed by github
 Source0:        https://github.com/LibVNC/libvncserver/archive/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -38,6 +38,10 @@ Patch3:         LibVNCServer-CVE-2019-15681.patch
 Patch4:         avoid-pthread_join-if-backgroundLoop-is-FALSE.patch
 # PATCH-FIX-UPSTREAM: https://github.com/LibVNC/libvncserver/pull/361
 Patch5:         fix-crash-on-shutdown.patch
+# CVE-2019-20788 [bsc#1170441], integer overflow and heap-based buffer overflow via a large height or width value
+Patch6:         LibVNCServer-CVE-2019-20788.patch
+# CVE-2019-15690 [bsc#1160471], heap buffer overflow
+Patch7:         LibVNCServer-CVE-2019-15690.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -109,6 +113,8 @@ files for LibVNCServer.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 #%patch2 -p1
 # fix encoding
 for file in ChangeLog ; do
