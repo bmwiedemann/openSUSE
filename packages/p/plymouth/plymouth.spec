@@ -19,7 +19,7 @@
 %bcond_with x11_renderer
 %bcond_with fedora_theme
 
-%global git_version 20200407+6ca4b5b
+%global git_version 20200418+14e91cc
 %global so_version 5
 
 Name:           plymouth

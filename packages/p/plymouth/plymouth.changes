@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:39:59 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 0.9.5+git20200418+14e91cc:
+  Don't bail out of load_settings if "Theme" is missing. 
+
+-------------------------------------------------------------------
 Sat Apr 11 05:11:27 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version plymouth-0.9.5+git20200407+6ca4b5b:
