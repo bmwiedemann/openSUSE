@@ -1,7 +1,7 @@
 #
 # spec file for package knavalbattle
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,38 +21,34 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knavalbattle
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Battleship game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5DNSSD)
+BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
@@ -60,17 +56,17 @@ BuildRequires:  cmake(Qt5Widgets)
 Provides:       knavalbattle5 = %{version}
 Obsoletes:      knavalbattle5 < %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 KBatteship is a KDE implentation of the popular game "Battleship" where
 you have to try to sink the opponents ships. The game can also be
 played with friends online via the internet.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n knavalbattle-%{version}
@@ -96,6 +92,7 @@ played with friends online via the internet.
 %{_kf5_appsdir}/knavalbattle/
 %{_kf5_appstreamdir}/org.kde.knavalbattle.appdata.xml
 %{_kf5_bindir}/knavalbattle
+%{_kf5_debugdir}/knavalbattle.categories
 %{_kf5_iconsdir}/hicolor/*/apps/knavalbattle.*
 %{_kf5_kxmlguidir}/knavalbattle/
 %{_kf5_servicesdir}/knavalbattle.protocol
