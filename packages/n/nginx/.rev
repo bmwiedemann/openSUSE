@@ -570,4 +570,14 @@
     <comment></comment>
     <requestid>795747</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>e44bc597c400094c23deda68e2cb4007</srcmd5>
+    <version>1.18.0</version>
+    <time>1588185785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0
+  * 1.18.x stable branch.
+</comment>
+    <requestid>798375</requestid>
+  </revision>
 </revisionlist>

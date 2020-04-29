@@ -76,7 +76,7 @@
 %endif
 #
 Name:           nginx
-Version:        1.17.10
+Version:        1.18.0
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -132,15 +132,15 @@ BuildRequires:  libatomic-ops-devel
 %endif
 #
 %if %{with systemd}
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_ordering}
 %sysusers_requires
 %else
-Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
+Requires(pre):  shadow
 %endif
 
 %description

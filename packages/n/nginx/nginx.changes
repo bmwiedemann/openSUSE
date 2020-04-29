@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 22 16:46:27 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.18.0
+  * 1.18.x stable branch.
+
+-------------------------------------------------------------------
 Fri Apr 17 12:28:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers.d to create the nginx user and group
