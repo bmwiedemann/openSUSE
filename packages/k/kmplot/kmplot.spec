@@ -1,7 +1,7 @@
 #
 # spec file for package kmplot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,22 +21,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmplot
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Mathematical Function Plotter
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
@@ -44,12 +40,12 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
-%if 0%{?suse_version} < 1500
-# the default gcc 4.8 is too old
-BuildRequires:  gcc7-c++
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 
 %description
@@ -61,23 +57,18 @@ Mathematical function plotter by KDE.
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1500
-# the default gcc 4.8 is too old
-export CC=gcc-7
-export CXX=g++-7
-%endif
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
 
 %files
 %license COPYING*
