@@ -599,4 +599,12 @@ New since previous SR: added patches to .changes file.</comment>
 - Create /var/run/heartbeat/rsctmp directory (bsc#1131545)</comment>
     <requestid>709337</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>51283fde153fd1457b7808f43fdc4c04</srcmd5>
+    <version>1.0.12+v1.git.1587474580.a5fda2bc</version>
+    <time>1588185718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798302</requestid>
+  </revision>
 </revisionlist>
