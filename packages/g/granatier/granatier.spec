@@ -1,7 +1,7 @@
 #
 # spec file for package granatier
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,33 +21,29 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           granatier
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Bomberman-like game for KDE
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
@@ -55,17 +51,17 @@ BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 In this game, the player walks through an arena, lays bombs and, in
 that way, is to kill enemies. Granatier is a clone of the popular
 Bomberman game.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n granatier-%{version}
