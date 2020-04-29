@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:43:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 27 09:51:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0
+  - Rewrite rebootmgrd to not depend on glib and dbus-glib
+
+-------------------------------------------------------------------
 Wed Jan 29 12:40:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable ectd support (no current etcd C-library available)

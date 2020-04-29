@@ -134,4 +134,15 @@
     <comment>- Disable ectd support (no current etcd C-library available)</comment>
     <requestid>768307</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>df74d499c1724f1289283486af8563a5</srcmd5>
+    <version>1.0</version>
+    <time>1588185688</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust BuildRequires
+
+- Update to version 1.0
+  - Rewrite rebootmgrd to not depend on glib and dbus-glib</comment>
+    <requestid>798151</requestid>
+  </revision>
 </revisionlist>

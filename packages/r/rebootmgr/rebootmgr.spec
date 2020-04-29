@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        0.20.1
+Version:        1.0
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -33,8 +33,7 @@ URL:            https://github.com/SUSE/rebootmgr
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libeconf)
 
 %description
