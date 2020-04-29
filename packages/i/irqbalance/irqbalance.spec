@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            https://github.com/Irqbalance/irqbalance
+URL:            https://github.com/Irqbalance/irqbalance
 #Source:         https://github.com/Irqbalance/irqbalance/archive/v%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
@@ -38,9 +38,9 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
-Requires(pre):  coreutils
-Requires(pre):  fillup
+Requires(pre):  %fillup_prereq
 ExcludeArch:    s390 s390x
+Recommends:     %{name}-ui
 %{?systemd_requires}
 %ifnarch %{arm}
 BuildRequires:  libnuma-devel
@@ -49,6 +49,14 @@ BuildRequires:  libnuma-devel
 %description
 irqbalance dynamically switches the CPUs for IRQs to prevent cpu0 from
 being used for all IRQs.
+
+%package ui
+Summary:        UI for IRQ balance Daemon
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description ui
+Text UI for the IRQ balance daemon.
 
 %prep
 %setup -q
@@ -85,11 +93,15 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 %service_del_postun irqbalance.service
 
 %files
+%license COPYING
+%doc AUTHORS README.md
 %{_sbindir}/irqbalance
-%{_sbindir}/irqbalance-ui
 %{_sbindir}/rcirqbalance
 %{_unitdir}/irqbalance.service
 %{_mandir}/man1/irqbalance.1%{?ext_man}
 %{_fillupdir}/sysconfig.irqbalance
+
+%files ui
+%{_sbindir}/irqbalance-ui
 
 %changelog
