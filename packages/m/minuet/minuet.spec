@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           minuet
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        A KDE Software for Music Education
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 5.15.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -50,6 +46,10 @@ BuildRequires:  pkgconfig(fluidsynth)
 # Runtime requirement
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Application for Music Education.
