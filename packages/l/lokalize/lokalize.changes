@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Update mailings list for the Norwegian languages
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Only check LT for source and HTML escaping
+  * Add bg nplurals as used in gettext
+  * Do not launch LT on empty strings
+  * Only fire LT once
+  * Remove this for stable due to string freeze
+  * Add auto language tool check after X seconds of wait
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Adding LanguageTool support (kde#410068)
+  * Add a Close project menu item (kde#406259)
+  * Fix a bug in recent files list with non-project file opens (kde#412820)
+  * Put radio buttons for Catalog Filter (kde#412836)
+  * Link zoom in source and target panels (kde#413497)
+  * Add files list to the catalog view (kde#405133)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
