@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20200322
+Version:        20200422
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -70,9 +70,7 @@ rm "%buildroot/%_bindir/parallel.orig"
 %license COPYING
 %_bindir/env_parallel*
 %_bindir/niceload
-%_bindir/parallel
-%_bindir/parcat
-%_bindir/parset
+%_bindir/par*
 %_bindir/sem
 %_bindir/sql
 %_mandir/man1/*.1*

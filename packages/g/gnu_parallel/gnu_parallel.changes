@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 21:29:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200422
+  * parsort makes GNU sort run faster for files with more
+    than 1M lines.
+
+-------------------------------------------------------------------
 Mon Mar 23 10:23:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200322
