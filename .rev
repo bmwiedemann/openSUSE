@@ -1329,4 +1329,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795096 from iznogood)</comment>
     <requestid>795241</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>895c62cf4233ca6afad938d21acca69f</srcmd5>
+    <version>3.36.2</version>
+    <time>1588185744</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested (forwarded request 797634 from iznogood)</comment>
+    <requestid>798335</requestid>
+  </revision>
 </revisionlist>

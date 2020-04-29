@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 25 12:35:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Prevent jump to the old scrolling position after changing
+    location.
+  + Revert icon emblem fixes in order to prevent performance
+    issues.
+  + Fix content type detection when opening files from remote
+    locations.
+
+-------------------------------------------------------------------
+Wed Apr 22 07:28:06 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Apply set_trusted.desktop and set_trusted.sh in spec to both SLE
+  and Leap (jsc#SLE-11853).
+
+-------------------------------------------------------------------
 Mon Mar 30 09:16:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1.1:
