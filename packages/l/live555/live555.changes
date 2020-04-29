@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 28 16:01:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2020.04.24:
+  + Fixed an apparent bug in "RTSPClient" that was causing it to
+    not always send an "Authorization:" header when sending a RTSP
+    "OPTIONS" command.
+
+-------------------------------------------------------------------
 Thu Apr 23 05:12:15 UTC 2020 - munix9@googlemail.com
 
 - Added pkgconfig(openssl) as a requirement for the devel package:

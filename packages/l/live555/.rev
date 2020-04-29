@@ -158,4 +158,15 @@
   iveMedia/TLSState.hh #includes openssl/ssl.h.</comment>
     <requestid>796439</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a6eba6cbcb2c4d5e53cdbfb943cbb106</srcmd5>
+    <version>2020.04.24</version>
+    <time>1588185857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020.04.24:
+  + Fixed an apparent bug in &quot;RTSPClient&quot; that was causing it to
+    not always send an &quot;Authorization:&quot; header when sending a RTSP
+    &quot;OPTIONS&quot; command.</comment>
+    <requestid>798701</requestid>
+  </revision>
 </revisionlist>
