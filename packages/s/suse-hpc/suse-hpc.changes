@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:58:20 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add 'Obsolete:' option to master package. This way, a removed
+  master package may be declared obsolte. 
+- Allow 'Empty' package - without a 'Requires:' to keep master
+  package for backward compatibility.
+
+-------------------------------------------------------------------
 Wed Feb  6 07:08:30 UTC 2019 - eich@suse.com
 
 - macros.hpc: Fix default moduleversion link generation and deletion  
