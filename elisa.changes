@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * add automated tests to ViewManager and fix one bug in it
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * workaround not to have the system tray menu appear when it should not (kde#419145)
+  * remove dependency on KCMUtils that is no longer used
+  * fix move in shuffle move that can trigger an assert and add a test
+  * fix handling of menu exported by system tray icon (kde#409010)
+  * focus first (title) TextEntry component when editing a radio (kde#418296)
+  * add icons to dialogs (kde#418576)
+  * keep enough data to check that received data are for the correct track
+  * fix invalid URL when sending cover image in mpris for embedded covers (kde#416131)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * allow to have an Elisa icon in system tray and to close main window (kde#416170)
+  * allow the user via to configure Elisa not to rely on Baloo (kde#417822)
+  * New shuffle mode for playlist (kde#394333)
+  * allow to activate/deactivate the progress indicator on task bar entry (kde#406454)
+  * convert KCM based configuration dialog to a simple dialog (kde#414982)
+  * Change style in Context view to use blurred album art as the background (kde#417268)
+  * Make the album art thumbnails in the playlist a little bit smaller (kde#416806)
+  * Migrate from deprecated media content URL API (kde#416144)
+  * put back the cleaning of DataModel when database is cleared (kde#413100)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
