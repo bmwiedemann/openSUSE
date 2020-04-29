@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fix Bug 419065 - Doesn't build with Qt 5.15 (kde#419065)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * filter out duplicate paths
+  * Make it compile with qt5.15
+  * Use logging categories
+  * addVersionOption()/addHelpOption() already adds by KAboutData::setApplicationData
+  * Fix link: ui.html -> menus.html
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

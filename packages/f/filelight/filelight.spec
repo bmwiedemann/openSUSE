@@ -1,7 +1,7 @@
 #
 # spec file for package filelight
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,28 +21,24 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           filelight
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KF5Solid)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Script)
@@ -51,16 +47,16 @@ BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Filelight creates an interactive visualization of disk usage
 and the sizes of files and directories on the system.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n filelight-%{version}
