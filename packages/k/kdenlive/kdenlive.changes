@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Too many changes since 20.03.90, only listing bugfixes:
+  * Fix freeze when changing bin selection BUG: 419604 (kde#419604)
+  * Export frame should use source resolution instead of project resolution BUG: 419824 (kde#419824)
+  * Fix crash opening old project file BUG: 419563 (kde#419563)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Too many changes since 20.03.80, only listing bugfixes:
+  * Ensure we cannot create a project with 0 tracks (kde#419019)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fix duplicate multiple clips only duplicating first item (kde#418379)
+  * Fix changing of title clip duration broken (kde#417505)
+  * Fix tile clips created with monitor preview res (kde#417368)
+  * Fix forward/rewind affecting wrong monitor (kde#416917)
+  * Enable clip jobs and convert/extract audio on subclips (kde#416616)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
@@ -6,7 +42,7 @@ Thu Mar  5 20:36:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/releases/19.12.3
 - Too many changes since 19.12.2, only listing bugfixes:
-  * Fix changing of title clip duration broken BUG: 417505 (kde#417505)
+  * Fix changing of title clip duration broken (kde#417505)
 
 -------------------------------------------------------------------
 Fri Feb  7 08:37:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
@@ -102,20 +138,20 @@ Thu Sep  5 14:00:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-19.08.1.php
 - Changes since 19.08.0:
-  * Fix disabling clip only disable audio part of an AV clip. BUG: 411466 (kde#411466)
+  * Fix disabling clip only disable audio part of an AV clip. (kde#411466)
   * Fix regression breaking timeline resize
   * Fix timelinekeyboard focus on start and grab not correctly ended
   * default effects to video
-  * Fix disabling autoscroll. Fixes #312
-  * Convert old custom effects to new customAudio/Video naming Related to #336
-  * Fix group move sometimes moving clip very far from expected location. Fixes #328
-  * Ctrl resize in monitor effects keeps center position Fixes #321
-  * Shift resize in monitor effect keeps aspect ratio Related to #321
+  * Fix disabling autoscroll.
+  * Convert old custom effects to new customAudio/Video naming
+  * Fix group move sometimes moving clip very far from expected location.
+  * Ctrl resize in monitor effects keeps center position
+  * Shift resize in monitor effect keeps aspect ratio
   * Update appdata version
-  * Fix effect/composition list filter working on untranslated strings Fixes #339
+  * Fix effect/composition list filter working on untranslated strings
   * Merge branch 'rgb_parade' into 'master'
-  * Fix custom effects not recognized as audio Fixes #336
-  * Fix encoder speed ignored BUG: 411000 (kde#411000)
+  * Fix custom effects not recognized as audio
+  * Fix encoder speed ignored (kde#411000)
   * Late update of version in appdata..
   * Use the parameter readable and translatable name instead of its formal name for the color edit widget
 
@@ -131,35 +167,35 @@ Fri Aug  9 08:30:44 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * Use translations for asset names in the Undo History
   * Fix dropping clip in insert/overwrite mode
   * Fix timeline drag in overwrite/edit mode
-  * Fix freeze when deleting a group with clips on locked tracks. Fixes #331
+  * Fix freeze when deleting a group with clips on locked tracks.
   * Fix crash when dragging clip in insert mode. (kde#409577)
   * Use the translated transition names in the 'Properties' header
-  * Fix freeze and fade ins allowed to go past last frame Fixes #327
+  * Fix freeze and fade ins allowed to go past last frame
   * Fix revert speed clip reloading incorrectly
   * Fix copy/paste of clip with negative speed
   * Fix issues on clip reload: slideshow clips broken and title duration reset
-  * Fix slideshow effects disappearing. Fixes #316
-  * Fix track effect keyframes Fixes #238
+  * Fix slideshow effects disappearing.
+  * Fix track effect keyframes
   * Fix track effects don't invalidate timeline preview
-  * Fix effect presets broken on comma locales, clear preset after resetting effect Fixes #303
-  * Fix crash in extract zone when no track is active. Fixes #310
+  * Fix effect presets broken on comma locales, clear preset after resetting effect
+  * Fix crash in extract zone when no track is active.
   * Fix reverting clip speed modifies in/out
-  * Fix audio overlay showing up randomly. Fixes #305
-  * Fix Find clip in bin not always scrolling to correct position. Fixes #302
+  * Fix audio overlay showing up randomly.
+  * Fix Find clip in bin not always scrolling to correct position.
   * Fix possible crash changing profile when cache job was running
-  * Fix editing bin clip does not invalidate timeline preview. Fixes #307
-  * Fix audiobalance (MLT doesn't handle start param as stated) Fixes #301
+  * Fix editing bin clip does not invalidate timeline preview.
+  * Fix audiobalance (MLT doesn't handle start param as stated)
   * Fix target track inconsistencies: 3 state button, hide when shouldn't be available
   * Make the strings in the settings dialog translatable
   * Make effect names translatable in menus and in settings panel
   * Remember last target track and restore when another clip is selected
   * Dont' process insert when no track active, don't move cursor if no clip inserted
   * Correctly place timeline toolbar after editing toolbars
-  * Lift/gamma/gain: make it possible to have finer adjustments with Shift modifier Fixes #297
-  * Fix MLT effects with float param and no xml description Fixes #295
+  * Lift/gamma/gain: make it possible to have finer adjustments with Shift modifier
+  * Fix MLT effects with float param and no xml description
   * Cleanup timeline selection: rubber select works again when starting over a clip.
   * Attempt to fix Windows build
-  * Various fixes for icon view: Fix long name breaking layout, fix seeking and subclip zone marker Related to #287
+  * Various fixes for icon view: Fix long name breaking layout, fix seeking and subclip zone marker
   * Fix some bugs in handling of NVidia HWaccel for proxies and timeline preview
 
 -------------------------------------------------------------------
@@ -174,12 +210,12 @@ Tue Aug 06 16:50:48 UTC 2019 - lbeltrame@kde.org
   * Fix bug preventing sequential names when making serveral script renderings from same project
   * Fix compilation with cmake < 3.5
   * Fix extract frame retrieving wrong frame when clip fps != project fps (kde#409927)
-  * Don't attempt rendering an empty project Fixes #282
-  * Fix incorrect source frame size for transform effects. Related to #290
+  * Don't attempt rendering an empty project
+  * Fix incorrect source frame size for transform effects.
   * improve subclips visual info (display zone over thumbnail), minor cleanup
   * Small cleanup of bin preview thumbnails job, automatically fetch 10 thumbs at insert to allow quick preview and fetch another 40 when seeking is requested
-  * Fix project clips have incorrect length after changing project fps Related to #286
-  * Fix inconsistent behavior of advanced timeline operations. Related to #225
+  * Fix project clips have incorrect length after changing project fps
+  * Fix inconsistent behavior of advanced timeline operations.
   * Fix "Find in timeline" option in bin context menu
   * Support the new logging category directory with KF 5.59+
 
@@ -302,14 +338,14 @@ Fri Jan 11 05:42:08 UTC 2019 - lbeltrame@kde.org
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-18.12.1.php
 - Changes since 18.12.0:
-  * Fix empty warning dialog on missing font in project BUG: 401903 (kde#401903)
-  * Fix bin item description cannot be edited if it contains zone subclips BUG: 402817 (kde#402817)
+  * Fix empty warning dialog on missing font in project (kde#401903)
+  * Fix bin item description cannot be edited if it contains zone subclips (kde#402817)
   * Fix screengrab with audio broken
-  * Move Gain effect to "Audio correction" category Patch by Juku Trump https://phabricator.kde.org/D17968
+  * Move Gain effect to "Audio correction" category
   * ci: enable freebsd build
   * QtScript is not used anymore
   * ci: add recipe for gitlab CI
-  * Fix incorrect color theme correction for AppImages Related to #2
+  * Fix incorrect color theme correction for AppImages
   * Fix color theme lost on AppImage
   * Update AppData app version
   * Fix bin/melt.exe & libmlt* loading on Windows
@@ -376,7 +412,7 @@ Thu Nov 08 20:43:34 UTC 2018 - lbeltrame@kde.org
   * build scripts for Linux & Windows
   * Backport packaging scripts
   * Fix MinGW build
-  * Backport fix for incorrect bin rename CCBUG: 368206
+  * Backport fix for incorrect bin rename
 
 -------------------------------------------------------------------
 Thu Oct 11 20:06:50 UTC 2018 - lbeltrame@kde.org
@@ -403,7 +439,7 @@ Thu Sep 06 18:42:59 UTC 2018 - lbeltrame@kde.org
 - Changes since 18.08.0:
   * Fix proxy creation not restarting when changing a property while creating proxy
   * Prepare AppData for next release
-  * Fix clip proxy on autorotate BUG: 397762 (kde#397762)
+  * Fix clip proxy on autorotate (kde#397762)
   * Fix effects parameters parsing
   * Give priority to local effects over system ones
   * Access to MLT debug info (command line option)
@@ -459,9 +495,9 @@ Fri Jun 08 05:06:43 UTC 2018 - lbeltrame@kde.org
   * Don't display Wizard on every AppImage startup
   * Fix message extraction
   * Prepare for 18.04.2 release
-  * Rename mime type file to make flatpak happy Differential Revision: https://phabricator.kde.org/D13143
+  * Rename mime type file to make flatpak happy
   * Fix crash with MLT 6.8.0 and some keyfameable parameters (box blur)
-  * Consistent behavior for mouse wheel: down goes forward, up goes backwards BUG: 394341 (kde#394341)
+  * Consistent behavior for mouse wheel: down goes forward, up goes backwards (kde#394341)
   * Update readme with correct infos
 - Dropped patches, now upstream:
   * fix-crash-with-mlt-6.8.0.patch
@@ -484,7 +520,7 @@ Fri May 11 05:17:51 UTC 2018 - lbeltrame@kde.org
   * Update appdata version
   * Improve titler default background color
   * Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
-  * Only check color theme on first run, not each time the Wizard is called BUG:388274 (kde#388274)
+  * Only check color theme on first run, not each time the Wizard is called (kde#388274)
 
 -------------------------------------------------------------------
 Thu Apr 19 12:02:52 UTC 2018 - wbauer@tmo.at
@@ -503,8 +539,8 @@ Wed Apr 18 07:49:03 CEST 2018 - lbeltrame@kde.org
   * Stop looking for DVD related apps on startup
   * Update AppData version for comming release
   * Scale TitleTemplateDialog preview with the window
-  * Fix rendering using custom folder when not requested BUG: 387135 (kde#387135)
-  * Fix double separator in project/capture folder CCBUG: 387135
+  * Fix rendering using custom folder when not requested (kde#387135)
+  * Fix double separator in project/capture folder
   * Fix possibly wrong message on moving project folder
   * Fix regression breaking fades and other effects on resize
 
@@ -516,13 +552,13 @@ Fri Apr 06 07:09:15 CEST 2018 - lbeltrame@kde.org
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-18.04-rc.php
 - Changes since 17.12.3:
-  * Fix lowres icons on highdpi patch by Andrew Crouthamel BUG: 390104 (kde#390104)
+  * Fix lowres icons on highdpi (kde#390104)
   * Fix crash when initializing offscreen surface in GLWidget
-  * Move knsrc files in Qt resource so we find them without install BUG: 392201 (kde#392201)
+  * Move knsrc files in Qt resource so we find them without install (kde#392201)
   * Fix build with Qt 5.11 (missing headers)
-  * Fix project settings vertical scrollbar on open Differential Revision: https://phabricator.kde.org/D10449
+  * Fix project settings vertical scrollbar on open
   * Update minimum MLT version to latest release (fixes audio mix problem)
-  * Fix AppImage screenshot BUG: 388676 (kde#388676)
+  * Fix AppImage screenshot (kde#388676)
 
 -------------------------------------------------------------------
 Thu Mar 08 23:51:28 CET 2018 - lbeltrame@kde.org
@@ -547,7 +583,7 @@ Wed Feb 07 08:47:52 CET 2018 - lbeltrame@kde.org
   * Fix backwards seeking not stoping when reaching clip start
   * Add release version number to AppData
   * Don't query available widget styles on each startup
-  * Fix webM encoding (auto replace vorbis by libvorbis if installed) BUG: 388503 (kde#388503)
+  * Fix webM encoding (auto replace vorbis by libvorbis if installed) (kde#388503)
 - Dropped patches, now upstream:
   * fix-build-with-Qt5.6.patch
 
@@ -584,11 +620,11 @@ Sat Dec 09 14:59:04 CET 2017 - lbeltrame@kde.org
   * remove useless audio bitrate on pcm proxy encoding
   * Update proxy profiles
   * Make sure playlist proxies have an even height
-  * Fix crash on playlists concurrent jobs using library clips CCBUG: 386616
+  * Fix crash on playlists concurrent jobs using library clips
   * Timeline preview fixes: Don't invalidate on expand/collapse effect, invalidate on master clip edit
   * Don't restart clip if trying to play backwards from clip monitor end
-  * Use smaller size for image proxies BUG: 353577 (kde#353577)
-  * Fix playing backwards forwards one second BUG: 375634 (kde#375634)
+  * Use smaller size for image proxies (kde#353577)
+  * Fix playing backwards forwards one second (kde#375634)
 
 -------------------------------------------------------------------
 Sat Dec 02 10:12:36 CET 2017 - lbeltrame@kde.org
@@ -654,11 +690,11 @@ Thu Sep 07 07:01:56 CEST 2017 - lbeltrame@kde.org
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-17.08.1.php
 - Changes since 17.08.0:
-  * Remember last selected title template CCBUG: 384340
-  * Fix proxy error (height not multiple of 2) BUG: 384345 (kde#384345)
+  * Remember last selected title template
+  * Fix proxy error (height not multiple of 2) (kde#384345)
   * Fix extract frame from bin exporting lower than source image
-  * Fix visibility check of tracks in multitrack-view Differential Revision: https://phabricator.kde.org/D7670
-  * Allow disabling autosave until we improve it BUG: 384197 (kde#384197)
+  * Fix visibility check of tracks in multitrack-view
+  * Allow disabling autosave until we improve it (kde#384197)
   * Windows: find Kdenlive lumas (kde#375337)
   * Windows: terminate KDE session on window close (kde#380854)
   * Windows: always use bundled MLT (kde#380036)
@@ -690,15 +726,15 @@ Sat Jul 15 22:59:41 CEST 2017 - lbeltrame@kde.org
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-17.04.3.php
 - Changes since 17.04.2:
-  * Fix crash on importing multistream clip BUG: 381584 (kde#381584)
-  * Fix crash when creating proxies - real issue not yet fixed CCBUG: 381738
+  * Fix crash on importing multistream clip (kde#381584)
+  * Fix crash when creating proxies - real issue not yet fixed
   * fix compile (gcc7) (kde#379688)
   * show info on MLT found by CMake
   * non-portable flag, let build system handle it
   * Windows icons are delivered in icontheme.rcc
   * Fix compilation
   * Fix custom profile not found on creation
-  * Fix loop zone BUG: 378813 BUG: 381146 (kde#378813, kde#381146)
+  * Fix loop zone (kde#378813, kde#381146)
 - Remove patches, now upstream:
   * gcc7-fixes.patch
 
@@ -734,9 +770,9 @@ Wed May 17 20:36:08 CEST 2017 - lbeltrame@kde.org
   * For more details please see:
   * https://www.kde.org/announcements/announce-applications-17.04.1.php
 - Changes since 17.04.0:
-  * Fix title clip duration cannot be changed BUG: 379582 (kde#379582)
-  * Allow passing pre-parameters using "-i" to specify where the input file name should go in ffmpeg parameters Should work in proxy and transcoding, for example: -vaapi_device /dev/dri/renderD128 -hwaccel vaapi -hwaccel_output_format vaapi -i -an -c:v dnxhd Will insert source file name after "-i". CCBUG: 378832
-  * Fixed off-by-one errors in fft-based cross-correlation computations Patch by raphaelm Differential Revision: https://phabricator.kde.org/D5454
+  * Fix title clip duration cannot be changed (kde#379582)
+  * Allow passing pre-parameters using "-i" to specify where the input file name should go in ffmpeg parameters
+  * Fixed off-by-one errors in fft-based cross-correlation computations
   * Don't show color theme configuration option unavailable on Windows (kde#375723)
   * Fix temp path on Windows (kde#375717)
   * Fix MLT doc link (kde#375316)
@@ -754,7 +790,7 @@ Sun Apr 16 10:44:55 CEST 2017 - lbeltrame@kde.org
   * Fix temp path on Windows
   * Fix MLT doc link
   * Fix script export & QScript header left
-  * Fix glitch on pause and does not play last second of project BUG: 371762 (kde#371762)
+  * Fix glitch on pause and does not play last second of project (kde#371762)
   * remove QScript dependency
   * Fix render scripts on Windows: generate .bat files
 
@@ -769,10 +805,10 @@ Wed Apr 12 20:25:30 CEST 2017 - lbeltrame@kde.org
   * Fix possible crash on rendering with "play after render" option
   * Images also use qimage producer
   * fix Windows build with C++ threads
-  * Fix some effects incorrectly initialized on tracks BUG: 378071
+  * Fix some effects incorrectly initialized on tracks (kde#378071)
   * Remove beta message in preparation of release
   * Fix locked ratio scaling
-  * Fix archived project wrong path and missing images/slideshows CCBUG: 377999 CCBUG: 378000
+  * Fix archived project wrong path and missing images/slideshows
   * More clever ratio locking in effect/transition
 
 -------------------------------------------------------------------
@@ -801,13 +837,13 @@ Thu Mar  9 12:36:56 CET 2017 - lbeltrame@kde.org
   * https://www.kde.org/announcements/announce-applications-16.12.3.php
 - Changes since 16.12.2:
   * Fix crash & corruption on dragging multiple clips in timeline, fix thread warning on monitor refresh
-  * Avoid possible profile corruption with xml producer CCBUG: 371189
+  * Avoid possible profile corruption with xml producer
   * Avoid relying on xml to clone a clip.
   * src/dvdwizard/dvdwizardmenu.cpp: do not show "grid" in output (kde#377256)
   * src/dvdwizard/dvdwizard.cpp: fix file loading in slotLoad (kde#377254)
-  * Fix Render Widget's file dialog not working correctly (requires KDE Frameworks >= 5.33) BUG: 371685 (kde#371685)
-  * Fix render job duration when past midnight BUG: 372370 (kde#372370)
-  * Fix Bin Effect reset BUG: 376494 (kde#376494)
+  * Fix Render Widget's file dialog not working correctly (requires KDE Frameworks >= 5.33) (kde#371685)
+  * Fix render job duration when past midnight (kde#372370)
+  * Fix Bin Effect reset (kde#376494)
   * Fix unnecessary refresh of tools when selecting titler item
   * Fix fadeouts re-appearing on clip cut+resize
 

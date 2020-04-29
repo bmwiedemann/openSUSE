@@ -16,25 +16,21 @@
 #
 
 
-%define mlt_version 6.10.0
+%define mlt_version 6.20.0
 %define melt_path %(pkg-config --variable=meltbin mlt-framework)
 %define mlt_soname %(pkg-config --variable=moduledir mlt-framework | sed 's/.*-\\([0-9]\\+\\)/\\1/')
-%define kf5_version 5.60.0
+%define kf5_version 5.45.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://www.kdenlive.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -69,6 +65,7 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -96,12 +93,16 @@ Recommends:     %{_bindir}/dvgrab
 Recommends:     %{_bindir}/ffmpeg
 Recommends:     %{_bindir}/ffplay
 Recommends:     %{_bindir}/genisoimage
+Recommends:     %{name}-lang
 Recommends:     frei0r-plugins
 Recommends:     libv4l
 Recommends:     mlt(%{mlt_soname})(avformat)
 Obsoletes:      kdenlive5 < %{version}
 Provides:       kdenlive5 = %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Kdenlive is a non-linear video editor for GNU/Linux and FreeBSD, which supports
