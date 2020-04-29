@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:41:16 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.54.1:
+  * Release v3.54.1
+  * Revert "Accept the variable value from stdin in variable:create and variable:update commands"
+  * Cover set-remote in the project:create command too
+  * Allow for access denied to the old project in the project:set-remote command
+  * Integrations: replace foo/bar example with owner/repository (#921)
+  * Ensure all token data is available after reauthenticating, for completeness' sake
+
+-------------------------------------------------------------------
 Thu Apr 16 03:13:06 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.54.0:
