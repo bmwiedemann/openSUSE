@@ -16,38 +16,35 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-send-file
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        File manager plugin
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  telepathy-logger-qt5-devel
+BuildRequires:  telepathy-qt5-devel
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KTp)
+BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
+Obsoletes:      %{name}5 < %{version}
+Provides:       %{name}5 = %{version}
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.3.0
-BuildRequires:  fdupes
-BuildRequires:  kcmutils-devel >= 5.0
-BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel >= 5.0
-BuildRequires:  kio-devel >= 5.0
-BuildRequires:  ktp-common-internals-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  pkgconfig
-BuildRequires:  telepathy-logger-qt5-devel
-BuildRequires:  telepathy-qt5-devel
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.0
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 A File manager plugin to launch a file transfer job with a specified contact
@@ -71,7 +68,6 @@ A File manager plugin to launch a file transfer job with a specified contact
 %files
 %license COPYING*
 %{_kf5_bindir}/ktp-send-file
-%{_kf5_servicesdir}/
 
 %if %{with lang}
 %files lang -f %{name}.lang
