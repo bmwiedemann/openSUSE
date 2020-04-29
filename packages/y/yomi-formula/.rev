@@ -158,4 +158,13 @@
   * storage: suppor XFS filesystem</comment>
     <requestid>795823</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>26097c698d058246cbb9b69de1af7689</srcmd5>
+    <version>0.0.1+git.1587986719.9a9097a</version>
+    <time>1588185691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1587986719.9a9097a:
+  * Add initial support for ARM64 with EFI</comment>
+    <requestid>798191</requestid>
+  </revision>
 </revisionlist>

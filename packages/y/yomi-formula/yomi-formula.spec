@@ -20,7 +20,7 @@
 %define fdir  %{_datadir}/salt-formulas
 
 Name:           yomi-formula
-Version:        0.0.1+git.1587385401.ce3ed18
+Version:        0.0.1+git.1587986719.9a9097a
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
