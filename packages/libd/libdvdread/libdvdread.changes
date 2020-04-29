@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:25:12 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.1
+ * Fix the soversion following ABI breakage
+ version 6.1.0:
+ * Introduce DVDOpen2 and DVDOpenStream2 API to provide logger
+    context
+ * fix playback of broken discs with broken ifo files
+ * improve getmntent_r detection
+ * fix crashes in some disc, with empty contiguous ShortAD
+ * clean obsolete code
+- Bump soversion to 8
+- Added sigfile
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Oct 17 16:32:22 UTC 2019 - enzokiel@kabelmail.de
 
 - Update to version 6.0.2:

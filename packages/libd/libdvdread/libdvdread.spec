@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdread
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
+%define sover   8
 Name:           libdvdread
-Version:        6.0.2
+Version:        6.1.1
 Release:        0
 Summary:        Library for Reading DVD Video Images
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
 Source0:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-#Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  autoconf
@@ -37,13 +38,13 @@ BuildRequires:  pkgconfig(openssl)
 This package contains shared libraries for accessing DVD images (this
 package does not contain DeCSS algorithms).
 
-%package -n libdvdread7
+%package -n libdvdread%{sover}
 Summary:        Library for Reading DVD Video Images
 Group:          Productivity/Multimedia/Other
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} <= 0.9.7
 
-%description -n libdvdread7
+%description -n libdvdread%{sover}
 This package contains shared libraries for accessing DVD images (this
 package does not contain DeCSS algorithms).
 
@@ -51,21 +52,21 @@ package does not contain DeCSS algorithms).
 Summary:        Development Environment for libdvdread
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libdvdread7 = %{version}
+Requires:       libdvdread%{sover} = %{version}
 
 %description devel
 This package contains the include-files and static libraries for
 libdvdread.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
 %configure \
   --disable-silent-rules \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -73,14 +74,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # We install the files on our own, using %%doc
 rm -rf %{buildroot}%{_datadir}/doc/libdvdread/
 
-%post   -n libdvdread7 -p /sbin/ldconfig
-%postun -n libdvdread7 -p /sbin/ldconfig
+%post   -n libdvdread%{sover} -p /sbin/ldconfig
+%postun -n libdvdread%{sover} -p /sbin/ldconfig
 
-%files -n libdvdread7
+%files -n libdvdread%{sover}
 %license COPYING
 %doc AUTHORS NEWS README
-%{_libdir}/libdvdread.so.7
-%{_libdir}/libdvdread.so.7.*
+%{_libdir}/libdvdread.so.%{sover}
+%{_libdir}/libdvdread.so.%{sover}.*
 
 %files devel
 %{_includedir}/dvdread
