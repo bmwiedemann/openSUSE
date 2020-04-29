@@ -1,7 +1,7 @@
 #
 # spec file for package kalgebra
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,30 +21,26 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalgebra
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  cmake(Analitza5)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  xz
+BuildRequires:  cmake(Analitza5)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Qml)
@@ -59,8 +55,10 @@ Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 KAlgebra is a math expression solver and plotter.
@@ -76,9 +74,7 @@ Recommends:     %{name}-lang
 KAlgebra is a math expression solver and plotter. This package includes
 a QtQuick based version for use in mobile (phone, tablet) environments.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
