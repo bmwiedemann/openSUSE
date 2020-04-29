@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:54:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20200427:
+  * Add synth decoding for AMD Steppe Eagle/Crowned Eagle
+    (Puma 2014 G-Series), based on instlatx64 sample
+  * Add 7/0/edx SERIALIZE & TSXLDTRK bit descriptions
+  * Add 0xf/1/eax Counter width & overflow flag
+  * Add 0x10/3/ecx per-thread MBA controls flag
+  * Add 0x8000001f fields
+  * Add AMD 24594 & 40332 docs
+  * Correct field lengths in 14/0 and 14/1 subleafs so that
+    columns line up
+  * Add CC150 (Coffee Lake R0) synth decoding, based on
+    instlatx64 example
+  * Add Jasper Lake A0 stepping (from Coreboot*)
+  * Update 1/ebx "cpu count" to modern terminology: "maximum
+    addressible IDs for CPUs in pkg" to avoid user confusion
+  * Update 4/eax CPU & core count terminology in the same way
+
+-------------------------------------------------------------------
 Fri Mar  6 08:24:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200211

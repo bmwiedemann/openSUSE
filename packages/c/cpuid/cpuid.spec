@@ -17,13 +17,12 @@
 
 
 Name:           cpuid
-Version:        20200211
+Version:        20200427
 Release:        0
 Summary:        x86 CPU identification tool
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            http://etallen.com/cpuid.html
-
 Source:         http://etallen.com/cpuid/%name-%version.src.tar.gz
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
@@ -42,7 +41,7 @@ Cyrix CPUs, and is fairly complete.
 # remove -Werror=format-security which is used on Mandriva, as it produces
 # a false positive compiler error on several printf calls:
 CFLAGS=$(echo "%optflags -Wall" | sed 's/-Werror=format-security//g')
-make CFLAGS="$CFLAGS"
+%make_build CFLAGS="$CFLAGS"
 
 %install
 mkdir -p "%buildroot/%_bindir" "%buildroot/%_mandir/man1"
