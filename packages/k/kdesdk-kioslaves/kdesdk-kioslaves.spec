@@ -18,22 +18,22 @@
 
 %bcond_without lang
 Name:           kdesdk-kioslaves
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Core)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package contains additional KIO slaves.
