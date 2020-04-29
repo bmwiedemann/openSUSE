@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:39:35 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch silent-common-mu_tcp_wrapper_daemon.patch
+  * Also comment out the variable tls_available as not used anywhere
+
+-------------------------------------------------------------------
 Thu Feb 27 10:51:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch silent-common-mu_tcp_wrapper_daemon.patch

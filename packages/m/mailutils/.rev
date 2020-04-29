@@ -133,4 +133,13 @@
     mu_tcp_wrapper_daemon (boo#1164444)</comment>
     <requestid>779936</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>09817aa4303f3ceb244c4182d0bd0be1</srcmd5>
+    <version>3.8</version>
+    <time>1588185815</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch silent-common-mu_tcp_wrapper_daemon.patch
+  * Also comment out the variable tls_available as not used anywhere</comment>
+    <requestid>798514</requestid>
+  </revision>
 </revisionlist>
