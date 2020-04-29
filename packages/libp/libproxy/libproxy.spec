@@ -49,6 +49,8 @@ Source:         https://github.com/libproxy/%{_name}/archive/%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM libproxy-python3.7.patch dimstar@opensuse.org -- Add support for python 3.7 and 3.8, taken from upstream
 Patch0:         libproxy-python3.7.patch
+# PATCH-FIX-UPSTREAM libproxy-pxgsettings.patch dimstar@opensuse.org -- pxgsettings: use the correct syntax to connect to the changed signal
+Patch1:         libproxy-pxgsettings.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libmodman-devel
@@ -273,6 +275,7 @@ This package contains the Mono/.NET for libproxy.
 %prep
 %setup -q -n %{_sourcename}
 %patch0 -p1
+%patch1 -p1
 mkdir build
 
 %build
