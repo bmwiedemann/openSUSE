@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:33:50 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Remove is_opensuse macro in spec file to reduce differences
+  between Leap and SLE(jsc#SLE-11797).
+
+-------------------------------------------------------------------
 Sat Mar 07 18:04:24 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.16.0:

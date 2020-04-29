@@ -270,4 +270,13 @@
 - Drop nma-data sub-package. (forwarded request 782917 from iznogood)</comment>
     <requestid>782944</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ff6546d976301a40bdb5b3bdccc23917</srcmd5>
+    <version>1.16.0</version>
+    <time>1588185735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove is_opensuse macro in spec file to reduce differences
+  between Leap and SLE(jsc#SLE-11797). (forwarded request 796198 from JonathanKang)</comment>
+    <requestid>798331</requestid>
+  </revision>
 </revisionlist>

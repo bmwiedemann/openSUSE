@@ -17,11 +17,6 @@
 
 
 %define _name   network-manager-applet
-%if 0%{?is_opensuse}
-%bcond_without appindicator
-%else
-%bcond_with appindicator
-%endif
 
 Name:           NetworkManager-applet
 Version:        1.16.0
@@ -45,6 +40,8 @@ BuildRequires:  pkgconfig
 #BuildRequires:  polkit-devel
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(appindicator3-0.1)
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
@@ -74,11 +71,6 @@ Obsoletes:      NetworkManager-gnome-debuginfo
 Obsoletes:      NetworkManager-gnome-lang < %{version}
 Provides:       NetworkManager-gnome-lang = %{version}
 
-%if %{with appindicator}
-BuildRequires:  pkgconfig(appindicator3-0.1)
-BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
-%endif
-
 %description
 This package contains utilities and applications for use with
 NetworkManager, including a panel applet for wireless networks.
@@ -98,9 +90,7 @@ connection settings.
 # Needs rebase.
 # %%patch0 -p1
 %patch1 -p1
-%if %{with appindicator}
 %patch2 -p1
-%endif
 translation-update-upstream po nm-applet
 
 %build
