@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Make it compile against qt5.15
+  * addVersionOption()/addHelpOption() already added by KAboutData::setApplicationData
+  * Fix some cppcheck warning + initialize pointer
+  * Make it compile against qt5.15. (QTextStream data is flushed when qfile is closed)
+  * Fix link: ui.html -> menus.html
+  * Use URLs with transport encryption
+- Drop checks for obsolete distribution versions
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

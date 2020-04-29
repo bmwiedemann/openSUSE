@@ -17,22 +17,19 @@
 
 
 %bcond_without lang
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kbackup
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
@@ -43,15 +40,11 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-# Needed for 42.3
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
-%endif
+Recommends:     %{name}-lang
 
 %description
 kbackup is a backup program based on KDE Frameworks 5. It allows backing
@@ -65,25 +58,15 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %setup -q
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-    %if 0%{?sle_version} < 120300
-      export CC=gcc-6
-      export CXX=g++-6
-    %else
-      export CC=gcc-7
-      export CXX=g++-7
-    %endif
-  %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --with-qt --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --with-qt --all-name
+  %{kf5_find_htmldocs}
+%endif
 
 %files
 %license COPYING
