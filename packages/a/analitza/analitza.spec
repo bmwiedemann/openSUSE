@@ -1,7 +1,7 @@
 #
 # spec file for package analitza
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           analitza
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kde/kdeedu/analitza
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  cmake
 BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
@@ -53,8 +49,10 @@ Requires:       libAnalitza5 = %{version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 The Analitza library lets developers add mathematical features to programs.
@@ -77,9 +75,7 @@ Obsoletes:      analitza5-devel < %{version}
 Development files for Analitza. The Analitza library lets developers
 add mathematical features to programs.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n analitza-%{version}
