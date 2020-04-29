@@ -1,7 +1,7 @@
 #
 # spec file for package svgpart
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,34 +21,30 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           svgpart
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        SVG viewer component
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kde/kdegraphics/svgpart
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  kf5-filesystem
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 An SVG viewer component for KDE (KPart).
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
