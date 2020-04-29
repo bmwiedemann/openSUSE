@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 29 03:20:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.15
+   see /usr/share/doc/packages/perl-Text-Aligner/Changes
+
+  0.15  2020-04-28
+        - POD documentation cleanups - avoid using PodWeaver.
+          - Thanks to "[Tux]"
+        - The License is ISC.
+  
+  0.14  2020-04-28
+        - Port dist.ini to @SHLOMIF, thus avoiding author tests in t/*.t.
+  
+
+-------------------------------------------------------------------
 Thu May  5 10:17:41 UTC 2016 - coolo@suse.com
 
 - updated to 0.13
