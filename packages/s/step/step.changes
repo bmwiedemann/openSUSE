@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:20 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Fix compilation for locales with '@'
+  * addVersionOption()/addHelpOption() already adds by KAboutData::setApplicationData
+  * Fix trivial Doxygen warning
+  * Port deprecated method
+  * Resolve problem with objinfo, examples, and tutorials installation when there are several locales
+  * Port extractxml to Python 3 with minor typo fixes
+  * Fix Step infobrowser and examples localization
+  * Use URLs with transport encryption
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
