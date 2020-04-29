@@ -788,4 +788,12 @@
     <comment>Push forgotten glib2 update</comment>
     <requestid>795603</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>865f7bed838cf6dcd49adb841ceb20c0</srcmd5>
+    <version>2.48.4</version>
+    <time>1588185738</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested (forwarded request 796655 from iznogood)</comment>
+    <requestid>798332</requestid>
+  </revision>
 </revisionlist>
