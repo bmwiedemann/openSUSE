@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:11:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.1:
+  + compilers: Silence warning about gnu_inline with clang.
+  + cmake: Do not compile explicit header files.
+  + cmake: enhance support of cmake config file syntax.
+  +  boost: Fix library version (fixes gh#mesonbuild/meeson#6899).
+
+-------------------------------------------------------------------
 Mon Mar 30 11:18:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.54.0:
