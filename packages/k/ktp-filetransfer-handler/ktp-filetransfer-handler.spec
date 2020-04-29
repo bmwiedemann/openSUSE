@@ -16,40 +16,39 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-filetransfer-handler
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Telepathy filetransfer handler
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules >= 1.3.0
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  telepathy-logger-qt5-devel
+BuildRequires:  telepathy-qt5-devel
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KTp)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
+Obsoletes:      %{name}5 < %{version}
+Provides:       %{name}5 = %{version}
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.3.0
-BuildRequires:  fdupes
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  ktp-common-internals-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  pkgconfig
-BuildRequires:  telepathy-logger-qt5-devel
-BuildRequires:  telepathy-qt5-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Telepathy text filetransfer handler
