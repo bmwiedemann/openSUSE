@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fix KHangMan default language. (kde#392493)
+  * Convert all letters to upper case to compare. (kde#362193)
+  * Move theme selection button from bottom to top toolbar. (kde#386855)
+  * Change "Notes" theme name to "Notes Theme" (kde#362256)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
