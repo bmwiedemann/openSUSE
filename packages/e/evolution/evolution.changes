@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:51:23 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + e-shell: Should retry source authenticate after successful
+    trust prompt.
+  + em-formatter: Remove unneeded attachment-expander button's
+    'data' attribute.
+  + Calendar: Correct management of ECalComponentDateTime
+    structures.
+  + itip-formatter: Eventually linkify Location field.
+  + EActivityBar: Unset timeout_id without recursive call to
+    g_source_remove().
+  + external-editor: Fix a memory leak.
+  + Flatpak: Switch to 3.36 runtime and change the build order.
+  + Bugs fixed: glgo#GNOME/evoltion#870.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr  1 14:48:32 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add iso-codes to BuildRequires: needed to display language names

@@ -1960,4 +1960,12 @@ Recommended for 12.3</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795014 from iznogood)</comment>
     <requestid>795170</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>b04aaaf89169a837f474ab021591fdd4</srcmd5>
+    <version>3.36.2</version>
+    <time>1588185751</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 797722 from iznogood)</comment>
+    <requestid>798342</requestid>
+  </revision>
 </revisionlist>
