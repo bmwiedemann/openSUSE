@@ -1,7 +1,7 @@
 #
 # spec file for package rocs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           rocs
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Mathematics
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 1.7.0
 BuildRequires:  fdupes
+BuildRequires:  libboost_headers-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
@@ -45,8 +44,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -61,10 +58,11 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-BuildRequires:  libboost_headers-devel
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Rocs is a Graph Theory IDE for helping professors to show the results
@@ -95,9 +93,7 @@ Requires:       librocsgraphtheory0 = %{version}
 This package provides development files and headers needed
 to build software using Rocs.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
