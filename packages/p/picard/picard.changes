@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:44:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix removing some tags:
+  * 0001-Fix-deletion-of-comment-performer-and-lyrics-tags.patch
+
+-------------------------------------------------------------------
 Sun Mar  1 14:30:51 UTC 2020 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.3.1:
