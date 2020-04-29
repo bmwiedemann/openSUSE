@@ -16,4 +16,12 @@
   * ship license in the tarball</comment>
     <requestid>733335</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4b1fe95f2d4154c6e72ea4376c27dc8</srcmd5>
+    <version>0.1.1</version>
+    <time>1588186394</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conflicting pregenerated __pycache__</comment>
+    <requestid>798902</requestid>
+  </revision>
 </revisionlist>
