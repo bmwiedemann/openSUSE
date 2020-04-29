@@ -1,7 +1,7 @@
 #
 # spec file for package kfourinline
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,34 +21,34 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfourinline
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Four Wins game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KF5KDEGames)
-BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Four wins is a two-player board game where you have to align four
