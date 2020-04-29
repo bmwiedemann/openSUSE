@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define         sover 2
 Name:           libbluray
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Library to access Blu-Ray disk
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://www.videolan.org/developers/libbluray.html
-Source0:        http://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://www.videolan.org/developers/libbluray.html
+Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         libbluray-pkgconfig.patch
 Patch1:         libbluray-java9.patch
@@ -102,7 +102,7 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
     --disable-static \
     --enable-bdjava \
     --enable-udf
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -115,7 +115,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/bd_info
 
 %files -n libbluray%{sover}
-%doc COPYING
+%license COPYING
 %{_libdir}/libbluray.so.*
 
 %files devel
