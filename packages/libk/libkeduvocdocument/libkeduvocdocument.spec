@@ -1,7 +1,7 @@
 #
 # spec file for package libkeduvocdocument
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,29 +21,29 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkeduvocdocument
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Library for KDE Education Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
 
 %description
 This package contains the library which is required by the KDE education
