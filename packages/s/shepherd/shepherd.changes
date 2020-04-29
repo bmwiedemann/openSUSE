@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 22 10:49:38 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.8.0:
+  Changes since 0.7.0:
+  * Kill the whole process group when the PID file doesn’t show up
+  * ‘make-kill-destructor’ kills the process group
+  * New ‘default-pid-file-timeout’ SRFI-39 parameter
+  * New #:file-creation-mask parameter for ‘make-forkexec-constructor’
+  * ‘make-forkexec-constructor’ creates log files as #o640
+  * Improve documentation and examples
+  * Ensure man pages are up to date
+  * Fix compilation on systems without ‘prctl’ such as GNU/Hurd
+  * Remove kludge that would send SIGALRM every second
+  * Address “error in finalization thread” warning
+  * ‘make-forkexec-constructor’ no longer supports old calling convention 
+- Adapt rpmlintrc to Guile 3.0 and remove no longer needed rule
+
+-------------------------------------------------------------------
 Sun Feb 16 22:57:21 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.7.0

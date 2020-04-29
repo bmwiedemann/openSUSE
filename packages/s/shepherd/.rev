@@ -44,4 +44,12 @@ conflicting man pages moved to shepherd-bins so conflict should be gone</comment
     <comment>- Update to 0.7.0</comment>
     <requestid>774829</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c10d77eebebb3de925d7d503c9ecf35</srcmd5>
+    <version>0.8.0</version>
+    <time>1588186348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>798876</requestid>
+  </revision>
 </revisionlist>
