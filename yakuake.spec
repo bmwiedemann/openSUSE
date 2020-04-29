@@ -1,7 +1,7 @@
 #
 # spec file for package yakuake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Terminal for KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://kde.org/applications/system/org.kde.yakuake
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -55,6 +51,10 @@ BuildRequires:  cmake(Qt5X11Extras)
 Requires:       konsole-part > 15.12
 Recommends:     %{name}-lang = %{version}
 Recommends:     konsole > 15.12
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Yakuake is a retractable KDE Terminal Emulator.
