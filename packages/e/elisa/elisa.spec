@@ -20,17 +20,13 @@
 %define kf5_version 5.48.0
 %bcond_without lang
 Name:           elisa
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://community.kde.org/Elisa
 Source0:        %{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        %{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  cmake
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
@@ -43,7 +39,6 @@ BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
@@ -66,8 +61,10 @@ Requires:       kirigami2 >= %{kf5_version}
 Requires:       libqt5-qtquickcontrols >= %{qt5_version}
 Requires:       libqt5-qtquickcontrols2 >= %{qt5_version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        %{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Elisa is a music player with a library where music can be browsed by
@@ -77,9 +74,7 @@ to scan music on chosen paths. The Baloo one is faster because Baloo
 is providing all needed data from its own database. Playlists can be
 built and played.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
