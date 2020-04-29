@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:32:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- BuildRequire gobject introspection devel files correctly
+
+-------------------------------------------------------------------
 Fri Jan  3 08:33:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add typelib subpackage typelib-1_0-GtkLayerShell-0_1

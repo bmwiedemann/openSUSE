@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-layer-shell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          System/GUI/Other
 URL:            https://github.com/wmww/gtk-layer-shell
 Source:         %{url}/releases/download/v%{version}/gtk-layer-shell-%{version}.tar.xz
 BuildRequires:  gcc
-BuildRequires:  gobject-introspection
 BuildRequires:  meson >= 0.45.1
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -34,6 +33,7 @@ BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-broadway-3.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-wayland-3.0)
