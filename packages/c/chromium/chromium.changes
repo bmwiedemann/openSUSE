@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 29 06:53:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 81.0.4044.129 (boo#1170707):
+  * CVE-2020-0561: Use after free in storage
+  * CVE-2020-6462: Use after free in task scheduling
+
+-------------------------------------------------------------------
+Tue Apr 28 09:05:34 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add chromium-80.0.3987.87-missing-cstdint-header.patch,
+  chromium-80.0.3987.87-missing-string-header.patch and
+  chromium-80.0.3987.106-missing-cstddef-header.patch
+  in order to fix build with GCC 10.
+
+-------------------------------------------------------------------
 Tue Apr 21 23:24:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 81.0.4044.122 (boo#1170107):
