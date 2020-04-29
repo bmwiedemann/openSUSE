@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgeomap
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Wrapper around different world-map components
 License:        LGPL-2.1-only AND GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
@@ -49,8 +45,10 @@ Requires:       libKF5KGeoMap10_0_0 = %{version}
 Obsoletes:      libkgeomap-kf5 < %{version}
 Provides:       libkgeomap-kf5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Libkgeomap is a wrapper around different world-map components, to browse and arrange photos over a map.
@@ -97,9 +95,7 @@ Currently supported map engine are:
 - GoogleMap,
 This library is used by kipi-plugins, digiKam and other kipi host programs
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
