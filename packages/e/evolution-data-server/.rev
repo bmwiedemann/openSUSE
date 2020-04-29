@@ -1819,4 +1819,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>Scripted push of project GNOME:Next (forwarded request 795015 from iznogood)</comment>
     <requestid>795171</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>bf83039d775a98d88901ae491822eb78</srcmd5>
+    <version>3.36.2</version>
+    <time>1588185749</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 797721 from iznogood)</comment>
+    <requestid>798341</requestid>
+  </revision>
 </revisionlist>
