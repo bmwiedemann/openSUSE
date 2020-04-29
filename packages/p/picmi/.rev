@@ -756,4 +756,12 @@
     <comment>KDE Applications 19.12.3</comment>
     <requestid>782503</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>d997fac6b0fe2d0d870c6ea8378531f8</srcmd5>
+    <version>20.04.0</version>
+    <time>1588186252</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.04.0</comment>
+    <requestid>797051</requestid>
+  </revision>
 </revisionlist>
