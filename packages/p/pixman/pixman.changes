@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 07:11:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to versio 0.40.0:
+  + Meson build system improvements
+  + Supporting optimizations on Hygon Dhyana processors
+    to match what is enabled for Intel/AMD CPUs.
+  + A few Loongson fixes/improvements.
+  + Lots of other fixes
+
+-------------------------------------------------------------------
 Fri Nov 23 14:16:04 UTC 2018 - mvetter@suse.com
 
 - Update to version 0.36.0:

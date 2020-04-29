@@ -429,4 +429,17 @@ But since we have been since august, I'm subbing the next version also. Should y
     <comment></comment>
     <requestid>652230</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>da6550723d1856f97646618a2ddb2b6c</srcmd5>
+    <version>0.40.0</version>
+    <time>1588185731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to versio 0.40.0:
+  + Meson build system improvements
+  + Supporting optimizations on Hygon Dhyana processors
+    to match what is enabled for Intel/AMD CPUs.
+  + A few Loongson fixes/improvements.
+  + Lots of other fixes (forwarded request 795673 from polslinux)</comment>
+    <requestid>798328</requestid>
+  </revision>
 </revisionlist>

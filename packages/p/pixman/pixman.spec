@@ -1,7 +1,7 @@
 #
 # spec file for package pixman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pixman
-Version:        0.36.0
+Version:        0.40.0
 Release:        0
 Summary:        Pixel manipulation library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source:         http://cairographics.org/releases/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
