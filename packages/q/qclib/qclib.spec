@@ -17,7 +17,7 @@
 
 
 Name:           qclib
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -26,7 +26,6 @@ URL:            http://www.ibm.com/developerworks/linux/linux390/qclib.html
 Source:         %{name}-%{version}.tgz
 Source1:        %{name}-rpmlintrc
 Patch1:         qclib.makefile.libdir.patch
-Patch2:         qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x

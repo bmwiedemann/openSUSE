@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:42:51 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.1.0 (bsc#1170410)
+  Changes:
+  - New attributes in support of secure boot in all final layers:
+     * qc_has_secure
+     * qc_secure
+    Note: Changed src column indicator from 'o' to 'F' to summarize
+          firmware-related data
+  - Recognize IBM z15 midrange models
+  Bug fixes:
+  - qc_open(): Memory leaks on errors
+- Removed obsolete qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch.
+
+-------------------------------------------------------------------
 Tue Mar  3 19:38:58 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Added qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch
