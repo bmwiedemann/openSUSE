@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:27:00 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add -fcommon in order to fix boo#1160279.
+
+-------------------------------------------------------------------
 Fri Apr  3 08:27:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add Add-missing-extern-keywords.patch to fix compilation with GCC10 (bsc#1160279)

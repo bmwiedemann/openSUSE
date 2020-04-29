@@ -140,4 +140,12 @@
     <comment>- Add Add-missing-extern-keywords.patch to fix compilation with GCC10 (bsc#1160279)</comment>
     <requestid>791133</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>311fe36df267440d10db233a7d4bee37</srcmd5>
+    <version>11.2.86</version>
+    <time>1588185790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798387</requestid>
+  </revision>
 </revisionlist>

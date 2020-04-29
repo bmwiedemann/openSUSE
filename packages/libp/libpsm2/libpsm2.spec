@@ -90,6 +90,7 @@ Support for MPIs linked with PSM versions < 2.
 cp %{S:1} ChangeLog
 
 %build
+%global optflags %{optflags} -fcommon
 export RPM_OPT_FLAGS
 export VERSION=${Version} RELEASE=${Release}
 make %{?_smp_mflags}
