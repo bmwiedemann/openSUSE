@@ -40,6 +40,8 @@ Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+# PATCH-FIX-UPSTREAM gnome-shell-Get-resource-scale-by-get_resource_scale.patch bsc#1169845 glgo#GNOME/gnome-shell!1206 xwang@suse.com -- Get resource scale by get_resource_scale
+Patch6:         gnome-shell-Get-resource-scale-by-get_resource_scale.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -170,6 +172,7 @@ into GNOME Shell calendar.
 %patch2 -p1
 #patch4 -p1
 #patch5 -p1
+%patch6 -p1
 
 translation-update-upstream
 

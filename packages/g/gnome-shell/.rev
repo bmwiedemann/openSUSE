@@ -1533,4 +1533,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Update to GNOME 3.36.1</comment>
     <requestid>796217</requestid>
   </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>7751b0b0b2f1e8956195276aae3028b6</srcmd5>
+    <version>3.36.1</version>
+    <time>1588185769</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-shell-Get-resource-scale-by-get_resource_scale.patch:
+  To remove 'Getting invalid resource scale property' warnings in
+  the log(bsc#1169845 glgo#GNOME/gnome-shell!1206). (forwarded request 797796 from xiaoguang_wang)</comment>
+    <requestid>798353</requestid>
+  </revision>
 </revisionlist>
