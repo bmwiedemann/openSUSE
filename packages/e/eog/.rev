@@ -1102,4 +1102,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795011 from iznogood)</comment>
     <requestid>795167</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>7a6d5ba809f30fe3aa9885e543fd59ef</srcmd5>
+    <version>3.36.2</version>
+    <time>1588185755</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 797724 from iznogood)</comment>
+    <requestid>798344</requestid>
+  </revision>
 </revisionlist>

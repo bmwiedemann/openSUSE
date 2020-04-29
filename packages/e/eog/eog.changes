@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:56:57 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Bugs fixed:
+    - help-overlay: Fix next/previous image shortcuts for RTL
+      languages.
+    - appdata: Update to release 3.36.1.
+    - eog-application.c: Add new shortcut for zoom-normal action.
+    - Swipe left and swipe right action have the same description
+      in Keyboard Shortcuts dialog.
+    - eog 3.36 cannot open HEIF files via gdk-pixbuf loader.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 28 23:00:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:
