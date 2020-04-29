@@ -1,7 +1,7 @@
 #
 # spec file for package exiv2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,12 @@
 #
 
 
-# the tests don't work on Leap 42.x & SLE <= 12 because gmock & gtest are
-# missing
-%if 0%{?suse_version} <= 1315
-%{bcond_with tests}
-%else
 # there is a test failure on ARM & PPC
 # upstream issue: https://github.com/Exiv2/exiv2/issues/933
 %ifarch x86_64
 %{bcond_without tests}
 %else
 %{bcond_with tests}
-%endif
 %endif
 
 Name:           exiv2
@@ -107,6 +101,9 @@ documentation in HTML format.
 
 %prep
 %autosetup -p1
+# Upstream will switch to C++11 with 0.28.0, but googletest requires C++11
+# See https://github.com/Exiv2/exiv2/issues/1163
+sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
