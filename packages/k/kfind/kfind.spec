@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfind
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
@@ -47,6 +43,10 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 KFind allows you to search for directories and files.
