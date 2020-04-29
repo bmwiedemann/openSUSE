@@ -1,7 +1,7 @@
 #
 # spec file for package kolourpaint
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kolourpaint
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 # See bnc#717722 for license details
 Summary:        Paint Program
@@ -32,31 +32,27 @@ License:        BSD-2-Clause AND LGPL-2.1-or-later AND GFDL-1.2-or-later AND GPL
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5Sane)
+# boo#1055759
+Requires:       kdelibs4support
+Provides:       kolourpaint5 = %{version}
+Obsoletes:      kolourpaint5 < %{version}
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Sane)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
-Provides:       kolourpaint5 = %{version}
-Obsoletes:      kolourpaint5 < %{version}
-# boo#1055759
-Requires:       kdelibs4support
-%if %{with lang}
 Recommends:     %{name}-lang
-%endif
 
 %description
 Paint program for KDE
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
