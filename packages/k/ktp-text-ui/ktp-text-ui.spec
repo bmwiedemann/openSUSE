@@ -16,58 +16,57 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-text-ui
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Telepathy chat handler for KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  fdupes
-BuildRequires:  karchive-devel
-BuildRequires:  kcmutils-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kemoticons-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kpeople5-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  ktp-common-internals-devel
 BuildRequires:  ktp-icons
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
-BuildRequires:  sonnet-devel
 BuildRequires:  telepathy-logger-qt5-devel
 BuildRequires:  telepathy-qt5-devel
-BuildRequires:  pkgconfig(Qt5TextToSpeech)
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.7.0
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Emoticons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5People)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KTp)
+BuildRequires:  cmake(Qt5TextToSpeech)
+BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
 # Explicitely require logger, otherwise the ui would crash
 Requires:       telepathy-logger
+Recommends:     %{name}-lang
 Obsoletes:      %{name}-devel
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Includes KDE's implementation of the Telepathy chat handler,
