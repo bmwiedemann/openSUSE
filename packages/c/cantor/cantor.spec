@@ -1,7 +1,7 @@
 #
 # spec file for package cantor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,52 +22,52 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Mathematics
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  R-base
 BuildRequires:  R-base-devel
-BuildRequires:  cmake(Analitza5)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  help2man
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libqalculate)
+BuildRequires:  cmake(Analitza5)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Pty)
+BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(libqalculate)
 Recommends:     %{name}-lang
 Recommends:     maxima
 Recommends:     octave
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 A frontend to several existing mathematical software such as R, Sage
@@ -153,14 +153,14 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_applicationsdir}/org.kde.cantor.desktop
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/cantor
-%{_kf5_bindir}/cantor_python3server
+%{_kf5_bindir}/cantor_pythonserver
 %{_kf5_bindir}/cantor_rserver
 %{_kf5_bindir}/cantor_scripteditor
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/*
 %{_kf5_kxmlguidir}/cantor/
 %{_kf5_libdir}/libcantor_config.so
-%{_kf5_libdir}/libcantor_pythonbackend.so
+%{_kf5_libdir}/cantor_pythonbackend.so
 %dir %{_kf5_plugindir}/cantor
 %dir %{_kf5_plugindir}/cantor/assistants
 %{_kf5_plugindir}/cantor/assistants/cantor_advancedplotassistant.so
@@ -180,7 +180,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/backends/cantor_kalgebrabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_maximabackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_octavebackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_python3backend.so
+%{_kf5_plugindir}/cantor/backends/cantor_pythonbackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_rbackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_sagebackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_scilabbackend.so
