@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:53:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use xdist to speedup the tests to take less than 30 mins
+
+-------------------------------------------------------------------
 Thu Jan 30 15:59:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.6.1

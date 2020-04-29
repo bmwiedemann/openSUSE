@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nilearn
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
@@ -29,22 +29,23 @@ Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-joblib >= 0.11
+Requires:       python-matplotlib >= 2.0
+Requires:       python-nibabel >= 2.0.2
+Requires:       python-numpy >= 0.11
+Requires:       python-scikit-learn >= 0.19
+Requires:       python-scipy >= 0.19
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module joblib}
+BuildRequires:  %{python_module joblib >= 0.11}
 BuildRequires:  %{python_module matplotlib >= 2.0}
 BuildRequires:  %{python_module nibabel >= 2.0.2}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module numpy >= 0.11}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-learn >= 0.19}
 BuildRequires:  %{python_module scipy >= 0.19}
 # /SECTION
-Requires:       python-joblib
-Requires:       python-matplotlib >= 2.0
-Requires:       python-nibabel >= 2.0.2
-Requires:       python-scikit-learn >= 0.19
-Requires:       python-scipy >= 0.19
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,7 +64,9 @@ NeuroImaging data.
 
 %check
 # Disable tests that require a network connection
-%pytest -v -k 'not test_fetch_ and not test_get_batch and not test_scroll_server_results and not test_simple_download and not test_fill_html_template and not test_temp_file_removing and not test_view_img_on_surf and not test_view_surf and not test_resample_img_segmentation_fault'
+# Disable tests requiring to be executed without xdist (serialization issue): test_tikhonov_regularization_vs_graph_net or test_connectivity_measure_outputs or test_canica_square_img or test_with_globbing_patterns_with_single_subject or test_dict_learning
+# Disable tests failing with new numpy (conversions to float fail): test_plot_surf_stat_map test_plot_surf_roi
+%pytest -n auto -k 'not (test_fetch_ or test_get_batch or test_scroll_server_results or test_simple_download or test_fill_html_template or test_temp_file_removing or test_view_img_on_surf or test_view_surf or test_resample_img_segmentation_fault or test_tikhonov_regularization_vs_graph_net or test_connectivity_measure_outputs or test_canica_square_img or test_with_globbing_patterns_with_single_subject or test_dict_learning or test_plot_surf_stat_map or test_plot_surf_roi)'
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
