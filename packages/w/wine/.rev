@@ -3519,4 +3519,14 @@
 - libusb build requires</comment>
     <requestid>797683</requestid>
   </revision>
+  <revision rev="306" vrev="2">
+    <srcmd5>bff33a6192e9445842d52565f400f8fc</srcmd5>
+    <version>5.7</version>
+    <time>1588186294</time>
+    <user>dimstar_suse</user>
+    <comment>- patch.txt: fix for wineserver crash (https://bugs.winehq.org/show_bug.cgi?id=49011)
+
+- Fix file list for %arm and aarch64</comment>
+    <requestid>798934</requestid>
+  </revision>
 </revisionlist>

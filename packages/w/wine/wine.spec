@@ -138,7 +138,7 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-#Patch0:         susepatches.patch
+Patch0:         patch.txt
 Recommends:     wine-gecko >= 2.47.1
 Conflicts:      wine-gecko < 2.47.1
 Recommends:     wine-mono >= 4.9.2
@@ -215,7 +215,7 @@ libraries.
 
 %prep
 %setup -q -n wine-%{realver}
-#patch0 -p1
+%patch0 -p1
 #
 cp %{S:3} .
 #
@@ -446,10 +446,12 @@ chmod 755 %winedir/my-find-requires.sh
 %endif
 %{_libdir}/wine/*.so
 %if 0%{?suse_version} >= 1550
+%ifnarch %arm aarch64
 %{_libdir}/wine/*.acm
 %{_libdir}/wine/*.com
 %{_libdir}/wine/*.cpl
 %{_libdir}/wine/*.dll
+%endif
 %ifarch %ix86
 %{_libdir}/wine/*.dll16
 %{_libdir}/wine/*.drv16
@@ -457,12 +459,16 @@ chmod 755 %winedir/my-find-requires.sh
 %{_libdir}/wine/*.mod16
 %{_libdir}/wine/*.vxd
 %endif
+%ifnarch %arm aarch64
 %{_libdir}/wine/*.drv
 %{_libdir}/wine/*.exe
 %{_libdir}/wine/*.ocx
 %{_libdir}/wine/*.sys
 %endif
+%endif
+%ifnarch %arm aarch64
 %{_libdir}/wine/*.tlb
+%endif
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/fakedlls
