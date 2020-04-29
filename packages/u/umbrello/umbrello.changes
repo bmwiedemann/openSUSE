@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * cmake: fix version compare lower syntax
+  * unittests: fix checking llvm version number
+  * cmake: fix minor version
+  * unittests: only build llvm testcase with the supported versions 7 and 8
+  * cmake: Remove limits for generating dot graphs
+  * cmake use svg as image format for dot
+  * cmake: increase maximum dot graph depth to not limit generated graphs
+  * cmake: on generating api doc disable using multiple dot targets
+  * cmake: Only enable generating dot files if the 'dot' tool was found
+  * Add support for Qt5 variant of qhelpgenerator
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Fixed cmake 3.10 error caused by not setting policy CMP0057 to NEW
+  * Fix bug not building apidoc and qch file by default, if enabled (kde#419202)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:47 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

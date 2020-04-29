@@ -1250,4 +1250,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Applications 19.12.3</comment>
     <requestid>782514</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>c5f14d44730e9c7d33b8d7d16583b9fa</srcmd5>
+    <version>20.04.0</version>
+    <time>1588186273</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release 20.04.0</comment>
+    <requestid>797063</requestid>
+  </revision>
 </revisionlist>
