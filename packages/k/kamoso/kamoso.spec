@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamoso
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://projects.kde.org/kamoso
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -55,6 +51,10 @@ Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       kirigami2
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Kamoso is an application to take pictures and videos using a webcam.
