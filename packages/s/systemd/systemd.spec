@@ -149,6 +149,7 @@ Source2:        systemd-user
 Source3:        systemd-sysv-convert
 Source4:        systemd-sysv-install
 %endif
+Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
 Source11:       after-local.service
 Source14:       kbd-model-map.legacy
@@ -163,9 +164,7 @@ Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
 # broken in upstream and need an urgent fix. Even in this case, the
 # patches are temporary and should be removed as soon as a fix is
 # merged by upstream.
-Patch1:         0001-SUSE-policy-do-not-clean-tmp-by-default.patch
-Patch2:         0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch
-Patch3:         0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
+Patch1:         0001-Revert-job-Don-t-mark-as-redundant-if-deps-are-relev.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -580,12 +579,6 @@ rm %{buildroot}%{_sbindir}/resolvconf
 rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
-# FIXME: These obsolete symlinks are still needed by YaST so let's
-# keep them until boo#1160890 is fixed.
-mkdir -p %{buildroot}/sbin
-ln -sf %{_bindir}/udevadm %{buildroot}/sbin/udevadm
-ln -sf %{_prefix}/lib/systemd/systemd-udevd %{buildroot}/sbin/udevd
-
 %if %{with sysvcompat}
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/sysv-convert
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/migrated
@@ -738,6 +731,35 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/random-seed
 rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
+
+# The tmpfiles dealing with the generic paths is pretty messy
+# currently because:
+#
+#  1. filesystem package wants to define the generic paths and some of
+#     them conflict with the definition given by systemd in var.conf,
+#     see bsc#1078466.
+#
+#  2. /tmp and /var/tmp are not cleaned by default on SUSE distros
+#     (fate#314974) which conflict with tmp.conf.
+#
+#  3. There're also legacy.conf which defines various legacy paths
+#     which either don't match the SUSE defaults or don't look needed
+#     at all.
+#
+#  4. And to finish, we don't want the part in etc.conf which imports
+#     default upstream files in empty /etc, see below.
+#
+# To keep things simple, we remove all these tmpfiles config files but
+# still keep the remaining paths that still don't have a better home
+# in suse.conf.
+rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
+install -m 644 %{S:5} %{buildroot}%{_tmpfilesdir}/suse.conf
+
+# The content of the files shipped by systemd doesn't match the
+# defaults used by SUSE. Don't ship those files but leave the decision
+# to use the mechanism to the individual packages that actually
+# consume those configs (like glibc or pam), see bsc#1170146.
+rm -fr %{buildroot}%{_datadir}/factory/*
 
 # Add entries for xkeyboard-config converted keymaps; mappings, which
 # already exist in original systemd mapping table are being ignored
@@ -1351,8 +1373,6 @@ fi
 
 %files -n udev%{?mini}
 %defattr(-,root,root)
-/sbin/udevd
-/sbin/udevadm
 %{_bindir}/udevadm
 %{_bindir}/systemd-hwdb
 %dir %{_prefix}/lib/udev/

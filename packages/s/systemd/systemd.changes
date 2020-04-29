@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 27 15:45:50 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop legacy /sbin/{udevd,udevadm) symlinks hopefully for good
+
+  Since boo#1160890 has been fixed since a couple of months now.
+
+-------------------------------------------------------------------
+Mon Apr 27 14:50:36 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop content of /usr/share/factory/ (bsc#1170146)
+
+  systemd ships several files in /usr/share/factory/etc that are
+  copied to /etc in case those files are missing there. Unfortunately
+  the content does not match the openSUSE defaults.
+
+-------------------------------------------------------------------
+Mon Apr 27 14:33:35 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop most of the tmpfiles that deal with generic paths (bsc#1078466)
+
+  They are problematic because some of them conflict with SUSE
+  defaults. Therefore it seems better to let the revelant packages
+  owning these paths to provide their own definitions instead.
+
+  Meanwhile we still keep the homeless definitions in suse.conf until
+  a better place is found for them.
+
+  Drop 0001-Fix-run-lock-group-to-follow-openSUSE-policy.patch
+  Drop 0001-SUSE-policy-do-not-clean-tmp-by-default.patch
+
+-------------------------------------------------------------------
 Fri Apr 24 07:38:48 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop %tmpfiles_create portables.conf from %post of networkd sub-package
