@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:31:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.10.0
+  * Deprecated "....TEST_CASE" API in favor of "....TEST_SUITE".
+    In a nutshell if you have code that uses something like
+    "INSTANTIATE_TYPED_TEST_CASE_P " - this and all other
+    "*_TEST_CASE " are now deprecated in favor of more standard
+    _TEST_SUITE.
+  * New powerful MOCK_METHOD macro.
+    For example:
+    (Old) MOCK_METHOD1(Bar, double(std::string s));
+    (New) MOCK_METHOD(double, Bar, (std::string s), (override));
+    So there is no need to count the parameters anymore.
+
+-------------------------------------------------------------------
 Sat Nov 17 09:01:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove errant backslahes from description.

@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   googlemock
 Name:           googletest
-Version:        1.8.1
+Version:        1.10.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
@@ -88,7 +88,7 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 
 %files -n gtest
 %license %{name}/LICENSE
-%doc %{name}/CHANGES %{name}/CONTRIBUTORS %{name}/README.md
+%doc %{name}/CONTRIBUTORS %{name}/README.md
 %{_libdir}/libgtest.so
 %{_libdir}/libgtest_main.so
 %{_includedir}/gtest
@@ -96,7 +96,7 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 
 %files -n gmock
 %license %{_name}/LICENSE
-%doc %{_name}/CHANGES %{_name}/CONTRIBUTORS %{_name}/README.md
+%doc %{_name}/CONTRIBUTORS %{_name}/README.md
 %{_libdir}/libgmock.so
 %{_libdir}/libgmock_main.so
 %{_includedir}/gmock
