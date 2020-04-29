@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:26 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sat Mar 28 17:15:02 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Build with python3 on Factory/Tumbleweed, continue to use python2
+  on Leap for now as the older boost_python3 is not found
+  (kde#419237)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Port QProcess::startDetached deprecated method
+  * Going back to original Py_Finalize() to maintain compatibility with python2 and earlier versions of python3
+  * Fix crash upon exit after transition python2 -> python3 when using scripting (kde#416037)
+  * addVersionOption()/addHelpOption() already added by KAboutData::setApplicationData
+  * Remove endl at the end of qDebug
+  * Port pykig to python 3
+  * Fix minor EBN issues: use address from the About dialog for copyright header
+  * Use URLs with transport encryption
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
