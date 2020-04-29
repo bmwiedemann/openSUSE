@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:45:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix use-after-free (boo#1170582, CVE-2020-12267):
+  * 0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch
+
+-------------------------------------------------------------------
 Mon Jan 27 13:13:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.14.1:

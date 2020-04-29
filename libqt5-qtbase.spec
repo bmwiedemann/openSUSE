@@ -66,6 +66,7 @@ Patch22:        0002-Revert-qtlite-Fix-build-libs-with-no-feature-regular.patch
 Patch23:        0003-Revert-White-list-more-recent-Mesa-version-for-multi.patch
 Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.14 branch #
+Patch1000:      0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch
 # patches 2000-3000 and above from upstream 5.15/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
