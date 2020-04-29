@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:56:00 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.3.0:
+  * This is primarily a maintenance release.
+    There are many bug fixes, improvements to system call coverage,
+	and incremental performance improvements.
+  * The rr sources, rr buildid and rr traceinfo commands have been
+    added to make it easier for external tools to work with rr
+	traces. rr ls has been added to improve management of traces.
+- Remove:
+  * rr-5.2.0-cpp14.patch
+  * rr-5.2.0-python3.patch
+  * rr-5.2.0-remove-ucontext.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 16:03:16 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Add rr-5.2.0-python3.patch

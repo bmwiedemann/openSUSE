@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,13 @@
 
 
 Name:           rr
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
-# https://github.com/mozilla/rr/issues/2391
-Patch0:         rr-5.2.0-remove-ucontext.patch
-# https://github.com/mozilla/rr/issues/2269
-Patch1:         rr-5.2.0-cpp14.patch
-# https://github.com/mozilla/rr/issues/2390
-Patch2:         rr-5.2.0-python3.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -52,13 +46,11 @@ data watchpoints and quickly reverse-execute to where they were hit.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 # Fix incorrect path to bash
 sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
+sed -i "s|#!.*/usr/bin/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols.py
 CXXFLAGS=-std=c++14 %cmake \
   -DBUILD_TESTS=OFF
 CXXFLAGS=-std=c++14 %make_jobs
@@ -69,16 +61,15 @@ CXXFLAGS=-std=c++14 %make_jobs
 %files
 %license LICENSE
 %doc README.md
-%dir %{_prefix}/lib/rr
 %dir %{_datadir}/rr
+%dir %{_libdir}/rr
 %{_bindir}/rr
 %{_bindir}/rr_exec_stub*
-%{_bindir}/rr_page_32
-%{_bindir}/rr_page_32_replay
-%{_bindir}/rr_page_64
-%{_bindir}/rr_page_64_replay
+%{_bindir}/rr_page_*
 %{_bindir}/signal-rr-recording.sh
-%{_prefix}/lib/rr/librrpreload*.so
 %{_datadir}/rr/*
+%{_libdir}/rr/librrpreload*.so
+%{_datadir}/bash-completion/completions/rr
+%{_bindir}/rr-collect-symbols.py
 
 %changelog
