@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 03:09:20 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.39
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.39    2020-04-24
+  
+  - This release is based on version 2020a of the Olson database. This release
+    includes contemporary changes for Morocco an the Yukon.
+
+-------------------------------------------------------------------
 Tue Nov 19 08:29:48 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.38
