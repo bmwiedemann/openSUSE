@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        1.0.0+git.20200426.be575d6
+Version:        1.0.0+git.20200429.99a7004
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  astyle
 BuildRequires:  clang9-devel
 BuildRequires:  cmake
-BuildRequires:  delta
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  indent
@@ -39,7 +38,6 @@ BuildRequires:  python3-pytest4
 BuildRequires:  unifdef
 Requires:       astyle
 Requires:       clang9
-Requires:       delta
 Requires:       indent
 Requires:       llvm9
 Requires:       python3-Pebble
@@ -63,7 +61,7 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 
 %build
 %define __builder ninja
-%cmake
+%cmake -DCMAKE_INSTALL_LIBEXECDIR=%_libexecdir
 %cmake_build
 
 %check
@@ -76,9 +74,12 @@ pytest .
 %files
 %license COPYING
 %{_bindir}/cvise
-%{_bindir}/clang_delta
-%{_bindir}/clex
-%{_bindir}/strlex
+%dir %{_libexecdir}/cvise
+%{_libexecdir}/cvise/clex
+%{_libexecdir}/cvise/clang_delta
+%{_libexecdir}/cvise/clex
+%{_libexecdir}/cvise/strlex
+%{_libexecdir}/cvise/topformflat
 %{_datadir}/cvise
 
 %changelog

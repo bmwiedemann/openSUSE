@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 29 14:15:24 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.0.0+git.20200429.99a7004:
+  * Refactor script_path and programs in cvise.py.
+  * Finish usage of GNUInstallDirs (#16).
+  * Rapidly improve Pass statistics:
+  * Update wording in COPYING.
+  * Run tests with ${PYTHON_EXECUTABLE} -m pytest.
+  * Respect -DCLANG_FORMAT cmake variable (#15).
+  * Use GNUInstallDirs for configurable install locations
+  * Add ctest for the project (#14).
+  * Remove one more documentation reference of delta.
+
+-------------------------------------------------------------------
 Sun Apr 26 19:38:54 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.0.0+git.20200426.be575d6:
