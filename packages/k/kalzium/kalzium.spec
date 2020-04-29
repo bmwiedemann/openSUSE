@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -40,9 +36,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glew-devel
 BuildRequires:  libopenbabel-devel
 BuildRequires:  oxygen5-icon-theme-large
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(AvogadroLibs)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -62,6 +56,10 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # currently in DOESNOTBUILD (2008-07-03)
 %ifnarch ppc ppc64 s390 s390x
 BuildRequires:  ocaml
@@ -114,7 +112,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/kalzium.*
 %{_kf5_kxmlguidir}/kalzium/
-%{_kf5_libdir}/libcompoundviewer.so.*
 %{_kf5_libdir}/libscience.so.*
 %{_kf5_sharedir}/kalzium/
 %{_kf5_sharedir}/libkdeedu/
@@ -124,7 +121,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %license COPYING*
 %{_includedir}/libkdeedu/
 %{_kf5_libdir}/libscience.so
-%{_kf5_libdir}/libcompoundviewer.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
