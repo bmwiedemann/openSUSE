@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 26 11:18:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + server:
+    - systemd: Don't kill all remaining processes in the control
+      group
+    - Fix refcount leak
+  + client: legacy: Suppress debug message spam
+  + screen:
+    - Take a ref to the FD list
+    - Fix memdup overrun
+  + Revert "screen: Use clean env when creating new tab"
+  + Updated translations.
+- Drop gt-Suppress-debug-message-spam.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sat Apr 11 16:11:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gt-Suppress-debug-message-spam.patch: Supress debug messages

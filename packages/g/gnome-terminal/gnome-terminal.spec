@@ -17,15 +17,13 @@
 
 
 Name:           gnome-terminal
-Version:        3.36.1.1
+Version:        3.36.2
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
 Source0:        https://download.gnome.org/sources/gnome-terminal/3.36/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gt-Suppress-debug-message-spam.patch -- Supress debug messages spam in terminal
-Patch0:         gt-Suppress-debug-message-spam.patch
 
 BuildRequires:  fdupes
 # Needed for search provider. It should not be needed in my opinion,
