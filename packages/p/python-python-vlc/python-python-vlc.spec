@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-vlc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-vlc
-Version:        3.0.7110
+Version:        3.0.9113
 Release:        0
 Summary:        VLC bindings for python
 License:        LGPL-2.0-or-later
@@ -42,8 +41,7 @@ This module provides ctypes-based bindings for the native libvlc API
 (see http://wiki.videolan.org/LibVLC) of the VLC video player.
 
 %prep
-%setup -q -n python-vlc-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-vlc-%{version}
 sed -i -e '1{\,^#! %{_bindir}/python,d}' vlc.py
 
 %build
