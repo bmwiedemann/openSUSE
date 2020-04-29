@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr 29 10:42:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Remove use of '\_\_import\_\_'
+  * Fix misc README issues
+  * sphinxext: Fix Sphinx 3.0 compatibility
+  * tox: Remove pecan-devNN tox targets, centralize deps
+  * Rework documentation build
+  * Allow fault code customization
+  * Undo rename of 'wsme.rest.json', 'wsme.rest.xml' modules
+  * trivial: Reformat setup.cfg
+  * WebOb: Do not use the deprecated best\_match method
+  * Remove simplejson support
+  * Remove support for SPORE protcol
+  * Remove support for SQLAlchemy protocol
+  * Remove support for SOAP protocol
+  * Remove support for Ext Direct protocol
+  * Remove cornice integration
+  * Remove turbogears integration
+  * Remove tox templating
+  * gitignore: Ignore '.eggs' directory
+  * Mark tests as passing again
+  * OpenDev Migration Patch
+  * Fix overindentation
+  * Update the tox.ini template and regenerate tox.ini
+  * Move CI jobs in-tree, add Python 3.6 and 3.7
+  * Get WSME tests working again
+  * Python 3 compatibility: fix xrange/range issues
+  * Removed older version of python added 3.5
+
+-------------------------------------------------------------------
 Mon Oct 14 11:46:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
