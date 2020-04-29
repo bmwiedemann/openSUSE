@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix build with Qt >= 5.15.0-beta3
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:13 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Port deprecated signal (qt5.15)
+  * Use safe hardcoded value for ProvidersUrl
+  * Use the default address for KNewStuff instead of the hardcoded
+  * Use https://autoconfig.kde.org/ as requested
+  * It alreadys added by kaboutdata
+  * Make it compile against qt5.15
+  * Don't use nullptr for flags
+  * Use URLs with transport encryption
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

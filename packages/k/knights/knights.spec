@@ -18,17 +18,13 @@
 
 %bcond_without lang
 Name:           knights
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Crash)
@@ -51,11 +47,12 @@ Requires:       gnuchess
 Recommends:     %{name}-lang
 Suggests:       crafty
 Obsoletes:      kchess
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
 %endif
 
 %description
@@ -71,11 +68,6 @@ against each other.
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1500
-# gcc 4.8.5 is too old
-export CC=gcc-7
-export CXX=g++-7
-%endif
 %cmake_kf5 -d build
 %cmake_build
 
@@ -88,7 +80,7 @@ export CXX=g++-7
 
 %if %{with lang}
 %find_lang %{name}
-%kf5_find_htmldocs
+%{kf5_find_htmldocs}
 %endif
 
 %files
