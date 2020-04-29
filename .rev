@@ -1658,4 +1658,13 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment></comment>
     <requestid>784412</requestid>
   </revision>
+  <revision rev="200" vrev="4">
+    <srcmd5>8fab18e2c88961df74417a2b2ac2db45</srcmd5>
+    <version>1.1.13</version>
+    <time>1588185733</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove is_opensuse macro in spec file to sync SLE and openSUSE
+  differences(jsc#SLE-11804). (forwarded request 796143 from JonathanKang)</comment>
+    <requestid>798329</requestid>
+  </revision>
 </revisionlist>

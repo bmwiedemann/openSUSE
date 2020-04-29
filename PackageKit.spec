@@ -24,7 +24,7 @@
 %endif
 
 # Only make DNF backend available on openSUSE flavors
-%if (0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550) && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
 %bcond_without dnf
 %else
 %bcond_with dnf
@@ -278,9 +278,6 @@ autoreconf -fiv
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%if !0%{?is_opensuse}
-export CFLAGS="%{optflags} -DSLE"
-%endif
 %configure \
 	--disable-static \
 	%{?with_dnf:--enable-dnf} \
