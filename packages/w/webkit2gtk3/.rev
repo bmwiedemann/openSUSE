@@ -778,4 +778,12 @@
     <comment>New upstream release</comment>
     <requestid>794681</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>67d26b225ea69e0fa6cbc702583748f2</srcmd5>
+    <version>2.28.2</version>
+    <time>1588185782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798363</requestid>
+  </revision>
 </revisionlist>
