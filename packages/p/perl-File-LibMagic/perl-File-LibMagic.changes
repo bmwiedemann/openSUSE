@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Apr 27 03:09:04 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-File-LibMagic/Changes
+
+  1.22     2020-04-26
+  
+  - This is a stable release with the same changes as 1.21. See the change logs
+    for 1.17 and 1.21 for details of what's new.
+  
+  
+  1.21     2020-04-04 (TRIAL RELEASE)
+  
+  - Add two class methods that provide introspection on the available limit
+    processing parameters, max_param_constant() and
+    limit_key_is_supported(). Based on a PR from Paul Wise. GH #24.
+  
+  
+  1.20     2020-03-28 (TRIAL RELEASE)
+  
+  - Fix one last test that assumed a limit parameter was available. Reported by
+    Slaven Rezić. GH #22.
+  
+  
+  1.19     2020-03-28 (TRIAL RELEASE)
+  
+  - Fix tests that still mistakenly assumed that all limit parameter constants
+    should be exported by File::LibMagic. Reported by Slaven Rezić. GH #22.
+  
+  
+  1.18     2020-03-28 (TRIAL RELEASE)
+  
+  - Not all versions of libmagic support setting processing limits, and those
+    that do may not support all the limit parameters that the most recent
+    version supports. This release fixes compilation and runtime issues that
+    would occur with older libmagic versions that don't support the same options
+    as the version I have installed locally. Reported by Slaven Rezić. GH #22.
+  
+  
+  1.17     2020-03-28 (TRIAL RELEASE)
+  
+  - Switched to using GitHub issues.
+  
+  - Removed embedded copy of Config::AutoConf from distro. Instead this is now a
+    configure phase prereq. Implemented by Paul Wise. GH #19.
+  
+  - Moved list of constants in libmagic that we care about to one
+    module. Implemented by Paul Wise. GH #20.
+  
+  - Add support for setting libmagic processing limits. Implemented by Paul
+    Wise. GH #15.
+  
+  - Check all libmagic function return values properly and croak on
+    failure. Implemented by Paul Wise. GH #21.
+
+-------------------------------------------------------------------
 Mon Oct 23 05:19:59 UTC 2017 - coolo@suse.com
 
 - updated to 1.16
