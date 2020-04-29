@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyScss
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        pyScss, a Scss compiler for Python
 License:        MIT

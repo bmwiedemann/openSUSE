@@ -77,4 +77,13 @@
     <comment></comment>
     <requestid>787686</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0cbfc11a570e74c895de96dab872647</srcmd5>
+    <version>1.3.7</version>
+    <time>1588186377</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.7:
+  * fix setup.py compatibility with newer setuptools</comment>
+    <requestid>798863</requestid>
+  </revision>
 </revisionlist>
