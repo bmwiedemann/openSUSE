@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * [svn] Fixed items status inside unversioned directory.
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * [git] Set combo box to current branch in pull dialog
+  * Dolphin-SVN: code update
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * SVN: added SVN Log dialog
+  * Fix build with Qt 5.15
+  * Added SVN add/delete/revert directory.
+  * SVN commit dialog now supports diff, add and revert actions.
+  * Add changes list for SVN commit dialog
+  * Fixes svn plugin issuing "mkfifo" on Windows. (kde#319546)
+  * "SVN Commit" action is now active on file addition.
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
 Thu Mar  5 20:35:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

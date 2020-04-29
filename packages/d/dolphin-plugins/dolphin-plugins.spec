@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-plugins
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,43 +21,39 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin-plugins
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  cmake(DolphinVcs)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(DolphinVcs)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     dolphin >= %{_kapp_version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Dolphin file manager specific version control plugins that:
 - Show the version state of a file by an emblem + color
 - Provide a context menu with version control specific actions
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
