@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        3.36.1.1
+Version:        3.36.2
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -133,7 +133,7 @@ install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/mount-archive.des
 mkdir -p %{buildroot}/%{_libdir}/nautilus/extensions-3.0
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/skel/.config/autostart/set_trusted.desktop
 mkdir -p %{buildroot}%{_bindir}
@@ -155,7 +155,7 @@ install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nautilus*
 %{_datadir}/metainfo/org.gnome.Nautilus.appdata.xml
 %{_mandir}/man1/nautilus*.1%{ext_man}
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %{_sysconfdir}/skel/.config/autostart
 %{_sysconfdir}/skel/.config/autostart/set_trusted.desktop
 %{_bindir}/set_trusted.sh
