@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 27 03:07:39 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.006022
+   see /usr/share/doc/packages/perl-Devel-Declare/Changes
+
+  0.006022 - 2020-04-26
+    - release 0.006_021 as stable
+  
+  0.006_021 - 2019-12-22
+    - use ppport.h for compatibility with earlier perls
+  
+  0.006_020 - 2019-11-25
+    - update to work with Perl 5.31.7 (Karl Williamson, github PR#1)
+
+-------------------------------------------------------------------
 Wed Mar 29 05:28:30 UTC 2017 - coolo@suse.com
 
 - updated to 0.006019
