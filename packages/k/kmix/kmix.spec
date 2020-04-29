@@ -1,7 +1,7 @@
 #
 # spec file for package kmix
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kmix
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Sound Mixer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Mixers
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
@@ -61,15 +57,15 @@ BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 KMix is a fully featured audio mixer by KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
