@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:22:01 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require /usr/bin/xz instead of xz to make it working with busybox
+
+-------------------------------------------------------------------
 Mon Mar  2 12:04:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.16.0 bsc#1160281:

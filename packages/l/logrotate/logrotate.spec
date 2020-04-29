@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(systemd) >= 197
-Requires:       xz
+Requires:       /usr/bin/xz
 %{?systemd_ordering}
 
 %description
