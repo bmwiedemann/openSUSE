@@ -59,7 +59,9 @@ autoreconf -fvi
   --enable-abrt-report \
   --enable-arm \
   --enable-non-standard \
-  --enable-hisi-ns-decode
+  --enable-hisi-ns-decode \
+  --enable-devlink \
+  --enable-diskerror
 make %{?_smp_mflags} V=1
 
 %install
