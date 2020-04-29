@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -30,12 +30,6 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-# PATCH-FIX-UPSTREAM
-Patch0:         Restore-ability-to-close-tab-by-clicking-on-close-button.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libtidy-devel
@@ -70,14 +64,9 @@ Obsoletes:      libKF5Konq6 < 17.04
 Provides:       libKF5Konq6 = 17.04
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-# Needed for 42.3
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 
 %description
@@ -123,28 +112,17 @@ Development package for the konqueror libraries.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
-  %if 0%{?suse_version} < 1330
-    # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-    %if 0%{?sle_version} < 120300
-      export CC=gcc-6
-      export CXX=g++-6
-    %else
-      export CC=gcc-7
-      export CXX=g++-7
-    %endif
-  %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -160,7 +138,6 @@ Development package for the konqueror libraries.
 %dir %{_kf5_datadir}
 %dir %{_kf5_plugindir}
 %dir %{_kf5_servicesdir}
-%dir %{_kf5_servicetypesdir}
 %dir %{_kf5_sharedir}/kcontrol
 %dir %{_kf5_sharedir}/kcontrol/pics
 %dir %{_kf5_sharedir}/khtml
@@ -192,15 +169,12 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/kcm_konq.so
 %{_kf5_plugindir}/kcm_konqhtml.so
 %{_kf5_plugindir}/kcm_performance.so
-%{_kf5_plugindir}/konq_aboutpage.so
 %{_kf5_servicesdir}/bookmarks.desktop
 %{_kf5_servicesdir}/filebehavior.desktop
 %{_kf5_servicesdir}/kcmkonqyperformance.desktop
 %{_kf5_servicesdir}/kcmperformance.desktop
 %{_kf5_servicesdir}/khtml_*.desktop
-%{_kf5_servicesdir}/konq_aboutpage.desktop
 %{_kf5_servicesdir}/org.kde.konqueror.desktop
-%{_kf5_servicetypesdir}/konqaboutpage.desktop
 %{_kf5_sharedir}/kcontrol/pics/onlyone.png
 %{_kf5_sharedir}/kcontrol/pics/overlapping.png
 %{_kf5_sharedir}/konqueror/
