@@ -1,7 +1,7 @@
 #
 # spec file for package susefirewall2-to-firewalld
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        Basic SuSEfirewall2 to FirewallD migration script
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://github.com/openSUSE/susefirewall2-to-firewalld
+URL:            https://github.com/openSUSE/susefirewall2-to-firewalld
 Source:         https://github.com/openSUSE/%{name}/archive/%{name}-%{version}.tar.gz
+# bsc#1170461
+Patch0:         0001-Fix-ERROR-INVALID_PORT-when-sport-iptables-rules-are.patch
 Requires:       firewalld
 Requires:       iptables
 Recommends:     SuSEfirewall2
@@ -35,6 +37,7 @@ SuSEfirewall2 to FirewallD.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch0 -p1
 
 %build
 

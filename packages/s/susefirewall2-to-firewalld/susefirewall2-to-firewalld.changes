@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:49:21 UTC 2020 - matthias.gerstner@suse.com
+
+- add 0001-Fix-ERROR-INVALID_PORT-when-sport-iptables-rules-are.patch: fix
+  "INVALID_PORT" error message with certain SuSEfirewall2 configurations
+  (bsc#1170461).
+
+-------------------------------------------------------------------
 Mon Nov 12 08:28:17 UTC 2018 - Markos Chandras <mchandras@suse.de>
 
 - Version bump to 0.0.4

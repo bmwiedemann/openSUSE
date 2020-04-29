@@ -1,0 +1,40 @@
+From d8bea107600a354a3d83127b695fe0bd642927c5 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Wed, 29 Apr 2020 10:44:53 +0200
+Subject: [PATCH] Fix `ERROR: INVALID_PORT` when `--sport` iptables rules are
+ present
+
+When there are certain iptables rules containing only an `--sport` but
+no `--dport` then the execution of the script fails. See openSUSE bug
+[1].
+
+This change only adds robustness by skipping over such occurences. It
+doesn't actually process the entries in question. This means the result
+of the migration probably was and still will be incomplete in some
+constellations.
+
+[1]: https://bugzilla.suse.com/show_bug.cgi?id=1170461
+---
+ susefirewall2-to-firewalld | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/susefirewall2-to-firewalld b/susefirewall2-to-firewalld
+index 71874ee..307a9d6 100755
+--- a/susefirewall2-to-firewalld
++++ b/susefirewall2-to-firewalld
+@@ -1574,8 +1574,10 @@ do_service_to_zone_mapping() {
+                 all_direct_rules+=("${rule}"$'\n')
+                 dinfo ${rule}
+             elif [[ ${zone} == "ext" || ${zone} == "int" || ${zone} == "dmz" ]]; then
+-                add_service_to_zone ${zone} ${proto} ${ports/:/-}
+-                [[ $? == 0 ]] && pinfo ${ports} ${proto} ${zone}
++                if [[ -n "${ports}" ]]; then
++                        add_service_to_zone ${zone} ${proto} ${ports/:/-}
++                        [[ $? == 0 ]] && pinfo ${ports} ${proto} ${zone}
++                fi
+             fi
+             ;;
+         icmp|ipv6-icmp)
+-- 
+2.24.1
+
