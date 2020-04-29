@@ -80,6 +80,7 @@ CUnit.
 %autosetup
 
 %build
+%global optflags %{optflags} -fcommon
 autoreconf -fiv
 %configure \
   --enable-manpages \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:24:44 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable -fcommon in order to fix boo#1160276.
+
+-------------------------------------------------------------------
 Tue Feb 18 13:33:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20200212 (resolves boo#1160276):
