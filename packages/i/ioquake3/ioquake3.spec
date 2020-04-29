@@ -17,14 +17,13 @@
 
 
 %define _lto_cflags %{nil}
-
+# Some arch have no VM (aarch64, ...)
+%define arch_with_vm  %ix86 x86_64 ppc ppc64 armv7l armv7hl
 %bcond_with installer
 %bcond_with installeronly
-
 %if %{with installeronly}
 %define _with_installer 1
 %endif
-
 Name:           ioquake3
 # don't forget to change the version in the win32 spec file as well!
 Version:        1.36+git.20200211
@@ -39,6 +38,7 @@ BuildRequires:  nasm
 BuildRequires:  openal-soft-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sdl2)
+ExcludeArch:    armv6l armv6hl
 %if 0%{?mandriva_version}
 BuildRequires:  mesagl-devel
 BuildRequires:  mesaglu-devel
@@ -89,6 +89,9 @@ rm -rf code/SDL12 code/libs code/AL
 cat > dobuild <<'EOF'
 #!/bin/sh
 %make_build \
+%ifarch armv7l armv7hl
+    COMPILE_ARCH=armv7l \
+%endif
 	VERSION=%{version} \
 	RELEASE=%{release} \
 	OPTIMIZE="%{optflags} -O3 -ffast-math -fno-strict-aliasing" \
@@ -117,9 +120,17 @@ case $arch in
 esac
 q3dir=%{buildroot}%{_prefix}/lib/ioquake3
 install -d -m 755 $q3dir
+%ifarch %arch_with_vm
 install -d -m 755 $q3dir/baseq3/vm
+%else
+install -d -m 755 $q3dir/baseq3
+%endif
 install -d -m 755 $q3dir/demoq3
+%ifarch %arch_with_vm
 install -d -m 755 $q3dir/missionpack/vm
+%else
+install -d -m 755 $q3dir/missionpack
+%endif
 pushd build/release-linux-$arch/
 install -m 755 ioquake3.$arch $q3dir/
 #install -m 755 linuxquake3-smp $q3dir/ioquake3-smp.$arch
@@ -127,12 +138,16 @@ install -m 755 ioq3ded.$arch $q3dir/
 install -m 644 renderer_opengl1_$arch.so $q3dir/
 install -m 644 renderer_opengl2_$arch.so $q3dir/
 install -m 644 baseq3/*.so $q3dir/baseq3
+%ifarch %arch_with_vm
 install -m 644 baseq3/vm/*.qvm $q3dir/baseq3/vm
+%endif
 pushd $q3dir/demoq3
 ln -s ../baseq3/*.so .
 popd
 install -m 644 missionpack/*.so $q3dir/missionpack
+%ifarch %arch_with_vm
 install -m 644 missionpack/vm/*.qvm $q3dir/missionpack/vm
+%endif
 popd
 #
 # icons and start scripts
@@ -152,8 +167,10 @@ for i in ioq3demo ioquake3; do
 done
 #
 # devel tools
+%ifarch %arch_with_vm
 install -d -m 755 %{buildroot}%{_bindir}
 install -m 755 build/release-linux-$arch/tools/q3{lcc,cpp,rcc,asm} %{buildroot}%{_bindir}
+%endif
 %endif # installeronly
 #
 # installer
@@ -177,7 +194,9 @@ echo 'copy pak[0-8].pk3 to %{_prefix}/lib/ioquake3/baseq3/'
 
 %files devel
 %doc code/tools/lcc/COPYRIGHT
+%ifarch %arch_with_vm
 %{_bindir}/q3*
+%endif
 
 %endif # installeronly
 

@@ -15,4 +15,12 @@
     <comment>new upstream release and spec file cleanup</comment>
     <requestid>793433</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2cbd5faa306d6fbef9f1d16ea9057d7d</srcmd5>
+    <version>1.36+git.20200211</version>
+    <time>1588186404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798903</requestid>
+  </revision>
 </revisionlist>
