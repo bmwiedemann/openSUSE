@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:04:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Security fix: [bsc#1169760, CVE-2020-10683]
+  * External Entity vulnerability in default SAX parser
+  * Add dom4j-CVE-2020-10683.patch
+
+-------------------------------------------------------------------
 Fri Jan 25 11:10:16 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Build STAXEventReader, STAXEventWriter and the data types.

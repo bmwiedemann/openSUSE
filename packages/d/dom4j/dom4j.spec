@@ -1,7 +1,7 @@
 #
 # spec file for package dom4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        JarJar of dom4j for JBoss
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://www.dom4j.org/
+URL:            http://www.dom4j.org/
 #Source0:        dom4j-1.6.1.tar.gz
 # Debian sources don't need a proprietary msv for build, so that's why I used them
 # svn co svn://svn.debian.org/svn/pkg-java/trunk/dom4j
@@ -41,6 +41,8 @@ Patch2:         dom4j-javadoc.patch
 Patch3:         dom4j-CVE-2018-1000632.patch
 # PATCH-FIX-OPENSUSE bsc#1123158 Don't disable STAX and datatypes
 Patch4:         dom4j-enable-stax-datatypes.patch
+# PATCH-FIX-UPSTREAM bsc#1169760 CVE-2020-10683 XML Externl Entity vulnerability in default SAX parser
+Patch5:         dom4j-CVE-2020-10683.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  ant-apache-resolver
 BuildRequires:  ant-junit
@@ -136,6 +138,7 @@ rm -f src/test/org/dom4j/io/StaxTest.java
 %patch2 -p1 -b .javadoc
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 perl -pi -e 's/\r//g' LICENSE.txt docs/clover/*.css docs/style/*.css docs/xref/*.css docs/xref-test/*.css src/doc/style/*.css docs/benchmarks/xpath/*.java
 
 pushd lib
@@ -201,7 +204,7 @@ install -m 0755 run.sh %{buildroot}%{_datadir}/%{name}
 
 %files
 %defattr(0644,root,root,0755)
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/%{name}.jar
 %{_javadir}/%{name}-%{version}.jar
 %{_mavenpomdir}/*
