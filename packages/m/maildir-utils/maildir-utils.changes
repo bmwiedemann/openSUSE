@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 29 07:45:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.3:
+  * mu4e-view: fix gnus-button click for emacs 26
+  * mu4e: Don't use (mu4e-root-maildir) with easy-accounts
+  * fix `mu4e-main-buffer-hide-personal-addresses'
+  * mu4e-proc: ensure some booleans are nil
+  * mu4e: ask for context in mu4e~start 
+
+-------------------------------------------------------------------
 Mon Apr 20 07:05:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:

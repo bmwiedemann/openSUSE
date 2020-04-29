@@ -160,4 +160,17 @@
   * `mu4e-maildir-shortcuts` are simple plists now (old format is still</comment>
     <requestid>795668</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ef3d0bf90b554aa71178a26ba69978a</srcmd5>
+    <version>1.4.3</version>
+    <time>1588186327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  * mu4e-view: fix gnus-button click for emacs 26
+  * mu4e: Don't use (mu4e-root-maildir) with easy-accounts
+  * fix `mu4e-main-buffer-hide-personal-addresses'
+  * mu4e-proc: ensure some booleans are nil
+  * mu4e: ask for context in mu4e~start</comment>
+    <requestid>798806</requestid>
+  </revision>
 </revisionlist>
