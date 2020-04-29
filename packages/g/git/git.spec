@@ -17,6 +17,10 @@
 
 
 %define gitexecdir %{_libexecdir}/git
+%if 0%{?suse_version} < 1500
+%define _fwdefdir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
+%define SuSEfirewall2 1
+%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -43,6 +47,7 @@ Source1:        apache2-gitweb.conf
 Source2:        sysconfig.git-daemon
 Source3:        git-daemon.service
 Source5:        usr.share.git-web.gitweb.cgi
+Source6:        susefirewall-git-daemon
 Source7:        https://www.kernel.org/pub/software/scm/git/%{name}-%{version}.tar.sign
 Source8:        %{name}.keyring
 Source9:        %{name}-gui.desktop
@@ -58,7 +63,10 @@ Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 Patch11:        0001-DOC-Move-to-DocBook-5-when-using-asciidoctor.patch
 Patch13:        0002-Also-use-DocBook-5-stylesheet-when-generating-HTML-o.patch
-Patch14:        Revert-fetch-default-to-protocol-version-2.patch
+Patch14:        0001-fetch-pack-return-enum-from-process_acks.patch
+Patch15:        0002-fetch-pack-in-protocol-v2-in_vain-only-after-ACK.patch
+Patch16:        0003-fetch-pack-in-protocol-v2-reset-in_vain-upon-ACK.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -288,6 +296,8 @@ directory /git/ that calls the cgi script.
 %patch11 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
+%patch16 -p1
 
 %build
 cat > .make <<'EOF'
@@ -346,6 +356,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcgit-daemon
 install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.git-daemon
 install -d -m 755 %{buildroot}/srv/git
+%if 0%{?SuSEfirewall2}
+mkdir -p %{buildroot}/%{_fwdefdir}
+install -m 644 %{SOURCE6} %{buildroot}/%{_fwdefdir}/git-daemon
+%endif
 ###
 ./.make -C contrib/subtree install
 %{!?_without_docs: ./.make -C contrib/subtree install-doc}
@@ -476,6 +490,9 @@ fi
 %dir /srv/git
 %{_fillupdir}/sysconfig.git-daemon
 %{!?_without_docs: %{_mandir}/man1/git-daemon.1*}
+%if 0%{?SuSEfirewall2}
+%config %{_fwdefdir}/*
+%endif
 
 %files -n gitk
 %{_bindir}/gitk

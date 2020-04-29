@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 28 17:42:18 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Protocol v2 in_vain fixes (bsc#1170741).
+  Dropped: Revert-fetch-default-to-protocol-version-2.patch
+  Added:   0001-fetch-pack-return-enum-from-process_acks.patch
+           0002-fetch-pack-in-protocol-v2-in_vain-only-after-ACK.patch
+           0003-fetch-pack-in-protocol-v2-reset-in_vain-upon-ACK.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 13:36:27 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add back SuSEfirewall2 support needed for SLE12 (bsc#1170302).
+
+-------------------------------------------------------------------
 Tue Apr 21 19:41:46 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - With recent switch to protocol v2 people are reporting fetches transferring
   unreasonable amount of data. Upstream proposes switching the protocol back
   until the issue is properly diagnosed. The regression is problematic for
-  people with lower network connection speed.
+  people with lower network connection speed (bsc#1170741).
   Added: Revert-fetch-default-to-protocol-version-2.patch
 
 -------------------------------------------------------------------
