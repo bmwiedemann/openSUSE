@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 28 03:07:21 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 2.25
+   see /usr/share/doc/packages/perl-AnyEvent-HTTP/Changes
+
+  TODO: cookie_jar_extract should refuse when host is an ip literal
+  TODO: cookie_jar_et_cookie should reject cookies not matching their down server domain
+  TODO: cookie prefixes? https://tools.ietf.org/html/draft-ietf-httpbis-cookie-prefixes-00
+  TODO: default rbuf_max limit for header-reading, chunk header reading etc.
+  
+  2.25 Mon Apr 27 14:11:40 CEST 2020
+  	- fix incorrectly sending proxy requests to origin servers
+            when reusing proxy connections (analyzed and testcase by Ivan Robert).
+  	- the sessionid parameter was documented as session in random
+            places - fix docs and keep using sessionid in the code as before.
+  	- fix cookie format documentation.
+
+-------------------------------------------------------------------
 Fri Aug 31 05:01:49 UTC 2018 - coolo@suse.com
 
 - updated to 2.24
