@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:13:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.20:
+  + GtkFileChooser:
+    - Prevent selection changes after overwrite confirmation
+    - Don't grab focus to the sidebar on click
+    - Avoid a use-after-free in GtkFileSystemModel
+  + GtkEmojiChooser: Remove blacklist
+  + GtkAboutDialog: Add more licenses
+  + Adwaita: Lower the contrast of checkboxes
+  + HighContrast: Export the same public colors as Adwaita
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 10 11:27:09 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.24.18:
