@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr 21 09:02:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.98.3:
+  + GtkEntry: Support setting attributes in ui files
+  + GtkScaleButton: Don't derive from GtkButton
+  + GtkAboutDialog: Support more common licenses
+  + GtkEmojiChooser: Improve keyboard navigation
+  + GtkLabel: Remove pattern API
+  + GtkAspectFrame: Modernize and simplify
+  + Chooser buttons: Make dialogs modal by default
+  + Various widgets: Replace shadow-type and relief properties by a
+    simpler has-frame
+  + CSS:
+    - Use :focus-visible instead of :focus(visible)
+    - Add support for :focus-within
+  + Focus handling
+    - Fix crossing event generation
+    - Fix focus handling in various widgets
+    - Change :can-focus to be recursive
+    - Fix GtkWindow:is-active setting
+  + Scrolling
+    - gtk_container_set_focus_[hv]adjustment has been removed
+    - gtk_viewport_set_scroll_to_focus has been added
+  + Accessibility:
+    - Add a cursor-aspect-ratio setting
+    - Set focus-related states properly
+  + Themes:
+    - Use blue focus outlines more
+    - Numerous minor improvements
+  + Wayland:
+    - Fix .Compose file loading
+    - Support popup repositioning
+    - Fix problems with autohide popovers
+  + GDK:
+    - Remove GdkKeymap from public API, replaced by GdkDevice
+      properties
+    - Add full keyboard translation state to key events
+    - Simplify modifier support, drop GdkModifierIntent
+    - Move key event matching to GDK
+    - Add GdkSurface::enter/leave-monitor signals
+    - Turn GskEvent into a derivable type, and make it
+      introspectable
+  + GSK:
+    - Turn GskRenderNode into a derivable type, and make it
+      introspectable
+    - Fall back to cairo if compiling shaders fails
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr  1 15:24:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.98.2:

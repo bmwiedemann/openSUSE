@@ -21,7 +21,7 @@
 %define gtk_binary_version 4.0.0
 %define _name gtk
 Name:           gtk4
-Version:        3.98.2
+Version:        3.98.3
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -330,7 +330,6 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_sysconfdir}/rpm/macros.gtk4
 %dir %{_datadir}/gtk-4.0/valgrind
 %{_datadir}/gtk-4.0/valgrind/gtk.supp
-%{_datadir}/gtk-4.0/valgrind/gtk64.supp
 
 %files -n gettext-its-%{name}
 %dir %{_datadir}/gettext/
