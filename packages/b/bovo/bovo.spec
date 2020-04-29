@@ -1,7 +1,7 @@
 #
 # spec file for package bovo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,51 +16,42 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.30.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bovo
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Five-in-a-row Board Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  xz
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by
 KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n bovo-%{version}
@@ -84,7 +75,6 @@ KDE.
 %doc %lang(en) %{_kf5_htmldir}/en/bovo/
 %{_kf5_iconsdir}/hicolor/*/apps/bovo.*
 %{_kf5_sharedir}/bovo/
-%{_kf5_sharedir}/kxmlgui5/
 
 %if %{with lang}
 %files lang -f %{name}.lang
