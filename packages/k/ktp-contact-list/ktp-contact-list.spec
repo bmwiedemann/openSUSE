@@ -16,46 +16,45 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-contact-list
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Telepathy contact list
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules >= 1.3.0
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  ktp-icons
+BuildRequires:  telepathy-logger-qt5-devel
+BuildRequires:  telepathy-qt5-devel
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5People)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KTp)
+BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Xml) >= 5.2.0
+Recommends:     %{name}-lang
+Obsoletes:      %{name}5 < %{version}
+Provides:       %{name}5 = %{version}
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.3.0
-BuildRequires:  fdupes
-BuildRequires:  kcmutils-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kpeople5-devel
-BuildRequires:  ktp-common-internals-devel
-BuildRequires:  ktp-icons
-BuildRequires:  kwallet-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
-BuildRequires:  telepathy-logger-qt5-devel
-BuildRequires:  telepathy-qt5-devel
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.2.0
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Telepathy contact list application
