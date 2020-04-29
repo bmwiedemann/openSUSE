@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwave
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Sound Editor designed for KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  alsa-devel
 BuildRequires:  audiofile-devel
 BuildRequires:  extra-cmake-modules
@@ -45,11 +41,6 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -75,6 +66,15 @@ Recommends:     %{name}-lang
 Recommends:     lame
 Recommends:     toolame
 Recommends:     twolame
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+BuildRequires:  rsvg-convert
+%else
+BuildRequires:  rsvg-view
+%endif
 
 %description
 Kwave is a sound editor designed for the KDE Desktop Environment.
