@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenetwork-filesharing
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Completion)
@@ -41,12 +37,16 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
+Enhances:       dolphin
 # The package was named kdenetwork4-filesharing, although being a KF5 plugin
 Provides:       kdenetwork4-filesharing = %{version}
 Obsoletes:      kdenetwork4-filesharing < %{version}
 Obsoletes:      kdenetwork4-filesharing-lang < %{version}
-Recommends:     %{name}-lang
-Enhances:       dolphin
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Network File Sharing configuration module and plugin.
