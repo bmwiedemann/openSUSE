@@ -17,17 +17,16 @@
 
 
 Name:           hxtools
-Version:        20200331
+Version:        20200428
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
 Group:          Productivity/Other
-Url:            http://inai.de/projects/hxtools/
+Url:            https://inai.de/projects/hxtools/
 
-Source:         http://jftp.inai.de/hxtools/%name-%version.tar.xz
-Source2:        http://jftp.inai.de/hxtools/%name-%version.tar.asc
+Source:         https://inai.de/files/hxtools/%name-%version.tar.xz
+Source2:        https://inai.de/files/hxtools/%name-%version.tar.asc
 Source3:        %name.keyring
-BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel >= 2

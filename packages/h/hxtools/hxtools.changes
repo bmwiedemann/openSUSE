@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 28 21:27:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200428
+  * vfontas: N2 vectorizer: cease smoothing of stub serifs
+    (concerns the topleft corner of an 'E' in some fonts)
+  * vfontas: N2 vectorizer: avoid diagonalizing "pimples" in font
+    outlines (concerns 1-pixel protrusions in the right vertical
+    edge of the '4')
+
+-------------------------------------------------------------------
 Mon Mar 30 23:28:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200331

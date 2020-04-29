@@ -339,4 +339,12 @@ spec file license should be in SPDX (compatible) format. GPL-2.0+ seems to be th
     <comment>- Update to release 20200331</comment>
     <requestid>789916</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>58e6ddc60aa972dc73b5e7938bcd95c7</srcmd5>
+    <version>20200428</version>
+    <time>1588186285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20200428</comment>
+    <requestid>798739</requestid>
+  </revision>
 </revisionlist>
