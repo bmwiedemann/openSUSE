@@ -1,18 +1,18 @@
-From d4b2099ffd77d1fdea380ac42326b11a5be35e72 Mon Sep 17 00:00:00 2001
+From 59144ef25a4bf0ecceb27e1c2dd2276de54555fe Mon Sep 17 00:00:00 2001
 From: Werner Fink <werner@suse.de>
-Date: Thu, 15 Nov 2018 07:41:23 +0100
+Date: Mon, 27 Apr 2020 16:44:17 +0200
 Subject: [PATCH] Use new statx(2) system call to avoid hangs on NFS
 
 Signed-off-by: Werner Fink <werner@suse.de>
 ---
  Makefile.am   |   4 +-
- configure.ac  |  38 +++---
- src/fuser.c   |  86 +++-----------
- src/statx.c   | 147 +++++++++++++++++++++++
- src/statx.h   |  66 +++++++++++
- src/timeout.c | 372 ----------------------------------------------------------
- src/timeout.h |  45 -------
- 7 files changed, 248 insertions(+), 510 deletions(-)
+ configure.ac  |  38 ++----
+ src/fuser.c   |  98 ++++---------
+ src/statx.c   | 149 ++++++++++++++++++++
+ src/statx.h   |  68 +++++++++
+ src/timeout.c | 372 --------------------------------------------------
+ src/timeout.h |  45 ------
+ 7 files changed, 258 insertions(+), 516 deletions(-)
  create mode 100644 src/statx.c
  create mode 100644 src/statx.h
  delete mode 100644 src/timeout.c
@@ -90,7 +90,7 @@ index d8d3366..81d3674 100644
  # Enable hardened compile and link flags
  AC_ARG_ENABLE([harden_flags],
 diff --git src/fuser.c src/fuser.c
-index 48d52d0..f824581 100644
+index 1b58374..fc98790 100644
 --- src/fuser.c
 +++ src/fuser.c
 @@ -63,7 +63,7 @@
@@ -122,7 +122,7 @@ index 48d52d0..f824581 100644
  	    find_mountpoint(this_name->filename, &mountinfo) != 0) {
  		if (errno == ENOENT)
  			fprintf(stderr,
-@@ -1250,9 +1246,7 @@ int main(int argc, char *argv[])
+@@ -1241,9 +1237,7 @@ int main(int argc, char *argv[])
  					opts |= OPT_INTERACTIVE;
  					break;
  				case 'I':
@@ -132,7 +132,7 @@ index 48d52d0..f824581 100644
  					break;
  				case 'k':
  					opts |= OPT_KILL;
-@@ -1318,10 +1312,11 @@ int main(int argc, char *argv[])
+@@ -1309,10 +1303,11 @@ int main(int argc, char *argv[])
  			continue;
  		}
  
@@ -147,7 +147,7 @@ index 48d52d0..f824581 100644
  		/* an option */
  		/* Not an option, must be a file specification */
  		if ((this_name = malloc(sizeof(struct names))) == NULL)
-@@ -1641,7 +1636,7 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename, int *id)
+@@ -1632,7 +1627,7 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename, int *id)
  	if ((st = (struct stat *)malloc(sizeof(struct stat))) == NULL)
  		return NULL;
  	snprintf(pathname, 256, "/proc/%d/%s", pid, filename);
@@ -156,7 +156,7 @@ index 48d52d0..f824581 100644
  		free(st);
  		return NULL;
  	}
-@@ -1688,7 +1683,7 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1679,7 +1674,7 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  		snprintf(filepath, sizeof filepath - 1, "/proc/%d/%s/%s",
  			 pid, dirname, direntry->d_name);
  
@@ -165,7 +165,7 @@ index 48d52d0..f824581 100644
  			if (errno != ENOENT && errno != ENOTDIR) {
  				fprintf(stderr, _("Cannot stat file %s: %s\n"),
  					filepath, strerror(errno));
-@@ -1743,7 +1738,7 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1734,7 +1729,7 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  				if (thedev != ino_tmp->device)
  					continue;
  				if (!st.st_ino
@@ -174,7 +174,7 @@ index 48d52d0..f824581 100644
  					fprintf(stderr,
  						_("Cannot stat file %s: %s\n"),
  						filepath, strerror(errno));
-@@ -1841,11 +1836,11 @@ static uid_t getpiduid(const pid_t pid)
+@@ -1832,11 +1827,11 @@ static uid_t getpiduid(const pid_t pid)
  
  	if (asprintf(&pathname, "/proc/%d", pid) < 0)
  		return 0;
@@ -190,7 +190,7 @@ index 48d52d0..f824581 100644
  	return st.st_uid;
  }
  
-@@ -1883,7 +1878,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1874,7 +1869,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  		path = scanned_path;
  		if (*scanned_path == '@')
  			scanned_path++;
@@ -199,7 +199,7 @@ index 48d52d0..f824581 100644
  			free(path);
  			continue;
  		}
-@@ -2018,7 +2013,7 @@ static dev_t find_net_dev(void)
+@@ -2009,7 +2004,7 @@ static dev_t find_net_dev(void)
  		fprintf(stderr, _("Cannot open a network socket.\n"));
  		return -1;
  	}
@@ -208,7 +208,7 @@ index 48d52d0..f824581 100644
  		fprintf(stderr, _("Cannot find socket's device number.\n"));
  		close(skt);
  		return -1;
-@@ -2051,7 +2046,7 @@ scan_knfsd(struct names *names_head, struct inode_list *ino_head,
+@@ -2042,7 +2037,7 @@ scan_knfsd(struct names *names_head, struct inode_list *ino_head,
  		if ((find_space = strpbrk(line, " \t")) == NULL)
  			continue;
  		*find_space = '\0';
@@ -217,7 +217,7 @@ index 48d52d0..f824581 100644
  			continue;
  		}
  		/* Scan the devices */
-@@ -2086,7 +2081,7 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+@@ -2077,7 +2072,7 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
  		mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
  		const char *find_mountp = mnt->mpoint;
  
@@ -226,7 +226,7 @@ index 48d52d0..f824581 100644
  			continue;
  
  		/* Scan the devices */
-@@ -2133,7 +2128,7 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
+@@ -2124,7 +2119,7 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
  			if (*find_space == '\0')
  				continue;
  		}
@@ -235,7 +235,7 @@ index 48d52d0..f824581 100644
  			continue;
  		}
  		/* Scan the devices */
-@@ -2225,10 +2220,10 @@ init_mntinfo(void)
+@@ -2216,10 +2211,10 @@ init_mntinfo(void)
  		&mid, &parid, &maj, &min, &mpoint[0], &type[0], &devname[0]) == 7) {
  		struct stat st;
  		mntinf = add_mntinfo(mpoint, type, mid, parid, makedev(maj, min));
@@ -248,7 +248,7 @@ index 48d52d0..f824581 100644
  				mntinf->dev = st.st_dev;	/* stat(2) on binary does not see subvol dev */
  			}
  		}
-@@ -2240,7 +2235,7 @@ init_mntinfo(void)
+@@ -2231,7 +2226,7 @@ init_mntinfo(void)
  	parid = -1;
  	while (fscanf (mnt, "%s %s %s %*[^\n]", &devname[0], &mpoint[0], &type[0]) == 3) {
  		struct stat st;
@@ -257,7 +257,7 @@ index 48d52d0..f824581 100644
  			if (errno != EACCES) {
  				fprintf(stderr, _("Cannot stat %s: %s\n"),
  					mnt->mpoint, strerror(errno));
-@@ -2249,7 +2244,7 @@ init_mntinfo(void)
+@@ -2240,7 +2235,7 @@ init_mntinfo(void)
  			st.st_dev = (dev_t)-1;
  		}
  		mntinf = add_mntinfo(mpoint, type, mid++, parid, st.st_dev);
@@ -266,7 +266,7 @@ index 48d52d0..f824581 100644
  			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev)
  				mntinf->vol = st.st_rdev;
  		}
-@@ -2299,7 +2294,7 @@ out:
+@@ -2290,7 +2285,7 @@ out:
  		struct stat lst;
  
  		snprintf(pathname, 256, "/proc/%d/fd/%s", pid, fd);
@@ -275,7 +275,7 @@ index 48d52d0..f824581 100644
  			if (lst.st_mode & S_IWUSR)
  				info->flags |= O_WRONLY;
  			ret++;
-@@ -2372,7 +2367,7 @@ find_mountpoint(const char *path, mntinfo_t **mountinfo)
+@@ -2363,7 +2358,7 @@ find_mountpoint(const char *path, mntinfo_t **mountinfo)
  
  			/* could be a chroot or a container */
  
@@ -284,7 +284,7 @@ index 48d52d0..f824581 100644
  				if (errno != EACCES) {
  					fprintf(stderr, _("Cannot stat %s: %s\n"),
  						path, strerror(errno));
-@@ -2404,7 +2399,7 @@ find_mountpoint(const char *path, mntinfo_t **mountinfo)
+@@ -2395,7 +2390,7 @@ find_mountpoint(const char *path, mntinfo_t **mountinfo)
  
  					/* could be a chroot or a container */
  
@@ -293,7 +293,7 @@ index 48d52d0..f824581 100644
  						if (errno != EACCES) {
  							fprintf(stderr, _("Cannot stat %s: %s\n"),
  								use, strerror(errno));
-@@ -2442,49 +2437,6 @@ out:
+@@ -2433,49 +2428,6 @@ out:
  	return ret;
  }
  
@@ -1001,3 +1001,6 @@ index f372297..0000000
 -#endif
 -
 -#endif
+-- 
+2.25.0
+

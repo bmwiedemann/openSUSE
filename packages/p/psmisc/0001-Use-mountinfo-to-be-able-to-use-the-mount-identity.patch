@@ -1,6 +1,6 @@
-From 8d0edbbb8d09bc7998bf926b318270b6f7989195 Mon Sep 17 00:00:00 2001
+From 63d402a35e29106828f59b0b5b42a277136460c0 Mon Sep 17 00:00:00 2001
 From: Werner Fink <werner@suse.de>
-Date: Mon, 22 Oct 2018 12:02:50 +0200
+Date: Mon, 27 Apr 2020 14:41:03 +0200
 Subject: [PATCH] Use mountinfo to be able to use the mount identity
 
 which allows to distinguish different mounts with the
@@ -14,14 +14,16 @@ get the real mount ID for each file
 Support also BtrFS with its various subvolumes
 On BtrFS stat(2) on binary does not see subvol dev
 
+Allow not unique mounts as well as not unique mountpoint
+
 Signed-off-by: Werner Fink <werner@suse.de>
 ---
  configure.ac                       |  18 +-
- src/fuser.c                        | 647 ++++++++++++++++++++++++++++---------
+ src/fuser.c                        | 638 ++++++++++++++++++++++-------
  src/fuser.h                        |  27 +-
  testsuite/Makefile.am              |   3 +-
  testsuite/killall.test/killall.exp |   4 +
- 5 files changed, 546 insertions(+), 153 deletions(-)
+ 5 files changed, 537 insertions(+), 153 deletions(-)
 
 diff --git configure.ac configure.ac
 index 176a2fc..d8d3366 100644
@@ -67,7 +69,7 @@ index 176a2fc..d8d3366 100644
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
 diff --git src/fuser.c src/fuser.c
-index c44cee8..48d52d0 100644
+index c44cee8..1b58374 100644
 --- src/fuser.c
 +++ src/fuser.c
 @@ -32,6 +32,10 @@
@@ -287,7 +289,7 @@ index c44cee8..48d52d0 100644
  #endif				/* DEBUG */
  	add_inode(ino_list, this_name, this_name->st.st_dev,
  		  this_name->st.st_ino);
-@@ -502,12 +554,54 @@ parse_mounts(struct names *this_name, struct device_list **dev_list,
+@@ -502,12 +554,45 @@ parse_mounts(struct names *this_name, struct device_list **dev_list,
  	     const opt_type opts)
  {
  	dev_t match_device;
@@ -304,8 +306,6 @@ index c44cee8..48d52d0 100644
 +	count = 0;
 +	list_for_each(ptr, &mntinfo) {
 +		mntinfo_t *mnt = list_entry(ptr, mntinfo_t);
-+		if (match_device != mnt->dev && match_device != mnt->vol)
-+			continue;
 +		if (S_ISBLK(this_name->st.st_mode)) {
 +			/* Skip mount IDs check if a block device
 +			 * was specified */
@@ -329,13 +329,6 @@ index c44cee8..48d52d0 100644
 +			this_name->filename);
 +		return -1;
 +	}
-+	if (count > 1) {
-+		errno = ENOTUNIQ;
-+		fprintf(stderr,
-+			_("The device %u:%u is not unique. Please change!\n"),
-+			major(match_device), minor(match_device));
-+		/* return -1 */
-+	}
 +	if (S_ISBLK(this_name->st.st_mode))
 +		return 0;
 +	this_name->mnt_id = mountinfo->id;
@@ -343,7 +336,7 @@ index c44cee8..48d52d0 100644
  	return 0;
  }
  
-@@ -621,7 +715,7 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
+@@ -621,7 +706,7 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
  			fprintf(stderr, _("Unknown local port AF %d\n"),
  				res->ai_family);
  			freeaddrinfo(res);
@@ -352,7 +345,7 @@ index c44cee8..48d52d0 100644
  			return -1;
  		}
  		freeaddrinfo(res);
-@@ -684,10 +778,12 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
+@@ -684,10 +769,12 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
  					break;
  #endif
  				}
@@ -368,7 +361,7 @@ index c44cee8..48d52d0 100644
  	}
  	return 1;
  }
-@@ -953,6 +1049,21 @@ free_inodes(struct inode_list **match_inodes)
+@@ -953,6 +1040,21 @@ free_inodes(struct inode_list **match_inodes)
  /*
   * Free up structures allocated in add_device
   */
@@ -390,7 +383,7 @@ index c44cee8..48d52d0 100644
  static void
  free_devices(struct device_list **match_devices)
  {
-@@ -960,6 +1071,8 @@ free_devices(struct device_list **match_devices)
+@@ -960,6 +1062,8 @@ free_devices(struct device_list **match_devices)
  
  	device_tmp = *match_devices;
  	while(device_tmp != NULL) {
@@ -399,7 +392,7 @@ index c44cee8..48d52d0 100644
  		device_next = device_tmp->next;
  		free(device_tmp);
  		device_tmp = device_next;
-@@ -1162,16 +1275,11 @@ int main(int argc, char *argv[])
+@@ -1162,16 +1266,11 @@ int main(int argc, char *argv[])
  					skip_argv = 1;
  					//while(option != '\0') option++;
  					if (strcmp(argv[argc_cnt], "tcp") == 0)
@@ -421,7 +414,7 @@ index c44cee8..48d52d0 100644
  					else
  						usage(_
  						      ("Invalid namespace name"));
-@@ -1211,7 +1319,7 @@ int main(int argc, char *argv[])
+@@ -1211,7 +1310,7 @@ int main(int argc, char *argv[])
  		}
  
  #if defined(WITH_MOUNTINFO_LIST)
@@ -430,7 +423,7 @@ index c44cee8..48d52d0 100644
  			thestat = mntstat;
  #endif
  		/* an option */
-@@ -1525,7 +1633,7 @@ print_matches(struct names *names_head, const opt_type opts,
+@@ -1525,7 +1624,7 @@ print_matches(struct names *names_head, const opt_type opts,
  
  }
  
@@ -439,7 +432,7 @@ index c44cee8..48d52d0 100644
  {
  	char pathname[256];
  	struct stat *st;
-@@ -1537,6 +1645,15 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename)
+@@ -1537,6 +1636,15 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename)
  		free(st);
  		return NULL;
  	}
@@ -455,7 +448,7 @@ index c44cee8..48d52d0 100644
  	return st;
  }
  
-@@ -1551,7 +1668,8 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1551,7 +1659,8 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  	struct inode_list *ino_tmp;
  	struct device_list *dev_tmp;
  	struct unixsocket_list *sock_tmp;
@@ -465,7 +458,7 @@ index c44cee8..48d52d0 100644
  	char *dirpath;
  	char filepath[PATH_MAX];
  
-@@ -1590,11 +1708,27 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1590,11 +1699,27 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  			}
  			for (dev_tmp = dev_head; dev_tmp != NULL;
  			     dev_tmp = dev_tmp->next) {
@@ -496,7 +489,7 @@ index c44cee8..48d52d0 100644
  					add_matched_proc(dev_tmp->name,
  							 pid, uid,
  							 ACCESS_FILEWR |
-@@ -1616,9 +1750,10 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1616,9 +1741,10 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  					continue;
  				}
  				if (st.st_ino == ino_tmp->inode) {
@@ -509,7 +502,7 @@ index c44cee8..48d52d0 100644
  						add_matched_proc(ino_tmp->name,
  								 pid, uid,
  								 ACCESS_FILEWR |
-@@ -1647,31 +1782,54 @@ check_map(const pid_t pid, const char *filename,
+@@ -1647,31 +1773,54 @@ check_map(const pid_t pid, const char *filename,
  	FILE *fp;
  	unsigned long long tmp_inode;
  	unsigned int tmp_maj, tmp_min;
@@ -574,7 +567,7 @@ index c44cee8..48d52d0 100644
  	}
  	fclose(fp);
  }
-@@ -1695,6 +1853,7 @@ static uid_t getpiduid(const pid_t pid)
+@@ -1695,6 +1844,7 @@ static uid_t getpiduid(const pid_t pid)
   * fill_unix_cache : Create a list of Unix sockets
   *   This list is used later for matching purposes
   */
@@ -582,7 +575,7 @@ index c44cee8..48d52d0 100644
  void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	FILE *fp;
-@@ -1711,6 +1870,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1711,6 +1861,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  	while (fgets(line, BUFSIZ, fp) != NULL) {
  		char *path;
  		char *scanned_path = NULL;
@@ -591,7 +584,7 @@ index c44cee8..48d52d0 100644
  		if (sscanf(line, "%*x: %*x %*x %*x %*x %*d %d %ms",
  			   &scanned_inode, &scanned_path) != 2) {
  			if (scanned_path)
-@@ -1726,6 +1887,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1726,6 +1878,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  			free(path);
  			continue;
  		}
@@ -600,7 +593,7 @@ index c44cee8..48d52d0 100644
  		if ((newsocket = (struct unixsocket_list *)
  		     malloc(sizeof(struct unixsocket_list))) == NULL) {
  			free(path);
-@@ -1734,6 +1897,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1734,6 +1888,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  		newsocket->sun_name = strdup(scanned_path);
  		newsocket->inode = st.st_ino;
  		newsocket->dev = st.st_dev;
@@ -608,7 +601,7 @@ index c44cee8..48d52d0 100644
  		newsocket->net_inode = scanned_inode;
  		newsocket->next = *unixsocket_head;
  		*unixsocket_head = newsocket;
-@@ -1746,6 +1910,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1746,6 +1901,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  /*
   * Free up the list of Unix sockets
   */
@@ -616,7 +609,7 @@ index c44cee8..48d52d0 100644
  void clear_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	while(*unixsocket_head != NULL) {
-@@ -1913,30 +2078,22 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+@@ -1913,30 +2069,22 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
  {
  	struct device_list *dev_tmp;
  	struct inode_list *ino_tmp;
@@ -657,7 +650,7 @@ index c44cee8..48d52d0 100644
  				add_special_proc(dev_tmp->name, PTYPE_MOUNT, 0,
  						 find_mountp);
  		}
-@@ -1948,7 +2105,6 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+@@ -1948,7 +2096,6 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
  						 find_mountp);
  		}
  	}
@@ -665,7 +658,7 @@ index c44cee8..48d52d0 100644
  }
  
  static void
-@@ -1998,16 +2154,44 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
+@@ -1998,16 +2145,44 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
  	fclose(fp);
  }
  
@@ -714,7 +707,7 @@ index c44cee8..48d52d0 100644
  {
  	list_t *ptr, *tmp;
  
-@@ -2018,72 +2202,247 @@ static void clear_mntinfo(void)
+@@ -2018,72 +2193,247 @@ static void clear_mntinfo(void)
  	}
  }
  
@@ -763,17 +756,8 @@ index c44cee8..48d52d0 100644
 +				stat(mpoint, &st);
 +				mntinf->dev = st.st_dev;	/* stat(2) on binary does not see subvol dev */
 +			}
- 		}
--		append(mnt, mntinfo);
--		mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
--		strcpy(mnt->mpoint, mpoint);
--		mnt->nlen = nlen;
--		mnt->parid = parid;
--		mnt->dev = makedev(maj, min);
--		mnt->id = mid;
--		if (mid > max)
--			max = mid;
- 	}
++		}
++	}
 +#else
 +	if ((mnt = fopen(PROC_MOUNTS, "r")) == (FILE *) 0)
 +		return;
@@ -793,12 +777,26 @@ index c44cee8..48d52d0 100644
 +		if (mntinf && strncmp(devname, "/dev/", 5) == 0 && stat(devname, &st) == 0) {
 +			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev)
 +				mntinf->vol = st.st_rdev;
-+		}
-+	}
+ 		}
+-		append(mnt, mntinfo);
+-		mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
+-		strcpy(mnt->mpoint, mpoint);
+-		mnt->nlen = nlen;
+-		mnt->parid = parid;
+-		mnt->dev = makedev(maj, min);
+-		mnt->id = mid;
+-		if (mid > max)
+-			max = mid;
+ 	}
 +#endif
  	fclose(mnt);
 +}
-+
+ 
+-	/* Sort mount points accordingly to the reverse mount order */
+-	initial(&sort);
+-	for (mid = 1; mid <= max; mid++) {
+-		list_t *ptr, *tmp;
+-		list_for_each_safe(ptr, tmp, &mntinfo) {
 +static int
 +get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info)
 +{
@@ -859,12 +857,7 @@ index c44cee8..48d52d0 100644
 +	}
 +	return ret == 2 ? 0 : -1;
 +}
- 
--	/* Sort mount points accordingly to the reverse mount order */
--	initial(&sort);
--	for (mid = 1; mid <= max; mid++) {
--		list_t *ptr, *tmp;
--		list_for_each_safe(ptr, tmp, &mntinfo) {
++
 +#if defined(HAS_NAME_TO_HANDLE_AT)
 +static int
 +get_mountid(const char *path)
@@ -1006,7 +999,7 @@ index c44cee8..48d52d0 100644
  /*
   * Determine device of links below /proc/
   */
-@@ -2091,8 +2450,7 @@ static int mntstat(const char *path, struct stat *buf)
+@@ -2091,8 +2441,7 @@ static int mntstat(const char *path, struct stat *buf)
  {
  	char name[PATH_MAX + 1];
  	const char *use;
@@ -1016,7 +1009,7 @@ index c44cee8..48d52d0 100644
  
  	if ((use = realpath(path, name)) == NULL || *use != '/')
  	{
-@@ -2104,27 +2462,26 @@ static int mntstat(const char *path, struct stat *buf)
+@@ -2104,27 +2453,26 @@ static int mntstat(const char *path, struct stat *buf)
  		errno = 0;
  		return stat(path, buf);
  	}
@@ -1179,5 +1172,5 @@ index 8bb3889..a345582 100644
  set test "killall list signals"
  spawn $killall -l
 -- 
-2.16.4
+2.25.0
 

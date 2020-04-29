@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
-Url:            https://gitlab.com/psmisc/psmisc/
+URL:            https://gitlab.com/psmisc/psmisc/
 Version:        23.2
 Release:        0
 Provides:       ps:/usr/bin/killall
