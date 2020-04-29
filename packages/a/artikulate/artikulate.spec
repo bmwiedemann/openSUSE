@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           artikulate
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
 Group:          Amusements/Teaching/Other
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Archive)
@@ -58,6 +54,10 @@ Requires:       kqtquickcharts >= %{_kapp_version}
 Requires:       libqt5-qtquickcontrols
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Improve your pronunciation by listening to native speakers.
@@ -92,12 +92,10 @@ Improve your pronunciation by listening to native speakers.
 %{_kf5_configkcfgdir}/artikulate.kcfg
 %doc %lang(en) %{_kf5_htmldir}/en/artikulate/
 %{_kf5_iconsdir}/hicolor/*/*/artikulate*.*
-%{_kf5_iconsdir}/hicolor/*/actions/language-artikulate.*
 %{_kf5_libdir}/libartikulatecore.so.*
 %{_kf5_libdir}/libartikulatelearnerprofile.so.*
 %{_kf5_libdir}/libartikulatesound.so.*
 %{_kf5_plugindir}/artikulate/
-%{_kf5_sharedir}/artikulate/
 
 %if %{with lang}
 %files lang -f %{name}.lang
