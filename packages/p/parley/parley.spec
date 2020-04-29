@@ -1,7 +1,7 @@
 #
 # spec file for package parley
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,36 +21,32 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           parley
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  kf5-filesystem
+BuildRequires:  libxml2-devel
+BuildRequires:  libxslt-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kross)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKEduVocDocument)
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  update-desktop-files
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Multimedia)
@@ -65,15 +61,15 @@ Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Parley is a vocabulary trainer for KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
