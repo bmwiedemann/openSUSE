@@ -53,7 +53,7 @@
 %bcond_with    libnsl
 %endif
 Name:           postfix
-Version:        3.4.10
+Version:        3.5.1
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -74,7 +74,6 @@ Patch7:         %{name}-ssl-release-buffers.patch
 Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
-Patch11:        deprecated-RES_INSECURE1.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -176,7 +175,6 @@ PostgreSQL.
 %patch8
 %patch9
 %patch10
-%patch11 -p2
 
 # ---------------------------------------------------------------------------
 

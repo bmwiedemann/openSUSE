@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr 25 14:52:45 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200424 (git commit b2cad6a2d733):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * Use Link function for brcmfmac43362-sdio.lemaker,bananapro.txt
+  * Add symlink for Dell XPS 15 9550 Broadcom Bluetooth patch-ram file
+  * rtl_bt: Update RTL8822C BT FW to 0x0999_3AA1
+  * cxgb4: Update T6 config file
+  * amdgpu: update vega20 firmware for 20.10
+  * amdgpu: update vega12 firmware for 20.10
+  * amdgpu: update vega10 firmware for 20.10
+  * amdgpu: update renoir firmware for 20.10
+  * amdgpu: update raven2 firmware for 20.10
+  * amdgpu: update raven firmware for 20.10
+  * amdgpu: update picasso firmware for 20.10
+  * amdgpu: update navi10 firmware for 20.10
+  * amdgpu: update navi14 firmware for 20.10
+  * amdgpu: add navi14 TA firmware from 20.10
+  * cxgb4: Update firmware to revision 1.24.14.0
+
+-------------------------------------------------------------------
 Wed Apr 15 10:11:55 CEST 2020 - tiwai@suse.de
 
 - Update aliases per 5.6 and 5.7 kernels

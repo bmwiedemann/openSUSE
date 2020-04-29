@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 21:07:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make package building even on platforms, where _rpmmacrodir
+  is not defined.
+
+-------------------------------------------------------------------
 Wed May  8 09:37:54 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.

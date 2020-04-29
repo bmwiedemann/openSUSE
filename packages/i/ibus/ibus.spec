@@ -16,13 +16,8 @@
 #
 
 
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
 %define with_wayland 1
 %define with_emoji 1
-%else
-%define with_wayland 0
-%define with_emoji 0
-%endif
 
 Name:           ibus
 Version:        1.5.22
@@ -41,7 +36,8 @@ Source11:       ibus-autostart.desktop
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE ibus-python-install-dir.patch ftake@geeko.jp
 Patch0:         ibus-python-install-dir.patch
-# PATFH-FIX-OPENSUSE ibus-xim-fix-re-focus-after-lock.patch bnc#874869 tiwai@suse.de -- Fix lost XIM input after screenlock
+# PATFH-FIX-OPENSUSE ibus-xim-fix-re-focus-after-lock.patch bnc#874869 tiwai@suse.de
+# Fix lost XIM input after screenlock
 Patch4:         ibus-xim-fix-re-focus-after-lock.patch
 # PATCH-FIX-UPSTREAM ftake@geeko.jp
 # Select an IM engine at the first login
@@ -58,7 +54,8 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-# PATCH-FIX-UPSTREAM alarrosa@suse.com -- Remove unnecessary qt5 dependency https://github.com/ibus/ibus/pull/2194
+# PATCH-FIX-UPSTREAM alarrosa@suse.com
+# Remove unnecessary qt5 dependency https://github.com/ibus/ibus/pull/2194
 Patch13:        0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:10:15 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing keyring and verify source signature
+
+-------------------------------------------------------------------
 Tue Mar  3 14:44:11 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Add pam_keyinit to /etc/pam.d/ppp (bsc#1144055).

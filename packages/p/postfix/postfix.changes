@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Apr 19 10:22:12 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Dropped deprecated-RES_INSECURE1.patch to make DNSSEC-secured
+  lookups and DANE mail transport work again
+- Update to 3.5.1:
+  * Support for the haproxy v2 protocol. The Postfix implementation
+    supports TCP over IPv4 and IPv6, as well as non-proxied
+    connections; the latter are typically used for heartbeat tests.
+  * Support to force-expire email messages. This introduces new
+    postsuper(1) command-line options to request expiration, and
+    additional information in mailq(1) or postqueue(1) output.
+  * The Postfix SMTP and LMTP client support a list of nexthop
+    destinations separated by comma or whitespace. These destinations
+    will be tried in the specified order.
+  * Incompatible changes:
+    * Logging: Postfix daemon processes now log the from= and to=
+      addresses in external (quoted) form in non-debug logging (info,
+      warning, etc.). This means that when an address localpart
+      contains spaces or other special characters, the localpart will
+      be quoted, for example:
+      from=<"name with spaces"@example.com>
+      Specify "info_log_address_format = internal" for backwards compatibility.
+    * Postfix now normalizes IP addresses received with XCLIENT,
+      XFORWARD, or with the HaProxy protocol, for consistency with
+      direct connections to Postfix. This may change the appearance
+      of logging, and the way that check_client_access will match
+      subnets of an IPv6 address.
+
+-------------------------------------------------------------------
 Fri Mar 13 14:29:32 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.4.10:

@@ -20,6 +20,8 @@
 # continuity: https://github.com/adrianlopezroche/fdupes/issues/74.
 %global upstream_version 1.6.1
 
+%{?!_rpmmacrodir:%define _rpmmacrodir /usr/lib/rpm/macros.d}
+
 Name:           fdupes
 Version:        1.61
 Release:        0

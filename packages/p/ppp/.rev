@@ -302,4 +302,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>783453</requestid>
   </revision>
+  <revision rev="41" vrev="14">
+    <srcmd5>78337385bfc2deeb3e6cfb5f0b029570</srcmd5>
+    <version>2.4.7</version>
+    <time>1588185675</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream signing keyring and verify source signature (forwarded request 798048 from AndreasStieger)</comment>
+    <requestid>798108</requestid>
+  </revision>
 </revisionlist>

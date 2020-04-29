@@ -45,6 +45,9 @@ Source13:       pppoe-discovery.8.gz
 Source14:       modem.chat
 Source15:       modem@.service
 Source16:       modem.rules
+# https://www.kernel.org/doc/wot/paulus.html
+Source17:       %{name}.keyring
+Source18:       https://download.samba.org/pub/%{name}/%{name}-%{version}.tar.gz.asc
 # Makefile changes
 Patch0:         ppp-2.4.6-make.diff
 # replacedefaultroute option
