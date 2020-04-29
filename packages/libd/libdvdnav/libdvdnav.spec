@@ -1,7 +1,7 @@
 #
 # spec file for package libdvdnav
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,63 @@
 #
 
 
-%define libname libdvdnav4
+%define sover   4
 Name:           libdvdnav
-Version:        6.0.1
+Version:        6.1.0
 Release:        0
 Summary:        DVD Navigation Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libdvdnav.html
 Source0:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
-#Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source1:        http://download.videolan.org/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2.asc
+Source2:        %{name}.keyring
 Source1000:     baselibs.conf
-Patch0:         libdvdnav-dvdread.patch
-BuildRequires:  pkgconfig(dvdread) >= 6.0.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dvdread) >= 6.0.0
 
 %description
 This library contains functions to display DVD video menus.
 
-%package -n %{libname}
+%package -n libdvdnav%{sover}
 Summary:        A DVD Navigation Library
 Group:          Productivity/Multimedia/Other
 Provides:       %{name}
 Obsoletes:      %{name}
 
-%description -n %{libname}
+%description -n libdvdnav%{sover}
 This library contains functions to display DVD video menus.
 
 %package devel
 Summary:        Development Environment for libdvdnav
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       libdvdnav%{sover} = %{version}
 
 %description devel
 This library contains functions to display DVD video menus.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 
 %build
 autoreconf -fvi
 %configure \
   --disable-silent-rules \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -r %{buildroot}%{_datadir}/doc/libdvdnav/
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libdvdnav4 -p /sbin/ldconfig
-%postun -n libdvdnav4 -p /sbin/ldconfig
+%post   -n libdvdnav%{sover} -p /sbin/ldconfig
+%postun -n libdvdnav%{sover} -p /sbin/ldconfig
 
-%files -n %{libname}
-%{_libdir}/libdvdnav.so.4
-%{_libdir}/libdvdnav.so.4.*
+%files -n libdvdnav%{sover}
+%{_libdir}/libdvdnav.so.%{sover}
+%{_libdir}/libdvdnav.so.%{sover}.*
 %license COPYING
 %doc AUTHORS ChangeLog README TODO
 
