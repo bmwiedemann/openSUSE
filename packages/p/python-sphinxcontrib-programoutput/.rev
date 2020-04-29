@@ -58,4 +58,16 @@
     <comment></comment>
     <requestid>731432</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cad428682607a87e8b7ce3c9490985c9</srcmd5>
+    <version>0.16</version>
+    <time>1588186374</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 0.16:
+  - Add ``name`` and ``caption`` options. Added in
+  `PR 41 &lt;https://github.com/NextThought/sphinxcontrib-programoutput/pull/41&gt;`_ 
+  by RaphaÃ«l.
+  - Add support for Python 3.8.</comment>
+    <requestid>798858</requestid>
+  </revision>
 </revisionlist>

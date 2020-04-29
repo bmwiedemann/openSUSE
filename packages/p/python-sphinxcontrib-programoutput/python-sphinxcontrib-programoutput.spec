@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-programoutput
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without     test
 Name:           python-sphinxcontrib-programoutput
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Sphinx extension to include program output
 License:        BSD-2-Clause
