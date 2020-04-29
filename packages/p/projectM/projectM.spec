@@ -1,7 +1,7 @@
 #
 # spec file for package projectM
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,27 @@
 
 %define _libver 3
 Name:           projectM
-Version:        3.1.0
+Version:        3.1.3
 Release:        0
 Summary:        A Music Visualizer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
-Url:            http://projectm.sourceforge.net
+URL:            http://projectm.sourceforge.net
 Source0:        https://github.com/projectM-visualizer/projectm/archive/v%{version}.tar.gz#/projectm-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE projectM-disable_native_plugins.patch
-Patch4:         projectM-disable_native_plugins.patch
-# PATCH-FIX-UPSTREAM projectM-increase_soversion.patch
-Patch5:         projectM-increase_soversion.patch
+Patch0:         projectM-disable_native_plugins.patch
+# PATCH-FIX-UPSTREAM 0001-Reduce-dependencies.patch
+Patch1:         0001-Reduce-dependencies.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glm-devel
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(ftgl)
@@ -86,17 +89,19 @@ This package contains its development files.
 %prep
 %setup -q -n projectm-%{version}
 chmod -x LICENSE.txt
-%patch4 -p1
-%patch5 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fiv
+
+perl -pi -e 's#2>/dev/null##g' configure
 %configure --disable-static --disable-rpath --enable-qt
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot} -name *.la -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file -r projectM-pulseaudio AudioVideo Audio Mixer
 %fdupes -s %{buildroot}
 
@@ -108,8 +113,8 @@ find %{buildroot} -name *.la -delete
 %doc README.md
 %{_bindir}/%{name}-pulseaudio
 %{_datadir}/applications/%{name}-pulseaudio.desktop
-%{_datadir}/pixmaps/prjm16-transparent.svg
-%{_mandir}/man1/%{name}-pulseaudio.1%{ext_man}
+%{_datadir}/icons/hicolor/scalable/apps/projectM.svg
+%{_mandir}/man1/%{name}-pulseaudio.1%{?ext_man}
 
 %files -n lib%{name}%{_libver}
 %{_libdir}/lib%{name}.so.%{_libver}*

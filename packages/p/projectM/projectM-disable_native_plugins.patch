@@ -10,16 +10,13 @@ I'm simply disabling them.
 Furthermore, according to upstream, they aren't particularly useful.
 
 ---
-Index: projectm-3.1.0/src/Makefile.am
-===================================================================
---- projectm-3.1.0.orig/src/Makefile.am
-+++ projectm-3.1.0/src/Makefile.am
-@@ -10,7 +10,7 @@ if ENABLE_EMSCRIPTEN
-   PROJECTM_EMSCRIPTEN_SUBDIR = projectM-emscripten
- endif
- 
--SUBDIRS=libprojectM NativePresets ${PROJECTM_SDL_SUBDIR} ${PROJECTM_QT_SUBDIR} ${PROJECTM_EMSCRIPTEN_SUBDIR}
-+SUBDIRS=libprojectM ${PROJECTM_SDL_SUBDIR} ${PROJECTM_QT_SUBDIR} ${PROJECTM_EMSCRIPTEN_SUBDIR}
- 
- # system headers/libraries/data to install
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6d5e6e7..1ecbe81 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,4 +22,4 @@ endif
  # for compatibility reasons here as nobase_include
+ nobase_include_HEADERS = libprojectM/projectM.hpp libprojectM/Common.hpp libprojectM/dlldefs.h libprojectM/event.h libprojectM/fatal.h libprojectM/PCM.hpp
+ 
+-SUBDIRS = libprojectM NativePresets ${PROJECTM_SDL_SUBDIR} ${PROJECTM_QT_SUBDIR} ${PROJECTM_EMSCRIPTEN_SUBDIR} ${PROJECTM_JACK_SUBDIR} ${PROJECTM_PULSEAUDIO_SUBDIR}
++SUBDIRS = libprojectM ${PROJECTM_SDL_SUBDIR} ${PROJECTM_QT_SUBDIR} ${PROJECTM_EMSCRIPTEN_SUBDIR} ${PROJECTM_JACK_SUBDIR} ${PROJECTM_PULSEAUDIO_SUBDIR}
