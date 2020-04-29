@@ -578,7 +578,7 @@ cp Docs/README-wsrep Docs/README.wsrep
 filelist mariabackup mariadb-backup mbstream innochecksum mariadb-service-convert my_print_defaults myisam_ftdump myisamchk myisamlog myisampack mysql_fix_extensions mariadb-fix-extensions mysql_install_db mariadb-install-db mysql_secure_installation mariadb-secure-installation mysql_upgrade mariadb-upgrade mysqld mariadbd mysqld_multi mariadbd-multi mysqld_safe mariadbd-safe mysqlbinlog mariadb-binlog mysqldumpslow mariadb-dumpslow resolve_stack_dump resolveip {m,}aria_chk {m,}aria_dump_log {m,}aria_ftdump {m,}aria_pack {m,}aria_read_log tokuft_logprint tokuft_logdump tokuftdump mysql_ldb mariadb-ldb sst_dump myrocks_hotbackup >mariadb.files
 
 # mariadb-client.files
-filelist mysql mariadb mysqladmin mariadb-admin mysqlcheck mariadb-check mysqldump mariadb-dump mysqlimport mariadb-import mysqlshow mariadb-show mysql_config_editor mysqld_safe_helper mariadbd-safe-helper mariadb-client-test  >mariadb-client.files
+filelist mysql mariadb mysqladmin mariadb-admin mysqlcheck mariadb-check mysqldump mariadb-dump mysqlimport mariadb-import mysqlshow mariadb-show mysql_config_editor mysqld_safe_helper mariadbd-safe-helper >mariadb-client.files
 
 # Mysql has configuration file in _bindir
 if [ -f scripts/mysqlaccess.conf ] ; then
@@ -594,7 +594,7 @@ filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariaback
 filelist mysqlslap mariadb-slap >mariadb-bench.files
 
 # mariadb-test.files
-filelist mysql_client_test mysql_client_test_embedded mariadb-client-test-embedded mysql_waitpid mariadb-waitpid mysqltest mariadb-test mysqltest_embedded mariadb-test-embedded >mariadb-test.files
+filelist mysql_client_test mariadb-client-test mysql_client_test_embedded mariadb-client-test-embedded mysql_waitpid mariadb-waitpid mysqltest mariadb-test mysqltest_embedded mariadb-test-embedded >mariadb-test.files
 
 # mariadb-tools.files
 filelist msql2mysql mysql_plugin mariadb-plugin mysql_convert_table_format mariadb-convert-table-format mysql_find_rows mariadb-find-rows mysql_setpermission mariadb-setpermission mysql_tzinfo_to_sql mariadb-tzinfo-to-sql mysqlaccess mariadb-access mysqlhotcopy mariadb-hotcopy perror replace mysql_embedded mariadb-embedded >mariadb-tools.files

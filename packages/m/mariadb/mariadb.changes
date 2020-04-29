@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 16:36:28 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- move mariadb-client-test from client subpackage to test subpackage
+  so the symlink from mariadb-client-test -> mysql_client_test works
+  [bsc#1170204]
+
+-------------------------------------------------------------------
 Fri Apr 17 13:51:04 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Add oqgraph.social to the suse_skipped_tests.list (reported
