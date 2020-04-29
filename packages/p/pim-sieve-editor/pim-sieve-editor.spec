@@ -21,17 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pim-sieve-editor
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 # Is only required for the icon
 BuildRequires:  kmail-application-icons
@@ -47,13 +43,18 @@ BuildRequires:  cmake(KF5LibKSieve)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qt5Network) >= 5.10.0
 BuildRequires:  cmake(Qt5Test) >= 5.10.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
 Requires:       kmail
+Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package provides an editor, complete with syntax highlighting and
