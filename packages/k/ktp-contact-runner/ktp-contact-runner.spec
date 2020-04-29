@@ -16,41 +16,40 @@
 #
 
 
-%define kf5_version 5.26.0
+%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-contact-runner
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Telepathy Krunner plugin
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  telepathy-logger-qt5-devel
+BuildRequires:  telepathy-qt5-devel
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Runner)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KTp)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
+Obsoletes:      %{name}5 < %{version}
+Provides:       %{name}5 = %{version}
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-BuildRequires:  ki18n-devel
-BuildRequires:  krunner-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktp-common-internals-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  pkgconfig
-BuildRequires:  telepathy-logger-qt5-devel
-BuildRequires:  telepathy-qt5-devel
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 A KRunner plugin to find your Telepathy contacts.
