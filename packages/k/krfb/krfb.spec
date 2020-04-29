@@ -21,16 +21,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pipewire-devel
@@ -59,45 +55,26 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-# Needed for 42.3
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-%if 0%{?sle_version} < 120300
-BuildRequires:  gcc6-c++
-%else
-BuildRequires:  gcc7-c++
-%endif
-%endif
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 VNC-compatible server to share KDE desktops.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1330
-  # It does not build with the default compiler (GCC 4.8) on Leap 42.x
-  %if 0%{?sle_version} < 120300
-    export CC=gcc-6
-    export CXX=g++-6
-  %else
-    export CC=gcc-7
-    export CXX=g++-7
-  %endif
-%endif
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
   %cmake_kf5 -d build -- -DBUILD_EXPERIMENTAL_TUBES_SUPPORT="on"
-  make %{?_smp_mflags}
+  %cmake_build
 
 %install
   %make_install -C build
