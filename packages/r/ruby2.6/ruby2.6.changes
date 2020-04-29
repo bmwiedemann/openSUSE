@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 17:52:01 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- make sure that update-alternative weight for the default
+  distribution is always greater than our normal weight
+
+-------------------------------------------------------------------
+Tue Apr 28 17:25:52 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- make the update-alternative weight based on the ruby version
+
+-------------------------------------------------------------------
 Tue Apr  7 22:56:23 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update 2.6.6 (boo#1167244 boo#1168938)

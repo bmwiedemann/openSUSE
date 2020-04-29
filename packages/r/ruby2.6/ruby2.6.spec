@@ -32,6 +32,7 @@ Release:        0
 %define api_version 2.6.0
 %define rb_binary_suffix .ruby2.6
 %define rb_soname ruby2.6
+%define _rb_ua_weight 26
 
 # ruby-macros and ruby-common version
 %define rpm_macros_version 3
@@ -52,6 +53,9 @@ Release:        0
 
 %if "%{rb_default_ruby_suffix}" == "%{rb_soname}"
 %define is_default_ruby 1
+%define rb_ua_weight 1%{_rb_ua_weight}
+%else
+%define rb_ua_weight %{_rb_ua_weight}
 %endif
 
 %define ua_binaries rake rdoc ri bundle bundler
@@ -362,9 +366,9 @@ chmod -vR go-w,go+rX %{buildroot}%{_libdir}/ruby
 %post
 for bin in %{ua_binaries}; do
   /usr/sbin/update-alternatives --install \
-    %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} 3
+    %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
   /usr/sbin/update-alternatives --install \
-    %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} 3
+    %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
 done
 
 %preun

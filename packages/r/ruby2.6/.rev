@@ -104,4 +104,15 @@
   - add CVE-2020-8130.patch and rake-12.3.2.gem</comment>
     <requestid>792507</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6aef27033263ab909c937926dbb97ad3</srcmd5>
+    <version>2.6.6</version>
+    <time>1588185860</time>
+    <user>dimstar_suse</user>
+    <comment>- make sure that update-alternative weight for the default
+  distribution is always greater than our normal weight
+
+- make the update-alternative weight based on the ruby version</comment>
+    <requestid>798714</requestid>
+  </revision>
 </revisionlist>
