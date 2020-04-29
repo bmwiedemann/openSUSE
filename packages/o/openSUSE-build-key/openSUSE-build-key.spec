@@ -43,7 +43,6 @@ Source98:       security_at_suse_de.asc
 Source99:       security_at_suse_de_old.asc
 Source100:      dumpsigs
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys
-PreReq:         sh-utils gpg fileutils mktemp
 
 %description
 This package contains the gpg keys that are used to sign the
