@@ -2147,4 +2147,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Update to 5.14.1</comment>
     <requestid>768104</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>a312232cea51778c02a99c8aae7013b2</srcmd5>
+    <version>5.14.1</version>
+    <time>1588185729</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix use-after-free (boo#1170582, CVE-2020-12267):
+  * 0001-QTextMarkdownImporter-fix-use-after-free-add-fuzz-ge.patch</comment>
+    <requestid>798262</requestid>
+  </revision>
 </revisionlist>
