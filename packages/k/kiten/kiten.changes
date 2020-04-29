@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:22:30 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Fix build with Qt >= 5.15.0-beta3
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Fix compilation
+  * Make it compile against qt5.15 without deprecated method
+  * SkipEmptyParts is part of Qt::.
+  * Make it compile against qt5.15
+  * addVersionOption()/addHelpOption() already adds by KAboutData::setApplicationData
+  * Remove endl at the end of qDebug
+  * Port deprecated methods
+  * Fix minor EBN issues
+  * Port to QTextBrowser
+  * Use URLs with transport encryption
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
