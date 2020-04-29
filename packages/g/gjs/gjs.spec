@@ -17,7 +17,7 @@
 
 
 Name:           gjs
-Version:        1.64.1
+Version:        1.64.2
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
@@ -100,7 +100,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %meson \
 	-Ddtrace=true \
 	-Dsystemtap=true \
-        -Dinstalled_tests=false \
+	-Dinstalled_tests=false \
 	%{nil}
 %meson_build
 

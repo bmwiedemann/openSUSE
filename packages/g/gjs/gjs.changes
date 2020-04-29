@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 28 08:56:01 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.64.2:
+  + Closed bugs and merge requests:
+    - GList of int not correctly demarshalled on 64-bit big-endian.
+    - Fix template use in GTK4.
+    - Don't crash if a callback doesn't return an expected array of
+      values.
+    - Crash passing integer to strv in constructor.
+    - Skip some tests if GTK can't be initialised.
+  + Various backports:
+    - Fix gjs_log_exception() for InternalError.
+    - Fix signal match mechanism.
+
+-------------------------------------------------------------------
 Sat Mar 28 16:52:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.64.1:
