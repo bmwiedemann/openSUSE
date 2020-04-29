@@ -66,6 +66,7 @@ This package contains the development files for libsysfs.
 %patch1 -p1
 
 %build
+%global optflags %{optflags} -fcommon
 %configure --disable-static --with-pic
 %{__make} %{?_smp_mflags}
 

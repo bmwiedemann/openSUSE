@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:28:46 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable -fcommon in order to fix boo#1160295.
+
+-------------------------------------------------------------------
 Mon Mar 23 16:16:25 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update sysfsutils-fix-compiler-issues.patch in order to
