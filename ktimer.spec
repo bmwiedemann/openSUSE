@@ -1,7 +1,7 @@
 #
 # spec file for package ktimer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,40 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.46.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktimer
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Countdown Launcher
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Countdown launching tool for KDE
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n ktimer-%{version}
@@ -75,7 +68,6 @@ Countdown launching tool for KDE
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/ktimer/
 %doc %lang(en) %{_kf5_htmldir}/en/ktimer/
 %{_kf5_applicationsdir}/org.kde.ktimer.desktop
 %{_kf5_bindir}/ktimer
