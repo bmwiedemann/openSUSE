@@ -1,7 +1,7 @@
 #
 # spec file for package knot
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ BuildRequires:  lmdb-devel
 %endif
 %if 0%{?suse_version} > 1140 && ( 0%{?suse_version} != 1315 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} ))
 BuildRequires:  makeinfo
-BuildRequires:  python-Sphinx
+BuildRequires:  python3-Sphinx
 %endif
 %if %{with dnstap}
 BuildRequires:  libfstrm-devel
