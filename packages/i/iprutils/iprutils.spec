@@ -1,7 +1,7 @@
 #
 # spec file for package iprutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,10 @@ Release:        0
 Summary:        Utilities for the IBM Power Linux RAID Adapters
 License:        CPL-1.0
 Group:          Hardware/Other
-Url:            https://sourceforge.net/projects/iprdd
+URL:            https://sourceforge.net/projects/iprdd
 Source0:        https://sourceforge.net/projects/iprdd/files/iprutils%%20for%%202.6%%20kernels/%{version}/%{name}-%{version}.%{revision}.tar.gz
 Patch0:         iprutils.fix_ncurses_cflags_var.patch
+Patch1:         bsc1165878-free-raid-cmd-head-list.patch 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -49,6 +50,7 @@ supported by the ipr SCSI storage device driver.
 %prep
 %setup -q -n %{name}-%{version}.%{revision}
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CPPFLAGS="$(pkg-config ncurses form --cflags)"

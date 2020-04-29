@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 21 11:52:14 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Without freeing the raid_cmd_head list before creating the raid menu,
+  GUI menu of creating/deleting an array got mess up.
+  Free the raid_cmd_head list before creating the raid menu
+  [bsc#1165878, bsc1165878-free-raid-cmd-head-list.patch]
+
+-------------------------------------------------------------------
 Thu Jun  6 08:35:36 UTC 2019 - josef.moellers@suse.com
 
 - version update to 2.4.18
