@@ -92,7 +92,8 @@ install -Dpm 0644 %{SOURCE1} %{buildroot}%{_userunitdir}/vdirsyncer.timer
 
 %check
 export DETERMINISTIC_TESTS=true
-%pytest -k 'not test_legacy_status and not test_open_graphical_browser'
+# test_verbosity - click changed syntax and returns different quotes
+%pytest -k 'not test_legacy_status and not test_open_graphical_browser and not test_verbosity'
 
 %files %{python_files}
 %doc README.rst

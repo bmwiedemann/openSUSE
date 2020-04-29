@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:51:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip failing test due to changed quoting in click:
+  * test_verbosity
+
+-------------------------------------------------------------------
 Mon Feb  3 15:57:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
