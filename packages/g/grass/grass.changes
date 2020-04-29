@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:52:46 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 7.8.2:
+  * important PROJ 4/5/6 related datum handling fixes
+  * wxGUI fixes
+  * fix for the vector import from PostGIS databases
+
+-------------------------------------------------------------------
 Tue Apr 28 13:16:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use python3-wxPython on Tumbleweed since python-wxWidgets has

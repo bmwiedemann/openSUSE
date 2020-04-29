@@ -1,7 +1,7 @@
 #
 # spec file for package grass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,24 @@
 
 
 # Notice to maintainer : move this package to real lfhs
-
 %define	shortver 78
-
+# Post Leap 42 / TW
+%if 0%{?suse_version} > 1325
+BuildRequires:  wxWidgets-devel >= 3.0
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-wxPython
+%else
+BuildRequires:  python-wxWidgets-devel >= 3.0
+%endif
+%else
+%define _use_internal_dependency_generator 0
+%define __find_requires %wx_requires
+# Don't work for SLE why ?
+# BuildRequires:  python-wxWidgets >= 2.8
+BuildRequires:  wxWidgets-devel >= 2.8
+%endif
 Name:           grass
-Version:        7.8.1
+Version:        7.8.2
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
@@ -29,23 +42,6 @@ Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
 Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
 Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.md5sum
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       fftw3
-Requires:       proj >= 6
-%if 0%{suse_version} >= 1550
-Requires:       python3-wxPython
-%else
-Requires:       python-wxWidgets >= 2.8
-%endif
-Requires:       python3
-Requires:       python3-dateutil
-Requires:       python3-numpy
-Requires:       python3-opengl
-Requires:       python3-xml
-Requires:       sqlite >= 3
-Requires:       unixODBC
-Requires:       xterm
-Recommends:     grass-doc
 BuildRequires:  -post-build-checks
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -61,7 +57,6 @@ BuildRequires:  libgdal-devel >= 3
 BuildRequires:  libgeos-devel >= 3
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  man
@@ -82,22 +77,23 @@ BuildRequires:  sqlite-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  xorg-x11-Mesa-devel
 BuildRequires:  zlib-devel
-# Post Leap 42 / TW
-%if 0%{?suse_version} > 1325
-%if 0%{suse_version} >= 1550
-BuildRequires:  python3-wxPython
-%else
-BuildRequires:  python-wxWidgets-devel >= 3.0
-%endif
-BuildRequires:  wxWidgets-devel >= 3.0
-%else
-# Don't work for SLE why ?
-# BuildRequires:  python-wxWidgets >= 2.8
-BuildRequires:  wxWidgets-devel >= 2.8
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-%endif
+Requires:       fftw3
+Requires:       proj >= 6
+Requires:       python3
+Requires:       python3-dateutil
+Requires:       python3-numpy
+Requires:       python3-opengl
+Requires:       python3-xml
+Requires:       sqlite >= 3
+Requires:       unixODBC
+Requires:       xterm
+Recommends:     grass-doc
 Obsoletes:      grass7
+%if 0%{?suse_version} >= 1550
+Requires:       python3-wxPython
+%else
+Requires:       python-wxWidgets >= 2.8
+%endif
 
 %package doc
 Summary:        Documentation for GRASS GIS 7
@@ -152,18 +148,18 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 	--with-curses \
 	--with-cxx \
 	--with-fftw \
-	--with-freetype --with-freetype-includes=/usr/include/freetype2 \
-	--with-gdal=/usr/bin/gdal-config \
+	--with-freetype --with-freetype-includes=%{_includedir}/freetype2 \
+	--with-gdal=%{_bindir}/gdal-config \
 	--with-geos \
 	--with-lapack \
 	--with-motif \
-	--with-mysql --with-mysql-includes=/usr/include/mysql \
+	--with-mysql --with-mysql-includes=%{_includedir}/mysql \
 	--with-netcdf \
 	--with-nls \
 	--with-odbc \
 	--with-openmp \
-	--with-postgres --with-postgres-includes=/usr/include/pgsql \
-	--with-proj-share=/usr/share/proj \
+	--with-postgres --with-postgres-includes=%{_includedir}/pgsql \
+	--with-proj-share=%{_datadir}/proj \
 	--with-pthread \
 	--with-python \
 	--with-bzlib \
@@ -173,7 +169,7 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 	--with-wxwidgets
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
-find . -type f -exec sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g' {} +
+find . -type f -exec sed -i -e 's:#!%{_bindir}/env python3:#!%{_bindir}/python3:g' {} +
 
 %build
 make prefix=%{grassprefix} PREFIX=%{grassprefix} %{?_smp_mflags}
@@ -194,10 +190,10 @@ rmdir %{buildroot}%{grassprefix}/bin
 sed -i s:%{buildroot}::g %{buildroot}%{_bindir}/grass%{shortver}
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Grass.make
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Platform.make
-sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/etc/fontcap
+sed -i s:%{buildroot}::g %{buildroot}%{grassdir}%{_sysconfdir}/fontcap
 # Make symlinks in /usr/bin/
-install -d %{buildroot}/usr/bin/
-pushd %{buildroot}/usr/bin/
+install -d %{buildroot}%{_bindir}/
+pushd %{buildroot}%{_bindir}/
 ln -fsv grass%{shortver} grass
 popd
 
@@ -205,10 +201,10 @@ popd
 install -d %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo %{grasslib} >> %{buildroot}%{_sysconfdir}/ld.so.conf.d/grass-%{version}.conf
 
-mkdir -p %{buildroot}/usr/share/applications
-cp  %{buildroot}%{grassdir}/share/applications/grass.desktop %{buildroot}/usr/share/applications/grass.desktop
-mkdir -p %{buildroot}/usr/share/pixmaps
-ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}/usr/share/pixmaps/grass.png
+mkdir -p %{buildroot}%{_datadir}/applications
+cp  %{buildroot}%{grassdir}/share/applications/grass.desktop %{buildroot}%{_datadir}/applications/grass.desktop
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}%{_datadir}/pixmaps/grass.png
 
 rm -rf %{buildroot}%{_libdir}/grass%{shortver}/tools/__pycache__
 
@@ -232,14 +228,14 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{_bindir}/%{name}
 %{_bindir}/%{name}%{shortver}
 %{grassdir}/bin/*
-%{grassdir}/etc/*
+%{grassdir}%{_sysconfdir}/*
 %{grassdir}/gui/*
 %{grassdir}/scripts/*
 %{grassdir}/share/applications/grass.desktop
 %{grassdir}/share/icons/hicolor/*
 %{grassdir}/share/metainfo/org.osgeo.grass.appdata.xml
-/usr/share/applications/grass.desktop
-/usr/share/pixmaps/grass.png
+%{_datadir}/applications/grass.desktop
+%{_datadir}/pixmaps/grass.png
 %lang(ar) %{grassdir}/locale/ar/LC_MESSAGES/*.mo
 %lang(bn) %{grassdir}/locale/bn/LC_MESSAGES/*.mo
 %lang(cs) %{grassdir}/locale/cs/LC_MESSAGES/*.mo
