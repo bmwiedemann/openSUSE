@@ -1,7 +1,7 @@
 #
 # spec file for package kipi-plugins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %bcond_without lang
 Name:           kipi-plugins
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+BuildRequires:  extra-cmake-modules
+BuildRequires:  kf5-filesystem
+BuildRequires:  libmediawiki-devel
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
@@ -45,9 +44,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  libmediawiki-devel
 Recommends:     %{name}-lang
 Obsoletes:      kipi-plugins-acquireimage < %{version}
 Obsoletes:      kipi-plugins-geolocation < %{version}
@@ -55,6 +51,10 @@ Obsoletes:      kipi-plugins5 < %{version}
 Provides:       kipi-plugins5 = %{version}
 Obsoletes:      kipi-plugin-icons < %{version}
 Provides:       kipi-plugin-icons = %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 A set of plug-ins for the KDE KIPI interface, used by some KDE imaging
@@ -100,6 +100,7 @@ done
 %dir %{_kf5_iconsdir}/hicolor/24x24
 %dir %{_kf5_iconsdir}/hicolor/24x24/apps
 %{_kf5_applicationsdir}/kipiplugins.desktop
+%{_kf5_appstreamdir}/org.kde.kipi_plugins.metainfo.xml
 %{_kf5_iconsdir}/hicolor/*/apps/kipi-*.*
 %{_kf5_kxmlguidir}/kipi/
 %{_kf5_libdir}/libKF5kipiplugins.so*
