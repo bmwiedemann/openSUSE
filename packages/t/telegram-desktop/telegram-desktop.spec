@@ -31,7 +31,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -40,8 +40,12 @@ URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 # curl https://codeload.github.com/ericniebler/range-v3/zip/master -o range-v3-master.zip
 Source1:        range-v3-master.zip
+# PATCH-FIX-OPENSUSE
 Patch0:         0000-gtk2-default.patch
+# PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-range.patch
+# PATCH-FIX-UPSTREAM Fix for opening directories when using portals
+Patch2:         0002-fix-directory-open-via-portals.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -73,7 +77,6 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
-BuildRequires:  pkgconfig(dee-1.0)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -128,6 +131,8 @@ Requires:       ffmpeg
 Requires:       hicolor-icon-theme
 Requires:       icu
 Requires:       openssl
+# TDesktop can fall back to a simple GTK file picker but prefers the portal
+Recommends:     xdg-desktop-portal
 ExclusiveArch:  x86_64
 
 %description
@@ -145,6 +150,7 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %limit_build -m 2048
@@ -154,7 +160,7 @@ export CXX=/usr/bin/g++-9
 %endif
 
 %cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
       -DTDESKTOP_API_ID=340630 \
       -DTDESKTOP_API_HASH=98a22f733eac40f1bd187a30d19271de \

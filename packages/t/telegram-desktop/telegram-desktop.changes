@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 25 14:59:16 UTC 2020 - Markus S <kamikazow@opensuse.org>
+
+- Update to 2.1.0
+  * Access a catalog of over 20,000 stickers made by professional
+    artists from the updated Sticker Panel by clicking the '+' icon.
+  * Use sticker search to find the stickers you're looking for
+    or scroll from the latest packs all the way to the classics.
+  * Add explanations that appear after users respond to a quiz question.
+  * See how much time you have left to answer a question from
+    @QuizBot with the new countdown animation.
+  * Send a single :dart: emoji to see if you hit the bullseye.
+- Disable libdee requirement after Python2 removal
+- Upstream recommends using xdg-desktop-portal, so we might do the same
+- Add 0002-fix-directory-open-via-portals.patch
+  * Upstream fix for a bug when opening directories via portals
+
+-------------------------------------------------------------------
 Tue Mar 31 11:43:35 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.0.1
