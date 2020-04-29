@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- No code change since 20.03.90
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * Add missing includes
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Changes since 19.12.3:
+  * Fix minor EBN issues (explicit)
+  * Update link to OpenAL page
+  * Fix include guard to make EBN happy
+  * Fix using 0 for a flags
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3

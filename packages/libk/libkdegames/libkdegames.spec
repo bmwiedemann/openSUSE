@@ -1,7 +1,7 @@
 #
 # spec file for package libkdegames
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,20 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdegames
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Patch1:         libkdegames-bnc793185.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  kf5-filesystem
+BuildRequires:  libsndfile-devel
+BuildRequires:  openal-soft-devel
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Codecs)
@@ -44,9 +44,8 @@ BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  kf5-filesystem
+BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -58,18 +57,19 @@ BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  libsndfile-devel
-BuildRequires:  openal-soft-devel
-BuildRequires:  xz
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+Recommends:     %{name}-lang
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
-Recommends:     %{name}-lang
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 This package contains data which is required by the KDE games library.
@@ -110,14 +110,14 @@ This package contains the KDE games library.
 Summary:        Library for KDE Games: Build Environment
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
+Requires:       libkf5kdegames6 = %{version}
+Requires:       libsndfile-devel
+Requires:       openal-soft-devel
 Requires:       cmake(KF5Completion)
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5ConfigWidgets)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5WidgetsAddons)
-Requires:       libkf5kdegames6 = %{version}
-Requires:       libsndfile-devel
-Requires:       openal-soft-devel
 Requires:       cmake(Qt5Network)
 Requires:       cmake(Qt5Qml)
 Requires:       cmake(Qt5QuickWidgets)
