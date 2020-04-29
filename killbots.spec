@@ -1,7 +1,7 @@
 #
 # spec file for package killbots
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,41 +21,39 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           killbots
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Robots-like game by KDE
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KDEGames)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 Killbots is a turn-based game of evading "killer" robots on a board.
@@ -63,9 +61,7 @@ Robots home in on the player, but can crash into other robots or
 debris, rendering them inert. The player has to strategically move
 and can optionally use teleportation to a random location.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q -n killbots-%{version}
@@ -88,6 +84,7 @@ and can optionally use teleportation to a random location.
 %{_kf5_applicationsdir}/org.kde.killbots.desktop
 %{_kf5_bindir}/killbots
 %{_kf5_configkcfgdir}/killbots.kcfg
+%{_kf5_debugdir}/killbots.categories
 %{_kf5_iconsdir}/hicolor/*/apps/killbots.*
 %{_kf5_sharedir}/killbots/
 %{_kf5_appstreamdir}/org.kde.killbots.appdata.xml
