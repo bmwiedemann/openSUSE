@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Apr 28 13:17:06 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#725
+- added read-only flag to BlkDevice
+- 4.3.3
+
+--------------------------------------------------------------------
 Fri Apr 24 11:48:07 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#724
