@@ -1,7 +1,7 @@
 #
 # spec file for package ksystemlog
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,23 +21,19 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksystemlog
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  oxygen5-icon-theme-large
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
@@ -46,8 +42,10 @@ BuildRequires:  pkgconfig(libsystemd)
 Obsoletes:      ksystemlog5 < %{version}
 Provides:       ksystemlog5 = %{version}
 %if %{with lang}
-Recommends:     %{name}-lang
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
+Recommends:     %{name}-lang
 
 %description
 This program is developed for use by beginner users, who do not know
@@ -55,9 +53,7 @@ how to find information about their Linux system and how the log files
 are in their computer. But it is also designed for advanced users, who
 want to quickly see problems occurring on their server.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %setup -q
@@ -75,11 +71,7 @@ want to quickly see problems occurring on their server.
   %suse_update_desktop_file org.kde.ksystemlog System Monitor
   for i in {16,22,32,48,64,128}; do
      mkdir -p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
      cp %{_datadir}/icons/oxygen/base/"$i"x"$i"/apps/utilities-log-viewer.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps/;
-%else
-     cp %{_datadir}/icons/oxygen/"$i"x"$i"/apps/utilities-log-viewer.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps/;
-%endif
   done
 
 %files
