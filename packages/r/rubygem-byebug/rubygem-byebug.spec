@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-byebug
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-byebug
-Version:        11.1.1
+Version:        11.1.3
 Release:        0
 %define mod_name byebug
 %define mod_full_name %{mod_name}-%{version}
@@ -39,7 +39,7 @@ BuildRequires:  %{rubydevel >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/deivid-rodriguez/byebug
+URL:            https://github.com/deivid-rodriguez/byebug
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-byebug-rpmlintrc
 Source2:        gem2rpm.yml
