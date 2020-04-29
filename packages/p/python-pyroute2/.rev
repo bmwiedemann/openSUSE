@@ -162,4 +162,16 @@
     <comment>- update to 0.5.10 bsc#1161898:</comment>
     <requestid>788086</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ef9c101e8de156e7f1ab0d6645ce23c</srcmd5>
+    <version>0.5.11</version>
+    <time>1588186310</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.11:
+  * ndb.report: filters and transformations
+  * ndb.objects.route: support basic MPLS routes management
+  * ndb.objects.route: support MPLS lwtunnel routes
+  * ndb.schema: reschedule events</comment>
+    <requestid>798856</requestid>
+  </revision>
 </revisionlist>
