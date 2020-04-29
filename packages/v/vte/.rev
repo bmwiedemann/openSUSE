@@ -954,4 +954,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>Scripted push of project GNOME:Next (forwarded request 795110 from iznogood)</comment>
     <requestid>795255</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>4cd39322b397b84d25b52bc1e929b239</srcmd5>
+    <version>0.60.2</version>
+    <time>1588185773</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 797876 from iznogood)</comment>
+    <requestid>798355</requestid>
+  </revision>
 </revisionlist>

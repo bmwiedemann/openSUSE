@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 26 11:13:25 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.60.2:
+  * icu: glue: Set error callback on the from-unicode conversion
+  * lib: Fix switching between legacy encodings
+  * widget: Set error from vte_terminal_set_encoding when built
+    without ICU
+  * all: Fix the build without ICU
+  * docs: Add index for API new in 0.60
+  * lib: Fix exception thrown from std::clamp
+  * pty: spawn: Reap the child process if the systemd call fails
+  * docs: Add regex flag requirements
+  * bindings: gir: Add missing file to extract source comments and
+    annotations from
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Fri Mar 27 20:46:10 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.60.1:
