@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200428" schemaversion="4.1">
+<image name="OBS__openSUSE___20200429" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200428</productvar>
+      <productvar name="VERSION">20200429</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200428,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200429,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200428/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200429/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -200,7 +200,6 @@
       <repopackage name="autoyast2-installation"/>
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
-      <repopackage name="avogadrolibs"/>
       <repopackage name="awesfx"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="baloo5-file"/>
@@ -1054,6 +1053,7 @@
       <repopackage name="ipw-firmware"/>
       <repopackage name="irda"/>
       <repopackage name="irqbalance"/>
+      <repopackage name="irqbalance-ui"/>
       <repopackage name="irssi"/>
       <repopackage name="iscsiuio"/>
       <repopackage name="iso-codes"/>
@@ -1515,7 +1515,6 @@
       <repopackage name="libavdevice58"/>
       <repopackage name="libavfilter7"/>
       <repopackage name="libavformat58"/>
-      <repopackage name="libavogadrolibs-suse0"/>
       <repopackage name="libavresample4"/>
       <repopackage name="libavutil56"/>
       <repopackage name="libb64-0"/>
@@ -1547,7 +1546,7 @@
       <repopackage name="libboost_iostreams1_71_0"/>
       <repopackage name="libboost_locale1_71_0"/>
       <repopackage name="libboost_program_options1_71_0"/>
-      <repopackage name="libboost_python-py2_7-1_71_0"/>
+      <repopackage name="libboost_python-py3-1_71_0"/>
       <repopackage name="libboost_regex1_71_0"/>
       <repopackage name="libboost_thread1_71_0"/>
       <repopackage name="libbrasero-burn3-1"/>
@@ -1707,7 +1706,7 @@
       <repopackage name="libdv4"/>
       <repopackage name="libdvbpsi10"/>
       <repopackage name="libdvdnav4"/>
-      <repopackage name="libdvdread7"/>
+      <repopackage name="libdvdread8"/>
       <repopackage name="libdw1"/>
       <repopackage name="libe-book-0_1-1"/>
       <repopackage name="libebackend-1_2-10"/>
@@ -1869,7 +1868,6 @@
       <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgladeui-2-6"/>
       <repopackage name="libgle3"/>
-      <repopackage name="libGLEW2_1"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglib-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libglibmm-2_4-1"/>
@@ -2079,7 +2077,6 @@
       <repopackage name="libjson-c4"/>
       <repopackage name="libjson-c4-32bit" arch="x86_64"/>
       <repopackage name="libjson-glib-1_0-0"/>
-      <repopackage name="libjsoncpp22"/>
       <repopackage name="libjsonrpc-glib-1_0-1"/>
       <repopackage name="libjte1"/>
       <repopackage name="libJudy1"/>

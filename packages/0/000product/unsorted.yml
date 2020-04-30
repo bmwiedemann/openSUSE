@@ -898,6 +898,7 @@ unsorted:
   - avocado-common 
   - avocado-examples 
   - avocado-vt-common 
+  - avogadrolibs 
   - avogadrolibs-devel 
   - avr-libc 
   - avrdude 
@@ -1162,8 +1163,6 @@ unsorted:
   - bless-doc 
   - bliss 
   - bliss-devel 
-  - blitz-devel 
-  - blitz-doc 
   - blktests 
   - blktrace 
   - bloaty 
@@ -7348,6 +7347,7 @@ unsorted:
   - libGIMPACTUtils2_89 
   - libGLC-devel 
   - libGLC0 
+  - libGLEW2_1 
   - libGLEW2_1-32bit: [x86_64] 
   - libGLU1-32bit: [x86_64] 
   - libGLw-devel 
@@ -8158,6 +8158,7 @@ unsorted:
   - libavif-devel 
   - libavif2: [i586] 
   - libavif3: [x86_64] 
+  - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
   - libavtp-devel 
@@ -8258,7 +8259,6 @@ unsorted:
   - libbladeRF2-doc 
   - libblas3-32bit: [x86_64] 
   - libbliss-0_73 
-  - libblitz0 
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
   - libblockdev-devel 
@@ -8343,9 +8343,9 @@ unsorted:
   - libboost_program_options-devel 
   - libboost_program_options1_71_0-32bit: [x86_64] 
   - libboost_program_options1_71_0-devel 
+  - libboost_python-py2_7-1_71_0 
   - libboost_python-py2_7-1_71_0-32bit: [x86_64] 
   - libboost_python-py2_7-1_71_0-devel 
-  - libboost_python-py3-1_71_0 
   - libboost_python-py3-1_71_0-32bit: [x86_64] 
   - libboost_python-py3-1_71_0-devel 
   - libboost_python3-devel 
@@ -8878,7 +8878,7 @@ unsorted:
   - libdvdnav-devel 
   - libdvdnav4-32bit: [x86_64] 
   - libdvdread-devel 
-  - libdvdread7-32bit: [x86_64] 
+  - libdvdread8-32bit: [x86_64] 
   - libdw-devel 
   - libdw1-32bit: [x86_64] 
   - libdwarf-devel 
@@ -9971,6 +9971,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
+  - libjsoncpp22 
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
@@ -17739,7 +17740,6 @@ unsorted:
   - php7-imagick 
   - php7-intl 
   - php7-ldap 
-  - php7-libphutil 
   - php7-lzf 
   - php7-maxminddb 
   - php7-memcached 
@@ -18178,7 +18178,6 @@ unsorted:
   - procps-devel 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
-  - product-builder-plugin-openSUSE 
   - profanity 
   - profanity-mini 
   - profanity-standard 
@@ -18444,7 +18443,6 @@ unsorted:
   - python-hachoir-parser 
   - python-happybase-doc 
   - python-heatclient-doc 
-  - python-ibus 
   - python-idle 
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
@@ -18460,7 +18458,6 @@ unsorted:
   - python-libexe 
   - python-libkdumpfile 
   - python-libpff 
-  - python-libproxy 
   - python-libteam 
   - python-lmiwbem 
   - python-logutils-doc 
@@ -18676,7 +18673,6 @@ unsorted:
   - python2-python-dotenv 
   - python2-sanlock 
   - python2-setuptools 
-  - python2-shutilwhich 
   - python2-subliminal 
   - python2-suds-jurko 
   - python2-sushy 

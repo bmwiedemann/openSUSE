@@ -190,7 +190,6 @@
     <package name="autoyast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="avahi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="avogadrolibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="awesfx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="b43-fwcutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="baloo5-file" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1020,6 +1019,7 @@
     <package name="ipw-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="irda" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="irqbalance" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="irqbalance-ui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="irssi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="iscsiuio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iso-codes" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1416,7 +1416,6 @@
     <package name="libEMF1" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libFLAC++6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libFLAC8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libGLEW2_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libGLU1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libHX28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libHalf-2_4-24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1762,7 +1761,6 @@
     <package name="libavdevice58" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libavfilter7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat58" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libavogadrolibs-suse0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libavresample4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1792,7 +1790,7 @@
     <package name="libboost_iostreams1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libboost_locale1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libboost_program_options1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libboost_python-py2_7-1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_python-py3-1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libboost_regex1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libboost_thread1_71_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrasero-burn3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1931,7 +1929,7 @@
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libdvdread7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdvdread8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libe-book-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libebackend-1_2-10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2258,7 +2256,6 @@
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjson-c4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libjsoncpp22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libjte1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkaccounts1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
