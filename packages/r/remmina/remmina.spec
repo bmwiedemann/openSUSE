@@ -194,6 +194,9 @@ sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapp
 %build
 export LDFLAGS="-pie"
 export CFLAGS="%{optflags} -fPIE -pie"
+%ifarch aarch64
+export CFLAGS="$CFLAGS -fPIC"
+%endif
 
 %if 0%{?is_opensuse}
 %cmake

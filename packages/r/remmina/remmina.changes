@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:49:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-fPIC' on aarch64 to fix build
+
+-------------------------------------------------------------------
 Thu Apr 16 08:46:52 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.3
