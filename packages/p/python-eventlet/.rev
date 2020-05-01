@@ -378,4 +378,13 @@
     <comment></comment>
     <requestid>729871</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e5d932ac7c94992d1cf49be110b11280</srcmd5>
+    <version>0.25.2</version>
+    <time>1588324009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.2:
+  * green.ssl: redundant set_nonblocking() caused SSLWantReadError</comment>
+    <requestid>798871</requestid>
+  </revision>
 </revisionlist>
