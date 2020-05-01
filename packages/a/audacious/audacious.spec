@@ -22,7 +22,7 @@
 %define qt_soname 2
 %define tag_soname 3
 Name:           audacious
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
