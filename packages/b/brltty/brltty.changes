@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 22:04:54 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.1:
+  + See ChangeLog for changes. 
+- Rebased brltty-5.5-systemd-install.patch
+- api_version is now 0.8.0, and sover is now 0_8
+- Add brltty-gcc10.patch: fix build with -fno-common.
+- Adjust line to remove xsession file.
+- Remove brltty-alsa.patch
+
+-------------------------------------------------------------------
 Wed Oct  9 16:38:37 CEST 2019 - ro@suse.de
 
 - change udev rule again to also not automatically use the braille

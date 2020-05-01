@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl/tcl%{tcl_version}}
-%define api_version 0.7.0
-%define sover 0_7
+%define api_version 0.8.0
+%define sover 0_8
 %define soname libbrlapi%{sover}
 
 %define with_polkit 1
@@ -33,18 +33,18 @@
 %endif
 
 Name:           brltty
-Version:        6.0
+Version:        6.1
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
-Url:            https://brltty.app/
+URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Patch0:         brltty-5.5-systemd-install.patch
-Patch1:         brltty-alsa.patch
+Patch1:         brltty-gcc10.patch
 
 BuildRequires:  %{espeakdev}
 BuildRequires:  bison
@@ -346,7 +346,7 @@ install -m 644 Authorization/Polkit/org.a11y.brlapi.policy %{buildroot}%{_datadi
 %endif
 rm %{buildroot}%{_libdir}/libbrlapi.a
 rm %{buildroot}%{_libdir}/ocaml/brlapi/libbrlapi_stubs.a
-rm %{buildroot}/etc/X11/Xsession.d/60xbrlapi # TODO: install this somewhere?
+rm %{buildroot}/etc/X11/Xsession.d/90xbrlapi # TODO: install this somewhere?
 # fix missing executable bits
 test ! -x %{buildroot}%{_bindir}/brltty-config
 chmod a+x %{buildroot}%{_bindir}/brltty-config
@@ -429,6 +429,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %config(noreplace) %{_sysconfdir}/brltty.conf
 %{_sysconfdir}/brltty/
 %{_bindir}/brltty
+%{_bindir}/brltty-clip
 %{_bindir}/brltty-atb
 %{_bindir}/brltty-cldr
 %{_bindir}/brltty-config
@@ -447,7 +448,8 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_datadir}/polkit-1/actions/org.a11y.brlapi.policy
 %endif
 %{_libdir}/brltty/
-%{_libexecdir}/%{name}-systemd-wrapper
+%{_libexecdir}/brltty/
+%{_libexecdir}/%{name}/systemd-wrapper
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
 %{_udevdir}/rules.d/69-%{name}.rules

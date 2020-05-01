@@ -445,4 +445,18 @@
   level devices (bsc#1093378, bsc#1093455, bsc#1007652) (forwarded request 736701 from oertel)</comment>
     <requestid>736726</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f7d6fa2b1a13217a2caa9202118ac777</srcmd5>
+    <version>6.1</version>
+    <time>1588324067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1:
+  + See ChangeLog for changes. 
+- Rebased brltty-5.5-systemd-install.patch
+- api_version is now 0.8.0, and sover is now 0_8
+- Add brltty-gcc10.patch: fix build with -fno-common.
+- Adjust line to remove xsession file.
+- Remove brltty-alsa.patch</comment>
+    <requestid>798836</requestid>
+  </revision>
 </revisionlist>
