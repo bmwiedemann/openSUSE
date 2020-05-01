@@ -18,7 +18,7 @@
 
 
 Name:           cookiecutter
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
-# PATCH-FIX-UPSTEAM fix-click-711.patch -- compatibility with click 7.1.1
-Patch0:         fix-click-711.patch
 BuildRequires:  git
 BuildRequires:  python3-Jinja2 >= 2.7
 BuildRequires:  python3-binaryornot >= 0.2.0
@@ -36,6 +34,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-future >= 0.15.2
 BuildRequires:  python3-jinja2-time >= 0.1.0
 BuildRequires:  python3-poyo >= 0.1.0
+BuildRequires:  python3-python-slugify
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-whichcraft >= 0.4.0
 Requires:       git
@@ -45,6 +44,7 @@ Requires:       python3-click >= 7.0
 Requires:       python3-future >= 0.15.2
 Requires:       python3-jinja2-time >= 0.1.0
 Requires:       python3-poyo >= 0.1.0
+Requires:       python3-python-slugify
 Requires:       python3-requests >= 2.18.0
 Requires:       python3-whichcraft >= 0.4.0
 Requires(post): update-alternatives
@@ -85,7 +85,6 @@ This package contains the documentation for cookiecutter.
 %setup -q -n cookiecutter-%{version}
 sed -i "s/cookiecutter =/cookiecutter-%{py3_ver} =/" setup.py
 cp %{SOURCE1} docs
-%patch0 -p1
 
 %build
 python3 setup.py build
