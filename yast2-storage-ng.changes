@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:26:48 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- add x-initrd.attach option to crypttab if needed (bsc#1168465)
+- 4.3.3
+
+-------------------------------------------------------------------
 Thu Apr 23 14:32:38 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - update /etc/crypttab status properly (bsc#1118977)
