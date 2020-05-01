@@ -20,7 +20,7 @@
 # Tests natually require internet
 %bcond_with test
 Name:           python-pytest-check-links
-Version:        0.3.2
+Version:        0.3.4
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
