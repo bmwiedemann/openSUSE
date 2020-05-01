@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr 30 10:11:38 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- update to version 0.12.5 (boo#1170923)
+
+  * fixed build without patched Qt and integrate with Travis CI and AppVeyor
+  * **#1524**: **[qt]** partial fix for overlapping text when repeating headers/footers in table (qt#29)
+  * **#1914**: **[qt]** rotated elements not rendered on thead on second page and beyond
+  * **#1870**: fixed sending of duplicate cookies (#3257)
+  * **#2609**: add viewportSize property to C API (#3440)
+  * **#2711**: fix differences between "counting" and "printing" phases (causing crashes/blank pages)
+  * **#3001**: fix static builds not working with updated OpenSSL
+  * **#3090**: added support for SSL client certificates (#3206)
+  * **#3241**: fix for DPI regression on OS X (#3386)
+  * **#3363**: added error message for network errors related to non-media files
+  * **#3364**: new option `verbosity` to allow different log levels in both CLI and API
+  * **#3476**: fix application name in libwkhtmltox (#3878)
+  * **#3672**: **[qt]** fix broken PDF with fonts having spaces in name (qt#38)
+  * **#3680**: **[qt]** fix build on macOS 10.13
+  * **#3900**: **[qt]** properly encode URLs with unicode characters in links
+  * add outlineDepth property to C API (#3291)
+  * add wkhtmltoimage_destroy_global_settings method to C API (#3324)
+  * switch to self-hosted website and downloads as gna.org is shutting down (#3390)
+  * fix conversion of read-only form fields (#3550)
+  * flush stderr to allow reading progress updates (#3583)
+  * fix handling of errors for media URLs with query string (#3593)
+  * add setting to perform hostname lookup via proxy (#3628)
+  * correctly pass --copies to underlying QPrinter (#3747)
+  * minor documentation updates and fixing compiler warnings
+  * add various Qt patches to support OpenSSL 1.1 and latest MinGW/macOS environments
+  * removed build scripts in favor of separate repo (wkhtmltopdf/packaging)
+
+- Added a recommendation for 'xvfb-run' in order to make wkhtmltopdf working for users
+  that don't have X installed (like for server environments). xvfb-run can be set in front
+  of the actual wkhtmltopdf command
+
+- Remove wkhtmltopdf-0.12.4-unpatched-qt.patch
+  * This patch is no longer needed, because the changes are already in the
+    upstream release
+
+-------------------------------------------------------------------
 Fri May 18 12:39:21 UTC 2018 - jengelh@inai.de
 
 - Remove filler wording from description.
