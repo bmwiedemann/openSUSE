@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://www.openstack.org/
+URL:            http://www.openstack.org/
 Source:         https://files.pythonhosted.org/packages/source/g/glean/glean-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
@@ -62,6 +62,7 @@ notably Rackspace, use configuration provided via a configuration drive.
 
 %check
 %{python_expand rm -rf .testrepository
+export PYTHON=$python
 $python setup.py test
 }
 
