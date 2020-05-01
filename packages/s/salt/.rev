@@ -1384,4 +1384,36 @@ let build start it or we will get libvirt errors.
   * loop-fix-variable-names-for-until_no_eval.patch</comment>
     <requestid>791976</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2e0651f94226bdb32d1314fa1b4580ce</srcmd5>
+    <version>3000.2</version>
+    <time>1588324036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt release version 3000.2
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.2.html
+- Fix typo in 'minion_runner' for AESFuncs exposed methods
+- Added:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+- Removed:
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+
+- Update to Salt release version 3000.1
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.1.html
+- Fix CVE-2020-11651 and CVE-2020-11652 (bsc#1170595)
+- Do not require vendored backports-abc (bsc#1170288)
+- Fix partition.mkpart to work without fstype (bsc#1169800)
+- Added:
+  * fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
+  * remove-vendored-backports-abc-from-requirements.patch
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+- Modified:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * accumulated-changes-from-yomi-167.patch
+- Removed:
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch</comment>
+    <requestid>799271</requestid>
+  </revision>
 </revisionlist>

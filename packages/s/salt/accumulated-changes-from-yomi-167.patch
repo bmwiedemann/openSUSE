@@ -1,4 +1,4 @@
-From 63f28a891449889fa3d7139470266162b10e88f2 Mon Sep 17 00:00:00 2001
+From 951d2a385a40c5322155f952e08430e8402bfbde Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Tue, 22 Oct 2019 11:02:33 +0200
 Subject: [PATCH] Accumulated changes from Yomi (#167)
@@ -88,13 +88,13 @@ index f7158e0810..5f3b6d6855 100644
                          'install_date_time_t': None,
                      }]
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index 60914204b0..c4731f667a 100644
+index e722bfab5b..33d6a9507f 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1543,3 +1543,71 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
- 
-         self.assertIn('osfullname', os_grains)
-         self.assertEqual(os_grains.get('osfullname'), 'FreeBSD')
+@@ -1559,3 +1559,71 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+             assert len(info) == 2
+         assert all([x is not None for x in info])
+         assert all([isinstance(x, int) for x in info])
 +
 +    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
 +    def test_kernelparams_return(self):

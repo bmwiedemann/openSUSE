@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 30 13:24:35 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to Salt release version 3000.2
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.2.html
+
+- Fix typo in 'minion_runner' for AESFuncs exposed methods
+
+- Added:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+
+- Removed:
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+
+-------------------------------------------------------------------
+Thu Apr 30 12:30:04 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to Salt release version 3000.1
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.1.html
+
+- Fix CVE-2020-11651 and CVE-2020-11652 (bsc#1170595)
+- Do not require vendored backports-abc (bsc#1170288)
+- Fix partition.mkpart to work without fstype (bsc#1169800)
+
+- Added:
+  * fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
+  * remove-vendored-backports-abc-from-requirements.patch
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+
+- Modified:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * accumulated-changes-from-yomi-167.patch
+
+- Removed:
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 10:38:57 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Update to Salt version 3000 

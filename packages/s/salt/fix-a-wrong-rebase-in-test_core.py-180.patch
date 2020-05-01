@@ -1,4 +1,4 @@
-From 6418d9ebc3b269a0246262f79c0bab367e39cc52 Mon Sep 17 00:00:00 2001
+From 67830ea17ae1e87a6bffca2a9542788c200d7dd9 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@gmail.com>
 Date: Fri, 25 Oct 2019 15:43:16 +0200
 Subject: [PATCH] Fix a wrong rebase in test_core.py (#180)
@@ -44,12 +44,12 @@ index 68c43482d3..20950988d9 100644
                      # PermissionError is new to Python 3, but corresponds to the EACESS and
                      # EPERM error numbers. Use those instead here for PY2 compatibility.
 diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
-index c4731f667a..b4ed9379e5 100644
+index 33d6a9507f..7fa2436e58 100644
 --- a/tests/unit/grains/test_core.py
 +++ b/tests/unit/grains/test_core.py
-@@ -1544,51 +1544,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
-         self.assertIn('osfullname', os_grains)
-         self.assertEqual(os_grains.get('osfullname'), 'FreeBSD')
+@@ -1560,51 +1560,6 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         assert all([x is not None for x in info])
+         assert all([isinstance(x, int) for x in info])
  
 -    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
 -    def test_kernelparams_return(self):

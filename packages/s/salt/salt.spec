@@ -63,7 +63,7 @@
 %bcond_with    builddocs
 
 Name:           salt
-Version:        3000
+Version:        3000.2
 Release:        0
 Summary:        A parallel remote execution system
 License:        Apache-2.0
@@ -264,40 +264,42 @@ Patch90:      changed-imports-to-vendored-tornado.patch
 Patch91:      add-missing-_utils-at-loader-grains_func.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/25b4e3ea983b2606b2fb3d3c0e42f9840208bf84
 Patch92:      remove-deprecated-usage-of-no_mock-and-no_mock_reaso.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56215
-Patch93:      fix-for-unless-requisite-when-pip-is-not-installed.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/a8f0a15e4067ec278c8a2d690e3bf815523286ca
-Patch94:      fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56185
-Patch95:      fix-regression-in-service-states-with-reload-argumen.patch
+Patch93:      fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56369
-Patch96:      make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
+Patch94:      make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/221
-Patch97:      loader-invalidate-the-import-cachefor-extra-modules.patch
+Patch95:      loader-invalidate-the-import-cachefor-extra-modules.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/55814
-Patch98:      opensuse-3000-virt-defined-states-222.patch
+Patch96:      opensuse-3000-virt-defined-states-222.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/223
-Patch99:     fix-for-temp-folder-definition-in-loader-unit-test.patch
+Patch97:      fix-for-temp-folder-definition-in-loader-unit-test.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56392
-Patch100:     virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+Patch98:      virt._get_domain-don-t-raise-an-exception-if-there-i.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/226
-Patch101:     re-adding-function-to-test-for-root.patch
+Patch99:      re-adding-function-to-test-for-root.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/227
-Patch102:     loop-fix-variable-names-for-until_no_eval.patch
+Patch100:     loop-fix-variable-names-for-until_no_eval.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/226
-Patch103:     make-setup.py-script-to-not-require-setuptools-9.1.patch
+Patch101:     make-setup.py-script-to-not-require-setuptools-9.1.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/50453
 #                     https://github.com/saltstack/salt/commit/e20362f6f053eaa4144583604e6aac3d62838419
 # Can be dropped one pull/50453 is in released version.
-Patch104:     reintroducing-reverted-changes.patch
+Patch102:     reintroducing-reverted-changes.patch
 # PATCH_FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/b713d0b3031faadc17cd9cf09977ccc19e50bef7
-Patch105:     add-new-custom-suse-capability-for-saltutil-state-mo.patch
+Patch103:     add-new-custom-suse-capability-for-saltutil-state-mo.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56463
-Patch106:     fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
+Patch104:     fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/56491
-Patch107:     sanitize-grains-loaded-from-roster_grains.json.patch
+Patch105:     sanitize-grains-loaded-from-roster_grains.json.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/228
-Patch108:     adds-explicit-type-cast-for-port.patch
+Patch106:     adds-explicit-type-cast-for-port.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/53882
+Patch107:     fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/4f80e969e31247a4755d98d25f29b5d8b1b916c3
+Patch108:     remove-vendored-backports-abc-from-requirements.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/a5ef829408685d9e65eaa24bba40d221adffaa95
+Patch109:     fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -802,7 +804,7 @@ This package adds the standalone configuration for the Salt master in order to m
 
 %prep
 # %setup -q -n salt-%{version}
-%setup -q -n salt-3000-suse
+%setup -q -n salt-3000.2-suse
 cp %{S:1} .
 cp %{S:5} ./.travis.yml
 %patch1 -p1
@@ -913,6 +915,7 @@ cp %{S:5} ./.travis.yml
 %patch106 -p1
 %patch107 -p1
 %patch108 -p1
+%patch109 -p1
 
 %build
 %if 0%{?build_py2}
