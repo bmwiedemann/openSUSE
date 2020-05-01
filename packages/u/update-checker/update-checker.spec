@@ -1,7 +1,7 @@
 #
 # spec file for package update-checker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,20 @@
 #
 
 
-%if 0%{?is_opensuse}
-%define service_list update-checker.service update-checker.timer
-%else
 %define service_list update-checker-migration.service update-checker.service update-checker-migration.timer update-checker.timer
-%endif
 
 %define rb_build_versions %{rb_default_ruby}
 %define rb_build_abi      %{rb_default_ruby_abi}
 %define rb_suffix         %{rb_default_ruby_suffix}
 
 Name:           update-checker
-Version:        1.0+git20181210.70430e2
+Version:        1.1+git20200430.2de8b55
 Release:        0
 Summary:        Scripts to check for new updates and migration targets
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-Url:            https://github.com/thkukuk/update-checker
+URL:            https://github.com/thkukuk/update-checker
 Source:         update-checker-%{version}.tar.xz
-Patch:          update-checker.conf-CaaSP.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -42,14 +37,10 @@ BuildRequires:  docbook_4
 BuildRequires:  libxslt-tools
 BuildRequires:  python3
 BuildRequires:  python3-lxml
-Requires:       perl-Config-IniFiles
-Requires:       perl-XML-Twig
-# for system service macros
-PreReq:         coreutils
-%if !0%{?is_opensuse}
 Requires:       %{rubygem inifile >= 3.0.0}
 Requires:       %{rubygem suse-connect >= 0.3.11}
-%endif
+Requires:       perl-Config-IniFiles
+Requires:       perl-XML-Twig
 BuildArch:      noarch
 
 %description
@@ -59,9 +50,6 @@ for new migration targets.
 
 %prep
 %setup -q
-%if 0%{?is_susecaasp}
-%patch -p0
-%endif
 
 %build
 ./autogen.sh
@@ -70,11 +58,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-%if 0%{?is_opensuse}
-rm %{buildroot}/usr/lib/systemd/system/update-checker-migration.*
-rm %{buildroot}/usr/sbin/update-checker-migration
-rm %{buildroot}/usr/share/man/man8/update-checker-migration.*
-%endif
 
 %pre
 %service_add_pre %{service_list}
@@ -93,9 +76,7 @@ rm %{buildroot}/usr/share/man/man8/update-checker-migration.*
 %config /etc/update-checker.conf
 %{_unitdir}
 %{_sbindir}/update-checker
-%if !0%{?is_opensuse}
 %{_sbindir}/update-checker-migration
-%endif
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 

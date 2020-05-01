@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 30 13:31:39 UTC 2020 - kukuk@suse.de
+
+- Update to version 1.1+git20200430.2de8b55:
+  * Version 1.1: systemd paths and EXTRA_DIST fixes
+- Cleanup specfile, don't differentiate between openSUSE and SLE
+- Drop update-checker.conf-CaaSP.patch
+
+-------------------------------------------------------------------
 Wed Jun  5 10:38:51 CEST 2019 - kukuk@suse.de
 
 - Add coreutils PreRequires for systemd service macros

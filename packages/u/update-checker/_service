@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">1.0</param>
-    <param name="versionformat">1.0+git%cd.%h</param>
+    <param name="version">1.1</param>
+    <param name="versionformat">1.1+git%cd.%h</param>
     <param name="url">git://github.com/thkukuk/update-checker.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
