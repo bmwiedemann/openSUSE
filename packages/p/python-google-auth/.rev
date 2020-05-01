@@ -103,4 +103,17 @@
   * pytest5.patch</comment>
     <requestid>717466</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3054a04d31ac2ac658e76d56f51182d4</srcmd5>
+    <version>1.14.1</version>
+    <time>1588323981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.1:
+  * Many bugixes all around
+- Remove no longer needed patch:
+  * pytest5.patch
+- Update the dependencies to match up setup.py and what upstream
+  really requires</comment>
+    <requestid>798566</requestid>
+  </revision>
 </revisionlist>

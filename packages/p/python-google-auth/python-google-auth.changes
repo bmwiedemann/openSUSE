@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:49:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.14.1:
+  * Many bugixes all around
+- Remove no longer needed patch:
+  * pytest5.patch
+- Update the dependencies to match up setup.py and what upstream
+  really requires
+
+-------------------------------------------------------------------
 Mon Jul 22 08:06:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build with pytest5:
