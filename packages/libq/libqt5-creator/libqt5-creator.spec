@@ -109,6 +109,8 @@ sed -i 's,libexec/qtcreator,$$IDE_LIBRARY_BASENAME/qtcreator/libexec,g' qtcreato
 # https://bugzilla.opensuse.org/962650
 sed -i s,libexec/qtcreator,%{_lib}/qtcreator/libexec,g src/plugins/coreplugin/icore.cpp
 
+export QBS_INSTALL_DIR=%{_bindir}
+
 opts="IDE_LIBRARY_BASENAME=%{_lib}"
 opts="$opts CONFIG+=use_system_botan"
 

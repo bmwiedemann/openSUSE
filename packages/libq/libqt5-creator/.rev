@@ -727,4 +727,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
 - Don't build the bundled Qbs anymore</comment>
     <requestid>796783</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>50032eaf35817c8766d7a9ffafb43691</srcmd5>
+    <version>4.12.0</version>
+    <time>1588324510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799277</requestid>
+  </revision>
 </revisionlist>

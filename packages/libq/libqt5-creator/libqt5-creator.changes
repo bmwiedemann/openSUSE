@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 08:48:27 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Set QBS_INSTALL_DIR to also build the qbsprojectmanager plugin
+
+-------------------------------------------------------------------
 Thu Apr 23 11:37:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 4.12.0:
