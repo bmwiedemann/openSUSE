@@ -1,7 +1,7 @@
 #
 # spec file for package python-incremental
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Version:        17.5.0
 Release:        0
 Summary:        Library that versions your Python projects
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/twisted/incremental
 Source:         https://files.pythonhosted.org/packages/source/i/incremental/incremental-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -63,7 +62,9 @@ Incremental is a small library that versions your Python projects.
 
 %if %{with test}
 %check
-%pytest
+# test_prereleaseAttributeDeprecated - same as bellow
+# test_prereleaseDeprecated - uses deprecated pytest behaviour removed with pytest 5.4
+%pytest -k 'not test_prereleaseAttributeDeprecated and not test_prereleaseDeprecated'
 %endif
 
 %if !%{with test}
