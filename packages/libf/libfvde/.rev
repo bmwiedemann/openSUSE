@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>695357</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3e2fc162200d1add3f93e0373bd647a9</srcmd5>
+    <version>0~20190104</version>
+    <time>1588324300</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799057</requestid>
+  </revision>
 </revisionlist>

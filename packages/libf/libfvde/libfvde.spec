@@ -89,17 +89,6 @@ See libfvde for additional details.
 This package contains libraries and header files for developing
 applications that want to make use of libfvde.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libfvde
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
-Requires:       %{lname} = %{version}
-BuildRequires:  pkgconfig(python2)
-Obsoletes:      python-%{name}
-
-%description -n python2-%{name}
-This packinge provides Python 2 bindings for libfvde
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libfvde
 License:        LGPL-3.0-or-later
@@ -115,7 +104,7 @@ This packinge provides Python 3 bindings for libfvde
 %setup -q -n libfvde-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -150,12 +139,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libfvde.so
 %{_libdir}/pkgconfig/libfvde.pc
 %{_mandir}/man3/libfvde.3*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING
-%{python_sitearch}/pyfvde.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)
