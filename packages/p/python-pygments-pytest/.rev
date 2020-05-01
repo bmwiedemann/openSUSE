@@ -42,4 +42,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>787375</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2f7a5e5e3854436dfea8e99d04346e11</srcmd5>
+    <version>2.0.0</version>
+    <time>1588324025</time>
+    <user>dimstar_suse</user>
+    <comment>- Switching off the failing coloring tests, it looks like
+  gh#asottile/pygments-pytest#18, but not completely certain
+  about it.</comment>
+    <requestid>798966</requestid>
+  </revision>
 </revisionlist>
