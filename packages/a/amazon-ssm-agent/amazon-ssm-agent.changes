@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:03:11 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.978.0 (2020-04-08) (bsc#1170744)
+  + Stop pty on receiving TerminateSession request
+  + Add support for Debian arm64 architecture
+  + Refactoring session log generation logic
+- Update to 2.3.930.0  (2020-03-17)
+  + Bug fix for CloudWatch agent version showing twice in Inventory console
+  + Bug fix for retrieving minor version for CentOS7
+  + Add snap appData collection for inventory in ubuntu 18
+  + Add validation for contents of os release files
+  + Add retry for fingerprint generation
+- Update to 2.3.871.0 (2020-02-20)
+  + Various bug fix for SSM Agent
+- Update to 2.3.842.0 (2020-01-29)
+  + Bug fix for updating document state file prior agent reboot
+  + Add support to restart agent after SIGPIPE exit status
+- Update to 2.3.814.0 (2020-01-16)
+  + Bug fix for metadata service V2
+  + Update Golang version 1.12 for travis
+  + Optimize session manager retry logic 
+- Update to 2.3.786.0 (2019-12-19)
+  + Add support for Oracle Linux v7.5 and v7.7
+  + Bug fix for Inventory data provider to support special characters
+  + Bug fix for SSM MDS service name
+- Update to 2.3.772.0 (2019-12-13)
+  + Upgrade AWS SDK
+  + Add logging for fingerprint generation
+- Update to 2.3.760.0 (2019-11-15)
+  + Session manager supports handling of Task metadata
+- Update to 2.3.758.0 (2019-11-11)
+  + Add support to update SSM Distributor packages in place
+- Update to 2.3.756.0 (2019-11-05)
+  + Terminate port forwarding session on receiving TerminateSession flag
+  + Bug fix to reload SSM client if region has not been initialize correctly
+  + Bug fix for retrieval of user groups on Linux 
+- Update to 2.3.722.0 (2019-10-11)
+  + Bug fix for the delay when registering non-EC2 on-prem instances
+  + Bug fix for missing ACL when uploading logs to S3 buckets
+  + Upgrade GoLang version from 1.9 to 1.12
+- Update to 2.3.714.0 (2019-09-26)
+  + For port forwarding session, close server connection when client drops it's connection
+  + Bug fix for missing condition of rules from inventory registry
+  + Update service domain information fetch logic from EC2 Metadata
+- Update to 2.3.707.0 (2019-09-11)
+  + Bug fix for characters dropping from session manager shell output 
+  + Bug fix for session manager freezing caused by non utf8 character
+  + Switch the request protocol order for getting S3 Header
+  + Keep port forwarding session open until session is terminated
+- Update to 2.3.701.0 (2019-08-21)
+  + Send platform type information in controlChannel input 
+- Update to 2.3.687.0 (2019-08-05)
+  + Bug fix for runPowershellScript plugin on linux platform
+  + Add support for document 2.x version to ssm-cli 
+- Update to 2.3.680.0 (2019-07-24)
+  + Added a new Inventory gatherer AWS:BillingInfo which will gather the billing product ids for LicenseIncluded and Marketplace instance
+- Update to 2.3.672.0 (2019-07-09)
+  + Add Port plugin for SSH/SCP
+  + Add support for Session Manager RunAs functionality on Linux platform
+- Update to 2.3.668.0 (2019-07-01)
+  + Add Session Manager InteractiveCommands plugin	
+  + Bug fix for log formatting issue for session manager
+- Update to 2.3.662.0 (2019-06-19)
+  + Bug fix for Session Manager when handling line endings on Windows platform
+  + Bug fix for token validation for aws:downloadContent plugin
+  + Check if log group exists before uploading Session Manager logs to CloudWatch
+  + Bug fix for broken S3 urls when using custom documents
+- Update to 2.3.634.0 (2019-05-28)
+  + Disable appconfig to load credential from specific profile path, add EC2 credentials as the default fallback
+  + Remove sudoers file creation logic if ssm-user already exists
+  + Enable supplementary groups for ssm-user on Linux
+- Update to 2.3.612.0 (2019-05-08)
+  + Bug fix for UTF-8 encoded issue caused by locale activation on Ubuntu 16.04 instance
+  + Refactor ssm-user creation logic
+  + Bug fix for reporting IP address with wrong network interface
+  + Update configure package document arn pattern
+- Update to 2.3.542.0 (2019-04-18)
+  + Bug fix for on-premises instance registration in CN region
+- Update to 2.3.539.0 (2019-04-04)
+  + Add support for further encryption of session data using AWS KMS
+  + Bug fix for excessive instance-id fetching by document workers
+- Update to 2.3.479.0 (2019-03-06)
+  + Bug fix for downloading content failure caused by wrong S3 endpoint
+  + Bug fix for reboot failure caused by session manager panic
+  + Bug fix for session manager shell output dropping character
+  + Bug fix for mgs endpoint configuration consistency
+- Update to 2.3.444.0 (2019-02-10)
+  + Updates to UpdateInstanceInformation call, Windows initialization
+- Add patch to remove unused import
+  + remove-unused-import.patch
+- Refresh patches for new version
+  + fix-version.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 12:02:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

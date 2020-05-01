@@ -17,7 +17,7 @@
 
 
 Name:           amazon-ssm-agent
-Version:        2.3.415.0
+Version:        2.3.978.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Patch1:         fix-config.patch
 Patch2:         fix-version.patch
+Patch3:         remove-unused-import.patch
 BuildRequires:  go >= 1.7.4
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
@@ -52,6 +53,7 @@ environment that are configured for Systems Manager.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -rf vendor/src/github.com/aws/aws-sdk-go/vendor/
