@@ -72,20 +72,6 @@ libsigscan is a library for binary signature scanning
 This subpackage contains libraries and header files for developing
 applications that want to make use of libpff.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libsigscan
-Group:          Development/Languages/Python
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(python2)
-Requires:       %{lname} = %{version}
-Requires:       python2
-Provides:       pysigscan = %{version}
-
-%description -n python2-%{name}
-Python 2 bindings for libsigscan.
-
-libsigscan is a library for scanning for binary signatures.
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libsigscan
 Group:          Development/Languages/Python
@@ -104,7 +90,7 @@ libsigscan is a library for scanning for binary signatures.
 %setup -q -n libsigscan-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -134,9 +120,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libsigscan.so
 %{_libdir}/pkgconfig/libsigscan.pc
 %{_mandir}/man3/libsigscan.3%{?ext_man}
-
-%files -n python2-%{name}
-%{python_sitearch}/pysigscan.so
 
 %files -n python3-%{name}
 %{python3_sitearch}/pysigscan.so

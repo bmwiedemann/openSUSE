@@ -49,4 +49,13 @@
 Required by recent python-dfVFS release</comment>
     <requestid>769396</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3be3a9ed8b3a771a27cc03ca75597272</srcmd5>
+    <version>0~20191221</version>
+    <time>1588324332</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799062</requestid>
+  </revision>
 </revisionlist>
