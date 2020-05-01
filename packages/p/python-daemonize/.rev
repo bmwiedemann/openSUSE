@@ -33,4 +33,13 @@
 - Make sure tests are executed</comment>
     <requestid>682476</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a8fe553a302801bf6b99df67b5e3349e</srcmd5>
+    <version>2.5.0</version>
+    <time>1588324390</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix test running without python2:
+  * no-python2.patch</comment>
+    <requestid>799146</requestid>
+  </revision>
 </revisionlist>

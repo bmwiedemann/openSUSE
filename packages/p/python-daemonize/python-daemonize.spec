@@ -1,7 +1,7 @@
 #
 # spec file for package python-daemonize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Version:        2.5.0
 Release:        0
 Summary:        Python module to launch code as a daemon process
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/thesharp/daemonize
 Source:         https://github.com/thesharp/daemonize/archive/v%{version}.tar.gz
+Patch0:         no-python2.patch
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,6 +39,7 @@ daemonize is a library for writing system daemons in Python.
 
 %prep
 %setup -q -n daemonize-%{version}
+%patch0 -p1
 
 %build
 %python_build

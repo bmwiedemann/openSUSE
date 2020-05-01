@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:54:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix test running without python2:
+  * no-python2.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 14:00:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.0:
