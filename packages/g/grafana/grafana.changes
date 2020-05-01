@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 28 10:00:58 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Update to version 6.7.3
+  - This version fixes bsc#1170557 and its corresponding CVE-2020-12245
+  - Admin: Fix Synced via LDAP message for non-LDAP external users. #23477, @alexanderzobnin
+  - Alerting: Fixes notifications for alerts with empty message in Google Hangouts notifier. #23559, @hugohaggmark
+  - AuthProxy: Fixes bug where long username could not be cached.. #22926, @jcmcken
+  - Dashboard: Fix saving dashboard when editing raw dashboard JSON model. #23314, @peterholmberg
+  - Dashboard: Try to parse 8 and 15 digit numbers as timestamps if parsing of time range as date fails. #21694, @jessetan
+  - DashboardListPanel: Fixed problem with empty panel after going into edit mode (General folder filter being automatically added) . #23426, @torkelo
+  - Data source: Handle datasource withCredentials option properly. #23380, @hvtuananh
+  - Security: Fix annotation popup XSS vulnerability. #23813, @torkelo
+  - Server: Exit Grafana with status code 0 if no error. #23312, @aknuds1
+  - TablePanel: Fix XSS issue in header column rename (backport). #23814, @torkelo
+  - Variables: Fixes error when setting adhoc variable values. #23580, @hugohaggmark
+
+-------------------------------------------------------------------
+Mon Apr 06 12:00:17 UTC 2020 - egotthold@suse.com
+
+- Update to version 6.7.2:
+  (see installed changelog for the full list of changes)
+  -  BackendSrv: Adds config to response to fix issue for external plugins that used this property . #23032, @torkelo
+  -  Dashboard: Fixed issue with saving new dashboard after changing title . #23104, @dprokop
+  -  DataLinks: make sure we use the correct datapoint when dataset contains null value.. #22981, @mckn
+  -  Plugins: Fixed issue for plugins that imported dateMath util . #23069, @mckn
+  -  Security: Fix for dashboard snapshot original dashboard link could contain XSS vulnerability in url. #23254, @torkelo
+  -  Variables: Fixes issue with too many queries being issued for nested template variables after value change. #23220, @torkelo
+  -  Plugins: Expose promiseToDigest. #23249, @torkelo
+  -  Reporting (Enterprise): Fixes issue updating a report created by someone else
+
+-------------------------------------------------------------------
 Fri Mar 20 20:02:56 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.7.1:

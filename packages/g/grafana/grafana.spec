@@ -26,7 +26,7 @@
 %endif
 
 Name:           grafana
-Version:        6.7.1
+Version:        6.7.3
 Release:        0
 Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
 License:        Apache-2.0
