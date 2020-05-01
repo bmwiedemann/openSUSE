@@ -51,7 +51,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.3.4~git0.3422d6574
+Version:        1.4.4.1~git0.2333d75d5
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -397,6 +397,7 @@ exit 0
 %dir %{_sysconfdir}/dirsrv/config
 %dir %{_sysconfdir}/dirsrv/schema
 %{_libdir}/dirsrv/libns-dshttpd-*.so
+%{_libdir}/dirsrv/librewriters.so
 %if ! %{with lib389}
 %{_libdir}/dirsrv/perl/*.pm
 %endif
@@ -457,7 +458,7 @@ exit 0
 # TODO: audit bug running https://bugzilla.opensuse.org/show_bug.cgi?id=1111564
 # This also needs a lot more work on the service file
 #attr(750,root,dirsrv) #caps(CAP_NET_BIND_SERVICE=pe) #{_sbindir}/ns-slapd
-%verify(not caps) %attr(755,root,dirsrv) %{_sbindir}/ns-slapd
+%verify(not caps) %attr(755,root,root) %{_sbindir}/ns-slapd
 %if ! %{with lib389}
 %{_sbindir}/bak2db
 %{_sbindir}/bak2db.pl

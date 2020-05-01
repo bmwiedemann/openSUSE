@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Apr 23 00:36:32 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.1~git0.2333d75d5:
+  * Bump version to 1.4.4.1
+  * Ticket 51024 - syncrepl_entry callback does not contain attributes added by postoperation plugins
+  * Ticket 50877 - task to run tests of csn generator
+  * Issue 49731 - undo db_home_dir under /dev/shm/dirsrv for now
+  * Issue: 48055 - CI test - automember_plugin(part3)
+  * Ticket 51035 - Heavy StartTLS connection load can randomly fail with err=1
+  * Issue 51031 UI - transition between two instances needs improvement
+
+-------------------------------------------------------------------
+Tue Apr 21 01:59:58 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.0~git0.5fc54f434:
+  * Bump version to 1.4.4
+  * Issue 50933 - 10rfc2307compat.ldif is not ready to set used by default
+  * Ticket 50931 - RFE AD filter rewriter for ObjectCategory
+  * Issue 51016 - Fix memory leaks in changelog5_init and perfctrs_init
+  * Ticket 50980 - RFE extend usability for slapi_compute_add_search_rewriter and slapi_compute_add_evaluator
+  * Ticket 51008 - dbhome in containers
+  * Issue 50875 - Refactor passwordUserAttributes's and passwordBadWords's code
+  * Ticket 51014 - slapi_pal.c possible static buffer overflow
+  * Issue 50545 - remove dbmon "incr" option from arg parser
+  * Issue 50545 - Port dbmon.sh to dsconf
+  * Issue 51005 - AttributeUniqueness plugin's DN parameter should not have a default value
+  * Issue 49731 - Fix additional issues with setting db home directory by default
+  * Issue 50337 - Replace exec() with setattr()
+  * Ticket 50905 - intermittent SSL hang with rhds
+  * Issue 50952 - SSCA lacks basicConstraint:CA
+  * Issue 50640 - Database links: get_monitor() takes 1 positional argument but 2 were given
+  * Issue 50869 - Setting nsslapd-allowed-sasl-mechanisms truncates the value
+
+-------------------------------------------------------------------
+Mon Apr 06 04:03:43 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.3.5~git0.fc95cf3ad:
+  * Bump version to 1.4.3.5
+  * Issue 50994 - Fix latest UI bugs found by QE
+  * Ticket 50933 - rfc2307compat.ldif
+  * Issue 50337 - Replace exec() with setattr()
+  * Issue 50984 - Memory leaks in disk monitoring
+  * Issue 50984 - Memory leaks in disk monitoring
+  * Issue 49731 - dscreate fails in silent mode because of db_home_dir
+  * Issue 50975 - Revise UI branding with new minimized build
+  * Issue 49437 - Fix memory leak with indirect COS
+  * Issue 49731 - Do not add db_home_dir to template-dse.ldif
+  * Issue 49731 - set and use db_home_directory by default
+  * Ticket 50971 - fix BSD_SOURCE
+  * -n option of dbverify does not work
+  * Issue 50952- SSCA lacks basicConstraint:CA
+  * Issue 50976 - Clean up Web UI source directory from unused files
+  * Issue 50955 - Fix memory leaks in chaining plugin(part 2)
+  * Issue 50966 - UI - Database indexes not using typeAhead correctly
+  * Issue 50974 - UI - wrong title in "Delete Suffix" popup
+  * Issue 50972 - Fix cockpit plugin build
+  * Issue 49761 - Fix CI test suite issues
+  * Issue 50971 - Support building on FreeBSD.
+  * Issue 50960 - [RFE] Advance options in RHDS Disk Monitoring Framework
+  * Issue 50800 - wildcards in rootdn-allow-ip attribute are not accepted
+  * Issue 50963 - We should bundle *.min.js files of Console
+  * Issue: 50860 - Port Password Policy test cases from TET to python3 Password grace limit section.
+  * Issue: 50860 - Port Password Policy test cases from TET to python3 series of bugs Port final
+  * Issue 50954 - buildnum.py - fix date formatting issue
+
+-------------------------------------------------------------------
 Tue Mar 17 00:42:30 UTC 2020 - 389-ds-maintainer@suse.de
 
 - Remove 0001-fix-cargo-build.patch as it has been included upstream
