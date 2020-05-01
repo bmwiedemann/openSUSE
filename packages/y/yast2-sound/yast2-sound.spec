@@ -17,7 +17,7 @@
 
 
 Name:           yast2-sound
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        YaST2 - Sound Configuration
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  alsa-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  kernel-default
 BuildRequires:  libtool
 BuildRequires:  perl-XML-Writer
 BuildRequires:  ruby
@@ -38,6 +37,11 @@ BuildRequires:  yast2
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-testsuite
+
+# workaround for OS builds, see jsc#SLE-11862
+%ifnarch i586
+BuildRequires:  kernel-default
+%endif
 
 # Fixed handling of Kernel modules loaded on boot
 Requires:       alsa
