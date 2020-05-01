@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:33:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.3.1:
+  * Fix to work when pytest-xdist is not installed or active.
+  * Add pytest-xdist support.
+
+-------------------------------------------------------------------
 Thu Feb 20 07:14:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.2.1:

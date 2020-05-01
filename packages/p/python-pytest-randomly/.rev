@@ -65,4 +65,14 @@
   * Update MANIFEST.in so tests are included in the sdist tarball again.</comment>
     <requestid>777569</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0ec872c8e7eb890ac73661ffeef13f6</srcmd5>
+    <version>3.3.1</version>
+    <time>1588324138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1:
+  * Fix to work when pytest-xdist is not installed or active.
+  * Add pytest-xdist support.</comment>
+    <requestid>798133</requestid>
+  </revision>
 </revisionlist>
