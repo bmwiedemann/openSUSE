@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:53:15 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.4.0
+  * added sleep mode inhibition plugin
+  * added separate ListenBrainz submission plugin
+  * added feature to auto-hide empty service menus
+  * added option to disable two passes for equalizer
+  * added fast mute function for most output plugins
+  * added shared CUE parser
+  * added feature to transit between playlists
+  * added optimizations for flac plugin
+  * added feature to select playlist format from the file dialog
+  * added '--pl-next' and '--pl-prev' command line options
+  * added SOCKS5 proxy support
+  * added feature to display average bitrate
+  * added average bitrate displaying for shoutcast/icecast
+    streams
+  * added Ogg Opus support in the ReplayGain scanner
+  * added feature to merge different tag types in the mpeg plugin
+  * added feature to start command on application startup/exit
+  * added 'make docs' build target
+  * added big endian support formats in the PulseAudio plugin
+  * added feature to write singe file in the file writer plugin
+  * improved qsui plugin:
+    + added feature to override track background color
+    + added scope visualization
+    + added feature to reset visualization colors
+    + added waveform seek bar
+    + added alternate analyzer appearance
+    + using gradients between analyzer colors
+    + improved status bar
+  * improved ffmpeg plugin:
+    + added opus bitrate issue workaround
+    + added new implementation of the read function
+    + added embedded CUE sheet support (for Monkey's Audio
+      format)
+    + added format name displaying
+    + added DSD (Direct Stream Digital) support
+    + changed minimal ffmpeg version to 3.2
+    + removed libav support
+  * improved lyrics plugin:
+    + added feature to save window geometry
+    + added multiple lyrics providers support (based on Ultimare
+      Lyrics plugin)
+  * improved cdaudio plugin:
+    + show more metadata
+    + added KDE Solid integration
+  * improved remote playlists support
+  * improved m3u support
+  * using qsui by default for Wayland sessions
+  * fixed API documentation
+  * updated Portuguese, Dutch, Polish, Galician, Spanish,
+    Russian, Ukrainian, French, Indonesian, Greek, Italian and
+    German translations
+
+- Refreshed qmmp-fix_cdda_version.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 19:35:13 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.3.7:

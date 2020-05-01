@@ -17,11 +17,11 @@
 
 
 %define sover   1
-%define mver    1.3
+%define mver    1.4
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.3.7
+Version:        1.4.0
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -133,10 +133,7 @@ This program is an audio-player, written with help of Qt library.
 Development files for libqmmp.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -169,6 +166,7 @@ rm -rf %{buildroot}/%{_datadir}/icons/hicolor/56x56
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/solid
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}*.so.%{sover}*
