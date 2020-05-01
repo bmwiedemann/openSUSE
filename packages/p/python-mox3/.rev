@@ -129,4 +129,18 @@
     <comment></comment>
     <requestid>760365</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fdc0e193fe7253b5c56155f73b79490</srcmd5>
+    <version>1.0.0</version>
+    <time>1588323933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * tox.ini &amp; Setup.cfg cleanups
+  * Drop python 2.7 support and testing
+  * Switch to Ussuri jobs
+  * Blacklist sphinx 2.1.0 (autodoc bug)
+  * Update the constraints url
+  * Remove flake8 from the test-requirements</comment>
+    <requestid>797837</requestid>
+  </revision>
 </revisionlist>

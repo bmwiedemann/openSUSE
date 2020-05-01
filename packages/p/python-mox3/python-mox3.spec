@@ -1,7 +1,7 @@
 #
 # spec file for package python-mox3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-mox3
-Version:        0.28.0
+Version:        1.0.0
 Release:        0
 Summary:        An unofficial port of the Google mox framework to Python 3
 License:        Apache-2.0
@@ -88,9 +89,7 @@ cp -r doc/build/html %{buildroot}%{_docdir}/%{name}
 %fdupes %{buildroot}%{_docdir}/%{name}/html
 
 %check
-%{python_expand rm -rf .testrepository
-stestr-%{$python_bin_suffix} run
-}
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license COPYING.txt
