@@ -98,4 +98,13 @@ part of summer 2013 libyal refresh for opensuse 2013</comment>
 </comment>
     <requestid>793705</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7f591cc07a90bb4be2014af5576473d4</srcmd5>
+    <version>0~20191221</version>
+    <time>1588324295</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule
+</comment>
+    <requestid>799056</requestid>
+  </revision>
 </revisionlist>
