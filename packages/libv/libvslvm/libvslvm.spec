@@ -85,19 +85,6 @@ See libvslvm for additional details.
 This package contains libraries and header files for developing
 applications that want to make use of libvslvm.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libvslvm
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python
-BuildRequires:  pkgconfig(python2)
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < 20160110
-
-%description -n python2-%{name}
-This packinge provides Python 2 bindings for libvslvm
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libvslvm
 License:        LGPL-3.0-or-later
@@ -113,7 +100,7 @@ This packinge provides Python 3 bindings for libvslvm
 %setup -q -n libvslvm-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -151,12 +138,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libvslvm.so
 %{_libdir}/pkgconfig/libvslvm.pc
 %{_mandir}/man3/libvslvm.3*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS 
-%license COPYING
-%{python_sitearch}/pyvslvm.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)
