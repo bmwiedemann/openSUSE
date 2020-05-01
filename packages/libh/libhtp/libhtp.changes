@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 29 18:33:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.33
+  * compression bomb protection
+  * memory handling issue found by Oss-Fuzz
+  * improve handling of anomalies in traffic
+
+-------------------------------------------------------------------
 Sun Dec 15 10:23:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.32
