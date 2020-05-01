@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 26 13:09:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3
+  * fix Content-Type header parsing
+
+-------------------------------------------------------------------
+Sun Apr 19 18:50:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  * fix ualpn socket type bug on uClibc based systems
+  * fix configure.ac MAP_ANON cross-compilation test
+
+-------------------------------------------------------------------
 Fri Apr 17 19:51:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1
