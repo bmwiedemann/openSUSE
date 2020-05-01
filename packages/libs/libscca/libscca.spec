@@ -82,20 +82,6 @@ Requires:       %{lname} = %{version}
 This subpackage contains libraries and header files for developing
 applications that want to make use of %{name}.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libscca
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(python2)
-Requires:       %{lname} = %{version}
-Requires:       python
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} <= 20170105
-
-%description -n python2-%{name}
-Python 2 binding for libscca, which can access the Windows Prefetch File (PF) format.
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libscca
 License:        LGPL-3.0-or-later
@@ -112,7 +98,7 @@ Python 3 binding for libscca, which can access the Windows Prefetch File (PF) fo
 %setup -q -n libscca-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
 %install
@@ -137,11 +123,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libscca.so
 %{_libdir}/pkgconfig/libscca.pc
 %{_mandir}/man3/libscca.3%{?ext_man}
-
-%files -n python2-%{name}
-%license COPYING
-%doc AUTHORS README
-%{python_sitearch}/pyscca.so
 
 %files -n python3-%{name}
 %license COPYING
