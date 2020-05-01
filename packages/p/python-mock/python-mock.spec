@@ -1,7 +1,7 @@
 #
 # spec file for package python-mock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,9 +26,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
 Name:           python-mock%{psuffix}
-Version:        3.0.5
+Version:        4.0.2
 Release:        0
 Summary:        A Python Mocking and Patching Library for Testing
 License:        BSD-2-Clause
@@ -37,21 +36,15 @@ URL:            http://www.voidspace.org.uk/python/mock/
 # no tests in sdis
 # Source:         https://files.pythonhosted.org/packages/source/m/mock/mock-%{version}.tar.gz
 Source:         https://github.com/testing-cabal/mock/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 17.1}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9
 %if %{with test}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-funcsigs
-%endif
-%ifpython2
-Requires:       python-funcsigs >= 1
-%endif
+
 %python_subpackages
 
 %description

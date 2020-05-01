@@ -226,4 +226,12 @@
  * more in CHANGELOG.rst</comment>
     <requestid>703239</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e9ff1b67eadb4aa10ccda8cd81633410</srcmd5>
+    <version>4.0.2</version>
+    <time>1588323886</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>794560</requestid>
+  </revision>
 </revisionlist>
