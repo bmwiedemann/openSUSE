@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:53:41 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200430.e8d954e:
+  * Bump to version 1.1.0.
+  * Remove unused YYTEXT_POINTER.
+  * README: remove a section about temporary directories.
+  * Use console for markdown parts.
+  * Add usage example (#18).
+  * Docker: Do not depend on delta.
+  * Allow skipping of passes that miss a prerequisite (#17).
+  * Refactor checking of external programs.
+  * Fix and enable 2 rename-fun tests.
+  * Remove 2 lit files.
+  * Use -W* only for GNU and Clang compilers.
+
+-------------------------------------------------------------------
 Wed Apr 29 14:15:24 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.0.0+git.20200429.99a7004:
