@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Apr 29 09:28:03 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Version update to 1.65
+  * Defects Fixed:
+    - DLExternal would encode using DER encoding for tagged SETs.
+    - ChaCha20Poly1305 could fail for large (>~2GB) files.
+    - ChaCha20Poly1305 could fail for small updates when used via the provider.
+    - Properties.getPropertyValue could ignore system property when other
+       local overrides set.
+    - The entropy gathering thread was not running in daemon mode, meaning there
+       could be a delay in an application shutting down due to it.
+    - A recent change in Java 11 could cause an exception with the BC Provider's
+       implementation of PSS.
+    - BCJSSE: TrustManager now tolerates having no trusted certificates.
+    - BCJSSE: Choice of credentials and signing algorithm now respect the peer's
+       signature_algorithms extension properly.
+    - BCJSSE: KeyManager for KeyStoreBuilderParameters no longer leaks memory.
+  * Additional Features and Functionality:
+    - LMS and HSS (RFC 8554) support has been added to the low level library and
+       the PQC provider.
+    - SipHash128 support has been added to the low level library and the JCE provider.
+    - BCJSSE: BC API now supports explicitly specifying the session to resume.
+    - BCJSSE: Ed25519, Ed448 are now supported when TLS 1.2 or higher is
+       negotiated (except in FIPS mode).
+    - BCJSSE: Added support for extended_master_secret system properties:
+       jdk.tls.allowLegacyMasterSecret, jdk.tls.allowLegacyResumption,
+       jdk.tls.useExtendedMasterSecret .
+    - BCJSSE: Ed25519, Ed448 are now supported when TLS 1.2 or higher is
+       negotiated (except in FIPS mode).
+    - BCJSSE: KeyManager and TrustManager now check algorithm constraints for
+       keys and certificate chains.
+    - BCJSSE: KeyManager selection of server credentials now prefers matching
+       SNI hostname (if any).
+    - BCJSSE: KeyManager may now fallback to imperfect credentials (expired,
+       SNI mismatch).
+    - BCJSSE: Client-side OCSP stapling support (beta version: via status_request
+       extension only, provides jdk.tls.client.enableStatusRequestExtension, and
+       requires CertPathBuilder support).
+    - TLS: DSA in JcaTlsCrypto now falls back to stream signing to work around
+       NoneWithDSA limitations in default provider.
+
+-------------------------------------------------------------------
 Wed Mar 25 13:17:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

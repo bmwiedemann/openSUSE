@@ -16,10 +16,10 @@
 #
 
 
-%global ver  1.64
-%global shortver 164
-%global gittag r1rv64
-%global archivever jdk15on-%{shortver}b07
+%global ver  1.65
+%global shortver 165
+%global gittag r1rv65
+%global archivever jdk15on-%{shortver}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
 Version:        %{ver}

@@ -232,4 +232,12 @@ view</comment>
     <comment>Add OSGi manifests to the distributed jars</comment>
     <requestid>788316</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1660d4096b13b643a005d85d229bc597</srcmd5>
+    <version>1.65</version>
+    <time>1588324091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798864</requestid>
+  </revision>
 </revisionlist>
