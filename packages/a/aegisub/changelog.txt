@@ -1,3 +1,496 @@
+commit 6f546951b4f004da16ce19ba638bf3eedefb9f31
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sun Oct 6 12:45:03 2019 -0700
+
+    Use appropriate DPI images in more places on macOS
+
+commit 85f711fccc75f01fd44f25537b8777df10c4b3d1
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sat Sep 28 14:24:07 2019 -0700
+
+    Adjust the index of the drag subtool button for the addition of the separator
+
+commit 5da48d0f3098050973c663542fdf6bb5e99a9f40
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sat Sep 28 14:23:17 2019 -0700
+
+    Don't call Realize() before setting the toolbar
+
+commit 6ca879938de45ad1455f047fd6b52500e7610e7d
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sat Sep 28 13:56:56 2019 -0700
+
+    Always feed the entire file into uchardet when detection is needed
+    
+    uchardet will report that a file is "ascii" if the first page has no bytes
+    >127, so we need to actually look at the entire file in case the first higher
+    byte is later in the file.
+
+commit 8d17a0e88a2cf2d6b91db0b13a6a78b1416c6bb0
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sat Sep 28 13:53:26 2019 -0700
+
+    Assume that files which start with a unicode BOM are valid files of that type
+
+commit e1a8ab1c10ac106ba57fb5c468e71418bb86e5dc
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Mon Sep 23 11:54:06 2019 -0400
+
+    fix: infinite recursion when loading video
+    
+    In 888be0607fdfc2ed7801fd67f46ab4f98257d419 some changes have been made to video_display.cpp which causes infinite recursion: the video display enables video/tool/cross tool when running VideoDisplay::Render() for the first time.
+    But when setting up the tool, the video box size is changed, which calls VideoDisplay::Render() again. So we need to set the tool BEFORE it modifies the box by "AddSeparator".
+    
+    Fix wangqr/Aegisub#21
+    
+    Co-authored-by: Charlie Jiang <cqjjjzr@126.com>
+
+commit 6d4dd60ce8c52251435bd1a8c0f0cef989833c38
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Sep 22 15:12:18 2019 -0400
+
+    Handle video flip and rotate metadata in ffms2
+    
+    Fix Aegisub/Aegisub#149
+
+commit 57ee580c0f18515f7d1be19ac477758817456eba
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Wed Sep 18 18:11:18 2019 -0400
+
+    Fix lagi_thes unit tests on Windows
+    
+    The thes file was using \r\n line ends, and \r was not stripped, causing the encoding string has a \r at its end.
+    Use binary mode and always use \n as line ends.
+
+commit 336745cdb29f9f3bead1507670651580b896d7df
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Sep 15 19:32:49 2019 -0400
+
+    In Properties dialog, create the button first
+    
+    So the foucus goes to the OK button on init. This will let wxWidgets correctly handle the initial position of text in wxTextCtrl
+    
+    Fix wangqr/Aegisub#6
+
+commit 10f7458b5ff2c050e99b7fc16293e2972a6ad2e0
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Sep 15 13:27:54 2019 -0400
+
+    Fix PCM provider bugs
+
+commit 1122c0880a756ba13cb87df79ce3c47ba7f74f71
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Sep 15 00:45:25 2019 -0400
+
+    Fix failing unit tests on Windows
+
+commit dd59fc988a3dfbc248c89ae6f49868b3399bb03d
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sat Sep 14 21:11:03 2019 -0400
+
+    Fix gtest setup.bat on Windows
+
+commit 896011f5355710c12f912f830ae32698d294cce9
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Fri Sep 13 15:49:15 2019 -0400
+
+    Search user fonts in GDI font lister
+    
+    Windows now allow user install fonts without admin. List HKCU for those fonts.
+    https://blogs.windows.com/windowsexperience/2018/06/27/announcing-windows-10-insider-preview-build-17704/
+
+commit 7a1756a26f4a67656034e70c5ab81f8526617a32
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Wed Sep 11 11:16:51 2019 -0400
+
+    In tagless_find_helper only tag before start should be ignored
+    
+    The search result is irrelevant to which tag we should ignore
+    
+    Fix wangqr/Aegisub#17
+
+commit 6732179a8a92d685404835ea8218f61d34f84f6c
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Tue Sep 10 02:15:48 2019 -0400
+
+    Fix wrong memset usage
+
+commit 72d0457bc8bc9deac278e4b56c30a6afd147f65e
+Author: davste0816 <davste0816@gmail.com>
+Date:   Sat Mar 16 15:12:57 2019 -0400
+
+    Fix Move Down button in Export dialog
+
+commit 073c06d8120cd55b9ddea55b84bf2588129aff09
+Author: davste0816 <davste0816@gmail.com>
+Date:   Tue Mar 12 02:25:46 2019 -0400
+
+    Add .webm to extension list, add .eac3 as an audio format
+    
+    Co-Authored-By: FichteFoll <fichtefoll2@googlemail.com>
+
+commit 06798f2caf4f4e3eb79875a1ac96c2e0399c81ca
+Author: davste0816 <davste0816@gmail.com>
+Date:   Mon Mar 11 19:54:31 2019 -0400
+
+    Recognize .opus as an audio format, .h264 .hevc as video formats
+
+commit b3f0cb8953331fb3e78240f83f6bc53c20009f71
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Tue Sep 3 11:58:20 2019 -0400
+
+    Don't internally reset the selection after collected fonts
+    
+    This creates an inconsistency between UI and internal mode.
+    
+    Fix wangqr/Aegisub#10
+
+commit 9ed381f498f6cdd22f78292d5f6112279850a5fd
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Mon Sep 2 22:23:19 2019 -0400
+
+    Remove extra semicolon
+
+commit b429645006c8c912d14c1c47ddb7b1f175e2aeb8
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Sep 1 22:55:13 2019 -0400
+
+    visualSubToolBar now use same style as other toolbars
+    
+    Previously visualSubToolBar has boarder while visualToolBar does not. So the width of the toolbar will change when toggling visualSubToolBar.
+    
+    Now we remove the boarder so they have the same width. A separator is added at the top of visualToolBar instead to provide visual cue.
+    
+    Fix wangqr/Aegisub#11
+
+commit 0a2a07ba7e702d9afb0b7588fee83e0b7ebde7c6
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sat Aug 24 01:16:18 2019 -0400
+
+    Use absolute distance when scrolling audio box with mouse wheel
+    
+    Instead of 1/3 screen per tick. So the distance of scroll no longer depends on the width of the audio box. Besides, 1/3 is feels to far for me when the audio box is wide.
+    
+    See wangqr/Aegisub#5
+
+commit 716c2eae0d0e0a6532346122bbf5ae08e3eb6903
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Wed Jul 24 09:11:17 2019 -0400
+
+    Remove the usage of dummy wxTimerEvent
+
+commit bb5090ac3a9e32b051ee4a703a6bc849930f1983
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Jun 16 19:14:10 2019 -0400
+
+    Detect EBML magic number to skip encoding detection for MKV
+    
+    MKV loads slow after f733297499f72ea11c166f6be23751a7b002c51c
+
+commit d7139c40c0842dc7d59cfc6a7f250e2c994e1c2e
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Thu Jun 6 15:24:40 2019 -0400
+
+    Remove call to wxSizer::CalcMin and wxSizer::RecalcSizes
+    
+    As they are used internally by Layout and should not be called
+    directly.
+
+commit 73ca9ace1cd9bd7697cbcda9d1e842e65f69ba0f
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Mon Jun 3 22:08:11 2019 -0400
+
+    Change the default fontsize and the list of resolutions
+    
+    The default fontsize is changed to 48. While it still looks small
+    on the default 720p video, it is actually bigger than
+        20 / 480 * 720 = 30
+    
+    Here 720p is the default video resolution after 837d5a41d7. Some
+    common resolutions are also added to the preset list.
+    
+    Fix wangqr/Aegisub#3
+
+commit 38046516b3e04bb082c36bf77ef4a8662680b9f5
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Wed May 22 20:10:09 2019 -0400
+
+    Fix FFT first sample location
+    
+    Fix wangqr/Aegisub#1
+
+commit 698c41afef56776cd0c6c3c4e8e7b8ef2c6a50da
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Thu May 16 11:04:53 2019 -0400
+
+    Fix iconv ConversionFailure on long path
+
+commit 293673fef15d4182564966655002f53bc9bcc9a3
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sat Nov 17 19:27:25 2018 -0500
+
+    Divorce stored TPP lead-in/out values from config
+    
+    There's no real reason to link these as far as I can tell, and plenty of
+    valid reasons not to
+
+commit 24116171583bfcfd3575f9b5106648c018f97a2c
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Apr 29 17:19:02 2018 -0400
+
+    Properly ignore ASS whitespace characters in character counter
+
+commit af5d34cc1d96ab43764ff976c41c61d796f09795
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Apr 15 17:59:32 2018 -0400
+
+    Add configuration options for colors in visual typesetting tools
+
+commit 1ce72a6d6e2c5e325619b9fa8b11391d6bdb0bb0
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Wed Mar 14 05:45:19 2018 -0400
+
+    Update default config to modern standards
+
+commit ebea3905cc3e1e8ee210d2a70edcd7e94a2917d8
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Jan 6 19:34:14 2019 -0500
+
+    Use FFMS2 constant in place of magic number
+
+commit 4f870f9c268141fd3dd168a72a80ccebbc3bab10
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Fri Oct 5 17:51:55 2018 -0400
+
+    Ignore VS build files
+    
+    Most files were moved to .vs directory with VS15
+
+commit f2ca259a8b6acc03b0575d92d7a08e3eb58cb74d
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Mon May 7 19:24:47 2018 -0400
+
+    Pass 0 to FFMS_Init
+    
+    The argument is no longer used, and the docs specify to pass a value of 0 to avoid confusion
+
+commit 04a193de4d61dc37c2608234b51db816f5ec66b0
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Apr 29 16:51:53 2018 -0400
+
+    Point users at a functional bug tracker
+
+commit 63d267d3590011dd0363aceb65617bd052eb43e2
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Fri Apr 27 11:19:37 2018 -0400
+
+    Fix line order when splitting after current frame
+
+commit b2dd50e91084c00e4c8af645c0ec5ab3f53a1ca3
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Apr 15 17:58:12 2018 -0400
+
+    Use proper event for DoubleUpdater
+    
+    Previously changes weren't recognized because the event bound was for integers
+
+commit 66a3748f97264f68c9fd7e3d148147eea6e39fca
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Thu Mar 29 02:51:01 2018 -0400
+
+    Remove dead forums link
+
+commit bc649b60639ece7cc9e8d00f7ceee8a72e8f5a2c
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Tue Mar 27 15:07:37 2018 -0400
+
+    Make translation assistant skipping whitespace an explicit setting
+
+commit 30286e70359dbe61e50ec5a2fdc5645b26ecd335
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Mar 25 09:30:29 2018 -0400
+
+    Remove Force BT.601 option and update color matrix guessing
+
+commit d660f7f2b023a71e90df27f1c51ba009a2d30301
+Author: Ryan Lucia <ryan@luciaonline.net>
+Date:   Sun Mar 25 07:50:05 2018 -0400
+
+    Add support for setting status bar text from Lua
+
+commit d0c05fbcde0ec2ccf956a0a0f83ac238e686a271
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Thu May 9 16:30:38 2019 -0400
+
+    Update about dialog
+
+commit 17215edc3135da88145f265e0a0b42ccabe4bd97
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Fri Apr 12 13:50:50 2019 -0400
+
+    Fix build warnings
+
+commit faad82e1ec96a861aea3cac9272f90bb8ac36430
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sat Nov 10 16:18:28 2018 -0500
+
+    Fix overflow bound
+
+commit 5d4973a5f64c54a6a3a84278f385d2d474cfa5ab
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sat Nov 10 15:51:48 2018 -0500
+
+    Fix millisecond to centisecond convertion
+    
+    Fix Aegisub/Aegisub#94
+
+commit d89c1ce900e995c44ac01be9e5a95ebb8fe52a53
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sat Nov 10 08:24:42 2018 -0500
+
+    Change some text box size to make it looks better on HiDPI
+
+commit 4897905287c2eaceac81510ae23eabf6116ca061
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sun Sep 22 16:44:03 2019 -0700
+
+    Install autopoint on travis
+
+commit 7c43c757ce9fa1857ac5e96249eb947bf5de2d31
+Author: darealshinji <djcj@gmx.de>
+Date:   Wed Jun 13 01:31:51 2018 +0200
+
+    don't be too pedantic on the OpenAL checks
+
+commit 547b17fc22ecd2652053d04a31640843ef3922a4
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 1 23:40:47 2019 +0200
+
+    Fix crashing when picking language
+    
+    Aegisub crashes immediately after selecting any language
+    from the end of the list (above the 100th position).
+    This is because it can support no more than 100 languages.
+    This patch extends this limit up to 1000 languages (locales).
+    
+    Fixes #131
+
+commit c3c446a8d6abc5127c9432387f50c5ad50012561
+Author: scx <scx.mail@gmail.com>
+Date:   Sat Sep 7 20:55:07 2019 +0200
+
+    Fixes for Boost 1.69.0
+
+commit 7094bd1e201cf5ec5790594767374ee9dd6147ec
+Author: darealshinji <djcj@gmx.de>
+Date:   Mon Feb 18 17:18:18 2019 +0100
+
+    Add configure option to enable portable builds on Linux
+
+commit 565b7cb86e00017d18ea655a2254fd91882fc237
+Author: Yakauleu Uladzislau <u.yakauleu@gmail.com>
+Date:   Sun Jun 30 15:09:56 2019 +0300
+
+    Added Belarusian Localization
+
+commit 0847acc53f2355247e64a65c30a329a4fe679c48
+Author: scx <scx.mail@gmail.com>
+Date:   Sat Sep 7 18:51:06 2019 +0200
+
+    Add missing AM_GNU_GETTEXT_VERSION macro
+    
+    Bug: http://devel.aegisub.org/ticket/1914
+
+commit 67d9fd9aa4176b367596f8e0885ad974cf8bffeb
+Author: scx <scx.mail@gmail.com>
+Date:   Mon Sep 23 01:19:56 2019 +0200
+
+    DataBlockCache: Fix crash in cache invalidation (#142)
+    
+    The original version uses a reverse iterator,
+    whose .base() is invalid after KillMacroBlock() erases it.
+
+commit cb0af6ca35832e453f4d966a8348ca8caef6a943
+Author: scx <scx.mail@gmail.com>
+Date:   Sat Sep 7 23:38:06 2019 +0200
+
+    Fix crash on right click due to no spell checker
+    
+    See: #131
+
+commit 0418d0b5be87491806aaa7899223465ca2c5d36e
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 8 05:15:16 2019 +0200
+
+    Desktop file: make Keywords translatable
+
+commit eeb3e17b73b623fd791611275221d4f4cf4a790b
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 8 00:41:09 2019 +0200
+
+    Update desktop file
+    
+     - Add Keywords
+     - Add StartupWMClass
+     - Update Categories
+
+commit 7ea2c09afa9ef44f98b399d3d9140359db808e7c
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 8 06:39:02 2019 +0200
+
+    make_pot.sh: Check presence of xmlstarlet and jq
+
+commit c3a4a9122c1daa3e81da465c8827d687c269ead8
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 8 06:02:02 2019 +0200
+
+    Integrate AppData file with build system
+
+commit 0a1b93860b5a5ba6613a08e579d8845dcfd5a044
+Author: scx <scx.mail@gmail.com>
+Date:   Sun Sep 8 05:57:37 2019 +0200
+
+    Add AppData file template
+
+commit 42552e5efb98a417bc94ab7573c8f9dcbcb77deb
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Sun Dec 9 03:06:21 2018 -0500
+
+    Correctly handle memory free using Lua GC
+    
+    Instead of manually free. Otherwise return value of `search' may refer to invalid memory.
+    Fix Aegisub/Aegisub#99
+
+commit 3782b906d7d01357ceca3898d68a5dc20cf17e1f
+Author: wangqr <wangqr@wangqr.tk>
+Date:   Thu Nov 8 10:35:31 2018 -0500
+
+    Fix travis-ci build script
+
+commit 2cb92a5f74634764ff5aac7e3ad0d647f98142af
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Thu Nov 22 12:23:58 2018 -0800
+
+    Bump _WIN32_WINNT to Vista
+
+commit ebc76c8a1168d16054a1f7c6d3920c0fa9c9d717
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Wed Nov 21 16:41:05 2018 -0800
+
+    Update ffmpeg and ffms2
+
+commit 6afb8513657cdc94bdf8bb8a01177a054bd39905
+Author: Thomas Goyne <plorkyeran@aegisub.org>
+Date:   Sat May 26 17:41:13 2018 +0200
+
+    Update freetype2
+
+commit 83736b4866ecae9b7c42a2c6cb576e376a8d04e2
+Author: bkbkb <41873894+bkbkb@users.noreply.github.com>
+Date:   Mon Jul 30 00:27:07 2018 -0400
+
+    Fix fribidi download link
+
 commit 524c6114a82157b143567240884de3a6d030b091
 Merge: ce658d070 d8336d2fe
 Author: Thomas Goyne <tgoyne@gmail.com>

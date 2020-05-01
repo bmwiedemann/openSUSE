@@ -1,12 +1,19 @@
 -------------------------------------------------------------------
-Thu Oct 17 12:57:19 UTC 2019 - Richard Brown <rbrown@suse.com>
+Wed Apr 29 10:48:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
-- Remove obsolete Groups tag (fate#326485)
-
--------------------------------------------------------------------
-Sat Jul 20 18:44:11 UTC 2019 - olaf@aepfle.de
-
-- Fix build by keeping non-patch work out of %prep section
+- Update to current git version (3.2.2+git20191006)
+- Add _service file
+- Update changelog.txt
+- Drop aegisub-DataBlockCache-Fix-crash-in-cache-invalidation.patch
+  (fixed upstream)
+- Drop aegisub-boost169.patch (merged upstream)
+- Dropped aegisub-git-version.patch (handle things from the spec
+  file)
+- Added aegisub-fix_build_with_make4.3.patch see:
+  https://github.com/Aegisub/Aegisub/issues/171
+- Require wxWidgets 3.2
+- Added aegisub-rpmlintrc
+- Spec cleanup
 
 -------------------------------------------------------------------
 Fri Mar 29 13:25:07 UTC 2019 - plater <davejplater@gmail.com>

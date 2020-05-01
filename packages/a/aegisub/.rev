@@ -327,4 +327,12 @@
     <comment></comment>
     <requestid>739473</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ff9aa7381380d3e2652f82375e377f4b</srcmd5>
+    <version>3.2.2+git20191006</version>
+    <time>1588324212</time>
+    <user>dimstar_suse</user>
+    <comment>Add reference for aegisub-fix_build_with_make4.3.patch</comment>
+    <requestid>799131</requestid>
+  </revision>
 </revisionlist>
