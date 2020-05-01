@@ -1,7 +1,11 @@
 -------------------------------------------------------------------
-Mon Apr 20 18:05:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+Thu Apr 23 19:11:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 0.7.5
+- Update to version 0.7.5 fixes the following issues:
+  Security
+  * CVE-2020-12066: denial of service against server (boo#1170252)
+  * CVE-2019-20787: integer overflow when computing a tilemap size 
+    (boo#1170253)
   Server
   * Fix laser bounce delay when server runs for a very long time
   * Rename tune_dump to tunes
@@ -38,9 +42,6 @@ Mon Apr 20 18:05:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
   * Add mapres preview
   * Show current quad when pressing space in editor
   * Fix a crash
-  Security
-  * Patch a server vulnerability that exposed all 0.7 servers to
-    crashes
   Maps
   * Some minor bugfixes to ctf5 and dm7
 
