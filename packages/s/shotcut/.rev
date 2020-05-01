@@ -337,4 +337,12 @@ Update to release 19.04.30.</comment>
     - Now, you do not need to ensure the mouse pointer is over a clip, speed is reduced, and zoom keeps focal point in view. The new zoom behavior does not apply when using the option Center the Playhead in the timeline menu.</comment>
     <requestid>780301</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>158808eafe75ed4ad74ce4b00147a902</srcmd5>
+    <version>20.04.12</version>
+    <time>1588324531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799294</requestid>
+  </revision>
 </revisionlist>
