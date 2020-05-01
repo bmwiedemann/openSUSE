@@ -24,11 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-jupyter-client%{psuffix}
-Version:        6.0.0
+Version:        6.1.3
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
