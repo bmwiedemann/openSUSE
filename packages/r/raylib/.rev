@@ -109,4 +109,41 @@
     cubemap layouts (LoadTextureCubemap()). (forwarded request 706634 from jubalh)</comment>
     <requestid>706635</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa6572cfa9dd8c4c12983b39021d29bf</srcmd5>
+    <version>3.0.0</version>
+    <time>1588324239</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to noexamples tarball as requested in:
+  https://github.com/raysan5/raylib/issues/1180
+  So we don't ship examples with various licenses that we don't
+  install anyways.
+- Add raylib-3.0.0-noexamples.patch: dont try to install examples
+  Raysan seems to have forgotten that.
+
+- Added missing development header files.
+
+- Update to 3.0.0:
+  * All global variables from the multiple raylib modules have
+    been moved to a global context state, it has several benefits, first, better
+    code readability with more comprehensive variables naming and categorization
+    (organized by types, i.e. CORE.Window.display.width,
+    CORE.Input.Keyboard.currentKeyState or RLGL.State.modelview). Second, it allows
+    better memory management to load global context state dynamically when required
+    (not at the moment), making it easy to implement a hot-reloading mechanism if
+    desired.
+  * All memory allocations on raylib and its dependencies now use
+    RL_MALLOC, RL_FREE and similar macros. Now users can easely hook their own
+    memory allocations mechanism if desired, having more control over memory
+    allocated internally by the library. Additionally, it makes it easier to port
+    the library to embedded devices where memory control is critical. For more info
+    check raylib issue #1074.
+  * All I/O file accesses from raylib are being moved
+    to memory data access, now all I/O file access is centralized into just four
+    functions: LoadFileData(), SaveFileData(), LoadFileText(), SaveFileText().
+    Users can just update those functions to any I/O file system. This change makes
+    it easier to integrate raylib with Virtual File Systems or custom I/O file
+    implementations.</comment>
+    <requestid>799028</requestid>
+  </revision>
 </revisionlist>
