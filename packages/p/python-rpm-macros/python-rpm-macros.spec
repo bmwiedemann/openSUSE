@@ -17,12 +17,12 @@
 
 
 Name:           python-rpm-macros
-Version:        20200117.8e39013
+Version:        20200207.5feb6c1
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
 URL:            https://github.com/opensuse/python-rpm-macros
-Source:         python-rpm-macros-%{version}.tar.bz2
+Source:         python-rpm-macros-%{version}.tar.xz
 # Fedora compatibility
 Provides:       python2-rpm-macros
 Provides:       python3-rpm-macros

@@ -272,4 +272,13 @@ prerequisite for new python submission</comment>
     <comment>- Update to version 20200117.8e39013 bsc#1161770:</comment>
     <requestid>766863</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>960aa305138b4d6171fc706d04ad73e4</srcmd5>
+    <version>20200207.5feb6c1</version>
+    <time>1588323919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200207.5feb6c1:
+  * Do not write .pyc files for tests</comment>
+    <requestid>797835</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 21 11:43:04 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20200207.5feb6c1:
+  * Do not write .pyc files for tests
+
+-------------------------------------------------------------------
 Mon Jan 20 18:35:19 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Add python-rpm-generators to express setuptools dependency for generator
