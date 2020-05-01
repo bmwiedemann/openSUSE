@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-hypothesis%{psuffix}
-Version:        5.8.0
+Version:        5.10.4
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -39,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
 Requires:       python-sortedcontainers >= 2.1.0
-Recommends:     python-Django >= 1.11
+Recommends:     python-Django >= 2.2
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark-parser >= 0.6.5
 Recommends:     python-numpy >= 1.9.0
@@ -50,7 +50,7 @@ Recommends:     python-pytz >= 2014.1
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= %{version}}

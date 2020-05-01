@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Apr 24 15:18:51 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated Django version number in requirements
+
+- update to version 5.10.4:
+  * This patch improves the internals of builds() type inference, to
+    handle recursive forward references in certain dataclasses. This
+    is useful for e.g. hypothesmith’s forthcoming LibCST mode.
+
+- changes from version 5.10.3:
+  * This release reverses the order in which some operations are tried
+    during shrinking. This should generally be a slight performance
+    improvement, but most tests are unlikely to notice much
+    difference.
+
+- changes from version 5.10.2:
+  * This patch fixes issue #2406, where use of pandas.Timestamp
+    objects as bounds for the datetimes() strategy caused an internal
+    error. This bug was introduced in version 5.8.1.
+
+- changes from version 5.10.1:
+  * This release is a small internal refactoring to how shrinking
+    interacts with targeted property-based testing that should have no
+    user user visible impact.
+
+- changes from version 5.10.0:
+  * This release improves our support for datetimes and times around
+    DST transitions.
+  * times() and datetimes() are now sometimes generated with fold=1,
+    indicating that they represent the second occurrence of a given
+    wall-time when clocks are set backwards. This may be set even when
+    there is no transition, in which case the fold value should be
+    ignored.
+    For consistency, timezones provided by the pytz package can now
+    generate imaginary times (such as the hour skipped over when
+    clocks ‘spring forward’ to daylight saving time, or during some
+    historical timezone transitions). All other timezones have always
+    supported generation of imaginary times.
+    If you prefer the previous behaviour, datetimes() now takes an
+    argument allow_imaginary which defaults to True but can be set to
+    False for any timezones strategy.
+
+- changes from version 5.9.1 :
+  * This patch fixes the rendering of binary() docstring by using the
+    proper backticks syntax.
+
+- changes from version 5.9.0 :
+  * Failing tests which use target() now report the highest score
+    observed for each target alongside the failing example(s), even
+    without explicitly showing test statistics.
+  * This improves the debugging workflow for tests of accuracy, which
+    assert that the total imprecision is within some error budget -
+    for example, abs(a - b) < 0.5. Previously, shrinking to a minimal
+    failing example could often make errors seem smaller or more
+    subtle than they really are (see the threshold problem, and issue
+    #2180).
+
+- changes from version 5.8.6 :
+  * This patch improves the docstring of binary(), the repr() of
+    sampled_from() on an enum.Enum subclass, and a warning in our
+    pytest plugin. There is no change in runtime behaviour.
+
+- changes from version 5.8.5 :
+  * This release (potentially very significantly) improves the
+    performance of failing tests in some rare cases, mostly only
+    relevant when using targeted property-based testing, by stopping
+    further optimisation of unrelated test cases once a failing
+    example is found.
+
+- changes from version 5.8.4 :
+  * This release fixes issue #2395, where under some circumstances
+    targeted property-based testing could cause Hypothesis to get
+    caught in an infinite loop.
+
+- changes from version 5.8.3 :
+  * This patch teaches builds() and from_type() to use the
+    __signature__ attribute of classes where it has been set,
+    improving our support for Pydantic models (in pydantic >= 1.5).
+
+- changes from version 5.8.2 :
+  * This release improves the performance of the part of the core
+    engine that deliberately generates duplicate values.
+
+- changes from version 5.8.1 :
+  * This patch improves dates() shrinking, to simplify year, month,
+    and day like datetimes() rather than minimizing the number of days
+    since 2000-01-01.
+
+-------------------------------------------------------------------
 Thu Apr  9 12:28:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.8.0
