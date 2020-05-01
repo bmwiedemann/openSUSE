@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Thu Apr 30 08:47:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 7.1.2:
+  * This fixes a regression introduced in 7.1.0 when adding support
+    for APNG files.
+  * When calling seek(n) on a regular PNG where n > 0, it failed to
+    raise an EOFError as it should have done
+
+-------------------------------------------------------------------
+Sat Apr  4 17:49:43 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.1.1:
+  * Fix regression seeking and telling PNGs #4512 #4514 [hugovk,
+    radarhere]
+
+- changes from version 7.1.0:
+  * Fix multiple OOB reads in FLI decoding #4503 [wiredfool]
+  * Fix buffer overflow in SGI-RLE decoding #4504 [wiredfool, hugovk]
+  * Fix bounds overflow in JPEG 2000 decoding #4505 [wiredfool]
+  * Fix bounds overflow in PCX decoding #4506 [wiredfool]
+  * Fix 2 buffer overflows in TIFF decoding #4507 [wiredfool]
+  * Add APNG support #4243 [pmrowla, radarhere, hugovk]
+  * ImageGrab.grab() for Linux with XCB #4260 [nulano, radarhere]
+  * Added three new channel operations #4230 [dwastberg, radarhere]
+  * Prevent masking of Image reduce method in Jpeg2KImagePlugin #4474
+    [radarhere, homm]
+  * Added reading of earlier ImageMagick PNG EXIF data #4471
+    [radarhere]
+  * Fixed endian handling for I;16 getextrema #4457 [radarhere]
+  * Release buffer if function returns prematurely #4381 [radarhere]
+  * Add JPEG comment to info dictionary #4455 [radarhere]
+  * Fix size calculation of Image.thumbnail() #4404 [orlnub123]
+  * Fixed stroke on FreeType < 2.9 #4401 [radarhere]
+  * If present, only use alpha channel for bounding box #4454
+    [radarhere]
+  * Warn if an unknown feature is passed to features.check() #4438
+    [jdufresne]
+  * Fix Name field length when saving IM images #4424 [hugovk,
+    radarhere]
+  * Allow saving of zero quality JPEG images #4440 [radarhere]
+  * Allow explicit zero width to hide outline #4334 [radarhere]
+  * Change ContainerIO return type to match file object mode #4297
+    [jdufresne, radarhere]
+  * Only draw each polygon pixel once #4333 [radarhere]
+  * Add support for shooting situation Exif IFD tags #4398 [alexagv]
+  * Handle multiple and malformed JPEG APP13 markers #4370 [homm]
+  * Depends: Update libwebp to 1.1.0 #4342, libjpeg to 9d #4352
+    [radarhere]
+
+-------------------------------------------------------------------
+Sun Jan  5 02:50:34 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * drop python2 support
+
+- update to version 7.0.0:
+  * Drop support for EOL Python 2.7 #4109 [hugovk, radarhere,
+    jdufresne]
+  * Fix rounding error on RGB to L conversion #4320 [homm]
+  * Exif writing fixes: Rational boundaries and signed/unsigned types
+    #3980 [kkopachev, radarhere]
+  * Allow loading of WMF images at a given DPI #4311 [radarhere]
+  * Added reduce operation #4251 [homm]
+  * Raise ValueError for io.StringIO in Image.open #4302 [radarhere,
+    hugovk]
+  * Fix thumbnail geometry when DCT scaling is used #4231 [homm,
+    radarhere]
+  * Use default DPI when exif provides invalid x_resolution #4147
+    [beipang2, radarhere]
+  * Change default resize resampling filter from NEAREST to BICUBIC
+    #4255 [homm]
+  * Fixed black lines on upscaled images with the BOX filter #4278
+    [homm]
+  * Better thumbnail aspect ratio preservation #4256 [homm]
+  * Add La mode packing and unpacking #4248 [homm]
+  * Include tests in coverage reports #4173 [hugovk]
+  * Handle broken Photoshop data #4239 [radarhere]
+  * Raise a specific exception if no data is found for an MPO frame
+    #4240 [radarhere]
+  * Fix Unicode support for PyPy #4145 [nulano]
+  * Added UnidentifiedImageError #4182 [radarhere, hugovk]
+  * Remove deprecated __version__ from plugins #4197 [hugovk,
+    radarhere]
+  * Fixed freeing unallocated pointer when resizing with height too
+    large #4116 [radarhere]
+  * Copy info in Image.transform #4128 [radarhere]
+  * Corrected DdsImagePlugin setting info gamma #4171 [radarhere]
+  * Depends: Update libtiff to 4.1.0 #4195, Tk Tcl to 8.6.10 #4229,
+    libimagequant to 2.12.6 #4318 [radarhere]
+  * Improve handling of file resources #3577 [jdufresne]
+  * Removed CI testing of Fedora 29 #4165 [hugovk]
+  * Added pypy3 to tox envlist #4137 [jdufresne]
+  * Drop support for EOL PyQt4 and PySide #4108 [hugovk, radarhere]
+  * Removed deprecated setting of TIFF image sizes #4114 [radarhere]
+  * Removed deprecated PILLOW_VERSION #4107 [hugovk]
+  * Changed default frombuffer raw decoder args #1730 [radarhere]
+
+-------------------------------------------------------------------
 Fri Nov  8 07:54:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.2.1:

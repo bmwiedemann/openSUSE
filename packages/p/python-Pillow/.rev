@@ -335,4 +335,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Full notes: https://pillow.readthedocs.io/en/stable/releasenotes/6.2.0.html</comment>
     <requestid>746499</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a1ec341bca2b7301e256ae409bdfd008</srcmd5>
+    <version>7.1.2</version>
+    <time>1588324030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.2:
+  * This fixes a regression introduced in 7.1.0 when adding support
+    for APNG files.
+  * When calling seek(n) on a regular PNG where n &gt; 0, it failed to
+    raise an EOFError as it should have done
+
+- update to version 7.1.1:
+  * Fix regression seeking and telling PNGs #4512 #4514 [hugovk,
+    radarhere]
+- changes from version 7.1.0:
+  * Fix multiple OOB reads in FLI decoding #4503 [wiredfool]
+  * Fix buffer overflow in SGI-RLE decoding #4504 [wiredfool, hugovk]
+  * Fix bounds overflow in JPEG 2000 decoding #4505 [wiredfool]
+  * Fix bounds overflow in PCX decoding #4506 [wiredfool]
+  * Fix 2 buffer overflows in TIFF decoding #4507 [wiredfool]
+  * Add APNG support #4243 [pmrowla, radarhere, hugovk]
+  * ImageGrab.grab() for Linux with XCB #4260 [nulano, radarhere]
+  * Added three new channel operations #4230 [dwastberg, radarhere]
+  * Prevent masking of Image reduce method in Jpeg2KImagePlugin #4474
+    [radarhere, homm]
+  * Added reading of earlier ImageMagick PNG EXIF data #4471
+    [radarhere]
+  * Fixed endian handling for I;16 getextrema #4457 [radarhere]
+  * Release buffer if function returns prematurely #4381 [radarhere]
+  * Add JPEG comment to info dictionary #4455 [radarhere]
+  * Fix size calculation of Image.thumbnail() #4404 [orlnub123]
+  * Fixed stroke on FreeType &lt; 2.9 #4401 [radarhere]
+  * If present, only use alpha channel for bounding box #4454
+    [radarhere]
+  * Warn if an unknown feature is passed to features.check() #4438</comment>
+    <requestid>799155</requestid>
+  </revision>
 </revisionlist>

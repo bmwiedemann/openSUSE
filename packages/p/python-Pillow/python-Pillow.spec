@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pillow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,10 @@
 
 
 %define oldpython python
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?is_opensuse} || 0%{?suse_version} >= 1500
-%bcond_without tk
-%else
-%bcond_with tk
-%endif
 Name:           python-Pillow
-Version:        6.2.1
+Version:        7.1.2
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
@@ -50,9 +46,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-olefile
-%if %{with tk}
 BuildRequires:  %{python_module tk}
-%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
@@ -127,19 +121,13 @@ $python -m pytest -v -k 'not (test_stroke or test_stroke_multiline)'
 %{python_sitearch}/PIL
 %{python_sitearch}/PIL.pth
 %{python_sitearch}/Pillow-%{version}-py%{python_version}.egg-info
-
-%if %{with tk}
 %exclude %{python_sitearch}/PIL/ImageTk*
 %exclude %{python_sitearch}/PIL/_imagingtk*
 %pycache_only %exclude %{python_sitearch}/PIL/__pycache__/ImageTk.*
-%endif
 
-%if %{with tk}
 %files %{python_files tk}
 %{python_sitearch}/PIL/ImageTk*
 %{python_sitearch}/PIL/_imagingtk*
 %pycache_only %{python_sitearch}/PIL/__pycache__/ImageTk.*
-
-%endif
 
 %changelog
