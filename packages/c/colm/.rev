@@ -40,4 +40,12 @@
     <comment>- Update to new upstream release 0.13.0.7</comment>
     <requestid>725394</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>60395aa45543eed38264787445ba1f10</srcmd5>
+    <version>0.13.0.7</version>
+    <time>1588324430</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reproducible.diff</comment>
+    <requestid>799165</requestid>
+  </revision>
 </revisionlist>

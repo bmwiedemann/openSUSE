@@ -1,7 +1,7 @@
 #
 # spec file for package colm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://www.colm.net/open-source/colm/
 #Git-Clone:     git://colm.net/colm
 Source:         https://www.colm.net/files/colm/%name-%version.tar.gz
 Patch1:         shadow.diff
+Patch2:         reproducible.diff
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
