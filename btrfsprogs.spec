@@ -31,7 +31,7 @@
 # the tarball contains prebuilt documentation
 %define build_docs	1
 
-%define _dracutmodulesdir %{_libexecdir}/dracut/modules.d
+%define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
 Version:        5.6
