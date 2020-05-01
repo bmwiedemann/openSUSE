@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 17:06:24 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Release ldb 2.1.2
+  + CVE-2020-10700: ldb: Always use ldb_next_request() in
+    ASQ module; ;(bso#14331); (bsc#1169850).
+
+-------------------------------------------------------------------
 Fri Mar  6 16:38:37 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Release ldb 2.1.1
