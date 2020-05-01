@@ -786,4 +786,12 @@
     <comment></comment>
     <requestid>798363</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>fbcaa21807a3432893251ac8acdd3b76</srcmd5>
+    <version>2.28.2</version>
+    <time>1588324118</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug ref and CVEs to changes (forwarded request 799041 from mgorse)</comment>
+    <requestid>799169</requestid>
+  </revision>
 </revisionlist>
