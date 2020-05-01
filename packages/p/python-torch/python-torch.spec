@@ -120,7 +120,7 @@ PyTorch provides two high-level features:
 %package devel
 Summary:        Headers for C/C++, cmake build description and libraries needed for development
 Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
+Requires:       python-torch = %{version}
 
 %description devel
 Although the Python interface is more polished and the primary focus of

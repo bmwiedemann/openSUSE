@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:30:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure to pull py2/py3 package from the devel pkg
+
+-------------------------------------------------------------------
 Thu Apr 23 09:54:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in python2 only dependencies
