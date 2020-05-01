@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymediainfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pymediainfo
-Version:        4.1
+Version:        4.2.1
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT
@@ -51,9 +51,7 @@ rm -rf pymediainfo.egg-info
 
 %check
 export LANG=en_US.UTF-8
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{_bindir}/py.test-%{$python_version} -v \
-  -k 'not MediaInfoURLTest and not MediaInfoLibraryTest'
-}
+%pytest -k 'not test_parse_url and not test_thread_safety'
 
 %files %{python_files}
 %doc README.rst
