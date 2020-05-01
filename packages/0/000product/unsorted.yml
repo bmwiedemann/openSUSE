@@ -6752,6 +6752,7 @@ unsorted:
   - kismet-capture-nrf-nxp-kw41z 
   - kismet-capture-ti-cc-2531 
   - kismet-devel 
+  - kissfft-devel: [x86_64] 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
   - kitemmodels-imports 
@@ -9404,7 +9405,7 @@ unsorted:
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnuastro9 
-  - libgnuradio-3_8_0 
+  - libgnuradio-3_8_1 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -10045,6 +10046,7 @@ unsorted:
   - libkim-api2 
   - libkioarchive-devel 
   - libkipi-devel 
+  - libkissfft-131: [x86_64] 
   - libkkc-devel 
   - libkkc2 
   - libkkc2-32bit: [x86_64] 
@@ -11448,7 +11450,7 @@ unsorted:
   - libraw1394-devel 
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
-  - libraylib2 
+  - libraylib301 
   - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
@@ -18439,8 +18441,6 @@ unsorted:
   - python-gtk-doc 
   - python-gunicorn-doc 
   - python-hachoir-core 
-  - python-hachoir-metadata 
-  - python-hachoir-parser 
   - python-happybase-doc 
   - python-heatclient-doc 
   - python-idle 
@@ -18580,8 +18580,6 @@ unsorted:
   - python2-Flask-Cache-doc 
   - python2-FontTools 
   - python2-Glances 
-  - python2-LEPL 
-  - python2-PyExecJS 
   - python2-QR-Code-generator 
   - python2-ZODB 
   - python2-aexpect 
@@ -18598,7 +18596,6 @@ unsorted:
   - python2-cfn-lint 
   - python2-clustershell 
   - python2-cram 
-  - python2-daemonize 
   - python2-deltarpm 
   - python2-efilter 
   - python2-efl 
@@ -18606,42 +18603,26 @@ unsorted:
   - python2-efl-examples 
   - python2-evemu 
   - python2-geopy 
-  - python2-glean 
   - python2-gobject-Dee 
   - python2-google-cloud-storage 
   - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
-  - python2-jsonrpclib-pelix 
   - python2-jupyter-packaging 
   - python2-keyrings.alt 
   - python2-knack 
-  - python2-libbde 
   - python2-libesedb 
   - python2-libevt 
   - python2-libevtx 
-  - python2-libfsntfs 
-  - python2-libfvde 
-  - python2-libfwnt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
   - python2-liblnk 
-  - python2-libluksde 
-  - python2-libmsiecf 
   - python2-libolecf 
   - python2-libpfm 
   - python2-libqcow 
   - python2-libregf 
-  - python2-libscca 
-  - python2-libsigscan 
-  - python2-libsmdev 
-  - python2-libsmraw 
   - python2-libtorrent-rasterbar 
   - python2-libunity 
-  - python2-libvhdi 
-  - python2-libvmdk 
-  - python2-libvshadow 
-  - python2-libvslvm 
   - python2-lit 
   - python2-markdown2 
   - python2-miniupnpc 
@@ -18658,18 +18639,15 @@ unsorted:
   - python2-ovs 
   - python2-pip 
   - python2-pivy 
-  - python2-positional 
   - python2-proliantutils 
   - python2-protobuf 
   - python2-pwquality 
   - python2-pybugz 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-pycallgraph 
   - python2-pykeepass 
   - python2-pysaml2: [i586] 
   - python2-pysmb 
-  - python2-python-cjson 
   - python2-python-dotenv 
   - python2-sanlock 
   - python2-setuptools 
@@ -18751,6 +18729,7 @@ unsorted:
   - python3-GooseMPL 
   - python3-GridDataFormats 
   - python3-HTTPolice 
+  - python3-Hamlib 
   - python3-HeapDict 
   - python3-HyperKitty 
   - python3-IMDbPY 
@@ -18763,7 +18742,6 @@ unsorted:
   - python3-Keras-examples: [x86_64] 
   - python3-Kivy 
   - python3-Kivy-devel 
-  - python3-LEPL 
   - python3-LTTL 
   - python3-Lektor 
   - python3-Levenshtein 
@@ -18803,7 +18781,6 @@ unsorted:
   - python3-PyChromecast 
   - python3-PyDispatcher 
   - python3-PyECLib 
-  - python3-PyExecJS 
   - python3-PyFxA 
   - python3-PyGithub 
   - python3-PyICU 
@@ -20587,7 +20564,6 @@ unsorted:
   - python3-pybugz 
   - python3-pycadf 
   - python3-pycairo-devel 
-  - python3-pycallgraph 
   - python3-pycdio 
   - python3-pycha 
   - python3-pychm 
@@ -21098,7 +21074,6 @@ unsorted:
   - python3-sparse 
   - python3-speaklater 
   - python3-spec 
-  - python3-spec_tools 
   - python3-spglib 
   - python3-sphinx-argparse 
   - python3-sphinx-autodoc-typehints 
@@ -21532,6 +21507,7 @@ unsorted:
   - qmmp-plugin-pack-goom 
   - qmmp-plugin-pack-samplerate 
   - qmmp-plugin-pack-xmp 
+  - qmmp-plugin-pack-youtube 
   - qnapi 
   - qoauth-qt5-devel 
   - qore 
@@ -32065,7 +32041,6 @@ unsorted:
   - vte-tools 
   - vtk-devel 
   - vtk-devel-doc 
-  - vtk-examples 
   - vtk-java 
   - vtk-openmpi1-devel 
   - vtk-openmpi1-devel-doc 
@@ -32082,7 +32057,6 @@ unsorted:
   - vtk-qt 
   - vtkdata 
   - vulkan-devel 
-  - vulkan-doc 
   - vulkan-headers 
   - vulkan-tools 
   - vulkan-validationlayers 
