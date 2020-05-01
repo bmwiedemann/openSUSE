@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-cjson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-python-cjson
 Version:        1.2.1
 Release:        0
 Summary:        C-accelerated JSON encoder/decoder for Python
 License:        LGPL-2.0-or-later
 Group:          Development/Languages/Python
-Url:            https://github.com/AGProjects/python-cjson
+URL:            https://github.com/AGProjects/python-cjson
 Source:         https://files.pythonhosted.org/packages/source/p/python-cjson/python-cjson-%{version}.tar.gz
 # https://github.com/AGProjects/python-cjson/issues/6
 Patch0:         py3.patch
@@ -46,8 +47,10 @@ the the range of 10-200 times for encoding operations and in the range of
 
 %prep
 %setup -q -n python-cjson-%{version}
+%if %{with python2}
 cp cjson.c cjson%{python2_bin_suffix}.c
 cp jsontest.py jsontest%{python2_bin_suffix}.py
+%endif
 %patch0 -p1
 cp cjson.c cjson%{python3_bin_suffix}.c
 
@@ -59,9 +62,11 @@ fi
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+%if %{with python2}
 rm cjson.c
 ln -s cjson%{python2_bin_suffix}.c cjson.c
 %python2_build
+%endif
 rm cjson.c
 ln -s cjson%{python3_bin_suffix}.c cjson.c
 %python3_build

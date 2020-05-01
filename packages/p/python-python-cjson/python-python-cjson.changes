@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:26:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Mon Jun  3 17:56:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim encyclopedic JSON report from description.
