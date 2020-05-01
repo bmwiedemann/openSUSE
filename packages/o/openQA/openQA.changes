@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 30 19:24:55 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1588266331.0a51f4d32:
+  * Dependencies: Add Getopt::Long::Descriptive to client deps
+  * Also mention the --verbose option of openqa-cli
+  * Use an endpoint that actually requires authentication for the authentication example
+  * Add another JSON example and fix an error in the authentication section
+  * Mention that MOJO_CLIENT_DEBUG is an upstream feature and the output can change
+  * The openQA REST API uses JSON everywhere now, so content negotiation is not needed
+  * Add openqa-cli documentation
+  * Add back t/ui/01-list.t to "unstable" as not reliable
+  * Makefile: Fix evaluation of 'unstables'
+  * Add Test::MockObject and Test::Exception to test dependencies
+  * Make connection errors more obvious
+  * Fix `TEST` is not replaced when using `isos post`
+  * Add --verbose option to "openqa-cli api"
+  * Add route for latest test outcome in ObsSync Plugin
+  * Revert "Use defaults already in startup scripts rather than systemd (alternative to #2864 with shell wrappers)"
+  * t: Fix 'QEMU_NO_KVM' incorrectly added in QEMU_NO_KVM=1
+  * Increase proxy timeout
+  * Provide a '--help' option to all our scripts
+  * t: Save 5s test execution time in full-stack.t with smarter timestamps
+  * t: Delete potentially offensive and unhelpful TODO comment
+  * Move existing client script code to a better place
+
+-------------------------------------------------------------------
 Tue Apr 28 11:24:55 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1588072966.ee098707b:
