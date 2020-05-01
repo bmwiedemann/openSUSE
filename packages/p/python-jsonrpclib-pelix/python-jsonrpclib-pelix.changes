@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:42:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Apr 30 07:34:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.1:
+  * Fixed a size computation issue in the request handler (see #42)
+
+-------------------------------------------------------------------
 Thu Mar 28 14:42:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.0:
