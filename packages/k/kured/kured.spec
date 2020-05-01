@@ -33,8 +33,8 @@ URL:            https://github.com/weaveworks/kured
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go = 1.12
 BuildRequires:  go-go-md2man
+BuildRequires:  golang(API) = 1.12
 ExcludeArch:    s390
 
 %description
