@@ -106,17 +106,6 @@ libbde is a library to access the BitLocker Drive Encryption (BDE) format. The B
 This subpackage contains libraries and header files for developing
 applications that want to make use of libbde.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libbde, a Bitlocker Drive Encryption library
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python2
-Obsoletes:      python-%{name}
-
-%description -n python2-%{name}
-Python 2 bindings for libbde, which can access Bitlocker Drive Encrypted volumes
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libbde, a Bitlocker Drive Encryption library
 License:        LGPL-3.0-or-later
@@ -133,7 +122,7 @@ cp "%{SOURCE2}" .
 
 %build
 # I haven't tested the usefullness of these args yet
-%configure --disable-static --prefix=/usr --libdir=%{_libdir} --mandir=%{_mandir} --enable-python2 --enable-python3
+%configure --disable-static --prefix=/usr --libdir=%{_libdir} --mandir=%{_mandir} --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -169,12 +158,6 @@ find %{buildroot} -name "*.a" -delete
 %{_libdir}/libbde.so
 %{_libdir}/pkgconfig/libbde.pc
 %{_mandir}/man3/libbde.3*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%license COPYING 
-%doc AUTHORS README ChangeLog
-%{python_sitearch}/pybde.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)
