@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:59:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.28:
+  * Switch default font from Terminus to Cascadia Code as Terminus is
+    most commonly a bitmap font, which no longer work with Pango 1.44:
+    https://gitlab.gnome.org/GNOME/pango/issues/386
+  * Always fall back on the platform default monospace font
+  * Add Dutch translation (Heimen Stoffels)
+
+-------------------------------------------------------------------
 Thu Apr 23 18:41:25 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.27.1:

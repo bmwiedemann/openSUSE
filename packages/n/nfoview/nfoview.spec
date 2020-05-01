@@ -17,7 +17,7 @@
 
 
 Name:           nfoview
-Version:        1.27.1
+Version:        1.28
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later

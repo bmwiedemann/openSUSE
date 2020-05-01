@@ -49,4 +49,12 @@
 - Drop nfoview-fix-css-font-abnormal-weight.patch</comment>
     <requestid>796689</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29d69f635bc245a8da08c4b8ede24226</srcmd5>
+    <version>1.28</version>
+    <time>1588324395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799147</requestid>
+  </revision>
 </revisionlist>
