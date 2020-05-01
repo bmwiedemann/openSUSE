@@ -18,6 +18,10 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+# FIXME: ENABLE EXAMPLES BY DEFAULT WHEN VERSION 9.0 IS PACKAGED
+# [https://gitlab.kitware.com/vtk/vtk/issues/17619]
+%bcond_with examples
+
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
@@ -110,6 +114,8 @@ Patch5:         0001-Add-libogg-to-IOMovie-target-link-libraries.patch
 Patch6:         0001-Make-code-calling-proj4-compatible-with-proj4-5.0-an.patch
 # PATCH-FIX-UPSTREAM -- Support for python3.8
 Patch7:         python38.patch
+# PATCH-FIX-UPSTREAM https://gitlab.kitware.com/vtk/vtk/merge_requests/5633 + 5634
+Patch8:         reproducible.patch
 BuildRequires:  R-base-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.4
@@ -352,6 +358,7 @@ languages.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -378,7 +385,7 @@ export CXXFLAGS="%{optflags}"
 # since JDK8.
 %cmake \
     -DBUILD_DOCUMENTATION:BOOL=ON \
-    -DBUILD_EXAMPLES:BOOL=ON \
+    -DBUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
     -DBUILD_TESTING:BOOL=OFF \
     -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
     -DJava_JAVAH_EXECUTABLE:PATH=%{_bindir}/true \
@@ -430,6 +437,7 @@ find . -name \*.c -o -name \*.cxx -o -name \*.h -o -name \*.hxx -o -name \*.gif 
 %install
 %cmake_install
 
+%if %{with examples}
 # List of executable examples
 cat > examples.list << EOF
 AmbientSpheres
@@ -481,6 +489,8 @@ done
 perl -pi -e's,^,%{my_bindir}/,' examples.list
 %endif
 
+%endif
+
 %fdupes -s %{buildroot}
 
 %check
@@ -493,6 +503,7 @@ export PYTHONPATH=$_PYTHON_MPI_PREFIX:$PYTHONPATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{my_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 python3 -c "import vtk"
+find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-based .pyc file
 
 %post   -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -559,9 +570,11 @@ python3 -c "import vtk"
 %dir %{my_libdir}/qt5/plugins/designer/
 %{my_libdir}/qt5/plugins/designer/libQVTKWidgetPlugin.so
 
+%if %{with examples}
 %if "%{flavor}" == ""
 %files examples -f examples.list
 %license Copyright.txt
+%endif
 %endif
 
 %changelog
