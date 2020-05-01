@@ -1797,7 +1797,7 @@
     <package name="libbrasero-media3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-utils3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libbrlapi0_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrotlienc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
