@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 30 18:56:58 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.4.0:
+  * Get prefers color scheme from accountsservice (#319)
+  * Settings: Deprecate and suggest GLib.Settings (#376)
+  * Release 5.3.1 (#379)
+  * AccelLabel: make label settable (#373)
+  * SettingsSidebarRow: center align with no subtitle (#372)
+
+-------------------------------------------------------------------
 Mon Feb 17 00:30:06 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Fix: invalid-filename-dependency
