@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:01:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.4.0
+  * ported to qmmp 1.4 api
+  * added Youtube plugin (uses youtube-dl)
+  * improved ffap plugin
+  * updated Portuguese, Dutch, Polish, Galician, Spanish,
+    Russian, Ukrainian, French, Indonesian, Greek, Italian,
+    German
+
+-------------------------------------------------------------------
 Thu Mar 26 19:35:13 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.3.2 (changes since 1.3.0):

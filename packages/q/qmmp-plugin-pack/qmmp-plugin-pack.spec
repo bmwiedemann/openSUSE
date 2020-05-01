@@ -17,11 +17,11 @@
 #
 
 
-%define qmmp_ver_min 1.3.0
-%define qmmp_ver_max 1.3.99
-%define mver    1.3
+%define qmmp_ver_min 1.4.0
+%define qmmp_ver_max 1.4.99
+%define mver    1.4
 Name:           qmmp-plugin-pack
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
@@ -93,8 +93,16 @@ Requires:       %{name} = %{version}-%{release}
 %description xmp
 Qmmp plugin which uses libxmp to play module and tracker files.
 
+%package youtube
+Summary:        Qmmp plugin which uses the youtube-dl tool
+Requires:       %{name} = %{version}-%{release}
+Requires:       youtube-dl
+
+%description youtube
+Qmmp plugin which uses youtube-dl to stream videos.
+
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
@@ -109,6 +117,7 @@ Qmmp plugin which uses libxmp to play module and tracker files.
 %license COPYING
 %doc AUTHORS ChangeLog README
 %dir %{_libdir}/qmmp-%{mver}/
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files ffap
 %dir %{_libdir}/qmmp-%{mver}/Input/
@@ -129,5 +138,9 @@ Qmmp plugin which uses libxmp to play module and tracker files.
 %files xmp
 %dir %{_libdir}/qmmp-%{mver}/Input/
 %{_libdir}/qmmp-%{mver}/Input/libxmp.so
+
+%files youtube
+%dir %{_libdir}/qmmp-%{mver}/Transports
+%{_libdir}/qmmp-%{mver}/Transports/libytb.so
 
 %changelog
