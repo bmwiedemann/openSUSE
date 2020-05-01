@@ -112,4 +112,13 @@ part of summer 20013 libyal refresh for opensuse 13.1</comment>
     <comment></comment>
     <requestid>696091</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a17c7b392ce1398302f9b15e77ae7b86</srcmd5>
+    <version>0~20190323</version>
+    <time>1588324342</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799065</requestid>
+  </revision>
 </revisionlist>

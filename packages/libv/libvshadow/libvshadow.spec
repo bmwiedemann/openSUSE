@@ -89,18 +89,6 @@ Requires:       %{lname} = %{version}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package        -n python2-%{name}
-Summary:        Python 2 binding for libvshadow
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python2
-BuildRequires:  pkgconfig(python2)
-Obsoletes:      python-%{name}
-
-%description    -n python2-%{name}
-Python 2 binding for libvshadow.  libvshadow can read windows event files
-
 %package        -n python3-%{name}
 Summary:        Python 3 binding for libvshadow
 License:        LGPL-3.0-or-later
@@ -122,7 +110,7 @@ cp "%SOURCE3" .
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 
 make %{?_smp_mflags}
 
@@ -159,12 +147,6 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libvshadow.pc
 %{_mandir}/man3/*.gz
-
-%files -n python2-%{name}
-%defattr(644,root,root,755)
-%doc AUTHORS README
-%license COPYING 
-%{python_sitearch}/*.so
 
 %files -n python3-%{name}
 %defattr(644,root,root,755)
