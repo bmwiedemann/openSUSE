@@ -16,6 +16,9 @@
 #
 
 
+%ifarch %arm aarch64
+%define _lto_cflags %{nil}
+%endif
 Name:           lsp-plugins
 Version:        1.1.19
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 16:21:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO for %arm and aarch64 to fix build
+
+-------------------------------------------------------------------
 Tue Apr 21 14:21:14 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to 1.1.19
