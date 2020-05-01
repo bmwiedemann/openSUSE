@@ -35,8 +35,8 @@ index bfc87db40..0a477db5d 100644
                  AC_MSG_ERROR([--enable-$1 cannot be used without --enable-gtk])
              fi
              ;;
--        ampache|qtaudio|qtglspectrum)
-+        ampache|qtaudio|qtglspectrum|qthotkey)
+-        ampache|qtaudio|qtglspectrum|streamtuner)
++        ampache|qtaudio|qtglspectrum|streamtuner|qthotkey)
              plugin_allowed=$USE_QT
              if test $plugin_allowed = no -a $2 = yes ; then
                  AC_MSG_ERROR([--enable-$1 cannot be used without --enable-qt])
@@ -56,7 +56,7 @@ index bfc87db40..0a477db5d 100644
  
 @@ -844,6 +851,7 @@ if test "x$USE_QT" = "xyes" ; then
      echo "  Status Icon:                            yes"
-     echo "  Stream Tuner:                           $have_streamtuner"
+     echo "  Stream Tuner (experimental):            $have_streamtuner"
      echo "  VU Meter:                               yes"
 +    echo "  X11 Global Hotkeys:                     $have_qthotkey"
      echo
