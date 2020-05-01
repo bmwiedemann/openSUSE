@@ -1,7 +1,7 @@
 #
 # spec file for package python-positional
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,16 @@ URL:            https://github.com/morganfainberg/positional
 Source:         https://files.pythonhosted.org/packages/source/p/positional/positional-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-wrapt
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module testrepository >= 0.0.18}
-BuildRequires:  %{python_module testresources >= 0.2.4} 
+BuildRequires:  %{python_module testresources >= 0.2.4}
 BuildRequires:  %{python_module testtools >= 1.4.0}
 BuildRequires:  %{python_module wrapt}
 # /SECTION
-Requires:       python-wrapt
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,9 +52,12 @@ of the google-api client.
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHON=$python
 [ -d .testrepository/ ] && rm -r .testrepository/
 $python -B setup.py test
 }

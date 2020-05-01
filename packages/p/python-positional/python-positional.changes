@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:33:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
 Thu Apr 11 18:23:33 UTC 2019 - pgajdos@suse.com
 
 - module was set to 7 - Inactive, I guess we should consider
