@@ -165,4 +165,15 @@
     been removed.</comment>
     <requestid>761149</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>06f8d5e3056070f34e5981f5f55d7330</srcmd5>
+    <version>3.1.0</version>
+    <time>1588323962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Python 2.7 and 3.4 are no longer supported
+  * New mocker fixtures added that allow using mocking functionality
+    in other scopes</comment>
+    <requestid>798138</requestid>
+  </revision>
 </revisionlist>

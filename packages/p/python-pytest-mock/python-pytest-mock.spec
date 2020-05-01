@@ -16,11 +16,10 @@
 #
 
 
-%define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-pytest-mock
-Version:        2.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
@@ -33,12 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  %{oldpython}-mock
-%endif
-%ifpython2
-Requires:       %{oldpython}-mock
-%endif
 %python_subpackages
 
 %description
