@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:28:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.3.0:
+  * Require at least pytest 4.3
+- Remove merged test_flaky.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 10:26:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

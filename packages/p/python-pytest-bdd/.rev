@@ -46,4 +46,14 @@
     <comment>- Fix build without python2</comment>
     <requestid>795763</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c3e829900511c817c1acab451a54021</srcmd5>
+    <version>3.3.0</version>
+    <time>1588324154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Require at least pytest 4.3
+- Remove merged test_flaky.patch</comment>
+    <requestid>798143</requestid>
+  </revision>
 </revisionlist>

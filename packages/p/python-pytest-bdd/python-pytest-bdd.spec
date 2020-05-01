@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-bdd
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-bdd
 Source:         https://github.com/pytest-dev/pytest-bdd/archive/%{version}.tar.gz#/pytest-bdd-%{version}.tar.gz
-Patch0:         test_flaky.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,7 +33,7 @@ Requires:       python-glob2
 Requires:       python-parse
 Requires:       python-parse_type
 Requires:       python-py
-Requires:       python-pytest >= 3.0.0
+Requires:       python-pytest >= 4.3.0
 Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -46,7 +45,7 @@ BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parse_type}
 BuildRequires:  %{python_module parse}
-BuildRequires:  %{python_module pytest >= 3.0.0}
+BuildRequires:  %{python_module pytest >= 4.3.0}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module six >= 1.9.0}
 %if %{with python2}
@@ -76,7 +75,6 @@ containing the side effects of the Gherkin imperative declarations.
 
 %prep
 %setup -q -n pytest-bdd-%{version}
-%patch0 -p1
 sed -i '/tox/d' setup.py
 
 %build
@@ -89,7 +87,9 @@ sed -i '/tox/d' setup.py
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+export PYTHONDONTWRITEBYTECODE=1
+# test_generate_with_quotes and test_unicode_characters require ptyest-bdd binary which we handle with u-a
+%pytest -k 'not test_generate_with_quotes and not test_unicode_characters'
 
 %post
 %python_install_alternative pytest-bdd
