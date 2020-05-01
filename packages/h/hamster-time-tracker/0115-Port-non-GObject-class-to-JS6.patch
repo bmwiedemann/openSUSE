@@ -1,14 +1,15 @@
-From 9386973450e23e6d619c35fe563eb6cc6afb6935 Mon Sep 17 00:00:00 2001
+From 19e534a037a3c6ac94e94f810eb03fff8c82b3fb Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 23:44:04 +0200
-Subject: [PATCH 14/18] Port non-GObject class to JS6
+Subject: [PATCH 115/130] Port non-GObject class to JS6
+
+This patch is heavily based on original work by
+Ernestas Kulik <ekulik@redhat.com>.
 
 Continue port to ES6 by converting the Controller class, too.
 This is not strictly necessary to make the extension work,
 but allows dropping the "Lang" module.
 This patch deliberately breaks indentation, for ease of review.
-
-Heavily based on work by Ernestas Kulik <ekulik@redhat.com>
 ---
  extension/extension.js | 65 ++++++++++++++++++------------------------
  1 file changed, 28 insertions(+), 37 deletions(-)
@@ -159,5 +160,5 @@ index 3168827..abd17de 100644
  
  
 -- 
-2.21.0
+2.26.1
 

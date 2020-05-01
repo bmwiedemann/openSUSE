@@ -1,7 +1,10 @@
-From e2a5edf3d768a0219e6cc4296e1a419b251a8f49 Mon Sep 17 00:00:00 2001
+From 86b61b5d552754b58960fcea1afd886112337e18 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 16:10:40 +0200
-Subject: [PATCH 10/18] Port GObject classes to JS6 classes
+Subject: [PATCH 111/130] Port GObject classes to JS6 classes
+
+This patch is heavily based on original work by
+Ernestas Kulik <ekulik@redhat.com>.
 
 This patch is required to make hamster-shell-extension work on
 GNOME 3.32. At the same time, it breaks compatibility with older
@@ -9,8 +12,6 @@ gnome-shell versions that don't support ES6 class syntax.
 
 See https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/361
 Fixes https://github.com/projecthamster/hamster-shell-extension/issues/307
-
-Heavily based on work by Ernestas Kulik <ekulik@redhat.com>
 ---
  extension/prefs.js                        | 24 +++++------
  extension/widgets/categoryTotalsWidget.js | 18 ++++-----
@@ -482,5 +483,5 @@ index 1ec2de3..1b7f84a 100644
 +    }
  });
 -- 
-2.21.0
+2.26.1
 

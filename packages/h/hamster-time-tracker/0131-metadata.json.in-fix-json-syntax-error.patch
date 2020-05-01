@@ -1,0 +1,24 @@
+From f3cae0904c419146c1a9b0730953257506e04a49 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 28 Apr 2020 14:23:03 +0200
+Subject: [PATCH] metadata.json.in: fix json syntax error
+
+Fixes: 4bfd241ae541 ("Makefile: configurable extension UUID")
+---
+ data/metadata.json.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 8581b60..0eef4e1 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -14,5 +14,5 @@
+         "3.36"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+-    "uuid": @UUID@,
++    "uuid": @UUID@
+ }
+-- 
+2.26.2
+

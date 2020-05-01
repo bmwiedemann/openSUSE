@@ -1,7 +1,77 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:34:47 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix malfunction of backspace key in GNOME extension (3.36)
+  * add patch: 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+
+-------------------------------------------------------------------
+Tue Apr 28 12:28:12 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix syntax error in metadata.json.in
+  * add patch: 0131-metadata.json.in-fix-json-syntax-error.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 11:01:53 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Support GNOME 3.34 on SLE15-SP2/Leap15.2
+- Correctly set GNOME shell version depending on OS release
+- Update shell extension to GNOME-3.36 branch, and use upstream patch order
+  * renumber patch: 0101-Don-t-try-to-access-controller.activities-before-it-.patch
+    (was 0001-Don-t-try-to-access-controller.activities-before-it-.patch)
+  * renumber patch: 0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+    (was 0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch)
+  * renumber patch: 0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+    (was 0003-convenience.js-has-been-removed-in-GNOME-extensions-.patch)
+  * renumber patch: 0104-Makefile-allow-shipping-convenience.js.patch
+    (was 0005-Makefile-allow-shipping-convenience.js.patch)
+  * renumber patch: 0105-metadata.json-mark-GNOME-3.30-as-supported.patch
+    (was 0004-metadata.json-mark-GNOME-3.30-as-supported.patch)
+  * remove patch: 0006-Makefile-don-t-zip.patch
+  * add patch: 0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
+  * add patch: 0107-metadata.json-remove-version-field.patch
+  * renumber patch: 0108-drop-convenience.js.patch
+    (was 0007-drop-convenience.js.patch)
+  * renumber patch: 0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+    (was 0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch)
+  * renumber patch: 0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+    (was 0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch)
+  * renumber patch: 0111-Port-GObject-classes-to-JS6-classes.patch
+    (was 0010-Port-GObject-classes-to-JS6-classes.patch)
+  * renumber patch: 0112-add-jshint-validthis-to-silence-warnings-about-stric.patch
+    (was 0011-add-jshint-validthis-to-silence-warnings-about-stric.patch)
+  * renumber patch: 0113-todaysFactsWidget-add-missing-bind.patch
+    (was 0012-todaysFactsWidget-add-missing-bind.patch)
+  * renumber patch: 0114-replace-Lang.bind-with-function-.bind.patch
+    (was 0013-replace-Lang.bind-with-function-.bind.patch)
+  * renumber patch: 0115-Port-non-GObject-class-to-JS6.patch
+    (was 0014-Port-non-GObject-class-to-JS6.patch)
+  * renumber patch: 0116-extension.js-add-jshint-validthis-hints.patch
+    (was 0015-extension.js-add-jshint-validthis-hints.patch)
+  * renumber patch: 0117-extension.js-fix-indentation-after-previous-change.patch
+    (was 0016-extension.js-fix-indentation-after-previous-change.patch)
+  * renumber patch: 0118-Don-t-log-ACTIVITIES-at-every-refresh.patch
+    (was 0017-Don-t-log-ACTIVITIES-at-every-refresh.patch)
+  * renumber patch: 0119-doc-remove-broken-link-to-usejsdoc.org.patch
+    (was 0018-doc-remove-broken-link-to-usejsdoc.org.patch)
+  * renumber patch: 0120-factsBox-use-GObject.registerClass.patch
+    (was 0019-factsBox-use-GObject.registerClass.patch)
+  * renumber patch: 0121-panelWidget-fix-object.actor-is-deprecated-warning.patch
+    (was 0020-panelWidget-fix-object.actor-is-deprecated-warning.patch)
+  * renumber patch: 0122-metadata.json-mark-GNOME-3.34-as-supported.patch
+    (was 0021-metadata.json-mark-GNOME-3.34-as-supported.patch)
+  * add patch: 0123-Makefile-don-t-fail-if-zip-is-unavailable.patch
+  * add patch: 0124-Makefile-collect-must-depend-on-build.patch
+  * add patch: 0125-todaysFactsWidget-replace-Clutter.TableLayout-with-C.patch
+  * add patch: 0126-Fix-GNOME-shell-error-message-about-factsBox.FactsBo.patch
+  * add patch: 0127-Makefile-configurable-extension-UUID.patch
+  * add patch: 0128-metadata.json.in-mark-GNOME-3.36-supported.patch
+  * add patch: 0129-README.rst-mention-the-GNOME-extensions-tool.patch
+  * add patch: 0130-README.rst-Add-a-section-about-UUID-changing.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 16:41:04 UTC 2020 - mwilck@suse.com
 
-- Update to version v3.0.1+8:
+- Update to version v3.0.1+8:s
   * New source file hamster-time-tracker-v3.0.1+8.tar.xz
     (3.0.1 + 2 bug fixes, upstream commit e6b90fcd)
   * Fix off-by-one error in hamster export tsv (upstream 

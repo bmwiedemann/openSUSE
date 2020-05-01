@@ -1,7 +1,7 @@
-From 69af56aff2e49cf8888f70a761bfa281ad48ef95 Mon Sep 17 00:00:00 2001
+From 066234ad4793ec79c3a83c84dff08af5502f91d2 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Tue, 22 Oct 2019 16:50:13 +0200
-Subject: [PATCH 19/21] factsBox: use GObject.registerClass()
+Subject: [PATCH 120/130] factsBox: use GObject.registerClass()
 
 For some reason I don't remember, just this class had been handled
 differently in e2a5edf ("Port GObject classes to JS6 classes").
@@ -9,8 +9,6 @@ Handle them like all others.
 
 Fixes this problem:
 gnome-shell[9973]: TypeError: this.factsBox.refresh is not a function
-
-Signed-off-by: Martin Wilck <mwilck@suse.com>
 ---
  extension/widgets/factsBox.js | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
@@ -40,5 +38,5 @@ index 5deb703..e524781 100644
 -};
 +});
 -- 
-2.23.0
+2.26.1
 

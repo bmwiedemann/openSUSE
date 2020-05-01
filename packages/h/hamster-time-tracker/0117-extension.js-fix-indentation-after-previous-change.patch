@@ -1,7 +1,7 @@
-From f284c2d1d9c55aa6be35c98a2dd7b5e5f8dc4a0b Mon Sep 17 00:00:00 2001
+From b9dca0f0ab4734e85323f571f7c7848f5b213377 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 23:49:53 +0200
-Subject: [PATCH 16/18] extension.js: fix indentation after previous change
+Subject: [PATCH 117/130] extension.js: fix indentation after previous change
 
 Patch "Port non-GObject class to JS6" introduced indentation
 problems. Fix them.
@@ -326,5 +326,5 @@ index 3c84759..2d398c1 100644
  
  
 -- 
-2.21.0
+2.26.1
 

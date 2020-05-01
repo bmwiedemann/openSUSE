@@ -1,7 +1,7 @@
-From ab5df1123857b3b1b6efc463f7bba7aa448192b7 Mon Sep 17 00:00:00 2001
+From 40d60553c99c7bafd36268039aa6a93c76c5cdc4 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 22:35:44 +0200
-Subject: [PATCH 13/18] replace Lang.bind() with $(function).bind()
+Subject: [PATCH 114/130] replace Lang.bind() with $(function).bind()
 
 Code cleanup. Mostly gets rid of the Lang module.
 Don't use arrow functions just yet.
@@ -327,5 +327,5 @@ index 1d8acf5..deafbdc 100644
                  layout.pack(component, rowComponents.indexOf(component), rowCount);
              }
 -- 
-2.21.0
+2.26.1
 

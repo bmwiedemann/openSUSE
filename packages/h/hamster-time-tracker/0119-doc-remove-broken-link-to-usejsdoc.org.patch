@@ -1,7 +1,7 @@
-From 0fc670a1bfe83e2e2b4e96c3e172557227a71b6f Mon Sep 17 00:00:00 2001
+From 3c7aae17c1989be7ff2085c5520bbca273b907d3 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 10 May 2019 00:35:27 +0200
-Subject: [PATCH 18/18] doc: remove broken link to usejsdoc.org
+Subject: [PATCH 119/130] doc: remove broken link to usejsdoc.org
 
 The site seems to be down, and no obvious replacement exists.
 This breaks the CI.
@@ -23,5 +23,5 @@ index f96cdf4..bc5f0e3 100644
  - Headings should capitalise each word.
  - Please use ``-`` for unordered lists and ``#.`` for ordered lists unless you
 -- 
-2.21.0
+2.26.1
 

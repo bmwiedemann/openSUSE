@@ -1,8 +1,8 @@
-From 3135c6e58ec533b28e695840273f9a84e0b194d2 Mon Sep 17 00:00:00 2001
+From 63e00c973ad0db634ea56a78c2bea16c31497d0d Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 16:50:25 +0200
-Subject: [PATCH 11/18] add "jshint validthis" to silence warnings about strict
- mode
+Subject: [PATCH 112/130] add "jshint validthis" to silence warnings about
+ strict mode
 
 I haven't found a more elegant way to fix these warnings,
 which break "make test-style".
@@ -44,5 +44,5 @@ index 1b7f84a..cb74fd7 100644
                      // not interested in the new id - this shuts up the warning
                  }));
 -- 
-2.21.0
+2.26.1
 

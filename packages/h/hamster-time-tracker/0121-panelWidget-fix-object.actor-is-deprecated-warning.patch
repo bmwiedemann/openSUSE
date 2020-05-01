@@ -1,13 +1,11 @@
-From 5c88b3c79f192acc69a8e13d19be7469752fb01b Mon Sep 17 00:00:00 2001
+From 9f5a7201c2d8c40c5308cabf9c6d8ad35a6d3b05 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Tue, 22 Oct 2019 16:54:26 +0200
-Subject: [PATCH 20/21] panelWidget: fix "object.actor is deprecated" warning
+Subject: [PATCH 121/130] panelWidget: fix "object.actor is deprecated" warning
 
 Fixes: gnome-shell[9973]: Usage of object.actor is deprecated for PanelWidget
 
 See https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/487
-
-Signed-off-by: Martin Wilck <mwilck@suse.com>
 ---
  extension/widgets/panelWidget.js | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
@@ -30,5 +28,5 @@ index 905623a..9288f06 100644
          this.panelLabel = new St.Label({
              text: _("Loading..."),
 -- 
-2.23.0
+2.26.1
 

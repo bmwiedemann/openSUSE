@@ -16,7 +16,17 @@
 #
 
 %global ext_version 0.10.0
+
+%if 0%{?suse_version} >= 1550
+%global ext_gnome_version 3.36
+%else
+%if 0%{?sle_version} >= 150200
 %global ext_gnome_version 3.34
+%else
+%global ext_gnome_version 3.26
+%endif
+%endif
+
 %global ext_uuid contact@projecthamster.org
 %bcond_without extension
 
@@ -35,27 +45,43 @@ Source2:        https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-
 Patch1:         replace-env-python-invocation-by-direct-call.patch
 Patch2:		waf-skip-gsettings-schema-compilation.patch
 # Patches for GNOME extension
-Patch101:       0001-Don-t-try-to-access-controller.activities-before-it-.patch
-Patch102:       0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
-Patch103:       0003-convenience.js-has-been-removed-in-GNOME-extensions-.patch
-Patch104:       0004-metadata.json-mark-GNOME-3.30-as-supported.patch
-Patch105:       0005-Makefile-allow-shipping-convenience.js.patch
-Patch106:       0006-Makefile-don-t-zip.patch
-Patch107:       0007-drop-convenience.js.patch
-Patch108:       0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
-Patch109:       0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
-Patch110:       0010-Port-GObject-classes-to-JS6-classes.patch
-Patch111:       0011-add-jshint-validthis-to-silence-warnings-about-stric.patch
-Patch112:       0012-todaysFactsWidget-add-missing-bind.patch
-Patch113:       0013-replace-Lang.bind-with-function-.bind.patch
-Patch114:       0014-Port-non-GObject-class-to-JS6.patch
-Patch115:       0015-extension.js-add-jshint-validthis-hints.patch
-Patch116:       0016-extension.js-fix-indentation-after-previous-change.patch
-Patch117:       0017-Don-t-log-ACTIVITIES-at-every-refresh.patch
-Patch118:       0018-doc-remove-broken-link-to-usejsdoc.org.patch
-Patch119:	0019-factsBox-use-GObject.registerClass.patch
-Patch120:	0020-panelWidget-fix-object.actor-is-deprecated-warning.patch
-Patch121:	0021-metadata.json-mark-GNOME-3.34-as-supported.patch
+# GNOME up to 3.30
+Patch101:	0101-Don-t-try-to-access-controller.activities-before-it-.patch
+Patch102:	0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+Patch103:	0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+Patch104:	0104-Makefile-allow-shipping-convenience.js.patch
+Patch105:	0105-metadata.json-mark-GNOME-3.30-as-supported.patch
+Patch106:	0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
+Patch107:	0107-metadata.json-remove-version-field.patch
+# GNOME 3.32
+Patch108:	0108-drop-convenience.js.patch
+Patch109:	0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+Patch110:	0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+Patch111:	0111-Port-GObject-classes-to-JS6-classes.patch
+Patch112:	0112-add-jshint-validthis-to-silence-warnings-about-stric.patch
+Patch113:	0113-todaysFactsWidget-add-missing-bind.patch
+Patch114:	0114-replace-Lang.bind-with-function-.bind.patch
+Patch115:	0115-Port-non-GObject-class-to-JS6.patch
+Patch116:	0116-extension.js-add-jshint-validthis-hints.patch
+Patch117:	0117-extension.js-fix-indentation-after-previous-change.patch
+Patch118:	0118-Don-t-log-ACTIVITIES-at-every-refresh.patch
+Patch119:	0119-doc-remove-broken-link-to-usejsdoc.org.patch
+# GNOME 3.34
+Patch120:	0120-factsBox-use-GObject.registerClass.patch
+Patch121:	0121-panelWidget-fix-object.actor-is-deprecated-warning.patch
+Patch122:	0122-metadata.json-mark-GNOME-3.34-as-supported.patch
+Patch123:	0123-Makefile-don-t-fail-if-zip-is-unavailable.patch
+Patch124:	0124-Makefile-collect-must-depend-on-build.patch
+# GNOME 3.36
+Patch125:	0125-todaysFactsWidget-replace-Clutter.TableLayout-with-C.patch
+Patch126:	0126-Fix-GNOME-shell-error-message-about-factsBox.FactsBo.patch
+Patch127:	0127-Makefile-configurable-extension-UUID.patch
+Patch128:	0128-metadata.json.in-mark-GNOME-3.36-supported.patch
+Patch129:	0129-README.rst-mention-the-GNOME-extensions-tool.patch
+Patch130:	0130-README.rst-Add-a-section-about-UUID-changing.patch
+Patch131:	0131-metadata.json.in-fix-json-syntax-error.patch
+Patch132:	0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+
 BuildRequires:  fdupes
 BuildRequires:  intltool
 # For detecting typelib() dependencies
@@ -73,6 +99,9 @@ BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 # For ownership on icon directories
 BuildRequires:  hicolor-icon-theme
+%if %{with extension}
+BuildRequires:  zip
+%endif
 # Note:
 # - we do not have the gnomeapplet bindings anymore (it doesn't work with
 #   GNOME 3), so we don't add a Requires/Recommends for it.
@@ -119,10 +148,11 @@ cd hamster-shell-extension-%{ext_version}
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
-# Tumbleweed: GNOME 3.32, 3.34 support for shell extension
-# https://github.com/projecthamster/hamster-shell-extension/pull/316
-%if 0%{?suse_version} >= 1550
 %patch107 -p1
+# SLE15-SP2 / Leap 15.2:
+# GNOME 3.34 support for shell extension
+# https://github.com/projecthamster/hamster-shell-extension/pull/316
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
 %patch108 -p1
 %patch109 -p1
 %patch110 -p1
@@ -137,7 +167,23 @@ cd hamster-shell-extension-%{ext_version}
 %patch119 -p1
 %patch120 -p1
 %patch121 -p1
+%patch122 -p1
+%patch123 -p1
+%patch124 -p1
+# TW: GNOME 3.36 support
+# https://github.com/projecthamster/hamster-shell-extension/pull/323
+%if 0%{?suse_version} >= 1550
+%patch125 -p1
+%patch126 -p1
+%patch127 -p1
+%patch128 -p1
+%patch129 -p1
+%patch130 -p1
+%patch131 -p1
+%patch132 -p1
 %endif
+%endif
+
 mkdir build
 cp %{SOURCE2} build
 %endif
@@ -157,7 +203,7 @@ make dist
 
 %if %{with extension}
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{ext_uuid}
-tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tgz \
+tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
     -C %{buildroot}%{_datadir}/gnome-shell/extensions/%{ext_uuid}
 %endif
 
@@ -198,11 +244,12 @@ Release:        0
 Summary:        Hamster time tracker for GNOME Shell status menu
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
-%if 0%{?suse_version} >= 1550
-Requires:       gnome-shell >= 3.32
-%else
+Requires:       gnome-shell >= %{ext_gnome_version}
+%if 0%{?sle_version} >= 150200 && 0%{?suse_version} < 1550
+Requires:       gnome-shell < 3.36
+%endif
+%if 0%{?sle_version} < 150200 && 0%{?suse_version} < 1550
 Requires:       gnome-shell < 3.32
-Requires:       gnome-shell >= 3.10
 %endif
 Requires:       %{name}
 Supplements:    packageand(gnome-shell:%{name})

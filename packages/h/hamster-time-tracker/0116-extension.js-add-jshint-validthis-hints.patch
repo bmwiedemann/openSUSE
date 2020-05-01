@@ -1,7 +1,7 @@
-From 0dcf885a16a77b00885049fdd21b1d24909415f9 Mon Sep 17 00:00:00 2001
+From bcd75c9778d6dd6525565645085b093f3d3b826c Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 23:47:25 +0200
-Subject: [PATCH 15/18] extension.js: add jshint validthis hints
+Subject: [PATCH 116/130] extension.js: add jshint validthis hints
 
 ---
  extension/extension.js | 2 ++
@@ -28,5 +28,5 @@ index abd17de..3c84759 100644
                  Main.notify(_("hamster-shell-extension: 'hamster-windows-service' not running. Shutting down."));
                  this.disable();
 -- 
-2.21.0
+2.26.1
 

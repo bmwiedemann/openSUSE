@@ -1,8 +1,8 @@
 From f2d568919394346f020586c2a1bd98a434744f31 Mon Sep 17 00:00:00 2001
 From: Hedayat Vatankhah <hedayat.fwd@gmail.com>
 Date: Wed, 19 Dec 2018 15:20:36 +0330
-Subject: [PATCH 1/6] Don't try to access controller.activities before it is
- filled
+Subject: [PATCH 101/130] Don't try to access controller.activities before it
+ is filled
 
 ---
  extension/extension.js | 10 +++-------
@@ -40,5 +40,5 @@ index cc3dfc6..065dfc7 100644
  
          /**
 -- 
-2.20.1
+2.26.1
 

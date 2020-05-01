@@ -1,7 +1,7 @@
-From 6d1bdaa5174056ceaba1178cec7d0e25fea57302 Mon Sep 17 00:00:00 2001
+From a4c9ef8826b7f44c1397ae20a6993aad1e8a47b1 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Thu, 9 May 2019 23:09:38 +0200
-Subject: [PATCH 07/18] drop convenience.js
+Subject: [PATCH 108/130] drop convenience.js
 
 This functionality is provided by ExtensionUtils in GNOME 3.32.
 ---
@@ -11,7 +11,7 @@ This functionality is provided by ExtensionUtils in GNOME 3.32.
  3 files changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index cbc0eaa..e2b52b4 100644
+index 5e43e2a..1db55aa 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -55,10 +55,7 @@ clean-test-docs:
@@ -77,5 +77,5 @@ index dc4bc23..93ab15e 100644
          let vbox, label;
  
 -- 
-2.21.0
+2.26.1
 

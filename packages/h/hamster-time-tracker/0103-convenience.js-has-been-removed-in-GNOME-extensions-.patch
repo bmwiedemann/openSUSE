@@ -1,7 +1,8 @@
-From e3fadf3a419a4e6463ace40a335e9d399a10d9b2 Mon Sep 17 00:00:00 2001
+From 84840ae1392f70405fe0428cfd27fff3bb861c96 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 1 Mar 2019 14:28:28 +0100
-Subject: [PATCH 3/6] convenience.js has been removed in GNOME extensions >3.30
+Subject: [PATCH 103/130] convenience.js has been removed in GNOME extensions
+ >3.30
 
 ---
  Makefile | 2 +-
@@ -21,5 +22,5 @@ index b298126..b1a6a7a 100644
  compile: collect
  	glib-compile-schemas $(BUILDDIR)/schemas
 -- 
-2.20.1
+2.26.1
 

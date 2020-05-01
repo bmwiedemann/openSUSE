@@ -42,4 +42,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>789902</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e454775137ad70cc60dad6971e73de6b</srcmd5>
+    <version>unknown</version>
+    <time>1588324185</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix malfunction of backspace key in GNOME extension (3.36)
+  * add patch: 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+
+- Fix syntax error in metadata.json.in
+  * add patch: 0131-metadata.json.in-fix-json-syntax-error.patch
+
+- Support GNOME 3.34 on SLE15-SP2/Leap15.2
+- Correctly set GNOME shell version depending on OS release
+- Update shell extension to GNOME-3.36 branch, and use upstream patch order
+  * renumber patch: 0101-Don-t-try-to-access-controller.activities-before-it-.patch
+    (was 0001-Don-t-try-to-access-controller.activities-before-it-.patch)
+  * renumber patch: 0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+    (was 0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch)
+  * renumber patch: 0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+    (was 0003-convenience.js-has-been-removed-in-GNOME-extensions-.patch)
+  * renumber patch: 0104-Makefile-allow-shipping-convenience.js.patch
+    (was 0005-Makefile-allow-shipping-convenience.js.patch)
+  * renumber patch: 0105-metadata.json-mark-GNOME-3.30-as-supported.patch
+    (was 0004-metadata.json-mark-GNOME-3.30-as-supported.patch)
+  * remove patch: 0006-Makefile-don-t-zip.patch
+  * add patch: 0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
+  * add patch: 0107-metadata.json-remove-version-field.patch
+  * renumber patch: 0108-drop-convenience.js.patch
+    (was 0007-drop-convenience.js.patch)
+  * renumber patch: 0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+    (was 0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch)
+  * renumber patch: 0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+    (was 0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch)
+  * renumber patch: 0111-Port-GObject-classes-to-JS6-classes.patch
+    (was 0010-Port-GObject-classes-to-JS6-classes.patch)</comment>
+    <requestid>798968</requestid>
+  </revision>
 </revisionlist>

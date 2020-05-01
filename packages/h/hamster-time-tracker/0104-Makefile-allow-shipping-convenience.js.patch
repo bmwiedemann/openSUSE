@@ -1,7 +1,7 @@
-From 4cf894b1968700808f948ecb0ce6d8c7e73969eb Mon Sep 17 00:00:00 2001
+From 3e7549901148c5b4687cad21595041bb8d9e5dd3 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 1 Mar 2019 14:50:03 +0100
-Subject: [PATCH 5/6] Makefile: allow shipping convenience.js
+Subject: [PATCH 104/130] Makefile: allow shipping convenience.js
 
 This is for build environments that are offline and can't
 fetch convenience.js from the net.
@@ -42,5 +42,5 @@ index b1a6a7a..8892a93 100644
  # And for the extension to work extension.js etc. need to be at the root.
  	mkdir -p $(DISTDIR);
 -- 
-2.20.1
+2.26.1
 

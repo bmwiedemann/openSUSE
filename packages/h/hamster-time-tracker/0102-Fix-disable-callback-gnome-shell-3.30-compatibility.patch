@@ -1,7 +1,7 @@
 From d748dccc794b9efbc8f81018be5b2a78d7d975c7 Mon Sep 17 00:00:00 2001
 From: Hedayat Vatankhah <hedayat.fwd@gmail.com>
 Date: Wed, 19 Dec 2018 15:24:42 +0330
-Subject: [PATCH 2/6] Fix disable callback: gnome shell 3.30 compatibility
+Subject: [PATCH 102/130] Fix disable callback: gnome shell 3.30 compatibility
 
 ---
  extension/extension.js | 2 --
@@ -21,5 +21,5 @@ index 065dfc7..65ac623 100644
              this.panelWidget = null;
              this.apiProxy = null;
 -- 
-2.20.1
+2.26.1
 
