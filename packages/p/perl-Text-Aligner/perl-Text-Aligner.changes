@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 03:13:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.16
+   see /usr/share/doc/packages/perl-Text-Aligner/Changes
+
+  0.16  2020-04-29
+        - Fix a $VERSION mismatch in lib/Text/Aligner.pm .
+          - Thanks to "[Tux]".
+  
+
+-------------------------------------------------------------------
 Wed Apr 29 03:20:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.15

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Text-Aligner
-Version:        0.15
+Version:        0.16
 Release:        0
 %define cpan_name Text-Aligner
 Summary:        Module to align text
