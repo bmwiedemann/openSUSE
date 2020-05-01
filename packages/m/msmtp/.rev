@@ -386,4 +386,12 @@ I hope it's ok this time. (forwarded request 138894 from benoit_monin)</comment>
 - update expired msmtp.keyring (forwarded request 793412 from benoit_monin)</comment>
     <requestid>793960</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>59568c4b67bb3a295524ee0d10d11de4</srcmd5>
+    <version>1.8.10</version>
+    <time>1588324464</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799161</requestid>
+  </revision>
 </revisionlist>

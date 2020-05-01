@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:43:57 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.10:
+  * This release fixes the msmtpq script that was accidentally
+    broken in 1.8.8.
+  * Furthermore, internationalization files are updated and a new
+    serbian translation is included. Thanks to the translators at
+    translationproject.org!
+  * Note that version 1.8.9 only partially fixed the msmtpq problem
+    and was quickly replaced by 1.8.10. 
+
+-------------------------------------------------------------------
 Sun Apr 12 14:08:58 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.8:
