@@ -55,4 +55,13 @@
     <comment>Staging:I</comment>
     <requestid>783976</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d83759907bee2ef40f3d8313f34e4697</srcmd5>
+    <version>1.8.0</version>
+    <time>1588323991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0
+  + no changes available</comment>
+    <requestid>798861</requestid>
+  </revision>
 </revisionlist>
