@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 29 09:02:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.14.4
+  * Fix panel build with vala 0.48 (bxo#16426)
+  * Fix memory leak in panel plugin wrapper (bxo#16640)
+  * tasklist: Fix crash middle-click-closing grouped windows
+    (bxo#16410)
+  * panel: Make sure "span monitors" is conditionally sensitive
+    (bxo#15169)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 22 12:10:12 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Added systray-symbolic-icons.patch. Backport to enable symbolic 
