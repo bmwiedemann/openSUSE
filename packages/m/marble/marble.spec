@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -31,30 +31,26 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gpsd-devel
+BuildRequires:  kf5-filesystem
+BuildRequires:  libqt5-qtlocation-devel
+BuildRequires:  libshp-devel
+BuildRequires:  perl
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5Runner)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  libqt5-qtlocation-devel
-BuildRequires:  libshp-devel
-BuildRequires:  perl
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -75,13 +71,17 @@ Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
 Requires:       marble-frontend = %{version}
 Recommends:     %{name}-doc = %{version}
+Recommends:     %{name}-lang
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 # Only include WebEngine on platforms where it is available
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
-Recommends:     %{name}-lang
 
 %description
 Marble is a viewer of map data.
@@ -100,7 +100,7 @@ The Qt frontend for the Marble map viewer
 Summary:        The KDE optimized frontend for Marble and several Plasmoids/Wallpapers
 Group:          Amusements/Teaching/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(marble:plasma5-desktop)
+Supplements:    (marble and plasma5-desktop)
 Conflicts:      marble-frontend
 Provides:       marble-frontend = %{version}
 
