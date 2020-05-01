@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:03:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.0.4
+  * added faac audio codec
+  * added command line options
+  * fix incorrect screen resolution
+  * fix folder button being unable to handle spaces in paths
+  * fix broken recording when target filename contains spaces
+  * fix area selector not supporting multiple monitors
+  * fix frame-reset-button not being visible
+  * fix visible frame in fps settings
+
+-------------------------------------------------------------------
 Tue Mar 31 08:58:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.0.3
