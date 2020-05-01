@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Apr 28 17:42:18 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
-- Protocol v2 in_vain fixes (bsc#1170741).
+- Protocol v2 in_vain fixes (bsc#1170741, bsc#1170939).
   Dropped: Revert-fetch-default-to-protocol-version-2.patch
   Added:   0001-fetch-pack-return-enum-from-process_acks.patch
            0002-fetch-pack-in-protocol-v2-in_vain-only-after-ACK.patch

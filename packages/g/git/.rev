@@ -2194,4 +2194,12 @@ git 2.12.3
     <comment></comment>
     <requestid>798758</requestid>
   </revision>
+  <revision rev="250" vrev="3">
+    <srcmd5>8ede456dc116937f9098d102a69945b1</srcmd5>
+    <version>2.26.2</version>
+    <time>1588324125</time>
+    <user>dimstar_suse</user>
+    <comment>- Protocol v2 in_vain fixes (bsc#1170741, bsc#1170939).</comment>
+    <requestid>799281</requestid>
+  </revision>
 </revisionlist>
