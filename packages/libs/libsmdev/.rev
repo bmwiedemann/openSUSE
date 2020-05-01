@@ -70,4 +70,13 @@ This is part of the summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment></comment>
     <requestid>695361</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7b521b930935964bcc8551ede687b8a6</srcmd5>
+    <version>0~20190315</version>
+    <time>1588324317</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799059</requestid>
+  </revision>
 </revisionlist>

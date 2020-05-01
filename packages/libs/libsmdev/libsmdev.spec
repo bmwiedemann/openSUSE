@@ -66,16 +66,6 @@ This subpackage contains the utility programs from libsmdev, which
 can access and read storage media devices and will determine
 information about such.
 
-%package -n python2-%{name}
-Summary:        Python bindings for libsmdev
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-BuildRequires:  pkgconfig(python2)
-Provides:       pysmdev = %{version}
-
-%description -n python2-%{name}
-Python 2 bindings for libsmdev, which is a library to access and read storage media devices.
-
 %package -n python3-%{name}
 Summary:        Python bindings for libsmdev
 Group:          Development/Languages/Python
@@ -90,7 +80,7 @@ Python 3 bindings for libsmdev, which is a library to access and read storage me
 %setup -q -n libsmdev-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -122,12 +112,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %{_bindir}/smdevinfo
 %{_mandir}/man1/smdevinfo.1*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING
-%{python_sitearch}/pysmdev.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)
