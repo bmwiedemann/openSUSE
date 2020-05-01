@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 29 10:47:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.0:
+  - Support ``user_function`` with ``cachetools.func`` decorators
+    (Python 3.8 compatibility).
+  
+  - Support ``cache_parameters()`` with ``cachetools.func`` decorators
+    (Python 3.9 compatibility).
+
+-------------------------------------------------------------------
 Fri Jan 24 09:43:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.0.0
