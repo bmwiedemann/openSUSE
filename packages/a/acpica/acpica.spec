@@ -1,7 +1,7 @@
 #
 # spec file for package acpica
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,9 @@ cd acpidump-%{dmp_ver}
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile drivers/acpi lib) | tar -xf -
 
 %build
+%global optflags %{optflags} -fcommon
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 cc %{SOURCE1} %{optflags} -o ec_access
 make %{?_smp_mflags} -C acpi_genl CFLAGS="%{optflags}"
 make %{?_smp_mflags} -C wmidump CFLAGS="%{optflags}"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:33:25 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable -fcommon in CFLAGS and CXXFLAGS in order
+  to fix boo#1160383.
+
+-------------------------------------------------------------------
 Thu Feb  6 08:19:10 UTC 2020 - trenn@suse.de
 
 - Add -fcommon as there are a lot re-definitions which lead to errors

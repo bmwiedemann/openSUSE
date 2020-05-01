@@ -516,4 +516,12 @@ You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be
 - Update to version 20200110</comment>
     <requestid>770466</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>c1be8893a6f8ab24a28a4f73d7222048</srcmd5>
+    <version>20200110</version>
+    <time>1588324049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798830</requestid>
+  </revision>
 </revisionlist>
