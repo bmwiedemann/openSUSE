@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 25 03:10:48 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.002002
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+
+  1.002002	2020-04-24
+  
+   [ Bug Fixes ]
+   - Bug in handling regexps in import lists; Exporter::Tiny allowed regexps
+     like /foo/i but not /foo/. Having trailing flags is now optional!
+     Tomohiro Hosaka++
+     <https://github.com/tobyink/p5-exporter-tiny/issues/6>
+   - Tests would fail if `PERL5OPT=-Mfeature=:5.18` environment variable was
+     set. This is because bareword `-default` was being interpreted as the
+     Perl `default` keyword.
+     zhumengu++
+     <https://github.com/tobyink/p5-exporter-tiny/issues/5>
+
+-------------------------------------------------------------------
 Wed Jul 18 05:22:03 UTC 2018 - coolo@suse.com
 
 - updated to 1.002001
