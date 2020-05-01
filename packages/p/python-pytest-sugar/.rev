@@ -47,4 +47,14 @@
     <comment>- Skip failing pytest5 checks that need tweaking upstream</comment>
     <requestid>718214</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e6cd4493099906b6b9fc8431dddbd9e</srcmd5>
+    <version>0.9.3</version>
+    <time>1588323951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * Fix incompatibility with pytest 5.4.0 (thanks @GuillaumeFavelier)
+- Drop patch pytest4.patch</comment>
+    <requestid>798131</requestid>
+  </revision>
 </revisionlist>

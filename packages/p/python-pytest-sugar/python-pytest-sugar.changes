@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:30:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.3:
+  * Fix incompatibility with pytest 5.4.0 (thanks @GuillaumeFavelier)
+- Drop patch pytest4.patch
+
+-------------------------------------------------------------------
 Wed Jul 24 07:09:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip failing pytest5 checks that need tweaking upstream
