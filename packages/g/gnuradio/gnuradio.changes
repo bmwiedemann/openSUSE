@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Apr 30 17:49:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update completely changed the way their tarballs are signed
+  Drop signature validation for now.
+- Remove file
+  * gnuradio-3.8.0.0.tar.xz.asc
+  * gnuradio.keyring
+
+-------------------------------------------------------------------
+Mon Apr 20 16:36:21 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.8.1.0:
+  * Changed on Project Scope
+    + clang-tidy improvements
+      - throw exceptions by value, catch by reference
+      - emplace_back where applicable
+      - empty() instead of vector::size() == 0
+    + use CMake to check for endianness instead of BOOST_BIG_ENDIAN
+  * gr-fec
+    + scipy becomes optional dependency (for polar channel code construction)
+  * gr_modtool
+    + use Boost.UTF instead of cppunit
+  * Fixed on Project Scope
+    + FindQwt paths
+    + floatAlmostEqual unittest assert function wrongly passing on 
+      sequence types
+    + Only require boost unittest when testing is enabled
+    + FindLOG4CPP typo
+    + numpy.fft(pack) imports
+    + several scipy imports that can be done with numpy alone
+  * gnuradio-runtime
+    + block gateway shadowed system port
+    + Flaky message passing unit test contained timeout (not the test's job)
+    + ctrlport/rpcaggregator & Co: removed storage of references to
+      scope-lifetime objects
+    + Sine table generation python was wrong
+    + get_tags_in_range for delay < (end-start)
+    + premature tag pruning
+    + release flattened flowgraph after stopping; fixes restartability/shutdown
+      issues
+  * gr-analog
+    + clipping in FM receiver: remove superfluous gain
+    + C++ generation for multiple blocks
+  * gr-audio
+    + portaudio source: lock acquisition
+  * gr-blocks
+    + rotator VOLK workaround
+  * gr-digital
+    + map_bb buffer overflow
+    + map_bb thread safety
+    + additive_scrambler count based reset
+  * gr-fec
+    + heap corruption in async_decoder
+    + cc_encoder was broken for constraint lengths > 8
+  * gr-fft
+    + restore Boost 1.53 compat
+  * gr-qtgui
+    + no longer requiring unnecessary key in edit_box_msg
+  * gr-uhd
+    + fixed examples under Py3
+    + multichannel objects not populating channels
+  * gr_modtool
+    + wrong use of input -> raw_input
+    + allow empty argument list
+    + testing
+    + check for and deny TSB under Python
+    + QA addition bugs
+    + correct path for C++ QA tests
+  * GRC
+    + several issues with YAML files
+    + nested objects now properly populate namespaces
+    + comments now included in block bounds calculation
+    + Wiki documentation link removed from OOT blocks' docs tab
+    + Dragging connections to auto-hide ports works now
+    + generated and re-generated several example flowgraphs
+    + bokeh_layout module name
+    + Revert toggle buttons to text entry for bool block props, allowing GRC
+    + variables to be used
+  * Added on Project Scope
+    + Codec2 development branch / future compat
+    + Boost 1.71 compat
+    + CI now checks for formatting
+    + gnuradio-runtime
+    + dot graphs now contain message edges
+    + Python wrapping for blocks' set_affinity and {g,s}et_alias
+  * gr-uhd
+    + UHD Filter API
+  * GRC
+    + block affinity, buffer sizes available as advanced options for blocks
+    + testing
+    + Python snippets (please snippet responsibly!)
+    + show_id flag added to embedded python blocks, Probes
+    + global option to toggle showing of IDs
+    + Help "Keyboard Shortcut" entry
+
+-------------------------------------------------------------------
 Tue Dec 17 09:34:53 UTC 2019 - Torsten Ohlenforst <torsten.ohlenforst@pretzel-solutions.com>
 
 - Added missing dependency to package python3-pyaml.

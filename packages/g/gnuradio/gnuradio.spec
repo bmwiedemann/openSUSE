@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %bcond_without docs
 
-%define sover  3_8_0
+%define sover  3_8_1
 Name:           gnuradio
-Version:        3.8.0.0
+Version:        3.8.1.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://gnuradio.org
 Source0:        https://github.com/gnuradio/gnuradio/releases/download/v%{version}/gnuradio-%{version}.tar.xz
-Source1:        https://github.com/gnuradio/gnuradio/releases/download/v%{version}/gnuradio-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
 # http://www.nathanwest.us/grc_to_37.sh
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
@@ -85,8 +83,8 @@ BuildRequires:  typelib(Gtk) = 3.0
 BuildRequires:  typelib(PangoCairo) = 1.0
 BuildRequires:  typelib(cairo) = 1.0
 Requires:       python3-numpy
-Requires:       python3-qt5
 Requires:       python3-pyaml >= 3.11
+Requires:       python3-qt5
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
