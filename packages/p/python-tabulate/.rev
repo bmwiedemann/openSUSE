@@ -66,4 +66,12 @@
     <comment>- remove pandas dependency (optional test dependency, and went python 3.x only)</comment>
     <requestid>783188</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c4d22d96f9c25222a312bd85708ee85</srcmd5>
+    <version>0.8.7</version>
+    <time>1588323900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797707</requestid>
+  </revision>
 </revisionlist>

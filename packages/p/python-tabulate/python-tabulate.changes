@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:25:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.8.7:
+  * Bug fixes.
+  * New format: `pretty`.
+  * HTML escaping.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:42:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - remove pandas dependency (optional test dependency, and went python 3.x only)
