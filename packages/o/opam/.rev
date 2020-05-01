@@ -56,4 +56,12 @@
     <comment>- use opam.patch to make opam compatible with the dose3 dune branch</comment>
     <requestid>780714</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>34c44cc850ca000d64a998b19e32539b</srcmd5>
+    <version>2.0.7</version>
+    <time>1588324356</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799124</requestid>
+  </revision>
 </revisionlist>

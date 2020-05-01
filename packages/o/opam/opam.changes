@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
+
+- Update to 2.0.7, via _service file
+  See included CHANGES for details
+
+-------------------------------------------------------------------
 Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
 
 - use opam.patch to make opam compatible with the dose3 dune branch

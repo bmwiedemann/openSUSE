@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
