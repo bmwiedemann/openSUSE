@@ -98,19 +98,6 @@ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.  see li
 This subpackage contains libraries and header files for developing
 applications that want to make use of libvhdi.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libvhdi, a VHD image format parser
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       %{lname} = %{version}
-Requires:       python
-Obsoletes:      python-%{name}
-
-%description -n python2-%{name}
-libvhdi is a library to access Virtual Hard Disk (VHD) image format. See libvhdi for details.
-
-This package contains Python 2 bindings for libvhdi.
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libvhdi, a VHD image format parser
 License:        LGPL-3.0-or-later
@@ -129,7 +116,7 @@ This package contains Python 3 bindings for libvhdi.
 cp "%{SOURCE2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -163,12 +150,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libvhdi.so
 %{_libdir}/pkgconfig/libvhdi.pc
 %{_mandir}/man3/libvhdi.3*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING
-%{python_sitearch}/pyvhdi.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)
