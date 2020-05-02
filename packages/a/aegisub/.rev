@@ -335,4 +335,14 @@
     <comment>Add reference for aegisub-fix_build_with_make4.3.patch</comment>
     <requestid>799131</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1127e48cd694e54101992c464533ce4a</srcmd5>
+    <version>3.2.2+git20191006</version>
+    <time>1588450737</time>
+    <user>dimstar_suse</user>
+    <comment>Replaced luabins.patch with luaL_Reg-not-luaL_reg.patch sent   upstream via https://github.com/Aegisub/Aegisub/issues/182
+Removed spec file generated git_version.h, it's not needed when  git metadata is present.
+</comment>
+    <requestid>799624</requestid>
+  </revision>
 </revisionlist>

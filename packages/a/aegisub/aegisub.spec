@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,8 @@ Source100:      %{name}-rpmlintrc
 Patch1:         Makefile.inc.in.patch
 Patch2:         remove-vendor-luajit-dependency.patch
 Patch3:         aegisub-no-optimize.patch
-Patch4:         luabins.patch
+Patch4:         luaL_Reg-not-luaL_reg.patch
+#luabins.patch
 # PATCH-FIX-UPSTREAM aegisub-fix_build_with_make4.3.patch
 Patch8:         aegisub-fix_build_with_make4.3.patch
 BuildRequires:  automake
@@ -64,11 +65,6 @@ effects in the subtitles, apart from just basic timed text.
 
 %prep
 %autosetup -p1
-tee build/git_version.h << "EOF"
-#define BUILD_GIT_VERSION_NUMBER 9010
-#define BUILD_GIT_VERSION_STRING "%{version}"
-#define TAGGED_RELEASE 0
-EOF
 cp %{SOURCE99} .
 
 %build

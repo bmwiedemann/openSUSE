@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:49:32 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Replaced luabins.patch with luaL_Reg-not-luaL_reg.patch sent 
+  upstream via https://github.com/Aegisub/Aegisub/issues/182
+- Removed spec file generated git_version.h, it's not needed when
+  git metadata is present.
+
+-------------------------------------------------------------------
 Wed Apr 29 10:48:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to current git version (3.2.2+git20191006)
