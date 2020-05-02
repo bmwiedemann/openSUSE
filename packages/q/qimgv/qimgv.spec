@@ -17,7 +17,7 @@
 
 
 Name:           qimgv
-Version:        0.8.9
+Version:        0.9
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
@@ -27,8 +27,10 @@ Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{
 Patch0:         qimgv-nosharedlib.patch
 # PATCH-FEATURE-OPENSUSE qimgv-PIE.patch # aloisio@gmx.com add PIE flags
 Patch1:         qimgv-PIE.patch
-# PATCH-FIX-UPSTREAM mpv-qthelper.patch
-Patch2:         mpv-qthelper.patch
+# PATCH-FIX-OPENSUSE qimgv-includepath.patch # aloisio@gmx.com use correct path for opencv includes
+Patch2:         qimgv-includepath.patch
+# PATCH-FIX-UPSTREAM qimgv-Qt512.patch
+Patch3:         qimgv-Qt512.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
@@ -36,9 +38,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc8-c++
 %endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
 
