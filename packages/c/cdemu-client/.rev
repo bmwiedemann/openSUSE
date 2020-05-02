@@ -124,4 +124,12 @@
     <comment></comment>
     <requestid>788323</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9994258cc8b3d45ffbfb432ae040bc3d</srcmd5>
+    <version>3.2.4</version>
+    <time>1588450704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.4</comment>
+    <requestid>799561</requestid>
+  </revision>
 </revisionlist>

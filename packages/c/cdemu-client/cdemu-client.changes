@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 13:55:38 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to release 3.2.4
+  * Updated MimeType in .desktop file
+
+-------------------------------------------------------------------
 Wed Mar 25 17:38:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop the manual typelib() Requires. Add gobject-introspection
