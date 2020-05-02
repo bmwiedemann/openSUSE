@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  1 11:03:03 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200430
+  - Added a lot of icons for games installed with Lutris client #2167
+  - Added 63 icons
+  - Updated 22 icons
+  - Changes and fixes
+    * Remapped symlinks of package managers to system-software-install
+    * Remapped i-network-printer symlink to printer-network icon
+    * Removed opacity from variety-indicator panel icon #2153
+
+-------------------------------------------------------------------
 Sun Apr  5 11:35:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200405
