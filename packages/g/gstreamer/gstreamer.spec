@@ -218,8 +218,8 @@ export LDFLAGS="-pie"
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_datadir}/gstreamer-%{gst_branch}/presets
 # Install the rpm macros
-install -m644 -D %{SOURCE1} %{buildroot}%{_libexecdir}/rpm/fileattrs/gstreamer.attr
-install -m755 -D %{SOURCE2} %{buildroot}%{_libexecdir}/rpm/gstreamer-provides
+install -m644 -D %{SOURCE1} %{buildroot}%{_fileattrsdir}/gstreamer.attr
+install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %fdupes %{buildroot}%{_datadir}/gtk-doc
 
 %verifyscript
@@ -274,8 +274,8 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_libexecdir}/rpm/gstreamer-provides
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_libexecdir}/rpm/gstreamer-provides
-%{_libexecdir}/rpm/fileattrs/gstreamer.attr
+%{_rpmconfigdir}/gstreamer-provides
+%{_fileattrsdir}/gstreamer.attr
 %{_datadir}/gir-1.0/*.gir
 
 %files doc
