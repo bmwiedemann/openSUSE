@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat May  2 07:51:35 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.15.0
+  * New features
+    - Viewer: Improve the interface for changing font sizes
+    - Viewer: Add a keyboard shortcut (Ctrl+Alt+b) for adding
+      a bookmark
+  * Bug fixes
+    - Bulk metadata edit: Fix a regression causing scrollbars to
+      not appear in Custom metadata tab.
+    - Closes tickets: 1875090
+    - Viewer: Fix a regression that broke searching in flow mode.
+    - Closes tickets: 1874877
+    - BibTeX Catalog: Dont output comment describing the catalog as
+      Zotero fails to process it.
+    - Closes tickets: 1876302
+    - Linux: Fix uninstaller not working on Linux distros that have
+      no python symlink.
+    - Closes tickets: 1876164
+    - Viewer: Fix zoom step size setting ignored.
+    - Closes tickets: 1875840
+    - Viewer: Fix text that has font sizes specified using keywords
+      not being scaleable by the viewer's font size controls.
+    - Closes tickets: 1875021
+    - Viewer: Fix LRF files not opening
+    - MOBI metadata: When reading author sort from MOBI files,
+      construct the final value from all author fields
+    - macOS: hide accelerator key underlines since they dont work
+      anyway as Apple does not believe in them
+    - macOS: Fix keyboard shortcuts for select all, copy and paste
+      not working in file dialogs.
+    - Closes tickets: 1874499
+  * Improved news sources
+    - The Nation
+    - Animal Politico
+
+-------------------------------------------------------------------
 Fri Apr 24 04:58:29 UTC 2020 - ecsos@opensuse.org
 
 - Update to 4.14.0
