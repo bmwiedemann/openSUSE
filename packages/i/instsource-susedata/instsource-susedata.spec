@@ -1,7 +1,7 @@
 #
 # spec file for package instsource-susedata
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,11 @@ Name:           instsource-susedata
 Summary:        Utility to add susedata to repomd metadata
 License:        GPL-2.0-only
 Group:          System/Management
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?is_opensuse}
-Requires:       openSUSE-EULAs
-%else
-Requires:       SLE-EULAs
-%endif
+Requires:       package-EULAs
 BuildRequires:  inst-source-utils
 BuildRequires:  perl(Locale::gettext)
 BuildRequires:  perl(URI::Escape)

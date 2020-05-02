@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 00:27:25 CEST 2020 - ro@suse.de
+
+- update to version 0.3.5
+  * drop pointless use of is_opensuse macro (jsc#SLE-11663)
+
+-------------------------------------------------------------------
 Wed Dec  5 14:58:23 UTC 2018 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.4
