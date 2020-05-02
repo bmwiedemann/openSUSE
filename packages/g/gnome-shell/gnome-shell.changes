@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:24:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Add openPrefs() convenience method for extensions.
+  + Bring back support for empty StIcons.
+  + Wake up screen when unlocking programmatically.
+  + Improve handling of scale-factor changes.
+  + Fix translations of folder names.
+  + Fix delay on lock screen after entering wrong password.
+  + Match ASCII alternatives of system actions.
+  + Tone down weekend days with events in calendar.
+  + Fix area screenshots on multi-monitor systems.
+  + Fix stuck lock screen after unlock.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 26 01:29:59 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-Get-resource-scale-by-get_resource_scale.patch:
@@ -8,7 +26,8 @@ Sun Apr 26 01:29:59 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 -------------------------------------------------------------------
 Wed Apr 22 07:26:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- License: GPL-2.0-or-later AND LGPL-2.1-or-later.
+- License: GPL-2.0-or-later AND LGPL-2.1-or-later AND
+  GPL-3.0-or-later.
 
 -------------------------------------------------------------------
 Thu Apr  9 06:32:48 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>

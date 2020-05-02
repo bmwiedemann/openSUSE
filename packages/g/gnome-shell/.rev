@@ -1543,4 +1543,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   the log(bsc#1169845 glgo#GNOME/gnome-shell!1206). (forwarded request 797796 from xiaoguang_wang)</comment>
     <requestid>798353</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>9da47bda74bcc9f3c540f3786bc6de4a</srcmd5>
+    <version>3.36.2</version>
+    <time>1588450518</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, NOT BUILDTESTED! (forwarded request 799134 from iznogood)</comment>
+    <requestid>799175</requestid>
+  </revision>
 </revisionlist>
