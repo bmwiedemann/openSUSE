@@ -45,13 +45,13 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
-BuildRequires:  libudev-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  openvdb-devel >= 5
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel >= 3.1
+BuildRequires:  pkgconfig(libudev)
 Requires:       noto-sans-fonts
 
 %description
