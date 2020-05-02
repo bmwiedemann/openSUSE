@@ -1277,4 +1277,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Repush, rebased (forwarded request 795140 from dimstar)</comment>
     <requestid>795262</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>b72b31efcc4bc2dd2e439dcd7a326126</srcmd5>
+    <version>3.36.2</version>
+    <time>1588450559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799563</requestid>
+  </revision>
 </revisionlist>

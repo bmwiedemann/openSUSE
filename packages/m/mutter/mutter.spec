@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.36.1
+Version:        3.36.2
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -79,7 +79,7 @@ BuildRequires:  pkgconfig(pango) >= 1.2.0
 BuildRequires:  pkgconfig(sm)
 %if %{with profiler}
 BuildRequires:  pkgconfig(sysprof-3)
-BuildRequires:  pkgconfig(sysprof-capture-3)
+BuildRequires:  pkgconfig(sysprof-capture-3) >= 3.35.2
 %endif
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
@@ -159,7 +159,7 @@ applications that want to make use of the mutter library.
 
 # SLE-only patches and translations.
 translation-update-upstream po mutter
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
 # %patch1002 -p1

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  1 20:27:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Enable SLE patches on leap (jsc#SLE-11897).
+
+-------------------------------------------------------------------
+Thu Apr 30 05:20:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Sync timelines to hardware vsync.
+  + Fix screencasting non-maximized windows.
+  + Make window-aliveness checks less aggressive.
+  + Fix stylus coordinates when using screen rotation.
+  + Preserve keyboard state on VT switch.
+  + Fix trackball button scrolling.
+  + Fix tiled monitor support.
+  + Fix various clipboard issues.
+  + Synchronize shadows to server-side decorations.
+  + Fix overview key on X11 when using multiple keyboard layouts.
+  + Fix capturing with multiple stage views.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 17 03:36:02 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.1:
