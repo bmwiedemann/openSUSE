@@ -19,11 +19,11 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.36.1
+Version:        3.36.2
 Release:        0
 Summary:        GNOME Shell
-# shew extension is LGPL 2.1
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+# shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 Source:         %{name}-%{version}.tar.xz
@@ -238,6 +238,7 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_datadir}/GConf/gsettings/gnome-shell-overrides.convert
 %{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Extensions.desktop
+%{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
@@ -273,6 +274,8 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
 # Should this be here or in devel sub package?
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
 
