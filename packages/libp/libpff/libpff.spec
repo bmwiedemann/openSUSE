@@ -1,7 +1,7 @@
 #
 # spec file for package libpff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Library and tools to access Microsoft PFF and OFF format files
 License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libpff/wiki
+URL:            https://github.com/libyal/libpff/wiki
 Source:         https://github.com/libyal/libpff/releases/download/%{timestamp}/libpff-experimental-%{timestamp}.tar.gz
 Source2:        PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
 Source3:        PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
@@ -33,8 +33,6 @@ Source5:        MAPI_definitions.pdf
 Source6:        libpff-libfdata.pdf
 Patch1:         pkgconfig.diff
 
-BuildRequires:  pkg-config
-BuildRequires:  python-devel
 # use factory packages if available
 %if 0%{?suse_version} > 1230
 BuildRequires:  pkgconfig(libbfio) >= 20130721
@@ -105,13 +103,16 @@ OST (Offline Storage Table).
 This subpackage contains libraries and header files for developing
 applications that want to make use of libpff.
 
-%package -n python-%name
+%package -n python3-%name
 Summary:        Python bindings for libpff, a PFF/OFF file format parser
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       python
+Requires:       python3
+BuildRequires:  pkgconfig(python3)
+#python-%name was previously the name of this submodule.  It was python2 bindings.
+Obsoletes:      python-%name <= 20180714
 
-%description -n python-%name
+%description -n python3-%name
 Python bindings for libpff, which can read Personal Folder File (PFF)
 and Offline Folder File (OFF) formats.
 
@@ -121,7 +122,7 @@ and Offline Folder File (OFF) formats.
 cp "%{S:2}" "%{S:3}" "%{S:4}" "%{S:5}" "%{S:6}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -158,8 +159,8 @@ find "%buildroot" -name "*.la" -delete
 %_libdir/pkgconfig/libpff.pc
 %_mandir/man3/libpff.3*
 
-%files -n python-%name
+%files -n python3-%name
 %defattr(-,root,root)
-%python_sitearch/pypff.so
+%python3_sitearch/pypff.so
 
 %changelog

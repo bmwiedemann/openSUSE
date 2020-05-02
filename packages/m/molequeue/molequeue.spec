@@ -18,7 +18,7 @@
 
 Name:           molequeue
 Version:        0.9.0
-Release:        1
+Release:        0
 Summary:        Desktop integration of high performance computing resources
 License:        BSD-3-Clause
 URL:            https://github.com/OpenChemistry/molequeue
@@ -29,16 +29,16 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  zeromq-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  python3-devel
 Requires:       %{name}-libs0%{?_isa} = %{version}-%{release}
 
 %description
-System-tray resident desktop application for abstracting, managing, 
-and coordinating the execution of tasks both locally and on remote 
+System-tray resident desktop application for abstracting, managing,
+and coordinating the execution of tasks both locally and on remote
 computational resources.
 
 Features:
@@ -52,7 +52,6 @@ Features:
  * Qt 5 client library for simple integration in Qt applications
 
 %package libs0
-
 Summary:        Shared and private libraries of %{name}
 Group:          System/Libraries
 
@@ -81,28 +80,21 @@ HTML documentation of %{name}.
 %setup -q
 
 %build
-
 %cmake -Wno-dev \
- -DCMAKE_C_FLAGS:STRING="%optflags -fPIC" \
- -DCMAKE_CXX_FLAGS:STRING="%optflags -fPIC" \
- -DCMAKE_LD_FLAGS:STRING="%optflags -pie" \
- -DENABLE_RPATH:BOOL=OFF \
- -DCMAKE_SKIP_INSTALL_RPATH:BOOL=YES \
- -DCMAKE_SKIP_RPATH:BOOL=YES \
- -DENABLE_TESTING:BOOL=OFF \
- -DBUILD_DOCUMENTATION:BOOL=ON \
- -DCMAKE_VERBOSE_MAKEFILE:BOOL=TRUE \
- -DPYTHON_EXECUTABLE:FILEPATH=python3 \
- -DCMAKE_BUILD_TYPE:STRING=RelwithDebInfo ..
-
-%make_build
-
+  -DCMAKE_C_FLAGS:STRING="%optflags -fPIC" \
+  -DCMAKE_CXX_FLAGS:STRING="%optflags -fPIC" \
+  -DCMAKE_LD_FLAGS:STRING="%optflags -pie" \
+  -DENABLE_TESTING:BOOL=OFF \
+  -DBUILD_DOCUMENTATION:BOOL=ON \
+  -DPYTHON_EXECUTABLE:FILEPATH=python3 \
+  -Wno-dev
+%cmake_build
 pushd docs
 doxygen
 popd
 
 %install
-%make_install -C build
+%cmake_install
 
 rm -rf %{buildroot}%{_datadir}/doc
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 30 01:20:14 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191221
+        * worked on python bindings
+        * code cleanup
+- convert bindings subpackage from python2 to python3
+- rename from python-libexe to python3-libexe
+
+-------------------------------------------------------------------
 Thu Mar 28 23:15:58 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181128 

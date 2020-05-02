@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>696086</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d47a6089fdd8cbcc22f51bf1fe9ea82</srcmd5>
+    <version>0~20191221</version>
+    <time>1588450756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20191221
+        * worked on python bindings
+        * code cleanup
+- convert bindings subpackage from python2 to python3
+- rename from python-libexe to python3-libexe
+</comment>
+    <requestid>799717</requestid>
+  </revision>
 </revisionlist>

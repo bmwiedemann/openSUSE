@@ -50,4 +50,14 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
 </comment>
     <requestid>696106</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>214d4f326ed412b48b66715a696c9700</srcmd5>
+    <version>0~20180714</version>
+    <time>1588450752</time>
+    <user>dimstar_suse</user>
+    <comment>- convert python bindings to python3
+- rename the binding submodule from python-libpff to python3-libpff
+</comment>
+    <requestid>799715</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libexe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 %define lname	libexe1
-%define timestamp 20181128
+%define timestamp 20191221
 Name:           libexe
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to access the executable (EXE) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libexe/wiki
+URL:            https://github.com/libyal/libexe/wiki
 Source:         https://github.com/libyal/libexe/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
-BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio)
 BuildRequires:  pkgconfig(libcdata)
 BuildRequires:  pkgconfig(libcerror)
@@ -85,20 +83,23 @@ Library to provide Microsoft EXE file support for the libyal family of libraries
 This subpackage contains libraries and header files for developing
 applications that want to make use of libexe.
 
-%package -n python-%name
+%package -n python3-%name
 Summary:        Python bindings for libexe
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
-Requires:       python
+Requires:       python3
+BuildRequires:  pkgconfig(python3)
+#python-%name was previously the name of this submodule.  It was python2 bindings.
+Obsoletes:      python-%name <= 20181128
 
-%description -n python-%name
+%description -n python3-%name
 Python bindings for libexe.  Libexe is a part of the libyal family of libraries.
 
 %prep
 %setup -q -n libexe-%{timestamp}
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -132,8 +133,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libexe.pc
 %{_mandir}/man3/libexe.3*
 
-%files -n python-%name
+%files -n python3-%name
 %defattr(-,root,root)
-%python_sitearch/pyexe.so
+%python3_sitearch/pyexe.so
 
 %changelog

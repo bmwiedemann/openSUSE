@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 30 01:42:30 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- convert python bindings to python3
+- rename the binding submodule from python-libpff to python3-libpff
+
+-------------------------------------------------------------------
 Tue Apr  2 00:15:15 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Updated to v0~20180714
