@@ -1596,4 +1596,12 @@ New upstream release</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>794550</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>1760376bdc4476944ed8e4fade2357bf</srcmd5>
+    <version>0.88.0</version>
+    <time>1588450479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799487</requestid>
+  </revision>
 </revisionlist>

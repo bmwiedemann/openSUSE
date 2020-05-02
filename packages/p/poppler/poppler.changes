@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:29:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.88.0:
+  + core:
+    - Support Widget Annotation Buttons not linked to any Form
+    - SplashOuputDev: Use stroking opacity when clipping to a
+      stroke path
+    - Handle 1 bit RGB images in ICC colorspace
+    - Internal code improvements
+  + qt5:
+    - Add Document::signatures. Returns signatures not attached to
+      any page
+    - ArthurOutputDev:
+      . Fix font hinting
+      . Set the opacity when filling with axial gradients
+      . Implement the clipToStrokePath method
+      . Use stroking opacity when clipping to a stroke path
+  + glib:
+    - Add poppler_page_get_bounding_box
+    - Add poppler_form_field_get_alternate_ui_name
+    - Implement rotation for 'flagNoRotate' annots
+  + cpp: Add non_raw_non_physical layout for page::text()
+  + utils:
+    - pdftohtml: Fix noRoundedCoordinates->noroundcoord in man page
+    - pdfsig: Show also signatures that aren't attached to any page
+- Bump poppler_sover following upstream changes.
+
+-------------------------------------------------------------------
 Mon Apr  6 10:35:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.87.0:
