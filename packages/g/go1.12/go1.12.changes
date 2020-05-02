@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:09:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires binutils-gold for %arm and aarch64 - boo#1170826
+
+-------------------------------------------------------------------
 Thu Apr 16 20:07:04 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Revert truncate changelog for versions older than go1.12
