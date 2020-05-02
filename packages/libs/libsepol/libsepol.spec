@@ -91,6 +91,7 @@ policies.
 
 %build
 %define _lto_cflags %{nil}
+%global optflags %{optflags} -fcommon
 export CFLAGS="%{optflags}"
 make %{?_smp_mflags}
 
