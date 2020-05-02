@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 30 15:03:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_tmpfilesdir} instead of %{_libexecdir}/tmpfiles.d which
+  just happened to coincide to be the same.
+
+-------------------------------------------------------------------
 Fri Mar 27 12:46:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.44.1:

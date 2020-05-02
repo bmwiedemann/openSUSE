@@ -189,7 +189,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{glib2_gio_module_post}
 
 %post fuse
-%tmpfiles_create %{_libexecdir}/tmpfiles.d/gvfsd-fuse-tmpfiles.conf
+%tmpfiles_create %{_tmpfilesdir}/gvfsd-fuse-tmpfiles.conf
 
 %post backends
 %set_permissions %{_libexecdir}/%{name}/gvfsd-nfs
@@ -223,8 +223,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 
 %files fuse
 %{_libexecdir}/%{name}/gvfsd-fuse
-%dir %{_libexecdir}/tmpfiles.d
-%{_libexecdir}/tmpfiles.d/gvfsd-fuse-tmpfiles.conf
+%{_tmpfilesdir}/gvfsd-fuse-tmpfiles.conf
 %{_mandir}/man1/gvfsd-fuse.1%{?ext_man}
 
 %files backend-afc
