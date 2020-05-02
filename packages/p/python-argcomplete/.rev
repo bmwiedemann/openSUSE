@@ -116,4 +116,12 @@
     <comment></comment>
     <requestid>788475</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ffa7ea70d31ac13b4ec637bc5585f5bc</srcmd5>
+    <version>1.11.1</version>
+    <time>1588450625</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution without /usr/bin/python</comment>
+    <requestid>799410</requestid>
+  </revision>
 </revisionlist>

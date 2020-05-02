@@ -29,13 +29,14 @@ Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/arg
 Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
 Patch2:         0001-Remove-expected-test-failure-for-new-versions-of-fish.patch
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-metadata >= 0.23}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib-metadata >= 0.23
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,9 +56,11 @@ resources over the network).
 
 %prep
 %setup -q -n argcomplete-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
+# https://github.com/kislyuk/argcomplete/issues/255
+# https://github.com/kislyuk/argcomplete/issues/256
+sed -i -e "1s|#!.*python.*|#!%{__python3}|" test/prog scripts/*
+sed -i -e "s|python |python3 |g" test/test.py
 
 %build
 %python_build
