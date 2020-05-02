@@ -145,4 +145,12 @@
   - Rewrite rebootmgrd to not depend on glib and dbus-glib</comment>
     <requestid>798151</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0fe9e7cff3005a47cc323c40cff3369c</srcmd5>
+    <version>1.1</version>
+    <time>1588450372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799321</requestid>
+  </revision>
 </revisionlist>

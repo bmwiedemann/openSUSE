@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 10:31:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.1
+  - fix systemd and tmpfiles.d directory path
+
+-------------------------------------------------------------------
+Thu Apr 30 10:27:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use official tar archive
+
+-------------------------------------------------------------------
 Mon Apr 27 10:43:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Adjust BuildRequires
