@@ -2085,4 +2085,17 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
   + use %{var} form everywhere</comment>
     <requestid>796435</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>de0b496bd7afcb080897b463d2f479bd</srcmd5>
+    <version>5.2.4.4</version>
+    <time>1588450681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix version 5.2.4.4
+  + When DYNAMIC_BLACKLIST=ipset... or when SAVE_IPSETS=Yes in
+    shorewall[6].conf, 'shorewall[6] start' could hang. Fixed.
+  + 'shorewall[6] start' would not automatically create dynamic
+    blacklisting ipsets. That has been corrected.
+- This version will served also as maintenance upgrade for Leap</comment>
+    <requestid>799547</requestid>
+  </revision>
 </revisionlist>
