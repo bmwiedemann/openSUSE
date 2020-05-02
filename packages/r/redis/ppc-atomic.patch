@@ -1,0 +1,15 @@
+Index: redis-5.0.9/src/Makefile
+===================================================================
+--- redis-5.0.9.orig/src/Makefile
++++ redis-5.0.9/src/Makefile
+@@ -83,6 +83,10 @@ ifneq (,$(filter aarch64 armv,$(uname_M)
+ else
+ ifneq (,$(findstring armv,$(uname_M)))
+         FINAL_LIBS+=-latomic
++else
++ifneq (,$(findstring ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++endif
+ endif
+ endif
+ 

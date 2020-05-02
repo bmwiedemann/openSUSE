@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  1 15:50:36 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- ppc-atomic.patch: use libatomic also on ppc
+
+-------------------------------------------------------------------
+Fri May  1 07:48:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add hash file from redis-hashes and verify it during build
+
+-------------------------------------------------------------------
 Sat Apr 18 07:57:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 5.0.9:

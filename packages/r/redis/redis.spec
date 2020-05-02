@@ -19,6 +19,7 @@
 %define _data_dir       %{_localstatedir}/lib/%{name}
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
+%define redis_hashes_tree e72cde5afa7f6640eeb9f6a5ba5ffe02c5f52ea2
 Name:           redis
 Version:        5.0.9
 Release:        0
@@ -35,11 +36,13 @@ Source6:        %{name}.sysctl
 Source7:        %{name}-sentinel@.service
 Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
+Source10:       https://raw.githubusercontent.com/antirez/redis-hashes/%{redis_hashes_tree}/README#/redis.hashes
 # PATCH-MISSING-TAG -- See https://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-enable-bactrace-on-x86-ia64-and_arm32_only.patch
 Patch2:         %{name}-disable_integration_logging.patch
 Patch3:         reproducible.patch
+Patch4:         ppc-atomic.patch
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -56,6 +59,7 @@ side union, intersection, difference between sets, and so forth. Redis supports
 different kind of sorting abilities.
 
 %prep
+echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0}" | sha256sum -c
 %setup -q
 %patch0
 %patch1
@@ -64,6 +68,7 @@ different kind of sorting abilities.
 %patch2
 %endif
 %patch3 -p1
+%patch4 -p1
 
 %build
 export HOST=OBS # for reproducible builds
