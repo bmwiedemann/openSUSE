@@ -18,7 +18,7 @@
 
 %bcond_without grass
 Name:           qgis
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
