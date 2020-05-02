@@ -394,4 +394,13 @@
     <comment>Eliminate the -lang recommends (forwarded request 767089 from dimstar)</comment>
     <requestid>767328</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7f1fe1d422895a6c7620cc470d32d64e</srcmd5>
+    <version>1.2.8</version>
+    <time>1588450471</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799433 from dimstar)</comment>
+    <requestid>799482</requestid>
+  </revision>
 </revisionlist>

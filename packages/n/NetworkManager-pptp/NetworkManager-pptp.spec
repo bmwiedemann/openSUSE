@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-pptp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,9 +76,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc README
 %{_libdir}/NetworkManager/libnm-vpn-plugin-pptp.so
 %{_libexecdir}/nm-pptp-service
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-pptp-service.name
+%{_vpnservicedir}/nm-pptp-service.name
 %config %{_sysconfdir}/dbus-1/system.d/nm-pptp-service.conf
 %{pppd_plugin_dir}/nm-pptp-pppd-plugin.so
 
