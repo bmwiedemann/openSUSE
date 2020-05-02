@@ -28,4 +28,12 @@ from https://github.com/osandov/blktests
     <comment>- Add blktrace to recommended as some tests require it</comment>
     <requestid>790851</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>416a690556481d3708e505e0c9ad5f33</srcmd5>
+    <version>0+20200430.bff70b0</version>
+    <time>1588450616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799430</requestid>
+  </revision>
 </revisionlist>

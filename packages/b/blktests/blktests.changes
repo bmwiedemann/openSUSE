@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  1 08:48:32 UTC 2020 - Petr Cervinka <pcervinka@suse.com>
+
+- Update to version 0+20200430.bff70b0:
+  * Add $DESCRIPTION to the TEST_RUN
+  * Fix unintentional skipping of tests
+  * Add a test that triggers the blk_mq_realloc_hw_ctxs() error path
+  * Introduce the function _configure_null_blk()
+  * Use _{init,exit}_null_blk instead of open-coding these functions
+  * Make _exit_null_blk remove all null_blk device instances
+  * common/fio: do not use norandommap with verify
+
+-------------------------------------------------------------------
 Thu Apr  2 10:20:32 UTC 2020 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Add blktrace to recommended as some tests require it
