@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Apr 30 15:24:12 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#222
+- take care of url query parameters (bsc#1169492)
+- add autoyast.passurl option to linuxrc
+- 7.0.15
+
+--------------------------------------------------------------------
 Thu Apr 9 15:20:00 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#221
