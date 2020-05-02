@@ -113,4 +113,12 @@
   - Handle network interface renames</comment>
     <requestid>773881</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6377e68d699d48c35e23f4e32bce516a</srcmd5>
+    <version>1.9</version>
+    <time>1588450366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799319</requestid>
+  </revision>
 </revisionlist>

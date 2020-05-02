@@ -17,7 +17,7 @@
 
 
 Name:           issue-generator
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Generates an issue files from different snippets
 License:        GPL-2.0-or-later
@@ -67,7 +67,6 @@ install -m 644 udev/sysconfig.issue-generator %{buildroot}%{_fillupdir}/
 %files
 %license COPYING
 %doc NEWS README.md
-#%ghost %{_sysconfdir}/issue
 %dir %{_sysconfdir}/issue.d
 %dir %{_prefix}/lib/issue.d
 %dir %{_prefix}/lib/tmpfiles.d
