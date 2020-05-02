@@ -1,7 +1,7 @@
 #
 # spec file for package calligra
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,115 +16,90 @@
 #
 
 
+%bcond_without lang
 Name:           calligra
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Libraries and Base Files for the KDE Office Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM Fix-build-with-Qt-511.patch
-Patch0:         Fix-build-with-Qt-511.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-build-with-poppler-0.69.patch
-Patch2:         Fix-build-with-poppler-0.64.patch
-Patch3:         Mark-the-functions-as-override.patch
-Patch4:         gBool-to-bool.patch
-Patch5:         Fix-build-with-poppler-0.64-take-2.patch
-Patch6:         Fix-build-with-poppler-0.71.patch
-Patch7:         Fix-GooString-not-having-getCString-anymore.patch
-# PATCH-FIX-UPSTREAM
-Patch8:         Fix-build-with-Qt-5_13.patch
-# PATCH-FIX-UPSTREAM
-Patch9:         Guchar-to-unsigned-char.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        Fix-build-with-poppler-0.82.patch
-Patch11:        Fix-build-with-poppler-0.83.patch
-BuildRequires:  Mesa-devel
-BuildRequires:  OpenColorIO-devel
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Revert-Chart-Depend-on-KChart-2.7.0.patch
 BuildRequires:  OpenEXR-devel
-BuildRequires:  Vc-devel-static
-BuildRequires:  akonadi-contact-devel
-BuildRequires:  akonadi-server-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
-BuildRequires:  freetds-devel
-BuildRequires:  glew-devel
+BuildRequires:  fontconfig-devel
+BuildRequires:  freetype-devel
 BuildRequires:  gsl-devel
-BuildRequires:  kactivities5-devel
-BuildRequires:  karchive-devel
-BuildRequires:  kcalcore-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcontacts5-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdb-devel
-BuildRequires:  kdeclarative-devel
-BuildRequires:  kdelibs4support-devel
-BuildRequires:  kdiagram-devel
-BuildRequires:  kemoticons-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  kglobalaccel-devel
-BuildRequires:  kguiaddons-devel
-BuildRequires:  khtml-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kproperty-devel
-BuildRequires:  kreport-devel
-BuildRequires:  kross-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libetonyek-devel
-BuildRequires:  libgsf-devel
-BuildRequires:  libicu-devel
-BuildRequires:  libkdcraw-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libodfgen-devel
 BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqca-qt5-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libvisio-devel
 BuildRequires:  libwpd-devel
 BuildRequires:  libwpg-devel
 BuildRequires:  libwps-devel
-BuildRequires:  marble-devel
-BuildRequires:  okular-devel
-BuildRequires:  openjpeg-devel
-BuildRequires:  phonon4qt5-devel
+BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  pstoedit
-BuildRequires:  sonnet-devel
-BuildRequires:  sqlite-devel
-BuildRequires:  threadweaver-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KChart)
+BuildRequires:  cmake(KF5Activities)
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Okular5)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5WebKit)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(zlib)
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
 Recommends:     %{name}-doc = %{version}
@@ -134,11 +109,6 @@ Suggests:       calligra-plan
 Suggests:       calligra-sheets
 Suggests:       calligra-stage
 Suggests:       calligra-words
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
 
 %description
 The Calligra Suite is a set of applications that allows you to easily complete
@@ -176,16 +146,6 @@ BuildArch:      noarch
 
 %description doc
 Documentation of the Calligra Office Suite applications.
-
-%package flow
-Summary:        Flow Chart Drawing Application
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Office/Suite
-Requires:       %{name} = %{version}
-Obsoletes:      calligra5-flow
-
-%description flow
-Flow is the flow chart drawing application of the Calligra Suite.
 
 %package karbon
 Summary:        Vector Drawing Application
@@ -272,6 +232,19 @@ metadata of files in the ODF formats and a plugin adding a "Print"
 action for several formats to the filemanager context menu and
 calling the related Calligra programs.
 
+%package extras-filemanagertemplates
+Summary:        "Create New" templates for ODF files
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Productivity/Office/Suite
+Supplements:    kio
+# the files were in extras-dolphin previously
+Conflicts:      %{name}-extras-dolphin < 3.2.0
+
+%description extras-filemanagertemplates
+Templates for ODF files that show up in the "Create New" context menu
+of KIO-based filemanagers (dolphin, konqueror, krusader, Plasma's folderview)
+and the KDE filedialog.
+
 %package lang
 Summary:        Translations for the Calligra Suite Applications
 License:        LGPL-2.1-or-later
@@ -340,10 +313,17 @@ Provides:       calligra-l10n-zh_TW = %{version}
 This package contains application translations for the Calligra Suite
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150100
+%patch0 -p1
+%endif
+%if %pkg_vcmp kdoctools < 5.57.0
+# older kdoctools versions lack the necessary support for indonesian language causing the build to fail
+rm -r po/id/docs/
+%endif
 
 %build
-%cmake_kf5 -d build -- -DAPP_ACTIVE=FALSE
+%cmake_kf5 -d build
 %make_jobs
 
 %install
@@ -351,16 +331,13 @@ cd build
 %kf5_makeinstall
 
 # Create filelists
-%create_subdir_filelist -d filters/flow -f flow -v devel
 %create_subdir_filelist -d data -f main -v devel
 %create_subdir_filelist -d devtools -f tools -v devel
 %create_subdir_filelist -d extras/calligra -f main -v devel
 %create_subdir_filelist -d extras/converter -f converter -v devel
-%create_subdir_filelist -d extras/filemanagertemplates -f dolphin -v devel
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
+%create_subdir_filelist -d extras/filemanagertemplates -f filemanagertemplates -v devel
 %create_subdir_filelist -d extras/okularodpgenerator -f okular -v devel
 %create_subdir_filelist -d extras/okularodtgenerator -f okular -v devel
-%endif
 %create_subdir_filelist -d extras/properties -f dolphin -v devel
 %create_subdir_filelist -d extras/quickprint -f dolphin -v devel
 %create_subdir_filelist -d extras/thumbnail -f main -v devel
@@ -369,6 +346,7 @@ cd build
 %create_subdir_filelist -d filters/libmsooxml -f main -v devel
 %create_subdir_filelist -d filters/libodf2 -f main -v devel
 %create_subdir_filelist -d filters/libodfreader -f main -v devel
+%create_subdir_filelist -d filters/odg -f main -v devel
 %create_subdir_filelist -d filters/sheets -f sheets -v devel
 %create_subdir_filelist -d filters/stage -f stage -v devel
 %create_subdir_filelist -d filters/words -f words -v devel
@@ -401,6 +379,8 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 /sbin/ldconfig
 %mime_database_postun
 
+%post   gemini -p /sbin/ldconfig
+%postun gemini -p /sbin/ldconfig
 %post   karbon -p /sbin/ldconfig
 %postun karbon -p /sbin/ldconfig
 %post   sheets -p /sbin/ldconfig
@@ -411,27 +391,20 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %postun tools -p /sbin/ldconfig
 %post   words -p /sbin/ldconfig
 %postun words -p /sbin/ldconfig
-
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
 %post   extras-okular -p /sbin/ldconfig
 %postun extras-okular -p /sbin/ldconfig
-%endif
 
 %files -f filelists/main
 %license COPYING COPYING.LIB
 %doc README
+%dir %{_kf5_qmldir}/org/kde
 %{_kf5_qmldir}/org/kde/calligra/
-%{_kf5_servicesdir}/flow*.desktop
 %{_datadir}/calligra/
 %{_kf5_iconsdir}/hicolor/
 %dir %{_kf5_servicesdir}/ServiceMenus
 %dir %{_kf5_servicesdir}/ServiceMenus/calligra
 %dir %{_kf5_appstreamdir}
-%dir %{_datadir}/templates
-%dir %{_datadir}/templates/.source
 %{_kf5_applicationsdir}/calligra.desktop
-%{_kf5_plugindir}/calligra/formatfilters/calligra_filter_vsdx2odg.so
-%{_kf5_plugindir}/calligra/formatfilters/calligra_filter_wpg2odg.so
 %dir %{_kf5_plugindir}/calligra
 %dir %{_kf5_plugindir}/calligra/devices
 %dir %{_kf5_plugindir}/calligra/dockers
@@ -452,15 +425,17 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 
 %files extras-dolphin -f filelists/dolphin
 
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
+%files extras-filemanagertemplates -f filelists/filemanagertemplates
+%dir %{_datadir}/templates
+%dir %{_datadir}/templates/.source
+
 %files extras-okular -f filelists/okular
+%{_kf5_applicationsdir}/okular*.desktop
 %{_kf5_plugindir}/okular/
-%endif
+%{_kf5_servicesdir}/okular*.desktop
 
 %files devel -f filelists/devel
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120300
 %{_libdir}/libkookularGenerator_odt.so
-%endif
 
 %files doc
 %license COPYING.DOC
@@ -488,7 +463,6 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %exclude %{_datadir}/calligra
 %exclude %{_kf5_iconsdir}
 %{_kf5_plugindir}/calligrasheets/
-%dir %{_kf5_plugindir}/calligra/deferred
 %{_kf5_htmldir}/en/calligrasheets/
 %{_datadir}/calligrasheets/
 %{_kf5_kxmlguidir}/calligrasheets/
@@ -500,7 +474,9 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %{_kf5_plugindir}/calligrastage/
 %dir %{_kf5_plugindir}/calligra/presentationeventactions
 %{_kf5_htmldir}/en/calligrastage/
+%exclude %{_kf5_applicationsdir}/okular*.desktop
 %exclude %{_kf5_plugindir}/okular/
+%exclude %{_kf5_servicesdir}/okular*.desktop
 %{_datadir}/calligra_shape_music/
 %{_datadir}/calligrastage/
 %{_kf5_kxmlguidir}/calligrastage/
@@ -514,10 +490,16 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %exclude %{_kf5_iconsdir}/hicolor
 %{_datadir}/calligrawords/
 %{_kf5_kxmlguidir}/calligrawords/
+%exclude %{_kf5_applicationsdir}/okular*.desktop
 %exclude %{_kf5_plugindir}/okular/
+%exclude %{_kf5_servicesdir}/okular*.desktop
 %dir %{_kf5_plugindir}/calligra/parts
 
+%if %{with lang}
 %files lang
 %{_datadir}/locale/
+%{_kf5_htmldir}/
+%exclude %{_kf5_htmldir}/en/
+%endif
 
 %changelog

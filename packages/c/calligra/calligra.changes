@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Thu Apr 30 10:45:01 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.2.0:
+  * See https://calligra.org/news/calligra-3-2-0-released/
+  * General:
+    + Don't allow an unrecognized child element to block loading of
+      a shape plugin
+    + Fix line percentage height
+    + [textlayout] Don't enter infinite loop when table is misfit
+      (kde#381341)
+    + Fix formatting of scientific numbers
+    + Fix undo/redo move of anchored shapes
+    + Check if shape is movable and update cursor and decoration
+      accordingly
+    + Check if shape is resizeable and update cursor and decoration
+      accordingly
+    + Check if shape is shearable and update cursor and decoration
+      accordingly
+    + Check if shape rotation is allowed and update cursor and
+      decoration accordingly
+    + Fix freeze in progressbar handling on startup
+    + Do not allow to set a readonly document to modified
+    + Fix illustrator image handling
+    + Improve KoModeBox display in horizontal Mode
+    + Extend table lifetime (kde#379255)
+  * Words:
+    + Do not popup contextmenu twice
+    + Fix "Distraction free mode" should be called "Full screen
+      mode" (kde#378527)
+    + Fixed calligra crashing when opening remote document
+      (kde#358581)
+    + Fix crash after loading of template file fails
+    + Save anchor info also for page-anchored shapes
+    + Fix interoperability problem with LibreOffice
+  * Karbon:
+    + Karbon: Enable multi page capability
+    + Karbon image filter: Add multipage support
+    + PDF Import: Add multipage support
+    + Use Krita toolbar in Karbon
+  * Sheets:
+    + Disable build of sheets tableshape, obsoleted by the
+      implementation of text tables
+    + Made descriptions for DEC2BIN/OCT2BIN/HEX2DEC/HEX2BIN mention
+      input number system (kde#399569)
+    + [Style] Default sheets to white background
+  * Stage:
+    + Add automatic slide transition
+    + Fix animation of sequential and parallel animations
+    + Add show/hide page margins
+  * Flow:
+    + Retire flow, not needed since karbon can do it all
+  * Gemini:
+    + Kirigamify the welcome pages
+    + Pull out DocumentTile as a proper component and add various
+      fixes
+    + Fix some issues with similarly named documents in
+      RecentFileManager
+    + Remove crash in cloud support by postponing some of the
+      loading process
+    + Clarify touch <-> desktop view switch
+    + Fix loading of templates and files creation
+    + Migrate away from deprecated interfaces in Gemini DropBox
+      support
+    + Handle non-availability of the web view
+    + Make the touch view accept touch events on recent Qt versions
+  * QtQuick2 Components:
+    + Speed up document loading when viewing only by not loading
+      editor controls
+    + Correct anchor detection in QML components, removing
+      potential infinite looping
+  * Filters:
+    + CSV:
+      - CSV characters should not be translated
+    + RTF:
+      - Use RTF default color as default Qt format
+      - Mark \shp and \shpinst as supported control words on rtf
+        reader
+      - Display figure brackets in plain text
+      - Add support for strikeout text in RTF documents
+    + PPT:
+      - Relax TextPFRun validation to allow LibreOffice PPT import
+    + Visio:
+      - Visio filter: make it work with some file versions
+    + Excel:
+      - Read xlsx drawing dimensions from the xdr:ext element if
+        available
+      - Don't drop number styling information from xlsx cell
+        formats which start with a currency symbol
+      - Don't double format spreadsheet currency values with custom
+        format strings
+      - Fix incorrect conditional styling of spreadsheet cells
+      - Extract images from excel files which omit the FtCF entry
+      - Assign correct column width when importing XLS file
+  * Stencils:
+    + Activate stencils docker in all apps
+    + StencilBoxDocker: Do not show by default
+    + StencilsBoxDocker: Load stencils in separate thread, to not
+      impact app startup time
+    + ConnectionTool: Fix creation of connections and handle undo
+    + KoConnectionShape: Do not create a path when all handles point
+      to the same point
+    + Stencils: Fix invalid odf in database.odg
+  * Callouts:
+    + Callout: Improve ui (resize/rotate)
+    + Proper fix for LOs inverted rotate/skew angle and wrong
+      default unit
+    + Callout: "Fix" rotation of callouts
+  * Annotation:
+    + AnnotationShape: Disable all not allowed interactions
+    + Annotation: Block adding comment to an annotation shape
+  * Shapes:
+    + Try to avoid segfaults on shape factory not found
+    + EnhancedPathShape: Keep correct aspect ratio of shapes in odf
+      files (kde#334608)
+    + SvgShapes: Fix loading of shapes created with SvgShapeFactory
+    + TextShape: Handle stroke (not only border) in root area
+      provider
+    + PictureShape: Fix crash when atempting to load unknown binary
+      data 
+  * Chart:
+    + Common:
+      - Only x axes can be attached to multiple diagrams
+      - Only bar charts can be vertical
+      - Fix marker symbols
+      - Remove 'Show Symbol' from ui for charttypes without symbols
+      - Enable chart tool also when any of the chartshape children
+        is selected
+      - Paint decoration when chart tool is active to make it clear
+        which shape the tool is connected to
+      - Fix "Layout does not handle axis titles on the same side of
+        the plotarea" (kde#420328)
+      - Fix "Axis titles not rotated when plot area rotated"
+        (kde#420328)
+      - Fix "Setting dataset chart type is not undoable"
+        (kde#420290)
+      - Fix "No axes lines when creating new chart" (kde#240520)
+      - Fix "Legend does not respect dpi settings" (kde#420151)
+      - Fix "Legend is not printed properly" (kde#420145)
+      - Layout title, subtitle, footer shapes center aligned by
+        default
+    + Bar:
+      - Handle gaps as properties of Y-axes only as specified in
+        odf 1.2
+      - Only save gaps in styles used by y-axis
+      - Set axis positions correct also for vertical charts
+      - Show Axis Labels ui added
+      - Enable bar chart orientation
+    + Stock:
+      - Implement stock chart sub types
+    + Scatter:
+      - Improve label handling
+      - Fix tooltips
+    + Pie and Ring:
+      - Save/load pie/ring attributes
+      - LO needs ring chart datasets class to be circle
+    + Radar:
+      - Add radar chart config widget
+- Drop patches merged upstream:
+  * Fix-build-with-Qt-511.patch
+  * Fix-build-with-poppler-0.69.patch
+  * Fix-build-with-poppler-0.64.patch
+  * Mark-the-functions-as-override.patch
+  * gBool-to-bool.patch
+  * Fix-build-with-poppler-0.64-take-2.patch
+  * Fix-build-with-poppler-0.71.patch
+  * Fix-GooString-not-having-getCString-anymore.patch
+  * Fix-build-with-Qt-5_13.patch
+  * Guchar-to-unsigned-char.patch
+  * Fix-build-with-poppler-0.82.patch
+  * Fix-build-with-poppler-0.83.patch
+- Add 0001-Revert-Chart-Depend-on-KChart-2.7.0.patch to allow
+  building the chartshape with kdiagram 2.6.x on Leap 15.1
+- Update/cleanup build requirements
+- Move okular*.desktop files from words/stage to
+  calligra-extras-okular, they need the other files in that package
+
+-------------------------------------------------------------------
+Thu Apr  9 10:47:35 UTC 2020 - wbauer@tmo.at
+
+- Split out "Create New" ODF file templates to a new package
+  calligra-extra-filemanagertemplates, they are useful without
+  calligra installed and should not require the full suite
+  (boo#983878)
+
+-------------------------------------------------------------------
 Wed Jan 22 08:07:18 UTC 2020 - wbauer@tmo.at
 
 - Add patches to fix build with the latest poppler versions:
