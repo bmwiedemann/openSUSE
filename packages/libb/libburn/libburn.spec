@@ -1,7 +1,7 @@
 #
 # spec file for package libburn
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 %define so_ver 4
+%define basever 1.5.2
 Name:           libburn
-Version:        1.5.0
+Version:        1.5.2.pl01
 Release:        0
 Summary:        Library for Writing Preformatted Data onto Optical Media
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-Url:            http://libburnia-project.org/
+URL:            http://libburnia-project.org/
 Source0:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
+Source1:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -60,11 +63,11 @@ CD, DVD, BD (Blu-Ray) and also offers a facility for reading data blocks from
 its drives without using the normal block device I/O.
 
 %prep
-%setup -q
+%autosetup -n %{name}-%{basever}
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 doxygen doc/doxygen.conf
 
 %install
@@ -83,7 +86,8 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %postun -n libburn%{so_ver} -p /sbin/ldconfig
 
 %files devel
-%doc AUTHORS CONTRIBUTORS COPYING COPYRIGHT ChangeLog README
+%license COPYING
+%doc AUTHORS CONTRIBUTORS COPYRIGHT ChangeLog README
 %doc doc/{cdtext.txt,cookbook.txt,mediainfo.txt}
 %doc %{_docdir}/%{name}-devel/html/
 %{_includedir}/libburn/
@@ -91,10 +95,10 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %{_libdir}/libburn.so
 
 %files -n cdrskin
-%doc COPYING COPYRIGHT
+%license COPYING COPYRIGHT
 %doc cdrskin/{README,cdrskin_eng.html,changelog.txt,wiki_plain.txt}
 %{_bindir}/cdrskin
-%{_mandir}/man1/cdrskin.1*
+%{_mandir}/man1/cdrskin.1%{?ext_man}
 
 %files -n libburn%{so_ver}
 %{_libdir}/libburn.so.%{so_ver}*

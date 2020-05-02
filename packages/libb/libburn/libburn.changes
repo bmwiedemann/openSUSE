@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 27 17:49:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.2.pl01
+* Bug fix
+  + cdrskin multi-track burning was slow and stalled after track 1.
+    Regression introduced in version 1.5.0, O_DIRECT is now
+    disabled for track sources.
+  version 1.5.2:
+  * Bug fixes
+    + No lock was obtained for setting up a fifo object
+    + Stream recording was applied regardless whether the drive
+      offers it. This caused Xfburn failures with some MATSHITA
+      laptop drives.
+    + TDK Corporation was not recognized as manufacturer of
+      DVD-R "TTH02"
+  * Made libburn ready for building out-of-source.
+  * New API calls burn_drive_get_feature_codes(),
+    burn_drive_get_feature()
+  * New cdrskin option --list_features
+- Added signature file and keyring as sources
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Oct 24 15:58:10 UTC 2018 - sean@suspend.net
 
 - Update to 1.5.0:
