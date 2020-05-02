@@ -17,14 +17,13 @@
 
 
 Name:           fish
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.gz
-Patch0:         fix-gcc10-build.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
