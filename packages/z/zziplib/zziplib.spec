@@ -18,7 +18,7 @@
 
 %define lname   libzzip-0-13
 Name:           zziplib
-Version:        0.13.70
+Version:        0.13.71
 Release:        0
 Summary:        ZIP Compression Library
 License:        LGPL-2.1-or-later
