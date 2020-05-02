@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-iodine
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -73,9 +73,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc AUTHORS NEWS
 %{_libdir}/NetworkManager/libnm-vpn-plugin-iodine.so
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-iodine-service.name
+%{_vpnservicedir}/nm-iodine-service.name
 %{_libexecdir}/nm-iodine-service
 %config %{_sysconfdir}/dbus-1/system.d/nm-iodine-service.conf
 
