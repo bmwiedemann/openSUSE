@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 07:59:18 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add cmake(KF5ItemModels) BuildRequires on Leap 15 to fix build
+  (needed when building with Qt < 5.13.0)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0

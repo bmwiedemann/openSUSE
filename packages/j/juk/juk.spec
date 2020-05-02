@@ -40,6 +40,10 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+%if 0%{?suse_version} == 1500
+# Needed when building with Qt < 5.13.0
+BuildRequires:  cmake(KF5ItemModels)
+%endif
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
