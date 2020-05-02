@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.2.19
+Version:        2.2.20
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -29,7 +29,6 @@ Source2:        ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source4:        scdaemon.udev
 Source99:       %{name}.changes
-Patch1124847:   gnupg-gpg-agent-ulimit.patch
 Patch4:         gnupg-2.0.9-langinfo.patch
 Patch5:         gnupg-2.2.8-files-are-digests.patch
 Patch6:         gnupg-dont-fail-with-seahorse-agent.patch
@@ -40,8 +39,7 @@ Patch12:        gnupg-2.2.16-secmem.patch
 Patch13:        gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
 Patch14:        gnupg-add-test-cases-for-import-without-uid.patch
 Patch15:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
-# PATCH-FIX-UPSTREAM bsc#1160394 Fix gcc10 build
-Patch16:        gpg2-gcc10-build-fno-common.patch
+Patch1124847:   gnupg-gpg-agent-ulimit.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  libassuan-devel >= 2.5.0
@@ -107,7 +105,6 @@ gpgsm, or via the gpg-connect-agent tool.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
 touch -d 2018-05-04 doc/gpg.texi # to compensate for patch11 in order to not have man pages and info files have the build date (boo#1047218)
 
 %build
@@ -132,7 +129,7 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
     --enable-gpg-is-gpg2 \
     --enable-Werror
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -4,11 +4,11 @@
  g10/sign.c    |   68 ++++++++++++++++++++++++++++++++++++++++++++++++++++------
  3 files changed, 67 insertions(+), 6 deletions(-)
 
-Index: gnupg-2.2.18/g10/gpg.c
+Index: gnupg-2.2.20/g10/gpg.c
 ===================================================================
---- gnupg-2.2.18.orig/g10/gpg.c
-+++ gnupg-2.2.18/g10/gpg.c
-@@ -378,6 +378,7 @@ enum cmd_and_opt_values
+--- gnupg-2.2.20.orig/g10/gpg.c
++++ gnupg-2.2.20/g10/gpg.c
+@@ -380,6 +380,7 @@ enum cmd_and_opt_values
      oTTYtype,
      oLCctype,
      oLCmessages,
@@ -16,7 +16,7 @@ Index: gnupg-2.2.18/g10/gpg.c
      oXauthority,
      oGroup,
      oUnGroup,
-@@ -830,6 +831,7 @@ static ARGPARSE_OPTS opts[] = {
+@@ -834,6 +835,7 @@ static ARGPARSE_OPTS opts[] = {
    ARGPARSE_s_s (oWeakDigest, "weak-digest","@"),
    ARGPARSE_s_n (oUnwrap, "unwrap", "@"),
    ARGPARSE_s_n (oOnlySignTextIDs, "only-sign-text-ids", "@"),
@@ -24,7 +24,7 @@ Index: gnupg-2.2.18/g10/gpg.c
  
    /* Aliases.  I constantly mistype these, and assume other people do
       as well. */
-@@ -2412,6 +2414,7 @@ main (int argc, char **argv)
+@@ -2421,6 +2423,7 @@ main (int argc, char **argv)
      opt.def_cert_expire = "0";
      gnupg_set_homedir (NULL);
      opt.passphrase_repeat = 1;
@@ -32,19 +32,19 @@ Index: gnupg-2.2.18/g10/gpg.c
      opt.emit_version = 0;
      opt.weak_digests = NULL;
  
-@@ -2988,6 +2991,7 @@ main (int argc, char **argv)
+@@ -2997,6 +3000,7 @@ main (int argc, char **argv)
  	    opt.verify_options&=~VERIFY_SHOW_PHOTOS;
  	    break;
  	  case oPhotoViewer: opt.photo_viewer = pargs.r.ret_str; break;
 +	  case oFilesAreDigests: opt.files_are_digests = 1; break;
  
            case oDisableSignerUID: opt.flags.disable_signer_uid = 1; break;
- 
-Index: gnupg-2.2.18/g10/options.h
+           case oIncludeKeyBlock:  opt.flags.include_key_block = 1; break;
+Index: gnupg-2.2.20/g10/options.h
 ===================================================================
---- gnupg-2.2.18.orig/g10/options.h
-+++ gnupg-2.2.18/g10/options.h
-@@ -210,6 +210,7 @@ struct
+--- gnupg-2.2.20.orig/g10/options.h
++++ gnupg-2.2.20/g10/options.h
+@@ -202,6 +202,7 @@ struct
    int no_auto_check_trustdb;
    int preserve_permissions;
    int no_homedir_creation;
@@ -52,10 +52,10 @@ Index: gnupg-2.2.18/g10/options.h
    struct groupitem *grouplist;
    int mangle_dos_filenames;
    int enable_progress_filter;
-Index: gnupg-2.2.18/g10/sign.c
+Index: gnupg-2.2.20/g10/sign.c
 ===================================================================
---- gnupg-2.2.18.orig/g10/sign.c
-+++ gnupg-2.2.18/g10/sign.c
+--- gnupg-2.2.20.orig/g10/sign.c
++++ gnupg-2.2.20/g10/sign.c
 @@ -43,6 +43,8 @@
  #include "../common/mbox-util.h"
  #include "../common/compliance.h"
@@ -65,7 +65,7 @@ Index: gnupg-2.2.18/g10/sign.c
  #ifdef HAVE_DOSISH_SYSTEM
  #define LF "\r\n"
  #else
-@@ -749,6 +751,8 @@ write_signature_packets (ctrl_t ctrl,
+@@ -834,6 +836,8 @@ write_signature_packets (ctrl_t ctrl,
        if (duration || opt.sig_policy_url
            || opt.sig_notations || opt.sig_keyserver_url)
          sig->version = 4;
@@ -74,10 +74,10 @@ Index: gnupg-2.2.18/g10/sign.c
        else
          sig->version = pk->version;
  
-@@ -772,8 +776,12 @@ write_signature_packets (ctrl_t ctrl,
-           mk_notation_policy_etc (sig, NULL, pk);
+@@ -860,8 +864,12 @@ write_signature_packets (ctrl_t ctrl,
+           else
+             err = 0;
          }
- 
 +      if (!opt.files_are_digests) {
        hash_sigversion_to_magic (md, sig);
        gcry_md_final (md);
@@ -85,9 +85,9 @@ Index: gnupg-2.2.18/g10/sign.c
 +          log_bug("files-are-digests doesn't work with v4 sigs\n");
 +      }
  
-       rc = do_sign (ctrl, pk, sig, md, hash_for (pk), cache_nonce, 0);
-       gcry_md_close (md);
-@@ -835,6 +843,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
+       if (!err)
+         err = do_sign (ctrl, pk, sig, md, hash_for (pk), cache_nonce, 0);
+@@ -924,6 +932,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
      SK_LIST sk_rover = NULL;
      int multifile = 0;
      u32 duration=0;
@@ -96,7 +96,7 @@ Index: gnupg-2.2.18/g10/sign.c
  
      pfx = new_progress_context ();
      afx = new_armor_context ();
-@@ -852,7 +862,16 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -941,7 +951,16 @@ sign_file (ctrl_t ctrl, strlist_t filena
  	fname = NULL;
  
      if( fname && filenames->next && (!detached || encryptflag) )
@@ -114,7 +114,7 @@ Index: gnupg-2.2.18/g10/sign.c
  
      if(encryptflag==2
         && (rc=setup_symkey(&efx.symkey_s2k,&efx.symkey_dek)))
-@@ -873,7 +892,7 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -962,7 +981,7 @@ sign_file (ctrl_t ctrl, strlist_t filena
        goto leave;
  
      /* prepare iobufs */
@@ -123,7 +123,7 @@ Index: gnupg-2.2.18/g10/sign.c
  	inp = NULL; /* we do it later */
      else {
        inp = iobuf_open(fname);
-@@ -1011,7 +1030,7 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -1100,7 +1119,7 @@ sign_file (ctrl_t ctrl, strlist_t filena
      for (sk_rover = sk_list; sk_rover; sk_rover = sk_rover->next)
        gcry_md_enable (mfx.md, hash_for (sk_rover->pk));
  
@@ -132,7 +132,7 @@ Index: gnupg-2.2.18/g10/sign.c
  	iobuf_push_filter( inp, md_filter, &mfx );
  
      if( detached && !encryptflag)
-@@ -1066,6 +1085,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -1155,6 +1174,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
  
      write_status_begin_signing (mfx.md);
  
@@ -141,7 +141,7 @@ Index: gnupg-2.2.18/g10/sign.c
      /* Setup the inner packet. */
      if( detached ) {
  	if( multifile ) {
-@@ -1106,6 +1127,45 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -1195,6 +1216,45 @@ sign_file (ctrl_t ctrl, strlist_t filena
  	    if( opt.verbose )
                log_printf ("\n");
  	}
@@ -187,7 +187,7 @@ Index: gnupg-2.2.18/g10/sign.c
  	else {
  	    /* read, so that the filter can calculate the digest */
  	    while( iobuf_get(inp) != -1 )
-@@ -1124,8 +1184,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
+@@ -1213,8 +1273,8 @@ sign_file (ctrl_t ctrl, strlist_t filena
  
      /* write the signatures */
      rc = write_signature_packets (ctrl, sk_list, out, mfx.md,

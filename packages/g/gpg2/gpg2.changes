@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 30 13:59:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix gpgme and gpgme-qt builds on gpg2 2.2.20 update [bsc#1170811]
+- Refresh patches:
+  * gnupg-2.2.8-files-are-digests.patch
+  * gnupg-add_legacy_FIPS_mode_option.patch
+
+-------------------------------------------------------------------
+Fri Mar 20 20:17:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.20:
+  * Protect the error counter against overflow to guarantee that the
+    tools can't be tricked into returning success after an error
+  * gpg: Make really sure that --verify-files always returns an error
+  * gpg: Fix key listing --with-secret if a pattern is given
+  * gpg: Fix detection of certain keys used as default-key
+  * gpg: Fix default-key selection when a card is available
+  * gpg: Fix key expiration and key usage for keys created with a
+    creation date of zero
+  * gpgsm: Fix import of some CR,LF terminated certificates
+  * gpg: New options --include-key-block and --auto-key-import to
+    allow encrypted replies after an initial signed message
+  * gpg: Allow the use of a fingerprint with --trusted-key
+  * gpg: New property "fpr" for use by --export-filter
+  * scdaemon: Disable the pinpad if a KDF DO is used
+  * dirmngr: Improve finding OCSP certificates
+- drop gpg2-gcc10-build-fno-common.patch, upstream
+
+-------------------------------------------------------------------
 Fri Mar 13 10:39:09 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Split dirmngr into a subpackage to avoid a hard dependency of
