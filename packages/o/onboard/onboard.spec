@@ -1,7 +1,7 @@
 #
 # spec file for package onboard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,8 @@ This GNOME Shell extension integrates the onboard keyboard with the GNOME Shell.
 
 %prep
 %setup -q
-%if !0%{?is_opensuse}
+# The patch only applies for SLE older than 15 SP2.
+%if !0%{?is_opensuse} && 0%{?sle_version} < 150200
 %patch0 -p1
 %endif
 

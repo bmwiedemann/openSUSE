@@ -53,4 +53,14 @@
     <comment>Removal of -lang recommends (forwarded request 768626 from dimstar)</comment>
     <requestid>768687</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c198582ce3ffd5a22d91cb6dd218a342</srcmd5>
+    <version>1.4.1</version>
+    <time>1588450630</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove onboard-remove-dep-typelib-appindicator3.patch for SLE
+  inclusively later than 15-SP2. It will make the SLE version gains
+  appindicator feature just as Leap did (jsc#SLE-11847). (forwarded request 799177 from yfjiang)</comment>
+    <requestid>799472</requestid>
+  </revision>
 </revisionlist>
