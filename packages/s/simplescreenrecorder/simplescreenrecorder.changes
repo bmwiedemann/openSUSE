@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  1 19:13:21 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 0.4.1 (since 0.4.0):
+  * Added warning for Wayland users.
+  * Error messages from libraries are now shown in the log window.
+  * Fixed blocked continue button after selecting a window.
+
+-------------------------------------------------------------------
 Fri Apr 10 04:39:15 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Update to 0.4.0 (since 0.3.11):

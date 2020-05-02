@@ -17,7 +17,7 @@
 
 
 Name:           simplescreenrecorder
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        A feature-rich screen recorder that supports X11 and OpenGL
 License:        GPL-3.0-or-later
@@ -137,8 +137,7 @@ make V=1 %{?_smp_mflags}
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/ssr-glinject
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/%{name}
