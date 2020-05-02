@@ -86,9 +86,7 @@ exit 0
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn.so
 %{_libexecdir}/nm-openvpn-service
 %{_libexecdir}/nm-openvpn-service-openvpn-helper
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-openvpn-service.name
+%{_vpnservicedir}/nm-openvpn-service.name
 %{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
 
 %files gnome

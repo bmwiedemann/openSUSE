@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 09:02:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager).
+
+-------------------------------------------------------------------
 Fri Mar  6 18:27:24 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.8.12:
