@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:33:36 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Remove 0001-debian-ports.patch
+  * std::atomic now used instead of internal AtomicPointer asm
+- Update to version 1.22:
+  * Corrected formatting to be compliant with the Google C++ Style Guide.
+  * Restore soname versioning with CMake build.
+  * Other miscellaneous cleanups, fixes, and improvements.
+- Update to version 1.21:
+  * Add tests for empty keys and values.
+  * Switch corruption_test to use InMemEnv.
+  * Replace AtomicPointer with std::atomic.
+  * Make InMemoryEnv more consistent with filesystem based Env's.
+  * Align windows_logger with posix_logger.
+  * Added native support for Windows.
+  * Make WriteBatch::ApproximateSize() const.
+  * Fix fdatasync() feature detection in opensource build.
+  * C++11 cleanup for util/mutexlock.h.
+  * Rework threading in env_posix.cc.
+  * Remove InitOnce from the port API.
+  * Expose WriteBatch::Append().
+  * Fix documentation for log file growth.
+  * Add move constructor to Status.
+  * Replace port_posix with port_stdcxx.
+  * Reimplement ConsumeDecimalNumber.
+  * Replace NULL with nullptr in C++ files.
+  * Remove PLATFORM_IS_LITTLE_ENDIAN from port/posix.h.
+  * Add more thread safety annotations.
+  * Require C++11.
+  * Replace SIZE_MAX with std::numeric_limits.
+  * Add CMake build support.
+  * Enable thread safety annotations.
+  * leveldb::DestroyDB will now delete empty directories.
+  * Replace SSE-optimized CRC32C in POSIX port with external library.
+  * Fix file writing bug in CL 170738066.
+  * Fix use of uninitialized value in LRUHandle.
+  * Fix issue #474: a race between the f*_unlocked() STDIO calls in
+    env_posix.cc and concurrent application calls to fflush(NULL).
+  * Report missing CURRENT manifest file as database corruption.
+  * LevelDB: Add WriteBatch::ApproximateSize().
+  * Other minor fixes, code cleanup, and documentation improvements.
+- Perform a two-pass build, once for static and once for shared libs
+
+-------------------------------------------------------------------
 Fri Aug  2 07:04:04 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.

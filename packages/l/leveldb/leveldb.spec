@@ -1,7 +1,7 @@
 #
 # spec file for package leveldb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           leveldb
-Version:        1.20
+Version:        1.22
 Release:        0
 Summary:        A key/value-store
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/google/leveldb
-Source0:        https://github.com/google/leveldb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-debian-ports.patch
+URL:            https://github.com/google/leveldb
+Source0:        https://github.com/google/leveldb/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  snappy-devel
 
@@ -66,32 +66,26 @@ This package holds the development files for statically linking leveldb.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
+# unfortunately a two-pass build is needed for shared and static libs
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-make %{?_smp_mflags} OPT="%{optflags}"
+%cmake -DBUILD_SHARED_LIBS=ON
+%cmake_build
+cd ..
+%cmake -DBUILD_SHARED_LIBS=OFF
+%cmake_build
 
 %install
-install -d -m 0755 \
-  %{buildroot}%{_includedir} \
-  %{buildroot}%{_libdir} \
-  %{buildroot}%{_bindir}
-
-cp -a \
-  out-static/libleveldb.a   \
-  out-shared/libleveldb.so* \
-  %{buildroot}%{_libdir}
-
-cp -a include/leveldb \
-  %{buildroot}%{_includedir}
-
-cp -a \
-  out-shared/db_bench \
-  %{buildroot}%{_bindir}
+%cmake_install
+# collect shared libs built in the first pass
+cp -a build/libleveldb.so* %{buildroot}%{_libdir}
+# cmake_install omits db_bench
+install -d -m 0755 %{buildroot}%{_bindir}
+cp -a build/db_bench %{buildroot}%{_bindir}
 
 %check
-make %{?_smp_mflags} check
+%ctest
 
 %post   -n %{lib_name} -p /sbin/ldconfig
 %postun -n %{lib_name} -p /sbin/ldconfig
@@ -113,5 +107,6 @@ make %{?_smp_mflags} check
 %files devel-static
 %defattr(-,root,root,-)
 %{_libdir}/libleveldb.a
+%{_libdir}/cmake/
 
 %changelog
