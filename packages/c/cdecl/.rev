@@ -122,4 +122,12 @@
     <comment>- Update to release 6.10</comment>
     <requestid>793679</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b285c59013c15358f421bab2e676554</srcmd5>
+    <version>6.11</version>
+    <time>1588450729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799713</requestid>
+  </revision>
 </revisionlist>

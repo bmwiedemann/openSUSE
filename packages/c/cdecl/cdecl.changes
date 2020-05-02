@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 25 18:02:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Refresh tarball due to force push upstream.
+
+-------------------------------------------------------------------
+Sat Apr 25 16:58:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.11
+  * Added __inline__, __restrict__, and __thread
+  * Added GNU C types
+  * Added WIN32 types
+
+-------------------------------------------------------------------
 Mon Apr 13 17:38:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.10
