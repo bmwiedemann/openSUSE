@@ -16,6 +16,8 @@
 #
 
 
+%define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
+
 Name:           libostree
 Version:        2020.3
 Release:        0
@@ -35,6 +37,7 @@ BuildRequires:  gpgme-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libcap-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(e2p)
 BuildRequires:  pkgconfig(fuse) >= 2.9.2
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.36.0
@@ -161,14 +164,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_bindir}/ostree
 %{_bindir}/rofiles-fuse
 %{_datadir}/bash-completion/completions/ostree
-%dir %{_libexecdir}/ostree
+%dir %{_prefix}/lib/ostree
 %dir %{_libexecdir}/libostree
-%{_libexecdir}/ostree/ostree-prepare-root
-%{_libexecdir}/ostree/ostree-remount
+%{_prefix}/lib/ostree/ostree-prepare-root
+%{_prefix}/lib/ostree/ostree-remount
 %{_libexecdir}/libostree/ostree-trivial-httpd
-%dir %{_libexecdir}/dracut
-%dir %{_libexecdir}/dracut/modules.d
-%{_libexecdir}/dracut/modules.d/98ostree/
+%{_dracutmodulesdir}/98ostree/
 %{_unitdir}/ostree-prepare-root.service
 %{_unitdir}/ostree-remount.service
 %{_unitdir}/ostree-finalize-staged.service
@@ -178,7 +179,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_datadir}/ostree/
 %{_sbindir}/rcostree-prepare-root
 %{_sbindir}/rcostree-remount
-%{_libexecdir}/systemd/system-generators/ostree-system-generator
+%{_systemdgeneratordir}/ostree-system-generator
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/ostree-tmpfiles.conf
 %exclude %{_sysconfdir}/grub.d/*ostree
