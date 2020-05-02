@@ -17,6 +17,7 @@
 
 
 %define vendorzone opensuse.
+%define _systemdutildir %(pkg-config --variable systemdutildir systemd)
 %global clknetsim_ver 79ffe44
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -170,9 +171,9 @@ install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchronyd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchrony-wait
 
-install -d %{buildroot}%{_libexecdir}/systemd/ntp-units.d
+install -d %{buildroot}%{_systemdutildir}/ntp-units.d
 echo 'chronyd.service' > \
-        %{buildroot}%{_libexecdir}/systemd/ntp-units.d/50-chronyd.list
+        %{buildroot}%{_systemdutildir}/ntp-units.d/50-chronyd.list
 
 install -Dpm 0644 %{SOURCE2} \
   %{buildroot}%{_fillupdir}/sysconfig.chrony
@@ -225,7 +226,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d "%{_localstatedir}/
 %{_mandir}/man1/chronyc.1%{?ext_man}
 %{_mandir}/man5/chrony.conf.5%{?ext_man}
 %{_mandir}/man8/chronyd.8%{?ext_man}
-%{_libexecdir}/systemd/ntp-units.d/*.list
+%{_systemdutildir}/ntp-units.d/*.list
 %{_unitdir}/chrony*.service
 %{_unitdir}/chrony*.timer
 %{_sbindir}/rcchrony*
