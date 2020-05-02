@@ -539,4 +539,12 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>785088</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>be70b91351926cd3b5c26ebae9653483</srcmd5>
+    <version>3.8.3</version>
+    <time>1588450653</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799506</requestid>
+  </revision>
 </revisionlist>

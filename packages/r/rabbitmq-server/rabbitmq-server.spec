@@ -59,9 +59,7 @@ BuildRequires:  erlang >= 21.3
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  libxslt
-# require python json module
-BuildRequires:  python >= 2.6
-BuildRequires:  python-xml
+BuildRequires:  python3
 BuildRequires:  rsync
 BuildRequires:  unzip
 BuildRequires:  xmlto
@@ -121,11 +119,13 @@ cp %{SOURCE8} .
 %build
 # Make elixir happy with Unicode
 export LANG=en_US.UTF-8
+export PYTHON=%{_bindir}/python3
 make all %{_make_args} %{?_smp_mflags}
 
 %install
 # Make elixir happy with Unicode
 export LANG=en_US.UTF-8
+export PYTHON=%{_bindir}/python3
 make install %{_make_args}
 
 mkdir -p %{buildroot}%{_sbindir}
