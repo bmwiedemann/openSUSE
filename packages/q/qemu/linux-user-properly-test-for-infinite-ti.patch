@@ -15,10 +15,10 @@ Signed-off-by: Andreas Schwab <schwab@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 926a7dd587b39d0615cbbb077ef2..9330a1ec6a15f16e4f7fd0f825c2 100644
+index 6ada54d3a19e455c0c12a1d4b321..69c9dee831d8fdb96cde3a0b996c 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -9758,7 +9758,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_ulong arg1,
+@@ -10052,7 +10052,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_ulong arg1,
              {
                  struct timespec ts, *pts;
  

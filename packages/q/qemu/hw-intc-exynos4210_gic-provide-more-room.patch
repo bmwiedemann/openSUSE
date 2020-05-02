@@ -41,7 +41,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index a1b699b6babc3105bfd4ad9a8383..17317c961caa9a09c476e9ecbd3f 100644
+index 82c8f4192cbc34fe4c8762846728..50958b31c9173aba84b7443950cb 100644
 --- a/hw/intc/exynos4210_gic.c
 +++ b/hw/intc/exynos4210_gic.c
 @@ -290,8 +290,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
@@ -53,5 +53,5 @@ index a1b699b6babc3105bfd4ad9a8383..17317c961caa9a09c476e9ecbd3f 100644
 +    char cpu_alias_name[sizeof(cpu_prefix) + 7];
 +    char dist_alias_name[sizeof(cpu_prefix) + 8];
      SysBusDevice *gicbusdev;
+     uint32_t n = s->num_cpu;
      uint32_t i;
- 

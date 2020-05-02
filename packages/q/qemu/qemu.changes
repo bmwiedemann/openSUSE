@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:10:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to v5.0.0: See http://wiki.qemu.org/ChangeLog/5.0
+  Take note that ongoing feature deprecation is tracked at both
+  http://wiki.qemu-project.org/Features/LegacyRemoval and in
+  the deprecated.html file installed with the qemu package
+  Some noteworthy changes:
+* x86: EPYC-Rome vcpu model
+* x86: vcpu model fixes for EPYC, Denverton, and Icelake-Server
+* s390: (as previously mentioned) Protected Virtualization support:
+  start and control guest in secure mode (bsc#1167075 jsc#SLE-7407)
+* s390: support for Adapter Interrupt Suppression while running in
+  KVM mode
+* PowerPC: pseries: NVDIMMs with file backend supported
+* PowerPC: powernv: KVM guests now runnable under TCG emulation
+* PowerPC: powernv: Basic POWER10 support
+* ARM: new boards: tacoma-bmc, Netduindo Plus 2, Orangepi PC
+* ARM: 'virt' machine now supports vTPM and virtio-iommu devices
+* ARM:Cortex-M7 CPU support
+* ARM: Lots of architecture features now emulated
+* ARM: TPM supported
+* ARM: Timekeeping improvements
+* ARM: LOTS more - refer to upstream changelog
+* virtio-iommu
+* VNC compatibility with noVNC improved
+* Support for using memory backends for main/"built-in" guest RAM
+* hostmem backends can now specify prealloc thread count
+* Better Azure compatibility of VHD images
+* Ceph namespaces supported
+* Compress block filter driver can create compressed backup images
+* virtiofsd availble for host filesystem passthrough
+* Improved html based documentation is provided with this release
+* Live migration support for external processes running on QEMU D-Bus
+* Patches dropped (upstream unless otherwise noted):
+  i386-Add-MSR-feature-bit-for-MDS-NO.patch
+  i386-Add-macro-for-stibp.patch
+  i386-Add-new-CPU-model-Cooperlake.patch
+  arm-arm-powerctl-set-NSACR.-CP11-CP10-bi.patch
+  iotests-Skip-test-060-if-it-is-not-possi.patch
+  iotests-Skip-test-079-if-it-is-not-possi.patch
+  Revert-qemu-options.hx-Update-for-reboot.patch
+  iotests-Provide-a-function-for-checking-.patch
+  Fix-double-free-issue-in-qemu_set_log_fi.patch
+  iotests-Fix-IMGOPTSSYNTAX-for-nbd.patch
+  virtio-blk-fix-out-of-bounds-access-to-b.patch
+  block-Activate-recursively-even-for-alre.patch
+  i386-Resolve-CPU-models-to-v1-by-default.patch
+  numa-properly-check-if-numa-is-supported.patch
+  vhost-user-gpu-Drop-trailing-json-comma.patch
+  display-bochs-display-fix-memory-leak.patch
+  hw-arm-smmuv3-Apply-address-mask-to-line.patch
+  hw-arm-smmuv3-Correct-SMMU_BASE_ADDR_MAS.patch
+  hw-arm-smmuv3-Check-stream-IDs-against-a.patch
+  hw-arm-smmuv3-Align-stream-table-base-ad.patch
+  hw-arm-smmuv3-Use-correct-bit-positions-.patch
+  hw-arm-smmuv3-Report-F_STE_FETCH-fault-a.patch
+  block-Add-bdrv_qapi_perm_to_blk_perm.patch
+  blkdebug-Allow-taking-unsharing-permissi.patch
+  virtio-add-ability-to-delete-vq-through-.patch
+  virtio-update-queue-size-on-guest-write.patch
+  virtio-don-t-enable-notifications-during.patch
+  numa-Extend-CLI-to-provide-initiator-inf.patch
+  numa-Extend-CLI-to-provide-memory-latenc.patch
+  numa-Extend-CLI-to-provide-memory-side-c.patch
+  hmat-acpi-Build-Memory-Proximity-Domain-.patch
+  hmat-acpi-Build-System-Locality-Latency-.patch
+  hmat-acpi-Build-Memory-Side-Cache-Inform.patch
+  tests-numa-Add-case-for-QMP-build-HMAT.patch
+  qcow2-bitmaps-fix-qcow2_can_store_new_di.patch
+  backup-top-Begin-drain-earlier.patch
+  virtio-mmio-update-queue-size-on-guest-w.patch
+  virtio-net-delete-also-control-queue-whe.patch
+  intel_iommu-a-fix-to-vtd_find_as_from_bu.patch
+  target-i386-Add-new-bit-definitions-of-M.patch
+  target-i386-Add-missed-features-to-Coope.patch
+  hw-i386-pc-fix-regression-in-parsing-vga.patch
+  migration-test-ppc64-fix-FORTH-test-prog.patch
+  target-arm-Return-correct-IL-bit-in-merg.patch
+  target-arm-Set-ISSIs16Bit-in-make_issinf.patch
+  runstate-ignore-finishmigrate-prelaunch-.patch
+  migration-Rate-limit-inside-host-pages.patch
+  m68k-Fix-regression-causing-Single-Step-.patch
+  Revert-vnc-allow-fall-back-to-RAW-encodi.patch
+  vnc-prioritize-ZRLE-compression-over-ZLI.patch
+  target-i386-kvm-initialize-feature-MSRs-.patch
+  s390x-adapter-routes-error-handling.patch
+  iscsi-Cap-block-count-from-GET-LBA-STATU.patch
+  block-backup-fix-memory-leak-in-bdrv_bac.patch
+  tpm-ppi-page-align-PPI-RAM.patch
+  hw-intc-arm_gicv3_kvm-Stop-wrongly-progr.patch
+  target-arm-fix-TCG-leak-for-fcvt-half-do.patch
+  block-fix-memleaks-in-bdrv_refresh_filen.patch
+  block-backup-top-fix-failure-path.patch
+  iotests-add-test-for-backup-top-failure-.patch
+  audio-oss-fix-buffer-pos-calculation.patch
+  target-arm-monitor-query-cpu-model-expan.patch
+  block-fix-crash-on-zero-length-unaligned.patch
+  block-Fix-VM-size-field-width-in-snapsho.patch
+  target-arm-Correct-definition-of-PMCRDP.patch
+  block-nbd-extract-the-common-cleanup-cod.patch
+  block-nbd-fix-memory-leak-in-nbd_open.patch
+  virtio-crypto-do-delete-ctrl_vq-in-virti.patch
+  virtio-pmem-do-delete-rq_vq-in-virtio_pm.patch
+  vhost-user-blk-delete-virtioqueues-in-un.patch
+  hw-arm-cubieboard-use-ARM-Cortex-A8-as-t.patch
+  pc-bios-s390x-Save-iplb-location-in-lowc.patch
+  iotests-Fix-nonportable-use-of-od-endian.patch
+  block-qcow2-threads-fix-qcow2_decompress.patch
+  job-refactor-progress-to-separate-object.patch
+  block-block-copy-fix-progress-calculatio.patch
+  block-io-fix-bdrv_co_do_copy_on_readv.patch
+  scsi-qemu-pr-helper-Fix-out-of-bounds-ac.patch
+  target-ppc-Fix-rlwinm-on-ppc64.patch
+  compat-disable-edid-on-correct-virtio-gp.patch
+  ppc-ppc405_boards-Remove-unnecessary-NUL.patch
+  block-Avoid-memleak-on-qcow2-image-info-.patch
+  block-bdrv_set_backing_bs-fix-use-after-.patch
+  hmp-vnc-Fix-info-vnc-list-leak.patch
+  migration-colo-fix-use-after-free-of-loc.patch
+  migration-ram-fix-use-after-free-of-loca.patch
+  qcow2-List-autoclear-bit-names-in-header.patch
+  sheepdog-Consistently-set-bdrv_has_zero_.patch
+  target-arm-Fix-PAuth-sbox-functions.patch
+  tcg-i386-Fix-INDEX_op_dup2_vec.patch
+  net-tulip-check-frame-size-and-r-w-data-.patch
+  target-i386-do-not-set-unsupported-VMX-s.patch
+  spapr-Fix-failure-path-for-attempting-to.patch
+  ati-vga-Fix-checks-in-ati_2d_blt-to-avoi.patch
+  xen-block-Fix-double-qlist-remove-and-re.patch
+  vpc-Don-t-round-up-already-aligned-BAT-s.patch
+  target-xtensa-fix-pasto-in-pfwait.r-opco.patch
+  aio-wait-delegate-polling-of-main-AioCon.patch
+  async-use-explicit-memory-barriers.patch
+  tcg-mips-mips-sync-encode-error.patch
+  vhost-user-gpu-Release-memory-returned-b.patch
+  vga-Raise-VRAM-to-16-MiB-for-pc-0.15-and.patch (no pc-0.15)
+  hw-i386-disable-smbus-migration-for-xenf.patch
+  s390x-Don-t-do-a-normal-reset-on-the-ini.patch
+  s390x-Move-reset-normal-to-shared-reset-.patch
+  s390x-Move-initial-reset.patch
+  s390x-Move-clear-reset.patch
+  s390x-kvm-Make-kvm_sclp_service_call-voi.patch
+  s390x-ipl-Consolidate-iplb-validity-chec.patch
+  s390x-Beautify-diag308-handling.patch
+  s390x-Add-missing-vcpu-reset-functions.patch
+  s390-sclp-improve-special-wait-psw-logic.patch
+  vhost-correctly-turn-on-VIRTIO_F_IOMMU_P.patch
+  util-add-slirp_fmt-helpers.patch
+  slirp-use-correct-size-while-emulating-I.patch
+  tcp_emu-Fix-oob-access.patch
+  slirp-use-correct-size-while-emulating-c.patch
+  tcp_emu-fix-unsafe-snprintf-usages.patch
+- For SLE builds, leverage the html documentation by adding a link
+  to the SUSE specific support documentation (the *.txt support doc
+  was slightly tweaked to be acceptable as reStructuredText for
+  conversion to html)
+  docs-add-SUSE-support-statements-to-html.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 19:35:55 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+-Fix potential DoS in ATI VGA emulation (CVE-2020-11869
+  bsc#1170537)
+  ati-vga-Fix-checks-in-ati_2d_blt-to-avoi.patch
+
+-------------------------------------------------------------------
 Wed Apr 22 15:23:15 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Minor tweaks to patches and support doc

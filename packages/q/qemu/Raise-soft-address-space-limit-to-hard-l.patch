@@ -12,14 +12,14 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
 [BR: add include for sys/resource.h]
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- vl.c | 12 ++++++++++++
+ softmmu/vl.c | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/vl.c b/vl.c
-index bf0a6345d2394ad25adfe53c4006..68de8184f91c6ef3903859c70526 100644
---- a/vl.c
-+++ b/vl.c
-@@ -33,6 +33,7 @@
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 32c004788919e4f50b4bfc88113b..97e3888e832f0c9051f720bb701c 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -34,6 +34,7 @@
  #include "qemu/uuid.h"
  #include "sysemu/reset.h"
  #include "sysemu/runstate.h"
@@ -27,15 +27,15 @@ index bf0a6345d2394ad25adfe53c4006..68de8184f91c6ef3903859c70526 100644
  #include "sysemu/seccomp.h"
  #include "sysemu/tcg.h"
  
-@@ -2863,6 +2864,7 @@ int main(int argc, char **argv, char **envp)
-     char *dir, **dirs;
+@@ -2851,6 +2852,7 @@ void qemu_init(int argc, char **argv, char **envp)
      BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
      QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
+     int mem_prealloc = 0; /* force preallocation of physical target memory */
 +    struct rlimit rlimit_as;
  
      os_set_line_buffering();
  
-@@ -2874,6 +2876,16 @@ int main(int argc, char **argv, char **envp)
+@@ -2862,6 +2864,16 @@ void qemu_init(int argc, char **argv, char **envp)
  
      qemu_mutex_lock_iothread();
  

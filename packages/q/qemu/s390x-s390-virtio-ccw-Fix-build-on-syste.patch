@@ -63,10 +63,10 @@ index 8cf5cd2c9bcd48b03af1e546fb3a..2c4d5e89890b7d21abdcd718c2f2 100644
 +    env->regs[r1 + 1] = DIAG_308_RC_INVAL_FOR_PV;
 +}
 diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 85250bf046ed72313b03c6ff6c54..5df455e065504bc0eef0f1f084dc 100644
+index db45249320abf7920ec8730790c2..501d4a66b346cfe9a987cebe884d 100644
 --- a/hw/s390x/s390-virtio-ccw.c
 +++ b/hw/s390x/s390-virtio-ccw.c
-@@ -44,7 +44,6 @@
+@@ -45,7 +45,6 @@
  #include "sysemu/sysemu.h"
  #include "sysemu/balloon.h"
  #include "hw/s390x/pv.h"
@@ -74,7 +74,7 @@ index 85250bf046ed72313b03c6ff6c54..5df455e065504bc0eef0f1f084dc 100644
  #include "migration/blocker.h"
  
  static Error *pv_mig_blocker;
-@@ -392,15 +391,6 @@ out_err:
+@@ -391,15 +390,6 @@ out_err:
      return rc;
  }
  
@@ -90,7 +90,7 @@ index 85250bf046ed72313b03c6ff6c54..5df455e065504bc0eef0f1f084dc 100644
  static void s390_pv_prepare_reset(S390CcwMachineState *ms)
  {
      CPUState *cs;
-@@ -486,7 +476,7 @@ static void s390_machine_reset(MachineState *machine)
+@@ -485,7 +475,7 @@ static void s390_machine_reset(MachineState *machine)
          run_on_cpu(cs, s390_do_cpu_reset, RUN_ON_CPU_NULL);
  
          if (s390_machine_protect(ms)) {

@@ -1,8 +1,4 @@
 #!/bin/bash
-#POKEALL used to document where ALL repos are POKED
-#POKEALL? question what repos are actually poked here
-#TEMP_CHECK - try to eliminate
-# !! FIX AFTER RUN - LEAVING REPO NOT IN GOOD STATE
 
 # update_git.sh: script to manage package maintenance using a git-based
 # workflow. Commands are as follows:
@@ -123,25 +119,23 @@ touch $BUNDLE_DIR/$GIT_UPSTREAM_COMMIT.id
 
 # Now go through all the submodule local repos that are present and create a bundle file for the patches found there
 for (( i=0; i <$REPO_COUNT; i++ )); do
-#POKEALL (conditional on whether it IS there)
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
         SUBDIR=${PATCH_PATH_MAP[$i]}
         GITREPO_COMMIT_ISH=($BUNDLE_DIR/$SUBDIR*.id)
         if [[ $GITREPO_COMMIT_ISH  =~ .*(.{40})[.]id ]]; then
             GITREPO_COMMIT_ISH=${BASH_REMATCH[1]}
             echo "Using $GITREPO_COMMIT_ISH"
+            PATCH_RANGE_INDEX=$i
             mkdir -p $GIT_DIR/$SUBDIR
             git -C $GIT_DIR/$SUBDIR init
-#POKEALL
             git -C $GIT_DIR/$SUBDIR remote add origin file://$(readlink -f \
-                ${LOCAL_REPO_MAP[$i]})
+                ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
             if [[ $(git -C $GIT_DIR/$SUBDIR ls-remote --heads origin $GIT_BRANCH) ]]; then
                 git -C $GIT_DIR/$SUBDIR fetch origin $GIT_BRANCH
                 if [[ $(git -C $GIT_DIR/$SUBDIR rev-list $GITREPO_COMMIT_ISH..FETCH_HEAD) ]]; then
                     git -C $GIT_DIR/$SUBDIR bundle create $BUNDLE_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle $GITREPO_COMMIT_ISH..FETCH_HEAD
 #TODO: post-process repo info to avoid un-needed diffs (eg git vs https)
-#POKEALL
-                    git -C $(readlink -f ${LOCAL_REPO_MAP[$i]}) remote get-url origin >$BUNDLE_DIR/$SUBDIR/repo
+                    git -C $(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]}) remote get-url origin >$BUNDLE_DIR/$SUBDIR/repo
                 fi
             fi
         fi
@@ -177,12 +171,12 @@ for entry in ${BUNDLE_FILES[@]}; do
     fi
     for (( i=0; i <$REPO_COUNT; i++ )); do
         if [[ "$SUBDIR" = "${PATCH_PATH_MAP[$i]}" ]]; then
+            PATCH_RANGE_INDEX=$i
             break
         fi
     done
 
-#POKEALL ?
-    LOCAL_REPO=$(readlink -f ${LOCAL_REPO_MAP[$i]})
+    LOCAL_REPO=$(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
     if [ -e $LOCAL_REPO ]; then
         git -C $LOCAL_REPO remote remove bundlerepo || true
 	# git won't let you delete a branch we're on - so get onto master temporarily (TODO: is there a better approach?)
@@ -280,7 +274,6 @@ mkdir -p $BUNDLE_DIR
 tar xJf bundles.tar.xz -C $BUNDLE_DIR
 # Now go through all the submodule local repos that are present and create a bundle file for the patches found there
 for (( i=0; i <$REPO_COUNT; i++ )); do
-#POKEALL
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
         if $(git -C ${LOCAL_REPO_MAP[$i]} branch | grep -F "frombundle" >/dev/null); then
             SUBDIR=${PATCH_PATH_MAP[$i]}
@@ -332,19 +325,15 @@ for entry in ${BUNDLE_FILES[@]}; do
     fi
     for (( i=0; i <$REPO_COUNT; i++ )); do
         if [[ "$SUBDIR" = "${PATCH_PATH_MAP[$i]}" ]]; then
+            PATCH_RANGE_INDEX=$i
             break
         fi
     done
-    if [[ $i = $REPO_COUNT ]]; then
-        echo "Error matching bundle dir to project submodule path"
-	exit
-    fi
 
     mkdir -p $GIT_DIR/$SUBDIR
     git -C $GIT_DIR/$SUBDIR init
-#POKEALL?
     git -C $GIT_DIR/$SUBDIR remote add origin file://$(readlink -f \
-        ${LOCAL_REPO_MAP[$i]})
+        ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
     git -C $GIT_DIR/$SUBDIR fetch origin $GIT_BRANCH
     git -C $GIT_DIR/$SUBDIR reset --hard $GITREPO_COMMIT_ISH
     git -C $GIT_DIR/$SUBDIR remote add bundle $BUNDLE_DIR/$entry 
@@ -352,7 +341,7 @@ for entry in ${BUNDLE_FILES[@]}; do
     git -C $GIT_DIR/$SUBDIR format-patch -N --suffix= --no-renames -o $CMP_DIR -k --stat=72 \
         --indent-heuristic --zero-commit --no-signature --full-index \
         --src-prefix=a/$SUBDIR --dst-prefix=b/$SUBDIR \
-        --start-number=$(expr $i \* $PATCH_RANGE) \
+        --start-number=$(expr $PATCH_RANGE_INDEX \* $PATCH_RANGE) \
         $GITREPO_COMMIT_ISH..FETCH_HEAD > /dev/null
 done
 
@@ -627,23 +616,35 @@ echo "and the qemu or qemu submodule repos as remotes named upstream"
 
 #==============================================================================
 
-#?? Should we be LATEST or not specific here?
 if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
-    echo "ERROR: Main local QEMU related git repo not found. Please follow these setup instructions:"
+    echo "ERROR: Local QEMU related git repos not found. Please follow these setup instructions:"
     explain_setup
     exit
 fi
+# There are some req's on needing a recent git, and a recent osc (double chk the osc part - I guess it's related to the osc service )
 
+# get the current state of the git superproject
+# TODO: This sends output to stdout which we don't want to see
+git -C ${LOCAL_REPO_MAP[0]} status --untracked-files=no --branch --porcelain=2 \
+    | awk '{print "var"NR"="$3}'
+# $var1 is the current commit
+# $var2 is the current branch or 'detached', if not on a branch
+# $var3 is the current upstream branch (if set), as in eg 'origin/opensuse-5.0'
+# $var4 is not of use to us
+
+# TODO: What checks should be different between LATEST and non-LATEST?
+# If we don't actually patch from the submodule repo, we shouldn't care about what's in the local one
+# Does non-LATEST really require master?
 echo "WARNING: Script using local git repos. Some operations may be time consuming..."
 #TODO: Most of these checks are not necessary
 for (( i=0; i <$REPO_COUNT; i++ )); do
-#POKEALL
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
 	if [[ -d ${LOCAL_REPO_MAP[$i]}/.git/rebase-merge  || \
             -d ${LOCAL_REPO_MAP[$i]}/.git/rebase-apply ]]; then
             echo "ERROR! Rebase appears to be in progress in ${LOCAL_REPO_MAP[$i]}. Please resolve"
             exit
         fi
+# !! Does this presume the branch as indicated in config is the current branch? (I believe that's been my modus operandi to date, so perhaps THAT should be enforced at this point?)
         if ! git -C ${LOCAL_REPO_MAP[$i]} submodule update --init --recursive &> /dev/null; then
             echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
             echo "(ensure git submodule update --init --recursive is successful)"
@@ -684,7 +685,6 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
            fi
         fi
     fi
-#POKEALL
     for (( i=0; i <$REPO_COUNT; i++ )); do
         if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
             git -C ${LOCAL_REPO_MAP[$i]} remote update upstream &> /dev/null
@@ -717,7 +717,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     WRITE_LOG=0
     echo "Processing LATEST upstream changes"
     echo "(If SUCCESS is not printed upon completion, see /tmp/latest.log for issues)"
-    TEMP_CHECK # DOING LATEST
+    TEMP_CHECK
     if [[ $QEMU_TARBALL =~ $BASE_RE$EXTRA_RE$SUFFIX_RE ]]; then
         OLD_COMMIT_ISH=${BASH_REMATCH[3]}
     else
@@ -771,7 +771,7 @@ else # not LATEST
     SOURCE_VERSION=$OLD_SOURCE_VERSION_AND_EXTRA
     QEMU_VERSION=$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz qemu-$SOURCE_VERSION/VERSION)
     if [ ! "$QEMU_VERSION" = "$OLD_SOURCE_VERSION_AND_EXTRA" ]; then
-	    echo "Tarball name (which we decode) doesn't correspond to the VERSION file contained therein"
+            echo "Tarball name (which we decode) doesn't correspond to the VERSION file contained therein"
             exit
     fi
     MAJOR_VERSION=$(echo $QEMU_VERSION|awk -F. '{print $1}')
@@ -788,7 +788,7 @@ else # not LATEST
         git2pkg )
             echo "Updating the package using the $GIT_BRANCH branch of the local repos."
             echo "(If SUCCESS is not printed upon completion, see /tmp/git2pkg.log for issues)"
-            TEMP_CHECK #NOT LATEST
+            TEMP_CHECK
             initbundle &> /tmp/git2pkg.log
             bundle2spec &>> /tmp/git2pkg.log
             echo "SUCCESS"
@@ -797,7 +797,7 @@ else # not LATEST
         pkg2git )
             echo "Exporting the package's git bundles to the local repo's frombundle branches..." 
             echo "(If SUCCESS is not printed upon completion, see /tmp/pkg2git.log for issues)"
-            TEMP_CHECK #NOT LATEST
+            TEMP_CHECK
             bundle2local &> /tmp/pkg2git.log
             echo "SUCCESS"
             echo "To modify package patches, use the frombundle branch as the basis for updating"
@@ -808,7 +808,7 @@ else # not LATEST
             echo "Updating the spec file and patches from the spec file template and the bundle"
             echo "of bundles (bundles.tar.xz)"
             echo "(If SUCCESS is not printed upon completion, see /tmp/refresh.log for issues)"
-            TEMP_CHECK #NOT LATEST
+            TEMP_CHECK
             bundle2spec &> /tmp/refresh.log
             echo "SUCCESS"
             tail -9 /tmp/refresh.log

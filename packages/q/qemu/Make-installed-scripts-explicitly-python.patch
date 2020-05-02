@@ -13,21 +13,21 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/scripts/analyze-migration.py b/scripts/analyze-migration.py
-index e527eb168e9ce7c3944094ec6701..fd376eac71f73e6366a9e17a1c51 100755
+index 96a31d3974ba2af13d419b71c409..4cae695244a00003d1431c02febf 100755
 --- a/scripts/analyze-migration.py
 +++ b/scripts/analyze-migration.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
  #  Migration Stream Analyzer
  #
 diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-checker.py
-index f8b7b8f77252f2c03d6d7db9dc60..754159069dfae6838edaac14856f 100755
+index 539ead62b498202fc40b42bff05f..0b7d30eef392cd659dbd722d8bdc 100755
 --- a/scripts/vmstate-static-checker.py
 +++ b/scripts/vmstate-static-checker.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  #
  # Compares vmstate information stored in JSON format, obtained from

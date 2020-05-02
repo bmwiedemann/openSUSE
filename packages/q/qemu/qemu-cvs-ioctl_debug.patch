@@ -9,27 +9,29 @@ Signed-off-by: Ulrich Hecht <uli@suse.de>
 [BR: minor edits to pass qemu's checkpatch script]
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- linux-user/syscall.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ linux-user/syscall.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 25b0f3bba38b8629cb4bc027be96..49db231f031015265f6d8cead831 100644
+index 1a350d1a9e0ff9f99e36817a6ecc..946c1e3a1957ea43368311acecda 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -5151,7 +5151,19 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+@@ -5301,8 +5301,21 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
      ie = ioctl_entries;
      for(;;) {
          if (ie->target_cmd == 0) {
--            gemu_log("Unsupported ioctl: cmd=0x%04lx\n", (long)cmd);
 +            int i;
-+            gemu_log("Unsupported ioctl: cmd=0x%04lx (%x)\n", (unsigned long)cmd,
+             qemu_log_mask(
+-                LOG_UNIMP, "Unsupported ioctl: cmd=0x%04lx\n", (long)cmd);
++                LOG_UNIMP, "Unsupported ioctl: cmd=0x%04lx (%x)\n", (unsigned long)cmd,
 +                     (unsigned int)(cmd & (TARGET_IOC_SIZEMASK << TARGET_IOC_SIZESHIFT))
 +                      >> TARGET_IOC_SIZESHIFT);
 +            for (i = 0; ioctl_entries[i].target_cmd; i++) {
 +                if ((ioctl_entries[i].target_cmd & ~(TARGET_IOC_SIZEMASK
 +                    << TARGET_IOC_SIZESHIFT)) == (cmd & ~(TARGET_IOC_SIZEMASK <<
 +                    TARGET_IOC_SIZESHIFT)))
-+                    gemu_log("%p\t->\t%s (%x)\n", (void *)(unsigned long)
++                    qemu_log_mask(
++                        LOG_UNIMP, "%p\t->\t%s (%x)\n", (void *)(unsigned long)
 +                             ioctl_entries[i].host_cmd, ioctl_entries[i].name,
 +                             (ioctl_entries[i].target_cmd & (TARGET_IOC_SIZEMASK
 +                             << TARGET_IOC_SIZESHIFT)) >> TARGET_IOC_SIZESHIFT);

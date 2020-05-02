@@ -37,7 +37,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index d8d02ff34f4fc942cb7935deec58..abeeaaa67452b0b938557b0d0dea 100644
+index b2b14bde2b251986230153adca9a..1988809ec2e7b1b6db33ba85eaef 100644
 --- a/target/s390x/kvm.c
 +++ b/target/s390x/kvm.c
 @@ -115,6 +115,8 @@
@@ -49,7 +49,7 @@ index d8d02ff34f4fc942cb7935deec58..abeeaaa67452b0b938557b0d0dea 100644
  
  #define NR_LOCAL_IRQS 32
  /*
-@@ -1695,6 +1697,8 @@ static int handle_intercept(S390CPU *cpu)
+@@ -1698,6 +1700,8 @@ static int handle_intercept(S390CPU *cpu)
              (long)cs->kvm_run->psw_addr);
      switch (icpt_code) {
          case ICPT_INSTRUCTION:

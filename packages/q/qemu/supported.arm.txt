@@ -1,6 +1,6 @@
 [qemu-arm package document]
 
-SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
@@ -202,9 +202,10 @@ Deprecated, Superseded, Modified and Dropped Features
   and could possibly change syntax in the future.
 
 - This previously unsupported command line option is now deprecated:
-  -bt
+  -tb-size
 
 - These previously unsupported command line options are no longer recognized:
+  -bt
   -device at24c-eeprom
   -device mmio_interface
   -device ssi-sd
@@ -299,7 +300,9 @@ QEMU Command-Line and Monitor Syntax and Support
   -d ...
   -daemonize
   -debugcon ...
-  -device [VGA|rtl8139|virtio-net-pci|virtio-blk-pci|virtio-balloon-pci|
+  -device
+
+          [VGA|rtl8139|virtio-net-pci|virtio-blk-pci|virtio-balloon-pci|
           virtio-9p-pci|usb-hub|usb-ehci|usb-tablet|usb-storage|usb-mouse|
           usb-kbd|virtserialport|virtconsole|virtio-serial-pci|i82559er|
           virtio-scsi-pci|scsi-cd|scsi-hd|scsi-generic|scsi-disk|scsi-block|
@@ -328,10 +331,14 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-blk|virtio-net|virtio-serial|virtio-balloon| virtio-9p|
           virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|
           virtio-gpu|virtio-scsi|virtio-rng|e1000-82540em)
+
   -dfilter range, ...
   -display ...
-  -drive ... (if specified if=[virtio] and format=[qcow2|raw] and
+  -drive
+
+         ... (if specified if=[virtio] and format=[qcow2|raw] and
              snapshot=off only)
+
   -echr ...
   -enable-fips
   -enable-kvm
@@ -357,8 +364,11 @@ QEMU Command-Line and Monitor Syntax and Support
   -monitor ...
   -msg ...
   -name ...
-  -net [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
+  -net
+
+       [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
                                              and virtio are supported)
+
   -netdev [bridge|tap|user] ...
   -nic ...
   -no-acpi
@@ -634,12 +644,14 @@ QEMU Command-Line and Monitor Syntax and Support
   watchdog-set-action
 
 -  The following command line options are unsupported:
+
   -acpitable ...
-  -bt ...
   -chroot ...
   -cpu ... (all except host)
   -curses
-  -device [160s33b|320s33b|640s33b|a15mpcore_priv|a9mpcore_priv|a9-scu|adlib|
+  -device
+
+          [160s33b|320s33b|640s33b|a15mpcore_priv|a9mpcore_priv|a9-scu|adlib|
           ads7846|allwinner-a10|allwinner-a10-pic|allwinner-A10-timer|
           allwinner-emac|amd-iommu|AMDVI-PCI|arm1026-arm-cpu|arm1136-arm-cpu|
           arm1136-r2-arm-cpu|arm1176-arm-cpu|arm11mpcore-arm-cpu|
@@ -703,24 +715,35 @@ QEMU Command-Line and Monitor Syntax and Support
           strongarm-gpio|strongarm_pic|strongarm-ppc|strongarm-rtc|
           strongarm-ssp|strongarm-uart|tegra2-ehci-usb|ti925t-arm-cpu|tmp105|
           tosa_dac|tosa-ssp|tusb6010|twl92230|tz-msc|usb-redir|versatile_i2c|
-          versatilepb_sic|versatile_pci|versatile_pci_host|
-          vfio-pci-igd-lpc-bridge|vfio-pci-nohotplug|vfio-platform|
-          vhost-vsock-device|virtconsole|virtio-crypto-device|vmgenid|
-          vmware-svga|w25q256|w25q32|w25q32dw|w25q64|w25q80|w25q80bl|w25x10|
-          w25x16|w25x20|w25x32|w25x40|w25x64|w25x80|wm8750|*-x86_64-cpu|
+          versatilepb_sic|versatile_pci|versatile_pci_host|vfio-pci-nohotplug|
+          vfio-platform|vhost-vsock-device|virtconsole|virtio-crypto-device|
+          vmgenid|vmware-svga|w25q256|w25q32|w25q32dw|w25q64|w25q80|w25q80bl|
+          w25x10|w25x16|w25x20|w25x32|w25x40|w25x64|w25x80|wm8750|*-x86_64-cpu|
           xen-backend|xen-pci-passthrough|xen-platform|xen-pvdevice|xgmac|
-          xilinxzynq_slcr|xlnx-versal|xlnx.ps7-qspi|xlnx.ps7-spi|xlnxps7-usb|
-          xlnxzynqmp|xlnxzynq-xadc|armsse-cpuid|armsse-mhu|cpu-cluster|
-          luminary-watchdog|microbit.i2c|nrf51_soc.gpio|nrf51_soc.nvm|
-          nrf51_soc.rng|nrf51_soc.timer|platform-ehci-usb|sse-200|vmware-svga|
-          vmxnet3|ati-vga|cirrus-vga|vhost-user-fs-device|tulip|ati-vga]
+          xilinxzynq_slcr|xlnx-versal|xlnx.ps7-qspi|xlnx.ps7-spi|xlnxzynqmp|
+          xlnxzynq-xadc|armsse-cpuid|armsse-mhu|cpu-cluster|luminary-watchdog|
+          microbit.i2c|nrf51_soc.gpio|nrf51_soc.nvm|nrf51_soc.rng|
+          nrf51_soc.timer|platform-ehci-usb|sse-200|vmware-svga|vmxnet3|ati-vga|
+          cirrus-vga|vhost-user-fs-device|tulip|ati-vga|aw-hc-ehci-usb|
+          virtio-iommu-device|virtio-iommu-pci|
+          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional|
+          cortex-m7-arm-cpu|allwinner-cpucfg|allwinner-h3|allwinner-h3-ccu|
+          allwinner-h3-dramc|allwinner-h3-sysctrl|allwinner-rtc-sun4i|
+          allwinner-rtc-sun6i|allwinner-rtc-sun7i|allwinner-sdhost-sun4i|
+          allwinner-sdhost-sun5i|allwinner-sid|allwinner-sun8i-emac|imx.rngc|
+          imx.usbphy|serial|serial-io|stm32f405-soc|stm32f4xx-exti|
+          stm32f4xx-syscfg|tpm-tis-device]
           (the following are aliases of these unsupported devices: lsi|
           piix3-usb-uhci)
           (note that some of these device names represent supported devices and
           are used internally, but are not specifyable via -device even though
           they appear in the list of devices)
-  -drive ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
+
+  -drive
+
+         ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
          raw]
+
   -dtb file
   -enable-hax
   -enable-sync-profile
@@ -729,25 +752,33 @@ QEMU Command-Line and Monitor Syntax and Support
   -hda/-hdb/-hdc/-hdd ...
   -icount ...
   -L ...
-  -M [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|connex|
+  -M
+
+     [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|connex|
      cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|lm3s811evb|
      mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an505|
-     mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|n810|netduino2|nuri|
-     palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|realview-pb-a8|
-     realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|smdkc210|spitz|swift-bmc|
-     sx1|sx1-v1|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
-     vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
-     witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
-  -machine [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
+     mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|n810|netduino2|
+     netduinoplus2|nuri|orangepi-pc|palmetto-bmc|raspi2|raspi3|realview-eb|
+     realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|
+     sbsa-ref|smdkc210|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|
+     verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|
+     virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|witherspoon-bmc|
+     xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+
+  -machine
+
+           [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
            connex|cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|
            lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|
            mps2-an385|mps2-an521|mps2-an505|mps2-an511|musca-a|musca-b1|
-           musicpal|n800|n810|netduino2|nuri|palmetto-bmc|raspi2|raspi3|
-           realview-eb|realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|
-           romulus-bmc|sabrelite|sbsa-ref|smdkc210|spitz|swift-bmc|sx1|sx1-v1|
-           terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
-           virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|
-           witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+           musicpal|n800|n810|netduino2|netduinoplus2|nuri|orangepi-pc|
+           palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|
+           realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|
+           smdkc210|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|
+           versatileab|versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|
+           virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|witherspoon-bmc|
+           xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+
   -mtdblock file
   -net [dump|socket|vde] ...
   -netdev [dump|hubport|l2tpv3|socket|vde] ...

@@ -17,7 +17,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 45 insertions(+), 16 deletions(-)
 
 diff --git a/target/s390x/ioinst.c b/target/s390x/ioinst.c
-index bbcccf6be23456393282287bf116..f40c35c6ff58315622510ae72103 100644
+index 8828482eec306a2bccd8bef269b7..7a14c52c123b842bba0b13f96b16 100644
 --- a/target/s390x/ioinst.c
 +++ b/target/s390x/ioinst.c
 @@ -138,7 +138,9 @@ void ioinst_handle_msch(S390CPU *cpu, uint64_t reg1, uint32_t ipb, uintptr_t ra)

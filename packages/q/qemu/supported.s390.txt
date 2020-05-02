@@ -1,6 +1,6 @@
 [qemu-s390 package document]
 
-SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
@@ -197,6 +197,7 @@ Deprecated, Superseded, Modified and Dropped Features
   -bt
   -device ide-drive (use ide-hd or ide-cd)
   -device scsi-disk (use scsi-hd or scsi-cd)
+  -tb-size
 
 - These previously unsupported command line options are no longer recognized:
   -device mmio_interface
@@ -292,7 +293,9 @@ QEMU Command-Line and Monitor Syntax and Support
   -d ...
   -daemonize
   -debugcon ...
-  -device [virtio-net-pci|virtio-blk-pci|virtio-balloon-pci|virtserialport|
+  -device
+
+          [virtio-net-pci|virtio-blk-pci|virtio-balloon-pci|virtserialport|
           virtconsole|virtio-serial-pci|virtio-scsi-pci|scsi-cd|scsi-hd|
           scsi-generic|scsi-disk|scsi-block|virtio-rng-pci|pci-bridge|
           megasas-gen2|e1000e|e1000|zpci|virtio-gpu-ccw|virtio-keyboard-ccw|
@@ -319,10 +322,14 @@ QEMU Command-Line and Monitor Syntax and Support
           virtio-input-host|virtio-keyboard|virtio-mouse|virtio-tablet|
           virtio-gpu|virtio-9p|virtio-net|virtio-serial|virtio-balloon|
           virtio-scsi|virtio-rng)
+
   -dfilter range, ...
   -display ...
-  -drive ... (if specified if=[virtio] and format=[qcow2|raw] and
+  -drive
+
+         ... (if specified if=[virtio] and format=[qcow2|raw] and
              snapshot=off only)
+
   -echr ...
   -enable-fips
   -enable-kvm
@@ -340,18 +347,27 @@ QEMU Command-Line and Monitor Syntax and Support
   -kernel ...
   -loadvm ...
   -m ...
-  -M [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
+  -M
+
+     [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
      s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
-  -machine [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
+
+  -machine
+
+           [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
            s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
+
   -mem-path ...
   -mem-prealloc
   -mon ...
   -monitor ...
   -msg ...
   -name ...
-  -net [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
+  -net
+
+       [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
                                              and virtio are supported)
+
   -netdev [bridge|tap|user] ...
   -nic ...
   -nodefaults
@@ -618,12 +634,14 @@ QEMU Command-Line and Monitor Syntax and Support
   watchdog-set-action
 
 -  The following command line options are unsupported:
+
   -acpitable ...
-  -bt ...
   -chroot ...
   -cpu ... (all except host)
   -curses
-  -device [AC97|adlib|am53c974|amd-iommu|AMDVI-PCI|ccid-card-emulated|
+  -device
+
+          [AC97|adlib|am53c974|amd-iommu|AMDVI-PCI|ccid-card-emulated|
           ccid-card-passthrough|cirrus-vga|cs4231a|dc390|diag288|e1000-82544gc|
           e1000-82545em|edu|ES1370|floppy|generic-sdhci|gus|hda-duplex|
           hda-micro|hda-output|hyperv-testdev|*-i386-cpu|i8042|i82550|i82551|
@@ -642,40 +660,45 @@ QEMU Command-Line and Monitor Syntax and Support
           s390-sclp-event-facility|s390-skeys-qemu|sb16|sclp|sclpconsole|
           sclp-cpu-hotplug|sclplmconsole|sclp-memory-hotplug-dev|sclpquiesce|
           sd-card|sdhci-pci|secondary-vga|sga|smbus-eeprom|tpci200|usb-audio|
-          usb-bot|usb-bt-dongle|usb-ccid|usb-mtp|usb-uas|vfio-ap|
-          vfio-pci-nohotplug|virtio-9p-device|virtual-css-bridge|vmcoreinfo|
-          vmgenid|vmware-svga|vmxnet3|vt82c686b-usb-uhci|x3130-upstream|
-          *-x86_64-cpu|xen-backend|xen-pci-passthrough|xen-platform|
-          xen-pvdevice|xio3130-downstream|z10BC.2-base-s390x-cpu|
-          z10BC.2-s390x-cpu|z10BC-base-s390x-cpu|z10BC-s390x-cpu|
-          z10EC.2-base-s390x-cpu|z10EC.2-s390x-cpu|z10EC.3-base-s390x-cpu|
-          z10EC.3-s390x-cpu|z10EC-base-s390x-cpu|z10EC-s390x-cpu|
-          z114-base-s390x-cpu|z114-s390x-cpu|z13.2-base-s390x-cpu|
-          z13.2-s390x-cpu|z13-base-s390x-cpu|z13-s390x-cpu|z13s-base-s390x-cpu|
-          z13s-s390x-cpu|z196.2-base-s390x-cpu|z196.2-s390x-cpu|
-          z196-base-s390x-cpu|z196-s390x-cpu|z800-base-s390x-cpu|z800-s390x-cpu|
-          z890.2-base-s390x-cpu|z890.2-s390x-cpu|z890.3-base-s390x-cpu|
-          z890.3-s390x-cpu|z890-base-s390x-cpu|z890-s390x-cpu|
-          z900.2-base-s390x-cpu|z900.2-s390x-cpu|z900.3-base-s390x-cpu|
-          z900.3-s390x-cpu|z900-base-s390x-cpu|z900-s390x-cpu|
-          z990.2-base-s390x-cpu|z990.2-s390x-cpu|z990.3-base-s390x-cpu|
-          z990.3-s390x-cpu|z990.4-base-s390x-cpu|z990.4-s390x-cpu|
-          z990.5-base-s390x-cpu|z990.5-s390x-cpu|z990-base-s390x-cpu|
-          z990-s390x-cpu|z9BC.2-base-s390x-cpu|z9BC.2-s390x-cpu|
-          z9BC-base-s390x-cpu|z9BC-s390x-cpu|z9EC.2-base-s390x-cpu|
-          z9EC.2-s390x-cpu|z9EC.3-base-s390x-cpu|z9EC.3-s390x-cpu|
-          z9EC-base-s390x-cpu|z9EC-s390x-cpu|z14ZR1-base-s390x-cpu|
-          z14ZR1-s390x-cpu|zBC12-base-s390x-cpu|zBC12-s390x-cpu|
-          zEC12.2-base-s390x-cpu|zEC12.2-s390x-cpu|zEC12-base-s390x-cpu|
-          zEC12-s390x-cpu|cpu-cluster|z14.2-base-s390x-cpu|z14.2-s390x-cpu|
-          vhost-user-fs-device]
+          usb-bot|usb-ccid|usb-mtp|usb-uas|vfio-ap|vfio-pci-nohotplug|
+          virtio-9p-device|virtual-css-bridge|vmcoreinfo|vmgenid|vmware-svga|
+          vmxnet3|vt82c686b-usb-uhci|x3130-upstream|*-x86_64-cpu|xen-backend|
+          xen-pci-passthrough|xen-platform|xen-pvdevice|xio3130-downstream|
+          z10BC.2-base-s390x-cpu|z10BC.2-s390x-cpu|z10BC-base-s390x-cpu|
+          z10BC-s390x-cpu|z10EC.2-base-s390x-cpu|z10EC.2-s390x-cpu|
+          z10EC.3-base-s390x-cpu|z10EC.3-s390x-cpu|z10EC-base-s390x-cpu|
+          z10EC-s390x-cpu|z114-base-s390x-cpu|z114-s390x-cpu|
+          z13.2-base-s390x-cpu|z13.2-s390x-cpu|z13-base-s390x-cpu|z13-s390x-cpu|
+          z13s-base-s390x-cpu|z13s-s390x-cpu|z196.2-base-s390x-cpu|
+          z196.2-s390x-cpu|z196-base-s390x-cpu|z196-s390x-cpu|
+          z800-base-s390x-cpu|z800-s390x-cpu|z890.2-base-s390x-cpu|
+          z890.2-s390x-cpu|z890.3-base-s390x-cpu|z890.3-s390x-cpu|
+          z890-base-s390x-cpu|z890-s390x-cpu|z900.2-base-s390x-cpu|
+          z900.2-s390x-cpu|z900.3-base-s390x-cpu|z900.3-s390x-cpu|
+          z900-base-s390x-cpu|z900-s390x-cpu|z990.2-base-s390x-cpu|
+          z990.2-s390x-cpu|z990.3-base-s390x-cpu|z990.3-s390x-cpu|
+          z990.4-base-s390x-cpu|z990.4-s390x-cpu|z990.5-base-s390x-cpu|
+          z990.5-s390x-cpu|z990-base-s390x-cpu|z990-s390x-cpu|
+          z9BC.2-base-s390x-cpu|z9BC.2-s390x-cpu|z9BC-base-s390x-cpu|
+          z9BC-s390x-cpu|z9EC.2-base-s390x-cpu|z9EC.2-s390x-cpu|
+          z9EC.3-base-s390x-cpu|z9EC.3-s390x-cpu|z9EC-base-s390x-cpu|
+          z9EC-s390x-cpu|z14ZR1-base-s390x-cpu|z14ZR1-s390x-cpu|
+          zBC12-base-s390x-cpu|zBC12-s390x-cpu|zEC12.2-base-s390x-cpu|
+          zEC12.2-s390x-cpu|zEC12-base-s390x-cpu|zEC12-s390x-cpu|cpu-cluster|
+          z14.2-base-s390x-cpu|z14.2-s390x-cpu|vhost-user-fs-device|
+          virtio-iommu-device|virtio-iommu-pci|
+          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional]
           (the following are aliases of these unsupported devices: lsi|
           ahci|e1000-82540em|vfio-ccw)
           (note that some of these device names represent supported devices and
           are used internally, but are not specifyable via -device even though
           they appear in the list of devices)
-  -drive ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
+
+  -drive
+
+         ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
          raw]
+
   -dtb file
   -enable-hax
   -enable-sync-profile
@@ -684,12 +707,20 @@ QEMU Command-Line and Monitor Syntax and Support
   -hda/-hdb/-hdc/-hdd ...
   -icount ...
   -L ...
-  -M [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
+  -M
+
+     [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
      s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-     s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1]
-  -machine [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
+     s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
+     s390-ccw-virtio-5.0]
+
+  -machine
+
+           [s390-ccw-virtio-2.4|s390-ccw-virtio-2.5|s390-ccw-virtio-2.7|
            s390-ccw-virtio-2.8|s390-ccw-virtio-2.10|s390-ccw-virtio-2.12|
-           s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1]
+           s390-ccw-virtio-3.0|s390-ccw-virtio-4.0|s390-ccw-virtio-4.1|
+           s390-ccw-virtio-5.0]
+
   -mtdblock file
   -net [dump|socket|vde] ...
   -netdev [dump|hubport|l2tpv3|socket|vde] ...

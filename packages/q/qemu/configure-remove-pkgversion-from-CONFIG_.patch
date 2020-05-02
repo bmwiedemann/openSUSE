@@ -18,10 +18,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 94984691ab378620ac2e0ae771ca..c68e378776336748b227013a1a3f 100755
+index 5a0a52e842df70b757252f89b74a..790337b204cdfa6d84b1f8524f90 100755
 --- a/configure
 +++ b/configure
-@@ -6811,7 +6811,7 @@ fi
+@@ -6939,7 +6939,7 @@ fi
  if test "$modules" = "yes"; then
    # $shacmd can generate a hash started with digit, which the compiler doesn't
    # like as an symbol. So prefix it with an underscore
@@ -29,4 +29,4 @@ index 94984691ab378620ac2e0ae771ca..c68e378776336748b227013a1a3f 100755
 +  echo "CONFIG_STAMP=_$( (echo $qemu_version; cat $0) | $shacmd - | cut -f1 -d\ )" >> $config_host_mak
    echo "CONFIG_MODULES=y" >> $config_host_mak
  fi
- if test "$have_x11" = "yes" && test "$need_x11" = "yes"; then
+ if test "$module_upgrades" = "yes"; then

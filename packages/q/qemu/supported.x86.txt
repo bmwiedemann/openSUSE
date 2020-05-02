@@ -1,6 +1,6 @@
 [qemu-x86 package document]
 
-SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
@@ -205,9 +205,6 @@ Deprecated, Superseded, Modified and Dropped Features
   threads) the derived guest ABI is not guaranteed to be equivalent in future
   versions.
 
-- The previously supported machine types pc-0.12, pc-0.14 and pc-0.15 are now
-  deprecated.
- 
 - These previously supported command line options are now considered deprecated:
   -device ide-drive (use ide-hd or ide-cd instead)
   -device scsi-disk (use scsi-hd or scsi-cd instead)
@@ -218,6 +215,9 @@ Deprecated, Superseded, Modified and Dropped Features
 - These previously supported command line options are no longer supported:
   <previously mentioned items have been moved to another category>
 
+- The previously supported machine types pc-0.12, pc-0.14 and pc-0.15 are no
+  longer recognized. Switch to a newer machine type.
+ 
 - These previously supported command line options are no longer recognized:
   -balloon (use -device virtio-balloon instead)
   -clock
@@ -240,17 +240,15 @@ Deprecated, Superseded, Modified and Dropped Features
   and could possibly change syntax in the future.
 
 - These previously unsupported command line options are now deprecated:
-  -bt
   -no-kvm-pit
+  -tb-size
 
-- The previously unsupported machine types pc-0.13 and pc-0.14 are now
-  deprecated.
- 
 - The case of specified sockets, cores, and threads not matching the vcpu count
   is no longer silently ignored. QEMU now requires that the topology match the
   vcpu count.
 
 - These previously unsupported command line options are no longer recognized:
+  -bt
   -device at24c-eeprom
   -device ccid-card-passthru
   -device cfi.pflash01
@@ -287,8 +285,11 @@ Deprecated, Superseded, Modified and Dropped Features
   -tdf (note: mistakenly listed previously as supported)
   -xen-create
 
-- The previously unsupported machine types pc-0.10 and pc-0.11 are no longer
-  recognized.
+- The previously unsupported machine types pc-1.0, pc-1.1, pc-1.2 and pc-1.3 are
+  now deprecated.
+
+- The previously unsupported machine types pc-0.10, pc-0.13, pc-0.14 and
+  pc-0.11 are no longer recognized.
 
 - These previously supported QMP commands are now deprecated:
   change (use blockdev-change-medium or change-vnc-password instead)
@@ -390,7 +391,9 @@ QEMU Command-Line and Monitor Syntax and Support
   -d ...
   -daemonize
   -debugcon ...
-  -device [isa-serial|isa-parallel|isa-fdc|ide-drive|ide-hd|ide-cd|VGA|
+  -device
+
+         [isa-serial|isa-parallel|isa-fdc|ide-drive|ide-hd|ide-cd|VGA|
           cirrus-vga|rtl8139|usb-hub|usb-ehci|usb-tablet|usb-storage|usb-mouse|
           usb-kbd|virtserialport|virtconsole|sga|i82559er|scsi-cd|scsi-hd|
           scsi-generic|scsi-disk|scsi-block|pci-serial|pci-serial-2x|
@@ -427,10 +430,14 @@ QEMU Command-Line and Monitor Syntax and Support
           e1000|virtio-blk|virtio-net|virtio-serial|virtio-balloon|virtio-9p|
           virtio-scsi|virtio-rng|virtio-input-host|virtio-keyboard|virtio-mouse|
           virtio-tablet|virtio-gpu)
+
   -dfilter range, ...
   -display ...
-  -drive ... (if specified if=[floppy|ide|virtio] and format=[qcow2|raw] and
+  -drive
+
+         ... (if specified if=[floppy|ide|virtio] and format=[qcow2|raw] and
              snapshot=off only)
+
   -echr ...
   -enable-fips
   -enable-kvm
@@ -450,22 +457,30 @@ QEMU Command-Line and Monitor Syntax and Support
   -kernel ...
   -loadvm ...
   -m ...
-  -M [help|?|none|pc|pc-0.12|pc-0.14|pc-0.15|pc-i440fx-1.4|pc-i440fx-1.7|
-     pc-i440fx-2.0|pc-i440fx-2.3|pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|
-     pc-i440fx-3.1|pc-i440fx-4.2|q35|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|
-     pc-q35-3.1|pc-q35-4.2|xenfv|xenpv]
-  -machine [help|?|none|pc|pc-0.12|pc-0.14|pc-0.15|pc-i440fx-1.4|pc-i440fx-1.7|
-           pc-i440fx-2.0|pc-i440fx-2.3|pc-440fx-2.6|pc-i440fx-2.9|
-           pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|q35|pc-q35-2.6|pc-q35-2.9|
-           pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|xenfv|xenpv]
+  -M
+
+     [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
+     pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|q35|
+     pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|xenfv|xenfv-4.2]
+
+  -machine
+
+           [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
+           pc-i440fx-2.3|pc-440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|
+           pc-i440fx-3.1|pc-i440fx-4.2|q35|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|
+           pc-q35-3.1|pc-q35-4.2|xenfv|xenifv-4.2]
+
   -mem-path ...
   -mem-prealloc
   -mon ...
   -monitor ...
   -msg ...
   -name ...
-  -net [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
+  -net
+
+       [bridge|l2tpv3|nic|none|tap|user] ... (for model= only e1000, rtl8139,
                                              and virtio are supported)
+
   -netdev [bridge|tap|user] ...
   -nic ...
   -no-acpi
@@ -754,20 +769,22 @@ QEMU Command-Line and Monitor Syntax and Support
   xen-set-global-dirty-log
 
 -  The following command line options are unsupported:
+
   -acpitable ...
-  -bt ...
   -chroot ...
   -cpu host
   -curses
-  -device [ipoctal232|i82562|nec-usb-xhci|hda-duplex|hda-output|usb-bot|
+  -device
+
+          [ipoctal232|i82562|nec-usb-xhci|hda-duplex|hda-output|usb-bot|
           lsi53c810a|isa-debug-exit|ne2k_pci|usb-uas|ioh3420|isa-ide|usb-ccid|
           pcnet|ich9-intel-hda|dc390|hda-micro|x3130-upstream|isa-cirrus-vga|
           pc-testdev|ne2k_isa|isa-vga|cs4231a|gus|vmware-svga|i82801b11-bridge|
           i82557a|i82557c|i82557b|i82801|AC97|am53c974|intel-hda|i82558a|
           i82558b|usb-audio|i82550|isa-debugcon|sb16|megasas|i82551|
           xio3130-downstream|vt82c686b-usb-uhci|tpci200|i82559a|i82559b|i82559c|
-          isa-applesmc|usb-bt-dongle|adlib|ES1370|lsi53c810|nvme|pci-testdev|
-          pvscsi|virtio-9p-device|virtio-balloon-device|virtio-blk-device|
+          isa-applesmc|adlib|ES1370|lsi53c810|nvme|pci-testdev|pvscsi|
+          virtio-9p-device|virtio-balloon-device|virtio-blk-device|
           virtio-net-device|virtio-rng-device|virtio-scsi-device|
           virtio-serial-device|vmxnet3|xen-pci-passthrough|xen-platform|
           xen-pvdevice|piix3-ide|piix3-ide-xen|piix3-ide|i8042|sdhci-pci|
@@ -783,33 +800,46 @@ QEMU Command-Line and Monitor Syntax and Support
           mioe3680_pci|pcm3680_pci|hyperv-synic|vfio-pci-nohotplug|
           vfio-platform|xen-bridge|xen-cdrom|xen-disk|ati-vga|cpu-cluster|
           intel-iommu|vhost-user-fs-device|tulip|ati-vga|i2c-ddc|pci-ipmi-bt|
-          pci-ipmi-kcs]
+          pci-ipmi-kcs|serial|serial-io|serial-mm|virtio-iommu-device|
+          virtio-iommu-pci|virtio-iommu-pci-nontransitional|
+          virtio-iommu-pci-transitional|xen-sysdev|imx.usbphy]
           (the following are aliases of these unsupported devices: lsi)
           (note that some of these device names represent supported devices and
           are used internally, but are not specifyable via -device even though
           they appear in the list of devices)
-  -drive ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
+
+  -drive
+
+         ,if=[scsi|mtd|pflash], snapshot=on, format=[anything besides qcow2 or
          raw]
+
   -dtb file
   -enable-hax
   -enable-sync-profile
   -g ...
   -icount ...
   -L ...
-  -M [isapc|microvm|pc-0.13|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|
-     pc-i440fx-1.6|pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|
-     pc-i440fx-2.7|pc-i440fx-2.8|pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|
-     pc-i440fx-4.0|pc-i440fx-4.1|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
+  -M
+
+     [isapc|microvm|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|pc-i440fx-1.6|
+     pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|pc-i440fx-2.5|pc-i440fx-2.7|
+     pc-i440fx-2.8|pc-i440fx-2.10|pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|
+     pc-i440fx-4.1|pc-i440fx-5.0|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
      pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|
      pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|pc-q35-4.0|
-     pc-q35-4.1]
-  -machine [isapc|microvm|pc-0.13|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|
+     pc-q35-4.1|pc-q35-5.0]
+
+  -machine
+
+           [isapc|microvm|pc-1.0|pc-1.1|pc-1.2|pc-1.3|pc-i440fx-1.5|
            pc-i440fx-1.6|pc-i440fx-2.1|pc-i440fx-2.2|pc-i440fx-2.4|
            pc-i440fx-2.5|pc-i440fx-2.7|pc-i440fx-2.8|pc-i440fx-2.10|
-           pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|pc-i440fx-4.1|pc-q35-1.4|
-           pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|
-           pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|
-           pc-q35-2.12|pc-q35-3.0|pc-q35-4.0|pc-q35-4.1]
+           pc-i440fx-2.12|pc-i440fx-3.0|pc-i440fx-4.0|pc-i440fx-4.1|
+           pc-i440fx-5.0|pc-q35-1.4|pc-q35-1.5|pc-q35-1.6|pc-q35-1.7|
+           pc-q35-2.0|pc-q35-2.1|pc-q35-2.2|pc-q35-2.3|pc-q35-2.4|pc-q35-2.5|
+           pc-q35-2.7|pc-q35-2.8|pc-q35-2.10|pc-q35-2.12|pc-q35-3.0|
+           pc-q35-4.0|pc-q35-4.1|pc-q35-5.0]
+
   -mtdblock file
   -net [dump|socket|vde] ...
   -netdev [dump|hubport|l2tpv3|socket|vde] ...

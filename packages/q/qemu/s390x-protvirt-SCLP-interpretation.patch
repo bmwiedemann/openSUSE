@@ -25,7 +25,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  3 files changed, 67 insertions(+), 16 deletions(-)
 
 diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
-index f57ce7b73943564f4d44dcbe0cf0..1c380a49cc7140687329e43e9745 100644
+index f0c35aa57afde03f7ec3e5f52f49..ede056b3efd7d92445d00f2e1298 100644
 --- a/hw/s390x/sclp.c
 +++ b/hw/s390x/sclp.c
 @@ -33,6 +33,22 @@ static inline SCLPDevice *get_sclp_device(void)
@@ -86,8 +86,8 @@ index f57ce7b73943564f4d44dcbe0cf0..1c380a49cc7140687329e43e9745 100644
  int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
  {
      SCLPDevice *sclp = get_sclp_device();
-@@ -230,17 +274,7 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
-         goto out;
+@@ -225,17 +269,7 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
+         return -PGM_SPECIFICATION;
      }
  
 -    switch (code & SCLP_CMD_CODE_MASK) {
@@ -106,7 +106,7 @@ index f57ce7b73943564f4d44dcbe0cf0..1c380a49cc7140687329e43e9745 100644
          goto out_write;
      }
 diff --git a/include/hw/s390x/sclp.h b/include/hw/s390x/sclp.h
-index c54413b78cf01b274cc249b1409b..c0a3faa37d7304536e75d32f2050 100644
+index cd7b24359f28deb4b659b1f284f6..822eff4396ff5dded7496e50575d 100644
 --- a/include/hw/s390x/sclp.h
 +++ b/include/hw/s390x/sclp.h
 @@ -217,5 +217,7 @@ void s390_sclp_init(void);
@@ -118,10 +118,10 @@ index c54413b78cf01b274cc249b1409b..c0a3faa37d7304536e75d32f2050 100644
  
  #endif
 diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index d00e05cc10d274790a215d0f4359..d94b915da419c3ad0a1f9622ca13 100644
+index e0b61680ab086a5ff5875c42b7e5..870dd1b52b6e424f6cbd751cce0d 100644
 --- a/target/s390x/kvm.c
 +++ b/target/s390x/kvm.c
-@@ -1230,12 +1230,27 @@ static void kvm_sclp_service_call(S390CPU *cpu, struct kvm_run *run,
+@@ -1233,12 +1233,27 @@ static void kvm_sclp_service_call(S390CPU *cpu, struct kvm_run *run,
      sccb = env->regs[ipbh0 & 0xf];
      code = env->regs[(ipbh0 & 0xf0) >> 4];
  

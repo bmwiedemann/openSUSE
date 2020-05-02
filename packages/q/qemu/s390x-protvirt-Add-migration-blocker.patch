@@ -18,10 +18,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 18 insertions(+)
 
 diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 5149030d2216040c396a02d977c8..ed910a099627dae96ab5da747fb3 100644
+index b4d681da43af43f23f66206cacf6..e00040a00ba60b20b42ee26a299b 100644
 --- a/hw/s390x/s390-virtio-ccw.c
 +++ b/hw/s390x/s390-virtio-ccw.c
-@@ -44,6 +44,9 @@
+@@ -45,6 +45,9 @@
  #include "sysemu/sysemu.h"
  #include "hw/s390x/pv.h"
  #include <linux/kvm.h>
@@ -31,7 +31,7 @@ index 5149030d2216040c396a02d977c8..ed910a099627dae96ab5da747fb3 100644
  
  S390CPU *s390_cpu_addr2state(uint16_t cpu_addr)
  {
-@@ -325,15 +328,30 @@ static void s390_machine_unprotect(S390CcwMachineState *ms)
+@@ -324,15 +327,30 @@ static void s390_machine_unprotect(S390CcwMachineState *ms)
  {
      s390_pv_vm_disable();
      ms->pv = false;

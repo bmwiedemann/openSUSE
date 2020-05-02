@@ -17,7 +17,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index 79e70493fc77e50556a4a92a4231..bc4b71059ff6d922e3cdc83bfc79 100644
+index d08ce6181199aa1e75a7c5bc2157..02f5259e5e33272b17bba701f5d5 100644
 --- a/hw/openrisc/openrisc_sim.c
 +++ b/hw/openrisc/openrisc_sim.c
 @@ -134,6 +134,7 @@ static void openrisc_sim_init(MachineState *machine)

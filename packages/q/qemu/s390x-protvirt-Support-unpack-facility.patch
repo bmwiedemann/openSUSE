@@ -44,10 +44,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  14 files changed, 468 insertions(+), 10 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 5e5e3e52d614d05e7d6e8225e3b7..1dbe9345a022a25b7b40a5b5e9c8 100644
+index 8cbc1fac2bfcec86e0e9415ab244..831d4b014aea8c3ce17050cea880 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -385,6 +385,8 @@ F: target/s390x/machine.c
+@@ -396,6 +396,8 @@ F: target/s390x/machine.c
  F: target/s390x/sigp.c
  F: target/s390x/cpu_features*.[ch]
  F: target/s390x/cpu_models.[ch]
@@ -69,7 +69,7 @@ index e02ed80b6829a511362abc3525ec..a46a1c7894e0f612a2d74cec74f6 100644
  obj-y += ap-device.o
  obj-y += ap-bridge.o
 diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-index ca544d64c5e04782fb49d12521d5..c343cfb0bed4272cecf31207dae8 100644
+index 8c3e019571764920857540be62aa..ce21494c08f77a35269b5e4b3ad5 100644
 --- a/hw/s390x/ipl.c
 +++ b/hw/s390x/ipl.c
 @@ -1,10 +1,11 @@
@@ -93,7 +93,7 @@ index ca544d64c5e04782fb49d12521d5..c343cfb0bed4272cecf31207dae8 100644
  #include "ipl.h"
  #include "qemu/error-report.h"
  #include "qemu/config-file.h"
-@@ -533,11 +535,30 @@ void s390_ipl_update_diag308(IplParameterBlock *iplb)
+@@ -566,12 +568,31 @@ void s390_ipl_update_diag308(IplParameterBlock *iplb)
  {
      S390IPLState *ipl = get_ipl_device();
  
@@ -111,6 +111,7 @@ index ca544d64c5e04782fb49d12521d5..c343cfb0bed4272cecf31207dae8 100644
 +        ipl->iplb_valid = true;
 +    }
      ipl->netboot = is_virtio_net_device(iplb);
+     update_machine_ipl_properties(iplb);
  }
  
 +IplParameterBlock *s390_ipl_get_iplb_pv(void)
@@ -126,7 +127,7 @@ index ca544d64c5e04782fb49d12521d5..c343cfb0bed4272cecf31207dae8 100644
  IplParameterBlock *s390_ipl_get_iplb(void)
  {
      S390IPLState *ipl = get_ipl_device();
-@@ -626,6 +647,38 @@ static void s390_ipl_prepare_qipl(S390CPU *cpu)
+@@ -660,6 +681,38 @@ static void s390_ipl_prepare_qipl(S390CPU *cpu)
      cpu_physical_memory_unmap(addr, len, 1, len);
  }
  
@@ -444,7 +445,7 @@ index 0000000000000000000000000000000000000000..8cf5cd2c9bcd48b03af1e546fb3a85cd
 +    s390_pv_cmd_exit(KVM_PV_VM_UNSHARE_ALL, NULL);
 +}
 diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index c1d1440272a42eef86eb14724f52..5149030d2216040c396a02d977c8 100644
+index 0fa00a9fff3dbda8b34d29aad187..b4d681da43af43f23f66206cacf6 100644
 --- a/hw/s390x/s390-virtio-ccw.c
 +++ b/hw/s390x/s390-virtio-ccw.c
 @@ -1,9 +1,10 @@
@@ -459,7 +460,7 @@ index c1d1440272a42eef86eb14724f52..5149030d2216040c396a02d977c8 100644
   *
   * This work is licensed under the terms of the GNU GPL, version 2 or (at
   * your option) any later version. See the COPYING file in the top-level
-@@ -41,6 +42,8 @@
+@@ -42,6 +43,8 @@
  #include "hw/qdev-properties.h"
  #include "hw/s390x/tod.h"
  #include "sysemu/sysemu.h"
@@ -468,7 +469,7 @@ index c1d1440272a42eef86eb14724f52..5149030d2216040c396a02d977c8 100644
  
  S390CPU *s390_cpu_addr2state(uint16_t cpu_addr)
  {
-@@ -318,10 +321,78 @@ static inline void s390_do_cpu_ipl(CPUState *cs, run_on_cpu_data arg)
+@@ -317,10 +320,78 @@ static inline void s390_do_cpu_ipl(CPUState *cs, run_on_cpu_data arg)
      s390_cpu_set_state(S390_CPU_STATE_OPERATING, cpu);
  }
  
@@ -547,7 +548,7 @@ index c1d1440272a42eef86eb14724f52..5149030d2216040c396a02d977c8 100644
  
      /* get the reset parameters, reset them once done */
      s390_ipl_get_reset_request(&cs, &reset_type);
-@@ -329,9 +400,15 @@ static void s390_machine_reset(MachineState *machine)
+@@ -328,9 +399,15 @@ static void s390_machine_reset(MachineState *machine)
      /* all CPUs are paused and synchronized at this point */
      s390_cmma_reset();
  
@@ -563,7 +564,7 @@ index c1d1440272a42eef86eb14724f52..5149030d2216040c396a02d977c8 100644
          qemu_devices_reset();
          s390_crypto_reset();
  
-@@ -339,22 +416,56 @@ static void s390_machine_reset(MachineState *machine)
+@@ -338,22 +415,56 @@ static void s390_machine_reset(MachineState *machine)
          run_on_cpu(cs, s390_do_cpu_ipl, RUN_ON_CPU_NULL);
          break;
      case S390_RESET_MODIFIED_CLEAR:
@@ -697,7 +698,7 @@ index 8aa27199c9123bab03d3450313a5..cd1dccc6e3ba86455a9de5eb41cb 100644
  } S390CcwMachineState;
  
 diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 52fefa1586caa3cbd366fe230630..479f1978c974722ceeb72ac5fb32 100644
+index 427a46e3e1b61da1b7aae1f0e543..bb7a588e3b791fe48b4e0a0826dd 100644
 --- a/target/s390x/cpu.c
 +++ b/target/s390x/cpu.c
 @@ -37,6 +37,7 @@
@@ -839,7 +840,7 @@ index c4cd497f850eb9c7a859932b0f1f..aa185017a2a886ca300fa75747ed 100644
  {
      return 0;
 diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index f633472980b48757989db245fb1f..d8d02ff34f4fc942cb7935deec58 100644
+index 7f7ebab84279290cb0992d41e706..b2b14bde2b251986230153adca9a 100644
 --- a/target/s390x/kvm.c
 +++ b/target/s390x/kvm.c
 @@ -321,6 +321,11 @@ void kvm_s390_set_max_pagesize(uint64_t pagesize, Error **errp)

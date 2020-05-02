@@ -18,10 +18,10 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 594326a7946798aba6ac42415164..5da6b243db2824f79676e4e1bbae 100644
+index e818fc712aca18df805859d10ede..bafc094406d16f6f8c1d41d69ff6 100644
 --- a/target/i386/cpu.h
 +++ b/target/i386/cpu.h
-@@ -1934,7 +1934,7 @@ uint64_t cpu_get_tsc(CPUX86State *env);
+@@ -1942,7 +1942,7 @@ uint64_t cpu_get_tsc(CPUX86State *env);
  /* XXX: This value should match the one returned by CPUID
   * and in exec.c */
  # if defined(TARGET_X86_64)

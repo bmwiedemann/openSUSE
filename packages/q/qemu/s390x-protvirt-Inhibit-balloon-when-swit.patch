@@ -36,10 +36,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 11 insertions(+)
 
 diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index ed910a099627dae96ab5da747fb3..85250bf046ed72313b03c6ff6c54 100644
+index e00040a00ba60b20b42ee26a299b..db45249320abf7920ec8730790c2 100644
 --- a/hw/s390x/s390-virtio-ccw.c
 +++ b/hw/s390x/s390-virtio-ccw.c
-@@ -42,6 +42,7 @@
+@@ -43,6 +43,7 @@
  #include "hw/qdev-properties.h"
  #include "hw/s390x/tod.h"
  #include "sysemu/sysemu.h"
@@ -47,7 +47,7 @@ index ed910a099627dae96ab5da747fb3..85250bf046ed72313b03c6ff6c54 100644
  #include "hw/s390x/pv.h"
  #include <linux/kvm.h>
  #include "migration/blocker.h"
-@@ -330,6 +331,7 @@ static void s390_machine_unprotect(S390CcwMachineState *ms)
+@@ -329,6 +330,7 @@ static void s390_machine_unprotect(S390CcwMachineState *ms)
      ms->pv = false;
      migrate_del_blocker(pv_mig_blocker);
      error_free_or_abort(&pv_mig_blocker);
@@ -55,7 +55,7 @@ index ed910a099627dae96ab5da747fb3..85250bf046ed72313b03c6ff6c54 100644
  }
  
  static int s390_machine_protect(S390CcwMachineState *ms)
-@@ -337,10 +339,18 @@ static int s390_machine_protect(S390CcwMachineState *ms)
+@@ -336,10 +338,18 @@ static int s390_machine_protect(S390CcwMachineState *ms)
      Error *local_err = NULL;
      int rc;
  
@@ -74,7 +74,7 @@ index ed910a099627dae96ab5da747fb3..85250bf046ed72313b03c6ff6c54 100644
          error_report_err(local_err);
          error_free_or_abort(&pv_mig_blocker);
          return rc;
-@@ -349,6 +359,7 @@ static int s390_machine_protect(S390CcwMachineState *ms)
+@@ -348,6 +358,7 @@ static int s390_machine_protect(S390CcwMachineState *ms)
      /* Create SE VM */
      rc = s390_pv_vm_enable();
      if (rc) {

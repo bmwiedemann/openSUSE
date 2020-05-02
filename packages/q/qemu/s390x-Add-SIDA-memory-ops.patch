@@ -27,10 +27,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  4 files changed, 48 insertions(+), 1 deletion(-)
 
 diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index d2af13b345ccd9094f82385cd528..2ec0f78b48ee15978b62f5fdc1b2 100644
+index 1d17709d6e10b5e0668bc09e21c7..035427521cec252877c70288d597 100644
 --- a/target/s390x/cpu.h
 +++ b/target/s390x/cpu.h
-@@ -821,7 +821,12 @@ int s390_cpu_virt_mem_rw(S390CPU *cpu, vaddr laddr, uint8_t ar, void *hostbuf,
+@@ -823,7 +823,12 @@ int s390_cpu_virt_mem_rw(S390CPU *cpu, vaddr laddr, uint8_t ar, void *hostbuf,
  #define s390_cpu_virt_mem_check_write(cpu, laddr, ar, len)   \
          s390_cpu_virt_mem_rw(cpu, laddr, ar, NULL, len, true)
  void s390_cpu_virt_mem_handle_exc(S390CPU *cpu, uintptr_t ra);
@@ -45,7 +45,7 @@ index d2af13b345ccd9094f82385cd528..2ec0f78b48ee15978b62f5fdc1b2 100644
  /* sigp.c */
  int s390_cpu_restart(S390CPU *cpu);
 diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index abeeaaa67452b0b938557b0d0dea..941e4df630ad9b3dc780d3c92e6b 100644
+index 1988809ec2e7b1b6db33ba85eaef..0e93778ed15d0e04e83eff1baccf 100644
 --- a/target/s390x/kvm.c
 +++ b/target/s390x/kvm.c
 @@ -154,6 +154,7 @@ static int cap_ri;
@@ -64,7 +64,7 @@ index abeeaaa67452b0b938557b0d0dea..941e4df630ad9b3dc780d3c92e6b 100644
  
      if (!kvm_check_extension(s, KVM_CAP_S390_GMAP)
          || !kvm_check_extension(s, KVM_CAP_S390_COW)) {
-@@ -848,6 +850,30 @@ int kvm_s390_mem_op(S390CPU *cpu, vaddr addr, uint8_t ar, void *hostbuf,
+@@ -851,6 +853,30 @@ int kvm_s390_mem_op(S390CPU *cpu, vaddr addr, uint8_t ar, void *hostbuf,
      return ret;
  }
  
@@ -109,7 +109,7 @@ index dea813f450153c34e1269424772d..6ab17c81b73a0011e32213552698 100644
  int kvm_s390_set_cpu_state(S390CPU *cpu, uint8_t cpu_state);
  void kvm_s390_vcpu_interrupt_pre_save(S390CPU *cpu);
 diff --git a/target/s390x/mmu_helper.c b/target/s390x/mmu_helper.c
-index c9f3f347501097b894333a36cac3..ec8befbdc87d4c88d83baeeab20e 100644
+index 0be2f300bbe4ac8b68619b8c2285..7d9f3059cd502c49108b459c8d23 100644
 --- a/target/s390x/mmu_helper.c
 +++ b/target/s390x/mmu_helper.c
 @@ -474,6 +474,20 @@ static int translate_pages(S390CPU *cpu, vaddr addr, int nr_pages,

@@ -19,7 +19,7 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 25 insertions(+), 3 deletions(-)
 
 diff --git a/qemu-bridge-helper.c b/qemu-bridge-helper.c
-index 3d50ec094c794b9c0835628f10c5..f2291b398f8e4589f649af226dba 100644
+index 88b26747fc866116637716264dea..9ed35df944fa6968045e675e023a 100644
 --- a/qemu-bridge-helper.c
 +++ b/qemu-bridge-helper.c
 @@ -123,7 +123,12 @@ static int parse_acl_file(const char *filename, ACLList *acl_list)

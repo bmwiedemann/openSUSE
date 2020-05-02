@@ -16,7 +16,7 @@ queue available in a local git branch named frombundle (see config.sh for the
 locations). This set of patches comes from a "bundle of git bundles", the
 bundles.tar.xz file, which is included as a package source file. You will then
 create an altered patch queue in the branch which corresponds to this release
-(eg: opensuse-4.2), using the frombundle branch as the starting point for your
+(eg: opensuse-5.0), using the frombundle branch as the starting point for your
 changes (eg perhaps start by doing git reset --hard frombundle, then cherry-pick
 upstream patches from there). Once you have the patch queue ready to go run
 'bash ./update_git.sh git2pkg' which updates the bundles.tar.xz file, as well as
@@ -47,7 +47,7 @@ in the near future.
 Bug or feature tracking identifiers should also be added to the patch similarly,
 using the abbreviations identified here:
 http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Current_set_of_abbreviations
-using the "References:" tag, with multiple entries comma separated.
+using the "Reference:" tag, with multiple entries comma separated.
 
 The ability to provide a conditional inclusion of a patch (eg based on
 architecture, is provided by using the "Include-If:" tag similarly, as follows:

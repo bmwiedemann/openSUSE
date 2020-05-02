@@ -22,7 +22,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/tests/qemu-iotests/group b/tests/qemu-iotests/group
-index 1c1b69f0581c9a0043376b440600..d293735679e23235092c614e2206 100644
+index 435dccd5af90754a3f80f4455bdb..8409dad73f2cbd7447235ea10b03 100644
 --- a/tests/qemu-iotests/group
 +++ b/tests/qemu-iotests/group
 @@ -86,7 +86,7 @@
@@ -36,7 +36,7 @@ index 1c1b69f0581c9a0043376b440600..d293735679e23235092c614e2206 100644
  068 rw quick
 @@ -150,7 +150,7 @@
  126 rw auto backing
- 127 rw backing quick
+ 127 rw auto backing quick
  128 rw quick
 -129 rw quick
 +#DISABLE FOR NOW 129 rw quick
@@ -60,7 +60,7 @@ index 1c1b69f0581c9a0043376b440600..d293735679e23235092c614e2206 100644
 @@ -198,7 +198,7 @@
  178 img
  179 rw auto quick
- 181 rw migration
+ 181 rw auto migration
 -182 rw quick
 +#DISABLE FOR NOW 182 rw quick
  183 rw migration
@@ -68,7 +68,7 @@ index 1c1b69f0581c9a0043376b440600..d293735679e23235092c614e2206 100644
  185 rw
 @@ -220,7 +220,7 @@
  202 rw quick
- 203 rw migration
+ 203 rw auto migration
  204 rw quick
 -205 rw quick
 +#DISABLE FOR NOW 205 rw quick

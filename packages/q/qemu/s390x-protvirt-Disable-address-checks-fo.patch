@@ -23,7 +23,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 28 insertions(+), 7 deletions(-)
 
 diff --git a/target/s390x/ioinst.c b/target/s390x/ioinst.c
-index c437a1d8c6afed80199034ab6f6a..bbcccf6be23456393282287bf116 100644
+index 0e840cc5792afe02d543568ba880..8828482eec306a2bccd8bef269b7 100644
 --- a/target/s390x/ioinst.c
 +++ b/target/s390x/ioinst.c
 @@ -16,6 +16,25 @@

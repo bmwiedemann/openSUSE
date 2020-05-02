@@ -60,10 +60,10 @@ index e45285ccc311522481ac1b27ba99..7168bdf70c3eb32d4de0d28bb947 100644
  file format: IMGFMT
  virtual size: 64 MiB (67108864 bytes)
 diff --git a/tests/qemu-iotests/153 b/tests/qemu-iotests/153
-index c969a1a16ff8382b9bb69252f6de..39d6da725bff3932a7cb88acff8e 100755
+index 2b1311176801e30485cf39ec65d8..608a377af5f3662dc25ddcebb01e 100755
 --- a/tests/qemu-iotests/153
 +++ b/tests/qemu-iotests/153
-@@ -206,7 +206,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -202,7 +202,8 @@ _send_qemu_cmd $QEMU_HANDLE \
      'return'
  _run_cmd $QEMU_IMG commit -b "${TEST_IMG}.b" "${TEST_IMG}.c"
  
@@ -73,7 +73,7 @@ index c969a1a16ff8382b9bb69252f6de..39d6da725bff3932a7cb88acff8e 100755
  
  _launch_qemu
  
-@@ -258,7 +259,8 @@ _send_qemu_cmd $QEMU_HANDLE \
+@@ -254,7 +255,8 @@ _send_qemu_cmd $QEMU_HANDLE \
  
  _run_cmd $QEMU_IO "${TEST_IMG}" -c 'write 0 512'
  

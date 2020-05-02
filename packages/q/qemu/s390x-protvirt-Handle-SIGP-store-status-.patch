@@ -19,7 +19,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-index 6808dfda01f42acbaa1d36ef787b..36b6d3d9d1bca9db90aac1c7bec6 100644
+index ed726849114f2f353471233f670b..09f60406aa33c938ff54a0dbda13 100644
 --- a/target/s390x/helper.c
 +++ b/target/s390x/helper.c
 @@ -25,6 +25,7 @@
@@ -39,6 +39,6 @@ index 6808dfda01f42acbaa1d36ef787b..36b6d3d9d1bca9db90aac1c7bec6 100644
 +        return 0;
 +    }
 +
-     sa = cpu_physical_memory_map(addr, &len, 1);
+     sa = cpu_physical_memory_map(addr, &len, true);
      if (!sa) {
          return -EFAULT;

@@ -138,7 +138,7 @@ BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel-static
-BuildRequires:  python3-base
+BuildRequires:  python3-base >= 3.5
 BuildRequires:  zlib-devel-static
 # we must not install the qemu-linux-user package when under QEMU build
 %if 0%{?qemu_user_space_build:1}
@@ -161,7 +161,6 @@ BuildRequires:  alsa-devel
 BuildRequires:  binutils-devel
 %endif
 BuildRequires:  bison
-BuildRequires:  bluez-devel
 BuildRequires:  brlapi-devel
 %ifnarch %{ix86} aarch64 %arm
 BuildRequires:  cross-aarch64-binutils
@@ -203,7 +202,6 @@ BuildRequires:  libbz2-devel
 %if 0%{?is_opensuse}
 BuildRequires:  libcacard-devel >= 2.5.1
 %endif
-BuildRequires:  libcap-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libepoxy-devel
@@ -236,9 +234,9 @@ BuildRequires:  libSDL2_image-devel
 BuildRequires:  libseccomp-devel >= 2.3.0
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
-BuildRequires:  pkgconfig(libudev)
 %if 0%{?is_opensuse}
 BuildRequires:  lzfse-devel
 %endif
@@ -253,9 +251,8 @@ BuildRequires:  nasm
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
-BuildRequires:  python-base
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-base
+BuildRequires:  python3-base >= 3.5
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
 BuildRequires:  spice-protocol-devel >= 0.12.3
@@ -277,7 +274,6 @@ BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 %if "%{name}" == "qemu-testsuite"
 BuildRequires:  bc
-BuildRequires:  python-base
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
@@ -819,10 +815,10 @@ PATCH_EXEC
 
 %if "%{name}" != "qemu-linux-user"
 # for the record, this set of firmware files is installed, but we don't
-# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc openbios-sparc32
-# openbios-sparc64 palcode-clipper petalogix-ml605.dtb petalogix-s3adsp1800.dtb ppc_rom.bin
-# QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv u-boot.e500 u-boot-sam460-20100605.bin
-# opensbi-riscv32-virt-fw_jump.bin
+# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc
+# openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
+# petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv
+# u-boot.e500 u-boot-sam460-20100605.bin opensbi-riscv32-virt-fw_jump.bin
 
 # This first list group isn't specific to what this instance builds
 %define ppc_default_firmware {%nil}
@@ -952,6 +948,7 @@ cd %mybuilddir
 	--firmwarepath=%_datadir/%name \
         --python=%_bindir/python3 \
 	--extra-cflags="%{optflags}" \
+	--disable-fuzzing \
 	--disable-stack-protector \
 	--disable-strip \
 %if "%{name}" != "qemu-linux-user"
@@ -960,6 +957,7 @@ cd %mybuilddir
 	--enable-system --disable-linux-user \
 	--enable-tools --enable-guest-agent \
 	--enable-modules \
+	--disable-module-upgrades \
 	--enable-pie \
 	--enable-docs \
 %if 0%{?is_opensuse}
@@ -969,7 +967,6 @@ cd %mybuilddir
 %endif
 	--enable-attr \
 	--disable-auth-pam \
-	--enable-bluez \
 	--enable-bochs \
 	--enable-brlapi \
 	--enable-bzip2 \
@@ -1299,7 +1296,7 @@ done
 
 # Compile the QOM test binary first, so that ...
 touch -r config-host.mak pc-bios
-make %{?_smp_mflags} tests/qom-test %{?_smp_mflags} V=1
+make %{?_smp_mflags} tests/qtest/qom-test %{?_smp_mflags} V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 make %{?_smp_mflags} check-report.tap V=1
 
@@ -1445,8 +1442,10 @@ install -D -m 0644 %{SOURCE5} %{buildroot}%_mandir/man1/qemu-kvm.1.gz
 install -d %{buildroot}%_docdir/qemu-kvm
 %ifarch s390x
 ln -s ../qemu-s390/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
+rst2html --exit-status=2 %{buildroot}%_docdir/qemu-s390/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %else
 ln -s ../qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.txt
+rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot}%_docdir/qemu-kvm/kvm-supported.html
 %endif
 %endif
 %endif
@@ -1540,62 +1539,13 @@ fi
 %license COPYING COPYING.LIB LICENSE
 
 %if "%{name}" == "qemu"
-%dir %_docdir/%name/interop
-%dir %_docdir/%name/interop/_static
-%dir %_docdir/%name/specs
-%dir %_docdir/%name/specs/_static
-%_docdir/%name/interop/.buildinfo
-%_docdir/%name/interop/_static/*
-%_docdir/%name/interop/bitmaps.html
-%_docdir/%name/interop/genindex.html
-%_docdir/%name/interop/index.html
-%_docdir/%name/interop/live-block-operations.html
-%_docdir/%name/interop/objects.inv
-%_docdir/%name/interop/pr-helper.html
-%_docdir/%name/interop/search.html
-%_docdir/%name/interop/searchindex.js
-%_docdir/%name/interop/vhost-user.html
-%_docdir/%name/specs/.buildinfo
-%_docdir/%name/specs/_static/*
-%_docdir/%name/specs/acpi_hw_reduced_hotplug.html
-%_docdir/%name/specs/genindex.html
-%_docdir/%name/specs/index.html
-%_docdir/%name/specs/objects.inv
-%_docdir/%name/specs/ppc-spapr-xive.html
-%_docdir/%name/specs/ppc-xive.html
-%_docdir/%name/specs/search.html
-%_docdir/%name/specs/searchindex.js
-%_docdir/%name/qemu-doc.txt
-%_docdir/%name/qemu-doc.html
-%_docdir/%name/qemu-qmp-ref.txt
-%_docdir/%name/qemu-qmp-ref.html
-%_docdir/%name/qemu-ga-ref.txt
-%_docdir/%name/qemu-ga-ref.html
-%_mandir/man1/%name.1.gz
-%_mandir/man7/qemu-block-drivers.7.gz
-%_mandir/man7/qemu-cpu-models.7.gz
-%_mandir/man7/qemu-qmp-ref.7.gz
-%_mandir/man7/qemu-ga-ref.7.gz
-%dir %_datadir/%name
-%dir %_datadir/%name/firmware
-%_datadir/%name/keymaps
-%_datadir/%name/qemu-nsis.bmp
-%_datadir/%name/trace-events-all
-%dir %_sysconfdir/%name
-%dir %_sysconfdir/%name/firmware
-%_datadir/%name/qemu-ifup
-%dir %_libexecdir/supportconfig
-%dir %_libexecdir/supportconfig/plugins
-%_libexecdir/supportconfig/plugins/%name
-%if %{kvm_available}
-/usr/lib/udev/rules.d/80-kvm.rules
-%ifarch s390x
-%_libexecdir/modules-load.d/kvm.conf
-%endif
-%endif
 %dir %_datadir/icons/hicolor
 %dir %_datadir/icons/hicolor/*/
 %dir %_datadir/icons/hicolor/*/apps
+%dir %_datadir/%name
+%dir %_datadir/%name/firmware
+%dir %_datadir/%name/vhost-user
+%_datadir/applications/qemu.desktop
 %_datadir/icons/hicolor/16x16/apps/qemu.png
 %_datadir/icons/hicolor/24x24/apps/qemu.png
 %_datadir/icons/hicolor/32x32/apps/qemu.bmp
@@ -1606,7 +1556,140 @@ fi
 %_datadir/icons/hicolor/256x256/apps/qemu.png
 %_datadir/icons/hicolor/512x512/apps/qemu.png
 %_datadir/icons/hicolor/scalable/apps/qemu.svg
-%_datadir/applications/qemu.desktop
+%_datadir/%name/keymaps
+%_datadir/%name/qemu-ifup
+%_datadir/%name/qemu-nsis.bmp
+%_datadir/%name/trace-events-all
+%_datadir/%name/vhost-user/50-qemu-virtiofsd.json
+%dir %_docdir/%name/interop
+%dir %_docdir/%name/interop/_static
+%dir %_docdir/%name/specs
+%dir %_docdir/%name/specs/_static
+%dir %_docdir/%name/system
+%dir %_docdir/%name/system/_static
+%dir %_docdir/%name/system/arm
+%dir %_docdir/%name/system/s390x
+%dir %_docdir/%name/tools
+%dir %_docdir/%name/tools/_static
+%dir %_docdir/%name/user
+%dir %_docdir/%name/user/_static
+%_docdir/%name/index.html
+%_docdir/%name/interop/.buildinfo
+%_docdir/%name/interop/_static/*
+%_docdir/%name/interop/bitmaps.html
+%_docdir/%name/interop/dbus.html
+%_docdir/%name/interop/dbus-vmstate.html
+%_docdir/%name/interop/genindex.html
+%_docdir/%name/interop/index.html
+%_docdir/%name/interop/live-block-operations.html
+%_docdir/%name/interop/objects.inv
+%_docdir/%name/interop/pr-helper.html
+%_docdir/%name/interop/search.html
+%_docdir/%name/interop/searchindex.js
+%_docdir/%name/interop/vhost-user.html
+%_docdir/%name/interop/vhost-user-gpu.html
+%_docdir/%name/qemu-qmp-ref.txt
+%_docdir/%name/qemu-qmp-ref.html
+%_docdir/%name/qemu-ga-ref.txt
+%_docdir/%name/qemu-ga-ref.html
+%_docdir/%name/specs/.buildinfo
+%_docdir/%name/specs/_static/*
+%_docdir/%name/specs/acpi_hw_reduced_hotplug.html
+%_docdir/%name/specs/genindex.html
+%_docdir/%name/specs/index.html
+%_docdir/%name/specs/objects.inv
+%_docdir/%name/specs/ppc-spapr-xive.html
+%_docdir/%name/specs/ppc-xive.html
+%_docdir/%name/specs/search.html
+%_docdir/%name/specs/searchindex.js
+%_docdir/%name/specs/tpm.html
+%_docdir/%name/system/.buildinfo
+%_docdir/%name/system/_static/*
+%_docdir/%name/system/arm/cpu-features.html
+%_docdir/%name/system/arm/integratorcp.html
+%_docdir/%name/system/arm/musicpal.html
+%_docdir/%name/system/arm/nseries.html
+%_docdir/%name/system/arm/orangepi.html
+%_docdir/%name/system/arm/palm.html
+%_docdir/%name/system/arm/realview.html
+%_docdir/%name/system/arm/stellaris.html
+%_docdir/%name/system/arm/sx1.html
+%_docdir/%name/system/arm/versatile.html
+%_docdir/%name/system/arm/xscale.html
+%_docdir/%name/system/build-platforms.html
+%_docdir/%name/system/deprecated.html
+%_docdir/%name/system/gdb.html
+%_docdir/%name/system/genindex.html
+%_docdir/%name/system/images.html
+%_docdir/%name/system/index.html
+%_docdir/%name/system/invocation.html
+%_docdir/%name/system/ivshmem.html
+%_docdir/%name/system/keys.html
+%_docdir/%name/system/license.html
+%_docdir/%name/system/linuxboot.html
+%_docdir/%name/system/managed-startup.html
+%_docdir/%name/system/monitor.html
+%_docdir/%name/system/mux-chardev.html
+%_docdir/%name/system/net.html
+%_docdir/%name/system/objects.inv
+%_docdir/%name/system/qemu-block-drivers.html
+%_docdir/%name/system/qemu-cpu-models.html
+%_docdir/%name/system/qemu-manpage.html
+%_docdir/%name/system/quickstart.html
+%_docdir/%name/system/s390x/vfio-ap.html
+%_docdir/%name/system/search.html
+%_docdir/%name/system/searchindex.js
+%_docdir/%name/system/security.html
+%_docdir/%name/system/target-arm.html
+%_docdir/%name/system/target-i386.html
+%_docdir/%name/system/target-m68k.html
+%_docdir/%name/system/target-mips.html
+%_docdir/%name/system/target-ppc.html
+%_docdir/%name/system/targets.html
+%_docdir/%name/system/target-s390x.html
+%_docdir/%name/system/target-sparc64.html
+%_docdir/%name/system/target-sparc.html
+%_docdir/%name/system/target-xtensa.html
+%_docdir/%name/system/tls.html
+%_docdir/%name/system/usb.html
+%_docdir/%name/system/vnc-security.html
+%_docdir/%name/tools/.buildinfo
+%_docdir/%name/tools/_static/*
+%_docdir/%name/tools/genindex.html
+%_docdir/%name/tools/index.html
+%_docdir/%name/tools/objects.inv
+%_docdir/%name/tools/qemu-img.html
+%_docdir/%name/tools/qemu-nbd.html
+%_docdir/%name/tools/qemu-trace-stap.html
+%_docdir/%name/tools/search.html
+%_docdir/%name/tools/searchindex.js
+%_docdir/%name/tools/virtfs-proxy-helper.html
+%_docdir/%name/tools/virtiofsd.html
+%_docdir/%name/user/.buildinfo
+%_docdir/%name/user/_static/*
+%_docdir/%name/user/genindex.html
+%_docdir/%name/user/index.html
+%_docdir/%name/user/main.html
+%_docdir/%name/user/objects.inv
+%_docdir/%name/user/search.html
+%_docdir/%name/user/searchindex.js
+%dir %_libexecdir/supportconfig
+%dir %_libexecdir/supportconfig/plugins
+%_libexecdir/supportconfig/plugins/%name
+%_mandir/man1/%name.1.gz
+%_mandir/man1/virtiofsd.1.gz
+%_mandir/man7/qemu-block-drivers.7.gz
+%_mandir/man7/qemu-cpu-models.7.gz
+%_mandir/man7/qemu-qmp-ref.7.gz
+%_mandir/man7/qemu-ga-ref.7.gz
+%dir %_sysconfdir/%name
+%dir %_sysconfdir/%name/firmware
+%if %{kvm_available}
+%ifarch s390x
+%_libexecdir/modules-load.d/kvm.conf
+%endif
+/usr/lib/udev/rules.d/80-kvm.rules
+%endif
 
 %files x86
 %defattr(-, root, root)
@@ -1629,7 +1712,6 @@ fi
 %_datadir/%name/bamboo.dtb
 %_datadir/%name/canyonlands.dtb
 %_datadir/%name/openbios-ppc
-%_datadir/%name/ppc_rom.bin
 %_datadir/%name/qemu_vga.ndrv
 %_datadir/%name/skiboot.lid
 %_datadir/%name/slof.bin
@@ -1677,6 +1759,7 @@ fi
 %_bindir/qemu-system-or1k
 %_bindir/qemu-system-riscv32
 %_bindir/qemu-system-riscv64
+%_bindir/qemu-system-rx
 %_bindir/qemu-system-sh4
 %_bindir/qemu-system-sh4eb
 %_bindir/qemu-system-sparc
@@ -1686,6 +1769,7 @@ fi
 %_bindir/qemu-system-xtensa
 %_bindir/qemu-system-xtensaeb
 %_datadir/%name/hppa-firmware.img
+%_datadir/%name/opensbi-riscv32-sifive_u-fw_jump.bin
 %_datadir/%name/opensbi-riscv32-virt-fw_jump.bin
 %_datadir/%name/opensbi-riscv64-sifive_u-fw_jump.bin
 %_datadir/%name/opensbi-riscv64-virt-fw_jump.bin
@@ -1704,6 +1788,7 @@ fi
 %_mandir/man1/qemu-kvm.1.gz
 %if 0%{?is_opensuse} == 0
 %dir %_docdir/qemu-kvm
+%_docdir/qemu-kvm/kvm-supported.html
 %_docdir/qemu-kvm/kvm-supported.txt
 %endif
 %endif
@@ -1869,16 +1954,13 @@ fi
 
 %files vhost-user-gpu
 %defattr(-, root, root)
-%_libexecdir/vhost-user-gpu
-%_docdir/%name/interop/vhost-user-gpu.html
 %dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-gpu.json
+%_libexecdir/vhost-user-gpu
 
 %files tools
 %defattr(-, root, root)
-%_mandir/man1/qemu-img.1.gz
-%_mandir/man1/virtfs-proxy-helper.1.gz
-%_mandir/man8/qemu-nbd.8.gz
+%_bindir/analyze-migration.py
 %_bindir/elf2dmp
 %_bindir/ivshmem-client
 %_bindir/ivshmem-server
@@ -1888,19 +1970,23 @@ fi
 %_bindir/qemu-keymap
 %_bindir/qemu-nbd
 %_bindir/qemu-pr-helper
+%_bindir/qemu-storage-daemon
 %_bindir/virtfs-proxy-helper
+%_bindir/vmstate-static-checker.py
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
+%_libexecdir/virtiofsd
+%_mandir/man1/qemu-img.1.gz
+%_mandir/man1/virtfs-proxy-helper.1.gz
+%_mandir/man8/qemu-nbd.8.gz
 %dir %_sysconfdir/%name
 %config %_sysconfdir/%name/bridge.conf
-%_bindir/analyze-migration.py
-%_bindir/vmstate-static-checker.py
 
 %files guest-agent
 %defattr(-, root, root)
+%attr(0755,root,kvm) %_bindir/qemu-ga
 %dir %_docdir/%name/interop
 %_docdir/%name/interop/qemu-ga.html
 %_mandir/man8/qemu-ga.8.gz
-%attr(0755,root,kvm) %_bindir/qemu-ga
 %{_unitdir}/qemu-ga@.service
 /usr/lib/udev/rules.d/80-qemu-ga.rules
 
@@ -1926,25 +2012,25 @@ fi
 %_bindir/qemu-microblaze
 %_bindir/qemu-microblazeel
 %_bindir/qemu-mips
+%_bindir/qemu-mips64
+%_bindir/qemu-mips64el
 %_bindir/qemu-mipsel
 %_bindir/qemu-mipsn32
 %_bindir/qemu-mipsn32el
-%_bindir/qemu-mips64
-%_bindir/qemu-mips64el
 %_bindir/qemu-nios2
 %_bindir/qemu-or1k
+%_bindir/qemu-ppc
 %_bindir/qemu-ppc64
 %_bindir/qemu-ppc64abi32
 %_bindir/qemu-ppc64le
-%_bindir/qemu-ppc
 %_bindir/qemu-riscv32
 %_bindir/qemu-riscv64
 %_bindir/qemu-s390x
 %_bindir/qemu-sh4
 %_bindir/qemu-sh4eb
+%_bindir/qemu-sparc
 %_bindir/qemu-sparc32plus
 %_bindir/qemu-sparc64
-%_bindir/qemu-sparc
 %_bindir/qemu-tilegx
 %_bindir/qemu-x86_64
 %_bindir/qemu-xtensa
