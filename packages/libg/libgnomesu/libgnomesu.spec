@@ -85,7 +85,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp doc/api.html doc/libgnomesu.css %{buildroot}%{_docdir}/%{name}
 # We want only PAM backend.
-rm -f %{buildroot}%{_prefix}/lib/%{name}/gnomesu-backend
+rm -f %{buildroot}%{_libexecdir}/%{name}/gnomesu-backend
 %fdupes %{buildroot}
 
 %post
@@ -100,7 +100,7 @@ rm -f %{buildroot}%{_prefix}/lib/%{name}/gnomesu-backend
 %files
 %license COPYING
 %{_bindir}/gnomesu
-%dir %{_prefix}/lib/%{name}
+%dir %{_libexecdir}/%{name}
 #%%attr (6755,root,root) %%{_prefix}/lib/%%{name}/gnomesu-backend
 #%%attr (6755,root,root) %%{_prefix}/lib/%%{name}/gnomesu-pam-backend
 # NOTE: Original package has 6755.

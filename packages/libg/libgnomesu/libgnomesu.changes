@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:15:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_libexecdir} where appropriate (instead of %{_prefix}/lib).
+
+-------------------------------------------------------------------
 Sat Mar 21 05:01:08 CET 2020 - sbrabec@suse.com
 
 - Update to version 2.0.4:

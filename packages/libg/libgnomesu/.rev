@@ -444,4 +444,12 @@
   * Updated translations. (forwarded request 787027 from sbrabec)</comment>
     <requestid>789272</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>9445bd76ec75b6aad7ddaf8cca5d3da6</srcmd5>
+    <version>2.0.4</version>
+    <time>1588450455</time>
+    <user>dimstar_suse</user>
+    <comment>Follow the /usr/lib -&amp;gt; /usr/libexec move. Use the correct macros (forwarded request 799209 from dimstar)</comment>
+    <requestid>799477</requestid>
+  </revision>
 </revisionlist>
