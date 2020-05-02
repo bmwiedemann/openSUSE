@@ -1,7 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,6 @@
 #
 
 
-%{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
-%define systemdutildir %(pkg-config --variable systemdutildir systemd)
-%if !0%{?is_opensuse}
-%define         _udevdir %(pkg-config --variable=udevdir udev)
-BuildRequires:  pkgconfig(udev)
-%endif
 Name:           upower
 Version:        0.99.11
 Release:        0
@@ -51,6 +45,7 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(libplist) >= 0.12
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
 
 %description
@@ -151,10 +146,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/rc%{name}
 %dir %{_libexecdir}/upower
 %{_libexecdir}/upower/upowerd
-%if !0%{?is_opensuse}
-%dir %{_udevdir}
-%dir %{_udevrulesdir}
-%endif
 %{_udevrulesdir}/*.rules
 %{_unitdir}/upower.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.UPower.conf
