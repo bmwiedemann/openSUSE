@@ -173,4 +173,15 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
     <comment>Eliminate the -lang recommends (forwarded request 767090 from dimstar)</comment>
     <requestid>767329</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>394846e4a75dd9763c8441ee880718e4</srcmd5>
+    <version>1.4.5</version>
+    <time>1588450485</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager).
+
+  from the author. (forwarded request 799442 from dimstar)</comment>
+    <requestid>799499</requestid>
+  </revision>
 </revisionlist>

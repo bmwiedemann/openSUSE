@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-strongswan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,9 +75,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %doc README.SUSE
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-strongswan-service.name
+%{_vpnservicedir}/nm-strongswan-service.name
 %{_libdir}/NetworkManager/libnm-vpn-plugin-strongswan.so
 
 %files gnome

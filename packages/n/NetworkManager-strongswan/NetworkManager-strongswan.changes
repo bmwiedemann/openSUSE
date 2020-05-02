@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 09:03:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:04:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
@@ -22,7 +28,7 @@ Wed May 23 15:15:03 UTC 2018 - kbabioch@suse.com
 
 - Use OpenPGP signature provided upstream
 - Added NetworkManager-strongswan.keyring, which contains the key
-  from the author  
+  from the author.
 
 -------------------------------------------------------------------
 Wed May  9 12:58:33 UTC 2018 - bjorn.lie@gmail.com
