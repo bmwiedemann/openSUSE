@@ -32,6 +32,7 @@ URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
 Patch0:         spyder-pr11704-fixpytestargs.patch
+Patch1:         spyder-pr12534-closeleaks.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.0
@@ -77,7 +78,6 @@ Requires:       python3-jedi >= 0.15.2
 Requires:       python3-keyring
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
-Requires:       python3-opengl
 Requires:       python3-parso >= 0.5.2
 Requires:       python3-pexpect >= 0.4.4
 Requires:       python3-pickleshare
@@ -131,7 +131,6 @@ BuildRequires:  python3-keyring
 BuildRequires:  python3-matplotlib >= 2.0.0
 BuildRequires:  python3-matplotlib-qt5
 BuildRequires:  python3-matplotlib-tk
-BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas >= 0.13.1
 BuildRequires:  python3-pyaml
 BuildRequires:  python3-pydocstyle
@@ -222,6 +221,7 @@ Provides translations for the "%{name}" package.
 %prep
 %setup -q -n spyder-%{version}
 %patch0 -p1
+%patch1 -p1
 # Fix wrong-file-end-of-line-encoding RPMLint warning
 sed -i 's/\r$//' spyder/app/restart.py
 sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
@@ -270,11 +270,12 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 
 # upstream splits the tests into slow and fast ones
-# we run the ipythonconsole tests separately because they pose issues with asynchonously opened sockets
-skiptests="test_ipythonconsole"
-skipslowtests="test_ipythonconsole"
+# add all tests to skip into $skiptests or $skipslowtests separated by whitespace
+# tests to run separately because of leakages go into separateslowtests
+skiptests=""
+skipslowtests=""
+separateslowtests=""
 
-# add all tests to skip into $skiptests or $skipttestsslow separated by whitespace
 # the shortcut is not sent by the editorbot
 skiptests+=" test_comment"
 # the click/tab press is not sent by the bot
@@ -288,43 +289,28 @@ skiptests+=" test_arrayeditor_edit_complex_array"
 # tests not suitable for CIs or OBS as evident from the last assert which fails here
 skiptests+=" test_connection_dialog_remembers_input_with_ssh_passphrase"
 skiptests+=" test_connection_dialog_remembers_input_with_password"
+# running into timeouts
+skiptests+=" test_dbg_input"
+skiptests+=" test_mpl_backend_change"
+
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
 skipslowtests+=" test_completions"
-
-# the linter does not report warnings with the D and E error codes
-skipslowtests+=" test_ignore_warnings test_move_warnings test_get_warnings test_update_warnings"
-# opens too many files ?
-# likely a test before....
-skipslowtests+=" test_open_notebooks_from_project_explorer"
-
-# the following tests rely on IPythonConsole behaving well on OBS (which does not..)
-skipipythontests=""
-skipipythonslowtests=""
-# xvfb does not like the repeating restart of the kernels in those tests
-skipipythontests+=" test_load_kernel_file"
-# running into timeouts
-skipipythontests+=" test_mpl_backend_change"
-skipipythontests+=" test_calltip"
-skipipythontests+=" test_dbg_input"
-# pdb seems to be the root cause of a lot of test problems
-skipipythontests+=" test_pdb"
-# timeout, hard abort, permission errors
-skipipythontests+=" test_stderr_"
-skipipythontests+=" test_kernel_kill test_conda_env_activation"
-# segfault (?)
-skipipythonslowtests+=" test_runfile_from_project_explorer"
+# Would require network connections
+skipslowtests+=" test_update"
+# runs into timeout on obs
+skipslowtests+=" test_hide_widget_completion"
+# some mainwindow tests leak open file sockets and cause python to terminate
+# the whole testrun at some later point.
+# gh#/spyder-ide/spyder#12534
+separateslowtests+=" test_runcell test_varexp test_edidorstack"
 
 %{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
-for s in tests slowtests ipythontests ipythonslowtests; do
-    skips=skip$s
-    declare skip${s}_p="$($python -c "import sys; print(' or '.join('${!skips}'.split()))")"
+for s in skiptests skipslowtests separateslowtests; do
+    declare ${s}_p="$($python -c "import sys; print(' or '.join('${!s}'.split()))")"
 done
-$python runtests.py -k "not ($skiptests_p)"
-# the slow tests still segfault unreproducibly at different tests. Something does not clean up
-# $python runtests.py --run-slow -k "not ($skipslowtests_p)"
-$python runtests.py -k "test_ipythonconsole and not ($skipipythontests_p)"
-# the slow tests still fail unreproducibly at different tests. Something does not clean up
-# $python runtests.py --run-slow -k "test_ipythonconsole and not ($skipipythonslowtests_p)"
+$python runtests.py -k "not ($skiptests_p)" --timeout 1800
+$python runtests.py --run-slow -k "not ($skipslowtests_p or $separateslowtests_p)" --timeout 1800
+$python runtests.py --run-slow -k "$separateslowtests_p" --timeout 1800
 }
 %endif
 

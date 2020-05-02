@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 30 18:23:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Close leaks in tests for mainwindow and ipythonconsole
+  gh#spyder-ide/spyder#12534
+  spyder-pr12534-closeleaks.patch
+- Now also run the slow tests except for a few.
+- python-opengl is not a requirement
+
+-------------------------------------------------------------------
 Tue Apr 14 11:09:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - More work on running the unit tests. Do not run the slow tests for
