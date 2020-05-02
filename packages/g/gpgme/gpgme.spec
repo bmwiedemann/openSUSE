@@ -1,7 +1,7 @@
 #
 # spec file for package gpgme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source2:        baselibs.conf
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
+Patch1:         gpgme-t-json-test-Bravo-key-no-secret-key-material.patch
+Patch2:         gpgme-t-json-test-with-keygrip-when-listing-keys.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -183,6 +185,8 @@ This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
 %setup -q -n gpgme-%{version}
+%patch1 -p1
+%patch2 -p1
 
 %ifarch %{ix86}
 sed -i -e '/t-callbacks.py/d' lang/python/tests/Makefile.{am,in}

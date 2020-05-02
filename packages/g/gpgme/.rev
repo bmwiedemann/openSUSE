@@ -615,4 +615,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
   samba/libsoup.</comment>
     <requestid>739153</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>04169ef20b668b432b35b8b06675daaf</srcmd5>
+    <version>1.13.1</version>
+    <time>1588450541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799285</requestid>
+  </revision>
 </revisionlist>

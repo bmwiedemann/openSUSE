@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 29 11:09:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build: [bsc#1170811]
+  * Test t-json fails since the gpg-2.2.20 update
+- Add patches:
+  * gpgme-t-json-test-Bravo-key-no-secret-key-material.patch
+  * gpgme-t-json-test-with-keygrip-when-listing-keys.patch
+
+-------------------------------------------------------------------
 Wed Oct 16 20:34:54 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - Build qt bindings separately to avoid build cycle with
