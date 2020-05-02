@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  1 12:09:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch to multibuild and remove Suggests for bzr.
+
+-------------------------------------------------------------------
 Wed Apr  8 18:47:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't build-require bzr, just suggest it, it is not that necessary.

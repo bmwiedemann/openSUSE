@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-check-manifest%{psuffix}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-check-manifest
 Version:        0.40
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
@@ -30,13 +38,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%if %{with test}
 BuildRequires:  git-core
 BuildRequires:  mercurial
-BuildRequires:  python-rpm-macros
 BuildRequires:  subversion
+%endif
 Requires:       python-setuptools
 Requires:       python-toml
-Suggests:       bzr
 Suggests:       git-core
 Suggests:       mercurial
 Suggests:       subversion
@@ -56,17 +65,23 @@ chmod -x check_manifest.py
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %python3_only %{_bindir}/check-manifest
 %{python_sitelib}/*
+%endif
 
 %changelog
