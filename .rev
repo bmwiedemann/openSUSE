@@ -1612,4 +1612,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>Resub, spellfix (forwarded request 795115 from iznogood)</comment>
     <requestid>795259</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>1ac402893a769a0ac84ae036f25f58ac</srcmd5>
+    <version>3.36.2</version>
+    <time>1588450464</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, NOT BUILDTESTED! (forwarded request 799428 from iznogood)</comment>
+    <requestid>799480</requestid>
+  </revision>
 </revisionlist>
