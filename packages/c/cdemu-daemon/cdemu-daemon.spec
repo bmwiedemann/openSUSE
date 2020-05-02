@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-daemon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@
 %endif
 
 Name:           cdemu-daemon
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-Url:            http://cdemu.sf.net/about/daemon/
+URL:            https://cdemu.sourceforge.io/about/daemon/
 
 #Git-Clone:	git://git.code.sf.net/p/cdemu/code
-Source:         http://downloads.sf.net/cdemu/%name-%version.tar.bz2
+Source:         https://downloads.sf.net/cdemu/%name-%version.tar.bz2
 Source2:        60-vhba.rules
 Source3:        cdemu-daemon.sysconfig
 Patch1:         logfile.diff
