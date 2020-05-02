@@ -117,7 +117,7 @@ The PAM module can be used to unlock the keyring on login.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
 %endif

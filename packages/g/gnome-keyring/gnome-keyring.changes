@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 20:37:49 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Enable FIPS patches on Leap (jsc#SLE-11880).
+
+-------------------------------------------------------------------
 Sat Mar 28 03:36:00 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.0:

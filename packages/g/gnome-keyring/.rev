@@ -1041,4 +1041,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795048 from iznogood)</comment>
     <requestid>795201</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>81fad2925f457caa08eff3cc6d358bb3</srcmd5>
+    <version>3.36.0</version>
+    <time>1588450450</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 799180 from iznogood)</comment>
+    <requestid>799476</requestid>
+  </revision>
 </revisionlist>
