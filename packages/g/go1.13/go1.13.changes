@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:19:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires binutils-gold for %arm and aarch64 - boo#1170826
+
+-------------------------------------------------------------------
 Thu Apr  9 03:49:17 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.13.10 (released 2020/04/08) includes fixes to the go command,
