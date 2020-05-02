@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-vpnc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -73,9 +73,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc.so
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-vpnc-service.name
+%{_vpnservicedir}/nm-vpnc-service.name
 %config %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
 
 %files gnome
