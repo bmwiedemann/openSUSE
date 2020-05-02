@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define tarname PyOpenGL
 Name:           python-opengl%{psuffix}
-Version:        3.1.3b2
+Version:        3.1.5
 Release:        0
 Summary:        OpenGL bindings for Python
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{ta
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       Mesa-dri
 Recommends:     python-numpy
 Recommends:     python-opengl-accelerate
 Recommends:     python-tk
@@ -47,6 +48,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pygame}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
 BuildRequires:  freeglut-devel
@@ -55,7 +57,6 @@ BuildRequires:  libgle-devel
 BuildRequires:  python3-numpy
 BuildRequires:  swig
 BuildRequires:  tk-devel
-BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
@@ -88,9 +89,7 @@ find . -name '*.py' -exec touch -mat $FAKE_TIMESTAMP {} \;
 %check
 # test_buffer_api_basic is a test specific to opengl-accelerate, failing on i586 and armv7l
 # https://github.com/mcfletch/pyopengl/issues/29
-%{python_expand #
-xvfb-run -s "-screen 0 1400x900x24 +iglx" $python -m pytest -v tests -k "not test_buffer_api_basic"
-}
+%pytest -v -k "not test_buffer_api_basic" tests
 %endif
 
 %if !%{with test}

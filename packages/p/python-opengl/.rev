@@ -195,4 +195,12 @@
   - Python 3.7 compatibility fixes</comment>
     <requestid>729396</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>773cd405c1e467365a3213709a1e0e64</srcmd5>
+    <version>3.1.5</version>
+    <time>1588450621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799405</requestid>
+  </revision>
 </revisionlist>
