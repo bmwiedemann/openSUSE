@@ -199,6 +199,7 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
+export NSS_ENABLE_WERROR=0
 export NSS_NO_PKCS11_BYPASS=1
 export FREEBL_NO_DEPEND=1
 export FREEBL_LOWHASH=1
