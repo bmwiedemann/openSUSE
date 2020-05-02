@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr  2 21:07:48 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.19
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-19.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-18.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-17.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-16.html
+- Fixed mysql/mariadb config utility incompatability
+  * added mysql-connector-cpp-config.patch
+- Added patch for dl functions linking
+  * added mysql-connector-cpp-dlfcn.patch
+- Updated typos patch
+  * removed mysql-connector-cpp-8.0.12-libmysql_dynamic_proxy_typos.patch
+  * added mysql-connector-cpp-libmysql_dynamic_proxy_typos.patch
+- Used system protobuf (packaged withing mysql-workbench has some building
+  issues in OBS)
+  * added mysql-connector-cpp-use-system-protobuf.patch
+
+-------------------------------------------------------------------
 Sun Feb 17 08:18:37 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.15

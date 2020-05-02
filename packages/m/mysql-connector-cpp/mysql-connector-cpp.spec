@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-cpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,30 @@
 
 
 %define libname libmysqlcppconn7
-%define x_libname libmysqlcppconn8-1
+%define x_libname libmysqlcppconn8-2
 Name:           mysql-connector-cpp
-Version:        8.0.15
+Version:        8.0.19
 Release:        0
 Summary:        MySQL Connector/C++: Standardized database driver for C++ development
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Libraries/C and C++
 URL:            http://dev.mysql.com/downloads/connector/
 Source:         http://dev.mysql.com/get/Downloads/Connector-C++/mysql-connector-c++-%{version}-src.tar.gz
+# PATCH-FIX-OPENSUSE fix options for mysql_config
+Patch1:         mysql-connector-cpp-config.patch
 # PATCH-FIX-UPSTREAM - bsc#1067883 kstreitova@suse.com -- fix build with libmariadb by fixing copypaste errors in libmysql_dynamic_proxy.cpp file
-Patch3:         mysql-connector-cpp-8.0.12-libmysql_dynamic_proxy_typos.patch
+Patch3:         mysql-connector-cpp-libmysql_dynamic_proxy_typos.patch
 # PATCH-FIX-OPENSUSE fix library to work with MariaDB instead of MySQL
 Patch4:         mysql-connector-cpp-mariadb.patch
+# PATCH-FIX-OPENSUSE fix absence of -ldl
+Patch5:         mysql-connector-cpp-dlfcn.patch
+# PATCH-FIX-OPENSUSE use system protobuf (due to some build issues in OBS)
+Patch6:         mysql-connector-cpp-use-system-protobuf.patch
 BuildRequires:  cmake >= 2.6.2
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
+BuildRequires:  protobuf-devel
 BuildRequires:  zlib-devel
 Obsoletes:      mysql-connector-c++ < %{version}
 Provides:       mysql-connector-c++ = %{version}
@@ -125,8 +133,7 @@ connect to MySQL 4.1 or earlier.
 
 %prep
 %setup -q -n mysql-connector-c++-%{version}-src
-%patch3 -p1
-%patch4 -p1
+%autopatch -p1
 chmod -x jdbc/examples/*
 
 %build
@@ -146,13 +153,13 @@ make %{?_smp_mflags} VERBOSE=1
 rm -f %{buildroot}%{_libdir}/libmysqlcppconn-static.a
 rm -f %{buildroot}%{_prefix}/[A-Z]*
 mkdir -p %{buildroot}%{_docdir}/libmysqlcppconn-devel
-install -m 0644 LICENSE.txt %{buildroot}%{_docdir}/libmysqlcppconn-devel/
 install -m 0644 README.txt %{buildroot}%{_docdir}/libmysqlcppconn-devel/
 mkdir -p %{buildroot}%{_docdir}/libmysqlcppconn-devel/examples
 install -m 0644 jdbc/examples/* %{buildroot}%{_docdir}/libmysqlcppconn-devel/examples/
 mkdir -p %{buildroot}%{_docdir}/libmysqlcppconn8-devel
-install -m 0644 LICENSE.txt %{buildroot}%{_docdir}/libmysqlcppconn8-devel/
 install -m 0644 README.txt %{buildroot}%{_docdir}/libmysqlcppconn8-devel/
+
+%fdupes -s %{buildroot}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -163,8 +170,9 @@ install -m 0644 README.txt %{buildroot}%{_docdir}/libmysqlcppconn8-devel/
 
 %files -n libmysqlcppconn-devel
 %license LICENSE.txt
-%doc LICENSE.txt README.txt examples
+%doc README.txt examples
 %{_includedir}/jdbc
+%{_includedir}/mysql/jdbc.h
 %{_libdir}/libmysqlcppconn.so
 
 %files -n %{libname}
@@ -172,7 +180,7 @@ install -m 0644 README.txt %{buildroot}%{_docdir}/libmysqlcppconn8-devel/
 
 %files -n libmysqlcppconn8-devel
 %license LICENSE.txt
-%doc LICENSE.txt README.txt
+%doc README.txt
 %{_includedir}/mysqlx
 %{_libdir}/libmysqlcppconn8.so
 
