@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-l2tp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,9 +91,7 @@ fi
 %doc README.md NEWS
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp.so
 %{_libexecdir}/nm-l2tp-service
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-l2tp-service.name
+%{_vpnservicedir}/nm-l2tp-service.name
 %{_sysconfdir}/dbus-1/system.d/nm-l2tp-service.conf
 %{pppd_plugin_dir}/nm-l2tp-pppd-plugin.so
 
