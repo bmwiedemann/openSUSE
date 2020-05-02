@@ -1,7 +1,7 @@
 #
 # spec file for package cmpi-bindings
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # nodebuginfo
 
 
-Url:            http://github.com/kkaempf/cmpi-bindings
+# 1 for python3, 0 for python2
+%if 0%{?suse_version} >= 1500
+%define python3 1
+%else
+%define python3 0
+%endif
+%if %{python3}
+%define pywbemname %{name}-py3wbem
+%else
+%define pywbemname %{name}-pywbem
+%endif
+
+URL:            http://github.com/kkaempf/cmpi-bindings
 
 Name:           cmpi-bindings
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Adapter to write and run CMPI-type CIM providers
 License:        BSD-3-Clause AND CPL-1.0
@@ -35,7 +47,11 @@ BuildRequires:  swig >= 1.3.34
 BuildRequires:  sblim-cmpi-devel
 
 BuildRequires:  perl
+%if %{python3}
+BuildRequires:  python3-devel
+%else
 BuildRequires:  python-devel
+%endif
 
 %if 0%{?rhel_version} > 0
 BuildRequires:  -vim
@@ -118,6 +134,11 @@ cmake -DCMAKE_INSTALL_PREFIX=%_prefix \
       -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
+%if %{python3}
+      -DBUILD_PYTHON3=yes \
+%else
+      -DBUILD_PYTHON2=yes \
+%endif
       -DBUILD_RUBY_GEM=no \
       ..
 make %{?_smp_mflags}
@@ -168,26 +189,39 @@ RDoc-style documentation for cmpi-bindings-ruby
 %{_docdir}/cmpi-bindings-ruby-docs
 %endif
 
-%package -n cmpi-bindings-pywbem
-Summary:        Adapter to write and run CMPI-type CIM providers in Python
+%package -n %{pywbemname}
+Summary:        Adapter to write and run CMPI-type CIM providers in Python3
 # for the debug package. we dont use debug_package_requires here as it would enforce to install both packages.
 Group:          Development/Languages/Python
 Provides:       %{name} = %{version}-%{release}
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%if %{python3}
+%{!?py_requires: %define py_requires Requires: python3}
+%else
 %{!?py_requires: %define py_requires Requires: python}
+%endif
 %{py_requires}
 
-%description -n cmpi-bindings-pywbem
+%description -n %{pywbemname}
 -
 
-%files -n cmpi-bindings-pywbem
+
+
+%files -n %{pywbemname}
 %defattr(-,root,root,-)
 %dir %{_libdir}/cmpi
-%{_libdir}/cmpi/libpyCmpiProvider.so
 %dir %{_datadir}/cmpi
+%if %{python3}
+%{_libdir}/cmpi/libpy3CmpiProvider.so
 %{python_sitelib}/cmpi_pywbem_bindings.py*
 %{python_sitelib}/cmpi.py*
+%{python_sitelib}/__pycache__/cmpi*
+%else
+%{_libdir}/cmpi/libpyCmpiProvider.so
+%{python2_sitelib}/cmpi_pywbem_bindings.py*
+%{python2_sitelib}/cmpi.py*
+%endif
 
 %package -n cmpi-bindings-perl
 Requires:       perl = %{perl_version}

@@ -440,4 +440,17 @@ The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0 (forwarded request 
     <comment></comment>
     <requestid>628381</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9568a26e346892058618d2fd69a0f522</srcmd5>
+    <version>1.0.3</version>
+    <time>1588450569</time>
+    <user>dimstar_suse</user>
+    <comment>- build with python3 on openSUSE Leap 15 and later.
+
+- Update to 1.0.3
+  - fix Python3 build
+  Building with Python3 provides &quot;libpy3CmpiProvider.so&quot;
+  Building with Python provides &quot;libpyCmpiProvider.so&quot;</comment>
+    <requestid>799542</requestid>
+  </revision>
 </revisionlist>
