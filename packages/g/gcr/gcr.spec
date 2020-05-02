@@ -174,7 +174,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %prep
 %setup -q
-%if !0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch1 -p1
 %endif
 
