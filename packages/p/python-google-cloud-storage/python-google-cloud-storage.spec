@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-storage
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-storage
-Version:        1.19.1
+Version:        1.28.0
 Release:        0
-Summary:        Google Cloud Storage API client library
+Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google-cloud-storage-%{version}.tar.gz
-BuildRequires:  %{python_module google-auth >= 1.2.0}
-BuildRequires:  %{python_module google-cloud-core >= 1.0.2}
-BuildRequires:  %{python_module google-resumable-media >= 0.4.0}
+BuildRequires:  %{python_module google-auth >= 1.11.0}
+BuildRequires:  %{python_module google-cloud-core >= 1.2.0}
+BuildRequires:  %{python_module google-resumable-media >= 0.5.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-auth >= 1.2.0
-Requires:       python-google-cloud-core >= 1.0.2
-Requires:       python-google-resumable-media >= 0.4.0
+Requires:       python-google-auth >= 1.11.0
+Requires:       python-google-cloud-core >= 1.2.0
+Requires:       python-google-resumable-media >= 0.5.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,9 +52,8 @@ Python Client for Google Cloud Storage
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Disable system tests which do not work without additional tokens
-rm tests/system.py
-%pytest -k "not test_extra_headers"
+# skipped tests need the credentials set up
+%pytest tests/unit -k 'not (test_conformance_post_policy or test_get_signed_policy_v4 or test_create)'
 
 %files %{python_files}
 %license LICENSE
