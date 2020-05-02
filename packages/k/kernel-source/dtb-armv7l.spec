@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.6
-%define patchversion 5.6.6
+%define patchversion 5.6.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        5.6.6
+Version:        5.6.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc11f000
+Release:        <RELEASE>.g63116ab
 %else
 Release:        0
 %endif
@@ -307,6 +307,15 @@ Requires(post): coreutils
 %description -n dtb-meson8b
 Device Tree files for Amlogic Meson 8b based systems.
 
+%package -n dtb-mt76
+Summary:        MediaTek mt76 based systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-mt76
+Device Tree files for MediaTek mt76 based systems.
+
 %package -n dtb-omap3
 Summary:        TI OMAP3 based systems
 Group:          System/Boot
@@ -526,7 +535,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/arm/boot/dts
-for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
+for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts mt76*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -538,7 +547,7 @@ done
 %install
 
 cd pp
-for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
+for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts mt76*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -687,6 +696,13 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-meson8b
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-mt76
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -1046,6 +1062,16 @@ cd /boot
 %ghost /boot/dtb
 %dir %{dtbdir}
 %{dtbdir}/meson8b-*.dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-mt76 -f dtb-mt76.list
+%else
+%files -n dtb-mt76
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%{dtbdir}/mt76*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-omap3 -f dtb-omap3.list
