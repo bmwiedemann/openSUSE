@@ -93,6 +93,7 @@ Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch25:        %{name}-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
 Patch26:        %{name}-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
+Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -123,17 +124,9 @@ BuildRequires:  kernel-devel
 %endif
 
 %if 0%{?build_kmp}
-%if 0%{?suse_version} >= 920
 %suse_kernel_module_package -n crash -p %_sourcedir/%{name}-kmp-preamble um
 %define arch %_target_cpu
 %define kmp_pkg KMP
-%else
-%define kver %(rpm -q --qf '%%{VERSION}-%%{RELEASE}' kernel-source)
-%define kver_ %(rpm -q --qf '%%{VERSION}_%%{RELEASE}' kernel-source)
-%define arch %(echo %_target_cpu | sed -e 's/i.86/i386/')
-%define flavors_to_build %(sh %_sourcedir/get-kernel-flavors.sh %arch)
-%define kmp_pkg kmp
-%endif
 %endif
 
 %description
@@ -259,12 +252,6 @@ Authors:
 Summary:        Memory driver for the crash utility
 License:        GPL-2.0-only
 Group:          System/Kernel
-%if 0%{?suse_version} < 920
-Version:        %{version}_%{kver_}
-Release:        0
-
-Requires:       kernel = %kver
-%endif
 
 %description %kmp_pkg
 To run the crash utility on a live system, a memory device must be present.
@@ -309,6 +296,7 @@ Authors:
 %endif
 %patch25 -p1
 %patch26 -p1
+%patch27 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
@@ -385,32 +373,6 @@ for flavor in %flavors_to_build; do
      make -C /usr/src/linux-obj/%arch/$flavor modules_install \
        M=$PWD/kbuild/$flavor
 done
-
-# Ugly SLES9-style KMP
-%if 0%{?suse_version} < 920
-set -- $(ls $RPM_BUILD_ROOT/lib/modules)
-KERNELRELEASES=$*
-
-set -- $(find $RPM_BUILD_ROOT/lib/modules -type f -name '*.ko' \
-	 | sed -e 's:.*/::' -e 's:\.ko$::' | sort -u)
-MODULES=$*
-
-(   cat <<-EOF
-	# IMPORTANT: Do not change the KERNELRELEASES definition; it will be
-	# replaced during driver reuse!
-	KERNELRELEASES="$KERNELRELEASES"
-	MODULES="$MODULES"
-	EOF
-    cat %_sourcedir/depmod.sh
-    cat %_sourcedir/mkinitrd.sh
-) > post_postun.sh
-
-%post kmp -f post_postun.sh
-
-%postun kmp -f post_postun.sh
-
-%endif
-
 %endif
 
 %clean
@@ -456,15 +418,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/crash/extensions/gcore.so
 %doc extensions/README.gcore
-%endif
-
-%if 0%{?build_kmp}
-%if 0%{?suse_version} < 920
-
-%files %kmp_pkg
-%defattr(-,root,root)
-/lib/modules/*
-%endif
 %endif
 
 %changelog

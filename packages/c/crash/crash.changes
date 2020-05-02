@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:27:35 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add crash-Define-fallback-PN_XNUM.patch
+  Add a fallback PN_XNUM definition.
+
+-------------------------------------------------------------------
 Sat Apr 18 12:00:31 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Make Factory ppc64 crash usable on both SLE 15 SP1 and releases before
