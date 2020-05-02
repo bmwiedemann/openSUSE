@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.33.91.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-3.34.2.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
 @@ -5,6 +5,8 @@ const {
      Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St,
  } = imports.gi;
@@ -31,7 +31,7 @@ Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
          });
          this._updateIcon();
  
-@@ -62,6 +75,106 @@ class ApplicationMenuItem extends PopupM
+@@ -62,6 +75,107 @@ class ApplicationMenuItem extends PopupM
          };
      }
  
@@ -44,15 +44,15 @@ Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
 +        // close any opened menu to avoid input focus grab
 +        if (this._menu && this._menu.isOpen) {
 +            this._menu.close();
-+            return;
++            return Clutter.EVENT_STOP;
 +        }
 +
 +        let button = event.get_button();
 +        if (button == 3) {
 +            this.popupMenu();
-+            return true;
++            return Clutter.EVENT_STOP;
 +        }
-+        return false;
++        return Clutter.EVENT_PROPAGATE
 +    }
 +
 +    popupMenu() {
@@ -61,6 +61,8 @@ Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
 +            let openItem = new PopupMenu.PopupMenuItem(_("Open"));
 +            this._menu.addMenuItem(openItem);
 +            openItem.connect('activate', () => {
++                this._menu.destroy();
++                this._menu = null;
 +                this._app.open_new_window(-1);
 +                this._button.selectCategory(null, null);
 +                this._button.menu.toggle();
@@ -107,19 +109,18 @@ Index: gnome-shell-extensions-3.33.91/extensions/apps-menu/extension.js
 +                    destDirPath = Glib.build_filenamev([GLib.get_home_dir(), "Desktop"]);
 +                }
 +                let destFile = Gio.File.new_for_path(destDirPath + '/' + sourceFile.get_basename());
-+                if (sourceFile.copy(destFile, Gio.FileCopyFlags.OVERWRITE,
-+                                  null, null, null)) {
++                if (sourceFile.copy(destFile, Gio.FileCopyFlags.OVERWRITE, null, null)) {
 +                    // In order to make the general monitor recognize the setting of metadata,
 +                    // this function call should  before the setting of unix mode.
-+                    destFile.set_attribute_string("metadata::trusted",
-+                                                  "yes",
-+                                                  Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-+                                                  null);
-+                    destFile.set_attribute_uint32(
-+                              Gio.FILE_ATTRIBUTE_UNIX_MODE, parseInt("0755", 8),
-+                              Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-+                              null);
++                    let info = new Gio.FileInfo();
++                    info.set_attribute_string('metadata::trusted', 'true');
++                    destFile.set_attributes_from_info(info,
++                                                      Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
++                    destFile.set_attribute_uint32( Gio.FILE_ATTRIBUTE_UNIX_MODE, parseInt("0755", 8),
++                                                   Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
 +                }
++                this._menu.destroy();
++                this._menu = null;
 +                this._button.selectCategory(null, null);
 +                this._button.menu.toggle();
 +            });
