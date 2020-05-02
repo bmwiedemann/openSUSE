@@ -1685,4 +1685,12 @@ Add:  dracut_git_v034_to_head.patch</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1168661</comment>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>eb8366828292ce72979e3bfda7612bac</srcmd5>
+    <version>050+suse.60.ged08acac</version>
+    <time>1588450487</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>797244</requestid>
+  </revision>
 </revisionlist>

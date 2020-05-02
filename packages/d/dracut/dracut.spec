@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        049.1+suse.138.g9068a629
+Version:        050+suse.60.ged08acac
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -242,11 +242,13 @@ fi
 # Use systemd-analyze instead, does not need dracut support
 %{dracutlibdir}/modules.d/00bootchart
 
+%{dracutlibdir}/modules.d/00mksh
 %{dracutlibdir}/modules.d/02caps
 %{dracutlibdir}/modules.d/90stratis
 %{dracutlibdir}/modules.d/00dash
 %{dracutlibdir}/modules.d/05busybox
 %{dracutlibdir}/modules.d/50gensplash
+%{dracutlibdir}/modules.d/90ppcmac
 
 # RH-specific s390 modules, we take another approach
 %{dracutlibdir}/modules.d/95dasd
@@ -256,7 +258,9 @@ fi
 %files
 %defattr(-,root,root,0755)
 %license COPYING
-%doc README HACKING TODO AUTHORS NEWS dracut.html dracut.png dracut.svg
+%doc README.md README.cross README.generic README.kernel
+%doc README.modules README.testsuite
+%doc HACKING TODO AUTHORS NEWS dracut.html dracut.png dracut.svg
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
 /sbin/installkernel
@@ -309,7 +313,6 @@ fi
 %{dracutlibdir}/dracut-install
 
 %dir %{dracutlibdir}/modules.d
-
 %{dracutlibdir}/modules.d/00bash
 %{dracutlibdir}/modules.d/00systemd
 %{dracutlibdir}/modules.d/00warpclock
@@ -318,6 +321,7 @@ fi
 %{dracutlibdir}/modules.d/03modsign
 %{dracutlibdir}/modules.d/03rescue
 %{dracutlibdir}/modules.d/04watchdog
+%{dracutlibdir}/modules.d/06rngd
 %{dracutlibdir}/modules.d/10i18n
 %{dracutlibdir}/modules.d/30convertfs
 %{dracutlibdir}/modules.d/35network-legacy
