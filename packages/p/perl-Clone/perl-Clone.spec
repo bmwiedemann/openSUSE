@@ -17,7 +17,7 @@
 
 
 Name:           perl-Clone
-Version:        0.44
+Version:        0.45
 Release:        0
 %define cpan_name Clone
 Summary:        Recursively copy Perl datatypes
@@ -29,7 +29,7 @@ Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(B::COW) >= 0.003
+BuildRequires:  perl(B::COW) >= 0.004
 %{perl_requires}
 
 %description

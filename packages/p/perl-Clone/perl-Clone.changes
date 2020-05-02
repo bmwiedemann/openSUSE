@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 24 03:08:49 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.45
+   see /usr/share/doc/packages/perl-Clone/Changes
+
+  0.45 2020-04-23 14:46:00 atoomic
+    - bump B::COW requirement to fix big-endian issue
+
+-------------------------------------------------------------------
 Tue Apr 21 03:08:45 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.44
