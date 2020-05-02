@@ -1289,4 +1289,19 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 795062 from iznogood)</comment>
     <requestid>795215</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>a65c0f62e393341f010165e6ae3b240e</srcmd5>
+    <version>3.36.1</version>
+    <time>1588450521</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unecessary conditional BuildRequires pkgconfig(udev),
+  Tumbleweed needs it as well from 3.27.90. Meanwhile an explict
+  unconditional BuildRequires pkgconfig(udev) has been already
+  stated in spec a couple of lines before the removal.
+- Recommends iio-sensor-proxy and xf86-input-libinput to both
+  openSUSE and SLE (jsc#SLE-11710). The condition does not make
+  sense today when gnome-settings-daemon 3.34 and above are only
+  built on SLE/Leap 15 and above. (forwarded request 799142 from yfjiang)</comment>
+    <requestid>799176</requestid>
+  </revision>
 </revisionlist>

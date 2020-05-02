@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -107,19 +107,12 @@ Recommends:     nautilus
 %if %{with wacom}
 BuildRequires:  pkgconfig(libwacom) >= 0.7
 %endif
-%if !0%{?is_opensuse}
-# For directory ownership. No longer needed in TW, since filesystem package
-# now owns
-BuildRequires:  pkgconfig(udev)
-%endif
 %if %{with wayland}
 BuildRequires:  pkgconfig(wayland-client)
 %endif
-%if 0%{?is_opensuse} || 0%{?suse_version} == 1500
 Recommends:     iio-sensor-proxy
 # g-s-d only support configurtion of libinput based pointer drivers now.
 Recommends:     xf86-input-libinput
-%endif
 
 %description
 gnome-settings-daemon provides a daemon run by all GNOME sessions to
