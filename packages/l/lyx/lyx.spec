@@ -17,16 +17,16 @@
 
 
 Name:           lyx
-Version:        2.3.4.2
+Version:        2.3.4.4
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.xz
+Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.bz2
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.xz.sig
+Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.bz2.sig
 Source4:        README.SUSE
 # PATCH-FIX-UPSTREAM to satisfy rpmlint - use #! /usr/bin/python as shebang
 # See: https://www.lyx.org/trac/changeset/cac27076ead10684270520670adc6bd004793361/lyxgit

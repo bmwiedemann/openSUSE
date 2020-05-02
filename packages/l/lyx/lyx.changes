@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 10:19:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.4.4:
+  * fixes for platforms other than GNU/Linux
+
+-------------------------------------------------------------------
 Sun Feb  9 13:23:44 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.3.4.2, fixing four bugs:
