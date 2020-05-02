@@ -1,7 +1,7 @@
 #
 # spec file for package libisofs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %define so_ver 6
 Name:           libisofs
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
 Summary:        Library for Creating ISO-9660 Filesystems
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-Url:            http://libburnia-project.org/
+URL:            http://libburnia-project.org/
 Source0:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
+Source1:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libacl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1320 || (0%{?is_opensuse} && 0%{?sle_version} >= 120300)
-BuildRequires:  libjte-devel
-%endif
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libjte-1)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Libisofs is a library for creating ISO-9660 filesystems with extensions like
@@ -89,7 +89,7 @@ chmod 644 doc/Tutorial
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 doxygen doc/doxygen.conf
 
 %install
@@ -111,7 +111,8 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %postun -n libisofs%{so_ver} -p /sbin/ldconfig
 
 %files devel
-%doc AUTHORS COPYING COPYRIGHT ChangeLog NEWS README Roadmap TODO
+%license COPYING COPYRIGHT
+%doc AUTHORS ChangeLog NEWS README Roadmap TODO
 %doc doc/{Tutorial,checksums.txt,susp_aaip_2_0.txt,susp_aaip_isofs_names.txt,zisofs_format.txt}
 %doc %{_docdir}/%{name}-devel/html/
 %{_includedir}/libisofs/

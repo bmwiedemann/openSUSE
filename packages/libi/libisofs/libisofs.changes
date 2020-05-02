@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:00:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.2
+  * New API calls iso_write_opts_set_part_type_guid(),
+    iso_write_opts_set_iso_type_guid()
+  * New API call iso_nowtime()
+  * New flag bit2 of iso_node_set_acl_text() to be verbous about
+    failures
+  * Made libisofs ready for building out-of-source.
+  * Bug fix: Appended GPT partitions were not covered by the
+    protective MBR partition
+  * Bug fix: Multi-session emulation spoiled GPT production.
+    "GPT partitions ... overlap". Regression towards 1.4.8
+  * Bug fix: Appending partitions 5 to 8 caused damaged ISO
+    filesystems if not for SUN disk label
+  * Bug fix: SIGSEGV happened if options bit 14 of
+    iso_write_opts_set_system_area() is set and no El Torito
+    boot image is defined
+- Add signature and keyring as sources
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Oct 24 16:13:32 UTC 2018 - sean@suspend.net
 
 - Update to 1.5.0:
