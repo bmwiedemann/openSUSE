@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openconnect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,9 +88,7 @@ exit 0
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect.so
 %{_libexecdir}/nm-openconnect-service
 %{_libexecdir}/nm-openconnect-service-openconnect-helper
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-openconnect-service.name
+%{_vpnservicedir}/nm-openconnect-service.name
 %{_sysconfdir}/dbus-1/system.d/nm-openconnect-service.conf
 
 %files gnome
