@@ -17,7 +17,7 @@
 
 
 Name:           mednafen
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
@@ -53,7 +53,6 @@ Bandai: Wonderswan (Color).
 
 %package doc
 Summary:        Additional Package Documentation
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
