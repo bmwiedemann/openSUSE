@@ -1,7 +1,7 @@
 #
 # spec file for package libindicator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Panel indicator applet libraries
 License:        GPL-3.0-only
 Group:          System/GUI/Other
-Url:            https://launchpad.net/libindicator
+URL:            https://launchpad.net/libindicator
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
 # PATCH-FIX-OPENSUSE libindicator-disable-werror.patch hrvoje.senjan@gmail.com -- Disable -Werror.
 Patch0:         libindicator-disable-werror.patch
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libido3-0.1)
+BuildRequires:  pkgconfig(systemd)
 
 %description
 This library contains information to build indicators to go into
@@ -76,6 +77,14 @@ Requires:       %{soname_gtk2}%{sover} = %{version}
 %description -n %{soname_gtk2}-devel
 This package provides the development files required to build
 indicators and to go into the indicator applet.
+
+%package -n indicator-common
+Summary:        Indicator shared files
+Group:          System/Libraries
+
+%description -n indicator-common
+A package that has files needed to work with the indicators. This
+includes the systemd indicators-pre.target.
 
 %prep
 %setup -q -c
@@ -141,5 +150,8 @@ rm %{buildroot}%{_libdir}/libdummy-indicator*.so
 %{_includedir}/%{soname_gtk2}-0.4/
 %{_libdir}/%{soname_gtk2}.so
 %{_libdir}/pkgconfig/indicator-0.4.pc
+
+%files -n indicator-common
+%{_prefix}/lib/systemd/user/indicators-pre.target
 
 %changelog
