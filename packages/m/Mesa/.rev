@@ -4096,4 +4096,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Disable LTO on armv6 to fix build</comment>
     <requestid>797123</requestid>
   </revision>
+  <revision rev="378" vrev="250">
+    <srcmd5>e90f78ebb72f8bc8c4855003c8781ec4</srcmd5>
+    <version>unknown</version>
+    <time>1588450538</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.6
+  * fairly small release (a little bit of everything in here)
+
+- require llvm/clang 10</comment>
+    <requestid>799279</requestid>
+  </revision>
 </revisionlist>

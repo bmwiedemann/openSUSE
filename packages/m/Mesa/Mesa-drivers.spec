@@ -46,7 +46,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.0.5
+%define _version 20.0.6
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.0.5
+Version:        20.0.6
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -211,17 +211,17 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm-devel >= 9.0.0
+BuildRequires:  llvm-devel >= 10.0.0
 %else
-BuildRequires:  llvm9-devel
+BuildRequires:  llvm10-devel
 %endif
 %endif
 
 %if 0%{with_opencl}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  clang-devel >= 9.0.0
+BuildRequires:  clang-devel >= 10.0.0
 %else
-BuildRequires:  clang9-devel
+BuildRequires:  clang10-devel
 %endif
 BuildRequires:  libclc
 %endif
