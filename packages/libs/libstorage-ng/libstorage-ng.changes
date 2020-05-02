@@ -1,4 +1,22 @@
 --------------------------------------------------------------------
+Thu Apr 30 14:46:37 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#727
+- probe lvm snapshots
+- added unit test
+- work on probing lvm snapshots
+- 4.3.5
+
+--------------------------------------------------------------------
+Thu Apr 30 09:37:48 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#726
+- added unit test for probing LVM RAID
+- cleanup
+- extend testsuite
+- 4.3.4
+
+--------------------------------------------------------------------
 Tue Apr 28 13:17:06 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#725
