@@ -32,6 +32,7 @@ Source0:        https://download.gnome.org/sources/%{name}/1.22/%{name}-%{versio
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
+Source98:       macros.NetworkManager
 Source99:       NetworkManager-rpmlintrc
 
 # PATCH-FEATURE-OPENSUSE systemd-network-config.patch -- don't try to start NM under systemd if it is disabled in system configuration
@@ -235,10 +236,15 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/VPN
 mkdir -p %{buildroot}%{_localstatedir}/log/
 mkdir -p %{buildroot}%{_localstatedir}/lib/NetworkManager
+mkdir -p %{buildroot}%{_prefix}/lib/NetworkManager/VPN
 touch %{buildroot}%{_localstatedir}/log/NetworkManager
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/system-connections
 install -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/NetworkManager/
+# Install RPM macros to be consumed by plugins
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
+
 # We package this one as %%doc in the default location.
 rm %{buildroot}%{_datadir}/doc/NetworkManager/examples/server.conf
 
@@ -325,6 +331,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/NetworkManager
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
+%dir %{_prefix}/lib/NetworkManager/VPN
 %{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
 %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
 
@@ -338,6 +345,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libdir}/pkgconfig/libnm.pc
 %doc %{_datadir}/gtk-doc/html/NetworkManager/
 %doc %{_datadir}/gtk-doc/html/libnm/
+%{_rpmmacrodir}/macros.NetworkManager
 
 %files -n libnm0
 %{_libdir}/libnm.so.*

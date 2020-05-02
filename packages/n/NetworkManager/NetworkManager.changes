@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  1 08:31:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prepare the directory structure for the VPN modules. This is the
+  directory we instruct VPN services to be installed to as part of
+  pkg-config  --variable vpnservicedir libnm. It is this fair that
+  we also provide the directory layout.
+- Install RPM macros (macros.NetworkManager) as part of the -devel
+  package for plugins to get the relevant variables to consume.
+
+-------------------------------------------------------------------
 Thu Mar 12 15:48:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.10:

@@ -1660,4 +1660,17 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment></comment>
     <requestid>784407</requestid>
   </revision>
+  <revision rev="210" vrev="2">
+    <srcmd5>4c0d273884f11b0d47b5a382d737decb</srcmd5>
+    <version>1.22.10</version>
+    <time>1588450467</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare the directory structure for the VPN modules. This is the
+  directory we instruct VPN services to be installed to as part of
+  pkg-config  --variable vpnservicedir libnm. It is this fair that
+  we also provide the directory layout.
+- Install RPM macros (macros.NetworkManager) as part of the -devel
+  package for plugins to get the relevant variables to consume. (forwarded request 799431 from dimstar)</comment>
+    <requestid>799481</requestid>
+  </revision>
 </revisionlist>
