@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:36:56 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 0.24.4:
+  * portalocker and ipyparallel as optional dependencies
+  * Remove undefined line in expect stdin
+
+-------------------------------------------------------------------
 Thu Mar 12 20:35:48 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - add coreutils-doc as build dependency, testing calls man sleep

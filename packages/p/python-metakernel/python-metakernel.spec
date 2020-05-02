@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-metakernel
-Version:        0.24.3
+Version:        0.24.4
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
@@ -29,6 +29,12 @@ Source:         https://files.pythonhosted.org/packages/source/m/metakernel/meta
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-ipykernel
+Requires:       python-ipyparallel
+Requires:       python-pexpect >= 4.2
+Provides:       python-jupyter_metakernel = %{version}
+Obsoletes:      python-jupyter_metakernel < %{version}
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipyparallel}
@@ -37,16 +43,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
-Requires:       python-ipykernel
-Requires:       python-ipyparallel
-Requires:       python-pexpect >= 4.2
-Provides:       python-jupyter_metakernel = %{version}
-Obsoletes:      python-jupyter_metakernel < %{version}
-BuildArch:      noarch
 %ifpython3
 Provides:       jupyter-metakernel = %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -73,6 +72,7 @@ touch ~/.bashrc
 %files %{python_files}
 %doc CONTRIBUTORS.rst HISTORY.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/metakernel
+%{python_sitelib}/metakernel-%{version}-py*.egg-info
 
 %changelog
