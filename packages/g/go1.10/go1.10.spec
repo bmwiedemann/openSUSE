@@ -149,6 +149,11 @@ BuildRequires:  rpm >= 4.11.1
 BuildRequires:  gdb
 Requires(post):	update-alternatives
 Requires(postun):	update-alternatives
+# Needed on arm aarch64 to avoid
+# collect2: fatal error: cannot find 'ld'-
+%ifarch %arm aarch64
+Requires:       binutils-gold
+%endif
 Requires:       gcc
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}

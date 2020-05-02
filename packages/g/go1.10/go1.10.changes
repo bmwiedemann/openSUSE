@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:24:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires binutils-gold for %arm and aarch64 - boo#1170826
+
+-------------------------------------------------------------------
 Tue Jun 18 20:29:25 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
