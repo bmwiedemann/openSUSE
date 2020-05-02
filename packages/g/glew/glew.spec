@@ -1,7 +1,7 @@
 #
 # spec file for package glew
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # If you change so_ver, then you have to update baselibs.conf as well.
-%define so_ver 2_1
+%define so_ver 2_2
 Name:           glew
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        OpenGL Extension Wrangler Library
-License:        BSD-3-Clause AND GPL-2.0 AND MIT
+# was http://glew.sourceforge.net/
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
-Url:            http://glew.sourceforge.net/
-Source0:        https://github.com/nigels-com/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tgz
+URL:            https://github.com/nigels-com/glew
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
 BuildRequires:  pkgconfig
@@ -70,10 +71,10 @@ supported on the target platform. OpenGL core and extension
 functionality is exposed in a single header file.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make %{?_smp_mflags} POPT="%{optflags}" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
+%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
 
 %install
 make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
@@ -84,15 +85,17 @@ rm %{buildroot}%{_libdir}/*.a
 %postun -n libGLEW%{so_ver} -p /sbin/ldconfig
 
 %files
+%license LICENSE.txt
 %doc doc/*
-%{_bindir}/*info
+%{_bindir}/glewinfo
+%{_bindir}/visualinfo
 
 %files -n libGLEW%{so_ver}
-%{_libdir}/*.so.*
+%{_libdir}/libGLEW.so.*
 
 %files devel
 %{_includedir}/GL/
-%{_libdir}/*.so
+%{_libdir}/libGLEW.so
 %{_libdir}/pkgconfig/glew.pc
 
 %changelog
