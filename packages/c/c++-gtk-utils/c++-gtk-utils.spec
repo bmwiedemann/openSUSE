@@ -1,7 +1,7 @@
 #
 # spec file for package c++-gtk-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,63 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define         soname 2_2-0
+%global flavor @BUILD_FLAVOR@%{nil}
+%global soname 2_2-0
 
-Name:           c++-gtk-utils
-Version:        2.2.15
+%global srcname c++-gtk-utils
+
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%define pkgname %{srcname}
+%endif
+
+%if "%{flavor}" == "gtk2"
+%bcond_without gtk
+%define _gtk 2
+%define config_script configure-gtk2
+%define gtk_dev_pkg pkgconfig(gtk+-2.0)
+%define pkgname %{srcname}-gtk%{_gtk}
+%endif
+
+%if "%{flavor}" == "gtk3"
+%bcond_without gtk
+%define _gtk 3
+%define config_script configure
+%define gtk_dev_pkg pkgconfig(gtk+-3.0)
+%define pkgname %{srcname}-gtk%{_gtk}
+%endif
+
+%if "%{flavor}" == "gtk4"
+%bcond_without gtk
+%define _gtk 4
+%define config_script configure-gtk4
+%define gtk_dev_pkg pkgconfig(gtk4)
+%define pkgname %{srcname}-gtk%{_gtk}
+%endif
+
+%define libname libcxx-gtk-utils-%{_gtk}-%{soname}
+%define devname libcxx-gtk-utils-%{_gtk}-devel
+
+Name:           %{pkgname}
+Version:        2.2.19
 Release:        0
 Summary:        Lightweight library for GTK+ programs using C++
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            http://cxx-gtk-utils.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/%{version}/c++-gtk-utils-%{version}.tar.gz
+URL:            http://cxx-gtk-utils.sourceforge.net/
+Source0:        http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/%{version}/%{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM c++-gtk-utils-gtk4-3.98-fixes.patch badshah400@gmail.com -- Fix compilation against gtk4 >= 3.98; patch taken from upstream git commits
+Patch0:         c++-gtk-utils-gtk4-3.98-fixes.patch
+BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  guile-devel
-%if 0%{?favor_gtk2}
-%define         _gtk 2
-BuildRequires:  gtk2-devel
-%else
-%define         _gtk 3
-BuildRequires:  gtk3-devel
+%if %{with gtk}
+BuildRequires:  %{gtk_dev_pkg}
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a lightweight library containing a number of classes and
@@ -44,59 +77,63 @@ functions for programming GTK+ programs using C++ in POSIX (unix-like)
 environments, where the user does not want to use a full-on wrapper
 such as gtkmm or wxWidgets.
 
-%package -n libcxx-gtk-utils-%{_gtk}-%{soname}
+%package -n %{libname}
 Summary:        Lightweight library for GTK+ programs using C++
 Group:          System/Libraries
 
-%description -n libcxx-gtk-utils-%{_gtk}-%{soname}
+%description -n %{libname}
 This is a lightweight library containing a number of classes and
 functions for programming GTK+ programs using C++ in POSIX (unix-like)
 environments, where the user does not want to use a full-on wrapper
 such as gtkmm or wxWidgets.
 
-%package -n libcxx-gtk-utils-%{_gtk}-devel
+%package -n %{devname}
 Summary:        Lightweight library for GTK+ programs using C++ -- Development Files
 Group:          Development/Libraries/C and C++
-Requires:       libcxx-gtk-utils-%{_gtk}-%{soname} = %{version}
+Requires:       %{libname} = %{version}
 
-%description -n libcxx-gtk-utils-%{_gtk}-devel
+%description -n %{devname}
 This is a lightweight library containing a number of classes and
 functions for programming GTK+ programs using C++ in POSIX (unix-like)
 environments, where the user does not want to use a full-on wrapper
 such as gtkmm or wxWidgets.
 
 %prep
-%setup -q
+%autosetup -n %{srcname}-%{version} -p1
 
 %build
-%if 0%{?favor_gtk2}
-cp -a configure-gtk2 configure
-cp -a configure-gtk2.ac configure.ac
-%endif
+if [ "%{config_script}" != "configure" ]
+then
+  cp -a %{config_script} configure
+  cp -a %{config_script}.ac configure.ac
+fi
+
 %configure \
     --disable-static \
-    --docdir=%{_docdir}/%{name}
-make %{?_smp_flags}
+    --docdir=%{_docdir}/%{pkgname} \
+    %{?with_gtk:--with-gtk} \
+    %{!?with_gtk:--without-gtk} \
+    %{nil}
+%make_build
 
 %install
 %make_install
 # Clean up
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libcxx-gtk-utils-%{_gtk}-%{soname} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%postun -n libcxx-gtk-utils-%{_gtk}-%{soname} -p /sbin/ldconfig
-
-%files -n libcxx-gtk-utils-%{_gtk}-%{soname}
-%defattr(-,root,root,-)
-%doc COPYING NEWS
+%files -n %{libname}
+%license COPYING
+%doc NEWS
 %{_libdir}/libcxx-gtk-utils-%{_gtk}-2.2.so.*
 
-%files -n libcxx-gtk-utils-%{_gtk}-devel
-%defattr(-,root,root,-)
+%files -n %{devname}
 %doc ChangeLog
-%doc %{_docdir}/%{name}
+%doc %{_docdir}/%{pkgname}
 %{_includedir}/c++-gtk-utils-%{_gtk}-2.2/
 %{_libdir}/libcxx-gtk-utils-%{_gtk}-2.2.so
 %{_libdir}/pkgconfig/c++-gtk-utils-%{_gtk}-2.2.pc
+
 %changelog

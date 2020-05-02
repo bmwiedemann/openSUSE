@@ -235,4 +235,16 @@
     <comment>Update to version 2.2.15. (forwarded request 564162 from luc14n0)</comment>
     <requestid>572100</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cdb652f33b6df357422207ba2413a714</srcmd5>
+    <version>2.2.19</version>
+    <time>1588450634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.19:
+- Changes from versions 2.2.16 through 2.2.18: See installed ChangeLog file.
+- Convert to multibuild format to build flavours for gtk2, gtk3, and gtk4.
+- Add BuildRequires: autoconf which is needed when building gtk2 and gtk4 flavours where the configure script is modified before running %configure.
+- Add c++-gtk-utils-gtk4-3.98-fixes.patch to fix compilation against gtk4 &amp;gt;= 3.98; combined from upstream git master commits 3589475, 687abc, 847e9b, and 97eb26 and rebased to apply cleanly using quilt. (forwarded request 799280 from badshah400)</comment>
+    <requestid>799473</requestid>
+  </revision>
 </revisionlist>
