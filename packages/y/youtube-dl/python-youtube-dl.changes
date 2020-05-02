@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  2 18:41:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.05.03
+  * extractor/common] Skip malformed ISM manifest XMLs while
+    extracting ISM formats
+  * soundcloud: Extract AAC format
+  * prosiebensat1: Extract series metadata
+  * youtube: Use redirected video id if any
+
+-------------------------------------------------------------------
 Mon Mar 23 20:39:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.03.24

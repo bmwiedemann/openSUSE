@@ -1225,4 +1225,12 @@
     <comment>- Update to release 2020.03.24</comment>
     <requestid>787673</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3118af2fb6fbc4d100e38cc4ed3427dc</srcmd5>
+    <version>2020.05.03</version>
+    <time>1588450742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.05.03</comment>
+    <requestid>799719</requestid>
+  </revision>
 </revisionlist>
