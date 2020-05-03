@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  2 01:03:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.1.1
+  * Improve quiz explanation tooltip layout.
+  * Fix possible crash in theme editor.
+  * Other minor bug fixes and improvements.
+- Remove 0002-fix-directory-open-via-portals.patch
+  * this release already contains the fix
+
+-------------------------------------------------------------------
 Sat Apr 25 14:59:16 UTC 2020 - Markus S <kamikazow@opensuse.org>
 
 - Update to 2.1.0

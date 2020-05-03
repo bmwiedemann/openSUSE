@@ -31,7 +31,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -44,8 +44,6 @@ Source1:        range-v3-master.zip
 Patch0:         0000-gtk2-default.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-range.patch
-# PATCH-FIX-UPSTREAM Fix for opening directories when using portals
-Patch2:         0002-fix-directory-open-via-portals.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -150,7 +148,6 @@ mv %{_builddir}/Libraries/range-v3-master %{_builddir}/Libraries/range-v3
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %limit_build -m 2048
