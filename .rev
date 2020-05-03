@@ -35,4 +35,12 @@
 - Update %description from README.rst (forwarded request 767745 from glaubitz)</comment>
     <requestid>767834</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b561ed6e658485cf0e39985d859ebb1e</srcmd5>
+    <version>3.0.0</version>
+    <time>1588538738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790985</requestid>
+  </revision>
 </revisionlist>
