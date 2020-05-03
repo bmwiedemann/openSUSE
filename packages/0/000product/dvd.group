@@ -281,6 +281,7 @@
     <package name="cabextract" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="calendarsupport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="calendarsupport-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="calligra-extras-filemanagertemplates" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="capi4hylafax" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
@@ -2526,7 +2527,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler98" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler99" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

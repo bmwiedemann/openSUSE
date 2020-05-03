@@ -1750,7 +1750,7 @@ unsorted:
   - cmark-devel 
   - cmis-client 
   - cmpi-bindings-perl 
-  - cmpi-bindings-pywbem 
+  - cmpi-bindings-py3wbem 
   - cmpi-bindings-ruby 
   - cmrt-devel 
   - cmuclmtk 
@@ -5789,6 +5789,7 @@ unsorted:
   - include-what-you-use-tools 
   - indent 
   - indent-lang 
+  - indicator-common 
   - indriya 
   - indriya-javadoc 
   - ineffassign 
@@ -7348,8 +7349,8 @@ unsorted:
   - libGIMPACTUtils2_89 
   - libGLC-devel 
   - libGLC0 
-  - libGLEW2_1 
-  - libGLEW2_1-32bit: [x86_64] 
+  - libGLEW2_2 
+  - libGLEW2_2-32bit: [x86_64] 
   - libGLU1-32bit: [x86_64] 
   - libGLw-devel 
   - libGLw1 
@@ -8731,8 +8732,12 @@ unsorted:
   - libcwnn0 
   - libcxsc2 
   - libcxsparse3 
+  - libcxx-gtk-utils-2-2_2-0 
+  - libcxx-gtk-utils-2-devel 
   - libcxx-gtk-utils-3-2_2-0 
   - libcxx-gtk-utils-3-devel 
+  - libcxx-gtk-utils-4-2_2-0 
+  - libcxx-gtk-utils-4-devel 
   - libcxxtools-bin9 
   - libcxxtools-http9 
   - libcxxtools-json9 
@@ -10520,7 +10525,7 @@ unsorted:
   - libmysofa1-32bit: [x86_64] 
   - libmysqlcppconn-devel 
   - libmysqlcppconn7 
-  - libmysqlcppconn8-1 
+  - libmysqlcppconn8-2 
   - libmysqlcppconn8-devel 
   - libnanomsg5 
   - libnautilus-extension1-32bit: [x86_64] 
@@ -11106,7 +11111,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler98-32bit: [x86_64] 
+  - libpoppler99-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -18440,7 +18445,6 @@ unsorted:
   - python-gtk-devel 
   - python-gtk-doc 
   - python-gunicorn-doc 
-  - python-hachoir-core 
   - python-happybase-doc 
   - python-heatclient-doc 
   - python-idle 
@@ -18455,9 +18459,7 @@ unsorted:
   - python-lammps 
   - python-libaddrxlat 
   - python-libcomps-doc 
-  - python-libexe 
   - python-libkdumpfile 
-  - python-libpff 
   - python-libteam 
   - python-lmiwbem 
   - python-logutils-doc 
@@ -18586,7 +18588,6 @@ unsorted:
   - python2-antlr 
   - python2-appindicator 
   - python2-arabic-reshaper 
-  - python2-argcomplete 
   - python2-aws-sam-translator 
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
@@ -18604,7 +18605,6 @@ unsorted:
   - python2-evemu 
   - python2-geopy 
   - python2-gobject-Dee 
-  - python2-google-cloud-storage 
   - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
@@ -20042,6 +20042,7 @@ unsorted:
   - python3-libevt 
   - python3-libevtx 
   - python3-libewf 
+  - python3-libexe 
   - python3-libfdt 
   - python3-libfsapfs 
   - python3-libfsntfs 
@@ -20061,6 +20062,7 @@ unsorted:
   - python3-libolecf 
   - python3-liborcus 
   - python3-libpamtest 
+  - python3-libpff 
   - python3-libpfm 
   - python3-libprelude 
   - python3-libpreludedb 
