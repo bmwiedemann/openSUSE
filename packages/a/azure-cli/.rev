@@ -123,4 +123,12 @@
 - Update BuildRequires and Requires from setup.py</comment>
     <requestid>783715</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8e9fb1e17ecf1b7338c73cae3ce0a009</srcmd5>
+    <version>2.3.1</version>
+    <time>1588538767</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>794576</requestid>
+  </revision>
 </revisionlist>

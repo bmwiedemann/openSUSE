@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -52,8 +52,8 @@ BuildRequires:  azure-cli-telemetry >= 1.0.2
 BuildRequires:  fdupes
 BuildRequires:  python3-Fabric >= 2.4
 BuildRequires:  python3-PyYAML >= 5.1
-BuildRequires:  python3-azure-batch < 9.0
-BuildRequires:  python3-azure-batch >= 8.0
+BuildRequires:  python3-azure-batch < 10.0
+BuildRequires:  python3-azure-batch >= 9.0
 BuildRequires:  python3-azure-cosmos >= 3.0.2
 BuildRequires:  python3-azure-datalake-store >= 0.0.48
 BuildRequires:  python3-azure-functions-devops-build >= 0.0.22
@@ -71,11 +71,11 @@ BuildRequires:  python3-azure-mgmt-billing >= 0.2
 BuildRequires:  python3-azure-mgmt-botservice >= 0.2.0
 BuildRequires:  python3-azure-mgmt-cdn >= 4.1.0rc1
 BuildRequires:  python3-azure-mgmt-cognitiveservices >= 5.0.0
-BuildRequires:  python3-azure-mgmt-compute >= 11.0
+BuildRequires:  python3-azure-mgmt-compute >= 12.0
 BuildRequires:  python3-azure-mgmt-consumption >= 2.0
 BuildRequires:  python3-azure-mgmt-containerinstance >= 1.4
-BuildRequires:  python3-azure-mgmt-containerregistry >= 3.0.0rc9
-BuildRequires:  python3-azure-mgmt-containerservice >= 8.1.0
+BuildRequires:  python3-azure-mgmt-containerregistry >= 3.0.0rc11
+BuildRequires:  python3-azure-mgmt-containerservice >= 9.0.0
 BuildRequires:  python3-azure-mgmt-cosmosdb >= 0.11.0
 BuildRequires:  python3-azure-mgmt-datalake-analytics >= 0.2.1
 BuildRequires:  python3-azure-mgmt-datalake-store >= 0.5.0
@@ -85,12 +85,12 @@ BuildRequires:  python3-azure-mgmt-devtestlabs >= 2.2
 BuildRequires:  python3-azure-mgmt-dns >= 2.1
 BuildRequires:  python3-azure-mgmt-eventgrid >= 2.2
 BuildRequires:  python3-azure-mgmt-eventhub >= 3.0
-BuildRequires:  python3-azure-mgmt-hdinsight >= 1.3.0
+BuildRequires:  python3-azure-mgmt-hdinsight >= 1.4.0
 BuildRequires:  python3-azure-mgmt-imagebuilder >= 0.2.1
-BuildRequires:  python3-azure-mgmt-iotcentral >= 2.0.0
-BuildRequires:  python3-azure-mgmt-iothub >= 0.8.2
+BuildRequires:  python3-azure-mgmt-iotcentral >= 3.0.0
+BuildRequires:  python3-azure-mgmt-iothub >= 0.11.0
 BuildRequires:  python3-azure-mgmt-iothubprovisioningservices >= 0.2.0
-BuildRequires:  python3-azure-mgmt-keyvault >= 2.1
+BuildRequires:  python3-azure-mgmt-keyvault >= 2.2.0
 BuildRequires:  python3-azure-mgmt-kusto >= 0.3.0
 BuildRequires:  python3-azure-mgmt-loganalytics >= 0.2
 BuildRequires:  python3-azure-mgmt-managedservices >= 1.0
@@ -100,11 +100,11 @@ BuildRequires:  python3-azure-mgmt-marketplaceordering >= 0.1
 BuildRequires:  python3-azure-mgmt-media >= 1.1.1
 BuildRequires:  python3-azure-mgmt-monitor >= 0.7.0
 BuildRequires:  python3-azure-mgmt-msi >= 0.2
-BuildRequires:  python3-azure-mgmt-netapp >= 0.7.0
+BuildRequires:  python3-azure-mgmt-netapp >= 0.8.0
 BuildRequires:  python3-azure-mgmt-network >= 9.0.0
 BuildRequires:  python3-azure-mgmt-policyinsights >= 0.4.0
 BuildRequires:  python3-azure-mgmt-privatedns >= 0.1.0
-BuildRequires:  python3-azure-mgmt-rdbms >= 2.0.0
+BuildRequires:  python3-azure-mgmt-rdbms >= 2.2.0
 BuildRequires:  python3-azure-mgmt-recoveryservices >= 0.4.0
 BuildRequires:  python3-azure-mgmt-recoveryservicesbackup >= 0.6.0
 BuildRequires:  python3-azure-mgmt-redis >= 7.0.0rc1
@@ -116,9 +116,9 @@ BuildRequires:  python3-azure-mgmt-security >= 0.1.0
 BuildRequires:  python3-azure-mgmt-servicebus >= 0.6.0
 BuildRequires:  python3-azure-mgmt-servicefabric >= 0.4.0
 BuildRequires:  python3-azure-mgmt-signalr >= 0.3.0
-BuildRequires:  python3-azure-mgmt-sql >= 0.15.0
+BuildRequires:  python3-azure-mgmt-sql >= 0.18.0
 BuildRequires:  python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
-BuildRequires:  python3-azure-mgmt-storage >= 8.0.0
+BuildRequires:  python3-azure-mgmt-storage >= 9.0.0
 BuildRequires:  python3-azure-mgmt-trafficmanager >= 0.51.0
 BuildRequires:  python3-azure-mgmt-web >= 0.44.0
 BuildRequires:  python3-azure-multiapi-storage >= 0.2.4
@@ -130,8 +130,8 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-javaproperties >= 0.5.1
 BuildRequires:  python3-jsmin >= 2.2.2
 BuildRequires:  python3-jsondiff >= 1.2.0
-BuildRequires:  python3-knack >= 0.6
-BuildRequires:  python3-mock >= 2.0
+BuildRequires:  python3-knack >= 0.7.0~rc1
+BuildRequires:  python3-mock >= 4.0
 BuildRequires:  python3-paramiko >= 2.0.8
 BuildRequires:  python3-psutil >= 5.6
 BuildRequires:  python3-pyOpenSSL >= 17.1.0
@@ -155,8 +155,8 @@ Requires:       azure-cli-telemetry < 2.0
 Requires:       azure-cli-telemetry >= 1.0.2
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyYAML >= 5.1
-Requires:       python3-azure-batch < 9.0
-Requires:       python3-azure-batch >= 8.0
+Requires:       python3-azure-batch < 10.0
+Requires:       python3-azure-batch >= 9.0
 Requires:       python3-azure-cosmos >= 3.0.2
 Requires:       python3-azure-datalake-store >= 0.0.48
 Requires:       python3-azure-functions-devops-build >= 0.0.22
@@ -231,7 +231,7 @@ Requires:       python3-cryptography >= 2.3.1
 Requires:       python3-javaproperties >= 0.5.1
 Requires:       python3-jsmin >= 2.2.2
 Requires:       python3-jsondiff >= 1.2.0
-Requires:       python3-knack >= 0.6
+Requires:       python3-knack >= 0.7.0~rc1
 Requires:       python3-mock >= 2.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-psutil >= 5.6
