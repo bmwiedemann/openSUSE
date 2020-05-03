@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  3 07:34:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.0:
+  * No changelog
+- Remove no longer needed pytest-parallel-pr63-tblib-pickling.patch
+
+-------------------------------------------------------------------
 Fri Mar 20 21:48:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - pytest-parallel-pr63-tblib-pickling.patch to fix failing unit test

@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>787075</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ac36c02afb572f4e7b8244a6d00b722</srcmd5>
+    <version>0.1.0</version>
+    <time>1588538832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.0:
+  * No changelog
+- Remove no longer needed pytest-parallel-pr63-tblib-pickling.patch</comment>
+    <requestid>799797</requestid>
+  </revision>
 </revisionlist>

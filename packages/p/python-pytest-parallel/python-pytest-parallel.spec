@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-parallel
-Version:        0.0.10
+Version:        0.1.0
 Release:        0
 Summary:        Pytest plugin for parallel and concurrent testing
 License:        MIT
 URL:            https://github.com/browsertron/pytest-parallel
 Source:         https://github.com/browsertron/pytest-parallel/archive/%{version}.tar.gz#/pytest-parallel-%{version}.tar.gz
-Patch0:         pytest-parallel-pr63-tblib-pickling.patch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,7 +44,6 @@ A pytest plugin for parallel and concurrent testing.
 
 %prep
 %setup -q -n pytest-parallel-%{version}
-%patch0 -p1
 
 %build
 %python_build
