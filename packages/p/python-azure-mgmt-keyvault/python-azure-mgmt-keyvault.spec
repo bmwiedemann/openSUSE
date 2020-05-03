@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-keyvault
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Management Client Library
 License:        MIT
