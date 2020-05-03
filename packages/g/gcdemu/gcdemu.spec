@@ -18,21 +18,23 @@
 
 %define __requires_exclude typelib\\(AppIndicator(|3)\\)
 Name:           gcdemu
-Version:        3.2.1
+Version:        3.2.4
 Release:        0
 Summary:        GTK+ application for controlling CDEmu daemon
 License:        GPL-2.0+
 Group:          System/GUI/Other
 Url:            http://cdemu.sf.net/about/gcdemu
 Source0:        http://downloads.sf.net/cdemu/%{name}-%{version}.tar.bz2
+BuildRequires:  gdk-pixbuf
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  gettext >= 0.15
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool >= 0.21
 BuildRequires:  python3 >= 3.4
-BuildRequires:  python-gobject >= 3.0.0
+BuildRequires:  python3-gobject >= 3.0.0
 BuildRequires:  update-desktop-files
 Requires:       cdemu-daemon >= 3.0.0
+Requires:       python3-gobject-Gdk
 Recommends:     %{name}-lang
 Recommends:     typelib(AppIndicator3)
 BuildArch:      noarch
