@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  2 20:27:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.15.2:
+  * Connect to dashboard when address provided (GH#3758) Tom
+    Augspurger
+  * Move test_gpu_metrics test (GH#3721) Tom Augspurger
+  * Nanny closing worker on KeyboardInterrupt (GH#3747) Mads
+    R. B. Kristensen
+  * Replace OrderedDict with dict in scheduler (GH#3740) Matthew
+    Rocklin
+  * Fix exception handling typo (GH#3751) Jonas Haag
+
+- changes from version 2.15.1:
+  * Ensure BokehTornado uses prefix (GH#3746) James Bourbeau
+  * Warn if cluster closes before starting (GH#3735) Matthew Rocklin
+  * Memoryview serialisation (GH#3743) Martin Durant
+  * Allows logging config under distributed key (GH#2952) Dillon
+    Niederhut
+
+-------------------------------------------------------------------
 Sat Apr 25 16:23:42 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.15.0:
