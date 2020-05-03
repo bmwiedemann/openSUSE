@@ -1,0 +1,22 @@
+diff --git a/libbg/bgx.c b/libbg/bgx.c
+index 3be9d18..9cc7cbf 100644
+--- a/libbg/bgx.c
++++ b/libbg/bgx.c
+@@ -40,17 +40,8 @@
+  * once meant as an example program on how to deal with "libbg.a" (and in
+  * turn with "libff.a") finally serving as bs1770gain's implementation.
+  */
+-#if 1 // [
+-#if 1 // [
+-#define BG_TEAM_WHITE \
+-    " #TeamWhite"
+-#else // ] [
+ #define BG_TEAM_WHITE \
+     ""
+-#endif // ]
+-#define BG_NANOS_GIGANTUM_HUMERIS_INSIDENTES \
+-    "Nanos gigantum humeris insidentes." BG_TEAM_WHITE "\n"
+-#endif // ]
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ static const ffchar_t *bg_version(const ffchar_t *path, FILE *f)
