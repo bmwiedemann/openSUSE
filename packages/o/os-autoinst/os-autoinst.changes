@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 03 03:24:32 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1588309862.a289607f:
+  * Include command in error message of osutils::runcmd
+
+-------------------------------------------------------------------
 Thu Apr 30 09:45:23 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1588239900.85fa4f12:
