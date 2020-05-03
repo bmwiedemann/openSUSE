@@ -18,13 +18,13 @@
 
 
 Name:           openmw
-Version:        0.45.0
+Version:        0.45+git.20200318
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
-URL:            http://www.openmw.org
-Source:         https://github.com/OpenMW/%{name}/archive/%{name}-%{version}.tar.gz
+URL:            https://www.openmw.org
+Source:         openmw-0.45+git.20200318.tar.xz
 Source2:        %{name}.rpmlintrc
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
@@ -32,6 +32,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
@@ -85,8 +86,8 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
  * customisable GUI
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt 
+%setup -q
+cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
 STATIC_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
@@ -109,7 +110,7 @@ done
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
        -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %cmake_install
@@ -162,6 +163,7 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %config %{_sysconfdir}/%{name}/version
 %{_bindir}/bsatool
 %{_bindir}/esmtool
+%{_bindir}/niftest
 %{_bindir}/%{name}
 %{_bindir}/%{name}-essimporter
 %{_bindir}/%{name}-iniimporter
