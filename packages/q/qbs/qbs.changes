@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  3 06:55:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.16.0. Check the changes-1.16.0.md file for the
+  complete changelog.
+  * List properties in modules are now merged according to
+    inter-module dependencies.
+  * The clang-cl toolchain module got more features and flexibility.
+  * Improved support for recent Qt versions
+  * A new ConanfileProbe allows better and more flexible
+    integration of Qbs and the Conan package manager.
+
+-------------------------------------------------------------------
 Thu Dec 26 08:30:23 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.15.0. Check the changes-1.15.0.md file for the complete changelog.

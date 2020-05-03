@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define qt5_version 5.11.0
 Name:           qbs
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Modern build tool for software projects
 # Legal:
@@ -84,7 +84,7 @@ makeopts=""
     QBS_PLUGINS_INSTALL_DIR=%{_libdir} \
     CONFIG+=qbs_enable_project_file_updates
 
-make %{?_smp_mflags} $makeopts
+%make_build $makeopts
 
 %install
 %qmake5_install
@@ -109,7 +109,7 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 
 %files
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
-%doc README changelogs/changes-%{version}.md
+%doc README.md changelogs/changes-%{version}.md
 %dir %{_datadir}/%{name}/
 %dir %{_libdir}/%{name}/
 %dir %{_libdir}/%{name}/plugins/

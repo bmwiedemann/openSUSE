@@ -77,4 +77,12 @@ Initial import of qbs 1.10.1
     <comment>Update to 1.15.0</comment>
     <requestid>759297</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cab76eb322ce866ba5677e4a2fb37671</srcmd5>
+    <version>1.16.0</version>
+    <time>1588538858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799844</requestid>
+  </revision>
 </revisionlist>
