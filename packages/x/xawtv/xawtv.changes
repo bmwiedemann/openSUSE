@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:40:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on %arm and aarch64 to fix build
+
+-------------------------------------------------------------------
 Tue Apr  9 20:42:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add fix-build-with-recent-glibc.patch

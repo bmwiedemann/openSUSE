@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch %arm aarch64
+%define _lto_cflags %{nil}
+%endif
 
 Name:           xawtv
 Version:        3.103
