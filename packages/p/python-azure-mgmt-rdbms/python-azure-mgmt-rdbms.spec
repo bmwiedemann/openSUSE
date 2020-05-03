@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-rdbms
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        Microsoft Azure RDBMS Management Client Library
 License:        MIT
