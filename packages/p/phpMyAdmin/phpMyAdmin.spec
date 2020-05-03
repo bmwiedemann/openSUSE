@@ -167,22 +167,25 @@ sed -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
 # removing tmp/twig before ap_docroot change
 # a new one will be created anyway in new ap_docroot (like after a clean install)
 if [ -d "%{ap_docroot_old}/%{name}/tmp" ]; then
-  echo "removing %{ap_docroot_old}/%{name}/tmp for ap_docroot change"
+  echo "info: removing %{ap_docroot_old}/%{name}/tmp for ap_docroot change"
   rm -rf "%{ap_docroot_old}/%{name}/tmp" || :
 fi
 
 %preun
 if [ $1 -eq 0 ]; then
-  echo "removing %{ap_docroot}/%{name}/tmp for clean uninstall"
+if [ -d "%{ap_docroot}/%{name}/tmp" ]; then
+  echo "info: removing %{ap_docroot}/%{name}/tmp for clean uninstall"
   rm -rf "%{ap_docroot}/%{name}/tmp" || :
+fi
 fi
 
 %post
-# on `rpm -ivh` PARAM is 1
-# on `rpm -Uvh` PARAM is 2
+# FIRST_ARG values on
+# uninstall:    0
+# install:      1
+# update:       2
 # set PmaAbsoluteUri ### generate blowfish secret
-sed -i -e "s,@FQDN@,$(cat %{_sysconfdir}/HOSTNAME)," \
- -e "s/\\\$cfg\['blowfish_secret'\] = ''/\$cfg['blowfish_secret'] = '`pwgen -s -1 46`'/" %{pma_config}
+sed -i -e "s/\\\$cfg\['blowfish_secret'\] = ''/\$cfg['blowfish_secret'] = '`pwgen -s -1 46`'/" %{pma_config}
 # enable required apache modules
 if [ -x %{_sbindir}/a2enmod ]; then
   a2enmod -q version || a2enmod version
@@ -191,6 +194,7 @@ if [ -x %{_sbindir}/a2enmod ]; then
   # php_version=$(awk -F[." "] '/cli/ {print $2}' <<< $(php -v))
   php_version=$(php -v | sed -n 's/^PHP\ \([[:digit:]]\+\)\..*$/\1/p')
   if [[ -n ${php_version} ]] && start_apache2 -V | grep -q prefork; then
+    echo "info: adding php${php_version} to APACHE_MODULES"
     a2enmod -q "php${php_version}" || a2enmod "php${php_version}"
   fi
 fi
@@ -198,6 +202,7 @@ fi
 if [ -x %{_sbindir}/a2enflag ]; then
   flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
   if [ $flag_find -eq 0 ]; then
+    echo "info: adding %{name} to APACHE_SERVER_FLAGS"
     a2enflag %{name}
   fi
 fi
@@ -217,12 +222,16 @@ fi
 #systemctl try-restart apache2 &>/dev/null
 
 %postun
+# only do on uninstall, not on update
+if [ $1 -eq 0 ]; then
 # disable phpMyAdmin flag
 if [ -x %{_sbindir}/a2enflag ]; then
   flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
   if [ $flag_find -eq 1 ]; then
+    echo "info: removing %{name} from APACHE_SERVER_FLAGS"
     a2enflag -d %{name}
   fi
+fi
 fi
 %restart_on_update apache2
 #systemctl try-restart apache2 &>/dev/null
