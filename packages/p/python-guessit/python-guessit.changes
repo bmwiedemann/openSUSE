@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  3 13:55:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.1.1
+  * Drop python `3.4` support
+  * Use SafeLoader with `yaml.load()`
+
+-------------------------------------------------------------------
 Tue Sep  3 06:44:13 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.1.0

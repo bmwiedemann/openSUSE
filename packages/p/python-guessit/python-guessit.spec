@@ -1,7 +1,7 @@
 #
 # spec file for package python-guessit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-guessit
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
@@ -48,7 +48,7 @@ a video using its filename only. This matcher works with both movies
 and TV shows episodes.
 
 %prep
-%setup -q -n guessit-%{version}
+%autosetup -n guessit-%{version}
 # Remove shebang from non-executable files
 for i in {'audio_codec','bit_rate','bonus','cds','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
 sed -i -e "1d" "guessit/rules/properties/$i.py"
