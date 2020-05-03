@@ -17,10 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 # Tests natually require internet
 %bcond_with test
 Name:           python-pytest-check-links
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
@@ -34,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-docutils
 Requires:       python-html5lib
 Requires:       python-pytest >= 2.8
-Requires:       python-six
+Requires:       python-requests
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-jupyter_nbconvert
@@ -45,7 +46,7 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jupyter_nbconvert}
 BuildRequires:  %{python_module jupyter_nbformat}
 BuildRequires:  %{python_module pytest >= 2.8}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module requests}
 %endif
 %python_subpackages
 

@@ -33,4 +33,15 @@
   * no changelog</comment>
     <requestid>798142</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13b37daab4c48e447f07cc9f9c777444</srcmd5>
+    <version>0.4.0</version>
+    <time>1588538830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Drop py27 support and add badges #15
+  * Use requests(-cache) #12
+  * Add checking of self- and local html anchors #10</comment>
+    <requestid>799795</requestid>
+  </revision>
 </revisionlist>

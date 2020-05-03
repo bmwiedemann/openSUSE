@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 07:27:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Drop py27 support and add badges #15
+  * Use requests(-cache) #12
+  * Add checking of self- and local html anchors #10
+
+-------------------------------------------------------------------
 Mon Apr 27 10:25:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.4:
