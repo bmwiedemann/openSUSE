@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  3 15:35:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-04-R3
+  * fix a possible crash in Kismet and associated tools when
+    compiled with GCC; there are no other changes.
+
+-------------------------------------------------------------------
 Thu Apr 23 17:33:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2020-04-R2

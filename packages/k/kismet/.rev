@@ -402,4 +402,14 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>798200</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f181224fe434762a5116855737c7d1c5</srcmd5>
+    <version>2020_04_R3</version>
+    <time>1588538902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-04-R3
+  * fix a possible crash in Kismet and associated tools when
+    compiled with GCC; there are no other changes. (forwarded request 799860 from mnhauke)</comment>
+    <requestid>799862</requestid>
+  </revision>
 </revisionlist>
