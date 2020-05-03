@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        3.36.1
+Version:        3.36.2
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        LGPL-2.1-or-later AND CC-BY-3.0 AND BSD-2-Clause
@@ -71,8 +71,8 @@ may be read without having to navigate between messages.
 
 %build
 %meson \
-    -Dtnef-support=false \
-    %{nil}
+	-Dtnef-support=false \
+	%{nil}
 %meson_build
 
 %install
@@ -87,8 +87,8 @@ may be read without having to navigate between messages.
 %{_datadir}/help/C/%{name}
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_libdir}/libgeary-client.so
 %dir %{_libdir}/%{name}
+%{_libdir}/%{name}/libgeary-client*.so
 %{_libdir}/%{name}/plugins/
 %dir %{_libdir}/%{name}/web-extensions
 %{_libdir}/%{name}/web-extensions/libgeary-web-process.so

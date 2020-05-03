@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 09:13:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Client library now installed to private lib sub-directory.
+  + Allow downstream packagers set their package's version number.
+  + Numerous bug fixes and user interface improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:00:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:
