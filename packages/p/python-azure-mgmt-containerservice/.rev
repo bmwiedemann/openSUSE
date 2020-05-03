@@ -79,4 +79,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767809</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>64e9be887c286213962df59c53adfca3</srcmd5>
+    <version>9.0.1</version>
+    <time>1588538763</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>793750</requestid>
+  </revision>
 </revisionlist>
