@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.11.2
 Release:        0
 Summary:        Tool for transferring files through a secure channel
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/warner/magic-wormhole
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Automat}
@@ -51,8 +50,9 @@ Requires:       python-service_identity
 Requires:       python-spake2 >= 0.8
 Requires:       python-tqdm >= 4.13.0
 Requires:       python-txtorcon >= 0.19.3
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 Suggests:       python-magic-wormhole-transit-relay
-Suggests:       python-mock
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,16 +72,21 @@ the code, which must then be typed into the receiving machine.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone %{buildroot}%{_bindir}/wormhole
+%python_clone -a %{buildroot}%{_bindir}/wormhole
 
 %check
 %pytest src/wormhole/test
 
+%post
+%python_install_alternative wormhole
+
+%postun
+%python_uninstall_alternative wormhole
+
 %files %{python_files}
 %license LICENSE
 %doc NEWS.md README.md
-%{_bindir}/wormhole-%{python_bin_suffix}
-%python3_only %{_bindir}/wormhole
+%python_alternative %{_bindir}/wormhole
 %{python_sitelib}/*
 
 %changelog
