@@ -10,7 +10,6 @@
     <package name="cracklib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -20,7 +19,7 @@
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -209,6 +208,7 @@
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="dhcp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="discover" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="discover-backend-flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="distribution-logos-openSUSE-MicroOS" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -875,7 +875,7 @@
     <package name="libpolkit0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="libpoppler98" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libpoppler99" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
