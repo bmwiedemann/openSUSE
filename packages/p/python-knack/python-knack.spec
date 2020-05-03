@@ -1,7 +1,7 @@
 #
 # spec file for package python-knack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define realver 0.7.0rc1
 Name:           python-knack
-Version:        0.6.3
+Version:        0.7.0~rc1
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/microsoft/knack
-Source:         https://github.com/Microsoft/knack/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{realver}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module colorama}
@@ -37,7 +39,6 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module vcrpy}
 BuildRequires:  fdupes
-BuildRequires:  python-enum34
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-argcomplete
@@ -47,16 +48,13 @@ Requires:       python-pygments
 Requires:       python-six
 Requires:       python-tabulate
 BuildArch:      noarch
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
 A Command-Line Interface framework
 
 %prep
-%setup -q -n knack-%{version}
+%setup -q -n knack-%{realver}
 
 %build
 %python_build

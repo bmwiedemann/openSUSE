@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:30:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove patch as the test fail properly as the pkg does not support
+  python2:
+  * k_skip-broken-tests.patch
+- Fix the version field
+
+-------------------------------------------------------------------
+Thu Apr  2 15:48:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0rc1
+  * Allow disabling color (#171)
+  * Support yaml and yamlc output (#173)
+  * Drop support for python 2 and 3.5 (#174)
+  * Support --only-show-errors to disable warnings (#179)
+  * Add experimental tag (#180)
+- Add patch to skip two tests that currently fail on openSUSE
+  * k_skip-broken-tests.patch
+
+-------------------------------------------------------------------
 Wed Jul 24 08:22:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.6.3:
