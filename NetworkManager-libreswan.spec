@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-libreswan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,9 +74,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS ChangeLog NEWS
 %config %{_sysconfdir}/dbus-1/system.d/nm-libreswan-service.conf
 %{_libdir}/NetworkManager/libnm-vpn-plugin-libreswan.so
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-libreswan-service.name
+%{_vpnservicedir}/nm-libreswan-service.name
 %{_libexecdir}/nm-libreswan-service
 %{_libexecdir}/nm-libreswan-service-helper
 %{_mandir}/man5/nm-settings-libreswan.5%{ext_man}

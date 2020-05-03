@@ -41,4 +41,13 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment>Eliminate the -lang recommends (forwarded request 767087 from dimstar)</comment>
     <requestid>767326</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c607234a499d6b08c51a5e50ba8c0289</srcmd5>
+    <version>1.2.12</version>
+    <time>1588538783</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799446 from dimstar)</comment>
+    <requestid>799486</requestid>
+  </revision>
 </revisionlist>
