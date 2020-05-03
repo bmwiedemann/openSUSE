@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  3 17:25:05 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Add pulseaudio support to build and use PulseVolume widget 
+  * Make package arch dependent, noarch removed
+  * Add libpulse-devel to build requirements
+  * Add pulseaudio to recommends
+- Add support for tests
+  * Change source url to GitHub (contain tests)
+  * Schedule tests with test condition only
+  * Extend build requirements section with test dependencies
+  * Exclude test_images tests
+- Add update-desktop-files to build requirements and apply macro
+  %suse_update_desktop_file on qtile.desktop
+
+-------------------------------------------------------------------
 Tue Apr 14 15:17:22 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Update to version 0.15.1:

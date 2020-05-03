@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with test
 Name:           qtile
 Version:        0.15.1
 Release:        0
@@ -24,9 +25,10 @@ Summary:        A pure-Python tiling window manager
 License:        MIT AND GPL-3.0-or-later
 Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
-Source:         https://files.pythonhosted.org/packages/source/q/qtile/qtile-%{version}.tar.gz
+Source:         https://github.com/qtile/qtile/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  libpulse-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairocffi >= 1.0.2
 BuildRequires:  python3-cffi >= 1.11.5
@@ -34,6 +36,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  python3-xcffib >= 0.8.1
+BuildRequires:  update-desktop-files
 Requires:       python3-cairocffi >= 0.9.0
 Requires:       python3-cairocffi-pixbuf >= 0.9.0
 Requires:       python3-cffi >= 1.11.5
@@ -42,6 +45,7 @@ Requires:       python3-xcffib >= 0.8.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     libxcb-cursor0
+Recommends:     pulseaudio
 Recommends:     python3-iwlib
 Recommends:     python3-keyring
 Recommends:     python3-psutil
@@ -50,7 +54,31 @@ Recommends:     python3-python-mpd2
 Recommends:     python3-pyxdg
 Suggests:       python3-jupyter_console
 Suggests:       python3-jupyter_ipykernel
-BuildArch:      noarch
+%if %{with test}
+BuildRequires:  ImageMagick
+BuildRequires:  python3-cairocffi-pixbuf >= 0.9.0
+BuildRequires:  python3-curses
+BuildRequires:  python3-dbus-python
+BuildRequires:  python3-flake8
+BuildRequires:  python3-iwlib
+BuildRequires:  python3-jupyter_console
+BuildRequires:  python3-jupyter_ipykernel
+BuildRequires:  python3-keyring
+BuildRequires:  python3-pep8-naming
+BuildRequires:  python3-psutil
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-python-dateutil
+BuildRequires:  python3-python-mpd2
+BuildRequires:  python3-pyxdg
+BuildRequires:  xcalc
+BuildRequires:  xclock
+BuildRequires:  xeyes
+BuildRequires:  xorg-x11-server-Xvfb
+BuildRequires:  xorg-x11-server-extra
+BuildRequires:  xrandr
+BuildRequires:  xterm
+%endif
 
 %description
 A pure-Python tiling window manager.
@@ -76,12 +104,22 @@ sed -i '/#!\/usr\/bin\/env python/d' %{_builddir}/qtile-%{version}/libqtile/scri
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
 
+%suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/qtile.desktop
+
 # default selector for xsession
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python3_sitearch}
+
+%if %{with test}
+%check
+sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' bin/qtile-cmd
+sed -i -e 's/python/python3/g' scripts/ffibuild
+./scripts/ffibuild
+%pytest -k  "not test_images"
+%endif
 
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
@@ -103,7 +141,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_bindir}/qshell
 %{_bindir}/qtile-cmd
 %{_bindir}/dqtile-cmd
-%{python3_sitelib}/*
+%{python3_sitearch}/*
 %{_mandir}/man1/qtile.1%{?ext_man}
 %{_mandir}/man1/qshell.1%{?ext_man}
 %{_datadir}/xsessions/default.desktop
