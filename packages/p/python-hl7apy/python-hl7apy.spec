@@ -1,7 +1,8 @@
 #
 # spec file for package python-hl7apy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 Name:           python-hl7apy
-Version:        1.2.0
+Version:        1.3.3
 Release:        0
 Summary:        A Python library to parse, create and handle HL7 v2x messages
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://hl7apy.org
+URL:            https://crs4.github.io/hl7apy/
 Source:         https://files.pythonhosted.org/packages/source/h/hl7apy/hl7apy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -57,7 +59,8 @@ The main features include:
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc LICENSE AUTHORS
+%doc AUTHORS
+%license LICENSE
 %python3_only %{_bindir}/hl7apy_profile_parser
 %{python_sitelib}/*
 
