@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{mo
 # PATCH-FIX-UPSTREAM remove_testing_warnings.patch gh#palantir/python-jsonrpc-server#34 mcepl@suse.com
 # remove warnings about deprecated method logging.Logger.warn
 Patch0:         remove_testing_warnings.patch
+# PATCH-FIX-UPSTREAM remove_testing_warnings.patch gh#palantir/python-jsonrpc-server#37 code@bnavigator.de
+Patch1:         python-jsonrpc-server-pr37.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -65,8 +67,7 @@ sed -i 's/ujson<=1.35;/ujson;/' setup.py
 %check
 # Remove pytest addopts
 rm setup.cfg
-# gh#palantir/python-jsonrpc-server#33
-%pytest -k 'not (test_request_error or test_request_cancel or test_writer_bad_message)'
+%pytest
 
 %files %{python_files}
 %doc README.rst

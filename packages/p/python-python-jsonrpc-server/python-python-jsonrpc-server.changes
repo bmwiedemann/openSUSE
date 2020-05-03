@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  1 20:06:56 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix the unit tests
+  python-jsonrpc-server-pr37.patch
+  gh#palantir/python-jsonrpc-server#37 
+
+-------------------------------------------------------------------
 Sun Mar 15 20:08:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - reactivate python2 build 
@@ -18,7 +25,7 @@ Sat Mar 14 07:21:48 CET 2020 - Matej Cepl <mcepl@suse.com>
 Fri Mar 13 09:11:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_testing_warnings.patch to remove some warnings
-  in the test suite run log (gh#palantir/python-jsonrpc-serveri#34).
+  in the test suite run log (gh#palantir/python-jsonrpc-server#34).
 - Switch off some tests which fail with Python 3.8
   (gh#palantir/python-jsonrpc-server#33)
 
