@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:24:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.0:
+  * Added PyKeePass.xml().
+  * Added create_database().
+  * Added tag searching - gh#libkeepass/pykeepass#182.
+  * Binary attachments missing Compressed attribute unparseable
+    [gh#libkeepass/pykeepass#181].
+  * Protected multiline fields missing newline
+    [gh#libkeepass/pykeepass#129].
+  * Fixed problem where entries are protected after save.
+- Changes from version 3.1.0:
+  * Removed context manager.
+  * Added autotype string support.
+  * Added attachments.
+  * Fixed find_entries(path=xxx) behavior.
+  * Entry.uuid, Group.uuid now return uuid.UUID object instead of
+    string.
+
+-------------------------------------------------------------------
 Tue Apr  2 08:51:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix argon2_cffi -> argon2-cffi dependency name
