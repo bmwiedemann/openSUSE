@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 28 01:35:14 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use python-rpm-macros to allow building python mod for all
+  supported versions of python; copy source into a different
+  directory for each python version and configure, build, and
+  install them correctly.
+- Move python dependent binary to python subpackage (python3
+  only).
+
+-------------------------------------------------------------------
 Tue Aug 20 14:38:19 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.2.3:
