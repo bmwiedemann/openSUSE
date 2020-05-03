@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 11:30:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add firejail-0.9.62-fix-usr-etc.patch:
+  Check /usr/etc not just /etc
+- Replace python interpreter line in sort.py
+
+-------------------------------------------------------------------
 Tue Feb 11 22:32:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to version 0.9.62 

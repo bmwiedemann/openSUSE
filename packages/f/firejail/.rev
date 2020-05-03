@@ -94,4 +94,15 @@
   * new profiles: electron-mail, gist, gist-paste (forwarded request 773543 from darix)</comment>
     <requestid>774571</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ac93c3830855b3530027e69a32f1c6db</srcmd5>
+    <version>0.9.62</version>
+    <time>1588538864</time>
+    <user>dimstar_suse</user>
+    <comment>- Add firejail-0.9.62-fix-usr-etc.patch:
+  Check /usr/etc not just /etc
+- Replace python interpreter line in sort.py
+</comment>
+    <requestid>799832</requestid>
+  </revision>
 </revisionlist>
