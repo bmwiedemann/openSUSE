@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>783678</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>65ffdda0ab2df51b59e9f1a14c4a2e8a</srcmd5>
+    <version>4.0.0</version>
+    <time>1588538765</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>793751</requestid>
+  </revision>
 </revisionlist>

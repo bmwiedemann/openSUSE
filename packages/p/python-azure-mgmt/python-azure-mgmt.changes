@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:47:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-compute >= 12.0.0
+  + python-azure-mgmt-containerservice >= 9.0.0
+  + python-azure-mgmt-iotcentral >= 3.0.0
+  + python-azure-mgmt-keyvault >= 2.2.0
+  + python-azure-mgmt-rdbms >= 2.2.0
+  + python-azure-mgmt-sql >= 0.18.0
+  + python-azure-mgmt-storage >= 9.0.0
+
+-------------------------------------------------------------------
 Wed Mar 11 08:10:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires
