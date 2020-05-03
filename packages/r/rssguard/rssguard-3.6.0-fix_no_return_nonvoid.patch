@@ -1,0 +1,21 @@
+From b4bd7af18f9c83199a81c3ea081c9e1423010459 Mon Sep 17 00:00:00 2001
+From: Martin Rotter <rotter.martinos@gmail.com>
+Date: Fri, 1 May 2020 19:51:14 +0200
+Subject: [PATCH] Fix warning.
+
+---
+ src/librssguard/miscellaneous/databasefactory.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/librssguard/miscellaneous/databasefactory.cpp b/src/librssguard/miscellaneous/databasefactory.cpp
+index 07888ee9..d0ea5a3d 100644
+--- a/src/librssguard/miscellaneous/databasefactory.cpp
++++ b/src/librssguard/miscellaneous/databasefactory.cpp
+@@ -462,6 +462,7 @@ QSqlDatabase DatabaseFactory::connection(const QString& connection_name, Desired
+ 
+     case UsedDriver::SQLITE:
+     case UsedDriver::SQLITE_MEMORY:
++    default:
+       return sqliteConnection(connection_name, desired_type);
+   }
+ }

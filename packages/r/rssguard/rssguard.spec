@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
+%define libver  3_6_0
 Name:           rssguard
-Version:        3.5.9
+Version:        3.6.0
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        GPL-3.0-only AND AGPL-3.0-or-later
-Group:          Productivity/Networking/News/Utilities
-Url:            https://github.com/martinrotter/rssguard
+URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-UPSTREAM rssguard-3.5.2-fix_no_return_nonvoid.patch
-Patch0:         rssguard-3.5.2-fix_no_return_nonvoid.patch
-# PATCH-FIX-UPSTREAM rssguard-3.5.9-Qt59.patch
-Patch1:         rssguard-3.5.9-Qt59.patch
+# PATCH-FIX-UPSTREAM rssguard-3.6.0-fix_no_return_nonvoid.patch
+Patch0:         rssguard-3.6.0-fix_no_return_nonvoid.patch
+# PATCH-FIX-OPENSUSE rssguard-3.6.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch2:         rssguard-3.6.0-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -50,16 +50,29 @@ Provides:       %{name}-lang = %{version}
 RSS Guard is a RSS/ATOM feed aggregator developed using the Qt framework.
 It supports online feed synchronization.
 
+%package -n lib%{name}-devel
+Summary:        Development headers for lib%{name}-%{libver}
+Requires:       lib%{name}-%{libver}
+
+%description -n lib%{name}-devel
+Development headers to be used with lib%{name}-%{libver}.
+
+%package -n lib%{name}-%{libver}
+Summary:        Shared library for %{name}
+
+%description -n lib%{name}-%{libver}
+Shared library for %{name} to be used by external plugins.
+
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+# remove executable bit
 chmod -x resources/desktop/com.github.rssguard.appdata.xml
+find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
 # resources_big is not compatible with LTO
 %define _lto_cflags %{nil}
-%qmake5 PREFIX=%{_prefix} USE_WEBENGINE=true
+%qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir} USE_WEBENGINE=true
 %make_jobs
 
 %install
@@ -68,6 +81,9 @@ chmod -x resources/desktop/com.github.rssguard.appdata.xml
 mkdir -pv %{buildroot}%{_datadir}/autostart
 install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
+
+%post -n lib%{name}-%{libver} -p /sbin/ldconfig
+%postun -n lib%{name}-%{libver} -p /sbin/ldconfig
 
 %files
 %license LICENSE.md
@@ -79,5 +95,12 @@ install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{build
 %{_datadir}/autostart/com.github.%{name}.desktop.autostart
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/metainfo/com.github.%{name}.appdata.xml
+
+%files -n librssguard-devel
+%{_includedir}/lib%{name}
+%{_libdir}/pkgconfig/%{name}.pc
+
+%files -n lib%{name}-%{libver}
+%{_libdir}/lib%{name}-%{version}.so
 
 %changelog

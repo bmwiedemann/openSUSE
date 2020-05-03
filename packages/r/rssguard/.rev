@@ -126,4 +126,43 @@
     <comment></comment>
     <requestid>728583</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>47963d83468d49a54977eaf1e2f55ead</srcmd5>
+    <version>3.6.0</version>
+    <time>1588538792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.0
+  Added:
+  * UK, GL translation and some other localizations.
+  * Executable is now separated from library, making it possible
+    to write external plugins for RSS Guard and distribute them
+    separately as dll/lib/so/dylib file.
+  * Fetch some M-RSS metadata when downloading RSS feeds.
+  * Ability to postpone updates if main window is visible.
+  * Switchable monochrome tray icons.
+  * Default system icon theme is now default for RSS Guard on
+    all platforms.
+  * QtWebEngine-based RSS Guard variant now should respect web
+    proxy set in settings.
+  Fixed/changed:
+  * Feeds.url attribute in MySQL storage now has &lt;=1000 length.
+  * Message viewer now responds to &quot;zoom&quot; action via mouse wheel
+    + CTRL key and persistently saves the zoom level fixing the
+    problem with small text in HIDPI screens.
+  * Minimum Qt version is now 5.9.0.
+  * Translations synced with newest strings.
+  * TT-RSS: Saving of message states now works
+    (read/unread/important).
+  * Many code cleanups, refactorings and regressions fixed.
+  * Tray icon now shows correct number of unread messages upon
+    app startup.
+  * Many fixes for build scripts for dev builds.
+- Refreshed rssguard-3.5.2-fix_no_return_nonvoid.patch as
+  rssguard-3.6.0-fix_no_return_nonvoid.patch
+- Dropped rssguard-3.5.9-Qt59.patch (merged upstream)
+- Added rssguard-3.6.0-add_library_version.patch
+- Dropped Group tag
+</comment>
+    <requestid>799702</requestid>
+  </revision>
 </revisionlist>
