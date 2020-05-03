@@ -18,13 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rebulk
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
 URL:            https://github.com/Toilal/rebulk
 Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
-Patch0:         fix-for-regex-2020.1.7.patch
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -43,8 +42,7 @@ It includes some features like Patterns, Match, Rule that
 allow building a custom and complex string matcher.
 
 %prep
-%setup -q -n rebulk-%{version}
-%patch0 -p1
+%autosetup -n rebulk-%{version}
 
 # Remove shebang from non-executable files
 for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
