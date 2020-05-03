@@ -22,16 +22,14 @@
   %define skip_python2 1
 %endif
 Name:           python-python-language-server
-Version:        0.31.9
+Version:        0.31.10
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
-# gh#palantir/python-language-server#778
-Patch0:         pyls-pr778-multiplerefs.patch 
 # gh#palantir/python-language-server#781
-Patch1:         pyls-pr781-jedi016-017.patch 
+Patch0:         pyls-pr781-jedi-017.patch 
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8}
@@ -50,7 +48,7 @@ BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module yapf}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jedi >= 0.16
+Requires:       python-jedi >= 0.17
 Requires:       python-pluggy
 Requires:       python-python-jsonrpc-server >= 0.3.2
 Requires:       python-setuptools
@@ -64,7 +62,7 @@ Recommends:     python-pylint
 Recommends:     python-rope >= 0.10.5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module jedi >= 0.16}
+BuildRequires:  %{python_module jedi >= 0.17}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
@@ -98,8 +96,9 @@ will be enabled:
 %prep
 %setup -q -n python-language-server-%{version}
 %autopatch -p1
-# Use system python3-ujson without regards which version it is
+# Unpin software that has newer versions on Tumbleweed
 sed -i "s/'ujson<=.*'/'ujson'/" setup.py
+sed -i "s/'\(pyflakes.*\),<.*'/'\1'/" setup.py
 
 %build
 %python_build
@@ -113,13 +112,13 @@ sed -i "s/'ujson<=.*'/'ujson'/" setup.py
 rm setup.cfg
 # unclean tear down
 skip_tests="test_missing_message"
-# Test failure on Leap 15.1 due to different pylint version
+# flake8>=2.2.0 produces E908 instead of empty list
+skip_tests+=" or test_flake8_no_checked_file"
 %if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
+  # Test failure on Leap 15.1 due to different pylint version
   skip_tests+=" or test_syntax_error_pylint_py"
-%endif
-# unknown encoding utd-8 on python2
-%ifpython2
-  skip_tests+=" or test_references_builtin"
+  # Test failure on Leap 15.1 due to mock hiccup
+  skip_tests+=" or test_flake8_config_param"
 %endif
 %pytest  -k "not ( $skip_tests )"
 

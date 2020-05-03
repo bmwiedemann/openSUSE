@@ -1,7 +1,7 @@
 From cb51b09254efac0b2c22130815198fab487db54f Mon Sep 17 00:00:00 2001
 From: Morten Linderud <morten@linderud.pw>
 Date: Sun, 29 Mar 2020 21:36:08 +0200
-Subject: [PATCH 1/7] Changed towards jedi 0.16
+Subject: [PATCH 01/11] Changed towards jedi 0.16
 
 Signed-off-by: Morten Linderud <morten@linderud.pw>
 ---
@@ -85,7 +85,7 @@ index a56416a0..8120f91a 100755
 From 7ca854bc87937e153be0e4bffcd6d5afe7ce2c92 Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Fri, 10 Apr 2020 00:43:16 +0200
-Subject: [PATCH 2/7] remove deprecated params call
+Subject: [PATCH 02/11] remove deprecated params call
 
 ---
  pyls/plugins/jedi_completion.py | 27 ++++++++++++++++-----------
@@ -161,7 +161,7 @@ index 9106c3c1..5c9c358c 100644
 From b1e08e1eab69512d34420d8b29d79fd427afa255 Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Fri, 10 Apr 2020 00:43:41 +0200
-Subject: [PATCH 3/7] remove deprecated names call
+Subject: [PATCH 03/11] remove deprecated names call
 
 ---
  pyls/workspace.py | 13 +++----------
@@ -195,7 +195,7 @@ index f5c72375..05ca83ec 100644
 From 9e8d7fdab8b4fa53fbbd0211b720506ba08ae566 Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Wed, 15 Apr 2020 18:08:27 +0200
-Subject: [PATCH 4/7] convert position into jedi line, column fix path and
+Subject: [PATCH 04/11] convert position into jedi line, column fix path and
  project parameters for jedi_script remove deprecated usages() calls
 
 ---
@@ -373,7 +373,7 @@ index 05ca83ec..8e969e71 100644
 From 16a526b1cab9ef00eb298f2637392a0b132ed942 Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Thu, 16 Apr 2020 11:45:54 +0200
-Subject: [PATCH 5/7] jedi.Script keywords source vs code
+Subject: [PATCH 05/11] jedi.Script keywords source vs code
 
 source is deprecated in 0.17.0 in favor of code
 but code did not exist in 0.16.0
@@ -413,7 +413,7 @@ index 8120f91a..1070065b 100755
 From 551990f350532b8658dff76421ff234649fd3b7c Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Thu, 16 Apr 2020 11:48:17 +0200
-Subject: [PATCH 6/7] don't expect isabs at first place
+Subject: [PATCH 06/11] don't expect isabs at first place
 
 sometimes jedi reports some keywords first
 ---
@@ -438,7 +438,7 @@ index 57caa8b3..34ca9f55 100644
 From afafa62b680a7f4762937b956bc2fee57126c56d Mon Sep 17 00:00:00 2001
 From: bnavigator <code@bnavigator.de>
 Date: Thu, 16 Apr 2020 12:28:53 +0200
-Subject: [PATCH 7/7] check expected in all refs in builtin test
+Subject: [PATCH 07/11] check expected in all refs in builtin test
 
 ---
  test/plugins/test_references.py | 6 ++++--
@@ -458,3 +458,336 @@ index 7e7cbe75..2a897d68 100644
 +                'end': {'line': 4, 'character': 19}}
 +    ranges = [r['range'] for r in refs]
 +    assert expected in ranges
+
+From 90e5d45cc11e46125aeda4da55c0dad475d4d556 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Thu, 16 Apr 2020 18:16:09 +0200
+Subject: [PATCH 08/11] bump minimum jedi version to 0.17
+
+---
+ pyls/_utils.py                  |  2 -
+ pyls/plugins/hover.py           | 65 +++++++++++++++------------------
+ pyls/workspace.py               |  3 +-
+ setup.py                        |  2 +-
+ test/plugins/test_completion.py | 13 +------
+ test/plugins/test_hover.py      | 28 ++++++--------
+ 6 files changed, 44 insertions(+), 69 deletions(-)
+
+diff --git a/pyls/_utils.py b/pyls/_utils.py
+index 478beda0..ada958de 100644
+--- a/pyls/_utils.py
++++ b/pyls/_utils.py
+@@ -140,8 +140,6 @@ def format_docstring(contents):
+     """
+     contents = contents.replace('\t', u'\u00A0' * 4)
+     contents = contents.replace('  ', u'\u00A0' * 2)
+-    if LooseVersion(JEDI_VERSION) < LooseVersion('0.15.0'):
+-        contents = contents.replace('*', '\\*')
+     return contents
+ 
+ 
+diff --git a/pyls/plugins/hover.py b/pyls/plugins/hover.py
+index b8ff749d..1953d983 100644
+--- a/pyls/plugins/hover.py
++++ b/pyls/plugins/hover.py
+@@ -1,5 +1,5 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+-from distutils.version import LooseVersion
++
+ import logging
+ 
+ from pyls import hookimpl, _utils
+@@ -13,40 +13,33 @@ def pyls_hover(document, position):
+     definitions = document.jedi_script().infer(**code_position)
+     word = document.word_at_position(position)
+ 
+-    if LooseVersion(_utils.JEDI_VERSION) >= LooseVersion('0.15.0'):
+-        # Find first exact matching definition
+-        definition = next((x for x in definitions if x.name == word), None)
+-
+-        # Ensure a definition is used if only one is available
+-        # even if the word doesn't match. An example of this case is 'np'
+-        # where 'numpy' doesn't match with 'np'. Same for NumPy ufuncs
+-        if len(definitions) == 1:
+-            definition = definitions[0]
+-
+-        if not definition:
+-            return {'contents': ''}
+-
+-        # raw docstring returns only doc, without signature
+-        doc = _utils.format_docstring(definition.docstring(raw=True))
+-
+-        # Find first exact matching signature
+-        signature = next((x.to_string() for x in definition.get_signatures() if x.name == word), '')
+-
+-        contents = []
+-        if signature:
+-            contents.append({
+-                'language': 'python',
+-                'value': signature,
+-            })
+-        if doc:
+-            contents.append(doc)
+-        if not contents:
+-            return {'contents': ''}
+-        return {'contents': contents}
+-    else:
+-        # Find an exact match for a completion
+-        for d in definitions:
+-            if d.name == word:
+-                return {'contents': _utils.format_docstring(d.docstring()) or ''}
++    # Find first exact matching definition
++    definition = next((x for x in definitions if x.name == word), None)
++
++    # Ensure a definition is used if only one is available
++    # even if the word doesn't match. An example of this case is 'np'
++    # where 'numpy' doesn't match with 'np'. Same for NumPy ufuncs
++    if len(definitions) == 1:
++        definition = definitions[0]
++
++    if not definition:
++        return {'contents': ''}
+ 
++    # raw docstring returns only doc, without signature
++    doc = _utils.format_docstring(definition.docstring(raw=True))
++
++    # Find first exact matching signature
++    signature = next((x.to_string() for x in definition.get_signatures()
++                      if x.name == word), '')
++
++    contents = []
++    if signature:
++        contents.append({
++            'language': 'python',
++            'value': signature,
++        })
++    if doc:
++        contents.append(doc)
++    if not contents:
+         return {'contents': ''}
++    return {'contents': contents}
+diff --git a/pyls/workspace.py b/pyls/workspace.py
+index 8b31c56d..8e969e71 100644
+--- a/pyls/workspace.py
++++ b/pyls/workspace.py
+@@ -230,8 +230,7 @@ def jedi_script(self, position=None):
+         environment = self.get_enviroment(environment_path) if environment_path else None
+ 
+         kwargs = {
+-            # 'source' is deprecated but 'code' was only introduced in 0.17.0
+-            'source' if jedi.__version__ < "0.17.0" else 'code': self.source,
++            'code': self.source,
+             'path': self.path,
+             'environment': environment,
+             'project': jedi.api.Project(os.path.dirname(self.path),
+diff --git a/setup.py b/setup.py
+index 1070065b..daec73f0 100755
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@
+         'configparser; python_version<"3.0"',
+         'future>=0.14.0; python_version<"3"',
+         'backports.functools_lru_cache; python_version<"3.2"',
+-        'jedi>=0.16.0',
++        'jedi>=0.17.0,<0.18.0',
+         'python-jsonrpc-server>=0.3.2',
+         'pluggy',
+         'ujson<=1.35; platform_system!="Windows"'
+diff --git a/test/plugins/test_completion.py b/test/plugins/test_completion.py
+index 34ca9f55..11d31055 100644
+--- a/test/plugins/test_completion.py
++++ b/test/plugins/test_completion.py
+@@ -134,16 +134,9 @@ def test_pyqt_completion(config):
+     doc = Document(DOC_URI, doc_pyqt)
+     completions = pyls_jedi_completions(config, doc, com_position)
+ 
+-    # Test we don't throw an error for Jedi < 0.15.2 and get completions
+-    # for Jedi 0.15.2+
+-    if LooseVersion(JEDI_VERSION) < LooseVersion('0.15.2'):
+-        assert completions is None
+-    else:
+-        assert completions is not None
++    assert completions is not None
+ 
+ 
+-@pytest.mark.skipif(LooseVersion('0.15.0') <= LooseVersion(JEDI_VERSION) < LooseVersion('0.15.2'),
+-                    reason='This test fails with Jedi 0.15.0 and 0.15.1')
+ def test_numpy_completions(config):
+     doc_numpy = "import numpy as np; np."
+     com_position = {'line': 0, 'character': len(doc_numpy)}
+@@ -154,8 +147,6 @@ def test_numpy_completions(config):
+     assert any(['array' in i['label'] for i in items])
+ 
+ 
+-@pytest.mark.skipif(LooseVersion('0.15.0') <= LooseVersion(JEDI_VERSION) < LooseVersion('0.15.2'),
+-                    reason='This test fails with Jedi 0.15.0 and 0.15.1')
+ def test_pandas_completions(config):
+     doc_pandas = "import pandas as pd; pd."
+     com_position = {'line': 0, 'character': len(doc_pandas)}
+@@ -176,8 +167,6 @@ def test_matplotlib_completions(config):
+     assert any(['plot' in i['label'] for i in items])
+ 
+ 
+-@pytest.mark.skipif(LooseVersion(JEDI_VERSION) < LooseVersion('0.15.2'),
+-                    reason='This test fails with Jedi 0.15.1 or less')
+ def test_snippets_completion(config):
+     doc_snippets = 'from collections import defaultdict \na=defaultdict'
+     com_position = {'line': 0, 'character': 35}
+diff --git a/test/plugins/test_hover.py b/test/plugins/test_hover.py
+index 4ae29cd9..2815f940 100644
+--- a/test/plugins/test_hover.py
++++ b/test/plugins/test_hover.py
+@@ -35,22 +35,21 @@ def test_numpy_hover():
+ 
+     doc = Document(DOC_URI, NUMPY_DOC)
+ 
+-    if LooseVersion(_utils.JEDI_VERSION) >= LooseVersion('0.15.0'):
+-        contents = ''
+-        assert contents in pyls_hover(doc, no_hov_position)['contents']
++    contents = ''
++    assert contents in pyls_hover(doc, no_hov_position)['contents']
+ 
+-        contents = 'NumPy\n=====\n\nProvides\n'
+-        assert contents in pyls_hover(doc, numpy_hov_position_1)['contents'][0]
++    contents = 'NumPy\n=====\n\nProvides\n'
++    assert contents in pyls_hover(doc, numpy_hov_position_1)['contents'][0]
+ 
+-        contents = 'NumPy\n=====\n\nProvides\n'
+-        assert contents in pyls_hover(doc, numpy_hov_position_2)['contents'][0]
++    contents = 'NumPy\n=====\n\nProvides\n'
++    assert contents in pyls_hover(doc, numpy_hov_position_2)['contents'][0]
+ 
+-        contents = 'NumPy\n=====\n\nProvides\n'
+-        assert contents in pyls_hover(doc, numpy_hov_position_3)['contents'][0]
++    contents = 'NumPy\n=====\n\nProvides\n'
++    assert contents in pyls_hover(doc, numpy_hov_position_3)['contents'][0]
+ 
+-        contents = 'Trigonometric sine, element-wise.\n\n'
+-        assert contents in pyls_hover(
+-            doc, numpy_sin_hov_position)['contents'][0]
++    contents = 'Trigonometric sine, element-wise.\n\n'
++    assert contents in pyls_hover(
++        doc, numpy_sin_hov_position)['contents'][0]
+ 
+ 
+ def test_hover():
+@@ -61,10 +60,7 @@ def test_hover():
+ 
+     doc = Document(DOC_URI, DOC)
+ 
+-    if LooseVersion(_utils.JEDI_VERSION) >= LooseVersion('0.15.0'):
+-        contents = [{'language': 'python', 'value': 'main()'}, 'hello world']
+-    else:
+-        contents = 'main()\n\nhello world'
++    contents = [{'language': 'python', 'value': 'main()'}, 'hello world']
+ 
+     assert {
+         'contents': contents
+
+From c38ceb3bcb7510c68621a8797fcd8b57483bb821 Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Thu, 16 Apr 2020 20:55:28 +0200
+Subject: [PATCH 09/11] cleanup unused imports
+
+---
+ pyls/_utils.py                  | 1 -
+ test/plugins/test_completion.py | 2 --
+ test/plugins/test_hover.py      | 3 +--
+ 3 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/pyls/_utils.py b/pyls/_utils.py
+index ada958de..1d3b54ef 100644
+--- a/pyls/_utils.py
++++ b/pyls/_utils.py
+@@ -1,5 +1,4 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+-from distutils.version import LooseVersion
+ import functools
+ import inspect
+ import logging
+diff --git a/test/plugins/test_completion.py b/test/plugins/test_completion.py
+index 11d31055..e1441837 100644
+--- a/test/plugins/test_completion.py
++++ b/test/plugins/test_completion.py
+@@ -1,5 +1,4 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+-from distutils.version import LooseVersion
+ import os
+ import sys
+ 
+@@ -7,7 +6,6 @@
+ import pytest
+ 
+ from pyls import uris, lsp
+-from pyls._utils import JEDI_VERSION
+ from pyls.workspace import Document
+ from pyls.plugins.jedi_completion import pyls_completions as pyls_jedi_completions
+ from pyls.plugins.rope_completion import pyls_completions as pyls_rope_completions
+diff --git a/test/plugins/test_hover.py b/test/plugins/test_hover.py
+index 2815f940..6e200fab 100644
+--- a/test/plugins/test_hover.py
++++ b/test/plugins/test_hover.py
+@@ -1,7 +1,6 @@
+ # Copyright 2017 Palantir Technologies, Inc.
+-from distutils.version import LooseVersion
+ 
+-from pyls import uris, _utils
++from pyls import uris
+ from pyls.plugins.hover import pyls_hover
+ from pyls.workspace import Document
+ 
+
+From 47e25f7cebb309b47475cfa033ad0722a03d775d Mon Sep 17 00:00:00 2001
+From: bnavigator <code@bnavigator.de>
+Date: Sat, 18 Apr 2020 13:52:53 +0200
+Subject: [PATCH 10/11] skip test_references_builtin for PY2
+
+---
+ test/plugins/test_references.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/plugins/test_references.py b/test/plugins/test_references.py
+index 2a897d68..82d682a5 100644
+--- a/test/plugins/test_references.py
++++ b/test/plugins/test_references.py
+@@ -4,6 +4,7 @@
+ from pyls import uris
+ from pyls.workspace import Document
+ from pyls.plugins.references import pyls_references
++from pyls._utils import PY2
+ 
+ 
+ DOC1_NAME = 'test1.py'
+@@ -66,6 +67,8 @@ def test_references(tmp_workspace):  # pylint: disable=redefined-outer-name
+     assert doc2_usage_ref['range']['end'] == {'line': 3, 'character': 9}
+ 
+ 
++@pytest.mark.skipif(PY2, reason="Jedi sometimes fails while checking pylint "
++                                "example files in the modules path")
+ def test_references_builtin(tmp_workspace):  # pylint: disable=redefined-outer-name
+     # Over 'UnicodeError':
+     position = {'line': 4, 'character': 7}
+
+From 688d4eeedf867c0a207f94af8b52c5da75f48364 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Wed, 29 Apr 2020 23:13:24 +0200
+Subject: [PATCH 11/11] remove TypeError in _detail again
+
+Thanks for the review @E1k3
+---
+ pyls/plugins/jedi_completion.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyls/plugins/jedi_completion.py b/pyls/plugins/jedi_completion.py
+index c8797539..443217ec 100644
+--- a/pyls/plugins/jedi_completion.py
++++ b/pyls/plugins/jedi_completion.py
+@@ -176,7 +176,7 @@ def _label(definition):
+ def _detail(definition):
+     try:
+         return definition.parent().full_name or ''
+-    except (AttributeError, TypeError):
++    except AttributeError:
+         return definition.full_name or ''
+ 
+ 

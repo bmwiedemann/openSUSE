@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  1 13:11:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 0.31.10
+  * README: Add pointer to list of configuration options
+   (gh#palantir/python-language-server#774)
+  * ~Require pyflakes<2.2.0~
+    (fix gh#palantir/python-language-server#782) 
+    (gh#palantir/python-language-server#784)
+    not applied in OpenSUSE package. See comment in PR
+  * Allow more references returned in test_references_builtin
+    (gh#palantir/python-language-server#778)
+  * PR: Fix hover request for numpy alias (np) and ufuncs
+    (gh#palantir/python-language-server#768) 
+- Update pyls-pr781-jedi016-017.patch to pyls-pr781-jedi-017.patch 
+  gh#palantir/python-language-server#781 
+  Patch also means python-jedi >= 0.17
+- Drop pyls-pr778-multiplerefs.patch merged upstream
+
+-------------------------------------------------------------------
 Thu Apr 16 10:56:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - make compatible again with Jedi 0.16.0
