@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,18 @@
 
 
 Name:           QMPlay2
-Version:        19.12.19
+Version:        20.05.02
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%else
-# Leap 42.3 / SLE12SP3Backports
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%endif
 BuildRequires:  cmake >= 3.5
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -83,14 +77,28 @@ It's a development package for %{name}.
 %setup -q -n %{name}-src-%{version}
 
 %build
-test -x "$(type -p gcc)" && export CC="$_"
-test -x "$(type -p g++)" && export CXX="$_"
-test -x "$(type -p gcc-7)" && export CC="$_"
-test -x "$(type -p g++-7)" && export CXX="$_"
+# Build options
+# Disable PCH compilation for older versions of openSUSE/SLES
+# as it requires cmake >= 3.16.
+# Temporarily disable PCH compilation for ppc64 and ppc64le architectures
+# as the build servers do not support it yet.
 %cmake \
-  -DUSE_PROSTOPLEER=OFF \
-  -DSOLID_ACTIONS_INSTALL_PATH="/usr/share/solid/actions"
-%make_jobs
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+  -DUSE_CHIPTUNE_SID=ON \
+  -DUSE_LINK_TIME_OPTIMIZATION=ON \
+  %if 0%{?suse_version} >= 1520
+    %ifnarch ppc64 ppc64le
+    -DUSE_PCH=ON \
+    %else
+    -DUSE_PCH=OFF \
+    %endif
+  %else
+  -DUSE_PCH=OFF \
+  %endif
+  -DUSE_GLSLC=OFF \
+  -DUSE_GIT_VERSION=OFF \
+  -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions"
+%cmake_build
 
 %install
 %cmake_install

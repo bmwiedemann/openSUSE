@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May  3 13:37:24 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Temporarily disable PCH compilation for ppc64 and ppc64le architectures as the build servers do not support it yet.
+
+-------------------------------------------------------------------
+Sun May  3 08:15:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Simplify spec file - drop old distribution support
+- Enable LTO
+
+-------------------------------------------------------------------
+Sat May  2 16:33:41 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 20.05.02
+   * add Vulkan renderer (default, Linux and Windows only):
+   * bypass compositor option (exclusive fullscreen),
+   * VA-API, CUVID, D3D11VA interoperation,
+   * high quality video scaling options,
+   * Yadif deinterlacing on GPU,
+   * faster subtitles rendering,
+   * deep color support,
+   * zero-copy decoding,
+   * remove option to enforce of video copy to host memory for OpenGL renderer,
+   * don't open left panel on fullscreen when there is a screen on the left,
+   * fix video dock margins issue on fullscreen with some Qt styles,
+   * add renderer settings page: Vulkan (default), OpenGL, Legacy,
+   * add PCH compilation with CMake >= 3.16 (disabled by default),
+   * a lot of code changes (e.g. use more FFmpeg structures),
+   * remove high quality video scaling for OpenGL,
+   * update translation files,
+   * require C++14.
+
+-------------------------------------------------------------------
 Sun Dec 22 00:04:26 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 19.12.19
