@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  3 14:42:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.1.1. Bugfix release:
+  * Fix loading and saving large board sizes
+  * There is now a tool to manage and remove the information
+    added by engine analysis from a given SGF file
+  * It is now possible to save all variations in a file
+    into separate files.
+  * It is possible to choose a path for autosaving online games.
+
+-------------------------------------------------------------------
 Sat Apr 25 08:08:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1
