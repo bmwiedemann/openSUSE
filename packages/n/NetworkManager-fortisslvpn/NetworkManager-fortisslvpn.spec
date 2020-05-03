@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-fortisslvpn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define base_ver 1.2
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
@@ -75,9 +76,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc AUTHORS ChangeLog README
 %config %{_sysconfdir}/dbus-1/system.d/nm-fortisslvpn-service.conf
-%dir %{_libexecdir}/NetworkManager
-%dir %{_libexecdir}/NetworkManager/VPN
-%{_libexecdir}/NetworkManager/VPN/nm-fortisslvpn-service.name
+%{_vpnservicedir}/nm-fortisslvpn-service.name
 %{_libexecdir}/nm-fortisslvpn-service
 %{_libdir}/NetworkManager/libnm-vpn-plugin-fortisslvpn.so
 %{pppd_plugin_dir}/nm-fortisslvpn-pppd-plugin.so
@@ -91,4 +90,3 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files lang -f %{name}.lang
 
 %changelog
-

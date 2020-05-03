@@ -24,4 +24,13 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
     <comment></comment>
     <requestid>789219</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9c8e7c3963d510116202539f6880cbc3</srcmd5>
+    <version>1.2.10</version>
+    <time>1588538786</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799453 from dimstar)</comment>
+    <requestid>799490</requestid>
+  </revision>
 </revisionlist>
