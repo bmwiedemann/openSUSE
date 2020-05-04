@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 06:42:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7:
+  * Fix file descriptor leak (#42)
+  * Add a note about saving the result to clipboard (#43)
+  * Document how to change decimal separator (#44)
+  * Use echo -n for clipboard
+
+-------------------------------------------------------------------
 Fri Jan 24 08:21:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

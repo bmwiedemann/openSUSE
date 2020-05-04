@@ -76,4 +76,16 @@
   * Added version check in configure.ac (#28)</comment>
     <requestid>766761</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>274d5ab3beee3e140b34dfccec8115d6</srcmd5>
+    <version>1.7</version>
+    <time>1588610375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7:
+  * Fix file descriptor leak (#42)
+  * Add a note about saving the result to clipboard (#43)
+  * Document how to change decimal separator (#44)
+  * Use echo -n for clipboard</comment>
+    <requestid>799966</requestid>
+  </revision>
 </revisionlist>
