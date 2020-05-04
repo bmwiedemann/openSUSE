@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  2 03:11:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.004001
+   see /usr/share/doc/packages/perl-JSON-MaybeXS/Changes
+
+  1.004001 - 2020-05-01
+   - document when is_bool became available
+   - now favouring Cpanel::JSON::XS over JSON::XS in more situations (the former
+     is always added to prereqs when a compiler is available, although JSON::XS
+     is still used at runtime if new enough and Cpanel::JSON::XS is not
+     installed). This makes boolean handling more predictable and consistent.
+  
+
+-------------------------------------------------------------------
 Fri Apr 20 05:29:06 UTC 2018 - coolo@suse.com
 
 - updated to 1.004000
