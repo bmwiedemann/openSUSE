@@ -1,7 +1,30 @@
-diff -Nura plymouth-0.9.5+git20191101+d18086e/configure.ac plymouth-0.9.5+git20191101+d18086e_new/configure.ac
---- plymouth-0.9.5+git20191101+d18086e/configure.ac	2019-11-06 10:19:50.000000000 +0800
-+++ plymouth-0.9.5+git20191101+d18086e_new/configure.ac	2019-12-14 17:27:03.730000000 +0800
-@@ -76,6 +76,15 @@
+From 04fd53750abc1f792ab6d5bdf7416bd7c42451b2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.com>
+Date: Mon, 25 Jan 2016 08:58:03 +0100
+Subject: [PATCH 1/2] Add label-ft plugin
+
+This adds a FreeType-based label plugin with minimal dependencies.
+Is is a replacement for the label plugin, except that it lacks support for
+Unicode and different fonts families.
+It's purpose is to be included in the initrd, which isn't easily possible
+with the label plugin due to it's massive dependency list.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.com>
+---
+ configure.ac                              |  10 +
+ src/libply-splash-graphics/ply-label.c    |   5 +
+ src/plugins/controls/Makefile.am          |   6 +-
+ src/plugins/controls/label-ft/Makefile.am |  22 ++
+ src/plugins/controls/label-ft/plugin.c    | 501 ++++++++++++++++++++++++++++++
+ 5 files changed, 543 insertions(+), 1 deletion(-)
+ create mode 100644 src/plugins/controls/label-ft/Makefile.am
+ create mode 100644 src/plugins/controls/label-ft/plugin.c
+
+Index: plymouth-0.9.3+git20180807.7663b0c/configure.ac
+===================================================================
+--- plymouth-0.9.3+git20180807.7663b0c.orig/configure.ac	2018-08-17 19:58:07.106444425 +0200
++++ plymouth-0.9.3+git20180807.7663b0c/configure.ac	2018-08-17 19:58:59.703026810 +0200
+@@ -69,6 +69,15 @@ if test x$enable_pango = xyes; then
    AC_SUBST(PANGO_LIBS)
  fi
  
@@ -17,31 +40,50 @@ diff -Nura plymouth-0.9.5+git20191101+d18086e/configure.ac plymouth-0.9.5+git201
  AC_ARG_ENABLE(gtk, AS_HELP_STRING([--enable-gtk],[enable building with gtk, disabled there is no x11 renderer]),enable_gtk=$enableval,enable_gtk=yes)
  AM_CONDITIONAL(ENABLE_GTK,  [test "$enable_gtk" = yes])
  
-@@ -318,6 +327,7 @@
+@@ -308,6 +317,7 @@ AC_CONFIG_FILES([Makefile
             src/plugins/splash/script/Makefile
             src/plugins/controls/Makefile
             src/plugins/controls/label/Makefile
-+	   src/plugins/controls/label-ft/Makefile
++           src/plugins/controls/label-ft/Makefile
             src/Makefile
             src/client/ply-boot-client.pc
             src/client/Makefile
-diff -Nura plymouth-0.9.5+git20191101+d18086e/src/libply-splash-graphics/ply-label.c plymouth-0.9.5+git20191101+d18086e_new/src/libply-splash-graphics/ply-label.c
---- plymouth-0.9.5+git20191101+d18086e/src/libply-splash-graphics/ply-label.c	2019-10-22 15:31:17.000000000 +0800
-+++ plymouth-0.9.5+git20191101+d18086e_new/src/libply-splash-graphics/ply-label.c	2019-12-14 17:23:10.796000000 +0800
-@@ -98,6 +98,10 @@
+Index: plymouth-0.9.3+git20180807.7663b0c/src/libply-splash-graphics/ply-label.c
+===================================================================
+--- plymouth-0.9.3+git20180807.7663b0c.orig/src/libply-splash-graphics/ply-label.c	2018-08-07 17:41:15.000000000 +0200
++++ plymouth-0.9.3+git20180807.7663b0c/src/libply-splash-graphics/ply-label.c	2018-08-17 19:58:59.703026810 +0200
+@@ -96,8 +96,13 @@ ply_label_load_plugin (ply_label_t *labe
  
+         get_plugin_interface_function_t get_label_plugin_interface;
+ 
++        /* Try the pango/cairo based label plugin first... */
          label->module_handle = ply_open_module (PLYMOUTH_PLUGIN_PATH "label.so");
  
 +        /* ...and the FreeType based one after that, it is not a complete substitute (yet). */
 +        if (label->module_handle == NULL)
 +            label->module_handle = ply_open_module (PLYMOUTH_PLUGIN_PATH "label-ft.so");
-+
++        
          if (label->module_handle == NULL)
                  return false;
  
-diff -Nura plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/Makefile.am plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/label-ft/Makefile.am
---- plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/Makefile.am	1970-01-01 08:00:00.000000000 +0800
-+++ plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/label-ft/Makefile.am	2019-12-14 17:17:26.473000000 +0800
+Index: plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/Makefile.am
+===================================================================
+--- plymouth-0.9.3+git20180807.7663b0c.orig/src/plugins/controls/Makefile.am	2018-08-07 17:41:15.000000000 +0200
++++ plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/Makefile.am	2018-08-17 19:58:59.703026810 +0200
+@@ -1,4 +1,8 @@
++SUBDIRS =
+ if ENABLE_PANGO
+-SUBDIRS = label
++SUBDIRS += label
++endif
++if ENABLE_FREETYPE
++SUBDIRS += label-ft
+ endif
+ MAINTAINERCLEANFILES = Makefile.in
+Index: plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/label-ft/Makefile.am
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/label-ft/Makefile.am	2018-08-17 19:58:59.703026810 +0200
 @@ -0,0 +1,22 @@
 +AM_CPPFLAGS = -I$(top_srcdir)                                                 \
 +           -I$(srcdir)/../../../libply                                        \
@@ -65,9 +107,10 @@ diff -Nura plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/Make
 +label_ft_la_SOURCES = $(srcdir)/plugin.c
 +
 +MAINTAINERCLEANFILES = Makefile.in
-diff -Nura plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/plugin.c plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/label-ft/plugin.c
---- plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/plugin.c	1970-01-01 08:00:00.000000000 +0800
-+++ plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/label-ft/plugin.c	2019-12-14 17:17:26.475000000 +0800
+Index: plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/label-ft/plugin.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ plymouth-0.9.3+git20180807.7663b0c/src/plugins/controls/label-ft/plugin.c	2018-08-17 19:58:59.703026810 +0200
 @@ -0,0 +1,507 @@
 +/* ply-label.c - label control
 + *
@@ -576,16 +619,3 @@ diff -Nura plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/label-ft/plug
 +}
 +
 +/* vim: set ts=4 sw=4 expandtab autoindent cindent cino={.5s,(0: */
-diff -Nura plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/Makefile.am plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/Makefile.am
---- plymouth-0.9.5+git20191101+d18086e/src/plugins/controls/Makefile.am	2019-10-22 15:31:17.000000000 +0800
-+++ plymouth-0.9.5+git20191101+d18086e_new/src/plugins/controls/Makefile.am	2019-12-14 17:20:38.575000000 +0800
-@@ -1,4 +1,8 @@
-+SUBDIRS =
- if ENABLE_PANGO
--SUBDIRS = label
-+SUBDIRS += label
-+endif
-+if ENABLE_FREETYPE
-+SUBDIRS += label-ft
- endif
- MAINTAINERCLEANFILES = Makefile.in

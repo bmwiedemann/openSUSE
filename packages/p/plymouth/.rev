@@ -741,4 +741,11 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>798298</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>1c5709048cb4a7f999d2c50b0402d62b</srcmd5>
+    <version>0.9.5+git20190908+3abfab2</version>
+    <time>1588609102</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1169783 - no fix in 2 weeks is inacceptable here</comment>
+  </revision>
 </revisionlist>

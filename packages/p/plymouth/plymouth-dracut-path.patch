@@ -1,0 +1,15 @@
+Index: plymouth-0.9.3+git20180807.7663b0c/scripts/plymouth-populate-initrd.in
+===================================================================
+--- plymouth-0.9.3+git20180807.7663b0c.orig/scripts/plymouth-populate-initrd.in	2018-08-07 17:41:15.000000000 +0200
++++ plymouth-0.9.3+git20180807.7663b0c/scripts/plymouth-populate-initrd.in	2018-08-17 19:57:27.334004329 +0200
+@@ -386,8 +386,8 @@ done
+ [ -z "$INITRDDIR" ] && usage error
+ 
+ mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
+-inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR
+-inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR
++inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR /usr/sbin/plymouthd
++inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR /usr/bin/plymouth
+ inst ${PLYMOUTH_DATADIR}/plymouth/themes/text/text.plymouth $INITRDDIR
+ inst ${PLYMOUTH_PLUGIN_PATH}/text.so $INITRDDIR
+ inst ${PLYMOUTH_DATADIR}/plymouth/themes/details/details.plymouth $INITRDDIR
