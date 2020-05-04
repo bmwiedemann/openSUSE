@@ -1,7 +1,7 @@
 #
 # spec file for package sqliteodbc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        ODBC driver for SQLite
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.ch-werner.de/sqliteodbc
+URL:            http://www.ch-werner.de/sqliteodbc
 Source0:        http://www.ch-werner.de/sqliteodbc/%{name}-%{version}.tar.gz
 # This is not typical shared library but plugin for unixODBC
 Source1:        %{name}-rpmlintrc
@@ -36,7 +36,6 @@ BuildRequires:  zlib-devel
 Requires:       unixODBC
 Requires(post): unixODBC
 Requires(preun): unixODBC
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 ODBC driver for SQLite interfacing SQLite 3.x using the
@@ -63,7 +62,7 @@ echo "HTML_TIMESTAMP         = NO" >> doxygen.conf
 %build
 %configure \
 	--enable-static=no
-make %{?_smp_mflags} all doxy
+%make_build all doxy
 dos2unix README
 
 %install
@@ -72,44 +71,80 @@ mkdir -p %{buildroot}%{_libdir}
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 
 %post
+/sbin/ldconfig
 if [ -x %{_bindir}/odbcinst ] ; then
-   INST=/tmp/sqliteinst$$
-   if [ -r %{_libdir}/libsqlite3odbc.so ] ; then
-      cat > $INST << 'EOD'
-[SQLITE3]
-Description=SQLite ODBC 3.X
-Driver=%{_libdir}/libsqlite3odbc.so
-Setup=%{_libdir}/libsqlite3odbc.so
-Threading=2
-FileUsage=1
-EOD
-      %{_bindir}/odbcinst -q -d -n SQLITE3 | grep '^\[SQLITE3\]' >/dev/null || {
-	 %{_bindir}/odbcinst -i -d -n SQLITE3 -f $INST || true
-      }
-      cat > $INST << 'EOD'
-[SQLite3 Datasource]
-Driver=SQLITE3
-EOD
-      %{_bindir}/odbcinst -q -s -n "SQLite3 Datasource" | \
-	 grep '^\[SQLite3 Datasource\]' >/dev/null || {
-	 %{_bindir}/odbcinst -i -l -s -n "SQLite3 Datasource" -f $INST || true
-      }
-   fi
-   rm -f $INST || true
+	INST=$(%{_bindir}/mktemp)
+
+	if [ -r %{_libdir}/libsqliteodbc.so ] ; then
+		%{_bindir}/cat > $INST <<- 'EOD'
+			[SQLITE]
+			Description=SQLite ODBC 2.X
+			Driver=%{_libdir}/libsqliteodbc.so
+			Setup=%{_libdir}/libsqliteodbc.so
+			Threading=2
+			FileUsage=1
+		EOD
+
+		%{_bindir}/odbcinst -q -d -n SQLITE | %{_bindir}/grep '^\[SQLITE\]' >/dev/null || {
+			%{_bindir}/odbcinst -i -d -n SQLITE -f $INST || true
+		}
+
+		%{_bindir}/cat > $INST <<- 'EOD'
+			[SQLite Datasource]
+			Driver=SQLITE
+		EOD
+
+		%{_bindir}/odbcinst -q -s -n "SQLite Datasource" | \
+		%{_bindir}/grep '^\[SQLite Datasource\]' >/dev/null || {
+			%{_bindir}/odbcinst -i -l -s -n "SQLite Datasource" -f $INST || true
+		}
+	fi
+
+	if [ -r %{_libdir}/libsqlite3odbc.so ] ; then
+		%{_bindir}/cat > $INST <<- 'EOD'
+			[SQLITE3]
+			Description=SQLite ODBC 3.X
+			Driver=%{_libdir}/libsqlite3odbc.so
+			Setup=%{_libdir}/libsqlite3odbc.so
+			Threading=2
+			FileUsage=1
+		EOD
+
+		%{_bindir}/odbcinst -q -d -n SQLITE3 | %{_bindir}/grep '^\[SQLITE3\]' >/dev/null || {
+			%{_bindir}/odbcinst -i -d -n SQLITE3 -f $INST || true
+		}
+
+		%{_bindir}/cat > $INST <<- 'EOD'
+			[SQLite3 Datasource]
+			Driver=SQLITE3
+		EOD
+
+		%{_bindir}/odbcinst -q -s -n "SQLite3 Datasource" | \
+		%{_bindir}/grep '^\[SQLite3 Datasource\]' >/dev/null || {
+			%{_bindir}/odbcinst -i -l -s -n "SQLite3 Datasource" -f $INST || true
+		}
+	fi
+
+	%{_bindir}/rm -f $INST || true
 fi
 
 %preun
 if [ "$1" = "0" ] ; then
-    test -x %{_bindir}/odbcinst && {
-	%{_bindir}/odbcinst -u -d -n SQLITE3 || true
-	%{_bindir}/odbcinst -u -l -s -n "SQLite3 Datasource" || true
-    }
-    true
+	test -x %{_bindir}/odbcinst && {
+		%{_bindir}/odbcinst -u -d -n SQLITE || true
+		%{_bindir}/odbcinst -u -l -s -n "SQLite Datasource" || true
+		%{_bindir}/odbcinst -u -d -n SQLITE3 || true
+		%{_bindir}/odbcinst -u -l -s -n "SQLite3 Datasource" || true
+	}
+
+	true
 fi
 
+%postun -p /sbin/ldconfig
+
 %files
-%defattr(-, root, root)
-%doc README license.terms ChangeLog
+%license license.terms
+%doc README ChangeLog
 %{_libdir}/libsqlite3_mod_blobtoxy-%{version}.so
 %{_libdir}/libsqlite3_mod_blobtoxy.so
 %{_libdir}/libsqlite3_mod_csvtable-%{version}.so
@@ -124,8 +159,8 @@ fi
 %{_libdir}/libsqlite3odbc.so
 
 %files doc
-%defattr(-, root, root)
-%doc README license.terms ChangeLog
+%license license.terms
+%doc README ChangeLog
 %doc html
 
 %changelog
