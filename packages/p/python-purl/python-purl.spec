@@ -1,7 +1,7 @@
 #
 # spec file for package python-purl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/codeinthehole/purl
 Source:         https://github.com/codeinthehole/purl/archive/%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+# https://github.com/codeinthehole/purl/pull/42
+Patch0:         use_pytest.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -39,6 +41,7 @@ An immutable URL class for URL building and manipulation.
 
 %prep
 %setup -q -n purl-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -48,7 +51,7 @@ An immutable URL class for URL building and manipulation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
+%pytest tests/utils_tests.py tests/expansion_tests.py tests/template_tests.py  tests/url_tests.py
 
 %files %{python_files}
 %doc README.rst

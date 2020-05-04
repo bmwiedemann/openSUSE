@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 12:41:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use pytest instead of nose
+- Add use_pytest.patch
+
+-------------------------------------------------------------------
 Sun Jun  9 15:12:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
