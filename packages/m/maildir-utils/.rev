@@ -173,4 +173,18 @@
   * mu4e: ask for context in mu4e~start</comment>
     <requestid>798806</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>04a53145c9e3fe4d20d934499693da46</srcmd5>
+    <version>1.4.4</version>
+    <time>1588610453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.4:
+  * mu: do a full index when the database is empty
+  * mu4e-proc: only rename when maildir is set
+  * mu-store: enlarge buffer for strftime
+  * mu4e: centralize mode-line context setting code
+  * mu4e: update documentation
+  * mu4e: start mu4e in compose-handler, when necessary</comment>
+    <requestid>799965</requestid>
+  </revision>
 </revisionlist>
