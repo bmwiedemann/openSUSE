@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:05:09 UTC 2020 - i@guoyunhe.me
+
+- Add pkgconfig(zlib) build dependency
+- Update to version 1.5.0~git20200414:
+  * Locales: Update Arabic Translations ar_SA. (#3302)
+  * onepad: Add SZMY-POWER CO. LTD. GAMEPAD 3 TURBO controller.
+
+-------------------------------------------------------------------
 Thu Apr 09 17:30:35 UTC 2020 - i@guoyunhe.me
 
 - Update to version 1.5.0~git20200408:
