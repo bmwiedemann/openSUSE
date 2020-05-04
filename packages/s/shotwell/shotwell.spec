@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.30.8
+Version:        0.30.9
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ URL:            https://wiki.gnome.org/Apps/Shotwell
 
 Source0:        https://download.gnome.org/sources/%{name}/0.30/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
-# PATCH-FIX-UPSTREAM shotwell-Make_fatal-warnings_an_option.patch -- Make fatal-warnings an option
-Patch0:         shotwell-Make_fatal-warnings_an_option.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
