@@ -17,7 +17,7 @@
 
 
 Name:           liblxqt
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
@@ -26,12 +26,11 @@ Url:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         liblxqt-0.14.1-fix-qt-5.14.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5xdg-devel >= 3.3.1
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  libqt5xdg-devel >= 3.5.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -77,7 +76,6 @@ applications that want to make use of liblxqt.
 
 %prep
 %setup -q -n liblxqt-%{version}
-%patch0 -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
@@ -113,5 +111,6 @@ make %{?_smp_mflags}
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/liblxqt
+%{_datadir}/lxqt/translations/liblxqt/*
 
 %changelog

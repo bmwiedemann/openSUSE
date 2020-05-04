@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:44:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed liblxqt.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 20:19:26 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed liblxqt-0.14.1-fix-qt-5.14.patch: contained in upstream
+- Update to version 0.15.0
+  * Fixed memory leak in backlight brightness driver.
+  * Allowed custom lock command and improved error messages in lxqtscreensaver.
+  * Added asynchronous API for querying server info.
+  * Allow spacing to be added between items in GridLayout (used in lxqt-panel).
+  * Set default button to Yes in leave dialogs.
+  * Made macOS build possible.
+
+-------------------------------------------------------------------
 Mon Jan 27 09:43:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1161365: Add includes for QFile
