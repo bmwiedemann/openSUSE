@@ -4,7 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
+patches:
+  perl-HTML-TableExtract-test-30_tree.patch: -p1
 #  foo.patch: -p1
 #  bar.patch:
 #preamble: |-

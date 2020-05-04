@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  4 18:01:42 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build: Test 30_tree.t fails
+- Add patch perl-HTML-TableExtract-test-30_tree.patch
+
+-------------------------------------------------------------------
+Wed Apr  3 07:01:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.15
+   see /usr/share/doc/packages/perl-HTML-TableExtract/Changes
+
+-------------------------------------------------------------------
 Sun Jun  7 08:36:18 UTC 2015 - coolo@suse.com
 
 - updated to 2.13
