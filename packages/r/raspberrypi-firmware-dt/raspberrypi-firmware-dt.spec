@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2020.04.02
+Version:        2020.05.02
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -27,7 +27,6 @@ Source:         raspberrypi-firmware-dt-%{version}.tar.xz
 Source1:        disable-vc4-overlay.dts
 Source2:        uboot-bcm2835-pl011-overlay.dts
 Source100:      get-from-git.sh
-Patch0:         upstream-emmc2bus.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -41,7 +40,6 @@ for the Raspberry Pi boot process.
 
 %prep
 %setup
-%patch0 -p1
 
 %build
 SRCDIR=`pwd`

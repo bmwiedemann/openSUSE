@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 10:36:14 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to d7b4d5935198 (2020-05-02)
+  * Adds gpio labels for rpi4 (bsc#1164722)
+  * Get rid of upstream-emmc2bus.patch, not needed anymore
+
+-------------------------------------------------------------------
 Mon Apr  6 09:40:40 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to b08ce72793b5 (2020-04-02) (bsc#1167761)
