@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:51:37 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed lxqt-globalkeys.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 20:54:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed lxqt-globalkeys-0.14.1-fix-qt.5.14.patch: contained in upstream
+- Update to version 0.15.0
+  * Just some code cleanups are done.
+
+-------------------------------------------------------------------
 Mon Jan 27 10:19:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1161365: Add lxqt-globalkeys-0.14.1-fix-qt.5.14.patch

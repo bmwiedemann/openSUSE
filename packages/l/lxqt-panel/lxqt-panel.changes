@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:54:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed lxqt-panel.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 21:04:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added BuildRequires for cmake(Qt5Concurrent)
+- Update to version 0.15.0
+  * A new plugin is added for changing display backlight.
+  * The option "Show only active desktop" is added to Desktop Switcher.
+  * A basic country flag support is added to Keyboard status indicator.
+  * An option is added to Task Manager for moving window to next/previous virtual desktop with mouse wheel.
+  * An option is added to Volume Control for toggling volume notifications with keyboard.
+  * Better text eliding and painting of Task Manager buttons.
+  * Smoother menu search.
+  * Fixed icons of applications like Skype, Doscord,… in Status Notifier (new tray).
+  * Fixed cut text in World Clock.
+  * Icons are fetched in an appropriate size to avoid scaling and bluring in Task Manager.
+  * Fixed panel positioning with multiple screens.
+  * Made Quick Launch respect Panel's lock state.
+  * Override the menu icon size only if a custom font size is selected.
+  * Fixed a crash in LXQtTaskButton under kwin_wayland.
+  * Fixed high CPU usage in Desktop Switcher.
+  * Fixes and enhancements to the old tray plugin.
+  * Other code fixes and cleanups.
+
+-------------------------------------------------------------------
 Fri Jul 12 09:48:22 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Disable LTO (boo#1141204).

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
@@ -71,5 +71,6 @@ make %{?_smp_mflags}
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/lxqt-notificationd
 %{_datadir}/lxqt/translations/lxqt-config-notificationd
+%{_datadir}/lxqt/translations/lxqt-notificationd/*
 
 %changelog

@@ -32,6 +32,7 @@ Tue Mar  3 17:24:50 CET 2020 - sbrabec@suse.com
   * If the xscreensaver daemon is setuid, then we can implore the
     kernel's out-of-memory killer to pretty please not unlock the
     screen.
+  * Fix several bugs (fixes BadWindow error bsc#1165170).
 - Drop xscreensaver-lock-after-fade.patch. Upstream has a different
   fix (boo#1101393).
 - Refresh xscreensaver-default-screensaver.patch.

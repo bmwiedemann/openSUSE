@@ -3,7 +3,7 @@ Thu Apr 30 11:45:35 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Remove _udevdir SLE12 specifics, this was an old compatibility
   hack, cmp with changelog entry from Mar 28 2017 - mgorse@suse.com
-  jsc#SLE-12322
+  jsc#SLE-12130
 
 -------------------------------------------------------------------
 Sat Jan 25 14:20:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

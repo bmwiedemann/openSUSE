@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -31,8 +31,9 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(KF5Solid) >= 5.5.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.5.0
 BuildRequires:  cmake(Qt5LinguistTools)

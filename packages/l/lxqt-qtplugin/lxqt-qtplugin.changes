@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:00:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed lxqt-qtplugin.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 11:12:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.15.0
+  * Set minimum required Qt version to 5.10.0.
+  * Added libfm-qt as a dependency (for LXQt file dialog).
+  * Added support for flatpak and working without context menu (to status notifier).
+  * Removed deprecated QImage methods and updated the code for C++11.
+
+-------------------------------------------------------------------
 Thu Jan 31 10:21:21 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:

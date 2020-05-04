@@ -186,4 +186,12 @@
 - Add buildrequire for glib</comment>
     <requestid>767623</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ca0c383d075946a916ea61f4f05ba6be</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798547</requestid>
+  </revision>
 </revisionlist>

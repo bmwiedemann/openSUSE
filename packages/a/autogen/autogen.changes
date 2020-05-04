@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:10:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- guile-version.patch: Allow all patchlevel versions of guile 3.0
+
+-------------------------------------------------------------------
 Tue Jan 21 10:41:18 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - guile-version.patch: Allow building with guile 3.0

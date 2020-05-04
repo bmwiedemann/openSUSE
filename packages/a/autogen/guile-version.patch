@@ -7,7 +7,7 @@ Index: autogen-5.18.16/agen5/guile-iface.h
    choke me.
  
 -#elif GUILE_VERSION < 203000
-+#elif GUILE_VERSION <= 300000
++#elif GUILE_VERSION < 301000
  # define AG_SCM_IS_PROC(_p)           scm_is_true( scm_procedure_p(_p))
  # define AG_SCM_LIST_P(_l)            scm_is_true( scm_list_p(_l))
  # define AG_SCM_PAIR_P(_p)            scm_is_true( scm_pair_p(_p))

@@ -495,4 +495,12 @@
     <comment></comment>
     <requestid>789445</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>2d5c8498a39be88be175aa942e80bd1b</srcmd5>
+    <version>5.44</version>
+    <time>1588610296</time>
+    <user>dimstar_suse</user>
+    <comment>Add new BSC. No changes.</comment>
+    <requestid>799917</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@
 Wed Apr 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus.spec: Drop the is_opensuse macro to eliminate the 
-  difference between SLE-15 and openSUSE-Leap.
+  difference between SLE-15 and openSUSE-Leap (jsc#SLE-11652).
 
 -------------------------------------------------------------------
 Wed Mar 11 10:56:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>

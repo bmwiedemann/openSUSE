@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
