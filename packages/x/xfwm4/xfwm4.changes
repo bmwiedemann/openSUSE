@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  1 16:45:44 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.2
+  * Prefer GLX on AMD (bxo#16716)
+  * Fix compositor without required X11 extensions (bxo#16713)
+  * Fix window decorations without XRender extension (bxo#16713)
+  * Avoid grabbing the keyboard with Alt-Tab to work around a bug
+    in Qt with XInput2 valuators (bxo#16708)
+  * Automatically update window title fonts on scale change
+  * Fix a regression with title font size at scale 2 (bxo#16711)
+  * Fix an X error with XShape (bxo#16383)
+  * Translation updates
+
+-------------------------------------------------------------------
 Mon Apr 13 16:03:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.1
