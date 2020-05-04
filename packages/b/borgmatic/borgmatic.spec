@@ -24,6 +24,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://torsion.org/borgmatic/
 Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
+Patch0:         remove-invalid-test.patch
 # testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
@@ -75,6 +76,7 @@ common errors.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
 perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
