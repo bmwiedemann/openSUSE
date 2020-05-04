@@ -235,4 +235,33 @@
     * Add reset to the repr for Rate (#1389) (0829af8)</comment>
     <requestid>785457</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b4d87797256e39cb6f870d162b4e561</srcmd5>
+    <version>1.51</version>
+    <time>1588610418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.51
+  + New features
+    * PyGithub now supports type checking
+    * Ability to retrieve public events
+    * Add and handle the maintainer_can_modify attribute in PullRequest
+    * List matching references
+    * Add create_repository_dispatch
+    * Add some Organization and Repository attributes.
+    * Add create project method
+  + Bug Fixes &amp; Improvements
+    * Drop use of shadow-cat for draft PRs
+    * AuthenticatedUser.get_organization_membership() should be str
+    * Drop documentation for len() of PaginatedList
+    * Fix param name of projectcard's move function
+    * Correct typos found with codespell
+    * Export IncompletableObject in the github namespace
+    * Add GitHub Action workflow for checks
+    * Drop unneeded ignore rule for flake8
+    * Use pytest to parametrize tests
+    * Type stubs are now packaged with the build
+    * Get the project column by id
+- Drop parametrized and pytest-cov from BuildRequires.</comment>
+    <requestid>799922</requestid>
+  </revision>
 </revisionlist>
