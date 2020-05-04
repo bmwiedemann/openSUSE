@@ -19,11 +19,10 @@
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
 %define tzdata_version 2019c
-
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz
-Version:        2019.3
+Version:        2020.1
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
@@ -76,7 +75,7 @@ touch pytz/tests/__init__.py
 %python_install
 # Replace custom data with symlink to /usr/share/zoneinfo
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/pytz/zoneinfo
-ln -s /usr/share/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
+ln -s %{_datadir}/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
@@ -85,7 +84,8 @@ ln -s /usr/share/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.txt
-%{python_sitelib}/*
+%doc README.rst
+%{python_sitelib}/pytz
+%{python_sitelib}/pytz-%{version}-py*.egg-info
 
 %changelog

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May  2 20:32:01 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * README.txt -> README.rst
+
+- update to version 2020.1:
+  * Test against Python 3.8 and Python 3.9
+  * Bump version numbers to 2020.1/2020a
+  * Base class for all errors
+  * Add flake8 settings
+  * IANA 2020a
+  * Fix remaining references to README.txt
+  * Update README.md
+  * Use .rst extension for reStructuredText
+  * typo
+  * highlight codes
+  * use .rst extension name
+  * Tidelift links
+  * Add links for security reports
+  * Update LICENSE.txt
+  * Create FUNDING.yml
+  * Make FixedOffset part of public API
+
+-------------------------------------------------------------------
 Mon Feb 24 03:12:10 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2019.3
