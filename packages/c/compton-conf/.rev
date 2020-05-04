@@ -135,4 +135,12 @@
   * Moved translations from lxqt-l10n back to compton-conf</comment>
     <requestid>680445</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b85c9ef549762a7eaad28df9c607efa6</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798542</requestid>
+  </revision>
 </revisionlist>
