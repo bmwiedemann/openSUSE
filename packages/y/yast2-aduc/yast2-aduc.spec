@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-aduc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-aduc
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Active Directory Users and Computers for YaST
 License:        GPL-3.0-only
@@ -57,13 +57,11 @@ creating and modifying Users, Groups, and Computer objects in Active Directory.
 
 %install
 %yast_install
-%yast_metainfo
 
 %files
 %{yast_clientdir}
 %{yast_yncludedir}
 %{yast_desktopdir}
-%{yast_metainfodir}
 %doc %{yast_docdir}
 %license COPYING
 
