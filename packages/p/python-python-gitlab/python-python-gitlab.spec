@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-gitlab
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
@@ -42,6 +42,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module six}
 # /SECTION
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -61,15 +63,22 @@ sed -i -e '/^#!\//, 1d' gitlab/v4/cli.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/gitlab
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative gitlab
+
+%postun
+%python_uninstall_alternative gitlab
+
 %files %{python_files}
 %doc AUTHORS ChangeLog.rst README.rst
 %license COPYING
-%python3_only %{_bindir}/gitlab
+%python_alternative %{_bindir}/gitlab
 %{python_sitelib}/*
 
 %changelog

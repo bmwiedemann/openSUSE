@@ -105,4 +105,20 @@
     <comment>- Fix dependencies for testing</comment>
     <requestid>795759</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f0313a01c837eccd13654ee46650271</srcmd5>
+    <version>2.2.0</version>
+    <time>1588622501</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+- Update to 2.2.0:
+  - add missing import_project param
+  - types: do not split single value string in ListAttribute
+  - add commit GPG signature API
+  - add create from template args to ProjectManager
+  - add remote mirrors API (#1056)
+  - add Gitlab Deploy Token API
+  - add Group Import/Export API (#1037)</comment>
+    <requestid>800150</requestid>
+  </revision>
 </revisionlist>
