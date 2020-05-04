@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 08:17:33 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 1.2.9
+  * Fix #20: Set the :func:warnings.warn stacklevel to 2 if
+    the Python implementation is PyPy
+  * Fix packit configuration: use dist-git-branch: fedora-all
+  * Change the Tox configuration to run tests on PyPy v2.7 and 3.6.
+  * Fix #15: The @deprecated decorator doesn't set a warning
+    filter if the action keyword argument is not provided or None.
+  * Fix #13: Warning displays the correct filename and line
+    number when decorating a class if wrapt does not have the compiled c
+    extension.
+
+-------------------------------------------------------------------
 Mon Jan 13 15:06:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.2.7
