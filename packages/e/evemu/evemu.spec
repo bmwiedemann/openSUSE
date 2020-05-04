@@ -1,7 +1,7 @@
 #
 # spec file for package evemu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Input Event Device Emulation Library
 License:        GPL-3.0-only
 Group:          Hardware/Other
-Url:            https://freedesktop.org/wiki/Evemu
+URL:            https://freedesktop.org/wiki/Evemu
 Source:         https://freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
@@ -32,7 +32,7 @@ BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
 BuildRequires:  python3-devel
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libevdev) >= 1.2.99.902
@@ -53,24 +53,15 @@ The evemu library and tools are used to describe devices, record
 data, create emulation devices and replay data from kernel evdev
 (input event) devices.
 
-%if 0%{?suse_version} >= 1500
 %package -n python2-%{name}
-%else
-%package -n python-%{name}
-%endif
 Summary:        Python2 bindings for evemu
 Group:          Development/Languages/Python
 Requires:       %{soname}%{sover} = %{version}
-%if 0%{?suse_version} >= 1500
 # python-evemu was last used in openSUSE Leap 42.3.
 Provides:       python-%{name} = %{version}-%{release}
 Obsoletes:      python-%{name} < %{version}-%{release}
 
 %description -n python2-%{name}
-%else
-
-%description -n python-%{name}
-%endif
 The evemu library and tools are used to describe devices, record
 data, create emulation devices and replay data from kernel evdev
 (input event) devices.
@@ -103,7 +94,7 @@ data, create emulation devices and replay data from kernel evdev
 This package provides the development files.
 
 %prep
-%setup -q
+%autosetup
 evdev_sover="$(basename "$(readlink -f %{_libdir}/libevdev.so)")"
 sed -i \
   -e 's|\"%{soname}.so\"|\"%{soname}.so.%{sover}\"|' \
@@ -136,43 +127,27 @@ rm -f %{buildroot}%{python_sitelib}/%{name}/*.pyo \
 
 %fdupes %{buildroot}%{_bindir}/
 %fdupes %{buildroot}%{_mandir}/
+%fdupes %{buildroot}%{python2_sitelib}
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{_bindir}/%{name}-*
 %{_mandir}/man?/%{name}-*?%{?ext_man}
 
 %files -n %{soname}%{sover}
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{_libdir}/%{soname}.so.%{sover}*
 
-%if 0%{?suse_version} >= 1500
 %files -n python2-%{name}
 %license COPYING
-%else
-%files -n python-%{name}
-%doc COPYING
-%endif
-%{python_sitelib}/%{name}/
+%{python2_sitelib}/%{name}/
 
 %files -n python3-%{name}
-%if 0%{?suse_version} >= 1500
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{python3_sitelib}/%{name}/
 
 %files devel
