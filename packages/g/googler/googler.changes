@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  1 12:22:42 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to version 4.1
+    * search Google Videos
+    * options --from and --to to specify date range for search
+    * update parser to handle new layout for Google News results
+    * strip trailing comma from metadata
+    * add auto-generated packages for new distros, remove obsolete
+
+-------------------------------------------------------------------
 Wed Nov 27 02:31:48 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 4.0
