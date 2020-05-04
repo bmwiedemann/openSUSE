@@ -228,4 +228,13 @@
 - Skip test reliably crashing in cheroot codebase</comment>
     <requestid>782540</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>85baf392fb7b9de7af8d367e0d87cd15</srcmd5>
+    <version>18.6.0</version>
+    <time>1588609969</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.6.0
+  * Add support for UTF-8 encoded attachment</comment>
+    <requestid>799973</requestid>
+  </revision>
 </revisionlist>
