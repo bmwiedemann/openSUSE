@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  2 19:53:59 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specifc in %files section
+  * upate project url
+  * remove devel requirement
+  * require python-Brotli for tests
+
+- update to version 1.5.0:
+  * Added brotli compression
+  * Added tests
+  * setup.py: Update url
+  * Fix PyPI rendering of long_description
+  * Use request instead of response in cache key callable and ensure
+    cache works as expected without always compressing content.
+  * Fix indentation in README
+  * Added copyright header to flask_compress.py
+
+-------------------------------------------------------------------
 Fri May 18 19:55:21 UTC 2018 - jengelh@inai.de
 
 - The description should not assume any use context.
