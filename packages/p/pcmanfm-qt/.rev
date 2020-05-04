@@ -444,4 +444,12 @@
     <comment>- bsc#1128570: Add menu-cache to requires</comment>
     <requestid>699603</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1c41025792f41eaffebc9aa903e9cae4</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798534</requestid>
+  </revision>
 </revisionlist>

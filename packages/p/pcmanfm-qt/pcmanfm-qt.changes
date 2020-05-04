@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:24:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed pcmanfm-qt.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 20:44:20 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added Recommends for gnome-keyring-pam
+- Update to version 0.15.0 
+  * Mount passwords can be saved (temporarily or permanently) if gnome-keyring is present.
+  * Added an option for "single window mode" (opening folders in new tabs).
+  * Added an item to Desktop context menu for creating (trusted) launchers/shortcuts on Desktop.
+  * Added "Hidden Last" to Sorting submenu for showing hidden items after others.
+  * A menu item is added to toggle showing of thumbnails on the fly.
+  * Deletion time is added to Trash.
+  * Now file tooltips contain info on location, size, type, time and owner.
+  * Wallpaper browsing dialog is enhanced and shows big thumbnails.
+  * Multi-screen wallpaper support is added.
+  * Added an option to transform jpeg wallpapers based on their EXIF info.
+  * File filtering text is cleared by pressing Esc, especially with the transient filter-bar.
+  * DE single-click setting is followed when single-click is not chosen in Preferences.
+  * More stable position for the sticky Desktop Trash.
+  * An option is added to show containing folder's context menu with Ctrl + right click.
+  * Added "Hidden Shortcuts" dialog.
+  * The original extensions are kept on bulk renaming.
+  * Selected files are opened by pressing Enter.
+  * Now Templates options work in Preferences → Advanced.
+  * Window manager menu is removed from desktop.
+  * Several fixes.
+  * And features/fixes that are inherited from libfm-qt 0.15.0 (see libfm-qt's release page).
+
+-------------------------------------------------------------------
 Tue Apr 30 10:09:45 UTC 2019 - mvetter@suse.com
 
 - bsc#1128570: Add menu-cache to requires
