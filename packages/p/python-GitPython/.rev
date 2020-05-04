@@ -248,4 +248,12 @@
   * Replace deprecated assertNotEquals alias with assertNotEqual</comment>
     <requestid>790858</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bee62d72d55286bac970a2efca4fd5e7</srcmd5>
+    <version>3.1.1.1586590969.b860d1873a25</version>
+    <time>1588610500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800005</requestid>
+  </revision>
 </revisionlist>

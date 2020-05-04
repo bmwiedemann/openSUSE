@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.1.0.1582544583.8c9da73
+Version:        3.1.1.1586590969.b860d1873a25
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause

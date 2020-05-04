@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 04 09:21:39 UTC 2020 - johannes.grassler@suse.com
+
+- Update to version 3.1.1.1586590969.b860d1873a25:
+  * bump patch level
+  * Remove forced verbosity when fetching from a remote
+  * Now it should really start working - go, doctests, go!
+  * Maybe this fixes the doc tests
+  * This should fix tests, as tree[0] is not a tree anymore
+  * Test for PyOxidizer and avoid trying to use __file__ if present
+  * Satisfy flake8 requirement related to #1000
+  * Try again to apply patch related to #1000
+  * make clear that appveyor and travis are not used anymore
+  * Remove code-coverage from requirements - codecov wants way too many permissions…
+
+-------------------------------------------------------------------
 Thu Apr  2 11:03:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable three more tests on git submodules:
