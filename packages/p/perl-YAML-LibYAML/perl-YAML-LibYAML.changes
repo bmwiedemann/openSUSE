@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  3 03:14:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.82
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.82 Sat 02 May 2020 08:39:03 PM CEST
+   - Updated libyaml sources to 0.2.4. Changes affecting YAML::XS are
+   - Output '...' at the stream end after a block scalar with trailing empty
+     lines
+   - Accept '%YAML 1.2' directives (they are ignored and do not change
+     behaviour though)
+  
+
+-------------------------------------------------------------------
 Tue Jan 28 03:15:43 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.81
