@@ -17,17 +17,17 @@
 
 
 Name:           lxqt-about
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        LXQt About Dialog
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
-Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
@@ -67,5 +67,6 @@ make %{?_smp_mflags}
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/lxqt-about
+%{_datadir}/lxqt/translations/lxqt-about/*
 
 %changelog

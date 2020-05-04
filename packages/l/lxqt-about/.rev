@@ -247,4 +247,12 @@
     <comment>- Fix build: Add glib as BuildRequires</comment>
     <requestid>767617</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8e52964f6e310d867bdda422cde9ccfa</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798550</requestid>
+  </revision>
 </revisionlist>
