@@ -1,7 +1,7 @@
 #
 # spec file for package qtermwidget-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,21 +27,21 @@ Konsole code was rewritten entirely with using Qt only, and all \
 code dealing with user interface parts and session management was \
 removed.
 Name:           qtermwidget-qt5
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        %{pack_summ}
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/qterminal/qtermwidget
-Source:         https://github.com/lxde/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz
-Source1:        https://github.com/lxde/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz.asc
-Source2:        qtermwidget.keyring
+Source:         https://github.com/lxqt/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz
+Source1:        https://github.com/lxqt/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.9
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.1
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10
 
 %description
 %{pack_desc}

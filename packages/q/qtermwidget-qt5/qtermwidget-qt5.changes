@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:28:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Keyring change
+  * Renamed qtermwidget.keyring to qtermwidget-qt5.keyring
+  * Changed key to tsujan's key
+  
+-------------------------------------------------------------------
+Sat Apr 25 09:53:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.15.0
+  * Fixes for macOS.
+  * Fixed the PyQt5 binding with Qt ≥ 5.11.
+  * Fixed a memory access violation.
+  * Added saveHistory to QTermWidget.
+  * Don't set the selection clipboard if it's unsupported.
+  * Announce truecolor support via COLORTERM.
+  * Fixed the numpad handling and added entries for numpad 5.
+  * Allow to disable drawing line characters.
+  * Fixed compilation on NetBSD.
+  * Fixed flickering on font change.
+  * Select all text when opening search-bar.
+  * Fixed search-bar's light text over white background with dark themes.
+  * Fixed build with LLVM/clang.
+  * Several fixes.
+
+-------------------------------------------------------------------
 Fri Mar  1 09:44:38 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.1:
