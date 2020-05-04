@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:25:38 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed qterminal.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 09:50:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.15.0
+  * A scrollable and compact Settings dialog.
+  * Added actions for switching to tab by index.
+  * Allowed to disable drawing line characters.
+  * Allowed a fixed custom size for QTerminal.
+  * Made the menubar accelerators optional.
+  * Added "Hide Window Borders" to context menu and added an option for borderless state.
+  * Implemented an action that allows you to send the history to your editor.
+  * Fixes for macOS.
+  * Several fixes.
+
+-------------------------------------------------------------------
 Fri Mar  1 09:47:57 UTC 2019 - mvetter@suse.com
 
 - Update to 0.14.1:
