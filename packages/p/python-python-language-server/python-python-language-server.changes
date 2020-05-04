@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  4 16:56:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Fri May  1 13:11:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 0.31.10

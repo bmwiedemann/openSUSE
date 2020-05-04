@@ -77,6 +77,8 @@ Requires:       python2-backports.functools_lru_cache
 Requires:       python2-configparser
 Requires:       python2-future >= 0.14.0
 %endif
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -105,7 +107,14 @@ sed -i "s/'\(pyflakes.*\),<.*'/'\1'/" setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyls
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pyls
+
+%postun
+%python_uninstall_alternative pyls
 
 %check
 # Remove pytest addopts
@@ -114,6 +123,8 @@ rm setup.cfg
 skip_tests="test_missing_message"
 # flake8>=2.2.0 produces E908 instead of empty list
 skip_tests+=" or test_flake8_no_checked_file"
+# pyflakes<2.2.0
+skip_tests+=" or test_flake8_lint"
 %if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
   # Test failure on Leap 15.1 due to different pylint version
   skip_tests+=" or test_syntax_error_pylint_py"
@@ -125,7 +136,7 @@ skip_tests+=" or test_flake8_no_checked_file"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/pyls
+%python_alternative %{_bindir}/pyls
 %{python_sitelib}/python_language_server-%{version}-py*.egg-info
 %{python_sitelib}/pyls/
 
