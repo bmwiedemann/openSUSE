@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Encode
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Encode
-Version:        3.05
+Version:        3.06
 Release:        0
 %define cpan_name Encode
 Summary:        Character encodings in Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DANKOGAI/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-Encode-rpmlintrc
 Source2:        cpanspec.yml
