@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:50:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed lxqt-config.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 11:20:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed lxqt-config-0.14.1-sort.patch: contained in upstream
+- Update to version 0.15.0
+  * Drag and drop of screens is improved and made easier in Monitor Settings.
+  * configuration saving and warnings are fixed.
+  * Applying GTK themes and mouse cursor settings are fixed in LXQt Appearance Configurations.
+  * Obsolete mouse accel/sensitivity options are removed from Keyboard and Mouse Settings (the real settings are under Mouse and Touchpad).
+  * Other fixes.
+
+-------------------------------------------------------------------
 Mon Jan 27 10:14:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1161365: Add lxqt-config-0.14.1-sort.patch

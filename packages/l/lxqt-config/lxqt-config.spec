@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-config
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,12 +26,11 @@ URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        lxqt-config.keyring
-Patch0:         lxqt-config-0.14.1-sort.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Screen)
 BuildRequires:  cmake(KF5WindowSystem)
@@ -64,7 +63,6 @@ System Configuration and Control Center for LXQt
 
 %prep
 %setup -q
-%patch0 -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
 #find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
