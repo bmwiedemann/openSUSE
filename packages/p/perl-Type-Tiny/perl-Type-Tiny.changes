@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May  2 03:17:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.010002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010002	2020-05-01	Mayday
+  
+   [ Bug Fixes ]
+   - Better bareword handling on Perl < 5.14.
+     Fixes RT#132455.
+     Graham Knop++
+     Karen Etheridge++
+     <https://rt.cpan.org/Ticket/Display.html?id=132455>
+   - If Scalar::Util was below 1.18, the LaxNum type from Types::Standard
+     would accept blobs as being numbers. This is now fixed.
+     Fixes RT#132426.
+     Graham Knop++
+     <https://rt.cpan.org/Ticket/Display.html?id=132426>
+  
+
+-------------------------------------------------------------------
 Tue Mar 17 03:18:01 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.010001
