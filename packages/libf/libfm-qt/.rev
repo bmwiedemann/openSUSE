@@ -129,4 +129,41 @@
     <comment></comment>
     <requestid>763661</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a88d7f5aa6178c6012d081684ed632e</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610354</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LGPL-2.1-or-later AND BSD-3-Clause as license
+
+- Move the libfm-qt Provides from the preamble to the library
+  package. In the preamble it's useless, as if there was a main
+  package being built, it's name would be libfm-qt already, thus
+  implicitly providing this capability.
+
+- Split out data files from libfm-qt7 in order to adhere to the
+  shared library packaging policy.
+
+- Updated license in spec file
+
+- Changed libfm-qt.keyring to tsujan's key
+
+- Remove fix_query_cancellation_error.patch: contained in upstream
+- Update to version 0.15.0
+  * Opening of remote links in desktop entries is made possible.
+  * Better drag-and-drop from remote folders to external apps.
+  * SMB and FTP recursive copy/paste is fixed.
+  * Lack of file monitoring in remote folders and some file systems is worked around as far as possible.
+  * Richer file tooltips.
+  * Easier and richer auto-completion.
+  * Row-by-row scrolling inside view when Shift is pressed.
+  * Smarter extension handling on saving with LXQt file dialog.
+  * Deletion time is added to Trash.
+  * Drag-and-drop to side-pane is supported.
+  * Bookmark drag-and-drop is improved.
+  * An option is added to show hidden files after others.
+  * Disabled Create New in context menu when not possible.
+  * Selected items are activated with Enter/Return.</comment>
+    <requestid>799968</requestid>
+  </revision>
 </revisionlist>

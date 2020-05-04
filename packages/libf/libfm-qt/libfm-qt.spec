@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libfm-qt
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Library providing components to build desktop file managers
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://lxqt.org
-Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        libfm-qt.keyring
-# Fixed in upstream https://github.com/lxqt/libfm-qt/commit/4b7896836e868f069009e65ab75051ab64a1d583
-# Drop the patch after new version release. 
-Patch0:         fix_query_cancellation_error.patch
 BuildRequires:  cmake >= 3.1.0
 # Needs private headers, see xdndworkaround.cpp
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.1
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.7.1
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -47,28 +44,41 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 0.4.0
 BuildRequires:  pkgconfig(lxqt)
 BuildRequires:  pkgconfig(x11)
-Provides:       libfm-qt
 
 %description
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
 
-%{lang_package -r libfm-qt6}
+%{lang_package -r libfm-qt7}
 
-%package -n libfm-qt6
+%package -n libfm-qt7
 Summary:        Library providing components to build desktop file managers
+# Require data files read by the library. For parallel installed library versions, the newest one wins
 Group:          System/Libraries
+Requires:       %{name}-data >= %{version}
 Recommends:     %{name}-lang
 Conflicts:      pcmanfm <= 0.10.0
+Provides:       libfm-qt
 
-%description -n libfm-qt6
+%description -n libfm-qt7
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
+
+%package data
+Summary:        Data files for libfm library
+# libfm-qt6 wrongly shipped those files as part of the library package
+# resulting in file conflicts when the soname changed
+# No way to fix the old package, so we conflict it
+Group:          Development/Libraries/C and C++
+Conflicts:      libfm-qt6
+
+%description data
+Provides data to be read by libfm-qt
 
 %package -n libfm-qt-devel
 Summary:        Development files for libfm-qt
 Group:          Development/Libraries/C and C++
-Requires:       libfm-qt6 >= %{version}
+Requires:       libfm-qt7 >= %{version}
 Requires:       pkgconfig
 # libfm-qt has an -I on a path from menu-cache-devel
 Requires:       pkgconfig(libmenu-cache) >= 0.4.0
@@ -78,25 +88,26 @@ Libfm-Qt libraries for development
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
 
 %find_lang %{name} --with-qt
 
-%post -n libfm-qt6 -p /sbin/ldconfig
-%postun -n libfm-qt6 -p /sbin/ldconfig
+%post -n libfm-qt7 -p /sbin/ldconfig
+%postun -n libfm-qt7 -p /sbin/ldconfig
 
-%files -n libfm-qt6
-%license LICENSE
+%files -n libfm-qt7
+%license LICENSE.BSD-3-Clause
 %doc README.md
-%dir %{_datadir}/libfm-qt/
 %{_libdir}/libfm-qt.so.*
+
+%files data
+%dir %{_datadir}/libfm-qt/
 %{_datadir}/libfm-qt/archivers.list
 %{_datadir}/libfm-qt/terminals.list
 %{_datadir}/mime/packages/libfm-qt-mimetypes.xml
@@ -111,8 +122,9 @@ make %{?_smp_mflags}
 %{_datadir}/cmake/fm-qt/fm-qt-targets-*.cmake
 %{_datadir}/cmake/fm-qt/fm-qt-targets.cmake
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/libfm-qt
 %dir %{_datadir}/libfm-qt/translations
+%{_datadir}/libfm-qt/translations/*
 
 %changelog

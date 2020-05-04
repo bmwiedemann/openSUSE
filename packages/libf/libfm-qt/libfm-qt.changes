@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon May  4 06:50:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use LGPL-2.1-or-later AND BSD-3-Clause as license
+
+-------------------------------------------------------------------
+Thu Apr 30 14:31:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move the libfm-qt Provides from the preamble to the library
+  package. In the preamble it's useless, as if there was a main
+  package being built, it's name would be libfm-qt already, thus
+  implicitly providing this capability.
+
+-------------------------------------------------------------------
+Thu Apr 30 14:25:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split out data files from libfm-qt7 in order to adhere to the
+  shared library packaging policy.
+
+-------------------------------------------------------------------
+Mon Apr 27 18:16:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Updated license in spec file
+
+-------------------------------------------------------------------
+Mon Apr 27 10:32:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed libfm-qt.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 20:38:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Remove fix_query_cancellation_error.patch: contained in upstream
+- Update to version 0.15.0
+  * Opening of remote links in desktop entries is made possible.
+  * Better drag-and-drop from remote folders to external apps.
+  * SMB and FTP recursive copy/paste is fixed.
+  * Lack of file monitoring in remote folders and some file systems is worked around as far as possible.
+  * Richer file tooltips.
+  * Easier and richer auto-completion.
+  * Row-by-row scrolling inside view when Shift is pressed.
+  * Smarter extension handling on saving with LXQt file dialog.
+  * Deletion time is added to Trash.
+  * Drag-and-drop to side-pane is supported.
+  * Bookmark drag-and-drop is improved.
+  * An option is added to show hidden files after others.
+  * Disabled Create New in context menu when not possible.
+  * Selected items are activated with Enter/Return.
+  * The order of files is respected on launching multiple files.
+  * Mount passwords can be saved (temporarily or permanently) if gnome-keyring is present.
+  * Many fixes and enhancements.
+  
+-------------------------------------------------------------------
 Sun Jan  5 13:22:07 UTC 2020 - Namor Barcode <gutaper@gmail.com>
 
 - Add patch "fix_query_cancellation_error.patch" from upstream,
