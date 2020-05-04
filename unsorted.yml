@@ -1303,6 +1303,7 @@ unsorted:
   - brp-trim-translations 
   - bs 
   - bs-update 
+  - bs1770gain 
   - bs2b-tools 
   - bsdiff 
   - bsf 
@@ -1567,7 +1568,6 @@ unsorted:
   - ceph-test: [x86_64] 
   - cephadm: [x86_64] 
   - cephfs-shell: [x86_64] 
-  - cerbere 
   - cereal-devel 
   - certbot-systemd-timer 
   - certmonger 
@@ -11698,6 +11698,8 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
+  - librssguard-3_6_0 
+  - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
   - librsync-devel 
@@ -12947,6 +12949,7 @@ unsorted:
   - libzipkin-cpp-opentracing0 
   - libzita-convolver4 
   - libzita-convolver4-32bit: [x86_64] 
+  - libzita-resampler1 
   - libzlui0_99 
   - libzmf-devel 
   - libzmf-devel-doc 
@@ -18375,7 +18378,6 @@ unsorted:
   - python-Genshi-doc 
   - python-Jinja2-vim 
   - python-Kivy-doc 
-  - python-LHAPDF 
   - python-M2Crypto-doc 
   - python-OpenColorIO 
   - python-OpenColorIO-devel 
@@ -18610,7 +18612,6 @@ unsorted:
   - python2-hankel: [i586] 
   - python2-jupyter-packaging 
   - python2-keyrings.alt 
-  - python2-knack 
   - python2-libesedb 
   - python2-libevt 
   - python2-libevtx 
@@ -18645,13 +18646,11 @@ unsorted:
   - python2-pybugz 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-pykeepass 
   - python2-pysaml2: [i586] 
   - python2-pysmb 
   - python2-python-dotenv 
   - python2-sanlock 
   - python2-setuptools 
-  - python2-subliminal 
   - python2-suds-jurko 
   - python2-sushy 
   - python2-tooz 
@@ -18742,6 +18741,7 @@ unsorted:
   - python3-Keras-examples: [x86_64] 
   - python3-Kivy 
   - python3-Kivy-devel 
+  - python3-LHAPDF 
   - python3-LTTL 
   - python3-Lektor 
   - python3-Levenshtein 
@@ -19683,6 +19683,7 @@ unsorted:
   - python3-flask-oidc 
   - python3-flask-peewee 
   - python3-flask-restplus 
+  - python3-flask-restx 
   - python3-flatbuffers 
   - python3-flatdict 
   - python3-flex 
@@ -21067,7 +21068,6 @@ unsorted:
   - python3-sortedcollections 
   - python3-sortedcontainers 
   - python3-sortinghat 
-  - python3-soundcloud 
   - python3-sounddevice 
   - python3-soupsieve 
   - python3-sox 
@@ -32814,6 +32814,8 @@ unsorted:
   - zipkin-cpp-opentracing-devel 
   - zipkin-cpp-opentracing-devel-static 
   - zita-convolver-devel 
+  - zita-resampler-devel 
+  - zita-resampler-tools 
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
