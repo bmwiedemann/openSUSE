@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol-qt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           pavucontrol-qt
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Qt port of pavucontrol
 License:        GPL-2.0-only
 Group:          System/GUI/LXQt
-URL:            https://github.com/lxde/pavucontrol-qt
-Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/pavucontrol-qt
+Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF5WindowSystem)
@@ -72,5 +72,6 @@ make %{?_smp_mflags}
 %files lang -f %{name}.lang 
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations/*
 
 %changelog
