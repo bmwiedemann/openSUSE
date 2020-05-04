@@ -417,4 +417,12 @@
 - Do not pull in py2 package on vim syntax</comment>
     <requestid>792931</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9aee9c5ef7c0e4a4943b7767e61e6f4e</srcmd5>
+    <version>2.11.2</version>
+    <time>1588609998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800008</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Jinja2
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
