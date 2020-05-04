@@ -97,7 +97,7 @@ mv %{buildroot}%{python3_sitearch}/mercurial/locale/* %{buildroot}%{_datadir}/lo
 
 # Install stuff in contrib
 install -m0755 contrib/hgk %{buildroot}%{_bindir}
-install -Dm0644 contrib/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/mercurial.sh
+install -Dm0644 contrib/bash_completion %{buildroot}%{_datadir}/bash-completion/completions/hg
 install -Dm0644 contrib/zsh_completion %{buildroot}%{_datadir}/zsh/site-functions/_mercurial
 mkdir -p %{buildroot}%{_datadir}/{x,}emacs/site-lisp
 install -m0644 contrib/*.el %{buildroot}%{_datadir}/emacs/site-lisp

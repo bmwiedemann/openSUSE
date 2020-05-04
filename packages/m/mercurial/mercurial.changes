@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  3 16:02:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix bash completion script (boo#1170703)
+
+-------------------------------------------------------------------
 Thu Mar 19 12:33:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mercurial 5.3.1
