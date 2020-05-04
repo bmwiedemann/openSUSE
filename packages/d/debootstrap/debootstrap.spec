@@ -1,7 +1,7 @@
 #
 # spec file for package debootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           debootstrap
-Version:        1.0.115
+Version:        1.0.123
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://salsa.debian.org/installer-team/debootstrap
 Source:         https://salsa.debian.org/installer-team/debootstrap/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-norootforbuild.patch
@@ -38,8 +37,7 @@ unpacking them into a directory which can eventually be chrooted
 into.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Nothing to build.
