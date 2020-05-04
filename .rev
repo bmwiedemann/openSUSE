@@ -258,4 +258,29 @@
   * Changes to adapter_archiveofourownorg for AO3 changes re: view_adult=true</comment>
     <requestid>791430</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a5b74b46c7b107c5500da21da8cbdcaf</srcmd5>
+    <version>3.19.0</version>
+    <time>1588610409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.19.0:
+  - Comment out a debug, user_agent for wuxiaworld.com
+  - Fix adapter_fictionmaniatv image page parsing, thanks smutandrea
+  - Fix adapter_fanficsme for date tags change.
+  - Change inject_chapter_title back to h3.
+  - Allow for author without link &amp; id in XF2.
+  - Change inject_chapter_title code in adapter_storiesonlinenet
+    due to clean up weirdness.
+  - Change defaults.ini recommendations for inject_chapter_title
+    and change injected titles to h4--had problems with
+    epub update.
+  - Fix for py2/3 differences in final strip-non-ASCII decode
+    fall back.
+  - Remove some 'watermarking' tags from adapter_webnovelcom
+  - De-obfuscate emails in XenForo posts.
+  - Add scifistories.com to valid site list for
+    universe_as_series setting.
+  - New Site: scifistories.com (extends finestories.com).</comment>
+    <requestid>799911</requestid>
+  </revision>
 </revisionlist>
