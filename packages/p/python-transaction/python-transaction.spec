@@ -57,7 +57,7 @@ rm -rf transaction.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py -q test
+%python_exec setup.py test
 
 %files %{python_files}
 %license LICENSE.txt
