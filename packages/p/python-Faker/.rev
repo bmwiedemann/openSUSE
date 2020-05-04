@@ -170,4 +170,12 @@
       * translit fix</comment>
     <requestid>785575</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>edd79d76d34f5e0f1244264c57573ebb</srcmd5>
+    <version>4.0.3</version>
+    <time>1588609986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800000</requestid>
+  </revision>
 </revisionlist>

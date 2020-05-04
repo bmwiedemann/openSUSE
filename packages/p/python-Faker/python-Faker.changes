@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  4 08:37:02 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 4.0.3:
+  * Fixed MSISDN for pt_BR  to return only mobile numbers. Thanks @rodrigondec.
+  * Added Domain Generator Algorithm by date. Thanks @pishchalnikov.
+  * Fixed issue where pydict provider was not returning the correct number of elements. Thanks @mstellon.
+  * Added support for Indian Aadhaar numbers. Thanks @curiousElf.
+  * Added company_vat for it_IT. Thanks @alitaker.
+  * Improved autodocumentation of providers. Thanks @malefice.
+  * Added provider for es_ES license plates. Thanks @mondeja.
+  * Implemented __dir__ method to Faker proxy for better autocompletion. Thanks @douglasfarinelli.
+  * Uppercased HEX colors for all localized color providers. Thanks @mondeja.
+  * Added bank provider for es_ES locale. Thanks @mondeja.
+  * Added support for UK counties. Thanks @neilav.
+  * Added color provider for no_NO license plates. Thanks @bjorskog.
+  * Made value_types a keyword argument in python provider. Thanks @slafs.
+  
+-------------------------------------------------------------------
 Mon Mar 16 10:32:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove obsolete py2 dependencies
