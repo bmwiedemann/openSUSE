@@ -63,4 +63,12 @@
   appindicator feature just as Leap did (jsc#SLE-11847). (forwarded request 799177 from yfjiang)</comment>
     <requestid>799472</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4c15c47d18f0ec50bae55c2772dae48f</srcmd5>
+    <version>1.4.1</version>
+    <time>1588610591</time>
+    <user>dimstar_suse</user>
+    <comment>Requires iso-codes as it is needed implicitly in Onboard/LanguageSupport.py. (forwarded request 799920 from yfjiang)</comment>
+    <requestid>800064</requestid>
+  </revision>
 </revisionlist>

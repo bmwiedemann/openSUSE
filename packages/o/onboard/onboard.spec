@@ -54,6 +54,7 @@ Requires:       dbus-1-python3
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gsettings-desktop-schemas
 Requires:       hicolor-icon-theme
+Requires:       iso-codes
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo

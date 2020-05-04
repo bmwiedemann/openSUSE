@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 03:37:11 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Requires iso-codes as it is needed implicitly in
+  Onboard/LanguageSupport.py.
+
+-------------------------------------------------------------------
 Thu Apr 30 08:30:45 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Remove onboard-remove-dep-typelib-appindicator3.patch for SLE
