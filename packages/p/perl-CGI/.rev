@@ -127,4 +127,12 @@
     <comment>- updated to 4.46 (bsc#1162868)</comment>
     <requestid>786262</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5ea88e1477ea8a14f5d7131a1503777a</srcmd5>
+    <version>4.47</version>
+    <time>1588609961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799929</requestid>
+  </revision>
 </revisionlist>
