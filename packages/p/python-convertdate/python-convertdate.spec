@@ -22,7 +22,6 @@ Version:        2.2.0
 Release:        0
 Summary:        Module for date conversions from and to Gregorian calendar
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/fitnr/convertdate
 Source:         https://github.com/fitnr/convertdate/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -44,6 +43,7 @@ Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and Persian.
 
 %prep
 %setup -q -n convertdate-%{version}
+sed -i -e 's:, < 2020::g' setup.py
 
 %build
 export LC_ALL="en_US.UTF8"

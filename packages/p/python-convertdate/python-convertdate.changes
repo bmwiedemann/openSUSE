@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  4 10:38:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict upper version on pytz for no reason.
+
+-------------------------------------------------------------------
 Wed Apr  1 12:16:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.2.0
