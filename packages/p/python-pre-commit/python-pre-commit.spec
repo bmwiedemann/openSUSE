@@ -18,9 +18,8 @@
 
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pre-commit
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -91,6 +90,7 @@ git init .
 %{_bindir}/pre-commit-validate-manifest
 %{_bindir}/pre-commit
 %{_bindir}/pre-commit-validate-config
-%{python_sitelib}/*
+%{python_sitelib}/pre_commit
+%{python_sitelib}/pre_commit-%{version}-py*.egg-info
 
 %changelog
