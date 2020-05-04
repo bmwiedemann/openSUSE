@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZODB
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,9 +23,9 @@ Version:        5.5.1
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1
-Group:          Development/Libraries/Python
 URL:            https://github.com/zopefoundation/ZODB
 Source:         https://files.pythonhosted.org/packages/source/Z/ZODB/ZODB-%{version}.tar.gz
+Patch0:         transaction3.patch
 BuildRequires:  %{python_module BTrees >= 4.2.0}
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module manuel}
@@ -63,7 +63,6 @@ support, and undo.
 
 %package     -n %{name}-doc
 Summary:        Zope Object Database: object database and persistence
-Group:          Development/Libraries/Python
 Provides:       %{python_module ZODB-doc = %{version}}
 
 %description -n %{name}-doc
@@ -71,6 +70,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ZODB-%{version}
+%patch0 -p1
 # delete backup files
 find . -name "*~" -print -delete
 # remove unwanted shebang

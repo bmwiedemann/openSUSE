@@ -78,4 +78,13 @@
 - Drop no longer needed python-ZODB-testsuite.patch</comment>
     <requestid>681509</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>80e28ff6dd79e688db5f56e3ea4eb721</srcmd5>
+    <version>5.5.1</version>
+    <time>1588610515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with transaction 3.x:
+  * transaction3.patch</comment>
+    <requestid>800021</requestid>
+  </revision>
 </revisionlist>
