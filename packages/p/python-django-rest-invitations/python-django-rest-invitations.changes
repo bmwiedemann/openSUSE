@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  4 06:50:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.3:
+  - DRF 3.10 support
+  - Drop support for python 2.7 and python 3.4
+  - Add support for python 3.8
+  - Add support for django 3.0
+- Drop merged patches:
+  * merged_pr_11.patch
+  * fix-test-middleware-classes.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 05:14:35 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add merged_pr_11.patch to support DRF 3.10

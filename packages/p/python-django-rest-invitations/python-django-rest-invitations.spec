@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-invitations
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-rest-invitations
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        A set of Django REST API endpoints to handle invitations
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
-URL:            http://github.com/fmarco/django-rest-invitations
+URL:            https://github.com/fmarco/django-rest-invitations
 Source:         https://github.com/fmarco/django-rest-invitations/archive/%{version}.tar.gz#/django-rest-invitations-%{version}.tar.gz
-# Subset of https://github.com/fmarco/django-rest-invitations/pull/6
-Patch0:         fix-test-middleware-classes.patch
-Patch1:         merged_pr_11.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-django-invitations >= 1.9.2
-Requires:       python-djangorestframework >= 3.7.7
+Requires:       python-django-invitations >= 1.9.3
+Requires:       python-djangorestframework >= 3.10
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module django-invitations >= 1.9.2}
-BuildRequires:  %{python_module djangorestframework >= 3.7.7}
+BuildRequires:  %{python_module django-invitations >= 1.9.3}
+BuildRequires:  %{python_module djangorestframework >= 3.10}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 %python_subpackages
@@ -47,8 +43,7 @@ A set of Django REST API endpoints to handle invitations.
 
 %prep
 %setup -q -n django-rest-invitations-%{version}
-%patch0 -p1
-%patch1 -p1
+sed -i -e 's:==:>=:g' setup.py
 
 %build
 %python_build
