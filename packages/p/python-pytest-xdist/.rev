@@ -116,4 +116,13 @@
     arguments to be discarded when using --tx mode.</comment>
     <requestid>761139</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6ac1b697e158d82e253ef92b4bbee19a</srcmd5>
+    <version>1.32.0</version>
+    <time>1588609955</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.32.0:
+  * #524: Add testrun_uid fixture. This is a shared value that uniquely identifies a test run among all workers. This also adds a PYTEST_XDIST_TESTRUNUID environment variable that is accessible within a test as well as a command line option --testrunuid to manually set the value from outside.</comment>
+    <requestid>799798</requestid>
+  </revision>
 </revisionlist>

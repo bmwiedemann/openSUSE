@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-xdist
-Version:        1.31.0
+Version:        1.32.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-xdist
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest-xdist-%{version}.tar.gz
 BuildRequires:  %{python_module execnet >= 1.1}
@@ -76,7 +75,7 @@ sed -i 's/\r//' README.rst
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.rst ISSUES.txt README.rst
