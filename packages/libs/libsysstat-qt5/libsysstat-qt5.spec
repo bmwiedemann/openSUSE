@@ -1,7 +1,7 @@
 #
 # spec file for package libsysstat-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %define         _name libsysstat
 Name:           libsysstat-qt5
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Library used to query system info and statistics
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.lxqt.org
-Source:         https://github.com/lxde/%{_name}/releases/download/%{version}/%{_name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{_name}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
+Source:         https://github.com/lxqt/libsysstat/releases/download/%{version}/libsysstat-%{version}.tar.xz
+Source1:        https://github.com/lxqt/libsysstat/releases/download/%{version}/libsysstat-%{version}.tar.xz.asc
 Source2:        libsysstat-qt5.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.6.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7.1
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10.0
 
 %description
 Library used to query system info and statistics.
