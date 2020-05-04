@@ -149,4 +149,12 @@
     <comment>- Don't require glibc &gt;= 2.30, it works actually without it</comment>
     <requestid>746244</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7876f66b7ec231a2953fabf553a6e15f</srcmd5>
+    <version>2.1.0</version>
+    <time>1588622464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797669</requestid>
+  </revision>
 </revisionlist>
