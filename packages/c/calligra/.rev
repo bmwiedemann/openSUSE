@@ -635,4 +635,12 @@ It will replace Koffice in O:F</comment>
     <comment></comment>
     <requestid>799354</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>d5fff1232fcc919030e03cbf8f3f431e</srcmd5>
+    <version>3.2.0</version>
+    <time>1588610634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800094</requestid>
+  </revision>
 </revisionlist>

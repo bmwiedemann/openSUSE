@@ -20,7 +20,7 @@
 Name:           calligra
 Version:        3.2.0
 Release:        0
-Summary:        Libraries and Base Files for the KDE Office Suite
+Summary:        Libraries and Base Files for the Calligra Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
 Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
@@ -37,6 +37,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_system-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libetonyek-devel
+BuildRequires:  libgit2-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libodfgen-devel
 BuildRequires:  libpoppler-qt5-devel
@@ -122,6 +123,10 @@ This package contains the base files and libraries for the Suite.
 Summary:        Touched-based optimized Calligra Suite
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Suite
+Requires:       kirigami2
+Requires:       libqt5-qtquickcontrols
+# needed for Dropbox login
+Recommends:     libqt5-qtwebengine
 
 %description gemini
 Touched based optimized Calligra Suite
@@ -456,6 +461,7 @@ sed -ri s,.*%{_datadir}/doc/kde/HTML/en/.*,, filelists/*
 %dir %{_kf5_qmldir}/Calligra
 %dir %{_kf5_qmldir}/Calligra/Gemini
 %dir %{_kf5_qmldir}/Calligra/Gemini/Dropbox
+%dir %{_kf5_qmldir}/Calligra/Gemini/Git
 %dir %{_kf5_qmldir}/org
 
 %files sheets -f filelists/sheets
