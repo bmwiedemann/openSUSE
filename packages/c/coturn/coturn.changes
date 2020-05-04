@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May  4 12:58:39 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Extended Readme.SUSE with description on how to bind to ports below 1024
+- Fixes and enhancements in service-file
+- /etc/sysconfig/coturn defaults now to not show software's version to the public
+
+- Version 4.5.1.2:
+  * Do not display empty CLI passwd alert if CLI is not enabled
+  * Removed several functions: gh#coturn/coturn#359
+  * Fix webadmin IP permission and possible SQL-injections: gh#coturn/coturn#386
+  * Fix Mongo driver crash on invalid connection string: gh#coturn/coturn#390
+  * enhanced fread return length check: gh#coturn/coturn#392
+  * disconnect database gracefully: #367
+  * Using SSL_get_version method for BoringSSL compatibility: 
+    turn_session_info->tls_method returns real TLS version:
+    gh#coturn/coturn#382
+  * Added systemd service example: gh#coturn/coturn#276
+  * Add bandwidth usage reporting packet/bandwidth usage by peers:
+    gh#coturn/coturn#284
+  * Modifying configure to enable compile with private libraries:
+    gh#coturn/coturn#381
+  * Append to log files rather than overriding them: gh#coturn/coturn#417
+  * Updated incorrect string length check for 'ssh': gh#coturn/coturn#442
+  * Fix Dockerfile for latest Debian: gh#coturn/coturn#449
+  * CVE-2020-6061, CVE-2020-6062: specially crafted HTTP POST request can lead
+    to heap overflow which can result in information leak:
+    gh#coturn/coturn#489
+  * STUN input validation: gh#coturn/coturn#472
+  * Allow MD5 in FIPS mode: gh#coturn/coturn#398
+  * update travis config ubuntu/mac images
+  * added null check for second char: gh#coturn/coturn#466
+  * compiler warning fixes: gh#coturn/coturn#470
+  * Fix a memory leak when an SHATYPE isn't supported: gh#coturn/coturn#471
+  * fix compiler warning comparison between signed and unsigned integer expressions
+  * fix compiler warning string truncation
+  * change Diffie Hellman default key length from 1066 to 2066
+  * drop of supplementary group IDs: gh#coturn/coturn#522
+  * Unify spelling of Coturn: gh#coturn/coturn#514
+  * Rename "prod" config option to "no-software-attribute": gh#coturn/coturn#506
+    gh#coturn/coturn#478
+  * change sql data dir in docker-compose-all.yml: gh#coturn/coturn#516
+  * add flags to disable periodic use of dynamic tables: gh#coturn/coturn#525
+
+  * fix typos and grammar: gh#coturn/coturn#463, gh#coturn/coturn#488
+  * Update README.docker: gh#coturn/coturn#475
+  * fix config extension in README.docker: gh#coturn/coturn#519
+  * Code beautifications: gh#coturn/coturn#327, gh#coturn/coturn#455,
+    gh#coturn/coturn#513
+
+- Removed patches now included in upstream: coturn-4.5.1.0-append-log.patch, 
+  coturn-4.5.1.1-cve-2020-6061.patch, coturn-4.5.1.1-cve-2020-6062.patch and 
+  coturn-4.5.1.1.missing-call-to-setgroups-before-setuid.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 18:38:59 UTC 2020 - lars@linux-schulserver.de
 
 - added apparmor profile (coturn-apparmor-usr.bin.turnserver)

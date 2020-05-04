@@ -5,4 +5,4 @@
 #
 # TURN Server startup options
 #
-EXTRA_OPTIONS=""
+EXTRA_OPTIONS="--no-software-attribute"

@@ -17,14 +17,14 @@
 
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-%bcond_without  apparmor
 %if 0%{?suse_version} > 1320
 %bcond_without  apparmor_reload
 %else
 %bcond_with     apparmor_reload
 %endif
+%bcond_without  apparmor
 Name:           coturn
-Version:        4.5.1.1
+Version:        4.5.1.2
 Release:        0
 Summary:        TURN and STUN server for VoIP
 License:        BSD-3-Clause
@@ -39,14 +39,6 @@ Source5:        %{name}.sysconfig
 Source6:        %{name}.firewalld
 Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
-# PATCH-FIX-UPSTREAM coturn-4.5.1.0-append-log.patch Append only to log files rather to override them
-Patch0:         coturn-4.5.1.0-append-log.patch
-# PATCH-FIX-UPSTREAM  coturn-4.5.1.1-cve-2020-6061.patch CVE-2020-6061
-Patch1:         coturn-4.5.1.1-cve-2020-6061.patch
-# PATCH-FIX-UPSTREAM  coturn-4.5.1.1-cve-2020-6062.patch CVE-2020-6062
-Patch2:         coturn-4.5.1.1-cve-2020-6062.patch
-# PATCH-FIX-UPSTREAM   coturn-4.5.1.1.missing-call-to-setgroups-before-setuid.patch fix rpmlint error
-Patch3:         coturn-4.5.1.1.missing-call-to-setgroups-before-setuid.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0
@@ -59,6 +51,10 @@ BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssl) >= 1.0.2
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+Requires(pre):  %fillup_prereq
+Requires(pre):  shadow
+Recommends:     logrotate
+%sysusers_requires
 %if %{with apparmor}
 %if 0%{?suse_version} <= 1315
 BuildRequires:  apparmor-profiles
@@ -71,10 +67,6 @@ Recommends:     apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 %endif
 %endif
-Requires(pre):  %fillup_prereq
-Requires(pre):  shadow
-Recommends:     logrotate
-%sysusers_requires
 
 %description
 STUN (Session Traversal Utilities for NAT) and TURN (Traversal Using Relays
