@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pry
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pry
-Version:        0.12.2
+Version:        0.13.1
 Release:        0
 %define mod_name pry
 %define mod_full_name %{mod_name}-%{version}
@@ -33,16 +33,18 @@ BuildRequires:  %{ruby >= 1.9.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://pryrepl.org
+URL:            http://pry.github.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        An IRB alternative and runtime developer console
+Summary:        A runtime developer console and IRB alternative with powerful
 License:        MIT
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
-An IRB alternative and runtime developer console.
+Pry is a runtime developer console and IRB alternative with powerful
+introspection capabilities. Pry aims to be more than an IRB replacement. It is
+an attempt to bring REPL driven programming to the Ruby language.
 
 %prep
 
