@@ -1,7 +1,7 @@
 #
 # spec file for package python-peppercorn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,13 +25,11 @@ Summary:        Pyramid exceptions logger
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://docs.pylonsproject.org/projects/peppercorn/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/peppercorn/peppercorn-%{version}.tar.gz
-# Testing requirements:
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pylons-sphinx-themes}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# Documentation requirements:
+# Documentation requirement
 BuildRequires:  python3-Sphinx
 BuildArch:      noarch
 %python_subpackages
@@ -40,10 +38,6 @@ BuildArch:      noarch
 A library for converting a token stream into a data structure comprised of
 sequences, mappings, and scalars, developed primarily for converting HTTP form
 POST data into a richer data structure.
-
-Please see the -doc package or
-http://docs.pylonsproject.org/projects/peppercorn/en/latest/ for the
-documentation.
 
 %package -n %{name}-doc
 Summary:        Documentation for Pyramid exceptions logger
@@ -63,14 +57,10 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py nosetests --with-coverage
+%python_exec -m unittest discover -v
 
 %files %{python_files}
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license LICENSE.txt
-%else
-%license LICENSE.txt
-%endif
 %doc CHANGES.rst CONTRIBUTORS.txt COPYRIGHT.txt README.rst contributing.md
 %{python_sitelib}/*
 
