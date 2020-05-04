@@ -105,10 +105,8 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(graphene-1.0)
 %endif
-%if 0%{?suse_version} >= 1500 || 0%{?is_opensuse}
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig(wayland-egl) >= 1.0
-%endif
 Requires:       %{gstreamer_plugins_base_req}
 Recommends:     PackageKit-gstreamer-plugin
 Supplements:    gstreamer
@@ -489,9 +487,7 @@ export PYTHON=%{_bindir}/python3
 	-Dpackage-origin='http://download.opensuse.org'\
 	-Dgtk_doc=enabled \
 	-Dintrospection=enabled \
-%if 0%{?is_opensuse}
 	-Dorc=enabled \
-%endif
 	-Dexamples=disabled \
 	-Dtremor=disabled \
 	%{nil}
@@ -504,9 +500,7 @@ export PYTHON=%{_bindir}/python3
 	--enable-gtk-doc \
 	--enable-introspection \
 	--disable-examples \
-%if 0%{?is_opensuse}
 	--enable-orc \
-%endif
 	%{nil}
 %make_build
 %endif

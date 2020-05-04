@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 17:42:26 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Remove is_opensuse conditionals / really enable orc on SLE 15
+  (jsc#SLE-12265). 
+
+-------------------------------------------------------------------
 Fri Mar  6 08:42:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gstreamer-plugins-base-gl-deps.patch: Workaround incomplete
