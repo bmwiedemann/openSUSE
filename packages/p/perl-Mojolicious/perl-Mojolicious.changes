@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  2 03:13:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 8.41
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.41  2020-04-30
+    - Improved Mojolicious::Commands to treat commands like
+      "mojo generate lite_app" as "mojo generate lite-app".
+  
+
+-------------------------------------------------------------------
 Thu Apr 23 10:37:37 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 8.40
