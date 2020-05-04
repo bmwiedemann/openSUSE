@@ -17,14 +17,14 @@
 
 
 Name:           lxqt-session
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
-Source:         https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxde/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # FIX-OPENSUSE mvetter@suse.com bsc#1099800
 Patch0:         lxqt-0.13.0-xdg-config-dir.patch
@@ -35,7 +35,7 @@ Patch2:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.5.0
+BuildRequires:  lxqt-build-tools-devel >= 0.7.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF5WindowSystem)
