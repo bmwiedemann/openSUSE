@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 07:29:52 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 0.29.17
+  * std::move() is now available from libcpp.utility.
+  * The @cython.binding decorator is available in Python code.
+
+-------------------------------------------------------------------
 Fri Apr 17 08:10:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.29.16
