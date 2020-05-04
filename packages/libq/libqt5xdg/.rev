@@ -341,4 +341,12 @@
     - Ports towards C++11 override specifiers</comment>
     <requestid>760614</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2fd7465ea075a548fab9e5af766a2f54</srcmd5>
+    <version>3.5.0</version>
+    <time>1588610348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798582</requestid>
+  </revision>
 </revisionlist>
