@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May  4 03:59:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.51
+  + New features
+    * PyGithub now supports type checking
+    * Ability to retrieve public events
+    * Add and handle the maintainer_can_modify attribute in PullRequest
+    * List matching references
+    * Add create_repository_dispatch
+    * Add some Organization and Repository attributes.
+    * Add create project method
+  + Bug Fixes & Improvements
+    * Drop use of shadow-cat for draft PRs
+    * AuthenticatedUser.get_organization_membership() should be str
+    * Drop documentation for len() of PaginatedList
+    * Fix param name of projectcard's move function
+    * Correct typos found with codespell
+    * Export IncompletableObject in the github namespace
+    * Add GitHub Action workflow for checks
+    * Drop unneeded ignore rule for flake8
+    * Use pytest to parametrize tests
+    * Type stubs are now packaged with the build
+    * Get the project column by id
+- Drop parametrized and pytest-cov from BuildRequires.
+
+-------------------------------------------------------------------
 Mon Mar 16 07:10:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.47
