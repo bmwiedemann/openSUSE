@@ -17,7 +17,7 @@
 
 
 Name:           perl-IO-Socket-SSL
-Version:        2.067
+Version:        2.068
 Release:        0
 %define cpan_name IO-Socket-SSL
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
@@ -78,6 +78,9 @@ Additional documentation can be found in
 %prep
 %setup -q -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+# MANUAL BEGIN
+rm README.Win32
+# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -89,9 +92,6 @@ make test
 %install
 %perl_make_install
 %perl_process_packlist
-# MANUAL BEGIN
-rm README.Win32
-# MANUAL END
 %perl_gen_filelist
 
 %files -f %{name}.files

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 17:49:31 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- updated to 2.068
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.068 2020/03/31
+  - treat OpenSSL 1.1.1e as broken and refuse to build with it in order to
+    prevent follow-up problems in tests and user code
+    https://github.com/noxxi/p5-io-socket-ssl/issues/93
+    https://github.com/openssl/openssl/issues/11388
+    https://github.com/openssl/openssl/issues/11378
+  - update PublicSuffix with latest data from publicsuffix.org
+
+-------------------------------------------------------------------
 Tue Feb 18 15:28:53 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Add removal of the README.Win32 file in cpanspec.yml
