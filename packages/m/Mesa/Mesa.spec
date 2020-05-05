@@ -752,6 +752,12 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
   mv "%{_sourcedir}/temp" "%{_sourcedir}/baselibs.conf"
 %endif
 
+# Avoid build error for PowerPC
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1171045
+%ifarch ppc64 ppc64le
+sed -i -e s/cpp_std=gnu++11/cpp_std=gnu++14/g meson.build
+%endif
+
 %build
 egl_platforms=x11,drm,surfaceless,wayland
 
