@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  5 06:46:04 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Update to 5.0.0
+  * remove .travis.yml
+  * extract test reqs
+  * Update test.yml
+  * Create test.yml
+  * Bump linters, run flake and black on examples (#355)
+  * Speed up SocketClient shutdown (#352)
+  * Improve debug messages (#353)
+  * Fix bugs in Chromecast.is_idle and ReceiverController.launch_app (#350)
+  * Improve examples and docstrings (#351)
+  * Remove blocking option from Chromecast (#349)
+  * Add helper function get_listed_chromecasts (#348)
+  * Correct mistake in PR#345 (#346)
+  * Lookup manufacturer, remove multizone helper. (#345)
+- Update python-zeroconf Require
+ 
+-------------------------------------------------------------------
 Thu Mar 26 16:24:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.2.0
