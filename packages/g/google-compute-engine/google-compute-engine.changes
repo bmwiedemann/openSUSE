@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:25:22 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add gceosl-no-def-sysgrps.patch (bsc#1170719, bsc#1170720)
+  + Do not add the created user to the adm, docker, or lxd groups
+    if they exist
+
+-------------------------------------------------------------------
 Wed Apr  8 15:45:59 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Rename the sysctl file that applies the GCE network settings (bsc#1167810)
