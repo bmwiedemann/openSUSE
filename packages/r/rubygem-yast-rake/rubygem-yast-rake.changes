@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:14:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only build gems for the default ruby version (boo#1169445).
+
+-------------------------------------------------------------------
+Wed Feb  5 08:32:16 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "rake server" task (bsc#1162826)
+- 0.2.37
+
+-------------------------------------------------------------------
 Fri Sep  6 10:44:43 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Submit the SLE12-SP5 packages to Updates (not to GA) (bsc#1149771)

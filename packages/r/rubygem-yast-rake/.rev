@@ -265,4 +265,15 @@
     <comment>submit new version 0.2.36</comment>
     <requestid>728968</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b03ef736fcbf78fbefec9977fdad03a8</srcmd5>
+    <version>0.2.37</version>
+    <time>1588697610</time>
+    <user>dimstar_suse</user>
+    <comment>- Only build gems for the default ruby version (boo#1169445).
+
+- Added &quot;rake server&quot; task (bsc#1162826)
+- 0.2.37</comment>
+    <requestid>798707</requestid>
+  </revision>
 </revisionlist>

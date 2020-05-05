@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yast-rake
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,12 @@
 #
 
 
+# Only build for the default-ruby version
+%define rb_build_versions     %{rb_default_ruby}
+%define rb_build_ruby_abis    %{rb_default_ruby_abi}
+
 Name:           rubygem-yast-rake
-Version:        0.2.36
+Version:        0.2.37
 Release:        0
 %define mod_name yast-rake
 %define mod_full_name %{mod_name}-%{version}
@@ -25,7 +29,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:gem2rpm)
-Url:            http://github.org/openSUSE/yast-rake
+URL:            http://github.org/openSUSE/yast-rake
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
 Summary:        Rake tasks providing basic work-flow for Yast development
 License:        LGPL-2.1-only
