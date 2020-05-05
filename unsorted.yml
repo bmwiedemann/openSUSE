@@ -4741,7 +4741,6 @@ unsorted:
   - gnu-regexp 
   - gnu-regexp-demo 
   - gnu-regexp-javadoc 
-  - gnu-unifont-bitmap-fonts 
   - gnu-unifont-legacy-bitmap-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
@@ -9150,9 +9149,10 @@ unsorted:
   - libfm-gtk-devel 
   - libfm-gtk4 
   - libfm-lang 
+  - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt6 
+  - libfm-qt7 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -17970,12 +17970,16 @@ unsorted:
   - pluma-devel 
   - pluma-lang 
   - plymouth-devel 
-  - plymouth-plugin-label-ft 
+  - plymouth-plugin-fade-throbber 
   - plymouth-plugin-script 
+  - plymouth-plugin-space-flares 
+  - plymouth-plugin-throbgress 
   - plymouth-plugin-tribar 
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
+  - plymouth-theme-fade-in 
   - plymouth-theme-script 
+  - plymouth-theme-solar 
   - plymouth-theme-spinfinity 
   - plymouth-theme-tribar 
   - plzip 
@@ -18585,9 +18589,7 @@ unsorted:
   - python2-FontTools 
   - python2-Glances 
   - python2-QR-Code-generator 
-  - python2-ZODB 
   - python2-aexpect 
-  - python2-antlr 
   - python2-appindicator 
   - python2-arabic-reshaper 
   - python2-aws-sam-translator 
@@ -18595,11 +18597,9 @@ unsorted:
   - python2-azure-datalake-store 
   - python2-boost_parallel_mpi1_71_0 
   - python2-braille 
-  - python2-capng 
   - python2-cfn-lint 
   - python2-clustershell 
   - python2-cram 
-  - python2-deltarpm 
   - python2-efilter 
   - python2-efl 
   - python2-efl-doc 
@@ -18607,7 +18607,6 @@ unsorted:
   - python2-evemu 
   - python2-geopy 
   - python2-gobject-Dee 
-  - python2-grpcio 
   - python2-gv 
   - python2-hankel: [i586] 
   - python2-jupyter-packaging 
@@ -18619,31 +18618,21 @@ unsorted:
   - python2-libguestfs: [x86_64] 
   - python2-liblnk 
   - python2-libolecf 
-  - python2-libpfm 
   - python2-libqcow 
   - python2-libregf 
-  - python2-libtorrent-rasterbar 
   - python2-libunity 
-  - python2-lit 
   - python2-markdown2 
-  - python2-miniupnpc 
   - python2-moto 
   - python2-moviepy 
   - python2-mraa: [i586] 
   - python2-napalm-asa 
-  - python2-net-snmp 
   - python2-num2words 
   - python2-opencensus-ext-threading 
-  - python2-opencv 
-  - python2-opencv3 
   - python2-osc-tiny 
   - python2-ovs 
   - python2-pip 
   - python2-pivy 
   - python2-proliantutils 
-  - python2-protobuf 
-  - python2-pwquality 
-  - python2-pybugz 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-pysaml2: [i586] 
@@ -18654,10 +18643,8 @@ unsorted:
   - python2-suds-jurko 
   - python2-sushy 
   - python2-tooz 
-  - python2-unbound 
   - python2-upm 
   - python2-yaql 
-  - python2-zypp-plugin 
   - python3-32bit: [x86_64] 
   - python3-APScheduler 
   - python3-AnyQt 
@@ -22392,8 +22379,6 @@ unsorted:
   - ruby2.6-rubygem-po_to_json-doc 
   - ruby2.6-rubygem-po_to_json-testsuite 
   - ruby2.6-rubygem-polyglot-doc 
-  - ruby2.6-rubygem-pry 
-  - ruby2.6-rubygem-pry-doc 
   - ruby2.6-rubygem-pry-doc-testsuite 
   - ruby2.6-rubygem-pry_debug 
   - ruby2.6-rubygem-pry_debug-doc 

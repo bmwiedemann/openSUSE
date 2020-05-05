@@ -780,6 +780,7 @@
     <package name="gnome-weather" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-weather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnomekbd-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gnu-unifont-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="google-arimo-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-carlito-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="google-cousine-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3643,6 +3644,7 @@
     <package name="plymouth-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-label" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="plymouth-plugin-label-ft" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-two-step" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-theme-bgrt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4304,6 +4306,8 @@
     <package name="ruby2.6-rubygem-pkg-config" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-po_to_json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-polyglot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-pry" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.6-rubygem-pry-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-public_suffix" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-public_suffix-3.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.6-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
