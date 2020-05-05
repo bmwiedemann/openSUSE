@@ -454,4 +454,12 @@
     <comment>- switch the default ruby to 2.6</comment>
     <requestid>669454</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a815621201db188f5cc891ba81747e6b</srcmd5>
+    <version>2.7</version>
+    <time>1588697607</time>
+    <user>dimstar_suse</user>
+    <comment>- switch the default ruby to 2.7</comment>
+    <requestid>774943</requestid>
+  </revision>
 </revisionlist>
