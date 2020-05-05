@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May  4 16:05:22 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.1
+
+  ## Fixed
+  - Corosync membership parsing (#154)
+
+-------------------------------------------------------------------
+Mon May  4 09:26:45 2020 UTC - shap-staff@suse.de
+
+- Release 1.0.0
+
+  ## Added
+  - New `group` and `clone` labels for `ha_cluster_pacemaker_resources` metric. (#145, #153)
+  - New `ha_cluster_corosync_member_votes` metric and new labels for `ha_cluster_corosync_rings`. (#151)
+
+  ## Fixed
+  - **BC Break** - `ha_cluster_pacemaker_nodes` and `ha_cluster_pacemaker_resources` now report `0` values instead of disappearing. (#152) 
+  - Grouped resources in stopped status are now tracked correctly. (#145)
+  - Error handling during collection cycles is more consistent across the board. (#148)
+  - Corosync v3 is now explicitly reported as not being currently supported. (#149)
+
+  ## Removed
+  - Unnecessary file I/O in DRBD collector. (#150)
+
+-------------------------------------------------------------------
 Tue Mar 31 13:46:16 2020 UTC - shap-staff@suse.de
 
 - Release 1.0.0rc1
