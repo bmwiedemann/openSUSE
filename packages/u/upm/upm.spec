@@ -1,7 +1,7 @@
 #
 # spec file for package upm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(mraa) >= 2.0.0
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
@@ -73,21 +72,6 @@ location of the sensor.
 
 This package contains development files for %{name}.
 
-%package -n python2-%{name}
-Summary:        Python bindings for %{name}
-Group:          Development/Languages/Python
-Requires:       lib%{name}%{sover} = %{version}
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < %{version}
-
-%description -n python2-%{name}
-The UPM repository provides software drivers for a wide variety of commonly
-used sensors and actuators. These software drivers interact with the
-underlying hardware platform (or microcontroller), as well as with the
-attached sensors, through calls to MRAA APIs.
-
-This package contains python bindings for %{name}.
-
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Languages/Python
@@ -121,7 +105,6 @@ rm -rf docs/images
 
 %build
 %define __builder ninja
-%define _lto_cflags %{nil}
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_EXE_LINKER_FLAGS="" \
@@ -129,10 +112,11 @@ rm -rf docs/images
   -DBUILDSWIGNODE=off \
   -DBUILDFTI=on \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
+sed -i "s|jpeg|libjpeg|g" %{buildroot}%{_libdir}/pkgconfig/upm-vcap.pc
 rm -rf %{buildroot}%{_datadir}/upm
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
@@ -147,9 +131,6 @@ rm -rf %{buildroot}%{_datadir}/upm
 %{_libdir}/lib%{name}*.so
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}*
-
-%files -n python2-%{name}
-%{python_sitearch}/*
 
 %files -n python3-%{name}
 %{python3_sitearch}/*

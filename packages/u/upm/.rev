@@ -119,4 +119,15 @@
     <comment>- Disable LTO (currently broken)</comment>
     <requestid>723213</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>81abd7ebb5fae31420206645963ff07c</srcmd5>
+    <version>2.0.0</version>
+    <time>1588697729</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency of devel package on libjpeg
+
+- Drop python2 support
+- Re-enable LTO</comment>
+    <requestid>800236</requestid>
+  </revision>
 </revisionlist>
