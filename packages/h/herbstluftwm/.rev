@@ -90,4 +90,28 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
   * Fixes to make it compile on other systems and architecture</comment>
     <requestid>795955</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>72081fa0fe4e786b7ba4fe7b9847b2bb</srcmd5>
+    <version>0.8.2</version>
+    <time>1588697775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * Selection of empty frames by the mouse (by click or by hover if
+    focus_follows_mouse is enabled)
+  * The commands 'close_and_remove' / 'close_or_remove' act like
+    'close' for floating clients
+  * The decoration window allows focusing, moving, and resizing
+    the client via the mouse (as known from standard floating
+    window managers)
+  * Improved herbstclient tab completion for the fish shell
+  * Fix a crash in the error handler when a invalid monitor
+    name is passed. (Affects list_padding move_monitor
+    rename_monitor lock_tag unlock_tag)
+  * Fix the type of WM_STATE
+  * The client attributes sizehints_tiling and sizehints_floating
+    are now writable
+  * Fix EWMH urgency change for clients without WM hints set
+  * Fix the exit code of the 'focus' command</comment>
+    <requestid>800246</requestid>
+  </revision>
 </revisionlist>
