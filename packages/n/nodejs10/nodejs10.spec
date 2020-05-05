@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.19.0
+Version:        10.20.1
 Release:        0
 
 %define node_version_number 10
@@ -147,7 +147,6 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 Patch104:       npm_search_paths.patch
 Patch105:       skip_test_on_lowmem.patch
 Patch106:       skip_no_console.patch
-Patch108:       openssl_rand_regression.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -295,7 +294,7 @@ Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.13.4
+Provides:       npm(npm) = 6.14.3
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -356,7 +355,6 @@ tar Jxvf %{SOURCE11}
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
-%patch108 -p1
 %patch120 -p1
 %patch200 -p1
 
@@ -526,6 +524,8 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}
 %endif
+
+export NODE_TEST_NO_INTERNET=1
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests

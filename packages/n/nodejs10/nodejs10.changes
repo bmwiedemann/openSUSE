@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 27 13:02:42 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.20.1:
+  * buffer: add {read|write}Big[U]Int64{BE|LE} methods
+  * build: macOS package notarization
+  * deps:
+    + update npm to 6.14.3
+    + upgrade openssl sources to 1.1.1e
+    + upgrade to libuv 1.34.2
+  * n-api:
+    + add napi_get_all_property_names
+    + add APIs for per-instance state management
+    + define release 6
+    + turn NAPI_CALL_INTO_MODULE into a function
+  * tls:
+    + expose keylog event on TLSSocket
+    + support TLS min/max protocol defaults in CLI
+  * url: handle quasi-WHATWG URLs in urlToOptions()
+
+- openssl_rand_regression.patch: upstreamed
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Mar  2 09:43:10 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - openssl_rand_regression.patch: Add getrandom syscall definition
