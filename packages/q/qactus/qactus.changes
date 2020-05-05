@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 19:42:47 UTC 2020 - Javier Llorente <javier@opensuse.org>
+
+- Update to 2.0.1
+  * RequestStateEditor bugfixes:
+    - get the full diff for the selected request
+    - use the right OBS signal finishedParsingRequestStatus()
+
+-------------------------------------------------------------------
 Mon Apr 20 08:36:45 UTC 2020 - Javier Llorente <javier@opensuse.org>
 
 - Update to 2.0.0
