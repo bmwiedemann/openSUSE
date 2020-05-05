@@ -16,6 +16,9 @@
 #
 
 
+# Let the distro decide if py2 support is still valid. TW disables it
+%bcond_without python2
+
 %define soname  libevemu
 %define sover   3
 Name:           evemu
@@ -32,7 +35,9 @@ BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+%if %{with python2}
 BuildRequires:  python2-devel
+%endif
 BuildRequires:  python3-devel
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libevdev) >= 1.2.99.902
@@ -103,7 +108,11 @@ sed -i \
 
 %build
 %global _configure ../configure
-for py in python2 python3; do
+%if  %{with python2}
+PYTHONS=python2
+%endif
+PYTHONS="$PYTHONS python3"
+for py in $PYTHONS; do
     export PYTHON=$py
     mkdir -p build-$py
     pushd build-$py
@@ -116,7 +125,9 @@ for py in python2 python3; do
 done
 
 %install
+%if %{with python2}
 %make_install -C build-python2
+%endif
 %make_install -C build-python3
 
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -127,7 +138,9 @@ rm -f %{buildroot}%{python_sitelib}/%{name}/*.pyo \
 
 %fdupes %{buildroot}%{_bindir}/
 %fdupes %{buildroot}%{_mandir}/
+%if %{with python2}
 %fdupes %{buildroot}%{python2_sitelib}
+%endif
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 
@@ -142,9 +155,11 @@ rm -f %{buildroot}%{python_sitelib}/%{name}/*.pyo \
 %license COPYING
 %{_libdir}/%{soname}.so.%{sover}*
 
+%if %{with python2}
 %files -n python2-%{name}
 %license COPYING
 %{python2_sitelib}/%{name}/
+%endif
 
 %files -n python3-%{name}
 %license COPYING
