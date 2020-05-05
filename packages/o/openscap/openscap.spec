@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define with_bindings 0
 
 Name:           openscap
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
 # temp snapshot to make it build with new RPM before 1.3.2
@@ -39,9 +39,7 @@ Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
 Patch0:         openscap-new-suse.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Do-not-use-C-keyword-operator-as-a-function-paramete.patch
-Url:            https://www.open-scap.org/
+URL:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  doxygen
@@ -174,7 +172,6 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %if 0%{?with_bindings}
@@ -288,6 +285,7 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 %doc docs/oscap-scan.cron
 %{_mandir}/man8/*
 %{_unitdir}/oscap-scan.service
+%{_bindir}/autotailor
 %{_bindir}/oscap
 %{_bindir}/oscap-vm
 %{_bindir}/oscap-scan
