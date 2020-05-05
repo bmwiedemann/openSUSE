@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fabric
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://fabfile.org
 Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%{version}.tar.gz
+# fix executable in tests
+Patch0:         fix-executable.patch
 BuildRequires:  %{python_module cryptography >= 1.1}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 1.3}
@@ -68,6 +70,7 @@ Fabric itself leverages).
 %setup -q -n fabric-%{version}
 # fix all imports:
 sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py integration/concurrency.py tests/config.py tests/transfer.py tests/_util.py tests/connection.py tests/runners.py
+%patch0 -p1
 
 %build
 %python_build
