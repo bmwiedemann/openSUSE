@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  5 12:58:13 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.7.3
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Removed e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Removed ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Removed e7dcc74b5529da209266020852a72b554461e538.patch
+
+-------------------------------------------------------------------
+Mon May  4 15:15:50 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.7.2
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Added e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Added ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Added e7dcc74b5529da209266020852a72b554461e538.patch
+
+-------------------------------------------------------------------
 Thu Apr 23 10:39:15 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.7.1
