@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  2 21:50:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.17.2:
+  * fixes dealing with boost 1.73
+
+-------------------------------------------------------------------
 Fri Apr 17 20:53:02 UTC 2020 - Vitaly Yermolchyk <yermolchyk@gmail.com>
 
 - Add cmake-fix-png-include-dir.patch to fix the png include dir
