@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Apr 29 15:48:50 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Move libdcerpc-server-core.so to samba-libs package, this was
+  initially erroneously located in  samba-ad-dc.
+
+-------------------------------------------------------------------
+Tue Apr 28 11:44:07 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Update to samba 4.12.2
+  + CVE-2020-10700: A client combining the 'ASQ' and
+    'Paged Results' LDAP controls can cause a use-after-free
+    in Samba's AD DC LDAP server;(bso#14331); (bsc#1169850)
+  + CVE-2020-10704: A deeply nested filter in an un-authenticated
+    LDAP search can exhaust the LDAP server's stack memory causing
+    a SIGSEGV; (bso#14334); (bsc#1169851).
+
+-------------------------------------------------------------------
+Mon Apr 13 09:07:02 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.12.1
+  + nmblib: Avoid undefined behaviour in handle_name_ptrs(); (bso#14295);
+  + samba-tool group: Handle group names with special chars correctly;
+    (bso#14296);
+  + Add missing check for DMAPI offline status in async DOS attributes;
+    (bso#14293);
+  + Starting ctdb node that was powered off hard before results in recovery
+    loop; (bso#14295);
+  + smbd: Ignore set NTACL requests which contain S-1-5-88 NFS ACEs;
+    (bso#14307);
+  + vfs_recycle: Prevent flooding the log if we're called on non-existant
+    paths; (bso#14316);
+  + librpc: Fix IDL for svcctl_ChangeServiceConfigW; (bso#14313);
+  + nsswitch: Fix use-after-free causing segfault in _pam_delete_cred;
+    (bso#14327);
+  + fruit:time machine max size is broken on arm; (bso#13622);
+  + CTDB recovery corner cases can cause record resurrection and node
+    banning; (bso#14294);
+  + s3/utils: Fix double free error with smbtree; (bso#14332);
+  + CTDB recovery corner cases can cause record resurrection and node
+    banning; (bso#14294);
+  + Starting ctdb node that was powered off hard before results in recovery
+    loop; (bso#14295);
+  + CTDB recovery daemon can crash due to dereference of NULL pointer;
+    (bso#14324);
+
+-------------------------------------------------------------------
 Wed Mar 25 12:52:55 UTC 2020 - Noel Power <nopower@suse.com>
 
 - s3: libsmbclient.h: add missing time.h include to fix

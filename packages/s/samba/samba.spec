@@ -53,7 +53,7 @@
 %define talloc_version 2.3.1
 %define tevent_version 0.10.2
 %define tdb_version    1.4.3
-%define ldb_version    2.1.1
+%define ldb_version    2.1.2
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -164,7 +164,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.12.0+git.135.dd3c974c75f
+Version:        4.12.2+git.149.16ff41ef1f4
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1784,9 +1784,9 @@ exit 0
 %{_includedir}/samba
 %dir %_includedir/samba-4.0/
 %_includedir/samba-4.0/charset.h
+%_includedir/samba-4.0/dcesrv_core.h
 %if %{with_dc}
 %_includedir/samba-4.0/dcerpc_server.h
-%_includedir/samba-4.0/dcesrv_core.h
 %endif
 %dir %_includedir/samba-4.0/core/
 %_includedir/samba-4.0/core/doserr.h
@@ -1859,6 +1859,8 @@ exit 0
 %{_libdir}/samba/libdbwrap-samba4.so
 %{_libdir}/samba/libdcerpc-samba-samba4.so
 %{_libdir}/samba/libdcerpc-samba4.so
+%{_libdir}/libdcerpc-server-core.so.0
+%{_libdir}/libdcerpc-server-core.so.0.0.1
 %if %{with_dc}
 %{_libdir}/samba/libdb-glue-samba4.so
 %{_libdir}/samba/libdfs-server-ad-samba4.so
@@ -2182,12 +2184,11 @@ exit 0
 %_libdir/libdcerpc.so
 %_libdir/libdcerpc-binding.so
 %_libdir/pkgconfig/dcerpc.pc
+%_libdir/libdcerpc-server-core.so
 %if %{with_dc}
 %_libdir/libdcerpc-server.so
-%_libdir/libdcerpc-server-core.so
 %_libdir/pkgconfig/dcerpc_server.pc
 %endif
-
 %files -n libndr-krb5pac0
 %defattr(-,root,root)
 %_libdir/libndr-krb5pac.so.0*
@@ -2430,8 +2431,6 @@ exit 0
 %{_libdir}/krb5/plugins/kdb/samba.so
 %{_libdir}/libdcerpc-server.so.0
 %{_libdir}/libdcerpc-server.so.0.0.1
-%{_libdir}/libdcerpc-server-core.so.0
-%{_libdir}/libdcerpc-server-core.so.0.0.1
 %{_libdir}/samba/bind9
 %{_libdir}/samba/bind9/dlz_bind9.so
 %{_libdir}/samba/bind9/dlz_bind9_10.so

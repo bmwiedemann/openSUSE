@@ -3295,4 +3295,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>789000</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>256efe53e8079d21b48d3cf60f68e224</srcmd5>
+    <version>4.12.2+git.149.16ff41ef1f4</version>
+    <time>1588697622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799341</requestid>
+  </revision>
 </revisionlist>
