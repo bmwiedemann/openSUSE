@@ -1,7 +1,7 @@
 #
 # spec file for package fips
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fips
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        OpenGL-based FITS image viewer
 License:        LGPL-3.0-only
 Group:          Productivity/Scientific/Astronomy
-Url:            https://github.com/matwey/fips3
+URL:            https://github.com/matwey/fips3
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
@@ -61,6 +61,7 @@ FIPS supports all 2D image formats except of 64-bit floating point numbers
 %license LICENSE.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/space.fips.Fips.desktop
+%{_datadir}/metainfo/space.fips.Fips.metainfo.xml
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/128x128
 %dir %{_datadir}/icons/hicolor/128x128/apps

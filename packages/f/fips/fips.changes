@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Sat May 02 11:34:58 UTC 2020 - matwey.kornilov@gmail.com
+
+- Update to version 3.4.0:
+  * Version 3.4.0
+  * Drop uninstaller link (#115)
+  * Add dist/freedesktop/space.fips.Fips.metainfo.xml
+  * Block installation on Windows earlier than 7 SP1 (#115)
+  * Migrate installer to WiX (#115)
+  * VS2019 compatibility
+  * Add Fedora to README.md
+  * Reimplement fit to window
+  * Implement image panning via left-button dragging
+  * Pass QEvent::MouseMove to OpenGLWidget
+  * Move MouseMoveEventFilter out of global namespace
+  * Drop Viewrect::setWidget()
+  * Drop view rect from Viewrect
+  * Drop view rect from OpenGLWidget
+  * Drop view rect from OpenGLTransform
+  * Introduce OpenGLTransform::setWidgetSize()
+  * Reimplement ScrollArea using virtual position and size
+  * Handle zoom in QOpenGLWidget
+  * Handle image aspect ratio in OpenGLTransform
+  * Add up-to-date compilers to .travis.yml
+  * Do not show open file dialog when drop broken file on Dock
+  * Check that at least one instance is started correctly
+  * Add initial implementation for the playback single-shot mode
+  * Initial playback interval control
+  * Initial implementation for *OpenGL30ArrayPlan (OpenGL 3.0+)
+  * Initial implementation for *OpenGLArrayPlan (OpenGL 2.1)
+  * Add playback test data
+  * Initial implementation for 3D FITS file reading
+  * Add Playback to MainWindow
+  * Initial implementation for PlaybackWidget
+  * Initial implementation for Playback
+  * Add layer getter and setter for OpenGLWidget
+  * Add layer number for HDUValueGetter
+  * Introduce AbstractOpenGLPlan::hdu()
+  * Introduce AbstractOpenGLPlan::imageTexture() const
+  * Initial implementation for *OpenGL33ArrayPlan
+  * Add implementation for OpenGLShaderProgram::setLayerUniform()
+  * Add initial implementation for *OpenGL*TextureArray
+  * Allow setting texture target in AbstractOpenGLTexture constructor
+  * Introduce AbstractOpenGLTexture::setData()
+  * Introduce AbstractOpenGLTexture::setSize()
+  * Introduce FITS::ImageDataUnit::depth()
+  * Do not fail Travis build when transfer.sh is down
+  * Use xenial in .travis.yml
+  * Add docks actions to View menu
+  * than -> then
+  * Spelling
+  * Drag and drop files
+  * Remove {{ from README for Github Pages
+  * Add bibtex for Astronomy and Computing paper
+  * Revert "Set macOS build target to 10.12"
+  * Introduce HeaderUnit::count()
+  * Add Qt 5.12
+  * Upload every macOS build to transfer.sh
+  * macOS 10.13 is required by Qt 5.12
+  * Set macOS build target to 10.12
+  * Implented FITS headers viewer
+  * Use header_as() in AbstractDataUnit::createFromPages()
+  * Make header_as<T>(key, default) behaviour consistent
+  * Disable Travis services for osx
+  * Cache brew dirs in Travis
+  * Switch to minimal Travis image
+  * Added quotation marks in CMakeLists
+  * fips accepted to openSUSE Leap 15.1
+  * Add ASCL badge
+  * README.md: Fips accepted to openSUSE
+  * Fix OpenGLWidget::pixelFromWidgetCoordinate() on big-endian systems
+  * Fix setSwapBytesEnabled argument value for *OpenGLTexture
+  * Add misc links to README.md
+  * Add FlatPak to README.md
+
+-------------------------------------------------------------------
 Sat Mar  9 09:11:03 UTC 2019 - Matwey V. Kornilov <matwey.kornilov@gmail.com>
 
 - Drop %defattr
