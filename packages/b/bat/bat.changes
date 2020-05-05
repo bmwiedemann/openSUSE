@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon May  4 14:55:12 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to version 0.15.0
+  * Features
+    - This release adds a new --diff/-d option that can be used to
+      only show lines surrounding Git changes, i.e. added, removed
+      or modified lines. The amount of additional context can be
+      controlled with --diff-context=N. See #23 and #940
+  * Bugfixes
+    - Error message printed in the middle of the output for another
+      file, see #946
+      Performance improvements when using custom caches (via bat
+      cache --build): the bat startup time should now be twice as
+      fast.
+  * Themes
+    - Updated version of the Solarized dark/light themes, see #941
+  * bat as a library
+    - There are a few changes in the "low level" API (the Config
+      struct has changed andthe error handler needs a new &mut dyn
+      Write argument). The high-level API is not affected.
+
+- Changes from version 0.14.0
+  * Features
+    - Added a new --file-name <name>… option to overwrite the
+      displayed filename(s) in the header. This is useful when
+      piping input into bat. See #654 and #892.
+    - Added a new --generate-config-file option to create an
+      initial configuration file at the right place. See #870.
+  * Bugfixes
+    - Performance problems with C# source code have been fixed, see
+      #677
+    - Performance problems with Makefiles have been fixed, see #750
+    - Fix bug when highlighting Ruby files with unindented heredocs
+      , see #914
+    - A highlighting problem with Rust source code has been fixed,
+      see #924
+    - --highlight-line did not work correctly in combination with
+      --tabs=0 and --wrap=never, see #937
+  * Other
+    - When saving/reading user-provided syntaxes or themes, bat
+      will now maintain a metadata.yaml file which includes
+      information about the bat version which was used to create
+      the cached files. When loading cached files, we now print an
+      error if they have been created with an incompatible version.
+      See #882
+    - Updated liquid dependency to 0.20, see #880
+  * bat as a library
+    - A completely new "high level" API has been added that is much
+      more convenient to use. See the examples folder for the
+      updated code. It is recommended to only use the new
+      "high level" API, if possible. Note that this should still
+      be considered a "beta" release of bat-as-a-library.
+      For more details and some screenshots of the example
+      programs, see #936.
+    - Stripped out a lot of binary-only dependencies, see #895 and
+      #899
+    - Allow using the library with older syntect, see #896 and #898
+  * New syntaxes
+    - Rego, see #872
+    - Stylo, see #917
+
+-------------------------------------------------------------------
 Thu Apr  9 09:09:04 UTC 2020 - Dany Marcoux <dmarcoux@suse.com>
 
 - Update to version 0.13.0
