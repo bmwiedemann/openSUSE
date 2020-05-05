@@ -24,6 +24,8 @@ Summary:        EFILTER query language
 License:        Apache-2.0
 URL:            https://github.com/rekall-innovations/efilter
 Source0:        https://github.com/rekall-innovations/efilter/archive/v%{version}.tar.gz
+# fix executable in tests
+Patch0:         fix-executable.patch
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -44,6 +46,7 @@ EFILTER is a general-purpose destructuring and search language implemented in Py
 
 %prep
 %setup -q -n efilter-%{version}
+%patch0 -p1
 
 %build
 %python_build
