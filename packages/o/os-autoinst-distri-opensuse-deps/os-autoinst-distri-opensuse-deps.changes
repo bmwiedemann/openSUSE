@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 11:25:57 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Removed dependency perl(YAML::Tiny)
+
+-------------------------------------------------------------------
 Thu Apr 30 19:25:35 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(YAML::Tiny)
