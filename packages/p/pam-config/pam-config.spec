@@ -17,15 +17,15 @@
 
 
 Name:           pam-config
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/pam-config
 Source:         %{name}-%{version}.tar.xz
-Patch1:         bsc1153630-prevent-systemd-pam_mount.patch
 PreReq:         pam >= 1.3.0
+Recommends:     pam_pwquality
 
 %description
 pam-config is a command line utility to maintain the common PAM
@@ -36,8 +36,6 @@ add/adjust/remove other PAM modules and their options.
 
 %prep
 %setup -q
-
-%patch1 -p1
 
 %build
 %configure
