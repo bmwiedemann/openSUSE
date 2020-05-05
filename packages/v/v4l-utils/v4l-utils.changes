@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  2 15:30:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.18.1:
+  Fix GCC 10 / -fno-common
+- Drop upstream gcc10.patch
+
+-------------------------------------------------------------------
+Sat May  2 15:21:47 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Avoid symbol name clash causing qv4l2 crash - v4l2_open is defined
+  by the public libv4l2 and private libv4l2utils
+  * Update use_system_v4l_for_qv4l.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 12:14:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch for gcc 10 bsc#1160298:

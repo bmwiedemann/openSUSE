@@ -24,7 +24,7 @@
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        Utilities for video4linux
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
@@ -36,7 +36,6 @@ Source100:      baselibs.conf
 Patch0:         sysmacros.patch
 Patch1:         use_system_v4l_for_qv4l.patch
 Patch2:         v4l-utils-32bitfix.patch
-Patch3:         gcc10.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -186,7 +185,6 @@ qv4l2 is a test control and streaming test application for video4linux.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 autoreconf -vfi

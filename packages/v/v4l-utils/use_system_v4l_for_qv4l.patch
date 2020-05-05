@@ -2,13 +2,14 @@ diff --git a/utils/qv4l2/Makefile.am b/utils/qv4l2/Makefile.am
 index ccd1a2a..6978cf3 100644
 --- a/utils/qv4l2/Makefile.am
 +++ b/utils/qv4l2/Makefile.am
-@@ -6,8 +6,7 @@ qv4l2_SOURCES = qv4l2.cpp general-tab.cpp ctrl-tab.cpp vbi-tab.cpp capture-win.c
+@@ -6,8 +6,8 @@ qv4l2_SOURCES = qv4l2.cpp general-tab.cpp ctrl-tab.cpp vbi-tab.cpp capture-win.c
    raw2sliced.cpp qv4l2.h capture-win.h general-tab.h vbi-tab.h raw2sliced.h \
    v4l2-tpg-core.c v4l2-tpg-colors.c
  nodist_qv4l2_SOURCES = moc_qv4l2.cpp moc_general-tab.cpp moc_capture-win.cpp moc_vbi-tab.cpp qrc_qv4l2.cpp
 -qv4l2_LDADD = ../../lib/libv4l2/libv4l2.la ../../lib/libv4lconvert/libv4lconvert.la \
 -  ../libv4l2util/libv4l2util.la ../libmedia_dev/libmedia_dev.la
-+qv4l2_LDADD = ../libv4l2util/libv4l2util.la ../libmedia_dev/libmedia_dev.la
++qv4l2_LDADD = ../libmedia_dev/libmedia_dev.la
++qv4l2_SOURCES +=- ../libv4l2util/frequencies.c
  qv4l2_CPPFLAGS = -I$(top_srcdir)/utils/common
  
  if WITH_QTGL
