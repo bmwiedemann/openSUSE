@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-jss
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,48 @@
 
 
 Name:           mozilla-jss
-Version:        4.5.0
-Release:        0
-Summary:        Network Security Services for Java (JSS)
+Summary:        Java Security Services (JSS)
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
 Group:          Development/Libraries/Java
-URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/JSS
-Source0:        jss-%{version}.tar.gz
-Source1:        MPL-1.1.txt
-Source2:        GPL-2.0.txt
-Source3:        LGPL-2.1.txt
-Source100:      mozilla-jss-rpmlintrc
-Patch0:         jss-4.5.0-slf4j.patch
-Patch1:         jss-4.5.0-deprecation-warnings.patch
-Patch2:         jss-4.5.0-pkcs11-constants.patch
-Patch3:         jss-4.5.0-nojavah.patch
-Patch4:         jss-4.5.0-sourcetarget.patch
-BuildRequires:  apache-commons-codec
+URL:            http://www.dogtagpki.org/wiki/JSS
+Version:        4.6.3
+Release:        0
+Source0:        https://github.com/dogtagpki/jss/archive/v%{version}/jss-%{version}.tar.gz
+
+BuildRequires:  cmake
+BuildRequires:  git
+BuildRequires:  make
+BuildRequires:  unzip
+BuildRequires:  zip
+
 BuildRequires:  apache-commons-lang
-BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  gcc-c++
+BuildRequires:  glassfish-jaxb-api
+BuildRequires:  java-devel
+BuildRequires:  jpackage-utils
+BuildRequires:  libfreebl3-hmac
+BuildRequires:  libsoftokn3-hmac
 BuildRequires:  mozilla-nspr-devel >= 4.13.1
-BuildRequires:  mozilla-nss-devel >= 3.28
-BuildRequires:  pkgconfig
+BuildRequires:  mozilla-nss-devel >= 3.44
+BuildRequires:  mozilla-nss-sysinit >= 3.44
+BuildRequires:  mozilla-nss-tools >= 3.44
 BuildRequires:  slf4j
-Requires:       java
-Requires:       mozilla-nss >= 3.28
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  slf4j-jdk14
+
+BuildRequires:  junit
+
+Requires:       apache-commons-lang
+Requires:       glassfish-jaxb-api
+Requires:       java-headless
+Requires:       jpackage-utils
+Requires:       mozilla-nss >= 3.44
+Requires:       slf4j
+Requires:       slf4j-jdk14
+
+Conflicts:      ldapjdk < 4.20
+Conflicts:      idm-console-framework < 1.2
+Conflicts:      tomcatjss < 7.3.4
+Conflicts:      pki-base < 10.6.5
 
 %description
 Java Security Services (JSS) is a java native interface which provides a bridge
@@ -52,110 +66,62 @@ for java-based applications to use native Network Security Services (NSS).
 This only works with gcj. Other JREs require that JCE providers be signed.
 
 %package javadoc
+
 Summary:        Java Security Services (JSS) Javadocs
 Group:          Development/Libraries/Java
-Requires:       mozilla-jss = %{version}-%{release}
+Requires:       mozilla-jss = %{version}
 
 %description javadoc
 This package contains the API documentation for JSS.
 
 %prep
-%setup -q -n jss-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-mkdir jss
-mv build_java.pl  config  coreconf  jss.html  lib  Makefile  manifest.mn  org  pkg  README.md  rules.mk  samples \
-  jss
+%autosetup -n jss-%{version}
 
 %build
+%set_build_flags
+
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
-# Enable compiler optimizations and disable debugging code
+
+# Enable compiler optimizations
 export BUILD_OPT=1
+
 # Generate symbolic info for debuggers
-export XCFLAGS="-g %{optflags}"
+CFLAGS="-g $RPM_OPT_FLAGS"
+export CFLAGS
 
-export PKG_CONFIG_ALLOW_SYSTEM_LIBS=1
-export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
-export USE_INSTALLED_NSPR=1
-export USE_INSTALLED_NSS=1
-export NSPR_INCLUDE_DIR=`%{_bindir}/pkg-config --cflags-only-I nspr | sed 's/-I//'`
-export NSPR_LIB_DIR=`%{_bindir}/pkg-config --libs-only-L nspr | sed 's/-L//'`
-export NSS_INCLUDE_DIR=`%{_bindir}/pkg-config --cflags-only-I nss | sed 's/-I//'`
-export NSS_LIB_DIR=`%{_bindir}/pkg-config --libs-only-L nss | sed 's/-L//'`
+# Check if we're in FIPS mode
+modutil -dbdir /etc/pki/nssdb -chkfips true | grep -q enabled && export FIPS_ENABLED=1
 
-%ifarch x86_64 ppc64 ppc64le ia64 s390x sparc64 aarch64 riscv64
-export USE_64=1
-%endif
+%cmake \
+    -DJAVA_HOME=%{java_home} \
+    -DJAVA_LIB_INSTALL_DIR=%{_jnidir} \
+    ..
 
-# Fix for Kernel >= 3 (autoget kernel version)
-if [[ `uname -r | cut -f1 -d.` > 2 ]]; then
-%global majorrel `uname -r | cut -f1 -d.`
-%global minorrel `uname -r | cut -f2 -d.`
-cp -p jss/coreconf/Linux.mk jss/coreconf/Linux%{majorrel}.%{minorrel}.mk
-sed -i -e 's;LINUX2_1;LINUX%{majorrel}_%{minorrel};' jss/coreconf/Linux%{majorrel}.%{minorrel}.mk
-fi
-
-# For some reason jss can't find nss on SUSE unless we do the following
-export C_INCLUDE_PATH="%{_includedir}/nss3"
-# The Makefile is not thread-safe
-make -C jss/coreconf
-make -C jss
-make -C jss javadoc
+%{__make} all
+%{__make} javadoc
+ctest --output-on-failure
 
 %install
-# Supress SUSE bytecode version error check
-export NO_BRP_CHECK_BYTECODE_VERSION=true
-# Copy the license files here so we can include them in %%doc
-cp -p %{SOURCE1} .
-cp -p %{SOURCE2} .
-cp -p %{SOURCE3} .
-
-# There is no install target so we'll do it by hand
-# jars
 install -d -m 0755 %{buildroot}%{_jnidir}
-install -m 644 dist/xpclass.jar %{buildroot}%{_jnidir}/jss4-%{version}.jar
-pushd %{buildroot}%{_jnidir}
-    ln -fs jss4-%{version}.jar jss4.jar
+install -m 644 build/jss4.jar %{buildroot}%{_jnidir}/jss4.jar
+
+install -d -m 0755 %{buildroot}%{_libdir}/jss
+install -m 0755 build/libjss4.so %{buildroot}%{_libdir}/jss/
+pushd  %{buildroot}%{_libdir}/jss
+    ln -fs %{_jnidir}/jss4.jar jss4.jar
 popd
 
-# We have to use the name libjss4.so because this is dynamically
-# loaded by the jar file.
-install -m 0755 dist/Linux*.OBJ/lib/libjss4.so %{buildroot}%{_libdir}/
+install -d -m 0755 %{buildroot}%{_javadocdir}/jss-%{version}
+cp -rp build/docs/* %{buildroot}%{_javadocdir}/jss-%{version}
+cp -p jss.html %{buildroot}%{_javadocdir}/jss-%{version}
+cp -p *.txt %{buildroot}%{_javadocdir}/jss-%{version}
 
-# FIXME - sign jss4.jar. In order to use JSS as a JCE provider it needs to be
-# signed with a Sun-issued certificate. Since we would need to make this
-# certificate and private key public to provide reproducability in the rpm
-# building we have to ship an unsigned jar.
-#
-# Instructions for getting a signing cert can be found here:
-# http://java.sun.com/javase/6/docs/technotes/guides/security/crypto/HowToImplAProvider.html#Step61
-#
-# This signing is not required by every JVM. gcj ignores the signature and does
-# not require one. The Sun and IBM JVMs both check and enforce the signature.
-# Behavior of other JVMs is not known but they probably enforce the signature
-# as well.
-
-# javadoc
-install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -rp dist/jssdoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-rm %{buildroot}%{_javadocdir}/%{name}-%{version}/index.html.bak
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
-
-# No ldconfig is required since this library is loaded by Java itself.
 %files
-%defattr(-,root,root,-)
-%doc jss/jss.html MPL-1.1.txt GPL-2.0.txt LGPL-2.1.txt
-%dir %{_jnidir}
+%doc jss.html MPL-1.1.txt gpl.txt lgpl.txt
+%{_libdir}/*
 %{_jnidir}/*
-%{_libdir}/lib*.so
 
 %files javadoc
-%defattr(-,root,root,-)
-%dir %{_javadocdir}
-%dir %{_javadocdir}/%{name}-%{version}
-%{_javadocdir}/%{name}-%{version}/*
+%{_javadocdir}/jss-%{version}/
 
 %changelog

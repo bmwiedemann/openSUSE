@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:47:27 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 4.6.3
+- Remove patches:
+  * jss-4.5.0-slf4j.patch
+  * jss-4.5.0-deprecation-warnings.patch
+  * jss-4.5.0-pkcs11-constants.patch
+  * jss-4.5.0-nojavah.patch
+  * jss-4.5.0-sourcetarget.patch
+- Ship with licenses included with the source instead of adding our own
+
+-------------------------------------------------------------------
 Sat Nov 10 20:40:37 UTC 2018 - schwab@suse.de
 
 - Define USE_64 for riscv64

@@ -69,4 +69,22 @@
     <comment></comment>
     <requestid>648194</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6690fbd71866689433e51ecd4130a340</srcmd5>
+    <version>4.6.3</version>
+    <time>1588697703</time>
+    <user>dimstar_suse</user>
+    <comment>not changing the SPDX license definition
+(missed that in my review)
+
+- Update to 4.6.3
+- Remove patches:
+  * jss-4.5.0-slf4j.patch
+  * jss-4.5.0-deprecation-warnings.patch
+  * jss-4.5.0-pkcs11-constants.patch
+  * jss-4.5.0-nojavah.patch
+  * jss-4.5.0-sourcetarget.patch
+- Ship with licenses included with the source instead of adding our own</comment>
+    <requestid>797591</requestid>
+  </revision>
 </revisionlist>
