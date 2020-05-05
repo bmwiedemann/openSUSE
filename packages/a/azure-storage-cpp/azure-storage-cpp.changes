@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue May  5 09:39:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add Dependencies to devel pkg; needed as we don't have the .pc
+  file to generate them from
+
+-------------------------------------------------------------------
+Tue May  5 07:55:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, used by MXNET
