@@ -31,7 +31,7 @@
 %endif
 
 Name:           xapian-bindings
-Version:        1.4.14
+Version:        1.4.15
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
