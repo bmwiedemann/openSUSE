@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 07:16:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Fix miscalculation in highlighting of mult-iline CSS values
+
+-------------------------------------------------------------------
 Sat Apr 25 08:32:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:

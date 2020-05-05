@@ -253,4 +253,13 @@
   * Small fixes</comment>
     <requestid>797595</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bcfeb6c1f6a3a1090e7e995567006814</srcmd5>
+    <version>0.14.1</version>
+    <time>1588697771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Fix miscalculation in highlighting of mult-iline CSS values</comment>
+    <requestid>800245</requestid>
+  </revision>
 </revisionlist>
