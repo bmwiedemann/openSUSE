@@ -45,6 +45,8 @@ Source1:        %{name}-rpmlintrc
 Patch0:         0001-Fix-build-with-openSUSE-clang9-package.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         fix-application-output.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         android-guard-against-kits-without-qt-version.patch
 BuildRequires:  gdb
 BuildRequires:  libQt5Sql5-sqlite >= %{qt5_version}
 BuildRequires:  libbotan-devel

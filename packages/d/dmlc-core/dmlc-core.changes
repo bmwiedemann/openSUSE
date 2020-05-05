@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue May  5 10:50:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to OBS service as upstream released 2 years ago and we
+  need newer features
+
+-------------------------------------------------------------------
+Thu Apr 30 10:11:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, used by mxnet

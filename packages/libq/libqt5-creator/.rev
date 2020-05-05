@@ -735,4 +735,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>799277</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>056e4eb6577548d9a2f508dff8b53604</srcmd5>
+    <version>4.12.0</version>
+    <time>1588698074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800281</requestid>
+  </revision>
 </revisionlist>

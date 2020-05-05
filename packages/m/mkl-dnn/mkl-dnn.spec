@@ -18,7 +18,7 @@
 
 %define libname libdnnl1
 Name:           mkl-dnn
-Version:        1.1.3
+Version:        1.4
 Release:        0
 Summary:        Intel(R) Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
@@ -89,7 +89,7 @@ Intel MKL-DNN contains vectorized and threaded building blocks that you can use
 to implement deep neural networks (DNN) with C and C++ interfaces.
 
 %prep
-%setup -q
+%setup -q -n oneDNN-%{version}
 %autopatch -p1
 
 %build

@@ -29,15 +29,16 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-menhir-devel
 BuildRequires:  ocaml-ocamlbuild
 BuildRequires:  ocaml-ocamldoc >= 3.11
 BuildRequires:  ocaml-parmap-devel
 BuildRequires:  ocaml-pcre-devel
-BuildRequires:  pkgconfig(python)
-Requires:       python-base
+BuildRequires:  python-rpm-macros
+BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  pkgconfig(python3)
+Requires:       python3-base
 
 %description
 Coccinelle is a program matching and transformation engine which
@@ -79,15 +80,15 @@ rm -Rf "%buildroot/%_libdir/%name"/{commons,globals,ocaml,parsing_c} \
 %fdupes %buildroot/%_prefix
 
 # Python library have been named after directories in the site-packages hierarchy
-mkdir -p "%buildroot/%python_sitelib"
-mv "%buildroot/%_libdir/%name/python/coccilib" "%buildroot/%python_sitelib"
-%fdupes %buildroot/%python_sitelib/coccilib
+mkdir -p "%buildroot/%python3_sitelib"
+mv "%buildroot/%_libdir/%name/python/coccilib" "%buildroot/%python3_sitelib"
+%fdupes %buildroot/%python3_sitelib/coccilib
 
 %files
 %doc authors.txt bugs.txt changes.txt copyright.txt credits.txt
 %license license.txt
 %doc readme.txt
-%{python_sitelib}/coccilib
+%python3_sitelib/coccilib
 %_mandir/man?/*
 %_bindir/sp*
 %_libdir/%name

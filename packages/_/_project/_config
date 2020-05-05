@@ -959,45 +959,57 @@ Macros:
 %rubydevelruby26() ruby2.6-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
 %rubydevelxruby26() %{expand:%%{rubydevelx%*}}
 
+
+### And now Ruby 2.7
+
+%rubygemsruby27() rubygem(ruby:2.7.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby27() %{expand:%%{rubygemsx%*}}
+
+%rubyruby27() ruby2.7 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby27() %{expand:%%{rubyx%*}}
+
+%rubydevelruby27() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby27() %{expand:%%{rubydevelx%*}}
+
+
 ### Things to define default ruby stuff for the distro
 
-%rb_default_ruby        ruby26
-%rb_default_ruby_suffix ruby2.6
-%rb_default_ruby_abi    ruby:2.6.0
+%rb_default_ruby        ruby27
+%rb_default_ruby_suffix ruby2.7
+%rb_default_ruby_abi    ruby:2.7.0
 
-%rb_build_ruby_abis     ruby:2.6.0
-%rb_build_versions      ruby26
+%rb_build_ruby_abis     ruby:2.7.0
+%rb_build_versions      ruby27
 :Macros
 
-#%if "%_project" == "openSUSE:Factory:Staging:F"
-#%else
 Macros:
-%_with_ruby26               1
+%_with_ruby27               1
 :Macros
 
-%define _with_ruby26         1
-#%endif
+%define _with_ruby27         1
 
-%define rb_default_ruby        ruby26
-%define rb_default_ruby_suffix ruby2.6
-%define rb_default_ruby_abi    ruby:2.6.0
+%define rb_default_ruby        ruby27
+%define rb_default_ruby_suffix ruby2.7
+%define rb_default_ruby_abi    ruby:2.7.0
 
-%define rb_build_ruby_abis     ruby:2.6.0
-%define rb_build_versions      ruby26
+%define rb_build_ruby_abis     ruby:2.7.0
+%define rb_build_versions      ruby27
 
 Prefer: -ruby-stdlib
-Prefer: %{rb_default_ruby_suffix}-rubygem-gem2rpm
-Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
-Prefer: %{rb_default_ruby_suffix}-rubygem-yard
-Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
-Prefer: %{rb_default_ruby_suffix}-rubygem-yast-rake
-Prefer: %{rb_default_ruby_suffix}-rubygem-cheetah
-Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
+Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
+Prefer: %{rb_default_ruby_suffix}-rubygem-cfa
+Prefer: %{rb_default_ruby_suffix}-rubygem-cheetah
+Prefer: %{rb_default_ruby_suffix}-rubygem-gem2rpm
+Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
+Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
+Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
+Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
+Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails
-Prefer: %{rb_default_ruby_suffix}-rubygem-cfa
-Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2 
+Prefer: %{rb_default_ruby_suffix}-rubygem-yard
+Prefer: %{rb_default_ruby_suffix}-rubygem-yast-rake
 
 # END RUBY STUFF
 

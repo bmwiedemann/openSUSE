@@ -17,7 +17,7 @@
 
 
 Name:           qimgv
-Version:        0.9
+Version:        0.9.1
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
@@ -29,8 +29,6 @@ Patch0:         qimgv-nosharedlib.patch
 Patch1:         qimgv-PIE.patch
 # PATCH-FIX-OPENSUSE qimgv-includepath.patch # aloisio@gmx.com use correct path for opencv includes
 Patch2:         qimgv-includepath.patch
-# PATCH-FIX-UPSTREAM qimgv-Qt512.patch
-Patch3:         qimgv-Qt512.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++

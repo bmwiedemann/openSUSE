@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  5 07:40:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.1
+  * Fixed incorrect window position on launch (it occasionally
+    shifted upwards by the height of titlebar)
+  * Exif orientation not being applied (regression)
+  * Expand images option not working correctly when expand limit
+    is unset
+  * Building with qt <5.14 now works again
+- Drop qimgv-Qt512.patch (merged upstream)
+
+-------------------------------------------------------------------
 Fri May  1 07:05:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9

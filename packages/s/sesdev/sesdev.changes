@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  4 18:27:54 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.2.0+1588616857.gaa3df4c:
+  + upstream 1.2.0 release (2020-05-04)
+    * deepsea_deployment: pre-create Stage 4 pools (PR #298) 
+    * setup.cfg: do not break Tumbleweed RPM install (PR #297)
+    * ceph_salt_deployment.sh: rip out time sync code (PR #289)
+    * Rename '--stop-before-ceph-salt-deploy' to '--stop-before-ceph-salt-apply'
+      (PR #290)
+
+-------------------------------------------------------------------
 Tue Apr 28 14:36:27 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.1.12+1588084576.g8b2afa1:

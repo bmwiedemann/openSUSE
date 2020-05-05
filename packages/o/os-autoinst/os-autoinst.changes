@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 05 11:24:38 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1588626699.4bac4dc6:
+  * Add optional fatal handling for qemu dbus calls for easier error analysis
+
+-------------------------------------------------------------------
 Sun May 03 03:24:32 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1588309862.a289607f:

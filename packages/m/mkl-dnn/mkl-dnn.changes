@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 07:38:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Performance improvements all over the board
+- Rebase patch cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 10:50:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add constraints to not crash during testing on OOM
