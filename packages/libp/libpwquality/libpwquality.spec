@@ -1,7 +1,7 @@
 #
 # spec file for package libpwquality
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libpwquality/libpwquality
 Source:         %{url}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source1:        baselibs.conf
 
 BuildRequires:  cracklib-devel
 BuildRequires:  gettext-devel
