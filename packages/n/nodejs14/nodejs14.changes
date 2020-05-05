@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Apr 30 11:22:45 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.1.0:
+  * deps: upgrade openssl sources to 1.1.1g (SLE-12 only)
+  * http: doc deprecate abort and improve docs
+  * module: do not warn when accessing __esModule of unfinished exports
+  * n-api: detect deadlocks in thread-safe function
+  * src: deprecate embedder APIs with replacements
+  * stream:
+    + don't emit end after close
+    + don't wait for close on legacy streams
+    + pipeline should only destroy un-finished streams
+  * vm: add importModuleDynamically option to compileFunction
+
+skip_no_console.patch: add more unit tests that fail on dumb terminals
+
+-------------------------------------------------------------------
+Mon Apr 27 13:35:05 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Initial version 14.0.0
+
+ Deprecations
+
+ * crypto: move pbkdf2 without digest to EOL
+ * fs: deprecate closing FileHandle on garbage collection
+ * http: move OutboundMessage.prototype.flush to EOL
+ * lib: move GLOBAL and root aliases to EOL
+ * os: move tmpDir() to EOL
+ * src: remove deprecated wasm type check
+ * stream: move _writableState.buffer to EOL
+ * doc: deprecate process.mainModule
+ * doc: deprecate process.umask() with no arguments
+
+For a detailed list of changes, see
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V14.md#14.0.0
+
+

@@ -1,0 +1,33 @@
+Purpose of these dependencies is to make sure that the linker
+is run serially over these binaries instead of in parallel.
+OBS workers run out of memory as each executable seems to require
+upward of 5G RAM
+
+Index: node-v14.0.0/node.gyp
+===================================================================
+--- node-v14.0.0.orig/node.gyp
++++ node-v14.0.0/node.gyp
+@@ -1205,6 +1205,7 @@
+         'node_dtrace_header',
+         'node_dtrace_ustack',
+         'node_dtrace_provider',
++        'cctest',
+       ],
+ 
+       'includes': [
+@@ -1264,6 +1265,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'embedtest',
+       ],
+ 
+       'includes': [
+@@ -1319,6 +1321,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'mkcodecache'
+       ],
+ 
+       'includes': [

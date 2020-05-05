@@ -1,0 +1,34 @@
+Index: node-v13.5.0/configure
+===================================================================
+--- node-v13.5.0.orig/configure
++++ node-v13.5.0/configure
+@@ -11,6 +11,7 @@ which python3.8 >/dev/null && exec pytho
+ which python3.7 >/dev/null && exec python3.7 "$0" "$@"
+ which python3.6 >/dev/null && exec python3.6 "$0" "$@"
+ which python3.5 >/dev/null && exec python3.5 "$0" "$@"
++which python3.4 >/dev/null && exec python3.4 "$0" "$@"
+ which python2.7 >/dev/null && exec python2.7 "$0" "$@"
+ exec python "$0" "$@"
+ ''' "$0" "$@"
+@@ -21,7 +22,7 @@ import sys
+ from distutils.spawn import find_executable
+ 
+ print('Node.js configure: Found Python {0}.{1}.{2}...'.format(*sys.version_info))
+-acceptable_pythons = ((3, 8), (3, 7), (3, 6), (3, 5), (2, 7))
++acceptable_pythons = ((3, 8), (3, 7), (3, 6), (3, 5), (3, 4), (2, 7))
+ if sys.version_info[:2] in acceptable_pythons:
+   import configure
+ else:
+Index: node-v13.5.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+===================================================================
+--- node-v13.5.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
++++ node-v13.5.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+@@ -18,7 +18,7 @@ PythonFinder.prototype = {
+   log: logWithPrefix(log, 'find Python'),
+   argsExecutable: ['-c', 'import sys; print(sys.executable);'],
+   argsVersion: ['-c', 'import sys; print("%s.%s.%s" % sys.version_info[:3]);'],
+-  semverRange: '^2.6.0 || >=3.5.0',
++  semverRange: '^2.6.0 || >=3.4.0',
+ 
+   // These can be overridden for testing:
+   execFile: cp.execFile,
