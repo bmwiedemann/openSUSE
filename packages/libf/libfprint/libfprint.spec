@@ -33,6 +33,7 @@ Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/uploads/%{com
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.1
 BuildRequires:  pkgconfig
