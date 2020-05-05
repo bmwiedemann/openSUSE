@@ -1,7 +1,7 @@
 #
 # spec file for package cmake-fedora
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cmake-fedora
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        CMake modules and scripts
 License:        BSD-3-Clause
 URL:            https://pagure.io/cmake-fedora
-Source0:        https://releases.pagure.org/cmake-fedora/%{name}-%{version}-Source.tar.gz
+Source0:        https://pagure.io/cmake-fedora/archive/%{version}/cmake-fedora-%{version}.tar.gz
 BuildRequires:  cmake >= 2.6.2
 Recommends:     %{name}-modules = %{version}-%{release}
 BuildArch:      noarch
@@ -42,9 +42,10 @@ release process of a *nix software package,  especially for
 Fedora and EPEL.
 
 %prep
-%setup -q -n %{name}-%{version}-Source
+%autosetup
 
 %build
+touch .gitignore
 %cmake \
   -DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0 \
   -Wno-dev
