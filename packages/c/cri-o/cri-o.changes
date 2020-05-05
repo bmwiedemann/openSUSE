@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 06:30:14 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Remove the `go >= 1.13` build requirement
+
+-------------------------------------------------------------------
 Mon Apr 27 14:41:13 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Restore calls to %service_* macros that were accidently removed
