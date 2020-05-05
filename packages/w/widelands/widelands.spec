@@ -30,6 +30,7 @@ BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
 BuildRequires:  SDL2_ttf-devel
 BuildRequires:  cmake
+BuildRequires:  distribution-release
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -43,7 +44,6 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ninja
-BuildRequires:  openSUSE-release
 BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
