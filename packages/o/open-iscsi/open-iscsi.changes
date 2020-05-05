@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  2 15:06:18 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Update SPEC file to handle the fact that the
+  service_del_postun_without_restart RPM macro exists
+  in factory but not in SLE. No functional change
+  for factory.
+
+-------------------------------------------------------------------
 Tue Apr  7 19:21:38 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updated service_del_preun and service_del_postun for iscsi and

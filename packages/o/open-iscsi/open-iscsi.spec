@@ -149,7 +149,11 @@ fi
 %{?regenerate_initrd_posttrans}
 
 %postun
-%service_del_postun_without_restart iscsi.service
+%if %{defined service_del_postun_without_restart}
+	%service_del_postun_without_restart iscsi.service
+%else
+	%service_del_postun -n iscsi.service
+%endif
 %service_del_postun iscsid.service iscsid.socket
 
 %pre
