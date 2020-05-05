@@ -67,4 +67,13 @@
     <comment></comment>
     <requestid>789910</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7bc3a87019e2e44563ead983a91a5886</srcmd5>
+    <version>1.6</version>
+    <time>1588697753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch</comment>
+    <requestid>800164</requestid>
+  </revision>
 </revisionlist>

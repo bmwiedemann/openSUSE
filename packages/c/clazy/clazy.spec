@@ -26,6 +26,7 @@ URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:         cmake-clang-cpp.patch
 Patch1:         0001-Fix-build-issues-using-llvm-10.0.0.patch
+Patch2:         0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 3.9
 BuildRequires:  cmake >= 3.0
