@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  2 13:59:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to drop unused LLVM and Rust build dependencies
+  + Remove-unused-LLVM-and-Rust-build-dependencies.patch
+- Drop cargo, clang-devel, llvm-devel and rust from BuildRequires
+
+-------------------------------------------------------------------
 Fri Apr 24 10:11:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on armv7:

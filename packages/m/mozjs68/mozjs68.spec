@@ -39,19 +39,16 @@ Patch9:         Skip-time-zone-tests-that-fails-with-system-ICU.patch
 Patch10:        Skip-tests-expected-fail-i586-ppc64.patch
 Patch11:        gcc10-include-fix.patch
 Patch12:        mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+Patch13:        Remove-unused-LLVM-and-Rust-build-dependencies.patch
 
 BuildRequires:  autoconf213
-BuildRequires:  cargo
-BuildRequires:  clang-devel
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-xml
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
-BuildRequires:  rust
 BuildRequires:  pkgconfig(icu-i18n) >= 63.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
