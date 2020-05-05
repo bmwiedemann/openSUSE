@@ -30,13 +30,12 @@ Source3:        %{URL}/releases/test-databases/database-v1.tar.xz
 Source4:        notmuch.keyring
 BuildRequires:  libxapian-devel
 # info pages
+BuildRequires:  info
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(talloc)
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %{bcond_without python3}
 %{bcond_without emacs}
@@ -59,7 +58,7 @@ BuildRequires:  gdb
 BuildRequires:  libgcrypt-cavs
 BuildRequires:  man
 BuildRequires:  valgrind-devel
-%endif # {with tests}
+%endif
 %if %{with emacs}
 BuildRequires:  emacs-el
 BuildRequires:  emacs-nox
@@ -211,16 +210,16 @@ cp %{SOURCE3} test/test-databases
 # upstream knows about that
 %ifarch %{power64}
 export NOTMUCH_SKIP_TESTS="T360-symbol-hiding"
-%endif # power64
+%endif
 # FIXME: why does this test fail only on armv7l?
 %ifarch %{arm}
 export NOTMUCH_SKIP_TESTS="T600-named-queries"
-%endif # arm
+%endif
 
 # FIXME: T357-index-decryption throws std::bad_alloc on Leap 15.0 & 15.1
 %if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
 export NOTMUCH_SKIP_TESTS="T357-index-decryption ${NOTMUCH_SKIP_TESTS}"
-%endif # Leap 15.x
+%endif
 
 # FIXME: these two tests use gdb which prints warnings with gdb <= 8 and
 # python 3.8 thereby breaking the diff
@@ -236,15 +235,11 @@ if echo "%{optflags}"|grep -q '\-g'; then
     make %{?_smp_mflags} check
 fi
 
-%endif # {with tests}
+%endif
+# {with tests}
 
 %post -n libnotmuch%{libversion} -p /sbin/ldconfig
 %postun -n libnotmuch%{libversion} -p /sbin/ldconfig
-%post doc
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun doc
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
 %doc AUTHORS NEWS README

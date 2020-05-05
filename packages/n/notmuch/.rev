@@ -235,4 +235,12 @@ From the NEWS file, this version reports the following:
     <comment>Improve Python 3.8 workaround</comment>
     <requestid>783703</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>d68611ebb193c89f3113981107b33807</srcmd5>
+    <version>0.29.3</version>
+    <time>1588698405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800306</requestid>
+  </revision>
 </revisionlist>

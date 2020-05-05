@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 08:54:01 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add missing BuildRequire info and drop obsoleted macros:
+  %install_info, %install_info_prereq and %install_info_delete were deprecated
+  in favor of file triggers => drop these from the spec
+
+-------------------------------------------------------------------
 Wed Mar 11 09:13:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Improve Python 3.8 workaround:
