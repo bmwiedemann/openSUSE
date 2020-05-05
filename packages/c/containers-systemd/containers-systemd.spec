@@ -19,6 +19,12 @@
 %define containers bind dhcp-server haproxy mariadb nginx squid
 %define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-haproxy.service container-mariadb.service container-nginx.service container-image-prune.timer squid.service
 
+%if %{undefined service_del_postun_without_restart}
+%define service_del_postun_without_restart() \
+DISABLE_RESTART_ON_UPDATE=1 \
+%service_del_postun %{?*}
+%endif
+
 Name:           containers-systemd
 Version:        0.0+git20200324.5f4ae65
 Release:        0

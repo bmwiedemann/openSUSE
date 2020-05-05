@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 24 13:20:21 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use SLE15 compatible %service_del_postun
+
+-------------------------------------------------------------------
 Mon Mar 30 14:22:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Package service file for squid conainer
