@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 12:50:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+- Skip failing tests on i586 (gh#IdentityPython/pysaml2#682)
+
+-------------------------------------------------------------------
 Sat Mar 14 15:57:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0.0:

@@ -58,7 +58,10 @@ Requires:       python-repoze.who
 Requires:       python-requests >= 1.0.0
 Requires:       python-six
 Requires:       python-zope.interface
-BuildArch:      noarch
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
+# We need to have arch build to make ifarch condition below working
+# BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -78,18 +81,32 @@ rm -f tests/test_30_mdstore*.py
 
 %install
 %python_install
+for exec in make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py ; do
+%python_clone -a %{buildroot}%{_bindir}/$exec
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Excluded tests for i586 gh#IdentityPython/pysaml2#682
+%ifarch %{ix86}
+%pytest -k "not (test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject)" tests
+%else
 %pytest tests
+%endif
+
+%post
+%python_install_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py 
+
+%postun
+%python_uninstall_alternative make_metadata.py parse_xsd2.py mdexport.py merge_metadata.py 
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.md
-%python3_only %{_bindir}/make_metadata.py
-%python3_only %{_bindir}/parse_xsd2.py
-%python3_only %{_bindir}/mdexport.py
-%python3_only %{_bindir}/merge_metadata.py
+%python3_alternative %{_bindir}/make_metadata.py
+%python3_alternative %{_bindir}/parse_xsd2.py
+%python3_alternative %{_bindir}/mdexport.py
+%python3_alternative %{_bindir}/merge_metadata.py
 %{python_sitelib}/*
 
 %changelog
