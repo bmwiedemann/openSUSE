@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 07:22:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.17.5:
+  * minor fixes
+- Do not pull extra pytest deps and use even latest pytest
+
+-------------------------------------------------------------------
 Thu Mar 26 15:07:26 UTC 2020 - Daniel Wagner <daniel.wagner@suse.com>
 
 - update to 1.17.4

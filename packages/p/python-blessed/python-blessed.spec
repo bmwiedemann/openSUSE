@@ -16,21 +16,18 @@
 #
 
 
-%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-blessed
-Version:        1.17.4
+Version:        1.17.5
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jquast/blessed
 Source:         https://files.pythonhosted.org/packages/source/b/blessed/blessed-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest < 5}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module wcwidth >= 0.1.4}
@@ -87,6 +84,8 @@ Blessed **does not** provide...
 %setup -q -n blessed-%{version}
 # disable cons25 tests as they fail in OBS
 sed -i -e 's:cons25 ::' tests/accessories.py
+# do not pull extra deps that are not needed
+rm tox.ini
 
 %build
 %python_build
