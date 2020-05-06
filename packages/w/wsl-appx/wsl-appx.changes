@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 14:19:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build after the RPM Database change from bdb to ndb: the
+  Packages database is now called Packages.db (suse_version > 1500).
+
+-------------------------------------------------------------------
 Wed Feb 26 09:39:09 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - PUBLISHER_DISPLAY_NAME has to be "SUSE" for the MS store to accept the

@@ -148,10 +148,14 @@ appx -o "$APPXNAME" -f filemap.txt
 sha256sum "$APPXNAME" > "$APPXNAME".sha256
 
 mkdir r
+%if 0%{?suse_version} > 1500
+tar -C r -xzf $PWD/install.tar.gz usr/lib/sysimage/rpm/Packages.db
+%else
 %if 0%{?suse_version} > 1315
 tar -C r -xzf $PWD/install.tar.gz usr/lib/sysimage/rpm/Packages
 %else
 tar -C r -xzf $PWD/install.tar.gz var/lib/rpm/Packages
+%endif
 %endif
 rpm --root $PWD/r -qa --qf '%%{size} %%{name}\n' | sort -n > "$APPXNAME.packages.sizes"
 rpm --root $PWD/r -qa --qf '%%{name}|%%{epoch}|%%{version}|%%{release}|%%{arch}|%%{disturl}|%%{license}\n' | sort > "$APPXNAME.packages"
