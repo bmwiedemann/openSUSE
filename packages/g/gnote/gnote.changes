@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 19:30:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnote-initial-notes-creation.patch: Fix generation of initial
+  notes (e.g. Start here) on first run (boo1170588).
+
+-------------------------------------------------------------------
 Sun Mar 15 13:22:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:
