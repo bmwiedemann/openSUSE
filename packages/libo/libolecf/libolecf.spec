@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           libolecf
 %define lname	libolecf1
 %define timestamp	20191221
@@ -111,7 +112,13 @@ Python bindings for libolecf, which can read MS IE cache files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure \
+    --disable-static \
+    --enable-wide-character-type \
+%if %{with python2}
+    --enable-python2 \
+%endif
+    --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -141,11 +148,13 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libolecf.pc
 %_mandir/man3/libolecf.3*
 
+%if %{with python2}
 %files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING 
 %python2_sitearch/pyolecf.so
+%endif
 
 %files -n python3-%name
 %defattr(-,root,root)

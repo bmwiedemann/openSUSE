@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 11:19:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow distros to disable python2 builds (bcond_withou python2):
+  Tumbleweed already declares this, as python2 is EOL.
+
+-------------------------------------------------------------------
 Wed Apr 15 03:27:43 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - quit using libfdatetime and libfvalue from factory
