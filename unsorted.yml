@@ -997,6 +997,7 @@ unsorted:
   - azure-cli-nspkg 
   - azure-cli-telemetry 
   - azure-cli-test 
+  - azure-storage-cpp-devel 
   - babe 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
@@ -2413,6 +2414,7 @@ unsorted:
   - dm-zoned-tools 
   - dmd 
   - dmenu 
+  - dmlc-core-devel 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
   - dnf 
@@ -8157,8 +8159,7 @@ unsorted:
   - libavformat58-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif2: [i586] 
-  - libavif3: [x86_64] 
+  - libavif4 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4-32bit: [x86_64] 
@@ -8179,6 +8180,7 @@ unsorted:
   - libayatana-indicator3-7 
   - libayatana-indicator3-devel 
   - libayatana-indicator7 
+  - libazurestorage7 
   - libb2-1 
   - libb2-devel 
   - libb64 
@@ -8830,6 +8832,7 @@ unsorted:
   - libdmapsharing-4_0-3-32bit: [x86_64] 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
+  - libdmlc 
   - libdmmp-devel 
   - libdmmp0_2_0 
   - libdmr0_1 
@@ -11710,7 +11713,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
-  - libruby2_7-2_7 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -14983,7 +14985,10 @@ unsorted:
   - nodejs10: [x86_64] 
   - nodejs10-devel: [x86_64] 
   - nodejs10-docs 
+  - nodejs12: [x86_64] 
+  - nodejs12-devel: [x86_64] 
   - nodejs12-docs: [x86_64] 
+  - nodejs14-docs: [x86_64] 
   - nodejs8 
   - nodejs8-devel 
   - nodejs8-docs 
@@ -15225,6 +15230,7 @@ unsorted:
   - nping 
   - npkg 
   - npm10: [x86_64] 
+  - npm12: [x86_64] 
   - npm8 
   - npth-devel 
   - nqp 
@@ -16140,7 +16146,6 @@ unsorted:
   - pam_pkcs11 
   - pam_pkcs11-32bit: [x86_64] 
   - pam_pkcs11-devel-doc 
-  - pam_pwquality 
   - pam_radius 
   - pam_radius-32bit: [x86_64] 
   - pam_script 
@@ -18583,7 +18588,6 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-Fabric 
   - python2-Flask-Cache 
   - python2-Flask-Cache-doc 
   - python2-FontTools 
@@ -18599,11 +18603,9 @@ unsorted:
   - python2-cfn-lint 
   - python2-clustershell 
   - python2-cram 
-  - python2-efilter 
   - python2-efl 
   - python2-efl-doc 
   - python2-efl-examples 
-  - python2-evemu 
   - python2-geopy 
   - python2-gobject-Dee 
   - python2-hankel: [i586] 
@@ -18640,7 +18642,6 @@ unsorted:
   - python2-suds-jurko 
   - python2-sushy 
   - python2-tooz 
-  - python2-upm 
   - python2-yaql 
   - python3-32bit: [x86_64] 
   - python3-APScheduler 
@@ -18680,6 +18681,7 @@ unsorted:
   - python3-Flask-Bootstrap 
   - python3-Flask-Cache 
   - python3-Flask-Cache-doc 
+  - python3-Flask-Caching 
   - python3-Flask-Compress 
   - python3-Flask-Cors 
   - python3-Flask-Gravatar 
@@ -18739,6 +18741,7 @@ unsorted:
   - python3-Ming 
   - python3-MiniMock 
   - python3-Morfessor 
+  - python3-MouseInfo 
   - python3-MulticoreTSNE 
   - python3-OWSLib 
   - python3-PGet 
@@ -18766,6 +18769,7 @@ unsorted:
   - python3-PyDispatcher 
   - python3-PyECLib 
   - python3-PyFxA 
+  - python3-PyGetWindow 
   - python3-PyGithub 
   - python3-PyICU 
   - python3-PyInstaller 
@@ -18786,6 +18790,7 @@ unsorted:
   - python3-PyQRCode 
   - python3-PyRIC 
   - python3-PyRSS2Gen 
+  - python3-PyRect 
   - python3-PySDL2 
   - python3-PyScreeze 
   - python3-PyTrie 
@@ -22054,8 +22059,6 @@ unsorted:
   - ruby2.6-rubygem-cri-doc 
   - ruby2.6-rubygem-cri-testsuite 
   - ruby2.6-rubygem-cssmin-doc 
-  - ruby2.6-rubygem-daemon_controller-doc 
-  - ruby2.6-rubygem-daemon_controller-testsuite 
   - ruby2.6-rubygem-daemons-doc 
   - ruby2.6-rubygem-debase-doc 
   - ruby2.6-rubygem-debase-ruby_core_source-doc 
@@ -22263,8 +22266,6 @@ unsorted:
   - ruby2.6-rubygem-mail-doc-2_5 
   - ruby2.6-rubygem-manpages-doc 
   - ruby2.6-rubygem-marcel-doc 
-  - ruby2.6-rubygem-memcache-client-doc 
-  - ruby2.6-rubygem-memcache-client-testsuite 
   - ruby2.6-rubygem-mercenary-doc 
   - ruby2.6-rubygem-mercenary-testsuite 
   - ruby2.6-rubygem-metaclass-doc 
@@ -22377,9 +22378,6 @@ unsorted:
   - ruby2.6-rubygem-po_to_json-testsuite 
   - ruby2.6-rubygem-polyglot-doc 
   - ruby2.6-rubygem-pry-doc-testsuite 
-  - ruby2.6-rubygem-pry_debug 
-  - ruby2.6-rubygem-pry_debug-doc 
-  - ruby2.6-rubygem-pry_debug-testsuite 
   - ruby2.6-rubygem-public_suffix-doc 
   - ruby2.6-rubygem-public_suffix-doc-3.1 
   - ruby2.6-rubygem-public_suffix-testsuite 
@@ -22403,7 +22401,6 @@ unsorted:
   - ruby2.6-rubygem-rack-protection-doc 
   - ruby2.6-rubygem-rack-proxy-doc 
   - ruby2.6-rubygem-rack-proxy-testsuite 
-  - ruby2.6-rubygem-rack-ssl-doc 
   - ruby2.6-rubygem-rack-ssl-doc-1_3 
   - ruby2.6-rubygem-rack-test-doc-0_6 
   - ruby2.6-rubygem-rack-test-testsuite-0_6 
@@ -22642,13 +22639,746 @@ unsorted:
   - ruby2.6-rubygem-yajl-ruby-testsuite 
   - ruby2.6-rubygem-yard-doc 
   - ruby2.6-rubygem-yard-testsuite 
-  - ruby2.6-rubygem-yast-rake-doc 
   - ruby2.6-rubygem-zeitwerk-doc 
-  - ruby2.7 
   - ruby2.7-devel 
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
+  - ruby2.7-rubygem-RedCloth-doc 
+  - ruby2.7-rubygem-RedCloth-testsuite 
+  - ruby2.7-rubygem-abstract-doc 
+  - ruby2.7-rubygem-abstract-testsuite 
+  - ruby2.7-rubygem-abstract_method-doc 
+  - ruby2.7-rubygem-actioncable-doc-5.2 
+  - ruby2.7-rubygem-actioncable-doc-5_1 
+  - ruby2.7-rubygem-actioncable-doc-6.0 
+  - ruby2.7-rubygem-actionmailbox-doc-6.0 
+  - ruby2.7-rubygem-actionmailer-doc-5.2 
+  - ruby2.7-rubygem-actionmailer-doc-5_1 
+  - ruby2.7-rubygem-actionmailer-doc-6.0 
+  - ruby2.7-rubygem-actionpack-doc-5.2 
+  - ruby2.7-rubygem-actionpack-doc-5_1 
+  - ruby2.7-rubygem-actionpack-doc-6.0 
+  - ruby2.7-rubygem-actiontext-doc-6.0 
+  - ruby2.7-rubygem-actionview-doc-5.2 
+  - ruby2.7-rubygem-actionview-doc-5_1 
+  - ruby2.7-rubygem-actionview-doc-6.0 
+  - ruby2.7-rubygem-activejob-doc-5.2 
+  - ruby2.7-rubygem-activejob-doc-5_1 
+  - ruby2.7-rubygem-activejob-doc-6.0 
+  - ruby2.7-rubygem-activemodel-doc-5.2 
+  - ruby2.7-rubygem-activemodel-doc-5_1 
+  - ruby2.7-rubygem-activemodel-doc-6.0 
+  - ruby2.7-rubygem-activerecord-deprecated_finders-doc 
+  - ruby2.7-rubygem-activerecord-doc-5.2 
+  - ruby2.7-rubygem-activerecord-doc-6.0 
+  - ruby2.7-rubygem-activestorage-doc-5.2 
+  - ruby2.7-rubygem-activestorage-doc-6.0 
+  - ruby2.7-rubygem-activesupport-doc-5.2 
+  - ruby2.7-rubygem-activesupport-doc-5_1 
+  - ruby2.7-rubygem-activesupport-doc-6.0 
+  - ruby2.7-rubygem-addressable-doc 
+  - ruby2.7-rubygem-addressable-doc-2_3 
+  - ruby2.7-rubygem-addressable-testsuite 
+  - ruby2.7-rubygem-addressable-testsuite-2_3 
+  - ruby2.7-rubygem-aes_key_wrap-doc 
+  - ruby2.7-rubygem-airbrussh-doc 
+  - ruby2.7-rubygem-amq-protocol-doc 
+  - ruby2.7-rubygem-amq-protocol-testsuite 
+  - ruby2.7-rubygem-amqp-doc 
+  - ruby2.7-rubygem-amqp-testsuite 
+  - ruby2.7-rubygem-archive-tar-minitar-doc 
+  - ruby2.7-rubygem-arel-doc 
+  - ruby2.7-rubygem-arel-doc-3_0 
+  - ruby2.7-rubygem-arel-doc-6 
+  - ruby2.7-rubygem-arel-doc-7 
+  - ruby2.7-rubygem-arel-doc-8 
+  - ruby2.7-rubygem-arel-testsuite-3_0 
+  - ruby2.7-rubygem-asciidoctor-doc 
+  - ruby2.7-rubygem-ast-doc 
+  - ruby2.7-rubygem-ast-testsuite 
+  - ruby2.7-rubygem-atomic-doc 
+  - ruby2.7-rubygem-atomic-testsuite 
+  - ruby2.7-rubygem-attr_required-doc 
+  - ruby2.7-rubygem-attr_required-testsuite 
+  - ruby2.7-rubygem-autoprefixer-rails-doc 
+  - ruby2.7-rubygem-autoprefixer-rails-testsuite 
+  - ruby2.7-rubygem-axiom-types-doc 
+  - ruby2.7-rubygem-axiom-types-testsuite 
+  - ruby2.7-rubygem-backport-doc 
+  - ruby2.7-rubygem-base32-doc 
+  - ruby2.7-rubygem-base32-testsuite 
+  - ruby2.7-rubygem-bcrypt-doc 
+  - ruby2.7-rubygem-bcrypt-ruby-doc 
+  - ruby2.7-rubygem-bcrypt-testsuite 
+  - ruby2.7-rubygem-bcrypt_pbkdf-doc 
+  - ruby2.7-rubygem-bcrypt_pbkdf-testsuite 
+  - ruby2.7-rubygem-benchmark-doc 
+  - ruby2.7-rubygem-bindata-doc 
+  - ruby2.7-rubygem-bindata-testsuite 
+  - ruby2.7-rubygem-bindex-doc 
+  - ruby2.7-rubygem-bindex-testsuite 
+  - ruby2.7-rubygem-binding_of_caller-doc 
+  - ruby2.7-rubygem-binding_of_caller-testsuite 
+  - ruby2.7-rubygem-bootsnap-doc 
+  - ruby2.7-rubygem-bootstrap-sass-doc 
+  - ruby2.7-rubygem-bootstrap-sass-testsuite 
+  - ruby2.7-rubygem-buff-extensions-doc 
+  - ruby2.7-rubygem-buff-extensions-testsuite 
+  - ruby2.7-rubygem-buff-ignore-doc 
+  - ruby2.7-rubygem-buff-ignore-testsuite 
+  - ruby2.7-rubygem-buff-ruby_engine-doc 
+  - ruby2.7-rubygem-buff-ruby_engine-testsuite 
+  - ruby2.7-rubygem-builder-doc 
+  - ruby2.7-rubygem-builder-testsuite 
+  - ruby2.7-rubygem-bundler-audit-doc 
+  - ruby2.7-rubygem-bundler-audit-testsuite 
+  - ruby2.7-rubygem-bundler-doc 
+  - ruby2.7-rubygem-bunny-doc 
+  - ruby2.7-rubygem-bunny-testsuite 
+  - ruby2.7-rubygem-byebug-doc 
+  - ruby2.7-rubygem-capistrano-doc 
+  - ruby2.7-rubygem-capistrano-harrow-doc 
+  - ruby2.7-rubygem-capistrano-stats-doc 
+  - ruby2.7-rubygem-capistrano-testsuite 
+  - ruby2.7-rubygem-celluloid-doc 
+  - ruby2.7-rubygem-celluloid-essentials-doc 
+  - ruby2.7-rubygem-celluloid-extras-doc 
+  - ruby2.7-rubygem-celluloid-fsm-doc 
+  - ruby2.7-rubygem-celluloid-pool-doc 
+  - ruby2.7-rubygem-celluloid-supervision-doc 
+  - ruby2.7-rubygem-celluloid-testsuite 
+  - ruby2.7-rubygem-cfa-doc 
+  - ruby2.7-rubygem-cfa_grub2-doc 
+  - ruby2.7-rubygem-changelog_generator-doc 
+  - ruby2.7-rubygem-changelog_generator-testsuite 
+  - ruby2.7-rubygem-cheetah-doc 
+  - ruby2.7-rubygem-childprocess-doc 
+  - ruby2.7-rubygem-childprocess-doc-0_6 
+  - ruby2.7-rubygem-childprocess-doc-2.0 
+  - ruby2.7-rubygem-childprocess-testsuite 
+  - ruby2.7-rubygem-childprocess-testsuite-0_6 
+  - ruby2.7-rubygem-childprocess-testsuite-2.0 
+  - ruby2.7-rubygem-ci_reporter-doc 
+  - ruby2.7-rubygem-ci_reporter-testsuite 
+  - ruby2.7-rubygem-cleanroom-doc 
+  - ruby2.7-rubygem-cleanroom-testsuite 
+  - ruby2.7-rubygem-coderay-doc 
+  - ruby2.7-rubygem-coercible-doc 
+  - ruby2.7-rubygem-coercible-testsuite 
+  - ruby2.7-rubygem-coffee-rails-doc 
+  - ruby2.7-rubygem-coffee-script-doc 
+  - ruby2.7-rubygem-coffee-script-source-doc 
+  - ruby2.7-rubygem-colorator-doc 
+  - ruby2.7-rubygem-colorator-doc-0 
+  - ruby2.7-rubygem-colorator-testsuite-0 
+  - ruby2.7-rubygem-colored-doc 
+  - ruby2.7-rubygem-colored-testsuite 
+  - ruby2.7-rubygem-colorize-doc 
+  - ruby2.7-rubygem-colorize-testsuite 
+  - ruby2.7-rubygem-columnize-doc 
+  - ruby2.7-rubygem-columnize-testsuite 
+  - ruby2.7-rubygem-commander-doc 
+  - ruby2.7-rubygem-commander-testsuite 
+  - ruby2.7-rubygem-concurrent-ruby-doc 
+  - ruby2.7-rubygem-cool.io-doc 
+  - ruby2.7-rubygem-cool.io-testsuite 
+  - ruby2.7-rubygem-crack-doc 
+  - ruby2.7-rubygem-crack-testsuite 
+  - ruby2.7-rubygem-crass-doc 
+  - ruby2.7-rubygem-cri-doc 
+  - ruby2.7-rubygem-cri-testsuite 
+  - ruby2.7-rubygem-cssmin-doc 
+  - ruby2.7-rubygem-daemon_controller-doc 
+  - ruby2.7-rubygem-daemon_controller-testsuite 
+  - ruby2.7-rubygem-daemons-doc 
+  - ruby2.7-rubygem-debase-doc 
+  - ruby2.7-rubygem-debase-ruby_core_source-doc 
+  - ruby2.7-rubygem-debase-testsuite 
+  - ruby2.7-rubygem-debug_inspector-doc 
+  - ruby2.7-rubygem-debug_inspector-testsuite 
+  - ruby2.7-rubygem-debugger-linecache-doc 
+  - ruby2.7-rubygem-debugger-linecache-testsuite 
+  - ruby2.7-rubygem-deep_merge-doc 
+  - ruby2.7-rubygem-deep_merge-testsuite 
+  - ruby2.7-rubygem-delayed_job-doc 
+  - ruby2.7-rubygem-delayed_job-testsuite 
+  - ruby2.7-rubygem-delayed_job_active_record-doc 
+  - ruby2.7-rubygem-descendants_tracker-doc 
+  - ruby2.7-rubygem-descendants_tracker-testsuite 
+  - ruby2.7-rubygem-devise-doc 
+  - ruby2.7-rubygem-devise-i18n-doc 
+  - ruby2.7-rubygem-devise_ldap_authenticatable-doc 
+  - ruby2.7-rubygem-devise_ldap_authenticatable-testsuite 
+  - ruby2.7-rubygem-diff-lcs-doc 
+  - ruby2.7-rubygem-diff-lcs-testsuite 
+  - ruby2.7-rubygem-diffy-doc 
+  - ruby2.7-rubygem-diffy-testsuite 
+  - ruby2.7-rubygem-dig_rb-doc 
+  - ruby2.7-rubygem-docile-doc 
+  - ruby2.7-rubygem-docile-doc-1_1 
+  - ruby2.7-rubygem-docile-testsuite-1_1 
+  - ruby2.7-rubygem-domain_name-doc 
+  - ruby2.7-rubygem-domain_name-testsuite 
+  - ruby2.7-rubygem-ed25519-doc 
+  - ruby2.7-rubygem-em-websocket-doc 
+  - ruby2.7-rubygem-em-websocket-testsuite 
+  - ruby2.7-rubygem-equalizer-doc 
+  - ruby2.7-rubygem-equalizer-testsuite 
+  - ruby2.7-rubygem-erubi-doc 
+  - ruby2.7-rubygem-erubi-testsuite 
+  - ruby2.7-rubygem-erubis-doc 
+  - ruby2.7-rubygem-erubis-doc-2_6 
+  - ruby2.7-rubygem-erubis-testsuite 
+  - ruby2.7-rubygem-erubis-testsuite-2_6 
+  - ruby2.7-rubygem-eventmachine-doc 
+  - ruby2.7-rubygem-exception_notification-doc 
+  - ruby2.7-rubygem-exception_notification-testsuite 
+  - ruby2.7-rubygem-excon-doc 
+  - ruby2.7-rubygem-execjs-doc 
+  - ruby2.7-rubygem-extlib-doc 
+  - ruby2.7-rubygem-extlib-testsuite 
+  - ruby2.7-rubygem-factory_girl-doc 
+  - ruby2.7-rubygem-factory_girl_rails-doc 
+  - ruby2.7-rubygem-fake_ftp-doc 
+  - ruby2.7-rubygem-fake_ftp-doc-0_1 
+  - ruby2.7-rubygem-fake_ftp-testsuite 
+  - ruby2.7-rubygem-fake_ftp-testsuite-0_1 
+  - ruby2.7-rubygem-faraday-doc 
+  - ruby2.7-rubygem-faraday-doc-0_12 
+  - ruby2.7-rubygem-faraday-testsuite 
+  - ruby2.7-rubygem-faraday_middleware-doc 
+  - ruby2.7-rubygem-faraday_middleware-multi_json-doc 
+  - ruby2.7-rubygem-faraday_middleware-multi_json-testsuite 
+  - ruby2.7-rubygem-fast_gettext-doc 
+  - ruby2.7-rubygem-fast_gettext-doc-1.1 
+  - ruby2.7-rubygem-fast_xs-doc 
+  - ruby2.7-rubygem-fast_xs-testsuite 
+  - ruby2.7-rubygem-fastercsv-doc 
+  - ruby2.7-rubygem-fastercsv-testsuite 
+  - ruby2.7-rubygem-ffi-doc 
+  - ruby2.7-rubygem-file-tail 
+  - ruby2.7-rubygem-file-tail-doc 
+  - ruby2.7-rubygem-flog-doc 
+  - ruby2.7-rubygem-flog-testsuite 
+  - ruby2.7-rubygem-fluentd-doc 
+  - ruby2.7-rubygem-fluentd-testsuite 
+  - ruby2.7-rubygem-fog-core-doc 
+  - ruby2.7-rubygem-fog-core-testsuite 
+  - ruby2.7-rubygem-fog-json-doc 
+  - ruby2.7-rubygem-fog-json-testsuite 
+  - ruby2.7-rubygem-fog-libvirt-doc 
+  - ruby2.7-rubygem-fog-xml-doc 
+  - ruby2.7-rubygem-fog-xml-testsuite 
+  - ruby2.7-rubygem-font-awesome-rails-doc 
+  - ruby2.7-rubygem-font-awesome-rails-testsuite 
+  - ruby2.7-rubygem-formatador-doc 
+  - ruby2.7-rubygem-forwardable-extended-doc 
+  - ruby2.7-rubygem-gem2rpm 
+  - ruby2.7-rubygem-get_process_mem-doc 
+  - ruby2.7-rubygem-get_process_mem-testsuite 
+  - ruby2.7-rubygem-gettext-doc 
+  - ruby2.7-rubygem-gettext-setup-doc 
+  - ruby2.7-rubygem-gettext-setup-testsuite 
+  - ruby2.7-rubygem-gettext-testsuite 
+  - ruby2.7-rubygem-gettext_i18n_rails-doc 
+  - ruby2.7-rubygem-gettext_i18n_rails_js-doc 
+  - ruby2.7-rubygem-gettext_i18n_rails_js-testsuite 
+  - ruby2.7-rubygem-gli-doc 
+  - ruby2.7-rubygem-gli-testsuite 
+  - ruby2.7-rubygem-globalid-doc 
+  - ruby2.7-rubygem-gpgme-doc 
+  - ruby2.7-rubygem-gpgme-testsuite 
+  - ruby2.7-rubygem-grape-doc 
+  - ruby2.7-rubygem-grape-testsuite 
+  - ruby2.7-rubygem-gravatar_image_tag-doc 
+  - ruby2.7-rubygem-gravatar_image_tag-testsuite 
+  - ruby2.7-rubygem-gssapi-doc 
+  - ruby2.7-rubygem-gssapi-testsuite 
+  - ruby2.7-rubygem-gyoku-doc 
+  - ruby2.7-rubygem-gyoku-testsuite 
+  - ruby2.7-rubygem-haml-doc 
+  - ruby2.7-rubygem-haml-rails-doc 
+  - ruby2.7-rubygem-haml-rails-testsuite 
+  - ruby2.7-rubygem-has_mobile_views-doc 
+  - ruby2.7-rubygem-has_mobile_views-testsuite 
+  - ruby2.7-rubygem-hashdiff-doc 
+  - ruby2.7-rubygem-hashdiff-testsuite 
+  - ruby2.7-rubygem-hashicorp-checkpoint-doc 
+  - ruby2.7-rubygem-hashicorp-checkpoint-testsuite 
+  - ruby2.7-rubygem-hashie-doc 
+  - ruby2.7-rubygem-hashie-testsuite 
+  - ruby2.7-rubygem-highline-doc 
+  - ruby2.7-rubygem-highline-doc-1_6 
+  - ruby2.7-rubygem-highline-doc-1_7 
+  - ruby2.7-rubygem-highline-testsuite-1_6 
+  - ruby2.7-rubygem-highline-testsuite-1_7 
+  - ruby2.7-rubygem-hike-doc 
+  - ruby2.7-rubygem-hike-doc-1_2 
+  - ruby2.7-rubygem-hitimes-doc 
+  - ruby2.7-rubygem-hitimes-testsuite 
+  - ruby2.7-rubygem-hoe-doc 
+  - ruby2.7-rubygem-hoe-testsuite 
+  - ruby2.7-rubygem-hpricot-doc 
+  - ruby2.7-rubygem-hpricot-testsuite 
+  - ruby2.7-rubygem-html2haml-doc 
+  - ruby2.7-rubygem-html2haml-testsuite 
+  - ruby2.7-rubygem-http-accept-doc-1.7 
+  - ruby2.7-rubygem-http-cookie-doc 
+  - ruby2.7-rubygem-http-cookie-testsuite 
+  - ruby2.7-rubygem-http_accept_language-doc 
+  - ruby2.7-rubygem-http_accept_language-testsuite 
+  - ruby2.7-rubygem-http_parser.rb-doc 
+  - ruby2.7-rubygem-http_parser.rb-testsuite 
+  - ruby2.7-rubygem-httpclient-doc 
+  - ruby2.7-rubygem-httpclient-testsuite 
+  - ruby2.7-rubygem-i18n-doc 
+  - ruby2.7-rubygem-i18n-doc-0_6 
+  - ruby2.7-rubygem-i18n-doc-0_9 
+  - ruby2.7-rubygem-i18n-doc-1.1 
+  - ruby2.7-rubygem-i18n-testsuite-0_6 
+  - ruby2.7-rubygem-i18n-testsuite-0_9 
+  - ruby2.7-rubygem-i18n-testsuite-1.1 
+  - ruby2.7-rubygem-ice_nine-doc 
+  - ruby2.7-rubygem-ice_nine-testsuite 
+  - ruby2.7-rubygem-inifile-doc 
+  - ruby2.7-rubygem-inifile-testsuite 
+  - ruby2.7-rubygem-ipaddress-doc 
+  - ruby2.7-rubygem-ipaddress-testsuite 
+  - ruby2.7-rubygem-jaro_winkler-doc 
+  - ruby2.7-rubygem-jbuilder-doc 
+  - ruby2.7-rubygem-jbuilder-testsuite 
+  - ruby2.7-rubygem-jekyll 
+  - ruby2.7-rubygem-jekyll-doc 
+  - ruby2.7-rubygem-jekyll-sass-converter-doc 
+  - ruby2.7-rubygem-jekyll-watch-doc 
+  - ruby2.7-rubygem-jmespath-doc 
+  - ruby2.7-rubygem-journey-doc-1_0 
+  - ruby2.7-rubygem-journey-testsuite-1_0 
+  - ruby2.7-rubygem-jquery-rails-doc 
+  - ruby2.7-rubygem-jquery-rails-testsuite 
+  - ruby2.7-rubygem-jquery-ui-rails-doc 
+  - ruby2.7-rubygem-js-routes-doc 
+  - ruby2.7-rubygem-js-routes-testsuite 
+  - ruby2.7-rubygem-json-doc 
+  - ruby2.7-rubygem-json-jwt-doc 
+  - ruby2.7-rubygem-json-schema-doc 
+  - ruby2.7-rubygem-json_pure-doc 
+  - ruby2.7-rubygem-jwt-doc 
+  - ruby2.7-rubygem-jwt-doc-1_5 
+  - ruby2.7-rubygem-jwt-testsuite-1_5 
+  - ruby2.7-rubygem-kgio-doc 
+  - ruby2.7-rubygem-kgio-testsuite 
+  - ruby2.7-rubygem-kramdown-doc 
+  - ruby2.7-rubygem-kramdown-testsuite 
+  - ruby2.7-rubygem-launchy-doc 
+  - ruby2.7-rubygem-launchy-testsuite 
+  - ruby2.7-rubygem-levenshtein-doc 
+  - ruby2.7-rubygem-levenshtein-testsuite 
+  - ruby2.7-rubygem-librarian-doc 
+  - ruby2.7-rubygem-librarian-testsuite 
+  - ruby2.7-rubygem-libyui-rake-doc 
+  - ruby2.7-rubygem-lightbox2-doc 
+  - ruby2.7-rubygem-liquid-doc 
+  - ruby2.7-rubygem-liquid-doc-3 
+  - ruby2.7-rubygem-liquid-testsuite 
+  - ruby2.7-rubygem-liquid-testsuite-3 
+  - ruby2.7-rubygem-listen-doc 
+  - ruby2.7-rubygem-listen-doc-3_0 
+  - ruby2.7-rubygem-listen-doc-3_1 
+  - ruby2.7-rubygem-little-plugger-doc 
+  - ruby2.7-rubygem-little-plugger-testsuite 
+  - ruby2.7-rubygem-locale-doc 
+  - ruby2.7-rubygem-locale-testsuite 
+  - ruby2.7-rubygem-log4r-doc 
+  - ruby2.7-rubygem-logging-doc 
+  - ruby2.7-rubygem-logging-testsuite 
+  - ruby2.7-rubygem-lolcat-doc 
+  - ruby2.7-rubygem-loofah-doc 
+  - ruby2.7-rubygem-mail-doc 
+  - ruby2.7-rubygem-mail-doc-2_5 
+  - ruby2.7-rubygem-manpages-doc 
+  - ruby2.7-rubygem-marcel-doc 
+  - ruby2.7-rubygem-memcache-client-doc 
+  - ruby2.7-rubygem-memcache-client-testsuite 
+  - ruby2.7-rubygem-mercenary-doc 
+  - ruby2.7-rubygem-mercenary-testsuite 
+  - ruby2.7-rubygem-metaclass-doc 
+  - ruby2.7-rubygem-metaclass-testsuite 
+  - ruby2.7-rubygem-method_source-doc 
+  - ruby2.7-rubygem-method_source-testsuite 
+  - ruby2.7-rubygem-micromachine-doc 
+  - ruby2.7-rubygem-micromachine-testsuite 
+  - ruby2.7-rubygem-mime-types-data-doc 
+  - ruby2.7-rubygem-mime-types-doc 
+  - ruby2.7-rubygem-mime-types-doc-1 
+  - ruby2.7-rubygem-mime-types-testsuite 
+  - ruby2.7-rubygem-mime-types-testsuite-1 
+  - ruby2.7-rubygem-mimemagic-doc 
+  - ruby2.7-rubygem-mimemagic-testsuite 
+  - ruby2.7-rubygem-mini_magick-doc 
+  - ruby2.7-rubygem-mini_mime-doc 
+  - ruby2.7-rubygem-mini_portile2-doc 
+  - ruby2.7-rubygem-mini_portile2-doc-2_3 
+  - ruby2.7-rubygem-mini_portile2-testsuite 
+  - ruby2.7-rubygem-mini_portile2-testsuite-2_3 
+  - ruby2.7-rubygem-minitar-doc 
+  - ruby2.7-rubygem-mixlib-authentication-doc 
+  - ruby2.7-rubygem-mixlib-cli-doc 
+  - ruby2.7-rubygem-mixlib-config-doc 
+  - ruby2.7-rubygem-mixlib-log-doc 
+  - ruby2.7-rubygem-mixlib-shellout-doc 
+  - ruby2.7-rubygem-mobileesp_converted-doc 
+  - ruby2.7-rubygem-mobileesp_converted-testsuite 
+  - ruby2.7-rubygem-mocha-doc 
+  - ruby2.7-rubygem-mocha-testsuite 
+  - ruby2.7-rubygem-moneta-doc 
+  - ruby2.7-rubygem-moneta-doc-0_7 
+  - ruby2.7-rubygem-moneta-testsuite 
+  - ruby2.7-rubygem-moneta-testsuite-0_7 
+  - ruby2.7-rubygem-msgpack-doc 
+  - ruby2.7-rubygem-msgpack-testsuite 
+  - ruby2.7-rubygem-multi_json-doc 
+  - ruby2.7-rubygem-multi_xml-doc 
+  - ruby2.7-rubygem-multipart-post-doc 
+  - ruby2.7-rubygem-multipart-post-testsuite 
+  - ruby2.7-rubygem-mustache-doc 
+  - ruby2.7-rubygem-mustache-testsuite 
+  - ruby2.7-rubygem-mustermann-doc 
+  - ruby2.7-rubygem-mustermann-grape-doc 
+  - ruby2.7-rubygem-mustermann-grape-testsuite 
+  - ruby2.7-rubygem-mustermann-testsuite 
+  - ruby2.7-rubygem-mysql2-doc 
+  - ruby2.7-rubygem-net-ldap-doc 
+  - ruby2.7-rubygem-net-ldap-testsuite 
+  - ruby2.7-rubygem-net-scp-doc 
+  - ruby2.7-rubygem-net-scp-doc-1_1 
+  - ruby2.7-rubygem-net-scp-doc-1_2 
+  - ruby2.7-rubygem-net-scp-testsuite-1_1 
+  - ruby2.7-rubygem-net-scp-testsuite-1_2 
+  - ruby2.7-rubygem-net-sftp-doc 
+  - ruby2.7-rubygem-net-sftp-testsuite 
+  - ruby2.7-rubygem-net-ssh-doc 
+  - ruby2.7-rubygem-net-ssh-doc-4_1 
+  - ruby2.7-rubygem-net-ssh-doc-5.1 
+  - ruby2.7-rubygem-net-ssh-gateway-doc 
+  - ruby2.7-rubygem-net-ssh-multi-doc 
+  - ruby2.7-rubygem-net-ssh-multi-doc-1_1 
+  - ruby2.7-rubygem-net-ssh-multi-testsuite 
+  - ruby2.7-rubygem-net-ssh-multi-testsuite-1_1 
+  - ruby2.7-rubygem-netrc-doc 
+  - ruby2.7-rubygem-netrc-testsuite 
+  - ruby2.7-rubygem-nio4r-doc 
+  - ruby2.7-rubygem-nio4r-testsuite 
+  - ruby2.7-rubygem-nokogiri-doc 
+  - ruby2.7-rubygem-nori-doc 
+  - ruby2.7-rubygem-nori-testsuite 
+  - ruby2.7-rubygem-oauth-doc 
+  - ruby2.7-rubygem-oauth2-doc 
+  - ruby2.7-rubygem-omniauth-doc 
+  - ruby2.7-rubygem-omniauth-github-doc 
+  - ruby2.7-rubygem-omniauth-github-testsuite 
+  - ruby2.7-rubygem-omniauth-gitlab-doc 
+  - ruby2.7-rubygem-omniauth-gitlab-testsuite 
+  - ruby2.7-rubygem-omniauth-google-oauth2-doc 
+  - ruby2.7-rubygem-omniauth-google-oauth2-testsuite 
+  - ruby2.7-rubygem-omniauth-oauth-doc 
+  - ruby2.7-rubygem-omniauth-oauth-testsuite 
+  - ruby2.7-rubygem-omniauth-oauth2-doc 
+  - ruby2.7-rubygem-omniauth-oauth2-testsuite 
+  - ruby2.7-rubygem-open4-doc 
+  - ruby2.7-rubygem-open4-testsuite 
+  - ruby2.7-rubygem-openid_connect-doc 
+  - ruby2.7-rubygem-openid_connect-testsuite 
+  - ruby2.7-rubygem-optimist-doc 
+  - ruby2.7-rubygem-optimist-testsuite 
+  - ruby2.7-rubygem-orm_adapter-doc 
+  - ruby2.7-rubygem-orm_adapter-testsuite 
+  - ruby2.7-rubygem-owncloud-admin-doc 
+  - ruby2.7-rubygem-packaging_rake_tasks-doc 
+  - ruby2.7-rubygem-paint-doc 
+  - ruby2.7-rubygem-parallel-doc 
+  - ruby2.7-rubygem-parallel_tests-doc 
+  - ruby2.7-rubygem-parser-doc 
+  - ruby2.7-rubygem-parser-testsuite 
+  - ruby2.7-rubygem-passenger-doc 
+  - ruby2.7-rubygem-path_expander-doc 
+  - ruby2.7-rubygem-path_expander-testsuite 
+  - ruby2.7-rubygem-pathutil-doc 
+  - ruby2.7-rubygem-pg-doc 
+  - ruby2.7-rubygem-pg-testsuite 
+  - ruby2.7-rubygem-pkg-config-doc 
+  - ruby2.7-rubygem-pkg-config-testsuite 
+  - ruby2.7-rubygem-po_to_json-doc 
+  - ruby2.7-rubygem-po_to_json-testsuite 
+  - ruby2.7-rubygem-polyglot-doc 
+  - ruby2.7-rubygem-pry-doc-testsuite 
+  - ruby2.7-rubygem-pry_debug 
+  - ruby2.7-rubygem-pry_debug-doc 
+  - ruby2.7-rubygem-pry_debug-testsuite 
+  - ruby2.7-rubygem-public_suffix-doc 
+  - ruby2.7-rubygem-public_suffix-doc-3.1 
+  - ruby2.7-rubygem-public_suffix-testsuite 
+  - ruby2.7-rubygem-public_suffix-testsuite-3.1 
+  - ruby2.7-rubygem-puma-doc 
+  - ruby2.7-rubygem-puma_worker_killer-doc 
+  - ruby2.7-rubygem-puma_worker_killer-testsuite 
+  - ruby2.7-rubygem-pundit-doc 
+  - ruby2.7-rubygem-pundit-testsuite 
+  - ruby2.7-rubygem-rack-accept-doc 
+  - ruby2.7-rubygem-rack-accept-testsuite 
+  - ruby2.7-rubygem-rack-cache-doc-1_2 
+  - ruby2.7-rubygem-rack-cache-testsuite-1_2 
+  - ruby2.7-rubygem-rack-doc 
+  - ruby2.7-rubygem-rack-doc-1_3 
+  - ruby2.7-rubygem-rack-doc-1_4 
+  - ruby2.7-rubygem-rack-doc-1_6 
+  - ruby2.7-rubygem-rack-doc-2.0 
+  - ruby2.7-rubygem-rack-oauth2-doc 
+  - ruby2.7-rubygem-rack-oauth2-testsuite 
+  - ruby2.7-rubygem-rack-protection-doc 
+  - ruby2.7-rubygem-rack-proxy-doc 
+  - ruby2.7-rubygem-rack-proxy-testsuite 
+  - ruby2.7-rubygem-rack-ssl-doc 
+  - ruby2.7-rubygem-rack-ssl-doc-1_3 
+  - ruby2.7-rubygem-rack-test-doc-0_6 
+  - ruby2.7-rubygem-rack-test-testsuite-0_6 
+  - ruby2.7-rubygem-rack-testsuite-1_3 
+  - ruby2.7-rubygem-rack-testsuite-1_4 
+  - ruby2.7-rubygem-rack-testsuite-1_6 
+  - ruby2.7-rubygem-rack-testsuite-2.0 
+  - ruby2.7-rubygem-rails-deprecated_sanitizer-doc 
+  - ruby2.7-rubygem-rails-deprecated_sanitizer-testsuite 
+  - ruby2.7-rubygem-rails-doc-5.2 
+  - ruby2.7-rubygem-rails-doc-5_1 
+  - ruby2.7-rubygem-rails-doc-6.0 
+  - ruby2.7-rubygem-rails-dom-testing-doc 
+  - ruby2.7-rubygem-rails-dom-testing-testsuite 
+  - ruby2.7-rubygem-rails-html-sanitizer-doc 
+  - ruby2.7-rubygem-rails-html-sanitizer-testsuite 
+  - ruby2.7-rubygem-rails-i18n-doc 
+  - ruby2.7-rubygem-rails_stdout_logging-doc 
+  - ruby2.7-rubygem-rails_stdout_logging-testsuite 
+  - ruby2.7-rubygem-railties-doc-5.2 
+  - ruby2.7-rubygem-railties-doc-5_1 
+  - ruby2.7-rubygem-railties-doc-6.0 
+  - ruby2.7-rubygem-rainbow-doc 
+  - ruby2.7-rubygem-rainbow-testsuite 
+  - ruby2.7-rubygem-raindrops-doc 
+  - ruby2.7-rubygem-raindrops-testsuite 
+  - ruby2.7-rubygem-rake-compiler-doc 
+  - ruby2.7-rubygem-rake-compiler-testsuite 
+  - ruby2.7-rubygem-rake-doc-11_3 
+  - ruby2.7-rubygem-rake-doc-12.3 
+  - ruby2.7-rubygem-rake-doc-12_0 
+  - ruby2.7-rubygem-rb-fsevent-doc 
+  - ruby2.7-rubygem-rb-inotify-doc 
+  - ruby2.7-rubygem-rb-inotify-testsuite 
+  - ruby2.7-rubygem-rb-kqueue-doc 
+  - ruby2.7-rubygem-rb-kqueue-testsuite 
+  - ruby2.7-rubygem-rdiscount-doc 
+  - ruby2.7-rubygem-rdiscount-testsuite 
+  - ruby2.7-rubygem-rdoc-doc-4 
+  - ruby2.7-rubygem-rdoc-testsuite-4 
+  - ruby2.7-rubygem-responders-doc 
+  - ruby2.7-rubygem-rest-client-doc 
+  - ruby2.7-rubygem-rest-client-testsuite 
+  - ruby2.7-rubygem-restility-doc 
+  - ruby2.7-rubygem-restility-testsuite 
+  - ruby2.7-rubygem-reverse_markdown-doc 
+  - ruby2.7-rubygem-reverse_markdown-testsuite 
+  - ruby2.7-rubygem-rgen-doc 
+  - ruby2.7-rubygem-rgen-testsuite 
+  - ruby2.7-rubygem-ronn-doc 
+  - ruby2.7-rubygem-ronn-testsuite 
+  - ruby2.7-rubygem-rouge-doc 
+  - ruby2.7-rubygem-rouge-doc-1 
+  - ruby2.7-rubygem-rpm-doc 
+  - ruby2.7-rubygem-rpm-testsuite 
+  - ruby2.7-rubygem-rspec-core-doc 
+  - ruby2.7-rubygem-rspec-core-doc-3_5 
+  - ruby2.7-rubygem-rspec-doc 
+  - ruby2.7-rubygem-rspec-doc-3_5 
+  - ruby2.7-rubygem-rspec-expectations-doc 
+  - ruby2.7-rubygem-rspec-expectations-doc-3_5 
+  - ruby2.7-rubygem-rspec-its-doc 
+  - ruby2.7-rubygem-rspec-its-testsuite 
+  - ruby2.7-rubygem-rspec-mocks-doc 
+  - ruby2.7-rubygem-rspec-mocks-doc-3_5 
+  - ruby2.7-rubygem-rspec-rails-doc 
+  - ruby2.7-rubygem-rspec-rails-doc-3.9 
+  - ruby2.7-rubygem-rspec-support-doc 
+  - ruby2.7-rubygem-rspec-support-doc-3_5 
+  - ruby2.7-rubygem-rubocop-doc 
+  - ruby2.7-rubygem-ruby-augeas-doc 
+  - ruby2.7-rubygem-ruby-filemagic-doc 
+  - ruby2.7-rubygem-ruby-filemagic-testsuite 
+  - ruby2.7-rubygem-ruby-libvirt-doc 
+  - ruby2.7-rubygem-ruby-openid-doc 
+  - ruby2.7-rubygem-ruby-openid-testsuite 
+  - ruby2.7-rubygem-ruby-progressbar-doc 
+  - ruby2.7-rubygem-ruby-shadow-doc 
+  - ruby2.7-rubygem-ruby2_keywords-doc 
+  - ruby2.7-rubygem-ruby_dep-doc 
+  - ruby2.7-rubygem-ruby_dep-doc-1_3 
+  - ruby2.7-rubygem-ruby_dig-doc 
+  - ruby2.7-rubygem-ruby_dig-testsuite 
+  - ruby2.7-rubygem-ruby_parser-doc 
+  - ruby2.7-rubygem-ruby_parser-testsuite 
+  - ruby2.7-rubygem-rubyforge-doc 
+  - ruby2.7-rubygem-rubyforge-testsuite 
+  - ruby2.7-rubygem-rubyntlm-doc 
+  - ruby2.7-rubygem-rubyntlm-testsuite 
+  - ruby2.7-rubygem-rubyzip-doc 
+  - ruby2.7-rubygem-rubyzip-doc-1.3 
+  - ruby2.7-rubygem-rubyzip-testsuite-1.3 
+  - ruby2.7-rubygem-safe_yaml-doc 
+  - ruby2.7-rubygem-safe_yaml-testsuite 
+  - ruby2.7-rubygem-sass-doc 
+  - ruby2.7-rubygem-sass-listen-doc 
+  - ruby2.7-rubygem-sass-rails-doc 
+  - ruby2.7-rubygem-sass-rails-doc-5.1 
+  - ruby2.7-rubygem-sassc-doc 
+  - ruby2.7-rubygem-sassc-doc-2.2 
+  - ruby2.7-rubygem-sassc-rails-doc 
+  - ruby2.7-rubygem-sassc-rails-testsuite 
+  - ruby2.7-rubygem-sassc-testsuite 
+  - ruby2.7-rubygem-sassc-testsuite-2.2 
+  - ruby2.7-rubygem-sdoc-doc 
+  - ruby2.7-rubygem-sdoc-testsuite 
+  - ruby2.7-rubygem-securecompare-doc 
+  - ruby2.7-rubygem-securecompare-testsuite 
+  - ruby2.7-rubygem-serverengine-doc 
+  - ruby2.7-rubygem-serverengine-testsuite 
+  - ruby2.7-rubygem-sexp_processor-doc 
+  - ruby2.7-rubygem-sexp_processor-testsuite 
+  - ruby2.7-rubygem-sigdump-doc 
+  - ruby2.7-rubygem-simple_oauth-doc 
+  - ruby2.7-rubygem-simplecov-doc 
+  - ruby2.7-rubygem-simplecov-html-doc 
+  - ruby2.7-rubygem-simplecov-html-testsuite 
+  - ruby2.7-rubygem-simpleidn-doc 
+  - ruby2.7-rubygem-sinatra-doc 
+  - ruby2.7-rubygem-slim-doc 
+  - ruby2.7-rubygem-slim-testsuite 
+  - ruby2.7-rubygem-slop-doc 
+  - ruby2.7-rubygem-slop-doc-3 
+  - ruby2.7-rubygem-slop-doc-3_3 
+  - ruby2.7-rubygem-slop-testsuite 
+  - ruby2.7-rubygem-slop-testsuite-3 
+  - ruby2.7-rubygem-slop-testsuite-3_3 
+  - ruby2.7-rubygem-spring-doc 
+  - ruby2.7-rubygem-spring-watcher-listen-doc 
+  - ruby2.7-rubygem-spring-watcher-listen-testsuite 
+  - ruby2.7-rubygem-sprockets-doc 
+  - ruby2.7-rubygem-sprockets-doc-2_1 
+  - ruby2.7-rubygem-sprockets-doc-2_2 
+  - ruby2.7-rubygem-sprockets-doc-3.7 
+  - ruby2.7-rubygem-sprockets-helpers-doc 
+  - ruby2.7-rubygem-sprockets-helpers-testsuite 
+  - ruby2.7-rubygem-sprockets-rails-doc 
+  - ruby2.7-rubygem-sqlite3-doc 
+  - ruby2.7-rubygem-sqlite3-testsuite 
+  - ruby2.7-rubygem-sshkit-doc 
+  - ruby2.7-rubygem-sshkit-testsuite 
+  - ruby2.7-rubygem-stackdeck-doc 
+  - ruby2.7-rubygem-stackdeck-testsuite 
+  - ruby2.7-rubygem-stomp-doc 
+  - ruby2.7-rubygem-stomp-testsuite 
+  - ruby2.7-rubygem-strptime-doc 
+  - ruby2.7-rubygem-swd-doc 
+  - ruby2.7-rubygem-swd-testsuite 
+  - ruby2.7-rubygem-systemu-doc 
+  - ruby2.7-rubygem-systemu-testsuite 
+  - ruby2.7-rubygem-taskjuggler 
+  - ruby2.7-rubygem-taskjuggler-doc 
+  - ruby2.7-rubygem-taskjuggler-testsuite 
+  - ruby2.7-rubygem-temple-doc 
+  - ruby2.7-rubygem-temple-testsuite 
+  - ruby2.7-rubygem-term-ansicolor 
+  - ruby2.7-rubygem-term-ansicolor-doc 
+  - ruby2.7-rubygem-text-doc 
+  - ruby2.7-rubygem-text-hyphen-doc 
+  - ruby2.7-rubygem-text-hyphen-testsuite 
+  - ruby2.7-rubygem-text-testsuite 
+  - ruby2.7-rubygem-thor-doc 
+  - ruby2.7-rubygem-thor-doc-0_19 
+  - ruby2.7-rubygem-thread_safe-doc 
+  - ruby2.7-rubygem-thread_safe-testsuite 
+  - ruby2.7-rubygem-tilt-doc 
+  - ruby2.7-rubygem-tilt-doc-1_1 
+  - ruby2.7-rubygem-tilt-doc-1_4 
+  - ruby2.7-rubygem-tilt-testsuite-1_1 
+  - ruby2.7-rubygem-tilt-testsuite-1_4 
+  - ruby2.7-rubygem-timers-doc 
+  - ruby2.7-rubygem-timers-testsuite 
+  - ruby2.7-rubygem-tins 
+  - ruby2.7-rubygem-tins-doc 
+  - ruby2.7-rubygem-tmuxinator-doc 
+  - ruby2.7-rubygem-tmuxinator-testsuite 
+  - ruby2.7-rubygem-tomlrb-doc 
+  - ruby2.7-rubygem-treetop-doc 
+  - ruby2.7-rubygem-treetop-doc-1_4 
+  - ruby2.7-rubygem-treetop-testsuite-1_4 
+  - ruby2.7-rubygem-trollop-doc 
+  - ruby2.7-rubygem-trollop-testsuite 
+  - ruby2.7-rubygem-turbolinks-doc 
+  - ruby2.7-rubygem-turbolinks-source-doc 
+  - ruby2.7-rubygem-tzinfo-data-doc 
+  - ruby2.7-rubygem-tzinfo-doc 
+  - ruby2.7-rubygem-tzinfo-doc-0 
+  - ruby2.7-rubygem-tzinfo-doc-1.2 
+  - ruby2.7-rubygem-tzinfo-testsuite-0 
+  - ruby2.7-rubygem-tzinfo-testsuite-1.2 
+  - ruby2.7-rubygem-uglifier-doc 
+  - ruby2.7-rubygem-unf-doc 
+  - ruby2.7-rubygem-unf-testsuite 
+  - ruby2.7-rubygem-unf_ext-doc 
+  - ruby2.7-rubygem-unf_ext-testsuite 
+  - ruby2.7-rubygem-unicode-display_width-doc 
+  - ruby2.7-rubygem-unicorn-doc 
+  - ruby2.7-rubygem-unicorn-testsuite 
+  - ruby2.7-rubygem-unicorn-worker-killer-doc 
+  - ruby2.7-rubygem-url_safe_base64-doc 
+  - ruby2.7-rubygem-url_safe_base64-testsuite 
+  - ruby2.7-rubygem-vagrant-spec-doc 
+  - ruby2.7-rubygem-vagrant-spec-testsuite 
+  - ruby2.7-rubygem-vagrant_cloud-doc 
+  - ruby2.7-rubygem-validate_email-doc 
+  - ruby2.7-rubygem-validate_url-doc 
+  - ruby2.7-rubygem-virtus-doc 
+  - ruby2.7-rubygem-virtus-testsuite 
+  - ruby2.7-rubygem-warden-doc 
+  - ruby2.7-rubygem-web-console-doc 
+  - ruby2.7-rubygem-web-console-doc-2 
+  - ruby2.7-rubygem-webfinger-doc 
+  - ruby2.7-rubygem-webfinger-testsuite 
+  - ruby2.7-rubygem-webmock-doc-1_2 
+  - ruby2.7-rubygem-webmock-doc-2_3 
+  - ruby2.7-rubygem-webmock-testsuite-1_2 
+  - ruby2.7-rubygem-webmock-testsuite-2_3 
+  - ruby2.7-rubygem-webpacker-doc 
+  - ruby2.7-rubygem-webpacker-testsuite 
+  - ruby2.7-rubygem-websocket-doc 
+  - ruby2.7-rubygem-websocket-driver-doc 
+  - ruby2.7-rubygem-websocket-driver-doc-0_6 
+  - ruby2.7-rubygem-websocket-extensions-doc 
+  - ruby2.7-rubygem-websocket-testsuite 
+  - ruby2.7-rubygem-winrm-doc-2_1 
+  - ruby2.7-rubygem-winrm-elevated-doc 
+  - ruby2.7-rubygem-winrm-fs-doc 
+  - ruby2.7-rubygem-xdg-doc 
+  - ruby2.7-rubygem-xdg-doc-2 
+  - ruby2.7-rubygem-xdg-testsuite-2 
+  - ruby2.7-rubygem-xml-simple-doc 
+  - ruby2.7-rubygem-xmlhash-doc 
+  - ruby2.7-rubygem-xmlhash-testsuite 
+  - ruby2.7-rubygem-yajl-ruby-doc 
+  - ruby2.7-rubygem-yajl-ruby-testsuite 
+  - ruby2.7-rubygem-yard-doc 
+  - ruby2.7-rubygem-yard-testsuite 
+  - ruby2.7-rubygem-yast-rake-doc 
+  - ruby2.7-rubygem-zeitwerk-doc 
   - rubygem-builder-3_0 
   - rubygem-builder-3_0-doc 
   - rubygem-builder-3_0-testsuite 
