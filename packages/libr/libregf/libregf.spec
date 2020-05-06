@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           libregf
 %define lname	libregf1
 %define timestamp	20191221
@@ -28,7 +29,9 @@ URL:            https://github.com/libyal/libregf/wiki
 Source:         https://github.com/libyal/libregf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_NT_Registry_File_REGF_format.pdf
 BuildRequires:  pkg-config
+%if %{with python2}
 BuildRequires:  python-devel
+%endif
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20131003
 BuildRequires:  pkgconfig(libcdata) >= 20130904
@@ -121,7 +124,13 @@ This subpackage contains the Python3 bindings for libregf.
 cp "%{SOURCE2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure \
+    --disable-static \
+    --enable-wide-character-type \
+%if %{with python2}
+    --enable-python2 \
+%endif
+    --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -151,11 +160,13 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/pkgconfig/libregf.pc
 %{_mandir}/man3/libregf.3*
 
+%if %{with python2}
 %files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING
 %{python2_sitearch}/pyregf.so
+%endif
 
 %files -n python3-%{name}
 %defattr(-,root,root)
