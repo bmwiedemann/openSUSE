@@ -44,6 +44,8 @@ BuildRequires:  tesseract-traineddata-eng
 BuildRequires:  tesseract-traineddata-fra
 BuildRequires:  pkgconfig(tesseract)
 # /SECTION
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -67,15 +69,22 @@ sed -i -e '/^#!\//, 1d' src/pytesseract.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pytesseract
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pytesseract
+
+%postun
+%python_uninstall_alternative pytesseract
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/pytesseract
+%python_alternative %{_bindir}/pytesseract
 %{python_sitelib}/*
 
 %changelog
