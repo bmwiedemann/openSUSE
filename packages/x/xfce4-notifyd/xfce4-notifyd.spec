@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
@@ -84,14 +84,6 @@ rm %{buildroot}%{_libdir}/xfce4/panel/plugins/*.la
 
 %clean
 rm -rf %{buildroot}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %doc AUTHORS NEWS README TODO

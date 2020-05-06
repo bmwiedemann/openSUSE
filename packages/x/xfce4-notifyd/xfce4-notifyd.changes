@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  5 16:18:27 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.6.1
+  * Fix hover effect without compositing (bxo#16586)
+  * Move from exo-csource to xdt-csource (bxo#16717)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Apr  8 17:54:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.6.0
