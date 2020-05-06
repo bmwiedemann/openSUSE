@@ -1,7 +1,7 @@
 #
 # spec file for package apfel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,16 @@
 #
 
 
+# PYTHON BINDINGS INCOMPATIBLE WITH PYTHON3
+%if 0%{?suse_version} >= 1550
+%bcond_with pywrap
+%else
+%bcond_without pywrap
+%endif
+
+%define skip_python3 1
+
 %define soname libAPFEL0
-%define pypackage python-%{name}
 Name:           apfel
 Version:        3.0.4
 Release:        0
@@ -26,15 +34,21 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://apfel.hepforge.org/
 Source:         https://github.com/scarrazza/%{name}/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM apfel-allow-disabling-pywrap.patch badshah400@gmail.com -- Allow building with python extension disabled, for example due to lack of python2 support in the system
+Patch0:         apfel-allow-disabling-pywrap.patch
 BuildRequires:  LHAPDF-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  python-devel
-%if 0%{?suse_version} > 1320
 BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
+BuildRequires:  libtool
+BuildRequires:  python-rpm-macros
+%if %{with pywrap}
+BuildRequires:  %{python_module LHAPDF}
+BuildRequires:  %{python_module devel}
 %endif
+Requires:       python-LHAPDF
+
+%python_subpackages
 
 %description
 APFEL is a library to perform the combined QCD+QED DGLAP
@@ -50,44 +64,37 @@ evolution of parton distributions.
 
 This package provides the shared libraries for %{name}.
 
-%package devel
+%package -n %{name}-devel
 Summary:        Development files for Apfel, a PDF Evolution Library
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       LHAPDF-devel
 Recommends:     %{name}-doc = %{version}
 
-%description devel
+%description -n %{name}-devel
 APFEL is a library to perform the combined QCD+QED DGLAP
 evolution of parton distributions.
 
 This package provides the source files required to develop
 applications with %{name}.
 
-%package -n %{pypackage}
-Summary:        A PDF Evolution Library
-Group:          Development/Languages/Python
-
-%description -n %{pypackage}
-APFEL is a library to perform the combined QCD+QED DGLAP
-evolution of parton distributions.
-
-This package provides the shared libraries for %{name}.
-
-%package doc
+%package -n %{name}-doc
 Summary:        Documentation for APFEL, a PDF evolution library
 Group:          Documentation/Other
 
-%description doc
+%description -n %{name}-doc
 This package provides documentation for APFEL in PDF (Portable
 Document Format), a PDF (Probability Distribution Function) evolution
 library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static
+autoreconf -fvi
+%configure \
+  --disable-static \
+  %{!?with_pywrap:--disable-pywrap}
 make %{?_smp_mflags}
 
 %install
@@ -99,9 +106,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # FIX env BASED SCRIPT INTERPRETER
 sed -Ei "1{s|#\!\s*/usr/bin/env bash|#\!/bin/bash|}" %{buildroot}%{_bindir}/apfel-config
 
-# REMOVE README FROM NON-STD LOCATIONS, INSTALL IT USING %%doc INSTEAD
+# REMOVE INSTALLED README, INSTALL IT USING %%doc INSTEAD
+rm -fr %{buildroot}%{_datadir}/doc/apfel/README
 rm -fr %{buildroot}%{_datadir}/apfel/README
-rm -fr %{buildroot}%{_datadir}/doc/apfel
 
 %post   -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
@@ -109,7 +116,7 @@ rm -fr %{buildroot}%{_datadir}/doc/apfel
 %files -n %{soname}
 %{_libdir}/*.so.*
 
-%files devel
+%files -n %{name}-devel
 %{_includedir}/APFEL/
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
@@ -118,15 +125,13 @@ rm -fr %{buildroot}%{_datadir}/doc/apfel
 %{_bindir}/ListFunctions
 %{_libdir}/*.so
 
-%files -n %{pypackage}
-%{_bindir}/%{name}
-%{python_sitearch}/%{name}.py
-# COMPILED OBJECT FILE CONTAINS BUILDROOT
-%exclude %{python_sitearch}/%{name}.pyc
-%{python_sitearch}/_%{name}.so
-%{python_sitearch}/APFEL-*py%{py_ver}.egg-info
+%if %{with pywrap}
+%files %{python_files}
+%{_bindir}/apfel
+%{python_sitearch}/*
+%endif
 
-%files doc
+%files -n %{name}-doc
 %doc doc/pdfs/manual.pdf
 
 %changelog
