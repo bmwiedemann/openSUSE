@@ -24,4 +24,21 @@
     <comment></comment>
     <requestid>664276</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6df989cbe478403743ab2acc56db36c</srcmd5>
+    <version>2019.11.30</version>
+    <time>1588755881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019.11.30:
+  * add keyword argv to main
+  * Sum call counts in JSON format.
+  * Add dtrace support.
+  * Add --nodel-label option to specify the measurements shown
+  * Don't hardcode theme names in opt parsing code
+  * Fix a typo in gprof2dot.py
+  * fix Profile.prune() for cases when filename is not set
+  * Add README and LICENSE to the manifest. 
+- Drop Source10 (copy of LICENSE), now included in upstream tarball.</comment>
+    <requestid>800573</requestid>
+  </revision>
 </revisionlist>

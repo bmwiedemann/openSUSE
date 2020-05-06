@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  6 06:34:30 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 2019.11.30:
+  * add keyword argv to main
+  * Sum call counts in JSON format.
+  * Add dtrace support.
+  * Add --nodel-label option to specify the measurements shown
+  * Don't hardcode theme names in opt parsing code
+  * Fix a typo in gprof2dot.py
+  * fix Profile.prune() for cases when filename is not set
+  * Add README and LICENSE to the manifest. 
+- Drop Source10 (copy of LICENSE), now included in upstream tarball.
+
+-------------------------------------------------------------------
 Wed Jan  9 22:24:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.
