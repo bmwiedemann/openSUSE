@@ -5627,6 +5627,7 @@ unsorted:
   - i3lock 
   - i3lock-xlock-compat 
   - i3status 
+  - iasimage 
   - ibacm 
   - ibm-data-db2 
   - ibmswtpm2 
@@ -7297,6 +7298,7 @@ unsorted:
   - lensfun-devel 
   - lensfun-doc 
   - lensfun-tools 
+  - leocad 
   - leptonica-devel 
   - leptonica-tools 
   - leveldb 
@@ -18406,7 +18408,6 @@ unsorted:
   - python-acitoolkit-doc-samples 
   - python-aiohttp-doc 
   - python-altgraph-doc 
-  - python-apfel 
   - python-atomicwrites-doc 
   - python-automaton-doc 
   - python-azure-agent 
@@ -18588,8 +18589,6 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-Flask-Cache 
-  - python2-Flask-Cache-doc 
   - python2-FontTools 
   - python2-Glances 
   - python2-aexpect 
@@ -18611,15 +18610,9 @@ unsorted:
   - python2-hankel: [i586] 
   - python2-jupyter-packaging 
   - python2-keyrings.alt 
-  - python2-libesedb 
-  - python2-libevt 
-  - python2-libevtx 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
-  - python2-liblnk 
-  - python2-libolecf 
   - python2-libqcow 
-  - python2-libregf 
   - python2-libunity 
   - python2-markdown2 
   - python2-moto 
@@ -18635,7 +18628,6 @@ unsorted:
   - python2-proliantutils 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-pysaml2: [i586] 
   - python2-pysmb 
   - python2-python-dotenv 
   - python2-setuptools 
@@ -18679,8 +18671,6 @@ unsorted:
   - python3-Flask-Babel 
   - python3-Flask-BabelEx 
   - python3-Flask-Bootstrap 
-  - python3-Flask-Cache 
-  - python3-Flask-Cache-doc 
   - python3-Flask-Caching 
   - python3-Flask-Compress 
   - python3-Flask-Cors 
@@ -20539,6 +20529,7 @@ unsorted:
   - python3-pyOCD 
   - python3-pyPEG2 
   - python3-pyRFC3339 
+  - python3-pyRXP 
   - python3-pyScss 
   - python3-pyVows 
   - python3-pyacoustid 
@@ -23211,6 +23202,8 @@ unsorted:
   - ruby2.7-rubygem-rspec-support-doc-3_5 
   - ruby2.7-rubygem-rubocop-doc 
   - ruby2.7-rubygem-ruby-augeas-doc 
+  - ruby2.7-rubygem-ruby-dbus-doc 
+  - ruby2.7-rubygem-ruby-dbus-testsuite 
   - ruby2.7-rubygem-ruby-filemagic-doc 
   - ruby2.7-rubygem-ruby-filemagic-testsuite 
   - ruby2.7-rubygem-ruby-libvirt-doc 
