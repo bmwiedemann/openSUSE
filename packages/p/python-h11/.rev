@@ -34,4 +34,12 @@
 - Restrict pytest5 for now</comment>
     <requestid>725338</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>91c8a10b33808f8b4c39c4f6ecbdad6d</srcmd5>
+    <version>0.9.0</version>
+    <time>1588755900</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest anymore, seems working</comment>
+    <requestid>800592</requestid>
+  </revision>
 </revisionlist>

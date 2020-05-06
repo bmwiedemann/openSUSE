@@ -1,7 +1,7 @@
 #
 # spec file for package python-h11
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.9.0
 Release:        0
 Summary:        A pure-Python, bring-your-own-I/O implementation of HTTP/11
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/python-hyper/h11
 Source:         https://files.pythonhosted.org/packages/source/h/h11/h11-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -30,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
