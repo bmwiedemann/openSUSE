@@ -451,10 +451,12 @@ Prefer: ruby2.6-rubygem-fast_gettext
 Prefer: ruby2.6-rubygem-i18n
 Prefer: ruby2.6-rubygem-mail
 Prefer: ruby2.6-rubygem-mime-types
+Prefer: ruby2.6-rubygem-rspec
 Prefer: ruby2.6-rubygem-sprockets
 Prefer: ruby2.6-rubygem-thor
 Prefer: ruby2.6-rubygem-tilt
 Prefer: ruby2.6-rubygem-webmock-2_3
+Prefer: ruby2.7-rubygem-fast_gettext
 
 # python-msgpack-python was renamed to python-msgpack with 0.5 as a single-spec package (provides/obsoletes in place)
 Prefer: python3-msgpack
