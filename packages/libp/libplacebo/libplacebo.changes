@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May  6 04:56:38 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.43.1
+This release backports a number of bug fixes from master affecting
+the v2.43.0 release, and also slightly extends the range of
+backwards compatibility with respect to vulkan-headers versions.
+(This change is not on master, so this can be seen as a
+compatibility release)
+
+Bug fixes:
+  * fix GLSL version checks when overriding GLSL versions with
+    pl_shader_params.glsl
+  * fix minor order-of-operations issue in AV1 grain synthesis
+  * fix glInvalidate* backwards compatibility issue
+  * fix compilation with older vulkan-headers (e.g. ubuntu 18.04)
+  * fix a bug where pl_shader_encode_color sometimes uploaded and
+    applied an identity matrix unnecessarily
+  * work around upstream issues with MSL shader compilation by
+    ensuring all buffer elements are sorted by offset
+  * fix hypothetical edge case with swapchain image usages
+    forbidden by the swapchain image format
+  * fix an issue where blending overlays caused the rest of the
+    image to be discarded
+
+Other changes:
+  * log the vulkan surface selection choices
+  * log the overall library version on initialization
+  * add a few more pl_gpu validation checks
+  * significantly reduce the CPU consumpation of blocking texture
+    downloads
+
+-------------------------------------------------------------------
 Thu Apr 23 00:10:37 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Add libepoxy to BuildRequires

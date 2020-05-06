@@ -466,4 +466,38 @@ Changes:
   * load all vulkan function pointers indirectly, using a</comment>
     <requestid>796364</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf229bcde1dc02eb04682b00f395997c</srcmd5>
+    <version>2.43.1</version>
+    <time>1588755911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.43.1
+This release backports a number of bug fixes from master affecting
+the v2.43.0 release, and also slightly extends the range of
+backwards compatibility with respect to vulkan-headers versions.
+(This change is not on master, so this can be seen as a
+compatibility release)
+Bug fixes:
+  * fix GLSL version checks when overriding GLSL versions with
+    pl_shader_params.glsl
+  * fix minor order-of-operations issue in AV1 grain synthesis
+  * fix glInvalidate* backwards compatibility issue
+  * fix compilation with older vulkan-headers (e.g. ubuntu 18.04)
+  * fix a bug where pl_shader_encode_color sometimes uploaded and
+    applied an identity matrix unnecessarily
+  * work around upstream issues with MSL shader compilation by
+    ensuring all buffer elements are sorted by offset
+  * fix hypothetical edge case with swapchain image usages
+    forbidden by the swapchain image format
+  * fix an issue where blending overlays caused the rest of the
+    image to be discarded
+Other changes:
+  * log the vulkan surface selection choices
+  * log the overall library version on initialization
+  * add a few more pl_gpu validation checks
+  * significantly reduce the CPU consumpation of blocking texture
+    downloads
+</comment>
+    <requestid>800533</requestid>
+  </revision>
 </revisionlist>
