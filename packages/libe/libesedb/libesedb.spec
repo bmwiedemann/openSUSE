@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without python2
+
 %define lname	libesedb1
 %define timestamp 20191220
 Name:           libesedb
@@ -32,7 +34,9 @@ Source4:        Forensic_analysis_of_the_Windows_Search_database.pdf
 Source5:        Windows_Search.pdf
 Source6:        libesedb-libfdata.pdf
 BuildRequires:  pkg-config
+%if %{with python2}
 BuildRequires:  python-devel
+%endif
 BuildRequires:  pkgconfig(libbfio) >= 20130721
 BuildRequires:  pkgconfig(libcdata) >= 20140105
 BuildRequires:  pkgconfig(libcerror) >= 20140105
@@ -133,7 +137,13 @@ cp "%{SOURCE5}" .
 cp "%{SOURCE6}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure \
+    --disable-static \
+    --enable-wide-character-type \
+%if %{with python2}
+    --enable-python2 \
+%endif
+    --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -172,11 +182,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libesedb.pc
 %{_mandir}/man3/libesedb.3*
 
+%if %{with python2}
 %files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
 %license COPYING 
 %{python2_sitearch}/pyesedb.so
+%endif
 
 %files -n python3-%{name}
 %defattr(-,root,root)

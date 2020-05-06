@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 11:03:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow distros to decide to no longer build python2 bindings
+  (bcond_without python2). Tumbleweed declares this already.
+
+-------------------------------------------------------------------
 Tue Apr  7 15:32:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20191220
