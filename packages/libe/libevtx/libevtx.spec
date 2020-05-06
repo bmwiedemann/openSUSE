@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           libevtx
 %define lname	libevtx1
 %define timestamp	20191221
@@ -28,7 +29,9 @@ URL:            https://github.com/libyal/libevtx/wiki
 Source:         https://github.com/libyal/libevtx/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_XML_Event_Log_EVTX.pdf
 BuildRequires:  pkg-config
+%if %{with python2}
 BuildRequires:  python-devel
+%endif
 #latest version of these in OBS as of Jan 28, 2016
 BuildRequires:  pkgconfig(libbfio) >= 20160108
 BuildRequires:  pkgconfig(libcdata) >= 20130407
@@ -119,7 +122,13 @@ Python bindings for libevtx, which can read Windows XML Event files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure \
+    --disable-static \
+    --enable-wide-character-type \
+%if %{with python2}
+    --enable-python2 \
+%endif
+    --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -149,11 +158,13 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libevtx.pc
 %_mandir/man3/libevtx.3*
 
+%if %{with python2}
 %files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING 
 %python2_sitearch/pyevtx.so
+%endif
 
 %files -n python3-%name
 %defattr(-,root,root)
