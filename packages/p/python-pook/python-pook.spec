@@ -24,9 +24,9 @@ Version:        1.0.0
 Release:        0
 Summary:        HTTP traffic mocking and expectations
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/h2non/pook
 Source:         https://files.pythonhosted.org/packages/source/p/pook/pook-%{version}.tar.gz
+Patch0:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module mocket >= 1.6.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose >= 1.3.7}
-BuildRequires:  %{python_module pytest < 5}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 1.19.1}
 BuildRequires:  %{python_module xmltodict >= 0.10.2}
@@ -55,6 +55,7 @@ HTTP traffic mocking and expectations.
 
 %prep
 %setup -q -n pook-%{version}
+%patch0 -p1
 rm -f setup.cfg pytest.ini tox.ini
 
 # Assist unittest on Python 2
@@ -72,8 +73,8 @@ touch tests/__init__.py
 %check
 %{python_expand  #
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m pytest tests/unit
-$python -m pytest tests/integration/engines/pytest_suite.py
+$python -m pytest -v tests/unit
+$python -m pytest -v tests/integration/engines/pytest_suite.py
 $python -m nose tests/integration/engines/nose_suite.py
 export PYTHONPATH=%{buildroot}%{$python_sitelib}:.
 $python -m unittest tests.integration.engines.unittest_suite

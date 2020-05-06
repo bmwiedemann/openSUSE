@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 06:59:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with pytest5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 09:20:50 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.0

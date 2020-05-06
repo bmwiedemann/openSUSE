@@ -1,0 +1,22 @@
+From 2071da27701c82ce02b015e01e2aa6fd203e7bb5 Mon Sep 17 00:00:00 2001
+From: Tom <tomas@aparicio.me>
+Date: Tue, 5 May 2020 14:22:30 +0200
+Subject: [PATCH] fix(#69): use match keyword in pytest.raises
+
+---
+ tests/unit/matchers/base_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unit/matchers/base_test.py b/tests/unit/matchers/base_test.py
+index 175bd67..b01aa23 100644
+--- a/tests/unit/matchers/base_test.py
++++ b/tests/unit/matchers/base_test.py
+@@ -33,7 +33,7 @@ def test_base_matcher_exceptions():
+     assert _BaseMatcher('foo').match(None) is None
+ 
+     with pytest.raises(ValueError,
+-                       message='expectation argument cannot be empty'):
++                       match='expectation argument cannot be empty'):
+         _BaseMatcher(None)
+ 
+ 
