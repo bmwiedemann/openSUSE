@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without python2
 Name:           libevt
 %define lname	libevt1
 %define timestamp	20191221
@@ -28,7 +29,9 @@ URL:            https://github.com/libyal/libevt/wiki
 Source:         https://github.com/libyal/libevt/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_Event_Log_EVT.pdf
 BuildRequires:  pkg-config
+%if %{with python2}
 BuildRequires:  python-devel
+%endif
 BuildRequires:  pkgconfig(libbfio) >= 20120426
 BuildRequires:  pkgconfig(libcdata) >= 20120425
 BuildRequires:  pkgconfig(libcdirectory) >= 20120423
@@ -122,7 +125,13 @@ Python bindings for libevt, which can read Windows event files.
 cp "%SOURCE2" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure \
+    --disable-static \
+    --enable-wide-character-type \
+%if %{with python2}
+    --enable-python2 \
+%endif
+    --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -153,11 +162,13 @@ find %buildroot -name '*.la' -delete
 %_libdir/pkgconfig/libevt.pc
 %_mandir/man3/libevt.3*
 
+%if %{with python2}
 %files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %license COPYING 
 %python2_sitearch/pyevt.so
+%endif
 
 %files -n python3-%name
 %defattr(-,root,root)
