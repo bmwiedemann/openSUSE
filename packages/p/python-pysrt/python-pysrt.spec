@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,14 +50,21 @@ sed -e '1d' -i pysrt/commands.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/srt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative srt
+
+%postun
+%python_uninstall_alternative srt
+
 %files %{python_files}
 %doc README.rst
-%python3_only %{_bindir}/srt
+%python_alternative %{_bindir}/srt
 %{python_sitelib}/pysrt
 %{python_sitelib}/pysrt-%{version}-py%{python_version}.egg-info
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 22:18:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Fri Apr 17 11:45:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use pytest instead of nose 
