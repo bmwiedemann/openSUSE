@@ -439,24 +439,32 @@ Prefer: libpulse0-32bit libsane1-32bit
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java vtk-tcl python3-vtk
+Prefer: eclipse-swt
 
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-PrefeR: ruby2.6-rubygem-rack
 Prefer: ruby2.6-rubygem-addressable
 Prefer: ruby2.6-rubygem-builder
 Prefer: ruby2.6-rubygem-fast_gettext
 Prefer: ruby2.6-rubygem-i18n
 Prefer: ruby2.6-rubygem-mail
 Prefer: ruby2.6-rubygem-mime-types
+Prefer: ruby2.6-rubygem-rack
 Prefer: ruby2.6-rubygem-rspec
+Prefer: ruby2.6-rubygem-sass-rails
+Prefer: ruby2.6-rubygem-sassc
 Prefer: ruby2.6-rubygem-sprockets
 Prefer: ruby2.6-rubygem-thor
 Prefer: ruby2.6-rubygem-tilt
 Prefer: ruby2.6-rubygem-webmock-2_3
 Prefer: ruby2.7-rubygem-fast_gettext
+Prefer: ruby2.7-rubygem-i18n
+Prefer: ruby2.7-rubygem-rack
+Prefer: ruby2.7-rubygem-sass-rails
+Prefer: ruby2.7-rubygem-sassc
+Prefer: ruby2.7-rubygem-thor
 
 # python-msgpack-python was renamed to python-msgpack with 0.5 as a single-spec package (provides/obsoletes in place)
 Prefer: python3-msgpack
