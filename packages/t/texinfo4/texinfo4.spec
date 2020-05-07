@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo4
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Release:        0
 Summary:        Old version of texinfo 4, a toolset to create docs from texinfo sources
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Publishing/Texinfo
-Url:            http://www.texinfo.org
+URL:            http://www.texinfo.org
 PreReq:         %{install_info_prereq}
 Provides:       texi2html4 = %{version_t2h}
 Provides:       texi2roff4 = %{version_t2r}
@@ -42,6 +42,8 @@ Provides:       texi2roff4 = %{version_t2r}
 %if %suse_version > 1220
 Requires:       latex2html
 Requires:       makeinfo4
+Requires:       perl-Text-Unidecode
+Requires:       perl-gettext
 Requires:       texlive-bibtex
 Requires:       texlive-latex
 Requires:       texlive-makeindex
@@ -73,6 +75,20 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 This package is only for building lilypond documentation in the
 build service. Please don't install
 Aggregated with texinfo in this package is texi2html and texi2roff.
+
+%package links
+Summary:        texi2pdf4 etc links
+License:        GPL-3.0-or-later
+Group:          Productivity/Publishing/Texinfo
+Conflicts:      texi2html > 2
+Conflicts:      texi2pdf > 2
+Conflicts:      texi2roff > 2
+Conflicts:      texinfo > 2
+Requires:       %{name} = %{version}
+
+%description links
+This package contains links to the 4 suffixed binaries to enable
+easier building in the absense of texi* packages.
 
 %package -n info4
 Summary:        Old version of the "info" manual browser
@@ -195,6 +211,12 @@ rm -rf %{buildroot}%{_datadir}/locale
 rm -rf %{buildroot}%{_datadir}/info
 mv %{buildroot}%{_datadir}/texi2html %{buildroot}%{_datadir}/texi2html4
 mv %{buildroot}%{_datadir}/texinfo %{buildroot}%{_datadir}/texinfo4
+
+pushd %{buildroot}%{_bindir}
+for i in `ls -1 *texi*4 |tr -d 4`
+do ln -s ${i}4 ${i}
+done
+
 %fdupes -s %{buildroot}%{_mandir}
 
 %if 1 == 0
@@ -221,8 +243,13 @@ mv %{buildroot}%{_datadir}/texinfo %{buildroot}%{_datadir}/texinfo4
 %doc doc/texinfo.tex doc/txi-*.tex
 %doc %{_defaultdocdir}/texi2html4/*
 %doc %{_defaultdocdir}/texi2roff4/*
-%{_bindir}/pdftexi*
-%{_bindir}/texi*
+%{_bindir}/pdftexi2dvi4
+%{_bindir}/texi2dvi4
+%{_bindir}/texi2html4
+%{_bindir}/texi2index4
+%{_bindir}/texi2pdf4
+%{_bindir}/texi2roff4
+%{_bindir}/texindex4
 #%%{_infodir}/texinfo*.gz
 #%%{_infodir}/texi2html*.gz
 %{_mandir}/man1/pdftexi2dvi4.1.gz
@@ -230,6 +257,15 @@ mv %{buildroot}%{_datadir}/texinfo %{buildroot}%{_datadir}/texinfo4
 %{_mandir}/man5/texinfo4.5.gz
 %{_datadir}/texinfo4
 %{_datadir}/texi2html4
+
+%files links
+%{_bindir}/pdftexi2dvi
+%{_bindir}/texi2dvi
+%{_bindir}/texi2html
+%{_bindir}/texi2index
+%{_bindir}/texi2pdf
+%{_bindir}/texi2roff
+%{_bindir}/texindex
 
 %files -n makeinfo4
 %defattr(-,root,root)
