@@ -35,6 +35,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
+Provides:       python-sklearn
+Provides:       sklearn
 Requires:       python-joblib
 Requires:       python-matplotlib
 Requires:       python-numpy >= 1.8.2

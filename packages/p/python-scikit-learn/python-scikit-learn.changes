@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 06:45:57 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added provide sklearn and python-sklearn as this is name most
+  users will search for
+
+-------------------------------------------------------------------
 Tue Apr 28 11:13:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Require at least pytest 4.x for testing

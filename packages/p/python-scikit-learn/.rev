@@ -429,4 +429,12 @@
     <comment>- Require at least pytest 4.x for testing</comment>
     <requestid>798641</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>61ba3190af1fc54042ee1eb03a380ede</srcmd5>
+    <version>0.22.1</version>
+    <time>1588856175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800945</requestid>
+  </revision>
 </revisionlist>
