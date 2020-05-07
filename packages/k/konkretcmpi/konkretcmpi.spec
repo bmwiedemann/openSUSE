@@ -1,7 +1,7 @@
 #
 # spec file for package konkretcmpi
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# 1 for python3, 0 for python2
+%if 0%{?suse_version} >= 1500
+%define python3 1
+%else
+%define python3 0
+%endif
+%if %{python3}
+%define pythonpackagename python3
+%else
+%define pythonpackagename python
+%endif
 
 Name:           konkretcmpi
 %define         libname   lib%{name}
@@ -24,15 +36,19 @@ Release:        0
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%if %{python3}
+BuildRequires:  python3-devel
+%else
 BuildRequires:  python-devel
+%endif
 BuildRequires:  sblim-cmpi-devel
 BuildRequires:  swig
-Url:            https://github.com/rnovacek/konkretcmpi
+URL:            https://github.com/rnovacek/konkretcmpi
 # Increment the version every time the source code changes.
 Summary:        A tool for developing CMPI providers in the C programming language
+# This is necessary to build the RPM as a non-root user.
 License:        MIT
 Group:          Development/Libraries/C and C++
-# This is necessary to build the RPM as a non-root user.
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #Source0:        https://github.com/rnovacek/konkretcmpi/archive/%{version}/konkretcmpi-%{version}.tar.gz
 Source0:        konkretcmpi-%{version}.tar.gz
@@ -93,19 +109,24 @@ easier by generating type-safe concrete CIM interfaces from MOF
 definitions and by providing default implementations for many of the
 provider operations.
 
-%package python
+%package %{pythonpackagename}
 Summary:        Python bindings for konkretcmpi
 Group:          Development/Libraries/Python
 %if 0%{?suse_version}
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 %{!?py_requires: %define py_requires Requires: python}
+%if %{python3}
+%{!?py_requires: %define py_requires Requires: python3}
+%else
+%{!?py_requires: %define py_requires Requires: python}
+%endif
 %{py_requires}
 %else
 Requires:       python2
 %endif
 
-%description python
+%description %{pythonpackagename}
 This package contains python binding for konkretcmpi.
 
 
@@ -169,7 +190,8 @@ rm -rf $RPM_BUILD_ROOT/usr/lib*/libkonkret.la
 %defattr(-,root,root)
 %{_libdir}/libkonkret.so.*
 %{_libdir}/libkonkretmof.so.*
-%doc README COPYING
+%doc README
+%license COPYING
 
 %files devel
 %defattr(-,root,root)
@@ -181,13 +203,17 @@ rm -rf $RPM_BUILD_ROOT/usr/lib*/libkonkret.la
 %{_bindir}/konkretreg
 %{_datadir}/cmake/Modules/*
 
-%files python
+%files %{pythonpackagename}
 %defattr(-,root,root)
 %{python_sitearch}/*.so
 %if 0%{?suse_version} > 0 && 0%{?suse_version} < 1020
 %{python_sitelib}/*.py*
 %else
+%if %{python3}
 %{python_sitearch}/*.py*
+%else
+%{python2_sitearch}/*.py*
+%endif
 %endif
 
 %changelog
