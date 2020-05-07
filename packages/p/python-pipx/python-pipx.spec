@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,14 +21,17 @@
 Name:           python-pipx
 Version:        0.14.0.0
 Release:        0
-License:        MIT
 Summary:        Install and run Python applications in isolated environments
-Url:            https://github.com/pipxproject/pipx
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/pipxproject/pipx
 Source:         https://github.com/pipxproject/pipx/archive/%{version}.tar.gz#/pipx-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-OPENSUSE test_alternative_names.patch mcepl@suse.com
+# Make tests pass even with using alternatives
+Patch0:         test_alternative_names.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
 BuildRequires:  %{python_module userpath}
@@ -36,6 +40,8 @@ BuildRequires:  fdupes
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-setuptools
 Requires:       python-userpath
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -45,6 +51,8 @@ Install and run Python applications in isolated environments.
 
 %prep
 %setup -q -n pipx-%{version}
+%autopatch -p1
+
 sed -i '1{/^#!/d}' pipx/main.py pipx/venv_metadata_inspector.py
 
 %build
@@ -52,6 +60,7 @@ sed -i '1{/^#!/d}' pipx/main.py pipx/venv_metadata_inspector.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pipx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,10 +74,16 @@ source testenv/bin/activate
 $python -m pytest -vv -k 'test_basic_commands or test_pipx_help_contains_text'
 }
 
+%post
+%python_install_alternative pipx
+
+%postun
+%python_uninstall_alternative pipx
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/pipx
+%python_alternative %{_bindir}/pipx
 %{python_sitelib}/*
 
 %changelog
