@@ -1,7 +1,7 @@
 #
 # spec file for package znc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           znc
-Version:        1.7.5
+Version:        1.8.0
 Release:        0
 Summary:        Advanced IRC Bouncer
 License:        Apache-2.0
@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(zlib)
 Requires(pre):  shadow
-Recommends:     %{name}-lang
 %systemd_requires
 
 %description
@@ -118,7 +117,7 @@ This package contains the Tcl extension to ZNC.
   -DWANT_PYTHON=1 \
   -DWANT_PYTHON_VERSION=python3 \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed"
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -126,6 +125,7 @@ install -dm 0755 %{buildroot}%{_var}/lib/%{name} \
   %{buildroot}%{_sbindir}
 ln -sv %{_sbindir}/service \
   %{buildroot}%{_sbindir}/rc%{name}
+%find_lang %{name} --all-name
 
 %pre
 getent group  %{name} >/dev/null || groupadd -r %{name}
@@ -166,9 +166,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_libdir}/%{name}/keepnick.so
 %{_libdir}/%{name}/kickrejoin.so
 %{_libdir}/%{name}/nickserv.so
-%{_libdir}/%{name}/partyline.so
 %{_libdir}/%{name}/perform.so
-%{_libdir}/%{name}/q.so
 %{_libdir}/%{name}/raw.so
 %{_libdir}/%{name}/sample.so
 %{_libdir}/%{name}/savebuff.so
@@ -211,7 +209,12 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 
 %files lang
 %license LICENSE
-%{_datadir}/locale
+%{_datadir}/locale/de_DE/LC_MESSAGES/znc*
+%{_datadir}/locale/es_ES/LC_MESSAGES/znc*
+%{_datadir}/locale/fr_FR/LC_MESSAGES/znc*
+%{_datadir}/locale/it_IT/LC_MESSAGES/znc*
+%{_datadir}/locale/pt_BR/LC_MESSAGES/znc*
+%{_datadir}/locale/ru_RU/LC_MESSAGES/znc*
 
 %files perl
 %license LICENSE

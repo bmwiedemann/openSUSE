@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed May  6 13:33:46 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.0:
+  * Output of various commands (e.g. /znc help) was switched from a table to a list
+  * Support IP while verifying SSL certificates (#1504)
+  * Make it more visible that admins have lots of privileges
+  * Fix null dereference on startup when reading invalid config (#1585)
+  * Don't show server passwords on ZNC startup (#1599)
+  * Fix build with newer OpenSSL (#1688)
+  * Fix in-source CMake build
+  * Fix echo-message for *status (#1705)
+  * controlpanel: Add already supported NoTrafficTimeout User variable to help output
+  * Support python 3.9 (#1702)
+  * modtcl: Added GetNetworkName (#1658)
+  * partyline: Module is removed (#1632)
+  * q: Module is removed (#786)
+  * route_replies: Handle more numerics (#1421) (#1659) (#1660)
+  * sasl: Fix sending of long authentication information (#942)
+  * shell: Unblock signals when spawning child processes (#1590)
+  * simple_away: Convert to UTC time (#1506)
+  * watch: Better support multiple clients (#1701)
+  * webadmin: Better wording for TrustPKI setting (#1670) (#1711) (#1713)
+  * Refactor the way how SSL certificate is checked to simplify
+    future socket-related refactors (#1697)
+  * Various improvements for translation CI
+  * Normalize variable name sUserName/sUsername (#1546)
+  * Make de-escaping less lenient (#1715)
+
+-------------------------------------------------------------------
 Sun Sep 29 06:47:48 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - Update to 1.7.5:
