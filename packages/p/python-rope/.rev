@@ -162,4 +162,33 @@
     <comment>py38 fix</comment>
     <requestid>783265</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>75465d00f2789aa196e7e851b7ec4255</srcmd5>
+    <version>0.17.0</version>
+    <time>1588856095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  - Make tests compatible with Python 3.8
+  - Use context manager for open()
+  - Donâ€™t use UserDict (!!!) and collections.MutableMapping.
+  - assertEquals has been deprecated for long time (-&gt; assertEqual)
+  - Remove weird escpaing of 's' character, which is the syntax
+    error these days.
+  - Add testing for Python 3.8 as well
+  - Fix pattern for matching short strings
+  - Work with deprecated types and using aliased ones.
+  - Don't use underscored _ast, but use ast instead
+  - Direct import from collections is getting deprecated.
+  - Use .is_alive method instead of a deprecated .isAlive
+    in threading.Thread
+  - Fix simple typo: sitaution -&gt; situation (#287)
+  - Two more assertEquals happened.
+- Remove all patches, which were now included in the upstream
+  tarball:
+  - Python38-compatibility.patch
+  - assertEquals.patch
+  - isAlive_failed_test.patch
+  - obsolete_escape_strings.patch</comment>
+    <requestid>800812</requestid>
+  </revision>
 </revisionlist>
