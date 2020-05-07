@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kcm_sddm
-Version:        5.18.4.1
+Version:        5.18.5
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/5.18.4/sddm-kcm-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.18.4/sddm-kcm-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
