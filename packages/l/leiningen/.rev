@@ -40,4 +40,13 @@
   * Fix a bug where checksum verification failed on non-GNU systems.</comment>
     <requestid>785773</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6629ecc47f7463d43c576aa92f3bbdab</srcmd5>
+    <version>2.9.3</version>
+    <time>1588855797</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1171255 - leiningen does not work: ClassNotFoundException:
+  Use correct version in bash script</comment>
+    <requestid>800640</requestid>
+  </revision>
 </revisionlist>

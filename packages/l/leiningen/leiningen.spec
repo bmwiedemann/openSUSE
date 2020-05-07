@@ -17,6 +17,7 @@
 
 
 Name:           leiningen
+# Change LEIN_VERSION in lein-pkg when bumping
 Version:        2.9.3
 Release:        0
 Summary:        Automation for Clojure projects
@@ -46,7 +47,7 @@ packaging projects and can be extended with a number of plugins.
 %build
 
 %install
-#LEIN_JAR=
+#LEIN_JAR =
 mkdir -p %{buildroot}%{_datadir}/java/
 install -m 0644 -D %{SOURCE0} %{buildroot}%{_datadir}/java/leiningen-%{version}-standalone.jar
 install -m 0755 -D %{SOURCE1} %{buildroot}%{_bindir}/lein

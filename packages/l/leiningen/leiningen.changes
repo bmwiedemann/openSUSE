@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 09:19:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- boo#1171255 - leiningen does not work: ClassNotFoundException:
+  Use correct version in bash script
+
+-------------------------------------------------------------------
 Tue Mar 17 04:58:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.3:
