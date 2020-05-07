@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:28:47 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.1:
+  * Add dependency gettext in README.md (#93)
+  * Fix .desktop issues
+  * Fix dash in the npm command
+  * Fix compilation on newer valac
+  * Update travis to make build successful
+  * Merge #84 manually
+  * Update .po files
+  * Manually merge #66, #62 and #33
+  * Add turkish to LINGUAS
+  * Update fr.po (#78)
+  * Add LICENSE
+- Drop appeditor-1.1.0-vala-0.46.patch
+
+-------------------------------------------------------------------
 Thu Oct 31 15:30:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add appeditor-1.1.0-vala-0.46.patch

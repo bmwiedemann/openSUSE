@@ -17,15 +17,13 @@
 
 
 Name:           appeditor
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Application Entry Editor
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/donadigo/appeditor
 Source:         https://github.com/donadigo/appeditor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX_UPSTREAM -- Fix build with vala >= 0.46
-Patch0:         appeditor-1.1.0-vala-0.46.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
@@ -47,7 +45,6 @@ and to edit their properties.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson
