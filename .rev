@@ -132,4 +132,12 @@
     <comment>A new stable version of Kraft arrived!</comment>
     <requestid>757097</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>68f8e4a612b2c453fa7156d7fbf09d39</srcmd5>
+    <version>0.90</version>
+    <time>1588856197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800992</requestid>
+  </revision>
 </revisionlist>
