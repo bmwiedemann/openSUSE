@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-kiwi_label_helper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Service to duplicate labels with a custom prefix
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://build.opensuse.org
+URL:            https://build.opensuse.org
 Source0:        kiwi_label_helper.service
 Source1:        kiwi_label_helper
 Source2:        README
