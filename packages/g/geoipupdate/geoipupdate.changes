@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 07 08:06:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.3.0:
+  * Set release date
+  * Push multiple versions with different tags
+  * Use correct org name
+  * Add a less-strict .yamllintrc
+  * Test on go 1.14.x
+  * Shows location of GeoIP.conf when issue in file
+  * Remove extra space
+  * Fix typo in config file generation
+  * Make the edition IDs list format clearer
+
+-------------------------------------------------------------------
 Fri Apr 17 12:35:42 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Fix license, it's actually Apache-2.0 or MIT (bsc#1169766)
