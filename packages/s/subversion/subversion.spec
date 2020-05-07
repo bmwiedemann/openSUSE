@@ -65,6 +65,7 @@ Patch41:        subversion-1.12.0-swig-4.patch
 Patch42:        gcc10-do-not-optimize-get_externals_to_pin.patch
 Patch43:        ruby27-warnings.patch
 Patch44:        ruby-includes.patch
+Patch45:        disable-fs-fs-pack-test.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -248,6 +249,7 @@ parameters and keywords for the svn command and other tools.
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
+%patch45 -p1
 
 %build
 # Re-boot strap, needed for patch37

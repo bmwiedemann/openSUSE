@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 09:24:22 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add disable-fs-fs-pack-test.patch in order
+  to fix boo#1170834.
+
+-------------------------------------------------------------------
 Wed Apr 15 07:39:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Try to get building with ruby 2.7 bsc#1169446
