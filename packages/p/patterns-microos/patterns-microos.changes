@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 11:35:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- require issue-generator
+- requires update_test pattern during beta test of stable distro. Need to
+  require it as recommends is turned off for MicroOS installations.
+
+-------------------------------------------------------------------
 Thu Apr 23 12:55:56 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - base pattern:

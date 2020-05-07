@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_with betatest
 
 Name:           patterns-microos
 Version:        5.0
@@ -50,6 +51,10 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9010
 Provides:       pattern-visible()
+%if %{with betatest}
+# need to require it as recommends are off
+Requires:       pattern() = update_test
+%endif
 #Obsolete CaaSP Patterns
 Provides:       patterns-caasp-MicroOS
 Obsoletes:      patterns-caasp-MicroOS <= 4.0
@@ -73,6 +78,7 @@ Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
 Requires:       hwinfo
 Requires:       iputils
+Requires:       issue-generator
 Requires:       kbd
 Requires:       kdump
 Requires:       kernel-base
