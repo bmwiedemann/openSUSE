@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,20 @@
 #
 
 
-Name:           xorg-x11-fonts
-BuildRequires:  bdftopcf
-BuildRequires:  fontpackages-devel
-BuildRequires:  mkfontscale
-# ucs2any
-BuildRequires:  font-util
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "converted"
+%define pkgflavor -converted
+%else
+%define pkgflavor %{nil}
+%endif
+
+Name:           xorg-x11-fonts%{pkgflavor}
 BuildRequires:  pkgconfig
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Version:        7.6
 Release:        0
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         fonts-config
-Requires:       %{name}-core
-Provides:       xorg-x11-fonts-100dpi
-Provides:       xorg-x11-fonts-75dpi
-Provides:       xorg-x11-fonts-cyrillic
-Provides:       xorg-x11-fonts-scalable
-Provides:       xorg-x11-fonts-syriac
-Obsoletes:      xorg-x11-fonts-100dpi
-Obsoletes:      xorg-x11-fonts-75dpi
-Obsoletes:      xorg-x11-fonts-cyrillic
-Obsoletes:      xorg-x11-fonts-scalable
-Obsoletes:      xorg-x11-fonts-syriac
 Summary:        X.Org fonts
 License:        MIT
 Group:          System/X11/Fonts
@@ -79,11 +69,50 @@ Source33:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-u
 Source34:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2
 Source35:       http://xorg.freedesktop.org/archive/individual/font/font-adobe-utopia-type1-1.0.4.tar.bz2
 Source36:       http://xorg.freedesktop.org/archive/individual/font/font-alias-1.0.3.tar.bz2
+%if "%{flavor}" == "converted"
+Source1000:     https://pwu.fedorapeople.org/fonts/convertbitmap/convertfont.py
+BuildRequires:  fontpackages-devel
+BuildRequires:  fonttosfnt
+BuildRequires:  ftdump
+BuildRequires:  ttf-converter
+BuildRequires:  xorg-x11-fonts
+Requires(post): fonts-config
+Requires(posttrans): fonts-config
+Requires(postun): fonts-config
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# In TW and SLE 15 SP2/Leap 15.2 we have pango >= 1.44.0 which
+# doesn't support Type1 fonts (boo#1169444)
+Supplements:    (xorg-x11-fonts and libpango-1_0-0)
+%endif
+%else
+# "%%{flavor}" != "converted"
+BuildRequires:  bdftopcf
+BuildRequires:  fontpackages-devel
+BuildRequires:  mkfontscale
+# ucs2any
+BuildRequires:  font-util
+PreReq:         fonts-config
+Requires:       %{name}-core
+Provides:       xorg-x11-fonts-100dpi
+Provides:       xorg-x11-fonts-75dpi
+Provides:       xorg-x11-fonts-cyrillic
+Provides:       xorg-x11-fonts-scalable
+Provides:       xorg-x11-fonts-syriac
+Obsoletes:      xorg-x11-fonts-100dpi
+Obsoletes:      xorg-x11-fonts-75dpi
+Obsoletes:      xorg-x11-fonts-cyrillic
+Obsoletes:      xorg-x11-fonts-scalable
+Obsoletes:      xorg-x11-fonts-syriac
+%endif
 
 %description
 This package contains fonts maintained and shipped with X.Org.
 
-
+%if "%{flavor}" == "converted"
+This package contains the Type1 (.pfb) fonts from xorg-x11-fonts,
+converted to TrueType format, so they can be used by
+applications that don't support Type1 fonts.
+%endif
 
 %package core
 Summary:        Core Fonts for X.Org
@@ -91,7 +120,7 @@ Group:          System/X11/Fonts
 PreReq:         fonts-config
 Provides:       xorg-x11:/usr/X11R6/lib/X11/fonts/misc/cursor.pcf.gz
 
-%description core 
+%description core
 This package contains the 'fixed' and 'cursor' font required for any X
 Server.
 
@@ -99,10 +128,13 @@ Server.
 
 %prep
 %setup -n . -T -D
+%if "%{flavor}" != "converted"
 rm -rf $RPM_BUILD_DIR/*
 for i in $RPM_SOURCE_DIR/*.tar.bz2; do tar xjf $i; done
+%endif
 
 %build
+%if "%{flavor}" != "converted"
 echo -e '#!/bin/sh\nexec /usr/bin/gzip -n -9 "$@"' > ../gzip ; chmod a+x ../gzip ; PATH=`pwd`/..:$PATH
 for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
   pushd $dir
@@ -126,7 +158,23 @@ for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
   popd
 done
 
+%else
+# "%%{flavor}" == "converted"
+cp %{S:1000} .
+ttf-converter --input-dir /usr/share/fonts/Type1/ --output-dir generated
+cd generated
+python3 ../convertfont.py /usr/share/fonts/75dpi/*.pcf.gz /usr/share/fonts/100dpi/*.pcf.gz
+
+# Luxi Mono, Luxi Sans and Luxi Serif are already distributed in ttf format
+rm Luxi*.ttf
+
+# Bitstream-Terminal and DEC-Terminal are not converted correctly so we better remove them
+rm Bitstream-Terminal*.otb
+rm DEC-Terminal*.otb
+%endif
+
 %install
+%if "%{flavor}" != "converted"
 for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
     case $dir in
 	*misc-cyrillic-*) option='FONT_FILES=koi12x24b koi12x24 koi6x13b koi7x14b koi8x16b koi8x16 koi9x15b koi9x18b';;
@@ -143,15 +191,34 @@ rm -rf $RPM_BUILD_ROOT/usr/etc
 rm -f $RPM_BUILD_ROOT/fonts.{dir,scale}
 rm -f $RPM_BUILD_ROOT/usr/share/fonts/encodings/{,large}/encodings.dir
 
+%else
+# "%%{flavor}" == "converted"
+cd generated
+mkdir -p %{buildroot}/%{_datadir}/fonts/truetype
+cp *.ttf %{buildroot}/%{_datadir}/fonts/truetype
+
+cp Adobe-Courier*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Adobe-Helvetica*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Adobe-New-Century-Schoolbook*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Adobe-Symbol.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Adobe-Times*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Adobe-Utopia*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp B\&H-LucidaBright*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp B\&H-Lucida-Sans*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp B\&H-LucidaTypewriter-Sans*.otb %{buildroot}/%{_datadir}/fonts/truetype
+cp Bitstream-Charter*.otb %{buildroot}/%{_datadir}/fonts/truetype
+%endif
+
 %clean
 rm -rf "$RPM_BUILD_ROOT"
 
 # %%post scriptlets
 %reconfigure_fonts_scriptlets
 
+%if "%{flavor}" != "converted"
 %reconfigure_fonts_scriptlets -n xorg-x11-fonts-core
 
-%files 
+%files
 %defattr(-,root,root)
 %dir /usr/share/fonts/100dpi
 %dir /usr/share/fonts/Type1
@@ -203,5 +270,29 @@ rm -rf "$RPM_BUILD_ROOT"
 %ghost %verify(not mode) /usr/share/fonts/misc/.fonts-config-timestamp
 /usr/share/fonts/misc/fonts.alias
 /usr/share/fonts/misc/*.pcf.gz
+
+%else
+# "%%{flavor}" == "converted"
+%files
+%defattr(-,root,root)
+%dir %{_datadir}/fonts/truetype
+%{_datadir}/fonts/truetype/CharterBT-*.ttf
+%{_datadir}/fonts/truetype/Courier10PitchBT-*.ttf
+%{_datadir}/fonts/truetype/Courier-*.ttf
+%{_datadir}/fonts/truetype/Courier.ttf
+%{_datadir}/fonts/truetype/Cursor.ttf
+%{_datadir}/fonts/truetype/Utopia-*.ttf
+%{_datadir}/fonts/truetype/B&H-LucidaTypewriter*.otb
+%{_datadir}/fonts/truetype/Adobe-Courier*.otb
+%{_datadir}/fonts/truetype/Adobe-Helvetica*.otb
+%{_datadir}/fonts/truetype/Adobe-New-Century-Schoolbook*.otb
+%{_datadir}/fonts/truetype/Adobe-Symbol.otb
+%{_datadir}/fonts/truetype/Adobe-Times*.otb
+%{_datadir}/fonts/truetype/Adobe-Utopia*.otb
+%{_datadir}/fonts/truetype/B&H-LucidaBright*.otb
+%{_datadir}/fonts/truetype/B&H-Lucida-Sans*.otb
+%{_datadir}/fonts/truetype/B&H-LucidaTypewriter-Sans*.otb
+%{_datadir}/fonts/truetype/Bitstream-Charter*.otb
+%endif
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  4 08:29:42 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Differentiate also Requires, BuildRequires, Obsoletes and more
+  statements between the two flavors.
+
+-------------------------------------------------------------------
+Thu Apr 30 12:34:54 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use multibuild to add a converted flavor subpackage that has
+  Type1 and bitmap fonts converted to truetype/opentype format
+  (boo#1169444)
+
+-------------------------------------------------------------------
 Tue Jun 18 03:52:50 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - encodings 1.0.5 
