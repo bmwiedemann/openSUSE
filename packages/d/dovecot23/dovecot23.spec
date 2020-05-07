@@ -143,6 +143,8 @@ Source11:       http://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovec
 Source12:       dovecot23.keyring
 Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
+#               https://github.com/dovecot/core/pull/126
+Patch2:         allow-tls1.3-only.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -322,6 +324,7 @@ dovecot tree.
 %setup -q -n %{pkg_name}-%{dovecot_version} -a 1
 %patch -p1
 %patch1 -p1
+%patch2 -p1
 gzip -9v ChangeLog
 # Fix plugins dir.
 sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovecot/modules|' doc/example-config/conf.d/10-mail.conf

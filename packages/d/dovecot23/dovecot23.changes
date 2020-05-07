@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 29 21:25:30 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add allow-tls1.3-only.patch:
+  Allow setting TLSv1.3 as minimum TLS version 
+
+  https://github.com/dovecot/core/pull/126
+
+-------------------------------------------------------------------
 Fri Mar  6 11:14:00 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.10 and pigeonhole to 0.5.10
