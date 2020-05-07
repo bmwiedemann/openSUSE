@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 16:07:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.3.1
+  Bugfix/maintenance release
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
 Tue Apr  7 21:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable verbose make rules 
