@@ -129,7 +129,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcspice-webdavd
 %license COPYING
 %{_sbindir}/spice-webdavd
 %{_sbindir}/rcspice-webdavd
-%{_libexecdir}/udev/rules.d/70-spice-webdavd.rules
+%{_udevrulesdir}/70-spice-webdavd.rules
 %{_unitdir}/spice-webdavd.service
 
 %changelog
