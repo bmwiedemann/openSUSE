@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>785382</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>64f00a3cd59888adea09f93e0519e268</srcmd5>
+    <version>0.6.5</version>
+    <time>1588856159</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct macro %{python_version} instead of %{py_ver} to  pack egg-info file.
+- Drop macro definitions needed for obsolete openSUSE versions. (forwarded request 800847 from badshah400)</comment>
+    <requestid>800874</requestid>
+  </revision>
 </revisionlist>

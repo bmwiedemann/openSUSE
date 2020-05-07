@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pivy
 Version:        0.6.5
 Release:        0
@@ -69,6 +68,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %doc AUTHORS HACKING NEWS README.md THANKS
 %{python_sitelib}/pivy/
-%{python_sitelib}/Pivy-%{version}-py%{py_ver}.egg-info
+%{python_sitelib}/Pivy-%{version}-py%{python_version}.egg-info
 
 %changelog

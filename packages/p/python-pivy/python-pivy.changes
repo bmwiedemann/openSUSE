@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 01:16:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use correct macro %{python_version} instead of %{py_ver} to
+  pack egg-info file.
+- Drop macro definitions needed for obsolete openSUSE versions.
+
+-------------------------------------------------------------------
 Sat Mar 14 17:04:32 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 0.6.5
