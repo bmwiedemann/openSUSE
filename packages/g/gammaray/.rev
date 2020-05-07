@@ -135,4 +135,12 @@
   * 0001-Fix-build-with-Qt-5.15.patch</comment>
     <requestid>791144</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12411254d5071e43e9a9dbf9cad1dbb1</srcmd5>
+    <version>2.11.1</version>
+    <time>1588856195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800963</requestid>
+  </revision>
 </revisionlist>
