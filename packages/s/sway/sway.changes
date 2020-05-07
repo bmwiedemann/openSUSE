@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 05:48:07 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Remove dependency on wlc. It is long deprecated and actually
+  wlroots is used.
+
+-------------------------------------------------------------------
 Wed Mar  4 18:59:21 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Disable swaybar tray support on Leap 15.2 reflected to wlroots's

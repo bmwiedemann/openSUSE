@@ -49,7 +49,6 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(wlc)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       ImageMagick
 Requires:       ffmpeg

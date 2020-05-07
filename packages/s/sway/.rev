@@ -343,4 +343,13 @@ changes since last time:
     <comment></comment>
     <requestid>784166</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d379abf277ec128340a1565108015971</srcmd5>
+    <version>1.4</version>
+    <time>1588856145</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on wlc. It is long deprecated and actually
+  wlroots is used.</comment>
+    <requestid>800872</requestid>
+  </revision>
 </revisionlist>
