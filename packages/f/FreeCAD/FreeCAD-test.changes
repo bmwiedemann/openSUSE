@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 07:02:41 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Only enable gmsh BuildRequires on Tumbleweed, it's not available
+  in Leap 15
+
+-------------------------------------------------------------------
 Sat Jul 27 03:34:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix inverted logic when evaluating test suite exit code
