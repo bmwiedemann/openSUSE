@@ -7,4 +7,13 @@
     <comment>backgroundsetter for sway</comment>
     <requestid>708735</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>434772e92e5bc3ecb3b4019004647130</srcmd5>
+    <version>1.0</version>
+    <time>1588856150</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on wlc. It is long deprecated and actually                                                                                                                           
+  wlroots is used.</comment>
+    <requestid>800873</requestid>
+  </revision>
 </revisionlist>
