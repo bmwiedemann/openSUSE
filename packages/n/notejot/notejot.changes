@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:35:19 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.3:
+    notejot.changes notejot.spec
+  * Merge pull request #147 from Justinzobel/patch-1
+  * Update README.md
+  * 1.6.2 - UI minor fixes
+  * 1.6.1 - GLib.Settings
+
+-------------------------------------------------------------------
 Mon Jan 13 21:38:12 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.6.0:
