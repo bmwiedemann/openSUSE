@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        5.3.1
+Version:        5.4
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/
 Source:         https://www.mercurial-scm.org/release/mercurial-%{version}.tar.gz
 Source1:        cacerts.rc
-Source2:        https://www.mercurial-scm.org/release/mercurial-%{version}.tar.gz.asc
-Source3:        mercurial.keyring
 Source99:       mercurial-rpmlintrc
 Patch0:         mercurial-hgk-path-fix.diff
 # PATCH-FIX-OPENSUSE mercurial-docutils-compat.diff -- Fix for new docutils options not available on 11.1 and older

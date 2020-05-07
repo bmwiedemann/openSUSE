@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May  3 16:40:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mercurial 5.4:
+  * hg purge/hg clean can now delete ignored files instead of
+    untracked files, with the new -i flag.
+  * hg pull now has a --confirm flag to prompt before applying
+    changes. Config option pull.confirm is also added for that.
+  * hg log now defaults to using an '%' symbol for commits involved
+    in unresolved merge conflicts. That includes unresolved
+    conflicts caused by e.g. hg update --merge and hg graft. '@'
+    still takes precedence, so what used to be marked '@' still is.
+  * hg copy --forget can be used to unmark a file as copied.
+  * The format.revlog-compression configuration entry now accept
+    a list. The first available option will be used. for example
+    setting::
+    [format]
+    revlog-compression=zstd, zlib
+    Will use zstd compression for new repositories is available,
+    and will simply fall back to zlib if not.
+  * hg debugmergestate output is now templated, which may be useful
+    e.g. for IDEs that want to help the user resolve merge
+    conflicts.
+  * hg copy now supports a --at-rev argument to mark files as
+    copied in the specified commit. It only works with --after for
+    now (i.e., it's only useful for marking files copied using non-hg
+    cp as copied).
+  * Use hg copy --forget --at-rev REV to unmark already committed
+    copies.
+  * bug fixes
+  * changes that may affect backwards compatibility
+- there is no canonical upstream signing key, remove
+
+-------------------------------------------------------------------
 Sun May  3 16:02:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix bash completion script (boo#1170703)
