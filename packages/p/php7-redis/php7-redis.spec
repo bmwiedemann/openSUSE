@@ -19,7 +19,7 @@
 %define php_name    php7
 %define pkg_name    redis
 Name:           %{php_name}-%{pkg_name}
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01

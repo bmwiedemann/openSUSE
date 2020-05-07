@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 07:59:21 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 5.2.2
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.2.2
+    This is a bugfix release that contains a fix for authentication
+    when using persistent connections, and an option to make the
+    ECHO challenge response logic optional.
+  * Inexpensive liveness check, and making ECHO optional [56898f81] (Pavlo Yatsukhnenko)
+  * Move `AUTH` to `redis_sock_server_open` [80f2529b](Pavlo Yatsukhnenko)
+
+-------------------------------------------------------------------
 Fri Mar 27 15:00:29 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.2.1
