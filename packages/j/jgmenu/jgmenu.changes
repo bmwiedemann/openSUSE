@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  7 05:36:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  * Add config options icon_norm_alpha and icon_sel_alpha.
+  * Support hooks. See jgmenu(1) for full details.
+  * Support startup script. Run ~/.config/jgmenu/startup on initial launch.
+    This feature enables optional syncing with others settings such as GTK3.
+  * gtktheme: save last theme name in ~/.cache/jgmenu/.last-gtktheme
+    This supports scripts for syncing gtktheme on startup.
+  * obtheme: set menu_border=0 by default to avoid inheriting unwanted menu
+    border thickness if openbox theme does not contain an entry for it.
+  * configure: support --libexecdir= and --libdir= (issue #109)
+  * configure: use the correct xfce4panel library.
+  * xfce4-panel: remove dpkg-architecture and hardcoded debian paths from
+    Makefile (issue #110).
+
+-------------------------------------------------------------------
 Wed Mar  4 06:36:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.1.0:
