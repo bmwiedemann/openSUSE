@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * Detect Vivaldi based on binary name
+  * [Purpose Plugin] Detect cancelling the prompt more reliably
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:
