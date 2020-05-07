@@ -17,7 +17,7 @@
 
 
 Name:           mednafen
-Version:        1.24.2
+Version:        1.24.3
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
