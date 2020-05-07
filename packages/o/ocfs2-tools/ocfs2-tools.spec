@@ -1,7 +1,7 @@
 #
 # spec file for package ocfs2-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ Patch501:       bnc#96864-ocfs2console-fix-starting-failure.patch
 Patch502:       fsck.ocfs2-fix-compile-error-when-glibc-upgrade.patch
 Patch503:       mounted.ocfs2-use-sys-sysmacros.h-include-for-makede.patch
 Patch504:       fix-build-failure-with-glibc-2.28.patch
+Patch505:       debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -172,6 +173,7 @@ OCFS2 filesystem.
 %patch502 -p1
 %patch503 -p1
 %patch504 -p1
+%patch505 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

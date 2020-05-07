@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 11:30:20 UTC 2020 - ghe@suse.com
+
+- Fix debugfs.ocfs2 error on devices with sector size 4096 (bsc#1170530)
+  + debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
+
+-------------------------------------------------------------------
 Thu Jan 30 10:29:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %license instead of %doc [bsc#1082318]
