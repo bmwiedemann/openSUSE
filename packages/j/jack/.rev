@@ -544,4 +544,13 @@ Update the waf code to the 2.0 series in order to work under python3.7 taken fro
 </comment>
     <requestid>744376</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2f396783a5c178578b3fafc5d3577d79</srcmd5>
+    <version>1.9.14</version>
+    <time>1588856728</time>
+    <user>dimstar_suse</user>
+    <comment>Deleted af6c00ab09428e79.patch and replaced with more eloquently  named git patch  0001-Fix-compilation-of-documentation.patch Closed boo#1141762 disabling LTO is no longer needed and there have been no crashes since someone quietly enabled it.
+- Update to 1.9.14</comment>
+    <requestid>800045</requestid>
+  </revision>
 </revisionlist>

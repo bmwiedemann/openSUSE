@@ -1,7 +1,7 @@
 #
 # spec file for package jack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,18 @@
 # Switch the --dbus on and off, on = 1
 %define wdbus 1
 %define sonum 0
-BuildRequires:  pkgconfig(libffado) >= 2.0.1.2040
 Name:           jack
-Version:        1.9.13
+Version:        1.9.14
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Sound Daemons
-Url:            http://jackaudio.org/
+URL:            https://jackaudio.org/
 Source0:        https://github.com/jackaudio/jack2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         0001-fix-complation-on-arm.patch
-BuildRequires:  dos2unix
+# PATCH-FIX-UPSTREAM -- https://github.com/jackaudio/jack2/commit/af6c00ab09428e79.patch
+Patch0:         0001-Fix-compilation-of-documentation.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,14 +41,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(alsa)
 #BuildRequires:  readline-devel
-# NOTE: somebody changed libiec61883 to libiec61883-0 after Leap was released and didn't note it in the changes file.
-%if 0%{suse_version} <= 1320
-#!BuildIgnore:  libiec61883
-%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(flac++)
+BuildRequires:  pkgconfig(libffado) >= 2.0.1.2040
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
@@ -58,7 +54,6 @@ BuildRequires:  pkgconfig(sndfile)
 Provides:       jack-audio-connection-kit
 Provides:       jack2 = %{version}
 Obsoletes:      jack2 < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 JACK is system for handling real-time, low latency audio
@@ -86,10 +81,10 @@ This package contains the library to access JACK
 
 %package -n libjacknet%{sonum}
 Summary:        Jack Audio Connection Kit Library
-# libjacknet was packaged with libjack prior to 1.9.12
-# libjacknet is not a compatible replacerment for libjack0
+# libjacknet was packaged with libjack0 prior to 1.9.12
 Group:          System/Libraries
-Obsoletes:      libjack%{sonum} < 1.9.12
+Conflicts:      libjack0 < 1.9.12
+Provides:       libjack0:%{_libdir}/libjacknet.so.%{sonum}*
 
 %description -n libjacknet%{sonum}
 This package contains the library to access JACK
@@ -97,10 +92,10 @@ This package contains the library to access JACK
 
 %package -n libjackserver%{sonum}
 Summary:        Jack Audio Connection Kit Library
-# libjackserver was packaged with libjack prior to 1.9.12
-# libjacknet is not a compatible replacerment for libjack0
+# libjackserver was packaged with libjack0 prior to 1.9.12
 Group:          System/Libraries
-Obsoletes:      libjack%{sonum} < 1.9.12
+Conflicts:      libjack0 < 1.9.12
+Provides:       libjack0:%{_libdir}/libjackserver.so.%{sonum}*
 
 %description -n libjackserver%{sonum}
 This package contains the library to access JACK
@@ -151,33 +146,16 @@ export CXXFLAGS="$CFLAGS"
   --mandir=%{_mandir}/man1 \
   configure
 
-# build is too heavy, so don't spawn more than one process or the build hangs
 ./waf -v %{_smp_mflags} build
 
 %install
-export SOURCE_DATE_EPOCH=1411299887
-%if %{buildoc} == 1
-# This is a workaround because the doc build looks for build/default/html but there isn't one.
-mkdir -p build/default
-pushd build/default/
-ln -s ../../html html
-popd
-%endif
-
 ./waf -j1 install --destdir=%{buildroot}
-mkdir -p %{buildroot}%{_docdir}/%{name}
+mkdir -p %{buildroot}%{_docdir}
 %if %{buildoc} == 1
 mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %endif
 
-dos2unix -k ChangeLog.rst
-dos2unix -k README.rst
-cp ChangeLog.rst README* %{buildroot}%{_docdir}/%{name}/
-
-# Fix wrong-file-end-of-line-encoding
-dos2unix -k %{buildroot}%{_docdir}/%{name}/ChangeLog.rst
-dos2unix -k %{buildroot}%{_docdir}/%{name}/README.rst
-%fdupes -s %{_docdir}/jack-audio-connection-kit/
+%fdupes -s %{buildroot}%{_docdir}
 
 %post -n libjack%{sonum} -p /sbin/ldconfig
 %postun -n libjack%{sonum} -p /sbin/ldconfig
@@ -190,9 +168,7 @@ dos2unix -k %{buildroot}%{_docdir}/%{name}/README.rst
 
 %files
 %defattr(-,root,root)
-%doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/ChangeLog.rst
-%doc %{_docdir}/%{name}/README*
+%doc ChangeLog.rst README*
 %license windows/Setup/src/COPYING
 %{_mandir}/man1/*
 %{_bindir}/*
@@ -228,7 +204,6 @@ dos2unix -k %{buildroot}%{_docdir}/%{name}/README.rst
 
 %files -n libjack-devel
 %defattr(-, root, root)
-%doc %dir %{_docdir}/%{name}
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/%{name}

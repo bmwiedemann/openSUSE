@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May  4 08:28:51 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Deleted af6c00ab09428e79.patch and replaced with more eloquently
+  named git patch  0001-Fix-compilation-of-documentation.patch
+- Closed boo#1141762 disabling LTO is no longer needed and there
+  have been no crashes since someone quietly enabled it.
+
+-------------------------------------------------------------------
+Wed Feb  5 21:31:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.9.14
+  + Fix ARM build
+  + Fix mixed mode build when meta-data is enabled
+  + Fix blocking DBus device reservation, so it plays nice with
+    others (like PipeWire)
+  + Use python3 for the waf build scripts
+- Remove upstreamed 0001-fix-complation-on-arm.patch
+- Fix documentation generation, add upstream af6c00ab09428e79.patch
+- Spec file cleanup:
+  + Drop obsolete and duplicate dos2unix invocations, drop build
+    dependency.
+  + Remove conditionals for EOLed distributions
+  + Run %fdupes inside %buildroot, not system root
+  + Remove hardcoded SOURCE_DATE_EPOCH
+- Use proper Conflicts/Provides for libjacketnet/server after
+  package split in 1.9.12.
+
+-------------------------------------------------------------------
 Tue Oct 29 19:09:10 UTC 2019 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 1.9.13
