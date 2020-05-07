@@ -1,7 +1,7 @@
 #
 # spec file for package diskimage-builder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,23 +25,20 @@ Release:        0
 Summary:        Image Building Tools for OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/openstack/diskimage-builder
+URL:            https://github.com/openstack/diskimage-builder
 Source0:        https://pypi.io/packages/source/d/%{name}/%{name}-%{version}.tar.gz
 Source99:       diskimage-builder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  python3-PyYAML >= 3.10.0
+BuildRequires:  python3-fixtures
 BuildRequires:  python3-networkx >= 1.10
+BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
-# Test requirements (python2 only)
-BuildRequires:  python2-PyYAML >= 3.10.0
-BuildRequires:  python2-fixtures
-BuildRequires:  python2-networkx >= 1.10
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-stevedore >= 1.20.0
-BuildRequires:  python2-testrepository
-BuildRequires:  python2-testtools
+BuildRequires:  python3-stevedore >= 1.20.0
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-testtools
 BuildRequires:  sed
 # No stuff in python_sitelib, thus autoreqprov won't work:
 Requires:       kpartx
@@ -84,6 +81,7 @@ find diskimage_builder/elements -type f -perm /a+x \
 %fdupes %{buildroot}
 
 %check
+export PYTHON=%{_bindir}/python3
 if [ ! -d ./.testrepository ] ; then testr init ; fi
 testr run %{?_smp_mflags:--parallel %{_smp_flags}} #; RET=$? echo "Slowest Tests" ; testr slowest && exit $RET
 

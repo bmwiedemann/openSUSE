@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 19:58:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Run test-suite using python3: export PYTHON=%{_bindir}/python3
+  before running testr.
+- Replace all python2-* BuildRequires with their python3
+  equivalents.
+
+-------------------------------------------------------------------
 Thu Oct 10 13:32:59 UTC 2019 - Markos Chandras <mchandras@suse.de>
 
 - Update to 2.28.0
