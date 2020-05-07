@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 20:54:09 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.5.1
+  * Fix a crash when showing the documentation popup
+  * Update phpfunctions.php to phpdoc revision 349647
+
+-------------------------------------------------------------------
 Mon Feb  3 06:48:08 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.5.0
