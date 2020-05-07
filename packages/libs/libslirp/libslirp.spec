@@ -1,7 +1,7 @@
 #
-# spec file for package libslirp0
+# spec file for package libslirp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        A general purpose TCP-IP emulator
-Group:          System/Libraries
 License:        MIT
+Group:          System/Libraries
 URL:            https://gitlab.freedesktop.org/slirp/%{name}
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  git-core
-BuildRequires:  meson
 BuildRequires:  gcc
+BuildRequires:  git-core
 BuildRequires:  glib2-devel
+BuildRequires:  meson
 
 %description
 A general purpose TCP-IP emulator used by virtual machine hypervisors
@@ -44,8 +45,8 @@ or various tools.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{libname} = %{version}
 Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
