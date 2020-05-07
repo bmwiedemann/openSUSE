@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri May  1 09:39:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.8.4:
+  * In IKEv1 Quick Mode make sure that a proposal exists before
+    determining lifetimes (fixes a crash due to a null-pointer
+    dereference in 5.8.3).
+  * OpenSSL currently doesn't support squeezing bytes out of a
+    SHAKE128/256 XOF (support was added with 5.8.3) multiple times.
+    Unfortunately, EVP_DigestFinalXOF() completely resets the
+    context and later calls not simply fail, they cause a
+    null-pointer dereference in libcrypto. c5c1898d73 fixes the
+    crash at the cost of repeating initializing the whole state and
+    allocating too much data for subsequent calls (hopefully, once
+    the OpenSSL issue 7894 is resolved we can implement this more
+    efficiently).
+  * On 32-bit platforms, reading arbitrary 32-bit integers from
+    config files (e.g. for charon.spi_min/max) has been fixed.
+  * charon-nm now allows using fixed source ports.
+- Changes from version 5.8.3:
+  * Updates for the NM plugin (and backend, which has to be updated
+    to be compatible):
+    + EAP-TLS authentication (#2097)
+    + Certificate source (file, agent, smartcard) is selectable
+      independently
+    + Add support to configure local and remote identities (#2581)
+    + Support configuring a custom server port (#625)
+    + Show hint regarding password storage policy
+    + Replaced the term "gateway" with "server"
+    + Fixes build issues due to use of deprecated GLib
+      macros/functions
+    + Updated Glade file to GTK 3.2
+  * The NM backend now supports reauthentication and redirection.
+  * Previously used reqids are now reallocated, which works around
+    an issue on FreeBSD where the kernel doesn't allow the daemon
+    to use reqids > 16383 (#2315).
+  * On Linux, throw type routes are installed in table 220 for
+    passthrough policies. The kernel will then fall back on routes
+    in routing tables with lower priorities for matching traffic.
+    This way, they require less information (e.g. no interface or
+    source IP) and can be installed earlier and are not affected by
+    updates.
+  * For IKEv1, the lifetimes of the actually selected transform are
+    returned to the initiator, which is an issue if the peer uses
+    different lifetimes for different transforms (#3329). We now
+    also return the correct transform and proposal IDs (proposal ID
+    was always 0, transform ID 1). IKE_SAs are now not
+    re-established anymore (e.g. after several retransmits) if a
+    deletion has been queued (#3335).
+  * Added support for Ed448 keys and certificates via openssl
+    plugin and pki tool.
+  * Added support for SHA-3 and SHAKE128/256 in the openssl plugin.
+  * The use of algorithm IDs from the private use range can now be
+    enabled globally, to use them even if no strongSwan vendor ID
+    was exchanged (05e373aeb0).
+  * Fixed a compiler issue that may have caused invalid keyUsage
+    extensions in certificates (#3249).
+  * A lot of spelling fixes.
+  * Fixed several reported issues.
+- Drop 0006-Resolve-multiple-definition-of-swanctl_dir.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Mar 31 16:42:23 UTC 2020 - Madhu Mohan Nelemane <mmnelemane@suse.com>
 
 - Fix to resolve multiple definitions for swanctl_dir (bsc#1164493)
