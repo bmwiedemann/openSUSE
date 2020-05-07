@@ -435,4 +435,19 @@ self, run_tests_report, expected_parse_results=None, msg=None)
 . def assertRaisesParseException(self, exc_type=ParseException, msg=None)</comment>
     <requestid>773486</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1050d5a19bb8136110a8b1b245662162</srcmd5>
+    <version>2.4.7</version>
+    <time>1588856756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.7:
+  . Each bug with Regex expressions
+  . And expressions not properly constructing with generator
+  . Traceback abbreviation
+  . Bug in delta_time example
+  . Fix regexen in pyparsing_common.real and .sci_real
+  . Avoid FutureWarning on Python 3.7 or later
+  . Cleanup output in runTests if comments are embedded in test string</comment>
+    <requestid>800308</requestid>
+  </revision>
 </revisionlist>
