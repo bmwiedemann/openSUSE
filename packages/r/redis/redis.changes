@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  4 12:51:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR pkgconfig(libsystemd) for the rewritten systemd support
+  and force building with it
+
+-------------------------------------------------------------------
+Mon May  4 12:28:50 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.0.1
+  * https://raw.githubusercontent.com/antirez/redis/6.0.1/00-RELEASENOTES
+  * XCLAIM AOF/replicas propagation fixed.
+  * Client side caching: new NOLOOP option to avoid getting
+    notified about changes performed by ourselves.
+  * ACL GENPASS now uses HMAC-SHA256 and have an optional
+    "bits" argument.  It means you can use it as a general purpose
+    "secure random strings" primitive!
+  * Cluster "SLOTS" subcommand memory optimization.
+  * The LCS command is now a subcommand of STRALGO.
+  * Meaningful offset for replicas as well. More successful
+    partial resynchronizations.
+  * Optimize memory usage of deferred replies.
+  * Faster CRC64 algorithm for faster RDB loading.
+  * XINFO STREAM FULL, a new subcommand to get the whole stream
+    state.
+  * CLIENT KILL USER <username>.
+  * MIGRATE AUTH2 option, for ACL style authentication support.
+  * Other random bugfixes.
+
+-------------------------------------------------------------------
 Fri May  1 15:50:36 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - ppc-atomic.patch: use libatomic also on ppc

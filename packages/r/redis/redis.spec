@@ -20,8 +20,9 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 %define redis_hashes_tree e72cde5afa7f6640eeb9f6a5ba5ffe02c5f52ea2
+
 Name:           redis
-Version:        5.0.9
+Version:        6.0.1
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -46,6 +47,7 @@ Patch4:         ppc-atomic.patch
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Recommends:     logrotate
 %sysusers_requires
@@ -72,7 +74,7 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 
 %build
 export HOST=OBS # for reproducible builds
-%make_build CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}" BUILD_WITH_SYSTEMD=yes
 %sysusers_generate_pre %{SOURCE9} redis
 
 %install
