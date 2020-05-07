@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 25 19:52:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.4.0:
+  * Added universal filterbank phase reconstruction function:
+    + filterbankconstphase (Thanks to Nicki Holighaus)
+  * Added time-frequency jigsaw puzzle tonal-transinet-residual
+    separation:
+    tfjigsawsep, plottfjigsawsep, demo_tfjigsawsep
+    Thanks to Daniel Haider.
+  * Added coiflet filters up to K=17.  Thanks to KIMURA Masaru.
+  * Added wavelet function generator (supported Cauchy, Morse)
+    freqwavelet
+  * Function cqtfilters now accepts windows from freqwin.
+  * MEX files are now compatible with the new MATLAB 2018a API.
+  * Deprecated cqt, icqt, erblett ierblett. Replacements:
+    cqt: cqtfilters and filterbank
+    icqt: filterbankdual and ifilterbank or ifilterbankiter
+    erblett: audfilters with 'erb' and filterbank
+    ierblett: filterbankdual and ifilterbank or ifilterbankiter
+- Remove explicit blas build dependency, octave pulls in a BLAS
+  implementation (blas or openblas, dependent on archictecture)
+- Delete the blockproc.jar included in the sources and regenerate
+  it by running make before %octave_pkg_src.
+- Add RPM optflags to CFLAGS/CXXFLAGS, otherwise these are not
+  taken into account by the Makefiles.
+
+-------------------------------------------------------------------
 Wed Jul 18 08:51:11 UTC 2018 - badshah400@gmail.com
 
 - Update to version 2.3.1:
