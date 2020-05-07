@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * [Runners KCM] Notify history deletion
+  * KCM Icons : Use KIconloader::emitChange() instead of deprecated newIconLoader() (kde#420577)
+  * [Task Manager] Avoid crash with QStringBuilder (kde#420452)
+  * KCM LookAndFeel check if splash screen is provided before applying it. (kde#414417)
+  * KCM LookAndFeel check widgetStyle availability before applying it (kde#419552,kde#418698)
+  * [Folder View] Update popup dialog's hardcoded scrollbar width to fix faulty sizing (kde#420385)
+  * [Kickoff] Disable tabBar's mouseArea when searching (kde#401861)
+  * Revert "Make accidental panel and panel widget deletion more difficult"
+  * [KCMs/Standard Actions] Give KCMShell window a sane default size (kde#377653)
+  * Make accidental panel and panel widget deletion more difficult (kde#419853)
+  * KCM Colors fix apply button always disabled (kde#418604)
+
+-------------------------------------------------------------------
 Fri Apr 24 13:21:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix GTK2 application appearance (kde#412331, boo#1169968):
