@@ -16,33 +16,32 @@
 #
 
 
+%define mod_name yard
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-yard
-Version:        0.9.24
+Version:        0.9.25
 Release:        0
-%define mod_name yard
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Documentation tool for consistent and usable documentation in Ruby
+License:        MIT
+Group:          Development/Languages/Ruby
+URL:            http://yardoc.org
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-URL:            http://yardoc.org
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         update-alternatives
 # MANUAL
 Patch0:         yard-do-not-record-timestamps.diff
 # /MANUAL
-Summary:        Documentation tool for consistent and usable documentation in Ruby
-License:        MIT
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 YARD is a documentation generation tool for the Ruby programming language.
@@ -53,8 +52,8 @@ custom Ruby constructs such as custom class level definitions.
 %prep
 %gem_unpack
 %patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
+find -type f -print0 | xargs -0 touch -r %{SOURCE0}
+%{gem_build}
 
 %build
 
