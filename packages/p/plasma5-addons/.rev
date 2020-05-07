@@ -776,4 +776,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.18.4.1 - second try</comment>
     <requestid>790438</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>86e3d3f1061e15145177282e02476250</srcmd5>
+    <version>5.18.5</version>
+    <time>1588857041</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.5</comment>
+    <requestid>800493</requestid>
+  </revision>
 </revisionlist>
