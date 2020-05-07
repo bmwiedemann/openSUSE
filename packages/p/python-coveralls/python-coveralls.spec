@@ -45,6 +45,8 @@ BuildArch:      noarch
 %ifpython2
 Recommends:     python-urllib3
 %endif
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -65,16 +67,23 @@ to. (For private projects, there is Coveralls Pro.)
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/coveralls
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG="en_US.UTF8"
 %pytest
 
+%post
+%python_install_alternative coveralls
+
+%postun
+%python_uninstall_alternative coveralls
+
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/coveralls
+%python_alternative %{_bindir}/coveralls
 %{python_sitelib}/*
 
 %changelog

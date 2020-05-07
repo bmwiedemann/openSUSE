@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 09:59:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Wed Apr  1 13:54:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - 1.11.1

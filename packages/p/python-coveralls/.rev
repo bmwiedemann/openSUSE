@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>790631</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4e98791a28a6b1f2cca027769bdba746</srcmd5>
+    <version>1.11.1</version>
+    <time>1588855864</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>800682</requestid>
+  </revision>
 </revisionlist>
