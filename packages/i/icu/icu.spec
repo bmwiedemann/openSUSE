@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu66
-%define amajor   66
-%define aversion 66
+%define lname	libicu67
+%define amajor   67
+%define aversion 67
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        66.1
+Version:        67.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,10 +34,10 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff

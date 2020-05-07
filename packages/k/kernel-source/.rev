@@ -5090,4 +5090,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>i586 OBS slowdown fix &amp; 5.6.8 &amp; 5.6.7 &amp; other fixes</comment>
     <requestid>799215</requestid>
   </revision>
+  <revision rev="541" vrev="1">
+    <srcmd5>e4c4cc292ad5c0eb2379ab5f792484ef</srcmd5>
+    <version>5.6.11</version>
+    <time>1588856659</time>
+    <user>dimstar_suse</user>
+    <comment>5.6.11 &amp; 5.6.10 &amp; 5.6.9 &amp; util-linux tests fix &amp; nouveau fix</comment>
+    <requestid>800789</requestid>
+  </revision>
 </revisionlist>
