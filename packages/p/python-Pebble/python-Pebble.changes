@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 15:47:22 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to 4.5.2:
+  - Fix issue #58: handle pool connection teardown in Python 3.8
+
+-------------------------------------------------------------------
 Mon Apr 20 11:18:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
