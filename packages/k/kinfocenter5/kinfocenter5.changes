@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * adjust smb kcm size to be sufficient vis a vis headers (kde#419786)
+  * strip non printable characters from opengl dri info
+  * make opengl module support multiple dri devices (kde#417986)
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:
