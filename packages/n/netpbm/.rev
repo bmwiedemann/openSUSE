@@ -790,4 +790,16 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
   * Multiple: fix bug: when you specify the same option twice, you</comment>
     <requestid>758532</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>40450a78383af6cf13487aac4ab54be3</srcmd5>
+    <version>10.88.1</version>
+    <time>1588866568</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix bsc#1170831 -- sent to bryanh@giraffe-data.com on 2020-05-04
+  + netpbm-pbmtonokia-cmdline-txt-null.patch
+
+- Add ubsan_build and remove not needed patch netpbm-asan.patch.</comment>
+    <requestid>800053</requestid>
+  </revision>
 </revisionlist>

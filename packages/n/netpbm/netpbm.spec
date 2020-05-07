@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define debug_build    0
 %define asan_build     0
+%define ubsan_build    0
 %define libmaj  11
 %define libmin  88
 %define libver  %{libmaj}.%{libmin}
@@ -35,7 +36,6 @@ Source3:        prepare-src-tarball.sh
 # SUSE specific
 Patch0:         %{name}-make.patch
 # neccessary for running with ASAN
-Patch1:         %{name}-asan.patch
 Patch3:         %{name}-tmpfile.patch
 Patch4:         %{name}-security-code.patch
 Patch5:         %{name}-security-scripts.patch
@@ -47,6 +47,8 @@ Patch8:         signed-char.patch
 Patch9:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch10:        netpbm-disable-jasper.patch
+# bsc#1170831 -- sent to bryanh@giraffe-data.com on 2020-05-04
+Patch11:        netpbm-pbmtonokia-cmdline-txt-null.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -102,6 +104,7 @@ source package.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 mkdir pnmtopalm # for %%doc pnmtopalm
 cp -p converter/other/pnmtopalm/{LICENSE,README} pnmtopalm
 
@@ -119,8 +122,12 @@ export CFLAGS="%{optflags} -flax-vector-conversions"
 export CFLAGS="$CFLAGS -O0"
 %endif
 %if %{asan_build}
-export CFLAGS="$CFLAGS -fsanitize=address"
-patch -p1 < %{PATCH1}
+export CFLAGS="$CFLAGS -fsanitize=address -fno-sanitize-recover=all"
+export LDFLAGS="$LDFLAGS -fsanitize=address"
+%endif
+%if %{ubsan_build}
+export CFLAGS="$CFLAGS -fsanitize=undefined -fno-sanitize-recover=all"
+export LDFLAGS="$LDFLAGS -fsanitize=undefined"
 %endif
 make %{?_smp_mflags} CFLAGS="$CFLAGS"
 rm doc/INSTALL
@@ -152,6 +159,12 @@ rm %{buildroot}%{_bindir}/pstopnm # disable due security reasons, e. g. [bsc#110
 %postun -n libnetpbm%{libmaj} -p /sbin/ldconfig
 
 %check
+%if %{asan_build}
+export LSAN_OPTIONS="detect_leaks=0"
+%endif
+%if %{ubsan_build}
+export UBSAN_OPTIONS="print_stacktrace=1"
+%endif
 # do not run unneccesary tests
 sed -i '/all-in-place/d'   test/Test-Order
 sed -i '/legacy-names/d'   test/Test-Order

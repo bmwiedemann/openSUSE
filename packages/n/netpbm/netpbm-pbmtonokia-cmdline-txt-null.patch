@@ -1,0 +1,14 @@
+Index: netpbm-10.88.1/converter/pbm/pbmtonokia.c
+===================================================================
+--- netpbm-10.88.1.orig/converter/pbm/pbmtonokia.c	2019-12-20 11:44:12.938955573 +0100
++++ netpbm-10.88.1/converter/pbm/pbmtonokia.c	2020-05-04 14:28:15.636966434 +0200
+@@ -412,7 +412,8 @@ convertToNpm(bit **       const image,
+     header[       3] = 0;
+     header[       4] = len;
+     header[       5] = 0;
+-    memcpy(&header[5], text, len);
++    if (text)
++      memcpy(&header[5], text, len);
+     header[ 6 + len] = cols;
+     header[ 7 + len] = rows;
+     header[ 8 + len] = 1;
