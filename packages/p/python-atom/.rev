@@ -17,4 +17,16 @@
 - Switch to github tarball for tests and license</comment>
     <requestid>682152</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0cfad5bfa62bc2c7975f0279375df255</srcmd5>
+    <version>0.5.0</version>
+    <time>1588856152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * drop Python 2 support PR #83
+  * use cppy to write the c++ extension PR #83
+  * add c++ implememtation of AtomDict PR #93
+  * add a Set member PR #93</comment>
+    <requestid>800854</requestid>
+  </revision>
 </revisionlist>

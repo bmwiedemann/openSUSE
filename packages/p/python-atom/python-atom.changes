@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 02:46:58 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0:
+  * drop Python 2 support PR #83
+  * use cppy to write the c++ extension PR #83
+  * add c++ implememtation of AtomDict PR #93
+  * add a Set member PR #93
+
+-------------------------------------------------------------------
 Wed Mar  6 12:58:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.3:
