@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May  7 09:19:47 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Require pam_pwquality in base as it's the replacement for
+  pam_cracklib, previously part of the required pam package
+
+-------------------------------------------------------------------
+Tue May  5 12:17:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Use requires in update-test pattern so it also works when
+  installing with recommends disabled.
+- Require update-test pattern from sw_management pattern instead of
+  subtle supplements for same reason.
+
+-------------------------------------------------------------------
+Tue Apr 28 07:01:26 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- basic_desktop: Fix icon
+
+-------------------------------------------------------------------
 Mon Apr 27 08:23:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Recommend bash-completion in enhanced_base as it got lost in the

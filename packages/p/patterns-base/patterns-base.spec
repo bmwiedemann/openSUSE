@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-base
-Version:        20200417
+Version:        20200505
 Release:        0
 Summary:        Patterns for Installation (base patterns)
 License:        MIT
@@ -131,6 +131,7 @@ Requires:       glibc
 Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
+Requires:       pam_pwquality
 Requires:       rpm
 Requires:       shadow
 Requires:       sysconfig
@@ -181,7 +182,7 @@ This is the base runtime system.  It contains only a minimal multiuser booting s
 Summary:        A very basic desktop (previously part of x11 pattern)
 Group:          Metapackages
 Provides:       pattern() = basic_desktop
-Provides:       pattern-icon() = pattern-desktop
+Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1802
 Provides:       pattern-visible()
 Requires:       pattern() = x11
@@ -614,6 +615,9 @@ Provides:       pattern-icon() = pattern-software-management
 Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
 %obsolete_legacy_pattern sw_management
+%if %{with betatest}
+Requires:       pattern() = update_test
+%endif
 # Zypper is the basic sw_management stack for *SUSE
 Requires:       zypper
 %if 0%{?sle_version}
@@ -668,15 +672,14 @@ Provides:       pattern-order() = 1380
 Provides:       pattern-visible()
 %obsolete_legacy_pattern update_test
 
-Recommends:     update-test-affects-package-manager
-Recommends:     update-test-interactive
-Recommends:     update-test-optional
-Recommends:     update-test-reboot-needed
-Recommends:     update-test-security
-Recommends:     update-test-trival
+Requires:       update-test-affects-package-manager
+Requires:       update-test-interactive
+Requires:       update-test-optional
+Requires:       update-test-reboot-needed
+Requires:       update-test-security
+Requires:       update-test-trivial
 %if %{with betatest}
-Recommends:     aaa_base-malloccheck
-Supplements:    %{name}-base
+Requires:       aaa_base-malloccheck
 %endif
 
 %description update_test
