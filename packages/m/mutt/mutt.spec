@@ -78,7 +78,7 @@ Recommends:     w3m
 Requires(post):   shared-mime-info
 Requires(postun): shared-mime-info
 %endif
-Version:        1.13.5
+Version:        1.14.0
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -350,6 +350,8 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %doc %{_docdir}/%name/samples/mutt_xtitle
 %doc %{_docdir}/%name/samples/sample.*
 %doc %{_docdir}/%name/samples/smime_keys_test.pl
+%doc %{_docdir}/%name/samples/bgedit-detectgui.sh
+%doc %{_docdir}/%name/samples/bgedit-screen-tmux.sh
 %dir %doc %{_docdir}/%name/samples/iconv/
 %doc %{_docdir}/%name/samples/iconv/*.rc
 %doc %{_infodir}/*.gz

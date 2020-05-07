@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon May  4 12:09:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.14.0
+  * $imap_check_subscribed will fetch the set of subscribed folders from
+    your server on connection.
+  * IMAP server-side simple string search using '=' instead of '~'.
+    ('=' also provides local simple string search.)
+  * IMAP IDLE support and $imap_idle
+  * <rename-mailbox> function
+  * S/MIME support.  Please see contrib/smime.rc for suggested settings.
+  * GPGME support via $crypt_use_gpgme
+  * Ability to encrypt postponed messages.  See $postpone_encrypt and
+    $postpone_encrypt_as.
+  * GnuPG fingerprints are used internally when possible.
+  * $crypt_opportunistic_encrypt automatically enables/disables encryption
+    based on message recipients.
+  * IDNA support.  Options $idn_decode and $idn_encode control whether
+    mutt will decode and encode international domains using IDNA.
+  * SMTPUTF8 support.  Support for utf-8 domains without IDNA encoding.
+    To use this, unset idn_encode.
+  * $assumed_charset, $attach_charset, $ignore_linear_white_space
+  * Header caching for IMAP and Maildir.  See $header_cache for more details.
+  * Internal ESMTP relay support.  See $smtp_url.
+  * $mail_check_recent controls whether all unread mail or only new mail
+    since the last mailbox visit will be reported as new
+  * Support for saving history across sessions.  See $save_history,
+    $history_file.
+  * More search patterns:
+    + thread patterns.  Use ~(...) to match all threads that
+      contain a message that matches ...
+    + ~l matches all known lists, ~u only subscribed.
+    + ~$ pattern matches unreferenced messages.
+    + ~V pattern matches cryptographically verified messages.
+  * Improved flowed text support: $reflow_text, $reflow_wrap,
+    $reflow_space_quotes.
+  * $braille_friendly option will place the cursor at the beginning of
+    the current line in menus.
+  * Full large file support.
+  * Terminal status-line (TS) support, a.k.a. xterm title. see the
+    following variables: $ts_enabled, $ts_icon_format, $ts_status_format
+  * Generic spam detection: new configuration commands: 'spam' and
+    'nospam', new options: $spam_separator, new expando: %H (for
+    $index_format), new pattern: ~H pattern
+  * New command line options:
+    + -A command line option for alias expansion.
+    + -D will print the value of all variables.
+    + -E command line option to edit draft and include files.
+    + -Q queries configuration variables
+  * New functions:
+    + you can edit threads via <break-thread> and <link-threads>
+    + <buffy-list> lists mailboxes with new mail.
+    + <what-key> displays the keycode for a key press.
+    + <next-new-then-unread> and <previous-new-then-unread>
+    + <tag-prefix-cond> and <cond-end>
+  * $resume_draft_files and $resume_edited_draft files control how
+    draft files are processed.
+  * $narrow_tree makes the thread tree narrower.
+  * new and changed hooks: reply-hook, send2-hook.  crypt-hook can be
+    specified multiple times for the same regexp.
+  * The $alternates option has turned into the 'alternates' command.
+  * mime_lookup command specifies a list of MIME types that should not
+    be treated according to their mailcap entry
+
+-------------------------------------------------------------------
 Mon Apr 20 10:29:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.13.5 (2020-03-28)

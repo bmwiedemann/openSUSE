@@ -1062,4 +1062,41 @@
   * Fix format string parameters. (forwarded request 795766 from namtrac)</comment>
     <requestid>795771</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>14ce005b091bf548dd64fa77fe0f25ff</srcmd5>
+    <version>1.14.0</version>
+    <time>1588856068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0
+  * $imap_check_subscribed will fetch the set of subscribed folders from
+    your server on connection.
+  * IMAP server-side simple string search using '=' instead of '~'.
+    ('=' also provides local simple string search.)
+  * IMAP IDLE support and $imap_idle
+  * &lt;rename-mailbox&gt; function
+  * S/MIME support.  Please see contrib/smime.rc for suggested settings.
+  * GPGME support via $crypt_use_gpgme
+  * Ability to encrypt postponed messages.  See $postpone_encrypt and
+    $postpone_encrypt_as.
+  * GnuPG fingerprints are used internally when possible.
+  * $crypt_opportunistic_encrypt automatically enables/disables encryption
+    based on message recipients.
+  * IDNA support.  Options $idn_decode and $idn_encode control whether
+    mutt will decode and encode international domains using IDNA.
+  * SMTPUTF8 support.  Support for utf-8 domains without IDNA encoding.
+    To use this, unset idn_encode.
+  * $assumed_charset, $attach_charset, $ignore_linear_white_space
+  * Header caching for IMAP and Maildir.  See $header_cache for more details.
+  * Internal ESMTP relay support.  See $smtp_url.
+  * $mail_check_recent controls whether all unread mail or only new mail
+    since the last mailbox visit will be reported as new
+  * Support for saving history across sessions.  See $save_history,
+    $history_file.
+  * More search patterns:
+    + thread patterns.  Use ~(...) to match all threads that
+      contain a message that matches ...
+    + ~l matches all known lists, ~u only subscribed.
+    + ~$ pattern matches unreferenced messages.</comment>
+    <requestid>800759</requestid>
+  </revision>
 </revisionlist>
