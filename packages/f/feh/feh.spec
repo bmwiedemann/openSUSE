@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        X11 image viewer
 License:        MIT AND LGPL-2.0-or-later
@@ -55,15 +55,11 @@ supports the creation of montages as index prints with many
 user-configurable options.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch6 -p1
-
+%autosetup -p1
 cp %{SOURCE3} .
 
 %build
-make %{?_smp_mflags} \
+%make_build \
     PREFIX="%{_prefix}" \
     curl=1 \
     help=1 \
@@ -83,6 +79,7 @@ gcc %{optflags} -fwhole-program jpegexiforient.c -o jpegexiforient
 rm -rf "%{buildroot}%{_datadir}/doc"
 
 install -D -m0755 jpegexiforient %{buildroot}%{_bindir}/jpegexiforient
+
 
 %files
 %license COPYING

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  6 10:40:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4:
+  * Images loaded via HTTPS/curl, ImageMagick, and dcraw are now cached by
+    default.
+  * Handle SIGINT/SIGTERM/SIGQUIT signals while loading images
+  * "feh --start-at URL" now loads a single-image slideshow
+  * Fix a memory leak when repeatedly cycling through slideshows.
+
+-------------------------------------------------------------------
 Thu Jan 23 12:22:03 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - update to 3.3
