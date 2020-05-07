@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 12:34:56 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Removed lighttpd 1.x integration package. If you still would like
+  to use lighttpd with dehydrated, follow the instructions in the
+  README.maintainers file.
+
+-------------------------------------------------------------------
 Mon Apr 20 00:37:26 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Fix lighttpd config file (boo#1169834)

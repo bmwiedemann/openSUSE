@@ -61,12 +61,19 @@ lighttpd
 
 (not part of SLE, use openSUSE backports)
 
-Lighttpd users can simply install dehydrated-lighttpd and reload lighttpd to
-set up the acme-challenge auto-responder
+Lighttpd users can use the following snippet:
+
+  server.modules += ("mod_alias")
+  alias.url += (
+     "/.well-known/acme-challenge/" => "/var/lib/acme-challenge/",
+  )
 
 NOTE: Never set up the SSL vhosts until you have initially acquired the first
 host. Specifying an SSL vhost without certificates constitutes an error for web
 servers.
+
+NOTE: The dehydrated-lighttpd package has been removed. Please use the
+snippet above.
 
 Machines without a webserver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

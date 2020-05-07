@@ -1,4 +1,0 @@
-server.modules += ("mod_alias")
-alias.url += (
- "/.well-known/acme-challenge/" => "@CHALLENGEDIR@/",
-)

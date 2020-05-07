@@ -29,16 +29,10 @@
 %bcond_with    systemd
 %endif
 
-%if 0%{?sle_version} >= 150000 || 0%{?is_opensuse} || %{defined fedora}
+%if 0%{?sle_version} >= 150000 || %{defined fedora}
 %bcond_without nginx
 %else
 %bcond_with    nginx
-%endif
-
-%if 0%{?is_opensuse} || %{defined fedora}
-%bcond_without lighttpd
-%else
-%bcond_with    lighttpd
 %endif
 
 %{!?_tmpfilesdir: %global _tmpfilesdir %{_prefix}/lib/tmpfiles.d }
@@ -59,7 +53,6 @@ URL:            https://github.com/lukas2511/dehydrated
 Source0:        %{name}-%{version}.tar.gz
 Source1:        acme-challenge.conf.apache.in
 Source2:        acme-challenge.conf.nginx.in
-Source3:        acme-challenge.conf.lighttpd.in
 Source4:        dehydrated.cron.in
 Source5:        dehydrated.tmpfiles.d
 Source6:        dehydrated.service.in
@@ -69,6 +62,7 @@ Source10:       README.Fedora
 Source11:       README.hooks
 Source12:       %{name}-%{version}.tar.gz.asc
 Source13:       %{name}.keyring
+Source14:       %{name}-rpmlintrc
 BuildRequires:  %{_apache}
 Requires:       coreutils
 Requires:       curl
@@ -77,11 +71,9 @@ Requires:       sudo
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Obsoletes:      dehydrated-lighttpd < %{version}-%{release}
 Obsoletes:      letsencrypt.sh < %{version}
 Provides:       letsencrypt.sh = %{version}
-%if %{with lighttpd}
-BuildRequires:  lighttpd
-%endif
 %if %{with nginx}
 BuildRequires:  nginx
 %endif
@@ -150,16 +142,6 @@ Provides:       letsencrypt.sh-nginx = %{version}
 This adds a configuration file for dehydrated's acme-challenge to nginx.
 %endif #with nginx
 
-%if %{with lighttpd}
-%package lighttpd
-Summary:        Lighttpd Integration for dehydrated
-Requires:       %{name}
-Requires:       lighttpd
-
-%description lighttpd
-This adds a configuration file for dehydrated's acme-challenge to lighttpd.
-%endif #with lighttpd
-
 %pre
 getent group %{_user} >/dev/null || %{_sbindir}/groupadd -r %{_user}
 getent passwd %{_user} >/dev/null || %{_sbindir}/useradd -g %{_user} \
@@ -218,12 +200,6 @@ sed "s,@CHALLENGEDIR@,%{_challengedir},g" %{SOURCE2} > acme-challenge
 install -m 0644 acme-challenge %{buildroot}%{_sysconfdir}/nginx
 %endif #with nginx
 
-%if %{with lighttpd}
-install -m 0755 -d %{buildroot}%{_sysconfdir}/lighttpd/conf.d
-sed "s,@CHALLENGEDIR@,%{_challengedir},g" %{SOURCE3} > acme-challenge.conf
-install -m 0644 acme-challenge.conf %{buildroot}%{_sysconfdir}/lighttpd/conf.d
-%endif #with lighttpd
-
 %if %{with systemd}
 install -D    -m 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 # Use timer
@@ -253,7 +229,7 @@ perl -p -i -e 's|#DEHYDRATED_GROUP=|DEHYDRATED_GROUP="%{_user}"|' %{buildroot}%{
 
 diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 
-# Rename existing config file config files fror nginx and lighttpd
+# Rename existing config file config files fror nginx
 %if %{with nginx}
 %pre nginx 
 [ -f %{_sysconfdir}/nginx/conf.d/acme-challenge ] && \
@@ -302,11 +278,5 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %defattr(-,root,root)
 %config %attr(640,root,nginx) %{_sysconfdir}/nginx/acme-challenge
 %endif #with nginx
-
-%if %{with lighttpd}
-%files lighttpd
-%defattr(-,root,root)
-%config %attr(640,root,lighttpd) %{_sysconfdir}/lighttpd/conf.d/acme-challenge.conf
-%endif #with lighttpd
 
 %changelog

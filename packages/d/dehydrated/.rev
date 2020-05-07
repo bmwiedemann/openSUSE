@@ -159,4 +159,14 @@
     <comment>- Provide nginx subpackage for SLE 15+ (jsc#SLE-11727)</comment>
     <requestid>796512</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8e38f8add62fd6304c1b6871ce86a465</srcmd5>
+    <version>0.6.5</version>
+    <time>1588856061</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed lighttpd 1.x integration package. If you still would like
+  to use lighttpd with dehydrated, follow the instructions in the
+  README.maintainers file.</comment>
+    <requestid>800773</requestid>
+  </revision>
 </revisionlist>
