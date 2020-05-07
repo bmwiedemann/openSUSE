@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  5 03:19:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.022
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.022     2020-05-04 22:34:48+02:00 Europe/Amsterdam
+            - Skip tests when needed, to allow installation on <5.10
+  
+
+-------------------------------------------------------------------
 Sun Feb 23 03:10:24 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.021
