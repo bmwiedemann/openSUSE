@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,28 +18,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pygit2
-Version:        0.28.2
+Version:        1.2.1
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module cached-property}
+BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
-BuildRequires:  libgit2-devel >= %{version}
+BuildRequires:  libgit2-devel >= 1.0
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
-Requires:       python-pycparser
-Requires:       python-six
+Requires:       python-cached-property
 %requires_eq    python-cffi
 %python_subpackages
 

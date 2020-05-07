@@ -203,4 +203,14 @@
     <comment>- Fix building for s390x (bsc#1158198)</comment>
     <requestid>753142</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d1effabd04084712743f9f5aeb4ffcc9</srcmd5>
+    <version>1.2.1</version>
+    <time>1588855804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Drop python2 support
+  * Various crash fixes</comment>
+    <requestid>800601</requestid>
+  </revision>
 </revisionlist>
