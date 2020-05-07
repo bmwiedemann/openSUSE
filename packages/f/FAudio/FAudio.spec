@@ -16,9 +16,9 @@
 #
 
 
-%define realver 2003
+%define realver 2005
 Name:           FAudio
-Version:        20.03
+Version:        20.05
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -61,7 +61,6 @@ FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries
 cd lib/FAudio
 %cmake \
   -DCMAKE_BUILD_TYPE=Release
-
 %cmake_build
 
 %install

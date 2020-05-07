@@ -16,4 +16,13 @@
 - Update faudio-older-sdl2.patch. (forwarded request 787711 from cgiboudeaux)</comment>
     <requestid>787712</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>334a85ac65a633442c305cb902cb50db</srcmd5>
+    <version>20.05</version>
+    <time>1588855882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.05:
+  * No changelog available (forwarded request 800658 from pluskalm)</comment>
+    <requestid>800697</requestid>
+  </revision>
 </revisionlist>
