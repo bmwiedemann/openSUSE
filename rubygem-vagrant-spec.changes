@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 12:11:06 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to 148cb63
+
+  * Use local vagrant gem if exists
+  * Update childprocess
+  * Add shebangs to scripts in acceptance/support-skeletons/triggers-advanced
+
+  Remove: 0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch
+  (integrated upstream)
+
+-------------------------------------------------------------------
 Wed Mar 11 10:39:31 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Update to 59d8515

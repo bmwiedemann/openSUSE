@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-vagrant-spec
-Version:        0.0.1.59d8515.git
+Version:        0.0.1.148cb63.git
 Release:        0
 Summary:        Tool and library for testing Vagrant plugins
 License:        MPL-2.0
@@ -43,9 +43,6 @@ PreReq:         update-alternatives
 # MANUAL
 BuildRequires:  fdupes
 # /MANUAL
-# MANUAL
-Patch0:         0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch
-# /MANUAL
 
 %description
 vagrant-spec is a both a specification of how Vagrant and its various
@@ -59,10 +56,6 @@ that the test library can be used with your test framework of choice, but the
 entire tool is geared very heavily towards RSpec.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{SOURCE0}
-%{gem_build}
 
 %build
 

@@ -75,9 +75,7 @@
   BuildRequires: fdupes
 #   Requires: foobar
 # ## used by gem2rpm
-:patches:
-  # https://github.com/hashicorp/vagrant-spec/pull/32
-  0001-Add-shebangs-to-scripts-in-acceptance-support-skelet.patch: -p1
+# :patches:
 # ## used by gem2rpm
 :sources:
 # - foo.desktop
