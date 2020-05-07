@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 20:12:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- use java 11 for building on s390x
+
+-------------------------------------------------------------------
 Thu Jan 30 08:25:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM errors

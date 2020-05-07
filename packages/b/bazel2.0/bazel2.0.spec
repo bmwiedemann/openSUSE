@@ -22,11 +22,7 @@
 
 #Workaround for s390x (Java 1.8 runs out of memory)
 %ifarch s390x
-%if 0%{?suse_version} > 1500
-%define openjdktouse java-12-openjdk-devel
-%else
 %define openjdktouse java-11-openjdk-devel
-%endif
 %else
 %define openjdktouse java-1_8_0-openjdk-devel
 %endif
@@ -41,8 +37,8 @@ URL:            http://bazel.io/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
 Patch1:         0001-fix-build-for-s390x.patch
+BuildRequires:  %{openjdktouse}
 BuildRequires:  gcc-c++
-BuildRequires:  java-1_8_0-openjdk-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  unzip
