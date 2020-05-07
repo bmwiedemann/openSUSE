@@ -1,7 +1,7 @@
-Index: ImageMagick-7.0.8-68/PerlMagick/t/montage.t
+Index: ImageMagick-7.0.10-10/PerlMagick/t/montage.t
 ===================================================================
---- ImageMagick-7.0.8-68.orig/PerlMagick/t/montage.t	2019-10-06 00:26:06.000000000 +0200
-+++ ImageMagick-7.0.8-68/PerlMagick/t/montage.t	2019-10-08 16:42:58.768286476 +0200
+--- ImageMagick-7.0.10-10.orig/PerlMagick/t/montage.t	2020-04-28 01:39:32.000000000 +0200
++++ ImageMagick-7.0.10-10/PerlMagick/t/montage.t	2020-05-04 12:00:52.544321014 +0200
 @@ -15,7 +15,7 @@
  #
  # Test montage method.
@@ -11,8 +11,8 @@ Index: ImageMagick-7.0.8-68/PerlMagick/t/montage.t
  END {print "not ok 1\n" unless $loaded;}
  use Image::Magick;
  $loaded=1;
-@@ -113,39 +113,6 @@ testMontage( q//,
-   '7f2745dfeb6b94f059e521601cd41cda2d548b7fff5eabd4781b102c2581c4f4');
+@@ -113,41 +113,6 @@ testMontage( q//,
+   'ae4322daebfbd3fe448afffe33aa599be518eaebb3515793e1efe6dc33939383');
  
  #
 -# 11) Test Framed Montage
@@ -24,8 +24,9 @@ Index: ImageMagick-7.0.8-68/PerlMagick/t/montage.t
 -testMontage( q/bordercolor=>'blue', mattecolor=>'red'/, 
 -  q/background=>'#696e7e',  tile=>'4x4', geometry=>'90x80+3+3>', frame=>'8x10',
 -  borderwidth=>'0', gravity=>'Center', background=>'gray'/,
--  'd65a3fcf9119a59414d52b6b11c0d131579341dbae03e4f18776dc8a01da2931',
--  '2aa66c8d3eb0c3b3e765df6ffc5977c026dd65f7839b763a48192cdd45d27474');
+-  '40835871b13232243ba4d2bcb244d06958556a24a9624e793f5c4c291d64f322',
+-  '531d0d485d55a5b585cab3f64b37da81a109fbaa91aa44a038fa916421780f14',
+-  '40835871b13232243ba4d2bcb244d06958556a24a9624e793f5c4c291d64f322');
 -
 -#
 -# 12) Test Framed Montage with drop-shadows
@@ -34,8 +35,9 @@ Index: ImageMagick-7.0.8-68/PerlMagick/t/montage.t
 -testMontage( q/bordercolor=>'blue', mattecolor=>'red'/, 
 -  q/background=>'#696e7e',  tile=>'4x4', geometry=>'90x80+6+6>', frame=>'8x10',
 -  borderwidth=>'0', gravity=>'Center', shadow=>'True',background=>'gray'/,
--  'ff43a8c5dd980438c10436a71b47afc538ae3839ba57251768fa07add1229d8a',
--  '885d043b63810d030697104629d79f2141fab28cb561cf84b4f323209cee4f42');
+-  'c11aad0132d57f84ec42aad600f2c9f3fdb9ad5a64235cb08a296c0f1a509f6d',
+-  '51b8db221299cea2bea84b11247bfa4b41a0cc3a9af27ff4c20f9c23ee7f2117',
+-  '7b8d2dbf3ee22440fd5df36090922bb599ab6b4df216282cc51bb4328d03a211');
 -
 -#
 -# 13) Test Framed Montage with drop-shadows and background texture
@@ -44,17 +46,17 @@ Index: ImageMagick-7.0.8-68/PerlMagick/t/montage.t
 -testMontage( q/bordercolor=>'blue', mattecolor=>'red'/, 
 -  q/background=>'#696e7e',  tile=>'4x4', geometry=>'90x80+6+6>', frame=>'8x10',
 -  borderwidth=>'0', gravity=>'Center', shadow=>'True', texture=>'granite:'/,
--  '0de019cb1e17fb9d3e60e6ae3931c6d384859613c3fc930cfef46720cae8237e',
--  '4774caea304139483a3f50a8b94690c7503ccbea89c0ae698e8bb8996d0cfda8');
+-  '292b115e08fcef4888ee3f386c6c3aff1c0ed008e34697435c1e4116a75149ed',
+-  'e2fe0b56decf6fd791813e99d7b0f40646a479589e7519d97e2f92969dd17a1e',
+-  '2c6bc96010beb38d123cc712ded96ecbbef40265a80e9638e9ea9034d64227f3');
 -
--#
+ #
  # 14) Test Un-bordered, Un-framed Montage
  #
- ++$test;
-Index: ImageMagick-7.0.8-68/PerlMagick/t/read.t
+Index: ImageMagick-7.0.10-10/PerlMagick/t/read.t
 ===================================================================
---- ImageMagick-7.0.8-68.orig/PerlMagick/t/read.t	2019-10-06 00:26:06.000000000 +0200
-+++ ImageMagick-7.0.8-68/PerlMagick/t/read.t	2019-10-08 16:40:16.715420136 +0200
+--- ImageMagick-7.0.10-10.orig/PerlMagick/t/read.t	2020-04-28 01:39:32.000000000 +0200
++++ ImageMagick-7.0.10-10/PerlMagick/t/read.t	2020-05-04 11:45:34.455692428 +0200
 @@ -15,7 +15,7 @@
  #
  # Test reading formats supported directly by ImageMagick.

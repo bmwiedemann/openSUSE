@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  4 09:21:49 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.10
+  * Correction to allocate a colormap of the maximum colors when color
+    reducing an image sequence.
+  * Write to stdout for mp4:-.
+  * Allocate a colormap of the maximum colors when color reducing an image
+    sequence.
+  * Label was not centered properly (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1879).
+  * Some configure --with-method-prefix methods were missing (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1912).
+  * Fix erroneous "insufficient image data" exception (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1883).
+  * Fix an unconditional jump for the XPM coder (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1895).
+  * Improve unrotate value returned by the minimum bounding box (thanks
+    to Fred Weinhaus).
+  * Default inkscape delegate to version 0.92 (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/1880).
+  * Set monochrome image depth to 1 for Group4 compression.
+  * The X max attribute for certain fonts is zero (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=1&t=37723).
+  * Multi-value of jp2:quality does not work (reference
+    https://github.com/ImageMagick/ImageMagick/issues/1873).
+  * Return EPS & TIFF images from the EPT image format (reference
+    https://imagemagick.org/discourse-server/viewtopic.php?f=3&t=37781).
+
+-------------------------------------------------------------------
 Mon Mar 30 14:18:36 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.3

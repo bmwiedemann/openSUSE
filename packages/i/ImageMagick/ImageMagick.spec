@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.10
-%define mfr_revision   3
+%define mfr_revision   10
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        7
@@ -55,8 +55,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  libwmf-devel
-BuildRequires:  lzma-devel
 BuildRequires:  xdg-utils
+BuildRequires:  xz-devel
 BuildRequires:  zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1315
