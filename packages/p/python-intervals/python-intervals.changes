@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 07:50:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest5 as newer updates made it work
+
+-------------------------------------------------------------------
 Tue Dec  3 12:44:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest5 as the tests are not compatible with it

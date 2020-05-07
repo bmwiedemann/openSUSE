@@ -23,4 +23,12 @@
     <comment>- Restrict pytest5 as the tests are not compatible with it</comment>
     <requestid>753226</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c0bc4ab751ede225006d339bb617685c</srcmd5>
+    <version>0.8.1</version>
+    <time>1588855787</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest5 as newer updates made it work</comment>
+    <requestid>800593</requestid>
+  </revision>
 </revisionlist>
