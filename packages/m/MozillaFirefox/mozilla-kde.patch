@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  fbac8545cf6f461803505c2d1f57531798dee96a
+# Parent  04c2cbd396b26a8e08980304a436e5e12fb6a205
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4535,25 +4536,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4539,25 +4540,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4599,17 +4612,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4603,17 +4616,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -87,7 +87,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
      SetupTelemetryPref();
    }
  
-   NS_CreateServicesFromCategory(NS_PREFSERVICE_APPDEFAULTS_TOPIC_ID, nullptr,
+   if (aIsStartup) {
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
@@ -175,7 +175,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1209,36 +1209,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1205,36 +1205,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -1104,7 +1104,7 @@ new file mode 100644
 diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 --- a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 +++ b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
-@@ -1,47 +1,50 @@
+@@ -1,46 +1,49 @@
  /* -*- Mode: C++; tab-width: 3; indent-tabs-mode: nil; c-basic-offset: 2 -*-
   *
   * This Source Code Form is subject to the terms of the Mozilla Public
@@ -1117,7 +1117,6 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
  #include "nsIGIOService.h"
  #include "nsNetCID.h"
  #include "nsIIOService.h"
- #include "nsAutoPtr.h"
  #ifdef MOZ_ENABLE_DBUS
  #  include "nsDBusHandlerApp.h"
  #endif
@@ -1160,7 +1159,7 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
    if (*_retval) return NS_OK;
  
    return NS_OK;
-@@ -51,16 +54,33 @@ nsresult nsMIMEInfoUnix::LaunchDefaultWi
+@@ -50,16 +53,33 @@ nsresult nsMIMEInfoUnix::LaunchDefaultWi
    // if mDefaultApplication is set, it means the application has been set from
    // either /etc/mailcap or ${HOME}/.mailcap, in which case we don't want to
    // give the GNOME answer.
@@ -1216,7 +1215,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  #include "nsIFileStreams.h"
  #include "nsILineInputStream.h"
  #include "nsIFile.h"
-@@ -1024,17 +1024,17 @@ nsresult nsOSHelperAppService::GetHandle
+@@ -1023,17 +1023,17 @@ nsresult nsOSHelperAppService::GetHandle
  
  nsresult nsOSHelperAppService::OSProtocolHandlerExists(
      const char* aProtocolScheme, bool* aHandlerExists) {
@@ -1235,7 +1234,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
      nsCOMPtr<nsIHandlerService> handlerSvc =
          do_GetService(NS_HANDLERSERVICE_CONTRACTID, &rv);
      if (NS_SUCCEEDED(rv) && handlerSvc) {
-@@ -1044,17 +1044,17 @@ nsresult nsOSHelperAppService::OSProtoco
+@@ -1043,17 +1043,17 @@ nsresult nsOSHelperAppService::OSProtoco
    }
  
    return rv;
@@ -1254,7 +1253,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
  NS_IMETHODIMP nsOSHelperAppService::IsCurrentAppOSDefaultForProtocol(
      const nsACString& aScheme, bool* _retval) {
-@@ -1141,17 +1141,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1140,17 +1140,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
    nsresult rv =
        LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                 minorType, mime_types_description, true);
@@ -1273,7 +1272,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
      rv = LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                    minorType, mime_types_description, false);
-@@ -1253,17 +1253,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1252,17 +1252,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
  
    // Now look up our extensions
    nsAutoString extensions, mime_types_description;
@@ -1333,7 +1332,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #include "nsGtkUtils.h"
  #include "nsIFileURL.h"
  #include "nsIGIOService.h"
-@@ -20,16 +21,17 @@
+@@ -20,16 +21,18 @@
  #include "nsArrayEnumerator.h"
  #include "nsMemory.h"
  #include "nsEnumeratorUtils.h"
@@ -1343,6 +1342,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
  #include "nsFilePicker.h"
 +#include "nsKDEUtils.h"
++#include "nsURLHelper.h"
  
  using namespace mozilla;
  
@@ -1351,7 +1351,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #define MAX_PREVIEW_SOURCE_SIZE 4096
  
  nsIFile* nsFilePicker::mPrevDisplayDirectory = nullptr;
-@@ -227,17 +229,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -227,17 +230,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1372,7 +1372,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -337,16 +341,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -337,16 +342,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1412,7 +1412,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -571,16 +598,240 @@ void nsFilePicker::Done(void* file_choos
+@@ -571,16 +599,244 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1578,8 +1578,12 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 +                mFileURL = output[ 0 ];
 +            else // GetFile() actually requires it to be url even for local files :-/
 +                {
-+                mFileURL = nsCString( "file://" );
-+                mFileURL.Append( output[ 0 ] );
++                nsCOMPtr<nsIFile> localfile;
++                nsresult rv = NS_NewNativeLocalFile( output[ 0 ],
++                                   PR_FALSE,
++                                   getter_AddRefs(localfile));
++                if (NS_SUCCEEDED(rv))
++                  rv = net_GetURLSpecFromActualFile(localfile, mFileURL);
 +                }
 +            }
 +  // Remember last used directory.

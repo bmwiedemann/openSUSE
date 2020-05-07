@@ -18,9 +18,9 @@
 
 
 # changed with every update
-%define major          75
+%define major          76
 %define mainver        %major.0
-%define orig_version   75.0
+%define orig_version   76.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -84,8 +84,8 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.25
-BuildRequires:  mozilla-nss-devel >= 3.51
-BuildRequires:  nasm >= 2.13
+BuildRequires:  mozilla-nss-devel >= 3.51.1
+BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.19.0
 BuildRequires:  python-devel
 BuildRequires:  python2-xml
@@ -186,7 +186,6 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-bmo1622013.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -322,7 +321,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -662,7 +660,6 @@ exit 0
 %{progdir}/browser/defaults
 %{progdir}/browser/features/
 %{progdir}/browser/chrome/icons
-%{progdir}/browser/blocklist.xml
 %{progdir}/browser/omni.ja
 %dir %{progdir}/distribution/
 %{progdir}/distribution/extensions/

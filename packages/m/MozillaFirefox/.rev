@@ -4394,4 +4394,41 @@
 - increase _constraints memory for ppc64le</comment>
     <requestid>792914</requestid>
   </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>468b4d9fad42a557e8b3f20e79dba436</srcmd5>
+    <version>76.0</version>
+    <time>1588866664</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 76.0
+  * Lockwise improvements
+  * Improvements in Picture-in-Picture feature
+  * Support Audio Worklets
+  MFSA-2020-16 (bsc#1171186)
+  * CVE-2020-12387 (bmo#1545345)
+    Use-after-free during worker shutdown
+  * CVE-2020-12388 (bmo#1618911)
+    Sandbox escape with improperly guarded Access Tokens
+  * CVE-2020-12389 (bmo#1554110)
+    Sandbox escape with improperly separated process types
+  * CVE-2020-6831 (bmo#1632241)
+    Buffer overflow in SCTP chunk input validation
+  * CVE-2020-12390 (bmo#1141959)
+    Incorrect serialization of nsIPrincipal.origin for IPv6 addresses
+  * CVE-2020-12391 (bmo#1457100)
+    Content-Security-Policy bypass using object elements
+  * CVE-2020-12392 (bmo#1614468)
+    Arbitrary local file access with 'Copy as cURL'
+  * CVE-2020-12393 (bmo#1615471)
+    Devtools' 'Copy as cURL' feature did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2020-12394 (bmo#1628288)
+    URL spoofing in location bar when unfocussed
+  * CVE-2020-12395 (bmo#1595886, bmo#1611482, bmo#1614704, bmo#1624098,
+    bmo#1625749, bmo#1626382, bmo#1628076, bmo#1631508)
+    Memory safety bugs fixed in Firefox 76 and Firefox ESR 68.8
+  * CVE-2020-12396 (bmo#1339601, bmo#1611938, bmo#1620488,
+    bmo#1622291, bmo#1627644)
+    Memory safety bugs fixed in Firefox 76</comment>
+    <requestid>800451</requestid>
+  </revision>
 </revisionlist>
