@@ -61,7 +61,7 @@ Patch11:        0001-Add-libogg-to-IOMovie-target-link-libraries.patch
 Patch13:        fix-loguru-missing-links.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
-BuildRequires:  cmake >= 3.3
+BuildRequires:  cmake >= 3.13
 BuildRequires:  desktop-file-utils
 BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
@@ -165,6 +165,15 @@ Requires:       python3-matplotlib
 Requires:       python3-numpy
 Requires:       python3-qt5
 
+%package devel-static
+Summary:        Static libraries for Paraview, needed to building plugins
+Group:          Productivity/Scientific/Physics
+Requires:       %{name}-devel = %{version}
+
+%description devel-static
+This package contains the static libraries for Paraview, needed, for
+example, to build plugins for paraview.
+
 %description -n python3-paraview
 This package provides the python(3) bindings and modules for paraview.
 
@@ -214,7 +223,6 @@ find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px
 %cmake_install
 
 # UNNECESSARY STATIC LIBS
-rm -fr %{buildroot}%{_libdir}/*.a
 rm %{buildroot}%{_libdir}/%{name}-%{major_ver}/plugins/GeodesicMeasurement/libFmmMesh.a
 
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
@@ -257,6 +265,9 @@ rm %{buildroot}%{_bindir}/paraview-config
 %{_bindir}/smTest*
 %{_bindir}/vtk*
 %{_includedir}/%{name}*
+
+%files devel-static
+%{_libdir}/*.a
 
 %files -n python3-paraview
 %{python3_sitearch}/%{name}/

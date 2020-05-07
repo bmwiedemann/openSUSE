@@ -327,4 +327,15 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>792989</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>bde01d8a3623746c0aa1701f56176958</srcmd5>
+    <version>5.8.0</version>
+    <time>1588856100</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the Paraview Protobuf module for openSUSE:Leap &lt;= 15.1, as the FindProtobuf module bundled with cmake &lt; 3.13 is incompatible with the requirements here.
+- Package static libraries as part of devel-static package; this
+  is needed, for example, to build plugins against paraview. See https://gitlab.kitware.com/paraview/paraview/-/issues/19706#note_746038.
+</comment>
+    <requestid>800819</requestid>
+  </revision>
 </revisionlist>

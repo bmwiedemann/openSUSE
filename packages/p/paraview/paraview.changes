@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  5 17:56:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable the Paraview Protobuf module for openSUSE:Leap <= 15.1,
+  as the FindProtobuf module bundled with cmake < 3.13 is
+  incompatible with the requirements here.
+- Package static libraries as part of devel-static package; this
+  is needed, for example, to build plugins against paraview. See
+  https://gitlab.kitware.com/paraview/paraview/-/issues/19706#note_746038.
+
+-------------------------------------------------------------------
 Wed Apr  8 18:26:31 UTC 2020 - Christoph G <foss@grueninger.de>
 
 - add patch fix-3d48a287-support-new-api-cgio_read_data_type.patch
