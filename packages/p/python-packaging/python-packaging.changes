@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 07:23:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Ignore clamav scan as it bogusly calls one file to be infected
+  while it is just a testcase of malformed binary:
+  #!BuildIgnore: post-build-checks-malwarescan
+
+-------------------------------------------------------------------
 Wed Mar 11 14:37:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 20.3

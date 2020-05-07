@@ -30,12 +30,12 @@ Version:        20.3
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pypa/packaging
-Source:         https://pypi.io/packages/source/p/packaging/packaging-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/packaging/packaging-%{version}.tar.gz
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+#!BuildIgnore:  post-build-checks-malwarescan
 Requires:       python-pyparsing >= 2.0.2
 Requires:       python-six
 BuildArch:      noarch

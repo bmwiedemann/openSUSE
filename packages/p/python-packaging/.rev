@@ -141,4 +141,14 @@
     <comment></comment>
     <requestid>783881</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ecfbeddfe49d4e5a5469eed62981647f</srcmd5>
+    <version>20.3</version>
+    <time>1588856750</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore clamav scan as it bogusly calls one file to be infected
+  while it is just a testcase of malformed binary:
+  #!BuildIgnore: post-build-checks-malwarescan</comment>
+    <requestid>800247</requestid>
+  </revision>
 </revisionlist>
