@@ -1,7 +1,7 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.42.0
-%global version_previous 1.41.1
-%global version_bootstrap 1.41.1
+%global version_current 1.43.0
+%global version_previous 1.42.0
+%global version_bootstrap 1.42.0
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.11
+%global rustfmt_version 1.4.12
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -135,7 +135,8 @@ Source108:      %{dl_url}/rust-%{version_bootstrap}-powerpc-unknown-linux-gnu.ta
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
-# PATCH-FIX-UPSTREAM: fix rustdoc compilation: https://github.com/rust-lang/rust/issues/66224
+# PATCH-FIX-UPSTREAM: fix compilation with llvm10 https://github.com/rust-lang/rust/issues/71573
+Patch1:         rust-pr70163-prepare-for-llvm-10-upgrade.patch
 BuildRequires:  ccache
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -309,9 +310,9 @@ A tool for formatting Rust code according to style guidelines.
 
 %package -n clippy
 Summary:        Lints to catch common mistakes and improve Rust code
-# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 License:        MPL-2.0
 Group:          Development/Languages/Rust
+# /usr/bin/clippy-driver is dynamically linked against internal rustc libs
 Requires:       %{name} = %{version}
 Requires:       cargo = %{version}
 Provides:       clippy = %{clippy_version}
@@ -335,10 +336,10 @@ Cargo downloads dependencies of Rust projects and compiles it.
 
 %package -n cargo-doc
 Summary:        Documentation for Cargo
-# Cargo no longer builds its own documentation
-# https://github.com/rust-lang/cargo/pull/4904
 License:        MIT OR Apache-2.0
 Group:          Development/Languages/Rust
+# Cargo no longer builds its own documentation
+# https://github.com/rust-lang/cargo/pull/4904
 Requires:       rust-doc = %{version}
 BuildArch:      noarch
 
@@ -386,6 +387,7 @@ This package includes HTML documentation for Cargo.
 %setup -q -n rustc-%{version}-src
 
 %patch0 -p1
+%patch1 -p1
 
 # use python3
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" x.py
@@ -455,12 +457,12 @@ if [ $(%{rust_root}/bin/rustc --version | sed -En 's/rustc ([0-9].[0-9][0-9].[0-
 sed -i -e "s|#local-rebuild = false|local-rebuild = true|" config.toml;
 fi
 
-# BEGIN EXPORTS
+# Create exports file
 # Keep all the "export VARIABLE" together here, so they can be
-# cut&pasted to the %%install section below.  And please keep them
-# in sync!
+# reread in the %%install section below.
 # If the environments between build and install and different,
 # everything will be rebuilt during installation!
+cat > .env.sh <<\EOF
 export RUSTFLAGS="%{rustflags}"
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
 export CC=gcc-7
@@ -470,34 +472,19 @@ export CXX=g++-7
 %if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 %endif
-# eliminate complain from RPMlint
+# eliminate complaint from RPMlint
 export CPPFLAGS="%{optflags}"
 export DESTDIR=%{buildroot}
 # END EXPORTS
+EOF
+. ./.env.sh
 
 ./x.py build -v
 ./x.py doc -v
 
 %install
-# BEGIN EXPORTS
-# Keep all the "export VARIABLE" together here, so they can be
-# cut&pasted to the %%install section below.  And please keep them
-# in sync!
-# If the environments between build and install and different,
-# everything will be rebuilt during installation!
-export RUSTFLAGS="%{rustflags}"
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120500
-export CC=gcc-7
-export CXX=g++-7
-%endif
-# Make cargo use system libs if not bootstrapping
-%if !%{with rust_bootstrap} && 0%{?sle_version} >= 150000
-export LIBSSH2_SYS_USE_PKG_CONFIG=1
-%endif
-# eliminate complain from RPMlint
-export CPPFLAGS="%{optflags}"
-export DESTDIR=%{buildroot}
-# END EXPORTS
+# Reread exports file
+. ./.env.sh
 
 ./x.py install
 ./x.py install src
