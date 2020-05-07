@@ -16,17 +16,15 @@
 #
 
 
-%define libver  3_6_0
+%define libver  3_6_1
 Name:           rssguard
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        GPL-3.0-only AND AGPL-3.0-or-later
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-UPSTREAM rssguard-3.6.0-fix_no_return_nonvoid.patch
-Patch0:         rssguard-3.6.0-fix_no_return_nonvoid.patch
 # PATCH-FIX-OPENSUSE rssguard-3.6.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
 Patch2:         rssguard-3.6.0-add_library_version.patch
 BuildRequires:  fdupes

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 07:54:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6.1
+  * Translations synced.
+  * Big code refactoring, fixed almost all usages of Qt deprecated
+    code.
+- Drop rssguard-3.6.0-fix_no_return_nonvoid.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
 Thu Apr 30 15:59:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.6.0
