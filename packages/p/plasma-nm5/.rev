@@ -857,4 +857,12 @@
     <comment>Plasma 5.18.4.1 - second try</comment>
     <requestid>790446</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>e0bb5dcd149e309479fb1777486f72b9</srcmd5>
+    <version>5.18.5</version>
+    <time>1588857033</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.5</comment>
+    <requestid>800491</requestid>
+  </revision>
 </revisionlist>
