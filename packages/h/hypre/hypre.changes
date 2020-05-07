@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 16:44:16 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add non-HPC openmpi3 flavor.
+
+-------------------------------------------------------------------
 Fri Apr 17 17:03:34 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Enable non-HPC openmpi3 build (boo#1169792).

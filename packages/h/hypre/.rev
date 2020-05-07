@@ -78,4 +78,12 @@
   trying to undefine it is an error since RPM 4.15.</comment>
     <requestid>794971</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>57e838fcce9bf8aed969a23a1824d8dd</srcmd5>
+    <version>2.18.2</version>
+    <time>1588855722</time>
+    <user>dimstar_suse</user>
+    <comment>- Add non-HPC openmpi3 flavor.</comment>
+    <requestid>800437</requestid>
+  </revision>
 </revisionlist>

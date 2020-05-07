@@ -57,6 +57,13 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI2}
 %endif
 
+%if "%{flavor}" == "openmpi3"
+%global mpi_family  openmpi
+%define mpi_vers 3
+%bcond_with hpc
+%{?DisOMPI3}
+%endif
+
 %if "%{flavor}" == "mvapich2"
 %global mpi_family  mvapich2
 %bcond_with hpc
