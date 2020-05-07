@@ -45,4 +45,14 @@
     <comment></comment>
     <requestid>709069</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd53aefce9ab71ca7e07fb1f855dea4a</srcmd5>
+    <version>1.0.7</version>
+    <time>1588856080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.7 (no changelog) 
+- Remove uperf-openssl-1_1.patch
+- Remove reproducible.patch</comment>
+    <requestid>800665</requestid>
+  </revision>
 </revisionlist>

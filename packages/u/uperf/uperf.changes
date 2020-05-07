@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 07:00:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.7 (no changelog) 
+- Remove uperf-openssl-1_1.patch
+- Remove reproducible.patch
+
+-------------------------------------------------------------------
 Mon Jun 10 19:06:04 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date
