@@ -46,6 +46,8 @@ BuildRequires:  %{python_module six}
 BuildRequires:  python-mock
 %endif
 # /SECTION
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -67,15 +69,22 @@ sed -i -e '/^#!\//, 1d' proselint/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/proselint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative proselint
+
+%postun
+%python_uninstall_alternative proselint
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE.md
-%python3_only %{_bindir}/proselint
+%python_alternative %{_bindir}/proselint
 %{python_sitelib}/proselint/
 %{python_sitelib}/proselint-%{version}-py*.egg-info
 

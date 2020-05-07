@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 09:49:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Mon Apr 20 10:51:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
