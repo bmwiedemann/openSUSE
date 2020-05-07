@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May  6 09:12:22 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.2.2
+  * Improved archive creation procedure, saving settings for
+    file spanning, dictionary, word, passes, and block size.
+  * Current compression settings defined in the GUI can be saved
+    into custom compression settings files, and default
+    compression presets can be customized / replaced.
+  * ZPAQ support was improved optimizing compression, and
+    enabling AES256 encryption, restore to absolute paths, and
+    extraction of all versions of files contained in the archive.
+  * Alongside many other improvements and fixes, it is now
+    possible to automatically close PeaZip when task completes,
+    directly send files to encrypted 7z archive from context
+    menu, save file hash and information, and to display SMART
+    disk health data.
+- Refreshed peazip-desktop.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 14:01:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.2.1

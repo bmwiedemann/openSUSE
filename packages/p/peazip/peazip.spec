@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 %define         _helpver 7.2.0
 Name:           peazip
-Version:        7.2.1
+Version:        7.2.2
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -82,12 +82,7 @@ PeaZip is a file and archive manager GUI for many formats.
 This subpackage contains the KF5 integration.
 
 %prep
-%setup -q -n %{name}-%{version}.src
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n %{name}-%{version}.src
 chmod +w res/lang
 dos2unix readme
 cp %{SOURCE2} peazip_help.pdf
