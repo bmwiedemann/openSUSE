@@ -31,7 +31,6 @@ Source1:        baselibs.conf
 Patch0:         redef-keysym.patch
 # https://github.com/LibVNC/libvncserver/issues/281
 Patch1:         cmake-libdir.patch
-Patch2:         LibVNCServer-CVE-2018-20749.patch
 # CVE-2019-15681 [bsc#1155419]
 Patch3:         LibVNCServer-CVE-2019-15681.patch
 # PATCH-FIX-UPSTREAM: https://github.com/LibVNC/libvncserver/commit/d0a76539835d11c0f4723499f8be4bc9c7724eb9
@@ -115,7 +114,6 @@ files for LibVNCServer.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-#%patch2 -p1
 # fix encoding
 for file in ChangeLog ; do
 mv ${file} ${file}.OLD && \

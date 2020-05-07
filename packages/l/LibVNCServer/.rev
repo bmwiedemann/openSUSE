@@ -371,4 +371,14 @@
   + LibVNCServer-CVE-2019-20788.patch</comment>
     <requestid>798132</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>4df6688c4dfbdad4ab84654b7161a0c1</srcmd5>
+    <version>0.9.12</version>
+    <time>1588866580</time>
+    <user>dimstar_suse</user>
+    <comment>- deleted patches
+  - LibVNCServer-CVE-2018-20749.patch (mistakenly added, it is
+    already part of 0.9.12)</comment>
+    <requestid>800071</requestid>
+  </revision>
 </revisionlist>

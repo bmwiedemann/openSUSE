@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 13:48:26 UTC 2020 - pgajdos@suse.com
+
+- deleted patches
+  - LibVNCServer-CVE-2018-20749.patch (mistakenly added, it is
+    already part of 0.9.12)
+
+-------------------------------------------------------------------
 Mon Apr 27 09:20:21 UTC 2020 - pgajdos@suse.com
 
 - security update
