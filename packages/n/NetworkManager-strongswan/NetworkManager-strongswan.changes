@@ -1,8 +1,29 @@
 -------------------------------------------------------------------
+Mon May  4 22:01:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.0:
+  + EAP-TLS authentication
+  + Certificate source (file, agent, smartcard) is selectable
+    independently
+  + Add support to configure local and remote identities
+  + Support configuring a custom server port
+  + Show hint regarding password storage policy
+  + Replaced the term "gateway" with "server"
+  + Fixes build issues due to use of deprecated GLib
+    macros/functions
+  + Updated Glade file to GTK 3.2
+
+-------------------------------------------------------------------
 Fri May  1 09:03:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set the path for the VPN service name file correctly to
   %_vpnservicedir (provided by macros.NetworkManager).
+- Pass --with-nm-libexecdir=%{_libexecdir} to configure to behave
+  the same as all the other NM-VPN plugins. This results in
+  nm-strongswan-auth-dialog moving from
+  %{_libexecdir}/NetworkManager to %{_libexecdir}, but considering
+  all the other auth-dialog helpers are there as well it is
+  perfectly welcome.
 
 -------------------------------------------------------------------
 Sat Jan 25 14:04:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-strongswan
-Version:        1.4.5
+Version:        1.5.0
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
-Requires:       strongswan-nm >= 5.6.2
+Requires:       strongswan-nm >= 5.8.3
 ExcludeArch:    s390 s390x
 
 %description
@@ -65,6 +65,7 @@ cp %{SOURCE99} README.SUSE
 	--disable-static \
 	--without-libnm-glib \
 	--with-charon=%{_libexecdir}/ipsec/charon-nm \
+	--with-nm_libexecdir=%{_libexecdir} \
 	--disable-more-warnings
 %make_build
 
@@ -79,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/NetworkManager/libnm-vpn-plugin-strongswan.so
 
 %files gnome
-%{_libexecdir}/NetworkManager/nm-strongswan-auth-dialog
+%{_libexecdir}/nm-strongswan-auth-dialog
 %{_datadir}/gnome-vpn-properties/
 %{_datadir}/appdata/NetworkManager-strongswan.appdata.xml
 
