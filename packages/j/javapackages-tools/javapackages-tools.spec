@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,8 +167,8 @@ files="
 %{_datadir}/java-utils/java-functions
 %{_datadir}/java-utils/java-wrapper
 %{_datadir}/java-utils/scl-enable
-%{_libexecdir}/rpm/macros.d/macros.jpackage
-%{_libexecdir}/rpm/macros.d/macros.javapackages-filesystem
+%{_rpmmacrodir}/macros.jpackage
+%{_rpmmacrodir}/macros.javapackages-filesystem
 %{_mandir}/man1/build-classpath.1
 %{_mandir}/man1/build-jar-repository.1
 %{_mandir}/man1/diff-jars.1
