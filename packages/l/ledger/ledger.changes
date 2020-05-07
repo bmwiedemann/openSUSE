@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  6 09:20:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0
+  * Port Python support to Python 3
+  * Entities are no longer regarded as defined due to being part of a
+  * cleared transaction. --explicit is effectively enabled by default
+    and is now a no-op (PR #1819)
+  * Add --average-lot-prices to show the average of lot prices
+  * Add support for %F date format specifier (bug #1775)
+  * Add commodity_price(NAME, DATE) function
+  * Add set_commodity_price(NAME, DATE) function
+  * Fix buffer overflow when evaluating date
+  * Fix balance assertions on accounts with virtual posts (bug #543)
+  * Fix segfault with ledger print (bug #1850)
+  * Ensure that apply directives (like apply account) have the
+    required argument (bug #553)
+  * Format annotations using a date format that can be parsed
+  * Change --invert to invert displayed amounts and totals, not amounts
+  * Correct the way parens are parsed in query expressions
+  * Compare price annotations using their textual rendering
+
+-------------------------------------------------------------------
 Tue Jan 28 15:01:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - add patch ledger-cmakelists.patch:

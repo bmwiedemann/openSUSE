@@ -17,13 +17,13 @@
 
 
 Name:           ledger
-Version:        3.1.3
+Version:        3.2.0
 Release:        0
 Summary:        Double-entry accounting system with a command-line reporting interface
 License:        BSD-3-Clause
 Group:          Productivity/Office/Finance
 URL:            https://github.com/ledger/ledger
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel
@@ -33,7 +33,7 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  mpfr-devel
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  utfcpp-devel
 Patch0:         ledger-cmakelists.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,7 +53,7 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
-install -m 644 -D contrib/ledger-completion.bash %{buildroot}%{_sysconfdir}/bash_completion.d/ledger.sh
+install -m 644 -D contrib/ledger-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/ledger.sh
 
 %files
 %defattr(-,root,root)
@@ -61,6 +61,6 @@ install -m 644 -D contrib/ledger-completion.bash %{buildroot}%{_sysconfdir}/bash
 %doc README.md
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/ledger
-%config %{_sysconfdir}/bash_completion.d/ledger.sh
+%{_datadir}/bash-completion/completions/ledger.sh
 
 %changelog
