@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * [Notifications] Don't show do not disturb end date beyond 100 days
+  * [systemtray] Fix SNI icon not rendering (kde#419305)
+  * [KRunner] Watch config with KConfigWatcher
+  * [Notifications] Have checkIndex check if the index is valid
+  * [Notifications] Fix typo
+  * Fix warning about connecting to a null sender, favoritesModel can be null
+  * Fix variable assignment
+  * [Notifications] Don't reverse() Array
+  * use the decoded url for launcherPosition (kde#418483)
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:
