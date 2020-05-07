@@ -447,6 +447,7 @@
       <repopackage name="p11-kit-tools" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
+      <repopackage name="pam_pwquality" arch="x86_64"/>
       <repopackage name="parted" arch="x86_64"/>
       <repopackage name="patterns-base-apparmor" arch="x86_64"/>
       <repopackage name="patterns-base-base" arch="x86_64"/>
