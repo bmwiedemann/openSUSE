@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:30:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.16.3:
+  * deps:
+    + Updated OpenSSL to 1.1.1g
+    + Updated c-ares to 1.16.0
+    + Updated experimental uvwasi to 0.0.6
+  * ESM (experimental): Additional warnings are no longer printed
+    for modules that use conditional exports or package name self resolution
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Mon Apr 27 13:15:17 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS release 12.16.2:
+  * deps:
+    + upgrade npm to 6.13.6
+    + update openssl to 1.1.1e
+
+- openssl_rand_regression.patch, wasi_compile_flags.patch: upstreamed
+- versioned.patch, fix_ci_tests.patch: refreshed
+- linker_lto_jobs.patch: serialize linker during build
+
+-------------------------------------------------------------------
 Mon Mar  2 09:43:10 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - openssl_rand_regression.patch: Add getrandom syscall definition

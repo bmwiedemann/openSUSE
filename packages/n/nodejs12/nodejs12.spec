@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.16.1
+Version:        12.16.3
 Release:        0
 
 %define node_version_number 12
@@ -133,6 +133,7 @@ Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
 
 ## Patches specific to SUSE and openSUSE
+Patch100:       linker_lto_jobs.patch
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
 Patch101:       nodejs-libpath.patch
 # PATCH-FIX-UPSTREAM -- use custom addon.gypi by default instead of
@@ -145,8 +146,6 @@ Patch103:       nodejs-sle11-python26-check_output.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
-Patch107:       wasi_compile_flags.patch
-Patch108:       openssl_rand_regression.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -158,6 +157,7 @@ BuildRequires:  binutils-gold
 %endif
 
 BuildRequires:  pkg-config
+BuildRequires:  config(netcfg)
 
 # Node.js 4/6/7 requires GCC 4.8.5+.
 #
@@ -294,7 +294,7 @@ Requires:       %{name}-devel = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.13.4
+Provides:       npm(npm) = 6.13.6
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -345,6 +345,7 @@ tar Jxvf %{SOURCE11}
 %patch7 -p1
 %if 0%{with valgrind_tests}
 %endif
+%patch100 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).
@@ -353,8 +354,6 @@ tar Jxvf %{SOURCE11}
 %endif
 %patch104 -p1
 %patch106 -p1
-%patch107 -p1
-%patch108 -p1
 %patch120 -p1
 %patch200 -p1
 
@@ -524,6 +523,8 @@ mkdir -p %{buildroot}%{_defaultlicensedir}
 export CC=%{?cc_exec}
 export CXX=%{?cpp_exec}
 %endif
+
+export NODE_TEST_NO_INTERNET=1
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests

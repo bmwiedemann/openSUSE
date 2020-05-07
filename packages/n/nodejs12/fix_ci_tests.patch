@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-git.8252c06165/test/parallel/test-module-loading-globalpaths.js
+Index: node-v12.16.3/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-git.8252c06165/test/parallel/test-module-loading-globalpaths.js
+--- node-v12.16.3.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v12.16.3/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-git.8252c06165/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-git.8252c06165/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v12.16.3/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-git.8252c06165/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v12.16.3.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v12.16.3/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,10 +29,10 @@ Index: node-git.8252c06165/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-git.8252c06165/test/parallel/test-tls-passphrase.js
+Index: node-v12.16.3/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-tls-passphrase.js
-+++ node-git.8252c06165/test/parallel/test-tls-passphrase.js
+--- node-v12.16.3.orig/test/parallel/test-tls-passphrase.js
++++ node-v12.16.3/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -51,60 +51,11 @@ Index: node-git.8252c06165/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-git.8252c06165/test/parallel/test-crypto-scrypt.js
+Index: node-v12.16.3/test/parallel/test-crypto-scrypt.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-crypto-scrypt.js
-+++ node-git.8252c06165/test/parallel/test-crypto-scrypt.js
-@@ -12,30 +12,6 @@ if (typeof internalBinding('crypto').scr
-   common.skip('no scrypt support');
- 
- const good = [
--  // Zero-length key is legal, functions as a parameter validation check.
--  {
--    pass: '',
--    salt: '',
--    keylen: 0,
--    N: 16,
--    p: 1,
--    r: 1,
--    expected: '',
--  },
--  // Test vectors from https://tools.ietf.org/html/rfc7914#page-13 that
--  // should pass.  Note that the test vector with N=1048576 is omitted
--  // because it takes too long to complete and uses over 1 GB of memory.
--  {
--    pass: '',
--    salt: '',
--    keylen: 64,
--    N: 16,
--    p: 1,
--    r: 1,
--    expected:
--        '77d6576238657b203b19ca42c18a0497f16b4844e3074ae8dfdffa3fede21442' +
--        'fcd0069ded0948f8326a753a0fc81f17e8d3e0fb2e0d3628cf35e20c38d18906',
--  },
-   {
-     pass: 'password',
-     salt: 'NaCl',
-@@ -59,17 +35,6 @@ const good = [
-         'd5432955613f0fcf62d49705242a9af9e61e85dc0d651e40dfcf017b45575887',
-   },
-   {
--    pass: '',
--    salt: '',
--    keylen: 64,
--    cost: 16,
--    parallelization: 1,
--    blockSize: 1,
--    expected:
--        '77d6576238657b203b19ca42c18a0497f16b4844e3074ae8dfdffa3fede21442' +
--        'fcd0069ded0948f8326a753a0fc81f17e8d3e0fb2e0d3628cf35e20c38d18906',
--  },
--  {
-     pass: 'password',
-     salt: 'NaCl',
-     keylen: 64,
-@@ -169,8 +134,8 @@ for (const options of bad) {
+--- node-v12.16.3.orig/test/parallel/test-crypto-scrypt.js
++++ node-v12.16.3/test/parallel/test-crypto-scrypt.js
+@@ -169,8 +169,8 @@ for (const options of bad) {
  
  for (const options of toobig) {
    const expected = {
@@ -112,44 +63,13 @@ Index: node-git.8252c06165/test/parallel/test-crypto-scrypt.js
 -                        '(?:EVP_PBE_scrypt|scrypt_alg):memory limit exceeded'),
 +    message: new RegExp('(error:[^:]+:digital envelope routines:' +
 +                        '(?:EVP_PBE_scrypt|scrypt_alg):memory limit exceeded|Invalid scrypt parameter)'),
-     type: Error,
+     name: 'Error',
    };
-   common.expectsError(() => crypto.scrypt('pass', 'salt', 1, options, () => {}),
-@@ -224,10 +189,10 @@ for (const { args, expected } of badargs
- {
-   // Values for maxmem that do not fit in 32 bits but that are still safe
-   // integers should be allowed.
--  crypto.scrypt('', '', 4, { maxmem: 2 ** 52 },
-+  crypto.scrypt('test', 'test', 4, { maxmem: 2 ** 52 },
-                 common.mustCall((err, actual) => {
-                   assert.ifError(err);
--                  assert.strictEqual(actual.toString('hex'), 'd72c87d0');
-+                  assert.strictEqual(actual.toString('hex'), 'cd6dc07d');
-                 }));
- 
-   // Values that exceed Number.isSafeInteger should not be allowed.
-@@ -243,7 +208,7 @@ for (const { args, expected } of badargs
-     let accessCount = 0;
- 
-     // Find out how often the value is accessed.
--    crypto.scryptSync('', '', 1, {
-+    crypto.scryptSync('test', 'test', 1, {
-       get [name]() {
-         accessCount++;
-         return value;
-@@ -252,7 +217,7 @@ for (const { args, expected } of badargs
- 
-     // Try to crash the process on the last access.
-     common.expectsError(() => {
--      crypto.scryptSync('', '', 1, {
-+      crypto.scryptSync('test', 'test', 1, {
-         get [name]() {
-           if (--accessCount === 0)
-             return '';
-Index: node-git.8252c06165/test/parallel/test-repl-envvars.js
+   assert.throws(() => crypto.scrypt('pass', 'salt', 1, options, () => {}),
+Index: node-v12.16.3/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-repl-envvars.js
-+++ node-git.8252c06165/test/parallel/test-repl-envvars.js
+--- node-v12.16.3.orig/test/parallel/test-repl-envvars.js
++++ node-v12.16.3/test/parallel/test-repl-envvars.js
 @@ -2,12 +2,14 @@
  
  // Flags: --expose-internals
@@ -166,11 +86,11 @@ Index: node-git.8252c06165/test/parallel/test-repl-envvars.js
  const tests = [
    {
      env: {},
-Index: node-git.8252c06165/test/common/index.mjs
+Index: node-v12.16.3/test/common/index.mjs
 ===================================================================
---- node-git.8252c06165.orig/test/common/index.mjs
-+++ node-git.8252c06165/test/common/index.mjs
-@@ -45,6 +45,7 @@ const {
+--- node-v12.16.3.orig/test/common/index.mjs
++++ node-v12.16.3/test/common/index.mjs
+@@ -44,6 +44,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -178,7 +98,7 @@ Index: node-git.8252c06165/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-@@ -91,6 +92,7 @@ export {
+@@ -89,6 +90,7 @@ export {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -186,20 +106,11 @@ Index: node-git.8252c06165/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-Index: node-git.8252c06165/Makefile
+Index: node-v12.16.3/Makefile
 ===================================================================
---- node-git.8252c06165.orig/Makefile
-+++ node-git.8252c06165/Makefile
-@@ -486,7 +486,7 @@ test-all-valgrind: test-build
- 	$(PYTHON) tools/test.py $(PARALLEL_ARGS) --mode=debug,release --valgrind
- 
- .PHONY: test-all-suites
--test-all-suites: | clear-stalled test-build bench-addons-build doc-only ## Run all test suites.
-+test-all-suites: | clear-stalled test-build bench-addons-build ## Run all test suites.
- 	$(PYTHON) tools/test.py $(PARALLEL_ARGS) --mode=$(BUILDTYPE_LOWER) test/*
- 
- # CI_* variables should be kept synchronized with the ones in vcbuild.bat
-@@ -698,11 +698,12 @@ apidocs_json = $(addprefix out/,$(apidoc
+--- node-v12.16.3.orig/Makefile
++++ node-v12.16.3/Makefile
+@@ -740,20 +740,11 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -208,46 +119,30 @@ Index: node-git.8252c06165/Makefile
 -	else \
 -		cd tools/doc && $(call available-node,$(run-npm-ci)) \
 -	fi
-+	echo "Skipping tools/doc/node_modules (no crypto)";
-+#	@if [ "$(shell $(node_use_openssl))" != "true" ]; then \
-+#		echo "Skipping tools/doc/node_modules (no crypto)"; \
-+#	else \
-+#		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-+#	fi
++	echo "Skipping tools/doc/node_modules"
  
  .PHONY: doc-only
- doc-only: tools/doc/node_modules \
-Index: node-git.8252c06165/test/parallel/test-child-process-spawnsync-args.js
+-doc-only: tools/doc/node_modules \
+-	$(apidoc_dirs) $(apiassets)  ## Builds the docs with the local or the global Node.js binary.
+-	@if [ "$(shell $(node_use_openssl))" != "true" ]; then \
+-		echo "Skipping doc-only (no crypto)"; \
+-	else \
+-		$(MAKE) out/doc/api/all.html out/doc/api/all.json; \
+-	fi
++doc-only: tools/doc/node_modules
++	echo "Skipping doc generation"
+ 
+ .PHONY: doc
+ doc: $(NODE_EXE) doc-only
+Index: node-v12.16.3/test/parallel/test-tls-root-certificates.js
 ===================================================================
---- node-git.8252c06165.orig/test/parallel/test-child-process-spawnsync-args.js
-+++ node-git.8252c06165/test/parallel/test-child-process-spawnsync-args.js
-@@ -12,6 +12,8 @@ const tmpdir = require('../common/tmpdir
- const assert = require('assert');
- const { spawnSync } = require('child_process');
+--- node-v12.16.3.orig/test/parallel/test-tls-root-certificates.js
++++ node-v12.16.3/test/parallel/test-tls-root-certificates.js
+@@ -28,7 +28,6 @@ if (process.argv[2] !== 'child') {
  
-+tmpdir.refresh();
-+
- const command = common.isWindows ? 'cd' : 'pwd';
- const options = { cwd: tmpdir.path };
+   // Array is immutable...
+   assert.throws(() => tls.rootCertificates[0] = 0, /TypeError/);
+-  assert.throws(() => tls.rootCertificates.sort(), /TypeError/);
  
-Index: node-git.8252c06165/test/parallel/test-dns.js
-===================================================================
---- node-git.8252c06165.orig/test/parallel/test-dns.js
-+++ node-git.8252c06165/test/parallel/test-dns.js
-@@ -320,16 +320,6 @@ common.expectsError(() => {
- });
- 
- {
--  dns.resolveMx('foo.onion', function(err) {
--    assert.deepStrictEqual(err.errno, 'ENOTFOUND');
--    assert.deepStrictEqual(err.code, 'ENOTFOUND');
--    assert.deepStrictEqual(err.syscall, 'queryMx');
--    assert.deepStrictEqual(err.hostname, 'foo.onion');
--    assert.deepStrictEqual(err.message, 'queryMx ENOTFOUND foo.onion');
--  });
--}
--
--{
-   const cases = [
-     { method: 'resolveAny',
-       answers: [
+   // ...and so is the property.
+   assert.throws(() => tls.rootCertificates = 0, /TypeError/);
