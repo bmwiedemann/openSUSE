@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May  5 20:54:00 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.5.1
+  * Clang-tidy: fix storing of custom checksets per project
+  * Clazy: fix storing of custom checksets per project
+  * Kdev_format_source: eliminate a global QString constant
+  * Reduce the scope of local variables in KDevFormatFile::read()
+  * Move a format_sources comment from unsupported position
+  * Kdev_format_source: don't ignore the root directory
+  * Kdev_format_source: fix typos in usage/error messages
+  * Work around QDir::match() behavior change in Qt 5.12.0
+    (kde#409222, kde#417628)
+  * Add failing kdev_format_source and grepview tests
+  * Handle errors better in KDevFormatFile::executeCommand()
+  * Grepview: search in hidden files and directories
+  * FindClang.cmake: Add 10 to the allowed versions
+  * Disable CSS images workaround for Qt WebEngine build
+  * Disable extra context menu in Documentation tool view
+  * Fix flickering when loading documentation
+  * [Standard Documentation View] Set the correct mime type for job
+    replies
+  * Breakpoint icon: add 32 px sized breakpoint icon (also pixel-
+    align SVG)
+  * IADM: take C++ standard from build system manager into account
+    (kde#417903)
+  * Clear selection when updating cursor position (kde#415644)
+  * Don't crash when we fail to find a screen for the active
+    tooltip (kde#417151)
+  * Kdev-clang: don't skip unexposed declarations from different
+    files (kde#402066)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:13:46 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints disk 4GB PowerPC to avoid build failure ppc64
