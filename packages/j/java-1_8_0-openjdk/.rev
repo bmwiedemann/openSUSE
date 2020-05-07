@@ -570,4 +570,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>796256</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>22524dc7bd3ba1f13d3f1d2658630484</srcmd5>
+    <version>1.8.0.252</version>
+    <time>1588866543</time>
+    <user>dimstar_suse</user>
+    <comment>April 2020 CPU</comment>
+    <requestid>800009</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May  5 07:49:33 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 68.8.0
+  * Account Manager fixes and improvements
+  * https://www.thunderbird.net/en-US/thunderbird/68.8.0/releasenotes
+  MFSA 2020-18 (bsc#1171186)
+  * CVE-2020-12397 (bmo#1617370)
+    Sender Email Address Spoofing using encoded Unicode characters
+  * CVE-2020-12387 (bmo#1545345)
+    Use-after-free during worker shutdown
+  * CVE-2020-6831 (bmo#1632241)
+    Buffer overflow in SCTP chunk input validation
+  * CVE-2020-12392 (bmo#1614468)
+    Arbitrary local file access with 'Copy as cURL'
+  * CVE-2020-12393 (bmo#1615471)
+    Devtools' 'Copy as cURL' feature did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2020-12395 (bmo#1595886, bmo#1611482, bmo#1614704, bmo#1624098,
+    bmo#1625749, bmo#1626382, bmo#1628076, bmo#1631508)
+    Memory safety bugs fixed in Thunderbird 68.8.0
+- removed obsolete patch mozilla-bmo1580963.patch
+
+-------------------------------------------------------------------
+Tue May  5 07:00:36 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add mozilla-bmo1580963.patch to fix build with rust 1.43
+  (bmo#1580963)
+
+-------------------------------------------------------------------
 Thu Apr  9 17:27:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 68.7.0
@@ -15,7 +44,7 @@ Thu Apr  9 17:27:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   * Calendar: Cancelled events didn't show with a line-through
   * Various security fixes
   MFSA 2020-14
-  In general, these flaws cannot be exploited through email in 
+  In general, these flaws cannot be exploited through email in
   Thunderbird because scripting is disabled when reading mail, but
   are potentially risks in browser or browser-like contexts.
   * CVE-2020-6819 (bmo#1620818, bsc#1168630)

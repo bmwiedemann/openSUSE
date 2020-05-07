@@ -355,11 +355,19 @@ products:
     - x86_64
   - kubic-kube-apiserver-image:
     - x86_64
+  - kubic-kube-apiserver-minus1-image:
+    - x86_64
   - kubic-kube-controller-manager-image:
+    - x86_64
+  - kubic-kube-controller-manager-minus1-image:
     - x86_64
   - kubic-kube-proxy-image:
     - x86_64
+  - kubic-kube-proxy-minus1-image:
+    - x86_64
   - kubic-kube-scheduler-image:
+    - x86_64
+  - kubic-kube-scheduler-minus1-image:
     - x86_64
   - kubic-kured-image:
     - x86_64
@@ -489,9 +497,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20200506'
-published: '20200504'
-publishing: '20200504'
+    <value>failed: ''
+published: '20200506'
+publishing: '20200506'
 testing: '20200506'
 </value>
   </attribute>

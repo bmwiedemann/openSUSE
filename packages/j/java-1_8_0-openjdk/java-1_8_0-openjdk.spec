@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.15.0
+%global icedtea_version 3.16.0
 %global icedtea_sound_version 1.0.1
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,8 +32,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       242
-%global buildver        08
+%global updatever       252
+%global buildver        09
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -248,7 +248,7 @@ Provides:       jre1.8.x
 %if %{with bootstrap}
 BuildRequires:  java-devel >= 1.7
 BuildConflicts: java-devel >= 1.9
-buildConflicts: java-devel-openj9
+BuildConflicts: java-devel-openj9
 %else
 BuildRequires:  %{name}-devel
 %endif
@@ -784,7 +784,7 @@ fi
 
 %post headless
 ext=.gz
-update-alternatives --force \
+update-alternatives \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
   --slave %{_jvmjardir}/jre jre_exports %{_jvmjardir}/%{jrelnk} \

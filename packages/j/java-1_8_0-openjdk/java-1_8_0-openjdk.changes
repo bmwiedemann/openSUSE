@@ -1,4 +1,333 @@
 -------------------------------------------------------------------
+Mon May  4 08:01:35 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u252 (icedtea 3.16.0) (April 2020 CPU,
+  bsc#1169511)
+  * Security fixes
+    + JDK-8223898, CVE-2020-2754: Forward references to Nashorn
+    + JDK-8223904, CVE-2020-2755: Improve Nashorn matching
+    + JDK-8224541, CVE-2020-2756: Better mapping of serial ENUMs
+    + JDK-8224549, CVE-2020-2757: Less Blocking Array Queues
+    + JDK-8225603: Enhancement for big integers
+    + JDK-8227542: Manifest improved jar headers
+    + JDK-8231415, CVE-2020-2773: Better signatures in XML
+    + JDK-8233250: Better X11 rendering
+    + JDK-8233410: Better Build Scripting
+    + JDK-8234027: Better JCEKS key support
+    + JDK-8234408, CVE-2020-2781: Improve TLS session handling
+    + JDK-8234825, CVE-2020-2800: Better Headings for HTTP Servers
+    + JDK-8234841, CVE-2020-2803: Enhance buffering of byte buffers
+    + JDK-8235274, CVE-2020-2805: Enhance typing of methods
+    + JDK-8236201, CVE-2020-2830: Better Scanner conversions
+    + JDK-8238960: linux-i586 builds are inconsistent as the newly
+      build jdk is not able to reserve enough space for object heap
+  * Import of OpenJDK 8 u252 build 01
+    + JDK-8028480: (zipfs) NoSuchFileException on creating a file
+      in ZipFileSystem with CREATE and WRITE
+    + JDK-8031191: Warning exception when XMLSignature logging is
+      enabled
+    + JDK-8034773: (zipfs) newOutputstream uses CREATE_NEW when no
+      options specified
+    + JDK-8038431: Close InputStream when finished retrieving XML
+      Signature HTTP References
+    + JDK-8041620: Solaris Studio 12.4 C++ 5.13 change in behavior
+      for placing friend declarations within surrounding scope.
+    + JDK-8046044: Fix raw and unchecked lint warnings in XML
+      Signature Impl
+    + JDK-8056313: TEST_BUG: java/util/Timer/NameConstructors.java
+      fails intermittently
+    + JDK-8144732: VM_HeapDumper hits assert with bad dump_len
+    + JDK-8150432: LocaleProviders.sh fails
+    + JDK-8150460: (linux|bsd|aix)_close.c: file descriptor table
+      may become large or may not work at all
+    + JDK-8216354: Syntax error in toolchain_windows.m4
+    + JDK-8218553: Enhance keystore load debug output
+    + JDK-8218580: endpoint identification algorithm should be
+      case-insensitive
+    + JDK-8227397: Add --with-extra-asflags configure option
+    + JDK-8227662: freetype seeks to index at the end of the font
+      data
+    + JDK-8231201: hs_err should print coalesced safepoint
+      operations in Events section
+    + JDK-8231991: Mouse wheel change focus on awt/swing windows
+    + JDK-8232003: (fs) Files.write can leak file descriptor in the
+      exception case
+    + JDK-8232154: Update Mesa 3-D Headers to version 19.2.1
+    + JDK-8232355: Two obsolete flags have the wrong obsolete
+      version in 8u
+    + JDK-8233023: assert(Opcode() == mem->Opcode() ||
+      phase->C->get_alias_index(adr_type()) == Compile::AliasIdxRaw)
+      failed: no mismatched stores, except on raw memory
+    + JDK-8233404: System property to set the number of PBE
+      iterations in JCEKS keystores
+    + JDK-8234107: Several AWT modal dialog tests failing on Linux
+      after JDK-8231991
+    + JDK-8234264: Incorrect 8047434 JDK 8 backport in 8219677
+    + JDK-8234288: Turkey Time Zone returns incorrect time zone name
+    + JDK-8235637: jhsdb jmap from OpenJDK 11.0.5 doesn't work if
+      prelink is enabled
+    + JDK-8236873: Worker has a deadlock bug
+    + JDK-8237523: 8u backport of JDK-8216354 didn't include
+      generated-configure.sh changes
+  * Import of OpenJDK 8 u252 build 02
+    + JDK-7143743: Potential memory leak with zip provider
+    + JDK-8033215: clang: node.cpp:284 IDX_INIT macro use
+      uninitialized field _out
+    + JDK-8143849: Integrate Marlin renderer per JEP 265
+    + JDK-8146792: Predicate moved after partial peel may lead to
+      broken graph
+    + JDK-8193255: Root Certificates should be stored in text
+      format and assembled at build time
+    + JDK-8233995: java.vm.vendor (and potentially other
+      properties/fields) not correctly set in Windows/Hotspot build
+      of OpenJDK8
+    + JDK-8235142: JDK-8193255 backport broke bootstrap with JDK 10
+  * Import of OpenJDK 8 u252 build 03
+    + JDK-8005819: Support cross-realm MSSFU
+    + JDK-8046724: XML Signature ECKeyValue elements cannot be
+      marshalled or unmarshalled
+    + JDK-8079140: IgnoreAllErrorHandler should use doPrivileged
+      when it reads system properties
+    + JDK-8134579: [TESTBUG] Some bmi tests fail if
+      can_access_local_variables is on.
+    + JDK-8145055: Marlin renderer causes unaligned write accesses
+    + JDK-8145849: ALPN: getHandshakeApplicationProtocol() always
+      return null
+    + JDK-8146293: Add support for RSASSA-PSS Signature algorithm
+    + JDK-8158978: ALPN not working when values are set directly on
+      a SSLServerSocket
+    + JDK-8162723: Array index overflow in Base64 utility class
+    + JDK-8170282: Enable ALPN parameters to be supplied during the
+      TLS handshake
+    + JDK-8171443: (spec) An ALPN callback function may also ignore
+      ALPN
+    + JDK-8175029: StackOverflowError in X509CRL and
+      X509Certificate.verify(PublicKey, Provider)
+    + JDK-8200400: Restrict Sasl mechanisms
+    + JDK-8205445: Add RSASSA-PSS Signature support to SunMSCAPI
+    + JDK-8205720: KeyFactory#getKeySpec and translateKey throws
+      NullPointerException with Invalid key
+    + JDK-8206171: Signature#getParameters for RSASSA-PSS throws
+      ProviderException when not initialized
+    + JDK-8213009: Refactoring existing SunMSCAPI classes
+    + JDK-8213010: Supporting keys created with certmgr.exe
+    + JDK-8214096: sun.security.util.SignatureUtil passes null
+      parameter, so JCE validation fails
+    + JDK-8215694: keytool cannot generate RSASSA-PSS certificates
+    + JDK-8216039: TLS with BC and RSASSA-PSS breaks
+      ECDHServerKeyExchange
+    + JDK-8221407: Windows 32bit build error in
+      libsunmscapi/security.cpp
+    + JDK-8223003: SunMSCAPI keys are not cleaned up
+    + JDK-8223063: Support CNG RSA keys
+    + JDK-8223158: Docked MacBook cannot start any Java Swing
+      applications
+    + JDK-8225180: SignedObject with invalid Key not throwing the
+      InvalidKeyException in Windows
+    + JDK-8225392: Comparison builds are failing due to cacerts file
+    + JDK-8225745: NoSuchAlgorithmException exception for
+      SHA256withECDSA with RSASSA-PSS support
+    + JDK-8229767: Typo in java.security: Sasl.createClient and
+      Sasl.createServer
+    + JDK-8230977: JEP 244/8051498 - TLS Application-Layer Protocol
+      Negotiation Extension (Java SE 8)
+    + JDK-8230978: Add support for RSASSA-PSS Signature algorithm
+      (Java SE 8)
+    + JDK-8234245: sun/security/lib/cacerts/VerifyCACerts.java
+      fails due to wrong checksum
+    + JDK-8236470: Deal with ECDSA using ecdsa-with-SHA2 plus hash
+      algorithm as AlgorithmId
+    + JDK-8238502: sunmscapi.dll causing EXCEPTION_ACCESS_VIOLATION
+  * Import of OpenJDK 8 u252 build 04
+    + JDK-8047212:
+      runtime/ParallelClassLoading/bootstrap/random/inner-complex
+      assert(ObjectSynchronizer::verify_objmon_isinpool(inf))
+      failed: monitor is invalid
+    + JDK-8135318: CMS wrong max_eden_size for
+      check_gc_overhead_limit
+    + JDK-8144445: Maximum size checking in Marlin ArrayCache
+      utility methods is not optimal
+    + JDK-8144446: Automate the Marlin crash test
+    + JDK-8144630: Use PrivilegedAction to create Thread in Marlin
+      RendererStats
+    + JDK-8215756: Memory leaks in the AWT on macOS
+    + JDK-8219244: NMT: Change ThreadSafepointState's allocation
+      type from mtInternal to mtThread
+    + JDK-8225128: Add exception for expiring DocuSign root to
+      VerifyCACerts test
+    + JDK-8229345: Memory leak due to vtable stubs not being shared
+      on SPARC
+    + JDK-8229872: (fs) Increase buffer size used with getmntent
+    + JDK-8236179: C1 register allocation error with T_ADDRESS
+    + JDK-8237368: Problem with NullPointerException in RMI
+      TCPEndpoint.read
+  * Import of OpenJDK 8 u252 build 05
+    + JDK-8022263: use same Clang warnings on BSD as on Linux
+    + JDK-8055283: Expand ResourceHashtable with C_HEAP allocation,
+      removal and some unit tests
+    + JDK-8068184: Fix for JDK-8032832 caused a deadlock
+    + JDK-8079693: Add support for ECDSA P-384 and P-521 curves to
+      XML Signature
+    + JDK-8132130: some docs cleanup
+    + JDK-8144526: Remove Marlin logging use of deleted internal API
+    + JDK-8144654: Improve Marlin logging
+    + JDK-8144718: Pisces / Marlin Strokers may generate invalid
+      curves with huge coordinates and round joins
+    + JDK-8166976: TestCipherPBECons has wrong @run line
+    + JDK-8167409: Invalid value passed to critical JNI function
+    + JDK-8181872: C1: possible overflow when strength reducing
+      integer multiply by constant
+    + JDK-8187078: -XX:+VerifyOops finds numerous problems when
+      running JPRT
+    + JDK-8191227: issues with unsafe handle resolution
+    + JDK-8216472: (se) Stack overflow during selection operation
+      leads to crash (win)
+    + JDK-8229022: BufferedReader performance can be improved by
+      using StringBuilder
+    + JDK-8231430: C2: Memory stomp in max_array_length() for
+      T_ILLEGAL type
+    + JDK-8235904: Infinite loop when rendering huge lines
+  * Import of OpenJDK 8 u252 build 06
+    + JDK-8225130: Add exception for expiring Comodo roots to
+      VerifyCACerts test
+    + JDK-8230235: Rendering HTML with empty img attribute and
+      documentBaseKey cause Exception
+    + JDK-8235744: PIT:
+      test/jdk/javax/swing/text/html/TestJLabelWithHTMLText.java
+      times out in linux-x64
+    + JDK-8240521: Revert backport of 8231584: Deadlock with
+      ClassLoader.findLibrary and System.loadLibrary call
+  * Import of OpenJDK 8 u252 build 07
+    + JDK-8197441: Signature#initSign/initVerify for an invalid
+      private/public key fails with ClassCastException for SunPKCS11
+      provider
+  * Import of OpenJDK 8 u252 build 08
+    + JDK-8241296: Segfault in JNIHandleBlock::oops_do()
+    + JDK-8241307: Marlin renderer should not be the default in
+      8u252
+  * Import of OpenJDK 8 u252 build 09
+    + JDK-8204152: SignedObject throws NullPointerException for
+      null keys with an initialized Signature object
+    + JDK-8219597: (bf) Heap buffer state changes could provoke
+      unexpected exceptions
+  * Backports
+    + JDK-8035949, PR3784: Remove unused macro USE_SELECT and clean
+      up Unix version of net_util_md.{c,h}
+    + JDK-8167481, PR3784: cleanup of headers and includes for
+      native libnet
+    + JDK-8195607, PR3776:
+      sun/security/pkcs11/Secmod/TestNssDbSqlite.java failed with
+      "NSS initialization failed" on NSS 3.34.1
+  * Bug fixes
+    + PR3786: Use 'JDK-' as prefix for bugs from the OpenJDK bug
+      tracker
+  * Shenandoah
+    + AArch64: Fix LRB use in LIRGenerator::do_UnsafeGetAndSetObject
+    + [backport] 8221751: Shenandoah: Improve SATB enqueueing
+    + [backport] 8221848: Shenandoah: ArrayCopy post-barrier
+      improvements
+    + [backport] 8222766: Shenandoah: streamline post-LRB CAS
+      barrier (x86)
+    + [backport] 8223951: Shenandoah: Only need to update thread
+      roots during final update refs
+    + [backport] 8224179: Shenandoah: CTW test failures with
+      traversal GC
+    + [backport] 8224495: Shenandoah: Do not rescan code roots in
+      final mark pause if it is not degenerated GC
+    + [backport] 8224508: Shenandoah: Need to update thread roots
+      in final mark for piggyback ref update cycle
+    + [backport] 8224525: Shenandoah: Eliminate shenandoah
+      verifier's side-effects
+    + [backport] 8225171: Remove leftovers in
+      shenandoahBarrierSetC1.cpp
+    + [backport] 8225341: Shenandoah: CM::update_thread_roots()
+      needs to handle derived pointers
+    + [backport] 8226586: Shenandoah: No need to pre-evacuate roots
+      for degenerated GC
+    + [backport] 8227327: Shenandoah: Faster and more parallel tests
+    + [backport] 8227676: Shenandoah: More consistent naming of LRB
+      entry points
+    + [backport] 8228364: Shenandoah: Remove unused code from
+      ShenandoahBarrierSetC1
+    + [backport] 8229865: Use explicit #include debug.hpp for
+      STATIC_ASSERT in gc/shenandoah/shenandoahUtils.cpp
+    + [backport] 8229919: Support JNI Critical functions in object
+      pinning API on x86_32 platforms
+    + [backport] 8231086: Shenandoah: Stronger invariant for
+      object-arraycopy
+    + [backport] 8231293: Shenandoah: Traversal should not revive
+      dead weak roots
+    + [backport] 8231410: Shenandoah: clone barrier should use base
+      pointer
+    + [backport] 8231447: Shenandoah: Compilation-time regression
+      after JDK-8231086
+    + [backport] 8231499: Shenandoah:
+      compiler/arraycopy/TestDefaultMethodArrayCloneDeoptC2 fails
+    + [backport] 8232205: Shenandoah: missing "Update References"
+      -> "Update Roots" tracing
+    + [backport] 8232778: Shenandoah: SBSA::arraycopy_prologue
+      checks wrong register
+    + [backport] 8232908: Shenandoah: compact heuristics has
+      incorrect trigger "Free is lower than allocated recently"
+    + [backport] 8233387: Shenandoah: passive mode should disable
+      pacing ergonomically
+    + [backport] 8233520: Shenandoah: do not sleep when thread is
+      attaching
+    + [backport] 8233850: Shenandoah: Shenandoah thread count
+      ergonomics should be container aware
+    + [backport] 8234232: [TESTBUG]
+      gc/shenandoah/jvmti/TestHeapDump.java fails with -Xcomp
+    + [backport] 8235636:
+      gc/shenandoah/compiler/TestUnsafeOffheapSwap.java fails after
+      JDK-8226411
+    + [backport] 8235729: Shenandoah: Remove useless casting to
+      non-constant
+    + [backport] 8236106: [TESTBUG] Shenandoah: Make
+      TestThreadFailure more resilient
+    + [backport] 8236181: C2: Remove useless step_over_gc_barrier()
+      in int->bool conversion
+    + [backport] 8236732: Shenandoah: Stricter placement for
+      oom-evac scopes
+    + [backport] 8236851: Shenandoah: More details in Traversal GC
+      event messages
+    + [backport] 8237007: Shenandoah: assert(_base == Tuple)
+      failure during C2 compilation
+    + [backport] 8237038: Shenandoah: Reduce thread pool size in
+      TestEvilSyncBug.java test
+    + [backport] 8237570: Shenandoah: cleanup uses of
+      allocation/free threshold in static heuristics
+    + [backport] 8237586: Shenandoah: provide option to disable
+      periodic GC
+    + [backport] 8239868: Shenandoah: ditch C2 node limit
+      adjustments
+    + [backport] 8239904: Shenandoah: accumulated penalties should
+      not be over 100% of capacity
+    + [backport] 8240069: Shenandoah: turn more flags diagnostic
+    + [backport] 8240070: Shenandoah: remove obsolete
+      ShenandoahCommonGCStateLoads
+    + [backport] 8240076: Shenandoah: pacer should cover reset and
+      preclean phases
+    + [backport] 8240215: Shenandoah: remove
+      ShenandoahAllocationTrace
+    + [backport] 8240216: Shenandoah: remove
+      ShenandoahTerminationTrace
+    + [backport] 8240217: Shenandoah: remove ShenandoahEvacAssist
+    + [backport] 8240534: Shenandoah: ditch debug safepoint timeout
+adjustment
+    + Fix LRB use in LIRGenerator::do_UnsafeGetAndSetObject
+    + Fix tier2_gc_shenandoah group definition
+    + Rectify JDK-8191227 workaround for Shenandoah
+    + Revert leftover changes in type.{cpp|hpp}
+    + JDK-8233500: Shenandoah: Shenandoah load barrier should save
+      registers before calling keep alive barrier on x86
+  * AArch64 port
+    + JDK-8224851, PR3785: AArch64: fix warnings and errors with
+      Clang and GCC 8.3
+  * AArch32 port
+    + JDK-8240219: CPU specific port of 8229345: Memory leak due to
+      vtable stubs not being shared on SPARC
+
+-------------------------------------------------------------------
 Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - The pack200 and unpack200 alternatives should be slaves of java

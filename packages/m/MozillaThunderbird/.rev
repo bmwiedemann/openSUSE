@@ -3173,4 +3173,35 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     <comment></comment>
     <requestid>793242</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>c6add08517b15d49ac9b9e9b752aed8f</srcmd5>
+    <version>68.8.0</version>
+    <time>1588866685</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 68.8.0
+  * Account Manager fixes and improvements
+  * https://www.thunderbird.net/en-US/thunderbird/68.8.0/releasenotes
+  MFSA 2020-18 (bsc#1171186)
+  * CVE-2020-12397 (bmo#1617370)
+    Sender Email Address Spoofing using encoded Unicode characters
+  * CVE-2020-12387 (bmo#1545345)
+    Use-after-free during worker shutdown
+  * CVE-2020-6831 (bmo#1632241)
+    Buffer overflow in SCTP chunk input validation
+  * CVE-2020-12392 (bmo#1614468)
+    Arbitrary local file access with 'Copy as cURL'
+  * CVE-2020-12393 (bmo#1615471)
+    Devtools' 'Copy as cURL' feature did not fully escape
+    website-controlled data, potentially leading to command injection
+  * CVE-2020-12395 (bmo#1595886, bmo#1611482, bmo#1614704, bmo#1624098,
+    bmo#1625749, bmo#1626382, bmo#1628076, bmo#1631508)
+    Memory safety bugs fixed in Thunderbird 68.8.0
+- removed obsolete patch mozilla-bmo1580963.patch
+
+- Add mozilla-bmo1580963.patch to fix build with rust 1.43
+  (bmo#1580963)
+
+  In general, these flaws cannot be exploited through email in</comment>
+    <requestid>800587</requestid>
+  </revision>
 </revisionlist>
