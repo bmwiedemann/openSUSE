@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  7 06:46:03 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to port to Python 3:
+  * Check-only-for-Python-3-for-erml2pdf.py.patch
+  * Switch-erml2pdf.py-to-Python-3.patch
+- Switch python2 package requirements to python3
+
+-------------------------------------------------------------------
 Sat Dec 14 21:11:02 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to stable release 0.90

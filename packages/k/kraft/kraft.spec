@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Office/Other
 
-%bcond_with akonadi
+%bcond_without akonadi
 
 %bcond_with qpdfview
 
@@ -35,13 +35,16 @@ Source0:        kraft-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         Check-only-for-Python-3-for-erml2pdf.py.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Switch-erml2pdf.py-to-Python-3.patch
 
-# Continue to use python2 for now.
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       python2-PyPDF2
-Requires:       python2-reportlab
-Requires:       python2-six
-Requires:       python2-xml
+Requires:       python3-base
+Requires:       python3-PyPDF2
+Requires:       python3-reportlab
+Requires:       python3-six
 
 %if %{with akonadi}
 BuildRequires:  akonadi-contact-devel
@@ -76,6 +79,8 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
 
 %build
 
