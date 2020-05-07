@@ -9,6 +9,9 @@ fi
 BUILD_DATA="${BUILD_DIST/.dist/.data}"
 . "${BUILD_DATA}"
 
+# The build script renames the recipe (to strip _service:foo:), but doesn't update .data
+RECIPEFILE="${RECIPEFILE##*:}"
+
 if [ "${RECIPEFILE##*.}" != "kiwi" ]; then
 	echo "Recipe is not a kiwi file - exiting"
 	exit 0
