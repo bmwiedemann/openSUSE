@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * disable automatic cookie injection (kde#419646)
+  * Don't leak DrKonqi dialog / fix crash on wayland
+  * Remove too strict Qt/KF5 deprecation rule
+  * be a bit more verbose on protocol exceptions
+  * Avoid creating subwindow on internal page widget (kde#418755,kde#420035)
+  * fix line rating for new format when function name is missing
+  * further constrict line parsing of .so files
+
+-------------------------------------------------------------------
 Tue Mar 31 15:16:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.4.1:
