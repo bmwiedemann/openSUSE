@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  6 07:53:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- update to 81.0.4044.138 bsc#1171247:
+  * CVE-2020-6831: Stack buffer overflow in SCTP
+  * CVE-2020-6464: Type Confusion in Blink.
+
+-------------------------------------------------------------------
+Tue May  5 07:39:22 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add icu-v67.patch from upstream to fix build with icu v67 
+
+-------------------------------------------------------------------
 Wed Apr 29 06:53:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 81.0.4044.129 (boo#1170707):

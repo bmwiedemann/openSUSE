@@ -2912,4 +2912,16 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-6462: Use after free in task scheduling (forwarded request 798873 from AndreasStieger)</comment>
     <requestid>798898</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>0eb2c01d7b06c433daf19bbbc9e4182c</srcmd5>
+    <version>81.0.4044.138</version>
+    <time>1588856801</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 81.0.4044.138 bsc#1171247:
+  * CVE-2020-6831: Stack buffer overflow in SCTP
+  * CVE-2020-6464: Type Confusion in Blink.
+
+- Add icu-v67.patch from upstream to fix build with icu v67</comment>
+    <requestid>800599</requestid>
+  </revision>
 </revisionlist>

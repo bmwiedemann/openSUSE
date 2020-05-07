@@ -57,7 +57,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        81.0.4044.129
+Version:        81.0.4044.138
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -95,6 +95,7 @@ Patch20:        fix-vaapi-with-glx.patch
 Patch21:        chromium-80.0.3987.87-missing-string-header.patch
 Patch22:        chromium-80.0.3987.106-missing-cstddef-header.patch
 Patch23:        chromium-80.0.3987.87-missing-cstdint-header.patch
+Patch24:        icu-v67.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
