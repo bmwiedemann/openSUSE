@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 04 09:10:14 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.61.g0fe0e854:
+  * Fix test in lsinitrd (https://progress.opensuse.org/issues/65334)
+
+-------------------------------------------------------------------
 Fri Apr 17 16:23:41 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.60.ged08acac:
