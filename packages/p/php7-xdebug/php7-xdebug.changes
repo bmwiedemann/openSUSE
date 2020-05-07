@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 08:02:00 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to Xdebug 2.9.5
+  * Fixed issue #1772: Crash with exception thrown inside a destructor
+  * Fixed issue #1775: Segfault when another extension compiles a PHP file during RINIT
+  * Fixed issue #1779: Nested multi-line built-in function in namespace are not covered
+
+-------------------------------------------------------------------
 Tue Apr 14 13:16:37 UTC 2020 - munix9@googlemail.com
 
 - Updated to Xdebug 2.9.4
