@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed May  6 15:38:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  Changes:
+  * Integrated nxapi_plumbing and pyIOSXR into NAPALM.
+  * [NXOS] If the command returns a null value then
+    json.loads(None) throws an exception.
+  * [NXOS] For Vlan interfaces nxos driver, the state is not
+    correctly defined (related to json output).
+  * [IOS] Return empty dictionary if BGP not running.
+  * Fix Nornir + NAPALM threading issue.
+  * [IOS, NXOS] get-vlans() getter implementation.
+  * [IOS] Fix traceroute output parsing in ios.
+  * [NXOS] firmware less than 7 does not support json in cli
+  * Updated support for TwoGigabit & TwentyFiveGig interfaces
+    to canonical_map.py
+  * [NXOS]: Prevent nxos.get_interfaces_ip from failing if no
+    ipv6 support.
+  * [Junos] Added auto_probe optional argument.
+  * [NXOS] Fix exception when trying to get environmental data
+    from certain Nexus devices.
+  * [IOS] Fix fix vrf detection when no vrf is defined.
+  * [IOS-XR} No silent pass of errors in base.helpers & logging.
+  * [IOS-XR] Add support for XML namespace prefixes in find_txt.
+  * [NXOS] Fix get_vlans() method where no interfaces in VLAN.
+  * [IOS] Added ``force_no_enable` optional argument.
+  * [NXOS] Use Kickstart version to determine NXOS version.
+  * [NXOS] Add nxos_ssh support for force_no_enable.
+  * [EOS] Fix #1153: Strip double quotation on LLDP remote port.
+  * [IOS] Fix typo in the traceoute method.
+  * add a few less used canonical mappings.
+  * [IOS] Fix show interfaces summary for 10/40/100 Gig Interfaces
+  * [IOS] Update to handle Cisco ISR mac address table with
+    multiple EHWIC modules installed.
+  * [Junos] Add support for configure private in Junos.
+  * add range for validate.
+  * [IOS] Fix get_bgp_neighbors_detail IOS-XE.
+  * [EOS] Cast upDownTime BGP neighbor field to float.
+  * All the core platforms: Filter unneeded header configuration
+    lines get_config.
+  * [Junos] SRX cluster devices stack RPC replies under
+    multi-routing-engine-results.
+  * All the core platforms: Implement get_config sanitized.
+- Drop (Build)Requres for
+  * python-nxapi-plumbing
+  * python-pyIOSXR
+  since both are now included in napalm
+
+
+-------------------------------------------------------------------
 Mon Mar 30 11:49:54 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.5.0

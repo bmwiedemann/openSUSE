@@ -17,10 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# nothing provides python2-netmiko
 %define skip_python2 1
 Name:           python-napalm
-Version:        2.5.0
+Version:        3.0.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
@@ -38,10 +37,9 @@ Requires:       python-future
 Requires:       python-junos-eznc >= 2.2.1
 Requires:       python-netaddr
 Requires:       python-netmiko >= 2.4.2
-Requires:       python-nxapi-plumbing >= 0.5.2
 Requires:       python-paramiko >= 2.4.2
-Requires:       python-pyIOSXR >= 0.53
 Requires:       python-pyeapi >= 0.8.2
+Requires:       python-requests >= 2.7.0
 Requires:       python-scp
 Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
@@ -57,11 +55,10 @@ BuildRequires:  %{python_module junos-eznc >= 2.2.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module netmiko >= 2.4.2}
-BuildRequires:  %{python_module nxapi-plumbing >= 0.5.2}
 BuildRequires:  %{python_module paramiko >= 2.4.2}
-BuildRequires:  %{python_module pyIOSXR >= 0.53}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module scp}
 BuildRequires:  %{python_module selectors2 >= 2.0.1}
 BuildRequires:  %{python_module setuptools >= 38.4.0}
