@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May  5 08:44:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tmux 3.1b:
+  * Fix crash when allow-rename ison and an empty name is set
+
+-------------------------------------------------------------------
+Thu Apr 30 07:31:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tmux 3.1a:
+  * Do not close stdout prematurely in control mode since it is
+    needed to print exit messages. Prevents hanging when detaching
+   with iTerm2
+- includes changes between 3.1-rc1 and 3.1:
+  * Only search the visible part of the history when marking
+    (highlighting) search terms. This is much faster than searching
+    the whole history and solves problems with large histories. The
+    count of matches shown is now the visible matches rather than
+    all matches
+  * Search using regular expressions in copy mode. search-forward
+    and search-backward use regular expressions by default; the
+    incremental versions do not
+  * Turn off mouse mode 1003 as well as the rest when exiting
+  * Add selection_active format for when the selection is present
+    but not moving with the cursor
+  * Fix dragging with modifier keys, so binding keys such as
+    C-MouseDrag1Pane and C-MouseDragEnd1Pane now work
+  * Add -a to list-keys to also list keys without notes with -N
+  * Do not jump to next word end if already on a word end when
+    selecting a word; fixes select-word with single character words
+    and vi(1) keys
+  * Fix top and bottom pane calculation with pane border status
+    enabled
+
+-------------------------------------------------------------------
 Tue Feb  4 12:04:31 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to v3.1-rc
