@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 10:51:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Let the distro decide if it wants to disable python2 bindings
+  (bcond_without python2). Enabled by default, unless overwritten
+  by the builder.
+
+-------------------------------------------------------------------
 Tue Mar 17 09:48:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix building with py2 directly only

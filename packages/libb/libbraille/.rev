@@ -112,4 +112,14 @@
 - Convert to pkgconf style dependencies (forwarded request 785862 from scarabeus_iv)</comment>
     <requestid>785865</requestid>
   </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>afa97cba3c47d039d372ec8001aa9c3e</srcmd5>
+    <version>0.19.0</version>
+    <time>1588856784</time>
+    <user>dimstar_suse</user>
+    <comment>- Let the distro decide if it wants to disable python2 bindings
+  (bcond_without python2). Enabled by default, unless overwritten
+  by the builder. (forwarded request 800329 from dimstar)</comment>
+    <requestid>800330</requestid>
+  </revision>
 </revisionlist>

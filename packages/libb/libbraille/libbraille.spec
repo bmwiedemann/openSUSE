@@ -16,6 +16,9 @@
 #
 
 
+# Python2 is  EOL; let the distro decide if they will want to build py2 support. TW does not
+%bcond_without python2
+
 Name:           libbraille
 Version:        0.19.0
 Release:        0
@@ -32,7 +35,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+%if %{with python2}
 BuildRequires:  pkgconfig(python2)
+%endif
 
 %description
 Libbraille is a computer shared library which makes it possible to
@@ -91,7 +96,10 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
   --enable-hidden-symbols \
   --enable-fake \
   --enable-usb \
-  --enable-python
+%if %{with python2}
+  --enable-python \
+%endif
+  %nil
 %make_build
 
 %install
@@ -115,9 +123,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files fake
 %{_libdir}/libbraille/fake-0.so.*
 
+%if %{with python2}
 %files -n python2-braille
 %{python2_sitearch}/_braille.so*
 %{python2_sitelib}/braille.py*
+%endif
 
 %files devel
 %{_includedir}/*.h
