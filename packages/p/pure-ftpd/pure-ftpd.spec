@@ -17,7 +17,7 @@
 
 
 Name:           pure-ftpd
-Version:        1.0.47
+Version:        1.0.49
 Release:        0
 Summary:        A Lightweight, Fast, and Secure FTP Server
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ Patch0:         %{name}-1.0.20_config.patch
 Patch1:         %{name}-1.0.20_doc.patch
 # PATCH-FEATURE-OPENSUSE %{name}-1.0.20_virtualhosts.patch -- Custom VHOST_PATH on openSUSE.
 Patch2:         %{name}-1.0.20_virtualhosts.patch
-Patch5:         %{name}-1.0.20_ftpwho_path.patch
+Patch5:         %{name}-1.0.49_ftpwho_path.patch
 # PATCH-FIX-UPSTREAM %{name}-1.0.32-default_tcp_sedrcv_buffer_size.patch
 Patch7:         %{name}-1.0.32-default_tcp_sedrcv_buffer_size.patch
 # PATCH-FIX-OPENSUSE: bnc#789833
@@ -82,7 +82,7 @@ Apache log files, and more.
 
 %build
 #CFLAGS="%{optflags} -DLDAP_DEPRECATED -fstack-protector -fvisibility=hidden"
-%configure \
+%configure --docdir=%{_docdir}/%{name} \
 	--with-rfc2640 \
 	--sysconfdir=%{_sysconfdir}/%{name} \
 	--with-ldap \
@@ -106,7 +106,8 @@ Apache log files, and more.
 	--with-tls \
 	--with-boring \
 	--with-peruserlimits \
-	--with-virtualchroot
+	--with-virtualchroot \
+	--with-extauth
 make %{?_smp_mflags}
 
 %install
@@ -125,6 +126,10 @@ install -D -m 0644 usr.sbin.pure-ftpd %{buildroot}%{_sysconfdir}/apparmor/profil
 install -D -m0644 %{SOURCE8} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}
 
+rm %{buildroot}/%{_docdir}/%{name}/README.MacOS-X
+rm %{buildroot}/%{_docdir}/%{name}/pureftpd.schema
+rm %{buildroot}/%{_docdir}/%{name}/pure-ftpd.conf
+
 %pre
 %service_add_pre %{name}.service
 
@@ -142,9 +147,11 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS CONTACT NEWS THANKS README
+%doc FAQ AUTHORS NEWS THANKS README
 %doc README.Configuration-File HISTORY README.Virtual-Users README.AppArmor
-%doc README.LDAP pureftpd-ldap.conf README.MySQL README.PGSQL README.TLS
+%doc README.LDAP pureftpd-ldap.conf README.MySQL pureftpd-mysql.conf 
+%doc README.PGSQL pureftpd-pgsql.conf README.TLS
+%doc README.Donations README.Authentication-Modules
 %{_mandir}/man8/*
 %{_bindir}/*
 %{_sbindir}/*

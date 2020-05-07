@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 08:51:02 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update to version 1.0.49.
+  * Refresh pure-ftpd-1.0.20_ftpwho_path.patch to
+    pure-ftpd-1.0.49_ftpwho_path.patch.
+
+-------------------------------------------------------------------
 Tue Mar 17 01:03:27 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap version >= 15.2
