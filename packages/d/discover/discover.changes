@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * flatpak: Don't issue commands when cancelled (kde#404622)
+- Drop patches, now upstream:
+  * 0001-Make-it-compile-against-qt5.15.-SkipEmptyParts-is-pa.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 12:26:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build against Qt 5.15:
+  * 0001-Make-it-compile-against-qt5.15.-SkipEmptyParts-is-pa.patch
+
+-------------------------------------------------------------------
 Fri Apr 10 07:58:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add missing kdeclarative-components runtime dependency (boo#1169153)
