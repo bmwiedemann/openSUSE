@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  5 03:18:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.022
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.022 2020-05-04 17:40:36+02:00
+  
+      - Emitter: Also quote if string starts with '...'
+      - Emitter: Fix bug when emitting complex keys
+      - Preserve also quoting style of hash keys
+      - Schema: Fix YAML 1.1 integers (no keading zeros)
+      - Scripts: Rename yamlpp5- to yamlpp- and symlink
+      - Scripts: Add options to yamlpp-load-dump
+      - Tests: Support reporting flow style in testsuite event output
+      - Tests: Restructure schema tests and outsource test data
+      - Events: Make version_directive compatible to libyaml
+      - Docs: Restructure
+  
+
+-------------------------------------------------------------------
 Fri Feb 28 03:14:57 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.021
