@@ -1,7 +1,7 @@
 #
 # spec file for package iw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           iw
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Configuration utility for nl80211 based wireless drivers
 License:        ISC
 Group:          Hardware/Wifi
-Url:            https://wireless.wiki.kernel.org/en/users/documentation/iw
+URL:            https://wireless.wiki.kernel.org/en/users/documentation/iw
 Source:         https://kernel.org/pub/software/network/iw/iw-%{version}.tar.xz
 Source2:        https://kernel.org/pub/software/network/iw/iw-%{version}.tar.sign
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnl-3.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 iw is a nl80211 based CLI configuration utility for wireless devices. It
@@ -40,15 +39,15 @@ recently.
 %build
 # FIXME: -fno-strict-aliasing seems to be obsolete, but upstream Makefile requires it.
 # Either it is really obsolete or there is a hidden aliasing use.
-make %{?_smp_mflags} CFLAGS="%{optflags} $(pkg-config --cflags libnl-3.0) -DCONFIG_LIBNL30 -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration" V=1
+%make_build CFLAGS="%{optflags} $(pkg-config --cflags libnl-3.0) -DCONFIG_LIBNL30 -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration"
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING README
+%license COPYING
+%doc README
 %{_sbindir}/iw
-%{_mandir}/man8/iw.8%{ext_man}
+%{_mandir}/man8/iw.8%{?ext_man}
 
 %changelog

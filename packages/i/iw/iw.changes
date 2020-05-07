@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 15 06:45:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.4:
+  * iw: generate command list at build time
+  * iw: scan: fix double-free in error paths
+  * iw: Fix typo in iw --help
+  * iw: Print current time in station info dump
+  * iw: Support associated-at station statistic.
+  * update nl80211.h
+
+-------------------------------------------------------------------
 Mon Aug 12 14:42:54 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
 
 - Update to version 5.3
