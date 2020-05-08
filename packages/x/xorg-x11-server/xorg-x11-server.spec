@@ -175,7 +175,7 @@ Provides:       xf86-video-modesetting = %{version}
 Obsoletes:      xf86-video-modesetting < %{version}
 Obsoletes:      xf86-video-modesetting < 7.6_%{version}
 
-%if (0%{?suse_version} >= 1500 && ! 0%{?is_opensuse})
+%if 0%{?suse_version} >= 1500
 Provides:       xf86-video-ast
 Obsoletes:      xf86-video-ast
 Provides:       xf86-video-cirrus

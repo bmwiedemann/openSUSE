@@ -3405,4 +3405,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - supersedes u_fno-common.patch</comment>
     <requestid>789725</requestid>
   </revision>
+  <revision rev="381" vrev="2">
+    <srcmd5>aaae017f71add25e72b326c42ab0fbf3</srcmd5>
+    <version>1.20.8+0</version>
+    <time>1588971843</time>
+    <user>dimstar_suse</user>
+    <comment>- provide/obsoletes cirrus and ast usermode driver also on openSUSE
+  (jsc#SLE-12127)</comment>
+    <requestid>800858</requestid>
+  </revision>
 </revisionlist>
