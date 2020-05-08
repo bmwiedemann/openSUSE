@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 11:21:07 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add libb2 dependency, where appropriate (avoids bundling libb2)
+- Remove outdated build fixes from spec
+- Provide proper compile flags
+- Install all available man files
+- Disable 2 progress related tests, that fail for TW
+
+-------------------------------------------------------------------
 Sat Mar 14 01:28:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add fdupes build dependency

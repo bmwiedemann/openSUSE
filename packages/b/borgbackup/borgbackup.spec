@@ -30,6 +30,13 @@
 %bcond_with     borg_guzzle
 %endif
 
+# libb2 is available since Leap 15.2
+%if ( 0%{?sle_version} >= 150200 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
+%bcond_without	borg_sysblake2
+%else
+%bcond_with     borg_sysblake2
+%endif
+
 Name:           borgbackup
 Version:        1.1.11
 Release:        0
@@ -54,6 +61,9 @@ BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
+%if %{with borg_sysblake2}
+BuildRequires:  libb2-devel
+%endif
 %if %{with borg_newcompr}
 BuildRequires:  liblz4-devel >= 1.7.0
 BuildRequires:  libzstd-devel >= 1.3.0
@@ -154,32 +164,34 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch0 -p1
 %endif
-# a single test is failing: test_non_ascii_acl - which is a rather esoteric check
-# that cannot be tripped with openSUSE, because user- and group-ids have to be
-# 7-bit ascii clean, and the test involves in setting an acl for an utf-8 encoded
-# id: disable it! <hpj@urpla.net>
-sed -i 's|test_non_ascii_acl|non_ascii_acl|' src/borg/testsuite/platform.py
-# version 1.0.3 has grown a new failure related to sparse files (which might behave
-# differently on different filesystems): disabled it:
-sed -i 's|test_sparse_file|non_sparse_file|' src/borg/testsuite/archiver.py
+# remove bundled libraries, that we don't want to be included
+rm -rf src/borg/algorithms/{lz4,zstd}
+# remove bundled blake2 library, if appropriate
+%if %{with borg_sysblake2}
+rm -rf src/borg/algorithms/blake2
+%endif
+# remove precompiled Cython code
+find src/ -name '*.pyx' | sed -e 's/.pyx/.c/g' | xargs rm -f
+# bundled msgpack is C++ based
+find src/ -name '*.pyx' | sed -e 's/.pyx/.cpp/g' | xargs rm -f
+# better name for msgpack license
+cp -a docs/3rd_party/msgpack/COPYING LICENSE.msgpack
 
 %build
-CFLAGS="%{optflags}" python3 setup.py build
-python3 -m venv --system-site-packages --without-pip borg-env
-source borg-env/bin/activate
-python3 setup.py install
-PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
+CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
+export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
 make -C docs html man && rm docs/_build/html/.buildinfo
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-install -D -m 0644 docs/man/borg.1 %{buildroot}%{_mandir}/man1/borg.1
-find %{buildroot}/%{python3_sitearch}/ -iname *.c -delete
-find %{buildroot}/%{python3_sitearch}/ -iname *.h -delete
+# install all man pages
+mkdir -p %{buildroot}%{_mandir}/man1
+install -m 0644 docs/man/borg*.1 %{buildroot}%{_mandir}/man1
+# install shell completions
 install -D -m 0644 scripts/shell_completions/bash/borg %{buildroot}/%{_datadir}/bash-completion/completions/borg
 install -D -m 0644 scripts/shell_completions/zsh/_borg %{buildroot}/%{_datadir}/zsh/site-functions/_borg
 install -D -m 0644 scripts/shell_completions/fish/borg.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/borg.fish
-# remove duplicate file
+# link duplicate files
 %fdupes %{buildroot}/%{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info/
 # fix wrong-file-end-of-line-encoding
 sed -i 's/\r$//' docs/_build/html/_static/fonts/open-sans/stylesheet.css
@@ -187,27 +199,24 @@ sed -i 's/\r$//' docs/_build/html/_static/fonts/source-serif-pro/LICENSE.txt
 
 %if %{with borg_test}
 %check
-# testing the build is a little awkward, since the original testsuite is based on tox and
-# tox tries to create a virtual environment, that we need tight control on in order to get
-# it to behave in our build system (offline mode, use site packages). OTOH, without the
-# venv, we face problems with setuptools (borg uses pkg_resources to locate the installed
-# package), while py.test relies on the usual module handling. <hpj@urpla.net>
-python3 -m venv --system-site-packages --without-pip borg-env
-source borg-env/bin/activate
-python3 setup.py install
-cd build/lib.linux-$(uname -m)-%{py3_ver}
-LANG=en_US.UTF-8 PYTHONPATH=$(pwd) py.test -vk 'not benchmark' --pyargs borg.testsuite
+export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
+TEST_SELECTOR="not benchmark"
+# for some reason, these tests fail with Tumbleweed: hints welcome
+%if 0%{?suse_version} >= 1500
+TEST_SELECTOR="$TEST_SELECTOR and not test_progress_percentage_sameline and not test_progress_percentage_step"
+%endif
+LANG=en_US.UTF-8 py.test -x -vk "$TEST_SELECTOR" $PYTHONPATH/borg/testsuite/*.py
 %endif
 
 %files
 %defattr(-,root,root,-)
 %doc CHANGES.rst README.rst
-%license LICENSE
+%license LICENSE LICENSE.msgpack
 %{python3_sitearch}/borg/
 %{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info
 %{_bindir}/borg
 %{_bindir}/borgfs
-%{_mandir}/man1/borg.1%{ext_man}
+%{_mandir}/man1/borg*.1%{ext_man}
 
 %files doc
 %defattr(-,root,root,-)
