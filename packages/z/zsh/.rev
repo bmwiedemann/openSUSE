@@ -909,4 +909,12 @@
   regress</comment>
     <requestid>794119</requestid>
   </revision>
+  <revision rev="93" vrev="5">
+    <srcmd5>78098ab430e048079a00fed58a88abab</srcmd5>
+    <version>5.8</version>
+    <time>1588971658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800536</requestid>
+  </revision>
 </revisionlist>
