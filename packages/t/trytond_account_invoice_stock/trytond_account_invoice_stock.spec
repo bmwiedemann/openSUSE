@@ -20,7 +20,7 @@
 %define majorver 5.0
 
 Name:           trytond_account_invoice_stock
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "account_invoice_stock" module for the Tryton ERP system
 License:        GPL-3.0-only
