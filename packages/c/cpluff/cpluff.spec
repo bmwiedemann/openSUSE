@@ -1,7 +1,7 @@
 #
 # spec file for package cpluff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 0
 
 Name:           cpluff
-Version:        0.1.4.20190105T165320.c163d19
+Version:        0.2.0
 Release:        0
 Summary:        A plug-in framework for C
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/jlehtine/c-pluff
+URL:            https://github.com/jlehtine/c-pluff
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         cpluff.patch
 BuildRequires:  gcc-c++
@@ -32,7 +32,6 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(expat)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 C-Pluff is a plug-in framework for C programs. It has been strongly inspired by
@@ -82,7 +81,7 @@ developing applications that use lib%{name}xx.
 	--enable-cpluffxx \
 	--disable-nls \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
