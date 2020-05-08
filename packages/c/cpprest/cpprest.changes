@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 08:15:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.10.16:
+  * Various c++11 fixes
+  * Cmake buildsystem improvements
+
+-------------------------------------------------------------------
 Mon Aug  5 19:24:16 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.10.14:

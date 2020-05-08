@@ -1,7 +1,7 @@
 #
 # spec file for package cpprest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 2
 %define minor 10
 Name:           cpprest
-Version:        2.10.14
+Version:        2.10.16
 Release:        0
 Summary:        C++ REST library
 # main: MIT (license.txt)
@@ -29,12 +29,12 @@ Summary:        C++ REST library
 # common/md5.hpp: Zlib (ThirdPartyNotices.txt)
 # utf8_validation.hpp: MIT (ThirdPartyNotices.txt)
 License:        MIT AND BSD-3-Clause AND Zlib
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/Microsoft/cpprestsdk
 Source:         https://github.com/Microsoft/cpprestsdk/archive/v%{version}/cpprestsdk-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel >= 1.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libssl) >= 1.0
 BuildRequires:  pkgconfig(websocketpp) >= 0.8
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1325
@@ -57,7 +57,6 @@ Also known as Casablanca.
 
 %package -n libcpprest%{major}_%{minor}
 Summary:        C++ Rest library
-Group:          System/Libraries
 
 %description -n libcpprest%{major}_%{minor}
 The C++ REST SDK is a Microsoft project for cloud-based client-server
@@ -66,7 +65,6 @@ project aims to help C++ developers connect to and interact with services.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libcpprest%{major}_%{minor} = %{version}
 
 %description devel
@@ -81,22 +79,12 @@ Development files.
 
 %build
 %cmake \
-	-DCMAKE_BUILD_TYPE=Release \
-%ifarch ppc ppc64 ppc64le aarch64 %{arm}
-	-DCMAKE_CXX_FLAGS:STRING="%{optflags} -Wno-deprecated-copy -Wno-redundant-move -Wno-error=attributes -Wno-error=type-limits -Wno-error=cast-align -Wno-error=deprecated-declarations" \
-%else
-	-DCMAKE_CXX_FLAGS:STRING="%{optflags} -Wno-deprecated-copy -Wno-redundant-move" \
-%endif
-	../Release
-make %{?_smp_mflags}
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWERROR=OFF
+%cmake_build
 
 %install
-mkdir -p %{buildroot}%{_includedir}
-cp -r Release/include/* %{buildroot}%{_includedir}/
-install -d -m 755 %{buildroot}%{_libdir}
-chmod -x %{buildroot}%{_includedir}/cpprest/oauth1.h
-cp build/Binaries/libcpprest.so.%{major}.%{minor} %{buildroot}%{_libdir}/
-ln -sf libcpprest.so.%{major}.%{minor} %{buildroot}%{_libdir}/libcpprest.so
+%cmake_install
 
 # create a pkgconfig file
 install -d %{buildroot}%{_libdir}/pkgconfig
@@ -114,6 +102,15 @@ Libs: -L%{_libdir} -lcpprest
 Cflags: -I%{_includedir}/cpprest -I%{_includedir}/pplx
 EOF
 
+%check
+# websocketsclient_test -> authentication_tests - online tests
+# httpclient_test -> follows_retrieval_redirect - online test
+# do not use macro so we can exclude tests
+pushd build
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+ctest --output-on-failure --force-new-ctest-process %{_smp_mflags} -E '(httpclient_test|websocketsclient_test)'
+popd
+
 %post -n libcpprest%{major}_%{minor} -p /sbin/ldconfig
 %postun -n libcpprest%{major}_%{minor} -p /sbin/ldconfig
 
@@ -129,6 +126,7 @@ EOF
 %{_includedir}/%{name}
 %{_includedir}/pplx
 %{_libdir}/libcpprest.so
+%{_libdir}/cmake/*
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
