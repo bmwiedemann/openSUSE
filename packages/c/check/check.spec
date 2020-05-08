@@ -1,7 +1,7 @@
 #
 # spec file for package check
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libcheck0
 Name:           check
-Version:        0.12.0
+Version:        0.14.0
 Release:        0
 Summary:        Unit Test Framework for C
 License:        LGPL-2.1-or-later

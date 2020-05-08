@@ -262,4 +262,20 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 583625 from dimstar)</comment>
     <requestid>584786</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>28486b243e80cdd72112af4e122df9f2</srcmd5>
+    <version>0.14.0</version>
+    <time>1588971827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Add support for FetchContent in CMake
+  * Rename CMake project from 'check' to 'Check'
+  * Fix for checking for wrong tool when building docs in Autotools
+  * Fix compiler warning with printf format
+  * missing &amp;lt;unistd.h&amp;gt; in some files
+  * Various documentation improvements
+  * END_TEST is now optional, as how START_TEST works has been redone
+  * Various CMake related changes (forwarded request 800363 from polslinux)</comment>
+    <requestid>800801</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  5 12:33:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.14.0:
+  * Add support for FetchContent in CMake
+  * Rename CMake project from 'check' to 'Check'
+  * Fix for checking for wrong tool when building docs in Autotools
+  * Fix compiler warning with printf format
+  * missing <unistd.h> in some files
+  * Various documentation improvements
+  * END_TEST is now optional, as how START_TEST works has been redone
+  * Various CMake related changes
+
+-------------------------------------------------------------------
 Wed Feb 28 16:24:09 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
