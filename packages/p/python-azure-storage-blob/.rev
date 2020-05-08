@@ -40,4 +40,12 @@
 - Update %description from README.md (forwarded request 767759 from glaubitz)</comment>
     <requestid>767847</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1e3b26b4215798500577b2e50c21bf6</srcmd5>
+    <version>12.3.1</version>
+    <time>1588971960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801201</requestid>
+  </revision>
 </revisionlist>

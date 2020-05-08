@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-storage-blob
-Version:        12.1.0
+Version:        12.3.1
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.1.0
+Requires:       python-azure-core >= 1.4.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-common < 3.0.0
 Requires:       python-azure-storage-common >= 2.1.0
@@ -80,7 +80,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/storage/blob
 %{python_sitelib}/azure_storage_blob-*.egg-info
