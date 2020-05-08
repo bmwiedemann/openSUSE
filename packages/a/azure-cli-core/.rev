@@ -103,4 +103,12 @@
     <comment>- Update Azure CLI to latest version</comment>
     <requestid>791835</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d36f29e96cd0bad99a44424f1def149</srcmd5>
+    <version>2.5.1</version>
+    <time>1588971984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801209</requestid>
+  </revision>
 </revisionlist>
