@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:26:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.04.18
+  * smake: A new option -a has been added. This option allows to
+    tell smake not to set up the automake specific make macros
+    MAKE_ARCH, MAKE_OS and similar.
+
+-------------------------------------------------------------------
 Sat Mar 28 11:03:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.03.27

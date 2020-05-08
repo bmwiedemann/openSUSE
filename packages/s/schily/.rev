@@ -262,4 +262,12 @@
   * Support for reproducible .iso builds</comment>
     <requestid>789350</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>a0fbd1028001322e8c8e17747d7b9eea</srcmd5>
+    <version>unknown</version>
+    <time>1588971753</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>800636</requestid>
+  </revision>
 </revisionlist>
