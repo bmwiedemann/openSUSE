@@ -1,0 +1,142 @@
+diff -Nur gambas-3.14.3/gb.pdf/configure.ac new/gb.pdf/configure.ac
+--- gambas-3.14.3/gb.pdf/configure.ac	2020-01-18 00:33:39.000000000 +0100
++++ new/gb.pdf/configure.ac	2020-05-06 13:56:20.995300129 +0200
+@@ -29,6 +29,10 @@
+   AC_DEFINE_UNQUOTED(POPPLER_VERSION_0_76, $((1-$?)), Poppler version >= 0.76)
+   pkg-config --atleast-version=0.83.0 poppler
+   AC_DEFINE_UNQUOTED(POPPLER_VERSION_0_83, $((1-$?)), Poppler version >= 0.83)
++  pkg-config --atleast-version=0.85.0 poppler
++  AC_DEFINE_UNQUOTED(POPPLER_VERSION_0_85, $((1-$?)), Poppler version >= 0.85)
++  pkg-config --atleast-version=0.86.0 poppler
++  AC_DEFINE_UNQUOTED(POPPLER_VERSION_0_86, $((1-$?)), Poppler version >= 0.86)
+ fi
+ 
+ AC_OUTPUT( \
+diff -Nur gambas-3.14.3/gb.pdf/src/CPdfDocument.cpp new/gb.pdf/src/CPdfDocument.cpp
+--- gambas-3.14.3/gb.pdf/src/CPdfDocument.cpp	2020-01-18 00:33:39.000000000 +0100
++++ new/gb.pdf/src/CPdfDocument.cpp	2020-05-06 13:56:20.995300129 +0200
+@@ -104,12 +104,14 @@
+ 
+ static void return_unicode_string(const Unicode *unicode, int len)
+ {
+-	static UnicodeMap *uMap = NULL;
+-	
+ 	GooString gstr;
+ 	char buf[8]; /* 8 is enough for mapping an unicode char to a string */
+ 	int i, n;
+ 
++#if POPPLER_VERSION_0_85
++	const UnicodeMap *uMap = globalParams->getUtf8Map();
++#else
++	static UnicodeMap *uMap = NULL;
+ 	if (uMap == NULL) 
+ 	{
+ 		GooString *enc = new GooString("UTF-8");
+@@ -117,6 +119,7 @@
+ 		uMap->incRefCnt();
+ 		delete enc;
+ 	}
++#endif
+ 		
+ 	for (i = 0; i < len; ++i) {
+ 		n = uMap->mapUnicode(unicode[i], buf, sizeof(buf));
+@@ -252,7 +255,9 @@
+ 		{
+ 			name = ((LinkGoTo*)act)->getNamedDest();
+ 			if (name) {
+-			#if POPPLER_VERSION_0_64
++			#if POPPLER_VERSION_0_86
++				dest = THIS->doc->findDest(name).get();
++			#elif POPPLER_VERSION_0_64
+ 				dest = THIS->doc->findDest(name);
+ 			#else
+ 				dest = THIS->doc->findDest((GooString *) name);
+@@ -301,9 +306,12 @@
+ 
+ static char* aux_get_target_from_action(const_LinkAction *act)
+ {
+-	char *vl=NULL;
+-	char *uni=NULL;	
+-	const_GooString *tmp=NULL;
++	char *vl = NULL;
++	char *uni = NULL;	
++	const_GooString *tmp = NULL;
++#if POPPLER_VERSION_0_86
++	GooString gstr;
++#endif
+ 
+ 	switch (act->getKind())
+ 	{
+@@ -314,13 +322,31 @@
+ 			tmp=((LinkLaunch*)act)->getFileName(); break;
+ 
+ 		case actionURI:
+-			tmp=((LinkURI*)act)->getURI(); break;
++#if POPPLER_VERSION_0_86
++			gstr = GooString(((LinkURI*)act)->getURI());
++			tmp = &gstr;
++#else
++			tmp = ((LinkURI*)act)->getURI(); 
++#endif
++			break;
+ 			
+ 		case actionNamed:
+-			tmp=((LinkNamed*)act)->getName(); break;
++#if POPPLER_VERSION_0_86
++			gstr = GooString(((LinkNamed*)act)->getName());
++			tmp = &gstr;
++#else
++			tmp = ((LinkNamed*)act)->getName(); 
++#endif
++			break;
+ 
+ 		case actionMovie:
+-			tmp=((LinkMovie*)act)->getAnnotTitle(); break;
++#if POPPLER_VERSION_0_86
++			gstr = GooString(((LinkMovie*)act)->getAnnotTitle());
++			tmp = &gstr;
++#else
++			tmp = ((LinkMovie*)act)->getAnnotTitle();
++#endif
++			break;
+ 
+ 		default:
+ 			break;
+diff -Nur gambas-3.14.3/gb.pdf/src/CPdfDocument.h new/gb.pdf/src/CPdfDocument.h
+--- gambas-3.14.3/gb.pdf/src/CPdfDocument.h	2020-01-18 00:33:39.000000000 +0100
++++ new/gb.pdf/src/CPdfDocument.h	2020-05-06 13:56:20.995300129 +0200
+@@ -38,21 +38,21 @@
+ #include <stdint.h>
+ 
+ #if POPPLER_VERSION_0_76
+-#define const_LinkAction const LinkAction
+-#define const_LinkDest const LinkDest
+-#define const_GooList const std::vector<OutlineItem*>
+-#define GooList std::vector<OutlineItem*>
+-#define const_GooString const GooString
++	#define const_LinkAction const LinkAction
++	#define const_LinkDest const LinkDest
++	#define const_GooList const std::vector<OutlineItem*>
++	#define GooList std::vector<OutlineItem*>
++	#define const_GooString const GooString
+ #elif POPPLER_VERSION_0_64
+-#define const_LinkAction const LinkAction
+-#define const_LinkDest const LinkDest
+-#define const_GooList const GooList
+-#define const_GooString const GooString
++	#define const_LinkAction const LinkAction
++	#define const_LinkDest const LinkDest
++	#define const_GooList const GooList
++	#define const_GooString const GooString
+ #else
+-#define const_LinkAction LinkAction
+-#define const_LinkDest LinkDest
+-#define const_GooList GooList
+-#define const_GooString GooString
++	#define const_LinkAction LinkAction
++	#define const_LinkDest LinkDest
++	#define const_GooList GooList
++	#define const_GooString GooString
+ #endif
+ 
+ #ifndef __CPDFDOCUMENT_C

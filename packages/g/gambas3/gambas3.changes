@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 12:44:52 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Added gambas3-3.14.3-fix_build_with_poppler-0.88.patch.
+  This patch fixes the build problems with newer poppler version.
+  poppler 0.85: https://gitlab.com/gambas/gambas/commit/6a16e02e
+  poppler 0.86: https://gitlab.com/gambas/gambas/commit/bdb58016
+
+-------------------------------------------------------------------
 Mon Mar 16 07:11:13 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap >= 15.2

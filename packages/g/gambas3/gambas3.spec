@@ -51,6 +51,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         gambas3-mime_translation.patch
 # PATCH-FIX-OPENSUSE llvm.patch avvissu@yandex.ru -- Change the location for an header files
 Patch1:         gambas3-3.12.2-llvm.patch
+# PATCH-FIX-UPSTREAM poppler-0.88 building fix
+Patch2:         gambas3-3.14.3-fix_build_with_poppler-0.88.patch 
 BuildRequires:  SDL_image
 BuildRequires:  aalib-devel
 BuildRequires:  atk-devel
