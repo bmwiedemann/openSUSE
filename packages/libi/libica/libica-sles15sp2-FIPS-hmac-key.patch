@@ -1,0 +1,12 @@
+--- libica-3.6.0/src/fips.c	2020-05-04 17:01:23.238805001 -0400
++++ libica-3.6.0/src/fips.c	2020-05-04 16:58:51.352241763 -0400
+@@ -45,8 +45,7 @@
+  * libica.so.MAJOR.hmac in the same directory as the .so module.
+  */
+ static const char hmackey[] =
+-	"0000000000000000000000000000000000000000000000000000000000000000"
+-	"0000000000000000000000000000000000000000000000000000000000000000";
++	"orboDeJITITejsirpADONivirpUkvarP";
+ 
+ int fips;
+ 

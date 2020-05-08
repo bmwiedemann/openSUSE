@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018, 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018-2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,15 @@ Source5:        z90crypt.service
 Source6:        baselibs.conf
 Source7:        %{name}-rpmlintrc
 Patch1:         libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
+Patch2:         libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
+Patch3:         libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
+Patch4:         libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
+Patch5:         libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+Patch6:         libica-sles15sp2-FIPS-hmac-key.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -115,8 +122,10 @@ cp %{SOURCE1} include/linux/
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
   --enable-fips
-make %{?_smp_mflags} clean
-make %{?_smp_mflags}
+%make_build clean
+%make_build
+
+%{expand:%%global __os_install_post {%__os_install_post fipshmac %{buildroot}/%{_libdir}/*.so.?.*  }}
 
 %install
 %make_install
@@ -134,7 +143,7 @@ rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
 
 %check
-make check
+%make_build check
 
 %pre tools
 %service_add_pre z90crypt.service
@@ -155,6 +164,7 @@ make check
 %files -n libica3
 %defattr(-,root,root)
 %{_libdir}/libica.so.3*
+%{_libdir}/.libica.so.3*hmac
 
 %files tools
 %license LICENSE

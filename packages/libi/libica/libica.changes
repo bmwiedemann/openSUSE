@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May  7 18:01:31 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for FIPS certification (bsc#1162533)
+  * libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+  * libica-sles15sp2-FIPS-hmac-key.patch
+- Added a BuildRequires for the fipscheck package.
+- Made a couple of changes to the spec file based upon recommendations
+  by spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Apr  8 18:55:24 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for FIPS certification.
+  * libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
+    (bsc#1166071) Although a DES key has only 56 effective bits,
+     all 64 bits must be considered, because the parity bits are
+     spread over all 8 bytes of the key.
+  * libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
+    (bsc#1166210) FIPS tests require the output iv to be the iv
+    resulting from decrypting the last block with a zero iv as input.
+  * libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
+    (bsc#1166224) The output from icainfo never shows 'yes' for
+    RSA ME, RSA CRT, ECDH, ECDSA sign, ECDSA verify, and ECKGEN,
+    due to the missing ICA_FLAG_SW flag in the icaList.
+
+-------------------------------------------------------------------
 Thu Nov 14 22:45:16 UTC 2019 - Mark Post <mpost@suse.com>
 
 - Added libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
