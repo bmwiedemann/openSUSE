@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        1.1.0+git.20200430.e8d954e
+Version:        1.2.0+git.20200507.7cf63b5
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ BuildRequires:  llvm9-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  python3-Pebble
+BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest4
 BuildRequires:  unifdef
 Requires:       astyle
@@ -74,6 +75,7 @@ pytest .
 %files
 %license COPYING
 %{_bindir}/cvise
+%{_bindir}/cvise-delta
 %dir %{_libexecdir}/cvise
 %{_libexecdir}/cvise/clex
 %{_libexecdir}/cvise/clang_delta

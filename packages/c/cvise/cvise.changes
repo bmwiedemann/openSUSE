@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu May 07 12:55:11 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200507.7cf63b5:
+  * Fix cvise --version - unknown git version.
+
+-------------------------------------------------------------------
+Thu May 07 12:46:39 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200507.9fa4330:
+  * Fix argument parsing of cvise-delta.
+  * Remove unused files in .gitattributes.
+
+-------------------------------------------------------------------
+Thu May 07 12:00:44 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200507.c12db9c:
+  * Bump to 1.2.0.
+
+-------------------------------------------------------------------
+Thu May 07 11:53:06 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.1.0+git.20200507.b467807:
+  * Update cvise-delta documentation entry.
+  * Add cvise-delta.
+  * Add delta.json group file.
+  * Fix different argument name error.
+  * Fix crash when we reach enf of reduction.
+  * Add clang_delta piggybacking test.
+  * Skip git hash for cvise --version of a release build.
+  * Do not re-count instances  for clangbinarysearch passes.
+  * Start using psutil and improve CPU count detection.
+  * Remove 2 lit leftovers.
+  * Change timing-related options.
+  * Update CREDUCE_MERGE.
+  * Port to python tests.
+  * correctly remove unused deleted/defaulted functions
+  * Update copyright years.
+  * Port to Python tests.
+  * handle namespace declared by macros
+  * Port to Python tests.
+  * added several tests for remove-namespace pass
+  * Add CREDUCE_MERGE with last picked git revision.
+  * Update INSTALL documentation.
+  * Document usage of podman.
+  * Add License.txt for delta.
+  * cmake: Do not fail on missing pebble
+  * Support DESTDIR env variable in run-time.
+
+-------------------------------------------------------------------
 Thu Apr 30 12:53:41 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.1.0+git.20200430.e8d954e:
