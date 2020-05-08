@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 11:30:46 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Fri May 31 12:30:46 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Add metainfo (fate#319035)
