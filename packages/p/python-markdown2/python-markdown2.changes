@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  7 14:35:38 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Add patch to fix unsanitized input for cross-site scripting (boo#1171379)
+  0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch
+- Add patch to fix faling unit test
+  0002-Fixed-code-highlighting-unit-tests.patch
+   
+-------------------------------------------------------------------
 Wed Jul 24 08:02:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.3.8:

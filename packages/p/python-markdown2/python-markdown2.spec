@@ -1,7 +1,7 @@
 #
 # spec file for package python-markdown2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trentm/python-markdown2
 Source:         https://files.pythonhosted.org/packages/source/m/markdown2/markdown2-%{version}.tar.gz
+Patch0:         0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch
+Patch1:         0002-Fixed-code-highlighting-unit-tests.patch
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,6 +46,8 @@ header-ids.
 
 %prep
 %setup -q -n markdown2-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
