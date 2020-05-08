@@ -17,7 +17,7 @@
 
 
 Name:           palaura
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A dictionary with word definitions
 License:        GPL-3.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(granite) >= 0.5
+BuildRequires:  pkgconfig(granite) >= 5.1.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)

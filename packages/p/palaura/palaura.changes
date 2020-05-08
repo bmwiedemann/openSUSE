@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:35:52 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.2:
+  * Merge pull request #47 from binotaliu/bugfix/text-category
+  * fix text category parse
+  * Merge pull request #46 from ryonakano/use-gtk-application
+  * Use Gtk.Application instead of deprecated Granite.Application
+
+-------------------------------------------------------------------
 Wed Feb 19 19:09:15 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.1:

@@ -63,4 +63,12 @@
     <comment>- Update to new release (forwarded request 777758 from awissu)</comment>
     <requestid>777760</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>82f3d2b2e1c7dc1a7b33dd2deff78972</srcmd5>
+    <version>1.2.2</version>
+    <time>1588972029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>801368</requestid>
+  </revision>
 </revisionlist>
