@@ -20,14 +20,10 @@ Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Version:        8.0
+Version:        9.0
 Release:        0
 Url:            http://www.virt-manager.org
 Source:         https://virt-manager.org/download/sources/virt-viewer/%name-%version.tar.gz
-Patch1:         c2dabf07-Fix-a-regression-when-initial-connection-fails.patch
-Patch2:         a13173ae-remote-viewer-fix-free-on-dangling-pointer.patch
-Patch3:         a724dff8-remote-viewer-add-handler-for-SIGINT-signal.patch
-Patch4:         e4bacb8f-remote-viewer-add-a-default-extension-to-screenshot-filenames.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
@@ -55,10 +51,6 @@ the display, and libvirt for looking up VNC server details.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %patch50 -p1
 %patch51 -p1
 %patch52 -p1

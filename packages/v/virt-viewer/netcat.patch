@@ -1,8 +1,8 @@
-Index: virt-viewer-8.0/src/virt-viewer-app.c
+Index: virt-viewer-9.0/src/virt-viewer-app.c
 ===================================================================
---- virt-viewer-8.0.orig/src/virt-viewer-app.c
-+++ virt-viewer-8.0/src/virt-viewer-app.c
-@@ -619,7 +619,7 @@ virt_viewer_app_open_tunnel_ssh(const ch
+--- virt-viewer-9.0.orig/src/virt-viewer-app.c
++++ virt-viewer-9.0/src/virt-viewer-app.c
+@@ -739,7 +739,7 @@ virt_viewer_app_open_tunnel_ssh(const ch
      else
          g_string_append_printf(cat, "UNIX-CONNECT:%s", unixsock);
  

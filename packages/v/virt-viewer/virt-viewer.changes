@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  1 11:26:30 MDT 2020 - carnold@suse.com
+
+- Update to 9.0:
+  - Project moved to https://gitlab.com/virt-viewer/virt-viewer
+  - Allow toggling shared clipboard in remote-viewer
+  - Fix handling when initial spice connection fails
+  - Fix check for govirt library
+  - Add bash completion of cli args
+  - Improve errors in file transfer dialog
+  - Fix ovirt foreign menu storage domains query
+  - Prefer TLS certs from oVirt instead of CLI
+  - Improve USB device cleanup when Ctrl-C is used
+  - Remember monitor mappings across restarts
+  - Add a default file extension to screenshots
+  - Updated translations
+  - Fix misc memory leaks
+- Update virtview-desktop.patch
+- Drop
+  c2dabf07-Fix-a-regression-when-initial-connection-fails.patch
+  a13173ae-remote-viewer-fix-free-on-dangling-pointer.patch
+  a724dff8-remote-viewer-add-handler-for-SIGINT-signal.patch
+  e4bacb8f-remote-viewer-add-a-default-extension-to-screenshot-filenames.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 14:06:56 MDT 2020 - carnold@suse.com
 
 - bsc#1166288 - Enable vte in remote-viewer build to support

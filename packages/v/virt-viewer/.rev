@@ -510,4 +510,12 @@
     <comment>A few upstream bug fixes and fix for bsc#1166288 to enable support for multiple spice displays.</comment>
     <requestid>783537</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>8c8c033ccfe5d8ac2588882c0d7a55d4</srcmd5>
+    <version>9.0</version>
+    <time>1588972143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>801848</requestid>
+  </revision>
 </revisionlist>

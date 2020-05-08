@@ -1,11 +1,12 @@
---- virt-viewer-8.0/data/remote-viewer.desktop.in.orig	2019-03-14 08:18:16.590131894 +0100
-+++ virt-viewer-8.0/data/remote-viewer.desktop.in	2019-03-14 08:18:53.738210124 +0100
+Index: virt-viewer-9.0/data/remote-viewer.desktop.in
+===================================================================
+--- virt-viewer-9.0.orig/data/remote-viewer.desktop.in
++++ virt-viewer-9.0/data/remote-viewer.desktop.in
 @@ -1,10 +1,20 @@
  [Desktop Entry]
- _Name=Remote Viewer
--_Comment=Access remote desktops
+ Name=Remote Viewer
 +X-SuSE-translate=true
-+Comment=Access remote desktops
+ Comment=Access remote desktops
 +GenericName=Remote Desktop Client
  Exec=remote-viewer %u
  Type=Application
