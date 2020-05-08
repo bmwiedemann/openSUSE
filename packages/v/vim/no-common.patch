@@ -1,12 +1,11 @@
-Index: vim-8.2.0348/src/globals.h
-===================================================================
---- vim-8.2.0348.orig/src/globals.h
-+++ vim-8.2.0348/src/globals.h
-@@ -1242,7 +1242,7 @@ extern char *Version;
+diff -ru b/src/globals.h a/src/globals.h
+--- b/src/globals.h	2020-05-05 23:32:58.000000000 +0200
++++ a/src/globals.h	2020-05-06 09:40:51.607410538 +0200
+@@ -1264,7 +1264,7 @@
  #if defined(HAVE_DATE_TIME) && defined(VMS) && defined(VAXC)
  extern char longVersion[];
  #else
--EXTERN char *longVersion;
+-EXTERN char *longVersion INIT(= NULL);
 +extern char *longVersion;
  #endif
  

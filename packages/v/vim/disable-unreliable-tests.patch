@@ -1,8 +1,7 @@
-Index: vim-8.2.0348/src/testdir/Make_all.mak
-===================================================================
---- vim-8.2.0348.orig/src/testdir/Make_all.mak
-+++ vim-8.2.0348/src/testdir/Make_all.mak
-@@ -54,7 +54,6 @@ NEW_TESTS = \
+diff -ru a/src/testdir/Make_all.mak b/src/testdir/Make_all.mak
+--- a/src/testdir/Make_all.mak	2020-05-04 23:24:44.000000000 +0200
++++ b/src/testdir/Make_all.mak	2020-05-06 09:31:18.902269152 +0200
+@@ -67,7 +67,6 @@
  	test_autoload \
  	test_backspace_opt \
  	test_backup \
@@ -10,7 +9,7 @@ Index: vim-8.2.0348/src/testdir/Make_all.mak
  	test_balloon_gui \
  	test_behave \
  	test_blob \
-@@ -185,7 +184,6 @@ NEW_TESTS = \
+@@ -200,7 +199,6 @@
  	test_netbeans \
  	test_normal \
  	test_number \
@@ -18,7 +17,7 @@ Index: vim-8.2.0348/src/testdir/Make_all.mak
  	test_packadd \
  	test_partial \
  	test_paste \
-@@ -301,7 +299,6 @@ NEW_TESTS_RES = \
+@@ -316,7 +314,6 @@
  	test_autocmd.res \
  	test_autoload.res \
  	test_backspace_opt.res \
@@ -26,20 +25,19 @@ Index: vim-8.2.0348/src/testdir/Make_all.mak
  	test_balloon_gui.res \
  	test_blob.res \
  	test_blockedit.res \
-Index: vim-8.2.0348/src/testdir/Makefile
-===================================================================
---- vim-8.2.0348.orig/src/testdir/Makefile
-+++ vim-8.2.0348/src/testdir/Makefile
-@@ -36,8 +36,6 @@ SCRIPTS = $(SCRIPTS_ALL) \
+diff -ru a/src/testdir/Makefile b/src/testdir/Makefile
+--- a/src/testdir/Makefile	2020-05-04 23:24:44.000000000 +0200
++++ b/src/testdir/Makefile	2020-05-06 09:30:47.350206433 +0200
+@@ -36,8 +36,6 @@
  # Explicit dependencies.
  test49.out: test49.vim
  
 -test_options.res test_alot.res: opt_test.vim
 -
- SCRIPTS_BENCH = bench_re_freeze.out
+ SCRIPTS_BENCH = test_bench_regexp.res
  
  .SUFFIXES: .in .out .res .vim
-@@ -178,8 +176,5 @@ test_gui_init.res: test_gui_init.vim
+@@ -180,9 +178,6 @@
  	$(RUN_VIMTEST) -u gui_preinit.vim -U gui_init.vim $(NO_PLUGINS) -S runtest.vim $<
  	@rm vimcmd
  
@@ -48,3 +46,4 @@ Index: vim-8.2.0348/src/testdir/Makefile
 -
  test_xxd.res:
  	XXD=$(XXDPROG); export XXD; $(RUN_VIMTEST) $(NO_INITS) -S runtest.vim test_xxd.vim
+ 
