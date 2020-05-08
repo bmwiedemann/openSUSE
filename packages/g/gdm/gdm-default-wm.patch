@@ -1,7 +1,7 @@
-Index: gdm-3.31.91/daemon/gdm-session.c
+Index: gdm-3.36.2/daemon/gdm-session.c
 ===================================================================
---- gdm-3.31.91.orig/daemon/gdm-session.c	2019-02-21 20:44:22.000000000 +0100
-+++ gdm-3.31.91/daemon/gdm-session.c	2019-02-27 07:46:21.417932330 +0100
+--- gdm-3.36.2.orig/daemon/gdm-session.c
++++ gdm-3.36.2/daemon/gdm-session.c
 @@ -43,6 +43,8 @@
  #include <glib-object.h>
  #include <gio/gio.h>

@@ -21,7 +21,7 @@
 %define enable_split_authentication 0
 
 Name:           gdm
-Version:        3.34.1
+Version:        3.36.2
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -65,10 +65,6 @@ Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 Patch14:        gdm-switch-user-tty7.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
-# PATCH-FIX-UPSTREAM gdm-look-for-session-based-on-pid-first.patch bsc#1159950 glgo#GNOME/gdm#526 yfjiang@suse.com -- Look for session based on pid first, then fall back to the uid based approach
-Patch16:        gdm-look-for-session-based-on-pid-first.patch
-# PATCH-FIX-UPSTREAM gdm-Use-pkg-config-for-keyutils.patch -- configure: Use pkg-config to look for keyutils
-Patch17:        gdm-Use-pkg-config-for-keyutils.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -108,6 +104,7 @@ BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
+Requires:       %{_bindir}/dbus-run-session
 Requires:       %{name}-branding = %{version}
 Requires:       gdmflexiserver
 Requires:       gnome-session-core
@@ -226,8 +223,6 @@ cp %{SOURCE8} .
 %endif
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
-%patch17 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}

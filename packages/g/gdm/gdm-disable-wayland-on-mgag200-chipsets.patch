@@ -1,8 +1,8 @@
-Index: gdm-3.34.1/data/61-gdm.rules.in
+Index: gdm-3.36.2/data/61-gdm.rules.in
 ===================================================================
---- gdm-3.34.1.orig/data/61-gdm.rules.in
-+++ gdm-3.34.1/data/61-gdm.rules.in
-@@ -4,3 +4,12 @@ ATTR{vendor}=="0x1013", ATTR{device}=="0
+--- gdm-3.36.2.orig/data/61-gdm.rules.in
++++ gdm-3.36.2/data/61-gdm.rules.in
+@@ -2,3 +2,12 @@
  ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", RUN+="@libexecdir@/gdm-disable-wayland"
  # disable Wayland when using the proprietary nvidia driver
  DRIVER=="nvidia", RUN+="@libexecdir@/gdm-disable-wayland"

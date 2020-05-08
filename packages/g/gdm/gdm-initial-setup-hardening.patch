@@ -1,7 +1,7 @@
-Index: b/daemon/gdm-display.c
+Index: gdm-3.36.2/daemon/gdm-display.c
 ===================================================================
---- a/daemon/gdm-display.c	2019-10-07 16:56:30.000000000 +0800
-+++ b/daemon/gdm-display.c	2019-10-11 18:32:02.962410140 +0800
+--- gdm-3.36.2.orig/daemon/gdm-display.c
++++ gdm-3.36.2/daemon/gdm-display.c
 @@ -1523,12 +1523,12 @@ can_create_environment (const char *sess
          return session_exists;
  }
@@ -27,10 +27,10 @@ Index: b/daemon/gdm-display.c
                  return FALSE;
          }
  
-Index: b/daemon/gdm-manager.c
+Index: gdm-3.36.2/daemon/gdm-manager.c
 ===================================================================
---- a/daemon/gdm-manager.c	2019-10-07 16:56:30.000000000 +0800
-+++ b/daemon/gdm-manager.c	2019-10-11 18:32:26.370601206 +0800
+--- gdm-3.36.2.orig/daemon/gdm-manager.c
++++ gdm-3.36.2/daemon/gdm-manager.c
 @@ -62,7 +62,7 @@
  #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
  

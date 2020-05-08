@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gdm.git</param>
-    <param name="revision">refs/tags/3.34.1</param>
+    <param name="revision">3.36.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="tar" mode="buildtime"/>

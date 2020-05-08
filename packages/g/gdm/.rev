@@ -1723,4 +1723,12 @@
   (jsc#SLE-11856). (forwarded request 797868 from yfjiang)</comment>
     <requestid>798354</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>f0e75ed5d071548e7f508759f37a06d5</srcmd5>
+    <version>3.36.2</version>
+    <time>1588971829</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, now with new Requires. Still maintain that we should let this one wait a day or 2 more (forwarded request 800434 from iznogood)</comment>
+    <requestid>800802</requestid>
+  </revision>
 </revisionlist>

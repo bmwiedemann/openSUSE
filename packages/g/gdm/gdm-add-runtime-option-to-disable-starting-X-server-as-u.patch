@@ -9,10 +9,10 @@ X server will be started under root. The same way as if gdm was built with
 
 This allows system to run X server under root if and only-if necessary.
 ---
-Index: gdm-3.34.1/daemon/gdm-local-display-factory.c
+Index: gdm-3.36.2/daemon/gdm-local-display-factory.c
 ===================================================================
---- gdm-3.34.1.orig/daemon/gdm-local-display-factory.c
-+++ gdm-3.34.1/daemon/gdm-local-display-factory.c
+--- gdm-3.36.2.orig/daemon/gdm-local-display-factory.c
++++ gdm-3.36.2/daemon/gdm-local-display-factory.c
 @@ -231,11 +231,12 @@ gdm_local_display_factory_create_transie
  
          g_debug ("GdmLocalDisplayFactory: Creating transient display");
@@ -48,10 +48,10 @@ Index: gdm-3.34.1/daemon/gdm-local-display-factory.c
                  display = gdm_local_display_new ();
                  if (session_type != NULL) {
                          g_object_set (G_OBJECT (display), "session-type", session_type, NULL);
-Index: gdm-3.34.1/daemon/gdm-session.c
+Index: gdm-3.36.2/daemon/gdm-session.c
 ===================================================================
---- gdm-3.34.1.orig/daemon/gdm-session.c
-+++ gdm-3.34.1/daemon/gdm-session.c
+--- gdm-3.36.2.orig/daemon/gdm-session.c
++++ gdm-3.36.2/daemon/gdm-session.c
 @@ -373,7 +373,11 @@ get_system_session_dirs (GdmSession *sel
  #ifdef ENABLE_WAYLAND_SUPPORT
          if (!self->ignore_wayland) {
@@ -65,7 +65,7 @@ Index: gdm-3.34.1/daemon/gdm-session.c
  
                  for (i = 0; system_data_dirs[i]; i++) {
                          gchar *dir = g_build_filename (system_data_dirs[i], "wayland-sessions", NULL);
-@@ -3315,8 +3319,10 @@ gdm_session_get_display_mode (GdmSession
+@@ -3325,8 +3329,10 @@ gdm_session_get_display_mode (GdmSession
           *   right now.  It will die with an error if logind devices
           *   are paused when handed out.
           */
@@ -78,7 +78,7 @@ Index: gdm-3.34.1/daemon/gdm-session.c
  
  #ifdef ENABLE_WAYLAND_SUPPORT
          /* Wayland sessions are for now assumed to run in a
-@@ -3327,7 +3333,6 @@ gdm_session_get_display_mode (GdmSession
+@@ -3337,7 +3343,6 @@ gdm_session_get_display_mode (GdmSession
          }
  #endif
          return GDM_SESSION_DISPLAY_MODE_REUSE_VT;

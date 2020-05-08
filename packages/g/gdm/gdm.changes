@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  4 20:34:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Fixes for when GDM isn't started on its configured initial VT.
+  + Don't hardcode path to plymouth.
+  + keyutils has a .pc file so use it.
+  + Chrome remote desktop fix.
+  + Always use separate session bus for greeter sessions.
+  + This runs dbus-run-session, so the binary needs to be
+    available.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gdm-look-for-session-based-on-pid-first.patch
+  + gdm-Use-pkg-config-for-keyutils.patch
+- Rebase patches with quilt.
+- Add %{_bindir}/dbus-run-session Requires: New runtime dependency.
+  Needed to ensure the dbus-run-session binary is present.
+
+-------------------------------------------------------------------
 Sun Apr 26 09:42:29 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Burnish gdm-look-for-session-based-on-pid-first.patch according
