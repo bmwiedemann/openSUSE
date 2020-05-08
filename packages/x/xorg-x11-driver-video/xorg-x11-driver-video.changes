@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 14:13:54 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer require vesa X driver on openSUSE either (jsc#SLE-11798) 
+
+-------------------------------------------------------------------
 Thu Aug 31 09:52:45 UTC 2017 - sndirsch@suse.com
 
 - no longer require vesa X driver on sle >= 15; package has been

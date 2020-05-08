@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-driver-video
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Compatibility metapackage for X.Org video drivers
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        README.meta
 Source102:      xorg-confd-snippets.tar.bz2
 # For directory ownership
@@ -34,7 +34,7 @@ Supplements:    xorg-x11-server
 ## and do not require any GPU hardware/emulation
 Requires:       xf86-video-fbdev
 # vesa X driver dropped from sle15
-%if 0%{?suse_version} < 1330 || 0%{?is_opensuse}
+%if 0%{?suse_version} < 1330
 Requires:       xf86-video-vesa
 %endif
 ## End Requires of packages that we split away from xorg-x11-driver-video

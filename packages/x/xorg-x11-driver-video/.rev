@@ -2433,4 +2433,12 @@
   dropped with sle15</comment>
     <requestid>519894</requestid>
   </revision>
+  <revision rev="341" vrev="18">
+    <srcmd5>6eb54d7acae267fea2926751e71984f7</srcmd5>
+    <version>7.6_1</version>
+    <time>1588971840</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require vesa X driver on openSUSE either (jsc#SLE-11798)</comment>
+    <requestid>800856</requestid>
+  </revision>
 </revisionlist>
