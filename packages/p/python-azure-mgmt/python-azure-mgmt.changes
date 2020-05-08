@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May  7 11:07:14 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-kubernetesconfiguration
+  + python-azure-mgmt-redhatopenshift
+  + python-azure-mgmt-storageimportexport
+  + python-azure-mgmt-synapse
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-applicationinsights >= 0.3.0
+  + python-azure-mgmt-batch >= 8.0.0
+  + python-azure-mgmt-containerservice >= 9.0.1
+  + python-azure-mgmt-core >= 1.0.0
+  + python-azure-mgmt-cosmosdb >= 0.14.0
+  + python-azure-mgmt-costmanagement >= 0.2.0
+  + python-azure-mgmt-eventgrid >= 2.2.0
+  + python-azure-mgmt-kubernetesconfiguration >= 0.1.0
+  + python-azure-mgmt-loganalytics >= 0.5.0
+  + python-azure-mgmt-monitor >= 0.9.0
+  + python-azure-mgmt-netapp >= 0.10.0
+  + python-azure-mgmt-network >= 10.1.0
+  + python-azure-mgmt-peering >= 0.2.0
+  + python-azure-mgmt-resource >= 9.0.0
+  + python-azure-mgmt-web >= 0.46.0
+
+-------------------------------------------------------------------
 Tue Apr 14 07:47:51 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires
