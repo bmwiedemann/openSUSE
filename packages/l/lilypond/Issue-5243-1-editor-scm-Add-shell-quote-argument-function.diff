@@ -8,13 +8,13 @@ Issue 5243/1: (editor scm): Add shell-quote-argument function
 This is mostly stolen from Emacs.
 ---
 
-Index: scm/editor.scm
+Index: b/scm/editor.scm
 ===================================================================
---- scm/editor.scm.orig	2014-03-17 17:29:16.000000000 +0200
-+++ scm/editor.scm	2018-05-15 10:48:31.408441118 +0200
-@@ -40,6 +40,100 @@
-         (else
-          "emacs"))))
+--- a/scm/editor.scm	2020-03-01 16:00:51.000000000 +0200
++++ b/scm/editor.scm	2020-05-05 09:49:44.506168014 +0200
+@@ -134,6 +134,100 @@ See Info node `(elisp)Security Considera
+    ))
+ 
  
 +;; A bunch of stuff stolen from Emacs
 +
@@ -111,5 +111,5 @@ Index: scm/editor.scm
 +
 +
  (define editor-command-template-alist
-   '(("emacs" .  "emacsclient --no-wait +%(line)s:%(column)s %(file)s || (emacs +%(line)s:%(column)s %(file)s&)")
-     ("gvim" . "gvim --remote +:%(line)s:norm%(column)s %(file)s")
+   '(("atom" . "atom %(file)s:%(line)s:%(column)s")
+     ("emacs" .  "emacsclient --no-wait +%(line)s:%(column)s %(file)s || (emacs +%(line)s:%(column)s %(file)s&)")

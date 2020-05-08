@@ -1,7 +1,7 @@
-Index: lilypond-2.18.2/stepmake/stepmake/c++-vars.make
+Index: b/stepmake/stepmake/c++-vars.make
 ===================================================================
---- lilypond-2.18.2.orig/stepmake/stepmake/c++-vars.make
-+++ lilypond-2.18.2/stepmake/stepmake/c++-vars.make
+--- a/stepmake/stepmake/c++-vars.make	2020-05-05 09:11:20.826176975 +0200
++++ b/stepmake/stepmake/c++-vars.make	2020-05-05 09:11:28.450535489 +0200
 @@ -11,7 +11,7 @@ ALL_CXXFLAGS = $(CXXFLAGS) $(ALL_CXXPPFL
  
  TCC_FILES := $(call src-wildcard,*.tcc)
@@ -11,23 +11,10 @@ Index: lilypond-2.18.2/stepmake/stepmake/c++-vars.make
  INL_FILES := $(call src-wildcard,*.icc)
  YY_FILES := $(call src-wildcard,*.yy)
  LL_FILES := $(call src-wildcard,*.ll)
-Index: lilypond-2.18.2/scripts/build/help2man.pl
+Index: b/scripts/build/mf2pt1.pl
 ===================================================================
---- lilypond-2.18.2.orig/scripts/build/help2man.pl
-+++ lilypond-2.18.2/scripts/build/help2man.pl
-@@ -218,7 +218,7 @@ $version_text ||= get_option_value $ARGV
- # the English version expands to the month as a word and the full year.  It
- # is used on the footer of the generated manual pages.  If in doubt, you may
- # just use %x as the value (which should be the full locale-specific date).
--my $date = enc strftime _("%B %Y"), localtime;
-+my $date = enc strftime _("%B %Y"), gmtime($ENV{SOURCE_DATE_EPOCH} || time);
- (my $program = $ARGV[0]) =~ s!.*/!!;
- my $package = $program;
- my $version;
-Index: lilypond-2.18.2/scripts/build/mf2pt1.pl
-===================================================================
---- lilypond-2.18.2.orig/scripts/build/mf2pt1.pl
-+++ lilypond-2.18.2/scripts/build/mf2pt1.pl
+--- a/scripts/build/mf2pt1.pl	2020-05-05 09:11:20.826176975 +0200
++++ b/scripts/build/mf2pt1.pl	2020-05-05 09:11:28.450535489 +0200
 @@ -800,7 +800,9 @@ assign_default $creationdate, scalar loc
  assign_default $comment, $opthash{comment}, "Font converted to Type 1 by mf2pt1, written by Scott Pakin.";
  assign_default $weight, $opthash{weight}, "Medium";

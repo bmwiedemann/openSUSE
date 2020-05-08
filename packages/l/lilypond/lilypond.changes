@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 12:37:36 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 2.20.0.
+- Removed incorporated and obsolete patches:
+  Avoid-segfault-in-grob.cc-with-gcc-6.patch,
+  Issue-5243-2-Let-get-editor-use-shell-quote-argument.diff,
+  Issue-5243-3-More-conservative-parsing-of-textedit-URIs.diff,
+  add_set-global-fonts_function.patch, hurd_file_name_support.patch,
+  lilypond-doc-texinfo4.patch and  use_system_correctly.patch.
+- lilypond-century-schoolbook-l-fonts replaced by 
+  lilypond-texgy-fonts.
+- Lots of upstream new features and fixes, see:
+  /usr/share/doc/packages/lilypond/NEWS.txt
+
+-------------------------------------------------------------------
 Mon Apr 20 10:33:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %license

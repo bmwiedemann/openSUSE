@@ -18,135 +18,126 @@
 
 %define fontdir %{_datadir}/fonts
 %define ttfdir  %{fontdir}/truetype
+%define ver %(echo %{version} | cut -d . -f 1,2)
+
 Name:           lilypond
-Version:        2.18.2
+Version:        2.20.0
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            http://www.lilypond.org
-Source0:        http://download.linuxaudio.org/lilypond/sources/v2.18/lilypond-%{version}.tar.gz
+Source0:        https://lilypond.org/download/sources/v2.20/lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM j.mairboeck@gmail.com -- https://sourceforge.net/p/testlilyissues/issues/4814/
-Patch1:         Avoid-segfault-in-grob.cc-with-gcc-6.patch
 # Patches taken from Debian, see headers for info.
-Patch2:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
-Patch3:         add_dircategories_to_documentation.patch
-Patch4:         add_set-global-fonts_function.patch
-Patch5:         hurd_file_name_support.patch
-Patch6:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
-Patch7:         Issue-5243-2-Let-get-editor-use-shell-quote-argument.diff
-Patch8:         Issue-5243-3-More-conservative-parsing-of-textedit-URIs.diff
-Patch9:         use_cstring_and_ctype_includes.patch
-Patch10:        use_system_correctly.patch
+Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
+Patch2:         add_dircategories_to_documentation.patch
+Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
+Patch4:         use_cstring_and_ctype_includes.patch
 BuildRequires:  ImageMagick
 BuildRequires:  bison
 BuildRequires:  dblatex
+BuildRequires:  dejavu-fonts
 BuildRequires:  flex
 BuildRequires:  fontforge
+BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  ghostscript >= 8.15
+BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  libguile1-devel >= 1.8
-BuildRequires:  makeinfo
+BuildRequires:  makeinfo >= 6.1
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  potrace-devel
 # Needed for pngtopnm
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel >= 2.4.0
 BuildRequires:  rsync
 BuildRequires:  t1utils
-BuildRequires:  texinfo >= 4.8
+#BuildRequires:  texi2html4
+BuildRequires:  texinfo4
 BuildRequires:  texlive-extratools
+BuildRequires:  texlive-filesystem
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-lh
 BuildRequires:  texlive-metafont
 BuildRequires:  texlive-metapost
+BuildRequires:  texlive-tex-gyre-fonts
 BuildRequires:  vim-base
 BuildRequires:  zip
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(pango) >= 1.12.0
+BuildRequires:  pkgconfig(python3)
 # This is a work around for boo#1163190 pango-devel doesn't pull in cairo-devel although it requires it
 BuildRequires:  pkgconfig(cairo)
 Requires(post): %install_info_prereq
 Requires(preun): %install_info_prereq
 Requires:       ghostscript >= 8.15
-Requires:       lilypond-century-schoolbook-l-fonts = %{version}
-Requires:       lilypond-emmentaler-fonts = %{version}
+Requires:       lilypond-fonts-common = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# Package texi2html was split off from texinfo in current Factory.
-%if 0%{?suse_version} > 1320
-BuildRequires:  texi2html
-%else
-BuildRequires:  texlive-filesystem
-%endif
 
 %description
 LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
 
-%package century-schoolbook-l-fonts
+%package texgy-fonts
 Summary:        Lilypond Century Schoolbook L fonts
 Group:          System/X11/Fonts
-Requires:       lilypond-fonts-common = %{version}
 BuildArch:      noarch
 
-%description century-schoolbook-l-fonts
+%description texgy-fonts
 LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
-
-These are the Century Schoolbook L fonts included in the package.
+These are the lilypond Texgy fonts.
 
 %package emmentaler-fonts
 Summary:        Lilypond emmentaler fonts
 Group:          System/X11/Fonts
-Requires:       lilypond-fonts-common = %{version}
 BuildArch:      noarch
 
 %description emmentaler-fonts
 LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
-
-These are the emmentaler fonts included in the package.
+These are the lilypond emmentaler fonts.
 
 %package fonts-common
 Summary:        Lilypond fonts common dir
 Group:          System/X11/Fonts
 BuildArch:      noarch
+Requires:       lilypond-emmentaler-fonts = %{version}
+Requires:       lilypond-texgy-fonts = %{version}
 
 %description fonts-common
 LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
-
 This contains the directory common to all lilypond fonts.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p0
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
+%autopatch -p1
+
+pushd scripts
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+cd ../python
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+popd
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
 export LIBS="$LIBS  -lglib-2.0 -lgobject-2.0"
-%configure --without-kpathsea \
-	--disable-checking \
-	--with-ncsb-dir=%{_datadir}/ghostscript/fonts/
+export TEXI2HTML=/usr/bin/texi2html4
+export TEXI2PDF=/usr/bin/texi2pdf4
+export TEXINDEX=/usr/bin/texindex4
+
+%configure \
+	--disable-checking
 # Build sometimes fails with multiple threads.
 make %{_smp_mflags} || make -j1
 
@@ -154,8 +145,6 @@ make %{_smp_mflags} || make -j1
 vimver=$(vim --version | head -n1 | grep -Po "\d\.\d" | sed 's|\.||')
 %make_install package_infodir=%{_infodir} \
 	vimdir="%{_datadir}/vim/vim$vimver"
-
-chmod +x %{buildroot}%{_libdir}/%{name}/%{version}/python/midi.so
 
 # Symlink lilypond-init.el in emacs' site-start.d directory
 pushd %{buildroot}%{_datadir}/emacs/site-lisp
@@ -171,6 +160,8 @@ sed -e s,lilypond/,, -i *.info
 popd
 
 rm -f %{buildroot}%{_infodir}/dir
+
+chmod 0755  %{buildroot}%{_datadir}/lilypond/2.20.0/python/langdefs.py
 
 %find_lang %{name}
 
@@ -214,9 +205,9 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 %{_infodir}/*%{ext_info}
 %{_mandir}/man1/*
 
-%files century-schoolbook-l-fonts
+%files texgy-fonts
 %defattr(-,root,root,-)
-%{ttfdir}/CenturySchL*otf
+%{ttfdir}/texgy*otf
 
 %files emmentaler-fonts
 %defattr(-,root,root,-)

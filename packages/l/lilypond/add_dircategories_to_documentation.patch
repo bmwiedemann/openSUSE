@@ -3,26 +3,10 @@ Description: Lilypond texinfo is missing direntries in some cases
 Bug-Debian: https://bugs.debian.org/648689
 Author: Julian Gilbey <jdg@debian.org>
 Origin: vendor
-Index: Documentation/changes.tely
+Index: b/Documentation/contributor.texi
 ===================================================================
---- Documentation/changes.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/changes.tely	2018-05-15 10:45:38.766934402 +0200
-@@ -29,6 +29,11 @@ See user manual, \NAME\
- @end macro
- 
- 
-+@dircategory GNU LilyPond --- the music typesetter
-+@direntry
-+* LilyPond Changes: (lilypond-changes).   Changes to recent versions.
-+@end direntry
-+
- @documentencoding utf-8
- @documentlanguage en
- @afourpaper
-Index: Documentation/contributor.texi
-===================================================================
---- Documentation/contributor.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/contributor.texi	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/contributor.texi	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/contributor.texi	2020-05-05 09:18:32.944407086 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -35,10 +19,10 @@ Index: Documentation/contributor.texi
  @macro manualIntro
  This manual documents contributing to LilyPond version
  @version{}.  It discusses technical issues and policies that
-Index: Documentation/cs/learning.tely
+Index: b/Documentation/cs/learning.tely
 ===================================================================
---- Documentation/cs/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/cs/learning.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/cs/learning.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/cs/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -12,6 +12,11 @@
  @settitle Příručka k učení se
  @afourpaper
@@ -51,10 +35,10 @@ Index: Documentation/cs/learning.tely
  @macro manualIntro
  Tento soubor poskytuje úvod pro LilyPond verze
  @version{}.
-Index: Documentation/cs/web.texi
+Index: b/Documentation/cs/web.texi
 ===================================================================
---- Documentation/cs/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/cs/web.texi	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/cs/web.texi	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/cs/web.texi	2020-05-05 09:18:32.948407204 +0200
 @@ -58,7 +58,6 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond --- the music typesetter
@@ -63,10 +47,10 @@ Index: Documentation/cs/web.texi
  * Slovníček: (music-glossary).               Překlad pojmů z angličtiny do dalších řečí.
  * Příručka pro zápis not v LilyPondu: (lilypond-notation).                           Příručka pro zápis not v LilyPondu.
  * Úryvky LilyPondu: (lilypond-snippets).         Mnoho triků, rad a příkladů.
-Index: Documentation/de/essay.tely
+Index: b/Documentation/de/essay.tely
 ===================================================================
---- Documentation/de/essay.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/essay.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/de/essay.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/de/essay.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -12,6 +12,11 @@
  @documentlanguage de
  @afourpaper
@@ -79,10 +63,10 @@ Index: Documentation/de/essay.tely
  @c Translators: Till Paala
  
  @include macros.itexi
-Index: Documentation/de/extending.tely
+Index: b/Documentation/de/extending.tely
 ===================================================================
---- Documentation/de/extending.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/extending.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/de/extending.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/de/extending.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage de
  @afourpaper
@@ -95,10 +79,10 @@ Index: Documentation/de/extending.tely
  @c Translators: Till Paala
  
  @macro manualIntro
-Index: Documentation/de/learning.tely
+Index: b/Documentation/de/learning.tely
 ===================================================================
---- Documentation/de/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/learning.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/de/learning.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/de/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -12,6 +12,11 @@
  @settitle LilyPond Handbuch zum Lernen
  @afourpaper
@@ -111,10 +95,10 @@ Index: Documentation/de/learning.tely
  @macro manualIntro
  Diese Datei stellt eine Einleitung für LilyPond Version
  @version{} zur Verfügung.
-Index: Documentation/de/notation.tely
+Index: b/Documentation/de/notation.tely
 ===================================================================
---- Documentation/de/notation.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/notation.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/de/notation.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/de/notation.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -11,6 +11,11 @@
  @setfilename lilypond.info
  @settitle LilyPond Benutzerhandbuch
@@ -127,10 +111,10 @@ Index: Documentation/de/notation.tely
  @c Translators: Till Paala
  
  @afourpaper
-Index: Documentation/de/usage.tely
+Index: b/Documentation/de/usage.tely
 ===================================================================
---- Documentation/de/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/usage.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/de/usage.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/de/usage.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -12,7 +12,17 @@
  @settitle GNU LilyPond Programmbenutzung
  @afourpaper
@@ -150,36 +134,11 @@ Index: Documentation/de/usage.tely
  
  @macro manualIntro
  Diese Datei erklärt, wie man die Programme, die mit LilyPond
-Index: Documentation/de/web.texi
+Index: b/Documentation/es/changes.tely
 ===================================================================
---- Documentation/de/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/de/web.texi	2018-05-15 10:45:38.766934402 +0200
-@@ -58,20 +58,10 @@ License''.
- @c expected to be found in lilypond/ subdirectory.
- @dircategory GNU LilyPond --- the music typesetter
- @direntry
--* LilyPond Handbuch zum Lernen: (lilypond-learning).  Hier beginnen.
- * Glossar: (music-glossary).               Begriffsübersetzungen von Englisch in andere Sprachen.
--* LilyPond Notationshandbuch: (lilypond-notation).                           LilyPond Notationshandbuch.
- * LilyPond Schnipsel: (lilypond-snippets).         Viele Tricks, Tipps und Beispiele.
- * LilyPond Referenz der Interna: (lilypond-internals).  Definitionen zum Einstellen.
--* LilyPond Application Usage: (lilypond-usage). Programme installieren und benutzen.
- * LilyPond Webseite: (lilypond-web).    Vorschau der neuen Webseite.
--* lilypond: (lilypond-usage)LilyPond starten.  Das LilyPond-Programm aufrufen.
--* abc2ly: (lilypond-usage)abc2ly starten.      ABC-Notation importieren.
--* convert-ly: (lilypond-usage)Dateien mit convert-ly aktualisieren. Ältere LilyPond-Versionen
--* etf2ly: (lilypond-usage)etf2ly starten.      Finale-Dateien importieren.
--* lilypond-book: (lilypond-usage)LilyPond-book. Text und Musik integrieren.
--* midi2ly: (lilypond-usage)midi2ly starten.    MIDI importieren.
--* musicxml2ly: (lilypond-usage)musicxml2ly starten.  MusicXML-Dateien importieren.
- @end direntry
- 
- 
-Index: Documentation/es/changes.tely
-===================================================================
---- Documentation/es/changes.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/changes.tely	2018-05-15 10:45:38.766934402 +0200
-@@ -36,6 +36,11 @@ Véase el manual del usuario, \NAME\
+--- a/Documentation/es/changes.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/es/changes.tely	2020-05-05 09:18:32.948407204 +0200
+@@ -37,6 +37,11 @@ Véase el manual del usuario, \NAME\
  @end macro
  
  
@@ -191,10 +150,10 @@ Index: Documentation/es/changes.tely
  @documentencoding UTF-8
  @documentlanguage es
  @afourpaper
-Index: Documentation/es/essay.tely
+Index: b/Documentation/es/essay.tely
 ===================================================================
---- Documentation/es/essay.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/essay.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/es/essay.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/es/essay.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -207,10 +166,10 @@ Index: Documentation/es/essay.tely
  @c translator: Francisco Vila
  
  @macro manualIntro
-Index: Documentation/es/extending.tely
+Index: b/Documentation/es/extending.tely
 ===================================================================
---- Documentation/es/extending.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/extending.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/es/extending.tely	2020-05-05 09:17:18.170254725 +0200
++++ b/Documentation/es/extending.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -223,10 +182,10 @@ Index: Documentation/es/extending.tely
  @c translator: Francisco Vila
  
  @macro manualIntro
-Index: Documentation/es/learning.tely
+Index: b/Documentation/es/learning.tely
 ===================================================================
---- Documentation/es/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/learning.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/es/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/es/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -239,10 +198,10 @@ Index: Documentation/es/learning.tely
  @macro manualIntro
  Este archivo ofrece una introducción al programa LilyPond versión
  @version{}.
-Index: Documentation/es/notation.tely
+Index: b/Documentation/es/notation.tely
 ===================================================================
---- Documentation/es/notation.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/notation.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/es/notation.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/es/notation.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -255,10 +214,10 @@ Index: Documentation/es/notation.tely
  @macro manualIntro
  Este manual ofrece una referencia para toda la notación musical que se
  puede producir con LilyPond versión @version{}.  Da por sentado que el
-Index: Documentation/essay.tely
+Index: b/Documentation/essay.tely
 ===================================================================
---- Documentation/essay.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/essay.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/essay.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/essay.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -271,10 +230,10 @@ Index: Documentation/essay.tely
  @macro manualIntro
  This essay discusses automatic music engraving functions within
  LilyPond version @version{}.
-Index: Documentation/es/usage.tely
+Index: b/Documentation/es/usage.tely
 ===================================================================
---- Documentation/es/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/usage.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/es/usage.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/es/usage.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage es
  @afourpaper
@@ -294,11 +253,11 @@ Index: Documentation/es/usage.tely
  @c Translators: Francisco Vila
  
  @macro manualIntro
-Index: Documentation/es/web.texi
+Index: b/Documentation/es/web.texi
 ===================================================================
---- Documentation/es/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/es/web.texi	2018-05-15 10:45:38.766934402 +0200
-@@ -57,20 +57,10 @@ Free Documentation License''.
+--- a/Documentation/es/web.texi	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/es/web.texi	2020-05-05 09:18:32.948407204 +0200
+@@ -62,20 +62,10 @@ Free Documentation License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond: el tipografiador de música
  @direntry
@@ -319,10 +278,10 @@ Index: Documentation/es/web.texi
  @end direntry
  
  
-Index: Documentation/extending.tely
+Index: b/Documentation/extending.tely
 ===================================================================
---- Documentation/extending.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/extending.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/extending.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/extending.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -335,10 +294,10 @@ Index: Documentation/extending.tely
  @macro manualIntro
  This file explains how to extend the functionality of
  LilyPond version @version{}.
-Index: Documentation/fr/essay.tely
+Index: b/Documentation/fr/essay.tely
 ===================================================================
---- Documentation/fr/essay.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/fr/essay.tely	2018-05-15 10:45:38.766934402 +0200
+--- a/Documentation/fr/essay.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/fr/essay.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -16,6 +16,11 @@
  @documentlanguage fr
  @afourpaper
@@ -351,10 +310,10 @@ Index: Documentation/fr/essay.tely
  @macro manualIntro
  Cet essai traite de la gravure de la musique et de la notation assistée
  par ordinateur à l'aide de LilyPond version @version{}.
-Index: Documentation/fr/learning.tely
+Index: b/Documentation/fr/learning.tely
 ===================================================================
---- Documentation/fr/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/fr/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/fr/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/fr/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  
  @afourpaper
@@ -367,10 +326,10 @@ Index: Documentation/fr/learning.tely
  @macro manualIntro
  Ce document constitue le manuel d'initiation à GNU LilyPond
  @version{}.
-Index: Documentation/fr/notation.tely
+Index: b/Documentation/fr/notation.tely
 ===================================================================
---- Documentation/fr/notation.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/fr/notation.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/fr/notation.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/fr/notation.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage fr
  @afourpaper
@@ -383,10 +342,10 @@ Index: Documentation/fr/notation.tely
  @macro manualIntro
  Ce document constitue le manuel de notation de GNU LilyPond
  @version{}.  Sa lecture requiert une familiarité avec le contenu
-Index: Documentation/fr/usage.tely
+Index: b/Documentation/fr/usage.tely
 ===================================================================
---- Documentation/fr/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/fr/usage.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/fr/usage.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/fr/usage.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,17 @@
  @documentlanguage fr
  @afourpaper
@@ -405,11 +364,11 @@ Index: Documentation/fr/usage.tely
  @c Translators: John Mandereau, Jean-Charles Malahieude
  
  @macro manualIntro
-Index: Documentation/fr/web.texi
+Index: b/Documentation/fr/web.texi
 ===================================================================
---- Documentation/fr/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/fr/web.texi	2018-05-15 10:45:38.770934530 +0200
-@@ -59,19 +59,10 @@ License''.
+--- a/Documentation/fr/web.texi	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/fr/web.texi	2020-05-05 09:18:32.948407204 +0200
+@@ -63,19 +63,10 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond -- le typographe de musique
  @direntry
@@ -429,10 +388,10 @@ Index: Documentation/fr/web.texi
  @end direntry
  
  
-Index: Documentation/hu/learning.tely
+Index: b/Documentation/hu/learning.tely
 ===================================================================
---- Documentation/hu/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/hu/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/hu/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/hu/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage hu
  @afourpaper
@@ -445,33 +404,10 @@ Index: Documentation/hu/learning.tely
  @c Translators: Harmath Dénes
  
  @macro manualIntro
-Index: Documentation/hu/usage.tely
+Index: b/Documentation/hu/web.texi
 ===================================================================
---- Documentation/hu/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/hu/usage.tely	2018-05-15 10:45:38.770934530 +0200
-@@ -13,6 +13,18 @@
- @documentlanguage hu
- @afourpaper
- 
-+@dircategory GNU LilyPond --- the music typesetter
-+@direntry
-+* Használat: (lilypond-usage). Az alkalmazás használata.
-+* lilypond: (lilypond-usage)A lilypond futtatása.      Kották szedése.
-+* abc2ly: (lilypond-usage)Az abc2ly futtatása.      ABC fájlok importálása.
-+* convert-ly: (lilypond-usage)A convert-ly futtatása. Konvertálás régebbi verziókról.
-+* etf2ly: (lilypond-usage)Az etf2ly futtatása.      Finale fájlok importálása.
-+* lilypond-book: (lilypond-usage)A lilypond-book futtatása. Szöveg és zene integrálása.
-+* midi2ly: (lilypond-usage)A midi2ly futtatása.    MIDI fájlok importálása.
-+* musicxml2ly: (lilypond-usage)A musicxml2ly futtatása.  MusicXML fájlok importálása.
-+@end direntry
-+
- @c translator: Team-hu
- 
- @macro manualIntro
-Index: Documentation/hu/web.texi
-===================================================================
---- Documentation/hu/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/hu/web.texi	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/hu/web.texi	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/hu/web.texi	2020-05-05 09:18:32.948407204 +0200
 @@ -59,20 +59,11 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond --- the music typesetter
@@ -493,10 +429,10 @@ Index: Documentation/hu/web.texi
  @end direntry
  
  
-Index: Documentation/it/learning.tely
+Index: b/Documentation/it/learning.tely
 ===================================================================
---- Documentation/it/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/it/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/it/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/it/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage it
  @afourpaper
@@ -509,10 +445,10 @@ Index: Documentation/it/learning.tely
  @macro manualIntro
  Questo file fornisce un'introduzione alla versione di LilyPond
  @version{}.
-Index: Documentation/it/usage.tely
+Index: b/Documentation/it/usage.tely
 ===================================================================
---- Documentation/it/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/it/usage.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/it/usage.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/it/usage.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage it
  @afourpaper
@@ -532,11 +468,11 @@ Index: Documentation/it/usage.tely
  @c Translators: Federico Bruni
  @c Translation checkers: Luca Rossetto Casel
  
-Index: Documentation/it/web.texi
+Index: b/Documentation/it/web.texi
 ===================================================================
---- Documentation/it/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/it/web.texi	2018-05-15 10:45:38.770934530 +0200
-@@ -228,15 +228,7 @@ Distributions will want to install lilyp
+--- a/Documentation/it/web.texi	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/it/web.texi	2020-05-05 09:18:32.948407204 +0200
+@@ -261,15 +261,7 @@ Distributions will want to install lilyp
  * LilyPond: (lilypond-notation).                                Guida alla Notazione di LilyPond.
  * Frammenti di Codice di LilyPond: (lilypond-snippets).         Piccoli trucchi, consigli, e esempi.
  * Guida al Funzionamento Interno: (lilypond-internals).         Definizioni per le modifiche manuali.
@@ -552,10 +488,10 @@ Index: Documentation/it/web.texi
  @end direntry
  
  
-Index: Documentation/ja/learning.tely
+Index: b/Documentation/ja/learning.tely
 ===================================================================
---- Documentation/ja/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/ja/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/ja/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/ja/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage ja
  @afourpaper
@@ -568,11 +504,11 @@ Index: Documentation/ja/learning.tely
  @macro manualIntro
  このマニュアルは LilyPond バージョン @version{} の導入部です。
  @end macro
-Index: Documentation/ja/notation.tely
+Index: b/Documentation/ja/notation.tely
 ===================================================================
---- Documentation/ja/notation.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/ja/notation.tely	2018-05-15 10:45:38.770934530 +0200
-@@ -12,6 +12,11 @@
+--- a/Documentation/ja/notation.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/ja/notation.tely	2020-05-05 09:18:32.948407204 +0200
+@@ -13,6 +13,11 @@
  @documentlanguage ja
  @afourpaper
  
@@ -584,10 +520,10 @@ Index: Documentation/ja/notation.tely
  @macro manualIntro
  このマニュアルは LilyPond バージョン @version{} で提供される@c
  すべての記譜法についての参照を提供します。@c
-Index: Documentation/ja/usage.tely
+Index: b/Documentation/ja/usage.tely
 ===================================================================
---- Documentation/ja/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/ja/usage.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/ja/usage.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/ja/usage.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,19 @@
  @documentlanguage ja
  @afourpaper
@@ -607,11 +543,11 @@ Index: Documentation/ja/usage.tely
 +
  @macro manualIntro
  このマニュアルは LilyPond バージョン @version{} で配布される@c
- プログラムの実効方法について説明します。@c
-Index: Documentation/learning.tely
+ プログラムの実行方法について説明します。@c
+Index: b/Documentation/learning.tely
 ===================================================================
---- Documentation/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/learning.tely	2020-05-05 09:17:18.174254837 +0200
++++ b/Documentation/learning.tely	2020-05-05 09:18:32.948407204 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -624,10 +560,10 @@ Index: Documentation/learning.tely
  @macro manualIntro
  This file provides an introduction to LilyPond version
  @version{}.
-Index: Documentation/music-glossary.tely
+Index: b/Documentation/music-glossary.tely
 ===================================================================
---- Documentation/music-glossary.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/music-glossary.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/music-glossary.tely	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/music-glossary.tely	2020-05-05 09:18:32.952407321 +0200
 @@ -6,6 +6,11 @@
  @documentlanguage en
  @afourpaper
@@ -640,10 +576,10 @@ Index: Documentation/music-glossary.tely
  @macro manualIntro
  This glossary provides definitions and translations of musical
  terms used in the documentation manuals for LilyPond version
-Index: Documentation/nl/learning.tely
+Index: b/Documentation/nl/learning.tely
 ===================================================================
---- Documentation/nl/learning.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/nl/learning.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/nl/learning.tely	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/nl/learning.tely	2020-05-05 09:18:32.952407321 +0200
 @@ -19,6 +19,11 @@
  @documentlanguage nl
  @afourpaper
@@ -656,10 +592,10 @@ Index: Documentation/nl/learning.tely
  @macro manualIntro
  This file provides an introduction to LilyPond version
  @version{}.
-Index: Documentation/notation.tely
+Index: b/Documentation/notation.tely
 ===================================================================
---- Documentation/notation.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/notation.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/notation.tely	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/notation.tely	2020-05-05 09:18:32.952407321 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -672,10 +608,10 @@ Index: Documentation/notation.tely
  @macro manualIntro
  This manual provides a reference for all notation that can be
  produced with LilyPond version @version{}.  It assumes that
-Index: Documentation/snippets.tely
+Index: b/Documentation/snippets.tely
 ===================================================================
---- Documentation/snippets.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/snippets.tely	2018-05-15 10:45:38.770934530 +0200
+--- a/Documentation/snippets.tely	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/snippets.tely	2020-05-05 09:18:32.952407321 +0200
 @@ -6,6 +6,11 @@
  @documentlanguage en
  @afourpaper
@@ -687,11 +623,11 @@ Index: Documentation/snippets.tely
 +
  @macro manualIntro
  This document shows a selected set of LilyPond snippets from the
- @uref{http://lsr@/.dsi@/.unimi@/.it,LilyPond Snippet Repository}
-Index: Documentation/usage.tely
+ @uref{http://lsr@/.di@/.unimi@/.it,LilyPond Snippet Repository}
+Index: b/Documentation/usage.tely
 ===================================================================
---- Documentation/usage.tely.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/usage.tely	2018-05-15 10:45:38.774934658 +0200
+--- a/Documentation/usage.tely	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/usage.tely	2020-05-05 09:18:32.952407321 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage en
  @afourpaper
@@ -711,11 +647,11 @@ Index: Documentation/usage.tely
  @macro manualIntro
  This file explains how to execute the programs distributed with
  LilyPond version @version{}.  In addition, it suggests some
-Index: Documentation/web.texi
+Index: b/Documentation/web.texi
 ===================================================================
---- Documentation/web.texi.orig	2014-03-17 17:29:16.000000000 +0200
-+++ Documentation/web.texi	2018-05-15 10:45:38.774934658 +0200
-@@ -56,20 +56,8 @@ License''.
+--- a/Documentation/web.texi	2020-05-05 09:17:18.178254949 +0200
++++ b/Documentation/web.texi	2020-05-05 09:18:32.952407321 +0200
+@@ -60,20 +60,8 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond --- the music typesetter
  @direntry
@@ -733,6 +669,83 @@ Index: Documentation/web.texi
 -* lilypond-book: (lilypond-usage)lilypond-book. Integrating text and music.
 -* midi2ly: (lilypond-usage)Invoking midi2ly.    Importing MIDI.
 -* musicxml2ly: (lilypond-usage)Invoking musicxml2ly.  Importing MusicXML.
+ @end direntry
+ 
+ 
+Index: b/Documentation/changes.tely
+===================================================================
+--- a/Documentation/changes.tely	2020-05-05 09:18:32.944407086 +0200
++++ b/Documentation/changes.tely	2020-05-05 09:30:37.413134893 +0200
+@@ -13,6 +13,12 @@
+ @end macro
+ @end ifhtml
+ 
++@dircategory GNU LilyPond --- the music typesetter
++@direntry
++* LilyPond Changes: (lilypond-changes).   Changes to recent versions.
++@end direntry
++
++
+ @ifnothtml
+ @macro inputfileref{DIR,NAME}
+ @file{\DIR\/\NAME\}@c
+@@ -28,6 +34,10 @@ See user manual, \NAME\
+ @end html
+ @end macro
+ 
++@dircategory GNU LilyPond --- the music typesetter
++@direntry
++* LilyPond Changes: (lilypond-changes).   Changes to recent versions.
++@end direntry
+ 
+ @documentencoding UTF-8
+ @documentlanguage en
+Index: b/Documentation/hu/usage.tely
+===================================================================
+--- a/Documentation/hu/usage.tely	2020-05-05 09:18:32.948407204 +0200
++++ b/Documentation/hu/usage.tely	2020-05-05 09:28:31.192507472 +0200
+@@ -15,6 +15,19 @@
+ 
+ @c translator: Harmath Dénes
+ 
++@dircategory GNU LilyPond --- the music typesetter
++@direntry
++* Használat: (lilypond-usage). Az alkalmazás használata.
++* lilypond: (lilypond-usage)A lilypond futtatása.      Kották szedése.
++* abc2ly: (lilypond-usage)Az abc2ly futtatása.      ABC fájlok importálása.
++* convert-ly: (lilypond-usage)A convert-ly futtatása. Konvertálás régebbi verziókról.
++* etf2ly: (lilypond-usage)Az etf2ly futtatása.      Finale fájlok importálása.
++* lilypond-book: (lilypond-usage)A lilypond-book futtatása. Szöveg és zene integrálása.
++* midi2ly: (lilypond-usage)A midi2ly futtatása.    MIDI fájlok importálása.
++* musicxml2ly: (lilypond-usage)A musicxml2ly futtatása.  MusicXML fájlok importálása.
++@end direntry
++
++
+ @macro manualIntro
+ Ez a dokumentáció ismerteti, hogyan kell a LilyPond @version{} verziójához
+ tartozó programokat futtatni, valamint tanácsokat ad azok hatékony
+Index: b/Documentation/de/web.texi
+===================================================================
+--- a/Documentation/de/web.texi	2020-05-05 09:18:32.948407204 +0200
++++ b/Documentation/de/web.texi	2020-05-05 09:34:09.181057976 +0200
+@@ -61,20 +61,10 @@ License''.
+ @c expected to be found in lilypond/ subdirectory.
+ @dircategory GNU LilyPond --- Das Notensatzsystem
+ @direntry
+-* LilyPond Handbuch zum Lernen: (lilypond-learning).  Hier beginnen.
+ * Glossar: (music-glossary).               Begriffsübersetzungen von Englisch in andere Sprachen.
+-* LilyPond Notationshandbuch: (lilypond-notation).                           LilyPond Notationshandbuch.
+ * LilyPond Schnipsel: (lilypond-snippets).         Viele Tricks, Tipps und Beispiele.
+ * LilyPond Referenz der Interna: (lilypond-internals).  Definitionen zum Anpassen.
+-* LilyPond Application Usage: (lilypond-usage). Programme installieren und benutzen.
+ * LilyPond Webseite: (lilypond-web).    Vorschau der neuen Webseite.
+-* lilypond: (lilypond-usage)LilyPond starten.  Das LilyPond-Programm aufrufen.
+-* abc2ly: (lilypond-usage)abc2ly starten.      ABC-Notation importieren.
+-* convert-ly: (lilypond-usage)Dateien mit convert-ly aktualisieren. Ältere LilyPond-Versionen
+-* etf2ly: (lilypond-usage)etf2ly starten.      Finale-Dateien importieren.
+-* lilypond-book: (lilypond-usage)LilyPond-book. Text und Musik integrieren.
+-* midi2ly: (lilypond-usage)midi2ly starten.    MIDI importieren.
+-* musicxml2ly: (lilypond-usage)musicxml2ly starten.  MusicXML-Dateien importieren.
  @end direntry
  
  

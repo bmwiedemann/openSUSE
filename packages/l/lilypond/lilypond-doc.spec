@@ -16,8 +16,10 @@
 #
 
 
-%define ver     2.18
-%define plevel  2
+%bcond_without docbuild
+
+%define ver     2.20
+%define plevel  0
 Name:           lilypond-doc
 Version:        %{ver}.%{plevel}
 Release:        0
@@ -25,22 +27,24 @@ Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only
 Group:          Documentation/HTML
 URL:            http://lilypond.org/
-Source0:        http://download.linuxaudio.org/lilypond/sources/v%{ver}/lilypond-%{version}.tar.gz
+Source0:        lilypond-%{version}.tar.gz
+%if %{without docbuild}
+#Source1:        https://lilypond.org/download/binaries/documentation/lilypond-%%{version}-1.documentation.tar.bz2
+%endif
+# PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
+Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
-Patch2:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
-Patch3:         add_dircategories_to_documentation.patch
-Patch4:         add_set-global-fonts_function.patch
-Patch5:         hurd_file_name_support.patch
-Patch6:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
-Patch7:         Issue-5243-2-Let-get-editor-use-shell-quote-argument.diff
-Patch8:         Issue-5243-3-More-conservative-parsing-of-textedit-URIs.diff
-Patch9:         use_cstring_and_ctype_includes.patch
-Patch10:        use_system_correctly.patch
+Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
+Patch2:         add_dircategories_to_documentation.patch
+Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
+Patch4:         use_cstring_and_ctype_includes.patch
 BuildRequires:  ImageMagick-extra
 BuildRequires:  autoconf
 BuildRequires:  bison
+BuildRequires:  bitstream-vera-fonts
 BuildRequires:  dblatex
 BuildRequires:  dejavu
+BuildRequires:  extractpdfmark
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  fontconfig-devel >= 2.4.0
@@ -50,8 +54,6 @@ BuildRequires:  freetype2-devel >= 2.1.10
 BuildRequires:  gcc-c++
 BuildRequires:  gentium
 BuildRequires:  gettext-tools
-#BuildRequires:  ghostscript-fonts-rus
-BuildRequires:  bitstream-vera-fonts
 BuildRequires:  ghostscript >= 8.60
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
@@ -64,41 +66,40 @@ BuildRequires:  libguile1-devel >= 1.8.2
 BuildRequires:  libtool
 BuildRequires:  lilypond = %{version}
 BuildRequires:  lndir
+BuildRequires:  makeinfo >= 6.1
+BuildRequires:  mc
 BuildRequires:  mftrace
 BuildRequires:  netpbm
 BuildRequires:  pango-devel >= 1.12
 BuildRequires:  perl
-BuildRequires:  python-devel >= 2.4
 BuildRequires:  rsync
 BuildRequires:  t1utils
 BuildRequires:  texlive-avantgar-fonts
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-dejavu-fonts
+BuildRequires:  texlive-fancybox
 BuildRequires:  texlive-gnu-freefont-fonts
 BuildRequires:  texlive-lh
 BuildRequires:  texlive-libertine-fonts
 BuildRequires:  texlive-metafont-bin
 BuildRequires:  texlive-metapost
+BuildRequires:  texlive-xetex-bin
+BuildRequires:  texlive-xltxtra
 BuildRequires:  ttf-wqy-zenhei
 BuildRequires:  xfntjp
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  zip
+BuildRequires:  pkgconfig(python3)
 Requires:       lilypond = %{version}
 Requires(pre):   %{install_info_prereq} %{_bindir}/touch %{_bindir}/sed
 Provides:       lilypond-documentation = %{version}
 Obsoletes:      lilypond-documentation < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%if 0%{?suse_version} > 1320
-Patch0:         lilypond-doc-texinfo4.patch
-# NOTE: when lilypond documentation build with texinfo 5.x is fixed by upstream remove patch, the 4s from makeinfo,
+%if %{with docbuild}
+# NOTE: when lilypond documentation build with texinfo 5.x is fixed by upstream remove the 4s from makeinfo,
 # NOTE: texinfo and update buildrequires with:
 #BuildRequires: texi2html
-BuildRequires:  makeinfo4
-BuildRequires:  texinfo4
-%else
-BuildRequires:  texinfo
-BuildRequires:  texlive-filesystem
+BuildRequires:  texinfo4-links
 %endif
 
 %description
@@ -182,18 +183,7 @@ Chinese documentation files for the GNU LilyPond music typesetter.
 
 %prep
 %setup -q -n lilypond-%{version}
-%if 0%{?suse_version} > 1320
-%patch0
-%endif
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7
-%patch8
-%patch9
-%patch10
+%autopatch -p1
 
 # Convert translations to UTF-8
 for file in $(grep -L charset=UTF-8 po/*.po) ; do
@@ -204,15 +194,19 @@ mkdir -p out/examples/
 tar -cf - input/  | tar -C out/examples/ -xf- || true
 
 %define _buildir $PWD
+pushd scripts
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+cd ../python
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+popd
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
-chmod 644 Documentation/pictures/*.png
+
+#chmod 644 Documentation/pictures/*.png
 # export GS_LIB="/home/$USER/.fonts" is a work around for bnc#568280
-#export GS_LIB="/home/$USER/.fonts:%%{_buildir}/mf/out"
-export CFLAGS="-fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -ggdb"
-%if 0%{?suse_version} == 1210
-export CFLAGS="$CFLAGS -fno-optimize-sibling-calls"
-%endif
+export GS_LIB="$HOME/.fonts:%{_buildir}/mf/out"
+
 export GUILE_AUTO_COMPILE=0
 export CFLAGS="%{optflags} -ggdb -fpermissive -fabi-version=4"
 export CXXFLAGS="$CFLAGS"
@@ -225,23 +219,22 @@ rm configure
 echo "*********************************"
 echo "* Start the documentation build *"
 echo "*********************************"
-pushd Documentation
+make -C scripts && make -C python
+#pushd Documentation
 # Don't build documentation in paralell. It fails randomly.
-LILYPOND_EXTERNAL_BINARY="%{_bindir}/lilypond" LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY make -e doc \
-|| (cat internals.texi2pdf.log && false)
+make -e doc LILYPOND_EXTERNAL_BINARY="%{_bindir}/lilypond" LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY
+#|| (cat out-www/suffix-lyxml.dblatex.log && false)
 #|| (lndir  -ignorelinks out-www/notation . && \
 #LILYPOND_EXTERNAL_BINARY="%%{_bindir}/lilypond" LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY make doc)
-popd
-make -j1 out=www WWW-post
+#popd
+#make -j1 out=www WWW-post
 
 %install
 mkdir -p "%{buildroot}%{_datadir}/lilypond/%{rlversion}"
 # install documentation
 make install-doc DESTDIR=%{buildroot} webdir=%{_docdir}/lilypond
-cp -a COPYING LICENSE LICENSE.DOCUMENTATION \
-  DEDICATION HACKING ROADMAP AUTHORS.txt NEWS.txt \
-  VERSION \
-  %{buildroot}%{_docdir}/lilypond
+cp -a DEDICATION HACKING ROADMAP AUTHORS.txt NEWS.txt \
+  VERSION %{buildroot}%{_docdir}/lilypond
 
 find %{buildroot}%{_docdir}/lilypond -name *.signature -exec rm {} \;
 # Fix any .py files with shebangs and wrong permissions.
@@ -250,6 +243,8 @@ then break;
 else chmod -f 0755 `find %{buildroot}%{_datadir}/lilypond/ -name *.py -perm 0644 -print0|xargs -0r grep -l '#!'`; \
 fi
 LILYPOND_EXTERNAL_BINARY=%{_bindir}/lilypond
+# Remove spurious executables rpm lint error
+chmod 0644 %{buildroot}%{_docdir}/lilypond/Documentation/pictures/*png || true
 %find_lang lilypond
 texhash %{buildroot}%{_datadir}/lilypond/%{rlversion}
 find %{buildroot}%{_docdir}/lilypond/ -type f -empty -delete -print
@@ -283,7 +278,7 @@ done
 for d in '.usr.share' '.usr.share.doc' '.usr.share.info' '.usr.share.doc.packages'; do
   sed -i "/^%%dir $d$/d" files-en
 done
-for f in LICENSE LICENSE.DOCUMENTATION COPYING DEDICATION \
+for f in DEDICATION \
          HACKING ROADMAP VERSION AUTHORS.txt NEWS.txt; do
   echo "%%exclude %{_docdir}/lilypond/$f" >> files-en
 done
@@ -299,32 +294,42 @@ rm -f %{_infodir}/lilypond
 
 %files cs -f files-cs
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files de -f files-de
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files es -f files-es
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files fr -f files-fr
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files hu -f files-hu
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files it -f files-it
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files ja -f files-ja
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files nl -f files-nl
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files zh -f files-zh
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %files -f files-en
 %defattr(-,root,root)
+%license LICENSE LICENSE.DOCUMENTATION COPYING
 
 %changelog

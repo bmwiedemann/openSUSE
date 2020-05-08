@@ -2,10 +2,10 @@ Description: Include missing cstring include files
 Forwarded: 
 Origin: vendor
 Author: Don Armstrong <don@debian.org>
-Index: lily/midi-stream.cc
+Index: b/lily/midi-stream.cc
 ===================================================================
---- lily/midi-stream.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/midi-stream.cc	2018-05-15 10:50:35.852394146 +0200
+--- a/lily/midi-stream.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/midi-stream.cc	2020-05-05 14:26:03.659464956 +0200
 @@ -18,7 +18,7 @@
  */
  
@@ -15,10 +15,10 @@ Index: lily/midi-stream.cc
  #include <cerrno>
  using namespace std;
  
-Index: lily/piano-pedal-engraver.cc
+Index: b/lily/piano-pedal-engraver.cc
 ===================================================================
---- lily/piano-pedal-engraver.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/piano-pedal-engraver.cc	2018-05-15 10:50:35.852394146 +0200
+--- a/lily/piano-pedal-engraver.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/piano-pedal-engraver.cc	2020-05-05 14:26:03.679465747 +0200
 @@ -38,6 +38,7 @@
  #include "item.hh"
  
@@ -27,23 +27,10 @@ Index: lily/piano-pedal-engraver.cc
  
  #include <string.h>
  
-Index: lily/prob.cc
+Index: b/lily/relocate.cc
 ===================================================================
---- lily/prob.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/prob.cc	2018-05-15 10:50:35.852394146 +0200
-@@ -22,7 +22,7 @@
- #include "item.hh"
- #include "input.hh"
- #include "profile.hh"
--
-+#include <cstring>
- #include "ly-smobs.icc"
- 
- IMPLEMENT_SMOBS (Prob);
-Index: lily/relocate.cc
-===================================================================
---- lily/relocate.cc.orig	2018-05-15 10:43:59.399752162 +0200
-+++ lily/relocate.cc	2018-05-15 10:50:35.852394146 +0200
+--- a/lily/relocate.cc	2020-05-05 14:26:03.131444019 +0200
++++ b/lily/relocate.cc	2020-05-05 14:26:03.679465747 +0200
 @@ -23,8 +23,10 @@
  
  /* TODO: autoconf support */
@@ -55,10 +42,10 @@ Index: lily/relocate.cc
  
  #if HAVE_GETTEXT
  #include <libintl.h>
-Index: lily/source-file.cc
+Index: b/lily/source-file.cc
 ===================================================================
---- lily/source-file.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/source-file.cc	2018-05-15 10:50:35.852394146 +0200
+--- a/lily/source-file.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/source-file.cc	2020-05-05 14:26:03.683465906 +0200
 @@ -24,7 +24,7 @@
  #endif /* GCC_MAJOR < 4 */
  
@@ -68,10 +55,10 @@ Index: lily/source-file.cc
  #include "config.hh"
  
  #include <cstdio>
-Index: lily/translator.cc
+Index: b/lily/translator.cc
 ===================================================================
---- lily/translator.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/translator.cc	2018-05-15 10:50:35.852394146 +0200
+--- a/lily/translator.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/translator.cc	2020-05-05 14:26:03.687466065 +0200
 @@ -18,7 +18,7 @@
  */
  
@@ -81,3 +68,15 @@ Index: lily/translator.cc
  #include "context-def.hh"
  #include "dispatcher.hh"
  #include "global-context.hh"
+Index: b/lily/prob.cc
+===================================================================
+--- a/lily/prob.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/prob.cc	2020-05-05 14:26:03.699466541 +0200
+@@ -22,6 +22,7 @@
+ #include "item.hh"
+ #include "input.hh"
+ #include "profile.hh"
++#include <cstring>
+ 
+ const char *const Prob::type_p_name_ = "ly:prob?";
+ 

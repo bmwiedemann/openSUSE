@@ -8,11 +8,11 @@ Forwarded: not-needed
 Last-Update: 2017-01-24
 ---
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
-Index: lily/relocate.cc
+Index: b/lily/relocate.cc
 ===================================================================
---- lily/relocate.cc.orig	2014-03-17 17:29:16.000000000 +0200
-+++ lily/relocate.cc	2018-05-15 10:43:59.399752162 +0200
-@@ -146,8 +146,10 @@ framework_relocation (const string &pref
+--- a/lily/relocate.cc	2020-03-01 16:00:51.000000000 +0200
++++ b/lily/relocate.cc	2020-05-05 09:17:00.253689618 +0200
+@@ -148,8 +148,10 @@ framework_relocation (const string &pref
    debug_output (_f ("Relocation: framework_prefix=%s", prefix));
  
    sane_putenv ("INSTALLER_PREFIX", prefix, true);
