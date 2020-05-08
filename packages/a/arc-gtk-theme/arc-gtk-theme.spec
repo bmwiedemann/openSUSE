@@ -1,7 +1,7 @@
 #
 # spec file for package arc-gtk-theme
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,22 @@
 %define _theme  Arc
 %define _name   arc
 Name:           arc-gtk-theme
-Version:        20190917
+Version:        20200502
 Release:        0
-Summary:        Arc GTK+ theme
+Summary:        Arc GTK theme
 License:        GPL-3.0-or-later
-URL:            https://github.com/arc-design/arc-theme/
-Source:         https://github.com/arc-design/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz
-Source1:        https://github.com/arc-design/%{_name}-theme/releases/download/%{version}/%{_name}-theme-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+URL:            https://github.com/jnsh/arc-theme
+Source:         %{_name}-theme-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  cinnamon
 BuildRequires:  fdupes
 BuildRequires:  gnome-shell
 BuildRequires:  inkscape
 BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildArch:      noarch
 
 %description
@@ -56,28 +55,28 @@ This package contains common files and themes for GNOME Shell,
 Marco, Xfwm4, and Cinnamon.
 
 %package -n gtk2-metatheme-%{_name}
-Summary:        Arc GTK+2 Theme
+Summary:        Arc GTK 2 Theme
 Requires:       gtk2-engine-murrine
 Requires:       metatheme-%{_name}-common = %{version}
-Supplements:    packageand(metatheme-%{_name}-common:gtk2)
+Supplements:    (metatheme-%{_name}-common and gtk2)
 
 %description -n gtk2-metatheme-%{_name}
 Arc is a flat theme with transparent elements.
 It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.
 
-This package contains the GTK+2 theme.
+This package contains the GTK 2 theme.
 
 %package -n gtk3-metatheme-%{_name}
-Summary:        Arc GTK+3 Theme
-Requires:       gtk3 >= 3.14
+Summary:        Arc GTK 3 Theme
+Requires:       gtk3
 Requires:       metatheme-%{_name}-common = %{version}
-Supplements:    packageand(metatheme-%{_name}-common:gtk3)
+Supplements:    (metatheme-%{_name}-common and gtk3)
 
 %description -n gtk3-metatheme-%{_name}
 Arc is a flat theme with transparent elements.
 It supports MATE, GNOME, Budgie, Xfce, and Cinnamon.
 
-This package contains the GTK+3 theme.
+This package contains the GTK 3 theme.
 
 %prep
 %setup -q -n %{_name}-theme-%{version}
@@ -87,7 +86,7 @@ sed -i 's/^\(IconTheme=\).*$/\1Adwaita/' common/index/*/index.theme
 %build
 ./autogen.sh
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

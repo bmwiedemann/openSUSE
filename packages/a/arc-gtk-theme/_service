@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jnsh/arc-theme.git</param>
+    <param name="filename">arc-theme</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">958b9b554cde5a8be7280bdf4a908ebe833cbd81</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
