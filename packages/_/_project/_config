@@ -159,7 +159,7 @@ Preinstall: libpopt0 libelf1
 Preinstall: libpcre1 libzstd1
 Preinstall: libreadline8
 
-Runscripts: aaa_base
+#Runscripts: aaa_base
 
 Prefer: libdb-4_8-devel
 #Prefer: cdrkit-cdrtools-compat genisoimage
