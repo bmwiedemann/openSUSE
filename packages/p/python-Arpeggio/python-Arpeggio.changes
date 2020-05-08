@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 07:06:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest 5 as we work with it
+
+-------------------------------------------------------------------
 Thu Jan  2 07:31:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not install examples in site-packages/examples to avoid conflicts

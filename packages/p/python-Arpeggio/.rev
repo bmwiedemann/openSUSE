@@ -85,4 +85,12 @@
     <comment>- Do not install examples in site-packages/examples to avoid conflicts</comment>
     <requestid>760352</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d00c1dc7993053c41a61fff3717cce07</srcmd5>
+    <version>1.9.2</version>
+    <time>1588971714</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest 5 as we work with it</comment>
+    <requestid>800579</requestid>
+  </revision>
 </revisionlist>

@@ -22,12 +22,9 @@ Version:        1.9.2
 Release:        0
 Summary:        Packrat parser interpreter
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/textX/Arpeggio/
 Source:         https://github.com/textX/Arpeggio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/textX/Arpeggio/issues/57
-BuildRequires:  %{python_module pytest < 5.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +40,7 @@ Arpeggio) see textX
 
 %prep
 %setup -q -n Arpeggio-%{version}
-%autopatch -p1
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %python_build
