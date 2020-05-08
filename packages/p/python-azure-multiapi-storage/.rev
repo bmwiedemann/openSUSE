@@ -47,4 +47,12 @@
     <comment>- Resubmit with corrected changelog entry</comment>
     <requestid>735798</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01c79c37eeb4d540299336c111d751e3</srcmd5>
+    <version>0.3.2</version>
+    <time>1588971946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801197</requestid>
+  </revision>
 </revisionlist>
