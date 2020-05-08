@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  8 11:23:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.05.08
+  * downloader/http: Finish downloading once received data length
+    matches expected
+  * orf: Add support for more radio stations
+  * utils: Improve cookie files support
+
+-------------------------------------------------------------------
 Sat May  2 18:41:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.05.03
