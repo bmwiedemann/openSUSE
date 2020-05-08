@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-keyvault-secrets
-Version:        4.0.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Secrets Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-secrets/azure-keyvault-secrets-4.0.0.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-keyvault-secrets/azure-keyvault-secrets-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -34,9 +34,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.2.1
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -54,10 +56,10 @@ Azure Key Vault helps solve the following problems:
   manage, and deploy public and private SSL/TLS certificates
 
 %prep
-%setup -q -n azure-keyvault-secrets-4.0.0
+%setup -q -n azure-keyvault-secrets-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-secrets-4.0.0
+install -m 644 %{SOURCE1} %{_builddir}/azure-keyvault-secrets-%{version}
 %python_build
 
 %install
@@ -72,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/keyvault/secrets
 %{python_sitelib}/azure_keyvault_secrets-*.egg-info

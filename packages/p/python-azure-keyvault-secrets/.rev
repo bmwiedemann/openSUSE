@@ -20,4 +20,12 @@
   proper upgrade from previous version 4.0.0b3 (forwarded request 767733 from glaubitz)</comment>
     <requestid>767792</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e4f5b139eaa5773e0b7b2d753c6ecd2</srcmd5>
+    <version>4.1.0</version>
+    <time>1588971873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801172</requestid>
+  </revision>
 </revisionlist>
