@@ -89,4 +89,12 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment>- Fix build without python2</comment>
     <requestid>785567</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9bf17a9b85e680b6c4f7e0742a11f544</srcmd5>
+    <version>0.9.1</version>
+    <time>1588971760</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>800654</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-commonmark = %{version}
 Obsoletes:      python-commonmark < %{version}
 BuildArch:      noarch
@@ -60,6 +62,7 @@ CommonMark specification, using only native modules.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cmark
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,10 +71,16 @@ export LANG=en_US.UTF-8
 # On python2 we error out on unicode issues
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 setup.py test
 
+%post
+%python_install_alternative cmark
+
+%postun
+%python_uninstall_alternative cmark
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
-%python3_only %{_bindir}/cmark
+%python_alternative %{_bindir}/cmark
 
 %changelog
