@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-Glances
 Version:        3.1.4.1
 Release:        0
@@ -27,6 +28,7 @@ Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
+Patch3:         fix-tests.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module psutil >= 5.6.3}
@@ -42,9 +44,7 @@ Recommends:     python-curses
 Provides:       python-glances = %{version}
 Obsoletes:      python-glances < %{version}
 BuildArch:      noarch
-%ifpython3
 Provides:       glances
-%endif
 %python_subpackages
 
 %description

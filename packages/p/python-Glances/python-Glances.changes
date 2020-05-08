@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 18:46:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop python2
+- Add patch:
+  * fix-tests.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 14:09:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.4.1
