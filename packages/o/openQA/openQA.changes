@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May 07 19:25:24 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1588874206.b9aea9c2e:
+  * docs: Update Contributing docs regarding dependencies
+  * t: Remove "sleep 8" in full stack test after stabilization
+  * Remove comments to fix syntax highlighting and unnecessary blank line from fullstack test
+  * Adapt fullstack test to AJAX-based job status updates
+  * Load autoinst-log.txt without page reload in details tab
+  * Fix updating the info panel class and stopping the developer mode
+  * Update favicon on job state transition (without page reload)
+  * Avoid refreshing the whole test details page on job state transitions
+  * Remove debug message leading to "Use of uninitialized value [...]" warnings
+  * Fix get_last_test() in ObsRsync Plugin
+  * Convert DISTRI into lowercase before replacing variables
+  * Dependency cron 200507
+  * t: Delete obsolete 'full-stack.d' directory
+  * t: Remove unnecessary 't' prefix in temporary dirs
+  * t: Ensure full stack test run has not passed "shutdown" module
+  * t: Abbreviate 'wait_for_developer_console_contains_log_message' for nicer line wraps
+  * t: Properly export functions from Open::Test::FullstackUtils
+  * Use Test::Most instead of Test::More for convenience
+  * Let Mojo::UserAgent deal with WebSocket redirects
+  * Dependency cron 200506
+  * Fix missing_assets to ignore repos, not 'hidden assets'
+  * Add specific error messages for cache directory unspecified
+  * t: Reduce runtime of 25-cache-service.t with lower sleep periods
+  * t: Add timeout for cache service test internal wait
+  * t: Add more unique test messages to 25-cache-service.t
+  * Add convenience sub-package 'openQA-single-instance'
+  * docs: Mention installation of openQA-worker explicitly
+  * docs: Correct reference to main package as "openQA server package"
+  * docs: Simplify reference to minimum Leap/Fedora version
+  * The exporter is not needed for authentication modules
+  * Improve openqa-validate-yaml
+  * Prevent repeated import attempts in WebAPI::Controller::Session
+  * Use explicit 'return undef' in WebAPI::Controller::Session
+  * Validate job done event
+  * Refactor jobs tests into subtests
+  * Simplify WebAPI::Auth::OpenID
+  * Simplify WebAPI::Controller::Session with early returns
+  * Simplify WebAPI::Controller::Session
+  * Remove unused imports in WebAPI::Controller::Session
+
+-------------------------------------------------------------------
 Tue May 05 11:25:24 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1588677155.c96a967f7:
