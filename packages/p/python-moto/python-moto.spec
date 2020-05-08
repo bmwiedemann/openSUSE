@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-moto
 Version:        1.3.14
 Release:        0
@@ -86,7 +87,9 @@ BuildRequires:  %{python_module six > 1.9}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
+%if %{with python2}
 BuildRequires:  python-backports.tempfile
+%endif
 # /SECTION
 %ifpython2
 Requires:       python-backports.tempfile
