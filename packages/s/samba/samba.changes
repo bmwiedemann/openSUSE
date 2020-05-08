@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 10:33:43 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- libsmb: Don't try to find posix stat info in SMBC_getatr();
+  (bso#14101); (bsc#1169242);
+
+-------------------------------------------------------------------
 Wed Apr 29 15:48:50 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Move libdcerpc-server-core.so to samba-libs package, this was
