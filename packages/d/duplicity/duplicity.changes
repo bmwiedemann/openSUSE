@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May  8 00:44:51 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.13: 
+  + Fixed bug #1876778 - byte/str issues in megabackend.py.
+  + Fixed bug #1876446 - WebDAV backend creates only tiny or 0 Byte
+    files.
+  + Fixed bug #1875529 - Support hiding instead of deletin on B2.
+  + Fixed bug #1872332 - NameError in ssh_paramiko_backend.py.
+  + Fixed bug #1869921 - B2 backup resume fails for TypeError.
+  + - Enable additional pylint warnings. Make 1st pass at
+    correction.
+  + - Renamed globals to config to fix conflict with
+    __builtin__.globals().
+  + - Resolved conflict between duplicity.config and
+    testing.manual.config.
+  + - Normalized emacs mode line to have encoding:utf8 on all *.py
+    files.
+  + Fixed bug #1868414 - timeout parameter not passed to
+    BlobService for Azure backend.
+- Rebase duplicity-remove_shebang.patch.
+- Remove logic to handle the bzr revision appended to the version:
+  not needed anymore.
+- Add python3-setuptools_scm to BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Thu Mar 19 22:19:23 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.12:

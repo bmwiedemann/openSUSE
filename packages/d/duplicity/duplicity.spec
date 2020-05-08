@@ -16,16 +16,14 @@
 #
 
 
-%define version_base 0.8.12
-%define bzr_rev 1612
 Name:           duplicity
-Version:        %{version_base}.%{bzr_rev}
+Version:        0.8.13
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            http://duplicity.nongnu.org/
-Source:         https://code.launchpad.net/%{name}/0.8-series/%{version_base}/+download/%{name}-%{version}.tar.gz
+Source:         https://code.launchpad.net/%{name}/0.8-series/%{version}/+download/%{name}-%{version}.tar.gz
 Patch1:         duplicity-remove_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
@@ -33,6 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
 Requires:       gpg
 Requires:       python3-fasteners
 Requires:       python3-future
@@ -61,7 +60,6 @@ links.
 %patch1 -p1
 
 %build
-sed -i "s/revno = u'0'/revno = u'%{bzr_rev}'/" setup.py
 %python3_build
 
 %install
