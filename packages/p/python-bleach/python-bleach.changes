@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 07:12:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.5:
+  * * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.
+
+-------------------------------------------------------------------
 Wed Apr  1 11:18:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.4 (bsc#1168280, CVE-2020-6817):

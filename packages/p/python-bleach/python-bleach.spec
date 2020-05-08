@@ -19,23 +19,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bleach
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jsocol/bleach
 Source:         https://files.pythonhosted.org/packages/source/b/bleach/bleach-%{version}.tar.gz
 Patch0:         de-vendor.patch
 BuildRequires:  %{python_module html5lib >= 1.0.0}
-# https://github.com/mozilla/bleach/issues/459
-BuildRequires:  %{python_module pytest < 5.0}
-BuildRequires:  %{python_module pytest-runner >= 2.0}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-html5lib >= 1.0.0
+Requires:       python-packaging
 Requires:       python-six >= 1.9
 BuildArch:      noarch
 %python_subpackages
