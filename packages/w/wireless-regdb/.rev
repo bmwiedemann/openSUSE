@@ -351,4 +351,17 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
 - Update project url</comment>
     <requestid>787360</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7989b00cdc589f7e654247d89a51a857</srcmd5>
+    <version>20200429</version>
+    <time>1588971798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200429:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: update rules for US on 2.4/5G
+  * GB: Extend to cover DMG channels 5 &amp; 6
+  * wireless-regdb: Update regulatory rules for Singapore (SG)
+  * wireless-regdb: Update regulatory rules for Indonesia (ID)</comment>
+    <requestid>800673</requestid>
+  </revision>
 </revisionlist>

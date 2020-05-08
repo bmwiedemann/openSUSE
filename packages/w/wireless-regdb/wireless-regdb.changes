@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  6 10:52:49 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200429:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: update rules for US on 2.4/5G
+  * GB: Extend to cover DMG channels 5 & 6
+  * wireless-regdb: Update regulatory rules for Singapore (SG)
+  * wireless-regdb: Update regulatory rules for Indonesia (ID)
+
+-------------------------------------------------------------------
 Mon Mar 23 07:55:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20191029:
