@@ -1,7 +1,7 @@
 #
 # spec file for package graphene
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,7 +113,7 @@ This subpackage contains the development files for the Graphene library.
 %files -n libgraphene-devel
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/graphene-1.0/
-%{_prefix}/lib/installed-tests/
+%{_libexecdir}/installed-tests/
 %{_libdir}/libgraphene-1.0.so
 %{_libdir}/pkgconfig/graphene-1.0.pc
 %{_libdir}/pkgconfig/graphene-gobject-1.0.pc

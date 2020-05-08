@@ -80,4 +80,13 @@
     <comment></comment>
     <requestid>730443</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9eb3bb19f2d5f514a9dbb5e26bc82f9d</srcmd5>
+    <version>1.10.0</version>
+    <time>1588971833</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_libexecdir} instead of %{_prefix}/lib: follow the package
+  installer definition. (forwarded request 800450 from dimstar)</comment>
+    <requestid>800803</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 12:25:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_libexecdir} instead of %{_prefix}/lib: follow the package
+  installer definition.
+
+-------------------------------------------------------------------
 Mon Sep  9 08:41:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.0:
