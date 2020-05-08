@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-identity
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
@@ -35,8 +35,8 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
-Requires:       python-msal >= 1.0.0
 Requires:       python-msal < 2.0.0
+Requires:       python-msal >= 1.0.0
 Requires:       python-msal-extensions < 1.0.0
 Requires:       python-msal-extensions >= 0.1.3
 Requires:       python-six >= 1.6
@@ -65,7 +65,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/identity
 %{python_sitelib}/azure_identity-*.egg-info
