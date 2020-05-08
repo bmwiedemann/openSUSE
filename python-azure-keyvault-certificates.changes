@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 30 10:10:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.md to CHANGELOG.md in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jan 20 11:10:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
