@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu May  7 17:30:46 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.1:
+  * io-2.6.1 is meant to polish a few prominent bugs introduced unfortunately
+    in the coarse of code overhaul for io-2.6.0.
+  * Bug fixes:
+    - xlsopen: reinstate default OCT interface (reason that on systems w/o
+      Java or with non-matching Java bit width "no spreadsheet I/O support
+      was found" for .ods and .xlsx).
+    - ods*.m wrapper functions: properly implement output args (bug #58045).
+    - Wrong concatenation of indices when reading .xlsx with OCT interface.
+  * Still no fix for the XML functions :-(
+- Update to version 2.6.0:
+  * Bug fixes:
+    - Fixed some concealed bugs in getxmlattv.m & __OXS_spsh2oct__.m.
+    - dbfwrite.m: made more robust as regards heterogeneous data columns, just
+      skip them rather than abort.
+      Also fixed writing just one data row (bug #57669)
+    - read_namelist.m: fixed a minor typo.
+    - OCT interface: properly return negative values formatted as "(<value>)" 
+      (bug #57812).
+    - The XML functions xmlread.m and xmlwrite.m have been (temporarily)
+      removed (see bug #58004). Once that bug is fixed these functions will be
+      reinstated.
+  * Code improvements:
+    - Most user-visible spreadsheet I/O functions have been adapted such that:
+      * All supported spreadsheet formats / file types can be read and written
+        with the xls*.m functions. So it isn't required anymore to read
+        .xlsx/.xls with xlsread, and .ods with odsread, etc.
+      * The ods*.m functions still exist but now are mere wrappers for the
+        corresponding xls*.m functions. They are (softly) deprecated but will
+        be retained for a while (to at least somewhere in 2022 ?).
+        As they are mere wrappers they have all the functionality of the
+        corresponding xls*.m and previous ods*.m functions.
+      This has been done to cut down on code maintenance; it wasn't really
+      manageable to keep two separate function sets in sync that behind the
+      scenes provided close to 95 % overlapping internal functionality. The
+      choice for keeping xls*.m rather than ods*.m functions was made for
+      Matlab compatibility - that has no ods*.m functions.
+    - The xlsread.m help text now contains an extensive explanation of
+      spreadsheet I/O interfaces.
+    - The message indicating which interfaces were found is now silenced but
+      can be shown by adding an argument "verbose" to xlsread / xlsopen /
+      xlswrite. See the help for xlsread, xlsopen and xlswrite.
+  * Other changes
+    The previously separate READ-ODS.html and READ-XLS.html docs in the doc/
+    subdirectory have been replaced by a new combined html background document
+    rewritten from scratch: Spreadsheet-IO-in-Octave.html
+
+-------------------------------------------------------------------
 Wed Nov 27 00:45:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.4.13:
