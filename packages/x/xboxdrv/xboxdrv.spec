@@ -34,19 +34,13 @@ Patch1:         xboxdrv-scons3.patch
 #PATCH-FIX-OPENSUSE xboxdrv-add-new-device.patch malcolmlewis@opensuse.org -- Add new wireless controller device (0x02a9, "Microsoft X-Box pad v? (?)).
 Patch2:         xboxdrv-add-new-device.patch
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version} > 1320
-BuildRequires:  libboost_headers-devel
-Requires:       python2-dbus-python
-%else
-BuildRequires:  boost-devel
-Requires:       dbus-1-python
-%endif
 
 %description
 Xboxdrv is a Xbox/Xbox360 gamepad driver for Linux that works in
@@ -61,8 +55,7 @@ shouldn't be to hard to add if somebody is interested.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-# Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
-find . -name "xboxdrvctl" -exec sed -i 's|#!%{_bindir}/env python2|#!%{_bindir}/python3|' {} ";"
+
 cp -f %{SOURCE1} 50-xpad.conf
 cp -f %{SOURCE2} %{name}.conf
 cp -f %{SOURCE3} %{name}.service
@@ -88,6 +81,9 @@ install -Dpm 0644 %{name}.service %{buildroot}%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_sbindir}/
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
+#Drop python2 xboxdrvctl and just use systemd service or xboxdrv binary
+rm %{buildroot}%{_bindir}/%{name}ctl
+
 %pre
 %service_add_pre %{name}.service
 
@@ -107,7 +103,6 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{_sysconfdir}/modprobe.d/
 %config %{_sysconfdir}/modprobe.d/50-xpad.conf
 %{_bindir}/%{name}
-%{_bindir}/%{name}ctl
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_mandir}/man1/%{name}.1%{?ext_man}

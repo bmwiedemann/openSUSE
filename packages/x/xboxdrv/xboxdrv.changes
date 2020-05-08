@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 21:54:39 UTC 2020 - malcolmlewis@opensuse.org
+
+- Drop python2 xboxdrvctl and just use systemd service or xboxdrv
+  binary.
+
+-------------------------------------------------------------------
 Fri Apr 10 21:47:30 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add xboxdrv-add-new-device.patch: Add new wireless receiver
