@@ -114,4 +114,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>791845</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>84512be9a70afd00b5603983bb8221a3</srcmd5>
+    <version>1.21</version>
+    <time>1588972125</time>
+    <user>dimstar_suse</user>
+    <comment>fix installation after python2 removal (forwarded request 801753 from seife)</comment>
+    <requestid>801757</requestid>
+  </revision>
 </revisionlist>

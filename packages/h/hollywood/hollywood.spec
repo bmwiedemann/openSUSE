@@ -43,7 +43,8 @@ Recommends:     openssh-client
 Recommends:     speedometer
 Recommends:     tree
 Requires:       %name-data
-Requires:       python-Pygments
+# for /usr/bin/pygmentize
+Requires:       python3-Pygments
 Requires:       tmux
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -61,7 +62,6 @@ Recommends:     byobu
 Recommends:     caca-utils
 Recommends:     newsbeuter
 Requires:       perl-base
-Requires:       python
 Recommends:     rsstail
 # unavailable
 Recommends:     ticker
