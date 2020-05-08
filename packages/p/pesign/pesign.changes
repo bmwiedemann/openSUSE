@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 12:42:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_tmpfilesdir instead of %{_libexecdir}/tmpfiles.d.
+
+-------------------------------------------------------------------
 Wed Dec  4 02:38:05 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-boo1158197-fix-pesigncheck-gcc10.patch to remove the

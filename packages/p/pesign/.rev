@@ -297,4 +297,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment></comment>
     <requestid>753851</requestid>
   </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>d2cc23daeeb1ac7ba13473604fc6ebb9</srcmd5>
+    <version>113</version>
+    <time>1588971647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800528</requestid>
+  </revision>
 </revisionlist>

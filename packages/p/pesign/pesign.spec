@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ getent passwd pesign >/dev/null || useradd -r -g pesign -d %{_localstatedir}/lib
 
 %post
 %service_add_post pesign.service
-systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/pesign.conf || :
+systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 
 %postun
 %service_del_postun pesign.service
@@ -113,7 +113,7 @@ systemd-tmpfiles --create %{_libexecdir}/tmpfiles.d/pesign.conf || :
 %{_mandir}/man?/*
 %{_localstatedir}/lib/pesign
 %{_unitdir}/pesign.service
-%{_libexecdir}/tmpfiles.d/pesign.conf
+%{_tmpfilesdir}/pesign.conf
 %dir %{_libexecdir}/pesign
 %{_libexecdir}/pesign/pesign-authorize
 %dir %attr(0775,pesign,pesign) %{_sysconfdir}/pki/pesign
