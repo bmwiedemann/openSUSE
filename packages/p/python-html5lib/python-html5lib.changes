@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 07:41:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not collide with collections deprecation:
+  * collections-abc.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 12:31:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Restrict pytest to < 5.0 as it broke with 5.3 and upstream

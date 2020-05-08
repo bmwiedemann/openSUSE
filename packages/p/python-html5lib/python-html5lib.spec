@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5l
 # PATCH-FIX-UPSTREAM pytest4-mhroncok.patch gh#html5lib/html5lib-python#429 mcepl@suse.com
 # This patch makes testsuite pass with pytest4
 Patch0:         pytest4-mhroncok.patch
+Patch1:         collections-abc.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module datrie}
 BuildRequires:  %{python_module lxml}

@@ -163,4 +163,13 @@
   still didn't bother to merge support for even pytest 4+...</comment>
     <requestid>764655</requestid>
   </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>9afedb4baa89e9de80a63d33e72004d1</srcmd5>
+    <version>1.0.1</version>
+    <time>1588971739</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not collide with collections deprecation:
+  * collections-abc.patch</comment>
+    <requestid>800590</requestid>
+  </revision>
 </revisionlist>
