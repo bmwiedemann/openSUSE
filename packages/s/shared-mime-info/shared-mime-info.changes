@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May  6 16:52:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.0
+  + Port build system to meson, and ship test suite with tarball.
+  + Install ITS file to allow gettext to translate mime-type
+    descriptions.
+  + Add BPS and IPS patch formats.
+  + Lower weight for "use strict" and similar in the perl mimetype.
+  + Add new magic for Sega Mega Drive ROMs.
+  + Add Common Lisp mime-type.
+  + Rename text/x-tcl to text/tcl.
+  + Add text/vbscript.
+  + Add PySpread spreadsheet mime-types.
+  + Add Kotlin source mime-type.
+  + Add AVIF image mime-type.
+  + Split versions of the Audible audio mime types.
+  + Add *.spx glob for audio/x-speex+ogg.
+  + Add Apple System Profiler XML mime-type.
+- Adjust build dependencies: Add meson and xmlto, drop intltool.
+
+-------------------------------------------------------------------
 Sat Apr 11 17:07:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.15:

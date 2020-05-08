@@ -16,10 +16,10 @@
 #
 
 
-%define commitid b27eb88e4155d8fccb8bb3cd12025d5b
+%define commitid 0440063a2e6823a4b1a6fb2f2af8350f
 
 Name:           shared-mime-info
-Version:        1.15
+Version:        2.0
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
@@ -29,12 +29,13 @@ Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
 Source1:        macros.shared-mime-info
 
 BuildRequires:  glib2-devel
-BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  libxml2-devel
 # needed for xmllint
 BuildRequires:  libxml2-tools
+BuildRequires:  meson
 #BuildRequires:  translation-update-upstream
+BuildRequires:  xmlto
 # libgio-2_0-0 Requires: shared-mime-info, but this can't exist yet. We explicitly ignore this dependency here.
 #!BuildIgnore:  shared-mime-info
 # needed by update-mime-database
@@ -57,18 +58,17 @@ This package contains:
 #translation-update-upstream
 
 %build
-%configure \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 # Install rpm macros
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.shared-mime-info
 
 %check
-%make_build check
+%meson_test
 
 %filetriggerin -- %{_datadir}/mime
 export PKGSYSTEM_ENABLE_FSYNC=0
@@ -80,10 +80,11 @@ export PKGSYSTEM_ENABLE_FSYNC=0
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_bindir}/*
 %{_datadir}/mime/packages/*.xml
-%{_datadir}/pkgconfig/*.pc
+%{_libdir}/pkgconfig/*.pc
+%{_datadir}/gettext/its/shared-mime-info.*
 %ghost %{_datadir}/mime/[a-ms-vxX]*
 %{_mandir}/man?/*%{ext_man}
 %{_rpmmacrodir}/macros.shared-mime-info

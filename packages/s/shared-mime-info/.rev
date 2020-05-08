@@ -498,4 +498,28 @@
     <comment></comment>
     <requestid>793805</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c6b6a3a46a718335c99a73c054a956f4</srcmd5>
+    <version>2.0</version>
+    <time>1588971838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  + Port build system to meson, and ship test suite with tarball.
+  + Install ITS file to allow gettext to translate mime-type
+    descriptions.
+  + Add BPS and IPS patch formats.
+  + Lower weight for &quot;use strict&quot; and similar in the perl mimetype.
+  + Add new magic for Sega Mega Drive ROMs.
+  + Add Common Lisp mime-type.
+  + Rename text/x-tcl to text/tcl.
+  + Add text/vbscript.
+  + Add PySpread spreadsheet mime-types.
+  + Add Kotlin source mime-type.
+  + Add AVIF image mime-type.
+  + Split versions of the Audible audio mime types.
+  + Add *.spx glob for audio/x-speex+ogg.
+  + Add Apple System Profiler XML mime-type.
+- Adjust build dependencies: Add meson and xmlto, drop intltool.</comment>
+    <requestid>800818</requestid>
+  </revision>
 </revisionlist>
