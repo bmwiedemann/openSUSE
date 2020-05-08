@@ -1,13 +1,13 @@
---- abuse/blocking_debug_with_sub_coprocess
-+++ abuse/blocking_debug_with_sub_coprocess
+--- eg/abuse/blocking_debug_with_sub_coprocess
++++ eg/abuse/blocking_debug_with_sub_coprocess
 @@ -1,4 +1,4 @@
 -#!/opt/i386-linux/perl/bin/perl -w
 +#!/usr/bin/perl -w
  
  ## Submitted by Blair Zajac <blair@orcaware.com>
  
---- abuse/timers
-+++ abuse/timers
+--- eg/abuse/timers
++++ eg/abuse/timers
 @@ -1,4 +1,4 @@
 -#!/usr/local/lib/perl -w
 +#!/usr/bin/perl -w
