@@ -112,4 +112,12 @@
   * k_skip-broken-tests.patch</comment>
     <requestid>791098</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a068f9464037090248fe4aedc39e103d</srcmd5>
+    <version>0.7.0~rc4</version>
+    <time>1588971987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801309</requestid>
+  </revision>
 </revisionlist>

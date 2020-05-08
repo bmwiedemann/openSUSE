@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define realver 0.7.0rc1
+%define realver 0.7.0rc4
 Name:           python-knack
-Version:        0.7.0~rc1
+Version:        0.7.0~rc4
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
