@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 09:34:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.12:
+  * CVE-2020-7106: Lack of escaping of color items can lead to XSS
+    exposure (boo#1163749)
+  * Fix multiple graphing bugs and web UI issues
+  * Fix multiple warnings, PHP Exceptions and errors
+  * Content-Security-Policy prevents External Links from being opened
+  * Prevent runtime memory issues by increasing memory limit
+  * Improve SNMPv3 handling
+
+-------------------------------------------------------------------
 Sat Apr 11 13:03:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.11:

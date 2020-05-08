@@ -22,7 +22,7 @@
 %define cacti_dir %{apache_datadir}/cacti
 %endif
 Name:           cacti
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
@@ -52,8 +52,8 @@ Requires:       rrdtool
 Conflicts:      cacti-spine < %{version}
 Conflicts:      cacti-spine > %{version}
 Provides:       cacti-system
-Obsoletes:      cacti-PA
-Provides:       cacti-PA
+Obsoletes:      cacti-PA < %{version}
+Provides:       cacti-PA = %{version}
 BuildArch:      noarch
 %if 0%{?suse_version}
 BuildRequires:  apache2-devel

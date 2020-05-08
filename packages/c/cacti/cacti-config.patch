@@ -1,7 +1,7 @@
-Index: cacti-1.2.11/include/config.php
+Index: cacti-1.2.12/include/config.php
 ===================================================================
---- cacti-1.2.11.orig/include/config.php
-+++ cacti-1.2.11/include/config.php
+--- cacti-1.2.12.orig/include/config.php
++++ cacti-1.2.12/include/config.php
 @@ -44,17 +44,17 @@ $database_ssl_ca   = '';
   * must remain commented out.
   */
@@ -31,7 +31,7 @@ Index: cacti-1.2.11/include/config.php
  
  /*
   * The poller_id of this system.  set to `1` for the main cacti web server.
-@@ -69,25 +69,25 @@ $poller_id = 1;
+@@ -69,13 +69,13 @@ $poller_id = 1;
   * would be set to `/cacti/`.
   */
  
@@ -47,12 +47,7 @@ Index: cacti-1.2.11/include/config.php
  
  /*
   * Default Cookie domain - The cookie domain to be used for Cacti
-  */
- 
--$cacti_cookie_domain = 'cacti.net';
-+//$cacti_cookie_domain = 'cacti.net';
- 
- /*
+@@ -87,7 +87,7 @@ $cacti_session_name = 'Cacti';
   * Save sessions to a database for load balancing
   */
  
