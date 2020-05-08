@@ -67,4 +67,12 @@
 - Update %description from setup.py (forwarded request 767750 from glaubitz)</comment>
     <requestid>767839</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>099bc281af2c1843fffe7a0d028ac36d</srcmd5>
+    <version>10.1.0</version>
+    <time>1588971919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801186</requestid>
+  </revision>
 </revisionlist>
