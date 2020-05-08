@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 30 22:33:42 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Remove transient file .crates2.json during build 
+
+-------------------------------------------------------------------
 Wed Mar 25 09:24:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add ripgrep-11.0.2-reproducible-manpage.patch (boo#1100677)

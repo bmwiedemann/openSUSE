@@ -1,7 +1,7 @@
 #
 # spec file for package ripgrep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,7 @@ cargo install --path . --root=%{buildroot}%{_prefix}
 
 # remove residue crate file
 rm %{buildroot}%{_prefix}/.crates.toml
+rm -f %{buildroot}%{_prefix}/.crates2.json
 
 install -Dm 644 target/release/build/ripgrep-*/out/rg.1 %{buildroot}%{_mandir}/man1/rg.1
 install -Dm 644 target/release/build/ripgrep-*/out/rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
