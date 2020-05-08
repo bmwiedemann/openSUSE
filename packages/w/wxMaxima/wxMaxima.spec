@@ -18,7 +18,7 @@
 
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.03.1
+Version:        20.04.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -113,6 +113,7 @@ rm %{buildroot}%{_datadir}/%{tarname}/COPYING
 %{_datadir}/bash-completion/completions/wxmaxima
 %{_datadir}/metainfo/*.appdata.xml
 %{_mandir}/man1/wxmaxima*%{ext_man}
+%{_mandir}/*/man1/wxmaxima*%{ext_man}
 %{_datadir}/mime/packages/*.xml
 
 %files lang -f %{name}.lang
