@@ -2710,4 +2710,12 @@ Petr</comment>
 - Drop merged patch adapt-o3tl-span-to-removal-of-std-span-cbegin-et-al.patch</comment>
     <requestid>792421</requestid>
   </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>55785822b3b6c847f1e301b12d9585d0</srcmd5>
+    <version>6.4.3.2</version>
+    <time>1588971680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800578</requestid>
+  </revision>
 </revisionlist>

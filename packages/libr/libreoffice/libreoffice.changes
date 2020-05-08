@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 12:36:00 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix Bug 1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
+  * bsc1165870.diff
+
+-------------------------------------------------------------------
 Wed Apr  8 11:13:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 6.4.3.2:
@@ -36,7 +42,7 @@ Mon Mar  9 15:56:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Feb 19 11:46:11 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - fix_old_boost_spirit_namespace.patch: fixes build with older
-  boost versions by moving to modern Boost.Spirit namespace usage 
+  boost versions by moving to modern Boost.Spirit namespace usage
 
 -------------------------------------------------------------------
 Mon Feb 17 08:03:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -50,7 +56,7 @@ Mon Feb 17 08:03:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Wed Feb 12 11:03:39 UTC 2020 - Marina Latini <marina.latini@suse.com>
 
-- Fix autocorrect names for Italian 
+- Fix autocorrect names for Italian
   In Italian there are also other locales that should be included
   in this list like fur_IT lld_IT sc_IT and vec_IT
 
@@ -101,7 +107,7 @@ Wed Jan  8 12:29:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Sun Jan  5 03:59:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Set LANG during check; needed for a UTF8-related test to pass. 
+- Set LANG during check; needed for a UTF8-related test to pass.
 
 -------------------------------------------------------------------
 Thu Jan  2 10:05:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

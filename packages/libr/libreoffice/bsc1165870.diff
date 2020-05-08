@@ -1,0 +1,402 @@
+From b98f2d2d4f020d1d3b3271632ff4271872340f33 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=BCl=C5=9Fah=20K=C3=B6se?= <gulsah.kose@collabora.com>
+Date: Tue, 14 Apr 2020 15:49:28 +0300
+Subject: [PATCH] tdf#130058 Import shadow size.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: Ie1cee377a33567088fb76ea47f0e6fc51d47f0fa
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/92188
+Tested-by: Jenkins
+Reviewed-by: Gülşah Köse <gulsah.kose@collabora.com>
+---
+ drawinglayer/source/attribute/sdrshadowattribute.cxx  | 14 +++++++++++++-
+ include/drawinglayer/attribute/sdrshadowattribute.hxx |  2 ++
+ include/editeng/unoprnms.hxx                          |  2 ++
+ include/oox/drawingml/shapepropertymap.hxx            |  4 +++-
+ include/svx/sdr/primitive2d/sdrdecompositiontools.hxx |  4 +++-
+ include/svx/svddef.hxx                                |  4 +++-
+ include/svx/unoshprp.hxx                              |  4 +++-
+ oox/source/drawingml/effectproperties.cxx             | 16 ++++++++++++++++
+ oox/source/drawingml/effectproperties.hxx             |  2 ++
+ oox/source/drawingml/effectpropertiescontext.cxx      |  2 ++
+ oox/source/drawingml/shapepropertymap.cxx             |  4 +++-
+ oox/source/token/properties.txt                       |  2 ++
+ svx/source/sdr/primitive2d/sdrattributecreator.cxx    |  7 ++++++-
+ svx/source/sdr/primitive2d/sdrdecompositiontools.cxx  | 18 ++++++++++++++----
+ svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx     | 10 ++++++++--
+ svx/source/svdraw/svdattr.cxx                         |  2 ++
+ 16 files changed, 84 insertions(+), 13 deletions(-)
+
+diff --git a/drawinglayer/source/attribute/sdrshadowattribute.cxx b/drawinglayer/source/attribute/sdrshadowattribute.cxx
+index 0075cf4c2ba7..7957d4a5cc8e 100644
+--- a/drawinglayer/source/attribute/sdrshadowattribute.cxx
++++ b/drawinglayer/source/attribute/sdrshadowattribute.cxx
+@@ -32,14 +32,17 @@ namespace drawinglayer
+         public:
+             // shadow definitions
+             basegfx::B2DVector                  maOffset;                   // shadow offset 1/100th mm
++            basegfx::B2DVector                  maSize;                     // [0.0 .. 2.0]
+             double                              mfTransparence;             // [0.0 .. 1.0], 0.0==no transp.
+             basegfx::BColor                     maColor;                    // color of shadow
+ 
+             ImpSdrShadowAttribute(
+                 const basegfx::B2DVector& rOffset,
++                const basegfx::B2DVector& rSize,
+                 double fTransparence,
+                 const basegfx::BColor& rColor)
+             :   maOffset(rOffset),
++                maSize(rSize),
+                 mfTransparence(fTransparence),
+                 maColor(rColor)
+             {
+@@ -47,6 +50,7 @@ namespace drawinglayer
+ 
+             ImpSdrShadowAttribute()
+             :   maOffset(basegfx::B2DVector()),
++                maSize(basegfx::B2DVector()),
+                 mfTransparence(0.0),
+                 maColor(basegfx::BColor())
+             {
+@@ -54,12 +58,14 @@ namespace drawinglayer
+ 
+             // data read access
+             const basegfx::B2DVector& getOffset() const { return maOffset; }
++            const basegfx::B2DVector& getSize() const { return maSize; }
+             double getTransparence() const { return mfTransparence; }
+             const basegfx::BColor& getColor() const { return maColor; }
+ 
+             bool operator==(const ImpSdrShadowAttribute& rCandidate) const
+             {
+                 return (getOffset() == rCandidate.getOffset()
++                    && getSize() == rCandidate.getSize()
+                     && getTransparence() == rCandidate.getTransparence()
+                     && getColor() == rCandidate.getColor());
+             }
+@@ -74,10 +80,11 @@ namespace drawinglayer
+ 
+         SdrShadowAttribute::SdrShadowAttribute(
+             const basegfx::B2DVector& rOffset,
++            const basegfx::B2DVector& rSize,
+             double fTransparence,
+             const basegfx::BColor& rColor)
+         :   mpSdrShadowAttribute(ImpSdrShadowAttribute(
+-                rOffset, fTransparence, rColor))
++                rOffset, rSize, fTransparence, rColor))
+         {
+         }
+ 
+@@ -115,6 +122,11 @@ namespace drawinglayer
+             return mpSdrShadowAttribute->getOffset();
+         }
+ 
++        const basegfx::B2DVector& SdrShadowAttribute::getSize() const
++        {
++            return mpSdrShadowAttribute->getSize();
++        }
++
+         double SdrShadowAttribute::getTransparence() const
+         {
+             return mpSdrShadowAttribute->getTransparence();
+diff --git a/include/drawinglayer/attribute/sdrshadowattribute.hxx b/include/drawinglayer/attribute/sdrshadowattribute.hxx
+index 39b5acf59b73..c785a24f1e81 100644
+--- a/include/drawinglayer/attribute/sdrshadowattribute.hxx
++++ b/include/drawinglayer/attribute/sdrshadowattribute.hxx
+@@ -52,6 +52,7 @@ namespace drawinglayer
+             /// constructors/assignmentoperator/destructor
+             SdrShadowAttribute(
+                 const basegfx::B2DVector& rOffset,
++                const basegfx::B2DVector& rSize,
+                 double fTransparence,
+                 const basegfx::BColor& rColor);
+             SdrShadowAttribute();
+@@ -69,6 +70,7 @@ namespace drawinglayer
+ 
+             // data access
+             const basegfx::B2DVector& getOffset() const;
++            const basegfx::B2DVector& getSize() const;
+             double getTransparence() const;
+             const basegfx::BColor& getColor() const;
+         };
+diff --git a/include/editeng/unoprnms.hxx b/include/editeng/unoprnms.hxx
+index ca3b977afeee..5ce726375e6d 100644
+--- a/include/editeng/unoprnms.hxx
++++ b/include/editeng/unoprnms.hxx
+@@ -84,6 +84,8 @@
+ #define UNO_NAME_SHADOWCOLOR                    "ShadowColor"
+ #define UNO_NAME_SHADOWXDIST                    "ShadowXDistance"
+ #define UNO_NAME_SHADOWYDIST                    "ShadowYDistance"
++#define UNO_NAME_SHADOWSIZEX                    "ShadowSizeX"
++#define UNO_NAME_SHADOWSIZEY                    "ShadowSizeY"
+ #define UNO_NAME_SHADOWTRANSPARENCE             "ShadowTransparence"
+ 
+ #define UNO_NAME_EDGERADIUS                     "CornerRadius"
+diff --git a/include/oox/drawingml/shapepropertymap.hxx b/include/oox/drawingml/shapepropertymap.hxx
+index cc55b24e8ceb..a24ee49b5971 100644
+--- a/include/oox/drawingml/shapepropertymap.hxx
++++ b/include/oox/drawingml/shapepropertymap.hxx
+@@ -73,7 +73,9 @@ enum class ShapeProperty
+     FillBackground,
+     FillBitmapName,
+     ShadowXDistance,
+-    LAST = ShadowXDistance
++    ShadowSizeX,
++    ShadowSizeY,
++    LAST = ShadowSizeY
+ };
+ 
+ typedef o3tl::enumarray<ShapeProperty, sal_Int32> ShapePropertyIds;
+diff --git a/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx b/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
+index da3c54650746..844da339c111 100644
+--- a/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
++++ b/include/svx/sdr/primitive2d/sdrdecompositiontools.hxx
+@@ -71,7 +71,9 @@ namespace drawinglayer
+ 
+         Primitive2DContainer SVX_DLLPUBLIC createEmbeddedShadowPrimitive(
+             const Primitive2DContainer& rContent,
+-            const attribute::SdrShadowAttribute& rShadow);
++            const attribute::SdrShadowAttribute& rShadow,
++            sal_Int32 nGraphicTranslateX = 0,
++            sal_Int32 nGraphicTranslateY = 0);
+ 
+     } // end of namespace primitive2d
+ } // end of namespace drawinglayer
+diff --git a/include/svx/svddef.hxx b/include/svx/svddef.hxx
+index a8696559c4fd..188ade20d469 100644
+--- a/include/svx/svddef.hxx
++++ b/include/svx/svddef.hxx
+@@ -175,7 +175,9 @@ class SdrTextHorzAdjustItem;
+ #define SDRATTR_SHADOWTRANSPARENCE      TypedWhichId<SdrPercentItem>(SDRATTR_SHADOW_FIRST+ 4)            /*   1071 */ /*   1071 */ /*   1054 */ /* Pool V2 */
+ #define SDRATTR_SHADOW3D                TypedWhichId<SfxVoidItem>(SDRATTR_SHADOW_FIRST+ 5)               /*   1072 */ /*   1072 */ /*   1055 */ /* Pool V2 */
+ #define SDRATTR_SHADOWPERSP             TypedWhichId<SfxVoidItem>(SDRATTR_SHADOW_FIRST+ 6)               /*   1073 */ /*   1073 */ /*   1056 */ /* Pool V2 */
+-#define SDRATTR_SHADOW_LAST             (SDRATTR_SHADOWPERSP)                                            /* 1078   */ /* 1078   */ /* 1061   */ /* Pool V1: 1039 */
++#define SDRATTR_SHADOWSIZEX             TypedWhichId<SdrMetricItem>(SDRATTR_SHADOW_FIRST+ 7)
++#define SDRATTR_SHADOWSIZEY             TypedWhichId<SdrMetricItem>(SDRATTR_SHADOW_FIRST+ 8)
++#define SDRATTR_SHADOW_LAST             (SDRATTR_SHADOWSIZEY)                                            /* 1078   */ /* 1078   */ /* 1061   */ /* Pool V1: 1039 */
+ 
+ #define SDRATTR_CAPTION_FIRST           (SDRATTR_SHADOW_LAST + 1)                                        /* 1080   */ /* 1080   */ /* 1063   */ /* Pool V1: 1041 */
+ #define SDRATTR_CAPTIONTYPE             TypedWhichId<SdrCaptionTypeItem>(SDRATTR_CAPTION_FIRST+ 0)       /*   1080 */ /*   1080 */ /*   1063 */
+diff --git a/include/svx/unoshprp.hxx b/include/svx/unoshprp.hxx
+index 0861844be16d..54b8db4b2715 100644
+--- a/include/svx/unoshprp.hxx
++++ b/include/svx/unoshprp.hxx
+@@ -214,7 +214,9 @@
+     { OUString(UNO_NAME_SHADOWCOLOR),       SDRATTR_SHADOWCOLOR,        ::cppu::UnoType<sal_Int32>::get(),    0,      0}, \
+     { OUString(UNO_NAME_SHADOWTRANSPARENCE),SDRATTR_SHADOWTRANSPARENCE, ::cppu::UnoType<sal_Int16>::get(),    0,      0}, \
+     { OUString(UNO_NAME_SHADOWXDIST),       SDRATTR_SHADOWXDIST,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM}, \
+-    { OUString(UNO_NAME_SHADOWYDIST),       SDRATTR_SHADOWYDIST,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM},
++    { OUString(UNO_NAME_SHADOWYDIST),       SDRATTR_SHADOWYDIST,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM}, \
++    { OUString(UNO_NAME_SHADOWSIZEX),       SDRATTR_SHADOWSIZEX,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM}, \
++    { OUString(UNO_NAME_SHADOWSIZEY),       SDRATTR_SHADOWSIZEY,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM},
+ 
+ #define LINE_PROPERTIES_DEFAULTS\
+     { OUString(UNO_NAME_LINECAP),           XATTR_LINECAP,          ::cppu::UnoType<css::drawing::LineCap>::get(),     0,     0}, \
+diff --git a/oox/source/drawingml/effectproperties.cxx b/oox/source/drawingml/effectproperties.cxx
+index bbfee474b3f2..d1f07964b09e 100644
+--- a/oox/source/drawingml/effectproperties.cxx
++++ b/oox/source/drawingml/effectproperties.cxx
+@@ -23,6 +23,8 @@ void EffectShadowProperties::assignUsed(const EffectShadowProperties& rSourcePro
+ {
+     moShadowDist.assignIfUsed( rSourceProps.moShadowDist );
+     moShadowDir.assignIfUsed( rSourceProps.moShadowDir );
++    moShadowSx.assignIfUsed( rSourceProps.moShadowSx );
++    moShadowSy.assignIfUsed( rSourceProps.moShadowSy );
+     moShadowColor.assignIfUsed( rSourceProps.moShadowColor );
+ }
+ 
+@@ -48,6 +50,9 @@ void EffectProperties::pushToPropMap( PropertyMap& rPropMap,
+         if( it->msName == "outerShdw" )
+         {
+             sal_Int32 nAttrDir = 0, nAttrDist = 0;
++            sal_Int32 nAttrSizeX = 100000, nAttrSizeY = 100000; // If shadow size is %100=100000 (means equal to object's size), sx sy is not exists,
++                                                                // Default values of sx, sy should be 100000 in this case.
++
+             std::map< OUString, css::uno::Any >::const_iterator attribIt = it->maAttribs.find( "dir" );
+             if( attribIt != it->maAttribs.end() )
+                 attribIt->second >>= nAttrDir;
+@@ -56,6 +61,15 @@ void EffectProperties::pushToPropMap( PropertyMap& rPropMap,
+             if( attribIt != it->maAttribs.end() )
+                 attribIt->second >>= nAttrDist;
+ 
++            attribIt = it->maAttribs.find( "sx" );
++            if( attribIt != it->maAttribs.end() )
++                attribIt->second >>= nAttrSizeX;
++
++            attribIt = it->maAttribs.find( "sy" );
++            if( attribIt != it->maAttribs.end() )
++                attribIt->second >>= nAttrSizeY;
++
++            // Negative X or Y dist indicates left or up, respectively
+             // Negative X or Y dist indicates left or up, respectively
+             double nAngle = basegfx::deg2rad(static_cast<double>(nAttrDir) / PER_DEGREE);
+             sal_Int32 nDist = convertEmuToHmm( nAttrDist );
+@@ -65,6 +79,8 @@ void EffectProperties::pushToPropMap( PropertyMap& rPropMap,
+             rPropMap.setProperty( PROP_Shadow, true );
+             rPropMap.setProperty( PROP_ShadowXDistance, nXDist);
+             rPropMap.setProperty( PROP_ShadowYDistance, nYDist);
++            rPropMap.setProperty( PROP_ShadowSizeX, nAttrSizeX);
++            rPropMap.setProperty( PROP_ShadowSizeY, nAttrSizeY);
+             rPropMap.setProperty( PROP_ShadowColor, it->moColor.getColor(rGraphicHelper ) );
+             rPropMap.setProperty( PROP_ShadowTransparence, it->moColor.getTransparency());
+         }
+diff --git a/oox/source/drawingml/effectproperties.hxx b/oox/source/drawingml/effectproperties.hxx
+index 146214cc9191..092ca62669ae 100644
+--- a/oox/source/drawingml/effectproperties.hxx
++++ b/oox/source/drawingml/effectproperties.hxx
+@@ -24,6 +24,8 @@ struct EffectShadowProperties
+ {
+     OptValue< sal_Int64 > moShadowDist;
+     OptValue< sal_Int64 > moShadowDir;
++    OptValue< sal_Int64 > moShadowSx;
++    OptValue< sal_Int64 > moShadowSy;
+     Color moShadowColor;
+ 
+     /** Overwrites all members that are explicitly set in rSourceProps. */
+diff --git a/oox/source/drawingml/effectpropertiescontext.cxx b/oox/source/drawingml/effectpropertiescontext.cxx
+index 4c779e75f1ef..40c132f3fb2c 100644
+--- a/oox/source/drawingml/effectpropertiescontext.cxx
++++ b/oox/source/drawingml/effectpropertiescontext.cxx
+@@ -83,6 +83,8 @@ ContextHandlerRef EffectPropertiesContext::onCreateContext( sal_Int32 nElement,
+ 
+             mrEffectProperties.maShadow.moShadowDist = rAttribs.getInteger( XML_dist, 0 );
+             mrEffectProperties.maShadow.moShadowDir = rAttribs.getInteger( XML_dir, 0 );
++            mrEffectProperties.maShadow.moShadowSx = rAttribs.getInteger( XML_sx, 0 );
++            mrEffectProperties.maShadow.moShadowSy = rAttribs.getInteger( XML_sy, 0 );
+             return new ColorContext(*this, mrEffectProperties.m_Effects[nPos]->moColor);
+         }
+         break;
+diff --git a/oox/source/drawingml/shapepropertymap.cxx b/oox/source/drawingml/shapepropertymap.cxx
+index c6168be243ab..7a37c0641a93 100644
+--- a/oox/source/drawingml/shapepropertymap.cxx
++++ b/oox/source/drawingml/shapepropertymap.cxx
+@@ -49,7 +49,9 @@ static const ShapePropertyIds spnDefaultShapeIds =
+     PROP_FillHatch,
+     PROP_FillBackground,
+     PROP_FillBitmapName,
+-    PROP_ShadowXDistance
++    PROP_ShadowXDistance,
++    PROP_ShadowSizeX,
++    PROP_ShadowSizeY
+ };
+ 
+ } // namespace
+diff --git a/oox/source/token/properties.txt b/oox/source/token/properties.txt
+index f53b73f8b79e..1f1a785063d8 100644
+--- a/oox/source/token/properties.txt
++++ b/oox/source/token/properties.txt
+@@ -443,6 +443,8 @@ SelectedPage
+ Shadow
+ ShadowColor
+ ShadowFormat
++ShadowSizeX
++ShadowSizeY
+ ShadowTransparence
+ ShadowXDistance
+ ShadowYDistance
+diff --git a/svx/source/sdr/primitive2d/sdrattributecreator.cxx b/svx/source/sdr/primitive2d/sdrattributecreator.cxx
+index cb9c2f50c909..edad8cd21132 100644
+--- a/svx/source/sdr/primitive2d/sdrattributecreator.cxx
++++ b/svx/source/sdr/primitive2d/sdrattributecreator.cxx
+@@ -374,9 +374,14 @@ namespace drawinglayer
+                     const basegfx::B2DVector aOffset(
+                         static_cast<double>(rSet.Get(SDRATTR_SHADOWXDIST).GetValue()),
+                         static_cast<double>(rSet.Get(SDRATTR_SHADOWYDIST).GetValue()));
++
++                    const basegfx::B2DVector aSize(
++                        static_cast<double>(rSet.Get(SDRATTR_SHADOWSIZEX).GetValue()),
++                        static_cast<double>(rSet.Get(SDRATTR_SHADOWSIZEY).GetValue()));
++
+                     const Color aColor(rSet.Get(SDRATTR_SHADOWCOLOR).GetColorValue());
+ 
+-                    return attribute::SdrShadowAttribute(aOffset, static_cast<double>(nTransparence) * 0.01, aColor.getBColor());
++                    return attribute::SdrShadowAttribute(aOffset, aSize, static_cast<double>(nTransparence) * 0.01, aColor.getBColor());
+                 }
+             }
+ 
+diff --git a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+index 6787e0d5a322..d6822bfd1519 100644
+--- a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
++++ b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+@@ -481,16 +481,26 @@ namespace drawinglayer
+ 
+         Primitive2DContainer createEmbeddedShadowPrimitive(
+             const Primitive2DContainer& rContent,
+-            const attribute::SdrShadowAttribute& rShadow)
++            const attribute::SdrShadowAttribute& rShadow,
++            sal_Int32 nGraphicTranslateX,
++            sal_Int32 nGraphicTranslateY)
+         {
+             if(!rContent.empty())
+             {
+                 Primitive2DContainer aRetval(2);
+                 basegfx::B2DHomMatrix aShadowOffset;
+ 
+-                // prepare shadow offset
+-                aShadowOffset.set(0, 2, rShadow.getOffset().getX());
+-                aShadowOffset.set(1, 2, rShadow.getOffset().getY());
++                {
++                    if(rShadow.getSize().getX() != 100000)
++                    {
++                        // Scale the shadow
++                        aShadowOffset.translate(-nGraphicTranslateX, -nGraphicTranslateY);
++                        aShadowOffset.scale(rShadow.getSize().getX() * 0.00001, rShadow.getSize().getY() * 0.00001);
++                        aShadowOffset.translate(nGraphicTranslateX, nGraphicTranslateY);
++                    }
++
++                    aShadowOffset.translate(rShadow.getOffset().getX(), rShadow.getOffset().getY());
++                }
+ 
+                 // create shadow primitive and add content
+                 aRetval[0] = Primitive2DReference(
+diff --git a/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx b/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
+index fa8c554fa0be..676b26183b09 100644
+--- a/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
++++ b/svx/source/sdr/primitive2d/sdrgrafprimitive2d.cxx
+@@ -35,6 +35,7 @@ namespace drawinglayer
+         void SdrGrafPrimitive2D::create2DDecomposition(Primitive2DContainer& rContainer, const geometry::ViewInformation2D& /*aViewInformation*/) const
+         {
+             Primitive2DContainer  aRetval;
++            basegfx::B2DTuple aTranslateGrf;
+ 
+             // create unit outline polygon
+             const basegfx::B2DPolygon& aUnitOutline(basegfx::utils::createUnitPolygon());
+@@ -61,7 +62,10 @@ namespace drawinglayer
+                         getTransform(),
+                         getGraphicObject(),
+                         getGraphicAttr()));
+-
++                double fRotate = 0;
++                double fShearX = 0;
++                basegfx::B2DTuple aScaleGrf;
++                getTransform().decompose(aScaleGrf, aTranslateGrf, fRotate, fShearX);
+                 aRetval.push_back(xGraphicContentPrimitive);
+             }
+ 
+@@ -122,7 +126,9 @@ namespace drawinglayer
+             {
+                 aRetval = createEmbeddedShadowPrimitive(
+                     aRetval,
+-                    getSdrLFSTAttribute().getShadow());
++                    getSdrLFSTAttribute().getShadow(),
++                    aTranslateGrf.getX(),
++                    aTranslateGrf.getY());
+             }
+ 
+             rContainer.insert(rContainer.end(), aRetval.begin(), aRetval.end());
+diff --git a/svx/source/svdraw/svdattr.cxx b/svx/source/svdraw/svdattr.cxx
+index 0a757b343c86..31cf34a76c73 100644
+--- a/svx/source/svdraw/svdattr.cxx
++++ b/svx/source/svdraw/svdattr.cxx
+@@ -139,6 +139,8 @@ SdrItemPool::SdrItemPool(
+     rPoolDefaults[SDRATTR_SHADOWCOLOR       -SDRATTR_START]=new XColorItem(SDRATTR_SHADOWCOLOR, aNullCol);
+     rPoolDefaults[SDRATTR_SHADOWXDIST       -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWXDIST, 0);
+     rPoolDefaults[SDRATTR_SHADOWYDIST       -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWYDIST, 0);
++    rPoolDefaults[SDRATTR_SHADOWSIZEX       -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWSIZEX, 100000);
++    rPoolDefaults[SDRATTR_SHADOWSIZEY       -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWSIZEY, 100000);
+     rPoolDefaults[SDRATTR_SHADOWTRANSPARENCE-SDRATTR_START]=new SdrPercentItem(SDRATTR_SHADOWTRANSPARENCE, 0);
+     rPoolDefaults[SDRATTR_SHADOW3D          -SDRATTR_START]=new SfxVoidItem(SDRATTR_SHADOW3D    );
+     rPoolDefaults[SDRATTR_SHADOWPERSP       -SDRATTR_START]=new SfxVoidItem(SDRATTR_SHADOWPERSP );
+-- 
+2.16.4
+
