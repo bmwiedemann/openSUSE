@@ -362,4 +362,12 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment></comment>
     <requestid>791798</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2b4c9e805857ba54d5000bbf5a58081d</srcmd5>
+    <version>0.17.3</version>
+    <time>1588971803</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>800676</requestid>
+  </revision>
 </revisionlist>
