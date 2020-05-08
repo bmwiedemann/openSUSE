@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri May  1 20:35:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix CVE-2020-12105 (boo#1170452)
+- Introduce subpackage for bash-completion
+- Update to 8.0.9:
+  * Add bash completion support.
+  * Give more helpful error in case of Pulse servers asking for
+    TNCC.
+  * Sanitize non-canonical Legacy IP network addresses.
+  * Fix OpenSSL validation for trusted but invalid certificates
+    (CVE-2020-12105).
+  * Convert tncc-wrapper.py to Python 3, and include modernized
+    tncc-emulate.py as well. (!91)
+  * Disable Nagle's algorithm for TLS sockets, to improve
+    interactivity when tunnel runs over TCP rather than UDP.
+  * GlobalProtect: more resilient handling of periodic HIP check
+    and login arguments, and predictable naming of challenge forms.
+  * Work around PKCS#11 tokens which forget to set
+    CKF_LOGIN_REQUIRED.
+- Update to 8.0.8:
+  * Fix check of pin-sha256: public key hashes to be case sensitive
+  * Don't give non-functioning stderr to CSD trojan scripts.
+  * Fix crash with uninitialised OIDC token.
+- Update to 8.0.7:
+  * Don't abort Pulse connection when server-provided certificate
+    MD5 doesn't match.
+  * Fix off-by-one in check for bad GnuTLS versions, and add build
+    and run time checks.
+  * Don't abort connection if CSD wrapper script returns non-zero
+    (for now).
+  * Make --passtos work for protocols that use ESP, in addition
+    to DTLS.
+  * Convert tncc-wrapper.py to Python 3, and include modernized
+    tncc-emulate.py as well.
+
+-------------------------------------------------------------------
 Wed Jan  8 13:17:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove tncc-wrapper.py script as it is python2 only bsc#1157446

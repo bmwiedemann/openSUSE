@@ -327,4 +327,12 @@ No LGPL-2.1 &quot;only&quot; licenses found. Fedora also uses LGPL-2.1 &quot;or 
     <comment>- Remove tncc-wrapper.py script as it is python2 only bsc#1157446</comment>
     <requestid>761851</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9934beecf794b3bb36b80552f2607310</srcmd5>
+    <version>8.09</version>
+    <time>1588971663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800574</requestid>
+  </revision>
 </revisionlist>

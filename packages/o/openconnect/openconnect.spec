@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        8.05
+Version:        8.09
 Release:        0
 Summary:        Open client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
@@ -90,6 +90,19 @@ by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
 
 This packages provides documentation and help files for openconnect
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          Productivity/Networking/Security
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (openconnect and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
+
+
+
 %lang_package
 
 %prep
@@ -117,6 +130,10 @@ rm %{buildroot}%{_libexecdir}/%{name}/*android.sh
 # remove py2 only script due to python2 removal
 rm %{buildroot}%{_libexecdir}/%{name}/tncc-wrapper.py
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openconnect/vpnc-script
+# 
+install -d %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}/etc/bash_completion.d/openconnect.bash %{buildroot}%{_datadir}/bash-completion/completions/openconnect.bash
+
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
@@ -154,6 +171,9 @@ make %{?_smp_mflags} check
 %doc %{_docdir}/%{name}/images/*.png
 %doc %{_docdir}/%{name}/images/*.svg
 %doc %{_docdir}/%{name}/inc/*.tmpl
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/openconnect.bash
 
 %files lang -f %{name}.lang
 
