@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 09:25:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.12:
+  * Failed host lookup causes spine to crash
+
+-------------------------------------------------------------------
 Sat Apr 11 13:11:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.11:
