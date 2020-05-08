@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  6 14:24:46 CEST 2020 - tiwai@suse.de
+
+- Split plugins in alsa-plugin package to each subpackage
+  (boo#1171276):
+  now alsa-plugins is a meta package that requires only the
+  fundamental speexrate and upmix plugins
+- Add documentation for aaf plugin
+- Minor spec cleanups
+
+-------------------------------------------------------------------
 Fri Mar 13 14:55:59 CET 2020 - tiwai@suse.de
 
 - Update to alsa-plugins 1.2.2:

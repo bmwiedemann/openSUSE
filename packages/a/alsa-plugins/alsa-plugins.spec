@@ -25,7 +25,7 @@
 Name:           alsa-plugins
 Version:        1.2.2
 Release:        0
-Summary:        Extra Plug-Ins for the ALSA Library
+Summary:        Extra Plug-Ins for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Url:            http://www.alsa-project.org/
@@ -47,12 +47,60 @@ BuildRequires:  pkgconfig(speexdsp) >= 1.2
 %ifarch s390x
 Recommends:     %{name}-32bit = %{version}
 %endif
+Requires:       %{name}-speexrate
+Requires:       %{name}-upmix
 
 %description
-This package contains the extra plug-ins for the ALSA library.
+This is a meta package installing a few sub-packages for extra plug-ins
+for ALSA library.
+
+%package oss
+Summary:        Plug-Ins for ALSA Library to Access OSS Devices
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description oss
+This package contains I/O and control plugins to access OSS devices
+for ALSA library.
+
+%package upmix
+Summary:        PCM Up-mix Plug-In for ALSA Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description upmix
+This package contains a PCM filter plugin that performs multi-channel
+upmixing for ALSA library.
+
+%package vdownmix
+Summary:        PCM Virtual Down-mix Plug-In for ALSA Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description vdownmix
+This package contains a PCM filter plugin that performs virtual down-mixing
+for ALSA library.
+
+%package usb-stream
+Summary:        PCM I/O Plug-In for ALSA Library to access USB USx2y audio
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description usb-stream
+This package contains a PCM I/O plugin to access USB USx2y audio devices
+for ALSA library.
+
+%package arcam-av
+Summary:        Arcam AV Amplifier Plug-In for ALSA Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description arcam-av
+This package contains a control plugin to access Arcam AV amplifier device
+for ALSA library.
 
 %package jack
-Summary:        JACK I/O Plug-In for the ALSA Library
+Summary:        JACK I/O Plug-In for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       jack
@@ -62,10 +110,10 @@ Recommends:     %{name}-jack-32bit = %{version}
 
 %description jack
 This package contains the JACK (Jack Audio Connection Kit) I/O plug-in
-for the ALSA library.
+for ALSA library.
 
 %package pulse
-Summary:        Pulseaudio Plug-In for the ALSA Library
+Summary:        Pulseaudio Plug-In for ALSA Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       pulseaudio
@@ -78,19 +126,19 @@ pulseaudio is a networked sound server for Linux and other Unix like
 operating systems and Microsoft Windows. It is intended to be an
 improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
 
-This package contains the polypaudio I/O plug-in for the ALSA library.
+This package contains the polypaudio I/O plug-in for ALSA library.
 
 %package maemo
-Summary:        Maemo Plug-Ins for the ALSA Library
+Summary:        Maemo Plug-Ins for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description maemo
-This package contains the ALSA-library plug-ins using maemo SDK for
+This package contains ALSA-library plug-ins using maemo SDK for
 Nokia 770.
 
 %package samplerate
-Summary:        Samplerate Plug-In for the ALSA Library
+Summary:        Samplerate Plug-In for ALSA Library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 %ifarch s390x
@@ -98,11 +146,11 @@ Recommends:     %{name}-samplerate-32bit = %{version}
 %endif
 
 %description samplerate
-This package contains the sample rate converter plugin for the ALSA
+This package contains the sample rate converter plugin for ALSA
 library using libsamplerate.
 
 %package speex
-Summary:        Speex Prerocessor Plug-In for the ALSA Library
+Summary:        Speex Prerocessor Plug-In for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 %ifarch s390x
@@ -110,36 +158,45 @@ Recommends:     %{name}-speex-32bit = %{version}
 %endif
 
 %description speex
-This package contains the Speex preprocessor plugin for the ALSA
+This package contains the Speex preprocessor plugin for ALSA
 library using libspeexdsp.
 
 %package a52
-Summary:        A52 Output Plug-In for the ALSA Library
+Summary:        A52 Output Plug-In for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description a52
-This package contains the A52 (aka AC3) output plug-in for the ALSA library.
+This package contains the A52 (aka AC3) output plug-in for ALSA library.
+
+%package speexrate
+Summary:        Rate Converter Plug-In for ALSA Library using Speex
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description speexrate
+This package contains the sample rate converter plugin for ALSA
+library using Speex sample rate converter.
 
 %package lavrate
-Summary:        Rate Converter Plug-In for the ALSA Library using libavcodec
+Summary:        Rate Converter Plug-In for ALSA Library using libavcodec
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Provides:       alsa-plugins-lavcrate = %{version}
 Obsoletes:      alsa-plugins-lavcrate < %{version}
 
 %description lavrate
-This package contains the sample rate converter plugin for the ALSA
+This package contains the sample rate converter plugin for ALSA
 library using libavcodec.
 
 %package aaf
-Summary:        AVTP Audio Format PCM Plug-In for the ALSA Library
+Summary:        AVTP Audio Format PCM Plug-In for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description aaf
 This package contains the AVTP AUdio Format (AAF) I/O plug-in
-for the ALSA library.
+for ALSA library.
 
 %prep
 %setup -q
@@ -171,39 +228,75 @@ fi
 exit 0
 
 %files
-%defattr(-, root, root)
+%license COPYING
+
+%files oss
 %license COPYING
 %doc doc/README-pcm-oss
-%doc doc/README-arcam-av
-%doc doc/upmix.txt
-%doc doc/vdownmix.txt
-%doc doc/speexrate.txt
 %dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_ctl_oss.so
 %{_libdir}/alsa-lib/libasound_module_pcm_oss.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%{_datadir}/alsa/alsa.conf.d/50-oss.conf
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%{_sysconfdir}/alsa/conf.d/50-oss.conf
+
+%files upmix
+%license COPYING
+%doc doc/upmix.txt
+%dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_pcm_upmix.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%{_datadir}/alsa/alsa.conf.d/60-upmix.conf
+%{_sysconfdir}/alsa/conf.d/60-upmix.conf
+
+%files vdownmix
+%license COPYING
+%doc doc/vdownmix.txt
+%dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_pcm_vdownmix.so
-%{_libdir}/alsa-lib/libasound_module_pcm_usb_stream.so
-%{_libdir}/alsa-lib/libasound_module_rate_speexrate*.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%{_datadir}/alsa/alsa.conf.d/60-vdownmix.conf
+%{_sysconfdir}/alsa/conf.d/60-vdownmix.conf
+
+%files arcam-av
+%license COPYING
+%doc doc/README-arcam-av
+%dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_ctl_arcam_av.so
 %dir %{_datadir}/alsa/alsa.conf.d
 %dir %{_sysconfdir}/alsa
 %dir %{_sysconfdir}/alsa/conf.d
-%{_datadir}/alsa/alsa.conf.d/10-speexrate.conf
 %{_datadir}/alsa/alsa.conf.d/50-arcam-av-ctl.conf
-%{_datadir}/alsa/alsa.conf.d/50-oss.conf
-%{_datadir}/alsa/alsa.conf.d/60-upmix.conf
-%{_datadir}/alsa/alsa.conf.d/60-vdownmix.conf
-%{_datadir}/alsa/alsa.conf.d/98-usb-stream.conf
-%{_sysconfdir}/alsa/conf.d/10-speexrate.conf
 %{_sysconfdir}/alsa/conf.d/50-arcam-av-ctl.conf
-%{_sysconfdir}/alsa/conf.d/50-oss.conf
-%{_sysconfdir}/alsa/conf.d/60-upmix.conf
-%{_sysconfdir}/alsa/conf.d/60-vdownmix.conf
+
+%files speexrate
+%license COPYING
+%doc doc/speexrate.txt
+%dir %{_libdir}/alsa-lib
+%{_libdir}/alsa-lib/libasound_module_rate_speexrate*.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%{_datadir}/alsa/alsa.conf.d/10-speexrate.conf
+%{_sysconfdir}/alsa/conf.d/10-speexrate.conf
+
+%files usb-stream
+%license COPYING
+%dir %{_libdir}/alsa-lib
+%{_libdir}/alsa-lib/libasound_module_pcm_usb_stream.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%{_datadir}/alsa/alsa.conf.d/98-usb-stream.conf
 %{_sysconfdir}/alsa/conf.d/98-usb-stream.conf
 
 %files jack
-%defattr(-, root, root)
 %license COPYING
 %doc doc/README-jack
 %{_libdir}/alsa-lib/libasound_module_pcm_jack.so
@@ -214,7 +307,6 @@ exit 0
 %{_sysconfdir}/alsa/conf.d/50-jack.conf
 
 %files pulse
-%defattr(-, root, root)
 %license COPYING
 %doc doc/README-pulse
 %{_libdir}/alsa-lib/libasound_module_ctl_pulse.so
@@ -229,7 +321,6 @@ exit 0
 %ghost %{_sysconfdir}/alsa/conf.d/99-pulseaudio-default.conf
 
 %files maemo
-%defattr(-, root, root)
 %license COPYING
 %doc doc/README-maemo
 %{_libdir}/alsa-lib/libasound_module_ctl_dsp_ctl.so
@@ -241,7 +332,6 @@ exit 0
 %{_sysconfdir}/alsa/conf.d/98-maemo.conf
 
 %files samplerate
-%defattr(-, root, root)
 %license COPYING.GPL
 %doc doc/samplerate.txt
 %{_libdir}/alsa-lib/libasound_module_rate_samplerate*.so
@@ -252,7 +342,6 @@ exit 0
 %{_sysconfdir}/alsa/conf.d/10-samplerate.conf
 
 %files speex
-%defattr(-, root, root)
 %license COPYING
 %doc doc/speexdsp.txt
 %{_libdir}/alsa-lib/libasound_module_pcm_speex.so
@@ -263,7 +352,6 @@ exit 0
 %{_sysconfdir}/alsa/conf.d/60-speex.conf
 
 %files a52
-%defattr(-, root, root)
 %license COPYING
 %doc doc/a52.txt
 %{_libdir}/alsa-lib/libasound_module_pcm_a52.so
@@ -274,7 +362,6 @@ exit 0
 %{_sysconfdir}/alsa/conf.d/60-a52-encoder.conf
 
 %files lavrate
-%defattr(-, root, root)
 %license COPYING
 %doc doc/lavrate.txt
 %{_libdir}/alsa-lib/libasound_module_rate_lavrate.so
@@ -290,9 +377,8 @@ exit 0
 
 %if %{build_aaf}
 %files aaf
-%defattr(-, root, root)
 %license COPYING
-# %doc doc/aaf.txt
+%doc doc/aaf.txt
 %{_libdir}/alsa-lib/libasound_module_pcm_aaf.so
 %endif
 
