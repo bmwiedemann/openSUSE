@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-ai-textanalytics
-Version:        1.0.0b1
+Version:        1.0.0b4
 Release:        0
 Summary:        Azure Text Analytics client library for Python
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.1.0
+Requires:       python-azure-core >= 1.4.0
 Requires:       python-msrest >= 0.6.0
 Requires:       python-six >= 1.6
 Conflicts:      python-azure-sdk <= 2.0.0
@@ -71,7 +71,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 }
 
 %files %{python_files}
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/ai/textanalytics
 %{python_sitelib}/azure_ai_textanalytics-*.egg-info
