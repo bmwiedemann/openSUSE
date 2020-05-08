@@ -1,7 +1,7 @@
 #
 # spec file for package libmirage
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           libmirage
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 URL:            http://cdemu.sf.net/about/libmirage/
 
