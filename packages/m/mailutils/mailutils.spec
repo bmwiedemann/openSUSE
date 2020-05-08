@@ -401,14 +401,14 @@ fi
 %{_bindir}/sieve
 %dir %{_libexecdir}/mailutils/
 %{_libexecdir}/mailutils/mailutils-*
-%dir %{_libexecdir}/python*/site-packages/mailutils/
-%{_libexecdir}/python*/site-packages/mailutils/*.p*
-%dir %{_libexecdir}/python*/site-packages/mailutils/__pycache__/
-%{_libexecdir}/python*/site-packages/mailutils/__pycache__/*
+%dir %{python3_sitelib}/mailutils/
+%{python3_sitelib}/mailutils/*.p*
+%dir %{python3_sitelib}/mailutils/__pycache__/
+%{python3_sitelib}/mailutils/__pycache__/*
 %dir %{_libdir}/mailutils/
 %{_libdir}/mailutils/*.so
-%dir %{_libdir}/python*/site-packages/mailutils/
-%{_libdir}/python*/site-packages/mailutils/c_api.so
+%dir %{python3_sitearch}/mailutils/
+%{python3_sitearch}/mailutils/c_api.so
 
 %files mh
 %dir %{_bindir}/mu-mh/

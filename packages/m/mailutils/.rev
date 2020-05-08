@@ -142,4 +142,12 @@
   * Also comment out the variable tls_available as not used anywhere</comment>
     <requestid>798514</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>c69ec9557dd4ba3f74cd1852a06d2b79</srcmd5>
+    <version>3.8</version>
+    <time>1588971820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800762</requestid>
+  </revision>
 </revisionlist>
