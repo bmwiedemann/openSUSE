@@ -41,4 +41,13 @@
     <comment>- add healthcheck.patch to disarm too_slow healthcheck random fails</comment>
     <requestid>764684</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>87e406addeb41b0c36e191bf0e38da07</srcmd5>
+    <version>3.0.0</version>
+    <time>1588971733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with pytest5:
+  * pytest5.patch</comment>
+    <requestid>800588</requestid>
+  </revision>
 </revisionlist>

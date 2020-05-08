@@ -25,9 +25,9 @@ License:        MIT
 URL:            https://github.com/python-hyper/hpack
 Source:         https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{version}.tar.gz
 Patch0:         healthcheck.patch
+Patch1:         pytest5.patch
 BuildRequires:  %{python_module hypothesis}
-# https://github.com/python-hyper/hpack/issues/168
-BuildRequires:  %{python_module pytest < 5.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +41,7 @@ automatically enables the use of nghttp2 if it’s available.
 
 %prep
 %setup -q -n hpack-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 export LC_ALL="en_US.UTF-8"

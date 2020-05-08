@@ -1,0 +1,21 @@
+From 97207a9e88f906cf8e4198aec20b24ef97764486 Mon Sep 17 00:00:00 2001
+From: Seth Michael Larson <lars4839@umn.edu>
+Date: Fri, 22 Nov 2019 10:50:51 -0600
+Subject: [PATCH] Automatically merge Dependabot PRs with Mergify (#175)
+
+---
+ test/test_table.py    |  2 +-
+ 5 files changed, 14 insertions(+), 11 deletions(-)
+
+index d77c30a..ca4729b 100644
+--- a/test/test_table.py
++++ b/test/test_table.py
+@@ -46,7 +46,7 @@ def test_get_by_index_out_of_range(self):
+             tbl.get_by_index(off + 2)
+ 
+         assert (
+-            "InvalidTableIndex: Invalid table index %d" % (off + 2) in str(e)
++            "Invalid table index %d" % (off + 2) in str(e.value)
+         )
+ 
+     def test_repr(self):

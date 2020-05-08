@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 07:37:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with pytest5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 13:24:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add healthcheck.patch to disarm too_slow healthcheck random fails
