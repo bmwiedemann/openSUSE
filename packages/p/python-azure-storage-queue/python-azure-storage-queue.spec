@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-storage-queue
-Version:        12.1.0
+Version:        12.1.1
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
@@ -71,7 +71,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.md README.md
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/storage/queue
 %{python_sitelib}/azure_storage_queue-*.egg-info
