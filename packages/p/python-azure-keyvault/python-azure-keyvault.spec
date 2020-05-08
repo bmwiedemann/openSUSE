@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-keyvault
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Client Library
 License:        MIT
@@ -32,9 +32,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-keyvault-keys >= 4.0
+Requires:       python-azure-keyvault-certificates >= 4.1
+Requires:       python-azure-keyvault-keys >= 4.1
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
-Requires:       python-azure-keyvault-secrets >= 4.0
+Requires:       python-azure-keyvault-secrets >= 4.1
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
@@ -72,6 +73,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %files %{python_files}
 %defattr(-,root,root,-)
 %license LICENSE.txt
+%doc CHANGELOG.md README.md
 %{python_sitelib}/azure_keyvault-*.egg-info
 
 %changelog
