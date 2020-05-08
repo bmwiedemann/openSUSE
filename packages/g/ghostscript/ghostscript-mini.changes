@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:09:39 CEST 2020 - jsmeix@suse.de
+
+- The version upgrade to 9.52 fixes in particular
+  CVE-2020-12268: jbic2dec: heap-based buffer overflow
+  in jbig2_image_compose (bsc#1170603)
+- Version upgrade to 9.52
+  Highlights in this release include:
+  * The 9.52 release replaces the 9.51 release after a problem
+    was reported with 9.51 which warranted the quick turnaround.
+    Thus, like 9.51, 9.52 is primarily a maintenance release,
+    consolidating the changes we introduced in 9.50.
+  * IMPORTANT: We have forked LittleCMS2 into LittleCMS2mt
+    (the "mt" indicating "multi-thread").
+    LCMS2 is not thread-safe, and cannot be made thread-safe
+    without breaking the ABI. Our fork will be thread-safe and
+    include performance enhancements (these changes have all
+    been offered and rejected upstream). We will maintain
+    compatibility between Ghostscript and LCMS2 for a time,
+    but not in perpetuity. If there is sufficient interest,
+    our fork will be available as its own package separately
+    from Ghostscript (and MuPDF).
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes:
+  * New option -dALLOWPSTRANSPARENCY: The transparency compositor
+    (and related features), whilst we are improving it, remains
+    sensitive to being driven correctly, and incorrect use
+    can have unexpected/undefined results. Hence, as part of
+    improving security, we limited access to these operators,
+    originally using the -dSAFER feature. As we made "SAFER"
+    the default mode, that became unacceptable, hence the
+    new option -dALLOWPSTRANSPARENCY which enables access
+    to the operators, cf.
+    https://www.ghostscript.com/doc/9.52/Use.htm#ALLOWPSTRANSPARENCY
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.52/News.htm
+  For details see the News.htm and History9.htm files.
+- Version upgrade to 9.51
+  Highlights in this release include:
+  * 9.51 is primarily a maintainance release, consolidating
+    the changes we introduced in 9.50.
+  * We have continued our work on code hygiene for this release,
+    with a focus on the static analysis tool Coverity
+    (from Synopsys, Inc) and we are now maintaining a policy of
+    zero Coverity issues in the Ghostscript/GhostPDL source base.
+  * IMPORTANT: In consultation with a representative of
+    OpenPrinting (http://www.openprinting.org/) it is our
+    intention to deprecate and, in the not distant future,
+    remove the OpenPrinting Vector/Raster Printer Drivers
+    (that is, the opvp and oprp devices).
+    If you rely on either of these devices, please get in touch
+    with us (i.e. Ghostscript upstream), so we can discuss your
+    use case, and revise our plans accordingly.
+  * We (i.e. Ghostscript upstream) are in the process of forking
+    LittleCMS, cf. the other release notes entries below.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.51/News.htm
+  For details see the News.htm and History9.htm files.
+- Version upgrade to 9.50
+  Highlights in this release include:
+  * The change to version 9.50 follows recognition
+    of the extent and importance of the file access control
+    redesign/reimplementation outlined below.
+  * The file access control capability (enable with -dSAFER)
+    has been completely rewritten, with a ground-up rethink
+    of the design. For more details, see: "SAFER" at
+    https://www.ghostscript.com/doc/9.50/Use.htm#Safer
+  * It is important to note that -dSAFER now only enables the
+    file access controls, and no longer applies restrictions
+    to standard Postscript functionality (specifically,
+    restrictions on setpagedevice). If your application relies
+    on these Postscript restrictions, see "OLDSAFER" at
+    https://www.ghostscript.com/doc/9.50/Use.htm#OldSafer
+    and please get in touch, as we do plan to remove those
+    Postscript restrictions unless we have reason not to.
+  IMPORTANT: File access controls are now enabled by default.
+    In order to run Ghostscript without these controls,
+    see "NOSAFER" at
+    https://www.ghostscript.com/doc/9.50/Use.htm#NoSafer
+  * We (i.e. Ghostscript upstream) are in the process of forking
+    LittleCMS, cf. the other release notes entries below.
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  Incompatible changes:
+  * There are a couple of subtle incompatibilities between the old
+    and new SAFER implementations. Firstly, as mentioned above,
+    SAFER now leaves standard Postcript functionality unchanged
+    (except for the file access limitations). Secondly, the
+    interaction with save/restore operations, see "SAFER" at
+    https://www.ghostscript.com/doc/9.50/Use.htm#Safer
+  * The following is not strictly speaking new to 9.50,
+    as not much has changed since 9.27 in this area,
+    but for those who don't upgrade with every release:
+    The process of "tidying" the Postscript name space should have
+    removed only non-standard and undocumented operators.
+    Nevertheless, it is possible that any integrations or utilities
+    that rely on those non-standard and undocumented operators
+    may stop working, or may change behaviour.
+    If you encounter such a case, please contact us
+    (i.e. Ghostscript upstream, either the #ghostscript IRC channel
+     or the gs-devel mailing list would be best), and we'll work
+    with you to either find an alternative solution or return the
+    previous functionality, if there is genuinely no other option.
+    One case we know this has occurred is GSView 5 (and earlier).
+    GSView 5 support for PDF files relied upon internal use only
+    features which are no longer available. GSView 5 will still
+    work as previously for Postscript files. For PDF files,
+    users are encouraged to look at MuPDF https://www.mupdf.com/
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.50/News.htm
+  For details see the News.htm and History9.htm files.
+- CVE-2019-10216.patch
+  gs-CVE-2019-14811-885444fc.patch
+  gs-CVE-2019-14817-cd1b1cac.patch
+  openjpeg4gs-CVE-2018-6616-8ee33522.patch
+  are fixed in the version 9.52 upstream sources.
+
+-------------------------------------------------------------------
+Fri Jan 31 17:26:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use system openjpeg2 on Tumbleweed/Factory.
+
+-------------------------------------------------------------------
+Mon Sep 23 08:24:49 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Made ghostscript profile enforcing and limit it to the ghostscript
+  binaries (bsc#1150338)
+
+-------------------------------------------------------------------
 Mon Sep 16 11:58:41 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch gs-CVE-2019-14811-885444fc.patch to fix bsc#1146882
@@ -31,6 +162,11 @@ Mon Aug 12 11:32:08 UTC 2019 - Dr. Werner Fink <werner@suse.de>
   forceput/superexec in .buildfont1 is still accessible
   https://bugzilla.suse.com/show_bug.cgi?id=1144621 bsc#1144621
   https://bugs.ghostscript.com/show_bug.cgi?id=701394
+
+-------------------------------------------------------------------
+Wed May  8 08:46:43 UTC 2019 - jsegitz@suse.com
+
+- Set AA profile to complain and added fixes for ps2epsi (boo#1134327)
 
 -------------------------------------------------------------------
 Thu Apr  4 14:37:09 CEST 2019 - jsmeix@suse.de
@@ -980,6 +1116,11 @@ Tue Sep  9 16:06:31 CEST 2014 - jsmeix@suse.de
 - ppc64le-support.patch is no longer needed because
   it is fixed in the upstream sources.
 - Removed trailing whitespaces in spec file and changes file.
+
+-------------------------------------------------------------------
+Mon Aug 18 15:12:28 UTC 2014 - meissner@suse.com
+
+- gs does not seem to require libopenssl-devel for building.
 
 -------------------------------------------------------------------
 Thu Mar 27 12:21:55 CET 2014 - jsmeix@suse.de

@@ -71,7 +71,7 @@ URL:            https://www.ghostscript.com/
 # so that we keep additionally the previous version number to upgrade from the previous version:
 # Starting SLE12/rpm-4.10, one can use tildeversions: 9.15~rc1.
 #Version:        9.25pre26rc1
-Version:        9.27
+Version:        9.52
 Release:        0
 # Normal version for Ghostscript releases is the upstream version:
 # tarball_version is used below to specify the directory via "setup -n":
@@ -83,7 +83,7 @@ Release:        0
 # Separated built_version needed in case of Ghostscript release candidates e.g. "define built_version 9.15".
 # For Ghostscript releases built_version and version are the same (i.e. the upstream version):
 #define built_version %{version}
-%define built_version 9.27
+%define built_version 9.52
 # Source0...Source9 is for sources from upstream:
 # Special URLs for Ghostscript release candidates:
 # see https://github.com/ArtifexSoftware/ghostpdl-downloads/releases
@@ -95,21 +95,13 @@ Release:        0
 #Source0:        ghostscript-%{tarball_version}.tar.gz
 # Normal URLs for Ghostscript releases:
 # URL for Source0:
-# wget -O ghostscript-9.27.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27.tar.gz
+# wget -O ghostscript-9.52.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.gz
 # URL for MD5 checksums:
-# wget -O gs927.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/MD5SUMS
-# MD5 checksum for Source0: c3990a504a3a23b9babe9de00ed6597d  ghostscript-9.27.tar.gz
+# wget -O gs952.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/MD5SUMS
+# MD5 checksum for Source0: 0f6964ab9b83a63b7e373f136243f901 ghostscript-9.52.tar.gz
 Source0:        ghostscript-%{version}.tar.gz
 Source1:        apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
-# Patch0 Add commit from openjpeg upstream to fix CVE-2018-6616
-Patch0:         openjpeg4gs-CVE-2018-6616-8ee33522.patch
-# Patch1 Add commit from of upstream to fix CVE-2019-10216
-Patch1:         CVE-2019-10216.patch
-# Patch1 Add commit from ghostscript upstream to fix CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
-Patch2:         gs-CVE-2019-14811-885444fc.patch
-# Patch2 Add commit from ghostscript upstream to fix CVE-2019-14817
-Patch3:         gs-CVE-2019-14817-cd1b1cac.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Source100...Source999 is for sources from SUSE which are not intended for upstream:
@@ -117,6 +109,8 @@ Patch3:         gs-CVE-2019-14817-cd1b1cac.patch
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball:
 Patch100:       remove-zlib-h-dependency.patch
+# Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
+# additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
 # RPM dependencies:
 # Additional RPM Provides of the ghostscript-library packages in openSUSE 11.4 from
@@ -289,21 +283,14 @@ This package contains the development files for Ghostscript.
 # Be quiet when unpacking and
 # use a directory name matching Source0 to make it work also for ghostscript-mini:
 %setup -q -n ghostscript-%{tarball_version}
-# Patch0 Add commit from openjpeg upstream to fix CVE-2018-6616
-# openjpeg4gs-CVE-2018-6616-8ee33522.patch
-%patch0
-# Patch1 Add commit from of upstream to fix CVE-2019-10216
-%patch1 -p0
-# Patch1 Add commit from ghostscript upstream to fix CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
-%patch2 -p1
-# Patch2 Add commit from ghostscript upstream to fix CVE-2019-14817
-%patch3 -p1
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball.
 # Again use the zlib sources from Ghostscript upstream
 # and disable remove-zlib-h-dependency.patch because
 # Ghostscript 9.21 does no longer build this way:
 #patch100 -p1 -b remove-zlib-h-dependency.orig
+# Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
+# additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 %patch101 -p1
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052

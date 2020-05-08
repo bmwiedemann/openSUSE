@@ -391,4 +391,12 @@
     <comment></comment>
     <requestid>769481</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ea42da010d7772917a930ee5e2ba37c8</srcmd5>
+    <version>9.52</version>
+    <time>1588971776</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.52 which is primarily a general security upgrade that fixes in particular CVE-2020-12268 (bsc#1170603)</comment>
+    <requestid>800666</requestid>
+  </revision>
 </revisionlist>
