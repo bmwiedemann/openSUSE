@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 06:48:55 UTC 2020 - Michael Chang <mchang@suse.com>
+
+- Fix boot failure as journaled data not get drained due to abrupt power
+  off after grub-install (bsc#1167756)
+  * grub-install-force-journal-draining-to-ensure-data-i.patch 
+
+-------------------------------------------------------------------
 Thu Apr 16 13:35:10 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix executable stack in grub-probe and other grub utility (bsc#1169137)
