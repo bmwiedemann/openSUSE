@@ -578,4 +578,12 @@
     <comment></comment>
     <requestid>798837</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>57819bab8506018994001215de8471a7</srcmd5>
+    <version>3.36.2.1</version>
+    <time>1588971825</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 800609 from iznogood)</comment>
+    <requestid>800799</requestid>
+  </revision>
 </revisionlist>
