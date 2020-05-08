@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:49:42 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable SLE only patches for Leap (jsc#SLE-11850).
+
+-------------------------------------------------------------------
 Tue Mar 24 14:30:55 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Update xrdp-bsc965647-allow-admin-choose-desktop.patch: 

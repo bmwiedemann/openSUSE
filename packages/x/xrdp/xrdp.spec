@@ -106,7 +106,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch5 -p1
 %patch6 -p1
 %patch11 -p1
-%if ! 0%{?is_opensuse}
+%if 0%{?sle_version}
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
