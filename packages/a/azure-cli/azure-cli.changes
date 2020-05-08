@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 08:30:25 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.5.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  2 10:04:25 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
