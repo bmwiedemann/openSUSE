@@ -85,4 +85,14 @@ Accidentally packaged and older version. Sorry!</comment>
   * Update headers from Video SDK 9.1 release</comment>
     <requestid>750896</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>24ee53b70cd96240ec07b6c61f2cabc9</srcmd5>
+    <version>9.1.23.1</version>
+    <time>1588971810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.1.23.1:
+  * Add primary context management functions
+</comment>
+    <requestid>800711</requestid>
+  </revision>
 </revisionlist>
