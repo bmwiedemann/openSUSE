@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  5 16:36:45 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix build with curl 7.70.0:
+  * Revert commit c443fb7bf8a87ba8ab02b9a6af9e140cabc0ab0d which
+    introduces test_method_after_redirect() test.
+- Add python-tornado6-httpclient-test.patch
+
+-------------------------------------------------------------------
 Wed Mar 11 10:47:24 UTC 2020 - pgajdos@suse.com
 
 - version update to 6.0.4

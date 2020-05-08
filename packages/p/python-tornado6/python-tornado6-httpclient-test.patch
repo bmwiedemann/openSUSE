@@ -1,0 +1,74 @@
+diff -PpuriN tornado-6.0.4/tornado/simple_httpclient.py tornado-6.0.4-mod/tornado/simple_httpclient.py
+--- tornado-6.0.4/tornado/simple_httpclient.py	2020-03-02 20:21:37.000000000 +0100
++++ tornado-6.0.4-mod/tornado/simple_httpclient.py	2020-05-05 17:52:46.375282118 +0200
+@@ -626,17 +626,14 @@ class _HTTPConnection(httputil.HTTPMessa
+             )
+             new_request.max_redirects = self.request.max_redirects - 1
+             del new_request.headers["Host"]
+-            # https://tools.ietf.org/html/rfc7231#section-6.4
+-            #
+-            # The original HTTP spec said that after a 301 or 302
+-            # redirect, the request method should be preserved.
+-            # However, browsers implemented this by changing the
+-            # method to GET, and the behavior stuck. 303 redirects
+-            # always specified this POST-to-GET behavior (arguably 303
+-            # redirects should change *all* requests to GET, but
+-            # libcurl only does this for POST so we follow their
+-            # example).
+-            if self.code in (301, 302, 303) and self.request.method == "POST":
++            # http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.4
++            # Client SHOULD make a GET request after a 303.
++            # According to the spec, 302 should be followed by the same
++            # method as the original request, but in practice browsers
++            # treat 302 the same as 303, and many servers use 302 for
++            # compatibility with pre-HTTP/1.1 user agents which don't
++            # understand the 303 status.
++            if self.code in (302, 303):
+                 new_request.method = "GET"
+                 new_request.body = None
+                 for h in [
+diff -PpuriN tornado-6.0.4/tornado/test/httpclient_test.py tornado-6.0.4-mod/tornado/test/httpclient_test.py
+--- tornado-6.0.4/tornado/test/httpclient_test.py	2020-03-02 20:21:37.000000000 +0100
++++ tornado-6.0.4-mod/tornado/test/httpclient_test.py	2020-05-05 17:53:39.259950459 +0200
+@@ -126,7 +126,7 @@ class AllMethodsHandler(RequestHandler):
+     def method(self):
+         self.write(self.request.method)
+ 
+-    get = head = post = put = delete = options = patch = other = method  # type: ignore
++    get = post = put = delete = options = patch = other = method  # type: ignore
+ 
+ 
+ class SetHeaderHandler(RequestHandler):
+@@ -322,32 +322,6 @@ Transfer-Encoding: chunked
+         )
+         self.assertEqual(response.body, b"Put body: ")
+ 
+-    def test_method_after_redirect(self):
+-        # Legacy redirect codes (301, 302) convert POST requests to GET.
+-        for status in [301, 302, 303]:
+-            url = "/redirect?url=/all_methods&status=%d" % status
+-            resp = self.fetch(url, method="POST", body=b"")
+-            self.assertEqual(b"GET", resp.body)
+-
+-            # Other methods are left alone.
+-            for method in ["GET", "OPTIONS", "PUT", "DELETE"]:
+-                resp = self.fetch(url, method=method, allow_nonstandard_methods=True)
+-                self.assertEqual(utf8(method), resp.body)
+-            # HEAD is different so check it separately.
+-            resp = self.fetch(url, method="HEAD")
+-            self.assertEqual(200, resp.code)
+-            self.assertEqual(b"", resp.body)
+-
+-        # Newer redirects always preserve the original method.
+-        for status in [307, 308]:
+-            url = "/redirect?url=/all_methods&status=307"
+-            for method in ["GET", "OPTIONS", "POST", "PUT", "DELETE"]:
+-                resp = self.fetch(url, method=method, allow_nonstandard_methods=True)
+-                self.assertEqual(method, to_unicode(resp.body))
+-            resp = self.fetch(url, method="HEAD")
+-            self.assertEqual(200, resp.code)
+-            self.assertEqual(b"", resp.body)
+-
+     def test_credentials_in_url(self):
+         url = self.get_url("/auth").replace("http://", "http://me:secret@")
+         response = self.fetch(url)

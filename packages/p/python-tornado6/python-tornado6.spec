@@ -23,11 +23,12 @@ Version:        6.0.4
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
-URL:            http://www.tornadoweb.org
+URL:            https://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
 Patch1:         tornado-testsuite_timeout.patch
 Patch2:         skip-failing-tests.patch
 Patch3:         ignore-resourcewarning-doctests.patch
+Patch4:         python-tornado6-httpclient-test.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
