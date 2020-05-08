@@ -294,4 +294,13 @@
 - Update to version 0.332:</comment>
     <requestid>796289</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0c7653cbe2b6b0c7deb501360cabbc1c</srcmd5>
+    <version>0.335</version>
+    <time>1588971792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.335:
+  * Updated pci, usb and vendor ids.</comment>
+    <requestid>800672</requestid>
+  </revision>
 </revisionlist>
