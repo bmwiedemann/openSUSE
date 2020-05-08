@@ -538,4 +538,14 @@
   roundcubemail-1.4.3-config_dir.patch</comment>
     <requestid>778032</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8c86060801aaf38f8c7c5dbdcb8564f7</srcmd5>
+    <version>1.4.4</version>
+    <time>1588972120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4
+- adjusted/renamed roundcubemail-1.4.3-config_dir.patch to
+  roundcubemail-1.4.4-config_dir.patch</comment>
+    <requestid>801770</requestid>
+  </revision>
 </revisionlist>

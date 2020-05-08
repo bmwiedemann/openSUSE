@@ -1,7 +1,7 @@
-Index: roundcubemail-1.4.3/program/include/iniset.php
+Index: roundcubemail-1.4.4/program/include/iniset.php
 ===================================================================
---- roundcubemail-1.4.3.orig/program/include/iniset.php
-+++ roundcubemail-1.4.3/program/include/iniset.php
+--- roundcubemail-1.4.4.orig/program/include/iniset.php
++++ roundcubemail-1.4.4/program/include/iniset.php
 @@ -28,7 +28,7 @@ if (!defined('INSTALL_PATH')) {
  }
  
