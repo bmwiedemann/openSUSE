@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon May  4 11:17:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove bash conflict from busybox-sh as bash got fixed
+
+-------------------------------------------------------------------
+Mon Apr 27 15:13:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split busybox-sh from busybox-ash as workaround for broken
+  update-alternatives usage in bash
+
+-------------------------------------------------------------------
+Sun Apr 19 07:54:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix update-alternatives usage
+
+-------------------------------------------------------------------
+Sat Apr 18 06:38:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use update-alternatives for sh
+
+-------------------------------------------------------------------
+Fri Apr 17 09:41:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add conflicts for files to busybox-misc
+
+-------------------------------------------------------------------
+Wed Apr 15 07:08:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing requires for busybox-sh
+
+-------------------------------------------------------------------
+Sat Mar 14 09:03:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
