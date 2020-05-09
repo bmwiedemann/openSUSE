@@ -27,17 +27,13 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           freerdp
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch boo#1169748
-Patch0:         fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch
-# PATCH-FIX-UPSTREAM fix-freerdp-2.0.0-usbdk-build.patch boo#1169679
-Patch1:         fix-freerdp-2.0.0-usbdk-build.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel

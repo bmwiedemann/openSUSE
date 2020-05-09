@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri May  8 09:51:06 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.1.0
+
+  * Fixed CVEs:
+    - CVE-2020-11039
+    - CVE-2020-11038
+    - CVE-2020-11043
+    - CVE-2020-11040
+    - CVE-2020-11041
+    - CVE-2020-11019
+    - CVE-2020-11017
+    - CVE-2020-11018
+
+  * Fixed leak and crashing issues:
+    - gh#FreeRDP/FreeRDP#6129
+    - gh#FreeRDP/FreeRDP#6128
+    - gh#FreeRDP/FreeRDP#6127
+    - gh#FreeRDP/FreeRDP#6110
+    - gh#FreeRDP/FreeRDP#6081
+    - gh#FreeRDP/FreeRDP#6077
+
+  * Noteworthy features and improvements:
+    - Fixed sound issues (gh#FreeRDP/FreeRDP#6043)
+    - New expert command line options /tune and /tune-list to modify all client
+      settings in a generic way.
+    - Fixes for smartcard cache, this improves compatibility of smartcard devices
+      with newer smartcard channel.
+    - Shadow server can now be instructed to listen to multiple interfaces.
+    - Improved server certificate support (gh#FreeRDP/FreeRDP#6052)
+    - Various fixes for wayland client (fullscreen, mouse wheel, ...)
+    - Fixed large mouse pointer support, now mouse pointers > 96x96 pixel are visible.
+    - USB redirection command line improvements (filter options)
+    - Various translation improvements for android and ios clients
+
+- Removed upstream patches fix-freerdp-2.0.0-usbdk-build.patch
+  and fix-URBDRC_DEVICE_ADD_FLAG-definitions.patch
+
+-------------------------------------------------------------------
 Fri Apr 17 12:51:02 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated and reviewed make command and added fix-freerdp-2.0.0-usbdk-build.patch
