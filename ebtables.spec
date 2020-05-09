@@ -1,7 +1,7 @@
 #
 # spec file for package ebtables
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Requires(pre):  %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 A firewalling tool to transparently filter network traffic passing a

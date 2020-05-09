@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  5 10:15:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Revert last /bin/bash -> /bin/sh change
+
+-------------------------------------------------------------------
+Wed Apr 29 14:05:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /bin/sh for ebtables.systemd
+- Don't hard require systemd, we don't need that in a container
+
+-------------------------------------------------------------------
 Fri Jan 10 14:26:56 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - rename /usr/lib/ebtables helper file to /usr/lib/ebtables-helper
