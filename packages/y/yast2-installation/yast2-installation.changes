@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 15:54:11 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Restore missing icons for ssh import and image deployment
+  auto clients (bsc#1168123).
+- 4.2.42
+
+-------------------------------------------------------------------
 Mon Apr 20 12:10:19 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Force the use of en_US.UTF-8 when running firstboot or the
