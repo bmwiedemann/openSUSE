@@ -265,4 +265,12 @@ Fixes bnc#745619 (forwarded request 108469 from plater)</comment>
     <comment>- Update to rosegarden xerxes version 19.06</comment>
     <requestid>708943</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>2d60d6b5e9bc61fb41f7a3446d208a7b</srcmd5>
+    <version>19.06</version>
+    <time>1589046749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801815</requestid>
+  </revision>
 </revisionlist>

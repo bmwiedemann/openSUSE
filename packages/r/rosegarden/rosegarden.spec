@@ -61,7 +61,7 @@ Requires:       dssi
 Requires:       xsynth-dssi
 Requires:       ladspa
 Requires:       ladspa-swh-plugins
-Requires:       lilypond
+Requires:       lilypond-fonts-common >= 2.20
 Requires:       jack
 Recommends:     qsynth
 Recommends:     fluidsynth-dssi
@@ -82,6 +82,8 @@ home recording environments.
 %patch2
 # When we build svn we need to execute bootstrap.sh
 #sh bootstrap.sh
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
 #export DEBUG_LADSPA
