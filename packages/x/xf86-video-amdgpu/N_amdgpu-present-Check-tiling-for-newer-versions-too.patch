@@ -1,0 +1,32 @@
+From: Takashi Iwai <tiwai@suse.de>
+Subject: present: Check tiling for newer versions, too
+Patch-mainline: Never, temporary workaround
+References: bsc#1169222
+
+This is essentially a partial revert of the commit a2b32e72fdaf
+  present: Don't check tiling parameters with DC & DRM minor version >= 31
+
+that caused a crash when DPMS is changed while an external HDMI
+monitor is connected on the laptop.
+
+Note that it's a temporary workaround until the actual cause gets
+fixed in the kernel DRM side.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+---
+ src/amdgpu_present.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/src/amdgpu_present.c
++++ b/src/amdgpu_present.c
+@@ -305,7 +305,8 @@ amdgpu_present_check_flip(RRCrtcPtr crtc
+ 			return FALSE;
+ 	}
+ 
+-	if (!dc_enabled || info->dri2.pKernelDRMVersion->version_minor < 31) {
++	/* FIXME: reverted the DRM minor version check below (bsc#1169222) */
++	if (1 /*!dc_enabled || info->dri2.pKernelDRMVersion->version_minor < 31*/) {
+ 		/* The kernel driver doesn't handle flipping between BOs with
+ 		 * different tiling parameters correctly
+ 		 */

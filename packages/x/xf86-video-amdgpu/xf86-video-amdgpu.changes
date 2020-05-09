@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 12:46:02 CEST 2020 - tiwai@suse.de
+
+- N_amdgpu-present-Check-tiling-for-newer-versions-too.patch:
+  * fix crash with external HDMI and DPMS change (bsc#1169222)
+
+-------------------------------------------------------------------
 Thu Jan  9 23:39:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fno-common.patch

@@ -32,6 +32,7 @@ Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
 Patch0:         u_fno-common.patch
+Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -66,6 +67,7 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fiv
