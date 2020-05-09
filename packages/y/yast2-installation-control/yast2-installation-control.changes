@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 07:35:40 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Control file schema improvements (bsc#1170886)
+-- Allow optional types for string and map objects
+-- Allow type specification without namespace
+-- Add type specification with 't' shortcut
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Feb 24 14:52:05 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Allow specifying the default preselected modules in the offline
