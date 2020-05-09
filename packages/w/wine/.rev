@@ -3529,4 +3529,20 @@
 - Fix file list for %arm and aarch64</comment>
     <requestid>798934</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>b418fd5e75cf2879fa6c422c1097fce8</srcmd5>
+    <version>5.8</version>
+    <time>1589046762</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.8 development release
+  - Support for Plug &amp; Play device notifications.
+  - More support for building with Clang in MSVC mode.
+  - Still more progress on the WineD3D Vulkan backend.
+  - Initial implementation of a GIF encoder.
+  - Vulkan spec update.
+  - Various bug fixes.
+- update staging to 5.8 release
+- remove patch.txt: was upstream fix</comment>
+    <requestid>802002</requestid>
+  </revision>
 </revisionlist>
