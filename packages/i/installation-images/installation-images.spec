@@ -85,6 +85,15 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+%if "%flavor" == "MicroOSNG"
+# build for both Leap and SLE
+%if 0%{?sle_version}
+%ifnarch %ix86
+%define theme MicroOSNG
+%endif
+%endif
+%endif
+
 %if "%flavor" == "MicroOS"
 # don't build on Leap for now
 %if 0%{?is_opensuse} && !0%{?sle_version}
@@ -166,6 +175,18 @@ BuildRequires:  distribution-logos-openSUSE-Kubic
 # Kubic is based on MicroOS but we don't want this to show
 # note: keep this in sync with the Kubic settings in etc/config
 %global product_name openSUSE-Kubic
+%endif
+
+%if "%theme" == "MicroOSNG"
+%define with_storage_ng 1
+%define with_ssl_hmac 0
+%define branding_skelcd   MicroOSNG
+%define branding_systemd  SLE
+%define branding_plymouth SLE
+%define branding_grub2    SLE
+%define branding_gfxboot  SLE
+%define config_bootmenu_no_upgrade 1
+BuildRequires:  MicroOSNG-release
 %endif
 
 %if "%theme" == "MicroOS"
@@ -616,7 +637,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.468
+Version:        14.470
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

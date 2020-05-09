@@ -1,4 +1,23 @@
 --------------------------------------------------------------------
+Wed May 6 11:43:07 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#374
+- support MicroOSNG (bsc#1170885)
+- 14.470
+
+-------------------------------------------------------------------
+Wed May  6 11:36:32 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- prepare for MicroOSNG
+
+--------------------------------------------------------------------
+Mon May 4 12:17:22 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#373
+- beware of bash using update-alternatives
+- 14.469
+
+--------------------------------------------------------------------
 Wed Apr 29 10:38:42 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#372
