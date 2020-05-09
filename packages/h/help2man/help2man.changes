@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:58:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.47.15:
+  * Use the package name and version as the default for --source
+    (was program)
+  * Support packages in version strings without the GNU or Free
+    prefix
+  * Allow an optional second dash to separate the package name from
+    the version for multi-word packages:
+    "program - package name - version"
+
+-------------------------------------------------------------------
 Sat Apr 25 11:19:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - help2man 1.47.14:
