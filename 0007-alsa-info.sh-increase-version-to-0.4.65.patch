@@ -1,0 +1,25 @@
+From 2cfeffb6e80db3fa39054f74badac33f9539233a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 4 May 2020 10:05:41 +0200
+Subject: [PATCH 7/7] alsa-info.sh: increase version to 0.4.65
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsa-info/alsa-info.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/alsa-info/alsa-info.sh b/alsa-info/alsa-info.sh
+index 1bf0421e0db3..c1849159120c 100755
+--- a/alsa-info/alsa-info.sh
++++ b/alsa-info/alsa-info.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-SCRIPT_VERSION=0.4.64
++SCRIPT_VERSION=0.4.65
+ CHANGELOG="http://www.alsa-project.org/alsa-info.sh.changelog"
+ 
+ #################################################################################
+-- 
+2.16.4
+
