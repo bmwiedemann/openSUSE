@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  9 08:10:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7:
+  * Add IT translation. @albanobattistella
+  * Fix incorrect handling of system wide options when multiple
+    drivers are defined. @jlhertel
+  * Add option to change default config directories. @jlhertel
+  * Add code of conduct. @jlhertel
+
+-------------------------------------------------------------------
 Fri Feb 14 11:53:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial changelog entry for version 1.6.1

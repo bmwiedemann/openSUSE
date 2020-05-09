@@ -17,27 +17,26 @@
 
 
 Name:           adriconf
-Version:        1.6.1
+Version:        1.7
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
 Group:          System/Packages
-URL:            https://github.com/jlHertel/adriconf
-Source0:        https://github.com/jlHertel/adriconf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.freedesktop.org/mesa/adriconf
+Source0:        https://gitlab.freedesktop.org/mesa/adriconf/-/archive/v%{version}/adriconf-v%{version}.tar.bz2
 Source1:        adriconf.desktop
 Source2:        driconf-icon.png
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  gcc-obj-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_locale-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_filesystem-devel >= 1.60
+BuildRequires:  libboost_locale-devel >= 1.60
+BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gdkmm-3.0)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpci)
@@ -53,7 +52,7 @@ the standard drirc file used by the Mesa drivers.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -n %{name}-v%{version}
 
 %build
 %cmake \
@@ -63,8 +62,10 @@ the standard drirc file used by the Mesa drivers.
 %install
 %cmake_install
 mkdir -p %{buildroot}/%{_datadir}/{applications,pixmaps}
-install -D -m0755 %{SOURCE1} %{buildroot}/%{_datadir}/applications/%{name}.desktop
-install -D -m0755 %{SOURCE2} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
+install -Dpm 0755 %{SOURCE1} \
+  %{buildroot}/%{_datadir}/applications/%{name}.desktop
+install -Dpm 0755 %{SOURCE2} \
+  %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 %suse_update_desktop_file %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %find_lang %{name}
 
