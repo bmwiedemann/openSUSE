@@ -1504,4 +1504,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   * gdb-fix-incorrect-use-of-is-operator-for-comparison-in-python-lib-gdb-command-prompt.py.patch (forwarded request 795972 from tomdevries)</comment>
     <requestid>796085</requestid>
   </revision>
+  <revision rev="140" vrev="10">
+    <srcmd5>018083c248f02075656fc9ee0625e828</srcmd5>
+    <version>8.3.1</version>
+    <time>1589046533</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix .debug_types problems [swo#24480, swo#25889, bsc#1168394].
+  - gdb-fix-range-loop-index-in-find_method.patch
+  - gdb-fix-toplevel-types-with-fdebug-types-section.patch (forwarded request 801284 from tomdevries)</comment>
+    <requestid>801343</requestid>
+  </revision>
 </revisionlist>

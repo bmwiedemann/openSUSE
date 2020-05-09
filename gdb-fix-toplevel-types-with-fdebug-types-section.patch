@@ -1,0 +1,124 @@
+gdb: Fix toplevel types with -fdebug-types-section
+
+When debugging a program compiled with -fdebug-types-section,
+only the first top-level type in each file is visible to gdb.
+
+The problem was caused by moving the assignment to list_in_scope
+from process_full_comp_unit and process_full_type_unit to
+start_symtab.  This was fine for process_full_comp_unit, because
+symtabs and comp units are one-to-one.  But there can be many type
+units per symtab (one for each type), and we only call start_symtab
+for the first one.  This adds the necessary assignments on the paths
+where start_symtab is not called.
+
+gdb/Changelog:
+
+2020-04-28 Mark Williams <mark@myosotissp.com>
+
+	PR gdb/24480
+	* dwarf2read.c: Add missing assingments to list_in_scope when
+	start_symtab was already called.
+
+gdb/testsuite/Changelog:
+
+2020-04-28 Mark Williams <mark@myosotissp.com>
+
+	PR gdb/24480
+	* dw4-toplevel-types.exp: Test for top level types.
+	* dw4-toplevel-types.cc: Test for top level types.
+
+---
+ gdb/dwarf2read.c                                |  2 ++
+ gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.cc  | 21 +++++++++++++++
+ gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.exp | 36 +++++++++++++++++++++++++
+ 3 files changed, 59 insertions(+)
+
+diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
+index 4251ed03b46..7e6f1a0ff62 100644
+--- a/gdb/dwarf2read.c
++++ b/gdb/dwarf2read.c
+@@ -11666,6 +11666,7 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
+ 			    COMPUNIT_DIRNAME (cust),
+ 			    compunit_language (cust),
+ 			    0, cust));
++	  list_in_scope = get_builder ()->get_file_symbols ();
+ 	}
+       return;
+     }
+@@ -11717,6 +11718,7 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
+ 			COMPUNIT_DIRNAME (cust),
+ 			compunit_language (cust),
+ 			0, cust));
++      list_in_scope = get_builder ()->get_file_symbols ();
+ 
+       for (i = 0; i < line_header->file_names.size (); ++i)
+ 	{
+diff --git a/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.cc b/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.cc
+new file mode 100644
+index 00000000000..c47598c46ef
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.cc
+@@ -0,0 +1,21 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2020 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++struct X {} x;
++struct Y {} y;
++struct Z {} z;
++int main() {}
+diff --git a/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.exp b/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.exp
+new file mode 100644
+index 00000000000..8e3875ad71e
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/dw4-toplevel-types.exp
+@@ -0,0 +1,36 @@
++# Copyright 2020 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test dwarf4 signatured types (DW_TAG_type_unit).
++
++standard_testfile .cc
++
++# This test is intended for targets which support DWARF-4.
++# Since we pass an explicit -gdwarf-4 -fdebug-types-section to the compiler,
++# we let that be the test of whether the target supports it.
++
++if { [prepare_for_testing "failed to prepare" "${testfile}" \
++	  $srcfile {debug c++ additional_flags=-gdwarf-4 \
++			additional_flags=-fdebug-types-section}] } {
++    return -1
++}
++
++if ![runto_main] {
++    return -1
++}
++
++gdb_test "ptype X" "type = struct X {.*"
++gdb_test "ptype Y" "type = struct Y {.*"
++gdb_test "ptype Z" "type = struct Z {.*"

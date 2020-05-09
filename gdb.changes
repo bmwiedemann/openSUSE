@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 03:46:31 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix .debug_types problems [swo#24480, swo#25889, bsc#1168394].
+  - gdb-fix-range-loop-index-in-find_method.patch
+  - gdb-fix-toplevel-types-with-fdebug-types-section.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 14:29:12 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix python 3.8 warning [bsc#1169495].
