@@ -1,0 +1,42 @@
+From pablo@netfilter.org Thu May  7 13:29:26 2020
+Date: Thu, 7 May 2020 13:29:19
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: netfilter-devel@vger.kernel.org
+Cc: jengelh@inai.de
+Subject: [PATCH nft] mnl: fix error rule reporting with missing table/chain and anonymous sets
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7f64f1e in erec_print (octx=0x55555555d2c0, erec=0x55555555fcf0, debug_mask=0) at erec.c:95
+95              switch (indesc->type) {
+(gdb) bt
+    buf=0x55555555db20 "add rule inet traffic-filter input tcp dport { 22, 80, 443 } accept") at libnftables.c:459
+(gdb) p indesc
+$1 = (const struct input_descriptor *) 0x0
+
+Closes: http://bugzilla.opensuse.org/show_bug.cgi?id=1171321
+Fixes: 086ec6f30c96 ("mnl: extended error support for create command")
+Reported-by: Jan Engelhardt <jengelh@inai.de>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ src/mnl.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/mnl.c b/src/mnl.c
+index 94e80261afb7..9ce4072859b1 100644
+--- a/src/mnl.c
++++ b/src/mnl.c
+@@ -1048,7 +1048,10 @@ int mnl_nft_set_add(struct netlink_ctx *ctx, struct cmd *cmd,
+ 
+ 	cmd_add_loc(cmd, nlh->nlmsg_len, &h->table.location);
+ 	mnl_attr_put_strz(nlh, NFTA_SET_TABLE, h->table.name);
+-	cmd_add_loc(cmd, nlh->nlmsg_len, &h->set.location);
++	if (set_is_anonymous(set->flags))
++		cmd_add_loc(cmd, nlh->nlmsg_len, &cmd->location);
++	else
++		cmd_add_loc(cmd, nlh->nlmsg_len, &h->set.location);
+ 	mnl_attr_put_strz(nlh, NFTA_SET_NAME, h->set.name);
+ 
+ 	nftnl_set_nlmsg_build_payload(nlh, nls);
+-- 
+2.20.1
+

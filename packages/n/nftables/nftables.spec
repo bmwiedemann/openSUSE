@@ -28,6 +28,7 @@ URL:            https://netfilter.org/projects/nftables/
 Source:         http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2
 Source2:        http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2.sig
 Source3:        %name.keyring
+Patch1:         anonset-crashfix.patch
 BuildRequires:  asciidoc
 BuildRequires:  bison
 BuildRequires:  flex
@@ -78,7 +79,7 @@ Group:          Development/Languages/Python
 A Python module for nftables.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 mkdir bin

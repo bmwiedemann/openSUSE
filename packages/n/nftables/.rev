@@ -145,4 +145,12 @@
     <comment>- Update to release 0.9.4</comment>
     <requestid>790695</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b2b723b3a459cd7bc34d2cc14acc700c</srcmd5>
+    <version>0.9.4</version>
+    <time>1589046736</time>
+    <user>dimstar_suse</user>
+    <comment>- Add anonset-crashfix.patch [boo#1171321]</comment>
+    <requestid>801122</requestid>
+  </revision>
 </revisionlist>
