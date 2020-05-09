@@ -24,4 +24,12 @@
 </comment>
     <requestid>758115</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a0f3c16bea786d31d4b7712b95db1ee2</srcmd5>
+    <version>1.0.0</version>
+    <time>1589055585</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't install busybox-man in favour of mandoc (forwarded request 798926 from kukuk)</comment>
+    <requestid>798927</requestid>
+  </revision>
 </revisionlist>

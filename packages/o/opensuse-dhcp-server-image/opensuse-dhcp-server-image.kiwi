@@ -45,6 +45,8 @@
   <packages type="bootstrap">
     <package name="dhcp-server"/>
     <package name="catatonit"/>
-    <package name="groff"/>
+    <package name="mandoc"/>
+    <package name="--"/>
+    <package name="-busybox-man"/>
   </packages>
 </image>

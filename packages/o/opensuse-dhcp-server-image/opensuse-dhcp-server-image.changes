@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:33:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't install busybox-man in favour of mandoc
+
+-------------------------------------------------------------------
 Thu Dec 19 09:22:33 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 
 - Change the owner of files inside the tarball to root:root
