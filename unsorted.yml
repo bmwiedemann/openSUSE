@@ -414,17 +414,20 @@ unsorted:
   - alsa-devel 
   - alsa-devel-32bit: [x86_64] 
   - alsa-docs 
-  - alsa-plugins-32bit: [x86_64] 
   - alsa-plugins-a52 
   - alsa-plugins-aaf 
+  - alsa-plugins-arcam-av 
   - alsa-plugins-jack 
   - alsa-plugins-jack-32bit: [x86_64] 
   - alsa-plugins-lavrate 
   - alsa-plugins-maemo 
   - alsa-plugins-maemo-32bit: [x86_64] 
+  - alsa-plugins-oss 
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit: [x86_64] 
   - alsa-plugins-speex 
+  - alsa-plugins-usb-stream 
+  - alsa-plugins-vdownmix 
   - alsa-topology-conf 
   - alsa-topology-devel 
   - alsa-topology-devel-32bit: [x86_64] 
@@ -2851,6 +2854,7 @@ unsorted:
   - extra166y 
   - extra166y-javadoc 
   - extract-appdata-icons 
+  - extractpdfmark 
   - extreme-tuxracer 
   - extreme-tuxracer-data 
   - extundelete 
@@ -13013,7 +13017,6 @@ unsorted:
   - lilo 
   - lilv 
   - lilypond 
-  - lilypond-century-schoolbook-l-fonts 
   - lilypond-doc 
   - lilypond-doc-cs 
   - lilypond-doc-de 
@@ -13026,6 +13029,7 @@ unsorted:
   - lilypond-doc-zh 
   - lilypond-emmentaler-fonts 
   - lilypond-fonts-common 
+  - lilypond-texgy-fonts 
   - limesuite 
   - limesuite-devel 
   - limesuite-udev 
@@ -15637,6 +15641,7 @@ unsorted:
   - openQA-doc: [x86_64] 
   - openQA-local-db: [x86_64] 
   - openQA-python-scripts: [x86_64] 
+  - openQA-single-instance: [x86_64] 
   - openQA-worker: [x86_64] 
   - openSUSE-Addon-NonOss-release 
   - openSUSE-EULAs 
@@ -18593,11 +18598,9 @@ unsorted:
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
   - python2-FontTools 
-  - python2-Glances 
   - python2-aexpect 
   - python2-appindicator 
   - python2-arabic-reshaper 
-  - python2-aws-sam-translator 
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
   - python2-boost_parallel_mpi1_71_0 
@@ -18616,8 +18619,6 @@ unsorted:
   - python2-libguestfs: [x86_64] 
   - python2-libqcow 
   - python2-libunity 
-  - python2-markdown2 
-  - python2-moto 
   - python2-moviepy 
   - python2-mraa: [i586] 
   - python2-napalm-asa 
@@ -18941,7 +18942,6 @@ unsorted:
   - python3-aubio 
   - python3-audio-degrader 
   - python3-audiogrep 
-  - python3-audiolazy 
   - python3-audiomate 
   - python3-audioread 
   - python3-audit: [i586] 
@@ -19059,6 +19059,7 @@ unsorted:
   - python3-azure-mgmt-containerinstance 
   - python3-azure-mgmt-containerregistry 
   - python3-azure-mgmt-containerservice 
+  - python3-azure-mgmt-core 
   - python3-azure-mgmt-cosmosdb 
   - python3-azure-mgmt-costmanagement 
   - python3-azure-mgmt-databoxedge 
@@ -19087,6 +19088,7 @@ unsorted:
   - python3-azure-mgmt-iothub 
   - python3-azure-mgmt-iothubprovisioningservices 
   - python3-azure-mgmt-keyvault 
+  - python3-azure-mgmt-kubernetesconfiguration 
   - python3-azure-mgmt-kusto 
   - python3-azure-mgmt-labservices 
   - python3-azure-mgmt-loganalytics 
@@ -19113,6 +19115,7 @@ unsorted:
   - python3-azure-mgmt-rdbms 
   - python3-azure-mgmt-recoveryservices 
   - python3-azure-mgmt-recoveryservicesbackup 
+  - python3-azure-mgmt-redhatopenshift 
   - python3-azure-mgmt-redis 
   - python3-azure-mgmt-relay 
   - python3-azure-mgmt-reservations 
@@ -19130,8 +19133,10 @@ unsorted:
   - python3-azure-mgmt-sqlvirtualmachine 
   - python3-azure-mgmt-storage 
   - python3-azure-mgmt-storagecache 
+  - python3-azure-mgmt-storageimportexport 
   - python3-azure-mgmt-storagesync 
   - python3-azure-mgmt-subscription 
+  - python3-azure-mgmt-synapse 
   - python3-azure-mgmt-trafficmanager 
   - python3-azure-mgmt-vmwarecloudsimple 
   - python3-azure-mgmt-web 
@@ -19139,6 +19144,8 @@ unsorted:
   - python3-azure-multiapi-storage 
   - python3-azure-nspkg 
   - python3-azure-sdk 
+  - python3-azure-search-documents 
+  - python3-azure-search-nspkg 
   - python3-azure-servicebus 
   - python3-azure-servicefabric 
   - python3-azure-servicemanagement-legacy 
@@ -19150,6 +19157,7 @@ unsorted:
   - python3-azure-storage-file-share 
   - python3-azure-storage-nspkg 
   - python3-azure-storage-queue 
+  - python3-azure-synapse 
   - python3-azurectl 
   - python3-babelfish 
   - python3-babeltrace 
@@ -33490,6 +33498,7 @@ unsorted:
   - xf86-input-void 
   - xf86-input-wacom-devel 
   - xf86-video-amdgpu 
+  - xf86-video-ast 
   - xf86-video-fbturbo 
   - xf86-video-fbturbo-live 
   - xf86-video-intel-32bit: [x86_64] 
