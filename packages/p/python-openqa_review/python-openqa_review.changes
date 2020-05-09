@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  9 12:27:12 UTC 2020 - Oliver Kurz <okurz@suse.com>
+
+- Update test-package to use python3 variant also to fix Factory build tests
+
+-------------------------------------------------------------------
+Tue May 05 19:40:50 UTC 2020 - okurz@suse.com
+
+- Update to version 1.19.0:
+  * Adapt parsing of soft-failure details to openQA >= 4.5.1528009330.e68ebe2b-3120-g92a4d55ef
+  * Adapt soft-fail parsing to new details format produced by openQA
+
+-------------------------------------------------------------------
 Mon Mar 09 16:12:01 UTC 2020 - okurz@suse.com
 
 - Update to version 1.17.0:

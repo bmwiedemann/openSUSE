@@ -263,4 +263,12 @@
     <comment>Update to 1.17.0</comment>
     <requestid>783012</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>52a8c7333a78eca1321df76d49bfda58</srcmd5>
+    <version>1.19.0</version>
+    <time>1589055590</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.19.0; Update test-package to use python3 variant also to fix Factory build tests</comment>
+    <requestid>802238</requestid>
+  </revision>
 </revisionlist>

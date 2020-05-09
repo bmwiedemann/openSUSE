@@ -31,7 +31,7 @@
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
 Name:           python-%{short_name}%{?name_ext}
-Version:        1.17.0
+Version:        1.19.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT
@@ -40,7 +40,7 @@ Source:         python-%{short_name}-%{version}.tar.xz
 URL:            https://github.com/okurz/%{short_name}
 BuildRequires:  python-rpm-macros
 %if 0%{?_test}
-BuildRequires:  %{oldpython}-%{short_name} == %{version}
+BuildRequires:  python3-%{short_name} == %{version}
 %else
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -69,7 +69,10 @@ BuildArch:      noarch
 Obsoletes:      %{oldpython}-%{short_name} < %{version}
 %endif
 
+%if 0%{?_test}
+%else
 %python_subpackages
+%endif
 
 %description
 A review helper script for openQA. For more details look into the README file.
