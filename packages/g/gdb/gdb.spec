@@ -253,6 +253,8 @@ Patch2014:      gdb-arch13-2.diff
 Patch2015:      gdb-arch13-3.diff
 Patch2016:      bfd-change-num_group-to-unsigned-int.patch
 Patch2017:      gdb-fix-incorrect-use-of-is-operator-for-comparison-in-python-lib-gdb-command-prompt.py.patch
+Patch2018:      gdb-fix-toplevel-types-with-fdebug-types-section.patch
+Patch2019:      gdb-fix-range-loop-index-in-find_method.patch
 
 # Proposed patch for PR symtab/24971
 Patch2500:      gdb-symtab-prefer-var-def-over-decl.patch
@@ -614,6 +616,8 @@ find -name "*.info*"|xargs rm -f
 %patch2015 -p1
 %patch2016 -p1
 %patch2017 -p1
+%patch2018 -p1
+%patch2019 -p1
 
 %patch2500 -p1
 %patch2501 -p1
