@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  5 09:20:14 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+bnc#1170224
+  - fixed sound card database creation
+  - patch by lpechacek@suse.com
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Apr 29 14:19:50 UTC 2020 - jsrain@suse.com
 
 - avoid attempts to build sound card database if no kernel
