@@ -1,7 +1,7 @@
 #
 # spec file for package chessx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,19 @@
 
 
 Name:           chessx
-Version:        1.5.0
+Version:        1.5.4
 Release:        0
 Summary:        Chess database
 License:        GPL-2.0-only
 Group:          Amusements/Games/Board/Chess
 URL:            http://chessx.sourceforge.net
 Source0:        https://sourceforge.net/projects/chessx/files/chessx/%{version}/chessx-%{version}.tgz
+# PATCH-FIX-UPSTREAM chessx-translations.patch aloisio@gmx.com -- remove unused translations
+Patch0:         chessx-translations.patch
+# PATCH-FEATURE-UPSTREAM chessx-install.patch aloisio@gmx.com -- make install work on linux
+Patch1:         chessx-install.patch
+# PATCH-FEATURE-OPENSUSE chessx-use_system_quazip.patch
+Patch2:         chessx-use_system_quazip.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
@@ -32,9 +38,12 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(zlib)
+%if (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
+BuildRequires:  pkgconfig(quazip)
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -52,26 +61,22 @@ analyze a collection of chess games.
 * Observe and play games on FICS
 
 %prep
-%setup -q
+%autosetup -N
+%patch0 -p1
+%patch1 -p1
+%if (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
+%patch2 -p1
+%endif
+chmod -x data/images/circle_*.svg
 
 %build
-lrelease-qt5 i18n/*
-qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}"
-make %{?_smp_mflags}
+%qmake5
+%make_build
 
 %install
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}/%{_datadir}/%{name}
-mkdir -p %{buildroot}/%{_datadir}/pixmaps
-mkdir -p %{buildroot}/%{_datadir}/applications
-install -m 0755 release/%{name} -t %{buildroot}/%{_bindir}
-install -m 0644 unix/%{name}.desktop -t %{buildroot}/%{_datadir}/applications
-install -m 0644 data/images/%{name}.png -t %{buildroot}/%{_datadir}/pixmaps
-chmod -x data/images/circle_*.svg
-cp -r data -t %{buildroot}/%{_datadir}/%{name}
-cp i18n/*.qm -t %{buildroot}/%{_datadir}/%{name}/data/lang
+%qmake5_install
 find %{buildroot} -size 0 -delete
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %license COPYING

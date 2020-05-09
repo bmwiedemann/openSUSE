@@ -57,4 +57,23 @@
 </comment>
     <requestid>700987</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>908ffe4898a2575ec38ee18b83bdc9d2</srcmd5>
+    <version>1.5.4</version>
+    <time>1589046772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.4
+  * New feature: blunder checking
+  * New feature: Speak moves
+  * New feature: Refactor complete database
+  * Changed: Command-Key to force query for promotion dialog
+    (instead of Meta)
+  * Bugfix: Undo setting up board required two steps
+  * Bugfix: Clearing database was broken
+  * Bugfix: entering nags/null movees via keyboard
+- Add chessx-translations.patch, chessx-install.patch and
+  chessx-use_system_quazip.patch
+</comment>
+    <requestid>802027</requestid>
+  </revision>
 </revisionlist>
