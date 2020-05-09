@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 09 17:17:38 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.2.0+git.20200509.57058d4:
+  * Add assert about shell argument.
+  * Prevent no change in RenameParam pass.
+  * Move Peep::a to slow passes.
+  * Fix weird version in Docker example.
+  * Test fedora 32 and rawhide.
+  * Use shell=True only for test script.
+  * Run test-scrupt in subprocess with shell=True (#20).
+
+-------------------------------------------------------------------
 Thu May 07 12:55:11 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.2.0+git.20200507.7cf63b5:
