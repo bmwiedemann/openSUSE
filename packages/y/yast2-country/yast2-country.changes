@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 15:19:48 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Feb 19 12:58:47 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Rely on the new Y2Network::NtpServer class (jsc#SLE-7188).
