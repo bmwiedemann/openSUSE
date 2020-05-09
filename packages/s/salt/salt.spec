@@ -300,6 +300,14 @@ Patch107:     fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
 Patch108:     remove-vendored-backports-abc-from-requirements.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/a5ef829408685d9e65eaa24bba40d221adffaa95
 Patch109:     fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57119
+Patch110:     make-lazyloader.__init__-call-to-_refresh_file_mappi.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57123
+Patch111:     prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57122
+Patch112:     msgpack-support-versions-1.0.0.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/235
+Patch113:     python3.8-compatibility-pr-s-235.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -916,6 +924,10 @@ cp %{S:5} ./.travis.yml
 %patch107 -p1
 %patch108 -p1
 %patch109 -p1
+%patch110 -p1
+%patch111 -p1
+%patch112 -p1
+%patch113 -p1
 
 %build
 %if 0%{?build_py2}

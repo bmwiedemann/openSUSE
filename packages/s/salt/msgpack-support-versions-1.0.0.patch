@@ -1,0 +1,72 @@
+From ef23c1d53e99e19e5b03658aa62b67cfef9adce5 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 7 May 2020 12:40:55 +0200
+Subject: [PATCH] msgpack: support versions >= 1.0.0
+
+A recent change in msgpack >= 1.0.0, update the default value for the
+parameter `raw` to False.  This change breaks Salt for those versions.
+
+This patch add the parameter `raw=True` to all the unpack operations,
+restoring the old default.
+
+Fix bsc#1171257
+
+(cherry picked from commit 1b3939fb01fc3405d8d222f118617220aecee092)
+---
+ salt/utils/msgpack.py | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/salt/utils/msgpack.py b/salt/utils/msgpack.py
+index 4b5a256513..027fe81a18 100644
+--- a/salt/utils/msgpack.py
++++ b/salt/utils/msgpack.py
+@@ -69,12 +69,26 @@ def _sanitize_msgpack_kwargs(kwargs):
+     return kwargs
+ 
+ 
++def _sanitize_msgpack_unpack_kwargs(kwargs):
++    """
++    Clean up msgpack keyword arguments for unpack operations, based on
++    the version
++    https://github.com/msgpack/msgpack-python/blob/master/ChangeLog.rst
++    """
++    assert isinstance(kwargs, dict)
++    if version >= (1, 0, 0) and kwargs.get("raw", None) is None:
++        log.info("adding `raw=True` argument to msgpack call")
++        kwargs["raw"] = True
++
++    return _sanitize_msgpack_kwargs(kwargs)
++
++
+ class Unpacker(msgpack.Unpacker):
+     '''
+     Wraps the msgpack.Unpacker and removes non-relevant arguments
+     '''
+     def __init__(self, *args, **kwargs):
+-        msgpack.Unpacker.__init__(self, *args, **_sanitize_msgpack_kwargs(kwargs))
++        msgpack.Unpacker.__init__(self, *args, **_sanitize_msgpack_unpack_kwargs(kwargs))
+ 
+ 
+ def pack(o, stream, **kwargs):
+@@ -113,7 +127,7 @@ def unpack(stream, **kwargs):
+     By default, this function uses the msgpack module and falls back to
+     msgpack_pure, if the msgpack is not available.
+     '''
+-    return msgpack.unpack(stream, **_sanitize_msgpack_kwargs(kwargs))
++    return msgpack.unpack(stream, **_sanitize_msgpack_unpack_kwargs(kwargs))
+ 
+ 
+ def unpackb(packed, **kwargs):
+@@ -125,7 +139,7 @@ def unpackb(packed, **kwargs):
+     By default, this function uses the msgpack module and falls back to
+     msgpack_pure.
+     '''
+-    return msgpack.unpackb(packed, **_sanitize_msgpack_kwargs(kwargs))
++    return msgpack.unpackb(packed, **_sanitize_msgpack_unpack_kwargs(kwargs))
+ 
+ 
+ # alias for compatibility to simplejson/marshal/pickle.
+-- 
+2.26.1
+
+

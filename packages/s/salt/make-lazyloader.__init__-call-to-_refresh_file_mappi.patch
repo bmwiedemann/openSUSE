@@ -1,0 +1,29 @@
+From 6af6a52165c70c3be7c8d339a3dd5e539f3c1772 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 23 Apr 2020 09:54:53 +0100
+Subject: [PATCH] Make LazyLoader.__init__ call to
+ _refresh_file_mapping thread-safe (bsc#1169604)
+
+---
+ salt/loader.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/loader.py b/salt/loader.py
+index 5bd4773645c77a133701982e19d19739be00a38f..54dadb0b513dbaa4914b0d4b1d343dde709699ad 100644
+--- a/salt/loader.py
++++ b/salt/loader.py
+@@ -1251,7 +1251,8 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+             self.suffix_order.append(suffix)
+ 
+         self._lock = threading.RLock()
+-        self._refresh_file_mapping()
++        with self._lock:
++            self._refresh_file_mapping()
+ 
+         super(LazyLoader, self).__init__()  # late init the lazy loader
+         # create all of the import namespaces
+-- 
+2.23.0
+
+

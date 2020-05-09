@@ -1416,4 +1416,24 @@ let build start it or we will get libvirt errors.
   * fix-regression-in-service-states-with-reload-argumen.patch</comment>
     <requestid>799271</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>c66489e3a490f80c93336b4895ce09ff</srcmd5>
+    <version>3000.2</version>
+    <time>1589046582</time>
+    <user>dimstar_suse</user>
+    <comment>- Python 3.8 compatibility changes
+- msgpack support for version &gt;= 1.0.0 (bsc#1171257)
+- Added:
+  * python3.8-compatibility-pr-s-235.patch
+  * msgpack-support-versions-1.0.0.patch
+
+- Prevent sporious &quot;salt-api&quot; stuck processes when managing SSH minions
+  because of logging deadlock (bsc#1159284)
+- Avoid segfault from &quot;salt-api&quot; under certain conditions of heavy load
+  managing SSH minions (bsc#1169604)
+- Added:
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * make-lazyloader.__init__-call-to-_refresh_file_mappi.patch</comment>
+    <requestid>801830</requestid>
+  </revision>
 </revisionlist>

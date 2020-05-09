@@ -1,0 +1,1995 @@
+From 1721978eb0644c90a834493449ee27e1e4de03e1 Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Fri, 8 May 2020 15:56:35 +0200
+Subject: [PATCH] Python3.8 compatibility PR's (#235)
+
+* Update static requirements to include Py3.8 and Py3.9 (except windows)
+
+Windows required package pywin32 doesn't state that it support any
+python version above Py3.7
+
+* Allow running the test suite against Py3.8 and Py3.9
+
+* Fix deprecation warnings for imports from collections
+
+DeprecationWarning: Using or importing the ABCs from `collections`
+instead of from `collections.abc` is deprecated since Python 3.3, and in
+3.9 it will stop working.
+
+Therefore try to import the abstract base classes from `collections.abc`
+before falling back to `collections`.
+
+Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+
+* Support distro.linux_distribution
+
+Salt fails on Python 3.8:
+
+```
+======================================================================
+ERROR: unit.grains.test_core (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: unit.grains.test_core
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.8/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "tests/unit/grains/test_core.py", line 37, in <module>
+    import salt.grains.core as core
+  File "salt/grains/core.py", line 40, in <module>
+    from platform import _supported_dists
+ImportError: cannot import name '_supported_dists' from 'platform' (/usr/lib/python3.8/platform.py)
+```
+
+So only try to import `_supported_dists` from `platform` for Python <=
+3.7. Otherwise rely on the external `distro` module to  not need any
+special handling.
+
+Addresses parts of #55835
+Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+
+* Fix RuntimeError: dictionary keys changed during iteration
+
+The following unit tests fail on Python 3.8:
+
+```
+======================================================================
+ERROR: test_state_config (unit.renderers.test_stateconf.StateConfigRendererTestCase)
+[CPU:0.0%|MEM:56.6%]
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/<<PKGBUILDDIR>>/tests/unit/renderers/test_stateconf.py", line 74, in test_state_config
+    result = self._render_sls('''
+  File "/<<PKGBUILDDIR>>/tests/unit/renderers/test_stateconf.py", line 66, in _render_sls
+    return self._renderers['stateconf'](
+  File "/<<PKGBUILDDIR>>/salt/renderers/stateconf.py", line 227, in render
+    for k in six.iterkeys(tmplctx):  # iterate over a copy of keys
+RuntimeError: dictionary keys changed during iteration
+
+======================================================================
+ERROR: test_apply_cloud_providers_config_extend (unit.test_config.ConfigTestCase)
+[CPU:0.0%|MEM:56.6%]
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/<<PKGBUILDDIR>>/tests/unit/test_config.py", line 1243, in test_apply_cloud_providers_config_extend
+    salt.config.apply_cloud_providers_config(
+  File "/<<PKGBUILDDIR>>/salt/config/__init__.py", line 3196, in apply_cloud_providers_config
+    for driver, details in six.iteritems(entries):
+RuntimeError: dictionary keys changed during iteration
+
+======================================================================
+ERROR: test_apply_cloud_providers_config_extend_multiple (unit.test_config.ConfigTestCase)
+[CPU:0.0%|MEM:56.6%]
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/<<PKGBUILDDIR>>/tests/unit/test_config.py", line 1334, in test_apply_cloud_providers_config_extend_multiple
+    self.assertEqual(ret, salt.config.apply_cloud_providers_config(overrides, defaults=DEFAULT))
+  File "/<<PKGBUILDDIR>>/salt/config/__init__.py", line 3196, in apply_cloud_providers_config
+    for driver, details in six.iteritems(entries):
+RuntimeError: dictionary keys changed during iteration
+
+======================================================================
+```
+
+Replace the affected for loop of the first case by a dictionary
+comprehension to construct the modified dictionary. For the remaining
+cases, switch from `iteritems` to `iterkeys`, since the dictionary
+values will be modified.
+
+Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+
+* Update PyTestSalt requirement(because we now bundle tornado)
+
+* Run the full test suite on Arch under Py3
+
+* Fix deprecation warnings for imports from collections
+
+DeprecationWarning: Using or importing the ABCs from `collections`
+instead of from `collections.abc` is deprecated since Python 3.3, and in
+3.9 it will stop working.
+
+Therefore try to import the abstract base classes from `collections.abc`
+before falling back to `collections`.
+
+Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+
+* Replace deprecated inspect.formatargspec
+
+Python 3.7 raises a deprecation warning:
+
+salt/utils/decorators/signature.py:31: DeprecationWarning:
+`formatargspec` is deprecated since Python 3.5. Use `signature` and the
+`Signature` object directly
+
+`inspect.formatargspec` is only used in
+`salt.utils.decorators.signature.identical_signature_wrapper` which is
+only used in `salt.utils.decorators.path` for decorating the `which` and
+`which_bin` functions. The function `identical_signature_wrapper` can be
+simply replaced by Python's `functools.wraps` which is available since
+at least Python 2.7.
+
+When inspecting those wrapped functions, the underlying function (stored
+in the `__wrapped__` attribute) needs to be inspect instead.
+
+fixes #50911
+Signed-off-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+
+Co-authored-by: Pedro Algarvio <pedro@algarvio.me>
+Co-authored-by: Benjamin Drung <benjamin.drung@cloud.ionos.com>
+---
+ .ci/kitchen-archlts-py3                     |   2 +-
+ .pre-commit-config.yaml                     | 228 ++++++++++++++++++++
+ noxfile.py                                  |   4 +-
+ pkg/windows/req.txt                         |   2 +-
+ pkg/windows/req_testing.txt                 |  12 --
+ pkg/windows/req_win.txt                     |   2 +-
+ requirements/pytest.txt                     |   2 +-
+ requirements/static/py3.5/darwin.txt        |   2 +-
+ requirements/static/py3.5/linux.txt         |   2 +-
+ requirements/static/py3.5/windows.txt       |   6 +-
+ requirements/static/py3.6/darwin.txt        |   2 +-
+ requirements/static/py3.6/linux.txt         |   2 +-
+ requirements/static/py3.6/windows.txt       |   6 +-
+ requirements/static/py3.7/darwin.txt        |   2 +-
+ requirements/static/py3.7/linux.txt         |   2 +-
+ requirements/static/py3.7/windows.txt       |   5 +-
+ requirements/static/py3.8/cloud.txt         | 115 ++++++++++
+ requirements/static/py3.8/darwin-crypto.txt |   8 +
+ requirements/static/py3.8/darwin.txt        | 123 +++++++++++
+ requirements/static/py3.8/docs.txt          |  30 +++
+ requirements/static/py3.8/lint.txt          |  16 ++
+ requirements/static/py3.8/linux-crypto.txt  |   8 +
+ requirements/static/py3.8/linux.txt         | 119 ++++++++++
+ requirements/static/py3.9/cloud.txt         | 115 ++++++++++
+ requirements/static/py3.9/darwin-crypto.txt |   8 +
+ requirements/static/py3.9/darwin.txt        | 123 +++++++++++
+ requirements/static/py3.9/docs.txt          |  30 +++
+ requirements/static/py3.9/lint.txt          |  16 ++
+ requirements/static/py3.9/linux-crypto.txt  |   8 +
+ requirements/static/py3.9/linux.txt         | 119 ++++++++++
+ salt/client/mixins.py                       |  61 +++---
+ salt/ext/tornado/httputil.py                |   9 +-
+ salt/grains/core.py                         |  28 ++-
+ salt/renderers/stateconf.py                 |   4 +-
+ salt/utils/args.py                          |  14 +-
+ salt/utils/decorators/path.py               |  13 +-
+ salt/utils/jinja.py                         |  24 ++-
+ salt/utils/oset.py                          |   4 +-
+ 38 files changed, 1193 insertions(+), 83 deletions(-)
+ delete mode 100644 pkg/windows/req_testing.txt
+ create mode 100644 requirements/static/py3.8/cloud.txt
+ create mode 100644 requirements/static/py3.8/darwin-crypto.txt
+ create mode 100644 requirements/static/py3.8/darwin.txt
+ create mode 100644 requirements/static/py3.8/docs.txt
+ create mode 100644 requirements/static/py3.8/lint.txt
+ create mode 100644 requirements/static/py3.8/linux-crypto.txt
+ create mode 100644 requirements/static/py3.8/linux.txt
+ create mode 100644 requirements/static/py3.9/cloud.txt
+ create mode 100644 requirements/static/py3.9/darwin-crypto.txt
+ create mode 100644 requirements/static/py3.9/darwin.txt
+ create mode 100644 requirements/static/py3.9/docs.txt
+ create mode 100644 requirements/static/py3.9/lint.txt
+ create mode 100644 requirements/static/py3.9/linux-crypto.txt
+ create mode 100644 requirements/static/py3.9/linux.txt
+
+diff --git a/.ci/kitchen-archlts-py3 b/.ci/kitchen-archlts-py3
+index f529c5e36c..b360a350a6 100644
+--- a/.ci/kitchen-archlts-py3
++++ b/.ci/kitchen-archlts-py3
+@@ -8,7 +8,7 @@ runTestSuite(
+     golden_images_branch: 'master',
+     jenkins_slave_label: 'kitchen-slave',
+     nox_env_name: 'runtests-zeromq',
+-    nox_passthrough_opts: '-n integration.modules.test_pkg',
++    nox_passthrough_opts: '',
+     python_version: 'py3',
+     testrun_timeout: 6,
+     use_spot_instances: true)
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+index c4de5c154c..9b704b1426 100644
+--- a/.pre-commit-config.yaml
++++ b/.pre-commit-config.yaml
+@@ -416,6 +416,234 @@ repos:
+           - --py-version=3.7
+           - --platform=linux
+ 
++      - id: pip-tools-compile
++        alias: compile-linux-py3.8-zmq-requirements
++        name: Linux Py3.8 ZeroMQ Requirements
++        files: ^requirements/((base|zeromq|pytest)\.txt|static/linux\.in)$
++        exclude: ^requirements/static/(centos-6|amzn-2018\.03|lint|cloud|docs|darwin|windows)\.in$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=linux
++          - --include=requirements/base.txt
++          - --include=requirements/zeromq.txt
++          - --include=requirements/pytest.txt
++
++      - id: pip-tools-compile
++        alias: compile-darwin-py3.8-zmq-requirements
++        name: Darwin Py3.8 ZeroMQ Requirements
++        files: ^(pkg/osx/(req|req_ext)\.txt|requirements/((base|zeromq|pytest)\.txt|static/darwin\.in))$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=darwin
++          - --include=pkg/osx/req.txt
++          - --include=pkg/osx/req_ext.txt
++          - --include=requirements/base.txt
++          - --include=requirements/zeromq.txt
++          - --include=requirements/pytest.txt
++          - --passthrough-line-from-input=^pyobjc(.*)$
++
++# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
++#      - id: pip-tools-compile
++#        alias: compile-windows-py3.8-zmq-requirements
++#        name: Windows Py3.8 ZeroMQ Requirements
++#        files: ^(pkg/windows/(req|req_win)\.txt|requirements/((base|zeromq|pytest)\.txt|static/windows\.in))$
++#        args:
++#          - -v
++#          - --py-version=3.8
++#          - --platform=windows
++#          - --include=pkg/windows/req.txt
++#          - --include=pkg/windows/req_win.txt
++#          - --include=requirements/base.txt
++#          - --include=requirements/zeromq.txt
++#          - --include=requirements/pytest.txt
++
++      - id: pip-tools-compile
++        alias: compile-cloud-py3.8-requirements
++        name: Cloud Py3.8 Requirements
++        files: ^requirements/(static/cloud\.in)$
++        args:
++          - -v
++          - --py-version=3.8
++
++      - id: pip-tools-compile
++        alias: compile-doc-requirements
++        name: Docs Py3.8 Requirements
++        files: ^requirements/((base|zeromq|pytest)\.txt|static/docs\.in)$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=linux
++
++      - id: pip-tools-compile
++        alias: compile-linux-crypto-py3.8-requirements
++        name: Linux Py3.8 Crypto Requirements
++        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=linux
++          - --out-prefix=linux
++
++      - id: pip-tools-compile
++        alias: compile-darwin-crypto-py3.8-requirements
++        name: Darwin Py3.8 Crypto Requirements
++        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=darwin
++          - --out-prefix=darwin
++
++# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
++#      - id: pip-tools-compile
++#        alias: compile-windows-crypto-py3.8-requirements
++#        name: Windows Py3.8 Crypto Requirements
++#        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++#        args:
++#          - -v
++#          - --py-version=3.8
++#          - --platform=windows
++#          - --out-prefix=windows
++
++      - id: pip-tools-compile
++        alias: compile-lint-py3.8-requirements
++        name: Lint Py3.8 Requirements
++        files: ^requirements/static/lint\.in$
++        args:
++          - -v
++          - --py-version=3.8
++          - --platform=linux
++
++
++      - id: pip-tools-compile
++        alias: compile-linux-py3.9-zmq-requirements
++        name: Linux Py3.9 ZeroMQ Requirements
++        files: ^requirements/((base|zeromq|pytest)\.txt|static/linux\.in)$
++        exclude: ^requirements/static/(centos-6|amzn-2018\.03|lint|cloud|docs|darwin|windows)\.in$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=linux
++          - --include=requirements/base.txt
++          - --include=requirements/zeromq.txt
++          - --include=requirements/pytest.txt
++
++      - id: pip-tools-compile
++        alias: compile-darwin-py3.9-zmq-requirements
++        name: Darwin Py3.9 ZeroMQ Requirements
++        files: ^(pkg/osx/(req|req_ext)\.txt|requirements/((base|zeromq|pytest)\.txt|static/darwin\.in))$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=darwin
++          - --include=pkg/osx/req.txt
++          - --include=pkg/osx/req_ext.txt
++          - --include=requirements/base.txt
++          - --include=requirements/zeromq.txt
++          - --include=requirements/pytest.txt
++          - --passthrough-line-from-input=^pyobjc(.*)$
++
++# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
++#      - id: pip-tools-compile
++#        alias: compile-windows-py3.9-zmq-requirements
++#        name: Windows Py3.9 ZeroMQ Requirements
++#        files: ^(pkg/windows/(req|req_win)\.txt|requirements/((base|zeromq|pytest)\.txt|static/windows\.in))$
++#        args:
++#          - -v
++#          - --py-version=3.9
++#          - --platform=windows
++#          - --include=pkg/windows/req.txt
++#          - --include=pkg/windows/req_win.txt
++#          - --include=requirements/base.txt
++#          - --include=requirements/zeromq.txt
++#          - --include=requirements/pytest.txt
++
++      - id: pip-tools-compile
++        alias: compile-cloud-py3.9-requirements
++        name: Cloud Py3.9 Requirements
++        files: ^requirements/(static/cloud\.in)$
++        args:
++          - -v
++          - --py-version=3.9
++
++      - id: pip-tools-compile
++        alias: compile-doc-requirements
++        name: Docs Py3.9 Requirements
++        files: ^requirements/((base|zeromq|pytest)\.txt|static/docs\.in)$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=linux
++
++      - id: pip-tools-compile
++        alias: compile-linux-crypto-py3.9-requirements
++        name: Linux Py3.9 Crypto Requirements
++        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=linux
++          - --out-prefix=linux
++
++      - id: pip-tools-compile
++        alias: compile-darwin-crypto-py3.9-requirements
++        name: Darwin Py3.9 Crypto Requirements
++        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=darwin
++          - --out-prefix=darwin
++
++# Commented out since pywin32 and pymssql do not have packages or support for Py >= 3.8
++#      - id: pip-tools-compile
++#        alias: compile-windows-crypto-py3.9-requirements
++#        name: Windows Py3.9 Crypto Requirements
++#        files: ^requirements/(crypto\.txt|static/crypto\.in)$
++#        args:
++#          - -v
++#          - --py-version=3.9
++#          - --platform=windows
++#          - --out-prefix=windows
++
++      - id: pip-tools-compile
++        alias: compile-lint-py3.9-requirements
++        name: Lint Py3.9 Requirements
++        files: ^requirements/static/lint\.in$
++        args:
++          - -v
++          - --py-version=3.9
++          - --platform=linux
++
++  - repo: https://github.com/timothycrosley/isort
++    rev: "1e78a9acf3110e1f9721feb591f89a451fc9876a"
++    hooks:
++      - id: isort
++        additional_dependencies: ['toml']
++        # This tells pre-commit not to pass files to isort.
++        # This should be kept in sync with pyproject.toml
++        exclude: >
++            (?x)^(
++                templates/.*|
++                salt/ext/.*|
++                tests/kitchen/.*
++            )$
++
++  - repo: https://github.com/psf/black
++    rev: stable
++    hooks:
++      - id: black
++        # This tells pre-commit not to pass files to black.
++        # This should be kept in sync with pyproject.toml
++        exclude: >
++            (?x)^(
++                templates/.*|
++                salt/ext/.*|
++                tests/kitchen/.*
++            )$
++
+ 
+   - repo: https://github.com/saltstack/salt-nox-pre-commit
+     rev: master
+diff --git a/noxfile.py b/noxfile.py
+index 355a069d92..65b013eb04 100644
+--- a/noxfile.py
++++ b/noxfile.py
+@@ -39,7 +39,7 @@ SITECUSTOMIZE_DIR = os.path.join(REPO_ROOT, 'tests', 'support', 'coverage')
+ IS_DARWIN = sys.platform.lower().startswith('darwin')
+ IS_WINDOWS = sys.platform.lower().startswith('win')
+ # Python versions to run against
+-_PYTHON_VERSIONS = ('2', '2.7', '3', '3.4', '3.5', '3.6', '3.7')
++_PYTHON_VERSIONS = ("2", "2.7", "3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9")
+ 
+ # Nox options
+ #  Reuse existing virtualenvs
+@@ -167,7 +167,7 @@ def _install_system_packages(session):
+         '{id}-{version_parts[major]}'.format(**distro)
+     ]
+     version_info = _get_session_python_version_info(session)
+-    py_version_keys = [
++    py_version_keys = +SITECUSTOMIZE_DIR[
+         '{}'.format(*version_info),
+         '{}.{}'.format(*version_info)
+     ]
+diff --git a/pkg/windows/req.txt b/pkg/windows/req.txt
+index 8b443e1717..3f2c1628d2 100644
+--- a/pkg/windows/req.txt
++++ b/pkg/windows/req.txt
+@@ -1,6 +1,6 @@
+ -r req_win.txt
+ backports-abc==0.5; python_version < '3.0'
+-backports.ssl-match-hostname==3.7.0.1
++backports.ssl-match-hostname==3.7.0.1; python_version < '3.7'
+ certifi
+ cffi==1.12.2
+ CherryPy==17.4.1
+diff --git a/pkg/windows/req_testing.txt b/pkg/windows/req_testing.txt
+deleted file mode 100644
+index 7682a98c0c..0000000000
+--- a/pkg/windows/req_testing.txt
++++ /dev/null
+@@ -1,12 +0,0 @@
+-mock
+-boto
+-boto3
+-moto
+-SaltPyLint>=v2017.6.22
+-apache-libcloud
+-virtualenv
+-
+-# Needed for archive, which is gated for Redhat
+-# rarfile
+-# Needed for keystone
+-# python-keystoneclient
+diff --git a/pkg/windows/req_win.txt b/pkg/windows/req_win.txt
+index 7f279af526..8887884a87 100644
+--- a/pkg/windows/req_win.txt
++++ b/pkg/windows/req_win.txt
+@@ -1,2 +1,2 @@
+-pywin32==224
++pywin32==227
+ WMI==1.4.9
+diff --git a/requirements/pytest.txt b/requirements/pytest.txt
+index 45aa4dc085..52dd16fc09 100644
+--- a/requirements/pytest.txt
++++ b/requirements/pytest.txt
+@@ -1,7 +1,7 @@
+ mock >= 3.0.0
+ # PyTest
+ pytest >=4.6.6,<4.7   # PyTest 4.6.x are the last Py2 and Py3 releases
+-pytest-salt >= 2019.12.27
++pytest-salt >= 2020.1.27
+ pytest-tempdir >= 2019.10.12
+ pytest-helpers-namespace >= 2019.1.8
+ pytest-salt-runtests-bridge >= 2019.7.10
+diff --git a/requirements/static/py3.5/darwin.txt b/requirements/static/py3.5/darwin.txt
+index ac04286204..d01d1c93ff 100644
+--- a/requirements/static/py3.5/darwin.txt
++++ b/requirements/static/py3.5/darwin.txt
+@@ -88,7 +88,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+diff --git a/requirements/static/py3.5/linux.txt b/requirements/static/py3.5/linux.txt
+index c3611cfbcc..9309059b6c 100644
+--- a/requirements/static/py3.5/linux.txt
++++ b/requirements/static/py3.5/linux.txt
+@@ -85,7 +85,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
+diff --git a/requirements/static/py3.5/windows.txt b/requirements/static/py3.5/windows.txt
+index 3c07a12f23..7918945e00 100644
+--- a/requirements/static/py3.5/windows.txt
++++ b/requirements/static/py3.5/windows.txt
+@@ -10,7 +10,7 @@ atomicwrites==1.3.0       # via pytest
+ attrs==19.1.0             # via pytest
+ aws-xray-sdk==0.95        # via moto
+ backports.functools-lru-cache==1.5  # via cheroot
+-backports.ssl-match-hostname==3.7.0.1
++backports.ssl-match-hostname==3.7.0.1 ; python_version < "3.7"
+ boto3==1.9.132
+ boto==2.49.0
+ botocore==1.12.132        # via boto3, moto, s3transfer
+@@ -78,7 +78,7 @@ pyopenssl==19.0.0
+ pyparsing==2.4.5          # via packaging
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+@@ -88,7 +88,7 @@ python-jose==2.0.2        # via moto
+ pythonnet==2.3.0
+ pytz==2019.1              # via moto, tempora
+ pyvmomi==6.7.1.2018.12
+-pywin32==224
++pywin32==227
+ pyyaml==5.1.2
+ pyzmq==18.0.1 ; python_version != "3.4"
+ requests==2.21.0
+diff --git a/requirements/static/py3.6/darwin.txt b/requirements/static/py3.6/darwin.txt
+index a6dd0a120b..2dc822beb8 100644
+--- a/requirements/static/py3.6/darwin.txt
++++ b/requirements/static/py3.6/darwin.txt
+@@ -87,7 +87,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+diff --git a/requirements/static/py3.6/linux.txt b/requirements/static/py3.6/linux.txt
+index 247bdc6e2b..e5eead5572 100644
+--- a/requirements/static/py3.6/linux.txt
++++ b/requirements/static/py3.6/linux.txt
+@@ -84,7 +84,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
+diff --git a/requirements/static/py3.6/windows.txt b/requirements/static/py3.6/windows.txt
+index 1c9b6903c6..83896f9d3f 100644
+--- a/requirements/static/py3.6/windows.txt
++++ b/requirements/static/py3.6/windows.txt
+@@ -10,7 +10,7 @@ atomicwrites==1.3.0       # via pytest
+ attrs==19.1.0             # via pytest
+ aws-xray-sdk==0.95        # via moto
+ backports.functools-lru-cache==1.5  # via cheroot
+-backports.ssl-match-hostname==3.7.0.1
++backports.ssl-match-hostname==3.7.0.1 ; python_version < "3.7"
+ boto3==1.9.132
+ boto==2.49.0
+ botocore==1.12.132        # via boto3, moto, s3transfer
+@@ -77,7 +77,7 @@ pyopenssl==19.0.0
+ pyparsing==2.4.5          # via packaging
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+@@ -87,7 +87,7 @@ python-jose==2.0.2        # via moto
+ pythonnet==2.3.0
+ pytz==2019.1              # via moto, tempora
+ pyvmomi==6.7.1.2018.12
+-pywin32==224
++pywin32==227
+ pyyaml==5.1.2
+ pyzmq==18.0.1 ; python_version != "3.4"
+ requests==2.21.0
+diff --git a/requirements/static/py3.7/darwin.txt b/requirements/static/py3.7/darwin.txt
+index 935b110db2..616563d7b6 100644
+--- a/requirements/static/py3.7/darwin.txt
++++ b/requirements/static/py3.7/darwin.txt
+@@ -86,7 +86,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+diff --git a/requirements/static/py3.7/linux.txt b/requirements/static/py3.7/linux.txt
+index 17e9bc785a..92eedc94d5 100644
+--- a/requirements/static/py3.7/linux.txt
++++ b/requirements/static/py3.7/linux.txt
+@@ -84,7 +84,7 @@ pyparsing==2.4.5          # via packaging
+ pyserial==3.4             # via junos-eznc
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
+diff --git a/requirements/static/py3.7/windows.txt b/requirements/static/py3.7/windows.txt
+index 06c36960b3..d6499eaacd 100644
+--- a/requirements/static/py3.7/windows.txt
++++ b/requirements/static/py3.7/windows.txt
+@@ -10,7 +10,6 @@ atomicwrites==1.3.0       # via pytest
+ attrs==19.1.0             # via pytest
+ aws-xray-sdk==0.95        # via moto
+ backports.functools-lru-cache==1.5  # via cheroot
+-backports.ssl-match-hostname==3.7.0.1
+ boto3==1.9.132
+ boto==2.49.0
+ botocore==1.12.132        # via boto3, moto, s3transfer
+@@ -77,7 +76,7 @@ pyopenssl==19.0.0
+ pyparsing==2.4.5          # via packaging
+ pytest-helpers-namespace==2019.1.8
+ pytest-salt-runtests-bridge==2019.7.10
+-pytest-salt==2019.12.27
++pytest-salt==2020.1.27
+ pytest-tempdir==2019.10.12
+ pytest==4.6.6
+ python-dateutil==2.8.0
+@@ -87,7 +86,7 @@ python-jose==2.0.2        # via moto
+ pythonnet==2.3.0
+ pytz==2019.1              # via moto, tempora
+ pyvmomi==6.7.1.2018.12
+-pywin32==224
++pywin32==227
+ pyyaml==5.1.2
+ pyzmq==18.0.1 ; python_version != "3.4"
+ requests==2.21.0
+diff --git a/requirements/static/py3.8/cloud.txt b/requirements/static/py3.8/cloud.txt
+new file mode 100644
+index 0000000000..ab03f2b2f3
+--- /dev/null
++++ b/requirements/static/py3.8/cloud.txt
+@@ -0,0 +1,115 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/cloud.txt -v requirements/static/cloud.in
++#
++adal==1.2.1               # via azure-datalake-store, msrestazure
++asn1crypto==0.24.0        # via cryptography
++azure-applicationinsights==0.1.0  # via azure
++azure-batch==4.1.3        # via azure
++azure-common==1.1.18      # via azure-applicationinsights, azure-batch, azure-cosmosdb-table, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-loganalytics, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web, azure-servicebus, azure-servicefabric, azure-servicemanagement-legacy, azure-storage-blob, azure-storage-common, azure-storage-file, azure-storage-queue
++azure-cosmosdb-nspkg==2.0.2  # via azure-cosmosdb-table
++azure-cosmosdb-table==1.0.5  # via azure
++azure-datalake-store==0.0.44  # via azure
++azure-eventgrid==1.2.0    # via azure
++azure-graphrbac==0.40.0   # via azure
++azure-keyvault==1.1.0     # via azure
++azure-loganalytics==0.1.0  # via azure
++azure-mgmt-advisor==1.0.1  # via azure-mgmt
++azure-mgmt-applicationinsights==0.1.1  # via azure-mgmt
++azure-mgmt-authorization==0.50.0  # via azure-mgmt
++azure-mgmt-batch==5.0.1   # via azure-mgmt
++azure-mgmt-batchai==2.0.0  # via azure-mgmt
++azure-mgmt-billing==0.2.0  # via azure-mgmt
++azure-mgmt-cdn==3.1.0     # via azure-mgmt
++azure-mgmt-cognitiveservices==3.0.0  # via azure-mgmt
++azure-mgmt-commerce==1.0.1  # via azure-mgmt
++azure-mgmt-compute==4.6.0  # via azure-mgmt
++azure-mgmt-consumption==2.0.0  # via azure-mgmt
++azure-mgmt-containerinstance==1.4.1  # via azure-mgmt
++azure-mgmt-containerregistry==2.7.0  # via azure-mgmt
++azure-mgmt-containerservice==4.4.0  # via azure-mgmt
++azure-mgmt-cosmosdb==0.4.1  # via azure-mgmt
++azure-mgmt-datafactory==0.6.0  # via azure-mgmt
++azure-mgmt-datalake-analytics==0.6.0  # via azure-mgmt
++azure-mgmt-datalake-nspkg==3.0.1  # via azure-mgmt-datalake-analytics, azure-mgmt-datalake-store
++azure-mgmt-datalake-store==0.5.0  # via azure-mgmt
++azure-mgmt-datamigration==1.0.0  # via azure-mgmt
++azure-mgmt-devspaces==0.1.0  # via azure-mgmt
++azure-mgmt-devtestlabs==2.2.0  # via azure-mgmt
++azure-mgmt-dns==2.1.0     # via azure-mgmt
++azure-mgmt-eventgrid==1.0.0  # via azure-mgmt
++azure-mgmt-eventhub==2.5.0  # via azure-mgmt
++azure-mgmt-hanaonazure==0.1.1  # via azure-mgmt
++azure-mgmt-iotcentral==0.1.0  # via azure-mgmt
++azure-mgmt-iothub==0.5.0  # via azure-mgmt
++azure-mgmt-iothubprovisioningservices==0.2.0  # via azure-mgmt
++azure-mgmt-keyvault==1.1.0  # via azure-mgmt
++azure-mgmt-loganalytics==0.2.0  # via azure-mgmt
++azure-mgmt-logic==3.0.0   # via azure-mgmt
++azure-mgmt-machinelearningcompute==0.4.1  # via azure-mgmt
++azure-mgmt-managementgroups==0.1.0  # via azure-mgmt
++azure-mgmt-managementpartner==0.1.0  # via azure-mgmt
++azure-mgmt-maps==0.1.0    # via azure-mgmt
++azure-mgmt-marketplaceordering==0.1.0  # via azure-mgmt
++azure-mgmt-media==1.0.0   # via azure-mgmt
++azure-mgmt-monitor==0.5.2  # via azure-mgmt
++azure-mgmt-msi==0.2.0     # via azure-mgmt
++azure-mgmt-network==2.6.0  # via azure-mgmt
++azure-mgmt-notificationhubs==2.0.0  # via azure-mgmt
++azure-mgmt-nspkg==3.0.2   # via azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-consumption, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-nspkg, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web
++azure-mgmt-policyinsights==0.1.0  # via azure-mgmt
++azure-mgmt-powerbiembedded==2.0.0  # via azure-mgmt
++azure-mgmt-rdbms==1.8.0   # via azure-mgmt
++azure-mgmt-recoveryservices==0.3.0  # via azure-mgmt
++azure-mgmt-recoveryservicesbackup==0.3.0  # via azure-mgmt
++azure-mgmt-redis==5.0.0   # via azure-mgmt
++azure-mgmt-relay==0.1.0   # via azure-mgmt
++azure-mgmt-reservations==0.2.1  # via azure-mgmt
++azure-mgmt-resource==2.1.0  # via azure-mgmt
++azure-mgmt-scheduler==2.0.0  # via azure-mgmt
++azure-mgmt-search==2.0.0  # via azure-mgmt
++azure-mgmt-servicebus==0.5.3  # via azure-mgmt
++azure-mgmt-servicefabric==0.2.0  # via azure-mgmt
++azure-mgmt-signalr==0.1.1  # via azure-mgmt
++azure-mgmt-sql==0.9.1     # via azure-mgmt
++azure-mgmt-storage==2.0.0  # via azure-mgmt
++azure-mgmt-subscription==0.2.0  # via azure-mgmt
++azure-mgmt-trafficmanager==0.50.0  # via azure-mgmt
++azure-mgmt-web==0.35.0    # via azure-mgmt
++azure-mgmt==4.0.0         # via azure
++azure-nspkg==3.0.2        # via azure-applicationinsights, azure-batch, azure-cosmosdb-nspkg, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-loganalytics, azure-mgmt-nspkg, azure-servicebus, azure-servicefabric, azure-servicemanagement-legacy
++azure-servicebus==0.21.1  # via azure
++azure-servicefabric==6.3.0.0  # via azure
++azure-servicemanagement-legacy==0.20.6  # via azure
++azure-storage-blob==1.5.0  # via azure
++azure-storage-common==1.4.0  # via azure-cosmosdb-table, azure-storage-blob, azure-storage-file, azure-storage-queue
++azure-storage-file==1.4.0  # via azure
++azure-storage-queue==1.4.0  # via azure
++azure==4.0.0
++certifi==2019.3.9         # via msrest, requests
++cffi==1.12.2              # via azure-datalake-store, cryptography
++chardet==3.0.4            # via requests
++cryptography==2.6.1       # via adal, azure-cosmosdb-table, azure-keyvault, azure-storage-common, requests-ntlm, smbprotocol
++idna==2.8                 # via requests
++isodate==0.6.0            # via msrest
++msrest==0.6.6             # via azure-applicationinsights, azure-eventgrid, azure-keyvault, azure-loganalytics, azure-mgmt-cdn, azure-mgmt-compute, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-dns, azure-mgmt-eventhub, azure-mgmt-keyvault, azure-mgmt-media, azure-mgmt-network, azure-mgmt-rdbms, azure-mgmt-resource, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-servicefabric, msrestazure
++msrestazure==0.6.0        # via azure-batch, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web
++netaddr==0.7.19
++ntlm-auth==1.3.0          # via requests-ntlm, smbprotocol
++oauthlib==3.0.1           # via requests-oauthlib
++profitbricks==4.1.3
++pyasn1==0.4.5             # via smbprotocol
++pycparser==2.19           # via cffi
++pyjwt==1.7.1              # via adal
++pypsexec==0.1.0
++python-dateutil==2.8.0    # via adal, azure-cosmosdb-table, azure-storage-common
++pywinrm==0.3.0
++requests-ntlm==1.1.0      # via pywinrm
++requests-oauthlib==1.2.0  # via msrest
++requests==2.21.0          # via adal, azure-cosmosdb-table, azure-datalake-store, azure-keyvault, azure-servicebus, azure-servicemanagement-legacy, azure-storage-common, msrest, profitbricks, pywinrm, requests-ntlm, requests-oauthlib
++six==1.12.0               # via cryptography, isodate, profitbricks, pypsexec, python-dateutil, pywinrm, smbprotocol
++smbprotocol==0.1.1        # via pypsexec
++urllib3==1.24.2           # via requests
++xmltodict==0.12.0         # via pywinrm
+diff --git a/requirements/static/py3.8/darwin-crypto.txt b/requirements/static/py3.8/darwin-crypto.txt
+new file mode 100644
+index 0000000000..b1edfefdab
+--- /dev/null
++++ b/requirements/static/py3.8/darwin-crypto.txt
+@@ -0,0 +1,8 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/darwin-crypto.txt -v requirements/static/crypto.in
++#
++m2crypto==0.35.2
++pycryptodomex==3.9.0
+diff --git a/requirements/static/py3.8/darwin.txt b/requirements/static/py3.8/darwin.txt
+new file mode 100644
+index 0000000000..95bcd7748d
+--- /dev/null
++++ b/requirements/static/py3.8/darwin.txt
+@@ -0,0 +1,123 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/darwin.txt -v pkg/osx/req.txt pkg/osx/req_ext.txt requirements/base.txt requirements/zeromq.txt requirements/pytest.txt requirements/static/darwin.in
++#
++apache-libcloud==2.4.0
++appdirs==1.4.3            # via virtualenv
++argh==0.26.2              # via watchdog
++asn1crypto==1.3.0         # via certvalidator, cryptography, oscrypto
++atomicwrites==1.3.0       # via pytest
++attrs==19.1.0             # via pytest
++aws-xray-sdk==0.95        # via moto
++backports.functools-lru-cache==1.5  # via cheroot
++backports.ssl_match_hostname==3.7.0.1
++bcrypt==3.1.6             # via paramiko
++boto3==1.9.132
++boto==2.49.0
++botocore==1.12.132        # via boto3, moto, s3transfer
++cachetools==3.1.0         # via google-auth
++certifi==2019.3.9
++certvalidator==0.11.1     # via vcert
++cffi==1.12.2
++chardet==3.0.4            # via requests
++cheetah3==3.1.0
++cheroot==6.5.5            # via cherrypy
++cherrypy==17.4.1
++click==7.0
++clustershell==1.8.1
++contextlib2==0.5.5        # via cherrypy
++croniter==0.3.29
++cryptography==2.6.1
++distlib==0.3.0            # via virtualenv
++dnspython==1.16.0
++docker-pycreds==0.4.0     # via docker
++docker==3.7.2
++docutils==0.14            # via botocore
++ecdsa==0.13.3             # via python-jose
++enum34==1.1.6
++filelock==3.0.12          # via virtualenv
++future==0.17.1            # via python-jose
++genshi==0.7.3
++gitdb2==2.0.5             # via gitpython
++gitpython==2.1.15
++google-auth==1.6.3        # via kubernetes
++idna==2.8
++ipaddress==1.0.22
++jaraco.functools==2.0     # via tempora
++jinja2==2.10.1
++jmespath==0.9.4
++jsondiff==1.1.1           # via moto
++jsonpickle==1.1           # via aws-xray-sdk
++jsonschema==2.6.0
++junos-eznc==2.2.0
++jxmlease==1.0.1
++keyring==5.7.1
++kubernetes==3.0.0
++linode-python==1.1.1
++lxml==4.3.3               # via junos-eznc, ncclient
++mako==1.0.7
++markupsafe==1.1.1
++mock==3.0.5
++more-itertools==5.0.0
++moto==1.3.7
++msgpack-python==0.5.6
++msgpack==0.5.6
++ncclient==0.6.4           # via junos-eznc
++netaddr==0.7.19           # via junos-eznc
++oscrypto==1.2.0           # via certvalidator
++packaging==19.2           # via pytest
++paramiko==2.4.2           # via junos-eznc, ncclient, scp
++pathtools==0.1.2          # via watchdog
++pluggy==0.13.1            # via pytest
++portend==2.4              # via cherrypy
++psutil==5.6.6
++py==1.8.0                 # via pytest
++pyaml==19.4.1             # via moto
++pyasn1-modules==0.2.4     # via google-auth
++pyasn1==0.4.5
++pycparser==2.19
++pycryptodome==3.8.1
++pynacl==1.3.0             # via paramiko
++pyopenssl==19.0.0
++pyparsing==2.4.5          # via packaging
++pyserial==3.4             # via junos-eznc
++pytest-helpers-namespace==2019.1.8
++pytest-salt-runtests-bridge==2019.7.10
++pytest-salt==2020.1.27
++pytest-tempdir==2019.10.12
++pytest==4.6.6
++python-dateutil==2.8.0
++python-etcd==0.4.5
++python-gnupg==0.4.4
++python-jose==2.0.2        # via moto
++pytz==2019.1              # via moto, tempora
++pyvmomi==6.7.1.2018.12
++pyyaml==5.1.2
++pyzmq==18.0.1 ; python_version != "3.4"
++requests==2.21.0
++responses==0.10.6         # via moto
++rfc3987==1.3.8
++rsa==4.0                  # via google-auth
++s3transfer==0.2.0         # via boto3
++salttesting==2017.6.1
++scp==0.13.2               # via junos-eznc
++setproctitle==1.1.10
++six==1.12.0               # via bcrypt, cheroot, cherrypy, cryptography, docker, docker-pycreds, google-auth, junos-eznc, kubernetes, mock, more-itertools, moto, ncclient, packaging, pynacl, pyopenssl, pytest, python-dateutil, python-jose, pyvmomi, responses, salttesting, tempora, vcert, virtualenv, websocket-client
++smmap2==2.0.5             # via gitdb2
++strict-rfc3339==0.7
++tempora==1.14.1           # via portend
++timelib==0.2.4
++urllib3==1.24.2           # via botocore, kubernetes, python-etcd, requests
++vcert==0.7.3
++virtualenv==20.0.10
++vultr==1.0.1
++watchdog==0.9.0
++wcwidth==0.1.7            # via pytest
++websocket-client==0.40.0  # via docker, kubernetes
++werkzeug==0.15.6          # via moto
++wrapt==1.11.1             # via aws-xray-sdk
++xmltodict==0.12.0         # via moto
++yamlordereddictloader==0.4.0
++zc.lockfile==1.4          # via cherrypy
+diff --git a/requirements/static/py3.8/docs.txt b/requirements/static/py3.8/docs.txt
+new file mode 100644
+index 0000000000..ab3ce4ada7
+--- /dev/null
++++ b/requirements/static/py3.8/docs.txt
+@@ -0,0 +1,30 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/docs.txt -v requirements/static/docs.in
++#
++alabaster==0.7.12         # via sphinx
++babel==2.7.0              # via sphinx
++certifi==2019.3.9         # via requests
++chardet==3.0.4            # via requests
++docutils==0.14            # via sphinx
++idna==2.8                 # via requests
++imagesize==1.1.0          # via sphinx
++jinja2==2.10.1            # via sphinx
++markupsafe==1.1.1         # via jinja2
++packaging==19.0           # via sphinx
++pygments==2.4.2           # via sphinx
++pyparsing==2.4.0          # via packaging
++pytz==2019.1              # via babel
++requests==2.22.0          # via sphinx
++six==1.12.0               # via packaging
++snowballstemmer==1.2.1    # via sphinx
++sphinx==2.0.1
++sphinxcontrib-applehelp==1.0.1  # via sphinx
++sphinxcontrib-devhelp==1.0.1  # via sphinx
++sphinxcontrib-htmlhelp==1.0.2  # via sphinx
++sphinxcontrib-jsmath==1.0.1  # via sphinx
++sphinxcontrib-qthelp==1.0.2  # via sphinx
++sphinxcontrib-serializinghtml==1.1.3  # via sphinx
++urllib3==1.25.3           # via requests
+diff --git a/requirements/static/py3.8/lint.txt b/requirements/static/py3.8/lint.txt
+new file mode 100644
+index 0000000000..f027cab8e5
+--- /dev/null
++++ b/requirements/static/py3.8/lint.txt
+@@ -0,0 +1,16 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/lint.txt -v requirements/static/lint.in
++#
++astroid==2.3.3            # via pylint
++isort==4.3.17             # via pylint
++lazy-object-proxy==1.4.3  # via astroid
++mccabe==0.6.1             # via pylint
++modernize==0.5            # via saltpylint
++pycodestyle==2.5.0        # via saltpylint
++pylint==2.4.4
++saltpylint==2019.11.14
++six==1.12.0               # via astroid
++wrapt==1.11.1             # via astroid
+diff --git a/requirements/static/py3.8/linux-crypto.txt b/requirements/static/py3.8/linux-crypto.txt
+new file mode 100644
+index 0000000000..f625936c6e
+--- /dev/null
++++ b/requirements/static/py3.8/linux-crypto.txt
+@@ -0,0 +1,8 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/linux-crypto.txt -v requirements/static/crypto.in
++#
++m2crypto==0.35.2
++pycryptodomex==3.9.3
+diff --git a/requirements/static/py3.8/linux.txt b/requirements/static/py3.8/linux.txt
+new file mode 100644
+index 0000000000..5d42a310fa
+--- /dev/null
++++ b/requirements/static/py3.8/linux.txt
+@@ -0,0 +1,119 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.8/linux.txt -v requirements/base.txt requirements/zeromq.txt requirements/pytest.txt requirements/static/linux.in
++#
++apache-libcloud==2.0.0
++argh==0.26.2              # via watchdog
++asn1crypto==1.3.0         # via certvalidator, cryptography, oscrypto
++atomicwrites==1.3.0       # via pytest
++attrs==19.1.0             # via pytest
++aws-xray-sdk==0.95        # via moto
++backports.functools-lru-cache==1.5  # via cheroot
++bcrypt==3.1.6             # via paramiko
++boto3==1.9.132
++boto==2.49.0
++botocore==1.12.132        # via boto3, moto, s3transfer
++cachetools==3.1.0         # via google-auth
++certifi==2019.3.9
++certvalidator==0.11.1     # via vcert
++cffi==1.12.2
++chardet==3.0.4            # via requests
++cheetah3==3.1.0
++cheroot==6.5.4            # via cherrypy
++cherrypy==17.3.0
++contextlib2==0.5.5        # via cherrypy
++croniter==0.3.29
++cryptography==2.6.1       # via moto, paramiko, pyopenssl, vcert
++dnspython==1.16.0
++docker-pycreds==0.4.0     # via docker
++docker==3.7.2
++docutils==0.14            # via botocore
++ecdsa==0.13.3             # via python-jose
++future==0.17.1            # via python-jose
++genshi==0.7.3
++gitdb2==2.0.5             # via gitpython
++gitpython==2.1.11
++google-auth==1.6.3        # via kubernetes
++hgtools==8.1.1
++idna==2.8                 # via requests
++ipaddress==1.0.22         # via kubernetes
++jaraco.functools==2.0     # via tempora
++jinja2==2.10.1
++jmespath==0.9.4
++jsondiff==1.1.1           # via moto
++jsonpickle==1.1           # via aws-xray-sdk
++jsonschema==2.6.0
++junos-eznc==2.2.0
++jxmlease==1.0.1
++kazoo==2.6.1
++keyring==5.7.1
++kubernetes==3.0.0
++libnacl==1.7.1
++lxml==4.3.3               # via junos-eznc, ncclient
++mako==1.1.0
++markupsafe==1.1.1
++mock==3.0.5
++more-itertools==5.0.0
++moto==1.3.7
++msgpack==0.5.6
++ncclient==0.6.4           # via junos-eznc
++netaddr==0.7.19           # via junos-eznc
++oscrypto==1.2.0           # via certvalidator
++packaging==19.2           # via pytest
++paramiko==2.4.2
++pathtools==0.1.2          # via watchdog
++pluggy==0.13.0            # via pytest
++portend==2.4              # via cherrypy
++psutil==5.6.1
++py==1.8.0                 # via pytest
++pyaml==19.4.1             # via moto
++pyasn1-modules==0.2.4     # via google-auth
++pyasn1==0.4.5             # via paramiko, pyasn1-modules, rsa
++pycparser==2.19           # via cffi
++pycrypto==2.6.1 ; sys_platform not in "win32,darwin"
++pycryptodome==3.8.1       # via python-jose
++pygit2==0.28.2
++pyinotify==0.9.6
++pynacl==1.3.0             # via paramiko
++pyopenssl==19.0.0
++pyparsing==2.4.5          # via packaging
++pyserial==3.4             # via junos-eznc
++pytest-helpers-namespace==2019.1.8
++pytest-salt-runtests-bridge==2019.7.10
++pytest-salt==2020.1.27
++pytest-tempdir==2019.10.12
++pytest==4.6.6
++python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
++python-etcd==0.4.5
++python-gnupg==0.4.4
++python-jose==2.0.2        # via moto
++pytz==2019.1              # via moto, tempora
++pyvmomi==6.7.1.2018.12
++pyyaml==5.1.2
++pyzmq==18.0.1 ; python_version != "3.4"
++requests==2.21.0
++responses==0.10.6         # via moto
++rfc3987==1.3.8
++rsa==4.0                  # via google-auth
++s3transfer==0.2.0         # via boto3
++salttesting==2017.6.1
++scp==0.13.2               # via junos-eznc
++setproctitle==1.1.10
++setuptools-scm==3.2.0
++six==1.12.0               # via bcrypt, cheroot, cherrypy, cryptography, docker, docker-pycreds, google-auth, junos-eznc, kazoo, kubernetes, mock, more-itertools, moto, ncclient, packaging, pygit2, pynacl, pyopenssl, pytest, python-dateutil, python-jose, pyvmomi, responses, salttesting, tempora, vcert, websocket-client
++smmap2==2.0.5             # via gitdb2
++strict-rfc3339==0.7
++tempora==1.14.1           # via portend
++timelib==0.2.4
++urllib3==1.24.2           # via botocore, kubernetes, python-etcd, requests
++vcert==0.7.3
++virtualenv==16.4.3
++watchdog==0.9.0
++wcwidth==0.1.7            # via pytest
++websocket-client==0.40.0  # via docker, kubernetes
++werkzeug==0.15.6          # via moto
++wrapt==1.11.1             # via aws-xray-sdk
++xmltodict==0.12.0         # via moto
++zc.lockfile==1.4          # via cherrypy
+diff --git a/requirements/static/py3.9/cloud.txt b/requirements/static/py3.9/cloud.txt
+new file mode 100644
+index 0000000000..cc569aa714
+--- /dev/null
++++ b/requirements/static/py3.9/cloud.txt
+@@ -0,0 +1,115 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/cloud.txt -v requirements/static/cloud.in
++#
++adal==1.2.1               # via azure-datalake-store, msrestazure
++asn1crypto==0.24.0        # via cryptography
++azure-applicationinsights==0.1.0  # via azure
++azure-batch==4.1.3        # via azure
++azure-common==1.1.18      # via azure-applicationinsights, azure-batch, azure-cosmosdb-table, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-loganalytics, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web, azure-servicebus, azure-servicefabric, azure-servicemanagement-legacy, azure-storage-blob, azure-storage-common, azure-storage-file, azure-storage-queue
++azure-cosmosdb-nspkg==2.0.2  # via azure-cosmosdb-table
++azure-cosmosdb-table==1.0.5  # via azure
++azure-datalake-store==0.0.44  # via azure
++azure-eventgrid==1.2.0    # via azure
++azure-graphrbac==0.40.0   # via azure
++azure-keyvault==1.1.0     # via azure
++azure-loganalytics==0.1.0  # via azure
++azure-mgmt-advisor==1.0.1  # via azure-mgmt
++azure-mgmt-applicationinsights==0.1.1  # via azure-mgmt
++azure-mgmt-authorization==0.50.0  # via azure-mgmt
++azure-mgmt-batch==5.0.1   # via azure-mgmt
++azure-mgmt-batchai==2.0.0  # via azure-mgmt
++azure-mgmt-billing==0.2.0  # via azure-mgmt
++azure-mgmt-cdn==3.1.0     # via azure-mgmt
++azure-mgmt-cognitiveservices==3.0.0  # via azure-mgmt
++azure-mgmt-commerce==1.0.1  # via azure-mgmt
++azure-mgmt-compute==4.6.0  # via azure-mgmt
++azure-mgmt-consumption==2.0.0  # via azure-mgmt
++azure-mgmt-containerinstance==1.4.1  # via azure-mgmt
++azure-mgmt-containerregistry==2.7.0  # via azure-mgmt
++azure-mgmt-containerservice==4.4.0  # via azure-mgmt
++azure-mgmt-cosmosdb==0.4.1  # via azure-mgmt
++azure-mgmt-datafactory==0.6.0  # via azure-mgmt
++azure-mgmt-datalake-analytics==0.6.0  # via azure-mgmt
++azure-mgmt-datalake-nspkg==3.0.1  # via azure-mgmt-datalake-analytics, azure-mgmt-datalake-store
++azure-mgmt-datalake-store==0.5.0  # via azure-mgmt
++azure-mgmt-datamigration==1.0.0  # via azure-mgmt
++azure-mgmt-devspaces==0.1.0  # via azure-mgmt
++azure-mgmt-devtestlabs==2.2.0  # via azure-mgmt
++azure-mgmt-dns==2.1.0     # via azure-mgmt
++azure-mgmt-eventgrid==1.0.0  # via azure-mgmt
++azure-mgmt-eventhub==2.5.0  # via azure-mgmt
++azure-mgmt-hanaonazure==0.1.1  # via azure-mgmt
++azure-mgmt-iotcentral==0.1.0  # via azure-mgmt
++azure-mgmt-iothub==0.5.0  # via azure-mgmt
++azure-mgmt-iothubprovisioningservices==0.2.0  # via azure-mgmt
++azure-mgmt-keyvault==1.1.0  # via azure-mgmt
++azure-mgmt-loganalytics==0.2.0  # via azure-mgmt
++azure-mgmt-logic==3.0.0   # via azure-mgmt
++azure-mgmt-machinelearningcompute==0.4.1  # via azure-mgmt
++azure-mgmt-managementgroups==0.1.0  # via azure-mgmt
++azure-mgmt-managementpartner==0.1.0  # via azure-mgmt
++azure-mgmt-maps==0.1.0    # via azure-mgmt
++azure-mgmt-marketplaceordering==0.1.0  # via azure-mgmt
++azure-mgmt-media==1.0.0   # via azure-mgmt
++azure-mgmt-monitor==0.5.2  # via azure-mgmt
++azure-mgmt-msi==0.2.0     # via azure-mgmt
++azure-mgmt-network==2.6.0  # via azure-mgmt
++azure-mgmt-notificationhubs==2.0.0  # via azure-mgmt
++azure-mgmt-nspkg==3.0.2   # via azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-consumption, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-nspkg, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web
++azure-mgmt-policyinsights==0.1.0  # via azure-mgmt
++azure-mgmt-powerbiembedded==2.0.0  # via azure-mgmt
++azure-mgmt-rdbms==1.8.0   # via azure-mgmt
++azure-mgmt-recoveryservices==0.3.0  # via azure-mgmt
++azure-mgmt-recoveryservicesbackup==0.3.0  # via azure-mgmt
++azure-mgmt-redis==5.0.0   # via azure-mgmt
++azure-mgmt-relay==0.1.0   # via azure-mgmt
++azure-mgmt-reservations==0.2.1  # via azure-mgmt
++azure-mgmt-resource==2.1.0  # via azure-mgmt
++azure-mgmt-scheduler==2.0.0  # via azure-mgmt
++azure-mgmt-search==2.0.0  # via azure-mgmt
++azure-mgmt-servicebus==0.5.3  # via azure-mgmt
++azure-mgmt-servicefabric==0.2.0  # via azure-mgmt
++azure-mgmt-signalr==0.1.1  # via azure-mgmt
++azure-mgmt-sql==0.9.1     # via azure-mgmt
++azure-mgmt-storage==2.0.0  # via azure-mgmt
++azure-mgmt-subscription==0.2.0  # via azure-mgmt
++azure-mgmt-trafficmanager==0.50.0  # via azure-mgmt
++azure-mgmt-web==0.35.0    # via azure-mgmt
++azure-mgmt==4.0.0         # via azure
++azure-nspkg==3.0.2        # via azure-applicationinsights, azure-batch, azure-cosmosdb-nspkg, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-loganalytics, azure-mgmt-nspkg, azure-servicebus, azure-servicefabric, azure-servicemanagement-legacy
++azure-servicebus==0.21.1  # via azure
++azure-servicefabric==6.3.0.0  # via azure
++azure-servicemanagement-legacy==0.20.6  # via azure
++azure-storage-blob==1.5.0  # via azure
++azure-storage-common==1.4.0  # via azure-cosmosdb-table, azure-storage-blob, azure-storage-file, azure-storage-queue
++azure-storage-file==1.4.0  # via azure
++azure-storage-queue==1.4.0  # via azure
++azure==4.0.0
++certifi==2019.3.9         # via msrest, requests
++cffi==1.12.2              # via azure-datalake-store, cryptography
++chardet==3.0.4            # via requests
++cryptography==2.6.1       # via adal, azure-cosmosdb-table, azure-keyvault, azure-storage-common, requests-ntlm, smbprotocol
++idna==2.8                 # via requests
++isodate==0.6.0            # via msrest
++msrest==0.6.6             # via azure-applicationinsights, azure-eventgrid, azure-keyvault, azure-loganalytics, azure-mgmt-cdn, azure-mgmt-compute, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-dns, azure-mgmt-eventhub, azure-mgmt-keyvault, azure-mgmt-media, azure-mgmt-network, azure-mgmt-rdbms, azure-mgmt-resource, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-servicefabric, msrestazure
++msrestazure==0.6.0        # via azure-batch, azure-eventgrid, azure-graphrbac, azure-keyvault, azure-mgmt-advisor, azure-mgmt-applicationinsights, azure-mgmt-authorization, azure-mgmt-batch, azure-mgmt-batchai, azure-mgmt-billing, azure-mgmt-cdn, azure-mgmt-cognitiveservices, azure-mgmt-commerce, azure-mgmt-compute, azure-mgmt-consumption, azure-mgmt-containerinstance, azure-mgmt-containerregistry, azure-mgmt-containerservice, azure-mgmt-cosmosdb, azure-mgmt-datafactory, azure-mgmt-datalake-analytics, azure-mgmt-datalake-store, azure-mgmt-datamigration, azure-mgmt-devspaces, azure-mgmt-devtestlabs, azure-mgmt-dns, azure-mgmt-eventgrid, azure-mgmt-eventhub, azure-mgmt-hanaonazure, azure-mgmt-iotcentral, azure-mgmt-iothub, azure-mgmt-iothubprovisioningservices, azure-mgmt-keyvault, azure-mgmt-loganalytics, azure-mgmt-logic, azure-mgmt-machinelearningcompute, azure-mgmt-managementgroups, azure-mgmt-managementpartner, azure-mgmt-maps, azure-mgmt-marketplaceordering, azure-mgmt-media, azure-mgmt-monitor, azure-mgmt-msi, azure-mgmt-network, azure-mgmt-notificationhubs, azure-mgmt-policyinsights, azure-mgmt-powerbiembedded, azure-mgmt-rdbms, azure-mgmt-recoveryservices, azure-mgmt-recoveryservicesbackup, azure-mgmt-redis, azure-mgmt-relay, azure-mgmt-reservations, azure-mgmt-resource, azure-mgmt-scheduler, azure-mgmt-search, azure-mgmt-servicebus, azure-mgmt-servicefabric, azure-mgmt-signalr, azure-mgmt-sql, azure-mgmt-storage, azure-mgmt-subscription, azure-mgmt-trafficmanager, azure-mgmt-web
++netaddr==0.7.19
++ntlm-auth==1.3.0          # via requests-ntlm, smbprotocol
++oauthlib==3.0.1           # via requests-oauthlib
++profitbricks==4.1.3
++pyasn1==0.4.5             # via smbprotocol
++pycparser==2.19           # via cffi
++pyjwt==1.7.1              # via adal
++pypsexec==0.1.0
++python-dateutil==2.8.0    # via adal, azure-cosmosdb-table, azure-storage-common
++pywinrm==0.3.0
++requests-ntlm==1.1.0      # via pywinrm
++requests-oauthlib==1.2.0  # via msrest
++requests==2.21.0          # via adal, azure-cosmosdb-table, azure-datalake-store, azure-keyvault, azure-servicebus, azure-servicemanagement-legacy, azure-storage-common, msrest, profitbricks, pywinrm, requests-ntlm, requests-oauthlib
++six==1.12.0               # via cryptography, isodate, profitbricks, pypsexec, python-dateutil, pywinrm, smbprotocol
++smbprotocol==0.1.1        # via pypsexec
++urllib3==1.24.2           # via requests
++xmltodict==0.12.0         # via pywinrm
+diff --git a/requirements/static/py3.9/darwin-crypto.txt b/requirements/static/py3.9/darwin-crypto.txt
+new file mode 100644
+index 0000000000..838b5c329f
+--- /dev/null
++++ b/requirements/static/py3.9/darwin-crypto.txt
+@@ -0,0 +1,8 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/darwin-crypto.txt -v requirements/static/crypto.in
++#
++m2crypto==0.35.2
++pycryptodomex==3.9.0
+diff --git a/requirements/static/py3.9/darwin.txt b/requirements/static/py3.9/darwin.txt
+new file mode 100644
+index 0000000000..419f8ee1d1
+--- /dev/null
++++ b/requirements/static/py3.9/darwin.txt
+@@ -0,0 +1,123 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/darwin.txt -v pkg/osx/req.txt pkg/osx/req_ext.txt requirements/base.txt requirements/zeromq.txt requirements/pytest.txt requirements/static/darwin.in
++#
++apache-libcloud==2.4.0
++appdirs==1.4.3            # via virtualenv
++argh==0.26.2              # via watchdog
++asn1crypto==1.3.0         # via certvalidator, cryptography, oscrypto
++atomicwrites==1.3.0       # via pytest
++attrs==19.1.0             # via pytest
++aws-xray-sdk==0.95        # via moto
++backports.functools-lru-cache==1.5  # via cheroot
++backports.ssl_match_hostname==3.7.0.1
++bcrypt==3.1.6             # via paramiko
++boto3==1.9.132
++boto==2.49.0
++botocore==1.12.132        # via boto3, moto, s3transfer
++cachetools==3.1.0         # via google-auth
++certifi==2019.3.9
++certvalidator==0.11.1     # via vcert
++cffi==1.12.2
++chardet==3.0.4            # via requests
++cheetah3==3.1.0
++cheroot==6.5.5            # via cherrypy
++cherrypy==17.4.1
++click==7.0
++clustershell==1.8.1
++contextlib2==0.5.5        # via cherrypy
++croniter==0.3.29
++cryptography==2.6.1
++distlib==0.3.0            # via virtualenv
++dnspython==1.16.0
++docker-pycreds==0.4.0     # via docker
++docker==3.7.2
++docutils==0.14            # via botocore
++ecdsa==0.13.3             # via python-jose
++enum34==1.1.6
++filelock==3.0.12          # via virtualenv
++future==0.17.1            # via python-jose
++genshi==0.7.3
++gitdb2==2.0.5             # via gitpython
++gitpython==2.1.15
++google-auth==1.6.3        # via kubernetes
++idna==2.8
++ipaddress==1.0.22
++jaraco.functools==2.0     # via tempora
++jinja2==2.10.1
++jmespath==0.9.4
++jsondiff==1.1.1           # via moto
++jsonpickle==1.1           # via aws-xray-sdk
++jsonschema==2.6.0
++junos-eznc==2.2.0
++jxmlease==1.0.1
++keyring==5.7.1
++kubernetes==3.0.0
++linode-python==1.1.1
++lxml==4.3.3               # via junos-eznc, ncclient
++mako==1.0.7
++markupsafe==1.1.1
++mock==3.0.5
++more-itertools==5.0.0
++moto==1.3.7
++msgpack-python==0.5.6
++msgpack==0.5.6
++ncclient==0.6.4           # via junos-eznc
++netaddr==0.7.19           # via junos-eznc
++oscrypto==1.2.0           # via certvalidator
++packaging==19.2           # via pytest
++paramiko==2.4.2           # via junos-eznc, ncclient, scp
++pathtools==0.1.2          # via watchdog
++pluggy==0.13.1            # via pytest
++portend==2.4              # via cherrypy
++psutil==5.6.6
++py==1.8.0                 # via pytest
++pyaml==19.4.1             # via moto
++pyasn1-modules==0.2.4     # via google-auth
++pyasn1==0.4.5
++pycparser==2.19
++pycryptodome==3.8.1
++pynacl==1.3.0             # via paramiko
++pyopenssl==19.0.0
++pyparsing==2.4.5          # via packaging
++pyserial==3.4             # via junos-eznc
++pytest-helpers-namespace==2019.1.8
++pytest-salt-runtests-bridge==2019.7.10
++pytest-salt==2020.1.27
++pytest-tempdir==2019.10.12
++pytest==4.6.6
++python-dateutil==2.8.0
++python-etcd==0.4.5
++python-gnupg==0.4.4
++python-jose==2.0.2        # via moto
++pytz==2019.1              # via moto, tempora
++pyvmomi==6.7.1.2018.12
++pyyaml==5.1.2
++pyzmq==18.0.1 ; python_version != "3.4"
++requests==2.21.0
++responses==0.10.6         # via moto
++rfc3987==1.3.8
++rsa==4.0                  # via google-auth
++s3transfer==0.2.0         # via boto3
++salttesting==2017.6.1
++scp==0.13.2               # via junos-eznc
++setproctitle==1.1.10
++six==1.12.0               # via bcrypt, cheroot, cherrypy, cryptography, docker, docker-pycreds, google-auth, junos-eznc, kubernetes, mock, more-itertools, moto, ncclient, packaging, pynacl, pyopenssl, pytest, python-dateutil, python-jose, pyvmomi, responses, salttesting, tempora, vcert, virtualenv, websocket-client
++smmap2==2.0.5             # via gitdb2
++strict-rfc3339==0.7
++tempora==1.14.1           # via portend
++timelib==0.2.4
++urllib3==1.24.2           # via botocore, kubernetes, python-etcd, requests
++vcert==0.7.3
++virtualenv==20.0.10
++vultr==1.0.1
++watchdog==0.9.0
++wcwidth==0.1.7            # via pytest
++websocket-client==0.40.0  # via docker, kubernetes
++werkzeug==0.15.6          # via moto
++wrapt==1.11.1             # via aws-xray-sdk
++xmltodict==0.12.0         # via moto
++yamlordereddictloader==0.4.0
++zc.lockfile==1.4          # via cherrypy
+diff --git a/requirements/static/py3.9/docs.txt b/requirements/static/py3.9/docs.txt
+new file mode 100644
+index 0000000000..89552f5688
+--- /dev/null
++++ b/requirements/static/py3.9/docs.txt
+@@ -0,0 +1,30 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/docs.txt -v requirements/static/docs.in
++#
++alabaster==0.7.12         # via sphinx
++babel==2.7.0              # via sphinx
++certifi==2019.3.9         # via requests
++chardet==3.0.4            # via requests
++docutils==0.14            # via sphinx
++idna==2.8                 # via requests
++imagesize==1.1.0          # via sphinx
++jinja2==2.10.1            # via sphinx
++markupsafe==1.1.1         # via jinja2
++packaging==19.0           # via sphinx
++pygments==2.4.2           # via sphinx
++pyparsing==2.4.0          # via packaging
++pytz==2019.1              # via babel
++requests==2.22.0          # via sphinx
++six==1.12.0               # via packaging
++snowballstemmer==1.2.1    # via sphinx
++sphinx==2.0.1
++sphinxcontrib-applehelp==1.0.1  # via sphinx
++sphinxcontrib-devhelp==1.0.1  # via sphinx
++sphinxcontrib-htmlhelp==1.0.2  # via sphinx
++sphinxcontrib-jsmath==1.0.1  # via sphinx
++sphinxcontrib-qthelp==1.0.2  # via sphinx
++sphinxcontrib-serializinghtml==1.1.3  # via sphinx
++urllib3==1.25.3           # via requests
+diff --git a/requirements/static/py3.9/lint.txt b/requirements/static/py3.9/lint.txt
+new file mode 100644
+index 0000000000..bb8a2756a3
+--- /dev/null
++++ b/requirements/static/py3.9/lint.txt
+@@ -0,0 +1,16 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/lint.txt -v requirements/static/lint.in
++#
++astroid==2.3.3            # via pylint
++isort==4.3.17             # via pylint
++lazy-object-proxy==1.4.3  # via astroid
++mccabe==0.6.1             # via pylint
++modernize==0.5            # via saltpylint
++pycodestyle==2.5.0        # via saltpylint
++pylint==2.4.4
++saltpylint==2019.11.14
++six==1.12.0               # via astroid
++wrapt==1.11.1             # via astroid
+diff --git a/requirements/static/py3.9/linux-crypto.txt b/requirements/static/py3.9/linux-crypto.txt
+new file mode 100644
+index 0000000000..148f8bec31
+--- /dev/null
++++ b/requirements/static/py3.9/linux-crypto.txt
+@@ -0,0 +1,8 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/linux-crypto.txt -v requirements/static/crypto.in
++#
++m2crypto==0.35.2
++pycryptodomex==3.9.3
+diff --git a/requirements/static/py3.9/linux.txt b/requirements/static/py3.9/linux.txt
+new file mode 100644
+index 0000000000..b7eb8320de
+--- /dev/null
++++ b/requirements/static/py3.9/linux.txt
+@@ -0,0 +1,119 @@
++#
++# This file is autogenerated by pip-compile
++# To update, run:
++#
++#    pip-compile -o requirements/static/py3.9/linux.txt -v requirements/base.txt requirements/zeromq.txt requirements/pytest.txt requirements/static/linux.in
++#
++apache-libcloud==2.0.0
++argh==0.26.2              # via watchdog
++asn1crypto==1.3.0         # via certvalidator, cryptography, oscrypto
++atomicwrites==1.3.0       # via pytest
++attrs==19.1.0             # via pytest
++aws-xray-sdk==0.95        # via moto
++backports.functools-lru-cache==1.5  # via cheroot
++bcrypt==3.1.6             # via paramiko
++boto3==1.9.132
++boto==2.49.0
++botocore==1.12.132        # via boto3, moto, s3transfer
++cachetools==3.1.0         # via google-auth
++certifi==2019.3.9
++certvalidator==0.11.1     # via vcert
++cffi==1.12.2
++chardet==3.0.4            # via requests
++cheetah3==3.1.0
++cheroot==6.5.4            # via cherrypy
++cherrypy==17.3.0
++contextlib2==0.5.5        # via cherrypy
++croniter==0.3.29
++cryptography==2.6.1       # via moto, paramiko, pyopenssl, vcert
++dnspython==1.16.0
++docker-pycreds==0.4.0     # via docker
++docker==3.7.2
++docutils==0.14            # via botocore
++ecdsa==0.13.3             # via python-jose
++future==0.17.1            # via python-jose
++genshi==0.7.3
++gitdb2==2.0.5             # via gitpython
++gitpython==2.1.11
++google-auth==1.6.3        # via kubernetes
++hgtools==8.1.1
++idna==2.8                 # via requests
++ipaddress==1.0.22         # via kubernetes
++jaraco.functools==2.0     # via tempora
++jinja2==2.10.1
++jmespath==0.9.4
++jsondiff==1.1.1           # via moto
++jsonpickle==1.1           # via aws-xray-sdk
++jsonschema==2.6.0
++junos-eznc==2.2.0
++jxmlease==1.0.1
++kazoo==2.6.1
++keyring==5.7.1
++kubernetes==3.0.0
++libnacl==1.7.1
++lxml==4.3.3               # via junos-eznc, ncclient
++mako==1.1.0
++markupsafe==1.1.1
++mock==3.0.5
++more-itertools==5.0.0
++moto==1.3.7
++msgpack==0.5.6
++ncclient==0.6.4           # via junos-eznc
++netaddr==0.7.19           # via junos-eznc
++oscrypto==1.2.0           # via certvalidator
++packaging==19.2           # via pytest
++paramiko==2.4.2
++pathtools==0.1.2          # via watchdog
++pluggy==0.13.0            # via pytest
++portend==2.4              # via cherrypy
++psutil==5.6.1
++py==1.8.0                 # via pytest
++pyaml==19.4.1             # via moto
++pyasn1-modules==0.2.4     # via google-auth
++pyasn1==0.4.5             # via paramiko, pyasn1-modules, rsa
++pycparser==2.19           # via cffi
++pycrypto==2.6.1 ; sys_platform not in "win32,darwin"
++pycryptodome==3.8.1       # via python-jose
++pygit2==0.28.2
++pyinotify==0.9.6
++pynacl==1.3.0             # via paramiko
++pyopenssl==19.0.0
++pyparsing==2.4.5          # via packaging
++pyserial==3.4             # via junos-eznc
++pytest-helpers-namespace==2019.1.8
++pytest-salt-runtests-bridge==2019.7.10
++pytest-salt==2020.1.27
++pytest-tempdir==2019.10.12
++pytest==4.6.6
++python-dateutil==2.8.0    # via botocore, croniter, kubernetes, moto, vcert
++python-etcd==0.4.5
++python-gnupg==0.4.4
++python-jose==2.0.2        # via moto
++pytz==2019.1              # via moto, tempora
++pyvmomi==6.7.1.2018.12
++pyyaml==5.1.2
++pyzmq==18.0.1 ; python_version != "3.4"
++requests==2.21.0
++responses==0.10.6         # via moto
++rfc3987==1.3.8
++rsa==4.0                  # via google-auth
++s3transfer==0.2.0         # via boto3
++salttesting==2017.6.1
++scp==0.13.2               # via junos-eznc
++setproctitle==1.1.10
++setuptools-scm==3.2.0
++six==1.12.0               # via bcrypt, cheroot, cherrypy, cryptography, docker, docker-pycreds, google-auth, junos-eznc, kazoo, kubernetes, mock, more-itertools, moto, ncclient, packaging, pygit2, pynacl, pyopenssl, pytest, python-dateutil, python-jose, pyvmomi, responses, salttesting, tempora, vcert, websocket-client
++smmap2==2.0.5             # via gitdb2
++strict-rfc3339==0.7
++tempora==1.14.1           # via portend
++timelib==0.2.4
++urllib3==1.24.2           # via botocore, kubernetes, python-etcd, requests
++vcert==0.7.3
++virtualenv==16.4.3
++watchdog==0.9.0
++wcwidth==0.1.7            # via pytest
++websocket-client==0.40.0  # via docker, kubernetes
++werkzeug==0.15.6          # via moto
++wrapt==1.11.1             # via aws-xray-sdk
++xmltodict==0.12.0         # via moto
++zc.lockfile==1.4          # via cherrypy
+diff --git a/salt/client/mixins.py b/salt/client/mixins.py
+index 131aa1e3de..8ca8c7fbf6 100644
+--- a/salt/client/mixins.py
++++ b/salt/client/mixins.py
+@@ -4,7 +4,9 @@ A collection of mixins useful for the various *Client interfaces
+ '''
+ 
+ # Import Python libs
+-from __future__ import absolute_import, print_function, with_statement, unicode_literals
++from __future__ import absolute_import, print_function, unicode_literals, with_statement
++
++import copy as pycopy
+ import fnmatch
+ import signal
+ import logging
+@@ -34,31 +36,40 @@ from salt.ext import six
+ 
+ # Import 3rd-party libs
+ import salt.ext.tornado.stack_context
++try:
++    from collections.abc import Mapping, MutableMapping
++except ImportError:
++    # pylint: disable=no-name-in-module
++    from collections import Mapping, MutableMapping
++
+ 
+ log = logging.getLogger(__name__)
+ 
+-CLIENT_INTERNAL_KEYWORDS = frozenset([
+-    'client',
+-    'cmd',
+-    'eauth',
+-    'fun',
+-    'kwarg',
+-    'match',
+-    'token',
+-    '__jid__',
+-    '__tag__',
+-    '__user__',
+-    'username',
+-    'password',
+-    'full_return',
+-    'print_event'
+-])
+-
+-
+-class ClientFuncsDict(collections.MutableMapping):
+-    '''
++CLIENT_INTERNAL_KEYWORDS = frozenset(
++    [
++        "client",
++        "cmd",
++        "eauth",
++        "fun",
++        "kwarg",
++        "match",
++        "token",
++        "__jid__",
++        "__tag__",
++        "__user__",
++        "username",
++        "password",
++        "full_return",
++        "print_event",
++    ]
++)
++
++
++class ClientFuncsDict(MutableMapping):
++    """
+     Class to make a read-only dict for accessing runner funcs "directly"
+-    '''
++    """
++
+     def __init__(self, client):
+         self.client = client
+ 
+@@ -141,9 +152,9 @@ class SyncClientMixin(object):
+                                                       crypt='clear',
+                                                       usage='master_call') as channel:
+             ret = channel.send(load)
+-            if isinstance(ret, collections.Mapping):
+-                if 'error' in ret:
+-                    salt.utils.error.raise_error(**ret['error'])
++            if isinstance(ret, Mapping):
++                if "error" in ret:
++                    salt.utils.error.raise_error(**ret["error"])
+             return ret
+ 
+     def cmd_sync(self, low, timeout=None, full_return=False):
+diff --git a/salt/ext/tornado/httputil.py b/salt/ext/tornado/httputil.py
+index d49733481a..c5b9c242d5 100644
+--- a/salt/ext/tornado/httputil.py
++++ b/salt/ext/tornado/httputil.py
+@@ -36,6 +36,13 @@ from salt.ext.tornado.escape import native_str, parse_qs_bytes, utf8
+ from salt.ext.tornado.log import gen_log
+ from salt.ext.tornado.util import ObjectDict, PY3
+ 
++try:
++    from collections.abc import MutableMapping
++except ImportError:
++    # pylint: disable=no-name-in-module
++    from collections import MutableMapping
++
++
+ if PY3:
+     import http.cookies as Cookie
+     from http.client import responses
+@@ -104,7 +111,7 @@ class _NormalizedHeaderCache(dict):
+ _normalized_headers = _NormalizedHeaderCache(1000)
+ 
+ 
+-class HTTPHeaders(collections.MutableMapping):
++class HTTPHeaders(MutableMapping):
+     """A dictionary that maintains ``Http-Header-Case`` for all keys.
+ 
+     Supports multiple values per key via a pair of new methods,
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 358b66fdb0..38290d034a 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -47,13 +47,29 @@ try:
+     # Extend the default list of supported distros. This will be used for the
+     # /etc/DISTRO-release checking that is part of linux_distribution()
+     from platform import _supported_dists
+-    _supported_dists += ('arch', 'mageia', 'meego', 'vmware', 'bluewhite64',
+-                         'slamd64', 'ovs', 'system', 'mint', 'oracle', 'void')
++
++    _supported_dists += (
++        "arch",
++        "mageia",
++        "meego",
++        "vmware",
++        "bluewhite64",
++        "slamd64",
++        "ovs",
++        "system",
++        "mint",
++        "oracle",
++        "void",
++    )
+ 
+     def linux_distribution(**kwargs):
+         with warnings.catch_warnings():
+             warnings.simplefilter("ignore")
+-            return _deprecated_linux_distribution(supported_dists=_supported_dists, **kwargs)
++            return _deprecated_linux_distribution(
++                supported_dists=_supported_dists, **kwargs
++            )
++
++
+ except ImportError:
+     from distro import linux_distribution
+ 
+@@ -1974,9 +1990,9 @@ def os_data():
+             'Getting OS name, release, and codename from '
+             'platform.linux_distribution()'
+         )
+-        (osname, osrelease, oscodename) = \
+-            [x.strip('"').strip("'") for x in
+-             linux_distribution()]
++        (osname, osrelease, oscodename) = [
++            x.strip('"').strip("'") for x in linux_distribution()
++        ]
+         # Try to assign these three names based on the lsb info, they tend to
+         # be more accurate than what python gets from /etc/DISTRO-release.
+         # It's worth noting that Ubuntu has patched their Python distribution
+diff --git a/salt/renderers/stateconf.py b/salt/renderers/stateconf.py
+index 5c8a8322ed..97308087f5 100644
+--- a/salt/renderers/stateconf.py
++++ b/salt/renderers/stateconf.py
+@@ -223,9 +223,9 @@ def render(input, saltenv='base', sls='', argline='', **kws):
+         if STATE_CONF:
+             tmplctx = STATE_CONF.copy()
+             if tmplctx:
+-                prefix = sls + '::'
++                prefix = sls + "::"
+                 tmplctx = {
+-                    k[len(prefix):] if k.startswith(prefix) else k: v
++                    k[len(prefix) :] if k.startswith(prefix) else k: v
+                     for k, v in six.iteritems(tmplctx)
+                 }
+         else:
+diff --git a/salt/utils/args.py b/salt/utils/args.py
+index 666a502498..f7961cf012 100644
+--- a/salt/utils/args.py
++++ b/salt/utils/args.py
+@@ -238,8 +238,13 @@ if six.PY3:
+ 
+ 
+ def get_function_argspec(func, is_class_method=None):
+-    '''
+-    A small wrapper around getargspec that also supports callable classes
++    """
++    A small wrapper around getargspec that also supports callable classes and wrapped functions
++
++    If the given function is a wrapper around another function (i.e. has a
++    ``__wrapped__`` attribute), return the functions specification of the underlying
++    function.
++
+     :param is_class_method: Pass True if you are sure that the function being passed
+                             is a class method. The reason for this is that on Python 3
+                             ``inspect.ismethod`` only returns ``True`` for bound methods,
+@@ -247,10 +252,13 @@ def get_function_argspec(func, is_class_method=None):
+                             methods. So, on Python 3, in case of a class method, you'd
+                             need the class to which the function belongs to be instantiated
+                             and this is not always wanted.
+-    '''
++    """
+     if not callable(func):
+         raise TypeError('{0} is not a callable'.format(func))
+ 
++    if hasattr(func, "__wrapped__"):
++        func = func.__wrapped__
++
+     if six.PY2:
+         if is_class_method is True:
+             aspec = inspect.getargspec(func)
+diff --git a/salt/utils/decorators/path.py b/salt/utils/decorators/path.py
+index 4adacf0e4e..8ee7fb1d11 100644
+--- a/salt/utils/decorators/path.py
++++ b/salt/utils/decorators/path.py
+@@ -4,10 +4,11 @@ Decorators for salt.utils.path
+ '''
+ from __future__ import absolute_import, print_function, unicode_literals
+ 
++import functools
++
+ # Import Salt libs
+ import salt.utils.path
+ from salt.exceptions import CommandNotFoundError
+-from salt.utils.decorators.signature import identical_signature_wrapper
+ 
+ 
+ def which(exe):
+@@ -15,13 +16,16 @@ def which(exe):
+     Decorator wrapper for salt.utils.path.which
+     '''
+     def wrapper(function):
++        @functools.wraps(function)
+         def wrapped(*args, **kwargs):
+             if salt.utils.path.which(exe) is None:
+                 raise CommandNotFoundError(
+                     'The \'{0}\' binary was not found in $PATH.'.format(exe)
+                 )
+             return function(*args, **kwargs)
+-        return identical_signature_wrapper(function, wrapped)
++
++        return wrapped
++
+     return wrapper
+ 
+ 
+@@ -30,6 +34,7 @@ def which_bin(exes):
+     Decorator wrapper for salt.utils.path.which_bin
+     '''
+     def wrapper(function):
++        @functools.wraps(function)
+         def wrapped(*args, **kwargs):
+             if salt.utils.path.which_bin(exes) is None:
+                 raise CommandNotFoundError(
+@@ -39,5 +44,7 @@ def which_bin(exes):
+                     )
+                 )
+             return function(*args, **kwargs)
+-        return identical_signature_wrapper(function, wrapped)
++
++        return wrapped
++
+     return wrapper
+diff --git a/salt/utils/jinja.py b/salt/utils/jinja.py
+index 6e4261e68e..31ce179808 100644
+--- a/salt/utils/jinja.py
++++ b/salt/utils/jinja.py
+@@ -6,7 +6,6 @@ Jinja loading utils to enable a more powerful backend for jinja templates
+ # Import python libs
+ from __future__ import absolute_import, unicode_literals
+ import atexit
+-import collections
+ import logging
+ import os.path
+ import pipes
+@@ -37,6 +36,13 @@ import salt.utils.yaml
+ from salt.utils.decorators.jinja import jinja_filter, jinja_test, jinja_global
+ from salt.utils.odict import OrderedDict
+ 
++try:
++    from collections.abc import Hashable
++except ImportError:
++    # pylint: disable=no-name-in-module
++    from collections import Hashable
++
++
+ log = logging.getLogger(__name__)
+ 
+ __all__ = [
+@@ -329,7 +335,7 @@ def to_bool(val):
+         return val.lower() in ('yes', '1', 'true')
+     if isinstance(val, six.integer_types):
+         return val > 0
+-    if not isinstance(val, collections.Hashable):
++    if not isinstance(val, Hashable):
+         return len(val) > 0
+     return False
+ 
+@@ -500,7 +506,7 @@ def unique(values):
+         ['a', 'b', 'c']
+     '''
+     ret = None
+-    if isinstance(values, collections.Hashable):
++    if isinstance(values, Hashable):
+         ret = set(values)
+     else:
+         ret = []
+@@ -564,8 +570,8 @@ def lst_avg(lst):
+ 
+         2.5
+     '''
+-    if not isinstance(lst, collections.Hashable):
+-        return float(sum(lst)/len(lst))
++    if not isinstance(lst, Hashable):
++        return float(sum(lst) / len(lst))
+     return float(lst)
+ 
+ 
+@@ -585,7 +591,7 @@ def union(lst1, lst2):
+ 
+         [1, 2, 3, 4, 6]
+     '''
+-    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
++    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
+         return set(lst1) | set(lst2)
+     return unique(lst1 + lst2)
+ 
+@@ -606,7 +612,7 @@ def intersect(lst1, lst2):
+ 
+         [2, 4]
+     '''
+-    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
++    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
+         return set(lst1) & set(lst2)
+     return unique([ele for ele in lst1 if ele in lst2])
+ 
+@@ -627,7 +633,7 @@ def difference(lst1, lst2):
+ 
+         [1, 3, 6]
+     '''
+-    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
++    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
+         return set(lst1) - set(lst2)
+     return unique([ele for ele in lst1 if ele not in lst2])
+ 
+@@ -648,7 +654,7 @@ def symmetric_difference(lst1, lst2):
+ 
+         [1, 3]
+     '''
+-    if isinstance(lst1, collections.Hashable) and isinstance(lst2, collections.Hashable):
++    if isinstance(lst1, Hashable) and isinstance(lst2, Hashable):
+         return set(lst1) ^ set(lst2)
+     return unique([ele for ele in union(lst1, lst2) if ele not in intersect(lst1, lst2)])
+ 
+diff --git a/salt/utils/oset.py b/salt/utils/oset.py
+index cd4e88be40..aa0d2a3af5 100644
+--- a/salt/utils/oset.py
++++ b/salt/utils/oset.py
+@@ -21,10 +21,12 @@ Rob Speer's changes are as follows:
+     - added a __getstate__ and __setstate__ so it can be pickled
+     - added __getitem__
+ '''
+-from __future__ import absolute_import, unicode_literals, print_function
++from __future__ import absolute_import, print_function, unicode_literals
++
+ try:
+     from collections.abc import MutableSet
+ except ImportError:
++    # pylint: disable=no-name-in-module
+     from collections import MutableSet
+ 
+ SLICE_ALL = slice(None)
+-- 
+2.26.1
+
+

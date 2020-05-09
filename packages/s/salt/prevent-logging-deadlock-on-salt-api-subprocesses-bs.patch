@@ -1,0 +1,256 @@
+From 217c5ba75b5de813ddf769e7eeebe4027c1c9a70 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 22 Jan 2020 08:19:55 +0000
+Subject: [PATCH] Prevent logging deadlock on salt-api subprocesses
+ (bsc#1159284)
+
+---
+ salt/_logging/impl.py         | 60 ++++++++++++++++++++---------------
+ salt/client/ssh/__init__.py   | 16 +++++++---
+ salt/client/ssh/client.py     |  9 +++++-
+ salt/client/ssh/wrapper/cp.py |  2 +-
+ salt/loader.py                |  2 +-
+ salt/utils/lazy.py            |  5 ++-
+ 6 files changed, 61 insertions(+), 33 deletions(-)
+
+diff --git a/salt/_logging/impl.py b/salt/_logging/impl.py
+index 347259bcf506705e2ea1a24da030a7132eb8a527..fdfabf6d3b16619350107bd01f2c3a606fb93262 100644
+--- a/salt/_logging/impl.py
++++ b/salt/_logging/impl.py
+@@ -19,6 +19,7 @@ PROFILE = logging.PROFILE = 15
+ TRACE = logging.TRACE = 5
+ GARBAGE = logging.GARBAGE = 1
+ QUIET = logging.QUIET = 1000
++DEBUG = logging.DEBUG = 10
+ 
+ # Import Salt libs
+ from salt._logging.handlers import StreamHandler
+@@ -187,11 +188,11 @@ class SaltLoggingClass(six.with_metaclass(LoggingMixinMeta, LOGGING_LOGGER_CLASS
+         '''
+         instance = super(SaltLoggingClass, cls).__new__(cls)
+ 
+-        try:
+-            max_logger_length = len(max(
+-                list(logging.Logger.manager.loggerDict), key=len
+-            ))
+-            for handler in logging.root.handlers:
++        max_logger_length = len(max(
++            list(logging.Logger.manager.loggerDict), key=len
++        ))
++        for handler in logging.root.handlers:
++            try:
+                 if handler in (LOGGING_NULL_HANDLER,
+                                LOGGING_STORE_HANDLER,
+                                LOGGING_TEMP_HANDLER):
+@@ -210,18 +211,15 @@ class SaltLoggingClass(six.with_metaclass(LoggingMixinMeta, LOGGING_LOGGER_CLASS
+                 match = MODNAME_PATTERN.search(fmt)
+                 if not match:
+                     # Not matched. Release handler and return.
+-                    handler.release()
+                     return instance
+ 
+                 if 'digits' not in match.groupdict():
+                     # No digits group. Release handler and return.
+-                    handler.release()
+                     return instance
+ 
+                 digits = match.group('digits')
+                 if not digits or not (digits and digits.isdigit()):
+                     # No valid digits. Release handler and return.
+-                    handler.release()
+                     return instance
+ 
+                 if int(digits) < max_logger_length:
+@@ -233,9 +231,14 @@ class SaltLoggingClass(six.with_metaclass(LoggingMixinMeta, LOGGING_LOGGER_CLASS
+                     )
+                     handler.setFormatter(formatter)
+                 handler.release()
+-        except ValueError:
+-            # There are no registered loggers yet
+-            pass
++            except ValueError:
++                # There are no registered loggers yet
++                pass
++            finally:
++                try:
++                    handler.release()
++                except:
++                    pass
+         return instance
+ 
+     def _log(self, level, msg, args, exc_info=None,
+@@ -278,20 +281,26 @@ class SaltLoggingClass(six.with_metaclass(LoggingMixinMeta, LOGGING_LOGGER_CLASS
+         else:
+             extra['exc_info_on_loglevel'] = exc_info_on_loglevel
+ 
+-        if sys.version_info < (3,):
+-            LOGGING_LOGGER_CLASS._log(
+-                self, level, msg, args, exc_info=exc_info, extra=extra
+-            )
+-        elif sys.version_info < (3, 8):
+-            LOGGING_LOGGER_CLASS._log(
+-                self, level, msg, args, exc_info=exc_info, extra=extra,
+-                stack_info=stack_info
+-            )
+-        else:
+-            LOGGING_LOGGER_CLASS._log(
+-                self, level, msg, args, exc_info=exc_info, extra=extra,
+-                stack_info=stack_info, stacklevel=stacklevel
+-            )
++        try:
++            logging._acquireLock()
++            if sys.version_info < (3,):
++                LOGGING_LOGGER_CLASS._log(
++                    self, level, msg, args, exc_info=exc_info, extra=extra
++                )
++            elif sys.version_info < (3, 8):
++                LOGGING_LOGGER_CLASS._log(
++                    self, level, msg, args, exc_info=exc_info, extra=extra,
++                    stack_info=stack_info
++                )
++            else:
++                LOGGING_LOGGER_CLASS._log(
++                    self, level, msg, args, exc_info=exc_info, extra=extra,
++                    stack_info=stack_info, stacklevel=stacklevel
++                )
++        except:
++            pass
++        finally:
++            logging._releaseLock()
+ 
+     def makeRecord(self, name, level, fn, lno, msg, args, exc_info,
+                    func=None, extra=None, sinfo=None):
+@@ -393,6 +402,7 @@ if logging.getLoggerClass() is not SaltLoggingClass:
+     logging.addLevelName(PROFILE, 'PROFILE')
+     logging.addLevelName(TRACE, 'TRACE')
+     logging.addLevelName(GARBAGE, 'GARBAGE')
++    logging.addLevelName(DEBUG, 'DEBUG')
+ 
+     # ----- REMOVE ON REFACTORING COMPLETE -------------------------------------------------------------------------->
+     if not logging.root.handlers:
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index d9e91b0f50bfaa76d519fcaa4bdc868bce80f554..e8aad093e0f6df32faa16a838f1db2c6746e1b8e 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -520,7 +520,9 @@ class SSH(object):
+                 mine=mine,
+                 **target)
+         ret = {'id': single.id}
++        logging._acquireLock()
+         stdout, stderr, retcode = single.run()
++        logging._releaseLock()
+         # This job is done, yield
+         try:
+             data = salt.utils.json.find_json(stdout)
+@@ -586,10 +588,16 @@ class SSH(object):
+                         self.targets[host],
+                         mine,
+                         )
+-                routine = Process(
+-                                target=self.handle_routine,
+-                                args=args)
+-                routine.start()
++                try:
++                    logging._acquireLock()
++                    routine = Process(
++                                    target=self.handle_routine,
++                                    args=args)
++                    routine.start()
++                except:
++                    pass
++                finally:
++                    logging._releaseLock()
+                 running[host] = {'thread': routine}
+                 continue
+             ret = {}
+diff --git a/salt/client/ssh/client.py b/salt/client/ssh/client.py
+index e8e634ca12d85f1e1a9e047f43eac8c041cc5666..d4a89cf4fbbde5282597dc6b82c66dde4288edf1 100644
+--- a/salt/client/ssh/client.py
++++ b/salt/client/ssh/client.py
+@@ -6,6 +6,8 @@ import os
+ import copy
+ import logging
+ import random
++import time
++import multiprocessing
+ 
+ # Import Salt libs
+ import salt.config
+@@ -15,6 +17,7 @@ from salt.exceptions import SaltClientError  # Temporary
+ 
+ log = logging.getLogger(__name__)
+ 
++_LOCK = multiprocessing.Lock()
+ 
+ class SSHClient(object):
+     '''
+@@ -61,7 +64,11 @@ class SSHClient(object):
+         opts['selected_target_option'] = tgt_type
+         opts['tgt'] = tgt
+         opts['arg'] = arg
+-        return salt.client.ssh.SSH(opts)
++        _LOCK.acquire()
++        ret = salt.client.ssh.SSH(opts)
++        time.sleep(0.01)
++        _LOCK.release()
++        return ret
+ 
+     def cmd_iter(
+             self,
+diff --git a/salt/client/ssh/wrapper/cp.py b/salt/client/ssh/wrapper/cp.py
+index 894e62f94c87ae5b68c1f82fc3e80ec8f25ac118..9bf0c150a071b4bfa780fe0293e3d8e93ab8e6ef 100644
+--- a/salt/client/ssh/wrapper/cp.py
++++ b/salt/client/ssh/wrapper/cp.py
+@@ -4,7 +4,7 @@ Wrap the cp module allowing for managed ssh file transfers
+ '''
+ # Import Python libs
+ from __future__ import absolute_import, print_function
+-import logging
++import salt.log.setup as logging
+ import os
+ 
+ # Import salt libs
+diff --git a/salt/loader.py b/salt/loader.py
+index 54dadb0b513dbaa4914b0d4b1d343dde709699ad..b824a70a0cc40128f3271f70f676f1551194236c 100644
+--- a/salt/loader.py
++++ b/salt/loader.py
+@@ -11,7 +11,7 @@ import os
+ import re
+ import sys
+ import time
+-import logging
++import salt.log.setup as logging
+ import inspect
+ import tempfile
+ import functools
+diff --git a/salt/utils/lazy.py b/salt/utils/lazy.py
+index 3cd6489d2d8c50ec4e6eb70c50407f1084db377b..bb4b38e1a3cfa05945cd438fc9d30e7c47c3391b 100644
+--- a/salt/utils/lazy.py
++++ b/salt/utils/lazy.py
+@@ -5,7 +5,8 @@ Lazily-evaluated data structures, primarily used by Salt's loader
+ 
+ # Import Python Libs
+ from __future__ import absolute_import, unicode_literals
+-import logging
++import salt.log.setup as logging
++import time
+ import salt.exceptions
+ 
+ try:
+@@ -102,9 +103,11 @@ class LazyDict(MutableMapping):
+             # load the item
+             if self._load(key):
+                 log.debug('LazyLoaded %s', key)
++                time.sleep(0.0001)
+                 return self._dict[key]
+             else:
+                 log.debug('Could not LazyLoad %s: %s', key, self.missing_fun_string(key))
++                time.sleep(0.0001)
+                 raise KeyError(key)
+         else:
+             return self._dict[key]
+-- 
+2.23.0
+
+
