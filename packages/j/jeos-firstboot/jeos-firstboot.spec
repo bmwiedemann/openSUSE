@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        0.0+git20200331.db3bc7c
+Version:        0.0+git20200508.d0ccd48
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -74,9 +74,8 @@ cp -a files/* %{buildroot}
 %dir %{_datadir}/defaults/
 %{_datadir}/defaults/jeos-firstboot.conf
 %dir %{_datadir}/jeos-firstboot
-%{_libexecdir}/jeos-firstboot
-%{_libexecdir}/jeos-firstboot-snapshot
-%{_libexecdir}/jeos-firstboot-functions
+%{_sbindir}/jeos-firstboot
+%{_sbindir}/jeos-firstboot-snapshot
 
 %files rpiwifi
 %{_datadir}/jeos-firstboot/raspberrywifi

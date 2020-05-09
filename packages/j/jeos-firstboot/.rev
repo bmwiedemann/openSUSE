@@ -369,4 +369,13 @@
   * Add JEOS_HIDE_SUSECONNECT option</comment>
     <requestid>790007</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ab20ec3d39b71658e4a117b3ca0b32fc</srcmd5>
+    <version>0.0+git20200508.d0ccd48</version>
+    <time>1589046566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200508.d0ccd48:
+  * Move scripts to /usr/sbin</comment>
+    <requestid>801785</requestid>
+  </revision>
 </revisionlist>
