@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  6 16:01:32 CEST 2020 - tiwai@suse.de
+
+- Revert a problematic namehint change (boo#1171044)
+
+-------------------------------------------------------------------
+Wed May  6 12:16:00 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes:
+  fixes for PCM rate plugin, draining fix, topology parameter parser
+  fix, USB device name for UCM:
+  0017-pcm-rate-fix-the-remaining-size-calculation-in-snd_p.patch
+  0018-use-case.h-add-USB-as-allowed-device-name.patch
+  0019-topology-Use-bool-parser-to-parse-boolean-value.patch
+  0020-fix-infinite-draining-of-the-rate-plugin-in-SND_PCM_.patch
+  0021-test-pcm_min-add-snd_pcm_drain-call-and-indentation-.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 17:55:24 CEST 2020 - tiwai@suse.de
 
 - Backport recent upstream fixes:

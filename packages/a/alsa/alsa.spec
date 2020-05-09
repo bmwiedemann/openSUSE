@@ -64,6 +64,11 @@ Patch13:        0013-ucm-fix-the-device-remove-operation.patch
 Patch14:        0014-ucm-fix-copy-n-paste-typo-RemoveDevice-list.patch
 Patch15:        0015-pcm-dmix-fix-sw_params-handling-of-timestamp-types-i.patch
 Patch16:        0016-conf-USB-Audio-Fix-S-PDIF-output-of-ASUS-Xonar-AE.patch
+Patch17:        0017-pcm-rate-fix-the-remaining-size-calculation-in-snd_p.patch
+Patch18:        0018-use-case.h-add-USB-as-allowed-device-name.patch
+Patch19:        0019-topology-Use-bool-parser-to-parse-boolean-value.patch
+Patch20:        0020-fix-infinite-draining-of-the-rate-plugin-in-SND_PCM_.patch
+Patch21:        0021-test-pcm_min-add-snd_pcm_drain-call-and-indentation-.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -157,13 +162,21 @@ This package contains the library for ALSA topology support.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+# causing a regression for capture streams on some apps (boo#1171044)
+%if 0
 %patch10 -p1
+%endif
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
 %patch101 -p1
 
 %build
