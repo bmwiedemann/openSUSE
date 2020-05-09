@@ -48,5 +48,10 @@
     <package name="flannel"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
+    <package name="--"/>
+    <package name="-busybox-iproute2"/>
+    <package name="-busybox-sh"/>
+    <package name="-busybox-findutils"/>
+    <package name="-busybox-net-tools"/>
   </packages>
 </image>

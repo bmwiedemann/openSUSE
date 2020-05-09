@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:10:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Deinstall busybox-sh in favour of bash
+- Deinstall busybox-findutils since ca-certificates requires
+  real findutils
+- net-tools-deprecated are required instead of busybox-net-tools
+
+-------------------------------------------------------------------
+Mon Apr 20 14:49:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Deinstall busybox-iproute2 to be able to install iproute2
+
+-------------------------------------------------------------------
 Tue Jun 25 15:05:07 CEST 2019 - kukuk@suse.de
 
 - Adjust _service file

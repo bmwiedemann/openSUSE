@@ -15,4 +15,17 @@
     <comment>- Adjust _service file</comment>
     <requestid>711883</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>037187fc3428de7e2da047431d23ad96</srcmd5>
+    <version>5.0.0</version>
+    <time>1589046484</time>
+    <user>dimstar_suse</user>
+    <comment>- Deinstall busybox-sh in favour of bash
+- Deinstall busybox-findutils since ca-certificates requires
+  real findutils
+- net-tools-deprecated are required instead of busybox-net-tools
+
+- Deinstall busybox-iproute2 to be able to install iproute2</comment>
+    <requestid>798610</requestid>
+  </revision>
 </revisionlist>
