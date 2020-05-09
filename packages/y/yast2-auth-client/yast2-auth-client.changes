@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 13:13:14 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Jan  29 11:48:30 UTC 2020 - Jaroslav Jindrak <jjindrak@suse.cz>
 
 - Default bind_policy to 'soft' if not present in the config
