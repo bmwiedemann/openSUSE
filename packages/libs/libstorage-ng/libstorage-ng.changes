@@ -1,4 +1,79 @@
 --------------------------------------------------------------------
+Fri May 8 12:10:17 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#736
+- added sanity checks
+- improved exception messages
+- coding style
+- 4.3.12
+
+--------------------------------------------------------------------
+Thu May 7 10:50:02 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#735
+- merge gh#openSUSE/libstorage-ng#734
+- merge gh#openSUSE/libstorage-ng#732
+- merge gh#openSUSE/libstorage-ng#717
+- merge gh#openSUSE/libstorage-ng#715
+- track device block size when creating an Md RAID (bsc#1164295)
+- simplify combining disks with different block sizes into RAID
+  (bsc#1164295)
+- add block_size check for Md::add_device()
+- update doc on RAID block size
+- ignore clusterd VGs also in vgchange command (bsc#1161775)
+- ignore umount/swapoff failure if it looks inactive already
+  (bsc#1168615)
+- fixed typo
+- added integration tests
+- 4.3.11
+
+--------------------------------------------------------------------
+Wed May 6 16:25:32 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#733
+- coding style
+- 4.3.10
+
+--------------------------------------------------------------------
+Wed May 6 11:45:11 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#731
+- probe partition label and uuid on gpt partitions
+- coding style
+- avoid saving empty topology
+- remove deprecated size-k values
+- fixed typo
+- probe partition uuid and label
+- 4.3.9
+
+--------------------------------------------------------------------
+Tue May 5 10:09:03 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#730
+- updated documentation
+- added const
+- 4.3.8
+
+--------------------------------------------------------------------
+Mon May 4 16:34:40 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#729
+- added views/filters for devicegraphs
+- probe snapshot relationship between lvm logical volumes
+- added functions to query snapshot relationships
+- make utils show unfiltered devicegraph
+- work on probing lvm snapshots
+- 4.3.7
+
+--------------------------------------------------------------------
+Mon May 4 09:29:09 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#728
+- support LVM mirror volumes
+- support probing LVM mirror volumes
+- 4.3.6
+
+--------------------------------------------------------------------
 Thu Apr 30 14:46:37 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#727
