@@ -23,22 +23,24 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        2.2.12
+Version:        3.0.5
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/2.2/Django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/3.0/Django-%{version}.tar.gz
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
 Patch0:         i18n_test.patch
 Patch1:         test_clear_site_cache-sort.patch
 Patch2:         fix-selenium-test.patch
+Patch3:         32bit.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argon2-cffi >= 16.1.0}
+BuildRequires:  %{python_module asgiref}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -46,7 +48,7 @@ BuildRequires:  %{python_module geoip2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sqlparse}
+BuildRequires:  %{python_module sqlparse >= 0.2.2}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -54,9 +56,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-Pillow
 Requires:       python-argon2-cffi >= 16.1.0
+Requires:       python-asgiref
 Requires:       python-pytz
 Requires:       python-setuptools
-Requires:       python-sqlparse
+Requires:       python-sqlparse >= 0.2.2
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
@@ -97,9 +100,7 @@ echo "`grep -e '^[0-9a-f]\{40\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 
 %setup -q -n Django-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 chmod a-x django/contrib/admin/static/admin/js/vendor/xregexp/xregexp.js
 
 %build

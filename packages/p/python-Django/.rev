@@ -707,4 +707,12 @@
     equations for the same language (#30439).</comment>
     <requestid>791106</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>70d6f47318a549a7ede752eac44e6439</srcmd5>
+    <version>3.0.5</version>
+    <time>1589046706</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>800883</requestid>
+  </revision>
 </revisionlist>
