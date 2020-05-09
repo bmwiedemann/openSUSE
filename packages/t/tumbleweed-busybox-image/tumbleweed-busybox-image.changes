@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:45:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-sh (was splitted from busybox-ash because of bash)
+
+-------------------------------------------------------------------
+Mon Apr 20 09:05:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Sat Apr 18 19:26:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use busybox-ash instead of busybox-sh 
+
+-------------------------------------------------------------------
+Wed Apr 15 07:23:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- config.sh: don't create symlinks which we package now
+- list all packages, don't use busybox-links meta package
+
+-------------------------------------------------------------------
+Tue Apr 14 10:42:15 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Use 'busybox' as 'busybox-container' was dropped
+
+-------------------------------------------------------------------
+Tue Mar 17 15:22:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Convert to use busybox-links
+
+-------------------------------------------------------------------
+Fri Mar 13 21:06:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-container was merged with busybox
+
+-------------------------------------------------------------------
 Thu Mar 12 16:18:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add kubernetes pause binary

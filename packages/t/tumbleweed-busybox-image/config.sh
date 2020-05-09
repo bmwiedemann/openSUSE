@@ -1,4 +1,4 @@
-#!/usr/bin/busybox-container sh
+#!/usr/bin/busybox sh
   
 #======================================
 # Functions...
@@ -12,21 +12,7 @@ test -f /.profile && . /.profile
 #--------------------------------------
 echo "Configure image: [$kiwi_iname]..."
 
-/usr/bin/busybox-container ln -sf busybox-container /usr/bin/busybox
-/usr/bin/busybox ln -sf ../usr/bin/busybox /bin/ln
-/usr/bin/busybox ln -sf ../usr/bin/busybox /bin/rm
-/usr/bin/busybox ln -sf ../usr/bin/busybox /bin/mkdir
-/usr/bin/busybox ln -sf ../usr/bin/busybox /bin/chmod
-/usr/bin/busybox ln -sf busybox /usr/bin/sort
-/usr/bin/busybox ln -sf busybox /usr/bin/uniq
-/usr/bin/busybox ln -sf busybox /usr/bin/install
-/usr/bin/busybox ln -sf busybox /usr/bin/dirname
-/usr/bin/busybox ln -sf busybox /usr/bin/basename
-/usr/bin/busybox-container.install / --symlinks
-/bin/rm linuxrc
-/bin/rm /usr/bin/busybox
-/bin/rm /usr/bin/busybox-container
-/bin/rm /usr/bin/busybox-container.install
-/bin/rm -rf /usr/share/busybox
+/usr/bin/busybox ln -sf busybox /usr/bin/rpm
+/usr/bin/busybox ln -sf busybox /usr/bin/rpm2cpio
 
 exit 0

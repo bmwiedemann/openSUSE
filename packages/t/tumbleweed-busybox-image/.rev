@@ -54,4 +54,25 @@
 </comment>
     <requestid>784705</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>cbdfedc91b15fcbe3b13f7cacfbcbcc7</srcmd5>
+    <version>1.0.0</version>
+    <time>1589046478</time>
+    <user>dimstar_suse</user>
+    <comment>- Add busybox-sh (was splitted from busybox-ash because of bash)
+
+- Add LICENSE file
+
+- Use busybox-ash instead of busybox-sh 
+
+- config.sh: don't create symlinks which we package now
+- list all packages, don't use busybox-links meta package
+
+- Use 'busybox' as 'busybox-container' was dropped
+
+- Convert to use busybox-links
+
+- busybox-container was merged with busybox</comment>
+    <requestid>798585</requestid>
+  </revision>
 </revisionlist>

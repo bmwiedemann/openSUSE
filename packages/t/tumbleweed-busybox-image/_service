@@ -4,7 +4,7 @@
         <param name="file">tumbleweed-busybox-image.kiwi</param>
         <param name="regex">%PKG_VERSION%</param>
         <param name="parse-version">patch</param>
-        <param name="package">busybox-container</param>
+        <param name="package">busybox</param>
     </service>
     <service mode="buildtime" name="kiwi_label_helper"/>
 </services>

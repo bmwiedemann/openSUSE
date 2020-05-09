@@ -37,7 +37,41 @@
     <source path="obsrepositories:/"/>
   </repository>
   <packages type="bootstrap">
-    <package name="busybox-container"/>
+    <package name="busybox"/>
+    <package name="busybox-ash" replaces="bash"/>
+    <package name="busybox-attr" replaces="attr"/>
+    <package name="busybox-bind-utils" replaces="bind-utils"/>
+    <package name="busybox-bzip2" replaces="bzip2"/>
+    <package name="busybox-coreutils" replaces="coreutils"/>
+    <package name="busybox-cpio" replaces="cpio"/>
+    <package name="busybox-diffutils" replaces="diffutils"/>
+    <package name="busybox-findutils" replaces="findutils"/>
+    <package name="busybox-gawk" replaces="gawk"/>
+    <package name="busybox-grep" replaces="grep"/>
+    <package name="busybox-gzip" replaces="gzip"/>
+    <package name="busybox-hostname" replaces="hostname"/>
+    <package name="busybox-iproute2"/>
+    <package name="busybox-iputils"/>
+    <package name="busybox-kbd" replaces="kbd"/>
+    <package name="busybox-kmod" replaces="kmod"/>
+    <package name="busybox-man"/>
+    <package name="busybox-misc" replaces="binutils"/>
+    <package name="busybox-misc" replaces="dosfstools"/>
+    <package name="busybox-misc" replaces="e2fsprogs"/>
+    <package name="busybox-misc" replaces="shadow"/>
+    <package name="busybox-misc" replaces="sysvinit-tools"/>
+    <package name="busybox-ncurses-utils" replaces="ncurses-utils"/>
+    <package name="busybox-net-tools"/>
+    <package name="busybox-patch" replaces="patch"/>
+    <package name="busybox-procps" replaces="procps"/>
+    <package name="busybox-sed" replaces="sed"/>
+    <package name="busybox-sh"/>
+    <package name="busybox-sharutils"/>
+    <package name="busybox-tar" replaces="tar"/>
+    <package name="busybox-traceroute"/>
+    <package name="busybox-util-linux" replaces="util-linux"/>
+    <package name="busybox-which" replaces="which"/>
+    <package name="busybox-xz" replaces="xz"/>
     <package name="kubernetes-pause"/>
   </packages>
 </image>
