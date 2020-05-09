@@ -1,7 +1,7 @@
 #
 # spec file for package libjansson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@ Name:           libjansson
 Summary:        C library for encoding, decoding and manipulating JSON data
 License:        MIT
 Group:          Development/Libraries/C and C++
-Version:        2.12
+Version:        2.13.1
 Release:        0
-Url:            http://digip.org/jansson/
+URL:            http://digip.org/jansson/
 
 #Git-Clone:     git://github.com/akheron/jansson
 Source:         http://www.digip.org/jansson/releases/jansson-%version.tar.bz2

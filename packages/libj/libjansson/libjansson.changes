@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  8 11:48:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.13.1
+  * New Features:
+    - Add jansson_version_str() and jansson_version_cmp() for runtime
+      version checking
+    - Add json_object_update_new(), json_object_update_existing_new()
+      and json_object_update_missing_new() functions
+    - Add json_object_update_recursive()
+  * Bug fixes:
+    - Add infinite loop check in json_deep_copy()
+    - Enhance JANSSON_ATTRS macro to support earlier C standard(C89)
+    - Update version detection for sphinx-build
+  * Documentation improvements
+
+-------------------------------------------------------------------
 Thu Jan 24 07:55:39 UTC 2019 - info@paolostivanin.com
 
 - update to new upstream release 2.12
