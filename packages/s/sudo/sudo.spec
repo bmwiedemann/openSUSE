@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.0rc2
+Version:        1.9.0rc4
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC

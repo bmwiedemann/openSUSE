@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May  7 12:14:26 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.9.0rc4
+  * Various spelling fixes. Bug #925.
+  * The struct passwd passed to PAM session modules is now looked up
+    by user name, not user-ID, when possible. Fixes a problem with
+    the pam_limits module and configurations where multiple user names
+    share the same ID. Debian bug #734752.
+  * Sudo command line options that take a value may only be specified
+    once. This is to help guard against problems caused by poorly
+    written scripts that invoke sudo with user-controlled input. Bug #924. 
+
+-------------------------------------------------------------------
+Wed May  6 07:37:58 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.9.0rc3
+  * The sudo-logsrvd package now installs a systemd service on Linux
+    distros that use systemd.
+  * The I/O plugin is now closed before the policy plugin on command
+    exit.
+  * When copying the edited files to the original path, sudoedit now
+    allocates any additional space needed before writing. Previously,
+    it could truncate the destination file if the file system was
+    full. Bug #922.
+  * Fixed a compilation issue with Python 3.8.
+  * Changed how TLS connections are made to the log server. Instead
+    of using a starttls type approach where TLS and plaintext
+    connections share the same point we now use separate ports for
+    plaintext and TLS connections. A (tls) flag can be specified after
+    the host:port to indicate that the connection should be secured
+    with TLS. This avoids a potention man-in-the-middle attack that
+    could cause the connection to be forced into plaintext mode.
+    Unfortunately, this change breaks compatibility with the
+    previous release candidates.
+
+-------------------------------------------------------------------
 Fri Apr 17 17:07:06 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - build with enable-python to support python plugins 
