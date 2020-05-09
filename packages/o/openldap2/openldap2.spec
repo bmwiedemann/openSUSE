@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.49
+%define version_main 2.4.50
 
 %if %{suse_version} >= 1310 && %{suse_version} != 1315
 %define  _rundir /run/slapd
@@ -40,8 +40,8 @@ License:        OLDAP-2.8
 Group:          Productivity/Networking/LDAP/Servers
 Version:        %{version_main}
 Release:        0
-Url:            http://www.openldap.org
-Source:         ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
+Url:            https://www.openldap.org
+Source:         https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
 Source1:        slapd.conf
 Source2:        slapd.conf.olctemplate
 Source3:        DB_CONFIG
@@ -61,8 +61,8 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch7:         0007-Recover-on-DB-version-change.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
-Patch9:         0009-Fix-ldap-host-lookup-ipv6.patch
 Patch11:        0011-openldap-re24-its7796.patch
+Patch14:        0014-ITS-8650-fix-debug-usage.patch
 Patch15:        openldap-r-only.dif
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
 Source200:      %{name_ppolicy_check_module}-%{version_ppolicy_check_module}.tar.gz
@@ -76,6 +76,7 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
 BuildRequires:  groff
 BuildRequires:  libopenssl-devel
+BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  openslp-devel
 BuildRequires:  unixODBC-devel
@@ -166,6 +167,7 @@ cloak
 denyop
 lastbind      writes last bind timestamp to entry
 noopsrch      handles no-op search control
+pw-argon2     generates/validates Argon2 password hashes
 pw-sha2       generates/validates SHA-2 password hashes
 pw-pbkdf2     generates/validates PBKDF2 password hashes
 smbk5pwd      generates Samba3 password hashes (heimdal krb disabled)
@@ -256,8 +258,8 @@ gzip -k %{S:203}
 %patch5 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 %patch11 -p1
+%patch14 -p1
 %patch15 -p1
 %patch16 -p1
 cp %{SOURCE5} .
@@ -307,7 +309,7 @@ export STRIP=""
 make depend
 make %{?_smp_mflags}
 # Build selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/argon2 passwd/sha2 passwd/pbkdf2 trace
 do
   make -C contrib/slapd-modules/${SLAPO_NAME} %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}"
 done
@@ -351,9 +353,9 @@ make STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdi
 # Additional symbolic link to slapd executable in /usr/sbin/
 ln -s %{_libdir}/slapd %{buildroot}/usr/sbin/slapd
 # Install selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/argon2 passwd/sha2 passwd/pbkdf2 trace
 do
-  make -C contrib/slapd-modules/${SLAPO_NAME} STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
+  make -C contrib/slapd-modules/${SLAPO_NAME} STRIP="" DESTDIR="%{buildroot}" "mandir=%{_mandir}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 done
 # slapo-smbk5pwd only for Samba password hashes
 make -C contrib/slapd-modules/smbk5pwd STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
@@ -581,12 +583,14 @@ fi
 %{_libdir}/openldap/autogroup.*
 %{_libdir}/openldap/lastbind.*
 %{_libdir}/openldap/noopsrch.*
+%{_libdir}/openldap/pw-argon2.*
 %{_libdir}/openldap/pw-sha2.*
 %{_libdir}/openldap/pw-pbkdf2.*
 %{_libdir}/openldap/denyop.*
 %{_libdir}/openldap/cloak.*
 %{_libdir}/openldap/smbk5pwd.*
 %{_libdir}/openldap/trace.*
+%doc %{_mandir}/man5/slapd-pw-argon2.*
 
 %files client
 %defattr(-,root,root)

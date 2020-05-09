@@ -1,0 +1,30 @@
+From 85fc8974f5c32a9a052baafaa9499c8484e043c2 Mon Sep 17 00:00:00 2001
+From: Quanah Gibson-Mount <quanah@openldap.org>
+Date: Tue, 28 Apr 2020 20:49:53 +0000
+Subject: ITS#8650 - Fix Debug usage to follow RE24 format
+
+
+diff --git a/libraries/libldap/tls2.c b/libraries/libldap/tls2.c
+index c1f15cbc1..ebe5bf125 100644
+--- a/libraries/libldap/tls2.c
++++ b/libraries/libldap/tls2.c
+@@ -907,8 +907,8 @@ ldap_int_tls_start ( LDAP *ld, LDAPConn *conn, LDAPURLDesc *srv )
+ 			} else if ( sb->sb_trans_needs_write ) {
+ 				wr=1;
+ 			}
+-			Debug1( LDAP_DEBUG_TRACE, "ldap_int_tls_start: ldap_int_tls_connect needs %s\n",
+-					wr ? "write": "read" );
++			Debug( LDAP_DEBUG_TRACE, "ldap_int_tls_start: ldap_int_tls_connect needs %s\n",
++					wr ? "write": "read", 0, 0 );
+ 
+ 			/* This is mostly copied from result.c:wait4msg(), should
+ 			 * probably be moved into a separate function */
+@@ -946,7 +946,7 @@ ldap_int_tls_start ( LDAP *ld, LDAPConn *conn, LDAPURLDesc *srv )
+ 			start_time_tv.tv_sec = curr_time_tv.tv_sec;
+ 			start_time_tv.tv_usec = curr_time_tv.tv_usec;
+ 			tv = tv0;
+-			Debug3( LDAP_DEBUG_TRACE, "ldap_int_tls_start: ld %p %ld s %ld us to go\n",
++			Debug( LDAP_DEBUG_TRACE, "ldap_int_tls_start: ld %p %ld s %ld us to go\n",
+ 				(void *)ld, (long) tv.tv_sec, (long) tv.tv_usec );
+ 			ret = ldap_int_poll( ld, sd, &tv, wr);
+ 			if ( ret < 0 ) {

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May  6 17:59:58 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.50
+- added 0014-ITS-8650-fix-debug-usage.patch
+- enabled new contrib overlay pw-argon2
+- replaced FTP by HTTPS download URL for source
+- removed 0009-Fix-ldap-host-lookup-ipv6.patch (see bsc#1171127)
+
+OpenLDAP 2.4.50 Release (2020/04/28)
+  Fixed client benign typos (ITS#8890)
+  Fixed libldap type cast (ITS#9175)
+  Fixed libldap retry loop in ldap_int_tls_connect (ITS#8650)
+  Fixed libldap_r race on Windows mutex initialization (ITS#9181)
+  Fixed liblunicode memory leak (ITS#9198)
+  Fixed slapd benign typos (ITS#8890)
+  Fixed slapd to limit depth of nested filters (ITS#9202)
+  Fixed slapd-mdb memory leak in dnSuperiorMatch (ITS#9214)
+  Fixed slapo-pcache database initialization (ITS#9182)
+  Fixed slapo-ppolicy callback (ITS#9171)
+  Build
+    Fix olcDatabaseDummy initialization for windows (ITS#7074)
+    Fix detection for ws2tcpip.h for windows (ITS#8383)
+    Fix back-mdb types for windows (ITS#7878)
+  Contrib
+    Update ldapc++ config.guess and config.sub to support newer architectures (ITS#7855)
+    Added pw-argon2 module (ITS#9233, ITS#8575, ITS#9203, ITS#9206)
+  Documentation
+    slapd-ldap(5) - Clarify idassert-authzfrom behavior (ITS#9003)
+    slapd-meta(5) - Remove client-pr option (ITS#8683)
+    slapdinex(8) - Fix truncate option information for back-mdb (ITS#9230)
+
+-------------------------------------------------------------------
 Thu Jan 30 20:57:33 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.49
