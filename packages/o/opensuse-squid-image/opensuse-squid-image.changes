@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 18 19:52:11 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- De-install busybox-man in favour of mandoc
+
+-------------------------------------------------------------------
 Tue Feb 18 06:13:19 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enhance README
