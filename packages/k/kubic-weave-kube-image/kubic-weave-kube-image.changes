@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:30:14 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use original findutils, bind-utils and iproute2 packages
+
+-------------------------------------------------------------------
 Wed Jul 24 08:37:18 CEST 2019 - kukuk@suse.de
 
 - Initial version

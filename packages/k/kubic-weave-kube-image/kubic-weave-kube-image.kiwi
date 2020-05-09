@@ -40,5 +40,9 @@
   </repository>
   <packages type="bootstrap">
     <package name="weave-kube"/>
+    <package name="--"/>
+    <package name="-busybox-findutils"/>
+    <package name="-busybox-bind-utils"/>
+    <package name="-busybox-iproute2"/>
   </packages>
 </image>
