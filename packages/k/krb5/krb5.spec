@@ -225,8 +225,8 @@ install -m 644 %{vendorFiles}/krb5.sh.profile %{buildroot}%{_sysconfdir}/profile
 
 # Do not write directly to /var/lib/kerberos anymore as it breaks transactional
 # updates. Use systemd-tmpfiles to copy the files there when it doesn't exist
-install -d -m 0755 %{buildroot}%{_prefix}/lib/tmpfiles.d/
-install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/krb5.conf
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/krb5.conf
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5kdc
 # Where per-user keytabs live by default.
 mkdir -p %{buildroot}/%{_datadir}/kerberos/krb5/user
@@ -373,7 +373,7 @@ rm -f %{buildroot}/%{_libdir}/krb5/plugins/preauth/test.so
 %{_unitdir}/kadmind.service
 %{_unitdir}/krb5kdc.service
 %{_unitdir}/kpropd.service
-%{_libexecdir}/tmpfiles.d/krb5.conf
+%{_tmpfilesdir}/krb5.conf
 %dir %{krb5docdir}
 %dir %{_prefix}/lib/mit
 %dir %{_prefix}/lib/mit/sbin

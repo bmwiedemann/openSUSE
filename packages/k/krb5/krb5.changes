@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:04:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_tmpfilesdir instead of the wrong %_libexecdir/tmpfiles.d
+  notation: libexecdir is likely changing away from /usr/lib to
+  /usr/libexec.
+
+-------------------------------------------------------------------
 Wed Mar 25 09:20:38 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix segfault in k5_primary_domain; (bsc#1167620);
