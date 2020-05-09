@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 09:38:10 UTC 2020 - Michal Filka <mchf@suse.cz>
+
+- bnc#1166661
+  - do not crash on empty system_packages_repos.yaml
+- 4.3.0 
+
+-------------------------------------------------------------------
 Mon Apr 20 11:46:59 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - prevent race condition between log rotation and migration
