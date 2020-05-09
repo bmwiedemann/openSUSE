@@ -42,6 +42,8 @@ Patch5:         Fix-failure-to-build-with-poppler-0.84.0.patch
 Patch6:         Fails-to-build-with-python-3.8.patch
 # PATCH-FIX-UPSTREAM
 Patch7:         0001-PDF-import-plugin-support-poppler-0.86.x.patch
+# PATCH-FIX-UPSTREAM
+Patch8:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  cmake
 BuildRequires:  cups-devel

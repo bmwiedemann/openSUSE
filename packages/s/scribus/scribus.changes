@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  9 17:36:50 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add 0001-Fix-build-with-Qt-5.15.patch to fix build with the
+  upcoming Qt 5.15
+
+-------------------------------------------------------------------
 Wed Apr  8 10:51:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:
