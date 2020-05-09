@@ -124,7 +124,7 @@
 -   /* Deactivate */		ACTIVATE,
 -   /* MouseWheel */		KEY
 +
-+   [KeyPress] =			KEY,
++   [KeyPress] =		KEY,
 +   [KeyRelease] =		KEY,
 +   [ButtonPress] =		BUTTON,
 +   [ButtonRelease] =		BUTTON,

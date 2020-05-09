@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon May  4 22:43:10 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Use https and metacpan.org for url and sources
+- Use Devel:Leak, Test::More and Test::Pod for tests
+- Add cpanspec.yml file and mention the patches Tk-804.029-event.diff
+  Tk-804.029-macro.diff Tk-804.029-null.diff Tk-804.029-refcnt.diff
+
+-------------------------------------------------------------------
+Sun Mar 29 03:15:55 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 804.035
+   see /usr/share/doc/packages/perl-Tk/Changes
+
+  Tk-804.035 release (2020-03-28)
+  ------------------
+
+  This is basically the same like Tk-804.034_501.
+
+  Tk-804.034_501 release (2020-03-19)
+  ----------------------
+
+  Fixes
+   Add dummy rules for newer EUMM (RT #124910)
+
+   Try harder to find libpng on FreeBSD
+
+  Tk-804.034_500 release (2020-02-23)
+  ----------------------
+
+  Fixes
+   Compiles again with perl 5.31.x (see also
+   github pull request #61 and https://github.com/Perl/perl5/issues/17024
+   by Karl Williamson). Now ppport.h is included in the
+   distribution.
+
+   Switch to X's locale handling if needed (Karl Williamson)
+
+   Don't use buttons 4 and 5 on non-X11 platforms
+   (Christopher Chavez)
+
+   Fix corner case in XPM handling (/* in colors section)
+
+   Spelling/grammar fixes in comments and code (Christopher Chavez)
+
+   Improved demo script photo1.pl (Christopher Chavez)
+
+  Documentation
+   Smaller Pod fixes (Slaven Rezic, Christopher Chavez)
+
+  Tests
+   travis-ci fixes
+
+-------------------------------------------------------------------
 Sun Sep 24 10:42:26 UTC 2017 - coolo@suse.com
 
 - use system jpeg to avoid failures with builtin version

@@ -334,4 +334,12 @@
    t/Trace.t is using now Test::More</comment>
     <requestid>528510</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ae77830b08679cb70ebdce5391bbcf54</srcmd5>
+    <version>804.035</version>
+    <time>1589046728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800980</requestid>
+  </revision>
 </revisionlist>

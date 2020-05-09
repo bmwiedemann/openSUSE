@@ -1,0 +1,76 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+patches:
+  Tk-804.029-macro.diff: -p0
+  Tk-804.029-null.diff: -p0
+  Tk-804.029-refcnt.diff: -p0
+  Tk-804.029-event.diff: -p0
+preamble: |-
+  BuildRequires:  libX11-devel
+  BuildRequires:  libXft-devel
+  BuildRequires:  liberation-fonts
+  BuildRequires:  libjpeg-devel
+  BuildRequires:  libpng-devel
+  BuildRequires:  xkeyboard-config
+  %if 0%{?suse_version} >= 01550
+  BuildRequires:  xvfb-run
+  BuildRequires:  perl(Devel::Leak)
+  BuildRequires:  perl(Test::More)
+  BuildRequires:  perl(Test::Pod)
+  %endif
+  BuildRequires:  xorg-x11
+  BuildRequires:  xorg-x11-Xnest
+  BuildRequires:  xorg-x11-Xvfb
+  BuildRequires:  xorg-x11-devel
+  BuildRequires:  xorg-x11-fonts
+  BuildRequires:  xorg-x11-fonts-100dpi
+  BuildRequires:  xorg-x11-fonts-scalable
+  BuildRequires:  perl(Encode)
+  BuildRequires:  perl(ExtUtils::MakeMaker)
+  BuildRequires:  zlib-devel
+  %ifnarch s390 s390x
+  BuildRequires:  xorg-x11-server
+  %endif
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+license: (GPL-1.0-or-later OR Artistic-1.0) AND Zlib
+#skip_noarch: 1
+custom_build: |-
+  find -name "*.orig" -exec rm {} \;
+  for file in `find -type f` ; do
+    grep -q "%{_prefix}/local/bin/perl" $file && \
+        sed -i -e "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@g" "$file"
+    grep -q "%{_prefix}/local/bin/nperl" $file && \
+        sed -i -e "s@%{_prefix}/local/bin/nperl@%{_bindir}/nperl@g" "$file"
+    grep -q "#!\s*/bin/perl" $file && \
+        sed -i -e "s@/bin/perl@%{_bindir}/perl@g" "$file"
+    grep -q "#!\s*/tools/local/perl" $file && \
+        sed -i -e "s@/tools/local/perl@%{_bindir}/perl@g" "$file"
+    grep -q "%{_prefix}/local/bin/new/perl" $file && \
+        sed -i -e "s@%{_prefix}/local/bin/new/perl@%{_bindir}/perl@g" "$file"
+  done
+  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" XFT=1
+  make %{?_smp_mflags} CFLAGS="%{optflags} -Wall -fpic"
+custom_test: |-
+  %if 0%{?suse_version} >= 01550
+  xvfb-run -a make test  %{?_smp_mflags} V=1
+  %else
+  Xvfb :95 -screen 0 1280x1024x24 & #430569
+  trap "kill $!" EXIT
+  sleep 5
+  DISPLAY=:95 make test %{?_smp_mflags}
+  %endif
+#startserver && make test
+#ignore_requires: Bizarre::Module
