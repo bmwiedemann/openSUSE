@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 01:34:47 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove python-flavour dependent recompilation commands; they
+  are no longer needed for openSUSE >= 1550.
+
+-------------------------------------------------------------------
 Thu Nov  8 17:18:11 UTC 2018 - alarrosa@suse.com
 
 - Remove unneeded python devel package

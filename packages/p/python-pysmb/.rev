@@ -7,4 +7,12 @@
     <comment>pysmb is an experimental SMB/CIFS library written in Python. It implements the client-side SMB/CIFS protocol which allows your Python application to access and transfer files to/from SMB/CIFS shared folders like your Windows file sharing and Samba folders.</comment>
     <requestid>648472</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a43fe3fe45f74aad81119cdc57c99f63</srcmd5>
+    <version>1.1.25</version>
+    <time>1589046757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801884</requestid>
+  </revision>
 </revisionlist>

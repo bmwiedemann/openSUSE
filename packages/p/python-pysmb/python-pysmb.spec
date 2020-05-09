@@ -52,14 +52,6 @@ pysmb is an experimental SMB/CIFS library written in Python. It implements the c
 sed -Ei "1{/^#!\/usr\/bin\/python/d}" %{buildroot}%{$python_sitelib}/smb/utils/sha256.py
 }
 
-# fdupes needs to be run before and after object file recompilation
-# to ensure consistent mtimes with source files.
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%py_compile    %{buildroot}%{python2_sitelib}/smb
-%py_compile -O %{buildroot}%{python2_sitelib}/smb
-%py3_compile   %{buildroot}%{python3_sitelib}/smb
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
