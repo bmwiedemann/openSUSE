@@ -108,6 +108,8 @@
       <repopackage name="alsa-plugins"/>
       <repopackage name="alsa-plugins-pulse"/>
       <repopackage name="alsa-plugins-pulse-32bit" arch="x86_64"/>
+      <repopackage name="alsa-plugins-speexrate"/>
+      <repopackage name="alsa-plugins-upmix"/>
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="amarok"/>
@@ -3550,6 +3552,7 @@
       <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
+      <repopackage name="openconnect-bash-completion"/>
       <repopackage name="openconnect-lang"/>
       <repopackage name="openldap2-client"/>
       <repopackage name="openldap2-devel"/>
@@ -5292,10 +5295,8 @@
       <repopackage name="xf86-input-vmmouse"/>
       <repopackage name="xf86-input-wacom"/>
       <repopackage name="xf86-video-ark"/>
-      <repopackage name="xf86-video-ast"/>
       <repopackage name="xf86-video-ati"/>
       <repopackage name="xf86-video-chips"/>
-      <repopackage name="xf86-video-cirrus"/>
       <repopackage name="xf86-video-dummy"/>
       <repopackage name="xf86-video-fbdev"/>
       <repopackage name="xf86-video-glint"/>
