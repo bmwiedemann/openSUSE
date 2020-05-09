@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 12:19:02 CEST 2020 - tiwai@suse.de
+
+- Backport upstream fixes: some improvements in alsa-info.sh:
+  0005-alsa-info.sh-add-ALT-to-DISTRO-list.patch
+  0006-alsa-info-initial-rpm-deb-package-info.patch
+  0007-alsa-info.sh-increase-version-to-0.4.65.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 17:59:59 CEST 2020 - tiwai@suse.de
 
 - Backport upstream fixes for alsactl:
