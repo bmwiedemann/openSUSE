@@ -18,10 +18,10 @@ them.
  create mode 100644 src/conf/domain_stats.c
  create mode 100644 src/conf/domain_stats.h
 
-Index: libvirt-6.2.0/src/conf/domain_stats.c
+Index: libvirt-6.3.0/src/conf/domain_stats.c
 ===================================================================
 --- /dev/null
-+++ libvirt-6.2.0/src/conf/domain_stats.c
++++ libvirt-6.3.0/src/conf/domain_stats.c
 @@ -0,0 +1,119 @@
 +/*
 + * domain_stats.c: domain stats extraction helpers
@@ -142,10 +142,10 @@ Index: libvirt-6.2.0/src/conf/domain_stats.c
 +}
 +
 +#undef STATS_ADD_NET_PARAM
-Index: libvirt-6.2.0/src/conf/domain_stats.h
+Index: libvirt-6.3.0/src/conf/domain_stats.h
 ===================================================================
 --- /dev/null
-+++ libvirt-6.2.0/src/conf/domain_stats.h
++++ libvirt-6.3.0/src/conf/domain_stats.h
 @@ -0,0 +1,62 @@
 +/*
 + * domain_stats.h: domain stats extraction helpers
@@ -209,11 +209,11 @@ Index: libvirt-6.2.0/src/conf/domain_stats.h
 +                           virTypedParamListPtr params);
 +
 +#endif /* __DOMAIN_STATS_H */
-Index: libvirt-6.2.0/src/libvirt_private.syms
+Index: libvirt-6.3.0/src/libvirt_private.syms
 ===================================================================
---- libvirt-6.2.0.orig/src/libvirt_private.syms
-+++ libvirt-6.2.0/src/libvirt_private.syms
-@@ -727,6 +727,9 @@ virDomainConfNWFilterInstantiate;
+--- libvirt-6.3.0.orig/src/libvirt_private.syms
++++ libvirt-6.3.0/src/libvirt_private.syms
+@@ -732,6 +732,9 @@ virDomainConfNWFilterInstantiate;
  virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
@@ -223,7 +223,7 @@ Index: libvirt-6.2.0/src/libvirt_private.syms
  
  # conf/interface_conf.h
  virInterfaceDefFormat;
-@@ -1753,6 +1756,7 @@ virCgroupGetMemoryUsage;
+@@ -1763,6 +1766,7 @@ virCgroupGetMemoryUsage;
  virCgroupGetMemSwapHardLimit;
  virCgroupGetMemSwapUsage;
  virCgroupGetPercpuStats;
@@ -231,10 +231,10 @@ Index: libvirt-6.2.0/src/libvirt_private.syms
  virCgroupHasController;
  virCgroupHasEmptyTasks;
  virCgroupKillPainfully;
-Index: libvirt-6.2.0/src/qemu/qemu_driver.c
+Index: libvirt-6.3.0/src/qemu/qemu_driver.c
 ===================================================================
---- libvirt-6.2.0.orig/src/qemu/qemu_driver.c
-+++ libvirt-6.2.0/src/qemu/qemu_driver.c
+--- libvirt-6.3.0.orig/src/qemu/qemu_driver.c
++++ libvirt-6.3.0/src/qemu/qemu_driver.c
 @@ -64,6 +64,7 @@
  #include "virarptable.h"
  #include "viruuid.h"
@@ -243,7 +243,7 @@ Index: libvirt-6.2.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "domain_cgroup.h"
  #include "domain_driver.h"
-@@ -20642,13 +20643,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
+@@ -20636,13 +20637,7 @@ qemuDomainGetStatsState(virQEMUDriverPtr
                          virTypedParamListPtr params,
                          unsigned int privflags G_GNUC_UNUSED)
  {
@@ -258,7 +258,7 @@ Index: libvirt-6.2.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -20951,17 +20946,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+@@ -20945,17 +20940,7 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
      if (!priv->cgroup)
          return 0;
  
@@ -277,7 +277,7 @@ Index: libvirt-6.2.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -21129,76 +21114,15 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
+@@ -21123,76 +21108,15 @@ qemuDomainGetStatsVcpu(virQEMUDriverPtr
      return ret;
  }
  
@@ -355,10 +355,10 @@ Index: libvirt-6.2.0/src/qemu/qemu_driver.c
  
  /* refresh information by opening images on the disk */
  static int
-Index: libvirt-6.2.0/src/util/vircgroup.c
+Index: libvirt-6.3.0/src/util/vircgroup.c
 ===================================================================
---- libvirt-6.2.0.orig/src/util/vircgroup.c
-+++ libvirt-6.2.0/src/util/vircgroup.c
+--- libvirt-6.3.0.orig/src/util/vircgroup.c
++++ libvirt-6.3.0/src/util/vircgroup.c
 @@ -2779,6 +2779,31 @@ virCgroupControllerAvailable(int control
      return ret;
  }
@@ -406,10 +406,10 @@ Index: libvirt-6.2.0/src/util/vircgroup.c
  int
  virCgroupNewPartition(const char *path G_GNUC_UNUSED,
                        bool create G_GNUC_UNUSED,
-Index: libvirt-6.2.0/src/util/vircgroup.h
+Index: libvirt-6.3.0/src/util/vircgroup.h
 ===================================================================
---- libvirt-6.2.0.orig/src/util/vircgroup.h
-+++ libvirt-6.2.0/src/util/vircgroup.h
+--- libvirt-6.3.0.orig/src/util/vircgroup.h
++++ libvirt-6.3.0/src/util/vircgroup.h
 @@ -23,6 +23,7 @@
  
  #include "virbitmap.h"
@@ -425,10 +425,10 @@ Index: libvirt-6.2.0/src/util/vircgroup.h
 +
 +int virCgroupGetStatsCpu(virCgroupPtr cgroup,
 +                         virTypedParamListPtr params);
-Index: libvirt-6.2.0/src/conf/Makefile.inc.am
+Index: libvirt-6.3.0/src/conf/Makefile.inc.am
 ===================================================================
---- libvirt-6.2.0.orig/src/conf/Makefile.inc.am
-+++ libvirt-6.2.0/src/conf/Makefile.inc.am
+--- libvirt-6.3.0.orig/src/conf/Makefile.inc.am
++++ libvirt-6.3.0/src/conf/Makefile.inc.am
 @@ -28,6 +28,8 @@ DOMAIN_CONF_SOURCES = \
  	conf/domain_audit.h \
  	conf/domain_nwfilter.c \

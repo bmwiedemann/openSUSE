@@ -1,0 +1,130 @@
+commit 836ea91d4ed174f2bb65ef894a8d6daf0675e743
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon May 4 15:20:37 2020 -0600
+
+    libxl: Clarify that 'xenlight' should only be used internally
+    
+    The libxl driver has suffered an identity crisis since its introduction.
+    It took on the name 'libxl' since at the time libvirt already contained
+    a 'xen' driver for the old Xen toolstack implementation. 'libxl' is short
+    for libxenlight, which is often called xenlight. Unfortunately all forms
+    of the name are used in the libxl driver.
+    
+    The only remaining use of the 'xenlight' form is when interacting with
+    the host device manager, which is difficult to change since it would
+    cause problems when upgrading the driver.
+    
+    Rename the #define to make it clear the 'xenlight' form is internal and
+    add a comment describing why the name exists and that its use should be
+    discouraged.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+Index: libvirt-6.3.0/src/libxl/libxl_conf.h
+===================================================================
+--- libvirt-6.3.0.orig/src/libxl/libxl_conf.h
++++ libvirt-6.3.0/src/libxl/libxl_conf.h
+@@ -39,7 +39,12 @@
+ #include "libxl_logger.h"
+ 
+ #define LIBXL_DRIVER_EXTERNAL_NAME "Xen"
+-#define LIBXL_DRIVER_NAME "xenlight"
++/*
++ * We are stuck with the 'xenlight' name since it is used by the hostdev
++ * manager. Changing it would break management of any host devices previously
++ * managed under the name 'xenlight'.
++ */
++#define LIBXL_DRIVER_INTERNAL_NAME "xenlight"
+ #define LIBXL_VNC_PORT_MIN  5900
+ #define LIBXL_VNC_PORT_MAX  65535
+ 
+Index: libvirt-6.3.0/src/libxl/libxl_domain.c
+===================================================================
+--- libvirt-6.3.0.orig/src/libxl/libxl_domain.c
++++ libvirt-6.3.0/src/libxl/libxl_domain.c
+@@ -873,7 +873,7 @@ libxlDomainCleanup(libxlDriverPrivatePtr
+         VIR_FREE(xml);
+     }
+ 
+-    virHostdevReAttachDomainDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    virHostdevReAttachDomainDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                     vm->def, hostdev_flags, NULL);
+ 
+     VIR_FREE(priv->lockState);
+@@ -1370,7 +1370,7 @@ libxlDomainStart(libxlDriverPrivatePtr d
+     if (cfg->autoballoon && libxlDomainFreeMem(cfg->ctx, &d_config) < 0)
+         goto cleanup_dom;
+ 
+-    if (virHostdevPrepareDomainDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    if (virHostdevPrepareDomainDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                        vm->def, hostdev_flags) < 0)
+         goto cleanup_dom;
+ 
+Index: libvirt-6.3.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-6.3.0.orig/src/libxl/libxl_driver.c
++++ libvirt-6.3.0/src/libxl/libxl_driver.c
+@@ -431,7 +431,7 @@ libxlReconnectDomain(virDomainObjPtr vm,
+     libxlLoggerOpenFile(cfg->logger, vm->def->id, vm->def->name, NULL);
+ 
+     /* Update hostdev state */
+-    if (virHostdevUpdateActiveDomainDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    if (virHostdevUpdateActiveDomainDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                             vm->def, hostdev_flags) < 0)
+         goto error;
+ 
+@@ -3127,7 +3127,7 @@ libxlDomainAttachHostPCIDevice(libxlDriv
+     if (VIR_REALLOC_N(vm->def->hostdevs, vm->def->nhostdevs + 1) < 0)
+         goto cleanup;
+ 
+-    if (virHostdevPreparePCIDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    if (virHostdevPreparePCIDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                     vm->def->name, vm->def->uuid,
+                                     &hostdev, 1, 0) < 0)
+         goto cleanup;
+@@ -3149,7 +3149,7 @@ libxlDomainAttachHostPCIDevice(libxlDriv
+     goto cleanup;
+ 
+  error:
+-    virHostdevReAttachPCIDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    virHostdevReAttachPCIDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                  vm->def->name, &hostdev, 1, NULL);
+ 
+  cleanup:
+@@ -3264,7 +3264,7 @@ libxlDomainAttachHostUSBDevice(libxlDriv
+     if (VIR_REALLOC_N(vm->def->hostdevs, vm->def->nhostdevs + 1) < 0)
+         goto cleanup;
+ 
+-    if (virHostdevPrepareUSBDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    if (virHostdevPrepareUSBDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                     vm->def->name, &hostdev, 1, 0) < 0)
+         goto cleanup;
+ 
+@@ -3284,7 +3284,7 @@ libxlDomainAttachHostUSBDevice(libxlDriv
+     goto cleanup;
+ 
+  reattach:
+-    virHostdevReAttachUSBDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    virHostdevReAttachUSBDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                  vm->def->name, &hostdev, 1);
+ 
+  cleanup:
+@@ -3689,7 +3689,7 @@ libxlDomainDetachHostPCIDevice(libxlDriv
+ 
+     virDomainHostdevRemove(vm->def, idx);
+ 
+-    virHostdevReAttachPCIDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    virHostdevReAttachPCIDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                  vm->def->name, &hostdev, 1, NULL);
+ 
+     ret = 0;
+@@ -3811,7 +3811,7 @@ libxlDomainDetachHostUSBDevice(libxlDriv
+ 
+     virDomainHostdevRemove(vm->def, idx);
+ 
+-    virHostdevReAttachUSBDevices(hostdev_mgr, LIBXL_DRIVER_NAME,
++    virHostdevReAttachUSBDevices(hostdev_mgr, LIBXL_DRIVER_INTERNAL_NAME,
+                                  vm->def->name, &hostdev, 1);
+ 
+     ret = 0;

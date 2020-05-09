@@ -1,0 +1,27 @@
+commit d677de9d567e3e87be295b91723457b461345caa
+Author: Daniel P. Berrangé <berrange@redhat.com>
+Date:   Mon May 4 17:41:46 2020 +0100
+
+    remote: fix driver name check for libxl driver
+    
+    The virConnectGetType() returns "Xen" for libxl, not "LIBXL".
+    
+    This prevents users opening a connection to the libxl driver when using
+    the modular daemons.
+    
+    Reviewed-by: Jim Fehlig <jfehlig@suse.com>
+    Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+Index: libvirt-6.3.0/src/remote/remote_daemon_dispatch.c
+===================================================================
+--- libvirt-6.3.0.orig/src/remote/remote_daemon_dispatch.c
++++ libvirt-6.3.0/src/remote/remote_daemon_dispatch.c
+@@ -2111,7 +2111,7 @@ remoteDispatchConnectOpen(virNetServerPt
+ 
+     VIR_DEBUG("Primary driver type is '%s'", type);
+     if (STREQ(type, "QEMU") ||
+-        STREQ(type, "LIBXL") ||
++        STREQ(type, "Xen") ||
+         STREQ(type, "LXC") ||
+         STREQ(type, "VBOX") ||
+         STREQ(type, "bhyve") ||

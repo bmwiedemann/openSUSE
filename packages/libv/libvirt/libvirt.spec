@@ -185,7 +185,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -338,20 +338,10 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         88011ed2-libxl-driver-crash-fix.patch
-Patch1:         8e669b38-conf-add-event-channels.patch
-Patch2:         a93f55c5-libxl-add-event-channels.patch
-Patch3:         967f4eeb-xenconfig-event-channels.patch
-Patch4:         93b15ba0-qemu-fix-hang-in-p2p-xbzrle-compression-parallel-mig.patch
-Patch5:         b7d6648d-conf-add-e820-host.patch
-Patch6:         5749395b-libxl-e820-host.patch
-Patch7:         f3ef7daf-xenconfig-e820-host.patch
-Patch8:         34077c1b-tests-check-e820-host.patch
-Patch9:         fadbaa23-conf-add-passthrough.patch
-Patch10:        9529e007-libxl-passthrough.patch
-Patch11:        9cb8bc6f-xenconfig-refactor-features.patch
-Patch12:        b523e225-xenconfig-passthrough.patch
-Patch13:        bed32525-tests-check-passthrough.patch
+Patch0:         d677de9d-libxl-fix-driver-name-check.patch
+Patch1:         d218a9c2-libxl-xen-driver-tables.patch
+Patch2:         836ea91d-libxl-xenlight-internal.patch
+Patch3:         57687260-xen-doc-improvements.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -891,16 +881,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1151,12 +1131,6 @@ done
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
 mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/hooks
 %find_lang %{name}
-# Add a README to the libvirt package with a note about the empty
-# file list
-cat > %{buildroot}/%{_docdir}/%{name}/libvirt.README << 'EOF'
-The libvirt package no longer contains any files.  It exists now
-only to fulfill its 'Provides' contract.
-EOF
 install -d -m 0755 %{buildroot}/%{_localstatedir}/lib/%{name}/dnsmasq/
 install -d -m 0755 %{buildroot}/%{_datadir}/%{name}/networks/
 cp %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml \
@@ -1165,39 +1139,17 @@ rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/autostart/default.xml
 # Strip auto-generated UUID - we need it generated per-install
 sed -i -e "/<uuid>/d" %{buildroot}/%{_datadir}/%{name}/networks/default.xml
-%if %{with_lxc}
-cat > %{buildroot}/%{_docdir}/%{name}/libvirt-daemon-lxc.README << 'EOF'
-Any empty package encapsulating requirements for a libvirtd capable
-of managing LXC.
-EOF
-%else
+%if ! %{with_lxc}
 rm -rf %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_lxc.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
 rm -rf %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc
 %endif
-%if %{with_qemu}
-cat > %{buildroot}/%{_docdir}/%{name}/libvirt-daemon-qemu.README << 'EOF'
-Any empty package encapsulating requirements for a libvirtd capable
-of managing QEMU/KVM.
-EOF
-%else
+%if ! %{with_qemu}
 rm -rf %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_qemu.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
 rm -rf %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu
-%endif
-%if %{with_vbox}
-cat > %{buildroot}/%{_docdir}/%{name}/libvirt-daemon-vbox.README << 'EOF'
-Any empty package encapsulating requirements for a libvirtd capable
-of managing VirtualBox.
-EOF
-%endif
-%if %{with_libxl}
-cat > %{buildroot}/%{_docdir}/%{name}/libvirt-daemon-xen.README << 'EOF'
-Any empty package encapsulating requirements for a libvirtd capable
-of managing Xen.
-EOF
 %endif
 %if ! %{with_libxl}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/libxl.conf
@@ -1214,14 +1166,45 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 mkdir -p %{buildroot}/%{_fillupdir}
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
 mv %{buildroot}/%{_sysconfdir}/sysconfig/libvirtd %{buildroot}%{_fillupdir}/sysconfig.libvirtd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtproxyd %{buildroot}/%{_fillupdir}/sysconfig.virtproxyd
 mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlogd %{buildroot}/%{_fillupdir}/sysconfig.virtlogd
 mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlockd %{buildroot}/%{_fillupdir}/sysconfig.virtlockd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtinterfaced %{buildroot}/%{_fillupdir}/sysconfig.virtinterfaced
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnetworkd %{buildroot}/%{_fillupdir}/sysconfig.virtnetworkd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnodedevd %{buildroot}/%{_fillupdir}/sysconfig.virtnodedevd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnwfilterd %{buildroot}/%{_fillupdir}/sysconfig.virtnwfilterd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtsecretd %{buildroot}/%{_fillupdir}/sysconfig.virtsecretd
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtstoraged %{buildroot}/%{_fillupdir}/sysconfig.virtstoraged
 mv %{buildroot}/%{_sysconfdir}/sysconfig/libvirt-guests %{buildroot}/%{_fillupdir}/sysconfig.libvirt-guests
 # Provide rc symlink backward compatibility
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtproxyd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlogd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlockd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtinterfaced
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnetworkd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnodedevd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnwfilterd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtsecretd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtstoraged
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirt-guests
+
+%if %{with_qemu}
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtqemud %{buildroot}/%{_fillupdir}/sysconfig.virtqemud
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtqemud
+%endif
+%if %{with_lxc}
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlxcd %{buildroot}/%{_fillupdir}/sysconfig.virtlxcd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlxcd
+%endif
+%if %{with_libxl}
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtxend %{buildroot}/%{_fillupdir}/sysconfig.virtxend
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtxend
+%endif
+%if %{with_vbox}
+mv %{buildroot}/%{_sysconfdir}/sysconfig/virtvboxd %{buildroot}/%{_fillupdir}/sysconfig.virtvboxd
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
+%endif
 
 # install firewall services for migration ports
 mkdir -p %{buildroot}/%{_fwdefdir}
@@ -1283,6 +1266,7 @@ fi
 %service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 %{fillup_only -n libvirtd}
 %{fillup_only -n virtlockd}
+%{fillup_only -n virtproxyd}
 %{fillup_only -n virtlogd}
 # The '--listen' option is incompatible with socket activation.
 # We need to forcibly remove it from /etc/sysconfig/libvirtd.
@@ -1485,7 +1469,6 @@ fi
 %postun nss -p /sbin/ldconfig
 
 %files
-%doc %{_docdir}/%{name}/libvirt.README
 
 %files daemon
 %{_sbindir}/libvirtd
@@ -1496,6 +1479,7 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_fillupdir}/sysconfig.libvirtd
+%{_fillupdir}/sysconfig.virtproxyd
 %{_fillupdir}/sysconfig.virtlogd
 %{_fillupdir}/sysconfig.virtlockd
 %{_unitdir}/libvirtd.service
@@ -1520,6 +1504,7 @@ fi
 %{_sbindir}/rclibvirtd
 %{_sbindir}/rcvirtlogd
 %{_sbindir}/rcvirtlockd
+%{_sbindir}/rcvirtproxyd
 %config(noreplace) %{_sysconfdir}/%{name}/libvirtd.conf
 %config(noreplace) %{_sysconfdir}/%{name}/virtproxyd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd
@@ -1600,6 +1585,7 @@ fi
 %config %{_sysconfdir}/%{name}/nwfilter/*.xml
 
 %files daemon-driver-interface
+%{_fillupdir}/sysconfig.virtinterfaced
 %config(noreplace) %{_sysconfdir}/%{name}/virtinterfaced.conf
 %{_datadir}/augeas/lenses/virtinterfaced.aug
 %{_datadir}/augeas/lenses/tests/test_virtinterfaced.aug
@@ -1608,10 +1594,12 @@ fi
 %{_unitdir}/virtinterfaced-ro.socket
 %{_unitdir}/virtinterfaced-admin.socket
 %{_sbindir}/virtinterfaced
+%{_sbindir}/rcvirtinterfaced
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
 
 %files daemon-driver-network
+%{_fillupdir}/sysconfig.virtnetworkd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnetworkd.conf
 %{_datadir}/augeas/lenses/virtnetworkd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnetworkd.aug
@@ -1620,6 +1608,7 @@ fi
 %{_unitdir}/virtnetworkd-ro.socket
 %{_unitdir}/virtnetworkd-admin.socket
 %{_sbindir}/virtnetworkd
+%{_sbindir}/rcvirtnetworkd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/autostart
@@ -1634,6 +1623,7 @@ fi
 %endif
 
 %files daemon-driver-nodedev
+%{_fillupdir}/sysconfig.virtnodedevd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnodedevd.conf
 %{_datadir}/augeas/lenses/virtnodedevd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnodedevd.aug
@@ -1642,10 +1632,12 @@ fi
 %{_unitdir}/virtnodedevd-ro.socket
 %{_unitdir}/virtnodedevd-admin.socket
 %{_sbindir}/virtnodedevd
+%{_sbindir}/rcvirtnodedevd
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nodedev.so
 
 %files daemon-driver-nwfilter
+%{_fillupdir}/sysconfig.virtnwfilterd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnwfilterd.conf
 %{_datadir}/augeas/lenses/virtnwfilterd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnwfilterd.aug
@@ -1654,11 +1646,13 @@ fi
 %{_unitdir}/virtnwfilterd-ro.socket
 %{_unitdir}/virtnwfilterd-admin.socket
 %{_sbindir}/virtnwfilterd
+%{_sbindir}/rcvirtnwfilterd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nwfilter.so
 
 %files daemon-driver-secret
+%{_fillupdir}/sysconfig.virtsecretd
 %config(noreplace) %{_sysconfdir}/%{name}/virtsecretd.conf
 %{_datadir}/augeas/lenses/virtsecretd.aug
 %{_datadir}/augeas/lenses/tests/test_virtsecretd.aug
@@ -1667,12 +1661,14 @@ fi
 %{_unitdir}/virtsecretd-ro.socket
 %{_unitdir}/virtsecretd-admin.socket
 %{_sbindir}/virtsecretd
+%{_sbindir}/rcvirtsecretd
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
 
 %files daemon-driver-storage
 
 %files daemon-driver-storage-core
+%{_fillupdir}/sysconfig.virtstoraged
 %config(noreplace) %{_sysconfdir}/%{name}/virtstoraged.conf
 %{_datadir}/augeas/lenses/virtstoraged.aug
 %{_datadir}/augeas/lenses/tests/test_virtstoraged.aug
@@ -1681,6 +1677,7 @@ fi
 %{_unitdir}/virtstoraged-ro.socket
 %{_unitdir}/virtstoraged-admin.socket
 %{_sbindir}/virtstoraged
+%{_sbindir}/rcvirtstoraged
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt_parthelper
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_storage.so
@@ -1728,6 +1725,7 @@ fi
 %if %{with_qemu}
 
 %files daemon-driver-qemu
+%{_fillupdir}/sysconfig.virtqemud
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
@@ -1736,6 +1734,7 @@ fi
 %{_unitdir}/virtqemud-ro.socket
 %{_unitdir}/virtqemud-admin.socket
 %{_sbindir}/virtqemud
+%{_sbindir}/rcvirtqemud
 %config(noreplace) %{_sysconfdir}/%{name}/qemu.conf
 %config(noreplace) %{_sysconfdir}/%{name}/qemu-lockd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.qemu
@@ -1757,6 +1756,7 @@ fi
 %if %{with_lxc}
 
 %files daemon-driver-lxc
+%{_fillupdir}/sysconfig.virtlxcd
 %config(noreplace) %{_sysconfdir}/%{name}/virtlxcd.conf
 %{_datadir}/augeas/lenses/virtlxcd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlxcd.aug
@@ -1765,6 +1765,7 @@ fi
 %{_unitdir}/virtlxcd-ro.socket
 %{_unitdir}/virtlxcd-admin.socket
 %{_sbindir}/virtlxcd
+%{_sbindir}/rcvirtlxcd
 %config(noreplace) %{_sysconfdir}/%{name}/lxc.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.lxc
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/lxc/
@@ -1784,6 +1785,7 @@ fi
 %if %{with_libxl}
 
 %files daemon-driver-libxl
+%{_fillupdir}/sysconfig.virtxend
 %config(noreplace) %{_sysconfdir}/%{name}/virtxend.conf
 %{_datadir}/augeas/lenses/virtxend.aug
 %{_datadir}/augeas/lenses/tests/test_virtxend.aug
@@ -1792,6 +1794,7 @@ fi
 %{_unitdir}/virtxend-ro.socket
 %{_unitdir}/virtxend-admin.socket
 %{_sbindir}/virtxend
+%{_sbindir}/rcvirtxend
 %config(noreplace) %{_sysconfdir}/%{name}/libxl.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.libxl
 %config(noreplace) %{_sysconfdir}/%{name}/libxl-lockd.conf
@@ -1806,6 +1809,7 @@ fi
 %if %{with_vbox}
 
 %files daemon-driver-vbox
+%{_fillupdir}/sysconfig.virtvboxd
 %config(noreplace) %{_sysconfdir}/%{name}/virtvboxd.conf
 %{_datadir}/augeas/lenses/virtvboxd.aug
 %{_datadir}/augeas/lenses/tests/test_virtvboxd.aug
@@ -1814,31 +1818,28 @@ fi
 %{_unitdir}/virtvboxd-ro.socket
 %{_unitdir}/virtvboxd-admin.socket
 %{_sbindir}/virtvboxd
+%{_sbindir}/rcvirtvboxd
 %{_libdir}/%{name}/connection-driver/libvirt_driver_vbox.so
 %endif
 
 %if %{with_qemu}
 
 %files daemon-qemu
-%doc %{_docdir}/%{name}/libvirt-daemon-qemu.README
 %endif
 
 %if %{with_lxc}
 
 %files daemon-lxc
-%doc %{_docdir}/%{name}/libvirt-daemon-lxc.README
 %endif
 
 %if %{with_libxl}
 
 %files daemon-xen
-%doc %{_docdir}/%{name}/libvirt-daemon-xen.README
 %endif
 
 %if %{with_vbox}
 
 %files daemon-vbox
-%doc %{_docdir}/%{name}/libvirt-daemon-vbox.README
 %endif
 
 %files client
@@ -1925,23 +1926,12 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-%doc AUTHORS NEWS README README.md
+%doc AUTHORS NEWS README README.rst
 %license COPYING COPYING.LESSER
 %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/*.png
-%doc %{_docdir}/%{name}/*.html
-%doc %{_docdir}/%{name}/*.gif
-%doc %{_docdir}/%{name}/*.css
-%doc %{_docdir}/%{name}/html
-%doc %{_docdir}/%{name}/internals
-%doc %{_docdir}/%{name}/kbase
-%doc %{_docdir}/%{name}/logos
-%doc %{_docdir}/%{name}/fonts
-%doc %{_docdir}/%{name}/js
-%doc %{_docdir}/%{name}/manpages
+%doc %{_docdir}/%{name}/*
 %dir %{_datadir}/doc/%{name}
-%dir %{_datadir}/doc/%{name}/examples
-%doc %{_datadir}/doc/%{name}/examples/*
+%doc %{_datadir}/doc/%{name}/*
 
 %if %{with_sanlock}
 

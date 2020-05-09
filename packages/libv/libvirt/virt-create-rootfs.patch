@@ -1,7 +1,7 @@
-Index: libvirt-6.2.0/tools/Makefile.am
+Index: libvirt-6.3.0/tools/Makefile.am
 ===================================================================
---- libvirt-6.2.0.orig/tools/Makefile.am
-+++ libvirt-6.2.0/tools/Makefile.am
+--- libvirt-6.3.0.orig/tools/Makefile.am
++++ libvirt-6.3.0/tools/Makefile.am
 @@ -70,7 +70,7 @@ MAINTAINERCLEANFILES =
  confdir = $(sysconfdir)/libvirt
  conf_DATA =
@@ -11,10 +11,10 @@ Index: libvirt-6.2.0/tools/Makefile.am
  bin_PROGRAMS = virsh virt-admin
  libexec_SCRIPTS = libvirt-guests.sh
  
-Index: libvirt-6.2.0/tools/virt-create-rootfs
+Index: libvirt-6.3.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-6.2.0/tools/virt-create-rootfs
++++ libvirt-6.3.0/tools/virt-create-rootfs
 @@ -0,0 +1,231 @@
 +#!/bin/sh
 +set -e
@@ -247,11 +247,11 @@ Index: libvirt-6.2.0/tools/virt-create-rootfs
 +    echo "pts/0" >> "$ROOT/etc/securetty"
 +    chroot "$ROOT" /usr/bin/passwd
 +fi
-Index: libvirt-6.2.0/docs/Makefile.am
+Index: libvirt-6.3.0/docs/Makefile.am
 ===================================================================
---- libvirt-6.2.0.orig/docs/Makefile.am
-+++ libvirt-6.2.0/docs/Makefile.am
-@@ -209,6 +209,7 @@ manpages1_rst = \
+--- libvirt-6.3.0.orig/docs/Makefile.am
++++ libvirt-6.3.0/docs/Makefile.am
+@@ -215,6 +215,7 @@ manpages1_rst = \
    manpages/virt-xml-validate.rst \
    manpages/virt-admin.rst \
    manpages/virsh.rst \
@@ -259,10 +259,10 @@ Index: libvirt-6.2.0/docs/Makefile.am
    $(NULL)
  manpages7_rst = \
    $(KEYCODES:%=manpages/virkeycode-%.rst) \
-Index: libvirt-6.2.0/docs/manpages/virt-create-rootfs.rst
+Index: libvirt-6.3.0/docs/manpages/virt-create-rootfs.rst
 ===================================================================
 --- /dev/null
-+++ libvirt-6.2.0/docs/manpages/virt-create-rootfs.rst
++++ libvirt-6.3.0/docs/manpages/virt-create-rootfs.rst
 @@ -0,0 +1,88 @@
 +==================
 +virt-create-rootfs

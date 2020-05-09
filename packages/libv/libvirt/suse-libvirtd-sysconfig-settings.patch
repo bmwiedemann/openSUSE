@@ -1,9 +1,9 @@
 Adjust libvirtd sysconfig file to conform to SUSE standards
 
-Index: libvirt-6.2.0/src/remote/libvirtd.sysconf
+Index: libvirt-6.3.0/src/remote/libvirtd.sysconf
 ===================================================================
---- libvirt-6.2.0.orig/src/remote/libvirtd.sysconf
-+++ libvirt-6.2.0/src/remote/libvirtd.sysconf
+--- libvirt-6.3.0.orig/src/remote/libvirtd.sysconf
++++ libvirt-6.3.0/src/remote/libvirtd.sysconf
 @@ -1,5 +1,9 @@
 +## Path: System/Virtualization/libvirt
  # Customizations for the libvirtd.service systemd unit
@@ -14,14 +14,9 @@ Index: libvirt-6.2.0/src/remote/libvirtd.sysconf
  # Default behaviour is for libvirtd.service to start on boot
  # so that VM autostart can be performed. We then want it to
  # shutdown again if nothing was started and rely on systemd
-@@ -11,9 +15,13 @@ LIBVIRTD_ARGS="--timeout 120"
+@@ -11,6 +15,8 @@ LIBVIRTD_ARGS="--timeout 120"
  # can be used to listen on TCP/TLS sockets
  #LIBVIRTD_ARGS="--listen"
- 
-+## Type: string
-+## Default: none
- # Override Kerberos service keytab for SASL/GSSAPI
- #KRB5_KTNAME=/etc/libvirt/krb5.tab
  
 +## Type: string
 +## Default: none

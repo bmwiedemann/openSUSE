@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May  6 20:43:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Xen: Fix connection when host uses modular daemons
+  d677de9d-libxl-fix-driver-name-check.patch,
+  d218a9c2-libxl-xen-driver-tables.patch,
+  836ea91d-libxl-xenlight-internal.patch,
+  57687260-xen-doc-improvements.patch
+  boo#1171113
+
+-------------------------------------------------------------------
+Wed May  6 01:40:32 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.3.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    88011ed2-libxl-driver-crash-fix.patch,
+    8e669b38-conf-add-event-channels.patch,
+    a93f55c5-libxl-add-event-channels.patch,
+    967f4eeb-xenconfig-event-channels.patch,
+    93b15ba0-qemu-fix-hang-in-p2p-xbzrle-compression-parallel-mig.patch,
+    b7d6648d-conf-add-e820-host.patch,
+    5749395b-libxl-e820-host.patch,
+    f3ef7daf-xenconfig-e820-host.patch,
+    34077c1b-tests-check-e820-host.patch,
+    fadbaa23-conf-add-passthrough.patch,
+    9529e007-libxl-passthrough.patch,
+    9cb8bc6f-xenconfig-refactor-features.patch,
+    b523e225-xenconfig-passthrough.patch,
+    bed32525-tests-check-passthrough.patch
+
+-------------------------------------------------------------------
 Tue Apr 21 17:45:36 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Add support for 'passthrough' and 'e820_host' settings

@@ -3562,4 +3562,36 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>796124</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>961923899f6a1108f633837280cb33cc</srcmd5>
+    <version>6.3.0</version>
+    <time>1589046642</time>
+    <user>dimstar_suse</user>
+    <comment>- Xen: Fix connection when host uses modular daemons
+  d677de9d-libxl-fix-driver-name-check.patch,
+  d218a9c2-libxl-xen-driver-tables.patch,
+  836ea91d-libxl-xenlight-internal.patch,
+  57687260-xen-doc-improvements.patch
+  boo#1171113
+
+- Update to libvirt 6.3.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    88011ed2-libxl-driver-crash-fix.patch,
+    8e669b38-conf-add-event-channels.patch,
+    a93f55c5-libxl-add-event-channels.patch,
+    967f4eeb-xenconfig-event-channels.patch,
+    93b15ba0-qemu-fix-hang-in-p2p-xbzrle-compression-parallel-mig.patch,
+    b7d6648d-conf-add-e820-host.patch,
+    5749395b-libxl-e820-host.patch,
+    f3ef7daf-xenconfig-e820-host.patch,
+    34077c1b-tests-check-e820-host.patch,
+    fadbaa23-conf-add-passthrough.patch,
+    9529e007-libxl-passthrough.patch,
+    9cb8bc6f-xenconfig-refactor-features.patch,
+    b523e225-xenconfig-passthrough.patch,
+    bed32525-tests-check-passthrough.patch</comment>
+    <requestid>801297</requestid>
+  </revision>
 </revisionlist>

@@ -19,10 +19,10 @@ reworking this patch and submitting it to upstream libvirt.
  src/libxl/libxl_driver.c | 91 ++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 91 insertions(+)
 
-Index: libvirt-6.2.0/src/libxl/libxl_driver.c
+Index: libvirt-6.3.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-6.2.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-6.2.0/src/libxl/libxl_driver.c
+--- libvirt-6.3.0.orig/src/libxl/libxl_driver.c
++++ libvirt-6.3.0/src/libxl/libxl_driver.c
 @@ -5287,6 +5287,96 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT

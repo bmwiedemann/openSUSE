@@ -8,10 +8,10 @@ Subject: [PATCH] support managed pci devices in xen driver
  src/xenxs/xen_xm.c   |   28 +++++++++++++++++++++++++++-
  2 files changed, 35 insertions(+), 15 deletions(-)
 
-Index: libvirt-6.2.0/src/libxl/xen_common.c
+Index: libvirt-6.3.0/src/libxl/xen_common.c
 ===================================================================
---- libvirt-6.2.0.orig/src/libxl/xen_common.c
-+++ libvirt-6.2.0/src/libxl/xen_common.c
+--- libvirt-6.3.0.orig/src/libxl/xen_common.c
++++ libvirt-6.3.0/src/libxl/xen_common.c
 @@ -381,12 +381,19 @@ xenParsePCI(char *entry)
      int busID;
      int slotID;
