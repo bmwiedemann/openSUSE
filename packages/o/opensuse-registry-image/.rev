@@ -7,4 +7,12 @@
     <comment>Needs to be released to registry.opensuse.org/opensuse/</comment>
     <requestid>737033</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60a275fd7dc790490d2a29de98788a11</srcmd5>
+    <version>1.0.0</version>
+    <time>1589055582</time>
+    <user>dimstar_suse</user>
+    <comment>- ca-certificates needs real findutils, remove busybox-findutils</comment>
+    <requestid>798937</requestid>
+  </revision>
 </revisionlist>

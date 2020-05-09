@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:30:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- ca-certificates needs real findutils, remove busybox-findutils
+
+-------------------------------------------------------------------
 Wed Oct  2 16:01:24 CEST 2019 - kukuk@suse.de
 
 - Initial version
