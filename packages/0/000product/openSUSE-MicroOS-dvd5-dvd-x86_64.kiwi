@@ -95,6 +95,11 @@
       <repopackage name="btrfsprogs" arch="x86_64"/>
       <repopackage name="btrfsprogs-udev-rules" arch="x86_64"/>
       <repopackage name="bubblewrap" arch="x86_64"/>
+      <repopackage name="busybox" arch="x86_64"/>
+      <repopackage name="busybox-coreutils" arch="x86_64"/>
+      <repopackage name="busybox-gawk" arch="x86_64"/>
+      <repopackage name="busybox-psmisc" arch="x86_64"/>
+      <repopackage name="busybox-xz" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>
       <repopackage name="ca-certificates-mozilla" arch="x86_64"/>
       <repopackage name="canberra-gtk-play" arch="x86_64"/>
