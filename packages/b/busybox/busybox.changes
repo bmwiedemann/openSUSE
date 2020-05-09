@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:46:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Re-add modutils
+
+-------------------------------------------------------------------
+Sat Mar 21 11:18:54 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set last ID to 65533, else nobody cannot be created
+
+-------------------------------------------------------------------
+Fri Mar 13 20:04:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Merge config of default, -container and -static to be able to
+  drop -container variant
+
+-------------------------------------------------------------------
 Sat Feb 22 17:46:55 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable CONFIG_FEATURE_NSLOOKUP_BIG as it leads to incompatible

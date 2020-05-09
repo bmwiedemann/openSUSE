@@ -595,4 +595,12 @@
   nslookup behavior</comment>
     <requestid>778275</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>5ad188ce0c852842d6e1311adb0ff669</srcmd5>
+    <version>1.31.1</version>
+    <time>1589046471</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add modutils (forwarded request 794856 from kukuk)</comment>
+    <requestid>794857</requestid>
+  </revision>
 </revisionlist>

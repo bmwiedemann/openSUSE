@@ -27,15 +27,13 @@ Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
-Source4:        busybox-container.config
-Source5:        man.conf
+Source4:        man.conf
 # Upstream patches
 Patch0:         busybox-no-stime.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
-BuildRequires:  libtirpc-devel
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -55,15 +53,6 @@ Group:          System/Base
 BusyBox combines tiny versions of many common UNIX utilities into a
 single executable.
 
-%package container
-Summary:        A version of Busybox configured for containers
-Group:          System/Base
-Provides:       useradd_or_adduser_dep
-
-%description container
-This is a small BusyBox version which contains only the tools which
-makes sense in a container.
-
 %prep
 %setup -q
 %patch0 -p1
@@ -79,13 +68,6 @@ export BUILD_VERBOSE=2
 export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
-cp -a %{SOURCE4} .config
-make %{?_smp_mflags} -e oldconfig
-make -e %{?_smp_mflags}
-mv busybox busybox-container
-make busybox.links
-mv busybox.links busybox-container.links
-sed -e 's|busybox.links|busybox-container.links|g' -e 's|/usr/bin/busybox|/usr/bin/busybox-container|g' applets/install.sh > busybox-container.install
 cp -a %{SOURCE3} .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
@@ -100,20 +82,18 @@ make -e doc busybox.links %{?_smp_mflags}
 install -d %{buildroot}/%{_bindir}
 install -d %{buildroot}/%{_datadir}/busybox
 install -m 0644 busybox.links %{buildroot}%{_datadir}/busybox
-install -m 0644 busybox-container.links %{buildroot}%{_datadir}/busybox
 install applets/install.sh %{buildroot}%{_bindir}/busybox.install
-install busybox-container.install %{buildroot}%{_bindir}/busybox-container.install
 install -m 0755 busybox %{buildroot}%{_bindir}
 install -m 0755 busybox-static %{buildroot}%{_bindir}
-install -m 0755 busybox-container %{buildroot}%{_bindir}
 install -d %{buildroot}%{_sysconfdir}
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 
 %files
 %license LICENSE
 %doc docs/mdev.txt
+%config %{_sysconfdir}/man.conf
 %doc %{_mandir}/man1/BusyBox.1.gz
 %{_bindir}/busybox
 %{_bindir}/busybox.install
@@ -123,12 +103,5 @@ install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
 %files static
 %license LICENSE
 %{_bindir}/busybox-static
-
-%files container
-%license LICENSE
-%{_sysconfdir}/man.conf
-%{_bindir}/busybox-container
-%{_bindir}/busybox-container.install
-%{_datadir}/busybox/busybox-container.links
 
 %changelog
