@@ -169,4 +169,12 @@
   package for backward compatibility. (forwarded request 798280 from eeich)</comment>
     <requestid>798281</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c9f705f0e4bc41d36e282c6fb5df2a21</srcmd5>
+    <version>0.5</version>
+    <time>1589046549</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in shell script variable.</comment>
+    <requestid>801697</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 21:50:13 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix typo in shell script variable.
+
+-------------------------------------------------------------------
 Mon Apr 27 06:58:20 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add 'Obsolete:' option to master package. This way, a removed

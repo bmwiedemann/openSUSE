@@ -427,7 +427,7 @@ Obsoletes: %_lname < %version \
    v=%{-O*}; \
    for i in ${v//:/ }; \
      do echo "Obsoletes: $i < %version"; \
-     echo "Provides: %i = %version"; \
+     echo "Provides: $i = %version"; \
    done)\
 } \
 %{!-E:Requires:  %{s_name} = %version} \
