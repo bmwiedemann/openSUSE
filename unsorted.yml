@@ -1345,9 +1345,31 @@ unsorted:
   - bumblebee-status-module-mpd 
   - bumblebee-status-module-redshift 
   - bumpversion 
-  - busybox 
-  - busybox-container 
+  - busybox-ash 
+  - busybox-attr 
+  - busybox-bind-utils 
+  - busybox-bzip2 
+  - busybox-cpio 
+  - busybox-diffutils 
+  - busybox-gzip 
+  - busybox-hostname 
+  - busybox-iproute2 
+  - busybox-iputils 
   - busybox-k8s-yaml: [i586] 
+  - busybox-kbd 
+  - busybox-kmod 
+  - busybox-links 
+  - busybox-man 
+  - busybox-misc 
+  - busybox-ncurses-utils 
+  - busybox-net-tools 
+  - busybox-patch 
+  - busybox-procps 
+  - busybox-sh 
+  - busybox-sharutils 
+  - busybox-traceroute 
+  - busybox-util-linux 
+  - busybox-which 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -1586,7 +1608,6 @@ unsorted:
   - cfitsio-devel-doc 
   - cfityk 
   - cflow 
-  - cfn-lint 
   - cgal-demo-examples-devel 
   - cgal-devel 
   - cgal-doc 
@@ -4399,7 +4420,9 @@ unsorted:
   - giflib-devel-32bit: [x86_64] 
   - giflib-progs 
   - gifsicle 
+  - giggle 
   - giggle-devel 
+  - giggle-lang 
   - gigolo 
   - gigolo-lang 
   - gimp-devel 
@@ -5196,7 +5219,6 @@ unsorted:
   - gtk2-metatheme-yaru 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
-  - gtk3-branding-upstream 
   - gtk3-devel 
   - gtk3-devel-32bit: [x86_64] 
   - gtk3-devel-doc 
@@ -6252,6 +6274,8 @@ unsorted:
   - jgroups-javadoc 
   - jgroups-manual 
   - jgroups-repolib 
+  - jhbuild 
+  - jhbuild-lang 
   - jhbuild-recommended-deps 
   - jhighlight 
   - jhighlight-javadoc 
@@ -14385,9 +14409,9 @@ unsorted:
   - msitools 
   - msitools-devel 
   - msitools-lang 
-  - msmtp 
+  - msmtp: [x86_64] 
   - msmtp-doc 
-  - msmtp-mta 
+  - msmtp-mta: [x86_64] 
   - msoak 
   - mspack-examples 
   - msr-tools 
@@ -18604,7 +18628,6 @@ unsorted:
   - python2-ayatana-appindicator 
   - python2-azure-datalake-store 
   - python2-boost_parallel_mpi1_71_0 
-  - python2-cfn-lint 
   - python2-clustershell 
   - python2-cram 
   - python2-efl 
@@ -18630,7 +18653,6 @@ unsorted:
   - python2-proliantutils 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
-  - python2-pysmb 
   - python2-python-dotenv 
   - python2-setuptools 
   - python2-suds-jurko 
@@ -19691,7 +19713,6 @@ unsorted:
   - python3-freezerclient 
   - python3-fritzconnection 
   - python3-frozendict 
-  - python3-fs 
   - python3-fsspec 
   - python3-ftfy 
   - python3-ftputil 
@@ -19975,8 +19996,6 @@ unsorted:
   - python3-keepalive 
   - python3-keras2onnx: [x86_64] 
   - python3-kerberos 
-  - python3-keyczar 
-  - python3-keyrings.alt 
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
@@ -20590,7 +20609,6 @@ unsorted:
   - python3-pyfg 
   - python3-pyfiglet 
   - python3-pyflakes 
-  - python3-pyftpdlib 
   - python3-pyfuse3 
   - python3-pygal 
   - python3-pygaljs 
@@ -20674,7 +20692,6 @@ unsorted:
   - python3-pysaml2 
   - python3-pyscard 
   - python3-pysearpc 
-  - python3-pysendfile 
   - python3-pyshark 
   - python3-pyshould 
   - python3-pyshp 
@@ -22189,8 +22206,6 @@ unsorted:
   - ruby2.6-rubygem-devise_ldap_authenticatable 
   - ruby2.6-rubygem-devise_ldap_authenticatable-doc 
   - ruby2.6-rubygem-devise_ldap_authenticatable-testsuite 
-  - ruby2.6-rubygem-dice 
-  - ruby2.6-rubygem-dice-doc 
   - ruby2.6-rubygem-diff-lcs 
   - ruby2.6-rubygem-diff-lcs-doc 
   - ruby2.6-rubygem-diff-lcs-testsuite 

@@ -278,7 +278,16 @@
       <repopackage name="build"/>
       <repopackage name="build-mkbaselibs"/>
       <repopackage name="build-mkdrpms"/>
+      <repopackage name="busybox"/>
+      <repopackage name="busybox-coreutils"/>
+      <repopackage name="busybox-findutils"/>
+      <repopackage name="busybox-gawk"/>
+      <repopackage name="busybox-grep"/>
+      <repopackage name="busybox-psmisc"/>
+      <repopackage name="busybox-sed"/>
       <repopackage name="busybox-static"/>
+      <repopackage name="busybox-tar"/>
+      <repopackage name="busybox-xz"/>
       <repopackage name="bzip2"/>
       <repopackage name="ca-certificates"/>
       <repopackage name="ca-certificates-mozilla"/>
@@ -638,8 +647,6 @@
       <repopackage name="ghostscript-fonts-other"/>
       <repopackage name="ghostscript-fonts-std"/>
       <repopackage name="ghostscript-x11"/>
-      <repopackage name="giggle"/>
-      <repopackage name="giggle-lang"/>
       <repopackage name="gimp"/>
       <repopackage name="gimp-lang"/>
       <repopackage name="gimp-plugin-aa"/>
@@ -890,6 +897,7 @@
       <repopackage name="gtk2-theming-engine-adwaita"/>
       <repopackage name="gtk2-tools"/>
       <repopackage name="gtk3-branding-openSUSE"/>
+      <repopackage name="gtk3-branding-upstream"/>
       <repopackage name="gtk3-data"/>
       <repopackage name="gtk3-immodule-amharic"/>
       <repopackage name="gtk3-immodule-inuktitut"/>
@@ -1059,8 +1067,6 @@
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
-      <repopackage name="jhbuild"/>
-      <repopackage name="jhbuild-lang"/>
       <repopackage name="jhead"/>
       <repopackage name="jline1"/>
       <repopackage name="jmdict"/>
@@ -3217,6 +3223,8 @@
       <repopackage name="mpg123-pulse"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
+      <repopackage name="msmtp" arch="i586,i686"/>
+      <repopackage name="msmtp-mta" arch="i586,i686"/>
       <repopackage name="mtd-utils"/>
       <repopackage name="mtdev-devel"/>
       <repopackage name="mtools"/>
@@ -3829,6 +3837,7 @@
       <repopackage name="python3-flufl.i18n"/>
       <repopackage name="python3-flufl.lock"/>
       <repopackage name="python3-fluidity-sm"/>
+      <repopackage name="python3-fs"/>
       <repopackage name="python3-gedit"/>
       <repopackage name="python3-gevent"/>
       <repopackage name="python3-geventhttpclient"/>
@@ -3855,7 +3864,9 @@
       <repopackage name="python3-jedi"/>
       <repopackage name="python3-jeepney"/>
       <repopackage name="python3-Jinja2"/>
+      <repopackage name="python3-keyczar"/>
       <repopackage name="python3-keyring"/>
+      <repopackage name="python3-keyrings.alt"/>
       <repopackage name="python3-kiwisolver"/>
       <repopackage name="python3-lazr.config"/>
       <repopackage name="python3-lazr.delegates"/>
@@ -3903,6 +3914,7 @@
       <repopackage name="python3-pycryptodome"/>
       <repopackage name="python3-pycups"/>
       <repopackage name="python3-pycurl"/>
+      <repopackage name="python3-pyftpdlib"/>
       <repopackage name="python3-pygit2"/>
       <repopackage name="python3-Pygments"/>
       <repopackage name="python3-PyHamcrest"/>
@@ -3911,6 +3923,7 @@
       <repopackage name="python3-PyNaCl"/>
       <repopackage name="python3-pyOpenSSL"/>
       <repopackage name="python3-pyparsing"/>
+      <repopackage name="python3-pysendfile"/>
       <repopackage name="python3-pyserial"/>
       <repopackage name="python3-pysmbc"/>
       <repopackage name="python3-PySocks"/>
@@ -4742,6 +4755,7 @@
       <repopackage name="systemd-icon-branding-openSUSE"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-logger"/>
+      <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
       <repopackage name="systemd-presets-branding-transactional-server"/>
       <repopackage name="systemd-presets-common-SUSE"/>
