@@ -1,22 +1,38 @@
-From: Egbert Eich <eich@suse.com>
-Date: Tue Nov 27 08:18:08 2018 +0100
-Subject: vnfs: SUSE - Make sure no repos are left over when adding a list of repositories
-Patch-mainline: Not yet
-Git-repo: https://github.com/warewulf/warewulf3
-Git-commit: 6828449cae00ef402fbdebf32f4c71158e8401fb
-References: 
+From 5f125524f490b4542ce5d5fa4a45b5fe60a9b449 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.com>
+Date: Tue, 27 Nov 2018 08:18:08 +0100
+Subject: [PATCH] vnfs: SUSE - Make sure no repos are left over when adding a
+ list of repositories
 
-Signed-off-by: Egbert Eich <eich@suse.com>
-Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- vnfs/libexec/wwmkchroot/include-suse | 23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
+ vnfs/libexec/wwmkchroot/include-suse | 39 ++++++++++++++++------------
+ 1 file changed, 23 insertions(+), 16 deletions(-)
+
 diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
-index 1b556f5..9bba06d 100644
+index 1b556f5..af7dd36 100644
 --- a/vnfs/libexec/wwmkchroot/include-suse
 +++ b/vnfs/libexec/wwmkchroot/include-suse
-@@ -67,18 +67,25 @@ prechroot() {
-                 INSTALLDIRS="$INSTALLDIRS,file://$i"
+@@ -54,37 +54,44 @@ prechroot() {
+         [ -d /etc/zypp/credentials.d ] && cp -rap /etc/zypp/credentials.d $CHROOTDIR/etc/zypp
+     elif [ -n "$INSTALL_ISO" ]; then
+         # Use ISO
+-        for i in `ls -d $MEDIA_MOUNTPATH.*`; do
++        for mountpath in `ls -d $MEDIA_MOUNTPATH.*`; do
+             if [ -z "$INSTALLDIRS" ]; then
+-                if [ -d $i/repodata ]; then
++                if [ -d ${mountpath}/repodata ]; then
+                     # RHEL 6.x
+-                    INSTALLDIRS="file://$i"
+-                elif [ -d $i/Server/repodata ]; then
++                    INSTALLDIRS="file://${mountpath}"
++                elif [ -d ${mountpath}/Server/repodata ]; then
+                     # RHEL 5.x
+-                    INSTALLDIRS="file://$i/Server"
++                    INSTALLDIRS="file://${mountpath}/Server"
+                 fi
+             else
+-                INSTALLDIRS="$INSTALLDIRS,file://$i"
++                INSTALLDIRS="$INSTALLDIRS,file://${mountpath}"
              fi
          done
 -
@@ -38,8 +54,8 @@ index 1b556f5..9bba06d 100644
 +        done
 +
 +        cnt=0
-+        for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
-+            $ZYP_CMD ar $i repo-$((cnt++))
++        for repourl in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
++            $ZYP_CMD ar $repourl repo-$((cnt++))
 +        done
 +    fi
 +
@@ -49,3 +65,14 @@ index 1b556f5..9bba06d 100644
      return 0
  }
  
+ postchroot() {
+-    for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
+-        $ZYP_CMD rr $i
++    for mirror in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
++        $ZYP_CMD rr $mirror
+     done
+     touch $CHROOTDIR/fastboot
+     return 0
+-- 
+2.25.0
+

@@ -1,7 +1,7 @@
 #
-# spec file for package warewulf3
+# spec file for package warewulf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,88 +12,91 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %if "%{?flavor}" == ""
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %else
-ExclusiveArch: x86_64 aarch64 i586
+ExclusiveArch:  x86_64 aarch64 i586
  %ifarch x86_64 # on arch != x86_64 only build warewulf-provision-%%arch-initramfs
   %define full_build 1
  %endif
 %endif
 
-Name:    warewulf
-Version: 3.8.1
-Release: 0
-Summary: A suite of tools for clustering
-License: BSD-3-Clause-LBNL
-Group:   Productivity/Clustering/Computing
-URL:     http://warewulf.lbl.gov/
-Source0: https://github.com/warewulf/warewulf3/archive/%{version}.tar.gz#/%{name}3-%{version}.tar.gz
-Source1: busybox.SuSE.config
-Source100: install-recipe.md
-Source101: install-recipe-vm.md
-Source300: vnfs-wwmkchroot-opensuse-15.0.tmpl
-Source301: vnfs-wwmkchroot-opensuse-42.3.tmpl
-Source302: vnfs-wwmkchroot-opensuse-tumbleweed.tmpl
-Patch0: wwinit-Check-if-service-is-enabled-before-enabling-it.patch
-Patch1: Perl-Escape-left-curly-brace-properly-in-regexps-for-perl-5.26.patch
-Patch2: wwinit-If-no-ntp-key-file-is-present-comment-it-out-in-new-config-143.patch
-Patch3: wwinit-If-original-ntpd.conf-file-has-this-has-keys-set-up-copy-them-128.patch
-Patch4: Check-for-SUSE-system-and-set-Apache2-config-path-accordingly.patch
-Patch5: Add-Leap-42.3-15.0-Tumbleweed-remove-support-for-openSUSE-13.1-133.patch
-Patch6: common-functions-When-checking-for-RPM-package-check-whatprovides-134.patch
-Patch7: wwinit-Check-for-tftp-server-capability-as-well-135.patch
-Patch8: Provisioning-httpd-Make-plugin-directory-configurable-at-build-time-138.patch
-Patch9: common-Allow-bash-completion-directory-to-be-configurable-139.patch
-Patch10: wwmkchroot-Fix-SUSE-specific-installation-functions-to-work-with-openSUSE-and-SLES-132.patch
-Patch11: wwinit-Add-check-for-properly-configured-network-136.patch
-Patch12: vnfs-Add-auto-agree-with-licenses-to-include-suse-PKGR_CMD-142.patch
-Patch13: Suse-prov-config-local-binary-copy-140.patch
-Patch14: busybox-Newer-versions-of-glibc-do-not-ship-rpc-functions-any-more-130.patch
-Patch15: common-Correctly-detect-SUSE-system-for-system-services.patch
-Patch16: common-Consolidate-system-service-module-for-SUSE.patch
-Patch17: provision-Update-ipxe-to-Github-commitid-133f4c4.patch
-Patch18: Remove-shebang-from-scripts-only-intended-to-be-sourced.patch
-Patch19: vnfs-SUSE-copy-repo-files-to-correct-location.patch
-Patch20: vnfs-SUSE-make-sure-zypper-auto-accepts-licenses.patch
-Patch21: vnfs-SUSE-Make-sure-no-repos-are-left-over-when-adding-a-list-of-repositories.patch
-Patch22: common-Really-install-network-check-script.patch
-Patch23: provision-Check-for-presence-of-busybox_links_path-replacement.patch
-Patch24: provision-Add-build-configuration-to-allow-for-use-of-local-arm-ipxe-images.patch
-Patch25: ipmi-allow-build-to-use-locally-installed-ipmitools.patch
+Name:           warewulf
+Version:        3.8.1
+Release:        0
+Summary:        A suite of tools for clustering
+License:        BSD-3-Clause-LBNL
+Group:          Productivity/Clustering/Computing
+URL:            http://warewulf.lbl.gov/
+Source0:        https://github.com/warewulf/warewulf3/archive/%{version}.tar.gz#/%{name}3-%{version}.tar.gz
+Source1:        busybox.SuSE.config
+Source100:      install-recipe.md
+Source101:      install-recipe-vm.md
+Source300:      vnfs-wwmkchroot-opensuse-15.0.tmpl
+Source301:      vnfs-wwmkchroot-opensuse-42.3.tmpl
+Source302:      vnfs-wwmkchroot-opensuse-tumbleweed.tmpl
+Patch0:         wwinit-Check-if-service-is-enabled-before-enabling-it.patch
+Patch1:         Perl-Escape-left-curly-brace-properly-in-regexps-for-perl-5.26.patch
+Patch2:         wwinit-If-no-ntp-key-file-is-present-comment-it-out-in-new-config-143.patch
+Patch3:         wwinit-If-original-ntpd.conf-file-has-this-has-keys-set-up-copy-them-128.patch
+Patch4:         Check-for-SUSE-system-and-set-Apache2-config-path-accordingly.patch
+Patch5:         Add-Leap-42.3-15.0-Tumbleweed-remove-support-for-openSUSE-13.1-133.patch
+Patch6:         common-functions-When-checking-for-RPM-package-check-whatprovides-134.patch
+Patch7:         wwinit-Check-for-tftp-server-capability-as-well-135.patch
+Patch8:         Provisioning-httpd-Make-plugin-directory-configurable-at-build-time-138.patch
+Patch9:         common-Allow-bash-completion-directory-to-be-configurable-139.patch
+Patch10:        wwmkchroot-Fix-SUSE-specific-installation-functions-to-work-with-openSUSE-and-SLES-132.patch
+Patch11:        wwinit-Add-check-for-properly-configured-network-136.patch
+Patch12:        vnfs-Add-auto-agree-with-licenses-to-include-suse-PKGR_CMD-142.patch
+Patch13:        Suse-prov-config-local-binary-copy-140.patch
+Patch14:        busybox-Newer-versions-of-glibc-do-not-ship-rpc-functions-any-more-130.patch
+Patch15:        common-Correctly-detect-SUSE-system-for-system-services.patch
+Patch16:        common-Consolidate-system-service-module-for-SUSE.patch
+Patch17:        provision-Update-ipxe-to-Github-commitid-133f4c4.patch
+Patch18:        Remove-shebang-from-scripts-only-intended-to-be-sourced.patch
+Patch19:        vnfs-SUSE-copy-repo-files-to-correct-location.patch
+Patch20:        vnfs-SUSE-make-sure-zypper-auto-accepts-licenses.patch
+Patch21:        vnfs-SUSE-Make-sure-no-repos-are-left-over-when-adding-a-list-of-repositories.patch
+Patch22:        common-Really-install-network-check-script.patch
+Patch23:        provision-Check-for-presence-of-busybox_links_path-replacement.patch
+Patch24:        provision-Add-build-configuration-to-allow-for-use-of-local-arm-ipxe-images.patch
+Patch25:        ipmi-allow-build-to-use-locally-installed-ipmitools.patch
 # SUSE specific
-Patch26: common-LSB-Move-common-functions-script-library-to-libexec.patch
-Patch27: provision-If-available-us-haveged-in-warewulf-initrd.patch
-Patch28: cluster-remove-firstboot-stuff.patch
-Patch29: LSB-Use-sharedstatedir-instead-of-localstatedir-for-WW_STATEDIR.patch
+Patch26:        common-LSB-Move-common-functions-script-library-to-libexec.patch
+Patch27:        provision-If-available-us-haveged-in-warewulf-initrd.patch
+Patch28:        cluster-remove-firstboot-stuff.patch
+Patch29:        LSB-Use-sharedstatedir-instead-of-localstatedir-for-WW_STATEDIR.patch
+Patch30:        common-Check-for-package-mariadb-as-well.patch
+
 %if "%{?flavor}" != "common"
-BuildRequires: ipmitool
-BuildRequires: libselinux-devel
-BuildRequires: libtirpc-devel
-BuildRequires: libuuid-devel
-BuildRequires: device-mapper-devel
-BuildRequires: xz-devel
-BuildRequires: busybox busybox-static
-BuildRequires: e2fsprogs
-BuildRequires: bsdtar
-BuildRequires: parted
-BuildRequires: perl(Apache)
-BuildRequires: haveged
-BuildRequires: perl(Apache)
-BuildRequires: ipxe-bootimgs
-BuildRequires: warewulf-common
+BuildRequires:  bsdtar
+BuildRequires:  busybox
+BuildRequires:  busybox-static
+BuildRequires:  device-mapper-devel
+BuildRequires:  e2fsprogs
+BuildRequires:  haveged
+BuildRequires:  ipmitool
+BuildRequires:  ipxe-bootimgs
+BuildRequires:  libselinux-devel
+BuildRequires:  libtirpc-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  parted
+BuildRequires:  warewulf-common
+BuildRequires:  xz-devel
+BuildRequires:  perl(Apache)
+BuildRequires:  perl(Apache)
 %endif
-BuildRequires: distribution-release
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: fdupes
-BuildRoot: %{?_tmppath}/%{name}-%{version}-build
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  distribution-release
+BuildRequires:  fdupes
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Warewulf is a set of utilities designed to better enable utilization 
@@ -101,13 +104,15 @@ and maintenance of clusters or groups of computers.
 
 
 %package common
-Summary: Main Warewulf daemon and utilities
-Group:   Productivity/Clustering/Computing
+Summary:        Main Warewulf daemon and utilities
+Group:          Productivity/Clustering/Computing
 Requires(pre): shadow
 Requires(post): mysql
-Requires: mysql perl-warewulf-common
-Requires: warewulf-doc
-BuildArch: noarch
+Requires:       mysql
+Requires:       perl-warewulf-common
+Requires:       warewulf-doc
+BuildArch:      noarch
+
 %description common
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -120,11 +125,12 @@ initialization script, and configuration definition. All other warewulf
 modules depend on this module for configuration information.
 
 %package -n perl-warewulf-common
-Summary: Perl support scripts for the Warewulf3 system
-Group:   Productivity/Clustering/Computing
+Summary:        Perl support scripts for the Warewulf3 system
+Group:          Productivity/Clustering/Computing
 %{perl_requires}
-Requires: perl-DBD-mysql
-BuildArch: noarch
+Requires:       perl-DBD-mysql
+BuildArch:      noarch
+
 %description -n perl-warewulf-common
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -135,9 +141,10 @@ notification, and more via a modular plugin architecture.
 This package includes the supporting libs for the Warewulf daemon.
 
 %package doc
-Summary: Warewulf documentation and install recipes
-Group:   Productivity/Clustering/Computing
-BuildArch: noarch
+Summary:        Warewulf documentation and install recipes
+Group:          Productivity/Clustering/Computing
+BuildArch:      noarch
+
 %description doc
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -150,11 +157,12 @@ recipes to assist in the deployment of a Warewulf cluster.
 
 
 %package provision
-Summary: Warewulf Cluster Provisioning Module
-Group:   Productivity/Clustering/Computing
-Requires: warewulf-common
-Requires: perl-warewulf-provision
-BuildArch: noarch
+Summary:        Warewulf Cluster Provisioning Module
+Group:          Productivity/Clustering/Computing
+Requires:       perl-warewulf-provision
+Requires:       warewulf-common
+BuildArch:      noarch
+
 %description provision
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -170,11 +178,12 @@ warewulf-provision-server package is also required.
 
 
 %package -n perl-warewulf-provision
-Summary: Perl support scripts for the Warewulf3 provisioning system
-Group:   Productivity/Clustering/Computing
+Summary:        Perl support scripts for the Warewulf3 provisioning system
+Group:          Productivity/Clustering/Computing
 %{?perl_requires}
-Requires: perl-warewulf-common
-BuildArch: noarch
+Requires:       perl-warewulf-common
+BuildArch:      noarch
+
 %description -n perl-warewulf-provision
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -189,11 +198,12 @@ provisioning module.
 
 
 %package provision-server
-Summary: Warewulf Cluster Provisioning Module Server
-Group:   Productivity/Clustering/Computing
-Requires: warewulf-common
-Requires: perl-warewulf-provision-server
-BuildArch: noarch
+Summary:        Warewulf Cluster Provisioning Module Server
+Group:          Productivity/Clustering/Computing
+Requires:       perl-warewulf-provision-server
+Requires:       warewulf-common
+BuildArch:      noarch
+
 %description provision-server
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -209,17 +219,18 @@ do not require this package.
 
 
 %package -n perl-warewulf-provision-server
-Summary: Perl support scripts for the Warewulf3 provisioning system
-Group:   Productivity/Clustering/Computing
+Summary:        Perl support scripts for the Warewulf3 provisioning system
+Group:          Productivity/Clustering/Computing
 %{?perl_requires}
-Requires: perl-warewulf-common
-Requires: tftp
-Requires: dhcp-server
-Requires: apache2
-Requires: perl(Apache)
-Requires: perl-CGI
-Requires: nfs-kernel-server
-BuildArch: noarch
+Requires:       apache2
+Requires:       dhcp-server
+Requires:       nfs-kernel-server
+Requires:       perl-CGI
+Requires:       perl-warewulf-common
+Requires:       tftp
+Requires:       perl(Apache)
+BuildArch:      noarch
+
 %description -n perl-warewulf-provision-server
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -234,10 +245,11 @@ provisioning server module.
 
 
 %package provision-%{_arch}-initramfs
-Summary: Warewulf Cluster Provisioning Module initramfs for %{_arch} systems
-Group:   Productivity/Clustering/Computing
-Requires: warewulf-provision
-BuildArch: noarch
+Summary:        Warewulf Cluster Provisioning Module initramfs for %{_arch} systems
+Group:          Productivity/Clustering/Computing
+Requires:       warewulf-provision
+BuildArch:      noarch
+
 %description provision-%{_arch}-initramfs
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -252,10 +264,11 @@ bootstrap for %{_arch} systems.
 
 
 %package provision-ipxe-images
-Summary: Warewulf Cluster Provisioning Module iPXE Images
-Group:   Productivity/Clustering/Computing
-Requires: warewulf-provision-server
-BuildArch: noarch
+Summary:        Warewulf Cluster Provisioning Module iPXE Images
+Group:          Productivity/Clustering/Computing
+Requires:       warewulf-provision-server
+BuildArch:      noarch
+
 %description provision-ipxe-images
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -270,10 +283,11 @@ x86_64, and arm64 systems.
 
 
 %package vnfs
-Summary: Warewulf VNFS Module
-Group:   Productivity/Clustering/Computing
-Requires: warewulf-common
-BuildArch: noarch
+Summary:        Warewulf VNFS Module
+Group:          Productivity/Clustering/Computing
+Requires:       warewulf-common
+BuildArch:      noarch
+
 %description vnfs
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -286,13 +300,14 @@ Virtual Node FileSystem objects.
 
 
 %package cluster
-Summary: Tools used for clustering with Warewulf
-Group:   Productivity/Clustering/Computing
+Summary:        Tools used for clustering with Warewulf
+Group:          Productivity/Clustering/Computing
 %{?perl_requires}
-Requires: warewulf-common
-Requires: warewulf-provision
-Requires: dhcp-server
-BuildArch: noarch
+Requires:       dhcp-server
+Requires:       warewulf-common
+Requires:       warewulf-provision
+BuildArch:      noarch
+
 %description cluster
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -305,11 +320,12 @@ with Warewulf.
 
 
 %package -n perl-warewulf-cluster
-Summary: Perl support scripts for the Warewulf3 cluster module
-Group:   Productivity/Clustering/Computing
+Summary:        Perl support scripts for the Warewulf3 cluster module
+Group:          Productivity/Clustering/Computing
 %{?perl_requires}
-Requires: perl-warewulf-common
-BuildArch: noarch
+Requires:       perl-warewulf-common
+BuildArch:      noarch
+
 %description -n perl-warewulf-cluster
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -321,12 +337,13 @@ This package includes the supporting libs for the Warewulf cluster
 server module.
 
 %package -n perl-warewulf-ipmi
-Summary: Perl support scripts for the Warewulf3 IPMI module
-Group:   Productivity/Clustering/Computing
-Requires: perl-warewulf-common
-Requires: ipmitool
+Summary:        Perl support scripts for the Warewulf3 IPMI module
+Group:          Productivity/Clustering/Computing
+Requires:       ipmitool
+Requires:       perl-warewulf-common
 %{?perl_requires}
-BuildArch: noarch
+BuildArch:      noarch
+
 %description -n perl-warewulf-ipmi
 Warewulf is a scalable systems management suite originally developed to 
 manage large high-performance Linux clusters. Focused on general 
@@ -346,6 +363,7 @@ This package includes the supporting libs for the Warewulf ipmi module.
 %patch16 -p1
 %patch26 -p1
 %patch29 -p1
+%patch30 -p1
 cp %{SOURCE100} ./common/README.SUSE-INSTALL-RECIPE
 cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 # provision
@@ -441,8 +459,6 @@ make
 cd ..
 
 %endif
-
-
 
 %install
 %if "%{?flavor}" == "common"

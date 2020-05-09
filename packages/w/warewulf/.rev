@@ -7,4 +7,12 @@
     <comment>- Provide warwulf for inclusion into PackageHub (FATE#326457)</comment>
     <requestid>662738</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0320f10ce5e6614bcd7fe6be17433dd2</srcmd5>
+    <version>3.8.1</version>
+    <time>1589055553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791717</requestid>
+  </revision>
 </revisionlist>

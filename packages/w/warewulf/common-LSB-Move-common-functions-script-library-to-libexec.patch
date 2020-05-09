@@ -3,7 +3,7 @@ Date: Wed Nov 28 09:00:00 2018 +0100
 Subject: common: LSB: Move common functions script library to libexec
 Patch-mainline: Not yet
 Git-repo: https://github.com/warewulf/warewulf3
-Git-commit: 668bf036d159f01f16929a1c34feddba216bd16f
+Git-commit: 547e2c5bd4af666d281d76e2f5b91e82a2c3e326
 References: 
 
 Per LSB only config files are allowed in /etc.
@@ -11,10 +11,24 @@ Per LSB only config files are allowed in /etc.
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
+ common/bin/wwinit                        | 2 +-
  common/etc/Makefile.am                   | 2 +-
  common/libexec/wwinit/Makefile.am        | 2 +-
  common/{etc => libexec/wwinit}/functions | 0
- 3 files changed, 2 insertions(+), 2 deletions(-)
+ 4 files changed, 3 insertions(+), 3 deletions(-)
+diff --git a/common/bin/wwinit b/common/bin/wwinit
+index b5160a6..bb2bd31 100644
+--- a/common/bin/wwinit
++++ b/common/bin/wwinit
+@@ -22,7 +22,7 @@ fi
+ eval `wwconfig -sea`
+ 
+ WWINITDIR="$WAREWULF_LIBEXECDIR/warewulf/wwinit"
+-WWFUNCTIONS="$WAREWULF_SYSCONFDIR/warewulf/functions"
++WWFUNCTIONS="$WWINITDIR/functions"
+ WWTMPDIR=`mktemp -d -t wwinit.XXXXXXXXX`
+ SHELL="/bin/bash"
+ 
 diff --git a/common/etc/Makefile.am b/common/etc/Makefile.am
 index ed01448..36a420f 100644
 --- a/common/etc/Makefile.am

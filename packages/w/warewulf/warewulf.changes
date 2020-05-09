@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:53:41 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed reuse of int variable in bash script (bsc#1168628) 
+
+-------------------------------------------------------------------
+Fri Mar  1 17:11:01 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Update common-LSB-Move-common-functions-script-library-to-libexec.patch:
+  Set WWFUNCTIONS to $WWINITDIR/functions
+
+-------------------------------------------------------------------
+Thu Feb 28 16:04:28 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- common-Check-for-package-mariadb-as-well.patch:
+  Check for package mariadb when looking for db to start.
+
+-------------------------------------------------------------------
 Thu Jan  3 22:13:59 UTC 2019 - eich@suse.com
 
 - Work around OBS:
