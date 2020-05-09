@@ -242,10 +242,8 @@ install util-linux
 install wireless-regdb
 install wpa_supplicant
 install xf86-video-ark
-install xf86-video-ast
 install xf86-video-ati
 install xf86-video-chips
-install xf86-video-cirrus
 install xf86-video-fbdev
 install xf86-video-glint
 install xf86-video-i128
