@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 10:10:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Sat Mar 21 12:02:05 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Force a reset of the firewalld API instance after modifying the

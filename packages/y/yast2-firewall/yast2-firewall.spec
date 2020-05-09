@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 License:        GPL-2.0-only
@@ -76,6 +76,5 @@ A YaST2 module to be used for configuring a firewall.
 %{yast_icondir}
 %license COPYING
 %doc README.md
-%doc CONTRIBUTING.md
 
 %changelog
