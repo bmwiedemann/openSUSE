@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 11:05:20 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Apr  8 15:15:32 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Recommend icewm if graphical installation (bsc#1165646)
