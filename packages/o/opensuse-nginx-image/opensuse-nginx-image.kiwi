@@ -48,7 +48,9 @@
   </repository>
   <packages type="bootstrap">
     <package name="nginx"/>
-    <package name="mandoc"/>
     <archive name="entrypoint.tar.gz"/>
+    <package name="mandoc"/>
+    <package name="--"/>
+    <package name="-busybox-man"/>
   </packages>
 </image>
