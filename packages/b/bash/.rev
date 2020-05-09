@@ -1551,4 +1551,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
 - move man pages back to main package. It's just 100k</comment>
     <requestid>791138</requestid>
   </revision>
+  <revision rev="162" vrev="6">
+    <srcmd5>44fe285d89d9c8238ec1d5d3a588f71e</srcmd5>
+    <version>5.0.11</version>
+    <time>1589046492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798881</requestid>
+  </revision>
 </revisionlist>

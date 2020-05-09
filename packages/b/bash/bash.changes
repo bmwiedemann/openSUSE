@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 19 08:03:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix usage of update-alternatives
+
+-------------------------------------------------------------------
 Fri Apr  3 08:28:08 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add temporary patch bash50-fix-016-close-new-fifos.patch from upstream
