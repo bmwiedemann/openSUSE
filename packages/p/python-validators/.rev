@@ -78,4 +78,19 @@
   * Made domain validation case-insensitive</comment>
     <requestid>766993</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7db469393e58fea3ae2f6241f67866bc</srcmd5>
+    <version>0.15.0</version>
+    <time>1589046555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.0:
+  * Added bank card validators
+- Changes for 0.14.3:
+  * Handle None values gracefully in domain validator
+  * Local part of the email address should be less or equal than
+    64 bytes
+  * Removed py27 support
+  * Removed pypy2 support</comment>
+    <requestid>801767</requestid>
+  </revision>
 </revisionlist>

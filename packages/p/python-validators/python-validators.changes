@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  8 08:28:01 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.15.0:
+  * Added bank card validators
+- Changes for 0.14.3:
+  * Handle None values gracefully in domain validator
+  * Local part of the email address should be less or equal than
+    64 bytes
+  * Removed py27 support
+  * Removed pypy2 support
+
+-------------------------------------------------------------------
 Fri Jan 24 21:49:23 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to 0.14.2:
