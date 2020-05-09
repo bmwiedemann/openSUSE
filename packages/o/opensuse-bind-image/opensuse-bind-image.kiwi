@@ -48,6 +48,9 @@
   </repository>
   <packages type="bootstrap">
     <package name="bind"/>
-    <package name="groff"/>
+    <package name="mandoc"/>
+    <package name="--"/>
+    <package name="-busybox-bind-utils"/>
+    <package name="-busybox-man"/>
   </packages>
 </image>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:45:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use bind-utils instead busybox variant
+- Use mandoc instead of busybox variant
+
+-------------------------------------------------------------------
 Fri Mar 20 14:43:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Create and handle rndc.key in entrypoint script
