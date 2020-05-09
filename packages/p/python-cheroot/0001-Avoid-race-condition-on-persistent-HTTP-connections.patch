@@ -1,0 +1,41 @@
+From 49a8934d726574f7ff85356e6acbfdc06ca7fbdb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 6 May 2020 14:04:48 +0100
+Subject: [PATCH] Avoid race condition on persistent HTTP connections
+
+Add a HTTP "Keep-Alive" header with "timeout" on the HTTP response
+to avoid a race condition on persistent HTTP connections when the
+HTTP client reuses a connection after the "socket.timeout" exception
+triggered on the HTTPServer but before the FIN packet is produced.
+
+When this happens, the client gets a "connection reset by peer" after
+writting the request.
+
+This commit makes a HTTP client to know about this "Keep-Alive" idle
+timeout by exposing it on the HTTP "Keep-Alive" response header, so
+the connection won't be reused if it was "idle" for that "timeout"
+after the last request response.
+---
+ cheroot/server.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/cheroot/server.py b/cheroot/server.py
+index 223bed86..f29559b4 100644
+--- a/cheroot/server.py
++++ b/cheroot/server.py
+@@ -1167,6 +1167,11 @@ class HTTPRequest:
+                 if not self.close_connection:
+                     self.outheaders.append((b'Connection', b'Keep-Alive'))
+ 
++        self.outheaders.append((
++            b'Keep-Alive',
++            "timeout={}".format(self.server.timeout).encode('ISO-8859-1'),
++        ))
++
+         if (not self.close_connection) and (not self.chunked_read):
+             # Read any remaining request body data on the socket.
+             # "If an origin server receives a request that does not include an
+-- 
+2.23.0
+

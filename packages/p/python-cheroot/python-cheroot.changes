@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  7 09:33:29 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Avoid possible race condition on persistent HTTP connections (bsc#1169604) 
+
+- Added:
+  * 0001-Avoid-race-condition-on-persistent-HTTP-connections.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 10:23:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
