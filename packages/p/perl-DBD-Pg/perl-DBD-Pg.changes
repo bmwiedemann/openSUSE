@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr 29 03:10:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 3.11.1
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.11.1  (released April 28, 2020)
+
+   - Adjust Makefile to fix failing 'fulltest' target on BSD systems
+     [Slaven Rezić]
+     (RT ticket #132412)
+
+
+  Version 3.11.0  (released April 23, 2020)
+
+   - Indicate non-key index columns (INCLUDE) in statistics_info
+     [Dagfinn Ilmari Mannsåker]
+
+   - Return an empty result set instead of undef from statistics_info
+       when the requested table doesn't exist and $unique_only is false.
+     [Dagfinn Ilmari Mannsåker]
+
+   - Fix segfault during st destroy
+     [Gregory Oschwald]
+     (Github pull request #66)
+     (Github issue #57)
+
+   - Improve testing for table_info()
+     [Greg Sabino Mullane]
+     (Github issue #67)
+
+   - Improve UTF-8 wording in docs
+     [Felipe Gasper]
+     (Github pull request #65)
+
+-------------------------------------------------------------------
 Tue Mar 24 11:06:42 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Fix BuildRequires in cpanspec.yml to match what's in the .spec
