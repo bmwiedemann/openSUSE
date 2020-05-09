@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 Version:        3.23.4
 Release:        0
-Url:            https://www.gnu.org/software/solfege/
+URL:            https://www.gnu.org/software/solfege/
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -57,9 +57,7 @@ Patch1:         solfege-python-fixcompile.patch
 Patch2:         solfege-nogenreadmeetc.patch
 # PATCH-FIX-UPSTREAM - sent by mail to tca@gnu - is upstream orphaned?
 Patch3:         reproducible.patch
-Requires:       lilypond-century-schoolbook-l-fonts
-Requires:       lilypond-emmentaler-fonts
-Requires:       lilypond-fonts-common
+Requires:       lilypond-fonts-common >= 2.20
 Requires:       python3-gobject-Gdk
 Requires:       timidity
 

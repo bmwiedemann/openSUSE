@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 13:07:30 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Fix lilypond font requirement for lilypond-2.20.0
+
+-------------------------------------------------------------------
 Mon Feb 24 04:23:56 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort python glob to make
