@@ -1896,4 +1896,27 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
 </comment>
     <requestid>799032</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>29fa9484179092bec51c9c7a8184f66f</srcmd5>
+    <version>5.0.0</version>
+    <time>1589046686</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix DoS in virtiofsd, where a FUSE client could exhaust the
+  number of available open files on the host (CVE-2020-10717
+  bsc#1171110)
+  virtiofsd-add-rlimit-nofile-NUM-option.patch
+  virtiofsd-stay-below-fs.file-max-sysctl-.patch
+- Add more fixes for gcc10 compatibility: Use NO_WERROR=1 when
+  building ipxe sources, at least until we get gcc10 compatibility
+  figured out. Also add patch for explicitly using -fcommon
+  (boo#1171140)
+  Be-explicit-about-fcommon-compiler-direc.patch
+  and fix for tighter enum compatibility checking (boo#1171139)
+  add-enum-cast-to-avoid-gcc10-warning.patch
+  and a work around for what seems to be a compiler regression
+  (boo#1171123)
+  work-around-gcc10-problem-with-zero-leng.patch
+</comment>
+    <requestid>800842</requestid>
+  </revision>
 </revisionlist>

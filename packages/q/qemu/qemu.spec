@@ -186,6 +186,8 @@ Patch00055:     s390x-s390-virtio-ccw-Fix-build-on-syste.patch
 Patch00056:     configure-remove-pkgversion-from-CONFIG_.patch
 Patch00057:     gcc10-maybe-uninitialized.patch
 Patch00058:     docs-add-SUSE-support-statements-to-html.patch
+Patch00059:     virtiofsd-add-rlimit-nofile-NUM-option.patch
+Patch00060:     virtiofsd-stay-below-fs.file-max-sysctl-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -196,6 +198,9 @@ Patch02001:     ipxe-Makefile-fix-issues-of-build-reprod.patch
 Patch02002:     Fix-s-directive-argument-is-null-error.patch
 Patch02003:     Workaround-compilation-error-with-gcc-9..patch
 Patch02004:     Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+Patch02005:     Be-explicit-about-fcommon-compiler-direc.patch
+Patch02006:     work-around-gcc10-problem-with-zero-leng.patch
+Patch02007:     add-enum-cast-to-avoid-gcc10-warning.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
@@ -952,6 +957,8 @@ This package provides a service file for starting and stopping KSM.
 %if %{legacy_qemu_kvm} && 0%{?is_opensuse} == 0
 %patch00058 -p1
 %endif
+%patch00059 -p1
+%patch00060 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -964,6 +971,9 @@ This package provides a service file for starting and stopping KSM.
 %ifarch aarch64
 %patch02004 -p1
 %endif
+%patch02005 -p1
+%patch02006 -p1
+%patch02007 -p1
 %patch03000 -p1
 %patch03001 -p1
 %patch08000 -p1
@@ -1358,11 +1368,11 @@ make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms seavgabios-ati \
   HOSTCC=cc \
 %endif
 
-make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom NO_WERROR=1
 
 %ifnarch %ix86
 make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms efirom \
-  EDK2_BASETOOLS_OPTFLAGS='-fPIE'
+  EDK2_BASETOOLS_OPTFLAGS='-fPIE' NO_WERROR=1
 %endif
 
 make                 -C %{_builddir}/%buildsubdir/roms sgabios \
@@ -1372,7 +1382,8 @@ make                 -C %{_builddir}/%buildsubdir/roms sgabios \
 pushd %{_builddir}/%buildsubdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 popd
-make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
+make %{?_smp_mflags} -C %{_builddir}/%buildsubdir/roms \
+    pxerom_variants=virtio pxerom_targets=1af41000 pxerom NO_WERROR=1
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward

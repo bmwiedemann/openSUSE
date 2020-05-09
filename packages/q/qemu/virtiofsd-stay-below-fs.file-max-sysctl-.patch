@@ -1,0 +1,74 @@
+From: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Fri, 1 May 2020 15:06:44 +0100
+Subject: virtiofsd: stay below fs.file-max sysctl value (CVE-2020-10717)
+
+Git-commit: 8c1d353d107b4fc344e27f2f08ea7fa25de2eea2
+References: bsc#1171110, CVE-2020-10717
+
+The system-wide fs.file-max sysctl value determines how many files can
+be open.  It defaults to a value calculated based on the machine's RAM
+size.  Previously virtiofsd would try to set RLIMIT_NOFILE to 1,000,000
+and this allowed the FUSE client to exhaust the number of open files
+system-wide on Linux hosts with less than 10 GB of RAM!
+
+Take fs.file-max into account when choosing the default RLIMIT_NOFILE
+value.
+
+Fixes: CVE-2020-10717
+Reported-by: Yuval Avrahami <yavrahami@paloaltonetworks.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Message-Id: <20200501140644.220940-3-stefanha@redhat.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ tools/virtiofsd/helper.c | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/tools/virtiofsd/helper.c b/tools/virtiofsd/helper.c
+index dc59f38af02c73c2a492fd3b2d6f..00a1ef666a510068bb687bb34756 100644
+--- a/tools/virtiofsd/helper.c
++++ b/tools/virtiofsd/helper.c
+@@ -176,7 +176,8 @@ void fuse_cmdline_help(void)
+            "                               default: no_xattr\n"
+            "    --rlimit-nofile=<num>      set maximum number of file descriptors\n"
+            "                               (0 leaves rlimit unchanged)\n"
+-           "                               default: 1,000,000 if the current rlimit is lower\n"
++           "                               default: min(1000000, fs.file-max - 16384)\n"
++           "                                        if the current rlimit is lower\n"
+            );
+ }
+ 
+@@ -199,9 +200,32 @@ static int fuse_helper_opt_proc(void *data, const char *arg, int key,
+ 
+ static unsigned long get_default_rlimit_nofile(void)
+ {
++    g_autofree gchar *file_max_str = NULL;
++    const rlim_t reserved_fds = 16384; /* leave at least this many fds free */
+     rlim_t max_fds = 1000000; /* our default RLIMIT_NOFILE target */
++    rlim_t file_max;
+     struct rlimit rlim;
+ 
++    /*
++     * Reduce max_fds below the system-wide maximum, if necessary.  This
++     * ensures there are fds available for other processes so we don't
++     * cause resource exhaustion.
++     */
++    if (!g_file_get_contents("/proc/sys/fs/file-max", &file_max_str,
++                             NULL, NULL)) {
++        fuse_log(FUSE_LOG_ERR, "can't read /proc/sys/fs/file-max\n");
++        exit(1);
++    }
++    file_max = g_ascii_strtoull(file_max_str, NULL, 10);
++    if (file_max < 2 * reserved_fds) {
++        fuse_log(FUSE_LOG_ERR,
++                 "The fs.file-max sysctl is too low (%lu) to allow a "
++                 "reasonable number of open files.\n",
++                 (unsigned long)file_max);
++        exit(1);
++    }
++    max_fds = MIN(file_max - reserved_fds, max_fds);
++
+     if (getrlimit(RLIMIT_NOFILE, &rlim) < 0) {
+         fuse_log(FUSE_LOG_ERR, "getrlimit(RLIMIT_NOFILE): %m\n");
+         exit(1);

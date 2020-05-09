@@ -1,0 +1,30 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Tue, 5 May 2020 13:26:33 -0600
+Subject: work around gcc10 problem with zero-length array
+
+References: boo#1171123
+
+gcc10 has introduced a regression in handling zero-length array under
+certain cirumstances. For now simply work around it by extending the
+array to have 1 member. I've audited the code to ensure that will still
+work right.
+See: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94940
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/drivers/net/intelvf.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/ipxe/src/drivers/net/intelvf.h b/roms/ipxe/src/drivers/net/intelvf.h
+index ab404698fe6de9f48370931fdf56..abc2cd254bd44f4b2168e1ecee54 100644
+--- a/roms/ipxe/src/drivers/net/intelvf.h
++++ b/roms/ipxe/src/drivers/net/intelvf.h
+@@ -132,7 +132,7 @@ union intelvf_msg {
+ 	/** Queue configuration message */
+ 	struct intelvf_msg_queues queues;
+ 	/** Raw dwords */
+-	uint32_t dword[0];
++	uint32_t dword[1];
+ };
+ 
+ /** Maximum time to wait for mailbox message

@@ -1,0 +1,35 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Tue, 5 May 2020 10:09:47 -0600
+Subject: Be explicit about -fcommon compiler directive
+
+References: boo#1171140
+
+gcc10 switched default behavior from -fcommon to -fno-common. Since
+"__shared" relies on the legacy behavior, explicitly specify it.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ src/Makefile.housekeeping | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/roms/ipxe/src/Makefile.housekeeping b/roms/ipxe/src/Makefile.housekeeping
+index 1ddbddd247d9929d63b1654d7206..3f091c7dc937fbdac6434d10aec7 100644
+--- a/roms/ipxe/src/Makefile.housekeeping
++++ b/roms/ipxe/src/Makefile.housekeeping
+@@ -170,6 +170,16 @@ CFI_FLAGS := $(shell $(CFI_TEST) && \
+ WORKAROUND_CFLAGS += $(CFI_FLAGS)
+ endif
+ 
++# gcc 10 switched default behavior from -fcommon to -fno-common. Since
++# "__shared" relies on the legacy behavior, explicitly specify it.
++#
++ifeq ($(CCTYPE),gcc)
++FCOMMON_TEST = $(CC) -fcommon -x c -c /dev/null \
++		   -o /dev/null >/dev/null 2>&1
++FCOMMON_FLAGS := $(shell $(FCOMMON_TEST) && $(ECHO) '-fcommon')
++WORKAROUND_CFLAGS += $(FCOMMON_FLAGS)
++endif
++
+ # gcc 4.6 generates spurious warnings if -Waddress is in force.
+ # Inhibit this.
+ #

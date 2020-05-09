@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  5 21:11:11 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix DoS in virtiofsd, where a FUSE client could exhaust the
+  number of available open files on the host (CVE-2020-10717
+  bsc#1171110)
+  virtiofsd-add-rlimit-nofile-NUM-option.patch
+  virtiofsd-stay-below-fs.file-max-sysctl-.patch
+
+-------------------------------------------------------------------
+Tue May  5 19:41:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Add more fixes for gcc10 compatibility: Use NO_WERROR=1 when
+  building ipxe sources, at least until we get gcc10 compatibility
+  figured out. Also add patch for explicitly using -fcommon
+  (boo#1171140)
+  Be-explicit-about-fcommon-compiler-direc.patch
+  and fix for tighter enum compatibility checking (boo#1171139)
+  add-enum-cast-to-avoid-gcc10-warning.patch
+  and a work around for what seems to be a compiler regression
+  (boo#1171123)
+  work-around-gcc10-problem-with-zero-leng.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 18:10:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to v5.0.0: See http://wiki.qemu.org/ChangeLog/5.0
