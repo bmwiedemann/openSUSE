@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 07 09:33:04 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.15.1588842879.5c43eef:
+  * dist: Convert to multibuild; run test suite in a separate flavor
+
+-------------------------------------------------------------------
+Wed Apr 29 13:48:30 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.15.1588146746.5cfeeb8:
+  * fix #boo 1168573 (obsservicerun,obsrun) not exists in client side installation
+  * Update debian/changelog for latest version
+  * Helpers: when a command fail, print the command itself too with its output
+  * git: add support for @PARENT_TAG@ in revision
+  * Fix build on non-openSUSE distro
+
+-------------------------------------------------------------------
 Tue Mar 17 16:44:31 UTC 2020 - FSchreiner@suse.com
 
 - Update to version 0.10.14.1584435160.d912143:
