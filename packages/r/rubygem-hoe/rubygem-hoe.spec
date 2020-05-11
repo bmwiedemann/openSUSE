@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-hoe
-Version:        3.22.0
+Version:        3.22.1
 Release:        0
 %define mod_name hoe
 %define mod_full_name %{mod_name}-%{version}
