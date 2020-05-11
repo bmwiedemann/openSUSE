@@ -17,10 +17,10 @@
 
 
 %global sonum 2
-%global soname 2_2_1
+%global soname 2_3
 
 Name:           volk
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only
