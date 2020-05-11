@@ -16,19 +16,17 @@
 #
 
 
-%define realver 1.3.1
 Name:           libunwind
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
 Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/libunwind/
-Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz
-Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{realver}.tar.gz.sig
+Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         libunwind-gcc10-build-fno-common.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
@@ -47,8 +45,7 @@ Requires:       %{name} = %{version}
 A C programming interface (API) to determine the call chain of a program.
 
 %prep
-%setup -q -n %{name}-%{realver}
-%patch0 -p1
+%setup -q -n %{name}-%{version}
 
 %build
 %configure \

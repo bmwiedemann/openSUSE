@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:37:18 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.4.0
+  - Fix compilation with -fno-common.
+  - arm: clear ip thumb/arm mode bit before move to previous instruction (#131)
+  - tests: fix test-coredump-unwind without HAVE_EXECINFO_H (#165)
+  - There are 20 not 9 failing tests on Solaris (#162)
+  - change asm to __asm__ to support -std=c11 or similar (#149)
+  - x86-64: make `is_cached_valid_mem` functional (#146)
+  - Allow to build without weak `backtrace` symbol. (#142)
+  - fix compile issue on SH platform (#137)
+  - Add support for zlib compressed elf .debug_frame sections
+  - README: add libc requirement description (#121)
+  - Older systems (e.g. RHEL5) do not have pipe2(). (#122)
+  - x86_64: Add fixup code if previous RIP was invalid (#120)
+  - Fix format specifier for int64_t:29 (#117)
+  - Delete hardcode of address size to support MIPS64. (#114)
+  - Added braces to suppress empty if/else warnings (#112)
+  - mips: make _step_n64 as a static function
+  - x86_64: Fix tdep_init_done when built with libatomic_ops
+  - x86_64: tsan clean (#109)
+  - Fixed a missing dependency in dwarf-eh.h
+  - dwarf: clang doesn't respect the static alias (#102)
+- Update libunwind.keyring
+- Remove libunwind-gcc10-build-fno-common.patch fixed upstream
+
+-------------------------------------------------------------------
 Wed Feb 19 09:24:20 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix build with GCC-10: [bsc#1160876]
