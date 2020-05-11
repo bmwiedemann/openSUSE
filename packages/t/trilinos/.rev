@@ -172,4 +172,34 @@
     <comment></comment>
     <requestid>769279</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>72961140bb429bdafc914c912360297e</srcmd5>
+    <version>12.14.1</version>
+    <time>1589196732</time>
+    <user>dimstar_suse</user>
+    <comment>- Again try to fix up dependencies after removing the
+  base package.
+- Let (non-HPC) trilinos-devel conflict with kokkos-devel
+
+- Fix dependencies for devel package after eliminating the
+  base package:
+  * Remove dependency to base package
+  * for HPC add dependency to library package
+
+- Don't use ninja as cmake generator for Leap/SLE &lt; 15.2
+  as it doesn't support fortran.
+
+- Eliminate trilinos base package, move %doc and %license files
+  to the lib-package and remaining binary files to the devel-package.
+
+- Fix build for gmake 4.3 in a backward compatible way (boo#1170523),
+  Fix-Makefiles-for-gmake-4.3.patch was added.
+
+- nvcc_wrapper is a compiler wrapper and should go in -devel
+  package
+- fix &quot;extra tokens&quot; RPM build errors 
+
+- Use ninja as cmake builder for potential speedup</comment>
+    <requestid>802594</requestid>
+  </revision>
 </revisionlist>
