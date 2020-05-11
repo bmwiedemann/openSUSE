@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu May  7 20:43:16 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.10.3
+ see installed CHANGELOG.md
+
+  # v1.10
+  
+  ## Release v1.10.3 - 2020/05/01
+  
+  ### Enhancement
+  
+  * record_accessor: Add `set` method
+    https://github.com/fluent/fluentd/pull/2977
+  * config: Ruby DSL format is deprecated
+    https://github.com/fluent/fluentd/pull/2958
+  * Refactor code
+    https://github.com/fluent/fluentd/pull/2961
+    https://github.com/fluent/fluentd/pull/2962
+    https://github.com/fluent/fluentd/pull/2965
+    https://github.com/fluent/fluentd/pull/2966
+    https://github.com/fluent/fluentd/pull/2978
+  
+  ### Bug fix
+  
+  * out_forward: Disable `linger_timeout` setting on Windows
+    https://github.com/fluent/fluentd/pull/2959
+  * out_forward: Fix warning of service discovery manager when fluentd stops
+    https://github.com/fluent/fluentd/pull/2974
+  
+  ## Release v1.10.2 - 2020/04/15
+  
+  ### Enhancement
+  
+  * out_copy: Add plugin_id to log message
+    https://github.com/fluent/fluentd/pull/2934
+  * socket: Allow cert chains in mutual auth
+    https://github.com/fluent/fluentd/pull/2930
+  * system: Add ignore_repeated_log_interval parameter
+    https://github.com/fluent/fluentd/pull/2937
+  * windows: Allow to launch fluentd from whitespace included path
+    https://github.com/fluent/fluentd/pull/2920
+  * Refactor code
+    https://github.com/fluent/fluentd/pull/2935
+    https://github.com/fluent/fluentd/pull/2936
+    https://github.com/fluent/fluentd/pull/2938
+    https://github.com/fluent/fluentd/pull/2939
+    https://github.com/fluent/fluentd/pull/2946
+  
+  ### Bug fix
+  
+  * in_syslog: Fix octet-counting mode bug
+    https://github.com/fluent/fluentd/pull/2942
+  * out_forward: Create timer for purging obsolete sockets when keepalive_timeout is not set
+    https://github.com/fluent/fluentd/pull/2943
+  * out_forward: Need authentication when sending tcp heartbeat with keepalive
+    https://github.com/fluent/fluentd/pull/2945
+  * command: Fix fluent-debug start failure
+    https://github.com/fluent/fluentd/pull/2948
+  * command: Fix regression of supervisor's worker and `--daemon` combo
+    https://github.com/fluent/fluentd/pull/2950
+  
+  ## Release v1.10.1 - 2020/04/02
+  
+  ### Enhancement
+  
+  * command: `--daemon` and `--no-supervisor` now work together
+    https://github.com/fluent/fluentd/pull/2912
+  * Refactor code
+    https://github.com/fluent/fluentd/pull/2913
+  
+  ### Bug fix
+  
+  * in_tail: `Fix pos_file_compaction_interval` parameter type
+    https://github.com/fluent/fluentd/pull/2921
+  * in_tail: Fix seek position update after compaction
+    https://github.com/fluent/fluentd/pull/2922
+  * parser_syslog: Fix regression in the `with_priority` and RFC5424 case
+    https://github.com/fluent/fluentd/pull/2923
+  
+  ### Misc
+  
+  * Add document for security audit
+    https://github.com/fluent/fluentd/pull/2911
+  
+  ## Release v1.10.0 - 2020/03/24
+  
+  ### New feature
+  
+  * sd plugin: Add SRV record plugin
+    https://github.com/fluent/fluentd/pull/2876
+  
+  ### Enhancement
+  
+  * server: Add `cert_verifier` parameter for TLS transport
+    https://github.com/fluent/fluentd/pull/2888
+  * parser_syslog: Support customized time format
+    https://github.com/fluent/fluentd/pull/2886
+  * in_dummy: Delete `suspend` parameter
+    https://github.com/fluent/fluentd/pull/2897
+  * Refactor code
+    https://github.com/fluent/fluentd/pull/2858
+    https://github.com/fluent/fluentd/pull/2862
+    https://github.com/fluent/fluentd/pull/2864
+    https://github.com/fluent/fluentd/pull/2869
+    https://github.com/fluent/fluentd/pull/2870
+    https://github.com/fluent/fluentd/pull/2874
+    https://github.com/fluent/fluentd/pull/2881
+    https://github.com/fluent/fluentd/pull/2885
+    https://github.com/fluent/fluentd/pull/2894
+    https://github.com/fluent/fluentd/pull/2896
+    https://github.com/fluent/fluentd/pull/2898
+    https://github.com/fluent/fluentd/pull/2899
+    https://github.com/fluent/fluentd/pull/2900
+    https://github.com/fluent/fluentd/pull/2901
+    https://github.com/fluent/fluentd/pull/2906
+  
+  ### Bug fix
+  
+  * out_forward: windows: Permit to specify `linger_timeout`
+    https://github.com/fluent/fluentd/pull/2868
+  * parser_syslog: Fix syslog format detection
+    https://github.com/fluent/fluentd/pull/2879
+  * buffer: Fix `available_buffer_space_ratio` calculation
+    https://github.com/fluent/fluentd/pull/2882
+  * tls: Support CRLF based X.509 certificates
+    https://github.com/fluent/fluentd/pull/2890
+  * msgpack_factory mixin: Fix performance penalty for deprecation log
+    https://github.com/fluent/fluentd/pull/2903
+
+-------------------------------------------------------------------
 Mon Feb 10 14:35:23 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 1.9.1
