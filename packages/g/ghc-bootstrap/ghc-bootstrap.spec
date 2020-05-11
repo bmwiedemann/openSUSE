@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,19 +82,13 @@ BuildRequires:  gmp-devel
 BuildRequires:  libncurses5
 %ifnarch %{arm} s390x
 BuildRequires:  libnuma-devel
-Requires:       libnuma-devel
 %endif
-
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 Requires:       binutils-gold
-BuildRequires:  llvm
-Requires:       llvm
 %endif
-
 %ifarch s390x riscv64
 BuildRequires:  libffi-devel
-Requires:       libffi-devel
 %endif
 Requires:       gmp-devel
 Requires:       libncurses5

@@ -179,4 +179,12 @@ Add support for ppc64le.</comment>
     <comment></comment>
     <requestid>784604</requestid>
   </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>86bdc6ed9f218a07905eca263c54b71e</srcmd5>
+    <version>8.6.5</version>
+    <time>1589196799</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801004</requestid>
+  </revision>
 </revisionlist>

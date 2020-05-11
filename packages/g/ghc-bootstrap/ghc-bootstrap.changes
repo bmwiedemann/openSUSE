@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 14:02:54 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Drop duplicated ix86 case from list of conditionals.
+
+-------------------------------------------------------------------
 Tue Mar 10 20:33:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix previous commit, do not require llvm6 for Tumbleweed
@@ -26,14 +31,19 @@ Fri Jan 17 19:00:28 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
   * needed for ghc-bootstrap-helpers
 
 -------------------------------------------------------------------
+Wed Jan  8 23:28:25 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Tue Nov 26 19:02:42 UTC 2019 - Peter Trommler <ptrommler@icloud.com>
 
-- Add RISCV bindist taken from openSUSE:Factory:RISCV64 
+- Add RISCV bindist taken from openSUSE:Factory:RISCV64
 
 -------------------------------------------------------------------
 Mon Nov 25 19:23:46 UTC 2019 - Peter Trommler <ptrommler@icloud.com>
 
-- Update to version 8.6.5 for GHC 8.10 bootstrap 
+- Update to version 8.6.5 for GHC 8.10 bootstrap
 
 -------------------------------------------------------------------
 Thu Apr 11 18:48:41 UTC 2019 - psimons@suse.com
@@ -49,7 +59,7 @@ Thu Jan 10 08:56:18 UTC 2019 - ptrommler@icloud.com
 
 - Install binary distribution in /opt
 * avoid conflicts with package ghc
-* fixes an issue brought up in boo#1121052 
+* fixes an issue brought up in boo#1121052
 
 -------------------------------------------------------------------
 Mon Oct 29 16:39:18 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -62,7 +72,7 @@ Mon Oct 29 16:39:18 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Oct  8 08:33:08 UTC 2018 - ptrommler@icloud.com
 
-- update bindists to 8.4.3 for GHC 8.6.1 bootstrap 
+- update bindists to 8.4.3 for GHC 8.6.1 bootstrap
 
 -------------------------------------------------------------------
 Wed Jul 18 14:26:16 UTC 2018 - psimons@suse.com
