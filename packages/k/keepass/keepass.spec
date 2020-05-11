@@ -1,7 +1,7 @@
 #
 # spec file for package keepass
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define _name KeePass
 
 Name:           keepass
-Version:        2.44
+Version:        2.45
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            https://keepass.info/
+URL:            https://keepass.info/
 Source0:        https://netcologne.dl.sourceforge.net/project/keepass/KeePass%202.x/%{version}/KeePass-%{version}-Source.zip
 Source1:        https://keepass.info/integrity/v2/KeePass-%{version}-Source.zip.asc
 # http://keepass.info/integrity/Dominik_Reichl.asc
