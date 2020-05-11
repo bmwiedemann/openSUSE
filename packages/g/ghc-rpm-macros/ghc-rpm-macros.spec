@@ -15,15 +15,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} <= 1320
-%global license doc
-%endif
-
 
 %global macros_dir %{_sysconfdir}/rpm
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        1.9.90
+Version:        1.9.95
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
@@ -78,10 +74,6 @@ install -p -D -m 0755 ghc-pkg-wrapper %{buildroot}/%{_prefix}/lib/rpm/ghc-pkg-wr
 install -p -D -m 0644 ghc.attr %{buildroot}/%{_prefix}/lib/rpm/fileattrs/ghc.attr
 install -p -D -m 0755 ghc-dirs.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-dirs.sh
 install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
-%if 0%{?suse_version} <= 1320
-install -d -D -m 0755 %{buildroot}%{_datadir}/licenses
-%endif
-
 
 %files
 %doc AUTHORS
@@ -97,9 +89,6 @@ install -d -D -m 0755 %{buildroot}%{_datadir}/licenses
 %{_prefix}/lib/rpm/ghc-dirs.sh
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/Setup.hs
-%if 0%{?suse_version} <= 1320
-%dir %{_datadir}/licenses
-%endif
 
 %files extra
 %config %{macros_dir}/macros.ghc-extra
