@@ -54,8 +54,6 @@ files.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-echo > Setup.hs 'import Distribution.Simple'
-echo >>Setup.hs 'main = defaultMain'
 
 %build
 %ghc_lib_build
