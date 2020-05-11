@@ -19,7 +19,7 @@
 %global pkg_name turtle
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.16
+Version:        1.5.19
 Release:        0
 Summary:        Shell programming, Haskell-style
 License:        BSD-3-Clause
