@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-capistrano
-Version:        3.11.2
+Version:        3.14.0
 Release:        0
 %define mod_name capistrano
 %define mod_full_name %{mod_name}-%{version}
