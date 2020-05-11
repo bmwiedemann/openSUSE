@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * KNewStuff: Fix file path and process call (kde#420312)
+  * KNewStuff: port from KRun::runApplication to KIO::ApplicationLauncherJob
+  * [KNewStuff] Port QRegExp to QRegularExpression
+  * Replace Vokoscreen with VokoscreenNG (kde#416460)
+  * Fix minor typo (stray word from the wrong bit of the sentence)
+  * Fix minor typo
+  * Introduce more user-visible error reporting for installations
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
