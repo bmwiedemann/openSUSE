@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu May  7 20:02:48 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 6.0.3
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.3 (May 06, 2020) ##
+  
+  *   Recommend applications don't use the `database` kwarg in `connected_to`
+  
+      The database kwarg in `connected_to` was meant to be used for one-off scripts but is often used in requests. This is really dangerous because it re-establishes a connection every time. It's deprecated in 6.1 and will be removed in 6.2 without replacement. This change soft deprecates it in 6.0 by removing documentation.
+  
+      *Eileen M. Uchitelle*
+  
+  *   Fix support for PostgreSQL 11+ partitioned indexes.
+  
+      *Sebastián Palma*
+  
+  *   Add support for beginless ranges, introduced in Ruby 2.7.
+  
+      *Josh Goodall*
+  
+  *   Fix insert_all with enum values
+  
+      Fixes #38716.
+  
+      *Joel Blum*
+  
+  *   Regexp-escape table name for MS SQL
+  
+      Add `Regexp.escape` to one method in ActiveRecord, so that table names with regular expression characters in them work as expected. Since MS SQL Server uses "[" and "]" to quote table and column names, and those characters are regular expression characters, methods like `pluck` and `select` fail in certain cases when used with the MS SQL Server adapter.
+  
+      *Larry Reid*
+  
+  *   Store advisory locks on their own named connection.
+  
+      Previously advisory locks were taken out against a connection when a migration started. This works fine in single database applications but doesn't work well when migrations need to open new connections which results in the lock getting dropped.
+  
+      In order to fix this we are storing the advisory lock on a new connection with the connection specification name `AdisoryLockBase`. The caveat is that we need to maintain at least 2 connections to a database while migrations are running in order to do this.
+  
+      *Eileen M. Uchitelle*, *John Crepezzi*
+  
+  *   Ensure `:reading` connections always raise if a write is attempted.
+  
+      Now Rails will raise an `ActiveRecord::ReadOnlyError` if any connection on the reading handler attempts to make a write. If your reading role needs to write you should name the role something other than `:reading`.
+  
+      *Eileen M. Uchitelle*
+  
+  *   Enforce fresh ETag header after a collection's contents change by adding
+      ActiveRecord::Relation#cache_key_with_version. This method will be used by
+      ActionController::ConditionalGet to ensure that when collection cache versioning
+      is enabled, requests using ConditionalGet don't return the same ETag header
+      after a collection is modified. Fixes #38078.
+  
+      *Aaron Lipman*
+  
+  *   A database URL can now contain a querystring value that contains an equal sign. This is needed to support passing PostgresSQL `options`.
+  
+       *Joshua Flanagan*
+  
+  *   Retain explicit selections on the base model after applying `includes` and `joins`.
+  
+      Resolves #34889.
+  
+      *Patrick Rebsch*
+  
+  
+  ## Rails 6.0.2.2 (March 19, 2020) ##
+  
+  *   No changes.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:41:16 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - Updated to version 6.0.2.2
