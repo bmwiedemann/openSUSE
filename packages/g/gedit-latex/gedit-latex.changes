@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 09:28:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace dbus-1-python with dbus-1-python3 and python3-gobject-Gdk
+  Requires: Only python3 is now available in tw, and package
+  supports python3 just fine.
+- Modernize spec, run spec-cleaner, remove
+  glib2_gsettings_schema_post(un) macro only needed for obsolete
+  versions of openSUSE.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:09:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
