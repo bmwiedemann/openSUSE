@@ -22,7 +22,7 @@
 %endif
 
 Name:           lxcfs
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        FUSE filesystem for LXC
 License:        Apache-2.0
