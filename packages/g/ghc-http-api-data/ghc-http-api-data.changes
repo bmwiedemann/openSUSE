@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 08:38:40 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file to get more accurate dependency information.
+
+-------------------------------------------------------------------
 Tue Nov 12 09:57:07 UTC 2019 - psimons@suse.com
 
 - Update http-api-data to version 0.4.1.1.
