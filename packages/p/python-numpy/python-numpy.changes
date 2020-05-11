@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  9 16:16:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.4:
+  * #16055: BLD: add i686 for 1.18 builds
+  * #16090: BUG: random: Generator.integers(2**32) always returned 0.
+  * #16091: BLD: fix path to libgfortran on macOS
+  * #16109: REV: Reverts side-effect changes to casting
+  * #16114: BLD: put openblas library in local directory on windows
+  * #16132: DOC: Change import error "howto" to link to new
+     troubleshooting...
+
+-------------------------------------------------------------------
 Sun Apr 26 13:04:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Disable TestF{77,90}ReturnCharacter on big-endian architectures (#11831)
