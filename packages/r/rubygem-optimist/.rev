@@ -7,4 +7,12 @@
     <comment>for lolcat, SR#726166</comment>
     <requestid>726465</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0df7679aa437eaebbbc63ca31ecbc67</srcmd5>
+    <version>3.0.1</version>
+    <time>1589197151</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802359</requestid>
+  </revision>
 </revisionlist>
