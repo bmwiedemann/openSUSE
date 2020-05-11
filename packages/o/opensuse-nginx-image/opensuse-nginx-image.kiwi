@@ -48,6 +48,7 @@
   </repository>
   <packages type="bootstrap">
     <package name="nginx"/>
+    <package name="bash"/>
     <archive name="entrypoint.tar.gz"/>
     <package name="mandoc"/>
     <package name="--"/>

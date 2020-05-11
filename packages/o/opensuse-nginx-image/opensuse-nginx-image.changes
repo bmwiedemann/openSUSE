@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 11 12:58:26 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Only install default htdocs if htdocs directory is totally empty
+
+-------------------------------------------------------------------
+Mon May 11 11:45:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add bash as it is required by entrypoint script
+- Fix EXTRA_ARGS handling
+
+-------------------------------------------------------------------
 Fri Apr 17 13:34:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use mandoc instead of busybox man
