@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 11 06:47:14 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.5:
+  * typo in mu-query manpage 
+  * mu4e: use :hide-unread in doc
+  * mu4e: better error when mu4e-mu-binary is not set 
+  * mu: support --eval for server testing 
+  * mu: don't verify signatures when it's not needed 
+  * mu4e-bookmarks: improve documentation 
+  * Make mu4e~view-message available to mu4e-view-mode-hook
+  * mu4e: change spacing in main view for info section 
+  * mu4e.texi: Add note about s/mime
+
+-------------------------------------------------------------------
 Mon May  4 06:39:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.4:

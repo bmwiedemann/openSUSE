@@ -187,4 +187,21 @@
   * mu4e: start mu4e in compose-handler, when necessary</comment>
     <requestid>799965</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3831187fc7d296fb2a72660f8fc4c51</srcmd5>
+    <version>1.4.5</version>
+    <time>1589197470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.5:
+  * typo in mu-query manpage 
+  * mu4e: use :hide-unread in doc
+  * mu4e: better error when mu4e-mu-binary is not set 
+  * mu: support --eval for server testing 
+  * mu: don't verify signatures when it's not needed 
+  * mu4e-bookmarks: improve documentation 
+  * Make mu4e~view-message available to mu4e-view-mode-hook
+  * mu4e: change spacing in main view for info section 
+  * mu4e.texi: Add note about s/mime</comment>
+    <requestid>802601</requestid>
+  </revision>
 </revisionlist>
