@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 11 07:49:20 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.10.6
+  * Fixed version guessing to take composer-runtime-api and
+    composer-plugin-api requirements into account to avoid selecting
+    packages which require Composer 2
+  * Fixed package name validation to allow several dashes following
+    each other
+  * Fixed post-status-cmd script not firing when there were no
+    changes to be displayed
+  * Fixed composer-runtime-api support on Composer 1.x, the package
+    is now present as 1.0.0
+  * Fixed support for composer show --name-only --self
+  * Fixed detection of GitLab URLs when handling authentication in
+    some cases
+
+-------------------------------------------------------------------
 Sat Apr 11 08:03:44 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.10.5
