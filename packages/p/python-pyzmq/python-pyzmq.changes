@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  9 16:07:53 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 19.0.1:
+  * Fix TypeError during garbage collection
+  * Fix compilation with some C++ compilers
+  * Fixes in tests and examples
+
+-------------------------------------------------------------------
 Fri Mar  6 21:55:13 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

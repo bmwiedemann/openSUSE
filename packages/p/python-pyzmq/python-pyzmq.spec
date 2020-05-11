@@ -20,7 +20,7 @@
 # Disable tests, they are so slow that OBS thinks the build died.
 %bcond_with tests
 Name:           python-pyzmq
-Version:        19.0.0
+Version:        19.0.1
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        LGPL-3.0-or-later AND BSD-3-Clause

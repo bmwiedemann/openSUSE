@@ -310,4 +310,12 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment></comment>
     <requestid>782792</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fe1bb496c659ef0b6a2e551416c506e3</srcmd5>
+    <version>19.0.1</version>
+    <time>1589196365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802283</requestid>
+  </revision>
 </revisionlist>
