@@ -126,19 +126,6 @@ libqcow is a library to access the QEMU Copy-On-Write (QCOW) image format.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libqcow.
 
-%package -n python2-%{name}
-Summary:        Python 2 bindings for libqcow
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-Requires:       python
-BuildRequires:  pkgconfig(python2)
-Requires:       %{lname} = %{version}
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < %{version}
-
-%description -n python2-%{name}
-Python 2 bindings for libqcow, which can access the QEMU Copy-On-Write (QCOW) image format
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for libqcow
 License:        LGPL-3.0-or-later
@@ -155,7 +142,7 @@ Python 3 bindings for libqcow, which can access the QEMU Copy-On-Write (QCOW) im
 cp "%{SOURCE2}" .
 
 %build
-%configure --disable-static --enable-wide-character-type --enable-python2 --enable-python3
+%configure --disable-static --enable-wide-character-type --enable-python3
 make %{?_smp_mflags}
 
 %install
@@ -189,12 +176,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libqcow.so
 %{_libdir}/pkgconfig/libqcow.pc
 %{_mandir}/man3/libqcow.3*
-
-%files -n python2-%{name}
-%defattr(-,root,root)
-%doc AUTHORS README ChangeLog
-%license COPYING 
-%{python_sitearch}/pyqcow.so
 
 %files -n python3-%{name}
 %defattr(-,root,root)

@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>706932</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d9a8d91428e1857ac808bdee0c952702</srcmd5>
+    <version>0~20181227</version>
+    <time>1589197223</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 subpackage.  Python2 is no longer in factory.
+</comment>
+    <requestid>802298</requestid>
+  </revision>
 </revisionlist>
