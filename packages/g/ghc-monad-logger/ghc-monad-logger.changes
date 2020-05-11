@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:06:55 UTC 2020 - psimons@suse.com
+
+- Update monad-logger to version 0.3.32.
+  # ChangeLog for monad-logger
+
+  ## 0.3.32
+
+  * Compat with `unliftio-core` 0.2
+
+-------------------------------------------------------------------
 Tue Nov 26 11:59:30 UTC 2019 - psimons@suse.com
 
 - Update monad-logger to version 0.3.31.
