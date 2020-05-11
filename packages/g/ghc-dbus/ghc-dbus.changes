@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:12 UTC 2020 - psimons@suse.com
+
+- Update dbus to version 1.2.14.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Fri Feb 28 08:35:46 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal build information for more accurate dependencies.

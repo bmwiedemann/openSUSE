@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-dbus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name dbus
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.11
+Version:        1.2.14
 Release:        0
 Summary:        A client library for the D-Bus IPC system
 License:        Apache-2.0
@@ -76,14 +76,14 @@ Example: connect to the session bus, and get a list of active names.
 
 import Data.List (sort) import DBus import DBus.Client
 
-main = do &#x20; client <- connectSession &#x20; // &#x20; -- Request a list of
+main = do &#x20; client <- connectSession &#x20; &#x20; -- Request a list of
 connected clients from the bus &#x20; reply <- call_ client (methodCall
 "/org/freedesktop/DBus" "org.freedesktop.DBus" "ListNames") &#x20; &#x7b;
-methodCallDestination = Just "org.freedesktop.DBus" &#x20; &#x7d; &#x20; //
-&#x20; -- org.freedesktop.DBus.ListNames() returns a single value, which is
-&#x20; -- a list of names (here represented as [String]) &#x20; let Just names
-= fromVariant (methodReturnBody reply !! 0) &#x20; // &#x20; -- Print each name
-on a line, sorted so reserved names are below &#x20; -- temporary names.
+methodCallDestination = Just "org.freedesktop.DBus" &#x20; &#x7d; &#x20; &#x20;
+-- org.freedesktop.DBus.ListNames() returns a single value, which is &#x20; --
+a list of names (here represented as [String]) &#x20; let Just names =
+fromVariant (methodReturnBody reply !! 0) &#x20; &#x20; -- Print each name on a
+line, sorted so reserved names are below &#x20; -- temporary names.
 &#x20; mapM_ putStrLn (sort names) '
 
 >$ ghc --make list-names.hs >$ ./list-names >:1.0 >:1.1 >:1.10 >:1.106 >:1.109
@@ -102,7 +102,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver lens '<4.19' '< 5'
 
 %build
 %ghc_lib_build
