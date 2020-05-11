@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 26 17:19:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.20.2:
+  * The programs 'gettext', 'ngettext', when invoked with option -e,
+     now expand '\\' and octal escape sequences, instead of
+     swallowing them
+  * xgettext now recognizes 'gettext' program invocations with the
+    '-e' option, such as gettext -e 'some\nstring\n'
+  * xgettext now assumes a Python source file is in UTF-8 encoding
+    by default, as stated in PEP 3120
+  * The value of the 'Icon' property is no longer extracted into
+    the POT file by xgettext
+
+-------------------------------------------------------------------
 Mon Jan 27 16:26:21 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Don't disable openmp with qemu, the emulation works now

@@ -688,4 +688,12 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>768034</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>95d3b2a3d1b314481deb6b5ac9e467b3</srcmd5>
+    <version>0.20.2</version>
+    <time>1589196328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799885</requestid>
+  </revision>
 </revisionlist>

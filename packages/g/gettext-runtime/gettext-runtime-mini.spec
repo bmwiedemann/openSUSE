@@ -17,12 +17,10 @@
 
 
 %define pacname gettext
-# datadir was not changed in 0.20.1 patch release
-%define dataversion 0.20
 %bcond_without mini
 
 Name:           gettext-runtime-mini
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 BuildRequires:  gcc-c++
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
@@ -54,12 +52,12 @@ License:        GPL-3.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://www.gnu.org/software/gettext/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz
+Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
 Source1:        gettext-rpmlintrc
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        baselibs.conf
-Source5:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz.sig
+Source5:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
 Source6:        %name.keyring
 Patch:          gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
@@ -326,8 +324,8 @@ make check || {
 %_datadir/%pacname/styles
 %_datadir/%pacname/archive.dir.tar.xz
 %_datadir/aclocal
-%dir %{_datadir}/%{pacname}-%{dataversion}
-%{_datadir}/%{pacname}-%{dataversion}/its
+%dir %{_datadir}/%{pacname}-%{version}
+%{_datadir}/%{pacname}-%{version}/its
 
 %files tools-doc
 %defattr(-,root,root)
@@ -344,8 +342,7 @@ make check || {
 %if %{without mini}
 %files -n libtextstyle0
 %defattr(-,root,root)
-%_libdir/libtextstyle.so.0
-%_libdir/libtextstyle.so.0.0.0
+%_libdir/libtextstyle.so.*
 
 %files -n libtextstyle-devel
 %defattr(-,root,root)

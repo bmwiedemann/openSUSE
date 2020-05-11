@@ -17,17 +17,17 @@
 
 
 Name:           gettext-java
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        Java Support for Native Language Support (NLS)
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            http://www.gnu.org/software/gettext/
-Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz
+Source0:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz
 Source1:        gettext-rpmlintrc
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
-Source4:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.gz.sig
+Source4:        http://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
 Source5:        %{name}.keyring
 Patch0:         gettext-0.12.1-sigfpe.patch
 Patch2:         gettext-0.12.1-gettextize.patch
