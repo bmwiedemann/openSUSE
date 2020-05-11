@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May  9 16:12:59 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.36.5:
+  * Added support for dictionary input in CompositeType (#435, pull
+    request courtesy of cozos)
+  * Added new EnrichedDateTime and EnrichedDate types (#403, pull
+    request courtesy of yk-lab)
+  * Using String instead of LargeBinary for impl of EncryptedType
+    (#426, pull request courtesy of aicioara)
+  * Added support for JSONType in EncryptedType (#439, pull request
+    courtesy of rushilsrivastava)
+
+- changes from version 0.36.4:
+  * Added jsonb_sql function (#377, pull request courtesy of getglad)
+  * Drop py27 support
+
+-------------------------------------------------------------------
 Mon Apr 20 09:36:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

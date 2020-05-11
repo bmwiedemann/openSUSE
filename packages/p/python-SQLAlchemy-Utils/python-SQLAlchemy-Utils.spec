@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-SQLAlchemy-Utils
-Version:        0.36.3
+Version:        0.36.5
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
@@ -57,14 +57,6 @@ Recommends:     python-intervals >= 0.7.1
 Recommends:     python-passlib >= 1.6
 Recommends:     python-phonenumbers >= 5.9.2
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-ipaddr
-%endif
-%ifpython2
-Requires:       python-enum34
-Requires:       python-ipaddr
-%endif
 %python_subpackages
 
 %description
