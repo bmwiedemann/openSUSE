@@ -165,4 +165,47 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 </comment>
     <requestid>789089</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>29db0b564d246c30fb7a3495eda26f54</srcmd5>
+    <version>2.3.0</version>
+    <time>1589197485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+  * news: add notes for 2.3.0
+  * config/v3_2_experimental: update all copyright dates
+  * doc/configuration-*: update for new spec
+  * tests: stabilize spec 3.1.0
+  * *: update for new experimental spec
+  * config/v3_2_experimental: set up package
+  * config/v3_2_experimental: copy from config/v3_1
+  * config/v3_1_experimental: mark stable
+  * doc/development: update spec stabilization instructions
+  * config: rename function for clarity
+  * tests: bump invalid 2.x experimental version to match spec2x branch
+  * config/v3_1_experimental: add some missing version tests
+  * config/v3_1/translate: fix package name
+  * doc/migrating-configs: update for 3.1.0
+  * resource/url: allow compression in data URLs
+  * doc/migrating-configs: mention spec 2.4.0
+  * validate: accept any supported config version
+  * exec: drop validate.go
+  * doc/migrating-configs: put newest version first
+  * Add SHA-256 reference in the docs
+  * Add SHA-256 support for file verification
+  * ci: run blackbox tests in CoreOS CI
+  * Send ssh_authorized keys info into the journald log
+  * Update go-systemd with the systemd module
+  * Send a message to the systemd journal if a user config is provided
+  * tests: add positive tests for resource compression
+  * spec: unify resource fetching type
+  * doc: clarify wording of files.*.verification.hash
+  * vendor: refresh after gomod changes
+  * gomod: update to go-systemd v22
+  * stages: fix package names
+  * providers/packet: override Accept header fetching instance metadata
+  * resource/url: allow caller-specified headers to override defaults
+  * Allow to specify HTTP headers for fetching configs and files
+</comment>
+    <requestid>802626</requestid>
+  </revision>
 </revisionlist>
