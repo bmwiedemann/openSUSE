@@ -19,7 +19,7 @@
 %define base_version 3.36
 
 Name:           gnote
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -27,8 +27,7 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
 Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
-# PATCH-FIX-UPSTREAM gnote-initial-notes-creation.patch boo#1170588 dimstar@opensuse.org -- Fix generation of sample notes on first start
-Patch0:         gnote-initial-notes-creation.patch
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

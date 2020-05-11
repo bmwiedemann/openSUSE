@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 10 16:22:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + Fix note existence check when synchronizing.
+  + Stability fixes for synchronization.
+  + Fix start note creation and importing on first run.
+  + Fix occasional crash when closing.
+  + Updated translations.
+- Drop gnote-initial-notes-creation.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue May  5 19:30:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gnote-initial-notes-creation.patch: Fix generation of initial

@@ -543,4 +543,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>800458</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>616c0900f85569a492d1eea37bfc3ecc</srcmd5>
+    <version>3.36.1</version>
+    <time>1589207465</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 802518 from iznogood)</comment>
+    <requestid>802672</requestid>
+  </revision>
 </revisionlist>
