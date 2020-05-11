@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 05:05:05 UTC 2020 - olaf@aepfle.de
+
+- handle oddly named ZIP archives
+- touch watchdog every 15 instead of 57 minutes
+
+-------------------------------------------------------------------
 Tue Mar 31 09:09:09 UTC 2020 - olaf@aepfle.de
 
 - gtk-doc: filter version info from html files

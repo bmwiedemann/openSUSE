@@ -6,7 +6,7 @@
 # Written by Michael Matz and Stephan Coolo
 # Enhanced by Andreas Jaeger
 declare -i watchdog_host_timeout_seconds='3600'
-declare -i watchdog_touch_percent_prior_timeout='96'
+declare -i watchdog_touch_percent_prior_timeout='25'
 declare -i watchdog_next_touch_seconds=0
 
 function watchdog_reset
@@ -1047,6 +1047,11 @@ check_single_file()
            return 1
        fi
        ;;
+    Zip\ archive\ data,*)
+      if ! compare_archive "${file}" 'archive_zip' ; then
+        return 1
+      fi
+      ;;
      POSIX\ tar\ archive)
           mv old/$file{,.tar}
           mv new/$file{,.tar}

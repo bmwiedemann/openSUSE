@@ -976,4 +976,13 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>791952</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>8b418c1430e8b631310a7697b26bf15e</srcmd5>
+    <version>20200508T210136.9aadd6e</version>
+    <time>1589196355</time>
+    <user>dimstar_suse</user>
+    <comment>- handle oddly named ZIP archives
+- touch watchdog every 15 instead of 57 minutes</comment>
+    <requestid>801854</requestid>
+  </revision>
 </revisionlist>
