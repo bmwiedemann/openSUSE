@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-public_suffix
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 %define mod_name public_suffix
 %define mod_full_name %{mod_name}-%{version}
