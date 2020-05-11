@@ -1,7 +1,7 @@
 #
 # spec file for package xfconf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.14.1
+Version:        4.14.3
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
@@ -32,16 +32,16 @@ Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE xfconf-remove-rpath.patch gber@opensuse.org -- Do not set RPATH for Xfconf.so
 Patch0:         xfconf-4.7.3-remove-rpath.patch
 BuildRequires:  intltool
+BuildRequires:  pkgconfig
 BuildRequires:  perl(ExtUtils::Depends)
 BuildRequires:  perl(ExtUtils::PkgConfig)
 BuildRequires:  perl(Glib)
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0

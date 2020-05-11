@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 15:15:17 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.3
+  * Use 'gsettings' as a common channel name for the GSetting backend
+  * bxo#14789: Fix GSettings backend assertion error, when probed
+    but not used.
+  * bxo#15960: Add some missing xfconf_shutdown() in xfconf-query
+  * bxo#15951: Fix 'xfconf_get_error_quark' introspecting warning
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Feb 12 05:42:59 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - xfconfd needs to be a hard dependency to libxfconf (boo#1163214)
