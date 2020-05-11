@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun May 10 14:17:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  General improvements
+  * New hotkeys:
+    + Ctrl+O / Ctrl+S for loading and saving games
+    + Alt+Enter for toggling full screen
+    + Numeric keypad 0-9 for going to the advisors
+  * Changed hotkey behavior: Escape now closes dialogs instead
+    of exiting the game
+  * Configurable hotkeys: you can now assign your own keys for
+    the hotkey actions. This means that existing hotkeys may no
+    longer work if you use a non-US keyboard layout. Go to
+    Options -> Configure hotkeys in the game to set them.
+  * Support for language packs. If you have multiple language
+    versions of the game you can easily switch between them.
+  * Support for Korean and Swedish versions of the game
+  * Configuration option screen has been translated to French,
+    German, Korean, Portuguese and Spanish
+  Gameplay improvements
+  * Building a fort no longer triggers a message that the city
+    needs workers
+  * Right-click info for fountain and mission post now shows
+    workers
+  * Tooltip on the religion overlay now shows to which gods the
+    house has access
+  * New config option: fix emperor change events and survival
+    time win criteria - more details
+  User interface enhancements
+  * New config option: show reservoir, fountain and well range
+    when constructing
+  * New config option: show size when constructing draggable
+    buildings
+  * Right-clicking and dragging when in the city will now move
+    the map
+  * Double-click can be used to load files
+  * Make certain elements more color blind friendly
+  * Tweaks to the interface to fit languages with longer texts
+  Bugfixes
+  * Fix graphic artifacts while building draggable reservoirs
+  * Fix amphitheater right click not playing the corresponding
+    sound file
+  * Fix walls destroyed by enemies showing "nowhere" when
+    right-clicking the rubble
+  * Fix map not scrolling properly when using certain custom
+    display scales
+  Technical improvements
+  * Screen no longer turns black when resizing the window when a
+    dialog is showing
+  * Fix bugs when using touch
+  * Fix missing audio for certain sound driver/OS combinations
+  * Disable setting windowed mode on platforms that do not
+    support it
+  * Add runtime version checks for SDL, allowing the use of older
+    SDL libraries
+
+-------------------------------------------------------------------
 Sun Mar  8 21:58:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Package license file and readme
