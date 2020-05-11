@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 13:19:42 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.12.1:
+  - Correctly handling domain names ending with dot(s).
+
+-------------------------------------------------------------------
 Wed Apr 22 19:03:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.12:

@@ -126,4 +126,12 @@ pypi works again now (at least for me)</comment>
  - Use Public Suffix list instead of deprecated Mozilla's MXR.</comment>
     <requestid>797840</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>702c49361902f8cb886207faee429c28</srcmd5>
+    <version>0.12.1</version>
+    <time>1589197349</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802509</requestid>
+  </revision>
 </revisionlist>

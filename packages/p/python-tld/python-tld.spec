@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tld
-Version:        0.12
+Version:        0.12.1
 Release:        0
 Summary:        URL top level domain (TLD) extraction module
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
