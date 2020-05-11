@@ -107,4 +107,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800134</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>21faa2acf9e339344d1a03c249ff6f49</srcmd5>
+    <version>1.6.0</version>
+    <time>1589197329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0. Full changes at
+  https://github.com/PCSX2/pcsx2/releases/download/v1.6.0/Changelog.v1.6.0.txt
+</comment>
+    <requestid>802463</requestid>
+  </revision>
 </revisionlist>

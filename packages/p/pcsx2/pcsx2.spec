@@ -17,13 +17,13 @@
 
 
 Name:           pcsx2
-Version:        1.5.0~git20200414
+Version:        1.6.0
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        LGPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://pcsx2.net/
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 
 ExclusiveArch:  i586
 
