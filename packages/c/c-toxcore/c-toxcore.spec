@@ -20,7 +20,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 %define _soversion 2
 Name:           c-toxcore
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        Secure decentralized instant messaging application
 License:        GPL-3.0-only
