@@ -19,7 +19,7 @@
 %global pkg_name cabal2spec
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Convert Cabal files into rpm spec files
 License:        GPL-3.0-or-later
