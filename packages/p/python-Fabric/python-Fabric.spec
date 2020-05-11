@@ -46,7 +46,10 @@ Requires:       python-setuptools
 Requires:       python-six
 Conflicts:      python-Fabric3
 Provides:       python-Fabric2 = %{version}
+Provides:       python-Fabric3 = %{version}
+Provides:       python-Fabric3 = %{version}
 Provides:       python-fabric = %{version}
+Provides:       python-fabric2 = %{version}
 Provides:       python-fabric2 = %{version}
 BuildArch:      noarch
 %python_subpackages

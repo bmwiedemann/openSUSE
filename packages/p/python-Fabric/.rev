@@ -289,4 +289,12 @@
     <comment></comment>
     <requestid>800402</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>bf8c35f75fc7798246fc8508eac87e1e</srcmd5>
+    <version>2.5.0</version>
+    <time>1589197525</time>
+    <user>dimstar_suse</user>
+    <comment>- Adds Provides for python-Fabric3.</comment>
+    <requestid>802649</requestid>
+  </revision>
 </revisionlist>

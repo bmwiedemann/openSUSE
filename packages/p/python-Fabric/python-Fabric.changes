@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 09:59:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Adds Provides for python-Fabric3.
+
+-------------------------------------------------------------------
 Tue May  5 12:40:33 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add patch fix-executable.patch to fix tests
