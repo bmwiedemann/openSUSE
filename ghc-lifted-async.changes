@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 12:37:27 UTC 2020 - psimons@suse.com
+
+- Update lifted-async to version 0.10.0.6.
+  ## v0.10.0.6 - 2020-03-31
+
+  * Relax upper version bound for base to suppose GHC 8.10 ([#30](https://github.com/maoe/lifted-async/pull/30))
+
+-------------------------------------------------------------------
 Sat Feb  8 03:06:20 UTC 2020 - psimons@suse.com
 
 - Update lifted-async to version 0.10.0.5.

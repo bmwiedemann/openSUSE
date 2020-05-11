@@ -19,7 +19,7 @@
 %global pkg_name lifted-async
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.0.5
+Version:        0.10.0.6
 Release:        0
 Summary:        Run lifted IO operations asynchronously and wait for their results
 License:        BSD-3-Clause
