@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 10 18:35:45 UTC 2020 - coolo@suse.com
+
+- Update to version 84.87+git20200510.8ff16cf:
+  * Avoid relinking links to mounted kernel filesystems
+  * Make all symlinks relative (bsc#1166667) (#31)
+  * Get rid of the unmaintained and buggy desktop file check (#14)
+
+-------------------------------------------------------------------
 Sat Feb 15 10:36:49 UTC 2020 - ro@suse.com
 
 - Update to version 84.87+git20200215.db1636b:

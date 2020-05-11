@@ -23,9 +23,10 @@ Summary:        Build root policy check scripts
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Requires:       perl
-Version:        84.87+git20200215.db1636b
+Version:        84.87+git20200510.8ff16cf
 Release:        0
 URL:            https://github.com/openSUSE/brp-check-suse
+BuildRequires:  gcc-c++
 #
 # Note: don't rebuild this manually. Instead submit your patches
 # for inclusion in the git repo at https://github.com/openSUSE/brp-check-suse
@@ -44,16 +45,21 @@ build root checking or in parts implemeting SUSE policies.
 %setup -q
 
 %build
-# nothing to do
+make -C prg-brp-symlink
 
 %install
+install -D -m 755 prg-brp-symlink/brp-symlink $RPM_BUILD_ROOT/%_bindir/brp-symlink.prg
 install -d $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d
 mv brp*data $RPM_BUILD_ROOT/usr/lib/rpm/
 cp -a brp-* $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d
+
+%check
+make -C prg-brp-symlink check
 
 %files
 %defattr(-, root, root)
 %license COPYING
 /usr/lib/rpm/*
+%_bindir/brp-symlink.prg
 
 %changelog

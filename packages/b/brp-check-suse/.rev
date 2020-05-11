@@ -530,4 +530,15 @@ Lets break everything :)
   * Also strip lto data from .o files (boo#1146634)</comment>
     <requestid>774512</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3e7b2069f7efbac96c7ac9b4a36fba4b</srcmd5>
+    <version>84.87+git20200510.8ff16cf</version>
+    <time>1589196361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20200510.8ff16cf:
+  * Avoid relinking links to mounted kernel filesystems
+  * Make all symlinks relative (bsc#1166667) (#31)
+  * Get rid of the unmaintained and buggy desktop file check (#14)</comment>
+    <requestid>802526</requestid>
+  </revision>
 </revisionlist>
