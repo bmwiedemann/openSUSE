@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-hypothesis%{psuffix}
-Version:        5.10.4
+Version:        5.11.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0

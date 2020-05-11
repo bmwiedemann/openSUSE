@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May  9 16:08:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.11.0:
+  * This release improves the interaction between assume() and the
+    @example() decorator, so that the following test no longer fails
+    with UnsatisfiedAssumption (issue #2125):
+        @given(value=floats(0, 1))
+        @example(value=0.56789)  # used to make the test fail!
+        @pytest.mark.parametrize("threshold", [0.5, 1])
+        def test_foo(threshold, value):
+            assume(value < threshold)
+            ...
+
+- changes from version 5.10.5 :
+  * If you have django installed but don’t use it, this patch will
+    make import hypothesis a few hundred milliseconds faster
+    (e.g. 0.704s -> 0.271s).
+    Thanks to importtime-waterfall for highlighting this problem and
+    Jake Vanderplas for the solution - it’s impossible to misuse code
+    from a module you haven’t imported!
+
+-------------------------------------------------------------------
 Fri Apr 24 15:18:51 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

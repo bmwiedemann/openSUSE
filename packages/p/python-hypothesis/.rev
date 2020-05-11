@@ -419,4 +419,12 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>797702</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>183feb304322f1c5fb63fb44e2590f04</srcmd5>
+    <version>5.11.0</version>
+    <time>1589196375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802287</requestid>
+  </revision>
 </revisionlist>
