@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-asn1-types
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name asn1-types
 Name:           ghc-%{pkg_name}
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        ASN.1 types
 License:        BSD-3-Clause
