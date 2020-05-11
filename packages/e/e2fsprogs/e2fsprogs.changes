@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May  2 09:44:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.45.6:
+  * Debugfs will ignore lines in its command files which start with
+    a comment character ("#")
+  * Fix a number of potential out of bounds memory accesses caused
+    by fuzzed / malicious file systems
+  * Fix a spurious complaint from e2fsck when a directory which
+    previously had more than 32000 subdirectories has the number
+    of subdirectories drops below 32000
+  * Fix an ismounted check when an LVM device is renamed while the
+    device is mounted
+  * Mke2fs -d now correctly sets permission with files where the
+    owner permissions are not rwx
+  * Improve e2fsck's ability to deal with file systems with very
+    large number of directories, such that various data structures
+    take more than 2GiB of memory.  Use better structure packing to
+    improve the memory efficiency of these data structures.
+  * Fix debugfs so it correctly prints inode numbers > 2**31.
+  * Filefrag now supports very large files (with > 4 billion
+    blocks), as well as block sizes up to 1 GiB.
+  * Update and clarify various man pages
+  * Reserved the error code EXT2_ET_NO_GDESC (which will be used
+    in e2fsprogs v1.46+)
+  * Add a thread-safe variant of e2p_feature2string(),
+    e2p_feature_to_string() to the libe2p library.
+  * Fixed portability problems caused by gcc 10.
+  * Synchroniz changes from Android's AOSP e2fsprogs tree
+  * Update the Malay translation from the translation project
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Thu Jan  9 13:48:12 UTC 2020 - Jan Kara <jack@suse.cz>
 
 - Update to 1.45.5:
@@ -36,7 +68,7 @@ Fri Aug  9 09:09:39 UTC 2019 - Jan Kara <jack@suse.cz>
   * Fix e2scrub_all volume cleanup 
   * Regression tests cleanups and improvements
   * Fixed compiler warnings
-  * Translation fixes and updates
+  * Translation fixes and updates (boo#1170964)
 
 -------------------------------------------------------------------
 Wed Jul 24 20:47:22 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>

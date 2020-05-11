@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,12 +68,12 @@ Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
 %endif
 #
-Version:        1.45.5
+Version:        1.45.6
 Release:        0
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            http://e2fsprogs.sourceforge.net
+URL:            http://e2fsprogs.sourceforge.net
 Requires(post): coreutils
 Requires:       libcom_err2 >= %{version}
 Requires:       libext2fs2 >= %{version}
@@ -81,6 +81,8 @@ Suggests:       e2fsprogs-scrub
 Source:         http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.xz
 Source2:        README.SUSE
 Source3:        baselibs.conf
+Source4:        http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.sign
+Source5:        https://thunk.org/tytso/tytso-key.asc#/%{name}.keyring
 #
 # e2fsprogs patches
 #
