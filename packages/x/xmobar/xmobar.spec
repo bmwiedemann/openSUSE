@@ -91,8 +91,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-echo > Setup.hs 'import Distribution.Simple'
-echo >>Setup.hs 'main = defaultMain'
+cabal-tweak-dep-ver base '< 4.14' '< 5'
 
 %build
 %define cabal_configure_options -fwith_datezone -fwith_dbus -fwith_inotify -fwith_iwlib -fwith_mpris -fwith_thread -fwith_utf8 -fwith_xft -fwith_xpm
