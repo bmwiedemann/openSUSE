@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  7 07:44:47 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update ghc to version 8.10.1. Important changes are:
+
+  * The UnliftedNewtypes extension, allowing newtypes to be wrap
+    types of kind other than Type.
+
+  * The StandaloneKindSignatures extension, allowing explicit
+    signatures on type constructors.
+
+  * A new, low-latency garbage collector for the oldest generation.
+
+  Please refer to the compiler documentation for all details:
+  https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
+
+-------------------------------------------------------------------
 Thu Feb 27 08:47:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 8.8.3
@@ -21,7 +37,7 @@ Wed Feb  5 11:16:13 UTC 2020 - Andreas Schwab <schwab@suse.de>
 Thu Jan 23 09:41:53 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
 
 - use ghc-bootstrap-helpers on all archs
-- lower build env requirements on riscv64 
+- lower build env requirements on riscv64
   * make sure we can build on smaller systems
   * adjust parallelism so we don't hog big workers for almost a week
   * many thanks to Stefan Bruens for pointing out the issue and
@@ -64,27 +80,27 @@ Thu Jan 16 17:56:27 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Dec 31 18:17:24 UTC 2019 - Peter Trommler <ptrommler@icloud.com>
 
 - add fix-unregisterised-v8.4-8.6.patch
-* fix build on s390x and riscv64 
+* fix build on s390x and riscv64
 
 -------------------------------------------------------------------
 Mon Dec 30 12:08:41 UTC 2019 - Peter Trommler <ptrommler@icloud.com>
 
 - refresh buildpath-abi-stability.patch
 - refresh ghc-8.0.2-Cabal-dynlibdir.patch
-- refresh ghc-pie.patch 
+- refresh ghc-pie.patch
 - enable riscv64
 
 -------------------------------------------------------------------
 Sun Dec 29 13:10:39 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- use prebuilt alex and happy on Tumbleweed to avoid buildcycle 
+- use prebuilt alex and happy on Tumbleweed to avoid buildcycle
 - Don't require llvm in ghc-compiler for other architectures than arm
 
 -------------------------------------------------------------------
 Sat Dec 28 22:38:34 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 8.8.1 -new stable release
-- refresh Disable-unboxed-arrays.patch 
+- refresh Disable-unboxed-arrays.patch
 - drop allow-riscv-and-riscv64-CPU.patch - merged in upstream
 
 -------------------------------------------------------------------
@@ -92,7 +108,7 @@ Mon Sep 23 10:07:24 UTC 2019 - Peter Trommler <ptrommler@icloud.com>
 
 - add fix-build-using-unregisterized-v8.4.patch
   * fixes unregisterised builds when bootstrap compiler is GHC 8.4
-  * fixes build on s390x 
+  * fixes build on s390x
 
 -------------------------------------------------------------------
 Mon Sep 23 09:28:37 UTC 2019 - Andreas Schwab <schwab@suse.de>
@@ -116,7 +132,7 @@ Wed Mar 13 14:35:13 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Mar 12 09:20:14 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- bump llvm req to llvm6 
+- bump llvm req to llvm6
 
 -------------------------------------------------------------------
 Wed Mar  6 08:49:44 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>

@@ -9,13 +9,13 @@
   </hardware>
  <overwrite>
     <conditions>
-      <arch>s390x</arch>
       <arch>aarch64</arch>
+      <arch>s390x</arch>
     </conditions>
     <hardware>
-      <memory>
+      <physicalmemory>
         <size unit="G">10</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>
@@ -23,9 +23,9 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <memory>
-        <size unit="G">17</size>
-      </memory>
+      <physicalmemory>
+        <size unit="G">20</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 </constraints>

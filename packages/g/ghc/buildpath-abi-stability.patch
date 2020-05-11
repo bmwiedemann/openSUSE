@@ -1,8 +1,8 @@
-Index: ghc-8.8.1/compiler/iface/MkIface.hs
+Index: ghc-8.10.0.20191210/compiler/iface/MkIface.hs
 ===================================================================
---- ghc-8.8.1.orig/compiler/iface/MkIface.hs
-+++ ghc-8.8.1/compiler/iface/MkIface.hs
-@@ -713,7 +713,7 @@ addFingerprints hsc_env mb_old_fingerpri
+--- ghc-8.10.0.20191210.orig/compiler/iface/MkIface.hs
++++ ghc-8.10.0.20191210/compiler/iface/MkIface.hs
+@@ -679,7 +679,7 @@ addFingerprints hsc_env iface0
     iface_hash <- computeFingerprint putNameLiterally
                        (mod_hash,
                         ann_fn (mkVarOcc "module"),  -- See mkIfaceAnnCache
@@ -11,9 +11,9 @@ Index: ghc-8.8.1/compiler/iface/MkIface.hs
                         sorted_deps,
                         mi_hpc iface0)
  
-@@ -748,6 +748,9 @@ addFingerprints hsc_env mb_old_fingerpri
+@@ -714,6 +714,9 @@ addFingerprints hsc_env iface0
+     (non_orph_rules, orph_rules) = mkOrphMap ifRuleOrph    (mi_rules iface0)
      (non_orph_fis,   orph_fis)   = mkOrphMap ifFamInstOrph (mi_fam_insts iface0)
-     fix_fn = mi_fix_fn iface0
      ann_fn = mkIfaceAnnCache (mi_anns iface0)
 +    -- Do not allow filenames to affect the interface
 +    usages = [ case u of UsageFile _ fp -> UsageFile "" fp; _ -> u | u <- mi_usages iface0 ]

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,14 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
+%define full_version 8.10.1
 
 Name:           ghc
-Version:        8.8.3
+Version:        8.10.1
 Release:        0
 URL:            https://www.haskell.org/ghc/
-Source:         https://downloads.haskell.org/~ghc/8.8.3/ghc-%{version}-src.tar.xz
-Source1:        https://downloads.haskell.org/~ghc/8.8.3/ghc-%{version}-src.tar.xz.sig
+Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
+Source1:        https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz.sig
 Source2:        ghc-rpmlintrc
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
@@ -43,8 +44,7 @@ ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le riscv64 s390x
 #!BuildIgnore:  gcc-PIE
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
-BuildRequires:  ghc-bootstrap >= 8.4
-BuildRequires:  ghc-bootstrap-helpers
+BuildRequires:  ghc-bootstrap >= 8.6
 BuildRequires:  ghc-rpm-macros-extra
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
@@ -69,11 +69,11 @@ BuildRequires:  binutils-gold
 %endif
 %ifarch aarch64 %{arm} %{ix86} x86_64
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm7
-Requires:       llvm7
+BuildRequires:  llvm9-devel
+BuildRequires:  clang9 
 %else
-BuildRequires:  llvm
-Requires:       llvm
+BuildRequires:  llvm-devel
+BuildRequires:  clang 
 %endif
 %endif
 %if %{undefined without_manual}
@@ -84,14 +84,26 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  libnuma-devel
 %endif
 
+# for patch 1
+# BuildRequires:  python3
+
+# bogus requires
+%ifarch x86_64
+BuildRequires:  ghc-bootstrap-helpers
+%else
+BuildRequires:  alex
+BuildRequires:  happy
+%endif
+
 PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
-
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch ptrommler@icloud.com -- Fix/workaround an issue with unregisterised builds bootstrapped with GHC 8.4 and 8.6. Similar to upstream ticket #15913. 
+# PATCH-FIX-UPSTREAM fix-build-using-unregisterized-v8.4.patch
+Patch5:         fix-build-using-unregisterized-v8.4.patch
+# PATCH-FIX-UPSTREAM fix-unregisterised-v8.4-8.6.patch
 Patch6:         fix-unregisterised-v8.4-8.6.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
@@ -129,16 +141,20 @@ Requires:       binutils-gold
 %endif
 %ifarch aarch64 %{arm}
 %if 0%{?suse_version} >= 1550
-Requires:       llvm7
+Requires:       clang9
+Requires:       llvm9
 %else
 Requires:       llvm
+Requires:       clang 
 %endif
 %endif
 %ifarch x86_64 %{ix86}
 %if 0%{?suse_version} >= 1550
-Suggests:       llvm7
+Suggests:       clang9 
+Suggests:       llvm9
 %else
 Suggests:       llvm
+Suggests:       clang
 %endif
 %endif
 
@@ -159,14 +175,15 @@ To install all of GHC install package ghc.
 %endif
 
 %if %{defined ghclibdir}
-%ghc_lib_subpackage -d Cabal-3.0.1.0
+%ghc_lib_subpackage -d Cabal-3.2.0.0
 %ghc_lib_subpackage -d array-0.5.4.0
-%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.13.0.0
-%ghc_lib_subpackage -d binary-0.8.7.0
+%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.0.0
+%ghc_lib_subpackage -d binary-0.8.8.0
 %ghc_lib_subpackage -d bytestring-0.10.10.0
 %ghc_lib_subpackage -d containers-0.6.2.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
 %ghc_lib_subpackage -d directory-1.3.6.0
+%ghc_lib_subpackage -d exceptions-0.10.4 
 %ghc_lib_subpackage -d filepath-1.4.2.1
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-%{ghc_version_override}
@@ -174,19 +191,20 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d ghc-compact-0.1.0.0
 %ghc_lib_subpackage -d ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.7.5.0
-%ghc_lib_subpackage -d hpc-0.6.0.3
+%ghc_lib_subpackage -d haskeline-0.8.0.0
+%ghc_lib_subpackage -d hpc-0.6.1.0
 %ghc_lib_subpackage -d libiserv-%{ghc_version_override}
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.8.0
+%ghc_lib_subpackage -d process-1.6.8.2
 %ghc_lib_subpackage -d stm-2.5.0.0
-%ghc_lib_subpackage -d template-haskell-2.15.0.0
+%ghc_lib_subpackage -d template-haskell-2.16.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
-%ghc_lib_subpackage -d text-1.2.4.0
+%ghc_lib_subpackage -d text-1.2.3.2
 %ghc_lib_subpackage -d time-1.9.3
 %ghc_lib_subpackage -d transformers-0.5.6.2
+# 2.8.0.0
 %ghc_lib_subpackage -d unix-2.7.2.2
 %ghc_lib_subpackage -d xhtml-3000.2.2.1
 %endif
@@ -209,15 +227,21 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
+#%%patch1 -p1
+#%%patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
+%patch5 -p1
 %patch6 -p1
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
 
 %build
+# patch 1 modifies build system, we need to recreate configure
+# ./boot
+
 cat > mk/build.mk <<EOF
 %ifarch aarch64 %{arm}
 BuildFlavour = perf-llvm
@@ -302,8 +326,8 @@ echo "%dir %{ghclibdir}" >> ghc-base.files
 
 %ghc_gen_filelists ghc %{ghc_version_override}
 %ghc_gen_filelists ghci %{ghc_version_override}
-%ghc_gen_filelists ghc-prim 0.5.3
-%ghc_gen_filelists integer-gmp 1.0.2.0
+%ghc_gen_filelists ghc-prim 0.6.1
+%ghc_gen_filelists integer-gmp 1.0.3.0
 
 %define merge_filelist()\
 cat ghc-%1.files >> ghc-%2.files\
@@ -390,7 +414,6 @@ fi
 
 %files compiler
 %license LICENSE
-%doc ANNOUNCE
 %{_bindir}/ghc
 %{_bindir}/ghc-%{version}
 %{_bindir}/ghc-pkg
@@ -418,9 +441,6 @@ fi
 %{ghclibdir}/bin/hp2ps
 %{ghclibdir}/bin/hpc
 %{ghclibdir}/bin/hsc2hs
-%ifnarch %{unregisterised_archs}
-%{ghclibdir}/bin/ghc-split
-%endif
 %{ghclibdir}/ghc-usage.txt
 %{ghclibdir}/ghci-usage.txt
 %dir %{ghclibdir}/package.conf.d
@@ -449,8 +469,7 @@ fi
 %{ghcdocbasedir}/users_guide
 %endif
 %{ghcdocbasedir}/libraries/gen_contents_index
-%{ghcdocbasedir}/libraries/linuwial.css
-%{ghcdocbasedir}/libraries/quick-jump.css
+%{ghcdocbasedir}/libraries/*.css
 %{ghcdocbasedir}/libraries/prologue.txt
 %{ghcdocbasedir}/libraries/synopsis.png
 %{ghcdocbasedir}/index.html

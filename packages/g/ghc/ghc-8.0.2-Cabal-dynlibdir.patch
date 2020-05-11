@@ -1,8 +1,8 @@
-Index: ghc-8.8.1/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
+Index: ghc-8.10.0.20200123/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
 ===================================================================
---- ghc-8.8.1.orig/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
-+++ ghc-8.8.1/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
-@@ -205,7 +205,7 @@ defaultInstallDirs' False comp userInsta
+--- ghc-8.10.0.20200123.orig/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
++++ ghc-8.10.0.20200123/libraries/Cabal/Cabal/Distribution/Simple/InstallDirs.hs
+@@ -207,7 +207,7 @@ defaultInstallDirs' False comp userInsta
             _other -> "$abi" </> "$libname",
        dynlibdir    = "$libdir" </> case comp of
             UHC    -> "$pkgid"
