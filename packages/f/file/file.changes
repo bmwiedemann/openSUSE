@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  4 13:51:18 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary patch undo-24c9c0.patch to undo commit 24c9c0 (boo#1169192) 
+
+-------------------------------------------------------------------
 Tue Apr 14 20:36:31 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 
 - file-5.24-nitpick.dif: remove obsolete patch (bsc#1169512)

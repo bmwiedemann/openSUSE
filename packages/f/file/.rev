@@ -1329,4 +1329,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment></comment>
     <requestid>795512</requestid>
   </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>ea8b3a2d9e948fed91879c5d64858bac</srcmd5>
+    <version>5.38</version>
+    <time>1589196345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch undo-24c9c0.patch to undo commit 24c9c0 (boo#1169192)</comment>
+    <requestid>800076</requestid>
+  </revision>
 </revisionlist>

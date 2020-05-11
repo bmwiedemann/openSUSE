@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ Patch34:        file-5.23-endian.patch
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
 Patch40:        file-5.38-allow-readlinkat.dif
+Patch41:        undo-24c9c0.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -131,6 +132,7 @@ to develop applications that require the magic "file" interface.
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
 %patch40 -p1 -b .readlinkat
+%patch41 -p0 -b .undo
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
