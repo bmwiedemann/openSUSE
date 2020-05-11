@@ -19,7 +19,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        3.0.9
+Version:        4.0
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
@@ -122,8 +122,6 @@ install -m0644 %{SOURCE1} -t xdg
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
     -e 's|__UNITDIR__|%{_unitdir}|' \
     -i setup.py
-# fix shebang
-sed -i 's|^#!.*|#!%__python3|' scripts/auth_dialog scripts/xdg-open
 
 %build
 python3 setup.py build \
