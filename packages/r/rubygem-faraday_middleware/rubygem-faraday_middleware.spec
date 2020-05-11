@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-faraday_middleware
-Version:        0.14.0
+Version:        1.0.0
 Release:        0
 %define mod_name faraday_middleware
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/lostisland/faraday_middleware
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
