@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.69
+%define _tar_path 5.70
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 %bcond_without ffmpeg
 %bcond_without lang
 Name:           kfilemetadata5
-Version:        5.69.0
+Version:        5.70.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
