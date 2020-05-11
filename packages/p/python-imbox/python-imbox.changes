@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 13:06:36 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.9.7:
+ - Gmail: IMAP extension searches label and raw are not supported.
+ - Searches in mail bodies and UID ranges are now supported.
+ - Attachments have a Content-ID now (#174)
+
+-------------------------------------------------------------------
 Sun Aug 26 12:04:54 UTC 2018 - sebix+novell.com@sebix.at
 
 - update to 0.9.6:
