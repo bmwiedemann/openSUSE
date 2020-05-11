@@ -59,4 +59,12 @@
     <comment>- adapt to new rubygem packaging</comment>
     <requestid>256814</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>78d8c3c4d07a42686930a73b267e9c42</srcmd5>
+    <version>3.0.0</version>
+    <time>1589197301</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802350</requestid>
+  </revision>
 </revisionlist>
