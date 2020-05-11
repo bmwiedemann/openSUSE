@@ -221,4 +221,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update</comment>
     <requestid>780017</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>90856189d43cea47259b84ca9694f059</srcmd5>
+    <version>1.7.1</version>
+    <time>1589196890</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801017</requestid>
+  </revision>
 </revisionlist>

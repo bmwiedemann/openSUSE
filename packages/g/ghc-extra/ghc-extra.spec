@@ -19,7 +19,7 @@
 %global pkg_name extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.20
+Version:        1.7.1
 Release:        0
 Summary:        Extra functions I use
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-quickcheck-instances-devel
 %endif
 
 %description
