@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Too many changes since 5.69.0, only listing bugfixes:
+  * [RenameDialog] Add an arrow indicating direction from src to dest (kde#268600)
+  * Make the HTML file template more useful (kde#419935)
+  * kio_trash: Add size, modification, access and create date for trash:/ (kde#413091)
+  * Show previews on encrypted filesystems (kde#411919)
+  * [KPropertiesDialog] Disable changing remote dir icons (kde#205954)
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
