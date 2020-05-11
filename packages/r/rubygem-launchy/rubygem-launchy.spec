@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-launchy
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,18 +24,18 @@
 #
 
 Name:           rubygem-launchy
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 %define mod_name launchy
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://github.com/copiousfreetime/launchy
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            http://github.com/copiousfreetime/launchy
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Launchy is helper class for launching cross-platform applications in
 License:        ISC
@@ -47,7 +47,7 @@ Launchy is helper class for launching cross-platform applications in a fire
 and forget manner. There are application concepts (browser, email client, etc)
 that are common across all platforms, and they may be launched differently on
 each platform. Launchy is here to make a common approach to launching external
-application from within ruby programs.
+applications from within ruby programs.
 
 %prep
 
