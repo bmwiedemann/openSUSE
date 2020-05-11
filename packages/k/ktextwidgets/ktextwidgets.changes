@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * [NestedListHelper] Fix indentation of selection, add tests
+  * [NestedListHelper] Improve indentation code
+  * [KRichTextEdit] Make sure headings don't mess with undo stack
+  * [KRichTextEdit] Fix scroll jumping around when horizontal rule is added (kde#195828)
+  * [KRichTextWidget] Remove ancient workaround and fix regression (commit 1d1eb6f)
+  * [KRichTextWidget] Add support for headings
+  * [KRichTextEdit] Always treat key press as single modification in undo stack (kde#256001)
+  * [findreplace] Handle searching for WholeWordsOnly in Regex mode
+  * [KTextWidgets] Port from QRegExp to QRegularExpression
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
