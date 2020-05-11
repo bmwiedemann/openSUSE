@@ -56,6 +56,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver ghc-prim '< 0.6' '< 1'
 
 %build
 %ghc_lib_build
