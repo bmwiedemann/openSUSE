@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Too many changes since 5.69.0, only listing bugfixes:
+  * vertically center sheets if theiy don't have a scrollbar (kde#419804)
+  * Various fixes to new Cards (kde#420406)
+  * Use ShadowedRectangle for Card backgrounds (kde#415526)
+  * never close when the click is inside the sheet contents (kde#419691)
+  * sheet must be under other popups (kde#419930)
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
