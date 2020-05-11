@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:10 UTC 2020 - psimons@suse.com
+
+- Update jira-wiki-markup to version 1.1.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/jira-wiki-markup-1.1.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Dec 26 11:43:38 UTC 2019 - psimons@suse.com
 
 - Add jira-wiki-markup at version 1.0.0.
