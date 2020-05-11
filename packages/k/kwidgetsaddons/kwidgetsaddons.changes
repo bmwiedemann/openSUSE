@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * [KFontChooser] Remove NoFixedCheckBox DisplayFlag, redundant
+  * [KFontChooser] Add new DisplayFlag; modify how flags are used
+  * [KCharSelect] Minor code optimisation
+  * [KFontChooser] Make styleIdentifier() more precise by adding font styleName (kde#420287)
+  * [KFontRequester] Port from QFontDialog to KFontChooserDialog
+  * [KMimeTypeChooser] Add the ability to filter the treeview with a QSFPM (kde#245637)
+  * [KFontChooser] Make the code slightly more readable
+  * [KFontChooser] Add a checkbox to toggle showing only monospaced fonts
+  * [KFontChooser] More code cleanup
+  * Remove not necessary include
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
