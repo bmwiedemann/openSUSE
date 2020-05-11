@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-oauth2
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 %define mod_name oauth2
 %define mod_full_name %{mod_name}-%{version}
