@@ -438,4 +438,14 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
   * Improved handling of punctuation in QA checks.</comment>
     <requestid>770087</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>58f75b4cd50b346c16fa132f728ceb76</srcmd5>
+    <version>2.3.1</version>
+    <time>1589197381</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 2.3.1:
+  * Fixed TM matching of strings differing only in case.
+  * Fixed crash in presence of invalid bookmarks data.</comment>
+    <requestid>802517</requestid>
+  </revision>
 </revisionlist>
