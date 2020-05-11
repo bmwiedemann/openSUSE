@@ -95,4 +95,38 @@
     <comment></comment>
     <requestid>769124</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3334da52435befbece0d961725d51edc</srcmd5>
+    <version>0.10.1</version>
+    <time>1589197442</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * removed use_platform_int.patch included upstream
+- update to version 0.10.1:
+  * Fixed a bug that appeared within the bootstrapping algorithm on
+    32-bit systems.
+  * Fixed a bug where :func:`regplot` would crash on singleton
+    inputs. Now a crash is avoided and regression estimation/plotting
+    is skipped.
+  * Fixed a bug where :func:`heatmap` would ignore user-specified
+    under/over/bad values when recentering a colormap.
+  * Fixed a bug where :func:`heatmap` would use values from masked
+    cells when computing default colormap limits.
+  * Fixed a bug where :func:`despine` would cause an error when trying
+    to trim spines on a matplotlib categorical axis.
+  * Adapted to a change in matplotlib that caused problems with single
+    swarm plots.
+  * Added the &quot;showfliers&quot; parameter to :func:`boxenplot` to suppress
+    plotting of outlier data points, matching the API of
+    :func:`boxplot`.
+  * Avoided seeing an error from statmodels when data with an IQR of 0
+    is passed to :func:`kdeplot`.
+  * Added the &quot;legend.title_fontsize&quot; to the :func:`plotting_context`
+    definition.
+  * Deprecated several utility functions that are no longer used
+    internally (&quot;percentiles&quot;, &quot;sig_stars&quot;, &quot;pmf_hist&quot;, and
+    &quot;sort_df&quot;).
+</comment>
+    <requestid>802553</requestid>
+  </revision>
 </revisionlist>

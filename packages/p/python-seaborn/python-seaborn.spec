@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-seaborn
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM use_platform_int.patch - https://github.com/mwaskom/seaborn/pull/1952
-Patch0:         use_platform_int.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module ipython}
