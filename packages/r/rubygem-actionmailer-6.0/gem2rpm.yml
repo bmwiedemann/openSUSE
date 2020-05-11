@@ -9,7 +9,7 @@
 # ## used by gem2rpm
 # :license: MIT or Ruby
 # ## used by gem2rpm and gem_packages
-# :version_suffix: -x_y
+:version_suffix: '-6.0'
 # ## used by gem2rpm and gem_packages
 # :disable_docs: true
 # ## used by gem2rpm
