@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-api-python-client
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module google-auth >= 1.4.1}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.0.3}
 BuildRequires:  %{python_module httplib2 >= 0.9.2}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
@@ -69,7 +70,7 @@ Google APIs Client Library for Python
 %pytest -k "not (test_api_endpoint_override_from_client_options and Document)"
 
 %files %{python_files}
-%doc CHANGELOG
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 

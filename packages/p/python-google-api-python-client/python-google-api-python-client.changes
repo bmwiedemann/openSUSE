@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 11 06:28:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.8.2:
+  - Remove apiclient.__version__ gh#googleapis/googleapis#870
+  - Adding ConnectionError to retry mechanism gh#googleapis/googleapis#558
+  - replace '-' in method names with '_' gh#googleapis/google-api-python-client#863
+- Add missing dependency on oauth2client.
+- Fix filelist (no CHANGELOG anymore, missing README.md)
+
+-------------------------------------------------------------------
 Wed Apr  8 07:30:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.8.0
