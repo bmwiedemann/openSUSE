@@ -1,7 +1,7 @@
 #
 # spec file for package qtox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,60 +12,86 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define realname qTox
+
 Name:           qtox
-Version:        1.16.3
+Version:        1.17.2
 Release:        0
-Summary:        Qt based Tox client
+Summary:        Tox client
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://qtox.github.io/
+URL:            https://qtox.github.io/
 Source0:        https://github.com/qTox/qTox/releases/download/v%{version}/v%{version}.tar.gz
 Source1:        https://github.com/qTox/qTox/releases/download/v%{version}/v%{version}.tar.gz.asc
 Source2:        qtox.keyring
-# PATCH-FEATURE-UPSTREAM
-Patch:          5041.patch
-BuildRequires:  c-toxcore-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+
+# needed?
+####BuildRequires:  gcc-c++
+####BuildRequires:  opencv-devel >= 2.4.9
+###BuildRequires:  opencv-qt5-devel
+###BuildRequires:  pkgconfig(Qt5Sql5-sqlite)
+BuildRequires:  libqt5-qtbase-common-devel >= 5.2.0
+BuildRequires:  pkgconfig(sqlite3)
+# needed?
+
+%if 0%{?suse_version} > 1500
+BuildRequires:  ffmpeg-devel >= 4.0.0
+%else
+BuildRequires:  ffmpeg-devel
+%endif
+#BuildRequires:  pkgconfig(libavformat)
+#BuildRequires:  pkgconfig(libavdevice)
+#BuildRequires:  pkgconfig(libavutil)
+#BuildRequires:  pkgconfig(libavcodec)
+#BuildRequires:  pkgconfig(libswscale)
+
 BuildRequires:  glib2-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  libqt5-qtbase-devel >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(filteraudio)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libqrencode) >= 3.0.3
 BuildRequires:  pkgconfig(libsodium)
-BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(openal) >= 1.16.0
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sqlcipher)
+BuildRequires:  pkgconfig(toxcore)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xscrnsaver) >= 1.2
+
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-qTox is a chat, voice, video, and file transfer IM client using the
-encrypted peer-to-peer Tox protocol.
+Powerful Tox client that tries to follow the Tox UI mockup while running on all
+major systems.
 
 %prep
 %setup -q -c -n qTox-%{version}
-
-%patch -p1
-
-# W: file-contains-date-and-time
-BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
-BUILD_DATE=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{b} %{d} %{Y}')
-sed -i "s/__TIME__/\"$BUILD_TIME\"/" $(grep -rl '__TIME__')
-sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
+# rpmlint: datetime
+sed -i -e 's|__TIME__ + " " + __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
+sed -i -e 's|__TIME__ << __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
 
 %build
 CFLAGS="%{optflags} -Wno-error=parentheses"
@@ -76,7 +102,7 @@ make %{?_smp_mflags} PREFIX=%{_prefix}
 popd
 
 %install
-make install -C build PREFIX=%{_prefix} DESTDIR=%buildroot
+make install -C build PREFIX=%{_prefix} DESTDIR=%{buildroot}
 # remove non-standard dimensions
 rm -rf %{buildroot}%{_datadir}/icons/hicolor/14x14
 # decompress svgz to svg
@@ -86,7 +112,18 @@ rm %{name}.svgz
 # fix desktop-file-name
 mv %{buildroot}%{_datadir}/applications/io.github.qtox.qTox.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+%fdupes %{buildroot}
+
+%post
+%desktop_database_post
+%icon_theme_cache_post
+
+%postun
+%desktop_database_postun
+%icon_theme_cache_postun
+
 %files
+%defattr(-,root,root)
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{_bindir}/%{name}

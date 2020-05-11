@@ -1,11 +1,28 @@
 -------------------------------------------------------------------
-Sat Sep  1 09:49:28 UTC 2018 - Andrey Karepin <egdfree@opensuse.org>
+Sun May 10 08:54:08 UTC 2020 - ecsos <ecsos@opensuse.org>
 
-- add qtox.keyring file
-- change source download URL
+- Update to 1.17.2 
+  - This is a release to fix our automatic deployment scripts,
+    no code changes.
 
+- Changes from 1.17.1
+  * Bug Fixes
+    - ci: remove jenkins deploy step (48c688bf)
+
+- Changes from 1.17.0
+  The most notable user facing changes are group chats that stay 
+  intact after disconnects or client shutdown as well as the very 
+  often requested dark theme. Advanced history search was added,
+  as well as file transfers staying in chat history after client 
+  restart. There are of course also tons of fixes, namely much 
+  increased stability of audio and video calls as well as audio
+  group calls.
+  
+  Full changelog see: 
+  https://github.com/qTox/qTox/blob/master/CHANGELOG.md#v1170-2020-04-19
+  
 -------------------------------------------------------------------
-Sun Jul 29 09:38:58 UTC 2018 - ecsos@opensuse.org
+Sun Jul 29 10:17:59 UTC 2018 - ecsos@opensuse.org
 
 - update to 1.16.3
   This point release fixes flatpak build. No feature changes.
@@ -19,327 +36,408 @@ Sun Jul 29 09:38:58 UTC 2018 - ecsos@opensuse.org
     **ui:**
     - don't emit filename change windows for every chat
 
-- changes from 1.16.1
-  This point release fixes our deployment of Flapak and AppImage on 
-  Github. No feature changes.
+-------------------------------------------------------------------
+Fri Jul  6 17:17:23 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.16.1
+  
+  This point release fixes our deployment of Flapak and AppImage 
+  on Github. No feature changes.
+  
   * Features
-     **deploy:**
-    - upload Flatpak bundle to Github releases
+    - deploy: upload Flatpak bundle to Github releases (59b5578c)
   * Bug Fixes
-     **deploy:**
-    - fix file path in AppImage deployment
+    - deploy: fix file path in AppImage deployment (64602f38)
 
 - changes from 1.16.0
+
   The most notable additions in this release are a new fullscreen 
   mode for video calls, a new call end sound and support for more 
   camera resolutions. To distribute qTox in a more user friendly 
   manner we now publish Flatpak and AppImage packages.
+
   * Bug Fixes
-    - remove full screen btn from audio group chat
-    - local toxcore install with bootstrap.sh
-    - simple_make.sh script
+    - remove full screen btn from audio group chat (0d3f061b)
+    - local toxcore install with bootstrap.sh (9ca38750, 
+      closes #5199)
+    - simple_make.sh script (ead2152d)
     - Fix PR #5182. Eliminating the 'new' operator at 
-      ToxOptionsWrapper
-    - Fix usage of unitialized functions
-    - two crashes, uncovered by the persistent groupchat patch
-    - delete double initialization callDuration
-    **Core:**
-    - fix use after free of proxyAddrData
-    **appimage:**
-    - build sqlcipher form source
-    **audio:**
-    - fix error introduced in 67f2605971cf43093c72f811e4df90ab70544dd6
-    - connect the correct audio callbacks
-    - close the audio device after playing a sound
-    **build:**
-    - Elimination the build warnings (Wunused-variable, Wreorder)
-    - correct install script nsis for win64
-    - make qTox compile with ffmpeg 4.0 and newer
-    **chatform:**
-    - name in window title and close detached chats
-    - check for empty path when exporting profile
-    **core:**
-    - Clean illegal chars from filenames
-    **docs:**
-    - update toxcore build instructions
-    **file:**
-    - don't clean the filenames of avatar transfer
-    **history:**
-    - don't save both action prefix and displayed name
-    **leak:**
-    - Fix few memory leaks
-    **login:**
-    - start login screen on profile select by -p option
-    **settings:**
-    - automatically disable UDP when a proxy is set
-    - prevent segfault on wrong proxy settings
-    **simple_make:**
-    - correct variable initialization
-    **theme:**
-    - clear stylesheet cache on theme colour change
-    **ui:**
-    - increase number of low res camera options
-    **video:**
-    - unsubscribe the video device correctly
-    **wayland:**
-    - Fix desktop file name in Qt properties
+      ToxOptionsWrapper (9b6cd1c0)
+    - Fix usage of unitialized functions (06ae7ead)
+    - two crashes, uncovered by the persistent groupchat patch 
+      (48179b6a)
+    - delete double initialization callDuration (dc1f5ea0)
+    - Core: fix use after free of proxyAddrData (26b59d31)
+    - appimage: build sqlcipher form source (64a7c24b)
+    - audio:
+      - fix error introduced in 
+        67f2605971cf43093c72f811e4df90ab70544dd6 (40d30153)
+      - connect the correct audio callbacks (a00af087)
+      - close the audio device after playing a sound (a3370173)
+    - build:
+      - Elimination the build warnings (Wunused-variable, Wreorder)
+        (2cd65610)
+      - correct install script nsis for win64 (25e69572)
+      - make qTox compile with ffmpeg 4.0 and newer (44193176)
+    - chatform:
+      - name in window title and close detached chats (39968a31)
+      - check for empty path when exporting profile (757791ee, 
+        closes #5146)
+    - core: Clean illegal chars from filenames (ab85716f)
+    - docs: update toxcore build instructions (b00cbc1d)
+    - file: don't clean the filenames of avatar transfer (2a8ab03e)
+    - history: don't save both action prefix and displayed name 
+      (dfd2de83)
+    - leak: Fix few memory leaks (daaa5518)
+    - login: start login screen on profile select by -p option 
+      (1af3ad69)
+    - settings:
+      - automatically disable UDP when a proxy is set (977b7fc9)
+      - prevent segfault on wrong proxy settings (dfd5232e)
+    - simple_make: correct variable initialization (1537f83e)
+    - theme: clear stylesheet cache on theme colour change 
+      (8ba8ce91)
+    - ui: increase number of low res camera options (72931514)
+    - video: unsubscribe the video device correctly (e55f86c6)
+    - wayland: Fix desktop file name in Qt properties (c1caeb58)
   * Features
     - Add ability to remove dialog from content dialog with middle
-      click
-    - Add ability to quit group with middle click
-    - Add middle mouse clicked signal for GenericChatroom
-    **appimage:**
-    - build appimage on TravisCI
-    **call:**
-    - add call end sound
-    **chat:**
-    - add UI option to mute group peers
-    - full screen video chat
-    **core:**
-    - put c-toxcore log messages in the qTox log
-    **history:**
-    - load set number of messages from history
+      click (aae567ed)
+    - Add ability to quit group with middle click (228c431c)
+    - Add middle mouse clicked signal for GenericChatroom 
+      (65fc1dc2)
+    - appimage: build appimage on TravisCI (f7345e4d)
+    - call: add call end sound (65896e45)
+    - chat:
+      - add UI option to mute group peers (2fae2a30)
+      - full screen video chat (d6df8883)
+    - core: put c-toxcore log messages in the qTox log (4faab075)
+    - history: load set number of messages from history (ca32e77d)
 
 -------------------------------------------------------------------
-Thu Jun 28 18:10:19 UTC 2018 - egdfree@opensuse.org
+Wed Jun 20 11:32:20 UTC 2018 - ecsos@opensuse.org
 
-- add 5041.patch to fix build in factory
-  see https://github.com/qTox/qTox/issues/5041#issuecomment-377771790
-
--------------------------------------------------------------------
-Mon Jun 18 12:47:04 UTC 2018 - sleep_walker@opensuse.org
-
-- disable Werror for parenthesis (breaks the build because of gtk2)
+- cleanup spec
 
 -------------------------------------------------------------------
-Sun Jun 17 22:29:45 UTC 2018 - ecsos@opensuse.org
+Wed May 16 15:35:38 UTC 2018 - ecsos@opensuse.org
 
-- Update to version 1.15.0:
-  * chore(windows): fix automatic deploy for windows
-  * chore(release): update qTox version to v1.15.0
-  * chore(l10n): update translations from Weblate
-  * chore(windows): automatically deploy for windows
-  * chore(version): update toxcore version to v0.2.2
-  * perf(ui): cache stylesheets to reduce memory usage
-  * fix(settings): connect enable LAN discovery checkbox
-  * fix(core): split messages on utf8 multibyte character boundary properly
-  * feat(camera): add higher resolution camera options
-  * refactor(avform): simplify and standardize sliders, use RMS for volume
-  * fix(audio): apply gain to both audio channels
-  * fix(audio): move audio timers to and start from audioThread
-  * refactor(ui): consolidate new message settings under UI page
-  * feat(ui): add setting for disabling new message notification popup
-  * feat(ui): Add ability to disable LAN discovery
-  * fix(profile): don't error if no new avatar is selected
-  * fix(chatform): include pressed key(s) when changing focus
-  * fix(settings): add missing enableTestSound to settings
-  * fix(ui): remove placeholder update UI
-  * fix(docs): include master key fingerprint instead of subkey fingerprint
-  * refactor(call): Refactor toxcall and disconnect lambda on destruction
-  * chore(windows): add architecture to installer's and zip's filenames
-  * chore(windows): create a zip with qTox to be used in release publishing
-  * chore(windows): use NSIS 3 and cache NSIS ShellExecAsUser plugin
-  * chore(windows): bump VPX version to the latest (1.7.0)
-  * chore(windows): bump Sodium version to the latest (1.0.16)
-  * chore(windows): bump QREncode version to the latest (4.0.0)
-  * chore(windows): bump FFmpeg 3.2 version to the latest (3.2.10)
-  * chore(windows): bump SQLCipher version to the latest (3.4.2)
-  * chore(windows): bump Qt 5.9 version to the latest (5.9.4)
-  * chore(windows): bump OpenSSL version to the latest (1.0.2o)
-  * feat(Weblate): create script to automatically merge Weblate changes
-  * chore(windows): build installer on Travis
-  * fix(history): don't save own messages when history is disabled
-  * fix(docs): update dependencies for Debian
-  * fix(login): Don't dereference null pointer
-  * fix: remove build date and time from main.cpp
-  * fix(import): don't use java-style iterator before first element
-  * fix(offlinemsg): make faux offline messages purely event based
-  * refactor: remove some unused includes
-  * chore: put download URL for CircleCI artifacts in the build log
-  * fix(IPC): Update profileName to update IPC ID after login screen
-  * fix(chattextedit): ChatTextEdit bug fix for issue #5020 Corrected
-  * docs(build): Add Fedora to the list of quick install
-  * docs(build): Add Fedora simple install instructions
-  * chore: remove unmaintained package build script
-  * fix(name): Clear alias on name change so that name changes are visible
-  * fix(build): Remove unused vars, add default case for switch
-  * fix: don't use invalid reference after erasing element
-  * fix(avform): Audio/Video settings tab #5011 issue bugfix
-  * fix(widget): Fix double free crash on group leave
-  * docs(readme): add GPG fingerprint of tox-user
-- remove/drop patch fix_compiler_warnings.patch becaue no more need
-- rebase spec to fix build error
+- update to 1.15.0
+  * Performance
+    - ui: cache stylesheets to reduce memory usage (6d9d26db)
+  * Bug Fixes
+    - remove build date and time from main.cpp (23f6ad70)
+    - don't use invalid reference after erasing element (1afed5f7)
+    - IPC: Update profileName to update IPC ID after login screen
+      (d2ad2107)
+    - audio:
+      - apply gain to both audio channels (f6622e40)
+      - move audio timers to and start from audioThread (5d0f9509)
+    - avform: Audio/Video settings tab #5011 issue bugfix 
+      (ad6ddfc4)
+    - build: Remove unused vars, add default case for switch 
+      (bc18990f)
+    - chatform: include pressed key(s) when changing focus 
+      (a8fc6e5c)
+    - chattextedit: ChatTextEdit bug fix for issue #5020 Corrected
+      (ebdc675c)
+    - core: split messages on utf8 multibyte character boundary 
+      properly (869036f3)
+    - docs:
+      - include master key fingerprint instead of subkey 
+        fingerprint (3748ca6b)
+      - update dependencies for Debian (7627d60a)
+    - history: don't save own messages when history is disabled 
+      (b852809d)
+    - import: don't use java-style iterator before first element
+      (acea7c31)
+    - login: Don't dereference null pointer (703876c3)
+    - name: Clear alias on name change so that name changes are 
+      visible (c2410e0a)
+    - offlinemsg: make faux offline messages purely event based
+      (4951f909)
+    - profile: don't error if no new avatar is selected (cfdc1cdb)
+    - settings:
+      - connect enable LAN discovery checkbox (55d8922d)
+      - add missing enableTestSound to settings (65d59ba6)
+    - ui: remove placeholder update UI (cb0f2635)
+    - widget: Fix double free crash on group leave (81989406)
+  * Features
+    - Weblate: create script to automatically merge Weblate changes
+      (96ae4284)
+    - camera: add higher resolution camera options (04ecfe3f)
+    - ui:
+      - add setting for disabling new message notification popup 
+        (fcd88d65)
+      - Add ability to disable LAN discovery (9f8b0fed)
 
 -------------------------------------------------------------------
-Mon Apr  2 20:46:11 UTC 2018 - sleep_walker@opensuse.org
+Wed Apr 18 16:11:44 UTC 2018 - ecsos@opensuse.org
 
-- improve summary and description of the package
-
--------------------------------------------------------------------
-Thu Mar 22 19:28:24 UTC 2018 - sleep_walker@opensuse.org
-
-- move LICENSE to %license section
-- strip unneeded ldconfig
-- disable filter_audio dependency - it is dead for more than 2 years
+- update to 1.14.1
+  - Fix crashes, name change notification, profile selection, 
+    and openSUSE package compilation
 
 -------------------------------------------------------------------
-Sun Mar 18 22:35:52 UTC 2018 - jengelh@inai.de
+Tue Mar 20 22:26:11 UTC 2018 - ecsos@opensuse.org
 
-- Trim filler wording from description.
-
--------------------------------------------------------------------
-Sun Mar 18 09:09:39 UTC 2018 - sleep_walker@opensuse.org
-
-- use upstream patch and drop our -Wno-error= flags
-
--------------------------------------------------------------------
-Sun Mar 18 07:25:58 UTC 2018 - opensuse-packaging@opensuse.org
-
-- Update to version 1.14.0:
-  * chore(release): release v1.14.0
-  * chore: update to c-toxcore 0.2.1
-  * fix: Fix crash on manipulation with friend
-  * fix(avform): Hotfix for crash on video device change on 'None'
-  * fix(group): Show correct count of user on first creation
-  * fix(friendwidget): Use queued connection to avoid removing 'this'
-  * chore(l10n): update translations from Weblate
-  * feat: Add the cmake option USE_CCACHE
-  * refactor: update displayed user name from the friend model
-  * refactor(friend): add an additional signal to Friend
-  * fix(chatform): Broaden URL matching to include unicode
-  * feat: update to the new c-toxcore 0.2.0 conferences api
-  * fix(core): Adapt qtox to new conferences state change callback.
-  * fix: Not quit on close if this setting is enabled
-  * docs: add qttools5-dev to the dependencies list for Ubuntu
-  * fix(widget): Fix status pic alignment
-  * fix(chatlog): Match multi-character emoticons again
-  * docs(fix): Write Macedonian in its national script
-  * fix(build): move Appdata file installation to /usr/share/metainfo
-  * fix(smiley): change license of classic smileys to CC BY-SA 4.0
-  * refactor: add/delete checks in search code
-  * refactor: rename hideButton to searchHideButton
-  * fix: add search symbol ' in history
-  * style: change code in searchInText
-  * feat: add hot keys for search
-  * feat: optimise search in history
-  * feat: add search in text in group chats
-  * feat: remove search button and add line in context menu
-  * refactor: Move action handlers to slots
-  * feat: edit load history for search
-  * feat: add text search
-  * feat: add form for search
-  * feat: add a button to search
-  * refactor: Remove ChatForm from Group
-  * refactor: Remove using 'Group::getChatForm'
-  * refactor: Save GroupChatForm in Widget
-  * refactor: Remove chatForm from Friend
-  * refactor: Move using loadHistory out of Friend
-  * refactor: Remove using 'Friend::getChatForm'
-  * refactor: Remove 'FriendWidget::setChatForm'
-  * fix(chatlog): parse multi-length emoji properly
-  * chore(cmake): Lookup toxcore's static dependencies
-  * refactor(nexus): make loginscreen independent of nexus
-  * refactor: cleanup notifications and core
-  * chore: fix some compiler warnings
-  * fix(core): Use new callback API for bitrate set
-  * fix(core): Use new API for bitrate set
-  * perf(widget): don't save on setExpanded if categorywidget is unchanged Fix #4932
-  * docs(README): add GPG fingerprint of Anthony Bilinski as maintainer
-  * refactor: Use qFuzzyCompare to compare float values
-  * feat: Prefere new line as message break
-  * fix: Use real channels number
-  * refactor: Override only 'doOutput' and 'captureSamples' in OpenAL2
-  * style: Fix style
-  * fix: Allocate memory to input buffer
-  * fix: Call doAudio on timer timeout
-  * fix: [un]subscribe output in avform
-  * chore: Don't dereference Tox_Options, use getters instead.
-  * feat(groupchat): mark blocked users with different color
-  * chore: Reorganization of the context menu for chat
-  * chore: Update to immutable TES API and one-big-lib change.
-  * fix(l10n): Correction of the translation into Russian
-  * feat(UI): new status icons for message notifications
-  * fix(build): add needed ffmpeg decoder to configuration
-  * chore(i18n): update translation files for Weblate
-  * feat(l10n): add Macedonian translation
-  * feat(l10n): add Macedonian translation using Weblate
-  * feat(l10n): update French translation from Weblate
-  * feat(l10n): update Portuguese translation from Weblate
-  * feat(l10n): update Portuguese translation from Weblate
-  * fix(UI): prevent deadlocks on logout and profile delete
-  * chore(CI): cache whole directory instead of globbing
-  * chore(CI): silence CircleCI no tests warning
-  * chore: update download links for Windows
-  * chore: Elide text for CallConfirmWidget
-  * chore(CI): copy artifacts from correct path
-  * chore(CI): fix permissions on CircleCI
-  * fix(windows): %APPDATA -> %APPDATA% in template
-  * chore(CI): use TravisCI scripts also for CircleCI
-  * chore(CI): enable caching for CircleCI
-  * chore(windows): untar files with default user/permissions
-  * chore(CI): Add windows build with CircleCI
-  * chore: disable broken autoupdater by default
-  * fix: Correct display the call confirm window (CallConfirmWidget)
-  * chore: update c-toxcore for all builds
-  * revert: "fix(travis): switch back to older Ubuntu Image"
-  * fix(travis): try working around Travis + gitstats issue
-  * fix(l10n): Correction of the translation into Russian
+- update to 1.14.0
+  * Bug Fixes
+    - Not quit on close if this setting is enabled (e73dc10c)
+    - add search symbol ' in history (3e05279c)
+    - Use real channels number (e74cc37a)
+    - Allocate memory to input buffer (900f2a1a)
+    - Call doAudio on timer timeout (2353a66f)
+    - [un]subscribe output in avform (8c05399e)
+    - Correct display the call confirm window (CallConfirmWidget) 
+      (f4fe343e)
+    - elimination of warning '-Wreorder' (0869d3d8)
+    - Use epsilon to compare float (91dabf11)
+    - UI: prevent deadlocks on logout and profile delete (a49e3458)
+    - build:
+      - move Appdata file installation to /usr/share/metainfo 
+        (5db0bdd3)
+      - add needed ffmpeg decoder to configuration (8973a521)
+      - Add missing dependency for openSUSE (f7e089f7)
+    - chatform: Broaden URL matching to include unicode (e564b85e)
+    - chatlog:
+      - Match multi-character emoticons again (9643e48e)
+      - parse multi-length emoji properly (5df63f9c)
+    - chatwidget: fix send file button not working (af1aebfd)
+    - cmake:
+      - fix platform extensions for windows (7ad68e2f)
+      - add missing dependency (423f0956)
+    - core:
+      - Adapt qtox to new conferences state change callback.
+        (1111949f)
+      - Use new callback API for bitrate set (d2deec7c)
+      - Use new API for bitrate set (2c8f03da)
+    - cpu: Reduce CPU usage by avatar render (8db61f96)
+    - friendwidget: Use queued connection to avoid removing 'this' 
+      (9b4972e0)
+    - group: Show correct count of user on first creation 
+      (0a590336)
+    - install: Fix gzip invalid usage (266f63f6)
+    - l10n:
+      - Correction of the translation into Russian (3fb42b75)
+      -  Correction of the translation into Russian (9229fdd1)
+    - smiley: change license of classic smileys to CC BY-SA 4.0 
+      (da7c12e2)
+    - travis:
+      - try working around Travis + gitstats issue (4c980945)
+      - switch back to older Ubuntu Image (378daeaa)
+    - video:
+      - improve debug message (ff2fc18b)
+      - choose first available resolution in preview automatically
+        (81522dea)
+      - use float framerates also for V4L2 (a2927de2)
+      - allow not integer framerates (db7ee65d)
+      - Fix square form of a video (8de8c14a)
+    widget: Fix status pic alignment (d9118cfc)
+    windows: %APPDATA -> %APPDATA% in template (f53b8282)
+  * Features
+    - Add the cmake option USE_CCACHE (aa9cff31)
+    - update to the new c-toxcore 0.2.0 conferences api (d3d81bbd)
+    - add hot keys for search (ffb51e8a)
+    - optimise search in history (18fa8a74)
+    - add search in text in group chats (7718734c)
+    - remove search button and add line in context menu (8bb80c77)
+    - edit load history for search (de9c9061)
+    - add text search (b881d32d)
+    - add form for search (863c46c7)
+    - add a button to search (47d9da98)
+    - Prefere new line as message break (3b52402f)
+    - UI: new status icons for message notifications (4288785d)
+    - avatar: Add outline hightlight on mouse hover (bb26485d)
+    - groupchat: mark blocked users with different color (a729f2f8)
+    - l10n:
+      - add Macedonian translation (1a06f85d)
+      - add Macedonian translation using Weblate (41420331)
+      - update French translation from Weblate (a7e90969)
+      - update Portuguese translation from Weblate (3bad087b)
+      - update Portuguese translation from Weblate (8c3be522)
+  * Performance
+    - widget: don't save on setExpanded if categorywidget is 
+      unchanged Fix #4932 (b9845e1d)
 
 -------------------------------------------------------------------
-Wed Dec 27 20:25:37 UTC 2017 - opensuse-packaging@opensuse.org
-
-- Update to version 1.13.0:
-  * refactor: Update AboutFriend with new interface
-  * refactor: Add using IFriendSettings in AboutFriend model
-  * refactor: Add IFriendSettings
-  * fix(build): Add missing dependency for openSUSE
-  * refactor: Use signal + slot to update view
-  * refactor: Improve interface
-  * fix(travis): switch back to older Ubuntu Image
-  * fix(video): improve debug message
-  * fix(video): choose first available resolution in preview automatically
-  * fix(video): use float framerates also for V4L2
-  * fix(video): allow not integer framerates
-  * fix: elimination of warning '-Wreorder'
-  * fix(cmake): fix platform extensions for windows
-  * fix(chatwidget): fix send file button not working
-  * fix(video): Fix square form of a video
-  * fix(cpu): Reduce CPU usage by avatar render
-  * fix(install): Fix gzip invalid usage
-  * fix(cmake): add missing dependency
-  * feat(avatar): Add outline hightlight on mouse hover
-  * refactor: Make MaskablePixmapWidget allow to apply style
-  * fix: Use epsilon to compare float
-  * refactor: Remove code duplication from GroupWidget
-  * refactor: Add pure virtual methods for main actions in chat
-  * refactor: Move buttons style in ChatForm css
-  * refactor(style): Move chatFormHeader to chatForm
-  * refactor: Restruct code
-  * refactor(chatform): Remove Nexus and Profile dependency from ChatForm
-  * chore(build): Qt's website already does mirror load balancing
-  * chore(build): bump Qt version to 5.9.3 for Windows
-
--------------------------------------------------------------------
-Wed Dec 27 19:00:42 UTC 2017 - sleep_walker@opensuse.org
+Thu Dec  7 17:03:42 UTC 2017 - ecsos@opensuse.org
 
 - update to 1.13.0
-  check CHANGELOG.md
-- add CHANGELOG.md to documentation
-- change to pkgconfig dependencies
-- change from qmake to cmake
-- run through spec-cleaner
-- depend on c-toxcore instead of toxcore
+  See https://github.com/qTox/qTox/blob/v1.13.0/CHANGELOG.md
+  
+-------------------------------------------------------------------
+Sun Nov 12 22:47:50 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.12.1
+  See https://github.com/qTox/qTox/blob/v1.12.1/CHANGELOG.md
 
 -------------------------------------------------------------------
-Sun Aug 16 12:54:29 UTC 2015 - i@marguerite.su
+Sat Jul 29 09:49:24 UTC 2017 - ecsos@opensuse.org
 
-- initial version 1.1+git20150722.74b7713:
-  + OSX main menu bar
-  + OSX usable menu bar on login screen
-  + Update .gitattributes
-  + core: TOX_ERR_NEW_LOAD_BAD_FORMAT is non-fatal.
-  + German translation updates
-  + Prevent crashed when default video format not found.
-  + OSX: Remove dead code and make Widget own all their actions
-  + Add sr.ht key
+- update to 1.11.0
+  See https://github.com/qTox/qTox/blob/v1.11.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jun 11 10:25:54 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.10.2
+  See https://github.com/qTox/qTox/blob/v1.10.2/CHANGELOG.md
+  
+-------------------------------------------------------------------
+Tue May 16 16:27:01 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.10.1
+  See https://github.com/qTox/qTox/blob/v1.10.1/CHANGELOG.md
+- update to 1.10.0
+  See https://github.com/qTox/qTox/blob/v1.10.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Mar 26 10:35:49 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.9.0
+  See https://github.com/qTox/qTox/blob/v1.9.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Feb 12 11:50:30 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.8.1
+  See https://github.com/qTox/qTox/blob/v1.8.1/CHANGELOG.md
+- update to 1.8.0
+  See https://github.com/qTox/qTox/blob/v1.8.0/CHANGELOG.md
+  
+-------------------------------------------------------------------
+Fri Jan 13 16:09:43 UTC 2017 - ecsos@opensuse.org
+
+- update to 1.7.1
+  - Contains fixes for FreeBSD.
+- update to 1.7.0
+  See https://github.com/qTox/qTox/blob/v1.7.0/CHANGELOG.md
+- update to 1.6.0
+  See https://github.com/qTox/qTox/blob/v1.6.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Aug 21 13:59:58 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.5.0
+  See https://github.com/qTox/qTox/blob/v1.5.0/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri May 13 15:09:03 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.4.1
+  Bug Fixes
+  - settings: Look for portable setting in module path, not CWD 
+    (95634f1c)
+  - updater: Use module path, not working dir (0f1c8a78)
+
+-------------------------------------------------------------------
+Fri May  6 23:08:49 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.4.0
+  Breaking Changes
+    - disable building with filter_audio by default (116cc936)
+  Bug Fixes
+    - close groupcall if alone (98d51399)
+    - disable netcamview if no peer left (622b543d)
+    - audiocall button disabled in groupchats (db4f02a0)
+    - Close logfile only after the disabling logging to file (de487890)
+    - Make logMessageHandler thread-safe (a7ffc08c)
+    - Deadlock while rotating logs (c1e2a3c5)
+    - increase faux offline message timeout (76d8e193)
+    - remove unnecessary qDebug call (66f96019)
+    - Widget::updateIcons:
+      - workaround QIcon fallback bug (0b53c4fd)
+      - fix the way systray icons are loaded (90874a47)
+    - addfriendform: Removed extra connect return press (66bcfdae)
+    - addfriendform, widget: Remove Accepted Request (53071e95)
+    - chatform: regression in detecting tox: type IDs (48f3fb7d)
+    - core, widget: Added checks (f28c3a16)
+    - file transfer widget: QPushButton allows image to overflow (32d588a4, closes #3042)
+    - genericchatitemwidget, micfeedbackwidget: Added members init in the constructor (27faec91)
+    - groupaudio:
+      - don't set button to green while call running (6d355154)
+      - don't play audio while call is inactive (5339ad97)
+      - avoid deadlock when ending groupcall (afcd146a)
+    - groupinviteform:
+      - make list of groups scrollable (b74ecd92)
+      - translation invite message (24efaf05)
+      - remove deleted buttons from set (f137ba71)
+    - l18n: make typing notification & groupchat name translatable (43e61041)
+    - login screen: Change text on login tooltip (4e065f13)
+    - main: Added check sodium_init result (64a19d34)
+    - profile: Don't require .ini to load profile (56a36e2e)
+    - profileform:
+      - Add toxme username limitation (132f87c0)
+      - Deleted extra check and extra url (1f7e23d0)
+      - Fixed very quick relogin segfault (88de3a0a)
+      - Fixed segfault on logut (2e9295f4)
+      - Fix tab order, fix loop (65ab1f4e)
+    - screenshot: incorrect screenshot capture resolution under HiDPI (a36248b5)
+    - systemtrayicon: only delete the systray backend that was used (1d6f32c9)
+    - systemtrayicon, widget: Added deallocate memory (cbb7eeca)
+    - title: Change title on initial startup on "Add friend" (47d94045, closes #3100)
+    - toxme:
+      - Delete extra check (d1b706a4)
+      - Fixed potential memory leaks (8f4b6869)
+      - Fix possible segfault (11ec3947)
+      - Use format strings (fc2a5723)
+      - Translation fixes (9565a817)
+    - video:
+      - uses explicit default screen from QGuiApplication (d2189f38)
+      - usage of invalid file descriptors on error (556a8750)
+      - incorrect desktop video resolution when using HiDPI (75b40d0a)
+    - widget: Change focus after creating group (b111c509)
+    - widget, contentdialog: Added reset icon after activate chat window (4edc5996)
+  Performance
+    - camerasource: Passed parameter by reference (910c41f4)
+    - contentdialog: Delete redundant conditions (904a1d49)
+  Features
+    - install icons with make install on unix (218228b6)
+    - disable building with filter_audio by default (116cc936)
+    - audio: add (repair) support for group audio calls (356543ca)
+    - chatform: add support for non-local file and samba share links (47764c03)
+    - profileform: Added ability to change toxme server (41c5d4bf)
+    - toxme:
+      - Add save toxme info (204fe1d3)
+      - Add ToxMe registration (cb8bf134)
+
+-------------------------------------------------------------------
+Sat Mar 19 12:16:44 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.3.0
+  - New and improved sound code
+  - New HTTPS ToxMe protocol support
+  - Translation updates
+  - Miscellaneous fixes and polishing
+
+-------------------------------------------------------------------
+Sat Jan 23 21:27:11 UTC 2016 - ecsos@opensuse.org
+
+- update to 1.2.4
+  - Fix the updater not finding updates when the working directory
+    wasn't the same as the install directory
+- changes from 1.2.3
+  - Add toxme.io HTTPS lookup support
+
+-------------------------------------------------------------------
+Fri Dec 25 22:46:00 UTC 2015 - ecsos@opensuse.org
+
+- change from git version to version 1.2.2
+
+-------------------------------------------------------------------
+Sat Nov 15 15:28:41 UTC 2014 - ecsos@opensuse.org
+
+- update to newest git version
+- correct spec file
+
+-------------------------------------------------------------------
+Thu Jul 17 09:19:51 UTC 2014 - zawertun@gmail.com
+
+- toxgui -> qTox
+
+-------------------------------------------------------------------
+Mon Jul  7 14:14:20 UTC 2014 - zawertun@gmail.com
+
+- Initial version
 
