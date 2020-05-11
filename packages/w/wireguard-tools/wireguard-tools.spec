@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20200319
+Version:        1.0.20200510
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ URL:            https://www.wireguard.com/
 Source:         https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%{version}.tar.xz
 Source1:        https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%{version}.tar.asc
 Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE03AE.asc#/WireGuard.keyring
-Source2:        wireguard.target
-Patch1:         wireguard-fix-systemd-service.patch
 BuildRequires:  bash-completion
 BuildRequires:  pkgconfig
 %systemd_requires
@@ -49,7 +47,6 @@ wg: set and retrieve configuration of WireGuard interfaces
 
 %prep
 %setup -q -n wireguard-tools-%{version}
-%patch1 -p1
 ## HACK: Fixing wg-quick's DNS= directive with a hatchet
 contrib/dns-hatchet/apply.sh
 
@@ -64,20 +61,20 @@ cd src
     WITH_WGQUICK=yes \
     WITH_SYSTEMDUNITS=yes
 
-install -D -m0644 %{S:2} %{buildroot}%{_unitdir}/wireguard.target
+install -D -m0644 systemd/wg-quick.target %{buildroot}%{_unitdir}/wg-quick.target
 install -d %{buildroot}/%{_sysconfdir}/wireguard/
 
 %pre
-%service_add_pre wireguard.target wg-quick@.service
+%service_add_pre wg-quick.target wg-quick@.service
 
 %post
-%service_add_post wireguard.target wg-quick@.service
+%service_add_post wg-quick.target wg-quick@.service
 
 %preun
-%service_del_preun wireguard.target wg-quick@.service
+%service_del_preun wg-quick.target wg-quick@.service
 
 %postun
-%service_del_postun wireguard.target wg-quick@.service
+%service_del_postun wg-quick.target wg-quick@.service
 
 %files
 %license COPYING
@@ -90,6 +87,6 @@ install -d %{buildroot}/%{_sysconfdir}/wireguard/
 %{_datadir}/bash-completion/completions/wg
 %{_datadir}/bash-completion/completions/wg-quick
 %{_unitdir}/wg-quick@.service
-%{_unitdir}/wireguard.target
+%{_unitdir}/wg-quick.target
 
 %changelog

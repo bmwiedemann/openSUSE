@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 11 06:39:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200510
+  * ipc: add support for openbsd kernel implementation
+  * ipc: cleanup openbsd support
+  * wg-quick: add support for openbsd kernel implementation
+  * wg-quick: cleanup openbsd support
+  * wg-quick: support dns search domains
+  * Makefile: simplify silent cleaning
+  * git: add gitattributes so tarball doesn't have gitignore files
+  * terminal: specialize color_mode to stdout only
+  * highlighter: insist on 256-bit keys, not 257-bit or 258-bit
+  * wg-quick: android: support application whitelist
+  * systemd: add wg-quick.target
+- Remove patch (not longer needed):
+  * wireguard-fix-systemd-service.patch
+- Remove source file (fixed upstream)
+  * wireguard.target
+    This functionality is now provided by wg-quick.target
+
+-------------------------------------------------------------------
 Sat Mar 21 13:57:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200319
