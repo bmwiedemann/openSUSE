@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-oauth2
-Version:        1.10.1
+Version:        1.12.0
 Release:        0
 %define mod_name rack-oauth2
 %define mod_full_name %{mod_name}-%{version}
