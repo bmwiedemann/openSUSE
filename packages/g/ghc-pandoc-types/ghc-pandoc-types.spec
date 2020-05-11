@@ -74,6 +74,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver QuickCheck '< 2.14' '< 3'
 
 %build
 %ghc_lib_build
