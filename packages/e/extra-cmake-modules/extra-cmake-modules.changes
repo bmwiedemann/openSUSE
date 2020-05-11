@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  3 09:39:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * android: include the architecture on the apk name
+  * ECMAddQch: fix use of quotation marks with PREDEFINED in doxygen config
+  * Adapt FindKF5 to stricter checks in newer find_package_handle_standard_args
+  * ECMAddQch: help doxygen to handle Q_DECLARE_FLAGS, so such types get docs
+  * Fix wayland scanner warnings
+  * ECM: attempt to fix KDEInstallDirsTest.relative_or_absolute on Windows
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
