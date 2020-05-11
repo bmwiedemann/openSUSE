@@ -421,4 +421,12 @@
     <comment>version update</comment>
     <requestid>780041</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f6a0839ff906244560bf2905ed16a4f4</srcmd5>
+    <version>2.9.2.1</version>
+    <time>1589197029</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801069</requestid>
+  </revision>
 </revisionlist>

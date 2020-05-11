@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.9.2
+Version:        2.9.2.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -36,6 +36,8 @@ BuildRequires:  ghc-SHA-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-attoparsec-devel
+BuildRequires:  ghc-base-compat-devel
+BuildRequires:  ghc-base-noprelude-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-blaze-html-devel
@@ -138,7 +140,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-cabal-tweak-dep-ver network-uri '< 2.7' '< 3'
+cabal-tweak-dep-ver haddock-library '< 1.9' '< 2'
 
 %build
 %ghc_lib_build
