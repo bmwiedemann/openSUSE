@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:10 UTC 2020 - psimons@suse.com
+
+- Update doctemplates to version 0.8.2.
+  ## 0.8.2
+
+    * Add filters: first, rest, last, allbutlast.
+
+    * New constructors for Filter: FirstItem, LastItem, Rest, AllButLast
+      [API change].
+
+-------------------------------------------------------------------
 Thu Feb 27 16:05:49 UTC 2020 - psimons@suse.com
 
 - Update doctemplates to version 0.8.1.

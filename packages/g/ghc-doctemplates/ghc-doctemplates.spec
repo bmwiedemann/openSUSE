@@ -19,7 +19,7 @@
 %global pkg_name doctemplates
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Pandoc-style document templates
 License:        BSD-3-Clause
