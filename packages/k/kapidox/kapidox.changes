@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  3 09:39:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Fix missing whitespace after "Platform(s):" on front page
+  * Fix use of quotation marks for PREDEFINED entries in Doxygile.global
+  * Teach doxygen about Q_DECL_EQ_DEFAULT & Q_DECL_EQ_DELETE
+  * Add drawer on mobile and clean code
+  * Teach doxygen about Q_DECLARE_FLAGS, so such types can be documented
+  * Port to Aether Bootstrap 4
+  * Redo api.kde.org to look more like Aether
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
