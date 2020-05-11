@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  6 08:34:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.30.2:
+  * Extend the record conversion routines to handle OPAC encoding
+    with outputcharset and leaderspec.
+  * Fix #54 in cql_strerror: incorrect call to yaz_diag_to_str YAZ-928.
+  * Partly revert UTF-8 records returned by yaz-ztest (introduced in 5.30.0)
+  * Fixes pazpar2 tests that relies on specific records being returned.
+  * Increase a few buffers due to compiler warning
+  * Buffers are involving %d-conversions.
+
+-------------------------------------------------------------------
 Sat Mar 14 11:25:11 UTC 2020 - lars@linux-schulserver.de
 
 - Update to 5.29.0:
