@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  3 09:39:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * KI18N_WRAP_UI macro: set SKIP_AUTOUIC property on ui file and gen. header
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
