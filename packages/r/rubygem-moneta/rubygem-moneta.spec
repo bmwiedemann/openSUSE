@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-moneta
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 %define mod_name moneta
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.2}
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/moneta-rb/moneta
