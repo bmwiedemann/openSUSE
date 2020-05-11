@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May  7 21:31:35 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.18.5
+ see installed CHANGELOG.md
+
+  0.18.5 (2020-02-25)
+  ===================
+  
+  Can you guess? Another bugfix release!
+  
+  ## Bugfixes
+  * minitest won't crash if SimpleCov isn't loaded - aka don't execute SimpleCov code in the minitest plugin if SimpleCov isn't loaded. Thanks to [@edariedl](https://github.com/edariedl) for the report of the peculiar problem in [#877](https://github.com/colszowka/simplecov/issues/877).
+  
+  0.18.4 (2020-02-24)
+  ===================
+  
+  Another small bugfix release 🙈 Fixes SimpleCov running with rspec-rails, which was broken due to our fixed minitest integration.
+  
+  ## Bugfixes
+  * SimpleCov will run again correctly when used with rspec-rails. The excellent bug report [#873](https://github.com/colszowka/simplecov/issues/873) by [@odlp](https://github.com/odlp) perfectly details what went wrong. Thanks to [@adam12](https://github.com/adam12) for the fix [#874](https://github.com/colszowka/simplecov/pull/874).
+  
+  
+  0.18.3 (2020-02-23)
+  ===========
+  
+  Small bugfix release. It's especially recommended to upgrade simplecov-html as well because of bugs in the 0.12.0 release.
+  
+  ## Bugfixes
+  * Fix a regression related to file encodings as special characters were missing. Furthermore we now respect the magic `# encoding: ...` comment and read files in the right encoding. Thanks ([@Tietew](https://github.com/Tietew)) - see [#866](https://github.com/colszowka/simplecov/pull/866)
+  * Use `Minitest.after_run` hook to trigger post-run hooks if `Minitest` is present. See [#756](https://github.com/colszowka/simplecov/pull/756) and [#855](https://github.com/colszowka/simplecov/pull/855) thanks ([@adam12](https://github.com/adam12))
+  
+  0.18.2 (2020-02-12)
+  ===================
+  
+  Small release just to allow you to use the new simplecov-html.
+  
+  ## Enhancements
+  * Relax simplecov-html requirement so that you're able to use [0.12.0](https://github.com/colszowka/simplecov-html/blob/master/CHANGELOG.md#0120-2020-02-12)
+
+-------------------------------------------------------------------
 Mon Feb 10 15:49:45 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.18.1
