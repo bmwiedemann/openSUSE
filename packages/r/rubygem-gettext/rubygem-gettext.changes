@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Thu May  7 20:45:20 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.3.5
+ see installed news.md
+
+  ## 3.3.5: 2020-02-15 {#version-3-3-5}
+  
+  ### Improvements
+  
+    * Added support for `|` method.
+      [GitHub#73][Reported by dorle-o]
+  
+  ### Thanks
+  
+    * dorle-o
+  
+  ## 3.3.4: 2020-02-12 {#version-3-3-4}
+  
+  ### Improvements
+  
+    * Added support for `%W`.
+      [GitHub#72][Reported by Michaël Hoste]
+  
+  ### Thanks
+  
+    * Michaël Hoste
+
+-------------------------------------------------------------------
+Mon Feb 10 14:39:59 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.3.3
+ see installed news.md
+
+  ## 3.3.3: 2020-02-05 {#version-3-3-3}
+  
+  ### Improvements
+  
+    * Added support for `%I`.
+      [GitHub#71][Reported by Kai Ramuenke]
+  
+  ### Thanks
+  
+    * Kai Ramuenke
+  
+  ## 3.3.2: 2020-01-13 {#version-3-3-2}
+  
+  ### Fixes
+  
+    * Fixed a bug that `rake gettext:po:add]` raises an error.
+      [GitHub#70][Patch by KITAITI Makoto]
+  
+  ### Thanks
+  
+    * KITAITI Makoto
+  
+  ## 3.3.1: 2020-01-12 {#version-3-3-1}
+  
+  ### Improvements
+  
+    * Stopped detecting string interpolation literal.
+      [GitHub#21][Reported by Remo]
+  
+    * `rxgettext`: Added support for adding a new parser by `--require`.
+  
+    * Added support for GtkBuilder UI definitions file.
+      [GitHub#63][Reported by Alex]
+  
+    * Improved percent literal parsing.
+      [GitHub#67][Patch by KITAITI Makoto]
+  
+  ### Thanks
+  
+    * Remo
+  
+    * Alex
+  
+    * KITAITI Makoto
+  
+  ## 3.3.0: 2020-01-08 {#version-3-3-0}
+  
+  ### Improvements
+  
+    * Fixed README markup.
+      [GitHub#57][Patch by Alexander Paukste]
+  
+    * Suppressed warnings.
+      [GitHub#58][Patch by 284km]
+  
+    * Improved README.
+      [GitHub#62][Patch by Robert Graff]
+  
+    * Added support for finding `racc` of Ruby 2.7.
+      [GitHub#65][Patch by KITAITI Makoto]
+  
+    * Added support for Ruby 2.7.
+      [GitHub#64][Reported by Anatol Pomozov]
+  
+    * Dropped support for Ruby 2.4.
+  
+  ### Fixes
+  
+    * Fixed a bug that `n_` may return nil.
+      [GitHub#60][Patch by Michaël Hoste]
+  
+    * Fixed a sort by msgid bug.
+      [GitHub#61][Patch by Robert Graff]
+  
+  ### Thanks
+  
+    * Alexander Paukste
+  
+    * 284km
+  
+    * Michaël Hoste
+  
+    * Robert Graff
+  
+    * KITAITI Makoto
+  
+    * Anatol Pomozov
+
+-------------------------------------------------------------------
 Tue Mar  6 05:30:14 UTC 2018 - factory-auto@kulow.org
 
 - updated to version 3.2.9
