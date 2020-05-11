@@ -35,7 +35,7 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -47,12 +47,6 @@ Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
 Source91:       missing_setuid.txt.in
-# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3345.
-Patch1:         0001-autotools-don-t-install-run-coccinelle.sh.patch
-# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3347.
-Patch2:         0002-cgroups-fix-uninitialized-transient_len-warning.patch
-# FIX-UPSTREAM: Backport of https://github.com/lxc/lxc/pull/3349 .
-Patch3:         0003-cgroups-fix-build-warning-on-GCC-7.patch
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libapparmor-devel
@@ -135,9 +129,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 ./autogen.sh

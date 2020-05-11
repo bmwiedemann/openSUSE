@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:30:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to LXC 4.0.1:
+  + Tweak systemd ordering (start after remote-fs.target)
+  + Fix various issues around attach and cgroups
+  + Fix shutdown timeout not working on pidfd systems
+  + Fix cgroup issue on 4.9 kernel
+  + Fix write issues in /dev/stdout
+- Remove 0001-autotools-don-t-install-run-coccinelle.sh.patch
+- Remove 0002-cgroups-fix-uninitialized-transient_len-warning.patch
+- Remove 0003-cgroups-fix-build-warning-on-GCC-7.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 01:19:17 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Fix mis-use of %suse_version when we actually want to check against
