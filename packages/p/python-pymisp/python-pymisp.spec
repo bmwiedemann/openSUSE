@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pymisp
-Version:        2.4.124
+Version:        2.4.125
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/MISP/PyMISP
 Source0:        https://github.com/MISP/PyMISP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # github tarball misses the misp-objects subproject data
-Source1:        https://github.com/MISP/misp-objects/archive/3a87dfd0832a576d53d7665bd93451dec7bc59f1.tar.gz#/misp-objects.tar.gz
+Source1:        https://github.com/MISP/misp-objects/archive/84a7bb07a4f1807546cf5c2e03b35dbc0773699d.tar.gz#/misp-objects.tar.gz
 # pypi tarball missing some files: https://github.com/MISP/PyMISP/issues/554
 #Source:         https://files.pythonhosted.org/packages/source/p/pymisp/pymisp-%%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
