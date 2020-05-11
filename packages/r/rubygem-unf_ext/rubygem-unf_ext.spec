@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-unf_ext
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-unf_ext
-Version:        0.0.7.6
+Version:        0.0.7.7
 Release:        0
 %define mod_name unf_ext
 %define mod_full_name %{mod_name}-%{version}
@@ -35,7 +35,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/knu/ruby-unf_ext
+URL:            https://github.com/knu/ruby-unf_ext
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Unicode Normalization Form support library for CRuby
