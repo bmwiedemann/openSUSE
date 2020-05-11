@@ -24,13 +24,10 @@ Summary:        JSON pretty-printing library and command-line tool
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
@@ -66,11 +63,11 @@ This package provides the Haskell %{pkg_name} library development files.
 %setup -q -n %{pkg_name}-%{version}
 
 %build
+%define cabal_configure_options -flib-only
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache
@@ -80,7 +77,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %files -f %{name}.files
 %license LICENSE
-%{_bindir}/%{pkg_name}
 
 %files devel -f %{name}-devel.files
 %doc README.markdown
