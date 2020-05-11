@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 10:06:40 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Downgrade to version 2.6.3.0. Upstream has retracted 2.7.0.0.
+
+-------------------------------------------------------------------
 Fri Feb  7 08:04:22 UTC 2020 - psimons@suse.com
 
 - Update network-uri to version 2.7.0.0.
