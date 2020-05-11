@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 08:08:25 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file to get more accurate dependency information.
+
+-------------------------------------------------------------------
 Wed Jan  1 11:09:16 UTC 2020 - psimons@suse.com
 
 - Drop obsolete code that used to create a Setup.hs file. The new
