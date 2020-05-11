@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May  7 19:59:43 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 6.0.3
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.3 (May 06, 2020) ##
+  
+  *   annotated_source_code returns an empty array so TemplateErrors without a
+      template in the backtrace are surfaced properly by DebugExceptions.
+  
+      *Guilherme Mansur*, *Kasper Timm Hansen*
+  
+  *   Add autoload for SyntaxErrorInTemplate so syntax errors are correctly raised by DebugExceptions.
+  
+      *Guilherme Mansur*, *Gannon McGibbon*
+  
+  
+  ## Rails 6.0.2.2 (March 19, 2020) ##
+  
+  *   Fix possible XSS vector in escape_javascript helper
+  
+      CVE-2020-5267
+  
+      *Aaron Patterson*
+
+-------------------------------------------------------------------
 Mon Apr 27 10:41:51 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.2.2
