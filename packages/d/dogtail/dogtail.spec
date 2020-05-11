@@ -1,7 +1,7 @@
 #
 # spec file for package dogtail
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dogtail
-Version:        0.9.0
+Version:        0.9.11
 Release:        0
 Summary:        GUI test tool and automation framework
-License:        GPL-2.0
-Url:            http://dogtail.fedorahosted.org/
-Source0:        http://fedorahosted.org/released/dogtail/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dogtail-wnck-3.0.patch fcrozat@suse.com -- ensure Wnck 3.0 typelib is required
-Patch0:         dogtail-wnck-3.0.patch
+License:        GPL-2.0-only
+URL:            https://gitlab.com/dogtail/dogtail/
+Source0:        https://gitlab.com/dogtail/dogtail/raw/released/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
-Requires:       python-atspi
-Requires:       python-cairo
-Requires:       python-gobject
-Requires:       python-imaging
-Requires:       rpm-python
+Requires:       python3-atspi
+Requires:       python3-cairo
+Requires:       python3-gobject
+Requires:       python3-imaging
+Requires:       python3-rpm
 Requires:       xinit
-%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
-Requires:       python-gobject-Gdk
-%endif
 BuildArch:      noarch
+%if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
+Requires:       python3-gobject-Gdk
+%endif
 
 %description
 GUI test tool and automation framework that uses assistive technologies to
@@ -48,15 +47,14 @@ communicate with desktop applications.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-python ./setup.py build
+python3 ./setup.py build
 
 %install
-python ./setup.py install -O2 --root=%{buildroot} --record=%{name}.files
+python3 ./setup.py install -O2 --root=%{buildroot} --record=%{name}.files
 rm -rf %{buildroot}/%{_docdir}/dogtail
-rm -f %{buildroot}/%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
+rm -rf %{buildroot}/%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
 find examples -type f -exec chmod 0644 \{\} \;
 desktop-file-install %{buildroot}/%{_datadir}/applications/sniff.desktop \
   --dir=%{buildroot}/%{_datadir}/applications \
@@ -69,13 +67,12 @@ desktop-file-install %{buildroot}/%{_datadir}/applications/sniff.desktop \
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
-%{python_sitelib}/dogtail/
+%{python3_sitelib}/dogtail/
 %{_datadir}/applications/*
 %{_datadir}/dogtail/
 %{_datadir}/icons/hicolor/*/apps/%{name}*.*
-%doc COPYING
+%license COPYING
 %doc README
 %doc NEWS
 %doc %{_datadir}/doc/dogtail
