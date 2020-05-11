@@ -75,7 +75,6 @@
   <staging_project name="openSUSE:Factory:Staging:adi:15"/>
   <staging_project name="openSUSE:Factory:Staging:adi:21"/>
   <staging_project name="openSUSE:Factory:Staging:adi:3"/>
-  <staging_project name="openSUSE:Factory:Staging:adi:30"/>
   <staging_project name="openSUSE:Factory:Staging:adi:41"/>
   <staging_project name="openSUSE:Factory:Staging:adi:43"/>
   <staging_project name="openSUSE:Factory:Staging:adi:44"/>
@@ -103,4 +102,14 @@
   <staging_project name="openSUSE:Factory:Staging:adi:82"/>
   <staging_project name="openSUSE:Factory:Staging:adi:83"/>
   <staging_project name="openSUSE:Factory:Staging:adi:84"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:85"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:86"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:87"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:88"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:89"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:90"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:30"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:91"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:92"/>
+  <staging_project name="openSUSE:Factory:Staging:adi:93"/>
 </workflow>
