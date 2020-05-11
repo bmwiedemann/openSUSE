@@ -40,4 +40,12 @@ currently pending in sr#443054</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773828</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1ee7820b126cb2a95611964f8ed6506b</srcmd5>
+    <version>2.2.0</version>
+    <time>1589197155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802360</requestid>
+  </revision>
 </revisionlist>

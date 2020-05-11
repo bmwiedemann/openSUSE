@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-paint
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 %define mod_name paint
 %define mod_full_name %{mod_name}-%{version}
@@ -40,8 +40,8 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Terminal painter: No string extensions / RGB and 256 color support / effect
-support. Usage: Paint['string', :red, :bright].
+Terminal painter with RGB and 256 (fallback) color and terminal effects
+support. No string extensions! Usage: Paint['string', :red, :bright].
 
 %prep
 
