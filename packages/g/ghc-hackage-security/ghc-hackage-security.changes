@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:16 UTC 2020 - psimons@suse.com
+
+- Update hackage-security to version 0.6.0.1.
+  * Fix bug in non-default `-lukko` build-configuration (#242)
+  * Add support for `template-haskell-2.16.0.0` (#240)
+  * Remove `Hackage.Security.TUF.FileMap.lookupM`
+  * Don't expose `Hackage.Security.Util.IO` module
+  * Don't expose `Hackage.Security.Util.Lens` module
+  * Report missing keys in `.meta` objects more appropriately as
+    `ReportSchemaErrors(expected)` instead of via `Monad(fail)`
+  * Add support for GHC 8.8 / base-4.13
+  * Use `lukko` for file-locking
+  * Extend `LogMessage` to signal events for cache lock acquiring and release
+  * New `lockCacheWithLogger` operation
+
+- Remove obsolete patch "fix-ghc-8.8.x-build.patch".
+
+-------------------------------------------------------------------
 Fri Feb 28 08:35:47 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal build information for more accurate dependencies.

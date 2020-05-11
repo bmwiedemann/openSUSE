@@ -19,14 +19,12 @@
 %global pkg_name hackage-security
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.3.0
+Version:        0.6.0.1
 Release:        0
 Summary:        Hackage security library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
-Patch01:        https://raw.githubusercontent.com/hvr/head.hackage/master/patches/hackage-security-0.5.3.0.patch#/fix-ghc-8.8.x-build.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base64-bytestring-devel
@@ -36,6 +34,7 @@ BuildRequires:  ghc-cryptohash-sha256-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-ed25519-devel
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-lukko-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel
@@ -49,10 +48,13 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-zlib-devel
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-unordered-containers-devel
+BuildRequires:  ghc-vector-devel
 %endif
 
 %description
@@ -85,13 +87,9 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-%patch01 -p1
-cabal-tweak-dep-ver base '< 4.13' '< 5'
-cabal-tweak-dep-ver network-uri '< 2.7' '< 3'
+cabal-tweak-dep-ver base64-bytestring '< 1.1' '< 2'
 
 %build
-%define cabal_configure_options -fbase48 -fuse-network-uri
 %ghc_lib_build
 
 %install
