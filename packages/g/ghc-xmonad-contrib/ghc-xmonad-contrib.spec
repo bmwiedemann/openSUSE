@@ -55,7 +55,7 @@ For an introduction to building, configuring and using xmonad extensions, see
 "XMonad.Doc.Extending", using the contributed extensions library
 
 "XMonad.Doc.Developing", introduction to xmonad internals and writing your own
-extensions. .
+extensions.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
