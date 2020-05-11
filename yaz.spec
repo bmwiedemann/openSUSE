@@ -18,7 +18,7 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.29.0
+Version:        5.30.2
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
