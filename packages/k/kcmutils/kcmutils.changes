@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  3 09:39:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * KSettings::Dialog: add support for KPluginInfos without a KService
+  * Small optimization: call kcmServices() only once
+  * Downgrade warning about old-style KCM to qDebug, until KF6.
+  * Use ecm_setup_qtplugin_macro_names
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
