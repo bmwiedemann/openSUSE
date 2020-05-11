@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/k-bx/python-semver
-# https://github.com/k-bx/python-semver/issues/136
-Source:         https://github.com/k-bx/python-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/python-semver/python-semver
+Source:         https://files.pythonhosted.org/packages/source/s/semver/semver-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +41,7 @@ A Python module for semantic versioning. Simplifies comparing versions.
 See also http://semver.org/
 
 %prep
-%setup -q -n python-semver-%{version}
+%setup -q -n semver-%{version}
 
 %build
 %python_build
