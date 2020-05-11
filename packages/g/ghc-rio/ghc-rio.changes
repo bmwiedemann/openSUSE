@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:07:09 UTC 2020 - psimons@suse.com
+
+- Update rio to version 0.1.14.1.
+  ## 0.1.14.1
+
+  * Support `unliftio-core` 0.2
+
+-------------------------------------------------------------------
 Thu Feb 27 14:16:53 UTC 2020 - psimons@suse.com
 
 - Update rio to version 0.1.14.0.

@@ -19,7 +19,7 @@
 %global pkg_name rio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.14.0
+Version:        0.1.14.1
 Release:        0
 Summary:        A standard library for Haskell
 License:        MIT
@@ -66,8 +66,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-echo > Setup.hs 'import Distribution.Simple'
-echo >>Setup.hs 'main = defaultMain'
 
 %build
 %ghc_lib_build
