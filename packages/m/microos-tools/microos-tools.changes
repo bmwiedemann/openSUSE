@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 10 09:32:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.0
+  - use autoconf tools to support libexecdir
+
+-------------------------------------------------------------------
 Fri Feb 14 09:59:05 UTC 2020 - kukuk@suse.de
 
 - Update to version 1.0+git20200214.c7654a7:

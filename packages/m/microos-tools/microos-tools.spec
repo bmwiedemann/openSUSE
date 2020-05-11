@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        1.0+git20200214.c7654a7
+Version:        2.0
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -25,9 +25,10 @@ Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
 Source:         microos-tools-%{version}.tar.xz
 BuildRequires:  distribution-release
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
 Conflicts:      systemd-coredump
-Obsoletes:      caasp-tools
 BuildArch:      noarch
 
 %description
@@ -37,9 +38,11 @@ Files, scripts and directories for openSUSE Kubic.
 %setup -q
 
 %build
+%configure
+%make_build
 
 %install
-cp -a {etc,usr} %{buildroot}
+%make_install
 
 %pre
 %service_add_pre setup-systemd-proxy-env.service
@@ -58,7 +61,12 @@ cp -a {etc,usr} %{buildroot}
 %config %{_sysconfdir}/systemd/system/systemd-firstboot.service
 %dir %{_sysconfdir}/systemd
 %dir %{_sysconfdir}/systemd/system
-%{_unitdir}
+%{_unitdir}/MicroOS-firstboot.service
+%{_unitdir}/printenv.service
+%{_unitdir}/setup-systemd-proxy-env.path
+%{_unitdir}/setup-systemd-proxy-env.service
+%{_unitdir}/sysinit.target.wants
+%{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
 %{_prefix}/lib/sysctl.d/30-corefiles.conf
 %{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env

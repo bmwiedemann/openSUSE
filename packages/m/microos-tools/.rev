@@ -47,4 +47,13 @@
   * Adjust README.md</comment>
     <requestid>774346</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>145f4d3f09834927fac95b1bd0159ec4</srcmd5>
+    <version>2.0</version>
+    <time>1589196358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  - use autoconf tools to support libexecdir (forwarded request 802477 from kukuk)</comment>
+    <requestid>802478</requestid>
+  </revision>
 </revisionlist>
