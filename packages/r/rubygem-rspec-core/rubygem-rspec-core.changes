@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  7 21:25:45 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.9.2
+ see installed Changelog.md
+
+  ### 3.9.2 / 2020-05-02
+  [Full Changelog](http://github.com/rspec/rspec-core/compare/v3.9.1...v3.9.2)
+  
+  Bug Fixes:
+  
+  * Emit a warning when `around` hook is used with `:context` scope
+    (Phil Pirozhkov, #2687)
+  * Prevent invalid implementations of `Exception#cause` from being treated as a
+    valid cause (and causing strange errors) in `RSpec::Core::Formatters::ExceptionPresenter`.
+    (Jon Rowe, #2703)
+  * Correctly detect patterns when `rspec_opts` is an array in `RSpec::Core::RakeTask`.
+    (Marc-André Lafortune, #2704)
+  * Make `RSpec.clear_examples` reset example counts for example groups. This fixes
+    an issue with re-running specs not matching ids. (Agis Anastasopoulos, #2723)
+
+-------------------------------------------------------------------
 Mon Jan 27 11:22:00 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.9.1

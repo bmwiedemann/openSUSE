@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec-core
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-core
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 %define mod_name rspec-core
 %define mod_full_name %{mod_name}-%{version}
@@ -34,7 +34,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/rspec/rspec-core
+URL:            https://github.com/rspec/rspec-core
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RSpec runner and formatters
