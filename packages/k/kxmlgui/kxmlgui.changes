@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Improve warning
+  * [KRichTextEditor] Add support for headings
+  * [KKeySequenceWidget] Work around Meta modifier behavior
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
