@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * [Wayland] Add to PlasmaWindowManagement protocol windows stacking order
+  * Add wrapper for wl_global_remove
+  * [server] Add some sub-surface life cycle signals
+  * [autotests] Optimistic attempt to fix RemoteAccessTest reilability
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
