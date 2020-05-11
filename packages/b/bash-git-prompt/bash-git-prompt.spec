@@ -16,6 +16,10 @@
 #
 
 
+%if ! %{defined _fillupdir}
+%define _fillupdir /var/adm/fillup-templates
+%endif
+
 Name:           bash-git-prompt
 Version:        2.7.1
 Release:        0
@@ -24,7 +28,8 @@ License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://github.com/magicmonty/bash-git-prompt
 Source0:        https://github.com/magicmonty/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
-Requires:       git
+Requires:       git-core
+Requires(post): %fillup_prereq
 BuildArch:      noarch
 
 %description
@@ -51,19 +56,58 @@ install -pm 644 themes/*.bgptemplate %{buildroot}%{_datadir}/%{name}/themes
 
 # enable bash-git-prompt
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}%{_fillupdir}
+cat << EOF >> %{buildroot}%{_fillupdir}/sysconfig.%{name}
+GIT_PROMPT_SYSTEMWIDE_ENABLE=1
+
+GIT_PROMPT_ONLY_IN_REPO=1
+
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0      # uncomment to avoid fetching remote status
+# GIT_PROMPT_IGNORE_SUBMODULES=1        # uncomment to avoid searching for changed files in submodules
+
+# GIT_PROMPT_SHOW_UPSTREAM=1            # uncomment to show upstream tracking branch
+# GIT_PROMPT_SHOW_UNTRACKED_FILES=all   # can be no, normal or all; determines counting of untracked files
+                                        # Set to `no` or `normal` to speed things up if you have lots of
+                                        # untracked files in your repository. This can be the case for
+                                        # build systems that put their build artifacts in the subdirectory
+                                        # structure of the git repository.
+
+# GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
+
+# GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+
+# GIT_PROMPT_START=...                  # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...                    # uncomment for custom prompt end sequence
+
+# Color curtomization
+GIT_PROMPT_THEME=Default
+# GIT_PROMPT_THEME=Custom               # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
+# GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
+# GIT_PROMPT_THEME=Solarized            # use theme optimized for solarized color scheme
+EOF
+
 cat << EOF >> %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 if [ -n "\${BASH_VERSION-}" ] && [ -f %{_datadir}/%{name}/gitprompt.sh ]; then
     # Set config variables first
+    [ -f %{_sysconfdir}/sysconfig/%{name} ] && source %{_sysconfdir}/sysconfig/%{name}
 
-    GIT_PROMPT_ONLY_IN_REPO=1
-    GIT_PROMPT_THEME=Default
-    source %{_datadir}/%{name}/gitprompt.sh
+    [ "\${GIT_PROMPT_SYSTEMWIDE_ENABLE}" = 1 ] && source %{_datadir}/%{name}/gitprompt.sh
 fi
 EOF
+
+%pre
+
+%post
+%fillup_only
+
+%preun
+
+%postun
 
 %files
 %{_datadir}/%{name}
 %{_sysconfdir}/profile.d/%{name}.sh
+%{_fillupdir}/sysconfig.%{name}
 
 %doc README.md
 

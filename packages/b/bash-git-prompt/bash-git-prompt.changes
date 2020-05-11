@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 10 08:51:18 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add configuration file.
+
+-------------------------------------------------------------------
 Mon Feb 24 16:58:27 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Use profile.d instead of editing /etc/bashrc.
