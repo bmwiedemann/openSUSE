@@ -280,4 +280,12 @@
   * Automatically scroll while dragging text.</comment>
     <requestid>794458</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>82a77bf46db1cc6f4c61ff585e331d3f</srcmd5>
+    <version>4.3.3</version>
+    <time>1589197455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802544</requestid>
+  </revision>
 </revisionlist>
