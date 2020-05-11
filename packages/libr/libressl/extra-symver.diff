@@ -3,32 +3,33 @@ Date: 2017-12-04 21:25:11.022534627 +0100
 
 Add symbol versions into the library to be on par with openssl.
 ---
- crypto/Makefile.am |    6 +++++-
+ crypto/Makefile.am |    7 +++++--
  ssl/Makefile.am    |    6 +++++-
  tls/Makefile.am    |    6 +++++-
- 3 files changed, 15 insertions(+), 3 deletions(-)
+ 3 files changed, 15 insertions(+), 4 deletions(-)
 
-Index: libressl-2.6.3/crypto/Makefile.am
+Index: libressl-3.1.1/crypto/Makefile.am
 ===================================================================
---- libressl-2.6.3.orig/crypto/Makefile.am
-+++ libressl-2.6.3/crypto/Makefile.am
-@@ -92,7 +92,11 @@ if HOST_WIN
+--- libressl-3.1.1.orig/crypto/Makefile.am
++++ libressl-3.1.1/crypto/Makefile.am
+@@ -93,8 +93,11 @@ if HOST_WIN
  	-mv crypto_portable.sym.tmp crypto_portable.sym
  endif
  
 -libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -export-symbols crypto_portable.sym
+-EXTRA_libcrypto_la_DEPENDENCIES = crypto_portable.sym
 +crypto2.sym: crypto_portable.sym
 +	(echo 'LIBRESSL { global: '; sed -e 's/\(.*\)/\1;/' <$<; echo 'local: *; };') >$@
 +
-+libcrypto_la_DEPENDENCIES = crypto2.sym libcompat.la
 +libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -Wl,--version-script=crypto2.sym
++EXTRA_libcrypto_la_DEPENDENCIES = crypto_portable.sym crypto2.sym
  libcrypto_la_LIBADD = libcompat.la
  if !HAVE_EXPLICIT_BZERO
  libcrypto_la_LIBADD += libcompatnoopt.la
-Index: libressl-2.6.3/ssl/Makefile.am
+Index: libressl-3.1.1/ssl/Makefile.am
 ===================================================================
---- libressl-2.6.3.orig/ssl/Makefile.am
-+++ libressl-2.6.3/ssl/Makefile.am
+--- libressl-3.1.1.orig/ssl/Makefile.am
++++ libressl-3.1.1/ssl/Makefile.am
 @@ -6,7 +6,11 @@ EXTRA_DIST = VERSION
  EXTRA_DIST += CMakeLists.txt
  EXTRA_DIST += ssl.sym
@@ -37,15 +38,15 @@ Index: libressl-2.6.3/ssl/Makefile.am
 +ssl2.sym: ssl.sym
 +	(echo 'LIBRESSL { global: '; sed -e 's/\(.*\)/\1;/' <$<; echo 'local: *; };') >$@
 +
-+libssl_la_DEPENDENCIES = ssl2.sym
 +libssl_la_LDFLAGS = -version-info @LIBSSL_VERSION@ -no-undefined -Wl,--version-script=ssl2.sym
- libssl_la_LIBADD = $(abs_top_builddir)/crypto/libcrypto.la
++EXTRA_libssl_la_DEPENDENCIES = ssl.sym ssl2.sym
+ libssl_la_LIBADD = $(abs_top_builddir)/crypto/libcrypto.la $(PLATFORM_LDADD)
  
  libssl_la_SOURCES = bio_ssl.c
-Index: libressl-2.6.3/tls/Makefile.am
+Index: libressl-3.1.1/tls/Makefile.am
 ===================================================================
---- libressl-2.6.3.orig/tls/Makefile.am
-+++ libressl-2.6.3/tls/Makefile.am
+--- libressl-3.1.1.orig/tls/Makefile.am
++++ libressl-3.1.1/tls/Makefile.am
 @@ -6,7 +6,11 @@ EXTRA_DIST = VERSION
  EXTRA_DIST += CMakeLists.txt
  EXTRA_DIST += tls.sym

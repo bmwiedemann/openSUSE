@@ -1,7 +1,7 @@
 #
 # spec file for package libressl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libressl
-Version:        3.0.2
+Version:        3.1.1
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -33,7 +33,6 @@ Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         des-fcrypt.diff
 Patch2:         extra-symver.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  fdupes
@@ -48,31 +47,31 @@ LibreSSL is an open-source implementation of the Secure Sockets Layer
 OpenSSL, with the aim of refactoring the OpenSSL code so as to
 provide a more secure implementation.
 
-%package -n libcrypto45
+%package -n libcrypto46
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libcrypto45
+%description -n libcrypto46
 The "crypto" library implements a wide range of cryptographic
 algorithms used in various Internet standards. The services provided
 by this library are used by the LibreSSL implementations of SSL, TLS
 and S/MIME, and they have also been used to implement SSH, OpenPGP,
 and other cryptographic standards.
 
-%package -n libssl47
+%package -n libssl48
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libssl47
+%description -n libssl48
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
 
-%package -n libtls19
+%package -n libtls20
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libtls19
+%description -n libtls20
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
@@ -83,9 +82,9 @@ libssl) for secure client and server communications.
 %package devel
 Summary:        Development files for LibreSSL, an SSL/TLS protocol implementation
 Group:          Development/Libraries/C and C++
-Requires:       libcrypto45 = %version
-Requires:       libssl47 = %version
-Requires:       libtls19 = %version
+Requires:       libcrypto46 = %version
+Requires:       libssl48 = %version
+Requires:       libtls20 = %version
 Conflicts:      libopenssl-devel
 Conflicts:      otherproviders(ssl-devel)
 
@@ -101,9 +100,7 @@ applications that want to make use of libressl.
 %package devel-doc
 Summary:        Documentation for the LibreSSL API
 Group:          Documentation/Man
-%if 0%{?suse_version} >= 1130
 BuildArch:      noarch
-%endif
 Conflicts:      openssl-doc
 
 %description devel-doc
@@ -113,8 +110,7 @@ LibreSSL is an open-source implementation of the Secure Sockets Layer
 This subpackage contains the manpages to the LibreSSL API.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -143,15 +139,14 @@ if ! make check %{?_smp_mflags}; then
 	exit 1
 fi
 
-%post   -n libcrypto45 -p /sbin/ldconfig
-%postun -n libcrypto45 -p /sbin/ldconfig
-%post   -n libssl47 -p /sbin/ldconfig
-%postun -n libssl47 -p /sbin/ldconfig
-%post   -n libtls19 -p /sbin/ldconfig
-%postun -n libtls19 -p /sbin/ldconfig
+%post   -n libcrypto46 -p /sbin/ldconfig
+%postun -n libcrypto46 -p /sbin/ldconfig
+%post   -n libssl48 -p /sbin/ldconfig
+%postun -n libssl48 -p /sbin/ldconfig
+%post   -n libtls20 -p /sbin/ldconfig
+%postun -n libtls20 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %dir %_sysconfdir/ssl/
 %config %_sysconfdir/ssl/openssl.cnf
 %config %_sysconfdir/ssl/x509v3.cnf
@@ -159,22 +154,19 @@ fi
 %_bindir/openssl
 %_mandir/man1/*.1*
 %_mandir/man5/*.5*
+%_mandir/man8/*.8*
 %doc COPYING
 
-%files -n libcrypto45
-%defattr(-,root,root)
+%files -n libcrypto46
 %_libdir/libcrypto.so.*
 
-%files -n libssl47
-%defattr(-,root,root)
+%files -n libssl48
 %_libdir/libssl.so.*
 
-%files -n libtls19
-%defattr(-,root,root)
+%files -n libtls20
 %_libdir/libtls.so.*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/openssl/
 %_includedir/tls.h
 %_libdir/libcrypto.so
@@ -183,7 +175,6 @@ fi
 %_libdir/pkgconfig/*.pc
 
 %files devel-doc
-%defattr(-,root,root)
 %_mandir/man3/*.*
 
 %changelog

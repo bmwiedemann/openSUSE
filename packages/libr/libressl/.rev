@@ -386,4 +386,12 @@
     <comment>- Update to release 3.2.0</comment>
     <requestid>741325</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>018568589c9896a6401d379a519639c4</srcmd5>
+    <version>3.1.1</version>
+    <time>1589197493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.1.1</comment>
+    <requestid>802625</requestid>
+  </revision>
 </revisionlist>
