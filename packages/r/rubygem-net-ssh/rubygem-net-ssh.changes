@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu May  7 21:07:37 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 6.0.2
+ see installed CHANGES.txt
+
+  === 6.0.2
+  
+    * Fix corrupted hmac issue in etm hmac [#759]
+  
+  === 6.0.1
+  
+    * Make sha2-{256,512}-etm@openssh.com MAC opt-in as they seems to have issues [#757]
+  
+  === 6.0.0
+  
+    * Support empty lines and comments in known_hosts [donoghuc, #742]
+    * Add sha2-{256,512}-etm@openssh.com MAC algorithms [graaff, #714]
+  
+  === 6.0.0 beta2
+  
+    * Support :certkeys and CertificateFile configuration option  [Anders Carling, #722]
+  
+  === 6.0.0 beta1
+  
+    * curve25519sha256 support [Florian Wininger ,#690]
+    * disabled insecure algs [Florian Wininger , #709]
+  
+  === 5.2.0
+
+-------------------------------------------------------------------
 Thu Mar 14 11:00:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 5.2.0

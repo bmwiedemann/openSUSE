@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-net-ssh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-net-ssh
-Version:        5.2.0
+Version:        6.0.2
 Release:        0
 %define mod_name net-ssh
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.6}
+BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/net-ssh/net-ssh
+URL:            https://github.com/net-ssh/net-ssh
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Net::SSH: a pure-Ruby implementation of the SSH2 client protocol
@@ -50,7 +50,7 @@ servers, via SSH2.
 
 %install
 %gem_install \
-  --doc-files="CHANGES.txt LICENSE.txt README.rdoc" \
+  --doc-files="CHANGES.txt LICENSE.txt README.md" \
   -f
 
 %gem_packages
