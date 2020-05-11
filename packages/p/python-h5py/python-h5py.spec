@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       hdf5
 Requires:       python-numpy >= 1.7
 Requires:       python-six
+%requires_eq    libhdf5_hl100
 %python_subpackages
 
 %description

@@ -125,4 +125,12 @@
 - Remove upstream merged fix_failing_x86_test.patch</comment>
     <requestid>730750</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>059851f711cf60adfc53960eeef9c8e3</srcmd5>
+    <version>2.10.0</version>
+    <time>1589197488</time>
+    <user>dimstar_suse</user>
+    <comment>- ensure rebuild when hdf5 version changes (bsc#1150049)</comment>
+    <requestid>802613</requestid>
+  </revision>
 </revisionlist>
