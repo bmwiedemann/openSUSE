@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  7 11:24:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Pixel-align-children-of-GridViewInternal.patch
+
+-------------------------------------------------------------------
+Sun May  3 09:39:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Introduce SettingState* elements to ease KCM writing
+  * Properly name the content of the kcmcontrols project
+  * Tweak kcmcontrols docs
+  * Add startCapture method
+  * [KeySequenceHelper] Work around Meta modifier behavior
+  * Also relase the window in the destructor
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0

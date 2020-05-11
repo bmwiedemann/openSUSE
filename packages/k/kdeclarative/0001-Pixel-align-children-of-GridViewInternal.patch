@@ -1,0 +1,40 @@
+From 9725a21bcd0ee07c48be5077a735710c5658cf59 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 7 May 2020 11:41:04 +0200
+Subject: [PATCH] Pixel align children of GridViewInternal
+
+Summary:
+The scroll bar size can be odd (for breeze it's 21), which causes leftMargin
+to be 12.5. This causes every delegate inside to be blurred.
+
+Test Plan: Monkeypatched, now kcm_style is no longer blurred.
+
+Reviewers: #frameworks, broulik, mart, davidedmundson
+
+Reviewed By: broulik, davidedmundson
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D29503
+---
+ src/qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml b/src/qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml
+index b55dea3..5d09a3d 100644
+--- a/src/qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml
++++ b/src/qmlcontrols/kcmcontrols/qml/private/GridViewInternal.qml
+@@ -37,7 +37,7 @@ GridView {
+     anchors {
+         fill: parent
+         margins: 2
+-        leftMargin: scroll.QtControls.ScrollBar.vertical.visible ? 2 :  internal.scrollBarSpace/2 + 2
++        leftMargin: scroll.QtControls.ScrollBar.vertical.visible ? 2 : Math.round(internal.scrollBarSpace/2) + 2
+     }
+     clip: true
+     activeFocusOnTab: true
+-- 
+2.26.2
+
