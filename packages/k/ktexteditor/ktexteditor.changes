@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * fix drag'n'drop on left side border widget (kde#420048)
+  * Revert premature port to unreleased Qt 5.15
+  * Store and fetch complete view config in and from session config
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
