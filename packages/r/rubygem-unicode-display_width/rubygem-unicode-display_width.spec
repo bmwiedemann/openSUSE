@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-unicode-display_width
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 %define mod_name unicode-display_width
 %define mod_full_name %{mod_name}-%{version}
@@ -40,7 +40,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-[Unicode 12.1.0] Determines the monospace display width of a string using
+[Unicode 13.0.0] Determines the monospace display width of a string using
 EastAsianWidth.txt, Unicode general category, and other data.
 
 %prep
