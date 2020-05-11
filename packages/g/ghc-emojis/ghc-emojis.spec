@@ -56,8 +56,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-echo > Setup.hs 'import Distribution.Simple'
-echo >>Setup.hs 'main = defaultMain'
 
 %build
 %ghc_lib_build
