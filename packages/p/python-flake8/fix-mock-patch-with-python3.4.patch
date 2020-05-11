@@ -3,10 +3,8 @@ Subject: Fix mock.patch with python3.4
 
 In python 3.5, mock.patch uses create=True automatically if you are patching
 builtins in a module, but in python 3.4 the argument is still needed.
-Index: flake8-3.7.5/tests/unit/test_debug.py
-===================================================================
---- flake8-3.7.5.orig/tests/unit/test_debug.py
-+++ flake8-3.7.5/tests/unit/test_debug.py
+--- a/tests/unit/test_debug.py
++++ b/tests/unit/test_debug.py
 @@ -70,7 +70,7 @@ def test_information(system, pyversion,
      system.assert_called_once_with()
  
@@ -16,7 +14,7 @@ Index: flake8-3.7.5/tests/unit/test_debug.py
  @mock.patch('flake8.main.debug.information', return_value={})
  @mock.patch('json.dumps', return_value='{}')
  def test_print_information_no_plugins(dumps, information, print_mock):
-@@ -85,7 +85,7 @@ def test_print_information_no_plugins(du
+@@ -84,7 +84,7 @@ def test_print_information_no_plugins(du
      assert print_mock.called is False
  
  
@@ -25,10 +23,8 @@ Index: flake8-3.7.5/tests/unit/test_debug.py
  @mock.patch('flake8.main.debug.information', return_value={})
  @mock.patch('json.dumps', return_value='{}')
  def test_print_information(dumps, information, print_mock):
-Index: flake8-3.7.5/tests/unit/test_base_formatter.py
-===================================================================
---- flake8-3.7.5.orig/tests/unit/test_base_formatter.py
-+++ flake8-3.7.5/tests/unit/test_base_formatter.py
+--- a/tests/unit/test_base_formatter.py
++++ b/tests/unit/test_base_formatter.py
 @@ -23,7 +23,7 @@ def test_start(filename):
      """Verify we open a new file in the start method."""
      mock_open = mock.mock_open()
@@ -38,7 +34,7 @@ Index: flake8-3.7.5/tests/unit/test_base_formatter.py
          formatter.start()
  
      if filename is None:
-@@ -90,7 +90,7 @@ def test_write_uses_an_output_file(tee):
+@@ -93,7 +93,7 @@ def test_write_uses_an_output_file(tee):
      formatter = base.BaseFormatter(options(tee=tee))
      formatter.output_fd = filemock
  
@@ -47,7 +43,7 @@ Index: flake8-3.7.5/tests/unit/test_base_formatter.py
          formatter.write(line, source)
          if tee:
              assert print_func.called
-@@ -109,7 +109,7 @@ def test_write_uses_an_output_file(tee):
+@@ -112,7 +112,7 @@ def test_write_uses_an_output_file(tee):
      ]
  
  
