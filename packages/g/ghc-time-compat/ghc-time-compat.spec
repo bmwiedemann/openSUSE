@@ -19,13 +19,12 @@
 %global pkg_name time-compat
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.2.2
+Version:        1.9.3
 Release:        0
 Summary:        Compatibility package for time
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-deepseq-devel
@@ -64,7 +63,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -85,5 +83,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %changelog

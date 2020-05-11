@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:11 UTC 2020 - psimons@suse.com
+
+- Update time-compat to version 1.9.3.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Wed Jan  1 18:02:54 UTC 2020 - psimons@suse.com
 
 - Drop obsolete code to create a Setup.hs file. The RPM macros do
