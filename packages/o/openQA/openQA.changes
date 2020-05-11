@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 10 03:25:29 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1589026701.ed65375c3:
+  * Fix missing mojo mode in scheduler daemon startup file
+  * docs: Update local docker test usage
+  * Initialize timeago elements correctly when refreshing info panel dynamically
+  * Fix updating SVG favicon (without page reload)
+  * Fix autoscroll checkbox in live log
+  * Dependency cron 200508
+  * t: Harmonize more test messages in full-stack.t
+  * Try to stabilize ObsRsync unit test during stresstest
+  * Add proxy detect for OpenQA::Client
+  * docker: Use useradd -m (--create-home)
+  * Use defaults already in startup scripts rather than systemd
+
+-------------------------------------------------------------------
 Thu May 07 19:25:24 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1588874206.b9aea9c2e:
