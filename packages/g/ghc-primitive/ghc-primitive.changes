@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:13 UTC 2020 - psimons@suse.com
+
+- Update primitive to version 0.7.0.1.
+  ## Changes in version 0.7.0.1
+
+   * Allow building with GHC 8.12.
+
+-------------------------------------------------------------------
 Sun Dec 29 10:27:16 UTC 2019 - psimons@suse.com
 
 - Update primitive to version 0.7.0.0.
