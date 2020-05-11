@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        4.6.0
+Version:        4.7.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
