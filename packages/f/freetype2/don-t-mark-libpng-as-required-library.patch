@@ -1,56 +1,56 @@
-Index: freetype-2.10.0/builds/unix/configure
+Index: freetype-2.10.2/builds/unix/configure
 ===================================================================
---- freetype-2.10.0.orig/builds/unix/configure
-+++ freetype-2.10.0/builds/unix/configure
-@@ -14848,7 +14848,6 @@ fi
- # entries in Requires.private are separated by commas;
+--- freetype-2.10.2.orig/builds/unix/configure
++++ freetype-2.10.2/builds/unix/configure
+@@ -15014,7 +15014,6 @@ fi
+ # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
                    $bzip2_reqpriv,    \
 -                  $libpng_reqpriv,   \
-                   $harfbuzz_reqpriv"
+                   $harfbuzz_reqpriv, \
+                   $brotli_reqpriv"
  # beautify
- REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVATE" \
-@@ -14862,7 +14861,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
+@@ -15029,7 +15028,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
  
  LIBS_PRIVATE="$zlib_libspriv     \
                $bzip2_libspriv    \
 -              $libpng_libspriv   \
                $harfbuzz_libspriv \
+               $brotli_libspriv   \
                $ft2_extra_libs"
- # beautify
-@@ -14874,7 +14872,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
+@@ -15042,7 +15040,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \
 -                   $libpng_libsstaticconf   \
                     $harfbuzz_libsstaticconf \
+                    $brotli_libsstaticconf   \
                     $ft2_extra_libs"
- # remove -L/usr/lib and -L/usr/lib64 since `freetype-config' adds them later
-Index: freetype-2.10.0/builds/unix/configure.raw
+Index: freetype-2.10.2/builds/unix/configure.raw
 ===================================================================
---- freetype-2.10.0.orig/builds/unix/configure.raw
-+++ freetype-2.10.0/builds/unix/configure.raw
-@@ -991,7 +991,6 @@ fi
- # entries in Requires.private are separated by commas;
+--- freetype-2.10.2.orig/builds/unix/configure.raw
++++ freetype-2.10.2/builds/unix/configure.raw
+@@ -1039,7 +1039,6 @@ fi
+ # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
                    $bzip2_reqpriv,    \
 -                  $libpng_reqpriv,   \
-                   $harfbuzz_reqpriv"
+                   $harfbuzz_reqpriv, \
+                   $brotli_reqpriv"
  # beautify
- REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVATE" \
-@@ -1005,7 +1004,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
+@@ -1054,7 +1053,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
  
  LIBS_PRIVATE="$zlib_libspriv     \
                $bzip2_libspriv    \
 -              $libpng_libspriv   \
                $harfbuzz_libspriv \
+               $brotli_libspriv   \
                $ft2_extra_libs"
- # beautify
-@@ -1017,7 +1015,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
+@@ -1067,7 +1065,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \
 -                   $libpng_libsstaticconf   \
                     $harfbuzz_libsstaticconf \
+                    $brotli_libsstaticconf   \
                     $ft2_extra_libs"
- # remove -L/usr/lib and -L/usr/lib64 since `freetype-config' adds them later

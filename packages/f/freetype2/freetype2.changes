@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  9 10:24:29 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.10.2
+  * Support for WOFF2 fonts, add BR on pkgconfig(libbrotlidec)
+  * Function `FT_Get_Var_Axis_Flags' returned random data for Type 1
+    MM fonts.
+  * Type 1 fonts with non-integer metrics are now supported by the new
+    (CFF) engine introduced in FreeType 2.9.
+  * Drop support for Python 2 in Freetype's API reference generator
+  * Auto-hinter support for Hanifi Rohingya
+  * Document the `FT2_KEEP_ALIVE' debugging environment variable.
+
+-------------------------------------------------------------------
 Wed Oct  9 17:06:32 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Use the compiler default C std, since 2012 gcc defaults

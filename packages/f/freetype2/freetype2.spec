@@ -1,7 +1,7 @@
 #
 # spec file for package freetype2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.10.1
+%define doc_version 2.10.2
 Name:           freetype2
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        A TrueType Font Library
 License:        SUSE-Freetype OR GPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libbrotlidec)
 
 %description
 This library features TrueType fonts for open source projects. This
@@ -76,6 +77,7 @@ Summary:        Development environment for the freetype2 TrueType font library
 Group:          Development/Libraries/C and C++
 Requires:       libfreetype6 = %{version}
 Requires:       zlib-devel
+Requires:       pkgconfig(libbrotlidec)
 # there is no freetype-devel on suse:
 Provides:       freetype-devel
 # Static library provides:

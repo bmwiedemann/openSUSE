@@ -829,4 +829,25 @@
     <comment></comment>
     <requestid>736855</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>eaa84ec3e9f5e0e28cdc6fed6c0c95eb</srcmd5>
+    <version>2.10.2</version>
+    <time>1589196393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.2
+  * Support for WOFF2 fonts, add BR on pkgconfig(libbrotlidec)
+  * Function `FT_Get_Var_Axis_Flags' returned random data for Type 1
+    MM fonts.
+  * Type 1 fonts with non-integer metrics are now supported by the new
+    (CFF) engine introduced in FreeType 2.9.
+  * Drop support for Python 2 in Freetype's API reference generator
+  * Auto-hinter support for Hanifi Rohingya
+  * Document the `FT2_KEEP_ALIVE' debugging environment variable.
+
+- Update to version 2.10.2
+  * The `ftbench' demo program has a new test for testing the
+    `FT_Glyph_Stroke' functionality.
+- Add BR on pkgconfig(libbrotlidec) for ftinspect</comment>
+    <requestid>802021</requestid>
+  </revision>
 </revisionlist>
