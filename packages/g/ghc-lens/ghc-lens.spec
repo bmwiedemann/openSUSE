@@ -19,7 +19,7 @@
 %global pkg_name lens
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.19.1
+Version:        4.19.2
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
@@ -68,7 +68,6 @@ BuildRequires:  ghc-simple-reflect-devel
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-quickcheck2-devel
-BuildRequires:  ghc-test-framework-th-devel
 %endif
 
 %description

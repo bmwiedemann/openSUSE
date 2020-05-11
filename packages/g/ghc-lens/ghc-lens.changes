@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:11 UTC 2020 - psimons@suse.com
+
+- Update lens to version 4.19.2.
+  4.19.2 [2020.04.15]
+  -------------------
+  * Remove the test suite's dependency on `test-framework-th`.
+
+-------------------------------------------------------------------
 Thu Feb 27 14:17:53 UTC 2020 - psimons@suse.com
 
 - Update lens to version 4.19.1.
