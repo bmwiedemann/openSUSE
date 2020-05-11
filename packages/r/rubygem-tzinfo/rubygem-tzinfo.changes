@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  7 21:38:23 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.0.2
+ see installed CHANGES.md
+
+  ## Version 2.0.2 - 2-Apr-2020
+  
+  * Fixed 'wrong number of arguments' errors when running on JRuby 9.0. #114.
+  * Fixed warnings when running on Ruby 2.8. #113.
+
+-------------------------------------------------------------------
 Mon Feb 10 16:00:49 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 2.0.1
