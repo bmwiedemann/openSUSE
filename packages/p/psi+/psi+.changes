@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May  3 07:08:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1159
+  * iris and libpsi relinked
+  * Added a workaround for an ICE related bug
+  * Use legacy aggressive nomination for both sides since old rtp code doesn't
+    expect anything else
+  * Don't start sending stun transaction until both sides know each other
+    candidates and credentials
+  * Dynamic adjusting settings/xmpp features on psimedia plugin on/off
+  * Set max icon size to ~2*font-size for iconselect widget
+  * More fixes against svg icons
+  * Render svg icons for accounts in expected sizes
+  * Implemented a way to notify Psi from a plugin about changed media devices
+  * missed header
+  * Fixed gstreamer libs names for msvc
+  * PsiMedia initialization updated accroding to lib changes
+  * Updates according to psimedia lib changes
+  * Improve usage of OpenPGP encryption (step 4)
+  * and much more
+- icqdie plugin was dropped
+
+-------------------------------------------------------------------
 Tue Jan 28 15:38:43 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.1004

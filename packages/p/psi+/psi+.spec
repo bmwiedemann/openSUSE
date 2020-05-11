@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.4.1004+0
+%define version_unconverted 1.4.1159+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.4.1004+0
+Version:        1.4.1159+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        GPL-2.0-or-later AND Apache-2.0
@@ -235,15 +235,6 @@ chat logs and notification of missed messages.
 Supports per contact on / off message enumeration via the buttons on the chats
 toolbar.
 
-%package plugins-icqdieplugin
-Summary:        Plugin for Psi
-Group:          Productivity/Networking/Talk/Clients
-Requires:       %{name} = %{version}
-
-%description plugins-icqdieplugin
-This plugin is designed to help you transfer as many contacts as possible from
-ICQ to Jabber.
-
 %package plugins-messagefilterplugin
 Summary:        Plugin for Psi
 Group:          Productivity/Networking/Talk/Clients
@@ -448,10 +439,6 @@ dos2unix ChangeLog.Psi+.txt
 %defattr(-,root,root)
 %{pluginspath}/libjabberdiskplugin.so
 
-%files plugins-icqdieplugin
-%defattr(-,root,root)
-%{pluginspath}/libicqdieplugin.so
-
 %files plugins-cleanerplugin
 %defattr(-,root,root)
 %{pluginspath}/libcleanerplugin.so
@@ -546,7 +533,7 @@ dos2unix ChangeLog.Psi+.txt
 %{_datadir}/psi-plus/client_icons.txt
 %{_datadir}/psi-plus/skins
 %{_datadir}/psi-plus/sound
-%{_datadir}/psi-plus/themes
+#%%{_datadir}/psi-plus/themes
 
 %files plugins-devel
 %defattr(-,root,root)
