@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tomlrb
-Version:        1.2.9
+Version:        1.3.0
 Release:        0
 %define mod_name tomlrb
 %define mod_full_name %{mod_name}-%{version}
