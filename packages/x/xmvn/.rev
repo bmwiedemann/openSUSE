@@ -31,4 +31,12 @@
     <comment>3.1.0</comment>
     <requestid>750911</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b190db7bc0d6289515b779ebff4d1f8e</srcmd5>
+    <version>3.1.0</version>
+    <time>1589197476</time>
+    <user>dimstar_suse</user>
+    <comment>pretrans -&gt; pre</comment>
+    <requestid>802616</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,7 @@ install -d -m 755 %{buildroot}%{_datadir}/%{name}/conf/
 cp -P ${maven_home}/conf/settings.xml %{buildroot}%{_datadir}/%{name}/conf/
 cp -P ${maven_home}/bin/m2.conf %{buildroot}%{_datadir}/%{name}/bin/
 
-%pretrans minimal
+%pre minimal
 if [ -L %{_datadir}/%{name}/conf/logging ]; then
     rm -f %{_datadir}/%{name}/conf/logging
 fi
