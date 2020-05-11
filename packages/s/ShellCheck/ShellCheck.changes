@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:13 UTC 2020 - psimons@suse.com
+
+- Update ShellCheck to version 0.7.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Wed Jan  1 10:05:21 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Drop bogus Setup.hs file to let the build succeed with ghc-8.8.x.

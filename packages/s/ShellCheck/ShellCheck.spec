@@ -19,7 +19,7 @@
 %global pkg_name ShellCheck
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  pandoc
 
 %description
 The goals of ShellCheck are:
@@ -72,7 +73,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %setup -q
-rm Setup.hs
 
 %build
 %ghc_lib_build
@@ -80,6 +80,7 @@ rm Setup.hs
 %install
 %ghc_lib_install
 %ghc_fix_rpath %{pkg_name}-%{version}
+pandoc -s -f markdown-smart -t man shellcheck.1.md -o shellcheck.1
 install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 
 %check
