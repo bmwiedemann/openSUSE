@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu May  7 18:51:54 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Again try to fix up dependencies after removing the
+  base package.
+- Let (non-HPC) trilinos-devel conflict with kokkos-devel
+
+-------------------------------------------------------------------
+Tue May  5 12:11:46 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix dependencies for devel package after eliminating the
+  base package:
+  * Remove dependency to base package
+  * for HPC add dependency to library package
+
+-------------------------------------------------------------------
+Thu Apr 30 04:43:33 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Don't use ninja as cmake generator for Leap/SLE < 15.2
+  as it doesn't support fortran.
+
+-------------------------------------------------------------------
+Mon Apr 27 04:57:53 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Eliminate trilinos base package, move %doc and %license files
+  to the lib-package and remaining binary files to the devel-package.
+
+-------------------------------------------------------------------
+Sun Apr 26 19:10:18 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Fix build for gmake 4.3 in a backward compatible way (boo#1170523),
+  Fix-Makefiles-for-gmake-4.3.patch was added.
+
+-------------------------------------------------------------------
+Fri Apr 24 13:12:14 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- nvcc_wrapper is a compiler wrapper and should go in -devel
+  package
+- fix "extra tokens" RPM build errors 
+
+-------------------------------------------------------------------
+Fri Apr 10 06:46:37 UTC 2020 - Oliver Kurz <okurz@suse.com>
+
+- Use ninja as cmake builder for potential speedup
+
+-------------------------------------------------------------------
 Thu Dec 12 22:42:46 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Replace open coded job limit (<= 4) by macro from memory-constraints

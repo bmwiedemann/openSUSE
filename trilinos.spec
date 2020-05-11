@@ -1,7 +1,7 @@
 #
 # spec file for package trilinos
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -305,9 +305,13 @@ URL:            http://trilinos.sandia.gov/index.html
 Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{ver_exp}.tar.gz
 # PATCH-FIX-UPSTREAM trilinos-11.4.3-no-return-in-non-void.patch
 Patch0:         trilinos-11.14.3-no-return-in-non-void.patch
+Patch1:         Fix-Makefiles-for-gmake-4.3.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+BuildRequires:  ninja
+%endif
 %if %{with qt}
 BuildRequires:  libqt4-devel
 %endif
@@ -315,7 +319,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  swig > 2.0.0
 BuildRequires:  xz
 BuildRequires:  zlib-devel
-%{?with_hpc:BuildRequires:  suse-hpc}
+%{?with_hpc:BuildRequires:  suse-hpc >= 0.5}
 
 %if %{with doc}
 BuildRequires:  doxygen
@@ -335,10 +339,8 @@ BuildRequires:  hdf5-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc-devel
 BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
 BuildRequires:  libopenblas-%{compiler_family}-hpc-devel
 BuildRequires:  netcdf-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc-devel
-#Requires:       %libname = %version
-%hpc_requires
-%hpc_requires_devel
- %else # hpc
+# hpc
+ %else
 BuildRequires:  boost-devel
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
@@ -363,12 +365,14 @@ BuildRequires:  netcdf-%{mpi_family}%{?mpi_ext}-devel
 BuildRequires:  ptscotch-%{mpi_family}%{?mpi_ext}-devel
 BuildRequires:  scalapack-%{mpi_family}%{?mpi_ext}-devel
   %endif
- %endif # hpc
+# hpc
+ %endif
 
 # FIXME: Serial package is currently not pulling in library
 Requires:       %libname = %version
 
-%endif # doc
+# doc
+%endif
 
 %{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
@@ -389,6 +393,7 @@ Summary:        A collection of libraries of numerical algorithms
 # only used for HPC
 Group:          System/Libraries
 %if %{with hpc}
+%hpc_requires
 Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
@@ -411,7 +416,6 @@ This subpackage contains the shared libraries.
 %package devel
 Summary:        Headers and development files for %{package_name}
 Group:          Development/Libraries/C and C++
-Requires:       %name = %version
 %if %{without hpc}
 Requires:       glpk-devel
 Requires:       swig
@@ -425,6 +429,7 @@ Requires:       netcdf-devel
 Requires:       scotch-devel
 Requires:       suitesparse-common-devel
 Requires:       umfpack-devel
+Conflicts:      kokkos-devel
  %else
 Requires:       blacs-devel-headers
 Requires:       hdf5-%{mpi_family}%{?mpi_ext}-devel
@@ -434,16 +439,20 @@ Requires:       netcdf-%{mpi_family}%{?mpi_ext}-devel
 Requires:       ptscotch-%{mpi_family}%{?mpi_ext}-devel
 Requires:       scalapack-%{mpi_family}%{?mpi_ext}-devel
  %endif
-%else # hpc
+# hpc
+%else
+%hpc_requires_devel
 Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
 #Requires:       boost-%%{compiler_family}-hpc
+Requires:       %libname = %version
 Requires:       hdf5%{hpc_package_name_tail}-devel
 Requires:       libopenblas-%{compiler_family}-hpc-devel
 Requires:       netcdf%{hpc_package_name_tail}-devel
-#Requires:       %libname = %version
-%endif # hpc
+# hpc
+%endif
+Obsoletes:      %{name} <= %version
 
 %description devel
 Trilinos is a collection of compatible software packages that support parallel
@@ -457,17 +466,20 @@ needed for development.
 
 
 %if %{with hpc}
-%{hpc_master_package -L}
 %{hpc_master_package -l -L}
-%{hpc_master_package -L devel}
-
+%{hpc_master_package -L -O %{pname}%{hpc_package_name_tail} devel}
 %endif
 
 %prep
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
 %patch0 -p1
+%patch1 -p1
 
 %build
+# https://en.opensuse.org/openSUSE:Build_system_recipes#cmake
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
+%define __builder ninja
+%endif
 %limit_build -m 4000
 # Fix this once boost is available as a HPC version
 # move this to the non-hpc section
@@ -595,7 +607,7 @@ cd ..
 %install
 %{?with_hpc:%hpc_setup}
 %{?with_hpc:%hpc_setup_mpi}
-%cmake_install INSTALL='install -p'
+%cmake_install
 
 %if %{with hpc}
 %hpc_write_modules_files
@@ -639,7 +651,8 @@ depends-on %{?with_mpi:p}hdf5
 depends-on %{?with_mpi:p}netcdf
 #depends-on boost
 EOF
-%else # hpc
+# hpc
+%else
  %if %{without mpi}
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/%{name}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
@@ -671,14 +684,11 @@ done
 %hpc_module_delete_if_default
 %endif
 
-%files
-%{?hpc_dirs}
+%files -n %{libname}
 %doc README RELEASE_NOTES
 %license LICENSE Copyright.txt
-%{p_bindir}%{!?hpc:/*}
-
-%files -n %{libname}
 %dir %{p_libdir}
+%{?hpc_dirs}
 %{?hpc_modules_files}
 %{p_libdir}/*.so.*
 %if %{without mpi} && %{without hpc}
@@ -689,7 +699,9 @@ done
 %{p_includedir}
 %{p_libdir}/cmake
 %{p_libdir}/*.so
-%endif # doc
+%{p_bindir}%{!?hpc:/*}
+# doc
+%endif
 
 #############################################################################
 # Build documentation only               
@@ -739,6 +751,7 @@ find doc/ -name *copy_xml_to_src_html.py -exec chmod 644 {}  \;
 
 %files doc
 %doc doc/*
-%endif # doc
+# doc
+%endif
 
 %changelog
