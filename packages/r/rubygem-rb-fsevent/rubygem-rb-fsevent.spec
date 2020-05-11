@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rb-fsevent
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rb-fsevent
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 %define mod_name rb-fsevent
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://rubygems.org/gems/rb-fsevent
+URL:            http://rubygems.org/gems/rb-fsevent
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rb-fsevent-rpmlintrc
 Source2:        gem2rpm.yml
