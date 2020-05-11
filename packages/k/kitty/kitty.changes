@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 11 06:51:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.4:
+  * Allow showing the name of the current layout and the number of
+    windows in tab titles (#2634)
+  * By default, double clicking no longer considers the : as part
+    of words, see select_by_word_characters (#2602)
+  * Fix a regression that caused clicking in the padding/margins
+    of windows in the stack layout to switch the window to the
+    first window (#2604)
+  * Report modifier key state when sending wheel events to the
+    terminal program
+  * Fix kitty @ send-text not working with text larger than 1024
+    bytes when using kitty --listen-on (#2607)
+  * Wayland: Fix OS window title not updating for hidden
+    windows (#2629)
+  * Fix background_tint making the window semi-transparent (#2618)
+
+-------------------------------------------------------------------
 Thu Apr 23 09:02:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.3:
