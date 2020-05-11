@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  7 20:26:56 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.4.7
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.7 (2020-03-31)
+  
+  * Fix choice assignment inside arrays.  Reported by Spencer McIntyre.
+  
+  == Version 2.4.6 (2020-02-27)
+  
+  * More encoding fixes.  Thanks to Aaron Patterson.
+  
+  == Version 2.4.5 (2020-02-21)
+  
+  * Small typo fixes to examples.
+  * Fix encoding issue for ruby 2.7.  Thanks to Aaron Patterson.
+  * Quieter test output.
+
+-------------------------------------------------------------------
 Thu Nov 22 05:00:06 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 2.4.4
