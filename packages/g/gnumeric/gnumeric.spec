@@ -1,7 +1,7 @@
 #
 # spec file for package gnumeric
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.46
+Version:        1.12.47
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.7
 BuildRequires:  pkgconfig(libgda-5.0) >= 5.0.0
 BuildRequires:  pkgconfig(libgda-ui-5.0) >= 5.0.0
-BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.46
+BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.47
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.33
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(pango) >= 1.24.0

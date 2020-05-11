@@ -962,4 +962,12 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767364</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>ab32c9f99b6f91f1d042012b53c63edc</srcmd5>
+    <version>1.12.47</version>
+    <time>1589207460</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 802396 from iznogood)</comment>
+    <requestid>802671</requestid>
+  </revision>
 </revisionlist>

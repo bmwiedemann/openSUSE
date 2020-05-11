@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  9 22:54:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.46:
+  + Fix chart and image name roundtrip through ODF.
+  + Fix print flag roundtrip for sheet objects through ODF.
+  + Fix crash when the embedded spreadsheet is invalid.
+  + Fix dialog size problem.
+  + Add "--set CELL=CONTENTS" option to ssconvert.
+  + Improve tests.
+  + Improve speed on exit with lots of conditional formatting.
+  + Improve error message.
+  + Impose ordering of ssconvert --export-graphs.
+  + Doc fixes.
+  + Fix CELL crash.
+  + Handle export options for ssconvert --export-graphs.
+  + Fix deps crash.
+  + Fix chart name roundtrip through XLSX.
+  + Fix sheet object print flag roundtrip through XLSX.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:12:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
