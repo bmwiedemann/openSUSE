@@ -810,4 +810,12 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767365</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>4227cf57a80cf82c7a97bced940ed4e5</srcmd5>
+    <version>0.10.47</version>
+    <time>1589207456</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 802395 from iznogood)</comment>
+    <requestid>802670</requestid>
+  </revision>
 </revisionlist>

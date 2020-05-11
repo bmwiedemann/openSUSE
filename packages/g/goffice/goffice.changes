@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May  9 22:39:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.47:
+  + Fix crash if a XY plot series has data labels but no valid
+    data.
+  + Fix criticals related to data labels.
+  + Fix a drawing error in contour plots.
+  + Ensure that all required dims have valid data in a valid
+    series.
+  + Fix legend order in bar plots.
+  + Test plot series validity after a data change.
+  + Fix crossing axis position.
+  + Fix component duplication.
+  + Fix library namespace issue.
+  + Implement auto-by-extension for image files.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:13:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
