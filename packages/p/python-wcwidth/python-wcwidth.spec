@@ -1,5 +1,5 @@
 #
-# spec file for package python-wcwidth
+# spec file for package python
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-wcwidth
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -%{flavor}
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+Name:           python-wcwidth%{psuffix}
 Version:        0.1.9
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
@@ -25,7 +33,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jquast/wcwidth
 Source:         https://files.pythonhosted.org/packages/source/w/wcwidth/wcwidth-%{version}.tar.gz
+%if %{with test}
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,19 +62,26 @@ release files, which this project aims to track.
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 
 # Remove tests from runtime
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/wcwidth/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
+
+%if ! %{with test}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog

@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>788241</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>246a4545aa3de91d75757705e184a2fd</srcmd5>
+    <version>0.1.9</version>
+    <time>1589196352</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to multibuild to break a self-requires loop.</comment>
+    <requestid>800655</requestid>
+  </revision>
 </revisionlist>
