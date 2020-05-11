@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  6 06:54:12 UTC 2020 - psimons@suse.com
+
+- Update resolv to version 0.1.2.0.
+  ## 0.1.2.0
+
+  * Add new high-level API functions `queryPTR`, `arpaIPv4`, and
+    `arpaIPv6` for performing reverse address lookups.
+
+-------------------------------------------------------------------
 Sun Dec 29 10:27:09 UTC 2019 - psimons@suse.com
 
 - Update resolv to version 0.1.1.3.
