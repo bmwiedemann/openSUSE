@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-simplecov
-Version:        0.18.1
+Version:        0.18.5
 Release:        0
 %define mod_name simplecov
 %define mod_full_name %{mod_name}-%{version}
