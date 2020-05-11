@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sshkit
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 %define mod_name sshkit
 %define mod_full_name %{mod_name}-%{version}
