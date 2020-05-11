@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/coreos/ignition-dracut.git</param>
-    <param name="changesrevision">ea3bdc94076326c6c3d62aa7a19b9bd0ae887b3a</param>
+    <param name="changesrevision">7ff38d9716bf982e3f6495d85c6ce91aab72e88d</param>
  </service>
 </servicedata>

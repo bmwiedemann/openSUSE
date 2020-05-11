@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 11 08:52:37 UTC 2020 - iforster@suse.com
+
+- Update to version 0.0+git20200504.7ff38d9:
+  * 30ignition: drop hard requirement on qemu_fw_cfg [boo#1167289]
+  * 99emergency-timeout: improve readability of Ignition failure message
+  * 99emergency-timeout: also check ignition-fetch.service for failure
+  * coreos-teardown-initramfs-network: don't run when emergency.target
+  * dracut: add logging to systemd generator
+  * coreos-teardown-initramfs-network: also propagate hostname
+  * coreos-teardown-initramfs-network: support coreos.no_persist_ip karg
+  * coreos-teardown-initramfs-network: consider ifcfg files in real root for RHCOS
+  * coreos-teardown-initramfs-network: also skip local loopback interface
+  * coreos-teardown-initramfs-network: do SELinux relabel on copied files
+  * coreos-teardown-initramfs-network: order ExecStop after other ignition units
+  * coreos-teardown-initramfs-network: remove After=ignition-files.service
+  * Add ignition-virtio-dump-journal.service
+
+-------------------------------------------------------------------
 Fri Mar 27 15:06:19 UTC 2020 - iforster@suse.com
 
 - Update to version 0.0+git20200325.ea3bdc9:

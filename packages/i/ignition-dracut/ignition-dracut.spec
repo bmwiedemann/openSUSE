@@ -17,7 +17,7 @@
 
 
 Name:           ignition-dracut
-Version:        0.0+git20200325.ea3bdc9
+Version:        0.0+git20200504.7ff38d9
 Release:        0
 Summary:        Dracut scripts for ignition
 License:        BSD-2-Clause
