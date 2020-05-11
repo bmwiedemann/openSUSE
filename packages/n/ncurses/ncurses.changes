@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  4 06:35:31 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200502
+  + add details on the change to Linux SGR 21 in 2018 -TD
+  + add xterm-direct16 and xterm-direct256 -TD
+  + modify lib_mouse.c to check for out-of-range button numbers, convert
+    those to position reports.
+
+-------------------------------------------------------------------
+Mon Apr 27 08:55:40 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200425
+  + use vt100+fnkeys in putty -TD
+  + fix a typo in tput.1; "columns" should be "cols".
+
+-------------------------------------------------------------------
 Mon Apr 20 06:39:46 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200418
