@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hs-bibutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name hs-bibutils
 Name:           ghc-%{pkg_name}
-Version:        6.8.0.0
+Version:        6.10.0.0
 Release:        0
 Summary:        Haskell bindings to bibutils, the bibliography conversion utilities
 License:        GPL-2.0-or-later
