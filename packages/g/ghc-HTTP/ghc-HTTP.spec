@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-HTTP
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        A library for client-side HTTP
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-bytestring-devel
@@ -80,7 +81,7 @@ with <http://hackage.haskell.org/package/http-client-tls http-client-tls>)
 
 * <http://hackage.haskell.org/package/req req>
 
-* <http://hackage.haskell.org/package/wreq wreq> .
+* <http://hackage.haskell.org/package/wreq wreq>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -94,7 +95,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver network-uri '== 2.6.*' '< 3'
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

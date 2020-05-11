@@ -247,4 +247,12 @@
     <comment>missing version updates for openSUSE:Factory:Staging:adi:22</comment>
     <requestid>780175</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>406efb64e695828f8ca896813ae98920</srcmd5>
+    <version>4000.3.14</version>
+    <time>1589196911</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801024</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 08:08:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file to get more accurate dependency information.
+
+-------------------------------------------------------------------
 Fri Feb 28 08:35:47 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Update Cabal build information for more accurate dependencies.
