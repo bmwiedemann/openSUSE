@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tmuxinator
-Version:        1.1.4
+Version:        2.0.1
 Release:        0
 %define mod_name tmuxinator
 %define mod_full_name %{mod_name}-%{version}
@@ -35,7 +35,7 @@ Release:        0
 %endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4.6}
+BuildRequires:  %{ruby >= 2.5.8}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
