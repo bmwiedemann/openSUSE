@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * [KPlotting] foreach is gone, build with -DQT_NO_FOREACH
+  * [KPlotting] Port foreach (deprecated) to range for
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
