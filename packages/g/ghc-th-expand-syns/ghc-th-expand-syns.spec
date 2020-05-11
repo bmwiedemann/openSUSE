@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-th-expand-syns
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name th-expand-syns
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.5.0
+Version:        0.4.6.0
 Release:        0
 Summary:        Expands type synonyms in Template Haskell ASTs
 License:        BSD-3-Clause
