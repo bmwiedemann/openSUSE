@@ -16,15 +16,15 @@
 #
 
 
-%define uver	3_8_0
+%define uver	3_8_1
 Name:           geos
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            http://trac.osgeo.org/geos/
-Source0:        http://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
+URL:            https://trac.osgeo.org/geos/
+Source0:        https://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-config.1
 Patch0:         libruby.patch
 BuildRequires:  fdupes
