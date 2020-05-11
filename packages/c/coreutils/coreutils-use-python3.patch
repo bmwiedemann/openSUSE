@@ -1,0 +1,24 @@
+--- tests/du/move-dir-while-traversing.sh
++++ tests/du/move-dir-while-traversing.sh
+@@ -20,9 +20,9 @@
+ print_ver_ du
+ require_trap_signame_
+ 
+-# We use a python-inotify script, so...
+-python -m pyinotify -h > /dev/null \
+-  || skip_ 'python inotify package not installed'
++# We use a python3-inotify script, so...
++python3 -m pyinotify -h > /dev/null \
++  || skip_ 'python3 inotify package not installed'
+ 
+ # Move a directory "up" while du is processing its sub-directories.
+ # While du is processing a hierarchy .../B/C/D/... this script
+@@ -33,7 +33,7 @@
+ # rename syscall before du finishes processing the subtree under D/.
+ 
+ cat <<'EOF' > inotify-watch-for-dir-access.py
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ import pyinotify as pn
+ import os,sys
+ 

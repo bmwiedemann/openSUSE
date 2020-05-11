@@ -54,7 +54,9 @@ BuildRequires:  gcc-PIE
 BuildRequires:  acl
 BuildRequires:  gdb
 BuildRequires:  perl-Expect
-BuildRequires:  python-pyinotify
+BuildRequires:  python
+BuildRequires:  python3
+BuildRequires:  python3-pyinotify
 BuildRequires:  strace
 BuildRequires:  timezone
 # Some tests need the 'bin' user.
@@ -134,7 +136,8 @@ Patch301:       coreutils-skip-gnulib-test-tls.patch
 
 # tests: shorten extreme-expensive factor tests
 Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
-
+# Stop using Python 2.x
+Patch304:       coreutils-use-python3.patch
 Patch500:       coreutils-disable_tests.patch
 Patch501:       coreutils-test_without_valgrind.patch
 
@@ -193,6 +196,7 @@ This package contains the documentation for the GNU Core Utilities.
 %endif
 
 %patch303
+%patch304
 %patch500
 %patch501
 

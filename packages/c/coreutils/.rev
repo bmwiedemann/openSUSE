@@ -1081,4 +1081,13 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment></comment>
     <requestid>786157</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>b37675e1ecf6fe40dd19a98cfb3c1804</srcmd5>
+    <version>8.32</version>
+    <time>1589196342</time>
+    <user>dimstar_suse</user>
+    <comment>- add coreutils-use-python3.patch to minimally port away from
+  python 2.x use of pyinotify in the testsuite</comment>
+    <requestid>799984</requestid>
+  </revision>
 </revisionlist>
