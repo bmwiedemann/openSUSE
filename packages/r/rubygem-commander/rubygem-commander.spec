@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-commander
-Version:        4.5.0
+Version:        4.5.2
 Release:        0
 %define mod_name commander
 %define mod_full_name %{mod_name}-%{version}

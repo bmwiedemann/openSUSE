@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  7 20:34:32 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.5.2
+ see installed History.rdoc
+
+  === 4.5.2 / 2020-03-12
+  
+  * Fix bug handling global options provided in option=value form (#47). (@orien)
+  * Fix ERB warnings under Ruby 2.7. (@esotericpig)
+  * Fix bug handling global options placed before command name (#32). (@orien)
+  
+  === 4.5.1 / 2020-03-08
+  
+  * Fix bug causing global options to be ignored when arguments are present (#86). (@orien)
+
+-------------------------------------------------------------------
 Mon Feb 10 14:22:00 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 4.5.0
