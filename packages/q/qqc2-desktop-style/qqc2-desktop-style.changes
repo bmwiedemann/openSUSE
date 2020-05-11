@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  3 09:40:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Detect QQC2 version at build time with actual detection.
+  * [ComboBox] Use transparent dimmer
+
+-------------------------------------------------------------------
 Sun Apr  5 19:45:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.69.0
