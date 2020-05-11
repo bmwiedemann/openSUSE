@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-jira-wiki-markup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name jira-wiki-markup
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.0
+Version:        1.1.4
 Release:        0
 Summary:        Handle Jira wiki markup
 License:        MIT
@@ -53,8 +53,6 @@ files.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-echo > Setup.hs 'import Distribution.Simple'
-echo >>Setup.hs 'main = defaultMain'
 
 %build
 %ghc_lib_build
