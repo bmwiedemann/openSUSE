@@ -624,4 +624,12 @@
   (boo#1169838) (forwarded request 795743 from wolfi323)</comment>
     <requestid>795748</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>5db1a34df5c663bf8ca6a3a950b46469</srcmd5>
+    <version>5.70.0</version>
+    <time>1589196431</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.70</comment>
+    <requestid>802064</requestid>
+  </revision>
 </revisionlist>
