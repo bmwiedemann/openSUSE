@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lukko
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name lukko
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.1
+Version:        0.1.1.2
 Release:        0
 Summary:        File locking
 License:        GPL-2.0-or-later AND BSD-3-Clause
@@ -41,10 +41,14 @@ BuildRequires:  ghc-temporary-devel
 %description
 This package provides access to platform dependent file locking APIs:
 
-* Open file descriptor locking on Linux ("Lukko.OFD") * 'flock' locking on unix
-platforms ("Lukko.FLock") * Windows locking 'LockFileEx' ("Lukko.Windows") *
-No-op locking, which throws exceptions ("Lukko.NoOp") * "Lukko" module exports
-the best option for the target platform with uniform API.
+*
+<https://www.gnu.org/software/libc/manual/html_node/Open-File-Description-Locks.html
+Open file descriptor locking> on Linux ("Lukko.OFD") * BSD-style 'flock(2)'
+locks on UNIX platforms ("Lukko.FLock") * Windows locking via
+<https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-lockfilee
+LockFileEx> ("Lukko.Windows") * No-op locking, which throws exceptions
+("Lukko.NoOp") * "Lukko" module exports the best option for the target platform
+with uniform API.
 
 There are alternative file locking packages:
 
