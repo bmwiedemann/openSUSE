@@ -19,7 +19,7 @@
 
 
 Name:           rapid-photo-downloader
-Version:        0.9.22
+Version:        0.9.24
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
