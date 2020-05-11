@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gpgme
-Version:        2.0.19
+Version:        2.0.20
 Release:        0
 %define mod_name gpgme
 %define mod_full_name %{mod_name}-%{version}
