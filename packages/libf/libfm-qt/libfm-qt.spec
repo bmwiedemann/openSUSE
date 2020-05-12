@@ -102,7 +102,7 @@ Libfm-Qt libraries for development
 %postun -n libfm-qt7 -p /sbin/ldconfig
 
 %files -n libfm-qt7
-%license LICENSE.BSD-3-Clause
+%license LICENSE LICENSE.BSD-3-Clause
 %doc README.md
 %{_libdir}/libfm-qt.so.*
 

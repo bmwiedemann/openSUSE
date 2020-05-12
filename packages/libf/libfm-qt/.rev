@@ -166,4 +166,12 @@
   * Selected items are activated with Enter/Return.</comment>
     <requestid>799968</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>53aaf121e1c780306acfe7f5e1c7e64c</srcmd5>
+    <version>0.15.0</version>
+    <time>1589315560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802771</requestid>
+  </revision>
 </revisionlist>
