@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue May 05 07:53:31 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200505.cd067a94:
+  * gocd: add 15.2 MicroOS ttm
+
+-------------------------------------------------------------------
+Tue May 05 07:21:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200505.1e6677e6:
+  * Update some ttm documentation
+
+-------------------------------------------------------------------
+Sat May 02 11:03:55 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200502.027727cc:
+  * Check for 'weakremovers.inc' in in group_dir before attempting to move it
+
+-------------------------------------------------------------------
+Sat May 02 09:20:17 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200502.4cba11ba:
+  * Fix httpretty using tests
+
+-------------------------------------------------------------------
+Thu Apr 30 12:23:06 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200430.fca4401c:
+  * dist: drop bogus python-enum34 dependency
+
+-------------------------------------------------------------------
+Thu Apr 30 12:20:14 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200430.56213c5d:
+  * Update docker to run tumbleweed container
+  * miniobs: Fix database setup for rails 6
+
+-------------------------------------------------------------------
+Thu Apr 30 10:21:50 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200430.a354092d:
+  * stagingapi: do not add multibuild flavor package to the ring package list
+  * stagingapi: allow multibuild package spreads across ring
+
+-------------------------------------------------------------------
 Wed Mar 25 16:28:21 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200325.77a14833:
