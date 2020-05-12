@@ -16,14 +16,14 @@
 #
 
 
-%define _build 386
-%define tag V_2_8_22_BUILD_%{_build}
+%define _build 387
+%define tag V_2_8_23_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.8.22
+Version:        2.8.23
 Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/%{tag}.tar.gz
@@ -37,13 +37,14 @@ BuildRequires:  java-devel >= 1.6
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis
 Requires:       jameica >= 2.8.0
-BuildRequires:  swtchart = 0.10.0
-Requires:       swtchart = 0.10.0
+#BuildRequires:  swtchart = 0.10.0
+#Requires:       swtchart = 0.10.0
 BuildRequires:  pcsc-towitoko-devel
 Requires:       pcsc-towitoko-devel
-BuildRequires:  obantoo = 2.1.12
-Requires:       obantoo = 2.1.12
+#BuildRequires:  obantoo = 2.1.12
+#Requires:       obantoo = 2.1.12
 BuildRequires:  fdupes
+
 # Don't offer libraries linked in here to other packages:
 AutoReqProv:    off
 
@@ -81,8 +82,8 @@ mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
 # unbundle SWT Chart
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
-ln -sf %{_javadir}/org.swtchart.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
+##rm %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
+##ln -sf %%{_javadir}/org.swtchart.jar %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
 
 # unbundle libtowitoko
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko*
@@ -93,8 +94,8 @@ ln -sf  %{_libdir}/libtowitoko.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{n
 %endif
 
 # unbundle OBanToo
-rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/obantoo-bin-2.1.12.jar
-ln -sf  %{_javadir}/obantoo-bin-2.1.12.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/obantoo-bin-2.1.12.jar
+##rm %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/obantoo-bin-2.1.12.jar
+##ln -sf  %%{_javadir}/obantoo-bin-2.1.12.jar %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/obantoo-bin-2.1.12.jar
 
 # icons
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
