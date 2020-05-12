@@ -5,8 +5,8 @@
     <param name="url">https://pagure.io/389-ds-base.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">389-ds-base-1.4.4.1</param>
-    <param name="match-tag">389-ds-base-1.4.4.1</param>
+    <param name="revision">389-ds-base-1.4.4.2</param>
+    <param name="match-tag">389-ds-base-1.4.4.2</param>
     <!-- remove the extra prefix from the tag again it looks so funny because the service removed "-" from the string before-->
     <param name="versionrewrite-pattern">389dsbase(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

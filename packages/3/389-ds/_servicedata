@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://pagure.io/389-ds-base.git</param>
-              <param name="changesrevision">2333d75d54baeba8c8157d10234a915a2d7a6a25</param></service><service name="tar_scm">
+              <param name="changesrevision">debc684adc387edc98eb07698f20f11a63964e0a</param></service><service name="tar_scm">
                 <param name="url">https://pagure.io/forks/firstyear/389-ds-base.git</param>
               <param name="changesrevision">52fa3f10591fc102b1e08def13e1e2bf48ecfd2e</param></service></servicedata>

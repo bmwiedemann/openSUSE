@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 12 01:21:03 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.2~git0.debc684ad:
+  * Bump version to 1.4.4.2
+  * Issue 51078 - Add nsslapd-enable-upgrade-hash to the schema
+  * Issue 51054 - Revise ACI target syntax checking
+  * Ticket 51068 - deadlock when updating the schema
+  * Issue 51042 - try to use both c_rehash and openssl rehash
+  * Issue 51042 - switch from c_rehash to openssl rehash
+  * Issue 50992 - Bump jemalloc version and enable profiling
+  * Issue 51060 - unable to set sslVersionMin to TLS1.0
+  * Issue 51064 - Unable to install server where IPv6 is disabled
+  * Issue 51051 - CLI fix consistency issues with confirmations
+  * Issue 50655 - etime displayed has an order of magnitude 10 times smaller than it should be
+  * Issue 49731 - undo db_home_dir under /dev/shm/dirsrv for now
+  * Issue 51054 - AddressSanitizer: heap-buffer-overflow in ldap_utf8prev
+  * Issue 49761 - Fix CI tests
+  * Issue 51047 - React deprecating ComponentWillMount
+  * Issue 50499 - fix npm audit issues
+  * Issue 50545 - Port dbgen.pl to dsctl
+  * Issue 51027 - Test passwordHistory is not rewritten on a fail attempt
+
+-------------------------------------------------------------------
 Thu Apr 23 00:36:32 UTC 2020 - wbrown@suse.de
 
 - Update to version 1.4.4.1~git0.2333d75d5:
