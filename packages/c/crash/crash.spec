@@ -17,11 +17,6 @@
 # needssslcertforbuild
 
 
-# Disable LTO for PowerPC as bypass boo#1146646
-%ifarch ppc ppc64 ppc64le
-%define _lto_cflags %{nil}
-%endif
-
 %define whitepaper_version 2003
 %define scripts_version  2008-02-08
 %define gcore_version  2011-09-22
@@ -323,7 +318,12 @@ cp %{S:6} memory_driver
 %endif
 
 %build
+%ifarch ppc64le
+# for ppc64le use -mfull-toc needed by lto as per boo#1146646
+export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing -mfull-toc"
+%else
 export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing"
+%endif
 export GDB="gdb-%{gdb_version}"
 make RPMPKG="`cat .rh_rpm_package`" %{?jobs:-j%jobs}
 make extensions %{?jobs:-j%jobs}

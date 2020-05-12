@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 14:37:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- remove bypass lto and add -mfull-toc for ppc64le to check boo#1146646
+
+-------------------------------------------------------------------
 Tue Apr 28 11:27:35 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - Add crash-Define-fallback-PN_XNUM.patch
