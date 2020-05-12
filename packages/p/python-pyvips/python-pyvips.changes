@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu May  7 17:52:59 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.1.12
+  * update enums.py [tony612]
+  * add gen-enums.py [jcupitt]
+  * improve custom source/target types [jcupitt]
+  * revise types for set_blob to fix exception with old libvips [jcupitt]
+  * fix 32-bit support [dqxpb]
+  * remove pytest-runner from pipy deps [lgbaldoni]
+  * add watermark with image example [jcupitt]
+
+-------------------------------------------------------------------
+Mon May  4 13:35:24 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v2.1.11)
