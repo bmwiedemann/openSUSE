@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-MicroOS___20200509" schemaversion="4.1">
+<image name="OBS__openSUSE-MicroOS___20200511" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200509</productvar>
+      <productvar name="VERSION">20200511</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200509,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-microos:20200511,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200509/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-MicroOS/20200511/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -436,7 +436,7 @@
       <repopackage name="libcrack2"/>
       <repopackage name="libcreaterepo_c0" arch="x86_64"/>
       <repopackage name="libcrypt1"/>
-      <repopackage name="libcrypto45" arch="x86_64"/>
+      <repopackage name="libcrypto46" arch="x86_64"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcue2" arch="x86_64"/>
       <repopackage name="libcups2" arch="x86_64"/>
@@ -909,7 +909,7 @@
       <repopackage name="libssh-config" arch="x86_64"/>
       <repopackage name="libssh2-1" arch="x86_64"/>
       <repopackage name="libssh4" arch="x86_64"/>
-      <repopackage name="libssl47" arch="x86_64"/>
+      <repopackage name="libssl48" arch="x86_64"/>
       <repopackage name="libsss_certmap0" arch="x86_64"/>
       <repopackage name="libsss_idmap0" arch="x86_64"/>
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
@@ -935,7 +935,7 @@
       <repopackage name="libtiff5" arch="x86_64"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
-      <repopackage name="libtls19" arch="x86_64"/>
+      <repopackage name="libtls20" arch="x86_64"/>
       <repopackage name="libtotem-plparser18" arch="x86_64"/>
       <repopackage name="libtracker-common-2_0" arch="x86_64"/>
       <repopackage name="libtracker-control-2_0-0" arch="x86_64"/>
