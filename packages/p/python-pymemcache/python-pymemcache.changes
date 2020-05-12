@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 08:26:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Add TLS support for TCP sockets.
+  * Fix corner case when dead hashed server comes back alive.
+
+-------------------------------------------------------------------
 Thu Apr 23 09:34:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python 2
