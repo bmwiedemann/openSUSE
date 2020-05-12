@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 07:05:52 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8.6
+  - DEL: 0126 Support für 32Bit MacOS entfernt
+  - NEW: 0125 Unterstützung für Linux ARM64
+  - NEW: 0124 Bei Win32, Win64 und MacOS64 ist jetzt eine embedded
+    JRE mit enthalten
+- Comment out unbundle eclipse-swt, because it rise up build error.
+
+-------------------------------------------------------------------
+Wed Jan 29 15:11:03 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Use our own eclipse-swt package to provide swt.jar
+
+-------------------------------------------------------------------
 Thu Oct 17 15:33:49 UTC 2019 - ecsos@opensuse.org
 
 - Update to 2.8.5
@@ -194,4 +209,3 @@ Wed Jan  8 14:36:07 UTC 2014 - mailaender@opensuse.org
 Sat Nov 16 18:29:30 UTC 2013 - mailaender@opensuse.org
 
 - initial packaging of version 2.4
-
