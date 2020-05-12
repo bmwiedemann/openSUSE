@@ -17,18 +17,19 @@
 
 
 %define dist_name Impressive
+%define fileversion 0.13.0-beta1
 Name:           impressive
-Version:        0.12.1
+Version:        0.13.0~beta1
 Release:        0
 Summary:        PDF and image viewer optimized for presentations
 License:        GPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            http://impressive.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/%{name}/%{dist_name}/%{version}/%{dist_name}-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/project/%{name}/%{dist_name}/%{fileversion}/%{dist_name}-%{fileversion}.tar.gz
 Requires:       ghostscript
-Requires:       python-imaging
-Requires:       python-opengl
-Requires:       python-pygame
+Requires:       python3-imaging
+Requires:       python3-opengl
+Requires:       python3-pygame
 Recommends:     mupdf
 BuildArch:      noarch
 
@@ -37,14 +38,14 @@ A DRI accelerated PDF document viewer with 3D effects. Currently, it only
 supports keyboard commands (not mouse) and a single 3D cube effect.
 
 %prep
-%setup -q -n %{dist_name}-%{version}
+%setup -q -n %{dist_name}-%{fileversion}
 
-sed -i 's/env python2/python/' impressive.py
+sed -i 's/env python/python3/' impressive.py
 
 %build
 
 %install
-cd %{_builddir}/%{dist_name}-%{version}
+cd %{_builddir}/%{dist_name}-%{fileversion}
 install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_mandir}/man1
 install -m 755 %{name}.py %{buildroot}%{_bindir}/%{name}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 12:17:49 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.13.0-beta1
+  * Python 3 compatibility: should work with Python 2.7 and >= 3.6 now
+  * Win32 build uses 64-bit Python 3
+  * improved support for non-ASCII characters in page titles (as extracted
+  * with pdftk)
+  * fixed box-zoom mode display error in half-page mode
+  * added option to set last page of page progress bar (--progress-last)
+  * added separate overview animation time option (--overtime)
+  * can now have multiple progress bars at once
+    - page progress is moved to top of screen if any other bar is visible
+    - "auto progress" is stacked over duration bar if both are visible
+
+
+-------------------------------------------------------------------
 Tue Oct  1 06:54:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix description typography. Drop redundant %attr.
