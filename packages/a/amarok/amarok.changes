@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May 09 10:13:26 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.9.70git.20200505T221221~fd05592cd8:
+  * fix compilation on FreeBSD where --libmysql-libs does not exist
+  * Fix the define used to distinguish MariaDB from Mysql
+  * Add override identifiers
+  * Remove MPRIS1 support
+  * Use desktop entry spec compliant X-KDE-ServiceTypes keys
+  * Set StartupWMClass in desktop file
+  * Make icons look sharp with HiDPI
+  * Port from {from,to}Time_t to {from,to}SecsSinceEpoch
+  * Use currentDateTimeUtc().toTime_t()
+  * Add more override markers
+  * Remove Phabricator's .arcconfig
+  * Remove nepmukcollection
+  * Add more override markers
+  * Conclude porting of Last.fm to Amarok KF5
+  * Fix copying and moving files to collection
+  * Fix dangling string pointers
+  * Add more override markers
+  * build: remove extra CMakeLists.txt
+  * build: re-enable the documentation
+  * Fix compatibility with modern MySQL
+  * DiagnosticDialog: Use QStringLiteral
+  * Fix a crash when trying to open the DiagnosticDialog
+  * Fix duplicate include guard
+  * Add more override markers
+  * PHAACG2.py: fix comparison with literal
+  * appdata: improve URLs
+- Update translations
+- Rebase amarok_mariadb.patch
+- Rebase 0001-Work-around-QTBUG-75797-for-openQA.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 12:49:20 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20200225T224218~2084224e4c:

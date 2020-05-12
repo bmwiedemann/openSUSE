@@ -7,12 +7,12 @@
       <size unit="G">4</size>
     </physicalmemory>
     <processors>4</processors>
+    <jobs>4</jobs>
   </hardware>
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
       <arch>ppc64le</arch>
-      <arch>s390x</arch>
       <arch>aarch64</arch>
     </conditions>
     <hardware>
@@ -20,6 +20,7 @@
         <size unit="G">8</size>
       </memory>
       <processors>8</processors>
+      <jobs>8</jobs>
     </hardware>
   </overwrite>
 </constraints>

@@ -115,8 +115,9 @@ add_newlib_cross cross-riscv64-elf-gcc$base_ver riscv64 riscv64-elf
 #add_newlib_cross cross-rl78-gcc$base_ver rl78 rl78-elf
 add_newlib_cross cross-rx-gcc$base_ver rx rx-elf
 fi
-# the nvptx cross is used for offloading
+# the nvptx and amdgcn crosses are used for offloading
 add_cross cross-nvptx-gcc$base_ver nvptx nvptx-none %define gcc_accel 1
+add_cross cross-amdgcn-gcc$base_ver amdgcn amdgcn-amdhsa %define gcc_accel 1
 
 for f in *.spec; do
   sed -i -e '/^# .*-\(BEGIN\|END\)$/d' $f

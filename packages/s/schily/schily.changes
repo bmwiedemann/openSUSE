@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 11:47:23 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- mkisofs: fix integer overflow in partition table calculation
+  when chrp-boot is enabled and a large ISO image is created.
+  (large_mac_iso.patch, bsc#1169420)
+
+-------------------------------------------------------------------
 Wed Apr 29 08:26:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.04.18

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  9 18:45:23 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.2.2:
+  * Add checklinks tox environment to ensure all links in
+    documentation are good.
+  * Refactor extension API documentation (#729).
+  * Load entry_points (for extensions) only once using
+    importlib.metadata.
+  * Do not double escape entities in TOC.
+  * Correctly report if an extension raises a TypeError (#939).
+  * Raise a KeyError when attempting to delete a nonexistent key
+    from the extension registry (#939).
+  * Remove import of packaging (or pkg_resources fallback) entirely
+  * Remove setuptools as a run-time dependency (install_required).
+- add new requirement importlib-metadata for python < 3.8
+- remove setuptools from Requires: dependency dropped by upstream
+
+-------------------------------------------------------------------
 Thu Feb 13 19:07:42 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.2.1: bugfix release

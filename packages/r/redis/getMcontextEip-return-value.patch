@@ -1,0 +1,13 @@
+Index: redis-6.0.1/src/debug.c
+===================================================================
+--- redis-6.0.1.orig/src/debug.c
++++ redis-6.0.1/src/debug.c
+@@ -919,6 +919,8 @@ static void *getMcontextEip(ucontext_t *
+     return (void*) uc->uc_mcontext.arm_pc;
+     #elif defined(__aarch64__) /* Linux AArch64 */
+     return (void*) uc->uc_mcontext.pc;
++    #else
++    return NULL;
+     #endif
+ #elif defined(__FreeBSD__)
+     /* FreeBSD */

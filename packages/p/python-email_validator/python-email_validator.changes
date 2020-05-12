@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  7 12:03:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- version update to 1.1.0
+  * no upstream changelog
+
+- version update to 1.0.5
+  * no upstream changelog
+
+- Use pytest
+- Add patch to skip tests that try to check MX records of domains:
+  * skip-tests-using-network.patch
+
+-------------------------------------------------------------------
 Tue May  7 10:28:10 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.0.4

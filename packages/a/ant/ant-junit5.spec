@@ -185,8 +185,8 @@ This package contains optional apache resolver tasks for Apache Ant.
 Summary:        Optional commons logging tasks for ant
 License:        Apache-2.0
 Group:          Development/Tools/Building
-BuildRequires:  jakarta-commons-logging
-Requires:       jakarta-commons-logging
+BuildRequires:  apache-commons-logging
+Requires:       apache-commons-logging
 %requires_eq    ant
 
 %description -n ant-commons-logging
@@ -198,8 +198,8 @@ This package contains optional commons logging tasks for Apache Ant.
 Summary:        Optional commons net tasks for ant
 License:        Apache-2.0
 Group:          Development/Tools/Building
-BuildRequires:  jakarta-commons-net
-Requires:       jakarta-commons-net
+BuildRequires:  apache-commons-net
+Requires:       apache-commons-net
 %requires_eq    ant
 
 %description -n ant-commons-net
@@ -573,10 +573,10 @@ echo "junit5 hamcrest/core junit opentest4j ant/ant-junitlauncher" > %{buildroot
 
 %if %{with antlr}
 echo "antlr ant/ant-antlr" > %{buildroot}%{_sysconfdir}/ant.d/antlr
-echo "bsf ant/ant-apache-bsf" > %{buildroot}%{_sysconfdir}/ant.d/apache-bsf
+echo "rhino bsf ant/ant-apache-bsf" > %{buildroot}%{_sysconfdir}/ant.d/apache-bsf
 echo "xml-resolver ant/ant-apache-resolver" > %{buildroot}%{_sysconfdir}/ant.d/apache-resolver
-echo "jakarta-commons-logging ant/ant-commons-logging" > %{buildroot}%{_sysconfdir}/ant.d/commons-logging
-echo "jakarta-commons-net ant/ant-commons-net" > %{buildroot}%{_sysconfdir}/ant.d/commons-net
+echo "apache-commons-logging ant/ant-commons-logging" > %{buildroot}%{_sysconfdir}/ant.d/commons-logging
+echo "apache-commons-net ant/ant-commons-net" > %{buildroot}%{_sysconfdir}/ant.d/commons-net
 echo "bcel ant/ant-apache-bcel" > %{buildroot}%{_sysconfdir}/ant.d/apache-bcel
 echo "log4j12/log4j-12 ant/ant-apache-log4j" > %{buildroot}%{_sysconfdir}/ant.d/apache-log4j
 echo "oro ant/ant-apache-oro" > %{buildroot}%{_sysconfdir}/ant.d/apache-oro

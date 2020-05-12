@@ -127,7 +127,7 @@ translation-update-upstream po libsoup
 %build
 %meson \
 	-Dgssapi=enabled \
-	-Dkrb5_config='%{_libexecdir}/mit/bin/krb5-config' \
+	-Dkrb5_config="$(which krb5-config)" \
 	-Dvapi=enabled \
 	-Dgtk_doc=true \
 	-Dntlm=disabled \

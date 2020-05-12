@@ -8,7 +8,7 @@ Subject: [PATCH] Work around QTBUG-75797 for openQA
  1 file changed, 6 insertions(+)
 
 diff --git a/src/main.cpp b/src/main.cpp
-index c8ce816d60..55b7df022f 100644
+index ad729e5085..12c1557b3b 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -29,6 +29,7 @@
@@ -29,8 +29,5 @@ index c8ce816d60..55b7df022f 100644
 +    QSurfaceFormat::setDefaultFormat(fmt);
 +
      App app(argc, argv);
+     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
  
- #ifdef WITH_QT_WEBENGINE
--- 
-2.21.0
-

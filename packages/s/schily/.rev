@@ -270,4 +270,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800636</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>2d1bb269d572c144ffe5448471fc9782</srcmd5>
+    <version>unknown</version>
+    <time>1589315276</time>
+    <user>dimstar_suse</user>
+    <comment>- mkisofs: fix integer overflow in partition table calculation
+  when chrp-boot is enabled and a large ISO image is created.
+  (large_mac_iso.patch, bsc#1169420)</comment>
+    <requestid>802735</requestid>
+  </revision>
 </revisionlist>

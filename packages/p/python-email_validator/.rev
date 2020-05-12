@@ -32,4 +32,19 @@
     <comment></comment>
     <requestid>701278</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27fda115be0a69406300c143e3ce2a1b</srcmd5>
+    <version>1.1.0</version>
+    <time>1589315207</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.1.0
+  * no upstream changelog
+- version update to 1.0.5
+  * no upstream changelog
+- Use pytest
+- Add patch to skip tests that try to check MX records of domains:
+  * skip-tests-using-network.patch
+</comment>
+    <requestid>802552</requestid>
+  </revision>
 </revisionlist>

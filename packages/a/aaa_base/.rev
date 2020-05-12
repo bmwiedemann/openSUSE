@@ -3758,4 +3758,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1168341</comment>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>c017514e3d06f2c5f76d2afde53b5e47</srcmd5>
+    <version>84.87+git20200507.e2243a4</version>
+    <time>1589315147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801760</requestid>
+  </revision>
 </revisionlist>

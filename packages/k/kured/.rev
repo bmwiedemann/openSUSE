@@ -115,4 +115,15 @@
     <comment></comment>
     <requestid>796462</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2115cf7d859f61b5d99b3d2c8ebbdaf2</srcmd5>
+    <version>1.4.0</version>
+    <time>1589315265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  - Updated kubectl, client-go, etc to k8s 1.17 (#127, #135)
+  - Update to go 1.13 (#130)
+  - print node id when commanding reboot (#134)</comment>
+    <requestid>802728</requestid>
+  </revision>
 </revisionlist>

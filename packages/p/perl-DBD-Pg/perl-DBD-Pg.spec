@@ -17,7 +17,7 @@
 
 
 Name:           perl-DBD-Pg
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 %define cpan_name DBD-Pg
 Summary:        PostgreSQL database driver for the DBI module
@@ -68,6 +68,6 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README README.dev README.win32 TODO win32.mak
+%doc Changes CONTRIBUTING.md README README.dev README.win32 TODO win32.mak
 
 %changelog

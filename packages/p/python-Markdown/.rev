@@ -288,4 +288,26 @@
     <comment></comment>
     <requestid>774239</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e5779c1180c16350955e4e2195233b9d</srcmd5>
+    <version>3.2.2</version>
+    <time>1589315186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.2:
+  * Add checklinks tox environment to ensure all links in
+    documentation are good.
+  * Refactor extension API documentation (#729).
+  * Load entry_points (for extensions) only once using
+    importlib.metadata.
+  * Do not double escape entities in TOC.
+  * Correctly report if an extension raises a TypeError (#939).
+  * Raise a KeyError when attempting to delete a nonexistent key
+    from the extension registry (#939).
+  * Remove import of packaging (or pkg_resources fallback) entirely
+  * Remove setuptools as a run-time dependency (install_required).
+- add new requirement importlib-metadata for python &lt; 3.8
+- remove setuptools from Requires: dependency dropped by upstream
+</comment>
+    <requestid>802549</requestid>
+  </revision>
 </revisionlist>

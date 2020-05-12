@@ -41,6 +41,7 @@ Source1:        README-FIRST
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
 Patch1:         iconv-name.diff
 Patch2:         schily-2018-05-25_star_configuration.patch
+Patch3:         large_mac_iso.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -445,8 +446,7 @@ limitations on file size and supports to edit large files (files >2
 GB).
 
 %prep
-%setup -qn %name-%rver
-%patch -P 1 -P 2 -p1
+%autosetup -n %name-%rver -p1
 find . "(" -type d -o -type f ")" -exec chmod u+w "{}" "+"
 
 cp %{SOURCE1} .

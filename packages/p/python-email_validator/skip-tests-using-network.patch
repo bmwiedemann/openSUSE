@@ -1,0 +1,25 @@
+Index: python-email-validator-1.1.0/tests/test_main.py
+===================================================================
+--- python-email-validator-1.1.0.orig/tests/test_main.py
++++ python-email-validator-1.1.0/tests/test_main.py
+@@ -250,10 +250,12 @@ def test_email_invalid(email_input, erro
+     assert str(exc_info.value) == error_msg
+ 
+ 
++@pytest.mark.skip(reason="skipping tests using network")
+ def test_deliverability_no_records():
+     assert validate_email_deliverability('example.com', 'example.com') == {'mx': [(0, '')], 'mx-fallback': None}
+ 
+ 
++@pytest.mark.skip(reason="skipping tests using network")
+ def test_deliverability_found():
+     response = validate_email_deliverability('gmail.com', 'gmail.com')
+     assert response.keys() == {'mx', 'mx-fallback'}
+@@ -264,6 +266,7 @@ def test_deliverability_found():
+     assert response['mx'][0][1].endswith('.com')
+ 
+ 
++@pytest.mark.skip(reason="skipping tests using network")
+ def test_deliverability_fails():
+     domain = 'xkxufoekjvjfjeodlfmdfjcu.com'
+     with pytest.raises(EmailUndeliverableError, match='The domain name {} does not exist'.format(domain)):

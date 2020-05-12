@@ -40,8 +40,7 @@ Source9:        %{name}-user.conf
 Source10:       https://raw.githubusercontent.com/antirez/redis-hashes/%{redis_hashes_tree}/README#/redis.hashes
 # PATCH-MISSING-TAG -- See https://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         %{name}-conf.patch
-Patch1:         %{name}-enable-bactrace-on-x86-ia64-and_arm32_only.patch
-Patch2:         %{name}-disable_integration_logging.patch
+Patch1:         getMcontextEip-return-value.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
 BuildRequires:  pkgconfig
@@ -64,11 +63,7 @@ different kind of sorting abilities.
 echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0}" | sha256sum -c
 %setup -q
 %patch0
-%patch1
-%ifnarch %{ix86} x86_64 ia64 %{arm}
-# We have no backtrace, so disable logging test
-%patch2
-%endif
+%patch1 -p1
 %patch3 -p1
 %patch4 -p1
 
@@ -117,7 +112,6 @@ mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE9} %{buildroot}%{_sysusersdir}/
 
 %check
-%ifnarch ppc ppc64
 cat <<EOF
 ---------------------------------------------------
 The test suite often fails to start a server, with
@@ -125,7 +119,6 @@ The test suite often fails to start a server, with
 ---------------------------------------------------
 EOF
 %make_build test || true
-%endif
 
 %pre -f redis.pre
 %service_add_pre redis.target redis@.service redis-sentinel.target redis-sentinel@.service

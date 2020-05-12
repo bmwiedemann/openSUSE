@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 15:09:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix animations with Frameworks 5.70:
+  * 0001-Stop-multiplying-duration-values.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

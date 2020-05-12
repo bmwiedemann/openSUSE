@@ -1,7 +1,7 @@
 #
 # spec file for package python-email_validator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-email_validator
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/JoshData/python-email-validator
 Source:         https://github.com/JoshData/python-email-validator/archive/v%{version}.tar.gz
+Patch0:         skip-tests-using-network.patch
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,6 +55,7 @@ Key features:
 
 %prep
 %setup -q -n python-email-validator-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -62,11 +65,11 @@ Key features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand $python email_validator/__init__.py --tests < test_pass.txt}
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %python3_only %{_bindir}/email_validator
 %{python_sitelib}/*
 

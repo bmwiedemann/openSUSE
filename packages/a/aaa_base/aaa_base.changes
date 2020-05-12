@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 07 12:43:27 UTC 2020 - lnussel@suse.de
+
+- Update to version 84.87+git20200507.e2243a4:
+  * handle non-existing /etc/nsswitch.conf
+  * set SYSTEMD_OFFLINE=1 if there's no systemd
+  * Better support of Midnight Commander (bsc#1170527)
+  * improve sysconf_addword: remove/cleanup spaces while adding/removing flags/modules
+
+-------------------------------------------------------------------
+Tue Mar 31 18:00:15 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Require xz (boo#1162581).
+
+-------------------------------------------------------------------
+Tue Mar 24 13:13:10 UTC 2020 - lnussel@suse.de
+
+- Update to version 84.87+git20200312.411a96b:
+  * get_kernel_version: support xz compressed kernel (boo#1162581).
+
+-------------------------------------------------------------------
 Mon Feb 24 10:22:08 UTC 2020 - kukuk@suse.com
 
 - Update to version 84.87+git20200224.7105b32:

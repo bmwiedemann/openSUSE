@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.70git.20200225T224218~2084224e4c
+Version:        2.9.70git.20200505T221221~fd05592cd8
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -60,6 +60,7 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -158,9 +159,11 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configdir}/*
 %{_kf5_configkcfgdir}/
 %{_kf5_dbusinterfacesdir}/
+%{_kf5_htmldir}/en/amarok/
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_libdir}/libamarok-sqlcollection.so*
 %{_kf5_libdir}/libamarok-transcoding.so*
+%{_kf5_libdir}/libamarok_service_lastfm_config.so
 %{_kf5_libdir}/libamarokcore.so*
 %{_kf5_libdir}/libamaroklib.so*
 %{_kf5_libdir}/libamarokpud.so*

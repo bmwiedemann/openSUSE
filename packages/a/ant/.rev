@@ -736,4 +736,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Fix classpath to use bootstrap package unequivocally</comment>
     <requestid>764179</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>6dd9a3075a22f896c2c241eafc3b7ad5</srcmd5>
+    <version>1.10.7</version>
+    <time>1589315243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802621</requestid>
+  </revision>
 </revisionlist>

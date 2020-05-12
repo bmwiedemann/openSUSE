@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 16:49:40 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Add rhino to the ant-apache-bsf optional tasks [bsc#1134001]
+
+-------------------------------------------------------------------
+Wed May  6 16:45:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Remove jakarta-commons-* dependencies [bsc#1133997]
+  * Use apache-commons-logging and apache-commons-net in optional tasks
+
+-------------------------------------------------------------------
 Tue Jan 14 07:03:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Use xml-commons-apis-bootstrap as jar in classpath instead of

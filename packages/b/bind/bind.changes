@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  8 12:07:50 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- bind needs an accurate clock, so wait for the time-sync.target
+  to be reached before starting bind.
+  [bsc#1170667, bsc#1170713, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
 Sat Mar 21 08:56:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers.d to create named user

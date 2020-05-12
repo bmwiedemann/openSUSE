@@ -28,6 +28,7 @@ ExclusiveArch: do-not-build
 %define build_go 0
 %define build_hsa 0
 %define build_nvptx 0
+%define build_gcn 0
 %define build_d 0
 
 %define enable_plugins 0
@@ -93,10 +94,15 @@ Name:         %{pkgname}
 # SRC-COMMON-BEGIN
 # SRC-COMMON-END
 %if "%{cross_arch}" != "nvptx"
+%if "%{cross_arch}" != "amdgcn"
 BuildRequires: cross-%{binutils_target}-binutils
 Requires: cross-%{binutils_target}-binutils
 %endif
+%endif
 BuildRequires: gcc-c++
+%if %{suse_version} > 1500
+BuildRequires: libzstd-devel
+%endif
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: gettext-devel
@@ -130,6 +136,16 @@ Requires: nvptx-tools
 Requires: cross-nvptx-newlib-devel >= %{version}-%{release}
 ExclusiveArch: x86_64
 %define nvptx_newlib 1
+%endif
+%if "%{cross_arch}" == "amdgcn"
+# amdgcn uses the llvm assembler and linker
+BuildRequires: llvm
+BuildRequires: lld
+Requires: llvm
+Requires: lld
+Requires: cross-amdgcn-newlib-devel >= %{version}-%{release}
+ExclusiveArch: x86_64
+%define amdgcn_newlib 1
 %endif
 %endif
 %if 0%{?gcc_icecream:1}
@@ -193,7 +209,7 @@ This package contains the icecream environment for the GNU C Compiler
 
 %if 0%{?nvptx_newlib:1}
 %package -n cross-nvptx-newlib@base_ver@-devel
-Summary: newlib for the nvptx offload target
+Summary: Newlib for the nvptx offload target
 Group:	Development/Languages/C and C++
 Provides: cross-nvptx-newlib-devel = %{version}-%{release}
 Conflicts: cross-nvptx-newlib-devel
@@ -202,11 +218,27 @@ Conflicts: cross-nvptx-newlib-devel
 Newlib development files for the nvptx offload target compiler.
 %endif
 
+%if 0%{?amdgcn_newlib:1}
+%package -n cross-amdgcn-newlib@base_ver@-devel
+Summary: Newlib for the amdgcn offload target
+Group:	Development/Languages/C and C++
+Provides: cross-amdgcn-newlib-devel = %{version}-%{release}
+Conflicts: cross-amdgcn-newlib-devel
+
+%description -n cross-amdgcn-newlib@base_ver@-devel
+Newlib development files for the amdgcn offload target compiler.
+%endif
+
 
 %define targetlibsubdir %{_libdir}/gcc/%{gcc_target_arch}/%{gcc_dir_version}
 
 %install
 cd obj-%{GCCDIST}
+
+%if "%{TARGET_ARCH}" == "amdgcn"
+# libtool needs to be able to call ranlib
+export PATH="`pwd`/target-tools/bin:$PATH"
+%endif
 
 # install and fixup host parts
 make DESTDIR=$RPM_BUILD_ROOT install-host
@@ -260,6 +292,20 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 # that is the place where we later search for (only)
 ( cd $RPM_BUILD_ROOT%{targetlibsubdir} && tar cf - . ) | ( cd $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch} && tar xf - )
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
+%endif
+# for amdgcn install the symlinks to the llvm tools
+%if "%{TARGET_ARCH}" == "amdgcn"
+mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
+ln -s /usr/bin/llvm-ar $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s /usr/bin/llvm-mc $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
+ln -s /usr/bin/llvm-nm $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s /usr/bin/llvm-ranlib $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
+ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld
+ln -s %{_prefix}/amdgcn-amdhsa/bin/nm $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-nm
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ranlib $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 
 %if 0%{?gcc_icecream:%gcc_icecream}
@@ -408,6 +454,17 @@ fi
 %files -n cross-nvptx-newlib@base_ver@-devel
 %defattr(-,root,root)
 %{_prefix}/%{gcc_target_arch}
+%endif
+
+%if 0%{?amdgcn_newlib:1}
+%files -n cross-amdgcn-newlib@base_ver@-devel
+%defattr(-,root,root)
+%{_prefix}/%{gcc_target_arch}
+%{_prefix}/bin/amdgcn-amdhsa-ar
+%{_prefix}/bin/amdgcn-amdhsa-as
+%{_prefix}/bin/amdgcn-amdhsa-ld
+%{_prefix}/bin/amdgcn-amdhsa-nm
+%{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 
 %changelog -n cross-%{pkgname}-gcc@base_ver@

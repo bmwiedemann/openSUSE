@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  9 12:09:41 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- redis-disable_integration_logging.patch: remove
+- redis-enable-bactrace-on-x86-ia64-and_arm32_only.patch: remove
+- getMcontextEip-return-value.patch: Add missing return value
+
+-------------------------------------------------------------------
 Mon May  4 12:51:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - add BR pkgconfig(libsystemd) for the rewritten systemd support

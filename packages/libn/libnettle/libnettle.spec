@@ -1,7 +1,7 @@
 #
 # spec file for package libnettle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define soname 7
-%define hogweed_soname 5
+%define soname 8
+%define hogweed_soname 6
 Name:           libnettle
-Version:        3.5.1
+Version:        3.6
 Release:        0
 Summary:        Cryptographic Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -29,10 +29,9 @@ Source0:        https://www.lysator.liu.se/~nisse/archive/nettle-%{version}.tar.
 Source1:        https://www.lysator.liu.se/~nisse/archive/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM respect cflags while building
-Patch0:         nettle-respect-cflags.patch
+Source4:        %{name}-rpmlintrc
 BuildRequires:  fipscheck
-BuildRequires:  gmp-devel
+BuildRequires:  gmp-devel >= 6.1.0
 BuildRequires:  m4
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
@@ -94,14 +93,13 @@ operations using the nettle library.
 
 %prep
 %setup -q -n nettle-%{version}
-%patch0 -p1
 
 %build
 %configure \
     --disable-static \
     --enable-shared \
     --enable-fat
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -113,7 +111,7 @@ make %{?_smp_mflags}
 # invalidates a HMAC that may have been created earlier.
 # solution: create the hashes _after_ the macro runs.
 #
-# this shows up earlier because otherwise the %expand of
+# this shows up earlier because otherwise the %%expand of
 # the macro is too late.
 # remark: This is the same as running
 #   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
@@ -133,21 +131,23 @@ make %{?_smp_mflags}
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}"/nettle.info%{ext_info}
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %files -n libnettle%{soname}
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/libnettle.so.%{soname}
 %{_libdir}/libnettle.so.%{soname}.*
 %{_libdir}/.libnettle.so.%{soname}.hmac
 
 %files -n libhogweed%{hogweed_soname}
+%license COPYING*
 %{_libdir}/libhogweed.so.%{hogweed_soname}
 %{_libdir}/libhogweed.so.%{hogweed_soname}.*
 %{_libdir}/.libhogweed.so.%{hogweed_soname}.hmac
 
 %files -n libnettle-devel
+%license COPYING*
+%doc AUTHORS ChangeLog NEWS README
 %{_includedir}/nettle
 %{_libdir}/libnettle.so
 %{_libdir}/libhogweed.so

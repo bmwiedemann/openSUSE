@@ -1,0 +1,2 @@
+addFilter("libnettle.* hidden-file-or-dir .*hmac")
+addFilter("libhogweed.* hidden-file-or-dir .*hmac")

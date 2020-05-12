@@ -91,9 +91,11 @@
 %ifarch x86_64
 %define build_hsa 1
 %define build_nvptx 1
+%define build_gcn 1
 %else
 %define build_hsa 0
 %define build_nvptx 0
+%define build_gcn 0
 %endif
 
 %define use_lto_bootstrap 0
@@ -133,8 +135,8 @@
 %define liblsan_sover 0
 %define libvtv_sover 0
 %define libgo_sover 16
-%define libgphobos_sover 76
-%define libgdruntime_sover 76
+%define libgphobos_sover 1
+%define libgdruntime_sover 1
 
 # Shared library package suffix
 # This is used for the "non-standard" set of libraries, the standard
@@ -267,7 +269,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.0.1+git175037
+Version:        10.1.1+git40
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -315,7 +317,7 @@ Source1:        change_spec
 Source2:        gcc10-rpmlintrc
 Source3:        gcc10-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-3.1.0.tar.xz
+Source5:        newlib-3.3.0.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -323,6 +325,8 @@ Patch7:         gcc48-libstdc++-api-reference.patch
 Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
 Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
+Patch16:        gcc9-reproducible-builds.patch
+Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -430,9 +434,9 @@ Results from running the gcc and target library testsuites.
 %endif
 
 %prep
-%if 0%{?nvptx_newlib:1}
+%if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-3.1.0/newlib .
+ln -s newlib-3.3.0/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -448,6 +452,8 @@ ln -s newlib-3.1.0/newlib .
 %endif
 %patch11
 %patch15
+%patch16
+%patch17 -p1
 %patch51
 %patch60
 %patch61
@@ -514,11 +520,21 @@ languages=$languages,d
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
 #ENABLE_CHECKING="--enable-checking=yes"
-#ENABLE_CHECKING="--enable-checking=release"
-ENABLE_CHECKING=""
+ENABLE_CHECKING="--enable-checking=release"
+#ENABLE_CHECKING=""
 
 # Work around tail/head -1 changes
 export _POSIX2_VERSION=199209
+
+%if "%{TARGET_ARCH}" == "amdgcn"
+mkdir -p target-tools/bin
+ln -s /usr/bin/llvm-ar target-tools/bin/amdgcn-amdhsa-ar
+ln -s /usr/bin/llvm-mc target-tools/bin/amdgcn-amdhsa-as
+ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
+ln -s /usr/bin/llvm-nm target-tools/bin/amdgcn-amdhsa-nm
+ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
+export PATH="`pwd`/target-tools/bin:$PATH"
+%endif
 
 %if %{build_ada}
 # Using the host gnatmake like
@@ -550,7 +566,10 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 hsa,\
 %endif
 %if %{build_nvptx}
-nvptx-none=%{_prefix}/nvptx-none, \
+nvptx-none=%{_prefix}/nvptx-none,\
+%endif
+%if %{build_gcn}
+amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
 %endif
 %endif
 %if %{build_nvptx}
@@ -634,6 +653,10 @@ nvptx-none=%{_prefix}/nvptx-none, \
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--disable-sjlj-exceptions \
 	--enable-newlib-io-long-long \
+%endif
+%if "%{TARGET_ARCH}" == "amdgcn"
+	--enable-as-accelerator-for=%{GCCDIST} \
+	--enable-libgomp \
 %endif
 %if "%{TARGET_ARCH}" == "avr"
 	--enable-lto \

@@ -49,6 +49,7 @@ ExclusiveArch:  do-not-build
 %define build_go 0
 %define build_hsa 0
 %define build_nvptx 0
+%define build_gcn 0
 %define build_d 0
 
 %define enable_plugins 0
@@ -114,7 +115,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.0.1+git175037
+Version:        10.1.1+git40
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -127,7 +128,7 @@ Source1:        change_spec
 Source2:        gcc10-rpmlintrc
 Source3:        gcc10-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-3.1.0.tar.xz
+Source5:        newlib-3.3.0.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -135,6 +136,8 @@ Patch7:         gcc48-libstdc++-api-reference.patch
 Patch9:         gcc48-remove-mpfr-2.4.0-requirement.patch
 Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
+Patch16:        gcc9-reproducible-builds.patch
+Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -176,12 +179,17 @@ Patch61:        gcc44-rename-info-files.patch
 %define gxxinclude %{_prefix}/include/c++/%{gcc_dir_version}
 
 %if "%{cross_arch}" != "nvptx"
+%if "%{cross_arch}" != "amdgcn"
 BuildRequires:  cross-%{binutils_target}-binutils
 Requires:       cross-%{binutils_target}-binutils
 %endif
+%endif
+BuildRequires:  gcc-c++
+%if %{suse_version} > 1500
+BuildRequires:  libzstd-devel
+%endif
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel-32bit
 BuildRequires:  mpc-devel
@@ -213,6 +221,16 @@ Requires:       cross-nvptx-newlib-devel >= %{version}-%{release}
 Requires:       nvptx-tools
 ExclusiveArch:  x86_64
 %define nvptx_newlib 1
+%endif
+%if "%{cross_arch}" == "amdgcn"
+# amdgcn uses the llvm assembler and linker
+BuildRequires:  lld
+BuildRequires:  llvm
+Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
+Requires:       lld
+Requires:       llvm
+ExclusiveArch:  x86_64
+%define amdgcn_newlib 1
 %endif
 %endif
 %if 0%{?gcc_icecream:1}
@@ -256,9 +274,9 @@ only, it is not intended for any other use.
 %endif
 
 %prep
-%if 0%{?nvptx_newlib:1}
+%if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-3.1.0/newlib .
+ln -s newlib-3.3.0/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -274,6 +292,8 @@ ln -s newlib-3.1.0/newlib .
 %endif
 %patch11
 %patch15
+%patch16
+%patch17 -p1
 %patch51
 %patch60
 %patch61
@@ -340,11 +360,21 @@ languages=$languages,d
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
 #ENABLE_CHECKING="--enable-checking=yes"
-#ENABLE_CHECKING="--enable-checking=release"
-ENABLE_CHECKING=""
+ENABLE_CHECKING="--enable-checking=release"
+#ENABLE_CHECKING=""
 
 # Work around tail/head -1 changes
 export _POSIX2_VERSION=199209
+
+%if "%{TARGET_ARCH}" == "amdgcn"
+mkdir -p target-tools/bin
+ln -s /usr/bin/llvm-ar target-tools/bin/amdgcn-amdhsa-ar
+ln -s /usr/bin/llvm-mc target-tools/bin/amdgcn-amdhsa-as
+ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
+ln -s /usr/bin/llvm-nm target-tools/bin/amdgcn-amdhsa-nm
+ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
+export PATH="`pwd`/target-tools/bin:$PATH"
+%endif
 
 %if %{build_ada}
 # Using the host gnatmake like
@@ -376,7 +406,10 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 hsa,\
 %endif
 %if %{build_nvptx}
-nvptx-none=%{_prefix}/nvptx-none, \
+nvptx-none=%{_prefix}/nvptx-none,\
+%endif
+%if %{build_gcn}
+amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
 %endif
 %endif
 %if %{build_nvptx}
@@ -460,6 +493,10 @@ nvptx-none=%{_prefix}/nvptx-none, \
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--disable-sjlj-exceptions \
 	--enable-newlib-io-long-long \
+%endif
+%if "%{TARGET_ARCH}" == "amdgcn"
+	--enable-as-accelerator-for=%{GCCDIST} \
+	--enable-libgomp \
 %endif
 %if "%{TARGET_ARCH}" == "avr"
 	--enable-lto \
@@ -601,7 +638,7 @@ This package contains the icecream environment for the GNU C Compiler
 
 %if 0%{?nvptx_newlib:1}
 %package -n cross-nvptx-newlib10-devel
-Summary:        newlib for the nvptx offload target
+Summary:        Newlib for the nvptx offload target
 Group:          Development/Languages/C and C++
 Provides:       cross-nvptx-newlib-devel = %{version}-%{release}
 Conflicts:      cross-nvptx-newlib-devel
@@ -610,10 +647,26 @@ Conflicts:      cross-nvptx-newlib-devel
 Newlib development files for the nvptx offload target compiler.
 %endif
 
+%if 0%{?amdgcn_newlib:1}
+%package -n cross-amdgcn-newlib10-devel
+Summary:        Newlib for the amdgcn offload target
+Group:          Development/Languages/C and C++
+Provides:       cross-amdgcn-newlib-devel = %{version}-%{release}
+Conflicts:      cross-amdgcn-newlib-devel
+
+%description -n cross-amdgcn-newlib10-devel
+Newlib development files for the amdgcn offload target compiler.
+%endif
+
 %define targetlibsubdir %{_libdir}/gcc/%{gcc_target_arch}/%{gcc_dir_version}
 
 %install
 cd obj-%{GCCDIST}
+
+%if "%{TARGET_ARCH}" == "amdgcn"
+# libtool needs to be able to call ranlib
+export PATH="`pwd`/target-tools/bin:$PATH"
+%endif
 
 # install and fixup host parts
 make DESTDIR=$RPM_BUILD_ROOT install-host
@@ -666,6 +719,20 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 # that is the place where we later search for (only)
 ( cd $RPM_BUILD_ROOT%{targetlibsubdir} && tar cf - . ) | ( cd $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch} && tar xf - )
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
+%endif
+# for amdgcn install the symlinks to the llvm tools
+%if "%{TARGET_ARCH}" == "amdgcn"
+mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
+ln -s /usr/bin/llvm-ar $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s /usr/bin/llvm-mc $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
+ln -s /usr/bin/llvm-nm $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s /usr/bin/llvm-ranlib $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
+ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld
+ln -s %{_prefix}/amdgcn-amdhsa/bin/nm $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-nm
+ln -s %{_prefix}/amdgcn-amdhsa/bin/ranlib $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 
 %if 0%{?gcc_icecream:%gcc_icecream}
@@ -814,6 +881,17 @@ fi
 %files -n cross-nvptx-newlib10-devel
 %defattr(-,root,root)
 %{_prefix}/%{gcc_target_arch}
+%endif
+
+%if 0%{?amdgcn_newlib:1}
+%files -n cross-amdgcn-newlib10-devel
+%defattr(-,root,root)
+%{_prefix}/%{gcc_target_arch}
+%{_prefix}/bin/amdgcn-amdhsa-ar
+%{_prefix}/bin/amdgcn-amdhsa-as
+%{_prefix}/bin/amdgcn-amdhsa-ld
+%{_prefix}/bin/amdgcn-amdhsa-nm
+%{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 
 %changelog

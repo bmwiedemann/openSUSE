@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200224.7105b32
+Version:        84.87+git20200507.e2243a4
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -36,6 +36,7 @@ Requires:       /usr/bin/grep
 Requires:       /usr/bin/mv
 Requires:       /usr/bin/sed
 Requires:       /usr/bin/tput
+Requires:       /usr/bin/xz
 Requires:       distribution-release
 Requires:       filesystem
 Recommends:     logrotate netcfg udev iputils iproute2 aaa_base-extras

@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu May  7 13:43:25 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (dd38686d9c810cecbaa80bb82e), git40.
+  * Includes GCC 10.1 release.
+
+-------------------------------------------------------------------
+Sat May  2 09:37:31 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (2aaa1dc3c87372fd55c1c33aa7a), git5.
+  * Includes first release candidate for GCC 10.1.
+  * Includes gcc10-pr94734.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 11:43:55 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (3685c5adf5c0b30268cb8f95c89e4), git176017.
+- Add gcc10-pr94734.patch
+
+-------------------------------------------------------------------
+Fri Apr 17 12:33:31 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (b835645c7a51b7e99092abe61d677), git175845.
+- Drop to 4 jobs as constraint for s390x.
+
+-------------------------------------------------------------------
+Thu Apr 16 13:08:04 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (effcb4181e143bc390286a489ff84), git175831.
+- Package arm_cde.h and arm_mve_types.h for arm.
+- Alter _constraints to also constrain jobs.
+- Add libzstd-devel BuildRequires to cross compiler specs.
+- Switch to release checking builds.
+
+-------------------------------------------------------------------
+Wed Apr 15 09:00:46 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (2dc9294c3c7c81a6d5e1d4dedf58f), git175805.
+
+-------------------------------------------------------------------
+Wed Apr  8 07:59:48 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (13e41d8b9d3d7598c72c38acc86a3), git175688.
+
+-------------------------------------------------------------------
+Mon Apr  6 07:51:47 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (c72a1b6f8b26de37d1a922a8af143), git175641.
+
+-------------------------------------------------------------------
+Fri Mar 27 19:43:44 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (038769535a8cbdd3dd3e100bde314), git175499.
+
+-------------------------------------------------------------------
+Tue Mar 24 07:23:45 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (75c24a08d697d6442fe6c26142f05), git175422.
+
+-------------------------------------------------------------------
+Fri Mar 20 10:13:54 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (7d4549b2cd209eb621453ce13be7f), git175366. 
+
+-------------------------------------------------------------------
+Thu Mar 19 10:22:27 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (c7e9019681857b329bbe4c1e7ec8d), git175348.
+- Package arm_mve.h for arm.
+
+-------------------------------------------------------------------
+Wed Mar 18 08:39:57 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (4e3d3e40726e1b68bf52fa205c68495124ea60b8).
+- libgphobos and libgdruntime SONAME versions were reset to 1.
+
+-------------------------------------------------------------------
+Fri Mar 13 14:01:40 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (3604480a6fe493c51d6ebd53d9b1abeebbbb828f).
+
+-------------------------------------------------------------------
+Mon Mar  9 14:21:19 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update embedded newlib to newlib-3.3.0.tar.xz, drop old
+  newlib-3.1.0.tar.xz
+- Enable support for amdgcn-amdhsa OpenMP/OpenACC offloading.
+
+-------------------------------------------------------------------
+Fri Mar  6 09:23:13 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to master head (655e5c29ae4080666154b3e10ac81116a1b7a638).
+- Re-add gcc9-reproducible-builds.patch and
+  gcc9-reproducible-builds-buildid-for-checksum.patch.
+
+-------------------------------------------------------------------
 Mon Mar  2 10:16:06 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to master head (778a77357cad11e8dd4c810544330af0fbe843b1).

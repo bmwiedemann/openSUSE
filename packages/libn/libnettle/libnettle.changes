@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 10 19:32:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Nettle 3.6:
+  * removal of internal and undocumented poly1305 functions
+  * Support for Curve448 and ED448 signatures
+  * Support for SHAKE256, SIV-CMAC, CMAC64, "CryptoPro" variant of
+    the GOST hash (as gosthash94cp), GOST DSA signatures, including
+    GOST curves gc256b and gc512a
+  * Support for Intel CET in x86 and x86_64 assembly files, if
+    enabled via CFLAGS (gcc --fcf-protection=full)
+  * A few new functions to improve support for the Chacha
+    variant with 96-bit nonce and 32-bit block counter (the
+    existing functions use nonce and counter of 64-bit each),
+    and functions to set the counter.
+  * New interface, struct nettle_mac, for MAC (message
+    authentication code) algorithms. This abstraction is only
+    for MACs that don't require a per-message nonce. For HMAC,
+    the key size is fixed, and equal the digest size of the
+    underlying hash function
+  * multiple bug fixes
+- drop nettle-respect-cflags.patch
+- silence packaging warning raised by HMAC files
+  (bsc#1152692, jsc#SLE-9518)
+
+-------------------------------------------------------------------
 Tue Oct  1 15:08:36 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Install checksums for binary integrity verification which are

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 13:27:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Autodetect the location of krb5-config: krb5 adds itself to
+  $PATH.
+
+-------------------------------------------------------------------
 Thu Apr 16 18:23:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libsoup-disable-ssl-tests.patch: Disable ssl tests, as they
