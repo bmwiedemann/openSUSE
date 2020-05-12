@@ -1188,4 +1188,14 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
     <comment></comment>
     <requestid>787823</requestid>
   </revision>
+  <revision rev="134" vrev="14">
+    <srcmd5>705107b5cdcae0d3a22cae12be61cfc9</srcmd5>
+    <version>unknown</version>
+    <time>1589315121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200506:
+  * add whitelist for files in /usr/lib to be also allowed in
+    /usr/libexec (bsc#1171164)</comment>
+    <requestid>801106</requestid>
+  </revision>
 </revisionlist>

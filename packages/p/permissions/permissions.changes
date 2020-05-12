@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 07 09:50:15 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 20200506:
+  * add whitelist for files in /usr/lib to be also allowed in
+    /usr/libexec (bsc#1171164)
+
+-------------------------------------------------------------------
 Tue Mar 24 12:52:07 UTC 2020 - jsegitz@suse.de
 
 - Update to version 20200324:
