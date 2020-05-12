@@ -59,10 +59,15 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_mpi-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
+BuildRequires:  hdf5-%{mpiver}-devel
+BuildRequires:  zlib-devel
+BuildRequires:  python3-h5py
 %else
 BuildRequires:  boost-devel
 %endif
 Obsoletes:      libEspresso4
+Requires:       python3-numpy
+Requires:       python3-h5py
 
 %description
 ESPResSo is a highly versatile software package for performing and analyzing

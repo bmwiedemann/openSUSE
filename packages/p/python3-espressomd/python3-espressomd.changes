@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 20:57:59 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- enable hdf5 support
+- python3-numpy & python3-h5md are needed at runtime
+
+-------------------------------------------------------------------
 Tue Jan 21 13:26:55 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - add 3427.patch to fix tests on i586
