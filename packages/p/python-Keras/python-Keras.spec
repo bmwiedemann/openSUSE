@@ -121,7 +121,7 @@ install -D examples/* %{buildroot}/%{_docdir}/%{name}/examples
 %if %{with test}
 # test_TensorBoard_with_ReduceLROnPlateau - we don't have tensorboard
 # test_unweighted or test_selu or test_weighted or test_scalar_weighted or test_sample_weighted - fails numeric calculations, we deviate too much
-%pytest -n auto -k 'not (test_TensorBoard_with_ReduceLROnPlateau or test_unweighted or test_selu or test_weighted or test_scalar_weighted or test_sample_weighted)'
+%pytest -n auto -k 'not (test_TensorBoard_with_ReduceLROnPlateau or test_unweighted or test_selu or test_weighted or test_scalar_weighted or test_sample_weighted or test_doc)'
 %endif
 
 %if !%{with test}
