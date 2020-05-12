@@ -723,4 +723,12 @@ numbers for further reference.
     <comment></comment>
     <requestid>796589</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>98451d1b5900f6efc8513fc791dab41a</srcmd5>
+    <version>2.9.8</version>
+    <time>1589315777</time>
+    <user>dimstar_suse</user>
+    <comment>update to maintenance release 2.9.8</comment>
+    <requestid>803198</requestid>
+  </revision>
 </revisionlist>

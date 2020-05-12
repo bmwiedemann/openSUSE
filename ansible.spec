@@ -55,7 +55,7 @@
 
 
 Name:           ansible
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
