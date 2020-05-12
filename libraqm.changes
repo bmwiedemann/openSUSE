@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 11 12:52:36 UTC 2020 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build version 0.7.0
+  * New functions:
+       raqm_version()
+       raqm_version_string()
+       raqm_version_atleast()
+  * New macros:
+       RAQM_VERSION_MAJOR
+       RAQM_VERSION_MICRO
+       RAQM_VERSION_MINOR
+       RAQM_VERSION_STRING
+       RAQM_VERSION_ATLEAST()
+- Since version 0.6.0
+  *  Fix TTB direction regression from the previous release (#81)
+  *  Add raqm_set_invisible_glyph() (#92)
+  *  Correctly detect script of Common and Inherite characters at start of text (#95)
+  *  Undef HAVE_CONFIG_H workaround, for older versions of Fribidi (#101)
+  *  Drop test suite dependency on GLib
+  *  Port test runner to Python instead of shell script
+- Renamed patch libraqm-GB8a.patch to libraqm-test.patch
+
+-------------------------------------------------------------------
 Tue Feb 12 23:37:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Rename %soname to %sover to better reflect its use.

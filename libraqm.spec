@@ -1,7 +1,7 @@
 #
 # spec file for package libraqm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define sover 0
 Name:           libraqm
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        Complex Textlayout Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/HOST-Oman/libraqm
 Source:         https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.gz
-Patch0:         libraqm-GB8a.patch
+# PATCH-FIX-OPENSUSE disable some tests for old SuSE Versions
+Patch0:         libraqm-test.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc
@@ -63,8 +64,11 @@ text layout and provides a convenient API.
 
 %prep
 %setup -q -n raqm-%{version}
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1510
 %patch0 -p1
+%endif
+%if 0%{?suse_version} >= 1500
+sed s:python:%{__python3}:g -i tests/Makefile.in #Fixed in next release on upstream
 %endif
 %configure --enable-gtk-doc
 
@@ -89,6 +93,7 @@ rm -f %{buildroot}%{_libdir}/*.{la,a}
 
 %files devel
 %{_includedir}/raqm.h
+%{_includedir}/raqm-version.h
 %{_libdir}/libraqm.so
 %{_libdir}/pkgconfig/raqm.pc
 
