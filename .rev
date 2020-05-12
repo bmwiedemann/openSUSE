@@ -241,4 +241,20 @@
     <comment></comment>
     <requestid>580147</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>26552af236506ecd652348c41052fd9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1589315114</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.2.0
+  * maintenance work:
+    https://github.com/altlinux/libutempter/commits/
+- modified patches
+  % utempter-no-staticlib.patch (refreshed)
+- modified sources
+  % utempter.keyring
+- set now libexecdir=%{_libexecdir} as utemper binary complies FHS
+  definition (forwarded request 800702 from pgajdos)</comment>
+    <requestid>800705</requestid>
+  </revision>
 </revisionlist>

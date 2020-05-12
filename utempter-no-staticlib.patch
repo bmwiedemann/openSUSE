@@ -1,7 +1,7 @@
-Index: libutempter-1.1.6/Makefile
+Index: libutempter-1.2.0/Makefile
 ===================================================================
---- libutempter-1.1.6.orig/Makefile
-+++ libutempter-1.1.6/Makefile
+--- libutempter-1.2.0.orig/Makefile	2020-05-06 13:48:03.671980211 +0200
++++ libutempter-1.2.0/Makefile	2020-05-06 13:48:03.683980273 +0200
 @@ -27,7 +27,7 @@ SONAME = $(SHAREDLIB).$(MAJOR)
  STATICLIB = lib$(PROJECT).a
  MAP = lib$(PROJECT).map
@@ -11,16 +11,7 @@ Index: libutempter-1.1.6/Makefile
  
  INSTALL = install
  libdir = /usr/lib
-@@ -53,7 +53,7 @@ all: $(TARGETS)
- 	$(COMPILE.c) -fPIC $< $(OUTPUT_OPTION)
- 
- $(PROJECT): utempter.c
--	$(LINK.c) -Wl,-z,now,-stats $(LDLIBS) $< $(OUTPUT_OPTION)
-+	$(LINK.c) -Wl,-z,now,-stats -pie $(LDLIBS) $< $(OUTPUT_OPTION)
- 
- $(SHAREDLIB): iface.os $(MAP)
- 	$(LINK.o) -shared \
-@@ -74,7 +74,6 @@ install:
+@@ -85,7 +85,6 @@ install:
  	$(INSTALL) -p -m2711 $(PROJECT) $(DESTDIR)$(libexecdir)/$(PROJECT)/
  	$(INSTALL) -p -m644 $(PROJECT).h $(DESTDIR)$(includedir)/
  	$(INSTALL) -p -m755 $(SHAREDLIB) $(DESTDIR)$(libdir)/$(SHAREDLIB).$(VERSION)
