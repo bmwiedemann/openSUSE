@@ -17,14 +17,13 @@
 
 
 Name:           picard
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
-Patch0:         0001-Fix-deletion-of-comment-performer-and-lyrics-tags.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -49,7 +48,6 @@ track-based tagging.
 
 %prep
 %setup -q -n %{name}-release-%{version}
-%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
