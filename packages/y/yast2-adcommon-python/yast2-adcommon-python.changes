@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 15:27:03 UTC 2020 - dmulder@suse.com
+
+- Fix slow load of ADUC caused by chatty ldap traffic;
+  (bsc#1170998);
+- 1.4
+
+-------------------------------------------------------------------
 Tue Oct 15 20:29:53 UTC 2019 - dmulder@suse.com
 
 - The domain label should be a text field, for manually entering
