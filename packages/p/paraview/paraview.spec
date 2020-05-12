@@ -47,18 +47,10 @@ Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewGuide-%{ver
 Patch1:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-UPSTREAM fix-3d48a287-support-new-api-cgio_read_data_type.patch -- Add support for new API cgio_read_***data***_type
 Patch2:         fix-3d48a287-support-new-api-cgio_read_data_type.patch
-# PATCH-FIX-UPSTREAM paraview-do-not-install-missing-vtk-doxygen-dir.patch foss@grueninger.de -- Remove install of nonexistent doxygen/html dir
-Patch3:         paraview-do-not-install-missing-vtk-doxygen-dir.patch
-# PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking
+# PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch8:         fix-libharu-missing-m.patch
-# PATCH-FIX-UPSTREAM paraview-link-against-python.patch badshah400@gmail.com -- Fix linking to python library
-Patch9:         paraview-link-against-python.patch
-# PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking
+# PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (updated to upstream patch, see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865)
 Patch10:        bundled_exodusii_add_missing_libpthread.patch
-# PATCH-FIX-OPENSUSE -- Missing libogg symbols
-Patch11:        0001-Add-libogg-to-IOMovie-target-link-libraries.patch
-# PATCH-FIX-UPSTREAM fix-loguru-missing-links.patch badshah400@gmail.com -- Fix missing libs (libm, libpthread, libdl) when linking to build loguru
-Patch13:        fix-loguru-missing-links.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -202,6 +194,7 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DPARAVIEW_USE_QT:BOOL=ON \
        -DPARAVIEW_USE_PYTHON:BOOL=ON \
        -DPARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX=%{_lib}/python%{py3_ver}/site-packages/paraview \
+       -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
        -DPARAVIEW_ENABLE_WEB:BOOL=ON \
        -DVTK_WRAP_PYTHON:BOOL=ON \
        -DVTK_OPENGL_HAS_OSMESA:BOOL=OFF \

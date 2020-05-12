@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Apr 28 12:23:34 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 2.6.1
+  * Keep order of SessionIndexes
+  * Clear SessionIndex when private SessionIndexes is empty
+  * misc: clear warnings about class_init signature using coccinelle
+  * tests: fix compilation with check>0.12
+  * Sort input file lists to make build deterministic
+  * Modify .gitignore for PHP 7 binding
+  * Add PHP 7 binding
+  * Fix tests broken by new DEBUG logs
+  * Improve error logging during node parsing
+  * Improve configure compatibility
+  * Improve compatibility with Solaris
+  * Fix reference count in lasso_server_add_provider2
+  * Fix python multi-version builds on jessie and stretch
+  * docs: do not use Internet to fetch DTDs, entities or documents
+  * fix missing include <strings.h> for index()
+  * PAOS: Do not populate "Destination" attribute
+  * export symbol lasso_log
+  * Do not ignore WantAuthnRequestSigned value with hint MAYBE
+  * Use io.open(encoding=utf8) in extract_symbols/sections.py
+  * xml: adapt schema in saml2:AuthnContext
+  * Fix ECP signature not found error when only assertion is signed
+  * autoconf: search python interpreters by versions
+  * python: make tools compatible with Py3
+  * python: run tests and tools with same interpreter as binding target
+  * improve resiliency of lasso_inflate
+  * fix segfault in lasso_get_saml_message
+  * python: add classmethod Profile.getIssuer
+  * website: add news about 2.6.0 release
+  * faq: fix references to lasso.profileGetIssuer
+  * python: add a classmethod for lasso.profileGetIssuer
+  * tools: fix segfault in lasso_get_saml_message
+  * jenkins.sh: add a make clean to prevent previous build to break new ones
+  * tools: set output buffer size in lasso_inflate to 20 times the input size
+  * Use python interpreter specified configure script
+  * Make Python scripts compatible with both Py2 and Py3
+  * fix duplicate definition of LogoutTestCase and logoutSuite
+  * Downcase UTF-8 file encoding name
+  * Make more Python scripts compatible with both Py2 and Py3
+  * Configure should search for versioned Python interpreter.
+  * Clean python cache when building python3 binding
+  * Move AC_SUBST declaration for AM_CFLAGS with alike
+  * Remove -Werror from --enable-debugging
+  * xml: fix parsing of saml:AuthnContext
+- Remove upstreamed patches:
+  * use-specified-python-interpreter.patch
+  * duplicate-python-LogoutTestCase.patch
+  * versioned-python-configure.patch
+  * build-scripts-py3-compatible.patch
+  * 0005-tests-use-self-generated-certificate-to-sign-federat.patch
+  * 0006-Fix-ECP-signature-not-found-error-when-only-assertio.patch
+  * 0007-PAOS-Do-not-populate-Destination-attribute.patch
+  * 0008-Explicitly-define-tests-cases-and-add-them-to-tests.patch
+-------------------------------------------------------------------
 Wed Feb 26 11:23:31 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - remove .la and .a files in a consistent way

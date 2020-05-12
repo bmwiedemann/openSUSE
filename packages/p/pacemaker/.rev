@@ -1661,4 +1661,13 @@
 - rectify thinko possibly behind spurious &quot;process will not die&quot; msg (forwarded request 769083 from yan_gao)</comment>
     <requestid>769084</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>946a7fed35bbce0f3e29f6c593b0b204</srcmd5>
+    <version>2.0.3+20200511.2b248d828</version>
+    <time>1589315328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3+20200511.2b248d828:
+- tools: get stonith_admin --list-targets working again (forwarded request 802831 from yan_gao)</comment>
+    <requestid>802832</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  9 03:11:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 2.0205
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0205  2020-05-08
+      - Add XML::LibXML to the XML/SAX/ParserDetails.ini configuration file
+      upon installation.
+          - https://rt.cpan.org/Public/Bug/Display.html?id=132523
+          - https://github.com/shlomif/perl-XML-LibXML/pull/49
+          - Thanks to SREZIC , @genio , and @plicease .
+  
+
+-------------------------------------------------------------------
 Wed Mar 18 03:14:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.0204

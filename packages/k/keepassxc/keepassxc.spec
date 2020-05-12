@@ -78,11 +78,6 @@ Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
 %endif
 Recommends:     %{name}-lang
-# until boo#1117355 is fixed
-%if 0%{?suse_version}
-BuildRequires:  libgcrypt20-hmac
-Requires:       libgcrypt20-hmac
-%endif
 # boo#1148406. Last version in factory 2.0.3-2.7
 Provides:       keepassx = 2.0.4
 Obsoletes:      keepassx < 2.0.4

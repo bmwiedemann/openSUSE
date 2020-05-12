@@ -1,0 +1,25 @@
+From 09d30e173a27df86e715f6eb21b4c69509c06ff3 Mon Sep 17 00:00:00 2001
+From: "Gao,Yan" <ygao@suse.com>
+Date: Sat, 9 May 2020 14:37:14 +0200
+Subject: [PATCH] Log: libcrmcommon: lower message on reading proc file to info
+
+---
+ lib/common/pid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/common/pid.c b/lib/common/pid.c
+index 90a24a699..20529ebaa 100644
+--- a/lib/common/pid.c
++++ b/lib/common/pid.c
+@@ -73,7 +73,7 @@ pcmk__pid_active(pid_t pid, const char *daemon)
+         rc = readlink(proc_path, exe_path, sizeof(exe_path) - 1);
+         if (rc < 0) {
+             if (last_asked_pid != pid) {
+-                crm_err("Could not read from %s: %s " CRM_XS " errno=%d",
++                crm_info("Could not read from %s: %s " CRM_XS " errno=%d",
+                         proc_path, strerror(errno), errno);
+                 last_asked_pid = pid;
+             }
+-- 
+2.26.1
+

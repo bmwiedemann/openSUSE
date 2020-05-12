@@ -416,4 +416,13 @@
     <comment>- guile-version.patch: Allow all patchlevel versions of guile 3.0</comment>
     <requestid>787525</requestid>
   </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>0ee3e0b611d6118746f6110258536f76</srcmd5>
+    <version>5.18.16</version>
+    <time>1589315305</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase default timeout
+- Run testsuite in verbose mode (forwarded request 802755 from Andreas_Schwab)</comment>
+    <requestid>802756</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 16:28:29 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Increase default timeout
+- Run testsuite in verbose mode
+
+-------------------------------------------------------------------
 Mon Mar 23 15:10:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - guile-version.patch: Allow all patchlevel versions of guile 3.0

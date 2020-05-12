@@ -216,6 +216,18 @@ Patch0010:      0010-configs-am335x_evm-disable-BTRFS.patch
 Patch0011:      0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
 Patch0012:      0012-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
 Patch0013:      0013-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+Patch0014:      0014-usb-xhci-Add-missing-cache-flush-in.patch
+Patch0015:      0015-usb-xhci-Use-only-32-bit-accesses-i.patch
+Patch0016:      0016-pci-Move-some-PCIe-register-offset-.patch
+Patch0017:      0017-rpi4-shorten-a-mapping-for-the-DRAM.patch
+Patch0018:      0018-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
+Patch0019:      0019-linux-bitfield.h-Add-primitives-for.patch
+Patch0020:      0020-pci-Add-some-PCI-Express-capability.patch
+Patch0021:      0021-pci-Add-driver-for-Broadcom-STB-PCI.patch
+Patch0022:      0022-config-Enable-support-for-the-XHCI-.patch
+Patch0023:      0023-arm-rpi-Add-function-to-trigger-VL8.patch
+Patch0024:      0024-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
+Patch0025:      0025-config-Enable-USB-Keyboard-support-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

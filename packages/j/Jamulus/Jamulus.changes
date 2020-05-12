@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 11 14:18:37 UTC 2020 - suse@adamspiers.org
+
+- Update to version 3.5.2:
+  * use audio level meter bars for normal skin
+  * store Show All Musicians setting in the ini-file
+  * improved Mac installer, coded by doloopuntil
+  * support to open ASIO driver setup(s) if startup failed due to incorrect driver settings (Ticket #117)
+  * added -v/--version command line argument to output version information (Ticket #121)
+  * added bodhran and other instrument icons, bodhran created by bomm (Ticket #131)
+  * bug fix: if small network buffers are used we get much better audio quality when drop outs occur
+  * bug fix: if names given with the -o option were too long, the server registration failed (Ticket #91)
+  * bug fix: audio level changes if Buffer Delay is changed (Ticket #106)
+  * bug fix: do not reset fader level meters if number of clients change
+  * bug fix: fixed a crash with JackRouter 64 bit ASIO driver (Ticket #93, thanks to elliotclee) 
+- Add a source service.
+
+-------------------------------------------------------------------
 Wed Apr 15 20:25:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Rename source tarball

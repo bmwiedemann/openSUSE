@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 12 15:27:29 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 23
+  * Expose supplementary groups as `UnixGroupIDs` as defined by
+    the dbus specification in 0.53.
+  * The broker now uses the peer-pid from `SO_PEERCRED` on the
+    controller socket, rather than relying on `getppid()`. This
+    allows creating the broker from intermediate processes
+    without having any credentials of the intermediate leak into
+    the broker.
+
+-------------------------------------------------------------------
 Mon Feb 24 17:52:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 22

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  7 21:53:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop patches no longer needed:
+  * 0001-Add-libogg-to-IOMovie-target-link-libraries.patch
+  * fix-loguru-missing-links.patch
+  * paraview-do-not-install-missing-vtk-doxygen-dir.patch
+  * paraview-link-against-python.patch: pass
+    DVTK_PYTHON_OPTIONAL_LINK=OFF to cmake instead (see
+    https://gitlab.kitware.com/vtk/vtk/-/issues/17881).
+- Update bundled_exodusii_add_missing_libpthread.patch to version
+  from upstream
+  (https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865).
+
+-------------------------------------------------------------------
 Tue May  5 17:56:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable the Paraview Protobuf module for openSUSE:Leap <= 15.1,

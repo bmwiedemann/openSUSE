@@ -1,0 +1,6 @@
+<services>
+  <service name="download_files" mode="disabled">
+    <param name="enforcelocal">yes</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+</services>

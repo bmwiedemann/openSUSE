@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  9 01:17:31 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1171419, Update to 9.13.0
+ * crm-fence-peer{,.9}.sh: detect Pacemaker 2 promotable clones
+ * submodules: switch to https, which makes it easier to clone
+   if you are behind some weird company firewalls.
+ * drbd.service: start pacemaker before drbd-proxy
+ * windrbd: various new commands including create-resource-from-url,
+   set-syslog-ip, scan-partitions-for-minor, install-bus-device,
+   remove-bus-device
+- Remove patch crm-fence-peer-pacemaker2.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 09:10:40 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1166200 ,fix crm-fence-peer regex issue with pacemaker 2.
@@ -206,7 +219,7 @@ Wed Dec  6 07:19:50 UTC 2017 - nwang@suse.com
 Mon Oct 16 09:38:35 UTC 2017 - nwang@suse.com
 
 - bsc#1061145, fencing is moved from disk secion to net
-  Add move_fencing_from_disk_to_net_in_example.patch 
+  Add move_fencing_from_disk_to_net_in_example.patch
 - bsc#1061147, skip running drbdadm sh-b-pri in drbd9
   Add skip_sh-b-pri_in_v9.patch
 

@@ -41,6 +41,7 @@ Source2:        plasma.keyring
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-krdb-Drop-GTK2-colour-exporting.patch
+Patch3:         0001-Stop-multiplying-duration-values.patch
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel

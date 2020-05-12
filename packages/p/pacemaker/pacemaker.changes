@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Tue May 12 06:30:23 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- libcrmcommon: lower message on reading proc file to info
+  * 0001-Log-libcrmcommon-lower-message-on-reading-proc-file-.patch
+
+-------------------------------------------------------------------
+Tue May 12 06:29:28 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200511.2b248d828:
+- tools: get stonith_admin --list-targets working again
+
+-------------------------------------------------------------------
+Mon May 11 21:02:36 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200511.e7d7b1aa5:
+- libpe_status: Apply node filtering to clone resource lists.
+- tools: Remove an extra space in crm_mon filtered output.
+- libpe_status: Don't output unnecessary resource headers.
+- libpe_status: Handle filtering of inactive resources.
+- tools: Print inactive resources by default with crm_mon xml output.
+
+-------------------------------------------------------------------
+Mon May 11 15:07:22 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200511.a9e085d8c:
+- fencer: avoid possible use-of-NULL when parsing metadata (bsc#1171372)
+- libstonithd: make the assert message from stonith__device_parameter_flags() more clear (bsc#1171372)
+
+-------------------------------------------------------------------
+Fri May 08 07:32:19 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200507.c8529193e:
+- libstonithd: respect `pcmk_host_argument=none` on `validate` (bsc#1171372)
+- libstonithd: add `port` or `plug` parameter according to metadata on `validate` if no `pcmk_host_argument` specified (bsc#1171372)
+- Pacemaker Explained: update the default value and the description of `pcmk_host_argument` (bsc#1171372)
+- fencer: add `port` or `plug` parameter according to metadata for RHCS-style fence-agents (bsc#1171372)
+- libstonithd: add function to check supported parameters according to the metadata of a fence agent (bsc#1171372)
+
+-------------------------------------------------------------------
+Thu May 07 21:48:11 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200506.a212e4fa3:
+- fenced: Remove relayed stonith operation.(Fix:CLBZ#5401)
+- controller: properly detect remote node info requests
+- cotrold: Notify tengine of completion of CRM_OP_LRM_DELETE.(Fix:CLBZ:#5424)
+
+-------------------------------------------------------------------
+Mon May 04 17:11:07 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200429.029571144:
+- stonith_admin: --delay is an optional option for --fence/--unfence/--reboot commands (ECO-1611, SLE-12239, SLE-12240)
+- controller: avoid possible use-of-NULL on logging fencing message (ECO-1611, SLE-12239, SLE-12240)
+
+-------------------------------------------------------------------
+Mon May 04 17:08:14 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200428.f0a4d08c9:
+- cib: populate cib_nodes when 'cibadmin -R -scope=configuration'
+
+-------------------------------------------------------------------
+Mon May 04 17:03:40 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200423.01b9bbdbe:
+- cts: add `plug` parameter for fence_dummy agent (bsc#1171372)
+- libstonithd: `plug` parameter of RHCS-style fence-agents is shown as non-required in the metadata (bsc#1171372)
+- libstonithd: `action` parameter of RHCS-style fence-agents is shown as non-required in the metadata (bsc#1171372)
+- libstonithd: functionize fudging metadata of RHCS-style agent to make specific parameter non-required (bsc#1171372)
+
+-------------------------------------------------------------------
+Mon May 04 16:56:01 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200423.5194e4a0d:
+- libpe_status: Skip summary output of cloned resources.
+- tools: Remove yet more extra newlines from crm_mon errors.
+- tools: Quitting crm_mon shouldn't be an error.
+- tools: Remove an extra log bump in crm_simulate.
+- tools: Convert crm_error to use glib for command line handling.
+- tools: Fix --html-title= in crm_mon.
+- libpe_status: Add space between role and state strings.
+- tools: Filter fencing actions using --node=.
+- tools: Filter resources using --node= option.
+- tools: Filter failed resource actions using --node= option.
+- tools: Filter node summary and attributes using --node= option.
+- tools: Filter nodes using --node= option.
+- tools: Add --node= to the crm_mon command line.
+
+------------------------------------------------------------------
+Thu Apr 09 11:48:23 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200408.cfb1746ec:
+- libcrmcluster: use uint64_t type for corosync ringid (membership id) when updating node state (bsc#1168771)
+
+-------------------------------------------------------------------
+Thu Apr 09 11:46:28 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200403.eb73f2237:
+- fencer: update cpg_topology_delay test to also verify pcmk_delay_base is added (ECO-1611, SLE-12239, SLE-12240)
+- controller: requested priority fencing delay defaults to 0 (ECO-1611, SLE-12239, SLE-12240)
+- stonith_admin: --delay option defaults to 0 (ECO-1611, SLE-12239, SLE-12240)
+- fencer: any delays from pcmk_delay_base/max are added to requested fencing delay (ECO-1611, SLE-12239, SLE-12240)
+- scheduler: do not differentiate the case where all the nodes have equal priority (ECO-1611, SLE-12239, SLE-12240)
+- scheduler: priority-fencing-delay defaults to 0 meaning disabled (ECO-1611, SLE-12239, SLE-12240)
+
+-------------------------------------------------------------------
+Thu Apr 09 11:42:27 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200402.0a67b34c5:
+- libpacemaker: don't output "0 events found" for stonith history cleanup
+- tools: use return codes consistently in stonith_admin
+- Use glib for cmdline processing in crm_simulate.
+- tools: Only free things in crm_simulate that aren't NULL.
+
+-------------------------------------------------------------------
+Thu Apr 09 11:30:56 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200326.508402483:
+- scheduler: don't incorporate dependencies' colocations multiple times
+- controller: improve shutdown messages
+- tools: make static analysis happy
+- xml: Add a new version of the tags schema.
+- tools: Apply various fixes to the crm_diff man page.
+- libcib: improve messages for CIB sign-on
+- libcrmcommon: close logging *after* logging an exit message
+- tools: be extra safe with freeing API connections when exiting
+- fencer,libstonithd: fix Y2038 issue in fence history
+
+-------------------------------------------------------------------
+Thu Apr 09 11:19:36 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200321.3e73aefb8:
+- Pacemaker Explained: document priority-fencing-delay cluster option (ECO-1611, SLE-12239, SLE-12240)
+- fencer: add cpg_topology_delay test to verify enforced fencing delay with fencing topology (ECO-1611, SLE-12239, SLE-12240)
+- fencer: handle any enforced fencing delay (ECO-1611, SLE-12239, SLE-12240)
+- stonith_admin: add --delay option to support enforced fencing delay (ECO-1611, SLE-12239, SLE-12240)
+- controller: request fencing with any enforced priority fencing delay (ECO-1611, SLE-12239, SLE-12240)
+- libstonithd: introduce fence_with_delay() operation (ECO-1611, SLE-12239, SLE-12240)
+- scheduler: add regression test for priority-fencing-delay (ECO-1611, SLE-12239, SLE-12240)
+- scheduler: implement priority-fencing-delay (ECO-1611, SLE-12239, SLE-12240)
+- scheduler: add priority-fencing-delay cluster option (ECO-1611, SLE-12239, SLE-12240)
+
+-------------------------------------------------------------------
+Thu Apr 09 10:16:15 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200320.e16e5121f:
+- tools: Close the channel created with g_io_channel_unix_new.
+- libcrmcommon: Don't allocate a ptr array until it's needed.
+- tools: Free the result of g_option_context_get_help.
+- various: improve configuration warnings and errors
+- based: avoid memory leak when reading CIB
+- xml: Add a new minor version of the crm_mon schema.
+- libstonithd: Report an error getting history in output.
+- tools: Use new formatted output return codes in crm_mon.
+- tools: Eliminate nested execution of bye() processing and clear data_set.
+- tools: Add clear cib connection pointer.
+- fix compilation -Werror compilation issue with GCC 10 with s390x
+- tools: Print errors to stderr for crm_mon's legacy xml.
+- tools:  Rework error reporting and exiting in crm_mon.
+- tools: Don't automatically show cluster options in crm_mon.
+- tools: Use glib for command line handling in crm_rule.
+- tools, lib: Use standard pacemaker return codes in crm_rule.
+- tools: Allow crm_rule to check some date_specs.
+- tools: Add better error reporting in crm_rule.
+- executor: record correct last run and last rc change times
+- libcrmcommon,libpe: validate interval specs correctly
+- executor: correctly set first run time
+- tools: Remove an extra space from last-failed strings in crm_mon.
+- tools: Properly close ncurses output in crm_mon.
+- controller: don't ack same request twice
+- controller: improve message routing messages
+- tools: Try to remove blank lines from the end of text output.
+- tools: Don't display an empty "Migration Summary" header.
+- tools: Handle corner case of printing cluster options.
+- xml: Add a new schema version for crm_mon.
+- tools: Add an option for printing failed resource actions.
+- libcrmcommon, tools: Handle displaying maintenance mode.
+- tools: Add more fine grained fencing arguments.
+- tools: Conditionalize more output in crm_mon.
+- tools: Add a real cluster-options message for text output.
+- tools: Add --include= and --exclude= to crm_mon.
+- controller: improve client IPC hello validation
+- tools: clean up before exiting crm_resource
+- libcrmcommon: improve messages when sending IPC request
+- libcrmcommon: improve messages for IPC hello creation
+- executor: correctly convert nanoseconds to milliseconds
+- executor: handle systemd execution times under 1 second
+- executor: improve process completion message
+- tools: Use formatted output for more errors in crm_mon.
+
+-------------------------------------------------------------------
+Thu Mar 19 13:38:11 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200218.4544c9b82:
+- rpm: Run "make check" as part of %check and in travis.
+
+-------------------------------------------------------------------
+Thu Mar 19 12:08:26 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200218.a290911ef:
+- libcrmcommon: correctly check configuration options for positive values
+
+-------------------------------------------------------------------
+Thu Mar 19 11:26:25 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20200213.68bd2b4da:
+- cib_attrs: Fix mismatching deallocation
+- controller: clear leaving node's transient attributes even if there is no DC
+
+-------------------------------------------------------------------
 Wed Jan 29 09:53:57 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20200128.df6c286d9:

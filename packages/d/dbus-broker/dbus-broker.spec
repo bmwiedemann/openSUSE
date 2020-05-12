@@ -17,7 +17,7 @@
 
 
 Name:           dbus-broker
-Version:        22
+Version:        23
 Release:        0
 Summary:        XDG-conforming message bus implementation
 License:        Apache-2.0
@@ -86,7 +86,6 @@ ln -s service "%buildroot/%_sbindir/rcdbus-broker"
 %service_del_postun dbus-broker.service
 
 %files
-%defattr(-,root,root)
 %_bindir/dbus-broker*
 %_unitdir/*.service
 %_prefix/lib/systemd/user/*.service

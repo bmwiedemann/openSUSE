@@ -19,7 +19,7 @@
 %define clamav_check --enable-check
 %bcond_with clammspack
 Name:           clamav
-Version:        0.102.2
+Version:        0.102.3
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only

@@ -96,7 +96,7 @@ touch aclocal.m4 configure Makefile.in config-h.in
 
 %build
 %configure \
-	--enable-timeout=20 \
+	--enable-timeout=70 \
 	--disable-static \
 	--with-pic
 make %{?_smp_mflags}
@@ -107,15 +107,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}%{_datadir}
 
 %check
-make %{?_smp_mflags} check || {
-  for f in */test/test-suite.log; do
-    if test -f "$f"; then
-      echo "======== $f ========"
-      cat "$f"
-    fi
-  done
-  exit 1
-}
+make %{?_smp_mflags} check VERBOSE=1
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/autogen.info%{ext_info}

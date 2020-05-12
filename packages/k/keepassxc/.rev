@@ -275,4 +275,12 @@
   * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.4</comment>
     <requestid>792783</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>96244b7b866545282f1b363a15490eb1</srcmd5>
+    <version>2.5.4</version>
+    <time>1589315464</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop build/requirement on libgcrypt20-hmac boo#1171438</comment>
+    <requestid>802703</requestid>
+  </revision>
 </revisionlist>

@@ -96,7 +96,7 @@ ExclusiveArch:  do_not_build
 %define shlib_nvec libsundials_nvec5%{?my_suffix}
 
 Name:           %{package_name}
-Version:        5.0.0
+Version:        5.2.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.

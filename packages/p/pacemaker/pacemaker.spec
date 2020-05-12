@@ -76,7 +76,7 @@
 %endif
 
 Name:           pacemaker
-Version:        2.0.3+20200128.df6c286d9
+Version:        2.0.3+20200511.2b248d828
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -97,6 +97,7 @@ Patch6:         bug-943295_pacemaker-lrmd-log-notice.patch
 Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
+Patch10:        0001-Log-libcrmcommon-lower-message-on-reading-proc-file-.patch
 # Required for core functionality
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -315,6 +316,7 @@ manager.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 
@@ -404,6 +406,7 @@ ln -s ../heartbeat/NodeUtilization %{buildroot}%{_libexecdir}/ocf/resource.d/pac
 %fdupes -s %{buildroot}
 
 %check
+make %{_smp_mflags} check
 # Prevent false positives in rpmlint
 ./cts/cts-regression -V scheduler cli 2>&1
 

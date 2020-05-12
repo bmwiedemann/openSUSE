@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 11 13:40:32 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Enable USB and USB keyboard on RPi4:
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.04
+* Patches added:
+  0014-usb-xhci-Add-missing-cache-flush-in.patch
+  0015-usb-xhci-Use-only-32-bit-accesses-i.patch
+  0016-pci-Move-some-PCIe-register-offset-.patch
+  0017-rpi4-shorten-a-mapping-for-the-DRAM.patch
+  0018-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
+  0019-linux-bitfield.h-Add-primitives-for.patch
+  0020-pci-Add-some-PCI-Express-capability.patch
+  0021-pci-Add-driver-for-Broadcom-STB-PCI.patch
+  0022-config-Enable-support-for-the-XHCI-.patch
+  0023-arm-rpi-Add-function-to-trigger-VL8.patch
+  0024-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
+  0025-config-Enable-USB-Keyboard-support-.patch
+
+-------------------------------------------------------------------
 Fri Apr 17 12:05:54 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop downstream zynqmp generic patches since zynqmp virt config

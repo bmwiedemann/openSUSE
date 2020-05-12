@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 14:05:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop build/requirement on libgcrypt20-hmac boo#1171438
+
+-------------------------------------------------------------------
 Thu Apr  9 17:22:16 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.5.4:

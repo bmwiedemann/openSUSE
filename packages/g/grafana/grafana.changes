@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  5 17:34:34 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- BuildRequires golang(API) instead of go metapackage version range
+  * BuildRequires:  golang(API) >= 1.14   from
+    BuildRequires:  ( go >= 1.14 with go < 1.15 )
+
+-------------------------------------------------------------------
 Tue Apr 28 10:00:58 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
 - Update to version 6.7.3
@@ -275,10 +282,10 @@ Wed Oct 16 15:31:57 UTC 2019 - ecsos@opensuse.org
     + Docker
       Grafana is now using Alpine 3.10 as docker base image.
     + HTTP API
-      - GET /api/alert-notifications now requires at least editor access. 
+      - GET /api/alert-notifications now requires at least editor access.
         New /api/alert-notifications/lookup returns less information than /api/alert-notifications and can be access by any authenticated user.
       - GET /api/alert-notifiers now requires at least editor access
-      - GET /api/org/users now requires org admin role. 
+      - GET /api/org/users now requires org admin role.
         New /api/org/users/lookup returns less information than /api/org/users and can be access by users that are org admins,
         admin in any folder or admin of any team.
       - GET /api/annotations no longer returns regionId property.
@@ -289,7 +296,7 @@ Wed Oct 16 15:31:57 UTC 2019 - ecsos@opensuse.org
   * Deprecation notes
     + PhantomJS
       - PhantomJS, which is used for rendering images of dashboards and panels,
-        is deprecated and will be removed in a future Grafana release. 
+        is deprecated and will be removed in a future Grafana release.
         A deprecation warning will from now on be logged when Grafana starts up if PhantomJS is in use.
         Please consider migrating from PhantomJS to the Grafana Image Renderer plugin.
 
@@ -304,138 +311,138 @@ Wed Oct 16 15:31:57 UTC 2019 - ecsos@opensuse.org
 - Add missing directories provisioning/datasources and provisioning/notifiers
   and sample.yaml as described in packaging/rpm/control from upstream.
   Missing directories are shown in logfiles.
-  
+
 -------------------------------------------------------------------
 Thu Sep 05 08:07:21 UTC 2019 - simon.crute@grafana.com
 
 - Version 6.3.5
   * Upgrades
-    + Build: Upgrade to go 1.12.9. 
+    + Build: Upgrade to go 1.12.9.
   * Bug Fixes
-    + Dashboard: Fixes dashboards init failed loading error for dashboards with panel links that had missing properties. 
+    + Dashboard: Fixes dashboards init failed loading error for dashboards with panel links that had missing properties.
     + Editor: Fixes issue where only entire lines were being copied.
-    + Explore: Fixes query field layout in splitted view for Safari browsers. 
-    + LDAP: multildap + ldap integration. 
-    + Profile/UserAdmin: Fix for user agent parser crashes grafana-server on 32-bit builds. 
-    + Prometheus: Prevents panel editor crash when switching to Prometheus datasource. 
-    + Prometheus: Changes brace-insertion behavior to be less annoying. 
+    + Explore: Fixes query field layout in splitted view for Safari browsers.
+    + LDAP: multildap + ldap integration.
+    + Profile/UserAdmin: Fix for user agent parser crashes grafana-server on 32-bit builds.
+    + Prometheus: Prevents panel editor crash when switching to Prometheus datasource.
+    + Prometheus: Changes brace-insertion behavior to be less annoying.
 
-- Version 6.3.4 
-  * Security: CVE-2019-15043 - Parts of the HTTP API allow unauthenticated use.  
+- Version 6.3.4
+  * Security: CVE-2019-15043 - Parts of the HTTP API allow unauthenticated use.
 
 
 -------------------------------------------------------------------
 Fri Aug 16 14:16:42 UTC 2019 - simon.crute@grafana.com
 
-- Version 6.3.3 
+- Version 6.3.3
   * Bug Fixes
-    + Annotations: Fix failing annotation query when time series query is cancelled. #18532 1, @dprokop 1 
-    + Auth: Do not set SameSite cookie attribute if cookie_samesite is none. #18462 1, @papagian 3 
-    + DataLinks: Apply scoped variables to data links correctly. #18454 1, @dprokop 1 
-    + DataLinks: Respect timezone when displaying datapoint’s timestamp in graph context menu. #18461 2, @dprokop 1 
-    + DataLinks: Use datapoint timestamp correctly when interpolating variables. #18459 1, @dprokop 1 
-    + Explore: Fix loading error for empty queries. #18488 1, @davkal 
-    + Graph: Fixes legend issue clicking on series line icon and issue with horizontal scrollbar being visible on windows. #18563 1, @torkelo 2 
-    + Graphite: Avoid glob of single-value array variables . #18420, @gotjosh 
-    + Prometheus: Fix queries with label_replace remove the $1 match when loading query editor. #18480 5, @hugohaggmark 3 
-    + Prometheus: More consistently allows for multi-line queries in editor. #18362 2, @kaydelaney 2 
-    + TimeSeries: Assume values are all numbers. #18540 4, @ryantxu 
+    + Annotations: Fix failing annotation query when time series query is cancelled. #18532 1, @dprokop 1
+    + Auth: Do not set SameSite cookie attribute if cookie_samesite is none. #18462 1, @papagian 3
+    + DataLinks: Apply scoped variables to data links correctly. #18454 1, @dprokop 1
+    + DataLinks: Respect timezone when displaying datapoint’s timestamp in graph context menu. #18461 2, @dprokop 1
+    + DataLinks: Use datapoint timestamp correctly when interpolating variables. #18459 1, @dprokop 1
+    + Explore: Fix loading error for empty queries. #18488 1, @davkal
+    + Graph: Fixes legend issue clicking on series line icon and issue with horizontal scrollbar being visible on windows. #18563 1, @torkelo 2
+    + Graphite: Avoid glob of single-value array variables . #18420, @gotjosh
+    + Prometheus: Fix queries with label_replace remove the $1 match when loading query editor. #18480 5, @hugohaggmark 3
+    + Prometheus: More consistently allows for multi-line queries in editor. #18362 2, @kaydelaney 2
+    + TimeSeries: Assume values are all numbers. #18540 4, @ryantxu
 
 - Version 6.3.2
   * Bug Fixes
-    + Gauge/BarGauge: Fixes issue with losts thresholds and issue loading Gauge with avg stat. #18375 12 
+    + Gauge/BarGauge: Fixes issue with losts thresholds and issue loading Gauge with avg stat. #18375 12
 
 - Version 6.3.1
   * Bug Fixes
-    + PanelLinks: Fix crash issue Gauge & Bar Gauge for panels with panel links (drill down links). #18430 2 
+    + PanelLinks: Fix crash issue Gauge & Bar Gauge for panels with panel links (drill down links). #18430 2
 
 - Version 6.3.0
   * Features / Enhancements
-    + OAuth: Do not set SameSite OAuth cookie if cookie_samesite is None. #18392 4, @papagian 3 
-    + Auth Proxy: Include additional headers as part of the cache key. #18298 6, @gotjosh 
-    + Build grafana images consistently. #18224 12, @hassanfarid 
-    + Docs: SAML. #18069 11, @gotjosh 
-    + Permissions: Show plugins in nav for non admin users but hide plugin configuration. #18234 1, @aocenas 
-    + TimePicker: Increase max height of quick range dropdown. #18247 2, @torkelo 2 
-    + Alerting: Add tags to alert rules. #10989 13, @Thib17 1 
-    + Alerting: Attempt to send email notifications to all given email addresses. #16881 1, @zhulongcheng 
-    + Alerting: Improve alert rule testing. #16286 2, @marefr 
-    + Alerting: Support for configuring content field for Discord alert notifier. #17017 2, @jan25 
-    + Alertmanager: Replace illegal chars with underscore in label names. #17002 5, @bergquist 1 
-    + Auth: Allow expiration of API keys. #17678, @papagian 3 
-    + Auth: Return device, os and browser when listing user auth tokens in HTTP API. #17504, @shavonn 1 
-    + Auth: Support list and revoke of user auth tokens in UI. #17434 2, @shavonn 1 
-    + AzureMonitor: change clashing built-in Grafana variables/macro names for Azure Logs. #17140, @shavonn 1 
-    + CloudWatch: Made region visible for AWS Cloudwatch Expressions. #17243 2, @utkarshcmu 
-    + Cloudwatch: Add AWS DocDB metrics. #17241, @utkarshcmu 
-    + Dashboard: Use timezone dashboard setting when exporting to CSV. #18002 1, @dehrax 
-    + Data links. #17267 11, @torkelo 2 
-    + Docker: Switch base image to ubuntu:latest from debian:stretch to avoid security issues… #17066 5, @bergquist 1 
-    + Elasticsearch: Support for visualizing logs in Explore . #17605 7, @marefr 
-    + Explore: Adds Live option for supported datasources. #17062 1, @hugohaggmark 3 
-    + Explore: Adds orgId to URL for sharing purposes. #17895 1, @kaydelaney 2 
-    + Explore: Adds support for new loki ‘start’ and ‘end’ params for labels endpoint. #17512, @kaydelaney 2 
-    + Explore: Adds support for toggling raw query mode in explore. #17870, @kaydelaney 2 
-    + Explore: Allow switching between metrics and logs . #16959 2, @marefr 
-    + Explore: Combines the timestamp and local time columns into one. #17775, @hugohaggmark 3 
-    + Explore: Display log lines context . #17097, @dprokop 1 
-    + Explore: Don’t parse log levels if provided by field or label. #17180 1, @marefr 
-    + Explore: Improves performance of Logs element by limiting re-rendering. #17685, @kaydelaney 2 
-    + Explore: Support for new LogQL filtering syntax. #16674 4, @davkal 
-    + Explore: Use new TimePicker from Grafana/UI. #17793, @hugohaggmark 3 
-    + Explore: handle newlines in LogRow Highlighter. #17425, @rrfeng 1 
-    + Graph: Added new fill gradient option. #17528 3, @torkelo 2 
-    + GraphPanel: Don’t sort series when legend table & sort column is not visible . #17095, @shavonn 1 
-    + InfluxDB: Support for visualizing logs in Explore. #17450 9, @hugohaggmark 3 
-    + Logging: Login and Logout actions (#17760). #17883 1, @ATTron 
-    + Logging: Move log package to pkg/infra. #17023, @zhulongcheng 
-    + Metrics: Expose stats about roles as metrics. #17469 2, @bergquist 1 
-    + MySQL/Postgres/MSSQL: Add parsing for day, weeks and year intervals in macros. #13086 6, @bernardd 
-    + MySQL: Add support for periodically reloading client certs. #14892, @tpetr 
-    + Plugins: replace dataFormats list with skipDataQuery flag in plugin.json. #16984, @ryantxu 
-    + Prometheus: Take timezone into account for step alignment. #17477, @fxmiii 
-    + Prometheus: Use overridden panel range for $__range instead of dashboard range. #17352, @patrick246 
-    + Prometheus: added time range filter to series labels query. #16851 3, @FUSAKLA 
-    + Provisioning: Support folder that doesn’t exist yet in dashboard provisioning. #17407 1, @Nexucis 
-    + Refresh picker: Handle empty intervals. #17585 1, @dehrax 
-    + Singlestat: Add y min/max config to singlestat sparklines. #17527 4, @pitr 
-    + Snapshot: use given key and deleteKey. #16876, @zhulongcheng 
-    + Templating: Correctly display __text in multi-value variable after page reload. #17840 1, @EduardSergeev 
-    + Templating: Support selecting all filtered values of a multi-value variable. #16873 2, @r66ad 
-    + Tracing: allow propagation with Zipkin headers. #17009 4, @jrockway 
-    + Users: Disable users removed from LDAP. #16820 2, @alexanderzobnin 
+    + OAuth: Do not set SameSite OAuth cookie if cookie_samesite is None. #18392 4, @papagian 3
+    + Auth Proxy: Include additional headers as part of the cache key. #18298 6, @gotjosh
+    + Build grafana images consistently. #18224 12, @hassanfarid
+    + Docs: SAML. #18069 11, @gotjosh
+    + Permissions: Show plugins in nav for non admin users but hide plugin configuration. #18234 1, @aocenas
+    + TimePicker: Increase max height of quick range dropdown. #18247 2, @torkelo 2
+    + Alerting: Add tags to alert rules. #10989 13, @Thib17 1
+    + Alerting: Attempt to send email notifications to all given email addresses. #16881 1, @zhulongcheng
+    + Alerting: Improve alert rule testing. #16286 2, @marefr
+    + Alerting: Support for configuring content field for Discord alert notifier. #17017 2, @jan25
+    + Alertmanager: Replace illegal chars with underscore in label names. #17002 5, @bergquist 1
+    + Auth: Allow expiration of API keys. #17678, @papagian 3
+    + Auth: Return device, os and browser when listing user auth tokens in HTTP API. #17504, @shavonn 1
+    + Auth: Support list and revoke of user auth tokens in UI. #17434 2, @shavonn 1
+    + AzureMonitor: change clashing built-in Grafana variables/macro names for Azure Logs. #17140, @shavonn 1
+    + CloudWatch: Made region visible for AWS Cloudwatch Expressions. #17243 2, @utkarshcmu
+    + Cloudwatch: Add AWS DocDB metrics. #17241, @utkarshcmu
+    + Dashboard: Use timezone dashboard setting when exporting to CSV. #18002 1, @dehrax
+    + Data links. #17267 11, @torkelo 2
+    + Docker: Switch base image to ubuntu:latest from debian:stretch to avoid security issues… #17066 5, @bergquist 1
+    + Elasticsearch: Support for visualizing logs in Explore . #17605 7, @marefr
+    + Explore: Adds Live option for supported datasources. #17062 1, @hugohaggmark 3
+    + Explore: Adds orgId to URL for sharing purposes. #17895 1, @kaydelaney 2
+    + Explore: Adds support for new loki ‘start’ and ‘end’ params for labels endpoint. #17512, @kaydelaney 2
+    + Explore: Adds support for toggling raw query mode in explore. #17870, @kaydelaney 2
+    + Explore: Allow switching between metrics and logs . #16959 2, @marefr
+    + Explore: Combines the timestamp and local time columns into one. #17775, @hugohaggmark 3
+    + Explore: Display log lines context . #17097, @dprokop 1
+    + Explore: Don’t parse log levels if provided by field or label. #17180 1, @marefr
+    + Explore: Improves performance of Logs element by limiting re-rendering. #17685, @kaydelaney 2
+    + Explore: Support for new LogQL filtering syntax. #16674 4, @davkal
+    + Explore: Use new TimePicker from Grafana/UI. #17793, @hugohaggmark 3
+    + Explore: handle newlines in LogRow Highlighter. #17425, @rrfeng 1
+    + Graph: Added new fill gradient option. #17528 3, @torkelo 2
+    + GraphPanel: Don’t sort series when legend table & sort column is not visible . #17095, @shavonn 1
+    + InfluxDB: Support for visualizing logs in Explore. #17450 9, @hugohaggmark 3
+    + Logging: Login and Logout actions (#17760). #17883 1, @ATTron
+    + Logging: Move log package to pkg/infra. #17023, @zhulongcheng
+    + Metrics: Expose stats about roles as metrics. #17469 2, @bergquist 1
+    + MySQL/Postgres/MSSQL: Add parsing for day, weeks and year intervals in macros. #13086 6, @bernardd
+    + MySQL: Add support for periodically reloading client certs. #14892, @tpetr
+    + Plugins: replace dataFormats list with skipDataQuery flag in plugin.json. #16984, @ryantxu
+    + Prometheus: Take timezone into account for step alignment. #17477, @fxmiii
+    + Prometheus: Use overridden panel range for $__range instead of dashboard range. #17352, @patrick246
+    + Prometheus: added time range filter to series labels query. #16851 3, @FUSAKLA
+    + Provisioning: Support folder that doesn’t exist yet in dashboard provisioning. #17407 1, @Nexucis
+    + Refresh picker: Handle empty intervals. #17585 1, @dehrax
+    + Singlestat: Add y min/max config to singlestat sparklines. #17527 4, @pitr
+    + Snapshot: use given key and deleteKey. #16876, @zhulongcheng
+    + Templating: Correctly display __text in multi-value variable after page reload. #17840 1, @EduardSergeev
+    + Templating: Support selecting all filtered values of a multi-value variable. #16873 2, @r66ad
+    + Tracing: allow propagation with Zipkin headers. #17009 4, @jrockway
+    + Users: Disable users removed from LDAP. #16820 2, @alexanderzobnin
   * Bug Fixes
-    + PanelLinks: Fix render issue when there is no panel description. #18408 3, @dehrax 
-    + OAuth: Fix “missing saved state” OAuth login failure due to SameSite cookie policy. #18332 1, @papagian 3 
-    + cli: fix for recognizing when in dev mode… #18334, @xlson 
-    + DataLinks: Fixes incorrect interpolation of ${__series_name} . #18251 1, @torkelo 2 
-    + Loki: Display live tailed logs in correct order in Explore. #18031 3, @kaydelaney 2 
-    + PhantomJS: Fixes rendering on Debian Buster. #18162 2, @xlson 
-    + TimePicker: Fixed style issue for custom range popover. #18244, @torkelo 2 
-    + Timerange: Fixes a bug where custom time ranges didn’t respect UTC. #18248 1, @kaydelaney 2 
-    + remote_cache: Fix redis connstr parsing. #18204 1, @mblaschke 
-    + AddPanel: Fix issue when removing moved add panel widget . #17659 2, @dehrax 
-    + CLI: Fix encrypt-datasource-passwords fails with sql error. #18014, @marefr 
-    + Elasticsearch: Fix default max concurrent shard requests. #17770 4, @marefr 
-    + Explore: Fix browsing back to dashboard panel. #17061, @jschill 
-    + Explore: Fix filter by series level in logs graph. #17798, @marefr 
-    + Explore: Fix issues when loading and both graph/table are collapsed. #17113, @marefr 
-    + Explore: Fix selection/copy of log lines. #17121, @marefr 
-    + Fix: Wrap value of multi variable in array when coming from URL. #16992 1, @aocenas 
-    + Frontend: Fix for Json tree component not working. #17608, @srid12 
-    + Graphite: Fix for issue with alias function being moved last. #17791, @torkelo 2 
-    + Graphite: Fixes issue with seriesByTag & function with variable param. #17795, @torkelo 2 
-    + Graphite: use POST for /metrics/find requests. #17814 2, @papagian 3 
-    + HTTP Server: Serve Grafana with a custom URL path prefix. #17048 6, @jan25 
-    + InfluxDB: Fixes single quotes are not escaped in label value filters. #17398 1, @Panzki 
-    + Prometheus: Correctly escape ‘|’ literals in interpolated PromQL variables. #16932, @Limess 
-    + Prometheus: Fix when adding label for metrics which contains colons in Explore. #16760, @tolwi 
-    + SinglestatPanel: Remove background color when value turns null. #17552 1, @druggieri 
+    + PanelLinks: Fix render issue when there is no panel description. #18408 3, @dehrax
+    + OAuth: Fix “missing saved state” OAuth login failure due to SameSite cookie policy. #18332 1, @papagian 3
+    + cli: fix for recognizing when in dev mode… #18334, @xlson
+    + DataLinks: Fixes incorrect interpolation of ${__series_name} . #18251 1, @torkelo 2
+    + Loki: Display live tailed logs in correct order in Explore. #18031 3, @kaydelaney 2
+    + PhantomJS: Fixes rendering on Debian Buster. #18162 2, @xlson
+    + TimePicker: Fixed style issue for custom range popover. #18244, @torkelo 2
+    + Timerange: Fixes a bug where custom time ranges didn’t respect UTC. #18248 1, @kaydelaney 2
+    + remote_cache: Fix redis connstr parsing. #18204 1, @mblaschke
+    + AddPanel: Fix issue when removing moved add panel widget . #17659 2, @dehrax
+    + CLI: Fix encrypt-datasource-passwords fails with sql error. #18014, @marefr
+    + Elasticsearch: Fix default max concurrent shard requests. #17770 4, @marefr
+    + Explore: Fix browsing back to dashboard panel. #17061, @jschill
+    + Explore: Fix filter by series level in logs graph. #17798, @marefr
+    + Explore: Fix issues when loading and both graph/table are collapsed. #17113, @marefr
+    + Explore: Fix selection/copy of log lines. #17121, @marefr
+    + Fix: Wrap value of multi variable in array when coming from URL. #16992 1, @aocenas
+    + Frontend: Fix for Json tree component not working. #17608, @srid12
+    + Graphite: Fix for issue with alias function being moved last. #17791, @torkelo 2
+    + Graphite: Fixes issue with seriesByTag & function with variable param. #17795, @torkelo 2
+    + Graphite: use POST for /metrics/find requests. #17814 2, @papagian 3
+    + HTTP Server: Serve Grafana with a custom URL path prefix. #17048 6, @jan25
+    + InfluxDB: Fixes single quotes are not escaped in label value filters. #17398 1, @Panzki
+    + Prometheus: Correctly escape ‘|’ literals in interpolated PromQL variables. #16932, @Limess
+    + Prometheus: Fix when adding label for metrics which contains colons in Explore. #16760, @tolwi
+    + SinglestatPanel: Remove background color when value turns null. #17552 1, @druggieri
 
 -------------------------------------------------------------------
 Tue Jul 30 14:14:38 CEST 2019 - ro@suse.de
 
-- make phantomjs dependency configurable 
+- make phantomjs dependency configurable
 
 -------------------------------------------------------------------
 Thu Jul 11 08:21:07 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
@@ -1056,8 +1063,8 @@ Tue Oct 24 15:25:39 UTC 2017 - johannes.grassler@suse.com
 -------------------------------------------------------------------
 Tue Oct 17 09:54:03 UTC 2017 - johannes.grassler@suse.com
 
-- Create plugin directory and clean up (create in %install, 
-  add to %files) handling of /var/lib/grafana/* and 
+- Create plugin directory and clean up (create in %install,
+  add to %files) handling of /var/lib/grafana/* and
   /var/log/grafana.
 
 -------------------------------------------------------------------

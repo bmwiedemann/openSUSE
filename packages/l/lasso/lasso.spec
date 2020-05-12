@@ -28,7 +28,7 @@
   %global configure_args %{configure_args} --enable-wsf --with-sasl2=%{_prefix}/sasl2
 %endif
 Name:           lasso
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Liberty Alliance Single Sign On
 License:        GPL-2.0-or-later
@@ -36,14 +36,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://lasso.entrouvert.org/
 Source:         http://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
 # Backports from upstream (from Fedora)
-Patch1:         use-specified-python-interpreter.patch
-Patch2:         build-scripts-py3-compatible.patch
-Patch3:         duplicate-python-LogoutTestCase.patch
-Patch4:         versioned-python-configure.patch
-Patch5:         0005-tests-use-self-generated-certificate-to-sign-federat.patch
-Patch6:         0006-Fix-ECP-signature-not-found-error-when-only-assertio.patch
-Patch7:         0007-PAOS-Do-not-populate-Destination-attribute.patch
-Patch8:         0008-Explicitly-define-tests-cases-and-add-them-to-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel

@@ -7,6 +7,7 @@ Requires=freshclam.service
 Type=forking
 ExecStart=/usr/sbin/clamd
 TimeoutStartSec=5min
+ExecReload=/bin/kill -USR2 $MAINPID
 ;User=vscan
 ;Group=vscan
 ;PrivateTmp=yes

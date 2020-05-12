@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
-BuildRequires:  ( go >= 1.14 with go < 1.15 )
+BuildRequires:  golang(API) >= 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 

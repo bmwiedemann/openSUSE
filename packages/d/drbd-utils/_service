@@ -5,10 +5,10 @@
     <param name="filename">drbd-utils</param>
 <!--
     build service using release drbd-utils atm.
-    <param name="version">9.12.0</param>
+    <param name="version">9.13.0</param>
     Using release tarball instead of git since need buildtag.c/h
 -->
-    <param name="versionformat">9.12.0+git.%h</param>
+    <param name="versionformat">9.13.0+git.%h</param>
     <param name="revision">master</param>
   </service>
 
