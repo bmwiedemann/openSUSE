@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue May 12 08:26:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix python2 conditions to pull deps correctly
+
+-------------------------------------------------------------------
+Mon May 11 16:19:40 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Bring back build for python 2.
+- Fix dependencies for building with python 2.
+
+-------------------------------------------------------------------
+Sat May  9 15:21:11 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.5.6
+  * In 0.5.5 a for-loop was omitted which lead to every frame being
+    the zeroth frame in the stack. For this reason, upgrading from
+    0.5.5 is _strongly_ recommended.
+- Clean up spec file.
+    
+-------------------------------------------------------------------
+Tue Dec 10 16:30:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version
