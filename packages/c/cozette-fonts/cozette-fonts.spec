@@ -19,7 +19,7 @@
 %define fontname    Cozette
 %define fontversion    1.7.0
 Name:           cozette-fonts
-Version:        1.7.0+git.1585209341.9923dd8
+Version:        1.8.0+git.1586169539.b90b7be
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
