@@ -1808,6 +1808,7 @@
     <package name="libbrasero-utils3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libbrotli-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrotlienc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1885,7 +1886,7 @@
     <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:eekboard -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libcrypto45" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcryptsetup12-hmac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2761,7 +2762,7 @@
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libssl47" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libssl48" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsss_nss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2810,7 +2811,7 @@
     <package name="libtinyxml0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libtls19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libtls20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libtomcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -4226,7 +4227,6 @@
     <package name="ruby2.7-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-gettext-setup" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5419,6 +5419,8 @@
     <package name="libavahi-client3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-common3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libbrotlidec1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libbz2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libc++-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libc++1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

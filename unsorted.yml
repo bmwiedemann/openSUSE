@@ -1269,6 +1269,7 @@ unsorted:
   - borgmatic 
   - boringssl-devel 
   - bosh 
+  - bottom 
   - bouncycastle 
   - bouncycastle-javadoc 
   - bouncycastle-mail 
@@ -3826,8 +3827,6 @@ unsorted:
   - ghc-adjunctions 
   - ghc-adjunctions-devel 
   - ghc-aeson 
-  - ghc-aeson-compat 
-  - ghc-aeson-compat-devel 
   - ghc-aeson-devel 
   - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
@@ -3855,8 +3854,12 @@ unsorted:
   - ghc-auto-update-devel 
   - ghc-base 
   - ghc-base-compat 
+  - ghc-base-compat-batteries 
+  - ghc-base-compat-batteries-devel 
   - ghc-base-compat-devel 
   - ghc-base-devel 
+  - ghc-base-noprelude 
+  - ghc-base-noprelude-devel 
   - ghc-base-orphans 
   - ghc-base-orphans-devel 
   - ghc-base-prelude 
@@ -4068,8 +4071,6 @@ unsorted:
   - ghc-http-client-tls-devel 
   - ghc-http-conduit 
   - ghc-http-conduit-devel 
-  - ghc-http-download 
-  - ghc-http-download-devel 
   - ghc-http-types 
   - ghc-http-types-devel 
   - ghc-hxt 
@@ -4123,8 +4124,6 @@ unsorted:
   - ghc-memory-devel 
   - ghc-microlens 
   - ghc-microlens-devel 
-  - ghc-microlens-th 
-  - ghc-microlens-th-devel 
   - ghc-mime-types 
   - ghc-mime-types-devel 
   - ghc-mintty 
@@ -4187,8 +4186,6 @@ unsorted:
   - ghc-pem-devel 
   - ghc-persistent 
   - ghc-persistent-devel 
-  - ghc-persistent-sqlite 
-  - ghc-persistent-sqlite-devel 
   - ghc-persistent-template 
   - ghc-persistent-template-devel 
   - ghc-pretty 
@@ -4227,8 +4224,6 @@ unsorted:
   - ghc-resource-pool-devel 
   - ghc-resourcet 
   - ghc-resourcet-devel 
-  - ghc-retry 
-  - ghc-retry-devel 
   - ghc-rfc5051 
   - ghc-rfc5051-devel 
   - ghc-rio 
@@ -4241,8 +4236,6 @@ unsorted:
   - ghc-rpm-macros-extra 
   - ghc-safe 
   - ghc-safe-devel 
-  - ghc-safe-exceptions 
-  - ghc-safe-exceptions-devel 
   - ghc-scientific 
   - ghc-scientific-devel 
   - ghc-semigroupoids 
@@ -4288,8 +4281,6 @@ unsorted:
   - ghc-tagsoup 
   - ghc-tagsoup-devel 
   - ghc-tar 
-  - ghc-tar-conduit 
-  - ghc-tar-conduit-devel 
   - ghc-tar-devel 
   - ghc-template-haskell 
   - ghc-template-haskell-devel 
@@ -8429,9 +8420,6 @@ unsorted:
   - libbraille 
   - libbraille-devel 
   - libbraille-fake 
-  - libbrotli-devel 
-  - libbrotlicommon1-32bit: [x86_64] 
-  - libbrotlidec1-32bit: [x86_64] 
   - libbrotlienc1-32bit: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
@@ -8705,7 +8693,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto45-32bit: [x86_64] 
+  - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_2_0 
   - libcryptopp8_2_0-32bit: [x86_64] 
@@ -9352,7 +9340,7 @@ unsorted:
   - libgendersplusplus2 
   - libgeners0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos-3_8_0 
+  - libgeos-3_8_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-0_6-0 
@@ -12009,7 +11997,7 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl47-32bit: [x86_64] 
+  - libssl48-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
   - libsss_certmap-devel 
@@ -12236,7 +12224,7 @@ unsorted:
   - libtinyobjloader1 
   - libtinyxml2-6 
   - libtirpc-devel 
-  - libtls19-32bit: [x86_64] 
+  - libtls20-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb4 
   - libtolua++-5_1-1 
@@ -12544,7 +12532,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_2_1 
+  - libvolk2_3 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -18309,7 +18297,6 @@ unsorted:
   - psi+-plugins-gnupgplugin 
   - psi+-plugins-gomokugameplugin 
   - psi+-plugins-historykeeperplugin 
-  - psi+-plugins-icqdieplugin 
   - psi+-plugins-imageplugin 
   - psi+-plugins-imagepreviewplugin 
   - psi+-plugins-jabberdiskplugin 
@@ -18640,7 +18627,6 @@ unsorted:
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
-  - python2-libqcow 
   - python2-libunity 
   - python2-moviepy 
   - python2-mraa: [i586] 
@@ -18688,7 +18674,6 @@ unsorted:
   - python3-EditorConfig 
   - python3-ExifRead 
   - python3-Fabric 
-  - python3-Fabric3 
   - python3-Faker 
   - python3-Flask 
   - python3-Flask-Admin 
@@ -22592,7 +22577,6 @@ unsorted:
   - ruby2.6-rubygem-net-scp-testsuite-1_2 
   - ruby2.6-rubygem-net-sftp 
   - ruby2.6-rubygem-net-sftp-doc 
-  - ruby2.6-rubygem-net-sftp-testsuite 
   - ruby2.6-rubygem-net-ssh 
   - ruby2.6-rubygem-net-ssh-4_1 
   - ruby2.6-rubygem-net-ssh-5.1 
@@ -23329,6 +23313,7 @@ unsorted:
   - ruby2.7-rubygem-get_process_mem-doc 
   - ruby2.7-rubygem-get_process_mem-testsuite 
   - ruby2.7-rubygem-gettext-doc 
+  - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-gettext-setup-doc 
   - ruby2.7-rubygem-gettext-setup-testsuite 
   - ruby2.7-rubygem-gettext-testsuite 
@@ -23508,7 +23493,6 @@ unsorted:
   - ruby2.7-rubygem-net-scp-testsuite-1_1 
   - ruby2.7-rubygem-net-scp-testsuite-1_2 
   - ruby2.7-rubygem-net-sftp-doc 
-  - ruby2.7-rubygem-net-sftp-testsuite 
   - ruby2.7-rubygem-net-ssh-doc 
   - ruby2.7-rubygem-net-ssh-doc-4_1 
   - ruby2.7-rubygem-net-ssh-doc-5.1 
@@ -32483,27 +32467,17 @@ unsorted:
   - trigger-rally-data 
   - trilead-ssh2 
   - trilead-ssh2-javadoc 
-  - trilinos: [x86_64] 
   - trilinos-devel: [x86_64] 
   - trilinos-doc: [x86_64] 
-  - trilinos-gnu-mpich-hpc: [x86_64] 
   - trilinos-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos-gnu-mvapich2-hpc: [x86_64] 
   - trilinos-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos-gnu-openmpi2-hpc: [x86_64] 
   - trilinos-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos-gnu-openmpi3-hpc: [x86_64] 
   - trilinos-gnu-openmpi3-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
-  - trilinos-openmpi2: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-mpich-hpc: [x86_64] 
   - trilinos_12_14_1-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-mvapich2-hpc: [x86_64] 
   - trilinos_12_14_1-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - trilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
   - trilinos_12_14_1-gnu-openmpi3-hpc-devel: [x86_64] 
   - trilinos_12_14_1-hpc-doc: [x86_64] 
   - trinity 
