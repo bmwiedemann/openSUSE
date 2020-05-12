@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 11 16:29:55 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 4.7.7:
+  * Release 4.7.7
+  * Fix open redirect if Adminer is accessible at //adminer.php%2F@ (thanks to Prakash Sharma)
+  * Update Finnish translation
+  * Fix typo in Greek translation
+  * Add missing translation
+  * Fix forwarded IP comparison in login-ip plugin
+  * Release 4.7.6
+
+-------------------------------------------------------------------
 Fri Jan 31 16:54:17 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 4.7.6:

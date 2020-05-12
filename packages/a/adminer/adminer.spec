@@ -22,7 +22,7 @@
 %bcond_with mongodb
 %bcond_with mssql
 Name:           adminer
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 Summary:        Database management in a single PHP file
 License:        GPL-2.0-only OR Apache-2.0
