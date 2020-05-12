@@ -1,7 +1,7 @@
 #
 # spec file for package utempter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname	libutempter0
 %define utmpGroup utmp
 Name:           utempter
-Version:        1.1.6
+Version:        1.2.0
 Release:        0
 Summary:        A privileged helper for utmp and wtmp updates
 License:        MIT
 Group:          Productivity/Security
-Url:            ftp://ftp.altlinux.org/pub/people/ldv/utempter/
-Source:         ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.bz2
-Source1:        ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.bz2.asc
+URL:            https://github.com/altlinux/libutempter/
+Source:         ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz
+Source1:        ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz.asc
 Source2:        baselibs.conf
 Source3:        %{name}.keyring
 Patch0:         utempter.eal3.diff
@@ -71,7 +71,7 @@ make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fPIC" CC="gcc"
 
 %install
 export DESTDIR=%{buildroot}
-make PREFIX=$DESTDIR libdir=%{_libdir} DESTDIR=%{buildroot} install
+make PREFIX=$DESTDIR libdir=%{_libdir} libexecdir=%{_libexecdir} DESTDIR=%{buildroot} install
 chmod 755 $DESTDIR%{_libdir}/libutempter.so*
 
 %verifyscript -n %{lname}

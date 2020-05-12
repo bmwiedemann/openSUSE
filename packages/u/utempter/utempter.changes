@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  6 12:15:39 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.2.0
+  * maintenance work:
+    https://github.com/altlinux/libutempter/commits/
+- modified patches
+  % utempter-no-staticlib.patch (refreshed)
+- modified sources
+  % utempter.keyring
+- set now libexecdir=%{_libexecdir} as utemper binary complies FHS
+  definition
+
+-------------------------------------------------------------------
 Fri Feb 23 08:35:22 UTC 2018 - fvogt@suse.com
 
 - Use %license (boo#1082318)
