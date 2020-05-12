@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-play
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-play
-Version:        0~git20200125
+Version:        0~git20200503
 Release:        0
 Summary:        Play! libretro core for PlayStation 2 emulation
 License:        MIT
@@ -25,17 +25,17 @@ Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
+BuildRequires:  Mesa-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glu-devel
-BuildRequires:  libbz2-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  libbz2-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  Mesa-devel
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
