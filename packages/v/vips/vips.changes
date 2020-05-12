@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 07:54:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.9.2
+  * Too many changes to list, see ChangeLog
+- Dropped python subpackage (bindings now supplied separately)
+- Added vips-8.9.2-implicit-fortify-decl.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Dec 11 02:47:34 UTC 2017 - avvissu@yandex.by
 
 - Update to 8.5.9:

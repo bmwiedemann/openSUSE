@@ -1,0 +1,12 @@
+Index: vips-8.9.2/test/test_connections.c
+===================================================================
+--- vips-8.9.2.orig/test/test_connections.c
++++ vips-8.9.2/test/test_connections.c
+@@ -4,6 +4,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <vips/vips.h>
+ 

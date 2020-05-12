@@ -1,7 +1,7 @@
 #
 # spec file for package vips
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 %define libname lib%{name}
-%define short_version  8.5
-%define short_version_ 8_5
+%define short_version  8.9
+%define short_version_ 8_9
 %define somajor 42
 Name:           vips
-Version:        8.5.9
+Version:        8.9.2
 Release:        0
 Summary:        C/C++ library for processing large images
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            http://jcupitt.github.io/libvips/
+URL:            http://jcupitt.github.io/libvips/
 Source0:        https://github.com/jcupitt/libvips/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libexif-header.patch -- set path to libexif header
 Patch1:         vips-8.4.2_libexif-header.patch
+# PATCH-FIX-OPENSUSE vips-8.9.2-implicit-fortify-decl.patch -- avoid implicit declarations
+Patch2:         vips-8.9.2-implicit-fortify-decl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
-BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  orc >= 0.4
 BuildRequires:  pkgconfig
@@ -52,6 +53,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libgsf-1)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -62,9 +64,7 @@ BuildRequires:  pkgconfig(openslide)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(python)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 VIPS is an image processing system. It is good with large images
@@ -96,8 +96,8 @@ research and development.
 Summary:        Development files for the VIPS library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{somajor} = %{version}
-Requires:       libjpeg-devel
 Requires:       pkgconfig
+Requires:       pkgconfig(libjpeg)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(zlib)
 
@@ -114,14 +114,6 @@ Requires:       %{libname}%{somajor} = %{version}
 This package contains command line tools for processing large images using
 the VIPS library.
 
-%package     -n python-%{name}
-Summary:        Python bindings for VIPS image processing library
-Group:          Development/Libraries/Python
-Requires:       %{libname}%{somajor} = %{version}
-
-%description -n python-%{name}
-This package contains the Python bindings for the VIPS library.
-
 %package        doc
 Summary:        Documentation for VIPS library
 Group:          Documentation/Other
@@ -133,29 +125,25 @@ This package contains documentation about the VIPS library in HTML and PDF
 formats.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 sed -e 's/8\.0/%{short_version}/' \
     -e 's/8_0/%{short_version_}/' \
     -i $(grep -l '8\.0\|8_0' libvips/Makefile*)
 
 %build
-autoreconf -fi
-%configure \
-    --disable-static \
-    --disable-pyvips8
-make %{?_smp_mflags}
+autoreconf -fiv
+%configure --disable-static
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang vips%{short_version}
 %fdupes %{buildroot}%{python_sitearch}/
-rm -rf %{buildroot}%{_datadir}/doc/vips
 
 %check
-%ifarch ppc64 ppc
+%ifarch ppc64 ppc64le
 make check || echo "Warning: ignore make check error for ppc64"
 %else
 make check || { cat test/test-suite.log; exit 1; }
@@ -165,15 +153,12 @@ make check || { cat test/test-suite.log; exit 1; }
 %postun -n %{libname}%{somajor} -p /sbin/ldconfig
 
 %files -n %{libname}%{somajor} -f vips%{short_version}.lang
-%defattr(-,root,root)
 %{_libdir}/*.so.%{somajor}*
 
 %files -n typelib-1_0-Vips-%{short_version_}
-%defattr(-,root,root)
 %{_typelibdir}/Vips-%{short_version}.typelib
 
 %files -n %{libname}-devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/*
@@ -181,16 +166,11 @@ make check || { cat test/test-suite.log; exit 1; }
 %{_girdir}/Vips-%{short_version}.gir
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/*
 %{_mandir}/man1/*
 
-%files -n python-%{name}
-%defattr(-,root,root)
-%{python_sitearch}/*
-
 %files doc
-%defattr(-,root,root)
-%doc doc/html AUTHORS NEWS THANKS TODO COPYING ChangeLog
+%license COPYING
+%doc doc/html AUTHORS NEWS THANKS ChangeLog
 
 %changelog
