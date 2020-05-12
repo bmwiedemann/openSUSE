@@ -1,4 +1,452 @@
 -------------------------------------------------------------------
+Mon May 04 20:19:37 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200503:
+  * Only log scan process if we want to.
+  * Code style fix.
+  * Update Dependencies submodule.
+  * Use non-throwing variant of directory_iterator.
+  * Enclose directory listing in a try/catch block.
+  * Log scanning process.
+  * Fix code style.
+  * Implement LoadModuleBufferAddress.
+  * Implement CdGetReadPos.
+  * Enable Tenkaichi test.
+  * Fix code style.
+  * Clarify comment.
+  * Add some invalidation range tests.
+  * Make GetTransferInvalidationRange function public.
+  * Add test base class.
+  * Extract invalidation range computation logic.
+  * Constify some functions.
+  * Change check method.
+  * Add GsAreaTest.
+  * Allow Vulkan instance to be created without validation layer active.
+  * Update Framework submodule.
+  * Fix code style.
+  * Allow selecting a specific device to be used by Vulkan.
+  * Save & load device/vendor IDs.
+  * Use suitable physical device.
+  * Account for textures with 0 buffer width
+  * Display available devices.
+  * Fix build errors.
+  * Add missing files.
+  * Add Vulkan DeviceInfo module.
+  * Update Framework submodule.
+  * Use GetStructPtr.
+  * Implement alternative GS CSR register
+  * Fix edge cases in RegisterVblankHandler
+  * Implement ReleaseVblankHandler in VBlank IOP module
+  * Implement missing blendmode 1002
+  * document CCdvdfsv::Invoke592 method 0 structure
+  * Fix stylin issues.
+  * Update CodeGen submodule.
+  * Use GetStructPtr to obtain VsyncFlag locations.
+  * Add MAX in test.
+  * Implement MINI/MAX VU operations differently.
+  * Setup denormal handling mode in test.
+  * Add VU MinMax test.
+  * Remove dead code.
+  * Handle alternate WriteFile function.
+  * Handle error case in ReadFile.
+  * Test signed values.
+  * Fix some return values.
+  * Hook Mc2 functions when specific IOP modules are loaded.
+  * Make sure SearchFile returns not found if file is not there.
+  * Tweak the function detection heuristic.
+  * Hook Mc2 functions somewhere else.
+  * Implement ChDir.
+  * Clean ReadFile handling.
+  * Use defines for operation results.
+  * Flesh out GetDir implementation.
+  * Function 5 is ReadFileAsync.
+  * Fix some problems in GetDir.
+  * Default to port 0.
+  * Add WriteFileAsync.
+  * Add MkDirAsync and CreateFileAsync.
+  * Add some basic error checking.
+  * Use constant for memory card port.
+  * Find function pointers using an heuristic.
+  * Hook the underlaying check async function.
+  * Fix function id.
+  * Initial version of libmc2 HLE.
+  * MC investigation again.
+  * MC investigation.
+  * Various hooks that made the SIO2 test working.
+  * More MemoryCard SIO2 investigation.
+  * Memory Card SIO2 protocol investigation.
+  * Add DMACMAN and SECRMAN HLE modules.
+  * Fix strip command line.
+  * Add error check and logging in RetroArch Android build script.
+  * Build using NDK r21.
+  * Update Gradle & Gradle Plugin.
+  * update model after checking all s3 entries
+  * moving warning call to its own function
+  * display s3 bootables as they're proccessed
+  * Bootable dialog, add statusbar
+  * prevent dialog closure when proccessing s3 bootables
+  * explicitly set S3 bootable std::async flag to std::launch::async
+  * move S3 bootable processing to std::async
+  * Handle splitting of image transfers that may have addresses that go out of bounds.
+  * Flush command buffer when we're about to read GS RAM.
+  * Update CodeGen submodule.
+  * Update Nuanceur submodule.
+  * Code style fixes.
+  * Update mainwindow.cpp
+  * Update main.cpp
+  * Use Xenial for Travis ARM64 builds.
+  * Update CodeGen submodule.
+  * Update CodeGen submodule.
+  * Mask GS Regs
+  * Update Framework submodule
+  * Code style fixes.
+  * Add PSMZ16 swizzle table.
+  * Implement transfer read handlers.
+  * Fix validation warning.
+  * Remove annoying asserts.
+  * Cache CLUT transfers. Allow previous transfers to be reused.
+  * Store CLUT in a buffer instead of image.
+  * Add PSMT8 Local to Local transfers.
+  * Fix destination alpha test.
+  * Add destination alpha test for 32-bit frame buffers.
+  * Add destination alpha test.
+  * Add missing alpha test condition.
+  * Rename VulkanTransfer to VulkanTransferHost.
+  * More pixel formats.
+  * Basic implementation of local to local transfers.
+  * Load and save CBP0/1 state.
+  * Add const parameter to Copy.
+  * Use enable_testing earlier to allow CodeGenTestSuite to be added to tests.
+  * Add "denormals are zero" check in IsZero function.
+  * Code style fixes.
+  * Enable flush-to-zero mode on AArch64.
+  * Limit intrinsic usage to x86 platforms.
+  * Set proper denormal handling modes.
+  * we dont want to auto default to s3 scan button
+  * display serial number in list view
+  * show disc path in listview, can be useful to distinguish between different copies
+  * Qt check image extension for type, instead of header, we assume images downloaded from TGDB are jpg, so it can fail if the image is png with jpg extension
+  * check to see if bootable is listed before trying to get diskId, speed up scan, especially on aws S3 buckets
+  * Qt: list S3 games in bootables
+  * s3 listing to own function
+  * simplify AppImage packaging process
+  * statically link against libgcc & libstdc++ on unix platforms
+  * Add a stub for FileIO ccode function.
+  * Also make sure VU mem and Micro mem are aligned.
+  * Make sure our virtual machine is allocated with proper alignment.
+  * Code style fixes.
+  * Remove float types from VuTests.
+  * Check broadcast elements in FMAC stall detection.
+  * Rename functions for more consistency.
+  * Cleanup.
+  * Update flag skip compile hint algorithm.
+  * Go back to the static adjustment approach.
+  * Add another stall test.
+  * Add some annotations to the test.
+  * Move helper functions.
+  * Another slightly different approach.
+  * Add stall test case.
+  * Slightly different approach.
+  * Add very basic FMAC hazard detection.
+  * Improve README
+  * save input profile before loading different profile
+  * allow deleting of all profile, but not the last remaining one
+  * fix profile delete, note: removing item triggers index change, which triggers profile change, which triggers old profile config save, thus recreating the file again
+  * initial Gamepad profiles support
+  * Enable protecting RAM pages to detect modified code on iOS.
+  * Add some asserts.
+  * Update submodules.
+  * use default margining value
+  * support region s3 buckets
+  * Properly handle SPU DMA stop mode.
+  * Return error in CdRead is command is already pending.
+  * Add comment to say which game requires the delay.
+  * Add delay to NDiskReady command.
+  * Upgrade Android Gradle plugin version.
+  * Another attempt at fixing mount's output read issue.
+  * block signal to gs combobox during population, else it will always call currentIndexChanged(0) forcing the option to OpenGL even when not changed
+  * move gs label updating to own function, update gs label when handler is changed through the setting menu
+  * use enum for gs handler index
+  * Don't cache blocks that have breakpoints.
+  * Add log.
+  * Fix code style.
+  * Better skip flags hint computation.
+  * Fix crash.
+  * Update test with breaking case.
+  * Add simple flags test.
+  * Move hints computation to a function.
+  * Skip flags update when we're sure result won't be used.
+  * directly copy GS states
+  * hide gs selection+warning when vulkan is not available during build
+  * make GS selectable, add toggle option
+  * dont fail to load game info, if it has no overview
+  * allow replacing GSHandler on the fly
+  * create render window manually, to avoid dependency on showEvent()
+  * Code stylin'.
+  * Make Vulkan optional in the build.
+  * Install proper package for ARM64 build.
+  * Use proper platform def.
+  * Fix Linux build.
+  * Add fog support.
+  * Add pipeline barrier between draw calls.
+  * Don't send a resize event if nothing has been exposed.
+  * Catch error when booting from command line.
+  * Linux Vulkan Surface Creation.
+  * Build using latest Vulkan SDK.
+  * Code style fixes.
+  * Tweak settings dialog to make text visible on Windows and macOS.
+  * Add less than alpha test.
+  * Merge render passes.
+  * Implement PSMCT24 transfers.
+  * Disable synchronous queue submits on macOS.
+  * Add support for CLUT CSM2 mode.
+  * Make accessors const.
+  * PSMCT16 CLUT support.
+  * Implement RGB_ONLY alpha test fail.
+  * Handle special alpha test case.
+  * Implement presentation params.
+  * Remove duplicated code.
+  * Fix HIGHLIGHT2 texture function.
+  * Divide by Q for sprites.
+  * Add missing PSMCT16 case.
+  * Factor out the CLD processing logic and use it in Vulkan.
+  * Add not equal alpha test.
+  * Recreate swapchain if presentation size changed.
+  * Create & destroy semaphore at same time as swap chain.
+  * Cleanup.
+  * Remove dead code.
+  * Increase vertex buffer size to get rid of syncs.
+  * Make alpha testing active.
+  * Move color and depth update code to functions.
+  * Update submodule.
+  * Prepare for alpha testing.
+  * Add pipeline barriers to prevent flickering issues.
+  * More PSMCT24 texture handling.
+  * Handle PSMCT24 frame buffers.
+  * Add support for PSMT8H/PSMT4HL/PSMT4HH.
+  * Add support for PSMT4 transfers.
+  * Add tex coord clamping support.
+  * Remove projMatrix from draw push constants.
+  * Fix mask.
+  * Make the GPU side RAM read/writeable by other GS operations.
+  * Add missing PSMCT16 cases.
+  * Remove redundant definitions.
+  * Add missing file in CMakeLists.txt
+  * Update submodule.
+  * Prevent redundant CLUT loads.
+  * Make sure we flush vertices before transfer.
+  * Fix command buffer leak.
+  * Allow more than one frame to be in-flight.
+  * Don't wait for transfers to complete.
+  * Don't reset descriptor pool.
+  * Save descriptor sets.
+  * Save Present descriptor sets.
+  * Command buffers are one time submit.
+  * Add offset.
+  * Use Generic Buffer in Transfer.
+  * Handle DECAL.
+  * Fix viewport size.
+  * Add texture alpha expansion.
+  * Update Nuanceur submodule.
+  * Make textureColor a variable.
+  * Increase vertex buffer size.
+  * Add submission counter.
+  * Fix color masking implementation.
+  * Add check.
+  * Add support for Highlight2 texture function.
+  * Handle transfers that are not divisible by compute shader local size.
+  * Update Nuanceur submodule.
+  * Use palette colors for PSMT4 textures.
+  * Simplify Memory_Read4.
+  * Add missing break.
+  * Add support for 16-bit color mask.
+  * Add fixed alpha blending parameter.
+  * Submodule update.
+  * Add basic color write mask support.
+  * Handle some texture functions.
+  * Prepare alpha testing.
+  * Depth testing.
+  * Add Memory Read/Write 24.
+  * Compute depth address.
+  * Passthrough depth value.
+  * Set depth test function in caps.
+  * Fix warnings.
+  * Make some definitions public.
+  * PSMZ32 swizzle table.
+  * Prepare for depth.
+  * Add descriptor set pooling in draw module.
+  * Divide tex coord by Q.
+  * Fix version number again.
+  * Add checkbox to enable/disable Vulkan through UI.
+  * Mini fixes.
+  * Fix host to local transfer code to allow OpenGL to work again.
+  * Update Nuanceur submodule.
+  * Keep apiVersion to 1.0.
+  * Embed MoltenVK in macOS bundle.
+  * Don't enable validation layers on macOS/iOS.
+  * Add padding to CLUT load params.
+  * Add padding to xfer params.
+  * Output dst color for debugging purposes.
+  * Use buffer for GS memory.
+  * Handle PSMCT24 in present.
+  * Make Vulkan GS handler enableable through a setting.
+  * Fix indices.
+  * Remove VulkanWindow from build if not supporting Vulkan.
+  * Generalized blending.
+  * Fix Memory_Write16.
+  * Allow drawing to PSMCT16S framebuffers.
+  * Allow presenting PSMCT16S framebuffers.
+  * Compile GSH_VulkanQt only if Vulkan is enabled.
+  * Cleanup.
+  * Enable GSH Vulkan through CMakeLists.
+  * WIP support for more image formats.
+  * Support IDX4 clut loads.
+  * Add checks.
+  * Load more swizzle tables.
+  * Implement BuildPageOffsetTable for PSMT4.
+  * Code style fixes.
+  * Don't build Vulkan for AArch64 Linux.
+  * Handle out of date swapchain.
+  * Linux build fixes.
+  * Download Vulkan SDK on Travis.
+  * Set scissor.
+  * Add basic alpha blending.
+  * Use push constants for present parameters.
+  * Use swizzle tables for memory accesses.
+  * Add swizzle tables.
+  * Add getter for page offsets.
+  * Use image helper.
+  * Use pipeline cache.
+  * Cleanup.
+  * Move handling of the frame's command buffer in a separate class.
+  * Read from CLUT when drawing.
+  * Execute CLUT load.
+  * Cleanup.
+  * Initialize CLUT image.
+  * Update CMakeLists.txt
+  * Use pipeline cache.
+  * Add CLUT loader module.
+  * Remove hard coded local size in transfer compute shader.
+  * Preparing for CLUT support.
+  * Modulate multiplies by 2.
+  * Update submodules following rebase.
+  * Move draw parameters to push constants.
+  * Support another texture format.
+  * Allow multiple transfer pipelines.
+  * Add GetPixelAddress helper.
+  * Use texture size when reading texels.
+  * Add memory read/write utils.
+  * Add memory utils.
+  * Very basic texturing.
+  * Laying the groundwork for texturing.
+  * Flip Y output render.
+  * Change the vertex buffering strategy.
+  * Enable sprites.
+  * Draw in the framebuffer area.
+  * Update memory management code.
+  * Present now shows display framebuffer area.
+  * Minor cleanup.
+  * Free vertex buffer properly.
+  * Use buffer helper.
+  * More work towards memory transfers.
+  * Setting the bases for transfers.
+  * More color channels.
+  * Updates following rebase.
+  * Remove test code.
+  * Update Nuanceur submodule.
+  * Stop using Qt's VkInstance.
+  * Specify that we want to enable fragment shader interlock.
+  * Enable extensions and features.
+  * Bind temporary image view to make rendering work on MoltenVK.
+  * Use invocation interlock.
+  * Move reseting.
+  * Draw triangles with input colors.
+  * Basic triangle draw.
+  * Remove test code.
+  * Starting primitive drawing.
+  * Some shades of red.
+  * Download and setup Vulkan SDK on macOS Travis.
+  * Fix Win32 build.
+  * Update VulkanSDK version used on AppVeyor.
+  * Add macOS Vulkan init code.
+  *  Different shade of red.
+  * Test storage image reading.
+  * Update submodule.
+  * Create descriptor set layout for draw pipeline.
+  * Create descriptor pool.
+  * Moved all presentation related code in a class.
+  * First triangle draw!
+  * Fix indent.
+  * Basic shaders and graphics pipeline.
+  * Create present render pass.
+  * Add bases for rendering code.
+  * Query surface extents.
+  * Use properly initialized structures.
+  * Enable validation layers in debug.
+  * Destroy swap chain.
+  * Remove hardcoded surface format.
+  * Download VulkanSDK only if it's not there.
+  * Cache VulkanSDK for faster AppVeyor builds.
+  * Install VulkanSDK on AppVeyor.
+  * Let Framework's Vulkan CMakeList handle the Vulkan dependency.
+  * Moved resource freeing stuff in proper function.
+  * Use Framework's Vulkan wrapper.
+  * Vulkan Initialization + Qt.
+  * Remove unused dtor.
+  * Create an API agnostic OutputWindow class.
+  * cleanup
+  * capture screenshot directly from display framebuffer, at rendering resolution
+  * Fix color issues in iOS PsfPlayer UI.
+  * Various iOS UI fixes: - Fixed menu button placement for iPhone X layouts. - Fixed dark mode support.
+  * Some adjustments for iPhone X screen layout.
+  * Use TravisCI deploy v2.
+  * Add move overload to SendGSCall.
+  * rename windows libretro core, to distinguish between releases, note RA requires both to be named play_libretro.dll, however, that'd cause upload conflict
+  * fix libretro ios deploy
+  * Update TheGamesDbClient.cpp
+  * libretro support elf loading.... this id currently duplicating code from BootablesProcesses
+  * Code style fixes.
+  * remove direct access to CMailBox in Android & DirectX GS
+  * fix libretro deploy
+  * fix android libretro build
+  * fix cmake path
+  * libretro: set lower audio buffer
+  * make mutex a class object
+  * Cleanup
+  * change to unix line endings
+  * libretro: cmake: add iOS suffix
+  * cleanup
+  * Update android libretro bash build scrip
+  * libretro: add _android.so suffix to shared library, its how retroarch expect the libraries to be named
+  * Libretro: Fix iOS build
+  * cleanup
+  * Libretro: update input to support bitmasking
+  * Update libretro.h
+  * Libretro: Audio: replace queue with buffer, remove audio mute option (thats handled by RA)
+  * Libretro: move audio processing to main thread
+  * Libretro: Remove audio dependencies
+  * poll button state on retro_run() thread... to avoid race condition, as these methods are not thread safe
+  * libretro: update supported format
+  * Disable early logs, set storage path for android
+  * Code style fixes.
+  * compile with PIC when building libretro cores... maybe enable it by default?
+  * Appveyor: Build an deploy Windows Libretro Core
+  * Travis: build libretro cores
+  * Fix iOS build
+  * Fix Android build
+  * Select correct OpenGL version
+  * Add Android Audio support
+  * Cleanup
+  * Prepare CMakeLists.txt for Android/iOS builds
+  * Update CMakelists.txt
+  * Prepare for non windows builds
+  * libretro: add save state support
+  * libretro: pass ram, for cheat system
+  * Cleanup: fix multiplier selection, set base resolution to PS2 default, use internal rendering resolution before rendering
+  * Initial Libretro implementation
+  * allow GS to run in non-/threaded mode
+
+-------------------------------------------------------------------
 Thu Jan  2 10:54:22 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Remove unrar source

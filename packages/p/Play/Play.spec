@@ -1,7 +1,7 @@
 #
-# spec file for package libretro-play
+# spec file for package Play
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Play
-Version:        0~git20191220
+Version:        0~git20200503
 Release:        0
 Summary:        Play! - PlayStation 2 Emulator
 License:        MIT
@@ -25,10 +25,11 @@ Group:          System/Emulators/Other
 URL:            http://purei.org
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  Mesa-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:	glew-devel
+BuildRequires:  glew-devel
 BuildRequires:  glu-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libcurl-devel
@@ -36,7 +37,7 @@ BuildRequires:  libevdev-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  Mesa-devel
+BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  sqlite3-devel
