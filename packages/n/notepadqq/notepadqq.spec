@@ -1,7 +1,7 @@
 #
 # spec file for package notepadqq
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           notepadqq
-Version:        1.4.0
+Version:        1.4.8
 Release:        0
 Summary:        Notepad++-like editor
 License:        GPL-3.0-or-later
@@ -69,6 +69,8 @@ make %{?_smp_mflags} V=1
 %suse_update_desktop_file -r %{name} Utility TextEditor
 
 find %{buildroot}/ -name '.*' -print0 | xargs -0 rm -rf
+
+sed -i '1 s|^#!%{_bindir}/env bash|#!%{_bindir}/bash|' %{buildroot}%{_datadir}/%{name}/extension_tools/node_modules/archiver/node_modules/glob/node_modules/minimatch/node_modules/brace-expansion/test/generate.sh
 
 %fdupes %{buildroot}%{_datadir}/
 
