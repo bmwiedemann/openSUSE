@@ -17,7 +17,7 @@
 
 
 Name:           netdiscover
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        A network address discovering/monitoring tool
 License:        GPL-3.0-or-later

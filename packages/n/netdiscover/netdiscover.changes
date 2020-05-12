@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 07:39:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6:
+  * Fix build with GCC 10. (Jaime Peñalba)
+
+-------------------------------------------------------------------
 Fri Feb 28 09:22:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update project url

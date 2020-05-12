@@ -36,4 +36,13 @@
 - For changes for previous releses see provided Changelog</comment>
     <requestid>780195</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abafee7c9a34fc8477e6c084f8e34f29</srcmd5>
+    <version>0.6</version>
+    <time>1589315578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6:
+  * Fix build with GCC 10. (Jaime PeÃ±alba)</comment>
+    <requestid>802849</requestid>
+  </revision>
 </revisionlist>
