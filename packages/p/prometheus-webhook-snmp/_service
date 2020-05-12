@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="changesgenerate">disable</param>
     <param name="extract">prometheus-webhook-snmp.spec</param>
-    <param name="revision">v1.1</param>
+    <param name="revision">v1.3</param>
     <param name="versionformat">@PARENT_TAG@.%ct.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
