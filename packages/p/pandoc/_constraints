@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">7</size>
+    </disk>
+    <memory>
+      <size unit="M">11000</size>
+    </memory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>i586</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">3000</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
