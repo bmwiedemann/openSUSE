@@ -1,164 +1,9 @@
-diff -rc alpine-2.21/README.maildir alpine-2.21.maildir/README.maildir
-*** alpine-2.21/README.maildir	Sun Feb  5 16:15:21 2017
---- alpine-2.21.maildir/README.maildir	Sun Feb  5 16:15:21 2017
+diff -rc alpine-2.22/alpine/alpine.c alpine-2.22.maildir/alpine/alpine.c
+*** alpine-2.22/alpine/alpine.c	2020-01-19 01:32:20.090477474 -0700
+--- alpine-2.22.maildir/alpine/alpine.c	2020-01-19 01:34:47.848512457 -0700
 ***************
-*** 0 ****
---- 1,149 ----
-+ ---------------------------------------
-+ 
-+ Maildir Driver for Alpine 2.0
-+ By Eduardo Chappa 
-+ <chappa@gmx.com>
-+ 
-+ ---------------------------------------
-+ 1. General Information About This Patch
-+ ---------------------------------------
-+ 
-+ This patch adds support for the maildir format to Alpine. We take the 
-+ approach that this patch is one more driver among the number of formats 
-+ supported by Alpine (more generally c-client). This approach differs from 
-+ older versions of similar patches, in that once a maildir patch was 
-+ applied, it was assumed that all your folders would be created in the 
-+ maildir format. 
-+ 
-+ This patch does not assume that maildir is a preferred format, instead 
-+ puts maildir in equal footing with other formats (mbox, mbx, mix, etc), 
-+ and so a maildir folder in the mail/ collection is treated in the same way 
-+ as any other folder in any other format. In other words, just by reading 
-+ the name of a folder, or opening it, or doing any operation with it, you 
-+ can not know in which format the folder is.
-+ 
-+ This implies that if you want to add a folder in the maildir format to the 
-+ mail/ collection, then you must add by pressing "A" in the folder list 
-+ collection and enter "#driver.md/mail/name_maildir_folder".
-+ 
-+ If you only want to use maildir, however, you can do so too. In this case, 
-+ you must create a maildir collection. In that collection, only maildir 
-+ folders will be listed. If there is any folder in any other format, that 
-+ folder will be ignored. In another words, any folder listed there is in 
-+ maildir format and can be accessed through that collection, conversely, 
-+ any folder not listed there is not in maildir format and there is no way 
-+ to access it using this collection.
-+ 
-+ In order to create a maildir collection, you could press M S L, and "A" to 
-+ add a collection. Fill in the required fields as follows:
-+ 
-+ Nickname  : Anything
-+ Server    :
-+ Path      : #md/relative/path/to/maildir/collection/
-+ View      :
-+ 
-+ For example, if "path" is set to "#md/mail/", then Alpine will look for your 
-+ maildir folders that are in ~/mail/.
-+ 
-+ The code in this patch is mostly based in code for the unix driver plus 
-+ some combinations of the mh, mbx and nntp drivers for the c-client 
-+ library. Those drivers were designed by Mark Crispin, and bugs in this 
-+ code are not his bugs, but my own.
-+ 
-+   I got all the specification for this patch from 
-+ http://cr.yp.to/proto/maildir.html. If you know of a place with a better 
-+ specification for maildir format please let me know. The method this patch 
-+ uses to create a unique filename for a message is one of the "old 
-+ fashioned" methods. I realize that this is old fashioned, but it is 
-+ portable, and portability is the main reason why I decided to use an old 
-+ fashioned method (most methods are not portable. See the word 
-+ "Unfortunately" in that document).
-+ 
-+ --------------
-+ 2. Other Goals
-+ --------------
-+ 
-+   It is intended that this code will work well with any application 
-+ written using the c-client library. Of paramount importance is to make the 
-+ associated imap server work well when the server accesses a folder in 
-+ Maildir format. The program mailutil should also work flawlessly with this 
-+ implemetation of the driver.
-+ 
-+   It is intended that this driver be fast and stable. We intend not to 
-+ patch Alpine to make this driver do its work, unless such patching is for 
-+ fixing bugs in Alpine or to pass parameters to the driver.
-+ 
-+ ------------------------------------------------------------------------ 
-+ 3. What are the known bugs of this implementation of the Maildir driver? 
-+ ------------------------------------------------------------------------
-+ 
-+   I don't know any at this time. There have been bugs before, though, but 
-+ I try to fix bugs as soon as they are reported. 
-+ 
-+ ----------
-+ 4. On UIDs
-+ ----------
-+ 
-+  This patch keeps uids in the name of the file that contains the message, 
-+ by adding a ",u=" string to the file name to save the uid of a message. A 
-+ file is kept between sessions to save information on the last uid assigned 
-+ and its time of validity. Only one session with writing access can write 
-+ uids, all others must wait for the other session to assign them. The 
-+ session assigning uids creates a ".uidtemp" file which other sessions must 
-+ not disturb.
-+ 
-+   Uid support appeared in Alpine 1.00 (snapshot 925), and is experimental,
-+ please report any problems.
-+ 
-+ ----------------------------------------------
-+ 5. Configuring Alpine and Setting up a Maildir 
-+ ----------------------------------------------
-+ 
-+ Once this approach was chosen, it implied the following:
-+ 
-+     * This patch assumes that your INBOX is located at "$HOME/Maildir".  
-+       This is a directory which should have three subdirectories "cur", 
-+       "tmp" and "new". Mail is delivered to 'new' and read from 'cur'. I 
-+       have added a configuration option "maildir-location" which can be 
-+       used to tell Alpine where your Maildir inbox is, in case your system 
-+       does not use the above directory (e.g. your system may use 
-+       "~/.maildir"). In this case define that variable to be the name of 
-+       the directory where your e-mail is being delivered (e.g.  
-+       ".maildir").
-+ 
-+     * If you want to use the above configuration as your inbox, you must 
-+       define your inbox-path as "#md/inbox" (no quotes).  You can define 
-+       the inbox-path like above even if you have changed the 
-+       maildir-location variable. That's the whole point of that variable.
-+ 
-+ -------------------------------------------
-+ 6. What about Courier/Dovecot file systems?
-+ -------------------------------------------
-+ 
-+ In a courier file system all folders are subfolders of a root folder 
-+ called INBOX. Normally INBOX is located at ~/Maildir and subfolders are 
-+ "dot" directories in ~/Maildir. For example ~/Maildir/.Trash is a 
-+ subfolder of INBOX and is accessed with the nickname "INBOX.Trash".
-+ 
-+ You can not access folders in this way unless you preceed them with the 
-+ string "#mc/". The purpose of the string "#mc/" is to warn Alpine that a 
-+ collection in the Courier format is going to be accessed. Therefore, you 
-+ can SELECT a folder like "#mc/INBOX.Trash", but not "INBOX.Trash"
-+ 
-+ You can access a collection through a server, but if you want to access a 
-+ collection of folders created using the Courier server, you MUST edit your
-+ ".pinerc" file and enter the definition of the collection as follows:
-+ 
-+ folder-collections="Anything you want" #mc/INBOX.[]
-+ 
-+ You can replace the string "#mc/INBOX." by something different, for example
-+ "#mc/Courier/." will make Alpine search for your collection in ~/Courier.
-+ 
-+ You can not add this setting directly into Alpine because Alpine fails to 
-+ accept this value from its input, but it takes it correctly when it is 
-+ added through the ".pinerc" file.
-+ 
-+ You can access your inbox as "#mc/INBOX" or "#md/INBOX". Both definitions 
-+ point to the same place.
-+ 
-+ Last Updated May 28, 2011
-diff -rc alpine-2.21/alpine/alpine.c alpine-2.21.maildir/alpine/alpine.c
-*** alpine-2.21/alpine/alpine.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/alpine/alpine.c	Sun Feb  5 16:15:20 2017
-***************
-*** 576,581 ****
---- 576,586 ----
+*** 591,596 ****
+--- 591,601 ----
       if(F_ON(F_MAILDROPS_PRESERVE_STATE, ps_global))
         mail_parameters(NULL, SET_SNARFPRESERVE, (void *) TRUE);
   
@@ -170,12 +15,12 @@ diff -rc alpine-2.21/alpine/alpine.c alpine-2.21.maildir/alpine/alpine.c
       rvl = 0L;
       if(pine_state->VAR_NNTPRANGE){
   	if(!SVAR_NNTPRANGE(pine_state, rvl, tmp_20k_buf, SIZEOF_20KBUF))
-diff -rc alpine-2.21/alpine/confscroll.c alpine-2.21.maildir/alpine/confscroll.c
-*** alpine-2.21/alpine/confscroll.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/alpine/confscroll.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/alpine/confscroll.c alpine-2.22.maildir/alpine/confscroll.c
+*** alpine-2.22/alpine/confscroll.c	2020-01-19 01:32:20.190475483 -0700
+--- alpine-2.22.maildir/alpine/confscroll.c	2020-01-19 01:34:47.850512441 -0700
 ***************
-*** 5545,5550 ****
---- 5545,5556 ----
+*** 5557,5562 ****
+--- 5557,5568 ----
   			  (void *)var->current_val.p);
       }
   #endif
@@ -188,11 +33,11 @@ diff -rc alpine-2.21/alpine/confscroll.c alpine-2.21.maildir/alpine/confscroll.c
       else if(revert && standard_radio_var(ps, var)){
   
   	cur_rule_value(var, TRUE, FALSE);
-diff -rc alpine-2.21/imap/src/c-client/mail.c alpine-2.21.maildir/imap/src/c-client/mail.c
-*** alpine-2.21/imap/src/c-client/mail.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/imap/src/c-client/mail.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/c-client/mail.c alpine-2.22.maildir/imap/src/c-client/mail.c
+*** alpine-2.22/imap/src/c-client/mail.c	2020-01-19 01:32:23.162416684 -0700
+--- alpine-2.22.maildir/imap/src/c-client/mail.c	2020-01-19 01:34:48.243509380 -0700
 ***************
-*** 1017,1023 ****
+*** 1046,1052 ****
     MAILSTREAM *ts;
     char *s,*t,tmp[MAILTMPLEN];
     size_t i;
@@ -200,7 +45,7 @@ diff -rc alpine-2.21/imap/src/c-client/mail.c alpine-2.21.maildir/imap/src/c-cli
   				/* never allow names with newlines */
     if ((s = strpbrk (mailbox,"\015\012")) != NULL) {
       MM_LOG ("Can't create mailbox with such a name",ERROR);
---- 1017,1023 ----
+--- 1046,1052 ----
     MAILSTREAM *ts;
     char *s,*t,tmp[MAILTMPLEN];
     size_t i;
@@ -209,8 +54,8 @@ diff -rc alpine-2.21/imap/src/c-client/mail.c alpine-2.21.maildir/imap/src/c-cli
     if ((s = strpbrk (mailbox,"\015\012")) != NULL) {
       MM_LOG ("Can't create mailbox with such a name",ERROR);
 ***************
-*** 1041,1046 ****
---- 1041,1048 ----
+*** 1070,1075 ****
+--- 1070,1077 ----
       return NIL;
     }
   
@@ -220,8 +65,8 @@ diff -rc alpine-2.21/imap/src/c-client/mail.c alpine-2.21.maildir/imap/src/c-cli
     if ((mailbox[0] == '#') && ((mailbox[1] == 'd') || (mailbox[1] == 'D')) &&
         ((mailbox[2] == 'r') || (mailbox[2] == 'R')) &&
 ***************
-*** 1071,1076 ****
---- 1073,1085 ----
+*** 1100,1105 ****
+--- 1102,1114 ----
   	   (((*mailbox == '{') || (*mailbox == '#')) &&
   	    (stream = mail_open (NIL,mailbox,OP_PROTOTYPE | OP_SILENT))))
       d = stream->dtb;
@@ -235,12 +80,12 @@ diff -rc alpine-2.21/imap/src/c-client/mail.c alpine-2.21.maildir/imap/src/c-cli
     else if ((*mailbox != '{') && (ts = default_proto (NIL))) d = ts->dtb;
     else {			/* failed utterly */
       sprintf (tmp,"Can't create mailbox %.80s: indeterminate format",mailbox);
-diff -rc alpine-2.21/imap/src/c-client/mail.h alpine-2.21.maildir/imap/src/c-client/mail.h
-*** alpine-2.21/imap/src/c-client/mail.h	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/imap/src/c-client/mail.h	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/c-client/mail.h alpine-2.22.maildir/imap/src/c-client/mail.h
+*** alpine-2.22/imap/src/c-client/mail.h	2020-01-19 01:32:23.166416605 -0700
+--- alpine-2.22.maildir/imap/src/c-client/mail.h	2020-01-19 01:34:48.244509372 -0700
 ***************
-*** 366,371 ****
---- 366,375 ----
+*** 374,379 ****
+--- 374,383 ----
   #define SET_SCANCONTENTS (long) 573
   #define GET_MHALLOWINBOX (long) 574
   #define SET_MHALLOWINBOX (long) 575
@@ -251,80 +96,9 @@ diff -rc alpine-2.21/imap/src/c-client/mail.h alpine-2.21.maildir/imap/src/c-cli
   
   /* Driver flags */
   
-diff -rc alpine-2.21/imap/src/osdep/unix/Makefile alpine-2.21.maildir/imap/src/osdep/unix/Makefile
-*** alpine-2.21/imap/src/osdep/unix/Makefile	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/imap/src/osdep/unix/Makefile	Sun Feb  5 16:15:20 2017
-***************
-*** 147,153 ****
-  # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
-  # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
-  #
-! DEFAULTDRIVERS=imap nntp pop3 mix mx mbx tenex mtx mh mmdf unix news phile
-  CHUNKSIZE=65536
-  
-  # Normally no need to change any of these
---- 147,153 ----
-  # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
-  # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
-  #
-! DEFAULTDRIVERS=maildir courier imap nntp pop3 mix mx mbx tenex mtx mh mmdf unix news phile
-  CHUNKSIZE=65536
-  
-  # Normally no need to change any of these
-***************
-*** 156,162 ****
-  BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
-   dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
-   rfc822.o nntp.o smtp.o imap4r1.o pop3.o \
-!  unix.o mbx.o mmdf.o tenex.o mtx.o news.o phile.o mh.o mx.o mix.o
-  CFLAGS=-g
-  
-  CAT=cat
---- 156,162 ----
-  BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
-   dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
-   rfc822.o nntp.o smtp.o imap4r1.o pop3.o \
-!  unix.o mbx.o mmdf.o tenex.o mtx.o news.o phile.o mh.o mx.o mix.o maildir.o
-  CFLAGS=-g
-  
-  CAT=cat
-***************
-*** 293,299 ****
-  
-  cyg:	# Cygwin - note that most local file drivers don't work!!
-  	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
-! 	DEFAULTDRIVERS="imap nntp pop3 mbx unix phile" \
-  	SIGTYPE=psx CHECKPW=cyg LOGINPW=cyg CRXTYPE=std \
-  	SPOOLDIR=/var \
-  	ACTIVEFILE=/usr/local/news/lib/active \
---- 293,299 ----
-  
-  cyg:	# Cygwin - note that most local file drivers don't work!!
-  	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
-! 	DEFAULTDRIVERS="imap nntp pop3 mbx unix maildir phile" \
-  	SIGTYPE=psx CHECKPW=cyg LOGINPW=cyg CRXTYPE=std \
-  	SPOOLDIR=/var \
-  	ACTIVEFILE=/usr/local/news/lib/active \
-***************
-*** 911,917 ****
-  unix.o: mail.h misc.h osdep.h unix.h pseudo.h dummy.h
-  utf8.o: mail.h misc.h osdep.h utf8.h tmap.c widths.c
-  utf8aux.o: mail.h misc.h osdep.h utf8.h
-! 
-  
-  # OS-dependent
-  
---- 911,917 ----
-  unix.o: mail.h misc.h osdep.h unix.h pseudo.h dummy.h
-  utf8.o: mail.h misc.h osdep.h utf8.h tmap.c widths.c
-  utf8aux.o: mail.h misc.h osdep.h utf8.h
-! maildir.o: mail.h misc.h osdep.h maildir.h dummy.h
-  
-  # OS-dependent
-  
-diff -rc alpine-2.21/imap/src/osdep/unix/dummy.c alpine-2.21.maildir/imap/src/osdep/unix/dummy.c
-*** alpine-2.21/imap/src/osdep/unix/dummy.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/imap/src/osdep/unix/dummy.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/osdep/unix/dummy.c alpine-2.22.maildir/imap/src/osdep/unix/dummy.c
+*** alpine-2.22/imap/src/osdep/unix/dummy.c	2020-01-19 01:32:22.660426553 -0700
+--- alpine-2.22.maildir/imap/src/osdep/unix/dummy.c	2020-01-19 01:34:48.245509364 -0700
 ***************
 *** 103,115 ****
    * Accepts: mailbox name
@@ -479,16 +253,16 @@ diff -rc alpine-2.21/imap/src/osdep/unix/dummy.c alpine-2.21.maildir/imap/src/os
     return T;			/* return success */
   }
   
-diff -rc alpine-2.21/imap/src/osdep/unix/maildir.c alpine-2.21.maildir/imap/src/osdep/unix/maildir.c
-*** alpine-2.21/imap/src/osdep/unix/maildir.c	Sun Feb  5 16:15:21 2017
---- alpine-2.21.maildir/imap/src/osdep/unix/maildir.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/osdep/unix/maildir.c alpine-2.22.maildir/imap/src/osdep/unix/maildir.c
+*** alpine-2.22/imap/src/osdep/unix/maildir.c	2020-01-19 01:34:48.437507873 -0700
+--- alpine-2.22.maildir/imap/src/osdep/unix/maildir.c	2020-01-19 01:34:48.249509333 -0700
 ***************
 *** 0 ****
 --- 1,2671 ----
 + /*
 +  * Maildir driver for Alpine 2.20
 +  * 
-+  * Written by Eduardo Chappa <chappa@gmx.com>
++  * Written by Eduardo Chappa <alpine.chappa@gmx.com>
 +  * Last Update: June 10, 2014
 +  *
 +  */
@@ -3156,9 +2930,9 @@ diff -rc alpine-2.21/imap/src/osdep/unix/maildir.c alpine-2.21.maildir/imap/src/
 +       LOCAL->uidtempfile = cpystr(tmp);
 +   }
 + }
-diff -rc alpine-2.21/imap/src/osdep/unix/maildir.h alpine-2.21.maildir/imap/src/osdep/unix/maildir.h
-*** alpine-2.21/imap/src/osdep/unix/maildir.h	Sun Feb  5 16:15:21 2017
---- alpine-2.21.maildir/imap/src/osdep/unix/maildir.h	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/osdep/unix/maildir.h alpine-2.22.maildir/imap/src/osdep/unix/maildir.h
+*** alpine-2.22/imap/src/osdep/unix/maildir.h	2020-01-19 01:34:48.439507857 -0700
+--- alpine-2.22.maildir/imap/src/osdep/unix/maildir.h	2020-01-19 01:34:48.250509325 -0700
 ***************
 *** 0 ****
 --- 1,226 ----
@@ -3388,9 +3162,73 @@ diff -rc alpine-2.21/imap/src/osdep/unix/maildir.h alpine-2.21.maildir/imap/src/
 + void maildir_assign_uid(MAILSTREAM *stream, unsigned long msgno, unsigned long uid);
 + void maildir_uid_renew_tempfile(MAILSTREAM *stream);
 + 
-diff -rc alpine-2.21/imap/src/osdep/unix/os_cyg.h alpine-2.21.maildir/imap/src/osdep/unix/os_cyg.h
-*** alpine-2.21/imap/src/osdep/unix/os_cyg.h	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/imap/src/osdep/unix/os_cyg.h	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/imap/src/osdep/unix/Makefile alpine-2.22.maildir/imap/src/osdep/unix/Makefile
+*** alpine-2.22/imap/src/osdep/unix/Makefile	2020-01-19 01:32:22.615427440 -0700
+--- alpine-2.22.maildir/imap/src/osdep/unix/Makefile	2020-01-19 01:34:48.250509325 -0700
+***************
+*** 147,153 ****
+  # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
+  # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
+  #
+! DEFAULTDRIVERS=imap nntp pop3 mix mx mbx tenex mtx mh mmdf unix news phile
+  CHUNKSIZE=65536
+  
+  # Normally no need to change any of these
+--- 147,153 ----
+  # However, mh needs to be before any sysinbox formats (such as mmdf or unix)
+  # since otherwise INBOX won't work correctly when mh_allow_inbox is set.
+  #
+! DEFAULTDRIVERS=maildir courier imap nntp pop3 mix mx mbx tenex mtx mh mmdf unix news phile
+  CHUNKSIZE=65536
+  
+  # Normally no need to change any of these
+***************
+*** 156,162 ****
+  BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
+   dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
+   rfc822.o nntp.o smtp.o imap4r1.o http.o json.o pop3.o \
+!  unix.o mbx.o mmdf.o tenex.o mtx.o news.o phile.o mh.o mx.o mix.o
+  CFLAGS=-g
+  
+  CAT=cat
+--- 156,162 ----
+  BINARIES=osdep.o mail.o misc.o newsrc.o smanager.o utf8.o utf8aux.o siglocal.o \
+   dummy.o pseudo.o netmsg.o flstring.o fdstring.o \
+   rfc822.o nntp.o smtp.o imap4r1.o http.o json.o pop3.o \
+!  unix.o mbx.o mmdf.o tenex.o mtx.o news.o phile.o mh.o mx.o mix.o maildir.o
+  CFLAGS=-g
+  
+  CAT=cat
+***************
+*** 293,299 ****
+  
+  cyg:	# Cygwin - note that most local file drivers don't work!!
+  	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
+! 	DEFAULTDRIVERS="imap nntp pop3 mbx unix phile" \
+  	SIGTYPE=psx CHECKPW=cyg LOGINPW=cyg CRXTYPE=std \
+  	SPOOLDIR=/var \
+  	ACTIVEFILE=/usr/local/news/lib/active \
+--- 293,299 ----
+  
+  cyg:	# Cygwin - note that most local file drivers don't work!!
+  	$(BUILD) `$(CAT) SPECIALS` OS=$@ \
+! 	DEFAULTDRIVERS="imap nntp pop3 mbx unix maildir phile" \
+  	SIGTYPE=psx CHECKPW=cyg LOGINPW=cyg CRXTYPE=std \
+  	SPOOLDIR=/var \
+  	ACTIVEFILE=/usr/local/news/lib/active \
+***************
+*** 922,927 ****
+--- 922,928 ----
+  utf8aux.o: mail.h misc.h osdep.h utf8.h
+  json.o: mail.h misc.h osdep.h utf8.h json.h
+  http.o: mail.h misc.h osdep.h utf8.h http.h json.h
++ maildir.o: mail.h misc.h osdep.h maildir.h dummy.h
+  
+  # OS-dependent
+  
+diff -rc alpine-2.22/imap/src/osdep/unix/os_cyg.h alpine-2.22.maildir/imap/src/osdep/unix/os_cyg.h
+*** alpine-2.22/imap/src/osdep/unix/os_cyg.h	2020-01-19 01:32:22.664426475 -0700
+--- alpine-2.22.maildir/imap/src/osdep/unix/os_cyg.h	2020-01-19 01:34:48.251509318 -0700
 ***************
 *** 47,52 ****
 --- 47,53 ----
@@ -3401,12 +3239,12 @@ diff -rc alpine-2.21/imap/src/osdep/unix/os_cyg.h alpine-2.21.maildir/imap/src/o
   #define geteuid Geteuid
   uid_t Geteuid (void);
   
-diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
-*** alpine-2.21/pith/conf.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/conf.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/pith/conf.c alpine-2.22.maildir/pith/conf.c
+*** alpine-2.22/pith/conf.c	2020-01-19 01:32:18.678505766 -0700
+--- alpine-2.22.maildir/pith/conf.c	2020-01-19 01:34:48.253509302 -0700
 ***************
-*** 438,443 ****
---- 438,446 ----
+*** 443,448 ****
+--- 443,451 ----
   
   CONF_TXT_T cf_text_newsrc_path[] =		"Full path and name of NEWSRC file";
   
@@ -3417,8 +3255,8 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
   /*----------------------------------------------------------------------
   These are the variables that control a number of pine functions.  They
 ***************
-*** 644,649 ****
---- 647,656 ----
+*** 649,654 ****
+--- 652,661 ----
   	NULL,			cf_text_news_active},
   {"news-spool-directory",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
   	NULL,			cf_text_news_spooldir},
@@ -3430,8 +3268,8 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
   	NULL,			cf_text_upload_cmd},
   {"upload-command-prefix",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
 ***************
-*** 2301,2306 ****
---- 2308,2319 ----
+*** 2322,2327 ****
+--- 2329,2340 ----
         mail_parameters(NULL, SET_NEWSSPOOL,
   		      (void *)VAR_NEWS_SPOOL_DIR);
   
@@ -3445,8 +3283,8 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
       set_current_val(&vars[V_DEFAULT_SAVE_FOLDER], TRUE, TRUE);
       if(!VAR_DEFAULT_SAVE_FOLDER || !VAR_DEFAULT_SAVE_FOLDER[0])
 ***************
-*** 2930,2935 ****
---- 2943,2952 ----
+*** 2954,2959 ****
+--- 2967,2976 ----
   	 F_SORT_DEFAULT_SAVE_ALPHA, h_config_sort_save_alpha, PREF_FLDR, 0},
   	{"vertical-folder-list", "Use Vertical Folder List",
   	 F_VERTICAL_FOLDER_LIST, h_config_vertical_list, PREF_FLDR, 0},
@@ -3458,7 +3296,7 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
   /* Addr book */
   	{"combined-addrbook-display", "Combined Address Book Display",
 ***************
-*** 7036,7042 ****
+*** 7068,7074 ****
   	       int just_flip_value, EditWhich ew)
   {
       char      **vp, *p, **lval, ***alval;
@@ -3466,7 +3304,7 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
       char       *err;
       long	l;
   
---- 7053,7059 ----
+--- 7085,7091 ----
   	       int just_flip_value, EditWhich ew)
   {
       char      **vp, *p, **lval, ***alval;
@@ -3475,8 +3313,8 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
       long	l;
   
 ***************
-*** 7089,7094 ****
---- 7106,7118 ----
+*** 7121,7126 ****
+--- 7138,7150 ----
   
   	break;
   
@@ -3491,8 +3329,8 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
         case F_DATES_TO_LOCAL :
   	clear_index_cache(ps->mail_stream, 0);
 ***************
-*** 7877,7882 ****
---- 7901,7910 ----
+*** 7911,7916 ****
+--- 7935,7944 ----
   	return(h_config_newmailwidth);
         case V_NEWSRC_PATH :
   	return(h_config_newsrc_path);
@@ -3503,9 +3341,9 @@ diff -rc alpine-2.21/pith/conf.c alpine-2.21.maildir/pith/conf.c
         case V_BROWSER :
   	return(h_config_browser);
         case V_HISTORY :
-diff -rc alpine-2.21/pith/conf.h alpine-2.21.maildir/pith/conf.h
-*** alpine-2.21/pith/conf.h	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/conf.h	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/pith/conf.h alpine-2.22.maildir/pith/conf.h
+*** alpine-2.22/pith/conf.h	2020-01-19 01:32:19.489489496 -0700
+--- alpine-2.22.maildir/pith/conf.h	2020-01-19 01:34:48.277509116 -0700
 ***************
 *** 256,261 ****
 --- 256,265 ----
@@ -3519,9 +3357,9 @@ diff -rc alpine-2.21/pith/conf.h alpine-2.21.maildir/pith/conf.h
   #define VAR_DISABLE_DRIVERS	     vars[V_DISABLE_DRIVERS].current_val.l
   #define VAR_DISABLE_AUTHS	     vars[V_DISABLE_AUTHS].current_val.l
   #define VAR_REMOTE_ABOOK_METADATA    vars[V_REMOTE_ABOOK_METADATA].current_val.p
-diff -rc alpine-2.21/pith/conftype.h alpine-2.21.maildir/pith/conftype.h
-*** alpine-2.21/pith/conftype.h	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/conftype.h	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/pith/conftype.h alpine-2.22.maildir/pith/conftype.h
+*** alpine-2.22/pith/conftype.h	2020-01-19 01:32:18.702505283 -0700
+--- alpine-2.22.maildir/pith/conftype.h	2020-01-19 01:34:48.278509108 -0700
 ***************
 *** 119,124 ****
 --- 119,127 ----
@@ -3535,8 +3373,8 @@ diff -rc alpine-2.21/pith/conftype.h alpine-2.21.maildir/pith/conftype.h
   		, V_UPLOAD_CMD_PREFIX
   		, V_DOWNLOAD_CMD
 ***************
-*** 395,400 ****
---- 398,406 ----
+*** 400,405 ****
+--- 403,411 ----
   	F_PASS_C1_CONTROL_CHARS,
   	F_SINGLE_FOLDER_LIST,
   	F_VERTICAL_FOLDER_LIST,
@@ -3546,9 +3384,9 @@ diff -rc alpine-2.21/pith/conftype.h alpine-2.21.maildir/pith/conftype.h
   	F_TAB_CHK_RECENT,
   	F_AUTO_REPLY_TO,
   	F_VERBOSE_POST,
-diff -rc alpine-2.21/pith/init.c alpine-2.21.maildir/pith/init.c
-*** alpine-2.21/pith/init.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/init.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/pith/init.c alpine-2.22.maildir/pith/init.c
+*** alpine-2.22/pith/init.c	2020-01-19 01:32:18.764504035 -0700
+--- alpine-2.22.maildir/pith/init.c	2020-01-19 01:34:48.278509108 -0700
 ***************
 *** 408,413 ****
 --- 408,416 ----
@@ -3561,9 +3399,9 @@ diff -rc alpine-2.21/pith/init.c alpine-2.21.maildir/pith/init.c
              && strcmp(filename, folder_base)){
   #endif
   #endif
-diff -rc alpine-2.21/pith/pattern.c alpine-2.21.maildir/pith/pattern.c
-*** alpine-2.21/pith/pattern.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/pattern.c	Sun Feb  5 16:15:20 2017
+diff -rc alpine-2.22/pith/pattern.c alpine-2.22.maildir/pith/pattern.c
+*** alpine-2.22/pith/pattern.c	2020-01-19 01:32:19.260494080 -0700
+--- alpine-2.22.maildir/pith/pattern.c	2020-01-19 01:34:48.281509085 -0700
 ***************
 *** 49,55 ****
   #include "../pith/icache.h"
@@ -3651,12 +3489,12 @@ diff -rc alpine-2.21/pith/pattern.c alpine-2.21.maildir/pith/pattern.c
       return(buf[0] != '\0');
   }
   
-diff -rc alpine-2.21/pith/pine.hlp alpine-2.21.maildir/pith/pine.hlp
-*** alpine-2.21/pith/pine.hlp	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/pine.hlp	Sun Feb  5 16:15:21 2017
+diff -rc alpine-2.22/pith/pine.hlp alpine-2.22.maildir/pith/pine.hlp
+*** alpine-2.22/pith/pine.hlp	2020-01-19 01:32:19.035498584 -0700
+--- alpine-2.22.maildir/pith/pine.hlp	2020-01-19 01:34:48.306508890 -0700
 ***************
-*** 22364,22369 ****
---- 22364,22465 ----
+*** 22897,22902 ****
+--- 22897,22998 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -3760,8 +3598,8 @@ diff -rc alpine-2.21/pith/pine.hlp alpine-2.21.maildir/pith/pine.hlp
   <HTML>
   <HEAD>
 ***************
-*** 30446,30451 ****
---- 30542,30590 ----
+*** 31036,31041 ****
+--- 31132,31180 ----
   <P>
   &lt;End of help on this topic&gt;
   </BODY>
@@ -3811,9 +3649,9 @@ diff -rc alpine-2.21/pith/pine.hlp alpine-2.21.maildir/pith/pine.hlp
   </HTML>
   ====== h_config_verbose_post =====
   <HTML>
-diff -rc alpine-2.21/pith/send.c alpine-2.21.maildir/pith/send.c
-*** alpine-2.21/pith/send.c	Sun Feb  5 16:02:36 2017
---- alpine-2.21.maildir/pith/send.c	Sun Feb  5 16:15:21 2017
+diff -rc alpine-2.22/pith/send.c alpine-2.22.maildir/pith/send.c
+*** alpine-2.22/pith/send.c	2020-01-19 01:32:18.956500171 -0700
+--- alpine-2.22.maildir/pith/send.c	2020-01-19 01:34:48.420508005 -0700
 ***************
 *** 47,52 ****
 --- 47,55 ----
@@ -3827,8 +3665,8 @@ diff -rc alpine-2.21/pith/send.c alpine-2.21.maildir/pith/send.c
   
   /* this is used in pine_send and pine_simple_send */
 ***************
-*** 257,262 ****
---- 260,272 ----
+*** 250,255 ****
+--- 253,265 ----
   
       if(exists & FEX_ISFILE){
   	context_apply(tmp, p_cntxt, mbox, sizeof(tmp));
@@ -3842,3 +3680,158 @@ diff -rc alpine-2.21/pith/send.c alpine-2.21.maildir/pith/send.c
   	if(!(IS_REMOTE(tmp) || is_absolute_path(tmp))){
   	    /*
   	     * The mbox is relative to the home directory.
+diff -rc alpine-2.22/README.maildir alpine-2.22.maildir/README.maildir
+*** alpine-2.22/README.maildir	2020-01-19 01:34:48.441507842 -0700
+--- alpine-2.22.maildir/README.maildir	2020-01-19 01:34:48.421507997 -0700
+***************
+*** 0 ****
+--- 1,149 ----
++ ---------------------------------------
++ 
++ Maildir Driver for Alpine 2.0
++ By Eduardo Chappa 
++ <alpine.chappa@gmx.com>
++ 
++ ---------------------------------------
++ 1. General Information About This Patch
++ ---------------------------------------
++ 
++ This patch adds support for the maildir format to Alpine. We take the 
++ approach that this patch is one more driver among the number of formats 
++ supported by Alpine (more generally c-client). This approach differs from 
++ older versions of similar patches, in that once a maildir patch was 
++ applied, it was assumed that all your folders would be created in the 
++ maildir format. 
++ 
++ This patch does not assume that maildir is a preferred format, instead 
++ puts maildir in equal footing with other formats (mbox, mbx, mix, etc), 
++ and so a maildir folder in the mail/ collection is treated in the same way 
++ as any other folder in any other format. In other words, just by reading 
++ the name of a folder, or opening it, or doing any operation with it, you 
++ can not know in which format the folder is.
++ 
++ This implies that if you want to add a folder in the maildir format to the 
++ mail/ collection, then you must add by pressing "A" in the folder list 
++ collection and enter "#driver.md/mail/name_maildir_folder".
++ 
++ If you only want to use maildir, however, you can do so too. In this case, 
++ you must create a maildir collection. In that collection, only maildir 
++ folders will be listed. If there is any folder in any other format, that 
++ folder will be ignored. In another words, any folder listed there is in 
++ maildir format and can be accessed through that collection, conversely, 
++ any folder not listed there is not in maildir format and there is no way 
++ to access it using this collection.
++ 
++ In order to create a maildir collection, you could press M S L, and "A" to 
++ add a collection. Fill in the required fields as follows:
++ 
++ Nickname  : Anything
++ Server    :
++ Path      : #md/relative/path/to/maildir/collection/
++ View      :
++ 
++ For example, if "path" is set to "#md/mail/", then Alpine will look for your 
++ maildir folders that are in ~/mail/.
++ 
++ The code in this patch is mostly based in code for the unix driver plus 
++ some combinations of the mh, mbx and nntp drivers for the c-client 
++ library. Those drivers were designed by Mark Crispin, and bugs in this 
++ code are not his bugs, but my own.
++ 
++   I got all the specification for this patch from 
++ http://cr.yp.to/proto/maildir.html. If you know of a place with a better 
++ specification for maildir format please let me know. The method this patch 
++ uses to create a unique filename for a message is one of the "old 
++ fashioned" methods. I realize that this is old fashioned, but it is 
++ portable, and portability is the main reason why I decided to use an old 
++ fashioned method (most methods are not portable. See the word 
++ "Unfortunately" in that document).
++ 
++ --------------
++ 2. Other Goals
++ --------------
++ 
++   It is intended that this code will work well with any application 
++ written using the c-client library. Of paramount importance is to make the 
++ associated imap server work well when the server accesses a folder in 
++ Maildir format. The program mailutil should also work flawlessly with this 
++ implemetation of the driver.
++ 
++   It is intended that this driver be fast and stable. We intend not to 
++ patch Alpine to make this driver do its work, unless such patching is for 
++ fixing bugs in Alpine or to pass parameters to the driver.
++ 
++ ------------------------------------------------------------------------ 
++ 3. What are the known bugs of this implementation of the Maildir driver? 
++ ------------------------------------------------------------------------
++ 
++   I don't know any at this time. There have been bugs before, though, but 
++ I try to fix bugs as soon as they are reported. 
++ 
++ ----------
++ 4. On UIDs
++ ----------
++ 
++  This patch keeps uids in the name of the file that contains the message, 
++ by adding a ",u=" string to the file name to save the uid of a message. A 
++ file is kept between sessions to save information on the last uid assigned 
++ and its time of validity. Only one session with writing access can write 
++ uids, all others must wait for the other session to assign them. The 
++ session assigning uids creates a ".uidtemp" file which other sessions must 
++ not disturb.
++ 
++   Uid support appeared in Alpine 1.00 (snapshot 925), and is experimental,
++ please report any problems.
++ 
++ ----------------------------------------------
++ 5. Configuring Alpine and Setting up a Maildir 
++ ----------------------------------------------
++ 
++ Once this approach was chosen, it implied the following:
++ 
++     * This patch assumes that your INBOX is located at "$HOME/Maildir".  
++       This is a directory which should have three subdirectories "cur", 
++       "tmp" and "new". Mail is delivered to 'new' and read from 'cur'. I 
++       have added a configuration option "maildir-location" which can be 
++       used to tell Alpine where your Maildir inbox is, in case your system 
++       does not use the above directory (e.g. your system may use 
++       "~/.maildir"). In this case define that variable to be the name of 
++       the directory where your e-mail is being delivered (e.g.  
++       ".maildir").
++ 
++     * If you want to use the above configuration as your inbox, you must 
++       define your inbox-path as "#md/inbox" (no quotes).  You can define 
++       the inbox-path like above even if you have changed the 
++       maildir-location variable. That's the whole point of that variable.
++ 
++ -------------------------------------------
++ 6. What about Courier/Dovecot file systems?
++ -------------------------------------------
++ 
++ In a courier file system all folders are subfolders of a root folder 
++ called INBOX. Normally INBOX is located at ~/Maildir and subfolders are 
++ "dot" directories in ~/Maildir. For example ~/Maildir/.Trash is a 
++ subfolder of INBOX and is accessed with the nickname "INBOX.Trash".
++ 
++ You can not access folders in this way unless you preceed them with the 
++ string "#mc/". The purpose of the string "#mc/" is to warn Alpine that a 
++ collection in the Courier format is going to be accessed. Therefore, you 
++ can SELECT a folder like "#mc/INBOX.Trash", but not "INBOX.Trash"
++ 
++ You can access a collection through a server, but if you want to access a 
++ collection of folders created using the Courier server, you MUST edit your
++ ".pinerc" file and enter the definition of the collection as follows:
++ 
++ folder-collections="Anything you want" #mc/INBOX.[]
++ 
++ You can replace the string "#mc/INBOX." by something different, for example
++ "#mc/Courier/." will make Alpine search for your collection in ~/Courier.
++ 
++ You can not add this setting directly into Alpine because Alpine fails to 
++ accept this value from its input, but it takes it correctly when it is 
++ added through the ".pinerc" file.
++ 
++ You can access your inbox as "#mc/INBOX" or "#md/INBOX". Both definitions 
++ point to the same place.
++ 
++ Last Updated May 28, 2011

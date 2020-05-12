@@ -1,0 +1,7 @@
+From: http://alpine.x10host.com/alpine/info/insertpat.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows you to insert the pattern that you searched last to be
+edited. Say for example you wanted to look for "foo_bar", but wrote mistakenly
+"foo-bar" instead, then pressing ^W to search and then ^N you will make appear
+in your input "foo-bar" from where you can now easily switch "-" to "_".

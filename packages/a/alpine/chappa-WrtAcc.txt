@@ -1,0 +1,9 @@
+From: http://alpine.x10host.com/alpine/info/WrtAcc.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows you to write many kind of accents in Alpine and pico. You can
+write characters like á. Each character is introduced using a consistent
+combination of keystrokes. The first keystroke is always "^\". Then you write
+the kind of accent you want to write and finally the letter over which you want
+the accent to be written, so á would be written ^\'a. Other special characters
+such as ß, ø and £ can be input too using special combinations described below.

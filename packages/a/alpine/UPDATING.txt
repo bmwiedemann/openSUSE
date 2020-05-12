@@ -1,0 +1,12 @@
+Update procedure:
+
+Some features of Alpine do not exist in the release tarball but are only
+provided as patches (but by the same author..). So when there is a new
+release, the OOT patches on the website get updated too.
+
+	for i in WrtAcc colortext fancy fillpara fromheader insertpat maildir rules; do
+	wget -O- http://alpine.x10host.com/alpine/patches/alpine-2.22/$i.patch.gz | gzip -cd >chappa-$i.patch;
+	done
+
+These do not necessarily apply cleanly, so they also need to be
+quilt-refreshed as needed.

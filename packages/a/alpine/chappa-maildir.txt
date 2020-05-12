@@ -1,0 +1,11 @@
+From: http://alpine.x10host.com/alpine/info/maildir.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+I have added support for the Courier/Cyrus/Dovecot file system, read the configuration instructions.
+
+This patch assumes that your INBOX is located at "$HOME/Maildir". This is a
+directory which should have three subdirectories "cur", "tmp" and "new". If you
+read maildir from another directory in your $HOME directory (e.g. .maildir),
+then set the variable maildir-location to reflect this fact (e.g.
+maildir-location=.maildir). This is the best way to change the path of the
+inbox. Set Inbox Path = #md/INBOX.

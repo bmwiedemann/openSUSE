@@ -1,26 +1,50 @@
---- alpine-0.999/pico/osdep/shell.c	2007/08/02 12:09:33	1.1
-+++ alpine-0.999/pico/osdep/shell.c	2007/08/02 12:10:03
-@@ -90,7 +90,6 @@ bktoshell(void)		/* suspend MicroEMACS a
+---
+ imap/src/c-client/mail.h     |    8 ++++++++
+ imap/src/osdep/unix/os_slx.h |    8 ++++++++
+ include/system.h             |    8 ++++++++
+ pico/osdep/shell.c           |    3 +--
+ 4 files changed, 25 insertions(+), 2 deletions(-)
+
+Index: alpine-2.22/imap/src/c-client/mail.h
+===================================================================
+--- alpine-2.22.orig/imap/src/c-client/mail.h
++++ alpine-2.22/imap/src/c-client/mail.h
+@@ -1914,6 +1914,14 @@ long INWAIT (long seconds);
+ int PSOUT (char *s);
+ int PSOUTR (SIZEDTEXT *s);
+ int PFLUSH (void);
++/*
++ * Shuts up spurious
++ * "warning: suggest parentheses around assignment used as truth value"
++ * which occurs in gcc4.2.1 and older when an assigment is used in a
++ * if, which works just fine and is not interpreted as always true:
++ */
++#define if(x) if((x))
++#define while(x) while((x))
  
-     if(gmode&MDSPWN){
- 	char *shell;
--	int   dummy;
+ /* XOAUTH Client-Side Support */
  
- 	vttidy();
- 	movecursor(0, 0);
-@@ -98,7 +97,7 @@ bktoshell(void)		/* suspend MicroEMACS a
- 	printf("\n\n\nUse \"exit\" to return to Pi%s\n",
- 	       (gmode & MDBRONLY) ? "lot" : "co");
- 	system((shell = (char *)getenv("SHELL")) ? shell : "/bin/csh");
--	rtfrmshell(dummy);	/* fixup tty */
-+	rtfrmshell(0);	/* fixup tty */
-     }
-     else {
- 	movecursor(term.t_nrow-1, 0);
-// Those may be obsolete now:
---- alpine-0.999/include/system.h	2007/08/03 13:16:15	1.1
-+++ alpine-0.999/include/system.h	2007/08/03 13:19:03
-@@ -381,4 +381,12 @@
+Index: alpine-2.22/imap/src/osdep/unix/os_slx.h
+===================================================================
+--- alpine-2.22.orig/imap/src/osdep/unix/os_slx.h
++++ alpine-2.22/imap/src/osdep/unix/os_slx.h
+@@ -69,3 +69,11 @@ int portable_utime (char *file,time_t ti
+ #include "ftl.h"
+ #include "nl.h"
+ #include "tcp.h"
++/*
++ * Shuts up spurious
++ * "warning: suggest parentheses around assignment used as truth value"
++ * which occurs ing gcc4.2.1 and older when an assigment is used in a
++ * if, which works just fine and is not iterpreted as always true:
++ */
++#define if(x) if((x))
++#define while(x) while((x))
+Index: alpine-2.22/include/system.h
+===================================================================
+--- alpine-2.22.orig/include/system.h
++++ alpine-2.22/include/system.h
+@@ -389,4 +389,12 @@ typedef int gid_t;
  # define LOCAL_PASSWD_CACHE
  #endif
  
@@ -33,31 +57,24 @@
 +#define if(x) if((x))
 +#define while(x) while((x))
  #endif /* _SYSTEM_INCLUDED */
---- alpine-0.999/imap/src/c-client/mail.h	2007/08/03 13:42:06	1.1
-+++ alpine-0.999/imap/src/c-client/mail.h	2007/08/03 13:42:57
-@@ -1829,3 +1829,11 @@
- int PSOUT (char *s);
- int PSOUTR (SIZEDTEXT *s);
- int PFLUSH (void);
-+/*
-+ * Shuts up spurious
-+ * "warning: suggest parentheses around assignment used as truth value"
-+ * which occurs ing gcc4.2.1 and older when an assigment is used in a
-+ * if, which works just fine and is not iterpreted as always true:
-+ */
-+#define if(x) if((x))
-+#define while(x) while((x))
---- alpine-0.999/imap/src/osdep/unix/os_slx.h	2007/08/03 13:54:41	1.1
-+++ alpine-0.999/imap/src/osdep/unix/os_slx.h	2007/08/03 13:55:38
-@@ -65,3 +65,11 @@
- #include "ftl.h"
- #include "nl.h"
- #include "tcp.h"
-+/*
-+ * Shuts up spurious
-+ * "warning: suggest parentheses around assignment used as truth value"
-+ * which occurs ing gcc4.2.1 and older when an assigment is used in a
-+ * if, which works just fine and is not iterpreted as always true:
-+ */
-+#define if(x) if((x))
-+#define while(x) while((x))
+Index: alpine-2.22/pico/osdep/shell.c
+===================================================================
+--- alpine-2.22.orig/pico/osdep/shell.c
++++ alpine-2.22/pico/osdep/shell.c
+@@ -98,7 +98,6 @@ bktoshell(int f, int n)
+ 
+     if(gmode&MDSPWN){
+ 	char *shell;
+-	int   dummy;
+ 
+ 	vttidy();
+ 	movecursor(0, 0);
+@@ -106,7 +105,7 @@ bktoshell(int f, int n)
+ 	printf("\n\n\nUse \"exit\" to return to Pi%s\n",
+ 	       (gmode & MDBRONLY) ? "lot" : "co");
+ 	system((shell = (char *)getenv("SHELL")) ? shell : "/bin/csh");
+-	rtfrmshell(dummy);	/* fixup tty */
++	rtfrmshell(0);	/* fixup tty */
+     }
+     else {
+ 	movecursor(term.t_nrow-1, 0);

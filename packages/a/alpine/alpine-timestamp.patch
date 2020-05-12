@@ -1,27 +1,16 @@
-Index: alpine-2.20/alpine/Makefile.am
+---
+ alpine/Makefile.am |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: alpine-2.22/alpine/Makefile.am
 ===================================================================
---- alpine-2.20.orig/alpine/Makefile.am
-+++ alpine-2.20/alpine/Makefile.am
-@@ -48,5 +48,5 @@ AM_LDFLAGS = `cat @top_srcdir@/c-client/
+--- alpine-2.22.orig/alpine/Makefile.am
++++ alpine-2.22/alpine/Makefile.am
+@@ -50,5 +50,5 @@ AM_LDFLAGS = `cat @top_srcdir@/c-client/
  CLEANFILES = date.c
  
  date.c:
--	echo "char datestamp[]="\"`date`\"";" > date.c
--	echo "char hoststamp[]="\"`hostname`\"";" >> date.c
-+	echo 'char datestamp[]="today";' >  date.c
-+	echo 'char hoststamp[]="sand";' >> date.c
-Index: alpine-2.20/alpine/Makefile.in
-===================================================================
---- alpine-2.20.orig/alpine/Makefile.in
-+++ alpine-2.20/alpine/Makefile.in
-@@ -888,8 +888,8 @@ uninstall-am: uninstall-binPROGRAMS
- 
- 
- date.c:
--	echo "char datestamp[]="\"`date`\"";" > date.c
--	echo "char hoststamp[]="\"`hostname`\"";" >> date.c
-+	echo 'char datestamp[]="today";' >  date.c
-+	echo 'char hoststamp[]="sand";' >> date.c
- 
- # Tell versions [3.59,3.63) of GNU make to not export all variables.
- # Otherwise a system limit (for SysV at least) may be exceeded.
+-	echo "char datestamp[]="\"$(ALPINE_DATESTAMP)\"";" > date.c
+-	echo "char hoststamp[]="\"$(ALPINE_HOSTSTAMP)\"";" >> date.c
++	echo "char datestamp[]="\"today\"";" > date.c
++	echo "char hoststamp[]="\"sand\"";" >> date.c

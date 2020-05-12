@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May  7 20:32:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.22
+  * Support for XOAUTH2 authentication method in Gmail. 
+  * NTLM authentication support with the ntlm library.
+  * Added the "/tls1_3" flag for servers that support it.
+  * Add the "g" option to the select command that works in IMAP
+    servers that implement the X-GM-EXT-1 capability (such as the
+    one offered by Gmail).
+  * Added "/auth=XYZ" to the way to define a server. This allows
+    users to select the method to authenticate to an IMAP, SMTP
+    or POP3 server. Examples are /auth=plain, or /auth=gssapi,
+    etc.
+  * When a message is of type multipart/mixed, and its first part
+    is multipart/signed, Alpine will include the text of the
+    original message in a reply message, instead of including a
+    multipart attachment.
+  * Added backward search in the index screen.
+  * pico: Add -dict option to Pico, which allows users to choose a
+    dictionary when spelling.
+- Drop /usr/bin/mailutil, it is not built by default anymore.
+- Remove alpine-pinepw.patch (merged upstream)
+- Add description files for patches 600-616. These live in a
+  separate file because (a) upstream does not offer the description
+  as part of the patch file, (b) redownloading the patches would
+  nuke any added description due to <a>.
+
+-------------------------------------------------------------------
 Mon Aug 26 08:33:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add return-values.diff to unbreak build.

@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           alpine
 Summary:        Mail User Agent
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Clients
-Version:        2.21
+Version:        2.22
 Release:        0
 URL:            http://alpine.x10host.com/alpine/
 
@@ -31,12 +31,12 @@ URL:            http://alpine.x10host.com/alpine/
 Source:         %name-%version.tar.xz
 Source1:        %name.png
 Source2:        %name.desktop
+Source9:        UPDATING.txt
 Patch2:         make-use-of-strncat-safer.diff
 Patch3:         operation-may-be-undefined-warning.diff
 Patch4:         fix-implicit.patch
 Patch5:         alpine-gcc44.diff
 Patch6:         alpine-timestamp.patch
-Patch7:         alpine-pinepw.patch
 Patch10:        pico-fix-spurious-undef-warnings.diff
 Patch20:        pine-expression-warnings.diff
 Patch60:        signal-and-panic-improvements.diff
@@ -45,13 +45,21 @@ Patch61:        return-values.diff
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
 #
+Source600:      chappa-colortext.txt
 Patch600:       chappa-colortext.patch
+Source601:      chappa-fancy.txt
 Patch601:       chappa-fancy.patch
+Source603:      chappa-insertpat.txt
 Patch603:       chappa-insertpat.patch
+Source604:      chappa-maildir.txt
 Patch604:       chappa-maildir.patch
+Source605:      chappa-WrtAcc.txt
 Patch605:       chappa-WrtAcc.patch
+Source614:      chappa-fillpara.txt
 Patch614:       chappa-fillpara.patch
+Source615:      chappa-fromheader.txt
 Patch615:       chappa-fromheader.patch
+Source616:      chappa-rules.txt
 Patch616:       chappa-rules.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  krb5-devel
@@ -132,7 +140,6 @@ fi
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 %patch10 -p1
 %patch20 -p1
 %patch60 -p1
@@ -196,13 +203,11 @@ perl -i -pe 's{(define SYSTYPE) "LNX"}{$1 "'"$tag"'"}g' include/config.h
 make %{?_smp_mflags} EXTRACFLAGS="$CFLAGS" EXTRALDFLAGS="$EXTRALDFLAGS"
 
 %install
-make install DESTDIR=%buildroot
+%make_install
 #
 # When called as alpinef, alpine uses function keys instead of Control keys:
 #
 ln %{buildroot}/%{_bindir}/alpine %{buildroot}/%{_bindir}/alpinef
-install    -m755 imap/mailutil/mailutil %{buildroot}/%{_bindir}
-install -m644 imap/src/mailutil/mailutil.1	%{buildroot}/%{_mandir}/man1/
 install -D -m644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%name.png
 install -D -m644 %{SOURCE2} %{buildroot}/%{_datadir}/applications/%name.desktop
 %suse_update_desktop_file %name
@@ -213,8 +218,8 @@ install -m755 pico/{pico,pilot}		%{buildroot}/%{_bindir}
 install -m644 doc/man1/{pico.1,pilot.1}	%{buildroot}/%{_mandir}/man1/
 
 %check
-#since where are no logs in the package at the moment, there are no checks,
-#but the warning logs can be recreated for regresstion tracking in warnings:
+#since there are no logs in the package at the moment, there are no checks,
+#but the warning logs can be recreated for regression tracking in warnings:
 if [  -s %{_sourcedir}/compile-warnings-%{suse_version}-%{_arch}.log ]; then
     grep -e '^[a-z0-9_]*.[cho]:' -e 'Entering directory' make.log |
 	sed "s/^make\[.\]: //;/Entering directory/s/[\`']//g;" \
@@ -269,13 +274,11 @@ fi
 %doc %{_mandir}/man1/alpine.*
 %doc %{_mandir}/man1/rpdump.*
 %doc %{_mandir}/man1/rpload.*
-%doc %{_mandir}/man1/mailutil.*
 %doc README NOTICE LICENSE
 %doc doc/mailcap.unx doc/mime.types doc/tech-notes/tech-notes.txt doc/tech-notes/*.html
 %{_bindir}/*pine
 %{_bindir}/alpinef
 %{_bindir}/rp*
-%{_bindir}/mailutil
 %{_datadir}/applications/%name.desktop
 %{_datadir}/pixmaps/%name.png
 
