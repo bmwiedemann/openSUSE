@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 13 02:47:25 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.15.3
+
+- Better calculations for progressbars.
+- Aligned a menu-item's text with others' if its icon isn't null but its pixmap is.
+- Added a workaround for a small issue in the toolbar timer of Audacious 4.0.
+- Removed old stuff from installation.
+
+-------------------------------------------------------------------
+Sun Apr  5 04:32:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.15.2
+
+- When compensating for menu shadows, consider the cursor position as the last resort.
+- Consider RTL in QCommandLinkButton (although Qt doesn't). 
+
+-------------------------------------------------------------------
 Wed Mar 18 01:29:09 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.15.1
