@@ -648,4 +648,12 @@
     <comment>Push forgotten glib2 update</comment>
     <requestid>795600</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>42da9e6d76c010a652426e1563649b83</srcmd5>
+    <version>1.12.10</version>
+    <time>1589403321</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 802397 from iznogood)</comment>
+    <requestid>802679</requestid>
+  </revision>
 </revisionlist>
