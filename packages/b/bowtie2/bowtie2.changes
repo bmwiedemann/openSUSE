@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 12 16:02:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build with:
+  * simde sources
+  * export POPCNT_CAPABILITY=0
+
+-------------------------------------------------------------------
+Sat Nov 30 02:16:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use %%license to install LICENSE file.
+
+-------------------------------------------------------------------
 Thu Nov  7 20:11:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.3.5.1:

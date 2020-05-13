@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%ifarch aarch64
+%define _lto_cflags %{nil}
+%endif
 Name:           bowtie2
 Version:        2.3.5.1
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Scientific/Other
-Url:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        simde-0.0~git20190101.422ed9c.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  tbb-devel
 BuildRequires:  zlib-devel
@@ -40,8 +44,16 @@ supports gapped, local, and paired-end alignment modes.
 
 %prep
 %setup -q
+%setup -q -b 1
+pushd third_party
+rmdir simde
+ln -s ../../simde-*/ simde
+popd
 
 %build
+%ifarch aarch64
+export POPCNT_CAPABILITY=0
+%endif
 make %{?_smp_mflags} RELEASE_FLAGS="%{optflags}"
 
 %install
@@ -49,11 +61,12 @@ make %{?_smp_mflags} RELEASE_FLAGS="%{optflags}"
 
 # CONVERT env HASHBANGS TO USE DIRECT EXECUTABLE
 perlbin=`which perl`
-sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}%{_bindir}/bowtie2
-sed -i "s:/usr/bin/env python:/usr/bin/python:" %{buildroot}%{_bindir}/bowtie2-{build,inspect}
+sed -i "s:%{_bindir}/env perl:${perlbin}:" %{buildroot}%{_bindir}/bowtie2
+sed -i "s:%{_bindir}/env python:%{_bindir}/python:" %{buildroot}%{_bindir}/bowtie2-{build,inspect}
 
 %files
-%doc AUTHORS LICENSE MANUAL NEWS TUTORIAL VERSION
+%doc AUTHORS MANUAL NEWS TUTORIAL VERSION
+%license LICENSE
 %{_bindir}/bowtie2
 %{_bindir}/bowtie2-align-l
 %{_bindir}/bowtie2-align-s
