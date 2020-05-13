@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 13 09:08:53 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.48.0
+  * Fixed vulnerabilities:
+    - Custom associations for file extensions containing spaces
+      were not saved correctly
+- Changes from 3.48.0-rc1
+  * New features:
+    - Overhaul of file associations for editing files. The setting
+      to inherit system associations has been removed. When first
+      editing a type of file with no default editor set, a dialog
+      is shown asking which editor to use. The system associatio,
+      if it exists, is a choice in this dialog.
+  * Bugfixes and minor changes:
+    - SFTP: Re-added support for AES-GCM which was accidentally
+      removed in 3.46.1
+    - Fixes for comparative search leaving the program in an
+      inconsistent state when closing the dialog during an ongoing
+      search
+
+-------------------------------------------------------------------
 Thu Mar 12 16:02:50 UTC 2020 - ecsos@opensuse.org
 
 - Update to 3.47.2.1
