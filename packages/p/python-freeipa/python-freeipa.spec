@@ -20,7 +20,7 @@
 %global srcname freeipa
 
 Name:           python-%{srcname}
-Version:        1.0.2
+Version:        1.0.5
 Release:        0
 Summary:        Lightweight FreeIPA client
 License:        MIT
