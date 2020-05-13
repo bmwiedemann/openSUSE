@@ -42,6 +42,8 @@ Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.pa
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-UPSTREAM gnome-shell-Get-resource-scale-by-get_resource_scale.patch bsc#1169845 glgo#GNOME/gnome-shell!1206 xwang@suse.com -- Get resource scale by get_resource_scale
 Patch6:         gnome-shell-Get-resource-scale-by-get_resource_scale.patch
+# PATCH-FIX-UPSTREAM gnome-shell-panel-center-app-icon.patch -- panel: Center app icon
+Patch7:         gnome-shell-panel-center-app-icon.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -164,6 +166,14 @@ Supplements:    packageand(%{name}:evolution-data-server)
 This package adds support for Evolution Calendar, such as appointments
 into GNOME Shell calendar.
 
+%package -n gnome-extensions
+Summary:        Extensions app for GNOME Shell
+Group:          System/GUI/GNOME
+Requires:       %{name} = %{version}
+
+%description -n gnome-extensions
+This package contains an optional extensions app for managing GNOME Shell extensions.
+
 %lang_package
 
 %prep
@@ -173,6 +183,7 @@ into GNOME Shell calendar.
 #patch4 -p1
 #patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 translation-update-upstream
 
@@ -212,12 +223,13 @@ install -d %{buildroot}%{_datadir}/gnome-shell/search-providers
 # Work around race, as reported in bnc#844891 & bgo#709313.
 install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %fdupes %{buildroot}%{_prefix}
+# Not needed, only used for nightly git snapshots
+rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
 
 %files
 %license COPYING
 %doc README.md NEWS
 %{_bindir}/gnome-shell
-%{_bindir}/gnome-extensions
 %{_bindir}/gnome-shell-extension-prefs
 %dir %{_libdir}/gnome-shell
 %dir %{_libexecdir}/gnome-shell
@@ -237,7 +249,6 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gnome-shell-overrides.convert
 %{_datadir}/applications/org.gnome.Shell.desktop
-%{_datadir}/applications/org.gnome.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
@@ -260,7 +271,6 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/gnome-shell-osk-layouts.gresource
 %{_datadir}/gnome-shell/perf-background.xml
 %{_mandir}/man?/gnome-shell.?%{ext_man}
-%{_mandir}/man?/gnome-extensions.?%{ext_man}
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/gnome-shell.portal
@@ -272,31 +282,21 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_sysconfdir}/xdg/autostart/gnome-shell-overrides-migration.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-overrides-migration.sh
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
-# Should this be here or in devel sub package?
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.Devel.svg
 
 %dir %{_libdir}/gnome-shell/girepository-1.0
 %{_libdir}/gnome-shell/girepository-1.0/Shew-0.typelib
 
 %{_libdir}/gnome-shell/libshew-0.so
 
-%{_datadir}/bash-completion/completions/gnome-extensions
-%{_datadir}/dbus-1/services/org.gnome.Extensions.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.Notifications.service
 
-%{_datadir}/gnome-shell/org.gnome.Extensions
-%{_datadir}/gnome-shell/org.gnome.Extensions.data.gresource
-%{_datadir}/gnome-shell/org.gnome.Extensions.src.gresource
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications.src.gresource
-%{_datadir}/metainfo/org.gnome.Extensions.metainfo.xml
 
 %files devel
 %doc HACKING.md
@@ -311,6 +311,19 @@ install -d %{buildroot}%{_datadir}/gnome-shell/modes
 %{_datadir}/applications/evolution-calendar.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-calendar-server
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
+
+%files -n gnome-extensions
+%{_bindir}/gnome-extensions
+%{_datadir}/applications/org.gnome.Extensions.desktop
+%{_mandir}/man?/gnome-extensions.?%{ext_man}
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
+%{_datadir}/bash-completion/completions/gnome-extensions
+%{_datadir}/dbus-1/services/org.gnome.Extensions.service
+%{_datadir}/gnome-shell/org.gnome.Extensions
+%{_datadir}/gnome-shell/org.gnome.Extensions.data.gresource
+%{_datadir}/gnome-shell/org.gnome.Extensions.src.gresource
+%{_datadir}/metainfo/org.gnome.Extensions.metainfo.xml
 
 %files lang -f %{name}.lang
 
