@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue May 12 11:17:27 UTC 2020 - matthias.gerstner@suse.com
+
+Cleanup of deprecated DBUSServices.WhiteList entries:
+
+- ca.desrt.dconf.service: this service was changed by upstream from a
+  system-wide service to a session based service. The latter doesn't require a
+  whitelisting any more.
+- wicked services (network-nanny.conf, wicked-dhcp4.conf, wicked-dhcp6.conf,
+  wicked-autoip4.conf, wicked.conf): these have been renamed in August 2013
+  to org.opensuse.Network.*.conf. The old names probably never got released.
+- nfs-ganesha.service: A D-Bus file of that name probably never existed,
+  there's just a regular systemd unit of that name.
+- org.drbd.drbdmanaged.conf, org.drbd.drbdmanaged.service: drbdmanage was just
+  recently removed from Factory via sr#798685, because it is Python2 only and
+  unmaintained.
+- org.freedesktop.NetworkManager.service: was removed in 2012, Factory
+  revision 118, `Remove dbus system-service for NetworkManager, to prevent
+  warnings about it not being running (bnc#738596)`.
+- org.kde.auth.conf: was from kdelibs4, removed from Factory in late 2019 via
+  sr#738276 with the rest of kde4.
+- org.kde.kcontrol.kcmkdm.conf, org.kde.kcontrol.kcmkdm.service: was part of
+  kdebase4-workspace, got deleted from Factory with the rest of kde4.
+- org.kde.kcontrol.kcmkwallet.conf, org.kde.kcontrol.kcmkwallet.service: they
+  got renamed to kcmkwallet5.
+- org.opensuse.openqa.conf: upstream replaced a D-Bus interface with HTTP.
+- org.opensuse.zoneswitcher.service, org.opensuse.zoneswitcher.conf: the fwzs
+  package got removed together with SuSEfirewall2 via sr#713580.
+- org.selinux.service: isn't included any more in our packaging of
+  policycoreutils.
+- thunderbolt.conf, thunderbolt.service: this service never went live in
+  Factory.
+- yum-updatesd.conf: yum was removed from Factory via sr#749200
+- openattic.conf, openattic.service: was part of SES3 but seems to have
+  been dropped from SES4 and newer.
+
+Cleanup of deprecated PAMModules.WhiteList entries:
+
+- pam_cgroup.so: libcgroup was removed from Factory via sr#589236, due to
+  conflicts with systemd and dead upstream.
+- pam_ck_connector.so: ConsoleKit was last used in SLE-11. It's long dead.
+- pam_cryptpass.so: cryptconfig was last shipped in SLE-12:GA and Leap 42.3.
+  Got removed via FATE#323541.
+- pam_envoy.so: was removed from Factory because it failed to build for >= 6
+  weeks, see sr#737277
+- pam_fprint.so: was replaced by fprintd, see delete sr#220831.
+- pam-modules package (pam_homecheck.so, pam_pwcheck.so, pam_unix2.so): the
+  pam-modules package was removed in 2017 from Factory, see sr#540149.
+- pam_mate_keyring.so: was never shipped, the packager switched to a different
+  keyring daemon instead.
+- pam_p11_opensc.so, pam_p11_openssh.so: these two have been merged into
+  pam_p11.so.
+- pam_rpasswd.so: was part of pwdutils which was replaced by shadow utilities
+  in 2012 via sr#139683.
+- pam_smb_auth.so: was last part of SLE-12:GA and Leap 42.3. no upstream
+  development, replaced by pam_winbind, see sr#478612
+- pam_smbpass.so: was removed in upstream version 4.4.2, because it loaded
+  GPLv3 code into the address space of system services. somewhat replaced by
+  pam_winbind. see https://bugzilla.redhat.com/show_bug.cgi?id=952766.
+- pam_tally.so: was removed from the pam package in 2013, replaced by tally2
+  obviously, the old one was buggy.
+
+-------------------------------------------------------------------
+Mon May 11 10:32:06 UTC 2020 - matthias.gerstner@suse.com
+
+- whitelist oddjob D-Bus services and PAM module (bsc#1169494)
+
+-------------------------------------------------------------------
 Sun Apr 12 05:58:37 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added 'coturn' to StandardGroups and StandardUsers

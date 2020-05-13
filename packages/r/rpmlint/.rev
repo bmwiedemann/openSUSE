@@ -2985,4 +2985,12 @@ will self heal once rpmlint-mini is rebuild
     <comment></comment>
     <requestid>794612</requestid>
   </revision>
+  <revision rev="334" vrev="23">
+    <srcmd5>1e403cf2ebca25f56eb7f41c933e8275</srcmd5>
+    <version>1.11</version>
+    <time>1589403541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802965</requestid>
+  </revision>
 </revisionlist>

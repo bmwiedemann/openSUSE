@@ -549,12 +549,10 @@ setOption("DBUSServices.WhiteList", (
     "wpa_supplicant.conf",
     # kdebase4-workspace
     "org.kde.fontinst.service",
-    "org.kde.kcontrol.kcmkdm.conf",
     "org.kde.fontinst.conf",
     "org.kde.ksysguard.processlisthelper.service",
     "org.kde.kcontrol.kcmclock.service",
     "org.kde.kcontrol.kcmclock.conf",
-    "org.kde.kcontrol.kcmkdm.service",
     "org.kde.ksysguard.processlisthelper.conf",
     # pulseaudio
     "pulseaudio-system.conf",
@@ -568,8 +566,6 @@ setOption("DBUSServices.WhiteList", (
     "org.freedesktop.nm_dispatcher.service",
     # bnc#747780
     "org.freedesktop.NetworkManager.conf",
-    # bnc#681128
-    "org.freedesktop.NetworkManager.service",
     # bluez (bnc#768062)
     "bluetooth.conf",
     "org.bluez.service",
@@ -582,21 +578,12 @@ setOption("DBUSServices.WhiteList", (
     "pommed.conf",
     # NetworkManager-openvpn
     "nm-openvpn-service.conf",
-    # kdelibs4
-    "org.kde.auth.conf",
     # polkit
     "org.freedesktop.PolicyKit1.conf",
     "org.freedesktop.PolicyKit1.service",
-    # dconf
-    "ca.desrt.dconf.service",
     # cups-pk-helper
     "org.opensuse.CupsPkHelper.Mechanism.service",
     "org.opensuse.CupsPkHelper.Mechanism.conf",
-    # fwzs
-    "org.opensuse.zoneswitcher.service",
-    "org.opensuse.zoneswitcher.conf",
-    # yum
-    "yum-updatesd.conf",
     # NetworkManager-vpnc
     "nm-vpnc-service.conf",
     # NetworkManager-strongswan, bnc#656222
@@ -635,12 +622,6 @@ setOption("DBUSServices.WhiteList", (
     "net.reactivated.Fprint.service",
     "net.reactivated.Fprint.conf",
     # wicked network management (bnc#783932)
-    "network-nanny.conf",
-    "wicked-dhcp4.conf",
-    "wicked-dhcp6.conf",
-    "wicked-autoip4.conf",
-    "wicked.conf",
-    ## next revision of names (old ones could go)
     "org.opensuse.Network.conf",
     "org.opensuse.Network.AUTO4.conf",
     "org.opensuse.Network.DHCP6.conf",
@@ -665,16 +646,11 @@ setOption("DBUSServices.WhiteList", (
     # bluez (bnc#768062)
     "bluetooth.conf",
     "org.bluez.service",
-    # kwallet (bnc#849739)
-    "org.kde.kcontrol.kcmkwallet.conf",
-    "org.kde.kcontrol.kcmkwallet.service",
     # kwallet (bnc#1033296)
     "org.kde.kcontrol.kcmkwallet5.conf",
     "org.kde.kcontrol.kcmkwallet5.service",
     # neard (bnc#837978)
     "org.neard.conf",
-    # policycoreutils (bnc#848550, bnc#878631)
-    "org.selinux.service",
     # oFono (bnc#862354)
     "ofono.conf",
     # libKF5Auth4 (bnc#864716)
@@ -695,14 +671,8 @@ setOption("DBUSServices.WhiteList", (
     # thermald (bsc#954771)
     "org.freedesktop.thermald.conf",
     "org.freedesktop.thermald.service",
-    # drbdmanage (bsc#956811)
-    "org.drbd.drbdmanaged.conf",
-    "org.drbd.drbdmanaged.service",
     # iio-sensor-proxy (bsc#939191)
     "net.hadess.SensorProxy.conf",
-    # openattic (bsc#972478)
-    "openattic.conf",
-    "openattic.service",
     # TEMPORARY APPROVAL ONLY (meissner 20160519) tcmu-runner (bsc#978903)
     "tcmu-runner.conf",
     "org.kernel.TCMUService1.service",
@@ -728,16 +698,11 @@ setOption("DBUSServices.WhiteList", (
     "org.blueman.Mechanism.service",
     # os-autoinst (bsc#1032649)
     "org.opensuse.os_autoinst.switch.conf",
-    # thunderbolt (bsc#1033554)
-    "thunderbolt.conf",
-    "thunderbolt.service",
     # backintime (bsc#1007723, bsc#1032717)
     "net.launchpad.backintime.serviceHelper.conf",
     "net.launchpad.backintime.serviceHelper.service",
     # switchroo-control (bsc#1034309)
     "net.hadess.SwitcherooControl.conf",
-    # openqa (bsc#1039290)
-    "org.opensuse.openqa.conf",
     # pam_dbus (bsc#1039709). Take care to
     # never enable/integrate this by default (see bsc comments)
     "pam_dbus.conf",
@@ -746,7 +711,6 @@ setOption("DBUSServices.WhiteList", (
     "com.intel.tss2.Tabrmd.service",
     # nfs-ganesha (bsc#997880)
     "org.ganesha.nfsd.conf",
-    "nfs-ganesha.service",
     # NetworkManager-l2tp (bsc#846337)
     "nm-l2tp-service.conf",
     # fwupd (bsc#932807)
@@ -794,12 +758,12 @@ setOption("DBUSServices.WhiteList", (
     # sssd (bsc#1157663, bsc#1106600)
     "org.freedesktop.sssd.infopipe.service",
     "org.freedesktop.sssd.infopipe.conf",
+    # oddjob (bsc#1169494)
+    "oddjob.conf",
+    "oddjob-mkhomedir.conf",
 ))
 
 setOption("PAMModules.WhiteList", (
-    # pam_p11
-    "pam_p11_opensc.so",
-    "pam_p11_openssh.so",
     # pam_krb5
     "pam_krb5.so",
     "pam_krb5afs.so",
@@ -807,24 +771,10 @@ setOption("PAMModules.WhiteList", (
     "pam_ecryptfs.so",
     # gnome-keyring-pam
     "pam_gnome_keyring.so",
-    # pwdutils-rpasswd
-    "pam_rpasswd.so",
     # samba-winbind
     "pam_winbind.so",
-    # pam-modules
-    "pam_homecheck.so",
-    "pam_pwcheck.so",
-    "pam_unix2.so",
-    # pam_smb
-    "pam_smb_auth.so",
-    # ConsoleKit
-    "pam_ck_connector.so",
     # pam_ssh
     "pam_ssh.so",
-    # libcgroup1
-    "pam_cgroup.so",
-    # pam_fprint
-    "pam_fprint.so",
     # pam_mount
     "pam_mount.so",
     # pam_ccreds
@@ -843,8 +793,6 @@ setOption("PAMModules.WhiteList", (
     "pam_apparmor.so",
     # pam_ldap
     "pam_ldap.so",
-    # cryptconfig
-    "pam_cryptpass.so",
     # opie
     "pam_opie.so",
     # pam
@@ -881,7 +829,6 @@ setOption("PAMModules.WhiteList", (
     "pam_shells.so",
     "pam_stress.so",
     "pam_succeed_if.so",
-    "pam_tally.so",
     "pam_tally2.so",
     "pam_time.so",
     "pam_timestamp.so",
@@ -904,14 +851,10 @@ setOption("PAMModules.WhiteList", (
     "pam_mktemp.so",
     # pam_csync
     "pam_csync.so",
-    # samba
-    "pam_smbpass.so",
     # pam_chroot
     "pam_chroot.so",
     # pam_snapper (bnc#815383)
     "pam_snapper.so",
-    # pam_mate_keyring.so (bnc#831404)
-    "pam_mate_keyring.so",
     # pam_gdm (bsc#1004346)
     "pam_gdm.so",
     # pam_slurm (bsc#1007053)
@@ -926,8 +869,6 @@ setOption("PAMModules.WhiteList", (
     "pam_oath.so",
     # pam_p11 (bsc#1123916)
     "pam_p11.so",
-    # pam_envoy (bsc#1150525)
-    "pam_envoy.so",
     # pam_cifscreds (bsc#1150527)
     "pam_cifscreds.so",
     # libpwquality (bsc#1150520)
@@ -948,7 +889,9 @@ setOption("PAMModules.WhiteList", (
     # fprintd (bsc#792095)
     "pam_fprintd.so",
     # mariadb (bsc#1163362)
-    "pam_user_map.so"
+    "pam_user_map.so",
+    # oddjob (bsc#1169494)
+    "pam_oddjob_mkhomedir.so"
 ))
 
 # Output filters
