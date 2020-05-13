@@ -1,8 +1,8 @@
-Index: NetworkManager-1.20.0/src/dns/nm-dns-manager.c
+Index: NetworkManager-1.24.0/src/dns/nm-dns-manager.c
 ===================================================================
---- NetworkManager-1.20.0.orig/src/dns/nm-dns-manager.c
-+++ NetworkManager-1.20.0/src/dns/nm-dns-manager.c
-@@ -571,7 +571,7 @@ again:
+--- NetworkManager-1.24.0.orig/src/dns/nm-dns-manager.c
++++ NetworkManager-1.24.0/src/dns/nm-dns-manager.c
+@@ -575,7 +575,7 @@ again:
  	nm_close (fd);
  
  	/* Wait until the process exits */

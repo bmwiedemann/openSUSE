@@ -1673,4 +1673,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   package for plugins to get the relevant variables to consume. (forwarded request 799431 from dimstar)</comment>
     <requestid>799481</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>32736716f404da88f8cc1725c088e372</srcmd5>
+    <version>1.24.0</version>
+    <time>1589403319</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 801853 from iznogood)</comment>
+    <requestid>802678</requestid>
+  </revision>
 </revisionlist>

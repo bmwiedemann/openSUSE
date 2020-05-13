@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.22.10
+Version:        1.24.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
-URL:            http://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/%{name}/1.22/%{name}-%{version}.tar.xz
+URL:            https://www.gnome.org/projects/NetworkManager/
+Source0:        https://download.gnome.org/sources/%{name}/1.24/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -92,7 +92,6 @@ BuildRequires:  pkgconfig(libteam)
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(mm-glib) >= 0.7.991
 BuildRequires:  pkgconfig(nss)
-BuildRequires:  pkgconfig(polkit-agent-1) >= 0.97
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)

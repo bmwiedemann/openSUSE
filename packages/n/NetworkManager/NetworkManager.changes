@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri May  8 13:51:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.0:
+  + Add support for virtual routing and forwarding (VRF)
+    interfaces.
+  + Add support for Opportunistic Wireless Encryption mode (OWE)
+    for Wi-Fi networks.
+  + Add support for 31-bit prefixes on IPv4 point-to-point links
+    according to RFC 3021.
+  + Drop dependencies for libpolkit-agent-1 and
+    libpolkit-gobject-1.
+  + nmcli:
+    - support setting removal via new command
+      `nmcli connection modify $CON_NAME remove $setting`.
+    - support backslash escape sequences for "vpn.data",
+      "vpn.secrets", "bond.options", and "ethernet.s390-options".
+  + bridge: support new options "bridge.multicast-querier",
+    "bridge.multicast-query-use-ifaddr", "bridge.multicast-router",
+    "bridge.vlan-stats-enabled", "bridge.vlan-protocol",
+    "bridge.group-address".
+  + IPv6 SLAAC: add support for "ipv6.ra-timeout" setting
+  + IPv6 DHCP: add support for "ipv6.dhcp-timeout" setting
+  + WWAN: NetworkManager now detects if a PIN-protected SIM card
+    has been externally unlocked and automatically tries to
+    activate a suitable connection on the modem.
+  + OVS:
+    - add support for changing MTU of OVS interfaces.
+    - remove length limitation for OVS Bridge, Patches and
+      Interfaces (only Patch types) names.
+  + VPN: accept empty values for VPN data items and secrets.
+  + All nm-devices now expose the 'HwAddress' property via D-Bus.
+  + Slave devices now do not get created/activated if master is
+    missing.
+  + Fixed multiple issues in the internal "nettools" DHCP client.
+  + Export NM_CAPABILITY_OVS capability on D-Bus and in libnm to
+    indicate that the OVS plugin is loaded.
+  + Fixes for importing WireGuard profiles in nmcli and better
+    handle configurations that enable ip4-auto-default-route with
+    an explicit gateway.
+  + Various bug fixes and improvements.
+- Rebase applied patches with quilt.
+- Drop pkgconfig(polkit-agent-1) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
 Fri May  1 08:31:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare the directory structure for the VPN modules. This is the

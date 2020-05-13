@@ -1,7 +1,6 @@
-Index: NetworkManager-1.20.0/data/NetworkManager.service.in
-===================================================================
---- NetworkManager-1.20.0.orig/data/NetworkManager.service.in
-+++ NetworkManager-1.20.0/data/NetworkManager.service.in
+diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager.service.in NetworkManager-1.24.0/data/NetworkManager.service.in
+--- NetworkManager-1.24.0-orig/data/NetworkManager.service.in	2020-05-08 08:07:01.000000000 +0200
++++ NetworkManager-1.24.0/data/NetworkManager.service.in	2020-05-08 20:24:16.528438647 +0200
 @@ -1,7 +1,7 @@
  [Unit]
  Description=Network Manager
@@ -11,7 +10,7 @@ Index: NetworkManager-1.20.0/data/NetworkManager.service.in
  After=network-pre.target dbus.service
  Before=network.target @DISTRO_NETWORK_SERVICE@
  
-@@ -21,6 +21,7 @@ ProtectHome=read-only
+@@ -21,6 +21,7 @@
  
  [Install]
  WantedBy=multi-user.target
@@ -19,18 +18,17 @@ Index: NetworkManager-1.20.0/data/NetworkManager.service.in
  Also=NetworkManager-dispatcher.service
  
  # We want to enable NetworkManager-wait-online.service whenever this service
-Index: NetworkManager-1.20.0/data/NetworkManager-wait-online.service.in
-===================================================================
---- NetworkManager-1.20.0.orig/data/NetworkManager-wait-online.service.in
-+++ NetworkManager-1.20.0/data/NetworkManager-wait-online.service.in
-@@ -7,7 +7,9 @@ Before=network-online.target
+diff -Nur NetworkManager-1.24.0-orig/data/NetworkManager-wait-online.service.in NetworkManager-1.24.0/data/NetworkManager-wait-online.service.in
+--- NetworkManager-1.24.0-orig/data/NetworkManager-wait-online.service.in	2020-05-08 08:07:01.000000000 +0200
++++ NetworkManager-1.24.0/data/NetworkManager-wait-online.service.in	2020-05-08 20:24:25.980316717 +0200
+@@ -16,7 +16,9 @@
+ # time.
  
- [Service]
  Type=oneshot
--ExecStart=@bindir@/nm-online -s -q --timeout=30
+-ExecStart=@bindir@/nm-online -s -q
 +Environment=NM_ONLINE_TIMEOUT=0
 +EnvironmentFile=-/etc/sysconfig/network/config
 +ExecStart=/bin/bash -c "if [ ${NM_ONLINE_TIMEOUT} -gt 0 ]; then @bindir@/nm-online -s -q --timeout=${NM_ONLINE_TIMEOUT} ; else /bin/true ; fi"
  RemainAfterExit=yes
  
- [Install]
+ # Set $NM_ONLINE_TIMEOUT variable for timeout in seconds.
