@@ -24,7 +24,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-13641-g995b95b3d4
+%define LEECHCRAFT_VERSION 0.6.70-13729-g7046a9d2a7
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -43,14 +43,14 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.13641.g995b95b3d4
+Version:        0.6.70+git.13729.g7046a9d2a7
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            http://leechcraft.org
 
-Source0:        leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
+Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
@@ -145,7 +145,7 @@ BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  pkgconfig(libtcmalloc)
 %ifarch %ix86 x86_64 %arm ppc64le
-BuildRequires:  pkgconfig(libtorrent-rasterbar)
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2.0
 %endif
 BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} > 1325 || 0%{?sle_version} >= 120300
