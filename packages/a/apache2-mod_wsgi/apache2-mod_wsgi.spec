@@ -27,9 +27,9 @@ BuildRequires:  httpd
 BuildRequires:  httpd-devel
 %endif
 Name:           apache2-mod_wsgi
-Version:        4.6.8
+Version:        4.7.1
 Release:        0
-Summary:        A WSGI interface for Python web applications in Apache
+Summary:        A WSGI interface for Python3 web applications in Apache
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/GrahamDumpleton/mod_wsgi
@@ -38,12 +38,13 @@ Source:         https://github.com/GrahamDumpleton/mod_wsgi/archive/%{version}.t
 Patch0:         wsgi_fixVersionCheck.patch
 BuildRequires:  apache-rex
 %apache_rex_deps
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
-BuildRequires:  python-setuptools
+BuildRequires:  python3-setuptools
 %endif
-Conflicts:      apache2-mod_wsgi-python3
+Obsoletes:      apache2-mod_wsgi-python3 < %{version}-%{release}
 Provides:       %{modname} = %{version}-%{release}
+Provides:       apache2-mod_wsgi-python3 = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
 Requires:       %{apache_mmn}
@@ -72,16 +73,16 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %else
     --with-apxs="%{apache_apxs}" \
 %endif
-    --with-python="python"
+    --with-python="python3"
 make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
-%py2_build
+%py3_build
 %endif
 
 %install
 make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
-%py2_install
+%py3_install
 %endif
 
 %check
@@ -109,8 +110,8 @@ fi
 %dir %{apache_libexecdir}
 %{apache_libexecdir}/%{modname}.so
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
-%{python2_sitearch}/mod_wsgi-*.egg-info
-%{python2_sitearch}/mod_wsgi
+%{python3_sitearch}/mod_wsgi-*.egg-info
+%{python3_sitearch}/mod_wsgi
 %{_bindir}/mod_wsgi-express
 %endif
 

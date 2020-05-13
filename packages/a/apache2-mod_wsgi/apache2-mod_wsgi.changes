@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  6 19:44:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.7.1:
+  + Use Python 3 style print.
+  + Mostly changes around distribtion from PyPi, where mod_wsgi is
+    completented by a mod_wsgi-standalone with an own apache
+    instance.
+- Drop the python2 based package (py2 is EOL): Move the content of
+  the former apache2-mod_wsgi-python3 package into apache-mod_wsgi.
+  Provide/Obsolete the old -python3 package for ease of upgrade.
+
+-------------------------------------------------------------------
 Thu Apr  9 11:32:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Add Python-native build so Python metadata and wrapper is present
