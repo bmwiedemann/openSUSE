@@ -2,8 +2,8 @@
         <service name="tar_scm" mode="disabled">
                 <param name="scm">git</param>
                 <param name="url">https://github.com/crow-translate/crow-translate.git</param>
-                <param name="parent-tag">2.3.1</param>
-                <param name="versionformat">2.3.1</param>
+                <param name="parent-tag">2.3.2</param>
+                <param name="versionformat">2.3.2</param>
         </service>
         <service name="recompress" mode="disabled">
                 <param name="file">*.tar</param>

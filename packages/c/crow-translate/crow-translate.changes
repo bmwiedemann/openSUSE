@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 10 18:36:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  Added
+  * The ability to exit the application via D-Bus.
+  Changed
+  * Return exit code 1 on translation error in CLI.
+  * Fix showing the main window if it was minimized.
+  * Bing: Fix language auto detection.
+
+-------------------------------------------------------------------
 Sun Jan 19 10:01:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1

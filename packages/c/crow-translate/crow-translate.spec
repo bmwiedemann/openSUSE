@@ -1,7 +1,7 @@
 #
 # spec file for package crow-translate
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           crow-translate
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        A Qt GUI for Google, Yandex and Bing translators
 # QOnlineTranslator is licensed under GPL-3.0
