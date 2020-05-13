@@ -4090,7 +4090,7 @@
       <repopackage name="ruby2.6-rubygem-ffi"/>
       <repopackage name="ruby2.6-rubygem-i18n"/>
       <repopackage name="ruby2.6-rubygem-jbuilder"/>
-      <repopackage name="ruby2.6-rubygem-listen-3_1"/>
+      <repopackage name="ruby2.6-rubygem-listen"/>
       <repopackage name="ruby2.6-rubygem-loofah"/>
       <repopackage name="ruby2.6-rubygem-method_source"/>
       <repopackage name="ruby2.6-rubygem-mini_portile2"/>
@@ -4106,7 +4106,6 @@
       <repopackage name="ruby2.6-rubygem-railties-6.0"/>
       <repopackage name="ruby2.6-rubygem-rb-fsevent"/>
       <repopackage name="ruby2.6-rubygem-rb-inotify"/>
-      <repopackage name="ruby2.6-rubygem-ruby_dep"/>
       <repopackage name="ruby2.6-rubygem-sass-rails"/>
       <repopackage name="ruby2.6-rubygem-sassc"/>
       <repopackage name="ruby2.6-rubygem-sassc-rails"/>
