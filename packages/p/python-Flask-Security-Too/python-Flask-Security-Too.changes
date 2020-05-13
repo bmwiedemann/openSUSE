@@ -1,14 +1,58 @@
 -------------------------------------------------------------------
+Thu May  7 10:42:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.2:
+  * The flask-security repo was moved to a github organization
+    Flask-Middleware.
+
+- Update to 3.4.1:
+  * Fix a bunch of bugs in new unified sign in along with a couple
+    other major issues.
+  * (:issue:`298`) Alternative ID feature ran afoul of
+    postgres/psycopg2 finickiness.
+  * (:issue:`300`) JSON 401 responses had WWW-Authenticate Header
+    attached - that caused browsers to pop up their own login/password
+    form. Not what applications want.
+  * (:issue:`280`) Allow admin/api to setup TFA (and unified sign in)
+    out of band. Please see :meth:`.UserDatastore.tf_set`,
+    :meth:`.UserDatastore.tf_reset`, :meth:`.UserDatastore.us_set`,
+    :meth:`.UserDatastore.us_reset` and
+    :meth:`.UserDatastore.reset_user_access`.
+  * (:pr:`305`) We used form._errors which wasn't very pythonic,
+    and it was removed in WTForms 2.3.0.
+  * (:pr:`310`) WTForms 2.3.0 made email_validator optional,
+    we need it.
+
+- Added Requires python-bcrypt and python-email_validator,
+  Recommends python-PyQRCode, python-SQLAlchemy, python-zxcvbn
+  and Suggests python-argon2_cffi and python-phonenumbers
+
+-------------------------------------------------------------------
 Sun Apr  5 07:58:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.4.0:
-  * (:pr:`257`) Support a unified sign in feature. Please see :ref:`unified-sign-in`.
-  * (:pr:`265`) Add phone number validation class. This is used in both unified sign in as well as two-factor when using sms.
-  * (:pr:`274`) Add support for 'freshness' of caller's authentication. This permits endpoints to be additionally protected by ensuring a recent authentication.
-  * (:issue:`99`, :issue:`195`) Support pluggable password validators. Provide a default validator that offers complexity and breached support.
-  * (:issue:`266`) Provide interface to two-factor send_token so that applications can provide error mitigation. Defaults to returning errors if can't send the verification code.
-  * (:pr:`247`) Updated all-inclusive data models (fsqlaV2). Add fields necessary for the new unified sign in feature and changed 'username' to be unique (but not required).
-  * (:pr:`245`) Use fs_uniquifier as the default Flask-Login 'alternative token'. Basically this means that changing the fs_uniquifier will cause outstanding auth tokens, session and remember me cookies to be invalidated. So if an account gets compromised, an admin can easily stop access. Prior to this cookies were storing the 'id' which is the user's primary key - difficult to change! (kishi85)
+  * (:pr:`257`) Support a unified sign in feature.
+    Please see :ref:`unified-sign-in`.
+  * (:pr:`265`) Add phone number validation class. This is used in
+    both unified sign in as well as two-factor when using sms.
+  * (:pr:`274`) Add support for 'freshness' of caller's authentication.
+    This permits endpoints to be additionally protected by ensuring a
+    recent authentication.
+  * (:issue:`99`, :issue:`195`) Support pluggable password validators.
+    Provide a default validator that offers complexity and breached support.
+  * (:issue:`266`) Provide interface to two-factor send_token so that
+    applications can provide error mitigation. Defaults to returning
+    errors if can't send the verification code.
+  * (:pr:`247`) Updated all-inclusive data models (fsqlaV2). Add
+    fields necessary for the new unified sign in feature and changed
+    'username' to be unique (but not required).
+  * (:pr:`245`) Use fs_uniquifier as the default Flask-Login
+    'alternative token'. Basically this means that changing the
+    fs_uniquifier will cause outstanding auth tokens, session and
+    remember me cookies to be invalidated. So if an account gets
+    compromised, an admin can easily stop access. Prior to this cookies
+    were storing the 'id' which is the user's primary key - difficult
+    to change! (kishi85)
 - Enable the testing
 - Add patch to not require mongodb during testing:
   * no-mongodb.patch

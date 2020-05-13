@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
@@ -33,15 +33,16 @@ BuildRequires:  %{python_module Flask-Login >= 0.4.1}
 BuildRequires:  %{python_module Flask-Mail >= 0.9.1}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 2.3}
-BuildRequires:  %{python_module Flask-WTF >= 0.14.0}
+BuildRequires:  %{python_module Flask-WTF >= 0.14.2}
 BuildRequires:  %{python_module PyQRCode >= 1.2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.6}
 BuildRequires:  %{python_module Werkzeug >= 0.15.5}
 BuildRequires:  %{python_module argon2_cffi >= 19.1.0}
 BuildRequires:  %{python_module bcrypt >= 3.1.5}
 BuildRequires:  %{python_module cachetools >= 3.1.0}
+BuildRequires:  %{python_module email_validator >= 1.0.5}
 BuildRequires:  %{python_module itsdangerous >= 1.1.0}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module passlib >= 1.7.1}
 BuildRequires:  %{python_module peewee >= 3.11.2}
 BuildRequires:  %{python_module phonenumbers >= 8.11.1}
@@ -60,8 +61,15 @@ Requires:       python-Flask-Mail >= 0.9.1
 Requires:       python-Flask-Principal >= 0.4.0
 Requires:       python-Flask-WTF >= 0.14.2
 Requires:       python-Werkzeug >= 0.15.5
+Requires:       python-bcrypt >= 3.1.5
+Requires:       python-email_validator >= 1.0.5
 Requires:       python-itsdangerous >= 1.1.0
 Requires:       python-passlib >= 1.7.1
+Recommends:     python-PyQRCode >= 1.2
+Recommends:     python-SQLAlchemy >= 1.2.6
+Recommends:     python-zxcvbn >= 4.4.28
+Suggests:       python-argon2_cffi >= 19.1.0
+Suggests:       python-phonenumbers >= 8.11.1
 Conflicts:      python-Flask-Security < 3.2.0
 Obsoletes:      python-Flask-Security < 3.2.0
 Provides:       python-Flask-Security = %{version}
