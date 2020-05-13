@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_nss
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Release:        0
 Summary:        SSL/TLS module for the Apache HTTP server
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            https://pagure.io/mod_nss
+URL:            https://pagure.io/mod_nss
 Source:         https://releases.pagure.org/mod_nss/mod_nss-%{version}.tar.gz
 Source1:        mod_nss.conf.in
 Source2:        listen_nss.conf
@@ -42,7 +42,7 @@ Patch4:         mod_nss-gencert_use_ss_instead_of_netstat.patch
 Patch5:         mod_nss-gencert_stronger_password.patch
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
-BuildRequires:  apache2-devel >= 2.2.12
+BuildRequires:  apache2-devel >= 2.4.18
 BuildRequires:  apr-devel
 BuildRequires:  apr-util-devel
 BuildRequires:  automake
@@ -60,7 +60,7 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  pkgconfig
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
-Requires:       apache2 >= 2.2.12
+Requires:       apache2 >= 2.4.18
 Requires:       findutils
 Requires:       iproute2
 Requires:       mozilla-nss >= 3.25
