@@ -29,14 +29,8 @@ Group:          System/Fhs
 Source100:      weakremovers.inc
 BuildRequires:  skelcd-control-openSUSE
 BuildRequires:  skelcd-openSUSE
-# /etc/issue is no longer a default file, but is auto-generated at bootup
-Requires:       issue-generator
-#PreReq:         coreutils
-# the post scriptlets uses awk, boo#976913
-Requires(post): awk
-Requires(post): issue-generator
-Recommends:     branding-openSUSE
-Recommends:     distribution-logos-openSUSE-Tumbleweed
+Suggests:       branding-openSUSE
+Suggests:       distribution-logos-openSUSE-Tumbleweed
 Suggests:       openSUSE-build-key
 Suggests:       java-11-openjdk
 Suggests:       mariadb
@@ -248,21 +242,6 @@ done
 ___CREATE_PRODUCT_FILES___
 # this is a base product, create symlink
 ln -s openSUSE.prod %{buildroot}%{_sysconfdir}/products.d/baseproduct
-
-%post
-# Upgrade path - if /etc/default/grub contains any of the DISTRIBUTOR= tags
-# we ever put, replace it with "", which means grub will use /etc/os-release to make something up
-if [ -f %{_sysconfdir}/default/grub ]; then
-  DISTRIBUTOR=$(awk -F= '/^GRUB_DISTRIBUTOR/ {print $2}' %{_sysconfdir}/default/grub | tr -d '"')
-  case "$DISTRIBUTOR" in
-        "openSUSE" | \
-        "openSUSE 13.1" | \
-        "openSUSE 13.2")
-                # replace GRUB_DISTRIBUTOR in %{_sysconfdir}/default/grub with ""
-                sed -i "s/^GRUB_DISTRIBUTOR=.*/GRUB_DISTRIBUTOR=/" %{_sysconfdir}/default/grub
-                ;;
-  esac
-fi
 
 %posttrans
 # Launch the issue-generator: we have a new config file in /usr/lib/issue.d that needs to be represented

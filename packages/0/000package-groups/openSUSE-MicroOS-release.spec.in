@@ -24,13 +24,12 @@ License:        GPL-2.0-or-later
 Group:          System/Fhs
 Source100:      weakremovers.inc
 BuildRequires:  skelcd-openSUSE
-Requires:       issue-generator
 # Make sure we are at SLES12 SP2 level
 PreReq:         glibc >= 2.19
 # in rare cases, 'ln' is not found...
 Requires(post): coreutils
-Recommends:     branding-openSUSE
-Recommends:     distribution-logos-openSUSE-MicroOS
+Suggests:       branding-openSUSE
+Suggests:       distribution-logos-openSUSE-MicroOS
 Suggests:       openSUSE-build-key
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4

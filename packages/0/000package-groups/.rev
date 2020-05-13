@@ -809,4 +809,18 @@ it wants then though.</comment>
     <comment></comment>
     <requestid>797205</requestid>
   </revision>
+  <revision rev="113" vrev="111">
+    <srcmd5>77d4d787f4fb28ec2328713243d1dfa7</srcmd5>
+    <version>unknown</version>
+    <time>1589403308</time>
+    <user>dimstar_suse</user>
+    <comment>based on sr#800354: Add ppc64le for microos patterns boo#1171146
+
+- Get rid of legacy upgrade code from &lt; 13.2
+- Don't require issue-generator, it's already pulled in by patterns
+- Turn Recommends of branding and logos into Supplements to just
+  hint the solver in case those packages are pulled in from
+  elsewhere (eg patterns).</comment>
+    <requestid>800366</requestid>
+  </revision>
 </revisionlist>
