@@ -731,4 +731,12 @@ numbers for further reference.
     <comment>update to maintenance release 2.9.8</comment>
     <requestid>803198</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d118be88475cf167af46d820332a78de</srcmd5>
+    <version>2.9.9</version>
+    <time>1589403374</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.9.9 with fix for a regression introduced in 2.9.8</comment>
+    <requestid>804063</requestid>
+  </revision>
 </revisionlist>
