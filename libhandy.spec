@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://source.puri.sm/Librem5/libhandy/
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libhandy-adapt-glade-3-36.patch -- Fix build with new glade 3.36
+Patch0:         libhandy-adapt-glade-3-36.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
