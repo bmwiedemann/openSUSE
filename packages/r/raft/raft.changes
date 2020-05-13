@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 07:38:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.9.19:
+  * New raft_aligned_free() API
+  * Fix coverity findings/ and compiler warnings
+
+-------------------------------------------------------------------
 Tue Apr 28 19:37:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.9.18:
