@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 11 08:39:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Create and own /usr/share/mime/application: many packages install
+  files in there and it makes sense to continue delivering the
+  basic directory layout.
+
+-------------------------------------------------------------------
+Fri May  8 20:42:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add smi-Fix-pkg-config-installation-path.patch: Fix pkg-config
+  installation path.
+
+-------------------------------------------------------------------
 Wed May  6 16:52:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.0

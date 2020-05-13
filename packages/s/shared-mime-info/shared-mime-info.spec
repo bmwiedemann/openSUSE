@@ -27,6 +27,8 @@ Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
 Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
 Source1:        macros.shared-mime-info
+# PATCH-FIX-UPSTREAM smi-Fix-pkg-config-installation-path.patch -- Fix pkg-config installation path
+Patch0:         smi-Fix-pkg-config-installation-path.patch
 
 BuildRequires:  glib2-devel
 BuildRequires:  itstool
@@ -63,6 +65,8 @@ This package contains:
 
 %install
 %meson_install
+# we also deliver %{_datadir}/mime/application directory - many other packages install files in there
+if [ ! -d %{buildroot}%{_datadir}/mime/application ]; then mkdir -p %{buildroot}%{_datadir}/mime/application; fi
 %find_lang %{name} %{?no_lang_C}
 # Install rpm macros
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.shared-mime-info
@@ -83,7 +87,7 @@ export PKGSYSTEM_ENABLE_FSYNC=0
 %doc NEWS README.md
 %{_bindir}/*
 %{_datadir}/mime/packages/*.xml
-%{_libdir}/pkgconfig/*.pc
+%{_datadir}/pkgconfig/*.pc
 %{_datadir}/gettext/its/shared-mime-info.*
 %ghost %{_datadir}/mime/[a-ms-vxX]*
 %{_mandir}/man?/*%{ext_man}

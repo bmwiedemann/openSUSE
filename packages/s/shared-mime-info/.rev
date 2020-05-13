@@ -522,4 +522,17 @@
 - Adjust build dependencies: Add meson and xmlto, drop intltool.</comment>
     <requestid>800818</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>dba48c7ff44acc2ea94aafacc4041030</srcmd5>
+    <version>2.0</version>
+    <time>1589403326</time>
+    <user>dimstar_suse</user>
+    <comment>- Create and own /usr/share/mime/application: many packages install
+  files in there and it makes sense to continue delivering the
+  basic directory layout.
+
+- Add smi-Fix-pkg-config-installation-path.patch: Fix pkg-config
+  installation path. (forwarded request 802623 from dimstar)</comment>
+    <requestid>802681</requestid>
+  </revision>
 </revisionlist>
