@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 09:23:16 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable '-msse4.1' only on x86 and x86_64
+
+-------------------------------------------------------------------
+Thu Oct 17 17:00:53 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Wed Aug 14 09:24:15 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC for 4G disk space to avoid

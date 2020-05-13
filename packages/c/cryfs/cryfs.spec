@@ -26,7 +26,6 @@ Version:        0.10.2
 Release:        0
 Summary:        CryFS encryption
 License:        LGPL-3.0-only
-Group:          System/Filesystems
 Source:         %{name}-%{version}.tar.xz
 URL:            https://github.com/cryfs/cryfs
 
@@ -75,7 +74,7 @@ cmake .. \
 	-DBoost_USE_STATIC_LIBS=OFF \
 	-DBUILD_TESTING=OFF \
 	-DCRYFS_UPDATE_CHECKS=OFF \
-%ifnarch ppc64 ppc64le
+%ifarch %{ix86} x86_64
  	-DCMAKE_CXX_FLAGS="-msse4.1" \
 %endif
 	-DCMAKE_BUILD_TYPE=Release
