@@ -1,7 +1,7 @@
 #
 # spec file for package libcap-ng-python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           libcap-ng-python
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        An alternate Linux/POSIX capabilities library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://people.redhat.com/sgrubb/libcap-ng
+URL:            https://people.redhat.com/sgrubb/libcap-ng
 Source0:        https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-%{version}.tar.gz
 Source1:        baselibs.conf
 Source99:       libcap-ng.rpmlintrc

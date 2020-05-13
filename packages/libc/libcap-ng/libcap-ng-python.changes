@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 12 12:33:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.7.10:
+  * Update capng_change_id man page
+  * Add capng_have_permitted_capabilities function
+  * Update filecap to output which set the capabilities are in
+  * Fix filecap to not output an error when a file has no capabilities
+  * Add udplite support to netcap
+  * Fix usage of pthread_atfork (Joe Orton)
+  * Mark processes in child user namespaces with * (Danila Kiver)
+
+-------------------------------------------------------------------
 Tue Feb 20 10:28:46 UTC 2018 - tchvatal@suse.com
 
 - Switch to singlespec approach to allow building of python3
