@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20200511" schemaversion="4.1">
+<image name="OBS__openSUSE___20200512" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20200511</productvar>
+      <productvar name="VERSION">20200512</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200511,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20200512,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200511/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20200512/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2022,8 +2022,8 @@
       <repopackage name="libhavege1"/>
       <repopackage name="libhiredis0_13"/>
       <repopackage name="libhivex0" arch="x86_64"/>
-      <repopackage name="libhogweed5"/>
-      <repopackage name="libhogweed5-32bit" arch="x86_64"/>
+      <repopackage name="libhogweed6"/>
+      <repopackage name="libhogweed6-32bit" arch="x86_64"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libHX28"/>
       <repopackage name="libHX28-32bit" arch="x86_64"/>
@@ -2306,6 +2306,7 @@
       <repopackage name="libkyotocabinet16"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
+      <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_0-0"/>
       <repopackage name="liblavjpeg-2_0-0"/>
       <repopackage name="liblavplay-2_0-0"/>
@@ -2437,8 +2438,8 @@
       <repopackage name="libnetcontrol0"/>
       <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnetpbm11"/>
-      <repopackage name="libnettle7"/>
-      <repopackage name="libnettle7-32bit" arch="x86_64"/>
+      <repopackage name="libnettle8"/>
+      <repopackage name="libnettle8-32bit" arch="x86_64"/>
       <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs13"/>
