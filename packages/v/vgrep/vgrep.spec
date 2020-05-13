@@ -21,7 +21,7 @@
 # Project name when using go tooling.
 %define project github.com/vrothberg/vgrep
 Name:           vgrep
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Frontend for git-grep and grep
 License:        GPL-3.0-only

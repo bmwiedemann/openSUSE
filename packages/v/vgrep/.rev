@@ -36,4 +36,20 @@
   * Vgrep has a logo.</comment>
     <requestid>794928</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c55703f08bb69db48032a6c0ebea10ca</srcmd5>
+    <version>2.3.0</version>
+    <time>1589403367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+  * pin golangci-lint version
+  * Use a standard variable for setting the installation path
+  * Ripgrep support
+  * Cache file mode 0644
+  * drop interactive -i short flag
+  * Enable basic functionality on windows
+  * build(deps): bump github.com/sirupsen/logrus from 1.4.2 to 1.5.0
+  * resolve symlinks in cache</comment>
+    <requestid>804909</requestid>
+  </revision>
 </revisionlist>
