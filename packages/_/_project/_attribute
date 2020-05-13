@@ -313,7 +313,7 @@ staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
 
 installcheck-ignore-duplicated-binaries = 
-# installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51
+installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
