@@ -1155,4 +1155,13 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment></comment>
     <requestid>788187</requestid>
   </revision>
+  <revision rev="125" vrev="10">
+    <srcmd5>678d87faf1c8c7d9beb4e406d037d98c</srcmd5>
+    <version>3.15.0</version>
+    <time>1589403538</time>
+    <user>dimstar_suse</user>
+    <comment>- add dhat-use-datadir.patch:
+  * move the dhat* scripts to datadir</comment>
+    <requestid>802666</requestid>
+  </revision>
 </revisionlist>

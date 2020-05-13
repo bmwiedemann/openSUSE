@@ -1,0 +1,13 @@
+diff --git a/dhat/Makefile.am b/dhat/Makefile.am
+index 2aa4ac99e..4a571cb77 100644
+--- a/dhat/Makefile.am
++++ b/dhat/Makefile.am
+@@ -9,7 +9,7 @@ EXTRA_DIST = docs/dh-manual.xml dh_view.html dh_view.css dh_view.js
+ #----------------------------------------------------------------------------
+ 
+ # Ensure the viewer components get copied into the install tree.
+-dhatdir = $(pkglibexecdir)
++dhatdir = $(pkgdatadir)
+ dhat_DATA = dh_view.html dh_view.css dh_view.js
+ 
+ #----------------------------------------------------------------------------

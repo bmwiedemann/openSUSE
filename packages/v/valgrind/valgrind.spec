@@ -49,6 +49,7 @@ Patch6:         0001-s390x-Add-models-z14-and-z14-ZR1.patch
 Patch7:         0001-s390x-Clean-up-s390-check-opcodes.pl.patch
 Patch8:         0001-s390x-Add-CPU-model-for-z15.patch
 Patch9:         parallel-lto.patch
+Patch10:        dhat-use-datadir.patch
 %if "%{flavor}" == ""
 %if %{with docs}
 BuildRequires:  docbook-xsl-stylesheets
@@ -166,6 +167,7 @@ but it has been successfully used to optimize several KDE applications.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %if "%{flavor}" == ""
@@ -286,8 +288,8 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %ifarch %arm
 %{_libdir}/valgrind/*-arm-linux
 %endif
-%dir /usr/lib/valgrind
-/usr/lib/valgrind/dh_view*
+%dir %{_datadir}/valgrind
+%{_datadir}/valgrind/dh_view*
 %{_libdir}/valgrind/*-linux.so
 %{_libdir}/valgrind/*.supp
 %{_libdir}/valgrind/64bit-core.xml
