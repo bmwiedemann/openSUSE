@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rice
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rice
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 %define mod_name rice
 %define mod_full_name %{mod_name}-%{version}
@@ -35,13 +35,13 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel}
+BuildRequires:  %{rubydevel >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/jasonroelofs/rice
+URL:            https://github.com/jasonroelofs/rice
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Source99:       rice-rpmlintrc
+Source2:        rice-rpmlintrc
 Summary:        Ruby Interface for C++ Extensions
 License:        MIT
 Group:          Development/Languages/Ruby

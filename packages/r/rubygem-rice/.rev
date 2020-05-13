@@ -38,4 +38,14 @@
 - drop useless build files containing buildroot that confuse build-compare</comment>
     <requestid>709984</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>898bcc4893feefcebdf4860beaac62c9</srcmd5>
+    <version>2.2.0</version>
+    <time>1589403384</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.2.0
+  no changelog found
+- Make build work with ruby2.7</comment>
+    <requestid>805021</requestid>
+  </revision>
 </revisionlist>
