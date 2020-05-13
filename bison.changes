@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 11 14:41:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.6.1:
+  * fix GNU readline portability issues
+  * In C++, yy::parser::symbol_name is now a public member, as was
+    intended
+  * In C++, yy::parser::symbol_type now has a public name() member
+    function
+
+-------------------------------------------------------------------
+Sun May 10 09:11:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.6:
+  * Backward incompatible change: The YYERROR_VERBOSE macro is no
+    longer supported
+  * The YYPRINT macr is deprecated and will be removed eventually
+  * Improved syntax error messages
+  * %define parse.error behavior expended
+  * Token aliases can be internationalized
+  * Deep overhaul of the symbol and token kinds
+  * Modernize display of explanatory statements in diagnostics
+ 
+-------------------------------------------------------------------
 Sat Apr 11 08:04:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - bison 3.5.4:
