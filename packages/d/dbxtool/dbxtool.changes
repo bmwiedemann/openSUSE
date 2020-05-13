@@ -1,0 +1,4 @@
+-------------------------------------------------------------------
+Fri May  8 09:09:56 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- import dbxtool, for handling and storing the UEFI DBX database.
