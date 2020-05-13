@@ -1,0 +1,34 @@
+From 881d330bc0bb3735853dd6c522fcc6fed4646f1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Thu, 7 May 2020 12:25:13 +0000
+Subject: [PATCH] panel: Center app icon
+
+Giving the icon extra space may distort it, so center it vertically.
+
+https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/2578
+
+
+(cherry picked from commit a9d73b10173b00024266fff49a4c3709ca56b93b)
+---
+ js/ui/panel.js | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/js/ui/panel.js b/js/ui/panel.js
+index 095b400de8..ef1ba6e128 100644
+--- a/js/ui/panel.js
++++ b/js/ui/panel.js
+@@ -216,7 +216,10 @@ var AppMenuButton = GObject.registerClass({
+                              this._onIconThemeChanged.bind(this));
+ 
+         let iconEffect = new Clutter.DesaturateEffect();
+-        this._iconBox = new St.Bin({ style_class: 'app-menu-icon' });
++        this._iconBox = new St.Bin({
++            style_class: 'app-menu-icon',
++            y_align: Clutter.ActorAlign.CENTER,
++        });
+         this._iconBox.add_effect(iconEffect);
+         this._container.add_actor(this._iconBox);
+ 
+-- 
+2.26.2
+

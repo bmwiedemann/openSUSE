@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  7 19:27:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-shell-panel-center-app-icon.patch: panel: Center app
+  icon. Giving the icon extra space may distort it, so center it
+  vertically.
+
+-------------------------------------------------------------------
+Thu May  7 03:13:27 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Move gnome-extensions to seperate package since gnome-software
+  allows to uninstall the package causing gnome-shell to be
+  uninstalled with it
+
+-------------------------------------------------------------------
 Thu Apr 30 05:24:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:
