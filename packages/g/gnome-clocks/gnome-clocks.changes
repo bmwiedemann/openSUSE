@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 10 11:54:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + World: Handle impossible places.
+  + Timer: Fix signal for updating the duration.
+
+-------------------------------------------------------------------
 Thu Mar  5 18:47:14 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.0:

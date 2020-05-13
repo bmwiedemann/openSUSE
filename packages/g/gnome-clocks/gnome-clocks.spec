@@ -18,7 +18,7 @@
 
 
 Name:           gnome-clocks
-Version:        3.36.0
+Version:        3.36.2
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
