@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 13 08:55:24 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.22.0
+  * New features:
+    - Added a flag to fz::file to allow creation of files with
+      permissions only granting the current user access
+    - Added fz::mkdir to create local directories, optionally
+      recursive and with permissions to only grant the current
+      user access to the final directory
+  * Bugfixes and minor changes:
+    - MSW: Improvements handling directory reparse points
+    - Lengthen partial certificate chains in fz::tls_info to 
+      include any found trust anchor if using the system trust store
+    - Mark self-signed certificates in the in fz::x509_certificate
+    - Fix constructing fz::uri from default-constructed string_view
+- Changes from 0.21.0
+  * New features:
+    - macOS: fz::spawn_detached_process can now start application
+      bundles
+    - Changed arguments of fz::local_filesys::get_next_file to be
+      consistent with fz::local_filesys::get_file_info
+  * Bugfixes and minor changes:
+    - Improved error detection for fz::spawn_detached-process on
+      *nix systems that support the pipe2 syscall with O_CLOEXEC
+
+-------------------------------------------------------------------
 Thu Mar 12 15:58:21 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.20.2
