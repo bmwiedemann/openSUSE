@@ -601,6 +601,9 @@ unsorted:
   - apache2-icons-oxygen 
   - apache2-mod_apparmor 
   - apache2-mod_auth_gssapi 
+  - apache2-mod_auth_mellon 
+  - apache2-mod_auth_mellon-diagnostics 
+  - apache2-mod_auth_mellon-doc 
   - apache2-mod_auth_openidc 
   - apache2-mod_authn_otp 
   - apache2-mod_encoding 
@@ -2025,6 +2028,8 @@ unsorted:
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
   - cross-aarch64-gcc9: [x86_64] 
   - cross-aarch64-gcc9-icecream-backend: [x86_64] 
+  - cross-amdgcn-gcc10: [x86_64] 
+  - cross-amdgcn-newlib10-devel: [x86_64] 
   - cross-arm-binutils 
   - cross-arm-gcc10: [x86_64] 
   - cross-arm-gcc10-icecream-backend: [x86_64] 
@@ -9319,8 +9324,8 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
-  - libgdruntime76 
-  - libgdruntime76-32bit: [x86_64] 
+  - libgdruntime1 
+  - libgdruntime1-32bit: [x86_64] 
   - libgdruntime76-gcc9 
   - libgdruntime76-gcc9-32bit: [x86_64] 
   - libgeany0 
@@ -9474,8 +9479,8 @@ unsorted:
   - libgpgme11-32bit: [x86_64] 
   - libgpgmepp-devel 
   - libgpgmepp6-32bit: [x86_64] 
-  - libgphobos76 
-  - libgphobos76-32bit: [x86_64] 
+  - libgphobos1 
+  - libgphobos1-32bit: [x86_64] 
   - libgphobos76-gcc9 
   - libgphobos76-gcc9-32bit: [x86_64] 
   - libgphoto2-6-32bit: [x86_64] 
@@ -10133,7 +10138,6 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
-  - liblastfm5-1 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -18600,7 +18604,6 @@ unsorted:
   - python-tooz-doc 
   - python-translationstring-doc 
   - python-typeshed 
-  - python-vips 
   - python-volatility 
   - python-xml 
   - python-yui 
@@ -18743,6 +18746,7 @@ unsorted:
   - python3-MulticoreTSNE 
   - python3-OWSLib 
   - python3-PGet 
+  - python3-PTable 
   - python3-Parsley 
   - python3-Paste 
   - python3-PasteDeploy 
@@ -20189,6 +20193,7 @@ unsorted:
   - python3-mplcursors 
   - python3-mpmath 
   - python3-mraa 
+  - python3-mrcz 
   - python3-msal 
   - python3-msal-extensions 
   - python3-msgpack-numpy 
@@ -20857,6 +20862,7 @@ unsorted:
   - python3-pyuv 
   - python3-pyux 
   - python3-pyvdr 
+  - python3-pyvips 
   - python3-pyviz-comms 
   - python3-pyvmomi 
   - python3-pywinrm 
@@ -32745,7 +32751,7 @@ unsorted:
   - typelib-1_0-Unity-7_0 
   - typelib-1_0-UnityExtras-7_0 
   - typelib-1_0-Urfkill-0_0 
-  - typelib-1_0-Vips-8_5 
+  - typelib-1_0-Vips-8_9 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
