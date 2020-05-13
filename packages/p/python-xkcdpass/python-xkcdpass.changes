@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 13:16:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add Requires on python-setuptools 
+
+-------------------------------------------------------------------
 Thu Nov 21 15:40:06 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Initial release for build.opensuse.org 
