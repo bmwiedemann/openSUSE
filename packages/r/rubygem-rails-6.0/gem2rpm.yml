@@ -88,8 +88,7 @@
     Recommends: %{rubygem bootsnap >= 1.4.2}
     Recommends: %{rubygem byebug}
     Recommends: %{rubygem web-console >= 3.3.0}
-    Recommends: %{rubygem listen >= 3.0.5}
-    Recommends: %{rubygem listen < 3.2}
+    Recommends: %{rubygem listen:3.2}
     Recommends: %{rubygem spring}
     Recommends: %{rubygem spring-watcher-listen >= 2.0.0}
     Recommends: %{rubygem sqlite3:1.4}
