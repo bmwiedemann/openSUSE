@@ -82,4 +82,18 @@
 - Drop 3c52bd938975f7c5b32d7009f109ccbd2328c16d.patch . Applied upstream.</comment>
     <requestid>518536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ff4f9f8577f846ab1b8db3ccbd3d810</srcmd5>
+    <version>0.9.3</version>
+    <time>1589403413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * Python 3 support
+  * Fix regression with windows line endings
+- Run spec-cleaner
+- Add BuildArch noarch
+- Run crudini test script
+- Add manpage</comment>
+    <requestid>805362</requestid>
+  </revision>
 </revisionlist>
