@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-expectations
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 %define mod_name rspec-expectations
 %define mod_full_name %{mod_name}-%{version}
