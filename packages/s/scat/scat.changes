@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 13:06:04 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use python3 because python2 is obsolete
+
+-------------------------------------------------------------------
 Tue Mar 27 08:50:08 UTC 2018 - dheidler@suse.com
 
 - Correct license macro in spec

@@ -25,7 +25,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Text/Utilities
 Source:         https://github.com/asdil12/scat/archive/%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       python2-Pygments
+Requires:       python3-Pygments
 BuildArch:      noarch
 
 %description
