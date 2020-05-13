@@ -2633,4 +2633,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     https://imagemagick.org/discourse-server/viewtopic.php?f=3&amp;t=37781).</comment>
     <requestid>800017</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>d00620cbd8ce10837870882334c31cbc</srcmd5>
+    <version>7.0.10.11</version>
+    <time>1589403332</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.11
+  * Disable &quot;random&quot; OpenCL kernel.  Previously the work load was distributed
+    but each started with the same random seed.
+  * Finished implementation of -distort rigid-affine.
+  * Enable threaded PNG coder.</comment>
+    <requestid>802969</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 12 10:42:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.11
+  * Disable "random" OpenCL kernel.  Previously the work load was distributed
+    but each started with the same random seed.
+  * Finished implementation of -distort rigid-affine.
+  * Enable threaded PNG coder.
+
+-------------------------------------------------------------------
 Mon May  4 09:21:49 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.10
