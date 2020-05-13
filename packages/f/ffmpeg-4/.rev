@@ -282,4 +282,14 @@
 - License is now GPLv3+ by default (--enable-version3)</comment>
     <requestid>790242</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>cf89151137e9b71cc4c7043de0c81d7e</srcmd5>
+    <version>4.2.2</version>
+    <time>1589403309</time>
+    <user>dimstar_suse</user>
+    <comment>- Throw out v4l2 m2m. This is likely the same case as boo#1041794.
+- Add 0001-avcodec-cbs_jpeg-Check-length-for-SOS.patch
+  [boo#1170767]</comment>
+    <requestid>802662</requestid>
+  </revision>
 </revisionlist>

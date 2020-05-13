@@ -30,15 +30,15 @@ libvorbis # libvorbis
 libvpx_vp8 # libvpx
 libvpx_vp9 # libvpx
 mjpeg # mjpegtools
-mpeg1video
-mpeg2video
-#mpeg4
 mp1 # twolame/lame
 mp1float # twolame/lame
 mp2 # twolame
 mp2float # twolame
 mp3 # lame
 mp3float # lame
+mpeg1video
+mpeg2video
+#mpeg4
 opus # libopus
 pam # trivial
 pbm # trivial
@@ -99,6 +99,7 @@ vp8 # libvpx
 vp9 # libvpx
 webp # libwebp
 webvtt # trivial
+wrapped_avframe # passthrough
 xbm # trivial
 xwd # xwd
 y41p # trivial

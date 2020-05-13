@@ -27,10 +27,10 @@ libvpx_vp9
 libwebp
 libwebp_anim
 mjpeg # mjpegtools
-mpeg1video
-mpeg2video
 mp2 # twolame
 mp2fixed # twolame
+mpeg1video
+mpeg2video
 opus # opus
 pam
 pbm # trivial
@@ -78,6 +78,7 @@ v408 # trivial
 v410 # trivial
 vorbis # libvorbis
 webvtt # trivial
+wrapped_avframe # passthrough
 xbm # (X11)
 xwd # xwd
 y41p # trivial
