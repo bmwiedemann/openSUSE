@@ -31,6 +31,7 @@ BuildRequires:  libvpd2-devel
 BuildRequires:  sg3_utils-devel
 BuildRequires:  zlib-devel
 Requires:       /bin/sed
+Recommends:     hwdata
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 08:31:23 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Added "Recommends: hwdata" to prevent "usb.ids file not found"
+  error message.
+  [lsvpd.spec, bsc#1171188]
+
+-------------------------------------------------------------------
 Tue Apr 21 13:28:41 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - The lsvpd man page and --help are not in sync. The version and
