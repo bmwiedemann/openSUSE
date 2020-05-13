@@ -1,7 +1,7 @@
 #
 # spec file for package Vc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,13 @@
 
 
 Name:           Vc
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Collection of SIMD Vector Classes
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            https://github.com/VcDevel/Vc/
+URL:            https://github.com/VcDevel/Vc/
 Source0:        https://github.com/VcDevel/Vc/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM handle-missing-libmvec.patch
-Patch0:         handle-missing-libmvec.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-i686-build.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -79,14 +75,13 @@ This package provides the Vc static library.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DBUILD_TESTING=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 cd ../doc
 doxygen
