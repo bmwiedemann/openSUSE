@@ -78,6 +78,7 @@ NetworkManager, including a panel applet for wireless networks.
 %package -n NetworkManager-connection-editor
 Summary:        GUI to configure connections for NetworkManager
 Group:          System/GUI/GNOME
+Requires:       mobile-broadband-provider-info
 
 %description -n NetworkManager-connection-editor
 NetworkManager Configuration tool - take control over your

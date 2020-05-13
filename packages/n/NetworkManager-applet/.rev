@@ -279,4 +279,14 @@
   between Leap and SLE(jsc#SLE-11797). (forwarded request 796198 from JonathanKang)</comment>
     <requestid>798331</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>29fd68d8d18e80d40db559be2c657b6c</srcmd5>
+    <version>1.16.0</version>
+    <time>1589403311</time>
+    <user>dimstar_suse</user>
+    <comment>- Make NetworkManager-connection-editor require
+  mobile-broadband-provider-info so that it can function properly
+  (bsc#1169878). (forwarded request 801082 from JonathanKang)</comment>
+    <requestid>802674</requestid>
+  </revision>
 </revisionlist>

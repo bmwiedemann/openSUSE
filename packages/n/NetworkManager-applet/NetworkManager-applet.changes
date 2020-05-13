@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 08:53:09 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Make NetworkManager-connection-editor require
+  mobile-broadband-provider-info so that it can function properly
+  (bsc#1169878).
+
+-------------------------------------------------------------------
 Wed Apr 22 06:33:50 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Remove is_opensuse macro in spec file to reduce differences
