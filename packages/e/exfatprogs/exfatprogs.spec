@@ -17,7 +17,7 @@
 
 
 Name:           exfatprogs
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Conflicts:      exfat-utils
+Obsoletes:      libexfat0 < %{version}
 ExclusiveArch:  aarch64 x86_64
 
 %description
@@ -49,30 +50,21 @@ chmod -x COPYING
 
 %build
 autoreconf -fi
-%configure --disable-static
+%configure
 
 %make_build
 
 %install
 %make_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
-# There is no header yet, so this is unusable for now.
-rm %{buildroot}%{_libdir}/libexfat.so
-
-%post -n libexfat0 -p /sbin/ldconfig
-%postun -n  libexfat0 -p /sbin/ldconfig
-
-%files -n libexfat0
-%license COPYING
-%{_libdir}/libexfat.so.0*
-
 %files
 %license COPYING
 %doc README.md
+%{_mandir}/man8/fsck.exfat.8%{?ext_man}
+%{_mandir}/man8/mkfs.exfat.8%{?ext_man}
+%{_mandir}/man8/tune.exfat.8%{?ext_man}
 %{_sbindir}/fsck.exfat
-%{_sbindir}/label.exfat
 %{_sbindir}/mkfs.exfat
+%{_sbindir}/tune.exfat
 
 %changelog

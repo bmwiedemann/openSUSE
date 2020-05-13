@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 15:36:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.0.3
+  * libexfat0 library is no longer installed
+  * Rename label.exfat to tune.exfat.
+  * tune.exfat: change argument style
+    (-l option for print level, -L option for setting label)
+  * mkfs.exfat: harmonize set volume label option with tune.exfat.
+  * Fix the reported build warnings/errors.
+  * Add memset to clean garbage in allocation.
+  * Fix wrong volume label array size.
+  * Open a device using O_EXCL to avoid formatting it while it is mounted.
+  * Add man page.
+
+-------------------------------------------------------------------
 Thu Apr 23 12:54:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Initial release on OBS 
