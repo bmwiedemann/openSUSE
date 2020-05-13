@@ -305,4 +305,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>774743</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4c879fcae089cc04b07f95fed0235418</srcmd5>
+    <version>1.2.48</version>
+    <time>1589403393</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Aliases to be compatible with the tomcat example URLs [bsc#1167896]
+
+- Changes for 1.2.47 and 1.2.48 updates:
+  * Add: Apache: Extend trace level logging of method entry/exit to
+    aid debugging of request mapping issues.
+  * Fix: Apache: Fix a bug in the normalization checks that prevented
+    file based requests, such as SSI file includes, from being processed.
+  * Fix: Apache: When using JkAutoAlias, ensure that files that include
+    spaces in their name are accessible.
+  * Update: Common: Update the documentation to reflect that the source
+    code for the Apache Tomcat Connectors has moved from Subversion to Git.
+  * Fix: Common: When using set_session_cookie, ensure that an updated session
+    cookie is issued if the load-balancer has to failover to a different worker.
+  * Update: Common: Update config.guess and config.sub from
+    https://git.savannah.gnu.org/git/config.git.
+  * Update: Common: Update release script for migration to git. (forwarded request 802752 from pmonrealgonzalez)</comment>
+    <requestid>805247</requestid>
+  </revision>
 </revisionlist>

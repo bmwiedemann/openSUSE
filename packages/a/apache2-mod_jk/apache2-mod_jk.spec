@@ -18,16 +18,16 @@
 
 %define connectors_root    tomcat-connectors-%{version}-src
 Name:           apache2-mod_jk
-Version:        1.2.46
+Version:        1.2.48
 Release:        0
 Summary:        Connectors between Apache and Tomcat Servlet Container
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Frontends
-URL:            http://tomcat.apache.org/connectors-doc/
-Source0:        http://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-%{version}-src.tar.gz
+URL:            https://tomcat.apache.org/connectors-doc/
+Source0:        https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-%{version}-src.tar.gz
 Source1:        jk.conf
 Source2:        README.SUSE
-Source3:        http://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-%{version}-src.tar.gz.asc
+Source3:        https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-%{version}-src.tar.gz.asc
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  java-devel

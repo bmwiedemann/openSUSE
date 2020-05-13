@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 11 16:22:00 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix Aliases to be compatible with the tomcat example URLs [bsc#1167896]
+
+-------------------------------------------------------------------
+Mon May 11 15:00:49 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Changes for 1.2.47 and 1.2.48 updates:
+  * Add: Apache: Extend trace level logging of method entry/exit to
+    aid debugging of request mapping issues.
+  * Fix: Apache: Fix a bug in the normalization checks that prevented
+    file based requests, such as SSI file includes, from being processed.
+  * Fix: Apache: When using JkAutoAlias, ensure that files that include
+    spaces in their name are accessible.
+  * Update: Common: Update the documentation to reflect that the source
+    code for the Apache Tomcat Connectors has moved from Subversion to Git.
+  * Fix: Common: When using set_session_cookie, ensure that an updated session
+    cookie is issued if the load-balancer has to failover to a different worker.
+  * Update: Common: Update config.guess and config.sub from
+    https://git.savannah.gnu.org/git/config.git.
+  * Update: Common: Update release script for migration to git.
+
+-------------------------------------------------------------------
 Sun Feb  9 20:47:25 UTC 2020 - pgajdos@suse.com
 
 - remove useless %check section
