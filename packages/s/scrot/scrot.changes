@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed May 13 07:32:27 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3
+  * Added delay option to autoselect.
+  * Fixed bug #39, mouse pointer not captured with -a -p options.
+  * Added -D option to specify the display to use.
+  * Created full-check.yml to provide CI tests.
+  * Using an updated README.md as replace for README.
+  * Changed the cursor to indicate the selection mode.
+  * Fixed some warnings and made compliant with GCC >= 8.0.
+  * Updated manpage and help
+  * Added (-n, --note) to draw a text.
+  * Added (-l, --line) to define the line to use to select an area to capture.
+  * Added a specifier ($a) to embed hostname in output file.
+  * Added option: --overwrite or -o. Now, by default do not overwrite the file.
+  * Added support to grab mouse pointer (-p option).
+  * Added support to freeze the screen when selection is activated (-f option).
+  * Fixed several issues.
+  * Improved the manpage to show undocumented options.
+  * Added --autoselect rectangle option
+  * Added --focused option
+  * Added an autogen.sh file.
+  * Added some explanation about how to help the project.
+  * Character cleanup for UTF-8 compatibility
+  * Fixed a missing option for beep prevention.
+  * Fixed spelling errors in final binary
+  * Improved the GCC hardening.
+  * Prevent arbitrary long file names
+  * Several fixes in manpage.
+- Remove 08_fix-beeping.patch
+- Remove 07_fix-formatstring.patch
+- Remove 06_manpagespace.patch
+- Remove 05-addfocusedmanpage.patch
+- Remove 04-focused.patch
+- Remove 02_options.c.patch
+- Remove 01_manpagefix.patch
+- Remove 003_descmanpage.patch
+
+-------------------------------------------------------------------
 Fri Jun 26 20:14:30 UTC 2015 - nemysis@gmx.ch
 
 - Change Description
