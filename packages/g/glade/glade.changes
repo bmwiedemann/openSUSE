@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Thu May  7 21:39:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.0:
+  + Add GDK_VERSION_MIN_REQUIRED
+  + Adding "Glade" to "About" section.
+  + Add initial implementation of Automatic Templates
+  + Add initial support for GFile type properties
+  + Add metadata information about releases
+  + Add OARS tags
+  + Add translator comments to the .desktop file
+  + Allow to specify placeholder to GtkListBox
+  + Allow to use GtkFileChooserNative
+  + Appdata: update app-id
+  + build:
+    - Do not use a system variable only for Windows
+    - Fix OSX support in meson
+    - Port to meson build system
+    - Remove G_CONST_RETURN usage
+  + Bump Gtk required version to 3.22
+  + Couple of fixes for memory leaks found with valgrind
+  + Create GladeSettings to hold the settings instead of using a
+    Gtk widget for holding it
+  + dnd: Enable Drag&Drop on wayland
+  + doc:
+    - Modernize the documentation
+    - Remove missing xml files
+    - Make some changes to fix warnings with the documentation
+  + dtd: Add several new elements
+  + Fix loading dylibs on OSX
+  + Fix on debug traces after rename GladePropertyClass to
+    GladePropertyDef
+  + Fix several compiler warnings
+  + Fix split sentense in GladeProject
+  + Fix tab/space identation
+  + Fix two memory leaks discovered with valgrind
+  + Fix xgettext string extraction for catalogs
+  + flatpak: Set meson as buildsystem
+  + GladeAdaptorChooser: add missing translation domain
+  + GladeCommand:
+    - Ensure widget name on object properties
+    - Ignore special child types placeholders in add command.
+  + GladeGtkWindow: mark titlebar placeholder as special child
+    type.
+  + GladeEditor: expose signal editor widget as a property
+  + GladeEditorProperty, GladePropertyClass, GladeWidgetAdaptor:
+  + GladeEPropAttrs: use sane adjustment values for size and scale
+    attrs
+  + GladeEPropNumeric: bind precision property to spin button
+  + GladeGtkAdjustment: add digits virtual property
+  + GladeGtkBin: add initial support for GtkBin abstract class
+  + GladeGtkBox: improve children sort function
+  + GladeGtkDialog: chain up post_create() method
+  + GladeGtkHeaderBar:
+    - Improve position packing property handling
+    - Mark title and subtitle as translatable
+  + GladeGtkWidget: save accessible-role atk property
+  + GladeGtkWindow:
+    - Fix regression in csd handling
+    - Remove get_children() method
+  + GladeImageItemEditor: use display name for commands names
+  + GladeIntro:
+    - Fix regresion in find_widget_forall()
+    - Use name and buildable name to find widgets
+  + GladeModelButton:
+    - Enable icon/iconic properties
+    - Improve editor
+  + GladePopup: Clear add item when adding as toplevel
+  + GladeProject:
+    - Add handler signals
+    - Escape markup in parser errors
+  + GladeProperty:
+    - Add precision property
+    - Keep the bind-source, bind-property and bind-flags elements
+  + GladePropertyClass: round floating point values to epsilon
+  + GladeSignalClass: rename glade_signal_class_get_type
+  + GladeSignalDef: fix documentation for
+    glade_signal_def_set_deprecated
+  + gladeui-2.0.pc: Data paths relative to datadir
+  + gladeui:
+    - Change the boolean parsing logic to be the same as Gtk
+    - Ensure that we write the "type-func" property when a
+      get-type-function is defined in the catalog
+    - Fix crash on drag-n-drop
+    - Fix GIR package reference and add c-include
+    - Fix leak of create_type in GladePropertyClass
+    - Fix memory leak in GWActionClass
+    - Fix several memory leaks with GladeWidgetAdaptor
+    - Fix several tiny memory leaks found with valgrind
+    - Fix wrong pointer convertion in GladeDesignView
+    - ignore various GParameter deprecations
+    - Modernize GladeSignalEditor codebase
+    - Modernize GladeWidgetAdaptor definition
+    - Plug tiny leak on Drag & Drop
+    - remove implicit cast in assignment
+    - remove unused type_func variable
+    - Replace the last occurences of GladeWidgetClass with
+      GladeWidgetAdaptor in the comments
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeAdaptorChooserWidget
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeApp
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeBaseEditor
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeCellRendererIcon
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeClipboard
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeCommand
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeDesignLayout
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeDesignView
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeEditor
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeEditorProperty
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeEditorSkeleton
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeEditorTable
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeInspector
+    - Use G_DECLARE_DERIVABLE_TYPE for GladeNamedIconChooserDialog
+    - Use G_DECLARE_FINAL_TYPE for GladeObjectStub
+    - Use G_DECLARE_INTERFACE for GladeDrag
+    - Use G_DECLARE_INTERFACE for GladeEditable
+  + GladeWidgetAdaptor:
+    - added deprecated-since metadata
+    - add glade_widget_adaptor_get_display_name()
+  + GladeWidget: add support for abstract classes
+  + GladeWindow:
+    - move actions to GtkApplication
+    - port to GtkApplication
+    - simplify pointer mode actions
+  + GtkActionable: add action-target property
+  + gtk+:
+    - Add deprecated flag to GtkButton and GtkImage stock
+      properties
+    - Add homogeneous property to GtkStackSwitcher
+    - Add missing 3.22 enum/flag values
+    - Allow to use GtkResponseType with GtkDialog and GtkInfobar
+      buttons
+    - Keep internationalization context in Atk properties
+    - properly cast to avoid warnings
+    - Provide Gtk 3.22 properties for GtkScrolledWindow
+    - workaround truncation warning by being safer
+  + Gtk Catalog:
+    - add back GtkStatusbar
+    - mark GtkImageMenuItem as deprecated since 3.10
+  + GtkImage: Fix icon size being reset
+  + GtkLinkButton: allow to edit the label
+  + Gtk plugin: add support for GFileIcon
+  + i18n: Do not use input file for not translated files
+  + icon: update app icon
+  + introspection: Add many annotations to sources
+  + Make it easier to track GladeXML elements and be GObject
+    Introspection friendly by registering boxed types
+  + meson: Activate enable-debug variables
+  + Migrate from intltool to gettext
+  + No wide handles in `center_paned` and `left_paned`
+  + Prevent dragging an ancestor inside a child
+  + RDNN appdata & desktop file
+  + Remove GladeInstantiable prefix from UI
+  + Rename GladePropertyClass to GladePropertyDef and declare it as
+    boxed
+  + Rename GladeSignalClass to GladeSignalDef and declare it as
+    boxed
+  + Rename GWActionClass to GladeWidgetActionDef to use the right
+    namespace
+  + Rename *Klass to *Class as there are no name collision anymore
+  + Replace some functions by Gtk 3.22 ones
+  + Respect the Glade namespace for macros and defines
+  + Set the "About Dialogue" as modal
+  + snap: update for icon filename changes
+  + Stop defaulting missing images to deprecated stock icons
+  + tests: Include back GtkTreeViewColumn
+  + ui/widget: Make template ver# warning more useful
+  + Update FSF address
+  + Use autoreconf instead deprecated gnome-common
+  + Utils: get the absolute path but avoid accessing it
+  + widget: canonicalize support-warning property name
+  + widget-editor: Replace margin right/left for end/start
+- Add define soname libgladeui-2-12, and rename subpackage
+  following upstreams soname bump/change.
+
+-------------------------------------------------------------------
 Wed Feb 26 09:04:19 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.22.2:

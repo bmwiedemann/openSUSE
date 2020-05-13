@@ -16,14 +16,17 @@
 #
 
 
+%define soname libgladeui-2-12
+
 Name:           glade
-Version:        3.22.2
+Version:        3.36.0
 Release:        0
 Summary:        User Interface Builder for GTK+ 3
 License:        GPL-2.0-or-later
 Group:          Development/Tools/GUI Builders
 URL:            https://glade.gnome.org/
-Source:         http://download.gnome.org/sources/glade/3.22/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glade/3.36/%{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -44,11 +47,11 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.12.0
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
 and the GNOME desktop environment.
 
-%package -n libgladeui-2-6
+%package -n %{soname}
 Summary:        Core library of the GLADE User Interface Builder
 Group:          System/Libraries
 
-%description -n libgladeui-2-6
+%description -n %{soname}
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
 and the GNOME desktop environment.
 
@@ -66,7 +69,7 @@ libgladeui library.
 %package -n libgladeui-2-devel
 Summary:        Development files for libgladeui
 Group:          Development/Libraries/C and C++
-Requires:       libgladeui-2-6 = %{version}
+Requires:       %{soname} = %{version}
 Requires:       typelib-1_0-Gladeui-2_0 = %{version}
 # The gtk-doc documentation is not parallel installable (bnc#646997)
 Conflicts:      libgladeui-1-devel
@@ -81,14 +84,14 @@ applications that want to make use of libgladeui.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-    --disable-static \
-    --enable-gtk-doc \
-    --enable-man-pages \
-    PYTHON=python3
+	--disable-static \
+	--enable-gtk-doc \
+	--enable-man-pages \
+	PYTHON=python3
 %make_build
 
 %install
@@ -97,18 +100,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
-%post -n libgladeui-2-6 -p /sbin/ldconfig
-%postun -n libgladeui-2-6 -p /sbin/ldconfig
+%post -n %{soname} -p /sbin/ldconfig
+%postun -n %{soname} -p /sbin/ldconfig
 
 %files
 %license COPYING COPYING.GPL COPYING.LGPL
-%doc NEWS README
+%doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/glade
 %{_bindir}/glade-previewer
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/glade.appdata.xml
-%{_datadir}/applications/glade.desktop
+%{_datadir}/metainfo/org.gnome.Glade.appdata.xml
+%{_datadir}/applications/org.gnome.Glade.desktop
 %{_datadir}/glade/
 %{_datadir}/icons/hicolor/*/apps/*.*
 %{_libdir}/glade/modules/libgladegtk.so
@@ -117,7 +120,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/glade-previewer.1%{?ext_man}
 %{_mandir}/man1/glade.1%{?ext_man}
 
-%files -n libgladeui-2-6
+%files -n %{soname}
 %{_libdir}/libgladeui*.so.*
 # These directories are needed by third-party catalogs, and are explicitly
 # referenced in the pkg-config file, so it makes sense to own them here

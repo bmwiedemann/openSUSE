@@ -327,4 +327,12 @@
     <comment></comment>
     <requestid>780393</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ba81716a5f141cf168feff25899c4dd6</srcmd5>
+    <version>3.36.0</version>
+    <time>1589403316</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 801784 from iznogood)</comment>
+    <requestid>802676</requestid>
+  </revision>
 </revisionlist>
