@@ -1,0 +1,293 @@
+From ee127012d18b2c231b39e411503f5f6322736efc Mon Sep 17 00:00:00 2001
+From: the5fire <thefivefire@gmail.com>
+Date: Fri, 11 Oct 2019 22:44:06 +0800
+Subject: [PATCH] using six replace django six
+
+---
+ haystack/backends/__init__.py               | 5 ++++-
+ haystack/backends/elasticsearch_backend.py  | 2 +-
+ haystack/backends/simple_backend.py         | 2 +-
+ haystack/backends/solr_backend.py           | 2 +-
+ haystack/backends/whoosh_backend.py         | 2 +-
+ haystack/fields.py                          | 3 ++-
+ haystack/indexes.py                         | 2 +-
+ haystack/inputs.py                          | 3 ++-
+ haystack/management/commands/clear_index.py | 2 +-
+ haystack/models.py                          | 2 +-
+ haystack/panels.py                          | 2 +-
+ haystack/query.py                           | 2 +-
+ haystack/templatetags/highlight.py          | 2 +-
+ haystack/utils/__init__.py                  | 2 +-
+ haystack/utils/loading.py                   | 2 +-
+ setup.py                                    | 2 +-
+ test_haystack/test_indexes.py               | 4 ++--
+ test_haystack/test_views.py                 | 2 +-
+ 18 files changed, 24 insertions(+), 19 deletions(-)
+
+Index: django-haystack-2.8.1/haystack/backends/__init__.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/backends/__init__.py
++++ django-haystack-2.8.1/haystack/backends/__init__.py
+@@ -1,12 +1,15 @@
+ # -*- coding: utf-8 -*-
+ from __future__ import unicode_literals
++
+ import copy
+ from copy import deepcopy
+ from time import time
++
++import six
++
+ from django.conf import settings
+ from django.db.models import Q
+ from django.db.models.base import ModelBase
+-from django.utils import six
+ from django.utils import tree
+ from django.utils.encoding import force_text
+ 
+Index: django-haystack-2.8.1/haystack/backends/elasticsearch_backend.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/backends/elasticsearch_backend.py
++++ django-haystack-2.8.1/haystack/backends/elasticsearch_backend.py
+@@ -6,9 +6,9 @@ import re
+ import warnings
+ from datetime import datetime, timedelta
+ 
++import six
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from django.utils import six
+ 
+ import haystack
+ from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, log_query
+Index: django-haystack-2.8.1/haystack/backends/simple_backend.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/backends/simple_backend.py
++++ django-haystack-2.8.1/haystack/backends/simple_backend.py
+@@ -7,9 +7,9 @@ from __future__ import absolute_import,
+ 
+ from warnings import warn
+ 
++import six
+ from django.conf import settings
+ from django.db.models import Q
+-from django.utils import six
+ 
+ from haystack import connections
+ from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, log_query, SearchNode
+Index: django-haystack-2.8.1/haystack/backends/solr_backend.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/backends/solr_backend.py
++++ django-haystack-2.8.1/haystack/backends/solr_backend.py
+@@ -4,9 +4,9 @@ from __future__ import absolute_import,
+ 
+ import warnings
+ 
++import six
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from django.utils import six
+ 
+ import haystack
+ from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, EmptyResults, log_query
+Index: django-haystack-2.8.1/haystack/backends/whoosh_backend.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/backends/whoosh_backend.py
++++ django-haystack-2.8.1/haystack/backends/whoosh_backend.py
+@@ -9,9 +9,9 @@ import shutil
+ import threading
+ import warnings
+ 
++import six
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from django.utils import six
+ from django.utils.datetime_safe import datetime
+ from django.utils.encoding import force_text
+ 
+Index: django-haystack-2.8.1/haystack/fields.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/fields.py
++++ django-haystack-2.8.1/haystack/fields.py
+@@ -3,8 +3,9 @@ from __future__ import absolute_import,
+ 
+ import re
+ 
++import six
+ from django.template import loader
+-from django.utils import datetime_safe, six
++from django.utils import datetime_safe
+ 
+ from haystack.exceptions import SearchFieldError
+ from haystack.utils import get_model_ct_tuple
+Index: django-haystack-2.8.1/haystack/indexes.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/indexes.py
++++ django-haystack-2.8.1/haystack/indexes.py
+@@ -8,7 +8,7 @@ import warnings
+ 
+ from django.core.exceptions import ImproperlyConfigured
+ from django.utils.encoding import force_text
+-from django.utils.six import with_metaclass
++from six import with_metaclass
+ 
+ from haystack import connection_router, connections
+ from haystack.constants import DEFAULT_ALIAS, DJANGO_CT, DJANGO_ID, ID, Indexable
+Index: django-haystack-2.8.1/haystack/inputs.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/inputs.py
++++ django-haystack-2.8.1/haystack/inputs.py
+@@ -5,7 +5,8 @@ from __future__ import absolute_import,
+ import re
+ import warnings
+ 
+-from django.utils.encoding import force_text, python_2_unicode_compatible
++from django.utils.encoding import force_text
++from six import python_2_unicode_compatible
+ 
+ 
+ @python_2_unicode_compatible
+Index: django-haystack-2.8.1/haystack/management/commands/clear_index.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/management/commands/clear_index.py
++++ django-haystack-2.8.1/haystack/management/commands/clear_index.py
+@@ -2,8 +2,8 @@
+ 
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ 
++import six
+ from django.core.management.base import BaseCommand
+-from django.utils import six
+ 
+ from haystack import connections
+ 
+Index: django-haystack-2.8.1/haystack/models.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/models.py
++++ django-haystack-2.8.1/haystack/models.py
+@@ -4,8 +4,8 @@
+ 
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ 
++import six
+ from django.core.exceptions import ObjectDoesNotExist
+-from django.utils import six
+ from django.utils.encoding import force_text
+ from django.utils.text import capfirst
+ 
+Index: django-haystack-2.8.1/haystack/panels.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/panels.py
++++ django-haystack-2.8.1/haystack/panels.py
+@@ -4,9 +4,9 @@ from __future__ import absolute_import,
+ 
+ import datetime
+ 
++import six
+ from debug_toolbar.panels import DebugPanel
+ from django.template.loader import render_to_string
+-from django.utils import six
+ from django.utils.translation import ugettext_lazy as _
+ 
+ from haystack import connections
+Index: django-haystack-2.8.1/haystack/query.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/query.py
++++ django-haystack-2.8.1/haystack/query.py
+@@ -5,7 +5,7 @@ from __future__ import absolute_import,
+ import operator
+ import warnings
+ 
+-from django.utils import six
++import six
+ 
+ from haystack import connection_router, connections
+ from haystack.backends import SQ
+Index: django-haystack-2.8.1/haystack/templatetags/highlight.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/templatetags/highlight.py
++++ django-haystack-2.8.1/haystack/templatetags/highlight.py
+@@ -2,10 +2,10 @@
+ 
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ 
++import six
+ from django import template
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from django.utils import six
+ 
+ from haystack.utils import importlib
+ 
+Index: django-haystack-2.8.1/haystack/utils/__init__.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/utils/__init__.py
++++ django-haystack-2.8.1/haystack/utils/__init__.py
+@@ -5,8 +5,8 @@ from __future__ import unicode_literals
+ import importlib
+ import re
+ 
++import six
+ from django.conf import settings
+-from django.utils import six
+ 
+ from haystack.constants import ID, DJANGO_CT, DJANGO_ID
+ from haystack.utils.highlighting import Highlighter
+Index: django-haystack-2.8.1/haystack/utils/loading.py
+===================================================================
+--- django-haystack-2.8.1.orig/haystack/utils/loading.py
++++ django-haystack-2.8.1/haystack/utils/loading.py
+@@ -8,9 +8,9 @@ import threading
+ import warnings
+ from collections import OrderedDict
+ 
++import six
+ from django.conf import settings
+ from django.core.exceptions import ImproperlyConfigured
+-from django.utils import six
+ from django.utils.module_loading import module_has_submodule
+ 
+ from haystack import constants
+Index: django-haystack-2.8.1/setup.py
+===================================================================
+--- django-haystack-2.8.1.orig/setup.py
++++ django-haystack-2.8.1/setup.py
+@@ -13,6 +13,7 @@ except ImportError:
+ 
+ install_requires = [
+     'Django>=1.11',
++    'six==1.12.0',
+ ]
+ 
+ tests_require = [
+Index: django-haystack-2.8.1/test_haystack/test_indexes.py
+===================================================================
+--- django-haystack-2.8.1.orig/test_haystack/test_indexes.py
++++ django-haystack-2.8.1/test_haystack/test_indexes.py
+@@ -7,11 +7,11 @@ import time
+ from threading import Thread
+ 
+ from django.test import TestCase
+-from django.utils.six.moves import queue
++from six.moves import queue
+ from test_haystack.core.models import (AFifthMockModel, AThirdMockModel, ManyToManyLeftSideModel,
+                                        ManyToManyRightSideModel, MockModel)
+ 
+-from haystack import connection_router, connections, indexes
++from haystack import connections, indexes
+ from haystack.exceptions import SearchFieldError
+ from haystack.utils.loading import UnifiedIndex
+ 
+Index: django-haystack-2.8.1/test_haystack/test_views.py
+===================================================================
+--- django-haystack-2.8.1.orig/test_haystack/test_views.py
++++ django-haystack-2.8.1/test_haystack/test_views.py
+@@ -8,7 +8,7 @@ from threading import Thread
+ from django import forms
+ from django.http import HttpRequest, QueryDict
+ from django.test import TestCase, override_settings
+-from django.utils.six.moves import queue
++from six.moves import queue
+ from django.urls import reverse
+ from test_haystack.core.models import AnotherMockModel, MockModel
+ 

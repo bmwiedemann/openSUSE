@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-haystack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,14 @@ Summary:        Pluggable search for Django
 License:        BSD-3-Clause
 URL:            https://haystacksearch.org/
 Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django-haystack-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM using six replace django six 
+Patch0:         django3-support.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
+Requires:       python-six >= 1.12.0
 Suggests:       python-Whoosh >= 2.5.4
 BuildArch:      noarch
 # SECTION test requirements
@@ -45,6 +48,7 @@ BuildRequires:  %{python_module pysolr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module six >= 1.12.0}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +57,7 @@ Pluggable search for Django.
 
 %prep
 %setup -q -n django-haystack-%{version}
+%patch0 -p1
 
 %build
 sed -i 's:==:>=:' setup.py
