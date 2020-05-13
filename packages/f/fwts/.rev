@@ -531,4 +531,13 @@
   * Plenty of changes</comment>
     <requestid>790795</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1feac462dd9ca3100b2b50869955379f</srcmd5>
+    <version>20.03.01</version>
+    <time>1589403371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.03.01:
+  * Small fixes</comment>
+    <requestid>804965</requestid>
+  </revision>
 </revisionlist>
