@@ -4,13 +4,13 @@
     <size unit="G">20</size>
    </disk>
    <physicalmemory>
-      <size unit="G">4</size>
+      <size unit="G">2</size>
    </physicalmemory>
    <memory>
-      <size unit="G">8</size>
+      <size unit="G">4</size>
    </memory>
   </hardware>
-  
+
   <overwrite>
   <!-- x86_64 has extra features like embree -->
     <conditions>

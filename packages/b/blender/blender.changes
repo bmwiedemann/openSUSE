@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 14 16:54:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Readjust _constraints, x86_64 had the lowest constraint, but the
+  most enabled features. The constraint was raised twice due to
+  merging changes. 4G for anything but x86_64 is sufficient.
+
+-------------------------------------------------------------------
+Tue May 12 14:11:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace blender-bad-override.patch with upstream change,
+  blender-add-OSL-1_11-compat.patch. The previous patch was just
+  wrong, removing an override specifier just silences the compiler,
+  ignoring the error it is meant to catch.
+
+-------------------------------------------------------------------
 Fri Apr 24 07:13:07 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Add blender-bad-override.patch to fix build with

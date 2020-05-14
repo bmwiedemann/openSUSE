@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@
 %bcond_without osl
 %bcond_without system_audaspace
 
-%if 0%{suse_version} < 1550
+%if 0%{?suse_version} < 1550
 %bcond_without python_36
 %endif
 
@@ -67,7 +67,8 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
-Patch2:         blender-bad-override.patch
+# PATCH-FIX-UPSTREAM https://developer.blender.org/T76044
+Patch2:         blender-add-OSL-1_11-compat.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
