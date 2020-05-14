@@ -1,8 +1,102 @@
 -------------------------------------------------------------------
+Wed May 13 15:40:10 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Add missing security issues for 18.0.3:
+    Fix (CVE-2020-8154, NC-SA-2020-018, boo#1171579) and
+        (CVE-2020-8155, NC-SA-2020-019, boo#1171572)
+- Add missing changelog for 18.0.4
+
+-------------------------------------------------------------------
 Thu Apr 23 05:23:41 UTC 2020 - ecsos@opensuse.org
 
 - Update to 18.0.4
-  - No changelog from upstream at this time.
+  - [stable18] Use contacts name on federated activities (server#19879)
+  - [stable18] Allow to edit admin/own user in the user management (server#19882)
+  - [stable18] Fix hostname in Apple configuration profile (server#19884)
+  - [stable18] Don't break when one remote share is down (server#19886)
+  - [stable18] Properly emit Viewer event on files and files_sharing (server#19897)
+  - [stable18] Get correct mimetype on objectstores (server#19916)
+  - [stable18] Properly respect hide download on sharebymail (server#19921)
+  - [stable18] Use placeholder values for password fields in external storage webui (server#19922)
+  - [stable18] Do not use the instance name as user part of from mail addresses (server#19924)
+  - [stable18] Don't allow anchors and queries in remote urls (server#19933)
+  - [stable18] fix external storage controller tests (server#19940)
+  - Bump acorn from 6.3.0 to 6.4.1 (server#19945)
+  - [stable18] properly set 'hide_download' as integer (server#19950)
+  - [stable18] fix safari useragent for versions with 3 digits (server#19966)
+  - [stable18] Fix default action for deleted shares (server#19982)
+  - [stable18] Default value of lookupServerEnabled should be the same everywhere (server#19998)
+  - [stable18] Only do regular polling of storage statistics if session_keepalive is enabled (server#19999)
+  - [stable18] Fix single "ScopeContext" passed to "setScopes" (server#20001)
+  - [stable18] Fix invalid instantiation of TemplateResponse if client not found (server#20008)
+  - [stable18] Update the target when it isempty after sharing (server#20016)
+  - [stable18] remove the requirement that everything that looks like a placeholder … (server#20021)
+  - [stable18] Handle long dav property paths by hashing them (server#20030)
+  - [stable18] Allow the video player on the hide download (server#20044)
+  - [stable18] fixes auto-detecting UUID attributes (server#20046)
+  - [stable18] Force compatible dependency versions in acceptance tests (server#20051)
+  - [stable18] Adjust acceptance tests to incoming shares being accepted by default (server#20060)
+  - [stable18] fix OCA\DAV\CalDAV\CalDavBackend search $options (server#20102)
+  - [stable18] fix dav browser error page not styled (server#20104)
+  - [stable18] Fix language multiselect action (server#20136)
+  - [stable18] Remove admin_notifications since it is obsolete since Nextcloud 14 (server#20140)
+  - [stable18] change quota design (server#20144)
+  - [stable18] RefreshWebcalService: randomly generate calendar-object uri server#20148)
+  - [stable18] Close updatenotification channel selector on click outside (server#20155)
+  - [stable18] Add app config to disable user flows (server#20158)
+  - [stable18] Auto accept group shares for users added to a group (server#20161)
+  - [stable18] Use global used space in quota wrappen when external storage is included (server#20163)
+  - [stable18] Check the user on remote wipe (server#20166)
+  - [stable18] Bugfix - Prevent PHP Warning for count on null on LDAP (server#20175)
+  - Bump version on stable18 (server#20195)
+  - [stable18] Actually check if the owner is not null (server#20202)
+  - [stable18] Remove Acrobat logo from PDF filetype icon (server#20238)
+  - [stable18] Dont always use the current users quota when calculating storage info (server#20258)
+  - Silence LDAP deprecation logs in NC 18 (server#20274)
+  - [stable18] Check for empty authorization headers for office requests (server#20282)
+  - [stable18] fixes the return type of BeforeUserLoggedInEvent (server#20296)
+  - [stable18] Properly catch NoUserException during upload cleanup (server#20334)
+  - [stable18] Catch NotFoundException when getting the user folder (server#20335)
+  - [stable18] Try to use the display name of file transfers (server#20366)
+  - [stable18] Clear comment on successful post (server#20382)
+  - [stable18] Fix systemtags overflow (server#20387)
+  - [stable18] update icewind/smb to 3.2.3 (server#20405)
+  - [stable18] Add text restore after restore icon (server#20407)
+  - [18] Use a normal string to translate. (server#20420)
+  - [stable18] Make sure group management works with all types of group names (server#20433)
+  - [stable18] Properly display share error messages (server#20471)
+  - [stable18] Handle unset owner in sharing (server#20483)
+  - [stable18] Update root.crl due to revocation of spgverein.crt (server#20485)
+  - [stable18] Close the streams in `writeStream` even when there is an exception (server#20493)
+  - [stable18] Fix absolute redirect (server#20495)
+  - [stable18] Provide the proper language to the mailer (server#20512)
+  - [stable18] do not advertise nulled userId for for systemwide credentials (server#20516)
+  - [18] Allow to edit admin user (server#20530)
+  - [stable18] Update list of multiple properties (server#20531)
+  - [stable18] Fix jsunit tests (server#20548)
+  - [stable18] Set fileInfo correctly for LegacyTabs (server#20588)
+  - [stable18] Fix Sharing recommendation user display (server#20596)
+  - [stable18] Fix IE11 upload fallback methods (server#20602)
+  - [stable18] Email activity is missing information (activity#441)
+  - [stable18] catch new notfound exception while trying to get owner (activity#446)
+  - [stable18] Skip notifications for users with invalid email address. (activity#449)
+  - [stable18] Bump pdf.js to 2.1.266 (files_pdfviewer#169)
+  - Bump acorn from 7.1.0 to 7.1.1 (firstrunwizard#301)
+  - [stable18] Hide slide for app store if disabled (firstrunwizard#313)
+  - Bump acorn from 6.4.0 to 6.4.1 (notifications#592)
+  - [stable18] Request the permissions for notifications via user interaction (notifications#608)
+  - Bump acorn from 6.4.0 to 6.4.1 (recommendations#196)
+  - [stable18] Update DefaultOs.php (serverinfo#189)
+  - Public pages compatibility (viewer#422)
+  - Move cypress to gh actions (viewer#423)
+  - Bump acorn from 5.7.3 to 5.7.4 (viewer#425)
+  - [stable18] Fix trying to open the sidebar when not available (viewer#428)
+  - [stable18] Add public testing (viewer#435)
+  - [stable18] Fix public preview url cropping (viewer#450)
+  - [stable18] Fix babel transpile settings (viewer#453)
+  - [stable18] Await sidebar (viewer#467)
+  - [stable18] Change sidebar icon to proper understandable one (viewer#469)
+  - [stable18] Fix sidebar full state (viewer#470)
 
 - Add nextcloud-rpmlintrc to reduce build warnings.
 - Fix RewriteRules in apache_secure_data.
@@ -28,7 +122,9 @@ Tue Mar 24 19:20:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 18.0.3
   - Security update
-  
+    Fix (CVE-2020-8154, NC-SA-2020-018, boo#1171579) and
+        (CVE-2020-8155, NC-SA-2020-019, boo#1171572)
+
 -------------------------------------------------------------------
 Wed Mar 11 18:21:55 UTC 2020 - ecsos@opensuse.org
 
