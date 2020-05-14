@@ -1,7 +1,7 @@
 #
 # spec file for package davix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define shlib lib%{name}0
 Name:           davix
-Version:        0.7.4
+Version:        0.7.6
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://dmc.web.cern.ch/projects/davix/home
-Source:         https://github.com/cern-fts/davix/releases/download/R_0_7_4/davix-%{version}.tar.gz
+Source:         https://github.com/cern-fts/davix/releases/download/R_0_7_6/davix-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM davix-non-void-function.patch badshah400@gmail.com -- Fix non-void function that returns nothing
 Patch0:         davix-non-void-function.patch
 # PATCH-FIX-UPSTREAM davix-link-against-libdl.patch badshah400@gmail.com -- Link against libdl; patch taken from debian package build

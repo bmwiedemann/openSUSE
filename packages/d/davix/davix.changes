@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 12 22:29:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.6:
+  * Bug fixes:
+    - [DMC-1190] - Unhandled DavixException in secondary thread
+      during multi-range simulation.
+    - [DMC-1191] - Memory leak in function trying to detect S3
+      region.
+    - Recognize OpenSSL 'bad decrypt' error message as
+      CredDecryptionError.
+    - Fix error handling for proxy delegation.
+  * [DMC-1181] - Implement proper, abstract data provider class
+    for davix HttpIOChain.
+  * Refactoring and improvements to davix-tester.
+- Changes from version 0.7.5:
+  * Bug fixes:
+    - Enable use of dav:// and davs:// in third party copies.
+    - Fix third party copies when the server presents multiple
+      certificate delegation endpoints.
+    - Prevent davix from infinite-looping when the server abruptly
+      terminates the connection during TPC.
+  * Add ability to cancel ongoing TPC transfers through
+    user-supplied callback.
+  * Continued refactoring to eventually allow the use of libcurl
+    as HTTP backend in davix.
+  * In-source builds are no longer supported, and explicitly
+    prevented by CMake.
+- Minor updates to patches using quilt to apply cleanly (only line
+  number changes).
+
+-------------------------------------------------------------------
 Fri Aug 23 20:24:20 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and unrealized future visions from descriptions.
