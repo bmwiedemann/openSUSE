@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1588950686.b8a0ab33
+Version:        4.6.1589459603.638a25e2
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -113,7 +113,7 @@ make INSTALLDIRS=vendor %{?_smp_mflags}
 %install
 %make_install INSTALLDIRS=vendor
 # only internal stuff
-rm %{buildroot}/usr/lib/os-autoinst/tools/{tidy,check_coverage,absolutize}
+rm %{buildroot}/usr/lib/os-autoinst/tools/{tidy,check_coverage,absolutize,docker_run_ci}
 rm -r %{buildroot}/usr/lib/os-autoinst/tools/lib/perlcritic
 #
 ls -lR %buildroot
