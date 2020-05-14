@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 09:56:49 MDT 2020 - carnold@suse.com
+
+- bsc#1170968 - GCC 10: xen build fails on i586
+  gcc10-fixes.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 11:06:08 MDT 2020 - carnold@suse.com
 
 - bsc#1169392 - VUL-0: CVE-2020-11742: xen: Bad continuation

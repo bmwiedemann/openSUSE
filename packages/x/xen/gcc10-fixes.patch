@@ -73,6 +73,15 @@ for libxl_utils.h
 specified bound 108 equals destination size [-Werror=stringop-truncation]
 
 
+xenpmd.c: In function 'get_next_battery_file':
+xenpmd.c:92:37: error: '%s' directive output may be truncated writing between 4 and 2147483645 bytes into a region of size 271 [-Werror=format-truncation=]
+   92 |     #define BATTERY_STATE_FILE_PATH "/tmp/battery/%s/state"
+      |                                     ^~~~~~~~~~~~~~~~~~~~~~~
+xenpmd.c:117:52: note: in expansion of macro 'BATTERY_STATE_FILE_PATH'
+  117 |             snprintf(file_name, sizeof(file_name), BATTERY_STATE_FILE_PATH,
+      |                                                    ^~~~~~~~~~~~~~~~~~~~~~~
+
+
 Index: xen-4.13.0-testing/tools/libxl/libxlu_pci.c
 ===================================================================
 --- xen-4.13.0-testing.orig/tools/libxl/libxlu_pci.c
@@ -107,7 +116,7 @@ Index: xen-4.13.0-testing/stubdom/polarssl.patch
 +++ xen-4.13.0-testing/stubdom/polarssl.patch
 @@ -62,3 +62,25 @@ diff -Naur polarssl-1.1.4/library/bignum
               t_udbl r;
-
+ 
               r  = (t_udbl) X.p[i] << biL;
 +--- polarssl-1.1.4/library/ssl_tls.c.orig	2012-05-30 01:39:36.000000000 -0600
 ++++ polarssl-1.1.4/library/ssl_tls.c	2020-03-10 10:17:26.270755351 -0600
@@ -177,3 +186,17 @@ Index: xen-4.13.0-testing/tools/libxl/libxl_utils.c
  int libxl__prepare_sockaddr_un(libxl__gc *gc,
                                 struct sockaddr_un *un, const char *path,
                                 const char *what)
+Index: xen-4.13.0-testing/tools/xenpmd/xenpmd.c
+===================================================================
+--- xen-4.13.0-testing.orig/tools/xenpmd/xenpmd.c
++++ xen-4.13.0-testing/tools/xenpmd/xenpmd.c
+@@ -86,6 +86,9 @@ struct battery_status {
+ 
+ static struct xs_handle *xs;
+ 
++#if __GNUC__ >= 10
++#pragma GCC diagnostic ignored "-Wformat-truncation"
++#endif
+ #ifdef RUN_IN_SIMULATE_MODE
+     #define BATTERY_DIR_PATH "/tmp/battery"
+     #define BATTERY_INFO_FILE_PATH "/tmp/battery/%s/info" 
