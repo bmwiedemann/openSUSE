@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 03:07:50 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.27
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.27      2020-05-11 14:24:08 -0400
+    - Added a FAQ section to the documentation (gh#22)
+  
+
+-------------------------------------------------------------------
 Thu Jan 23 03:08:20 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.26
