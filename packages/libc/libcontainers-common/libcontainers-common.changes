@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 13 12:45:58 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add registry.opensuse.org as default registry [bsc#1171578] 
+
+-------------------------------------------------------------------
+Fri Apr 24 08:35:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Add /var/lib/ca-certificates/pem/SUSE.pem to the SLES mounts.
+  This for making container-suseconnect working in the public
+  cloud on-demand images. It needs that file for being able to
+  verify the server certificates of the RMT servers hosted
+  in the public cloud.
+  (https://github.com/SUSE/container-suseconnect/issues/41)
+  
+-------------------------------------------------------------------
 Fri Mar  6 11:14:24 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - New snaphot (bsc#1165917)

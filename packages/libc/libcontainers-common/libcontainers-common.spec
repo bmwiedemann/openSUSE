@@ -94,6 +94,7 @@ cd ..
 cat >>%{SOURCE5} <<EOL
 /etc/SUSEConnect:/etc/SUSEConnect
 /etc/zypp/credentials.d/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials
+/var/lib/ca-certificates/pem/SUSE.pem:/etc/pki/trust/anchors/SUSE.pem
 EOL
 %endif
 

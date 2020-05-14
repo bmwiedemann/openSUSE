@@ -189,4 +189,19 @@
     <comment></comment>
     <requestid>782131</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e25394db62ab52a99e31aefd4a4c3250</srcmd5>
+    <version>20200306</version>
+    <time>1589491420</time>
+    <user>dimstar_suse</user>
+    <comment>- Add registry.opensuse.org as default registry [bsc#1171578] 
+
+- Add /var/lib/ca-certificates/pem/SUSE.pem to the SLES mounts.
+  This for making container-suseconnect working in the public
+  cloud on-demand images. It needs that file for being able to
+  verify the server certificates of the RMT servers hosted
+  in the public cloud.
+  (https://github.com/SUSE/container-suseconnect/issues/41)</comment>
+    <requestid>805286</requestid>
+  </revision>
 </revisionlist>
