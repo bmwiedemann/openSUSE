@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 09:12:56 UTC 2020 - Jean Delvare <jdelvare@suse.com>
+
+- lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch:
+  Point owners of Nuvoton W83677HG-I and compatible chipsets to
+  the nct6775 driver, as support was just removed from the
+  w83627ehf driver (bsc#1169316).
+
+-------------------------------------------------------------------
 Tue Dec  3 08:30:17 UTC 2019 - Samu Voutilainen <smar@smar.fi>
 
 - Removed upstreamed patch lm_sensors-3.4.0-sensors-detect-ppc64le.patch

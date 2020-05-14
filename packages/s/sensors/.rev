@@ -845,4 +845,12 @@
     <comment></comment>
     <requestid>753168</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>6334dd066e59efa060b366f26309210e</srcmd5>
+    <version>3.6.0</version>
+    <time>1589491493</time>
+    <user>dimstar_suse</user>
+    <comment>Point owners of Nuvoton W83677HG-I and compatible chipsets to the nct6775 driver, as support was just removed from the w83627ehf driver (bsc#1169316)</comment>
+    <requestid>803015</requestid>
+  </revision>
 </revisionlist>
