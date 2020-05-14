@@ -1879,7 +1879,7 @@
       <repopackage name="libgitg-ext-1_0-0"/>
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
-      <repopackage name="libgladeui-2-6"/>
+      <repopackage name="libgladeui-2-12"/>
       <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglib-2_0-0-32bit" arch="x86_64"/>
@@ -2417,7 +2417,7 @@
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
       <repopackage name="libmygpo-qt5-1"/>
-      <repopackage name="libmypaint-1_5-1"/>
+      <repopackage name="libmypaint-1_6-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
@@ -4698,6 +4698,7 @@
       <repopackage name="ruby2.7-rubygem-restility"/>
       <repopackage name="ruby2.7-rubygem-reverse_markdown"/>
       <repopackage name="ruby2.7-rubygem-rgen"/>
+      <repopackage name="ruby2.7-rubygem-rice"/>
       <repopackage name="ruby2.7-rubygem-ronn"/>
       <repopackage name="ruby2.7-rubygem-rouge"/>
       <repopackage name="ruby2.7-rubygem-rouge-1"/>
