@@ -65,6 +65,7 @@
     <package name="busybox-patch" replaces="patch"/>
     <package name="busybox-procps" replaces="procps"/>
     <package name="busybox-sed" replaces="sed"/>
+    <package name="busybox-sendmail"/>
     <package name="busybox-sh"/>
     <package name="busybox-sharutils"/>
     <package name="busybox-tar" replaces="tar"/>

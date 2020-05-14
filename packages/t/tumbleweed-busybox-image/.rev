@@ -75,4 +75,12 @@
 - busybox-container was merged with busybox</comment>
     <requestid>798585</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>950243830dde92d1d1b7e71c5d3d2e3d</srcmd5>
+    <version>1.0.0</version>
+    <time>1589491507</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new busybox-sendmail sub-package</comment>
+    <requestid>803062</requestid>
+  </revision>
 </revisionlist>

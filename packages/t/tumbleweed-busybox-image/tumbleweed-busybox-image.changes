@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 14:46:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add new busybox-sendmail sub-package
+
+-------------------------------------------------------------------
 Tue Apr 28 06:45:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add busybox-sh (was splitted from busybox-ash because of bash)
