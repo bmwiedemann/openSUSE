@@ -17,7 +17,7 @@
 
 
 Name:           rakudo
-Version:        2020.02
+Version:        2020.05.1
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
@@ -25,11 +25,11 @@ Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  moarvm-devel >= 2020.02
-BuildRequires:  nqp >= 2020.02
+BuildRequires:  moarvm-devel >= 2020.05
+BuildRequires:  nqp >= 2020.05
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2020.02
-Requires:       nqp >= 2020.02
+Requires:       moarvm >= 2020.05
+Requires:       nqp >= 2020.05
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

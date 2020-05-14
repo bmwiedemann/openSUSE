@@ -501,4 +501,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment>Added missing .changes entry for latest fix</comment>
     <requestid>782827</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ba402dbcc9690b4a04ce467be31196a8</srcmd5>
+    <version>2020.05.1</version>
+    <time>1589491692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805639</requestid>
+  </revision>
 </revisionlist>

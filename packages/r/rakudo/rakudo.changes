@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 13 12:59:55 CEST 2020 - nine@detonation.org
+
+- update to version 2020.05.1
+  + Implement support of environment variables RAKULIB, RAKUDOLIB, RAKU_TEST_DIE_ON_FAIL
+    and RAKU_TEST_TIMES to eventually replace deprecated PERL6LIB, PERL6_TEST_DIE_ON_FAIL
+    and PERL6_TEST_TIMES
+  + Add multiple needles feature to Str.index/rindex
+  + dd can now also handle BOOTContext objects
+  + Str now has .Date and DateTime coercers
+  + Date.yyyy-mm-dd now takes a separator parameter, defaulting to -
+  + Added Date.dd-mm-yyyy and Date.mm-dd-yyyy methods
+  + IterationBuffer now has a .Slip method for easier iteration
+  + Add "is implementation-detail" trait and hide exposed internals with it
+  + Introduce ^... and ^...^ sequence generator operators
+  + Add Date.last-date-in-month and Date.first-day-in-month methods
+  + Add a parents metamethod to Metamodel::ParametricRoleGroupHOW
+  + Implement VM.request-garbage-collection
+  + Remove undocumented Seq.new-consumed
+  + Improve behavior of default ThreadPoolScheduler, increasing efficiency of multithreaded
+    applications
+  + Speed up compilation of large projects
+  + Lots of bug fixes and speedups
+
+-------------------------------------------------------------------
 Mon Mar  9 08:34:11 UTC 2020 - Stefan Seifert <nine@detonation.org>
 
 - Fix /usr/bin/raku missing due to quoting error in call to ln
