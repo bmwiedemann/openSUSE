@@ -27,7 +27,7 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
   <debuginfo>
     <enable/>
   </debuginfo>
-  <repository name="standard" rebuild="local">
+  <repository name="standard" rebuild="local" block="never">
     <arch>x86_64</arch>
     <arch>i586</arch>
   </repository>
