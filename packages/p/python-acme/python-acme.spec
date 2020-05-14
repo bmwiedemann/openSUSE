@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname acme
 Name:           python-%{libname}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -43,7 +43,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 1.2.3
 Requires:       python-josepy >= 1.1.0
-Requires:       python-ndg-httpsclient
 Requires:       python-pyOpenSSL >= 0.13.1
 Requires:       python-pyRFC3339
 Requires:       python-pytz

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 08:22:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.4.0
+  * Added TLS-ALPN-01 challenge support in the acme library. Support of this
+    challenge in the Certbot client is planned to be added in a future release.
+  * mock dependency is now conditional on Python 2 in all of our packages.
+  * When using an RFC 8555 compliant endpoint, the acme library no longer sends the
+    resource field in any requests or the type field when responding to challenges.
+
+-------------------------------------------------------------------
 Wed Mar 11 13:40:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.3.0
