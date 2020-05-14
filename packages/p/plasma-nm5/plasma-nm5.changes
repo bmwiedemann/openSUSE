@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 08:25:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix appearance of the KCM (kde#418416):
+  * 0001-Use-system-color-scheme-from-Kirigami-instead-of-Pla.patch
+  * 0002-KCM-restore-original-color.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5

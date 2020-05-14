@@ -1,0 +1,78 @@
+From a380fadeb1357a56223ca0e8d0c9c319271f48e3 Mon Sep 17 00:00:00 2001
+From: Jan Grulich <jgrulich@redhat.com>
+Date: Tue, 3 Mar 2020 11:19:36 +0100
+Subject: [PATCH 1/2] Use system color scheme from Kirigami instead of Plasma
+ theme color
+
+Summary: BUG: 418416
+
+Reviewers: ngraham, #plasma, davidedmundson
+
+Reviewed By: #plasma, davidedmundson
+
+Subscribers: davidre, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D27799
+---
+ CMakeLists.txt   | 15 +++++++--------
+ kcm/qml/main.qml |  5 ++++-
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1339b789..22134c89 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,14 +55,13 @@ set_package_properties(KF5ModemManagerQt PROPERTIES
+ 
+ ecm_find_qmlmodule(org.kde.prison 1.0)
+ 
+-if (BUILD_MOBILE)
+-    find_package(KF5Kirigami2 ${KF5_MIN_VERSION} CONFIG)
+-    set_package_properties(KF5Kirigami2 PROPERTIES
+-        DESCRIPTION "A QtQuick based components set"
+-        PURPOSE "Required at runtime by the mobile KCMs"
+-        TYPE RUNTIME
+-    )
+-endif()
++find_package(KF5Kirigami2 ${KF5_MIN_VERSION} CONFIG)
++set_package_properties(KF5Kirigami2 PROPERTIES
++    DESCRIPTION "A QtQuick based components set"
++    PURPOSE "Required at runtime by the KCMs"
++    TYPE RUNTIME
++)
++
+ 
+ # Required only for getting information about NetworkManager version in CMake
+ find_package(NetworkManager 1.4.0)
+diff --git a/kcm/qml/main.qml b/kcm/qml/main.qml
+index dd7e9a2e..cb21a280 100755
+--- a/kcm/qml/main.qml
++++ b/kcm/qml/main.qml
+@@ -24,6 +24,7 @@ import QtQuick.Controls 2.5 as QQC2
+ import org.kde.plasma.core 2.0 as PlasmaCore
+ import org.kde.plasma.extras 2.0 as PlasmaExtras
+ import org.kde.plasma.networkmanagement 0.2 as PlasmaNM
++import org.kde.kirigami 2.9 as Kirigami
+ 
+ Item {
+     id: root
+@@ -35,11 +36,13 @@ Item {
+     signal requestExportConnection(string connection)
+     signal requestToChangeConnection(string name, string path)
+ 
++    Kirigami.Theme.colorSet: Kirigami.Theme.View
++
+     Rectangle {
+         id: background
+         anchors.fill: parent
+         focus: true
+-        color: theme.backgroundColor
++        color: Kirigami.Theme.backgroundColor
+     }
+ 
+     PlasmaNM.Handler {
+-- 
+2.25.1
+

@@ -35,6 +35,9 @@ Patch0:         0001-Revert-Show-correct-current-download-and-upload-spee.patch
 Patch1:         0001-Revert-Require-NM-1.4.0-and-newer.patch
 Patch2:         0001-Revert-Use-NetworkManager-DeviceStatistics-instead-o.patch
 Patch3:         0001-Revert-Inform-about-missing-NetworkManager-VPN-plugi.patch
+# PATCH-FIX-UPSTREAM (master)
+Patch100:       0001-Use-system-color-scheme-from-Kirigami-instead-of-Pla.patch
+Patch101:       0002-KCM-restore-original-color.patch
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  fdupes
@@ -71,6 +74,7 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  pkgconfig(openconnect) >= 5.2
 Requires:       NetworkManager
 Requires:       kded
+Requires:       kirigami2
 Requires:       kwalletd5
 Requires:       prison-qt5-imports
 Recommends:     mobile-broadband-provider-info
