@@ -473,4 +473,12 @@
   * qdbus-qt5.patch (forwarded request 793893 from Vogtinator)</comment>
     <requestid>795879</requestid>
   </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>62b0d0a03c3a6d0df2bec8ac768a2c53</srcmd5>
+    <version>2.10</version>
+    <time>1589491470</time>
+    <user>dimstar_suse</user>
+    <comment>- fix extra tokens at the end of %endif directive build errors</comment>
+    <requestid>802888</requestid>
+  </revision>
 </revisionlist>

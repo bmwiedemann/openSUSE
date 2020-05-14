@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 08:20:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix extra tokens at the end of %endif directive build errors
+
+-------------------------------------------------------------------
 Mon Apr 13 09:54:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Improve patch to fix lookup of qdbus-qt5 completion, previously

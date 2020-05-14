@@ -59,7 +59,7 @@ Patch13:        bash-completion-fix-missing-directory-completion-with-filename-p
 %if %build_doc
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
-%endif %build_doc
+%endif
 BuildRequires:  pkg-config
 %if %build_core
 BuildRequires:  cmake
@@ -83,7 +83,7 @@ Provides:       bash-completion:%{_datadir}/pkgconfig/bash-completion.pc
 This package contains the package configuration file of the
 package bash-completion.
 
-%endif %build_core
+%endif
 %if %build_doc
 %package doc
 Summary:        The Documentation of Programmable Completion for Bash
@@ -95,7 +95,7 @@ BuildArch:      noarch
 This package contains the package documentation file of the
 package bash-completion.
 
-%endif %build_doc
+%endif
 %prep
 %setup -q
 %patch0 -b .p0
@@ -116,13 +116,13 @@ package bash-completion.
 %configure
 %if %build_core
 make %{?_smp_mflags}
-%endif %build_core
+%endif
 %if %build_doc
 pushd doc
     mkdir html
     a2x -D html -d book -f xhtml --asciidoc-opts="--unsafe" main.txt
 popd
-%endif %build_doc
+%endif
 
 %install
 %if %build_core
@@ -155,7 +155,7 @@ fi
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/bts
 # Seems to be broken (boo#1161136)
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/_adb
-%endif %build_core
+%endif
 %if %build_doc
 pushd doc
     mkdir -p  %{buildroot}%{_defaultdocdir}/%{name}/html
@@ -163,7 +163,7 @@ pushd doc
 popd
 install -m 0644 AUTHORS %{buildroot}%{_defaultdocdir}/%{name}/
 install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{name}/README
-%endif %build_doc
+%endif
 
 %if %build_core
 %files
@@ -173,7 +173,7 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{name}/README
 %exclude %{_defaultdocdir}/%{name}/AUTHORS
 %exclude %{_defaultdocdir}/%{name}/README
 %exclude %{_defaultdocdir}/%{name}/html/
-%endif %build_doc
+%endif
 %{_datadir}/bash-completion
 %{_datadir}/cmake/bash-completion
 %config %{_sysconfdir}/profile.d/bash_completion.sh
@@ -186,7 +186,7 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{name}/README
 # Own this directory to prevent it.
 %dir %{_datadir}/bash-completion
 
-%endif %build_core
+%endif
 %if %build_doc
 %files doc
 %defattr(-,root,root)
@@ -195,6 +195,6 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{name}/README
 %{_defaultdocdir}/%{name}/README
 %{_defaultdocdir}/%{name}/html/
 
-%endif %build_doc
+%endif
 
 %changelog
