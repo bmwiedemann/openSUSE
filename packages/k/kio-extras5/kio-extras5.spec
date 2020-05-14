@@ -1,7 +1,7 @@
 #
 # spec file for package kio-extras5
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,28 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        19.12.3
+Version:        20.04.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch:          smb-accurately-attempt-to-resolve-the-correct-WSD-host.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  flac-devel
 BuildRequires:  gperf
+BuildRequires:  kf5-filesystem
+BuildRequires:  kdsoap-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  libmtp-devel
+BuildRequires:  libssh-devel
+BuildRequires:  libtag-devel
+BuildRequires:  openslp-devel
+BuildRequires:  pkgconfig
+BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5ActivitiesStats)
 BuildRequires:  cmake(KF5Archive)
@@ -44,25 +51,17 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Pty)
-BuildRequires:  libjpeg-devel
-BuildRequires:  libmtp-devel
-BuildRequires:  libssh-devel
-BuildRequires:  libtag-devel
-BuildRequires:  openslp-devel
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  xz
+BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Network) >= 5.4.0
 BuildRequires:  cmake(Qt5Sql)
@@ -80,6 +79,10 @@ Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}
 Obsoletes:      kde-odf-thumbnail < %{version}
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 Additional KIO-slaves for KDE applications.
@@ -107,6 +110,7 @@ This is the development package for libkioarchive
 
 %prep
 %setup -q -n %{rname}-%{version}
+%autopatch -p1
 sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %build

@@ -1,0 +1,36 @@
+From a4aefbbd35345ba6da80c65723161b7d16d3c431 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 27 Apr 2020 11:36:36 +0200
+Subject: smb: accurately attempt to resolve the correct WSD host
+
+this previously was the wrong variable. m_current_url is only set after
+url checking while kurl would be the current url under check. this lead
+to state confusion was implicit stat() calls from dolphin on host foo would
+evaluate the previous host (e.g. bar) for the wsd suffix. this meant we'll
+let a foo with suffix pass through the check, and that just mustn't ever
+happen.
+
+BUG: 420578
+FIXED-IN: 20.04.1
+---
+ smb/kio_smb_browse.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/smb/kio_smb_browse.cpp b/smb/kio_smb_browse.cpp
+index 048cea5..b6d956f 100644
+--- a/smb/kio_smb_browse.cpp
++++ b/smb/kio_smb_browse.cpp
+@@ -234,8 +234,8 @@ QUrl SMBSlave::checkURL(const QUrl &kurl_) const
+     // NB: smbc has no way to resolve a name without also triggering auth etc.: we must
+     //   rely on the system's ability to resolve DNSSD for this check.
+     const QLatin1String wsdSuffix(".kio-discovery-wsd");
+-    if (m_current_url.host().endsWith(wsdSuffix)) {
+-        QString host = m_current_url.host();
++    if (kurl.host().endsWith(wsdSuffix)) {
++        QString host = kurl.host();
+         host.chop(wsdSuffix.size());
+         const QString dnssd(host + ".local");
+         auto dnssdHost = QHostInfo::fromName(dnssd);
+-- 
+cgit v1.1
+

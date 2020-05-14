@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun May  3 16:28:47 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add smb-accurately-attempt-to-resolve-the-correct-WSD-host.patch
+  to fix some problems connecting to hosts found via the new
+  WS-Discovery method (kde#420578)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * sftp: extra verbosity when put fails
+  * smb: debug the smbc debug level
+  * Fix lifetime of slot in KIO-MTP
+  * smb: add hack to support spaces in workgroup names (kde#204423)
+  * smb: use prettyname.kio-discovery-wsd for hostname of wsdiscoveries
+  * import license copies via reuse
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-rc
+- Changes since 20.03.80:
+  * sftp: fix partial transfer resuming when copying to local
+  * sftp: do not show creation time when we do not know it (kde#375305)
+  * smb: add some more topical debug output on opendir failure
+  * add some extra debug in case stat fails
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.04-beta
+- Too many changes since 19.12.3, only listing bugfixes:
+  * sftp: fix seekPos + file resuming when part file is of size 11 (kde#417645)
+  * add readdirplus2 support for samba>=4.12 (kde#402988)
+  * smb: fix ipv6 support (kde#417682)
+  * add initial wsdiscovery support (kde#392447)
+  * smb: map EHOSTUNREACH to ERR_CANNOT_CONNECT (kde#417166)
+  * Improved quality of JPEG thumbnails (kde#411262)
+  * Restore cursor thumbnailer (kde#387660)
+  * fix preview of plain text files when using dark theme (kde#409380, kde#406821)
+
+-------------------------------------------------------------------
 Thu Mar  5 20:36:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 19.12.3
