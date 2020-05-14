@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
