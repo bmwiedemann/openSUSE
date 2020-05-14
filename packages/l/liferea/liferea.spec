@@ -1,7 +1,7 @@
 #
 # spec file for package liferea
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
 Group:          Productivity/Other
-Url:            https://lzone.de/liferea/
+URL:            https://lzone.de/liferea/
 Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}b.tar.bz2
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
@@ -64,7 +64,7 @@ news aggregator for GTK and GNOME.
 %patch0
 
 %build
-%if 0%{?suse_version} >= 01550 && 0%{?is_opensuse}
+%if 0%{?suse_version} >= 01550 || 0%{?sle_version} >= 150200
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 %endif
 %configure \

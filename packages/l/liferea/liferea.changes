@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 14 09:08:37 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Export WEBKIT_DISABLE_COMPOSITING_MODE=1 on Leap 15.2 build
+
+-------------------------------------------------------------------
 Thu Jan 30 11:14:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
