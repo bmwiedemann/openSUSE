@@ -1,0 +1,29 @@
+From 9d701fe1c729d5b0076c2993202fbc4bf113b0e7 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 6 May 2020 16:14:13 +0200
+Subject: [PATCH] fcgiwrap.service: depend on fcgiwrap.socket
+
+Without this dependency, users may run "systemctl start fcgiwrap.service"
+without the socket being started first, resulting in fcgiwrap trying to
+do CGI communication via stdin (/dev/null), which fails and spits out
+lots of confusing error messages.
+---
+ systemd/fcgiwrap.service | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/systemd/fcgiwrap.service b/systemd/fcgiwrap.service
+index cd9ac22..90e5e28 100644
+--- a/systemd/fcgiwrap.service
++++ b/systemd/fcgiwrap.service
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=Simple CGI Server
+-After=nss-user-lookup.target
++After=nss-user-lookup.target fcgiwrap.socket
++Requires=fcgiwrap.socket
+ 
+ [Service]
+ EnvironmentFile=-/etc/sysconfig/fcgiwrap
+-- 
+2.26.2
+

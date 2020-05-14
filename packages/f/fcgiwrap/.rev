@@ -17,4 +17,12 @@ Fixed build for Leap 42.2 and 42.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>679579</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>898011adfd4c3a19249193ce777b5bf2</srcmd5>
+    <version>1.1.0+18+g99c942c</version>
+    <time>1589491712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805643</requestid>
+  </revision>
 </revisionlist>

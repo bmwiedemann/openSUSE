@@ -1,7 +1,7 @@
 #
 # spec file for package fcgiwrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@ Patch2:         add-environment-variable-for-number-of-workers.patch
 Patch3:         Declare-cgi_error-noreturn.patch
 Patch4:         support-p-flag-in-sysconfig.patch
 Patch5:         fix-kill-parameter-sequence.patch
-Patch6:		fix-run-fcgiwrap-script.patch
-Patch7:		Quit-without-listening-socket.patch
+Patch6:         fix-run-fcgiwrap-script.patch
+Patch7:         fcgiwrap.service-depend-on-fcgiwrap.socket.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
