@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 20:07:40 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- boo#1106004 fix incorrect locations for files in postfix-files
+
+-------------------------------------------------------------------
 Sun Apr 19 10:22:12 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Dropped deprecated-RES_INSECURE1.patch to make DNSSEC-secured
