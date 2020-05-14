@@ -19,20 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-certbot
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz
-BuildRequires:  %{python_module acme >= 0.40.0}
+BuildRequires:  %{python_module acme >= 1.4.0}
 BuildRequires:  %{python_module configargparse >= 0.9.3}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module cryptography >= 1.2.3}
 BuildRequires:  %{python_module distro >= 1.0.1}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module josepy >= 1.1.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parsedatetime >= 1.3}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
@@ -42,14 +41,13 @@ BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-acme >= 0.40.0
+Requires:       python-acme >= 1.4.0
 Requires:       python-configargparse >= 0.9.3
 Requires:       python-configobj
 Requires:       python-cryptography >= 1.2.3
 Requires:       python-distro >= 1.0.1
 Requires:       python-future
 Requires:       python-josepy >= 1.1.0
-Requires:       python-mock
 Requires:       python-parsedatetime >= 1.3
 Requires:       python-pyRFC3339
 Requires:       python-pytz
@@ -62,9 +60,11 @@ Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
 BuildArch:      noarch
 %if %{with python2}
+BuildRequires:  python2-mock
 BuildRequires:  python2-typing
 %endif
 %ifpython2
+Requires:       python-mock
 Requires:       python-typing
 %endif
 %python_subpackages

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 14 08:28:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.4.0
+  * Added serial number of certificate to the output of certbot certificates
+  * Expose two new environment variables in the authenticator and cleanup scripts used by
+    the manual plugin: CERTBOT_REMAINING_CHALLENGES is equal to the number of challenges
+    remaining after the current challenge, CERTBOT_ALL_DOMAINS is a comma-separated list
+    of all domains challenged for the current certificate.
+  * Added minimal proxy support for OCSP verification.
+  * mock dependency is now conditional on Python 2 in all of our packages.
+  * Fix hanging OCSP queries during revocation checking - added a 10 second timeout.
+  * Standalone servers now have a default socket timeout of 30 seconds, fixing
+    cases where an idle connection can cause the standalone plugin to hang.
+  * Parsing of the RFC 8555 application/pem-certificate-chain now tolerates CRLF line
+    endings. This should fix interoperability with Buypass' services.
+
+-------------------------------------------------------------------
 Tue Apr 21 08:13:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
