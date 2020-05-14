@@ -1,0 +1,125 @@
+From 9e170a5def6ce48c8273843d13bd5bbb43b802da Mon Sep 17 00:00:00 2001
+From: Jan-Marek Glogowski <jan-marek.glogowski@extern.cib.de>
+Date: Thu, 5 Mar 2020 20:49:55 +0100
+Subject: [PATCH] Dump some more layout info as Xml
+
+Change-Id: Ia82d545e4c5d4507899d123eba9d4b2efded992d
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/90125
+Tested-by: Jenkins
+Reviewed-by: Jan-Marek Glogowski <glogow@fbihome.de>
+(cherry picked from commit 36f0a04d3caa176b20dccb10ff0bbcfb5cb8d893)
+---
+ sw/inc/swrect.hxx                |  3 ++-
+ sw/source/core/bastyp/swrect.cxx | 12 ++++++++++++
+ sw/source/core/text/xmldump.cxx  | 23 ++++++++++-------------
+ 3 files changed, 24 insertions(+), 14 deletions(-)
+
+diff --git a/sw/inc/swrect.hxx b/sw/inc/swrect.hxx
+index 69b1f2ad781a..6cde3c3f01e7 100644
+--- a/sw/inc/swrect.hxx
++++ b/sw/inc/swrect.hxx
+@@ -26,6 +26,7 @@
+ #include "swdllapi.h"
+ 
+ class SvStream;
++typedef struct _xmlTextWriter* xmlTextWriterPtr;
+ 
+ /// *Of course* Writer needs its own rectangles.
+ /// This is half-open so m_Point.X() + m_Size.getWidth() is *not* included.
+@@ -104,7 +105,7 @@ public:
+ 
+     // Output operator for debugging.
+     friend SvStream& WriteSwRect( SvStream &rStream, const SwRect &rRect );
+-
++    void dumpAsXmlAttributes(xmlTextWriterPtr writer) const;
+ 
+     void Top_(      const long nTop );
+     void Bottom_(   const long nBottom );
+diff --git a/sw/source/core/bastyp/swrect.cxx b/sw/source/core/bastyp/swrect.cxx
+index 1d53e6e7a71e..884c155003e2 100644
+--- a/sw/source/core/bastyp/swrect.cxx
++++ b/sw/source/core/bastyp/swrect.cxx
+@@ -19,6 +19,8 @@
+ 
+ #include <swrect.hxx>
+ 
++#include <libxml/xmlwriter.h>
++
+ #ifdef DBG_UTIL
+ #include <tools/stream.hxx>
+ #endif
+@@ -218,6 +220,16 @@ void SwRect::SetUpperRightCorner(  const Point& rNew )
+ void SwRect::SetLowerLeftCorner(  const Point& rNew )
+     { m_Point = Point(rNew.X(), rNew.Y() - m_Size.getHeight()); }
+ 
++void SwRect::dumpAsXmlAttributes(xmlTextWriterPtr writer) const
++{
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("left"), "%li", Left());
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("top"), "%li", Top());
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("width"), "%li", Width());
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("height"), "%li", Height());
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("bottom"), "%li", Bottom());
++    xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("right"), "%li", Right());
++}
++
+ #ifdef DBG_UTIL
+ SvStream& WriteSwRect(SvStream &rStream, const SwRect &rRect)
+ {
+diff --git a/sw/source/core/text/xmldump.cxx b/sw/source/core/text/xmldump.cxx
+index 20f61111126a..4f3d50eba742 100644
+--- a/sw/source/core/text/xmldump.cxx
++++ b/sw/source/core/text/xmldump.cxx
+@@ -343,6 +343,12 @@ void SwFrame::dumpAsXml( xmlTextWriterPtr writer ) const
+             xmlTextWriterWriteAttribute(writer, BAD_CAST("ValidLayout"), BAD_CAST(OString::boolean(!pPageFrame->IsInvalidLayout()).getStr()));
+             xmlTextWriterWriteAttribute(writer, BAD_CAST("ValidContent"), BAD_CAST(OString::boolean(!pPageFrame->IsInvalidContent()).getStr()));
+             xmlTextWriterEndElement(writer);
++            xmlTextWriterStartElement(writer, BAD_CAST("page_info"));
++            xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("phyNum"), "%d", pPageFrame->GetPhyPageNum());
++            xmlTextWriterWriteFormatAttribute(writer, BAD_CAST("virtNum"), "%d", pPageFrame->GetVirtPageNum());
++            OUString aFormatName = pPageFrame->GetPageDesc()->GetName();
++            xmlTextWriterWriteFormatAttribute( writer, BAD_CAST("pageDesc"), "%s", BAD_CAST(OUStringToOString(aFormatName, RTL_TEXTENCODING_UTF8).getStr()));
++            xmlTextWriterEndElement(writer);
+         }
+ 
+         if (IsTextFrame())
+@@ -421,22 +427,16 @@ void SwFrame::dumpInfosAsXml( xmlTextWriterPtr writer ) const
+ {
+     // output the Frame
+     xmlTextWriterStartElement( writer, BAD_CAST( "bounds" ) );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "left" ), "%ld", getFrameArea().Left() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "top" ), "%ld", getFrameArea().Top() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "width" ), "%ld", getFrameArea().Width() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "height" ), "%ld", getFrameArea().Height() );
++    getFrameArea().dumpAsXmlAttributes(writer);
+     xmlTextWriterWriteAttribute(writer, BAD_CAST("mbFixSize"), BAD_CAST(OString::boolean(HasFixSize()).getStr()));
+     xmlTextWriterWriteAttribute(writer, BAD_CAST("mbValidPos"), BAD_CAST(OString::boolean(isFrameAreaPositionValid()).getStr()));
+     xmlTextWriterWriteAttribute(writer, BAD_CAST("mbValidSize"), BAD_CAST(OString::boolean(isFrameAreaSizeValid()).getStr()));
+     xmlTextWriterWriteAttribute(writer, BAD_CAST("mbValidPrtArea"), BAD_CAST(OString::boolean(isFramePrintAreaValid()).getStr()));
+     xmlTextWriterEndElement( writer );
+ 
+-    // output the Prt
++    // output the print area
+     xmlTextWriterStartElement( writer, BAD_CAST( "prtBounds" ) );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "left" ), "%ld", getFramePrintArea().Left() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "top" ), "%ld", getFramePrintArea().Top() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "width" ), "%ld", getFramePrintArea().Width() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "height" ), "%ld", getFramePrintArea().Height() );
++    getFramePrintArea().dumpAsXmlAttributes(writer);
+     xmlTextWriterEndElement( writer );
+ }
+ 
+@@ -515,10 +515,7 @@ void SwAnchoredObject::dumpAsXml( xmlTextWriterPtr writer ) const
+     xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "ptr" ), "%p", this );
+ 
+     xmlTextWriterStartElement( writer, BAD_CAST( "bounds" ) );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "left" ), "%ld", GetObjBoundRect().Left() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "top" ), "%ld", GetObjBoundRect().Top() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "width" ), "%ld", GetObjBoundRect().Width() );
+-    xmlTextWriterWriteFormatAttribute( writer, BAD_CAST( "height" ), "%ld", GetObjBoundRect().Height() );
++    GetObjBoundRect().dumpAsXmlAttributes(writer);
+     xmlTextWriterEndElement( writer );
+ 
+     if (const SdrObject* pObject = GetDrawObj())
+-- 
+2.26.1
+

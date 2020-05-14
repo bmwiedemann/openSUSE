@@ -103,6 +103,15 @@ Patch7:         poppler-0.86.patch
 Patch8:         replace-boost-bimap-in-sdext-pdfimport.patch
 # Bug 1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
 Patch9:         bsc1165870.diff
+# Bug 1160687 - LO-L3: Elements on title page mixed up
+Patch10:        bsc1160687-1.diff
+Patch11:        bsc1160687-2.diff
+Patch12:        bsc1160687-3.diff
+Patch13:        bsc1160687-4.diff
+Patch14:        bsc1160687-5.diff
+Patch15:        bsc1160687-6.diff
+Patch16:        bsc1160687-7.diff
+Patch17:        bsc1160687-8.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -962,6 +971,14 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 %patch990 -p1
 %patch991 -p1
 

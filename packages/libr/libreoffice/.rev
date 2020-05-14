@@ -2718,4 +2718,22 @@ Petr</comment>
     <comment></comment>
     <requestid>800578</requestid>
   </revision>
+  <revision rev="203" vrev="3">
+    <srcmd5>34e8ec0ec1e982f9a37e1cb51d673eb1</srcmd5>
+    <version>6.4.3.2</version>
+    <time>1589491356</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1160687 - LO-L3: Elements on title page mixed up
+  * bsc1160687-1.diff
+  * bsc1160687-2.diff
+  * bsc1160687-3.diff
+  * bsc1160687-4.diff
+  * bsc1160687-5.diff
+  * bsc1160687-6.diff
+  * bsc1160687-7.diff
+  * bsc1160687-8.diff
+
+- Fix bsc#1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below</comment>
+    <requestid>805025</requestid>
+  </revision>
 </revisionlist>

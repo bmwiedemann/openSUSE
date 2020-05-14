@@ -1,0 +1,90 @@
+From fda60625c9e8bbc0259c790e7da76e608a012451 Mon Sep 17 00:00:00 2001
+From: Miklos Vajna <vmiklos@collabora.com>
+Date: Mon, 27 Apr 2020 10:54:27 +0200
+Subject: [PATCH] DOCX import: handle <wp:positionH
+ relativeFrom="insideMargin">
+
+This is the same as page, but it is from-left on odd pages and
+from-right on even pages, i.e. our "mirror on even pages" mode.
+
+(cherry picked from commit fccbb557add457db16e0556c3f0172cafc2cf981)
+
+Conflicts:
+	writerfilter/qa/cppunittests/dmapper/GraphicImport.cxx
+
+Change-Id: I018e0ac165a3d802f64cfc314d5c5f58da3cb580
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/93003
+Tested-by: Jenkins
+Reviewed-by: Mike Kaganski <mike.kaganski@collabora.com>
+---
+
+diff --git a/writerfilter/source/dmapper/GraphicHelpers.cxx b/writerfilter/source/dmapper/GraphicHelpers.cxx
+index 3339156ae3b2..9168ad51eebd 100644
+--- a/writerfilter/source/dmapper/GraphicHelpers.cxx
++++ b/writerfilter/source/dmapper/GraphicHelpers.cxx
+@@ -102,6 +102,11 @@ void PositionHandler::lcl_attribute( Id aName, Value& rVal )
+                         m_nRelation =  text::RelOrientation::PAGE_FRAME;
+                         break;
+
++                    case NS_ooxml::LN_Value_wordprocessingDrawing_ST_RelFromH_insideMargin:
++                        m_nRelation = text::RelOrientation::PAGE_FRAME;
++                        m_bPageToggle = true;
++                        break;
++
+                     case NS_ooxml::LN_Value_wordprocessingDrawing_ST_RelFromH_column:
+                         m_nRelation = text::RelOrientation::FRAME;
+                         break;
+diff --git a/writerfilter/source/dmapper/GraphicHelpers.hxx b/writerfilter/source/dmapper/GraphicHelpers.hxx
+index dbfe9ddd9f13..d28f2fb50bf7 100644
+--- a/writerfilter/source/dmapper/GraphicHelpers.hxx
++++ b/writerfilter/source/dmapper/GraphicHelpers.hxx
+@@ -37,6 +37,7 @@ public:
+     sal_Int16 orientation() const;
+     sal_Int16 relation() const { return m_nRelation;}
+     sal_Int32 position() const { return m_nPosition;}
++    bool GetPageToggle() const { return m_bPageToggle; }
+  private:
+     virtual void lcl_attribute( Id aName, Value& rVal ) override;
+     virtual void lcl_sprm( Sprm& rSprm ) override;
+@@ -45,6 +46,7 @@ public:
+     sal_Int32 m_nPosition;
+     std::pair<OUString, OUString>& m_rPositionOffsets;
+     std::pair<OUString, OUString>& m_rAligns;
++    bool m_bPageToggle = false;
+ };
+
+ class WrapHandler: public LoggedProperties
+diff --git a/writerfilter/source/dmapper/GraphicImport.cxx b/writerfilter/source/dmapper/GraphicImport.cxx
+index 97c807752f60..a2c19383c95d 100644
+--- a/writerfilter/source/dmapper/GraphicImport.cxx
++++ b/writerfilter/source/dmapper/GraphicImport.cxx
+@@ -193,6 +193,7 @@ public:
+
+     sal_Int16 nHoriOrient;
+     sal_Int16 nHoriRelation;
++    bool bPageToggle = false;
+     sal_Int16 nVertOrient;
+     sal_Int16 nVertRelation;
+     text::WrapTextMode nWrap;
+@@ -343,8 +344,8 @@ public:
+                                                        uno::makeAny(nLeftPosition));
+         xGraphicObjectProperties->setPropertyValue(getPropertyName( PROP_HORI_ORIENT_RELATION ),
+                 uno::makeAny(nHoriRelation));
+-        xGraphicObjectProperties->setPropertyValue(getPropertyName( PROP_PAGE_TOGGLE ),
+-                uno::makeAny(false));
++        xGraphicObjectProperties->setPropertyValue(getPropertyName(PROP_PAGE_TOGGLE),
++                                                   uno::makeAny(bPageToggle));
+         if (!bRelativeOnly)
+             xGraphicObjectProperties->setPropertyValue(getPropertyName( PROP_VERT_ORIENT_POSITION),
+                                                        uno::makeAny(nTopPosition));
+@@ -1089,6 +1090,7 @@ void GraphicImport::lcl_sprm(Sprm& rSprm)
+                 if( !m_pImpl->bUseSimplePos )
+                 {
+                     m_pImpl->nHoriRelation = pHandler->relation();
++                    m_pImpl->bPageToggle = pHandler->GetPageToggle();
+                     m_pImpl->nHoriOrient = pHandler->orientation();
+                     m_pImpl->nLeftPosition = pHandler->position();
+
+--
+2.26.1
+

@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 08:57:23 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1160687 - LO-L3: Elements on title page mixed up
+  * bsc1160687-1.diff
+  * bsc1160687-2.diff
+  * bsc1160687-3.diff
+  * bsc1160687-4.diff
+  * bsc1160687-5.diff
+  * bsc1160687-6.diff
+  * bsc1160687-7.diff
+  * bsc1160687-8.diff
+
+-------------------------------------------------------------------
 Tue May  5 12:36:00 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 
-- Fix Bug 1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
+- Fix bsc#1165870 - LO-L3: Image shadow that should be invisible shown as extraneous line below
   * bsc1165870.diff
 
 -------------------------------------------------------------------
