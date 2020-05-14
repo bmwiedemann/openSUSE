@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2020.02
+%global mvrel 2020.05
 Name:           moarvm
 Version:        %mvrel
 Release:        2.1

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 13 12:39:51 CEST 2020 - nine@detonation.org
+
+- update to version 2020.05
+
++ Use the FSA for ConcBlockingQueue
++ Use memcpy instead of strncpy
++ Fix some compiler warnings
++ Fix numerous very rare but possible GC bugs
++ Align offsets in P6opaque.c
++ Don't null-terminate string when stringifying int
++ Improve handling of errors in native callbacks
++ Use smaller buffer for native int to str coercion
++ Fix deadlock when trying to report an unsupported NativeCall return type
++ Improve memory usage of utf8-c8 encoding
++ Make profiling more stable, resolving potential panics
++ Add more ops to be profiled for allocations
++ Give MVMSpeshAnn an "order" field to improve diagnostic output
++ Let encode take a preallocated buffer
++ Fix a tiny mistake in containers implementation
++ Add a value_desc_cont container descriptor, which brings the needs of Rakudo's Scalar into the VM
++ Fix invalid reads when freeing native callback cache
++ Implement calculation of unmanaged size for CArray
++ Bounds check codepoint passed to chr
++ Add missing args spesh coercion validation
++ Make OSR work in frames from invokewithcapture
++ JIT nextdispatcherfor
++ Update libuv to version 1.35.0
++ Fix segfaults in MVM_spesh_plugin_guard_list_mark, in profiler and the JIT compiler
++ Fix various memory leaks, mostly relevant to running with --full-cleanup
+
+-------------------------------------------------------------------
 Tue Mar  3 12:38:52 CET 2020 - nine@detonation.org
 
 - update to version 2020.02
