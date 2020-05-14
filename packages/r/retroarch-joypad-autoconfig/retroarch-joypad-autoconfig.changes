@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 07 08:06:51 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200429:
+  * Update and rename Moonlight_Virtual_Controller.cfg to NVIDIA_GeForce_Experience_Virtual_Controller.cfg
+  * Update and rename Xbox_One_Controller_Moonlight.cfg to Moonlight_Virtual_Controller.cfg
+  * Add Xbox One Wired autoconfig
+  * add udev, sdl2 and linuxraw autoconfigs for New Wave Toys' mini SF2 arcade stick
+  * Initial version
+  * Add SEGA Mega Drive Mini W 6-Button auto config file. (#635)
+  * Correct the A and B buttons being swapped for MayFlash GCN Adapter
+  * Add MayFlash Gamecube Adapter for xinput/udev
+
+-------------------------------------------------------------------
 Thu Mar 26 21:15:14 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200317:

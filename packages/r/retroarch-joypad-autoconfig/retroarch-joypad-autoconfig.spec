@@ -17,7 +17,7 @@
 
 
 Name:           retroarch-joypad-autoconfig
-Version:        0~git20200317
+Version:        0~git20200429
 Release:        0
 Summary:        RetroArch Joypad Autoconfig Files
 License:        MIT
