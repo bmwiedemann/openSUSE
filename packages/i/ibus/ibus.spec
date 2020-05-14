@@ -1,7 +1,7 @@
 #
 # spec file for package ibus
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,12 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # PATCH-FIX-UPSTREAM alarrosa@suse.com
 # Remove unnecessary qt5 dependency https://github.com/ibus/ibus/pull/2194
 Patch13:        0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch
+# PATCH-FIX-UPSTREAM ibus-use-wayland-display-for-socket-name.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse.com
+# Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name
+Patch14:        ibus-use-wayland-display-for-socket-name.patch
+# PATCH-FIX-UPSTREAM ibus-socket-name-compatibility.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse
+# Compatibility workaround for ibus-use-wayland-display-for-socket-name.patch
+Patch15:        ibus-socket-name-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -201,6 +207,8 @@ cp -r %{SOURCE11} .
 %patch12 -p1
 %endif
 %patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
 %build
 autoreconf -fi

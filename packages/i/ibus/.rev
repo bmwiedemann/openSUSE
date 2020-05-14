@@ -888,4 +888,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment>update ibus.changes: add jsc number. (forwarded request 799158 from qzhao)</comment>
     <requestid>799521</requestid>
   </revision>
+  <revision rev="103" vrev="6">
+    <srcmd5>a9c79d6be2deebca026ce067707170c8</srcmd5>
+    <version>1.5.22</version>
+    <time>1589491512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>803196</requestid>
+  </revision>
 </revisionlist>

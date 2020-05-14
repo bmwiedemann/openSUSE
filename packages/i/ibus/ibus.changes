@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 12 07:32:41 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add ibus-socket-name-compatibility.patch: Compatibility for
+  ibus-use-wayland-display-for-socket-name.patch. This fixes Qt 
+  clients breakage in Wayland (bsc#1171442, gh#ibus/ibus#2195). 
+
+-------------------------------------------------------------------
+Mon May 11 08:23:08 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add ibus-use-wayland-display-for-socket-name.patch:
+  Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name
+  (bsc#1171442, gh#ibus/ibus#2195). 
+
+-------------------------------------------------------------------
 Wed Apr 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus.spec: Drop the is_opensuse macro to eliminate the 
