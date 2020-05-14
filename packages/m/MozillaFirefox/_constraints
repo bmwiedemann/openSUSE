@@ -50,9 +50,9 @@
       <disk>
         <size unit="G">25</size>
       </disk>
-      <memory>
+      <physicalmemory>
         <size unit="G">10</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
 </constraints>

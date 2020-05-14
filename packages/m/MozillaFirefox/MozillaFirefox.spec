@@ -19,8 +19,8 @@
 
 # changed with every update
 %define major          76
-%define mainver        %major.0
-%define orig_version   76.0
+%define mainver        %major.0.1
+%define orig_version   76.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -382,7 +382,11 @@ echo "export RUSTFLAGS=\"$RUSTFLAGS\""
 echo ""
 cat << EOF
 %else
+%ifarch ppc64 ppc64le
+%limit_build -m 2500
+%else
 %limit_build -m 2000
+%endif
 cat << EOF > $MOZCONFIG
 %endif
 mk_add_options MOZILLA_OFFICIAL=1

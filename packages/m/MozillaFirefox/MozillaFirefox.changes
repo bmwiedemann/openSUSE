@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 13 12:21:13 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- change again _constraints for ppc64le use <physicalmemory>
+  and increase limit_build in spec file to reduce max_jobs.
+
+-------------------------------------------------------------------
+Sat May  9 11:45:39 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 76.0.1
+  * Fixed a bug causing some add-ons such as Amazon Assistant to see
+    multiple onConnect events, impairing functionality (bmo#1635637)
+
+-------------------------------------------------------------------
 Fri May  1 11:59:58 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 76.0
