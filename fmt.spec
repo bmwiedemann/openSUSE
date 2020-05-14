@@ -18,14 +18,13 @@
 
 %define sover   6
 Name:           fmt
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -36,14 +35,12 @@ alternative to (s)printf and IOStreams.
 
 %package -n libfmt%{sover}
 Summary:        A formatting library for C++
-Group:          System/Libraries
 
 %description -n libfmt%{sover}
 Shared library for fmt, a formatting library for C++.
 
 %package devel
 Summary:        Development files for fmt, a formatting library
-Group:          Development/Libraries/C and C++
 Requires:       libfmt%{sover} = %{version}
 
 %description devel
@@ -69,11 +66,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %postun -n libfmt%{sover} -p /sbin/ldconfig
 
 %files -n libfmt%{sover}
-%if 0%{?sle_version} > 120200
 %license LICENSE.rst
-%else
-%doc LICENSE.rst
-%endif
 %{_libdir}/libfmt.so.%{sover}*
 
 %files devel

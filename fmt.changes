@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  9 17:53:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.2.1
+  * Fixed ostream support in ``sprintf``
+    (`#1631 <https://github.com/fmtlib/fmt/issues/1631>`_).
+  * Fixed type detection when using implicit conversion to
+    ``string_view`` and ostream ``operator<<`` inconsistently
+    (`#1662 <https://github.com/fmtlib/fmt/issues/1662>`_).
+- Drop 7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch (no longer
+  necessary)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Apr 14 13:04:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply 7d01859ef16e6b65bc023ad8bebfedecb088bf81.patch
