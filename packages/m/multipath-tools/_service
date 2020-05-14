@@ -1,20 +1,17 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/multipath-tools.git</param>
     <param name="subdir"></param>
     <param name="filename">multipath-tools</param>
-    <!-- for factory, TAG_OFFSET doesn't work, because patches that
-	are have been added to factory before upstream will be
-	counted. Determine patch offset manually! It should be the number
-	of patches which are _really_ not upstream (yet). -->
-    <param name="versionformat">@PARENT_TAG@+10+suse.%h</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@+suse.%h</param>
     <param name="revision">factory</param>
     <param name="match-tag">0.[0-9].[0-9]</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">*multipath-tools*.tar</param>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="disabled"/>

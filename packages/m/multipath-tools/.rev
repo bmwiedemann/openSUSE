@@ -1275,4 +1275,41 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
     <comment></comment>
     <requestid>766912</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>32db85edb535e8d48938bf16a0289958</srcmd5>
+    <version>0.8.4+31+suse.8f53764</version>
+    <time>1589491425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4+31+suse.8f53764:
+  * Fix sporadic build failures caused by missing build dependencies
+
+- Update to version 0.8.4+29+suse.c27ed8d:
+  * multipath-tools: Makefile.inc: set -Wno-error=clobbered
+  * Makefile.inc: keep warning flags during rpm build
+  * Eliminate compiler warnings on 32bit build.
+  * Fixes for tests under i586
+- Spec file: add %check section to run multipath-tools CI
+  * not on SLE12, as cmocka is missing
+  * add build dependency on cmocka for building tests
+  * run &quot;make test&quot; with parallel make
+
+- Update to version 0.8.4+19+suse.48fc2f4:
+  * multipath: add &quot;-e&quot; option to enable foreign libraries
+  * libmultipath: set &quot;enable_foreign&quot; to NONE by default
+  * deleted libmultipath-set-enable_foreign-to-NONE-by-default.patch
+    (included in factory git repo now).
+  * Makefile: dependency fixes for parallel build
+- Get rid of %is_opensuse:  
+  * drop build workaround for Leap 42.1
+  * build libdmmp for everything except SLE12/Leap42 and older
+- Other spec file updates:
+  * use %make_build to speed up build (possible with 0.8.4)
+- Migrated to .obscpio format.
+
+- Update to version 0.8.4+16+suse.f319f7ea
+- Changed github workflow back from merge-based to rebase-based.
+  This makes it much easier to assess differences between upstream
+  and SUSE code. (forwarded request 803707 from mwilck)</comment>
+    <requestid>805306</requestid>
+  </revision>
 </revisionlist>

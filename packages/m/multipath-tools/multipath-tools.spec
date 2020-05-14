@@ -15,31 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# Workaround for Leap 42.1 bug, bsc#940315
-%if 0%{?suse_version} == 1315
-%if 0%{?is_opensuse} == 1
-%if 0%{?sle_version} == 0
-%define sle_version 120100
-%endif
-%endif
-%endif
-
 # Whether to build libdmmp
-# Default YES on openSUSE factory, SLE15, and leap
-# Default NO on SLES 12
-# Always NO on other distros
-%if 0%{?suse_version} == 1315
-%if 0%{?is_opensuse} == 1
+# Default YES except for SLE12 / Leap 42
+%if 0%{?suse_version} >= 1500
 %bcond_without libdmmp
-%else  # 0%{?is_opensuse} == 1
+%else
 %bcond_with libdmmp
-%endif # 0%{?is_opensuse} == 1
-%else  # 0%{?is_opensuse} == 1
-%if 0%{?suse_version} >= 1330
-%bcond_without libdmmp
-%endif # 0%{?suse_version} >= 1330
-%endif # 0%{?suse_version} == 1315
+%endif
+
+# "make test" disabled on SLE12 (cmocka not available)
+%if 0%{?suse_version} >= 1500
+%bcond_without check
+%else
+%bcond_with check
+%endif
 
 # This should match the version in libdmmp/Makefile
 %define _libdmmp_version 0.2.0
@@ -49,7 +38,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.3+10+suse.86684b9
+Version:        0.8.4+31+suse.8f53764
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -62,7 +51,6 @@ Source2:        dont-del-part-nodes.rules
 # Dracut conf file to make sure 11-dm-parts.rules is included in initrd
 Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
-Patch01:        libmultipath-set-enable_foreign-to-NONE-by-default.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 BuildRequires:  device-mapper-devel
@@ -76,6 +64,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+%if 0%{?with_check} == 1
+BuildRequires:  pkgconfig(cmocka)
+%endif
 # For regenerate_initrd_posttrans macro
 BuildRequires:  suse-module-tools
 # For regenerate-initrd-posttrans
@@ -163,7 +154,15 @@ cp %{SOURCE4} .
 
 %build
 [ -n "$SOURCE_DATE_EPOCH" ] && export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-make CC="%__cc" OPTFLAGS="%{optflags}" %{dirflags} %{makeflags}
+# %%make_build is not supported in SLE12
+%{?make_build}%{!?make_build:make %{?_smp_mflags}} \
+ CC="%__cc" OPTFLAGS="%{optflags}" %{dirflags} %{makeflags}
+
+%if 0%{?with_check} == 1
+%check
+cd tests
+make %{_make_output_sync} %{?_smp_mflags}
+%endif
 
 %install
 %make_install %{dirflags} %{makeflags}
@@ -265,8 +264,8 @@ exit 0
 %if 0%{?sle_version}
 %if 0%{?sle_version} <= 120100
 %dir /%{_sysdir}/dracut/dracut.conf.d
-%endif # 0%{?sle_version} <= 120100
-%endif # 0%{?sle_version}
+%endif
+%endif
 /%{_sysdir}/dracut/dracut.conf.d/dm-parts.conf
 %{_mandir}/man8/kpartx.8*
 
@@ -292,6 +291,6 @@ exit 0
 %{_includedir}/libdmmp
 %{_libdir}/pkgconfig/libdmmp.pc
 
-%endif # with_libdmmp
+%endif
 
 %changelog

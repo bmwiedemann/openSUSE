@@ -1,8 +1,61 @@
 -------------------------------------------------------------------
-Fri Jan 24 14:05:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+Tue May 12 20:17:49 UTC 2020 - mwilck@suse.com
 
-- BuildRequire pkgconfig((lib)?udev) instead of (lib)?udev: allow
-  OBS to shortcut through the -mini flavors.
+- Update to version 0.8.4+31+suse.8f53764:
+  * Fix sporadic build failures caused by missing build dependencies
+
+-------------------------------------------------------------------
+Mon May 11 22:18:07 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+29+suse.c27ed8d:
+  * multipath-tools: Makefile.inc: set -Wno-error=clobbered
+  * Makefile.inc: keep warning flags during rpm build
+  * Eliminate compiler warnings on 32bit build.
+  * Fixes for tests under i586
+- Spec file: add %check section to run multipath-tools CI
+  * not on SLE12, as cmocka is missing
+  * add build dependency on cmocka for building tests
+  * run "make test" with parallel make
+
+-------------------------------------------------------------------
+Mon May 11 12:25:31 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+19+suse.48fc2f4:
+  * multipath: add "-e" option to enable foreign libraries
+  * libmultipath: set "enable_foreign" to NONE by default
+  * deleted libmultipath-set-enable_foreign-to-NONE-by-default.patch
+    (included in factory git repo now).
+  * Makefile: dependency fixes for parallel build
+- Get rid of %is_opensuse:  
+  * drop build workaround for Leap 42.1
+  * build libdmmp for everything except SLE12/Leap42 and older
+- Other spec file updates:
+  * use %make_build to speed up build (possible with 0.8.4)
+- Migrated to .obscpio format.
+
+-------------------------------------------------------------------
+Fri May 08 16:13:36 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.4+16+suse.f319f7ea
+- Changed github workflow back from merge-based to rebase-based.
+  This makes it much easier to assess differences between upstream
+  and SUSE code. 
+  * Use TAG_OFFSET in _service, as this is now possible again.
+- Reviewed upstream patches added:
+  * kpartx.rules: fix handling of synthetic uevents (bsc#1161923)
+  * libmpathpersist: limit PRIN allocation length to 8192 bytes
+  (bsc#1165786)
+- Update upstream version to 0.8.4
+  * drop nr_active field, always count active paths (bsc#1125043)
+  * directio path checker fixes
+  * lots of fixes for compiler warnings, and cleanups
+  * nvme: update to nvme-cli 1.9
+
+-------------------------------------------------------------------
+Wed Feb 12 20:41:59 UTC 2020 - mwilck@suse.com
+
+- Update to version 0.8.3+11+suse.7dcdf2f:
+  * libmultipath: fix files read from config_dir (bsc#1162896)
 
 -------------------------------------------------------------------
 Thu Jan 16 12:11:54 UTC 2020 - mwilck@suse.com
