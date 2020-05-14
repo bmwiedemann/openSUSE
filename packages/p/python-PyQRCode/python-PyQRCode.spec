@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQRCode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define modname PyQRCode
 Name:           python-PyQRCode
 Version:        1.3.0
@@ -42,7 +43,7 @@ BuildArch:      noarch
 The PyQRCode module is a QR code generator that is simple to use and written in pure python. The module can automates most of the building process for creating QR codes. Most codes can be created using only two lines of code!
 
 %prep
-%setup -q -n pyqrcode-%{version}
+%setup -q -n pyqrcodeNG-%{version}
 sed -i -e '1{\@^#!%{_bindir}/env python@d}' pyqrcode/{cli,qrspecial}.py
 
 %build

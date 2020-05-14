@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 11:29:17 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Re-download source package which changed the topdir name
+
+-------------------------------------------------------------------
+Thu May 14 10:01:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build python2 version
+
+-------------------------------------------------------------------
 Mon Oct 14 11:45:51 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
