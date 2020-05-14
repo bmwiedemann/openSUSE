@@ -1,0 +1,22 @@
+diff --git a/hyperkitty/lib/view_helpers.py b/hyperkitty/lib/view_helpers.py
+index 4e19e7c01d03cd3f52f8edb06876f135d59b284b..9094d2183a3eb650c33127270ec2e783f61b3a23 100644
+--- a/hyperkitty/lib/view_helpers.py
++++ b/hyperkitty/lib/view_helpers.py
+@@ -25,7 +25,6 @@ from functools import wraps
+ 
+ from django.http import Http404
+ from django.shortcuts import render
+-from django.utils.decorators import available_attrs
+ from django.utils.timezone import utc
+ 
+ from django_mailman3.lib.mailman import get_subscriptions
+@@ -117,7 +116,7 @@ def get_category_widget(request, current_category=None):
+ 
+ # View decorator: check that the list is authorized
+ def check_mlist_private(func):
+-    @wraps(func, assigned=available_attrs(func))
++    @wraps(func)
+     def inner(request, *args, **kwargs):
+         if "mlist_fqdn" in kwargs:
+             mlist_fqdn = kwargs["mlist_fqdn"]
+

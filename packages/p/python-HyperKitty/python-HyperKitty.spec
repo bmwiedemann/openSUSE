@@ -19,12 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-HyperKitty
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/hyperkitty
 Source:         https://files.pythonhosted.org/packages/source/H/HyperKitty/HyperKitty-%{version}.tar.gz
+# https://gitlab.com/mailman/hyperkitty/-/commit/03c99ad5beefeac4474b5a00c840fd9debccba02
+Patch0:         python-HyperKitty-remove-legacy-use-of-available_attrs.patch
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -56,6 +58,7 @@ BuildRequires:  %{python_module django-haystack >= 2.8.0}
 BuildRequires:  %{python_module django-mailman3 >= 1.2.0}
 BuildRequires:  %{python_module django-q >= 1.0.0}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
+BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module flufl.lock}
 BuildRequires:  %{python_module mailmanclient >= 3.1.1}
 BuildRequires:  %{python_module mock}
@@ -73,6 +76,7 @@ A web interface to access GNU Mailman v3 archives.
 
 %prep
 %setup -q -n HyperKitty-%{version}
+%patch0 -p1
 
 %build
 %python_build
