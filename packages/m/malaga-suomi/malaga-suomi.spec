@@ -1,7 +1,7 @@
 #
 # spec file for package malaga-suomi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            http://voikko.puimula.org/
 Source0:        http://www.puimula.org/voikko-sources/%{_name}/%{_name}-%{version}.tar.gz
 Source1:        http://www.puimula.org/voikko-sources/%{_name}/%{_name}-%{version}.tar.gz.asc
 Source2:        %{_name}.keyring
+# voikospell/libvoikko requires malaga-suomi for proper runtime. But to build malaga-suomi we don't need it yet
+#!BuildIgnore:  malaga-suomi
 BuildRequires:  foma
 BuildRequires:  python3
 BuildRequires:  voikkospell >= 4.0

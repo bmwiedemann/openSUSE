@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 06:51:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildIgnore malaga-suomi: libvoikko1 does not require
+  malaga-suomi as long as we just want to build stuff.
+
+-------------------------------------------------------------------
 Wed Sep 25 09:40:47 UTC 2019 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Update to new upstream version 2.3:
