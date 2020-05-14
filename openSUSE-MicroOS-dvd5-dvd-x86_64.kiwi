@@ -273,7 +273,7 @@
       <repopackage name="iscsiuio" arch="x86_64"/>
       <repopackage name="iso-codes" arch="x86_64"/>
       <repopackage name="iso_ent" arch="x86_64"/>
-      <repopackage name="issue-generator"/>
+      <repopackage name="issue-generator" arch="x86_64"/>
       <repopackage name="kactivities5-imports" arch="x86_64"/>
       <repopackage name="kactivitymanagerd" arch="x86_64"/>
       <repopackage name="kate" arch="x86_64"/>

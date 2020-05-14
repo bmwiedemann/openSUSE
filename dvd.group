@@ -249,7 +249,7 @@
     <package name="boost1_71_0-jam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-C-C++-devel_C_C++ -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brasero" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brasero-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brasero-nautilus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -277,15 +277,15 @@
     <package name="build-mkbaselibs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="build-mkdrpms" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
-    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
-    <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -417,7 +417,7 @@
     <package name="discover-backend-fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-connector-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-renderer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dleyna-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -825,7 +825,7 @@
     <package name="groff-full" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gromit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="grub2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="grub2-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2-branding-openSUSE -->
     <package name="grub2-i386-pc" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
     <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -893,7 +893,6 @@
     <package name="gtk2-theming-engine-adwaita" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk2-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="gtk3-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:kexec-tools -->
     <package name="gtk3-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-immodule-amharic" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-immodule-inuktitut" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -943,7 +942,7 @@
     <package name="hexchat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hfsutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hicolor-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="hicolor-icon-theme-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="hicolor-icon-theme-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="highlight" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="hostname" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="hp2xx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1053,7 +1052,7 @@
     <package name="ispell-portuguese" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ispell-russian" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ispell-spanish" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-laptop -->
     <package name="java-11-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="java-11-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4697,11 +4696,11 @@
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: dvd:kexec-tools -->
-    <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-presets-branding-transactional-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:patterns-devel-osc-devel_osc_build -->
