@@ -1,6 +1,6 @@
-diff -urEbw vapoursynth-R49/Makefile.am vapoursynth-R49.new/Makefile.am
---- vapoursynth-R49/Makefile.am	2020-03-17 20:36:27.000000000 +0100
-+++ vapoursynth-R49.new/Makefile.am	2020-04-24 11:15:20.952389928 +0200
+diff -urEbw vapoursynth-R50/Makefile.am vapoursynth-R50.new/Makefile.am
+--- vapoursynth-R50/Makefile.am	2020-05-08 17:10:41.000000000 +0200
++++ vapoursynth-R50.new/Makefile.am	2020-05-14 10:50:38.446478782 +0200
 @@ -79,7 +79,7 @@
  
  pkgconfig_DATA += pc/vapoursynth.pc

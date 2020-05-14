@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 14 08:48:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 50:
+  * Updated zimg to latest v2.9 so grayscale colorspace are supported
+  * Fixed several minor issues related to path handling in vsrepo
+  * Added version and api_version to python module to make
+    detecting version mismatches easier
+  * Improved rounding in averageframes
+  * Fixed averageframes not properly rejecting more than 31
+    weights or nodes
+  * Fixed crash in textfilter line wrapping introduced in r49
+  * Fixed regression introduced in r48 where expr, sobel and
+    prewitt wouldn't clamp 9-15 bit output to valid range
+  * Fixed crash due to null pointer dereference when instantiation
+    many vapoursynth classes directly in python
+
+-------------------------------------------------------------------
 Fri Apr 24 09:11:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 49:
