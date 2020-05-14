@@ -17,7 +17,7 @@
 
 
 Name:           libretro-core-info
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        Provide libretro's core info files
 License:        MIT
