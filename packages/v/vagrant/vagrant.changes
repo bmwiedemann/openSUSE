@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Mon May 11 17:58:59 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.2.9
+
+  BUG FIXES:
+
+  - core/bundler: Properly handle plugin install with available specification
+    [GH-11592]
+  - provisioners/docker: Fix CentOS docker install and start service
+    capabilities [GH-11581]
+  - provisioners/podman: Seperate RHEL install from CentOS install [GH-11584]
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+  Add patch:
+  * 0010-Bump-version-of-net-ssh-to-6.0-and-net-sftp-to-3.0.patch
+  * 0011-Fixes-11606-Mock-out-guest-capabilities-instead-of-r.patch
+
+  - Fix various issues when building vagrant with a non-default ruby version
+    (e.g. gem implicitly defaulting to the default one)
+  - update README.SUSE
+
+-------------------------------------------------------------------
+Thu May  7 12:52:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.2.8
+
+  FEATURES:
+
+  - virtualbox/disks: Add ability to manage virtual disks for guests [GH-11349]
+
+  IMPROVEMENTS:
+
+  - bin/vagrant: Automatically include global options within commands [GH-11473]
+  - bin/vagrant: Suppress Ruby warnings when not running pre-release version
+    [GH-11446]
+  - communicator/ssh: Add support for configuring SSH connect timeout [GH-11533]
+  - core: Update childprocess gem [GH-11487]
+  - core: Add cli option `--no-tty` [GH-11414]
+  - core: Overhaul call stack modifications implementation for hooks and
+    triggers [GH-11455]
+  - core/bundler: Cache plugin solution sets to speed up startup times
+    [GH-11363]
+  - config/vm: Add`box_download_options` config to specify extra download
+    options for a box [GH-11560]
+  - guest/alpine: Add ansible provisioner guest support [GH-11411]
+  - guest/linux: Update systemd? check to use sudo [GH-11398]
+  - guest/linux: Use systemd if available to halt and reboot system [GH-11407]
+  - guests/linux: Mount smb folders with `mfsymlinks` option by default [GH-11503]
+  - guest/redhat: Add support for SMB [GH-11463]
+  - guest/windows: Rescue all regular exceptions during reboot wait [GH-11428]
+  - providers/docker: Support catching container name when using podman [GH-11356]
+  - provisioners/docker: Support Centos8 [GH-11462]
+  - provisioners/podman: Add Podman as a provisioner [GH-11472]
+  - provisioners/salt: Allow specifying python_version [GH-11436]
+
+  BUG FIXES:
+
+  - communicators/winssh: Fix issues with Windows SSH communicator [GH-11430]
+  - core/bundler: Activate vagrant specification when not active [GH-11445]
+  - core/bundler: Properly resolve sets when Vagrant is in prerelease [GH-11571]
+  - core/downloader: Always set `-q` flag as first option [GH-11366]
+  - core/hooks: Update dynamic action hook implementation to prevent looping
+    [GH-11427]
+  - core/synced_folders: Validate type option if set [GH-11359]
+  - guests/debian: Choose netplan renderer based on network configuration and
+    installed tools [GH-11498]
+  - host/darwin: Quote directories in /etc/exports [GH-11441]
+  - host/linux: Ensure `/etc/exports` does not contain duplicate records [GH-10591]
+  - host/windows: Check all interfaces for port conflict when host_ip: "0.0.0.0"
+    [GH-11454]
+  - providers/docker: Fix issue where Vagrant fails to remove image if it is in
+    use [GH-11355]
+  - providers/docker: Fix issue with getting correct docker image id from build
+    output [GH-11461]
+  - providers/hyperv: Prevent error when identity reference cannot be translated
+    [GH-11425]
+  - provider/hyperv: Use service id for manipulating vm integration services
+    [GH-11499]
+  - providers/virtualbox: Parse `list dhcpservers` output on VirtualBox 6.1
+    [GH-11404]
+  - providers/virtualbox: Raise an error if guest IP ends in .1 [GH-11500]
+  - provisioners/shell: Ensure windows shell provisioners always get an
+    extension [GH-11517]
+  - util/io: Fix encoding conversion errors [GH-11571]
+
+  Removed patches:
+  * 0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
+    (dropped as it is an old fix from Debian and Vagrant will now use systemd to
+    shutdown, making this one obsolete)
+  * 0004-plugins-don-t-abuse-require_relative.patch.patch
+    (rebased as 0003-plugins-don-t-abuse-require_relative.patch.patch)
+  * 0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+    (rebased as 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch)
+  * 0006-do-not-depend-on-wdm.patch
+    (rebased as 0005-do-not-depend-on-wdm.patch)
+  * 0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+    (rebased as 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch)
+  * 0008-Don-t-abuse-relative-paths-in-plugins.patch
+    (rebased as 0007-Don-t-abuse-relative-paths-in-plugins.patch)
+  * 0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
+    (dropped as it is a test fix for Patch3)
+  * 0010-Skip-failing-tests.patch
+    (rebased as 0008-Skip-failing-tests.patch)
+  * 0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
+    (merged upstream)
+  * 0012-Disable-Subprocess-unit-test.patch
+    (rebased as 0009-Disable-Subprocess-unit-test.patch)
+  * 0013-Update-some-outdated-gem-versions.patch
+    (merged upstream)
+
+  Added patches:
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+-------------------------------------------------------------------
 Fri Feb 14 12:16:58 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Fix non-restrictive dependency on rubygem-listen

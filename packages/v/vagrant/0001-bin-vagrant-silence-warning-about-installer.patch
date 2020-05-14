@@ -1,7 +1,7 @@
-From 2aceecad34427d322bb011e5964a3c7d5818c3ae Mon Sep 17 00:00:00 2001
+From f80fd64dacd27ad51f459f12301c3c16bed76554 Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Sat, 11 Oct 2014 16:54:58 -0300
-Subject: [PATCH 01/13] bin/vagrant: silence warning about installer
+Subject: [PATCH 01/11] bin/vagrant: silence warning about installer
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 16 deletions(-)
 
 diff --git a/bin/vagrant b/bin/vagrant
-index 0e6abdcef..9b9233397 100755
+index ba7e40076..8272e839e 100755
 --- a/bin/vagrant
 +++ b/bin/vagrant
-@@ -144,22 +144,6 @@ begin
+@@ -167,22 +167,6 @@ begin
    logger.debug("Creating Vagrant environment")
    env = Vagrant::Environment.new(opts)
  
@@ -36,5 +36,5 @@ index 0e6abdcef..9b9233397 100755
    #
    # Unset  - Disables experimental features
 -- 
-2.25.0
+2.26.2
 

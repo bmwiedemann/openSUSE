@@ -1,17 +1,17 @@
-From af5720555a656230e30333d592c84de50737a2bc Mon Sep 17 00:00:00 2001
+From 7181dea528cfa24a9952fb5a5f3297e0b2b1e53c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 1 Apr 2019 17:28:31 +0200
-Subject: [PATCH 10/13] Skip failing tests
+Subject: [PATCH 08/11] Skip failing tests
 
 ---
  test/unit/bin/vagrant_test.rb | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/test/unit/bin/vagrant_test.rb b/test/unit/bin/vagrant_test.rb
-index 08edcb20e..a6bef731d 100644
+index bc11309aa..4d329151a 100644
 --- a/test/unit/bin/vagrant_test.rb
 +++ b/test/unit/bin/vagrant_test.rb
-@@ -104,7 +104,7 @@ describe "vagrant bin" do
+@@ -134,7 +134,7 @@ describe "vagrant bin" do
      context "when vagrant is not very quiet" do
        before { expect(Vagrant).to receive(:very_quiet?).and_return(false) }
  
@@ -20,7 +20,7 @@ index 08edcb20e..a6bef731d 100644
          expect(env.ui).to receive(:warn).with(/#{warning}/, any_args)
        end
      end
-@@ -112,7 +112,7 @@ describe "vagrant bin" do
+@@ -142,7 +142,7 @@ describe "vagrant bin" do
      context "when vagrant is very quiet" do
        before { expect(Vagrant).to receive(:very_quiet?).and_return(true) }
  
@@ -30,5 +30,5 @@ index 08edcb20e..a6bef731d 100644
        end
      end
 -- 
-2.25.0
+2.26.2
 

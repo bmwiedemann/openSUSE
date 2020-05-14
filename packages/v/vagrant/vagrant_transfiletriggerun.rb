@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby.%{rb_ruby_suffix}
 
 begin
   $LOAD_PATH.unshift "%{vagrant_dir}/lib"

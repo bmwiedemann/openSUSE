@@ -1,6 +1,7 @@
 #
 # spec file for package vagrant
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Laurent Bigonville <bigon@debian.org>, License GPL-2.0+
 #
@@ -19,14 +20,11 @@
 
 %global mod_name vagrant
 %global mod_full_name %{mod_name}-%{version}
-#
-# Use
-#
 %global vim_data_dir %{_datadir}/vim/site/plugin/
 
 
 Name:           vagrant
-Version:        2.2.7
+Version:        2.2.9
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -50,30 +48,37 @@ Recommends:     vagrant-libvirt
 #
 Patch1:         0001-bin-vagrant-silence-warning-about-installer.patch
 Patch2:         0002-Use-a-private-temporary-dir.patch
-Patch3:         0003-linux-cap-halt-don-t-wait-for-shutdown-h-now-to-fini.patch
-Patch4:         0004-plugins-don-t-abuse-require_relative.patch.patch
-Patch5:         0005-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
-Patch6:         0006-do-not-depend-on-wdm.patch
-Patch7:         0007-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
-Patch8:         0008-Don-t-abuse-relative-paths-in-plugins.patch
-Patch9:         0009-Fix-unit-tests-for-GuestLinux-Cap-Halt.patch
-Patch10:        0010-Skip-failing-tests.patch
-# https://github.com/hashicorp/vagrant/pull/10945
-Patch11:        0011-Do-not-list-load-dependencies-if-vagrant-spec-is-not.patch
-Patch12:        0012-Disable-Subprocess-unit-test.patch
-# https://github.com/hashicorp/vagrant/pull/11339
-Patch13:        0013-Update-some-outdated-gem-versions.patch
+Patch3:         0003-plugins-don-t-abuse-require_relative.patch.patch
+Patch4:         0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+Patch5:         0005-do-not-depend-on-wdm.patch
+Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
+Patch8:         0008-Skip-failing-tests.patch
+Patch9:         0009-Disable-Subprocess-unit-test.patch
+Patch10:        0010-Bump-version-of-net-ssh-to-6.0-and-net-sftp-to-3.0.patch
+# Drop this on the next upstream release after 2.2.9
+# upstream fix from https://github.com/hashicorp/vagrant/pull/11607
+Patch11:        0011-Fixes-11606-Mock-out-guest-capabilities-instead-of-r.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-# we use the rpm macros in this spec
-%{?load:%{SOURCE97}}
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
 #          fix these values in macros.vagrant
+# FIXME: for now vagrant does not support Ruby 2.7
+%if 0%{?suse_version} > 1500
+%global rb_build_versions ruby26
+%global rb_build_abi ruby:2.6.0
+%global rb_ruby_suffix ruby2.6
+%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
+%global rb_ruby_suffix %rb_default_ruby_suffix
+%endif
+
+# we use the rpm macros in this spec
+# need to load them *after* defining the rb_* macros
+%{?load:%{SOURCE97}}
 
 %global vagrant_plugin_name vagrant
 
@@ -83,7 +88,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #===============================================================================
 
 #  s.required_ruby_version     = "~> 2.4", "< 2.7"
-BuildRequires:  %{ruby < 2.7}
+BuildRequires:  %{ruby:2 < 2.7}
 BuildRequires:  %{ruby:2 >= 2.4}
 #
 #
@@ -91,13 +96,12 @@ BuildRequires:  %{ruby:2 >= 2.4}
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1.0 }
-#  s.add_dependency "childprocess", "~> 0.6.0"
-BuildRequires:  %{rubygem childprocess:0.6 }
+#  s.add_dependency "childprocess", "~> 3.0.0"
+BuildRequires:  %{rubygem childprocess:3.0 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 #  s.add_dependency "erubis", "~> 2.7.0"
 BuildRequires:  %{rubygem erubis:2.7 }
-# PATCHED
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
 #  s.add_dependency "listen", "~> 3.1.5"
@@ -108,10 +112,11 @@ BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 # PATCHED
-#  s.add_dependency "net-ssh", "~> 5.2.0"
-BuildRequires:  %{rubygem net-ssh:5.2}
-#  s.add_dependency "net-sftp", "~> 2.1"
-BuildRequires:  %{rubygem net-sftp:2 >= 2.1 }
+#  s.add_dependency "net-ssh", "~> 6.0"
+BuildRequires:  %{rubygem net-ssh:6 }
+# PATCHED
+#  s.add_dependency "net-sftp", "~> 3.0"
+BuildRequires:  %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
 BuildRequires:  %{rubygem net-scp:1.2 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
@@ -119,17 +124,16 @@ BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 BuildRequires:  %{rubygem rest-client >= 1.6}
 BuildConflicts:  %{rubygem rest-client >= 3.0}
-# PATCHED
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
 # BuildRequires:  %%{rubygem wdm }
-#  s.add_dependency "winrm", "~> 2.1"
-BuildRequires:  %{rubygem winrm:2 >= 2.1 }
-#  s.add_dependency "winrm-fs", "~> 1.0"
-BuildRequires:  %{rubygem winrm-fs:1 }
-#  s.add_dependency "winrm-elevated", "~> 1.1"
-BuildRequires:  %{rubygem winrm-elevated:1 >= 1.1 }
+#  s.add_dependency "winrm", ">= 2.3.4", "< 3.0"
+BuildRequires:  %{rubygem winrm:2 >= 2.3.4 }
+#  s.add_dependency "winrm-fs", ">= 1.3.4", "< 2.0"
+BuildRequires:  %{rubygem winrm-fs:1 >= 1.3.4 }
+#  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
+BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
 #  s.add_dependency "vagrant_cloud", "~> 2.0.3"
 BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.3 }
 
@@ -160,6 +164,9 @@ BuildRequires:  %{rubygem addressable >= 2.6}
 # Prevent have choice for rubygem(ruby:2.5.0:public_suffix) >= 2.0.2
 BuildRequires:  %{rubygem public_suffix:4}
 
+# gem2rpm *must* be included as a direct dependency when building with a
+# non-default ruby version
+BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 
 # for the test
@@ -177,13 +184,12 @@ BuildRequires:  %{rubygem vagrant-spec}
 #
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.0.0"
 Requires:       %{rubygem bcrypt_pbkdf:1.0 }
-#  s.add_dependency "childprocess", "~> 0.6.0"
-Requires:       %{rubygem childprocess:0.6}
+#    s.add_dependency "childprocess", "~> 3.0.0"
+Requires:       %{rubygem childprocess:3.0}
 #   s.add_dependency "ed25519", "~> 1.2.4"
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 #  s.add_dependency "erubis", "~> 2.7.0"
 Requires:       %{rubygem erubis:2.7}
-# PATCHED
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
 #  s.add_dependency "listen", "~> 3.1.5"
@@ -194,10 +200,11 @@ Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 # PATCHED
-#  s.add_dependency "net-ssh", "~> 5.2.0"
-Requires:       %{rubygem net-ssh:5.2}
-#  s.add_dependency "net-sftp", "~> 2.1"
-Requires:       %{rubygem net-sftp:2 >= 2.1}
+#  s.add_dependency "net-ssh", "~> 6.0"
+Requires:       %{rubygem net-ssh:6}
+# PATCHED
+#  s.add_dependency "net-sftp", "~> 3.0"
+Requires:       %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
 Requires:       %{rubygem net-scp:1.2 >= 1.2.0}
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
@@ -205,17 +212,16 @@ Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
 Requires:       %{rubygem rest-client >= 1.6}
 Requires:       %{rubygem rest-client < 3.0}
-# PATCHED
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"
 # skip wdm, Windows only
-#  s.add_dependency "winrm", "~> 2.1"
-Requires:       %{rubygem winrm:2 >= 2.1}
-#   s.add_dependency "winrm-fs", "~> 1.0"
-Requires:       %{rubygem winrm-fs:1}
-#  s.add_dependency "winrm-elevated", "~> 1.1"
-Requires:       %{rubygem winrm-elevated:1 >= 1.1}
+#  s.add_dependency "winrm", ">= 2.3.4", "< 3.0"
+Requires:       %{rubygem winrm:2 >= 2.3.4}
+#  s.add_dependency "winrm-fs", ">= 1.3.4", "< 2.0"
+Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
+#  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
+Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
 #  s.add_dependency "vagrant_cloud", "~> 2.0.3"
 Requires:       %{rubygem vagrant_cloud:2.0 >= 2.0.3}
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
@@ -290,8 +296,9 @@ mv %{mod_full_name}.gem %{_sourcedir}
 
 %install
 
+# cannot use %%vagrant_plugin_install here, as we provide a different --bindir
 CONFIGURE_ARGS="--with-cflags='%{optflags}' $CONFIGURE_ARGS"
-gem install -V -f --local --no-user-install \
+%gem_binary install -V -f --local --no-user-install \
     --ignore-dependencies --no-document --backtrace \
     --document=rdoc,ri \
     --install-dir %{buildroot}%{vagrant_plugin_dir} \
@@ -300,7 +307,7 @@ gem install -V -f --local --no-user-install \
 # the actual vagrant binary generated from the binstub
 install -D -m 755 %{SOURCE96} %{buildroot}%{_bindir}/vagrant
 sed -i 's|@vagrant_embedded_dir@|%{vagrant_embedded_dir}|' %{buildroot}%{_bindir}/vagrant
-gem_path=$(ruby.%{rb_default_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
+gem_path=$(ruby.%{rb_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
 sed -i "s|@ruby_vagrant_gem_path@|$gem_path:%{vagrant_plugin_dir}|" %{buildroot}%{_bindir}/vagrant
 
 # install the rpm macros & expand the name, name-version and vagrant_rb_* macros
@@ -310,7 +317,7 @@ sed -i "s|%%{name}|%{name}|" %{buildroot}%{macros_vagrant}
 sed -i "s|%{name}-%%{version}|%{name}-%{version}|" %{buildroot}%{macros_vagrant}
 sed -i "s|%%{rb_build_versions}|%{rb_build_versions}|" %{buildroot}%{macros_vagrant}
 sed -i "s|%%{rb_build_abi}|%{rb_build_abi}|" %{buildroot}%{macros_vagrant}
-sed -i "s|%%{rb_default_ruby_suffix}|%{rb_default_ruby_suffix}|" %{buildroot}%{macros_vagrant}
+sed -i "s|%%{rb_ruby_suffix}|%{rb_ruby_suffix}|" %{buildroot}%{macros_vagrant}
 
 # install post, transfiletrigerin & transfiletriggerun scriptlets
 %global post_rb %{vagrant_embedded_dir}/bin/vagrant_post.rb
@@ -326,6 +333,7 @@ for file in %{post_rb} %{transfiletriggerin_rb} %{transfiletriggerun_rb}; do
     sed -i "s|%%{vagrant_plugin_conf}|%{vagrant_plugin_conf}|" %{buildroot}$file
     sed -i "s|%%{name}|%{name}|" %{buildroot}$file
     sed -i "s|%%{version}|%{version}|" %{buildroot}$file
+    sed -i "s|%%{rb_ruby_suffix}|%{rb_ruby_suffix}|" %{buildroot}$file
 done
 
 # man page
@@ -352,20 +360,20 @@ mkdir -p %{buildroot}%{dirname:%{vagrant_plugin_docdir}}
 
 
 # fix shebang in %%{vagrant_dir}/bin/%%{name}
-sed -i 's|^\#\!/usr/bin/env.*|\#\!/usr/bin/ruby\.%{rb_default_ruby_suffix}|' \
+sed -i 's|^\#\!/usr/bin/env.*|\#\!/usr/bin/ruby\.%{rb_ruby_suffix}|' \
     %{buildroot}%{vagrant_dir}/bin/%{name}
 
 # remove versioned name from %%{vagrant_plugin_dir}/bin/%%{name}
 # (aka /usr/share/vagrant/gems/bin/vagrant)
-mv %{buildroot}%{vagrant_plugin_dir}/bin/%{name}.%{rb_default_ruby_suffix} \
+mv %{buildroot}%{vagrant_plugin_dir}/bin/%{name}.%{rb_ruby_suffix} \
     %{buildroot}%{vagrant_plugin_dir}/bin/%{name}
 
 
 # Garbage collection
 rm -f %{buildroot}%{vagrant_dir}/test/vagrant-spec/boxes/.keep
 rm -f %{buildroot}%{vagrant_dir}/bin/vagrant.orig
-rm -f %{buildroot}%{_bindir}/vagrant.orig.%{rb_default_ruby_suffix}
-rm -f %{buildroot}%{vagrant_plugin_dir}/bin/vagrant.orig.%{rb_default_ruby_suffix}
+rm -f %{buildroot}%{_bindir}/vagrant.orig.%{rb_ruby_suffix}
+rm -f %{buildroot}%{vagrant_plugin_dir}/bin/vagrant.orig.%{rb_ruby_suffix}
 rm -f %{buildroot}%{vagrant_dir}/lib/vagrant/util.rb.orig
 
 # remove build script from vagrant
@@ -377,7 +385,7 @@ rm -f %{buildroot}%{vagrant_dir}/.runner.sh
 # -> don't have to cleanup, the Gemfile is excluded anyway
 sed -i "s|gem 'vagrant-spec', git.*$|gem 'vagrant-spec'|" Gemfile
 
-export GEM_PATH=%{buildroot}%{vagrant_plugin_dir}:$(ruby.%{rb_default_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
+export GEM_PATH=%{buildroot}%{vagrant_plugin_dir}:$(ruby.%{rb_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
 bundle exec rake test:unit
 
 %pre

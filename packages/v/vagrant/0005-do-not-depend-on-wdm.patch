@@ -1,7 +1,7 @@
-From 486c955ffe349c52ab5a4cfd831b09df83de88bf Mon Sep 17 00:00:00 2001
+From e2cc039d85b5131d52bb30755431e202ee92aa63 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Mon, 4 Jun 2018 09:18:23 +0200
-Subject: [PATCH 06/13] do not depend on wdm
+Subject: [PATCH 05/11] do not depend on wdm
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -9,17 +9,17 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 deletion(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index baae3f486..fb2925da5 100644
+index 8667a36d4..49fdf2e8e 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
 @@ -29,7 +29,6 @@ Gem::Specification.new do |s|
    s.add_dependency "rb-kqueue", "~> 0.2.0"
    s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
-   s.add_dependency "rubyzip", "~> 1.3"
+   s.add_dependency "rubyzip", "~> 2.0"
 -  s.add_dependency "wdm", "~> 0.1.0"
-   s.add_dependency "winrm", "~> 2.1"
-   s.add_dependency "winrm-fs", "~> 1.0"
-   s.add_dependency "winrm-elevated", "~> 1.1"
+   s.add_dependency "winrm", ">= 2.3.4", "< 3.0"
+   s.add_dependency "winrm-fs", ">= 1.3.4", "< 2.0"
+   s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 -- 
-2.25.0
+2.26.2
 

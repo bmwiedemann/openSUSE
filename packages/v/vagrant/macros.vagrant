@@ -12,6 +12,9 @@
 
 %vagrant_plugin_conf %{vagrant_embedded_dir}/plugins.json
 
+# specify the gem binary in case we are building with a non-default ruby version
+%gem_binary %{_bindir}/gem.%{rb_ruby_suffix}
+
 # Install gem into appropriate directory.
 # -n<vagrant_plugin_file>      Overrides gem file name for installation.
 # -d<install_dir>   Set installation directory.
@@ -23,7 +26,7 @@ fi \
 mkdir -p %{-d*}%{!?-d:%{buildroot}%{vagrant_plugin_dir}} \
 \
 CONFIGURE_ARGS="--with-cflags='%{optflags}' $CONFIGURE_ARGS" \\\
-gem install \\\
+%gem_binary install \\\
         -V \\\
         --local \\\
         --no-user-install \\\
@@ -38,4 +41,4 @@ gem install \\\
 
 %vagrant_rb_build_versions %{rb_build_versions}
 %vagrant_rb_build_abi %{rb_build_abi}
-%vagrant_rb_default_ruby_suffix %{rb_default_ruby_suffix}
+%vagrant_rb_ruby_suffix %{rb_ruby_suffix}

@@ -9,11 +9,16 @@ other then the ruby version with which vagrant was built. Furthermore, vagrant
 will _only_ recognize gems inside its own directory structure as plugins and not
 arbitrary rubygems.
 
+Note that we *must* explicitly specify the macros `rb_build_versions` and
+`rb_build_abi` (and cannot use macros here!). Usually we can simply use the
+default ruby here, but in case vagrant is incompatible with the default ruby, we
+must override this in each plugin.
+
 An example specfile for a vagrant plugin looks like this:
 ``` spec
-%global rb_build_versions %vagrant_rb_build_versions
-%global rb_build_abi %vagrant_rb_build_abi
-%global rb_default_ruby_suffix %vagrant_rb_default_ruby_suffix
+%global rb_build_versions ruby26
+%global rb_build_abi ruby:2.6.0
+%global rb_ruby_suffix ruby2.6
 
 Name:           vagrant-MYPLUGIN
 Version:        $VERSION
@@ -30,9 +35,8 @@ BuildArch:      noarch
 Url:            $URL
 Source:         $SRC
 Source1:        gem2rpm.yml
-Summary:        Vagrant provider for libvirt
-License:        MIT
-Group:          Development/Languages/Ruby
+Summary:        $SUMMARY
+License:        $LICENSE
 
 %description
 $DESCRIPTION
@@ -46,7 +50,7 @@ $DESCRIPTION
 %gem_build
 
 %install
-%vagrant_plugin_install -n %{mod_full_name}/%{vagrant_plugin_name}-%{version}.gem
+%vagrant_plugin_install
 
 %files
 %{vagrant_plugin_instdir}
