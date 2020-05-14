@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 03 18:45:10 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.8.3
+- Save default dictionaries and input methods when making the lists
+  empty in the setup tool
+- Fix reading “include” instructions in Compose files and observe XCOMPOSEFILE
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/93)
+- Fix right-to-left detection for LC_MESSAGES=C
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/97)
+- GUI tests added thanks to Takao Fujiwara
+- Update UnicodeData.txt to Unicode 13.0.0
+- Translation updates for it, hu, tr, pt_BR
+
+-------------------------------------------------------------------
 Tue Mar 31 14:57:16 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.8.2

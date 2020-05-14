@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.8.2
+Version:        2.8.3
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -36,6 +36,7 @@ BuildRequires:  update-desktop-files
 # for the unit tests
 BuildRequires:  m17n-lib
 BuildRequires:  m17n-db
+BuildRequires:  python3-mock
 BuildRequires:  python3-pyenchant
 BuildRequires:  appstream-glib
 BuildRequires:  glib2
@@ -151,7 +152,7 @@ dconf write /org/freedesktop/ibus/engine/typing-booster/keybindings "{'next_inpu
 dconf dump /
 export DISPLAY=:1
 Xvfb $DISPLAY -screen 0 1024x768x16 &
-ibus-daemon -drx
+sleep 1
 make -C tests run_tests
 pushd tests
     ./run_tests
