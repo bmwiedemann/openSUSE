@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 14 09:05:51 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.6: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.6
+
+-------------------------------------------------------------------
+Wed May 13 11:42:01 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  build fixes in SLE12
+  + php7-arm-build-fixes.patch
+
+-------------------------------------------------------------------
+Tue May 12 13:28:05 UTC 2020 - pgajdos@suse.com
+
+- added to SLE-12 [jsc#SLE-12474]
+
+-------------------------------------------------------------------
+Tue May 12 13:11:31 UTC 2020 - pgajdos@suse.com
+
+- spec file usable under SLE12 again and better prepared for
+  phpM -> phpMN transition
+
+-------------------------------------------------------------------
+Mon May 11 09:59:41 UTC 2020 - pgajdos@suse.com
+
+- added to SLE-15-SP2 [jsc#SLE-12482], including fixes for:
+  CVE-2020-7063 [bsc#1165289]
+  CVE-2020-7062 [bsc#1165280]
+  CVE-2019-11046, CVE-2019-11050, CVE-2019-11047, CVE-2019-11045
+
+-------------------------------------------------------------------
 Tue Apr 14 14:40:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.5: This is a security release which also contains
@@ -99,6 +131,37 @@ Thu Nov 28 10:16:27 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
   % php7.rpmlintrc
   
 -------------------------------------------------------------------
+Tue Nov 19 09:50:52 UTC 2019 - pgajdos@suse.com
+
+- added to SLE-15-SP2 [SLE-10860], fixes
+  CVE-2019-11043 [bsc#1154999]
+  CVE-2019-11041 [bsc#1146360]
+  CVE-2019-11042 [bsc#1145095]
+  CVE-2019-11039 [bsc#1138173]
+  CVE-2019-11040 [bsc#1138172]
+  CVE-2019-11036 [bsc#1134322]
+  CVE-2019-11034 [bsc#1132838]
+  CVE-2019-11035 [bsc#1132837]
+  CVE-2019-9637 [bsc#1128892]
+  CVE-2019-9675 [bsc#1128886]
+  CVE-2019-9638 [bsc#1128889], CVE-2019-9639 [bsc#1128887]
+  CVE-2019-9640 [bsc#1128883]
+  CVE-2019-9024 [bsc#1126821]
+  CVE-2019-9020 [bsc#1126711]
+  CVE-2018-20783 [bsc#1127122]
+  CVE-2019-9021 [bsc#1126713]
+  CVE-2019-9022 [bsc#1126827]
+  CVE-2019-9023 [bsc#1126823]
+  CVE-2019-9641 [bsc#1128722]
+  CVE-2018-19935 [bsc#1118832]
+  CVE-2018-17082 [bsc#1108753]
+  CVE-2018-1000222 [bsc#1105434]
+  CVE-2018-14851 [bsc#1103659]
+  CVE-2017-9120 [bsc#1103661]
+  CVE-2018-12882 [bsc#1099098]
+  [bsc#1151793]
+
+-------------------------------------------------------------------
 Tue Nov 12 13:09:18 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not add the generic provides to the php7-test package.
@@ -131,7 +194,7 @@ Sun Sep 29 19:42:58 UTC 2019 - suse+build@de-korte.org
 - updated to 7.3.10: This is a security release which also contains
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.3.10
 
-+-------------------------------------------------------------------
+-------------------------------------------------------------------
 Sat Aug 31 08:48:00 UTC 2019 - suse+build@de-korte.org
 
 - updated to 7.3.9: This is a security release which also contains

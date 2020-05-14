@@ -1,0 +1,80 @@
+Index: php-7.4.5/ext/standard/crc32.c
+===================================================================
+--- php-7.4.5.orig/ext/standard/crc32.c	2020-04-14 14:54:45.000000000 +0200
++++ php-7.4.5/ext/standard/crc32.c	2020-05-13 10:08:59.811448152 +0200
+@@ -20,7 +20,7 @@
+ #include "basic_functions.h"
+ #include "crc32.h"
+ 
+-#if defined(__aarch64__) && defined(HAVE_SYS_AUXV_H)
++#if 0
+ # include <arm_acle.h>
+ # if defined(__linux__)
+ #  include <sys/auxv.h>
+@@ -85,7 +85,7 @@ PHP_NAMED_FUNCTION(php_if_crc32)
+ 
+ 	crc = crcinit^0xFFFFFFFF;
+ 
+-#if defined(__aarch64__) && defined(HAVE_SYS_AUXV_H)
++#if 0
+ 	if (has_crc32_insn()) {
+ 		crc = crc32_aarch64(crc, p, nr);
+ 		RETURN_LONG(crc^0xFFFFFFFF);
+Index: php-7.4.5/Zend/zend_operators.h
+===================================================================
+--- php-7.4.5.orig/Zend/zend_operators.h	2020-04-14 14:54:48.000000000 +0200
++++ php-7.4.5/Zend/zend_operators.h	2020-05-13 12:00:10.846071237 +0200
+@@ -670,26 +670,6 @@ overflow: ZEND_ATTRIBUTE_COLD_LABEL
+ 	return;
+ overflow: ZEND_ATTRIBUTE_COLD_LABEL
+ 	ZVAL_DOUBLE(result, (double) Z_LVAL_P(op1) + (double) Z_LVAL_P(op2));
+-#elif ZEND_USE_ASM_ARITHMETIC && defined(__aarch64__)
+-	__asm__ goto(
+-		"ldr    x5, [%1]\n\t"
+-		"ldr    x6, [%2]\n\t"
+-		"adds	x5, x5, x6\n\t"
+-		"bvs	%l5\n\t"
+-		"mov	w6, %3\n\t"
+-		"str	x5, [%0]\n\t"
+-		"str	w6, [%0, %c4]\n"
+-		:
+-		: "r"(&result->value),
+-		  "r"(&op1->value),
+-		  "r"(&op2->value),
+-		  "n"(IS_LONG),
+-		  "n"(ZVAL_OFFSETOF_TYPE)
+-		: "x5", "x6", "cc", "memory"
+-		: overflow);
+-	return;
+-overflow: ZEND_ATTRIBUTE_COLD_LABEL
+-	ZVAL_DOUBLE(result, (double) Z_LVAL_P(op1) + (double) Z_LVAL_P(op2));
+ #elif PHP_HAVE_BUILTIN_SADDL_OVERFLOW && SIZEOF_LONG == SIZEOF_ZEND_LONG
+ 	long lresult;
+ 	if (UNEXPECTED(__builtin_saddl_overflow(Z_LVAL_P(op1), Z_LVAL_P(op2), &lresult))) {
+@@ -779,26 +759,6 @@ overflow: ZEND_ATTRIBUTE_COLD_LABEL
+ 		: overflow);
+ 	return;
+ overflow: ZEND_ATTRIBUTE_COLD_LABEL
+-	ZVAL_DOUBLE(result, (double) Z_LVAL_P(op1) - (double) Z_LVAL_P(op2));
+-#elif ZEND_USE_ASM_ARITHMETIC && defined(__aarch64__)
+-	__asm__ goto(
+-		"ldr    x5, [%1]\n\t"
+-		"ldr    x6, [%2]\n\t"
+-		"subs	x5, x5, x6\n\t"
+-		"bvs	%l5\n\t"
+-		"mov	w6, %3\n\t"
+-		"str	x5, [%0]\n\t"
+-		"str	w6, [%0, %c4]\n"
+-		:
+-		: "r"(&result->value),
+-		  "r"(&op1->value),
+-		  "r"(&op2->value),
+-		  "n"(IS_LONG),
+-		  "n"(ZVAL_OFFSETOF_TYPE)
+-		: "x5", "x6", "cc", "memory"
+-		: overflow);
+-	return;
+-overflow: ZEND_ATTRIBUTE_COLD_LABEL
+ 	ZVAL_DOUBLE(result, (double) Z_LVAL_P(op1) - (double) Z_LVAL_P(op2));
+ #elif PHP_HAVE_BUILTIN_SSUBL_OVERFLOW && SIZEOF_LONG == SIZEOF_ZEND_LONG
+ 	long lresult;

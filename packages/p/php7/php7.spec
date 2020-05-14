@@ -28,9 +28,8 @@
 %define asan_build        0
 %global apiver            20190902
 %global zendver           20190902
-%define pkg_name          php7
-%define extension_dir     %{_libdir}/%{pkg_name}/extensions
-%define php_sysconf       %{_sysconfdir}/%{pkg_name}
+%define extension_dir     %{_libdir}/%{name}/extensions
+%define php_sysconf       %{_sysconfdir}/%{name}
 %define build_firebird 1
 %define build_sodium 1
 %define build_argon2 0
@@ -38,19 +37,21 @@
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.5
+Version:        7.4.6
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
 Group:          Development/Languages/Other
 URL:            https://secure.php.net
 Source0:        https://secure.php.net/distributions/php-%{version}.tar.xz
-Source1:        mod_%{pkg_name}.conf
+Source1:        mod_php7.conf
 Source5:        README.macros
 Source6:        macros.php
 Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
-Source9:        php7.keyring
-Source11:       php7.rpmlintrc
+%if !%{with test}
+Source9:        %{name}.keyring
+Source11:       %{name}.rpmlintrc
+%endif
 Source100:      build-test.sh
 ## SUSE specific patches
 Patch0:         php-phpize.patch
@@ -75,9 +76,12 @@ Patch14:        php-odbc-cmp-int-cast.patch
 Patch15:        php-fix_net-snmp_disable_MD5.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
+# build fixes in SLE12
+Patch18:        php7-arm-build-fixes.patch
 BuildRequires:  apache-rex
 %apache_rex_deps
 BuildRequires:  apache-rpm-macros
+BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -122,8 +126,10 @@ BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
 Requires:       timezone
+%if 0%{?suse_version} > 1315
 Requires(pre):  group(www)
 Requires(pre):  user(wwwrun)
+%endif
 Recommends:     php-ctype
 Recommends:     php-dom
 Recommends:     php-iconv
@@ -134,11 +140,11 @@ Recommends:     php-xmlreader
 Recommends:     php-xmlwriter
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
-# suggest php7-* instead of php-* [bsc#1022158c#4]
-Suggests:       php7-gd
-Suggests:       php7-gettext
-Suggests:       php7-mbstring
-Suggests:       php7-mysql
+# suggest %{name}-* instead of php-* [bsc#1022158c#4]
+Suggests:       %{name}-gd
+Suggests:       %{name}-gettext
+Suggests:       %{name}-mbstring
+Suggests:       %{name}-mysql
 %if %{without test}
 ## Provides
 Provides:       php = %{version}
@@ -174,6 +180,8 @@ BuildRequires:  libsodium-devel
 %if %{build_argon2}
 BuildRequires:  pkgconfig(libargon2)
 %endif
+Conflicts:      php5
+Conflicts:      php72
 
 %description
 PHP is a server-side HTML embedded scripting language designed
@@ -193,11 +201,11 @@ Summary:        PHP7 development files for C/C++ extensions
 # this is required by the installed  development headers
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
+Requires:       %{name}-pear
+Requires:       %{name}-pecl
 Requires:       glibc-devel
 Requires:       libxml2-devel
 Requires:       pcre2-devel
-Requires:       php7-pear
-Requires:       php7-pecl
 Provides:       php-devel = %{version}
 Obsoletes:      php5-devel
 
@@ -208,7 +216,7 @@ programming language.
 
 This package contains the C headers to build PHP extensions.
 
-%package -n apache2-mod_php7
+%package -n apache2-mod_%{name}
 Summary:        PHP7 module for the Apache 2.x webserver
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{apache_mmn}
@@ -226,14 +234,14 @@ Provides:       php-spl = %{version}
 Provides:       php-xml = %{version}
 Obsoletes:      apache2-mod_php5
 
-%description -n apache2-mod_php7
+%description -n apache2-mod_%{name}
 PHP is a server-side, cross-platform HTML embedded scripting language.
 If you are completely new to PHP and want to get some idea of how it
 works, have a look at the Introductory tutorial. Once you get beyond
 that, have a look at the example archive sites and some of the other
 resources available in the links section.
 
-Please refer to %{_docdir}/php7/README.SUSE for
+Please refer to %{_docdir}/%{name}/README.SUSE for
 information on how to load the module into the Apache webserver.
 
 %package fastcgi
@@ -381,8 +389,8 @@ Requires:       %{name} = %{version}
 Provides:       php-enchant = %{version}
 Obsoletes:      php5-enchant
 # Obsolete pspell plugin as enchant is favored solution (goodbye aspell)
+Obsoletes:      %{name}-pspell
 Obsoletes:      php5-pspell
-Obsoletes:      php7-pspell
 
 %description enchant
 Enchant is the PHP binding for the Enchant library. Enchant steps in
@@ -910,6 +918,9 @@ cp %{SOURCE5} .
 %patch14 -p1
 %patch15
 %patch17 -p1
+%if 0%{?suse_version} <= 1315
+%patch18 -p1
+%endif
 
 # Safety check for API version change.
 vapi=`sed -n '/#define PHP_API_VERSION/{s/.* //;p}' main/php.h`
@@ -979,7 +990,7 @@ Build()
     shift
     ln -sf ../configure
     %configure \
-        --datadir=%{_datadir}/%{pkg_name} \
+        --datadir=%{_datadir}/%{name} \
         --with-libdir=%{_lib} \
         --includedir=%{_includedir} \
         --sysconfdir=%{php_sysconf}/$sapi \
@@ -1220,9 +1231,9 @@ for f in %{buildroot}%{extension_dir}/*; do
 done
 # apache configuration
 mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d
-install -m 644 %{SOURCE1} %{buildroot}/%{apache_sysconfdir}/conf.d/%{pkg_name}.conf
+install -m 644 %{SOURCE1} %{buildroot}/%{apache_sysconfdir}/conf.d/mod_php7.conf
 # directory for sessions
-install -d %{buildroot}%{_localstatedir}/lib/%{pkg_name}
+install -d %{buildroot}%{_localstatedir}/lib/%{name}
 # provide compat symlink
 mkdir -p %{buildroot}/srv/www/cgi-bin
 ln -s %{_bindir}/php-cgi %{buildroot}/srv/www/cgi-bin/php
@@ -1242,7 +1253,7 @@ ln -s service %{buildroot}%{_sbindir}/rcphp-fpm
 %endif
 
 %if !%{with test}
-%post -n apache2-mod_php7
+%post -n apache2-mod_%{name}
 #some distro versions does not have this tool.
 if [ -x %{_sbindir}/a2enmod ]; then
     if a2enmod -q php5 && ! a2enmod -q php7; then
@@ -1251,7 +1262,7 @@ if [ -x %{_sbindir}/a2enmod ]; then
     fi
 fi
 
-%preun -n apache2-mod_php7
+%preun -n apache2-mod_%{name}
 if [ "$1" = "0" ]; then
     if [ -x %{_sbindir}/a2enmod ]; then
         if a2enmod -q php7; then
@@ -1274,13 +1285,13 @@ fi
 
 %post embed -p /sbin/ldconfig
 %postun embed -p /sbin/ldconfig
-%postun -n apache2-mod_php7
-# request restart apache instanaces (which loaded php7) after apache2-mod_php7 package update
+%postun -n apache2-mod_%{name}
+# request restart apache instanaces (which loaded php7) after apache2-mod_%{name} package update
 if [ $1 -eq 1 ]; then
   %apache_request_restart -m php7
 fi
 
-%posttrans -n apache2-mod_php7
+%posttrans -n apache2-mod_%{name}
 # restart apache instances which have this module after zypper or rpm transaction, if not
 # have restarted already in other posttrans
 %{apache_restart_if_needed}
@@ -1288,6 +1299,7 @@ fi
 
 %if !%{with test}
 %files
+%defattr(-, root, root)
 %license LICENSE
 %doc README.md CODING_STANDARDS.md EXTENSIONS NEWS UPGRADING CONTRIBUTING.md README.REDIST.BINS UPGRADING.INTERNALS
 %{_mandir}/man1/*
@@ -1297,26 +1309,29 @@ fi
 %config(noreplace) %{php_sysconf}/cli/php.ini
 %{_bindir}/php
 %{_bindir}/php7
-%dir %{_libdir}/%{pkg_name}
+%dir %{_libdir}/%{name}
 %dir %{extension_dir}
-%dir %{_datadir}/%{pkg_name}
-%attr(0755, wwwrun, root) %dir %{_localstatedir}/lib/%{pkg_name}
+%dir %{_datadir}/%{name}
+%attr(0755, wwwrun, root) %dir %{_localstatedir}/lib/%{name}
 
 %files devel
+%defattr(-, root, root)
 %doc README.macros
-%{_includedir}/%{pkg_name}
+%{_includedir}/php7
 %{_bindir}/phpize
 %{_bindir}/php-config
-%{_datadir}/%{pkg_name}/build
+%{_datadir}/%{name}/build
 %config %{_sysconfdir}/rpm/macros.php
 
 %files fastcgi
+%defattr(-, root, root)
 %{_bindir}/php-cgi
 /srv/www/cgi-bin/php
 %dir %{php_sysconf}/fastcgi
 %config(noreplace) %{php_sysconf}/fastcgi/php.ini
 
 %files fpm
+%defattr(-, root, root)
 %{_sbindir}/php-fpm
 %dir %{php_sysconf}/fpm
 %config %{php_sysconf}/fpm/php-fpm.conf.default
@@ -1324,96 +1339,118 @@ fi
 %config %{php_sysconf}/fpm/php-fpm.d/www.conf.default
 %{_mandir}/man8/php-fpm.8%{?ext_man}
 %{_sbindir}/rcphp-fpm
-%dir %{_datadir}/%{pkg_name}/fpm
-%{_datadir}/%{pkg_name}/fpm/status.html
+%dir %{_datadir}/%{name}/fpm
+%{_datadir}/%{name}/fpm/status.html
 %{_unitdir}/php-fpm.service
 
 %files embed
+%defattr(-, root, root)
 %{_libdir}/libphp7.so
 
-%files -n apache2-mod_php7
+%files -n apache2-mod_%{name}
+%defattr(-, root, root)
 %{apache_libexecdir}/mod_php7.so
 %dir %{php_sysconf}/apache2
 %config(noreplace) %{php_sysconf}/apache2/php.ini
-%config(noreplace) %{apache_sysconfdir}/conf.d/%{pkg_name}.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/mod_php7.conf
 
 %files bcmath
+%defattr(-, root, root)
 %{extension_dir}/bcmath.so
 %config(noreplace) %{php_sysconf}/conf.d/bcmath.ini
 
 %files bz2
+%defattr(-, root, root)
 %{extension_dir}/bz2.so
 %config(noreplace) %{php_sysconf}/conf.d/bz2.ini
 
 %files calendar
+%defattr(-, root, root)
 %{extension_dir}/calendar.so
 %config(noreplace) %{php_sysconf}/conf.d/calendar.ini
 
 %files ctype
+%defattr(-, root, root)
 %{extension_dir}/ctype.so
 %config(noreplace) %{php_sysconf}/conf.d/ctype.ini
 
 %files curl
+%defattr(-, root, root)
 %{extension_dir}/curl.so
 %config(noreplace) %{php_sysconf}/conf.d/curl.ini
 
 %files dba
+%defattr(-, root, root)
 %{extension_dir}/dba.so
 %config(noreplace) %{php_sysconf}/conf.d/dba.ini
 
 %files dom
+%defattr(-, root, root)
 %{extension_dir}/dom.so
 %config(noreplace) %{php_sysconf}/conf.d/dom.ini
 
 %files enchant
+%defattr(-, root, root)
 %{extension_dir}/enchant.so
 %config(noreplace) %{php_sysconf}/conf.d/enchant.ini
 
 %files exif
+%defattr(-, root, root)
 %{extension_dir}/exif.so
 %config(noreplace) %{php_sysconf}/conf.d/exif.ini
 
 %files fileinfo
+%defattr(-, root, root)
 %{extension_dir}/fileinfo.so
 %config(noreplace) %{php_sysconf}/conf.d/fileinfo.ini
 
 %files ftp
+%defattr(-, root, root)
 %{extension_dir}/ftp.so
 %config(noreplace) %{php_sysconf}/conf.d/ftp.ini
 
 %files gd
+%defattr(-, root, root)
 %{extension_dir}/gd.so
 %config(noreplace) %{php_sysconf}/conf.d/gd.ini
 
 %files gettext
+%defattr(-, root, root)
 %{extension_dir}/gettext.so
 %config(noreplace) %{php_sysconf}/conf.d/gettext.ini
 
 %files gmp
+%defattr(-, root, root)
 %{extension_dir}/gmp.so
 %config(noreplace) %{php_sysconf}/conf.d/gmp.ini
 
 %files iconv
+%defattr(-, root, root)
 %{extension_dir}/iconv.so
 %config(noreplace) %{php_sysconf}/conf.d/iconv.ini
 
 %files intl
+%defattr(-, root, root)
 %{extension_dir}/intl.so
 %config(noreplace) %{php_sysconf}/conf.d/intl.ini
 
 %files json
+%defattr(-, root, root)
 %{extension_dir}/json.so
 %config(noreplace) %{php_sysconf}/conf.d/json.ini
 
 %files ldap
+%defattr(-, root, root)
 %{extension_dir}/ldap.so
 %config(noreplace) %{php_sysconf}/conf.d/ldap.ini
 
 %files mbstring
+%defattr(-, root, root)
 %{extension_dir}/mbstring.so
 %config(noreplace) %{php_sysconf}/conf.d/mbstring.ini
 
 %files mysql
+%defattr(-, root, root)
 %{extension_dir}/mysqli.so
 %config(noreplace) %{php_sysconf}/conf.d/mysqli.ini
 %{extension_dir}/pdo_mysql.so
@@ -1421,127 +1458,155 @@ fi
 
 %if %{build_firebird}
 %files firebird
+%defattr(-, root, root)
 %{extension_dir}/pdo_firebird.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_firebird.ini
 %endif
 
 %files odbc
+%defattr(-, root, root)
 %{extension_dir}/odbc.so
 %config(noreplace) %{php_sysconf}/conf.d/odbc.ini
 %{extension_dir}/pdo_odbc.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_odbc.ini
 
 %files opcache
+%defattr(-, root, root)
 %{extension_dir}/opcache.so
 %config(noreplace) %{php_sysconf}/conf.d/opcache.ini
 
 %files openssl
+%defattr(-, root, root)
 %{extension_dir}/openssl.so
 %config(noreplace) %{php_sysconf}/conf.d/openssl.ini
 
 %files phar
+%defattr(-, root, root)
 %{extension_dir}/phar.so
 %config(noreplace) %{php_sysconf}/conf.d/phar.ini
 %{_bindir}/phar
 %{_bindir}/phar.phar
 
 %files pcntl
+%defattr(-, root, root)
 %{extension_dir}/pcntl.so
 %config(noreplace) %{php_sysconf}/conf.d/pcntl.ini
 
 %files pdo
+%defattr(-, root, root)
 %{extension_dir}/pdo.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo.ini
 
 %files pgsql
+%defattr(-, root, root)
 %{extension_dir}/pgsql.so
 %config(noreplace) %{php_sysconf}/conf.d/pgsql.ini
 %{extension_dir}/pdo_pgsql.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_pgsql.ini
 
 %files posix
+%defattr(-, root, root)
 %{extension_dir}/posix.so
 %config(noreplace) %{php_sysconf}/conf.d/posix.ini
 
 %files readline
+%defattr(-, root, root)
 %{extension_dir}/readline.so
 %config(noreplace) %{php_sysconf}/conf.d/readline.ini
 
 %files shmop
+%defattr(-, root, root)
 %{extension_dir}/shmop.so
 %config(noreplace) %{php_sysconf}/conf.d/shmop.ini
 
 %files snmp
+%defattr(-, root, root)
 %{extension_dir}/snmp.so
 %config(noreplace) %{php_sysconf}/conf.d/snmp.ini
 
 %files soap
+%defattr(-, root, root)
 %{extension_dir}/soap.so
 %config(noreplace) %{php_sysconf}/conf.d/soap.ini
 
 %if %{build_sodium}
 %files sodium
+%defattr(-, root, root)
 %{extension_dir}/sodium.so
 %config(noreplace) %{php_sysconf}/conf.d/sodium.ini
 %endif
 
 %files sockets
+%defattr(-, root, root)
 %{extension_dir}/sockets.so
 %config(noreplace) %{php_sysconf}/conf.d/sockets.ini
 
 %files sqlite
+%defattr(-, root, root)
 %{extension_dir}/pdo_sqlite.so
 %config(noreplace) %{php_sysconf}/conf.d/pdo_sqlite.ini
 %{extension_dir}/sqlite3.so
 %config(noreplace) %{php_sysconf}/conf.d/sqlite3.ini
 
 %files sysvmsg
+%defattr(-, root, root)
 %{extension_dir}/sysvmsg.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvmsg.ini
 
 %files sysvsem
+%defattr(-, root, root)
 %{extension_dir}/sysvsem.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvsem.ini
 
 %files sysvshm
+%defattr(-, root, root)
 %{extension_dir}/sysvshm.so
 %config(noreplace) %{php_sysconf}/conf.d/sysvshm.ini
 
 %files tidy
+%defattr(-, root, root)
 %{extension_dir}/tidy.so
 %config(noreplace) %{php_sysconf}/conf.d/tidy.ini
 
 %files tokenizer
+%defattr(-, root, root)
 %{extension_dir}/tokenizer.so
 %config(noreplace) %{php_sysconf}/conf.d/tokenizer.ini
 
 %files xmlrpc
+%defattr(-, root, root)
 %{extension_dir}/xmlrpc.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlrpc.ini
 
 %files xmlreader
+%defattr(-, root, root)
 %{extension_dir}/xmlreader.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlreader.ini
 
 %files xmlwriter
+%defattr(-, root, root)
 %{extension_dir}/xmlwriter.so
 %config(noreplace) %{php_sysconf}/conf.d/xmlwriter.ini
 
 %files xsl
+%defattr(-, root, root)
 %{extension_dir}/xsl.so
 %config(noreplace) %{php_sysconf}/conf.d/xsl.ini
 
 %files zip
+%defattr(-, root, root)
 %{extension_dir}/zip.so
 %config(noreplace) %{php_sysconf}/conf.d/zip.ini
 
 %files zlib
+%defattr(-, root, root)
 %{extension_dir}/zlib.so
 %config(noreplace) %{php_sysconf}/conf.d/zlib.ini
 %endif
 
 %if %{with test}
 %files
+%defattr(-, root, root)
 %doc build-cli/testresults.txt
 %endif
 
