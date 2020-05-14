@@ -17,7 +17,7 @@
 
 
 Name:           health-checker
-Version:        1.3.1
+Version:        1.3.4
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only
@@ -26,6 +26,8 @@ URL:            https://github.com/kubic-project/health-checker
 Source:         health-checker-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
+BuildRequires:  pkgconfig(dracut)
+BuildRequires:  pkgconfig(systemd)
 Requires:       health-checker-plugins = 1.0
 BuildArch:      noarch
 
