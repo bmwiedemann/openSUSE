@@ -17,15 +17,15 @@
 
 
 Name:           nqp
-Version:        2020.02
+Version:        2020.05
 Release:        1.1
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2020.02
-Requires:       moarvm >= 2020.02
+BuildRequires:  moarvm-devel >= 2020.05
+Requires:       moarvm >= 2020.05
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

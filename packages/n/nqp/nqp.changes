@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 13 12:50:37 CEST 2020 - nine@detonation.org
+
+- update to version 2020.05
+  * Add nextdispatcherfor/takenextdispatcher ops
+  * More explicit error when more than one --target is provided (issue #600)
+  * Set return type of intifying a list or hash
+  * Optimize code trying to count elems of a list or hash
+  * Use already calculated value instead of nqp::elems
+  * Save a bunch of allocations in MoarVM::StringHeap
+  * Split MoarVM::StringHeap into an inlineable add and slow add-internal
+  * Simplify some Role accessor methods
+  * Remove an unneeded for+push, use list directly
+  * Add more str coercion cases
+  * Write new strings directly into string heap buf
+  * Write bytecode to output file on the fly
+  * Write header last instead of first and fixing up
+  * Fix sqlite3 running out of memory when importing large profiles
+  * Fix profile kind detection
+  * Support anon declarator on NQP subs
+  * Add QAST::Node::dump_indent_string method to produce indent strings
+  * Modify Node dump routines to use new dump_indent_string method
+  * Add guide lines to QAST::Block node dumps
+  * Remove qlist opcode
+  * Some minor optimizations to NQP matching
+
+-------------------------------------------------------------------
 Tue Mar  3 13:05:04 CET 2020 - nine@detonation.org
 
 - update to version 2020.02
