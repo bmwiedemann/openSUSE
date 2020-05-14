@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 19:38:31 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Enable openmpi3 build for all SLE versions.
+
+-------------------------------------------------------------------
 Fri Nov 29 19:42:39 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Add missing openmpi2 build for gcc7.

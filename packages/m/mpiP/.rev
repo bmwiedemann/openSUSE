@@ -100,4 +100,12 @@
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755682</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>228748ff379c9d6815671089bac09e6a</srcmd5>
+    <version>3.4.1</version>
+    <time>1589491559</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable openmpi3 build for all SLE versions. (forwarded request 805379 from eeich)</comment>
+    <requestid>805380</requestid>
+  </revision>
 </revisionlist>
