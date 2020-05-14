@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 13 03:45:38 UTC 2020 - heming.zhao@suse.com
+
+- Add missing patch, which mistakenly removed in lvm2 update
+  + bug-998893_make_pvscan_service_after_multipathd.patch
+- Change lvm2.spec for fixing build error
+  + lvm2.spec
+
+-------------------------------------------------------------------
 Thu Mar 12 09:53:00 UTC 2020 - heming.zhao@suse.com
 
 - fix patch name typo

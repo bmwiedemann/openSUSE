@@ -99,6 +99,7 @@ Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
 Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
+Patch1005:      bug-998893_make_pvscan_service_after_multipathd.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
@@ -188,6 +189,7 @@ Volume Manager.
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
+%patch1005 -p1
 %patch2001 -p1
 
 %if !%{with lockd}
@@ -305,7 +307,7 @@ rm %{buildroot}%{_unitdir}/dm-event.service
 rm %{buildroot}%{_unitdir}/dm-event.socket
 rm %{buildroot}%{_unitdir}/lvm2-monitor.service
 rm %{buildroot}%{_mandir}/man8/lvm2-activation-generator.8
-rm %{buildroot}%{_libexecdir}/systemd/system-generators/lvm2-activation-generator
+rm %{buildroot}%{_systemdgeneratordir}/lvm2-activation-generator
 rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
 rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
 rm %{buildroot}%{_unitdir}/lvm2-pvscan@.service
@@ -730,7 +732,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_unitdir}/lvm2-pvscan@.service
 %{_unitdir}/lvm2-lvmpolld.socket
 %{_unitdir}/lvm2-lvmpolld.service
-%{_libexecdir}/systemd/system-generators/lvm2-activation-generator
+%{_systemdgeneratordir}/lvm2-activation-generator
 %dir %{_libdir}/device-mapper
 %{_libdir}/device-mapper/libdevmapper-event-lvm2*.so
 %{_libdir}/libdevmapper-event-lvm2*.so
