@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.04.18
+%global box_version	2020.05.11
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.7
 %global ved_version     1.7
-%define rver	2020-04-18
+%define rver	2020-05-11
 
 Name:           schily
 Version:        %box_version
@@ -482,7 +482,7 @@ if test "%_lib" != lib; then
 	mkdir -p "$b/%_libdir"
 	mv "$b/%_prefix/lib"/* "$b/%_libdir/"
 fi
-find "$b/%_libdir" -type f -name "*.a" -delete
+find "$b/%_libdir" -type f -name "*.a" -print -delete
 find "$b/%_libdir" -type f -name "*.so.*" -exec chmod a+x "{}" "+"
 
 # Install documentation

@@ -280,4 +280,12 @@
   (large_mac_iso.patch, bsc#1169420)</comment>
     <requestid>802735</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>c11a2603924d79904bc8bbd91df76cc2</srcmd5>
+    <version>unknown</version>
+    <time>1589491402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.05.11</comment>
+    <requestid>805236</requestid>
+  </revision>
 </revisionlist>

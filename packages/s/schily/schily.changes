@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 13 09:21:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.05.11
+  * SCCS: the "sccs root" command now checks for too many
+    arguments and only allows zero or one path arguments.
+  * mkisofs: README.eltorito has been enhanced to mention
+    "-boot-load-size" and "-eltorito-platform efi".
+  * isoinfo: Identifying an EFI boot record has been added to
+    mkisofs. Isoinfo is now able to print "efi" instead of the
+    unexpected "Unknown arch".
+
+-------------------------------------------------------------------
 Mon May 11 11:47:23 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - mkisofs: fix integer overflow in partition table calculation
