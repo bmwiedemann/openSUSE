@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20200510
+Version:        1.0.20200513
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
@@ -61,7 +61,6 @@ cd src
     WITH_WGQUICK=yes \
     WITH_SYSTEMDUNITS=yes
 
-install -D -m0644 systemd/wg-quick.target %{buildroot}%{_unitdir}/wg-quick.target
 install -d %{buildroot}/%{_sysconfdir}/wireguard/
 
 %pre

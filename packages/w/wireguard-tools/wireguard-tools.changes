@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 14:45:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200513
+  * Makefile: remember to install all systemd units
+  * ipc: openbsd: switch to array ioctl interface
+
+-------------------------------------------------------------------
 Mon May 11 06:39:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20200510
