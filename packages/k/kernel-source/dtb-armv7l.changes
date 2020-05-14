@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Tue May 12 18:41:40 CEST 2020 - bp@suse.de
+
+- x86: Fix early boot crash on gcc-10, next try (bsc#1167632).
+- commit 3afa06d
+
+-------------------------------------------------------------------
+Tue May 12 14:54:24 CEST 2020 - jroedel@suse.de
+
+- kvm: ioapic: Restrict lazy EOI update to edge-triggered interrupts (bsc#1171289).
+- commit 9f9d75e
+
+-------------------------------------------------------------------
+Mon May 11 08:48:40 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.6.12 (bnc#1012628).
+- mm/mremap: Add comment explaining the untagging behaviour of
+  mremap() (bnc#1012628).
+- cgroup, netclassid: remove double cond_resched (bnc#1012628).
+- mac80211: add ieee80211_is_any_nullfunc() (bnc#1012628).
+- ACPI: PM: s2idle: Fix comment in acpi_s2idle_prepare_late()
+  (bnc#1012628).
+- platform/x86: GPD pocket fan: Fix error message when temp-limits
+  are out of range (bnc#1012628).
+- x86/kvm: fix a missing-prototypes "vmread_error" (bnc#1012628).
+- ALSA: hda: Match both PCI ID and SSID for driver blacklist
+  (bnc#1012628).
+- drm/amdgpu: Fix oops when pp_funcs is unset in ACPI event
+  (bnc#1012628).
+- sctp: Fix SHUTDOWN CTSN Ack in the peer restart case
+  (bnc#1012628).
+- tools/runqslower: Ensure own vmlinux.h is picked up first
+  (bnc#1012628).
+- net: systemport: suppress warnings on failed Rx SKB allocations
+  (bnc#1012628).
+- net: bcmgenet: suppress warnings on failed Rx SKB allocations
+  (bnc#1012628).
+- mac80211: sta_info: Add lockdep condition for RCU list usage
+  (bnc#1012628).
+- lib/mpi: Fix building for powerpc with clang (bnc#1012628).
+- net: phy: bcm84881: clear settings on link down (bnc#1012628).
+- ftrace: Fix memory leak caused by not freeing entry in
+  unregister_ftrace_direct() (bnc#1012628).
+- tracing: Fix memory leaks in trace_events_hist.c (bnc#1012628).
+- cifs: do not share tcons with DFS (bnc#1012628).
+- scripts/config: allow colons in option strings for sed
+  (bnc#1012628).
+- cifs: protect updating server->dstaddr with a spinlock
+  (bnc#1012628).
+- ASoC: rsnd: Fix "status check failed" spam for multi-SSI
+  (bnc#1012628).
+- ASoC: rsnd: Don't treat master SSI in multi SSI setup as parent
+  (bnc#1012628).
+- net: stmmac: Fix sub-second increment (bnc#1012628).
+- net: stmmac: fix enabling socfpga's ptp_ref_clock (bnc#1012628).
+- wimax/i2400m: Fix potential urb refcnt leak (bnc#1012628).
+- drm/amdgpu: Correctly initialize thermal controller for GPUs
+  with Powerplay table v0 (e.g Hawaii) (bnc#1012628).
+- drm/amd/powerplay: fix resume failed as smu table initialize
+  early exit (bnc#1012628).
+- remoteproc: qcom_q6v5_mss: fix a bug in q6v5_probe()
+  (bnc#1012628).
+- ASoC: codecs: hdac_hdmi: Fix incorrect use of
+  list_for_each_entry (bnc#1012628).
+- ASoC: rsnd: Fix HDMI channel mapping for multi-SSI mode
+  (bnc#1012628).
+- ASoC: rsnd: Fix parent SSI start/stop in multi-SSI mode
+  (bnc#1012628).
+- usb: dwc3: gadget: Properly set maxpacket limit (bnc#1012628).
+- ASoC: topology: Fix endianness issue (bnc#1012628).
+- ASoC: sgtl5000: Fix VAG power-on handling (bnc#1012628).
+- scsi: sg: add sg_remove_request in sg_write (bnc#1012628).
+- drm/bridge: anx6345: set correct BPC for display_info of
+  connector (bnc#1012628).
+- selftests/ipc: Fix test failure seen after initial test run
+  (bnc#1012628).
+- Revert "Kernel selftests: tpm2: check for tpm support"
+  (bnc#1012628).
+- selftests: vm: Fix 64-bit test builds for powerpc64le
+  (bnc#1012628).
+- selftests: vm: Do not override definition of ARCH (bnc#1012628).
+- SUNRPC/cache: Fix unsafe traverse caused double-free in
+  cache_purge (bnc#1012628).
+- ASoC: topology: Check return value of soc_tplg_dai_config
+  (bnc#1012628).
+- ASoC: topology: Check return value of pcm_new_ver (bnc#1012628).
+- ASoC: topology: Check soc_tplg_add_route return value
+  (bnc#1012628).
+- ASoC: topology: Check return value of soc_tplg_*_create
+  (bnc#1012628).
+- ASoC: topology: Check return value of soc_tplg_create_tlv
+  (bnc#1012628).
+- ASoC: topology: Add missing memory checks (bnc#1012628).
+- drm/bridge: analogix_dp: Split bind() into probe() and real
+  bind() (bnc#1012628).
+- vhost: vsock: kick send_pkt worker once device is started
+  (bnc#1012628).
+- commit 7501758
+
+-------------------------------------------------------------------
+Thu May  7 20:12:13 CEST 2020 - jzerebecki@suse.com
+
+- kernel-docs: Change Requires on python-Sphinx to earlier than version 3
+  References: bsc#1166965
+  From 3 on the internal API that the build system uses was rewritten in
+  an incompatible way.
+  See https://github.com/sphinx-doc/sphinx/issues/7421 and
+  https://bugzilla.suse.com/show_bug.cgi?id=1166965#c16 for some details.
+- commit cf60b5c
+
+-------------------------------------------------------------------
 Wed May  6 12:42:09 CEST 2020 - jslaby@suse.cz
 
 - Linux 5.6.11 (bnc#1012628).
@@ -10931,7 +11041,7 @@ Tue Nov  5 14:55:44 CET 2019 - tiwai@suse.de
 Tue Nov  5 13:53:10 CET 2019 - mbrugger@suse.com
 
 - rpm/mkspec-dtb: add mt76 based dtb package
-- commit ec90686
+- commit 8ff92d0
 
 -------------------------------------------------------------------
 Tue Nov  5 09:07:56 CET 2019 - jslaby@suse.cz

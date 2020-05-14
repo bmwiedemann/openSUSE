@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.6
-%define patchversion 5.6.11
+%define patchversion 5.6.12
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.6.11
+Version:        5.6.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g91c024a
+Release:        <RELEASE>.g9bff61b
 %else
 Release:        0
 %endif
@@ -47,7 +47,7 @@ BuildRequires:  ImageMagick
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
-BuildRequires:  python3-Sphinx
+BuildRequires:  python3-Sphinx < 3
 BuildRequires:  texlive-anyfontsize
 %if %build_pdf
 BuildRequires:  python3-Sphinx-latex
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-91c024ab682876b57217101baa19ef1b2afa1461
+Provides:       %name-srchash-9bff61bd292aa608110286ee434d5ca043d5a248
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
