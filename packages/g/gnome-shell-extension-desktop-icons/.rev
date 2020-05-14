@@ -23,4 +23,14 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795064 from iznogood)</comment>
     <requestid>795216</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>682e3705ad65e0d4b2d5fb0c60010870</srcmd5>
+    <version>20.04.0</version>
+    <time>1589491483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch:
+  Show mounted device icons
+  (jsc#SLE-12572 glgo#GNOME/World/ShellExtensions/desktop-icons!171). (forwarded request 802796 from xiaoguang_wang)</comment>
+    <requestid>802986</requestid>
+  </revision>
 </revisionlist>

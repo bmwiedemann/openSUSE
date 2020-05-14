@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 02:56:44 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch:
+  Show mounted device icons
+  (jsc#SLE-12572 glgo#GNOME/World/ShellExtensions/desktop-icons!171).
+
+-------------------------------------------------------------------
 Fri Apr 17 02:43:41 UTC 2020 - Xiaoguang Wang <xwang@suse.com>
 
 - Update to version 20.04.0:

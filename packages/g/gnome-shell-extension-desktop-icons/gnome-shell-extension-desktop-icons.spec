@@ -36,6 +36,9 @@ Requires:       nautilus >= 3.30.4
 Requires:       xdg-desktop-portal-gtk
 BuildArch:      noarch
 
+# PATCH-FIX-UPSTREAM gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch jsc#SLE-12572 glgo#GNOME/World/ShellExtensions/desktop-icons!171 xwang@suse.com -- Add showing mounted devices's icon
+Patch0:         gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch
+
 %description
 This package provides a GNOME Shell extension for showing the contents
 of ~/Desktop on the desktop of the Shell. Common file management
@@ -44,6 +47,7 @@ supported.
 
 %prep
 %setup -q -n desktop-icons-%{version}
+%patch0 -p1
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 

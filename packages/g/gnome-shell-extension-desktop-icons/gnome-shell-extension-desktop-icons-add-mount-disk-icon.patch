@@ -1,0 +1,237 @@
+From 595ffd86b97902fdc4b1738b80b2a889be902965 Mon Sep 17 00:00:00 2001
+From: Xiaoguang Wang <xwang@suse.com>
+Date: Sun, 26 Apr 2020 11:51:50 +0800
+Subject: [PATCH] general: Add showing mounted devices's icon
+
+https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/-/issues/36
+---
+ desktopIconsUtil.js                           | 41 ++++++++++++++++
+ desktopManager.js                             | 48 ++++++++++++++++++-
+ fileItem.js                                   | 15 ++++++
+ prefs.js                                      |  2 +
+ ...shell.extensions.desktop-icons.gschema.xml |  5 ++
+ 5 files changed, 110 insertions(+), 1 deletion(-)
+
+diff --git a/desktopIconsUtil.js b/desktopIconsUtil.js
+index 0aea654..696c945 100644
+--- a/desktopIconsUtil.js
++++ b/desktopIconsUtil.js
+@@ -22,6 +22,8 @@ const GLib = imports.gi.GLib;
+ const ExtensionUtils = imports.misc.extensionUtils;
+ const Me = ExtensionUtils.getCurrentExtension();
+ const Prefs = Me.imports.prefs;
++const Main = imports.ui.main;
++const ShellMountOperation = imports.ui.shellMountOperation;
+ 
+ const TERMINAL_SCHEMA = 'org.gnome.desktop.default-applications.terminal';
+ const EXEC_KEY = 'exec';
+@@ -121,3 +123,42 @@ function getGtkClassBackgroundColor(classname, state) {
+     context.add_class(classname);
+     return context.get_background_color(state);
+ }
++
++// Reference the extension org.gnome.shell.extensions.drive-menu
++function eject(mount) {
++    let unmountArgs = [
++        Gio.MountUnmountFlags.NONE,
++        (new ShellMountOperation.ShellMountOperation(mount)).mountOp,
++        null, // Gio.Cancellable
++    ];
++
++    if (mount.can_eject()) {
++        mount.eject_with_operation(...unmountArgs,
++            _ejectFinish.bind(mount));
++    } else {
++        mount.unmount_with_operation(...unmountArgs,
++            _unmountFinish.bind(mount));
++    }
++}
++
++function _unmountFinish(mount, result) {
++    try {
++        mount.unmount_with_operation_finish(result);
++    } catch (e) {
++        this._reportFailure(e);
++    }
++}
++
++function _ejectFinish(mount, result) {
++    try {
++        mount.eject_with_operation_finish(result);
++    } catch (e) {
++        this._reportFailure(e);
++    }
++}
++
++function _reportFailure(exception) {
++    // TRANSLATORS: %s is the filesystem name
++    let msg = _('Ejecting drive “%s” failed:').format(this.mount.get_name());
++    Main.notifyError(msg, exception.message);
++}
+diff --git a/desktopManager.js b/desktopManager.js
+index 9d81a77..4e1abe9 100644
+--- a/desktopManager.js
++++ b/desktopManager.js
+@@ -86,6 +86,12 @@ var DesktopManager = GObject.registerClass({
+         Main.layoutManager._backgroundGroup.add_child(this._rubberBand);
+         this._grabHelper = new GrabHelper.GrabHelper(global.stage);
+ 
++        this._mountMonitor = Gio.VolumeMonitor.get();
++        this._mountAddedId = this._mountMonitor.connect('mount-added', (monitor, mount) => {
++            this._recreateDesktopIcons(); });
++        this._mountRemovedId = this._mountMonitor.connect('mount-removed', (monitor, mount) => {
++            this._recreateDesktopIcons(); });
++
+         this._addDesktopIcons();
+         this._monitorDesktopFolder();
+ 
+@@ -238,8 +244,14 @@ var DesktopManager = GObject.registerClass({
+         }
+ 
+         try {
++            let items = [];
++            for (let item of await this._enumerateDesktop())
++                items.push(item);
++            for (let item of this._getMounts())
++                items.push(item);
++
+             let tmpFileItems = new Map();
+-            for (let [file, info, extra] of await this._enumerateDesktop()) {
++            for (let [file, info, extra] of items) {
+                 let fileItem = new FileItem.FileItem(file, info, extra);
+                 tmpFileItems.set(fileItem.file.get_uri(), fileItem);
+                 let fileItemHandler = {}
+@@ -311,6 +323,33 @@ var DesktopManager = GObject.registerClass({
+         this._monitorDesktopDir.connect('changed', (obj, file, otherFile, eventType) => this._updateDesktopIfChanged(file, otherFile, eventType));
+     }
+ 
++    _getMounts() {
++        let files = [];
++        if (!Prefs.settings.get_boolean('show-mount'))
++            return files;
++
++        this._mountMonitor.get_mounts().forEach( mount => {
++            if (this._isNetworkMount(mount))
++                return;
++
++            let file = mount.get_root();
++            let info = file.query_info(DesktopIconsUtil.DEFAULT_ATTRIBUTES,
++                                       Gio.FileQueryInfoFlags.NONE,
++                                       null);
++            files.push([file, info, Prefs.FileType.MOUNT_DISK]);
++        });
++
++        return files;
++    }
++
++    _isNetworkMount(mount) {
++        let volume = mount.get_volume();
++        if (!volume)
++            return true;
++
++        return volume.get_identifier('class') == 'network';
++    }
++
+     checkIfSpecialFilesAreSelected() {
+         for (let fileItem of this._selection) {
+             if (fileItem.isSpecial)
+@@ -723,6 +762,13 @@ var DesktopManager = GObject.registerClass({
+             this._monitorDesktopDir.cancel();
+         this._monitorDesktopDir = null;
+ 
++        if (this._mountAddedId)
++            this._mountMonitor.disconnect(this._mountAddedId);
++        this._mountAddedId = 0;
++        if (this._mountRemovedId)
++            this._mountMonitor.disconnect(this._mountRemovedId);
++        this._mountRemovedId = 0;
++
+         if (this.settingsId)
+             Prefs.settings.disconnect(this.settingsId);
+         this.settingsId = 0;
+diff --git a/fileItem.js b/fileItem.js
+index 8397bb2..2e2a56d 100644
+--- a/fileItem.js
++++ b/fileItem.js
+@@ -77,6 +77,9 @@ var FileItem = GObject.registerClass({
+         this._isSpecial = this._fileExtra != Prefs.FileType.NONE;
+ 
+         this._file = file;
++        this._mount = null;
++        if (this._fileExtra == Prefs.FileType.MOUNT_DISK)
++            this._mount = this._file.find_enclosing_mount(null);
+ 
+         this._savedCoordinates = null;
+         let savedCoordinates = fileInfo.get_attribute_as_string('metadata::nautilus-icon-position');
+@@ -291,6 +294,10 @@ var FileItem = GObject.registerClass({
+             this._icon.child = this._createEmblemedStIcon(this._fileInfo.get_icon(), null);
+             return;
+         }
++        if (this._fileExtra == Prefs.FileType.MOUNT_DISK) {
++            this._icon.child = this._createEmblemedStIcon(this._mount.get_icon(), null);
++            return;
++        }
+ 
+         let thumbnailFactory = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.LARGE);
+         if ((Prefs.nautilusSettings.get_string('show-image-thumbnails') != 'never') &&
+@@ -516,6 +523,10 @@ var FileItem = GObject.registerClass({
+         Extension.desktopManager.doEmptyTrash();
+     }
+ 
++    _onEjectClicked() {
++        DesktopIconsUtil.eject(this._mount);
++    }
++
+     get _allowLaunchingText() {
+         if (this.trustedDesktopFile)
+             return _("Don’t Allow Launching");
+@@ -640,6 +651,10 @@ var FileItem = GObject.registerClass({
+             this._menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+             this._menu.addAction(_('Empty Trash'), () => this._onEmptyTrashClicked());
+             break;
++        case Prefs.FileType.MOUNT_DISK:
++            this._menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
++            this._menu.addAction(_('Eject'), () => this._onEjectClicked());
++            break;
+         default:
+             break;
+         }
+diff --git a/prefs.js b/prefs.js
+index 66382f7..4b33e55 100644
+--- a/prefs.js
++++ b/prefs.js
+@@ -40,6 +40,7 @@ var FileType = {
+     NONE: null,
+     USER_DIRECTORY_HOME: 'show-home',
+     USER_DIRECTORY_TRASH: 'show-trash',
++    MOUNT_DISK: 'mount-disk',
+ }
+ 
+ var nautilusSettings;
+@@ -102,6 +103,7 @@ function buildPrefsWidget() {
+     frame.add(buildSelector('icon-size', _("Size for the desktop icons"), { 'small': _("Small"), 'standard': _("Standard"), 'large': _("Large") }));
+     frame.add(buildSwitcher('show-home', _("Show the personal folder in the desktop")));
+     frame.add(buildSwitcher('show-trash', _("Show the trash icon in the desktop")));
++    frame.add(buildSwitcher('show-mount', _("Show mounted drives in the desktop")));
+     frame.show_all();
+     return frame;
+ }
+diff --git a/schemas/org.gnome.shell.extensions.desktop-icons.gschema.xml b/schemas/org.gnome.shell.extensions.desktop-icons.gschema.xml
+index bb4e50f..de126b5 100644
+--- a/schemas/org.gnome.shell.extensions.desktop-icons.gschema.xml
++++ b/schemas/org.gnome.shell.extensions.desktop-icons.gschema.xml
+@@ -20,6 +20,11 @@
+         <default>true</default>
+         <summary>Show trash icon</summary>
+         <description>Show the trash icon in the desktop.</description>
++    </key>
++	<key type="b" name="show-mount">
++        <default>true</default>
++        <summary>Show mounted drives</summary>
++        <description>Show mounted drives in the desktop.</description>
+     </key>
+   </schema>
+ </schemalist>
+-- 
+2.26.0
+
