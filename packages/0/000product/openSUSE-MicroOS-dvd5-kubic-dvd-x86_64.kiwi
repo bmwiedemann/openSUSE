@@ -165,7 +165,7 @@
       <repopackage name="iputils" arch="x86_64"/>
       <repopackage name="irqbalance" arch="x86_64"/>
       <repopackage name="iscsiuio" arch="x86_64"/>
-      <repopackage name="issue-generator"/>
+      <repopackage name="issue-generator" arch="x86_64"/>
       <repopackage name="k9s" arch="x86_64"/>
       <repopackage name="kail" arch="x86_64"/>
       <repopackage name="kbd"/>

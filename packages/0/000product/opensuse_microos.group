@@ -15,13 +15,12 @@
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
-    <package name="fillup" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
+    <package name="fillup" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:openSUSE-MicroOS-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -338,6 +337,7 @@
     <package name="iscsiuio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="iso-codes" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="kactivities5-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kactivitymanagerd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="kate" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
