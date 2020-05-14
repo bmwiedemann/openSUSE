@@ -16,9 +16,18 @@
 #
 
 
+# FIXME: for now vagrant does not support Ruby 2.7
+%if 0%{?suse_version} > 1500
+%global rb_build_versions ruby26
+%global rb_build_abi ruby:2.6.0
+%global rb_ruby_suffix ruby2.6
+%else
+%global rb_build_versions %rb_default_ruby
+%global rb_build_abi %rb_default_ruby_abi
+%global rb_ruby_suffix %rb_default_ruby_suffix
+%endif
+
 %global vagrant_plugin_name vagrant-sshfs
-%global rb_build_versions %{rb_default_ruby}
-%global rb_build_abi %{rb_default_build_abi}
 %define mod_name %{vagrant_plugin_name}
 %define mod_full_name %{vagrant_plugin_name}-%{version}
 Name:           %{vagrant_plugin_name}
