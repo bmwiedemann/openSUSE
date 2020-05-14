@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 20:03:22 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Enable openmpi3 build for all SLE versions.
+
+-------------------------------------------------------------------
 Thu Mar  5 16:36:49 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Disable openmpi1 builds for SLE/Leap > 15.1.

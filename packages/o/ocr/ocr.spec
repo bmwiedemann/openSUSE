@@ -26,9 +26,6 @@
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
 
 # Build options
 

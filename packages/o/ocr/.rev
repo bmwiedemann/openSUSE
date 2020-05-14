@@ -30,4 +30,12 @@
 - Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).</comment>
     <requestid>781915</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>db603ec16cbfe2d4c64fa1139aeb89a4</srcmd5>
+    <version>1.0.1</version>
+    <time>1589491557</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable openmpi3 build for all SLE versions. (forwarded request 805381 from eeich)</comment>
+    <requestid>805382</requestid>
+  </revision>
 </revisionlist>
