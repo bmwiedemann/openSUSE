@@ -48,4 +48,16 @@ The package contains the tool and the libraries.</comment>
     <comment></comment>
     <requestid>571066</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f85b59291b4a633c6eee0d475bc5bcd0</srcmd5>
+    <version>0.0+git20190520.62358ba</version>
+    <time>1589491529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20190520.62358ba (boo#1170512):
+  * Fix the Makefile to install libargon2.pc.
+  * Wait for already running threads if a thread creation failed.
+  * Added Argon2 Erlang binding.
+  * Additional JVM bindings (Jargon2).</comment>
+    <requestid>803288</requestid>
+  </revision>
 </revisionlist>

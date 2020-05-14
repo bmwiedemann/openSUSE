@@ -1,7 +1,7 @@
 #
 # spec file for package argon2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,12 +26,12 @@
 
 %define lname libargon2-1
 Name:           argon2
-Version:        0.0+git20171227.670229c
+Version:        0.0+git20190520.62358ba
 Release:        0
 Summary:        The reference C implementation of Argon2
-License:        CC0-1.0 or Apache-2.0
+License:        CC0-1.0 OR Apache-2.0
 Group:          Productivity/Networking/Security
-Url:            https://github.com/P-H-C/phc-winner-argon2
+URL:            https://github.com/P-H-C/phc-winner-argon2
 Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch1:         optflags.patch
@@ -80,14 +80,11 @@ password hashing function that won the Password Hashing Competition
 
 %build
 %make %{?_smp_mflags}
-# fix pkgconfig file
-sed -e 's:lib/@HOST_MULTIARCH@:%{_lib}:;s/@UPSTREAM_VER@/%{version}/' -i libargon2.pc
 
 %install
 %make DESTDIR=%{buildroot} install
 
 install -D -m 644 man/argon2.1 %{buildroot}%{_mandir}/man1/argon2.1
-install -D -m 644 libargon2.pc %{buildroot}/%{_libdir}/pkgconfig/libargon2.pc
 
 %check
 %make test

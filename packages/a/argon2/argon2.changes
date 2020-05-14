@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 12 14:17:20 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.0+git20190520.62358ba (boo#1170512):
+  * Fix the Makefile to install libargon2.pc.
+  * Wait for already running threads if a thread creation failed.
+  * Added Argon2 Erlang binding.
+  * Additional JVM bindings (Jargon2).
+
+-------------------------------------------------------------------
 Tue Jan 30 13:31:06 UTC 2018 - lnussel@suse.de
 
 - add baselibs.conf as cryptsetup also has 32bit variants
