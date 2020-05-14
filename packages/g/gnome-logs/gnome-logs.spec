@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-logs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-logs
-Version:        3.34.0
+Version:        3.36.0
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://wiki.gnome.org/Apps/Logs
-Source0:        https://download.gnome.org/sources/gnome-logs/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-logs/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
