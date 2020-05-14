@@ -16,8 +16,16 @@
 #
 
 
+# FIXME: for now vagrant does not support Ruby 2.7
+%if 0%{?suse_version} > 1500
+%global rb_build_versions ruby26
+%global rb_build_abi ruby:2.6.0
+%global rb_ruby_suffix ruby2.6
+%else
 %global rb_build_versions %rb_default_ruby
-%global rb_build_abi %rb_default_build_abi
+%global rb_build_abi %rb_default_ruby_abi
+%global rb_ruby_suffix %rb_default_ruby_suffix
+%endif
 
 Name:           vagrant-libvirt
 Version:        0.0.45
@@ -69,6 +77,9 @@ BuildRequires:  %{rubygem builder:3.2 }
 BuildRequires:  %{rubygem ffi >= 1.9 }
 # Prevent have choice for rubygem(ruby:2.5.0:thor:0) >= 0.18
 BuildRequires:  %{rubygem thor:0.19}
+
+# required when using a non-default ruby version
+BuildRequires:  %{rubygem gem2rpm}
 
 URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
@@ -144,7 +155,7 @@ sed -i '/[cC]overalls/ s/^/#/' spec/spec_helper.rb
 # Relax developement rspec dependency
 sed -i '/rspec/ s/~>/>=/' %{vagrant_plugin_name}.gemspec
 
-export GEM_PATH=%{vagrant_plugin_dir}:`ruby.%{rb_default_ruby_suffix} -e "print Gem.path.join(':')"`
+export GEM_PATH=%{vagrant_plugin_dir}:`ruby.%{vagrant_rb_ruby_suffix} -e "print Gem.path.join(':')"`
 bundle exec rspec spec
 
 rm %{vagrant_plugin_name}.gemspec

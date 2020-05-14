@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 15:29:44 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch to Ruby 2.6 for Tumbleweed
+
+-------------------------------------------------------------------
 Mon Mar 23 14:10:43 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Add missing requires on nokogiri
