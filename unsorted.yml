@@ -618,7 +618,6 @@ unsorted:
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
   - apache2-mod_wsgi 
-  - apache2-mod_wsgi-python3 
   - apache2-worker 
   - apcupsd 
   - apcupsd-cgi 
@@ -2296,6 +2295,7 @@ unsorted:
   - dbus-sharp2 
   - dbus-sharp2-devel 
   - dbview 
+  - dbxtool 
   - dc3dd 
   - dc3dd-lang 
   - dcmtk 
@@ -4654,6 +4654,7 @@ unsorted:
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
+  - gnome-extensions 
   - gnome-firmware 
   - gnome-firmware-lang 
   - gnome-font-viewer 
@@ -9049,7 +9050,6 @@ unsorted:
   - libexe1 
   - libexempi-devel 
   - libexempi3-32bit: [x86_64] 
-  - libexfat0: [x86_64] 
   - libexif-devel 
   - libexif-devel-32bit: [x86_64] 
   - libexif-gtk 
@@ -9142,7 +9142,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla4 
+  - libfilezilla7 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -10279,7 +10279,6 @@ unsorted:
   - liblur3 
   - liblxc-devel 
   - liblxc1 
-  - liblxpanel0 
   - liblxqt-devel 
   - liblxqt-globalkeys-ui0 
   - liblxqt-globalkeys0 
@@ -12615,7 +12614,6 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
-  - libwlc0 
   - libwlroots5 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -13401,9 +13399,6 @@ unsorted:
   - lxinput-lang 
   - lxlauncher 
   - lxmenu-data 
-  - lxpanel 
-  - lxpanel-devel 
-  - lxpanel-lang 
   - lxqt-about 
   - lxqt-about-lang 
   - lxqt-build-tools-devel 
@@ -18165,7 +18160,6 @@ unsorted:
   - pound-doc 
   - povray 
   - povray-doc 
-  - powdertoy 
   - powerd 
   - powerline 
   - powerline-docs 
@@ -19427,6 +19421,7 @@ unsorted:
   - python3-debian 
   - python3-debtcollector 
   - python3-deepdiff 
+  - python3-deepmerge 
   - python3-defusedxml 
   - python3-delegator 
   - python3-delegator.py 
@@ -21802,26 +21797,6 @@ unsorted:
   - robinhood-tests: [x86_64] 
   - robinhood-tools: [x86_64] 
   - robinhood-webgui: [x86_64] 
-  - roccat-arvo 
-  - roccat-isku 
-  - roccat-iskufx 
-  - roccat-kiro 
-  - roccat-kone 
-  - roccat-koneplus 
-  - roccat-konepure 
-  - roccat-konextd 
-  - roccat-kova2016 
-  - roccat-kovaplus 
-  - roccat-lua 
-  - roccat-nyth 
-  - roccat-pyra 
-  - roccat-ryos 
-  - roccat-savu 
-  - roccat-skeltr 
-  - roccat-sova 
-  - roccat-suora 
-  - roccat-tools 
-  - roccat-tyon 
   - rockdodger 
   - rocksndiamonds 
   - rocksndiamonds-data 
@@ -23631,6 +23606,8 @@ unsorted:
   - ruby2.7-rubygem-reverse_markdown-testsuite 
   - ruby2.7-rubygem-rgen-doc 
   - ruby2.7-rubygem-rgen-testsuite 
+  - ruby2.7-rubygem-rice-doc 
+  - ruby2.7-rubygem-rice-testsuite 
   - ruby2.7-rubygem-ronn-doc 
   - ruby2.7-rubygem-ronn-testsuite 
   - ruby2.7-rubygem-rouge-doc 
@@ -32723,8 +32700,8 @@ unsorted:
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
-  - typelib-1_0-MyPaint-1_5 
-  - typelib-1_0-MyPaintGegl-1_5 
+  - typelib-1_0-MyPaint-1_6 
+  - typelib-1_0-MyPaintGegl-1_6 
   - typelib-1_0-Nautilus-3_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-OSTree-1_0 
@@ -32800,8 +32777,6 @@ unsorted:
   - udtrace 
   - ufiformat 
   - uftpd 
-  - ufw 
-  - ufw-lang 
   - uget 
   - uget-integrator 
   - uget-lang 
@@ -33321,7 +33296,6 @@ unsorted:
   - wizznic 
   - wkhtmltopdf 
   - wkhtmltopdf-devel 
-  - wlc-devel 
   - wlroots-devel 
   - wm-icons 
   - wmpomme 
