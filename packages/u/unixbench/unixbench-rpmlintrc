@@ -1,4 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("unixbench.* arch-dependent-file-in-usr-share")
