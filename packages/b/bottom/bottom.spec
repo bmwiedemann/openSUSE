@@ -1,6 +1,7 @@
 #
 # spec file for package bottom
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT

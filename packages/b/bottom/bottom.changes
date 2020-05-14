@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 19:21:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.2
+  Changes
+  * Automatically hide time axis labels if the widget gets too
+    small.
+  * Automatically hide table gap if the widget gets too small.
+  Bugs
+  * The <Space> character can be used as an "AND" again (properly)
+    in queries. For example:
+  * Fixed an issue where if the drive I/O label didn't match any
+    disk, the entire disk widget would display no results.
+  * Display SWAP and MEM legends even if the total amount is 0 to
+    avoid a weird blank spot in the legend.
+
+-------------------------------------------------------------------
 Sat May  9 19:17:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.4.1
