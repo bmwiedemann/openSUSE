@@ -1,7 +1,7 @@
 #
 # spec file for package uncrustify
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           uncrustify
-Version:        0.66.1
+Version:        0.71.0
 Release:        0
 Summary:        Source Code Beautifier for C, C++, C#, ObjectiveC, D
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://uncrustify.sourceforge.net/
-Source:         https://sourceforge.net/projects/uncrustify/files/uncrustify/uncrustify-%{version}/uncrustify-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/uncrustify/files/uncrustify-%{version}/uncrustify-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -48,15 +48,16 @@ Features:
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
+rm -rf %{buildroot}%{_datadir}/doc/uncrustify
 
 %files
-%doc AUTHORS ChangeLog README.md documentation/*
+%doc AUTHORS ChangeLog README.md documentation/* etc
 %license COPYING
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
