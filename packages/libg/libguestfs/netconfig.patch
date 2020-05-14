@@ -1,7 +1,8 @@
-diff -up ./appliance/packagelist.in.netconfig ./appliance/packagelist.in
---- ./appliance/packagelist.in.netconfig	2019-08-28 19:26:50.290462768 +0100
-+++ ./appliance/packagelist.in	2019-08-28 19:27:05.530462557 +0100
-@@ -161,6 +161,7 @@ ifelse(SUSE,1,
+Index: libguestfs-1.42.0/appliance/packagelist.in
+===================================================================
+--- libguestfs-1.42.0.orig/appliance/packagelist.in
++++ libguestfs-1.42.0/appliance/packagelist.in
+@@ -164,6 +164,7 @@ ifelse(SUSE,1,
    ntfs-3g
    reiserfs
    squashfs

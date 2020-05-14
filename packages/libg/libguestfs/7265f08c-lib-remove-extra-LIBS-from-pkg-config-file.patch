@@ -1,0 +1,19 @@
+Subject: lib: remove extra @LIBS@ from pkg-config file
+From: Pino Toscano ptoscano@redhat.com Wed Mar 11 13:19:31 2020 +0100
+Date: Thu Mar 12 11:45:30 2020 +0100:
+Git: 7265f08ce99e592a63a9470afad2da95167a800c
+
+At the moment it is empty, so probably it does not exist. Remove it to
+avoid adding spurious content to the pkg-config file in case that
+variable will get a value in the future.
+
+diff --git a/lib/libguestfs.pc.in b/lib/libguestfs.pc.in
+index 679ed7eba..013bf0f28 100644
+--- a/lib/libguestfs.pc.in
++++ b/lib/libguestfs.pc.in
+@@ -8,4 +8,4 @@ Version: @VERSION@
+ Description: libguestfs library for accessing and modifying VM images
+ Requires:
+ Cflags:
+-Libs: -lguestfs @LIBS@
++Libs: -lguestfs

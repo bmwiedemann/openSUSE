@@ -1,8 +1,8 @@
-Index: libguestfs-1.38.0/appliance/init
+Index: libguestfs-1.42.0/appliance/init
 ===================================================================
---- libguestfs-1.38.0.orig/appliance/init
-+++ libguestfs-1.38.0/appliance/init
-@@ -234,7 +234,8 @@ else
+--- libguestfs-1.42.0.orig/appliance/init
++++ libguestfs-1.42.0/appliance/init
+@@ -245,7 +245,8 @@ else
      echo "Note: The contents of / (root) are the rescue appliance."
      if ! test -d "/sysroot/dev"; then
          echo "You have to mount the guest’s partitions under /sysroot"

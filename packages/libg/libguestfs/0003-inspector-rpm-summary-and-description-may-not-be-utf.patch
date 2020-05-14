@@ -14,10 +14,10 @@ fails, try converting it from latin-1.
  test-data/phony-guests/fedora-packages.db.txt |  4 ++--
  3 files changed, 32 insertions(+), 6 deletions(-)
 
-diff --git a/inspector/expected-fedora.img.xml b/inspector/expected-fedora.img.xml
-index df6060a73..c29f9770e 100644
---- a/inspector/expected-fedora.img.xml
-+++ b/inspector/expected-fedora.img.xml
+Index: libguestfs-1.42.0/inspector/expected-fedora.img.xml
+===================================================================
+--- libguestfs-1.42.0.orig/inspector/expected-fedora.img.xml
++++ libguestfs-1.42.0/inspector/expected-fedora.img.xml
 @@ -34,12 +34,16 @@
          <version>1.0</version>
          <release>1.fc14</release>
@@ -35,10 +35,10 @@ index df6060a73..c29f9770e 100644
        </application>
        <application>
          <name>test3</name>
-diff --git a/lib/inspect-apps.c b/lib/inspect-apps.c
-index f0cf16b38..fdea85188 100644
---- a/lib/inspect-apps.c
-+++ b/lib/inspect-apps.c
+Index: libguestfs-1.42.0/lib/inspect-apps.c
+===================================================================
+--- libguestfs-1.42.0.orig/lib/inspect-apps.c
++++ libguestfs-1.42.0/lib/inspect-apps.c
 @@ -22,6 +22,7 @@
  #include <stdlib.h>
  #include <unistd.h>
@@ -54,8 +54,8 @@ index f0cf16b38..fdea85188 100644
 +#include "guestfs-utils.h"
  #include "structs-cleanups.h"
  
- #ifdef DB_DUMP
-@@ -251,7 +253,7 @@ get_rpm_header_tag (guestfs_h *g, const unsigned char *header_start,
+ /* Some limits on what the inspection code will read, for safety. */
+@@ -266,7 +268,7 @@ get_rpm_header_tag (guestfs_h *g, const
    /* This function parses the RPM header structure to pull out various
     * tag strings (version, release, arch, etc.).  For more detail on the
     * header format, see:
@@ -64,7 +64,7 @@ index f0cf16b38..fdea85188 100644
     */
  
    /* The minimum header size that makes sense here is 24 bytes.  Four
-@@ -301,6 +303,20 @@ struct read_package_data {
+@@ -316,6 +318,20 @@ struct read_package_data {
    struct guestfs_application2_list *apps;
  };
  
@@ -85,7 +85,7 @@ index f0cf16b38..fdea85188 100644
  static int
  read_package (guestfs_h *g,
                const unsigned char *key, size_t keylen,
-@@ -311,7 +327,7 @@ read_package (guestfs_h *g,
+@@ -326,7 +342,7 @@ read_package (guestfs_h *g,
    struct rpm_name nkey, *entry;
    CLEANUP_FREE char *version = NULL, *release = NULL,
      *epoch_str = NULL, *arch = NULL, *url = NULL, *summary = NULL,
@@ -94,7 +94,7 @@ index f0cf16b38..fdea85188 100644
    int32_t epoch;
  
    /* This function reads one (key, value) pair from the Packages
-@@ -342,8 +358,14 @@ read_package (guestfs_h *g,
+@@ -357,8 +373,14 @@ read_package (guestfs_h *g,
    epoch_str = get_rpm_header_tag (g, value, valuelen, RPMTAG_EPOCH, 'i');
    arch = get_rpm_header_tag (g, value, valuelen, RPMTAG_ARCH, 's');
    url = get_rpm_header_tag (g, value, valuelen, RPMTAG_URL, 's');
@@ -111,10 +111,10 @@ index f0cf16b38..fdea85188 100644
  
    /* The epoch is stored as big-endian integer. */
    if (epoch_str)
-diff --git a/test-data/phony-guests/fedora-packages.db.txt b/test-data/phony-guests/fedora-packages.db.txt
-index f16a5aa76..927d6eb5f 100644
---- a/test-data/phony-guests/fedora-packages.db.txt
-+++ b/test-data/phony-guests/fedora-packages.db.txt
+Index: libguestfs-1.42.0/test-data/phony-guests/fedora-packages.db.txt
+===================================================================
+--- libguestfs-1.42.0.orig/test-data/phony-guests/fedora-packages.db.txt
++++ libguestfs-1.42.0/test-data/phony-guests/fedora-packages.db.txt
 @@ -5,9 +5,9 @@ h_nelem=3
  db_pagesize=4096
  HEADER=END
@@ -127,6 +127,3 @@ index f16a5aa76..927d6eb5f 100644
   \03\00\00\00
   \00\00\00\03\00\00\00\11\00\00\03\e9\00\00\00\00\00\00\00\00\00\00\00\00\00\00\03\ea\00\00\00\00\00\00\00\04\00\00\00\00\00\00\03\fe\00\00\00\00\00\00\00\0b\00\00\00\003.0\003.fc14\00x86_64\00
  DATA=END
--- 
-2.16.1
-

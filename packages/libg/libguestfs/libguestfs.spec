@@ -18,7 +18,7 @@
 # needsbinariesforbuild
 
 
-Version:        1.38.0
+Version:        1.42.0
 Release:        0
 %{ocaml_preserve_bytecode}
 
@@ -99,6 +99,7 @@ BuildRequires:  perl(Module::Build)
 %endif
 BuildRequires:  db48-utils
 BuildRequires:  dhcp-client
+BuildRequires:  libjansson-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  qemu-tools
@@ -142,12 +143,8 @@ Summary:        Compatibility package for guestfs-tools
 # Upstream patches
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Patch0:         d0e5a819-python-Fix-missing-additional-backslashes.patch
-Patch1:         0a55098f-builder-repository-fix-compute_short_id-for-sles-X.0.patch
-Patch2:         fd43730e-error-with-uninstall-option-on-SUSE.patch
-Patch3:         70407cd622-inspection-Parse-os-release-opensuse-leap-as-opensus.patch
-Patch4:         28bd06227b-inspect-handle-os-release-opensuse-tumbleweed-as-ope.patch
-Patch5:         500acb15-v2v-linux-fix-kernel-detection-when-split-in-different-packages.patch
+Patch1:         31e6b187-po-Remove-virt-v2v-related-dependency-from-POTFILES-ml..patch
+Patch2:         7265f08c-lib-remove-extra-LIBS-from-pkg-config-file.patch
 
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
@@ -157,8 +154,8 @@ Patch52:        0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
 Patch100:       appliance.patch
 Patch101:       netconfig.patch
 
-Source0:        http://download.libguestfs.org/1.38-stable/libguestfs-%{version}.tar.gz
-Source1:        libguestfs.rpmlintrc
+Source0:        http://download.libguestfs.org/1.42-stable/libguestfs-%{version}.tar.gz
+Source3:        libguestfs.rpmlintrc
 Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 Source789653:   Pod-Simple-3.23.tar.xz
@@ -563,12 +560,8 @@ It can import a variety of guest operating systems from libvirt-managed hosts.
 %prep
 : _ignore_exclusive_arch '%{?_ignore_exclusive_arch}'
 %setup -q -a 789653
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 %patch50 -p1
 %patch51 -p1
 %patch52 -p1
@@ -843,40 +836,14 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %license COPYING
 %{_sbindir}/libguestfs-make-fixed-appliance
 %{_bindir}/*
-%exclude %{_bindir}/virt-v2v
-%if %{with p2v}
-%exclude %{_bindir}/virt-p2v-*
-%endif
 /etc/virt-builder
 %dir /etc/xdg/virt-builder
 %dir /etc/xdg/virt-builder/repos.d
 %config /etc/xdg/virt-builder/repos.d/*
 %if %{with bash_completion}
 %{_datadir}/bash-completion
-%exclude %{_datadir}/bash-completion/*/virt-v2v
 %endif
 %{_mandir}/man1/*
-%exclude %{_mandir}/man1/virt-v2v.*
-%if %{with p2v}
-%exclude %{_mandir}/man1/virt-p2v*
-%endif
 %{_mandir}/man5/*
-
-%files -n virt-v2v
-%defattr(-,root,root)
-%{_bindir}/virt-v2v
-%{_datadir}/bash-completion/*/virt-v2v
-%{_mandir}/man1/virt-v2v.*
-
-%if %{with p2v}
-%files -n virt-p2v
-%defattr(-,root,root)
-%{_libdir}/virt-p2v
-%{_datadir}/virt-p2v
-%{_bindir}/virt-p2v-make-kiwi
-%{_bindir}/virt-p2v-make-disk
-%{_mandir}/man1/virt-p2v-make-kiwi*
-%{_mandir}/man1/virt-p2v-make-disk*
-%endif
 
 %changelog

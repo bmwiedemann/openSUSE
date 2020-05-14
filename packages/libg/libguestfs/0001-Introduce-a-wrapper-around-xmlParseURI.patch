@@ -33,17 +33,15 @@ libvirt URLs.
  common/utils/Makefile.am     |   2 +
  common/utils/libxml2-utils.c | 178 +++++++++++++++++++++++++++++++++++++++++++
  common/utils/libxml2-utils.h |  27 +++++++
- v2v/input_vmx.ml             |   8 +-
- v2v/virt-v2v.pod             |   5 +-
  10 files changed, 258 insertions(+), 18 deletions(-)
  create mode 100644 common/utils/libxml2-utils.c
  create mode 100644 common/utils/libxml2-utils.h
 
-diff --git a/common/mlxml/Makefile.am b/common/mlxml/Makefile.am
-index 083c7a64b..739b58ae4 100644
---- a/common/mlxml/Makefile.am
-+++ b/common/mlxml/Makefile.am
-@@ -53,6 +53,7 @@ libmlxml_a_CPPFLAGS = \
+Index: libguestfs-1.42.0/common/mlxml/Makefile.am
+===================================================================
+--- libguestfs-1.42.0.orig/common/mlxml/Makefile.am
++++ libguestfs-1.42.0/common/mlxml/Makefile.am
+@@ -54,6 +54,7 @@ libmlxml_a_CPPFLAGS = \
  	-I. \
  	-I$(top_builddir) \
  	-I$(top_srcdir)/gnulib/lib -I$(top_builddir)/gnulib/lib \
@@ -51,10 +49,10 @@ index 083c7a64b..739b58ae4 100644
  	-I$(shell $(OCAMLC) -where)
  libmlxml_a_CFLAGS = \
  	$(WARN_CFLAGS) $(WERROR_CFLAGS) \
-diff --git a/common/mlxml/xml-c.c b/common/mlxml/xml-c.c
-index 3ebecb25e..6dcdb5ccb 100644
---- a/common/mlxml/xml-c.c
-+++ b/common/mlxml/xml-c.c
+Index: libguestfs-1.42.0/common/mlxml/xml-c.c
+===================================================================
+--- libguestfs-1.42.0.orig/common/mlxml/xml-c.c
++++ libguestfs-1.42.0/common/mlxml/xml-c.c
 @@ -27,17 +27,21 @@
  #include <stdlib.h>
  #include <string.h>
@@ -76,8 +74,8 @@ index 3ebecb25e..6dcdb5ccb 100644
 +
  #pragma GCC diagnostic ignored "-Wmissing-prototypes"
  
- /* xmlDocPtr type */
-@@ -426,16 +430,11 @@ mllib_xml_doc_get_root_element (value docv)
+ /* Replacement if caml_alloc_initialized_string is missing, added
+@@ -438,16 +442,11 @@ mllib_xml_doc_get_root_element (value do
    }
  }
  
@@ -97,7 +95,7 @@ index 3ebecb25e..6dcdb5ccb 100644
  
    rv = caml_alloc_tuple (9);
  
-@@ -514,7 +513,37 @@ mllib_xml_parse_uri (value strv)
+@@ -526,7 +525,37 @@ mllib_xml_parse_uri (value strv)
    else ov = Val_int (0);
    Store_field (rv, 8, ov);
  
@@ -135,19 +133,19 @@ index 3ebecb25e..6dcdb5ccb 100644
 +  xmlFreeURI (uri);
    CAMLreturn (rv);
  }
-diff --git a/common/mlxml/xml.ml b/common/mlxml/xml.ml
-index 5b5c09c00..faeea35ee 100644
---- a/common/mlxml/xml.ml
-+++ b/common/mlxml/xml.ml
+Index: libguestfs-1.42.0/common/mlxml/xml.ml
+===================================================================
+--- libguestfs-1.42.0.orig/common/mlxml/xml.ml
++++ libguestfs-1.42.0/common/mlxml/xml.ml
 @@ -162,3 +162,4 @@ type uri = {
  }
  
  external parse_uri : string -> uri = "mllib_xml_parse_uri"
 +external parse_nonstandard_uri : string -> uri = "mllib_xml_parse_nonstandard_uri"
-diff --git a/common/mlxml/xml.mli b/common/mlxml/xml.mli
-index f561bd673..73c2fdd4b 100644
---- a/common/mlxml/xml.mli
-+++ b/common/mlxml/xml.mli
+Index: libguestfs-1.42.0/common/mlxml/xml.mli
+===================================================================
+--- libguestfs-1.42.0.orig/common/mlxml/xml.mli
++++ libguestfs-1.42.0/common/mlxml/xml.mli
 @@ -115,3 +115,7 @@ val parse_uri : string -> uri
      Note this is different from the {!URI} module which is specialized
      for parsing the [-a] parameter on the command line.  This function
@@ -156,10 +154,10 @@ index f561bd673..73c2fdd4b 100644
 +val parse_nonstandard_uri : string -> uri
 +(** Similar to {!parse_uri} but only for use with our non-standard
 +    URIs.  See [guestfs_int_parse_nonstandard_uri] in [common/utils]. *)
-diff --git a/common/options/uri.c b/common/options/uri.c
-index ac36bccb2..88a5f0560 100644
---- a/common/options/uri.c
-+++ b/common/options/uri.c
+Index: libguestfs-1.42.0/common/options/uri.c
+===================================================================
+--- libguestfs-1.42.0.orig/common/options/uri.c
++++ libguestfs-1.42.0/common/options/uri.c
 @@ -38,6 +38,7 @@
  
  #include "guestfs.h"
@@ -168,7 +166,7 @@ index ac36bccb2..88a5f0560 100644
  #include "uri.h"
  
  static int is_uri (const char *arg);
-@@ -114,9 +115,9 @@ parse (const char *arg, char **path_ret, char **protocol_ret,
+@@ -114,9 +115,9 @@ parse (const char *arg, char **path_ret,
    CLEANUP_FREE char *socket = NULL;
    char *path;
  
@@ -180,24 +178,23 @@ index ac36bccb2..88a5f0560 100644
               getprogname (), arg);
      return -1;
    }
-diff --git a/common/utils/Makefile.am b/common/utils/Makefile.am
-index 143e2c141..1fa98f992 100644
---- a/common/utils/Makefile.am
-+++ b/common/utils/Makefile.am
-@@ -26,6 +26,8 @@ libutils_la_SOURCES = \
- 	gnulib-cleanups.c \
- 	guestfs-utils.h \
+Index: libguestfs-1.42.0/common/utils/Makefile.am
+===================================================================
+--- libguestfs-1.42.0.orig/common/utils/Makefile.am
++++ libguestfs-1.42.0/common/utils/Makefile.am
+@@ -28,6 +28,8 @@ libutils_la_SOURCES = \
  	libxml2-cleanups.c \
+ 	libxml2-writer-macros.h \
+ 	stringlists-utils.c \
 +	libxml2-utils.c \
 +	libxml2-utils.h \
  	utils.c
  libutils_la_CPPFLAGS = \
- 	-DGUESTFS_WARN_DEPRECATED=1 \
-diff --git a/common/utils/libxml2-utils.c b/common/utils/libxml2-utils.c
-new file mode 100644
-index 000000000..8a05aa5b1
+ 	-DGUESTFS_NO_DEPRECATED=1 \
+Index: libguestfs-1.42.0/common/utils/libxml2-utils.c
+===================================================================
 --- /dev/null
-+++ b/common/utils/libxml2-utils.c
++++ libguestfs-1.42.0/common/utils/libxml2-utils.c
 @@ -0,0 +1,178 @@
 +/* libguestfs
 + * Copyright (C) 2017 Red Hat Inc.
@@ -347,7 +344,7 @@ index 000000000..8a05aa5b1
 +  inp = input;
 +  outp = out;
 +
-+  r = iconv (ic, (ICONV_CONST char **) &inp, &inlen, &outp, &outlen);
++  r = iconv (ic, (char **) &inp, &inlen, &outp, &outlen);
 +  if (r == (size_t) -1) {
 +    if (errno == E2BIG) {
 +      err = errno;
@@ -377,11 +374,10 @@ index 000000000..8a05aa5b1
 +
 +  return out;
 +}
-diff --git a/common/utils/libxml2-utils.h b/common/utils/libxml2-utils.h
-new file mode 100644
-index 000000000..d9916ea58
+Index: libguestfs-1.42.0/common/utils/libxml2-utils.h
+===================================================================
 --- /dev/null
-+++ b/common/utils/libxml2-utils.h
++++ libguestfs-1.42.0/common/utils/libxml2-utils.h
 @@ -0,0 +1,27 @@
 +/* libguestfs
 + * Copyright (C) 2017 Red Hat Inc.
@@ -410,42 +406,3 @@ index 000000000..d9916ea58
 +extern xmlURIPtr guestfs_int_parse_nonstandard_uri (const char *uri);
 +
 +#endif /* GUESTFS_LIBXML2_UTILS_H_ */
-diff --git a/v2v/input_vmx.ml b/v2v/input_vmx.ml
-index a8b33f66f..b97fac700 100644
---- a/v2v/input_vmx.ml
-+++ b/v2v/input_vmx.ml
-@@ -38,11 +38,11 @@ type vmx_source =
- let vmx_source_of_arg input_transport arg =
-   match input_transport, arg with
-   | None, arg -> File arg
--  | Some `SSH, arg ->
-+  | Some `SSH, uri ->
-      let uri =
--       try Xml.parse_uri arg
--       with Invalid_argument _ ->
--         error (f_"remote vmx ‘%s’ could not be parsed as a URI") arg in
-+       try Xml.parse_nonstandard_uri uri
-+       with exn ->
-+         error (f_"could not parse URI: %s") (Printexc.to_string exn) in
-      if uri.Xml.uri_scheme <> None && uri.Xml.uri_scheme <> Some "ssh" then
-        error (f_"vmx URI start with ‘ssh://...’");
-      if uri.Xml.uri_server = None then
-diff --git a/v2v/virt-v2v.pod b/v2v/virt-v2v.pod
-index e30cc03fb..c67b67e48 100644
---- a/v2v/virt-v2v.pod
-+++ b/v2v/virt-v2v.pod
-@@ -1458,10 +1458,7 @@ authorized_keys.
- When using the SSH input transport you must specify a remote
- C<ssh://...> URI pointing to the VMX file.  A typical URI looks like:
- 
-- ssh://root@esxi.example.com/vmfs/volumes/datastore1/my%20guest/my%20guest.vmx
--
--Any space must be escaped with C<%20> and other non-ASCII characters
--may also need to be URI-escaped.
-+ ssh://root@esxi.example.com/vmfs/volumes/datastore1/my guest/my guest.vmx
- 
- The username is not required if it is the same as your local username.
- 
--- 
-2.16.1
-

@@ -13,10 +13,10 @@ guestfs-utils.h as guestfs_int_string_to_utf8()
  common/utils/utils.c         | 64 ++++++++++++++++++++++++++++++++++++++++
  3 files changed, 76 insertions(+), 68 deletions(-)
 
-diff --git a/common/utils/guestfs-utils.h b/common/utils/guestfs-utils.h
-index 90e7c3dd9..86da693bc 100644
---- a/common/utils/guestfs-utils.h
-+++ b/common/utils/guestfs-utils.h
+Index: libguestfs-1.42.0/common/utils/guestfs-utils.h
+===================================================================
+--- libguestfs-1.42.0.orig/common/utils/guestfs-utils.h
++++ libguestfs-1.42.0/common/utils/guestfs-utils.h
 @@ -33,6 +33,7 @@
  #define GUESTFS_UTILS_H_
  
@@ -25,10 +25,10 @@ index 90e7c3dd9..86da693bc 100644
  
  #include "guestfs-internal-all.h"
  #include "cleanups.h"
-@@ -70,6 +71,16 @@ extern int guestfs_int_is_fifo (int64_t mode);
- extern int guestfs_int_is_lnk (int64_t mode);
- extern int guestfs_int_is_sock (int64_t mode);
+@@ -68,6 +69,17 @@ extern int guestfs_int_is_sock (int64_t
  extern char *guestfs_int_full_path (const char *dir, const char *name);
+ extern void guestfs_int_hexdump (const void *data, size_t len, FILE *fp);
+ 
 +extern char *guestfs_int_string_to_utf8 (/* const */ char *input, const char *encoding);
 +
 +/* Would be const, but the interface to iconv is not const-correct on
@@ -39,13 +39,14 @@ index 90e7c3dd9..86da693bc 100644
 +{
 +  return guestfs_int_string_to_utf8 (input, nl_langinfo (CODESET));
 +}
- 
++
  /* Not all language bindings know how to deal with Pointer arguments.
   * Those that don't will use this macro which complains noisily and
-diff --git a/common/utils/libxml2-utils.c b/common/utils/libxml2-utils.c
-index 8a05aa5b1..a71db30dd 100644
---- a/common/utils/libxml2-utils.c
-+++ b/common/utils/libxml2-utils.c
+  * returns NULL.
+Index: libguestfs-1.42.0/common/utils/libxml2-utils.c
+===================================================================
+--- libguestfs-1.42.0.orig/common/utils/libxml2-utils.c
++++ libguestfs-1.42.0/common/utils/libxml2-utils.c
 @@ -30,8 +30,6 @@
  #include <string.h>
  #include <errno.h>
@@ -64,7 +65,7 @@ index 8a05aa5b1..a71db30dd 100644
  /**
   * This is a wrapper around C<xmlParseURI>.  That function cannot
   * handle spaces and some non-ASCII characters found in URIs.  This
-@@ -73,7 +69,7 @@ guestfs_int_parse_nonstandard_uri (const char *arg)
+@@ -73,7 +69,7 @@ guestfs_int_parse_nonstandard_uri (const
    xmlURIPtr ret;
  
    /* Convert the string to UTF-8. */
@@ -73,7 +74,7 @@ index 8a05aa5b1..a71db30dd 100644
    if (uri == NULL)
      return NULL;
  
-@@ -113,66 +109,3 @@ guestfs_int_parse_nonstandard_uri (const char *arg)
+@@ -113,66 +109,3 @@ guestfs_int_parse_nonstandard_uri (const
  
    return ret;
  }
@@ -110,7 +111,7 @@ index 8a05aa5b1..a71db30dd 100644
 -  inp = input;
 -  outp = out;
 -
--  r = iconv (ic, (ICONV_CONST char **) &inp, &inlen, &outp, &outlen);
+-  r = iconv (ic, (char **) &inp, &inlen, &outp, &outlen);
 -  if (r == (size_t) -1) {
 -    if (errno == E2BIG) {
 -      err = errno;
@@ -140,10 +141,10 @@ index 8a05aa5b1..a71db30dd 100644
 -
 -  return out;
 -}
-diff --git a/common/utils/utils.c b/common/utils/utils.c
-index 22af62b0f..faef7c089 100644
---- a/common/utils/utils.c
-+++ b/common/utils/utils.c
+Index: libguestfs-1.42.0/common/utils/utils.c
+===================================================================
+--- libguestfs-1.42.0.orig/common/utils/utils.c
++++ libguestfs-1.42.0/common/utils/utils.c
 @@ -35,6 +35,7 @@
  #include <sys/types.h>
  #include <sys/wait.h>
@@ -152,9 +153,9 @@ index 22af62b0f..faef7c089 100644
  
  /* NB: MUST NOT require linking to gnulib, because that will break the
   * Python 'sdist' which includes a copy of this file.  It's OK to
-@@ -733,3 +734,66 @@ guestfs_int_full_path (const char *dir, const char *name)
- 
-   return path;
+@@ -641,3 +642,66 @@ guestfs_int_hexdump (const void *data, s
+     fprintf (fp, "|\n");
+   }
  }
 +
 +/* Would be const, but the interface to iconv is not const-correct on
@@ -189,7 +190,7 @@ index 22af62b0f..faef7c089 100644
 +  inp = input;
 +  outp = out;
 +
-+  r = iconv (ic, (ICONV_CONST char **) &inp, &inlen, &outp, &outlen);
++  r = iconv (ic, (char **) &inp, &inlen, &outp, &outlen);
 +  if (r == (size_t) -1) {
 +    if (errno == E2BIG) {
 +      err = errno;
@@ -219,6 +220,3 @@ index 22af62b0f..faef7c089 100644
 +
 +  return out;
 +}
--- 
-2.16.1
-

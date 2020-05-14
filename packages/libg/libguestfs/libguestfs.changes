@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:23:36 MDT 2020 - carnold@suse.com
+
+- Update to version 1.42.0
+  * virt-v2v is moved out from libguestfs into its own package
+  * virt-p2v is moved out from libguestfs into its own package
+  * Add support for the Vala language
+  * Add support for the Rust language
+  * Reproducible builds
+  * Advanced Format disks (which use 4K sectors) can now be
+    processed by libguestfs. Use the new optional blocksize
+    parameter to guestfs_add_drive_opts, and the --blocksize option
+    added to several tools
+  * Windows CompactOS (NTFS file compression) is now supported.
+  * Advanced machine readable output in various virt tools now
+    supports JSON output, and writing logs to a numbered file
+    descriptor
+  * virt-filesystems tool now more accurately reports filesystem
+    total size, in the case where for example the filesystem does
+    not occupy the whole of its containing device
+  * Python ≥ 2.7 is required.
+  * Python bindings are now more extensively tested
+  * Python bindings should now work with Python ≥ 3.8.
+  * Multiple fixes to avoid crashes in the Python bindings
+  * OCaml bindings are compiled with -DCAML_NAME_SPACE to ensure no
+    non-caml_-namespaced symbols are used
+  * OCaml bindings should now work with OCaml 4.09 and 4.10.
+  * Fix compatibility with newer cgo for Go bindings
+  * Go API error handling is now more idiomatic
+  * Update documentation about how to handle boolean parameters in
+    Ruby bindings
+  * Libguestfs can now extract icons for Gentoo, newer SUSE and
+    OpenMandriva guests. Improved extraction of RHEL icons.
+  * Inspection returns the osinfo IDs of newer Windows versions,
+    and rolling Linux distros
+- Added patches
+  31e6b187-po-Remove-virt-v2v-related-dependency-from-POTFILES-ml..patch
+  7265f08c-lib-remove-extra-LIBS-from-pkg-config-file.patch
+- Patches dropped
+  0a55098f-builder-repository-fix-compute_short_id-for-sles-X.0.patch
+  28bd06227b-inspect-handle-os-release-opensuse-tumbleweed-as-ope.patch
+  500acb15-v2v-linux-fix-kernel-detection-when-split-in-different-packages.patch
+  70407cd622-inspection-Parse-os-release-opensuse-leap-as-opensus.patch
+  d0e5a819-python-Fix-missing-additional-backslashes.patch
+  fd43730e-error-with-uninstall-option-on-SUSE.patch
+
+-------------------------------------------------------------------
 Thu Mar 19 10:25:01 MDT 2020 - carnold@suse.com
 
 - bsc#1167131 - virt-v2v fails importing ubuntu 18.04 LTS ova
