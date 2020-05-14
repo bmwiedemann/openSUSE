@@ -256,4 +256,14 @@ provides).</comment>
     <comment></comment>
     <requestid>793810</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>5b3fd268ef4638db0615eb17e13ac743</srcmd5>
+    <version>1.0.0~rc10</version>
+    <time>1589491348</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport https://github.com/opencontainers/runc/pull/2391 to help fix
+  bsc#1168481.
+  + bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch</comment>
+    <requestid>804891</requestid>
+  </revision>
 </revisionlist>

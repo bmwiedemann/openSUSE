@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 06:49:44 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Backport https://github.com/opencontainers/runc/pull/2391 to help fix
+  bsc#1168481.
+  + bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 10:16:21 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Renamed patch:
