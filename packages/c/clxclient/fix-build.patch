@@ -1,0 +1,34 @@
+diff --git a/source/Makefile b/source/Makefile
+index 177115f..b5c9f70 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -33,7 +33,6 @@ VERSION = $(MAJVERS).$(MINVERS)
+ CPPFLAGS += $(shell pkgconf --cflags freetype2) 
+ CPPFLAGS += -DVERSION=\"$(VERSION)\" -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS $(PCONFCFL)
+ CXXFLAGS += -Wall -O2 -fPIC 
+-CXXFLAGS += -march=native
+ LDLIBS +=
+ 
+ 
+@@ -55,7 +54,7 @@ install:	$(CLXCLIENT_MIN)
+ 	install -d $(DESTDIR)$(LIBDIR)
+ 	install -m 644 $(CLXCLIENT_H) $(DESTDIR)$(INCDIR)
+ 	install -m 755 $(CLXCLIENT_MIN) $(DESTDIR)$(LIBDIR)
+-	ldconfig
++	/sbin/ldconfig -N $(DESTDIR)/$(LIBDIR)
+ 	ln -sf $(CLXCLIENT_MIN) $(DESTDIR)$(LIBDIR)/$(CLXCLIENT_SO)
+ 
+ uninstall:
+diff --git a/source/enumip.cc b/source/enumip.cc
+index 0873da8..1cdac0d 100644
+--- a/source/enumip.cc
++++ b/source/enumip.cc
+@@ -19,7 +19,7 @@
+ // ---------------------------------------------------------------------------------
+ 
+ 
+-#include <clxclient.h>
++#include "clxclient.h"
+ #include <X11/keysym.h>
+ 
+ 
