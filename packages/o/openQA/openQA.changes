@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 14 19:25:00 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1589385688.c7582131b:
+  * Stabilize 25-cache-service.t using Time::HiRes
+  * docs: Describe the possibility for cloud instances explicitly
+  * t: Extract 'start_worker' method to reduce duplicate code
+  * Dependency cron 200513
+  * t: Delete unused 'stop_worker' in 33-developer_mode.t
+  * t: Prevent perl warning when 05-scheduler-full fails
+  * Remove references to Test::More::Color not adding benefit
+  * Mark unstable/flaky t/ui/27-plugin_obs_rsync_status_details.t as such
+  * Add MicroOS bug reporting URL
+  * Makefile: Bump timeout for 't' for accepted slow runs
+
+-------------------------------------------------------------------
 Tue May 12 11:25:21 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1589279446.c80b4132b:
