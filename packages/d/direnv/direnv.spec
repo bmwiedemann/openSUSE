@@ -1,7 +1,7 @@
 #
 # spec file for package direnv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.17.0
+Version:        2.21.2
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
 Group:          Productivity/File utilities
-Url:            http://direnv.net/
+URL:            http://direnv.net/
 Source:         https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  go >= 1.5
 BuildRequires:  make
