@@ -55,6 +55,8 @@ Source1:        %{realname}-rpmlintrc
 Patch1:         CVE-2019-16884.patch
 # FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2207.
 Patch2:         CVE-2019-19921.patch
+# FIX-UPSTREAM: Backport of https://github.com/opencontainers/runc/pull/2391. bsc#1168481
+Patch3:         bsc1168481-0001-cgroup-devices-major-cleanups-and-minimal-transition.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  libapparmor-devel
@@ -95,6 +97,8 @@ and has grown to become a separate project entirely.
 %patch1 -p1
 # CVE-2019-19921
 %patch2 -p1
+# bsc#1168481
+%patch3 -p1
 
 %build
 # Do not use symlinks. If you want to run the unit tests for this package at
