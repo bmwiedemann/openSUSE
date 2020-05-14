@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 08:04:50 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Increase memory for PowerPC in _constraints file
+
+-------------------------------------------------------------------
 Sat May  2 13:59:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to drop unused LLVM and Rust build dependencies
