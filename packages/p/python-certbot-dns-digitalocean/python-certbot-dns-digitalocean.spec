@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-dns-digitalocean
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        DigitalOcean Authenticator plugin for Certbot
 License:        Apache-2.0
