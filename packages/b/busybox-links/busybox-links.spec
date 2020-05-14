@@ -46,6 +46,7 @@ BuildRequires:  patch
 BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  sed
+BuildRequires:  sendmail
 BuildRequires:  sharutils
 BuildRequires:  tar
 BuildRequires:  traceroute
@@ -76,6 +77,7 @@ Requires:       busybox-patch = %{version}
 Requires:       busybox-procps = %{version}
 Requires:       busybox-psmisc = %{version}
 Requires:       busybox-sed = %{version}
+Requires:       busybox-sendmail = %{version}
 Requires:       busybox-sh = %{version}
 Requires:       busybox-sharutils = %{version}
 Requires:       busybox-tar = %{version}
@@ -103,7 +105,6 @@ Conflicts:      lsof
 Conflicts:      lsscsi
 Conflicts:      nbd
 Conflicts:      netcat-openbsd
-Conflicts:      postfix
 Conflicts:      shadow
 Conflicts:      sysvinit-tools
 Conflicts:      telnet
@@ -365,6 +366,16 @@ Conflicts:      tar
 %description -n busybox-tar
 This package contains the symlinks to replace tar with busybox.
 
+%package -n busybox-sendmail
+Summary:        Busybox applets replacing sendmail
+Requires:       busybox = %{version}
+Conflicts:      sendmail
+Conflicts:      postfix
+Conflicts:      exim
+
+%description -n busybox-sendmail
+This package contains the symlinks to replace sendmail with busybox.
+
 %prep
 %setup -q -c -T
 
@@ -379,7 +390,7 @@ rm apps/rpm apps/rpm2cpio
 rm -f apps/linuxrc
 # Does not really fit
 rm apps/[[
-for package in coreutils diffutils findutils grep util-linux iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man; do
+for package in coreutils diffutils findutils grep util-linux iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail; do
     for i in `rpm -ql $package |grep "bin/"` ; do
 	prog=`basename $i`
 	if [ -f apps/$prog ]; then
@@ -419,7 +430,6 @@ cat filelist-*.txt | sort -u > filelist.txt
 
 /bin/ls missing/
 
-
 %install
 mkdir -p %{buildroot}%{_bindir}
 bash ./busybox.install %{buildroot} --symlinks
@@ -438,7 +448,6 @@ ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 if test "$1" = 0; then
         %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/busybox
 fi
-
 
 %files
 
@@ -466,6 +475,7 @@ fi
 %files -n busybox-procps -f filelist-procps.txt
 %files -n busybox-psmisc -f filelist-psmisc.txt
 %files -n busybox-sed -f filelist-sed.txt
+%files -n busybox-sendmail -f filelist-sendmail.txt
 %files -n busybox-sh -f filelist-sh.txt
 %ghost %config %{_sysconfdir}/alternatives/sh
 
