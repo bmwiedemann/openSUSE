@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libyang
-Version:        1.0.130
+Version:        1.0.167
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
