@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 08:50:23 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue Mar 10 09:29:52 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Handle the iscsi service status (restart, start...) change after
