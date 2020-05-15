@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 09:05:34 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue Aug 27 18:42:29 CEST 2019 - schubi@suse.de
 
 - Set X-SuSE-YaST-AutoInstResource in desktop file (bsc#144894).
