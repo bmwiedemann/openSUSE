@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           calligra
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Libraries and Base Files for the Calligra Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-only
