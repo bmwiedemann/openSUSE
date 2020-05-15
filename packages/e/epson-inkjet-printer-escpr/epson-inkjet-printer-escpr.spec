@@ -1,7 +1,7 @@
 #
 # spec file for package epson-inkjet-printer-escpr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,18 +34,9 @@ BuildRequires:  cups154-devel
 BuildRequires:  cups
 BuildRequires:  cups-devel
 %endif
-# All printer driver packages should have "BuildRequires: python-cups"
-# because python-cups installs special rpm macros that adds Provides tags
-# for the printer drivers supported by the package,
-# see https://bugzilla.novell.com/show_bug.cgi?id=735865
-# but python-cups is not available for SLE10, regarding the suse_version value for SLE10
-# see http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?suse_version} > 1010
-BuildRequires:  python-cups
-%endif
-Version:        1.6.35
+Version:        1.7.7
 Release:        0
-Url:            http://avasys.jp/english/linux_e/
+URL:            http://avasys.jp/english/linux_e/
 Summary:        Epson ESC/P-R Inkjet Printer Driver
 # Example URL to download Source0: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
 License:        GPL-2.0-only
