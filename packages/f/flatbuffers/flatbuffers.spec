@@ -18,13 +18,13 @@
 
 %define   sonum 1
 Name:           flatbuffers
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://google.github.io/flatbuffers/
-Source:         https://github.com/google/flatbuffers/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.11.2
 BuildRequires:  gcc-c++
 

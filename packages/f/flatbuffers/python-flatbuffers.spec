@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flatbuffers
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        The FlatBuffers serialization format for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/google/flatbuffers
-Source:         https://github.com/google/flatbuffers/archive/%{version}/flatbuffers-%{version}.tar.gz
+Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

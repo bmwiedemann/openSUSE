@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:30:35 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.12.0
+  - An official Swift port! (including gRPC support).
+  - A Kotlin port!
+  - Object API and native JSON support for C#.
+  - Object API and gRPC support for Python.
+  - Object API for Go.
+  - FlexBuffers for Java.
+  - Many other fixes and smaller improvements, 247 commits since 1.11.0
+- Packaging: Use tarball from GitHub release page
+  https://github.com/google/flatbuffers/releases
+
+-------------------------------------------------------------------
 Tue Dec  3 14:39:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use same tarball as it is equal between python and C code
