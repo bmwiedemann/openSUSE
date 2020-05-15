@@ -663,4 +663,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>801797</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ac701f47452dc75b7931a3cd8ec6a641</srcmd5>
+    <version>4.3.20</version>
+    <time>1589579470</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>805752</requestid>
+  </revision>
 </revisionlist>

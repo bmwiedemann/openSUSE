@@ -1,4 +1,80 @@
 --------------------------------------------------------------------
+Fri May 15 07:17:13 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#743
+- moved more registries to separate source file
+- fixed typo
+- 4.3.20
+
+--------------------------------------------------------------------
+Thu May 14 17:08:42 UTC 2020 - weblate-noreply@opensuse.org
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+- Translated using Weblate (Swedish) (bsc#1149754)
+- 4.3.19
+
+--------------------------------------------------------------------
+Thu May 14 11:12:25 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#742
+- moved load registry to separate source file
+- added documentation
+- added developer mode
+- 4.3.18
+
+--------------------------------------------------------------------
+Wed May 13 16:46:05 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#741
+- use views in actiongraph calculation
+- added unit test
+- 4.3.17
+
+--------------------------------------------------------------------
+Wed May 13 11:00:27 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#740
+- make enum view available in public interface
+- add view parameter to some function
+- ignore some snapshot relations in actiongraph
+- added unit test for deleting lvm snapshots
+- updated integration tests
+- extended documentation
+- reduced include statements
+- 4.3.16
+
+--------------------------------------------------------------------
+Tue May 12 11:13:44 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#739
+- disable more code if probing btrfs snapshot relations is disabled
+- 4.3.15
+
+--------------------------------------------------------------------
+Mon May 11 13:50:12 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#738
+- allow parallel edges in devicegraph
+- allow to probe btrfs snapshot relations
+- added unit tests
+- coding style
+- fixed typo
+- strip unimportant information of unit test
+- 4.3.14
+
+--------------------------------------------------------------------
+Mon May 11 09:46:37 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#737
+- do not save unknown btrfs subvolume id
+- easier to understand code
+- reduced include statements
+- added note
+- relaxed checks loading btrfs subvolume id
+- extended documentation and minor cleanups
+- 4.3.13
+
+--------------------------------------------------------------------
 Fri May 8 12:10:17 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#736
