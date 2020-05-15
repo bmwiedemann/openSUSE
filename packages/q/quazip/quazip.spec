@@ -1,7 +1,7 @@
 #
 # spec file for package quazip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define so_ver 1
 Name:           quazip
-Version:        0.8.1
+Version:        0.9
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/stachenov/quazip
 Source:         https://github.com/stachenov/quazip/archive/v%{version}.tar.gz#/quazip-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM quazip-0.8.1_pkgconfig.patch
-Patch0:         quazip-0.8.1_pkgconfig.patch
+# PATCH-FEATURE-UPSTREAM quazip-0.9-pkgconfig.patch aloisio@gmx.com -- add subdir to include path
+Patch1:         quazip-0.9-pkgconfig.patch
+# PATCH-FIX-OPENSUSE quazip-0.9-no_static_library.patch aloisio@gmx.com -- do not build static library
+Patch2:         quazip-0.9-no_static_library.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -42,7 +43,6 @@ Useful to access ZIP archives from Qt5 programs.
 
 %package -n libquazip5-%{so_ver}
 Summary:        C++ wrapper for ZIP/UNZIP
-Group:          Development/Libraries/C and C++
 Provides:       libquazip%{so_ver} = %{version}
 Obsoletes:      libquazip%{so_ver} < %{version}
 
@@ -52,7 +52,6 @@ Useful to access ZIP archives from Qt5 programs.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libquazip5-%{so_ver} = %{version}-%{release}
 Requires:       pkgconfig(Qt5Core)
 Provides:       libquazip-qt5-devel = %{version}
@@ -66,7 +65,6 @@ developing applications that use %{name}.
 
 %package doc
 Summary:        Documentation for quazip, a C++ wrapper for ZIP/UNZIP
-Group:          Documentation/HTML
 Provides:       libquazip-qt5-doc = %{version}
 Obsoletes:      libquazip-qt5-doc < %{version}
 Provides:       quazip-qt5-doc = %{version}
@@ -77,12 +75,11 @@ A C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package, using Qt5 toolkit.
 Useful to access ZIP archives from Qt5 programs.
 
 %prep
-%setup -q -n quazip-%{version}
-%patch0 -p1
+%autosetup -p1 -n quazip-%{version}
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 cd ..
 
 sed -i 's/HTML_TIMESTAMP\s*= YES/HTML_TIMESTAMP=NO/' Doxyfile
@@ -91,7 +88,6 @@ doxygen
 
 %install
 %cmake_install
-rm %{buildroot}/%{_libdir}/libquazip5.a
 # install docs
 mkdir -pv %{buildroot}%{_defaultdocdir}/quazip-doc
 cp -r doc/html %{buildroot}%{_defaultdocdir}/quazip-doc/
@@ -107,8 +103,8 @@ cp -r doc/html %{buildroot}%{_defaultdocdir}/quazip-doc/
 
 %files devel
 %license COPYING*
-%{_datadir}/cmake/Modules/FindQuaZip5.cmake
 %{_includedir}/quazip5/
+%{_libdir}/cmake/QuaZip5
 %{_libdir}/libquazip5.so
 %{_libdir}/pkgconfig/quazip.pc
 

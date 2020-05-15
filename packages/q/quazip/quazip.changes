@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  8 12:01:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9
+  * Support for extended timestamps
+  * Various contributed CMake fixes
+- Drop quazip-0.8.1_pkgconfig.patch (merged upstream)
+- Add quazip-0.9-pkgconfig.patch
+- Add quazip-0.9-no_static_library.patch
+- Drop Group tag
+
+-------------------------------------------------------------------
 Tue Jun  4 19:50:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added quazip-0.8.1_pkgconfig.patch to produce a .pc file when
