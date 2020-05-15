@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 15 08:53:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in pytest twice
+
+-------------------------------------------------------------------
 Mon Apr  6 08:19:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with python-virtualenv >= 20:

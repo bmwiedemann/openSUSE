@@ -41,4 +41,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>793540</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b1ad79ec63f06be4bf97c2c2741061a1</srcmd5>
+    <version>0.2.0</version>
+    <time>1589579535</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in pytest twice</comment>
+    <requestid>805767</requestid>
+  </revision>
 </revisionlist>
