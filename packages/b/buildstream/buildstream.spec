@@ -19,7 +19,7 @@
 %define real_name BuildStream
 
 Name:           buildstream
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
