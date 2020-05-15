@@ -1,7 +1,7 @@
 #
 # spec file for package translation-update
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,19 +51,9 @@ Source101:      translation-update-spec-reset-lang-list.sh
 Source102:      translation-update-spec-generate-lang-list.sh
 BuildArch:      noarch
 Summary:        Translation Updates
-# Existed up to 13.1, but not obsoleted up to Leap 42.1
+# These packages existed only during SLE 15 / Leap 15 development
 License:        GPL-2.0-or-later
 Group:          System/Base
-Obsoletes:      translation-update-ca@valencia
-# Existed up to 2014, but not obsoleted up to Leap 42.1
-Obsoletes:      translation-update-caValencia
-# Existed up to 12.3, but not obsoleted up to Leap 42.1
-Obsoletes:      translation-update-ka
-# Existed up to 13.1, but not obsoleted up to Leap 42.1
-Obsoletes:      translation-update-sr@latin
-# Existed up to 2014, but not obsoleted up to Leap 42.1
-Obsoletes:      translation-update-srLatin
-# These packages existed only during SLE 15 / Leap 15 development
 Obsoletes:      translation-update-ia
 # All these packages are not needed in Tumbleweed
 Obsoletes:      translation-update-ar

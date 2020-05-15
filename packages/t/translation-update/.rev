@@ -206,4 +206,12 @@ Many of these changes were ported from SLE. (forwarded request 155754 from sbrab
     <comment></comment>
     <requestid>653083</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c53e15bc1c7fecf76d2cdca9818e562c</srcmd5>
+    <version>15.1</version>
+    <time>1589579515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805746</requestid>
+  </revision>
 </revisionlist>

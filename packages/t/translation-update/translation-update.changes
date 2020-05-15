@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:17:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove antique 'Obsoletes' lines.
+  These packages are obsoleted since Leap 42.1 and some of them
+  now cause build issues in openSUSE Factory.
+
+-------------------------------------------------------------------
 Thu Nov 29 18:08:18 CET 2018 - sbrabec@suse.com
 
 - Update to Factory specific version 20181128 that contains only
