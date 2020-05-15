@@ -7,4 +7,41 @@
     <comment>fix license. This package is needed for openshot</comment>
     <requestid>450039</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73fc873beb943002fa86decb55262374</srcmd5>
+    <version>4.6.0</version>
+    <time>1589579531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.0
+  * New generic algorithms for sending and receiving multipart messages
+  * New to_string and to_string_view member functions in message_t
+  * Less surprising behaviour when move assigning socket_t and context_t
+  * Return types for send and recv moved into zmq namespace
+  * Checks for 32/64bit-ness in cppzmqConfigVersion.cmake removed
+  * fixed issues when compiling with C++11
+  * fixed and improved cmake build (in and out of source builds, libzmq discovery, fallback to pkg-config and more)
+  * updated README.md with clear design goals, supported platforms
+  * official CI support for Linux, MacOS and Windows
+  * unit tests infrastructure
+  * test code coverage brought to 77%
+  * updated code style (more details in .clang-format)
+  * socket_t:
+    + added support for draft ZMQ_SERVER and ZMQ_CLIENT sockets
+    + added support for draft ZMQ_RADIO and ZMQ_DISH sockets
+  * poller_t:
+    + poller_t became thin abstraction layer on zmq_poller_*
+    + functionality with std::function handlers split and moved to a new active_poller_t in zmq_addon.hpp
+    + simpler and safer implementation
+    + made non-copyable, but properly movable
+    + more consistent and robust error handling
+    + event type part of handler definition
+    + fixed a segfault issue when modifying poller_t from a handler
+    + added empty method indicating presence of registered sockets
+  * context_t:
+    + added methods for context options: setctxopt(int option_, int optval_) and int getctxopt(int option_)
+  * message_t:
+    + easier construction from iterable type e.g. std::string, std::array
+    + added != and == operators and equals method marked as deprecated</comment>
+    <requestid>805758</requestid>
+  </revision>
 </revisionlist>
