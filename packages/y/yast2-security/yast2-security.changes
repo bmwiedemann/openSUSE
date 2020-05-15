@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 15:16:34 UTC 2020 - josef Reidinger <jreidinger@localhost>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue Mar 31 17:41:17 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Apply sysctl changes to the running system when the YaST sysctl

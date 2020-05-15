@@ -703,4 +703,12 @@
     <comment>submit new version 4.2.12</comment>
     <requestid>790922</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>2cc4ac803240bc268a84faa2d3f02126</srcmd5>
+    <version>4.3.0</version>
+    <time>1589579436</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.0</comment>
+    <requestid>803148</requestid>
+  </revision>
 </revisionlist>
