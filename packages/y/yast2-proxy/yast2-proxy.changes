@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 14:38:07 UTC 2020 - josef Reidinger <jreidinger@localhost>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Aug 22 12:53:15 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to
