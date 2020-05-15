@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 13:41:33 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.1
+
+-------------------------------------------------------------------
+Mon May 11 15:04:25 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed crash when using [Cancel] in the "Add" dialog (bsc#1170447)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Feb  6 15:29:51 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Kill rpcbind process if it was directly executed without using
