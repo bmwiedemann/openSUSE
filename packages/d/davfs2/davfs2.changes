@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  5 11:11:15 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.6 
+  * Remove call to setuid and setgid.
+  * Ignore EEXIST when creating DAV_SYS_RUN (bug #57233).
+  * Replace GNU extension 'a' with option 'm' in fscanf
+    (bug #56286).
+  * Check for inconv.h and iconv (bug #56178).
+  * Warning about intermediary CAs (bug #54699).
+  * Don't remove cache-files because of inconsistent
+    metadata (sr #109587).
+  * Add query-string to path on redirect (bug #54943).
+  * Ignore option "nofail" (fixes bug #51521).
+
+-------------------------------------------------------------------
 Mon Feb 26 11:27:55 UTC 2018 - jengelh@inai.de
 
 - Replace %__-type macro indirections. Do not ignore errors from
