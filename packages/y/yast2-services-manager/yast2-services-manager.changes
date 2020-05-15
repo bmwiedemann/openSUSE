@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 15:32:28 UTC 2020 - josef Reidinger <jreidinger@localhost>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Fri Sep  6 14:28:55 CEST 2019 - schubi@suse.de
 
 - Set BaseTargets::GRAPHICAL and Target::GRAPHICAL if package "xdm"
