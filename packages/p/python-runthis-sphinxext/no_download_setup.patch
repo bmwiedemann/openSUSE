@@ -1,0 +1,23 @@
+diff -Naur orig/setup.py runthis-sphinxext-0.0.3/setup.py
+--- orig/setup.py	2020-04-12 09:49:35.913262980 +0200
++++ runthis-sphinxext-0.0.3/setup.py	2020-04-12 09:50:19.297293997 +0200
+@@ -24,11 +24,6 @@
+     client_fname = os.path.join("runthis", f"runthis-client-{CLIENT_VERSION}.min.js")
+     url = f"https://github.com/regro/runthis-client/releases/download/{CLIENT_VERSION}/sha256.txt"
+     sha256_fname = f"sha256-{CLIENT_VERSION}.txt"
+-    if not os.path.isfile(sha256_fname):
+-        with urllib.request.urlopen(url) as f:
+-            b = f.read()
+-        with open(sha256_fname, "wb") as f:
+-            f.write(b)
+     # make checksum mapping
+     with open(sha256_fname) as f:
+         data = f.read()
+@@ -57,7 +52,6 @@
+     with open(os.path.join(os.path.dirname(__file__), "README.md"), "r") as f:
+         readme = f.read()
+     # make sure we have the client with the correct version avialable
+-    download_client()
+     checksum_client()
+     copy_client()
+     # actually install
