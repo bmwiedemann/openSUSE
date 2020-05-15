@@ -1368,6 +1368,7 @@ unsorted:
   - busybox-net-tools 
   - busybox-patch 
   - busybox-procps 
+  - busybox-sendmail 
   - busybox-sh 
   - busybox-sharutils 
   - busybox-traceroute 
@@ -1757,6 +1758,7 @@ unsorted:
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
   - clpeak 
+  - clthreads-devel 
   - clucene-core-devel 
   - clustduct 
   - cluster-glue 
@@ -1765,6 +1767,7 @@ unsorted:
   - clutter-devel 
   - clutter-gst-devel 
   - clutter-gtk-devel 
+  - clxclient-devel 
   - clzip 
   - cmake 
   - cmake-fedora 
@@ -6650,8 +6653,6 @@ unsorted:
   - kexi-lang 
   - keybase-client 
   - keybinder-3.0-devel 
-  - keybinder-devel 
-  - keybinder-lua 
   - keychain 
   - keyutils-devel 
   - keyutils-devel-32bit: [x86_64] 
@@ -8608,11 +8609,13 @@ unsorted:
   - libclocale1 
   - libcloudproviders-devel 
   - libcloudproviders0 
+  - libclthreads2 
   - libclucene-core1-32bit: [x86_64] 
   - libclucene-shared1-32bit: [x86_64] 
   - libclutter-1_0-0-32bit: [x86_64] 
   - libclutter-gst-3_0-0-32bit: [x86_64] 
   - libclutter-gtk-1_0-0-32bit: [x86_64] 
+  - libclxclient3 
   - libclzma-suse0 
   - libcmap4-32bit: [x86_64] 
   - libcmark0_29_0 
@@ -10036,7 +10039,6 @@ unsorted:
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdsoap-server1_9_0 
-  - libkdsoap1_9_0 
   - libkdstatemachineeditor_core1_2_7 
   - libkdstatemachineeditor_debuginterfaceclient1_2_7 
   - libkdstatemachineeditor_debuginterfacesource-static 
@@ -10070,7 +10072,6 @@ unsorted:
   - libkeccak1 
   - libkeduvocdocument-devel 
   - libkexiv2-devel 
-  - libkeybinder0 
   - libkgapi-devel 
   - libkgeomap 
   - libkgeomap-devel 
@@ -12446,7 +12447,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-49 
+  - libvapoursynth-50 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -13060,6 +13061,7 @@ unsorted:
   - linux-ftools 
   - linux-libertine-fonts 
   - linux32: [x86_64] 
+  - linux_logo 
   - linuxconsoletools 
   - linuxptp 
   - linuxrc 
@@ -15591,6 +15593,8 @@ unsorted:
   - octave-forge-vrml 
   - octave-nlopt_optimize 
   - octave-openEMS 
+  - oddjob 
+  - oddjob-mkhomedir 
   - ode-devel 
   - odp-devel: [x86_64] 
   - odt2txt 
@@ -16642,7 +16646,6 @@ unsorted:
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
   - perl-Class-XSAccessor 
-  - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -18481,7 +18484,6 @@ unsorted:
   - python-ipywidgets-doc 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
-  - python-keybinder 
   - python-keystoneauth1-doc 
   - python-keystoneclient-doc 
   - python-keystonemiddleware-doc 
@@ -32681,7 +32683,6 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libags-3_0 
   - typelib-1_0-Libmsi-1_0 
@@ -32837,7 +32838,6 @@ unsorted:
   - univocity-parsers-javadoc 
   - unixODBC-32bit: [x86_64] 
   - unixODBC-devel 
-  - unixbench 
   - unknown-horizons 
   - unknown-horizons-lang 
   - unmass 
@@ -33088,7 +33088,6 @@ unsorted:
   - virt-manager 
   - virt-sandbox: [i586] 
   - virt-top 
-  - virt-v2v: [x86_64] 
   - virt-viewer 
   - virtme 
   - virtualbox: [x86_64] 
@@ -33469,7 +33468,6 @@ unsorted:
   - xf86-input-void 
   - xf86-input-wacom-devel 
   - xf86-video-amdgpu 
-  - xf86-video-ast 
   - xf86-video-fbturbo 
   - xf86-video-fbturbo-live 
   - xf86-video-intel-32bit: [x86_64] 
