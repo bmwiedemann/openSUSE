@@ -62,4 +62,17 @@
     <comment></comment>
     <requestid>786356</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>017ad3f309dd32ee5143afbfeb963343</srcmd5>
+    <version>4.1.5</version>
+    <time>1589579553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.5:
+  * Fixed mutable object used as kwarg for Server ctor
+  * Corrections to teleport example
+  * Lowered GIL-lock acquires for &lt;64kb within channel sends to address slowness
+
+  - Fixed bsc#1152987 `CVE-2019-16328`_ which was caused by a missing protocol security check</comment>
+    <requestid>805821</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 15 11:29:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.5:
+  * Fixed mutable object used as kwarg for Server ctor
+  * Corrections to teleport example
+  * Lowered GIL-lock acquires for <64kb within channel sends to address slowness
+
+-------------------------------------------------------------------
 Thu Mar 19 07:57:20 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.1.4
@@ -9,7 +17,7 @@ Thu Mar 19 07:57:20 UTC 2020 - pgajdos@suse.com
   - Merged fix for propagate_KeyboardInterrupt_locally `#364`_
   - Fixed handling of exceptions for request callbacks `#365`_
   - Partially fixed return value for netref.__class__ `#355`_
-  - Fixed `CVE-2019-16328`_ which was caused by a missing protocol security check
+  - Fixed bsc#1152987 `CVE-2019-16328`_ which was caused by a missing protocol security check
   - Fixed RPyC over RPyC for mutable parameters and extended unit testing for `#346`_
 
 -------------------------------------------------------------------
