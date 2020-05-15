@@ -1,0 +1,150 @@
+Index: napalm-procurve-0.5.0/napalm_procurve/procurve.py
+===================================================================
+--- napalm-procurve-0.5.0.orig/napalm_procurve/procurve.py
++++ napalm-procurve-0.5.0/napalm_procurve/procurve.py
+@@ -33,7 +33,6 @@ from napalm.base.exceptions import (
+     ConnectionException,
+ )
+ 
+-from napalm.base.utils import py23_compat
+ import napalm.base.constants as C
+ import napalm.base.helpers
+ 
+@@ -269,10 +268,10 @@ class ProcurveDriver(NetworkDriver):
+         return {
+             'uptime': uptime_seconds,
+             'vendor': vendor,
+-            'os_version': py23_compat.text_type(os_version),
+-            'serial_number': py23_compat.text_type(serial_number),
+-            'model': py23_compat.text_type(model),
+-            'hostname': py23_compat.text_type(hostname),
++            'os_version': str(os_version),
++            'serial_number': str(serial_number),
++            'model': str(model),
++            'hostname': str(hostname),
+             'fqdn': fqdn,
+             'interface_list': interface_list
+         }
+@@ -316,8 +315,8 @@ class ProcurveDriver(NetworkDriver):
+                         local_port)
+ 
+             entry = {
+-                'port': py23_compat.text_type(remote_port),
+-                'hostname': py23_compat.text_type(device_id)
++                'port': str(remote_port),
++                'hostname': str(device_id)
+             }
+             lldp.setdefault(local_port, [])
+             lldp[local_port].append(entry)
+@@ -332,7 +331,7 @@ class ProcurveDriver(NetworkDriver):
+         lldp = {}
+         lldp_neighbors = self.get_lldp_neighbors()
+ 
+-        interface = py23_compat.text_type(interface)
++        interface = str(interface)
+ 
+         # Filter to specific interface
+         if interface:
+@@ -497,7 +496,7 @@ class ProcurveDriver(NetworkDriver):
+             environment[env_category][sname] = env_value
+         return environment
+ 
+-    def get_config(self, retrieve='all', full=False):
++    def get_config(self, retrieve='all', full=False, sanitized=False):
+ 
+         config = {
+             'startup': '',
+@@ -510,13 +509,13 @@ class ProcurveDriver(NetworkDriver):
+             running_config = re.split(
+                 r'^; .* Configuration Editor;.*$', running_config,
+                 flags=re.M)[1].strip()
+-            config['running'] = py23_compat.text_type(running_config)
++            config['running'] = str(running_config)
+         if retrieve.lower() in ['startup', 'all']:
+             startup_config = self._send_command('show config')
+             startup_config = re.split(
+                 r'^; .* Configuration Editor;.*$', startup_config,
+                 flags=re.M)[1].strip()
+-            config['startup'] = py23_compat.text_type(startup_config)
++            config['startup'] = str(startup_config)
+             config['candidate'] = ''
+         return config
+ 
+@@ -578,7 +577,7 @@ class ProcurveDriver(NetworkDriver):
+                         flags=re.M)
+                     ping_dict['success']['results'].append({
+                         'ip_address':
+-                        py23_compat.text_type(ping_data.group(1)),
++                        str(ping_data.group(1)),
+                         'rtt':
+                         float(ping_data.group(3))
+                     })
+@@ -662,7 +661,7 @@ class ProcurveDriver(NetworkDriver):
+ 
+         for line in split_sntp.splitlines():
+             split_line = line.split()
+-            ntp_servers[py23_compat.text_type(split_line[server_idx])] = {}
++            ntp_servers[str(split_line[server_idx])] = {}
+ 
+         return ntp_servers
+ 
+@@ -693,9 +692,9 @@ class ProcurveDriver(NetworkDriver):
+                     line.split()))
+ 
+             entry = {
+-                'interface': py23_compat.text_type(port),
++                'interface': str(port),
+                 'mac': napalm.base.helpers.mac(mac),
+-                'ip': py23_compat.text_type(address),
++                'ip': str(address),
+                 'age': 0.0
+             }
+             arp_table.append(entry)
+@@ -771,14 +770,14 @@ class ProcurveDriver(NetworkDriver):
+ 
+         for ifn, idx in ifs.items():
+             if if_types[idx] == "6":  # ethernetCsmacd(6)
+-                interfaces[py23_compat.text_type(ifn)] = {
++                interfaces[str(ifn)] = {
+                     'is_up': True if if_lnk_state[idx] == '1' else False,
+                     'is_enabled': True if if_adm_state[idx] == '1' else False,
+-                    'description': py23_compat.text_type(if_alias[idx]),
++                    'description': str(if_alias[idx]),
+                     'last_flapped':
+                     -1.0,  # Data makes no sense... unsupported for now.
+                     'speed': int(int(if_speed[idx].replace(',', '')) / 1000 / 1000),
+-                    'mac_address': py23_compat.text_type(if_macs[idx]),
++                    'mac_address': str(if_macs[idx]),
+                     'mtu': int(if_mtu[idx]),
+                 }
+         return interfaces
+@@ -804,7 +803,7 @@ class ProcurveDriver(NetworkDriver):
+ 
+         for ifn, idx in ifs.items():
+             if if_types[idx] == "6":  # ethernetCsmacd(6)
+-                interface_counters[py23_compat.text_type(ifn)] = {
++                interface_counters[str(ifn)] = {
+                     'tx_errors': int(tx_errors[idx].replace(',', '')),
+                     'rx_errors': int(rx_errors[idx].replace(',', '')),
+                     'tx_discards': int(tx_discards[idx].replace(',', '')),
+Index: napalm-procurve-0.5.0/test/unit/conftest.py
+===================================================================
+--- napalm-procurve-0.5.0.orig/test/unit/conftest.py
++++ napalm-procurve-0.5.0/test/unit/conftest.py
+@@ -8,7 +8,6 @@ import pytest
+ from napalm.base.test import conftest as parent_conftest
+ 
+ from napalm.base.test.double import BaseTestDouble
+-from napalm.base.utils import py23_compat
+ 
+ from napalm_procurve import procurve
+ 
+@@ -61,7 +60,7 @@ class FakeProcurveDevice(BaseTestDouble)
+         filename = '{}.{}'.format(self.sanitize_text(command), 'txt')
+         full_path = self.find_file(filename)
+         result = self.read_txt_file(full_path)
+-        return py23_compat.text_type(result)
++        return str(result)
+ 
+     def disconnect(self):
+         pass

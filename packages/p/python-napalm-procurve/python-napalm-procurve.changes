@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 09:28:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- add patch napalm3.patch
+  * make the package compatible with python-napalm 3.0.0
+
+-------------------------------------------------------------------
 Mon Mar 30 11:56:54 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.5.0

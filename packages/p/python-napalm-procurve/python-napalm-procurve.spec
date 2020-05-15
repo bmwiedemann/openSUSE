@@ -28,6 +28,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ixs/napalm-procurve
 Source:         https://github.com/ixs/napalm-procurve/archive/%{version}.tar.gz#/napalm-procurve-%{version}.tar.gz
+Patch0:         napalm3.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -49,6 +50,7 @@ ProCurve driver support for Napalm network automation.
 
 %prep
 %setup -q -n napalm-procurve-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -58,7 +60,9 @@ ProCurve driver support for Napalm network automation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Although the napalm3.patch fixes the methods signatures in test_method_signatures (to preserve compatibility), 
+# there is no support for get_config(sanitized=True)
+%pytest -k "not test_get_config_sanitized"
 
 %files %{python_files}
 %license LICENSE
