@@ -22,7 +22,7 @@
 #   in build service directly, use
 #   https://github.com/yast/skelcd-control-MicroOS repository
 #
-#   See https://github.com/yast/skelcd-control-MicroOS/blob/master/CONTRIBUTING.md
+#   See https://github.com/yast/.github/blob/master/CONTRIBUTING.md
 #   for more details.
 #
 ######################################################################
@@ -118,7 +118,7 @@ Requires:       yast2-vm
 
 Url:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20200317
+Version:        20200511
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT

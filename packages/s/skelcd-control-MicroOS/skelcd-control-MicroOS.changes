@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 07:41:15 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- remove obsolete proposal_settings_editable (bsc#1171423)
+- 20200511
+
+-------------------------------------------------------------------
 Tue Mar 17 17:13:55 CEST 2020 - rbrown@suse.de
 
 - Remove microos_apparmor from default system role [boo#1166857]
