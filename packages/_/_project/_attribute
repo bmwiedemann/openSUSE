@@ -242,7 +242,7 @@
   poo#61874: '20200128'
   poo#61952: '20200127'
   poo#62030: '20200113'
-  poo#62036: '20200509'
+  poo#62036: '20200514'
   poo#62045: '20200115'
   poo#62060: '20200225'
   poo#62168: '20200128'
@@ -276,12 +276,12 @@
   poo#65986: '20200422'
   poo#66022: '20200422'
   poo#66083: '20200514'
-  poo#66099: '20200513'
+  poo#66099: '20200514'
   poo#66105: '20200514'
   poo#66111: '20200514'
   poo#66149: '20200513'
   poo#66283: '20200429'
-  poo#66331: '20200513'
+  poo#66331: '20200514'
   poo#66373: '20200502'
   poo#66580: '20200513'
   poo#66784: '20200513'
@@ -314,7 +314,7 @@ staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
 
 installcheck-ignore-duplicated-binaries = 
-# installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51
+installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51 busybox-misc
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
