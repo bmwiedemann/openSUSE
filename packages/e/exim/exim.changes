@@ -1,3 +1,33 @@
+Tue May 12 08:19:17 UTC 2020 - wullinger@rz.uni-kiel.de
+- bring changes from current in +fixes branch
+  (patch-exim-fixes-ee83de04d3087efaf808d1f2235a988275c2ee94)
+  * fixes CVE-2020-12783 (bsc#1171490)
+  * Regard command-line recipients as tainted.
+  * Bug 2489: Fix crash in the "pam" expansion condition.
+  * Use tainted buffers for the transport smtp context.
+  * Bug 2493: Harden ARC verify against Outlook, which has been seen to mix
+    the ordering of its ARC headers.  This caused a crash.
+  * Bug 2492: Use tainted memory for retry record when needed.  Previously when
+    a new record was being constructed with information from the peer, a trap
+    was taken.
+  * Bug 2494: Unset the default for dmarc_tld_file.
+  * Fix an uninitialised flag in early-pipelining.  Previously connections
+    could, depending on the platform, hang at the STARTTLS response.
+  * Bug 2498: Reset a counter used for ARC verify before handling another
+    message on a connection.  Previously if one message had ARC headers and
+    the following one did not, a crash could result when adding an
+    Authentication-Results: header.
+  * Bug 2500: Rewind some of the common-coding in string handling between the
+    Exim main code and Exim-related utities.
+  * Fix the variables set by the gsasl authenticator.
+  * Bug 2507: Modules: on handling a dynamic-module (lookups) open failure,
+    only retrieve the errormessage once.
+  * Bug 2501: Fix init call in the heimdal authenticator.  Previously it
+    adjusted the size of a major service buffer; this failed because the
+    buffer was in use at the time.  Change to a compile-time increase in the
+    buffer size, when this authenticator is compiled into exim.
+
+-------------------------------------------------------------------
 Wed Apr  1 12:52:10 UTC 2020 - wullinger@rz.uni-kiel.de
 - don't create logfiles during install
   * fixes CVE-2020-8015 (bsc#1154183)

@@ -73,7 +73,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.93.0.4
-Release:        2
+Release:        3
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -102,6 +102,7 @@ Source32:       eximstats.conf-2.2
 Source40:       exim.service
 Patch0:         exim-tail.patch
 Patch1:         gnu_printf.patch
+Patch2:         patch-exim-fixes-ee83de04d3087efaf808d1f2235a988275c2ee94
 
 %package -n eximon
 Summary:        Eximon, an graphical frontend to administer Exim's mail queue
@@ -145,6 +146,7 @@ once, if at all. The rest is done by logrotate / cron.)
 %setup -q -n exim-%{version}
 %patch0
 %patch1 -p1
+%patch2 -p1
 # build with fPIE/pie on SUSE 10.0 or newer, or on any other platform
 %if %{?suse_version:%suse_version}%{?!suse_version:99999} > 930
 fPIE="-fPIE"
