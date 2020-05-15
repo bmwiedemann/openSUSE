@@ -1,5 +1,5 @@
 <package name="salt-shaptools" project="openSUSE:Factory">
   <title>salt-shaptools</title>
   <description>Salt modules and states for SAP Applications and SLE-HA components management.</description>
-  <devel project="network:ha-clustering:Factory" package="salt-shaptools"/>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="salt-shaptools"/>
 </package>
