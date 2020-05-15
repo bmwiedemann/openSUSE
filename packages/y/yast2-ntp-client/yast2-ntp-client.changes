@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 14:20:03 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Mar 23 14:19:10 CET 2020 - schubi@suse.de
 
 - Do not write ntp-servers if they have been shown only (more than
