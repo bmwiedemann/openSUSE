@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 15:12:26 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Mar  4 08:24:20 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Propose to restart the http service as the default action when it
