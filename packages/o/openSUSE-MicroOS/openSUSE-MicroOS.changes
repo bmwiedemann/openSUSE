@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 14:51:19 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- explicitly require bootloader pattern. Required due to cleanup of
+  the microos base pattern.
+
+-------------------------------------------------------------------
 Wed Mar 18 09:47:11 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Make check for kubelet in config.sh more generic to work after

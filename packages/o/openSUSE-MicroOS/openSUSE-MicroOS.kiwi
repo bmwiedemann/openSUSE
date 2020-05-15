@@ -527,6 +527,9 @@
         <namedCollection name="basesystem"/>
         <package name="patterns-microos-basesystem"/>
 
+        <namedCollection name="bootloader"/>
+        <package name="patterns-base-bootloader"/>
+
         <package name="kernel-default"/>
 
         <namedCollection name="microos_defaults"/>
