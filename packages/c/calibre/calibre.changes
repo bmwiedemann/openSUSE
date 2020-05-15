@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May 15 05:33:11 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.16.0
+  * New Features
+    - Viewer/Edit book fuzzy search: Ignore soft hyphens and 
+      zero-width joiner characters when searching for text.
+    - Tag browser: Allow adding/removing tags/authors/etc. to the 
+      currently selected book by right clicking on that tag and 
+      choosing "Apply to selected books".
+    - Kobo driver: Add support for updated firmware
+    - Manage categories dialog: When editing a value with multiple
+      values selected, change them all
+    - Book list column header context menu: Add an entry to resize
+      the column to fit its current contents.
+    - Show completions when editing tags/authors/series etc in the
+      Tag browser and Manage tags dialog.
+    - Quickview: Double clicking an item now searches for it
+    - Comments editor: Add an action to the context menu to smarten
+      punctuation.
+    - FB2 metadata: Add support for setting publisher and publish
+      year
+  * Bug Fixes
+    - Edit book: Fix compress images losslessly failing for a few
+      images on windows when there are a lot of images in the book.
+    - Fix a regression in 4.13 that broke the user category editor
+      for all custom columns.
+    - Viewer: Fix font size changes not applying to monospaced
+      fonts.
+
+-------------------------------------------------------------------
 Sat May  2 07:51:35 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.15.0
