@@ -20,7 +20,7 @@ Name:           yast2-nis-client
 Summary:        YaST2 - Network Information Services (NIS, YP) Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Url:            https://github.com/yast/yast-nis-client
 
@@ -32,13 +32,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  libnsl-devel
 BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 2.23.17
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-pam
-BuildRequires:  yast2-testsuite
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 
 # Wizard::SetDesktopTitleAndIcon
 Requires:       yast2 >= 2.21.22

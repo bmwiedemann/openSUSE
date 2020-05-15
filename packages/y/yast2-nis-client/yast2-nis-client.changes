@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 14:02:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Feb 24 14:12:47 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fixed crash caused by previous fix (bsc#1164699)
