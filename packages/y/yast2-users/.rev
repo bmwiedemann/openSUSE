@@ -1675,4 +1675,12 @@
     <comment>submit new version 4.2.10</comment>
     <requestid>784581</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>4c18e9fbdca30792bcaf4ac8466d86bc</srcmd5>
+    <version>4.3.1</version>
+    <time>1589579463</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.1</comment>
+    <requestid>805550</requestid>
+  </revision>
 </revisionlist>
