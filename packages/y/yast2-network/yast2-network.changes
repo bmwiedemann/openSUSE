@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 13:08:03 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Apr 16 07:19:26 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not try to install kernel packages anymore since ISDN support
