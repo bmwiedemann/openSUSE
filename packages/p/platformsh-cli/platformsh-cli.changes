@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 20:39:51 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.55.0:
+  * Release v3.55.0
+  * Suppress "Link not found: #manage-access" exception in backup:create command (#926)
+  * Clarify deprecation message for the --type option on the integration:update command
+  * Fix integration:update command's options resolution
+  * Add activity scripts integration type (--type=script)
+
+-------------------------------------------------------------------
 Mon May 04 18:36:13 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.54.2:
