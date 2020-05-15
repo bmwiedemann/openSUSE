@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 08:39:02 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.1
+
+-------------------------------------------------------------------
+Mon May 11 07:46:52 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- remove obsolete proposal_settings_editable (bsc#1171423)
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue May  5 15:54:11 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Restore missing icons for ssh import and image deployment
