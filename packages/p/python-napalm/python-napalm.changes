@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 15 10:36:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * [Junos] close configuration in case configure_private is set
+    to avoid configure session to stay forever
+  * [IOS] get_interfaces_counters broken with Managment Interface
+  * [IOS] get_optics does not work on VSS setup
+  * [IOS] get_optics broken if input value is N/A
+  * [NXOS] Fix cmd_verify and null character
+
+-------------------------------------------------------------------
 Wed May  6 15:38:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
