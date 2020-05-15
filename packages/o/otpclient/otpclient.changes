@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 13 14:40:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.1
+  * Fix possible memory leak in freeotp.c
+
+-------------------------------------------------------------------
+Tue May 12 06:26:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.3.0
+  + Add support for Aeigs backups
+
+-------------------------------------------------------------------
 Mon Apr 13 14:53:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.2.1:
@@ -20,32 +32,32 @@ Tue Mar 17 08:55:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Mon Feb 24 10:38:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-* Update to v2.1.0:
-    - add restore/create db on first run
-    - save sort order on exit
-        - allow user to reset the value back to the default
+- Update to v2.1.0:
+  + add restore/create db on first run
+  + save sort order on exit
+      + allow user to reset the value back to the default
 
 -------------------------------------------------------------------
 Thu Dec 19 14:10:46 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
-* Update to v2.0.1:
-    - show dialog if memlock value is too low
-    - fix memory leak on parse-uri
-    - set max pwd length to 255
-    - multiple fixes to db handling
-    - fix a double free in case of a crash
-    - better error handling
+- Update to v2.0.1:
+  + show dialog if memlock value is too low
+  + fix memory leak on parse-uri
+  + set max pwd length to 255
+  + multiple fixes to db handling
+  + fix a double free in case of a crash
+  + better error handling
 
 -------------------------------------------------------------------
 Thu Dec 12 17:09:45 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v2.0.0 
-  * add cli
-  * add lock
-  * add plain text import/export for andotp
-  * update andotp encryption code
-  * add import from cliboard
-  * add sort
+  + add cli
+  + add lock
+  + add plain text import/export for andotp
+  + update andotp encryption code
+  + add import from cliboard
+  + add sort
 
 -------------------------------------------------------------------
 Thu Jun 27 05:59:41 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
@@ -56,20 +68,20 @@ Thu Jun 27 05:59:41 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 Thu Jun 20 16:11:11 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.5.0
-  * https://github.com/paolostivanin/OTPClient/releases/tag/v1.5.0
+  + https://github.com/paolostivanin/OTPClient/releases/tag/v1.5.0
 
 -------------------------------------------------------------------
 Sun Mar 24 09:37:37 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.4.1
-  * fix some flatpak issues
+  + fix some flatpak issues
 
 -------------------------------------------------------------------
 Tue Mar 12 12:55:36 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.4.0
-  * add full andOTP support
-  * minor fixes 
+  + add full andOTP support
+  + minor fixes 
 
 -------------------------------------------------------------------
 Wed Oct 31 13:19:32 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
