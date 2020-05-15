@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 15:09:50 UTC 2020 - josef Reidinger <jreidinger@localhost>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Mar 11 10:00:37 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix check of connected users when proposing the default service
