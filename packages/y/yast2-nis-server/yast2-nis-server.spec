@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nis-server
-Version:        4.2.2
+Version:        4.3.0
 Release:        0
 Summary:        YaST2 - Network Information Services (NIS) Server Configuration
 License:        GPL-2.0-only
@@ -26,15 +26,14 @@ Url:            https://github.com/yast/yast-nis-server
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  doxygen
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-network
 BuildRequires:  yast2-nis-client
-BuildRequires:  yast2-testsuite
 # SuSEFirewall2 replaced by firewalld (fate#323460)
 BuildRequires:  yast2 >= 4.0.39
 BuildRequires:  yast2-devtools >= 4.2.2
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       yast2-network
 Requires:       yast2-nis-client
@@ -58,8 +57,10 @@ similar to yellow pages.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
