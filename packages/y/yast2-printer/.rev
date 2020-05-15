@@ -976,4 +976,12 @@ SPDX format (forwarded request 135149 from &amp;lt;bound method Request.get_crea
     <comment>submit new version 4.2.0</comment>
     <requestid>707640</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>bdde1b9ef480b9da0e09346987c811e9</srcmd5>
+    <version>4.3.0</version>
+    <time>1589579410</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.0</comment>
+    <requestid>803052</requestid>
+  </revision>
 </revisionlist>
