@@ -3226,8 +3226,6 @@
       <repopackage name="mpg123-pulse"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
-      <repopackage name="msmtp" arch="i586,i686"/>
-      <repopackage name="msmtp-mta" arch="i586,i686"/>
       <repopackage name="mtd-utils"/>
       <repopackage name="mtdev-devel"/>
       <repopackage name="mtools"/>

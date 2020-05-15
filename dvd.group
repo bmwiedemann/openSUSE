@@ -5355,8 +5355,6 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="msmtp" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
-    <package name="msmtp-mta" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
