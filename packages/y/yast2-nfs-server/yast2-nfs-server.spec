@@ -20,18 +20,18 @@ Name:           yast2-nfs-server
 Summary:        YaST2 - NFS Server Configuration
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 URL:            https://github.com/yast/yast-nfs-server
 
 Source0:        %{name}-%{version}.tar.bz2
 
 # SuSEFirewall2 replaced by firewalld (fate#323460)
-BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 4.0.39
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-testsuite
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 # SuSEFirewall2 replaced by firewalld (fate#323460)
 Requires:       yast2 >= 4.0.39
@@ -57,8 +57,10 @@ Common data for the NFS client and server modules
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install

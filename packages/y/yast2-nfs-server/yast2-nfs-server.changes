@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 13:46:36 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Jan 23 14:54:17 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix exit codes for CLI (bsc#1142979)
