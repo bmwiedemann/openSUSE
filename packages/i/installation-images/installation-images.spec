@@ -637,7 +637,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        14.470
+Version:        15.1
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

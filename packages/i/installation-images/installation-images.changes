@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue May 12 09:43:26 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#376
+- added microosng to the list of supported products
+- 15.1
+
+--------------------------------------------------------------------
+Mon May 11 15:24:55 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#375
+- add more Realtek wifi drivers (bsc#1169127)
+- 15.0
+
+--------------------------------------------------------------------
 Wed May 6 11:43:07 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#374
