@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 14:27:50 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix schema if it include definition multiple times (bsc#1171412)
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 12:01:09 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not export storage settings in the general section
