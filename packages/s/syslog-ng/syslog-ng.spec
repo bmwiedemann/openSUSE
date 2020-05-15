@@ -382,15 +382,6 @@ touch var/log/mail;      chmod 640 var/log/mail
 touch var/log/mail.info; chmod 640 var/log/mail.info
 touch var/log/mail.warn; chmod 640 var/log/mail.warn
 touch var/log/mail.err;  chmod 640 var/log/mail.err
-test -f var/log/news && mv -f var/log/news var/log/news.bak
-mkdir -p -m 0750 var/log/news
-chown news:news  var/log/news
-touch var/log/news/news.crit;   chmod 640 var/log/news/news.crit
-chown news:news var/log/news/news.crit
-touch var/log/news/news.err;    chmod 640 var/log/news/news.err
-chown news:news var/log/news/news.err
-touch var/log/news/news.notice; chmod 640 var/log/news/news.notice
-chown news:news var/log/news/news.notice
 #
 # touch the additional log files we are using
 #

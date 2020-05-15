@@ -111,19 +111,25 @@ log { source(src); source(chroots); filter(f_console); destination(xconsole); };
 
 
 #
-# News-messages in separate files:
+# News-messages can be stored either in separate files:
 #
-destination newscrit   { file("/var/log/news/news.crit"
-                              suppress(30) owner(news) group(news)); };
-log { source(src); source(chroots); filter(f_newscrit); destination(newscrit); };
-
-destination newserr    { file("/var/log/news/news.err"
-                              suppress(30) owner(news) group(news)); };
-log { source(src); source(chroots); filter(f_newserr); destination(newserr); };
-
-destination newsnotice { file("/var/log/news/news.notice"
-                              suppress(30) owner(news) group(news)); };
-log { source(src); source(chroots); filter(f_newsnotice); destination(newsnotice); };
+#destination newscrit   { file("/var/log/news/news.crit"
+#    create-dirs(yes) dir-group("news") dir-owner("news") dir-perm(0750)
+#    suppress(30) owner(news) group(news)); 
+#};
+#log { source(src); source(chroots); filter(f_newscrit); destination(newscrit);};
+#
+#destination newserr    { file("/var/log/news/news.err"
+#    create-dirs(yes) dir-group("news") dir-owner("news") dir-perm(0750)
+#    suppress(30) owner(news) group(news));
+#};
+#log { source(src); source(chroots); filter(f_newserr); destination(newserr); };
+#
+#destination newsnotice { file("/var/log/news/news.notice"
+#    create-dirs(yes) dir-group("news") dir-owner("news") dir-perm(0750)
+#    suppress(30) owner(news) group(news));
+#};
+#log { source(src); source(chroots); filter(f_newsnotice); destination(newsnotice); };
 
 #
 # and optionally also all in one file:

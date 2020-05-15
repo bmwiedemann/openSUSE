@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 14:51:28 UTC 2020 - peter czanik <peter@czanik.hu>
+
+- fix bnc#1169385 by removing creating news log files from post,
+  adding syslog-ng.conf options to create files/directories 
+  automatically, and commenting the relevant part out.
+
+-------------------------------------------------------------------
 Wed Apr 15 10:02:28 UTC 2020 - peter czanik <peter@czanik.hu>
 
 - fix libevtlog package name 
