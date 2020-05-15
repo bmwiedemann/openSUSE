@@ -203,7 +203,7 @@ autoreconf -fvi
 	--with-drvpath=%{MODELPATH} \
 	--with-user=%{NUT_USER} \
 	--with-group=%{NUT_GROUP} \
-	--with-udev-dir=%{_libexecdir}/udev \
+	--with-udev-dir=%{_udevrulesdir}/.. \
 	--enable-option-checking=fatal
 
 # does not create reproducible output with parallelism
@@ -224,8 +224,8 @@ install -m 644 scripts/logrotate/nutlogd %{buildroot}%{_sysconfdir}/logrotate.d/
 mkdir -p %{buildroot}%{STATEPATH}
 rename .sample "" %{buildroot}%{_sysconfdir}/ups/*.sample
 
-install -d %{buildroot}%{_libexecdir}/systemd/system-sleep
-install nut.system-sleep %{buildroot}%{_libexecdir}/systemd/system-sleep/%{name}.sh
+install -d %{buildroot}/usr/lib/systemd/system-sleep
+install nut.system-sleep %{buildroot}/usr/lib/systemd/system-sleep/%{name}.sh
 
 # Rename web pages to not conflict with apache2-example-pages or user home page:
 mkdir %{buildroot}%{HTMLPATH}/nut %{buildroot}%{CGIPATH}/nut
@@ -307,7 +307,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %attr(700,%{NUT_USER},%{NUT_GROUP}) %{STATEPATH}
 %{_unitdir}/*.service
 %{systemdsystemdutildir}/system-shutdown/*
-%{_libexecdir}/systemd/system-sleep/%{name}.sh
+/usr/lib/systemd/system-sleep/%{name}.sh
 %{bashcompletionsdir}/*
 
 %files drivers-net
