@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 10:45:51 UTC 2020 - pgajdos@suse.com
+
+- use /usr/lib instead of %{_libexecdir} for systemd and udev
+  rules, %{_libexecdir} is dedicated for internal binaries
+
+-------------------------------------------------------------------
 Tue Feb 25 20:40:40 CET 2020 - sbrabec@suse.com
 
 - Remove obsolete chown from %post. We no more support upgrade from
