@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 15 08:22:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Package requires pytest 4.x or newer
+
+-------------------------------------------------------------------
 Mon Apr 20 10:55:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove py2 dep as the package is marked as python3 only

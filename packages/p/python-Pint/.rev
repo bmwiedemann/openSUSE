@@ -76,4 +76,12 @@
     <comment>- Remove py2 dep as the package is marked as python3 only</comment>
     <requestid>795783</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>eb40a88ad615faba259c213bd116f09e</srcmd5>
+    <version>0.10.1</version>
+    <time>1589579533</time>
+    <user>dimstar_suse</user>
+    <comment>- Package requires pytest 4.x or newer</comment>
+    <requestid>805763</requestid>
+  </revision>
 </revisionlist>

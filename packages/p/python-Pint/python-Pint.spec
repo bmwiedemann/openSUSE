@@ -36,7 +36,7 @@ Requires:       python-uncertainties
 Recommends:     python-numpy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 4.0}
 # /SECTION
 %python_subpackages
 
