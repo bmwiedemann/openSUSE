@@ -2618,6 +2618,7 @@ unsorted:
   - ebizzy 
   - eblook 
   - ebook-tools 
+  - ebumeter 
   - echomixer 
   - eciadsl-usermode 
   - ecj 
@@ -14399,9 +14400,9 @@ unsorted:
   - msitools 
   - msitools-devel 
   - msitools-lang 
-  - msmtp: [x86_64] 
+  - msmtp 
   - msmtp-doc 
-  - msmtp-mta: [x86_64] 
+  - msmtp-mta 
   - msoak 
   - mspack-examples 
   - msr-tools 
@@ -18630,7 +18631,6 @@ unsorted:
   - python2-libunity 
   - python2-moviepy 
   - python2-mraa: [i586] 
-  - python2-napalm-asa 
   - python2-num2words 
   - python2-opencensus-ext-threading 
   - python2-osc-tiny 
@@ -20967,6 +20967,7 @@ unsorted:
   - python3-ruamel.yaml.cmd 
   - python3-ruamel.yaml.convert 
   - python3-ruffus 
+  - python3-runthis-sphinxext 
   - python3-rust2rpm 
   - python3-rustcfg 
   - python3-s3fs 
@@ -24908,6 +24909,7 @@ unsorted:
   - termrec 
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
+  - terraform-provider-aws 
   - terraform-provider-openstack 
   - terraform-provider-vsphere 
   - teseq 
