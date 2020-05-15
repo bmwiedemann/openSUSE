@@ -21,7 +21,7 @@
 %define rb_build_ruby_abis    %{rb_default_ruby_abi}
 
 Name:           rubygem-yast-rake
-Version:        0.2.37
+Version:        0.2.38
 Release:        0
 %define mod_name yast-rake
 %define mod_full_name %{mod_name}-%{version}

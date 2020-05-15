@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 13 10:13:35 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Enhanced "check:pot" task to check for "%<foo>" tags in
+  translatable strings (should be replaced with "%{}")
+  (bsc#1171555)
+- 0.2.38
+
+-------------------------------------------------------------------
 Tue Apr 28 15:14:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only build gems for the default ruby version (boo#1169445).
