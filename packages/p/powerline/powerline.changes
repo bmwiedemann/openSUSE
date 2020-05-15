@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 06:20:03 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.8
+  * Added ipython >= 7.0.0 support
+  * Various other minor fixes and improvements
+  * Removed python2 support
+- Removed powerline-py2v3-fix.patch
+
+-------------------------------------------------------------------
 Mon Aug 13 09:03:59 UTC 2018 - asn@cryptomilk.org
 
 - Update to version 2.7

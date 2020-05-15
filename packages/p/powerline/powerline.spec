@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define powerline_python_sitelib %{python3_sitelib}
 Name:           powerline
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Status line and prompt utility
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/powerline/powerline
 Source0:        https://github.com/powerline/powerline/archive/%{version}/powerline-%{version}.tar.gz
-Patch0:         powerline-py2v3-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  python3-Sphinx
@@ -185,6 +184,7 @@ install -d -m0755 %{buildroot}/%{_datadir}/%{name}/zsh
 mv %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/zsh/powerline.zsh %{buildroot}/%{_datadir}/%{name}/zsh
 
 # systemd
+rm -f %{buildroot}%{powerline_python_sitelib}/powerline/dist/systemd/powerline-daemon.service
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 powerline/dist/systemd/powerline-daemon.service %{buildroot}%{_unitdir}/powerline.service
 install -d -m 0755 %{buildroot}%{_sbindir}
