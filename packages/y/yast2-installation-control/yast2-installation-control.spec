@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation-control
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

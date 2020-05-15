@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 07:45:17 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- remove obsolete proposal_settings_editable (bsc#1171423)
+- 4.3.1
+
+-------------------------------------------------------------------
 Thu May  7 07:35:40 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Control file schema improvements (bsc#1170886)
