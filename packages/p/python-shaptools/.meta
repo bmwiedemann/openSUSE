@@ -1,5 +1,5 @@
 <package name="python-shaptools" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="network:ha-clustering:Factory" package="python-shaptools"/>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="python-shaptools"/>
 </package>
