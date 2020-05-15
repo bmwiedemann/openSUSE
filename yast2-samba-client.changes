@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 14:57:19 UTC 2020 - josef Reidinger <jreidinger@localhost>
+
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+
+-------------------------------------------------------------------
 Wed Jan 15 11:38:38 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Do not stop nmbd while nmbstatus is running, it is not necessary
