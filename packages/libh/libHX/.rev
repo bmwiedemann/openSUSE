@@ -469,4 +469,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to new upstream release 3.24</comment>
     <requestid>642710</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9653ee8f988ba0b53706c926a43bed9b</srcmd5>
+    <version>3.25</version>
+    <time>1589660772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.25</comment>
+    <requestid>805794</requestid>
+  </revision>
 </revisionlist>

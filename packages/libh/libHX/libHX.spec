@@ -1,7 +1,7 @@
 #
 # spec file for package libHX
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           libHX
-%define lname   libHX28
+%define lname   libHX32
+Version:        3.25
+Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.24
-Release:        0
-Url:            http://libhx.sf.net/
+URL:            https://inai.de/projects/libhx/
 
-Source:         http://downloads.sf.net/libhx/libHX-%version.tar.xz
-Source2:        http://downloads.sf.net/libhx/libHX-%version.tar.asc
+Source:         https://inai.de/files/libhx/libHX-%version.tar.xz
+Source2:        https://inai.de/files/libhx/libHX-%version.tar.asc
 Source3:        baselibs.conf
 Source4:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  xz
@@ -64,7 +63,7 @@ file parsing, type checking casts and more.
 This subpackage contains the header files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 mkdir obj
@@ -89,11 +88,9 @@ make -C obj check %{?_smp_mflags}
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%_libdir/libHX*.so.28*
+%_libdir/libHX*.so.32*
 
 %files devel
-%defattr(-,root,root)
 %_docdir/%name/
 %_includedir/%name/
 %_libdir/libHX*.so

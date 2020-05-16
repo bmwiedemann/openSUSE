@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 14 11:10:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.25
+  * fix out-of-bounds access when calling HX_strlcpy(x,y,0)
+  * HX_split4 renamed to HX_split_inplace
+  * HX_split5 renamed to HX_split_fixed
+  * remove excess header inclusion
+
+-------------------------------------------------------------------
 Wed Oct 17 19:25:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 3.24
