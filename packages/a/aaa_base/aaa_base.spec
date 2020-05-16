@@ -187,6 +187,13 @@ mkdir -p %{buildroot}%{_fillupdir}
 %config /etc/profile.d/sh.ssh
 %config /etc/profile.d/xdg-environment.csh
 %config /etc/profile.d/xdg-environment.sh
+%config /etc/profile.d/complete.bash
+%config /etc/profile.d/alias.ash
+/etc/profile.d/alias.bash
+/etc/profile.d/alias.tcsh
+/etc/profile.d/ls.tcsh
+/etc/profile.d/ls.bash
+/etc/profile.d/ls.zsh
 %config /etc/shells
 %config /etc/ttytype
 %ghost /etc/init.d/boot.local
@@ -228,13 +235,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 %config(noreplace) /etc/DIR_COLORS
 /etc/skel/.emacs
 /etc/skel/.inputrc
-%config /etc/profile.d/complete.bash
-%config /etc/profile.d/alias.ash
-/etc/profile.d/alias.bash
-/etc/profile.d/alias.tcsh
-/etc/profile.d/ls.tcsh
-/etc/profile.d/ls.bash
-/etc/profile.d/ls.zsh
 %dir /usr/lib/base-scripts
 /usr/lib/base-scripts/backup-rpmdb
 /usr/lib/base-scripts/backup-sysconfig

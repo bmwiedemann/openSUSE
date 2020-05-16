@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 08:28:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- move shell aliases back to main package. They don't cost anything
+  and it's just too annoying to not have them
+
+-------------------------------------------------------------------
 Thu May 07 12:43:27 UTC 2020 - lnussel@suse.de
 
 - Update to version 84.87+git20200507.e2243a4:
