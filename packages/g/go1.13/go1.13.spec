@@ -118,7 +118,7 @@
 %endif
 
 Name:           go1.13
-Version:        1.13.10
+Version:        1.13.11
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

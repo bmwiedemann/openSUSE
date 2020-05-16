@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 19:42:01 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.13.11 (released 2020/05/14) includes fixes to the compiler.
+  Refs boo#1149259.
+  * go#38442 cmd/compile: unexpected nil dereference on s390x
+
+-------------------------------------------------------------------
 Wed Apr 29 13:19:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires binutils-gold for %arm and aarch64 - boo#1170826
