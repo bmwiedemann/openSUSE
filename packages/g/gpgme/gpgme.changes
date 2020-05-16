@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 14 16:24:40 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't delete python egg-info files (bsc#1168795)
+
+-------------------------------------------------------------------
 Wed Apr 29 11:09:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix build: [bsc#1170811]

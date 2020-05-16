@@ -217,16 +217,6 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 chmod -x %{buildroot}%{_libdir}/cmake/Gpgmepp/*.cmake
 
-%if %{with python2}
-find %{buildroot}%{python_sitearch}/gpg-*.egg-info -delete -print
-find %{buildroot}%{python_sitearch}/gpg -type f -name "*.pyc" -delete -print
-rm -vf %{buildroot}%{python_sitelib}/gpg/install_files.txt
-%endif
-%if %{with python3}
-find %{buildroot}%{python3_sitearch}/gpg-*.egg-info -delete -print
-rm -vf %{buildroot}%{python3_sitelib}/gpg/install_files.txt
-find %{buildroot}%{python3_sitearch}/gpg -type f -name "*.pyc" -delete -print
-%endif
 %if %{with qt}
 rm -r %{buildroot}%{_bindir}
 rm -r %{buildroot}%{_datadir}/aclocal/gpgme*
@@ -294,12 +284,12 @@ make %{?_smp_mflags} check
 
 %if %{with python2}
 %files -n python2-gpg
-%{python_sitearch}/gpg
+%{python_sitearch}/gpg*
 %endif
 
 %if %{with python3}
 %files -n python3-gpg
-%{python3_sitearch}/gpg
+%{python3_sitearch}/gpg*
 %endif
 
 %if %{with qt}

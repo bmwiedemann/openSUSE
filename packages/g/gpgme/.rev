@@ -623,4 +623,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>799285</requestid>
   </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>e50854c9eda87519dff2222270b95e04</srcmd5>
+    <version>1.13.1</version>
+    <time>1589660734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805770</requestid>
+  </revision>
 </revisionlist>
