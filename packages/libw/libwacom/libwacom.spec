@@ -93,7 +93,7 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %meson_build
 %else
 %configure \
-        --with-udev-dir=%{_libexecdir}/udev \
+        --with-udev-dir=%{_udevrulesdir}/.. \
         --disable-static
 make %{?_smp_mflags}
 %endif
@@ -120,7 +120,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/libwacom/*.tablet
 %{_datadir}/libwacom/*.stylus
 %{_datadir}/libwacom/layouts/
-%dir %{_libexecdir}/udev
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/65-libwacom.rules
 
