@@ -30,7 +30,8 @@ URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/2.3/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM tracker-Use-correct-signature.patch -- tracker-store: Use correct signature for DBusSignalCallback
 Patch0:         tracker-Use-correct-signature.patch
-
+# PATCH-FIX-UPSTREAM tracker-ontology-upgrades.patch boo#1170587 dimstar@opensuse.org -- Fix ontology migration from very old tracker versions
+Patch1:         tracker-ontology-upgrades.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.46.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 12:41:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tracker-ontology-upgrades.patch:  libtracker-data: Improve
+  changes over single valued ontology properties (boo#1170587).
+
+-------------------------------------------------------------------
 Thu Apr 16 20:05:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add tracker-Use-correct-signature.patch: tracker-store: Use

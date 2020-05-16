@@ -1,0 +1,84 @@
+From e4303edce3c70dcd60300d6b72761cdc8d89121e Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 13 May 2020 19:41:55 +0200
+Subject: [PATCH] libtracker-data: Improve changes over single valued ontology
+ properties
+
+Things like rdfs:label and rdfs:comment that are not tracker through the
+TrackerOntology and are single-valued may result in errors if there's
+changes on those.
+
+Handle those better by replacing the value instead of trying to insert
+over it.
+---
+ src/libtracker-data/tracker-data-manager.c | 43 +++++++++++++---------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
+
+diff --git a/src/libtracker-data/tracker-data-manager.c b/src/libtracker-data/tracker-data-manager.c
+index dadb0f585..22f8749fc 100644
+--- a/src/libtracker-data/tracker-data-manager.c
++++ b/src/libtracker-data/tracker-data-manager.c
+@@ -1962,6 +1962,7 @@ tracker_data_ontology_process_statement (TrackerDataManager *manager,
+                                          gboolean            in_update,
+                                          gboolean            ignore_nao_last_modified)
+ {
++	TrackerProperty *property;
+ 	GError *error = NULL;
+ 
+ 	if (g_strcmp0 (predicate, RDF_TYPE) == 0) {
+@@ -2042,28 +2043,36 @@ tracker_data_ontology_process_statement (TrackerDataManager *manager,
+ 		}
+ 	}
+ 
+-	if (is_uri) {
+-		tracker_data_insert_statement_with_uri (manager->data_update, graph, subject,
+-		                                        predicate, object,
+-		                                        &error);
++	property = tracker_ontologies_get_property_by_uri (manager->ontologies, predicate);
+ 
+-		if (error != NULL) {
+-			g_critical ("%s", error->message);
+-			g_error_free (error);
+-			return;
++	if (is_uri) {
++		if (tracker_property_get_is_new (property) ||
++		    tracker_property_get_multiple_values (property)) {
++			tracker_data_insert_statement_with_uri (manager->data_update, NULL,
++			                                        subject, predicate, object,
++			                                        &error);
++		} else {
++			tracker_data_update_statement          (manager->data_update, NULL,
++			                                        subject, predicate, object,
++			                                        &error);
+ 		}
+-
+ 	} else {
+-		tracker_data_insert_statement_with_string (manager->data_update, graph, subject,
+-		                                           predicate, object,
+-		                                           &error);
+-
+-		if (error != NULL) {
+-			g_critical ("%s", error->message);
+-			g_error_free (error);
+-			return;
++		if (tracker_property_get_is_new (property) ||
++		    tracker_property_get_multiple_values (property)) {
++			tracker_data_insert_statement_with_string (manager->data_update, NULL,
++			                                           subject, predicate, object,
++			                                           &error);
++		} else {
++			tracker_data_update_statement             (manager->data_update, NULL,
++			                                           subject, predicate, object,
++			                                           &error);
+ 		}
+ 	}
++
++	if (error != NULL) {
++		g_critical ("%s", error->message);
++		g_error_free (error);
++	}
+ }
+ 
+ static void
+-- 
+2.26.2

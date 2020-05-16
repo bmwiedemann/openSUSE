@@ -1080,4 +1080,13 @@
     <comment>Add upstream patch (forwarded request 794659 from iznogood)</comment>
     <requestid>794794</requestid>
   </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>b3de32dd52ce3c3d0227316a24d4c132</srcmd5>
+    <version>2.3.4</version>
+    <time>1589660767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tracker-ontology-upgrades.patch:  libtracker-data: Improve
+  changes over single valued ontology properties (boo#1170587). (forwarded request 805596 from dimstar)</comment>
+    <requestid>805783</requestid>
+  </revision>
 </revisionlist>
