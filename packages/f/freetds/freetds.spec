@@ -1,7 +1,7 @@
 #
 # spec file for package freetds
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           freetds
-Version:        1.1.20
+Version:        1.1.36
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Productivity/Databases/Clients
-Url:            http://www.freetds.org/
+URL:            https://www.freetds.org/
 Source:         ftp://ftp.freetds.org/pub/freetds/stable/%{name}-%{version}.tar.bz2
 Patch0:         configure-return-void-fix.patch
 BuildRequires:  fdupes
@@ -44,7 +43,6 @@ and ODBC.
 %package config
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        LGPL-2.1-or-later
-Group:          Productivity/Databases/Clients
 Obsoletes:      libfreetds < %{version}
 Provides:       %{name} = %{version}
 Provides:       libfreetds = %{version}
@@ -61,7 +59,6 @@ them.
 %package    tools
 Summary:        Applications for working with the TDS (Tabular Data Stream) protocol
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Productivity/Databases/Clients
 
 %description tools
 FreeTDS is a project to document and implement the TDS (Tabular Data Stream)
@@ -74,7 +71,6 @@ This package provides application to allow users to make use of the protocol.
 %package    devel
 Summary:        Include files needed for development with FreeTDS
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libct4 = %{version}
 Requires:       libsybdb5 = %{version}
 Requires:       libtdsodbc0 = %{version}
@@ -86,7 +82,6 @@ the FreeTDS libraries.
 %package -n libct4
 Summary:        FreeTDS standalone driver with modern API
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libct4
 ct-lib refers to Sybase's second-generation API, which fixes a number
@@ -96,7 +91,6 @@ not the most complete implementation yet.
 %package -n libsybdb5
 Summary:        FreeTDS standalone driver with classic API
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libsybdb5
 db-lib is the oldest and simplest API, and the only API supported by
@@ -108,7 +102,6 @@ done in FreeTDS can be done through db-lib.
 %package    -n libtdsodbc0
 Summary:        FreeTDS ODBC Driver for unixODBC
 License:        LGPL-2.1-or-later
-Group:          Productivity/Databases/Clients
 Requires:       unixODBC >= 2.0.0
 
 %description -n libtdsodbc0
@@ -120,7 +113,6 @@ for several kinds of servers.
 %package    doc
 Summary:        User documentation for FreeTDS
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          Documentation/HTML
 
 %description doc
 The freetds-doc package contains the useguide and reference of FreeTDS
@@ -142,7 +134,7 @@ and can be installed even if FreeTDS main package is not installed
   --with-gnutls \
 %endif
   --with-pic
-make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags}" V=1
+%make_build RPM_OPT_FLAGS="%{optflags}"
 
 %install
 %make_install
