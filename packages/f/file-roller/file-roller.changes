@@ -4,7 +4,8 @@ Sun Apr 19 18:41:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 - Update to version 3.36.2:
   + Bugs fixed:
     - libarchive:
-      . Do not follow external links when extracting files.
+      . Do not follow external links when extracting files
+        (boo#1169428 CVE-2020-11736).
       . Overwrite symbolic links as well if requested by the user.
     - Help: Update steps to create a new archive to 3.34 UI.
   + Updated translations.
