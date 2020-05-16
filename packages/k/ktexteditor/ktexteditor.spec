@@ -23,7 +23,7 @@
 %define _tar_path 5.70
 %bcond_without lang
 Name:           ktexteditor
-Version:        5.70.0
+Version:        5.70.1
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later

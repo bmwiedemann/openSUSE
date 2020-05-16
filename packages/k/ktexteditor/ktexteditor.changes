@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 11:23:57 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.70.1
+  * Revert "Store and fetch complete view config in and from
+    session config" (kde#421375)
+
+-------------------------------------------------------------------
 Sun May  3 09:40:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0
