@@ -1,7 +1,7 @@
 #
 # spec file for package nunit
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%global __requires_exclude_from ^%{_prefix}/lib/nunit/tests/.*$
+%global __requires_exclude ^.*pnunit.framework.*$
 Name:           nunit
 Version:        2.6.4
 Release:        0

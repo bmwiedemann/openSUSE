@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 13:59:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Filter out dependency scanner from nunit/tests.
+
+-------------------------------------------------------------------
 Wed Mar  4 16:25:07 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - fake nunit26, nunit-console2, nunit-console26 and nunit-console4 
