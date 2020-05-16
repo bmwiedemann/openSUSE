@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- Update to 5.6.1:
+  * print warning when multiple block group profiles exist, update 'fi usage'
+    summary, add docs to maual page explaining the situation
+  * build: optional support for libgcrypt or libsodium, providing hash
+    implementations
+  * updated docs
+
+-------------------------------------------------------------------
 Wed Apr 29 10:33:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix content of _dracutmodulesdir variable: this definitively does
