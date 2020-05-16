@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 08:53:38 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Fix compilation with -fno-common [bsc#1171549]
+- Add patch libunwind_U_dyn_info_list.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 15:37:18 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.4.0

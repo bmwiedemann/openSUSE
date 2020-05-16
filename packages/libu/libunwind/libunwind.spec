@@ -27,6 +27,7 @@ Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{ver
 Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         libunwind_U_dyn_info_list.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
@@ -46,6 +47,7 @@ A C programming interface (API) to determine the call chain of a program.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 %configure \

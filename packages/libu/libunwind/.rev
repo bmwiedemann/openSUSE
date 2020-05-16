@@ -332,4 +332,12 @@ Patches submitted to libunwind-devel.
     <comment></comment>
     <requestid>800115</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>6f9d9935deb9876a5a4865519a510aaf</srcmd5>
+    <version>1.4.0</version>
+    <time>1589660574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805103</requestid>
+  </revision>
 </revisionlist>
