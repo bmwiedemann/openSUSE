@@ -865,4 +865,13 @@
     <comment>KDE Frameworks 5.70</comment>
     <requestid>802128</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>77ad5a31e18869e29fcc7d89f9a12148</srcmd5>
+    <version>5.70.0</version>
+    <time>1589660624</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Avoid-potential-disconnect-of-all-signals-in-IconItem.patch
+  to fix a possible crash of plasmashell (boo#1171641, kde#421170) (forwarded request 805586 from wolfi323)</comment>
+    <requestid>805589</requestid>
+  </revision>
 </revisionlist>
