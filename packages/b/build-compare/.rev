@@ -985,4 +985,14 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - touch watchdog every 15 instead of 57 minutes</comment>
     <requestid>801854</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>218204c357a4ef24c0fc1fc90b98987f</srcmd5>
+    <version>20200514T095116.be3487c</version>
+    <time>1589660601</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim first line of man page to catch overly verbose tools (now Pandoc)
+
+- compare also posttrans scripts, and pretrans + verifyscript</comment>
+    <requestid>805486</requestid>
+  </revision>
 </revisionlist>
