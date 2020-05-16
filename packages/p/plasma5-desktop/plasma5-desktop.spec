@@ -18,7 +18,7 @@
 
 %define kf5_version 5.58.0
 
-%global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500)
+%global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
 
 %bcond_without lang
 Name:           plasma5-desktop

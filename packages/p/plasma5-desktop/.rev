@@ -1194,4 +1194,12 @@
     <comment></comment>
     <requestid>802754</requestid>
   </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>5649434866c648bc80ddb44f5a7506a7</srcmd5>
+    <version>5.18.5</version>
+    <time>1589660634</time>
+    <user>dimstar_suse</user>
+    <comment>- Leap 15.2 also has ibus-dict-emoji</comment>
+    <requestid>805604</requestid>
+  </revision>
 </revisionlist>
