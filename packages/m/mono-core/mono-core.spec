@@ -51,6 +51,7 @@ Url:            http://www.mono-project.com
 Source0:        http://download.mono-project.com/sources/mono/mono-%{version}.%{version_suffix}.tar.xz
 Source1:        mono-core.rpmlintrc
 Source2:        gmcs
+Source3:        mono.attr
 # ppc build segfault so exclude it
 ExcludeArch:    ppc
 # PATCH-FIX-OPENSUSE remove checks for libmono in mono-find-provides and mono-find-requires scripts
@@ -276,6 +277,12 @@ make
 
 %install
 %make_install
+
+%if 0%{?suse_version} > 1500 
+# install the rpm file attributes to arm the dependency scanner
+mkdir -p %{buildroot}%{_rpmconfigdir}/fileattrs
+install %{SOURCE3} %{buildroot}%{_rpmconfigdir}/fileattrs/mono.attr
+%endif
 
 # Remove hardcoded lib directory from the config
 sed -i 's,\$mono_libdir/,,g' %{buildroot}%{_sysconfdir}/mono/config
@@ -1293,6 +1300,11 @@ Mono development tools.
 %{_bindir}/mono-api-info
 %{_bindir}/mono-api-html
 %{_bindir}/mono-cil-strip
+
+%if 0%{?suse_version} > 1500 
+%{_rpmconfigdir}/fileattrs/mono.attr
+%endif
+
 %{_bindir}/mono-find-provides
 %{_bindir}/mono-find-requires
 %{_bindir}/mono-heapviz
