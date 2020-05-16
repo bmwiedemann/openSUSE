@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 15 11:21:06 UTC 2020 - kukuk@suse.de
+
+- Update to version 1.2.0+git20200507.7cda9d4:
+  * update to readme & .gitignore
+  * update to generated binaries information
+  * Enforce linter errors
+  * Fix issues surfaced by running `golangci-lint run`
+  * Configure GitHub Actions
+  * Fix docker build after removal of vendored deps
+  * Bump github.com/urfave/cli from 1.22.3 to 1.22.4
+  * Clean-up test execution
+  * Remove vendorized dependencies in favor of Go modules
+  * Bump github.com/urfave/cli from 1.22.2 to 1.22.3
+  * Set CRL expiration to 2 years
+  * Add option to create CA restricted to some domains
+  * Bump github.com/urfave/cli from 1.22.1 to 1.22.2
+  * Use raw string to avoid escaping
+  * Add minute and second granularity to expiration time
+  * Remove duplicate travis build
+  * Update README regarding go version
+
+-------------------------------------------------------------------
 Sat Sep 21 08:34:39 UTC 2019 - kukuk@suse.de
 
 - Build pie binary

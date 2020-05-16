@@ -30,4 +30,29 @@
   * avoid using global variables</comment>
     <requestid>732316</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbd6b5e607697bc24e1d304501181936</srcmd5>
+    <version>1.2.0+git20200507.7cda9d4</version>
+    <time>1589660659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0+git20200507.7cda9d4:
+  * update to readme &amp; .gitignore
+  * update to generated binaries information
+  * Enforce linter errors
+  * Fix issues surfaced by running `golangci-lint run`
+  * Configure GitHub Actions
+  * Fix docker build after removal of vendored deps
+  * Bump github.com/urfave/cli from 1.22.3 to 1.22.4
+  * Clean-up test execution
+  * Remove vendorized dependencies in favor of Go modules
+  * Bump github.com/urfave/cli from 1.22.2 to 1.22.3
+  * Set CRL expiration to 2 years
+  * Add option to create CA restricted to some domains
+  * Bump github.com/urfave/cli from 1.22.1 to 1.22.2
+  * Use raw string to avoid escaping
+  * Add minute and second granularity to expiration time
+  * Remove duplicate travis build
+  * Update README regarding go version</comment>
+    <requestid>805819</requestid>
+  </revision>
 </revisionlist>
