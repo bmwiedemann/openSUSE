@@ -197,7 +197,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opencv) > 2.0
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  pkgconfig(libprojectM-qt5) >= 2.0.0
 %else
 BuildRequires:  pkgconfig(libprojectM) >= 2.0.0
@@ -398,7 +398,7 @@ OpenCV based video filters and a face detection example.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
 %patch103 -p1
