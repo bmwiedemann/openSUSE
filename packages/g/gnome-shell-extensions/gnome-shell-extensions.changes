@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 07:16:00 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
+  conflict with gnome-shell-extensions-remove-gsd-XSettings.patch
+  (bsc#1171485).
+
+-------------------------------------------------------------------
 Thu Apr 30 05:26:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

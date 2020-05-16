@@ -34,10 +34,10 @@ Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
-# PATCH-FIX-OPENSUSE gnome-classic-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
-Patch2:         gnome-classic-s390-not-require-g-s-d_wacom.patch
 # PATCH-FIX-UPSTREAM gnome-session-remove-gsd-XSettings.patch bsc#1163262 glgo#GNOME/gnome-session#51 xwang@suse.com -- remove org.gnome.SettingsDaemon.XSettings from gnome-classic.session
-Patch3:         gnome-shell-extensions-remove-gsd-XSettings.patch
+Patch2:         gnome-shell-extensions-remove-gsd-XSettings.patch
+# PATCH-FIX-OPENSUSE gnome-classic-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
+Patch3:         gnome-classic-s390-not-require-g-s-d_wacom.patch
 
 ## NOTE keep SLE Classic patch at the bottom
 # PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
@@ -117,10 +117,10 @@ to pick system installed themes or even themes installed in the user's home.
 %prep
 %setup -q
 %patch1 -p1
-%ifarch s390 s390x
 %patch2 -p1
-%endif
+%ifarch s390 s390x
 %patch3 -p1
+%endif
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
