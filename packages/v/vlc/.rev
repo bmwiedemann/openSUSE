@@ -1142,4 +1142,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment>Update to 3.0.10</comment>
     <requestid>798989</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>9adda9ed3327abde563a214c491e1444</srcmd5>
+    <version>3.0.10</version>
+    <time>1589660609</time>
+    <user>dimstar_suse</user>
+    <comment>Conditionally apply patch 100</comment>
+    <requestid>805500</requestid>
+  </revision>
 </revisionlist>
