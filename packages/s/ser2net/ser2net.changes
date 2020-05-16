@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 21 10:17:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Install the configuration file into the correct directory
+  -> %{_sysconfdir}/ser2net/
+
+-------------------------------------------------------------------
+Sun Apr 19 12:19:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.6
+  * upstream does not provide a changelog
+- Drop patch:
+  * ser2net-config.patch (config is now done via YAML)
+- Add BR: pkgconfig(libgensio), pkgconfig(yaml-0.1)
+
+-------------------------------------------------------------------
 Thu Sep  6 23:18:53 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace %__-type macro indirections.

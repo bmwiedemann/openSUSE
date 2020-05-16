@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools >= 8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch
@@ -59,16 +61,23 @@ Buildout is a project designed to solve 2 problems:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/buildout
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/zc/buildout
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/zc.buildout-2.9.5-py%{$python_version}.egg-info
 
 #%%check
 #%%python_exec setup.py test
 
+%post
+%python_install_alternative buildout
+
+%postun
+%python_uninstall_alternative buildout
+
 %files %{python_files}
 %doc README.rst CHANGES.rst COPYRIGHT.txt DEVELOPERS.txt
 %license LICENSE.txt
 %{python_sitelib}/*
-%python3_only %{_bindir}/buildout
+%python_alternative %{_bindir}/buildout
 
 %changelog

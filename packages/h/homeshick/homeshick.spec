@@ -1,7 +1,7 @@
 #
 # spec file for package homeshick
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           homeshick
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Dotfile synchronizer based on Git and Bash
 License:        MIT
 Group:          Productivity/File utilities
-Url:            https://github.com/andsens/homeshick
+URL:            https://github.com/andsens/homeshick
 Source0:        https://github.com/andsens/homeshick/archive/v%{version}.tar.gz
 Source1:        README-openSUSE.md
 Source99:       homeshick.rpmlintrc
@@ -33,10 +33,10 @@ BuildRequires:  iputils
 BuildRequires:  tcsh
 Requires:       bash >= 3
 Requires:       git >= 1.5
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?is_opensuse}
 BuildRequires:  bats
+BuildRequires:  dash
 BuildRequires:  fish
 %endif
 
@@ -50,14 +50,14 @@ plugins without clutter. It also makes it easy to install large external
 frameworks, such as oh-my-zsh, found on sites like https://dotfiles.github.io/.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}
-mv %{name}.sh %{name}.fish bin lib completions %{buildroot}%{_datadir}/%{name}
+mv %{name}.sh %{name}.fish %{name}.csh bin lib completions %{buildroot}%{_datadir}/%{name}
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{_datadir}/%{name}/bin/homeshick %{buildroot}%{_bindir}/%{name}
 cp %{SOURCE1} .
@@ -69,7 +69,6 @@ if type bats &>/dev/null; then
 fi
 
 %files
-%defattr(-,root,root)
 %doc README.md README-openSUSE.md CONTRIBUTING.md
 %license LICENSE
 %{_datadir}/%{name}

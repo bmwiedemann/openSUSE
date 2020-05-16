@@ -2417,4 +2417,79 @@ freezes, maintains state, and restores charts as users scroll.
 </comment>
     <requestid>793692</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>50cbfc675340582ad7a90566d594c103</srcmd5>
+    <version>1.22.1</version>
+    <time>1589660858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.22.1:
+Bug fixes:
+  - Fixed the latency issue on the ACLK and suppress the diagnostics.
+  - Restored old semantics of &quot;netdata -W set&quot; command.
+  - Removed check for old alarm status.
+- Changes for v1.22.0:
+Breaking Changes:
+  * The previous iteration of Netdata Cloud, accessible through
+    various Sign in and Nodes view (beta) buttons on the Agent
+    dashboard, is deprecated in favor of the new Cloud experience.
+  * Our old documentation site (docs.netdata.cloud) was replaced
+    with Netdata Learn. All existing backlinks redirect to the new
+    site.
+  * Our localization project is no longer actively maintained.
+    We're grateful for the hard work of its contributors.
+Improvements:
+  * Netdata Cloud:
+    - Enabled support for Netdata Cloud.
+    - Added TTL headers to ACLK responses.
+    - Improved the thread exit fixes in #8750.
+    - Improved ACLK reconnection sequence.
+    - Improved ACLK memory management and shutdown sequence.
+    - Added session-id to ACLK using connect timestamp.
+  * Collectors:
+    - Improved the index size for the eBPF collector.
+    - Added health alarm templates for the whoisquery collector.
+    - Added a whoisquery collector.
+    - Removed an automatic restart of apps.plugin.
+  * Exporting:
+    - Enabled internal statistics for the exporting engine in the
+      Agent dashboard.
+    - Implemented a Prometheus exporter web API endpoint.
+  * Notifications:
+    - Added a certificate revocation alarm for the x509check
+      collector.
+    - Added the ability to send Agent alarm notifications to
+      Dynatrace.
+  * Other:
+    - Updated main copyright and links for the year 2020 in daemon
+      help output.
+    - Moved bind to to [web] section and update
+      netdata.service.v235.in to sync it with recent changes.
+    - Put old dashboard behind a prefix instead of using a script
+      to switch.
+    - Enabled the truthy rule in yamllint.
+    - Added Borg backup, Squeezebox servers, Hiawatha web server,
+      and Microsoft SQL to apps.plugin so that it can appropriately
+      group them by type of service.
+  * Bug fixes:
+    - Fixed mdstat failed devices alarm.
+    - Fixed rare race condition in old Cloud iframe.
+    - Removed no-clear-notification options from portcheck health
+      templates.
+    - Fixed old URLs to silence Netlify's mixed content warnings.
+    - Fixed master streaming fatal exits.
+    - Fixed email authentiation to Cloud/Nodes View.
+    - Fixed non-escaped characters in private registry URLs.
+    - Fixed crash when shutting down an Agent with the ACLK
+      disabled.
+    - Fixed status checks for UPS devices using the apcupsd
+      collector.
+    - Fixed alarm notification script by adding a check to the
+      Dynatrace notification method.
+    - Fixed threads_creation_rate chart context in the
+      python.d MySQL collector.
+    - Fixed sudo check in charts.d libreswan collector to prevent
+      daily security notices.
+</comment>
+    <requestid>805922</requestid>
+  </revision>
 </revisionlist>

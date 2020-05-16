@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 15 12:52:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Mar 17 23:52:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - add more testing requirements

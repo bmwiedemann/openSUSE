@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkbgroup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,24 +13,26 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xkbgroup
 Version:        0.2.0
 Release:        0
-License:        MIT
 Summary:        Query and change XKB layout state
-Url:            https://github.com/hcpl/xkbgroup
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/hcpl/xkbgroup
 Source:         https://files.pythonhosted.org/packages/source/x/xkbgroup/xkbgroup-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  xvfb-run
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  xvfb-run
 Requires:       xorg-x11-server
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -61,6 +63,7 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/xkbgroup
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,16 +72,22 @@ export LANG=en_US.UTF-8
 xvfb-run $python xkbgroup/core.py
 # pause between pythons to allow X to stop
 sleep 5
-xvfb-run %{buildroot}%{_bindir}/xkbgroup get all_data
+xvfb-run %{buildroot}%{_bindir}/xkbgroup-%{python_version} get all_data
 sleep 5
 # Seg faults:
 # xvfb-run $python xkbgroup/test.py
 }
 
+%post
+%python_install_alternative xkbgroup
+
+%postun
+%python_uninstall_alternative xkbgroup
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/xkbgroup
+%python_alternative %{_bindir}/xkbgroup
 %{python_sitelib}/*
 
 %changelog

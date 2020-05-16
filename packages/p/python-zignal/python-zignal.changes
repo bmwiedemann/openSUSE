@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 15 12:25:44 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sun Mar 15 09:05:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one test failing on python 3.8

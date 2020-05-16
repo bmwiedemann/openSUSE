@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 16 11:59:00 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- Upgrade to version 2.0.0:
+  * Breaking: Moved ./bin/homeshick.csh to ./homeshick.csh
+  * Speed up refresh operation by reducing exec calls
+  * Fix some path quoting issues
+
+-------------------------------------------------------------------
 Thu Jun  7 19:47:32 UTC 2018 - seroton10@gmail.com
 
 - Upgrade to version 1.1.0:

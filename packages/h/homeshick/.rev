@@ -31,4 +31,16 @@
 </comment>
     <requestid>615160</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c33ce4ac6d19ea1e59b367da4367c0d1</srcmd5>
+    <version>2.0.0</version>
+    <time>1589660889</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.0.0:
+  * Breaking: Moved ./bin/homeshick.csh to ./homeshick.csh
+  * Speed up refresh operation by reducing exec calls
+  * Fix some path quoting issues
+</comment>
+    <requestid>806020</requestid>
+  </revision>
 </revisionlist>

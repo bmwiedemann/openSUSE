@@ -41,6 +41,8 @@ Requires:       python-PyPDF2 >= 1.26
 Requires:       python-html5lib >= 1.0
 Requires:       python-reportlab >= 3.0
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-pisa
 BuildArch:      noarch
 %python_subpackages
@@ -61,16 +63,26 @@ able to generate PDF templates very quickly without learning new technologies.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/xhtml2pdf
+%python_clone -a %{buildroot}%{_bindir}/pisa
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # as in setup.py: test_suite = "tests", They're not even working yet
 
+%post
+%python_install_alternative xhtml2pdf
+%python_install_alternative pisa
+
+%postun
+%python_uninstall_alternative xhtml2pdf
+%python_uninstall_alternative pisa
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/*
-%python3_only %{_bindir}/pisa
-%python3_only %{_bindir}/xhtml2pdf
+%python_alternative %{_bindir}/pisa
+%python_alternative %{_bindir}/xhtml2pdf
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 16 10:52:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- increase memory requirement for builds (the tests consume a lot) 
+
+-------------------------------------------------------------------
 Fri May 15 11:01:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 4.1.3

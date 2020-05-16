@@ -130,4 +130,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>799713</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e9d5ed74a3b1c0e520d0288f38adabac</srcmd5>
+    <version>7.0</version>
+    <time>1589660867</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.0</comment>
+    <requestid>805945</requestid>
+  </revision>
 </revisionlist>

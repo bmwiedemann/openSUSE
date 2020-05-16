@@ -12,14 +12,14 @@ diff -r -u homeshick-1.1.0-orig/bin/homeshick homeshick-1.1.0/bin/homeshick
  # On travis-ci exit_status for some reason errors out, ignore it
  # shellcheck disable=SC1090
  source "$homeshick/lib/exit_status.sh"
-diff -r -u homeshick-1.1.0-orig/bin/homeshick.csh homeshick-1.1.0/bin/homeshick.csh
---- homeshick-1.1.0-orig/bin/homeshick.csh	2018-04-12 21:52:30.000000000 +0200
-+++ homeshick-1.1.0/bin/homeshick.csh	2018-06-07 21:35:03.398240964 +0200
+diff -r -u homeshick-1.1.0-orig/homeshick.csh homeshick-1.1.0/homeshick.csh
+--- homeshick-1.1.0-orig/homeshick.csh	2018-04-12 21:52:30.000000000 +0200
++++ homeshick-1.1.0/homeshick.csh	2018-06-07 21:35:03.398240964 +0200
 @@ -1,6 +1,6 @@
  # This helper script should be sourced via an alias, e.g.
  #
--#   alias homeshick "source $HOME/.homesick/repos/homeshick/bin/homeshick.csh"
-+#   alias homeshick "source /usr/share/homeshick/bin/homeshick.csh"
+-#   alias homeshick "source $HOME/.homesick/repos/homeshick/homeshick.csh"
++#   alias homeshick "source /usr/share/homeshick/homeshick.csh"
  #
  if ( "$1" == "cd" && "x$2" != "x" ) then
      if ( -d "$HOME/.homesick/repos/$2/home" ) then
@@ -55,7 +55,7 @@ diff -r -u homeshick-1.1.0-orig/homeshick.sh homeshick-1.1.0/homeshick.sh
 @@ -1,6 +1,5 @@
 -#!/usr/bin/env sh
  # This script should be sourced in the context of your shell like so:
--# source $HOME/.homeshick/repos/.homeshick/homeshick.sh
+-# source $HOME/.homesick/repos/.homeshick/homeshick.sh
 +# source /usr/share/homeshick/homeshick.sh
  # Once the homeshick() function is defined, you can type
  # "homeshick cd CASTLE" to enter a castle.

@@ -30,6 +30,7 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Brotli
 Requires:       python-Flask
 BuildArch:      noarch
 # SECTION test requirements

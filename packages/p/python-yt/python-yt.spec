@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Requires:       python-matplotlib >= 1.5.3
 Requires:       python-numpy >= 1.10.4
 Requires:       python-setuptools >= 19.6
 Requires:       python-sympy >= 1.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-bottle
 Recommends:     python-girder-client
 Recommends:     python-jupyter_ipython >= 1.0
@@ -64,13 +66,23 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/yt
+%python_clone -a %{buildroot}%{_bindir}/iyt
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative yt
+%python_install_alternative iyt
+
+%postun
+%python_uninstall_alternative yt
+%python_uninstall_alternative iyt
 
 %files %{python_files}
 %doc README.md
 %license COPYING.txt
-%python3_only %{_bindir}/iyt
-%python3_only %{_bindir}/yt
+%python_alternative %{_bindir}/iyt
+%python_alternative %{_bindir}/yt
 %{python_sitearch}/*
 
 %changelog

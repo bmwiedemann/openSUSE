@@ -110,4 +110,15 @@
 </comment>
     <requestid>791120</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eefd404f272a5be4c9b061e7730199c8</srcmd5>
+    <version>0.8.2</version>
+    <time>1589660894</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.2
+  * Fixed
+    - Ghost process on XML parsing failure
+</comment>
+    <requestid>806021</requestid>
+  </revision>
 </revisionlist>

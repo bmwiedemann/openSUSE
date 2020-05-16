@@ -41,6 +41,8 @@ A pytest fixture for testing flake8 plugins.
 
 %prep
 %setup -q -n pytest-flake8dir-%{version}
+# fix gh#adamchainz/pytest-flake8dir#126
+sed -i '107 d' tests/test_pytest_flake8dir.py
 
 %build
 %python_build

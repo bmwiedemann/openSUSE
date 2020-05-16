@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 12:16:13 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 0.8.2
+  * Fixed
+    - Ghost process on XML parsing failure
+
+-------------------------------------------------------------------
 Fri Apr  3 08:02:12 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.8.1

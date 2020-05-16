@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri May  8 15:15:21 UTC 2020 - Martin Kincl <kinclm@gmail.com>
+
+- Update to version 4.18.1:
+  * Bugfixes:
+    + Move parent nodes in scratchpad correctly
+    + i3bar: Call cont_child() more liberally
+    + Fix load_layout crash when floating node doesn't have CT_FLOATING_CON parent
+    + Fix SEGFAULT when i3bar receives invalid input
+    + Revert "floating_reposition: avoid extra tree_render"
+    + Call tree_render if floating move changes workspace
+    + Update EWMH properties on workspace move
+    + cmd_focus_sibling: Fix crash on workspace level
+- Update to version 4.18:
+  * Changes:
+    + docs/ipc: document fullscreen_mode in GET_TREE reply
+    + docs/ipc: document marks field in GET_TREE reply
+    + docs/ipc: document window_type in GET_TREE reply
+    + docs/ipc: improve documentation for window_properties
+    + docs/userguide: clarify commands/config directive wording
+    + layout saving: remanage window after property updates (e.g. titles)
+    + get_first_output: prefer primary output (e.g. when moving disabled outputs)
+    + ipc: add window_type to nodes
+    + ipc: add container id to nodes
+    + allow dragging active titles for all container types (e.g. floating+tabbed)
+    + allow dragging inactive titles after a 10px threshold
+    + make tray icon order deterministic (sorted by class/instance)
+    + implement focus next|prev
+    + implement focus next|prev sibling
+    + implement focus_wrapping workspace
+    + exit with exit code 0 on --help
+    + exec command: respect command criteria
+  * Bugfixes:
+    + build: fix lcov support
+    + build: use AC_REPLACE_FUNCS, drop bundled memmem
+    + build: fix building with -fno-common (for gcc 10)
+    + build: configure: deal with git worktree checkouts, where .git is a file
+    + docs/userguide: fix link to pango markup
+    + docs/userguide: add missing manipulating_layout anchor
+    + docs/userguide: fix IPC socket location
+    + i3-nagbar: make debug log visible
+    + i3-nagbar: fix small memory leaks
+    + i3bar: fix small memory leaks
+    + move workspace to output: don’t create duplicate numbered workspace
+    + correctly select output when pointer query fails
+    + fix moving windows to scratchpad when using marks
+    + fix startup workspace selection when workspace command uses options
+    + do not try to center floating window on itself (fixes xterm placement)
+    + fix “move window to <mark>” when target is a workspace
+    + correctly activate windows behind a fullscreen window
+    + fix back-and-forth after renaming workspaces
+    + keep focus when moving container to marked workspace
+    + do not show scratchpad windows upon move to position command
+    + reparent windows to their current position when unmanaging
+      (fixes dock clients unexpectedly moving to different output)
+    + fix crash when moving containers
+    + scratchpad_move: un-fullscreen correct container
+    + avoid crash when nc->window is NULL
+
+-------------------------------------------------------------------
 Sat Sep 21 20:13:57 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.17.1"

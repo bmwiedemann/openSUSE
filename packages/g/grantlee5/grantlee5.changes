@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 14 20:32:27 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't ignore the exit code of make test
+
+-------------------------------------------------------------------
 Tue Mar 31 09:18:33 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Require cmake(Qt5LinguistTools) for building to enable testing of 

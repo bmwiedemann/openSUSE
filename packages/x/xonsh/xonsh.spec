@@ -17,7 +17,7 @@
 
 
 Name:           xonsh
-Version:        0.9.15
+Version:        0.9.18
 Release:        0
 Summary:        A general purpose, Python-ish shell
 License:        BSD-3-Clause AND BSD-2-Clause
@@ -27,14 +27,15 @@ Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name
 # SECTION docs
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-numpydoc
-# /SECTIOn
+BuildRequires:  python3-runthis-sphinxext
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python3-devel >= 3.4
 BuildRequires:  python3-setuptools
 Recommends:     python3-Pygments >= 2.2
 Recommends:     python3-distro
 Recommends:     python3-ply
-Recommends:     python3-prompt_toolkit
+Recommends:     python3-prompt_toolkit >= 2.0
 Recommends:     python3-setproctitle
 Suggests:       %{name}-doc
 Provides:       python3-xonsh = %{version}

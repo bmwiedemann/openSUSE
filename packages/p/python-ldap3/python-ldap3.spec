@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@ License:        LGPL-3.0-only
 URL:            https://github.com/cannatag/ldap3
 Source:         https://github.com/cannatag/ldap3/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pyasn1 >= 0.1.8}
+BuildRequires:  %{python_module pyasn1 >= 0.4.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-testsuite
-Requires:       python-pyasn1 >= 0.1.8
+Requires:       python-pyasn1 >= 0.4.6
 BuildArch:      noarch
 %python_subpackages
 

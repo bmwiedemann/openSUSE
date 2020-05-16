@@ -34,6 +34,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -48,23 +50,31 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/yappi
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 export PYTHONPATH="tests/"
-export PATH="$PATH:%{buildroot}/%{_bindir}"
 # Skip two flaky tests
 skip_tests="not test_basic_old_style and not test_basic"
 %if %{python3_version_nodots} < 37
     # this test relies on asyncio.run method
-    skip_tests="$skip_tests and not test_asyncio_context_vars" 
+    skip_tests="$skip_tests and not test_asyncio_context_vars"
 %endif
+# yappi binary is not available (only yappi-%python_version)
+skip_tests="$skip_tests and not test_run_as_script"
 %pytest_arch -k "$skip_tests"
+
+%post
+%python_install_alternative yappi
+
+%postun
+%python_uninstall_alternative yappi
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/yappi
+%python_alternative %{_bindir}/yappi
 %{python_sitearch}/*
 
 %changelog

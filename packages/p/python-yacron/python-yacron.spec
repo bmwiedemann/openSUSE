@@ -37,6 +37,8 @@ Requires:       python-crontab
 Requires:       python-sentry-sdk
 Requires:       python-setuptools
 Requires:       python-strictyaml >= 0.7.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -63,16 +65,23 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/yacron
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative yacron
+
+%postun
+%python_uninstall_alternative yacron
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/yacron
+%python_alternative %{_bindir}/yacron
 %{python_sitelib}/*
 
 %changelog

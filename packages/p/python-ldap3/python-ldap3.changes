@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 15:55:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- python-ldap3 actually requires at least python-pyasn1 0.4.6 since
+  it uses PyAsn1UnicodeDecodeError which was introduced in that version
+
+-------------------------------------------------------------------
 Wed Mar 11 19:17:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.7:

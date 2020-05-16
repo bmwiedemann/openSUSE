@@ -105,7 +105,6 @@ BuildRequires:  python3-Sphinx >= 0.6.6
 BuildRequires:  python3-atomicwrites >= 1.2.0
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-cloudpickle >= 0.5.0
-#BuildRequires:  python3-devel
 BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
@@ -124,13 +123,9 @@ BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
 BuildRequires:  python3-psutil >= 5.3
 BuildRequires:  python3-pyaml
-#BuildRequires:  python3-pycodestyle
-#BuildRequires:  python3-pydocstyle
-#BuildRequires:  python3-pyflakes
 BuildRequires:  python3-pygments >= 2.0
 BuildRequires:  python3-pylint >= 0.25
 BuildRequires:  python3-pytest < 5
-#BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-faulthandler < 2.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
@@ -138,7 +133,6 @@ BuildRequires:  python3-pytest-ordering
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
-#BuildRequires:  python3-python-jsonrpc-server
 BuildRequires:  python3-python-language-server >= 0.31.9
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17

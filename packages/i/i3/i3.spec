@@ -1,7 +1,7 @@
 #
 # spec file for package i3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           i3
-Version:        4.17.1
+Version:        4.18.1
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
 Group:          System/GUI/Other
-Url:            http://i3wm.org/
+URL:            http://i3wm.org/
 Source0:        http://i3wm.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        %{name}.png
 Source2:        %{name}.keyring

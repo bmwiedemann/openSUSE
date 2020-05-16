@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 16 00:21:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0
+  * New -E/--east-const command-line option.
+  * Added support for the [[no_unique_address]] attribute
+    from C++20.
+
+-------------------------------------------------------------------
 Sat Apr 25 18:02:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Refresh tarball due to force push upstream.

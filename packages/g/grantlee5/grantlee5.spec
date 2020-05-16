@@ -76,7 +76,7 @@ grantlee.
 %if %{with tests}
 %check
 export CTEST_OUTPUT_ON_FAILURE=1
-xvfb-run -a make test -C %{__builddir} ||:
+xvfb-run -a make test -C %{__builddir}
 %endif
 
 %post -p /sbin/ldconfig

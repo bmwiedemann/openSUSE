@@ -1,7 +1,7 @@
 #
 # spec file for package obexftp
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,19 +25,20 @@ BuildRequires:  cmake
 BuildRequires:  libtool
 BuildRequires:  openobex-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 BuildRequires:  xmlto
 Version:        0.24
 Release:        0
 Summary:        ObexFTP Implements the Object Exchange (OBEX) Protocol's File Transfer Feature
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://triq.net/obexftp
+URL:            http://triq.net/obexftp
 Source:         %name-%version.tar.bz2
 Patch1:         obexftp-0.24-fix-absurd-install-path.patch
-Patch2:         obexftp-pkgconfig_requires.patch
+Patch2:         obexftp-0.24-move_to_python3.patch
+Patch3:         obexftp-pkgconfig_requires.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -61,6 +62,7 @@ Files needed for software development using obexftp.
 %setup -q -n %{name}-%{version}-Source
 %patch1 -p1
 %patch2
+%patch3
 
 chmod -x AUTHORS Doxyfile ChangeLog NEWS README THANKS TODO examples/README_obexftpbackup
 
@@ -96,20 +98,20 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 %_includedir/multicobex
 %_libdir/pkgconfig/obexftp.pc
 
-%package -n python-obexftp
-Summary:        ObexFTP Implements the Object Exchange (OBEX) - Python bindings
+%package -n python3-obexftp
+Summary:        ObexFTP Implements the Object Exchange (OBEX) - Python3 bindings
 Group:          Productivity/Networking/Other
 Requires:       %name = %version
 
-%description -n python-obexftp
+%description -n python3-obexftp
 ObexFTP works out-of-the-box with all protocols supported by OpenOBEX.
 Currently IrDA, BlueTooth, and Serial.
 
-This package contains the python bindings.
+This package contains the python3 bindings.
 
-%files -n python-obexftp
+%files -n python3-obexftp
 %defattr(-,root,root)
-%{python_sitearch}/*
+%{python3_sitearch}/*
 
 %package -n perl-obexftp
 Summary:        ObexFTP Implements the Object Exchange (OBEX) - Perl bindings

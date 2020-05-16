@@ -1,7 +1,7 @@
 #
 # spec file for package ser2net
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,46 +12,46 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ser2net
-Version:        3.5
+Version:        4.1.6
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            https://github.com/cminyard/ser2net.git
-Source:         %{name}-%{version}.tar.xz
-Source2:        ser2net.service
 Summary:        Serial port to network proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
+URL:            https://github.com/cminyard/ser2net.git
+Source:         https://github.com/cminyard/ser2net/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source2:        ser2net.service
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-Patch0:         ser2net-config.patch
+BuildRequires:  pkgconfig(libgensio)
+BuildRequires:  pkgconfig(yaml-0.1)
 %{?systemd_requires}
 
 %description
-ser2net provides a way for a user to connect from a network connection to a 
-serial port. It provides all the serial port setup, a configuration file to 
-configure the ports, a control login for modifying port parameters, 
+ser2net provides a way for a user to connect from a network connection to a
+serial port. It provides all the serial port setup, a configuration file to
+configure the ports, a control login for modifying port parameters,
 monitoring ports, and controlling ports.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%setup -q
 
 %build
-autoreconf -i
+autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-install -D -m 0644 %{name}.conf %{buildroot}/%{_sysconfdir}/%{name}.conf
-install -D -m 0644 %{S:2} %{buildroot}/%{_unitdir}/ser2net.service
+install -D -m 0644 %{name}.yaml %{buildroot}/%{_sysconfdir}/ser2net/%{name}.yaml
+install -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/ser2net.service
 
 %pre
 %service_add_pre ser2net.service
@@ -66,11 +66,13 @@ install -D -m 0644 %{S:2} %{buildroot}/%{_unitdir}/ser2net.service
 %service_del_postun ser2net.service
 
 %files
-%defattr(-,root,root)
-%doc COPYING ChangeLog AUTHORS README
-%{_unitdir}/ser2net.service
-%config(noreplace) %{_sysconfdir}/%{name}.conf
+%license COPYING
+%doc ChangeLog AUTHORS README
 %{_sbindir}/%{name}
-%{_mandir}/man8/%{name}*
+%dir %{_sysconfdir}/ser2net
+%config(noreplace) %{_sysconfdir}/ser2net/%{name}.yaml
+%{_unitdir}/ser2net.service
+%{_mandir}/man5/ser2net.yaml.5%{?ext_man}
+%{_mandir}/man8/ser2net.8%{?ext_man}
 
 %changelog

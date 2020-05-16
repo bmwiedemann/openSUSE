@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat May 16 12:49:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5
+  * Fix some license issues
+- Update to version 2.0.4
+  * ser2net will now retry accepters and connect back connectors
+    if they fail to come up or get an error.
+
+-------------------------------------------------------------------
+Tue Apr 28 16:30:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.3
+  * Add a control to allow stdio's stdin to be closed without
+    closing the gensio. This will let you write some data and then
+    cause the program to see EOF on stdin, but won't affect stdout
+    or stderr from the program.
+  * Add a config option to not install the man pages.
+
+-------------------------------------------------------------------
+Wed Apr 22 20:46:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Clarify license
+
+-------------------------------------------------------------------
+Sun Apr 19 11:13:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.0.2

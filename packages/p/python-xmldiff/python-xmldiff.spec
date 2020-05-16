@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmldiff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.1.0
 Requires:       python-setuptools
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      %{oldpython}-xmldiff < %{version}
 BuildArch:      noarch
 # SECTION test requirements
@@ -56,16 +58,26 @@ Garcia-Molina, and J. Widom, Stanford University, 1996.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/xmlpatch
+%python_clone -a %{buildroot}%{_bindir}/xmldiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative xmlpatch
+%python_install_alternative xmldiff
+
+%postun
+%python_uninstall_alternative xmlpatch
+%python_uninstall_alternative xmldiff
+
 %files %{python_files}
 %doc CHANGES.rst README.rst README.txt
 %license LICENSE.txt
-%python3_only %{_bindir}/xmldiff
-%python3_only %{_bindir}/xmlpatch
+%python_alternative %{_bindir}/xmldiff
+%python_alternative %{_bindir}/xmlpatch
 %{python_sitelib}/*
 
 %changelog

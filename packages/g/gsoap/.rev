@@ -545,4 +545,12 @@
     <comment>- Update to release 2.8.101</comment>
     <requestid>792825</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9c969ca38aa896a5da307300fb734ba4</srcmd5>
+    <version>2.8.102</version>
+    <time>1589660793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.102</comment>
+    <requestid>805870</requestid>
+  </revision>
 </revisionlist>

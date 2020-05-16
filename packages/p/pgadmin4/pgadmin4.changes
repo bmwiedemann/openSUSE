@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu May 14 16:25:22 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Decrease requirements to build in SLE/Leap:
+  * Werkzeug from 0.15.0 to 0.14.1
+  * passlib from 1.7.2 to 1.7.1
+  * psycopg from 2.8 to 2.7.4
+  * python-dateutil from 2.8.0 to 2.7.3
+  * simplejson from 3.16.0 to 3.13.2
+  * pytz from 2018.9 to 2018.3
+  pgadmin has this tendency to just follow the latest versions
+  instead of properly specify required versions.
+
+-------------------------------------------------------------------
+Wed May 13 09:42:09 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.21
+  - New features
+    * Added search object functionality.
+    * Added LDAP authentication support.
+    * Added support for parameter toast_tuple_target and parallel_workers
+      of the table.
+    * Added support of Packages, Sequences and Synonyms to the
+      Schema Diff.
+    * Added an option to prevent a browser tab being opened at startup.
+  - Bug fixes
+    * Ensure that the start and end date should be deleted when clear
+      the selection for pgAgent Job.
+    * Fixed calendar opening issue on the exception tab inside the
+      schedules tab of pgAgent.
+    * Fixed an issue where the autovacuum_enabled parameter is added
+      automatically in the RE-SQL when the table has been created
+      using the WITH clause.
+    * Fixed generated SQL when any token in FTS Configuration or any
+      option in FTS Dictionary is changed.
+    * Fixed tab key navigation issue for parameters in table dialog.
+    * Ensure that switch cell is in sync with switch control for
+      accessibility.
+    * Fixed compilation warnings while building pgAdmin.
+
+- Update to 4.20
+  - New features
+    * Added support of Collation, FTS Configuration, FTS Dictionary,
+      FTS Parser and FTS Template to the Schema Diff.
+    * Added support of Domain, Domain Constraints and Types to the
+      Schema Diff.
+  - Housekeeping
+    * Enhance the color of switch control for both light and dark theme.
+    * Added and fixed gettext usage for better translation coverage.
+  - Bug fixes
+    * Fix an issue where the user can not change the value of DateTime
+      picker control using keyboard.
+    * Fixed some accessibility issues in the dialogs.
+    * Fixed chrome driver download utility issue for Ubuntu.
+    * Change some colors and opacity to comply with WCAG color
+      contrast standards.
+    * Fix an accessibility issue to maximize the panel for all
+      alertify dialog.
+    * Improve logic to get the DDL statements as a part of the
+      comparison.
+    * Fixed tab key navigation issue for Grant Wizard.
+    * Fixed Unicode character issue causing error on Python2 environment.
+    * Fixed focus color issue for Alertify dialog buttons.
+
+-------------------------------------------------------------------
 Tue Mar 24 17:07:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update dependencies versions and replace python-Flask-Security

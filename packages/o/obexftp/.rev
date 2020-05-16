@@ -186,4 +186,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>2926f3cc3d3103285d2c723d03d0bd44</srcmd5>
+    <version>0.24</version>
+    <time>1589660899</time>
+    <user>dimstar_suse</user>
+    <comment>- Build python bindings for python3 instead of for python2
+- Add obexftp-0.24-move_to_python3.patch:
+  Use PyUnicode_FromStringAndSize instead of
+  PyString_FromStringAndSize in swig/charmap.i (needed for python3)</comment>
+    <requestid>806039</requestid>
+  </revision>
 </revisionlist>

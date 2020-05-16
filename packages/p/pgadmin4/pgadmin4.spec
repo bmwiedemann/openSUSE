@@ -18,7 +18,7 @@
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 Name:           pgadmin4
-Version:        4.19
+Version:        4.21
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -80,7 +80,7 @@ Requires:       python3-Jinja2 >= 2.7.3
 Requires:       python3-MarkupSafe >= 0.23
 Requires:       python3-SQLAlchemy >= 1.3.13
 Requires:       python3-WTForms >= 2.1
-Requires:       python3-Werkzeug >= 0.15.0
+Requires:       python3-Werkzeug >= 0.14.1
 Requires:       python3-beautifulsoup4 >= 4.4.1
 Requires:       python3-blinker >= 1.4
 Requires:       python3-click
@@ -89,17 +89,18 @@ Requires:       python3-fixtures >= 3.0.0
 Requires:       python3-html5lib >= 1.0.1
 Requires:       python3-htmlmin >= 0.1.12
 Requires:       python3-itsdangerous >= 0.24
+Requires:       python3-ldap3 >= 2.5.1
 Requires:       python3-linecache2 >= 1.0.0
-Requires:       python3-passlib >= 1.7.2
+Requires:       python3-passlib >= 1.7.1
 Requires:       python3-pbr >= 3.1.1
-Requires:       python3-psutil >= 5.5.1
-Requires:       python3-psycopg2 >= 2.8
+Requires:       python3-psutil >= 5.7.0
+Requires:       python3-psycopg2 >= 2.7.4
 Requires:       python3-pycrypto >= 2.6.1
 Requires:       python3-pyrsistent >= 0.14.2
-Requires:       python3-python-dateutil >= 2.8.0
+Requires:       python3-python-dateutil >= 2.7.3
 Requires:       python3-python-mimeparse >= 1.6.0
-Requires:       python3-pytz >= 2018.9
-Requires:       python3-simplejson >= 3.16.0
+Requires:       python3-pytz >= 2018.3
+Requires:       python3-simplejson >= 3.13.2
 Requires:       python3-six >= 1.12.0
 Requires:       python3-speaklater >= 1.3
 Requires:       python3-sqlparse >= 0.2.4

@@ -42,8 +42,6 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
 Requires:       ratbagd >= 0.10
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
 
 %description
 Piper is a GTK+ application to configure gaming mice. It is a graphical frontent

@@ -32,6 +32,8 @@ Requires:       python-matplotlib
 Requires:       python-numpy
 Requires:       python-samplerate
 Requires:       python-scipy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-PyAudio
 BuildArch:      noarch
 # SECTION test requirements
@@ -54,16 +56,23 @@ This is a python audio signal processing library.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/zignal-listsndcards
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # https://github.com/ronnyandersson/zignal/issues/8
 %python_expand nosetests-%{$python_bin_suffix} -v zignal/tests -e 'test_set_duration_and_samples'
 
+%post
+%python_install_alternative zignal-listsndcards
+
+%postun
+%python_uninstall_alternative zignal-listsndcards
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%python3_only %{_bindir}/zignal-listsndcards
+%python_alternative %{_bindir}/zignal-listsndcards
 %{python_sitelib}/*
 
 %changelog
