@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 14 14:27:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable mono bindings by default, broken with latest mono changes
+  in TW and not used by anything currently
+
+-------------------------------------------------------------------
+Thu May 14 14:25:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove more obsolete conditions.
+
+-------------------------------------------------------------------
 Tue Jan 14 16:27:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the python bindings package to get rid of the python2 dependency.

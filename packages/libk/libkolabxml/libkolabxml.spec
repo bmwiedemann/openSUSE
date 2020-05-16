@@ -19,13 +19,9 @@
 %global php_extdir %{_libdir}/php5/extensions
 %global php_confdir %{_sysconfdir}/php5/conf.d
 %define libname %{name}1
-%if 0%{?suse_version} >= 1330
 %bcond_with php
-%else
-%bcond_without php
-%endif
 %bcond_without java
-%bcond_without mono
+%bcond_with mono
 %bcond_with tests
 Name:           libkolabxml
 Version:        1.1.6
@@ -47,12 +43,8 @@ BuildRequires:  xsd >= 3.0
 %if %{with php}
 BuildRequires:  php-devel >= 5.3
 %endif
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.4.1
-%endif
 %if %{with java}
 BuildRequires:  java-devel
 %endif

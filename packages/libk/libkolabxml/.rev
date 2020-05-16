@@ -278,4 +278,15 @@ Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
     <comment></comment>
     <requestid>764418</requestid>
   </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>eda63126a0bb5dd48bbe23c528484471</srcmd5>
+    <version>1.1.6</version>
+    <time>1589660681</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable mono bindings by default, broken with latest mono changes
+  in TW and not used by anything currently
+
+- Remove more obsolete conditions.</comment>
+    <requestid>805615</requestid>
+  </revision>
 </revisionlist>
