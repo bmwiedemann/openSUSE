@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 07:18:56 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
+  conflict with gnome-shell-extensions-remove-gsd-XSettings.patch
+  (bsc#1171485).
+
+-------------------------------------------------------------------
 Wed Apr 15 01:20:42 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-session-error-numbers-wrong.patch: Remove erron in log

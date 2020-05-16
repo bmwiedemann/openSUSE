@@ -1399,4 +1399,14 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment>Scripted push of project GNOME:Next (forwarded request 795061 from iznogood)</comment>
     <requestid>795214</requestid>
   </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>b34c87ed301d9284431ee9a7719ed783</srcmd5>
+    <version>3.36.0</version>
+    <time>1589660752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
+  conflict with gnome-shell-extensions-remove-gsd-XSettings.patch
+  (bsc#1171485). (forwarded request 804188 from xiaoguang_wang)</comment>
+    <requestid>805780</requestid>
+  </revision>
 </revisionlist>
