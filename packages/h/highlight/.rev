@@ -539,4 +539,20 @@
   * Added Nord theme.</comment>
     <requestid>792533</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fff753862e9e378dbbb01e245dfbf8df</srcmd5>
+    <version>3.57</version>
+    <time>1589660778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.57:
+  * Added support for Haml (gl#saalen/highlight#140).
+  * Added support for Wren.
+  * Added Lua function `OverrideParam`.
+  * Fixed regression in xterm256 or truecolor output
+    (gl#saalen/highlight#152).
+  * Fixed `--list-scripts` with read-only language definitions
+    (gl#saalen/highlight#154).
+  * Improved several language definitions.</comment>
+    <requestid>805800</requestid>
+  </revision>
 </revisionlist>

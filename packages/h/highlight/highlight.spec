@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.56
+Version:        3.57
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later

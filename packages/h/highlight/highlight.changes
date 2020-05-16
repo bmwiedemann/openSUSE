@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 10:39:30 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.57:
+  * Added support for Haml (gl#saalen/highlight#140).
+  * Added support for Wren.
+  * Added Lua function `OverrideParam`.
+  * Fixed regression in xterm256 or truecolor output
+    (gl#saalen/highlight#152).
+  * Fixed `--list-scripts` with read-only language definitions
+    (gl#saalen/highlight#154).
+  * Improved several language definitions.
+
+-------------------------------------------------------------------
 Wed Apr  8 17:52:05 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.56:
