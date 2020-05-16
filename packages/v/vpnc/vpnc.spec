@@ -1,7 +1,7 @@
 #
 # spec file for package vpnc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A Client for Cisco VPN concentrator
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://svn.unix-ag.uni-kl.de/vpnc/branches/vpnc-nortel
+URL:            http://svn.unix-ag.uni-kl.de/vpnc/branches/vpnc-nortel
 Source:         %{name}-%{version}.tar.bz2
 # only for checkin warnings...
 Source1:        checkout_svn.sh
@@ -73,7 +73,7 @@ make install \
 rm -rfv %{buildroot}%{_datadir}/doc/vpnc
 %if 0%{?suse_version} >= 1210
 install -D -m 0644 $RPM_SOURCE_DIR/%{name}.service %{buildroot}/%{_unitdir}/%{name}@.service
-install -D -m 0644 $RPM_SOURCE_DIR/%{name}.conf %{buildroot}/%{_libexecdir}/tmpfiles.d/%{name}.conf
+install -D -m 0644 $RPM_SOURCE_DIR/%{name}.conf %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 %endif
 sed -i -e '1c#!/usr/bin/perl' %{buildroot}%{_bindir}/pcf2vpnc
 
@@ -84,7 +84,7 @@ sed -i -e '1c#!/usr/bin/perl' %{buildroot}%{_bindir}/pcf2vpnc
 
 %post
 %if 0%{?suse_version} >= 1210
-%tmpfiles_create %{_libexecdir}/tmpfiles.d/%{name}.conf
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post %{name}@.service
 %endif
 
@@ -114,7 +114,7 @@ sed -i -e '1c#!/usr/bin/perl' %{buildroot}%{_bindir}/pcf2vpnc
 %{_mandir}/man8/vpnc.8.*
 %if 0%{?suse_version} >= 1210
 %{_unitdir}/%{name}@.service
-%{_libexecdir}/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %endif
 %doc ChangeLog README TODO VERSION
 %license COPYING
