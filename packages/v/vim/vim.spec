@@ -75,7 +75,6 @@ BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gpm-devel
-BuildRequires:  krb5-mini
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -84,6 +83,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xt)
@@ -154,6 +154,18 @@ graphical windows and language interpreter, like python, ruby, or perl.
 You need package vim for the help and other documentation too. If you
 want less features, you might want to install vim instead.
 
+%package small
+Summary:        Vim with reduced features
+Group:          Productivity/Text/Editors
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Provides:       vi
+Provides:       vim_client
+
+%description small
+Vim compiled with reduced feature set such as no script
+interpreters built in
+
 %prep
 %setup -q -n %{name}-%{pkg_version}.%{patchlevel}
 
@@ -206,24 +218,31 @@ export COMMON_OPTIONS="\
     --with-view-name=view \
     --enable-cscope \
     --enable-multibyte \
-    --with-features=huge \
     --with-compiledby='http://www.opensuse.org/' \
-%if 0%{?suse_version} > 1210
     --with-tlib=tinfo \
-%else
-    --with-tlib=ncurses \
-%endif
     --with-global-runtime=%{site_runtimepath} \
+    "
+
+# yeah kind of weird to call this small when we then use the
+# "normal" set. Calling the package vim-normal is weird though as
+# huge is our default.
+export SMALL_OPTIONS="\
+    $COMMON_OPTIONS \
+    --with-features=small \
+    --enable-luainterp=no \
+    --enable-pythoninterp=no \
+    --enable-perlinterp=no \
+    --enable-python3interp=no \
+    --enable-rubyinterp=no"
+
+export HUGE_OPTIONS="\
+    $COMMON_OPTIONS \
+    --with-features=huge \
     --enable-luainterp=dynamic \
     --enable-perlinterp=yes \
     --enable-python3interp=dynamic \
-    --enable-rubyinterp=dynamic"
-
-%if %{with python2}
-COMMON_OPTIONS="${COMMON_OPTIONS} --enable-pythoninterp=yes"
-%else
-COMMON_OPTIONS="${COMMON_OPTIONS} --enable-pythoninterp=no"
-%endif
+    --enable-rubyinterp=dynamic
+    --enable-pythoninterp=%{?with_python2:yes}%{!?with_python2:no}"
 
 export GUI_OPTIONS="\
     --disable-icon-cache-update \
@@ -231,19 +250,32 @@ export GUI_OPTIONS="\
     --enable-fontset \
     --enable-gui=gtk3"
 
+export NOGUI_OPTIONS="\
+    --disable-gui \
+    --disable-gpm \
+    --with-x=no \
+    "
+
 pushd src
 autoconf
 popd
 
-# build vim
-%configure ${COMMON_OPTIONS} --disable-gui --disable-gpm --with-x=no
+# build smaller vim
+%configure ${SMALL_OPTIONS} ${NOGUI_OPTIONS}
+sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
+make %{?_smp_mflags}
+cp src/vim vim-small
+
+# build normal vim
+make -j1 distclean
+%configure ${HUGE_OPTIONS} ${NOGUI_OPTIONS}
 sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
 make %{?_smp_mflags}
 cp src/vim vim-nox11
 
 # build gvim
 make -j1 distclean
-%configure ${COMMON_OPTIONS} ${GUI_OPTIONS}
+%configure ${HUGE_OPTIONS} ${GUI_OPTIONS}
 sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
 make %{?_smp_mflags}
 
@@ -270,6 +302,7 @@ for f in egvim egview eview evim gex gvi gview gvimdiff rgview rgvim ; do
 done
 
 # install vim
+install -D -m 0755 vim-small %{buildroot}%{_bindir}/vim-small
 install -D -m 0755 vim-nox11 %{buildroot}%{_bindir}/vim-nox11
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/vim %{buildroot}%{_bindir}/vim
@@ -398,6 +431,12 @@ if [ ! -e %{_bindir}/gvim ] ; then
   %{_sbindir}/update-alternatives --remove vim %{_bindir}/gvim
 fi
 %icon_theme_cache_postun
+
+%post small
+%{_sbindir}/update-alternatives --install %{_bindir}/vim vim %{_bindir}/vim-small 19
+
+%postun small
+%{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
 
 %files
 %config(noreplace) %{_sysconfdir}/vimrc
@@ -538,5 +577,11 @@ fi
 %{_datadir}/applications/gvim.desktop
 %{_datadir}/icons/hicolor/*/apps/gvim.*
 %doc %{_docdir}/gvim
+
+%files small
+%license LICENSE
+%ghost %{_sysconfdir}/alternatives/vim
+%{_bindir}/vim
+%{_bindir}/vim-small
 
 %changelog
