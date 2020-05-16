@@ -49,6 +49,8 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
+# PATCH-FIX-UPSTREAM dimstar@opensuse.org -- Fix test suite with GCC 10
+Patch6:         meson-gcc10.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -125,15 +127,11 @@ BuildRequires:  rust
 BuildRequires:  wxWidgets-any-devel
 # csharp is not on s390 machines
 %ifnarch s390x
-%if 0%{?is_opensuse}
 BuildRequires:  mono(csharp)
-%endif
 %endif
 %else
 BuildRequires:  boost-devel
-%if 0%{?is_opensuse}
 BuildRequires:  mono-core
-%endif
 BuildRequires:  wxWidgets-devel
 %endif
 %endif
@@ -175,6 +173,7 @@ This package provides support for meson.build files in Vim.
 %if !%{with setuptools}
 %patch5 -p1
 %endif
+%patch6 -p1
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \

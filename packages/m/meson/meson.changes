@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 14 07:32:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-gcc10.patch: Fix test suite when using gcc 10.
+
+-------------------------------------------------------------------
+Wed May 13 16:58:09 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Remove is_opensuse conditional and enable mono tests on SLE
+  (jsc#SLE-11721).
+
+-------------------------------------------------------------------
 Mon Apr 27 10:11:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.54.1:
