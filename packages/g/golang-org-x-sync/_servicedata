@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/golang/sync</param>
+              <param name="changesrevision">43a5402ce75a95522677f77c619865d66b8c57ab</param></service></servicedata>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 13 10:11:39 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.0.0+git20200317.43a5402:
+  * semaphore: unblock waiters when the front waiter cancels
+  * syncmap: use type alias for Map
+  * semaphore: better error message when releasing more than held
+  * singleflight: fix duplicate deleting key when Forget called
+  * all: add a go.mod file
+  * semaphore: add more Acquire documentation
+  * all: remove x/net/context in favour of context
+  * CONTRIBUTING.md: remove note about not accepting Pull Requests
+  * semaphore: add worker-pool example
+  * README: switch to Markdown, add better links
+- Move LICENSE from %doc to %license section
+- Set BuildArch to noarch
+
+-------------------------------------------------------------------
 Fri Dec 20 16:44:34 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Fix the rpmlintrc file name.

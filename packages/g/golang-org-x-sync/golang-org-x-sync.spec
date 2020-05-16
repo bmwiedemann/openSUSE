@@ -1,7 +1,7 @@
 #
-# spec file for package golang
+# spec file for package golang-org-x-sync
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,12 @@
 %global import_path     golang.org/x/sync
 
 Name:           golang-org-x-%{repo}
-Version:        0.0.0+git20190911.cd5d95a
+Version:        0.0.0+git20200317.43a5402
 Release:        0
 Summary:        Go concurrency primitives
 License:        BSD-3-Clause
 Group:          Development/Languages/Golang
-Url:            https://%{provider_prefix}
+URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,6 +39,8 @@ BuildRequires:  xz
 
 BuildRequires:  golang(golang.org/x/net/context)
 Requires:       golang(golang.org/x/net/context)
+
+BuildArch:      noarch
 
 %{go_nostrip}
 %{go_provides}
@@ -61,6 +63,7 @@ provided by the language and "sync" and "sync/atomic" packages.
 
 %files -f file.lst
 %defattr(-,root,root,-)
-%doc README.md LICENSE PATENTS AUTHORS CONTRIBUTORS CONTRIBUTING.md
+%doc README.md PATENTS AUTHORS CONTRIBUTORS CONTRIBUTING.md
+%license LICENSE
 
 %changelog
