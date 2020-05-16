@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 14 17:31:18 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update to 1.10.8
+ * Security fix: [CVE-2020-1945, bsc#1171696]
+   - A new property ant.tmpdir provides improved control over the
+     location Ant uses to create temporary files
+ * sshexec failed to write output to a file if the file didn't exist
+ * Fixes a regression in javac task involving command line argument files.
+ * sshexec, sshsession and scp now support a new sshConfig parameter.
+   It specified the SSH configuration file (typically ${user.home}/.ssh/config)
+   defining the username and keyfile to be used per host.
+ * "legacy-xml" formatter of junitlauncher task wasn't writing out
+   exceptions that happen in @BeforeAll method of a test.
+ * Fixes a potential ConcurrentModificationException in XMLLogger.
+ * Fixes a bug in junitlauncher task in forked mode, where if a listener element
+   was used as a sibling element for either the test or testclasses element,
+   then the forked mode launch would fail.
+ * Fixes an issue in AntStructure where an incorrect DTD was being generated.
+ * Fixes an incorrect variable name usage in junit-frames-xalan1.xsl.
+ * The runant.py script should now work with Python 3.
+ * rmic has been removed from Java 15. The task will now throw an
+   exception if you try to use it while running Java 15 or newer.
+- Remove ant-python3.patch fixed upstream
+
+-------------------------------------------------------------------
 Wed May  6 16:49:40 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Add rhino to the ant-apache-bsf optional tasks [bsc#1134001]

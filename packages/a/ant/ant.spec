@@ -23,24 +23,23 @@
 %bcond_with junit5
 %bcond_with antlr
 Name:           ant
-Version:        1.10.7
+Version:        1.10.8
 Release:        0
 Summary:        Java-based build tool
 License:        Apache-2.0
 Group:          Development/Tools/Building
-URL:            http://ant.apache.org/
-Source0:        http://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.bz2
+URL:            https://ant.apache.org/
+Source0:        https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz
 Source1:        apache-ant-1.8.ant.conf
 Source10:       ant-bootstrap.pom.in
 Source1000:     pre_checkin.sh
-Source1001:     http://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.bz2.asc
+Source1001:     https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz.asc
 Source1002:     ant.keyring
 Patch0:         apache-ant-no-test-jar.patch
 Patch1:         apache-ant-class-path-in-manifest.patch
 Patch2:         apache-ant-bootstrap.patch
 #PATCH-FEATURE-OPENSUSE bmwiedemann -- have fixed build dates
 Patch3:         reproducible-build-date.patch
-Patch4:         ant-python3.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- have fixed "Created-by" in manifest
 Patch5:         reproducible-build-manifest.patch
 Patch6:         apache-ant-xml-apis.patch
@@ -375,7 +374,6 @@ find -name \*.jar -print -delete
 %patch1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5 -p1
 %patch6 -p1
 
