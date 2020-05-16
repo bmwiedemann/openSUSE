@@ -31,12 +31,17 @@ bindkey    "^[[3~"		delete-char
 bindkey    "^[[4~"		end-of-line
 bindkey    "^[[5~"		history-search-backward
 bindkey    "^[[6~"		history-search-forward
-bindkey    "^M[1~"		beginning-of-line
-bindkey    "^M[2~"		yank
-bindkey    "^M[3~"		delete-char
-bindkey    "^M[4~"		end-of-line
-bindkey    "^M[5~"		history-search-backward
-bindkey    "^M[6~"		history-search-forward
+if ( ${?MC_SID} == 0 ) then
+	#
+	# Those bindings interfere with Midnight Commander
+	#
+	bindkey    "^M[1~"	beginning-of-line
+	bindkey    "^M[2~"	yank
+	bindkey    "^M[3~"	delete-char
+	bindkey    "^M[4~"	end-of-line
+	bindkey    "^M[5~"	history-search-backward
+	bindkey    "^M[6~"	history-search-forward
+endif
 bindkey -r "\233"
 bindkey    "\2331~"		beginning-of-line
 bindkey    "\2332~"		yank

@@ -733,4 +733,12 @@
     as this works mostly over NFS whereas tmpfs is local only</comment>
     <requestid>779040</requestid>
   </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>ea8eb19cc6c57b594f8d24f47332e407</srcmd5>
+    <version>6.22.02</version>
+    <time>1589660612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805520</requestid>
+  </revision>
 </revisionlist>
