@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 16:15:48 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Do not arbitrarily limit the default listen backlog  
+ (NGX_LISTEN_BACKLOG) to 511, instead use -1 to choose the
+ system's default (sysctl net.core.somaxconn)
+
+-------------------------------------------------------------------
 Wed Apr 22 16:46:27 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.18.0

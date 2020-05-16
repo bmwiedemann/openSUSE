@@ -188,6 +188,8 @@ perl -pi -e 's|#LIBDIR#|%{_lib}|g' conf/nginx.conf
 sed -i "s/\/var\/run/\/run/" conf/nginx.conf
 %endif
 
+sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config.h
+
 %build
 # FIXME: you should use the %%configure macro
 ./configure                                    \
