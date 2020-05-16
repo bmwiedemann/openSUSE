@@ -17,23 +17,10 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 
-###############################################################
-#
-#  IMPORTANT:
-#  Only edit this file directly in the Git repo:
-#  https://github.com/openSUSE/daps, branch develop,
-#  packaging/suse-xsl-stylesheets.spec
-#
-#  Your changes will be lost on the next update.
-#  If you do not have access to the Git repository, notify
-#  <fsundermeyer@opensuse.org> and <toms@opensuse.org>
-#  or send a patch.
-#
-################################################################
-
+%define reponame          suse-xsl
 %define susexsl_catalog   catalog-for-%{name}.xml
 %define db_xml_dir        %{_datadir}/xml/docbook
 %define suse_styles_dir   %{db_xml_dir}/stylesheet
@@ -42,8 +29,7 @@ Summary:        SUSE-Branded Stylesheets for DocBook
 License:        GPL-2.0 or GPL-3.0
 Group:          Productivity/Publishing/XML
 Url:            https://github.com/openSUSE/suse-xsl
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        susexsl-fetch-source-git
+Source0:        %{reponame}-%{version}.tar.bz2
 Source2:        %{name}.rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -54,10 +40,6 @@ BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt
 BuildRequires:  make
-# Only needed to fix the "have choice" error between xerces-j2 and crimson
-%if 0%{?suse_version} == 1210
-BuildRequires:  xerces-j2
-%endif
 BuildRequires:  fontpackages-devel
 BuildRequires:  trang
 
@@ -73,9 +55,7 @@ Requires(post): sgml-skel >= 0.7
 Requires(postun): sgml-skel >= 0.7
 
 
-#------
-# Fonts
-#------
+# FONTS
 
 # Western fallback: currently necessary for building with XEP, it seems.
 Requires:       ghostscript-fonts-std
@@ -97,7 +77,7 @@ Requires:       un-fonts
 # Chinese:
 Requires:       wqy-microhei-fonts
 
-# FONTS USED IN "suse2013" STYLESHEETS
+# FONTS USED IN "suse2013"/"opensuse2013"/"daps2013/"suse2020" STYLESHEETS
 # Western fonts:
 Requires:       google-opensans-fonts
 Requires:       sil-charis-fonts
@@ -119,17 +99,14 @@ These are SUSE-branded XSLT 1.0 stylesheets for DocBook 4 and 5 that are be used
 to create the HTML, PDF, and EPUB versions of SUSE documentation. These
 stylesheets are based on the original DocBook XSLT 1.0 stylesheets.
 
-#--------------------------------------------------------------------------
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{reponame}-%{version}
 
-#--------------------------------------------------------------------------
 
 %build
-%__make  %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
-#--------------------------------------------------------------------------
 
 %install
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
@@ -137,20 +114,20 @@ make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
 # create symlinks:
 %fdupes -s %{buildroot}/%{_datadir}
 
-#----------------------
+
 %post
 # XML Catalogs
 #
 # remove old existing entries first - needed for
-# zypper in, since it does not call postun
-# delete ...
+# zypper in, since it does not call postun.
 
+# delete ...
 if [ "2" = "$1" ]; then
   edit-xml-catalog --group --catalog %{_sysconfdir}/xml/suse-catalog.xml \
     --del %{name} || true
 fi
 
-# ... and (re)add new catalogs
+# ... and (re)insert new catalogs
 update-xml-catalog
 
 %reconfigure_fonts_post
@@ -170,17 +147,14 @@ fi
 exit 0
 
 
-#----------------------
-
 %posttrans
 %reconfigure_fonts_posttrans
 
-#----------------------
 
 %files
 %defattr(-,root,root)
 
-# Directories
+# directories
 %dir %{suse_styles_dir}
 %dir %{suse_styles_dir}/suse
 %dir %{suse_styles_dir}/suse-ns
@@ -190,6 +164,8 @@ exit 0
 %dir %{suse_styles_dir}/daps2013-ns
 %dir %{suse_styles_dir}/opensuse2013
 %dir %{suse_styles_dir}/opensuse2013-ns
+#%dir %{suse_styles_dir}/suse2020
+#%dir %{suse_styles_dir}/suse2020-ns
 
 %dir %{_ttfontsdir}
 
@@ -204,16 +180,17 @@ exit 0
 %{suse_styles_dir}/daps2013-ns/*
 %{suse_styles_dir}/opensuse2013/*
 %{suse_styles_dir}/opensuse2013-ns/*
+#%{suse_styles_dir}/suse2020/*
+#%{suse_styles_dir}/suse2020-ns/*
 
-# Catalogs
+# catalogs
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
 
-# Fonts
+# fonts
 %{_ttfontsdir}/*
 
-# Documentation
+# documentation
 %doc %{_defaultdocdir}/%{name}/*
 
-#----------------------
 
 %changelog

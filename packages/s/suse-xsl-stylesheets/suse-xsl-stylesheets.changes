@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May 14 20:38:52 UTC 2020 - Stefan Knorr <sknorr@suse.com>
+
+- Stable release of the SUSE XSL stylesheets 2.0.16:
+  https://github.com/openSUSE/suse-xsl/releases/tag/2.0.16
+
+- General:
+  - Use consistent label for `question`s in `qandaentry`s
+    (bsc#1162324)
+
+- HTML:
+  - Allow copying content of screens to the clipboard
+  - Support for issue templates in report-bug links
+  - Share buttons: Use LinkedIn instead of Google+, use oldschool
+    "mailto:" link instead of e-mail form on suse.com
+  - Fix issues where we got duplicate section/chapter IDs in HTML
+    output (#269)
+  - Add permalinks to more output elements (such as chapters)
+  - Add og:... tags to HTML pages, for improved social sharing
+  - Allow including external JS with new parameters external.js
+    (always include) and external.js.onlineonly (only include when
+    on non-"file:" URL)
+  - Stop relying on negative margins in CSS that were causing
+    overlaid elements and other ugly experience issue
+  - Fix closing behavior of mobile menu
+  - Minor CSS improvements
+  - Update SUSE footer link URLs
+  - Open clicked images in new tab/window by default
+  - Stop adding "Abstract" titles over abstracts
+
+- PDF:
+  - Fix layout regressions that occurred after libxml bug fixes:
+    admon titles, book titles, imprint text (#369)
+  - Change imprint address to SUSE LLC Provo
+
+- Other:
+  - Repo cleanup
+  - Makefile simplifications
+  - Set up .gitattributes for packaging
+
+-------------------------------------------------------------------
 Mon Nov 25 10:43:29 UTC 2019 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.0.15
 
 Stable release of the SUSE XSL stylesheets 2.0.15:

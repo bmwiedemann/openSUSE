@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <!-- Switcheroo below two lines before properly releasing! -->
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">git@github.com:openSUSE/suse-xsl.git</param>
+    <param name="scm">git</param>
+    <param name="revision">2.0.16</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
