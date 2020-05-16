@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu May 14 08:32:49 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#223
+- udevadm is in /usr/bin (bsc#1171587)
+- 7.0.16
+
+--------------------------------------------------------------------
 Thu Apr 30 15:24:12 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#222
