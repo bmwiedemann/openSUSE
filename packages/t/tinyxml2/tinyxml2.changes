@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 08:08:04 UTC 2020 - pgajdos@suse.com
+
+- %{_libexecdir} is now /usr/libexec, so do not use it where
+  /usr/lib is intended
+
+-------------------------------------------------------------------
 Fri Dec 29 00:53:20 UTC 2017 - jengelh@inai.de
 
 - Remove rhetoric write style from description.
