@@ -1,7 +1,7 @@
 #
 # spec file for package dub
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with dcompiler_dmd
 %endif
 Name:           dub
-Version:        1.16.0
+Version:        1.20.0
 Release:        0
 Summary:        Package manager and meta build tool for the D programming language
 License:        MIT
@@ -76,7 +76,7 @@ mkdir -p %{buildroot}%{_bindir}/
 install -D -m 755 bin/%{name} %{buildroot}%{_bindir}/
 
 %files
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 
