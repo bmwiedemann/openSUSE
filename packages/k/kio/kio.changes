@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 15 17:03:12 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-service-file-specifying-Run-in-terminal-giving-error.patch
+  to fix starting services that use "Run in terminal" (kde#421374)
+- Add CopyJob-Check-if-destination-dir-is-a-symlink.patch to fix
+  copying files to symlinked folders (kde#421213)
+
+-------------------------------------------------------------------
 Sun May  3 09:40:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.70.0

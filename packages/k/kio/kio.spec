@@ -37,6 +37,10 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-service-file-specifying-Run-in-terminal-giving-error.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         CopyJob-Check-if-destination-dir-is-a-symlink.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
