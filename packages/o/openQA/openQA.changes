@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 17 03:25:21 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1589554725.a1ad83f83:
+  * Allow hidden keys in job template YAML
+  * Return error when creating a needle only contains ocr area
+  * Do not share controllers as base classes between micro services
+  * Move actions and helpers used by multiple micro services into the OpenQA::Shared namespace
+  * Remove more dead code
+  * WebAPI needs the developer controller
+  * Remove unnecessary referer check
+  * Separate OpenQA::LiveHandler and OpenQA::WebAPI code a bit more
+  * Add help for 'fetchneedles', 'openqa-bootstrap', 'openqa-bootstrap-container'
+  * Add '--help' for script/configure-web-proxy
+
+-------------------------------------------------------------------
 Thu May 14 19:25:00 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1589385688.c7582131b:
