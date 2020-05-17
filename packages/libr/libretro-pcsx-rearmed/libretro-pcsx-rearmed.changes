@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun May 10 07:12:59 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200507:
+  * Move guncon options to update_variables
+  * Fixup update_variables
+  * Fix some edge case where core can freeze upon loading content
+  * Automatically disable lightrec when no bios is present, take 2
+  * Revert "Automatically disable lightrec when no bios is present"
+  * Automatically disable lightrec when no bios is present
+  * cdriso: fix a disk switching deadlock
+  * Fixed bug where MSB of a 15-bit BGR color could corrupt green value. Also added documentation.
+  * Clean up indentation / add comments for assembly functions
+  * (3DS) Disable dithering by default
+  * Preserve uSrc MSB across lighting and blending
+  * WIP: Add ARM-assembly versions of lighting and blending
+  * [3DS] Tweak compile-time options to increase performance
+  * Add async CD access
+  * Revert "(3DS) Set pthread stack size to 12MB - possible solution for crashes"
+  * Fix dynarec crashes on 3DS
+  * Fix second instance runahead without breaking reset
+  * Revert "Use a more lightweight reset method for lightrec"
+  * Use a more lightweight reset method for lightrec
+  * Add fallback addresses so second instance runahead can work
+  * (3DS) Set pthread stack size to 12MB - possible solution for crashes
+  * Replace existing gte_divider with MAME's version
+  * Silence some unused variable warnings
+  * Take out this override for OSX
+  * Buildfix
+  * gte_neon: fix compile under clang's assembler
+  * add some missing license headers
+  * gte_neon: fix compile under clang's assembler
+  * License these files as MIT
+  * menu: fix a buffer overflow
+  * cdrom: add missing BCD->int convert in cdrFreeze()
+  * gpulib: fix out-of-bounds reads in do_cmd_buffer()
+  * Fix corrupted memory card saves when using HLE
+
+-------------------------------------------------------------------
 Mon Feb 10 17:49:16 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200209:

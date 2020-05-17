@@ -17,7 +17,7 @@
 
 
 Name:           libretro-pcsx-rearmed
-Version:        0~git20200209
+Version:        0~git20200507
 Release:        0
 Summary:        ARM optimized PCSX core for PlayStation emulation
 License:        GPL-2.0-only
