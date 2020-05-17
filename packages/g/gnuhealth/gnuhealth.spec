@@ -21,7 +21,7 @@
 %define         majorver 3.6
 Name:           gnuhealth
 
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 
 # List of additional build dependencies
@@ -43,8 +43,6 @@ Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
 Patch0:         shebang.diff
-Patch1:         lab1.diff
-Patch2:         lab2.diff
 
 BuildArch:      noarch
 
@@ -108,8 +106,6 @@ This package provides the interface to Orthanc
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 cp %{S:1} .
 cp %{S:2} .
 
