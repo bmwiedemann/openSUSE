@@ -3723,6 +3723,8 @@ unsorted:
   - genius-devel 
   - genius-lang 
   - genromfs 
+  - gensio 
+  - gensio-devel 
   - geoclue2-devel 
   - geocode-glib-devel 
   - geoipupdate 
@@ -9349,6 +9351,7 @@ unsorted:
   - libgenders0 
   - libgendersplusplus2 
   - libgeners0 
+  - libgensio0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos-3_8_1 
   - libgeos_c1 
@@ -9537,7 +9540,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_101 
+  - libgsoap-2_8_102 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue1-32bit: [x86_64] 
@@ -14227,7 +14230,6 @@ unsorted:
   - mono-data-sqlite 
   - mono-devel 
   - mono-extras 
-  - mono-libkolabxml1 
   - mono-locale-extras 
   - mono-mvc 
   - mono-reactive 
@@ -18519,7 +18521,6 @@ unsorted:
   - python-nlopt 
   - python-notmuch-doc 
   - python-novaclient-doc 
-  - python-obexftp 
   - python-octaviaclient-doc 
   - python-openstack-doc-tools 
   - python-openstackclient-doc 
@@ -19725,6 +19726,7 @@ unsorted:
   - python3-ged4py 
   - python3-geis 
   - python3-genders 
+  - python3-gensio 
   - python3-genty 
   - python3-geographiclib 
   - python3-geoip2 
@@ -20298,6 +20300,7 @@ unsorted:
   - python3-oauth2client-flask 
   - python3-oauth2client-gce 
   - python3-oauthlib: [i586] 
+  - python3-obexftp 
   - python3-objgraph 
   - python3-oci-sdk 
   - python3-oct2py 
@@ -21619,7 +21622,6 @@ unsorted:
   - rabbitmq-java-client 
   - rabbitmq-server 
   - rabbitmq-server-plugins 
-  - racer 
   - racket 
   - racket-devel 
   - racket-doc 
@@ -32501,6 +32503,7 @@ unsorted:
   - ttf-converter 
   - ttf2pt1 
   - tudu 
+  - tuimoji 
   - tuladha-jejeg-fonts 
   - tumbler-devel 
   - tumbler-doc 
@@ -33080,6 +33083,7 @@ unsorted:
   - vim-plugin-utl 
   - vim-plugin-vimwiki 
   - vim-plugin-zoomwin 
+  - vim-small 
   - vimb 
   - vino 
   - vino-lang 
