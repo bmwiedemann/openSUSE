@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 08:42:14 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Allow regular users to execute makeweb (bsc#1171580)
+  * Set permissions to 2751
+
+-------------------------------------------------------------------
 Mon Feb  3 16:40:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

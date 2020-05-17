@@ -158,7 +158,7 @@ ln -s %{buildroot}%{_initddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
 %doc README config.h
 %{serverroot}/htdocs/*
 %attr(775, root, www) %{serverroot}/htdocs/users
-%verify(not mode) %attr(2750, root, www) %{_bindir}/makeweb
+%verify(not mode) %attr(2751, root, www) %{_bindir}/makeweb
 %{_bindir}/htpasswd
 %{_sbindir}/*
 %{_mandir}/*/*
