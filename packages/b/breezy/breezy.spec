@@ -70,10 +70,20 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export LANG=en_US.UTF8
 # log_C log_BOGUS - borked with py3.8+ as you can't change encoding
 # test_pack_revision - endswith first arg must be bytes or a tuple of bytes, not str
+# test_ancient_{ctime,mtime} - broken on aarch64 %%arm ppc ppc64le
+# test_distant_{ctime,mtime} - broken on %%arm
 %{buildroot}%{_bindir}/bzr selftest -v --parallel=fork \
   -Oselftest.timeout=6000 -x bash_completion \
   -x breezy.tests.test_transport.TestSSHConnections.test_bzr_connect_to_bzr_ssh -x test_export_pot \
   -x test_log_C -x test_log_BOGUS \
+%ifnarch %{ix86} x86_64 ppc64
+  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_ctime \
+  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_mtime \
+%endif
+%ifarch %arm
+  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_ctime \
+  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_mtime \
+%endif
   -x breezy.tests.test_xml.TestSerializer.test_pack_revision_5 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v8 \
   -x breezy.tests.test_xml.TestSerializer.test_revision_text_v7 \

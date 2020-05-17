@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 11:41:27 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable test_ancient_{ctime,mtime} tests as they are known
+  to be broken on aarch64 %arm ppc ppc64le s390x
+- Disable test_distant_{ctime,mtime} on %arm
+
+-------------------------------------------------------------------
 Tue Apr  7 08:40:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - License: GPL-2.0-or-later. Updated as identified by legal review
