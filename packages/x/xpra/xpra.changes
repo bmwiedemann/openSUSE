@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 17 16:39:00 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.1
+  * fix missing content-type for some windows
+  * fix GTK server crash on exit
+  * fix compatibility with newer versions of uglifyjs
+  * fix ssh session start and attach on Posix systems
+  * fix 'xpra send-file' to use absolute file paths
+  * fix MacOS shadow servers failing to accept connections
+
+-------------------------------------------------------------------
 Sun May 10 18:10:53 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.0
