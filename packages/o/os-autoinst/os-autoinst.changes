@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 17 03:24:42 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1589560350.f30cc856:
+  * t: Import stderr_from
+  * Use colors in all log calls if colors are available
+  * t: Simplify 15-logging.t with Test::Output
+  * Reduce code duplication in bmwqemu::init_logger
+  * Simplify logger init in bmwqemu
+  * Slightly simplify backends ipmi+svirt
+  * t: Delete obsolete comment in 20-openqa-benchmark-stopwatch-utils.t
+  * Delete unused imports
+  * Fix sporadic failures in t/17-basetest.t
+  * Fix sporadic failures in t/17-basetest.t
+  * Write backend termination message to base_state.json
+  * Move Dockerfile for CI testing from openQA repo
+  * Add retries for 'qemu-img create' commands which fail sometimes for unknown reason
+
+-------------------------------------------------------------------
 Thu May 14 12:33:35 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1589459603.638a25e2:
