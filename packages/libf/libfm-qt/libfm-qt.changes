@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 17 07:03:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Changed "logout" to "session" in the password dialog because
+    a keyring session may not be the same as a desktop session.
+
+-------------------------------------------------------------------
 Mon May 11 13:46:10 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Use both license files

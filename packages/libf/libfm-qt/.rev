@@ -174,4 +174,14 @@
     <comment></comment>
     <requestid>802771</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>281147f4579ee8bd22c80f6051c7b4b5</srcmd5>
+    <version>0.15.1</version>
+    <time>1589751804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Changed &quot;logout&quot; to &quot;session&quot; in the password dialog because
+    a keyring session may not be the same as a desktop session.</comment>
+    <requestid>806107</requestid>
+  </revision>
 </revisionlist>

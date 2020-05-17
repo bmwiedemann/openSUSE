@@ -17,7 +17,7 @@
 
 
 Name:           libfm-qt
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Library providing components to build desktop file managers
 License:        LGPL-2.1-or-later AND BSD-3-Clause
