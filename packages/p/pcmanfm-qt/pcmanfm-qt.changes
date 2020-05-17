@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 17 07:07:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fixed remounting of remote folders with their bookmarks under
+    special circumstances.
+  * Prevented a total freeze on mounting encrypted volumes when
+    auto-mounting is enabled.
+  * Added an option to disable file tooltips.
+  * Changed the About link to pcmanfm-qt's GitHub page.
+  * Safeguard against null images with multi-screen wallpapers.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:24:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed pcmanfm-qt.keyring to tsujan's key

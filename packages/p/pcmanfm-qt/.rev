@@ -452,4 +452,19 @@
     <comment></comment>
     <requestid>798534</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>262948481fe3ee7572e174f12389234e</srcmd5>
+    <version>0.15.1</version>
+    <time>1589751808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Fixed remounting of remote folders with their bookmarks under
+    special circumstances.
+  * Prevented a total freeze on mounting encrypted volumes when
+    auto-mounting is enabled.
+  * Added an option to disable file tooltips.
+  * Changed the About link to pcmanfm-qt's GitHub page.
+  * Safeguard against null images with multi-screen wallpapers.</comment>
+    <requestid>806109</requestid>
+  </revision>
 </revisionlist>
