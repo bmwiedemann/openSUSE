@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 15 20:12:57 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- update upstream references:
+  features-accept-long-legacy-flag-names-when-setting-.patch
+  netlink-show-netlink-error-even-without-extack.patch
+  netlink-use-genetlink-ops-information-to-decide-abou.patch
+  refactor-interface-between-ioctl-and-netlink-code.patch
+
+-------------------------------------------------------------------
+Tue May 12 21:27:12 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- add fixes and improvements originally intended for 5.6:
+  netlink-show-netlink-error-even-without-extack.patch
+  features-accept-long-legacy-flag-names-when-setting-.patch
+  refactor-interface-between-ioctl-and-netlink-code.patch
+  netlink-use-genetlink-ops-information-to-decide-abou.patch
+
+-------------------------------------------------------------------
+Tue May 12 21:08:55 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- Update to new upstream release 5.6
+  * basic infrastructure for netlink kernel interface
+  * netlink: support "ethtool <dev>"
+  * netlink: support "ethtool -s <dev> ..."
+  * netlink: support "ethtool -P <dev>"
+  * netlink: monitor support
+  * add --debug option
+  * netlink: pretty printing of netlink messages
+- add libmnl build time dependency
+- fix SLE12 build:
+  netlink-fix-build-warnings.patch
+- minor specfile cleanup
+
+-------------------------------------------------------------------
 Mon Jan 13 11:46:41 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - Update to new upstream release 5.4

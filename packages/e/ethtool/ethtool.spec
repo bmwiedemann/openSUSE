@@ -1,7 +1,7 @@
 #
 # spec file for package ethtool
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,27 @@
 
 
 Name:           ethtool
-Version:        5.4
+Version:        5.6
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-Url:            http://kernel.org/pub/software/network/ethtool/
+URL:            https://www.kernel.org/pub/software/network/ethtool/
 
 #Git-Clone:	git://git.kernel.org/pub/scm/network/ethtool/ethtool
-Source:         http://kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.xz
-Source2:        http://kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.sign
+Source:         https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.xz
+Source2:        https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.sign
 Source3:        %{name}.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libmnl)
+
+Patch1:         netlink-fix-build-warnings.patch
+Patch2:         netlink-show-netlink-error-even-without-extack.patch
+Patch3:         features-accept-long-legacy-flag-names-when-setting-.patch
+Patch4:         refactor-interface-between-ioctl-and-netlink-code.patch
+Patch5:         netlink-use-genetlink-ops-information-to-decide-abou.patch
 
 %description
 Ethtool is a small utility for examining and tuning ethernet-based
@@ -37,6 +45,11 @@ network interfaces.  See the man page for more details.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 export CFLAGS="%optflags -W -Wall -Wstrict-prototypes -Wformat-security -Wpointer-arith -Wno-missing-field-initializers"
