@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-lxqt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
@@ -66,6 +66,7 @@ Requires:       pattern() = x11
 Recommends:     pattern() = multimedia
 # non core packages belonging to LXQt organization
 Recommends:     pcmanfm-qt
+Recommends:     lxqt-archiver
 Recommends:     pavucontrol-qt
 Recommends:     qterminal
 Recommends:     obconf-qt

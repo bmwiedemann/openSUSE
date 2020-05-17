@@ -85,4 +85,12 @@
   Paper doesn't have yast icons yet.</comment>
     <requestid>770863</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>fd4a76634dd8e4fa461db75ec9d938d2</srcmd5>
+    <version>20170319</version>
+    <time>1589751810</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new lxqt-archiver to recommends</comment>
+    <requestid>806112</requestid>
+  </revision>
 </revisionlist>
