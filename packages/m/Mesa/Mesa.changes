@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 09:52:07 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to Mesa 20.0.7
+  * most fixes in Radv, but there are fixes all over the tree
+
+-------------------------------------------------------------------
 Mon May  4 13:47:59 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - avoid build error PowerPC, using gnu++14 (not gnu++11)

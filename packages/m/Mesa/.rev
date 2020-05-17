@@ -4115,4 +4115,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>800151</requestid>
   </revision>
+  <revision rev="380" vrev="252">
+    <srcmd5>c036429522da5829699dd9d3b6464061</srcmd5>
+    <version>unknown</version>
+    <time>1589751767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.7
+  * most fixes in Radv, but there are fixes all over the tree</comment>
+    <requestid>806009</requestid>
+  </revision>
 </revisionlist>
