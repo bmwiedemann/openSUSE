@@ -499,7 +499,7 @@ Prefer: libOpenSceneGraph-devel libOpenThreads-devel
 Prefer: -scala-bootstrap -scala-bootstrap-swing -ant-scala-bootstrap
 Prefer: -maven-compiler-plugin-bootstrap -maven-resources-plugin-bootstrap -maven-jar-plugin-bootstrap
 Prefer: -maven-javadoc-plugin-bootstrap -maven-plugin-plugin-bootstrap -maven-failsafe-plugin-bootstrap
-Prefer: -maven-surefire-plugin-bootstrap -maven-surefire-report-plugin-bootstrap
+Prefer: -maven-surefire-plugin-bootstrap -maven-surefire-report-plugin-bootstrap -stringtemplate4-bootstrap
 
 # have choice for mingw32-unistd-pthread-devel needed by mingw32-headers: mingw32-headers-dummy-pthread mingw32-winpthreads-devel
 Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
