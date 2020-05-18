@@ -81,7 +81,7 @@ Substitute: build-packages:docker !systemd-mini !udev-mini !krb5-mini !libsystem
 # Podman based image building
 Substitute: system-packages:podman kmod kernel-default podman buildah createrepo_c zypper
 
-Substitute: build-packages:kiwi python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini
+Substitute: build-packages:kiwi python3-kiwi !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !libudev-mini1 !krb5-mini !gettext-tools-mini !cmake-mini !systemd-mini-sysvinit !dummy-release !libunbound-devel-mini !gio-branding-upstream
 
 # To build ISO images
 Substitute: build-packages:iso !systemd-mini !udev-mini !krb5-mini !libsystemd0-mini !systemd-mini-sysvinit
