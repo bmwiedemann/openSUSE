@@ -43,4 +43,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>733519</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>545716a7f554799281ddd0588a1043ac</srcmd5>
+    <version>1.2.0</version>
+    <time>1589892562</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+</comment>
+    <requestid>807047</requestid>
+  </revision>
 </revisionlist>

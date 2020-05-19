@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 20:40:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Thu Sep 19 19:28:22 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.2.0: No upstream changelog available, extracted from the commits:

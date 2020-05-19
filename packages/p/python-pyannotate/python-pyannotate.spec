@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyannotate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions
 Requires:       python-six >= 1.11.0
 Requires:       python-typing
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mypy_extensions}
@@ -53,15 +55,22 @@ arguments and return types observed at runtime.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyannotate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pyannotate
+
+%postun
+%python_uninstall_alternative pyannotate
+
 %files %{python_files}
 %doc README.md example/
 %license LICENSE
-%python3_only %{_bindir}/pyannotate
+%python_alternative %{_bindir}/pyannotate
 %{python_sitelib}/*
 
 %changelog
