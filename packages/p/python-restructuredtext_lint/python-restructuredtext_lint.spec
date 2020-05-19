@@ -1,7 +1,7 @@
 #
 # spec file for package python-restructuredtext_lint
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,18 @@ Release:        0
 Summary:        Linter for reStructuredText
 License:        Unlicense
 Group:          Development/Languages/Python
-Url:            https://github.com/twolfson/restructuredtext-lint
+URL:            https://github.com/twolfson/restructuredtext-lint
 Source:         https://files.pythonhosted.org/packages/source/r/restructuredtext_lint/restructuredtext_lint-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-docutils >= 0.11
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils >= 0.11}
 # /SECTION
-Requires:       python-docutils >= 0.11
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -52,6 +53,8 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rst-lint
+%python_clone -a %{buildroot}%{_bindir}/restructuredtext-lint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,11 +62,19 @@ find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 $python -m unittest discover
 }
 
+%post
+%python_install_alternative rst-lint
+%python_install_alternative restructuredtext-lint
+
+%postun
+%python_uninstall_alternative rst-lint
+%python_uninstall_alternative restructuredtext-lint
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license UNLICENSE
-%python3_only %{_bindir}/restructuredtext-lint
-%python3_only %{_bindir}/rst-lint
+%python_alternative %{_bindir}/restructuredtext-lint
+%python_alternative %{_bindir}/rst-lint
 %{python_sitelib}/*
 
 %changelog
