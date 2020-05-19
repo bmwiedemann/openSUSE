@@ -23,7 +23,6 @@ Version:        2.1.1
 Release:        0
 Summary:        Python packages license list
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/raimon49/pip-licenses
 Source:         https://files.pythonhosted.org/packages/source/p/pip-licenses/pip-licenses-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -31,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PrettyTable}
@@ -57,16 +58,23 @@ sed -i '1{/^#!/d}' piplicenses.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pip-licenses
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
-PYTHONPATH=%{buildroot}%{python3_sitelib} %{buildroot}%{_bindir}/pip-licenses -s
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/pip-licenses-%{$python_bin_suffix} -s
+
+%post
+%python_install_alternative pip-licenses
+
+%postun
+%python_uninstall_alternative pip-licenses
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/pip-licenses
+%python_alternative %{_bindir}/pip-licenses
 %{python_sitelib}/*
 
 %changelog
