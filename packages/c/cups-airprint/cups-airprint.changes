@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 17 15:14:05 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- python3.patch: Port script to python3
+- pdf-support.patch: Fix printer discovery
+- Add minimal build check to verify the script can run at all
+
+-------------------------------------------------------------------
 Tue Feb 23 11:03:57 CET 2016 - jsmeix@suse.de
 
 - Inserted a new section "2. CAVEATS" in README.SUSE
