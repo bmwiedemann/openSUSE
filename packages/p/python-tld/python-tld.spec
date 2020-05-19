@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six >= 1.9
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
@@ -57,15 +59,22 @@ A list of TLD names is taken from Mozillas public suffix list:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/update-tld-names
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative update-tld-names
+
+%postun
+%python_uninstall_alternative update-tld-names
+
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
 %license LICENSE_GPL2.0.txt LICENSE_LGPL_2.1.txt
-%python3_only %{_bindir}/update-tld-names
+%python_alternative %{_bindir}/update-tld-names
 %{python_sitelib}/*
 
 %changelog
