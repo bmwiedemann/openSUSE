@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 20:11:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use %python3_only command, but properly use alternatives.
+
+-------------------------------------------------------------------
 Tue Mar 24 10:08:53 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.5

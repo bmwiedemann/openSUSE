@@ -76,6 +76,8 @@ Requires:       python-tomlkit >= 0.5.11
 Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -91,6 +93,7 @@ Python dependency management and packaging made easy.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/poetry
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -101,10 +104,16 @@ source testenv/bin/activate
 # discussion on this.
 %pytest -k 'not test_default_with_excluded_data'
 
+%post
+%python_install_alternative poetry
+
+%postun
+%python_uninstall_alternative poetry
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/poetry
+%python_alternative %{_bindir}/poetry
 
 %changelog
