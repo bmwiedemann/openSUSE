@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed May 13 04:05:54 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2004.30
+  * Lots of changes, see https://github.com/microsoft/cascadia-code/releases/tag/v2004.30
+- Install OTF version of fonts
+- Cleanup spec file
+- Add LICENSE.txt and OFL-FAQ.txt
+
+-------------------------------------------------------------------
+Fri Oct  4 17:53:23 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- v1910.04
+  * This release contains the addition of the Latin-1 character set and box drawing glyphs.
+
+-------------------------------------------------------------------
+Thu Sep 19 14:24:05 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Initial release v1909.16
+  * This release introduces the initial version of Cascadia Code, under the SIL Open Font license.
