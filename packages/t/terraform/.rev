@@ -151,4 +151,20 @@
     <comment></comment>
     <requestid>788260</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c6f75f8b78032372a4bd11c4a169169</srcmd5>
+    <version>0.12.25</version>
+    <time>1589892607</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.25:
+  NOTES:
+  * backend/s3: Region validation now automatically supports the new af-south-1 (Africa (Cape Town)) region.
+  ENHANCEMENTS:
+  * backend/s3: Support automatic region validation for af-south-1 (#24744)
+  * backend/remote: Add support for force push to remote backend (#24884)
+  BUG FIXES:
+  * core: Destroy provisioners should not evaluate for_each expressions (#24163)
+  * core: Fix races in GetVariableValue (#24599)</comment>
+    <requestid>807147</requestid>
+  </revision>
 </revisionlist>

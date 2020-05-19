@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 07:28:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.12.25:
+  NOTES:
+  * backend/s3: Region validation now automatically supports the new af-south-1 (Africa (Cape Town)) region.
+  ENHANCEMENTS:
+  * backend/s3: Support automatic region validation for af-south-1 (#24744)
+  * backend/remote: Add support for force push to remote backend (#24884)
+  BUG FIXES:
+  * core: Destroy provisioners should not evaluate for_each expressions (#24163)
+  * core: Fix races in GetVariableValue (#24599)
+
+-------------------------------------------------------------------
 Tue Mar 24 06:46:42 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Update to 0.12.24

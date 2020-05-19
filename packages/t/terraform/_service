@@ -1,10 +1,10 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/hashicorp/terraform.git</param>
+    <param name="url">https://github.com/hashicorp/terraform</param>
     <param name="scm">git</param>
     <param name="filename">terraform</param>
-    <param name="versionformat">0.12.24</param>
-    <param name="revision">v0.12.24</param>
+    <param name="versionformat">0.12.25</param>
+    <param name="revision">v0.12.25</param>
     <param name="exclude">.git</param>
   </service>
   <service name="tar" mode="disabled"/>
