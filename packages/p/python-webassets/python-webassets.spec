@@ -36,6 +36,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,16 +57,23 @@ sed -i -e 's:e.message:e.args[0]:g' tests/test_filters.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/webassets
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG="en_US.UTF8"
 %pytest
 
+%post
+%python_install_alternative webassets
+
+%postun
+%python_uninstall_alternative webassets
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
-%python3_only %{_bindir}/webassets
+%python_alternative %{_bindir}/webassets
 %{python_sitelib}/*
 
 %changelog
