@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 10:23:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.2:
+  + Various fixes around boost.
+  + More robust cmake version detection.
+  + Various GCC10 related fixes.
+- Drop meson-gcc10.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu May 14 07:32:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add meson-gcc10.patch: Fix test suite when using gcc 10.

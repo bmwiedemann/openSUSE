@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.54.1
+Version:        0.54.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -49,8 +49,6 @@ Patch3:         meson-suse-fix-llvm-3.8.patch
 Patch4:         meson-fix-gcc48.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
 Patch5:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM dimstar@opensuse.org -- Fix test suite with GCC 10
-Patch6:         meson-gcc10.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -173,7 +171,6 @@ This package provides support for meson.build files in Vim.
 %if !%{with setuptools}
 %patch5 -p1
 %endif
-%patch6 -p1
 
 # We do not have gmock available at this moment - can't run the test suite for it
 rm -r "test cases/frameworks/3 gmock" \
