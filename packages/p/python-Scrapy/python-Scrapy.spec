@@ -64,6 +64,8 @@ Requires:       python-service_identity >= 16.0.0
 Requires:       python-setuptools
 Requires:       python-w3lib >= 1.17.2
 Requires:       python-zope.interface >= 4.1.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -87,12 +89,12 @@ sed -i -e 's:= python:= python3:g' docs/Makefile
 %build
 %python_build
 pushd docs
-make %{?_smp_mflags} html && rm -r build/html/.buildinfo
+%make_build html && rm -r build/html/.buildinfo
 popd
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/scrapy
+%python_clone -a %{buildroot}%{_bindir}/scrapy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -108,12 +110,17 @@ skiplist="$skiplist and not CrawlerTestCase"
     -W ignore::DeprecationWarning \
     tests}
 
+%post
+%python_install_alternative scrapy
+
+%postun
+%python_uninstall_alternative scrapy
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
 %{python_sitelib}/*
-%{_bindir}/scrapy-%{python_bin_suffix}
-%python3_only %{_bindir}/scrapy
+%python_alternative %{_bindir}/scrapy
 
 %files -n %{name}-doc
 %doc docs/build/html
