@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:52 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Sep  5 10:38:13 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
 - Initial packaging (version 0.4.9)
