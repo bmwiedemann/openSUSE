@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source /etc/sysconfig/network/config
+
+if [ -n "${NETCONFIG_NIS_STATIC_DOMAIN}" ] && [ "${NETCONFIG_NIS_SETDOMAINNAME}" = "yes" ] && [ -x /usr/bin/nisdomainname ]; then
+    nisdomainname ${NETCONFIG_NIS_STATIC_DOMAIN}
+    exit $?
+fi
+
+exit 0

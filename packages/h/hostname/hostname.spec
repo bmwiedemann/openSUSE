@@ -23,7 +23,11 @@ Summary:        Utility to Set/Show the Host Name or Domain Name
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Url:            https://tracker.debian.org/pkg/hostname
-Source:         http://http.debian.net/debian/pool/main/h/%{name}/%{name}_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        http://http.debian.net/debian/pool/main/h/%{name}/%{name}_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        nis-domainname
+Source2:        nis-domainname.service.in
+BuildRequires:  gcc
+BuildRequires:  systemd-rpm-macros
 # net-tools requires hostname, but we know we do not rely on ourselves to build
 #!BuildIgnore:  hostname
 
@@ -33,6 +37,7 @@ name, and to display or set its hostname or NIS domain name.
 
 %prep
 %setup -q -n %{name}
+cp %{SOURCE1} %{SOURCE2} .
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -D_GNU_SOURCE"
@@ -47,6 +52,17 @@ for prog in dnsdomainname domainname ypdomainname nisdomainname; do
     ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/$prog
     ln -sf hostname.1 %{buildroot}%{_mandir}/man1/${prog}.1
 done
+sed -e "s|@LIBEXECDIR|%{_libexecdir}|g" nis-domainname.service.in > nis-domainname.service
+install -m 0755 -d %{buildroot}%{_libexecdir}/%{name}
+install -m 0755 -d %{buildroot}%{_unitdir}
+install -p -m 0755 nis-domainname         %{buildroot}%{_libexecdir}/%{name}
+install -p -m 0644 nis-domainname.service %{buildroot}%{_unitdir}
+
+%post
+%systemd_post nis-domainname.service
+
+%preun
+%systemd_preun nis-domainname.service
 
 %files
 %license COPYRIGHT
@@ -66,5 +82,7 @@ done
 %{_mandir}/man1/dnsdomainname.1%{ext_man}
 %{_mandir}/man1/nisdomainname.1%{ext_man}
 %{_mandir}/man1/ypdomainname.1%{ext_man}
+%{_unitdir}/nis-domainname.service
+%{_libexecdir}/%{name}/
 
 %changelog
