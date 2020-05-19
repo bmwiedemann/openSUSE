@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
@@ -60,20 +62,42 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-repl
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-index-rebuild
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-restore
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-export
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-dump
+%python_clone -a %{buildroot}%{_bindir}/rethinkdb-import
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative rethinkdb-repl
+%python_install_alternative rethinkdb-index-rebuild
+%python_install_alternative rethinkdb-restore
+%python_install_alternative rethinkdb-export
+%python_install_alternative rethinkdb-dump
+%python_install_alternative rethinkdb-import
+
+%postun
+%python_uninstall_alternative rethinkdb-repl
+%python_uninstall_alternative rethinkdb-index-rebuild
+%python_uninstall_alternative rethinkdb-restore
+%python_uninstall_alternative rethinkdb-export
+%python_uninstall_alternative rethinkdb-dump
+%python_uninstall_alternative rethinkdb-import
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/rethinkdb-import
-%python3_only %{_bindir}/rethinkdb-dump
-%python3_only %{_bindir}/rethinkdb-export
-%python3_only %{_bindir}/rethinkdb-restore
-%python3_only %{_bindir}/rethinkdb-index-rebuild
-%python3_only %{_bindir}/rethinkdb-repl
+%python_alternative %{_bindir}/rethinkdb-import
+%python_alternative %{_bindir}/rethinkdb-dump
+%python_alternative %{_bindir}/rethinkdb-export
+%python_alternative %{_bindir}/rethinkdb-restore
+%python_alternative %{_bindir}/rethinkdb-index-rebuild
+%python_alternative %{_bindir}/rethinkdb-repl
 %{python_sitelib}/*
 
 %changelog
