@@ -1,7 +1,7 @@
 #
 # spec file for package python-qrcode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        QR Code image generator
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/lincolnloop/python-qrcode
+URL:            https://github.com/lincolnloop/python-qrcode
 Source:         https://files.pythonhosted.org/packages/source/q/qrcode/qrcode-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module mock}
@@ -32,8 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,16 +52,24 @@ sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_mandir}/man1/qr.1
+%python_clone -a %{buildroot}%{_bindir}/qr
 %fdupes %{buildroot}%{_prefix}
 
 %check
-%python_exec -m pytest -s qrcode
+%pytest -s qrcode
+
+%post
+%python_install_alternative qr qr.1
+
+%postun
+%python_uninstall_alternative qr qr.1
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CHANGES.rst LICENSE README.rst
-%python3_only %{_bindir}/qr
-%python3_only %{_mandir}/man1/qr.1%{?ext_man}
+%license LICENSE
+%doc CHANGES.rst README.rst
+%python_alternative %{_bindir}/qr
+%python_alternative %{_mandir}/man1/qr.1%{?ext_man}
 %{python_sitelib}/*
 
 %changelog
