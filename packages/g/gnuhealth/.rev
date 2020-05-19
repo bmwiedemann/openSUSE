@@ -339,4 +339,12 @@
     <comment>new version</comment>
     <requestid>806125</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>4792a53b39c36d570b238b407313562d</srcmd5>
+    <version>3.6.4</version>
+    <time>1589892381</time>
+    <user>dimstar_suse</user>
+    <comment>update gnuhealth-control</comment>
+    <requestid>807171</requestid>
+  </revision>
 </revisionlist>

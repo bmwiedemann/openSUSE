@@ -24,7 +24,7 @@
 #
 ##############################################################################
 
-VERSION="3.6.3.1-openSUSE"
+VERSION="3.6.4-openSUSE"
 
 TRANSLATE_URL="https://translate.gnusolidario.org"
 GNUHEALTH_DIR=$(rpm -ql gnuhealth | egrep '^/usr/lib/python.\..{1,2}/site-packages$')
@@ -165,7 +165,7 @@ do_backup()
         ${BACKDIR}/backup_${DB}_${BACKDATE}.gz ${BACKDIR}/${BACKUP_NAME} \
         || bailout
      
-    cli_msg "INFO" "Backup successfully written to ${BACKDIR}/${BACKUP_NAME}" | tee -a $INFOFILE
+    cli_msg "INFO" "Backup successfully written to ${BACKDIR}/gnuhealth_${DB}_with_fs_backup_${BACKDATE}.tar" | tee -a $INFOFILE
 #AB - END
 #Remove lock file
     rm $LOCKFILE

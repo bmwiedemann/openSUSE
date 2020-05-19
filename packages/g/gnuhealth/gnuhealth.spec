@@ -32,9 +32,8 @@ BuildRequires:  python3-setuptools
 # For the variables:
 BuildRequires:  trytond
 
-URL:            http://health.gnu.org
-Source0:        %{name}-%{version}.tar.gz
-###http://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
+URL:            https://health.gnu.org
+Source0:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.SUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
@@ -56,6 +55,7 @@ Requires:       python3-PyWebDAV3-GNUHealth
 Requires:       python3-caldav
 Requires:       python3-hl7apy
 Requires:       python3-ldap3
+Requires:       python3-matplotlib
 Requires:       python3-passlib
 Requires:       python3-pyBarcode
 Requires:       python3-qrcode
