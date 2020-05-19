@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
 Requires:       python-idna
 Requires:       python-uritools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs}
@@ -52,15 +54,22 @@ sed -i '1{/^#!/d}' urlextract/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/urlextract
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative urlextract
+
+%postun
+%python_uninstall_alternative urlextract
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/urlextract
+%python_alternative %{_bindir}/urlextract
 %{python_sitelib}/*
 
 %changelog
