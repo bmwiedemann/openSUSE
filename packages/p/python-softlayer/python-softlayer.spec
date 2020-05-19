@@ -47,6 +47,8 @@ Requires:       python-requests >= 2.20.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.7.0
 Requires:       python-urllib3 >= 1.24
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -60,6 +62,8 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/slcli
+%python_clone -a %{buildroot}%{_bindir}/sl
 # do not install tests
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -67,11 +71,19 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 %check
 %pytest
 
+%post
+%python_install_alternative slcli
+%python_install_alternative sl
+
+%postun
+%python_uninstall_alternative slcli
+%python_uninstall_alternative sl
+
 %files %{python_files}
 %license LICENSE
 %doc *.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/sl
-%python3_only %{_bindir}/slcli
+%python_alternative %{_bindir}/sl
+%python_alternative %{_bindir}/slcli
 
 %changelog
