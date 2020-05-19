@@ -1,7 +1,7 @@
 #
 # spec file for package python-titlecase
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,17 @@ Release:        0
 Summary:        Python library to capitalize strings
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/ppannuto/python-titlecase
+URL:            https://github.com/ppannuto/python-titlecase
 Source:         https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nose >= 1.0}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,14 +51,21 @@ York Times Manual of Style, plus some others like 'vs' and 'v'.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/titlecase
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative titlecase
+
+%postun
+%python_uninstall_alternative titlecase
+
 %files %{python_files}
 %doc README.rst
-%python3_only %{_bindir}/titlecase
+%python_alternative %{_bindir}/titlecase
 %{python_sitelib}/*
 
 %changelog
