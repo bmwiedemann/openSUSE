@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-helpdev
-Version:        0.6.10
+Version:        0.7.1
 Release:        0
 Summary:        HelpDev - Extracts information about the Python environment easily
 License:        MIT AND CC-BY-4.0
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/dpizetta/helpdev
 Source0:        https://gitlab.com/dpizetta/helpdev/-/archive/v%{version}/helpdev-v%{version}.tar.gz
-Patch0:         python38.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,7 +43,6 @@ HelpDev - Extracts information about the Python environment easily.
 
 %prep
 %setup -q -n helpdev-v%{version}
-%patch0 -p1
 sed -i '1{\,^#!%{_bindir}/env python,d}' helpdev/*.py
 
 %build

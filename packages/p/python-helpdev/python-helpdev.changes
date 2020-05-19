@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 18 08:11:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.7.1 (fixes issue reported in boo#1135733 #c4):
+  * Fix pipeline, doc8 linting ignores D001, line too long
+  * Add customize function, part of #1
+  * Change _filter to filter_packages and make it public
+  * Improve filter_package explanation
+  * Improve docs
+  * Add check_qt() function
+  * Add check_numbers() function
+  * Enhance help from command line parser
+  * Enhance command line order
+  * Correct mispelling errors
+  * Remove importlib_metadata for Python 3.8+, incoporated into std lib, MR#2
+  * Add MANIFEST.in, part of #9
+  * Improve internal code and linting
+  * Remove support for Python 2.7 and 3.4, closes #8
+
+- There's no 0.7.0 release by upstream.
+
+- Remove patch already included by upstream:
+  * python38.patch
+
+-------------------------------------------------------------------
 Sun Mar  8 03:51:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use proper name for importlib-metadata
