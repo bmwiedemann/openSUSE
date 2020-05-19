@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pytest-black
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Black format checking plugin for pytest
 License:        MIT
