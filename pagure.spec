@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.9.1
+Version:            5.10.0
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
@@ -41,10 +41,9 @@ Source1:            https://raw.githubusercontent.com/fedora-infra/python-fedora
 Source10:           pagure-README.SUSE
 
 # Backports from upstream
+## Backport fix to make stats page work
+Patch0001:          0001-Make-the-stats-page-use-the-new-stats-API-endpoint.patch
 
-# Not yet upstreamable patches
-## Allow Pagure to use SQLAlchemy >= 1.3.0
-Patch0501:          0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch
 
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
@@ -54,6 +53,7 @@ BuildArch:          noarch
 
 
 BuildRequires:      apache2
+BuildRequires:      nginx
 BuildRequires:      fdupes
 BuildRequires:      systemd-rpm-macros
 BuildRequires:      python3-devel
@@ -68,6 +68,7 @@ BuildRequires:      python3-blinker
 BuildRequires:      python3-chardet
 BuildRequires:      python3-cryptography
 BuildRequires:      python3-docutils
+BuildRequires:      python3-email_validator
 BuildRequires:      python3-Flask
 BuildRequires:      python3-Flask-WTF
 BuildRequires:      python3-Markdown
@@ -98,6 +99,7 @@ Requires:           python3-celery
 Requires:           python3-chardet
 Requires:           python3-cryptography
 Requires:           python3-docutils
+Requires:           python3-email_validator
 Requires:           python3-Flask
 Requires:           python3-Flask-WTF
 Requires:           python3-Markdown
@@ -114,8 +116,6 @@ Requires:           python3-WTForms
 Requires:           python3-munch
 Requires:           python3-redis
 
-Requires:           apache2-mod_wsgi-python3
-
 # Required for celery
 Requires:           python3-pytz
 
@@ -130,6 +130,11 @@ Recommends:         (python3-psycopg2 if postgresql-server)
 # If using MariaDB/MySQL, the correct driver should be installed
 Recommends:         (python3-PyMySQL if mysql-server)
 
+# If using Apache web server, the correct configuration should be installed
+Recommends:         (%{name}-web-apache-httpd if apache2)
+
+# If using Nginx web server, the correct configuration should be installed
+Recommends:         (%{name}-web-nginx if nginx)
 
 # The default theme is required
 Requires:           %{name}-theme-default
@@ -154,6 +159,28 @@ create/merge pull-requests across or within projects.
 
 For steps on how to set up the system after installing this package,
 please read %{_docdir}/%{name}/README.SUSE.
+
+
+%package            web-apache-httpd
+Summary:            Apache HTTPD configuration for Pagure
+Requires:           %{name} = %{version}-%{release}
+Requires:           apache2-mod_wsgi-python3
+# Apache config moved out to its own subpackage
+Obsoletes:          %{name} < 5.10
+Conflicts:          %{name} < 5.10
+%description        web-apache-httpd
+This package provides the configuration files for deploying
+a Pagure server using the Apache HTTPD server.
+
+
+%package            web-nginx
+Summary:            Nginx configuration for Pagure
+Requires:           %{name} = %{version}-%{release}
+Requires:           nginx
+Requires:           python3-gunicorn
+%description        web-nginx
+This package provides the configuration files for deploying
+a Pagure server using the Nginx web server.
 
 
 %package            theme-upstream
@@ -309,7 +336,11 @@ install -pm 0644 %{SOURCE10} README.SUSE
 
 # Install apache configuration file
 mkdir -p %{buildroot}/%{_sysconfdir}/apache2/vhosts.d
-install -p -m 644 files/pagure.conf %{buildroot}/%{_sysconfdir}/apache2/vhosts.d/pagure.conf
+install -p -m 644 files/pagure-apache-httpd.conf %{buildroot}/%{_sysconfdir}/apache2/vhosts.d/pagure.conf
+
+# Install nginx configuration file
+mkdir -p %{buildroot}/%{_sysconfdir}/nginx/vhosts.d/
+install -p -m 644 files/pagure-nginx.conf %{buildroot}/%{_sysconfdir}/nginx/vhosts.d/pagure.conf
 
 # Install configuration file
 mkdir -p %{buildroot}/%{_sysconfdir}/pagure
@@ -340,10 +371,24 @@ install -p -m 644 files/alembic.ini %{buildroot}/%{_sysconfdir}/pagure/alembic.i
 # Install the alembic revisions
 cp -r alembic %{buildroot}/%{_datadir}/pagure
 
+# Install the systemd file for the web frontend
+mkdir -p %{buildroot}/%{_unitdir}
+install -p -m 644 files/pagure_web.service \
+    %{buildroot}/%{_unitdir}/pagure_web.service
+
+# Install the systemd file for the docs web frontend
+mkdir -p %{buildroot}/%{_unitdir}
+install -p -m 644 files/pagure_docs_web.service \
+    %{buildroot}/%{_unitdir}/pagure_docs_web.service
+
 # Install the systemd file for the worker
 mkdir -p %{buildroot}/%{_unitdir}
 install -p -m 644 files/pagure_worker.service \
     %{buildroot}/%{_unitdir}/pagure_worker.service
+
+# Install the systemd file for the authorized_keys worker
+install -p -m 644 files/pagure_authorized_keys_worker.service \
+    %{buildroot}/%{_unitdir}/pagure_authorized_keys_worker.service
 
 # Install the systemd file for the gitolite worker
 install -p -m 644 files/pagure_gitolite_worker.service \
@@ -418,8 +463,10 @@ sed -e "s|#!/usr/bin/env python|#!%{__python3}|" -i \
 # Switch interpreter for systemd units to correct Python interpreter
 sed -e "s|/usr/bin/python|%{__python3}|g" -i %{buildroot}/%{_unitdir}/*.service
 
-# Change to correct static file path for apache httpd
-sed -e "s/pythonX.Y/python%{python3_version}/g" -i %{buildroot}/%{_sysconfdir}/apache2/vhosts.d/pagure.conf
+# Change to correct static file path for apache httpd and nginx
+sed -e "s/pythonX.Y/python%{python3_version}/g" -i \
+    %{buildroot}/%{_sysconfdir}/apache2/vhosts.d/pagure.conf \
+    %{buildroot}/%{_sysconfdir}/nginx/vhosts.d/pagure.conf
 
 # Make symlinks for default theme packages
 mv %{buildroot}/%{python3_sitelib}/pagure/themes/default %{buildroot}/%{python3_sitelib}/pagure/themes/upstream
@@ -429,6 +476,15 @@ ln -sr %{buildroot}/%{python3_sitelib}/pagure/themes/chameleon %{buildroot}/%{py
 # Run fdupes
 %fdupes %{buildroot}/%{python3_sitelib}
 %fdupes doc/
+
+# Make log directory and files
+mkdir -p %{buildroot}/%{_localstatedir}/log/pagure
+logfiles="web docs_web"
+
+for logfile in $logfiles; do
+   touch %{buildroot}/%{_localstatedir}/log/pagure/access_${logfile}.log
+   touch %{buildroot}/%{_localstatedir}/log/pagure/error_${logfile}.log
+done
 
 # Regenerate clobbered symlinks (Cf. https://pagure.io/pagure/issue/3782)
 runnerhooks="post-receive pre-receive"
@@ -440,7 +496,7 @@ done
 
 # Make the rcFOO symlinks for systemd services
 mkdir -p %{buildroot}/%{_sbindir}
-paguresvcs="api_key_expire_mail ci ev gitolite_worker loadjson logcom milter mirror webhook worker mirror_project_in"
+paguresvcs="api_key_expire_mail ci ev authorized_keys_worker gitolite_worker loadjson logcom milter mirror webhook worker mirror_project_in"
 for paguresvc in $paguresvcs; do
    ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcpagure_$paguresvc
 done
@@ -451,6 +507,7 @@ mkdir -p %{buildroot}/srv/gitolite/pseudo
 mkdir -p %{buildroot}/srv/gitolite/repositories/{,docs,forks,requests,tickets}
 mkdir -p %{buildroot}/srv/gitolite/remotes
 mkdir -p %{buildroot}/srv/gitolite/.gitolite/{conf,keydir,logs}
+mkdir -p %{buildroot}/srv/gitolite/.ssh
 
 # Add empty gitolite config file
 touch %{buildroot}/srv/gitolite/.gitolite/conf/gitolite.conf
@@ -465,16 +522,15 @@ install -p -m 644 files/gitolite3.rc %{buildroot}/srv/gitolite/.gitolite.rc
 echo "Create wsgi rundir if it doesn't exist..."
 mkdir -p /srv/www/run || :
 
-echo "Setting up facls..."
-setfacl -m user:wwwrun:rx --default /srv/gitolite || :
-setfacl -Rdm user:wwwrun:rx /srv/gitolite || :
-setfacl -Rm user:wwwrun:rx /srv/gitolite || :
-
 echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %systemd_post pagure_worker.service
+%systemd_post pagure_authorized_keys_worker.service
 %systemd_post pagure_gitolite_worker.service
 %systemd_post pagure_api_key_expire_mail.timer
 %systemd_post pagure_mirror_project_in.timer
+%post web-nginx
+%systemd_post pagure_web.service
+%systemd_post pagure_docs_web.service
 %post milters
 %tmpfiles_create %{_tmpfilesdir}/%{name}-milter.conf
 %systemd_post pagure_milter.service
@@ -493,9 +549,13 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %preun
 %systemd_preun pagure_worker.service
+%systemd_preun pagure_authorized_keys_worker.service
 %systemd_preun pagure_gitolite_worker.service
 %systemd_preun pagure_api_key_expire_mail.timer
 %systemd_preun pagure_mirror_project_in.timer
+%preun web-nginx
+%systemd_preun pagure_web.service
+%systemd_preun pagure_docs_web.service
 %preun milters
 %systemd_preun pagure_milter.service
 %preun ev
@@ -513,9 +573,13 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %postun
 %systemd_postun_with_restart pagure_worker.service
+%systemd_postun_with_restart pagure_authorized_keys_worker.service
 %systemd_postun_with_restart pagure_gitolite_worker.service
 %systemd_postun pagure_api_key_expire_mail.timer
 %systemd_postun pagure_mirror_project_in.timer
+%postun web-nginx
+%systemd_postun_with_restart pagure_web.service
+%systemd_postun_with_restart pagure_docs_web.service
 %postun milters
 %systemd_postun_with_restart pagure_milter.service
 %postun ev
@@ -533,14 +597,12 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 
 %files
-%doc README.SUSE README.rst UPGRADING.rst doc/ files/gitolite3.rc files/pagure.conf files/pagure.cfg.sample
+%doc README.SUSE README.rst UPGRADING.rst doc/ files/gitolite3.rc files/pagure.cfg.sample
 %license LICENSE
-%config(noreplace) %{_sysconfdir}/apache2/vhosts.d/pagure.conf
 %config(noreplace) %{_sysconfdir}/pagure/pagure.cfg
 %config(noreplace) %{_sysconfdir}/pagure/alembic.ini
 %dir %{_sysconfdir}/pagure/
 %dir %{_datadir}/pagure/
-%config(noreplace) %{_datadir}/pagure/*.wsgi
 %{_datadir}/pagure/*.py*
 %exclude %{_datadir}/pagure/comment_email_milter.py*
 %{_datadir}/pagure/alembic/
@@ -555,6 +617,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{python3_sitelib}/pagure*.egg-info
 %{_bindir}/pagure-admin
 %{_unitdir}/pagure_worker.service
+%{_unitdir}/pagure_authorized_keys_worker.service
 %{_unitdir}/pagure_gitolite_worker.service
 %{_unitdir}/pagure_api_key_expire_mail.service
 %{_unitdir}/pagure_api_key_expire_mail.timer
@@ -562,6 +625,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_unitdir}/pagure_mirror_project_in.timer
 %{_sbindir}/rcpagure_api_key_expire_mail
 %{_sbindir}/rcpagure_worker
+%{_sbindir}/rcpagure_authorized_keys_worker
 %{_sbindir}/rcpagure_gitolite_worker
 %{_sbindir}/rcpagure_mirror_project_in
 # Pagure data content
@@ -569,9 +633,27 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %attr(-,git,git) %dir /srv/gitolite/remotes
 %attr(-,git,git) %dir /srv/gitolite/repositories/{,docs,forks,requests,tickets}
 %attr(-,git,git) %dir /srv/gitolite/.gitolite/{,conf,keydir,logs}
+%attr(750,git,git) %dir /srv/gitolite/.ssh
 %attr(-,git,git) %config(noreplace) /srv/gitolite/.gitolite/conf/gitolite.conf
 %attr(-,git,git) %config(noreplace) /srv/gitolite/.gitolite.rc
 %attr(-,git,git) %dir /srv/www/pagure-releases
+
+
+%files web-apache-httpd
+%license LICENSE
+%doc files/pagure-apache-httpd.conf
+%config(noreplace) %{_sysconfdir}/apache2/vhosts.d/pagure.conf
+%config(noreplace) %{_datadir}/pagure/*.wsgi
+
+
+%files web-nginx
+%license LICENSE
+%doc files/pagure-nginx.conf
+%config(noreplace) %{_sysconfdir}/nginx/vhosts.d/pagure.conf
+%{_unitdir}/pagure_web.service
+%{_unitdir}/pagure_docs_web.service
+%attr(-,git,git) %dir %{_localstatedir}/log/pagure
+%ghost %{_localstatedir}/log/pagure/*.log
 
 
 %files theme-upstream

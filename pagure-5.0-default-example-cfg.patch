@@ -1,6 +1,6 @@
-diff -rup pagure-5.0/files/gitolite3.rc pagure-5.0.cfg-defs/files/gitolite3.rc
---- pagure-5.0/files/gitolite3.rc	2018-08-20 05:28:38.000000000 -0400
-+++ pagure-5.0.cfg-defs/files/gitolite3.rc	2018-09-24 17:29:01.927780974 -0400
+diff -rup pagure/files/gitolite3.rc pagure.cfg-defs/files/gitolite3.rc
+--- pagure/files/gitolite3.rc	2020-05-08 21:32:56.673172022 -0400
++++ pagure.cfg-defs/files/gitolite3.rc	2020-05-08 21:37:03.018641878 -0400
 @@ -16,7 +16,7 @@
  
      # ------------------------------------------------------------------
@@ -10,10 +10,61 @@ diff -rup pagure-5.0/files/gitolite3.rc pagure-5.0.cfg-defs/files/gitolite3.rc
  
      # default umask gives you perms of '0700'; see the rc file docs for
      # how/why you might change this
-diff -rup pagure-5.0/files/pagure.cfg.sample pagure-5.0.cfg-defs/files/pagure.cfg.sample
---- pagure-5.0/files/pagure.cfg.sample	2018-09-24 15:57:50.000000000 -0400
-+++ pagure-5.0.cfg-defs/files/pagure.cfg.sample	2018-09-24 17:29:01.928780964 -0400
-@@ -68,21 +68,21 @@ GIT_URL_GIT = 'git://localhost.localdoma
+diff -rup pagure/files/pagure-apache-httpd.conf pagure.cfg-defs/files/pagure-apache-httpd.conf
+--- pagure/files/pagure-apache-httpd.conf	2020-05-08 21:33:38.860594994 -0400
++++ pagure.cfg-defs/files/pagure-apache-httpd.conf	2020-05-08 21:39:33.815153778 -0400
+@@ -29,9 +29,9 @@
+   ## Use secure TLSv1.1 and TLSv1.2 ciphers
+   #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+ 
+-  #SSLCertificateFile /etc/pki/tls/....crt
+-  #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
+-  #SSLCertificateKeyFile /etc/pki/tls/....key
++  #SSLCertificateFile /etc/ssl/....crt
++  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
++  #SSLCertificateKeyFile /etc/ssl/....key
+ 
+   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
+ 
+@@ -60,9 +60,9 @@
+   ## Use secure TLSv1.1 and TLSv1.2 ciphers
+   #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+ 
+-  #SSLCertificateFile /etc/pki/tls/....crt
+-  #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
+-  #SSLCertificateKeyFile /etc/pki/tls/....key
++  #SSLCertificateFile /etc/ssl/....crt
++  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
++  #SSLCertificateKeyFile /etc/ssl/....key
+ 
+   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
+   #Alias /releases /var/www/releases
+@@ -97,7 +97,7 @@
+    #</IfModule>
+   #</Location>
+ 
+-  #<Directory /var/www/releases>
++  #<Directory /srv/www/pagure-releases>
+     #Options +Indexes
+   #</Directory>
+ 
+diff -rup pagure/files/pagure.cfg.sample pagure.cfg-defs/files/pagure.cfg.sample
+--- pagure/files/pagure.cfg.sample	2020-05-08 21:32:56.679172082 -0400
++++ pagure.cfg-defs/files/pagure.cfg.sample	2020-05-08 22:03:36.961622933 -0400
+@@ -72,25 +72,33 @@ DOC_APP_URL = 'http://docs.localhost.loc
+ 
+ ### The URL to use to clone git repositories.
+ GIT_URL_SSH = 'ssh://git@localhost.localdomain/'
+-GIT_URL_GIT = 'git://localhost.localdomain/'
++GIT_URL_GIT = 'http://localhost.localdomain/'
++
++
++### Folder containing the pagure user SSH authorized keys
++SSH_FOLDER = os.path.join(
++    '/srv',
++    'gitolite',
++    '.ssh'
++)
  
  ### Folder containing to the git repos
  GIT_FOLDER = os.path.join(
@@ -42,7 +93,7 @@ diff -rup pagure-5.0/files/pagure.cfg.sample pagure-5.0.cfg-defs/files/pagure.cf
      'remotes'
  )
  
-@@ -92,21 +92,23 @@ VIRUS_SCAN_ATTACHMENTS = False
+@@ -100,21 +108,23 @@ VIRUS_SCAN_ATTACHMENTS = False
  
  ### Configuration file for gitolite
  GITOLITE_CONFIG = os.path.join(
@@ -70,61 +121,78 @@ diff -rup pagure-5.0/files/pagure.cfg.sample pagure-5.0.cfg-defs/files/pagure.cf
  
  ### Path to the gitolite.rc file
  GL_RC = None
-diff -rup pagure-5.0/files/pagure.conf pagure-5.0.cfg-defs/files/pagure.conf
---- pagure-5.0/files/pagure.conf	2018-08-23 15:08:03.000000000 -0400
-+++ pagure-5.0.cfg-defs/files/pagure.conf	2018-09-24 17:29:01.928780964 -0400
-@@ -29,9 +29,9 @@
-   ## Use secure TLSv1.1 and TLSv1.2 ciphers
-   #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+Only in pagure.cfg-defs/files: pagure.cfg.sample.orig
+diff -rup pagure/files/pagure_docs_web.service pagure.cfg-defs/files/pagure_docs_web.service
+--- pagure/files/pagure_docs_web.service	2020-05-08 21:33:38.862595014 -0400
++++ pagure.cfg-defs/files/pagure_docs_web.service	2020-05-08 21:41:42.996448966 -0400
+@@ -5,7 +5,7 @@ Documentation=https://pagure.io/pagure
  
--  #SSLCertificateFile /etc/pki/tls/....crt
--  #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
--  #SSLCertificateKeyFile /etc/pki/tls/....key
-+  #SSLCertificateFile /etc/ssl/....crt
-+  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
-+  #SSLCertificateKeyFile /etc/ssl/....key
  
-   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
+ [Service]
+-ExecStart=/usr/bin/gunicorn --workers 4 --env PAGURE_CONFIG=/etc/pagure/pagure.cfg --access-logfile /var/log/pagure/access_docs_web.log --error-logfile /var/log/pagure/error_docs_web.log --bind unix:/tmp/pagure_docs_web.sock pagure.docs_server:APP
++ExecStart=/usr/bin/gunicorn --workers 4 --env PAGURE_CONFIG=/etc/pagure/pagure.cfg --access-logfile /var/log/pagure/access_docs_web.log --error-logfile /var/log/pagure/error_docs_web.log --bind unix:/srv/gitolite/.pagure_docs_web.sock pagure.docs_server:APP
+ Type=simple
+ User=git
+ Group=git
+diff -rup pagure/files/pagure-nginx.conf pagure.cfg-defs/files/pagure-nginx.conf
+--- pagure/files/pagure-nginx.conf	2020-05-08 21:33:38.860594994 -0400
++++ pagure.cfg-defs/files/pagure-nginx.conf	2020-05-08 21:43:48.199704257 -0400
+@@ -12,15 +12,15 @@
+     #access_log  /var/log/nginx/pagure_docs.access.log;
+     #error_log  /var/log/nginx/pagure_docs.error.log;
  
-@@ -60,24 +60,24 @@
-   ## Use secure TLSv1.1 and TLSv1.2 ciphers
-   #Header always add Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
+-    #ssl_certificate /etc/pki/tls/....crt
+-    #ssl_certificate_key /etc/pki/tls/....key
++    #ssl_certificate /etc/ssl/....crt
++    #ssl_certificate_key /etc/ssl/....key
  
--  #SSLCertificateFile /etc/pki/tls/....crt
--  #SSLCertificateChainFile /etc/pki/tls/....intermediate.crt
--  #SSLCertificateKeyFile /etc/pki/tls/....key
-+  #SSLCertificateFile /etc/ssl/....crt
-+  #SSLCertificateChainFile /etc/ssl/....intermediate.crt
-+  #SSLCertificateKeyFile /etc/ssl/....key
+     #location @pagure_docs {
+         #proxy_set_header Host $http_host;
+         #proxy_set_header X-Real-IP $remote_addr;
+         #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+         #proxy_set_header X-Forwarded-Proto $scheme;
+-        #proxy_pass http://unix:/tmp/pagure_docs_web.sock;
++        #proxy_pass http://unix:/srv/gitolite/.pagure_docs_web.sock;
+     #}
  
-   #Alias /static /usr/lib/pythonX.Y/site-packages/pagure/static/
--  #Alias /releases /var/www/releases
-+  #Alias /releases /srv/www/pagure-releases
+     #location / {
+@@ -48,15 +48,15 @@
+     #access_log  /var/log/nginx/pagure.access.log;
+     #error_log  /var/log/nginx/pagure.error.log;
  
-   ## Section used to support cloning git repo over http (https in this case)
--  #SetEnv GIT_PROJECT_ROOT /path/to/git/repositories
-+  #SetEnv GIT_PROJECT_ROOT /srv/gitolite/repositories
+-    #ssl_certificate /etc/pki/tls/....crt
+-    #ssl_certificate_key /etc/pki/tls/....key
++    #ssl_certificate /etc/ssl/....crt
++    #ssl_certificate_key /etc/ssl/....key
  
--  #AliasMatch ^/(.*/objects/[0-9a-f]{2}/[0-9a-f]{38})$          /path/to/git/repositories/$1
--  #AliasMatch ^/(.*/objects/pack/pack-[0-9a-f]{40}.(pack|idx))$ /path/to/git/repositories/$1
-+  #AliasMatch ^/(.*/objects/[0-9a-f]{2}/[0-9a-f]{38})$          /srv/gitolite/repositories/$1
-+  #AliasMatch ^/(.*/objects/pack/pack-[0-9a-f]{40}.(pack|idx))$ /srv/gitolite/repositories/$1
-   #ScriptAliasMatch \
-     #"(?x)^/(.*/(HEAD | \
-     #info/refs | \
-     #objects/info/[^/]+ | \
-     #git-(upload|receive)-pack))$" \
--    #/usr/libexec/git-core/git-http-backend/$1
-+    #/usr/lib/git/git-http-backend/$1
+     #location @pagure {
+         #proxy_set_header Host $http_host;
+         #proxy_set_header X-Real-IP $remote_addr;
+         #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+         #proxy_set_header X-Forwarded-Proto $scheme;
+-        #proxy_pass http://unix:/tmp/pagure_web.sock;
++        #proxy_pass http://unix:/srv/gitolite/.pagure_web.sock;
+     #}
  
-   #<Location />
-    #WSGIProcessGroup pagure
-@@ -106,7 +106,7 @@
-    #</IfModule>
-   #</Location>
+     #location / {
+@@ -68,7 +68,7 @@
+     #}
  
--  #<Directory /var/www/releases>
-+  #<Directory /srv/www/pagure-releases>
-     #Options +Indexes
-   #</Directory>
+     #location /releases {
+-        #alias /var/www/releases/;
++        #alias /srv/www/pagure-releases/;
+         #autoindex on;
+     #}
  
+diff -rup pagure/files/pagure_web.service pagure.cfg-defs/files/pagure_web.service
+--- pagure/files/pagure_web.service	2020-05-08 21:33:38.862595014 -0400
++++ pagure.cfg-defs/files/pagure_web.service	2020-05-08 21:41:26.941287994 -0400
+@@ -5,7 +5,7 @@ Documentation=https://pagure.io/pagure
+ 
+ 
+ [Service]
+-ExecStart=/usr/bin/gunicorn --workers 4 --env PAGURE_CONFIG=/etc/pagure/pagure.cfg --access-logfile /var/log/pagure/access_web.log --error-logfile /var/log/pagure/error_web.log --bind unix:/tmp/pagure_web.sock "pagure.flask_app:create_app()"
++ExecStart=/usr/bin/gunicorn --workers 4 --env PAGURE_CONFIG=/etc/pagure/pagure.cfg --access-logfile /var/log/pagure/access_web.log --error-logfile /var/log/pagure/error_web.log --bind unix:/srv/gitolite/.pagure_web.sock "pagure.flask_app:create_app()"
+ Type=simple
+ User=git
+ Group=git

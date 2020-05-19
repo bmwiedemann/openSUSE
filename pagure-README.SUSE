@@ -7,6 +7,8 @@ mkdir -p /srv/gitolite/repositories/{,docs,forks,requests,tickets}
 mkdir -p /srv/gitolite/pseudo
 mkdir -p /srv/gitolite/remotes
 mkdir -p /srv/gitolite/.gitolite/{conf,keydir,logs}
+mkdir -p /srv/gitolite/.ssh
+chmod 700 /srv/gitolite/.ssh
 
 touch /srv/gitolite/.gitolite/conf/gitolite.conf
 
@@ -16,10 +18,6 @@ chown git:git -R /srv/gitolite
 chown git:git /srv/www/pagure-releases
 
 mkdir -p /srv/www/run
-
-setfacl -m user:wwwrun:rx --default /srv/gitolite
-setfacl -Rdm user:wwwrun:rx /srv/gitolite
-setfacl -Rm user:wwwrun:rx /srv/gitolite
 
 1. Install and set up a database
 
@@ -84,13 +82,55 @@ systemctl enable --now redis@default.service
 
 4. Edit /etc/pagure/pagure.cfg to set up pagure settings as appropriate.
 
+As we set up a database earlier using PostgreSQL or MariaDB, comment out the DB_URL for SQLite and
+uncomment the correct one. Change the URL to match your database server location.
+
+You'll also want to change email address and domain used for this instance to something real, especially if
+you're using with HTTPS or having it public facing.
+
+While currently Pagure defaults to the somewhat brittle legacy Gitolite backend, you should use
+the more reliable and performant internal backend.
+
+This is done by setting the following in /etc/pagure/pagure.cfg:
+
+GIT_AUTH_BACKEND = "pagure_authorized_keys"
+HTTP_REPO_ACCESS_GITOLITE = None
+
+SSH_COMMAND_NON_REPOSPANNER = ([
+    "/usr/bin/%(cmd)s",
+    "/srv/gitolite/repositories/%(reponame)s",
+], {"GL_USER": "%(username)s"})
+
+
 For details on all the options in pagure.cfg, see https://docs.pagure.org/pagure/configuration.html
 
 5. Populate the database
 
 python3 /usr/share/pagure/pagure_createdb.py -c /etc/pagure/pagure.cfg -i /etc/pagure/alembic.ini
 
-6. Edit /etc/apache2/vhosts.d/pagure.conf to set up web settings as appropriate.
+Note: On upgrades, just drop the "-i /etc/pagure/alembic.ini", and the script will do the correct
+thing to upgrade the database.
+
+6. Install either Apache HTTPD or Nginx web server and set up web configuration
+
+Option A: Apache HTTPD
+
+zypper install pagure-web-apache-httpd
+
+A1. Edit /etc/apache2/vhosts.d/pagure.conf to set up web settings as appropriate.
+
+Most of the settings just need to be uncommented to work. However, you may need to tweak based
+on whether or not you're using HTTPS and if you are using HTTPS, where your certs are and what your domain(s) are.
+
+Option B: Nginx
+
+zypper install pagure-web-nginx
+systemctl enable --now pagure_web.service pagure_docs_web.service
+
+B1. Edit /etc/nginx/vhosts.d/pagure.conf to set up web settings as appropriate.
+
+Most of the settings just need to be uncommented to work. However, you may need to tweak based
+on whether or not you're using HTTPS and if you are using HTTPS, where your certs are and what your domain(s) are.
 
 7. Open ports in the firewall as appropriate
 
@@ -102,8 +142,8 @@ firewall-cmd --runtime-to-permanent
 
 8. Enable and start pagure services
 
-systemctl enable --now pagure_worker pagure_gitolite_worker pagure_api_key_expire_mail.timer pagure_mirror_project_in.timer
+systemctl enable --now pagure_worker.service pagure_authorized_keys_worker.service pagure_api_key_expire_mail.timer pagure_mirror_project_in.timer
 
-9. Enable and start apache2, or restart if it's already running
+9. Enable and start your webserver, or restart if it's already running
 
 For more details on setup, take a look at the official Pagure documentation: https://docs.pagure.org/pagure/
