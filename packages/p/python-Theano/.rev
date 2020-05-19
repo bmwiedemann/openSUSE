@@ -35,4 +35,12 @@
 - Do install test files again as it fixes Keras testing (forwarded request 779134 from scarabeus_iv)</comment>
     <requestid>779135</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>07db84492aa4fd5f3228534c9c098ce5</srcmd5>
+    <version>1.0.4</version>
+    <time>1589892539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806970</requestid>
+  </revision>
 </revisionlist>

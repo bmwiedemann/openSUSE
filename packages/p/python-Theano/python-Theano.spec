@@ -45,6 +45,8 @@ Requires:       python-numpy >= 1.9.1
 Requires:       python-numpy-devel >= 1.9.1
 Requires:       python-scipy >= 0.14
 Requires:       python-six >= 1.9.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # The tests are compiling and are arch specific
 %if !%{with test}
 BuildArch:      noarch
@@ -83,6 +85,8 @@ Theano features:
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/theano-nose
+%python_clone -a %{buildroot}%{_bindir}/theano-cache
 
 # remove binaries and stuff thats not supposed to end up on system
 %python_expand rm -r %{buildroot}%{$python_sitelib}/bin
@@ -103,11 +107,19 @@ rm theano/tensor/tests/test_var.py
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative theano-nose
+%python_install_alternative theano-cache
+
+%postun
+%python_uninstall_alternative theano-nose
+%python_uninstall_alternative theano-cache
+
 %files %{python_files}
 %doc DESCRIPTION.txt EMAIL.txt HISTORY.txt NEWS.txt README.rst
 %license doc/LICENSE.txt
-%python3_only %{_bindir}/theano-cache
-%python3_only %{_bindir}/theano-nose
+%python_alternative %{_bindir}/theano-cache
+%python_alternative %{_bindir}/theano-nose
 %{python_sitelib}/theano
 %{python_sitelib}/Theano-%{version}-*.egg-info
 %endif
