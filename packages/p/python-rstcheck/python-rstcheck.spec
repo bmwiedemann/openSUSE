@@ -35,6 +35,8 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils >= 0.7
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     bash
 Recommends:     gcc
 Recommends:     gcc-c++
@@ -61,6 +63,7 @@ sed -i -e '/^#!\//, 1d' rstcheck.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rstcheck
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,10 +75,16 @@ export LANG=en_US.UTF-8
 #PYTHON=$python ./test.bash
 #}
 
+%post
+%python_install_alternative rstcheck
+
+%postun
+%python_uninstall_alternative rstcheck
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%python3_only %{_bindir}/rstcheck
+%python_alternative %{_bindir}/rstcheck
 %{python_sitelib}/*
 
 %changelog
