@@ -21,6 +21,9 @@
 	  <argument name="--dir"/>
 	  <argument name="/usr/share/hello-kubic"/>
         </subcommand>
+        <expose>
+          <port number='8080'/>
+        </expose>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.kubic.hello-kubic">
             <label name="org.opencontainers.image.title" value="openSUSE Kubic hello-kubic container"/>

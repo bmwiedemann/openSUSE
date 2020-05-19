@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>725116</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ce5abe52cd83353a2d1aab318f7c2b4</srcmd5>
+    <version>1.0.0</version>
+    <time>1589892547</time>
+    <user>dimstar_suse</user>
+    <comment>- Expose port 8080</comment>
+    <requestid>807034</requestid>
+  </revision>
 </revisionlist>
