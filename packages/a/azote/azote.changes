@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue May 19 11:16:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Replcae python3-yaml with python3-PyYAML
+- Add requires on imagemagick
+
+-------------------------------------------------------------------
+Wed Apr 29 07:50:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.10:
+  * path to the config dir w/ XDG_CONFIG_HOME corrected
+  * "Open with" issue #82 fixed.
+
+-------------------------------------------------------------------
+Sun Jan 12 14:56:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.8:
+  * styling clicked palette button with button#color-btn-selected
+    added (for colour-blind people like myself);
+  * colour picker: colour image converted into the Gtk.ColorButton
+    class, to allow the colour edition;
+  * added tracking the currently selected wallpapers folder for
+    file addition / deletion: switchable, configurable (every 5 sec by default);
+  * tray status icon added, i.a. to indicate the tracking on/off state;
+  * python-send2trash from now on recommended as an obligatory dependency.
+- Remove azote-python-version.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 14:42:17 UTC 2019 - mvetter@suse.com
+
+- Add azote-python-version.patch: Use python3
+
+-------------------------------------------------------------------
+Mon Jul  1 14:17:18 UTC 2019 - mvetter@suse.com
+
+- Package azote 1.1.1 for openSUSE
