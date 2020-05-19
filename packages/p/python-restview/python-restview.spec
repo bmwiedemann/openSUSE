@@ -1,7 +1,7 @@
 #
 # spec file for package python-restview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,20 @@ Group:          Development/Languages/Python
 URL:            https://mg.pov.lt/restview/
 Source:         https://files.pythonhosted.org/packages/source/r/restview/restview-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-docutils
+Requires:       python-pygments
+Requires:       python-readme_renderer
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module readme_renderer}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-docutils
-Requires:       python-pygments
-Requires:       python-readme_renderer
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -52,15 +53,22 @@ A viewer for ReStructuredText documents that renders them on the fly.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/restview
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative restview
+
+%postun
+%python_uninstall_alternative restview
+
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/restview
+%python_alternative %{_bindir}/restview
 %{python_sitelib}/*
 
 %changelog
