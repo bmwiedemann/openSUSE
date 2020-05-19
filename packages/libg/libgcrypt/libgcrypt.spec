@@ -18,7 +18,8 @@
 
 %define build_hmac256 1
 %define separate_hmac256_binary 0
-%define libsoname %{name}20
+%define libsover 20
+%define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
 Version:        1.8.5
@@ -55,7 +56,6 @@ Patch35:        libgcrypt-fipsdrv-enable-algo-for-dsa-sign.patch
 #PATCH-FIX-UPSTREAM bsc#1064455 fipsdrv patch to enable --algo for dsa-verify
 Patch36:        libgcrypt-fipsdrv-enable-algo-for-dsa-verify.patch
 Patch39:        libgcrypt-1.8.3-fips-ctor.patch
-Patch41:        libgcrypt-binary_integrity_in_non-FIPS.patch
 Patch42:        libgcrypt-fips_rsa_no_enforced_mode.patch
 Patch43:        libgcrypt-1.8.4-use_xfree.patch
 Patch44:        libgcrypt-1.8.4-allow_FSM_same_state.patch
@@ -75,6 +75,20 @@ Patch52:        libgcrypt-fix-tests-fipsmode.patch
 Patch53:        libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
 #PATCH-FIX-SUSE bsc#1161220 FIPS: libgcrypt RSA siggen/keygen: 4k not supported
 Patch54:        libgcrypt-1.8.4-fips-keygen.patch
+#PATCH-FIX-SUSE bsc#1164950 Run self-tests from the constructor
+Patch55:        libgcrypt-invoke-global_init-from-constructor.patch
+#PATCH-FIX-SUSE bsc#1164950 Restore the self-tests from the constructor
+Patch56:        libgcrypt-Restore-self-tests-from-constructor.patch
+Patch57:        libgcrypt-FIPS-GMAC_AES-benckmark.patch
+Patch58:        libgcrypt-global_init-constructor.patch
+Patch59:        libgcrypt-random_selftests-testentropy.patch
+Patch60:        libgcrypt-rsa-no-blinding.patch
+Patch61:        libgcrypt-ecc-ecdsa-no-blinding.patch
+#PATCH-FIX-SUSE bsc#1165539 FIPS: Use the new signature operation in PCT
+Patch62:        libgcrypt-PCT-RSA.patch
+Patch63:        libgcrypt-PCT-DSA.patch
+Patch64:        libgcrypt-PCT-ECC.patch
+Patch65:        libgcrypt-fips_selftest_trigger_file.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.25
@@ -205,6 +219,11 @@ install -m 0755 %{SOURCE6} %{buildroot}%{cavs_dir}
 mv %{buildroot}%{_bindir}/fipsdrv %{buildroot}%{cavs_dir}
 mv %{buildroot}%{_bindir}/drbg_test %{buildroot}%{cavs_dir}
 
+# create the FIPS "module is complete" trigger file
+%if 0%{?build_hmac256}
+touch %{buildroot}/%{_libdir}/.%{name}.so.%{libsover}.fips
+%endif
+
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 %post devel
@@ -216,10 +235,13 @@ mv %{buildroot}%{_bindir}/drbg_test %{buildroot}%{cavs_dir}
 %files -n %{libsoname}
 %license COPYING.LIB
 %{_libdir}/%{name}.so.*
+%if 0%{?build_hmac256}
+%{_libdir}/.libgcrypt.so.*.hmac
+%endif # %%if 0%%{?build_hmac256}
 
 %files -n %{libsoname}-hmac
 %if 0%{?build_hmac256}
-%{_libdir}/.libgcrypt.so.*.hmac
+%{_libdir}/.libgcrypt.so.*.fips
 %endif # %%if 0%%{?build_hmac256}
 
 %files devel

@@ -1,12 +1,121 @@
+Index: libgcrypt-1.8.2/cipher/pubkey.c
+===================================================================
+--- libgcrypt-1.8.2.orig/cipher/pubkey.c
++++ libgcrypt-1.8.2/cipher/pubkey.c
+@@ -384,6 +384,33 @@ _gcry_pk_decrypt (gcry_sexp_t *r_plain,
+ }
+ 
+ 
++static gcry_err_code_t
++calculate_hash (gcry_md_hd_t hd, gcry_sexp_t* s_hash)
++{
++  gcry_err_code_t rc;
++  const unsigned char *digest;
++  int algo;
++
++  if (!hd)
++    return 0;
++
++  rc = _gcry_pk_util_get_algo (*s_hash, &algo);
++  if (rc)
++    return rc;
++
++  digest = _gcry_md_read(hd, algo);
++  if (!digest)
++    return GPG_ERR_DIGEST_ALGO;
++
++  rc = _gcry_sexp_build (s_hash, NULL,
++                         "(data (flags pkcs1)(hash %s %b))",
++                         _gcry_md_algo_name(algo),
++                         (int) _gcry_md_get_algo_dlen(algo),
++                         digest);
++
++  return rc;
++}
++
+ 
+ /*
+    Create a signature.
+@@ -414,7 +441,8 @@ _gcry_pk_decrypt (gcry_sexp_t *r_plain,
+   Note that (hash algo) in R_SIG is not used.
+ */
+ gcry_err_code_t
+-_gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
++_gcry_pk_sign_md (gcry_sexp_t *r_sig, gcry_md_hd_t hd, gcry_sexp_t s_hash,
++                  gcry_sexp_t s_skey)
+ {
+   gcry_err_code_t rc;
+   gcry_pk_spec_t *spec;
+@@ -426,6 +454,10 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
+   if (rc)
+     goto leave;
+ 
++  rc = calculate_hash (hd, &s_hash);
++  if (rc)
++    goto leave;
++
+   if (spec->sign)
+     rc = spec->sign (r_sig, s_hash, keyparms);
+   else
+@@ -437,6 +469,13 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
+ }
+ 
+ 
++gcry_err_code_t
++_gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
++{
++  return _gcry_pk_sign_md (r_sig, NULL, s_hash, s_skey);
++}
++
++
+ /*
+    Verify a signature.
+ 
+@@ -445,7 +484,8 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
+    as an S-Exp, sig is a S-Exp as returned from gcry_pk_sign and data
+    must be an S-Exp like the one in sign too.  */
+ gcry_err_code_t
+-_gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
++_gcry_pk_verify_md (gcry_sexp_t s_sig, gcry_md_hd_t hd, gcry_sexp_t s_hash,
++                    gcry_sexp_t s_pkey)
+ {
+   gcry_err_code_t rc;
+   gcry_pk_spec_t *spec;
+@@ -455,6 +495,10 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry
+   if (rc)
+     goto leave;
+ 
++  rc = calculate_hash (hd, &s_hash);
++  if (rc)
++    goto leave;
++
+   if (spec->verify)
+     rc = spec->verify (s_sig, s_hash, keyparms);
+   else
+@@ -466,6 +510,13 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry
+ }
+ 
+ 
++gcry_err_code_t
++_gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
++{
++  return _gcry_pk_verify_md (s_sig, NULL, s_hash, s_pkey);
++}
++
++
+ /*
+    Test a key.
+ 
 Index: libgcrypt-1.8.2/cipher/pubkey-internal.h
 ===================================================================
 --- libgcrypt-1.8.2.orig/cipher/pubkey-internal.h
 +++ libgcrypt-1.8.2/cipher/pubkey-internal.h
-@@ -43,6 +43,7 @@ void _gcry_pk_util_free_encoding_ctx (st
+@@ -43,6 +43,8 @@ void _gcry_pk_util_free_encoding_ctx (st
  gcry_err_code_t _gcry_pk_util_data_to_mpi (gcry_sexp_t input,
                                             gcry_mpi_t *ret_mpi,
                                             struct pk_encoding_ctx *ctx);
-+gcry_err_code_t _gcry_pk_util_get_algo (gcry_sexp_t input, int *algo);
++gcry_err_code_t _gcry_pk_util_get_algo (gcry_sexp_t input,
++                                        int *algo);
  
  
  
@@ -65,121 +174,21 @@ Index: libgcrypt-1.8.2/cipher/pubkey-util.c
 +
 +  return rc;
 +}
-Index: libgcrypt-1.8.2/cipher/pubkey.c
+Index: libgcrypt-1.8.2/src/g10lib.h
 ===================================================================
---- libgcrypt-1.8.2.orig/cipher/pubkey.c
-+++ libgcrypt-1.8.2/cipher/pubkey.c
-@@ -383,6 +383,33 @@ _gcry_pk_decrypt (gcry_sexp_t *r_plain,
-   return rc;
- }
+--- libgcrypt-1.8.2.orig/src/g10lib.h
++++ libgcrypt-1.8.2/src/g10lib.h
+@@ -288,6 +288,10 @@ gpg_err_code_t _gcry_generate_fips186_3_
+ gpg_err_code_t _gcry_fips186_4_prime_check (const gcry_mpi_t x,
+                                             unsigned int bits);
  
-+static gcry_err_code_t
-+calculate_hash (gcry_md_hd_t hd, gcry_sexp_t s_hash)
-+{
-+  gcry_err_code_t rc;
-+  const unsigned char *digest;
-+  int algo;
-+
-+  if (!hd)
-+    return 0;
-+
-+  rc = _gcry_pk_util_get_algo (s_hash, &algo);
-+  if (rc)
-+    return rc;
-+
-+  digest = _gcry_md_read(hd, algo);
-+  if (!digest)
-+      return GPG_ERR_DIGEST_ALGO;
-+
-+  rc = _gcry_sexp_build (&s_hash, NULL,
-+       "(data (flags pkcs1)(hash %s %b))",
-+       _gcry_md_algo_name(algo), (int) _gcry_md_get_algo_dlen(algo), digest);
-+
-+  return rc;
-+}
-+
-+
-+
++gcry_err_code_t _gcry_pk_sign_md (gcry_sexp_t *r_sig, gcry_md_hd_t hd,
++                                  gcry_sexp_t s_hash, gcry_sexp_t s_skey);
++gcry_err_code_t _gcry_pk_verify_md (gcry_sexp_t s_sig, gcry_md_hd_t hd,
++                                    gcry_sexp_t s_hash, gcry_sexp_t s_pkey);
  
- 
- /*
-@@ -414,7 +442,8 @@ _gcry_pk_decrypt (gcry_sexp_t *r_plain,
-   Note that (hash algo) in R_SIG is not used.
- */
- gcry_err_code_t
--_gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
-+_gcry_pk_sign_md (gcry_sexp_t *r_sig, gcry_md_hd_t hd, gcry_sexp_t s_hash,
-+                  gcry_sexp_t s_skey)
- {
-   gcry_err_code_t rc;
-   gcry_pk_spec_t *spec;
-@@ -426,6 +455,10 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
-   if (rc)
-     goto leave;
- 
-+  rc = calculate_hash (hd, s_hash);
-+  if (rc)
-+    goto leave;
-+
-   if (spec->sign)
-     rc = spec->sign (r_sig, s_hash, keyparms);
-   else
-@@ -436,6 +469,13 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
-   return rc;
- }
- 
-+gcry_err_code_t
-+_gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
-+{
-+  return _gcry_pk_sign_md (r_sig, NULL, s_hash, s_skey);
-+}
-+
-+
- 
- /*
-    Verify a signature.
-@@ -445,7 +485,8 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_
-    as an S-Exp, sig is a S-Exp as returned from gcry_pk_sign and data
-    must be an S-Exp like the one in sign too.  */
- gcry_err_code_t
--_gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
-+_gcry_pk_verify_md (gcry_sexp_t s_sig, gcry_md_hd_t hd, gcry_sexp_t s_hash,
-+		    gcry_sexp_t s_pkey)
- {
-   gcry_err_code_t rc;
-   gcry_pk_spec_t *spec;
-@@ -455,6 +496,10 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry
-   if (rc)
-     goto leave;
- 
-+  rc = calculate_hash (hd, s_hash);
-+  if (rc)
-+    goto leave;
-+
-   if (spec->verify)
-     rc = spec->verify (s_sig, s_hash, keyparms);
-   else
-@@ -465,6 +510,12 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry
-   return rc;
- }
- 
-+gcry_err_code_t
-+_gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
-+{
-+  return _gcry_pk_verify_md (s_sig, NULL, s_hash, s_pkey);
-+}
-+
- 
- /*
-    Test a key.
-@@ -497,6 +548,7 @@ _gcry_pk_testkey (gcry_sexp_t s_key)
- }
- 
- 
-+
- /*
-   Create a public key pair and return it in r_key.
-   How the key is created depends on s_parms:
+ /* Replacements of missing functions (missing-string.c).  */
+ #ifndef HAVE_STPCPY
 Index: libgcrypt-1.8.2/src/visibility.c
 ===================================================================
 --- libgcrypt-1.8.2.orig/src/visibility.c
@@ -219,3 +228,18 @@ Index: libgcrypt-1.8.2/src/visibility.c
  gcry_pk_verify (gcry_sexp_t sigval, gcry_sexp_t data, gcry_sexp_t pkey)
  {
    if (!fips_is_operational ())
+Index: libgcrypt-1.8.2/src/visibility.h
+===================================================================
+--- libgcrypt-1.8.2.orig/src/visibility.h
++++ libgcrypt-1.8.2/src/visibility.h
+@@ -357,8 +357,10 @@ MARK_VISIBLEX (_gcry_mpi_get_const)
+ #define gcry_pk_get_param           _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pk_get_nbits           _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pk_map_name            _gcry_USE_THE_UNDERSCORED_FUNCTION
++#define gcry_pk_sign_md             _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pk_sign                _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pk_testkey             _gcry_USE_THE_UNDERSCORED_FUNCTION
++#define gcry_pk_verify_md           _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pk_verify              _gcry_USE_THE_UNDERSCORED_FUNCTION
+ #define gcry_pubkey_get_sexp        _gcry_USE_THE_UNDERSCORED_FUNCTION
+ 

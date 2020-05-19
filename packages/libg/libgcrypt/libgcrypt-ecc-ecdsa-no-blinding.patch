@@ -1,0 +1,84 @@
+Index: libgcrypt-1.8.5/cipher/ecc.c
+===================================================================
+--- libgcrypt-1.8.5.orig/cipher/ecc.c
++++ libgcrypt-1.8.5/cipher/ecc.c
+@@ -2060,11 +2060,11 @@ selftest_sign (gcry_sexp_t pkey, gcry_se
+ {
+   /* Sample data from RFC 6979 section A.2.5, hash is of message "sample" */
+   static const char sample_data[] =
+-    "(data (flags rfc6979)"
++    "(data (flags rfc6979 no-blinding)"
+     " (hash sha256 #af2bdbe1aa9b6ec1e2ade1d694f41fc71a831d0268e98915"
+     /**/           "62113d8a62add1bf#))";
+   static const char sample_data_bad[] =
+-    "(data (flags rfc6979)"
++    "(data (flags rfc6979 no-blinding)"
+     " (hash sha256 #bf2bdbe1aa9b6ec1e2ade1d694f41fc71a831d0268e98915"
+     /**/           "62113d8a62add1bf#))";
+   static const char signature_r[] =
+Index: libgcrypt-1.8.5/cipher/ecc-ecdsa.c
+===================================================================
+--- libgcrypt-1.8.5.orig/cipher/ecc-ecdsa.c
++++ libgcrypt-1.8.5/cipher/ecc-ecdsa.c
+@@ -52,6 +52,7 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input,
+   mpi_ec_t ctx;
+   gcry_mpi_t b;                /* Random number needed for blinding.  */
+   gcry_mpi_t bi;               /* multiplicative inverse of B.        */
++  int with_blinding = !(flags & PUBKEY_FLAG_NO_BLINDING);
+ 
+   if (DBG_CIPHER)
+     log_mpidump ("ecdsa sign hash  ", input );
+@@ -65,12 +66,15 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input,
+ 
+   b  = mpi_snew (qbits);
+   bi = mpi_snew (qbits);
+-  do
++  if (with_blinding)
+     {
+-      _gcry_mpi_randomize (b, qbits, GCRY_WEAK_RANDOM);
+-      mpi_mod (b, b, skey->E.n);
++      do
++        {
++          _gcry_mpi_randomize (b, qbits, GCRY_WEAK_RANDOM);
++          mpi_mod (b, b, skey->E.n);
++        }
++      while (!mpi_invm (bi, b, skey->E.n));
+     }
+-  while (!mpi_invm (bi, b, skey->E.n));
+ 
+   k = NULL;
+   dr = mpi_alloc (0);
+@@ -128,15 +132,26 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input,
+         }
+       while (!mpi_cmp_ui (r, 0));
+ 
+-      /* Computation of dr, sum, and s are blinded with b.  */
+-      mpi_mulm (dr, b, skey->d, skey->E.n);
+-      mpi_mulm (dr, dr, r, skey->E.n);      /* dr = d*r mod n */
+-      mpi_mulm (sum, b, hash, skey->E.n);
+-      mpi_addm (sum, sum, dr, skey->E.n);   /* sum = hash + (d*r) mod n */
++      if (!with_blinding)
++        {
++          mpi_mulm (dr, skey->d, r, skey->E.n); /* dr = d*r mod n  */
++          mpi_addm (sum, hash, dr, skey->E.n);  /* sum = hash + (d*r) mod n  */
++	}
++      else
++        {
++          /* Computation of dr, sum, and s are blinded with b.  */
++          mpi_mulm (dr, b, skey->d, skey->E.n);
++          mpi_mulm (dr, dr, r, skey->E.n);      /* dr = d*r mod n */
++          mpi_mulm (sum, b, hash, skey->E.n);
++          mpi_addm (sum, sum, dr, skey->E.n);   /* sum = hash + (d*r) mod n */
++	}
+       mpi_invm (k_1, k, skey->E.n);         /* k_1 = k^(-1) mod n  */
+       mpi_mulm (s, k_1, sum, skey->E.n);    /* s = k^(-1)*(hash+(d*r)) mod n */
+-      /* Undo blinding by b^-1 */
+-      mpi_mulm (s, bi, s, skey->E.n);
++      if (with_blinding)
++        {
++          /* Undo blinding by b^-1 */
++          mpi_mulm (s, bi, s, skey->E.n);
++	}
+     }
+   while (!mpi_cmp_ui (s, 0));
+ 

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:55:12 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: libgcrypt: Double free in test_keys() on failed signature
+  verification [bsc#1169944]
+  * Use safer gcry_mpi_release() instead of mpi_free()
+- Update patches:
+  * libgcrypt-PCT-DSA.patch
+  * libgcrypt-PCT-RSA.patch
+  * libgcrypt-PCT-ECC.patch
+
+-------------------------------------------------------------------
+Thu Apr 16 16:45:23 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Ship the FIPS checksum file in the shared library package and
+  create a separate trigger file for the FIPS selftests (bsc#1169569)
+  * add libgcrypt-fips_selftest_trigger_file.patch
+  * refresh libgcrypt-global_init-constructor.patch
+- Remove libgcrypt-binary_integrity_in_non-FIPS.patch obsoleted
+  by libgcrypt-global_init-constructor.patch
+
+-------------------------------------------------------------------
+Wed Apr 15 13:55:27 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: Verify that the generated signature and the original input
+  differ in test_keys function for RSA, DSA and ECC: [bsc#1165539]
+- Add zero-padding when qx and qy have different lengths when
+  assembling the Q point from affine coordinates.
+- Refreshed patches:
+  * libgcrypt-PCT-DSA.patch
+  * libgcrypt-PCT-RSA.patch
+  * libgcrypt-PCT-ECC.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 10:48:02 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: Switch the PCT to use the new signature operation [bsc#1165539]
+  * Patches for DSA, RSA and ECDSA test_keys functions:
+    - libgcrypt-PCT-DSA.patch
+    - libgcrypt-PCT-RSA.patch
+    - libgcrypt-PCT-ECC.patch
+- Update patch: libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 18:09:47 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: Run self-tests from constructor during power-on [bsc#1166748]
+  * Set up global_init as the constructor function:
+    - libgcrypt-global_init-constructor.patch
+  * Relax the entropy requirements on selftest. This is especially
+    important for virtual machines to boot properly before the RNG
+    is available:
+    - libgcrypt-random_selftests-testentropy.patch
+    - libgcrypt-rsa-no-blinding.patch
+    - libgcrypt-ecc-ecdsa-no-blinding.patch
+  * Fix benchmark regression test in FIPS mode:
+    - libgcrypt-FIPS-GMAC_AES-benckmark.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 16:54:33 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Remove check not needed in _gcry_global_constructor [bsc#1164950]
+  * Update libgcrypt-Restore-self-tests-from-constructor.patch
+
+-------------------------------------------------------------------
+Tue Feb 25 22:13:24 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: Run the self-tests from the constructor [bsc#1164950]
+  * Add libgcrypt-invoke-global_init-from-constructor.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 17:35:15 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - FIPS: libgcrypt DSA PQG parameter generation: Missing value [bsc#1161219]

@@ -1,0 +1,40 @@
+Index: libgcrypt-1.8.2/src/fips.c
+===================================================================
+--- libgcrypt-1.8.2.orig/src/fips.c	2020-04-16 21:15:01.633217969 +0200
++++ libgcrypt-1.8.2/src/fips.c	2020-04-16 21:21:44.279376166 +0200
+@@ -651,7 +651,7 @@ get_library_path(const char *libname, co
+ }
+ 
+ static gpg_error_t
+-get_hmac_path(char **fname)
++get_hmac_path(char **fname, char *suffix)
+ {
+   char libpath[4096];
+   gpg_error_t err;
+@@ -676,7 +676,7 @@ get_hmac_path(char **fname)
+ 	    p = *fname;
+ 	  memmove (p+1, p, strlen (p)+1);
+ 	  *p = '.';
+-	  strcat (*fname, ".hmac");
++	  strcat (*fname, suffix);
+ 	  err = 0;
+ 	}
+     }
+@@ -708,7 +708,7 @@ check_binary_integrity (void)
+       else
+         {
+           FILE *fp;
+-	  err = get_hmac_path(&fname);
++	  err = get_hmac_path(&fname, ".hmac");
+ 	  if (!err)
+ 	    {
+               /* Open the file.  */
+@@ -769,7 +769,7 @@ can_skip_selftests(void)
+   if (fips_mode())
+     return 0;
+ 
+-  if (get_hmac_path(&fname))
++  if (get_hmac_path(&fname, ".fips"))
+     return 0;
+ 
+   /* check the hmac presence */
