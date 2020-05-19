@@ -36,6 +36,8 @@ BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 3.0
 Requires:       python-redis >= 3.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -51,20 +53,37 @@ integrated into web stacks.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rq
+%python_clone -a %{buildroot}%{_bindir}/rqinfo
+%python_clone -a %{buildroot}%{_bindir}/rqworker
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_failure_capture - circular dependency on sentry-sdk
+# test_worker - update-alternatives: only rqworker-%{python_version} is
+#               available, skip test for simplicity
 export PATH="$PATH:%{buildroot}%{_bindir}"
 %{_sbindir}/redis-server --port 6379 &
-%pytest -k 'not test_failure_capture'
+%pytest -k 'not (test_failure_capture or test_worker)'
 killall redis-server
+
+%post
+%python_install_alternative rq
+%python_install_alternative rqinfo
+%python_install_alternative rqworker
+
+%postun
+%python_uninstall_alternative rq
+%python_uninstall_alternative rqinfo
+%python_uninstall_alternative rqworker
 
 %files %{python_files}
 %doc README.md CHANGES.md
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/rq*
+%python_alternative %{_bindir}/rq
+%python_alternative %{_bindir}/rqinfo
+%python_alternative %{_bindir}/rqworker
 
 %changelog
