@@ -28,18 +28,19 @@ URL:            https://github.com/landscapeio/requirements-detector
 # https://github.com/landscapeio/requirements-detector/issues/25
 Source:         https://github.com/landscapeio/requirements-detector/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-astroid >= 1.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module nose}
 # /SECTION
-Requires:       python-astroid >= 1.0.0
-BuildRequires:  fdupes
-BuildArch:      noarch
 %ifpython3
 Conflicts:      %{oldpython}-requirements-detector < 0.6
 %endif
-
 %python_subpackages
 
 %description
@@ -58,15 +59,22 @@ depends on.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/detect-requirements
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$pthon_sitelib} nosetests-%{$python_bin_suffix}
 
+%post
+%python_install_alternative detect-requirements
+
+%postun
+%python_uninstall_alternative detect-requirements
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/detect-requirements
+%python_alternative %{_bindir}/detect-requirements
 
 %changelog

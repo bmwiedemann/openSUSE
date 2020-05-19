@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:42 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Jan 10 15:06:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Revert back the previous commit

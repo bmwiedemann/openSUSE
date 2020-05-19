@@ -46,4 +46,12 @@
     <comment>- Revert back the previous commit</comment>
     <requestid>762869</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ec906fab1b8fde029bd1f67ecccd3bd4</srcmd5>
+    <version>0.6</version>
+    <time>1589893055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807273</requestid>
+  </revision>
 </revisionlist>
