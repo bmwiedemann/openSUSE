@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 10:00:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Backport to SLE12SP3 and SLE15. (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818) 
+
+-------------------------------------------------------------------
 Mon May  4 16:05:22 2020 UTC - shap-staff@suse.de
 
 - Release 1.0.1
