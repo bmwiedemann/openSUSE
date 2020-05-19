@@ -1,7 +1,7 @@
 #
 # spec file for package python-unify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-untokenize
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -59,11 +61,18 @@ cp %{SOURCE9} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/unify %{buildroot}%{_bindir}/unify_quotes
+%python_clone -a %{buildroot}%{_bindir}/unify_quotes
+
+%post
+%python_install_alternative unify_quotes
+
+%postun
+%python_uninstall_alternative unify_quotes
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst README.suse
-%python3_only %{_bindir}/unify_quotes
+%python_alternative %{_bindir}/unify_quotes
 %{python_sitelib}/*
 
 %changelog
