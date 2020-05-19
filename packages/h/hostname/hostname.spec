@@ -52,7 +52,7 @@ for prog in dnsdomainname domainname ypdomainname nisdomainname; do
     ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/$prog
     ln -sf hostname.1 %{buildroot}%{_mandir}/man1/${prog}.1
 done
-sed -e "s|@LIBEXECDIR|%{_libexecdir}|g" nis-domainname.service.in > nis-domainname.service
+sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" nis-domainname.service.in > nis-domainname.service
 install -m 0755 -d %{buildroot}%{_libexecdir}/%{name}
 install -m 0755 -d %{buildroot}%{_unitdir}
 install -p -m 0755 nis-domainname         %{buildroot}%{_libexecdir}/%{name}
