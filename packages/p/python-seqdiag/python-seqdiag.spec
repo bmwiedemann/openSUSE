@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,11 +50,18 @@ BuildArch:      noarch
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/seqdiag
+
+%post
+%python_install_alternative seqdiag
+
+%postun
+%python_uninstall_alternative seqdiag
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%python3_only %{_bindir}/seqdiag
+%python_alternative %{_bindir}/seqdiag
 %{python_sitelib}/*
 
 %changelog

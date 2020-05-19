@@ -48,4 +48,12 @@
 - Stop building python2 version. No longer supported upstream</comment>
     <requestid>778944</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5405cc224321cc90e5189d6ea3c67c2b</srcmd5>
+    <version>2.0.0</version>
+    <time>1589893112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807289</requestid>
+  </revision>
 </revisionlist>

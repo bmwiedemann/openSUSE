@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:58 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Feb 25 06:28:27 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to version 2.0.0
