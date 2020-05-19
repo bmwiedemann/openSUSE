@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 09:18:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.1:
+  * Disabling the usage of the doctest_ignore_import_errors option
+  * Drop support for python versions earlier than 3.6. [#103]
+  * Drop support for pytest versions earlier than 4.0. [#103]
+  * Fix compatibility with pytest 5.4. [#103]
+
+-------------------------------------------------------------------
 Mon Nov 18 08:01:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.0:

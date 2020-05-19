@@ -74,4 +74,16 @@
 - Remove merged patch pr_37.patch</comment>
     <requestid>749190</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e285f50358177b915b436909d41c60a2</srcmd5>
+    <version>0.6.1</version>
+    <time>1589892450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Disabling the usage of the doctest_ignore_import_errors option
+  * Drop support for python versions earlier than 3.6. [#103]
+  * Drop support for pytest versions earlier than 4.0. [#103]
+  * Fix compatibility with pytest 5.4. [#103]</comment>
+    <requestid>806847</requestid>
+  </revision>
 </revisionlist>
