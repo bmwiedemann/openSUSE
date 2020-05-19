@@ -34,14 +34,16 @@ BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-requests >= 0.12.1
+Requires:       python-setuptools
+Requires:       python-six >= 1.9.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python2-enum34
 BuildRequires:  python2-mock
 %endif
-Requires:       python-requests >= 0.12.1
-Requires:       python-setuptools
-Requires:       python-six >= 1.9.0
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -55,15 +57,22 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rollbar
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative rollbar
+
+%postun
+%python_uninstall_alternative rollbar
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/rollbar
+%python_alternative %{_bindir}/rollbar
 %{python_sitelib}/*
 
 %changelog
