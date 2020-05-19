@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon May 18 15:02:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.4.4
+  * Use gcp-vpc-move-route properly using independent route names
+  for ASCS and ERS instances
+
+Fri May 15 09:31:34 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Version 0.4.3
+  * Update monitoring settings
+
+-------------------------------------------------------------------
+Tue May 12 13:55:55 UTC 2020 - Xabier Arbulu Insausti <xarbulu@localhost>
+
+- Version 0.4.2
+  * Fix the shared disk usage in non HA environments
+
+-------------------------------------------------------------------
+Wed Apr 22 19:17:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.4.1
+  * Make it optional to install netweaver required packages
+
+-------------------------------------------------------------------
+Tue Apr 21 16:25:44 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Version 0.4.0
+  * Add Pacemaker resources for the sap_host_exporter
+
+-------------------------------------------------------------------
+Fri Apr 17 10:20:28 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.0
+  * Adapt the cluster template to use the proper gcp agents
+  (bsc#1161898, bsc#1160933)
+
+-------------------------------------------------------------------
+Tue Apr 14 13:38:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.11
+  * Update anyting socat resource by azure-lb as recommended in
+  the updated best practices guide
+
+-------------------------------------------------------------------
+Fri Mar 27 18:23:40 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.2.10
+  * Add support for extracting installer sar file
+  * Update installation logic to use installer from extracted installation media
+
+-------------------------------------------------------------------
+Fri Mar 20 13:14:30 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.9
+  * Install pydbapi package to connect to the HANA database
+
+-------------------------------------------------------------------
+Thu Mar 17 12:24:56 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+- Version 0.2.8
+  * Fix non-unique ID name error for monitoring.sls state
+  * Manage properly multiple exporters execution in the same host
+    update spec
+
+-------------------------------------------------------------------
+Mon Mar 16 11:02:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.7
+  * Add option to set custom parameters in the installation
+    configuration files
+  * Make the installation retry times customizable
+
+-------------------------------------------------------------------
+Tue Mar 10 09:58:57 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+- Version 0.2.6
+  * Add option to activate the sap_host_exporter on the nodes
+
+-------------------------------------------------------------------
 Mon Mar  9 15:55:49 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.2.5
