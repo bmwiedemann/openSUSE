@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,8 +25,10 @@ Release:        0
 Summary:        Static gallery generator
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/saimn/sigal
+URL:            https://github.com/saimn/sigal
 Source:         https://files.pythonhosted.org/packages/source/s/sigal/sigal-%{version}.tar.gz
+# https://github.com/saimn/sigal/commit/538f535b5ea1cca4ec52bff6cff15da015bdfa64
+Patch0:         python-sigal-test_image-gif-dimension.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,6 +38,8 @@ Requires:       python-Pillow
 Requires:       python-blinker
 Requires:       python-click
 Requires:       python-pilkit
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-boto
 Suggests:       python-cssmin
 BuildArch:      noarch
@@ -66,21 +70,29 @@ image resizing, thumbnail creation and HTML page generation.
 
 %prep
 %setup -q -n sigal-%{version}
+%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/sigal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests -k "not (test_generate_video_fit_height or test_generate_video_fit_width or test_generate_video_dont_enlarge or test_build)"
 
+%post
+%python_install_alternative sigal
+
+%postun
+%python_uninstall_alternative sigal
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%python3_only %{_bindir}/sigal
+%python_alternative %{_bindir}/sigal
 %{python_sitelib}/*
 
 %changelog

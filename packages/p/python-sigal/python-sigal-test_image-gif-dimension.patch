@@ -1,0 +1,12 @@
+--- a/tests/test_image.py
++++ b/tests/test_image.py
+@@ -111,7 +111,7 @@ def test_generate_image_processor(tmpdir):
+ @pytest.mark.parametrize(
+     ("image", "path", "wide_size", "high_size"),
+     [(TEST_IMAGE, SRCFILE, (200, 133), (150, 100)),
+-     (TEST_GIF_IMAGE, SRC_GIF_FILE, (134, 150), (150, 167))])
++     (TEST_GIF_IMAGE, SRC_GIF_FILE, (134, 150), (150, 168))])
+ def test_generate_thumbnail(tmpdir, image, path, wide_size, high_size):
+     "Test the generate_thumbnail function."
+ 
+
