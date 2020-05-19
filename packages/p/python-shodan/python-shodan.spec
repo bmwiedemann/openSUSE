@@ -24,7 +24,7 @@ Release:        0
 Summary:        Python library and command-line utility for Shodan
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/achillean/shodan-python/
+URL:            https://github.com/achillean/shodan-python/
 Source:         https://files.pythonhosted.org/packages/source/s/shodan/shodan-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,14 +36,15 @@ Requires:       python-click-plugins
 Requires:       python-colorama
 Requires:       python-requests >= 2.2.1
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-curses
 Suggests:       %{name}-doc
 BuildArch:      noarch
-
 %python_subpackages
 
 %package -n %{name}-doc
-Summary:        Documentation files for %name
+Summary:        Documentation files for %{name}
 Group:          Documentation/HTML
 Provides:       %{python_module shodan-doc = %{version}}
 
@@ -51,7 +52,7 @@ Provides:       %{python_module shodan-doc = %{version}}
 Shodan is a search engine for Internet-connected devices. Google lets you search for websites, Shodan lets you search for devices. This library provides developers easy access to all of the data stored in Shodan in order to automate tasks and integrate into existing tools.
 
 %description -n %{name}-doc
-HTML documentation on the API and examples for %name.
+HTML documentation on the API and examples for %{name}.
 
 %prep
 %setup -q -n shodan-%{version}
@@ -60,14 +61,16 @@ sed -i '1s/^#!.*//' shodan/cli/worldmap.py
 %build
 %python_build
 pushd docs
-make html
+%make_build html
 rm -r _build/html/.buildinfo _build/html/_sources/
-make man
+%make_build man
 popd
 
 %install
 %python_install
 install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shodan.1
+%python_clone -a %{buildroot}%{_bindir}/shodan
+%python_clone -a %{buildroot}%{_mandir}/man1/shodan.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -75,12 +78,18 @@ install -Dm 644 docs/_build/man/shodan-python.1 %{buildroot}%{_mandir}/man1/shod
 # https://developer.shodan.io/api/requirements
 # SHODAN-API-KEY file required by tests
 
+%post
+%python_install_alternative shodan shodan.1
+
+%postun
+%python_uninstall_alternative shodan shodan.1
+
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%python3_only %{_bindir}/shodan
+%python_alternative %{_bindir}/shodan
 %{python_sitelib}/*
-%python3_only %{_mandir}/man1/shodan.1%{ext_man}
+%python_alternative %{_mandir}/man1/shodan.1%{ext_man}
 
 %files -n %{name}-doc
 %doc docs/_build/html
