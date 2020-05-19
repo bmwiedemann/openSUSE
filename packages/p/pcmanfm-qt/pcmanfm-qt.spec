@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 0.15.0
+BuildRequires:  pkgconfig(libfm-qt) >= 0.15.1
 BuildRequires:  pkgconfig(libmenu-cache) >= 0.4.0
 BuildRequires:  pkgconfig(lxqt) >= 0.15.0
 #bsc#1100208 - mvetter@suse.de
