@@ -1,0 +1,80 @@
+From f5ccee901d346873adbe5d979b5b70d0ba029570 Mon Sep 17 00:00:00 2001
+From: liangxin1300 <XLiang@suse.com>
+Date: Fri, 24 Apr 2020 07:05:13 +0800
+Subject: [PATCH] Add ssh_key option used by -i option of ssh/scp
+
+---
+ parallax/__init__.py | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/parallax/__init__.py b/parallax/__init__.py
+index fc1a6e7..1008ca2 100644
+--- a/parallax/__init__.py
++++ b/parallax/__init__.py
+@@ -87,6 +87,7 @@ class Options(object):
+     askpass = False              # Ask for a password
+     outdir = None                # Write stdout to a file per host in this directory
+     errdir = None                # Write stderr to a file per host in this directory
++    ssh_key = None               # Specific ssh key used by ssh/scp -i option
+     ssh_options = []             # Extra options to pass to SSH
+     ssh_extra = []               # Extra arguments to pass to SSH
+     verbose = False              # Warning and diagnostic messages
+@@ -138,19 +139,21 @@ class _CallOutputBuilder(object):
+         return ret
+ 
+ 
+-def _build_call_cmd(host, port, user, cmdline, options, extra):
++def _build_call_cmd(host, port, user, cmdline, opts):
+     cmd = ['ssh', host,
+            '-o', 'NumberOfPasswordPrompts=1',
+            '-o', 'SendEnv=PARALLAX_NODENUM PARALLAX_HOST']
+-    if options:
+-        for opt in options:
++    if opts.ssh_options:
++        for opt in opts.ssh_options:
+             cmd += ['-o', opt]
+     if user:
+         cmd += ['-l', user]
+     if port:
+         cmd += ['-p', port]
+-    if extra:
+-        cmd.extend(extra)
++    if opts.ssh_key:
++        cmd += ['-i', opts.ssh_key]
++    if opts.ssh_extra:
++        cmd.extend(opts.ssh_extra)
+     if cmdline:
+         cmd.append(cmdline)
+     return cmd
+@@ -173,9 +176,7 @@ def call(hosts, cmdline, opts=Options()):
+                       warn_message=opts.warn_message,
+                       callbacks=_CallOutputBuilder())
+     for host, port, user in _expand_host_port_user(hosts):
+-        cmd = _build_call_cmd(host, port, user, cmdline,
+-                              options=opts.ssh_options,
+-                              extra=opts.ssh_extra)
++        cmd = _build_call_cmd(host, port, user, cmdline, opts)
+         t = Task(host, port, user, cmd,
+                  stdin=opts.input_stream,
+                  verbose=opts.verbose,
+@@ -219,6 +220,8 @@ def _build_copy_cmd(host, port, user, src, dst, opts):
+         cmd += ['-P', port]
+     if opts.recursive:
+         cmd.append('-r')
++    if opts.ssh_key:
++        cmd += ['-i', opts.ssh_key]
+     if opts.ssh_extra:
+         cmd.extend(opts.ssh_extra)
+     cmd.append(src)
+@@ -312,6 +315,8 @@ def _build_slurp_cmd(host, port, user, src, dst, opts):
+         cmd += ['-P', port]
+     if opts.recursive:
+         cmd.append('-r')
++    if opts.ssh_key:
++        cmd += ['-i', opts.ssh_key]
+     if opts.ssh_extra:
+         cmd.extend(opts.ssh_extra)
+     if user:
+-- 
+2.21.1
+

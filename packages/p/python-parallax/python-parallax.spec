@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
+Patch1:         0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
+
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +50,7 @@ multiple nodes using SCP.
 
 %prep
 %setup -q -n parallax-%{version}
+%patch1 -p1
 
 %build
 %python_build

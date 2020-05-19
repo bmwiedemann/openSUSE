@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 02:32:03 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Add ssh_key option used by -i option of ssh and scp(bsc#1169581)
+  Add patch 0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch 
+
+-------------------------------------------------------------------
 Wed Apr  1 08:54:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Release 1.0.6
