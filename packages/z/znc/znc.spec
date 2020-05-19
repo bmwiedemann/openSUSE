@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(zlib)
 Requires(pre):  shadow
-%systemd_requires
+%systemd_ordering
 
 %description
 ZNC is an IRC bouncer with many features like detaching, multiple
@@ -116,7 +116,7 @@ This package contains the Tcl extension to ZNC.
   -DWANT_SYSTEMD=1 \
   -DWANT_PYTHON=1 \
   -DWANT_PYTHON_VERSION=python3 \
-  -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed"
+  -Wno-dev
 %cmake_build
 
 %install
@@ -207,8 +207,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %attr(750,%{name},%{name}) %{_var}/lib/%{name}
 
-%files lang
-%license LICENSE
+%files lang -f %{name}.lang
 %{_datadir}/locale/de_DE/LC_MESSAGES/znc*
 %{_datadir}/locale/es_ES/LC_MESSAGES/znc*
 %{_datadir}/locale/fr_FR/LC_MESSAGES/znc*
@@ -217,7 +216,6 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_datadir}/locale/ru_RU/LC_MESSAGES/znc*
 
 %files perl
-%license LICENSE
 %{_libdir}/%{name}/modperl.so
 %dir %{_libdir}/%{name}/modperl/
 %{_libdir}/%{name}/modperl/ZNC.pm
@@ -226,7 +224,6 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_libdir}/%{name}/perleval.pm
 
 %files python3
-%license LICENSE
 %{_libdir}/%{name}/pyeval.py
 %{_libdir}/%{name}/modpython.so
 %dir %{_libdir}/%{name}/modpython/
@@ -235,11 +232,9 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -s /bin/false -c "znc 
 %{_libdir}/%{name}/modpython/znc_core.py
 
 %files tcl
-%license LICENSE
 %{_libdir}/%{name}/modtcl.so
 
 %files devel
-%license LICENSE
 %{_bindir}/znc-buildmod
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/znc.pc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 08:21:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Use pristine linker flags
+- Use systemd orering to allow working in environments without
+  running systemd
+
+-------------------------------------------------------------------
 Wed May  6 13:33:46 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.0:
