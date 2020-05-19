@@ -17,7 +17,7 @@
 
 
 Name:           websocketpp
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        C++ WebSocket Protocol Library
 License:        BSD-3-Clause
@@ -25,8 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.zaphoyd.com/websocketpp
 Source0:        https://github.com/zaphoyd/websocketpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        websocketpp.pc
-# PATCH-FIX-UPSTREAM -- https://github.com/zaphoyd/websocketpp/pull/814
-Patch0:         Replace-make_shared-with-new-in-some-cases.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -57,7 +55,6 @@ iostreams and one based on Boost Asio.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %if 0%{?suse_version} >= 1310

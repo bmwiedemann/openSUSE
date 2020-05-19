@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 16 14:54:49 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.8.2:
+  * Compatibility: Removes the use of make_shared in a number of
+    cases where it would be incompatible with newer versions of
+    ASIO. Thank you Stefan Floeren for the patch. #810 #814 #862
+    #843 #794 #808
+  * Examples: Update print_client_tls example to remove use of
+    deprecated OpenSSL functions.
+  * CMake: Update cmake installer to better handle dependencies
+    when using g++ on MacOS. Thank you Luca Palano for reporting
+    and a patch. #831
+  * CMake: Update cmake installer to use a variable for the include
+    directory improving the ability of the install to be
+    customized. Thank you Schrijvers Luc and Gianfranco Costamanga
+    for reporting and a patch. #842
+- Drop Replace-make_shared-with-new-in-some-cases.patch, merged
+  upstream
+
+-------------------------------------------------------------------
 Thu May  9 16:54:52 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Replace-make_shared-with-new-in-some-cases.patch to fix
