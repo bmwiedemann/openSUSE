@@ -45,6 +45,8 @@ Requires:       python-six
 Requires:       python-texttable
 Requires:       python-tld
 Requires:       python-urllib3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-passivetotal
 BuildArch:      noarch
 # SECTION test requirements
@@ -66,7 +68,6 @@ BuildRequires:  %{python_module texttable}
 BuildRequires:  %{python_module tld}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
-
 %python_subpackages
 
 %description
@@ -83,16 +84,23 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/wsd_domains
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %python_exec setup.py test
 
+%post
+%python_install_alternative wsd_domains
+
+%postun
+%python_uninstall_alternative wsd_domains
+
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%python3_only %{_bindir}/wsd_domains
+%python_alternative %{_bindir}/wsd_domains
 %{python_sitelib}/*
 
 %changelog

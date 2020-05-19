@@ -39,4 +39,12 @@
     <comment>- Disable python2 build as python-tld is py3 only nowdays</comment>
     <requestid>760392</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ffbd5977fad51a7c51d18344b60e140e</srcmd5>
+    <version>1.0.2</version>
+    <time>1589892418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806810</requestid>
+  </revision>
 </revisionlist>

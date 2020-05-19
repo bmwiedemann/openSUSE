@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 07:25:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Jan  2 10:15:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable python2 build as python-tld is py3 only nowdays
