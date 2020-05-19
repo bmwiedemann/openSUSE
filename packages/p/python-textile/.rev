@@ -74,4 +74,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>772356</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0627135add172f75e121803414e11f7a</srcmd5>
+    <version>4.0.1</version>
+    <time>1589892537</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull pytest-cov and pytest-runner nedlessly
+- Fix the %fdupes call
+
+- %python3_only -&gt; %python_alternative
+- install license</comment>
+    <requestid>806974</requestid>
+  </revision>
 </revisionlist>

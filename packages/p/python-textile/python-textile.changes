@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 13:23:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull pytest-cov and pytest-runner nedlessly
+- Fix the %fdupes call
+
+-------------------------------------------------------------------
+Mon May 18 09:12:28 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+- install license
+
+-------------------------------------------------------------------
 Sat Feb  1 15:14:57 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 4.0.1:

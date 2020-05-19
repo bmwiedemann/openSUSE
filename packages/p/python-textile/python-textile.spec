@@ -17,30 +17,26 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 %define skip_python2 1
 Name:           python-textile
 Version:        4.0.1
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            http://github.com/textile/python-textile
+URL:            https://github.com/textile/python-textile
 Source:         https://files.pythonhosted.org/packages/source/t/textile/textile-%{version}.tar.gz
+BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module regex >= 1.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-html5lib >= 1.0.1
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-regex
-BuildRequires:  %{python_module setuptools}
-%if %{with test}
-BuildRequires:  %{python_module html5lib >= 1.0.1}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module regex >= 1.0}
-%endif
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -53,22 +49,29 @@ MathML translation, Python code coloring and much more.
 
 %prep
 %setup -q -n textile-%{version}
+sed -i -e '/pytest-runner/d' setup.py
 
 %build
 %python_build
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+rm pytest.ini
+%pytest
 
 %install
 %python_install
-%fdupes %buildroot
+%python_clone -a %{buildroot}%{_bindir}/pytextile
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pytextile
+
+%postun
+%python_uninstall_alternative pytextile
 
 %files %{python_files}
-%defattr(-,root,root,-)
+%license LICENSE.txt
 %{python_sitelib}/*
-%python3_only %{_bindir}/pytextile
+%python_alternative %{_bindir}/pytextile
 
 %changelog
