@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 18 07:46:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.3:
+  * UTF16 filename support and windows unicode support
+  * Fix extra_bytes selective decompression PDAL/PDAL#2799 #62
+  * Compatibility mode fix #60
+
+-------------------------------------------------------------------
 Tue Mar 24 07:01:31 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Disable RPATH for building

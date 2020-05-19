@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>787694</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a17928a5a90cb1b70d9d3efab3c9620f</srcmd5>
+    <version>3.4.3</version>
+    <time>1589892474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.3:
+  * UTF16 filename support and windows unicode support
+  * Fix extra_bytes selective decompression PDAL/PDAL#2799 #62
+  * Compatibility mode fix #60</comment>
+    <requestid>806783</requestid>
+  </revision>
 </revisionlist>

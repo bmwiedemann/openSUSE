@@ -17,11 +17,9 @@
 #
 
 
-#
 %define         sover 8
-
 Name:           laszip
-Version:        3.4.1
+Version:        3.4.3
 Release:        0
 Summary:        Compression library supporting ASPRS LAS format data
 License:        LGPL-2.1-or-later
@@ -31,7 +29,6 @@ Source0:        https://github.com/LASzip/LASzip/releases/download/%{version}/la
 Source1:        https://github.com/LASzip/LASzip/releases/download/%{version}/laszip-src-%{version}.tar.gz.sha256sum
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A free product of rapidlasso GmbH - quickly turns bulky LAS files into
@@ -95,22 +92,13 @@ data.
 
 %install
 %cmake_install
-# Do not ship any static libraries or .la files
-find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
-rm -rf %{buildroot}/usr/lib/debug/
-
-# No more available in 3?
-#%%check
-#make %%{?_smp_mflags} check
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover}  -p /sbin/ldconfig
-
 %post -n lib%{name}_api%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}_api%{sover}  -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root)
 %license COPYING
 %doc ChangeLog AUTHORS
 %dir %{_includedir}/%{name}
@@ -120,23 +108,13 @@ rm -rf %{buildroot}/usr/lib/debug/
 %{_libdir}/lib%{name}_api.so
 
 %files -n lib%{name}%{sover}
-%defattr(-,root,root)
 %doc ChangeLog AUTHORS
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{_libdir}/lib%{name}.so.*
 
 %files -n lib%{name}_api%{sover}
-%defattr(-,root,root)
 %doc ChangeLog AUTHORS
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
 %license COPYING
-%else
-%doc COPYING
-%endif
 %{_libdir}/lib%{name}_api.so.*
 
 %changelog
