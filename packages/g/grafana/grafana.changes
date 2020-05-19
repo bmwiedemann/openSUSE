@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 14 13:57:48 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Add instructions for patching the Grafana javascript frontend.
+
+-------------------------------------------------------------------
 Tue May  5 17:34:34 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - BuildRequires golang(API) instead of go metapackage version range

@@ -26,4 +26,15 @@ grunt installed.  To get set up, run:
 Then, to package a new release of Grafana, run `make` then `osc ci`
 and you should be good.
 
+If you have a patch for the Javascript frontend to apply you need
+to do the following:
+
+- Create the patch and add it with `osc add <PATCH>` to the repo
+- Open the Makefile
+- Add after the `cd $$basename && \` the patch with:
+  `patch -p1 < ../../000x-<NAME>.patch && \`
+- Do NOT add the patch to the Specfile.
+- Then use the process of building Grafana as described above.
+
 Please direct any questions to Tim Serong <tserong@suse.com>
+If Tim is not available you may also contact Enno Gotthold <egotthold@suse.de>
