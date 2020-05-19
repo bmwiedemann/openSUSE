@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 18 08:08:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to new upstream release v4.15
+  * Include all utilies within each man page
+  * Add in 'command_pre' and 'command_post' configuration options
+  * Fix 'Add Host' menu error finding 'resolved_names'
+  * Ensure lib path is added to range tests to find the libraries
+  * Mark permission test as TODO as it appears to be inconsistent
+
+-------------------------------------------------------------------
 Thu Aug 22 18:34:32 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - Update to new upstream release v4.14

@@ -17,8 +17,8 @@
 
 
 Name:           clusterssh
-%define dullver 4.14
-Version:        4.14
+%define dullver 4.15
+Version:        4.15
 Release:        0
 Summary:        Multiplex SSH sessions onto many hosts using multiple terminals
 License:        GPL-1.0-or-later OR Artistic-1.0
