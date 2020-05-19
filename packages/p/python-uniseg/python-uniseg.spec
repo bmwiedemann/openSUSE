@@ -1,7 +1,7 @@
 #
 # spec file for package python-uniseg
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,15 +47,22 @@ sed -i -e '/^#!\//, 1d' uniseg/*test.py uniseg/samples/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/uniseg-dbpath
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative uniseg-dbpath
+
+%postun
+%python_uninstall_alternative uniseg-dbpath
+
 %files %{python_files}
 %license LICENSE
 %doc README
-%python3_only %{_bindir}/uniseg-dbpath
+%python_alternative %{_bindir}/uniseg-dbpath
 %{python_sitelib}/*
 
 %changelog
