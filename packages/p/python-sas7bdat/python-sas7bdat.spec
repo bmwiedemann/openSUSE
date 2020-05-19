@@ -1,7 +1,7 @@
 #
 # spec file for package python-sas7bdat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,15 +23,16 @@ Release:        0
 Summary:        A sas7bdat file reader for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://bitbucket.org/jaredhobbs/sas7bdat
+URL:            https://bitbucket.org/jaredhobbs/sas7bdat
 Source:         https://files.pythonhosted.org/packages/source/s/sas7bdat/sas7bdat-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.8.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,18 +55,25 @@ sed -i 's/\r$//' README.md
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/sas7bdat_to_csv
 
-%{python_expand sed -i "s|^#!/usr/bin/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/sas7bdat.py
+%{python_expand sed -i "s|^#!%{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/sas7bdat.py
 chmod a+x %{buildroot}%{$python_sitelib}/sas7bdat.py
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
+%post
+%python_install_alternative sas7bdat_to_csv
+
+%postun
+%python_uninstall_alternative sas7bdat_to_csv
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/sas7bdat_to_csv
+%python_alternative %{_bindir}/sas7bdat_to_csv
 %{python_sitelib}/*
 
 %changelog
