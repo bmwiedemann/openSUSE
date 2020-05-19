@@ -20,9 +20,9 @@
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%{VERSION}' kernel-source)
 
-%define tsversion      19.08.31
+%define tsversion      20.03.20
 %define pbversion      17.05.11
-%define ssversion      1.0
+%define ssversion      1.3
 
 Name:           cpupower
 # Use this as version when things are in mainline kernel
@@ -48,6 +48,7 @@ Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 
 #turbostat patches
 Patch22:        turbostat_makefile_fix_asm_header.patch
+Patch23:        remove_bits_h.patch
 
 # x86_energy_perf patches
 # Fixes bsc#1048546:
@@ -57,6 +58,7 @@ Patch30:        x86_perf_makefile_fix_asm_header.patch
 Patch50:        intel-speed-select_remove_DATE_TIME.patch
 
 BuildRequires:  gettext-tools
+BuildRequires:  libcap-devel
 BuildRequires:  pciutils
 BuildRequires:  pciutils-devel
 
@@ -103,6 +105,7 @@ powersave module.
 
 cd ../turbostat-%{tsversion}
 %patch22 -p1
+%patch23 -p1
 
 cd ../x86_energy_perf_policy-%{pbversion}
 %patch30 -p1

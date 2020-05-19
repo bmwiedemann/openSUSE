@@ -1,0 +1,15 @@
+---
+ msr-index.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/msr-index.h
++++ b/msr-index.h
+@@ -2,7 +2,7 @@
+ #ifndef _ASM_X86_MSR_INDEX_H
+ #define _ASM_X86_MSR_INDEX_H
+ 
+-#include <linux/bits.h>
++#include <vdso/bits.h>
+ 
+ /*
+  * CPU model specific register (MSR) numbers.
