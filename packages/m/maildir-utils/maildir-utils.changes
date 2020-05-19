@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 17 18:24:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.6:
+  * mu: always sort descending within threads
+  * mu-server: disable readline support for now 
+  * Fix make-mu4e-context-account 
+  * mu4e-compose: fix external use (`compose-mail') 
+  * mu4e: support 'no trash flag' for all mark-for-trash 
+
+-------------------------------------------------------------------
 Mon May 11 06:47:14 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.5:

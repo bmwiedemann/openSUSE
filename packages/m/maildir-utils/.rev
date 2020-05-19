@@ -204,4 +204,17 @@
   * mu4e.texi: Add note about s/mime</comment>
     <requestid>802601</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b04155f6a0728527d32dfa427bf58362</srcmd5>
+    <version>1.4.6</version>
+    <time>1589892324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.6:
+  * mu: always sort descending within threads
+  * mu-server: disable readline support for now 
+  * Fix make-mu4e-context-account 
+  * mu4e-compose: fix external use (`compose-mail') 
+  * mu4e: support 'no trash flag' for all mark-for-trash</comment>
+    <requestid>806278</requestid>
+  </revision>
 </revisionlist>
