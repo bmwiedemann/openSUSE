@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 08:29:01 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Update jk.conf: [bsc#1167896]
+  * Specify the location of JkShmFile.
+  * Update tomcat-webapps paths.
+
+-------------------------------------------------------------------
 Mon May 11 16:22:00 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix Aliases to be compatible with the tomcat example URLs [bsc#1167896]

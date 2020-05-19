@@ -328,4 +328,14 @@
   * Update: Common: Update release script for migration to git. (forwarded request 802752 from pmonrealgonzalez)</comment>
     <requestid>805247</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0698da72b719d8ed3c3acc8085c8349e</srcmd5>
+    <version>1.2.48</version>
+    <time>1589892542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update jk.conf: [bsc#1167896]
+  * Specify the location of JkShmFile.
+  * Update tomcat-webapps paths. (forwarded request 806860 from pmonrealgonzalez)</comment>
+    <requestid>806981</requestid>
+  </revision>
 </revisionlist>
