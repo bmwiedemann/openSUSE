@@ -1,7 +1,7 @@
 #
 # spec file for package python-unidiff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,13 @@ Release:        0
 Summary:        Unified diff parsing/metadata extraction library
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/matiasb/python-unidiff
+URL:            https://github.com/matiasb/python-unidiff
 Source:         https://github.com/matiasb/python-unidiff/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -45,15 +47,22 @@ Python library to parse and interact with unified diff data.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/unidiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative unidiff
+
+%postun
+%python_uninstall_alternative unidiff
+
 %files %{python_files}
 %doc HISTORY README.rst
 %license LICENSE
-%python3_only %{_bindir}/unidiff
+%python_alternative %{_bindir}/unidiff
 %{python_sitelib}/*
 
 %changelog
