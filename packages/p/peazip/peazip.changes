@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon May 18 10:45:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.3.0
+  BACKEND:
+  * Pea 0.71 with PEA file format revision 1.2
+  CODE:
+  * Various fixes
+  FILE MANAGER:
+  * Added BLAKE2S and BLAKE2B hashes to
+  * File manager's hash (for file hashing and deduplication)
+  * File tools set of hashes
+  * Optional hash for raw file split
+  * Optional hash for PEA format
+  * Added support for opening as archive modern Linux package
+    formats: .appimage, Ubuntu's .snap, and FreeDesktop Listaller
+    .ipk
+  * Browser now uses smarter sorting for file/directory names
+  * By default now PeaZip tries to open archives containing
+    errors
+  * Errors detected browsing the archive are now notified in
+    status bar, even if it is possible to list archive's content
+  * "Try to open archives contining errors" can be disabled in
+    Options > Settings > Archive manager
+  * Fixed some cases not allowing secure deletion and zero
+    deletion of files
+  * Improved deletion of temporary work files
+  EXTRACTION and ARCHIVING:
+  * Added option to not ask confirmation for delete after
+    archiving/extraction, in Options > Settings > Archive manager
+  * Delete is not triggered if errors are detected
+  * Delete is triggered after extraction only in case of
+    complete extraction (extract all)
+  * Added option to set archive time from most recent file in
+    archive, for all 7z/p7zip formats
+  * Added option to improve Brotli compression using more memory
+    at cost of small impact on speed (archives created with this
+    option may not be compatible with some Brotli decompressors)
+  * Added option to improve Zstandard compression using more
+    memory at cost of small impact on speed
+  * Added new advanced options to custom compression settings
+    files, keeping compatibility with setting files created with
+    older versions
+  * Presets were rebuilt accordingly new format
+  * Two new presets: Medium compression with 7z fast, and Fast
+    compression with 7Z fastest
+  * It is now possible to cancel all tasks of a sequence in the
+    case one of the archiving / extraction task fails
+
+-------------------------------------------------------------------
 Wed May  6 09:12:22 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.2.2
