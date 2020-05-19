@@ -1,7 +1,7 @@
 #
 # spec file for package python-userpath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-distro
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
@@ -49,16 +51,23 @@ with no elevated privileges required.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/userpath
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LC_ALL=C.UTF-8
 %pytest
 
+%post
+%python_install_alternative userpath
+
+%postun
+%python_uninstall_alternative userpath
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE-APACHE LICENSE-MIT
-%python3_only %{_bindir}/userpath
+%python_alternative %{_bindir}/userpath
 %{python_sitelib}/*
 
 %changelog
