@@ -306,18 +306,21 @@ CONFIGURE_ARGS="--with-cflags='%{optflags}' $CONFIGURE_ARGS"
 
 # the actual vagrant binary generated from the binstub
 install -D -m 755 %{SOURCE96} %{buildroot}%{_bindir}/vagrant
-sed -i 's|@vagrant_embedded_dir@|%{vagrant_embedded_dir}|' %{buildroot}%{_bindir}/vagrant
 gem_path=$(ruby.%{rb_ruby_suffix} -e "print Gem.path.reject{|path| path.include? 'home'}.join(':')")
-sed -i "s|@ruby_vagrant_gem_path@|$gem_path:%{vagrant_plugin_dir}|" %{buildroot}%{_bindir}/vagrant
+sed -i -e "s|@vagrant_embedded_dir@|%{vagrant_embedded_dir}|" \
+       -e "s|@ruby_vagrant_gem_path@|$gem_path:%{vagrant_plugin_dir}|" \
+       -e "s|@vagrant_rb_ruby_suffix@|%{vagrant_rb_ruby_suffix}|" \
+    %{buildroot}%{_bindir}/%{name}
 
 # install the rpm macros & expand the name, name-version and vagrant_rb_* macros
 %global macros_vagrant %{_rpmconfigdir}/macros.d/macros.%{name}
 install -D -m 0644 %{SOURCE97} %{buildroot}%{macros_vagrant}
-sed -i "s|%%{name}|%{name}|" %{buildroot}%{macros_vagrant}
-sed -i "s|%{name}-%%{version}|%{name}-%{version}|" %{buildroot}%{macros_vagrant}
-sed -i "s|%%{rb_build_versions}|%{rb_build_versions}|" %{buildroot}%{macros_vagrant}
-sed -i "s|%%{rb_build_abi}|%{rb_build_abi}|" %{buildroot}%{macros_vagrant}
-sed -i "s|%%{rb_ruby_suffix}|%{rb_ruby_suffix}|" %{buildroot}%{macros_vagrant}
+sed -i -e "s|%%{name}|%{name}|" \
+       -e "s|%{name}-%%{version}|%{name}-%{version}|" \
+       -e "s|%%{rb_build_versions}|%{rb_build_versions}|" \
+       -e "s|%%{rb_build_abi}|%{rb_build_abi}|" \
+       -e "s|%%{rb_ruby_suffix}|%{rb_ruby_suffix}|" \
+    %{buildroot}%{macros_vagrant}
 
 # install post, transfiletrigerin & transfiletriggerun scriptlets
 %global post_rb %{vagrant_embedded_dir}/bin/vagrant_post.rb

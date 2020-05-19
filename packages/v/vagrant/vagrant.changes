@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 14:17:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Use the correct ruby in the vagrant binstub as well
+
+-------------------------------------------------------------------
 Mon May 11 17:58:59 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.2.9

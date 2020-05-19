@@ -57,5 +57,4 @@ fi
 export VAGRANT_DISABLE_VBOXSYMLINKCREATE
 
 # Call the actual Vagrant bin with our arguments
-exec ruby "${VAGRANT_EXECUTABLE}" "$@"
-
+exec /usr/bin/ruby.@vagrant_rb_ruby_suffix@ "${VAGRANT_EXECUTABLE}" "$@"
