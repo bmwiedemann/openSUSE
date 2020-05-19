@@ -41,4 +41,13 @@
   - Fix new attrs compat</comment>
     <requestid>757712</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>02312a7aa002f79fd5bde12b38faa379</srcmd5>
+    <version>1.0.3</version>
+    <time>1589892249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependency to require new attrs as the pkg use their
+  syntax</comment>
+    <requestid>804935</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dephell-markers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,18 @@ Version:        1.0.3
 Release:        0
 Summary:        Dephell library to use environment markers (PEP-496)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dephell/dephell_markers
 Source:         https://files.pythonhosted.org/packages/source/d/dephell_markers/dephell_markers-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs
+Requires:       python-attrs >= 19.2
 Requires:       python-dephell-specifier
 Requires:       python-packaging
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module attrs >= 19.2}
 BuildRequires:  %{python_module dephell-specifier}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
