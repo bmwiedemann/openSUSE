@@ -35,6 +35,7 @@ Patch0:         python-vdirsyncer-fix-tests.patch
 Patch1:         python-vdirsyncer-shift-deadline.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
@@ -48,6 +49,8 @@ Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests >= 2.4.1
 Requires:       python-requests-toolbelt >= 0.4.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-requests-oauthlib
 BuildArch:      noarch
 # SECTION test requirements
@@ -84,6 +87,7 @@ rm -rf vdirsyncer.egg-info
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/vdirsyncer
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_userunitdir}
@@ -95,10 +99,16 @@ export DETERMINISTIC_TESTS=true
 # test_verbosity - click changed syntax and returns different quotes
 %pytest -k 'not test_legacy_status and not test_open_graphical_browser and not test_verbosity'
 
+%post
+%python_install_alternative vdirsyncer
+
+%postun
+%python_uninstall_alternative vdirsyncer
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/vdirsyncer
+%python_alternative %{_bindir}/vdirsyncer
 %{python_sitelib}/*
 %{_userunitdir}/vdirsyncer.service
 %{_userunitdir}/vdirsyncer.timer
