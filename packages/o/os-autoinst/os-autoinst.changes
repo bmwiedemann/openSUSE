@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 19 11:24:46 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1589880721.55a008dd:
+  * Test error handling of loading test schedule
+  * Improve tests for running a test
+  * Distinguish errors when loading tests from other errors of os-autoinst
+  * Start command server after loading tests
+  * Move `serialize_state` to bmwqemu to use it not only within the backend
+  * Add conditional skipping of IPMI selftests
+
+-------------------------------------------------------------------
 Sun May 17 03:24:42 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1589560350.f30cc856:
