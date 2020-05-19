@@ -1,7 +1,7 @@
 #
 # spec file for package python-webruntime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dialite
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dialite}
@@ -51,15 +53,22 @@ desktop app, such as XUL (based on Firefox) or NW.js.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/webruntime
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative webruntime
+
+%postun
+%python_uninstall_alternative webruntime
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/webruntime
+%python_alternative %{_bindir}/webruntime
 %{python_sitelib}/*
 
 %changelog
