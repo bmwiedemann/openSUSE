@@ -37,6 +37,8 @@ Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-suds-jurko
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,15 +53,22 @@ This library implements part of the TransIP API in Python.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/transip-api
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # testConstructor needs network connection
 %pytest -k 'not (test_constructor or testConstructor)'
 
+%post
+%python_install_alternative transip-api
+
+%postun
+%python_uninstall_alternative transip-api
+
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/transip-api
+%python_alternative %{_bindir}/transip-api
 
 %changelog
