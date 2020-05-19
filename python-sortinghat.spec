@@ -32,7 +32,19 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sort
 # CoerceToBool(), thus disabling
 Patch0:         python-sortinghat-gh-121-workaround.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
+Requires:       python-PyMySQL >= 0.7.0
+Requires:       python-PyYAML >= 3.12
+Requires:       python-SQLAlchemy >= 1.2
+Requires:       python-pandas >= 0.18.1
+Requires:       python-python-dateutil >= 2.6.0
+Requires:       python-requests >= 2.9
+Requires:       python-urllib3 >= 1.22
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyMySQL >= 0.7.0}
@@ -46,17 +58,6 @@ BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module requests >= 2.9}
 BuildRequires:  mariadb-rpm-macros
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Jinja2
-Requires:       python-PyMySQL >= 0.7.0
-Requires:       python-PyYAML >= 3.12
-Requires:       python-SQLAlchemy >= 1.2
-Requires:       python-pandas >= 0.18.1
-Requires:       python-python-dateutil >= 2.6.0
-Requires:       python-requests >= 2.9
-Requires:       python-urllib3 >= 1.22
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -94,6 +95,15 @@ sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/stackalytics2sh
+%python_clone -a %{buildroot}%{_bindir}/mozilla2sh
+%python_clone -a %{buildroot}%{_bindir}/mailmap2sh
+%python_clone -a %{buildroot}%{_bindir}/grimoirelab2sh
+%python_clone -a %{buildroot}%{_bindir}/gitdm2sh
+%python_clone -a %{buildroot}%{_bindir}/eclipse2sh
+%python_clone -a %{buildroot}%{_bindir}/sortinghat
+%python_clone -a %{buildroot}%{_bindir}/sh2mg
+%python_clone -a %{buildroot}%{_bindir}/mg2sh
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -126,17 +136,39 @@ sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
 %mysql_testserver_stop
 exit $exit_code
 
+%post
+%python_install_alternative stackalytics2sh
+%python_install_alternative mozilla2sh
+%python_install_alternative mailmap2sh
+%python_install_alternative grimoirelab2sh
+%python_install_alternative gitdm2sh
+%python_install_alternative eclipse2sh
+%python_install_alternative sortinghat
+%python_install_alternative sh2mg
+%python_install_alternative mg2sh
+
+%postun
+%python_uninstall_alternative stackalytics2sh
+%python_uninstall_alternative mozilla2sh
+%python_uninstall_alternative mailmap2sh
+%python_uninstall_alternative grimoirelab2sh
+%python_uninstall_alternative gitdm2sh
+%python_uninstall_alternative eclipse2sh
+%python_uninstall_alternative sortinghat
+%python_uninstall_alternative sh2mg
+%python_uninstall_alternative mg2sh
+
 %files %{python_files}
 %doc NEWS README.md
-%python3_only %{_bindir}/mg2sh
-%python3_only %{_bindir}/sh2mg
-%python3_only %{_bindir}/sortinghat
-%python3_only %{_bindir}/eclipse2sh
-%python3_only %{_bindir}/gitdm2sh
-%python3_only %{_bindir}/grimoirelab2sh
-%python3_only %{_bindir}/mailmap2sh
-%python3_only %{_bindir}/mozilla2sh
-%python3_only %{_bindir}/stackalytics2sh
+%python_alternative %{_bindir}/mg2sh
+%python_alternative %{_bindir}/sh2mg
+%python_alternative %{_bindir}/sortinghat
+%python_alternative %{_bindir}/eclipse2sh
+%python_alternative %{_bindir}/gitdm2sh
+%python_alternative %{_bindir}/grimoirelab2sh
+%python_alternative %{_bindir}/mailmap2sh
+%python_alternative %{_bindir}/mozilla2sh
+%python_alternative %{_bindir}/stackalytics2sh
 %{python_sitelib}/*
 
 %changelog
