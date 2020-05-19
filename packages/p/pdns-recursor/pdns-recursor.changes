@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 09:45:18 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.3.1
+  * fixes an issue where records in the answer section of
+    a NXDOMAIN response lacking an SOA were not properly validated
+    (CVE-2020-12244, bsc#1171553)
+  * fixes an issue where invalid hostname on the server can result in
+    disclosure of invalid memory (CVE-2020-10030, bsc#1171553)
+  * fixes an issue in the DNS protocol has been found that allows
+    malicious parties to use recursive DNS services to attack third
+    party authoritative name servers (CVE-2020-10995, bsc#1171553)
+
+-------------------------------------------------------------------
 Sat Mar  7 12:14:54 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - fixed configuration to make the service start
