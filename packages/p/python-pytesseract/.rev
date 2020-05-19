@@ -65,4 +65,12 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>800518</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a1d168abab9d5f735d819344354e285</srcmd5>
+    <version>0.3.4</version>
+    <time>1589892243</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>804002</requestid>
+  </revision>
 </revisionlist>

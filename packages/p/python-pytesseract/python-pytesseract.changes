@@ -1,6 +1,10 @@
 -------------------------------------------------------------------
 Tue May  5 22:00:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
+- Update to 0.3.4:
+  - Support for WebP images
+  - Support for python 3.8 (CI testing)
+  - Improved cli error reporting
 - Don't use %python3_only command, but properly use alternatives.
 
 -------------------------------------------------------------------

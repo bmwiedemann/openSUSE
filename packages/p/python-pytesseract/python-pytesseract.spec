@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytesseract
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
 License:        GPL-3.0-only
