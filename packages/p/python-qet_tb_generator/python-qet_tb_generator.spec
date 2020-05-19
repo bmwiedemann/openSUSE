@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-qt5
 Requires:       qelectrotech
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,12 +55,19 @@ sed -i 's/qet_tb_generator=src.main:main/qet_tb_generator=qet_tb_generator.main:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/%{modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative %{modname}
+
+%postun
+%python_uninstall_alternative %{modname}
 
 %files %{python_files}
 %doc README
 %license LICENSE.txt
-%python3_only %{_bindir}/%{modname}
+%python_alternative %{_bindir}/%{modname}
 %{python_sitelib}/qet_tb_generator*
 
 %changelog
