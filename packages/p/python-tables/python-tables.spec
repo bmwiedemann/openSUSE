@@ -1,7 +1,7 @@
 #
 # spec file for package python-tables
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ BuildRequires:  python3-numpydoc
 BuildRequires:  python3-sphinx_rtd_theme
 Requires:       python-numexpr >= 2.6.2
 Requires:       python-numpy >= 1.9.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     bzip2
 Recommends:     lzo
 %python_subpackages
@@ -76,6 +78,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pttree
+%python_clone -a %{buildroot}%{_bindir}/ptrepack
+%python_clone -a %{buildroot}%{_bindir}/ptdump
+%python_clone -a %{buildroot}%{_bindir}/pt2to3
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 pushd doc
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
@@ -92,14 +98,26 @@ $python -B -m tables.tests.test_all
 }
 popd
 
+%post
+%python_install_alternative pttree
+%python_install_alternative ptrepack
+%python_install_alternative ptdump
+%python_install_alternative pt2to3
+
+%postun
+%python_uninstall_alternative pttree
+%python_uninstall_alternative ptrepack
+%python_uninstall_alternative ptdump
+%python_uninstall_alternative pt2to3
+
 %files %{python_files}
 %doc README.rst RELEASE_NOTES.txt THANKS
 %license LICENSE.txt
 %license LICENSES/*
-%python3_only %{_bindir}/pt2to3
-%python3_only %{_bindir}/ptdump
-%python3_only %{_bindir}/ptrepack
-%python3_only %{_bindir}/pttree
+%python_alternative %{_bindir}/pt2to3
+%python_alternative %{_bindir}/ptdump
+%python_alternative %{_bindir}/ptrepack
+%python_alternative %{_bindir}/pttree
 %{python_sitearch}/tables/
 %{python_sitearch}/tables-%{version}-py*.egg-info
 
