@@ -40,6 +40,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.11
 Requires:       python-ansicolor >= 0.2.4
 Requires:       python-chardet >= 2.3.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.0.4
@@ -71,15 +73,22 @@ sed -i -e '/^#!\//, 1d' vint/_bundles/vimlparser.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/vint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python setup.py test
 
+%post
+%python_install_alternative vint
+
+%postun
+%python_uninstall_alternative vint
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python3_only %{_bindir}/vint
+%python_alternative %{_bindir}/vint
 %{python_sitelib}/*
 
 %changelog
