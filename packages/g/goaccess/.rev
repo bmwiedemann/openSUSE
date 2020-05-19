@@ -294,4 +294,41 @@
     <comment></comment>
     <requestid>783006</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27c03cc861b595ed54098c47cd8dd8e6</srcmd5>
+    <version>1.4</version>
+    <time>1589892376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Added a caching storage mechanism to improve parsing raw data and data
+    rendering.
+  * Added a mechanism to avoid counting duplicate data when restoring persisted
+    data from disk.
+  * Added additional option to the HTML report to set a maximum number of items
+    per page to 3.
+  * Added a list of podcast-related user agents under '%sysconfdir%'.
+  * Added 'Android 10' to the list of Android codenames.
+  * Added a 'widescreen' layout to the HTML report (e.g., 4K TV/KPI Dashboard).
+  * Added 'Beaker', 'Brave', and 'Firefox Focus' to the list of browsers
+  * Added command line option --user-name=username to avoid running GoAccess as
+    root when outputting a real-time report.
+  * Added 'DuckDuckGo' and 'MSNBot' browsers to the browsers.list.
+  * Added 'facebookexternalhit' to the default crawler list.
+  * Added German translation (DE).
+  * Added Kubernetes Nginx Ingress Log Format to the default config file.
+  * Added 'macOS Catalina' to the list of OSX codenames.
+  * Added minor CSS updates to HTML report.
+  * Added missing header '&lt;sys/socket.h&gt;' to fix FreeBSD build
+  * Added new 'Edg' token to the list of browsers.
+  * Added '--no-ip-validation' command line to disable client IP validation
+  * Added '--persist' and '--restore' options to persist to disk and restore a
+    dump from disk.
+  * Added Portuguese translation (pt-BR)
+  * Added Swedish translation (SV)
+  * Added the ability to parse server cache status and a new panel to display
+    those metrics.
+  * Changed accumulated time to work by default on '--persist' and '--restore'.
+  * Changed back how the hits and visitors percentage is calculated to be more</comment>
+    <requestid>806766</requestid>
+  </revision>
 </revisionlist>

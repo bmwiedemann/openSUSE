@@ -19,14 +19,13 @@
 
 
 Name:           goaccess
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://goaccess.io/
 Source:         http://tar.goaccess.io/goaccess-%{version}.tar.gz
-Patch0:         bin2c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -43,14 +42,12 @@ for system administrators that require a visual report on the fly.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \
-    --enable-geoip \
     --enable-utf8
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -65,5 +62,6 @@ make %{?_smp_mflags}
 %dir %{_sysconfdir}/goaccess/
 %config %{_sysconfdir}/goaccess/browsers.list
 %config %{_sysconfdir}/goaccess/goaccess.conf
+%{_sysconfdir}/goaccess/podcast.list
 
 %changelog
