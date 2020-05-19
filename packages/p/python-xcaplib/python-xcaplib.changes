@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 18 09:03:48 UTC 2020 - pgajdos@suse.com
+
+- fix dependency declaration
+
+-------------------------------------------------------------------
+Mon May 18 07:52:00 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.2.2
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Mon May 18 07:25:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sun Nov 17 20:35:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.2.1
