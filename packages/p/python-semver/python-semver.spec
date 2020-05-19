@@ -31,6 +31,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
 Conflicts:      python-node-semver
 BuildArch:      noarch
@@ -48,16 +50,23 @@ See also http://semver.org/
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pysemver
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pysemver
+
+%postun
+%python_uninstall_alternative pysemver
+
 %files %{python_files}
 %doc README.rst
 %{python_sitelib}/semver*
 %pycache_only %{python_sitelib}/__pycache__/semver*
-%python3_only %{_bindir}/pysemver
+%python_alternative %{_bindir}/pysemver
 
 %changelog
