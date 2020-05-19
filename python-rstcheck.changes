@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Mar 10 11:19:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable testing in this package:
