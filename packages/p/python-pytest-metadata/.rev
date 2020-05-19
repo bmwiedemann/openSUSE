@@ -16,4 +16,13 @@
   * Add environment variables for Bitbucket pipelines (CI).</comment>
     <requestid>676058</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d735edd34adaf7ecf41ccc4193d0e81b</srcmd5>
+    <version>1.9.0</version>
+    <time>1589892445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Add --metadata-from-json argument to support passing metadata as json.</comment>
+    <requestid>806846</requestid>
+  </revision>
 </revisionlist>
