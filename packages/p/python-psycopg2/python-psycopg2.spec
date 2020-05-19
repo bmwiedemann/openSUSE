@@ -27,17 +27,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycop
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # newer postgresql packages pg_config in -server-devel
-%if ( 0%{?sle_version} > 150100 && 0%{?is_opensuse} ) || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel >= 9.1
 %else
 BuildRequires:  postgresql-devel >= 9.1
 %endif
-BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} > 1500
-BuildRequires:  postgresql-server-devel
-%endif
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+%if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Suggests:       postgresql-server
 %endif
 %python_subpackages
