@@ -1,7 +1,7 @@
 #
 # spec file for package python-user_agent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,19 @@ Release:        0
 Summary:        User-Agent generator for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/lorien/user_agent
-Source:         https://pypi.io/packages/source/u/user_agent/user_agent-%{version}.tar.gz
+URL:            https://github.com/lorien/user_agent
+Source:         https://files.pythonhosted.org/packages/source/u/user_agent/user_agent-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-six
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,14 +49,21 @@ This module generates random, valid web user agents.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ua
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative ua
+
+%postun
+%python_uninstall_alternative ua
+
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/ua
+%python_alternative %{_bindir}/ua
 %{python_sitelib}/*
 
 %changelog
