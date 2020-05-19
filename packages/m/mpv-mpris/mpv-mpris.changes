@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon May 18 07:30:32 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to mpv-mpris 0.5:
+  * Fixed some glib warnings
+  * Uninitialise glib objects on shutdown
+  * Fix dbus names with multiple instances
+  * Use YouTube thumbnails as mpris:artUrl when playing YouTube videos
+
+-------------------------------------------------------------------
+Sat Jan 18 11:12:47 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- init, 0.4
