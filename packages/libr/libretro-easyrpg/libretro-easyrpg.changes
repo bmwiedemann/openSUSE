@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon May 11 08:56:20 UTC 2020 - i@guoyunhe.me
+
+- Remove unneeded SDL dependencies
+- Update to version 0~git20200510:
+  * fmtlib: Fix README and MorphOS
+  * Require fmt 5.3 - fix header logging
+  * Game classes use fmtlib
+  * Various - use fmtlib
+  * Bitmap - use fmtlib logging
+  * cache.cpp - use fmtlib
+  * exe_reader and filefinder - use fmtlib
+  * Font and messages - use fmtlib
+  * Audio - use fmtlib logging
+  * Image files - use fmtlib
+  * Scenes and output itself - use fmtlib logging
+  * player.cpp: use fmtlib
+  * SDL1 and 2 UI: use fmtlib
+  * Platforms: migrate to fmtlib logging
+  * Window_NumberInput use fmtlib
+  * Remove unused format_string function in output.cpp
+  * Convert a few complicated examples to fmtlib
+  * Fix output test and vita
+  * Add fmt to platform makefiles
+  * Optimize log prefix handling
+  * Use fmtlib for Output logger
+
+-------------------------------------------------------------------
+Sun May 10 07:06:33 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200507:
+  * Move leading comma back to trailing comma.
+  * Fix syntax error in libretro port
+
+-------------------------------------------------------------------
+Thu May  7 11:36:17 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Switch source to upstream instead of libretro's fork
+- Update to version 0~git20200505:
+  * Add FlatUniqueMultiMap generic container - use for input buttons
+  * Record only non system buttons
+  * StdClock: always use steady_clock
+  * Fix rebase whitespaces
+  * Use SDL2 on MorphOS
+  * Amiga: Makefile update
+  * Amiga: add a cmath wrapper for OS4
+  * Add Wii Platform Clock
+  * Input make repeat times constexpr
+  * Move recording logic into Input::Source
+  * Refactor initialization and storage of input mappings
+  * Add InputMappingArray Class
+  * Flatten Input::dir_buttons array
+  * Flatten Input::buttons vector
+  * Add EnumTags for input keys
+  * Move sdl2 version check to build system - require >= 2.0.5
+  * Inline more baseui functions
+  * Fix memory leaks in SDL2 cleanup
+  * Devirtualize BaseUi::IsFullscreen()
+  * Regression fix: Reintroduce edge-case: When a 2k ShowPicture command is used in 2k3<1.10 the top_trans must be copied into bottom_trans.
+  * Bitmap: Initialize pixels as nullptr. Don't crash anymore when the image file has an unsupported magic number.
+  * Fix canonical path logic not working anymore when the path is the root directory.
+  * Remove 2 unused functions
+  * Remove BaseUi::Resize()
+  * Sdl2Ui - remove mode_changing - not needed anymore
+  * SDL2Ui - remove toggle_fs_available
+  * Some SDL2 UI cleanups
+  * Sdl1 - Don't use time subsystem
+  * Remove some old sdl version code and require 2.0.8
+  * 3ds,vita,switch - remove unused Begin/End ScreenCapture
+  * Remove BaseUI::Begin/EndDisplayModeChange()
+  * Don't force vsync for Mac OSX
+  * Disable SDL2 timer subsystem.
+  * Refactor move type random
+  * Add catalan and turkish play store entries
+  * Add catalan translation, thanks @fdelapena Update pt-BR translation
+  * Add maintainer script for version updates
+  * Change version to 0.6.2
+  * Fix rounding bug in scroll with map picture offset adjustment
+  * Battle 2k: Prevent crash when battle action is NULL and ask the user to report a bug when this happens.
+  * Move __MORPHOS_SHAREDLIBS into the Makefile for MorphOS
+
+-------------------------------------------------------------------
+Wed Apr 22 12:46:56 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200422:
+  * Fix crash in ShowBattleAnimation() when target is invalid
+  * PSVita: Add ccache support to Makefile
+  * PSVita: Fix Makefile, add include directory
+  * windows/utils: Actually cache the windows version
+  * Move all platform specific source file in subdirs Rename for consistency Adapt build systems
+  * Liblcf rename grid variables
+  * Remove the MorphOS macro undefs
+  * Add unit tests and benchmarks for new variable range ops
+  * Fix build with libnx 3.1.0
+  * Resampler: Remove unnecessary memset. Decode already does this.
+  * Resampler: Fix buffer overflow in mono_to_stereo_resample when the amount of samples read was exactly 0.
+  * Fix parse unit test. Requires the initialisation of many Game objects to work properly.
+  * Regression: \n[0] references top of the party and not Actor with ID 1.
+  * Regression: Scene Name: Fix dialog closing when confirming while the name is empty. The correct behaviour is filling in the default name and keeping it open.
+  * Initialize parallax params. Detected by UbSan (bools not initialized)
+
+-------------------------------------------------------------------
 Sat Nov 16 23:06:59 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Initial version

@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/libretro/easyrpg-libretro.git</param>
-              <param name="changesrevision">6ad57329edc3f1f9c8b4a244c59874e27cf174a6</param></service></servicedata>
+              <param name="changesrevision">6ad57329edc3f1f9c8b4a244c59874e27cf174a6</param></service><service name="tar_scm">
+                <param name="url">https://github.com/easyrpg/player.git</param>
+              <param name="changesrevision">34428bd77eb969772c2bdf0c09e8b90701fd2203</param></service></servicedata>
