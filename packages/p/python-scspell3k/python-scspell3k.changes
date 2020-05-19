@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:54 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 23 11:53:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Make sure the tests do not execute python2

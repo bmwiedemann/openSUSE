@@ -31,4 +31,12 @@
     <comment>- Make sure the tests do not execute python2</comment>
     <requestid>796523</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>78e8795e01e56dd5df359236337120ac</srcmd5>
+    <version>2.2</version>
+    <time>1589893100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807287</requestid>
+  </revision>
 </revisionlist>

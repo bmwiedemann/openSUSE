@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cram
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -76,6 +78,7 @@ to three different sub-dictionaries may be searched for any given file:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/scspell
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -83,10 +86,16 @@ to three different sub-dictionaries may be searched for any given file:
 sed -i -e 's:python $TESTDIR:python3 $TESTDIR:g' ./test.cram
 python3 -m cram --indent=4 ./test.cram
 
+%post
+%python_install_alternative scspell
+
+%postun
+%python_uninstall_alternative scspell
+
 %files %{python_files}
 %doc README.rst
 %license COPYING.txt
-%python3_only %{_bindir}/scspell
+%python_alternative %{_bindir}/scspell
 %{python_sitelib}/*
 
 %changelog
