@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 07:21:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Discard rm of nonexistent %{_infodir}/dir to fix build
+
+-------------------------------------------------------------------
 Thu Nov  7 09:43:57 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch a2ps-4.14-texinfo-6.7.patch to let it build with

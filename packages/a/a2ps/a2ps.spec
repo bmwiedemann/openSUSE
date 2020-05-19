@@ -199,7 +199,6 @@ find -name Makefile.in | xargs touch
 %install
  %make_install PSFONT_PATH=%{_datadir}/ghostscript/fonts
  rm -r %{buildroot}/%{_infodir}/regex*
- rm -r %{buildroot}/%{_infodir}/dir
  %find_lang %{name}
  rm -f %{buildroot}%{_libdir}/liba2ps.la
  install -m 0755 %{SOURCE4} %{buildroot}/%{_bindir}/
