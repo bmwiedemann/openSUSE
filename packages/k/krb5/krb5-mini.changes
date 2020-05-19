@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  4 09:24:21 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Upgrade to 1.18.1
+  * Fix a crash when qualifying short hostnames when the system has
+    no primary DNS domain.
+  * Fix a regression when an application imports "service@" as a GSS
+    host-based name for its acceptor credential handle.
+  * Fix KDC enforcement of auth indicators when they are modified by
+    the KDB module.
+  * Fix removal of require_auth string attributes when the LDAP KDB
+    module is used.
+  * Fix a compile error when building with musl libc on Linux.
+  * Fix a compile error when building with gcc 4.x.
+  * Change the KDC constrained delegation precedence order for consistency
+    with Windows KDCs. 
+- Remove 0009-Fix-null-dereference-qualifying-short-hostnames.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 08:06:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_tmpfilesdir instead of the wrong %_libexecdir/tmpfiles.d
