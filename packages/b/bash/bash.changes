@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  9 07:03:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add official patch bash50-017
+  * There were cases where patch 16 reaped process substitution
+    file descriptors (or FIFOs) and processes to early. This is
+    a better fix for the problem that bash50-016 attempted to solve.
+- Remove temporary patch bash50-fix-016-close-new-fifos.patch
+
+-------------------------------------------------------------------
 Sun Apr 19 08:03:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix usage of update-alternatives

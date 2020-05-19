@@ -62,8 +62,6 @@ Patch13:        bash-4.2-nscdunmap.dif
 Patch14:        bash-4.3-sigrestart.patch
 # PATCH-FIX-UPSTREAM bnc#382214 -- disabled due bnc#806628 by -DBNC382214=0
 Patch16:        bash-4.0-setlocale.dif
-# PATCH-FIX-UPSTREAM
-Patch17:        bash50-fix-016-close-new-fifos.patch
 # PATCH-EXTEND-SUSE bnc#828877 -- xterm resizing does not pass to all sub clients
 Patch18:        bash-4.3-winch.dif
 Patch40:        bash-4.1-bash.bashrc.dif
@@ -229,7 +227,6 @@ done
 %patch13 -p0 -b .nscdunmap
 %patch14 -p0 -b .sigrestart
 %patch16 -p0 -b .setlocale
-%patch17 -p0 -b .fix016
 #%patch18 -p0 -b .winch
 %patch40 -p0 -b .bashrc
 %if %{with sjis}
