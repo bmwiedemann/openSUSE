@@ -29,6 +29,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # Conflicts on site-packages/ptr.py
 Conflicts:      python-pytest-runner
 BuildArch:      noarch
@@ -47,15 +49,22 @@ sed -i '1{/^#!/d}' *.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ptr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python %{buildroot}%{_bindir}/ptr --help
 %python_exec setup.py test
 
+%post
+%python_install_alternative ptr
+
+%postun
+%python_uninstall_alternative ptr
+
 %files %{python_files}
 %doc CHANGES.md README.md
-%python3_only %{_bindir}/ptr
+%python_alternative %{_bindir}/ptr
 %{python_sitelib}/*
 
 %changelog
