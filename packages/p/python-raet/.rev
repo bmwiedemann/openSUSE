@@ -118,4 +118,12 @@
 - Fix resolution without python2</comment>
     <requestid>796653</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>97708a89d940fef2fbec918cd444b533</srcmd5>
+    <version>0.6.8</version>
+    <time>1589893052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807268</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:38 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 23 16:47:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add msgpack-1.patch for msgpack 1.0.0 compatibility

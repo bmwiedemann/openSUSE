@@ -42,6 +42,8 @@ Requires:       python-ioflo >= 1.2.4
 Requires:       python-libnacl >= 1.4.3
 Requires:       python-msgpack
 Requires:       python-six >= 1.6.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34
@@ -67,13 +69,20 @@ rm -rf systest/
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/raetflo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative raetflo
+
+%postun
+%python_uninstall_alternative raetflo
+
 %files %{python_files}
 %{python_sitelib}/*
-%python3_only %{_bindir}/raetflo
+%python_alternative %{_bindir}/raetflo
 
 %changelog
