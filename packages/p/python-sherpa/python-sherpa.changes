@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 09:28:01 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Mar 12 12:56:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-sherpa-python3.8.patch: Fix building with python3.8;

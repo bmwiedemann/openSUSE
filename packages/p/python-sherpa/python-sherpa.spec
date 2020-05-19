@@ -41,6 +41,8 @@ BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 ExcludeArch:    %{ix86}
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
@@ -74,6 +76,8 @@ sed -i 's|group-location=.*|group-location=build/%{_lib}/python%{$python_version
 sed -i 's|group-location=.*|group-location=build/%{_lib}/python%{$python_version}/site-packages/group.so|' setup.cfg
 %{$python_install}
 }
+%python_clone -a %{buildroot}%{_bindir}/sherpa_test
+%python_clone -a %{buildroot}%{_bindir}/sherpa_smoke
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # REMOVE HASHBANGS FROM NON-EXEC FILES
@@ -90,11 +94,19 @@ ls -l *build*/*/*/
 %pytest_arch %{buildroot}%{$python_sitearch}/sherpa/
 mv sherpa_temp sherpa
 
+%post
+%python_install_alternative sherpa_smoke
+%python_install_alternative sherpa_test
+
+%postun
+%python_uninstall_alternative sherpa_smoke
+%python_uninstall_alternative sherpa_test
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/sherpa_test
-%python3_only %{_bindir}/sherpa_smoke
+%python_alternative %{_bindir}/sherpa_test
+%python_alternative %{_bindir}/sherpa_smoke
 %{python_sitearch}/*
 
 %changelog
