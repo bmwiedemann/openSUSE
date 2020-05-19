@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 18 04:56:37 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.1 implemented ags-fx engine to replace
+  ags/audio/recall, see ags/audio/fx.
+- many bug-fixes, like out-of-sync with UI, wrong channel mapping
+- improved restore from AgsSimpleFile
+- refactored ags_menu_action_callbacks.c and ags_simple_file.c to
+  use new ags/X/ags_machine_util.c
+
+-------------------------------------------------------------------
 Thu Apr 16 19:32:47 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.2.15 improved AgsDial of AgsEffectBulk,
