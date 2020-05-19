@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 19 07:27:14 UTC 2020 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 2.6.1.post1
+  * WHL: Wheels contain PROJ version is 7.0.1
+  * BUG: Allow *_name to be added in pyproj.crs.CRS.to_cf()
+    (issue #585)
+  * BUG: Fix building prime meridian in pyproj.crs.CRS.from_cf()
+    (pull #588)
+  * BUG: Fix check for numpy bool True kwarg (pull #590)
+  * DOC: Update pyproj.Proj docstrings for clarity (issue #584)
+  * Added pyproj.__proj_version__
+  * BUG: Fix pyproj.proj.Proj.get_factors() (issue #600)
+  * BUG: fix unequal (!=) with non-CRS type (pull #596)
+
+-------------------------------------------------------------------
 Thu Apr 23 10:00:58 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Simplify spec file

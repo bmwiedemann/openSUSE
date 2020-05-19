@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyproj
-Version:        2.6.0
+Version:        2.6.1.post1
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
@@ -43,6 +43,7 @@ BuildRequires:  %{python_module cov-core}
 BuildRequires:  %{python_module coverage} >= 4.0
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
 # /SECTION
 %python_subpackages
 
