@@ -1,7 +1,7 @@
 #
 # spec file for package python-wptools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Requires:       python-certifi >= 2017.7.27.1
 Requires:       python-html2text >= 2016.9.19
 Requires:       python-lxml >= 3.8.0
 Requires:       python-pycurl >= 7.43.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,12 +60,19 @@ sed -E -i "1{/^#!\/usr\/bin.*python/d}" scripts/wptool.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/wptool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative wptool
+
+%postun
+%python_uninstall_alternative wptool
 
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.rst README.rst
-%python3_only %{_bindir}/wptool
+%python_alternative %{_bindir}/wptool
 %{python_sitelib}/*
 
 %changelog
