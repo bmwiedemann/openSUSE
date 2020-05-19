@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml.cmd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,19 @@ Release:        0
 Summary:        Command line utility to manipulate YAML files
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://bitbucket.org/ruamel/yaml.cmd
+URL:            https://bitbucket.org/ruamel/yaml.cmd
 Source:         https://bitbucket.org/ruamel/yaml.cmd/downloads/ruamel.yaml.cmd-%{version}.tar.xz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-configobj
+Requires:       python-ruamel.std.argparse >= 0.8
+Requires:       python-ruamel.yaml >= 0.16.1
+Requires:       python-ruamel.yaml.convert >= 0.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Suggests:       python-configobj
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module pytest}
@@ -34,14 +43,6 @@ BuildRequires:  %{python_module ruamel.std.argparse >= 0.8}
 BuildRequires:  %{python_module ruamel.yaml >= 0.16.1}
 BuildRequires:  %{python_module ruamel.yaml.convert >= 0.3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-configobj
-Requires:       python-ruamel.std.argparse >= 0.8
-Requires:       python-ruamel.yaml >= 0.16.1
-Requires:       python-ruamel.yaml.convert >= 0.3
-Suggests:       python-configobj
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -59,18 +60,16 @@ sed -i '/namespace_packages=/d' setup.py
 %{python_expand mkdir -p %{buildroot}%{$python_sitelib}
 cp -r %{$python_sitelib}/ruamel* %{buildroot}%{$python_sitelib}
 }
-
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
-%{python_expand %{$python_install}
-mkdir -p build/bin
-cp %{buildroot}/%{_bindir}/yaml build/bin/
-}
-
+%python_install
+%python_clone -a %{buildroot}%{_bindir}/yaml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %{python_expand export PATH=${PWD}/build/bin/:$PATH
+mkdir -p build/bin
+cp %{buildroot}/%{_bindir}/yaml-%{python_version} build/bin/yaml
 export PYTHONPATH=%{buildroot}%{$python_sitelib}:%{$python_sitelib}:%{$python_sitearch}
 $python -Sm pytest _test/test_*.py
 }
@@ -91,10 +90,16 @@ rm -rf %{buildroot}%{$python_sitelib}/ruamel.ordereddict*
 rm -rf %{buildroot}%{$python_sitelib}/ruamel.yaml.clib*
 }
 
+%post
+%python_install_alternative yaml
+
+%postun
+%python_uninstall_alternative yaml
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/yaml
+%python_alternative %{_bindir}/yaml
 %{python_sitelib}/ruamel/yaml/cmd/
 %{python_sitelib}/ruamel.yaml.cmd-*.egg-info
 
