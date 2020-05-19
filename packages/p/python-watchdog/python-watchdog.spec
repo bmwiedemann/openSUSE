@@ -34,6 +34,8 @@ BuildRequires:  python3-Sphinx
 Requires:       python-PyYAML
 Requires:       python-argh
 Requires:       python-pathtools >= 0.1.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,6 +60,7 @@ cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Bui
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/watchmedo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,10 +68,16 @@ sed -i '/--cov/d' setup.cfg
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative watchmedo
+
+%postun
+%python_uninstall_alternative watchmedo
+
 %files %{python_files}
 %license COPYING LICENSE
 %doc AUTHORS changelog.rst MANIFEST.in README.rst
-%python3_only %{_bindir}/watchmedo
+%python_alternative %{_bindir}/watchmedo
 %{python_sitelib}/watchdog
 %{python_sitelib}/watchdog-%{version}-py%{python_version}.egg-info
 
