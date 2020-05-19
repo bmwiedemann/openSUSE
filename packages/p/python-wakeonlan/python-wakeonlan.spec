@@ -1,7 +1,7 @@
 #
 # spec file for package python-wakeonlan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools_scm >= 1.15.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,16 +50,23 @@ export LANG=en_US.UTF8
 %install
 export LANG=en_US.UTF8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/wakeonlan
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF8
 %pytest
 
+%post
+%python_install_alternative wakeonlan
+
+%postun
+%python_uninstall_alternative wakeonlan
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/wakeonlan
+%python_alternative %{_bindir}/wakeonlan
 %{python_sitelib}/*
 
 %changelog
