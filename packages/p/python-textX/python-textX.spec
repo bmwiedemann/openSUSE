@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Arpeggio >= 1.9.0
 Requires:       python-click >= 7.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      %{name}-doc
 BuildArch:      noarch
 # SECTION tests
@@ -96,13 +98,14 @@ popd
 pushd tests/functional/registration/projects/flow_codegen
 %python_install
 popd
+%python_clone -a %{buildroot}%{_bindir}/textx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/textx
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
 export LC_ALL=C.UTF-8
-export PATH=$PATH:%{buildroot}%{_bindir}
-%pytest
+# textx executable is update-alternative'd
+%pytest -k 'not test_subcommand'
 %python_expand rm -r %{buildroot}%{$python_sitelib}/data_dsl*
 %python_expand rm -r %{buildroot}%{$python_sitelib}/flow_codegen*
 %python_expand rm -r %{buildroot}%{$python_sitelib}/flow_dsl*
@@ -110,9 +113,15 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %python_expand rm -r %{buildroot}%{$python_sitelib}/textX_subcommand_test*
 %python_expand rm -r %{buildroot}%{$python_sitelib}/textx_subcommand_test*
 
+%post
+%python_install_alternative textx
+
+%postun
+%python_uninstall_alternative textx
+
 %files %{python_files}
 %{python_sitelib}/*
-%python3_only %{_bindir}/textx
+%python_alternative %{_bindir}/textx
 %license LICENSE.txt
 %doc AUTHORS.md CHANGELOG.md README.md
 
