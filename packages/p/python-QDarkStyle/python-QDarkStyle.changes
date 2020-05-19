@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 18 13:43:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add _multibuild to run the test in a flavor and use xvfb-run
+  instead of calling the Xvfb server directly and depending on the
+  xorg-x11-server-Xvfb package which is not available in SLE/Leap.
+
+-------------------------------------------------------------------
+Mon May 18 11:12:28 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.8.1:
+  * Fix rst file formats and links #229
+  * Add .gitattributes for generated and documentation files
+  * Add more complete tox and Travis envs with many checks
+  * Fix removing message format argument
+  * Fix QGroupBox small indicator size #218
+  * Fix QGroupBox incorrect indicator icon when unfocused #219
+  * Fix QDateTimeEdit incorrect drop-down arrow icon #220
+  * Fix documentation
+
+-------------------------------------------------------------------
 Tue Jan 28 08:31:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the tarball fetching
