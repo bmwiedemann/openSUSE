@@ -42,6 +42,8 @@ Requires:       python-idna >= 2.1.0
 Requires:       python-requests >= 2.1.0
 Requires:       python-requests-file >= 1.4
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      python-tldextract <= 2.0.1
 BuildArch:      noarch
 %python_subpackages
@@ -63,16 +65,23 @@ sed -i 's:--pylint::' pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tldextract
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py develop --user
 %pytest tests
 
+%post
+%python_install_alternative tldextract
+
+%postun
+%python_uninstall_alternative tldextract
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/tldextract
+%python_alternative %{_bindir}/tldextract
 
 %changelog

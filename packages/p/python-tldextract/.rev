@@ -68,4 +68,12 @@ Needed for python-dns-lexicon</comment>
     <comment></comment>
     <requestid>783797</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>714653d6d0864222860de1572053414a</srcmd5>
+    <version>2.2.2</version>
+    <time>1589892485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806949</requestid>
+  </revision>
 </revisionlist>
