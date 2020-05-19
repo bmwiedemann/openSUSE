@@ -1,0 +1,38 @@
+From 990a357f8edb2a25b791be249dd10c889422b353 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Fri, 15 May 2020 14:19:30 +0200
+Subject: [PATCH] Make the stats page use the new stats API endpoint
+
+We originally designed this code to use the existing API endpoint
+with an argument to say that it wants the detailed version of the
+stats. We later changed our mind and move the details to a new
+API endpoint, but apparently we forgot to update the UI to point
+to the new API endpoint (while all the JS code is compatible/expected
+this data).
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ pagure/templates/repo_stats.html | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pagure/templates/repo_stats.html b/pagure/templates/repo_stats.html
+index 0e92b674..1f67477c 100644
+--- a/pagure/templates/repo_stats.html
++++ b/pagure/templates/repo_stats.html
+@@ -64,11 +64,10 @@ issues_history_stats_plot_call = function() {
+   $("#commiter_list").hide();
+   $(".commit_trend").hide();
+   var _stats_url = "{{ url_for(
+-    'api_ns.api_view_issues_history_stats',
++    'api_ns.api_view_issues_history_detailed_stats',
+     repo=g.repo.name,
+     username=username,
+-    namespace=g.repo.namespace,
+-    detailed=True) }}";
++    namespace=g.repo.namespace) }}";
+   var _s = $("#data_stats_spinner");
+   _s.html(
+     "<img id='spinnergif' src='{{ url_for('static', filename='images/spinner.gif') }}?version={{ g.version}}'>"
+-- 
+2.26.1
+

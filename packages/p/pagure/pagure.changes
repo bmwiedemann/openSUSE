@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon May 18 13:31:41 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to fix stats page
+  + Patch: 0001-Make-the-stats-page-use-the-new-stats-API-endpoint.patch
+- Add missing step to start pagure web services for nginx setup in quickstart
+- Fix directory mode for ssh directory to fix conflict with gitolite
+
+-------------------------------------------------------------------
+Fri May 15 01:05:30 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 5.10.0
+  + Allow viewing issues via the API using project-less API token
+  + Various improvements to the srcfpo theme
+  + Make pagure work with recent sqlalchemy versions (>= 1.3.0)
+  + Add a new API endpoint to retrieve detailed stats about the issues
+  + Improve the graphs displayed in the stats tab of each projects
+  + Add a new graph tracking the number of open issues throughout the year
+  + Improve loading tickets from git
+  + Support pygit2 >= 1.1.0
+  + Add missing endpoints to the API documentation
+  + Add support for wtforms >= 2.3
+    - Add dependency on email_validator in such case
+  + Fix sorting users by their username when using python3
+  + Correct the API documentation for updating the watchers of a project
+  + Ensure the name of the headers are always of the correct type 
+    (especially when using python3)
+  + Ensure aclchecker and keyhelper can work with APP_URL having a trailing slash
+  + Add a new git auth backend which can manage the .ssh/authorized_keys file
+    directly
+  + Update information about supported Git auth backends
+  + Add support for arrow >= 0.15.6
+  + Fix getting the milter running with python3
+  + Fix mirroring project hosted remotely
+  + Add url_path property to class User (and thus in the API)
+  + Improve email text for new user registration
+  + Set the USER environment variable when pushing over http
+  + Add support for git push via http using basic auth relying on API token
+  + If pagure is set up for local auth, allow git push via https to use it
+  + Add an example nginx configuration file for pagure
+  + Create two subpackages in the pagure for the apache and nginx configuration
+    files
+  + Add some documentation on how git push over http works in pagure
+  + Make pagure compatible with the latest version of flake8
+  + Add PAGURE_PLUGINS_CONFIG setting in pagure configuration file 
+- Refresh quick start instructions for new configuration options
+- Drop unneeded patch
+  + Patch: 0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch
+- Refresh default configuration patch
+  + Patch: pagure-5.0-default-example-cfg.patch
+
+-------------------------------------------------------------------
 Sat Apr  4 16:03:40 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 5.9.1
