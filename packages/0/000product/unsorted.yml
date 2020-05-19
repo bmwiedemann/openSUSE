@@ -994,6 +994,7 @@ unsorted:
   - ayatana-appindicator-sharp-devel 
   - ayatana-ido-devel 
   - aytests-tests 
+  - azote 
   - azove 
   - azure-cli 
   - azure-cli-command-modules-nspkg 
@@ -2359,6 +2360,7 @@ unsorted:
   - deltafs 
   - deluge 
   - deluge-lang 
+  - demumble 
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
@@ -13408,6 +13410,8 @@ unsorted:
   - lxmenu-data 
   - lxqt-about 
   - lxqt-about-lang 
+  - lxqt-archiver 
+  - lxqt-archiver-lang 
   - lxqt-build-tools-devel 
   - lxqt-config 
   - lxqt-config-lang 
@@ -14384,6 +14388,7 @@ unsorted:
   - mpv 
   - mpv-bash-completion 
   - mpv-devel 
+  - mpv-mpris 
   - mpv-plugin-mpris 
   - mpv-zsh-completion 
   - mr 
@@ -16138,6 +16143,8 @@ unsorted:
   - pagure-theme-pagureio 
   - pagure-theme-srcfpo 
   - pagure-theme-upstream 
+  - pagure-web-apache-httpd 
+  - pagure-web-nginx 
   - pagure-webhook 
   - palapeli 
   - palapeli-data 
@@ -18604,6 +18611,7 @@ unsorted:
   - python-translationstring-doc 
   - python-typeshed 
   - python-volatility 
+  - python-xcaplib-bash-completion 
   - python-xml 
   - python-yui 
   - python-zope.deprecation-doc 
@@ -19235,6 +19243,7 @@ unsorted:
   - python3-bson 
   - python3-bugzilla 
   - python3-bugzillatools 
+  - python3-bump2version 
   - python3-bytecode 
   - python3-cPyparsing 
   - python3-caca 
@@ -19477,7 +19486,6 @@ unsorted:
   - python3-django-appconf 
   - python3-django-auth-ldap 
   - python3-django-avatar 
-  - python3-django-babel 
   - python3-django-braces 
   - python3-django-ckeditor 
   - python3-django-classy-tags 
@@ -19643,6 +19651,7 @@ unsorted:
   - python3-fb-re2 
   - python3-featureflow 
   - python3-fedmsg 
+  - python3-feedgen 
   - python3-feedgenerator 
   - python3-feedparser 
   - python3-ffmpeg-python 
@@ -23868,6 +23877,7 @@ unsorted:
   - sac-javadoc 
   - sacad 
   - saidar 
+  - saja-cascadia-code-fonts 
   - sakura 
   - sakura-lang 
   - salt-api 
@@ -33103,7 +33113,6 @@ unsorted:
   - virtualbox-host-source: [x86_64] 
   - virtualbox-qt: [x86_64] 
   - virtualbox-vnc: [x86_64] 
-  - virtualbox-websrv: [x86_64] 
   - viruskiller 
   - vis 
   - visio2svg-conv 
