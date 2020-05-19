@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon May 18 07:18:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed Recommends lxqt-archiver-lang due to auto supplements
+
+-------------------------------------------------------------------
+Sun May 17 07:08:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Added an icon for the app.
+  * Prevent the contents of an extracted archive from being mixed
+    with other files if overwriting isn't chosen.
+  * Added expand and collapse actions.
+  * Fixed build with GCC 10.
+  * Required json-glib as a dependency.
+- Remove lxqt-archiver.desktop:
+  use upstream desktop file. It has its own icon now.
+  See https://github.com/lxqt/lxqt-archiver/issues/157
+
+-------------------------------------------------------------------
+Fri May 15 15:18:09 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixed sources and added keyring
+
+-------------------------------------------------------------------
+Sat Apr 25 10:36:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed lxqt-archiver-execdir.patch: contained in upstream
+- Update to version 0.1.1
+  * Removed the unused qtdbus dependency.
+  * Used 'LIBEXECDIR' instead of 'LIBDIR' for internal executables.
+  * Fixed handling of RPM archives.
+
+-------------------------------------------------------------------
+Wed Apr 22 14:27:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add lxqt-archiver-execdir.patch: install in helper programs
+  in libexecdir not libdir
+
+-------------------------------------------------------------------
+Wed Apr 22 08:42:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Create package 0.1.0 for openSUSE
