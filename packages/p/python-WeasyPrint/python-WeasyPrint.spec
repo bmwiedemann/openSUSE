@@ -41,6 +41,8 @@ Requires:       python-html5lib >= 0.999999999
 Requires:       python-pdfrw >= 0.4
 Requires:       python-setuptools >= 39.2.0
 Requires:       python-tinycss2 >= 1.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-CairoSVG >= 2.4.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -78,16 +80,23 @@ sed -i '/\(addopts\|pytest-\(cov\|flake8\|isort\)\)/d' setup.cfg
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/weasyprint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # https://github.com/Kozea/WeasyPrint/issues/913
 %pytest -k 'not test_linear_gradients_7'
 
+%post
+%python_install_alternative weasyprint
+
+%postun
+%python_uninstall_alternative weasyprint
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/weasyprint
+%python_alternative %{_bindir}/weasyprint
 %{python_sitelib}/*
 
 %changelog

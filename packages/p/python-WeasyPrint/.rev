@@ -57,4 +57,12 @@
   * 7a4d6f8: Support larger and smaller values for font-size</comment>
     <requestid>765142</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6330b480b5a56d7f1f8f908c0e28f95d</srcmd5>
+    <version>51</version>
+    <time>1589892405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806807</requestid>
+  </revision>
 </revisionlist>
