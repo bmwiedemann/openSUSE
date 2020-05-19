@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 18 14:04:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.3.10.1 with security fixes for
+  * CVE-2020-10957: lmtp/submission: A client can crash the server by
+    sending a NOOP command with an invalid string parameter.
+    (boo#1171457)
+  * CVE-2020-10958: lmtp/submission: Sending many invalid or unknown
+    commands can cause the server to access freed memory, which can lead
+    to a server crash. (boo#1171458)
+  * CVE-2020-10967: lmtp/submission: Issuing the RCPT command with an
+    address that has the empty quoted string as local-part causes the
+    lmtp service to crash. (boo#1171456)
+
+-------------------------------------------------------------------
 Wed Apr 29 21:25:30 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - add allow-tls1.3-only.patch:

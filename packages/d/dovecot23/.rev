@@ -455,4 +455,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800837</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7893cd41115b296517274c8b02a0dae6</srcmd5>
+    <version>2.3.10.1</version>
+    <time>1589892577</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.10.1 with security fixes for
+  * CVE-2020-10957: lmtp/submission: A client can crash the server by
+    sending a NOOP command with an invalid string parameter.
+    (boo#1171457)
+  * CVE-2020-10958: lmtp/submission: Sending many invalid or unknown
+    commands can cause the server to access freed memory, which can lead
+    to a server crash. (boo#1171458)
+  * CVE-2020-10967: lmtp/submission: Issuing the RCPT command with an
+    address that has the empty quoted string as local-part causes the
+    lmtp service to crash. (boo#1171456)</comment>
+    <requestid>807017</requestid>
+  </revision>
 </revisionlist>
