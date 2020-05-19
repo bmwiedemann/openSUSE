@@ -1,7 +1,7 @@
 #
 # spec file for package python-topy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-regex >= 2016.07.14
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4}
@@ -50,16 +52,23 @@ sed -i '1 { /^#!/ d }' topy/topy.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/topy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %python_exec setup.py test
 
+%post
+%python_install_alternative topy
+
+%postun
+%python_uninstall_alternative topy
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/topy
+%python_alternative %{_bindir}/topy
 %{python_sitelib}/*
 
 %changelog
