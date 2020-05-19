@@ -1,7 +1,7 @@
 #
 # spec file for package python-portpicker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/google/python_portpicker
 Source0:        https://files.pythonhosted.org/packages/source/p/portpicker/portpicker-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
@@ -46,16 +48,23 @@ harnesses that launch local servers.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/portserver.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python src/tests/portpicker_test.py
+
+%post
+%python_install_alternative portserver.py
+
+%postun
+%python_uninstall_alternative portserver.py
 
 %files %{python_files}
 %license LICENSE
 %doc CONTRIBUTING.md README.md
 %{python_sitelib}/*
 # import asyncio
-%python3_only %{_bindir}/portserver.py
+%python_alternative %{_bindir}/portserver.py
 
 %changelog
