@@ -1,7 +1,7 @@
 #
 # spec file for package vorta
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           vorta
-Version:        0.6.23
+Version:        0.6.24
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
-Url:            https://github.com/borgbase/vorta
+URL:            https://github.com/borgbase/vorta
 Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
 Source1:        vorta.desktop
 # PATCH-FIX-OPENSUSE

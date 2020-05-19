@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 18 08:02:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.6.24
+  * Add Czech and Finnish translations.
+  * Simplify startup behavior. Run in foreground by default (used
+    by Flatpak and macOS). Use --daemonize to start in background.
+
+-------------------------------------------------------------------
 Thu Oct 31 10:22:25 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.6.23
