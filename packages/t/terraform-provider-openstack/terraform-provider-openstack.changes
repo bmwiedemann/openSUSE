@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 19 08:39:57 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.28.0:
+  * v1.28.0
+  * Upgrade Terraform SDK to v1.11.0 (#1002)
+  * Set Go version to 1.14.2 (#1001)
+  * Add containerinfra_cluster kubeconfig attribute (#937)
+  * Add blockstorage scheduler hints (#983)
+  * Networking V2: cleanup subnet route resource (#999)
+  * Networking: cleanup subnet V2 (#900)
+  * Networking V2: cleanup secgroup resource (#1000)
+  * Internal: Networking V2 Router cleanup (#712)
+  * Fixed names and added volume example (#892)
+  * Add Project Tags (#978)
+  * Enable delayed_auth and allow_reauth options by default (#996)
+  * Add SOURCE_IP_PORT load balancing method (#993)
+  * Compute v2: Introduce an availability_zone_hints parameter (#985)
+  * Object Storage Container V1: Add reading fields and import (#998)
+  * Implemented Security Group Rule Mutex  (#994)
+  * Bump gophercloud (#995)
+  * Cleanup after v1.27.0 release
+  * v1.27.0
+  * LBaaS v2: Add batch members update resource (#898)
+  * Add ACL examples (#987)
+  * Update object verisoning documentation URL (#986)
+  * Add support for barbican order resources (#992)
+  * Image create using import web-download (#888)
+  * Match type on master_addresses and node_addresses on containerinfra_cluster (#981)
+  * Detach ports before deleting instance (#866)
+  * Cleanup after v1.26.0 release
+
+-------------------------------------------------------------------
 Wed Mar  4 13:27:01 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Spec clean up

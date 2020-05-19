@@ -22,7 +22,7 @@
 %endif
 
 Name:           terraform-provider-openstack
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        Terraform OpenStack provider
 License:        MPL-2.0
@@ -45,10 +45,10 @@ BuildRequires:  golang
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.14
 %endif
 Requires:       mkisofs
-Requires:       terraform >= 0.12.0
+Requires:       terraform >= 0.12.20
 BuildRequires:  xz
 %endif
 %if 0%{?suse_version}
@@ -101,7 +101,6 @@ fi
 cd $curr
 
 %files
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
