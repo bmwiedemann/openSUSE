@@ -47,7 +47,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %define _udevrulesdir /usr/lib/udev/rules.d
 Name:           virtualbox
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
-Version:        6.1.6
+Version:        6.1.8
 Release:        0
 Summary:        VirtualBox is an Emulator
 License:        GPL-2.0-or-later
@@ -154,8 +154,6 @@ Patch134:       fixes_for_5.5.patch
 Patch135:       fix-missing-includes-with-qt-5.15.patch
 # Fix builds with GCC10
 Patch136:       fixes_for_gcc10.patch
-# Fix build for kernel 5.7
-Patch137:       fixes_for_5.7.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 BuildRequires:  LibVNCServer-devel
@@ -460,7 +458,6 @@ as an "extpack" for VirtualBox. The implementation is licensed under GPL.
 %patch134 -p1
 %patch135 -p1
 %patch136 -p1
-%patch137 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 

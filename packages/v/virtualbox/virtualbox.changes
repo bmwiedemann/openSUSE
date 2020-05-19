@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 16 00:52:34 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.8 (released May 15 2020 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  File "fixes_for_5.7.patch" is removed as the issue was fixed upstream.
+
+  GUI: Fix several layout and mouse position handling bugs with soft keyboard
+  GUI: Fixed crash on last VM removed (6.1.4 regression; bug #19568, #19525, #19506, #19490, #19481, #19397)
+  GUI and API: Allow renaming VMs which are in saved state
+  Serial: Fixed slow guest output when using the TCP server mode without anyone being connected
+  Guest Additions: Restored 'VBoxClient--checkhostversion' functionality (6.1.0 regression; bug #19470)
+  Guest Additions: Fixed resizing and multi monitor handling for X11 guests. (6.1.0 regression; bug #19496)
+  Guest Additions: Build problems fix with Oracle Linux 8.2 (Red Hat compatible kernel) / Red Hat Enterprise Linux 8.2 / CentOS 8.2 (bug #19391)
+  Guest Control/VBoxManage: Fixed handling of multiple environment variables supplied to 'VBoxManage guestcontrol VM run' (6.1.6/6.0.20 regression; bug #19518)
+  Guest Control: Implemented support for long(er) command lines
+  Guest Control: Various stability improvements
+
+-------------------------------------------------------------------
 Wed Apr 15 17:40:41 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.6 (released April 14 2020 by Oracle)
