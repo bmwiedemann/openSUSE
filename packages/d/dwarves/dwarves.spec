@@ -60,7 +60,9 @@ about inlining, etc.
 %package -n libdwarves1
 Summary:        DWARF processing libraries of dwarves tools
 Group:          System/Libraries
+%if 0%{?suse_version} < 1550
 Requires:       libebl-plugins
+%endif
 
 %description -n libdwarves1
 This package contains the libdwarves shared library for the dwarves

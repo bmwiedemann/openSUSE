@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 11:44:37 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Don't require libebl-plugins on suse_version >= 1550 
+
+-------------------------------------------------------------------
 Sun Mar 15 18:57:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.17
