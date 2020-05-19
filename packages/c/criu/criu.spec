@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,10 @@
 %if 0%{?suse_version} >= 1330
 %define use_asciidoctor 1
 %define make_options USE_ASCIIDOCTOR=1
+%endif
+
+%ifarch %arm aarch64
+%define _lto_cflags %{nil}
 %endif
 
 Name:           criu
@@ -45,7 +49,7 @@ BuildRequires:  xmlto
 %endif
 Requires:       python3-ipaddr
 Requires:       python3-protobuf
-ExclusiveArch:  x86_64 aarch64 ppc64le %{arm} s390x
+ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x
 %if 0%{?suse_version} > 1320
 BuildRequires:  libbsd-devel
 %endif
@@ -95,6 +99,9 @@ echo "BINFMT_MISC_VIRTUALIZED" > .config
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
+%ifarch %arm
+export CFLAGS="$CFLAGS -Wno-error=deprecated"
+%endif
 make V=1 %{?_smp_mflags} %{?make_options}
 
 %install

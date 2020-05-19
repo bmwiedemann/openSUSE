@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 13 07:39:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on aarch64 and armv7
+- Add '-Wno-error=deprecated' to fix build on armv7
+- Exclude armv6 since criu/arch/arm/bitops.S uses 'dmb ish' which
+  is armv7+
+
+-------------------------------------------------------------------
 Mon Nov 18 16:47:34 CET 2019 - tiwai@suse.de
 
 - Update to criu 3.13:
