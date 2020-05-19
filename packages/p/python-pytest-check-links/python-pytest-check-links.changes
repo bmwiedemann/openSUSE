@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 18 09:21:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.2:
+  * Another improvement to retry logic #20
+  * Clean up metadata for dist generation #19
+  * Improve retry logic and add python 3 classifier #18
+
+-------------------------------------------------------------------
 Sun May  3 07:27:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.0:

@@ -44,4 +44,15 @@
   * Add checking of self- and local html anchors #10</comment>
     <requestid>799795</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2724bbfee21226b725906984a9d833f</srcmd5>
+    <version>0.4.2</version>
+    <time>1589892457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Another improvement to retry logic #20
+  * Clean up metadata for dist generation #19
+  * Improve retry logic and add python 3 classifier #18</comment>
+    <requestid>806849</requestid>
+  </revision>
 </revisionlist>

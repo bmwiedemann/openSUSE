@@ -21,13 +21,12 @@
 # Tests natually require internet
 %bcond_with test
 Name:           python-pytest-check-links
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
 URL:            https://github.com/minrk/pytest-check-links
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_check_links/pytest_check_links-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pbr >= 1.9}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  fdupes
