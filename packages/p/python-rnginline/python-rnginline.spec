@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnginline
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ into a single RELAX NG schema.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rnginline
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -67,10 +68,16 @@ into a single RELAX NG schema.
 %python_exec setup.py test
 %endif
 
+%post
+%python_install_alternative rnginline
+
+%postun
+%python_uninstall_alternative rnginline
+
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.rst README.rst
-%python3_only %{_bindir}/rnginline
+%python_alternative %{_bindir}/rnginline
 %{python_sitelib}/*
 
 %changelog
