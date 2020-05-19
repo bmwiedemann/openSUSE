@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Sun May 17 14:53:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.8
+  * support for complex16u (2xuint8) signals.
+  * Remove padding when drawing signals and remove autofit -> Weak
+    captures are visible at a glance, use Y-Scale instead.
+
+-------------------------------------------------------------------
 Mon Apr 27 15:03:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update tov version 2.8.7
+- Update to version 2.8.7
   * improve pyinstaller_helper.py
   * nicer output for device log in dialogs
   * enforce smaller headers -> more data visible in table views
