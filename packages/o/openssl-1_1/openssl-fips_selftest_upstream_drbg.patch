@@ -1,8 +1,8 @@
-Index: openssl-1.1.1e/crypto/fips/drbgtest.c
+Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1e/crypto/fips/drbgtest.c	2020-03-20 14:15:42.114115340 +0100
-@@ -0,0 +1,1178 @@
++++ openssl-1.1.1g/crypto/fips/drbgtest.c	2020-05-15 16:20:15.962172616 +0200
+@@ -0,0 +1,1179 @@
 +/*
 + * Copyright 2011-2019 The OpenSSL Project Authors. All Rights Reserved.
 + *
@@ -34,7 +34,6 @@ Index: openssl-1.1.1e/crypto/fips/drbgtest.c
 +# include <unistd.h>
 +#endif
 +
-+//#include "../../test/testutil.h"
 +#include "../../test/drbgtest.h"
 +
 +typedef struct drbg_selftest_data_st {
@@ -1139,9 +1138,11 @@ Index: openssl-1.1.1e/crypto/fips/drbgtest.c
 +fin:
 +    res = 1;
 +err:
++#if 0
 +    if (!res)
-+        //TEST_note("DRBG %zd case %zd block %zd", n / crngt_num_cases,
-+                  //crngt_case, crngt_idx);
++        TEST_note("DRBG %zd case %zd block %zd", n / crngt_num_cases,
++                  crngt_case, crngt_idx);
++#endif
 +    uninstantiate(drbg);
 +    RAND_DRBG_free(drbg);
 +    crngt_get_entropy = &rand_crngt_get_entropy_cb;
@@ -1162,9 +1163,9 @@ Index: openssl-1.1.1e/crypto/fips/drbgtest.c
 +            return 0;
 +    }
 +
++#if 0
 +    if (!test_rand_drbg_reseed())
 +            return 0;
-+#if 0
 +    if (!test_rand_seed())
 +            return 0;
 +    if (!test_rand_add())
@@ -1181,10 +1182,10 @@ Index: openssl-1.1.1e/crypto/fips/drbgtest.c
 +    return 1;
 +}
 +
-Index: openssl-1.1.1e/crypto/fips/drbgtest.h
+Index: openssl-1.1.1g/crypto/fips/drbgtest.h
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.1.1e/crypto/fips/drbgtest.h	2020-03-20 14:15:42.114115340 +0100
++++ openssl-1.1.1g/crypto/fips/drbgtest.h	2020-05-15 16:19:01.662586731 +0200
 @@ -0,0 +1,579 @@
 +/*
 + * Copyright 2011-2017 The OpenSSL Project Authors. All Rights Reserved.
@@ -1765,10 +1766,10 @@ Index: openssl-1.1.1e/crypto/fips/drbgtest.h
 +    0xef, 0xd2, 0xd8, 0x5c, 0xdc, 0x62, 0x25, 0x9f, 0xaa, 0x1e, 0x2c, 0x67,
 +    0xf6, 0x02, 0x32, 0xe2
 +};
-Index: openssl-1.1.1e/crypto/fips/fips_post.c
+Index: openssl-1.1.1g/crypto/fips/fips_post.c
 ===================================================================
---- openssl-1.1.1e.orig/crypto/fips/fips_post.c	2020-03-20 14:15:40.018104341 +0100
-+++ openssl-1.1.1e/crypto/fips/fips_post.c	2020-03-20 14:15:42.114115340 +0100
+--- openssl-1.1.1g.orig/crypto/fips/fips_post.c	2020-05-15 16:18:44.030685013 +0200
++++ openssl-1.1.1g/crypto/fips/fips_post.c	2020-05-15 16:19:01.662586731 +0200
 @@ -51,7 +51,6 @@
  
  #include <openssl/crypto.h>
@@ -1777,10 +1778,10 @@ Index: openssl-1.1.1e/crypto/fips/fips_post.c
  #include <openssl/err.h>
  #include <openssl/bio.h>
  #include <openssl/hmac.h>
-Index: openssl-1.1.1e/crypto/fips/build.info
+Index: openssl-1.1.1g/crypto/fips/build.info
 ===================================================================
---- openssl-1.1.1e.orig/crypto/fips/build.info	2020-03-20 14:15:40.018104341 +0100
-+++ openssl-1.1.1e/crypto/fips/build.info	2020-03-20 14:15:42.114115340 +0100
+--- openssl-1.1.1g.orig/crypto/fips/build.info	2020-05-15 16:18:44.030685013 +0200
++++ openssl-1.1.1g/crypto/fips/build.info	2020-05-15 16:19:01.662586731 +0200
 @@ -2,7 +2,7 @@ LIBS=../../libcrypto
  SOURCE[../../libcrypto]=\
          fips_aes_selftest.c fips_des_selftest.c fips_hmac_selftest.c \
@@ -1790,10 +1791,10 @@ Index: openssl-1.1.1e/crypto/fips/build.info
          fips_drbg_lib.c fips_drbg_rand.c fips_drbg_selftest.c fips_rand_lib.c \
          fips_cmac_selftest.c fips_ecdh_selftest.c fips_ecdsa_selftest.c \
          fips_dh_selftest.c fips_ers.c
-Index: openssl-1.1.1e/crypto/fips/fips_drbg_selftest.c
+Index: openssl-1.1.1g/crypto/fips/fips_drbg_selftest.c
 ===================================================================
---- openssl-1.1.1e.orig/crypto/fips/fips_drbg_selftest.c	2020-03-20 14:15:40.018104341 +0100
-+++ openssl-1.1.1e/crypto/fips/fips_drbg_selftest.c	2020-03-20 14:15:42.114115340 +0100
+--- openssl-1.1.1g.orig/crypto/fips/fips_drbg_selftest.c	2020-05-15 16:18:44.030685013 +0200
++++ openssl-1.1.1g/crypto/fips/fips_drbg_selftest.c	2020-05-15 16:19:01.666586709 +0200
 @@ -774,6 +774,7 @@ int FIPS_drbg_health_check(DRBG_CTX *dct
      return rv;
  }
@@ -1810,10 +1811,10 @@ Index: openssl-1.1.1e/crypto/fips/fips_drbg_selftest.c
  
  int FIPS_selftest_drbg_all(void)
  {
-Index: openssl-1.1.1e/crypto/fips/fips.c
+Index: openssl-1.1.1g/crypto/fips/fips.c
 ===================================================================
---- openssl-1.1.1e.orig/crypto/fips/fips.c	2020-03-20 14:15:40.018104341 +0100
-+++ openssl-1.1.1e/crypto/fips/fips.c	2020-03-20 14:15:42.114115340 +0100
+--- openssl-1.1.1g.orig/crypto/fips/fips.c	2020-05-15 16:18:44.030685013 +0200
++++ openssl-1.1.1g/crypto/fips/fips.c	2020-05-15 16:19:01.666586709 +0200
 @@ -50,7 +50,6 @@
  #define _GNU_SOURCE
  

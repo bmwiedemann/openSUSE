@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 09:51:22 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Limit the DRBG selftests to not deplete entropy (bsc#1165274)
+  * fixes also Firefox crashing with Kerberos (bsc#1167132)
+  * update openssl-fips_selftest_upstream_drbg.patch
+
+-------------------------------------------------------------------
 Tue Apr 21 13:47:04 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 1.1.1g
