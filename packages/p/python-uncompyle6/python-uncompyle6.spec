@@ -32,6 +32,8 @@ Requires:       python-hypothesis >= 2.0.0
 Requires:       python-setuptools
 Requires:       python-spark_parser >= 1.8.7
 Requires:       python-xdis >= 4.2.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 2.0.0}
@@ -53,16 +55,26 @@ The successor to decompyle, uncompyle, and uncompyle2.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pydisassemble
+%python_clone -a %{buildroot}%{_bindir}/uncompyle6
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest pytest
 
+%post
+%python_install_alternative pydisassemble
+%python_install_alternative uncompyle6
+
+%postun
+%python_uninstall_alternative pydisassemble
+%python_uninstall_alternative uncompyle6
+
 %files %{python_files}
 %license COPYING
 %doc ChangeLog README README.rst
-%python3_only %{_bindir}/uncompyle6
-%python3_only %{_bindir}/pydisassemble
+%python_alternative %{_bindir}/uncompyle6
+%python_alternative %{_bindir}/pydisassemble
 %{python_sitelib}/*
 
 %changelog
