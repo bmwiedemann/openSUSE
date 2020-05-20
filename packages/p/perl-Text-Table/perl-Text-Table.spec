@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Table
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Text-Table
-Version:        1.133
+Version:        1.134
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Text-Table
 Summary:        Organize Data in Tables
 License:        ISC
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Table/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -32,6 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Text::Aligner)
 Requires:       perl(Text::Aligner)
 %{perl_requires}
@@ -49,7 +50,7 @@ requirements as you use them.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
