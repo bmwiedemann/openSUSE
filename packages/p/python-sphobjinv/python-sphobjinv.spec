@@ -35,6 +35,8 @@ Requires:       python-certifi
 Requires:       python-fuzzywuzzy >= 0.3
 Requires:       python-jsonschema >= 2.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 17.4}
@@ -55,12 +57,19 @@ Sphinx objects.inv Inspection/Manipulation Tool
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/sphobjinv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative sphobjinv
+
+%postun
+%python_uninstall_alternative sphobjinv
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/sphobjinv
+%python_alternative %{_bindir}/sphobjinv
 %{python_sitelib}/*
 
 %changelog
