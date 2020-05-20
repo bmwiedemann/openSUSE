@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 08:16:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop some now redundant entries from the package list
+- Switch to vim-small, saves ~50MiB
+- Drop group(wheel), bug in cloud-init got fixed (boo#1080595)
+
+-------------------------------------------------------------------
 Mon Apr 27 08:07:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - switch to base instead of minimal_base pattern, minimal_base is too minimal

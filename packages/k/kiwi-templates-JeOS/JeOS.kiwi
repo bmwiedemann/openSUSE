@@ -194,21 +194,18 @@
         <package name="dracut"/>
         <package name="fipscheck"/>
         <package name="group(mail)"/> <!-- needed by useradd bsc#1061838-->
-        <package name="group(wheel)"/>
-        <package name="grub2-branding-openSUSE" bootinclude="true"/>
         <package name="iputils"/>
         <package name="issue-generator"/> <!-- bsc#1084879 -->
-        <package name="vim"/>
+        <package name="vim-small"/>
         <package name="shim" arch="x86_64"/>
         <package name="grub2"/>
-        <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="grub2-arm64-efi" arch="aarch64"/>
+        <package name="grub2-branding-openSUSE" bootinclude="true"/>
+        <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="haveged"/>
         <package name="less" />
         <package name="tar"/>
         <package name="parted"/>
-        <package name="openSUSE-build-key"/>
-        <package name="systemd"/>
         <package name="systemd-sysvinit"/>
         <package name="timezone"/>
         <package name="wicked"/>
