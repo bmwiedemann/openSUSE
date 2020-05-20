@@ -31,6 +31,8 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 Requires:       python
 Requires:       python-cryptography
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,14 +48,21 @@ to interact with Tor (https://www.torproject.org/).
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tor-prompt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec run_tests.py -u
 
+%post
+%python_install_alternative tor-prompt
+
+%postun
+%python_uninstall_alternative tor-prompt
+
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/tor-prompt
+%python_alternative %{_bindir}/tor-prompt
 %{python_sitelib}/*
 
 %changelog

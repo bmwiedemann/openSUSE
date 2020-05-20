@@ -35,4 +35,12 @@
 - Drop merged python38.patch</comment>
     <requestid>785941</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e16365354c536be208f08c2a79f69864</srcmd5>
+    <version>1.8.0</version>
+    <time>1589993058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807156</requestid>
+  </revision>
 </revisionlist>
