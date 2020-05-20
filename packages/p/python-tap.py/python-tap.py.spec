@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-PyYAML
 Recommends:     python-more-itertools
 BuildArch:      noarch
@@ -55,17 +57,27 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tap
+%python_clone -a %{buildroot}%{_bindir}/tappy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative tap
+%python_install_alternative tappy
+
+%postun
+%python_uninstall_alternative tap
+%python_uninstall_alternative tappy
+
 %files %{python_files}
 %doc AUTHORS README.md
 %license LICENSE
-%python3_only %{_bindir}/tappy
-%python3_only %{_bindir}/tap
+%python_alternative %{_bindir}/tappy
+%python_alternative %{_bindir}/tap
 %{python_sitelib}/*
 
 %changelog
