@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypipegraph
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,16 @@ BuildRequires:  %{python_module setuptools >= 38.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -54,16 +56,23 @@ A workflow (job) engine/pipeline for bioinformatics and scientific computing.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ppg_invariant_diff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # We don't care about these tests
 %pytest -k 'not test_flake8 and not test_notebook'
 
+%post
+%python_install_alternative ppg_invariant_diff
+
+%postun
+%python_uninstall_alternative ppg_invariant_diff
+
 %files %{python_files}
 %doc README.md
 %license COPYING
-%python3_only %{_bindir}/ppg_invariant_diff
+%python_alternative %{_bindir}/ppg_invariant_diff
 %{python_sitelib}/*
 
 %changelog
