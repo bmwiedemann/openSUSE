@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 17 17:19:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.6.2:
+  * When token aliases contained content delimiters bison used
+    to emit "nested" comments, which is invalid C
+
+-------------------------------------------------------------------
 Mon May 11 14:41:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.6.1:
