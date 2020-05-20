@@ -1078,4 +1078,16 @@
     <comment></comment>
     <requestid>798546</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>89c17330db59f1e9093cffc5a8fc543a</srcmd5>
+    <version>0.15.1</version>
+    <time>1589993291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.1:
+  * Fix a mistake in keyboard indicator flag, which could create a
+    huge amount of error messages.
+  * Loosen the conditions for panel positioning. Now, the panel can
+    be at virtual screen edges but not between screens.</comment>
+    <requestid>807715</requestid>
+  </revision>
 </revisionlist>

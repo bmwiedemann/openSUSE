@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 20 12:37:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fix a mistake in keyboard indicator flag, which could create a
+    huge amount of error messages.
+  * Loosen the conditions for panel positioning. Now, the panel can
+    be at virtual screen edges but not between screens.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:54:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-panel.keyring to tsujan's key
