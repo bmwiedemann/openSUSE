@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 15 15:42:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Store infoResult too
+  * Fix Bug 420766 - Envelope From is empty on outgoing mails (kde#420766)
+  * Fix display correct charset
+  * Fix Bug 420740 - adding of inline images broken (kde#420740)
+  * Don't duplicate text in tooltip
+  * Fix minimum size in warning message. Otherwise in hdpi we can have
+    icon which is too big for red rect.
+
+-------------------------------------------------------------------
 Thu Apr 23 12:23:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -14,8 +30,6 @@ Sun Apr  5 20:30:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Too many changes since 20.03.80, only listing bugfixes:
   * Fix Bug 416306 - send later agent wrongly store sended message to local storage (kde#416306)
 
@@ -24,8 +38,6 @@ Sun Mar 22 09:17:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * Fix Bug 418482 - KMail does not display answer (in HTML-mode) (kde#418482)
   * Fix Bug 416758 - Encoding broken (kde#416758)
@@ -41,7 +53,7 @@ Thu Mar  5 20:36:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Fix setting translation domain on the Grantlee localizer
   * Fix using "Qt" in search line. Test flag was incorrect before
@@ -68,7 +80,7 @@ Wed Feb  5 06:29:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Replace \n by '_' in filename. otherwise mail will be broken
   * Use correct ProvideUrl as requested
