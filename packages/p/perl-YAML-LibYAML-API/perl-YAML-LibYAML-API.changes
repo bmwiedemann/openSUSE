@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 17 03:14:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.009
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.009 2020-05-16 15:28:05+02:00
+  
+      - Support emitting version directives
+      - Update libyaml sources to 0.2.4. Changes affecting this module:
+      - Output '...' at the stream end after a block scalar with trailing empty lines
+      - Accept '%YAML 1.2' directives
+  
+
+-------------------------------------------------------------------
 Thu Feb 20 03:15:41 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.008
