@@ -372,6 +372,7 @@ Requires:       busybox = %{version}
 Conflicts:      sendmail
 Conflicts:      postfix
 Conflicts:      exim
+Conflicts:      msmtp-mta
 
 %description -n busybox-sendmail
 This package contains the symlinks to replace sendmail with busybox.
