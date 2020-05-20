@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix Bug 420327 reload email after changing html preference for contact (kde#420327)
+  * Fix compile
+  * Fix Bug 420327 - reload email after changing html preference for contact (kde#420327)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -23,8 +35,6 @@ Sun Apr  5 20:30:12 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Fix export to pdf filename
   * Do not ask users if they want to overwrite saved file twice
@@ -36,8 +46,6 @@ Sun Mar 22 09:17:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes to list here.
 
 -------------------------------------------------------------------
@@ -46,7 +54,7 @@ Thu Mar  5 20:36:15 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Remove temporary directory
   * Remove temporary file
@@ -62,7 +70,7 @@ Wed Feb  5 06:29:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Fix option 'h' is already defined for help (now we can see this option)
   * Fix create mail from command line with body as utf8
