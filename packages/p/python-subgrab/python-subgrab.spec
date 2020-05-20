@@ -1,7 +1,7 @@
 #
 # spec file for package python-subgrab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  unzip
 Requires:       python-beautifulsoup4
 Requires:       python-lxml
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,10 +50,17 @@ sed -i 's/bs4/beautifulsoup4/g' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/subgrab
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
+%post
+%python_install_alternative subgrab
+
+%postun
+%python_uninstall_alternative subgrab
+
 %files %{python_files}
-%python3_only %{_bindir}/subgrab
+%python_alternative %{_bindir}/subgrab
 %{python_sitelib}/*
 
 %changelog
