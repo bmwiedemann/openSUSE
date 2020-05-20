@@ -311,4 +311,41 @@
     <comment></comment>
     <requestid>568909</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c66dbdebf68b16c5b9aed86311ff204a</srcmd5>
+    <version>0.6.22</version>
+    <time>1589992628</time>
+    <user>dimstar_suse</user>
+    <comment>- libexif-0.6.22 (2020-05-18) release:
+  * New translations: ms
+  * Updated translations for most languages
+  * Fixed C89 compatibility
+  * Fixed warnings on recent versions of autoconf
+  * Some useful EXIF 2.3 tag added:
+    * EXIF_TAG_GAMMA
+    * EXIF_TAG_COMPOSITE_IMAGE
+    * EXIF_TAG_SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE
+    * EXIF_TAG_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE
+    * EXIF_TAG_GPS_H_POSITIONING_ERROR
+    * EXIF_TAG_CAMERA_OWNER_NAME
+    * EXIF_TAG_BODY_SERIAL_NUMBER
+    * EXIF_TAG_LENS_SPECIFICATION
+    * EXIF_TAG_LENS_MAKE
+    * EXIF_TAG_LENS_MODEL
+    * EXIF_TAG_LENS_SERIAL_NUMBER
+  * Lots of fixes exposed by fuzzers like AFL, ClusterFuzz, OSSFuzz and others.
+    * CVE-2018-20030: Fix for recursion DoS (bsc#1120943)
+    * CVE-2020-13114: Time consumption DoS when parsing canon array markers
+    * CVE-2020-13113: Potential use of uninitialized memory 
+    * CVE-2020-13112: Various buffer overread fixes due to integer overflows in maker notes
+    * CVE-2020-0093: read overflow (bsc#1171847)
+    * CVE-2019-9278: replaced integer overflow checks the compiler could optimize away by safer constructs (bsc#1160770)
+    * CVE-2020-12767: fixed division by zero (bsc#1171475)
+    * CVE-2016-6328: fixed integer overflow when parsing maker notes (bsc#1171475)
+    * CVE-2017-7544: fixed buffer overread (bsc#1059893)
+- removed patch: libexif-build-date.patch (done similar upstream)
+- CVE-2016-6328.patch: in upstream release
+- CVE-2017-7544.patch: in upstream release</comment>
+    <requestid>807015</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libexif
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libexif
-Version:        0.6.21
+Version:        0.6.22
 Release:        0
-Url:            http://libexif.sourceforge.net
+URL:            http://libexif.sourceforge.net
 Summary:        An EXIF Tag Parsing Library for Digital Cameras
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        https://downloads.sourceforge.net/project/libexif/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.bz2
+Source2:        %{name}-%{version}.tar.bz2.asc
+Source3:        %name.keyring
 Source1:        baselibs.conf
-Patch0:         libexif-build-date.patch
-Patch1:         CVE-2016-6328.patch
-Patch2:         CVE-2017-7544.patch
 BuildRequires:  doxygen
 BuildRequires:  pkg-config
 
@@ -62,9 +61,6 @@ digital cameras.
 
 %prep 
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p0
 
 %build
 export CFLAGS="%optflags $(getconf LFS_CFLAGS)"
