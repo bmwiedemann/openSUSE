@@ -42,10 +42,12 @@ Requires:       python-rarfile >= 2.7
 Requires:       python-requests >= 2.7.0
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.20.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-colorlog >= 2.6.0
-BuildArch:      noarch
 Provides:       subliminal = %{version}
 Obsoletes:      subliminal < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -60,12 +62,19 @@ It comes with an easy to use CLI suitable for direct use or cron jobs.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/subliminal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative subliminal
+
+%postun
+%python_uninstall_alternative subliminal
 
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.rst README.rst
-%python3_only %{_bindir}/subliminal
+%python_alternative %{_bindir}/subliminal
 %{python_sitelib}/subliminal
 %{python_sitelib}/subliminal-%{version}-py%{python_version}.egg-info
 

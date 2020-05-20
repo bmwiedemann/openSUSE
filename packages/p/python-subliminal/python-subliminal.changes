@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 08:03:07 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sat May  2 10:36:35 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.1.0
