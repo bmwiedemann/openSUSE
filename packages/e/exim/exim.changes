@@ -1,3 +1,8 @@
+Tue May 19 13:47:05 CEST 2020 - wullinger@rz.uni-kiel.de
+- switch pretrans to use lua
+  (fixes bsc#1171877)
+  
+-------------------------------------------------------------------
 Tue May 12 08:19:17 UTC 2020 - wullinger@rz.uni-kiel.de
 - bring changes from current in +fixes branch
   (patch-exim-fixes-ee83de04d3087efaf808d1f2235a988275c2ee94)

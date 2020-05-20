@@ -73,7 +73,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.93.0.4
-Release:        3
+Release:        4
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -382,20 +382,22 @@ install -m 0755 $RPM_SOURCE_DIR/eximstats-html-update.py $RPM_BUILD_ROOT/%{_sbin
 # apparmor profile
 install -D -m 0644 $RPM_SOURCE_DIR/apparmor.usr.sbin.exim $RPM_BUILD_ROOT/usr/share/apparmor/extra-profiles/usr.sbin.exim
 
-%pretrans
-if [ -d "%{_docdir}/%{name}/doc/cve-2019-13917" ]; then
-    moved_suffix=""
-    moved_index=""
-    while [ -d "%{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved${moved_suffix}${moved_index}" ]; do
-        if [ -z "${moved_suffix}" ]; then
-            moved_suffix="."
-            moved_index="0"
-        else
-            moved_index=$((${moved_index} + 1))
-        fi
-    done
-	mv "%{_docdir}/%{name}/doc/cve-2019-13917" "%{_docdir}/%{name}/doc/cve-2019-13917.rpmmoved${moved_suffix}${moved_index}"
-fi
+%pretrans -p <lua>
+docdir = rpm.expand('%{_docdir}')
+pkgname = rpm.expand('%{name}')
+path = docdir .. '/' .. pkgname .. '/doc/cve-2019-13917'
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
 
 %pre
 %if 0%{?suse_version} > 1220
