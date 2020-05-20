@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 18 07:26:55 UTC 2020 - sgrunert@suse.com
+
+- Update to version 1.18.1:
+  - Feature
+    - Add -–version-file-persist, a place to put the version file
+      in persistent storage. Now, crio wipe wipes containers if
+      -–version-file is not present (presumably it is on temporary
+      storage), and wipes images if both -–version-file and
+      -–version-file-persist are out of date (presumably there has
+      been an upgrade of cri-o’s minor version
+    - Containers running init or systemd are now given a new
+      selinux label container_init_t, giving it selinux privileges
+      more appropriate for the workload
+  - Other (Bug, Cleanup or Flake)
+    - Fix linkmode retrieval on crio version for static binaries
+    - Fix a bug where CRI-O could not start a container if
+      CONFIG_CGROUP_HUGETLB was not set in the kernel
+    - Re-add the behavior that string slices can be passed to the
+      CLI comma separated, for example --default-capabilities
+      CHOWN,KILL
+    - Removed crio-wipe.service and crio-shutdown.service systemd
+      units from the static bundle since they are not required
+    - Fix some crio version oddities
+
+-------------------------------------------------------------------
 Wed Apr 29 06:30:14 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Remove the `go >= 1.13` build requirement
