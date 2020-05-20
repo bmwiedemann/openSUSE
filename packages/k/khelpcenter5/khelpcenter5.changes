@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- No code change since 20.04.0
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -15,8 +24,6 @@ Sun Apr  5 20:30:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - No code change since 20.03.80
 
 -------------------------------------------------------------------
@@ -24,8 +31,6 @@ Sun Mar 22 09:17:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * Cover Meta as a shortcut for the application launcher (kde#379109)
 
@@ -35,7 +40,7 @@ Thu Mar  5 20:36:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Reload all kind of KHC addresses when the font size changed (kde#417222)
 
@@ -50,7 +55,7 @@ Wed Feb  5 06:29:10 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Reload the page after changing the font size (kde#415192)
 
