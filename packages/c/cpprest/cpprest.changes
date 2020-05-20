@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 16:39:14 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to disable 'extract_floating_point' test failing on
+  ppc64* and aarch64:
+  * cpprest-2.10.9-disable-test-extract_floating_point.patch
+
+-------------------------------------------------------------------
 Tue May  5 08:15:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.10.16:

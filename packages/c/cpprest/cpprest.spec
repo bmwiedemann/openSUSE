@@ -31,6 +31,8 @@ Summary:        C++ REST library
 License:        MIT AND BSD-3-Clause AND Zlib
 URL:            https://github.com/Microsoft/cpprestsdk
 Source:         https://github.com/Microsoft/cpprestsdk/archive/v%{version}/cpprestsdk-%{version}.tar.gz
+# https://github.com/Microsoft/cpprestsdk/issues/576
+Patch1:         cpprest-2.10.9-disable-test-extract_floating_point.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -76,6 +78,9 @@ Development files.
 
 %prep
 %setup -q -n cpprestsdk-%{version}
+%ifarch aarch64 ppc64 ppc64le
+%patch1 -p1
+%endif
 
 %build
 %cmake \
@@ -108,7 +113,7 @@ EOF
 # do not use macro so we can exclude tests
 pushd build
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-ctest --output-on-failure --force-new-ctest-process %{_smp_mflags} -E '(httpclient_test|websocketsclient_test)'
+ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} -E '(httpclient_test|websocketsclient_test)'
 popd
 
 %post -n libcpprest%{major}_%{minor} -p /sbin/ldconfig
