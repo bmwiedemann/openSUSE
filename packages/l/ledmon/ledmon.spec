@@ -1,7 +1,7 @@
 #
 # spec file for package ledmon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,19 @@
 
 
 Name:           ledmon
-Version:        0.93
+Version:        0.94
 Release:        0
 Summary:        Enclosure LED Utilities
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/intel/ledmon/
 Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM ledmon-amd_sgpio.patch
-Patch0:         Don-t-build-with-Werror.patch
-Patch1:         ledmon-paths-in-systemd-service-file-are-generated.patch
-Patch2:         smp-fix-the-activity-indicator-states.patch
-Patch3:         amd_sgpio-Correct-use-of-packed-structs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 Provides:       sgpio:/sbin/ledmon
@@ -46,7 +42,7 @@ ControlUtilities. They help to enable LED management for software RAID
 solutions.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %define _lto_cflags %{nil}
@@ -57,6 +53,8 @@ autoreconf -fiv
 
 %install
 %make_install
+ln -sv %{_sbindir}/service \
+  %{buildroot}%{_sbindir}/rc%{name}
 rm %{buildroot}%{_datarootdir}/doc/ledmon/README
 
 %pre
@@ -76,6 +74,7 @@ rm %{buildroot}%{_datarootdir}/doc/ledmon/README
 %doc README
 %{_sbindir}/ledmon
 %{_sbindir}/ledctl
+%{_sbindir}/rcledmon
 %{_unitdir}/ledmon.service
 %{_mandir}/man5/ledmon.conf.5.5%{?ext_man}
 %{_mandir}/man8/ledctl.8.8%{?ext_man}

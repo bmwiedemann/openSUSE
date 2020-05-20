@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 18 07:59:53 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.94:
+  * Support for AMD IPMI enclosure management
+  * Support for NPEM
+  * Documentation updates
+  * Fix activity indicator state for SMP
+  * Fix for GCC 9 compilation
+  * Update ipbi pattern for drives with previous pattern unknown
+- Drop no longer needed patches:
+  * Don-t-build-with-Werror.patch
+  * amd_sgpio-Correct-use-of-packed-structs.patch
+  * ledmon-paths-in-systemd-service-file-are-generated.patch
+  * smp-fix-the-activity-indicator-states.patch
+- Install compat symlink
+
+-------------------------------------------------------------------
 Fri Dec 27 02:09:00 UTC 2019 - heming.zhao@suse.com
 
 - backport upstream patches to v0.93
