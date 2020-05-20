@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 11:13:27 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Run sysctl -a --system before kubelet to ensure sysctl parameters are correctly loaded [boo#1171770]
+
+-------------------------------------------------------------------
 Fri Apr 24 08:43:20 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.5:
