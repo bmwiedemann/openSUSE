@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 15:42:20 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix File menu structure (kde#421004)
+  * Fix scroll speed with free-spinning mouse wheels (kde#420492)
+  * Fix action collection names of Facing Pages [Center First Page] and Overview
+
+-------------------------------------------------------------------
 Thu Apr 23 12:23:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -13,8 +25,6 @@ Sun Apr  5 20:30:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * CI: Use debian testing while unstable is broken
   * CI: tell debian derivatives not to ask us question in apt time
@@ -24,8 +34,6 @@ Sun Mar 22 09:17:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * comicbook: Obey autotransform of images (kde#410778)
   * Solving the creation of an additional tab for a deleted file. (kde#412978)
@@ -40,7 +48,7 @@ Thu Mar  5 20:36:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Fix re-rendering of images when using partial updates (kde#418086)
   * appdata: use canonical cdn screenshot location
@@ -57,7 +65,7 @@ Wed Feb  5 06:29:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Fix race condition in generator.cpp
   * Fix render stop and high load due to timing issue (kde#396137)
