@@ -1,7 +1,7 @@
 #
 # spec file for package python-technicolor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,15 +47,22 @@ means of a decorator.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/technicolor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # no testsuite found
 
+%post
+%python_install_alternative technicolor
+
+%postun
+%python_uninstall_alternative technicolor
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/technicolor
+%python_alternative %{_bindir}/technicolor
 %{python_sitelib}/*
 
 %changelog
