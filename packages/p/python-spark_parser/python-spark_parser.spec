@@ -1,7 +1,7 @@
 #
 # spec file for package python-spark_parser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,15 +54,22 @@ grammar. These are grammars which are left-recursive.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/spark-parser-coverage
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest test
 
+%post
+%python_install_alternative spark-parser-coverage
+
+%postun
+%python_uninstall_alternative spark-parser-coverage
+
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%python3_only %{_bindir}/spark-parser-coverage
+%python_alternative %{_bindir}/spark-parser-coverage
 %{python_sitelib}/*
 
 %changelog
