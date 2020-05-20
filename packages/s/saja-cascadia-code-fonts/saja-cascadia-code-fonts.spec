@@ -19,7 +19,7 @@
 
 %define          fontname       cascadia-code
 Name:           saja-cascadia-code-fonts
-Version:        2004.30
+Version:        2005.15
 Release:        0
 Summary:        Monospace terminal fonts from Microsoft
 License:        OFL-1.1

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 16:22:38 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2005.15
+  * This release of Cascadia Code adjusts the Windows GDI metrics
+    to reduce line spacing and fix some vertical alignment issues
+    in legacy applications.
+
+-------------------------------------------------------------------
 Wed May 13 04:05:54 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2004.30
