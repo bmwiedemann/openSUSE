@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,53 +16,20 @@
 #
 
 
+%global         _sysconfdir %{_sysconfdir}
+%global         _has_tmpfiled  %(rpm -q -f %{_prefix}/lib/tmpfiles.d | grep -c filesystem)
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 %bcond_without  sdtimer
-
 Name:           man
-BuildRequires:  automake
-BuildRequires:  flex
-BuildRequires:  gdbm-devel
-BuildRequires:  gettext-runtime
-BuildRequires:  gettext-tools
-BuildRequires:  groff
-BuildRequires:  less
-BuildRequires:  libbz2-devel
-BuildRequires:  libpipeline-devel >= 1.5.0
-BuildRequires:  libzio-devel
-BuildRequires:  man-pages
-BuildRequires:  pkg-config
-BuildRequires:  po4a
-BuildRequires:  update-alternatives
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(systemd)
 Version:        2.8.4
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://savannah.nongnu.org/projects/man-db
-PreReq:         coreutils fillup
-Provides:       man_db
-%if 0%{suse_version} < 1500
-Requires:       cron
-%endif
-Requires:       glibc-locale
-%if 0%{suse_version} > 1300
-Recommends:     groff-full
-%endif
-Requires:       groff >= 1.18
-Requires:       less
-Requires(pre):  user(man)
-Requires(pre):  group(man)
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
-Requires(posttrans): systemd
+URL:            https://savannah.nongnu.org/projects/man-db
 Source:         http://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz
 Source1:        sysconfig.cron-man
 Source2:        cron.daily.do_mandb
@@ -73,6 +40,8 @@ Source7:        man-db-create.service
 Source8:        mandb.timer
 Source9:        mandb.service
 Source10:       man-db-2.6.3-man0.dif
+Source11:       http://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz.asc
+Source12:       https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=man-db&download=1#/%{name}.keyring
 Patch0:         man-db-2.8.4.dif
 Patch2:         man-db-2.3.19deb4.0-groff.dif
 Patch4:         man-db-2.6.3-section.dif
@@ -85,34 +54,58 @@ Patch10:        man-db-2.6.3-listall.dif
 Patch11:        man-MAN_POSIXLY_CORRECT-man1.dif
 # PATCH-FIX-SUSE Fixes build-compare bnc#971922
 Patch12:        reproducible.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%global         _sysconfdir /etc
-%global         _has_tmpfiled  %(rpm -q -f %{_prefix}/lib/tmpfiles.d | grep -c filesystem)
+BuildRequires:  automake
+BuildRequires:  flex
+BuildRequires:  gdbm-devel
+BuildRequires:  gettext-runtime
+BuildRequires:  gettext-tools
+BuildRequires:  groff
+BuildRequires:  less
+BuildRequires:  libbz2-devel
+BuildRequires:  libpipeline-devel >= 1.5.0
+BuildRequires:  libzio-devel
+BuildRequires:  man-pages
+BuildRequires:  pkgconfig
+BuildRequires:  po4a
+BuildRequires:  update-alternatives
+BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(systemd)
+Requires:       glibc-locale
+Requires:       groff >= 1.18
+Requires:       less
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         coreutils
+PreReq:         fillup
+Requires(post): update-alternatives
+Requires(posttrans): systemd
+Requires(pre):  group(man)
+Requires(pre):  user(man)
+Requires(preun): update-alternatives
+Provides:       man_db
+%if 0%{?suse_version} < 1500
+Requires:       cron
+%endif
+%if 0%{?suse_version} > 1300
+Recommends:     groff-full
+%endif
 
 %description
 A program for displaying man pages on the screen or sending them to a
 printer (using groff).
 
-
-
-Authors:
---------
-    G. Wilford <G.Wilford@ee.surrey.ac.uk>
-    Fabrizio Polacco <fpolacco@debian.org>
-    Colin Watson <cjwatson@debian.org>
-
 %prep
 %setup -q -n man-db-%{version}
-%patch2  -p0 -b .groff
-%patch4  -p0 -b .sect
-%patch5  -p0 -b .secu4
-%patch6  -p0 -b .firefox
-%patch7  -p0 -b .chinese
-%patch9  -p0 -b .zio
-%patch10 -p0 -b .listall
-%patch11 -p0 -b .p11
+%patch2   -b .groff
+%patch4   -b .sect
+%patch5   -b .secu4
+%patch6   -b .firefox
+%patch7   -b .chinese
+%patch9   -b .zio
+%patch10  -b .listall
+%patch11  -b .p11
 %patch12 -p1 -b .p12
-%patch0  -p0 -b .0
+%patch0   -b .0
 
 %build
     gettextize --force --copy --no-changelog
@@ -139,7 +132,7 @@ Authors:
     SEC="${SEC[@]}"
     rm -f configure
 %global optflags %{optflags} -funroll-loops -pipe -Wall
-    if grep -q _DEFAULT_SOURCE /usr/include/features.h ; then
+    if grep -q _DEFAULT_SOURCE %{_includedir}/features.h ; then
 	CFLAGS="%{optflags} -D_GNU_SOURCE -D_DEFAULT_SOURCE"
     else
 	CFLAGS="%{optflags} -D_GNU_SOURCE -D_SVID_SOURCE"
@@ -174,7 +167,7 @@ Authors:
 	--with-config-file=%{_sysconfdir}/manpath.config \
 	--without-included-gettext	\
 	--with-sections="${SEC}"
-    make %{?_smp_mflags} nls=all
+    %make_build nls=all
     for man in $(find man/ -type f -a -name '*.[0-9]'); do
 	pp="$(head -n 1 $man)"
 	case "$pp" in
@@ -190,9 +183,9 @@ Authors:
 		"  $man
 	esac
     done
-    patch --backup --suffix=.s10 ${FUZZ+"--fuzz=$FUZZ"} -p0 < %{S:10}
+    patch --backup --suffix=.s10 ${FUZZ+"--fuzz=$FUZZ"} -p0 < %{SOURCE10}
     gcc $CFLAGS -I gl/lib/ -I include/ --include config.h -D LOCALEDIR="\"%{_datarootdir}/locale\"" \
-	-o wrapper %{S:5} -L gl/lib/.libs/ -lgnu
+	-o wrapper %{SOURCE5} -L gl/lib/.libs/ -lgnu
 
 %check
 if ! make check; then
@@ -201,20 +194,20 @@ if ! make check; then
 fi
 
 %install
-%if %suse_version <= 1030
+%if 0%{?suse_version} <= 1030
     export MKDIR_P="mkdir -p"
 %endif
     rm -rf   %{buildroot}%{_localstatedir}/cache/man
-    mkdir -p %{buildroot}%{_datadir}/doc/packages/man
+    mkdir -p %{buildroot}%{_docdir}/man
     mkdir -p %{buildroot}%{_libexecdir}/man-db
     mkdir -p %{buildroot}%{_bindir}
-    mkdir -p %{buildroot}/etc
+    mkdir -p %{buildroot}%{_sysconfdir}
     mkdir -p %{buildroot}%{_mandir}
     mkdir -p %{buildroot}%{_sysconfdir}/alternatives
     make nls=all install DESTDIR=%{buildroot}
-    rm -vf   %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
     mv	     %{buildroot}%{_datadir}/doc/man-db/man-db-manual.* \
-	     %{buildroot}%{_datadir}/doc/packages/man/
+	     %{buildroot}%{_docdir}/man/
     # wrapper which drops roots privileges if root executes man or mandb
     mv -vf   %{buildroot}%{_bindir}/man          %{buildroot}%{_libexecdir}/man-db/
     mv -vf   %{buildroot}%{_bindir}/mandb        %{buildroot}%{_libexecdir}/man-db/
@@ -256,18 +249,18 @@ fi
     install -m 0644 groff/tmac.andocdb  %{buildroot}%{_datadir}/groff/site-tmac/
     mkdir -p %{buildroot}%{_fillupdir}
     mkdir -p %{buildroot}%{_unitdir}/
-%if 0%{suse_version} < 1500
-    mkdir -p %{buildroot}/etc/cron.daily
+%if 0%{?suse_version} < 1500
+    mkdir -p %{buildroot}%{_sysconfdir}/cron.daily
 %endif
     install -m 0644 %{SOURCE1} %{buildroot}%{_fillupdir}
-%if 0%{suse_version} < 1500
-    install -m 0744 %{SOURCE2} %{buildroot}/etc/cron.daily/suse-do_mandb
+%if 0%{?suse_version} < 1500
+    install -m 0744 %{SOURCE2} %{buildroot}%{_sysconfdir}/cron.daily/suse-do_mandb
 %else
     install -m 0744 %{SOURCE2} %{buildroot}/%{_libexecdir}/man-db/do_mandb
 %endif
 %if %{with sdtimer}
     install -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
     install -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/
     install -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/
 %endif
@@ -278,7 +271,7 @@ fi
 %pre
 test -d var/catman/ && rm -rf var/catman/ || true
 %if %{with sdtimer}
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %service_add_pre man-db-create.service mandb.service mandb.timer
 %else
 %service_add_pre man-db-create.service
@@ -290,7 +283,7 @@ test -d var/catman/ && rm -rf var/catman/ || true
 /sbin/ldconfig
 %if %{with sdtimer}
 %service_add_post man-db-create.service
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %service_add_post mandb.service mandb.timer
 %endif
 %endif
@@ -307,7 +300,7 @@ test -d var/catman/ && rm -rf var/catman/ || true
 %preun
 %if %{with sdtimer}
 %service_del_preun man-db-create.service
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %service_del_preun mandb.service mandb.timer
 %endif
 %endif
@@ -320,7 +313,7 @@ fi
 /sbin/ldconfig
 %if %{with sdtimer}
 %service_del_postun man-db-create.service
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %service_del_postun mandb.service mandb.timer
 %endif
 %endif
@@ -333,13 +326,12 @@ then
 fi
 
 %files -f man-db.lang
-%defattr(-,root,root)
-%doc docs/COPYING
+%license docs/COPYING
 %doc ChangeLog
-%doc %{_datadir}/doc/packages/man/man-db-manual.*
-%config /etc/manpath.config
-%if 0%{suse_version} < 1500
-%attr(0744,root,root) /etc/cron.daily/suse-do_mandb
+%doc %{_docdir}/man/man-db-manual.*
+%config %{_sysconfdir}/manpath.config
+%if 0%{?suse_version} < 1500
+%attr(0744,root,root) %{_sysconfdir}/cron.daily/suse-do_mandb
 %endif
 %ghost %{_sysconfdir}/alternatives/man
 %ghost %{_sysconfdir}/alternatives/apropos
@@ -358,11 +350,11 @@ fi
 %attr(0755,root,root) %{_libexecdir}/man-db/man
 %attr(0755,root,root) %{_libexecdir}/man-db/whatis
 %attr(0755,root,root) %{_libexecdir}/man-db/mandb
-%attr(0755,man,man)   %{_libexecdir}/man-db/manconv
-%attr(0755,man,man)   %{_libexecdir}/man-db/globbing
+%attr(0755,man,man) %{_libexecdir}/man-db/manconv
+%attr(0755,man,man) %{_libexecdir}/man-db/globbing
 %attr(0755,root,root) %{_libexecdir}/man-db/wrapper
-%if 0%{suse_version} >= 1500
-%attr(0744,man,man)   %{_libexecdir}/man-db/do_mandb
+%if 0%{?suse_version} >= 1500
+%attr(0744,man,man) %{_libexecdir}/man-db/do_mandb
 %endif
 %{_sbindir}/accessdb
 %{_libdir}/libman*.so
@@ -373,7 +365,7 @@ fi
 %{_prefix}/lib/tmpfiles.d/man-db.conf
 %if %{with sdtimer}
 %{_unitdir}/man-db-create.service
-%if 0%{suse_version} >= 1500
+%if 0%{?suse_version} >= 1500
 %{_unitdir}/mandb.service
 %{_unitdir}/mandb.timer
 %endif
@@ -381,9 +373,9 @@ fi
 %dir %{_datadir}/groff/site-tmac
 %{_datadir}/groff/site-tmac/tmac.andb
 %{_datadir}/groff/site-tmac/tmac.andocdb
-%doc %{_mandir}/man1/*.1%{?ext_man}
-%doc %{_mandir}/man5/*.5%{?ext_man}
-%doc %{_mandir}/man8/*.8%{?ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/man8/*.8%{?ext_man}
 %dir %{_mandir}/id
 %dir %{_mandir}/sr
 %dir %{_mandir}/tr

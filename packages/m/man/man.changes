@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 17 17:37:58 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing keys and verify source signature
+
+-------------------------------------------------------------------
 Thu Jan  9 09:40:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't mark /etc/alternatives files as %config as that would lead
