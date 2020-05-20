@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun May 17 19:57:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.2:
+  * A TLS error for a database client caused a false 'lost connection'
+    error for an SMTP over TLS session in the same Postfix process.
+    This bug was introduced with Postfix 2.2.
+  * The same bug existed in the tlsproxy(8) daemon, where a TLS
+    error for one TLS session could cause a false 'lost connection'
+    error for a concurrent TLS session in the same process. This
+    bug was introduced with Postfix 2.8.
+  * The Postfix build now disables DANE support on Linux systems
+    with libc-musl such as Alpine, because libc-musl provides no
+    indication whether DNS responses are authentic. This broke DANE
+    support without a clear explanation.
+  * Due to implementation changes in the ICU library, some Postfix
+    daemons reported file access errrors (U_FILE_ACCESS_ERROR) after
+    chroot(). This was fixed by initializing the ICU library before
+    making the chroot() call.
+  * Minor code changes to silence a compiler that special-cases
+    string literals.
+  * Segfault (null pointer) in the tlsproxy(8) client role when the
+    server role was disabled. This typically happened on systems
+    that do not receive mail, after configuring connection reuse
+    for outbound SMTP over TLS.
+  * The date portion of the maillog_file_rotate_suffix default value
+    used the minute (%M) instead of the month (%m).
+
+-------------------------------------------------------------------
 Mon May 11 20:07:40 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - boo#1106004 fix incorrect locations for files in postfix-files
