@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-rpm-macros
-Version:        20200412
+Version:        20200514
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -63,25 +63,26 @@ in ocaml spec files.
 
 %install
 # map ocamlobjinfo output to rpm Provides/Requires
-tag="ocaml"
+# this tag name MUST match what ocaml.spec uses internally
+tag="suseocaml"
 mkdir -vp %{buildroot}%{_rpmconfigdir}/fileattrs
-tee %{buildroot}%{_rpmconfigdir}/fileattrs/z${tag}.attr <<_EOF_
-%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh --provides
-%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh --requires
-%__${tag}_magic    ^(ELF|Objective caml|OCaml) .*$
-%__${tag}_path     .(cma|cmi|cmo|cmx|cmxa|cmxs)$
-%__${tag}_flags    magic_and_path
+tee %{buildroot}%{_rpmconfigdir}/fileattrs/${tag}.attr <<_EOF_
+%%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh --provides
+%%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh --requires
+%%__${tag}_magic    ^(ELF|Objective caml|OCaml) .*$
+%%__${tag}_path     .(cma|cmi|cmo|cmx|cmxa|cmxs)$
+%%__${tag}_flags    magic_and_path
 _EOF_
 #
 tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE0}
 
 # map findlib names to rpm Provides/Requires
-tag="ocamlfind"
+tag="suseocamlfind"
 mkdir -vp %{buildroot}%{_rpmconfigdir}/fileattrs
 tee %{buildroot}%{_rpmconfigdir}/fileattrs/${tag}.attr <<_EOF_
-%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh -prov
-%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh -req
-%__${tag}_path     ^%{ocaml_standard_library}/.*/META$|^%{ocaml_standard_library}/META$
+%%__${tag}_provides %%{_rpmconfigdir}/${tag}.sh -prov
+%%__${tag}_requires %%{_rpmconfigdir}/${tag}.sh -req
+%%__${tag}_path     ^%{ocaml_standard_library}/.*/META$|^%{ocaml_standard_library}/META$
 _EOF_
 #
 tee %{buildroot}%{_rpmconfigdir}/${tag}.sh < %{SOURCE1}

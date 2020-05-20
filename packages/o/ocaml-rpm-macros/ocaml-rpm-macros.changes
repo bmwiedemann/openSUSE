@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 14:14:14 UTC 2020 - ohering@suse.de
+
+- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use tag 'suseocaml', rename zocaml.attr to suseocaml.attr to
+  avoid filename conflicts with rpm-build.rpm (bsc#1154874)
+- Rename also ocamlfind to suseocamlfind
+- Escape plain % chars
+
+-------------------------------------------------------------------
 Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
 
 - run OCaml rpm dependency generator only if both path and magic matches (rpm#1173)
