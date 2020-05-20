@@ -362,4 +362,15 @@ In short, do not use this driver for tablets on production workstations yet.</co
     wasn't created correctly.</comment>
     <requestid>724822</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>29e8cc3b7d6ad02eb9c38f3ed4f26643</srcmd5>
+    <version>0.30.0</version>
+    <time>1589992667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.30.0
+  * Only one noticeable change: the scroll button lock
+    configuration option available in recent libinput versions
+    is now exposed as the usual set of properties by this driver.</comment>
+    <requestid>807191</requestid>
+  </revision>
 </revisionlist>

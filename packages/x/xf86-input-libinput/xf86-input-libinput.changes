@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 10:36:33 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.30.0
+  * Only one noticeable change: the scroll button lock
+    configuration option available in recent libinput versions
+    is now exposed as the usual set of properties by this driver.
+
+-------------------------------------------------------------------
 Tue Aug 20 13:03:34 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.29.0
