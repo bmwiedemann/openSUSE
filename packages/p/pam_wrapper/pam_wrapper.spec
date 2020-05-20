@@ -118,6 +118,10 @@ the header files for libpamtest
 %install
 %cmake_install
 
+%if %{without python2}
+rm -rf %{python2_sitearch}/pypamtest.so
+%endif
+
 %check
 %ctest
 
