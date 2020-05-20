@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 18 03:12:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.004002
+   see /usr/share/doc/packages/perl-JSON-MaybeXS/Changes
+
+  1.004002 - 2020-05-17
+   - fix test that fails when JSON::XS is installed, but below version 3.0
+     (RT#132578)
+  
+
+-------------------------------------------------------------------
 Sat May  2 03:11:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.004001

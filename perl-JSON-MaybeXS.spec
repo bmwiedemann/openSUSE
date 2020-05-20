@@ -17,7 +17,7 @@
 
 
 Name:           perl-JSON-MaybeXS
-Version:        1.004001
+Version:        1.004002
 Release:        0
 %define cpan_name JSON-MaybeXS
 Summary:        Use L<Cpanel::JSON::XS> with a fallback to L<JSON::XS> and L<JSON::PP>
@@ -33,16 +33,17 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Cpanel::JSON::XS) >= 2.3310
 BuildRequires:  perl(JSON::PP) >= 2.27300
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Needs) >= 0.002006
 Requires:       perl(Cpanel::JSON::XS) >= 2.3310
 Requires:       perl(JSON::PP) >= 2.27300
 Recommends:     perl(Cpanel::JSON::XS) >= 2.3310
 %{perl_requires}
 
 %description
-This module first checks to see if either Cpanel::JSON::XS or JSON::XS is
-already loaded, in which case it uses that module. Otherwise it tries to
-load Cpanel::JSON::XS, then JSON::XS, then JSON::PP in order, and either
-uses the first module it finds or throws an error.
+This module first checks to see if either Cpanel::JSON::XS or JSON::XS (at
+at least version 3.0) is already loaded, in which case it uses that module.
+Otherwise it tries to load Cpanel::JSON::XS, then JSON::XS, then JSON::PP
+in order, and either uses the first module it finds or throws an error.
 
 It then exports the 'encode_json' and 'decode_json' functions from the
 loaded module, along with a 'JSON' constant that returns the class name for
