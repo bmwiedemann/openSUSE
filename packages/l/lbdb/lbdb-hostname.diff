@@ -1,29 +1,16 @@
-Index: lbdb-0.34/lbdb_lib.sh.in
-===================================================================
---- lbdb-0.34.orig/lbdb_lib.sh.in
-+++ lbdb-0.34/lbdb_lib.sh.in
-@@ -55,21 +55,18 @@ lbdb_hostname()
- 	if test "x$MAIL_DOMAIN_NAME" != "x" ; then
- 		hn=$MAIL_DOMAIN_NAME
- 	elif test -f /etc/mailname; then
--		hn=`cat /etc/mailname`
-+		read hn < /etc/mailname
+--- b/lbdb_lib.sh.in	2019-01-07 19:30:29.000000000 +0100
++++ a/lbdb_lib.sh.in	2020-05-06 10:13:38.987327900 +0200
+@@ -56,11 +56,8 @@
  	else
  		hn=""
  		if test -r /etc/resolv.conf ; then
--			hn="`sed -n -e 's/^[ 	]*domain[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf`"
+-			hn="$(sed -n -e 's/^[ 	]*domain[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf)"
 -			if test "x$hn" = "x" ; then
--				hn="`sed -n -e 's/^[ 	]*search[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf`"
+-				hn="$(sed -n -e 's/^[ 	]*search[ 	]\{1,\}\([^ ]*\)/\1/p' /etc/resolv.conf)"
 -			fi
-+			hn=`awk '/^#/{next}($1 == "search" || $1 == "domain" ) && $2 != "" {print $2;exit}' < /etc/resolv.conf`
- 		fi
+-		fi
++    		hn=`awk '/^#/{next}($1 == "search" || $1 == "domain" ) && $2 != "" {print $2;exit}' < /etc/resolv.conf`
++        fi
  		if test "x$hn" = "x" ; then
- 			hn=`lbdb_hn_sendmail`
+ 			hn=$(lbdb_hn_sendmail)
  			if test "x$hn" = "xNONE" ; then
- 				for i in /etc/HOSTNAME /etc/hostname ; do
- 					if test -f $i ; then
--						hn="`cat $i`"
-+						read hn < $i
- 						break;
- 					fi
- 				done

@@ -1,13 +1,12 @@
-Index: lbdb.rc.in
-===================================================================
---- lbdb.rc.in.orig
-+++ lbdb.rc.in
-@@ -40,7 +40,7 @@
- # - m_evolution  search in the Ximan Evolution addressbook.
+diff -ru a/lbdb.rc.in b/lbdb.rc.in
+--- a/lbdb.rc.in	2019-01-07 19:30:29.000000000 +0100
++++ b/lbdb.rc.in	2020-05-06 10:09:09.738793553 +0200
+@@ -41,7 +41,7 @@
  # - m_vcf        search a vcard (according to RFC2426) file.
+ # - m_khard      search a CardDAV address book via khard
  
 -METHODS="m_inmail m_passwd m_finger"
 +METHODS="m_inmail m_finger m_getent m_gpg"
  
- 
  #
+ # If you want to use a different database file for m_inmail, you can

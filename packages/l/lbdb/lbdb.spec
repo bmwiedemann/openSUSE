@@ -1,7 +1,7 @@
 #
 # spec file for package lbdb
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lbdb
-Version:        0.39
+Version:        0.48.1
 Release:        0
 Summary:        Address Database for mutt
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-Url:            http://www.spinnaker.de/lbdb/
+URL:            http://www.spinnaker.de/lbdb/
 Source:         http://www.spinnaker.de/debian/lbdb_%{version}.tar.xz
 Patch0:         lbdb.rc.dif
 Patch2:         lbdb-hostname.diff
@@ -46,7 +46,7 @@ set query_command="lbdbq %{s}"
 
 %prep
 %setup -q -n lbdb-%{version}
-%patch0
+%patch0 -p1
 %patch2 -p1
 
 %build

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May  6 08:15:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.48.1:
+  * Fix wrong quoting in lbdb-fetchaddr 
+  * m_muttalias: Fix some shellcheck warnings.
+  * Change project homepage URL to https.
+  * Use literal tab characters in order to make m_abook and m_goobook
+    modules work without requiring GNU sed(1).  Thanks to Raf Czlonka.
+  * Add tests for m_abook.
+  * Add update-version target to update version in all autotool files.
+  * m_abook: Fix a shellcheck warning.
+  * lbdbq, lbdb-fetchaddr: Fix some shellcheck warnings.
+  * Upgrade Standards-Version to 4.3.0
+    - Declare Rules-Requires-Root: no.
+  * Upgrade debhelper to v12.
+  * m_inmail/lbdb-munge: Use INMAIL_DB if set in config
+  * Upgrade debhelper to v11.
+  * Replace legacy `...` by $(...) in sh scripts.
+  * Update copyright notice.
+  * Add test_perl to check perl syntax.
+  * Add some perl libs <!nocheck> to Build-Depends, to be able do
+    perl syntax check.
+  * Replace undefined $rv by $?.
+  * Make the database file for m_inmail/lbdb-fetchaddr configurable.
+  * Add LBDB_OVERRIDE_METHODS, OVERIDE_MUTTALIAS_FILES variables for
+    testing.
+  * Add a test suite.
+    - Add a test for m_muttalias.
+  * m_muttalias: rewrite sed regex as ERE, which should be more POSIX
+    compatible and should work on non GNU sed, too.
+  * lbdbq: Remove whitespace from number of matches to become more
+    portable.
+
+-------------------------------------------------------------------
 Wed Dec  9 12:57:52 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file
