@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat May 16 12:10:39 UTC 2020 - Namor Barcode <z1trus@gmx.com>
+
+- Update to 1.6.5
+
+  * Fixes and updates for both the configure and the cmake build
+  * "icesh last" may only obtain a client list if no previous selection
+  * Relinquish the window manager selection when done
+  * If "exec xterm" fails then let icewm-session restart icewm
+  * Implement all of the functionality of "icesh -X".
+  * Document all task button mouse clicks.
+  * Optimize the startup of the task bar.
+  * New icewm-menu-xrandr "--max" option for menu options selector.
+  * Let icewm-menu-xrandr prefer the mode with the highest refresh rate.
+  * Document all hidden features of the window list window.
+  * Setting winoptions "tray" option non-zero overrules "ignoreTaskBar".
+  * Make tray toggle more intuitive by toggling between only two states.
+  * When parsing workspace names in icesh also test with spaces trimmed.
+  * Filter on property values in icesh and add click and delay to icesh.
+  * Filter clients in icesh by EWMH window state.
+  * Change the EWMH window state in icesh.
+  * Half a dozen fixes and improvements to the window list window.
+  * Fix tooltip positioning for multi-monitor when primary screen is right.
+  * Add all startup options to generated preferences.
+  * Prevent task bar auto hide if address bar is visible for #412.
+  * Fix the parsing of the opacity field in rgba colors.
+  * Eliminate a large number of superfluous frame border updates.
+
+Changes in 1.6.4
+
+  * Use "icesh keys" to let icewm reload the keybindings from the "keys" file.
+  * Allow mouse pointer buttons to trigger actions from "keys".
+  * If a theme cannot be found then fall back on the default theme.
+  * Always keep track of the WM_CLIENT_LEADER property.
+  * Automatically focus an urgent window in click-to-focus mode,
+  * if it has the same leader as the focused window.
+  * Set alpha threshold to 10 to completely draw 32-bit icons.
+  * Use WM_CLASS to locate an icon if no other source of icon was found.
+  * Add tracing of executed programs.
+  * Add spy and sizeby commands to icesh.
+  * Fix for pagerShowPreview for very wide multi-head desktops.
+  * Fix for context menu popup in icehelp.
+  * Fix for positioning of splash window on multi-head displays.
+  * Fix for positioning of status window on multi-head displays.
+  * Fix for positioning of window list window on multi-head displays.
+  * Fix for positioning of tooltip windows on multi-head displays.
+  * Fix for missed events when monitor changes resolution.
+  * Fix for positioning the taskbar when monitor changes resolution.
+  * Portability to older systems: only requires libXrandr 1.2 and GCC 4.9.
+  * Give icewm a proper implementation of _NET_MOVERESIZE_WINDOW.
+  * 10 translations updated.
+
+-------------------------------------------------------------------
 Tue Apr 14 00:51:41 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Explicitly require icewm-theme-branding on SLE and Leap. 
