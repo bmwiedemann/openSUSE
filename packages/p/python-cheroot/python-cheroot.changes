@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 10:35:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with python 3.8.3:
+  * python383.patch
+
+-------------------------------------------------------------------
 Thu May  7 09:33:29 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Avoid possible race condition on persistent HTTP connections (bsc#1169604) 

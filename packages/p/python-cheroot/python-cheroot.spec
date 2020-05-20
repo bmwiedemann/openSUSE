@@ -1,7 +1,7 @@
 #
 # spec file for package python-cheroot
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@ URL:            https://github.com/cherrypy/cheroot
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 # PATCH-FIX_UPSTREAM //github.com/cherrypy/cheroot/pull/282
 Patch1:         0001-Avoid-race-condition-on-persistent-HTTP-connections.patch
-
+# PATCH-FIX-UPSTREAM pr#280
+Patch2:         python383.patch
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module jaraco.text >= 3.1}
 BuildRequires:  %{python_module more-itertools >= 2.6}

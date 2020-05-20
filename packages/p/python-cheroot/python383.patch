@@ -1,0 +1,57 @@
+From 554972e7c3142c4e82e2ac38a019ef403f8f4e3d Mon Sep 17 00:00:00 2001
+From: "Jason R. Coombs" <jaraco@jaraco.com>
+Date: Sun, 12 Apr 2020 13:46:08 -0400
+Subject: [PATCH 1/2] Remove fixture, undocumented and presumed unneeded.
+
+---
+ cheroot/test/test_server.py | 26 +-------------------------
+ 1 file changed, 1 insertion(+), 25 deletions(-)
+
+Index: cheroot-8.3.0/cheroot/test/test_server.py
+===================================================================
+--- cheroot-8.3.0.orig/cheroot/test/test_server.py
++++ cheroot-8.3.0/cheroot/test/test_server.py
+@@ -23,7 +23,6 @@ from ..testing import (
+     ANY_INTERFACE_IPV4,
+     ANY_INTERFACE_IPV6,
+     EPHEMERAL_PORT,
+-    get_server_client,
+ )
+ 
+ 
+@@ -167,19 +166,19 @@ class _TestGateway(Gateway):
+ 
+ 
+ @pytest.fixture
+-def peercreds_enabled_server_and_client(http_server, unix_sock_file):
++def peercreds_enabled_server(http_server, unix_sock_file):
+     """Construct a test server with ``peercreds_enabled``."""
+     httpserver = http_server.send(unix_sock_file)
+     httpserver.gateway = _TestGateway
+     httpserver.peercreds_enabled = True
+-    return httpserver, get_server_client(httpserver)
++    return httpserver
+ 
+ 
+ @unix_only_sock_test
+ @non_macos_sock_test
+-def test_peercreds_unix_sock(peercreds_enabled_server_and_client):
++def test_peercreds_unix_sock(peercreds_enabled_server):
+     """Check that ``PEERCRED`` lookup works when enabled."""
+-    httpserver, testclient = peercreds_enabled_server_and_client
++    httpserver = peercreds_enabled_server
+     bind_addr = httpserver.bind_addr
+ 
+     if isinstance(bind_addr, six.binary_type):
+@@ -208,9 +207,9 @@ def test_peercreds_unix_sock(peercreds_e
+ )
+ @unix_only_sock_test
+ @non_macos_sock_test
+-def test_peercreds_unix_sock_with_lookup(peercreds_enabled_server_and_client):
++def test_peercreds_unix_sock_with_lookup(peercreds_enabled_server):
+     """Check that ``PEERCRED`` resolution works when enabled."""
+-    httpserver, testclient = peercreds_enabled_server_and_client
++    httpserver = peercreds_enabled_server
+     httpserver.peercreds_resolve_enabled = True
+ 
+     bind_addr = httpserver.bind_addr

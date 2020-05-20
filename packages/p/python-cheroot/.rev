@@ -114,4 +114,13 @@
     <comment></comment>
     <requestid>801107</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e004c8e2c4762d8e62a23a7c9e55d195</srcmd5>
+    <version>8.3.0</version>
+    <time>1589992581</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with python 3.8.3:
+  * python383.patch</comment>
+    <requestid>807188</requestid>
+  </revision>
 </revisionlist>
