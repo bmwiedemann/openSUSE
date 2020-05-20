@@ -230,4 +230,15 @@
     <comment></comment>
     <requestid>764060</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5d2b9078c3dcbf8da0488dfca7d7638f</srcmd5>
+    <version>2.8.0</version>
+    <time>1589992584</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix building with new python 3.8.3:
+  * python383.patch
+
+- Do not bother with documentation package, it is all available online</comment>
+    <requestid>807190</requestid>
+  </revision>
 </revisionlist>

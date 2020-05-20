@@ -23,10 +23,9 @@ Version:        2.8.0
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/B/Babel/Babel-%{version}.tar.gz
-# Test requirements:
+Patch0:         python383.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module py >= 1.4.14}
 BuildRequires:  %{python_module pytest >= 2.3.5}
@@ -53,6 +52,7 @@ A collection of tools for internationalizing Python applications.
 
 %prep
 %setup -q -n Babel-%{version}
+%patch0 -p1
 
 %build
 %python_build
