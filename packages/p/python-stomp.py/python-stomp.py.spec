@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt >= 0.6.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,12 +47,19 @@ A Python client library for accessing messaging servers (such as ActiveMQ, Apoll
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/stomp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative stomp
+
+%postun
+%python_uninstall_alternative stomp
 
 %files %{python_files}
 %doc README CHANGELOG
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/stomp
+%python_alternative %{_bindir}/stomp
 
 %changelog

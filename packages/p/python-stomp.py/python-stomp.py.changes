@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 08:03:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Feb 18 20:08:47 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 6.0.0:
