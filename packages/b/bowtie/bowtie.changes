@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 16:32:03 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- aarch64 is not yet supported on Bowtie1. See:
+  https://github.com/BenLangmead/bowtie/pull/13
+
+-------------------------------------------------------------------
 Thu Nov  7 19:50:41 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.3:

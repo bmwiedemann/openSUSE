@@ -28,7 +28,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tbb-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64 s390x ppc64le ppc64 aarch64
+ExclusiveArch:  x86_64 s390x ppc64le ppc64
 
 %description
 Bowtie is an ultrafast, memory-efficient short read aligner. It aligns short DNA sequences (reads) to the human genome at a rate of over 25 million 35-bp reads per hour. Bowtie indexes the genome with a Burrows-Wheeler index to keep its memory footprint small: typically about 2.2 GB for the human genome (2.9 GB for paired-end).
