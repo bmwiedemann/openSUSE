@@ -83,6 +83,7 @@ BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-core = %{version}
+Requires:       kded >= %{_kf5_bugfix_version}
 # KIO/FileDialog uses klauncher directly, but we can't add Requires, as that would introduce dep cycle
 Recommends:     kinit
 %if %{with lang}

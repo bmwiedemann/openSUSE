@@ -815,4 +815,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment></comment>
     <requestid>805927</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>66ac94acdb93b83a4d779f49cc16efa8</srcmd5>
+    <version>5.70.0</version>
+    <time>1589992576</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kded as a required package since kio calls org.kde.kded5 via dbus</comment>
+    <requestid>806856</requestid>
+  </revision>
 </revisionlist>
