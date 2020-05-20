@@ -26,9 +26,9 @@ License:        Apache-2.0
 Group:          Productivity/Publishing/XML
 URL:            https://xmlgraphics.apache.org/fop/
 Source0:        https://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
+Source1:        https://repo.maven.apache.org/maven2/org/apache/xmlgraphics/fop/%{version}/fop-%{version}.pom
 #FIX-OPENSUSE: add xmlgraphics-commons to classpath
-Source1:        %{name}.script
-Source2:        https://svn.apache.org/repos/asf/xmlgraphics/fop/tags/fop-2_1/xmlgraphics-fop-pom-template.pom
+Source2:        %{name}.script
 Source3:        %{name}-fontmetrics.script
 Source4:        %{name}-fontlist.script
 Source5:        https://download.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation.zip
@@ -67,8 +67,8 @@ Requires:       commons-io >= 2.4
 Requires:       commons-logging
 Requires:       java >= 1.8
 Requires:       xml-commons-apis >= 1.3
-Requires:       xmlgraphics-batik >= 1.8
 Requires:       xmlgraphics-commons >= 2.1
+%requires_ge    xmlgraphics-batik
 Provides:       %{bname} = %{version}-%{release}
 Obsoletes:      %{bname} < %{version}-%{release}
 Provides:       fo-formatter = %{version}-%{release}
@@ -99,12 +99,10 @@ rm src/java/org/apache/fop/util/bitmap/JAIMonochromeBitmapConverter.java
 %patch7 -p1
 %endif
 
-cp %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
  sed -i "s=@VERSION@=%{version}=" $x
 done
-sed -i "s=@version@=%{version}=" xmlgraphics-fop-pom-template.pom
 
 %build
 build-jar-repository -s lib \
@@ -138,15 +136,17 @@ done
 # jars
 mkdir -p %{buildroot}%{_javadir}
 install -m 644 build/%{bname}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 644 build/%{bname}-hyph.jar %{buildroot}%{_javadir}/%{name}-hyph.jar
+install -m 644 build/%{bname}-sandbox.jar %{buildroot}%{_javadir}/%{name}-sandbox.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 xmlgraphics-fop-pom-template.pom %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 # script
 mkdir -p %{buildroot}%{_bindir}
-cp -p %{SOURCE1}  %{buildroot}%{_bindir}/%{name}
+cp -p %{SOURCE2}  %{buildroot}%{_bindir}/%{name}
 cp -p %{SOURCE3}  %{buildroot}%{_bindir}/%{name}-fontmetrics
 cp -p %{SOURCE4}  %{buildroot}%{_bindir}/%{name}-fontlist
 # compat symlink
@@ -155,9 +155,6 @@ ln -s %{name}-fontmetrics %{buildroot}%{_bindir}/%{bname}-fontmetrics
 ln -s %{name}-fontlist    %{buildroot}%{_bindir}/%{bname}-fontlist
 
 # data
-mkdir -p %{buildroot}%{_datadir}/%{name}
-cp -pr hyph %{buildroot}%{_datadir}/%{name}
-cp -pr conf %{buildroot}%{_datadir}/%{name}
 install -D -m 644 conf/fop.xconf %{buildroot}%{_sysconfdir}/fop.xconf
 
 # Manpages
@@ -175,17 +172,17 @@ done
 popd
 
 %files -f .mfiles
+%{_javadir}/%{name}-hyph.jar
+%{_javadir}/%{name}-sandbox.jar
 %license LICENSE
 %doc NOTICE README known-issues.xml
 %doc *.html
-
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_bindir}/%{bname}
 %attr(0755,root,root) %{_bindir}/%{name}-fontmetrics
 %{_bindir}/%{bname}-fontmetrics
 %attr(0755,root,root) %{_bindir}/%{name}-fontlist
 %{_bindir}/%{bname}-fontlist
-%{_datadir}/%{name}
 %{_mandir}/man1/*
 %config(noreplace) %{_sysconfdir}/fop.xconf
 

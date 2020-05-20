@@ -25,7 +25,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>fop</artifactId>
   <packaging>jar</packaging>
   <name>Apache FOP</name>
-  <version>@version@</version>
+  <version>2.1</version>
   <url>http://xmlgraphics.apache.org/fop/</url>
   <description>Apache FOP (Formatting Objects Processor) is the world's first print formatter driven by XSL formatting objects (XSL-FO) and the world's first output independent formatter. It is a Java application that reads a formatting object (FO) tree and renders the resulting pages to a specified output. Output formats currently supported include PDF, PCL, PS, AFP, TIFF, PNG, SVG, XML (area tree representation), Print, AWT and TXT. The primary output target is PDF.</description>
   <inceptionYear>1999</inceptionYear>

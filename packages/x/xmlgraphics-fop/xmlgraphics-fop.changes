@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 14:41:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Do not install the OFFO hyphenation files to datadir, but package
+  instead the xmlgraphics-fop-hyph.jar and
+  xmlgraphics-fop-sandbox.jar that we build anyway. This fixes
+  boo#1145693
+- Clean up the build a bit
+
+-------------------------------------------------------------------
 Fri Apr  3 10:50:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
