@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 14 14:33:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Fix broken code
+  * Set saner width for Placeholder message so its text doesn't overflow
+  * Add gocryptfs support (kde#398323)
+  * Unassign activity from vault on activity deletion
+  * [applet] Port to Kirigami.PlaceholderMessage
+  * Include the Plasma Vault name in the mount dialog title
+  * Make sure we have saved network state before accessing it (kde#418262)
+  * Make warning and error messages grammatically correct
+  * [Applet] Port to ExpandableListItem
+  * Show command output on unknown failure (kde#412779)
+  * Make sure we have saved network state before accessing it (kde#418262)
+  * Port some deprecated enum
+  * Extract messages from header file as well
+
+-------------------------------------------------------------------
 Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
