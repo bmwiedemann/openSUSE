@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
 Requires:       python-qt5
+Requires:       pyzologo
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,6 +50,12 @@ Requires:       python3-pyzo = %{version}
 Pyzo is a computing environment based on Python. Pyzo is a Python IDE
 aimed at interactivity, and consists of an editor, a shell, and a set
 of tools.
+
+%package     -n pyzologo
+Summary:        Icons for Pyzo
+
+%description -n pyzologo
+Icons used by pyzo
 
 %prep
 %setup -q -n pyzo-%{version}
@@ -81,12 +88,14 @@ popd
 %files %{python_files}
 %doc README.md
 %license pyzo/license.txt
-%python3_only %{_datadir}/icons/hicolor/*/apps/pyzologo.png
 %{python_sitelib}/*
 
 %files -n pyzo
 %license pyzo/license.txt
 %{_datadir}/applications/pyzo.desktop
 %{_bindir}/pyzo
+
+%files -n pyzologo
+%{_datadir}/icons/hicolor/*/apps/pyzologo.png
 
 %changelog
