@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 16:00:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove unneeded dependency on tensorlfow-devel
+
+-------------------------------------------------------------------
 Tue Apr  7 15:05:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch data sub-package to noarch

@@ -43,9 +43,6 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %endif
-%if %{with armnn_tf}
-BuildRequires:  tensorflow-devel
-%endif
 # Examples are useful only with the data
 Requires:       arm-ml-examples-data
 %if %{without armnn_caffe} && %{without armnn_tf}
