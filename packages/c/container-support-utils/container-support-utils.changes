@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed May 20 12:52:29 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.2.2:
+  * Compile fix on older systems: missing <linux/sched.h>
+  * Add new README
+  * Rename README -> README.sidecar
+  * test-client: fix gcc warning about ignoring the return value of write()
+  * io_mainloop: fix an uninitialized use warning in debug code
+  * Move sidecar python code into a subdirectory
+  * Add copyright and license
+  * Add 'make archive' target
+  * Added savelog.1; explain --savelog option in ns-exec.1
+  * savelog: add long options, embellish usage msg
+- Package using _service files
+
+-------------------------------------------------------------------
+Wed May 20 07:42:51 UTC 2020 - Olaf Kirch <okir@suse.com>
+
+- Convert to pulling directly from github via a _service file
+
+-------------------------------------------------------------------
+Mon May 18 10:11:55 UTC 2020 - Olaf Kirch <okir@suse.com>
+
+- Compile fix on older systems: missing <linux/sched.h>
+
+-------------------------------------------------------------------
+Tue May 12 16:52:01 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Tidy up specfile 
+
+-------------------------------------------------------------------
+Wed May  6 09:56:46 UTC 2020 - Olaf Kirch <okir@suse.com>
+
+- Updated to version 0.2
+
+-------------------------------------------------------------------
+Mon May  4 19:42:02 UTC 2020 - Olaf Kirch <okir@suse.com>
+
+- Initial import
