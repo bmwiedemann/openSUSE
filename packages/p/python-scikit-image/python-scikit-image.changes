@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 10:19:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- We need at least pytest 4.x series
+
+-------------------------------------------------------------------
 Fri Jan 17 12:52:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip 2 failing tests on 32bit

@@ -56,9 +56,9 @@ BuildRequires:  %{python_module PyWavelets >= 0.4.0}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module matplotlib >= 1.3.1}
 BuildRequires:  %{python_module networkx >= 1.8}
+BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 

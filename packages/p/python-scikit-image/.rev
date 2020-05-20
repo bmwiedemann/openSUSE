@@ -125,4 +125,12 @@
 - Do not buildrequire nose</comment>
     <requestid>765257</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>30d89b9e42d789b0ac9e7f3ef648c811</srcmd5>
+    <version>0.16.2</version>
+    <time>1589992597</time>
+    <user>dimstar_suse</user>
+    <comment>- We need at least pytest 4.x series</comment>
+    <requestid>802914</requestid>
+  </revision>
 </revisionlist>
