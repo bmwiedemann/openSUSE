@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 20 07:08:00 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.48.1
+  * Bugfixes and minor changes:
+    - If FileZilla is configured to restore open tabs on startup,
+      the directory trees no longer shrink in size
+- Changes from 3.48.1-rc1
+  * Fixed vulnerabilities:
+    - MSW: The settings directory is now initially created with
+      tight permissions restricted to the user's account.
+      Previously the directory could have had inherited too wide
+      permissions if a custom location outside the user's profile
+      directory had been preconfigured.
+  * New features:
+    - Redesigned certificate dialog
+    - During directory comparison and comparative search,
+      Ctrl+Shift+A can now be used to select only the highlighted
+      files
+  * Bugfixes and minor changes:
+    - Fixed import of settings
+    - Fixed local file editing if the option to track local file
+      changes had been disabled
+    - Fixes to storing associations
+
+-------------------------------------------------------------------
 Wed May 13 09:08:53 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.48.0
