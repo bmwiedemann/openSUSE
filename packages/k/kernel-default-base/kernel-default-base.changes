@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Wed May 20 08:08:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add vxlan (bsc#1171903)
+
+-------------------------------------------------------------------
+Mon May 18 17:55:00 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add usbhid and hid-generic for USB input devices (boo#1167749)
+
+-------------------------------------------------------------------
 Mon May  4 13:01:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add hardware-specific crc32c implementations (boo#1171065)
- 
+
 -------------------------------------------------------------------
 Tue Apr 21 12:42:55 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 

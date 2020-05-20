@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg
+%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic
 
 %define virtio_modules virtio virtio_.* virtio-.*
 
@@ -45,7 +45,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
 ums-eneub6250 ums-freecom ums-isd200 ums-jumpshot ums-karma ums-onetouch \
-ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage
+ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 
 %define filesystems autofs4 btrfs ext4 vfat isofs jbd2 mbcache nfsv2 nfsv3 nfsv4 overlay xfs \
         nls_cp437 nls_iso8859-1 ceph
@@ -53,7 +53,8 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage
 %define networking \
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
 ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
-nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag
+nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag \
+vxlan
 
 %define crc32_modules crc32c_generic crc32c-intel crc32c-vpmsum crc32-vx_s390 crc32-arm-ce
 
