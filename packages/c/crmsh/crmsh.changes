@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 19 15:32:17 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1589895691.2fba0323:
+  * Dev: unittest: unit test for class SBDManager
+  * Dev: behave: functional test for sbd functionalities
+  * High: bootstrap: using class SBDManager for sbd configuration and management(bsc#1170037, bsc#1170999)
+  * Dev: unittest: related changes for unittest for using crmsh ssh key
+  * Dev: behave: related changes for functional test for using crmsh ssh key
+  * Dev: hb_report: hb_report use crmsh key to ssh peer node
+  * Fix: bootstrap: crmsh use its own specific ssh key(bsc#1169581)
+
+-------------------------------------------------------------------
+Wed May 06 08:56:06 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1588754732.bbb45e68:
+  * Low: bootstrap: change ha-cluster-bootstrap log path
+
+-------------------------------------------------------------------
 Mon Apr 13 09:34:31 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1586769845.5cf0290e:

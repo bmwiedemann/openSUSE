@@ -36,7 +36,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        4.2.0+git.1586769845.5cf0290e
+Version:        4.2.0+git.1589895691.2fba0323
 Release:        0
 Url:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -226,6 +226,7 @@ result2=$?
 %dir %{crmsh_docdir}
 %dir %{crmsh_docdir}/contrib
 %dir %attr (770, %{uname}, %{gname}) %{_var}/cache/crm
+%dir %attr (770, %{uname}, %{gname}) %{_var}/log/crmsh
 %{_datadir}/bash-completion/completions/crm
 
 %files scripts
