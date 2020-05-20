@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 13 10:35:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 2.99028
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99028  May 9 2020 Eugeny Subachev
+      - Deleting duplicates from notfound and servers
+      - Fix whois server of xn--ses554g tld
+  
+
+-------------------------------------------------------------------
 Tue Feb 25 03:09:47 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.99027
