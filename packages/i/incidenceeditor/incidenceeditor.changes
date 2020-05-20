@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:02 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- No code change since 20.04.0
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -13,8 +22,6 @@ Sun Apr  5 20:29:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Qt guys reverted api in qt5.15
   * Fix cppcheck warning
@@ -24,8 +31,6 @@ Sun Mar 22 09:16:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Changes since 19.12.3:
   * remove the lastselectedfolder configuration
   * incidencedialog.cpp - default collection for initial calendar
@@ -41,7 +46,7 @@ Thu Mar  5 20:35:46 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * incidencedialog.cpp - fallback to default collection
   * incidencedialog.cpp - restore last used collection BUG: 411191 (kde#411191)
@@ -57,7 +62,7 @@ Wed Feb  5 06:28:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 
 -------------------------------------------------------------------
