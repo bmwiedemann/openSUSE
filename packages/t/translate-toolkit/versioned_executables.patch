@@ -1,0 +1,20 @@
+--- a/tests/xliff_conformance/test_xliff_conformance.py
++++ b/tests/xliff_conformance/test_xliff_conformance.py
+@@ -48,7 +48,7 @@ def find_files(base, check_ext):
+ 
+ 
+ def test_open_office_to_xliff():
+-    assert call(['oo2xliff', 'en-US.sdf', '-l', 'fr', 'fr']) == 0
++    assert call(['oo2xliff-{}'.format('.'.join((str(x) for x in sys.version_info[:2]))), 'en-US.sdf', '-l', 'fr', 'fr']) == 0
+     for filepath in find_files('fr', '.xlf'):
+         assert xmllint(filepath)
+     cleardir('fr')
+@@ -56,7 +56,7 @@ def test_open_office_to_xliff():
+ 
+ def test_po_to_xliff():
+     OUTPUT = 'af-pootle.xlf'
+-    assert call(['po2xliff', 'af-pootle.po', OUTPUT]) == 0
++    assert call(['po2xliff-{}'.format('.'.join((str(x) for x in sys.version_info[:2]))), 'af-pootle.po', OUTPUT]) == 0
+     assert xmllint(OUTPUT)
+ 
+ 

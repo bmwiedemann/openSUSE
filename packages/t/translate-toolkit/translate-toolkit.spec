@@ -1,7 +1,7 @@
 #
 # spec file for package translate-toolkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,62 +16,88 @@
 #
 
 
-Name:           translate-toolkit
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%define modname translate-toolkit
+%define skip_python2 1
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define binaries pocompile build_firefox.sh build_tmdb buildxpi.py csv2po csv2tbx flatxml2po get_moz_enUS.py html2po ical2po idml2po ini2po json2po junitmsgfmt l20n2po moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2l20n po2moz po2mozlang po2oo po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff po2yaml poclean pocommentclean pocompendium poconflicts pocount podebug pofilter pogrep pomerge pomigrate2 popuretext poreencode porestructure posegment posplit poswap pot2po poterminology pretranslate prop2po pydiff pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po tmserver ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po
+%define manpages pocompile build_firefox.sh csv2po csv2tbx flatxml2po html2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff phppo2pypo po2csv po2flatxml po2html po2idml po2ini po2json po2moz po2mozlang po2oo po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff poclean poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap pot2po poterminology pretranslate prop2po pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po translatetoolkit ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po
+Name:           translate-toolkit%{psuffix}
 Version:        2.5.0
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            http://toolkit.translatehouse.org/
-Source:         https://github.com/translate/translate/releases/download/%{version}/%{name}-%{version}.tar.gz
+URL:            https://toolkit.translatehouse.org/
+Source:         https://github.com/translate/translate/releases/download/%{version}/%{modname}-%{version}.tar.gz
 # Repacked https://github.com/translate/sphinx-themes ; no commits since 2013
 # Often not included in the release tag so just ship it
 Source1:        sphinx-themes.tar.xz
 Patch0:         sphinx-intersphinx.patch
 Patch2:         xliff-xsd-no-network.patch
 Patch3:         test-mo-endian.patch
+# PATCH-FIX-UPSTREAM versioned_executables.patch mcepl@suse.com
+# Use versioned partially installed executables
+Patch4:         versioned_executables.patch
+BuildRequires:  %{python_module Levenshtein >= 0.12}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module iniparse}
+BuildRequires:  %{python_module l20n}
+BuildRequires:  %{python_module lxml >= 3.5.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module vobject}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  git-core
 BuildRequires:  iso-codes
-BuildRequires:  python3-Babel
-BuildRequires:  python3-Levenshtein
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-beautifulsoup4
-BuildRequires:  python3-cheroot
-BuildRequires:  python3-iniparse
-BuildRequires:  python3-l20n
-BuildRequires:  python3-lxml >= 3.5.0
-BuildRequires:  python3-phply
-BuildRequires:  python3-pycountry >= 18.12.8
-BuildRequires:  python3-pyenchant
-BuildRequires:  python3-pytest
-BuildRequires:  python3-ruamel.yaml
-BuildRequires:  python3-six >= 1.11.0
-BuildRequires:  python3-vobject
-BuildRequires:  python3-xml
-BuildRequires:  subversion
+BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
-Requires:       python3-lxml
-Requires:       python3-pycountry >= 18.12.8
-Requires:       python3-pyenchant
-Requires:       python3-setuptools
-Requires:       python3-six >= 1.11.0
+Requires:       python-lxml
+Requires:       python-pycountry >= 18.12.8
+Requires:       python-pyenchant
+Requires:       python-setuptools
+Requires:       python-six >= 1.11.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # The following are for the full experience of translate-toolkit
 Recommends:     gaupol
 Recommends:     iso-codes
-Recommends:     python3-Levenshtein
-Recommends:     python3-aeidon
-Recommends:     python3-chardet
-Recommends:     python3-cheroot
-Recommends:     python3-iniparse
-Recommends:     python3-l20n
-Recommends:     python3-phply
-Recommends:     python3-pycountry
-Recommends:     python3-ruamel.yaml
-Recommends:     python3-vobject
-Provides:       python3-translate-toolkit = %{version}
+Recommends:     python-Levenshtein
+Recommends:     python-aeidon
+Recommends:     python-chardet
+Recommends:     python-cheroot
+Recommends:     python-iniparse
+Recommends:     python-l20n
+Recommends:     python-phply
+Recommends:     python-pycountry
+Recommends:     python-ruamel.yaml
+Recommends:     python-vobject
+Provides:       translate-toolkit = %{version}-%{release}
+Obsoletes:      translate-toolkit < %{version}-%{release}
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module iniparse}
+BuildRequires:  %{python_module pycountry >= 18.12.8}
+BuildRequires:  %{python_module pyenchant}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module xml}
+BuildRequires:  subversion
+%if "%{python_flavor}" == "python2"
+BuildRequires:  python2-backports.csv
+%endif
+%endif
+%python_subpackages
 
 %description
 The Translate Toolkit is a set of software and documentation designed to help
@@ -105,7 +131,7 @@ The %{name}-devel-doc package contains Translate Toolkit API documentation for d
 toolkit or to use the libraries in other localization tools.
 
 %prep
-%setup -q
+%setup -q -n %{modname}-%{version}
 %autopatch -p1
 
 pushd docs/_themes
@@ -119,61 +145,119 @@ for lib in translate/{*.py,*/*.py,*/*/*.py}; do
  sed -i '\|%{_bindir}/env |d' $lib
 done
 
+find . -name jquery.js -exec dos2unix '{}' \;
+
 %build
-python3 setup.py build
+%python_build
 pushd docs
 # Can't use parallel build here!
-make -j1 html man
+%make_build -j1 html man
 #no hidden files
 find _build -name '.?*' -delete
 popd
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python_install
 
 # create manpages
-mkdir -p %{buildroot}/%{_mandir}/man1
-for program in %{buildroot}/%{_bindir}/*; do
+mkdir -p %{buildroot}%{_mandir}/man1
+for program in %{buildroot}%{_bindir}/*; do
     case $(basename $program) in
       pocompendium|poen|pomigrate2|popuretext|poreencode|posplit|pocount|poglossary|lookupclient.py|tmserver|build_tmdb)
         ;;
       *)
-        LC_ALL=C PYTHONPATH=. $program --manpage \
-          >  %{buildroot}/%{_mandir}/man1/$(basename $program).1 \
-          || rm -f %{buildroot}/%{_mandir}/man1/$(basename $program).1
+        MPAGE="%{buildroot}%{_mandir}/man1/$(basename $program).1"
+        LC_ALL=C PYTHONPATH=. $program --manpage > "$MPAGE" || rm -f "$MPAGE"
         ;;
     esac
 done
-install -m 644 docs/_build/man/* %{buildroot}/%{_mandir}/man1/
+install -m 644 docs/_build/man/* %{buildroot}%{_mandir}/man1/
 
 # move documentation files to datadir
-install -d -m 755 %{buildroot}%{_defaultdocdir}/%{name}
-mv %{buildroot}%{python3_sitelib}/translate/docs/_build/html %{buildroot}%{_defaultdocdir}/%{name}
-rm -rf %{buildroot}%{python3_sitelib}/translate/docs
-rm -rf %{buildroot}/home/abuild/.local/lib/python%{python3_version}/site-packages/
+%{python_expand install -d -m 755 %{buildroot}%{_defaultdocdir}/%{modname}
+mv %{buildroot}%{$python_sitelib}/translate/docs/_build/html %{buildroot}%{_defaultdocdir}/%{modname}
+rm -rf %{buildroot}%{$python_sitelib}/translate/docs
+rm -rf %{buildroot}home/abuild/.local/lib/python%{$python_version}/site-packages/
+}
 
 # create symlinks for man pages
-%fdupes -s %{buildroot}/%{_mandir}
+%fdupes -s %{buildroot}%{_mandir}
 # create hardlinks for the rest
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# Prepare alternatives
+for mpage in %{manpages} ; do
+%python_clone -a %{buildroot}%{_mandir}/man1/$mpage.1
+done
+for binary in %{binaries} ; do
+%python_clone -a %{buildroot}%{_bindir}/$binary
+done
 
 %check
+%if %{with test}
+export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:%{buildroot}%{_bindir}
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest -v -k 'not test_empty_key'
+%pytest tests
+rm -rf %{buildroot}
+%endif
 
-%files
-%{_defaultdocdir}/%{name}/html/
-%exclude %{_defaultdocdir}/%{name}/html/api
-%exclude %{_defaultdocdir}/%{name}/html/_sources
+%post
+%define my_install_alternatives() %{lua:\
+    function file_exists(path) \
+    	local f = io.open(path) \
+    	if f == nil then return false \
+    	else f:close() return true  \
+    	end \
+    end \
+    local t={} \
+    local manpath = "" \
+    for str in string.gmatch(rpm.expand("%**"), "([^%s]+)") do \
+            table.insert(t, str) \
+    end \
+    local bindir = rpm.expand("%{_bindir}") \
+    local mandir = rpm.expand("%{_mandir}") .. "/man1" \
+    local ver_ext = "-" .. t[1] \
+    local man_ext = ".1" .. rpm.expand("%{?ext_man}") \
+    local man_ext_ver = ver_ext .. man_ext \
+    \
+    local ua_cmd = "update-alternatives --install " .. mandir .. "/translatetoolkit" .. man_ext .. " translatetoolkit.1 " .. \
+        mandir .. "/translatetoolkit" .. man_ext_ver .. " 20 \\\\\\n" \
+    local elems = table.pack(table.unpack(t, 2)) \
+    for arg, name in ipairs(elems) do \
+        ua_cmd = ua_cmd .. " --slave " .. bindir .. "/" .. name .. " " .. name .. " " .. bindir .. "/" .. name .. ver_ext .. " \\\\\\n" \
+        manpath = mandir .. "/" .. name .. man_ext_ver \
+        if file_exists(manpath) then \
+            ua_cmd = ua_cmd .. " --slave " .. mandir .. "/" .. name .. man_ext .. " " .. name .. ".1 " .. manpath .. " \\\\\\n" \
+        end \
+    end\
+    -- we need to remove the last backslash and EOL \
+    print(ua_cmd:sub(1, -3)) \
+}
+%my_install_alternatives %{_rec_macro_helper}%{lua:expand_macro("version")} %binaries
+
+
+%postun
+if [ ! -f %{_mandir}/man1/translatetoolkit-%{_rec_macro_helper}%{lua:expand_macro("version")}.1%{?ext_man} ] ; then
+   update-alternatives --remove translatetoolkit %{_mandir}/man1/translatetoolkit-%{_rec_macro_helper}%{lua:expand_macro("version")}.1%{?ext_man}
+fi
+
+%if !%{with test}
+%files %{python_files}
+%dir %{_defaultdocdir}/%{modname}
+%{_defaultdocdir}/%{modname}/html/
+%exclude %{_defaultdocdir}/%{modname}/html/api
+%exclude %{_defaultdocdir}/%{modname}/html/_sources
 %license COPYING
 %doc README.rst
+%ghost %{_sysconfdir}/alternatives/*
 %{_bindir}/*
 %{_mandir}/man1/*
-%{python3_sitelib}/translate
-%{python3_sitelib}/translate_toolkit-%{version}-*.egg-info
+%{python_sitelib}/translate
+%{python_sitelib}/translate_toolkit-%{version}-*.egg-info
 
 %files devel-doc
-%doc %{_defaultdocdir}/%{name}/html/api
-%doc %{_defaultdocdir}/%{name}/html/_sources
+%doc %{_defaultdocdir}/%{modname}/html/api
+%doc %{_defaultdocdir}/%{modname}/html/_sources
+%endif
 
 %changelog

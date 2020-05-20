@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 13 07:38:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Clean up, rewrite to single-spec style, and use %pytest macro.
+- We have to install, but remove afterwards, when in the test phase.
+- Add versioned_executables.patch to use partially installed
+  versioned executables.
+
+-------------------------------------------------------------------
+Fri May  1 12:33:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Swtich to multibuild to separate tests
+
+-------------------------------------------------------------------
 Wed Mar 18 20:34:15 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 
 - test-mo-endian.patch: tell msgfmt to use correct endianness
