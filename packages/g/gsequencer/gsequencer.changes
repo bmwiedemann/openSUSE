@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 19:37:28 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.3 fixed pointer corruption in ags-fx-peak.
+- fixed missing return value of ags_fx_factory_create(). This lets
+  you modify bulk member ports, now.
+- fixed reverse mapping of DSSI and LV2 plugins.
+
+-------------------------------------------------------------------
 Mon May 18 04:56:37 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.1 implemented ags-fx engine to replace
