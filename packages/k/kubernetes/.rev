@@ -581,4 +581,12 @@
 - kubeadm requires kubernetes%{baseversionminus1}-kubelet for migration purposes</comment>
     <requestid>796459</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>86f9c1ecb3c07b76f26e195b15e9537b</srcmd5>
+    <version>unknown</version>
+    <time>1589992673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807587</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,12 @@
 #
 
 
-# baseversion - version of kubernetes for this package
+# baseversion - base version of kubernetes for this package
 %define baseversion 1.18
-# baseversionminus1 - previous version of kubernetes
+# baseversionminus1 - previous base version of kubernetes
 %define baseversionminus1 1.17
+# versionminus1 - full previous version of kubernetes, including point revision
+%define versionminus1 1.17.5
 
 Name:           kubernetes
 Version:        1.18.2
@@ -77,6 +79,7 @@ This subpackage contains the kube-proxy binary for Kubic images
 %package apiserver-minus1
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
+Version:        %{versionminus1}
 Requires:       kubernetes%{baseversionminus1}-apiserver
 
 %description apiserver-minus1
@@ -85,6 +88,7 @@ This subpackage contains the kube-apiserver binary for Kubic images
 %package controller-manager-minus1
 Summary:        Kubernetes controller-manager for container image
 Group:          System/Management
+Version:        %{versionminus1}
 Requires:       kubernetes%{baseversionminus1}-controller-manager
 
 %description controller-manager-minus1
@@ -93,6 +97,7 @@ This subpackage contains the kube-controller-manager binary for Kubic images
 %package scheduler-minus1
 Summary:        Kubernetes scheduler for container image
 Group:          System/Management
+Version:        %{versionminus1}
 Requires:       kubernetes%{baseversionminus1}-scheduler
 
 %description scheduler-minus1
@@ -101,6 +106,7 @@ This subpackage contains the kube-scheduler binary for Kubic images
 %package proxy-minus1
 Summary:        Kubernetes proxy for container image
 Group:          System/Management
+Version:        %{versionminus1}
 Requires:       kubernetes%{baseversionminus1}-proxy
 %description proxy-minus1
 This subpackage contains the kube-proxy binary for Kubic images
@@ -110,7 +116,7 @@ This subpackage contains the kube-proxy binary for Kubic images
 %package kubelet
 Summary:        Kubernetes kubelet daemon
 Group:          System/Management
-Requires:       kubernetes%{baseversion}-kubelet = %{version}
+Requires:       kubernetes%{baseversion}-kubelet = %{VERSION}
 
 %description kubelet
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
@@ -119,7 +125,7 @@ kubelet daemon
 %package kubeadm
 Summary:        Kubernetes kubeadm bootstrapping tool
 Group:          System/Management
-Requires:       kubernetes%{baseversion}-kubeadm = %{version}
+Requires:       kubernetes%{baseversion}-kubeadm = %{VERSION}
 Requires:       kubernetes%{baseversionminus1}-kubelet
 
 %description kubeadm
@@ -129,7 +135,7 @@ kubeadm bootstrapping tool
 %package client
 Summary:        Kubernetes client tools
 Group:          System/Management
-Requires:       kubernetes%{baseversion}-client = %{version}
+Requires:       kubernetes%{baseversion}-client = %{VERSION}
 
 %description client
 Kubernetes client tools like kubectl.

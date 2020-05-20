@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 20 11:11:36 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Use %{VERSION} for client/host based packages 
+
+-------------------------------------------------------------------
+Tue May 19 07:23:57 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Build *-minus1* packages with accurate version numbers 
+
+-------------------------------------------------------------------
 Wed Apr 22 15:49:17 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Bump to kubernetes 1.18.2 
