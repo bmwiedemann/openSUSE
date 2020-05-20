@@ -32,6 +32,9 @@ Source99:       neovim-rpmlintrc
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
+# PATCH-FIX-SLE libuv-compat.patch sr#793088 gh#neovim/neovim#12108 mcepl@suse.com
+# works around too old version of libuv on Leap 15.*
+Patch2:         libuv-compat.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -90,7 +93,11 @@ parts of Vim, without compromise, and more.
 
 %prep
 %setup -q
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%if 0%{?suse_version} == 1500
+%patch2 -p1
+%endif
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')

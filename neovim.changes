@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 19 16:42:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- For compatibility with Leap 15.2 add libuv-compat.patch
+  (applied conditionally only on the appropriate distribution),
+  which works around too old version of libuv on Leap 15.*
+  by not using UV_FS_COPYFILE_FICLONE flag to uv_fs_copyfile,
+  and not using uv_stream_get_write_queue_size at all.
+  sr#793088 gh#neovim/neovim#12108
+
+-------------------------------------------------------------------
 Mon Apr  6 11:12:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary fix-buf_set_term_title.patch, which actually

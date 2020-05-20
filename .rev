@@ -318,4 +318,17 @@
   breaks the build.</comment>
     <requestid>791748</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>1e27c4bf85ea4331d752e5c9cdbfe47b</srcmd5>
+    <version>0.4.3</version>
+    <time>1589993125</time>
+    <user>dimstar_suse</user>
+    <comment>- For compatibility with Leap 15.2 add libuv-compat.patch
+  (applied conditionally only on the appropriate distribution),
+  which works around too old version of libuv on Leap 15.*
+  by not using UV_FS_COPYFILE_FICLONE flag to uv_fs_copyfile,
+  and not using uv_stream_get_write_queue_size at all.
+  sr#793088 gh#neovim/neovim#12108</comment>
+    <requestid>807386</requestid>
+  </revision>
 </revisionlist>
