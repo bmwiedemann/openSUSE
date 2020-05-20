@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 07:38:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.16
+  - tty: flush pending data when fd is ready
+
+-------------------------------------------------------------------
 Fri Apr  3 14:33:46 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Enable support for journald logging (bsc#1162432)
