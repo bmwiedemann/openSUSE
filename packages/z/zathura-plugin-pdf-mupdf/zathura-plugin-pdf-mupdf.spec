@@ -1,5 +1,5 @@
 #
-# spec file for package zathura-plugin-pdf-poppler
+# spec file for package zathura-plugin-pdf-mupdf
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -20,7 +20,7 @@
 Name:           zathura-plugin-pdf-mupdf
 Version:        0.3.5
 Release:        0
-Summary:        PDF support for zathura via mupdf 
+Summary:        Zathura PDF support through MuPDF  
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            https://pwmt.org/projects/%{realname}/
@@ -29,20 +29,23 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
+BuildRequires:  pkgconfig(jbig2dec)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(zathura)
-Requires:       zathura
 BuildRequires:  mupdf-devel-static
+Requires:       zathura
 Provides:       zathura-pdf-mupdf-plugin
+Conflicts:      zathura-plugin-pdf-poppler
 
 %description
-The zathura-pdf-poppler plugin adds PDF support to zathura by using the poppler rendering engine.
-
+Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
 %prep
 %setup -q -n %{realname}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson -Dlink-external=true
 %meson_build
 
 %install
