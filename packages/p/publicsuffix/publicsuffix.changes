@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 18 08:27:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200506 (bsc#1171819):
+  * gTLD autopull: 2020-05-06 (#1030)
+  * Update public_suffix_list.dat (#993)
+  * Add shopware.store domain (#958)
+  * Add clic2000.net to Private Section (#1010)
+  * Add Fabrica apps domain: onfabrica.com (#999)
+  * Add dyndns.dappnode.io (#912)
+  * Added curv.dev to public_suffix_list.dat (#968)
+  * Add panel.gg and daemon.panel.gg (#978)
+  * adding sth.ac.at (#997)
+  * Add netlify.app (#1012)
+  * Added Wiki Link as info resource (#1011)
+  * Add schulserver.de, update IServ GmbH contact information (#996)
+  * Add conn.uk, copro.uk, couk.me and ukco.me domains (#963)
+  * Remove flynnhub.com (#971)
+  * Added graphox.us domain (#960)
+  * Add domains for FASTVPS EESTI OU (#941)
+  * Add platter.dev user app domains (#935)
+  * Add playstation-cloud.com (#1006)
+  * gTLD autopull: 2020-04-02 (#1005)
+  * ACI prefix (#930)
+  * Update public_suffix_list.dat (#923)
+  * Add toolforge.org and wmcloud.org (#970)
+  * gTLD autopull: 2020-03-29 (#1003)
+
+-------------------------------------------------------------------
 Sat Mar 28 19:14:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20200326:
