@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 14 14:14:14 UTC 2020 - ohering@suse.de
+
+- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use helper 'suseocaml' in addition to 'ocaml' to avoid
+  filename conflicts with rpm-build.rpm (bsc#1154874)
+
+-------------------------------------------------------------------
 Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
 
 - Fix floating point expectation on arm32 hardfloat targets

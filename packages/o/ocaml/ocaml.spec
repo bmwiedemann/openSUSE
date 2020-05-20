@@ -21,21 +21,39 @@
 %define ocaml_base_version 4.10
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
+# handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
 %if %{ocaml_native_compiler}
+%global __suseocaml_requires_opts \
+	-c \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	%{nil}
 %global __ocaml_requires_opts \
 	-c \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	%{nil}
+%global __suseocaml_provides_opts \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
 %global __ocaml_provides_opts \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
 %else
+%global __suseocaml_requires_opts \
+	-c \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
+	-i Backend_intf \
+	-i Inlining_decision_intf \
+	-i Simplify_boxed_integer_ops_intf \
+	%{nil}
 %global __ocaml_requires_opts \
 	-c \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	-i Backend_intf \
 	-i Inlining_decision_intf \
 	-i Simplify_boxed_integer_ops_intf \
+	%{nil}
+%global __suseocaml_provides_opts \
+	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
 %global __ocaml_provides_opts \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
@@ -58,7 +76,7 @@ BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20200514
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs

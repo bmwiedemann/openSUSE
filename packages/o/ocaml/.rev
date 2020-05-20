@@ -706,4 +706,15 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
 - Fix typo in ocaml-configure-Allow-user-defined-C-compiler-flags.patch</comment>
     <requestid>793518</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>0fcd6c09ecc7332feccbbf50a396bb5b</srcmd5>
+    <version>4.10.0</version>
+    <time>1589992539</time>
+    <user>dimstar_suse</user>
+    <comment>- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use helper 'suseocaml' in addition to 'ocaml' to avoid
+  filename conflicts with rpm-build.rpm (bsc#1154874)</comment>
+    <requestid>805738</requestid>
+  </revision>
 </revisionlist>
