@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Only store password in KWallet if the user asked for it
+  * smb: resolve potential dnssd names via kdnssd
+  * sftp: successfully write files to proftpd servers (kde#419999)
+  * smb: put unmapped errno value into error message
+  * smb: accurately attempt to resolve the correct WSD host (kde#420578)
+- Dropped patches, now upstream:
+  * smb-accurately-attempt-to-resolve-the-correct-WSD-host.patch
+
+-------------------------------------------------------------------
 Sun May  3 16:28:47 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add smb-accurately-attempt-to-resolve-the-correct-WSD-host.patch
@@ -25,8 +41,6 @@ Sun Apr  5 20:30:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * sftp: fix partial transfer resuming when copying to local
   * sftp: do not show creation time when we do not know it (kde#375305)
@@ -38,8 +52,6 @@ Sun Mar 22 09:17:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * sftp: fix seekPos + file resuming when part file is of size 11 (kde#417645)
   * add readdirplus2 support for samba>=4.12 (kde#402988)
@@ -56,7 +68,7 @@ Thu Mar  5 20:36:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Too many changes since 19.12.2, only listing bugfixes:
   * smb: enable anonymous and domain extra field in authinfo (kde#327484)
   * smb: disable mode bits getting forwarded to KIO (kde#414482)
@@ -84,7 +96,7 @@ Wed Feb  5 06:29:13 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 
 -------------------------------------------------------------------

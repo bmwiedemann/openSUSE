@@ -672,4 +672,12 @@
     <comment></comment>
     <requestid>799879</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>54ec1a4d15581813f4d9f47f224be5fa</srcmd5>
+    <version>20.04.1</version>
+    <time>1589992876</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806491</requestid>
+  </revision>
 </revisionlist>
