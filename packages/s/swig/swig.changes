@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 15:46:46 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add 0005-disable_li_std_wstring.patch for BE arches
+  (ppc64 s390 s390x) as bypass boo#1171368
+
+-------------------------------------------------------------------
 Wed Apr 15 08:52:15 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Ruby 2.7 support (cherry-picked from upstream)
