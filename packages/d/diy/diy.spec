@@ -1,7 +1,7 @@
 #
 # spec file for package diy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,6 @@
 %define pname diy
 
 %if "%{flavor}" == ""
-%define package_name %{pname}
-ExclusiveArch:  do_not_build
-%else
-ExclusiveArch:  x86_64
-%endif
-
-%if "%{flavor}" == "serial"
-%undefine suffix
 %undefine mpi_flavor
 %endif
 
@@ -41,23 +33,21 @@ ExclusiveArch:  x86_64
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
-%if 0%{!?package_name:1}
- %define package_name   %{pname}%{?my_suffix}
-%endif
-
-%if %{without mpi}
- %define my_prefix %{_prefix}
- %define my_bindir %{_bindir}
- %define my_libdir %{_libdir}
- %define my_incdir %{_includedir}
-%else
+%if %{with mpi}
  %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
  %define my_bindir %{my_prefix}/bin
  %define my_libdir %{my_prefix}/%{_lib}
  %define my_incdir %{my_prefix}/include
  %define my_suffix -%{mpi_flavor}%{?mpi_ext}
+%else
+ %define my_prefix %{_prefix}
+ %define my_bindir %{_bindir}
+ %define my_libdir %{_libdir}
+ %define my_incdir %{_includedir}
 %endif
 # /SECTION
+
+%define package_name %{pname}%{?my_suffix}
 
 Name:           %{package_name}
 Version:        3.5.0
@@ -65,7 +55,7 @@ Release:        0
 Summary:        A block-parallel library
 License:        BSD-3-Clause
 URL:            https://github.com/diatomic/diy
-Source:         https://github.com/diatomic/diy/archive/%{version}.tar.gz
+Source:         https://github.com/diatomic/diy/archive/%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM diy-disable-memory-heavy-tests.patch badshah400@gmail.com -- Disable a few tests requiring more than 10 GB memory
 Patch0:         diy-disable-memory-heavy-tests.patch
 BuildRequires:  cmake >= 3.2
@@ -73,6 +63,7 @@ BuildRequires:  gcc-c++
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 %endif
+ExclusiveArch:  x86_64
 
 %description
 Diy is a block-parallel library for implementing scalable algorithms
@@ -109,22 +100,24 @@ This package provides the header files for development with diy.
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
-mkdir -p build
-pushd build
-# %%cmake can't be used directly because of custom INSTALL_PREFIX requirement
-cmake .. \
-      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DCMAKE_INSTALL_PREFIX="%{my_prefix}" \
 %if %{with mpi}
-      -DCMAKE_C_COMPILER="%{my_bindir}/mpicc" \
-      -DCMAKE_CXX_COMPILER="%{my_bindir}/mpicxx"
+source %{my_bindir}/mpivars.sh
+export CC=mpicc
+export CXX=mpicxx
 %else
-      -DCMAKE_C_COMPILER=gcc \
-      -DCMAKE_CXX_COMPILER=g++ \
-      -Dmpi=OFF
+export CC=gcc
+export CXX=g++
 %endif
+
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+
+%cmake \
+      -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
+      -Dmpi:BOOL=%{?with_mpi:ON}%{!?with_mpi=OFF} \
+      -Dwrapped_mpi:BOOL=%{?with_mpi:ON}%{!?with_mpi=OFF}
+
 %cmake_build
-popd
 
 %install
 %cmake_install
