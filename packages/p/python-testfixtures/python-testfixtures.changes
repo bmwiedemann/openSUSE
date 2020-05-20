@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 10:20:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with python 3.8.3:
+  * python383.patch
+- Update to 6.14.1:
+  * Fix bugs in comparison of :func:`~unittest.mock.call` objects where the :func:`repr` of the :func:`~unittest.mock.call` arguments were the same even when their attributes were not.
+
+-------------------------------------------------------------------
 Thu Mar 12 08:05:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
