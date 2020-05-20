@@ -45,6 +45,7 @@ Source101:      services-compare.sh
 Source102:      services-create.pl
 Source103:      services_UPDATING
 Patch0:         services-suse.diff
+BuildRequires:  libnss_usrfiles2
 Requires:       libnss_usrfiles2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -74,12 +75,14 @@ bunzip2 %{buildroot}%{_prefix}%{_sysconfdir}/services.bz2
 patch -p0 %{buildroot}%{_prefix}%{_sysconfdir}/services < $RPM_SOURCE_DIR/services-suse.diff
 rm -f %{buildroot}%{_prefix}%{_sysconfdir}/services.orig
 
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
+
 %files
 %defattr(644,root,root,755)
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hostname
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/aliases
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/defaultdomain
-%verify(not md5 size mtime)                    %{_distconfdir}/ethers
+%verify(not md5 size mtime)                    %{_prefix}%{_sysconfdir}/ethers
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/exports
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/ftpusers
 %config(noreplace) %{_sysconfdir}/host.conf
@@ -89,10 +92,11 @@ rm -f %{buildroot}%{_prefix}%{_sysconfdir}/services.orig
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.equiv
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.lpd
 %config(noreplace) %{_sysconfdir}/netgroup
-%{_distconfdir}/networks
-%{_distconfdir}/protocols
-%{_distconfdir}/services
+%{_prefix}%{_sysconfdir}/networks
+%{_prefix}%{_sysconfdir}/protocols
+%{_prefix}%{_sysconfdir}/services
 %config(noreplace) %{_sysconfdir}/ethertypes
+%dir %{_sysconfdir}/exports.d
 %license COPYING
 
 %changelog

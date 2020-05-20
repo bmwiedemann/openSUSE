@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 07:58:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Create /etc/exports.d directory (boo#1094328)
+
+-------------------------------------------------------------------
 Wed Feb  5 08:52:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require libnss_usrfiles2 for /usr/etc [bnc#1162666]
