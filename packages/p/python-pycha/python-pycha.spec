@@ -23,18 +23,20 @@ Release:        0
 Summary:        A library for making charts with Python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://bitbucket.org/lgs/pycha/
+URL:            https://bitbucket.org/lgs/pycha/
 Source:         https://files.pythonhosted.org/packages/source/p/pycha/pycha-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cairocffi
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cairocffi}
 BuildRequires:  %{python_module six}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,12 +54,19 @@ web programming. Pycha was developed for the server side.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/chavier
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative chavier
+
+%postun
+%python_uninstall_alternative chavier
 
 %files %{python_files}
 %doc README.txt CHANGES.txt AUTHORS
 %license COPYING
 %{python_sitelib}/*
-%python3_only %{_bindir}/chavier
+%python_alternative %{_bindir}/chavier
 
 %changelog
