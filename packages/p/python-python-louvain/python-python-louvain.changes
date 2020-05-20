@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 07:26:53 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Jan  6 15:19:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 subpackage due to dependencies dropping python2.

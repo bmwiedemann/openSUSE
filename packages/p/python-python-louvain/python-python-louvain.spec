@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-networkx
 Requires:       python-numpy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module networkx}
@@ -56,15 +58,22 @@ sed -i -e '/^#!\//, 1d' community/__init__.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/community
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec test_community.py
 
+%post
+%python_install_alternative community
+
+%postun
+%python_uninstall_alternative community
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/community
+%python_alternative %{_bindir}/community
 %{python_sitelib}/*
 
 %changelog
