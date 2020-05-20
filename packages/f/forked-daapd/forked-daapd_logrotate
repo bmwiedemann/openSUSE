@@ -1,0 +1,13 @@
+/var/log/forked-daapd/*.log {
+    compress
+    dateext
+    notifempty
+    missingok
+    nocreate
+    copytruncate
+
+    maxage 60
+    rotate 99
+    size 4M
+}
+
