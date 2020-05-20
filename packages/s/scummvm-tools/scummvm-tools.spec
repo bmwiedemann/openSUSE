@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,12 @@
 #
 
 
-%bcond_without mad
 Name:           scummvm-tools
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        ScummVM-related tools
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Other
-Url:            http://www.scummvm.org
+URL:            http://www.scummvm.org
 Source0:        https://www.scummvm.org/frs/scummvm-tools/%{version}/scummvm-tools-%{version}.tar.xz
 Source1:        %{name}.desktop
 Source99:       %{name}.changes
@@ -34,25 +32,17 @@ BuildRequires:  boost-devel >= 1.32.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  icns-utils
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1320
 BuildRequires:  wxWidgets-devel >= 3
-%else
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-BuildRequires:  wxWidgets-devel
-%endif
 BuildRequires:  pkgconfig(flac) >= 1.1.3
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpng) >= 1.2.8
+BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with mad}
-BuildRequires:  pkgconfig(mad)
-%endif
 
 %description
 This is a collection of various tools that may be useful to use in
@@ -69,47 +59,38 @@ The following tools can also be used to analyze the game scripts
 These tools are most useful to developers.
 
 %prep
-%setup -q
-%patch0 -p1
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" version.cpp
+%autosetup -p1
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
+# extract icon
+icns2png -x -s 512x512 gui/media/scummvmtools.icns
 
 %build
 export CXXFLAGS="%{optflags}"
 ./configure --prefix=%{_prefix} \
             --enable-verbose-build
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 # Install icons and .desktop file
-index=5
-for res in 128 48 32 16; do
-    mkdir -p "%{buildroot}%{_datadir}/icons/hicolor/$res"x"$res/apps"
-    convert -strip "gui/media/scummvmtools.ico[$index]" "%{buildroot}%{_datadir}/icons/hicolor/$res"x"$res/apps/%{name}.png"
-    index=$((index+1))
+for res in 16 32 48 64 128 256 512; do
+   mkdir -pv "%{buildroot}%{_datadir}/icons/hicolor/$res"x"$res/apps"
+   convert -strip -resize $resx$res scummvmtools_512x512x32.png "%{buildroot}%{_datadir}/icons/hicolor/$res"x"$res/apps/%{name}.png"
 done
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %defattr(0644,root,root,0755)
+%license COPYING
 %doc README TODO
 %attr(0755,root,root) %{_bindir}/scummvm-tools
 %attr(0755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%if 0%{?suse_version} > 1320
-%license COPYING
-%else
-%doc COPYING
-%endif
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 19 18:28:08 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.1.0
+  * Fix bug #10559: Add workaround to compress_scumm_sou for
+    non-VOC speech sample in monster.sou of Indiana Jones and
+    the Fate of Atlantis.
+  * Improve endianness handling of internal FLAC encoder.
+  * Add tool to create HDFRAMES.DAT file for Blade Runner game.
+  * Major rewrite of extract_prince tool.
+  * Implement decompiler for Prince game scripts.
+  * Rework the Mohawk engine tools.
+  * Add tool to extract Hyperspace Delivery Boy! game archives.
+- Use mad unconditionally
+- Fix icon conversion
+- Drop Group tag
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Aug 11 18:11:54 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
 
 - run spec-cleaner
