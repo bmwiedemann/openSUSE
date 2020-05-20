@@ -150,4 +150,18 @@ Add patch from debian 0001-Fix-build-with-fluidsynth-2.x.patch</comment>
     <comment>Removed conditional for 0001-Fix-build-with-fluidsynth-2.x.patch  buzztrax now builds with fluidsynth one and two with the patch.</comment>
     <requestid>758991</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>bdaff91df6f01e6aecfdf7fac4294d82</srcmd5>
+    <version>0.10.2+git20191209</version>
+    <time>1589993087</time>
+    <user>dimstar_suse</user>
+    <comment>Remove null post and postun macros
+add shared-mime-info dep to post and postun and remove
+ghosted xml files from %{_datadir}/mime/audio to fix
+  https://lists.opensuse.org/opensuse-packaging/2020-05/msg00054.html 
+- remove the duplicate listing of directories
+- remove ownership of some standard directories
+</comment>
+    <requestid>807345</requestid>
+  </revision>
 </revisionlist>

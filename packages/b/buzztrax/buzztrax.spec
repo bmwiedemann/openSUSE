@@ -1,7 +1,7 @@
 #
 # spec file for package buzztrax
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Release:        0
 Summary:        A music studio inspired by Buzz
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://buzztrax.org
+URL:            http://buzztrax.org
 Source0:        https://github.com/Buzztrax/buzztrax/archive//%{rev}.tar.gz#/%{name}-%{version}.tar.gz
 #http://files.buzztrax.org/releases/%%{name}-%%{version}.tar.gz
 Source1:        autogen.sh
@@ -263,28 +263,6 @@ typelib-1_0-BuzztraxIc-1_1\n
 typelib-1_0-BuzztraxCore-1_1\n
 \t+^%{typelibdir}/BuzztraxCore-%{girsoname}.typelib$\n' > %{_sourcedir}/baselibs.conf
 
-%post
-%glib2_gsettings_schema_post
-%icon_theme_cache_post
-%icon_theme_cache_post gnome
-%mime_database_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun gnome
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-
-%post plugins
-%mime_database_post
-%desktop_database_post
-
-%postun plugins
-%desktop_database_postun
-%mime_database_postun
-
 %post -n libbuzztrax-ic%{ic_soname} -p /sbin/ldconfig
 
 %post -n libbuzztrax-core%{core_soname} -p /sbin/ldconfig
@@ -306,24 +284,18 @@ typelib-1_0-BuzztraxCore-1_1\n
 %doc AUTHORS NEWS README.md TODO
 %license COPYING COPYING-DOCS
 %attr(0755,root,root) %{_bindir}/*
-%dir %{_datadir}/buzztrax
-%{_datadir}/buzztrax/
+%{_datadir}/buzztrax
 %{_datadir}/applications/buzztrax.desktop
 %{_datadir}/appdata/buzztrax.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/gnome
-%{_datadir}/help/C
+%{_datadir}/help/C/*
 %{_mandir}/man1/*
-%dir %{_datadir}/gtk-doc/html/buzztrax-cmd
-%dir %{_datadir}/gtk-doc/html/buzztrax-edit
-%{_datadir}/gtk-doc/html/buzztrax-cmd/
-%{_datadir}/gtk-doc/html/buzztrax-edit/
+%{_datadir}/gtk-doc/html/buzztrax-cmd
+%{_datadir}/gtk-doc/html/buzztrax-edit
 %{_datadir}/mime/packages/buzztrax.xml
-%attr(0644,root,root) %ghost %{_datadir}/mime/audio/x-bzt.xml
-%attr(0644,root,root) %ghost %{_datadir}/mime/audio/x-bzt-xml.xml
 # NOTE: These files need a proper home and correct handling.
 %{_datadir}/GConf/gsettings/buzztrax.convert
-%dir %{_datadir}/appdata
 %{_datadir}/glib-2.0/schemas/org.buzztrax.gschema.xml
 
 %files -n gstreamer-1_0-plugins-buzztrax
