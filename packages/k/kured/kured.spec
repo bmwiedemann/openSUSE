@@ -32,6 +32,8 @@ Group:          System/Management
 URL:            https://github.com/weaveworks/kured
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch:          systemctl-path.patch
+Patch1:         kured-imagePullPolicy.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 BuildRequires:  golang(API) = 1.13
@@ -61,6 +63,8 @@ kured container in a kubernetes cluster.
 
 %prep
 %setup -qa1
+%patch -p1
+%patch1 -p1
 
 %build
 # Build the binary.

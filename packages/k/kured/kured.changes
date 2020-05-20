@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 18 07:31:50 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- kured-imagePullPolicy.patch: always update the image
+
+-------------------------------------------------------------------
+Sun May 17 12:14:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- systemctl-path.patch: last systemd update removed symlinks 
+  from /bin ...
+
+-------------------------------------------------------------------
 Mon May 11 15:22:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4.0
