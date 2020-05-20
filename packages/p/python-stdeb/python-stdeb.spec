@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python to Debian source package conversion utility
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/astraw/stdeb
+URL:            https://github.com/astraw/stdeb
 Source:         https://files.pythonhosted.org/packages/source/s/stdeb/stdeb-%{version}.tar.gz
 # Test data
 Source1:        tablib-0.13.0.tar.gz
@@ -35,7 +35,7 @@ Patch0:         tests-use-tablib.patch
 # stdeb is of limited use on openSUSE as any attempt to install
 # dpkg packages needed to create a valid dpkg database will destroy the
 # openSUSE python runtime that stdeb was installed into.  Therefore it
-# can only be used with a fake database, or without enforced dpkg 
+# can only be used with a fake database, or without enforced dpkg
 # dependency checks.  The next two patches provide the latter approach.
 # https://github.com/astraw/stdeb/issues/144
 Patch1:         remove-version-checks.patch
@@ -56,6 +56,8 @@ Requires:       debhelper
 Requires:       dpkg
 Requires:       fakeroot
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -82,22 +84,40 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pypi-install
+%python_clone -a %{buildroot}%{_bindir}/pypi-download
+%python_clone -a %{buildroot}%{_bindir}/py2dsc-deb
+%python_clone -a %{buildroot}%{_bindir}/py2dsc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# There is also test2and3.sh which could be inlined here 
-export PATH=/sbin:/usr/sbin:%{buildroot}/%{_bindir}:$PATH
+# There is also test2and3.sh which could be inlined here
+export PATH=/sbin:%{_prefix}/sbin:%{buildroot}/%{_bindir}:$PATH
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+# update-alternatives: use available versioned binaries
+sed -i 's:\(_LOC=`which\s\+[-a-zA-Z0-9]\+\):\1-%{python_version}:' test.sh
 PYEXE=$python bash -x ./test.sh
 }
+
+%post
+%python_install_alternative pypi-install
+%python_install_alternative pypi-download
+%python_install_alternative py2dsc-deb
+%python_install_alternative py2dsc
+
+%postun
+%python_uninstall_alternative pypi-install
+%python_uninstall_alternative pypi-download
+%python_uninstall_alternative py2dsc-deb
+%python_uninstall_alternative py2dsc
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.txt README.rst
-%python3_only %{_bindir}/py2dsc
-%python3_only %{_bindir}/py2dsc-deb
-%python3_only %{_bindir}/pypi-download
-%python3_only %{_bindir}/pypi-install
+%python_alternative %{_bindir}/py2dsc
+%python_alternative %{_bindir}/py2dsc-deb
+%python_alternative %{_bindir}/pypi-download
+%python_alternative %{_bindir}/pypi-install
 %{python_sitelib}/*
 
 %changelog
