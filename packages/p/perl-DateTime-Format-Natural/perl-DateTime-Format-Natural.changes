@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 18 03:09:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.09
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.09  2020-05-17  <schubiger@cpan.org>
+  
+   - Merged development version to stable.
+  
+  1.08_02  2020-05-01  <schubiger@cpan.org>
+  
+   - Require Params::Validate >=1.15 to fix test failures with
+     older versions. [testers #112427415 - Alexandr Ciornii]
+  
+  1.08_01  2020-04-17  <schubiger@cpan.org>
+  
+   - Prefer the future even stronger with demand_future.
+     [rt #92189 - Ricardo Signes]
+  
+   - When advancing to future times, consider also minutes/seconds.
+  
+
+-------------------------------------------------------------------
 Sun Dec  8 03:17:54 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.08

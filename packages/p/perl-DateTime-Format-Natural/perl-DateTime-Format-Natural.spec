@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Natural
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-DateTime-Format-Natural
-Version:        1.08
+Version:        1.09
 Release:        0
 %define cpan_name DateTime-Format-Natural
 Summary:        Parse informal natural language date/time strings
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -36,14 +36,14 @@ BuildRequires:  perl(DateTime::TimeZone)
 BuildRequires:  perl(List::MoreUtils)
 BuildRequires:  perl(Module::Build) >= 0.420000
 BuildRequires:  perl(Module::Util)
-BuildRequires:  perl(Params::Validate)
+BuildRequires:  perl(Params::Validate) >= 1.15
 BuildRequires:  perl(Test::MockTime)
 BuildRequires:  perl(boolean)
 Requires:       perl(Clone)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::TimeZone)
 Requires:       perl(List::MoreUtils)
-Requires:       perl(Params::Validate)
+Requires:       perl(Params::Validate) >= 1.15
 Requires:       perl(boolean)
 Recommends:     perl(Date::Calc)
 %{perl_requires}
