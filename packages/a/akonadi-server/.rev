@@ -565,4 +565,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE release 20.04.0</comment>
     <requestid>796840</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>dbdd2a5e704e020e8072d46a05086a0f</srcmd5>
+    <version>20.04.1</version>
+    <time>1589992737</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806311</requestid>
+  </revision>
 </revisionlist>
