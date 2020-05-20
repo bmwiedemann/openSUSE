@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 15:42:10 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- No code change since 20.04.0
+
+-------------------------------------------------------------------
 Thu Apr 23 12:23:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -12,8 +21,6 @@ Sun Apr  5 20:30:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - No code change since 20.03.80
 
 -------------------------------------------------------------------
@@ -21,8 +28,6 @@ Sun Mar 22 09:17:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Changes since 19.12.3:
   * endl is namespaced in qt5.15. We can use directly '\n' here
 - Drop obsolete patch:
@@ -34,7 +39,7 @@ Thu Mar  5 20:36:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - No code change since 19.12.2
 
 -------------------------------------------------------------------
@@ -48,7 +53,7 @@ Wed Feb  5 06:29:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 
 -------------------------------------------------------------------
