@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 19 17:17:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.1
+  New Drivers/Platforms
+  * UnifiSwitchSSH
+  * Huawei OLT
+  * Huawei SmartAX
+  Bugs and Improvements
+  * Nokia SR-OS SCP Support
+  * Improve terminal width behavior
+  * Fix some issues related to cmd_verify
+  * Expanded autodetect support
+
+-------------------------------------------------------------------
 Mon Mar 23 19:35:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.0:
