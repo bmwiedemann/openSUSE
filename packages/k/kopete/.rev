@@ -707,4 +707,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>KDE release 20.04.0</comment>
     <requestid>796982</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>35685fe3504521363cb500446425c153</srcmd5>
+    <version>20.04.1</version>
+    <time>1589992917</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806565</requestid>
+  </revision>
 </revisionlist>
