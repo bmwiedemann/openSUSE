@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 19 16:14:55 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 7.8.3:
+  * G78:i.vi: write out FCELL instead of DCELL
+  * G78:r.kappa: maps[0] is the reference and maps[1] is the classified map
+  * grass7 startup: added --config date parameter
+  * Various fixes, details at https://trac.osgeo.org/grass/wiki/Release/7.8.3-News
+- Drop %{grassdir}/config.status as it is not installed anymore
+
+-------------------------------------------------------------------
 Tue Apr 28 15:52:46 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 7.8.2:

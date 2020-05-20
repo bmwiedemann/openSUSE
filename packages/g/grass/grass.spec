@@ -34,7 +34,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 BuildRequires:  wxWidgets-devel >= 2.8
 %endif
 Name:           grass
-Version:        7.8.2
+Version:        7.8.3
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
@@ -270,7 +270,6 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{grassdir}/driver/*
 %{grassdir}/fonts/*
 %{grasslib}/*.so
-%{grassdir}/config.status
 %{grassdir}/AUTHORS
 %{grassdir}/translators.csv
 %{grassdir}/translation_status.json
