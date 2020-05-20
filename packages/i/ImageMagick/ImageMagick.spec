@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.10
-%define mfr_revision   11
+%define mfr_revision   13
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        7
@@ -476,11 +476,11 @@ if st and st.type == "directory" then
 end
 
 %post %{config_spec}-upstream
-%{_sbindir}/update-alternatives --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream  1
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream  1
 
 %postun %{config_spec}-upstream
 if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
+    %{_sbindir}/update-alternatives -quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
 fi
 
 %pretrans %{config_spec}-SUSE -p <lua>
@@ -493,11 +493,11 @@ if st and st.type == "directory" then
 end
 
 %post %{config_spec}-SUSE
-%{_sbindir}/update-alternatives --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-SUSE      10
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-SUSE      10
 
 %postun %{config_spec}-SUSE
 if [ ! -d %{_sysconfdir}/%{config_dir}-SUSE ] ; then
-    %{_sbindir}/update-alternatives --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-SUSE
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-SUSE
 fi
 
 %files

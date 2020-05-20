@@ -2645,4 +2645,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Enable threaded PNG coder.</comment>
     <requestid>802969</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>f0facf2104f03960c268223ad79e5016</srcmd5>
+    <version>7.0.10.13</version>
+    <time>1589992589</time>
+    <user>dimstar_suse</user>
+    <comment>- use --quiet option to update-alternatives [bsc#1171431]
+
+- version update to 7.0.10.13
+  * Black artefacts during quantization (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2007#discussioncomment-13546).</comment>
+    <requestid>807383</requestid>
+  </revision>
 </revisionlist>
