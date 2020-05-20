@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 18 20:37:03 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.9.0 (current stable release)
+  * for changes between version 1.9.0 and 1.8.31p1 see rc changes
+    below
+
+-------------------------------------------------------------------
+Mon May 11 08:15:17 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.9.0rc5
+  * The default TLS listener is now only enabled when either the
+    TLS certificate file is explicitly specified in sudo_logsrvd.conf
+    or the default TLS certificate file exists in the file system.
+    There is no change in behavior for listen_address entries
+    explicitly set in the configuration file. 
+
+-------------------------------------------------------------------
 Thu May  7 12:14:26 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.9.0rc4

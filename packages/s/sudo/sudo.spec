@@ -22,14 +22,14 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.0rc4
+Version:        1.9.0
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
 Group:          System/Base
 URL:            https://www.sudo.ws/
-Source0:        https://www.sudo.ws/dist/beta/%{name}-%{version}.tar.gz
-Source1:        https://www.sudo.ws/dist/beta/%{name}-%{version}.tar.gz.sig
+Source0:        https://www.sudo.ws/dist/%{name}-%{version}.tar.gz
+Source1:        https://www.sudo.ws/dist/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        sudo.pamd
 Source4:        sudo-i.pamd
