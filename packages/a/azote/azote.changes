@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 06:15:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add BuildRequires gobject-introspection and python3-gobject-Gdk
+
+-------------------------------------------------------------------
 Tue May 19 11:16:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Replcae python3-yaml with python3-PyYAML

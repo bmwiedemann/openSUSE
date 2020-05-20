@@ -25,6 +25,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/nwg-piotr/azote
 Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  gobject-introspection
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
@@ -32,6 +33,7 @@ Requires:       feh
 Requires:       python3-Pillow
 Requires:       python3-Send2Trash
 Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       wget
 Requires:       wmctrl
 Requires:       xrandr
