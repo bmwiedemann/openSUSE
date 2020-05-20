@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 15 22:53:34 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.1.0 (build 16036546) (boo#1171764, boo#1171765)
+  + open-vm-tools 11.1.0 includes a new 'Service Discovery' plugin, which
+    connects with the vRealize Operations Manager product.  For more
+    information and details on configuring this plugin, refer to Configuring
+    Service Discovery.
+  + In this release, a new tools.conf switch is added to enable and disable
+    the guest customization in the guest virtual machine. By default, the
+    guest customization is enabled. For more details, refer KB 78903.
+- Spec file changes to remove the is_opensuse macros where possible.
+- Remoed the mv vm-support line from the spec file.  vm-support is now
+  automatically placed in the /usr/bin directory.
+- Added version number to Requires: libxmlsec1-openssl1 to help with vgauth
+  version checking.
+- Added patches
+  + pam-vmtoolsd.patch (boo#1171003)
+- Drop unnecessary patch:
+  - app_info_plugin.patch
+  - diskinfo-debug-logging-1162435.patch
+  - gcc9-static-inline.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 17:10:27 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - Simplified the conditional around systemd_ordering to just use

@@ -1,22 +1,22 @@
 --- a/open-vm-tools/lib/user/utilBacktrace.c
 +++ b/open-vm-tools/lib/user/utilBacktrace.c
-@@ -510,13 +510,16 @@
-    options.bugNumber = bugNr;
-    CoreDump_LogFullBacktraceToFunc(&options, outFunc, outFuncData);
+@@ -431,13 +431,16 @@ Util_BacktraceWithFunc(int bugNr,
+       }
+    }
  #else
 -   uintptr_t *x = (uintptr_t *) &bugNr;
 +#pragma GCC diagnostic push
 +#pragma GCC diagnostic ignored "-Warray-bounds"
 +   uintptr_t *x = ((uintptr_t *) &bugNr) - 2;
 +#pragma GCC diagnostic pop
- 
+
     if (bugNr == 0) {
        outFunc(outFuncData, "Backtrace:\n");
     } else {
        outFunc(outFuncData, "Backtrace for bugNr=%d\n",bugNr);
     }
--   Util_BacktraceFromPointerWithFunc(&x[-2], outFunc, outFuncData);
-+   Util_BacktraceFromPointerWithFunc(x, outFunc, outFuncData);
+-   UtilBacktraceFromPointerWithFunc(&x[-2], outFunc, outFuncData);
++   UtilBacktraceFromPointerWithFunc(x, outFunc, outFuncData);
  #endif
  }
 --- a/open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp

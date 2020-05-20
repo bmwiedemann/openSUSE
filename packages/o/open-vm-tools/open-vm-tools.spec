@@ -18,41 +18,17 @@
 
 
 # vgauth is enabled for openSUSE Factory, Leap 42.1, SLES12SP1 and later releases (which include xml-security-c and xerces-c)
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1315 && 0%{?suse_version} != 1320
-%bcond_without vgauth
-%else
-%if 0%{?sle_version} >= 0120100
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 0120100
 %bcond_without vgauth
 %else
 %bcond_with vgauth
 %endif
-%endif
 
 # vmblock-fuse.service requires systemd >= 228 which is in openSUSE Factory, SLES12SP2 and Leap 42.2 (see bsc#985773)
-%if 0%{?is_opensuse}
-%if 0%{?suse_version} >= 1315
-%if 0%{?suse_version} != 1320
-%if 0%{?sle_version} != 120100
-%bcond_without vmblockfuseservice
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 0120200
+    %bcond_without vmblockfuseservice
 %else
-%bcond_with vmblockfuseservice
-%endif
-%else
-%bcond_with vmblockfuseservice
-%endif
-%else
-%bcond_with vmblockfuseservice
-%endif
-%else # !opensuse
-%if 0%{?suse_version} >= 1315
-%if 0%{?sle_version} > 120100
-%bcond_without vmblockfuseservice
-%else
-%bcond_with vmblockfuseservice
-%endif
-%else
-%bcond_with vmblockfuseservice
-%endif
+    %bcond_with vmblockfuseservice
 %endif
 
 # exclude AMD PCnet32 LANCE pci.id from Supplements list [bnc#397554]
@@ -64,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  15389592
-Version:        11.0.5
+%define bldnum  16036546
+Version:        11.1.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -120,15 +96,13 @@ BuildRequires:  pkgconfig(xerces-c)
 
 # Use xmlsec1 instead of xml-security-c where available.
 # If using xmlsec1, also need to use libxmlsec1-openssl1
-%if 0%{?suse_version } > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
 BuildRequires:  pkgconfig(xmlsec1)
-Requires:       libxmlsec1-openssl1
+Requires:       libxmlsec1-openssl1 >= 1.2.28
 %else
-%if ( 0%{?is_opensuse} && 0%{?sle_version} >= 0120100 )
-BuildRequires:  pkgconfig(xmlsec1)
-Requires:       libxmlsec1-openssl1
-%else
-%if 0%{?sle_version} >= 120300 && !0%{?is_opensuse} 
+# Leap 42.1 and 42.2 supports xmlsec1 and libxmlsec1-openssl1 but 12 SP1 and
+# SP2 do not.
+%if 0%{?is_opensuse} && 0%{?sle_version} >= 0120100
 BuildRequires:  pkgconfig(xmlsec1)
 Requires:       libxmlsec1-openssl1
 %else
@@ -136,7 +110,7 @@ BuildRequires:  xml-security-c-devel
 %define         arg_xmlsecurity --enable-xmlsecurity
 %endif
 %endif
-%endif
+
 %else
 # not using vgauth
 %define arg_xmlsecurity --without-xmlsecurity
@@ -161,12 +135,10 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64
 #Upstream patches
-Patch0:         gcc9-static-inline.patch
-Patch1:         gcc10-warning.patch
-Patch2:         diskinfo-debug-logging-1162435.patch
-Patch3:         app_info_plugin.patch
+Patch0:         gcc10-warning.patch
+Patch1:         pam-vmtoolsd.patch
 
-%if 0%{?suse_version } >= 1500
+%if 0%{?suse_version} >= 1500
 %systemd_ordering
 %else
 %systemd_requires
@@ -213,6 +185,14 @@ This package contains only the user-space programs and libraries of
 machines.
 %endif
 
+%package        sdmp
+Summary:        Service Discovery Plugin
+Group:          System Environment/Libraries
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description      sdmp
+Service Discovery Plugin
+
 %package -n libvmtools0
 Summary:        Open Virtual Machine Tools - shared library
 Group:          System/Libraries
@@ -232,13 +212,12 @@ if you intend to create own plugins for vmtoolsd.
 
 %prep
 %setup -q -n %{tarname}-%{version}-%{bldnum}
+
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
 %patch0 -p2
 %patch1 -p2
-%patch2 -p2
-%patch3 -p2
 
 %build
 %if %{with_X}
@@ -274,6 +253,7 @@ chmod 755 configure
     %{?arg_xerces} \
     --with-udev-rules-dir=%{_udevrulesdir} \
     --enable-resolutionkms \
+    --enable-servicediscovery \
     --disable-static
 make
 
@@ -288,9 +268,6 @@ find %{buildroot}%{_libdir} -name '*.la' -delete
 rm -fr %{buildroot}%{_defaultdocdir}
 rm -fr %{buildroot}/usr/share/doc/open-vm-tools/api
 rm -f docs/api/build/html/FreeSans.ttf
-
-# Move vm-support to /usr/bin (bnc#874931)
-mv %{buildroot}%{_sysconfdir}/vmware-tools/vm-support %{buildroot}%{_bindir}
 
 # install systemd init scripts and symlinks
 install -p -m 644 -D %{SOURCE2} %{buildroot}%{_unitdir}/vmtoolsd.service
@@ -374,6 +351,9 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.co
 
 %endif
 
+%post sdmp
+systemctl try-restart vmtoolsd.service || :
+
 %preun
 %service_del_preun vmtoolsd.service
 %if %{with vgauth}
@@ -394,6 +374,10 @@ fi
 %endif
 /sbin/ldconfig
 
+%postun sdmp
+# restart tools without plugin
+systemctl try-restart vmtoolsd.service || :
+
 %post -n libvmtools0 -p /sbin/ldconfig
 
 %postun -n libvmtools0 -p /sbin/ldconfig
@@ -403,12 +387,13 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
-%if 0%{?sle_version} <= 120200 && !0%{?is_opensuse} 
-%doc AUTHORS COPYING ChangeLog NEWS README
-%else
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
+%else
+%doc AUTHORS COPYING ChangeLog NEWS README
 %endif
+
 %{_bindir}/vmtoolsd
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
@@ -485,6 +470,15 @@ rm -rf %{buildroot}
 %endif
 
 %endif
+
+%files sdmp
+%dir %{_libdir}/%{name}/serviceDiscovery/
+%dir %{_libdir}/%{name}/serviceDiscovery/scripts/
+%{_libdir}/%{name}/plugins/vmsvc/libserviceDiscovery.so
+%{_libdir}/%{name}/serviceDiscovery/scripts/get-connection-info.sh
+%{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-info.sh
+%{_libdir}/%{name}/serviceDiscovery/scripts/get-listening-process-perf-metrics.sh
+%{_libdir}/%{name}/serviceDiscovery/scripts/get-versions.sh
 
 %files -n libvmtools0
 %defattr(-, root, root)
