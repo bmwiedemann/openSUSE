@@ -20,7 +20,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        64.1
+Version:        68
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
@@ -28,14 +28,6 @@ Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 # Snapshot tarball can be created using: ./make-git-shapshot.sh [gitcommit]
 Source0:        %{name}-%{version}.tar.gz
-Patch1:         %{name}_check_Ensure_mmap_of_BTT_sections_work_with_64K_page-sizes.patch
-Patch2:         %{name}-list-Introduce-region-capability-objects.patch
-Patch3:         %{name}-Use-the-same-align-value-as-original-namespace-on-reconfigure.patch
-Patch4:         %{name}-ndctl-lib-Fix-duplicate-bus-detection.patch
-Patch5:         %{name}-namespace-Handle-create-namespace-in-label-less-mode.patch
-Patch6:         %{name}-dimm-Fix-init-labels-success-reporting.patch
-Patch7:         %{name}-namespace-Fix-enable-namespace-error-for-seed-.patch
-Patch8:         %{name}-test-Relax-dax_pmem_compat-requirement.patch
 Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
