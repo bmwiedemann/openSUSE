@@ -18,7 +18,7 @@
 
 %bcond_without  lang
 Name:           kdav
-Version:        20.04.0
+Version:        20.04.1
 Release:        0
 Summary:        DAV protocol implementation
 License:        GPL-2.0-only
