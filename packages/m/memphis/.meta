@@ -1,9 +1,0 @@
-<package name="memphis" project="openSUSE:Factory">
-  <title>Map-rendering library for OpenStreetMap</title>
-  <description>LibMemphis provides a GObject based API to render OpenStreetMap data on
-a cairo surface. Libmemphis implements the 'Slippy Map Tilename'
-specification, like Mapnik and Osmarender.
-
-It supports zoom level 12 to 18, projected with the Mercator projection.</description>
-  <devel project="GNOME:Factory" package="memphis"/>
-</package>
