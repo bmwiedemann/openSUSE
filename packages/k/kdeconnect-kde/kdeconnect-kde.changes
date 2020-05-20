@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Unmute audio when volume changes (kde#408705)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -12,8 +22,6 @@ Sun Apr  5 20:29:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Exception doesn't have strerr
   * Check for null notification
