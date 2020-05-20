@@ -17,7 +17,7 @@
 
 
 Name:           typescript
-Version:        3.9.2
+Version:        3.9.3
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0
