@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 14:52:57 UTC 2020 - David Michael <fedora.dm0@gmail.com>
+
+- Update to release 1.1
+  * add a manual for mkfs.erofs
+  * add superblock checksum support
+  * add filesystem UUID support
+  * add exclude files support
+
+-------------------------------------------------------------------
 Fri Nov  8 08:00:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0
