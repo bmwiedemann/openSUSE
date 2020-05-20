@@ -208,4 +208,15 @@
   * setuptools: Update Development Status to Production/Stable</comment>
     <requestid>736400</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8c5f6f3534443a7bd173225f87a1f6fc</srcmd5>
+    <version>4.1.0</version>
+    <time>1589993204</time>
+    <user>dimstar_suse</user>
+    <comment>- urlgrabber-ext-down as an alternative
+- %python3_only -&gt; %python_alternative
+- urlgrabber-ext-down is expected to reside under /usr/libexec
+</comment>
+    <requestid>807479</requestid>
+  </revision>
 </revisionlist>

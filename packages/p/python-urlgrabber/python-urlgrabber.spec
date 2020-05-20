@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlgrabber
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname urlgrabber
+# package expects urlgrabber-ext-down in /usr/libexec
+%define _libexecdir /usr/libexec
 Name:           python-urlgrabber
 Version:        4.1.0
 Release:        0
 Summary:        A high-level cross-protocol url-grabber
 License:        LGPL-2.1-only
+Group:          Development/Libraries/Python
 URL:            https://github.com/rpm-software-management/urlgrabber
 Source:         https://github.com/rpm-software-management/%{modname}/releases/download/%{modname}-4-1-0/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pycurl}
@@ -32,6 +35,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycurl
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,15 +55,23 @@ sed -i "13d" urlgrabber/__init__.py # Remove wrong license header, fixes bnc#781
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/urlgrabber
+%python_clone -a %{buildroot}%{_libexecdir}/urlgrabber-ext-down
 rm -rf %{buildroot}%{_datadir}/doc/urlgrabber-%{version} # Remove wrongly installed docs
-mv -v %{buildroot}%{_prefix}/libexec/urlgrabber-ext-down %{buildroot}%{_prefix}/lib/urlgrabber-ext-down
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative urlgrabber
+%{python_expand %{_sbindir}/update-alternatives --quiet --install %{_libexecdir}/urlgrabber-ext-down  urlgrabber-ext-down   %{_libexecdir}/urlgrabber-ext-down-%{$python_version}  %{$python_version_nodots}}
+
+%postun
+%python_uninstall_alternative urlgrabber
 
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README TODO
-%python3_only %{_bindir}/urlgrabber
+%python_alternative %{_bindir}/urlgrabber
+%python_alternative %{_libexecdir}/urlgrabber-ext-down
 %{python_sitelib}/*
-%python3_only %{_prefix}/lib/urlgrabber*
 
 %changelog
