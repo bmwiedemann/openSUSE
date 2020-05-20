@@ -1,7 +1,7 @@
 #
 # spec file for package python-template-remover
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-template-remover
 Version:        0.1.9
 Release:        0
-License:        Apache-2.0
 Summary:        Remove the template markup from html files
-Url:            http://github.com/deezer/template-remover
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/deezer/template-remover
 Source:         https://files.pythonhosted.org/packages/source/t/template-remover/template-remover-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/deezer/template-remover/master/LICENSE
+BuildRequires:  %{python_module docopt >= 0.6.1}
+BuildRequires:  %{python_module nose >= 1.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module docopt >= 0.6.1}
-BuildRequires:  %{python_module nose >= 1.3}
 Requires:       python-docopt >= 0.6.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -44,7 +46,7 @@ to be a simple way of getting rid of those markups.
 
 %prep
 %setup -q -n template-remover-%{version}
-cp %SOURCE1 .
+cp %{SOURCE1} .
 
 %build
 %python_build
@@ -52,15 +54,22 @@ cp %SOURCE1 .
 %install
 %python_install
 mv %{buildroot}%{_bindir}/remove_template.py %{buildroot}%{_bindir}/remove_template
+%python_clone -a %{buildroot}%{_bindir}/remove_template
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -R setup.py nosetests
 
+%post
+%python_install_alternative remove_template
+
+%postun
+%python_uninstall_alternative remove_template
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/remove_template
+%python_alternative %{_bindir}/remove_template
 %{python_sitelib}/*
 
 %changelog
