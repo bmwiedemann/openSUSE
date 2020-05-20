@@ -1,7 +1,7 @@
 #
 # spec file for package libsolv
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,12 +52,12 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.11
+Version:        0.7.13
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/openSUSE/libsolv
+URL:            https://github.com/openSUSE/libsolv
 Source:         libsolv-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
