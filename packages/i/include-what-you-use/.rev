@@ -100,4 +100,25 @@
     <comment>- Use c++_compiler instead of clang to avoid dependence oddities.</comment>
     <requestid>792943</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4d4b461f2e6969de86192a42e43309b</srcmd5>
+    <version>0.14</version>
+    <time>1589993158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14, update LLVM/Clang to version 10.
+  * Report non-builtin enum base types.
+  * Disable forward-declares for decls in inline namespaces.
+  * Make C structs forward-declarable again.
+  * Always keep Qt .moc includes.
+  * Include binary type traits in analysis.
+  * In iwyu_tool, fail fast if include-what-you-use is not found.
+  * In iwyu_tool, print all diagnostic ouptut to stderr.
+  * In fix_includes, improve file extension detection.
+  * Add man page for include-what-you-use.
+- Rebase fix-shebang.patch.
+- Remove upstreamed link-llvm9.patch.
+- Use man page from upstream.
+- Use %cmake_build for parallel build.</comment>
+    <requestid>807416</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 19 21:48:58 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.14, update LLVM/Clang to version 10.
+  * Report non-builtin enum base types.
+  * Disable forward-declares for decls in inline namespaces.
+  * Make C structs forward-declarable again.
+  * Always keep Qt .moc includes.
+  * Include binary type traits in analysis.
+  * In iwyu_tool, fail fast if include-what-you-use is not found.
+  * In iwyu_tool, print all diagnostic ouptut to stderr.
+  * In fix_includes, improve file extension detection.
+  * Add man page for include-what-you-use.
+- Rebase fix-shebang.patch.
+- Remove upstreamed link-llvm9.patch.
+- Use man page from upstream.
+- Use %cmake_build for parallel build.
+
+-------------------------------------------------------------------
 Fri Apr 10 11:20:39 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
 
 - Use c++_compiler instead of clang to avoid dependence oddities.

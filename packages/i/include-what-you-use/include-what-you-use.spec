@@ -2,7 +2,7 @@
 # spec file for package include-what-you-use
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Aaron Puchert.
+# Copyright (c) 2020 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 
 Name:           include-what-you-use
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
 Group:          Development/Languages/C and C++
 URL:            https://include-what-you-use.org/
 Source0:        https://include-what-you-use.org/downloads/%{name}-%{version}.src.tar.gz
-Source1:        %{name}.1
 Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 Patch3:         remove-x86-specific-code.patch
-Patch4:         link-llvm9.patch
 BuildRequires:  c++_compiler
-BuildRequires:  clang9-devel
+BuildRequires:  clang10-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm9-devel
+BuildRequires:  llvm10-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -66,7 +64,6 @@ refactoring tool.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 # Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
@@ -75,11 +72,10 @@ rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
 rm iwyu.gcc.imp
 
 %cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} ..
+%cmake_build
 
 %install
 %cmake_install
-
-install -Dm0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
 # We don't support MS style inline assembly, because we removed the dependency

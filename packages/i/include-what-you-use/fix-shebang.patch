@@ -15,6 +15,6 @@ index 19de45b..8faefd6 100755
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
- """ Driver to consume a Clang compilation database and invoke IWYU.
  
- Example usage with CMake:
+ ##===--- iwyu_tool.py -----------------------------------------------------===##
+ #
