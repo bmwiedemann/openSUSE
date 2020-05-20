@@ -78,7 +78,7 @@
 ### COMMON-DEF-END ###
 
 Name:           python3-base
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Python 3 Interpreter and Stdlib Core
 License:        Python-2.0
@@ -201,10 +201,6 @@ Patch28:        bpo36302-sort-module-sources.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
 # ensurepip should honour the value of $(prefix)
 Patch29:        bpo-31046_ensurepip_honours_prefix.patch
-# PATCH-FIX-UPSTREAM CVE-2020-8492-urllib-ReDoS.patch bsc#1162367 mcepl@suse.com
-# Fixes Python urrlib allowed an HTTP server to conduct Regular
-# Expression Denial of Service (ReDoS)
-Patch30:        CVE-2020-8492-urllib-ReDoS.patch
 # PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
 # Fix wrong misalignment of pointer to vectorcallfunc
 Patch31:        bsc1167501-invalid-alignment.patch
@@ -301,7 +297,6 @@ other applications.
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
-%patch30 -p1
 %patch31 -p1
 
 # drop Autoconf version requirement

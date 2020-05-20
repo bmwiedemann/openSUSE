@@ -1153,4 +1153,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html</comment>
   (bsc#1167501, bpo#40052) to fix alignment in abstract.h header file.</comment>
     <requestid>794614</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>56616b9545ccefefe88e55158ee88c7b</srcmd5>
+    <version>3.8.3</version>
+    <time>1589992545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806764</requestid>
+  </revision>
 </revisionlist>

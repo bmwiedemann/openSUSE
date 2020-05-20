@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 17 15:40:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.8.3:
+  - Complete list of changes is available at
+    https://docs.python.org/release/3.8.3/whatsnew/changelog.html#python-3-8-3-final,
+    but most of them are just bugfixes.
+  - Removed patch CVE-2020-8492-urllib-ReDoS.patch: contained in upstream
+
+-------------------------------------------------------------------
 Thu Apr 16 12:06:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add #!BuildIgnore: gdk-pixbuf-loader-rsvg to python3 SPEC
