@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyssim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
 Requires:       python-numpy
 Requires:       python-scipy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
@@ -52,6 +54,7 @@ Module for computing Structured Similarity Image Metric (SSIM) in Python.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyssim
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,10 +66,16 @@ $python -m ssim --cw --width 128 --height 128 test-images/test1-1.png test-image
 $python -m ssim --cw --width 128 --height 128 test-images/test3-orig.jpg test-images/test3-rot.jpg | grep 0.938
 }
 
+%post
+%python_install_alternative pyssim
+
+%postun
+%python_uninstall_alternative pyssim
+
 %files %{python_files}
 %license LICENSE.md
 %doc README.md
-%python3_only %{_bindir}/pyssim
+%python_alternative %{_bindir}/pyssim
 %{python_sitelib}/*
 
 %changelog
