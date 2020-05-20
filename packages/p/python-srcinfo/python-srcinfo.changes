@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 08:03:02 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sat Oct 12 03:28:25 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Added pr_10.patch for Python 2 compatibility

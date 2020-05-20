@@ -1,7 +1,7 @@
 #
 # spec file for package python-srcinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-parse
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nose}
@@ -50,15 +52,22 @@ Python library to parse Arch .SRCINFO files.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/parse_srcinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative parse_srcinfo
+
+%postun
+%python_uninstall_alternative parse_srcinfo
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/parse_srcinfo
+%python_alternative %{_bindir}/parse_srcinfo
 %{python_sitelib}/*
 
 %changelog
