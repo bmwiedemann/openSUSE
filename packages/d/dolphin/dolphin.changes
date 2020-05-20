@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 15 15:40:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Don't update preferred search action on window activation
+  * Don't use local URL for KMoreTool (kde#420911)
+  * Fixes Dolphin crash on "Defocus Terminal Panel" menu click if no Konsole is installed.
+  * Dolphin Service Installer: Run uninstall scripts, rename methods
+  * Dolphin Service Menu installer cleanup
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -19,8 +33,6 @@ Sun Apr  5 20:29:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Update dragCursor while dragging
 
@@ -29,8 +41,6 @@ Sun Mar 22 09:16:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * Fixes multiple KVersionControlPlugin::fileName() calls on entering or updating directory. (kde#415698)
   * Restore former position of "Create New" menu item in viewport context menu (kde#417640)
@@ -49,7 +59,7 @@ Thu Mar  5 20:35:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Fix typo in comment
   * Fix files not being highlighted if directory of file is already open (kde#417230)
@@ -74,7 +84,7 @@ Wed Feb  5 06:28:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Change drop indicator color (kde#415010)
   * Hide tooltip instantly on filter change
