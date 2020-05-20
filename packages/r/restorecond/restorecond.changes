@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 06:50:33 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Use %{_unitdir} for the location of the .service file 
+
+-------------------------------------------------------------------
+Thu May  7 08:44:43 UTC 2020 - pgajdos@suse.com
+
+- %{_libexecdir} now expands to /usr/libexec, so do not use it
+  where /usr/lib was intended
+
+-------------------------------------------------------------------
 Tue Mar  3 12:28:15 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0

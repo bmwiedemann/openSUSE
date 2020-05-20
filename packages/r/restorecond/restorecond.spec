@@ -61,7 +61,8 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcrestorecond
 %config %{_sysconfdir}/selinux/restorecond.conf
 %config(noreplace) %{_sysconfdir}/selinux/restorecond_user.conf
 %{_sysconfdir}/xdg/autostart/restorecond.desktop
-%{_libexecdir}/systemd/system/restorecond.service
+%{_unitdir}/restorecond.service
+
 %{_sbindir}/restorecond
 %{_sbindir}/rcrestorecond
 %{_datadir}/dbus-1/services/org.selinux.Restorecond.service
