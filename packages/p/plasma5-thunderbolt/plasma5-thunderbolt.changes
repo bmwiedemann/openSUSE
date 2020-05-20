@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 14:33:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Port placeholder message to Kirigami.PlaceholderMessage
+
+-------------------------------------------------------------------
 Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.18.5
