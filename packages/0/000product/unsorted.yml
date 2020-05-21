@@ -384,7 +384,9 @@ unsorted:
   - akonadi-import-wizard-devel 
   - akonadi-mime-devel 
   - akonadi-notes-devel 
+  - akonadi-search: [i586] 
   - akonadi-search-devel 
+  - akonadi-search-lang: [i586] 
   - akonadi-server-devel 
   - akonadiconsole 
   - alac 
@@ -6836,6 +6838,11 @@ unsorted:
   - klftools-devel 
   - klickety 
   - klickety-lang 
+  - kmail: [i586] 
+  - kmail-account-wizard: [i586] 
+  - kmail-account-wizard-lang: [i586] 
+  - kmail-application-icons: [i586] 
+  - kmail-lang: [i586] 
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
@@ -6991,7 +6998,9 @@ unsorted:
   - ktextwidgets-devel-32bit: [x86_64] 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktnef: [i586] 
   - ktnef-devel 
+  - ktnef-lang: [i586] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -13868,6 +13877,8 @@ unsorted:
   - mayavi-doc 
   - mayavi-jupyter 
   - mbedtls-devel 
+  - mbox-importer: [i586] 
+  - mbox-importer-lang: [i586] 
   - mbuffer 
   - mcabber 
   - mcabber-devel 
@@ -16216,7 +16227,6 @@ unsorted:
   - paperclips 
   - paperclips-javadoc 
   - paperjam 
-  - paperkey: [i586] 
   - papi 
   - papi-devel 
   - papi-devel-32bit: [x86_64] 
@@ -17869,6 +17879,10 @@ unsorted:
   - pijul-zsh-completion 
   - pilot 
   - pilot-link 
+  - pim-data-exporter: [i586] 
+  - pim-data-exporter-lang: [i586] 
+  - pim-sieve-editor: [i586] 
+  - pim-sieve-editor-lang: [i586] 
   - pimcommon-devel 
   - pin 
   - pinentry-emacs 
