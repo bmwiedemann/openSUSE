@@ -51,6 +51,8 @@ unsorted:
   - FlightGear 
   - FlightGear-data 
   - FlightGear-docs 
+  - Fragments 
+  - Fragments-lang 
   - FreeCAD: [x86_64] 
   - GraphicsMagick 
   - GraphicsMagick-devel 
@@ -1929,6 +1931,7 @@ unsorted:
   - console-setup 
   - container-diff 
   - container-registry-systemd 
+  - container-support-utils 
   - containerd 
   - containerd-ctr 
   - containerd-kubic 
@@ -2433,6 +2436,7 @@ unsorted:
   - distribution-logos-openSUSE-MicroOS: [i586] 
   - dita 
   - diy-devel: [x86_64] 
+  - diy-mpich-devel: [x86_64] 
   - djvu2pdf 
   - djvulibre 
   - djvulibre-djview4 
@@ -2554,6 +2558,7 @@ unsorted:
   - driverctl 
   - dropbox-cli 
   - drops 
+  - dropwatch 
   - drumstick 
   - drush 
   - dssi 
@@ -3224,6 +3229,7 @@ unsorted:
   - fontweak 
   - forge-parent 
   - forkbomb 
+  - forked-daapd 
   - forkstat 
   - forkstat-bash-completion 
   - form 
@@ -8449,10 +8455,13 @@ unsorted:
   - libburn-devel 
   - libbuzztrax-core-devel 
   - libbuzztrax-core1 
+  - libbuzztrax-core1-32bit: [x86_64] 
   - libbuzztrax-gst-devel 
   - libbuzztrax-gst1 
+  - libbuzztrax-gst1-32bit: [x86_64] 
   - libbuzztrax-ic-devel 
   - libbuzztrax-ic1 
+  - libbuzztrax-ic1-32bit: [x86_64] 
   - libbytesize-devel 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
@@ -10387,7 +10396,6 @@ unsorted:
   - libmemcached-devel 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
-  - libmemphis-0_2-0 
   - libmenu-cache3 
   - libmesode-devel 
   - libmesode0 
@@ -13904,7 +13912,6 @@ unsorted:
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
   - memory-constraints 
-  - memphis-devel 
   - memprof 
   - memprof-lang 
   - menu-cache 
@@ -15650,6 +15657,7 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
+  - open-vm-tools-sdmp 
   - openCryptoki 
   - openCryptoki-32bit: [i586] 
   - openCryptoki-64bit: [x86_64] 
@@ -16208,7 +16216,7 @@ unsorted:
   - paperclips 
   - paperclips-javadoc 
   - paperjam 
-  - paperkey 
+  - paperkey: [i586] 
   - papi 
   - papi-devel 
   - papi-devel-32bit: [x86_64] 
@@ -17124,6 +17132,7 @@ unsorted:
   - perl-Module-Util 
   - perl-Mojo-DOM58 
   - perl-Mojo-IOLoop-ReadWriteProcess 
+  - perl-Mojo-Log-Colored 
   - perl-Mojo-Pg 
   - perl-Mojo-RabbitMQ-Client: [x86_64] 
   - perl-Mojo-Redis 
@@ -18660,7 +18669,6 @@ unsorted:
   - python3-Arpeggio 
   - python3-BTrees 
   - python3-BTrees-devel 
-  - python3-Babel-doc 
   - python3-BitVector 
   - python3-Bottleneck 
   - python3-Brotli 
@@ -21248,6 +21256,7 @@ unsorted:
   - python3-transaction 
   - python3-transip 
   - python3-transitions 
+  - python3-translate-toolkit 
   - python3-translation-finder 
   - python3-translationstring 
   - python3-translitcodec 
@@ -21460,6 +21469,7 @@ unsorted:
   - pytorch-converters: [x86_64] 
   - pytorch-examples: [x86_64] 
   - pyzo 
+  - pyzologo 
   - pyzy-devel 
   - q4wine 
   - q4wine-lang 
@@ -32420,7 +32430,6 @@ unsorted:
   - transfig 
   - transifex-client 
   - translate-shell 
-  - translate-toolkit 
   - translate-toolkit-devel-doc 
   - translation-update-bg 
   - translation-update-ca 
@@ -32591,7 +32600,9 @@ unsorted:
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
   - typelib-1_0-BuzztraxCore-1_1 
+  - typelib-1_0-BuzztraxCore-1_1-32bit: [x86_64] 
   - typelib-1_0-BuzztraxIc-1_1 
+  - typelib-1_0-BuzztraxIc-1_1-32bit: [x86_64] 
   - typelib-1_0-CMenu-3_0 
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
@@ -32712,7 +32723,6 @@ unsorted:
   - typelib-1_0-MateMenu-2_0 
   - typelib-1_0-MatePanelApplet-4_0 
   - typelib-1_0-Matekbd-1_0 
-  - typelib-1_0-Memphis-0_2 
   - typelib-1_0-Midori-0_6 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
