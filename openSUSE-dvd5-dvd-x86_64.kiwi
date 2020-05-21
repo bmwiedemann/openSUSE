@@ -93,8 +93,8 @@
       <repopackage name="akonadi-plugin-contacts"/>
       <repopackage name="akonadi-plugin-kalarmcal"/>
       <repopackage name="akonadi-plugin-mime"/>
-      <repopackage name="akonadi-search" arch="x86_64"/>
-      <repopackage name="akonadi-search-lang" arch="x86_64"/>
+      <repopackage name="akonadi-search"/>
+      <repopackage name="akonadi-search-lang"/>
       <repopackage name="akonadi-server"/>
       <repopackage name="akonadi-server-lang"/>
       <repopackage name="akonadi-server-sqlite"/>
@@ -1314,11 +1314,11 @@
       <repopackage name="kmag-lang"/>
       <repopackage name="kmahjongg"/>
       <repopackage name="kmahjongg-lang"/>
-      <repopackage name="kmail" arch="x86_64"/>
-      <repopackage name="kmail-account-wizard" arch="x86_64"/>
-      <repopackage name="kmail-account-wizard-lang" arch="x86_64"/>
-      <repopackage name="kmail-application-icons" arch="x86_64"/>
-      <repopackage name="kmail-lang" arch="x86_64"/>
+      <repopackage name="kmail"/>
+      <repopackage name="kmail-account-wizard"/>
+      <repopackage name="kmail-account-wizard-lang"/>
+      <repopackage name="kmail-application-icons"/>
+      <repopackage name="kmail-lang"/>
       <repopackage name="kmailtransport"/>
       <repopackage name="kmailtransport-lang"/>
       <repopackage name="kmenuedit5"/>
@@ -1422,8 +1422,8 @@
       <repopackage name="ktexteditor-lang"/>
       <repopackage name="ktimer"/>
       <repopackage name="ktimer-lang"/>
-      <repopackage name="ktnef" arch="x86_64"/>
-      <repopackage name="ktnef-lang" arch="x86_64"/>
+      <repopackage name="ktnef"/>
+      <repopackage name="ktnef-lang"/>
       <repopackage name="ktouch"/>
       <repopackage name="ktouch-lang"/>
       <repopackage name="ktuberling"/>
@@ -3301,8 +3301,8 @@
       <repopackage name="mate-calc"/>
       <repopackage name="mate-calc-lang"/>
       <repopackage name="mbimcli-bash-completion"/>
-      <repopackage name="mbox-importer" arch="x86_64"/>
-      <repopackage name="mbox-importer-lang" arch="x86_64"/>
+      <repopackage name="mbox-importer"/>
+      <repopackage name="mbox-importer-lang"/>
       <repopackage name="mc"/>
       <repopackage name="mc-lang"/>
       <repopackage name="mcelog" arch="x86_64"/>
@@ -3859,10 +3859,10 @@
       <repopackage name="pidgin-plugin-skypeweb"/>
       <repopackage name="pidgin-plugin-telegram"/>
       <repopackage name="pigz"/>
-      <repopackage name="pim-data-exporter" arch="x86_64"/>
-      <repopackage name="pim-data-exporter-lang" arch="x86_64"/>
-      <repopackage name="pim-sieve-editor" arch="x86_64"/>
-      <repopackage name="pim-sieve-editor-lang" arch="x86_64"/>
+      <repopackage name="pim-data-exporter"/>
+      <repopackage name="pim-data-exporter-lang"/>
+      <repopackage name="pim-sieve-editor"/>
+      <repopackage name="pim-sieve-editor-lang"/>
       <repopackage name="pimcommon"/>
       <repopackage name="pimcommon-lang"/>
       <repopackage name="pinentry"/>
