@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Wed Apr 29 10:05:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Add mono.attr and install it to %_rpmconfigdir/fileattrs: enable
-  the dependency scanner for rpm packages (boo#1152775).
-
--------------------------------------------------------------------
 Thu Mar 19 07:44:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add aprofutil.exe.mdb and remove aprofutil.pdb, mdoc.exe and 

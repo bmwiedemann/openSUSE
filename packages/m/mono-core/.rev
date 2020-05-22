@@ -1028,4 +1028,11 @@
     <comment></comment>
     <requestid>805905</requestid>
   </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>ba6eed82350db8ce15008801a26de200</srcmd5>
+    <version>6.8.0</version>
+    <time>1590149909</time>
+    <user>maxlin_factory</user>
+    <comment>revert, breaks provides on mono packages, and so rebuildpacs go crazy</comment>
+  </revision>
 </revisionlist>
