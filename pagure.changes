@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 20 23:34:26 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix typo in quickstart on ssh directory mode 
+- Backport support for STARTTLS support for SMTP servers
+  + Patch: 0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch
+
+-------------------------------------------------------------------
 Mon May 18 13:31:41 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Backport fix from upstream to fix stats page

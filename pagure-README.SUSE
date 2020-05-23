@@ -8,7 +8,7 @@ mkdir -p /srv/gitolite/pseudo
 mkdir -p /srv/gitolite/remotes
 mkdir -p /srv/gitolite/.gitolite/{conf,keydir,logs}
 mkdir -p /srv/gitolite/.ssh
-chmod 700 /srv/gitolite/.ssh
+chmod 750 /srv/gitolite/.ssh
 
 touch /srv/gitolite/.gitolite/conf/gitolite.conf
 
