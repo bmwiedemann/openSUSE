@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 12:37:47 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- gnu sasl support needs to be enabled with a configure option
+  (boo#1170516) 
+
+-------------------------------------------------------------------
 Thu Apr 23 08:43:57 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.10:

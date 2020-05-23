@@ -394,4 +394,13 @@ I hope it's ok this time. (forwarded request 138894 from benoit_monin)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>799161</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>b1c6bdeee449f5649f8c9700a0611654</srcmd5>
+    <version>1.8.10</version>
+    <time>1590247216</time>
+    <user>maxlin_factory</user>
+    <comment>- gnu sasl support needs to be enabled with a configure option
+  (boo#1170516)</comment>
+    <requestid>805594</requestid>
+  </revision>
 </revisionlist>

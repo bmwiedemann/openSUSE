@@ -113,7 +113,7 @@ done
 CFLAGS="%{optflags} -fstack-protector -fPIE"
 export LDFLAGS="-pie"
 %endif
-%configure --docdir="%{_docdir}/%{name}" --with-tls=gnutls --without-msmtpd
+%configure --docdir="%{_docdir}/%{name}" --with-tls=gnutls --without-msmtpd --with-libgsasl
 make %{?_smp_mflags} V=1
 
 %install
