@@ -1,4 +1,4 @@
-From 3f4680ba2e05535fa9b4349859e8bf36c40b21eb Mon Sep 17 00:00:00 2001
+From 483bd167b14c708d4d2be882fe99660b67b0b0cb Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Wed, 4 Dec 2019 16:22:53 +0100
 Subject: [PATCH] Fix build with openSUSE clang9 package.
@@ -14,11 +14,11 @@ See https://bugreports.qt.io/browse/QTCREATORBUG-23172
  5 files changed, 12 insertions(+), 55 deletions(-)
 
 diff --git a/qbs/modules/libclang/functions.js b/qbs/modules/libclang/functions.js
-index d1bd2dd2..70a3c21e 100644
+index 0c15a2a6..114e45b9 100644
 --- a/qbs/modules/libclang/functions.js
 +++ b/qbs/modules/libclang/functions.js
-@@ -110,24 +110,9 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
-     var clangVersion = version(llvmConfig)
+@@ -113,24 +113,9 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
+         return [];
      var libs = []
      if (qtcFunctions.versionIsAtLeast(clangVersion, MinimumLLVMVersion)) {
 -        if (qtcFunctions.versionIsAtLeast(clangVersion, "8.0.0")) {
@@ -45,7 +45,7 @@ index d1bd2dd2..70a3c21e 100644
          libs = libs.concat(extraLibraries(llvmConfig, targetOS));
      }
  
-@@ -137,21 +122,7 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
+@@ -140,21 +125,7 @@ function formattingLibs(llvmConfig, qtcFunctions, targetOS)
  function toolingLibs(llvmConfig, targetOS)
  {
      var fixedList = [
@@ -111,7 +111,7 @@ index 965ef441..0137a102 100644
      clangpchmanagerbackendmain.cpp
  )
 diff --git a/src/tools/clangrefactoringbackend/source/CMakeLists.txt b/src/tools/clangrefactoringbackend/source/CMakeLists.txt
-index 420e630c..e0fff46b 100644
+index f06ddee1..77c9a6da 100644
 --- a/src/tools/clangrefactoringbackend/source/CMakeLists.txt
 +++ b/src/tools/clangrefactoringbackend/source/CMakeLists.txt
 @@ -2,10 +2,7 @@ add_qtc_library(clangrefactoringbackend_lib STATIC
@@ -127,10 +127,10 @@ index 420e630c..e0fff46b 100644
    PUBLIC_INCLUDES
      ${CLANG_INCLUDE_DIRS}
 diff --git a/tests/unit/unittest/CMakeLists.txt b/tests/unit/unittest/CMakeLists.txt
-index 306c0276..fefb63b1 100644
+index 4e7b97d5..ad6a8719 100644
 --- a/tests/unit/unittest/CMakeLists.txt
 +++ b/tests/unit/unittest/CMakeLists.txt
-@@ -243,7 +243,7 @@ if (TARGET libclang)
+@@ -248,7 +248,7 @@ if (TARGET libclang)
    target_link_libraries(unittest PRIVATE libclang)
  endif()
  
@@ -139,7 +139,7 @@ index 306c0276..fefb63b1 100644
    target_compile_definitions(unittest PRIVATE CLANG_UNIT_TESTS)
    target_sources(unittest PRIVATE
      gtest-llvm-printing.cpp
-@@ -265,16 +265,10 @@ if (TARGET clangTooling)
+@@ -270,16 +270,10 @@ if (TARGET clangTooling)
      builddependencycollector-test.cpp
      mockrefactoringclient.h
      mockrefactoringserver.h
@@ -159,5 +159,5 @@ index 306c0276..fefb63b1 100644
  
  if (TARGET GoogleBenchmark)
 -- 
-2.24.0
+2.26.2
 

@@ -743,4 +743,22 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>800281</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>760cc9c43f8aee000070e80f505943d4</srcmd5>
+    <version>4.12.1</version>
+    <time>1590247627</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 4.12.1.
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.12.1.md?h=4.12
+  * Fixed crash when changing font settings
+  * Fixed availability of `Link with Qt` information on startup
+  * Fixed crash when loading settings from Qt Creator &lt; 4.11
+  * Fixed semantic highlighting
+  * Fixed wrong symbol highlighting
+  * Fixed warning for `palette` property
+- Drop android-guard-against-kits-without-qt-version.patch.
+  Fixed upstream.
+- Rebase 0001-Fix-build-with-openSUSE-clang9-package.patch</comment>
+    <requestid>807774</requestid>
+  </revision>
 </revisionlist>
