@@ -16,12 +16,16 @@
 #
 
 
+%bcond_with rootio
+%bcond_without pythia
+
 Name:           HepMC
 %define lname	libHepMC3-1
-Version:        3.1.2
+Version:        3.2.1
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
-License:        GPL-2.0-only
+# Python bindings are BSD-3-Clause, packaged separately
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
@@ -32,6 +36,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz-gd
+%if %{with pythia}
+BuildRequires:  pythia-devel
+%endif
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -41,6 +51,7 @@ HEPEVT, the Fortran HEP standard, are supported.
 
 %package -n %{lname}
 Summary:        An event record for High Energy Physics Monte Carlo Generators
+License:        GPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
@@ -58,8 +69,10 @@ supplied with the package.
 
 %package devel
 Summary:        Header files for HepMC
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
+Recommends:     %{name}-doc = %{version}
 
 %description devel
 The HepMC package is an object oriented event record written in C++
@@ -69,34 +82,44 @@ HEPEVT, the Fortran HEP standard, are supported.
 This package provides the source and header files required for
 developing with HepMC.
 
+%package doc
+Summary:        API documentation for HepMC
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+
+%description doc
+This package provides the API documentation for the HepMC library.
+
+%package -n python3-HepMC
+Summary:        Python bindings for HepMC
+License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
+Requires:       python3
+
+%description -n python3-HepMC
+The HepMC package is an object oriented event record written in C++
+for High Energy Physics Monte Carlo Generators. Many extensions from
+HEPEVT, the Fortran HEP standard, are supported.
+
+This package provides the python module for coding with HepMC.
+
 %prep
 %setup -q -n %{name}3-%{version}
 
 %build
-%cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=OFF \
-       -DCONFIG_INSTALL_DIR:PATH=%{_libdir}/HepMC/ \
+%cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=%{?with_rootio:ON}%{!?with_rootio:OFF} \
+       -DHEPMC3_BUILD_DOCS:BOOL=ON \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+       -DHEPMC3_BUILD_STATIC_LIBS:BOOL=OFF \
+       -DHEPMC3_PYTHON_VERSIONS:STRING="%{py3_ver}" \
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
-       -DHEPMC3_BUILD_EXAMPLES:BOOL=OFF
+       -DHEPMC3_BUILD_EXAMPLES:BOOL=ON
 
 %cmake_build
-pushd ../doc/doxygen
-make %{?_smp_mflags}
-popd
 
 %install
 %cmake_install
-# REMOVE STATIC LIBRARIES
-rm -f %{buildroot}%{_libdir}/*.a
 
-# Weird duplicated installation dir
-rm -fr %{buildroot}%{_builddir}
-
-chmod +x %{buildroot}%{_bindir}/HepMC3-config
-
-#Install examples manually so that fdupes can be run on them
-mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -pr examples %{buildroot}%{_docdir}/%{name}/
-cp -pr doc/doxygen/html %{buildroot}%{_docdir}/%{name}/
 %fdupes %{buildroot}%{_docdir}/%{name}/
 
 %post   -n %{lname} -p /sbin/ldconfig
@@ -107,14 +130,21 @@ cp -pr doc/doxygen/html %{buildroot}%{_docdir}/%{name}/
 %{_libdir}/libHepMC3search.so.*
 
 %files devel
+%license LICENCE COPYING
 %doc README* ChangeLog DESIGN
-%dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/examples
-%doc %{_docdir}/%{name}/html
 %{_bindir}/HepMC3-config
 %{_libdir}/libHepMC3.so
 %{_libdir}/libHepMC3search.so
 %{_includedir}/%{name}3/
 %{_datadir}/%{name}3/
+
+%files doc
+%doc %{_docdir}/%{name}/
+
+%files -n python3-HepMC
+%license python/include/LICENSE
+%{python3_sitearch}/pyHepMC3/
+%{python3_sitearch}/pyHepMC3-%{version}-py%{py3_ver}.egg-info
+%{python3_sitearch}/pyHepMC3.search-%{version}-py%{py3_ver}.egg-info
 
 %changelog
