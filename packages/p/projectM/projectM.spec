@@ -17,6 +17,14 @@
 
 
 %define _libver 3
+%ifarch %arm aarch64
+%bcond_without sdl
+%bcond_without gles_flavor
+%else
+%bcond_with sdl
+%bcond_with gles_flavor
+%endif
+%bcond_without pulseaudio_qt
 Name:           projectM
 Version:        3.1.3
 Release:        0
@@ -33,20 +41,32 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glm-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(pthread-stubs)
+Recommends:     %{name}-data = %{version}
+%if %{with pulseaudio_qt}
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(pthread-stubs)
-Recommends:     %{name}-data = %{version}
+%endif
+%if %{with sdl}
+BuildRequires:  libSDL2-devel
+%endif
+%if %{with gles_flavor}
+# Workaround: Qt5OpenGL is required for configure when testing libglm
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(glesv1_cm)
+%endif
+%if %{with pulseaudio_qt}
 Obsoletes:      %{name}-qt5 < %{version}
 Provides:       %{name}-qt5 = %{version}
+%endif
 
 %description
 projectM is a music visualizer.
@@ -92,15 +112,43 @@ chmod -x LICENSE.txt
 %patch0 -p1
 %patch1 -p1
 
+%if %{with gles_flavor}
+# https://github.com/projectM-visualizer/projectm/issues/356
+echo "#include <GL/gl.h>" | cat - src/projectM-qt/qprojectmwidget.hpp > /tmp/out && mv /tmp/out src/projectM-qt/qprojectmwidget.hpp
+%endif
+
 %build
 autoreconf -fiv
 
 perl -pi -e 's#2>/dev/null##g' configure
-%configure --disable-static --disable-rpath --enable-qt
+%if %{with gles_flavor}
+export CFLAGS="$CFLAGS -DSOIL_GLES2"
+%endif
+%if %{with sdl}
+export LDFLAGS="$LDFLAGS -lEGL"
+%endif
+%configure \
+%if %{with gles_flavor}
+  --enable-gles \
+%endif
+%if %{with sdl}
+  --enable-sdl \
+%else
+  --disable-sdl \
+%endif
+%if %{with pulseaudio_qt}
+  --enable-qt \
+%else
+  --disable-qt \
+%endif
+  --disable-static --disable-rpath
 %make_build
 
 %install
 %make_install
+%if %{with sdl}
+rm -rf %{buildroot}%{_bindir}/projectM-unittest
+%endif
 find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file -r projectM-pulseaudio AudioVideo Audio Mixer
 %fdupes -s %{buildroot}
@@ -111,10 +159,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license LICENSE.txt
 %doc README.md
+%if %{with pulseaudio_qt}
 %{_bindir}/%{name}-pulseaudio
 %{_datadir}/applications/%{name}-pulseaudio.desktop
 %{_datadir}/icons/hicolor/scalable/apps/projectM.svg
 %{_mandir}/man1/%{name}-pulseaudio.1%{?ext_man}
+%endif
+%if %{with sdl}
+%{_bindir}/%{name}SDL
+%endif
 
 %files -n lib%{name}%{_libver}
 %{_libdir}/lib%{name}.so.%{_libver}*

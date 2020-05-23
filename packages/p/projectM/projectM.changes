@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 19 15:23:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable pulseaudio_qt on aarch64 and %arm
+
+-------------------------------------------------------------------
+Tue May 19 13:57:17 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 and %arm:
+  * Enable GLES flavor
+  * Disable Qt
+  * Enable SDL
+- Other architectures are unchanged
+
+-------------------------------------------------------------------
 Tue Apr 28 07:24:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to reduce build dependencies:
