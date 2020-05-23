@@ -2307,4 +2307,15 @@ for more fun options (forwarded request 147495 from coolo)</comment>
     <comment>- Split off %lang_package (forwarded request 796476 from Andreas_Schwab)</comment>
     <requestid>796477</requestid>
   </revision>
+  <revision rev="238" vrev="5">
+    <srcmd5>651e90f247a7dce91120619c08639a66</srcmd5>
+    <version>2.31</version>
+    <time>1590247155</time>
+    <user>maxlin_factory</user>
+    <comment>- glibc-nsswitch-usr.diff: read /usr/etc/nsswitch.conf if
+  /etc/nsswitch.conf does not exist
+- Install default nsswitch.conf in /usr/etc
+- Don't install gai.conf in /etc (forwarded request 807178 from Andreas_Schwab)</comment>
+    <requestid>807179</requestid>
+  </revision>
 </revisionlist>

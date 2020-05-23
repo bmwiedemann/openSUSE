@@ -235,6 +235,8 @@ Patch14:        glibc-bindresvport-blacklist.diff
 Patch15:        glibc-2.3.90-langpackdir.diff
 # PATCH-FEATURE-SLE Use nscd user for nscd
 Patch19:        nscd-server-user.patch
+# PATCH-FEATURE-SLE read nsswich.conf from /usr
+Patch20:        glibc-nsswitch-usr.diff
 
 ### Locale related patches
 # PATCH-FIX-OPENSUSE Add additional locales
@@ -460,6 +462,7 @@ makedb: A program to create a database for nss
 %patch14 -p1
 %patch15 -p1
 %patch19 -p1
+%patch20 -p1
 
 %patch100 -p1
 %patch102 -p1
@@ -833,8 +836,7 @@ rm -rf %{buildroot}%{_datadir}/locale/*/
 # Miscelanna:
 
 install -m 644 %{SOURCE7} %{buildroot}/etc
-install -m 644 %{SOURCE5} %{buildroot}/etc
-install -m 644 posix/gai.conf %{buildroot}/etc
+install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 
 mkdir -p %{buildroot}/etc/default
 install -m 644 nis/nss %{buildroot}/etc/default/
@@ -842,8 +844,6 @@ install -m 644 nis/nss %{buildroot}/etc/default/
 mkdir -p %{buildroot}%{_includedir}/resolv
 install -m 0644 resolv/mapv4v6addr.h %{buildroot}%{_includedir}/resolv/
 install -m 0644 resolv/mapv4v6hostent.h %{buildroot}%{_includedir}/resolv/
-
-touch %{buildroot}%{_libdir}/gconv/gconv-modules.cache
 
 %if %{build_html}
 mkdir -p %{buildroot}%{_datadir}/doc/glibc
@@ -1084,8 +1084,10 @@ exit 0
 %config /etc/ld.so.conf
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/ld.so.cache
 %config(noreplace) /etc/rpc
-%verify(not md5 size mtime) %config(noreplace) /etc/nsswitch.conf
-%verify(not md5 size mtime) %config(noreplace) /etc/gai.conf
+%attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/nsswitch.conf
+%{_prefix}/etc/nsswitch.conf
+%attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/gai.conf
+%doc posix/gai.conf
 %config(noreplace) /etc/default/nss
 %doc %{_mandir}/man1/gencat.1.gz
 %doc %{_mandir}/man1/getconf.1.gz

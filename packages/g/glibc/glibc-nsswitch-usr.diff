@@ -1,0 +1,15 @@
+Index: glibc-2.31/nss/nsswitch.c
+===================================================================
+--- glibc-2.31.orig/nss/nsswitch.c
++++ glibc-2.31/nss/nsswitch.c
+@@ -134,6 +134,10 @@ __nss_database_lookup2 (const char *data
+     /* Read config file.  */
+     service_table = nss_parse_file (_PATH_NSSWITCH_CONF);
+ 
++  /* Retry with the OS vendor provided config file.  */
++  if (service_table == NULL)
++    service_table = nss_parse_file ("/usr" _PATH_NSSWITCH_CONF);
++
+   /* Test whether configuration data is available.  */
+   if (service_table != NULL)
+     {

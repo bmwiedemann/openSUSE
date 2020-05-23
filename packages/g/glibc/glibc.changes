@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 18 12:25:49 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- glibc-nsswitch-usr.diff: read /usr/etc/nsswitch.conf if
+  /etc/nsswitch.conf does not exist
+- Install default nsswitch.conf in /usr/etc
+- Don't install gai.conf in /etc
+
+-------------------------------------------------------------------
 Mon Apr 20 12:43:19 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Split off %lang_package
