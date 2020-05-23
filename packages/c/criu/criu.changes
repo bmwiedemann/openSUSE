@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 20 16:49:38 CEST 2020 - tiwai@suse.de
+
+- Update to criu 3.14:
+  New features:
+  * C/R of memfd memory mappings and file descriptors
+  * Add time namespace support
+  * Add the read pre-dump mode which uses process_vm_readv
+  * Add --cgroup-yard option
+  * Add support of the cgroup v2 freezer
+  * Add support of opened O_PATH fds
+  Bugfixes:
+  * Fix C/R ia32 processes on AMD #398
+  * Fix cross-compilation
+  * Many fixes here and there
+  Improvements:
+  * Use clone3() with set_tid to restore processes
+  * Clean up compel headers
+  * Use the new mount API
+- Add libgnutls-devel to buildreq
+
+-------------------------------------------------------------------
 Wed May 13 07:39:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 and armv7

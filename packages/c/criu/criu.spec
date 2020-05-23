@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           criu
-Version:        3.13
+Version:        3.14
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -35,6 +35,7 @@ URL:            https://criu.org/
 Source0:        https://download.openvz.org/criu/%{name}-%{version}.tar.bz2
 Patch1:         criu-py-install-fix.diff
 BuildRequires:  libcap-devel
+BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  pkgconfig
