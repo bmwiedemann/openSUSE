@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 16:55:48 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update spec to fix build requires in with test clause. 
+
+-------------------------------------------------------------------
 Tue Apr 21 22:00:30 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to v5.0.0 (2020-04-21)
