@@ -1,7 +1,7 @@
 #
 # spec file for package unrar_wrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,6 +25,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://github.com/openSUSE/unrar_wrapper
 Source:         https://github.com/openSUSE/unrar_wrapper/archive/unrar_wrapper-%{version}.tar.gz
 BuildRequires:  python3-setuptools
+Requires:       python3-setuptools
 Requires:       unar
 Conflicts:      unrar
 Provides:       unrar

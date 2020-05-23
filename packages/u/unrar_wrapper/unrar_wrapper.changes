@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 12:28:08 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Add missing "Requires: python3-setuptools" [bsc#1170792]
+
+-------------------------------------------------------------------
 Tue Apr 10 23:18:06 UTC 2018 - jengelh@inai.de
 
 - Drop version from Provides: unrar
