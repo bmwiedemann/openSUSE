@@ -696,4 +696,15 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>805629</requestid>
   </revision>
+  <revision rev="81" vrev="4">
+    <srcmd5>ce993612a1a39957941f56b6dea304d7</srcmd5>
+    <version>1.8.5</version>
+    <time>1590247189</time>
+    <user>maxlin_factory</user>
+    <comment>- FIPS: RSA/DSA/ECC test_keys() print out debug messages [bsc#1171872]
+  * Print the debug messages in test_keys() only in debug mode.
+- Update patches: libgcrypt-PCT-RSA.patch libgcrypt-PCT-DSA.patch
+  libgcrypt-PCT-ECC.patch</comment>
+    <requestid>807319</requestid>
+  </revision>
 </revisionlist>

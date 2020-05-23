@@ -2,7 +2,7 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 ===================================================================
 --- libgcrypt-1.8.2.orig/cipher/rsa.c
 +++ libgcrypt-1.8.2/cipher/rsa.c
-@@ -159,27 +159,93 @@ test_keys (RSA_secret_key *sk, unsigned
+@@ -159,27 +159,103 @@ test_keys (RSA_secret_key *sk, unsigned
    /* Create another random plaintext as data for signature checking.  */
    _gcry_mpi_randomize (plaintext, nbits, GCRY_WEAK_RANDOM);
  
@@ -32,7 +32,8 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 -    goto leave; /* Signature matches but should not.  */
 +  if (_gcry_md_open (&hd, GCRY_MD_SHA256, 0))
 +    {
-+      log_debug ("gcry_pk_sign failed\n");
++      if (DBG_CIPHER)
++        log_debug ("gcry_pk_sign/open failed\n");
 +      goto leave_hash;
 +    }
 +
@@ -40,6 +41,7 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 +  _gcry_md_write (hd, buf, buflen);
 +
 +  xfree (buf);
++  buf = NULL;
 +
 +  /* build RSA private key sexp in s_skey */
 +  sexp_build (&s_skey, NULL,
@@ -50,20 +52,23 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 +
 +  if (_gcry_pk_sign_md (&r_sig, hd, s_hash, s_skey))
 +    {
-+      log_debug ("gcry_pk_sign failed\n");
++      if (DBG_CIPHER)
++        log_debug ("gcry_pk_sign failed\n");
 +      goto leave_hash;
 +    }
 +
 +  /* Check that the signature and the original plaintext differ. */
 +  if (_gcry_sexp_extract_param (r_sig, "sig-val!rsa", "s", &r_sig_mpi, NULL))
 +    {
-+      log_debug ("extracting signature data failed\n");
++      if (DBG_CIPHER)
++        log_debug ("extracting signature data failed\n");
 +      goto leave_hash;
 +    }
 +
 +  if (!mpi_cmp (r_sig_mpi, plaintext))
 +    {
-+      log_debug ("Signature failed\n");
++      if (DBG_CIPHER)
++        log_debug ("Signature failed\n");
 +      goto leave_hash; /* Signature and plaintext match but should not. */
 +    }
 +
@@ -75,17 +80,22 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
 +  sexp_build (&s_hash, NULL, "(data (flags pkcs1)(hash-algo sha256))");
 +
 +  if (_gcry_md_open (&hd, GCRY_MD_SHA256, 0))
-+    log_debug ("gcry_md_open failed\n");
++    {
++      if (DBG_CIPHER)
++        log_debug ("gcry_md_open failed\n");
++    }
 +
 +  _gcry_mpi_aprint (GCRYMPI_FMT_STD, &buf, &buflen, plaintext);
 +  _gcry_md_write (hd, buf, buflen);
 +
 +  xfree (buf);
++  buf = NULL;
 +
 +  /* verify the signature */
 +  if (_gcry_pk_verify_md (r_sig, hd, s_hash, s_pkey))
 +    {
-+      log_debug ("gcry_pk_verify failed\n");
++      if (DBG_CIPHER)
++        log_debug ("gcry_pk_verify failed\n");
 +      goto leave_hash; /* Signature does not match. */
 +    }
  
@@ -108,7 +118,7 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
    return result;
  }
  
-@@ -1903,7 +1969,7 @@ selftest_encr_2048 (gcry_sexp_t pkey, gc
+@@ -1903,7 +1979,7 @@ selftest_encr_2048 (gcry_sexp_t pkey, gc
    /* This sexp trickery is to prevent the use of blinding.
     * The flag doesn't get inherited by encr, so we have to
     * derive a new sexp from the ciphertext */
@@ -117,3 +127,11 @@ Index: libgcrypt-1.8.2/cipher/rsa.c
    memset(buf, 0, sizeof(buf));
    err = _gcry_mpi_print (GCRYMPI_FMT_STD, buf, sizeof buf, NULL, ciphertext);
    if (err)
+@@ -2012,6 +2088,7 @@ selftests_rsa (selftest_report_func_t re
+   sexp_release (skey);
+   if (report)
+     report ("pubkey", GCRY_PK_RSA, what, errtxt);
++
+   return GPG_ERR_SELFTEST_FAILED;
+ }
+ 

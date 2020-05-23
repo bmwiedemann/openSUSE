@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 11:25:37 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- FIPS: RSA/DSA/ECC test_keys() print out debug messages [bsc#1171872]
+  * Print the debug messages in test_keys() only in debug mode.
+- Update patches: libgcrypt-PCT-RSA.patch libgcrypt-PCT-DSA.patch
+  libgcrypt-PCT-ECC.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 08:55:12 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - FIPS: libgcrypt: Double free in test_keys() on failed signature

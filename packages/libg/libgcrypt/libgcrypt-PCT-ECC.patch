@@ -70,7 +70,7 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
    ECC_public_key pk;
    gcry_mpi_t test = mpi_new (nbits);
    mpi_point_struct R_;
-@@ -297,17 +310,161 @@ test_keys (ECC_secret_key *sk, unsigned
+@@ -297,17 +310,190 @@ test_keys (ECC_secret_key *sk, unsigned
  
    _gcry_mpi_randomize (test, nbits, GCRY_WEAK_RANDOM);
  
@@ -91,13 +91,18 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +  int flags = 0;
 +
 +  if (_gcry_md_open (&hd, GCRY_MD_SHA256, 0))
-+    log_debug ("gcry_pk_sign failed: _gcry_md_open\n");
++    {
++      if (DBG_CIPHER)
++        log_debug ("gcry_pk_sign failed: _gcry_md_open\n");
++    }
 +
 +  _gcry_mpi_aprint (GCRYMPI_FMT_STD, &buf, &buflen, test);
 +  _gcry_md_write (hd, buf, buflen);
 +
 +  xfree (buf);
-+
++  buf = NULL;
+ 
+-  if (_gcry_ecc_ecdsa_verify (test, &pk, r, s))
 +  sexp_build (&s_hash, NULL, "(data (flags rfc6979)(hash-algo sha256))");
 +
 +  /* Assemble the point Q from affine coordinates by simple
@@ -109,7 +114,11 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +  ctx = _gcry_mpi_ec_p_internal_new (sk->E.model, sk->E.dialect, flags,
 +                                     sk->E.p, sk->E.a, sk->E.b);
 +  if (_gcry_mpi_ec_get_affine (Qx, Qy, &(sk->Q), ctx))
-+    log_debug ("ecdh: Failed to get affine coordinates for Q\n");
+     {
+-      log_fatal ("ECDSA operation: sign, verify failed\n");
++      if (DBG_CIPHER)
++        log_debug ("ecdh: Failed to get affine coordinates for Q\n");
++    }
 +
 +  unsigned char *rawqx, *rawqy;
 +  unsigned int rawqxlen, rawqylen;
@@ -118,7 +127,6 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +
 +  if (rawqxlen != rawqylen)
 +    {
-+      // log_debug ("qx and qy size differ: %d != %d\n", rawqxlen, rawqylen);
 +      if (rawqxlen < rawqylen)
 +        {
 +          size_t diff = rawqylen - rawqxlen;
@@ -153,16 +161,17 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +  _gcry_mpi_release (Qy);
 +  xfree (rawqx);
 +  xfree (rawqy);
- 
--  if (_gcry_ecc_ecdsa_verify (test, &pk, r, s))
++
 +  /* build ECC private key sexp in s_skey */
 +  if (sk->E.name)
-     {
--      log_fatal ("ECDSA operation: sign, verify failed\n");
++    {
 +      if (sexp_build (&s_skey, NULL,
 +                      "(private-key (ecc (curve %s)(d %m)(q %b)))",
 +                      sk->E.name, sk->d, qlen, q))
-+        log_debug ("ecc: Failed to build sexp for private key.\n");
++        {
++          if (DBG_CIPHER)
++            log_debug ("ecc: Failed to build sexp for private key.\n");
++        }
 +    }
 +  else
 +    {
@@ -171,25 +180,31 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +                      " (ecc (curve %s)(d %m)(p %m)(a %m)(b %m)(n %m)(h %m)(q %b)))",
 +                      "NIST P-512", sk->d, sk->E.p, sk->E.a, sk->E.b, sk->E.n, sk->E.h,
 +                      qlen, q))
-+        log_debug ("ecc: Failed to build sexp for private key.\n");
++        {
++          if (DBG_CIPHER)
++            log_debug ("ecc: Failed to build sexp for private key.\n");
++        }
 +    }
 +
 +  if (_gcry_pk_sign_md (&r_sig, hd, s_hash, s_skey))
 +    {
-+      log_debug ("ecc: gcry_pk_sign failed\n");
++      if (DBG_CIPHER)
++        log_debug ("ecc: gcry_pk_sign failed\n");
 +      goto leave;
 +    }
 +
 +  /* Check that the signature and the original test differ. */
 +  if (_gcry_sexp_extract_param (r_sig, NULL, "s", &s_sig_mpi, NULL))
 +    {
-+      log_debug ("extracting signature data failed\n");
++      if (DBG_CIPHER)
++        log_debug ("extracting signature data failed\n");
 +      goto leave;
 +    }
 +
 +  if (!mpi_cmp (s_sig_mpi, test))
 +    {
-+      log_debug ("Signature failed\n");
++      if (DBG_CIPHER)
++        log_debug ("Signature failed\n");
 +      goto leave; /* Signature and test match but should not. */
 +    }
 +
@@ -199,7 +214,10 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +    {
 +      if (sexp_build (&s_pkey, NULL,
 +                      "(public-key (ecc (curve %s)(q %b)))", pk.E.name, qlen, q))
-+        log_debug ("ecc: Failed to build sexp for public key.\n");
++        {
++          if (DBG_CIPHER)
++            log_debug ("ecc: Failed to build sexp for public key.\n");
++        }
 +    }
 +  else
 +    {
@@ -207,36 +225,48 @@ Index: libgcrypt-1.8.2/cipher/ecc.c
 +                      "(public-key"
 +                      " (ecc (curve %s)(p %m)(a %m)(b %m)(n %m)(h %m)(q %b)))",
 +                      "NIST P-512", pk.E.p, pk.E.a, pk.E.b, pk.E.n, pk.E.h, qlen, q))
-+        log_debug ("ecc: Failed to build sexp for private key.\n");
++        {
++          if (DBG_CIPHER)
++            log_debug ("ecc: Failed to build sexp for private key.\n");
++        }
 +    }
 +
 +  _gcry_md_close (hd);
 +
 +  if (_gcry_md_open (&hd, GCRY_MD_SHA256, 0))
-+    log_debug ("gcry_pk_verify failed: _gcry_md_open\n");
++    {
++      if (DBG_CIPHER)
++        log_debug ("gcry_pk_verify failed: _gcry_md_open\n");
++    }
 +
 +  _gcry_mpi_aprint (GCRYMPI_FMT_STD, &buf, &buflen, test);
 +  _gcry_md_write (hd, buf, buflen);
 +
 +  xfree (buf);
++  buf = NULL;
 +
 +  /* verify the signature */
 +  if (_gcry_pk_verify_md (r_sig, hd, s_hash, s_pkey))
 +    {
-+      log_debug ("ecc: gcry_pk_verify failed\n");
++      if (DBG_CIPHER)
++        log_debug ("ecc: gcry_pk_verify failed\n");
 +      goto leave; /* Signature does not match. */
      }
  
    if (DBG_CIPHER)
-     log_debug ("ECDSA operation: sign, verify ok.\n");
- 
-+  result = 0; /* The test succeeded. */
+-    log_debug ("ECDSA operation: sign, verify ok.\n");
++    {
++      if (DBG_CIPHER)
++        log_debug ("ECDSA operation: sign, verify ok.\n");
++    }
 +
++  result = 0; /* The test succeeded. */
+ 
 + leave:
    point_free (&pk.Q);
    _gcry_ecc_curve_free (&pk.E);
  
-@@ -317,6 +474,16 @@ test_keys (ECC_secret_key *sk, unsigned
+@@ -317,6 +503,16 @@ test_keys (ECC_secret_key *sk, unsigned
    mpi_free (out);
    mpi_free (c);
    mpi_free (test);
