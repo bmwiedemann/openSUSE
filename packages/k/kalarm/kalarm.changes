@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix sizing and reconfiguration of columns in alarm and template lists
+  * Fix changelog
+  * Correctly interpret resource IDs in command line and DBus calls
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -12,8 +24,6 @@ Sun Apr  5 20:29:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Fix some error messages not being displayed
   * Add design notes
@@ -25,8 +35,6 @@ Sun Mar 22 09:16:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes to list here.
 - Drop checks for obsolete distributions
 
@@ -36,7 +44,7 @@ Thu Mar  5 20:35:49 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Replace call to deprecated QWidget::showMinimized()
   * Bug 417108: fix failure of command line options requiring calendar access
@@ -52,7 +60,7 @@ Wed Feb  5 06:28:51 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Changes since 19.12.1:
   * Fix resourcesPopulated() signal not being emitted if disabled resources exist
   * Fix message captions when called from KAlarmApp constructor

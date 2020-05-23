@@ -353,4 +353,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release 20.04.0</comment>
     <requestid>796880</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>73c553acad167920b1f21535a7ede917</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247315</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806371</requestid>
+  </revision>
 </revisionlist>
