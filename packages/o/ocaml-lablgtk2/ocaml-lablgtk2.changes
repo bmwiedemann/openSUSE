@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 14 14:14:14 UTC 2020 - ohering@suse.de
+
+- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use helper 'suseocaml' in addition to 'ocaml' to avoid
+  filename conflicts with rpm-build.rpm (bsc#1154874)
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Require current ocaml-rpm-macros

@@ -19,6 +19,8 @@
 Version:        2.18.10
 Release:        0
 %{?ocaml_preserve_bytecode}
+# handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
+%global __suseocaml_requires_opts -i GtkSourceView2_types
 %global __ocaml_requires_opts -i GtkSourceView2_types
 Name:           ocaml-lablgtk2
 Source0:        %{name}-%{version}.tar.xz
@@ -31,7 +33,7 @@ BuildRequires:  librsvg-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-lablgl-devel
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20200514
 BuildRequires:  xorg-x11
 BuildRequires:  zlib-devel
 Requires:       ocaml

@@ -215,4 +215,15 @@
 - Remove bogus Requires/Provides override</comment>
     <requestid>778949</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>075b8b76f89152fff45155ee8c750523</srcmd5>
+    <version>2.18.10</version>
+    <time>1590247213</time>
+    <user>maxlin_factory</user>
+    <comment>- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use helper 'suseocaml' in addition to 'ocaml' to avoid
+  filename conflicts with rpm-build.rpm (bsc#1154874)</comment>
+    <requestid>805739</requestid>
+  </revision>
 </revisionlist>
