@@ -1,0 +1,49 @@
+From 342f6d57f417303b12f86d040b87f27448e4a0ae Mon Sep 17 00:00:00 2001
+From: Maxime Coquelin <maxime.coquelin@redhat.com>
+Date: Tue, 21 Apr 2020 11:16:56 +0200
+Subject: [PATCH 1/6] vhost: check log mmap offset and size overflow
+
+vhost_user_set_log_base() is a message handler that is
+called to handle the VHOST_USER_SET_LOG_BASE message.
+Its payload contains a 64 bit size and offset. Both are
+added up and used as a size when calling mmap().
+
+There is no integer overflow check. If an integer overflow
+occurs a smaller memory map would be created than
+requested. Since the returned mapping is mapped as writable
+and used for logging, a memory corruption could occur.
+
+Fixes: fbc4d248b198 ("vhost: fix offset while mmaping log base address")
+Cc: stable@dpdk.org
+
+This issue has been assigned CVE-2020-10722
+
+Reported-by: Ilja Van Sprundel <ivansprundel@ioactive.com>
+Signed-off-by: Maxime Coquelin <maxime.coquelin@redhat.com>
+Reviewed-by: Xiaolong Ye <xiaolong.ye@intel.com>
+Reviewed-by: Ilja Van Sprundel <ivansprundel@ioactive.com>
+---
+ lib/librte_vhost/vhost_user.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/librte_vhost/vhost_user.c b/lib/librte_vhost/vhost_user.c
+index 40c4520c08..02962fcdbc 100644
+--- a/lib/librte_vhost/vhost_user.c
++++ b/lib/librte_vhost/vhost_user.c
+@@ -2059,10 +2059,10 @@ vhost_user_set_log_base(struct virtio_net **pdev, struct VhostUserMsg *msg,
+ 	size = msg->payload.log.mmap_size;
+ 	off  = msg->payload.log.mmap_offset;
+ 
+-	/* Don't allow mmap_offset to point outside the mmap region */
+-	if (off > size) {
++	/* Check for mmap size and offset overflow. */
++	if (off >= -size) {
+ 		RTE_LOG(ERR, VHOST_CONFIG,
+-			"log offset %#"PRIx64" exceeds log size %#"PRIx64"\n",
++			"log offset %#"PRIx64" and log size %#"PRIx64" overflow\n",
+ 			off, size);
+ 		return RTE_VHOST_MSG_RESULT_ERR;
+ 	}
+-- 
+2.25.2
+

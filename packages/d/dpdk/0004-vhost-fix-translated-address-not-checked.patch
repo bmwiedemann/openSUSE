@@ -1,0 +1,46 @@
+From c74f5a29dbb505bb31bec932a9bd77325e2ceea6 Mon Sep 17 00:00:00 2001
+From: Marvin Liu <yong.liu@intel.com>
+Date: Wed, 8 Apr 2020 17:13:55 +0800
+Subject: [PATCH 4/6] vhost: fix translated address not checked
+
+Malicious guest can construct desc with invalid address and zero buffer
+length. That will request vhost to check both translated address and
+translated data length. This patch will add missed address check.
+
+Fixes: 75ed51697820 ("vhost: add packed ring batch dequeue")
+Fixes: ef861692c398 ("vhost: add packed ring batch enqueue")
+Cc: stable@dpdk.org
+
+This issue has been assigned CVE-2020-10725
+
+Signed-off-by: Marvin Liu <yong.liu@intel.com>
+Reviewed-by: Maxime Coquelin <maxime.coquelin@redhat.com>
+---
+ lib/librte_vhost/virtio_net.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/librte_vhost/virtio_net.c b/lib/librte_vhost/virtio_net.c
+index ac2842b2d2..33f10258cf 100644
+--- a/lib/librte_vhost/virtio_net.c
++++ b/lib/librte_vhost/virtio_net.c
+@@ -1086,6 +1086,8 @@ virtio_dev_rx_batch_packed(struct virtio_net *dev,
+ 						  VHOST_ACCESS_RW);
+ 
+ 	vhost_for_each_try_unroll(i, 0, PACKED_BATCH_SIZE) {
++		if (unlikely(!desc_addrs[i]))
++			return -1;
+ 		if (unlikely(lens[i] != descs[avail_idx + i].len))
+ 			return -1;
+ 	}
+@@ -1841,6 +1843,8 @@ vhost_reserve_avail_batch_packed(struct virtio_net *dev,
+ 	}
+ 
+ 	vhost_for_each_try_unroll(i, 0, PACKED_BATCH_SIZE) {
++		if (unlikely(!desc_addrs[i]))
++			return -1;
+ 		if (unlikely((lens[i] != descs[avail_idx + i].len)))
+ 			return -1;
+ 	}
+-- 
+2.25.2
+

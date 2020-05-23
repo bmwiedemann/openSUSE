@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 19 11:41:34 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Add patches to fix vulnerability where malicious guest/container can
+  cause resource leak resulting a Denial-of-Service, or memory corruption
+  and crash, or information leak in vhost-user backend application
+  (bsc#1171477, CVE-2020-10722, CVE-2020-10723, CVE-2020-10724,
+  CVE-2020-10725, CVE-2020-10726).
+  * 0001-vhost-check-log-mmap-offset-and-size-overflow.patch
+  * 0002-vhost-fix-vring-index-check.patch
+  * 0003-vhost-crypto-validate-keys-lengths.patch
+  * 0004-vhost-fix-translated-address-not-checked.patch
+  * 0005-vhost-fix-potential-memory-space-leak.patch
+  * 0006-vhost-fix-potential-fd-leak.patch
+
+
+-------------------------------------------------------------------
+Wed Apr 29 11:45:24 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Update to v19.11.1. For a list of changes, check:
+  * https://doc.dpdk.org/guides/rel_notes/release_19_11.html#new-features 
+- Removed patches no longer applying to the code base:
+  * 0001-vhost-fix-possible-denial-of-service-on-SET_VRING_NU.patch
+  * 0002-vhost-fix-possible-denial-of-service-by-leaking-FDs.patch
+  * 0002-fix-cpu-compatibility.patch
+- Rebased patches:
+  * 0001-fix-cpu-compatibility.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 10:25:12 UTC 2020 - Stefan Weiberg <sweiberg@suse.com>
 
 - Change constraint to ssse3 to fix build issues on x86_64 and i586

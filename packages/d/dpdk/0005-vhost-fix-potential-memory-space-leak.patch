@@ -1,0 +1,52 @@
+From 9566391031723e854e818bb7d965e9e677784dc4 Mon Sep 17 00:00:00 2001
+From: Xiaolong Ye <xiaolong.ye@intel.com>
+Date: Wed, 8 Apr 2020 15:31:35 +0800
+Subject: [PATCH 5/6] vhost: fix potential memory space leak
+
+A malicious container which has direct access to the vhost-user socket
+can keep sending VHOST_USER_GET_INFLIGHT_FD messages which may cause
+leaking resources until resulting a DOS. Fix it by unmapping the
+dev->inflight_info->addr before assigning new mapped addr to it.
+
+Fixes: d87f1a1cb7b6 ("vhost: support inflight info sharing")
+Cc: stable@dpdk.org
+
+This issue has been assigned CVE-2020-10726
+
+Signed-off-by: Xiaolong Ye <xiaolong.ye@intel.com>
+Reviewed-by: Maxime Coquelin <maxime.coquelin@redhat.com>
+---
+ lib/librte_vhost/vhost_user.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/lib/librte_vhost/vhost_user.c b/lib/librte_vhost/vhost_user.c
+index d19614265b..2a4ba205cf 100644
+--- a/lib/librte_vhost/vhost_user.c
++++ b/lib/librte_vhost/vhost_user.c
+@@ -1433,6 +1433,11 @@ vhost_user_get_inflight_fd(struct virtio_net **pdev,
+ 	}
+ 	memset(addr, 0, mmap_size);
+ 
++	if (dev->inflight_info->addr) {
++		munmap(dev->inflight_info->addr, dev->inflight_info->size);
++		dev->inflight_info->addr = NULL;
++	}
++
+ 	dev->inflight_info->addr = addr;
+ 	dev->inflight_info->size = msg->payload.inflight.mmap_size = mmap_size;
+ 	dev->inflight_info->fd = msg->fds[0] = fd;
+@@ -1517,8 +1522,10 @@ vhost_user_set_inflight_fd(struct virtio_net **pdev, VhostUserMsg *msg,
+ 		}
+ 	}
+ 
+-	if (dev->inflight_info->addr)
++	if (dev->inflight_info->addr) {
+ 		munmap(dev->inflight_info->addr, dev->inflight_info->size);
++		dev->inflight_info->addr = NULL;
++	}
+ 
+ 	addr = mmap(0, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED,
+ 		    fd, mmap_offset);
+-- 
+2.25.2
+

@@ -1,0 +1,80 @@
+From 1cb6dbef9c15e739da9b253c53b558e93906c6c5 Mon Sep 17 00:00:00 2001
+From: Xuan Ding <xuan.ding@intel.com>
+Date: Wed, 8 Apr 2020 10:19:51 +0000
+Subject: [PATCH 6/6] vhost: fix potential fd leak
+
+Vhost will create temporary file when receiving VHOST_USER_GET_INFLIGHT_FD
+message. Malicious guest can send endless this message to drain out the
+resource of host.
+
+When receiving VHOST_USER_GET_INFLIGHT_FD message repeatedly, closing the
+file created during the last handling of this message.
+
+Fixes: d87f1a1cb7b666550 ("vhost: support inflight info sharing")
+Cc: stable@dpdk.org
+
+This issue has been assigned CVE-2020-10726
+
+Signed-off-by: Xuan Ding <xuan.ding@intel.com>
+Signed-off-by: Xiaolong Ye <xiaolong.ye@intel.com>
+Reviewed-by: Maxime Coquelin <maxime.coquelin@redhat.com>
+---
+ lib/librte_vhost/vhost_user.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/lib/librte_vhost/vhost_user.c b/lib/librte_vhost/vhost_user.c
+index 2a4ba205cf..8954f7930e 100644
+--- a/lib/librte_vhost/vhost_user.c
++++ b/lib/librte_vhost/vhost_user.c
+@@ -206,7 +206,7 @@ vhost_backend_cleanup(struct virtio_net *dev)
+ 			dev->inflight_info->addr = NULL;
+ 		}
+ 
+-		if (dev->inflight_info->fd > 0) {
++		if (dev->inflight_info->fd >= 0) {
+ 			close(dev->inflight_info->fd);
+ 			dev->inflight_info->fd = -1;
+ 		}
+@@ -1408,6 +1408,7 @@ vhost_user_get_inflight_fd(struct virtio_net **pdev,
+ 				"failed to alloc dev inflight area\n");
+ 			return RTE_VHOST_MSG_RESULT_ERR;
+ 		}
++		dev->inflight_info->fd = -1;
+ 	}
+ 
+ 	num_queues = msg->payload.inflight.num_queues;
+@@ -1438,6 +1439,11 @@ vhost_user_get_inflight_fd(struct virtio_net **pdev,
+ 		dev->inflight_info->addr = NULL;
+ 	}
+ 
++	if (dev->inflight_info->fd >= 0) {
++		close(dev->inflight_info->fd);
++		dev->inflight_info->fd = -1;
++	}
++
+ 	dev->inflight_info->addr = addr;
+ 	dev->inflight_info->size = msg->payload.inflight.mmap_size = mmap_size;
+ 	dev->inflight_info->fd = msg->fds[0] = fd;
+@@ -1520,6 +1526,7 @@ vhost_user_set_inflight_fd(struct virtio_net **pdev, VhostUserMsg *msg,
+ 				"failed to alloc dev inflight area\n");
+ 			return RTE_VHOST_MSG_RESULT_ERR;
+ 		}
++		dev->inflight_info->fd = -1;
+ 	}
+ 
+ 	if (dev->inflight_info->addr) {
+@@ -1534,8 +1541,10 @@ vhost_user_set_inflight_fd(struct virtio_net **pdev, VhostUserMsg *msg,
+ 		return RTE_VHOST_MSG_RESULT_ERR;
+ 	}
+ 
+-	if (dev->inflight_info->fd)
++	if (dev->inflight_info->fd >= 0) {
+ 		close(dev->inflight_info->fd);
++		dev->inflight_info->fd = -1;
++	}
+ 
+ 	dev->inflight_info->fd = fd;
+ 	dev->inflight_info->addr = addr;
+-- 
+2.25.2
+

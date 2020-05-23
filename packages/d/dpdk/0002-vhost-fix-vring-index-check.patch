@@ -1,0 +1,58 @@
+From 7e74c33644452051cc4193fd2516d97e1e4009e0 Mon Sep 17 00:00:00 2001
+From: Maxime Coquelin <maxime.coquelin@redhat.com>
+Date: Tue, 21 Apr 2020 18:17:43 +0200
+Subject: [PATCH 2/6] vhost: fix vring index check
+
+vhost_user_check_and_alloc_queue_pair() is used to extract
+a vring index from a payload. This function validates the
+index and is called early on in when performing message
+handling. Most message handlers depend on it correctly
+validating the vring index.
+
+Depending on the message type the vring index is in
+different parts of the payload. The function contains a
+switch/case for each type and copies the index. This is
+stored in a uint16. This index is then validated. Depending
+on the message, the source index is an unsigned int. If
+integer truncation occurs (uint->uint16) the top 16 bits
+of the index are never validated.
+
+When they are used later on  (e.g. in
+vhost_user_set_vring_num() or vhost_user_set_vring_addr())
+it can lead to out of bound indexing. The out of bound
+indexed data gets written to, and hence this can cause
+memory corruption.
+
+This patch fixes this vulnerability by declaring vring
+index as an unsigned int in
+vhost_user_check_and_alloc_queue_pair().
+
+Fixes: 160cbc815b41 ("vhost: remove a hack on queue allocation")
+Cc: stable@dpdk.org
+
+This issue has been assigned CVE-2020-10723
+
+Reported-by: Ilja Van Sprundel <ivansprundel@ioactive.com>
+Signed-off-by: Maxime Coquelin <maxime.coquelin@redhat.com>
+Reviewed-by: Xiaolong Ye <xiaolong.ye@intel.com>
+Reviewed-by: Ilja Van Sprundel <ivansprundel@ioactive.com>
+---
+ lib/librte_vhost/vhost_user.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/librte_vhost/vhost_user.c b/lib/librte_vhost/vhost_user.c
+index 02962fcdbc..d19614265b 100644
+--- a/lib/librte_vhost/vhost_user.c
++++ b/lib/librte_vhost/vhost_user.c
+@@ -2526,7 +2526,7 @@ static int
+ vhost_user_check_and_alloc_queue_pair(struct virtio_net *dev,
+ 			struct VhostUserMsg *msg)
+ {
+-	uint16_t vring_idx;
++	uint32_t vring_idx;
+ 
+ 	switch (msg->request.master) {
+ 	case VHOST_USER_SET_VRING_KICK:
+-- 
+2.25.2
+

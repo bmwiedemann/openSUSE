@@ -1,7 +1,7 @@
 #
 # spec file for package dpdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-
 %define aarch64_machine2 armv8a
 %define exclusive_arch aarch64 x86_64 ppc64le
 %define name_tag %{nil}
 %define summary_tag %{nil}
-
 %if "%flavor" == "thunderx"
 %define name_tag -thunderx
 %define summary_tag (thunderx)
 %define aarch64_machine2 thunderx
 %define exclusive_arch aarch64
 %endif
-
 %define machine native
 %define machine2 default
 %ifarch x86_64
@@ -45,30 +42,32 @@
 %define machine2 power8
 %define target ppc_64-%{machine2}-linuxapp-gcc
 %endif
+# This is in sync with <src>/ABI_VERSION
+# TODO: automate this sync
+%define maj 20
+%define min 0
+%define lname libdpdk-%{maj}_%{min}
 %bcond_without shared
 # Add option to build without examples
 %bcond_without examples
 # Add option to build without tools
 %bcond_without tools
-
-# The lname versioning is based solely on the MAJOR and MINOR
-# as per DPDK CONFIG_RTE_MAJOR_ABI.
-%define maj 18
-%define min 11
-%define lname libdpdk-%{maj}_%{min}
-
 Name:           dpdk%{name_tag}
-Version:        18.11.3
+Version:        19.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Libraries
-Url:            http://dpdk.org
+URL:            http://dpdk.org
 Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
-Patch1:         0002-fix-cpu-compatibility.patch
-Patch2:         0001-vhost-fix-possible-denial-of-service-on-SET_VRING_NU.patch
-Patch3:         0002-vhost-fix-possible-denial-of-service-by-leaking-FDs.patch
+Patch1:         0001-fix-cpu-compatibility.patch
+Patch2:         0001-vhost-check-log-mmap-offset-and-size-overflow.patch
+Patch3:         0002-vhost-fix-vring-index-check.patch
+Patch4:         0003-vhost-crypto-validate-keys-lengths.patch
+Patch5:         0004-vhost-fix-translated-address-not-checked.patch
+Patch6:         0005-vhost-fix-potential-memory-space-leak.patch
+Patch7:         0006-vhost-fix-potential-fd-leak.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -76,13 +75,13 @@ BuildRequires:  libmnl-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  pesign-obs-integration
+BuildRequires:  zlib-devel
+Conflicts:      dpdk-any
+Provides:       dpdk-any = %{version}
+ExclusiveArch:  %exclusive_arch
 %if 0%{?sle_version} >= 120400
 BuildRequires:  rdma-core-devel
 %endif
-BuildRequires:  zlib-devel
-ExclusiveArch:  %exclusive_arch
-Provides:       dpdk-any = %{version}
-Conflicts:      otherproviders(dpdk-any)
 
 %description
 The Data Plane Development Kit is a set of libraries and drivers for
@@ -92,8 +91,8 @@ fast packet processing in the user space.
 Summary:        Data Plane Development Kit development files %{summary_tag}
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
+Conflicts:      dpdk-any-devel
 Provides:       dpdk-any-devel = %{version}
-Conflicts:      otherproviders(dpdk-any-devel)
 
 %description devel
 This package contains the headers and other files needed for developing
@@ -111,9 +110,9 @@ to use the Data Plane Development Kit.
 %package doc
 Summary:        Data Plane Development Kit API documentation %{summary_tag}
 Group:          System/Libraries
-BuildArch:      noarch
+Conflicts:      dpdk-any-doc
 Provides:       dpdk-any-doc = %{version}
-Conflicts:      otherproviders(dpdk-any-doc)
+BuildArch:      noarch
 
 %description doc
 API programming documentation for the Data Plane Development Kit.
@@ -127,8 +126,8 @@ Requires:       findutils
 Requires:       iproute
 Requires:       kmod
 Requires:       pciutils
+Conflicts:      dpdk-any-tools
 Provides:       dpdk-any-tools = %{version}
-Conflicts:      otherproviders(dpdk-any-tools)
 
 %description tools
 This package contains tools for setting up Data Plane Development Kit environment
@@ -139,8 +138,8 @@ This package contains tools for setting up Data Plane Development Kit environmen
 Summary:        Data Plane Development Kit example applications %{summary_tag}
 Group:          System/Libraries
 BuildRequires:  libvirt-devel
+Conflicts:      dpdk-any-examples
 Provides:       dpdk-any-examples = %{version}
-Conflicts:      otherproviders(dpdk-any-examples)
 
 %description examples
 Example applications utilizing the Data Plane Development Kit, such
@@ -151,7 +150,7 @@ as L2 and L3 forwarding.
 Summary:        DPDK KNI kernel module %{summary_tag}
 Group:          System/Kernel
 BuildRequires:  %{kernel_module_package_buildreqs}
-Conflicts:      otherproviders(dpdk-any-kmp)
+Conflicts:      dpdk-any-kmp
 %suse_kernel_module_package -p %{_sourcedir}/preamble pae 64kb
 
 %description kmp
@@ -168,9 +167,16 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %patch1 -p1 -z .init
 %patch2 -p1 -z .init
 %patch3 -p1 -z .init
+%patch4 -p1 -z .init
+%patch5 -p1 -z .init
+%patch6 -p1 -z .init
+%patch7 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
+
+# Verify ABI
+[ "$(cat ABI_VERSION)" = "%{maj}.%{min}" ] || exit 1
 
 %build
 # set up a method for modifying the resulting .config file
@@ -188,15 +194,16 @@ function setdefaultconf()
 	setconf CONFIG_RTE_LIBRTE_DPAA_BUS n $1
 	setconf CONFIG_RTE_LIBRTE_DPAA_MEMPOOL n $1
 	setconf CONFIG_RTE_LIBRTE_DPAA_PMD n $1
+	setconf CONFIG_RTE_LIBRTE_PMD_CAAM_JR n $1
 	setconf CONFIG_RTE_LIBRTE_PMD_DPAA_SEC n $1
 	setconf CONFIG_RTE_LIBRTE_PMD_DPAA_EVENTDEV n $1
+	%ifarch aarch64
+	setconf CONFIG_RTE_LIBRTE_PFE_PMD n $1
+	%endif
 
 	setconf CONFIG_RTE_MACHINE '"%{machine2}"' $1
 	# Disable experimental features
 	setconf CONFIG_RTE_NEXT_ABI n $1
-
-	# SONAME equals to DPDK release version
-	setconf CONFIG_RTE_MAJOR_ABI %{maj}.%{min} $1
 
 	# Enable automatic driver loading from this path
 	setconf CONFIG_RTE_EAL_PMD_PATH '"%{pmddir}"' $1
@@ -268,7 +275,7 @@ export BRP_PESIGN_FILES="*.ko"
 for flavor in %{flavors_to_build}; do
 	cd  %{target}-$flavor
 	export RTE_KERNELDIR=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor
-	dir=/usr/src/linux-obj/%{_target_cpu}/$flavor
+	dir=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor
 	krel=$(make -s -C "$dir" kernelrelease)
 	mkdir -p %{buildroot}/lib/modules/$krel/extra/dpdk/
 	#make install expects same kernel for build and target, lets copy it manually
@@ -350,6 +357,7 @@ ln -s %{_sbindir}/dpdk-devbind %{buildroot}%{_sbindir}/dpdk_nic_bind
 # BSD
 %{_bindir}/testpmd
 %{_bindir}/testbbdev
+%{_bindir}/testsad
 %{_bindir}/dpdk-procinfo
 %{_bindir}/dpdk_proc_info
 %{_bindir}/dpdk-pdump
@@ -392,6 +400,7 @@ ln -s %{_sbindir}/dpdk-devbind %{buildroot}%{_sbindir}/dpdk_nic_bind
 %{_sbindir}/dpdk-devbind
 %{_sbindir}/dpdk_nic_bind
 %{_bindir}/dpdk-test-eventdev
+%{_bindir}/dpdk-test-compress-perf
 %{_bindir}/dpdk-test-crypto-perf
 %endif
 
