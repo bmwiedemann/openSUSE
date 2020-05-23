@@ -27,15 +27,15 @@ URL:            http://trousers.sourceforge.net/
 Source0:        http://downloads.sf.net/trousers/%{name}-%{version}.tar.gz
 Source1:        tcsd.service
 Source2:        baselibs.conf
+Source3:        91-trousers.rules
 Patch0:         fix-lto.patch
+Patch1:         bsc1164472.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
-# for 'stat' for the hack in %pretrans
-BuildRequires:  coreutils
-Requires(pre):  user(tss)
+BuildRequires:  udev
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -81,6 +81,7 @@ system. It is a character device file major 10 minor 224, 0600 tss:tss.
 %prep
 %setup -q -c %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
     CC=gcc
@@ -107,48 +108,28 @@ ln -s -v /%{_lib}/$(readlink %{buildroot}/%{_lib}/libtspi.so) %{buildroot}%{_lib
 rm -v %{buildroot}/%{_lib}/libtspi.{so,la}
 mv -v %{buildroot}/%{_lib}/*.a %{buildroot}%{_libdir}
 
+# we want to run tcsd as tss user right away. therefore we need to install a
+# suitable udev rule file. this conflicts somewhat with tpm2-0-tss, but both
+# rules files are compatible at the moment. trousers has a lower priority than
+# tpm2-0-tss in case both should be installed. The tss user is shared between
+# both packages anyways already.
+mkdir -p %{buildroot}%{_udevrulesdir}
+install -m 0644 %{SOURCE3} %{buildroot}%{_udevrulesdir}
+
 %pre
 %service_add_pre tcsd.service
 
-%pretrans
-# this scriplet and the counterpart in %posttrans work around a packaging bug
-# that was present in all trousers packages since around 2008 until 2018.
-# /var/lib/tpm/system.data.* was wrongly packaged as runtime state data
-# instead of package resource data in /usr/share. After removal of these files
-# from packaging, during updating they will be deleted. Since users could have
-# created their own versions of the files already (by taking ownership of a
-# TPM) we want to keep those files in place.
-#
-# to achieve this we use the ownership of /var/lib/tpm as an indicator.
-# Versions that still wrongly package those files also had the ownership of
-# the directory wrong. Therefore if the directory is not owned by the tss user
-# we apply a backup and restore logic.
-[ ! -d "%{tpmstatedir}" ] && exit 0
-OWNER=`/usr/bin/stat -c "%U" "%{tpmstatedir}"`
-[ "$OWNER" = "tss" ] && exit 0
-for data in system.data.auth system.data.noauth; do
-	file="%{tpmstatedir}/${data}"
-	[ ! -e "$file" ] && continue
-	cp -p $file ${file}.rpmsave
-	echo "saving backup of $file"
-done
-
 %post
 %service_add_post tcsd.service
+%_bindir/udevadm trigger -s tpm || :
 
-%posttrans
-# see pretrans for an explanation of this
-for data in system.data.auth system.data.noauth; do
-	file="%{tpmstatedir}/${data}"
-	# nothing to restore here
-	[ ! -e "${file}.rpmsave" ] && continue
-	# for some reason the to-be-restored file already exists? ignore.
-	[ -e "${file}" ] && continue
-	# restore the original file
-	echo "restoring backup of $file"
-	mv --no-target-directory ${file}.rpmsave ${file}
-	chown --no-dereference tss:tss "${file}"
-done
+# bsc#1164472: adjust potential root ownership to allow tcsd to open the file
+# as unprivileged user. Be careful not to follow a symlink target.
+system_data=%{tpmstatedir}/system.data
+
+if [ -e "${system_data}" ]; then
+	chown --no-dereference tss:tss %{tpmstatedir}/system.data
+fi
 
 %postun
 %service_del_postun tcsd.service
@@ -162,7 +143,7 @@ done
 
 %files
 %defattr(-,root,root)
-%config(noreplace) %attr(600,tss,tss) %{_sysconfdir}/tcsd.conf
+%config(noreplace) %attr(640,root,tss) %{_sysconfdir}/tcsd.conf
 %doc README README.selinux AUTHORS ChangeLog LICENSE NICETOHAVES TODO doc/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
@@ -170,6 +151,7 @@ done
 %{_sbindir}/tcsd
 %{_sbindir}/rctcsd
 %{_unitdir}/tcsd.service
+%{_udevrulesdir}/91-trousers.rules
 
 %files devel
 %defattr(-,root,root)

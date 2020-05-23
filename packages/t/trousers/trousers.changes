@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 20 10:05:51 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- get rid of %pre/%post logic that fixes the old packaging bug. Turns out
+  %pretrans and %posttrans had their purpose before, because the logic needed
+  to run before old files owned by the package got deleted. But I'm not
+  reimplementing this strange logic in Lua ... users that didn't get the fix
+  yet will have to live with it.
+
+-------------------------------------------------------------------
+Wed May 20 08:59:54 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix a potential tss user to root privilege escalation when running tcsd
+  (bsc#1164472). To do this run tcsd as the 'tss' user right away to prevent
+  badly designed privilege drop and initialization code to run.
+- add bsc1164472.patch: additionally harden operation of tcsd when running as
+  root. No longer follow symlinks in /var/lib/tpm. Drop gid to tss main group.
+  require /etc/tcsd.conf to be owned by root:tss mode 0640.
+
+-------------------------------------------------------------------
+Wed May 13 12:14:32 UTC 2020 - matthias.gerstner@suse.com
+
+- add correct Requires(pre) and change %pretrans and %posttrans into %pre and
+  %post. %pretrans can't have any dependencies and therefore can only be
+  %implemented in lua. This currently leads to build errors "/bin/sh: no such
+  file or directory".
+
+-------------------------------------------------------------------
 Wed Feb 19 12:48:19 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - leave creation of /var/lib/tpm to the new system-user-tss package. Otherwise
