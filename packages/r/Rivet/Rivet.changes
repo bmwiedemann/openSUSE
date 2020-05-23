@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 16 03:11:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1: Long list of changes, see ChangeLog
+  file installed in /usr/share/doc/packages/Rivet-devel.
+- Drop Rivet-plugins-use-HepMC3.patch: fixed upstream.
+- Install COPYING file for all subpkgs.
+- Use properly versioned Provides and Obsoletes for python
+  subpackage.
+
+-------------------------------------------------------------------
 Thu Apr 23 16:58:00 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix python version in hashbangs. #!%{_bindir}/python introduces

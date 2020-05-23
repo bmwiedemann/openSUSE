@@ -16,9 +16,9 @@
 #
 
 
-%define so_name lib%{name}-3_1_0
+%define so_name lib%{name}-3_1_1
 Name:           Rivet
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
@@ -26,8 +26,6 @@ Group:          Productivity/Scientific/Physics
 URL:            https://rivet.hepforge.org/
 Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
-# PATCH-FIX-UPSTREAM Rivet-plugins-use-HepMC3.patch badshah400@gmail.com -- Port an analysis plugin to HepMC3 from HepMC2
-Patch1:         Rivet-plugins-use-HepMC3.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  doxygen
@@ -94,8 +92,8 @@ This package provides the source files for development with %{name}.
 %package -n python3-%{name}
 Summary:        A toolkit for validation of Monte Carlo event generators
 Group:          Productivity/Scientific/Physics
-Provides:       python-%{name}
-Obsoletes:      python-%{name}
+Provides:       python-%{name} = %{version}
+Obsoletes:      python-%{name} < %{version}
 
 %description -n python3-%{name}
 The Rivet project (Robust Independent Validation of Experiment and
@@ -178,7 +176,7 @@ sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbi
 
 %files devel
 %license COPYING
-%doc ChangeLog README
+%doc AUTHORS ChangeLog NEWS
 %{_bindir}/rivet-config
 %{_bindir}/rivet-buildplugin
 %{_includedir}/%{name}/
@@ -187,6 +185,7 @@ sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbi
 %{_libdir}/pkgconfig/rivet.pc
 
 %files -n python3-%{name}
+%license COPYING
 %{_bindir}/*
 %exclude %{_bindir}/rivet-config
 %exclude %{_bindir}/rivet-buildplugin
@@ -194,6 +193,7 @@ sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbi
 %{python3_sitearch}/rivet-*egg-info
 
 %files plugins
+%license COPYING
 %config %{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
 %{_libdir}/%{name}/
 
