@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-general
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  general
 Name:           octave-forge-%{octpkg}
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        General tools for Octave
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
@@ -38,11 +38,16 @@ This is part of Octave-Forge project.
 %setup -q -c %{name}-%{version}
 %octave_pkg_src
 
+# COPY METAINFO FILE TO TOPLEVEL DIR FOR MANUAL INSTALLATION LATER
+find ./ -name "*.metainfo.xml" -exec cp '{}' ./ \;
+
 %build
 %octave_pkg_build
 
 %install
 %octave_pkg_install
+mkdir -p %{buildroot}%{_datadir}/metainfo
+install -m 644 octave-general.metainfo.xml %{buildroot}%{_datadir}/metainfo/
 
 %check
 %octave_pkg_test
@@ -54,8 +59,8 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
+%{_datadir}/metainfo/*.metainfo.xml
 
 %changelog

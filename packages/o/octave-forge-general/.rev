@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>616560</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fce6174fa9c3cc06ccaec0d74698b397</srcmd5>
+    <version>2.1.1</version>
+    <time>1590247207</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix installation of metainfo file.
+- Update to version 2.1.1:
+  * updated configure script to detect function names for various
+    octave versions.
+  * added additional BIST tests
+  * minor documentation updates
+- Install metainfo
+</comment>
+    <requestid>808065</requestid>
+  </revision>
 </revisionlist>
