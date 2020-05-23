@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 12 12:10:09 UTC 2020 - Olaf Kirch <okir@okir.suse.com>
+
+- Add container-support-utils
+
+-------------------------------------------------------------------
 Fri Feb 14 15:06:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add sudo, wheel group and libcap-progs

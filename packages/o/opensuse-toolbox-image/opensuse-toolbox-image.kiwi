@@ -56,5 +56,6 @@
     <package name="sudo"/>
     <package name="system-group-wheel"/>
     <package name="libcap-progs"/>
+    <package name="container-support-utils"/>
   </packages>
 </image>
