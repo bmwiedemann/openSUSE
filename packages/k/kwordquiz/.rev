@@ -924,4 +924,12 @@
     <comment>KDE release 20.04.0</comment>
     <requestid>797022</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>0d36b13817ded7037b1b560fc8d83e6d</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247541</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806643</requestid>
+  </revision>
 </revisionlist>
