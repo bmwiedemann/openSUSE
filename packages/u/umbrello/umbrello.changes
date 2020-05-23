@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 15 15:42:26 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fixes for adding multiline c++ comment support (kde#418970)
+  * Remove independent comments from list in CommentStore::getCommentsInRange()
+  * Initial work for combining multi line c++ comments
+  * Extend test case for class comments with c++ style and doxygen comments
+  * Add documentation to class Driver
+
+-------------------------------------------------------------------
 Thu Apr 23 12:23:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -22,8 +36,6 @@ Sun Apr  5 20:30:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * Fixed cmake 3.10 error caused by not setting policy CMP0057 to NEW
   * Fix bug not building apidoc and qch file by default, if enabled (kde#419202)
@@ -33,8 +45,6 @@ Sun Mar 22 09:17:47 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes to list here.
 
 -------------------------------------------------------------------
@@ -43,7 +53,7 @@ Thu Mar  5 20:36:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Use the global xml catalog to replace external docbook.xsl uri
   * Use a more reliable way on Windows to find the application's installation root
@@ -66,7 +76,7 @@ Wed Feb  5 06:29:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Too many changes since 19.12.1, only listing bugfixes:
   * Improve creation of generalization with parent provided as string: (kde#416178)
   * Fix broken file selection for PHP and SQL in code import wizard: (kde#335566)

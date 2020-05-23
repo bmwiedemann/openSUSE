@@ -1258,4 +1258,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release 20.04.0</comment>
     <requestid>797063</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0eefce464eef810b793cd89f08e963fe</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247597</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806723</requestid>
+  </revision>
 </revisionlist>
