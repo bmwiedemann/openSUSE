@@ -499,4 +499,12 @@ The update addresses several other things and was much easier to fix for mono 3.
     <comment>Removal of -lang recommends (forwarded request 768582 from dimstar)</comment>
     <requestid>768663</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8f186d6771788c631f464eae0050420a</srcmd5>
+    <version>2.4.2</version>
+    <time>1590247210</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>801362</requestid>
+  </revision>
 </revisionlist>
