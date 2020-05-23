@@ -16,15 +16,14 @@
 #
 
 
+%define tag_name LatestBuild
 Name:           jtc
-Version:        1.75d
+Version:        1.76d
 Release:        0
 Summary:        JSON processing utility
 License:        MIT
-
 URL:            https://github.com/ldn-softdev/jtc
-Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-
+Source0:        %{URL}/archive/%{tag_name}.tar.gz#/%{name}-%{version}.tar.gz
 # Full C++14 support added with version 5
 BuildRequires:  gcc-c++ >= 5
 
@@ -37,12 +36,11 @@ elements into a new JSON, filter in/out, sort elements, update elements, insert
 new elements, remove, copy, move, compare, transform, swap around and many other
 operations).
 
-
 %prep
-%autosetup
+%autosetup -n %{name}-%{tag_name}
 
 %build
-g++ -std=gnu++14 %optflags %{name}.cpp -o %{name}
+g++ -std=gnu++14 %{build_cxxflags} -pthread -lpthread %{name}.cpp -o %{name}
 
 %install
 install -Dpm 0755 %{name} %{buildroot}/%{_bindir}/%{name}
@@ -53,6 +51,5 @@ install -Dpm 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 %doc README.md
 %doc "User Guide.md"
 %doc "Walk-path tutorial.md"
-%doc "Release Notes.md"
 
 %changelog

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 20 16:43:13 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.76a
+
+  New features and enhancements:
+
+    when multiple files given, jtc now will read/parse all files concurrently (on multi-core cpu); to disable multithreading (and process files sequentially) give option -a (normally, the option is implied and redundant when multiple files given)
+    a new lexeme directive <..>S - complements directive <..>W: walks JSON tree as per the preserved path
+    when file argument for options -i/-u/-c contains a stream of JSONs, it's automatically converted into an array of JSONs
+    template operations enhancements:
+        an argument for options -i/-u/-c now additionally can hold a template (e.g.: -u0 -T<template> now could be collapsed into -u<template>)
+        regex search lexemes (<..>R, <..>L, <..>D) now are subjected to template interpolation as well, though namespace usage in such lexemes is limited to alphabetical names only ('cause numeric names would clash with regex quantifiers) - template interpolation obviously occurs before regex applied
+        auto-generated label tokens for template interpolation ($A, $B, etc) now also hold indices if the respected values are in array (it used to work only for objects)
+        walked atomic values now also can be represented in templates using auto-generated tokens ($A and $a for a label/index and a value respectively) for easier template-interpolation operations
+        setting namespace $? to any value (even empty one) in a walk triggers resetting of the respective auto-token $? (which holds historical values) to the default value "" (it's a user-controlled way to reset the token, in addition to the existing trigger - template interpolation failure)
+        when string-interpolating an iterable (array or object) via "{}" token, all atomic values within the iterable get interpolated into the string recursively
+        improved template stringification (>{{}}<) - operation now is consistent across all JSON types (null / bool / numeric used to behave differently)
+        limited usage of auto-generated tokens (e.g.: $abc) to 3 letters only (to avoid clashing with tokens like $file and all future tokens) - the use case for auto-generated token is template-interpolation for relatively short arrays / objects, thus 3 letters is sufficient to address iterables up to 18278 values in size)
+        extended range of auto-tokens representation in iterables ($a, $b, etc): initially each token represents a a respective top level JSON element of the iterable, beyond that range each next auto-token will represent an atomic value of the JSON tree as if it walked recursively
+
+  Improvements, changes, fixes:
+
+    behavior improvements:
+        redesigned and improved processing of options chain-sets logic: lifted a caveat of using -J/-j/-a in intermediate chain-sets (now it works inline with the expected option behavior in any of the option sets)
+        when unquoting strings with -qq a translation of UTF-8 code points (e.g.: \uD123), as well as correct processing of UTF-8 surrogate pairs added
+        improved label update operations: now also any atomic value (null / boolean / numeric) can update a label (before labels could be updated only with string types)
+        improved namespace behavior for -p/-s operations (now namespaces from the respective walks are not lost in such operations and could be reused later)
+
+    performance improvements:
+        redesigned and improved namespaces storage policy so that it does not slow down walks (used to be the case, noticeable when storing big JSONs)
+        optimized performance for -e with -i/-u shell executions, where all such walks are attempted to be executed in a single run (popen session), otherwise defaulted to a legacy (slower) way (to enforce the legacy way give -ee)
+
+    code design improvements:
+        added compile options:
+            -DBG_dTS (effective only in junction with -DBG_mTS or -DBG_uTS) - debug timestamp display delta instead of absolute stamps (handy for cpu profiling)
+            -DNDBG_PARSER: disables parsing debugs - handy when deep debugging huge JSONs (to skip the parsing part)
+        speed up template interpolations (by breaking away from catching JSON parsing exceptions towards processing parsing by return value)
+        improved performance when outputting walked elements (-w)
+        improved debug outputs when displaying JSONs longer than the term width (the same update ensures correct displaying of UTF-8 strings)
+
+    various fixes:
+        fixed locality of <>q, <>Q searches: it accidentally became global after last redesign of lexeme implementation, now it's local to the search tree (UT'ed)
+        fixed accidentally broken options translation in the built-in mini-guide (-g)
+        fixed a rogue debug level when debugging -e option
+        fixed a very corner crash occurring upon -u/-i based source walks predicated -pp option usage and only when resulted walks gets invalidated by any of the prior walks (UT'ed of course)
+        fixed an issue when last walk control (-x0 or -x/-1) worked in the first JSON but did not work in any subsequent -if there were multiple (UT'ed)
+
+-------------------------------------------------------------------
 Tue Jan 21 08:34:29 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.75d
