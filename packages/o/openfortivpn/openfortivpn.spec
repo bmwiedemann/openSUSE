@@ -17,7 +17,7 @@
 
 
 Name:           openfortivpn
-Version:        1.13.3
+Version:        1.14.0
 Release:        0
 Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  openssl-devel
 Requires:       ppp
+BuildRequires:  systemd-rpm-macros
 
 %description
 openfortivpn is a client for PPP+SSL VPN tunnel services. It spawns a pppd
@@ -40,12 +41,25 @@ It is compatible with Fortinet VPNs.
 
 %build
 autoreconf -fiv
-%configure
+%configure \
+    --with-systemdsystemunitdir=%{_unitdir} 
 make %{?_smp_mflags} V=1
 
 %install
 %make_install
 rm -f %{buildroot}/%{_datadir}/openfortivpn/config.template
+
+%preun
+%service_del_preun openfortivpn@.service
+
+%postun
+%service_del_postun openfortivpn@.service
+
+%pre
+%service_add_pre openfortivpn@.service
+
+%post
+%service_add_post openfortivpn@.service
 
 %files
 %license LICENSE LICENSE.OpenSSL
@@ -54,5 +68,6 @@ rm -f %{buildroot}/%{_datadir}/openfortivpn/config.template
 %{_mandir}/man1/openfortivpn.1%{?ext_man}
 %dir %{_sysconfdir}/openfortivpn
 %config(noreplace) %{_sysconfdir}/openfortivpn/config
+%{_unitdir}/openfortivpn@.service
 
 %changelog

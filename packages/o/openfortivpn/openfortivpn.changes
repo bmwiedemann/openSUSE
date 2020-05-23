@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 18:46:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.0
+  * add git commit id in debug output
+  * do not use interface ip for routing on linux
+  * avoid extra hop on interface for default route
+  * clean up, updates and improvments in the build system
+  * increase the inbound HTTP buffer capacity when needed
+  * print domain search list to output
+  * add systemd service file
+  * add systemd notification when stopping
+  * allow logging with both smartcard and username
+  * fix GCC 9 and clang warnings
+  * bump default minimal TLS version from TLSv1.0 to TLSv1.2
+  * fix a couple coverity warnings
+- Package systemd service file
+
+-------------------------------------------------------------------
 Wed Apr  1 05:42:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.13.3
