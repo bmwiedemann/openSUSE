@@ -148,4 +148,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>795503</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8f808707751ca3648f405e2580baabb2</srcmd5>
+    <version>10.35</version>
+    <time>1590247144</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>806245</requestid>
+  </revision>
 </revisionlist>
