@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix crash caused by disabled graph switching code in trace mode
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -12,8 +22,6 @@ Sun Apr  5 20:30:16 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - No code change since 20.03.80
 
 -------------------------------------------------------------------
@@ -21,8 +29,6 @@ Sun Mar 22 09:17:12 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Changes since 19.12.3:
   * Port endl to \n as it's namespaced in Qt5.15.
   * Keep cumulated error negligible for rapidly increasing functions (kde#341256)
@@ -38,7 +44,7 @@ Thu Mar  5 20:36:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - No code change since 19.12.2
 
 -------------------------------------------------------------------
@@ -52,7 +58,7 @@ Wed Feb  5 06:29:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 
 -------------------------------------------------------------------
