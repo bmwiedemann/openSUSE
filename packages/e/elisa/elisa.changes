@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 15:40:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Emit rejected() signal when closing metadata window (kde#420530)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -13,8 +23,6 @@ Sun Apr  5 20:29:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Changes since 20.03.80:
   * workaround not to have the system tray menu appear when it should not (kde#419145)
   * remove dependency on KCMUtils that is no longer used
@@ -30,8 +38,6 @@ Sun Mar 22 09:16:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * allow to have an Elisa icon in system tray and to close main window (kde#416170)
   * allow the user via to configure Elisa not to rely on Baloo (kde#417822)
@@ -49,7 +55,7 @@ Thu Mar  5 20:35:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * appdata: use canonical docs.kde.org help location
   * set TextInput::selectByMouse to true to fix text selection
@@ -66,7 +72,7 @@ Wed Feb  5 06:28:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Too many changes since 19.12.1, only listing bugfixes:
   * limit the rate with which progress is sent via MPRIS (kde#416179)
   * disable playlist animations to fix display corruption (kde#398093)
