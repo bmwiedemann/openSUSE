@@ -380,4 +380,12 @@ Features
     <comment></comment>
     <requestid>778122</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0c4ffcb2e3bb227533f2700c8a060f68</srcmd5>
+    <version>1.10.1</version>
+    <time>1590247168</time>
+    <user>maxlin_factory</user>
+    <comment>update to 1.10.1 with security fixes</comment>
+    <requestid>807296</requestid>
+  </revision>
 </revisionlist>

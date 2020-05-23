@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 #
 #
@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 #
-Url:            https://www.unbound.net/
+URL:            https://www.unbound.net/
 Source:         https://www.unbound.net/downloads/unbound-%{version}.tar.gz
 Source1:        unbound.service
 Source2:        unbound.conf

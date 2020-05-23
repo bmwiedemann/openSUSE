@@ -1,7 +1,7 @@
 #
 # spec file for package libunbound-devel-mini
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 #
 Name:           libunbound-devel-mini
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 #
 #
@@ -40,7 +40,7 @@ Conflicts:      unbound-devel
 Conflicts:      libunbound8
 Provides:       libunbound-devel = %{version}-%{release}
 #
-Url:            https://www.unbound.net/
+URL:            https://www.unbound.net/
 Source:         https://www.unbound.net/downloads/unbound-%{version}.tar.gz
 Source1:        libunbound-devel-mini-rpmlintrc
 Source5:        root.key
