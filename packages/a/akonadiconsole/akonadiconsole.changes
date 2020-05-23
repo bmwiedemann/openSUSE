@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 15:40:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Port away from a DBus call to deprecated KConfigSkeleton::writeConfig()
+  * Fix assert due to off-by-one in beginRemoveRows call
+  * Always make libkdepim a required dependency
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -16,8 +28,6 @@ Sun Apr  5 20:29:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - No code change since 20.03.80
 
 -------------------------------------------------------------------
@@ -25,8 +35,6 @@ Sun Mar 22 09:16:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Changes since 19.12.3:
   * Autogenerate categories file
   * Make it compile against last qt5.15 without deprecated method
@@ -38,7 +46,7 @@ Thu Mar  5 20:35:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - No code change since 19.12.2
 
 -------------------------------------------------------------------
@@ -52,7 +60,7 @@ Wed Feb  5 06:28:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 - Update build requirements
 
