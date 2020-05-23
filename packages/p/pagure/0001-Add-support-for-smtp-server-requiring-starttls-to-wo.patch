@@ -1,0 +1,77 @@
+From 4196a3772693a79f1e5db12fa937bcee8280e248 Mon Sep 17 00:00:00 2001
+From: Pierre-Yves Chibon <pingou@pingoured.fr>
+Date: Mon, 18 May 2020 15:57:05 +0200
+Subject: [PATCH] Add support for smtp server requiring starttls to work
+
+Signed-off-by: Pierre-Yves Chibon <pingou@pingoured.fr>
+---
+ doc/configuration.rst | 27 +++++++++++++++++++++++++++
+ pagure/lib/notify.py  | 14 ++++++++++++++
+ 2 files changed, 41 insertions(+)
+
+diff --git a/doc/configuration.rst b/doc/configuration.rst
+index 41f29b96..25dee387 100644
+--- a/doc/configuration.rst
++++ b/doc/configuration.rst
+@@ -961,6 +961,33 @@ should be secured over SSL.
+ Defaults to: ``False``
+ 
+ 
++SMTP_STARTTLS
++^^^^^^^^^^^^^
++
++This configuration key specifies instructs pagure to starts connecting to
++the SMTP server via a `starttls` command.
++
++Defaults to: ``False``
++
++
++SMTP_KEYFILE
++^^^^^^^^^^^^
++
++This configuration key allows to specify a key file to be used in the
++`starttls` command when connecting to the smtp server.
++
++Defaults to: ``None``
++
++
++SMTP_CERTFILE
++^^^^^^^^^^^^
++
++This configuration key allows to specify a certificate file to be used in
++the `starttls` command when connecting to the smtp server.
++
++Defaults to: ``None``
++
++
+ SMTP_USERNAME
+ ^^^^^^^^^^^^^
+ 
+diff --git a/pagure/lib/notify.py b/pagure/lib/notify.py
+index 7670ad15..2c4ee30f 100644
+--- a/pagure/lib/notify.py
++++ b/pagure/lib/notify.py
+@@ -505,6 +505,20 @@ def send_email(
+                         pagure_config["SMTP_SERVER"],
+                         pagure_config["SMTP_PORT"],
+                     )
++
++            if pagure_config["SMTP_STARTTLS"]:
++                context = ssl.create_default_context()
++                keyfile = pagure_config.get("SMTP_KEYFILE") or None
++                certfile = pagure_config.get("SMTP_CERTFILE") or None
++                respcode, _ = smtp.starttls(
++                    keyfile=keyfile, certfile=certfile, context=context,
++                )
++                if respcode != 220:
++                    _log.warning(
++                        "The starttls command did not return the 220 "
++                        "response code expected."
++                    )
++
+             if (
+                 pagure_config["SMTP_USERNAME"]
+                 and pagure_config["SMTP_PASSWORD"]
+-- 
+2.26.1
+

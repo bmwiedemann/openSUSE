@@ -43,7 +43,8 @@ Source10:           pagure-README.SUSE
 # Backports from upstream
 ## Backport fix to make stats page work
 Patch0001:          0001-Make-the-stats-page-use-the-new-stats-API-endpoint.patch
-
+## Backport support for STARTTLS support for SMTP servers
+Patch0002:          0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch
 
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging

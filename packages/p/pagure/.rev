@@ -296,4 +296,14 @@
 - Fix directory mode for ssh directory to fix conflict with gitolite</comment>
     <requestid>806975</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>99c65f72fe1eceecc8373aaed42c9dd7</srcmd5>
+    <version>5.10.0</version>
+    <time>1590247664</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix typo in quickstart on ssh directory mode 
+- Backport support for STARTTLS support for SMTP servers
+  + Patch: 0001-Add-support-for-smtp-server-requiring-starttls-to-wo.patch</comment>
+    <requestid>807849</requestid>
+  </revision>
 </revisionlist>
