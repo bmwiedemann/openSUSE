@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define binaries prichunkpng priforgepng prigreypng pripalpng pripamtopng pripnglsch pripngtopam priweavepng
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pypng
 Version:        0.0.20
@@ -30,6 +31,8 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,14 +48,34 @@ sed -i -e '/^#!\//, 1d' code/png.py
 
 %install
 %python_install
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:code $python code/test_png.py
 
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
+
 %files %{python_files}
 %license LICENCE
 %{python_sitelib}/*
-%python3_only %{_bindir}/*
+%python_alternative %{_bindir}/prichunkpng
+%python_alternative %{_bindir}/priforgepng
+%python_alternative %{_bindir}/prigreypng
+%python_alternative %{_bindir}/pripalpng
+%python_alternative %{_bindir}/pripamtopng
+%python_alternative %{_bindir}/pripnglsch
+%python_alternative %{_bindir}/pripngtopam
+%python_alternative %{_bindir}/priweavepng
 
 %changelog
