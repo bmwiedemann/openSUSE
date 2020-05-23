@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 07:41:27 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200517 (git commit f8d32e4cc99b):
+  * rtw88: update firmware information and README
+  * linux-firmware: add firmware for MT7915E
+  * QCA: Add Bluetooth firmware for QCA9377
+  * linux-firmware: add rebb firmware for mt7663
+
+-------------------------------------------------------------------
 Sat Apr 25 14:52:45 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200424 (git commit b2cad6a2d733):
