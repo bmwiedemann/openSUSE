@@ -118,6 +118,10 @@ do
 	esac
 	continue
 	;;
+    @*)
+	opts[o++]="--ro-bind ${arg#@} $home/${arg#@}"
+	continue
+	;;
     -*)
 	continue
 	;;
@@ -181,7 +185,12 @@ then
 	    done
 	done
     done
-    opts[o++]="--ro-bind /tmp/.X11-unix /tmp/.X11-unix"
+#   for x11 in /tmp/.X11-unix /tmp/.XIM-unix /tmp/.ICE-unix /tmp/.font-unix /tmp/.X${DISPLAY##*:}-lock
+    for x11 in /tmp/.X11-unix
+    do
+	test -e "${x11}" || continue
+	opts[o++]="--ro-bind ${x11} ${x11}"
+    done
     opts[o++]="--ro-bind ${XAUTHORITY+"$XAUTHORITY"} $home/.Xauthority"
     opts[o++]="--setenv XAUTHORITY $home/.Xauthority"
     opts[o++]="--setenv DISPLAY ${DISPLAY+"$DISPLAY"}"

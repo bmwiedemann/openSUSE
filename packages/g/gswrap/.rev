@@ -17,4 +17,12 @@
 - Allow %stdout as well as %stdout% for -sOutputFile=</comment>
     <requestid>762787</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e11a91c55c676bdbc17f2d1f66b51e7e</srcmd5>
+    <version>0.1</version>
+    <time>1590247630</time>
+    <user>maxlin_factory</user>
+    <comment>- Allow option files as well</comment>
+    <requestid>807779</requestid>
+  </revision>
 </revisionlist>
