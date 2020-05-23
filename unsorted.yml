@@ -58,6 +58,7 @@ unsorted:
   - GraphicsMagick-devel 
   - HSAIL-Tools 
   - HepMC-devel 
+  - HepMC-doc: [i586] 
   - HepMC2-devel 
   - Herwig-devel: [x86_64] 
   - Herwig-libs: [x86_64] 
@@ -2535,7 +2536,6 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -7790,7 +7790,7 @@ unsorted:
   - libQtAVWidgets1-32bit: [x86_64] 
   - libQtQuick5-32bit: [x86_64] 
   - libRaTools0 
-  - libRivet-3_1_0 
+  - libRivet-3_1_1 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL-devel 
   - libSDL-devel-32bit: [x86_64] 
@@ -8893,7 +8893,7 @@ unsorted:
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
-  - libdpdk-18_11: [x86_64] 
+  - libdpdk-20_0: [x86_64] 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
   - libdrm2-32bit: [x86_64] 
@@ -18730,6 +18730,7 @@ unsorted:
   - python3-HTTPolice 
   - python3-Hamlib 
   - python3-HeapDict 
+  - python3-HepMC: [i586] 
   - python3-HyperKitty 
   - python3-IMDbPY 
   - python3-Js2Py 
@@ -20638,6 +20639,7 @@ unsorted:
   - python3-pykafka 
   - python3-pykeepass 
   - python3-pykerberos 
+  - python3-pykickstart 
   - python3-pykwalify 
   - python3-pylama 
   - python3-pylast 
