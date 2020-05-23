@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 15:41:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Too many changes since 20.04.0, only listing bugfixes:
+  * Fix template title clips in timeline resetting duration on project re-open (kde#420823)
+  * Fix aspect ratio not working on title images (kde#420676)
+  * Fix glitch in bin item selection, causing some actions to be disabled (kde#420628)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:22:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -6,17 +18,15 @@ Thu Apr 23 12:22:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://kde.org/announcements/releases/2020-04-apps-update
 - Too many changes since 20.03.90, only listing bugfixes:
-  * Fix freeze when changing bin selection BUG: 419604 (kde#419604)
-  * Export frame should use source resolution instead of project resolution BUG: 419824 (kde#419824)
-  * Fix crash opening old project file BUG: 419563 (kde#419563)
+  * Fix freeze when changing bin selection (kde#419604)
+  * Export frame should use source resolution instead of project resolution (kde#419824)
+  * Fix crash opening old project file (kde#419563)
 
 -------------------------------------------------------------------
 Sun Apr  5 20:29:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - Too many changes since 20.03.80, only listing bugfixes:
   * Ensure we cannot create a project with 0 tracks (kde#419019)
 
@@ -25,8 +35,6 @@ Sun Mar 22 09:16:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * Fix duplicate multiple clips only duplicating first item (kde#418379)
   * Fix changing of title clip duration broken (kde#417505)
@@ -40,7 +48,7 @@ Thu Mar  5 20:36:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Too many changes since 19.12.2, only listing bugfixes:
   * Fix changing of title clip duration broken (kde#417505)
 
@@ -55,7 +63,7 @@ Wed Feb  5 06:29:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - Too many changes since 19.12.1, only listing bugfixes:
   * Fix effect with long names prevent easy access to effect actions. (kde#416420)
 - Dropped patches, now upstream:

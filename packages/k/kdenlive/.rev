@@ -674,4 +674,12 @@ I would be grateful.
     <comment>KDE release 20.04.0</comment>
     <requestid>796914</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>dc01ce1f685a9e680c27d0a5e9d82a55</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247383</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806433</requestid>
+  </revision>
 </revisionlist>
