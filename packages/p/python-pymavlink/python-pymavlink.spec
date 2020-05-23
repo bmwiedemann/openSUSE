@@ -17,6 +17,7 @@
 #
 
 
+%define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit MPU6KSearch
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymavlink
 Version:        2.4.6
@@ -29,13 +30,15 @@ Source:         https://files.pythonhosted.org/packages/source/p/pymavlink/pymav
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-future
+Requires:       python-lxml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-future
-Requires:       python-lxml
 %python_subpackages
 
 %description
@@ -54,7 +57,7 @@ export CFLAGS="%{optflags}"
 %python_install
 # drop shebang
 %python_expand find %{buildroot}%{$python_sitearch} -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
-# FIXME: remove devel files for now 
+# FIXME: remove devel files for now
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/generator/C
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/generator/CPP11
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/mavnative/mavlink_defaults.h
@@ -62,6 +65,9 @@ export CFLAGS="%{optflags}"
 %python_expand find %{buildroot}%{$python_sitearch} -name "*.xml" -exec chmod -x '{}' \;
 # strip .py file extension from scripts
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 `basename "$0" .py`' '{}' \;
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 #
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 # remove unneeded files
@@ -71,34 +77,44 @@ rm -f %{buildroot}%{_bindir}/_current_flavor
 # FIXME: testsuite does not run in OBS
 #%%python_exec setup.py test
 
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
+
 %files %{python_files}
 %doc README.md
-%python3_only %{_bindir}/MPU6KSearch
-%python3_only %{_bindir}/magfit
-%python3_only %{_bindir}/magfit_delta
-%python3_only %{_bindir}/magfit_gps
-%python3_only %{_bindir}/magfit_motors
-%python3_only %{_bindir}/mavextract
-%python3_only %{_bindir}/mavfft
-%python3_only %{_bindir}/mavfft_isb
-%python3_only %{_bindir}/mavflightmodes
-%python3_only %{_bindir}/mavflighttime
-%python3_only %{_bindir}/mavgen
-%python3_only %{_bindir}/mavgpslock
-%python3_only %{_bindir}/mavgraph
-%python3_only %{_bindir}/mavkml
-%python3_only %{_bindir}/mavlink_bitmask_decoder
-%python3_only %{_bindir}/mavlogdump
-%python3_only %{_bindir}/mavloss
-%python3_only %{_bindir}/mavmission
-%python3_only %{_bindir}/mavparmdiff
-%python3_only %{_bindir}/mavparms
-%python3_only %{_bindir}/mavplayback
-%python3_only %{_bindir}/mavsearch
-%python3_only %{_bindir}/mavsigloss
-%python3_only %{_bindir}/mavsummarize
-%python3_only %{_bindir}/mavtogpx
-%python3_only %{_bindir}/mavtomfile
+%python_alternative %{_bindir}/MPU6KSearch
+%python_alternative %{_bindir}/magfit
+%python_alternative %{_bindir}/magfit_delta
+%python_alternative %{_bindir}/magfit_gps
+%python_alternative %{_bindir}/magfit_motors
+%python_alternative %{_bindir}/mavextract
+%python_alternative %{_bindir}/mavfft
+%python_alternative %{_bindir}/mavfft_isb
+%python_alternative %{_bindir}/mavflightmodes
+%python_alternative %{_bindir}/mavflighttime
+%python_alternative %{_bindir}/mavgen
+%python_alternative %{_bindir}/mavgpslock
+%python_alternative %{_bindir}/mavgraph
+%python_alternative %{_bindir}/mavkml
+%python_alternative %{_bindir}/mavlink_bitmask_decoder
+%python_alternative %{_bindir}/mavlogdump
+%python_alternative %{_bindir}/mavloss
+%python_alternative %{_bindir}/mavmission
+%python_alternative %{_bindir}/mavparmdiff
+%python_alternative %{_bindir}/mavparms
+%python_alternative %{_bindir}/mavplayback
+%python_alternative %{_bindir}/mavsearch
+%python_alternative %{_bindir}/mavsigloss
+%python_alternative %{_bindir}/mavsummarize
+%python_alternative %{_bindir}/mavtogpx
+%python_alternative %{_bindir}/mavtomfile
 %{python_sitearch}/mavnative*.so
 %{python_sitearch}/pymavlink*
 
