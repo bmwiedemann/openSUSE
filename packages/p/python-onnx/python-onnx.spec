@@ -46,6 +46,8 @@ Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-six
 Requires:       python-typing_extensions >= 3.6.2.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-onnx-devel = %{version}-%{release}
 Obsoletes:      python-onnx-devel < %{version}-%{release}
 %python_subpackages
@@ -71,6 +73,7 @@ sed -i -e '/pytest-runner/d' setup.py
 %build
 # define same folder like is used for the setup.py later
 %define __builddir .setuptools-cmake-build
+# FIXME: you should use %%cmake macros
 # Force the cmake to build static libs as otherwise we end
 # up with unresolvable package.
 %{python_expand # we need to generate for each python
@@ -88,6 +91,9 @@ sed -i -e '/pytest-runner/d' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/backend-test-tools
+%python_clone -a %{buildroot}%{_bindir}/check-node
+%python_clone -a %{buildroot}%{_bindir}/check-model
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 shebang_files="%{python_sitearch}/onnx/backend/test/stat_coverage.py %{python_sitearch}/onnx/defs/gen_doc.py %{python_sitearch}/onnx/gen_proto.py"
 for file in $shebang_files ; do
@@ -102,12 +108,22 @@ cp %{__builddir}/*cpp2py* ./onnx/
 # skip online tests
 %pytest_arch -n auto -k 'not (test_bvlc_alexnet_cpu or test_shufflenet_cpu or test_densenet121_cpu or test_squeezenet_cpu or test_inception_v1_cpu or test_vgg19_cpu or test_inception_v2_cpu or test_zfnet512_cpu or test_resnet50_cpu)'
 
+%post
+%python_install_alternative backend-test-tools
+%python_install_alternative check-node
+%python_install_alternative check-model
+
+%postun
+%python_uninstall_alternative backend-test-tools
+%python_uninstall_alternative check-node
+%python_uninstall_alternative check-model
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/check-model
-%python3_only %{_bindir}/check-node
-%python3_only %{_bindir}/backend-test-tools
+%python_alternative %{_bindir}/check-model
+%python_alternative %{_bindir}/check-node
+%python_alternative %{_bindir}/backend-test-tools
 %{python_sitearch}/onnx*
 
 %changelog

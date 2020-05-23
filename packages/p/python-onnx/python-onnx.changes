@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 06:55:38 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 23 11:49:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Force the interpreter to match the one during build
