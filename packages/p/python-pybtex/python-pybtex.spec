@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,8 +25,8 @@ Release:        0
 Summary:        BibTeX-compatible Bibliography Processor in Python
 License:        MIT
 Group:          Productivity/Publishing/TeX/Utilities
-URL:            http://pybtex.org/
-Source0:        https://pypi.python.org/packages/82/59/d46b4a84faacd7c419cfc9a442b7940d6d625d127b83d83666e2a8b203d8/pybtex-%{version}.tar.gz
+URL:            https://pybtex.org/
+Source0:        https://files.pythonhosted.org/packages/source/p/pybtex/pybtex-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module latexcodec}
@@ -37,6 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-latexcodec
 Requires:       python-pyparsing
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,17 +61,40 @@ process the above formats.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 # install man
 for man in %{oname} %{oname}-convert %{oname}-format ; do
   install -Dpm 0644 docs/man1/${man}.1 %{buildroot}%{_mandir}/man1/${man}.1
 done
+%python_clone -a %{buildroot}%{_mandir}/man1/%{oname}-format.1
+%python_clone -a %{buildroot}%{_mandir}/man1/%{oname}-convert.1
+%python_clone -a %{buildroot}%{_mandir}/man1/%{oname}.1
+%python_clone -a %{buildroot}%{_bindir}/%{oname}-format
+%python_clone -a %{buildroot}%{_bindir}/%{oname}-convert
+%python_clone -a %{buildroot}%{_bindir}/%{oname}
+
+%post
+%python_install_alternative %{oname}-format.1
+%python_install_alternative %{oname}-convert.1
+%python_install_alternative %{oname}.1
+%python_install_alternative %{oname}-format
+%python_install_alternative %{oname}-convert
+%python_install_alternative %{oname}
+
+%postun
+%python_uninstall_alternative %{oname}-format.1
+%python_uninstall_alternative %{oname}-convert.1
+%python_uninstall_alternative %{oname}.1
+%python_uninstall_alternative %{oname}-format
+%python_uninstall_alternative %{oname}-convert
+%python_uninstall_alternative %{oname}
 
 %files %{python_files}
-%python3_only %{_bindir}/%{oname}*
-%python3_only %{_mandir}/man1/%{oname}.1%{ext_man}
-%python3_only %{_mandir}/man1/%{oname}-convert.1%{ext_man}
-%python3_only %{_mandir}/man1/%{oname}-format.1%{ext_man}
+%python_alternative %{_mandir}/man1/%{oname}-format.1%{ext_man}
+%python_alternative %{_mandir}/man1/%{oname}-convert.1%{ext_man}
+%python_alternative %{_mandir}/man1/%{oname}.1%{ext_man}
+%python_alternative %{_bindir}/%{oname}-format
+%python_alternative %{_bindir}/%{oname}-convert
+%python_alternative %{_bindir}/%{oname}
 %{python_sitelib}/*
 
 %changelog
