@@ -100,4 +100,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE release 20.04.0</comment>
     <requestid>796945</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>63128a2be03d6a0695800ae11a7856e2</srcmd5>
+    <version>20.04.1</version>
+    <time>1590247427</time>
+    <user>maxlin_factory</user>
+    <comment>KDE Applications 20.04.1</comment>
+    <requestid>806493</requestid>
+  </revision>
 </revisionlist>
