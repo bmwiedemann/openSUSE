@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 15 15:40:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * [Julia] Remove eps option from settings menu too
+  * [Julia] Disable possibility to set eps as  plot output extension,
+    because it doesn't work at all
+  * [Julia] Fix bug with missing plots in the saved worksheet
+  * [Octave] Change graphics toolkit only if currect toolkit is "fltk".
+    This is needed for preventing problem with modern octave versions
+    (5.0.0+), some of which have "qt" toolkit as default.
+  * Set proper values for bold/italic font checkbox in CommandEntry
+  * Minor Improvements
+  * Realise some suggestions and change logic for more correct behaviour
+  * Fix problem with inconveniences values in menus (always
+    "default colour" chosen) after loaded command entries with formatting
+  * Fix bug with missing default values of format parameters in Command
+    Entry, which made it impossible to reset formating parameters. Also,
+    fix bug with save/load text color parameter, with saving forward and
+    backward compability.
+  * [Octave] Fix bug, when Cantor ignore the plot integration setting and
+    still try to catch images from Octave
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:52 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.04.0
@@ -12,8 +39,6 @@ Sun Apr  5 20:29:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.90
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-rc
 - No code change since 20.03.80
 
 -------------------------------------------------------------------
@@ -21,8 +46,6 @@ Sun Mar 22 09:16:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.03.80
   * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/releases/20.04-beta
 - Too many changes since 19.12.3, only listing bugfixes:
   * Fix problems with building cantor without LANG environment variable (kde#410802)
 
@@ -32,7 +55,7 @@ Thu Mar  5 20:35:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.3
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.3
+  * https://kde.org/announcements/releases/2020-03-apps-update
 - Changes since 19.12.2:
   * Fix minor bug with unavailable save button, when first runned entry have finished with error
   * appdata: improve URLs
@@ -50,7 +73,7 @@ Wed Feb  5 06:28:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 - Update to 19.12.2
   * New bugfix release
   * For more details please see:
-  * https://www.kde.org/announcements/releases/19.12.2
+  * https://kde.org/announcements/releases/2020-02-apps-update
 - No code change since 19.12.1
 
 -------------------------------------------------------------------
