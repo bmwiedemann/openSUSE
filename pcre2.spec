@@ -16,15 +16,16 @@
 #
 
 
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.34
+Version:        10.35
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://www.pcre.org/
+URL:            https://www.pcre.org
 #SVN-Clone:	svn://vcs.exim.org/pcre/code/trunk
-Source:         https://ftp.pcre.org/pub/pcre/%{name}-%{version}.tar.bz2
+Source0:        https://ftp.pcre.org/pub/pcre/%{name}-%{version}.tar.bz2
 Source2:        https://ftp.pcre.org/pub/pcre/%{name}-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
@@ -38,8 +39,6 @@ BuildRequires:  libedit-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %description
 The PCRE2 library is a set of functions that implement regular
@@ -190,14 +189,14 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	    --enable-unicode
 
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   export LANG=POSIX
   # do not run profiling in parallel for reproducible builds (boo#1040589 boo#1102408)
-  make CFLAGS="%{optflags} %{cflags_profile_generate}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" check
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %install
@@ -209,7 +208,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 export LANG=POSIX
-make check -j1
+%make_build check -j1
 
 %post -n libpcre2-8-0 -p /sbin/ldconfig
 %postun -n libpcre2-8-0 -p /sbin/ldconfig
@@ -226,32 +225,32 @@ make check -j1
 %{_libdir}/libpcre2-8.so.*
 
 %files -n libpcre2-16-0
-%doc LICENCE
+%license LICENCE
 %{_libdir}/libpcre2-16.so.*
 
 %files -n libpcre2-32-0
-%doc LICENCE
+%license LICENCE
 %{_libdir}/libpcre2-32.so.*
 
 %files -n libpcre2-posix2
-%doc LICENCE
+%license LICENCE
 %{_libdir}/libpcre2-posix.so.*
 
 %files tools
-%doc LICENCE
+%license LICENCE
 %{_bindir}/pcre2grep
 %{_bindir}/pcre2test
 %{_mandir}/man1/pcre2grep.1%{?ext_man}
 %{_mandir}/man1/pcre2test.1%{?ext_man}
 
 %files doc
-%license COPYING
-%doc AUTHORS ChangeLog LICENCE NEWS README
+%license COPYING LICENCE
+%doc AUTHORS ChangeLog NEWS README
 %doc doc/html doc/*.txt
 %doc %{_defaultdocdir}/pcre2-doc
 
 %files devel
-%doc LICENCE
+%license LICENCE
 %{_bindir}/pcre2-config
 %{_includedir}/*
 %{_libdir}/*.so

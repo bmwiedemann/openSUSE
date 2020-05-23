@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May 13 22:24:30 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner.
+  * Add %make_build and %license macros.
+- Update to 10.35
+  * https://www.pcre.org/changelog.txt
+  * Use PCRE2_MATCH_EMPTY flag to detect empty matches in JIT.
+  * A JIT bug is fixed which allowed to read the fields
+    of the compiled pattern before its existence is checked.
+  * Added PCRE2_SUBSTITUTE_LITERAL.
+  * Avoid some VS compiler warnings.
+  * Added PCRE2_SUBSTITUTE_MATCHED.
+  * Added (?* and (?<* as synonms for (*napla: and (*naplb:
+    to match another regex engine.
+  * Fix *THEN verbs in lookahead assertions in JIT.
+  * Added PCRE2_SUBSTITUTE_REPLACEMENT_ONLY.
+  * The JIT stack should be freed when the low-level stack
+    allocation fails.
+  * Changed setting of CMAKE_MODULE_PATH in CMakeLists.txt from SET
+    to LIST(APPEND...) to allow a setting from the command line
+    to be included.
+  * Updated to Unicode 13.0.0.
+  * CMake build now checks for secure_getenv() and strerror().
+  * Restrict the configuration setting for the SELinux compatible
+    execmem allocator (change 10.30/44) to Linux and NetBSD.
+
+-------------------------------------------------------------------
 Fri Mar 27 16:26:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Resubmit the package (bsc#1167890, jsc#SLE-11608)
