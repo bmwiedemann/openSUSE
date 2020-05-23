@@ -534,9 +534,6 @@
 
         <namedCollection name="microos_defaults"/>
         <package name="patterns-microos-defaults"/>
-
-        <namedCollection name="microos_apparmor"/>
-        <package name="patterns-microos-apparmor"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Vagrant_x86_64,Vagrant_aarch64">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
@@ -546,6 +543,8 @@
     <packages type="image" profiles="ContainerHost">
         <namedCollection name="container_runtime"/>
         <package name="patterns-containers-container_runtime"/>
+        <namedCollection name="microos_apparmor"/>
+        <package name="patterns-microos-apparmor"/>
     </packages>
     <packages type="image" profiles="Kubic-kubeadm">
         <namedCollection name="container_runtime_kubernetes"/>
@@ -558,6 +557,8 @@
         <package name="patterns-containers-kubic_loadbalancer"/>
         <namedCollection name="kubic_worker"/>
         <package name="patterns-containers-kubic_worker"/>
+        <namedCollection name="microos_apparmor"/>
+        <package name="patterns-microos-apparmor"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64">
         <!-- XEN specific packages -->

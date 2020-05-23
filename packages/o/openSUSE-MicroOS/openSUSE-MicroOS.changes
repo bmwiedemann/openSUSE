@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 14:12:47 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- No microos_apparmor on plain MicroOS anymore (boo#1171747)
+
+-------------------------------------------------------------------
 Thu May 14 14:51:19 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - explicitly require bootloader pattern. Required due to cleanup of
