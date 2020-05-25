@@ -506,10 +506,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20200523'
 published: '20200520'
 publishing: '20200520'
-testing: '20200520'
+testing: '20200523'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
