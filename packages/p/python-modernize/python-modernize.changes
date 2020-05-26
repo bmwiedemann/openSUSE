@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:49 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Jan  7 11:37:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use python dbm dependency instead of legacy gdbm

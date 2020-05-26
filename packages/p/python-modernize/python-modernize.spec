@@ -28,6 +28,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dbm
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}
@@ -46,15 +48,22 @@ A hack on top of 2to3 for modernizing Python code.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/python-modernize
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative python-modernize
+
+%postun
+%python_uninstall_alternative python-modernize
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/python-modernize
+%python_alternative %{_bindir}/python-modernize
 %{python_sitelib}/*
 
 %changelog

@@ -15,4 +15,12 @@
     <comment>- Use python dbm dependency instead of legacy gdbm</comment>
     <requestid>761544</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0a8c4f9196ec73f7154032229d0f2eed</srcmd5>
+    <version>0.7</version>
+    <time>1590506585</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808676</requestid>
+  </revision>
 </revisionlist>
