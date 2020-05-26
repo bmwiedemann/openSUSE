@@ -1,7 +1,7 @@
 #
 # spec file for package bump2version
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           bump2version
 Version:        1.0.0
 Release:        0
+Summary:        Version-bump software with a single command
 License:        MIT
-Summary:        Version-bump your software with a single command!
-Url:            https://github.com/c4urself/bump2version
 Group:          Development/Languages/Python
+URL:            https://github.com/c4urself/bump2version
 Source:         https://files.pythonhosted.org/packages/source/b/bump2version/bump2version-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testfixtures >= 6.0.0}
 BuildRequires:  fdupes
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testfixtures}
+BuildRequires:  python-rpm-macros
 Obsoletes:      bumpversion <= 0.6.0
 BuildArch:      noarch
 
 %python_subpackages
 
 %description
-Version-bump your software with a single command!
+A command line tool handling the release process of software by updating all
+version strings in the source code by the correct increment. Also creates
+commits and tags. Version formats are configurable' works without any VCS, but
+can read tag information from and writes commits and tags to Git and Mercurial
+if available; handles text files, so it's not specific to any programming
+language.
+
+This package obsoletes bumpversion.
 
 %prep
 %setup -q -n bump2version-%{version}
