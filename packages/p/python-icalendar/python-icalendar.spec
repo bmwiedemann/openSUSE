@@ -37,6 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-pytz
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 BuildArch:      noarch
@@ -54,15 +56,22 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/icalendar
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest src
 
+%post
+%python_install_alternative icalendar
+
+%postun
+%python_uninstall_alternative icalendar
+
 %files %{python_files}
 %license LICENSE.rst
 %doc README.rst CHANGES.rst
-%python3_only %{_bindir}/icalendar
+%python_alternative %{_bindir}/icalendar
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
 
