@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 20 19:00:49 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 8.0.0 (bsc#1171933)
+  + Incompatible command line argument change for ec2publishimg. The
+    --allow-copy option is no longer a bolean. It now supports the
+    image and none keywords as well as a comma separated list of AWS account
+    numbers.
+  + Support having the snapshot copy permissions set differently than the
+    image copy permissions. This supports published image aggregation into
+    AWS MP.
+  + ec2uploadimg tags the helper instance
+
+-------------------------------------------------------------------
 Thu Mar 19 21:42:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 7.0.9 (bsc#1167148)

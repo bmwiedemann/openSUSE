@@ -59,4 +59,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>789812</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2842c63af2ea9fd31c21b26ea3668042</srcmd5>
+    <version>8.0.0</version>
+    <time>1590506355</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 8.0.0 (bsc#1171933)
+  + Incompatible command line argument change for ec2publishimg. The
+    --allow-copy option is no longer a bolean. It now supports the
+    image and none keywords as well as a comma separated list of AWS account
+    numbers.
+  + Support having the snapshot copy permissions set differently than the
+    image copy permissions. This supports published image aggregation into
+    AWS MP.
+  + ec2uploadimg tags the helper instance</comment>
+    <requestid>808021</requestid>
+  </revision>
 </revisionlist>
