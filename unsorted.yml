@@ -26,6 +26,7 @@ unsorted:
   - Box2D-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
+  - CastXML-devel 
   - Catch2-devel 
   - CharLS-devel 
   - Coin-devel 
@@ -58,7 +59,7 @@ unsorted:
   - GraphicsMagick-devel 
   - HSAIL-Tools 
   - HepMC-devel 
-  - HepMC-doc: [i586] 
+  - HepMC-doc 
   - HepMC2-devel 
   - Herwig-devel: [x86_64] 
   - Herwig-libs: [x86_64] 
@@ -4942,6 +4943,7 @@ unsorted:
   - google-oauth-java-client-servlet 
   - google-quiche-source 
   - google-roboto-mono-fonts 
+  - google-worksans-fonts 
   - googleapis-source 
   - googler 
   - gops 
@@ -6413,7 +6415,6 @@ unsorted:
   - jupyter-ipympl 
   - jupyter-ipympl-jupyterlab 
   - jupyter-ipyparallel 
-  - jupyter-ipyparallel-doc 
   - jupyter-ipyscales 
   - jupyter-ipysheet 
   - jupyter-ipyvolume 
@@ -7821,7 +7822,7 @@ unsorted:
   - libSDL_Pango1 
   - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
-  - libSDL_bgi2 
+  - libSDL_bgi-suse3 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -8518,6 +8519,8 @@ unsorted:
   - libcaribou0 
   - libcblas3 
   - libcblas3-32bit: [x86_64] 
+  - libcbor-devel 
+  - libcbor0_7 
   - libccrtp3 
   - libcdata-devel 
   - libcdata1 
@@ -8889,7 +8892,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1601-32bit: [x86_64] 
+  - libdns1603-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -9957,8 +9960,8 @@ unsorted:
   - libirman0 
   - libirrecord0 
   - libirs-devel 
-  - libirs1600-32bit: [x86_64] 
-  - libisc1601-32bit: [x86_64] 
+  - libirs1601-32bit: [x86_64] 
+  - libisc1603-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
   - libisccfg1600-32bit: [x86_64] 
   - libiscsi-devel 
@@ -9986,7 +9989,6 @@ unsorted:
   - libixml11-32bit: [x86_64] 
   - libjack-devel 
   - libjack-devel-32bit: [x86_64] 
-  - libjack-pw0_3_2 
   - libjack0-32bit: [x86_64] 
   - libjacknet0 
   - libjacknet0-32bit: [x86_64] 
@@ -10247,6 +10249,8 @@ unsorted:
   - libloadpng4_4 
   - libloadpng4_4-32bit: [x86_64] 
   - liblockdev1-32bit: [x86_64] 
+  - liblockfile-devel 
+  - liblockfile1 
   - liblodepng-r84 
   - liblog4c-devel 
   - liblog4c-doc 
@@ -11238,10 +11242,7 @@ unsorted:
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
-  - libpulse-mainloop-glib-pw0_3_2 
   - libpulse-mainloop-glib0-32bit: [x86_64] 
-  - libpulse-pw0_3_2 
-  - libpulse-simple-pw0_3_2 
   - libpulse0-32bit: [x86_64] 
   - libpurple-branding-upstream 
   - libpurple-devel 
@@ -11524,7 +11525,7 @@ unsorted:
   - librealsense2 
   - librecad 
   - librecad-parts 
-  - librecode0 
+  - librecode3 
   - libredland-devel 
   - libredwg-devel 
   - libredwg-tools 
@@ -12543,7 +12544,7 @@ unsorted:
   - libvmem-devel: [x86_64] 
   - libvmem1: [x86_64] 
   - libvmime-devel 
-  - libvmime-kopano2 
+  - libvmime-kopano3 
   - libvmmalloc-devel: [x86_64] 
   - libvmmalloc1: [x86_64] 
   - libvmtools-devel 
@@ -13181,6 +13182,7 @@ unsorted:
   - lndir 
   - loadlin: [i586] 
   - lockdev-devel 
+  - lockfile 
   - lodepng-devel 
   - log4cplus-devel 
   - log4cpp-devel 
@@ -16360,6 +16362,7 @@ unsorted:
   - patterns-server-mail_server-32bit 
   - patterns-server-printing-32bit 
   - patterns-server-xen_tools: [x86_64] 
+  - patterns-sway-sway 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
@@ -17883,6 +17886,8 @@ unsorted:
   - piper 
   - pipewire-devel 
   - pipewire-doc 
+  - pipewire-libjack-0_3 
+  - pipewire-libpulse-0_3 
   - pithos 
   - pix 
   - pix-devel 
@@ -18641,7 +18646,6 @@ unsorted:
   - python2-geopy 
   - python2-gobject-Dee 
   - python2-hankel: [i586] 
-  - python2-jupyter-packaging 
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
@@ -18730,7 +18734,7 @@ unsorted:
   - python3-HTTPolice 
   - python3-Hamlib 
   - python3-HeapDict 
-  - python3-HepMC: [i586] 
+  - python3-HepMC 
   - python3-HyperKitty 
   - python3-IMDbPY 
   - python3-Js2Py 
@@ -18780,6 +18784,7 @@ unsorted:
   - python3-PyAutoGUI 
   - python3-PyBindGen 
   - python3-PyBrowserID 
+  - python3-PyCBC 
   - python3-PyChart 
   - python3-PyChromecast 
   - python3-PyDispatcher 
@@ -19343,6 +19348,7 @@ unsorted:
   - python3-cluster 
   - python3-cluster-preflight-check 
   - python3-clustershell 
+  - python3-cma 
   - python3-cmarkgfm 
   - python3-cmd2 
   - python3-coards 
@@ -19743,6 +19749,7 @@ unsorted:
   - python3-ged4py 
   - python3-geis 
   - python3-genders 
+  - python3-genfire 
   - python3-gensio 
   - python3-genty 
   - python3-geographiclib 
@@ -21169,6 +21176,7 @@ unsorted:
   - python3-swifter 
   - python3-sybil 
   - python3-sympy 
+  - python3-system_hotkey 
   - python3-systemd 
   - python3-tableprint 
   - python3-tables 
@@ -21308,6 +21316,7 @@ unsorted:
   - python3-uritools 
   - python3-urlextract 
   - python3-urlgrabber 
+  - python3-usbsdmux 
   - python3-user-agents 
   - python3-user_agent 
   - python3-userpath 
@@ -23860,6 +23869,7 @@ unsorted:
   - runc: [i586] 
   - runc-test 
   - rungetty 
+  - ruqola 
   - rust 
   - rust-analysis 
   - rust-cbindgen 
@@ -32921,6 +32931,7 @@ unsorted:
   - usbprog-gui 
   - usbredir 
   - usbredir-devel 
+  - usbsdmux-udev 
   - usbtop 
   - usbview 
   - usnic_tools: [x86_64] 
