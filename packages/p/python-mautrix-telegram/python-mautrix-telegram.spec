@@ -38,7 +38,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Requires:       python-SQLAlchemy >= 1.2.3
 Requires:       python-Telethon >= 1.10
-Requires:       python-Telethon >= 1.10
 Requires:       python-aiohttp >= 3.0.1
 Requires:       python-alembic >= 1.0.0
 Requires:       python-commonmark >= 0.8.1
@@ -46,6 +45,8 @@ Requires:       python-mautrix >= 0.4.0
 Requires:       python-python-magic >= 0.4.15
 Requires:       python-ruamel.yaml >= 0.15.35
 Requires:       python-telethon-session-sqlalchemy >= 0.2.14
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Brotli
 Recommends:     python-Pillow >= 4.3.0
 Recommends:     python-aiodns
@@ -58,7 +59,6 @@ Provides:       mautrix-telegram-impl = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.3}
-BuildRequires:  %{python_module Telethon >= 1.10}
 BuildRequires:  %{python_module Telethon >= 1.10}
 BuildRequires:  %{python_module aiohttp >= 3.0.1}
 BuildRequires:  %{python_module alembic >= 1.0.0}
@@ -93,6 +93,7 @@ cp %{SOURCE99} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mautrix-telegram
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -115,6 +116,12 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/mautrix-telegram.service
 %check
 %pytest
 
+%post
+%python_install_alternative mautrix-telegram
+
+%postun
+%python_uninstall_alternative mautrix-telegram
+
 %files -n mautrix-telegram-server
 %{_sysconfdir}/mautrix-telegram/
 %config %{_sysconfdir}/mautrix-telegram/example-config.yaml
@@ -129,7 +136,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/mautrix-telegram.service
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/mautrix-telegram
+%python_alternative %{_bindir}/mautrix-telegram
 %{python_sitelib}/*
 
 %changelog
