@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-text-unidecode >= 1.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-Unidecode >= 1.1.1
 Conflicts:      python-awesome-slugify
 BuildArch:      noarch
@@ -48,15 +50,22 @@ sed -i 's/==/>=/' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/slugify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec ./test.py
 
+%post
+%python_install_alternative slugify
+
+%postun
+%python_uninstall_alternative slugify
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/slugify
+%python_alternative %{_bindir}/slugify
 %{python_sitelib}/python_slugify-%{version}-py*.egg-info
 %{python_sitelib}/slugify/
 
