@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 22 06:21:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.11
+  * add bgp4 modes for arista, use 2nd context for cisco bgp4
+
+-------------------------------------------------------------------
+Tue May 19 17:15:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.4.1
+  * fix a typo
+
+-------------------------------------------------------------------
+Mon May 18 16:33:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.10.4
+  * check increase of sessions for Cisco (detect freeze with
+    --mode vpn-sessions --criticalx sessions_per_sec=0.001:)
+  * add AVM 7580
+
+-------------------------------------------------------------------
 Fri Mar 20 16:40:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.10.3
