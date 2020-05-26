@@ -17,7 +17,7 @@
 
 
 Name:           minder
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-or-later
