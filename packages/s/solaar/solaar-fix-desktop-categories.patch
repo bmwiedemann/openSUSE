@@ -1,10 +1,19 @@
-diff -Naur a/share/applications/solaar.desktop b/share/applications/solaar.desktop
---- a/share/applications/solaar.desktop	2013-06-17 09:12:32.000000000 -0500
-+++ b/share/applications/solaar.desktop	2013-06-27 14:11:58.133763929 -0500
-@@ -7,5 +7,4 @@
+Index: Solaar-1.0.2/share/applications/solaar.desktop
+===================================================================
+--- Solaar-1.0.2.orig/share/applications/solaar.desktop	2020-05-23 12:39:23.881199082 +0200
++++ Solaar-1.0.2/share/applications/solaar.desktop	2020-05-23 12:52:28.947896352 +0200
+@@ -4,12 +4,11 @@ Comment=Logitech Unifying Receiver perip
+ Comment[fr]=Gestionnaire de périphériques pour les récepteurs Logitech Unifying
+ Comment[hr]=Upravitelj Logitechovih uređaja povezanih putem Unifying i Nano prijemnika
+ Comment[ru]=Управление приёмником Logitech Unifying Receiver
+-Exec=solaar
++Exec=solaar --window hide
+ Icon=solaar
+ StartupNotify=true
  Terminal=false
  Type=Application
  Keywords=logitech;unifying;receiver;mouse;keyboard;
 -Categories=Utility;GTK;
 -#Categories=Utility;GTK;Settings;HardwareSettings;
 +Categories=Utility;DesktopUtility;
+ X-GNOME-UsesNotifications=true

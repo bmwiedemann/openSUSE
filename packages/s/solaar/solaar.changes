@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 23 10:33:46 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.0.2
+- Removed 0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+- Removed 0001-data-fix-icon-theme-for-battery-level.patch
+- Removed 0005-notifications-fix-battery-status-notification-parsin.patch
+
+-------------------------------------------------------------------
 Thu Oct  3 09:09:21 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing Requries for python3-gobject-Gdk

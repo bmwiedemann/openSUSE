@@ -1,7 +1,7 @@
 #
 # spec file for package solaar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,15 @@
 
 
 Name:           solaar
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            https://pwr-solaar.github.io/Solaar
+URL:            https://pwr-solaar.github.io/Solaar
 Source0:        https://github.com/pwr/Solaar/archive/%{version}/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE solaar-fix-desktop-categories.patch malcolmlewis@opensuse.org -- Fix desktop categories as per openSUSE desktop file specification.
 Patch0:         solaar-fix-desktop-categories.patch
-# https://github.com/pwr-Solaar/Solaar/pull/546
-Patch1:         0001-Fix-reading-and-storing-DPI-in-config-settings.patch
-# https://github.com/pwr-Solaar/Solaar/commit/a06ea6de11259ca1511e7fe759306e7db47fb1da
-Patch2:         0001-data-fix-icon-theme-for-battery-level.patch
-# https://github.com/pwr-Solaar/Solaar/commit/69815558041b84da9add36d4bd1503415a3ac0c0
-Patch3:         0005-notifications-fix-battery-status-notification-parsin.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -39,11 +33,16 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 #
+BuildRequires:  python3-gobject
 Requires:       python3-gobject
+BuildRequires:  python3-gobject-Gdk
 Requires:       python3-gobject-Gdk
+BuildRequires:  python3-pyudev
 Requires:       python3-pyudev
-Requires:       solaar-udev >= %{version}
+BuildRequires:  typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Gtk-3_0
+#
+Requires:       solaar-udev >= %{version}
 #
 Obsoletes:      solaar-cli < %{version}
 Provides:       solaar-cli = %{version}
@@ -95,6 +94,7 @@ sed -i 's#/usr/bin/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
 %fdupes -s %{buildroot}%{_datadir}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+rm -rf %{buildroot}%{_sysconfdir}/udev
 install -d 0755 %{buildroot}%{_udevrulesdir}
 install -m 0644 rules.d/42-logitech-unify-permissions.rules %{buildroot}%{_udevrulesdir}/42-logitech-unify-permissions.rules
 

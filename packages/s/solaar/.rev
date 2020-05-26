@@ -51,4 +51,16 @@
 </comment>
     <requestid>734754</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>beef363b5865deb499c41a7f36ad9f7a</srcmd5>
+    <version>1.0.2</version>
+    <time>1590506464</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.0.2
+- Removed 0001-Fix-reading-and-storing-DPI-in-config-settings.patch
+- Removed 0001-data-fix-icon-theme-for-battery-level.patch
+- Removed 0005-notifications-fix-battery-status-notification-parsin.patch
+</comment>
+    <requestid>808433</requestid>
+  </revision>
 </revisionlist>
