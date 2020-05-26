@@ -46,4 +46,12 @@
     <comment>- Fix SRPM group. Update summaries. (forwarded request 583073 from jengelh)</comment>
     <requestid>583074</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>956cb403c4ec1a8d0ead7613eccbf673</srcmd5>
+    <version>0.2.4</version>
+    <time>1590506053</time>
+    <user>maxlin_factory</user>
+    <comment>New upstream release (forwarded request 806169 from iznogood)</comment>
+    <requestid>807571</requestid>
+  </revision>
 </revisionlist>

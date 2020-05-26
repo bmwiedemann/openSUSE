@@ -1,7 +1,7 @@
 #
 # spec file for package gfbgraph
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define APIversion 0.2
+
 Name:           gfbgraph
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Facebook Graph API access library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            https://github.com/alvaropg/gfbgraph
-Source:         http://download.gnome.org/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/libgfbgraph
+Source:         https://download.gnome.org/sources/gfbgraph/0.2/%{name}-%{version}.tar.xz
+
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -50,7 +54,7 @@ Summary:        Introspection bindings for the Facebook Graph API access library
 Group:          System/Libraries
 
 %description -n typelib-1_0-GFBGraph-0_2
-A GObject library for Facebook Graph API
+Introspection bindings for the Facebook Graph API access library.
 
 %package devel
 Summary:        Development files for the Facebook Graph API access library
@@ -64,12 +68,15 @@ A GObject library for Facebook Graph API
 This package contains header and linker information.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --disable-static
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-gtk-doc \
+	%{nil}
+%make_build
 
 %install
 %make_install
