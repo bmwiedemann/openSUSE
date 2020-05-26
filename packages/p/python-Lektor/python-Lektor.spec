@@ -39,6 +39,8 @@ Requires:       python-mistune >= 0.7.0
 Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-watchdog
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       git-core
 Suggests:       python-pip
 BuildArch:      noarch
@@ -84,6 +86,7 @@ rm pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/lektor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -93,10 +96,16 @@ git init
 # Three failures not yet investigated
 %python_exec setup.py pytest --addopts="-k 'not test_build_continue_in_existing_nonempty_dir and not test_build and not test_thumbnail_quality'"
 
+%post
+%python_install_alternative lektor
+
+%postun
+%python_uninstall_alternative lektor
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/lektor
+%python_alternative %{_bindir}/lektor
 %{python_sitelib}/*
 
 %changelog

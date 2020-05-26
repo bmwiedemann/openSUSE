@@ -30,4 +30,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>795805</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d57c7169d3213acf84eabe612e6ed182</srcmd5>
+    <version>3.1.3</version>
+    <time>1590506611</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808686</requestid>
+  </revision>
 </revisionlist>
