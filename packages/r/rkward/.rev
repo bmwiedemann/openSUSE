@@ -313,4 +313,19 @@
     <comment>- upstream release 0.7.1 (forwarded request 766950 from wolfi323)</comment>
     <requestid>766957</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6c46e6fe1baf702929f86d741183a8d1</srcmd5>
+    <version>0.7.1b</version>
+    <time>1590508214</time>
+    <user>maxlin_factory</user>
+    <comment>- upstream release 0.7.1b
+  * Workaround to avoid bug in R 4.0.0 when using for loop on top
+    level context (kde#421958)
+  * Fixed: Hang when opening an empty workplace (kde#420888)
+  * Fixed: Crash when mousing over code preview window with
+    focus-follows-mouse enabled (kde#420588)
+- Update URL
+- Run spec-cleaner (forwarded request 808892 from wolfi323)</comment>
+    <requestid>808906</requestid>
+  </revision>
 </revisionlist>

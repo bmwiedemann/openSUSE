@@ -1,7 +1,7 @@
 #
 # spec file for package rkward
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 Name:           rkward
-Version:        0.7.1
+Version:        0.7.1b
 Release:        0
 Summary:        Graphical frontend for R language
+Summary(fr):    Interface graphique pour le langage R
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
-Summary(fr):    Interface graphique pour le langage R 
-
-Url:            http://rkward.sourceforge.net/ 
+URL:            https://rkward.kde.org/
 Source0:        %{name}-%{version}.tar.gz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  R-base-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
@@ -78,14 +74,13 @@ intégration dans les suites bureautiques.
 %make_jobs
 
 %install
-%makeinstall -C build
+%make_install -C build
 
 %suse_update_desktop_file -n org.kde.rkward
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc README TODO AUTHORS
 %doc %{_kf5_mandir}/man1/rkward.1.gz
 %dir %{_kf5_sharedir}/doc/HTML/en/rkwardplugins
@@ -122,15 +117,15 @@ intégration dans les suites bureautiques.
 # language files
 
 %dir %{_kf5_sharedir}/rkward/po/
-%lang(ca)  %{_kf5_sharedir}/rkward/po/ca/
-%lang(es)  %{_kf5_sharedir}/rkward/po/es/
-%lang(gl)  %{_kf5_sharedir}/rkward/po/gl/
-%lang(nl)  %{_kf5_sharedir}/rkward/po/nl/
-%lang(pl)  %{_kf5_sharedir}/rkward/po/pl/
-%lang(pt)  %{_kf5_sharedir}/rkward/po/pt/
-%lang(pt_BR)  %{_kf5_sharedir}/rkward/po/pt_BR/
-%lang(sv)  %{_kf5_sharedir}/rkward/po/sv/
-%lang(uk)  %{_kf5_sharedir}/rkward/po/uk/
+%lang(ca) %{_kf5_sharedir}/rkward/po/ca/
+%lang(es) %{_kf5_sharedir}/rkward/po/es/
+%lang(gl) %{_kf5_sharedir}/rkward/po/gl/
+%lang(nl) %{_kf5_sharedir}/rkward/po/nl/
+%lang(pl) %{_kf5_sharedir}/rkward/po/pl/
+%lang(pt) %{_kf5_sharedir}/rkward/po/pt/
+%lang(pt_BR) %{_kf5_sharedir}/rkward/po/pt_BR/
+%lang(sv) %{_kf5_sharedir}/rkward/po/sv/
+%lang(uk) %{_kf5_sharedir}/rkward/po/uk/
 %lang(x-test) %{_kf5_sharedir}/rkward/po/x-test/
 
 %doc %lang(en) %{_kf5_sharedir}/doc/HTML/en/rkward/

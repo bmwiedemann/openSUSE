@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 25 19:43:17 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- upstream release 0.7.1b
+  * Workaround to avoid bug in R 4.0.0 when using for loop on top
+    level context (kde#421958)
+  * Fixed: Hang when opening an empty workplace (kde#420888)
+  * Fixed: Crash when mousing over code preview window with
+    focus-follows-mouse enabled (kde#420588)
+- Update URL
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Fri Jan 24 10:55:32 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - upstream release 0.7.1
