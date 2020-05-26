@@ -34,8 +34,10 @@ Requires:       python-cached-property
 Requires:       python-dragonmapper
 Requires:       python-loguru
 Requires:       python-zhon
-Suggests:       python-requests-html
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-requests
+Suggests:       python-requests-html
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PrettyTable}
@@ -59,15 +61,22 @@ dos2unix README.md
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/normalizer
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py pytest
 
+%post
+%python_install_alternative normalizer
+
+%postun
+%python_uninstall_alternative normalizer
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/normalizer
+%python_alternative %{_bindir}/normalizer
 %{python_sitelib}/*
 
 %changelog
