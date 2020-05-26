@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutt-ics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-icalendar >= 3.9.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython3
 Provides:       mutt-ics
@@ -49,6 +51,7 @@ A tool to show calendar event details in Mutt.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mutt-ics
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,9 +61,15 @@ exit_code=0
 %python_exec build/lib/mutt_ics/mutt_ics.py samples/3.ics | grep Organizer || exit_code=3
 exit $exit_code
 
+%post
+%python_install_alternative mutt-ics
+
+%postun
+%python_uninstall_alternative mutt-ics
+
 %files %{python_files}
 %doc README.md
-%python3_only %{_bindir}/mutt-ics
+%python_alternative %{_bindir}/mutt-ics
 %{python_sitelib}/*
 
 %changelog
