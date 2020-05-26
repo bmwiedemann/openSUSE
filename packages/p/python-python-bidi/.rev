@@ -24,4 +24,12 @@
   * Merged Fix for mixed RTL and numbers, Thanks Just van Rossum</comment>
     <requestid>717599</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7657afc9229b09d436416c4369228777</srcmd5>
+    <version>0.4.2</version>
+    <time>1590506292</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807674</requestid>
+  </revision>
 </revisionlist>

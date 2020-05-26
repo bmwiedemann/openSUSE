@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-bidi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module six}
@@ -47,15 +49,22 @@ sed -i -e '/^#!\//, 1d' bidi/__init__.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pybidi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative pybidi
+
+%postun
+%python_uninstall_alternative pybidi
+
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license COPYING COPYING.LESSER
-%python3_only %{_bindir}/pybidi
+%python_alternative %{_bindir}/pybidi
 %{python_sitelib}/*
 
 %changelog
