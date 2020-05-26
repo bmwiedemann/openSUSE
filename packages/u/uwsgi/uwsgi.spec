@@ -95,7 +95,11 @@ BuildRequires:  php7-embed
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  python-devel
+%if 0%{?suse_version} > 1510
+BuildRequires:  python3-greenlet-devel
+%else
 BuildRequires:  python-greenlet-devel
+%endif
 BuildRequires:  python3-devel
 %if 0%{?suse_version} <= 1310
 BuildRequires:  ruby19-devel
@@ -483,6 +487,11 @@ excluded_plugins="$excluded_plugins matheval"
 # bsc#1156199 - python-txtorcon: GeoIP support is discontinued 
 excluded_plugins="$excluded_plugins geoip"
 
+# greenlet is python3 now
+%if 0%{?suse_version} > 1510
+excluded_plugins="$excluded_plugins greenlet"
+%endif
+
 # V8 is not yet available on all platforms and is broken in the v8 versions in
 # 13.1+
 %ifarch %{ix86} x86_64 %{arm} aarch64 ppc ppc64 ppc64le
@@ -532,6 +541,10 @@ python3 uwsgiconfig.py --plugin plugins/python opensuse python3
 python3 uwsgiconfig.py --plugin plugins/php opensuse php7
 %endif
 
+%if 0%{?suse_version} > 1510
+python3 uwsgiconfig.py --plugin plugins/greenlet opensuse greenlet
+%endif
+
 %install
 install -D -m 0755 uwsgi %{buildroot}%{_sbindir}/uwsgi
 install -d -m 0755 %{buildroot}%{_libdir}/uwsgi
@@ -543,8 +556,8 @@ install -m 0644 %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{buildroot}%{_sysco
 install -m 0644 vassals/broodlord.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/broodlord.ini.example
 install -m 0644 vassals/cc.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/cc.ini.example
 install -m 0644 vassals/multi.xml %{buildroot}%{_sysconfdir}/uwsgi/vassals/multi.xml.example
-install -D -m 0644 uwsgidecorators.py %{buildroot}%{python_sitelib}/uwsgidecorators.py
-%py_compile %{buildroot}%{python_sitelib}
+install -D -m 0644 uwsgidecorators.py %{buildroot}%{python2_sitelib}/uwsgidecorators.py
+%py_compile %{buildroot}%{python2_sitelib}
 install -D -m 0644 uwsgidecorators.py %{buildroot}%{python3_sitelib}/uwsgidecorators.py
 %py_compile %{buildroot}%{python3_sitelib}
 install -D plugins/jvm/uwsgi.jar %{buildroot}%{_javadir}/uwsgi.jar
@@ -726,7 +739,7 @@ ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rcuwsgi
 %files python
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/python_plugin.so
-%{python_sitelib}/uwsgidecorators.py*
+%{python2_sitelib}/uwsgidecorators.py*
 
 %files python3
 %defattr(-,root,root,-)
