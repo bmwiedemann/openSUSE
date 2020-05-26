@@ -33,6 +33,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-GitPython
 Requires:       python-PyGithub
 Requires:       python-msm >= 0.5.13
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython2
 Requires:       python-typing
@@ -52,12 +54,19 @@ cp %{SOURCE99} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/msk
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative msk
+
+%postun
+%python_uninstall_alternative msk
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/msk
+%python_alternative %{_bindir}/msk
 %{python_sitelib}/*
 
 %changelog
