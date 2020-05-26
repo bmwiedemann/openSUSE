@@ -35,6 +35,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Unidecode
 Requires:       python-gevent >= 1.2.2
 Requires:       python-preggy >= 1.3.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-colorama >= 0.3.7
 BuildArch:      noarch
 %python_subpackages
@@ -53,6 +55,7 @@ export LANG="en_US.UTF-8"
 %install
 export LANG="en_US.UTF-8"
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyvows
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,8 +64,14 @@ export PYTHONPATH=.
 export PATH=%{buildroot}%{_bindir}:$PATH
 %python_exec pyvows/cli.py -x tests/
 
+%post
+%python_install_alternative pyvows
+
+%postun
+%python_uninstall_alternative pyvows
+
 %files %{python_files}
-%python3_only %{_bindir}/pyvows
+%python_alternative %{_bindir}/pyvows
 %{python_sitelib}/*
 
 %changelog

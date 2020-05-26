@@ -33,4 +33,12 @@
   * py37-async-keyword.patch</comment>
     <requestid>783594</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>352138eb5b89849c018b51e8e538808e</srcmd5>
+    <version>3.0.0</version>
+    <time>1590506275</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807668</requestid>
+  </revision>
 </revisionlist>
