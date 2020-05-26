@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 14 14:19:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Go back to PyPI tarball
+- Update to final 6.3.0
+  * **Require Python 3.5**
+  * Fix compatibility with joblib 0.14
+  * Fix crash recovery test for Python 3.8
+  * Fix repeated name when cluster-id is set
+  * Fix CSS for notebook extension
+  * Fix KeyError handling heartbeat failures
+- Drop the doc subpackage, the package can be found on readthedocs
+
+-------------------------------------------------------------------
 Thu Apr 23 10:56:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop py2 code from py3 only package

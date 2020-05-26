@@ -168,4 +168,12 @@
     <comment>- Drop py2 code from py3 only package</comment>
     <requestid>796496</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4bd2bf00336cfb9f88a9798220e57fbd</srcmd5>
+    <version>6.3.0</version>
+    <time>1590506413</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808407</requestid>
+  </revision>
 </revisionlist>

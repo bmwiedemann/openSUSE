@@ -16,21 +16,16 @@
 #
 
 
-%define gitversion 6.3.0.dev0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyparallel
-Version:        6.3.0~git.20191010T150914.ce996ae
+Version:        6.3.0
 Release:        0
-%define doc_ver 6.2.3
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
-Source:         ipyparallel-%{version}.tar.xz
-Source1:        https://media.readthedocs.org/pdf/ipyparallel/%{doc_ver}/ipyparallel.pdf
-Source2:        https://media.readthedocs.org/htmlzip/ipyparallel/%{doc_ver}/ipyparallel.zip
+Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -103,8 +98,6 @@ Documentation and help files for ipyparallel.
 
 %prep
 %setup -q -n ipyparallel-%{version}
-unzip %{SOURCE2}
-mv ipyparallel-%{doc_ver} docs/html
 rm -f docs/html/.buildinfo
 
 %build
@@ -140,15 +133,10 @@ $python -O -m compileall -d %{$python_sitearch} ipyparallel/controller/heartmoni
 popd
 }
 
-mkdir -p %{buildroot}%{_docdir}/jupyter-ipyparallel
-
-cp %{SOURCE1} %{buildroot}%{_docdir}/jupyter-ipyparallel/
-cp -r docs/html %{buildroot}%{_docdir}/jupyter-ipyparallel/
-
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-%pytest -k 'not test_disambiguate_ip and not test_bind_kernel and not test_autopx_blocking and not test_warning_on_hostname_match'
+%pytest -k 'not test_disambiguate_ip'
 
 %post
 %{python_install_alternative ipcluster ipcontroller ipengine}
@@ -161,7 +149,7 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-ipyparallel/
 %python_alternative %{_bindir}/ipcluster
 %python_alternative %{_bindir}/ipcontroller
 %python_alternative %{_bindir}/ipengine
-%{python_sitelib}/ipyparallel-%{gitversion}-py*.egg-info
+%{python_sitelib}/ipyparallel-%{version}-py*.egg-info
 %{python_sitelib}/ipyparallel/
 
 %files -n jupyter-ipyparallel
@@ -170,11 +158,5 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-ipyparallel/
 %{_jupyter_nbextension_dir}/ipyparallel/
 %config %{_jupyter_servextension_confdir}/ipyparallel-serverextension.json
 %config %{_jupyter_nb_tree_confdir}/ipyparallel-nbextension.json
-
-%files -n jupyter-ipyparallel-doc
-%license COPYING.md
-%dir %{_docdir}/jupyter-ipyparallel/
-%{_docdir}/jupyter-ipyparallel/ipyparallel.pdf
-%{_docdir}/jupyter-ipyparallel/html/
 
 %changelog
