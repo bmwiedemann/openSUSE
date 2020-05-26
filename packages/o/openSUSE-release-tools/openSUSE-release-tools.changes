@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 17 14:04:58 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200517.e09639bc:
+  * ignore packages that just have _channel inside
+
+-------------------------------------------------------------------
+Fri May 15 14:23:32 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200515.13e2fbe2:
+  * Fix crash in project-installcheck if there are no packages in the pra
+
+-------------------------------------------------------------------
+Fri May 15 07:55:01 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200515.bfa069ee:
+  * Trigger rebuilds on zSystem as needed
+
+-------------------------------------------------------------------
 Tue May 05 07:53:31 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200505.cd067a94:
