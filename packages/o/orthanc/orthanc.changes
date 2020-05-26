@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 22 17:22:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- new version 1.7.0
+  * Support of DICOM C-GET SCP (contribution by Varian)
+  * DICOM transcoding over the REST API
+  * Transcoding from compressed to uncompressed transfer syntaxes over DICOM
+  C-STORE SCU (if the remote modality doesn't support compressed syntaxes)
+  * New configuration options related to transcoding:
+  "TranscodeDicomProtocol", "BuiltinDecoderTranscoderOrder",
+  "IngestTranscoding" and "DicomLossyTranscodingQuality"
+  * See NEWS for details
+
+-------------------------------------------------------------------
 Wed Apr 22 17:59:05 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.6.1
