@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.3
 Requires:       python-olefile >= 0.45
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
@@ -54,15 +56,22 @@ wc -c msoffcrypto/method/xor_obfuscation.py | sed -n '/^0/{s/^0\s//;p}' | xargs 
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/msoffcrypto-tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -m nose --with-doctest
 
+%post
+%python_install_alternative msoffcrypto-tool
+
+%postun
+%python_uninstall_alternative msoffcrypto-tool
+
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python3_only %{_bindir}/msoffcrypto-tool
+%python_alternative %{_bindir}/msoffcrypto-tool
 %{python_sitelib}/*
 
 %changelog
