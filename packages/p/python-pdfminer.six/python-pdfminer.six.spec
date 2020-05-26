@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
@@ -24,17 +26,19 @@ License:        MIT
 URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module nose}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
 Requires:       python-pycryptodome
 Requires:       python-six
 Requires:       python-sortedcontainers
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pdfminer3k = %{version}
 Obsoletes:      python-pdfminer3k < %{version}
 BuildArch:      noarch
@@ -55,7 +59,7 @@ of text analysis.
 %prep
 %setup -q -n pdfminer.six-%{version}
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
-sed  -i '1i #!/usr/bin/python3' tools/dumppdf.py tools/pdf2txt.py
+sed  -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
 
 %build
 %python_build
@@ -66,15 +70,25 @@ sed  -i '1i #!/usr/bin/python3' tools/dumppdf.py tools/pdf2txt.py
 
 mv %{buildroot}%{_bindir}/dumppdf.py %{buildroot}%{_bindir}/dumppdf
 mv %{buildroot}%{_bindir}/pdf2txt.py %{buildroot}%{_bindir}/pdf2txt
+%python_clone -a %{buildroot}%{_bindir}/pdf2txt
+%python_clone -a %{buildroot}%{_bindir}/dumppdf
 
 %check
 %python_expand nosetests-%{$python_bin_suffix} -v
 
+%post
+%python_install_alternative pdf2txt
+%python_install_alternative dumppdf
+
+%postun
+%python_uninstall_alternative pdf2txt
+%python_uninstall_alternative dumppdf
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/dumppdf
-%python3_only %{_bindir}/pdf2txt
+%python_alternative %{_bindir}/dumppdf
+%python_alternative %{_bindir}/pdf2txt
 %{python_sitelib}/pdfminer*
 
 %changelog
