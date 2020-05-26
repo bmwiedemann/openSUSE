@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:15 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sun Apr  5 07:19:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip flaky test

@@ -64,6 +64,8 @@ Requires:       python-twine >= 1.9.1
 Requires:       python-userpath >= 1.3.0
 Requires:       python-virtualenv
 Requires:       python-wheel >= 0.27.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,6 +82,7 @@ It aims to make the 90% use cases as pleasant as possible.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hatch
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -88,10 +91,16 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 # test_list_success_1 randomly timeouts in OBS
 %pytest -k 'not test_list_success_1'
 
+%post
+%python_install_alternative hatch
+
+%postun
+%python_uninstall_alternative hatch
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE-APACHE LICENSE-MIT
-%python3_only %{_bindir}/hatch
+%python_alternative %{_bindir}/hatch
 %{python_sitelib}/*
 
 %changelog
