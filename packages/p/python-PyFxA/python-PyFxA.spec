@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyFxA
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,6 +42,8 @@ Requires:       python-PyBrowserID
 Requires:       python-cryptography
 Requires:       python-requests >= 2.4.2
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %ifpython3
 Requires:       python-setuptools
@@ -63,15 +65,22 @@ find ./ -type f -exec chmod -x {} +
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/fxa-client
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_monkey_patch_for_gevent gevent no longer packaged as it is deprecated
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v -k 'not test_monkey_patch_for_gevent' fxa/tests/
+%pytest -k 'not test_monkey_patch_for_gevent' fxa/tests/
+
+%post
+%python_install_alternative fxa-client
+
+%postun
+%python_uninstall_alternative fxa-client
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
-%python3_only %{_bindir}/fxa-client
+%python_alternative %{_bindir}/fxa-client
 %{python_sitelib}/*
 
 %changelog

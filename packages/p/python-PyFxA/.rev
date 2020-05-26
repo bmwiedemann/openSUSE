@@ -69,4 +69,12 @@
   * Allow specifying a `ttl` when redeeming an authorization code.</comment>
     <requestid>718746</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>87ae7753f108e0a38752127c481dabbd</srcmd5>
+    <version>0.7.3</version>
+    <time>1590506256</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807663</requestid>
+  </revision>
 </revisionlist>
