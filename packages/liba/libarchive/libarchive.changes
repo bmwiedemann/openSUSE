@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 20 05:14:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.4.3
+  * support for pzstd compressed files (#1357)
+  * support for RHT.security.selinux tar extended attribute (#1348)
+  * various zstd fixes and improvements (#1342 #1352 #1359)
+  * child process handling fixes (#1372)
+
+-------------------------------------------------------------------
 Tue Feb 18 14:46:07 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Switch back to cmake build now that cmake-mini exists, this will

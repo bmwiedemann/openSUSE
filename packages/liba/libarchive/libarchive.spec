@@ -31,7 +31,7 @@
 %endif
 
 Name:           libarchive
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
