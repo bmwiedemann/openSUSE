@@ -29,17 +29,18 @@ Source:         https://files.pythonhosted.org/packages/source/i/img2pdf/img2pdf
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Pillow
+Requires:       python-pdfrw
+Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Suggests:       python-pdfrw
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pdfrw}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-Pillow
-Requires:       python-pdfrw
-Requires:       python-setuptools
-Suggests:       python-pdfrw
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -60,16 +61,26 @@ sed -i -e '/^#!\//, 1d' src/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/img2pdf-gui
+%python_clone -a %{buildroot}%{_bindir}/img2pdf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative img2pdf-gui
+%python_install_alternative img2pdf
+
+%postun
+%python_uninstall_alternative img2pdf-gui
+%python_uninstall_alternative img2pdf
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.md
-%python3_only %{_bindir}/img2pdf
-%python3_only %{_bindir}/img2pdf-gui
+%python_alternative %{_bindir}/img2pdf
+%python_alternative %{_bindir}/img2pdf-gui
 %{python_sitelib}/*
 
 %changelog

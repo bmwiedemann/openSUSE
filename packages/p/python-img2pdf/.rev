@@ -53,4 +53,12 @@
     <comment>- Drop py2 dep from py3 only package</comment>
     <requestid>796497</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5e818c9f36792a40443173a26e8eb355</srcmd5>
+    <version>0.3.4</version>
+    <time>1590508166</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808787</requestid>
+  </revision>
 </revisionlist>
