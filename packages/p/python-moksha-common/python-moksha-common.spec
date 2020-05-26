@@ -1,7 +1,7 @@
 #
 # spec file for package python-moksha-common
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Requires:       python-decorator
 Requires:       python-kitchen
 Requires:       python-pytz
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module decorator}
@@ -55,16 +57,23 @@ Common components for Moksha.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/moksha
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %if %{with test}
 %check
 %python_exec setup.py test
 %endif
 
+%post
+%python_install_alternative moksha
+
+%postun
+%python_uninstall_alternative moksha
+
 %files %{python_files}
 %license COPYING
 %doc AUTHORS README
-%python3_only %{_bindir}/moksha
+%python_alternative %{_bindir}/moksha
 %{python_sitelib}/*
 
 %changelog
