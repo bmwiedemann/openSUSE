@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 11:20:41 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Register with pam-config in %post(un)
+
+-------------------------------------------------------------------
 Fri May  1 20:28:41 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add baselibs.conf

@@ -36,7 +36,6 @@ BuildRequires:  gettext-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python3)
-%lang_package
 %if %{with python2}
 BuildRequires:  pkgconfig(python2)
 %endif
@@ -44,6 +43,8 @@ BuildRequires:  pkgconfig(python2)
 %description
 libpwquality is a library for password quality checks and generation
 of random passwords that pass the checks.
+
+%lang_package
 
 %package -n %{libname}
 Summary:        Library for password quality checking and generating random passwords
@@ -84,6 +85,8 @@ using the libpwquality library.
 Summary:        PAM module to disallow weak new passwords
 Group:          System/Libraries
 Requires:       pam
+Requires(post): pam-config
+Requires(postun): pam-config
 
 %description -n pam_pwquality
 The pam_pwquality PAM module can be used instead of pam_cracklib to
@@ -143,6 +146,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
+%post -n pam_pwquality
+# Due to boo#728586 it is necessary to duplicate this in the 32bit variant.
+# So you need to edit baselibs.conf if you change this.
+%{_sbindir}/pam-config -a --pwquality || :
+
+%postun -n pam_pwquality
+if [ "$1" = "0" ]; then
+  %{_sbindir}/pam-config -d --pwquality || :
+fi
 
 %files -n %{libname}
 %license COPYING

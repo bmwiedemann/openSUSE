@@ -124,4 +124,12 @@
     <comment></comment>
     <requestid>799805</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>0ce30fc64b51c685fe92c2965f0cae99</srcmd5>
+    <version>1.4.1</version>
+    <time>1590506061</time>
+    <user>maxlin_factory</user>
+    <comment>- Register with pam-config in %post(un) (forwarded request 807113 from favogt)</comment>
+    <requestid>807575</requestid>
+  </revision>
 </revisionlist>
