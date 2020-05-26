@@ -33,6 +33,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 1.0.0
 Requires:       python-holoviews >= 1.11.0
 Requires:       python-pandas
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-dask
 Recommends:     python-datashader >= 0.6.5
@@ -87,16 +89,23 @@ plot APIs is offered, or it can be used as a standalone component.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hvplot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # tests require a network connection
 # %%check
 # %%python_expand nosetests-%%{$python_bin_suffix} -v hvplot
 
+%post
+%python_install_alternative hvplot
+
+%postun
+%python_uninstall_alternative hvplot
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/hvplot
+%python_alternative %{_bindir}/hvplot
 %{python_sitelib}/*
 
 %changelog

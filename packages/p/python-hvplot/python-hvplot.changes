@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:20 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Apr 15 06:59:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove nose dep since we can't run the tests 
