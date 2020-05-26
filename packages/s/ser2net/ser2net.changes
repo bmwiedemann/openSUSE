@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 16 14:56:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.8
+  * ser2net will now retry accepters and connect back connectors
+    if they fail to come up or get an error.
+
+-------------------------------------------------------------------
+Wed Apr 29 06:32:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.7
+  * Fix trace files so the actually work.
+  * Add a sendon option to cause data to be forwarded immediately
+    if the given sequence is seen.
+  * Convert the tests to use yaml configuration.
+  * Allow stdin to be read as a yaml config file.
+  * Allow yaml config to be passed in on the command line directly.
+  * Fix some issues with connect back handling.
+  * A host of other smaller things.
+
+-------------------------------------------------------------------
 Tue Apr 21 10:17:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Install the configuration file into the correct directory
