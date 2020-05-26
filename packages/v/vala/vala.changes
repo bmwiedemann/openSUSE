@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May 18 14:08:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.48.6:
+  + Regression and bug fixes:
+    - codegen:
+      . Correctly handle cast-expression of real struct to nullable
+        struct.
+      . Use loop index instead of get_ccode_pos() for ellipsis
+        parameter.
+    - vala:
+      . Allow node_ref being null in
+        SemanticAnalyzer.get_instance_base_type().
+      . SemanticAnalyzer.get_instance_base_type() is not allowed to
+        return null.
+      . params-array parameter is not allowed in abstract/virtual
+       method.
+      . Use stable hash for methods in HashMap of
+        implicit_implementations and Use "str_equal" as equal_func
+        for ArrayList<string> instances.
+      . Set value_type of undefined member-access to avoid further
+        criticals.
+      . Transform cast from floating-type to boxed-type.
+      . Transform cast from integer-type to boxed-type.
+      . Explicit "new" method may be incompatible with a posssible
+        base method.
+    - valadoc: Add implicit "Posix" using-directive for POSIX
+      profile.
+    - girparser: Add support for boolean "new" argument for
+      methods.
+  + Bindings: gtk4: Update to 3.98.3+028942c8.
+
+-------------------------------------------------------------------
 Thu Apr 23 12:18:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.48.5:
