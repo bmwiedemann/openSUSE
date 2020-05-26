@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun May 24 09:34:07 UTC 2020 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 3.7
+- Usability, bells and whistles
+* The `git-xbase` rebase editor now includes a file list for filtering
+  the changes displayed in the diff view.
+  https://github.com/git-cola/git-cola/pull/1051
+* The fallback `ssh-askpass` script, which provides the Username/Password
+  login dialog when performing remote operations, previously presented both
+  the username and password input fields with `***` asterisks.
+  The dialog now uses asterisks for the password field only.
+  https://github.com/git-cola/git-cola/pull/1026
+* Stashes can now be applied using the `Ctrl + Enter` hotkey, popped with the
+  `Ctrl + Backspace` hotkey, and dropped with the `Ctrl + Shift + Backspace`
+  hotkey when inside the stash dialog.  This enables a keyboard-centric
+  mouse-free workflow when using the stash dialog.
+* When amending a commit, `git cola` will check whether the commit has been
+  published to a remote branch using `git branch -r --contains HEAD`.
+  This command can be slow when operating on a repository with many
+  remote branches.  The new `cola.checkpublishedcommits` configuration
+  variable allows you to opt-out of this check, which improves performance
+  when amending a commit.  The settings widget exposes this variable as,
+  "Check Published Commits when Amending".
+  https://github.com/git-cola/git-cola/issues/1021
+  https://github.com/git-cola/git-cola/pull/1027
+- Translations
+* Updated Polish translation.
+  https://github.com/git-cola/git-cola/pull/1033
+- Fixes
+* `git-dag.appdata.xml` was updated to allow network access for author icons.
+  https://github.com/git-cola/git-cola/pull/1050
+* The inotify filesystem monitor now handles
+  `OSError: [Errno 24] Too many open files` errors by disabling inotify.
+  https://github.com/git-cola/git-cola/issues/1015
+* Typos in various documentation files have been fixed.
+  https://github.com/git-cola/git-cola/pull/1025
+* The "Recent Repositories" limit was off by one, and now correctly
+  remembers the configured number of repositories in the menu.
+  https://github.com/git-cola/git-cola/pull/1024
+* The "revert" action in the DAG and other tools now uses
+  `git revert --no-edit`, which avoids launching an editor
+  when reverting the commit.  Use `Ctrl+m` in the commit message
+  editor after reverting a commit to rewrite its commit message.
+  https://github.com/git-cola/git-cola/issues/1020
+
+-------------------------------------------------------------------
 Mon Dec 23 20:30:59 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Added inotify.patch
