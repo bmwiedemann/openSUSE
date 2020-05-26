@@ -40,6 +40,8 @@ Requires:       python-bitstring >= 3.1.4
 Requires:       python-defusedxml >= 0.5.0
 Requires:       python-dominate >= 2.2.0
 Requires:       python-lxml >= 4.1.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,16 +61,23 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/httpolice
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative httpolice
+
+%postun
+%python_uninstall_alternative httpolice
+
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.rst README.rst
-%python3_only %{_bindir}/httpolice
+%python_alternative %{_bindir}/httpolice
 %{python_sitelib}/*
 
 %changelog
