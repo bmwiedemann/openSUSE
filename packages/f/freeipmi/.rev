@@ -456,4 +456,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>726879</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6799a99cb83873d462797164261d6747</srcmd5>
+    <version>1.6.5</version>
+    <time>1590506487</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.6.5
+  o Add FRU parsing workaround for Fujitsu Primergy RX1330, in which a
+    CEh is used to indicate that no FRU data is available.
+  o Misc minor fixes.
+</comment>
+    <requestid>808102</requestid>
+  </revision>
 </revisionlist>

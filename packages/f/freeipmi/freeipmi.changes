@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 07:03:07 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.5
+  o Add FRU parsing workaround for Fujitsu Primergy RX1330, in which a
+    CEh is used to indicate that no FRU data is available.
+  o Misc minor fixes.
+
+-------------------------------------------------------------------
 Thu Aug 22 02:21:00 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.6.4

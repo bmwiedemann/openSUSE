@@ -1,7 +1,7 @@
 #
 # spec file for package freeipmi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2003-2008 FreeIPMI Core Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,9 +37,9 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.4
+Version:        1.6.5
 Release:        %{release}
-Url:            http://www.gnu.org/software/freeipmi/
+URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source4:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source5:        %{name}.keyring
