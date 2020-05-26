@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyterlab-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           jupyter-jupyterlab-server
-Version:        1.0.6
+Version:        1.1.5
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_server
-Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab-server/jupyterlab_server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      jupyter-jupyterlab-server-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,11 +31,12 @@ Requires:       jupyter-notebook >= 4.2.0
 Requires:       python3-Jinja2 >= 2.10
 Requires:       python3-base >= 3.5
 Requires:       python3-json5
-Requires:       python3-jsonschema >= 2.6
+Requires:       python3-jsonschema >= 3.0.1
+Requires:       python3-requests
 Provides:       python3-jupyter_jupyterlab_server = %{version}
 Obsoletes:      python3-jupyter_jupyterlab_server < %{version}
-Provides:       python3-jupyterlab-server = %{version}
 Provides:       jupyter-jupyterlab-launcher = %{version}
+Provides:       python3-jupyterlab-server = %{version}
 Obsoletes:      jupyter-jupyterlab-launcher < %{version}
 Provides:       python3-jupyter_jupyterlab_launcher = %{version}
 Obsoletes:      python3-jupyter_jupyterlab_launcher < %{version}
@@ -46,7 +46,7 @@ BuildRequires:  jupyter-notebook >= 4.2.0
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-base >= 3.5
 BuildRequires:  python3-json5
-BuildRequires:  python3-jsonschema >= 2.6
+BuildRequires:  python3-jsonschema >= 3.0.1
 BuildRequires:  python3-pytest
 BuildRequires:  python3-requests
 # /SECTION
@@ -65,6 +65,7 @@ This package is used to launch an application built using JupyterLab.
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 pytest-%{python3_bin_suffix} -v .
 
 %files

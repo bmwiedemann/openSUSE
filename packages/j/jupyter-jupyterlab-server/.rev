@@ -17,4 +17,16 @@
     <comment></comment>
     <requestid>724865</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e36b9a605cd7c12b633447cc39aec25</srcmd5>
+    <version>1.1.5</version>
+    <time>1590506517</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.1.5:
+  * Clean up terminate logic. #91
+  * Kill the subprocess if it does not stop. #86
+  * Do not try to close the watch process file handle. #85
+  * Update nodejs error message to not give an outdated version. #84</comment>
+    <requestid>808518</requestid>
+  </revision>
 </revisionlist>
