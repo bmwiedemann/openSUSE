@@ -16,6 +16,7 @@
 #
 
 
+%define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldaptor
 Version:        19.1.0
@@ -37,6 +38,8 @@ Requires:       python-Twisted
 Requires:       python-passlib
 Requires:       python-pyparsing
 Requires:       python-zope.interface
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,15 +60,28 @@ Ldaptor is a pure-Python library that implements:
 
 %install
 %python_install
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
-%python3_only %{_bindir}/ldaptor-*
+%python_alternative %{_bindir}/ldaptor-*
 
 %changelog
