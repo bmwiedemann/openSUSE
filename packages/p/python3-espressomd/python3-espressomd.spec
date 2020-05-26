@@ -68,6 +68,8 @@ BuildRequires:  boost-devel
 Obsoletes:      libEspresso4
 Requires:       python3-numpy
 Requires:       python3-h5py
+# make sure rpm pulls in the right dependency
+Requires:       libhdf5-%{mpiver}
 
 %description
 ESPResSo is a highly versatile software package for performing and analyzing
@@ -89,7 +91,7 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 # overwrite .so linker flags on SUSE distros: drop --no-undefined
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
 %cmake \
-  '-DCMAKE_SHARED_LINKER_FLAGS=-Wl,--as-needed -Wl,-z,now' \
+  -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now' \
   -DLIBDIR=%{_lib} \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DINSTALL_PYPRESSO=OFF
