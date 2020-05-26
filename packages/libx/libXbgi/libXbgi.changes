@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 23 14:44:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 365
+  * Bugs in xkbhit(), outtext(), and outtextxy() fixed.
+
+-------------------------------------------------------------------
 Thu Jan 23 13:36:52 UTC 2014 - jengelh@inai.de
 
 - Update to new upstream release 364

@@ -1,7 +1,7 @@
 #
 # spec file for package libXbgi
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXbgi
 %define lname	libXbgi1
-Version:        364
+Version:        365
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with X11 backend
-License:        MIT and GPL-2.0+
+License:        MIT AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://libXbgi.sf.net/
+URL:            http://libXbgi.sf.net/
 
 #Freecode-URL:	http://freecode.com/projects/libxbgi/
-Source:         http://libxbgi.sf.net/xbgi-%version.tar.gz
+Source:         https://downloads.sf.net/libxbgi/xbgi-%version.tar.gz
 Patch1:         xbgi-automake.diff
 Patch2:         xbgi-getpixel.diff
-Patch3:		xbgi-sequence.diff
-Patch4:		xbgi-grapherrormsg.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch3:         xbgi-sequence.diff
+Patch4:         xbgi-grapherrormsg.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -47,8 +46,8 @@ implemented.
 
 %package -n %lname
 Summary:        BGI-compatible 2D graphics C library
-Group:          System/Libraries
 License:        MIT
+Group:          System/Libraries
 
 %description -n %lname
 libXbgi is a Borland Graphics Interface (BGI) emulation library for
@@ -59,10 +58,11 @@ implemented.
 
 %package devel
 Summary:        Development files for the XBGI library
-Group:          Development/Libraries/C and C++
 License:        MIT
+Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
-Requires:	libX11-devel, xorg-x11-proto-devel
+Requires:       libX11-devel
+Requires:       xorg-x11-proto-devel
 
 %description devel
 libXbgi is a Borland Graphics Interface (BGI) emulation library for
@@ -75,28 +75,25 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -qn xbgi-%version
-%patch -P 1 -P 2 -P 3 -P 4 -p1
+%autosetup -n xbgi-%version -p1
 
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags} V=1;
+make %{?_smp_mflags} V=1
 
 %install
-make install DESTDIR="%buildroot";
-rm -f "%buildroot/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %doc License.txt
 %_libdir/libXbgi.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/graphics.h
 %_libdir/libXbgi.so
 %doc Functions.txt Using.txt README TODO.txt
