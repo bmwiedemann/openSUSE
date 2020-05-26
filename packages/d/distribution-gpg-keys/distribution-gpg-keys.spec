@@ -1,7 +1,7 @@
 #
 # spec file for package distribution-gpg-keys
 #
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global origrel 1
 
 Name:		distribution-gpg-keys
-Version:	1.35
+Version:	1.38
 Release:	0
 Summary:	GPG keys of various Linux distributions
 Group:		System/Packages

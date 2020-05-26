@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 21 11:16:49 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Version 1.38
+  + Add Fedora GPG keys for Fedora 33
+  + Add symlinks for CentOS 8 GPG keys
+  + Add various vendor repository GPG keys
+
+-------------------------------------------------------------------
 Sat Dec  7 19:20:53 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Version 1.35

@@ -33,4 +33,15 @@
   + Add various vendor repository GPG keys</comment>
     <requestid>754965</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c382d5a554d747df42e0c295ea6dc5d</srcmd5>
+    <version>1.38</version>
+    <time>1590506347</time>
+    <user>maxlin_factory</user>
+    <comment>- Version 1.38
+  + Add Fedora GPG keys for Fedora 33
+  + Add symlinks for CentOS 8 GPG keys
+  + Add various vendor repository GPG keys</comment>
+    <requestid>807974</requestid>
+  </revision>
 </revisionlist>
