@@ -1,7 +1,7 @@
 #
 # spec file for package python-Morfessor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/M/Morfessor/Morfe
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,6 +46,10 @@ sed -i -e '/^#!\//, 1d' morfessor/__init__.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/morfessor-train
+%python_clone -a %{buildroot}%{_bindir}/morfessor-segment
+%python_clone -a %{buildroot}%{_bindir}/morfessor-evaluate
+%python_clone -a %{buildroot}%{_bindir}/morfessor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,13 +57,25 @@ sed -i -e '/^#!\//, 1d' morfessor/__init__.py
 $python morfessor/test/evaluation.py
 }
 
+%post
+%python_install_alternative morfessor-train
+%python_install_alternative morfessor-segment
+%python_install_alternative morfessor-evaluate
+%python_install_alternative morfessor
+
+%postun
+%python_uninstall_alternative morfessor-train
+%python_uninstall_alternative morfessor-segment
+%python_uninstall_alternative morfessor-evaluate
+%python_uninstall_alternative morfessor
+
 %files %{python_files}
 %doc README
 %license LICENSE
-%python3_only %{_bindir}/morfessor
-%python3_only %{_bindir}/morfessor-evaluate
-%python3_only %{_bindir}/morfessor-segment
-%python3_only %{_bindir}/morfessor-train
+%python_alternative %{_bindir}/morfessor
+%python_alternative %{_bindir}/morfessor-evaluate
+%python_alternative %{_bindir}/morfessor-segment
+%python_alternative %{_bindir}/morfessor-train
 %{python_sitelib}/*
 
 %changelog

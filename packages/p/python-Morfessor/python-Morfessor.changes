@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:51 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Aug 16 16:25:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 2.0.6
