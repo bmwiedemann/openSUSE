@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-click
 Requires:       python-future
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -60,14 +62,24 @@ Panflute is a Python package for writing Pandoc filters.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/panfl
+%python_clone -a %{buildroot}%{_bindir}/panflute
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 sed -i 's|shutilwhich||' %{buildroot}%{python3_sitelib}/panflute-*.egg-info/requires.txt
+
+%post
+%python_install_alternative panfl
+%python_install_alternative panflute
+
+%postun
+%python_uninstall_alternative panfl
+%python_uninstall_alternative panflute
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/panflute
-%python3_only %{_bindir}/panfl
+%python_alternative %{_bindir}/panflute
+%python_alternative %{_bindir}/panfl
 %{python_sitelib}/*
 
 %changelog
