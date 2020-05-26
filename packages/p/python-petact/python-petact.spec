@@ -1,7 +1,7 @@
 #
 # spec file for package python-petact
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,15 +51,22 @@ cp %{SOURCE99} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/petact
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # no upstream tests
 
+%post
+%python_install_alternative petact
+
+%postun
+%python_uninstall_alternative petact
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/petact
+%python_alternative %{_bindir}/petact
 %{python_sitelib}/*
 
 %changelog
