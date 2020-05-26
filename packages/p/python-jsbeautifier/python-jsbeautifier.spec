@@ -32,6 +32,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-EditorConfig >= 0.12.2
 Requires:       python-setuptools
 Requires:       python-six >= 1.13.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module EditorConfig >= 0.12.2}
@@ -52,15 +54,22 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/js-beautify
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
 %pytest jsbeautifier/tests/testindentation.py
 %pytest jsbeautifier/tests/generated/tests.py
 
+%post
+%python_install_alternative js-beautify
+
+%postun
+%python_uninstall_alternative js-beautify
+
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/js-beautify
+%python_alternative %{_bindir}/js-beautify
 %{python_sitelib}/jsbeautifier
 %{python_sitelib}/jsbeautifier-%{version}-py*.egg-info
 
