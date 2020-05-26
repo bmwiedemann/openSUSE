@@ -1,7 +1,7 @@
 #
 # spec file for package python-pprintpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,16 +50,23 @@ export LANG=en_US.utf-8
 %install
 export LANG=en_US.utf-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pypprint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.utf-8
 %python_exec setup.py test --test-suite=test
 
+%post
+%python_install_alternative pypprint
+
+%postun
+%python_uninstall_alternative pypprint
+
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/pypprint
+%python_alternative %{_bindir}/pypprint
 %{python_sitelib}/*
 
 %changelog
