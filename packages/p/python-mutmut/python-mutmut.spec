@@ -38,6 +38,8 @@ Requires:       python-parso
 Requires:       python-pony
 Requires:       python-setuptools
 Requires:       python-tri.declarative >= 3.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-coverage
 Recommends:     python-pytest
 Suggests:       python-pytest-cov
@@ -76,15 +78,22 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mutmut
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative mutmut
+
+%postun
+%python_uninstall_alternative mutmut
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/mutmut
+%python_alternative %{_bindir}/mutmut
 %{python_sitelib}/*
 
 %changelog

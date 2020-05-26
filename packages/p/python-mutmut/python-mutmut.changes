@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Mar 30 14:06:25 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.0.0
