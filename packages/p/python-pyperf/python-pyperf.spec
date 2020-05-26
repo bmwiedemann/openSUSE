@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyperf/pyperf-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-psutil
 BuildArch:      noarch
 # SECTION test requirements
@@ -48,15 +50,22 @@ Python module to run and analyze benchmarks.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyperf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pyperf
+
+%postun
+%python_uninstall_alternative pyperf
+
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%python3_only %{_bindir}/pyperf
+%python_alternative %{_bindir}/pyperf
 %{python_sitelib}/*
 
 %changelog
