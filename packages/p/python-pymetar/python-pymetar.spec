@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymetar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Source0:        http://www.schwarzvogel.de/pkgs/pymetar-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      %{oldpython}-%{modname}
 BuildArch:      noarch
 %python_subpackages
@@ -48,6 +50,8 @@ it and provides easy access to all the data found in the report.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_mandir}/man1/%{modname}.1
+%python_clone -a %{buildroot}%{_bindir}/%{modname}
 # we install docs on our own
 rm -r %{buildroot}%{_datadir}/doc/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -59,11 +63,17 @@ mkdir logs
 ./runtests.sh
 cd -
 
+%post
+%python_install_alternative %{modname} %{modname}.1
+
+%postun
+%python_uninstall_alternative %{modname} %{modname}.1
+
 %files %{python_files}
 %doc README.md
 %license COPYING
-%python3_only %{_bindir}/%{modname}
+%python_alternative %{_bindir}/%{modname}
 %{python_sitelib}/*
-%python3_only %{_mandir}/man1/%{modname}.1%{?ext_man}
+%python_alternative %{_mandir}/man1/%{modname}.1%{?ext_man}
 
 %changelog
