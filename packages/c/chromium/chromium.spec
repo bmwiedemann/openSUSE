@@ -19,12 +19,6 @@
 %define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-# This is just overall condition to contain everything we can't provide on SLE12
-%if 0%{?suse_version} >= 1320 || 0%{?is_opensuse}
-%bcond_with sle_bundles
-%else
-%bcond_without sle_bundles
-%endif
 %if 0%{?suse_version} >= 1550
 %bcond_without system_icu
 %bcond_without system_harfbuzz
@@ -33,11 +27,6 @@
 %bcond_with system_icu
 %bcond_with system_harfbuzz
 %bcond_with pipewire
-%endif
-%if 0%{?suse_version} >= 1500
-%bcond_without system_libxml
-%else
-%bcond_with system_libxml
 %endif
 %ifarch %{arm} aarch64
 %bcond_with swiftshader
@@ -57,7 +46,7 @@
 %bcond_with clang
 %bcond_with wayland
 Name:           chromium
-Version:        81.0.4044.138
+Version:        83.0.4103.61
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -82,20 +71,24 @@ Patch5:         chromium-buildname.patch
 Patch6:         chromium-drm.patch
 Patch9:         chromium-system-libusb.patch
 Patch10:        gcc-enable-lto.patch
-Patch11:        chromium-old-glibc-noexcept.patch
 Patch12:        chromium-79-gcc-alignas.patch
-Patch13:        chromium-80-gcc-blink.patch
-Patch14:        chromium-80-gcc-quiche.patch
-Patch15:        chromium-fix-char_traits.patch
-Patch16:        gpu-timeout.patch
-Patch17:        chromium-81-gcc-constexpr.patch
-Patch18:        chromium-81-gcc-noexcept.patch
-Patch19:        build-with-pipewire-0.3.patch
-Patch20:        fix-vaapi-with-glx.patch
-Patch21:        chromium-80.0.3987.87-missing-string-header.patch
-Patch22:        chromium-80.0.3987.106-missing-cstddef-header.patch
-Patch23:        chromium-80.0.3987.87-missing-cstdint-header.patch
-Patch24:        icu-v67.patch
+Patch13:        chromium-80-gcc-quiche.patch
+Patch14:        chromium-fix-char_traits.patch
+Patch15:        gpu-timeout.patch
+Patch16:        build-with-pipewire-0.3.patch
+Patch17:        chromium-82-gcc-constexpr.patch
+Patch18:        chromium-82-gcc-incomplete-type.patch
+Patch19:        chromium-82-gcc-iterator.patch
+Patch20:        chromium-82-gcc-noexcept.patch
+Patch21:        chromium-82-gcc-template.patch
+Patch22:        chromium-83-gcc-template.patch
+Patch23:        chromium-83-icu67.patch
+Patch24:        chromium-83-gcc-serviceworker.patch
+Patch25:        chromium-83-gcc-permissive.patch
+Patch26:        chromium-83-gcc-iterator.patch
+Patch27:        chromium-83-gcc-include.patch
+Patch28:        chromium-83-gcc-10.patch
+Patch29:        chromium-81-re2-0.2020.05.01.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -113,7 +106,7 @@ BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gn
+BuildRequires:  gn >= 0.1726
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 # Java used during build
@@ -133,11 +126,13 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-xml
+BuildRequires:  python2-setuptools
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  wdiff
 BuildRequires:  yasm
+BuildRequires:  yasm-devel
 BuildRequires:  perl(Switch)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
@@ -174,12 +169,15 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libwebp) >= 0.4.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(python)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
@@ -201,6 +199,7 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires:       xdg-utils
 Requires(pre):  permissions
@@ -239,15 +238,6 @@ BuildRequires:  pkgconfig(libtcmalloc)
 %endif
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
-%endif
-%if %{with system_libxml}
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
-%endif
-%if !%{with sle_bundles}
-BuildRequires:  yasm-devel
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(opus) >= 1.3.1
-BuildRequires:  pkgconfig(zlib)
 %endif
 %if %{with system_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 63.0
@@ -361,6 +351,7 @@ keeplibs=(
     third_party/devscripts
     third_party/devtools-frontend
     third_party/devtools-frontend/src/front_end/third_party/fabricjs
+    third_party/devtools-frontend/src/front_end/third_party/lighthouse
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
@@ -372,6 +363,7 @@ keeplibs=(
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
     third_party/googletest
+    third_party/harfbuzz-ng/utils
     third_party/hunspell
     third_party/iccjpeg
     third_party/inspector_protocol
@@ -397,6 +389,7 @@ keeplibs=(
     third_party/libyuv
     third_party/lss
     third_party/lzma_sdk
+    third_party/mako
     third_party/markupsafe
     third_party/mesa
     third_party/metrics_proto
@@ -432,6 +425,7 @@ keeplibs=(
     third_party/qcms
     third_party/rnnoise
     third_party/s2cellid
+    third_party/schema_org
     third_party/simplejson
     third_party/skia
     third_party/skia/third_party/skcms
@@ -443,6 +437,7 @@ keeplibs=(
     third_party/SPIRV-Tools
     third_party/sqlite
     third_party/swiftshader
+    third_party/swiftshader/third_party/astc-encoder
     third_party/swiftshader/third_party/llvm-7.0
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
@@ -481,15 +476,6 @@ keeplibs+=(
     third_party/wayland-protocols
 )
 %endif
-%if %{with sle_bundles}
-keeplibs+=(
-    third_party/libwebp
-    third_party/opus
-    third_party/yasm
-    third_party/simplejson
-    third_party/zlib
-)
-%endif
 %if !%{with system_harfbuzz}
 keeplibs+=(
     third_party/freetype
@@ -498,9 +484,6 @@ keeplibs+=(
 %endif
 %if !%{with system_icu}
 keeplibs+=( third_party/icu )
-%endif
-%if !%{with system_libxml}
-keeplibs+=( third_party/libxml )
 %endif
 %if !%{with system_vpx}
 keeplibs+=(
@@ -577,8 +560,13 @@ gn_system_libraries=(
     libpng
     libxslt
     libusb
+    libwebp
+    libxml
+    opus
     re2
     snappy
+    yasm
+    zlib
 )
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
@@ -586,22 +574,11 @@ gn_system_libraries+=(
     freetype
 )
 %endif
-%if !%{with sle_bundles}
-gn_system_libraries+=(
-    libwebp
-    opus
-    yasm
-    zlib
-)
-%endif
 %if %{with system_icu}
 gn_system_libraries+=( icu )
 %endif
 %if %{with system_vpx}
 gn_system_libraries+=( libvpx )
-%endif
-%if %{with system_libxml}
-gn_system_libraries+=( libxml )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
@@ -653,6 +630,7 @@ myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
+myconf_gn+=" enable_hevc_demuxing=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
@@ -759,11 +737,11 @@ cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
 popd
 
-install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png    
-install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png    
-install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png    
-install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png    
-install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png    
+install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
+install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
 install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser-symbolic.svg
 
 mkdir -p %{buildroot}%{_datadir}/applications/

@@ -4,9 +4,9 @@
     <disk>
       <size unit="G">16</size>
     </disk>
-    <memory>
+    <physicalmemory>
     <size unit="G">8</size>
-    </memory>
+    </physicalmemory>
   </hardware>
   <overwrite>
     <conditions>

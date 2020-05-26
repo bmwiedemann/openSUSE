@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri May 22 09:44:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with new re2:
+  * chromium-81-re2-0.2020.05.01.patch
+
+-------------------------------------------------------------------
+Wed May 20 16:35:28 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid very slow builds seen on obs-arm-4
+  (probably due to swap)
+
+-------------------------------------------------------------------
+Wed May 20 09:35:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 83.0.4103.61 bsc#1171910:
+  * CVE-2020-6465: Use after free in reader mode. Reported by Woojin Oh(@pwn_expoit) of STEALIEN on 2020-04-21
+  * CVE-2020-6466: Use after free in media. Reported by Zhe Jin from cdsrc of Qihoo 360 on 2020-04-26
+  * CVE-2020-6467: Use after free in WebRTC. Reported by ZhanJia Song on 2020-04-06
+  * CVE-2020-6468: Type Confusion in V8. Reported by Chris Salls and Jake Corina of Seaside Security, Chani Jindal of Shellphish on 2020-04-30
+  * CVE-2020-6469: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-04-02
+  * CVE-2020-6470: Insufficient validation of untrusted input in clipboard. Reported by Michał Bentkowski of Securitum on 2020-03-30
+  * CVE-2020-6471: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-03-08
+  * CVE-2020-6472: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-03-25
+  * CVE-2020-6473: Insufficient policy enforcement in Blink. Reported by Soroush Karami and Panagiotis Ilia on 2020-02-06
+  * CVE-2020-6474: Use after free in Blink. Reported by Zhe Jin from cdsrc of Qihoo 360 on 2020-03-07
+  * CVE-2020-6475: Incorrect security UI in full screen. Reported by Khalil Zhani on 2019-10-31
+  * CVE-2020-6476: Insufficient policy enforcement in tab strip. Reported by Alexandre Le Borgne on 2019-12-18
+  * CVE-2020-6477: Inappropriate implementation in installer. Reported by RACK911 Labs on 2019-03-26
+  * CVE-2020-6478: Inappropriate implementation in full screen. Reported by Khalil Zhani on 2019-12-24
+  * CVE-2020-6479: Inappropriate implementation in sharing. Reported by Zhong Zhaochen of andsecurity.cn on 2020-01-14
+  * CVE-2020-6480: Insufficient policy enforcement in enterprise. Reported by Marvin Witt on 2020-02-21
+  * CVE-2020-6481: Insufficient policy enforcement in URL formatting. Reported by Rayyan Bijoora on 2020-04-07
+  * CVE-2020-6482: Insufficient policy enforcement in developer tools. Reported by Abdulrahman Alqabandi (@qab) on 2017-12-17
+  * CVE-2020-6483: Insufficient policy enforcement in payments. Reported by Jun Kokatsu, Microsoft Browser Vulnerability Research on 2019-05-23
+  * CVE-2020-6484: Insufficient data validation in ChromeDriver. Reported by Artem Zinenko on 2020-01-26
+  * CVE-2020-6485: Insufficient data validation in media router. Reported by Sergei Glazunov of Google Project Zero on 2020-01-30
+  * CVE-2020-6486: Insufficient policy enforcement in navigations. Reported by David Erceg on 2020-02-24
+  * CVE-2020-6487: Insufficient policy enforcement in downloads. Reported by Jun Kokatsu (@shhnjk) on 2015-10-06
+  * CVE-2020-6488: Insufficient policy enforcement in downloads. Reported by David Erceg on 2020-01-21
+  * CVE-2020-6489: Inappropriate implementation in developer tools. Reported by @lovasoa (Ophir LOJKINE) on 2020-02-10
+  * CVE-2020-6490: Insufficient data validation in loader. Reported by Twitter on 2019-12-19
+  * CVE-2020-6491: Incorrect security UI in site information. Reported by Sultan Haikal M.A on 2020-02-07
+- Rebase patch:
+  * chromium-vaapi.patch
+- Remove merged patches:
+  * icu-v67.patch
+  * chromium-80-gcc-blink.patch
+  * chromium-80.0.3987.106-missing-cstddef-header.patch
+  * chromium-80.0.3987.87-missing-cstdint-header.patch
+  * chromium-80.0.3987.87-missing-string-header.patch
+  * chromium-81-gcc-constexpr.patch
+  * chromium-81-gcc-noexcept.patch
+  * chromium-old-glibc-noexcept.patch
+  * fix-vaapi-with-glx.patch
+- Add new patches:
+  * chromium-82-gcc-constexpr.patch
+  * chromium-82-gcc-incomplete-type.patch
+  * chromium-82-gcc-iterator.patch
+  * chromium-82-gcc-noexcept.patch
+  * chromium-82-gcc-template.patch
+  * chromium-83-gcc-10.patch
+  * chromium-83-gcc-include.patch
+  * chromium-83-gcc-iterator.patch
+  * chromium-83-gcc-permissive.patch
+  * chromium-83-gcc-serviceworker.patch
+  * chromium-83-gcc-template.patch
+  * chromium-83-icu67.patch
+
+-------------------------------------------------------------------
 Wed May  6 07:53:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - update to 81.0.4044.138 bsc#1171247:
@@ -28,10 +97,11 @@ Tue Apr 28 09:05:34 UTC 2020 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Tue Apr 21 23:24:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Update to 81.0.4044.122 (boo#1170107):
+- Update to 81.0.4044.122 (boo#1170107 bsc#1171975):
   * CVE-2020-6459: Use after free in payments
   * CVE-2020-6460: Insufficient data validation in URL formatting
   * CVE-2020-6458: Out of bounds read and write in PDFium
+  * CVE-2020-6463: Use after free in ANGLE
 
 -------------------------------------------------------------------
 Fri Apr 17 08:12:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
