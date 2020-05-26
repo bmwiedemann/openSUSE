@@ -1,7 +1,7 @@
 #
 # spec file for package python-netCDF4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Requires:       hdf5 >= 1.8.4
 Requires:       netcdf >= 4.2
 Requires:       python-cftime
 Requires:       python-numpy >= 1.10.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  netcdf
@@ -71,6 +73,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ncinfo
+%python_clone -a %{buildroot}%{_bindir}/nc4tonc3
+%python_clone -a %{buildroot}%{_bindir}/nc3tonc4
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -81,12 +86,22 @@ $python run_all.py
 }
 popd
 
+%post
+%python_install_alternative ncinfo
+%python_install_alternative nc4tonc3
+%python_install_alternative nc3tonc4
+
+%postun
+%python_uninstall_alternative ncinfo
+%python_uninstall_alternative nc4tonc3
+%python_uninstall_alternative nc3tonc4
+
 %files %{python_files}
 %doc Changelog README.md
 %license COPYING
-%python3_only %{_bindir}/nc3tonc4
-%python3_only %{_bindir}/nc4tonc3
-%python3_only %{_bindir}/ncinfo
+%python_alternative %{_bindir}/nc3tonc4
+%python_alternative %{_bindir}/nc4tonc3
+%python_alternative %{_bindir}/ncinfo
 %{python_sitearch}/*
 
 %changelog
