@@ -1,7 +1,7 @@
 #
 # spec file for package python-htmlmin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        An HTML Minifier
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://htmlmin.readthedocs.io/en/latest/
+URL:            https://htmlmin.readthedocs.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/h/htmlmin/htmlmin-%{version}.tar.gz
 # https://github.com/mankyd/htmlmin/issues/51
 Source1:        tests.tar.bz2
@@ -31,11 +31,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,22 +46,29 @@ A configurable HTML Minifier with safety features.
 %setup -q -n htmlmin-%{version} -a1
 # command.py is installed without exec permissions (and they're actually not needed) so
 # we remove the shebang
-sed -ie "s,#!/usr/bin/env python,##!/usr/bin/python3," htmlmin/command.py
+sed -ie "s,#!%{_bindir}/env python,##!%{_bindir}/python3," htmlmin/command.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/htmlmin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative htmlmin
+
+%postun
+%python_uninstall_alternative htmlmin
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/htmlmin
+%python_alternative %{_bindir}/htmlmin
 %{python_sitelib}/*
 
 %changelog
