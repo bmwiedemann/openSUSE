@@ -1,7 +1,7 @@
 #
 # spec file for package python-mygpoclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-simplejson
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,15 +46,29 @@ the my.gpodder.org web services.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_mandir}/man1/mygpo-bpsync.1
+%python_clone -a %{buildroot}%{_bindir}/mygpo-simple-client
+%python_clone -a %{buildroot}%{_bindir}/mygpo-list-devices
+%python_clone -a %{buildroot}%{_bindir}/mygpo-bpsync
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative mygpo-simple-client
+%python_install_alternative mygpo-list-devices
+%python_install_alternative mygpo-bpsync mygpo-bpsync.1
+
+%postun
+%python_uninstall_alternative mygpo-simple-client
+%python_uninstall_alternative mygpo-list-devices
+%python_uninstall_alternative mygpo-bpsync
 
 %files %{python_files}
 %doc AUTHORS
 %license COPYING
-%python3_only %{_bindir}/mygpo-bpsync
-%python3_only %{_bindir}/mygpo-list-devices
-%python3_only %{_bindir}/mygpo-simple-client
-%python3_only %{_mandir}/man1/mygpo-bpsync.1%{ext_man}
+%python_alternative %{_bindir}/mygpo-bpsync
+%python_alternative %{_bindir}/mygpo-list-devices
+%python_alternative %{_bindir}/mygpo-simple-client
+%python_alternative %{_mandir}/man1/mygpo-bpsync.1%{ext_man}
 %{python_sitelib}/*
 
 %changelog
