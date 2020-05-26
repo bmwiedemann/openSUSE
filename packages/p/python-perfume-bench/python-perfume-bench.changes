@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 20 10:47:41 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  fix testsuite: compatibility with 1.0
+  + python-perfume-bench-pandas-1.0.patch
+
+-------------------------------------------------------------------
+Wed May 20 07:26:12 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue May 14 16:32:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix license

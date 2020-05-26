@@ -1,7 +1,7 @@
 #
 # spec file for package python-perfume-bench
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/leifwalsh/perfume
 Source:         https://files.pythonhosted.org/packages/source/p/perfume-bench/perfume-bench-%{version}.tar.gz
+# testsuite: compatibility with pandas 1.0
+# https://pandas.pydata.org/docs/whatsnew/v1.0.0.html
+# upstream knows about it, see GH:perfume_bench.egg-info/requires.txt
+Patch0:         python-perfume-bench-pandas-1.0.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,6 +42,8 @@ Requires:       python-numpy >= 1.11
 Requires:       python-pandas >= 0.19
 Requires:       python-seaborn >= 0.7
 Requires:       python-statsmodels >= 0.8
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module bokeh >= 0.12}
@@ -47,6 +53,7 @@ BuildRequires:  %{python_module matplotlib >= 2.0}
 BuildRequires:  %{python_module notebook >= 5.0}
 BuildRequires:  %{python_module numpy >= 1.11}
 BuildRequires:  %{python_module pandas >= 0.19}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module seaborn >= 0.7}
 BuildRequires:  %{python_module statsmodels >= 0.8}
 # /SECTION
@@ -57,21 +64,29 @@ Interactive performance benchmarking in Jupyter
 
 %prep
 %setup -q -n perfume-bench-%{version}
+%patch0 -p1
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/perfume
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
+
+%post
+%python_install_alternative perfume
+
+%postun
+%python_uninstall_alternative perfume
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/perfume
+%python_alternative %{_bindir}/perfume
 %{python_sitelib}/*
 
 %changelog

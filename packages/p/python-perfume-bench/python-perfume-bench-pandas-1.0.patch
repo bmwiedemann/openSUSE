@@ -1,0 +1,44 @@
+Index: perfume-bench-0.1.6/tests/test_perfume.py
+===================================================================
+--- perfume-bench-0.1.6.orig/tests/test_perfume.py
++++ perfume-bench-0.1.6/tests/test_perfume.py
+@@ -40,7 +40,7 @@ class TestAnalyze(unittest.TestCase):
+             data=samples,
+             columns=pd.MultiIndex(
+                 levels=[["fn1", "fn2"], ["begin", "end"]],
+-                labels=[[0, 0, 1, 1], [0, 1, 0, 1]],
++                codes=[[0, 0, 1, 1], [0, 1, 0, 1]],
+             ),
+         )
+ 
+@@ -88,7 +88,7 @@ class TestAnalyze(unittest.TestCase):
+         # gives us.
+         fn1_expected = pd.Series(
+             1.1,
+-            index=pd.TimedeltaIndex(
++            index=pd.timedelta_range(
+                 freq=pd.Timedelta("1.1s"),
+                 start="1.1s",
+                 periods=20,
+@@ -97,7 +97,7 @@ class TestAnalyze(unittest.TestCase):
+         )
+         fn2_expected = pd.Series(
+             1.5,
+-            index=pd.TimedeltaIndex(
++            index=pd.timedelta_range(
+                 freq=pd.Timedelta("1.5s"),
+                 start="1.5s",
+                 periods=20,
+Index: perfume-bench-0.1.6/perfume/perfume.py
+===================================================================
+--- perfume-bench-0.1.6.orig/perfume/perfume.py
++++ perfume-bench-0.1.6/perfume/perfume.py
+@@ -288,7 +288,7 @@ def bench(*fns, samples=None, efficiency
+     disp = Display(names, len(sample_records))
+     index = pd.MultiIndex(
+         levels=[names, ("begin", "end")],
+-        labels=[
++        codes=[
+             _flatten([(i, i) for i in range(len(names))]), [0, 1] * len(names)
+         ],
+         names=("function", "timing"),
