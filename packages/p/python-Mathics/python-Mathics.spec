@@ -43,6 +43,8 @@ Requires:       python-mpmath >= 0.19
 Requires:       python-python-dateutil
 Requires:       python-six >= 1.10
 Requires:       python-sympy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -73,19 +75,32 @@ popd
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mathics
+%python_clone -a %{buildroot}%{_bindir}/mathicsserver
+%python_clone -a %{buildroot}%{_bindir}/mathicsscript
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Tests fail with new sympy, probably worth fixing upstream
 #%%python_exec setup.py test
 
+%post
+%python_install_alternative mathics
+%python_install_alternative mathicsserver
+%python_install_alternative mathicsscript
+
+%postun
+%python_uninstall_alternative mathics
+%python_uninstall_alternative mathicsserver
+%python_uninstall_alternative mathicsscript
+
 %files %{python_files}
 %license COPYING.txt
 %doc README.rst AUTHORS.txt
 %{python_sitelib}/mathics/
 %{python_sitelib}/%{pyname}-%{version}-py%{python_version}.egg-info/
-%python3_only %{_bindir}/mathicsscript
-%python3_only %{_bindir}/mathicsserver
-%python3_only %{_bindir}/mathics
+%python_alternative %{_bindir}/mathicsscript
+%python_alternative %{_bindir}/mathicsserver
+%python_alternative %{_bindir}/mathics
 
 %changelog
