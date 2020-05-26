@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 21 09:59:58 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Adjust upstream project URL.
+
+-------------------------------------------------------------------
+Thu May 14 15:28:21 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- u_Fix-TightCompressionControl-definition-for-big-endian.patch
+  * Fix tight compression decoder on big-endian systems
+    (bsc#1171344).
+
+-------------------------------------------------------------------
+Wed May 13 03:52:02 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- u_Fix_tight_decoder_on_888_encodings.patch
+  * Fix tight decoder with 888 pixel encodings. (bsc#1169732)
+- u_Fix-PixelFormat-ntoh-and-PixelFormat-hton.patch
+  * Fix PixelFormat::ntoh() and PixelFormat::hton(). (bsc#1169732)
+
+-------------------------------------------------------------------
 Thu Dec 19 14:51:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(libsystemd) instead of systemd-devel:

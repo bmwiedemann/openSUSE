@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Requires:       xorg-x11-Xvnc
 Requires:       xorg-x11-Xvnc:/usr/lib/vnc/with-vnc-key.sh
 Recommends:     vncmanager-controller
 
-URL:            https://github.com/michalsrb/vncmanager
+URL:            https://github.com/openSUSE/vncmanager
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Session manager for VNC
 License:        MIT
@@ -53,6 +53,9 @@ Patch3:         U_Add-xvnc-args-configuration-option.patch
 Patch4:         n_disable_mit_shm.patch
 Patch5:         U_ControllerConnection-Split-iostream-into-istream-and.patch
 Patch6:         n_vncmanager-add-target-to-service.patch
+Patch7:         u_Fix_tight_decoder_on_888_encodings.patch
+Patch8:         u_Fix-PixelFormat-ntoh-and-PixelFormat-hton.patch
+Patch9:         u_Fix-TightCompressionControl-definition-for-big-endian.patch
 
 %description
 Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
@@ -78,6 +81,9 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
