@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfiglet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,15 @@ Release:        0
 Summary:        Pure Python FIGlet implementation
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/pwaller/pyfiglet
+URL:            https://github.com/pwaller/pyfiglet
 Source:         https://files.pythonhosted.org/packages/source/p/pyfiglet/pyfiglet-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  figlet
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,6 +52,9 @@ mv pyfiglet/test.py .
 install -d -m 0755 %{buildroot}%{_mandir}/man1
 install -m 0644 doc/pyfiglet.1 %{buildroot}%{_mandir}/man1/
 
+%python_clone -a %{buildroot}%{_mandir}/man1/pyfiglet.1
+%python_clone -a %{buildroot}%{_bindir}/pyfiglet
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Fix python-bytecode-inconsistent-mtime
@@ -61,11 +65,17 @@ install -m 0644 doc/pyfiglet.1 %{buildroot}%{_mandir}/man1/
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test.py
 
+%post
+%python_install_alternative pyfiglet pyfiglet.1
+
+%postun
+%python_uninstall_alternative pyfiglet pyfiglet.1
+
 %files %{python_files}
 %doc README doc/figfont.txt
 %license LICENSE
-%python3_only %{_bindir}/pyfiglet
-%python3_only %{_mandir}/man1/pyfiglet.1*
+%python_alternative %{_bindir}/pyfiglet
+%python_alternative %{_mandir}/man1/pyfiglet.1%{ext_man}
 %{python_sitelib}/*
 
 %changelog
