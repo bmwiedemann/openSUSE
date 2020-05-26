@@ -36,6 +36,8 @@ BuildRequires:  libsass-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # Both are providing sassc binary with different parameters
 Conflicts:      sassc
 # SECTION test requirements
@@ -58,14 +60,24 @@ export SYSTEM_SASS=true
 %install
 export SYSTEM_SASS=true
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/sassc
+%python_clone -a %{buildroot}%{_bindir}/pysassc
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch sasstests.py
 
+%post
+%python_install_alternative sassc
+%python_install_alternative pysassc
+
+%postun
+%python_uninstall_alternative sassc
+%python_uninstall_alternative pysassc
+
 %files %{python_files}
-%python3_only %{_bindir}/pysassc
-%python3_only %{_bindir}/sassc
+%python_alternative %{_bindir}/pysassc
+%python_alternative %{_bindir}/sassc
 %{python_sitearch}/*
 
 %changelog
