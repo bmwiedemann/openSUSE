@@ -54,6 +54,8 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-numpy >= 1.11.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-blosc
 Recommends:     python-lz4
@@ -83,6 +85,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/imagecodecs
 %{python_expand rm -rf %{buildroot}%{$python_sitearch}/imagecodecs/licenses/
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -94,10 +97,16 @@ mv imagecodecs __imagecodecs
 %pytest_arch tests
 mv __imagecodecs imagecodecs
 
+%post
+%python_install_alternative imagecodecs
+
+%postun
+%python_uninstall_alternative imagecodecs
+
 %files %{python_files}
 %license LICENSE imagecodecs/licenses/*
 %doc README.rst
-%python3_only %{_bindir}/imagecodecs
+%python_alternative %{_bindir}/imagecodecs
 %{python_sitearch}/*
 
 %changelog

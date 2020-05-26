@@ -23,4 +23,12 @@
     <comment>- As the package is marked as py3 only drop the python2 deps</comment>
     <requestid>796498</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cde845c5dc57109c60831d0ba9b680a7</srcmd5>
+    <version>2019.5.22</version>
+    <time>1590508172</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808789</requestid>
+  </revision>
 </revisionlist>

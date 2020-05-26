@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:24 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 23 10:58:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - As the package is marked as py3 only drop the python2 deps
