@@ -179,6 +179,7 @@ rm -Rf %{buildroot}%{_libexecdir}/systemd/user-environment-generators/
 %endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
+mkdir -p %{buildroot}%{_localstatedir}/lib/flatpak/repo
 
 %find_lang %{name}
 
@@ -239,7 +240,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 %{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
 %{_userunitdir}/flatpak-portal.service
-%ghost %dir %{_localstatedir}/lib/flatpak
+%dir %{_localstatedir}/lib/flatpak
+%dir %{_localstatedir}/lib/flatpak/repo
 %if %{support_environment_generators}
 %dir %{_libexecdir}/systemd/user-environment-generators
 %{_libexecdir}/systemd/user-environment-generators/60-flatpak
