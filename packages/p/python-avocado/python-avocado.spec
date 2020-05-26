@@ -49,7 +49,7 @@ BuildRequires:  python-rpm-macros
 Requires:       %{pkgname}-common
 Requires:       gdb
 Requires:       procps
-Requires:       python-Fabric3
+Requires:       python-Fabric
 Requires:       python-requests >= 1.2.3
 Requires:       python-setuptools
 Requires:       python-six >= 1.11.0
@@ -114,7 +114,7 @@ an arbitrary filesystem location.
 Summary:        Avocado Runner for Remote Execution
 Group:          Development/Languages/Python
 Requires:       python2-%{pkgname} = %{version}
-Requires:       python2-Fabric3
+Requires:       python2-Fabric
 
 %description -n python2-%{pkgname}-plugins-runner-remote
 This plugin allows Avocado to run jobs on a remote machine, by means of an SSH
@@ -125,7 +125,7 @@ connection. Avocado must have been previously installed on the remote machine.
 Summary:        Avocado Runner for Remote Execution
 Group:          Development/Languages/Python
 Requires:       python3-%{pkgname} = %{version}
-Requires:       python3-Fabric3
+Requires:       python3-Fabric
 
 %description -n python3-%{pkgname}-plugins-runner-remote
 This plugin allows Avocado to run jobs on a remote machine, by means of an SSH

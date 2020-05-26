@@ -49,4 +49,12 @@
     <comment>- Add conflict with old avocado for migration</comment>
     <requestid>786773</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>df74f21d3abe6bae40c9daadb72ea72d</srcmd5>
+    <version>69.0</version>
+    <time>1590508219</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808890</requestid>
+  </revision>
 </revisionlist>

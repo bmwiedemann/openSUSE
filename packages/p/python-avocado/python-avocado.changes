@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 03:52:07 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Require python-Fabric instead of python-Fabric3.
+  Fabric now supports Python 3 and Fabric3 has declared itself
+  deprecated.
+
+-------------------------------------------------------------------
 Fri Mar 20 08:52:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Add conflict with old avocado for migration
