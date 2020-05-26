@@ -1,7 +1,7 @@
 #
 # spec file for package python-labels
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,29 +21,30 @@
 Name:           python-labels
 Version:        0.2.0
 Release:        0
-License:        MIT
 Summary:        CLI app for managing GitHub labels
-Url:            https://github.com/hackebrot/labels
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/hackebrot/labels
 Source:         https://github.com/hackebrot/labels/archive/%{version}.tar.gz#/labels-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module attrs}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytoml}
-BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module requests}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-pytoml
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytoml}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module responses}
+# /SECTION
 %python_subpackages
 
 %description
@@ -56,16 +58,23 @@ CLI app for managing GitHub labels.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/labels
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
 
+%post
+%python_install_alternative labels
+
+%postun
+%python_uninstall_alternative labels
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/labels
+%python_alternative %{_bindir}/labels
 %{python_sitelib}/*
 
 %changelog
