@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-editdistance
 BuildArch:      noarch
 %python_subpackages
@@ -46,15 +48,22 @@ File identification library for Python, including license file SPDX identifier.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/identify-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py pytest
 
+%post
+%python_install_alternative identify-cli
+
+%postun
+%python_uninstall_alternative identify-cli
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/identify-cli
+%python_alternative %{_bindir}/identify-cli
 %{python_sitelib}/*
 
 %changelog
