@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed May 13 07:12:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing runtime dependencies, as declared in setup.py
+- Format with spec-cleaner
+- Make sure the tests are executed
+
+-------------------------------------------------------------------
+Mon May 11 18:45:35 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- inital commit adding version 3.0.3
