@@ -1,7 +1,7 @@
 #
 # spec file for package python-npTDMS
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
@@ -46,15 +48,22 @@ NumPy based module for reading TDMS files produced by LabView.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tdmsinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec -B -m unittest discover -s nptdms -p "*_test.py"
 
+%post
+%python_install_alternative tdmsinfo
+
+%postun
+%python_uninstall_alternative tdmsinfo
+
 %files %{python_files}
 %doc README.rst
 %license COPYING COPYING.LESSER
-%python3_only %{_bindir}/tdmsinfo
+%python_alternative %{_bindir}/tdmsinfo
 %{python_sitelib}/*
 
 %changelog
