@@ -347,4 +347,13 @@
     <comment>update gnuhealth-control</comment>
     <requestid>807171</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>d7e7b7759e2e2f4060731ecfcdbe12ca</srcmd5>
+    <version>3.6.4</version>
+    <time>1590506339</time>
+    <user>maxlin_factory</user>
+    <comment>- fixed different behviour of bsdtar in script and shell (gnuhealth-control)
+</comment>
+    <requestid>807978</requestid>
+  </revision>
 </revisionlist>

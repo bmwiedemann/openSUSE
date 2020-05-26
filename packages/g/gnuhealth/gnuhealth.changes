@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 09:06:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- fixed different behviour of bsdtar in script and shell (gnuhealth-control)
+
+-------------------------------------------------------------------
 Tue May 19 09:25:34 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.6.4 of gnuhealth-control 

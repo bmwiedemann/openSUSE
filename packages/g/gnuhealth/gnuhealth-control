@@ -250,7 +250,7 @@ getlang() {
     wget ${TRANSLATE_URL}/export/?path=/${lang_to_install}/GNUHEALTH/ -O $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
     cli_msg "INFO" "Installing / Updating language files for ${lang_to_install} ..."
 
-    bsdtar --strip-components 3 --exclude *webdav3* --exclude *caldav* -xzf $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
+    bsdtar --strip-components 3 -xzf $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
     cli_msg "INFO" "Language pack ${lang_to_install} sucessfully installed / updated"
     chmod -R a+r ${GNUHEALTH_DIR}
     cli_msg "INFO" "Read permissions set"
