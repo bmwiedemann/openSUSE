@@ -30,6 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-altgraph >= 0.15
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altgraph >= 0.15}
@@ -58,6 +60,9 @@ sed -i -e '/^#!\//, 1d' macholib/macho_standalone.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/macho_dump
+%python_clone -a %{buildroot}%{_bindir}/macho_standalone
+%python_clone -a %{buildroot}%{_bindir}/macho_find
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,12 +70,22 @@ sed -i -e '/^#!\//, 1d' macholib/macho_standalone.py
 rm macholib_tests/test_{command_line,dyld}.py
 %pytest
 
+%post
+%python_install_alternative macho_dump
+%python_install_alternative macho_standalone
+%python_install_alternative macho_find
+
+%postun
+%python_uninstall_alternative macho_dump
+%python_uninstall_alternative macho_standalone
+%python_uninstall_alternative macho_find
+
 %files %{python_files}
 %doc README.rst doc/*.rst
 %license doc/license.rst
-%python3_only %{_bindir}/macho_find
-%python3_only %{_bindir}/macho_standalone
-%python3_only %{_bindir}/macho_dump
+%python_alternative %{_bindir}/macho_find
+%python_alternative %{_bindir}/macho_standalone
+%python_alternative %{_bindir}/macho_dump
 %{python_sitelib}/*
 
 %changelog
