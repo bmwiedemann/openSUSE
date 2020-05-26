@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 18 08:53:10 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- When SLE uses GNOME desktop environment, GNOME Software is
+  automatically started to provide key update features. During the
+  startup, it setups flatpak repository so that related features
+  can function properly. In a system environment of no flatpak
+  repository has ever been setup before, this triggers
+  "org.freedesktop.Flatpak.modify-repo" polkit action.
+
+  Therefore in systems which use a restrictive security policy
+  (eg. SLES) for the aforementioned policy action, a polkit
+  authentication dialog will pop up without any user interaction
+  for the first time login. This is not user friendly.
+
+  This submission creates /var/lib/flatpak/repo at package
+  installation to avoid such a confusing authentication pop-up, at
+  nearly 0 cost of security compromise (bsc#1169619, bsc#1170416).
+
+-------------------------------------------------------------------
 Mon Apr  6 14:31:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require bubblewrap 0.4.1
