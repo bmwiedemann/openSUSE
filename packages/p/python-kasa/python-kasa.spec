@@ -37,6 +37,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-pytest-asyncio
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,16 +54,23 @@ Use 'kasa' binary.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/kasa
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # https://github.com/python-kasa/python-kasa/issues/27
 #%%pytest
 
+%post
+%python_install_alternative kasa
+
+%postun
+%python_uninstall_alternative kasa
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/kasa
+%python_alternative %{_bindir}/kasa
 %dir %{python_sitelib}/kasa
 %{python_sitelib}/kasa/*
 %{python_sitelib}/*.egg-info*

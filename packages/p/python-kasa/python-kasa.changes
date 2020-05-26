@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Mar  3 14:26:58 UTC 2020 - guillaume.gardet@opensuse.org
 
 - Initial release from git snapshot 15b0c8c from 2020/01/28
