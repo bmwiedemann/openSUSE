@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyelftools/pyel
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,6 +47,7 @@ rm test/test_pubtypes.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/readelf.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,10 +57,16 @@ rm test/test_pubtypes.py
 # https://github.com/eliben/pyelftools/wiki/Hacking-guide#tests
 %python_exec test/run_readelf_tests.py || :
 
+%post
+%python_install_alternative readelf.py
+
+%postun
+%python_uninstall_alternative readelf.py
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGES
-%python3_only %{_bindir}/readelf.py
+%python_alternative %{_bindir}/readelf.py
 %{python_sitelib}/*
 
 %changelog
