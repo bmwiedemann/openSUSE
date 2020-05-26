@@ -35,6 +35,8 @@ Requires:       python-crayons
 Requires:       python-packaging
 Requires:       python-six
 Requires:       python-vistir >= 0.2.5
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
@@ -66,6 +68,7 @@ rm -rf src/pythonfinder/_vendor/pep514tools
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyfinder
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,10 +76,16 @@ rm -rf src/pythonfinder/_vendor/pep514tools
 # to modify read-only system image files.
 %pytest -k 'not (test_python_versions or test_shims_are_kept or test_shims_are_removed)'
 
+%post
+%python_install_alternative pyfinder
+
+%postun
+%python_uninstall_alternative pyfinder
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%python3_only %{_bindir}/pyfinder
+%python_alternative %{_bindir}/pyfinder
 %{python_sitelib}/*
 
 %changelog
