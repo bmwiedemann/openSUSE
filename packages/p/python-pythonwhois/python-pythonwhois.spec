@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythonwhois
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Python whois library
 License:        WTFPL
 Group:          Development/Languages/Python
-Url:            http://cryto.net/pythonwhois
+URL:            http://cryto.net/pythonwhois
 #Source:         https://files.pythonhosted.org/packages/source/p/pythonwhois/pythonwhois-%%{version}.tar.gz
 # github tarball includes docs and tests (which require network)
 Source:         https://github.com/joepie91/python-whois/archive/%{commit}.zip#/%{name}-%{version}.zip
@@ -34,11 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %ifpython3
 Conflicts:      perl-Net-Whois-Raw
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -56,14 +57,19 @@ sed -i 's/\(\s*regex = re.sub(r"\\\\s.*\)r"\\s\(.*\)>\\S\(.*\)/\1r"\\\\s\2>\\\\S
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pwhois
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone %{buildroot}%{_bindir}/pwhois
+
+%post
+%python_install_alternative pwhois
+
+%postun
+%python_uninstall_alternative pwhois
 
 %files %{python_files}
 %doc README.md doc/*.html
 %license LICENSE.txt
-%{_bindir}/pwhois-%{python_bin_suffix}
-%python3_only %{_bindir}/pwhois
+%python_alternative %{_bindir}/pwhois
 %{python_sitelib}/*
 
 %changelog
