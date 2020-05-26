@@ -1,7 +1,7 @@
 #
 # spec file for package python-padatious
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-padatious
 Version:        0.4.7
@@ -25,24 +24,25 @@ Release:        0
 Summary:        A neural network intent parser
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://github.com/MycroftAI/padatious
+URL:            https://github.com/MycroftAI/padatious
 # https://github.com/MycroftAI/padatious/issues/14
 Source:         https://github.com/MycroftAI/padatious/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-fann2
+Requires:       python-padaos
+Requires:       python-setuptools
+Requires:       python-xxhash
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module fann2}
 BuildRequires:  %{python_module padaos}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xxhash}
 # /SECTION
-Requires:       python-fann2
-Requires:       python-padaos
-Requires:       python-setuptools
-Requires:       python-xxhash
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,17 +57,23 @@ chmod 644 LICENSE
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/padatious
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # https://github.com/MycroftAI/padatious/issues/15
-%python_exec -m pytest -k 'not test_train_timeout_subprocess'
+%pytest -k 'not test_train_timeout_subprocess'
+
+%post
+%python_install_alternative padatious
+
+%postun
+%python_uninstall_alternative padatious
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.md
 %{python_sitelib}/*
-%python3_only %{_bindir}/padatious
+%python_alternative %{_bindir}/padatious
 
 %changelog
