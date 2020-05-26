@@ -1,7 +1,7 @@
 #
 # spec file for package usbutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           usbutils
-Version:        010
+Version:        012
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-URL:            http://sourceforge.net/projects/linux-usb/
+URL:            https://sourceforge.net/projects/linux-usb/
 Source0:        https://www.kernel.org/pub/linux/utils/usb/%{name}/%{name}-%{version}.tar.xz
 Source1:        usbutils-rpmlintrc
-# PATCH-FIX-SUSE
-Patch0:         fix-shebang.patch
-BuildRequires:  libusb-1_0-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  libusb-1_0-devel >= 1.0.14
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libudev) >= 196
 Requires:       hwdata
@@ -38,19 +39,20 @@ ports.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
+autoreconf -fiv
 %configure \
   --datadir=%{_datadir}/hwdata \
   --disable-usbids
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
 %files
 %doc NEWS
+%license LICENSES/*
 %{_bindir}/lsusb
 %{_bindir}/lsusb.py
 %{_bindir}/usb-devices
