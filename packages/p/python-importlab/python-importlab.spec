@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlab
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-networkx
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module networkx}
@@ -49,12 +51,19 @@ A library to calculate python dependency graphs.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/importlab
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative importlab
+
+%postun
+%python_uninstall_alternative importlab
 
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%python3_only %{_bindir}/importlab
+%python_alternative %{_bindir}/importlab
 %{python_sitelib}/*
 
 %changelog
