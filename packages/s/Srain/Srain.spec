@@ -17,14 +17,12 @@
 
 
 Name:           Srain
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
 URL:            https://srain.im
 Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Srain-implicit_declarations.patch -- actually required only by Leap 15.0
-Patch2:         Srain-implicit_declarations.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -44,12 +42,11 @@ IRC client written in GTK3+.
 %lang_package
 
 %prep
-%setup -q -n srain-%{version}
-%patch2 -p1
+%autosetup -n srain-%{version}
 
 %build
 %configure --disable-debug
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -65,7 +62,7 @@ make %{?_smp_mflags}
 %{_bindir}/srain
 %{_datadir}/applications/im.srain.%{name}.desktop
 %{_datadir}/icons/hicolor/128x128/apps/im.srain.%{name}.png
-%{_datadir}/metainfo/im.srain.%{name}.appdata.xml
+%{_datadir}/metainfo/im.srain.%{name}.metainfo.xml
 %{_datadir}/srain/themes/*.css
 
 %files lang -f srain.lang

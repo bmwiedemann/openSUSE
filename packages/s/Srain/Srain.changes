@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 24 10:45:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.0
+  Features:
+  * Support multiple selection of message (#138)
+  * Support jump to mentioned message (#243)
+  * Nickname will be highlighted when mentioned (#243)
+  Changes:
+  * Improve fcous control of UI
+  * Replace appdata with metainfo (#240)
+  * Validate metainfo with appstream-util (#242)
+  Bug fixes:
+  * Some implicit declarations fixes (#236)
+  * Some typo fixes (#239)
+- Drop Srain-implicit_declarations.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sat Apr 11 14:51:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.2
