@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,16 +54,23 @@ slightly more usable as a configuration language:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyjson5
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative pyjson5
+
+%postun
+%python_uninstall_alternative pyjson5
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/pyjson5
+%python_alternative %{_bindir}/pyjson5
 %{python_sitelib}/*
 
 %changelog
