@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykwalify
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,10 +24,18 @@ Release:        0
 Summary:        Python lib/cli for JSON/YAML schema validation
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/grokzen/pykwalify
+URL:            https://github.com/grokzen/pykwalify
 Source:         https://files.pythonhosted.org/packages/source/p/pykwalify/pykwalify-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML >= 3.11
+Requires:       python-docopt >= 0.6.2
+Requires:       python-python-dateutil >= 2.4.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Suggests:       python-ruamel.yaml >= 0.11.0
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML >= 3.11}
 BuildRequires:  %{python_module docopt >= 0.6.2}
@@ -35,13 +43,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.4.2}
 BuildRequires:  %{python_module testfixtures}
 %endif
-BuildRequires:  fdupes
-Requires:       python-PyYAML >= 3.11
-Requires:       python-docopt >= 0.6.2
-Requires:       python-python-dateutil >= 2.4.2
-Suggests:       python-ruamel.yaml >= 0.11.0
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -59,17 +60,23 @@ The schema this library is base and extended from: http://www.kuwata-lab.com/kwa
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pykwalify
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %if %{with test}
 %check
 %python_exec setup.py test
 %endif
 
+%post
+%python_install_alternative pykwalify
+
+%postun
+%python_uninstall_alternative pykwalify
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/pykwalify
+%python_alternative %{_bindir}/pykwalify
 %{python_sitelib}/*
 
 %changelog
