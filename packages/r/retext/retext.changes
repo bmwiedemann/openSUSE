@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri May 22 12:19:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.10
+  General improvements:
+  * New files are now opened in new tabs by default, not new
+    windows.
+  * Preferences dialog improvements: it now uses tabs.
+  * Return key now automatically continues quote blocks and
+    ordered lists
+  * It is now possible to close the current tab with Ctrl+W
+  * Ctrl+wheel on editor now increases/decreases font size.
+    Ctrl+wheel in preview zooms in/out.
+  * Alt+Up/Down arrow now moves the current line up/down.
+  * Added “Jump to Line” feature, with Ctrl+G shortcut.
+  * Table mode improvements.
+  * “Paste Image” moved to a separate action, with Ctrl+Shift+V
+    shortcut.
+  * Added “Insert table” dialog.
+  * Clicking a link to nonexistent file now prompts the user to
+    create it.
+  * Added a menu action to insert images from filesystem.
+  New options added:
+  * `relativeLineNumbers` — count line numbers as relative to
+    the current line.
+  * `documentStatsEnabled` — show text statistics in the lower
+    left corner of the editor.
+  * `rightMarginWrap` — soft-wrap text at user specified margin
+    line.
+  * `paperSize` — set the default paper size for print or PDF
+    export.
+  * `recentDocumentsCount` — number of recent files to show in
+    the menu.
+  * `windowTitleFullPath` — show full path in window title
+  * `defaultPreviewState` — mode for new tabs: `editor`,
+    `normal-preview` or `live-preview`.
+  * `wideCursor` — make cursor as wide as characters.
+  Bugs fixed:
+  * Limit max-width of images to 100%.
+  * setup.py now installs retext.svg icon.
+  * Autofill current filename for PDF export and Save As dialogs.
+  * Make sure search result does not overlap with stats/info
+    areas.
+  * Made the Markdown include extension working.
+  * Fixed handling multi-line rows in reStructuredText tables in
+    table mode.
+  * Ctrl+F now focuses the search field, not closes the search
+    bar. To close the search bar, now the Escape key can be used.
+  * Ensure that cursor is visible after resizes.
+  * Only check whether .css file exists on initial page load.
+  * Try to load libGL.so.1 before creating QApplication.
+  * Fix printing with dark themes.
+  * Make the WebKit renderer use disk cache.
+  * AppData file improvements.
+  * Files reloading no longer triggers tab change.
+  * Implemented PDF export for the WebEngine renderer.
+  * Make the highlighter not break the pymdownx.highlight
+    extension.
+  * WebEngine renderer broken with new Qt versions.
+  * Include the stylesheet in exported HTML.
+  * Display `*` in tab title when document is modified and
+    unsaved.
+  * Enable HiDPI icons.
+  * Updated Chinese (China), Czech, Danish, Dutch, Finnish,
+    German, Italian, Korean, Portuguese (Brazil),  Portuguese
+    (European), Russian, Serbian, Spanish, Swedish and Ukrainian
+    translations
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Feb 20 10:25:14 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Leap 15.2 and SLE15 SP2 has newer librsvg, extend the conditional

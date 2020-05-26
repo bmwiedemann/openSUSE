@@ -17,7 +17,7 @@
 
 
 Name:           retext
-Version:        7.0.4
+Version:        7.1.0
 Release:        0
 Summary:        Simple editor for Markdown and reStructuredText
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  python3-Markups >= 2.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  python3-qt5
+BuildRequires:  python3-setuptools
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
@@ -44,13 +45,8 @@ Requires:       python3-Markups >= 2.0
 Requires:       python3-docutils
 Requires:       python3-pyenchant
 Requires:       python3-qt5
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 Recommends:     python3-Pygments
 Provides:       ReText = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -58,8 +54,10 @@ ReText is simple text editor that supports Markdown and reStructuredText
 markup languages. It is written in Python using PyQt libraries.
 
 %prep
-%setup -q
+%autosetup
 dos2unix LICENSE_GPL
+# remove shebang
+sed -i '/^#!/d' ReText/__main__.py ReText/converterprocess.py
 
 %build
 python3 setup.py build
@@ -84,16 +82,7 @@ popd
 
 %fdupes %{buildroot}%{_prefix}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
 %doc changelog.md README.md configuration.md
 %license LICENSE_GPL
 %{_bindir}/%{name}
