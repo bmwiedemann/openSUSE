@@ -1,0 +1,17 @@
+Index: grub-2.04/util/grub-mkconfig_lib.in
+===================================================================
+--- grub-2.04.orig/util/grub-mkconfig_lib.in
++++ grub-2.04/util/grub-mkconfig_lib.in
+@@ -189,6 +189,12 @@ grub_file_is_not_garbage ()
+       *.rpmsave|*.rpmnew) return 1 ;;
+       README*|*/README*)  return 1 ;; # documentation
+       *.sig) return 1 ;; # signatures
++      # Skip zfcpdump kernel from the grub boot menu (bsc#1166513) The zfcpdump
++      # kernel image is used by zipl to prepare a SCSI dump disc and is only
++      # intended to boot from that disk for creating kernel crash dumps,
++      # therefore booting it from grub is not making sense and also will result
++      # in unbootable system.
++      *-zfcpdump) return 1 ;; # s390 zfcpdump image
+     esac
+   else
+     return 1
