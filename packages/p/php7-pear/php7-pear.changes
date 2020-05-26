@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 18:40:31 UTC 2020 - pgajdos@suse.com
+
+- provides and obsoletes php7-pear-Archive_Tar, former location
+  of PEAR/Archive/Tar.php
+
+-------------------------------------------------------------------
 Sun Apr 19 18:42:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 1.10.19

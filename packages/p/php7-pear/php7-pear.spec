@@ -42,6 +42,10 @@ Provides:       php-pear(PEAR) = %pear_module_version PEAR
 Provides:       php-pear(Structures_Graph) = %pear_module_version Structures_Graph
 Provides:       php-pear(XML_Util) = %pear_module_version XML_Util
 Obsoletes:      php-pear < %{version}
+%if 0%{?suse_version} <= 1500 
+Provides:       php7-pear-Archive_Tar
+Obsoletes:      php7-pear-Archive_Tar
+%endif
 BuildArch:      noarch
 
 %description
