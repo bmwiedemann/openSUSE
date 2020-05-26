@@ -32,6 +32,8 @@ Requires:       python-astor
 Requires:       python-click
 Requires:       python-pathlib2
 Requires:       python-typing
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astor}
@@ -55,15 +57,22 @@ sed -i '1{/^#!/d}' src/lib3to6/__main__.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/lib3to6
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py pytest
 
+%post
+%python_install_alternative lib3to6
+
+%postun
+%python_uninstall_alternative lib3to6
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/lib3to6
+%python_alternative %{_bindir}/lib3to6
 %{python_sitelib}/*
 
 %changelog
