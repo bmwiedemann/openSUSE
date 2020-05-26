@@ -20,7 +20,7 @@
 %{!?_udevdir:%global _udevdir  %{_libexecdir}/udev}
 
 Name:           laptop-mode-tools
-Version:        1.72.2
+Version:        1.73.1
 Release:        0
 Summary:        The Laptop Mode Tools
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source1:        README.SUSE
 Patch0:         laptop-mode-1.53_conf.diff
 Patch1:         laptop-mode-1.49-new-dirty-ratio-defaults.diff
 Patch2:         laptop-mode-1.53-moblin-enable-intel-hda-powersave.patch
-# PATCH-FIX-UPSTREAM laptop-mode-tools-1.72.2-fix-name-gui.patch -- gh#rickysarraf/laptop-mode-tools#124
-Patch3:         laptop-mode-tools-1.72.2-fix-name-gui.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)

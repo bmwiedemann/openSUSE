@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 12 11:50:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.73.1:
+  * Respect black/white lists when disabling autosuspend
+  * Add newer power supply names
+  * Fix crash due external battery of mouse
+  * Honor configuration setting for battery level polling
+  * cpufreq: intel_pstate should use performance governors
+  * runtime-pm: Speed up by avoiding fork in echo_to_file
+  * runtime-pm: Inline echo_to_file_do
+  * runtime-pm: Fix echo_to_file* indentation
+  * runtime-pm: Speed up by avoiding fork in listed_by_{id,type}
+  * runtime-pm: Simplify vendor/product match
+  * add help and verison user commands
+  * Add a power-stats status command
+  * Separate power sysfs attributes and add sysfs status attribute
+  * Add device type 'sd' to default blacklist
+  * Fix rpm spec file for new installable files
+  * Return the cpu governor string from the function
+- Remove laptop-mode-tools-1.72.2-fix-name-gui.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 14:11:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to
