@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 15 13:43:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.3
+  Fixing two security problems:
+  * Further limit the number of queries that can be triggered from
+    a request.  Root and TLD servers are no longer exempt
+    from max-recursion-queries.  Fetches for missing name server
+    address records are limited to 4 for any domain. (CVE-2020-8616)
+  * Replaying a TSIG BADTIME response as a request could trigger an
+    assertion failure. (CVE-2020-8617)
+  Also
+  * Add engine support to OpenSSL EdDSA implementation.
+  * Add engine support to OpenSSL ECDSA implementation.
+  * Update PKCS#11 EdDSA implementation to PKCS#11 v3.0.
+  * Warn about AXFR streams with inconsistent message IDs.
+  * Make ISC rwlock implementation the default again.
+  For more see CHANGS file in source RPM.
+  [CVE-2020-8616, CVE-2020-8617, bsc#1171740, bind-9.16.3.tar.xz]
+
+-------------------------------------------------------------------
 Fri May  8 12:07:50 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - bind needs an accurate clock, so wait for the time-sync.target
