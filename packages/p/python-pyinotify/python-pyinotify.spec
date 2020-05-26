@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyinotify
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python module for watching filesystems changes
 License:        MIT
 Group:          Development/Libraries/Python
-URL:            http://github.com/seb-m/pyinotify
+URL:            https://github.com/seb-m/pyinotify
 Source:         https://files.pythonhosted.org/packages/source/p/pyinotify/pyinotify-%{version}.tar.gz
 Source1:        pyinotify
 BuildRequires:  %{python_module setuptools}
@@ -74,8 +74,7 @@ install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/pyinotify
 %license COPYING
 %doc ACKS README.md
 %doc old/ChangeLog old/NEWS
-%python2_only %doc python2/examples
-%python3_only %doc python3/examples
+%doc python3/examples
 %python_alternative %{_bindir}/pyinotify
 %{python_sitelib}/*
 
