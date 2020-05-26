@@ -32,6 +32,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module psutil}
@@ -53,6 +55,7 @@ module as optional (but highly recommended) dependencies.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/mprof
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod -x %{buildroot}%{$python_sitelib}/memory_profiler-%{version}-py%{$python_bin_suffix}.egg-info/*
 
@@ -71,10 +74,16 @@ python3 -m memory_profiler test/test_unicode.py
 %python_exec -m memory_profiler test/test_memory_usage.py
 %python_exec -m memory_profiler test/test_precision_import.py
 
+%post
+%python_install_alternative mprof
+
+%postun
+%python_uninstall_alternative mprof
+
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%python3_only %{_bindir}/mprof
+%python_alternative %{_bindir}/mprof
 %{python_sitelib}/*
 
 %changelog
