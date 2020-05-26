@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 25 13:35:16 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.3.0+1590413709.g4ad4e03:
+  + upstream 1.3.0 release (2020-05-25)
+    * octopus/ses7: added "--stop-before-ceph-orch-apply" function (PR #301)
+    * Implement RGW deployment in octopus, ses7 (PR #314)
+    * ceph_salt_deployment: do not force user to change dashboard pw (PR #315)
+    * makecheck: possibly prophylactically downgrade libudev1 (PR #317)
+    * contrib/standalone.sh: --no-stop-on-failure option (PR #318)
+    * ceph_salt_deployment: make use of 'cephadm' role (PR #319)
+    * octopus/ses7: removed "--deploy-mons", "--deploy-mgrs", "--deploy-osds",
+      "--deploy-mdss" (replaced by "--stop-before-ceph-orch-apply") (PR #301)
+    * seslib: drop Containers module from SES7 deployment (PR #303)
+    * provision.sh: remove curl RPM from the environment (PR #311)
+    * Fixed "sesdev create caasp4" default deployment by disabling multi-master (PR #302)
+    * ceph_salt_deployment: do not deploy MDS if no mds roles present (PR #313)
+    * caasp: do not install salt (PR #320)
+    * supportconfig: handle both scc and nts tarball prefixes (PR 
+    * seslib: convert certain public methods into private (PR #309)
+    * caasp4: rename "storage" role to "nfs" and drop it from default 4-node
+      deployment (PR #310)
+
+-------------------------------------------------------------------
 Mon May  4 18:27:54 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.2.0+1588616857.gaa3df4c:
