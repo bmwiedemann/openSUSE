@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        8.09
+Version:        8.10
 Release:        0
 Summary:        Open client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
@@ -130,9 +130,6 @@ rm %{buildroot}%{_libexecdir}/%{name}/*android.sh
 # remove py2 only script due to python2 removal
 rm %{buildroot}%{_libexecdir}/%{name}/tncc-wrapper.py
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/openconnect/vpnc-script
-# 
-install -d %{buildroot}%{_datadir}/bash-completion/completions/
-mv %{buildroot}/etc/bash_completion.d/openconnect.bash %{buildroot}%{_datadir}/bash-completion/completions/openconnect.bash
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
@@ -173,7 +170,7 @@ make %{?_smp_mflags} check
 %doc %{_docdir}/%{name}/inc/*.tmpl
 
 %files bash-completion
-%{_datadir}/bash-completion/completions/openconnect.bash
+%{_datadir}/bash-completion/completions/openconnect
 
 %files lang -f %{name}.lang
 

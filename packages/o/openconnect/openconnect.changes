@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Fri May 15 18:07:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.10:
+  * Install bash completion script to
+    ${datadir}/bash-completion/completions/openconnect.
+  * Improve compatibility of csd-post.sh trojan.
+  * Fix potential buffer overflow with GnuTLS describing local
+    certs (CVE-2020-12823).
+
+-------------------------------------------------------------------
 Fri May  1 20:35:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Fix CVE-2020-12105 (boo#1170452)
 - Introduce subpackage for bash-completion
-- Update to 8.0.9:
+- Update to 8.09:
   * Add bash completion support.
   * Give more helpful error in case of Pulse servers asking for
     TNCC.
