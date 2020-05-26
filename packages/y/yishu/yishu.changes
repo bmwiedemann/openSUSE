@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 17 12:32:23 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.3:
+  * Remove unused variables
+  * Avoid setting file path to home on every start
+  * Merge pull request #54 from onderbakirtas/master
+  * Merge pull request #1 from
+    onderbakirtas/onderbakirtas-patch-tr
+  * Upgraded tr.po
+  * Merge pull request #53 from safak45x/patch-1
+  * Update tr.po
+  * Merge pull request #52 from oskarkunik/master
+  * 1.2.2
+  * - some stuff
+
+-------------------------------------------------------------------
 Sun Feb  2 10:35:48 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.1:

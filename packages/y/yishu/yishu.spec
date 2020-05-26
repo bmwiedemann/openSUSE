@@ -17,7 +17,7 @@
 
 
 Name:           yishu
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        A bespoke and simple Todo.txt client
 License:        GPL-3.0-or-later

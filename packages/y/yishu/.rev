@@ -75,4 +75,12 @@
     <comment>- Update to new release (forwarded request 769347 from awissu)</comment>
     <requestid>769349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a828ff2ff8a034b4ef1a670215d4ad8</srcmd5>
+    <version>1.2.3</version>
+    <time>1590506496</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>808555</requestid>
+  </revision>
 </revisionlist>
