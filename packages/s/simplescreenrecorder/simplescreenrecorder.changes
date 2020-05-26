@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 21 12:04:01 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 0.4.2 (since 0.4.1):
+  * Improved X11/Wayland detection.
+  * Changed ALSA input to use non-blocking API to reduce the latency.
+  * Added support for s24, s32 and f32 sample formats for ALSA input.
+  * Added 'open folder' button after saving the recording.
+  * Several minor improvements.
+
+-------------------------------------------------------------------
 Fri May  1 19:13:21 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Update to 0.4.1 (since 0.4.0):
