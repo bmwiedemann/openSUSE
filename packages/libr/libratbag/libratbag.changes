@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 24 08:35:05 UTC 2020 - marix@marix.org
+
+- Update to version 0.14:
+  * A few bugfixes and some improvements in the log messages.
+  * Added and improved devices:
+    + Logitech G305
+    + Logitech G402
+    + Logitech G935
+    + Logitech M720
+    + Logitech MX Anywhere 2
+
+-------------------------------------------------------------------
 Sat Feb 15 10:06:35 UTC 2020 - marix@marix.org
 
 - Update to version 0.13:
@@ -13,7 +25,7 @@ Sat Feb 15 10:06:35 UTC 2020 - marix@marix.org
     + Logitech G915
   * Other added and improved devices:
     + Logitech G Powerplay
-    * Logitech M590
+    + Logitech M590
 - Updated shebang-env.diff to properly apply to the new version.
 
 -------------------------------------------------------------------

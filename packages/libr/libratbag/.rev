@@ -142,4 +142,20 @@ Matthias</comment>
 </comment>
     <requestid>774551</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc472a89dbb3a489419590d5c5d18c9e</srcmd5>
+    <version>0.14</version>
+    <time>1590506527</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.14:
+  * A few bugfixes and some improvements in the log messages.
+  * Added and improved devices:
+    + Logitech G305
+    + Logitech G402
+    + Logitech G935
+    + Logitech M720
+    + Logitech MX Anywhere 2
+    + Logitech M590</comment>
+    <requestid>808524</requestid>
+  </revision>
 </revisionlist>
