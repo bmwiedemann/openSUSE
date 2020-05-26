@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri May 22 07:00:32 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20200501:
+  * Bug Fixes
+    - Make sure buffers are initialized on error
+    - fix(sidebar): use abbreviated path if possible
+  * Translations
+    - 100% Lithuanian
+  * Docs
+    - make header cache config more explicit
+
+- Changes from 20200424:
+  * Bug Fixes
+    - Fix history corruption
+    - Handle pretty much anything in a URL query part
+    - Correctly parse escaped characters in header phrases
+    - Fix crash reading received header
+    - Fix sidebar indentation
+    - Avoid crashing on failure to parse an IMAP mailbox
+    - Maildir: handle deleted emails correctly
+    - Ensure OP_NULL is always first
+  * Translations
+    - 100% Czech
+  * Build
+    - cirrus: enable pcre2, make pkgconf a special case
+    - Fix finding pcre2 w/o pkgconf
+    - build: tdb.h needs size_t, bring it in with stddef.h
+
+- Changes from 20200417:
+  * Features
+    - Fluid layout for Compose Screen, see: vimeo.com/407231157
+    - Trivial Database (TDB) header cache backend
+    - RocksDB header cache backend
+    - Add <sidebar-first> and <sidebar-last> functions
+  * Bug Fixes
+    - add error for CLI empty emails
+    - Allow spaces and square brackets in paths
+    - browser: fix hidden mailboxes
+    - fix initial email display
+    - notmuch: fix time window search.
+    - fix resize bugs
+    - notmuch: fix entire-thread: update current email pointer
+    - sidebar: support indenting and shortening of names
+    - Handle variables inside backticks in sidebar_whitelist
+    - browser: fix mask regex error reporting
+  * Translations
+    - 100% Lithuanian
+    - 99% Chinese (simplified)
+  * Build
+    - Use regexes for common parsing tasks: urls, dates
+    - Add configure option --pcre2 -- Enable PCRE2 regular expressions
+    - Add configure option --tdb -- Use TDB for the header cache
+    - Add configure option --rocksdb -- Use RocksDB for the header cache
+    - Create libstore (key/value backends)
+    - Update to latest autosetup
+    - Update to latest acutest.h
+    - Rename doc/ directory to docs/
+    - make: fix location of .Po dependency files
+    - Change libcompress to be more universal
+    - Fix test fails on х32
+    - fix uidvalidity to unsigned 32-bit int
+  * Code
+    - Increase test coverage
+    - Fix memory leaks
+    - Fix null checks
+  * Upstream
+    - Buffer refactoring
+    - Fix use-after-free in mutt_str_replace()
+    - Clarify PGP Pseudo-header S<id> duration
+    - Try to respect MUTT_QUIET for IMAP contexts too
+    - Limit recurse depth when parsing mime messages
+
+-------------------------------------------------------------------
 Fri Mar 20 13:56:02 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 20200320:
