@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.8.3
+Version:        2.9.0
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -152,11 +152,30 @@ dconf write /org/freedesktop/ibus/engine/typing-booster/keybindings "{'next_inpu
 dconf dump /
 export DISPLAY=:1
 Xvfb $DISPLAY -screen 0 1024x768x16 &
-sleep 1
-make -C tests run_tests
-pushd tests
-    ./run_tests
-popd
+# A window manager and and ibus-daemon are needed to run the GUI
+# test tests/test_gtk.py, for example i3 can be used.
+#
+# To debug what is going on if there is a problem with the GUI test
+# add BuildRequires: x11vnc and start a vnc server:
+#
+#     x11vnc -display $DISPLAY -unixsock /tmp/mysock -bg -nopw -listen localhost -xkb
+#
+# Then one can view what is going on outside of the chroot with vncviewer:
+#
+#     vncviewer /var/lib/mock/fedora-32-x86_64/root/tmp/mysock
+#
+# The GUI test will be skipped if XDG_SESSION_TYPE is not x11 or wayland.
+#
+#ibus-daemon -drx
+#touch /tmp/i3config
+#i3 -c /tmp/i3config &
+#export XDG_SESSION_TYPE=x11
+
+make check && rc=0 || rc=1
+cat tests/*.log
+if [ $rc != 0 ] ; then
+    exit $rc
+fi
 
 %post
 [ -x %{_bindir}/ibus ] && \
