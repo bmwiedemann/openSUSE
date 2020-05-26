@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun May 24 08:00:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.4.32 
+  * Various bugfixes
+  * added support for
+    CHERRY SECURE BOARD 1.0
+    SPECINFOSYSTEMS DIAMOND HSM
+    SPECINFOSYSTEMS DIAMOND PLUS token
+    SPECINFOSYSTEMS DIAMOND PRO token
+    Access IS ATR210
+    Access IS ATR220
+    Sysking MII136C
+    Add support of min & max PIN size for the Cherry KC 1000 SC
+    Ledger Nano X support
+    SpringCard Puck
+    Gemalto RF CR5400
+    Purism, SPC Librem Key
+    SpringCard SpringCore (idProduct: 0x601A)
+    SpringCard E518 (idProduct: 0x611A)
+    SpringCard H518 (idProduct: 0x612A)
+    SpringCard Puck (dProduct: 0x613A)
+    SpringCard SpringCore (idProduct: 0x6012)
+    SpringCard E518 (idProduct: 0x6112)
+    SpringCard H518 (idProduct: 0x6122)
+    AF Care One (idProduct: 0xAFC0)
+    AF Care One (idProduct: 0xAFC1)
+    AF Care Two (idProduct: 0xAFC2)
+    AF Care Two (idProduct: 0xAFC3)
+    Doctolib SR
+    F-Secure Foundry USB Armory Mk II
+    
+-------------------------------------------------------------------
 Mon Feb  3 15:28:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(udev) instead of udev: allow OBS to

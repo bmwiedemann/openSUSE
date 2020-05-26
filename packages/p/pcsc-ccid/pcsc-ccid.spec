@@ -24,7 +24,7 @@
 
 Name:           pcsc-ccid
 %define _name ccid
-Version:        1.4.31
+Version:        1.4.32
 Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
