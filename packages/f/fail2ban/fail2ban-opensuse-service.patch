@@ -1,21 +1,23 @@
-diff -ur fail2ban-0.10.4-orig/files/fail2ban.service.in fail2ban-0.10.4/files/fail2ban.service.in
---- fail2ban-0.10.4-orig/files/fail2ban.service.in	2018-10-04 11:26:22.000000000 +0200
-+++ fail2ban-0.10.4/files/fail2ban.service.in	2019-08-12 11:17:34.929129813 +0200
-@@ -6,12 +6,13 @@
+--- a/files/fail2ban.service.in	2020-01-11 11:01:00.000000000 +0100
++++ b/files/fail2ban.service.in	2020-05-21 09:48:12.049645909 +0200
+@@ -6,13 +6,14 @@
  
  [Service]
  Type=simple
-+EnvironmentFile=-/etc/sysconfig/fail2ban
- ExecStartPre=/bin/mkdir -p /var/run/fail2ban
+-ExecStartPre=/bin/mkdir -p /run/fail2ban
 -ExecStart=@BINDIR@/fail2ban-server -xf start
++EnvironmentFile=-/etc/sysconfig/fail2ban
++ExecStartPre=/bin/mkdir -p /var/run/fail2ban
 +ExecStart=/usr/bin/fail2ban-server -xf $FAIL2BAN_OPTIONS start
  # if should be logged in systemd journal, use following line or set logtarget to sysout in fail2ban.local
 -# ExecStart=@BINDIR@/fail2ban-server -xf --logtarget=sysout start
 -ExecStop=@BINDIR@/fail2ban-client stop
 -ExecReload=@BINDIR@/fail2ban-client reload
+-PIDFile=/run/fail2ban/fail2ban.pid
 +# ExecStart=/usr/bin/fail2ban-server -xf --logtarget=sysout start
 +ExecStop=/usr/bin/fail2ban-client stop
 +ExecReload=/usr/bin/fail2ban-client reload
- PIDFile=/var/run/fail2ban/fail2ban.pid
++PIDFile=/var/run/fail2ban/fail2ban.pid
  Restart=on-failure
  RestartPreventExitStatus=0 255
+ 

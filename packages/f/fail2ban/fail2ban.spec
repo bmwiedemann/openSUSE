@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        0.10.4
+Version:        0.11.1
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May 21 07:49:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.1:
+  * Increment ban time (+ observer) functionality introduced.
+  * Database functionality extended with bad ips.
+  * New tags (usable in actions):
+    - `<bancount>` - ban count of this offender if known as bad
+      (started by 1 for unknown)
+    - `<bantime>` - current ban-time of the ticket
+      (prolongation can be retarded up to 10 sec.)
+  * Introduced new action command `actionprolong` to prolong ban-time
+    (e. g. set new timeout if expected);
+  * algorithm of restore current bans after restart changed:
+    update the restored ban-time (and therefore 
+    end of ban) of the ticket with ban-time of jail (as maximum),
+    for all tickets with ban-time greater (or persistent)
+  * added new setup-option `--without-tests` to skip building
+    and installing of tests files (gh-2287).
+  * added new command `fail2ban-client get <JAIL> banip ?sep-char|--with-time?`
+    to get the banned ip addresses (gh-1916).
+  * purge database will be executed now (within observer).
+   restoring currently banned ip after service restart fixed
+    (now < timeofban + bantime), ignore old log failures (already banned)
+  * upgrade database: update new created table `bips` with entries
+    from table `bans` (allows restore current bans after
+    upgrade from version <= 0.10)
+
+-------------------------------------------------------------------
 Thu Jan  9 14:06:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Switch to use python3 (upstream supported):
