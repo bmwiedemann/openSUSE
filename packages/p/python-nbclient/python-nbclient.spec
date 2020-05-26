@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -29,21 +29,23 @@ Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclie
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jupyter-client >= 5.3.4
+Requires:       python-async_generator
+Requires:       python-jupyter-client >= 6.1.0
 Requires:       python-nbformat >= 5.0
 Requires:       python-traitlets >= 4.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pebble}
-BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-client >= 5.3.4}
+BuildRequires:  %{python_module jupyter-client >= 6.1.0}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat >= 5.0}
 BuildRequires:  %{python_module pytest >= 4.1}
-BuildRequires:  %{python_module traitlets >= 4.2}
 BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module traitlets >= 4.2}
 BuildRequires:  %{python_module xmltodict}
 # /SECTION
 %python_subpackages
@@ -70,6 +72,7 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/nbclient
+%{python_sitelib}/nbclient-%{version}-py*.egg-info/
 
 %changelog

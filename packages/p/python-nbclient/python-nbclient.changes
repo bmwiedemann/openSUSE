@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:33:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * only build for python 3, add skip_python2
+  * updated requirement versions, add async_generator
+  * be more specific in %files section
+
+- update to version 0.2.0:
+  * Major Changes
+    + Async support is now available on the client. Methods that
+      support async have an async_ prefix and can be awaited #10 #35
+      #37 #38
+    + Dropped support for Python 3.5 due to async compatability issues
+      #34
+    + Notebook documents now include the new kernel timing fields #32
+  * Fixes
+    + Memory and process leaks from nbclient should now be fixed #34
+    + Notebook execution exceptions now include error information in
+      addition to the message #41
+  * Docs
+    + Added binder examples / tests #7
+    + Added changelog to docs #22
+    + Doc typo fixes #27 #30
+
+-------------------------------------------------------------------
 Mon Feb 24 15:45:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - initial version
