@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedihttp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,7 @@ Version:        0+git.1497381496.75b8b74
 Release:        0
 Summary:        HTTP/JSON wrapper around Jedi
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        Apache-2.0
 Group:          Development/Libraries
 URL:            https://github.com/vheon/JediHTTP
@@ -43,6 +44,8 @@ Requires:       python-bottle
 Requires:       python-jedi
 Requires:       python-waitress
 Requires:       update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,13 +62,19 @@ jedi for python3 completion in YouCompleteMe.
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/jedihttp-server
+%python_clone -a %{buildroot}%{_bindir}/jedihttp-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative jedihttp-server
+
+%postun
+%python_uninstall_alternative jedihttp-server
 
 %files %{python_files}
 %license LICENSE
 %doc README.md NOTICE
-%python3_only %{_bindir}/jedihttp-server
+%python_alternative %{_bindir}/jedihttp-server
 %{_bindir}/jedihttp-server-%{python_bin_suffix}
 %{python_sitelib}/jedihttp
 %{python_sitelib}/jedihttp-*.egg-info
