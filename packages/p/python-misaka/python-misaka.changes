@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Jan 16 08:24:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

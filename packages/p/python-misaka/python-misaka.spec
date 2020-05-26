@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tidy
 Requires:       python-cffi >= 1.12.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -45,6 +47,7 @@ A CFFI binding for Hoedown_ (version 3), a markdown parsing library.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/misaka
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -52,10 +55,16 @@ A CFFI binding for Hoedown_ (version 3), a markdown parsing library.
 $python tests/run_tests.py
 }
 
+%post
+%python_install_alternative misaka
+
+%postun
+%python_uninstall_alternative misaka
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python3_only %{_bindir}/misaka
+%python_alternative %{_bindir}/misaka
 %{python_sitearch}/*
 
 %changelog
