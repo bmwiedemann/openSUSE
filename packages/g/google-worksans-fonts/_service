@@ -1,0 +1,20 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/weiweihuanghuang/Work-Sans</param>
+		<param name="revision">master</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
+		<param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+		<param name="exclude">documentation</param>
+		<param name="exclude">fonts/static/TTF</param>
+		<param name="exclude">fonts/static/WOFF2</param>
+		<param name="exclude">fonts/variable</param>
+		<param name="exclude">old</param>
+		<param name="exclude">sources</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

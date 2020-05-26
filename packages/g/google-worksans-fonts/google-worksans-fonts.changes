@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Fri May  8 18:40:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust description for temporal grammar. Drop author list
+  from description.
+- Manual repackaging is nowhere documented, so switch to a
+  _service file.
+- Switch to the WOFF files, they are smaller and Leap 15.1 is
+  able to handle WOFF 0.x & 1.x.
+- Update to 1.6+git145.18037a0 (README update only)
+
+-------------------------------------------------------------------
+Tue Apr 14 15:08:55 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com> - 1.6-144-g28b121c
+
+- Update to v1.6-144-g28b121c
+  repackaged master.zip archive to include only the TTF files
+  SHA256 sum can be viewed in the file fonts.sha256 in the source RPM.
+
+-------------------------------------------------------------------
+Tue Apr 14 14:29:38 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com> - 1.6
+
+- First inital release 1.6
