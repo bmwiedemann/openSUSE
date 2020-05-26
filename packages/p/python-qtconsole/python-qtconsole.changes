@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 23 20:35:57 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.7.4:
+  * Fix completion widget text for paths and files.
+  * Make Qtconsole work on Python 3.8 and Windows.
+
+-------------------------------------------------------------------
 Sat Apr 18 21:29:25 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.7.3:
