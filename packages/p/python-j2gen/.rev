@@ -19,4 +19,12 @@
 - Do not pull in devel python module as it is not needed</comment>
     <requestid>734019</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74bdb5ed9b1513697e83505fd92204d9</srcmd5>
+    <version>0.1.0</version>
+    <time>1590508157</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808783</requestid>
+  </revision>
 </revisionlist>
