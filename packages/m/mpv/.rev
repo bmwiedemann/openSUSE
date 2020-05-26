@@ -842,4 +842,14 @@
     for the complete changelog.</comment>
     <requestid>806768</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>b8d0ac9d8508d68dc35e55bdd29462ca</srcmd5>
+    <version>0.32.0+git.20200525T015437.b83bdd1d17</version>
+    <time>1590506530</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.32.0+git.20200525T015437.b83bdd1d17:
+  * See https://github.com/mpv-player/mpv/compare/82ded968aa..b83bdd1d17
+    for the complete changelog.</comment>
+    <requestid>808571</requestid>
+  </revision>
 </revisionlist>
