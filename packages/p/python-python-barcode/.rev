@@ -41,4 +41,12 @@
   * The cli tool has been fixed and should now work as expected again.</comment>
     <requestid>787472</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a43ce6e4e6920c7f1df73ebf751cc0b2</srcmd5>
+    <version>0.11.0</version>
+    <time>1590506297</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807675</requestid>
+  </revision>
 </revisionlist>

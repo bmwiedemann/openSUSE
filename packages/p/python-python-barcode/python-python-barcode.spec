@@ -37,6 +37,8 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       dejavu-fonts
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pyBarcode
 Obsoletes:      python-pyBarcode
 BuildArch:      noarch
@@ -57,9 +59,10 @@ rm docs/Makefile
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/python-barcode
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-find "%{buildroot}" -type f -name "*.ttf" | while read i; do
+find %{buildroot} -type f -name "*.ttf" | while read i; do
 	ln -fs "%{_datadir}/fonts/truetype/${i##*/}" "$i"
 done
 
@@ -67,10 +70,16 @@ done
 sed -i '/cov/d' setup.cfg
 %pytest
 
+%post
+%python_install_alternative python-barcode
+
+%postun
+%python_uninstall_alternative python-barcode
+
 %files %{python_files}
 %doc docs/*
 %license LICENCE
 %{python_sitelib}/*
-%python3_only %{_bindir}/python-barcode
+%python_alternative %{_bindir}/python-barcode
 
 %changelog
