@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMeta3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyMeta3/PyMeta3
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,11 +53,18 @@ It is a fork of PyMeta 0.5.0 that supports Python 2 and 3.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -D -m0755 bin/generate_parser %{buildroot}%{_bindir}/generate_parser
 sed -i  -e 's/env python$/python3/' %{buildroot}%{_bindir}/generate_parser
+%python_clone -a %{buildroot}%{_bindir}/generate_parser
+
+%post
+%python_install_alternative generate_parser
+
+%postun
+%python_uninstall_alternative generate_parser
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS README
 %{python_sitelib}/*
-%python3_only %{_bindir}/generate_parser
+%python_alternative %{_bindir}/generate_parser
 
 %changelog
