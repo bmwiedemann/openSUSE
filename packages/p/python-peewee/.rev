@@ -152,4 +152,12 @@
   default since 3.12.x and doesn't have vulnerabilities (bsc#1122204)</comment>
     <requestid>786217</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6b3f7a1f6d610a8c424f3d4d58affd8a</srcmd5>
+    <version>3.13.1</version>
+    <time>1590506223</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807652</requestid>
+  </revision>
 </revisionlist>

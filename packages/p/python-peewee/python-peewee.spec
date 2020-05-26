@@ -38,6 +38,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -51,17 +53,23 @@ An expressive ORM that supports PostgreSQL, MySQL and SQLite.
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/pwiz.py
+%python_clone -a %{buildroot}%{_bindir}/pwiz.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch tests
 
+%post
+%python_install_alternative pwiz.py
+
+%postun
+%python_uninstall_alternative pwiz.py
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst TODO.rst
 %{_bindir}/pwiz.py-%{python_bin_suffix}
-%python3_only %{_bindir}/pwiz.py
+%python_alternative %{_bindir}/pwiz.py
 %{python_sitearch}/*
 
 %changelog
