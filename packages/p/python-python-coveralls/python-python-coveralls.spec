@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-coveralls
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Requires:       python-PyYAML
 Requires:       python-coverage >= 4.4
 Requires:       python-requests
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-coveralls
 BuildArch:      noarch
 # SECTION test requirements
@@ -63,6 +65,7 @@ tar -xvzf %{SOURCE1}
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/coveralls
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,10 +73,16 @@ pushd python-coveralls-example
 %pytest example/tests.py --cov=example
 popd
 
+%post
+%python_install_alternative coveralls
+
+%postun
+%python_uninstall_alternative coveralls
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/coveralls
+%python_alternative %{_bindir}/coveralls
 %{python_sitelib}/*
 
 %changelog
