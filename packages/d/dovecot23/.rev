@@ -472,4 +472,12 @@
     lmtp service to crash. (boo#1171456)</comment>
     <requestid>807017</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>1a19b3e3c559064a2b476f9db53cc280</srcmd5>
+    <version>2.3.10.1</version>
+    <time>1590508229</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>809014</requestid>
+  </revision>
 </revisionlist>

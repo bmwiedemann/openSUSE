@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 12:04:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update tls 1.3 patch to allow building with tls 1.0
+
+-------------------------------------------------------------------
 Mon May 18 14:04:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.3.10.1 with security fixes for
