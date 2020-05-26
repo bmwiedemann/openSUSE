@@ -19,16 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab
-Version:        2.0.0
+Version:        2.1.3
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab
-Source0:        https://files.pythonhosted.org/packages/py2.py3/j/jupyterlab/jupyterlab-%{version}-py2.py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/py3/j/jupyterlab/jupyterlab-%{version}-py3-none-any.whl
 Source99:       python-jupyterlab-rpmlintrc
 BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module jupyterlab-server >= 1.0.0}
+BuildRequires:  %{python_module jupyterlab-server >= 1.1.4}
 BuildRequires:  %{python_module notebook >= 4.3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tornado}
@@ -41,7 +41,7 @@ Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 2.10
 Requires:       python-base >= 3.5
 Requires:       python-jupyter-core
-Requires:       python-jupyterlab-server >= 1.0.0
+Requires:       python-jupyterlab-server >= 1.1.4
 Requires:       python-notebook >= 4.3.1
 Requires:       python-tornado
 Provides:       python-jupyter_jupyterlab = %{version}
@@ -62,7 +62,7 @@ based on the Jupyter Notebook and Architecture.
 JupyterLab is the next-generation user interface for Project Jupyter
 offering all the familiar building blocks of the classic Jupyter
 Notebook (notebook, terminal, text editor, file browser, rich outputs,
-etc.). 
+etc.).
 
 %package     -n jupyter-jupyterlab
 Summary:        Environment for interactive and reproducible computing
@@ -84,7 +84,7 @@ based on the Jupyter Notebook and Architecture.
 JupyterLab is the next-generation user interface for Project Jupyter
 offering all the familiar building blocks of the classic Jupyter
 Notebook (notebook, terminal, text editor, file browser, rich outputs,
-etc.). 
+etc.).
 
 %prep
 %setup -q -c -T
@@ -96,9 +96,9 @@ etc.).
 cp -a %{SOURCE0} .
 %pyproject_install
 
-%{jupyter_move_config}
-%python_expand sed -i -e 's|^#!/usr/bin/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
-%python_expand sed -i -e 's|^#!/usr/bin/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
+%jupyter_move_config
+%python_expand sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
+%python_expand sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
 %python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/node-version-check.js
 %python_expand chmod a+x %{buildroot}%{$python_sitelib}/jupyterlab/staging/yarn.js
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -123,7 +123,6 @@ export PYTHONDONTWRITEBYTECODE=1
 %{_bindir}/jlpm
 %{_bindir}/jupyter-lab
 %{_bindir}/jupyter-labextension
-%{_bindir}/jupyter-labhub
 %config %{_jupyter_servextension_confdir}/jupyterlab.json
 %{_jupyter_lab_dir}
 
