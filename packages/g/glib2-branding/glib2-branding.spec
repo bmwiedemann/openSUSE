@@ -66,7 +66,7 @@ Group:          System/GUI/GNOME
 Requires:       %{gio_real_package} = %{gio_version}
 Recommends:     sound-theme-freedesktop
 # For wallpaper
-Recommends:     wallpaper-branding-%{branding_name}
+Recommends:     (wallpaper-branding-%{branding_name} if gnome-shell)
 Supplements:    packageand(%{gio_real_package}:branding-%{branding_name})
 Conflicts:      gio-branding
 Provides:       glib2-branding-%{branding_name} = %{version}

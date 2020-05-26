@@ -1,14 +1,21 @@
 -------------------------------------------------------------------
+Mon May 18 14:12:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only recommend wallpaper-branding-%{branding_name} when
+  gnome-shell is present. Allows gio to be installed on text-only
+  systems without pulling wallpapers in (boo#1162600).
+
+-------------------------------------------------------------------
 Fri Mar 13 07:11:53 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update .gschema.override.in: 
+- Update .gschema.override.in:
   + Set sleep-inactive-ac-timeout, sleep-inactive-battery-timeout to
     0 for Leap to be consistent with SLE and old versions (bsc#1158497).
 
 -------------------------------------------------------------------
 Tue Jan  7 08:53:34 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update .gschema.override.in: 
+- Update .gschema.override.in:
   + Delete unused settings-daemon.plugins.power keys.
   + Set sleep-inactive-ac-timeout, sleep-inactive-battery-timeout to
     0 for SLE to be consistent with old versions (bsc#1158497).

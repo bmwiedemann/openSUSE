@@ -92,4 +92,12 @@
     0 for Leap to be consistent with SLE and old versions (bsc#1158497). (forwarded request 784525 from qkzhu)</comment>
     <requestid>789268</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>81d9e271e504f31c5840a51906cea871</srcmd5>
+    <version>15</version>
+    <time>1590506059</time>
+    <user>maxlin_factory</user>
+    <comment>Resub tweaked (forwarded request 807083 from iznogood)</comment>
+    <requestid>807574</requestid>
+  </revision>
 </revisionlist>
