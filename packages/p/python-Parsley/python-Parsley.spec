@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-parsley
 Obsoletes:      %{oldpython}-Parsley-doc
 Obsoletes:      python-Parsley-doc
@@ -67,6 +69,7 @@ for f in {generate_parser,stage}; do
 	-e "s|^#!%{_bindir}/env python$|#!%{_bindir}/python3|" \
 	bin/$f
     cp -v bin/$f %{buildroot}/%{_bindir}/parsley-$f
+    %python_clone -a %{buildroot}%{_bindir}/parsley-$f
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -76,10 +79,19 @@ export LANG=en_US.UTF-8
 %pytest ometa/test
 %pytest terml/test
 
+%post
+%python_install_alternative parsley-stage
+%python_install_alternative parsley-generate_parser
+
+%postun
+%python_uninstall_alternative parsley-stage
+%python_uninstall_alternative parsley-generate_parser
+
 %files %{python_files}
 %license LICENSE
 %doc NEWS PKG-INFO README
-%python3_only %{_bindir}/parsley*
+%python_alternative %{_bindir}/parsley-stage
+%python_alternative %{_bindir}/parsley-generate_parser
 %{python_sitelib}/*
 
 %changelog
