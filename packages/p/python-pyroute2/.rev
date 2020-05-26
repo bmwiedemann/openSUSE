@@ -174,4 +174,12 @@
   * ndb.schema: reschedule events</comment>
     <requestid>798856</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8ae51eba9f9b64706a714d65c880b738</srcmd5>
+    <version>0.5.11</version>
+    <time>1590506305</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807680</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,8 @@ BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,18 +58,28 @@ protocols. Some supported netlink families and protocols:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyroute2-cli
+%python_clone -a %{buildroot}%{_bindir}/ss2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # tests require root access
 #%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v
 
+%post
+%python_install_alternative pyroute2-cli
+%python_install_alternative ss2
+
+%postun
+%python_uninstall_alternative pyroute2-cli
+%python_uninstall_alternative ss2
+
 %files %{python_files}
 %license README.license.md
 %doc README.md CHANGELOG.md README.report.md
 %license LICENSE.Apache.v2 LICENSE.GPL.v2
 %{python_sitelib}/*
-%python3_only %{_bindir}/ss2
-%python3_only %{_bindir}/pyroute2-cli
+%python_alternative %{_bindir}/ss2
+%python_alternative %{_bindir}/pyroute2-cli
 
 %changelog
