@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May 23 08:17:05 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.17.0
+  * New Features
+    - Add a workaround for Amazon destroying cover thumbnails on 
+      e-ink Kindles.
+    - Viewer: Group search results by section
+    - Viewer: When the search results panel is expanded, show more
+      context
+    - Tag browser: Add options in Preferences->Look & feel->Tag
+      browser to hide empty categories and also to have the Find in
+      the Tag browser show all matches instead of jumping from
+      match to match.
+    - Tag browser: The Find function for searching for items in the
+      Tag browser can now do exact matching by using = as a prefix.
+    - Manage tags/authors/etc dialogs: Allow searching and
+      filtering the list of items.
+    - Book details panel contenxt menu: Add an action to open the 
+      Book details window.
+    - Viewer: Add Next and Previous buttons in the bookmarks panel.
+    - Conversion: Change the default white-space CSS for
+      tags to pre-wrap as this suits ebooks better
+  * Bug Fixes
+    - Edit Book: Fix default CSS template not quoting the charset,
+      causing Check book to complain about the CSS.
+    - Fix a regression in the previous release that broke the 
+      losslessly compress images tool when the image filenames had
+      upper case characters on Windows.
+    - Fix a regression that broke drag and drop of images from 
+      browsers to the book details panel on some platforms.
+    - FB2 metadata: Fix setting dates before 1900 failing
+    - Fix Bookeen Diva HD not being detected.
+
+-------------------------------------------------------------------
 Fri May 15 05:33:11 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.16.0
