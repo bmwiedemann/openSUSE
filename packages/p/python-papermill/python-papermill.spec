@@ -43,6 +43,8 @@ Requires:       python-requests >= 2.21.0
 Requires:       python-six
 Requires:       python-tenacity
 Requires:       python-tqdm >= 4.29.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-azure-datalake-store >= 0.0.30
 Recommends:     python-azure-storage-blob
 Recommends:     python-black
@@ -88,15 +90,22 @@ and analyzing Jupyter Notebooks.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/papermill
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative papermill
+
+%postun
+%python_uninstall_alternative papermill
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/papermill
+%python_alternative %{_bindir}/papermill
 %{python_sitelib}/*
 
 %changelog
