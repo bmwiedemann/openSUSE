@@ -1,0 +1,75 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix build with old alsa-devel
+
+Revert part of https://github.com/PipeWire/pipewire/commit/c658574c0119d3a1f199fe17091fc4d5f37f1e71
+since the alsa version in SLE/Leap doesn't have a snd_pcm_ioplug_hw_avail function.
+
+Index: pipewire-0.3.5/pipewire-alsa/alsa-plugins/pcm_pipewire.c
+===================================================================
+--- pipewire-0.3.5.orig/pipewire-alsa/alsa-plugins/pcm_pipewire.c
++++ pipewire-0.3.5/pipewire-alsa/alsa-plugins/pcm_pipewire.c
+@@ -192,7 +192,6 @@ snd_pcm_pipewire_process_playback(snd_pc
+ 	index = 0;
+ 	avail = maxsize - filled;
+ 	avail = SPA_MIN(avail, pw->min_avail * bpf);
+-	avail = SPA_MIN(avail, *hw_avail * bpf);
+ 
+ 	do {
+ 	offset = index % maxsize;
+@@ -236,7 +235,8 @@ snd_pcm_pipewire_process_playback(snd_pc
+ 			pw->hw_ptr -= pw->boundary;
+ 		xfer += frames;
+ 	}
+-	*hw_avail -= xfer;
++
++	pcm_poll_unblock_check(io); /* unblock socket for polling if needed */
+ 
+       done:
+ 	index += nbytes;
+@@ -271,7 +271,7 @@ snd_pcm_pipewire_process_record(snd_pcm_
+ 	d = b->buffer->datas;
+ 
+ 	maxsize = d[0].chunk->size;
+-	avail = SPA_MIN(maxsize, *hw_avail * bpf);
++	avail = maxsize;
+ 	index = d[0].chunk->offset;
+ 
+ 	do {
+@@ -309,7 +309,9 @@ snd_pcm_pipewire_process_record(snd_pcm_
+ 			pw->hw_ptr -= pw->boundary;
+ 		xfer += frames;
+ 	}
+-	*hw_avail -= xfer;
++
++	pcm_poll_unblock_check(io); /* unblock socket for polling if needed */
++
+ 	avail -= nbytes;
+ 	index += nbytes;
+ 	} while (avail > 0);
+@@ -355,9 +357,6 @@ static void on_stream_process(void *data
+ 	snd_pcm_pipewire_t *pw = data;
+ 	snd_pcm_ioplug_t *io = &pw->io;
+ 	struct pw_buffer *b;
+-	snd_pcm_uframes_t hw_avail;
+-
+-	hw_avail = snd_pcm_ioplug_hw_avail(io, pw->hw_ptr, io->appl_ptr);
+ 
+ 	if (pw->drained) {
+ 		pcm_poll_unblock_check(io); /* unblock socket for polling if needed */
+@@ -369,13 +368,13 @@ static void on_stream_process(void *data
+ 		return;
+ 
+ 	if (io->stream == SND_PCM_STREAM_PLAYBACK)
+-		snd_pcm_pipewire_process_playback(pw, b, &hw_avail);
++		snd_pcm_pipewire_process_playback(pw, b, 0L);
+ 	else
+-		snd_pcm_pipewire_process_record(pw, b, &hw_avail);
++		snd_pcm_pipewire_process_record(pw, b, 0L);
+ 
+ 	pw_stream_queue_buffer(pw->stream, b);
+ 
+-	if (io->state == SND_PCM_STATE_DRAINING && !pw->draining && hw_avail == 0) {
++	if (io->state == SND_PCM_STATE_DRAINING && !pw->draining == 0) {
+ 		pw_stream_flush(pw->stream, true);
+ 		pw->draining = true;
+ 		pw->drained = false;

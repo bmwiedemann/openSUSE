@@ -17,21 +17,30 @@
 #
 
 
-%define libpipewire libpipewire-0_3-0
-%define sover 0_3_2
+%define _use_internal_dependency_generator 0
+
+%global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
+%global __find_provides %provfind
+
+%define sover 0_3_5
 %define apiver 0.3
+%define apiver_str 0_3
 %define spa_ver 0.2
 %define spa_ver_str 0_2
 
+%define libpipewire libpipewire-%{apiver_str}-0
+
 Name:           pipewire
-Version:        0.3.2
+Version:        0.3.5
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
+Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -104,12 +113,14 @@ Some of its features include:
 
 This package provides the PipeWire shared library.
 
-%package -n libjack-pw%{sover}
-Summary:        A Multimedia Framework designed to be an audio and video server and more
+%package libjack-%{apiver_str}
+Summary:        PipeWire libjack replacement libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
-%description -n libjack-pw%{sover}
+%description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
 
 Some of its features include:
@@ -120,51 +131,17 @@ Some of its features include:
  * GStreamer plugins for easy use and integration in current applications;
  * Sandboxed applications support.
 
-This package provides the PipeWire shared library.
+This package provides the PipeWire replacement libraries for libjack.
 
 
-%package -n libpulse-mainloop-glib-pw%{sover}
+%package libpulse-%{apiver_str}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
-%description -n libpulse-mainloop-glib-pw%{sover}
-PipeWire is a server and user space API to deal with multimedia pipelines.
-
-Some of its features include:
-
- * Capture and playback of audio and video with minimal latency;
- * Real-time Multimedia processing on audio and video;
- * Multiprocess architecture to let applications share multimedia content;
- * GStreamer plugins for easy use and integration in current applications;
- * Sandboxed applications support.
-
-This package provides the PipeWire shared library.
-
-%package   -n libpulse-pw%{sover}
-Summary:        A Multimedia Framework designed to be an audio and video server and more
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-
-%description -n libpulse-pw%{sover}
-PipeWire is a server and user space API to deal with multimedia pipelines.
-
-Some of its features include:
-
- * Capture and playback of audio and video with minimal latency;
- * Real-time Multimedia processing on audio and video;
- * Multiprocess architecture to let applications share multimedia content;
- * GStreamer plugins for easy use and integration in current applications;
- * Sandboxed applications support.
-
-This package provides the PipeWire shared library.
-
-%package -n libpulse-simple-pw%{sover}
-Summary:        A Multimedia Framework designed to be an audio and video server and more
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-
-%description -n libpulse-simple-pw%{sover}
+%description libpulse-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
 
 Some of its features include:
@@ -274,6 +251,10 @@ This package contains documentation for the PipeWire media server.
 %patch0 -p1
 %endif
 
+%if %{pkg_vcmp alsa-devel < 1.2.2}
+%patch1 -p1
+%endif
+
 %build
 %if %{pkg_vcmp gcc < 8}
 export CC=gcc-9
@@ -285,11 +266,26 @@ export CC=gcc-9
 	-Dffmpeg=true \
 	-Dsystemd=true \
 	-Dvulkan=true \
+	-Dtest=true \
+	-Daudiotestsrc=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+
+mkdir -p %{buildroot}%{_sysconfdir}/alsa/conf.d/
+for filename in 50-pipewire.conf \
+                99-pipewire-default.conf ; do
+    cp -a pipewire-alsa/conf/"$filename" %{buildroot}%{_sysconfdir}/alsa/conf.d/
+done
+
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+for wrapper in pw-pulse pw-jack ; do
+    mv  %{buildroot}%{_bindir}/$wrapper   %{buildroot}%{_bindir}/$wrapper-%{apiver}
+    ln -s -f %{_sysconfdir}/alternatives/$wrapper %{buildroot}%{_bindir}/$wrapper
+done
+
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
 
 %check
@@ -298,17 +294,21 @@ export CC=gcc-9
 %post   -n %{libpipewire} -p /sbin/ldconfig
 %postun -n %{libpipewire} -p /sbin/ldconfig
 
-%post   -n libjack-pw%{sover} -p /sbin/ldconfig
-%postun -n libjack-pw%{sover} -p /sbin/ldconfig
+%post libpulse-%{apiver_str}
+%{_sbindir}/update-alternatives --install %{_bindir}/pw-pulse pw-pulse %{_bindir}/pw-pulse-%{apiver} 20
 
-%post   -n libpulse-mainloop-glib-pw%{sover} -p /sbin/ldconfig
-%postun -n libpulse-mainloop-glib-pw%{sover} -p /sbin/ldconfig
+%postun libpulse-%{apiver_str}
+if [ ! -e %{_bindir}/pw-pulse-%{apiver} ] ; then
+  %{_sbindir}/update-alternatives --remove pw-pulse %{_bindir}/pw-pulse-%{apiver}
+fi
 
-%post   -n libpulse-pw%{sover} -p /sbin/ldconfig
-%postun -n libpulse-pw%{sover} -p /sbin/ldconfig
+%post libjack-%{apiver_str}
+%{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20
 
-%post   -n libpulse-simple-pw%{sover} -p /sbin/ldconfig
-%postun -n libpulse-simple-pw%{sover} -p /sbin/ldconfig
+%postun libjack-%{apiver_str}
+if [ ! -e %{_bindir}/pw-jack-%{apiver} ] ; then
+  %{_sbindir}/update-alternatives --remove pw-jack %{_bindir}/pw-jack-%{apiver}
+fi
 
 %files
 %{_bindir}/pipewire
@@ -323,26 +323,37 @@ export CC=gcc-9
 
 %dir %{_libdir}/alsa-lib
 %{_libdir}/alsa-lib/libasound_module_pcm_pipewire.so
+%dir %{_datadir}/alsa/alsa.conf.d
+%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf
+%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf
+%dir %{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa/conf.d
+%config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
+%config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
 %doc README.md
 %{_libdir}/libpipewire-%{apiver}.so.*
 
-%files -n libjack-pw%{sover}
-%{_libdir}/libjack-pw.so.*
+%files libjack-%{apiver_str}
+%dir %{_libdir}/pipewire-%{apiver}/jack
+%{_libdir}/pipewire-%{apiver}/jack/libjack.so*
+%{_libdir}/pipewire-%{apiver}/jack/libjacknet.so*
+%{_libdir}/pipewire-%{apiver}/jack/libjackserver.so*
+%ghost %{_sysconfdir}/alternatives/pw-jack
+%{_bindir}/pw-jack-%{apiver}
+%{_bindir}/pw-jack
 
-%files -n libpulse-mainloop-glib-pw%{sover}
+%files libpulse-%{apiver_str}
 %license pipewire-pulseaudio/LICENSE
-%{_libdir}/libpulse-mainloop-glib-pw.so.*
-
-%files -n libpulse-pw%{sover}
-%license pipewire-pulseaudio/LICENSE
-%{_libdir}/libpulse-pw.so.*
-
-%files -n libpulse-simple-pw%{sover}
-%license pipewire-pulseaudio/LICENSE
-%{_libdir}/libpulse-simple-pw.so.*
+%dir %{_libdir}/pipewire-%{apiver}/pulse
+%{_libdir}/pipewire-%{apiver}/pulse/libpulse.so*
+%{_libdir}/pipewire-%{apiver}/pulse/libpulse-simple.so*
+%{_libdir}/pipewire-%{apiver}/pulse/libpulse-mainloop-glib.so*
+%ghost %{_sysconfdir}/alternatives/pw-pulse
+%{_bindir}/pw-pulse-%{apiver}
+%{_bindir}/pw-pulse
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -355,8 +366,17 @@ export CC=gcc-9
 %{_bindir}/pw-cat
 %{_bindir}/pw-play
 %{_bindir}/pw-record
+%{_bindir}/pw-metadata
+%{_bindir}/pw-mididump
+%{_bindir}/pw-midiplay
+%{_bindir}/pw-midirecord
 %{_mandir}/man1/pw-cli.1%{ext_man}
 %{_mandir}/man1/pw-mon.1%{ext_man}
+%{_mandir}/man1/pw-cat.1%{ext_man}
+%{_mandir}/man1/pw-dot.1%{ext_man}
+%{_mandir}/man1/pw-metadata.1%{ext_man}
+%{_mandir}/man1/pw-mididump.1%{ext_man}
+%{_mandir}/man1/pw-profiler.1%{ext_man}
 
 %files spa-tools
 %{_bindir}/spa-inspect
@@ -392,6 +412,8 @@ export CC=gcc-9
 %{_libdir}/spa-%{spa_ver}/v4l2/libspa-v4l2.so
 %{_libdir}/spa-%{spa_ver}/videoconvert/libspa-videoconvert.so
 %{_libdir}/spa-%{spa_ver}/vulkan/libspa-vulkan.so
+%{_libdir}/spa-%{spa_ver}/audiotestsrc/libspa-audiotestsrc.so
+%{_libdir}/spa-%{spa_ver}/test/libspa-test.so
 
 %dir %{_libdir}/spa-%{spa_ver}
 %dir %{_libdir}/spa-%{spa_ver}/alsa
@@ -405,13 +427,11 @@ export CC=gcc-9
 %dir %{_libdir}/spa-%{spa_ver}/v4l2
 %dir %{_libdir}/spa-%{spa_ver}/videoconvert
 %dir %{_libdir}/spa-%{spa_ver}/vulkan
+%dir %{_libdir}/spa-%{spa_ver}/audiotestsrc
+%dir %{_libdir}/spa-%{spa_ver}/test
 
 %files devel
 %{_libdir}/libpipewire-%{apiver}.so
-%{_libdir}/libjack-pw.so
-%{_libdir}/libpulse-mainloop-glib-pw.so
-%{_libdir}/libpulse-pw.so
-%{_libdir}/libpulse-simple-pw.so
 %{_libdir}/pkgconfig/libpipewire-%{apiver}.pc
 %{_libdir}/pkgconfig/libspa-%{spa_ver}.pc
 %{_includedir}/pipewire-%{apiver}/

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu May 21 08:50:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Filter out libpulse.so.0 and libjack.so.0 automatic provides so
+  this is not considered an alternative when resolving dependencies
+  in the distribution.
+
+-------------------------------------------------------------------
+Thu May 21 07:51:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build in SLE/Leap where alsa doesn't have a
+  snd_pcm_ioplug_hw_avail function:
+  * do-not-use-snd_pcm_ioplug_hw_avail.patch
+
+-------------------------------------------------------------------
+Tue May 19 07:54:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.5:
+  * Compiler fixes
+  * Add pw-midiplay and pw-midirecord aliases
+  * Add pw-mididump tool
+  * Add pw-metadata tool to inspect, add and remove metadata
+    for objects.
+  * Docs updates, man pages
+  * install alsa config files
+  * Fix linked sink/source in pulseaudio
+  * ratelimit graph processing warnings
+  * improve buffer handling in GStreamer elements
+  * Fix power usage by removing the queue for the alsa
+    sequencer system announce messages.
+  * Fix metadata clear() method dispatch.
+  * Improve parameter enumeration, make it possible to detect
+    missing parameters vs no-compatible parameters so that we
+    can use defaults in the first case and error in the second
+    case.
+  * Fix cleanup of proxy objects. Stability improvements on
+    plug/unplug in session manager.
+  * Make it possible to set log level from config file
+  * improve debug of param negotiation errors. Log the
+    parameters to stderr/journal.
+  * Make it possible to configure global logger
+    implementation.
+  * Fix NEON detection
+  * JACK and PulseAudio compatibility improvements
+
+- Update to version 0.3.4:
+  * A quick update with some important stability fixes.
+
+- Update to version 0.3.3:
+  * NEON optimizations for audio conversion (32 and 64 bits)
+  * rework of session manager implementation
+  * Add option to disable modules in the session manager
+  * Release midi hardware devices when suspended
+  * various build fixes
+  * Clean up options of various utils
+  * Stability improvements
+  * Mayor improvements in pulseaudio emulation. Improved
+    timings and compatibility.
+  * Implementation of drain and flush in pulse and alsa
+    emulation.
+  * Implement poll on file descriptors.
+  * Improvement of metadata for jack emulation.
+  * Fix memory and thread problems in jack emulation.
+  * Simplification of state changes. Should make more use
+    cases work in the jack emulation.
+  * Improvements in the gstreamer elements. Removal of
+    extra internal queue. pipewiresink can now be used to
+    play audio.
+  * Add pw-jack and pw-pulse scripts to run pulseaudio and
+    jack applications with the right library path.
+
+- Replace libpulse* replacement packages with a single
+  pipewire-libpulse-0_3 package that includes all libraries
+  installed in the non-standard directory
+  %{_libdir}/pipewire-0.3/pulse and a new pw-pulse wrapper script.
+  Likewise for the jack replacement libraries in a new
+  pipewire-libjack-0_3 package.
+
+- Use update-alternatives for the wrapper scripts.
+
+-------------------------------------------------------------------
 Wed Apr  1 07:35:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use the License rpm tag to specify that although most of
