@@ -1,7 +1,7 @@
 #
 # spec file for package recode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define          libname lib%{name}0
+%define          libname lib%{name}3
 Name:           recode
-Version:        3.7.1
+Version:        3.7.6
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,8 +26,8 @@ Group:          Productivity/Text/Convertors
 URL:            https://github.com/rrthomas/recode
 Source:         https://github.com/rrthomas/recode/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  flex
-BuildRequires:  python
-BuildRequires:  python-Cython
+BuildRequires:  python3
+BuildRequires:  python3-Cython
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -56,15 +56,15 @@ This package contains librecode shared library for embedding in
 other applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 #autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 25 10:36:06 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- reflect version of shared library in package name: librecode3
+
+-------------------------------------------------------------------
+Thu May 21 15:24:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.6:
+  * Improvements to the build system.
+- Changes from version 3.7.5:
+  * Port tests to Python 3.
+- Changes from version 3.7.4:
+  * Fixes to file handling in enchant program.
+  * Fix tests on Windows.
+- Changes from version 3.7.3:
+  * No code changes to recode itself; this release features a
+    properly versioned shared library.
+- Changes from version 3.7.2:
+  * No code changes to recode itself; this release includes updates
+    to license headers to guide users to the GPL online, corrects
+    the version of COPYING-LIB shipped with the sources, and
+    updates the message files for various languages.
+- Replace python and python-Cython for their py3 variants following
+  upstreams port.
+
+-------------------------------------------------------------------
 Mon Mar 18 14:32:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic (useless in the face of --disable-static).

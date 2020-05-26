@@ -22,4 +22,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33365e3d0653d21958ca8eab453a19f4</srcmd5>
+    <version>3.7.6</version>
+    <time>1590506353</time>
+    <user>maxlin_factory</user>
+    <comment>- reflect version of shared library in package name: librecode3
+- Update to version 3.7.6:
+  * Improvements to the build system.
+- Changes from version 3.7.5:
+  * Port tests to Python 3.
+- Changes from version 3.7.4:
+  * Fixes to file handling in enchant program.
+  * Fix tests on Windows.
+- Changes from version 3.7.3:
+  * No code changes to recode itself; this release features a
+    properly versioned shared library.
+- Changes from version 3.7.2:
+  * No code changes to recode itself; this release includes updates
+    to license headers to guide users to the GPL online, corrects
+    the version of COPYING-LIB shipped with the sources, and
+    updates the message files for various languages.
+- Replace python and python-Cython for their py3 variants following
+  upstreams port.
+</comment>
+    <requestid>808724</requestid>
+  </revision>
 </revisionlist>
