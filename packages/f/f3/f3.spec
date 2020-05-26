@@ -17,14 +17,15 @@
 
 
 Name:           f3
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Fight Flash Fraud / Fight Fake Flash
 License:        GPL-3.0-only
 Group:          Hardware/Other
 URL:            http://oss.digirati.com.br/f3/
 Source:         https://github.com/AltraMayor/f3/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  parted-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libparted)
 BuildRequires:  pkgconfig(libudev)
 
 %description
@@ -50,7 +51,7 @@ export CFLAGS="%{optflags} -fgnu89-inline"
 %else
 export CFLAGS="%{optflags}"
 %endif
-make %{?_smp_mflags} all extra
+%make_build all extra
 
 mkdir examples
 mv log-f3wr f3write.h2w examples
@@ -67,7 +68,7 @@ chmod a-x examples/*
 %{_bindir}/f3probe
 %{_bindir}/f3brew
 %{_bindir}/f3fix
-%{_mandir}/man1/f3read.1%{ext_man}
-%{_mandir}/man1/f3write.1%{ext_man}
+%{_mandir}/man1/f3read.1%{?ext_man}
+%{_mandir}/man1/f3write.1%{?ext_man}
 
 %changelog

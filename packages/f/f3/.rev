@@ -56,4 +56,17 @@
     <comment></comment>
     <requestid>769681</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c586f0cbc9d63237eb2460c527735206</srcmd5>
+    <version>7.2</version>
+    <time>1590506460</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 7.2:
+    * f3write: keep up with extremely fast NVM drives (issue #117)
+    * f3write: improve measurement of write speed (issue #102)
+    * f3write: handle rare assetion failure (issue #111)
+    * f3probe: handle rare assetion failure (issue #82)
+</comment>
+    <requestid>807957</requestid>
+  </revision>
 </revisionlist>
