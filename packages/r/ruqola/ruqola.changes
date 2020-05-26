@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed May 20 11:58:51 UTC 2020 - tjyrinki@suse.com
+
+- Update to version 1.1~git.20200520:
+  * Fix another crash due to a null cursor.
+  * GIT_SILENT: time to increase it
+
+-------------------------------------------------------------------
+Tue May 19 12:13:45 UTC 2020 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Initial packaging, upstream version 7e6b96d5 including Hack Week work.
