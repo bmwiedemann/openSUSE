@@ -17,22 +17,18 @@
 
 
 Name:           libvmime
-%define lname	libvmime-kopano2
+%define lname	libvmime-kopano3
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        0.9.2.85
+Version:        0.9.2.96
 Release:        0
-Url:            http://vmime.org/
+URL:            http://vmime.org/
 
 #Source:         https://github.com/kisli/vmime/archive/v%%version.tar.gz
 Source:         vmime-%version.tar.xz
 Patch1:         libvmime-nodatetime.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ImageMagick
-%if 0%{?suse_version} < 1310
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -42,20 +38,12 @@ BuildRequires:  libgnutls-devel
 BuildRequires:  libgsasl-devel
 %endif
 BuildRequires:  pkg-config
-%if 0%{?suse_version} >= 1130
-%define with_pdf 1
-%if 0%{?suse_version} < 1300
-BuildRequires:  texlive-bin-latex
-%endif
 BuildRequires:  texlive-latex
-%if 0%{?suse_version} >= 1230
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  tex(courier.sty)
 BuildRequires:  tex(fancyheadings.sty)
 BuildRequires:  tex(pcrr7t.tfm)
 BuildRequires:  tex(ucs.sty)
-%endif
-%endif
 BuildRequires:  xz
 
 %description
@@ -93,8 +81,7 @@ messaging services like IMAP, POP or SMTP.
 This subpackage contains the headers for the library's API.
 
 %prep
-%setup -qn vmime-%version
-%patch -P 1 -p1
+%autosetup -p1 -n vmime-%version
 
 %build
 %if 0%{?with_pdf}
@@ -140,12 +127,10 @@ mv "$b/%_prefix/cmake" "$b/%_datadir/"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc COPYING
-%_libdir/libvmime-kopano.so.2*
+%license COPYING
+%_libdir/libvmime-kopano.so.3*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/vmime
 %_libdir/libvmime.so
 %_libdir/libvmime-kopano.so
