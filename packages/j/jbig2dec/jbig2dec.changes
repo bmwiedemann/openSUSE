@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 24 11:36:57 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add Patch fix-for-restore-abi.patch. Restore abi export of 
+  jbig2_ctx_new.
+
+-------------------------------------------------------------------
 Wed Apr 15 11:31:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.18

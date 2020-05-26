@@ -26,6 +26,8 @@ License:        AGPL-3.0-or-later
 URL:            https://jbig2dec.com
 Source:         https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs%{_gsver}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM fix-for-restore-abi.patch deb#940605 -- Restores the ABI export of jbig2_ctx_new 
+Patch1:         fix-for-restore-abi.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -53,7 +55,7 @@ This package contains development files needed for developing applications
 based on libjbig2dec.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fPIC"
