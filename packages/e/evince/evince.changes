@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 19 04:49:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.1:
+  + backends: Support 'de facto' tooltip feature.
+  + help:
+    - Add Ukrainian screenshots for the docs.
+    - Fix incorrect markup in Czech UI translation.
+    - Update French help image.
+  + libdocument:
+    - Allow text entries to handle clicks.
+    - Ignore deprecation warnings in headers.
+  + libview:
+    - Fix "can-have-popup" prop when creating markup annotations.
+    - Move annotation popup window to new position.
+  + shell:
+    - Set menu button to not focus-on-click.
+    - Fix too large slides on scaled display.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar  7 19:03:07 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.0:

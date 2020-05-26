@@ -20,7 +20,7 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
