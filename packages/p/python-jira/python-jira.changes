@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Dec 20 18:38:38 UTC 2018 - astieger@suse.com
 
 - add missing run-time dependency on python-pbr boo#1120127

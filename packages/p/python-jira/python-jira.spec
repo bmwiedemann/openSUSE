@@ -1,7 +1,7 @@
 #
 # spec file for package python-jira
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Requires:       python-requests-oauthlib >= 0.6.1
 Requires:       python-requests-toolbelt
 Requires:       python-setuptools >= 20.10.1
 Requires:       python-six >= 1.10.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,12 +57,19 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jirashell
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative jirashell
+
+%postun
+%python_uninstall_alternative jirashell
 
 %files %{python_files}
 %doc AUTHORS ChangeLog README.rst
 %license LICENSE
-%python3_only %{_bindir}/jirashell
+%python_alternative %{_bindir}/jirashell
 %{python_sitelib}/*
 
 %changelog
