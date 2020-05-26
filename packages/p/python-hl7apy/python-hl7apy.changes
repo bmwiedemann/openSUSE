@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:18 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sat May  2 07:11:35 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.3.3

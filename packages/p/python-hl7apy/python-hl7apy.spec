@@ -18,7 +18,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-hl7apy
 Version:        1.3.3
 Release:        0
@@ -31,7 +30,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,12 +56,18 @@ The main features include:
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hl7apy_profile_parser
+
+%post
+%python_install_alternative hl7apy_profile_parser
+
+%postun
+%python_uninstall_alternative hl7apy_profile_parser
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc AUTHORS
 %license LICENSE
-%python3_only %{_bindir}/hl7apy_profile_parser
+%python_alternative %{_bindir}/hl7apy_profile_parser
 %{python_sitelib}/*
 
 %changelog
