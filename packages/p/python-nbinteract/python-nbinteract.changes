@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 24 08:03:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to gitub tarball to work with pypi url changes
+- Enable tests
+
+-------------------------------------------------------------------
+Sat May  2 20:18:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.2.5:
+  * Fix interactive bqplots
+  * Update config
+
+-------------------------------------------------------------------
 Sat Jan 11 14:08:20 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)

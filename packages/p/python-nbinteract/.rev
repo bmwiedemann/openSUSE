@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>764702</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c5fae204319da8cb9480f8c58a04e399</srcmd5>
+    <version>0.2.5</version>
+    <time>1590506514</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch to gitub tarball to work with pypi url changes
+- Enable tests
+
+- specfile:
+  * update copyright year
+- update to version 0.2.5:
+  * Fix interactive bqplots
+  * Update config</comment>
+    <requestid>808515</requestid>
+  </revision>
 </revisionlist>

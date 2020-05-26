@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbinteract
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbinteract
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Python package to export interactive HTML pages from Jupyter Notebooks
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/SamLau95/nbinteract
-Source:         https://files.pythonhosted.org/packages/py3/n/nbinteract/nbinteract-%{version}-py3-none-any.whl
-BuildRequires:  %{python_module pip}
+Source:         https://github.com/SamLau95/nbinteract/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-nbinteract = %{version}
@@ -42,17 +41,17 @@ Requires:       python-toolz >= 0.8
 Requires:       python-traitlets >= 4.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module coveralls}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Jinja2 >= 2.10}
 BuildRequires:  %{python_module bqplot >= 0.10}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module docopt >= 0.6.2}
 BuildRequires:  %{python_module ipython >= 6}
 BuildRequires:  %{python_module ipywidgets >= 7}
 BuildRequires:  %{python_module nbconvert >= 5.3}
 BuildRequires:  %{python_module nbformat >= 4.4.0}
 BuildRequires:  %{python_module numpy >= 1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toolz >= 0.8}
 BuildRequires:  %{python_module traitlets >= 4.3}
 # /SECTION
@@ -84,22 +83,21 @@ on the logic of their programs.
 This package provides the command-line interface.
 
 %prep
-%setup -q -c -T
+%setup -q -n nbinteract-%{version}
 
 %build
-# Not Needed
+%python_build
 
 %install
-cp -a %{SOURCE0} .
-%pyproject_install
+%python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-cp %{buildroot}%{python3_sitelib}/nbinteract-%{version}.dist-info/LICENSE.txt .
+%check
+%pytest
 
 %files %{python_files}
-%{python_sitelib}/nbinteract/
-%{python_sitelib}/nbinteract-%{version}.dist-info/
-%license %{python_sitelib}/nbinteract-%{version}.dist-info/LICENSE.txt
+%license LICENSE.txt
+%{python_sitelib}/nbinteract*
 
 %files -n jupyter-nbinteract
 %license LICENSE.txt
