@@ -29,6 +29,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      python-aiml < 0.9.0
 BuildArch:      noarch
 %python_subpackages
@@ -49,16 +51,26 @@ for a long time.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/aiml-bot
+%python_clone -a %{buildroot}%{_bindir}/aiml-validate
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative aiml-bot
+%python_install_alternative aiml-validate
+
+%postun
+%python_uninstall_alternative aiml-bot
+%python_uninstall_alternative aiml-validate
+
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license COPYING.txt
-%python3_only %{_bindir}/aiml-validate
-%python3_only %{_bindir}/aiml-bot
+%python_alternative %{_bindir}/aiml-validate
+%python_alternative %{_bindir}/aiml-bot
 %{python_sitelib}/*
 
 %changelog
