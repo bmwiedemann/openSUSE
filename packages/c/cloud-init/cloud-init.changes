@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 11:51:18 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update cloud-init-write-routes.patch
+  + Explicitly test for netconfig version 1 as well as 2
+
+-------------------------------------------------------------------
+Mon May 18 14:37:30 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update cloud-init-write-routes.patch
+  + Handle netconfig v2 device configurations (bsc#1171546)
+
+-------------------------------------------------------------------
 Fri Mar 27 12:21:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update cloud-init-write-routes.patch

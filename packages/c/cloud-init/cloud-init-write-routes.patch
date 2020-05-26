@@ -1,3 +1,5 @@
+Index: cloudinit/distros/opensuse.py
+===================================================================
 --- cloudinit/distros/opensuse.py.orig
 +++ cloudinit/distros/opensuse.py
 @@ -11,6 +11,7 @@
@@ -8,7 +10,7 @@
  
  from cloudinit import helpers
  from cloudinit import log as logging
-@@ -172,7 +173,69 @@ class Distro(distros.Distro):
+@@ -174,7 +175,137 @@ class Distro(distros.Distro):
              util.write_file(out_fn, str(conf), 0o644)
  
      def _write_network_config(self, netconfig):
@@ -18,7 +20,7 @@
 +        self._write_routes(netconfig)
 +        return net_apply_res
 +
-+    def _write_routes(self, netconfig):
++    def _write_routes_v1(self, netconfig):
 +        """Write route files, not part of the standard distro interface"""
 +        # Due to the implementation of the sysconfig renderer default routes
 +        # are setup in ifcfg-* files. But this does not work on SLES or
@@ -76,6 +78,74 @@
 +            if config_routes:
 +                route_file = '/etc/sysconfig/network/ifroute-%s' % if_name
 +                util.write_file(route_file, config_routes)
++
++    def _render_route_string(self, netconfig_route):
++        route_to = netconfig_route.get('to', None)
++        route_via = netconfig_route.get('via', None)
++        route_metric = netconfig_route.get('metric', None)
++        route_string = ''
++
++        if route_to and route_via:
++            route_string = ' '.join([route_to, route_via, '-', '-'])
++            if route_metric:
++                route_string += ' metric {}\n'.format(route_metric)
++            else:
++                route_string += '\n'
++        else:
++            LOG.warning('invalid route definition, skipping route')
++
++        return route_string
++
++    def _write_routes_v2(self, netconfig):
++        for device_type in netconfig:
++            if device_type == 'version':
++                continue
++
++            if device_type == 'routes':
++                # global static routes
++                config_routes = ''
++                for route in netconfig['routes']:
++                    config_routes += self._render_route_string(route)
++                if config_routes:
++                    route_file = '/etc/sysconfig/network/routes'
++                    util.write_file(route_file, config_routes)
++            else:
++                devices = netconfig[device_type]
++                for device_name in devices:
++                    config_routes = ''
++                    device_config = devices[device_name]
++                    try:
++                        gateways = [
++                            v for k, v in device_config.items()
++                            if 'gateway' in k
++                        ]
++                        for gateway in gateways:
++                            config_routes += ' '.join(
++                                ['default', gateway, '-', '-\n']
++                            )
++                        for route in device_config.get('routes', []):
++                            config_routes += self._render_route_string(route)
++                        if config_routes:
++                            route_file = '/etc/sysconfig/network/ifroute-{}'.format(
++                                device_name
++                            )
++                            util.write_file(route_file, config_routes)
++                    except Exception:
++                        # the parser above epxects another level of nesting
++                        # which should be there in case it's properly
++                        # formatted; if not we may get an exception on items()
++                        pass
++
++    def _write_routes(self, netconfig):
++        netconfig_ver = netconfig.get('version')
++        if netconfig_ver == 1:
++            self._write_routes_v1(netconfig)
++        elif netconfig_ver == 2:
++            self._write_routes_v2(netconfig)
++        else:
++            LOG.warning(
++                'unsupported or missing netconfig version, not writing routes'
++            )
  
      @property
      def preferred_ntp_clients(self):
