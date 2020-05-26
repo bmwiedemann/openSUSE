@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 24 16:02:00 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.15
+  * Only open devices after successful mount attempt (bxo#16831)
+  * Fix shortcut support for addressbar (bxo#4537 and bxo#13680)
+  * Fix crash in bulk renamer on repeated rename (bxo#16824)
+  * Add checks for thumbnailer 0 handles (bxo#14122)
+  * Replace 'thunar_return_if_fail (THUNAR_IS_DEVICE (device))'
+    with standard 'if (..)' to prevent possible crashes. (bxo#13404)
+  * Fix check if folder is fully loaded when expanding path
+    in tree view.
+  * Prevents 100% CPU load and loosing sync with main view
+    in some cases. (bxo#15762)
+  * Fixes 100%CPU on tree-view in some rare cases (bxo#16024)
+  * Delete native files faster (bxo#16641)
+  * Support libxfce4ui XfceTitledDialog new API (bxo#16616)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Mar 25 16:13:40 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.8.14
