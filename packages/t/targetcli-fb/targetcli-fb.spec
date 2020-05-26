@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.51
+Version:        2.1.52
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -26,8 +26,6 @@ Group:          System/Management
 URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
-Source2:        targetclid.socket
-Source3:        targetclid.service
 BuildRequires:  %{python_module configshell-fb}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyparsing}
@@ -58,6 +56,7 @@ Obsoletes:      targetcli-rbd < %{version}
 %{?systemd_ordering}
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
+Patch3:         fix-setup-install.patch
 
 %python_subpackages
 
@@ -87,6 +86,7 @@ python2-targetcli-fb and python3-targetcli-fb.
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %python_build
@@ -101,8 +101,6 @@ install -d -m755 %{buildroot}%{_sbindir}
 install -D -m644 targetcli.8 %{buildroot}%{_mandir}/man8/targetcli.8
 install -D -m644 targetclid.8 %{buildroot}%{_mandir}/man8/targetclid.8
 install -D -m644 %{S:1} %{buildroot}%{_unitdir}/targetcli.service
-install -D -m644 %{S:2} %{buildroot}%{_unitdir}/targetclid.socket
-install -D -m644 %{S:3} %{buildroot}%{_unitdir}/targetclid.service
 %fdupes %{buildroot}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetcli
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid

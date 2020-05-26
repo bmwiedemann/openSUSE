@@ -1,9 +1,0 @@
-[Unit]
-Description=targetclid socket
-Documentation=man:targetclid(8)
-
-[Socket]
-ListenStream=/var/run/targetclid.sock
-
-[Install]
-WantedBy=sockets.target

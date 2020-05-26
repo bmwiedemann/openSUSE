@@ -1,0 +1,20 @@
+From: Lee Duncan <lduncan@suse.com>
+Date: Thu May 21 11:32:02 PDT 2020
+Subject: [PATCH] fix setup install patch
+
+Fix the setup.py install script to install systemd
+files in /usr/lib/systemd/system instead of /lib/systemd/system
+---
+diff --git a/setup.py b/setup.py
+index 4518165c57a6..2ebfc04605c0 100755
+--- a/setup.py
++++ b/setup.py
+@@ -34,7 +34,7 @@ setup(
+                'scripts/targetcli',
+                'daemon/targetclid'
+               ],
+-    data_files = [('/lib/systemd/system', ['systemd/targetclid.socket', 'systemd/targetclid.service'])],
++    data_files = [('/usr/lib/systemd/system', ['systemd/targetclid.socket', 'systemd/targetclid.service'])],
+     classifiers = [
+         "Programming Language :: Python",
+         "Programming Language :: Python :: 3",

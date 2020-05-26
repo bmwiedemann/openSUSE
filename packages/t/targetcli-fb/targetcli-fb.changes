@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 21 17:38:48 UTC 2020 - lduncan@suse.com
+
+- Update to version 2.1.52:
+  * version 2.1.52
+  * daemon-interactive: do not allow clearing the prompt
+  * daemon-interactive: show path on prompt
+  * daemonized-mode: add interactive shell support
+  * Use temp file objects for temporary storage area
+  * Fix StringIO/BytesIO stuck issue
+  * Fix targetclid daemon infinite stuck
+  * targetclid.sock: change SocketMode to 0600
+    (bsc#1168415 CVE-2020-10699)
+  * setup.py: add the socket and service files to the data_files section
+  * Use StringIO as a buffer instead of a file
+  Also, add a patch to move systemd unit files to /usr/lib/systemd/system:
+  * fix-setup-install.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 17:58:15 UTC 2020 - lduncan@suse.com
 
 - Update to version 2.1.51 from 2.1.49, which includes

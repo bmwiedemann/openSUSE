@@ -7,7 +7,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(\d*\.\d*\.)(\d*)</param>
     <param name="versionrewrite-replacement">\1\2</param>
-    <param name="revision">v2.1.51</param>
+    <param name="revision">v2.1.52</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
