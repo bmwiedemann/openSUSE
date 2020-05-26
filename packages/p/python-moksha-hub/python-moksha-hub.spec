@@ -1,7 +1,7 @@
 #
 # spec file for package python-moksha-hub
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Requires:       python-moksha-common >= 1.0.6
 Requires:       python-pyzmq
 Requires:       python-txWS
 Requires:       python-txZMQ
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,15 +57,22 @@ Hub components for Moksha.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/moksha-hub
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative moksha-hub
+
+%postun
+%python_uninstall_alternative moksha-hub
+
 %files %{python_files}
 %license COPYING
 %doc AUTHORS README
-%python3_only %{_bindir}/moksha-hub
+%python_alternative %{_bindir}/moksha-hub
 %{python_sitelib}/*
 
 %changelog
