@@ -17,12 +17,12 @@
 
 
 Name:           endless-sky
-Version:        0.9.10
+Version:        0.9.12
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        GPL-3.0-only AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0
 Group:          Amusements/Games/Action/Arcade
-URL:            http://endless-sky.github.io/
+URL:            https://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
@@ -68,14 +68,6 @@ mkdir -p %{buildroot}%{_bindir}
 mv %{buildroot}%{_prefix}/games/endless-sky %{buildroot}%{_bindir}/endless-sky
 
 %fdupes %{buildroot}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %defattr(-,root,root)

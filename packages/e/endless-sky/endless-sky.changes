@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat May 23 22:24:53 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to 0.9.12:
+  * Bug fixes, including a bug that caused the game to crash on
+    startup due to unsupported VSync settings.
+  * Buying & selling items at maximum depreciation now accounts for
+    the 7-day grace period.
+  * Missions will no longer complete if a required passenger isn’t
+    landed with you.
+  * Several new star images have been added, as well as additional
+    jobs for players with many bunks.
+  * Tweaks to the balance of solar panels and some Coalition
+    outfits, and to the fleets found in Hai space.
+- Update to 0.9.11:
+  * Rebalancing of human medium warships and transports.
+  * Additions:
+  * A new region, the Graveyard, can be found near the Ember Waste.
+  * New Remnant ships, outfits, and missions.
+  * A new Wanderer transport.
+  * The ability to modify the systems wherein a government scans
+    ships for contraband, and the displayed government name.
+  * Enabling secondary weapons to consume more than one unit of
+    ammunition per shot.
+  * Support for interpolation and character replacement in hails.
+  * Support for algebraic condition expressions of arbitrary
+    length.
+  * Support for disabling specific spaceport news items.
+- Fix empty post/postun rpmlint warnings.
+
+-------------------------------------------------------------------
 Thu Jan 30 14:16:34 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Respect %optflags, fix debuginfo generation.
