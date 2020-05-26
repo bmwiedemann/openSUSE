@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjokes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source99:       https://raw.githubusercontent.com/pyjokes/pyjokes/master/LICENCE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,13 +48,23 @@ cp %{SOURCE99} .
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyjokes
+%python_clone -a %{buildroot}%{_bindir}/pyjoke
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pyjokes
+%python_install_alternative pyjoke
+
+%postun
+%python_uninstall_alternative pyjokes
+%python_uninstall_alternative pyjoke
 
 %files %{python_files}
 %doc README.rst
 %license LICENCE.txt
-%python3_only %{_bindir}/pyjoke
-%python3_only %{_bindir}/pyjokes
+%python_alternative %{_bindir}/pyjoke
+%python_alternative %{_bindir}/pyjokes
 %{python_sitelib}/*
 
 %changelog
