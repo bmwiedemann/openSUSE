@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 15:26:28 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 0.6.8, including:
+  * Update version and changelog to 0.6.8
+  * fix gcc 10 compile error
+  * cleanup for clang-tidy
+
+-------------------------------------------------------------------
 Tue Feb 11 18:44:51 UTC 2020 - lduncan@suse.com
 
 - Update to version 0.6.7 from 0.6.5:
