@@ -1,7 +1,7 @@
 #
 # spec file for package netsniff-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           netsniff-ng
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Network Sniffer for Packet Inspection
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-Url:            http://netsniff-ng.org/
+URL:            http://netsniff-ng.org/
 Source:         http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
