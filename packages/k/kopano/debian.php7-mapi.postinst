@@ -1,37 +1,29 @@
-#! /bin/sh
+#!/bin/sh
 
 set -e
 
-if [ -d /etc/php/7.3 ]; then
-	BASE="/etc/php/7.3"
-elif [ -d /etc/php/7.2 ]; then
-	BASE="/etc/php/7.2"
-elif [ -d /etc/php/7.0 ]; then
-	BASE="/etc/php/7.0"
-else
-	BASE="/etc/php5"
+PHP_VERSION=unknown
+
+if [ "$1" = "configure" ]; then
+    inidir=/etc/php/${PHP_VERSION}/mods-available
+
+    if [ -e /usr/lib/php/php-maintscript-helper ] ; then
+        . /usr/lib/php/php-maintscript-helper
+
+        # Register new conffile with UCF
+        ucf /usr/share/kopano/php/mapi/mapi.ini ${inidir}/kopano.ini
+        ucfr --force php7-mapi ${inidir}/kopano.ini
+
+        if [ -f "${inidir}/kopano.ini.dpkg-new" ]; then
+            md5sum="$(md5sum ${inidir}/kopano.ini.dpkg-new | sed -e 's/ .*//')"
+            old_md5sum="$(md5sum ${inidir}/kopano.ini | sed -e 's/ .*//')"
+            if [ "$md5sum" = "$old_md5sum" ]; then
+                mv "${inidir}/kopano.ini.dpkg-new" "${inidir}/kopano.ini"
+            fi
+        fi
+
+        php_invoke enmod ${PHP_VERSION} ALL kopano
+    fi
 fi
 
-DIST="/usr/share/kopano/php/mapi/mapi.ini"
-
-if [ -x /usr/sbin/phpenmod -o -x /usr/sbin/php5enmod ]; then
-	# modern approach, used by distros with PHP >= 5.4
-	echo "php-mapi: using mods-available directory"
-	mkdir -p "$BASE/mods-available" # just in case
-	cp "$DIST" "$BASE/mods-available/kopano.ini"
-	if [ -x /usr/sbin/phpenmod ]; then
-		phpenmod kopano
-	else
-		php5enmod kopano
-	fi
-else
-	# for older distros, such as Ubuntu 12.04
-	echo "php-mapi: not using mods-available directory"
-	mkdir -p "$BASE/apache2/conf.d" # just in case
-	cp "$DIST" "$BASE/apache2/conf.d/kopano.ini"
-	mkdir -p "$BASE/conf.d" # just in case
-	cp "$DIST" "$BASE/conf.d/kopano.ini"
-fi
-
-service apache2 try-restart || :
-/bin/echo -e "\n\nIf you use a PHP executor other than Apache (like FPM), you may need to manually restart it.\n\n"
+exit 0

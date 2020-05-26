@@ -2,6 +2,7 @@ etc/kopano/userscripts
 usr/lib/*/kopano/kscriptrun
 usr/lib/*/kopano/libkcserver-[a-z]*.so
 usr/lib/kopano/userscripts/
+usr/sbin/kopano-dbadm
 usr/sbin/kopano-server
 usr/share/doc/kopano/audit-parse.pl
 usr/share/doc/kopano/createuser.dotforward
@@ -19,6 +20,7 @@ usr/share/doc/kopano/ssl-certificates.sh
 usr/share/kopano/ldap.active-directory.cfg
 usr/share/kopano/ldap.openldap.cfg
 usr/share/kopano/ldap.propmap.cfg
+usr/share/man/man8/kopano-dbadm.8
 usr/share/man/man5/kopano-ldap.cfg.5
 usr/share/man/man5/kopano-server.cfg.5
 usr/share/man/man5/kopano-unix.cfg.5

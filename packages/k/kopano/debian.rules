@@ -15,15 +15,13 @@ INSTDIR = debian/tmp
 
 override_dh_auto_configure:
 	autoreconf -fi
-	dh_auto_configure -Bpy3 -- ${CONFFLAGS} PYTHON="$$(which python3)" PYTHON_CFLAGS="$$(pkg-config python3 --cflags)" PYTHON_LIBS="$$(pkg-config python3 --libs)"
+	dh_auto_configure -- ${CONFFLAGS} PYTHON="$$(which python3)" PYTHON_CFLAGS="$$(pkg-config python3 --cflags)" PYTHON_LIBS="$$(pkg-config python3 --libs)"
 
 override_dh_auto_build:
-	dh_auto_build -Bpy3 -- V=1
+	dh_auto_build -- V=1
 
 override_dh_auto_test:
-	echo "test"
-	dh_auto_test -- test-short
-	echo "finish"
+	make test-short PYTEST=py.test-3
 
 override_dh_systemd_start:
 	# Restart services, after they have upgraded to minify downtime while
@@ -36,27 +34,24 @@ override_dh_systemd_enable:
 	mv -v debian/tmp/lib/systemd/system/kopano-*.service debian/
 	dh_systemd_enable
 
+override_dh_prep:
+	dh_prep
+
+	if [ -x /usr/bin/php-config ]; then \
+		PHP_VER=$(shell /usr/bin/php-config --version | cut -c -3); \
+		sed -i s/unknown/$$PHP_VER/g debian/php7-mapi.postinst; \
+		sed -i s/unknown/$$PHP_VER/g debian/php7-mapi.postrm; \
+		sed -i s/unknown/$$PHP_VER/g debian/php7-mapi.dirs; \
+		sed -i s/unknown/$$PHP_VER/g debian/php7-mapi.triggers; \
+		echo php:Depends=phpapi-$(shell /usr/bin/php-config --phpapi) > debian/php7-mapi.substvars; \
+	fi
+
 override_dh_auto_install:
-	dh_auto_install -Bpy3 -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
+	dh_auto_install -- -j1 PHP_SYSCONF_DIR=/usr/share/kopano/php/mapi
 	mkdir -p ${INSTDIR}/var/lib/kopano/autorespond
 	mkdir -p ${INSTDIR}/var/lib/kopano/rrd
 	mkdir -p ${INSTDIR}/var/run/kopano
 
-	if [ -x /usr/bin/php-config ]; then \
-		PHP_VER=$(shell php-config --version | cut -c 1); \
-		PHP_MAPI="php$$PHP_VER-mapi"; \
-		sed -i s/php-mapi/$$PHP_MAPI/g debian/control; \
-		if [ $$PHP_VER -eq 7 ] ; then \
-			sed -i s/php-other-mapi/php5-mapi/g debian/control; \
-		elif [ $$PHP_VER -eq 5 ] ; then \
-			sed -i s/php-other-mapi/php7-mapi/g debian/control; \
-		fi; \
-		echo php:Depends=phpapi-$(shell php-config --phpapi) > debian/$$PHP_MAPI.substvars; \
-	elif [ -x /usr/bin/php-config5 ]; then \
-		sed -i s/php-mapi/php5-mapi/g debian/control; \
-		sed -i s/php-other-mapi/php7-mapi/g debian/control; \
-		echo php:Depends=phpapi-$(shell php-config5 --phpapi) > debian/php5-mapi.substvars; \
-	fi
 	mkdir -p ${INSTDIR}/usr/share/doc/kopano-common
 	gzip -c <RELNOTES.txt >${INSTDIR}/usr/share/doc/kopano-common/changelog.gz
 

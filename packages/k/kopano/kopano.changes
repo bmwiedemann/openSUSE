@@ -1,13 +1,47 @@
 -------------------------------------------------------------------
+Wed May 20 16:08:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0.5
+  * Enhancements:
+  * gateway: support loading MAPI folders with slash in their name.
+  * Fixes:
+  * admin: fix stack exhaustion calling AclRightsToString.
+  * admin: fix out-of-bounds access in ConsoleTable.
+  * dagent: change SMTP error code for plugin failure from
+    permanent to transient category.
+  * server: recognize more MariaDB-specific status codes and
+    initiate reconnect if needed.
+  * server: fix a cache pollution with PR_HTML and
+    PR_RTF_COMPRESSED.
+  * dagent: failure to run actions will no longer stop rule
+    processing.
+  * mapi4linux: avoid M4LMAPISession going away while ECMsgStore
+    object(s) still alive.
+
+-------------------------------------------------------------------
 Mon Apr 13 09:43:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.4
-  * daemons: now run with systemd protections
+  * Enhancements:
+  * daemons: service units now run with systemd protections on.
+  * icalmapi: support reading multi-iCal and multi-vCard files.
+  * Fixes:
+  * dagent, spooler: workaround crash during Python GC.
+  * dagent, gateway: avoid stack exhaustion in HTML filter.
+  * gateway: avoid non-atomic replacement of SSL context.
+  * gateway: avoid one crash case for deeply-nested HTML mail.
+  * server: cure a mysql wait phase during shutdown.
+  * server: cure a crash when the SQL server has shut down.
+  * daemons: avoid deadlock during signal handling.
+  * libserver: fix use-after-free and crash on shutdown.
+  * Various null deref warnings from clang --analyze were fixed.
+  * libserver: resolve memory leak of MYSQL objects.
 
 -------------------------------------------------------------------
 Wed Mar 18 12:28:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.0.3
+  * Enhancements:
   * server: new config directive request_log_method and
     request_log_file.
   * server: The log_level=0x100000 bit (SOAP) no longer has a

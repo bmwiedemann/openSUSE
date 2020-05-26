@@ -40,13 +40,12 @@ Build-Depends:
  lsb-release,
  m4,
  openssl,
- php-dev | php7.3-dev | php7.2-dev | php7.1-dev | php7.0-dev,
+ php-dev (>= 7.0),
  pkg-config (>= 0.18),
  python3-dev,
  python3-setuptools,
  swig,
  systemd,
- tidy-html5-dev,
  uuid-dev,
  zlib1g-dev,
  libkcoidc-dev [amd64]
@@ -196,7 +195,7 @@ Package: kopano-server
 Architecture: any
 Depends: ${shlibs:Depends}, kopano-client (= ${binary:Version}),
  kopano-common (= ${binary:Version}), libtcmalloc-minimal4, libs3-4
-Breaks: kopano-common (<< 8.7.80), kopano-utils
+Breaks: kopano-client (<< 10.0.4), kopano-common (<< 8.7.80), kopano-utils
 Conflicts: kopano-utils
 Description: Server component for Kopano Core
  This package provides the key component of Kopano Core, providing the
@@ -246,13 +245,13 @@ Description: E-mail Spooler for Kopano Core
  sure that e-mails sent by clients are converted to
  Internet e-mail and forwarded to an SMTP server.
 
-Package: php-mapi
+Package: php7-mapi
 Architecture: any
 Section: php
-Depends: ${shlibs:Depends}, ${php:Depends}, kopano-client (= ${binary:Version})
-Provides: php-other-mapi
-Replaces: php-other-mapi
-Conflicts: php-other-mapi
+Depends: ${shlibs:Depends}, ${php:Depends}, php-common, kopano-client (= ${binary:Version})
+Provides: php5-mapi
+Replaces: php5-mapi
+Conflicts: php5-mapi
 Description: PHP bindings for MAPI
  Using this module, you can create PHP programs which use MAPI calls
  to interact with Kopano.

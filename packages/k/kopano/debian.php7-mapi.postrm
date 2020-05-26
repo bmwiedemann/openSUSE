@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+PHP_VERSION=unknown
+
+if [ "$1" = "remove" ]; then
+    if [ -e /usr/lib/php/php-maintscript-helper ] ; then
+        . /usr/lib/php/php-maintscript-helper
+
+        php_invoke dismod ${PHP_VERSION} ALL kopano
+    fi
+fi
+
+exit 0

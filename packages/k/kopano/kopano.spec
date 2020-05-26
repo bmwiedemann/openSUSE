@@ -17,10 +17,10 @@
 #
 
 
-%define version_unconverted 10.0.4
+%define version_unconverted 10.0.5
 
 Name:           kopano
-Version:        10.0.4
+Version:        10.0.5
 Release:        0
 Summary:        Groupware server suite
 License:        AGPL-3.0-only
@@ -28,6 +28,8 @@ Group:          Productivity/Networking/Email/Servers
 URL:            https://kopano.io/
 Source:         kopanocore-%version.tar.xz
 Source3:        %name-rpmlintrc
+# Workaround obs-service-source_validator
+Source9:        debian.php7-mapi.triggers
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  gettext-devel
@@ -54,7 +56,6 @@ BuildRequires:  python3 >= 3.6
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-setuptools
 %endif
-BuildRequires:  libtidy-devel
 BuildRequires:  swig
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -837,12 +838,10 @@ fi
 %_bindir/kopano-stats
 %_bindir/kopano-vcfimport
 %_sbindir/kopano-admin
-%_sbindir/kopano-dbadm
 %_sbindir/kopano-srvadm
 %_sbindir/kopano-storeadm
 %_mandir/man*/kopano-admin.*
 %exclude %_mandir/man*/kopano-cfgchecker.*
-%_mandir/man*/kopano-dbadm.*
 %_mandir/man*/kopano-fsck.*
 %_mandir/man*/kopano-ibrule.*
 %_mandir/man*/kopano-oof.*
@@ -966,10 +965,12 @@ fi
 %_prefix/lib/kopano/userscripts/
 %dir %_libexecdir/kopano/
 %_libexecdir/kopano/kscriptrun
+%_sbindir/kopano-dbadm
 %_sbindir/kopano-server
 %dir %_libdir/kopano/
 %_libdir/kopano/libkcserver-[a-z]*.so
 %_prefix/lib/systemd/system/kopano-server.service
+%_mandir/man*/kopano-dbadm.*
 %_mandir/man*/kopano-server.*
 %_mandir/man*/kopano-ldap.cfg.*
 %_mandir/man*/kopano-unix.cfg.*
