@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsondiff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,16 +46,26 @@ Package to show differences between JSON and JSON-like structures in Python
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jsondiff
+%python_clone -a %{buildroot}%{_bindir}/jdiff
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand nosetests-%{$python_bin_suffix}
 
+%post
+%python_install_alternative jsondiff
+%python_install_alternative jdiff
+
+%postun
+%python_uninstall_alternative jsondiff
+%python_uninstall_alternative jdiff
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
-%python3_only %{_bindir}/jdiff
-%python3_only %{_bindir}/jsondiff
+%python_alternative %{_bindir}/jdiff
+%python_alternative %{_bindir}/jsondiff
 
 %changelog
