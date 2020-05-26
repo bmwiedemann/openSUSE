@@ -33,6 +33,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
 Requires:       python-docutils
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,16 +57,23 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pyroma
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %python_exec setup.py test
 
+%post
+%python_install_alternative pyroma
+
+%postun
+%python_uninstall_alternative pyroma
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst HISTORY.txt
-%python3_only %{_bindir}/pyroma
+%python_alternative %{_bindir}/pyroma
 %{python_sitelib}/*
 
 %changelog
