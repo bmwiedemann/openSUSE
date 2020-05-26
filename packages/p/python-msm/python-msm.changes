@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 06:50:53 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Jan 22 14:42:49 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Updating to 0.8.5:

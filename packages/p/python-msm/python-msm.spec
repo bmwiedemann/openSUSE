@@ -48,6 +48,8 @@ Requires:       python-pako
 Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-typing
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,6 +70,7 @@ chmod -x LICENSE
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/msm
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,9 +79,15 @@ chmod -x LICENSE
 # run_pip calls pip to install some dependencies
 %pytest --ignore tests/test_mycroft_skills_manager.py --ignore tests/test_skill_repo.py --ignore tests/test_main.py -k "not run_pip" tests
 
+%post
+%python_install_alternative msm
+
+%postun
+%python_uninstall_alternative msm
+
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/msm
+%python_alternative %{_bindir}/msm
 %{python_sitelib}/msm
 %{python_sitelib}/msm-%{version}-py%{python_version}.egg-info
 
