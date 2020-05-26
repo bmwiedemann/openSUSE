@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 23 03:08:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.03
+   see /usr/share/doc/packages/perl-Mojo-Log-Colored/Changes
+
+  0.03 2020-05-22T12:32:37Z
+  
+      - Do not color line endings (Tina Müller)
+      - POD updates (Mohammad S Anwar)
+  
+
+-------------------------------------------------------------------
 Sat May 16 11:22:48 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Initial creation of Mojo-Log-Colored-0.02
