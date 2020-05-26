@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 10:59:17 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon May 27 19:31:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.2

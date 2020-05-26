@@ -1,7 +1,7 @@
 #
 # spec file for package python-hetzner
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,11 +24,13 @@ Release:        0
 Summary:        High level access to the Hetzner robot
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/aszlig/hetzner
+URL:            https://github.com/aszlig/hetzner
 Source:         https://github.com/aszlig/hetzner/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,15 +45,22 @@ A high-level Python API for accessing the Hetzner robot.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hetznerctl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative hetznerctl
+
+%postun
+%python_uninstall_alternative hetznerctl
+
 %files %{python_files}
 %doc README.md
 %license COPYING
-%python3_only %{_bindir}/hetznerctl
+%python_alternative %{_bindir}/hetznerctl
 %{python_sitelib}/*
 
 %changelog
