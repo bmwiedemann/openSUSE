@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 20 07:57:58 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.4
+  * CVE-2020-13164: NFS dissector crash (boo#1171899)
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.4.html
+
+-------------------------------------------------------------------
 Thu Apr  9 08:42:06 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.3 (boo#1169063)
