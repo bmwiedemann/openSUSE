@@ -49,6 +49,8 @@ Requires:       python-brotlipy >= 0.7.0
 Requires:       python-h2 > 2.5.0
 Requires:       python-hyperframe >= 3.2
 Requires:       python-rfc3986 >= 1.1.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.0.4
 BuildRequires:  python-futures
@@ -78,6 +80,7 @@ wanted http.client.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hyper
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -85,10 +88,16 @@ wanted http.client.
 # test_useful_error_with_no_protocol test_goaway_frame_PROTOCOL_ERROR test_goaway_frame_HTTP_1_1_REQUIRED test_goaway_frame_invalid_error_code - httplib update changed error messages reported
 %python_exec setup.py pytest --addopts="test/ -k 'not (rpmfail_getaddrinfo or test_HTTPConnection_with_custom_context or test_useful_error_with_no_protocol or test_goaway_frame_PROTOCOL_ERROR or test_goaway_frame_HTTP_1_1_REQUIRED or test_goaway_frame_invalid_error_code)'"
 
+%post
+%python_install_alternative hyper
+
+%postun
+%python_uninstall_alternative hyper
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/hyper
+%python_alternative %{_bindir}/hyper
 %{python_sitelib}/hyper*
 
 %changelog
