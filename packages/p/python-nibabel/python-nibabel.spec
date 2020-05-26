@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define binaries nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
 Version:        3.0.1
 Release:        0
@@ -30,6 +31,8 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.12
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-dicom >= 0.9.9
 Recommends:     python-h5py
@@ -61,21 +64,34 @@ very limited support for DICOM.
 
 %install
 %python_install
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand nosetests-%{$python_bin_suffix} -v
 
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
+
 %files %{python_files}
 %doc AUTHOR Changelog README.rst
 %license COPYING
-%python3_only %{_bindir}/nib-dicomfs
-%python3_only %{_bindir}/nib-diff
-%python3_only %{_bindir}/nib-ls
-%python3_only %{_bindir}/nib-nifti-dx
-%python3_only %{_bindir}/nib-tck2trk
-%python3_only %{_bindir}/nib-trk2tck
-%python3_only %{_bindir}/parrec2nii
+%python_alternative %{_bindir}/nib-dicomfs
+%python_alternative %{_bindir}/nib-diff
+%python_alternative %{_bindir}/nib-ls
+%python_alternative %{_bindir}/nib-nifti-dx
+%python_alternative %{_bindir}/nib-tck2trk
+%python_alternative %{_bindir}/nib-trk2tck
+%python_alternative %{_bindir}/parrec2nii
 %{python_sitelib}/*
 
 %changelog
