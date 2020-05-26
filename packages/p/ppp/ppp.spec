@@ -184,7 +184,7 @@ install -d 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/ppp
 install -m 644 %{SOURCE13} %{buildroot}%{_mandir}/man8/pppoe-discovery.8.gz
 install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.chat
-install -Dm 644 %{SOURCE15} %{buildroot}%{_libexecdir}/systemd/system/modem@.service
+install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
 install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
 
 %if 0%{?suse_version} < 1330
@@ -220,8 +220,7 @@ getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
 %config(noreplace) %{_sysconfdir}/ppp/peers/modem
 %dir %{_sysconfdir}/ppp/chatscripts
 %config(noreplace) %{_sysconfdir}/ppp/chatscripts/modem.chat
-%dir %{_libexecdir}/systemd/system
-%{_libexecdir}/systemd/system/modem@.service
+%{_unitdir}/modem@.service
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/90-modem.rules
 

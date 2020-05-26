@@ -310,4 +310,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment>- add upstream signing keyring and verify source signature (forwarded request 798048 from AndreasStieger)</comment>
     <requestid>798108</requestid>
   </revision>
+  <revision rev="42" vrev="15">
+    <srcmd5>727d9c91eb076f8f7d439cfeccef6c11</srcmd5>
+    <version>2.4.7</version>
+    <time>1590506050</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807561</requestid>
+  </revision>
 </revisionlist>

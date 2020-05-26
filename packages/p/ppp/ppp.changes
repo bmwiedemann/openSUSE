@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 19 15:40:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixup previous fix: use the defined macro %_unitdir for the
+  systemd unit.
+
+-------------------------------------------------------------------
+Thu May  7 07:42:50 UTC 2020 - pgajdos@suse.com
+
+- /usr/lib/systemd instead %{_libexecdir}/systemd
+
+-------------------------------------------------------------------
 Sun Apr 26 21:10:15 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing keyring and verify source signature
