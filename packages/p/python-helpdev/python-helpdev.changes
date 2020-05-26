@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 26 07:33:07 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- python-psutil is only used to call its "swap_memory" and
+  "virtual_memory" functions, so we reduced the required version
+  from 5.6 to 5.4.8 so we can build packages for SLE/Leap.
+
+-------------------------------------------------------------------
+Mon May 25 10:59:16 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon May 18 08:11:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.7.1 (fixes issue reported in boo#1135733 #c4):

@@ -29,11 +29,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
-Requires:       python-psutil >= 5.6
+Requires:       python-psutil >= 5.4.8
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module psutil >= 5.6}
+BuildRequires:  %{python_module psutil >= 5.4.8}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -44,21 +46,29 @@ HelpDev - Extracts information about the Python environment easily.
 %prep
 %setup -q -n helpdev-v%{version}
 sed -i '1{\,^#!%{_bindir}/env python,d}' helpdev/*.py
+sed -i -e "s/psutil>=5.6/psutil>=5.4.8/" setup.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/helpdev
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 #test_check_python_packages needs the binary
 %pytest -k 'not test_check_python_packages'
 
+%post
+%python_install_alternative helpdev
+
+%postun
+%python_uninstall_alternative helpdev
+
 %files %{python_files}
 %doc README.rst
-%python3_only %{_bindir}/helpdev
+%python_alternative %{_bindir}/helpdev
 %{python_sitelib}/*
 
 %changelog
