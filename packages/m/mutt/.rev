@@ -1099,4 +1099,13 @@
     + ~$ pattern matches unreferenced messages.</comment>
     <requestid>800759</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>5e741c0ce530de3f679efaed53183dd9</srcmd5>
+    <version>1.14.1</version>
+    <time>1590506659</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.14.1:
+  * bug-fix release, fixing a documentation build issue and a few other small bugs (forwarded request 808743 from polslinux)</comment>
+    <requestid>808818</requestid>
+  </revision>
 </revisionlist>

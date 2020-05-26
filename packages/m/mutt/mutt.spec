@@ -78,7 +78,7 @@ Recommends:     w3m
 Requires(post):   shared-mime-info
 Requires(postun): shared-mime-info
 %endif
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
