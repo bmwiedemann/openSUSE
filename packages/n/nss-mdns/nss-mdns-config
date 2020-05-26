@@ -36,6 +36,7 @@
 #
 
 NSSWITCH=/etc/nsswitch.conf
+NSSWITCH_VENDOR=/usr/etc/nsswitch.conf
 
 usage() {
   echo "nss-mdns-config [--enable|--disable] [-4|-6] [--no-backup]"
@@ -78,14 +79,20 @@ if test "$IPv4" -ne 1 -a "$IPv6" -ne 1; then
   IPvALL=1
 fi
 
-if test ! -f "$NSSWITCH"; then
+if test ! -f "$NSSWITCH" && test ! -f "$NSSWITCH_VENDOR"; then
   if test "$ENABLE" -ne 1 -a "$DISABLE" -ne 1; then
     echo "No $NSSWITCH file."
   fi
   exit 0
 fi
 
-HOSTS=$(grep -m1 "^\s*hosts:" "$NSSWITCH")
+if test ! -f "$NSSWITCH"; then
+  NSSWITCH_IN=$NSSWITCH_VENDOR
+else
+  NSSWITCH_IN=$NSSWITCH
+fi
+
+HOSTS=$(grep -m1 "^\s*hosts:" "$NSSWITCH_IN")
 
 if test $? -ne 0; then
   echo "No hosts configuration in $NSSWITCH."
@@ -155,7 +162,9 @@ elif test "$DISABLE" -eq 1; then
 
   NEWVALUE=$(echo $NEWVALUE | sed "s/^\s*//;s/^\s*$//")
 
-  if test "$BACKUP" -eq 1; then
+  if test "$NSSWITCH_IN" = "$NSSWITCH_VENDOR"; then
+    cp -a "$NSSWITCH_IN" "$NSSWITCH"
+  elif test "$BACKUP" -eq 1; then
     cp -a "$NSSWITCH" "${NSSWITCH}bak"
   fi
   sed -i "s/\(^\s*hosts:\s*\).*/\1$NEWVALUE/" "$NSSWITCH"
@@ -225,7 +234,9 @@ elif test "$ENABLE" -eq 1; then
 
   NEWVALUE=$(echo $NEWVALUE | sed "s/^\s*//;s/^\s*$//")
 
-  if test "$BACKUP" -eq 1; then
+  if test "$NSSWITCH_IN" = "$NSSWITCH_VENDOR"; then
+    cp -a "$NSSWITCH_IN" "$NSSWITCH"
+  elif test "$BACKUP" -eq 1; then
     cp -a "$NSSWITCH" "${NSSWITCH}bak"
   fi
   sed -i "s/\(^\s*hosts:\s*\).*/\1$NEWVALUE/" "$NSSWITCH"
