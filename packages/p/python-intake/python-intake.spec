@@ -50,6 +50,8 @@ Requires:       python-requests
 Requires:       python-ruamel.yaml >= 0.15.0
 Requires:       python-six
 Requires:       python-tornado >= 4.5.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -91,16 +93,26 @@ sed -i -e '/^#!\//, 1d' intake/container/tests/test_generics.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/intake
+%python_clone -a %{buildroot}%{_bindir}/intake-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/intake/cli/tests/
 %python_expand $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/intake/cli/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/intake/cli/tests/
 
+%post
+%python_install_alternative intake
+%python_install_alternative intake-server
+
+%postun
+%python_uninstall_alternative intake
+%python_uninstall_alternative intake-server
+
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/intake-server
-%python3_only %{_bindir}/intake
+%python_alternative %{_bindir}/intake-server
+%python_alternative %{_bindir}/intake
 %{python_sitelib}/*
 
 %changelog
