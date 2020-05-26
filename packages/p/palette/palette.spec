@@ -17,7 +17,7 @@
 
 
 Name:           palette
-Version:        3.1.7
+Version:        3.2.1
 Release:        0
 Summary:        Color palette viewer
 License:        GPL-3.0-or-later

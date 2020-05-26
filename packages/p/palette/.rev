@@ -98,4 +98,12 @@
     <comment>- Update to new release (forwarded request 777758 from awissu)</comment>
     <requestid>777761</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1959adbd2c2c391da0b4ac73951c4bf7</srcmd5>
+    <version>3.2.1</version>
+    <time>1590506491</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>808535</requestid>
+  </revision>
 </revisionlist>
