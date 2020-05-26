@@ -1,7 +1,7 @@
 #
 # spec file for package python-pan-python
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pan-python/pan-
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 #BuildRequires:  %%{python_module pytest}
@@ -55,6 +57,11 @@ Firewalls, WildFire and AutoFocus.  It provides:
 cd %{buildroot}/%{_bindir}
 for f in panxapi panconf panlicapi panwfapi panafapi; do mv "$f.py" "$f"; done
 #
+%python_clone -a %{buildroot}%{_bindir}/panxapi
+%python_clone -a %{buildroot}%{_bindir}/panwfapi
+%python_clone -a %{buildroot}%{_bindir}/panlicapi
+%python_clone -a %{buildroot}%{_bindir}/panconf
+%python_clone -a %{buildroot}%{_bindir}/panafapi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # remove unneeded files
 rm -f %{buildroot}%{_bindir}/_current_flavor
@@ -63,14 +70,28 @@ rm -f %{buildroot}%{_bindir}/_current_flavor
 # Upstream does not have any tests yet
 #%%pytest
 
+%post
+%python_install_alternative panxapi
+%python_install_alternative panwfapi
+%python_install_alternative panlicapi
+%python_install_alternative panconf
+%python_install_alternative panafapi
+
+%postun
+%python_uninstall_alternative panxapi
+%python_uninstall_alternative panwfapi
+%python_uninstall_alternative panlicapi
+%python_uninstall_alternative panconf
+%python_uninstall_alternative panafapi
+
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.rst HISTORY.rst README.rst
-%python3_only %{_bindir}/panafapi
-%python3_only %{_bindir}/panconf
-%python3_only %{_bindir}/panlicapi
-%python3_only %{_bindir}/panwfapi
-%python3_only %{_bindir}/panxapi
+%python_alternative %{_bindir}/panafapi
+%python_alternative %{_bindir}/panconf
+%python_alternative %{_bindir}/panlicapi
+%python_alternative %{_bindir}/panwfapi
+%python_alternative %{_bindir}/panxapi
 %{python_sitelib}/*
 
 %changelog
