@@ -1,7 +1,7 @@
 #
 # spec file for package zeal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           zeal
-Version:        0.6.1
+Version:        2.7.0~git20200517.404c3aa
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-only
 Group:          Development/Tools/Other
-Url:            https://zealdocs.org
-Source0:        https://github.com/zealdocs/zeal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://zealdocs.org
+Source0:        %{name}-%{version}.tar.xz
 # `help2man zeal > zeal.1` can't be run without X started.
 Source9:        zeal.1
 BuildRequires:  cmake
@@ -34,7 +34,7 @@ BuildRequires:  libQt5Gui-private-headers-devel >= 5.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Xml) >= 5.2.0
 BuildRequires:  pkgconfig(libarchive)
@@ -60,11 +60,11 @@ Zeal is an offline API documentation browser inspired by Dash
 %setup -q
 
 %build
-%cmake -DBUILD_SHARED_LIBS:BOOL=OFF
+%cmake_kf5 -d build
 %make_jobs
 
 %install
-%cmake_install
+%kf5_makeinstall -C build
 %suse_update_desktop_file -r org.zealdocs.Zeal Office Viewer
 %fdupes -s %{buildroot}%{_datadir}
 
@@ -81,7 +81,8 @@ cp %{SOURCE9} %{buildroot}%{_mandir}/man1
 %icon_theme_cache_postun
 
 %files
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_datadir}/applications/org.zealdocs.Zeal.desktop

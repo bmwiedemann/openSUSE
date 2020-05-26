@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 25 11:05:55 UTC 2020 - hpj@urpla.net
+
+- Update to version 2.7.0~git20200517.404c3aa:
+  * chore(app): update FontAwesome to v5.13.0, switch to WOFF2 fonts
+  * ci(github): unify configure & build steps
+  * fix(registry): fix page TOC
+  * fix(browser): add missing namespace declaration
+  * feat(browser): log blocked requests
+  * fix(browser): fix compilation with Qt version below 5.13
+  * refactor(browser): improve code readability
+  * feat(browser): introduce centralized web settings management
+  * ci(github): fix Qt caching, make version configurable
+  * fix(browser): do not call deprecated QWebEngineProfile method
+- Switch to git tree
+- Use QWebEngine
+- Use kf5 build macros
+- relocate COPYING to %license
+
+-------------------------------------------------------------------
 Fri Jan  4 16:50:11 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.6.1
