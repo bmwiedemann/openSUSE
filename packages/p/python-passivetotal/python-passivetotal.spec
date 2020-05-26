@@ -1,7 +1,7 @@
 #
 # spec file for package python-passivetotal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,24 +24,25 @@ Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
-Url:            https://passivetotal.readthedocs.org
+URL:            https://passivetotal.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/p/passivetotal/passivetotal-%{version}.tar.gz
 Source1:        https://github.com/passivetotal/python_api/raw/c2d0c8f4ea3dde4caec01f5401fb6f105f8a2447/LICENSE
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-ez_setup
+Requires:       python-future
+Requires:       python-python-dateutil
+Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ez_setup}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
 %endif
-BuildRequires:  fdupes
-Requires:       python-ez_setup
-Requires:       python-future
-Requires:       python-python-dateutil
-Requires:       python-requests
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,21 +58,34 @@ services. The library currently provides support for the following services:
 %prep
 %setup -q -n passivetotal-%{version}
 sed -i '1s/^#!.*//' passivetotal/*.py passivetotal/*/*.py
-cp %{S:1} .
+cp %{SOURCE1} .
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pt-client
+%python_clone -a %{buildroot}%{_bindir}/pt-config
+%python_clone -a %{buildroot}%{_bindir}/pt-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pt-client
+%python_install_alternative pt-config
+%python_install_alternative pt-info
+
+%postun
+%python_uninstall_alternative pt-client
+%python_uninstall_alternative pt-config
+%python_uninstall_alternative pt-info
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/pt-info
-%python3_only %{_bindir}/pt-config
-%python3_only %{_bindir}/pt-client
+%python_alternative %{_bindir}/pt-info
+%python_alternative %{_bindir}/pt-config
+%python_alternative %{_bindir}/pt-client
 %{python_sitelib}/*
 
 %changelog
