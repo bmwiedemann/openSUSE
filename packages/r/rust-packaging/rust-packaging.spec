@@ -4,7 +4,7 @@
 # Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2017, 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org>.
-# Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@
 %bcond_without check
 
 Name:           rust-packaging
-Version:        11
+Version:        15
 Release:        0
 Summary:        RPM macros for building Rust packages on various architectures
 License:        MIT
 Group:          Development/Languages/Rust
 URL:            https://pagure.io/fedora-rust/rust2rpm
 Source0:        https://releases.pagure.org/fedora-rust/rust2rpm/rust2rpm-%{version}.tar.xz
-Patch0:         cargo-install.patch
 BuildArch:      noarch
 ExclusiveArch:  %{rust_arches} noarch
 

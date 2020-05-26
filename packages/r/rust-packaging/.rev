@@ -141,4 +141,21 @@
     <comment></comment>
     <requestid>791137</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47db90b7bad16deabbdbacb750069931</srcmd5>
+    <version>15</version>
+    <time>1590506430</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 15
+  + metadata: Fix setting up tilde version in RPM
+  + templates: Generate files entry with no-tilde
+  + inspector: Add support for multiple features
+  + metadata: Support &quot;renamed&quot; dependencies
+  + Use `cargo install --no-track` with cargo 1.41
+  + metadata: support versions like X.*.*
+  + Fix up Cargo.toml.orig error message that started to appear with Rust 1.43.0
+- Remove downstream patch
+  + cargo-install.patch</comment>
+    <requestid>808277</requestid>
+  </revision>
 </revisionlist>
