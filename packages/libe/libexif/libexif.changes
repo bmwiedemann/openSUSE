@@ -20,9 +20,9 @@ Mon May 18 16:08:17 UTC 2020 - Marcus Meissner <meissner@suse.com>
     * EXIF_TAG_LENS_SERIAL_NUMBER
   * Lots of fixes exposed by fuzzers like AFL, ClusterFuzz, OSSFuzz and others.
     * CVE-2018-20030: Fix for recursion DoS (bsc#1120943)
-    * CVE-2020-13114: Time consumption DoS when parsing canon array markers
-    * CVE-2020-13113: Potential use of uninitialized memory 
-    * CVE-2020-13112: Various buffer overread fixes due to integer overflows in maker notes
+    * CVE-2020-13114: Time consumption DoS when parsing canon array markers (bsc#1172121)
+    * CVE-2020-13113: Potential use of uninitialized memory  (bsc#1172105)
+    * CVE-2020-13112: Various buffer overread fixes due to integer overflows in maker notes (bsc#1172116)
     * CVE-2020-0093: read overflow (bsc#1171847)
     * CVE-2019-9278: replaced integer overflow checks the compiler could optimize away by safer constructs (bsc#1160770)
     * CVE-2020-12767: fixed division by zero (bsc#1171475)

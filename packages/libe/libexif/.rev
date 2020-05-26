@@ -348,4 +348,14 @@
 - CVE-2017-7544.patch: in upstream release</comment>
     <requestid>807015</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>bad2973aace3d2848c6141da5f1d0581</srcmd5>
+    <version>0.6.22</version>
+    <time>1590508169</time>
+    <user>maxlin_factory</user>
+    <comment>    * CVE-2020-13114: Time consumption DoS when parsing canon array markers (bsc#1172121)
+    * CVE-2020-13113: Potential use of uninitialized memory  (bsc#1172105)
+    * CVE-2020-13112: Various buffer overread fixes due to integer overflows in maker notes (bsc#1172116)</comment>
+    <requestid>809029</requestid>
+  </revision>
 </revisionlist>
