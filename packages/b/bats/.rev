@@ -47,4 +47,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>750141</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>260e24e9ac65e4521618a99f11832c7e</srcmd5>
+    <version>1.2.0</version>
+    <time>1590506439</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.2.0:
+  * Added:
+    - docs/CHANGELOG.md and docs/releasing.md (#122)
+    - The -f, --filter flag to run only the tests matching a regular expression (#126)
+    - Optimize stack trace capture (#138)
+    - --jobs n flag to support parallel execution of tests with GNU parallel (#172)
+  * Changed:
+    - AppVeyor builds are now semver-compliant (#123)
+    - Add Bash 5 as test target (#181)
+    - Always use upper case signal names to avoid locale dependent err… (#215)
+    - Fix for tests reading from stdin (#227)
+    - Fix wrong line numbers of errors in bash &lt; 4.4 (#229)
+    - Remove preprocessed source after test run (#232)
+</comment>
+    <requestid>807956</requestid>
+  </revision>
 </revisionlist>
