@@ -18,10 +18,10 @@
 
 
 # Kopano OBS: And if you add new %%package(s), update core:*:dist too
-%define version_unconverted 10.0.4
+%define version_unconverted 10.0.5
 
 Name:           kopano-python-services
-Version:        10.0.4
+Version:        10.0.5
 Release:        0
 Summary:        Python services for Kopano Groupware Core
 License:        AGPL-3.0-only
@@ -41,7 +41,7 @@ BuildRequires:  fdupes
 %if 0%{?fedora_version} || 0%{?centos_version}
 BuildRequires:  xapian-core-libs
 %else
-BuildRequires:  python-xapian
+BuildRequires:  python3-xapian
 %endif
 %if 0%{?suse_version}
 BuildRequires:  python-xml
@@ -175,10 +175,6 @@ make V=1 %{?_smp_mflags}
 %install
 b="%buildroot"
 %make_install
-for i in kopano_backup kopano_cli kopano_migration_pst \
-    kopano_search kopano_spamd kopano_utils; do
-    rm -Rf "$b/%python_sitelib/$i"*
-done
 
 %if 0%{?fdupes:1}
     %fdupes %buildroot/%_prefix

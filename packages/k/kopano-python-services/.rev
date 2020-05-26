@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>795756</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>714c7f60aabba31d9beecd6d09c0fd4b</srcmd5>
+    <version>10.0.5</version>
+    <time>1590506485</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to release 10.0.5</comment>
+    <requestid>807977</requestid>
+  </revision>
 </revisionlist>
