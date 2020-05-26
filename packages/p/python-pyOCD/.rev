@@ -39,4 +39,12 @@
   * Address an issue with the built-in target STM32L031x6 by disabling double buffered flash programming.</comment>
     <requestid>729879</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9f49f82cf6877e5a5ab5f2b7a75c97f5</srcmd5>
+    <version>0.22.0</version>
+    <time>1590506316</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807685</requestid>
+  </revision>
 </revisionlist>
