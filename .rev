@@ -94,4 +94,14 @@
 </comment>
     <requestid>574544</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>78813ff177a6ace3ed2559554a9cee0a</srcmd5>
+    <version>1.04</version>
+    <time>1590506035</time>
+    <user>maxlin_factory</user>
+    <comment>- Packaging cleanup:
+  * Use modern macros
+  * Use latests SPDX style of license strings</comment>
+    <requestid>807478</requestid>
+  </revision>
 </revisionlist>
