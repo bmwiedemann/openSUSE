@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.0.5
+Version:        4.1.0
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -31,12 +31,17 @@ Url:            https://haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
 Source2:        https://github.com/HaxeFoundation/hx3compat/archive/%{commit_hx3compat}.tar.gz#/hx3compat-%{commit_hx3compat}.tar.gz
+
+# quote command args in Makefile
+Patch0:         quote_command_args.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
 BuildRequires:  neko-devel >= 2.3.0
 BuildRequires:  neko >= 2.3.0
 BuildRequires:  ocaml >= 4.02.3
 BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-camlp5-devel
 BuildRequires:  ocaml-sedlex-devel >= 2.0
 BuildRequires:  ocaml-xml-light-devel
@@ -45,6 +50,7 @@ BuildRequires:  ocaml-ptmap-devel
 BuildRequires:  ocaml-sha-devel
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre-devel-static
+BuildRequires:  mbedtls-devel
 BuildRequires:  cmake
 Requires:       neko >= 2.3.0
 
@@ -63,10 +69,7 @@ pushd extra/haxelib_src && tar -xf %{SOURCE1} --strip-components=1 && popd
 pushd extra/haxelib_src/hx3compat && tar -xf %{SOURCE2} --strip-components=1 && popd
 
 # note that the Makefile does not support parallel building
-
-# Check to see if ocamlopt exists. If not, bytecompile everything.
-# It is because ocamlopt may be missing in some architectures.
-command -v ocamlopt && make || make BYTECODE=1
+make haxe
 
 # Compile haxelib
 pushd extra/haxelib_src && \

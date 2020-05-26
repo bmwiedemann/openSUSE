@@ -211,4 +211,12 @@ We're in the process of easing the installation process across different Linux d
     <comment>Update to Haxe 4.0.5.</comment>
     <requestid>758208</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0e9c5247b4f2ed323782118838abac8b</srcmd5>
+    <version>4.1.0</version>
+    <time>1590506396</time>
+    <user>maxlin_factory</user>
+    <comment>update haxe to 4.1.0</comment>
+    <requestid>808099</requestid>
+  </revision>
 </revisionlist>

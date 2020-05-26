@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 22 05:25:31 UTC 2020 - Andy Li <andy@onthewings.net>
+
+- Update to 4.1.0
+  * added tail recursion elimination
+  * added unified exception handling
+  * allow try {} catch(e) {} as a shortcut
+  * eval : added SSL support
+  * jvm : the JVM target is no longer considered experimental
+  * For more improvements and changes, see
+    https://github.com/HaxeFoundation/haxe/releases/tag/4.1.0
+- Add upstream patch (quote_command_args.patch) to fix building
+  without git.
+
+-------------------------------------------------------------------
 Thu Dec 19 14:11:45 UTC 2019 - Andy Li <andy@onthewings.net>
 
 - Update to 4.0.5

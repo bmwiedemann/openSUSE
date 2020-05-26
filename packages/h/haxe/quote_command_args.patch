@@ -1,0 +1,26 @@
+From 14346e9e5b4b59735568c2b9e7d44582db9564bb Mon Sep 17 00:00:00 2001
+From: Andy Li <andy@onthewings.net>
+Date: Thu, 21 May 2020 18:49:12 +0800
+Subject: [PATCH] [Makefile] quote command args
+
+Prevent build error when e.g. 1) git is not available, 2) source folder is not a git repo (downloaded from GitHub archive).
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e7cc0f1ffa..361c0e5ca9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -73,9 +73,9 @@ all: haxe tools
+ haxe:
+ 	$(DUNE_COMMAND) build --workspace dune-workspace.dev src-prebuild/prebuild.exe
+ 	_build/default/src-prebuild/prebuild.exe libparams $(LIB_PARAMS) > lib.sexp
+-	_build/default/src-prebuild/prebuild.exe version $(ADD_REVISION) $(BRANCH) $(COMMIT_SHA) > src/compiler/version.ml
++	_build/default/src-prebuild/prebuild.exe version "$(ADD_REVISION)" "$(BRANCH)" "$(COMMIT_SHA)" > src/compiler/version.ml
+ 	$(DUNE_COMMAND) build --workspace dune-workspace.dev src/haxe.exe
+-	cp -f _build/default/src/haxe.exe ./${HAXE_OUTPUT}
++	cp -f _build/default/src/haxe.exe ./"$(HAXE_OUTPUT)"
+ 
+ plugin: haxe
+ 	$(DUNE_COMMAND) build --workspace dune-workspace.dev plugins/$(PLUGIN)/$(PLUGIN).cmxs
