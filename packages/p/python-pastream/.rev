@@ -15,4 +15,12 @@
     <comment>Disable python2 support since dependencies dropped python2</comment>
     <requestid>754782</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6e4160e50624d754fc154f667f146ec7</srcmd5>
+    <version>0.2.0.post0</version>
+    <time>1590506210</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807649</requestid>
+  </revision>
 </revisionlist>

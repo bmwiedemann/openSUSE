@@ -1,7 +1,7 @@
 #
 # spec file for package python-pastream
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        GIL-less Portaudio Streams for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/tgarc/pastream
+URL:            https://github.com/tgarc/pastream
 Source0:        https://files.pythonhosted.org/packages/source/p/pastream/pastream-%{version}.tar.gz
 Source100:      python-pastream-rpmlintrc
 BuildRequires:  %{python_module cffi >= 1.4.0}
@@ -32,22 +32,24 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pa-ringbuffer >= 0.1.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(portaudiocpp)
-# SECTION test requirements
-BuildRequires:  %{python_module SoundFile >= 0.9.0}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module sounddevice >= 0.3.9}
-# /SECTION
 Requires:       libsndfile
 Requires:       portaudio
 Requires:       python-SoundFile >= 0.9.0
 Requires:       python-cffi >= 1.0.0
 Requires:       python-pa-ringbuffer >= 0.1.2
 Requires:       python-sounddevice >= 0.3.9
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-numpy
-
+# SECTION test requirements
+BuildRequires:  %{python_module SoundFile >= 0.9.0}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module sounddevice >= 0.3.9}
+# /SECTION
 %python_subpackages
 
 %description
@@ -66,6 +68,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pastream
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # Tests require an audio device
@@ -76,10 +79,16 @@ export CFLAGS="%{optflags}"
 # }
 # popd
 
+%post
+%python_install_alternative pastream
+
+%postun
+%python_uninstall_alternative pastream
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/pastream
+%python_alternative %{_bindir}/pastream
 %{python_sitearch}/*
 
 %changelog
