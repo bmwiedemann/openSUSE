@@ -40,6 +40,8 @@ Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy
 Requires:       python-requests
 Requires:       texlive-latex
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,12 +57,19 @@ cp %{SOURCE1} ./
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/o2graph
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative o2graph
+
+%postun
+%python_uninstall_alternative o2graph
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/o2graph
+%python_alternative %{_bindir}/o2graph
 %{python_sitelib}/*
 
 %changelog
