@@ -17,18 +17,19 @@
 
 
 Name:           SDL_bgi
-%define lname	libSDL_bgi2
-Version:        2.3.1
+%define lname	libSDL_bgi-suse3
+Version:        2.4.0
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        Zlib AND GPL-2.0-or-later
 Group:          Development/Libraries/X11
 URL:            http://libXbgi.sf.net/
 
+#Git-Web:       https://github.com/genpfault/sdl-bgi
 Source:         http://downloads.sf.net/libxbgi/%name-%version.tar.gz
-Patch1:         sdlbgi-automake.diff
-BuildRequires:  automake >= 1.11
-BuildRequires:  libtool >= 2
+Source9:        %name-rpmlintrc
+Patch1:         sdlbgi-cmake.diff
+BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)
 
@@ -61,41 +62,30 @@ introduction to SDL-based graphics: SDL and BGI commands can be mixed
 together.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
-autoreconf -fi
-%configure --disable-static
-make %{?_smp_mflags}
+%cmake
+%make_build
 
 %install
-%make_install
+%cmake_install
 b="%buildroot"
-rm -f "$b/%_libdir"/*.la
-mkdir -p "$b/%_includedir/SDL_bgi" "$b/%_libdir/pkgconfig"
-ln -s "../SDL2/SDL_bgi.h" "$b/%_includedir/SDL_bgi/graphics.h"
-install -pm0644 test/dos.h test/conio.h "$b/%_includedir/SDL_bgi/"
-cat >"$b/%_libdir/pkgconfig/SDL_bgi.pc" <<-EOF
-	Name: SDL_bgi
-	Description: BGI-compatible API with SDL backend
-	Version: %version
-	Requires: sdl SDL_gfx
-	Libs: -lSDL_bgi
-EOF
+mkdir -p "$b/%_defaultdocdir"
+mv "$b/%_datadir/doc/%name" "$b/%_defaultdocdir/"
+# just a forwarder and conflicts with xbgi
+rm -v "%buildroot/%_includedir/graphics.h"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%doc LICENSE
-%_libdir/libSDL_bgi.so.2*
+%license LICENSE
+%_libdir/libSDL_bgi.so.suse3
 
 %files -n libSDL_bgi-devel
-%doc README.md doc/*
-%_includedir/SDL2/
-%_includedir/SDL_bgi/
+%_defaultdocdir/%name/
+%_includedir/*
 %_libdir/libSDL_bgi.so
-%_libdir/pkgconfig/SDL_bgi.pc
 
 %changelog

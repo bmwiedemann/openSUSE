@@ -1,0 +1,32 @@
+
+Fix stupid build strategy.
+
+And add some library versioning.
+
+---
+ CMakeLists.txt |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: SDL_bgi-2.4.0/CMakeLists.txt
+===================================================================
+--- SDL_bgi-2.4.0.orig/CMakeLists.txt
++++ SDL_bgi-2.4.0/CMakeLists.txt
+@@ -20,9 +20,6 @@ include_directories (SDL2Test ${SDL2_INC
+ # Default install directory variables
+ include (GNUInstallDirs)
+ 
+-# fix stupid bug on Linux
+-string (STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
+-
+ # Find source files
+ file (GLOB SOURCES src/*.c)
+ 
+@@ -31,6 +28,8 @@ include_directories (src)
+ 
+ # Create shared library
+ add_library (${PROJECT_NAME} SHARED ${SOURCES})
++set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION suse3)
++target_link_libraries(${PROJECT_NAME} -lm ${SDL2_LIBRARIES})
+ 
+ # Install library
+ install (TARGETS ${PROJECT_NAME} 

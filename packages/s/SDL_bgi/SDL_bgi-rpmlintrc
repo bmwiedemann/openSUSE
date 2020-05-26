@@ -1,0 +1,2 @@
+# Go home rpmlint, you are drunk. libSDL_bgisuse3 is not the right name.
+addFilter("shlib-policy-name-error")

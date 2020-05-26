@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 20 15:46:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.0
+  * Hershey font support as a replacement for the original
+    Borland .chr fonts.
+  * If the SDL_BGI_RES environment variable is set to "VGA",
+    initgraph (DETECT, ...) forces VGA (640x480) resolution.
+  * Added getlinebuffer() and putlinebuffer()
+  * Changed 8x8 bitmap font using the one from the DosBox emulator.
+- Drop sdlbgi-automake.diff, add sdlbgi-cmake.diff.
+
+-------------------------------------------------------------------
 Wed Jan 22 17:32:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.1
