@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.3
+Version:        1.4.5
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -189,6 +189,7 @@ This package provides a Remmina plugin for the GNOME keyring password manager.
 
 %prep
 %setup -q -n Remmina-v%{version}
+%autopatch -p1
 sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapper.in
 
 %build

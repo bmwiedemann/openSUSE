@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May 25 07:39:02 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.5
+
+  * SSH plugin - adding font resize - closes #2201 (closed) !2059 (merged) @antenore
+  * Fixing keyboard grabbing issues with screenshot tool !2062 (merged) @giox069
+  * Refactoring remmina_debug to avoid memory leaks and overhead, should fix #2202 (closed) !2061 (merged) @antenore
+  * Using directory only to expose artifacts !2060 (merged) @antenore
+
+- removed remmina-bug-2061.patch now integrated in upstream
+
+-------------------------------------------------------------------
+Fri May 22 09:19:46 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.4
+
+  * RDP Plugin - Adding UDP support, implements #2153 !2038 @antenore;
+  * Adding proxy and local storage support !2039 @antenore;
+  * RDP option to prefer IPv6 AAAA record over IPv4 A records !2040 @antenore;
+  * Allow users to override the app ID !2044 @garymoon;
+  * Use icon name instead of localizable string in gtk_image_new_from_icon_name() !2045 @yurchor;
+  * Fix minor typos !2046 @yurchor;
+  * Don't grab when window has no focus, issue #2165 !2047 @giox069;
+  * SSH tunnel and VNC fixes !2048 @antenore;
+  * Adding explicitly trueColour in the client format structure. Fixes #2181 and #810 !2049 @antenore;
+  * Code refactoring. !2050 @antenore;
+  * Extract subtitle for translation !2051 @yurchor;
+  * [SSH] Connection pre/post command not replacing SSH tunnel parameters !2053 @antenore;
+  * SNAP: Remove libssh, available in distro !2052 @ed10vi;
+  * Create floating toolbar when ftb is set to off, 2189 !2054 @giox069;
+  * Adding Remmina_debug function to simplify log reporting !2055 @antenore;
+  * Removing OnlyShowIn as deprecated in the latest freedesktop spec. Closes #2198 !2056 @antenore;
+  * Cleaning up GLib deprecations !2058 @antenore;
+  * And much more committed directly in the master branch;
+  * Polish is a new language.
+  * Thousands of new strings have been translated with Weblate;
+
+- added remmina-bug-2061.patch to fix for build issue in remmina issue #2202
+
+-------------------------------------------------------------------
 Wed Apr 29 13:49:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add '-fPIC' on aarch64 to fix build
