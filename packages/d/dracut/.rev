@@ -1702,4 +1702,12 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * Fix test in lsinitrd (https://progress.opensuse.org/issues/65334)</comment>
     <requestid>800001</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>401940c4d3e10ebd83998b2b67af9ed0</srcmd5>
+    <version>050+suse.63.g796e020e</version>
+    <time>1590506066</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>807699</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 11:39:46 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.63.g796e020e:
+  * suse.spec: Move /bin/* and /sbin/* to /usr
+  * suse.spec: Remove long unused mkinitrd_setup file
+
+-------------------------------------------------------------------
 Mon May 04 09:10:14 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.61.g0fe0e854:
