@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 23 13:17:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.2
+  * A TLS client with peer verification disabled may crash when
+    contacting a server that sends an empty certificate list.
+
+-------------------------------------------------------------------
 Sun May 10 23:43:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.1
