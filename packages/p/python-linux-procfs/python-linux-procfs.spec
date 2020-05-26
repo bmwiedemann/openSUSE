@@ -1,7 +1,7 @@
 #
 # spec file for package python-linux-procfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,14 +46,21 @@ Abstractions to extract information from the Linux kernel /proc files.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/pflags
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec bitmasklist_test.py
 
+%post
+%python_install_alternative pflags
+
+%postun
+%python_uninstall_alternative pflags
+
 %files %{python_files}
 %{python_sitelib}/*
-%python3_only %{_bindir}/pflags
+%python_alternative %{_bindir}/pflags
 %license COPYING
 
 %changelog
