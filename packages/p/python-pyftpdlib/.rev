@@ -104,4 +104,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>795774</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>a734772d6601fed851348d51df7e5747</srcmd5>
+    <version>1.5.6</version>
+    <time>1590506250</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807662</requestid>
+  </revision>
 </revisionlist>

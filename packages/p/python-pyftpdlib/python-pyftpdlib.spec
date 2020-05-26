@@ -37,6 +37,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-pysendfile
 BuildArch:      noarch
 %if %{with python2}
@@ -60,6 +62,7 @@ write very asynchronous FTP servers with Python.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ftpbench
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Note: Do not remove tests. Other packages import them
 
@@ -69,10 +72,16 @@ export PYTHONPATH=$PWD
 %python_exec pyftpdlib/test/runner.py
 %endif
 
+%post
+%python_install_alternative ftpbench
+
+%postun
+%python_uninstall_alternative ftpbench
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/ftpbench
+%python_alternative %{_bindir}/ftpbench
 %{python_sitelib}/*
 
 %changelog

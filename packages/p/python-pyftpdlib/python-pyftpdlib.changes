@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 07:26:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Apr 20 10:41:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
