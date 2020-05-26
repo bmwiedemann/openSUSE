@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyOCD
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-usb
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pyocd = %{version}
 Obsoletes:      python-pyocd < %{version}
 BuildArch:      noarch
@@ -47,21 +49,29 @@ On-chip debugger and flasher tool for ARM microcontrollers.
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/pyocd
-%python_clone %{buildroot}%{_bindir}/pyocd-flashtool
-%python_clone %{buildroot}%{_bindir}/pyocd-gdbserver
-%python_clone %{buildroot}%{_bindir}/pyocd-tool
+%python_clone -a %{buildroot}%{_bindir}/pyocd
+%python_clone -a %{buildroot}%{_bindir}/pyocd-flashtool
+%python_clone -a %{buildroot}%{_bindir}/pyocd-gdbserver
+%python_clone -a %{buildroot}%{_bindir}/pyocd-tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%post
+%python_install_alternative pyocd
+%python_install_alternative pyocd-flashtool
+%python_install_alternative pyocd-gdbserver
+%python_install_alternative pyocd-tool
+
+%postun
+%python_uninstall_alternative pyocd
+%python_uninstall_alternative pyocd-flashtool
+%python_uninstall_alternative pyocd-gdbserver
+%python_uninstall_alternative pyocd-tool
+
 %files %{python_files}
-%{_bindir}/pyocd-flashtool-%{python_bin_suffix}
-%{_bindir}/pyocd-gdbserver-%{python_bin_suffix}
-%{_bindir}/pyocd-tool-%{python_bin_suffix}
-%{_bindir}/pyocd-%{python_bin_suffix}
-%python3_only %{_bindir}/pyocd
-%python3_only %{_bindir}/pyocd-flashtool
-%python3_only %{_bindir}/pyocd-gdbserver
-%python3_only %{_bindir}/pyocd-tool
+%python_alternative %{_bindir}/pyocd
+%python_alternative %{_bindir}/pyocd-flashtool
+%python_alternative %{_bindir}/pyocd-gdbserver
+%python_alternative %{_bindir}/pyocd-tool
 %{python_sitelib}/*
 
 %changelog
