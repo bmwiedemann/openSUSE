@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 14 03:12:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.97
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  1.97      2020-05-14 00:46:53Z
+      - Respect CDATA[[ sections when parsing HTML (GH#298) (Max Maischein)
+      - extract image links also from css (GH#12) (Jozef Kutej) and (GH#297)
+        (Julien Fiegehenn)
+      - s/parm/param/ in documentation (GH#295) (Olaf Alders)
+  
+
+-------------------------------------------------------------------
 Sat Feb 22 03:12:26 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.96
