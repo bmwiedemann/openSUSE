@@ -1,13 +1,13 @@
-Index: codespell-1.13.0/Makefile
-===================================================================
---- codespell-1.13.0.orig/Makefile	2018-05-17 15:50:40.000000000 +0000
-+++ codespell-1.13.0/Makefile	2018-07-04 10:37:54.803830458 +0000
-@@ -5,7 +5,7 @@ PHONY := all check check-dictionary sort
- all: check-dictionary codespell.1
+diff --git a/Makefile b/Makefile
+index 2313231..36b0536 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ sort-dictionary: sort-dictionaries
+ trim-dictionary: trim-dictionaries
  
  codespell.1: codespell.1.include bin/codespell
 -	PYTHONPATH=. help2man ./bin/codespell --include codespell.1.include --no-info --output codespell.1
 +	PYTHONPATH=. help2man ./bin/codespell -L en_US.UTF-8 --include codespell.1.include --no-info --output codespell.1
  	sed -i '/\.SS \"Usage/,+2d' codespell.1
  
- check-dictionary:
+ check-dictionaries:
