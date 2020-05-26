@@ -38,6 +38,8 @@ Requires:       python-requirementslib >= 1.1.1
 Requires:       python-resolvelib >= 0.2.1
 Requires:       python-six
 Requires:       python-vistir >= 0.1.4
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs}
@@ -65,15 +67,22 @@ A resolver implementation for generating and interacting with Pipenv-compatible 
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/passa
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative passa
+
+%postun
+%python_uninstall_alternative passa
+
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%python3_only %{_bindir}/passa
+%python_alternative %{_bindir}/passa
 %{python_sitelib}/*
 
 %changelog

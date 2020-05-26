@@ -24,4 +24,12 @@
     <comment>- Revert back the previous commit and wait for prjconf declaration</comment>
     <requestid>763822</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>71f9e69460532d5bc3073d7a3536174a</srcmd5>
+    <version>0.3.0</version>
+    <time>1590506202</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807647</requestid>
+  </revision>
 </revisionlist>

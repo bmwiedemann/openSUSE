@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 07:26:06 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Jan 10 15:01:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Revert back the previous commit and wait for prjconf declaration
