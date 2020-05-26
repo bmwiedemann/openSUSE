@@ -34,11 +34,9 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-appdirs
 BuildRequires:  python3-atomicwrites
 BuildRequires:  python3-attrs
-BuildRequires:  python3-black
 BuildRequires:  python3-click
 BuildRequires:  python3-colorama
 BuildRequires:  python3-coverage
-BuildRequires:  python3-devel
 BuildRequires:  python3-docopt
 BuildRequires:  python3-flake8
 BuildRequires:  python3-flexmock
@@ -77,6 +75,11 @@ common errors.
 %prep
 %setup -q
 %patch0 -p1
+
+sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
+%if 0%{?suse_version} <= 1500
+sed -i -e "s/^LogRateLimitIntervalSec=/#LogRateLimitIntervalSec=/" sample/systemd/borgmatic.service
+%endif
 
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
 perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic

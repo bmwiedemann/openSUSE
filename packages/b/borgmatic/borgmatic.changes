@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 25 17:13:21 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Comment the LogRateLimitIntervalSec option in the systemd service
+  when building for SLE/Leap since systemd < 240 doesn't support it.
+
+-------------------------------------------------------------------
+Mon May 25 16:58:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove unneeded build dependency python-black and python-devel
+- Reduce the required python-colorama version since a newer
+  version is not really needed.
+
+-------------------------------------------------------------------
 Mon May  4 10:09:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to remove invalid test:
