@@ -63,6 +63,8 @@ Requires:       python-zope.component
 Requires:       python-zope.configuration
 Requires:       python-zope.event
 Requires:       python-zope.interface >= 5.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       mailman = %{version}
 BuildArch:      noarch
 %if %{with test}
@@ -124,6 +126,9 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/master
+%python_clone -a %{buildroot}%{_bindir}/mailman
+%python_clone -a %{buildroot}%{_bindir}/runner
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -152,12 +157,22 @@ sed -i "s:\(902\):4\1:" src/mailman/testing/testing.cfg
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative master
+%python_install_alternative mailman
+%python_install_alternative runner
+
+%postun
+%python_uninstall_alternative master
+%python_uninstall_alternative mailman
+%python_uninstall_alternative runner
+
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%python3_only %{_bindir}/runner
-%python3_only %{_bindir}/mailman
-%python3_only %{_bindir}/master
+%python_alternative %{_bindir}/runner
+%python_alternative %{_bindir}/mailman
+%python_alternative %{_bindir}/master
 %{python_sitelib}/*
 %endif
 
