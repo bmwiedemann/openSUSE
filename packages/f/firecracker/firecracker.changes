@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May 25 11:54:18 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Update firecracker to version 0.19.1:
+  Added:
+    * New device: virtio-vsock, backed by Unix domain sockets.
+    * New command-line parameter for firecracker, named --no-api, which
+      will disable the API server thread. Also, when API server is disabled,
+      MMDS is no longer available now.
+    * New command-line parameter for firecracker, named --config-file, which
+      represents the path to a file that contains a JSON which can be used for
+      configuring and starting a microVM without sending any API requests.
+    * The jailer adheres to the "end of command options" convention, meaning
+      all parameters specified after -- are forwarded verbatim to Firecracker.
+    * Added KVM_PTP support to the recommended guest kernel config.
+    * Added entry in FAQ.md for Firecracker Guest timekeeping.
+  Changed:
+    * Vsock API call: PUT /vsocks/{id} changed to PUT /vsock and no longer
+      appear to support multiple vsock devices. Any subsequent calls to this API
+      endpoint will override the previous vsock device configuration.
+  Removed:
+    * Removed experimental support for vhost-based vsock devices.
+    * Removed unused 'Halting' and 'Halted' instance states.
+ 
+-------------------------------------------------------------------
+Mon May 25 11:11:56 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Modify spec file:
+  * Change the group to "System/Emulators/PC" which is maintained by virt team.
+  * Use "rm -f " instead of "rm" to remove spurious files
+  * Remove macro "_missing_doc_files_terminate_build"
+
+-------------------------------------------------------------------
+Sun May 24 01:20:05 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Fix Tumbelweed builds by removing /usr/.crates2.json.
+
+-------------------------------------------------------------------
 Fri Sep 13 14:45:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim marketing wording from description.

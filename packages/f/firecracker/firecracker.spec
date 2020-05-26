@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,11 @@
 %define cargo_home cargo-home
 
 Name:           firecracker
-Version:        0.17.0
+Version:        0.19.1
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
-Group:          System/Management
+Group:          System/Emulators/PC
 URL:            https://firecracker-microvm.github.io/
 Source0:        %{name}-%{version}.tar.xz
 # Created using cargo_vendor service
@@ -72,7 +72,8 @@ cargo install \
 
 %install
 # remove spurious file
-rm %{buildroot}%{_prefix}/.crates.toml
+rm -f %{buildroot}%{_prefix}/.crates.toml
+rm -f %{buildroot}%{_prefix}/.crates2.json
 
 %files
 %doc README.md
