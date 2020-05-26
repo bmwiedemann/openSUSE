@@ -5106,4 +5106,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.6.12 &amp; gcc10 fix &amp; kvm fix</comment>
     <requestid>803399</requestid>
   </revision>
+  <revision rev="543" vrev="1">
+    <srcmd5>75f6e887b2edbd628e980fba5d31511e</srcmd5>
+    <version>5.6.14</version>
+    <time>1590506043</time>
+    <user>maxlin_factory</user>
+    <comment>5.6.14 &amp; 5.6.13 &amp; other fixes</comment>
+    <requestid>807538</requestid>
+  </revision>
 </revisionlist>
