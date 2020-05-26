@@ -110,4 +110,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     <comment></comment>
     <requestid>768082</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2508efd49ae749d63922490498615f50</srcmd5>
+    <version>6.1.0</version>
+    <time>1590506407</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808403</requestid>
+  </revision>
 </revisionlist>

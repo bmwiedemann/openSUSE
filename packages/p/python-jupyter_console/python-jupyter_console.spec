@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_console
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,26 +23,27 @@ Version:        6.1.0
 Release:        0
 Summary:        Jupyter terminal console
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/jupyter/jupyter_console
+URL:            https://github.com/jupyter/jupyter_console
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_console/jupyter_console-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pyzmq}
 # /SECTION
-Requires:       python-jupyter-client
+Requires:       jupyter-jupyter_console = %{version}
 Requires:       python-ipykernel
 Requires:       python-ipython
+Requires:       python-jupyter-client
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pyzmq
-Requires:       jupyter-jupyter_console = %{version}
 BuildArch:      noarch
 
 %python_subpackages
@@ -76,12 +77,13 @@ This package provides the jupyter components.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} jupyter_console
+%python_expand nosetests-%{$python_bin_suffix} --with-flaky --force-flaky -v -s jupyter_console
 
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
 %license COPYING.md 
-%{python_sitelib}/*
+%{python_sitelib}/jupyter_console
+%{python_sitelib}/jupyter_console-%{version}-*.egg-info
 
 %files -n jupyter-jupyter_console
 %license COPYING.md

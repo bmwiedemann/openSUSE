@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 17 16:40:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add Pillow to test build, avoids skipping a test
+- Force all tests to be flaky, because they timeout occasionally
+  on OBS
+
+-------------------------------------------------------------------
+Sat May 16 01:13:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- do not capture stdout to pass the tests 
+  gh#jupyter/jupyter_console#214
+
+-------------------------------------------------------------------
 Tue Jan 28 15:52:47 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 6.1.0
