@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 15:04:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add patch which-finds-python-executable.patch to fix tests
+- Spec-cleaner fixes
+
+-------------------------------------------------------------------
 Mon Nov 18 18:49:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version

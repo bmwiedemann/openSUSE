@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-packaging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jupyter-packaging
 Version:        0.4.0
 Release:        0
-License:        BSD-3-Clause
 Summary:        Jupyter Packaging Utilities
-Url:            https://github.com/jupyter/jupyter-packaging
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter-packaging-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# fix tests https://github.com/jupyter/jupyter-packaging/pull/32
+Patch0:         which-finds-python-executable.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,6 +42,7 @@ with and without accompanying JavaScript packages
 %setup -q -n jupyter-packaging-%{version}
 sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
+%patch0 -p1
 
 %build
 %python_build
