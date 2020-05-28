@@ -1,7 +1,7 @@
 #
 # spec file for package python-num2words
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,20 @@ Release:        0
 Summary:        Modules to convert numbers to words
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
-Url:            https://github.com/savoirfairelinux/num2words
+URL:            https://github.com/savoirfairelinux/num2words
 Source:         https://files.pythonhosted.org/packages/source/n/num2words/num2words-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-docopt >= 0.6.2
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module delegator.py}
 BuildRequires:  %{python_module docopt >= 0.6.2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-docopt >= 0.6.2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,16 +52,23 @@ It supports multiple languages and can even generate ordinal numbers like "forty
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/num2words
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# one test failing
-%pytest -k "not test_cli_with_lang_to" tests
+# test_cli.py has 'python' command hardcoded
+%pytest -k "not test_cli" tests
+
+%post
+%python_install_alternative num2words
+
+%postun
+%python_uninstall_alternative num2words
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license COPYING
 %{python_sitelib}/*
-%python3_only %{_bindir}/num2words
+%python_alternative %{_bindir}/num2words
 
 %changelog
