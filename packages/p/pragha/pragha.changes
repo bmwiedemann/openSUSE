@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 10:59:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Fix build for Leap 15.2
+
+-------------------------------------------------------------------
 Sun Nov 17 08:34:06 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Fix CPPFLAGS to use current versions.

@@ -1,7 +1,7 @@
 #
 # spec file for package pragha
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.31
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(gudev-1.0)
-%if 0%{?suse_version} >= 01550 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 0150200 || (0%{?suse_version} >= 01550 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(gupnp-1.2)
 %else
 BuildRequires:  pkgconfig(gupnp-1.0)
@@ -131,7 +131,7 @@ This package contains development files needed to develop plugins for Pragha.
 %setup -q
 
 %build
-%if 0%{?suse_version} >= 01550 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 0150200 || (0%{?suse_version} >= 01550 && 0%{?is_opensuse})
 export CPPFLAGS='-I/usr/include/gssdp-1.2/ -I/usr/include/gupnp-1.2/ -I/usr/include/libsoup-2.4/'
 %else
 export CPPFLAGS='-I/usr/include/gssdp-1.0/ -I/usr/include/gupnp-1.0/ -I/usr/include/libsoup-2.4/'
