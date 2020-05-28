@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 27 09:49:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * Added GNU C's __complex, __complex__, __const, __inline,
+    __restrict, __signed, __signed__, __volatile, and
+    __volatile__.
+
+-------------------------------------------------------------------
 Sat May 16 00:21:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.0
