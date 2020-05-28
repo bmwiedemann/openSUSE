@@ -43,6 +43,8 @@ Requires:       python-gTTS-token >= 1.1.3
 Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,16 +63,23 @@ sentences where the speech would naturally pause.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/gtts-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # tests are sadly mostly online
 #%%pytest
 
+%post
+%python_install_alternative gtts-cli
+
+%postun
+%python_uninstall_alternative gtts-cli
+
 %files %{python_files}
 %doc CHANGELOG.rst README.md
 %license LICENSE
-%python3_only %{_bindir}/gtts-cli
+%python_alternative %{_bindir}/gtts-cli
 %{python_sitelib}/*
 
 %changelog
