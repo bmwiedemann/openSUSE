@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed May 27 19:07:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.13
+  doxygen
+    * add new documentation files
+  cw prosign
+    * fix loss of prosign AA
+      - conflict with Northern European accented characters
+  Analysis mode
+    * Add Zulu time readout to status bar
+  Debug Sources
+    * remove bMOREINFO
+    * add "Data Load" toggle to Debug sources
+    * add "Synop" toggle to Debug sources
+    * add "KML" toggle to Debug sources
+    * remove deprecated command line parameters
+      - --debug-pskmail, use debug source ARQ
+      - --debug-audio, use debug source AUDIO
+    * redesign Event Log dialog to make selection of level and
+      sources more intuitive
+  wefax
+    * Modify phasing algorithm to measure, analyze and act upon
+      ratio of white and black intervals.
+    * Change default center frequency to 1900. Allows detection
+      of start tone @ 300 Hz, stop tone @ 450 Hz.
+    * Simplify FM detector.  Use complex functions vice I/Q logic
+    * Redesign user interface
+      - always use internal Rx panel
+      - always use external Tx dialog
+      - move infrequently used controls to configuration dialog
+    * Rewrite pic and image classes
+    * Add user correlation control to config panel
+    * Correct transmit methods
+      - Start/Stop signals not in spec
+      - Transmit duration computation resulted in very long
+        transmission
+    * update documentation
+  README update
+    * update reference to winfldigi
+  fedora 64 build
+    * remove Fl::wake calls that require void* data
+    * replace with REQ qrunner calls
+  Code cleanup
+    * remove extraneous debugging lines from code
+  fsq sounder
+    * restore sounder when starting FSQ from another modem
+  Default event log level
+    * restore INFO as default
+    * change socket events to VERBOSE
+  rx_extract
+    * imrove behavior servicing multiple instances of flmsg
+
+-------------------------------------------------------------------
 Thu Apr 23 17:58:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.12
