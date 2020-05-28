@@ -18,32 +18,14 @@
     </IfModule>
 
     <Directory __CACTIDIR__>
-        Options None
+        DirectoryIndex index.php
+        Options +FollowSymLinks
+        AllowOverride none
 
         # Access Control
         # Default to only allow connections from localhost
-        <IfModule mod_version.c>
-            <IfVersion < 2.4>
-                Order deny,allow
-                Deny from all
-                Allow from localhost
-            </IfVersion>
-            <IfVersion >= 2.4>
-                <IfModule mod_authz_core.c>
-                    Require all denied
-                    Require local
-                </IfModule>
-                <IfModule mod_access_compat.c>
-                    Order deny,allow
-                    Deny from all
-                    Allow from localhost
-                </IfModule>
-            </IfVersion>
-        </IfModule>
-        <IfModule !mod_version.c>
-            Require all denied
-	    Require local
-        </IfModule>
+        Require all denied
+        Require local
 
         # Authentication Settings
         # Uncomment and apply to add Basic Authentication
@@ -64,49 +46,27 @@
                 </IfModule>
             </IfDefine>
         </IfDefine>
-    </Directory>
 
-    <Directory __CACTIDIR__/cli>
-        AllowOverride none
-        <IfModule mod_version.c>
-            <IfVersion < 2.4>
-                Order deny,allow
-                Deny from all
-            </IfVersion>
-            <IfVersion >= 2.4>
-                <IfModule mod_authz_core.c>
-                    Require all denied
-                </IfModule>
-                <IfModule mod_access_compat.c>
-                    Order deny,allow
-                    Deny from all
-                </IfModule>
-            </IfVersion>
-        </IfModule>
-        <IfModule !mod_version.c>
-            Require all denied
+        <IfModule mod_php7.c>
+            php_flag magic_quotes_gpc Off
+            php_flag short_open_tag On
+            php_flag register_globals Off
+            php_flag register_argc_argv On
+            php_flag track_vars On
+            # this setting is necessary for some locales
+            php_value mbstring.func_overload 0
+            php_value include_path .
         </IfModule>
     </Directory>
 
-    <Directory __CACTIDIR__/rra>
-        AllowOverride none
-        <IfModule mod_version.c>
-            <IfVersion < 2.4>
-                Order deny,allow
-                Deny from all
-            </IfVersion>
-            <IfVersion >= 2.4>
-                <IfModule mod_authz_core.c>
-                    Require all denied
-                </IfModule>
-                <IfModule mod_access_compat.c>
-                    Order deny,allow
-                    Deny from all
-                </IfModule>
-            </IfVersion>
-        </IfModule>
-        <IfModule !mod_version.c>
+    <DirectoryMatch ^__CACTIDIR__/(docs|images|include|install)>
+        Require all granted
+        <Files config.php>
             Require all denied
-        </IfModule>
+        </Files>
+    </Directory>
+
+    <Directory __CACTIDIR__/*/>
+        Require all denied
     </Directory>
 </IfDefine>

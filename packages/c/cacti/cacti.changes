@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 11 12:23:32 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- switch from cron to systemd timers (boo#1115436):
+  + cacti-cron.timer
+  + cacti-cron.service
+- introduce rpmlintrc for obvious false positives from rpmlint
+  + cacti-rpmlintrc
+- use fdupes to reduce amount of needed/wasted space
+- re-introduce RPM Group to avoid huge rpmlint complains on 15.1
+- remove .gitignore and .gitattributes files (not needed)
+- avoid potential root escalation on systems with fs.protected_hardlinks=0
+  (boo#1154087): handle directory permissions in file section instead
+  of using chown during post installation
+- rewrote apache configuration to get rid of .htaccess files and 
+  explicitely disable directory permissions per default 
+  (only allow a limited, well-known set of directories)
+
+-------------------------------------------------------------------
 Thu May  7 09:34:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.12:

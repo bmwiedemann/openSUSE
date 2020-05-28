@@ -21,17 +21,28 @@
 %else
 %define cacti_dir %{apache_datadir}/cacti
 %endif
+
+%if 0%{?suse_version} >= 01230
+%bcond_without systemd
+%else
+%bcond_with systemd
+%endif
+
 Name:           cacti
 Version:        1.2.12
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
+Group:          System/Monitoring
 URL:            http://www.cacti.net/
 Source0:        http://www.cacti.net/downloads/%{name}-%{version}.tar.gz
 Source1:        %{name}.cron
 Source2:        %{name}-httpd.conf
 Source3:        %{name}.logrotate
 Source4:        %{name}-httpd.conf.default
+Source5:        %{name}-cron.service
+Source6:        %{name}-cron.timer
+Source10:       cacti-rpmlintrc
 # PATCH-FIX-UPSTREAM cacti-config.patch
 Patch0:         %{name}-config.patch
 BuildRequires:  apache-rpm-macros
@@ -51,9 +62,9 @@ Requires:       php-zlib
 Requires:       rrdtool
 Conflicts:      cacti-spine < %{version}
 Conflicts:      cacti-spine > %{version}
-Provides:       cacti-system
-Obsoletes:      cacti-PA < %{version}
-Provides:       cacti-PA = %{version}
+Provides:       cacti-system = %{version}-%{release}
+Obsoletes:      cacti-PA < %{version}-%{release}
+Provides:       cacti-PA = %{version}-%{release}
 BuildArch:      noarch
 %if 0%{?suse_version}
 BuildRequires:  apache2-devel
@@ -61,8 +72,14 @@ BuildRequires:  apache2-devel
 BuildRequires:  httpd-devel
 %endif
 %if 0%{?suse_version}
+BuildRequires:  fdupes
+%if %{with systemd}
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_requires}
+%else
 BuildRequires:  cron
 Requires:       cron
+%endif
 Requires:       mod_php_any >= 7.0
 Requires:       php-sockets >= 7.0
 %endif
@@ -83,6 +100,7 @@ well.
 
 %package doc
 Summary:        Documentation for Cacti
+Group:          System/Monitoring
 Requires:       %{name} = %{version}
 
 %description doc
@@ -100,8 +118,15 @@ This package contains the HTML documentation for Cacti.
 %setup -q
 %patch0 -p1
 
-#delete the *.orig files
+#delete some files
 find . -type f -name "*\.orig" -exec rm {} \;
+find . -type f -name .gitignore -delete
+find . -type f -name .gitattributes -delete
+find . -type f -name .htaccess -delete
+
+# fix env interpreter lines
+sed -i 's|/usr/bin/env perl|%{_bindir}/perl|g' scripts/*.pl
+sed -i 's|/usr/bin/env php|%{_bindir}/php|g' include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules
 
 %build
 #nothing to build
@@ -132,10 +157,17 @@ install -d -m 0755 cli %{buildroot}%{cacti_dir}/cli
 install -m 0755 cli/* %{buildroot}%{cacti_dir}/cli
 install -m 0644 *.sql %{buildroot}%{cacti_dir}
 
+%if %{with systemd}
+install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}-cron.timer
+sed -e "s;__CACTIDIR__;%{cacti_dir};g" \
+	-e "s;__APACHEUSER__;%{apache_user};g" \
+    %{SOURCE5} > %{buildroot}%{_unitdir}/%{name}-cron.service
+%else
 # cron task
 install -d -m 0755 %{buildroot}%{_sysconfdir}/cron.d
 sed -e "s;__CACTIDIR__;%{cacti_dir};g" -e "s;__APACHEUSER__;%{apache_user};g" \
     %{SOURCE1} > %{buildroot}%{_sysconfdir}/cron.d/%{name}
+%endif
 
 # apache2 config
 %if 0%{?suse_version}
@@ -167,17 +199,38 @@ find %{buildroot}%{cacti_dir} -type d | sed -e 's|'%{buildroot}'|%dir |' >> %{na
 find %{buildroot}%{cacti_dir} -type f ! -name config.php | sed -e 's|'%{buildroot}'||' >> %{name}.list
 ln -sf %{_localstatedir}/log/%{name} %{buildroot}%{cacti_dir}/log
 
+%if 0%{?suse_version}
+%fdupes %{buildroot}
+%endif
+
+%if %{with systemd}
 %post
-chown -R %{apache_user}:%{apache_group} %{cacti_dir}/rra
+%service_add_post %{name}-cron.timer
+
+%pre
+%service_add_pre %{name}-cron.timer
+
+%preun
+%service_del_preun %{name}-cron.timer
+
+%postun
+%service_del_postun  %{name}-cron.timer
+%endif
 
 %files -f %{name}.list
 %license LICENSE
 %doc README.md
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/lib/%{name}
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/log/%{name}
+%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/rra
 %attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/log
 %config(noreplace) %{cacti_dir}/include/config.php
+%if %{with systemd}
+%{_unitdir}/%{name}-cron.service
+%{_unitdir}/%{name}-cron.timer
+%else
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
+%endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1210
