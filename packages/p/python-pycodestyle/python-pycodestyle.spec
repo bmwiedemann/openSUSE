@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycodestyle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycodestyle
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Python style guide checker
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://pycodestyle.readthedocs.io/
+URL:            https://pycodestyle.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %ifpython2
@@ -35,6 +37,8 @@ Obsoletes:      %{oldpython}-pep8 < %{version}
 %endif
 Provides:       python-pep8 = %{version}
 Obsoletes:      python-pep8 < %{version}
+Requires(post):   update-alternatives
+Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -56,15 +60,24 @@ sed -ri '1s/^#!.*//' pycodestyle.py
 %python_install
 %python_clone %{buildroot}%{_bindir}/pycodestyle
 ln -sf pycodestyle-%{python3_bin_suffix} %{buildroot}%{_bindir}/pycodestyle
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}
+
+%post
+%python_install_alternative pycodestyle
+
+%postun
+%python_uninstall_alternative pycodestyle
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/pycodestyle
+%python_alternative %{_bindir}/pycodestyle
 %{_bindir}/pycodestyle-%{python_bin_suffix}
-%{python_sitelib}/*
+%{python_sitelib}/pycodestyle.py*
+%pycache_only %{python_sitelib}/__pycache__/pycodestyle.*.py*
+%{python_sitelib}/pycodestyle-%{version}-*.egg-info
 
 %changelog
