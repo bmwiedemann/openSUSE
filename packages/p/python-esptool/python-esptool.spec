@@ -37,8 +37,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-ecdsa
 Requires:       python-pyaes
 Requires:       python-pyserial >= 3.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,9 +58,9 @@ chmod a-x flasher_stub/*.py
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/esptool.py
-%python_clone %{buildroot}%{_bindir}/espsecure.py
-%python_clone %{buildroot}%{_bindir}/espefuse.py
+%python_clone -a %{buildroot}%{_bindir}/espefuse.py
+%python_clone -a %{buildroot}%{_bindir}/espsecure.py
+%python_clone -a %{buildroot}%{_bindir}/esptool.py
 %python_expand sed -i '/^#!/d' %{buildroot}%{$python_sitelib}/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -68,15 +69,25 @@ chmod a-x flasher_stub/*.py
 %pytest test/test_imagegen.py
 %pytest test/test_espsecure.py
 
+%post
+%python_install_alternative espefuse.py
+%python_install_alternative espsecure.py
+%python_install_alternative esptool.py
+
+%postun
+%python_uninstall_alternative espefuse.py
+%python_uninstall_alternative espsecure.py
+%python_uninstall_alternative esptool.py
+
 %files %{python_files}
 %license LICENSE
 %doc README.md flasher_stub/
 %{_bindir}/esptool.py-%{python_bin_suffix}
 %{_bindir}/espsecure.py-%{python_bin_suffix}
 %{_bindir}/espefuse.py-%{python_bin_suffix}
-%python3_only %{_bindir}/esptool.py
-%python3_only %{_bindir}/espsecure.py
-%python3_only %{_bindir}/espefuse.py
+%python_alternative %{_bindir}/esptool.py
+%python_alternative %{_bindir}/espsecure.py
+%python_alternative %{_bindir}/espefuse.py
 %{python_sitelib}/*
 
 %changelog

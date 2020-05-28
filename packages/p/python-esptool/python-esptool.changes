@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:07 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Mon Mar  2 16:39:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.8
