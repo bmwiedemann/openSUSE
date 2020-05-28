@@ -61,6 +61,8 @@ Requires:       python-tldextract
 Requires:       python-transip >= 0.3.0
 Requires:       python-vcrpy
 Requires:       python-xmltodict
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # Completely different pkg but same namespace
 Conflicts:      python-lexicon
 BuildArch:      noarch
@@ -89,15 +91,22 @@ find . -type f -name ".buildinfo" -delete
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/lexicon
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest lexicon/tests
 
+%post
+%python_install_alternative lexicon
+
+%postun
+%python_uninstall_alternative lexicon
+
 %files %{python_files}
 %{python_sitelib}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/lexicon
+%python_alternative %{_bindir}/lexicon
 
 %changelog
