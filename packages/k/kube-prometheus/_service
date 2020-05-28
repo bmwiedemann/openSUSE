@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">0.3.0+git%cd.%h</param>
+    <param name="versionformat">0.4.0+git%cd.%h</param>
     <param name="url">git://github.com/coreos/kube-prometheus.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

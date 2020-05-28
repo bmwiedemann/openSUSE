@@ -17,7 +17,7 @@
 
 
 Name:           kube-prometheus
-Version:        0.3.0+git20200320.a5e2783
+Version:        0.4.0+git20200520.28332b4
 Release:        0
 Summary:        Manifests to use Prometheus to monitor Kubernetes
 License:        Apache-2.0
@@ -88,8 +88,7 @@ cp -av manifests/*.yaml %{buildroot}%{_datadir}/k8s-yaml/kube-prometheus/base/
 mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -a * %{buildroot}%{_datadir}/%{name}/
 rm -rf %{buildroot}%{_datadir}/%{name}/{.git*,manifests,vendor}
-sed -i -e 's|%{_bindir}/env bash|/bin/bash|g' %{buildroot}%{_datadir}/kube-prometheus/experimental/custom-metrics-api/*.sh %{buildroot}%{_datadir}/kube-prometheus/build.sh %{buildroot}%{_datadir}/kube-prometheus/hack/example-service-monitoring/{deploy,teardown} %{buildroot}%{_datadir}/kube-prometheus/test.sh %{buildroot}%{_datadir}/kube-prometheus/tests/e2e/travis-e2e.sh
-chmod 755 %{buildroot}%{_datadir}/kube-prometheus/experimental/custom-metrics-api/*.sh
+sed -i -e 's|%{_bindir}/env bash|/bin/bash|g' %{buildroot}%{_datadir}/kube-prometheus/build.sh %{buildroot}%{_datadir}/kube-prometheus/hack/example-service-monitoring/{deploy,teardown} %{buildroot}%{_datadir}/kube-prometheus/test.sh %{buildroot}%{_datadir}/kube-prometheus/tests/e2e/travis-e2e.sh
 
 %files k8s-yaml
 %license LICENSE

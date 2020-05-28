@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon May 25 08:35:19 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.4.0+git20200520.28332b4:
+  * update compatibility matrix with note for release-0.4
+  * update generated files for prometheus operator v0.39.0
+  * update generated files for node exporter ignored filesystems
+  * node_exporter: remove outdated comment and CLI arg
+  * node-exporter: ignore kubelet pod mounts
+  * *: regenerate
+  * *: update jsonnet to use prometheus-operator v0.39
+  * Revert "Remove field preserveUnknownFields from CRDs"
+  * Update prometheus version to v2.17.2
+  * custom metrics v1beta2 api
+  * k8s-prometheus-adapter v0.7.0
+  * build.sh: fix json files cleanup
+  * fix readme typos
+  * Convert custom-metrics into an addon
+  * tests/e2e/travis-e2e.sh: Bump kind version
+  * README.md: Change compatibility matrix
+  * scripts,tests: Bump kubernetes version to 1.18
+  * Bump to go 1.13
+  * manifests: Regenerate
+  * go.mod,sum: go mod tidy
+  * jb update
+  * Update kube-prometheus-eks.libsonnet
+  * update prometheus-pvc.jsonnet
+  * Fix rules window
+  * updated generated manifests
+  * Make prometheus-adapter config a real object
+  * go.mod: remove unused packages
+  * test.sh: update PATH to use project tooling
+  * Makefile: export GO111MODULE=on
+  * use top-level config for all nodeExporter selector labels
+  * Makefile: use go install instead of go build
+  * README: remove make in docker guidance
+  * build.sh: update PATH to use project tooling
+  * Correct typo in Rolebindig
+  * ci: use golang tooling
+  * mod: add tooling dependencies
+  * Makefile: remove containerized tooling
+  * Allow to configure EKS available IPs alert
+  * manifests: Regenerate files
+  * jsonnetfile.json: Update deps
+  * remove version label from node-exporter selectors
+  * doc: add kubernetes compatibility matrix
+  * manifests: regenerate
+  * *: update dependencies
+  * replace clock skew alert with one provided by node_exporter mixin
+  * Update lock files
+  * Update Manifests based off the new jsonnets
+  * Update lock files
+  * Remove the app label for node-exporter
+  * Remove custom k8s-app label in favor of standard k8s labels in the manifest for node-exporter
+  * *: regenerate
+  * tests/e2e: use prometheus client_golang in e2e tests & add testing for http endpoints
+  * jsonnet: expose prometheus-operator metrics over secure channel
+  * *: bump jb to 0.3.1 to be on par with latest tooling container
+  * update prometheus-operator to v0.38.0
+
+-------------------------------------------------------------------
 Sat Mar 21 10:15:36 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.3.0+git20200320.a5e2783:
