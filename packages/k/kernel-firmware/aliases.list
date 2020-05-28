@@ -4736,6 +4736,9 @@ smc91c92_cs: pcmcia:m0109c0501f*fn*pfn00pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m0140c000Af*fn*pfn00pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m016Cc0020f*fn00pfn*pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m016Cc0023f*fn*pfn*pa*pb*pc*pd*
+snd_intel_sst_acpi: acpi*:80860F28:*
+snd_intel_sst_acpi: acpi*:808622A8:*
+snd_intel_sst_acpi: sst
 snd_korg1212: pci:v000010B5d0000906Dsv*sd*bc*sc*i*
 snd_maestro3: pci:v0000125Dd00001988sv*sd*bc04sc01i*
 snd_maestro3: pci:v0000125Dd00001989sv*sd*bc04sc01i*

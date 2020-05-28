@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20200517
+%define version_unconverted 20200519
 
 Name:           kernel-firmware
-Version:        20200517
+Version:        20200519
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -5403,6 +5403,8 @@ Requires(post): coreutils
 Requires(postun): coreutils
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Supplements:    modalias(acpi*:80860F28:*)
+Supplements:    modalias(acpi*:808622A8:*)
 Supplements:    modalias(acpi*:CSC0000:*)
 Supplements:    modalias(acpi*:CSC0004:*)
 Supplements:    modalias(acpi*:CSC0010:*)
@@ -5436,6 +5438,7 @@ Supplements:    modalias(pnp:dCSC0000*)
 Supplements:    modalias(pnp:dCSC0004*)
 Supplements:    modalias(pnp:dCSC0010*)
 Supplements:    modalias(pnp:dPnPb006*)
+Supplements:    modalias(sst)
 Supplements:    modalias(usb:v086Ap0100d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v086Ap0110d*dc*dsc*dp*ic*isc*ip*in*)

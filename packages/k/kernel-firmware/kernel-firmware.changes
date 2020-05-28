@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 23 15:51:19 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200519 (git commit 8ba6fa665c52):
+  * iwlwifi: update and add new FWs from core50-70 and core52-81 releases
+  * rtw88: RTL8821C: add firmware file v24.5
+  * iwlwifi: update FWs to core47-142 release
+  * iwlwifi: update 8265 FW
+- Update modaliases for Intel SST
+
+-------------------------------------------------------------------
 Mon May 18 07:41:27 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200517 (git commit f8d32e4cc99b):

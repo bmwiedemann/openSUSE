@@ -138,7 +138,7 @@ BFA/BNA:	qlogic		bfa bna
 qat:		intel		qat_dh895xcc qat_c3xxx qat_c62x
 rsi:		usb-network	rsi rsi_usb rsi_sdio
 xhci-rcar:	platform
-snd_soc_sst_acpi: sound
+snd_soc_sst_acpi: sound		snd-soc-sst-acpi snd-intel-sst-acpi
 as102:		media
 it9135:		media		dvb_usb_af9035
 snd_intel_sst_core: sound
