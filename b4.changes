@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue May 26 13:05:22 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.0+git20200526.ga926bac9e6c2:
+  * Use unicode escape sequences
+  * Up the version to 0.6.0-dev
+  * Prepare for 0.5.0
+  * Backfill series before diffing them
+
+-------------------------------------------------------------------
+Tue May 26 09:56:21 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- initial package (0.4.0+git20200525.g59be08453137)
