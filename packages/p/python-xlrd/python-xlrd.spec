@@ -1,7 +1,7 @@
 #
 # spec file for package python-xlrd
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,21 +20,23 @@
 Name:           python-xlrd
 Version:        1.2.0
 Release:        0
-Url:            http://www.lexicon.net/sjmachin/xlrd.htm
 Summary:        Python module for extracting data from Excel spreadsheet files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            http://www.lexicon.net/sjmachin/xlrd.htm
 Source:         https://files.pythonhosted.org/packages/source/x/xlrd/xlrd-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-defusedxml
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module nose}
 # /SECTION
-Recommends:     python-defusedxml
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,6 +53,13 @@ Extract data from Excel spreadsheets
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
+%python_clone -a %{buildroot}%{_bindir}/runxlrd
+
+%post
+%python_install_alternative runxlrd
+
+%postun
+%python_uninstall_alternative runxlrd
 
 %check
 %python_expand nosetests-%{$python_bin_suffix}
@@ -58,7 +67,7 @@ mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
 %files %{python_files}
 %doc README.md
 %license docs/licenses.rst
-%python3_only %{_bindir}/runxlrd
+%python_alternative %{_bindir}/runxlrd
 %{python_sitelib}/*
 
 %changelog
