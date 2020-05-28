@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 26 15:24:48 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.3.7 fixed potential SIGSEG in AgsSpectrometer as
+  modifying buffer-size and improved MIDI playback.
+- fixed missing includes.
+- minor bug-fixes.
+
+-------------------------------------------------------------------
 Tue May 19 19:37:28 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.3.3 fixed pointer corruption in ags-fx-peak.
