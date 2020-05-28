@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 27 10:41:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20200503:
+  * Build: Fix Python 3 incompatibility
+  * Build,Doc: Update files for 2020.04 release
+  * doc: Update --data-path documentation entry
+  * Build: Improve configure error message when no flavors are selected
+  * Android: Add fastlane metadata for F-Droid release
+  * Android: Add unofficial adaptive icon for the android 8+ release
+  * Android: Add unofficial icon for the android release
+  * Android: Remove old drawables with non standard names
+  * Android: Add different resolution of drawable and use sdk name for it
+  * Fix UTF-8 in copyright headers
+  * Allow version string suffix
+  * Port Wayland to xdg-shell window management
+  * Allow flavours to generate their own source files
+  * Add support for Wayland display-scale events
+  * glad: Update to latest upstream version
+  * glad: Add README
+- Use obscpio
+- Change versioning scheme to one consistent with upstream
+- Simplify build conditionals
+- Use python3 for building
+
+-------------------------------------------------------------------
 Thu Dec 19 15:21:03 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.0+git.20190904:
