@@ -1,7 +1,7 @@
 #
 # spec file for package python-coveralls-check
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,17 @@ Release:        0
 Summary:        Coverage checking using https://coveralls.io/
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/cjw296/coverage-check
+URL:            https://github.com/cjw296/coverage-check
 Source:         https://files.pythonhosted.org/packages/source/c/coveralls-check/coveralls-check-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-backoff
+Requires:       python-requests
+Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module backoff}
 BuildRequires:  %{python_module mock}
@@ -35,12 +42,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module testfixtures}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-backoff
-Requires:       python-requests
-Requires:       python-setuptools
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -54,15 +55,22 @@ A helper to check https://coveralls.io for a given commit hash.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/coveralls-check
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} tests.py
+%pytest tests.py
+
+%post
+%python_install_alternative coveralls-check
+
+%postun
+%python_uninstall_alternative coveralls-check
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%python3_only %{_bindir}/coveralls-check
+%python_alternative %{_bindir}/coveralls-check
 %{python_sitelib}/*
 
 %changelog
