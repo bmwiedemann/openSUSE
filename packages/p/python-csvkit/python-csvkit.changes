@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 09:36:51 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 23 11:11:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop py2 deps as it works only on py3 atm

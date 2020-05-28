@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 %define         skip_python2 1
 Name:           python-csvkit
 Version:        1.0.5
@@ -43,8 +44,9 @@ BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -62,16 +64,42 @@ find csvkit -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 
 %install
 %python_install
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%python_exec -m unittest discover -s tests/ -v 
+%python_exec -m unittest discover -s tests/ -v
 
-%files %python_files
+%post
+for b in %{binaries}; do
+  %python_install_alternative $b
+done
+
+%postun
+for b in %{binaries}; do
+  %python_uninstall_alternative $b
+done
+
+%files %{python_files}
 %license COPYING
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%python3_only %{_bindir}/*
+%python_alternative %{_bindir}/csvclean
+%python_alternative %{_bindir}/csvcut
+%python_alternative %{_bindir}/csvformat
+%python_alternative %{_bindir}/csvgrep
+%python_alternative %{_bindir}/csvjoin
+%python_alternative %{_bindir}/csvjson
+%python_alternative %{_bindir}/csvlook
+%python_alternative %{_bindir}/csvpy
+%python_alternative %{_bindir}/csvsort
+%python_alternative %{_bindir}/csvsql
+%python_alternative %{_bindir}/csvstack
+%python_alternative %{_bindir}/csvstat
+%python_alternative %{_bindir}/in2csv
+%python_alternative %{_bindir}/sql2csv
 %{python_sitelib}/csvkit-%{version}-py*.egg-info
 %{python_sitelib}/csvkit/
 

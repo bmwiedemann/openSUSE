@@ -90,4 +90,12 @@
     <comment>- Drop py2 deps as it works only on py3 atm</comment>
     <requestid>796508</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7042b3ac7a76fef39e75dcae244810d5</srcmd5>
+    <version>1.0.5</version>
+    <time>1590650402</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809605</requestid>
+  </revision>
 </revisionlist>
