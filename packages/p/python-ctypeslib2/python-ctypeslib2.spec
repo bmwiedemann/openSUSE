@@ -1,7 +1,7 @@
 #
 # spec file for package python-ctypeslib2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,35 +13,40 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
+
+# No python2-clang
+%define skip_python2 1
+%define oldpython python
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch %{ix86} x86_64
 %bcond_without test
 %else
 %bcond_with test
 %endif
-# No python2-clang
-%define skip_python2 1
-%define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ctypeslib2
 Version:        2.2.2
 Release:        0
-License:        MIT
 Summary:        Python FFI toolkit using clang
-Url:            https://github.com/trolldbois/ctypeslib
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/trolldbois/ctypeslib
 Source:         https://github.com/trolldbois/ctypeslib/archive/%{version}.tar.gz#/ctypeslib2-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module clang}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-clang
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %ifpython2
 # https://github.com/trolldbois/ctypeslib/issues/26
-Conflicts:      %oldpython-ctypeslib
+Conflicts:      %{oldpython}-ctypeslib
 %endif
-BuildRequires:  fdupes
-Requires:       python-clang
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,19 +68,33 @@ sed -i 's/test_includes/_test_includes/' test/test_fast_clang.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/clang2py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
 %check
-export PATH=$PATH:%{buildroot}%{_bindir}
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%{python_expand \
+  bin_dir=bin-%{$python_version}
+  mkdir $bin_dir
+  ln -s %{buildroot}%{_bindir}/clang2py-%{$python_version} $bin_dir/clang2py
+  export PATH=$PATH:`pwd`/$bin_dir
+  export PYTHONPATH=:test:./build/lib:%{buildroot}%{$python_sitearch}
+  export PYTHONDONTWRITEBYTECODE=1
+  $python -m unittest discover -s test/ -v
+}
 %endif
+
+%post
+%python_install_alternative clang2py
+
+%postun
+%python_uninstall_alternative clang2py
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python3_only %{_bindir}/clang2py
+%python_alternative %{_bindir}/clang2py
 %{python_sitelib}/*
 
 %changelog
