@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  2 20:16:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.0.6:
+  * nbformat.read() function has a better duck-type interface and will
+    raise more meaningful error messages if it can't parse a notebook
+    document.
+
+- changes from version 5.0.5:
+  * Allow notebook format 4.0 and 4.1 to have the arbitrary JSON
+    mimebundles from format 4.2 for pragmatic purposes.
+  * Support reading/writing path-like objects has been added to read
+    operations.
+
+-------------------------------------------------------------------
 Mon Feb 10 16:11:19 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 5.0.4

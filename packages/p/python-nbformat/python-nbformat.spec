@@ -17,10 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-nbformat
-Version:        5.0.4
-Release:        0
 %define doc_ver 5.0.4
+Name:           python-nbformat
+Version:        5.0.6
+Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
@@ -30,14 +30,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# SECTION test requirements
-BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jsonschema > 2.5.0}
-BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module traitlets >= 4.1}
-# /SECTION
 Requires:       jupyter-nbformat = %{version}
 Requires:       python-ipython_genutils
 Requires:       python-jsonschema > 2.5.0
@@ -46,6 +38,14 @@ Requires:       python-traitlets >= 4.1
 Provides:       python-jupyter_nbformat = %{version}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module jsonschema > 2.5.0}
+BuildRequires:  %{python_module jupyter_core}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module traitlets >= 4.1}
+# /SECTION
 %python_subpackages
 
 %description
