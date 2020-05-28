@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 26 07:09:27 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.6.26
+  * Fixes some issues when no known Wifis are available on macOS.
+  * Starts with the correct window size for high-res displays on Linux.
+  * Test- and linting fixes.
+- Version 0.6.25 wasn't released by upstream.
+
+-------------------------------------------------------------------
 Mon May 18 08:02:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.6.24
