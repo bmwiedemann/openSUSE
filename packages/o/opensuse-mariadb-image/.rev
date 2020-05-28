@@ -59,4 +59,12 @@
 - Remove database if init failed (forwarded request 780381 from kukuk)</comment>
     <requestid>780382</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>45a2f7b41cb8d924490d3eff4791021d</srcmd5>
+    <version>1.0.0</version>
+    <time>1590650122</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809215</requestid>
+  </revision>
 </revisionlist>

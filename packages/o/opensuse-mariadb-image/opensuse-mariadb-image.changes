@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 19:29:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Read secrets before dropping root privileges [bsc#1171893]
+
+-------------------------------------------------------------------
 Fri Feb 28 21:04:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix parsing of default value output of mysqld
