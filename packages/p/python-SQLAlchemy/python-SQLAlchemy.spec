@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.3.16
+Version:        1.3.17
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
