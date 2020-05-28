@@ -17,11 +17,9 @@
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-%define fname cluster
-%define fdir  %{_datadir}/salt-formulas
 
 Name:           habootstrap-formula
-Version:        0.3.0
+Version:        0.3.6
 Group:          System/Packages
 Release:        0
 Summary:        HA cluster (crmsh) deployment salt formula
@@ -33,6 +31,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       salt-shaptools
 Requires:       salt-formulas-configuration
+
+%define fname cluster
+%define fdir  %{_datadir}/salt-formulas
+%define ftemplates templates
 
 %description
 HA cluster salt deployment formula. This formula is capable to perform
@@ -49,6 +51,7 @@ or via SUSE Manager formulas with forms, available on SUSE Manager 4.0.
 mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
+cp -R %{ftemplates} %{buildroot}%{fdir}/states/%{fname}
 cp -R form.yml %{buildroot}%{fdir}/metadata/%{fname}
 if [ -f metadata.yml ]
 then
@@ -70,6 +73,7 @@ fi
 %dir %attr(0755, root, salt) %{fdir}/metadata
 
 %attr(0755, root, salt) %{fdir}/states/%{fname}
+%attr(0755, root, salt) %{fdir}/states/%{fname}/%{ftemplates}
 %attr(0755, root, salt) %{fdir}/metadata/%{fname}
 
 %changelog

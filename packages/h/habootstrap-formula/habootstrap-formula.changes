@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May 21 10:12:17 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.6
+  * Add the option to configure the cluster properties and defaults
+  * Add the option to configure the sbd resource parameters
+  (bsc#1170702)
+
+-------------------------------------------------------------------
+Fri May 15 07:25:49 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Version bump 0.3.5
+  * Change monitoring settings
+
+-------------------------------------------------------------------
+Fri Apr 17 08:10:24 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.4
+  * Autodetect GCP instance name and add it to the grains file
+  * Install the correct packages for the GCP resources
+  (bsc#1161898, bsc#1160933)
+
+-------------------------------------------------------------------
+Fri Mar 27 11:13:04 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.3
+  * Autodetect GCP instance id and add it to the grains file
+
+-------------------------------------------------------------------
+  Thu Mar  5 10:29:22 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.2
+  * Add new option to configure corosync configuration file
+
+-------------------------------------------------------------------
+Tue Mar  3 09:51:10 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version bump 0.3.1
+  * Add the required packages to use gcp specific agents
+  (bsc#1161898, bsc#1160933)
+
+-------------------------------------------------------------------
 Mon Feb  3 08:58:55 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.3.0
