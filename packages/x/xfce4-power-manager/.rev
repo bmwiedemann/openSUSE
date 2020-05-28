@@ -751,4 +751,21 @@
     <comment>Xfce 4.14 upgrade</comment>
     <requestid>724084</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>b3f3aae4ed2c1798457081232278ce6d</srcmd5>
+    <version>1.6.6</version>
+    <time>1590650174</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.6.6
+  * Dismiss critical notification when connecting to AC
+  * Fix inhibiting xfce4-screensaver (bxo#16364)
+  * settings: Move % sign out of spinbutton (bxo#15994)
+  * panel-plugin: Toggle presentation mode on middle click
+  * panel-plugin: Properly show 'About' menu item
+  * panel-plugin: Add missing about callback
+  * panel-plugin: Properly hook up about signal
+  * panel-plugin: Replace deprecated call
+  * Switch to symbolic window-close icons</comment>
+    <requestid>809450</requestid>
+  </revision>
 </revisionlist>

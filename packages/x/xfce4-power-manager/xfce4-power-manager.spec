@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-power-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/applications/xfce4-power-manager
+URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
 Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
 BuildRequires:  appstream-glib
