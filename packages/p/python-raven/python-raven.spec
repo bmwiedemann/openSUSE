@@ -54,6 +54,8 @@ BuildRequires:  %{python_module tornado >= 4.1}
 BuildRequires:  %{python_module vine}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-Flask >= 0.8
 Recommends:     python-blinker >= 1.1
 BuildArch:      noarch
@@ -78,6 +80,7 @@ rm -f setup.cfg tox.ini pytest.ini
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/raven
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/raven/data/cacert.pem
 
@@ -85,10 +88,16 @@ rm -f setup.cfg tox.ini pytest.ini
 export DJANGO_SETTINGS_MODULE=tests.contrib.django.settings
 %pytest -k 'not (TornadoAsyncClientTestCase or TornadoTransportTests)'
 
+%post
+%python_install_alternative raven
+
+%postun
+%python_uninstall_alternative raven
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/raven
+%python_alternative %{_bindir}/raven
 %{python_sitelib}/*
 
 %changelog

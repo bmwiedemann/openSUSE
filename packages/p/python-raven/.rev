@@ -103,4 +103,12 @@ Add remove-unittest2.patch fixing the code.</comment>
     <comment>Staging:I py2</comment>
     <requestid>784793</requestid>
   </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>62b1e526886709444891941761524f8c</srcmd5>
+    <version>6.10.0</version>
+    <time>1590649682</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807269</requestid>
+  </revision>
 </revisionlist>
