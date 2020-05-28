@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 20:47:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.0.6
+  * Fix compatibility with flake8 >= 3.8, from @marc
+  gh#tholo/pytest-flake8#68 
+
+-------------------------------------------------------------------
 Mon Apr 27 10:21:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.5:

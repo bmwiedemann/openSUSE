@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-flake8
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Plugin for pytest to check FLAKE8 requirements
 License:        BSD-2-Clause
