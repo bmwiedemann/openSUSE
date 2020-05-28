@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 12 10:04:04 UTC 2020 - cloud-devel@suse.de
+
+- update to version 1.32.0
+  - Update the constraints url
+  - Update master for stable/train
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Switch to Ussuri jobs
+
+-------------------------------------------------------------------
 Sat Mar 14 12:03:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds
