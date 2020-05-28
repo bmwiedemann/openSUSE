@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious
-Version:        8.42
+Version:        8.50
 Release:        0
 %define cpan_name Mojolicious
 Summary:        Real-time web framework
@@ -31,13 +31,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::IP) >= 0.37
-BuildRequires:  perl(JSON::PP) >= 2.27103
-BuildRequires:  perl(List::Util) >= 1.41
-BuildRequires:  perl(Time::Local) >= 1.2
+BuildRequires:  perl(Sub::Util) >= 1.41
 Requires:       perl(IO::Socket::IP) >= 0.37
-Requires:       perl(JSON::PP) >= 2.27103
-Requires:       perl(List::Util) >= 1.41
-Requires:       perl(Time::Local) >= 1.2
+Requires:       perl(Sub::Util) >= 1.41
 %{perl_requires}
 
 %description
