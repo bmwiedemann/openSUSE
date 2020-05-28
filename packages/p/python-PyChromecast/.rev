@@ -94,4 +94,17 @@
     <comment></comment>
     <requestid>800250</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3f89b7d634ba3ef500addc7a83134a7</srcmd5>
+    <version>5.2.0</version>
+    <time>1590650057</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.3.0:
+  * Handle zeroconf update_service (#364)
+  * Add ability to pass in a zeroconf instance to discovery (#362)
+  * Add discovery example (#361)
+  * Quick play &amp; Support for Yle Areena, Supla (#359)
+  * Log as info, not warning if connection re-established. (#358)</comment>
+    <requestid>809126</requestid>
+  </revision>
 </revisionlist>
