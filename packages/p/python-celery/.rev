@@ -264,4 +264,14 @@
     <comment></comment>
     <requestid>767613</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4029c3023bd08b80d6976203c08a17b5</srcmd5>
+    <version>4.4.2</version>
+    <time>1590649548</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 4.4.2:
+  * Various fixes for the 4.4 series
+- Remove no longer needed unpin-pytest.patch</comment>
+    <requestid>805558</requestid>
+  </revision>
 </revisionlist>

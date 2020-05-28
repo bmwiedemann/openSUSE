@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 09:55:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.4.2:
+  * Various fixes for the 4.4 series
+- Remove no longer needed unpin-pytest.patch
+
+-------------------------------------------------------------------
 Fri Jan 24 14:16:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.4.0
