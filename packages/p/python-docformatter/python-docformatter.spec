@@ -28,13 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/d/docformatter/do
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
+Requires:       python-untokenize
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module untokenize}
 # /SECTION
-Requires:       python-setuptools
-Requires:       python-untokenize
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -57,7 +58,6 @@ docformatter also handles some of the PEP 8 conventions.
   whitespace. Such trailing whitespace is visually indistinguishable
   and some editors (or more recently, reindent.py) will trim them.
 
-
 %prep
 %setup -q -n docformatter-%{version}
 sed -i -e '/^#!\//, 1d' docformatter.py
@@ -67,15 +67,22 @@ sed -i -e '/^#!\//, 1d' docformatter.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/docformatter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative docformatter
+
+%postun
+%python_uninstall_alternative docformatter
+
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%python3_only %{_bindir}/docformatter
+%python_alternative %{_bindir}/docformatter
 %{python_sitelib}/*
 
 %changelog
