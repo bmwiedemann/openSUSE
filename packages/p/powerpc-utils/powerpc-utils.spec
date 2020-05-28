@@ -35,7 +35,10 @@ Patch4:         libvirt-service-dep.patch
 Patch5:         Revert-lparstat-Show-available-physical-processors-i.patch
 Patch6:         bug-1158312-parse-ibm-drc-info-property.patch
 Patch7:         0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch
-Patch8:         0002-Reduce-number-of-searches-of-sys-hierarchy.patch
+Patch9:         bsc1164726-search-only-part-of-sys.patch
+Patch10:        bsc1171892-get-rid-of-trainling-NUL.patch
+Patch11:        Fix-ofpathname-Could-not-retrieve-logical-device-nam.patch
+Patch12:        ofpathname-Fix-udevadm-location.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
@@ -70,7 +73,10 @@ utilities for maintaining and enabling certain features of Linux on Power.
 %endif
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
 autoreconf -fvi

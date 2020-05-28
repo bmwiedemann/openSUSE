@@ -1,0 +1,40 @@
+From e77d74c81ec01abf14c2da96d22314e3088b50d1 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 25 May 2020 15:18:12 +0200
+Subject: [PATCH] Fix ofpathname: Could not retrieve logical device name for
+ Open Firmware path
+
+Upstream: submitted https://github.com/ibm-power-utilities/powerpc-utils/pull/40
+References: bsc#1164068
+
+With commit 73839d6bab4d ("powerpc-utils: Suppress errors reading kernel files")
+the return status of tr rather than ofpathname is tested.
+
+Fixes: 73839d6bab4d ("powerpc-utils: Suppress errors reading kernel files")
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ scripts/bootlist | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/bootlist b/scripts/bootlist
+index 1d1c210e69fc..adae778c712f 100755
+--- a/scripts/bootlist
++++ b/scripts/bootlist
+@@ -169,11 +169,11 @@ get_logical_device_name()
+     local devname=$1
+     local logical_name
+ 
+-    logical_name=`$OFPATHNAME -l $devname 2>/dev/null | tr -d '\000'`
++    logical_name=`$OFPATHNAME -l $devname 2>/dev/null`
+     if [[ $? -ne 0 ]]; then
+ 	echo ""
+     else
+-	echo $logical_name
++	echo $logical_name | tr -d '\000'
+     fi
+ }
+ 
+-- 
+2.26.2
+

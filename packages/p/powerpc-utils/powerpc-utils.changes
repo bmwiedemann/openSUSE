@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 25 12:27:30 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Add patch metadata, refresh to upstream version where available.
+  * Refreshed 0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch
+- The above patch was modified to fix bsc#1164068. Add a separate patch for
+  that (bsc#1164068).
+  * Added Fix-ofpathname-Could-not-retrieve-logical-device-nam.patch
+- Stop using /sbin/udevadm symlink (boo#1160890).
+  * Added ofpathname-Fix-udevadm-location.patch
+
+-------------------------------------------------------------------
+Wed May 20 08:42:57 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Remove a trailing NUL ('\0') byte from a vendor_id contents.
+  [bsc#1171892, bsc1171892-get-rid-of-trainling-NUL.patch]
+
+-------------------------------------------------------------------
+Wed May 20 07:59:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Reduce the number of searches of /sys by searching directly in
+  /sys/class/block. This patch obsoletes
+  0002-Reduce-number-of-searches-of-sys-hierarchy.patch
+  [bsc#1164726,
+   0002-Reduce-number-of-searches-of-sys-hierarchy.patch,
+   bsc1164726-search-only-part-of-sys.patch]
+
+-------------------------------------------------------------------
 Fri Feb 28 09:41:54 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Reduce the number of searches of /sys by each invocation

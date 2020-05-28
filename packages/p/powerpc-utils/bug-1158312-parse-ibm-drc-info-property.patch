@@ -3,6 +3,10 @@ From: Michael Bringmann <mwb@linux.vnet.ibm.com>
 Date: Wed, 2 Oct 2019 16:54:52 -0500
 Subject: [PATCH] powerpc-utils/devtree: Parse 'ibm,drc-info' property
 
+References: bsc#1158312 ltc#182676 FATE#326955
+Upstream: pending - expected 1.3.8
+Git-commit: b0586b5938e9d371e55671422b2f0a5d2cd10c54
+
 Parse new DRC Info: Define data structures to support parsing
 the new "ibm,drc-info" device tree property.  Integrate the new
 property information into the existing search mechanisms of the
@@ -15,7 +19,7 @@ Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
  1 file changed, 194 insertions(+), 29 deletions(-)
 
 diff --git a/src/drmgr/common_ofdt.c b/src/drmgr/common_ofdt.c
-index 8c9e224..c110bc0 100644
+index 8c9e224e6d98..c110bc023206 100644
 --- a/src/drmgr/common_ofdt.c
 +++ b/src/drmgr/common_ofdt.c
 @@ -41,6 +41,16 @@ struct drc_prop_grp {
@@ -272,3 +276,6 @@ index 8c9e224..c110bc0 100644
  
  	return list;
  }
+-- 
+2.26.2
+

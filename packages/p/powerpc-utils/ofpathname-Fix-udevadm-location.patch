@@ -1,0 +1,31 @@
+From bfdb5433fc9afc7c6ee4fdeaf849d2e059680c2d Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 25 May 2020 16:25:34 +0200
+Subject: [PATCH] ofpathname: Fix udevadm location
+
+Upstream: submitted
+References: boo#1160890
+
+The canonical location for udevadm is /usr/bin.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ scripts/ofpathname | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/ofpathname b/scripts/ofpathname
+index bd61ee04bc14..0fb00ade8167 100755
+--- a/scripts/ofpathname
++++ b/scripts/ofpathname
+@@ -349,7 +349,7 @@ is_pata_dev()
+     local sysfs_dir
+     local udev_path
+     local udevinfo="/usr/bin/udevinfo"
+-    local udevadm="/sbin/udevadm"
++    local udevadm="/usr/bin/udevadm"
+ 
+     if [[ -a $udevadm ]]; then
+         udev_path=`$udevadm info --query=path --name=$DEVNAME`
+-- 
+2.26.2
+
