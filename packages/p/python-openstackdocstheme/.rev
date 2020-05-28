@@ -240,4 +240,12 @@
     <comment>- switch to python 3.x only client</comment>
     <requestid>784195</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>32616aae7b6719e850f143ba95de19dc</srcmd5>
+    <version>1.31.2</version>
+    <time>1590649506</time>
+    <user>maxlin_factory</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803580</requestid>
+  </revision>
 </revisionlist>

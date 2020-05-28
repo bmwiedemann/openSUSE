@@ -17,15 +17,13 @@
 
 
 Name:           python-openstackdocstheme
-Version:        1.31.1
+Version:        1.31.2
 Release:        0
 Summary:        OpenStack Docs Theme
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-1.31.1.tar.gz
-# https://review.opendev.org/677868
-Patch0:         0001-Catch-any-exception-when-trying-to-call-git.patch
+Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-1.31.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-dulwich >= 0.15.0
@@ -48,7 +46,7 @@ Theme and extension support for Sphinx documentation that is published
 to docs.openstack.org. Intended for use by OpenStack projects.
 
 %prep
-%autosetup -p1 -n openstackdocstheme-1.31.1
+%autosetup -p1 -n openstackdocstheme-1.31.2
 
 # we dont need hacking
 sed -i '/^hacking.*/d' test-requirements.txt

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 12:34:22 UTC 2020 - cloud-devel@suse.de
+
+- removed 0001-Catch-any-exception-when-trying-to-call-git.patch
+- update to version 1.31.2
+  - Catch any exception when trying to call "git"
+  - Improve docs title style
+  - Move version dropdown to title line
+  - Fetch generated PDF files correctly
+
+-------------------------------------------------------------------
 Thu Mar 12 08:34:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only client
