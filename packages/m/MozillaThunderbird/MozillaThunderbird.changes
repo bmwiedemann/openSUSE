@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 24 20:46:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 68.8.1
+  * fixed: IMAP stability improvements (bmo#1586494)
+  * fixed: HTML tags in IRC topic changes were rendered
+    incorrectly (bmo#1607097)
+  * fixed: MailExtensions: Websockets could not be used
+    (bmo#1627649)
+
+-------------------------------------------------------------------
 Tue May  5 07:49:33 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 68.8.0

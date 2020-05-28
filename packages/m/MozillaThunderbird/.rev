@@ -3204,4 +3204,12 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
   In general, these flaws cannot be exploited through email in</comment>
     <requestid>800587</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>021193f2224f39a2e0813434440377a5</srcmd5>
+    <version>68.8.1</version>
+    <time>1590649781</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808609</requestid>
+  </revision>
 </revisionlist>
