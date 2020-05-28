@@ -38,6 +38,8 @@ Requires:       python-python-dotenv
 Requires:       python-redis
 Requires:       python-setuptools
 Requires:       python-toml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 0.12}
@@ -70,15 +72,22 @@ rm tests/test_vault.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dynaconf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests/
 
+%post
+%python_install_alternative dynaconf
+
+%postun
+%python_uninstall_alternative dynaconf
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/dynaconf
+%python_alternative %{_bindir}/dynaconf
 %{python_sitelib}/*
 
 %changelog

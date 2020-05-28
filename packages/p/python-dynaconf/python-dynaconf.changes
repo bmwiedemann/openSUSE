@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Wed Apr  8 08:06:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch from git upstream to work with latest box releases:

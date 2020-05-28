@@ -80,4 +80,12 @@
   * Fix #203 document the usage with pytest (with examples)</comment>
     <requestid>792348</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7e8d1ff839f9adbe4ccd16c6222bf8ea</srcmd5>
+    <version>2.2.3</version>
+    <time>1590650262</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809400</requestid>
+  </revision>
 </revisionlist>
