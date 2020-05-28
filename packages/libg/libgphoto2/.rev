@@ -1395,4 +1395,41 @@
     --camlibs=standard,outdated  will select &quot;current day&quot; and &quot;outdated&quot; drivers</comment>
     <requestid>778604</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>8793c782d3521037edfe8c549ce693b5</srcmd5>
+    <version>2.5.25</version>
+    <time>1590649774</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 2.5.25 release
+  - ptp2:
+    * Liveview support for Leica SL
+    * PTP 1.1 Streaming parameters added. 
+    * Olympus OMD capture fixes
+    * Nikon DSLR/Z:
+      * various improvements to liveview error reporting.
+      * much more properties added, some values added
+      * allow downloading of &quot;large thumbnails&quot; instead of &quot;regular thumbnails&quot;,
+	can be selected by &quot;thumbsize&quot; gphoto2 local setting.
+      * fixes for D3000, D3100 methods
+      * maximum capture wait extended to 1000 seconds (as the D870 has 900 seconds max now)
+    * Canon EOS
+      * initialization fixes (if it breaks your EOS M or PowerShot, please report)
+      * liveview enablement fixed
+      * maximum capture wait extended to 90seconds
+      * EOS R shutterspeed , aperture reporting fixed
+    * various bugfixes
+    * Cameras added to id list:
+      * Sony NEX 5
+      * Canon EOS 90D
+      * Fuji XT-4
+      * Sanyo VPC-FH1
+      * Leica SL Typ 601
+  - lumix:
+    * fixed initialisation, might help capture
+  - all:
+    * ongoing stability fixes from AFL fuzzing
+  - translation updates:
+    * sv</comment>
+    <requestid>808540</requestid>
+  </revision>
 </revisionlist>
