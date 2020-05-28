@@ -1,7 +1,7 @@
 #
 # spec file for package python-ed25519
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -43,15 +45,22 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/edsig
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative edsig
+
+%postun
+%python_uninstall_alternative edsig
+
 %files %{python_files}
 %doc NEWS README.md
 %license LICENSE
-%python3_only %{_bindir}/edsig
+%python_alternative %{_bindir}/edsig
 %{python_sitearch}/*
 
 %changelog
