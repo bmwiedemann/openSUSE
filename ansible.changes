@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 26 13:02:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-1733_avoid_mkdir_p.patch to fix CVE-2020-1733
+  (bsc#1164140)
+- Add metadata information to this file to mark which SUSE
+  bugzilla have been already fixed.
+
+-------------------------------------------------------------------
 Tue May 12 23:34:59 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.9
@@ -15,16 +23,30 @@ Fri Apr 17 06:49:56 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.7 with many bug fixes,
   especially for these security issues:
-  * CVE-2020-1733  - insecure temporary directory when running become_user from become directive
-  * CVE-2020-1735  - path injection on dest parameter in fetch module
-  * CVE-2020-1737  - Extract-Zip function in win_unzip module does not check extracted path
-  * CVE-2020-1739  - svn module leaks password when specified as a parameter
-  * CVE-2020-1740  - secrets readable after ansible-vault edit
-  * CVE-2020-1746  - information disclosure issue in ldap_attr and ldap_entry modules
-  * CVE-2020-1753  - kubectl connection plugin leaks sensitive information [1]
-  * CVE-2020-10684 - code injection when using ansible_facts as a subkey
-  * CVE-2020-10685 - modules which use files encrypted with vault are not properly cleaned up
-  * CVE-2020-10691 - archive traversal vulnerability in ansible-galaxy collection install [2]
+  - bsc#1164140 CVE-2020-1733 - insecure temporary directory when
+    running become_user from become directive
+  - bsc#1164139 CVE-2020-1734 shell enabled by default in a pipe
+    lookup plugin subprocess
+  - bsc#1164137 CVE-2020-1735 - path injection on dest parameter
+    in fetch module
+  - bsc#1164134 CVE-2020-1736 atomic_move primitive sets
+    permissive permissions
+  - bsc#1164138 CVE-2020-1737 - Extract-Zip function in win_unzip
+    module does not check extracted path
+  - bsc#1164136 CVE-2020-1738 module package can be selected by
+    the ansible facts
+  - bsc#1164133 CVE-2020-1739  - svn module leaks password when
+    specified as a parameter
+  - bsc#1164135 CVE-2020-1740 - secrets readable after
+    ansible-vault edit
+  - bsc#1165393 CVE-2020-1746 - information disclosure issue in
+    ldap_attr and ldap_entry modules
+  - bsc#1166389 CVE-2020-1753 - kubectl connection plugin leaks
+    sensitive information
+  - CVE-2020-10684 - code injection when using ansible_facts as a subkey
+  - bsc#1167440 CVE-2020-10685 - modules which use files
+    encrypted with vault are not properly cleaned up
+  - CVE-2020-10691 - archive traversal vulnerability in ansible-galaxy collection install [2]
 
 -------------------------------------------------------------------
 Mon Apr  6 20:45:04 UTC 2020 - lars@linux-schulserver.de - 2.9.6
@@ -36,7 +58,10 @@ Mon Apr  6 20:45:04 UTC 2020 - lars@linux-schulserver.de - 2.9.6
 -------------------------------------------------------------------
 Thu Mar  5 08:23:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
-- update to version 2.9.6 (maintenance release)
+- update to version 2.9.6 (maintenance release) including
+  these security issues:
+  - bsc#1171162 CVE-2020-10729 two random password lookups in
+    same task return same value
 
 -------------------------------------------------------------------
 Thu Feb 13 21:38:06 UTC 2020 - Michael Ströder <michael@stroeder.com>
@@ -47,7 +72,12 @@ Thu Feb 13 21:38:06 UTC 2020 - Michael Ströder <michael@stroeder.com>
 Tue Jan 28 12:38:16 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.4 (maintenance release)
-  fix in yum module
+  - fix in yum module
+  - security fixes:
+    - bsc#1157968 CVE-2019-14904 vulnerability in solaris_zone
+      module via crafted solaris zone
+    - bsc#1157969 CVE-2019-14905 malicious code could craft
+      filename in nxos_file_copy module
 
 -------------------------------------------------------------------
 Thu Jan 16 17:34:28 UTC 2020 - Michael Ströder <michael@stroeder.com>
@@ -131,6 +161,8 @@ Fri Nov  1 21:11:03 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
   Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
   and also available online at
   https://github.com/ansible/ansible/blob/stable-2.9/changelogs/CHANGELOG-v2.9.rst
+- Fixed among other this security bug:
+  - bsc#1112959 CVE-2018-16837 Information leak in "user" module patch added
 
 -------------------------------------------------------------------
 Sun Oct 27 14:15:53 UTC 2019 - lars@linux-schulserver.de
@@ -169,6 +201,8 @@ Wed Aug  7 16:30:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
 - Update to version 2.8.3:
   Full changelog is packaged, but also at
   https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+  - (bsc#1137528) CVE-2019-10156: ansible: templating causing an
+    unexpected key file to be set on remote node
 - (bsc#1142690) Adds CVE-2019-10206-data-disclosure.patch fixing
   CVE-2019-10206: ansible-playbook -k and ansible cli tools
   prompt passwords by expanding them from templates as they could
@@ -607,6 +641,7 @@ Sun Dec 16 00:20:24 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
   * dnf module properly load and initialize dnf package manager plugins
   * docker_swarm_service: use docker defaults for the user parameter if it is set to null 
   Bugfixes:
+  * bsc#1118896 CVE-2018-16876 Information disclosure in vvv+ mode with no_log on (https://github.com/ansible/ansible/pull/49569)
   * ACME modules: improve error messages in some cases (include error returned by server).
   * Added unit test for VMware module_utils.
   * Also check stdout for interpreter errors for more intelligent messages to user

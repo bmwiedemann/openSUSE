@@ -4,7 +4,7 @@ addFilter("non-executable-script.*/usr/lib/python.*/site-packages/ansible/module
 addFilter("non-executable-script.*/usr/lib/python.*/site-packages/ansible/(cli|galaxy|module_utils|plugins/action|runner|utils)/.*.py");
 # no really a lib - ignore rpmlint for this package explicitely
 addFilter("explicit-lib-dependency python3-passlib");
-# standard files, needed for python
-addFilter("files-duplicate /usr/lib/python.*/site-packages/ansible/.*");
-# same for the ansible-test sub-package
-addFilter("files-duplicate /usr/lib/python.*/site-packages/ansible_test/.*");
+# # standard files, needed for python
+# addFilter("files-duplicate /usr/lib/python.*/site-packages/ansible/.*");
+# # same for the ansible-test sub-package
+# addFilter("files-duplicate /usr/lib/python.*/site-packages/ansible_test/.*");
