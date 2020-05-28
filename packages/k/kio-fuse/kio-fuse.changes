@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 26 17:57:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 4.95.0:
+  * Use of KIO::FileJob to write and read without downloading the whole file
+  * Expiring local nodes so that changes on the remote side become visible
+    (the local cache is valid for at most 30s)
+  * New DBus API to map a FUSE path back to a remote URL, used for syncing the
+    terminal panel in dolphin to the main view (needs Dolphin from git master)
+  * Minimum version of Qt got raised to 5.12
+  * Minimum version of KIO got raised to 5.66 (needed for KIO::FileJob)
+  * Builds with CMake < 3.13 again
+- Drop patches, now upstream:
+  * 0001-Use-target_link_libraries-instead-of-target_link_opt.patch
+
+-------------------------------------------------------------------
 Tue Dec 31 18:46:53 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Skip %check if fusermount3 is not executable. post-build-checks

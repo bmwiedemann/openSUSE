@@ -1,7 +1,7 @@
 #
 # spec file for package kio-fuse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without lang
 Name:           kio-fuse
-Version:        4.90.0
+Version:        4.95.0
 Release:        0
 Summary:        Access KIO over the regular filesystem
 License:        GPL-3.0-or-later
@@ -28,13 +29,11 @@ Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{v
 Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kio-fuse.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/kde/kio-fuse/merge_requests/16
-Patch1:         0001-Use-target_link_libraries-instead-of-target_link_opt.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(KF5KIO) >= 5.66.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(fuse3)
 Requires:       fuse3
@@ -78,7 +77,7 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libexec/kio-fuse
 %{_tmpfilesdir}/kio-fuse-tmpfiles.conf
 %{_kf5_sharedir}/dbus-1/services/org.kde.KIOFuse.service
