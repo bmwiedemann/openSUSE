@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 27 07:31:42 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.11:
+  * Support Markdown in the default ticket configuration
+  * Timestamp strings in object names can now omit punctation
+  * Enhance backlink processing so that it works with Markdown-
+    formatted tickets and so that it works for wiki pages
+    fossil rebuild is needed to take full advantage of this fix
+  * Many improvements to the forum and especially email notification
+    of forum posts
+  * Minimum length of a self-registered user ID increased from 3 to 6
+    characters
+  * Rework the fossil grep command to be more useful
+  * Expose the redirect-to-https setting to the settings command
+  * Most commands now support the Unix-conventional "--" flag to
+    treat all following arguments as filenames instead of flags
+  * Add the mimetypes config setting
+  * security harening against possibly tampered database schemas
+  * Now sends the Content-Security-Policy header
+  * Stop using the IP address as part of the login cookie
+  * many web UI and CLI improvements, documentation updates
+
+-------------------------------------------------------------------
 Sat Oct  5 11:16:57 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.10:
