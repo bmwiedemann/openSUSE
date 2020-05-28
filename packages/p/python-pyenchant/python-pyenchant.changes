@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 21 15:30:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 3.1.0:
+  - Add enchant.get_user_config_dir()
+  - Fix: enchant.get_enchant_version() now returns a str,
+    not some bytes
+- Skip test test_docstrings (gh#pyenchant/pyenchant#203)
+
+-------------------------------------------------------------------
 Fri Mar 20 08:06:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 3.0.1

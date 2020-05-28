@@ -129,4 +129,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>788926</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>49f50b13feecf34b0ec5f6ad85d76e4b</srcmd5>
+    <version>3.1.0</version>
+    <time>1590649729</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 3.1.0:
+  - Add enchant.get_user_config_dir()
+  - Fix: enchant.get_enchant_version() now returns a str,
+    not some bytes
+- Skip test test_docstrings (gh#pyenchant/pyenchant#203)
+</comment>
+    <requestid>808026</requestid>
+  </revision>
 </revisionlist>
