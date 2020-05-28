@@ -36,4 +36,12 @@
   on i586</comment>
     <requestid>697104</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>55a868a0136114da924e78e4da843b36</srcmd5>
+    <version>1.2.0</version>
+    <time>1590649756</time>
+    <user>maxlin_factory</user>
+    <comment>- Require also xdpyinfo as it is used for verifications</comment>
+    <requestid>808507</requestid>
+  </revision>
 </revisionlist>
