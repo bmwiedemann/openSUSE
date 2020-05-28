@@ -1,7 +1,7 @@
 #
 # spec file for package python-duckduckgo2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,14 @@ Release:        0
 Summary:        Library for querying the DuckDuckGo API
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/crazedpsyc/python-duckduckgo/
+URL:            https://github.com/crazedpsyc/python-duckduckgo/
 Source:         https://files.pythonhosted.org/packages/source/d/duckduckgo2/duckduckgo2-%{version}.tar.gz
 Patch0:         add-python3-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,13 +46,19 @@ A Python library for querying the DuckDuckGo API.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ddg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%post
+%python_install_alternative ddg
+
+%postun
+%python_uninstall_alternative ddg
+
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/ddg
+%python_alternative %{_bindir}/ddg
 %{python_sitelib}/*
 
 %changelog
