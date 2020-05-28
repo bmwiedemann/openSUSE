@@ -1,7 +1,7 @@
 #
 # spec file for package python-acefile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -46,12 +48,19 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/acefile-unace
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative acefile-unace
+
+%postun
+%python_uninstall_alternative acefile-unace
 
 %files %{python_files}
 %doc NEWS.md README.md
 %license LICENSE.md
-%python3_only %{_bindir}/acefile-unace
+%python_alternative %{_bindir}/acefile-unace
 %{python_sitearch}/*
 
 %check
