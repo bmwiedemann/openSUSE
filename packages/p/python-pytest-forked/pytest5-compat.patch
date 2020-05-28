@@ -1,0 +1,38 @@
+From 1eb5791e005c0d17622c53d5c3158b5b899e147e Mon Sep 17 00:00:00 2001
+From: Stanislav Levin <slev@altlinux.org>
+Date: Thu, 7 May 2020 14:40:19 +0300
+Subject: [PATCH] Add compatibility with Pytest 5.4.0+
+
+'getfslineno' has been removed from 'compat' in Pytest [0].
+However, that function was just the wrapper of
+'_pytest._code.source.getfslineno'. The latter exists in Pytest
+since, at least, 3.0.0.
+
+[0]: https://github.com/pytest-dev/pytest/commit/9c7f1d9b3.
+
+Fixes: https://github.com/pytest-dev/pytest-forked/issues/30
+Signed-off-by: Stanislav Levin <slev@altlinux.org>
+---
+ src/pytest_forked/__init__.py | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/src/pytest_forked/__init__.py b/src/pytest_forked/__init__.py
+index fa0600d..886c4c8 100644
+--- a/src/pytest_forked/__init__.py
++++ b/src/pytest_forked/__init__.py
+@@ -71,13 +71,8 @@ def runforked():
+ 
+ 
+ def report_process_crash(item, result):
+-    try:
+-        from _pytest.compat import getfslineno
+-    except ImportError:
+-        # pytest<4.2
+-        path, lineno = item._getfslineno()
+-    else:
+-        path, lineno = getfslineno(item)
++    from _pytest._code.source import getfslineno
++    path, lineno = getfslineno(item)
+     info = ("%s:%s: running the test CRASHED with signal %d" %
+             (path, lineno, result.signal))
+     from _pytest import runner

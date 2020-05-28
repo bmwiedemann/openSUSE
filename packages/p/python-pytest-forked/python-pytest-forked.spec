@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-forked
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ Summary:        Run each test in a forked subprocess
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-forked
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-forked/pytest-forked-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest5-compat.patch gh#pytest-dev/pytest-forked#30 mcepl@suse.com
+# makes the test suite compatible with pytest5.4.0+
+Patch0:         pytest5-compat.patch
 BuildRequires:  %{python_module pytest >= 3.1.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -38,6 +41,7 @@ Extraction of pytest-xdist --forked module used for running tests in forked subp
 
 %prep
 %setup -q -n pytest-forked-%{version}
+%autopatch -p1
 
 %build
 %python_build
