@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 10:56:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

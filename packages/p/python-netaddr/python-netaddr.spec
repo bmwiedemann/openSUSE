@@ -1,7 +1,7 @@
 #
 # spec file for package python-netaddr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,13 @@ Release:        0
 Summary:        Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/drkjam/netaddr
+URL:            https://github.com/drkjam/netaddr
 Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,7 +60,7 @@ sed -i "1d" netaddr/{ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable sc
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/netaddr
+%python_clone -a %{buildroot}%{_bindir}/netaddr
 %fdupes %{buildroot}
 
 %if %{with test}
@@ -66,10 +68,17 @@ sed -i "1d" netaddr/{ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable sc
 %python_exec setup.py test
 %endif
 
+%post
+%python_install_alternative netaddr
+
+%postun
+%python_uninstall_alternative netaddr
+
 %files %{python_files}
 %{python_sitelib}/*
 %{_bindir}/netaddr-%{python_bin_suffix}
-%python3_only %{_bindir}/netaddr
-%doc AUTHORS CHANGELOG COPYRIGHT README.md LICENSE
+%python_alternative %{_bindir}/netaddr
+%license LICENSE
+%doc AUTHORS CHANGELOG COPYRIGHT README.md
 
 %changelog
