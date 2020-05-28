@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue May 26 19:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.1
+  * Update stat command parser to change osx_flags field to string
+  * Add dmidecode command parser
+  * Update stat command parser to add OSX support
+  * Update netstat command parser to add -r (route) functionality
+    for linux and OSX
+  * Update netstat command parser to add -i (interface)
+    functionality for linux and OSX
+  * Remove shebang from jc/cli.py for Fedora packaging
+  * Change file permissions for Fedora packaging
+  * Fix ls parser issue where the first file was skipped for
+    ls -R on some platforms
+  * Update last parser to handle 'gone - no logout' condition
+  * Update netstat parser to handle bluetooth section (ignore
+    gracefully for now)
+  * Add license info to vendorized ifconfig-parser class
+  * Add license file to dist for Fedora RPM packaging
+    requirements
+  * Remove tests from package to keep from polluting the global
+    site-packages
+  * Requirements modifications for Fedora RPM packaging
+    requirements
+  * Remove homebrew shim references from du osx tests
+  * Minor change of using sys.exit(0) instead of exit()
+  * Add color customization via JC_COLORS env variable
+  * Fix break on pipe error
+  * Change colors to ansi and match jello colors
+  * Code cleanup
+  * Add color output by default when not piping data to another
+    program
+  * Add -m option for monochrome output
+  * Add axfr support for dig command parser
+  * Updated arp parser to fix OSX detection for some edge cases
+  * Updated file command parser to make filename splitting more
+    robust
+  * Added ntpq command parser
+  * Added timedatectl status command parser
+  * Added airport -I and airport -s command parser
+  * Added file command parser
+  * Optimized history command parser by
+    https://github.com/philippeitis
+  * Magic syntax fix for certain edge cases
+  * CLI optimizations by https://github.com/philippeitis
+  * Refactored magic syntax function and added tests
+    (https://github.com/philippeitis)
+  * Updated ls parser to fix parsing error in OSX with -lR when
+    there are empty folders
+  * Added blkid command parser
+  * Added last and lastb command parser
+  * Added who command parser
+  * Added CSV file parser
+  * Added /etc/passwd file parser
+  * Added /etc/shadow file parser
+  * Added /etc/group file parser
+  * Added /etc/gshadow file parser
+  * Updated ls parser to support filenames with newline characters
+  * Updated ls parser to support multiple directories, globbing,
+    and -R (recursive)
+
+-------------------------------------------------------------------
 Sun Feb 16 20:24:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.7.3
