@@ -24,6 +24,7 @@ Summary:        Relaxed test discovery/organization for pytest
 License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
+Patch0:         https://github.com/bitprophet/pytest-relaxed/pull/10.patch#/pytest-relaxed-pr10.patch
 BuildRequires:  %{python_module decorator >= 4}
 BuildRequires:  %{python_module pytest >= 3}
 BuildRequires:  %{python_module setuptools}
@@ -44,6 +45,7 @@ Relaxed test discovery/organization plugin for pytest from python-paramiko autho
 sed -i setup.py \
     -e 's:pytest>=3,<3.3:pytest>=3:g' \
     -e 's:decorator>=4,<5:decorator>=4:g'
+%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -55,8 +57,7 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_tests_are_colorized_by_test_result upstream changed color output slightly in pytest 5.3
-%pytest -k 'not test_tests_are_colorized_by_test_result'
+%pytest
 
 %files %{python_files}
 %license LICENSE

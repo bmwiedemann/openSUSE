@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 22:10:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix test failure by pytest-relaxed-pr10.patch
+  gh#bitprophet/pytest-relaxed#10 
+
+-------------------------------------------------------------------
 Wed Jan 15 12:51:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test test_tests_are_colorized_by_test_result as pytest 5.3
