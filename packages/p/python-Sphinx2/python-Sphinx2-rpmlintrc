@@ -1,0 +1,4 @@
+# false positive due to the name of the package ending with "theme"
+addFilter("W: suse-branding-unversioned-requires python3-sphinx_rtd_theme")
+# false positive as the -latex package only ships latex files and no actual python code
+addFilter("python3-Sphinx2-latex.noarch: W: no-dependency-on python-base 3.7")
