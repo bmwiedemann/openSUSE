@@ -55,4 +55,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>741491</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e6bc592749744f983d1daac93cfa7eb</srcmd5>
+    <version>1.4.0</version>
+    <time>1590649495</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.4.0:
+  * Update unsupported python versions
+  * use fspath to ensure path is str or bytes</comment>
+    <requestid>802883</requestid>
+  </revision>
 </revisionlist>

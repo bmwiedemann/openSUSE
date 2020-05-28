@@ -1,7 +1,7 @@
 #
 # spec file for package python-atomicwrites
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-atomicwrites
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Atomic file writes for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/untitaker/python-atomicwrites
+URL:            https://github.com/untitaker/python-atomicwrites
 Source:         https://files.pythonhosted.org/packages/source/a/atomicwrites/atomicwrites-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
