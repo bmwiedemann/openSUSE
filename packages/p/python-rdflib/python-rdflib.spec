@@ -1,7 +1,7 @@
 #
 # spec file for package python-rdflib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
 Name:           python-rdflib
-Version:        4.2.2
+Version:        5.0.0
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
@@ -35,12 +35,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-2to3
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinxcontrib-apidoc
 Requires:       python-SPARQLWrapper
 Requires:       python-flake8
 Requires:       python-html5lib
 Requires:       python-isodate
 Requires:       python-pyparsing
 Requires:       python-xml
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  %{python_module SPARQLWrapper}
@@ -74,13 +77,18 @@ find rdflib -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 %python_build
 
 pushd docs
-make %{?_smp_mflags} html
+%make_build html
 # Remove hidden file
 rm -r _build/html/.buildinfo
 popd
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/rdfs2dot
+%python_clone -a %{buildroot}%{_bindir}/rdfpipe
+%python_clone -a %{buildroot}%{_bindir}/rdfgraphisomorphism
+%python_clone -a %{buildroot}%{_bindir}/rdf2dot
+%python_clone -a %{buildroot}%{_bindir}/csv2rdf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %fdupes docs/_build/html
@@ -90,14 +98,28 @@ popd
 %python_exec setup.py -q test
 %endif
 
+%post
+%python_install_alternative rdfs2dot
+%python_install_alternative rdfpipe
+%python_install_alternative rdfgraphisomorphism
+%python_install_alternative rdf2dot
+%python_install_alternative csv2rdf
+
+%postun
+%python_uninstall_alternative rdfs2dot
+%python_uninstall_alternative rdfpipe
+%python_uninstall_alternative rdfgraphisomorphism
+%python_uninstall_alternative rdf2dot
+%python_uninstall_alternative csv2rdf
+
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md CONTRIBUTORS README.md
-%python3_only %{_bindir}/csv2rdf
-%python3_only %{_bindir}/rdf2dot
-%python3_only %{_bindir}/rdfgraphisomorphism
-%python3_only %{_bindir}/rdfpipe
-%python3_only %{_bindir}/rdfs2dot
+%python_alternative %{_bindir}/csv2rdf
+%python_alternative %{_bindir}/rdf2dot
+%python_alternative %{_bindir}/rdfgraphisomorphism
+%python_alternative %{_bindir}/rdfpipe
+%python_alternative %{_bindir}/rdfs2dot
 %{python_sitelib}/rdflib/
 %{python_sitelib}/rdflib-%{version}-py*.egg-info
 

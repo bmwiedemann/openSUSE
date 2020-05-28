@@ -229,4 +229,12 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743996</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9fe473936ca424593d637a7b5c8dc320</srcmd5>
+    <version>5.0.0</version>
+    <time>1590649687</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807428</requestid>
+  </revision>
 </revisionlist>

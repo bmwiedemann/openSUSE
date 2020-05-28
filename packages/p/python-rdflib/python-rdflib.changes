@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue May 19 09:27:40 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Sun Apr 19 10:32:25 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+-  Update to version 5.0.0
+  * General Bugs Fixed:
+    - n3 parser exponent syntax of floats with leading dot
+    - Change is comparison to == for tuple
+    - Added _parseBoolean function to enforce correct Lexical-to-value mapping
+  * SPARQL Fixes:
+    - CONSTRUCT resolve with initBindings fixes
+
+-------------------------------------------------------------------
+Sun Apr  5 08:50:06 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 5.0.0rc1
+  * General Bugs Fixed:
+    - NTriples fails to parse URIs with only a scheme
+    - Cannot clone on windows - Remove colons from test result files.
+    - Add requirement for requests to setup.py
+    - fixed URIRef including native unicode characters
+    - DCTERMS.format not working
+    - infixowl.manchesterSyntax do not encode strings
+    - Fix blank node label to not contain '_:' during parsing
+    - rename new SPARQLWrapper to SPARQLConnector
+    - Unquote and Uriquote Literal Datatype.
+    - Parsing nquads
+    - ntriples spec allows for upper-cased lang tag
+    - Adds escaped single quote to literal parser
+    - N3 parse error on single quote within single quotes
+    - RGDA1 graph canonicalization sometimes still collapses distinct BNodes
+    - Accept header should use a q parameter
+    - Incompatibility with Python3: unichr
+    - namespace.py include colon in ALLOWED_NAME_CHARS
+    - namespace.py fix compute_qname missing namespaces
+    - RDFa parsing Error! __init__() got an unexpected keyword argument 'encoding'
+    - Bugfix: term.Literal.__add__
+    - Microdata to rdf second edition bak
+
+  * Enhanced Features:
+    - Register additional serializer plugins for SPARQL mime types.
+    - Allows RDF terms introduced by JSON-LD 1.1
+    - make SPARQLConnector work with DBpedia
+    - ClosedNamespace returns right exception for way of access
+    - Not adding all namespaces for n3 serializer
+    - Adds basic support of xsd:duration
+    - Add possibility to set authority and basepath to skolemize graph
+    - Change notation3 list realization to non-recursive function.
+    - Suppress warning for not using custom encoding.
+    - Add support to parsing large xml inputs
+    - improve hash efficiency by directly using str/unicode hash
+    - Added the csvw prefix to the RDFa initial context.
+    - syncing changes from pyMicrodata
+    - Microdata parser: updated the parser to the latest version of the microdata->rdf note
+    - Literal.toPython() support for xsd:hexBinary
+
+  * SPARQL Fixes:
+    - Total order patch patch
+    - use <<= instead of deprecated <<
+    - RDF Literal "1"^^xsd:boolean should not coerce to True
+    - Makes NOW() return an UTC date
+    - NOW() SPARQL should return an xsd:dateTime with a timezone
+    - fix property paths bug
+    - MulPath: correct behaviour of n3()
+    - Literal total ordering
+    - Remove SPARQLWrapper dependency
+    - made UNION faster by not preventing duplicates
+    - added a hook to add custom functions to SPARQL
+    - Use <<= instead of deprecated << in SPARQL parser
+    - Custom FILTER function for SPARQL engine
+
+-------------------------------------------------------------------
 Mon Oct 14 14:40:41 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
