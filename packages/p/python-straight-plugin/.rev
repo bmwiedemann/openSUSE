@@ -8,4 +8,14 @@
 </comment>
     <requestid>632997</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da00672f3c09bca0b6ca7b11582f78e7</srcmd5>
+    <version>1.5.0</version>
+    <time>1590650398</time>
+    <user>maxlin_factory</user>
+    <comment>- Add pip_no_plugins.patch to avoid error: &quot;UnboundLocalError:
+  local variable 'r' referenced before assignment&quot;, when there
+  is no plugin available.</comment>
+    <requestid>809684</requestid>
+  </revision>
 </revisionlist>

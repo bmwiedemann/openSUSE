@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 16:07:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add pip_no_plugins.patch to avoid error: "UnboundLocalError:
+  local variable 'r' referenced before assignment", when there
+  is no plugin available. 
+
+-------------------------------------------------------------------
 Mon May 28 22:57:08 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
 
 - Initial packaging

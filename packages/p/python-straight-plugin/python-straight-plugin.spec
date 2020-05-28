@@ -1,6 +1,7 @@
 #
 # spec file for package python-straight-plugin
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-straight-plugin
 Version:        1.5.0
 Release:        0
 Summary:        Python plugin loader
-Group:          Development/Libraries/Python
 License:        MIT
+Group:          Development/Libraries/Python
 URL:            https://github.com/ironfroggy/straight.plugin/
-
-Source0:        https://pypi.python.org/packages/source/s/straight.plugin/straight.plugin-%{version}.tar.gz
-
-BuildArch:      noarch
+Source0:        https://files.pythonhosted.org/packages/source/s/straight.plugin/straight.plugin-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pip_no_plugins.patch gh#ironfroggy/straight.plugin#24 mcepl@suse.com
+# Fixes pipe with no plugins installed
+Patch0:         pip_no_plugins.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,22 +47,19 @@ a namespace package, where other packages will locate and utilize. The plugins
 themselves are modules in a namespace package where the namespace identifies
 the plugins in it for some particular purpose or intent.
 
-
 %prep
-%autosetup -n straight.plugin-%{version}
-
+%setup -q -n straight.plugin-%{version}
+%autopatch -p1
 
 %build
 %python_build
 
-
 %install
 %python_install
-
+%fdupes %{buildroot}%{python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/*
-
 
 %changelog
