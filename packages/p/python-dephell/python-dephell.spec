@@ -61,6 +61,7 @@ Requires:       python-dephell-specifier >= 0.1.7
 Requires:       python-dephell-venvs >= 0.1.16
 Requires:       python-dephell-versioning
 Requires:       python-dephell_changelogs
+Requires:       (python-dephell-rpm-macros if python-rpm-macros)
 # Yeah, html5lib is required by dephell, and no, autodiscovery won’t find it.
 # rpmlint is stupid
 Requires:       python-docker
@@ -77,7 +78,8 @@ Requires:       python-setuptools
 Requires:       python-tabulate
 Requires:       python-tomlkit
 Requires:       python-yaspin
-Requires:       (python-dephell-rpm-macros if python-rpm-macros)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Recommends:     python-aiofiles
 Recommends:     python-colorama
@@ -159,6 +161,7 @@ generates setup.py from the provided pyproject.toml.
 %install
 %if ! %{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dephell
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Install macros.lua for rpm to have centralized place to
 # manage dephell_genspec macro
@@ -173,10 +176,16 @@ export TRAVIS_OS_NAME=1
 %endif
 
 %if ! %{with test}
+%post
+%python_install_alternative dephell
+
+%postun
+%python_uninstall_alternative dephell
+
 %files %{python_files}
 %doc README.md README.rst
 %license LICENSE
-%python3_only %{_bindir}/dephell
+%python_alternative %{_bindir}/dephell
 %{python_sitelib}/*
 
 %files rpm-macros
