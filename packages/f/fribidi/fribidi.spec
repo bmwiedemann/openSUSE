@@ -1,7 +1,7 @@
 #
 # spec file for package fribidi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,13 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/fribidi/fribidi
 Source:         https://github.com/fribidi/fribidi/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
-BuildRequires:  pkg-config
+# PATCH-FIX-UPSTREAM no-config-h.diff - copied from Debian
+Patch1:         no-config-h.diff
+# PATCH-FIX-UPSTREAM Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff - copied from Debian
+Patch2:         Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff
+BuildRequires:  pkgconfig
 #
 Provides:       locale(ar;he)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # bug437293
 %ifarch ppc64
 Obsoletes:      fribidi-64bit
@@ -64,6 +67,8 @@ This package provides headers and manual files for FriBiDi.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static
@@ -77,23 +82,19 @@ This package provides headers and manual files for FriBiDi.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc NEWS README
 %{_bindir}/fribidi
 
 %files -n %{lname}
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/libfribidi.so.0*
 
 %files devel
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog THANKS TODO
-%doc %{_mandir}/man3/fribidi_*
+%{_mandir}/man3/fribidi_*
 %{_includedir}/fribidi/
 %{_libdir}/libfribidi.so
 %{_libdir}/pkgconfig/fribidi.pc

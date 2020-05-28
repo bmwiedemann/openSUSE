@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 22 14:43:34 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add no-config-h.diff - copied from Debian
+  Remove HAVE_CONFIG_H from public API
+- Add Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff -
+  copied from Debian, CVE-2019-18397
+  Truncate isolate_level to FRIBIDI_BIDI_MAX_EXPLICIT_LEVEL
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Fri Nov 29 09:56:25 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use %make_build macros.
