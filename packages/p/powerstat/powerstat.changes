@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 16:19:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.23
+  * Makefile: respect standard prefix= variable (LP: #1877744)
+  * zero the ws struct to clear static analysis warnings
+
+-------------------------------------------------------------------
 Sun Mar  8 13:21:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Supplement against bash-completion, not bash
