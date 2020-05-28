@@ -33,6 +33,8 @@ Requires:       python-diskcache
 Requires:       python-requests >= 2.4.2
 Requires:       python-requests-toolbelt
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 6.7}
@@ -58,12 +60,22 @@ sed -i -e '/^#!\//, 1d' girder_client/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/girder-client
+%python_clone -a %{buildroot}%{_bindir}/girder-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative girder-client
+%python_install_alternative girder-cli
+
+%postun
+%python_uninstall_alternative girder-client
+%python_uninstall_alternative girder-cli
 
 %files %{python_files}
 %doc README.rst
-%python3_only %{_bindir}/girder-cli
-%python3_only %{_bindir}/girder-client
+%python_alternative %{_bindir}/girder-cli
+%python_alternative %{_bindir}/girder-client
 %{python_sitelib}/*
 
 %changelog
