@@ -35,6 +35,8 @@ Requires:       python-colorlog >= 2.6.1
 Requires:       python-py >= 1.4.0
 Requires:       python-setuptools
 Requires:       python-virtualenv >= 14.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-Jinja2
 Suggests:       python-tox
 BuildArch:      noarch
@@ -64,16 +66,26 @@ sed -Ei 's/,? ?<=?[0-9][0-9.]*//' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/tox-to-nox
+%python_clone -a %{buildroot}%{_bindir}/nox
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative tox-to-nox
+%python_install_alternative nox
+
+%postun
+%python_uninstall_alternative tox-to-nox
+%python_uninstall_alternative nox
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/nox
-%python3_only %{_bindir}/tox-to-nox
+%python_alternative %{_bindir}/nox
+%python_alternative %{_bindir}/tox-to-nox
 %{python_sitelib}/*
 
 %changelog
