@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 25 03:11:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.024
+   see /usr/share/doc/packages/perl-Email-MIME-ContentType/Changes
+
+  1.024     2020-05-24 10:19:20-04:00 America/New_York
+          - no changes since stable release
+  
+  1.023     2020-05-09 14:51:41-04:00 America/New_York (TRIAL RELEASE)
+          - All of this release is thanks to Pali Rohár, who suffered through a
+            long period of waiting while RJBS, the maintainer, let the module
+            languish.  Thank you for your patience, Pali and everybody else.
+  
+          - silence an uninitalized value warning
+          - avoid allowing non-Latin digits in numbers
+          - add new functions build_content_type() and build_content_disposition
+  
+
+-------------------------------------------------------------------
 Fri Sep  1 05:28:20 UTC 2017 - coolo@suse.com
 
 - updated to 1.022
