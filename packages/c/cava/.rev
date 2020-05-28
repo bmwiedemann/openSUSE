@@ -61,4 +61,25 @@
   * Generally improved fifo input and raw output</comment>
     <requestid>604592</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99187423859a97497c5929f2555f86cc</srcmd5>
+    <version>0.7.0</version>
+    <time>1590650435</time>
+    <user>maxlin_factory</user>
+    <comment>- Update 0.7.0:
+  Breaking changes:
+  * Reworked noncurses output mode and made it default.
+    The reworked noncurses mode uses a custom framebuffer technique that
+    only draws changes per frame and only writes to the terminal once per
+    frame. This results in far less cpu usage then ncurses. It is also
+    free of the flickering that we see in ncurses mode #196
+  * Colors are no longer set by default so hopefully cava will change
+    color automatically in noncurses mode when using tools such as
+    pywall #340 #181
+  * Unfortunately html colors, gradient and key controls are not supported
+    in noncurses.
+  Other improvements:
+  * separated bass, midtones and treble in to separate fftw operations</comment>
+    <requestid>809688</requestid>
+  </revision>
 </revisionlist>

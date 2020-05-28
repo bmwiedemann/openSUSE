@@ -1,7 +1,7 @@
 #
 # spec file for package cava
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cava
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Console-based Audio Visualizer for Alsa
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Visualization
-Url:            https://github.com/karlstav/cava
+URL:            https://github.com/karlstav/cava
 Source:         https://github.com/karlstav/%{name}/archive/%{version}.tar.gz
 BuildRequires:  alsa-devel
 BuildRequires:  fftw3-devel
