@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 10:56:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri Feb 28 22:58:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.0:

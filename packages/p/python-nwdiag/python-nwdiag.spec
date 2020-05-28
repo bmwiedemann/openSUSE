@@ -31,13 +31,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blockdiag >= 1.5.0
 Requires:       python-setuptools
-Suggests:       python-reportlab
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-docutils
 Suggests:       python-nose
 Suggests:       python-reportlab
-Suggests:       python-docutils
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,14 +50,27 @@ nwdiag generates network diagram images from text.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/packetdiag
+%python_clone -a %{buildroot}%{_bindir}/rackdiag
+%python_clone -a %{buildroot}%{_bindir}/nwdiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative packetdiag
+%python_install_alternative rackdiag
+%python_install_alternative nwdiag
+
+%postun
+%python_uninstall_alternative packetdiag
+%python_uninstall_alternative rackdiag
+%python_uninstall_alternative nwdiag
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/nwdiag
-%python3_only %{_bindir}/rackdiag
-%python3_only %{_bindir}/packetdiag
+%python_alternative %{_bindir}/nwdiag
+%python_alternative %{_bindir}/rackdiag
+%python_alternative %{_bindir}/packetdiag
 %{python_sitelib}/*
 
 %changelog
