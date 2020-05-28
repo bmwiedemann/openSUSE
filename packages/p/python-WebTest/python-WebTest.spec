@@ -20,7 +20,7 @@
 %define oldpython python
 %bcond_without tests
 Name:           python-WebTest
-Version:        2.0.34
+Version:        2.0.35
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT

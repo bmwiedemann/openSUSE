@@ -279,4 +279,14 @@
   - Handle query parameters for the ``head`` method.</comment>
     <requestid>785067</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3d95e7abbbc34baa0078b280ef73872c</srcmd5>
+    <version>2.0.35</version>
+    <time>1590649487</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 2.0.35:
+  - python3.8 compat
+  - Remove use of deprecated splittype and splithost</comment>
+    <requestid>802878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 08:48:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.35:
+  - python3.8 compat
+  - Remove use of deprecated splittype and splithost
+
+-------------------------------------------------------------------
 Sat Mar 14 15:45:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.34:
