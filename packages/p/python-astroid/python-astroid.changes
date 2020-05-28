@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu May  7 04:36:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.1:
+  * Handle the case where the raw builder fails to retrieve the ``__all__`` attribute
+  * Restructure the AST parsing heuristic to always pick the same module
+  * Changed setup.py to work with [distlib](https://pypi.org/project/distlib)
+  * Do not crash with SyntaxError when parsing namedtuples with invalid label
+  * Protect against ``infer_call_result`` failing with `InferenceError` in `Super.getattr()`
+  * Expose a ast_from_string method in AstroidManager, which will accept
+  * ``BoundMethod.implicit_parameters`` returns a proper value for ``__new__``
+  * Allow slots added dynamically to a class to still be inferred
+  * Allow `FunctionDef.getattr` to look into both instance attrs and special attributes
+  * Infer qualified ``classmethod`` as a classmethod.
+  * Prevent a recursion error to happen when inferring the declared metaclass of a class
+  * Raise ``AttributeInferenceError`` when ``getattr()`` receives an empty name
+  * Prevent a recursion error for self reference variables and `type()` calls.
+  * Do not infer the first argument of a staticmethod in a metaclass as the class itself
+  * ``NodeNG.bool_value()`` gained an optional ``context`` parameter
+  * Pass a context argument to ``astroid.Arguments`` to prevent recursion errors
+  * Better inference of class and static methods decorated with custom methods
+  * Reverse the order of decorators for `infer_subscript`
+  * Prevent a recursion error when inferring self-referential variables without definition
+  * Numpy `datetime64.astype` return value is inferred as a `ndarray`.
+  * Skip non ``Assign`` and ``AnnAssign`` nodes from enum reinterpretation
+  * Numpy ``ndarray`` attributes ``imag`` and ``real`` are now inferred as ``ndarray``.
+  * Added a call to ``register_transform`` for all functions of the ``brain_numpy_core_multiarray``
+  * Use the parent of the node when inferring aug assign nodes instead of the statement
+  * Added some functions to the ``brain_numpy_core_umath`` module
+  * Added some functions of the ``numpy.core.multiarray`` module
+  * All the ``numpy ufunc`` functions derived now from a common class that
+  * ``nodes.Const.itered`` returns a list of ``Const`` nodes, not strings
+  * The ``shape`` attribute of a ``numpy ndarray`` is now a ``ndarray``
+  * Don't ignore special methods when inspecting gi classes
+  * Added transform for ``scipy.gaussian``
+  * Add suport for inferring properties.
+  * Added a brain for ``responses``
+  * Allow inferring positional only arguments.
+  * Retry parsing a module that has invalid type comments
+  * Scope the inference to the current bound node when inferring instances of classes
+  * Add support for inferring exception instances in all contexts
+  * Add more supported parameters to ``subprocess.check_output``
+  * Infer args unpacking of ``self``
+  * Clean up setup.py
+  * Handle StopIteration error in infer_int.
+  * Can access per argument type comments for positional only and keyword only arguments.
+  * Relax upper bound on `wrapt`
+  * Properly analyze CFFI compiled extensions. 
+- Refresh unpin-deps.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 11:24:24 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.3.3:
