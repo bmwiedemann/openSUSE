@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 27 03:14:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.10
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.10  2020-05-26
+    - Improved Mojo::MemoryMap to not require a Perl with 64-bit integer support.
+  
+  1.09  2020-05-25
+    - Switched from Sereal to Cpanel::JSON::XS for serialization in
+      Mojo::MemoryMap.
+  
+
+-------------------------------------------------------------------
 Mon Feb 17 03:09:48 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.08
