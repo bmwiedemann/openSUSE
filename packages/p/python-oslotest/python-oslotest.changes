@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 09:51:45 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - Update master for stable/train
+  - Remove 'oslotest.functional'
+  - Remove os-client-config and debtcollector
+  - remove outdated header
+  - gitignore: Ignore reno artefacts
+  - tools: Default to Python 3
+  - Switch to Ussuri jobs
+  - Switch to unittest.mock from mock
+  - tox: Trivial cleanup
+  - Remove stestr from requirements.txt
+  - Invoke correct python version in shell scripts
+  - Remove 'oslotest.moxstubout' module
+  - Revert "Switch to unittest.mock from mock"
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - trivial: Cleanup of doc config file
+
+-------------------------------------------------------------------
 Sat Mar 14 12:06:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only builds

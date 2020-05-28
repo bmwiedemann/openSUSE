@@ -17,22 +17,22 @@
 
 
 Name:           python-oslotest
-Version:        3.8.1
+Version:        4.2.0
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-3.8.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.2.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-debtcollector >= 1.2.0
+BuildRequires:  python3-debtcollector
 BuildRequires:  python3-fixtures >= 3.0.0
 BuildRequires:  python3-mock >= 2.0.0
-BuildRequires:  python3-mox3 >= 0.20.0
+BuildRequires:  python3-mox3
 BuildRequires:  python3-pbr
 BuildRequires:  python3-python-subunit >= 1.0.0
 BuildRequires:  python3-six >= 1.10.0
-BuildRequires:  python3-stestr >= 2.0.0
+BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools >= 2.2.0
 BuildArch:      noarch
 
@@ -43,15 +43,15 @@ better support for mocking results.
 %package -n python3-oslotest
 Summary:        OpenStack test framework
 Group:          Development/Languages/Python
-Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-debtcollector
 Requires:       python3-fixtures >= 3.0.0
 Requires:       python3-mock >= 2.0.0
-Requires:       python3-mox3 >= 0.20.0
+Requires:       python3-mox3
 # NOTE: python-os-client-config is only needed for functional testing
-# Requires:       python3-os-client-config >= 1.28.0
+# Requires:       python3-os-client-config
 Requires:       python3-python-subunit >= 1.0.0
 Requires:       python3-six >= 1.10.0
-Requires:       python3-stestr >= 2.0.0
+Requires:       python3-stestr
 Requires:       python3-testtools >= 2.2.0
 
 %description -n python3-oslotest
