@@ -1,7 +1,7 @@
 #
 # spec file for package python-deprecation
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-deprecation
-Version:        2.0.7
+Version:        2.1.0
 Release:        0
 Summary:        A library to handle automated deprecations
 License:        Apache-2.0

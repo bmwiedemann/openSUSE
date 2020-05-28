@@ -35,4 +35,13 @@
   * no upstream changelog</comment>
     <requestid>730639</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3987e94ef90adae68d9fcc044e9ecb85</srcmd5>
+    <version>2.1.0</version>
+    <time>1590650047</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.1.0:
+  * No upstream changelog</comment>
+    <requestid>809125</requestid>
+  </revision>
 </revisionlist>
