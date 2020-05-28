@@ -7,7 +7,5 @@ user interfaces (ncurses).</description>
   <devel project="devel:libraries:libyui" package="libyui-bindings"/>
   <debuginfo>
     <disable/>
-    <disable/>
-    <disable/>
   </debuginfo>
 </package>
