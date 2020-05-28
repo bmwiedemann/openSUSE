@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 27 08:41:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Percona Toolkit 3.2.0:
+  * Add IPv6 support
+  * Fix handling of year 2020
+  * Fix FK warnings and bugs in pt-online-schema-change
+  * Fix regression on slave with replication channels
+  * Fix pt-stalk not collecting processlist and variables
+  * Fix pt-online-schema-change not working with multi-source replication
+  * Fix a bug in pt-online-schema-change can break replication
+
+-------------------------------------------------------------------
 Sun Sep 22 12:10:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to Percona Toolkit 3.1.0:
