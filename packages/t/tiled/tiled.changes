@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 27 20:28:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.5:
+  * Fixed initialization and restoring of map view (#2779)
+  * Fixed skewed tile terrain/Wang overlays for non-square tiles (#1943)
+  * Fixed link color on dark theme
+  * Fixed small issue when right-clicking embedded tileset tab
+  * Fixed Wang Sets toggle to also appear in the Tileset menu
+  * Scripting: Fixed issue when closing/committing BinaryFile (#2801)
+  * Scripting: Fixed "Safe writing of files" when writing with TextFile
+  * Updated Qt to 5.12.8 on all platforms
+  * Small translation updates to Bulgarian, French and Portuguese
+
+-------------------------------------------------------------------
 Wed Apr 15 04:30:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.4:
