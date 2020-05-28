@@ -31,6 +31,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-auth
 Requires:       python-requests-oauthlib >= 0.7.0
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-click
 BuildArch:      noarch
 # SECTION test requirements
@@ -62,15 +64,22 @@ rm -rf tests/*.pyc
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/google-oauthlib-tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative google-oauthlib-tool
+
+%postun
+%python_uninstall_alternative google-oauthlib-tool
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/google-oauthlib-tool
+%python_alternative %{_bindir}/google-oauthlib-tool
 %{python_sitelib}/*
 
 %changelog
