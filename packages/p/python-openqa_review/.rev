@@ -271,4 +271,12 @@
     <comment>Update to 1.19.0; Update test-package to use python3 variant also to fix Factory build tests</comment>
     <requestid>802238</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3c9686611ecc07cbeb64801a549d39ef</srcmd5>
+    <version>1.20.0</version>
+    <time>1590650126</time>
+    <user>maxlin_factory</user>
+    <comment>Update to 1.20.0</comment>
+    <requestid>809163</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 06:35:20 UTC 2020 - okurz@suse.com
+
+- Update to version 1.20.0:
+  * Fix 'E741 ambiguous variable name' in tests
+  * Adapt parsing of soft-failure details on openQA >= 4.5.1528009330.e68ebe2b-3454-gd19c50d6b
+
+-------------------------------------------------------------------
 Sat May  9 12:27:12 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Update test-package to use python3 variant also to fix Factory build tests
