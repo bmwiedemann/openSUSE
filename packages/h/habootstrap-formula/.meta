@@ -1,5 +1,5 @@
 <package name="habootstrap-formula" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="network:ha-clustering:Factory" package="habootstrap-formula"/>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="habootstrap-formula"/>
 </package>

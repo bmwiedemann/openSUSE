@@ -1,5 +1,5 @@
 <package name="drbd-formula" project="openSUSE:Factory">
   <title>package drbd salt formula</title>
   <description>https://github.com/nick-wang/drbd-formula</description>
-  <devel project="network:ha-clustering:Factory" package="drbd-formula"/>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="drbd-formula"/>
 </package>
