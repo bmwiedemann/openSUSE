@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file for package python-ethtool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ BuildRequires:  libnl3-devel
 BuildRequires:  net-tools-deprecated
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -51,19 +53,33 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
 mkdir -p %{buildroot}%{_sbindir}
 mv %{buildroot}{%{_bindir},%{_sbindir}}/pifconfig
 mv %{buildroot}{%{_bindir},%{_sbindir}}/pethtool
+%python_clone -a %{buildroot}%{_sbindir}/pifconfig
+%python_clone -a %{buildroot}%{_sbindir}/pethtool
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
+
+%post
+# %%python_install_alternative for %{_sbindir} binaries
+%{python_expand \
+  %{_sbindir}/update-alternatives --quiet --install %{_sbindir}/pifconfig  pifconfig \
+     %{_sbindir}/pifconfig-%{$python_version}  %{$python_version_nodots}
+  %{_sbindir}/update-alternatives --quiet --install %{_sbindir}/pethtool  pethtool \
+     %{_sbindir}/pethtool-%{$python_version}  %{$python_version_nodots}
+}
+
+%postun
+%python_uninstall_alternative pifconfig
+%python_uninstall_alternative pethtool
 
 %files %{python_files}
 %license COPYING
 %doc README.rst CHANGES.rst
 %{python_sitearch}/
-%python3_only %{_sbindir}/pethtool
-%python3_only %{_sbindir}/pifconfig
+%python_alternative %{_sbindir}/pethtool
+%python_alternative %{_sbindir}/pifconfig
 
 %changelog

@@ -45,4 +45,13 @@
   * Added installation instructions</comment>
     <requestid>680454</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>564001db6a99f165f21432726a133124</srcmd5>
+    <version>0.14</version>
+    <time>1590650319</time>
+    <user>maxlin_factory</user>
+    <comment>- %python3_only -&gt; %python_alternative
+</comment>
+    <requestid>809511</requestid>
+  </revision>
 </revisionlist>
