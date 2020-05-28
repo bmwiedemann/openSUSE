@@ -1,7 +1,7 @@
 #
 # spec file for package python-extratools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Requires:       python-TagStats >= 0.1.2
 Requires:       python-sh >= 1.12.13
 Requires:       python-sortedcontainers >= 1.5.10
 Requires:       python-toolz >= 0.9.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module RegexOrder >= 0.2}
@@ -60,14 +62,27 @@ chmod a-x extratools/*/*.js
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/extratools-teststats
+%python_clone -a %{buildroot}%{_bindir}/extratools-remap
+%python_clone -a %{buildroot}%{_bindir}/extratools-flatten
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative extratools-teststats
+%python_install_alternative extratools-remap
+%python_install_alternative extratools-flatten
+
+%postun
+%python_uninstall_alternative extratools-teststats
+%python_uninstall_alternative extratools-remap
+%python_uninstall_alternative extratools-flatten
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/extratools-flatten
-%python3_only %{_bindir}/extratools-remap
-%python3_only %{_bindir}/extratools-teststats
+%python_alternative %{_bindir}/extratools-flatten
+%python_alternative %{_bindir}/extratools-remap
+%python_alternative %{_bindir}/extratools-teststats
 %{python_sitelib}/*
 
 %changelog
