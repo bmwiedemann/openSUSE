@@ -27,15 +27,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/napalm-automation/napalm-ansible
 Source:         https://github.com/napalm-automation/napalm-ansible/archive/%{version}.tar.gz#/napalm-ansible-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-napalm
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module napalm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  ansible
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-napalm
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -54,15 +56,22 @@ sed -i -e '/^#!\//, 1d' \
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/napalm-ansible
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative napalm-ansible
+
+%postun
+%python_uninstall_alternative napalm-ansible
+
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.rst
-%python3_only %{_bindir}/napalm-ansible
+%python_alternative %{_bindir}/napalm-ansible
 %{python_sitelib}/*
 
 %changelog
