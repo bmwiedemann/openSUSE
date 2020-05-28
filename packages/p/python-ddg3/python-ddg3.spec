@@ -1,7 +1,7 @@
 #
 # spec file for package python-ddg3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %define skip_python2 1
@@ -20,17 +21,18 @@
 Name:           python-ddg3
 Version:        0.6.6git~20170824T092521~0ef6b2f
 Release:        0
-License:        BSD-3-Clause
 Summary:        Library for querying the Duck Duck Go API
-Url:            https://github.com/jpetrucciani/python-duckduckgo
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/jpetrucciani/python-duckduckgo
 Source:         ddg3-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -44,11 +46,18 @@ A Python3 library for querying the Duck Duck Go API.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ddg3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative ddg3
+
+%postun
+%python_uninstall_alternative ddg3
 
 %files %{python_files}
 %license LICENSE
-%python3_only %{_bindir}/ddg3
+%python_alternative %{_bindir}/ddg3
 %{python_sitelib}/*
 
 %changelog

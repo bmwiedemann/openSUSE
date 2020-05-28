@@ -7,4 +7,12 @@
     <comment>New package python-ddg3, required by the latest releases of mycroft-core</comment>
     <requestid>647348</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b57f183e1d3bb8b44129f7b5e897125</srcmd5>
+    <version>0.6.6git~20170824T092521~0ef6b2f</version>
+    <time>1590650293</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809426</requestid>
+  </revision>
 </revisionlist>

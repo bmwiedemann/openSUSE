@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Nov  8 15:13:00 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require python-requests instead of BuildRequiring it
