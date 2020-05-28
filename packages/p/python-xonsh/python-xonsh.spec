@@ -43,6 +43,8 @@ Requires:       python-importlib_resources
 Requires:       python-prompt_toolkit
 Requires:       python-pygments >= 2.2
 Requires:       python-setproctitle
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,6 +60,9 @@ The language is a superset of Python 3.5+ with additional shell primitives.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/xonsh-cat
+%python_clone -a %{buildroot}%{_bindir}/xonsh
+%python_clone -a %{buildroot}%{_bindir}/xon.sh
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,12 +71,22 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 # test_xonsh_no_close_fds the makefile fails to compile
 %pytest -k 'not (test_man_completion or test_xonsh_no_close_fds)'
 
+%post
+%python_install_alternative xonsh-cat
+%python_install_alternative xonsh
+%python_install_alternative xon.sh
+
+%postun
+%python_uninstall_alternative xonsh-cat
+%python_uninstall_alternative xonsh
+%python_uninstall_alternative xon.sh
+
 %files %{python_files}
 %doc README.rst CHANGELOG.rst
 %license license
 %{python_sitelib}/*
-%python3_only %{_bindir}/xon.sh
-%python3_only %{_bindir}/xonsh
-%python3_only %{_bindir}/xonsh-cat
+%python_alternative %{_bindir}/xon.sh
+%python_alternative %{_bindir}/xonsh
+%python_alternative %{_bindir}/xonsh-cat
 
 %changelog
