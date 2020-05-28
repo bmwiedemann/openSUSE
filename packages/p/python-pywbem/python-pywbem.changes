@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 13 12:31:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to 0.17.2:
+  - Fixed raise error for invalid reference_direction in
+    WBEMServer.get_central_instances(). (See issue #2187)
+  - Fixed raise error for missing ports in WBEMListener.__init__().
+    (See issue #2188)
+
+-------------------------------------------------------------------
 Tue Apr 14 10:50:52 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to 0.17.1:

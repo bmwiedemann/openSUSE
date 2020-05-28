@@ -161,4 +161,16 @@
     to 38.4.1 to fix a bug with new format of .pyc files. (See issue #2167).</comment>
     <requestid>793830</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6733e091b8ec5356470d2fa158d4196e</srcmd5>
+    <version>0.17.2</version>
+    <time>1590649543</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.17.2:
+  - Fixed raise error for invalid reference_direction in
+    WBEMServer.get_central_instances(). (See issue #2187)
+  - Fixed raise error for missing ports in WBEMListener.__init__().
+    (See issue #2188)</comment>
+    <requestid>805284</requestid>
+  </revision>
 </revisionlist>
