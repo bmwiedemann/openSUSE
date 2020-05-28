@@ -16,6 +16,7 @@
 #
 
 
+%define commands announce check collectd config dg-replay gateway hub irc logger relay signing-relay tail trigger
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fedmsg
 Version:        1.1.1
@@ -29,6 +30,23 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+Requires:       python-kitchen
+Requires:       python-pyzmq
+Requires:       python-requests
+Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-M2Crypto
+Recommends:     python-Pygments
+Recommends:     python-arrow
+Recommends:     python-click
+Recommends:     python-cryptography >= 1.6
+Recommends:     python-m2ext
+Recommends:     python-moksha.hub >= 1.3.0
+Recommends:     python-psutil
+Recommends:     python-pyOpenSSL >= 16.1.0
+Recommends:     python-service_identity
+BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module arrow}
@@ -45,22 +63,6 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vcrpy}
 BuildRequires:  gpg2
 # /SECTION
-Requires:       python-kitchen
-Requires:       python-pyzmq
-Requires:       python-requests
-Requires:       python-six
-Recommends:     python-arrow
-Recommends:     python-M2Crypto
-Recommends:     python-m2ext
-Recommends:     python-cryptography >= 1.6
-Recommends:     python-pyOpenSSL >= 16.1.0
-Recommends:     python-Pygments
-Recommends:     python-psutil
-Recommends:     python-click
-Recommends:     python-moksha.hub>=1.3.0
-Recommends:     python-service_identity
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -90,7 +92,7 @@ python3 versions of the fedmsg package.
 
 export PYTHONPATH=$(pwd)
 export PYTHON=python3
-make -C doc SPHINXBUILD=sphinx-build html
+%make_build -C doc SPHINXBUILD=sphinx-build html
 rm doc/_build/html/.buildinfo
 rm doc/_build/html/objects.inv
 
@@ -99,6 +101,9 @@ rm doc/_build/html/objects.inv
 
 %install
 %python_install
+for c in %{commands}; do
+  %python_clone -a %{buildroot}%{_bindir}/fedmsg-$c
+done
 %{python_expand # first remove the tests
 rm -r %{buildroot}%{$python_sitelib}/fedmsg/tests/
 %fdupes %{buildroot}%{$python_sitelib}
@@ -107,11 +112,33 @@ rm -r %{buildroot}%{$python_sitelib}/fedmsg/tests/
 mkdir -p %{buildroot}%{_sysconfdir}/fedmsg.d/
 cp fedmsg.d/*.py %{buildroot}%{_sysconfdir}/fedmsg.d/.
 
+%post
+for c in %{commands}; do
+  %python_install_alternative fedmsg-$c
+done
+
+%postun
+for c in %{commands}; do
+  %python_uninstall_alternative fedmsg-$c
+done
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
-%python3_only %{_bindir}/fedmsg-*
+%python_alternative %{_bindir}/fedmsg-announce
+%python_alternative %{_bindir}/fedmsg-check
+%python_alternative %{_bindir}/fedmsg-collectd
+%python_alternative %{_bindir}/fedmsg-config
+%python_alternative %{_bindir}/fedmsg-dg-replay
+%python_alternative %{_bindir}/fedmsg-gateway
+%python_alternative %{_bindir}/fedmsg-hub
+%python_alternative %{_bindir}/fedmsg-irc
+%python_alternative %{_bindir}/fedmsg-logger
+%python_alternative %{_bindir}/fedmsg-relay
+%python_alternative %{_bindir}/fedmsg-signing-relay
+%python_alternative %{_bindir}/fedmsg-tail
+%python_alternative %{_bindir}/fedmsg-trigger
 
 %files -n %{name}-doc
 %license LICENSE
