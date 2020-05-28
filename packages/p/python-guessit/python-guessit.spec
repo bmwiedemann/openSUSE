@@ -24,7 +24,7 @@ Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/wackou/guessit
-Source0:        https://pypi.io/packages/source/g/guessit/guessit-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.5.5}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -37,6 +37,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.5.5
 Requires:       python-python-dateutil
 Requires:       python-rebulk >= 2.0.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,6 +67,7 @@ done
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/guessit
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,10 +75,16 @@ export LANG='en_US.UTF8'
 export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
+%post
+%python_install_alternative guessit
+
+%postun
+%python_uninstall_alternative guessit
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/guessit
+%python_alternative %{_bindir}/guessit
 %{python_sitelib}/guessit
 %{python_sitelib}/guessit-%{version}-py%{python_version}.egg-info
 
