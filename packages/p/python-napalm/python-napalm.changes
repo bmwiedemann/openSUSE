@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 10:56:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Fri May 15 10:36:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.1

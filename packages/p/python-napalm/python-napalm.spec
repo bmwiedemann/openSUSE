@@ -43,6 +43,8 @@ Requires:       python-requests >= 2.7.0
 Requires:       python-scp
 Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -78,6 +80,10 @@ interact with different router vendor devices using a unified API.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/napalm
+%python_clone -a %{buildroot}%{_bindir}/cl_napalm_validate
+%python_clone -a %{buildroot}%{_bindir}/cl_napalm_test
+%python_clone -a %{buildroot}%{_bindir}/cl_napalm_configure
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -86,13 +92,25 @@ interact with different router vendor devices using a unified API.
 rm -Rf test/junos/
 %pytest
 
+%post
+%python_install_alternative napalm
+%python_install_alternative cl_napalm_validate
+%python_install_alternative cl_napalm_test
+%python_install_alternative cl_napalm_configure
+
+%postun
+%python_uninstall_alternative napalm
+%python_uninstall_alternative cl_napalm_validate
+%python_uninstall_alternative cl_napalm_test
+%python_uninstall_alternative cl_napalm_configure
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/cl_napalm_configure
-%python3_only %{_bindir}/cl_napalm_test
-%python3_only %{_bindir}/cl_napalm_validate
-%python3_only %{_bindir}/napalm
+%python_alternative %{_bindir}/cl_napalm_configure
+%python_alternative %{_bindir}/cl_napalm_test
+%python_alternative %{_bindir}/cl_napalm_validate
+%python_alternative %{_bindir}/napalm
 %{python_sitelib}/*
 
 %changelog
