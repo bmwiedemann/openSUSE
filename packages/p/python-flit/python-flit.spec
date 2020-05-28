@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-docutils
 Requires:       python-pytoml
 Requires:       python-requests-download
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{python3_version_nodots} < 36
 BuildRequires:  %{python_module zipfile36}
@@ -61,6 +63,7 @@ sed -i 's/distutils.core/setuptools/' setup.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/flit
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,10 +71,16 @@ sed -i 's/distutils.core/setuptools/' setup.py
 # test_invalid_classifier requires internet
 %pytest -k 'not (test_build_sdist or test_invalid_classifier)'
 
+%post
+%python_install_alternative flit
+
+%postun
+%python_uninstall_alternative flit
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python3_only %{_bindir}/flit
+%python_alternative %{_bindir}/flit
 %{python_sitelib}/*
 
 %changelog
