@@ -31,6 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.7.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-lxml
 BuildArch:      noarch
 # SECTION test requirements
@@ -52,15 +54,22 @@ Python interface to the OpenJPEG library
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jp2dump
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative jp2dump
+
+%postun
+%python_uninstall_alternative jp2dump
+
 %files %{python_files}
 %doc README.md CHANGES.txt
 %license LICENSE.txt
-%python3_only %{_bindir}/jp2dump
+%python_alternative %{_bindir}/jp2dump
 %{python_sitelib}/*
 
 %changelog
