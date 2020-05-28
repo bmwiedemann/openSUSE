@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 03:28:14 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.2:
+  * Change README to rst
+  * Switching Fedora runc nodeset to pod
+  * Fix tags\_diff output with python3
+  * Import ABC from collections.abc instead of collections
+  * Add license header and fix integration test 
+
+-------------------------------------------------------------------
 Thu Mar 21 09:54:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

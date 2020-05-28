@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>687174</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c29d3f0c9956b18f91494a96dcc01218</srcmd5>
+    <version>0.3.2</version>
+    <time>1590650401</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.3.2:
+  * Change README to rst
+  * Switching Fedora runc nodeset to pod
+  * Fix tags\_diff output with python3
+  * Import ABC from collections.abc instead of collections
+  * Add license header and fix integration test</comment>
+    <requestid>809725</requestid>
+  </revision>
 </revisionlist>
