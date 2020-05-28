@@ -1,7 +1,7 @@
 #
 # spec file for package python-ExifRead
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch0:         https://patch-diff.githubusercontent.com/raw/ianare/exif-py/pull
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,6 +47,7 @@ A Python module to extract Exif metadata from TIFF and JPEG files.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/EXIF.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,11 +56,17 @@ find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildro
 find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildroot}%{_bindir}/EXIF.py -dc {} \;
 }
 
+%post
+%python_install_alternative EXIF.py
+
+%postun
+%python_uninstall_alternative EXIF.py
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst ChangeLog.rst
 %{python_sitelib}/exifread/
 %{python_sitelib}/ExifRead-%{version}-py*.egg-info
-%python3_only %{_bindir}/EXIF.py
+%python_alternative %{_bindir}/EXIF.py
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Apr 23 11:48:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Mark properly as BSD3c
