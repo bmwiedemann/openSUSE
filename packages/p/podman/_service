@@ -4,8 +4,8 @@
 <param name="url">https://github.com/containers/libpod.git</param>
 <param name="scm">git</param>
 <param name="filename">podman</param>
-<param name="versionformat">1.9.1</param>
-<param name="revision">v1.9.1</param>
+<param name="versionformat">1.9.3</param>
+<param name="revision">v1.9.3</param>
 </service>
 
 <service name="set_version" mode="disabled">

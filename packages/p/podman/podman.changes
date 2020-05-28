@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 25 11:32:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to podman v1.9.3:
+  * Fixed a bug where, on FIPS enabled hosts, FIPS mode secrets
+    were not properly mounted into containers
+  * Fixed a bug where builds run over Varlink would hang
+  * Fixed a bug where podman save would fail when the target
+    image was specified by digest
+  * Fixed a bug where rootless containers with ports forwarded to them
+    could panic and dump core due to a concurrency issue (#6018)
+  * Fixed a bug where rootless Podman could race when opening the
+    rootless user namespace, resulting in commands failing to run
+  * Fixed a bug where HTTP proxy environment variables forwarded into
+    the container by the --http-proxy flag could not be overridden by --env or --env-file
+  * Fixed a bug where rootless Podman was setting resource limits on cgroups
+    v2 systems that were not using systemd-managed cgroups
+    (and thus did not support resource limits), resulting in containers failing to start
+
+
+-------------------------------------------------------------------
 Wed Apr 29 06:34:51 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update podman to v1.9.1:
