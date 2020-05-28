@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libomp7-devel
 BuildRequires:  maxima >= 5.30.0
 BuildRequires:  po4a
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
@@ -45,8 +44,6 @@ BuildRequires:  wxWidgets-devel >= 3
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
-# required for parallel processing
-Requires:       libomp7-devel
 Recommends:     %{name}-lang
 ExcludeArch:    ppc64 ppc64le
 
