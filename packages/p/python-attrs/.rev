@@ -126,4 +126,13 @@
   * Changes</comment>
     <requestid>741439</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a092a892011447ac213d2a8ae8e784cd</srcmd5>
+    <version>19.3.0</version>
+    <time>1590649660</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not restrict us to new setuptools, we generate stuff
+  even with the older variants</comment>
+    <requestid>807115</requestid>
+  </revision>
 </revisionlist>
