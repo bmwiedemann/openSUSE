@@ -1,7 +1,7 @@
 #
 # spec file for package python-cymruwhois
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -23,13 +24,15 @@ Release:        0
 Summary:        Client for the whois.cymrucom service
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://packages.python.org/cymruwhois/
+URL:            https://packages.python.org/cymruwhois/
 Source:         https://files.pythonhosted.org/packages/source/c/cymruwhois/cymruwhois-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/JustinAzoff/python-cymruwhois/master/docs/cymruwhois.1
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Provides:       cymruwhois
 BuildArch:      noarch
 %python_subpackages
@@ -49,10 +52,18 @@ and Netblock Owner.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -d -m0755 %{buildroot}%{_mandir}/man1/
 install -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
+%python_clone -a %{buildroot}%{_mandir}/man1/cymruwhois.1
+%python_clone -a %{buildroot}%{_bindir}/cymruwhois
+
+%post
+%python_install_alternative cymruwhois cymruwhois.1
+
+%postun
+%python_uninstall_alternative cymruwhois
 
 %files %{python_files}
 %{python_sitelib}/*
-%python3_only %{_bindir}/cymruwhois
-%python3_only %{_mandir}/man1/cymruwhois.1%{ext_man}
+%python_alternative %{_bindir}/cymruwhois
+%python_alternative %{_mandir}/man1/cymruwhois.1%{ext_man}
 
 %changelog
