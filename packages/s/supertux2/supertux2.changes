@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 25 22:11:53 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 0.6.2:
+  * A new worldmap, "Revenge In Redmond" celebrating SuperTux's
+    20th anniversary, which includes new enemies and sprites
+  * New and improved backgrounds and sprites
+  * Improvements to many levels in the Icy Island and forest world
+  * Speed improvements for levels using a huge amount of lava tiles
+  * An issue causing the bridge in the forest world to not be shown
+    in certain cases was fixed
+
+-------------------------------------------------------------------
 Wed Mar 25 21:46:03 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
 
 - Update to version 0.6.1.1:

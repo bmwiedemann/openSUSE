@@ -18,7 +18,7 @@
 
 %define _name   supertux
 Name:           supertux2
-Version:        0.6.1.1
+Version:        0.6.2
 Release:        0
 Summary:        Jump'n run game
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-1.0-only
