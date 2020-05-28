@@ -1007,6 +1007,7 @@ unsorted:
   - azure-cli-telemetry 
   - azure-cli-test 
   - azure-storage-cpp-devel 
+  - b4 
   - babe 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
@@ -8710,7 +8711,7 @@ unsorted:
   - libcppunit_subunit0-devel 
   - libcpuid-devel 
   - libcpuid-tools 
-  - libcpuid14 
+  - libcpuid15 
   - libcpuset-devel 
   - libcpuset1 
   - libcreaterepo_c-devel 
@@ -18441,6 +18442,8 @@ unsorted:
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
+  - python-Sphinx2-doc-html 
+  - python-Sphinx2-doc-man 
   - python-Twisted-doc 
   - python-WTForms-doc 
   - python-WebOb-doc 
@@ -18626,7 +18629,6 @@ unsorted:
   - python-volatility 
   - python-xcaplib-bash-completion 
   - python-xml 
-  - python-yui 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
@@ -18652,7 +18654,6 @@ unsorted:
   - python2-libunity 
   - python2-moviepy 
   - python2-mraa: [i586] 
-  - python2-num2words 
   - python2-opencensus-ext-threading 
   - python2-osc-tiny 
   - python2-ovs 
@@ -18846,6 +18847,8 @@ unsorted:
   - python3-SoundFile 
   - python3-SpeechRecognition 
   - python3-Sphinx-latex 
+  - python3-Sphinx2 
+  - python3-Sphinx2-latex 
   - python3-TagStats 
   - python3-Telethon 
   - python3-Tempita 
@@ -21449,6 +21452,7 @@ unsorted:
   - python3-youtube-dl 
   - python3-yq 
   - python3-yt 
+  - python3-yui 
   - python3-z3 
   - python3-zake 
   - python3-zc.buildout 
@@ -33248,6 +33252,7 @@ unsorted:
   - warzone2100 
   - warzone2100-data 
   - watchman 
+  - watson 
   - wavemon 
   - wavpack 
   - wavpack-devel 
