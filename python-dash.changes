@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 07:22:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Sat Apr 18 20:31:40 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
