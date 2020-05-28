@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/gpxpy/gpxpy-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,15 +46,22 @@ GPX is an XML based format for GPS tracks.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/gpxinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test
 
+%post
+%python_install_alternative gpxinfo
+
+%postun
+%python_uninstall_alternative gpxinfo
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%python3_only %{_bindir}/gpxinfo
+%python_alternative %{_bindir}/gpxinfo
 %{python_sitelib}/*
 
 %changelog

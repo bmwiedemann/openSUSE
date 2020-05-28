@@ -19,4 +19,12 @@
   * Refactored haversine_distance for speed and use math.radians</comment>
     <requestid>792331</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>69515a57e127f4cb3f526bda4cf379e7</srcmd5>
+    <version>1.4.0</version>
+    <time>1590650192</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809360</requestid>
+  </revision>
 </revisionlist>
