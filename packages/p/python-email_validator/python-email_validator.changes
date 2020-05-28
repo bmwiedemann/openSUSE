@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:06 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon May 11 07:38:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build python2 version
+- Add patch to fix error messages being compared in tests to match
+  error messages in Leap/SLE:
+  * fix-tests-strings.patch
+
+-------------------------------------------------------------------
 Thu May  7 12:03:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - version update to 1.1.0

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-email_validator
 Version:        1.1.0
 Release:        0
@@ -26,15 +27,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/JoshData/python-email-validator
 Source:         https://github.com/JoshData/python-email-validator/archive/v%{version}.tar.gz
 Patch0:         skip-tests-using-network.patch
+Patch1:         fix-tests-strings.patch
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
-BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dnspython >= 1.15.0
 Requires:       python-idna >= 2.0.0
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,21 +60,31 @@ Key features:
 %prep
 %setup -q -n python-email-validator-%{version}
 %patch0 -p1
+%if %{?suse_version} <= 1500
+%patch1 -p1
+%endif
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/email_validator
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative email_validator
+
+%postun
+%python_uninstall_alternative email_validator
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python3_only %{_bindir}/email_validator
+%python_alternative %{_bindir}/email_validator
 %{python_sitelib}/*
 
 %changelog
