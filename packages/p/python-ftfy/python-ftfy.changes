@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:21 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Tue Mar 10 08:48:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.7:

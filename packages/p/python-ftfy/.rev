@@ -41,4 +41,12 @@
     <comment>py38 fix</comment>
     <requestid>783195</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e55b9466f1c6eabb71e64654e0f07b6d</srcmd5>
+    <version>5.7</version>
+    <time>1590650223</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809375</requestid>
+  </revision>
 </revisionlist>

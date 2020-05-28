@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -48,16 +50,24 @@ put through an encode/decode cycle with different encodings.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ftfy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PATH="$PATH:%{buildroot}%{_bindir}"
-%pytest
+# test_cli: ftfy binary not found (update-alternatives)
+%pytest -k 'not test_cli'
+
+%post
+%python_install_alternative ftfy
+
+%postun
+%python_uninstall_alternative ftfy
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%python3_only %{_bindir}/ftfy
+%python_alternative %{_bindir}/ftfy
 %{python_sitelib}/*
 
 %changelog
