@@ -29,6 +29,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,15 +53,22 @@ sed -i 's/--cov-fail-under=75 --cov=cpplint//' setup.cfg
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/cpplint
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative cpplint
+
+%postun
+%python_uninstall_alternative cpplint
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python3_only %{_bindir}/cpplint
+%python_alternative %{_bindir}/cpplint
 %{python_sitelib}/*
 
 %changelog
