@@ -1,7 +1,7 @@
 #
 # spec file for package python-dennis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,21 @@ Release:        0
 Summary:        Utilities for working with PO and POT files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/willkg/dennis
+URL:            https://github.com/willkg/dennis
 Source:         https://files.pythonhosted.org/packages/source/d/dennis/dennis-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-# Test runner
-BuildRequires:  %{python_module pytest}
 # Module dependencies
 BuildRequires:  %{python_module click >= 6}
 BuildRequires:  %{python_module polib >= 1.0.8}
+# Test runner
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6
 Requires:       python-polib >= 1.0.8
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,17 +54,24 @@ mismatched HTML, missing variables, etc.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dennis-cmd
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG="en_US.UTF-8"
-%python_expand pytest-%{$python_bin_suffix} tests
+%pytest tests
+
+%post
+%python_install_alternative dennis-cmd
+
+%postun
+%python_uninstall_alternative dennis-cmd
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG README.rst
-%python3_only %{_bindir}/dennis-cmd
+%python_alternative %{_bindir}/dennis-cmd
 %{python_sitelib}/*
 
 %changelog
