@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 06:34:22 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
 Thu Apr 16 13:23:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test_cli_main as it fails for some reason on OBS

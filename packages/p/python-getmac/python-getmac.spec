@@ -32,6 +32,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,6 +51,8 @@ find . -type f -exec chmod -x {} \;
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_mandir}/man1/getmac.1
+%python_clone -a %{buildroot}%{_bindir}/getmac
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,11 +61,17 @@ export LANG=C.UTF-8
 # test_cli_multiple_debug_levels  same as above
 %pytest tests -k 'not test_get_default_iface_freebsd and not test_cli_main and not test_cli_multiple_debug_levels'
 
+%post
+%python_install_alternative getmac getmac.1
+
+%postun
+%python_uninstall_alternative getmac
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python3_only %{_bindir}/getmac
-%python3_only %{_mandir}/man1/getmac.1*
+%python_alternative %{_bindir}/getmac
+%python_alternative %{_mandir}/man1/getmac.1%{?ext_man}
 %{python_sitelib}/getmac*
 
 %changelog

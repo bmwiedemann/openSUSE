@@ -31,4 +31,12 @@
   * Added remote host lookup using `arping` as last resort</comment>
     <requestid>794606</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4dcae196af155932e9cdf9419ea71aac</srcmd5>
+    <version>0.8.2</version>
+    <time>1590650217</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809371</requestid>
+  </revision>
 </revisionlist>
